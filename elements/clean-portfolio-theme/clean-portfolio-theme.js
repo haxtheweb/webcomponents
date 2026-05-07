@@ -73,47 +73,42 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.__disposer = this.__disposer || [];
 
     // gets site title and home link for site-title
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.homeLink = toJS(store.homeLink);
-      this.__disposer.push(reaction);
-    });
+    }));
 
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // gets active page's ancestor for menu-item:after
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.ancestorItem = toJS(store.ancestorItem);
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // gets active page's tags and inserts them into an array for media-tag
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       let tags = toJS(store.activeTags);
       if (tags && tags.length > 0) {
         this.activeTags = tags.split(',');
       } else {
         this.activeTags = [];
       }
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // gets top level items for menu-item
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       let items = store.getItemChildren(null); 
       if (items && items.length > 0) {
         this.topItems = [...items];
       }
-      this.__disposer.push(reaction);
-    });
+    }));
     
     // determines active layout based on following conditions:
     // - if the current page has no child, it's Text
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       const active = toJS(store.activeItem);
       if (active) {
         // find parent of activeItem
@@ -208,21 +203,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }
         }
       }
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // determines if hax editor is enabled
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       const editMode = toJS(store.editMode);
       if (editMode) {
         const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // gets licensing stuff
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       let LList = new licenseList();
       if (this.manifest.license && LList[this.manifest.license]) {
@@ -230,16 +223,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         this.licenseLink = LList[this.manifest.license].link;
         this.licenseImage = LList[this.manifest.license].image;
       }
-      this.__disposer.push(reaction);
-    });
+    }));
 
     // gets current and total page count
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       const counter = toJS(store.pageCounter);
       this.pageCurrent = counter.current;
       this.pageTotal = counter.total;
-      this.__disposer.push(reaction);
-    });
+    }));
   }
 
   firstUpdated(changedProperties) {

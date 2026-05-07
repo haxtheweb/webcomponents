@@ -37,27 +37,31 @@ class HAXCMSSiteEditor extends LitElement {
     this.method = "POST";
     this.editMode = false;
     globalThis.SimpleModal.requestAvailability();
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      // force import on editMode enabled
-      if (this.editMode && toJS(HAXStore.activeHaxBody)) {
-        HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+        // force import on editMode enabled
+        if (this.editMode && toJS(HAXStore.activeHaxBody)) {
+          HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+      }),
+    );
     // Sync activeItem directly from store via MobX for proper state management
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      HAXStore.platformConfig = toJS(store.platformConfig);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        HAXStore.platformConfig = toJS(store.platformConfig);
+      }),
+    );
   }
   // render function
   render() {

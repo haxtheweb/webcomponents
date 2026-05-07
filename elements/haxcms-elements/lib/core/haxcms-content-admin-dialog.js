@@ -165,12 +165,13 @@ class HAXCMSContentAdminDialog extends DDD {
 
   connectedCallback() {
     super.connectedCallback();
-    const reaction = autorun(() => {
-      const manifest = toJS(store.manifest);
-      const items = manifest && manifest.items ? manifest.items : [];
-      this.rows = this._buildRows(items);
-    });
-    this.__disposer.push(reaction);
+    this.__disposer.push(
+      autorun(() => {
+        const manifest = toJS(store.manifest);
+        const items = manifest && manifest.items ? manifest.items : [];
+        this.rows = this._buildRows(items);
+      }),
+    );
     globalThis.addEventListener(
       "haxcms-content-dashboard-search-results",
       this.__searchResponseHandler,

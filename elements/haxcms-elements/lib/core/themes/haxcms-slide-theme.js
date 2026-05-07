@@ -242,14 +242,16 @@ class HAXCMSSlideTheme extends DDDSuper(
   connectedCallback() {
     super.connectedCallback();
     // store disposer so we can clean up later
-    autorun((reaction) => {
-      this.manifestLength = toJS(store.routerManifest.items.length);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifestLength = toJS(store.routerManifest.items.length);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+      }),
+    );
   }
   /**
    * Disconnect the wiring for the theme and clean up state

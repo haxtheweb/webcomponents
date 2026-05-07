@@ -199,19 +199,20 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       this._handleSimpleModalBreadcrumbClick,
       { capture: true, signal: this.__windowAbortController.signal },
     );
-    const reaction = autorun(() => {
-      this.manifestItems = [...toJS(store.manifest.items)];
-      this.updateComplete.then(() => {
-        // force UI sync after render completes so data and UI stay aligned
-        if (this.shadowRoot) {
-          const outline = this.shadowRoot.querySelector("#outline");
-          if (outline && outline.__syncUIAndDataModel) {
-            outline.__syncUIAndDataModel();
+    this.__disposer.push(
+      autorun(() => {
+        this.manifestItems = [...toJS(store.manifest.items)];
+        this.updateComplete.then(() => {
+          // force UI sync after render completes so data and UI stay aligned
+          if (this.shadowRoot) {
+            const outline = this.shadowRoot.querySelector("#outline");
+            if (outline && outline.__syncUIAndDataModel) {
+              outline.__syncUIAndDataModel();
+            }
           }
-        }
-      });
-    });
-    this.__disposer.push(reaction);
+        });
+      }),
+    );
   }
   /**
    * detached life cycle

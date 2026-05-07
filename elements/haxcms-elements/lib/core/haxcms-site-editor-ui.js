@@ -4898,146 +4898,154 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Mirror HAX tray detail into this element so we can expose and style active state.
     // IMPORTANT: use the observable HAXStore.trayDetail, not haxTray.trayDetail,
     // so MobX actually tracks and updates this value.
-    autorun((reaction) => {
-      this.trayDetail = toJS(HAXStore.trayDetail);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.trayDetail = toJS(HAXStore.trayDetail);
+      }),
+    );
 
     // detect changes in platformConfig for internal testing with Merlin
-    autorun((reaction) => {
-      if(store.platformConfig) {
-        // Don't redundantly reload the page on first boot
-        if(!this.__initialPlatformConfig){
-          this.requestUpdate();
-        } else {
-          this.__initialPlatformConfig = false;
-        }
-      };
-      this.__disposer.push(reaction);
-    });
-
-    autorun((reaction) => {
-      if (store.userData) {
-        this.userName = toJS(store.userData.userName);
-        this.userPicture = toJS(store.userData.userPicture);
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      const previousEditMode = this.editMode;
-      const newEditMode = toJS(store.editMode);
-      this.editMode = newEditMode;
-      UserScaffoldInstance.writeMemory("editMode", this.editMode);
-      const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
-      // When we first enter edit mode and there is an active node selected,
-      // prefer the Configure tab over Blocks as the default tray panel.
-      if (
-        !previousEditMode &&
-        newEditMode &&
-        autoOpenTray &&
-        HAXStore.activeNode &&
-        HAXStore.activeNode.tagName
-      ) {
-        HAXStore.trayDetail = "content-edit";
-        if (HAXStore.haxTray) {
-          HAXStore.haxTray.trayDetail = "content-edit";
-          HAXStore.haxTray.collapsed = !autoOpenTray;
-        }
-      } else if (!previousEditMode && newEditMode && !autoOpenTray) {
-        HAXStore.trayDetail = "no-active-tray";
-        if (HAXStore.haxTray) {
-          HAXStore.haxTray.trayDetail = "no-active-tray";
-          HAXStore.haxTray.collapsed = true;
-        }
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.manifestEditMode = toJS(store.adminMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.pageAllowed = toJS(store.pageAllowed);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      this.activeItem = activeItem;
-      // update buttons to match since we got a state response
-      setTimeout(() => {
-        if (!this.shadowRoot) return
-        /** legacy comment:
-         * update buttons since these are triggered by a mix of
-         * different backend types we can't leverage the store
-         * since a CMS needs to just hardcode these at run time
-         * for some environments
-         */
-        if (globalThis.appSettings && globalThis.appSettings.backText) {
-          this.backText = globalThis.appSettings.backText;
-        }
-        let ary = [
-          {
-            varPath: "saveNodePath",
-            selector: "#editbutton",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#addpagebutton",
-          },
-        ];
-        // see which features should be enabled
-        ary.forEach((pair) => {
-          // If the site supports skeletons (HAXcms), do not force visibility
-          if (store.platformConfig) return
-          else if (
-            globalThis.appSettings &&
-            globalThis.appSettings[pair.varPath] &&
-            globalThis.appSettings[pair.varPath] != null &&
-            globalThis.appSettings[pair.varPath] != "" &&
-            globalThis.appSettings[pair.varPath] != "null"
-          ) {
-            this.shadowRoot
-              .querySelector(pair.selector)
-              .removeAttribute("hidden");            
+    this.__disposer.push(
+      autorun((reaction) => {
+        if(store.platformConfig) {
+          // Don't redundantly reload the page on first boot
+          if(!this.__initialPlatformConfig){
+            this.requestUpdate();
+          } else {
+            this.__initialPlatformConfig = false;
           }
-        });
-      }, 100);
+        };
+      }),
+    );
 
-      if (activeItem && activeItem.id) {
-        this.activeTitle = activeItem.title;
-        this.onInternalRoute = activeItem._internalRoute || false;
-        // Use the store method to determine if editing is allowed
-        const supportsEditor = store.currentRouteSupportsHaxEditor();
-        // Show the button if editor is supported, regardless of lock status
-        store.pageAllowed = supportsEditor;
-      } else {
-        this.onInternalRoute = false;
-        store.pageAllowed = false;
-      }
-      if (
-        this.themePreviewOpen &&
-        this._getAdminRoutePathFromLocation() !== "theme-preview"
-      ) {
-        this.__currentAdminRoutePath = "theme-preview";
-        store.adminMode = true;
-        this._setAdminRoutePathOnLocation("theme-preview", "replace");
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      const appReady = toJS(store.appReady);
-      const isLoggedIn = toJS(store.isLoggedIn);
-      const routePath = this._getAdminRoutePathFromLocation();
-      if (appReady && isLoggedIn && this.themePreviewOpen && routePath !== "theme-preview") {
-        this.__currentAdminRoutePath = "theme-preview";
-        store.adminMode = true;
-        this._setAdminRoutePathOnLocation("theme-preview", "replace");
-      }
-      if (appReady && isLoggedIn && routePath && !this.__currentAdminRoutePath) {
-        this._applyAdminRoutePath(routePath, 0, true);
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store.userData) {
+          this.userName = toJS(store.userData.userName);
+          this.userPicture = toJS(store.userData.userPicture);
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const previousEditMode = this.editMode;
+        const newEditMode = toJS(store.editMode);
+        this.editMode = newEditMode;
+        UserScaffoldInstance.writeMemory("editMode", this.editMode);
+        const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
+        // When we first enter edit mode and there is an active node selected,
+        // prefer the Configure tab over Blocks as the default tray panel.
+        if (
+          !previousEditMode &&
+          newEditMode &&
+          autoOpenTray &&
+          HAXStore.activeNode &&
+          HAXStore.activeNode.tagName
+        ) {
+          HAXStore.trayDetail = "content-edit";
+          if (HAXStore.haxTray) {
+            HAXStore.haxTray.trayDetail = "content-edit";
+            HAXStore.haxTray.collapsed = !autoOpenTray;
+          }
+        } else if (!previousEditMode && newEditMode && !autoOpenTray) {
+          HAXStore.trayDetail = "no-active-tray";
+          if (HAXStore.haxTray) {
+            HAXStore.haxTray.trayDetail = "no-active-tray";
+            HAXStore.haxTray.collapsed = true;
+          }
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifestEditMode = toJS(store.adminMode);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.pageAllowed = toJS(store.pageAllowed);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const activeItem = toJS(store.activeItem);
+        this.activeItem = activeItem;
+        // update buttons to match since we got a state response
+        setTimeout(() => {
+          if (!this.shadowRoot) return
+          /** legacy comment:
+           * update buttons since these are triggered by a mix of
+           * different backend types we can't leverage the store
+           * since a CMS needs to just hardcode these at run time
+           * for some environments
+           */
+          if (globalThis.appSettings && globalThis.appSettings.backText) {
+            this.backText = globalThis.appSettings.backText;
+          }
+          let ary = [
+            {
+              varPath: "saveNodePath",
+              selector: "#editbutton",
+            },
+            {
+              varPath: "createNodePath",
+              selector: "#addpagebutton",
+            },
+          ];
+          // see which features should be enabled
+          ary.forEach((pair) => {
+            // If the site supports skeletons (HAXcms), do not force visibility
+            if (store.platformConfig) return
+            else if (
+              globalThis.appSettings &&
+              globalThis.appSettings[pair.varPath] &&
+              globalThis.appSettings[pair.varPath] != null &&
+              globalThis.appSettings[pair.varPath] != "" &&
+              globalThis.appSettings[pair.varPath] != "null"
+            ) {
+              this.shadowRoot
+                .querySelector(pair.selector)
+                .removeAttribute("hidden");
+            }
+          });
+        }, 100);
+
+        if (activeItem && activeItem.id) {
+          this.activeTitle = activeItem.title;
+          this.onInternalRoute = activeItem._internalRoute || false;
+          // Use the store method to determine if editing is allowed
+          const supportsEditor = store.currentRouteSupportsHaxEditor();
+          // Show the button if editor is supported, regardless of lock status
+          store.pageAllowed = supportsEditor;
+        } else {
+          this.onInternalRoute = false;
+          store.pageAllowed = false;
+        }
+        if (
+          this.themePreviewOpen &&
+          this._getAdminRoutePathFromLocation() !== "theme-preview"
+        ) {
+          this.__currentAdminRoutePath = "theme-preview";
+          store.adminMode = true;
+          this._setAdminRoutePathOnLocation("theme-preview", "replace");
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const appReady = toJS(store.appReady);
+        const isLoggedIn = toJS(store.isLoggedIn);
+        const routePath = this._getAdminRoutePathFromLocation();
+        if (appReady && isLoggedIn && this.themePreviewOpen && routePath !== "theme-preview") {
+          this.__currentAdminRoutePath = "theme-preview";
+          store.adminMode = true;
+          this._setAdminRoutePathOnLocation("theme-preview", "replace");
+        }
+        if (appReady && isLoggedIn && routePath && !this.__currentAdminRoutePath) {
+          this._applyAdminRoutePath(routePath, 0, true);
+        }
+      }),
+    );
   }
   disconnectedCallback() {
     // Unregister keyboard shortcuts

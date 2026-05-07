@@ -27,53 +27,56 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.isLoggedIn = false;
     this.HAXSiteCustomRenderRoutes = {};
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.trayStatus = toJS(store.trayStatus);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.trayStatus = toJS(store.trayStatus);
+      }),
+    );
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
-    autorun((reaction) => {
-      let tmp = toJS(store.activeItemContent);
-      if (
-        this.HAXCMSThemeSettings.autoScroll &&
-        this.shadowRoot &&
-        this.HAXCMSThemeSettings.scrollTarget &&
-        this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
-      ) {
-        if (this.isSafari) {
-          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
-        } else {
-          setTimeout(() => {
-            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
-              this.HAXCMSThemeSettings.scrollSettings,
-            );
-          }, 0);
+    this.__disposer.push(
+      autorun((reaction) => {
+        let tmp = toJS(store.activeItemContent);
+        if (
+          this.HAXCMSThemeSettings.autoScroll &&
+          this.shadowRoot &&
+          this.HAXCMSThemeSettings.scrollTarget &&
+          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+        ) {
+          if (this.isSafari) {
+            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+          } else {
+            setTimeout(() => {
+              this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
+                this.HAXCMSThemeSettings.scrollSettings,
+              );
+            }, 0);
+          }
         }
-      }
-      // delay bc this shouldn't block page load in any way
-      setTimeout(() => {
-        // headings only
-        let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
-        if (kidHeadings.length > 0) {
-          kidHeadings.forEach((node) => {
-            node.addEventListener("click", this.copyLink.bind(this));
-            node.addEventListener(
-              "pointerenter",
-              this.hoverIntentEnter.bind(this),
-            );
-            node.addEventListener(
-              "pointerleave",
-              this.hoverIntentLeave.bind(this),
-            );
-          });
-        }
-      }, 100);
-      this.__disposer.push(reaction);
-    });
+        // delay bc this shouldn't block page load in any way
+        setTimeout(() => {
+          // headings only
+          let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
+          if (kidHeadings.length > 0) {
+            kidHeadings.forEach((node) => {
+              node.addEventListener("click", this.copyLink.bind(this));
+              node.addEventListener(
+                "pointerenter",
+                this.hoverIntentEnter.bind(this),
+              );
+              node.addEventListener(
+                "pointerleave",
+                this.hoverIntentLeave.bind(this),
+              );
+            });
+          }
+        }, 100);
+      }),
+    );
   }
   // Render method
   render() {

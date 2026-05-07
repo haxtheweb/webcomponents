@@ -95,10 +95,11 @@ class HAXCMSBackendPHP extends LitElement {
     super();
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun((reaction) => {
-      this.jwt = toJS(store.jwt);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.jwt = toJS(store.jwt);
+      }),
+    );
   }
   /**
    * Detatched life cycle

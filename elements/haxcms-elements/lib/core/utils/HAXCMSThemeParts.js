@@ -7,15 +7,17 @@ const HAXCMSThemeParts = function (SuperClass) {
     constructor() {
       super();
       this.__disposer = this.__disposer ? this.__disposer : [];
-      autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
-        this.darkMode = toJS(store.darkMode);
-        this.dark = this.darkMode; // alignment w/ simple colors for reactive content!
-        this.__disposer.push(reaction);
-      });
+      this.__disposer.push(
+        autorun((reaction) => {
+          this.editMode = toJS(store.editMode);
+        }),
+      );
+      this.__disposer.push(
+        autorun((reaction) => {
+          this.darkMode = toJS(store.darkMode);
+          this.dark = this.darkMode; // alignment w/ simple colors for reactive content!
+        }),
+      );
     }
     static get styles() {
       let styles = [];
