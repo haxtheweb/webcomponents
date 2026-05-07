@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -212,6 +213,29 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.tagsList = "";
+      // WebKit (Safari + all iOS browsers) clears the contenteditable
+      // selection the moment mousedown fires on a non-editable element.
+      // Capture the range on pointerdown (fires before mousedown)
+      // using the native Selection API — the shadow-selection-polyfill
+      // getRange() can return values WebKit rejects in addRange().
+      if (isWebKit()) {
+        this.addEventListener("pointerdown", (e) => {
+          var sel = globalThis.getSelection();
+          console.log('[WK:btn pointerdown] sel.rangeCount:', sel ? sel.rangeCount : 'no sel', 'type:', sel ? sel.type : 'n/a');
+          if (sel && sel.rangeCount > 0) {
+            var r = sel.getRangeAt(0);
+            console.log('[WK:btn pointerdown] range collapsed:', r.collapsed, 'text:', r.toString().substring(0, 40));
+            if (r && !r.collapsed) {
+              this.__webkitSavedRange = r.cloneRange();
+              console.log('[WK:btn pointerdown] SAVED range ok');
+            }
+          }
+        });
+        this.addEventListener("mousedown", (e) => {
+          console.log('[WK:btn mousedown] calling preventDefault');
+          e.preventDefault();
+        }, true);
+      }
     }
 
     /**
@@ -349,6 +373,30 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
+      console.log('[WK:btn click] _handleClick fired, isWebKit:', isWebKit(), 'command:', this.operationCommand);
+      // WebKit: restore focus and selection from the range we captured
+      // on pointerdown, before the toolbar's sendCommand pipeline runs.
+      if (isWebKit()) {
+        var target = this.__toolbar && this.__toolbar.target;
+        var saved = this.__webkitSavedRange
+          || (this.__toolbar && this.__toolbar.__webkitSavedRange);
+        console.log('[WK:btn click] target:', !!target, 'saved range:', !!saved, 'btn saved:', !!this.__webkitSavedRange, 'toolbar saved:', !!(this.__toolbar && this.__toolbar.__webkitSavedRange));
+        if (target && saved) {
+          target.focus({ preventScroll: true });
+          var sel = globalThis.getSelection();
+          sel.removeAllRanges();
+          try {
+            sel.addRange(saved);
+          } catch (err) {}
+          // addRange may silently fail in shadow DOM; try setBaseAndExtent
+          if (sel.rangeCount === 0) {
+            try {
+              sel.setBaseAndExtent(saved.startContainer, saved.startOffset, saved.endContainer, saved.endOffset);
+            } catch (err) {}
+          }
+          // Keep saved range for _handleCommand; don't null it yet
+        }
+      }
       this.sendCommand(e);
     }
 

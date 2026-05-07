@@ -13,7 +13,8 @@ import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/si
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import * as shadow from "shadow-selection-polyfill/shadow.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-source-code.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js";
@@ -942,7 +943,28 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       );
 
       //stops mousedown from bubbling up and triggering HAX focus logic
-      this.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
+      this.addEventListener("mousedown", (e) => {
+        e.stopImmediatePropagation();
+        // WebKit (Safari + all iOS browsers) clears the contenteditable
+        // selection on mousedown, destroying the range before the click
+        // handler can run execCommand. preventDefault() keeps focus in
+        // the editor so the selection survives to the click event.
+        if (isWebKit()) {
+          e.preventDefault();
+        }
+      });
+      // WebKit: capture the live range via pointerdown (fires before
+      // mousedown) so we have a fallback if the range is lost anyway.
+      // Do NOT null out __webkitSavedRange here — it may have been
+      // saved by the mouseup handler with a valid composed range.
+      this.addEventListener("pointerdown", () => {
+        if (isWebKit()) {
+          var range = this.getRange();
+          if (range && !range.collapsed) {
+            this.__webkitSavedRange = range.cloneRange();
+          }
+        }
+      });
     }
 
     connectedCallback() {
@@ -1105,14 +1127,45 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * can be overriden
      */
     getRange() {
-      let shadowRoot = (el) => {
-        let parent = el.parentNode;
-        return parent ? shadowRoot(parent) : el;
-      };
+      if (!this.target) return undefined;
+      // WebKit: use getComposedRanges to pierce shadow DOM boundaries.
+      // Collect ALL shadow roots from the target's ancestor chain.
+      if (isWebKit()) {
+        var sel = globalThis.getSelection();
+        if (sel && sel.getComposedRanges) {
+          try {
+            var allRoots = [];
+            var node = this.target;
+            while (node) {
+              if (node.shadowRoot) allRoots.push(node.shadowRoot);
+              var rn = node.getRootNode ? node.getRootNode() : null;
+              if (rn && rn !== node && rn.host) node = rn.host;
+              else node = node.parentNode;
+            }
+            if (allRoots.length > 0) {
+              var cr = sel.getComposedRanges.apply(sel, allRoots);
+              if (cr && cr.length > 0) {
+                var sr = cr[0];
+                var range = globalThis.document.createRange();
+                range.setStart(sr.startContainer, sr.startOffset);
+                range.setEnd(sr.endContainer, sr.endOffset);
+                this.range = range;
+                return this.range;
+              }
+            }
+          } catch (e) {
+            // fall through to polyfill
+          }
+        }
+      }
       try {
-        this.range = shadowRoot(this.target)
-          ? shadow.getRange(shadowRoot(this.target))
-          : undefined;
+        if (this.target.shadowRoot) {
+          this.range = shadow.getRange(this.target.shadowRoot);
+          if (this.range) return this.range;
+        }
+        var el = this.target;
+        while (el && el.parentNode) el = el.parentNode;
+        this.range = el ? shadow.getRange(el) : undefined;
       } catch (e) {
         this.range = undefined;
       }
@@ -1347,7 +1400,75 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
         this.getRoot(target).onselectionchange = (e) => {
           if (!this.__promptOpen) this.updateRange(target, this.getRange());
+          // WebKit: selectionchange fires AGAIN when WebKit collapses the
+          // selection on toolbar-button mousedown, overwriting this.range
+          // before pointerdown can capture it. Track the last non-collapsed
+          // range so it survives that collapse.
+          if (isWebKit()) {
+            var sel = globalThis.getSelection();
+            var rc = sel ? sel.rangeCount : 0;
+            var collapsed = rc > 0 ? sel.getRangeAt(0).collapsed : 'n/a';
+            console.log('[WK:selchange enableEditing] rangeCount:', rc, 'collapsed:', collapsed);
+            if (sel && rc > 0) {
+              var r = sel.getRangeAt(0);
+              if (r && !r.collapsed) {
+                this.__webkitSavedRange = r.cloneRange();
+                console.log('[WK:selchange enableEditing] SAVED range, text:', r.toString().substring(0, 40));
+              }
+            }
+          }
         };
+
+        // WebKit: Safari does not reliably fire selectionchange with
+        // non-collapsed ranges for content inside shadow DOM slots.
+        // Capture the range on mouseup/keyup on the target itself,
+        // which is the reliable moment a selection is finalized.
+        if (isWebKit()) {
+          if (!this.__webkitTargetSelHandler) {
+            var toolbarRef = this;
+            this.__webkitTargetSelHandler = () => {
+              var sel = globalThis.getSelection();
+              console.log('[WK:mouseup] sel.type:', sel && sel.type, 'target:', toolbarRef.target && toolbarRef.target.tagName);
+              // Try getComposedRanges directly (bypass getRange)
+              if (sel && sel.getComposedRanges) {
+                try {
+                  var allRoots = [];
+                  var nd = toolbarRef.target;
+                  while (nd) {
+                    if (nd.shadowRoot) allRoots.push(nd.shadowRoot);
+                    var rn = nd.getRootNode ? nd.getRootNode() : null;
+                    if (rn && rn !== nd && rn.host) nd = rn.host;
+                    else nd = nd.parentNode;
+                  }
+                  var cr = sel.getComposedRanges.apply(sel, allRoots);
+                  var collapsed = cr.length > 0 ? cr[0].collapsed : 'empty';
+                  console.log('[WK:mouseup] composedRanges:', cr.length, 'collapsed:', collapsed);
+                  if (cr.length > 0 && !cr[0].collapsed) {
+                    var range = globalThis.document.createRange();
+                    range.setStart(cr[0].startContainer, cr[0].startOffset);
+                    range.setEnd(cr[0].endContainer, cr[0].endOffset);
+                    toolbarRef.__webkitSavedRange = range;
+                    toolbarRef.range = range;
+                    console.log('[WK:mouseup] SAVED! text:', range.toString().substring(0, 30));
+                    return;
+                  }
+                } catch (e) {
+                  console.log('[WK:mouseup] composedRanges error:', e.message);
+                }
+              }
+              // Fallback to getRange
+              try {
+                var r = toolbarRef.getRange();
+                if (r && !r.collapsed) {
+                  toolbarRef.__webkitSavedRange = r.cloneRange();
+                  console.log('[WK:mouseup] SAVED from getRange, text:', r.toString().substring(0, 30));
+                }
+              } catch (e) {}
+            };
+          }
+          target.addEventListener("mouseup", this.__webkitTargetSelHandler);
+          target.addEventListener("keyup", this.__webkitTargetSelHandler);
+        }
 
         this.dispatchEvent(
           new CustomEvent("enabled", {
@@ -1369,6 +1490,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (!!range) range.collapse(false);
         this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
+        // WebKit: clean up the target mouseup/keyup handlers
+        if (isWebKit() && this.__webkitTargetSelHandler) {
+          target.removeEventListener("mouseup", this.__webkitTargetSelHandler);
+          target.removeEventListener("keyup", this.__webkitTargetSelHandler);
+        }
         this.observeChanges(false);
         if (this.__source) this.__source.toggle(false);
         if (target && target.removeAttribute) {
@@ -1478,6 +1604,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           );
           this.getRoot(target).onselectionchange = (e) => {
             if (!this.__promptOpen) this.updateRange(target, this.getRange());
+            if (isWebKit()) {
+              var sel = globalThis.getSelection();
+              if (sel && sel.rangeCount > 0) {
+                var r = sel.getRangeAt(0);
+                if (r && !r.collapsed) {
+                  this.__webkitSavedRange = r.cloneRange();
+                }
+              }
+            }
           };
           this.target = target;
           this.enableEditing(target);
@@ -1614,6 +1749,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _handleTargetSelection(e) {
       if (!this.__promptOpen) this.range = this.getRange();
+      // WebKit: save non-collapsed range from the polyfill handler
+      // (fires on document) as backup for toolbar button restoration,
+      // since the native onselectionchange may miss shadow DOM targets
+      if (isWebKit() && this.range && !this.range.collapsed) {
+        this.__webkitSavedRange = this.range.cloneRange();
+      }
     }
     _handlePaste(e) {
       e.stopImmediatePropagation();
@@ -1621,6 +1762,25 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _addHighlight() {
       if (!this.__highlight.hidden) return;
+      // WebKit: do NOT wrap the highlight here. The wrap()/unwrap() cycle
+      // mutates the Range object in place and unwrap() moves the highlight
+      // to document.body, leaving the Range's endContainer detached.
+      // Instead, save the current native selection (which is still valid
+      // on mouseup in the contenteditable) so it survives the upcoming
+      // selectionchange collapse when the user clicks a toolbar button.
+      if (isWebKit()) {
+        var sel = globalThis.getSelection();
+        console.log('[WK:_addHighlight] rangeCount:', sel ? sel.rangeCount : 0, 'collapsed:', (sel && sel.rangeCount > 0) ? sel.getRangeAt(0).collapsed : 'n/a');
+        if (sel && sel.rangeCount > 0) {
+          var r = sel.getRangeAt(0);
+          if (r && !r.collapsed) {
+            this.__webkitSavedRange = r.cloneRange();
+            this.range = r.cloneRange();
+            console.log('[WK:_addHighlight] SAVED range, text:', r.toString().substring(0, 40));
+          }
+        }
+        return;
+      }
       this.range = this.getRange();
       if (
         !this.target ||

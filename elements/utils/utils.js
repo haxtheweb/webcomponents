@@ -1,6 +1,7 @@
 /**
  * A collection of utility functions exported for convenience
  */
+import { isWebKit, isSafari } from "./lib/browser.js";
 import { copyToClipboard } from "./lib/clipboard.js";
 import { normalizeEventPath } from "./lib/events.js";
 import { generateResourceID } from "./lib/ids.js";
@@ -33,6 +34,8 @@ export {
   hasUnsafeURLProtocol,
   internalGetShadowSelection,
   isElementInViewport,
+  isSafari,
+  isWebKit,
   markdownToHTML,
   normalizeEventPath,
   objectValFromStringPos,
