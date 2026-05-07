@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for career-timeline">
+
+  <style>
+    :root, html, body {
+      margin: var(--ddd-spacing-0);
+      padding: var(--ddd-spacing-0);
+    }
+    #demo {
+      margin: var(--ddd-spacing-2);
+    }
+    career-timeline {
+      margin: var(--ddd-spacing-2);
+      border: var(--ddd-border-md);
+      border-radius: var(--ddd-radius-lg);
+    }
+    career-timeline:hover {
+      box-shadow: var(--ddd-boxShadow-sm);
+    }
+    #example {
+      --career-timeline-font-size: var(--ddd-font-size-l);
+      background-color: var(--ddd-accent-2);
+      color: var(--ddd-primary-17);
+    }
+  </style>
+  <title>career-timeline</title>
+</head>
+
+<body>
+  <div id="demo">
+    <h1>career-timeline</h1>
+    <career-timeline>
+<career-org-item organization="HAX Lab" location="Uni Park, PA">
+  <career-role-item title="Senior Web Developer">
+      <p>You will need to complete this before the Fall 2025 semester...</p>
+    <ul>
+        <li>Thing 1</li>
+    </ul>
+  </career-role-item>
+  <career-role-item title="Web Developer">
+      <p>You will need to complete this before the Fall 2025 semester...</p>
+    <ul>
+        <li>Thing 1</li>
+    </ul>
+  </career-role-item>
+  <career-role-item title="Web Intern">
+      <p>You will need to complete this before the Fall 2025 semester...</p>
+    <ul>
+        <li>Thing 1</li>
+    </ul>
+  </career-role-item>
+</career-org-item></career-timeline>  </div>
+  <script type="module" src="./career-timeline.js"></script>
+  <script type="module" src="./lib/career-org-item.js"></script>
+  <script type="module" src="./lib/career-role-item.js"></script>
+</body>
+</html>

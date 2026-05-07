@@ -1,0 +1,42 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "grid",
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "career-timeline",
+    "description": "A career timeline containing organizations, roles, and other data",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": [
+      "Other"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "winstonwumbo"
+    }
+  },
+  "settings": {
+    "configure": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "career-timeline",
+      "properties": {
+        "title": "Sample property title"
+      },
+      "content": ""
+    }
+  ]
+}
