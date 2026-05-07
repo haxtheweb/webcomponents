@@ -113,7 +113,6 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
       super.updated(changedProperties);
     }
 
-    console.log(this.editMode)
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "citationArr" && oldValue !== undefined) {
         this.renderExport();
