@@ -541,10 +541,11 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      }),
+    );
   }
 
   /**

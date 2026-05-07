@@ -34,31 +34,34 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
   constructor() {
     super();
     this.__disposer = [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      const manifest = toJS(store.manifest);
-      if (
-        manifest &&
-        manifest.metadata &&
-        manifest.metadata.author &&
-        manifest.metadata.author.name
-      ) {
-        this.author = manifest.metadata.author.name;
-      } else if (manifest && manifest.author) {
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const manifest = toJS(store.manifest);
+        if (
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.author &&
+          manifest.metadata.author.name
+        ) {
+          this.author = manifest.metadata.author.name;
+        } else if (manifest && manifest.author) {
+          this.author = manifest.author;
+        } else {
+          this.author = "Ac|d-$CoRpI()";
+        }
         this.author = manifest.author;
-      } else {
-        this.author = "Ac|d-$CoRpI()";
-      }
-      this.author = manifest.author;
-      this.__disposer.push(reaction);
-    });
+      }),
+    );
     globalThis.document.body.style.backgroundColor = "#000000";
     globalThis.document.body.style.color = "#D2D2D2";
     globalThis.document.body.style.backgroundImage = `url(${

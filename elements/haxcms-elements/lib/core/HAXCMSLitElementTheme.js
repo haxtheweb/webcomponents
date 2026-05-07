@@ -26,6 +26,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.trayStatus = '';
     this.isLoggedIn = false;
     this.HAXSiteCustomRenderRoutes = {};
+    this.__headingNodes = [];
+    this.__copyLinkHandler = this.copyLink.bind(this);
+    this.__hoverIntentEnterHandler = this.hoverIntentEnter.bind(this);
+    this.__hoverIntentLeaveHandler = this.hoverIntentLeave.bind(this);
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
@@ -59,20 +63,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         }
         // delay bc this shouldn't block page load in any way
         setTimeout(() => {
-          // headings only
-          let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
-          if (kidHeadings.length > 0) {
-            kidHeadings.forEach((node) => {
-              node.addEventListener("click", this.copyLink.bind(this));
-              node.addEventListener(
-                "pointerenter",
-                this.hoverIntentEnter.bind(this),
-              );
-              node.addEventListener(
-                "pointerleave",
-                this.hoverIntentLeave.bind(this),
-              );
-            });
+          if (typeof this.__refreshHeadingListeners === 'function') {
+            this.__refreshHeadingListeners();
           }
         }, 100);
       }),
@@ -90,6 +82,28 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
   hoverIntentLeave(e) {
     e.target.classList.remove("haxcms-copyable");
+  }
+  __removeHeadingListeners() {
+    if (this.__headingNodes && this.__headingNodes.length > 0) {
+      this.__headingNodes.forEach((node) => {
+        node.removeEventListener("click", this.__copyLinkHandler);
+        node.removeEventListener("pointerenter", this.__hoverIntentEnterHandler);
+        node.removeEventListener("pointerleave", this.__hoverIntentLeaveHandler);
+      });
+    }
+    this.__headingNodes = [];
+  }
+  __refreshHeadingListeners() {
+    this.__removeHeadingListeners();
+    let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    this.__headingNodes = Array.from(kidHeadings);
+    if (this.__headingNodes.length > 0) {
+      this.__headingNodes.forEach((node) => {
+        node.addEventListener("click", this.__copyLinkHandler);
+        node.addEventListener("pointerenter", this.__hoverIntentEnterHandler);
+        node.addEventListener("pointerleave", this.__hoverIntentLeaveHandler);
+      });
+    }
   }
 
   HAXCMSGlobalStyleSheetContent() {
@@ -280,22 +294,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           }
         }
       }, 0);
-      // headings only
-      let kidHeadings = this.querySelectorAll("h1,h2,h3,h4,h5,h6");
-      if (kidHeadings.length > 0) {
-        kidHeadings.forEach((node) => {
-          node.addEventListener("click", this.copyLink.bind(this));
-          node.addEventListener(
-            "pointerenter",
-            this.hoverIntentEnter.bind(this),
-          );
-          node.addEventListener(
-            "pointerleave",
-            this.hoverIntentLeave.bind(this),
-          );
-        });
+      if (typeof this.__refreshHeadingListeners === 'function') {
+        this.__refreshHeadingListeners();
       }
     }, 1500);
+  }
+  disconnectedCallback() {
+    this.__removeHeadingListeners();
+    super.disconnectedCallback();
   }
   // LitElement life cycle
   updated(changedProperties) {

@@ -37,18 +37,15 @@ class SiteFooter extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
-      this.__disposer.push(reaction);
-    });
+    }));
   }
   // render function
   render() {

@@ -424,17 +424,19 @@ class SiteTopMenu extends LitElement {
     this.shadowRoot
       .querySelector("#menu")
       .addEventListener("click", this.toggleOpen.bind(this));
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
     // minor timing thing to ensure store has picked active
     // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
-      autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
-        this.__disposer.push(reaction);
-      });
+      this.__disposer.push(
+        autorun((reaction) => {
+          this.activeId = toJS(store.activeId);
+        }),
+      );
     }, 50);
     globalThis.addEventListener(
       "resize",

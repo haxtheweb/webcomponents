@@ -863,21 +863,23 @@ class CleanTwo extends LTIResizingMixin(
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      }),
+    );
 
-    autorun((reaction) => {
-      if (
-        store.activeItem &&
-        store.activeItem.metadata &&
-        store.activeItem.metadata.updated
-      ) {
-        this.pageTimestamp = toJS(store.activeItem.metadata.updated);
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (
+          store.activeItem &&
+          store.activeItem.metadata &&
+          store.activeItem.metadata.updated
+        ) {
+          this.pageTimestamp = toJS(store.activeItem.metadata.updated);
+        }
+      }),
+    );
   }
   siteModalForceClick(e) {
     setTimeout(() => {

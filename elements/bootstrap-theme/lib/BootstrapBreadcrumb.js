@@ -166,26 +166,27 @@ class BootstrapBreadcrumb extends LitElement {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      let manifestHomeItem = toJS(store.manifest.items[0]);
-      let storeActiveItem = toJS(store.activeItem);
-      // check if home item has changed, if it has set new home item
-      if (this.homeItem !== manifestHomeItem) {
-        this.homeItem = manifestHomeItem;
-      }
-      // check if we have a new active item
-      // if so we clear our items array, set a new activeItem, push it to the items array
-      // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
-      if (storeActiveItem && this._activeItem !== storeActiveItem) {
-        this.items = [];
-        this._activeItem = storeActiveItem;
-        this.items.push(storeActiveItem);
-        if (storeActiveItem.parent) {
-          this.addParentToItems(storeActiveItem);
+    this.__disposer.push(
+      autorun((reaction) => {
+        let manifestHomeItem = toJS(store.manifest.items[0]);
+        let storeActiveItem = toJS(store.activeItem);
+        // check if home item has changed, if it has set new home item
+        if (this.homeItem !== manifestHomeItem) {
+          this.homeItem = manifestHomeItem;
         }
-      }
-      this.__disposer.push(reaction);
-    });
+        // check if we have a new active item
+        // if so we clear our items array, set a new activeItem, push it to the items array
+        // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
+        if (storeActiveItem && this._activeItem !== storeActiveItem) {
+          this.items = [];
+          this._activeItem = storeActiveItem;
+          this.items.push(storeActiveItem);
+          if (storeActiveItem.parent) {
+            this.addParentToItems(storeActiveItem);
+          }
+        }
+      }),
+    );
   }
 
   render() {

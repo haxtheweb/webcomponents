@@ -606,42 +606,47 @@ class HaxorSlevin extends HAXCMSThemeParts(
     this.activeItem = {};
     this.selectedPage = 0;
     this.activeManifestIndexCounter = 0;
-    autorun((reaction) => {
-      let location = toJS(store.location);
-      this._noticeLocationChange(location);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let manifest = toJS(store.manifest);
-      this.color = this._getColor(manifest);
-      this.title = varGet(manifest, "title", "");
-      this.image = varGet(
-        manifest,
-        "metadata.theme.variables.image",
-        "assets/banner.jpg",
-      );
-      this.icon = varGet(
-        manifest,
-        "metadata.theme.variables.icon",
-        "icons:record-voice-over",
-      );
-      this.author = varGet(manifest, "metadata.author", {});
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeTitle = toJS(store.activeTitle);
-      this.shareUrl = globalThis.document.location.href;
-      this.shareMsg = this.activeTitle + " " + this.shareUrl;
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        let location = toJS(store.location);
+        this._noticeLocationChange(location);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        let manifest = toJS(store.manifest);
+        this.color = this._getColor(manifest);
+        this.title = varGet(manifest, "title", "");
+        this.image = varGet(
+          manifest,
+          "metadata.theme.variables.image",
+          "assets/banner.jpg",
+        );
+        this.icon = varGet(
+          manifest,
+          "metadata.theme.variables.icon",
+          "icons:record-voice-over",
+        );
+        this.author = varGet(manifest, "metadata.author", {});
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeTitle = toJS(store.activeTitle);
+        this.shareUrl = globalThis.document.location.href;
+        this.shareMsg = this.activeTitle + " " + this.shareUrl;
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
   }
   /**
    * LitElement shadowDom ready

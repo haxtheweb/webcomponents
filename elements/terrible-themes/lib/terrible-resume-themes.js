@@ -38,10 +38,11 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
     super();
 
     this.__disposer = [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      }),
+    );
   }
 
   HAXCMSGlobalStyleSheetContent() {

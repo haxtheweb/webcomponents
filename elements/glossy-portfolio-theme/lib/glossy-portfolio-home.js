@@ -25,14 +25,18 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer = this.__disposer || [];
 
     // get csite description
-    autorun((reaction) => {
-      this.siteDescription = toJS(store.siteDescription) || "A portfolio showcasing my work and projects.";
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.backgroundImage = toJS(store.themeData.variables.image);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.siteDescription =
+          toJS(store.siteDescription) ||
+          "A portfolio showcasing my work and projects.";
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.backgroundImage = toJS(store.themeData.variables.image);
+      }),
+    );
   }
 
   // Lit reactive properties

@@ -72,43 +72,48 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       },
     };
 
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.lastUpdated = new Date(
-        store.manifest.metadata.site.updated * 1000,
-      ).toDateString();
-      this.copyrightYear = new Date(
-        store.manifest.metadata.site.created * 1000,
-      ).getFullYear();
-      let LList = new licenseList();
-      if (this.manifest.license && LList[this.manifest.license]) {
-        this.licenseName = LList[this.manifest.license].name;
-        this.licenseLink = LList[this.manifest.license].link;
-        this.licenseImage = LList[this.manifest.license].image;
-      }
-      this._items = this.getItemChildren(null);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.ancestorItem = toJS(store.ancestorItem);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let location = toJS(store.location);
-      this.location = location;
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+        this.lastUpdated = new Date(
+          store.manifest.metadata.site.updated * 1000,
+        ).toDateString();
+        this.copyrightYear = new Date(
+          store.manifest.metadata.site.created * 1000,
+        ).getFullYear();
+        let LList = new licenseList();
+        if (this.manifest.license && LList[this.manifest.license]) {
+          this.licenseName = LList[this.manifest.license].name;
+          this.licenseLink = LList[this.manifest.license].link;
+          this.licenseImage = LList[this.manifest.license].image;
+        }
+        this._items = this.getItemChildren(null);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.ancestorItem = toJS(store.ancestorItem);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        let location = toJS(store.location);
+        this.location = location;
+      }),
+    );
     // gets current a total page count
-    autorun((reaction) => {
-      const counter = toJS(store.pageCounter);
-      this.pageCurrent = counter.current;
-      this.pageTotal = counter.total;
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        const counter = toJS(store.pageCounter);
+        this.pageCurrent = counter.current;
+        this.pageTotal = counter.total;
+      }),
+    );
   }
 
   getItemChildren(itemId) {

@@ -62,11 +62,12 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.renderXTagsItems = this._renderXTagsItems;
     this.renderXTagsTag = this._renderXTagsTag;
     this.__disposer = this.__disposer || [];
-    autorun((reaction) => {
-      const theme = toJS(store.themeElement);
-      this._processCustomThemeRoutes();
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        const theme = toJS(store.themeElement);
+        this._processCustomThemeRoutes();
+      }),
+    );
     window.addEventListener(
       "haxcms-theme-ready",
       (e) => {

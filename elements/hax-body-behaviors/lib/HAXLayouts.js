@@ -123,6 +123,13 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       super();
       this.ready = false;
       this.haxLayoutContainer = true;
+      this.observer = null;
+      this.__layoutEventHandlers = {
+        drop: this._dropEvent.bind(this),
+        dragenter: this._dragEnter.bind(this),
+        dragleave: this._dragLeave.bind(this),
+        slotchange: this._slotMonitor.bind(this),
+      };
     }
     /**
      * life cycle
@@ -138,25 +145,8 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "dataHaxRay" && this.shadowRoot) {
           if (this[propName]) {
-            // apply handlers to the columns themselves
-            this.addEventListener("drop", this._dropEvent.bind(this));
-            let containers = [
-                ...this.shadowRoot.querySelectorAll("drag-enabled"),
-              ],
-              slots = [...this.shadowRoot.querySelectorAll("slot")];
-            containers.forEach((container) => {
-              container.addEventListener(
-                "dragenter",
-                this._dragEnter.bind(this),
-              );
-              container.addEventListener(
-                "dragleave",
-                this._dragLeave.bind(this),
-              );
-            });
-            slots.forEach((slot) =>
-              slot.addEventListener("slotchange", this._slotMonitor.bind(this)),
-            );
+            this.__removeLayoutEvents();
+            this.__addLayoutEvents();
             this.observer = new MutationObserver((mutations) => {
               if (!this.__sorting) {
                 mutations.forEach((mutation) => {
@@ -189,31 +179,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               childList: true,
             });
           } else {
-            if (this.observer) {
-              this.observer.disconnect();
-            }
-            this.removeEventListener("drop", this._dropEvent.bind(this));
-
-            let containers = [
-                ...this.shadowRoot.querySelectorAll("drag-enabled"),
-              ],
-              slots = [...this.shadowRoot.querySelectorAll("slot")];
-            containers.forEach((container) => {
-              container.removeEventListener(
-                "dragenter",
-                this._dragEnter.bind(this),
-              );
-              container.removeEventListener(
-                "dragleave",
-                this._dragLeave.bind(this),
-              );
-            });
-            slots.forEach((slot) =>
-              slot.removeEventListener(
-                "slotchange",
-                this._slotMonitor.bind(this),
-              ),
-            );
+            this.__removeLayoutEvents();
           }
         }
         // if any of these changed, update col widths
@@ -250,6 +216,61 @@ export const HaxLayoutBehaviors = function (SuperClass) {
         }
       });
       this.haxLayoutContainer = true;
+    }
+    __addLayoutEvents() {
+      if (!this.shadowRoot) {
+        return;
+      }
+      this.addEventListener("drop", this.__layoutEventHandlers.drop);
+      let containers = [...this.shadowRoot.querySelectorAll("drag-enabled")],
+        slots = [...this.shadowRoot.querySelectorAll("slot")];
+      containers.forEach((container) => {
+        container.addEventListener(
+          "dragenter",
+          this.__layoutEventHandlers.dragenter,
+        );
+        container.addEventListener(
+          "dragleave",
+          this.__layoutEventHandlers.dragleave,
+        );
+      });
+      slots.forEach((slot) =>
+        slot.addEventListener("slotchange", this.__layoutEventHandlers.slotchange),
+      );
+    }
+    __removeLayoutEvents() {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+      if (!this.shadowRoot) {
+        return;
+      }
+      this.removeEventListener("drop", this.__layoutEventHandlers.drop);
+      let containers = [...this.shadowRoot.querySelectorAll("drag-enabled")],
+        slots = [...this.shadowRoot.querySelectorAll("slot")];
+      containers.forEach((container) => {
+        container.removeEventListener(
+          "dragenter",
+          this.__layoutEventHandlers.dragenter,
+        );
+        container.removeEventListener(
+          "dragleave",
+          this.__layoutEventHandlers.dragleave,
+        );
+      });
+      slots.forEach((slot) =>
+        slot.removeEventListener(
+          "slotchange",
+          this.__layoutEventHandlers.slotchange,
+        ),
+      );
+    }
+    disconnectedCallback() {
+      this.__removeLayoutEvents();
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
     }
     static get properties() {
       return {

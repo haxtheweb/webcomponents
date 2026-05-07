@@ -54,29 +54,31 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     this.direction = "right";
     this.activeGitFileLink = "";
     this.__disposer = [];
-    autorun((reaction) => {
-      if (
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
-        !globalThis.customElements.get("git-corner")
-      ) {
-        import("@haxtheweb/git-corner/git-corner.js");
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      if (store.activeItem) {
-        let filePath =
-          varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-          store.activeItem.location;
-        // 11ty has a very unique setting for source vs input
-        // @note let's try to do this as little as possible..
-        if (globalThis.HAXCMSContext == "11ty") {
-          filePath = filePath.replace("/src/./pages/", "/src/content/");
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (
+          varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
+          !globalThis.customElements.get("git-corner")
+        ) {
+          import("@haxtheweb/git-corner/git-corner.js");
         }
-        this.activeGitFileLink = filePath;
-      }
-      this.__disposer.push(reaction);
-    });
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store.activeItem) {
+          let filePath =
+            varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
+            store.activeItem.location;
+          // 11ty has a very unique setting for source vs input
+          // @note let's try to do this as little as possible..
+          if (globalThis.HAXCMSContext == "11ty") {
+            filePath = filePath.replace("/src/./pages/", "/src/content/");
+          }
+          this.activeGitFileLink = filePath;
+        }
+      }),
+    );
   }
   disconnectedCallback() {
     for (var i in this.__disposer) {

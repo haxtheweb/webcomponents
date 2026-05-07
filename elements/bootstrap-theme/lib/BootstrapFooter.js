@@ -144,26 +144,27 @@ class BootstrapFooter extends LitElement {
     this._activeItemIndex = -1;
     this._routerManifest = {};
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      let storeActiveItemIndex = toJS(store.activeManifestIndex);
-      let storeRouterManifest = toJS(store.routerManifest);
-      if (
-        this._activeItem !== storeActiveItemIndex ||
-        this._routerManifest !== storeRouterManifest
-      ) {
-        this._activeItem = storeActiveItemIndex;
-        this._routerManifest = storeRouterManifest;
-        if (storeRouterManifest.items[storeActiveItemIndex - 1]) {
-          this._backwardItem =
-            storeRouterManifest.items[storeActiveItemIndex - 1];
+    this.__disposer.push(
+      autorun((reaction) => {
+        let storeActiveItemIndex = toJS(store.activeManifestIndex);
+        let storeRouterManifest = toJS(store.routerManifest);
+        if (
+          this._activeItem !== storeActiveItemIndex ||
+          this._routerManifest !== storeRouterManifest
+        ) {
+          this._activeItem = storeActiveItemIndex;
+          this._routerManifest = storeRouterManifest;
+          if (storeRouterManifest.items[storeActiveItemIndex - 1]) {
+            this._backwardItem =
+              storeRouterManifest.items[storeActiveItemIndex - 1];
+          }
+          if (storeRouterManifest.items[storeActiveItemIndex + 1]) {
+            this._forwardItem =
+              storeRouterManifest.items[storeActiveItemIndex + 1];
+          }
         }
-        if (storeRouterManifest.items[storeActiveItemIndex + 1]) {
-          this._forwardItem =
-            storeRouterManifest.items[storeActiveItemIndex + 1];
-        }
-      }
-      this.__disposer.push(reaction);
-    });
+      }),
+    );
   }
 
   render() {

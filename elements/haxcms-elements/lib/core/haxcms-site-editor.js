@@ -37,6 +37,13 @@ class HAXCMSSiteEditor extends LitElement {
     this.method = "POST";
     this.editMode = false;
     globalThis.SimpleModal.requestAvailability();
+    this.__setupDisposers();
+  }
+  __setupDisposers() {
+    if (this.__disposer && this.__disposer.length > 0) {
+      return;
+    }
+    this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
         this.editMode = toJS(store.editMode);
@@ -62,6 +69,14 @@ class HAXCMSSiteEditor extends LitElement {
         HAXStore.platformConfig = toJS(store.platformConfig);
       }),
     );
+  }
+  __disposeDisposers() {
+    if (this.__disposer && this.__disposer.length > 0) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
+    }
+    this.__disposer = [];
   }
   // render function
   render() {
@@ -646,6 +661,9 @@ class HAXCMSSiteEditor extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    if (!this.__disposer || this.__disposer.length === 0) {
+      this.__setupDisposers();
+    }
     if (this.windowControllers) {
       this.windowControllers.abort();
     }
@@ -763,6 +781,24 @@ class HAXCMSSiteEditor extends LitElement {
         signal: this.windowControllers.signal,
       },
     );
+  }
+  disconnectedCallback() {
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
+    if (
+      this._contentReadyHandler &&
+      HAXStore.activeHaxBody &&
+      HAXStore.activeHaxBody.removeEventListener
+    ) {
+      HAXStore.activeHaxBody.removeEventListener(
+        "hax-body-content-ready",
+        this._contentReadyHandler,
+      );
+      this._contentReadyHandler = null;
+    }
+    this.__disposeDisposers();
+    super.disconnectedCallback();
   }
 
   /**

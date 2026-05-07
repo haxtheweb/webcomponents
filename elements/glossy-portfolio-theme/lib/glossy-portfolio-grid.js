@@ -30,46 +30,45 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
     
     // get children, related content, or prev and next pages
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      
-      if (activeItem) {
-        this.activeItem = activeItem;
-        // find parent of activeItem
-        this.activeParent = store.findItem(activeItem.parent)||"";
-        const children = store.getItemChildren(store.activeId);
-        this.title = "";
-        this.data = [];
-        let tmpData = [];
+    this.__disposer.push(
+      autorun((reaction) => {
+        const activeItem = toJS(store.activeItem);
+        if (activeItem) {
+          this.activeItem = activeItem;
+          // find parent of activeItem
+          this.activeParent = store.findItem(activeItem.parent)||"";
+          const children = store.getItemChildren(store.activeId);
+          this.title = "";
+          this.data = [];
+          let tmpData = [];
 
-        if (children && children.length > 0) { //display children if available
-          this.data = [...children];
-          this.title = (this.activeItem && this.activeItem.title) || ""; // Use explicit null check and a fallback value
-        
-        } else if(this.activeItem.metadata.relatedItems) { //display related items if available
+          if (children && children.length > 0) { //display children if available
+            this.data = [...children];
+            this.title = (this.activeItem && this.activeItem.title) || ""; // Use explicit null check and a fallback value
+          } else if(this.activeItem.metadata.relatedItems) { //display related items if available
 
-          this.title = "Related Content";
-          let relatedItem = store.findItem(activeItem.metadata.relatedItems);      
-          if (!this.data.some((item) => item.id === relatedItem.id)) { //check for duplicates
-           tmpData.push(relatedItem);
-          }
-          this.data = [...tmpData];
+            this.title = "Related Content";
+            let relatedItem = store.findItem(activeItem.metadata.relatedItems);
+            if (!this.data.some((item) => item.id === relatedItem.id)) { //check for duplicates
+             tmpData.push(relatedItem);
+            }
+            this.data = [...tmpData];
 
-        } else if(this.activeParent) { //display prev and next pages if available
-          this.title = "Related Content";
-          let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
-          let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
-          if (siblingsArray[activeIndex - 1]) { //check for previous item
-            tmpData.push(siblingsArray[activeIndex - 1]);
+          } else if(this.activeParent) { //display prev and next pages if available
+            this.title = "Related Content";
+            let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
+            let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
+            if (siblingsArray[activeIndex - 1]) { //check for previous item
+              tmpData.push(siblingsArray[activeIndex - 1]);
+            }
+            if (siblingsArray[activeIndex + 1]) { //check for next item
+              tmpData.push(siblingsArray[activeIndex + 1]);
+            }
+            this.data = [...tmpData];
           }
-          if (siblingsArray[activeIndex + 1]) { //check for next item
-            tmpData.push(siblingsArray[activeIndex + 1]);
-          }
-          this.data = [...tmpData];
         }
-          this.__disposer.push(reaction);
-      } 
-    });
+      }),
+    );
     
   }
 

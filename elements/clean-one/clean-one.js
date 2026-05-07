@@ -790,11 +790,12 @@ class CleanOne extends LTIResizingMixin(
        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
      );
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.searchTerm = "";
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        this.searchTerm = "";
+      }),
+    );
   }
 
   HAXCMSGlobalStyleSheetContent() {

@@ -108,18 +108,21 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     };
     this.hideLabel = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.routerManifest = toJS(store.routerManifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.routerManifest = toJS(store.routerManifest);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
     import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
   // render function

@@ -152,14 +152,12 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
       super.firstUpdated(changedProperties);
     }
     // keep editMode in sync globally
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this._activeItemChanged(toJS(store.activeItem));
-      this.__disposer.push(reaction);
-    });
+    }));
   }
   /**
    * Notice the change and build

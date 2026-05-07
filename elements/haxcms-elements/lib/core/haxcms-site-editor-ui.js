@@ -391,7 +391,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cursor: pointer;
           border: none;
           background-color: transparent;
-          height: 64px;
+          min-height: var(--top-bar-height, 64px);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          margin: 0;
+          line-height: 0;
+          -webkit-appearance: none;
+          appearance: none;
         }
         .characterbtn-name {
           margin-left: 8px;
@@ -430,10 +438,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: var(--simple-colors-default-theme-grey-1);
           border: var(--ddd-border-sm);
           border-color: light-dark(black, white);
-          padding: 2px 12px 12px 2px;
-          margin: 4px 0 0 0;
-          height: 32px;
-          width: 32px;
+          padding: 0;
+          margin: 0;
+          height: var(--ddd-spacing-10, 40px);
+          width: var(--ddd-spacing-10, 40px);
+          display: block;
         }
         .topbar-character:hover rpg-character,
         .topbar-character:focus rpg-character,

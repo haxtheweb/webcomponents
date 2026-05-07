@@ -26,22 +26,24 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
 
     this.__disposer = this.__disposer ? this.__disposer : [];
 
-    autorun((reaction) => {
-      let activeItem = toJS(store.activeItem);
-      if (activeItem && activeItem.metadata && activeItem.metadata.image) {
-        this.mediaSource = activeItem.metadata.image;
-      } else {
-        this.mediaSource = "";
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let activeItem = toJS(store.activeItem);
-      if (activeItem && activeItem.description) {
-        this.description = activeItem.description;
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        let activeItem = toJS(store.activeItem);
+        if (activeItem && activeItem.metadata && activeItem.metadata.image) {
+          this.mediaSource = activeItem.metadata.image;
+        } else {
+          this.mediaSource = "";
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        let activeItem = toJS(store.activeItem);
+        if (activeItem && activeItem.description) {
+          this.description = activeItem.description;
+        }
+      }),
+    );
   }
 
   static get properties() {

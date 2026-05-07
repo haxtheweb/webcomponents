@@ -96,10 +96,11 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.isHorizontal = false;
     this.maxDepth = 5;
     this.__disposer = [];
-    autorun((reaction) => {
-      this.routerManifest = Object.assign({}, toJS(store.routerManifest));
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.routerManifest = Object.assign({}, toJS(store.routerManifest));
+      }),
+    );
   }
   /**
    * LitElement life cycle - render callback
@@ -155,13 +156,14 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       }
     });
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
-    autorun((reaction) => {
-      this.activeId = toJS(store.activeId);
-      this.__disposer.push(reaction);
-      setTimeout(() => {
-        this.shadowRoot.querySelector("map-menu").selected = this.activeId;
-      }, 100);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+        setTimeout(() => {
+          this.shadowRoot.querySelector("map-menu").selected = this.activeId;
+        }, 100);
+      }),
+    );
   }
   /**
    * LitElement life cycle - properties definition

@@ -42,20 +42,23 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     this.prevPage = '';
     this.__disposer = this.__disposer || [];
     // Set up reactivity to HAXcms store
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+      }),
+    );
     
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
     
-    autorun((reaction) => {
-      this._items = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this._items = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
+      }),
+    );
   }
 
   // Lit reactive properties

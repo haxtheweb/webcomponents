@@ -28,24 +28,23 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer = this.__disposer || [];
    
     // gets licensing stuff
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      let LList = new licenseList();
-      if (this.manifest.license && LList[this.manifest.license]) {
-        this.licenseName = LList[this.manifest.license].name;
-        this.licenseLink = LList[this.manifest.license].link;
-        this.licenseImage = LList[this.manifest.license].image;
-        
-      }
-
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
-      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
-      this.__disposer.push(reaction);
-
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+        let LList = new licenseList();
+        if (this.manifest.license && LList[this.manifest.license]) {
+          this.licenseName = LList[this.manifest.license].name;
+          this.licenseLink = LList[this.manifest.license].link;
+          this.licenseImage = LList[this.manifest.license].image;
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
+        this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+      }),
+    );
 
     
 

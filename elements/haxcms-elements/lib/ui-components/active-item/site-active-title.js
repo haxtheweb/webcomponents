@@ -232,20 +232,18 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       context: this,
       basePath: import.meta.url,
     });
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
       if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
         this.icon = activeItem.metadata.icon;
       } else {
         this.icon = null;
       }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,
@@ -253,9 +251,8 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         this.parentTitle,
         this.ancestorTitle,
       );
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.ancestorTitle = toJS(store.ancestorTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,
@@ -263,9 +260,8 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         this.parentTitle,
         this.ancestorTitle,
       );
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.parentTitle = toJS(store.parentTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,
@@ -273,8 +269,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         this.parentTitle,
         this.ancestorTitle,
       );
-      this.__disposer.push(reaction);
-    });
+    }));
   }
   /**
    * HTMLElement

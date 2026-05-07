@@ -100,10 +100,11 @@ export class PageBreak extends IntersectionObserverMixin(
     this._editingUILoaded = false;
     this.__disposer = [];
     // Set up HAXcms store observer for login status
-    autorun((reaction) => {
-      this.isLoggedIn = toJS(store.isLoggedIn);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.isLoggedIn = toJS(store.isLoggedIn);
+      }),
+    );
   }
 
   static get properties() {
@@ -244,7 +245,15 @@ export class PageBreak extends IntersectionObserverMixin(
     this.remoteHeadingobserver.disconnect();
     // Clean up store observers
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      if (typeof this.__disposer[i] === 'function') {
+        this.__disposer[i]();
+      }
+      else if (
+        this.__disposer[i] &&
+        typeof this.__disposer[i].dispose === 'function'
+      ) {
+        this.__disposer[i].dispose();
+      }
     }
     super.disconnectedCallback();
   }
