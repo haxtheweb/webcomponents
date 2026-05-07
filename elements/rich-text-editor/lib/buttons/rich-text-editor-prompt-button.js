@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 /**
@@ -245,6 +246,29 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       let command = this.promptCommand,
         commandVal = this.promptCommandVal;
       this.setInnerHTML(this.getPropValue("innerHTML"));
+      // WebKit: execCommand fails in shadow DOM because the native
+      // selection can't be restored. Use direct DOM manipulation
+      // inside the highlight for link creation/removal.
+      if (isWebKit() && !this.__highlight.hidden) {
+        if (command === "createLink" && commandVal) {
+          var a = globalThis.document.createElement("a");
+          a.href = commandVal;
+          while (this.__highlight.firstChild) {
+            a.appendChild(this.__highlight.firstChild);
+          }
+          this.__highlight.appendChild(a);
+          return;
+        } else if (command === "unlink") {
+          var link = this.__highlight.querySelector("a");
+          if (link) {
+            while (link.firstChild) {
+              link.parentNode.insertBefore(link.firstChild, link);
+            }
+            link.remove();
+          }
+          return;
+        }
+      }
       if (this.targetedNode === this.__highlight) {
         this.selectNodeContents(this.targetedNode);
       } else {
