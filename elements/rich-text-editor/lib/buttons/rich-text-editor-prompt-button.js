@@ -259,6 +259,11 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
+      // WebKit shadow DOM: restore the composed range saved on mouseup
+      // since this.range may be collapsed from the document-level selection
+      if (this.__toolbar && this.__toolbar.__webkitSavedRange) {
+        this.range = this.__toolbar.__webkitSavedRange;
+      }
       this.open();
     }
 

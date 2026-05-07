@@ -642,10 +642,15 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
               sel.addRange(webkitRange);
             } catch (err) {}
             // addRange may silently fail in shadow DOM; try setBaseAndExtent
-            if (sel.rangeCount === 0 && !webkitRange.collapsed) {
+            if (sel.rangeCount === 0) {
               try {
                 sel.setBaseAndExtent(webkitRange.startContainer, webkitRange.startOffset, webkitRange.endContainer, webkitRange.endOffset);
-              } catch (err) {}
+              } catch (err) {
+                // last resort: collapse to caret position
+                try {
+                  sel.collapse(webkitRange.startContainer, webkitRange.startOffset);
+                } catch (err2) {}
+              }
             }
           }
         } else {

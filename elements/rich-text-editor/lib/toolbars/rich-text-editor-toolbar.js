@@ -945,10 +945,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       //stops mousedown from bubbling up and triggering HAX focus logic
       this.addEventListener("mousedown", (e) => {
         e.stopImmediatePropagation();
-        // WebKit (Safari + all iOS browsers) clears the contenteditable
-        // selection on mousedown, destroying the range before the click
-        // handler can run execCommand. preventDefault() keeps focus in
-        // the editor so the selection survives to the click event.
+        // WebKit: prevent default to keep focus in contenteditable
+        // so shadow DOM selection survives to the click event.
+        // Non-WebKit: only preventDefault for picker interactions
+        // (detected by the event target being inside the toolbar)
         if (isWebKit()) {
           e.preventDefault();
         }
@@ -1399,22 +1399,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.observeChanges(true);
 
         this.getRoot(target).onselectionchange = (e) => {
-          if (!this.__promptOpen) this.updateRange(target, this.getRange());
-          // WebKit: selectionchange fires AGAIN when WebKit collapses the
-          // selection on toolbar-button mousedown, overwriting this.range
-          // before pointerdown can capture it. Track the last non-collapsed
-          // range so it survives that collapse.
-          if (isWebKit()) {
-            var sel = globalThis.getSelection();
-            var rc = sel ? sel.rangeCount : 0;
-            var collapsed = rc > 0 ? sel.getRangeAt(0).collapsed : 'n/a';
-            console.log('[WK:selchange enableEditing] rangeCount:', rc, 'collapsed:', collapsed);
-            if (sel && rc > 0) {
-              var r = sel.getRangeAt(0);
-              if (r && !r.collapsed) {
-                this.__webkitSavedRange = r.cloneRange();
-                console.log('[WK:selchange enableEditing] SAVED range, text:', r.toString().substring(0, 40));
-              }
+          if (!this.__promptOpen) {
+            var currentRange = this.getRange();
+            this.updateRange(target, currentRange);
+            // WebKit: always keep __webkitSavedRange in sync with the
+            // current composed range so it never goes stale
+            if (isWebKit() && currentRange) {
+              this.__webkitSavedRange = currentRange.cloneRange();
             }
           }
         };
@@ -1427,9 +1418,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           if (!this.__webkitTargetSelHandler) {
             var toolbarRef = this;
             this.__webkitTargetSelHandler = () => {
+              // Always update the saved range (including collapsed/caret)
+              // so it reflects the CURRENT position, not a stale one
               var sel = globalThis.getSelection();
-              console.log('[WK:mouseup] sel.type:', sel && sel.type, 'target:', toolbarRef.target && toolbarRef.target.tagName);
-              // Try getComposedRanges directly (bypass getRange)
               if (sel && sel.getComposedRanges) {
                 try {
                   var allRoots = [];
@@ -1441,33 +1432,39 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                     else nd = nd.parentNode;
                   }
                   var cr = sel.getComposedRanges.apply(sel, allRoots);
-                  var collapsed = cr.length > 0 ? cr[0].collapsed : 'empty';
-                  console.log('[WK:mouseup] composedRanges:', cr.length, 'collapsed:', collapsed);
-                  if (cr.length > 0 && !cr[0].collapsed) {
+                  if (cr && cr.length > 0) {
                     var range = globalThis.document.createRange();
                     range.setStart(cr[0].startContainer, cr[0].startOffset);
                     range.setEnd(cr[0].endContainer, cr[0].endOffset);
+                    // Always update both saved range and current range
                     toolbarRef.__webkitSavedRange = range;
                     toolbarRef.range = range;
-                    console.log('[WK:mouseup] SAVED! text:', range.toString().substring(0, 30));
                     return;
                   }
-                } catch (e) {
-                  console.log('[WK:mouseup] composedRanges error:', e.message);
-                }
+                } catch (e) {}
               }
-              // Fallback to getRange
+              // Fallback
               try {
                 var r = toolbarRef.getRange();
-                if (r && !r.collapsed) {
+                if (r) {
                   toolbarRef.__webkitSavedRange = r.cloneRange();
-                  console.log('[WK:mouseup] SAVED from getRange, text:', r.toString().substring(0, 30));
                 }
               } catch (e) {}
             };
           }
           target.addEventListener("mouseup", this.__webkitTargetSelHandler);
           target.addEventListener("keyup", this.__webkitTargetSelHandler);
+          // Double-click word selection is applied asynchronously;
+          // defer with setTimeout to let the browser finalize it
+          if (!this.__webkitDblClickHandler) {
+            var tbRef = toolbarRef;
+            this.__webkitDblClickHandler = () => {
+              setTimeout(() => {
+                if (tbRef.__webkitTargetSelHandler) tbRef.__webkitTargetSelHandler();
+              }, 10);
+            };
+          }
+          target.addEventListener("dblclick", this.__webkitDblClickHandler);
         }
 
         this.dispatchEvent(
@@ -1494,6 +1491,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (isWebKit() && this.__webkitTargetSelHandler) {
           target.removeEventListener("mouseup", this.__webkitTargetSelHandler);
           target.removeEventListener("keyup", this.__webkitTargetSelHandler);
+          if (this.__webkitDblClickHandler) {
+            target.removeEventListener("dblclick", this.__webkitDblClickHandler);
+          }
         }
         this.observeChanges(false);
         if (this.__source) this.__source.toggle(false);
@@ -1603,14 +1603,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             target.addEventListener(handler, handlers[handler]),
           );
           this.getRoot(target).onselectionchange = (e) => {
-            if (!this.__promptOpen) this.updateRange(target, this.getRange());
-            if (isWebKit()) {
-              var sel = globalThis.getSelection();
-              if (sel && sel.rangeCount > 0) {
-                var r = sel.getRangeAt(0);
-                if (r && !r.collapsed) {
-                  this.__webkitSavedRange = r.cloneRange();
-                }
+            if (!this.__promptOpen) {
+              var currentRange = this.getRange();
+              this.updateRange(target, currentRange);
+              if (isWebKit() && currentRange) {
+                this.__webkitSavedRange = currentRange.cloneRange();
               }
             }
           };
@@ -1748,12 +1745,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       });
     }
     _handleTargetSelection(e) {
-      if (!this.__promptOpen) this.range = this.getRange();
-      // WebKit: save non-collapsed range from the polyfill handler
-      // (fires on document) as backup for toolbar button restoration,
-      // since the native onselectionchange may miss shadow DOM targets
-      if (isWebKit() && this.range && !this.range.collapsed) {
-        this.__webkitSavedRange = this.range.cloneRange();
+      if (!this.__promptOpen) {
+        this.range = this.getRange();
+        // WebKit: always keep saved range in sync (collapsed or not)
+        if (isWebKit() && this.range) {
+          this.__webkitSavedRange = this.range.cloneRange();
+        }
       }
     }
     _handlePaste(e) {

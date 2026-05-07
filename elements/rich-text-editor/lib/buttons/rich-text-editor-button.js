@@ -392,7 +392,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           if (sel.rangeCount === 0) {
             try {
               sel.setBaseAndExtent(saved.startContainer, saved.startOffset, saved.endContainer, saved.endOffset);
-            } catch (err) {}
+            } catch (err) {
+              // last resort: collapse to caret position
+              try {
+                sel.collapse(saved.startContainer, saved.startOffset);
+              } catch (err2) {}
+            }
           }
           // Keep saved range for _handleCommand; don't null it yet
         }
