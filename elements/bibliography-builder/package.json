@@ -1,7 +1,7 @@
 {
-    "name": "citation-builder",
+    "name": "bibliography-builder",
     "version": "0.0.0",
-    "description": "Webcomponent citation-builder following hax / open-wc recommendations",
+    "description": "Webcomponent bibliography-builder following hax / open-wc recommendations",
     "license": "Apache-2.0",
     "author": {
       "name": "winstonwumbo"
@@ -13,11 +13,11 @@
     ],
     "repository": {
       "type": "git",
-      "url": "https://github.com/winstonwumbo/citation-builder"
+      "url": "https://github.com/winstonwumbo/bibliography-builder"
     },
     "type": "module",
-    "main": "citation-builder.js",
-    "module": "citation-builder.js",
+    "main": "bibliography-builder.js",
+    "module": "bibliography-builder.js",
     "scripts": {
       "start": "web-dev-server",
       "build": "rimraf public && rollup -c rollup.config.js && npm run analyze",

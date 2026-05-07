@@ -10,15 +10,15 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
- * `citation-builder`
+ * `bibliography-item`
  * 
  * @demo index.html
- * @element citation-builder
+ * @element bibliography-item
  */
-export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
+export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "citation-item";
+    return "bibliography-item";
   }
 
   constructor() {
@@ -330,7 +330,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     ];
   }
 
-  _addCitationAbove(){
+  _addItemAbove(){
     this.dispatchEvent(new CustomEvent('add-citation', {
       detail: { direction: 'above', node: this },
       bubbles: true,
@@ -338,7 +338,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     }));
   }
 
-  _addCitationBelow(){
+  _addItemBelow(){
     this.dispatchEvent(new CustomEvent('add-citation', {
       detail: { direction: 'below', node: this },
       bubbles: true,
@@ -451,7 +451,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         break;
     }
 
-    props.settings.configure = [...CitationItem.haxProperties.settings.configure, ...configObj];
+    props.settings.configure = [...BibliographyItem.haxProperties.settings.configure, ...configObj];
   }
 
   /**
@@ -471,7 +471,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         "designTreatment": false
       },
       "gizmo": {
-        "title": "citation-item",
+        "title": "bibliography-item",
         "description": "",
         "icon": "icons:android",
         "color": "purple",
@@ -542,7 +542,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
       },
       "demoSchema": [
         {
-          "tag": "citation-item",
+          "tag": "bibliography-item",
           "properties": {
             "title": "Sample property title"
           },
@@ -554,4 +554,4 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
 
 }
 
-globalThis.customElements.define(CitationItem.tag, CitationItem);
+globalThis.customElements.define(BibliographyItem.tag, BibliographyItem);

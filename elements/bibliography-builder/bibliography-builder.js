@@ -9,18 +9,18 @@ import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/citation-builder/lib/citation-item.js"
+import "./lib/bibliography-item.js"
 
 /**
- * `citation-builder`
+ * `bibliography-builder`
  * 
  * @demo index.html
- * @element citation-builder
+ * @element bibliography-builder
  */
-export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
+export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "citation-builder";
+    return "bibliography-builder";
   }
 
   constructor() {
@@ -34,13 +34,13 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/citation-builder.ar.json", import.meta.url).href +
+        new URL("./locales/bibliography-builder.ar.json", import.meta.url).href +
         "/../",
     });
     this.exportMode = "";
     this.citationArr = [ "Select a citation format below" ];
 
-    this.addEventListener("add-citation", this._addCitationHandler.bind(this));
+    this.addEventListener("add-citation", this._addItemHandler.bind(this));
   }
 
   // Lit reactive properties
@@ -72,7 +72,7 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         margin-top: 16px;
       }
       h3 span {
-        font-size: var(--citation-builder-label-font-size, var(--ddd-font-size-s));
+        font-size: var(--ddd-font-size-s);
       }
       .title-card {
         display: flex;
@@ -96,7 +96,7 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
       </div>      
 
       <slot>
-        <citation-item title="Make your own citation with the HAX Editor" publication-date="${new Date()}"></citation-item>
+        <bibliography-item title="Make your own citation with the HAX Editor" publication-date="${new Date()}"></bibliography-item>
       </slot>
     </div>`;
   }
@@ -234,12 +234,12 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     navigator.clipboard.write(data)
   }
 
-  _addCitationHandler(e){
-    const item = globalThis.document.createElement("citation-item");
+  _addItemHandler(e){
+    const item = globalThis.document.createElement("bibliography-item");
 
     const attrs = { 
       "data-hax-layout": true, 
-      "data-hax-ray": "citation-item"
+      "data-hax-ray": "bibliography-item"
     };
 
     for (const name in attrs) {
@@ -268,8 +268,8 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     ceMenu.ceButtons = [
       {
         icon: "icons:add",
-        callback: "_addCitationHandler",
-        label: "Add citation",
+        callback: "_addItemHandler",
+        label: "Add citation to bibliography",
       },
     ];
   }
@@ -283,4 +283,4 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-globalThis.customElements.define(CitationBuilder.tag, CitationBuilder);
+globalThis.customElements.define(BibliographyBuilder.tag, BibliographyBuilder);

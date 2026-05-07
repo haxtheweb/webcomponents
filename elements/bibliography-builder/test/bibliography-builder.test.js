@@ -1,13 +1,13 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import "../citation-builder.js";
+import "../bibliography-builder.js";
 
-describe("CitationBuilder test", () => {
+describe("BibliographyBuilder test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <citation-builder
+      <bibliography-builder
         title="title"
-      ></citation-builder>
+      ></bibliography-builder>
     `);
   });
 
