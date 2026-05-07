@@ -83,10 +83,6 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         align-self: center;
         background-color: white;
       }
-
-      .citation-list {
-        border: black solid 1px;
-      }
     `];
   }
 

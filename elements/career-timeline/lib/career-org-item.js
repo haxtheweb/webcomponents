@@ -80,9 +80,8 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
 
         .border-line {
           position: relative;
-          border-bottom: 2px solid var(--ddd-theme-default-limestoneLight);
+          border-bottom: var(--ddd-border-sm);
           width: 80%;
-          /* margin-left: 24px; */
           margin-left: auto;
           margin-right: auto;
         }

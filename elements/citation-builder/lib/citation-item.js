@@ -65,10 +65,16 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
+      :host([data-hax-active]) .wrapper{
+        outline: var(
+          --hax-body-active-outline,
+          1px solid var(--hax-ui-color-focus, #000)
+        );
+      }
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
-        border: grey 1px solid;
+        border: var(--ddd-border-xs);
         display: flex;
         justify-content: space-between;
       }

@@ -40,11 +40,11 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       css`
         :host {
           display: flex;
-          border-left: 2px solid var(--ddd-theme-default-limestoneLight);
+          border-left: var(--ddd-border-sm);
           padding-left: 45px;
-          margin-left: 24px;
+          margin-left: var(--ddd-spacing-6, 24px);
           position: relative;
-          scroll-margin-top: 112px;
+          scroll-margin-top: var(--ddd-spacing-28, 112px);
         }
 
         :host([data-hax-active]) .role-content {
@@ -52,7 +52,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
             --hax-body-active-outline,
             1px solid var(--hax-ui-color-focus, #000)
           );
-          outline-offset: 8px;
+          outline-offset: var(--ddd-spacing-2, 8px);
         }
 
         .circle {
@@ -70,7 +70,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
         }
 
         .role-content div {
-          min-height: 36px;
+          min-height: var(--ddd-spacing-9, 36px);
           padding: 0;
           margin: 0;
         }
@@ -96,8 +96,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
             display: block;
           }
           .circle {
-            position: relative;
-            margin-left: unset;
+            visibility: hidden;
           }
         }
       `,
