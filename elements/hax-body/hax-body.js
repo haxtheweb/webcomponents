@@ -2883,9 +2883,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
           // If we're outdenting into a paragraph, the LI tag shouldn't be preserved
           if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul"){
-            const strippedLI = globalThis.document.createElement("fake-hax-list-break");
-            strippedLI.innerHTML = currentNode.innerHTML.trim() + "<br/>"
-            currentNode.replaceWith(strippedLI)
+            const strippedLI = globalThis.document.createElement("p");
+            strippedLI.innerHTML = currentNode.innerHTML.trim();
+            this.__removeDirectBreakChildren(strippedLI);
+            if (this.__isEffectivelyEmptyTextBlock(strippedLI)) {
+              strippedLI.textContent = "";
+            }
+            currentNode.replaceWith(strippedLI);
+            return strippedLI;
           };
 
           return grandparentNode;
@@ -3919,6 +3924,29 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 if (this.__isTransientEditorStyleSpan(node)) {
                   this.__unwrapTransientEditorStyleSpan(node);
                   continue;
+                }
+                if (node.tagName === "FAKE-HAX-LIST-BREAK") {
+                  const normalizedParagraph = globalThis.document.createElement("p");
+                  normalizedParagraph.innerHTML = node.innerHTML.trim();
+                  this.__removeDirectBreakChildren(normalizedParagraph);
+                  if (this.__isEffectivelyEmptyTextBlock(normalizedParagraph)) {
+                    normalizedParagraph.textContent = "";
+                  }
+                  node.replaceWith(normalizedParagraph);
+                  node = normalizedParagraph;
+                }
+                if (
+                  node.tagName === "P" &&
+                  node.children &&
+                  node.children.length === 1 &&
+                  node.children[0].tagName === "FAKE-HAX-LIST-BREAK"
+                ) {
+                  const normalizedListBreak = node.children[0];
+                  node.innerHTML = normalizedListBreak.innerHTML.trim();
+                  this.__removeDirectBreakChildren(node);
+                  if (this.__isEffectivelyEmptyTextBlock(node)) {
+                    node.textContent = "";
+                  }
                 }
                 this.__scrubTransientEditorStyleSpans(node);
                 if (this._validElementTest(node)) {

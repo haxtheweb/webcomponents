@@ -32,17 +32,17 @@ export function isWebKit() {
     _isWebKit = false;
     return _isWebKit;
   }
-  // Feature detect first — this is reliable and survives UA spoofing.
-  // webkitLineBreak is a non-standard CSS property exclusive to WebKit.
+  // Feature detect + UA check: webkitLineBreak exists in BOTH WebKit AND
+  // Blink (Chrome inherited it), so we must also exclude Blink browsers.
   var docStyle = globalThis.document.documentElement
     ? globalThis.document.documentElement.style
     : null;
+  var ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
   if (docStyle && "webkitLineBreak" in docStyle) {
-    _isWebKit = true;
+    _isWebKit = !/Chrome\/|Chromium\/|Edg\/|OPR\/|Brave\//i.test(ua);
     return _isWebKit;
   }
   // Fallback: UA sniff — iPad with "desktop" mode can masquerade as Mac.
-  var ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
   _isWebKit =
     /AppleWebKit/i.test(ua) &&
     !/Chrome\/|Chromium\/|Edg\/|OPR\/|Brave\//i.test(ua);
