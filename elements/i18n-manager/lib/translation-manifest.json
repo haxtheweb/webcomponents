@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 222,
-    "elementsWithTranslations": 35,
-    "translationFilesFound": 751,
+    "elementsScanned": 223,
+    "elementsWithTranslations": 36,
+    "translationFilesFound": 769,
     "languagesSupported": [
       "af",
       "am",
@@ -324,10 +324,10 @@
     "author-card.zh": [
       "haxProperties"
     ],
-    "citation-builder.ar": [
+    "bibliography-builder.ar": [
       "haxProperties"
     ],
-    "citation-builder": [
+    "bibliography-builder": [
       "ar",
       "bn",
       "es",
@@ -338,28 +338,66 @@
       "ru",
       "zh"
     ],
-    "citation-builder.bn": [
+    "bibliography-builder.bn": [
       "haxProperties"
     ],
-    "citation-builder.es": [
+    "bibliography-builder.es": [
       "haxProperties"
     ],
-    "citation-builder.fr": [
+    "bibliography-builder.fr": [
       "haxProperties"
     ],
-    "citation-builder.hi": [
+    "bibliography-builder.hi": [
       "haxProperties"
     ],
-    "citation-builder.ja": [
+    "bibliography-builder.ja": [
       "haxProperties"
     ],
-    "citation-builder.pt": [
+    "bibliography-builder.pt": [
       "haxProperties"
     ],
-    "citation-builder.ru": [
+    "bibliography-builder.ru": [
       "haxProperties"
     ],
-    "citation-builder.zh": [
+    "bibliography-builder.zh": [
+      "haxProperties"
+    ],
+    "career-timeline.ar": [
+      "haxProperties"
+    ],
+    "career-timeline": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "career-timeline.bn": [
+      "haxProperties"
+    ],
+    "career-timeline.es": [
+      "haxProperties"
+    ],
+    "career-timeline.fr": [
+      "haxProperties"
+    ],
+    "career-timeline.hi": [
+      "haxProperties"
+    ],
+    "career-timeline.ja": [
+      "haxProperties"
+    ],
+    "career-timeline.pt": [
+      "haxProperties"
+    ],
+    "career-timeline.ru": [
+      "haxProperties"
+    ],
+    "career-timeline.zh": [
       "haxProperties"
     ],
     "clean-one": [
