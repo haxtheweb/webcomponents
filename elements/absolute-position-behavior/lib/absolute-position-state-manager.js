@@ -18,7 +18,8 @@ globalThis.AbsolutePositionStateManager.requestAvailability = () => {
     globalThis.AbsolutePositionStateManager.instance =
       globalThis.document.createElement("absolute-position-state-manager");
     let instance = globalThis.AbsolutePositionStateManager.instance;
-    globalThis.document.body.appendChild(instance);
+    let root = globalThis.document.body || globalThis.document.documentElement;
+    if (root) root.appendChild(instance);
   }
   return globalThis.AbsolutePositionStateManager.instance;
 };
@@ -305,7 +306,21 @@ class AbsolutePositionStateManager extends LitElement {
     //target width before getting other dimensions
     if (el.justify) el.style.width = `${t.width}px`;
     //get body, parent, and element dimensions
-    let w = globalThis.document.body.getBoundingClientRect(),
+    let doc = globalThis.document,
+      boundsNode = doc ? doc.body || doc.documentElement : null,
+      viewportHeight = globalThis.innerHeight || 0,
+      viewportWidth = globalThis.innerWidth || 0,
+      w =
+        boundsNode && boundsNode.getBoundingClientRect
+          ? boundsNode.getBoundingClientRect()
+          : {
+              top: 0,
+              left: 0,
+              right: viewportWidth,
+              bottom: viewportHeight,
+              width: viewportWidth,
+              height: viewportHeight,
+            },
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
       //optional offset property

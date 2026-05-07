@@ -4265,28 +4265,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
           });
         }
-        // when active-node transitions are being ignored, still ensure
-        // newly added nodes receive editable + data-hax-* state so
-        // inline items are immediately selectable once inserted.
-        else if (
-          this.__ignoreActive &&
-          this.ready &&
-          this.editMode &&
-          !this._contentState.isContentBusy()
-        ) {
-          mutations.forEach((mutation) => {
-            if (mutation.addedNodes.length > 0) {
-              mutation.addedNodes.forEach((node) => {
-                if (this._validElementTest(node, true)) {
-                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
-                  if (HAXStore.isGridPlateElement(node)) {
-                    this.__rehydrateLayoutDescendants(node, this.editMode);
-                  }
-                }
-              });
-            }
-          });
-        }
         // our undo/redo history is being applied. Make sure events
         // are bound but that we don't actively track other changes
         // or it'll poisen our undo stack
