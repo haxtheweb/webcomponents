@@ -3,7 +3,6 @@
   "canScale": true,
   "canEditSource": true,
   "type": "grid",
-  "contentEditable": false,
   "designSystem": {
     "accent": true,
     "primary": true,
@@ -12,8 +11,8 @@
     "designTreatment": false
   },
   "gizmo": {
-    "title": "citation-builder",
-    "description": "",
+    "title": "career-timeline",
+    "description": "A career timeline containing organizations, roles, and other data",
     "icon": "icons:android",
     "color": "purple",
     "tags": [
@@ -25,14 +24,7 @@
     }
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "title": "Citations",
-        "description": "Citation items in this bibliography",
-        "inputMethod": "code-editor"
-      }
-    ]
+    "configure": []
   },
   "saveOptions": {
     "wipeSlot": false,
@@ -40,8 +32,9 @@
   },
   "demoSchema": [
     {
-      "tag": "citation-builder",
+      "tag": "career-timeline",
       "properties": {
+        "title": "Sample property title"
       },
       "content": ""
     }

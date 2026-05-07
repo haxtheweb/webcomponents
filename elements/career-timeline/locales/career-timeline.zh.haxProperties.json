@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "标题"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "定制值"
+            }
+        }
+    ]
+}
