@@ -307,23 +307,20 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     };
   }
 
+  // Temporary icons to imply insert above vs below
+  // TODO: Design SVG representing "<up-arrow> +" and "<down-arrow> +"
   haxinlineContextMenu(ceMenu) {
     ceMenu.ceButtons = [
       {
-        icon: "hax:keyboard-arrow-up",
+        icon: "communication:call-made",
         callback: "_addCitationAbove",
         label: "Add citation above",
       },
       {
-        icon: "hax:keyboard-arrow-down",
+        icon: "communication:call-received",
         callback: "_addCitationBelow",
         label: "Add citation below",
-      },
-      {
-        icon: "icons:remove",
-        callback: "_removeCitation",
-        label: "Remove current citation",
-      },
+      }
     ];
   }
 
@@ -341,20 +338,6 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
       bubbles: true,
       composed: true
     }));
-  }
-
-  _removeCitation(){
-    this.dispatchEvent(new CustomEvent('remove-citation', {
-      detail: { node: this },
-      bubbles: true,
-      composed: true
-    }));
-  }
-
-  haxactiveElementChanged(el, val) {
-    this.editMode = val;
-    console.log("el", el)
-    console.log("val", val)
   }
 
   haxsetupActiveElementForm(props) {
