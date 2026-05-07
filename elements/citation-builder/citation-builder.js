@@ -41,7 +41,6 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     this.citationArr = [ "Select a citation format below" ];
 
     this.addEventListener("add-citation", this._addCitationHandler.bind(this));
-    this.addEventListener("remove-citation", this._removeCitationHandler.bind(this))
   }
 
   // Lit reactive properties
@@ -264,13 +263,8 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
-  _removeCitationHandler(e){
-    e.detail.node.remove()
-  }
-
   haxHooks() {
     return {
-      activeElementChanged: "haxactiveElementChanged",
       inlineContextMenu: "haxinlineContextMenu",
     };
   }
@@ -283,25 +277,6 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         label: "Add citation",
       },
     ];
-  }
-
-  haxactiveElementChanged(el, val) {
-    this.editMode = val;
-    console.log("el", el)
-    console.log("val", val)
-
-    const slot = this.shadowRoot.querySelector('slot').assignedElements()
-    const attrs = { 
-      "data-hax-layout": true, 
-      "data-hax-ray": "citation-item"
-    };
-
-    for (const child of slot){
-      for (const name in attrs) {
-        console.log(child.textContent)
-        child.setAttribute(name, attrs[name]);
-      }
-    }
   }
 
   /**
