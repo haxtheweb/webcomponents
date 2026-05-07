@@ -12,7 +12,7 @@
     "designTreatment": false
   },
   "gizmo": {
-    "title": "citation-builder",
+    "title": "bibliography-builder",
     "description": "",
     "icon": "icons:android",
     "color": "purple",
@@ -40,7 +40,7 @@
   },
   "demoSchema": [
     {
-      "tag": "citation-builder",
+      "tag": "bibliography-builder",
       "properties": {
       },
       "content": ""
