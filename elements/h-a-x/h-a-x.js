@@ -357,7 +357,15 @@ class HAX extends HTMLElement {
     return true;
   }
   disconnectedCallback() {
-    this.windowControllers.abort();
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
+    if (this.windowControllersLoaded) {
+      this.windowControllersLoaded.abort();
+    }
+    if (this.windowControllersReady) {
+      this.windowControllersReady.abort();
+    }
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

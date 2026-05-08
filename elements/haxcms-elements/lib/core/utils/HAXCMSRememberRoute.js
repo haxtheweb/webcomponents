@@ -9,19 +9,22 @@ const HAXCMSRememberRoute = function (SuperClass) {
       super();
       const resumeMessage = "Resume where you left off last session?";
       this.__evaluateRoute = false;
+      this.__disposer = this.__disposer ? this.__disposer : [];
       this.t.resumeMessage = resumeMessage;
       this.t.resume = "Resume";
-      autorun((reaction) => {
-        if (store && store.location && store.location.pathname) {
-          const activePathName = toJS(store.location.pathname);
-          if (activePathName && this.__evaluateRoute) {
-            localStorageSet(
-              `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
-              activePathName,
-            );
+      this.__disposer.push(
+        autorun((reaction) => {
+          if (store && store.location && store.location.pathname) {
+            const activePathName = toJS(store.location.pathname);
+            if (activePathName && this.__evaluateRoute) {
+              localStorageSet(
+                `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+                activePathName,
+              );
+            }
           }
-        }
-      });
+        }),
+      );
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
@@ -65,6 +68,20 @@ const HAXCMSRememberRoute = function (SuperClass) {
         }
         this.__evaluateRoute = true;
       }, 500);
+    }
+    disconnectedCallback() {
+      for (var i in this.__disposer) {
+        const disposer = this.__disposer[i];
+        if (typeof disposer === "function") {
+          disposer();
+        } else if (disposer && typeof disposer.dispose === "function") {
+          disposer.dispose();
+        }
+      }
+      this.__disposer = [];
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
     }
     /**
      * Respond to confirmation of wanting to resume the previous route
