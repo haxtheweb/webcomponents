@@ -1,5 +1,5 @@
 import { css } from "lit";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 

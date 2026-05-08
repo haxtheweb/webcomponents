@@ -2,7 +2,7 @@
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
-import { varGet } from "@haxtheweb/utils/utils.js";
+import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-site-bar.js";
 import "./app-hax-site-details.js";

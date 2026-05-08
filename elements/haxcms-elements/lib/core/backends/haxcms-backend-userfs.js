@@ -9,7 +9,7 @@ import {
   HAXcmsStore,
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 

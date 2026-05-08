@@ -10,7 +10,7 @@ import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
-import { copyToClipboard } from "@haxtheweb/utils/utils.js";
+import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";
 
 /**

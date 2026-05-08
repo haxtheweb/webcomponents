@@ -4,7 +4,7 @@
  */
 import { LitElement } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { objectValFromStringPos } from "@haxtheweb/utils/utils.js";
+import { objectValFromStringPos } from "@haxtheweb/utils/lib/object-path.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-query`

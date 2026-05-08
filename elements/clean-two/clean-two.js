@@ -19,7 +19,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";

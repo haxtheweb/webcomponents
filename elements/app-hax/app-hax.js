@@ -887,9 +887,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           border: var(--ddd-border-sm);
           border-color: var(--ddd-theme-default-limestoneGray);
           padding: 0;
-          margin: 0;
-          height: var(--ddd-spacing-10, 40px);
-          width: var(--ddd-spacing-10, 40px);
+          margin: 0 8px 0 4px;
+          height: var(--ddd-spacing-11, 44px);
+          width: var(--ddd-spacing-11, 44px);
           display: block;
         }
 

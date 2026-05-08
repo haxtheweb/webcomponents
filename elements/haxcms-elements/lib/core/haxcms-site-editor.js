@@ -14,7 +14,7 @@ import "./haxcms-site-dashboard.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
 /**
  * `haxcms-site-editor`

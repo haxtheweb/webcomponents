@@ -8,7 +8,7 @@ import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXC
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varExists, varGet } from "@haxtheweb/utils/utils.js";
+import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/disqus-embed/lib/haxcms-site-disqus.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";

@@ -3,7 +3,7 @@ import {
   HAXElement,
   HAXWiring,
 } from "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js";
-import { varGet } from "@haxtheweb/utils/utils.js";
+import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**

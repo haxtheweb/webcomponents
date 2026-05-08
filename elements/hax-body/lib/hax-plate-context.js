@@ -5,10 +5,10 @@ import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
 import "./hax-toolbar.js";
 import "./hax-context-item.js";
-import { wipeSlot } from "@haxtheweb/utils/utils";
+import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**

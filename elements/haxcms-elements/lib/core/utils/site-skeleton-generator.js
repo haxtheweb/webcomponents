@@ -5,7 +5,7 @@
 
 import { store } from "../haxcms-site-store.js";
 import { toJS } from "mobx";
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 
 export class SiteSkeletonGenerator {
   /**
