@@ -71,6 +71,7 @@ class SiteDotIndicator extends LitElement {
     super();
     this.__disposer = [];
     this.scrollOnActive = false;
+    this.__scrollOnActiveClickHandler = null;
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -162,29 +163,33 @@ class SiteDotIndicator extends LitElement {
       }),
     );
     if (this.scrollOnActive) {
-      this.shadowRoot.querySelector("#list").addEventListener("click", () => {
-        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest",
-        });
-      });
-    }
-  }
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    if (this.scrollOnActive) {
-      this.shadowRoot
-        .querySelector("#list")
-        .removeEventListener("click", () => {
+      if (!this.__scrollOnActiveClickHandler) {
+        this.__scrollOnActiveClickHandler = () => {
           this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
             behavior: "smooth",
             block: "end",
             inline: "nearest",
           });
-        });
+        };
+      }
+      this.shadowRoot
+        .querySelector("#list")
+        .addEventListener("click", this.__scrollOnActiveClickHandler);
+    }
+  }
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    if (this.scrollOnActive) {
+      this.shadowRoot
+        .querySelector("#list")
+        .removeEventListener("click", this.__scrollOnActiveClickHandler);
     }
     super.disconnectedCallback();
   }

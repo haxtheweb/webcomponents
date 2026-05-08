@@ -208,7 +208,12 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
   }
   disconnectedCallback() {
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
     }
     super.disconnectedCallback();
   }

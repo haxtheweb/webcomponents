@@ -146,15 +146,17 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     }
     // Navigation programs have been moved to core site-editor-ui
     // This ensures they're available regardless of theme choice
-    autorun((reaction) => {
-      if (!this.isFlex) {
-        this.editControls = toJS(store.isLoggedIn);
-        // dynamic import if we are logged in
-        if (this.editControls) {
-          import("../../core/micros/haxcms-page-operations.js");
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (!this.isFlex) {
+          this.editControls = toJS(store.isLoggedIn);
+          // dynamic import if we are logged in
+          if (this.editControls) {
+            import("../../core/micros/haxcms-page-operations.js");
+          }
         }
-      }
-    });
+      }),
+    );
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     this.__disposer.push(
       autorun((reaction) => {
@@ -230,7 +232,12 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
 
   disconnectedCallback() {
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
     }
     super.disconnectedCallback();
   }
