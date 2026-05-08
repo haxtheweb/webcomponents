@@ -336,6 +336,9 @@ class SimpleTooltip extends LitElement {
     super.connectedCallback();
     this.addEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
     this.addEventListener("mouseenter", this.__boundHostMouseEnter);
+    if (!this.manualMode) {
+      this._findTarget();
+    }
   }
   /**
    * @return {void}
