@@ -136,12 +136,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     })
   }
 
-  get tourTemplate() {
-    return html` <div slot="tour" data-stop-content>
-      ${this.t.textEditorToolbarTour}
-    </div>`;
-  }
-
   // render function
   render() {
     return super.toolbarTemplate;
@@ -212,8 +206,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       indentButton: "Indent",
       outdentButton: "Outdent",
       alignmentPicker: "Text alignment",
-      textEditorToolbarTour:
-        "Change how the text is structured and visualized in the page.",
     };
     this.registerLocalization({
       context: this,
@@ -221,7 +213,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     });
     this.sourceView = false;
     this.haxUIElement = true;
-    this.tourName = "hax";
     globalThis.HaxTextEditorToolbarConfig =
       globalThis.HaxTextEditorToolbarConfig || {};
     globalThis.HaxTextEditorToolbarConfig.inlineGizmos =

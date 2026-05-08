@@ -33,6 +33,11 @@ class UserAction extends HTMLElement {
     this.every = false;
     this.demo = false;
     this.visiblelimit = 0.5;
+    this.observer = null;
+    this.__boundIntersectionHandler =
+      this.handleIntersectionCallback.bind(this);
+    this.__boundUserActionEvent = this.userActionEvent.bind(this);
+    this.__trackedEventName = null;
   }
   get every() {
     return this.getAttribute("every");
@@ -40,6 +45,43 @@ class UserAction extends HTMLElement {
   set every(val) {
     if (val) {
       this.setAttribute("every", val);
+    }
+  }
+  _setTracking(track) {
+    this._clearTracking();
+    if (!track) {
+      return;
+    }
+    switch (track) {
+      // visibility isn't a real event and needs a complex solution
+      case "visibility":
+        // set an interaction observer
+        this.observer = new IntersectionObserver(
+          this.__boundIntersectionHandler,
+          {
+            rootMargin: "0px",
+            threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
+          },
+        );
+        this.observer.observe(this);
+        break;
+      default:
+        this.__trackedEventName = track;
+        this.addEventListener(track, this.__boundUserActionEvent);
+        break;
+    }
+  }
+  _clearTracking() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+    if (this.__trackedEventName) {
+      this.removeEventListener(
+        this.__trackedEventName,
+        this.__boundUserActionEvent,
+      );
+      this.__trackedEventName = null;
     }
   }
 
@@ -56,6 +98,12 @@ class UserAction extends HTMLElement {
    */
   connectedCallback() {
     this.__ready = true;
+    this._setTracking(this.track);
+  }
+
+  disconnectedCallback() {
+    this.__ready = false;
+    this._clearTracking();
   }
 
   static get observedAttributes() {
@@ -63,24 +111,11 @@ class UserAction extends HTMLElement {
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (attr === "track" && newValue) {
-      switch (newValue) {
-        // visibility isn't a real event and needs a complex solution
-        case "visibility":
-          // set an interaction observer
-          this.observer = new IntersectionObserver(
-            this.handleIntersectionCallback.bind(this),
-            {
-              rootMargin: "0px",
-              threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
-            },
-          );
-          this.observer.observe(this);
-          break;
-        default:
-          this.addEventListener(newValue, this.userActionEvent.bind(this));
-          break;
-      }
+    if (attr === "track") {
+      this.track = newValue || "visibility";
+      this._setTracking(this.track);
+    } else if (attr === "eventname" && newValue) {
+      this.eventname = newValue;
     }
   }
   /**

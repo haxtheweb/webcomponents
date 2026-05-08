@@ -242,6 +242,8 @@ class EditableTableDisplay extends displayBehaviors(
     this.sortMode = "none";
     this.sortColumn = -1;
     this.filterContains = true;
+    this.__boundChangeSortMode = this._changeSortMode.bind(this);
+    this.__boundToggleFilter = this.toggleFilter.bind(this);
     import("./editable-table-sort.js");
     import("./editable-table-filter.js");
     // notice changes and update the data to match
@@ -249,10 +251,6 @@ class EditableTableDisplay extends displayBehaviors(
       if (this.shadowRoot) {
         this.importHTML(this.children.item(0));
       }
-    });
-    this._observer.observe(this, {
-      childList: true,
-      subtree: true,
     });
   }
 
@@ -273,20 +271,17 @@ class EditableTableDisplay extends displayBehaviors(
   }
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      this.addEventListener(
-        "change-sort-mode",
-        this._changeSortMode.bind(this),
-      );
-      this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
-    }, 0);
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+    });
+    this.addEventListener("change-sort-mode", this.__boundChangeSortMode);
+    this.addEventListener("toggle-filter", this.__boundToggleFilter);
   }
   disconnectedCallback() {
-    this.removeEventListener(
-      "change-sort-mode",
-      this._changeSortMode.bind(this),
-    );
-    this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
+    this._observer.disconnect();
+    this.removeEventListener("change-sort-mode", this.__boundChangeSortMode);
+    this.removeEventListener("toggle-filter", this.__boundToggleFilter);
     super.disconnectedCallback();
   }
 

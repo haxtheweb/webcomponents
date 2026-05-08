@@ -24,14 +24,19 @@ class ChatMessage extends DDD {
     this.message = "";
     this.messageWasSuggestedPrompt = false;
     this.suggestedPrompts = ChatStore.currentSuggestions; // needs to remain this way that way it doesn't update.
+    this.__disposer = [];
 
-    autorun(() => {
-      this.darkMode = toJS(ChatStore.darkMode);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.darkMode = toJS(ChatStore.darkMode);
+      }),
+    );
 
-    autorun(() => {
-      this.editMode = toJS(ChatStore.editMode);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.editMode = toJS(ChatStore.editMode);
+      }),
+    );
   }
 
   static get styles() {
@@ -273,6 +278,16 @@ class ChatMessage extends DDD {
         e.currentTarget.setAttribute("chosen-prompt", "");
       }
     }
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

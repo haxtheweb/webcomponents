@@ -19,22 +19,31 @@ class ChatButton extends DDD {
     this.darkMode = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.buttonIcon = toJS(ChatStore.buttonIcon);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.buttonIcon = toJS(ChatStore.buttonIcon);
+      }),
+    );
 
-    autorun(() => {
-      this.darkMode = toJS(ChatStore.darkMode);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.darkMode = toJS(ChatStore.darkMode);
+      }),
+    );
 
-    autorun(() => {
-      this.isFullView = toJS(ChatStore.isFullView);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.isFullView = toJS(ChatStore.isFullView);
+      }),
+    );
 
-    autorun(() => {
-      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+      }),
+    );
   }
 
   static get styles() {
@@ -188,6 +197,16 @@ class ChatButton extends DDD {
     ChatStore.devStatement("Chat button pressed.", "log");
 
     ChatStore.isInterfaceHidden = !this.isInterfaceHidden;
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

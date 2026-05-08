@@ -88,6 +88,7 @@ class RelativeHeadingLite extends LitElement {
   constructor() {
     super();
     this.parent = null;
+    this.__observer = new MutationObserver(() => this.updateContents());
     this.checkId();
     this.__level = this.querySelector("h1,h2,h3,h4,h5,h6")
       ? parseInt(
@@ -112,8 +113,7 @@ class RelativeHeadingLite extends LitElement {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let unwrap = () => this.updateContents();
-    return new MutationObserver(unwrap);
+    return this.__observer;
   }
 
   /**

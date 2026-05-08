@@ -21,28 +21,39 @@ class ChatInput extends DDD {
     this.userIndex = null;
     this.previousMessagesIndex = null;
     this.userName = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.chatLog = toJS(ChatStore.chatLog);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.chatLog = toJS(ChatStore.chatLog);
+      }),
+    );
 
-    autorun(() => {
-      this.darkMode = toJS(ChatStore.darkMode);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.darkMode = toJS(ChatStore.darkMode);
+      }),
+    );
 
-    autorun(() => {
-      // ! these two need to run together to prevent bugs
-      this.messageIndex = toJS(ChatStore.messageIndex);
-      this.previousMessagesIndex = toJS(this.messageIndex);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        // ! these two need to run together to prevent bugs
+        this.messageIndex = toJS(ChatStore.messageIndex);
+        this.previousMessagesIndex = toJS(this.messageIndex);
+      }),
+    );
 
-    autorun(() => {
-      this.userIndex = toJS(ChatStore.userIndex);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.userIndex = toJS(ChatStore.userIndex);
+      }),
+    );
 
-    autorun(() => {
-      this.userName = toJS(ChatStore.userName);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.userName = toJS(ChatStore.userName);
+      }),
+    );
   }
 
   static get styles() {
@@ -354,6 +365,16 @@ class ChatInput extends DDD {
         .querySelector("#user-input")
         .setAttribute("maxlength", `${ChatStore.promptCharacterLimit}`);
     }
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

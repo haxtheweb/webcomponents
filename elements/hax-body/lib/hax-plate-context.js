@@ -171,8 +171,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             label="${this.t.dragHandle}"
             draggable="true"
             reset-on-select
-            data-simple-tour-stop
-            data-stop-title="label"
             ?hidden="${!this.canMoveElement}"
           >
             <simple-toolbar-menu-item slot="menuitem">
@@ -225,11 +223,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                     `,
                   )
             }
-            <div slot="tour" data-stop-content>
-              Click the drag handle once to show a menu to just move up or down
-              one item in the content OR click and drag to place the item
-              exactly where you want it to go.
-            </div>
           </hax-toolbar-menu>
           <hax-toolbar-menu
             action
@@ -375,13 +368,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             label="${this.t.duplicate}"
             icon="icons:content-copy"
             event-name="hax-plate-duplicate"
-            data-simple-tour-stop
-            data-stop-title="label"
           >
-            <div slot="tour" data-stop-content>
-              Duplicate the active piece of content and place it below the
-              current item.
-            </div>
           </hax-context-item>
         </div>
         <div class="group">
@@ -395,13 +382,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           icon="delete"
           label="${this.t.remove}"
           event-name="hax-plate-delete"
-          data-simple-tour-stop
-          data-stop-title="label"
       >
-          <div slot="tour" data-stop-content>
-            Delete the current item. You can always use the undo arrow to
-            bring this back.
-          </div>
         </hax-context-item>
           <hax-context-item
             action
@@ -414,14 +395,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             }"
             ?hidden="${HAXStore.isPlatformAudience("novice")}"
             event-name="hax-plate-create-right"
-            data-simple-tour-stop
-            data-stop-title="label"
           >
-            <div slot="tour" data-stop-content>
-              Add a column to split the current column into two pieces. This can
-              be done up to six pieces columns. For differnet layouts see Grid
-              settings panel.
-            </div>
           </hax-context-item>
           <hax-context-item
             action
@@ -434,14 +408,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             event-name="hax-plate-remove-right"
             ?hidden="${!this.activeNode || HAXStore.isPlatformAudience("novice")}"
             id="rightremove"
-            data-simple-tour-stop
-            data-stop-title="label"
           >
-            <div slot="tour" data-stop-content>
-              Remove a column from the split column layout. If at two columns
-              and removing it will remove the layout split and make it 100%
-              width.
-            </div>
           </hax-context-item>
           ${this.ceButtons.map((el) => {
             return html` <hax-context-item

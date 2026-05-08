@@ -55,6 +55,8 @@ class VocabTerm extends LitElement {
     this.information = null;
     this.links = [];
     this.detailsOpen = false;
+    this.__boundDetailsFocusOut = this.detailsFocusOut.bind(this);
+    this.__boundSummaryClick = this._handleSummaryClick.bind(this);
     if (this.querySelector("summary")) {
       this.term = this.querySelector("summary").textContent;
     }
@@ -236,6 +238,13 @@ class VocabTerm extends LitElement {
       }
     }
   }
+  _handleSummaryClick(e) {
+    if (this._haxstate) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
   /**
    * LitElement ready
    */
@@ -251,16 +260,10 @@ class VocabTerm extends LitElement {
       this.shadowRoot
         .querySelector(`simple-modal-template`)
         .associateEvents(summaryEl);
-      summaryEl.addEventListener("focus", this.detailsFocusOut.bind(this));
+      summaryEl.addEventListener("focus", this.__boundDetailsFocusOut);
       // When editing in HAX, prevent clicks on the summary from opening
       // the definition modal so the element can be edited instead.
-      summaryEl.addEventListener("click", (e) => {
-        if (this._haxstate) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        }
-      });
+      summaryEl.addEventListener("click", this.__boundSummaryClick);
     } else {
       this.details = this.shadowRoot.querySelector(`details`);
     }
@@ -280,10 +283,14 @@ class VocabTerm extends LitElement {
    *
    */
   detailsFocusOut() {
-    this.shadowRoot.querySelector("details").removeAttribute("open");
-    this.shadowRoot
-      .querySelector("summary")
-      .removeEventListener("focus", this.detailsFocusOut.bind(this));
+    let details = this.shadowRoot.querySelector("details");
+    if (details) {
+      details.removeAttribute("open");
+    }
+    let summary = this.shadowRoot.querySelector("summary");
+    if (summary) {
+      summary.removeEventListener("focus", this.__boundDetailsFocusOut);
+    }
   }
 
   updated(changedProperties) {
@@ -300,6 +307,19 @@ class VocabTerm extends LitElement {
         }
       }
     });
+  }
+  disconnectedCallback() {
+    if (this.shadowRoot) {
+      let summary = this.shadowRoot.querySelector("summary");
+      if (summary) {
+        summary.removeEventListener("focus", this.__boundDetailsFocusOut);
+        summary.removeEventListener("click", this.__boundSummaryClick);
+      }
+    }
+    this.removeEventListener("click", this._handleClick);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   /**
    * haxProperties integration via file reference

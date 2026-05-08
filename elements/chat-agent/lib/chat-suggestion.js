@@ -23,14 +23,19 @@ class ChatSuggestion extends DDD {
     //! mobx
     this.messageIndex = null;
     this.userIndex = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.messageIndex = toJS(ChatStore.messageIndex);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.messageIndex = toJS(ChatStore.messageIndex);
+      }),
+    );
 
-    autorun(() => {
-      this.userIndex = toJS(ChatStore.userIndex);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.userIndex = toJS(ChatStore.userIndex);
+      }),
+    );
   }
 
   static get styles() {
@@ -218,6 +223,16 @@ class ChatSuggestion extends DDD {
         .querySelector(".chat-suggestion-wrapper")
         .removeAttribute("tabindex");
     }
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

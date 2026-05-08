@@ -18,18 +18,25 @@ class ChatControlBar extends DDD {
     this.dataCollectionEnabled = null;
     this.isFullView = null;
     this.isInterfaceHidden = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.dataCollectionEnabled = toJS(ChatStore.dataCollectionEnabled);
+      }),
+    );
 
-    autorun(() => {
-      this.isFullView = toJS(ChatStore.isFullView);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.isFullView = toJS(ChatStore.isFullView);
+      }),
+    );
 
-    autorun(() => {
-      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+      }),
+    );
   }
 
   static get styles() {
@@ -302,6 +309,16 @@ class ChatControlBar extends DDD {
     ChatStore.userIndex = 0;
 
     ChatStore.startAI();
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

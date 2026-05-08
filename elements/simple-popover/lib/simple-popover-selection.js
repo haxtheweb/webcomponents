@@ -8,6 +8,56 @@ class SimplePopoverSelection extends LitElement {
     this.opened = false;
     this.disabled = false;
     this.event = "click";
+    this.__boundOpenedToggle = this.openedToggle.bind(this);
+    this.__boundOpenPopover = this.openPopover.bind(this);
+    this.__boundClosePopover = this.closePopover.bind(this);
+    this.__boundItemSelect = this.itemSelect.bind(this);
+    this.__popoverItemListeners = [];
+  }
+
+  _addActivationListeners(eventType = this.event) {
+    if (eventType === "click") {
+      this.addEventListener("click", this.__boundOpenedToggle);
+    } else if (eventType === "hover") {
+      this.addEventListener("mouseenter", this.__boundOpenPopover);
+      this.addEventListener("focusin", this.__boundOpenPopover);
+      this.addEventListener("focusout", this.__boundClosePopover);
+      this.addEventListener("mouseleave", this.__boundClosePopover);
+      this.addEventListener("mouseout", this.__boundClosePopover);
+    }
+  }
+
+  _removeActivationListeners(eventType = this.event) {
+    if (eventType === "click") {
+      this.removeEventListener("click", this.__boundOpenedToggle);
+    } else if (eventType === "hover") {
+      this.removeEventListener("mouseenter", this.__boundOpenPopover);
+      this.removeEventListener("focusin", this.__boundOpenPopover);
+      this.removeEventListener("focusout", this.__boundClosePopover);
+      this.removeEventListener("mouseleave", this.__boundClosePopover);
+      this.removeEventListener("mouseout", this.__boundClosePopover);
+    }
+  }
+
+  _removePopoverItemListeners() {
+    this.__popoverItemListeners.forEach((item) => {
+      item.removeEventListener("click", this.__boundItemSelect);
+    });
+    this.__popoverItemListeners = [];
+  }
+
+  _addPopoverItemListeners() {
+    this._removePopoverItemListeners();
+    let children =
+      globalThis.SimplePopoverManager.requestAvailability().querySelectorAll(
+        "*",
+      );
+    for (var i in children) {
+      if (children[i].addEventListener) {
+        children[i].addEventListener("click", this.__boundItemSelect);
+        this.__popoverItemListeners.push(children[i]);
+      }
+    }
   }
 
   openedToggle(e) {
@@ -17,6 +67,9 @@ class SimplePopoverSelection extends LitElement {
   }
 
   openedChanged(state) {
+    if (!state) {
+      this._removePopoverItemListeners();
+    }
     if (state) {
       let popover = globalThis.SimplePopoverManager.requestAvailability();
       render(globalThis.document.createElement("div"), popover);
@@ -60,15 +113,7 @@ class SimplePopoverSelection extends LitElement {
       // delay for render
       setTimeout(() => {
         // walk kids in the element and apply event listeners back to here
-        let children =
-          globalThis.SimplePopoverManager.requestAvailability().querySelectorAll(
-            "*",
-          );
-        for (var i in children) {
-          if (children[i].addEventListener) {
-            children[i].addEventListener("click", this.itemSelect.bind(this));
-          }
-        }
+        this._addPopoverItemListeners();
         // select the item we were told to activate OR just the 1st element
         if (
           globalThis.SimplePopoverManager.requestAvailability().querySelector(
@@ -119,6 +164,14 @@ class SimplePopoverSelection extends LitElement {
           );
         }
       }
+      if (
+        propName == "event" &&
+        oldValue !== undefined &&
+        oldValue !== this[propName]
+      ) {
+        this._removeActivationListeners(oldValue);
+        this._addActivationListeners(this[propName]);
+      }
     });
   }
   itemSelect(e) {
@@ -162,15 +215,12 @@ class SimplePopoverSelection extends LitElement {
     };
   }
   firstUpdated() {
-    if (this.event === "click") {
-      this.addEventListener("click", this.openedToggle.bind(this));
-    } else if (this.event === "hover") {
-      this.addEventListener("mouseenter", this.openPopover.bind(this));
-      this.addEventListener("focusin", this.openPopover.bind(this));
-      this.addEventListener("focusout", this.closePopover.bind(this));
-      this.addEventListener("mouseleave", this.closePopover.bind(this));
-      this.addEventListener("mouseout", this.closePopover.bind(this));
-    }
+    this._addActivationListeners();
+  }
+  disconnectedCallback() {
+    this._removeActivationListeners();
+    this._removePopoverItemListeners();
+    super.disconnectedCallback();
   }
   openPopover() {
     if (!this.disabled) {

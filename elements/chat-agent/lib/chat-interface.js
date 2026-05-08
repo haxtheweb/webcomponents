@@ -20,22 +20,33 @@ class ChatInterface extends DDD {
     this.isFullView = null;
     this.isInterfaceHidden = null;
     this.hasEditorUI = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.chatLog = toJS(ChatStore.chatLog);
-    });
-    autorun(() => {
-      this.darkMode = toJS(ChatStore.darkMode);
-    });
-    autorun(() => {
-      this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
-    });
-    autorun(() => {
-      this.isFullView = toJS(ChatStore.isFullView);
-    });
-    autorun(() => {
-      this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.chatLog = toJS(ChatStore.chatLog);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.darkMode = toJS(ChatStore.darkMode);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.isFullView = toJS(ChatStore.isFullView);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+      }),
+    );
   }
 
   static get styles() {
@@ -691,6 +702,16 @@ class ChatInterface extends DDD {
         SCROLLABLE_ELEMENT.scrollTo(0, 0);
       }
     }, 0);
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {

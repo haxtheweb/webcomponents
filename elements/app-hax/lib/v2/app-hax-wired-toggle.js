@@ -2,12 +2,10 @@ import { autorun, toJS } from "mobx";
 import { html, css } from "lit";
 import { store } from "./AppHaxStore.js";
 import { WiredDarkmodeToggle } from "@haxtheweb/haxcms-elements/lib/core/ui/wired-darkmode-toggle/wired-darkmode-toggle.js";
-import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 
-export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
+export class AppHAXWiredToggle extends WiredDarkmodeToggle {
   constructor() {
     super();
-    this.tourName = "hax";
     // Create a media query to monitor platform color scheme changes
     this.darkModeMediaQuery = globalThis.matchMedia(
       "(prefers-color-scheme: dark)",
@@ -79,8 +77,6 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
   render() {
     return html`
       <div
-        data-simple-tour-stop
-        data-stop-title="data-label"
         data-label="${this.label}"
         aria-describedby="dark-mode-desc"
       >
@@ -88,12 +84,8 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
         <div id="dark-mode-desc" class="sr-only">
           Toggle between light and dark mode themes
         </div>
-        <div data-stop-content style="display:none;">
-          You can toggle your user interface between "light" and "dark" for your
-          viewing enjoyment.
-        </div>
       </div>
     `;
   }
 }
-customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);
+globalThis.customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);

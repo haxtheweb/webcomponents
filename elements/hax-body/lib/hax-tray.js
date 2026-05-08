@@ -13,7 +13,6 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
-import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
@@ -45,7 +44,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @element hax-tray
  */
 class HaxTray extends I18NMixin(
-  SimpleTourFinder(winEventsElement(SimpleColors)),
+  winEventsElement(SimpleColors)
 ) {
   /**
    * Convention we use
@@ -58,9 +57,7 @@ class HaxTray extends I18NMixin(
    */
   constructor() {
     super();
-    this.tourController = new AbortController();
     this.dragController = new AbortController();
-    this.tourName = "hax";
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
@@ -169,9 +166,6 @@ class HaxTray extends I18NMixin(
           );
         }
       }
-    });
-    autorun(() => {
-      this.tourOpened = toJS(HAXStore.tourOpened);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -837,17 +831,11 @@ class HaxTray extends I18NMixin(
         label="${this.t.undo}"
         event-name="undo"
         voice-command="undo"
-        data-simple-tour-stop
-        data-stop-title="label"
         icon-position="left"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div slot="tour" data-stop-content>
-          Undo the previous operation in the content, whether typing or adding a
-          widget.
-        </div>
       </hax-tray-button>
       <hax-tray-button
         icon="icons:redo"
@@ -855,16 +843,11 @@ class HaxTray extends I18NMixin(
         label="${this.t.redo}"
         event-name="redo"
         voice-command="redo"
-        data-simple-tour-stop
-        data-stop-title="label"
         icon-position="left"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div slot="tour" data-stop-content>
-          Redo the last action that you hit Undo on.
-        </div>
       </hax-tray-button>`;
   }
   get contentButtons() {
@@ -878,8 +861,6 @@ class HaxTray extends I18NMixin(
         !this.activeNode ||
         !this.activeNode.tagName}"
         voice-command="(modify)(configure)(edit) selected"
-        data-simple-tour-stop
-        data-stop-title="label"
         controls="tray-detail"
         tooltip="${this.t.edit} ${this.activeTagName}"
         toggles
@@ -889,13 +870,6 @@ class HaxTray extends I18NMixin(
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div slot="tour" data-stop-content>
-          When you want to add any content to the page from text, to images, to
-          anything more advanced; you can always find items to add under the Add
-          content menu. Click to expand, then either drag and drop items into
-          the page or click and have them placed near whatever you are actively
-          working on.
-        </div>
       </hax-tray-button>
       <hax-tray-button
         event-name="content-add"
@@ -903,8 +877,6 @@ class HaxTray extends I18NMixin(
         id="content-add"
         label="${this.t.blocks}"
         voice-command="select blocks (menu)"
-        data-simple-tour-stop
-        data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${!this.collapsed && this.trayDetail === "content-add"}"
@@ -913,20 +885,11 @@ class HaxTray extends I18NMixin(
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div slot="tour" data-stop-content>
-          When you want to add any content to the page from text, to images, to
-          anything more advanced; you can always find items to add under the Add
-          content menu. Click to expand, then either drag and drop items into
-          the page or click and have them placed near whatever you are actively
-          working on.
-        </div>
       </hax-tray-button>
       <hax-tray-button
         icon="hax:multimedia"
         label="${this.t.media}"
         voice-command="select media (menu)"
-        data-simple-tour-stop
-        data-stop-title="label"
         controls="tray-detail"
         toggles
         icon-position="left"
@@ -935,11 +898,6 @@ class HaxTray extends I18NMixin(
         align-horizontal="${this.collapsed ? "left" : "center"}"
         @click="${this._clickMediaButton}"
       >
-        <div slot="tour" data-stop-content>
-          Search for media and content anywhere that your copy of HAX has access
-          to. Pick what to search, perform the search and then click or drag the
-          item into the contnet.
-        </div>
       </hax-tray-button>
       <hax-tray-button
         event-name="content-map"
@@ -947,8 +905,6 @@ class HaxTray extends I18NMixin(
         id="content-map"
         label="${this.t.structure}"
         voice-command="select structure (menu)"
-        data-simple-tour-stop
-        data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${!this.collapsed && this.trayDetail === "content-map"}"
@@ -957,11 +913,6 @@ class HaxTray extends I18NMixin(
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div data-stop-content>
-          This is a simple list of all the block areas of the page that are
-          clickable to jump through items quickly as well as review some simple
-          overview stats.
-        </div>
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
@@ -977,19 +928,11 @@ class HaxTray extends I18NMixin(
         voice-command="view (page) source"
         toggles
         ?toggled="${!this.collapsed && this.trayDetail === "view-source"}"
-        data-simple-tour-stop
-        data-stop-title="label"
         icon-position="left"
         show-text-label
         show-tooltip
         align-horizontal="${this.collapsed ? "left" : "center"}"
       >
-        <div data-stop-content>
-          Every change you make in HAX is ultimately writing HTML. Know HTML?
-          Awesome, pop open the source view and make any changes you like. HTML
-          is always behind the scenes ensuring that content is portable, well
-          formatted and easy to read.
-        </div>
       </hax-tray-button>
       <hax-tray-button
         event-name="super-daemon"
@@ -997,7 +940,7 @@ class HaxTray extends I18NMixin(
         label="${this.t.merlin}"
         voice-command="${this.t.merlin}"
         toggles
-        ?toggled="${!this.collapsed && this.tourOpened}"
+        ?toggled="${!this.collapsed}"
         icon-position="left"
         tooltip="${this.t.summonMerlin}"
         show-text-label
@@ -1189,12 +1132,6 @@ class HaxTray extends I18NMixin(
       case "content-add":
         this.trayDetail = e.detail.eventName;
         break;
-      case "start-tour":
-        this.startTour();
-        break;
-      case "stop-tour":
-        globalThis.SimpleTourManager.requestAvailability().stopTour("hax");
-        break;
       case "undo":
         HAXStore.activeHaxBody.undo();
         break;
@@ -1207,26 +1144,6 @@ class HaxTray extends I18NMixin(
         this.collapsed = false;
         break;
     }
-  }
-  startTour() {
-    this.__tour =
-      this.__tour || globalThis.SimpleTourManager.requestAvailability();
-    this.tourController = new AbortController();
-    globalThis.addEventListener(
-      "tour-changed",
-      this._handleTourChanged.bind(this),
-      { signal: this.tourController.signal },
-    );
-    this.__tour.startTour("hax");
-  }
-  stopTour() {
-    this.__tour =
-      this.__tour || globalThis.SimpleTourManager.requestAvailability();
-    this.__tour.stopTour("hax");
-    this.tourController.abort();
-  }
-  _handleTourChanged(e) {
-    this.tourOpened = e.detail.active == this.tourName;
   }
   /**
    * LitElement / popular convention
@@ -1359,12 +1276,6 @@ class HaxTray extends I18NMixin(
        */
       trayLabel: {
         type: String,
-      },
-      tourOpened: {
-        type: String,
-      },
-      __tour: {
-        type: Object,
       },
     };
   }

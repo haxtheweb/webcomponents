@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import { autorun, toJS } from "mobx";
 import { HAXStore } from "./hax-store.js";
 /**
@@ -11,7 +10,7 @@ import { HAXStore } from "./hax-store.js";
  * @demo demo/index.html
  */
 export const HaxContextBehaviors = function (SuperClass) {
-  return class extends SimpleTourFinder(SuperClass) {
+  return class extends SuperClass {
     /**
      * LitElement constructable styles enhancement
      */

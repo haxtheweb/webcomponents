@@ -305,15 +305,10 @@ class SimpleTooltip extends LitElement {
       entry: [{ name: "fade-in-animation", node: this, timing: { delay: 0 } }],
       exit: [{ name: "fade-out-animation", node: this }],
     };
-    setTimeout(() => {
-      if (this.addEventListener) {
-        this.addEventListener(
-          "webkitAnimationEnd",
-          this._onAnimationEnd.bind(this),
-        );
-        this.addEventListener("mouseenter", this.hide.bind(this));
-      }
-    }, 0);
+    this.__boundAnimationEnd = this._onAnimationEnd.bind(this);
+    this.__boundHostMouseEnter = this.hide.bind(this);
+    this.__boundShow = this.show.bind(this);
+    this.__boundHide = this.hide.bind(this);
   }
   /**
    * Returns the target element that this tooltip is anchored to. It is
@@ -337,14 +332,19 @@ class SimpleTooltip extends LitElement {
     }
     return target;
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
+    this.addEventListener("mouseenter", this.__boundHostMouseEnter);
+  }
   /**
    * @return {void}
    * @override
    */
   disconnectedCallback() {
-    if (!this.manualMode) {
-      this._removeListeners();
-    }
+    this._removeListeners();
+    this.removeEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
+    this.removeEventListener("mouseenter", this.__boundHostMouseEnter);
     super.disconnectedCallback();
   }
 
@@ -553,11 +553,11 @@ class SimpleTooltip extends LitElement {
 
   _addListeners() {
     if (this._target) {
-      this._target.addEventListener("mouseenter", this.show.bind(this));
-      this._target.addEventListener("focus", this.show.bind(this));
-      this._target.addEventListener("mouseleave", this.hide.bind(this));
-      this._target.addEventListener("blur", this.hide.bind(this));
-      this._target.addEventListener("tap", this.hide.bind(this));
+      this._target.addEventListener("mouseenter", this.__boundShow);
+      this._target.addEventListener("focus", this.__boundShow);
+      this._target.addEventListener("mouseleave", this.__boundHide);
+      this._target.addEventListener("blur", this.__boundHide);
+      this._target.addEventListener("tap", this.__boundHide);
     }
   }
 
@@ -652,11 +652,11 @@ class SimpleTooltip extends LitElement {
 
   _removeListeners() {
     if (this._target) {
-      this._target.removeEventListener("mouseover", this.show.bind(this));
-      this._target.removeEventListener("focusin", this.show.bind(this));
-      this._target.removeEventListener("mouseout", this.hide.bind(this));
-      this._target.removeEventListener("focusout", this.hide.bind(this));
-      this._target.removeEventListener("click", this.hide.bind(this));
+      this._target.removeEventListener("mouseenter", this.__boundShow);
+      this._target.removeEventListener("focus", this.__boundShow);
+      this._target.removeEventListener("mouseleave", this.__boundHide);
+      this._target.removeEventListener("blur", this.__boundHide);
+      this._target.removeEventListener("tap", this.__boundHide);
     }
   }
   /**

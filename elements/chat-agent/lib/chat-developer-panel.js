@@ -18,22 +18,31 @@ class ChatDeveloperPanel extends DDD {
     this.context = null;
     this.engine = null;
     this.isFullView = null;
+    this.__disposer = [];
 
-    autorun(() => {
-      this.chatLog = toJS(ChatStore.chatLog);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.chatLog = toJS(ChatStore.chatLog);
+      }),
+    );
 
-    autorun(() => {
-      this.context = toJS(ChatStore.context);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.context = toJS(ChatStore.context);
+      }),
+    );
 
-    autorun(() => {
-      this.engine = toJS(ChatStore.engine);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.engine = toJS(ChatStore.engine);
+      }),
+    );
 
-    autorun(() => {
-      this.isFullView = toJS(ChatStore.isFullView);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.isFullView = toJS(ChatStore.isFullView);
+      }),
+    );
   }
 
   static get styles() {
@@ -327,6 +336,16 @@ class ChatDeveloperPanel extends DDD {
     ChatStore.context =
       this.shadowRoot.querySelector("#context-selection").value;
     ChatStore.devStatement(`Context switched to ${ChatStore.context}`, "info");
+  }
+
+  disconnectedCallback() {
+    while (this.__disposer.length) {
+      const dispose = this.__disposer.pop();
+      if (dispose && typeof dispose === "function") {
+        dispose();
+      }
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {
