@@ -34,12 +34,12 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     this.t = this.t || {}
     this.t = {
       ...this.t,
-      title: 'Editor settings',
+      title: 'Editor Settings',
       experienceLevel: 'Experience Level',
       experienceLevelDescription:
         'Select the editor experience and preview the toolbar layout.',
       buttons: 'Buttons',
-      futureButtonConfiguration: 'Future customized editor button configuration',
+      futureButtonConfiguration: 'Custom editor button configuration is coming soon.',
       save: 'Save',
       saving: 'Saving…',
     }
@@ -294,7 +294,8 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             max-width: 100%;
           }
           .actions {
-            position: static;
+            position: sticky;
+            bottom: 0;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );

@@ -187,6 +187,8 @@ class PolarisInventTheme extends LTIResizingMixin(
           --site-menu-container-background-color: var(--ddd-palette-color-6);
           --map-menu-item-a-active-color: var(--ddd-palette-text-color-1);
           --map-menu-item-icon-active-color: white;
+          max-width: 300px;
+          overflow-x: hidden;
         }
 
         site-modal {
@@ -448,6 +450,16 @@ class PolarisInventTheme extends LTIResizingMixin(
             --simple-icon-height: 20px;
           }
         }
+        @media screen and (max-width: 640px) {
+          site-active-title h1 {
+            width: 100%;
+            height: 48px;
+            margin: 0 0 var(--ddd-spacing-2) 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
+          }
+        }
         :host([responsive-size="xl"]) main {
           width: calc(var(--menu-size) + 70%);
         }
@@ -475,6 +487,9 @@ class PolarisInventTheme extends LTIResizingMixin(
           display: -webkit-flex;
           display: flex;
           flex: 0 1 0%;
+          width: 300px;
+          max-width: 300px;
+          overflow-x: hidden;
           margin: 0;
           padding: 0;
           margin-left: -300px;
@@ -815,15 +830,6 @@ class PolarisInventTheme extends LTIResizingMixin(
         }, 0);
       }
     });
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(PolarisInventTheme.tag, PolarisInventTheme);

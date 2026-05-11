@@ -12,8 +12,10 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { DDDAllStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import {
+  DDDVariables,
+  DDDPaletteStyles,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
@@ -71,6 +73,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.allTags = [];
     this.items = [];
     this.__disposer = this.__disposer || [];
+    this.__boundViewportSync = this._syncViewportLayout.bind(this);
 
     // gets site title and home link for site-title
     this.__disposer.push(autorun((reaction) => {
@@ -239,7 +242,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
       name: "clean-portfolio-theme",
-      styles: [...CleanPortfolioTheme.styles, DDDVariables],
+      styles: [...CleanPortfolioTheme.styles],
       fonts: PortfolioFonts,
       hax: true,
     });
@@ -259,7 +262,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       });
       this._resizeObserver.observe(nav);
     }
-    requestAnimationFrame(() => this._checkOverflow());
+    globalThis.addEventListener("resize", this.__boundViewportSync, {
+      passive: true,
+    });
+    requestAnimationFrame(() => this._syncViewportLayout());
   }
 
     updated(changedProperties) {
@@ -271,6 +277,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         "long",
       );
     }
+    if (
+      changedProperties.has("topItems") ||
+      changedProperties.has("items") ||
+      changedProperties.has("activeLayout")
+    ) {
+      requestAnimationFrame(() => this._syncViewportLayout());
+    }
   }
 
   // manages window resize observer
@@ -278,11 +291,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
     }
-    if (this.__disposer) {
-      for (var i in this.__disposer) {
-        this.__disposer[i].dispose();
-      }
-    }
+    globalThis.removeEventListener("resize", this.__boundViewportSync);
     super.disconnectedCallback();
   }
 
@@ -308,6 +317,28 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.menuOverflow = overflow;
       this.requestUpdate();
     }
+  }
+
+  _clampScrollPosition() {
+    if (!globalThis.document || typeof globalThis.innerHeight !== "number") {
+      return;
+    }
+    const docEl = globalThis.document.documentElement;
+    if (!docEl) {
+      return;
+    }
+    const maxScroll = Math.max(0, docEl.scrollHeight - globalThis.innerHeight);
+    if (globalThis.scrollY > maxScroll) {
+      globalThis.scrollTo({
+        top: maxScroll,
+        behavior: "auto",
+      });
+    }
+  }
+
+  _syncViewportLayout() {
+    this._checkOverflow();
+    this._clampScrollPosition();
   }
 
   // Lit reactive properties
@@ -344,7 +375,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   HAXCMSGlobalStyleSheetContent() {
       return [
         ...super.HAXCMSGlobalStyleSheetContent(),
-        DDDAllStyles,
+        DDDVariables,
+        DDDPaletteStyles,
         css`
         :root, html, body {
           --ddd-palette-light: var(--ddd-theme-default-white);
@@ -465,7 +497,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   // Lit scoped styles
   static get styles() {
     return [
-      DDDAllStyles,
+      DDDVariables,
+      DDDPaletteStyles,
       super.styles,
     css`
       /* Semantic elements */
@@ -781,6 +814,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-family: var(--portfolio-font-header);
         text-decoration: none;
         display: block;
+        text-align: start;
         transition: .3s;
       }
 
@@ -1253,7 +1287,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${items.map(item => html`
         <a class="listing-card" href="${item.slug}" part="listing-card">
           <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${item.metadata.image}" onerror="this.style.display='none'" part="listing-cardimg-img">
+            <img src="${item.metadata.image}" onerror="this.style.display='none'" alt="${item.title ? item.title : ''}" part="listing-cardimg-img">
           </div>
           <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
         </a>`
@@ -1329,7 +1363,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             ` : ''}
       </header>
       
-      <div class="breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         ${this.activeParent
           ? html`
             <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" href=${this.activeParent.slug} @click="${this.testEditMode}">
@@ -1339,13 +1373,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             <span class="breadcrumb-split">/</span>
             <span class="breadcrumb-title">${this.activeItem.title}</span>
           ` : ``}
-      </div>
+      </nav>
 
       ${this.activeLayout == "media"
         ? html`<site-active-media-banner></site-active-media-banner>`
         : ''}
 
-      <div id="contentcontainer" class="container">
+      <main id="contentcontainer" class="container" role="main">
         ${this.activeLayout == "listing"
           ? html`
               <div class="listing-titlecontainer">
@@ -1385,7 +1419,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           : ''}
 
         <div id="slot"><slot></slot></div>
-      </div>
+      </main>
 
       <div class="pagination">
         ${this.activeParent

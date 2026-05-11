@@ -58,17 +58,17 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         }
         .primary-grid {
           display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: var(--ddd-spacing-4);
         }
         .advanced-grid {
           display: grid;
-          grid-template-columns: repeat(6, minmax(0, 1fr));
+          grid-template-columns: repeat(7, minmax(0, 1fr));
           gap: var(--ddd-spacing-3);
         }
         @media (max-width: 1200px) {
           .advanced-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
           }
         }
         @media (max-width: 1000px) {
@@ -188,7 +188,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     );
   }
   _disabledViaFeaturesTooltip(disabled) {
-    return disabled ? "Disabled via Features" : "";
+    return disabled ? "Disabled in Features" : "";
   }
   _shouldHideAction(item) {
     if (!item) {
@@ -236,11 +236,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     const filesDisabled = !this.allowFiles;
     const primaryActions = [
       {
-        action: "content-admin",
-        icon: "editor:insert-drive-file",
-        label: "Content",
-        disabled: contentDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
+        action: "theme-settings",
+        icon: "lrn:palette",
+        label: "Appearance",
+        disabled: appearanceDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(appearanceDisabled),
       },
       {
         action: "outline",
@@ -248,13 +248,6 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Structure",
         disabled: structureDisabled,
         tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
-      },
-      {
-        action: "theme-settings",
-        icon: "lrn:palette",
-        label: "Appearance",
-        disabled: appearanceDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(appearanceDisabled),
       },
       {
         action: "site-settings",
@@ -273,12 +266,20 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     ];
     const advancedActions = [
       {
-        action: "blocks",
-        icon: "hax:blocks",
-        label: "Blocks",
-        disabled: blocksDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(blocksDisabled),
+        action: "content-admin",
+        icon: "editor:insert-drive-file",
+        label: "Content",
+        disabled: contentDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
       },
+      {
+        action: "files-admin",
+        icon: "icons:folder",
+        label: "Files",
+        disabled: filesDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(filesDisabled),
+      },
+      { action: "platform", icon: "hax:add-item", label: "Features" },
       {
         action: "editor",
         icon: "hax:page-edit",
@@ -286,7 +287,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         disabled: editorDisabled,
         tooltip: this._disabledViaFeaturesTooltip(editorDisabled),
       },
-      { action: "platform", icon: "hax:add-item", label: "Features" },
+      {
+        action: "blocks",
+        icon: "hax:blocks",
+        label: "Blocks",
+        disabled: blocksDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(blocksDisabled),
+      },
       {
         action: "seo-settings",
         icon: "icons:search",
@@ -300,13 +307,6 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Reports",
         disabled: reportsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(reportsDisabled),
-      },
-      {
-        action: "files-admin",
-        icon: "icons:folder",
-        label: "Files",
-        disabled: filesDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(filesDisabled),
       },
     ];
     return html`

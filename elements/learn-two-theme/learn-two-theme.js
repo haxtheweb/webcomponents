@@ -53,6 +53,18 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             --learn-two-theme-background,
             var(--__learn-two-theme-default-background)
           );
+          --learn-two-theme-menu-toggle-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --learn-two-theme-menu-toggle-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --learn-two-theme-menu-toggle-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
 
         html,
@@ -211,12 +223,18 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
 
         app-drawer-layout[narrow] #contentcontainer {
-          padding: 0 16px;
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
         }
 
         #menubutton,
         #menubutton2 {
           display: none;
+          color: var(--learn-two-theme-menu-toggle-color);
+          --simple-icon-color: var(--learn-two-theme-menu-toggle-color);
+          --simple-icon-fill-color: var(--learn-two-theme-menu-toggle-color);
+          background-color: var(--learn-two-theme-menu-toggle-background);
+          border: 1px solid var(--learn-two-theme-menu-toggle-border-color);
+          border-radius: var(--ddd-radius-sm);
         }
 
         app-drawer-layout[narrow] #menubutton {

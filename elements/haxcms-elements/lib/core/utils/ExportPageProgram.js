@@ -5,7 +5,7 @@
  * - Markdown
  * - DOCX
  * - PDF
- * - HAXSchema
+ * - HAX schema JSON
  */
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
@@ -42,10 +42,10 @@ export function createExportPageProgram(context) {
         description: "Download current page as PDF file",
       },
       {
-        title: "Export as HAXSchema",
+        title: "Copy HAX schema JSON",
         icon: "hax:code-json",
         format: "haxschema",
-        description: "Copy HAXSchema JSON to clipboard",
+        description: "Copy HAX schema JSON to the clipboard",
       },
     ];
 
@@ -82,7 +82,7 @@ export async function exportPageAs(format) {
   try {
     const haxBody = HAXStore.activeHaxBody;
     if (!haxBody) {
-      HAXStore.toast("No HAX body found for export", 3000, "fit-bottom");
+      HAXStore.toast("No editable content found for export", 3000, "fit-bottom");
       return;
     }
 
@@ -217,7 +217,7 @@ export async function _exportPageAsPDF(content, title) {
 
 export async function _exportPageAsHAXSchema() {
   try {
-    // Use existing HAXStore method to get HAXSchema
+    // Use existing HAXStore method to get HAX schema JSON
     const body = await HAXStore.activeHaxBody.haxToContent();
     const elements = await HAXStore.htmlToHaxElements(body);
     elements.shift(); // Remove the first element as done in hax-view-source
@@ -226,10 +226,10 @@ export async function _exportPageAsHAXSchema() {
 
     // Copy to clipboard
     await navigator.clipboard.writeText(haxSchema);
-    HAXStore.toast("HAXSchema copied to clipboard", 3000, "fit-bottom");
+    HAXStore.toast("HAX schema JSON copied to clipboard", 3000, "fit-bottom");
   } catch (error) {
-    console.error("HAXSchema export error:", error);
-    HAXStore.toast("Failed to export HAXSchema", 3000, "fit-bottom");
+    console.error("HAX schema export error:", error);
+    HAXStore.toast("Failed to export HAX schema JSON", 3000, "fit-bottom");
   }
 }
 

@@ -164,7 +164,10 @@ class SimpleLoginCamera extends HTMLElement {
   renderImage(blob) {
     // uses the <a download> to download a Blob
     let img = globalThis.document.createElement("img");
-    img.src = URL.createObjectURL(blob);
+    const objectUrl = URL.createObjectURL(blob);
+    img.src = objectUrl;
+    img.onload = () => URL.revokeObjectURL(objectUrl);
+    img.onerror = () => URL.revokeObjectURL(objectUrl);
     return img;
   }
   imageBlob(blob) {
@@ -173,10 +176,13 @@ class SimpleLoginCamera extends HTMLElement {
   download(blob) {
     // uses the <a download> to download a Blob
     let a = globalThis.document.createElement("a");
-    a.href = URL.createObjectURL(blob);
+    const objectUrl = URL.createObjectURL(blob);
+    a.href = objectUrl;
     a.download = "screenshot.jpg";
     globalThis.document.body.appendChild(a);
     a.click();
+    globalThis.document.body.removeChild(a);
+    URL.revokeObjectURL(objectUrl);
   }
   _addVideoAtributes() {
     this._video.autoplay = this.hasAttribute("autoplay");

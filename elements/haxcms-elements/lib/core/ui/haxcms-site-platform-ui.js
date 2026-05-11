@@ -728,7 +728,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           }
 
           .actions {
-            position: static;
+            position: sticky;
+            bottom: 0;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );

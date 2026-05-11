@@ -135,10 +135,6 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
       this._observer.disconnect();
       this._observer = null;
     }
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    this.__disposer = [];
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();

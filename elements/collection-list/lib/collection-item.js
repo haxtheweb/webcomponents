@@ -2,10 +2,6 @@ import { html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-fields/lib/simple-tags.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import {
-  DDDFontSizing,
-  DDDLineHeight,
-} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 class CollectionItem extends DDD {
   static get properties() {
@@ -47,8 +43,6 @@ class CollectionItem extends DDD {
   static get styles() {
     return [
       super.styles,
-      DDDFontSizing,
-      DDDLineHeight,
       css`
         :host {
           display: block;
@@ -133,6 +127,8 @@ class CollectionItem extends DDD {
           text-align: center;
           word-break: break-word;
           padding: 0 var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-xxs);
+          line-height: var(--ddd-lh-150);
         }
         .line-2 {
           display: block;
@@ -144,6 +140,8 @@ class CollectionItem extends DDD {
           display: inline-block;
           word-break: break-word;
           word-wrap: break-word;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: var(--ddd-lh-150);
         }
         .line-3 {
           padding: 0 var(--ddd-spacing-3);
@@ -156,6 +154,8 @@ class CollectionItem extends DDD {
           margin-bottom: var(--ddd-spacing-2);
           word-break: break-word;
           padding: 0 var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
         }
 
         .icon {
@@ -231,9 +231,9 @@ class CollectionItem extends DDD {
               </div>`
             : html`<div class="no-icon"></div>`}
           <div><slot></slot></div>
-          <div class="line-1 fs-xxs lh-150">${this.line1}</div>
-          <div class="line-2 fs-3xs lh-150">${this.line2}</div>
-          <div class="line-3 fs-4xs lh-150">${this.line3}</div>
+          <div class="line-1">${this.line1}</div>
+          <div class="line-2">${this.line2}</div>
+          <div class="line-3">${this.line3}</div>
         </div>
       </a>
     `;

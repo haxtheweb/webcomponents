@@ -467,7 +467,7 @@ class HAXCMSAboutDialogUI extends DDD {
             <summary class="section-title">
               <span class="summary-leading">
                 <simple-icon-lite icon="hax:hax2022" aria-hidden="true"></simple-icon-lite>
-                <h3>About HAX and community</h3>
+                <h3>About HAX and Community</h3>
               </span>
             </summary>
             <div class="collapse-body">
@@ -547,30 +547,6 @@ class HAXCMSAboutDialogUI extends DDD {
               </p>
             </div>
           </details>
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite icon="icons:palette" aria-hidden="true"></simple-icon-lite>
-                <h3>Custom Theming</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">
-                Build and customize HAXsite themes with the HAX CLI and
-                supported theme development patterns.
-              </p>
-              <ul>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Custom theme development docs</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </details>
 
           <details class="section">
             <summary class="section-title">
@@ -596,7 +572,7 @@ class HAXCMSAboutDialogUI extends DDD {
             <summary class="section-title">
               <span class="summary-leading">
                 <simple-icon-lite icon="hax:page-edit" aria-hidden="true"></simple-icon-lite>
-                <h3>Tutorials and how-to</h3>
+                <h3>Tutorials and How-To</h3>
               </span>
             </summary>
             <div class="collapse-body">
@@ -613,6 +589,14 @@ class HAXCMSAboutDialogUI extends DDD {
                   >
                 </li>
                 <li>
+                  <a
+                    href="https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Custom theme development docs</a
+                  >
+                </li>
+                <li>
                   Search onboarding path: <code>CMS/welcome</code>
                 </li>
               </ul>
@@ -623,7 +607,7 @@ class HAXCMSAboutDialogUI extends DDD {
             <summary class="section-title">
               <span class="summary-leading">
                 <simple-icon-lite icon="hax:hax2022" aria-hidden="true"></simple-icon-lite>
-                <h3>AI-ready content interfaces</h3>
+                <h3>AI-Ready Content Interfaces</h3>
               </span>
             </summary>
             <div class="collapse-body">
@@ -688,7 +672,7 @@ class HAXCMSAboutDialogUI extends DDD {
             <summary class="section-title">
               <span class="summary-leading">
                 <simple-icon-lite icon="icons:search" aria-hidden="true"></simple-icon-lite>
-                <h3>Search options in one place</h3>
+                <h3>Search Options in One Place</h3>
               </span>
             </summary>
             <div class="collapse-body">

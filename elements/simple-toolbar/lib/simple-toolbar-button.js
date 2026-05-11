@@ -287,7 +287,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       );
     }
     /**
-     * life cycle, element is detatched
+     * life cycle, element is detached
      */
     disconnectedCallback() {
       this.dispatchEvent(

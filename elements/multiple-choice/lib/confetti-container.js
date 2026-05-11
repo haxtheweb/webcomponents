@@ -206,7 +206,7 @@
       });
 
       // remove confetti and sequins that fall off the screen
-      // must be done in seperate loops to avoid noticeable flickering
+      // must be done in separate loops to avoid noticeable flickering
       this.confetti.forEach((confetto, index) => {
         if (confetto.position.y - 25 >= this.canvas.height)
           this.confetti.splice(index, 1);

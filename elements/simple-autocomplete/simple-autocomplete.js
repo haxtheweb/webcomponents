@@ -306,7 +306,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       this.shadowRoot.querySelector("simple-popover").target = this.$input;
       // when focusing the input area ensure we open the popover correctly
       this.$input.addEventListener("focusin", (e) => {
-        // ensure when we optimize for a value to fill in the area that we don't accidently open the menu immediately
+        // ensure when we optimize for a value to fill in the area that we don't accidentally open the menu immediately
         if (this.value && !this._ignoreFocusOpen) {
           this.opened = true;
           if (!this.hideInput) {

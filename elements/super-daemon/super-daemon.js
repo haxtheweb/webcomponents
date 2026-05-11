@@ -719,6 +719,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     });
     globalThis.document.dispatchEvent(event);
     this.windowControllers2.abort();
+    if (this.shadowRoot && this.shadowRoot.querySelector("web-dialog")) {
+      const wd = this.shadowRoot.querySelector("web-dialog");
+      if (wd.$backdrop && wd.onBackdropClick) {
+        wd.$backdrop.removeEventListener("click", wd.onBackdropClick);
+      }
+      if (wd.onKeyDown) {
+        wd.removeEventListener("keydown", wd.onKeyDown, true);
+      }
+    }
     if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
         .querySelector("web-dialog")
@@ -949,11 +958,17 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     const wd = this.shadowRoot.querySelector("web-dialog");
     if (wd) {
       // modal mode kills off the ability to close the dialog
-      wd.$backdrop.addEventListener("click", wd.onBackdropClick);
-      wd.addEventListener("keydown", wd.onKeyDown, {
-        capture: true,
-        passive: true,
-      });
+      if (wd.$backdrop && wd.onBackdropClick) {
+        wd.$backdrop.removeEventListener("click", wd.onBackdropClick);
+        wd.$backdrop.addEventListener("click", wd.onBackdropClick);
+      }
+      if (wd.onKeyDown) {
+        wd.removeEventListener("keydown", wd.onKeyDown, true);
+        wd.addEventListener("keydown", wd.onKeyDown, {
+          capture: true,
+          passive: true,
+        });
+      }
       if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
         this.shadowRoot
           .querySelector("web-dialog")

@@ -255,7 +255,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         id="search"
         always-float-label
         label="${this.t.search}"
-        placeholder="${this.t.typeAtLeast3LettersToStartSearch}.."
+        placeholder="${this.t.typeAtLeast3LettersToStartSearch}..."
         type="text"
         value="${this.search}"
         role="searchbox"

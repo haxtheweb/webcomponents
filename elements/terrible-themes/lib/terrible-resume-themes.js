@@ -191,13 +191,15 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           </tr>
                           <tr>
                             <td width="25"></td>
-                            <td id="contentcontainer">
-                              <site-active-title
-                                dynamic-methodology="ancestor"
-                              ></site-active-title>
-                              <section id="slot">
-                                <slot></slot>
-                              </section>
+                            <td>
+                              <main id="contentcontainer" role="main">
+                                <site-active-title
+                                  dynamic-methodology="ancestor"
+                                ></site-active-title>
+                                <section id="slot">
+                                  <slot></slot>
+                                </section>
+                              </main>
                             </td>
                           </tr>
                         </tbody>
@@ -231,15 +233,6 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(

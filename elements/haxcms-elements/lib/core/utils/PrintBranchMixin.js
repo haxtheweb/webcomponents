@@ -17,7 +17,7 @@ export const PrintBranchMixin = function (SuperClass) {
       this.t.print = "Print";
       this.t.printSite = "Print site";
       this.t.printPage = "Print page";
-      this.t.printingPleaseWait = "Printing, please wait..";
+      this.t.printingPleaseWait = "Printing, please wait...";
       this.__printBranchLoading = false;
       this.dispatchEvent(
         new CustomEvent("super-daemon-define-option", {
@@ -39,14 +39,43 @@ export const PrintBranchMixin = function (SuperClass) {
         }),
       );
     }
-
     static get properties() {
       return {
         ...super.properties,
         __printBranchLoading: { type: Boolean },
       };
     }
-
+    _revokeObjectUrlOnClose(objectUrl, printWindow) {
+      let revoked = false;
+      let closePoll = null;
+      const revokeObjectUrl = () => {
+        if (!revoked) {
+          revoked = true;
+          globalThis.URL.revokeObjectURL(objectUrl);
+        }
+        if (closePoll) {
+          clearInterval(closePoll);
+          closePoll = null;
+        }
+      };
+      if (printWindow && printWindow.addEventListener) {
+        printWindow.addEventListener("beforeunload", revokeObjectUrl, {
+          once: true,
+        });
+        printWindow.addEventListener("pagehide", revokeObjectUrl, {
+          once: true,
+        });
+        closePoll = setInterval(() => {
+          if (printWindow.closed) {
+            revokeObjectUrl();
+          }
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          revokeObjectUrl();
+        }, 60000);
+      }
+    }
     PrintBranchButton(position = "auto") {
       return html`
         ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
@@ -77,12 +106,8 @@ export const PrintBranchMixin = function (SuperClass) {
           : ``}
       `;
     }
-    /**
-     * Download PDF, via microservice
-     */
     async printBranchOfSite(e) {
       this.__printBranchLoading = true;
-      // base helps w/ calculating URLs in content
       var base = "";
       if (globalThis.document.querySelector("base")) {
         base = globalThis.document.querySelector("base").href;
@@ -111,33 +136,19 @@ export const PrintBranchMixin = function (SuperClass) {
         params,
       );
       if (response.status == 200 && response.data) {
-        const link = globalThis.document.createElement("a");
-        // click link to download file
-        // @todo this downloads but claims to be corrupt.
-        link.href = globalThis.URL.createObjectURL(
+        const objectUrl = globalThis.URL.createObjectURL(
           b64toBlob(
             btoa(unescape(encodeURIComponent(response.data))),
             "text/html",
           ),
         );
-        /*link.download = `${toJS(store.activeTitle)}.html`;
-        link.target = "_blank";
-        this.appendChild(link);
-        link.click();
-        this.removeChild(link);*/
-        // fallback in case the service fails
-        globalThis.open(
-          globalThis.URL.createObjectURL(
-            b64toBlob(
-              btoa(unescape(encodeURIComponent(response.data))),
-              "text/html",
-            ),
-          ),
+        const printWindow = globalThis.open(
+          objectUrl,
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
+        this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
-        // fallback in case the service fails
         globalThis.open(
           globalThis.location.href + "?format=print-page",
           "",
@@ -146,7 +157,6 @@ export const PrintBranchMixin = function (SuperClass) {
       }
       this.__printBranchLoading = false;
     }
-    // full site print button
     PrintSiteButton(position = "auto") {
       return html`
         ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
@@ -177,12 +187,8 @@ export const PrintBranchMixin = function (SuperClass) {
           : ``}
       `;
     }
-    /**
-     * Download PDF, via microservice
-     */
     async printWholeSite(e) {
       this.__printBranchLoading = true;
-      // base helps w/ calculating URLs in content
       var base = "";
       if (globalThis.document.querySelector("base")) {
         base = globalThis.document.querySelector("base").href;
@@ -211,33 +217,19 @@ export const PrintBranchMixin = function (SuperClass) {
         params,
       );
       if (response.status == 200 && response.data) {
-        const link = globalThis.document.createElement("a");
-        // click link to download file
-        // @todo this downloads but claims to be corrupt.
-        link.href = globalThis.URL.createObjectURL(
+        const objectUrl = globalThis.URL.createObjectURL(
           b64toBlob(
             btoa(unescape(encodeURIComponent(response.data))),
             "text/html",
           ),
         );
-        /*link.download = `${toJS(store.activeTitle)}.html`;
-        link.target = "_blank";
-        this.appendChild(link);
-        link.click();
-        this.removeChild(link);*/
-        // fallback in case the service fails
-        globalThis.open(
-          globalThis.URL.createObjectURL(
-            b64toBlob(
-              btoa(unescape(encodeURIComponent(response.data))),
-              "text/html",
-            ),
-          ),
+        const printWindow = globalThis.open(
+          objectUrl,
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
+        this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
-        // fallback in case the service fails
         globalThis.open(
           globalThis.location.href + "?format=print-page",
           "",

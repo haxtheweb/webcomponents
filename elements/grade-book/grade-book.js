@@ -40,6 +40,9 @@ import { XLSXFileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/lib
 class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   constructor() {
     super();
+    this.__disposer = [];
+    this.__resizeObserver = null;
+    this.__xlsxFileSystemDataHandler = null;
     this.hasFilePicker = false;
     this.source = "googledocs";
     if (globalThis.showOpenFilePicker) {
@@ -126,24 +129,32 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
     // drop event to remove the styling from droppable areas
     this.addEventListener("drop", this._handleDragDrop.bind(this));
-    autorun(() => {
-      this.activeStudent = toJS(GradeBookStore.activeStudent);
-    });
-    autorun(() => {
-      this.activeAssignment = toJS(GradeBookStore.activeAssignment);
-    });
-    autorun(() => {
-      this.database = toJS(GradeBookStore.database);
-    });
-    autorun(() => {
-      this.activeSubmission = toJS(GradeBookStore.activeSubmission);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.activeStudent = toJS(GradeBookStore.activeStudent);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.activeAssignment = toJS(GradeBookStore.activeAssignment);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.database = toJS(GradeBookStore.database);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.activeSubmission = toJS(GradeBookStore.activeSubmission);
+      }),
+    );
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    const resizeObserver = new ResizeObserver((entries) => {
+    this.__resizeObserver = new ResizeObserver((entries) => {
       clearTimeout(this.__resizer);
       this.__resizer = setTimeout(() => {
         var pixels = 0;
@@ -164,7 +175,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           pixels + "px";
       }, 50);
     });
-    resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
+    this.__resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
     // see if we have a previous file reference
     setTimeout(async () => {
       this.prevLocalFileReference = await get("grade-book-prev-file");
@@ -351,7 +362,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           if (!this.__applied) {
             this.__applied = true;
             // this listener gets the event from the service worker
-            globalThis.addEventListener("xlsx-file-system-data", (e) => {
+            this.__xlsxFileSystemDataHandler = (e) => {
               let database = e.detail.data;
               for (var i in database) {
                 let loadedData = this.transformTable(database[i]);
@@ -361,11 +372,45 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                 GradeBookStore.database[i] = loadedData;
               }
               this.importStateCleanup();
-            });
+            };
+            globalThis.addEventListener(
+              "xlsx-file-system-data",
+              this.__xlsxFileSystemDataHandler,
+            );
           }
         }
       }
     });
+  }
+  disconnectedCallback() {
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
+    if (this.__resizer) {
+      clearTimeout(this.__resizer);
+      this.__resizer = null;
+    }
+    if (this.__xlsxFileSystemDataHandler) {
+      globalThis.removeEventListener(
+        "xlsx-file-system-data",
+        this.__xlsxFileSystemDataHandler,
+      );
+      this.__xlsxFileSystemDataHandler = null;
+      this.__applied = false;
+    }
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    this.__disposer = [];
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   importStateCleanup() {
     this.loading = false;

@@ -95,10 +95,35 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.isFlex = false;
     this.isHorizontal = false;
     this.maxDepth = 5;
+    this.__operationsLoaded = false;
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
         this.routerManifest = Object.assign({}, toJS(store.routerManifest));
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (!this.isFlex) {
+          this.editControls = toJS(store.isLoggedIn);
+          // dynamic import if we are logged in
+          if (this.editControls && !this.__operationsLoaded) {
+            this.__operationsLoaded = true;
+            import("../../core/micros/haxcms-page-operations.js");
+          }
+        }
+      }),
+    );
+    // executing this here ensures that the timing is correct with highlighting the active item in the menu
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+        this.updateComplete.then(() => {
+          const mapMenu = this.shadowRoot && this.shadowRoot.querySelector("map-menu");
+          if (mapMenu && mapMenu.selected !== this.activeId) {
+            mapMenu.selected = this.activeId;
+          }
+        });
       }),
     );
   }
@@ -140,33 +165,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     }
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    // Navigation programs have been moved to core site-editor-ui
-    // This ensures they're available regardless of theme choice
-    this.__disposer.push(
-      autorun((reaction) => {
-        if (!this.isFlex) {
-          this.editControls = toJS(store.isLoggedIn);
-          // dynamic import if we are logged in
-          if (this.editControls) {
-            import("../../core/micros/haxcms-page-operations.js");
-          }
-        }
-      }),
-    );
-    // executing this here ensures that the timing is correct with highlighting the active item in the menu
-    this.__disposer.push(
-      autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
-        setTimeout(() => {
-          this.shadowRoot.querySelector("map-menu").selected = this.activeId;
-        }, 100);
-      }),
-    );
-  }
   /**
    * LitElement life cycle - properties definition
    */

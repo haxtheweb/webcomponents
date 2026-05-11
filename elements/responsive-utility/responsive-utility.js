@@ -60,7 +60,27 @@ class ResponsiveUtility extends LitElement {
    * @param {event} e event to add responsive element
    */
   deleteResponiveElementEvent(e) {
-    this.details = this.details.filter((detail) => e.detail !== detail);
+    let detailsToDelete = this.details.filter((detail) => {
+      if (e.detail === detail) {
+        return true;
+      }
+      if (e.detail && e.detail.element && detail.element === e.detail.element) {
+        return true;
+      }
+      if (e.detail === detail.element) {
+        return true;
+      }
+      return false;
+    });
+    detailsToDelete.forEach((detail) => {
+      if (detail.observer && detail.element) {
+        detail.observer.unobserve(detail.element);
+      }
+      if (detail.observer) {
+        detail.observer.disconnect();
+      }
+    });
+    this.details = this.details.filter((detail) => !detailsToDelete.includes(detail));
   }
   /**
    * An array of objects. Each object is contains data about an element

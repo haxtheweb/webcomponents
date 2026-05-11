@@ -33,7 +33,7 @@ export const createEditDescriptionProgram = (context) => {
       title:
         input && input.trim() !== ""
           ? `Save description: ${input.substring(0, 50)}${input.length > 50 ? "..." : ""}`
-          : "Remove description",
+          : "Clear description",
       icon: "icons:check",
       tags: ["confirm", "save"],
       value: {

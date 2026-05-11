@@ -1416,7 +1416,7 @@ function stripMSWord(input) {
   // these are universally true tho so fine to have here
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
   // some medium, box, github and other paste stuff as well as general paste clean up for classes
-  // in multiple html primatives
+  // in multiple HTML primitives
   output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
   output = output.replace(/ class="(\s|.)*?"/gim, "");
   output = output.replace(/<pstyle/gm, "<p style");

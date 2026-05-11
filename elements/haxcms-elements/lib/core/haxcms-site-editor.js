@@ -15,6 +15,7 @@ import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServ
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
+import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 /**
  * `haxcms-site-editor`
@@ -576,6 +577,22 @@ class HAXCMSSiteEditor extends LitElement {
   loadingChanged(e) {
     this.loading = e.detail.value;
   }
+  _ensureBaseDDDVariables() {
+    if (!globalThis.document || !globalThis.document.head) {
+      return;
+    }
+    const variableStyles =
+      DDDVariables && DDDVariables.cssText ? DDDVariables.cssText : "";
+    if (!variableStyles) {
+      return;
+    }
+    if (!globalThis.document.head.querySelector("[data-haxcms-ddd-vars]")) {
+      const style = globalThis.document.createElement("style");
+      style.setAttribute("data-haxcms-ddd-vars", "");
+      style.innerHTML = variableStyles;
+      globalThis.document.head.appendChild(style);
+    }
+  }
   /**
    * Break the shadow root for this element (by design)
    */
@@ -586,6 +603,7 @@ class HAXCMSSiteEditor extends LitElement {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
+    this._ensureBaseDDDVariables();
     if (HAXStore.ready) {
       let detail = {
         detail: true,
@@ -1527,45 +1545,118 @@ class HAXCMSSiteEditor extends LitElement {
       this.manifest && this.manifest.metadata && this.manifest.metadata.author
         ? this.manifest.metadata.author
         : {};
+    const manifestSite =
+      this.manifest && this.manifest.metadata && this.manifest.metadata.site
+        ? this.manifest.metadata.site
+        : {};
+    const manifestSiteSettings =
+      manifestSite && manifestSite.settings ? manifestSite.settings : {};
+    const normalizeString = (value, fallback = "") =>
+      typeof value !== typeof undefined && value !== null
+        ? String(value || "")
+        : fallback;
+    const toBoolValue = (value, defaultValue) => {
+      if (
+        value === false ||
+        value === "false" ||
+        value === 0 ||
+        value === "0"
+      ) {
+        return false;
+      }
+      if (value === true || value === "true" || value === 1 || value === "1") {
+        return true;
+      }
+      return defaultValue;
+    };
     const license =
       detail.license && detail.license !== ""
         ? String(detail.license)
         : this.manifest && this.manifest.license
           ? String(this.manifest.license)
           : "by-sa";
-    const authorImage =
-      typeof detail.authorImage !== typeof undefined
-        ? String(detail.authorImage || "")
-        : manifestAuthor && manifestAuthor.image
-          ? String(manifestAuthor.image)
-          : "";
-    const authorName =
-      typeof detail.authorName !== typeof undefined
-        ? String(detail.authorName || "")
-        : manifestAuthor && manifestAuthor.name
-          ? String(manifestAuthor.name)
-          : "";
-    const authorSocialLink =
-      typeof detail.authorSocialLink !== typeof undefined
-        ? String(detail.authorSocialLink || "")
-        : manifestAuthor && manifestAuthor.socialLink
-          ? String(manifestAuthor.socialLink)
-          : "";
+    const authorImage = normalizeString(
+      detail.authorImage,
+      manifestAuthor && manifestAuthor.image ? String(manifestAuthor.image) : "",
+    );
+    const authorName = normalizeString(
+      detail.authorName,
+      manifestAuthor && manifestAuthor.name ? String(manifestAuthor.name) : "",
+    );
+    const authorEmail = normalizeString(
+      detail.authorEmail,
+      manifestAuthor && manifestAuthor.email ? String(manifestAuthor.email) : "",
+    );
+    const authorSocialLink = normalizeString(
+      detail.authorSocialLink,
+      manifestAuthor && manifestAuthor.socialLink
+        ? String(manifestAuthor.socialLink)
+        : "",
+    );
+    const description = normalizeString(
+      detail.description,
+      this.manifest && this.manifest.description
+        ? String(this.manifest.description)
+        : "",
+    );
+    const logo = normalizeString(
+      detail.logo,
+      manifestSite && manifestSite.logo ? String(manifestSite.logo) : "",
+    );
+    const domain = normalizeString(
+      detail.domain,
+      manifestSite && manifestSite.domain ? String(manifestSite.domain) : "",
+    );
+    const lang = normalizeString(
+      detail.lang,
+      manifestSiteSettings && manifestSiteSettings.lang
+        ? String(manifestSiteSettings.lang)
+        : "",
+    );
+    const gaID = normalizeString(
+      detail.gaID,
+      manifestSiteSettings && manifestSiteSettings.gaID
+        ? String(manifestSiteSettings.gaID)
+        : "",
+    );
+    const privateSite =
+      typeof detail.private !== typeof undefined
+        ? toBoolValue(detail.private, false)
+        : toBoolValue(
+            manifestSiteSettings ? manifestSiteSettings.private : undefined,
+            false,
+          );
+    const canonical =
+      typeof detail.canonical !== typeof undefined
+        ? toBoolValue(detail.canonical, true)
+        : toBoolValue(
+            manifestSiteSettings ? manifestSiteSettings.canonical : undefined,
+            true,
+          );
     const pathauto =
-      detail.pathauto === false ||
-      detail.pathauto === "false" ||
-      detail.pathauto === 0 ||
-      detail.pathauto === "0"
-        ? false
-        : true;
+      typeof detail.pathauto !== typeof undefined
+        ? toBoolValue(detail.pathauto, true)
+        : toBoolValue(
+            manifestSiteSettings ? manifestSiteSettings.pathauto : undefined,
+            true,
+          );
     const publishPagesOn =
-      detail.publishPagesOn === false ||
-      detail.publishPagesOn === "false" ||
-      detail.publishPagesOn === 0 ||
-      detail.publishPagesOn === "0"
-        ? false
-        : true;
+      typeof detail.publishPagesOn !== typeof undefined
+        ? toBoolValue(detail.publishPagesOn, true)
+        : toBoolValue(
+            manifestSiteSettings
+              ? manifestSiteSettings.publishPagesOn
+              : undefined,
+            true,
+          );
     const seoValues = {
+      description,
+      logo,
+      domain,
+      lang,
+      gaID,
+      private: privateSite,
+      canonical,
       pathauto,
       publishPagesOn,
     };
@@ -1579,6 +1670,7 @@ class HAXCMSSiteEditor extends LitElement {
         license: license,
         image: authorImage,
         name: authorName,
+        email: authorEmail,
         socialLink: authorSocialLink,
       },
       manifest: {
@@ -1586,9 +1678,17 @@ class HAXCMSSiteEditor extends LitElement {
           "manifest.license": license,
           "manifest.metadata.author.image": authorImage,
           "manifest.metadata.author.name": authorName,
+          "manifest.metadata.author.email": authorEmail,
           "manifest.metadata.author.socialLink": authorSocialLink,
         },
         seo: {
+          "manifest.description": description,
+          "manifest.metadata.site.logo": logo,
+          "manifest.metadata.site.domain": domain,
+          "manifest.metadata.site.settings.lang": lang,
+          "manifest.metadata.site.settings.gaID": gaID,
+          "manifest.metadata.site.settings.private": privateSite,
+          "manifest.metadata.site.settings.canonical": canonical,
           "manifest.metadata.site.settings.pathauto": pathauto,
           "manifest.metadata.site.settings.publishPagesOn": publishPagesOn,
         },

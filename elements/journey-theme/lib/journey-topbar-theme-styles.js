@@ -48,6 +48,8 @@ export const JourneyTopbarThemeStyles = css`
     padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
     overflow-x: auto;
     overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
 
@@ -78,17 +80,18 @@ export const JourneyTopbarThemeStyles = css`
 
   nav {
     display: inline-block;
-    width: max-content;
+    width: 100%;
   }
 
   nav ul {
     display: inline-flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: var(--ddd-spacing-4);
     padding: 0;
     margin: 0;
     list-style: none;
+    min-width: max-content;
   }
 
   nav ul li {
@@ -118,12 +121,14 @@ export const JourneyTopbarThemeStyles = css`
   }
 
   nav.topbar-scroll {
-    display: flex;
-    flex-wrap: wrap;
-    white-space: normal;
+    display: block;
+    white-space: nowrap;
     gap: var(--ddd-spacing-4);
-    max-height: 100px;
-    width: max-content;
+    max-height: none;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   nav.topbar-scroll ul {
@@ -133,7 +138,8 @@ export const JourneyTopbarThemeStyles = css`
     padding: 0;
     margin: 0;
     list-style: none;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: max-content;
   }
 
   nav.topbar-scroll li {
@@ -161,6 +167,20 @@ export const JourneyTopbarThemeStyles = css`
   nav.topbar-scroll::-webkit-scrollbar-thumb {
     background: color-mix(in srgb, var(--topbar-text) 40%, transparent);
     border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .topbar-container {
+      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+    }
+    nav ul,
+    nav.topbar-scroll ul {
+      gap: var(--ddd-spacing-2);
+    }
+    nav ul li a,
+    nav.topbar-scroll a {
+      padding: 6px 10px;
+    }
   }
 
   scroll-button {

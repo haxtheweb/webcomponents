@@ -163,8 +163,7 @@ class BootstrapBreadcrumb extends LitElement {
     this.items = [];
     this._activeItem = {};
     this.homeItem = {};
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+    this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
@@ -240,8 +239,16 @@ class BootstrapBreadcrumb extends LitElement {
     `;
   }
 
-  getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
+  _resolveBootstrapStylesheetPath() {
+    const packageURL = decodeURIComponent(import.meta.url);
+    if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
+      return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
+        .href;
+    }
+    return new URL(
+      "../../../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      packageURL,
+    ).href;
   }
 
   // gets parents item by the items id

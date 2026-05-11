@@ -1559,7 +1559,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return [];
       }
 
-      // Convert style guide content to HAXSchema elements
+      // Convert style guide content to HAX schema elements
       const styleGuideElements =
         await siteBuilder.htmlToHaxElements(styleGuideContent);
       const templates = [];
@@ -1777,6 +1777,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
     this.__themePreviewReady = false;
     this.themePreviewOpen = false;
+    this.themePreviewCollapsed = false;
 
     // default sub-contexts for Merlin before platform filtering
     this.platformContexts = {
@@ -2620,13 +2621,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteDashboard: "Sites Dashboard",
       cancel: "Cancel",
       unsavedChangesWillBeLostIfSelectingOkAreYouSure:
-        "Unsaved changes will be lost if selecting OK, are you sure?",
+        "Unsaved changes will be lost if you select OK. Are you sure?",
       editDetails: "Page details",
       add: "Add",
       source: "Source",
       viewSource: "Source",
       confirmHtmlSourceExit:
-        "HTML Source changes will not be saved without pressing the `Update HTML` button, Save without HTML code editor changes?",
+        "HTML source changes will not be saved without pressing the `Update HTML` button. Save without HTML code editor changes?",
       findMedia: "Media",
       undo: "Undo",
       redo: "Redo",
@@ -2640,9 +2641,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       delete: "Delete page",
       siteSettings: "Site Settings",
       about: "About",
-      themeSettings: "Theme settings",
-      seoSettings: "SEO settings",
-      authorSettings: "Author settings",
+      themeSettings: "Theme Settings",
+      seoSettings: "SEO Settings",
+      authorSettings: "Author Settings",
       styleGuide: "Style Guide",
       close: "Close",
       settings: "Settings",
@@ -2668,7 +2669,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       content: "Content",
       files: "Files",
     };
-    this.backText = "Site Dashboard";
+    this.backText = "Sites Dashboard";
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -2871,6 +2872,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   closeMenu() {
     this.userMenuOpen = false;
+  }
+  _userMenuOpenChanged(e) {
+    if (!e || !e.detail || typeof e.detail.value !== "boolean") {
+      return;
+    }
+    if (this.userMenuOpen !== e.detail.value) {
+      this.userMenuOpen = e.detail.value;
+    }
   }
 
   toggleMenu() {
@@ -3140,6 +3149,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="user-menu"
             part="app-hax-user-menu"
             ?is-open="${this.userMenuOpen}"
+            @is-open-changed="${this._userMenuOpenChanged}"
           >
           <button
             class="topbar-character"
@@ -3224,6 +3234,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ${this.themePreviewOpen && this.__themePreviewReady
         ? html`<haxcms-theme-preview-panel
             open
+            @haxcms-theme-preview-collapsed-changed=${this
+              ._handleThemePreviewCollapsedChanged}
             @haxcms-theme-preview-cancel=${this._handleThemePreviewCancel}
             @haxcms-theme-preview-open-admin=${this._handleThemePreviewOpenAdmin}
           ></haxcms-theme-preview-panel>`
@@ -3488,7 +3500,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/appearance",
       });
       SuperDaemonInstance.defineOption({
-        title: "Admin - Theme preview",
+        title: "Admin - Theme Preview",
         icon: "image:style",
         tags: [
           "CMS",
@@ -3526,7 +3538,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         value: {
           target: this,
           method: "_openSeoAdmin",
-          args: [true],
+          args: [true, "seo"],
         },
         context: "admin",
         eventName: "super-daemon-element-method",
@@ -3540,13 +3552,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         tags: ["CMS", "admin", "author", "settings", "site settings"],
         value: {
           target: this,
-          method: "_openSiteSettingsForm",
-          args: [
-            this.shadowRoot.querySelector("#manifestbtn"),
-            "author",
-            true,
-            this.t.authorSettings,
-          ],
+          method: "_openSeoAdmin",
+          args: [true, "author"],
         },
         context: "admin",
         eventName: "super-daemon-element-method",
@@ -3573,13 +3580,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         tags: ["CMS", "admin", "details", "site", "settings", "metadata"],
         value: {
           target: this,
-          method: "_openSiteSettingsForm",
-          args: [
-            this.shadowRoot.querySelector("#manifestbtn"),
-            "site",
-            true,
-            "Details",
-          ],
+          method: "_openDetailsAdmin",
+          args: [true, "Details"],
         },
         context: "admin",
         eventName: "super-daemon-element-method",
@@ -3668,7 +3670,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Dark mode toggle",
+      title: "Dark Mode Toggle",
       icon: "device:brightness-medium",
       tags: ["CMS", "dark mode"],
       value: {
@@ -3682,7 +3684,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Sound toggle",
+      title: "Sound Toggle",
       icon: "av:volume-up",
       tags: ["CMS", "sound"],
       value: {
@@ -3695,7 +3697,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     if (store.platformAllows("outlineDesigner")) {
       SuperDaemonInstance.defineOption({
-        title: `Admin - ${this.t.outlineDesigner}`,
+        title: `Admin - ${this.t.pageOutline}`,
         icon: "hax:site-map",
         tags: [
           "CMS",
@@ -3952,7 +3954,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
-      title: "Page as Data format",
+      title: "Page data formats",
       icon: "hax:code-json",
       tags: [
         "Developer",
@@ -3975,7 +3977,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       >`,
       voice: "page as data",
       value: {
-        name: "Page as Data format",
+        name: "Page data formats",
         machineName: "page-as-data",
         context: ">",
         program: async (input, values) => {
@@ -4075,7 +4077,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Print Options Program
     SuperDaemonInstance.defineOption({
-      title: "Print Options",
+      title: "Print options",
       icon: "icons:print",
       tags: ["CMS", "print", "page", "site", "pdf"],
       eventName: "super-daemon-run-program",
@@ -4083,7 +4085,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "print (options)",
       value: {
-        name: "Print Options",
+        name: "Print options",
         machineName: "print-options",
         program: async (input, values) => {
           // Import the print program dynamically
@@ -4269,6 +4271,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             });
           }
           return results;
+        },
+      },
+    });
+    // Share current page program
+    SuperDaemonInstance.defineOption({
+      title: "Share current page link",
+      icon: "editor:insert-link",
+      tags: ["CMS", "share", "link", "copy", "url", "page"],
+      eventName: "super-daemon-run-program",
+      context: ["CMS", "HAX"],
+      path: "CMS/action/share/page",
+      voice: "share page",
+      value: {
+        name: "Share current page link",
+        machineName: "share-page-link",
+        program: async (input, values) => {
+          const { createSharePageProgram } = await import(
+            "./utils/SharePageProgram.js"
+          );
+          const sharePageProgram = createSharePageProgram(this);
+          return await sharePageProgram(input, values);
         },
       },
     });
@@ -4614,6 +4637,84 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     url.searchParams.set("format", normalizedFormat);
     globalThis.location.href = url.toString();
   }
+  getCurrentPageShareLink(activeItem = null) {
+    let item = activeItem;
+    if (!item) {
+      item = toJS(store.activeItem);
+    }
+
+    let baseHref = "";
+    const baseElement = globalThis.document.querySelector("base");
+    if (baseElement && baseElement.href) {
+      baseHref = baseElement.href;
+    } else {
+      baseHref = `${globalThis.location.origin}/`;
+    }
+
+    let shareUrl = null;
+    try {
+      if (item && item.slug) {
+        shareUrl = new URL(item.slug, baseHref);
+      } else {
+        shareUrl = new URL(globalThis.location.href);
+      }
+    } catch (e) {
+      return globalThis.location.href;
+    }
+
+    if (shareUrl.searchParams && shareUrl.searchParams.has("format")) {
+      shareUrl.searchParams.delete("format");
+    }
+    shareUrl.hash = "";
+    return shareUrl.toString();
+  }
+  async copyCurrentPageShareLink(link = null, pageTitle = "current page") {
+    const shareLink = link || this.getCurrentPageShareLink();
+    if (!shareLink) {
+      HAXStore.toast("No active page found to share", 3000, "fit-bottom");
+      return;
+    }
+
+    let copied = false;
+    try {
+      if (
+        globalThis.navigator &&
+        globalThis.navigator.clipboard &&
+        globalThis.navigator.clipboard.writeText
+      ) {
+        await globalThis.navigator.clipboard.writeText(shareLink);
+        copied = true;
+      }
+    } catch (e) {
+      copied = false;
+    }
+
+    if (!copied) {
+      try {
+        const textArea = globalThis.document.createElement("textarea");
+        textArea.value = shareLink;
+        textArea.setAttribute("readonly", "true");
+        textArea.style.position = "absolute";
+        textArea.style.left = "-9999px";
+        globalThis.document.body.appendChild(textArea);
+        textArea.select();
+        copied = globalThis.document.execCommand("copy");
+        globalThis.document.body.removeChild(textArea);
+      } catch (e) {
+        copied = false;
+      }
+    }
+
+    if (copied) {
+      HAXStore.toast(`Link copied for ${pageTitle}`, 3000, "fit-bottom");
+    } else {
+      HAXStore.toast(
+        "Unable to copy automatically. Open Merlin to view the share link.",
+        4000,
+        "fit-bottom",
+      );
+    }
+  }
 
   // Export methods from ExportPageProgram
   async exportPageAs(format) {
@@ -4879,6 +4980,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Boolean,
         attribute: "theme-preview-open",
         reflect: true,
+      },
+      themePreviewCollapsed: {
+        type: Boolean,
       },
       __themePreviewReady: {
         type: Boolean,
@@ -5760,28 +5864,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._openThemePreview(null, routeOptions);
         return true;
       case "site":
-        this._openSiteSettingsForm(
-          invokedTarget,
-          "site",
-          true,
-          "Details",
-          routeOptions,
-        );
+        this._openDetailsAdmin(true, "Details", routeOptions);
         return true;
       case "about":
         this._openAboutAdmin(true, this.t.about, routeOptions);
         return true;
       case "seo":
-        this._openSeoAdmin(true, routeOptions);
+        this._openSeoAdmin(true, "seo", routeOptions);
         return true;
       case "author":
-        this._openSiteSettingsForm(
-          invokedTarget,
-          "author",
-          true,
-          this.t.authorSettings,
-          routeOptions,
-        );
+        this._openSeoAdmin(true, "author", routeOptions);
         return true;
       case "content":
         this._openContentAdmin(true, routeOptions);
@@ -6067,14 +6159,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     await this.__themePreviewImporting;
   }
-  _setThemePreviewCanvasState(isOpen) {
+  _setThemePreviewCanvasState(isOpen, isCollapsed = false) {
     if (!store.themeElement) {
       return;
     }
     if (isOpen) {
+      const previewMargin = isCollapsed
+        ? "0px"
+        : "var(--haxcms-theme-preview-width, 420px)";
       store.themeElement.style.setProperty(
         "margin-right",
-        "var(--haxcms-theme-preview-width, 420px)",
+        previewMargin,
       );
       store.themeElement.style.setProperty(
         "transition",
@@ -6087,6 +6182,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _closeThemePreview(clearRoute = true, historyMode = "replace") {
     this.themePreviewOpen = false;
+    this.themePreviewCollapsed = false;
     this._setThemePreviewCanvasState(false);
     if (
       clearRoute &&
@@ -6112,10 +6208,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     await this._ensureThemePreviewLoaded();
     this.themePreviewOpen = true;
-    this._setThemePreviewCanvasState(true);
+    this.themePreviewCollapsed = false;
+    this._setThemePreviewCanvasState(true, this.themePreviewCollapsed);
     if (!routeOptions.silent) {
       store.playSound("click");
     }
+  }
+  _handleThemePreviewCollapsedChanged(e) {
+    if (!this.themePreviewOpen) {
+      return;
+    }
+    const isCollapsed =
+      !!(e && e.detail && typeof e.detail.value === "boolean" && e.detail.value);
+    this.themePreviewCollapsed = isCollapsed;
+    this._setThemePreviewCanvasState(true, this.themePreviewCollapsed);
   }
   _handleThemePreviewCancel(e) {
     this._closeThemePreview(true, "replace");
@@ -6550,6 +6656,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-background":
+                "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "80vw",
@@ -6584,18 +6692,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this._outlineButtonTap(e, true, "Structure");
           break;
         case "site-settings":
-          this._openSiteSettingsForm(
-            this.shadowRoot.querySelector("#manifestbtn"),
-            "site",
-            true,
-            "Details",
-          );
+          this._openDetailsAdmin(true, "Details");
           break;
         case "theme-settings":
           this._openAppearanceSettings(true, "Appearance");
           break;
         case "seo-settings":
-          this._openSeoAdmin(true);
+          this._openSeoAdmin(true, "seo");
           break;
         case "blocks":
           this._openAllowedBlocksSettings(true, "Blocks");
@@ -6666,6 +6769,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "85vw",
               "--simple-modal-max-width": "85vw",
+              "--simple-modal-min-width": "300px",
+              "--simple-modal-min-width": "300px",
               "--simple-modal-height": "85vh",
               "--simple-modal-max-height": "85vh",
               "--simple-modal-min-height": "400px",
@@ -6729,6 +6834,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "85vw",
               "--simple-modal-max-width": "85vw",
+              "--simple-modal-min-width": "300px",
               "--simple-modal-height": "85vh",
               "--simple-modal-max-height": "85vh",
               "--simple-modal-min-height": "400px",
@@ -7029,26 +7135,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     this.exportSiteAs("skeleton", options);
   }
-  _openSeoAdmin(fromSiteSettings = false, routeOptions = {}) {
+  _openDetailsAdmin(
+    fromSiteSettings = false,
+    sectionTitle = "Details",
+    routeOptions = {},
+  ) {
     if (!routeOptions.skipUrlUpdate) {
-      this.setAdminPath("seo", routeOptions.historyMode || "push", false);
+      this.setAdminPath("site", routeOptions.historyMode || "push", false);
       return;
     }
-    if (!this._syncAdminRoutePath("seo", routeOptions)) {
+    if (!this._syncAdminRoutePath("site", routeOptions)) {
       return;
     }
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    import("./haxcms-seo-admin-dialog.js").then(() => {
+    import("./haxcms-site-details-dialog.js").then(() => {
       const invokedBy = this.shadowRoot.querySelector("#manifestbtn");
-      const dialog = globalThis.document.createElement("haxcms-seo-admin-dialog");
-      let title = this.t.seoSettings;
+      const dialog = globalThis.document.createElement(
+        "haxcms-site-details-dialog",
+      );
+      let title = sectionTitle || "Details";
       let breadcrumbs = [];
       if (fromSiteSettings) {
         const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
-          this.t.seoSettings,
-          "icons:search",
+          title,
+          "settings",
         );
         title = breadcrumbMeta.title;
         breadcrumbs = breadcrumbMeta.breadcrumbs;
@@ -7060,7 +7172,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: title,
-            titleIcon: "icons:search",
+            titleIcon: "settings",
             breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",
@@ -7071,6 +7183,72 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-max-width": "85vw",
               "--simple-modal-height": "85vh",
               "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: invokedBy,
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openSeoAdmin(fromSiteSettings = false, section = "seo", routeOptions = {}) {
+    if (section && typeof section === "object") {
+      routeOptions = section;
+      section = "seo";
+    }
+    const activeGroup = section === "author" ? "author" : "seo";
+    const routePath = activeGroup === "author" ? "author" : "seo";
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath(routePath, routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath(routePath, routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-seo-admin-dialog.js").then(() => {
+      const invokedBy = this.shadowRoot.querySelector("#manifestbtn");
+      const dialog = globalThis.document.createElement("haxcms-seo-admin-dialog");
+      dialog.activeGroup = activeGroup;
+      let title = activeGroup === "author" ? this.t.authorSettings : this.t.seoSettings;
+      let titleIcon = activeGroup === "author" ? "account-circle" : "icons:search";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          title,
+          titleIcon,
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: titleIcon,
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
             elements: {

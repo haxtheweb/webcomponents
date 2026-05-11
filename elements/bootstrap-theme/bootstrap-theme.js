@@ -8,6 +8,8 @@ import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils
 import { BootstrapUserStylesMenuMixin } from "@haxtheweb/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
 import { HAXCMSUserStylesMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
+import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystemStyles.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite";
@@ -33,6 +35,28 @@ class BootstrapTheme extends HAXCMSThemeParts(
    */
   static get tag() {
     return "bootstrap-theme";
+  }
+
+  _registerBootstrapDesignSystem() {
+    if (!DesignSystemManager.systems.bootstrap) {
+      DesignSystemManager.addDesignSystem({
+        name: "bootstrap",
+        styles: BootstrapDesignSystemStyles,
+        fonts: [],
+        hax: true,
+        integrations: {
+          hax: {
+            importer: () =>
+              import(
+                "@haxtheweb/bootstrap-theme/lib/BootstrapStyleGuideAuthoring.js"
+              ),
+            exportName: "registerBootstrapStyleGuideAuthoring",
+            shouldLoad: (context = {}) =>
+              !!context.editMode && context.isAuthenticated !== false,
+          },
+        },
+      });
+    }
   }
 
   static get styles() {
@@ -270,6 +294,27 @@ class BootstrapTheme extends HAXCMSThemeParts(
           overflow-wrap: break-word;
           text-overflow: ellipsis;
         }
+        .site-options {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          padding: 8px 12px;
+        }
+        :host([responsive-size=\"xs\"]) .site-options,
+        :host([responsive-size=\"sm\"]) .site-options {
+          gap: 6px;
+          padding: 12px;
+        }
+        :host([responsive-size=\"xs\"]) .page-title,
+        :host([responsive-size=\"sm\"]) .page-title {
+          display: block;
+          margin-left: 0;
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          line-height: 1.4;
+        }
         /* Light Theme */
         :host([color-theme="0"]) site-search {
           color: #252737;
@@ -282,7 +327,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         /* Dark Theme */
-        :host([color-theme="1"]) {
+        :host([color-theme="1"]),
+        :host([dark-mode][color-theme="0"]) {
           background-color: var(--bootstrap-theme-dark-background-color);
           --simple-fields-background-color: transparent;
           --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
@@ -297,7 +343,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --simple-icon-color: var(--bootstrap-theme-dark-color);
         }
 
-        :host([color-theme="1"]) site-search {
+        :host([color-theme="1"]) site-search,
+        :host([dark-mode][color-theme="0"]) site-search {
           color: var(--bootstrap-theme-dark-color);
           --site-search-result-background-color: var(
             --bootstrap-theme-dark-secondary-background-color
@@ -311,56 +358,70 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --site-search-result-color: var(--bootstrap-theme-dark-color);
         }
 
-        :host([color-theme="1"]) .site-title {
+        :host([color-theme="1"]) .site-title,
+        :host([dark-mode][color-theme="0"]) .site-title {
           border-bottom: 1px solid var(--bootstrap-theme-dark-color);
           background-color: var(--bootstrap-theme-dark-background-color);
         }
 
-        :host([color-theme="1"]) .site {
+        :host([color-theme="1"]) .site,
+        :host([dark-mode][color-theme="0"]) .site {
           background-color: var(--bootstrap-theme-dark-background-color);
         }
 
-        :host([color-theme="1"]) .menu-outline {
+        :host([color-theme="1"]) .menu-outline,
+        :host([dark-mode][color-theme="0"]) .menu-outline {
           background-color: var(--bootstrap-theme-dark-background-color);
         }
 
-        :host([color-theme="1"]) .site-title {
+        :host([color-theme="1"]) .site-title,
+        :host([dark-mode][color-theme="0"]) .site-title {
           color: #fff;
         }
 
-        :host([color-theme="1"]) .page-title {
+        :host([color-theme="1"]) .page-title,
+        :host([dark-mode][color-theme="0"]) .page-title {
           color: #fff;
         }
 
-        :host([color-theme="1"]) .main-section {
+        :host([color-theme="1"]) .main-section,
+        :host([dark-mode][color-theme="0"]) .main-section {
           color: var(--bootstrap-theme-dark-color);
         }
 
-        :host([color-theme="1"]) #site-search-input {
+        :host([color-theme="1"]) #site-search-input,
+        :host([dark-mode][color-theme="0"]) #site-search-input {
           background-color: var(
             --bootstrap-theme-dark-secondary-background-color
           );
         }
 
-        :host([color-theme="1"]) .card {
+        :host([color-theme="1"]) .card,
+        :host([dark-mode][color-theme="0"]) .card {
           background-color: var(
             --bootstrap-theme-dark-secondary-background-color
           );
         }
-        :host([color-theme="1"]) .card h1 h2 h3 h4 h5 h6 p {
+        :host([color-theme="1"]) .card h1 h2 h3 h4 h5 h6 p,
+        :host([dark-mode][color-theme="0"]) .card h1 h2 h3 h4 h5 h6 p {
           color: #fff;
         }
-        :host([color-theme="1"]) .site-header .btn {
+        :host([color-theme="1"]) .site-header .btn,
+        :host([dark-mode][color-theme="0"]) .site-header .btn {
           color: white;
         }
         :host([color-theme="1"]) .site-header .btn:hover,
         :host([color-theme="1"]) .site-header .btn:focus,
-        :host([color-theme="1"]) .site-header .btn:active {
+        :host([color-theme="1"]) .site-header .btn:active,
+        :host([dark-mode][color-theme="0"]) .site-header .btn:hover,
+        :host([dark-mode][color-theme="0"]) .site-header .btn:focus,
+        :host([dark-mode][color-theme="0"]) .site-header .btn:active {
           color: #fffff5;
           background: none;
         }
 
-        :host([color-theme="1"]) .site-header site-active-title {
+        :host([color-theme="1"]) .site-header site-active-title,
+        :host([dark-mode][color-theme="0"]) .site-header site-active-title {
           color: #fff;
         }
 
@@ -477,10 +538,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
    */
   constructor() {
     super();
+    this._registerBootstrapDesignSystem();
     this.HAXCMSThemeSettings.autoScroll = true;
     this.menuOpen = true;
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+    this._bootstrapPath = this._resolveVendorAssetPath(
+      "bootstrap",
+      "dist/css/bootstrap.min.css",
+    );
     this._themeElements = [];
     if (typeof this.colorTheme === typeof undefined || this.colorTheme === null) {
       this.colorTheme = 0;
@@ -493,6 +557,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
+    if (DesignSystemManager.active !== "bootstrap") {
+      DesignSystemManager.active = "bootstrap";
+    }
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun((reaction) => {
@@ -614,13 +681,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (this._bootstrapLink) {
       globalThis.document.head.removeChild(this._bootstrapLink);
     }
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let link = globalThis.document.createElement("link");
     link.setAttribute("rel", "stylesheet");
-    link.setAttribute(
-      "href",
-      basePath + "bootstrap/dist/css/bootstrap.min.css",
-    );
+    link.setAttribute("href", this._bootstrapPath);
     globalThis.document.head.appendChild(link);
     return link;
   }
@@ -633,7 +696,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
       globalThis.document.head.removeChild(this._bootstrapLink);
     }
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
     }
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
@@ -662,11 +730,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
    * Jquery callback function then loads bootstrap
    */
   _loadScripts() {
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    let jqueryPath = "jquery/dist/jquery.min.js";
     globalThis.ESGlobalBridge.requestAvailability().load(
       "jquery",
-      basePath + jqueryPath,
+      this._resolveVendorAssetPath("jquery", "dist/jquery.min.js"),
     );
     globalThis.addEventListener(
       `es-bridge-jquery-loaded`,
@@ -679,25 +745,29 @@ class BootstrapTheme extends HAXCMSThemeParts(
   }
 
   _loadBootstrap() {
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
     globalThis.ESGlobalBridge.requestAvailability().load(
       "bootstrap",
-      basePath + bootstrapPath,
+      this._resolveVendorAssetPath("bootstrap", "dist/js/bootstrap.bundle.min.js"),
     );
     globalThis.addEventListener(
       `es-bridge-bootstrap-loaded`,
       this._bootstrapLoaded.bind(this),
     );
   }
+  _resolveVendorAssetPath(packageName, packagePath) {
+    const packageURL = decodeURIComponent(import.meta.url);
+    if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
+      return new URL(`../../${packageName}/${packagePath}`, packageURL).href;
+    }
+    return new URL(
+      `../../node_modules/${packageName}/${packagePath}`,
+      packageURL,
+    ).href;
+  }
 
   _jqueryLoaded(e) {
     this._jquery = true;
     this._loadBootstrap();
-  }
-
-  getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
   }
 
   /**

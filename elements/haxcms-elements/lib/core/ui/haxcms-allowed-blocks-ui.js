@@ -342,9 +342,14 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         .preview-button {
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-color: currentColor;
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-1);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           background: light-dark(
             var(--ddd-theme-default-white),
             rgba(0, 0, 0, 0.2)
@@ -554,7 +559,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           }
 
           .actions {
-            position: static;
+            position: sticky;
+            bottom: 0;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );

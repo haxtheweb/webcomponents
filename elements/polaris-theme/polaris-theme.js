@@ -54,14 +54,30 @@ class PolarisTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          color: black;
-          --polaris-bg-color: #f5f5f5;
-          --polaris-content-bg-color: #ffffff;
-          --polaris-header-bg-color: #262c3a;
-          --polaris-nav-bg-color: #1173ca;
-          --polaris-footer-secondary-bg-color: #262c3a;
-          --polaris-footer-primary-bg-color: #141720;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          color-scheme: light dark;
+          --polaris-bg-color: light-dark(#f5f5f5, #141720);
+          --polaris-content-bg-color: light-dark(#ffffff, #1f2432);
+          --polaris-header-bg-color: light-dark(#262c3a, #0f1629);
+          --polaris-nav-bg-color: light-dark(#1173ca, #215a97);
+          --polaris-footer-secondary-bg-color: light-dark(#262c3a, #0f1629);
+          --polaris-footer-primary-bg-color: light-dark(#141720, #0b0e17);
+          --polaris-link-color: light-dark(#1173ca, #7bb7ff);
+          --polaris-link-hover-color: light-dark(#0b4b83, #b2d5ff);
+          --polaris-muted-color: light-dark(#999, #c7ceda);
           background-color: var(--polaris-bg-color);
+        }
+        :host([dark-mode]) {
+          color: #f5f5f5;
+          --polaris-bg-color: #111827;
+          --polaris-content-bg-color: #1f2937;
+          --polaris-header-bg-color: #111827;
+          --polaris-nav-bg-color: #0b4b83;
+          --polaris-footer-secondary-bg-color: #111827;
+          --polaris-footer-primary-bg-color: #020617;
         }
 
         .search-modal-btn {
@@ -80,7 +96,11 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --simple-icon-button-border-radius: none;
         }
         .entry-content a {
-          color: #1173ca;
+          color: var(--polaris-link-color);
+        }
+        :host([dark-mode]) .entry-content a,
+        :host([dark-mode]) a {
+          color: #9ecbff;
         }
 
         site-active-title {
@@ -178,10 +198,13 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         aside section {
-          background-color: #fff;
+          background-color: var(--polaris-content-bg-color);
           border-radius: 3px;
           margin-bottom: 40px;
           padding: 40px;
+        }
+        :host([dark-mode]) aside section {
+          background-color: var(--polaris-content-bg-color);
         }
 
         site-modal {
@@ -191,7 +214,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
 
         .footer-secondary {
           background-color: var(--polaris-footer-secondary-bg-color);
-          color: #999;
+          color: var(--polaris-muted-color);
           clear: both;
           padding: 40px 16px 16px;
         }
@@ -275,20 +298,30 @@ class PolarisTheme extends HAXCMSOperationButtons(
           text-transform: uppercase;
         }
         .site-description {
-          color: #999;
+          color: var(--polaris-muted-color);
           font-family: "Lato", sans-serif;
           font-size: 16px;
           font-weight: 300;
           line-height: 1;
           margin: 0 0 24px;
         }
+        :host([dark-mode]) .site-description {
+          color: var(--polaris-link-hover-color);
+        }
         .footer-secondary a:hover {
           color: #ddd;
         }
 
         .footer-secondary a {
-          border-bottom: 1px solid #666;
-          color: #999;
+          border-bottom: 1px solid var(--polaris-muted-color);
+          color: var(--polaris-muted-color);
+        }
+        :host([dark-mode]) .footer-secondary {
+          color: #d1d5db;
+        }
+        :host([dark-mode]) .footer-secondary a {
+          border-bottom-color: #d1d5db;
+          color: #f5f5f5;
         }
         .footer-secondary p {
           margin: 0 0 24px;
@@ -323,15 +356,22 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }
 
         .footer-primary a {
-          color: #2c76c7;
-          border-bottom: 1px solid #2c76c7;
+          color: var(--polaris-link-color);
+          border-bottom: 1px solid var(--polaris-link-color);
+        }
+        :host([dark-mode]) .footer-primary {
+          color: #f5f5f5;
+        }
+        :host([dark-mode]) .footer-primary a {
+          color: #9ecbff;
+          border-bottom-color: #9ecbff;
         }
         .footer-primary a:hover {
-          color: #fff;
-          border-bottom: 1px solid #fff;
+          color: var(--polaris-link-hover-color);
+          border-bottom: 1px solid var(--polaris-link-hover-color);
         }
         a {
-          color: #1173ca;
+          color: var(--polaris-link-color);
           text-decoration: none;
         }
         @media only screen and (max-width: 1139px) {
@@ -617,15 +657,6 @@ class PolarisTheme extends HAXCMSOperationButtons(
         }, 0);
       }
     });
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(PolarisTheme.tag, PolarisTheme);

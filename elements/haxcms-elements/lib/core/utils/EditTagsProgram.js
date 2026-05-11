@@ -33,7 +33,7 @@ export const createEditTagsProgram = (context) => {
       title:
         input && input.trim() !== ""
           ? `Save tags: ${input}`
-          : "Remove all tags",
+          : "Clear all tags",
       icon: "icons:check",
       tags: ["confirm", "save"],
       value: {

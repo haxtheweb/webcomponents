@@ -49,6 +49,11 @@ class FullWidthImage extends LitElement {
           opacity: 0;
           background-color: transparent;
         }
+        @media (prefers-reduced-motion: reduce) {
+          .wrapper {
+            transition: none;
+          }
+        }
 
         .caption {
           padding: 35px 0;

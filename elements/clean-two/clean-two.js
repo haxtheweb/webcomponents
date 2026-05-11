@@ -266,6 +266,9 @@ class CleanTwo extends LTIResizingMixin(
           display: flex;
           z-index: 15;
           min-width: 332px;
+          width: 332px;
+          max-width: 332px;
+          overflow-x: hidden;
           background: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           align-items: stretch;
           border-right: 1px solid
@@ -454,7 +457,12 @@ class CleanTwo extends LTIResizingMixin(
           }
           site-active-title h1 {
             width: 100%;
+            height: 48px;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
             word-break: break-all;
+            font-size: var(--ddd-font-size-xs);
           }
         }
         @media screen and (max-width: 400px) {
@@ -929,9 +937,6 @@ class CleanTwo extends LTIResizingMixin(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();

@@ -15,10 +15,10 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**
  * `haxcms-backend-userfs`
- * `User file system as backend storage for a hax site. allows offline site building with file system as storage`
+ * `User file system as backend storage for a HAX site. Allows offline site building with file system storage`
  *
  * @microcopy - the mental model for this element
- * - jwt - a json web token which is an encrypted security token to talk
+ * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
 class HAXCMSBackendUserfs extends LitElement {
   /**
@@ -60,7 +60,7 @@ class HAXCMSBackendUserfs extends LitElement {
     this.windowControllers = new AbortController();
     this.__disposer = [];
     this.jwt = "hax-cloud-fake";
-    // see up a tag to place RIGHT next to the site-builder itself
+    // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
@@ -395,7 +395,7 @@ class HAXCMSBackendUserfs extends LitElement {
     }
   }
   /**
-   * Detatched life cycle
+   * Detached life cycle
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {

@@ -46,6 +46,9 @@ class GradeBookLite extends UIRenderPieces(
 ) {
   constructor() {
     super();
+    this.__disposer = [];
+    this.__resizeObserver = null;
+    this.__xlsxFileSystemDataHandler = null;
     this.__pdfLoading = false;
     this.__hashLoading = false;
     enableServices(["core"]);
@@ -77,8 +80,8 @@ class GradeBookLite extends UIRenderPieces(
     // translatable text
     this.t = {
       generateHashLink: "Generate hash link",
-      generatingPleaseWait: "Generating please wait..",
-      downloadingPdfPleaseWait: "Downloading PDF please wait..",
+      generatingPleaseWait: "Generating, please wait...",
+      downloadingPdfPleaseWait: "Downloading PDF, please wait...",
       downloadPdf: "Download PDF",
       csvURL: "CSV URL",
       points: "Points",
@@ -117,7 +120,7 @@ class GradeBookLite extends UIRenderPieces(
       selectGradebookSource: "Select gradebook source",
       sourceData: "Source data",
       pasteValidJSONHere: "Paste valid JSON here",
-      loadingFilePleaseWait: "LOADING FILE PLEASE WAIT..",
+      loadingFilePleaseWait: "Loading file, please wait...",
     };
     this.registerLocalization({
       context: this,
@@ -132,24 +135,32 @@ class GradeBookLite extends UIRenderPieces(
     this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
     // drop event to remove the styling from droppable areas
     this.addEventListener("drop", this._handleDragDrop.bind(this));
-    autorun(() => {
-      this.activeStudent = toJS(GradeBookStore.activeStudent);
-    });
-    autorun(() => {
-      this.activeAssignment = toJS(GradeBookStore.activeAssignment);
-    });
-    autorun(() => {
-      this.database = toJS(GradeBookStore.database);
-    });
-    autorun(() => {
-      this.activeSubmission = toJS(GradeBookStore.activeSubmission);
-    });
+    this.__disposer.push(
+      autorun(() => {
+        this.activeStudent = toJS(GradeBookStore.activeStudent);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.activeAssignment = toJS(GradeBookStore.activeAssignment);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.database = toJS(GradeBookStore.database);
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        this.activeSubmission = toJS(GradeBookStore.activeSubmission);
+      }),
+    );
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    const resizeObserver = new ResizeObserver((entries) => {
+    this.__resizeObserver = new ResizeObserver((entries) => {
       clearTimeout(this.__resizer);
       this.__resizer = setTimeout(() => {
         var pixels = 0;
@@ -170,6 +181,9 @@ class GradeBookLite extends UIRenderPieces(
           pixels + "px";
       }, 50);
     });
+    if (this.shadowRoot.querySelector("#studentgrid")) {
+      this.__resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
+    }
     // see if we have a previous file reference
     setTimeout(async () => {
       this.prevLocalFileReference = await get("grade-book-prev-file");
@@ -355,7 +369,7 @@ class GradeBookLite extends UIRenderPieces(
           if (!this.__applied) {
             this.__applied = true;
             // this listener gets the event from the service worker
-            globalThis.addEventListener("xlsx-file-system-data", (e) => {
+            this.__xlsxFileSystemDataHandler = (e) => {
               let database = e.detail.data;
               for (var i in database) {
                 let loadedData = this.transformTable(database[i]);
@@ -365,11 +379,45 @@ class GradeBookLite extends UIRenderPieces(
                 GradeBookStore.database[i] = loadedData;
               }
               this.importStateCleanup();
-            });
+            };
+            globalThis.addEventListener(
+              "xlsx-file-system-data",
+              this.__xlsxFileSystemDataHandler,
+            );
           }
         }
       }
     });
+  }
+  disconnectedCallback() {
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
+    if (this.__resizer) {
+      clearTimeout(this.__resizer);
+      this.__resizer = null;
+    }
+    if (this.__xlsxFileSystemDataHandler) {
+      globalThis.removeEventListener(
+        "xlsx-file-system-data",
+        this.__xlsxFileSystemDataHandler,
+      );
+      this.__xlsxFileSystemDataHandler = null;
+      this.__applied = false;
+    }
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    this.__disposer = [];
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   importStateCleanup() {
     this.loading = false;
@@ -1040,14 +1088,16 @@ class GradeBookLite extends UIRenderPieces(
       const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
-      link.href = globalThis.URL.createObjectURL(
+      const objectUrl = globalThis.URL.createObjectURL(
         b64toBlob(response.data, "application/pdf"),
       );
+      link.href = objectUrl;
       link.download = `StudentReport.pdf`;
       link.target = "_blank";
       this.appendChild(link);
       link.click();
       this.removeChild(link);
+      globalThis.URL.revokeObjectURL(objectUrl);
     }
     this.__pdfLoading = false;
   }

@@ -7,6 +7,25 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
   static get tag() {
     return "web-container-doc-player";
   }
+  __onFrameResizeMessage(e) {
+    try {
+      let message = JSON.parse(e.data);
+      if (message.subject === "frameResize" && message.height && this.shadowRoot) {
+        this.shadowRoot
+          .querySelector("web-container")
+          .style.setProperty(
+            "--web-container-iframe-height",
+            parseInt(message.height) + 40 + "px",
+          );
+      }
+    } catch (error) {}
+  }
+  disconnectedCallback() {
+    globalThis.removeEventListener("message", this.__onFrameResizeMessage);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
   constructor() {
     super();
     this.element = null;
@@ -14,17 +33,9 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     this.importpath = null;
     this.version = "latest";
     this.rebuilding = false;
+    this.__onFrameResizeMessage = this.__onFrameResizeMessage.bind(this);
     // listen for the frame sending back it's height
-    globalThis.addEventListener(
-      'message',
-       (e) => {
-        // message that was passed from iframe page
-        let message = JSON.parse(e.data);
-        if (message.subject === "frameResize" && message.height) {
-          this.shadowRoot.querySelector('web-container').style.setProperty('--web-container-iframe-height', parseInt(message.height) + 40 + "px");
-        }
-      }
-    );
+    globalThis.addEventListener("message", this.__onFrameResizeMessage);
   }
 
   updated(changedProperties) {

@@ -32,6 +32,21 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       `,
     ];
   }
+  __revokeRemovedSchemaUrls() {
+    const activeKeys = Object.keys(this.schemas || {});
+    Object.keys(this.__downloadUrls || {}).forEach((key) => {
+      if (!activeKeys.includes(key)) {
+        globalThis.URL.revokeObjectURL(this.__downloadUrls[key]);
+        delete this.__downloadUrls[key];
+      }
+    });
+  }
+  __revokeAllDownloadUrls() {
+    Object.keys(this.__downloadUrls || {}).forEach((key) => {
+      globalThis.URL.revokeObjectURL(this.__downloadUrls[key]);
+      delete this.__downloadUrls[key];
+    });
+  }
 
   static get tag() {
     return "lorem-data";
@@ -48,6 +63,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   constructor() {
     super();
     this.schemas = {};
+    this.__downloadUrls = {};
   }
 
   render() {
@@ -57,7 +73,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
         (key) => html`
           <p>
             <label>
-              <a href="${this.saveDataUrl(this.schemas[key])}" download="${key}"
+              <a href="${this.saveDataUrl(this.schemas[key], key)}" download="${key}"
                 >${key}:
               </a>
               <br />
@@ -101,10 +117,14 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    * @returns {string}
    * @memberof LoremData
    */
-  saveDataUrl(schema) {
+  saveDataUrl(schema, key = "default") {
+    if (this.__downloadUrls[key]) {
+      globalThis.URL.revokeObjectURL(this.__downloadUrls[key]);
+    }
     let json = this.getJson(schema),
       blob = new Blob([json], { type: "octet/stream" });
-    return globalThis.URL.createObjectURL(blob);
+    this.__downloadUrls[key] = globalThis.URL.createObjectURL(blob);
+    return this.__downloadUrls[key];
   }
   get data() {
     let data = {};
@@ -714,7 +734,17 @@ class LoremData extends LoremDataBehaviors(LitElement) {
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
+    if (changedProperties.has("schemas")) {
+      this.__revokeRemovedSchemaUrls();
+    }
     changedProperties.forEach((oldValue, propName) => {});
+  }
+
+  disconnectedCallback() {
+    this.__revokeAllDownloadUrls();
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 }
 globalThis.customElements.define(LoremData.tag, LoremData);

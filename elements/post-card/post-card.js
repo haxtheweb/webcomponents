@@ -297,6 +297,11 @@ export class PostCard extends LitElement {
           transition: all 0.35s ease-in-out;
         }
       }
+      @media (prefers-reduced-motion: reduce) {
+        :host {
+          transition: none;
+        }
+      }
     `;
   }
   /**

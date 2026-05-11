@@ -258,13 +258,10 @@ const HAXCMSTheme = function (SuperClass) {
       // trick browser into thinking we just reized
       globalThis.dispatchEvent(new Event("resize"));
     }
-    /**
-     * Disconnect the wiring for the theme and clean up state
-     */
-    disconnectedCallback() {
-      // remove our content container var which will disconnect the wiring
-      delete this.contentContainer;
-      // clean up state
+    disposeDisposers() {
+      if (!this.__disposer) {
+        return;
+      }
       for (var i in this.__disposer) {
         const disposer = this.__disposer[i];
         if (typeof disposer === "function") {
@@ -274,6 +271,15 @@ const HAXCMSTheme = function (SuperClass) {
         }
       }
       this.__disposer = [];
+    }
+    /**
+     * Disconnect the wiring for the theme and clean up state
+     */
+    disconnectedCallback() {
+      // remove our content container var which will disconnect the wiring
+      delete this.contentContainer;
+      // clean up state
+      this.disposeDisposers();
       super.disconnectedCallback();
     }
     /**

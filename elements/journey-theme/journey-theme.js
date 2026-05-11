@@ -10,7 +10,10 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
-import { DDDAllStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import {
+  DDDVariables,
+  DDDPaletteStyles,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
@@ -284,7 +287,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   //styles function
   static get styles() {
     return [
-      DDDAllStyles,
+      DDDVariables,
+      DDDPaletteStyles,
       super.styles,
       css`
         :host {
@@ -347,12 +351,24 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         .lower-header-box {
           background-color: var(--ddd-palette-2);
           transition: var(--haxcms-site-transition);
-          height: var(--ddd-spacing-12);
-          padding: var(--ddd-spacing-6);
+          height: auto;
+          min-height: var(--ddd-spacing-12);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
           display: flex;
           justify-content: center;
           z-index: 1;
           position: relative;
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          scrollbar-width: thin;
+          -webkit-overflow-scrolling: touch;
+        }
+        .lower-header-box.not-home {
+          justify-content: flex-start;
+        }
+        .lower-header-box .article-link-icon.top {
+          flex: 0 0 auto;
         }
 
         .author a {
@@ -663,6 +679,13 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           }
           .lower-header-box {
             padding: var(--ddd-spacing-2);
+            justify-content: flex-start;
+          }
+          .article-link-icon.top {
+            margin: 0 var(--ddd-spacing-2);
+          }
+          .article-link-icon.top::before {
+            width: var(--ddd-spacing-10);
           }
           header h1 {
             font-size: var(--ddd-font-size-xl);
@@ -745,15 +768,6 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       this.HAXCMSThemeSettings.scrollTarget;
   }
 
-  // manages window resize observer
-  disconnectedCallback() {
-    if (this.__disposer) {
-      for (var i in this.__disposer) {
-        this.__disposer[i].dispose();
-      }
-    }
-    super.disconnectedCallback();
-  }
 
   togglePalette(e) {
     this.dataPalette++;

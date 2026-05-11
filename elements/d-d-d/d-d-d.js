@@ -12,6 +12,7 @@ import {
   DDDAnimations,
   DDDDataAttributes,
   ApplicationAttributeData,
+  HAXOptionSampleFactory,
 } from "./lib/DDDStyles.js";
 import { DesignSystemManager } from "./lib/DesignSystemManager.js";
 
@@ -93,6 +94,20 @@ export const DDDSuper = function (SuperClass) {
           name: "ddd",
           styles: DDDAllStyles,
           fonts: DDDFonts,
+          integrations: {
+            hax: {
+              importer: () =>
+                import("@haxtheweb/d-d-d/lib/DDDStyleGuideAuthoring.js"),
+              exportName: "registerDDDStyleGuideAuthoring",
+              shouldLoad: (context) =>
+                !!context &&
+                !!context.editMode &&
+                context.isAuthenticated !== false,
+              options: {
+                HAXOptionSampleFactory,
+              },
+            },
+          },
           onload: () => {
             // check for css feature support
             if (!CSS.supports("initial-letter", "1")) {
@@ -121,7 +136,23 @@ export const DDDSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [styles, DDDReset];
+      return [
+        styles,
+        DDDReset,
+        css`
+          @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+              transition-delay: 0ms !important;
+              scroll-behavior: auto !important;
+            }
+          }
+        `,
+      ];
     }
   };
 };

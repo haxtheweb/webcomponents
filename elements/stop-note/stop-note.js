@@ -4,10 +4,6 @@ import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import {
-  DDDMarginPadding,
-  DDDBorders,
-} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
@@ -38,8 +34,6 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   static get styles() {
     return [
       super.styles,
-      DDDBorders,
-      DDDMarginPadding,
       css`
         :host {
           display: block;

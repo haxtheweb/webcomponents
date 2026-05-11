@@ -27,7 +27,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       fileUploadsMustHaveAFileExtension:
         "File uploads must have a file extension",
       uploads: "uploads",
-      dropMediaHereOr: "drop media here or",
+      dropMediaHereOr: "Drop media here or",
       selectMedia: "Select media",
       upload: "Upload",
       takePhoto: "Take photo",

@@ -36,7 +36,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
     this.body = {};
     this.headers = {};
     this.__disposer = [];
-    // see up a tag to place RIGHT next to the site-builder itself
+    // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
@@ -212,7 +212,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
     }
   }
   /**
-   * Detatched life cycle
+   * Detached life cycle
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {

@@ -15,7 +15,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
  * `a simple element to check for and fetch JWTs`
  *
  * @microcopy - the mental model for this element
- * - jwt - a json web token which is an encrypted security token to talk
+ * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
 class HAXCMSBackendBeaker extends LitElement {
   /**
@@ -57,7 +57,7 @@ class HAXCMSBackendBeaker extends LitElement {
     super();
     this.windowControllers = new AbortController();
     this.__disposer = [];
-    // see up a tag to place RIGHT next to the site-builder itself
+    // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
@@ -101,13 +101,6 @@ class HAXCMSBackendBeaker extends LitElement {
       this._appPicked.bind(this),
       { signal: this.windowControllers.signal },
     );
-  }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    this.windowControllers.abort();
-    super.disconnectedCallback();
   }
   _appPicked(e) {
     if (e.detail.connection.protocol === "dat") {
@@ -374,7 +367,7 @@ class HAXCMSBackendBeaker extends LitElement {
     }
   }
   /**
-   * Detatched life cycle
+   * Detached life cycle
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {
@@ -385,6 +378,7 @@ class HAXCMSBackendBeaker extends LitElement {
         disposer.dispose();
       }
     }
+    this.windowControllers.abort();
     super.disconnectedCallback();
   }
   /**

@@ -14,7 +14,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.icon = "account-circle";
-    this.label = "Default";
+    this.label = "Menu Item";
   }
 
   handleClick(e) {

@@ -47,7 +47,7 @@ class HaxElementListSelector extends LitElement {
     this.HaxElementizer = HaxElementizer;
     // default fields json blob, most implementations should provide their own though obviously
     this.fieldsEndpoint = new URL("./fields.json", import.meta.url).href;
-    // allow flobal base path focibly set
+    // allow global base path to be forcibly set
     if (globalThis.WCGlobalBasePath) {
       this.basePath = globalThis.WCGlobalBasePath;
     } else {
@@ -80,7 +80,7 @@ class HaxElementListSelector extends LitElement {
         type: Object,
       },
       /**
-       * Show card list so that it SEEMS like its happenign when we click HAX elements
+       * Show card list so that it SEEMS like it's happening when we click HAX elements
        */
       showCardList: {
         type: Boolean,
@@ -92,7 +92,7 @@ class HaxElementListSelector extends LitElement {
         type: Object,
       },
       /**
-       * HAXSchema array
+       * HAX schema array
        */
       haxData: {
         type: Array,

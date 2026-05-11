@@ -12,7 +12,7 @@ import { LitElement, html, css } from "lit";
 class DisqusEmbed extends LitElement {
   constructor() {
     super();
-    this.loadingText = "Loading comments..";
+    this.loadingText = "Loading comments...";
     this.pageURL = null;
     this.pageIdentifier = null;
     this.pageTitle = null;
@@ -132,7 +132,7 @@ class DisqusBroker extends LitElement {
   constructor() {
     super();
     // use this to store a reference to what is rendering the disqus visually
-    // this also gets called in teh callbacks so that when events happen we can
+    // this also gets called in the callbacks so that when events happen we can
     // move Disqus to the visual target once it's safe to do so
     this.renderTarget = null;
   }

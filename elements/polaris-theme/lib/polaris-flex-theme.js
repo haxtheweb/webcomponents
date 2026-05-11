@@ -80,6 +80,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --polaris-sm-padding: 40px;
           --polaris-md-padding: 46px;
           --polaris-standard-padding: 62px;
+          --polaris-content-max-width: 80ch;
 
           background-color: light-dark(
             var(--ddd-accent-6),
@@ -164,6 +165,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         article > *:not(site-active-media-banner) {
           padding: 0 var(--polaris-standard-padding);
+          max-width: var(--polaris-content-max-width);
+          margin-left: auto;
+          margin-right: auto;
         }
 
         site-breadcrumb {
@@ -228,6 +232,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
         #slot {
           line-break: auto;
           min-height: 50vh;
+          font-size: var(--ddd-font-size-s);
+          line-height: var(--ddd-lh-150);
+          text-align: start;
         }
 
         .nav-section {
@@ -395,6 +402,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         /* Theme Responsive Section */
         :host([responsive-size="md"]) {
+          article > *:not(site-active-media-banner) {
+            padding: 0 var(--polaris-md-padding);
+          }
           site-menu {
             --map-menu-layer-1-margin: 0 var(--ddd-spacing-8) 0 0;
             --map-menu-layer-2-horizontal-padding: 0 var(--polaris-md-padding);
@@ -408,6 +418,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         :host([responsive-size="sm"]) {
+          article > *:not(site-active-media-banner) {
+            padding: 0 var(--polaris-sm-padding);
+          }
           .header-links {
             display: none;
           }
@@ -496,6 +509,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         :host([responsive-size="xs"]) {
+          article > *:not(site-active-media-banner) {
+            padding: 0 var(--polaris-xs-padding);
+          }
           site-menu {
             --map-menu-item-icon-active-color: var(
               --ddd-theme-default-nittanyNavy
@@ -1029,15 +1045,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }, 0);
       }
     });
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(PolarisFlexTheme.tag, PolarisFlexTheme);

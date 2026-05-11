@@ -14,7 +14,7 @@ import "@haxtheweb/jwt-login/jwt-login.js";
  * @demo demo/index.html
  *
  * @microcopy - the mental model for this element
- * - jwt - a json web token which is an encrypted security token to talk
+ * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
 class HAXCMSBackendPHP extends LitElement {
   /**
@@ -63,7 +63,7 @@ class HAXCMSBackendPHP extends LitElement {
         jwtlogin.logoutUrl = globalThis.appSettings.logout;
         jwtlogin.redirectUrl = globalThis.appSettings.redirectUrl;
         // allow setting in session driven environments
-        // its not a real JWT but it drives the environment to operate correctly
+        // it's not a real JWT but it drives the environment to operate correctly
         if (globalThis.appSettings.jwt) {
           this.jwt = globalThis.appSettings.jwt;
         }
@@ -94,7 +94,7 @@ class HAXCMSBackendPHP extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    // see up a tag to place RIGHT next to the site-builder itself
+    // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
@@ -102,7 +102,7 @@ class HAXCMSBackendPHP extends LitElement {
     );
   }
   /**
-   * Detatched life cycle
+   * Detached life cycle
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {
@@ -150,7 +150,7 @@ class HAXCMSBackendPHP extends LitElement {
           // if we don't have appSettings by this point
           // it means we don't actually have a backend / directions
           // this would be a published state or a state where
-          // there is no actual backend to bother confiring with
+          // there is no actual backend to bother confirming with
           // possibly a user navigated to a site that doesn't
           // have JWT credentials but isn't actually published
           // we also need this here because PHP is the assumed

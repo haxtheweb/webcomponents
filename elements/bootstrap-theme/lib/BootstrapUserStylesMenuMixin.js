@@ -12,11 +12,10 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
     constructor() {
       super();
       this.hideUserStylesMenu = true;
-      this.fontSize = 1;
-      this.fontFamily = 0;
+      this.fontSize = localStorageGet("haxcms-bootstrap-userPref-fontSize", 1);
+      this.fontFamily = localStorageGet("haxcms-bootstrap-userPref-fontFamily", 0);
       this.colorTheme = localStorageGet("haxcms-bootstrap-userPref-colorTheme", 0);
-      let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-      this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+      this._bootstrapPath = this._resolveBootstrapStylesheetPath();
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
       autorun(() => {
         const darkMode = toJS(store.darkMode);
@@ -33,6 +32,23 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         }
       });
     }
+    _resolveBootstrapStylesheetPath() {
+      if (typeof this._resolveVendorAssetPath === "function") {
+        return this._resolveVendorAssetPath(
+          "bootstrap",
+          "dist/css/bootstrap.min.css",
+        );
+      }
+      const packageURL = decodeURIComponent(import.meta.url);
+      if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
+        return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
+          .href;
+      }
+      return new URL(
+        "../../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        packageURL,
+      ).href;
+    }
     static get styles() {
       let styles = [];
       if (super.styles) {
@@ -41,6 +57,71 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       return [
         styles,
         css`
+          :host {
+            --bootstrap-theme-user-font-scale: 1;
+            --bootstrap-theme-user-line-height: 1.5;
+            --bootstrap-theme-user-font-family: var(
+              --ddd-font-primary,
+              "Helvetica Neue",
+              Helvetica,
+              Arial,
+              sans-serif
+            );
+          }
+          :host([font-size="0"]) {
+            --bootstrap-theme-user-font-scale: 0.9;
+          }
+          :host([font-size="1"]) {
+            --bootstrap-theme-user-font-scale: 1;
+          }
+          :host([font-size="2"]) {
+            --bootstrap-theme-user-font-scale: 1.1;
+          }
+          :host([font-size="3"]) {
+            --bootstrap-theme-user-font-scale: 1.2;
+          }
+          :host([font-size="4"]) {
+            --bootstrap-theme-user-font-scale: 1.3;
+          }
+          :host([font-family="0"]) {
+            --bootstrap-theme-user-font-family: var(
+              --ddd-font-primary,
+              "Helvetica Neue",
+              Helvetica,
+              Arial,
+              sans-serif
+            );
+          }
+          :host([font-family="1"]) {
+            --bootstrap-theme-user-font-family: var(
+              --ddd-font-monospace,
+              "Courier New",
+              Courier,
+              monospace
+            );
+          }
+
+          .main-section {
+            font-size: calc(1rem * var(--bootstrap-theme-user-font-scale));
+            line-height: var(--bootstrap-theme-user-line-height);
+            font-family: var(--bootstrap-theme-user-font-family);
+          }
+          .main-section p,
+          .main-section li,
+          .main-section td,
+          .main-section th {
+            font-size: calc(1em * var(--bootstrap-theme-user-font-scale));
+            line-height: var(--bootstrap-theme-user-line-height);
+          }
+          .main-section h1,
+          .main-section h2,
+          .main-section h3,
+          .main-section h4,
+          .main-section h5,
+          .main-section h6,
+          .page-title {
+            font-family: var(--bootstrap-theme-user-font-family);
+          }
           :host([color-theme="0"]) {
           }
 
@@ -335,13 +416,16 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
     }
     checkUserStylesMenuOpen(e) {
       var target = normalizeEventPath(e);
+      const localTarget = target && target[0] ? target[0] : null;
+      const isButtonTarget =
+        localTarget && localTarget.tagName && localTarget.tagName === "BUTTON";
       if (
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
         !target.includes(
           this.shadowRoot.querySelector("#haxcmsuserstylesmenu"),
         ) &&
-        target.tagName !== "BUTTON"
+        !isButtonTarget
       ) {
         this.hideUserStylesMenu = true;
       }
@@ -374,22 +458,44 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
     toggleUserStylesMenu(e) {
       this.hideUserStylesMenu = !this.hideUserStylesMenu;
     }
+    _eventPathButtonTarget(e) {
+      const targetPath = normalizeEventPath(e);
+      for (let i = 0; i < targetPath.length; i++) {
+        if (
+          targetPath[i] &&
+          targetPath[i].tagName &&
+          targetPath[i].tagName === "BUTTON"
+        ) {
+          return targetPath[i];
+        }
+      }
+      return null;
+    }
     UserStylesSizeDown(e) {
       if (this.fontSize > 0) {
         this.fontSize = this.fontSize - 1;
+        localStorageSet("haxcms-bootstrap-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesSizeUp(e) {
       if (this.fontSize < 4) {
         this.fontSize = this.fontSize + 1;
+        localStorageSet("haxcms-bootstrap-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesFontFamilyChange(e) {
-      var target = normalizeEventPath(e)[0];
-      this.fontFamily = parseInt(target.getAttribute("data-font"));
+      const target = this._eventPathButtonTarget(e);
+      if (!target) {
+        return;
+      }
+      this.fontFamily = parseInt(target.getAttribute("data-font"), 10);
+      localStorageSet("haxcms-bootstrap-userPref-fontFamily", this.fontFamily);
     }
     UserStylesColorThemeChange(e) {
-      var target = normalizeEventPath(e)[0];
+      const target = this._eventPathButtonTarget(e);
+      if (!target) {
+        return;
+      }
       this.colorTheme = parseInt(target.getAttribute("data-theme"), 10);
       localStorageSet(
         "haxcms-bootstrap-userPref-colorTheme",

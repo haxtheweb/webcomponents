@@ -449,15 +449,6 @@ class TerribleThemes extends HAXCMSRememberRoute(
       super.firstUpdated(changedProperties);
     }
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
-  }
   __prevPageLabelChanged(e) {
     this.prevPage = e.detail.value;
   }

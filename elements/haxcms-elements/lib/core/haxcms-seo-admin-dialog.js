@@ -21,6 +21,7 @@ class HAXCMSSEOAdminDialog extends DDD {
       values: { type: Object },
       errorMessage: { type: String, attribute: "error-message" },
       licenseOptions: { type: Object, attribute: false },
+      activeGroup: { type: String, attribute: "active-group" },
     };
   }
 
@@ -30,6 +31,7 @@ class HAXCMSSEOAdminDialog extends DDD {
     this.values = {};
     this.errorMessage = "";
     this.licenseOptions = new licenseList("select");
+    this.activeGroup = "seo";
     this.__valueChangeLock = false;
     this.__groupValues = {};
     this.__manifestReaction = null;
@@ -66,8 +68,6 @@ class HAXCMSSEOAdminDialog extends DDD {
           box-sizing: border-box;
           min-width: 70vw;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
-          height: var(--haxcms-admin-panel-height);
-          max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
           font-family: var(--ddd-font-primary);
           padding: var(--ddd-spacing-4);
@@ -86,6 +86,7 @@ class HAXCMSSEOAdminDialog extends DDD {
           flex-direction: column;
           flex: 1;
           min-height: 0;
+          overflow: hidden;
         }
         .panel-scroll {
           flex: 1;
@@ -93,6 +94,7 @@ class HAXCMSSEOAdminDialog extends DDD {
           overflow-y: auto;
           overflow-x: hidden;
           padding-right: var(--ddd-spacing-1);
+          padding-bottom: var(--ddd-spacing-4);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-4);
@@ -112,6 +114,9 @@ class HAXCMSSEOAdminDialog extends DDD {
           );
           padding: var(--ddd-spacing-4);
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          min-height: 0;
         }
         .group-summary {
           list-style: none;
@@ -238,14 +243,6 @@ class HAXCMSSEOAdminDialog extends DDD {
             width: 100%;
             min-height: 0;
             height: auto;
-            max-height: calc(
-              100dvh -
-                var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
-            );
             overflow-y: auto;
             overflow-x: hidden;
             padding: var(--ddd-spacing-3);
@@ -258,12 +255,14 @@ class HAXCMSSEOAdminDialog extends DDD {
             min-height: auto;
             overflow: visible;
             padding-right: 0;
+            padding-bottom: 0;
           }
           .group {
             padding: var(--ddd-spacing-3);
           }
           .actions {
-            position: static;
+            position: sticky;
+            bottom: 0;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );
@@ -311,13 +310,67 @@ class HAXCMSSEOAdminDialog extends DDD {
 
   _buildSeoGroups() {
     const options = this._cloneData(this.licenseOptions || {});
+    const activeGroup = this.activeGroup === "author" ? "author" : "seo";
     return [
       {
         key: "seo",
         label: "SEO",
         icon: "icons:search",
-        open: true,
+        open: activeGroup === "seo",
         fields: [
+          {
+            property: "manifest-description",
+            title: "Description",
+            description: "Simple description of the site",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-logo",
+            title: "Favicon",
+            description: "Browser tab image / used on phones as small site logo",
+            inputMethod: "haxupload",
+            required: false,
+            noVoiceRecord: true,
+          },
+          {
+            property: "manifest-metadata-site-domain",
+            title: "Domain",
+            description: "Domain of this website",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-settings-lang",
+            title: "Language",
+            description:
+              "ISO 639-1 language code for this site (for example, en, es, fr).",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-settings-gaID",
+            title: "Google Analytics ID",
+            description: "Tracking ID used for analytics integrations",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-settings-private",
+            title: "Private site",
+            description:
+              "Prevent indexing and require authentication to access content",
+            inputMethod: "boolean",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-settings-canonical",
+            title: "Canonical",
+            description:
+              "Treat domain as canonical to improve SEO consistency",
+            inputMethod: "boolean",
+            required: false,
+          },
           {
             property: "manifest-metadata-site-settings-pathauto",
             title: "Pathauto",
@@ -338,7 +391,7 @@ class HAXCMSSEOAdminDialog extends DDD {
         key: "author",
         label: "Author",
         icon: "social:person",
-        open: false,
+        open: activeGroup === "author",
         fields: [
           {
             property: "manifest-license",
@@ -364,6 +417,13 @@ class HAXCMSSEOAdminDialog extends DDD {
             required: false,
           },
           {
+            property: "manifest-metadata-author-email",
+            title: "Email",
+            description: "Primary email for author contact",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
             property: "manifest-metadata-author-socialLink",
             title: "Social media link",
             description: "A primary social space or point of contact",
@@ -385,6 +445,10 @@ class HAXCMSSEOAdminDialog extends DDD {
       metadata && metadata.author && typeof metadata.author === "object"
         ? metadata.author
         : {};
+    const metadataSite =
+      metadata && metadata.site && typeof metadata.site === "object"
+        ? metadata.site
+        : {};
     const topAuthorObject =
       manifest && manifest.author && typeof manifest.author === "object"
         ? manifest.author
@@ -399,11 +463,8 @@ class HAXCMSSEOAdminDialog extends DDD {
     const topAuthorString =
       manifest && typeof manifest.author === "string" ? manifest.author : "";
     const siteSettings =
-      metadata &&
-      metadata.site &&
-      metadata.site.settings &&
-      typeof metadata.site.settings === "object"
-        ? metadata.site.settings
+      metadataSite && metadataSite.settings && typeof metadataSite.settings === "object"
+        ? metadataSite.settings
         : {};
     const seoSettings =
       manifest && manifest.seo && typeof manifest.seo === "object"
@@ -433,6 +494,32 @@ class HAXCMSSEOAdminDialog extends DDD {
       topAuthorObject.social,
       siteAuthorObject.social,
     ]);
+    const authorEmail = this._firstDefinedString([
+      metadataAuthor.email,
+      topAuthorObject.email,
+      siteAuthorObject.email,
+    ]);
+    const domain = this._firstDefinedString([metadataSite.domain]);
+    const siteDescription = this._firstDefinedString([
+      manifest ? manifest.description : "",
+    ]);
+    const favicon = this._firstDefinedString([metadataSite.logo]);
+    const lang = this._firstDefinedString([
+      siteSettings.lang,
+      seoSettings.lang,
+    ]);
+    const gaID = this._firstDefinedString([
+      siteSettings.gaID,
+      seoSettings.gaID,
+    ]);
+    const privateSite =
+      typeof siteSettings.private !== "undefined"
+        ? siteSettings.private
+        : seoSettings.private;
+    const canonical =
+      typeof siteSettings.canonical !== "undefined"
+        ? siteSettings.canonical
+        : seoSettings.canonical;
     const pathauto =
       typeof siteSettings.pathauto !== "undefined"
         ? siteSettings.pathauto
@@ -444,7 +531,21 @@ class HAXCMSSEOAdminDialog extends DDD {
     values["manifest-license"] = license !== "" ? license : "by-sa";
     values["manifest-metadata-author-image"] = authorImage;
     values["manifest-metadata-author-name"] = authorName;
+    values["manifest-metadata-author-email"] = authorEmail;
     values["manifest-metadata-author-socialLink"] = authorSocialLink;
+    values["manifest-description"] = siteDescription;
+    values["manifest-metadata-site-logo"] = favicon;
+    values["manifest-metadata-site-domain"] = domain;
+    values["manifest-metadata-site-settings-lang"] = lang;
+    values["manifest-metadata-site-settings-gaID"] = gaID;
+    values["manifest-metadata-site-settings-private"] = this._toBoolValue(
+      privateSite,
+      false,
+    );
+    values["manifest-metadata-site-settings-canonical"] = this._toBoolValue(
+      canonical,
+      true,
+    );
     values["manifest-metadata-site-settings-pathauto"] = this._toBoolValue(
       pathauto,
       true,
@@ -532,11 +633,37 @@ class HAXCMSSEOAdminDialog extends DDD {
       license: this.values["manifest-license"]
         ? String(this.values["manifest-license"])
         : "by-sa",
+      description: this.values["manifest-description"]
+        ? String(this.values["manifest-description"])
+        : "",
+      logo: this.values["manifest-metadata-site-logo"]
+        ? String(this.values["manifest-metadata-site-logo"])
+        : "",
+      domain: this.values["manifest-metadata-site-domain"]
+        ? String(this.values["manifest-metadata-site-domain"])
+        : "",
+      lang: this.values["manifest-metadata-site-settings-lang"]
+        ? String(this.values["manifest-metadata-site-settings-lang"])
+        : "",
+      gaID: this.values["manifest-metadata-site-settings-gaID"]
+        ? String(this.values["manifest-metadata-site-settings-gaID"])
+        : "",
+      private: this._toBoolValue(
+        this.values["manifest-metadata-site-settings-private"],
+        false,
+      ),
+      canonical: this._toBoolValue(
+        this.values["manifest-metadata-site-settings-canonical"],
+        true,
+      ),
       authorImage: this.values["manifest-metadata-author-image"]
         ? String(this.values["manifest-metadata-author-image"])
         : "",
       authorName: this.values["manifest-metadata-author-name"]
         ? String(this.values["manifest-metadata-author-name"])
+        : "",
+      authorEmail: this.values["manifest-metadata-author-email"]
+        ? String(this.values["manifest-metadata-author-email"])
         : "",
       authorSocialLink: this.values["manifest-metadata-author-socialLink"]
         ? String(this.values["manifest-metadata-author-socialLink"])
@@ -618,7 +745,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             @click="${this._saveSEOSettingsTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            OK
+            Save
           </button>
         </div>
       </div>

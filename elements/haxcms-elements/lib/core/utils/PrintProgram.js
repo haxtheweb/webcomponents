@@ -11,6 +11,37 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
  * Print helper functions that can be called from Merlin options
  */
 export class PrintHelper {
+  static _revokeObjectUrlOnClose(objectUrl, printWindow) {
+    let revoked = false;
+    let closePoll = null;
+    const revokeObjectUrl = () => {
+      if (!revoked) {
+        revoked = true;
+        globalThis.URL.revokeObjectURL(objectUrl);
+      }
+      if (closePoll) {
+        clearInterval(closePoll);
+        closePoll = null;
+      }
+    };
+    if (printWindow && printWindow.addEventListener) {
+      printWindow.addEventListener("beforeunload", revokeObjectUrl, {
+        once: true,
+      });
+      printWindow.addEventListener("pagehide", revokeObjectUrl, {
+        once: true,
+      });
+      closePoll = setInterval(() => {
+        if (printWindow.closed) {
+          revokeObjectUrl();
+        }
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        revokeObjectUrl();
+      }, 60000);
+    }
+  }
   static async printBranch() {
     let base = "";
     if (globalThis.document.querySelector("base")) {
@@ -42,16 +73,18 @@ export class PrintHelper {
         params,
       );
       if (response.status == 200 && response.data) {
-        globalThis.open(
-          globalThis.URL.createObjectURL(
-            b64toBlob(
-              btoa(unescape(encodeURIComponent(response.data))),
-              "text/html",
-            ),
+        const objectUrl = globalThis.URL.createObjectURL(
+          b64toBlob(
+            btoa(unescape(encodeURIComponent(response.data))),
+            "text/html",
           ),
+        );
+        const printWindow = globalThis.open(
+          objectUrl,
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
+        this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
         // Fallback
         this.printFallback();
@@ -93,16 +126,18 @@ export class PrintHelper {
         params,
       );
       if (response.status == 200 && response.data) {
-        globalThis.open(
-          globalThis.URL.createObjectURL(
-            b64toBlob(
-              btoa(unescape(encodeURIComponent(response.data))),
-              "text/html",
-            ),
+        const objectUrl = globalThis.URL.createObjectURL(
+          b64toBlob(
+            btoa(unescape(encodeURIComponent(response.data))),
+            "text/html",
           ),
+        );
+        const printWindow = globalThis.open(
+          objectUrl,
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
+        this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
         this.printFallback();
       }
@@ -143,12 +178,12 @@ export const createPrintProgram = (i18nMixin) => {
         (i18nMixin && i18nMixin.t && i18nMixin.t.printPage) || "Print page",
       printSite:
         (i18nMixin && i18nMixin.t && i18nMixin.t.printSite) || "Print site",
-      printBranch: "Print this page and children",
+      printBranch: "Print this page and its children",
       printCurrent: "Print current page only",
       downloadPdf: "Download PDF",
       printView: "Open print-friendly view",
       jsonView: "View page data (JSON)",
-      printingPleaseWait: "Printing, please wait..",
+      printingPleaseWait: "Printing, please wait...",
     };
 
     // Option 1: Print current page and children (branch)
@@ -163,7 +198,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/branch",
-      more: "Print the current page and all its child pages as HTML",
+      more: "Print the current page and all child pages as HTML",
     });
 
     // Option 2: Print entire site
@@ -178,7 +213,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/site",
-      more: "Print all pages in the site as HTML",
+      more: "Print every page in the site as HTML",
     });
 
     // Option 3: Print current page only (browser print)
@@ -193,7 +228,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/current",
-      more: "Use browser's print dialog for current page only",
+      more: "Use the browser's print dialog for the current page only",
     });
 
     // Option 4: Download as PDF (uses same service as branch print)
@@ -209,7 +244,7 @@ export const createPrintProgram = (i18nMixin) => {
         },
         eventName: "super-daemon-element-method",
         path: "CMS/action/print/pdf",
-        more: "Export current page and children as PDF (when service is available)",
+        more: "Export the current page and child pages as PDF (when available)",
       });
     }
 
@@ -225,7 +260,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/view",
-      more: "Open a clean, print-optimized view in new window",
+      more: "Open a clean, print-optimized view in a new window",
     });
 
     // Option 6: JSON data view
@@ -240,7 +275,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/view/json",
-      more: "View the current page's activeItem data as JSON in a code sample",
+      more: "View the current page data as JSON in a code view",
     });
 
     return results;

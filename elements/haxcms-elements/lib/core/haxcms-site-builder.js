@@ -5,6 +5,7 @@ import {
   wipeSlot,
   varExists,
   localStorageSet,
+  localStorageGet,
   nodeToHaxElement,
   haxElementToNode,
   sanitizeURLValue,
@@ -45,8 +46,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           max-height: calc(100vh - 56px);
         }
         :host #slot {
-          opacity: 0.2;
+          opacity: 0;
           visibility: hidden;
+          transition: opacity 0.2s ease-in-out;
         }
         :host([theme-loaded]) #slot {
           opacity: 1;
@@ -128,7 +130,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         return [];
       }
 
-      // Convert style guide content to HAXSchema elements
+      // Convert style guide content to HAX schema elements
       const styleGuideElements =
         await this.htmlToHaxElements(styleGuideContent);
 
@@ -789,7 +791,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
     });
     autorun(() => {
-      this.isLoggedIn = toJS(store.isLoggedIn);
+      const isLoggedIn = toJS(store.isLoggedIn);
+      if (this.isLoggedIn !== isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+      }
       const tstamp = Math.floor(Date.now() / 1000);
       if (this.isLoggedIn && !this.loggedInTime) {
         this.loggedInTime = tstamp;
@@ -875,8 +880,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     setTimeout(() => {
       this.__disposer.push(
         autorun((reaction) => {
-          this.themeData = toJS(store.themeData);
-          if (this.themeData) {
+          const themeData = toJS(store.themeData);
+          if (themeData && this.themeData !== themeData) {
+            this.themeData = themeData;
+          }
+          if (themeData) {
             // special support for "format" in the URL dictating the possible output format
             // this is for a11y, mobile, print and other possible output modes
             const urlParams = new URLSearchParams(globalThis.location.search);
@@ -885,7 +893,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             if (format != null) {
               switch (format) {
                 case "print-page":
-                  this.themeData.element = "haxcms-print-theme";
+                  themeData.element = "haxcms-print-theme";
                   break;
                 case "json":
                 case "yaml":
@@ -893,21 +901,21 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                 case "xml":
                   // dynamically import the JSON theme
                   import("./themes/haxcms-json-theme.js");
-                  this.themeData.element = "haxcms-json-theme";
+                  themeData.element = "haxcms-json-theme";
                   break;
               }
             }
             const disableFeatures = urlParams.get("disable-features");
-            if (disableFeatures != null) {
+            if (disableFeatures != null && this.disableFeatures !== disableFeatures) {
               this.disableFeatures = disableFeatures;
             }
           }
           if (
-            this.themeData &&
-            this.themeData.element !== this.themeName &&
-            this.themeData.element != null
+            themeData &&
+            themeData.element !== this.themeName &&
+            themeData.element != null
           ) {
-            this.themeName = this.themeData.element;
+            this.themeName = themeData.element;
           }
         }),
       );
@@ -933,9 +941,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           ) {
             this._activeItemContentChanged(this.__pageContent, activeItem);
           }
-          if (activeItem && activeItem.location) {
+          if (
+            activeItem &&
+            activeItem.location &&
+            this.activeItemLocation !== activeItem.location
+          ) {
             this.activeItemLocation = activeItem.location;
-            this.loadPageData();
           }
         }),
       );

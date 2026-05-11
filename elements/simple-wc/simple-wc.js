@@ -28,7 +28,7 @@ export function createSWC(swc) {
       for (let key in swc.data.values) {
         this[key] = swc.data.values[key];
       }
-      // dynamically import depedencies
+      // dynamically import dependencies
       setTimeout(() => {
         swc.deps.map((i) => {
           import(`../../${i}`);
@@ -70,7 +70,7 @@ export function createSWC(swc) {
         };
         props[key].type =
           props[key].type.charAt(0).toUpperCase() + props[key].type.slice(1);
-        // convert camel to attr name IF it doesnt match
+        // convert camel to attr name IF it doesn't match
         let attr = camelCaseToDash(key);
         if (attr !== key) {
           props[key].attribute = attr;
@@ -95,7 +95,7 @@ export function createSWC(swc) {
             // we have something we are observing
             if (value[0].includes(name)) {
               let result;
-              // theres 1 value so pass new and old vlaue
+              // there's 1 value so pass new and old value
               if (value[0].length === 1) {
                 result = swc.callbacks[value[1]](this[value[0][0]], old);
               } else {

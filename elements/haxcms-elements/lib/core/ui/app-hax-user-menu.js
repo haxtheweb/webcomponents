@@ -16,7 +16,51 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     super();
     this.isOpen = false;
     this.icon = "account-circle";
-    this.addEventListener("keydown", this._handleKeydown.bind(this));
+    this.__boundKeydownHandler = this._handleKeydown.bind(this);
+    this.__boundDocumentPointerDown = this._handleDocumentPointerDown.bind(this);
+    this.__boundDocumentFocusIn = this._handleDocumentFocusIn.bind(this);
+    this.addEventListener("keydown", this.__boundKeydownHandler);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.document.addEventListener(
+      "pointerdown",
+      this.__boundDocumentPointerDown,
+    );
+    globalThis.document.addEventListener(
+      "focusin",
+      this.__boundDocumentFocusIn,
+    );
+  }
+
+  disconnectedCallback() {
+    globalThis.document.removeEventListener(
+      "pointerdown",
+      this.__boundDocumentPointerDown,
+    );
+    globalThis.document.removeEventListener(
+      "focusin",
+      this.__boundDocumentFocusIn,
+    );
+    this.removeEventListener("keydown", this.__boundKeydownHandler);
+    super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "isOpen" && oldValue !== undefined) {
+        this.dispatchEvent(
+          new CustomEvent("is-open-changed", {
+            bubbles: true,
+            composed: true,
+            detail: {
+              value: this.isOpen,
+            },
+          }),
+        );
+      }
+    });
   }
 
   static get properties() {
@@ -154,13 +198,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           role="menu"
           aria-hidden="${!this.isOpen}"
         >
-          <div class="pre-menu" role="group" aria-label="Menu header">
+          <div class="pre-menu" role="group" aria-label="Menu Controls">
             <slot name="pre-menu"></slot>
           </div>
-          <div class="main-menu" role="group" aria-label="Main menu items">
+          <div class="main-menu" role="group" aria-label="Main Menu Items">
             <slot name="main-menu"></slot>
           </div>
-          <div class="post-menu" role="group" aria-label="Menu footer">
+          <div class="post-menu" role="group" aria-label="Account Actions">
             <slot name="post-menu"></slot>
           </div>
         </div>
@@ -212,6 +256,20 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         e.preventDefault();
         this._focusLastItem(menuItems);
         break;
+      case "Tab":
+        if (menuItems.length === 0) {
+          break;
+        }
+        if (e.shiftKey) {
+          if (currentIndex <= 0) {
+            e.preventDefault();
+            this._focusLastItem(menuItems);
+          }
+        } else if (currentIndex === menuItems.length - 1 || currentIndex === -1) {
+          e.preventDefault();
+          this._focusFirstItem(menuItems);
+        }
+        break;
     }
   }
 
@@ -236,6 +294,30 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    */
   _closeMenu() {
     this.isOpen = false;
+  }
+
+  _handleDocumentPointerDown(e) {
+    if (!this.isOpen) {
+      return;
+    }
+    const path = e && e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(this) === -1) {
+      this._closeMenu();
+    }
+  }
+
+  _handleDocumentFocusIn(e) {
+    if (!this.isOpen) {
+      return;
+    }
+    const path = e && e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(this) !== -1) {
+      return;
+    }
+    const menuItems = this._getMenuItems();
+    if (menuItems.length > 0) {
+      menuItems[0].focus();
+    }
   }
 
   /**

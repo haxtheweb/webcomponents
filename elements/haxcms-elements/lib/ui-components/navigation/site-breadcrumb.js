@@ -35,11 +35,19 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             --site-breadcrumb-font-size,
             var(--ddd-font-size-4xs, 16px)
           );
+          max-inline-size: 100%;
+          overflow-wrap: anywhere;
           list-style: "/";
           gap: var(--ddd-spacing-2);
           display: flex;
           flex-flow: row;
-          color: var(--ddd-theme-default-link);
+          color: var(
+            --site-breadcrumb-color,
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
+          );
           line-height: normal;
           text-align: start;
         }
@@ -48,6 +56,7 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             --site-breadcrumb-font-size,
             var(--ddd-font-size-4xs, 16px)
           );
+          min-inline-size: 0;
         }
         ol.breadcrumb li a {
           vertical-align: text-top;
@@ -62,7 +71,10 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
           );
           color: var(
             --site-breadcrumb-color,
-            var(--ddd-theme-default-link, #383f45)
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
           );
         }
         ol.breadcrumb li a:hover,
@@ -70,12 +82,18 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
         ol.breadcrumb li a:active {
           color: var(
             --site-breadcrumb-color-hover,
-            var(--ddd-theme-default-link, #383f45)
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
           );
           text-decoration: underline;
           text-decoration-color: var(
             --site-breadcrumb-decoration-color-hover,
-            var(--ddd-theme-default-link, #383f45)
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-linkLight, #cce9ff)
+            )
           );
           text-decoration-thickness: 2px;
           text-underline-offset: 2px;
@@ -94,6 +112,17 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             --site-breadcrumb-separator-color,
             light-dark(black, white)
           );
+        }
+        @media (max-width: 900px) {
+          ol.breadcrumb {
+            flex-wrap: wrap;
+            row-gap: var(--ddd-spacing-1);
+            column-gap: var(--ddd-spacing-2);
+            margin: var(--site-breadcrumb-margin-mobile, var(--ddd-spacing-4) 0);
+          }
+          ol.breadcrumb li {
+            max-inline-size: 100%;
+          }
         }
       `,
     ];

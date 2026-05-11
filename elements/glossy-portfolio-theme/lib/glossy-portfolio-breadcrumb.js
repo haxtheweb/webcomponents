@@ -203,8 +203,16 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
   }
   disconnectedCallback() {
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      if (typeof this.__disposer[i] === "function") {
+        this.__disposer[i]();
+      } else if (
+        this.__disposer[i] &&
+        typeof this.__disposer[i].dispose === "function"
+      ) {
+        this.__disposer[i].dispose();
+      }
     }
+    this.__disposer = [];
     super.disconnectedCallback();
     
   }

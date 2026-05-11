@@ -511,13 +511,13 @@ class SimpleModal extends LitElement {
     this.__focusRestoreTimer = null;
     this.__modalContentFocusTimer = null;
     this.title = "";
+    this.titleIcon = "";
+    this.breadcrumbs = [];
+    this.showClose = false;
     this.opened = false;
     this.closeLabel = "Close";
     this.closeIcon = "close";
     this.modal = false;
-    this.showClose = false;
-    this.titleIcon = "";
-    this.breadcrumbs = [];
   }
   /**
    * LitElement
@@ -713,6 +713,10 @@ class SimpleModal extends LitElement {
     // Restore body scrolling
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
+    this.title = "";
+    this.titleIcon = "";
+    this.breadcrumbs = [];
+    this.showClose = false;
 
     this.opened = false;
     if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
@@ -760,9 +764,6 @@ class SimpleModal extends LitElement {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       // wipe the slot of our modal
-      this.title = "";
-      this.titleIcon = "";
-      this.breadcrumbs = [];
       while (this.firstChild !== null) {
         this.removeChild(this.firstChild);
       }
@@ -782,7 +783,6 @@ class SimpleModal extends LitElement {
           }
         }, 500);
       }
-      this.showClose = false;
       const evt = new CustomEvent("simple-modal-closed", {
         bubbles: true,
         cancelable: true,

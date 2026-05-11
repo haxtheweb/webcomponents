@@ -284,7 +284,7 @@ class CMSToken extends PolymerElement {
     );
   }
   /**
-   * Detatched life cycle.
+   * Detached lifecycle.
    */
   disconnectedCallback() {
     this.windowControllers.abort();

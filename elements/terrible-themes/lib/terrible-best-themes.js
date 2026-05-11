@@ -171,15 +171,6 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       super.firstUpdated(changedProperties);
     }
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
-  }
 }
 globalThis.customElements.define(TerribleBestThemes.tag, TerribleBestThemes);
 export { TerribleBestThemes };

@@ -780,9 +780,6 @@ class AppHaxTheme extends HAXCMSRememberRoute(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();

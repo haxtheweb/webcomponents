@@ -339,6 +339,10 @@ export class UserScaffold extends HTMLElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    if (this.interactionInterval) {
+      clearInterval(this.interactionInterval);
+      this.interactionInterval = null;
+    }
     this.windowControllers.abort();
     super.disconnectedCallback();
   }

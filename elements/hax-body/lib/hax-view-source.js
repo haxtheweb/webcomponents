@@ -173,7 +173,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
   scrubContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
-    HAXStore.toast("Scrubbed, Content updated");
+    HAXStore.toast("Scrubbed. Content updated.");
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     this.close();
   }
@@ -191,7 +191,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
       }, 0);
     }
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
-    HAXStore.toast("Formatting updated, Content updated");
+    HAXStore.toast("Formatting updated. Content updated.");
     HAXStore.activeHaxBody.importContent(htmlBody);
   }
   /**
@@ -203,15 +203,15 @@ class HaxViewSource extends I18NMixin(LitElement) {
     if (!globalThis.customElements.get("code-editor")) {
       import("@haxtheweb/code-editor/code-editor.js").then(() => {
         this.updateEditor();
-        // delay is because we conditionally render the entire treee
-        // to reduce memory usage bc of how large the monoco window is
+        // delay is because we conditionally render the entire tree
+        // to reduce memory usage because of how large the Monaco window is
         setTimeout(() => {
           this.updateEditor();
         }, 1000);
       });
     } else {
-      // delay is because we conditionally render the entire treee
-      // to reduce memory usage bc of how large the monoco window is
+      // delay is because we conditionally render the entire tree
+      // to reduce memory usage because of how large the Monaco window is
       setTimeout(() => {
         this.updateEditor();
       }, 1000);
@@ -312,7 +312,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
       copyHTML: "Copy HTML",
       prettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
-      haxSchema: "HAXSchema",
+      haxSchema: "HAX schema JSON",
       revisionHistory: "Revision history",
     };
     this.registerLocalization({

@@ -570,14 +570,22 @@ class MapMenu extends LitElement {
   /**
    * LitElement life cycle - properties changed
    */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    if (changedProperties.has("manifest")) {
+      this._manifestChanged(this.manifest);
+    }
+    if (changedProperties.has("data")) {
+      this._dataChanged(this.data);
+    }
+  }
+  /**
+   * LitElement life cycle - properties changed
+   */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "data") {
-        this._dataChanged(this[propName]);
-      }
-      if (propName == "manifest") {
-        this._manifestChanged(this[propName]);
-      }
       if (propName == "activeItem") {
         this.refreshActiveChildren(this[propName], oldValue);
       }

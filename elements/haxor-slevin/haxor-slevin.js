@@ -727,15 +727,6 @@ class HaxorSlevin extends HAXCMSThemeParts(
     }, 50);
   }
   /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
-  }
-  /**
    * Manage the back button to get to the home page of items
    */
   _goBack(e) {

@@ -127,6 +127,15 @@ class HAXCMSContentAdminDialog extends DDD {
           --editable-table-font-family: var(--ddd-font-navigation);
           --editable-table-font-size: var(--ddd-font-size-5xs, 0.7rem);
         }
+        .table-scroll {
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .table-scroll editable-table {
+          display: block;
+          min-width: 760px;
+        }
         .empty {
           margin: var(--ddd-spacing-4) 0;
         }
@@ -145,7 +154,7 @@ class HAXCMSContentAdminDialog extends DDD {
                 var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
-            overflow-x: hidden;
+            overflow-x: auto;
             padding: var(--ddd-spacing-3);
           }
           .panel-shell {
@@ -155,7 +164,8 @@ class HAXCMSContentAdminDialog extends DDD {
           .panel-scroll {
             flex: 0 0 auto;
             min-height: auto;
-            overflow: visible;
+            overflow-y: visible;
+            overflow-x: auto;
             padding-right: 0;
           }
         }
@@ -268,7 +278,7 @@ class HAXCMSContentAdminDialog extends DDD {
         tags: tags,
         published: published,
         visible: visible,
-        statusLabel: published ? "published" : "unpublished",
+        statusLabel: published ? "Published" : "Unpublished",
         updated,
         updatedLabel: this._formatRelativeTime(updated),
         titleLower: (item.title || "").toLowerCase(),
@@ -417,15 +427,15 @@ class HAXCMSContentAdminDialog extends DDD {
 
   _searchPlaceholder() {
     if (this.filterField === "tags") {
-      return "tag name";
+      return "Tag";
     }
     if (this.filterField === "parents") {
-      return "parent title";
+      return "Parent page title";
     }
     if (this.filterField === "search") {
-      return "title or content (eg: <h2 class..)";
+      return "Title or content";
     }
-    return "filter value";
+    return "Filter value";
   }
 
   render() {
@@ -436,27 +446,27 @@ class HAXCMSContentAdminDialog extends DDD {
             <h3 class="filters-title">Show only items where</h3>
             <div class="controls">
               <label>
-                filter by
+                Filter by
                 <select .value="${this.filterField}" @change="${this._onFilterField}">
-                  <option value="visibility">visibility</option>
-                  <option value="tags">tags</option>
-                  <option value="parents">parents</option>
-                  <option value="search">search content</option>
+                  <option value="visibility">Visibility</option>
+                  <option value="tags">Tags</option>
+                  <option value="parents">Parent page</option>
+                  <option value="search">Search content</option>
                 </select>
               </label>
               ${this.filterField === "visibility"
                 ? html`<label>
-                    value
+                    Value
                     <select .value="${this.filterValue}" @change="${this._onFilterValue}">
-                      <option value="any">any</option>
-                      <option value="published">published</option>
-                      <option value="unpublished">unpublished</option>
-                      <option value="visible">visible</option>
-                      <option value="not-visible">not visible</option>
+                      <option value="any">Any</option>
+                      <option value="published">Published</option>
+                      <option value="unpublished">Unpublished</option>
+                      <option value="visible">Visible</option>
+                      <option value="not-visible">Not visible</option>
                     </select>
                   </label>`
                 : html`<label>
-                    value
+                    Value
                     <input
                       type="text"
                       .value="${this.filterValue}"
@@ -469,7 +479,7 @@ class HAXCMSContentAdminDialog extends DDD {
                     @click="${this._applySearch}"
                     ?disabled="${!this.filterValue || this.searchLoading}"
                   >
-                    ${this.searchLoading ? "Searching..." : "Search content"}
+                    ${this.searchLoading ? "Searching..." : "Search Content"}
                   </button>`
                 : ``}
             </div>
@@ -478,44 +488,48 @@ class HAXCMSContentAdminDialog extends DDD {
             ? html`<div class="empty">No matching content found.</div>`
             : keyed(
                 `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
-                html`<editable-table
-                  bordered
-                  condensed
-                  column-header
-                  responsive
-                  sort
-                  striped
-                  scroll
-                >
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th>Status</th>
-                        <th>Updated</th>
-                        <th>Parent</th>
-                        <th>Slug</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${this.filteredRows.map(
-                        (row) => html`
-                          <tr>
-                            <td><a href="${row.slug}">${row.title}</a></td>
-                            <td>${row.statusLabel}</td>
-                            <td>${row.updatedLabel}</td>
-                            <td>
-                              ${row.parentSlug
-                                ? html`<a href="${row.parentSlug}">${row.parent}</a>`
-                                : html`—`}
-                            </td>
-                            <td>${row.slug}</td>
-                          </tr>
-                        `,
-                      )}
-                    </tbody>
-                  </table>
-                </editable-table>`,
+                html`<div class="table-scroll">
+                  <editable-table
+                    bordered
+                    condensed
+                    column-header
+                    responsive
+                    sort
+                    striped
+                    scroll
+                  >
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Status</th>
+                          <th>Updated</th>
+                          <th>Parent</th>
+                          <th>Slug</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${this.filteredRows.map(
+                          (row) => html`
+                            <tr>
+                              <td><a href="${row.slug}">${row.title}</a></td>
+                              <td>${row.statusLabel}</td>
+                              <td>${row.updatedLabel}</td>
+                              <td>
+                                ${row.parentSlug
+                                  ? html`<a href="${row.parentSlug}"
+                                      >${row.parent}</a
+                                    >`
+                                  : html`—`}
+                              </td>
+                              <td>${row.slug}</td>
+                            </tr>
+                          `,
+                        )}
+                      </tbody>
+                    </table>
+                  </editable-table>
+                </div>`,
               )}
         </div>
       </div>

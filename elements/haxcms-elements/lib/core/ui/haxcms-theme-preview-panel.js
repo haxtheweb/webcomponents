@@ -21,6 +21,7 @@ class HAXCMSThemePreviewPanel extends DDD {
       themeOptions: { type: Array, attribute: false },
       loadingThemes: { type: Boolean, attribute: "loading-themes", reflect: true },
       showAllThemes: { type: Boolean, attribute: "show-all-themes" },
+      collapsed: { type: Boolean, reflect: true },
       _themesRegistry: { type: Object, attribute: false },
     };
   }
@@ -35,6 +36,7 @@ class HAXCMSThemePreviewPanel extends DDD {
     this.themeOptions = [];
     this.loadingThemes = false;
     this.showAllThemes = false;
+    this.collapsed = false;
     this._themesRegistry = {};
     this.__snapshotThemeData = null;
     this.__windowKeyHandler = this._windowKeydown.bind(this);
@@ -52,6 +54,24 @@ class HAXCMSThemePreviewPanel extends DDD {
     this._restoreSnapshot();
     globalThis.removeEventListener("keydown", this.__windowKeyHandler);
     super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("collapsed")) {
+      this.dispatchEvent(
+        new CustomEvent("haxcms-theme-preview-collapsed-changed", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            value: this.collapsed,
+          },
+        }),
+      );
+    }
   }
 
   firstUpdated(changedProperties) {
@@ -93,15 +113,47 @@ class HAXCMSThemePreviewPanel extends DDD {
           overflow: hidden;
           outline: none;
         }
+        :host([collapsed]) {
+          width: auto;
+          bottom: auto;
+          border-left: 0;
+          box-shadow: none;
+          background: transparent;
+          overflow: visible;
+        }
         :host(:focus-visible) {
           outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: -2px;
         }
+        .panel-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 44px;
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs);
+          cursor: pointer;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.2)
+          );
+        }
         .shell {
           display: flex;
           flex-direction: column;
-          height: 100%;
+          flex: 1;
           min-height: 0;
+        }
+        :host([collapsed]) .shell {
+          display: none;
         }
         .header {
           padding: var(--ddd-spacing-4);
@@ -214,6 +266,24 @@ class HAXCMSThemePreviewPanel extends DDD {
           }
           .content {
             grid-template-columns: 1fr;
+            gap: var(--ddd-spacing-2);
+            padding: var(--ddd-spacing-2);
+          }
+          .picker-column {
+            padding: var(--ddd-spacing-2);
+          }
+          .theme-picker {
+            --haxcms-theme-picker-min-card-width: 96px;
+            --haxcms-theme-picker-mini-preview-height: 52px;
+          }
+          .actions {
+            flex-wrap: wrap;
+            justify-content: stretch;
+            padding: var(--ddd-spacing-3);
+          }
+          button.action {
+            flex: 1 1 100%;
+            text-align: center;
           }
         }
       `,
@@ -566,6 +636,10 @@ class HAXCMSThemePreviewPanel extends DDD {
     );
   }
 
+  _toggleCollapsed() {
+    this.collapsed = !this.collapsed;
+  }
+
   _openAdminTheme() {
     this.dispatchEvent(
       new CustomEvent("haxcms-theme-preview-open-admin", {
@@ -582,9 +656,17 @@ class HAXCMSThemePreviewPanel extends DDD {
 
   render() {
     return html`
-      <section class="shell" aria-label="Theme preview panel">
+      <button
+        class="panel-toggle"
+        type="button"
+        @click=${this._toggleCollapsed}
+        aria-expanded="${this.collapsed ? "false" : "true"}"
+      >
+        ${this.collapsed ? "Show Theme Preview" : "Hide Theme Preview"}
+      </button>
+      <section class="shell" aria-label="Theme Preview Panel">
         <header class="header">
-          <h2 class="title">Theme preview</h2>
+          <h2 class="title">Theme Preview</h2>
           <p class="description">
             Try a theme and palette temporarily while you browse. Use Cancel to
             restore your original appearance.
@@ -629,7 +711,7 @@ class HAXCMSThemePreviewPanel extends DDD {
             type="button"
             @click=${this._openAdminTheme}
           >
-            Set Appearance
+            Open Appearance Settings
           </button>
         </div>
       </section>

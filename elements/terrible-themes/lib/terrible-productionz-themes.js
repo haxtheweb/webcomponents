@@ -88,6 +88,10 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
+        :host([dark-mode]) {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-text-color: #ffffff;
+        }
         scroll-button {
           position: fixed;
           bottom: 0;
@@ -219,59 +223,61 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 <!-- *******************************************************
 		THIS IS THE PLACE WHERE THE MAIN BODY FOR THE DOCs GOES
 		********************************************************-->
-                <site-active-title
-                  class="title-text"
-                  style="background-image: url(${new URL(
-                    "assets/header.jpg",
-                    import.meta.url,
-                  ).href}/../movies.jpg)"
-                ></site-active-title>
-                <table border="1" cellpadding="0" cellspacing="0" width="100%">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <table width="100%">
-                          <tbody>
-                            <tr>
-                              <td align="left">
-                                <p class="posted">
-                                  Posted:
-                                  ${this.activeItem &&
-                                  this.activeItem.metadata &&
-                                  this.activeItem.metadata.created
-                                    ? html`<simple-datetime
-                                        unix
-                                        .timestamp="${this.activeItem.metadata
-                                          .created}"
-                                      ></simple-datetime>`
-                                    : ``}
-                                </p>
-                              </td>
-                              <td>
-                                <p class="posted">
-                                  Title:
-                                  ${this.activeItem && this.activeItem.title
-                                    ? this.activeItem.title
-                                    : ``}
-                                </p>
-                              </td>
-                              <td align="right">
-                                <p class="posted">By: ${this.author}</p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="contentcontainer">
-                        <section id="slot">
-                          <slot></slot>
-                        </section>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <main id="contentcontainer" role="main">
+                  <site-active-title
+                    class="title-text"
+                    style="background-image: url(${new URL(
+                      "assets/header.jpg",
+                      import.meta.url,
+                    ).href}/../movies.jpg)"
+                  ></site-active-title>
+                  <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <table width="100%">
+                            <tbody>
+                              <tr>
+                                <td align="left">
+                                  <p class="posted">
+                                    Posted:
+                                    ${this.activeItem &&
+                                    this.activeItem.metadata &&
+                                    this.activeItem.metadata.created
+                                      ? html`<simple-datetime
+                                          unix
+                                          .timestamp="${this.activeItem.metadata
+                                            .created}"
+                                        ></simple-datetime>`
+                                      : ``}
+                                  </p>
+                                </td>
+                                <td>
+                                  <p class="posted">
+                                    Title:
+                                    ${this.activeItem && this.activeItem.title
+                                      ? this.activeItem.title
+                                      : ``}
+                                  </p>
+                                </td>
+                                <td align="right">
+                                  <p class="posted">By: ${this.author}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <section id="slot">
+                            <slot></slot>
+                          </section>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </main>
                 <!-- *******************************************************
 		THIS IS WHERE THE MAIN BODY FOR THE DOCs ENDS
 		********************************************************-->
@@ -320,9 +326,6 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
     globalThis.document.body.style.removeProperty("background-color");
     globalThis.document.body.style.removeProperty("color");
     globalThis.document.body.style.removeProperty("background-image");

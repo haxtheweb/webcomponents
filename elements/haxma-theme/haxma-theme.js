@@ -269,11 +269,16 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       /* Mobile overlay */
       .mobile-nav-overlay {
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        padding: 0;
+        border: 0;
+        cursor: pointer;
+        appearance: none;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 40;
         opacity: 0;
@@ -680,7 +685,12 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     return html`
       <div class="app-container">
         <!-- Mobile nav overlay -->
-        <div class="mobile-nav-overlay" @click="${this.closeMobileNav}"></div>
+        <button
+          class="mobile-nav-overlay"
+          type="button"
+          @click="${this.closeMobileNav}"
+          aria-label="Close navigation menu"
+        ></button>
         
         <!-- Fixed Header -->
         <header class="site-header">

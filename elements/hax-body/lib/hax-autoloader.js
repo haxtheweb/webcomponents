@@ -195,7 +195,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     );
                   } else {
                     console.warn(
-                      `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
+                      `${name} didn't have HAX wiring, so HAX guessed as best it could. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
                     );
                     this.guessHaxWiring(name);
                   }
@@ -222,7 +222,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 this.setHaxProperties(CEClass.haxProperties, name);
               } else {
                 console.warn(
-                  `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
+                  `${name} didn't have HAX wiring, so HAX guessed as best it could. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`,
                 );
                 this.guessHaxWiring(name);
               }

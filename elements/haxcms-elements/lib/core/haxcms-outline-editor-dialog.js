@@ -108,7 +108,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      save: "Save",
+      save: "Save Outline",
     };
   }
   static get properties() {
@@ -302,7 +302,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       return true;
     }
     return globalThis.confirm(
-      `You have unsaved outline changes:\n${sumChanges}\nIf you continue, these changes will be lost. Continue?`,
+      `You have unsaved changes in Site Outline:\n${sumChanges}\nIf you continue, these changes will be lost. Continue?`,
     );
   }
   _ownsSimpleModalEvent(e) {
@@ -394,7 +394,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       confirmation = true;
     } else {
       confirmation = globalThis.confirm(
-        `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
+        `Saving will apply these Site Outline changes:\n${sumChanges}\nContinue?`,
       );
     }
     if (confirmation) {

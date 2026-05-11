@@ -33,9 +33,13 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           flex-direction: column;
           overflow: hidden;
           width: 300px;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           background-color: light-dark(
-            var(--simple-colors-default-theme-accent-1, #fff),
-            var(--simple-colors-default-theme-accent-12, #222)
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
           );
         }
         .preview-wrap {
@@ -53,10 +57,14 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         }
         .info {
           padding: var(--ddd-spacing-2);
-          border-top: var(--ddd-border-xs);
+          border-top: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
           background-color: light-dark(
-            var(--simple-colors-default-theme-accent-1, #fff),
-            var(--simple-colors-default-theme-accent-12, #222)
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
           );
           max-height: var(--ddd-spacing-16);
           overflow: hidden;
@@ -69,8 +77,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           font-size: var(--ddd-font-size-4xs);
           margin-bottom: var(--ddd-spacing-1);
           color: light-dark(
-            var(--simple-colors-default-theme-accent-12, #000),
-            var(--simple-colors-default-theme-accent-1, #fff)
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
         }
         .title simple-icon {
@@ -82,8 +90,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-140);
           color: light-dark(
-            var(--simple-colors-default-theme-accent-11, #222),
-            var(--simple-colors-default-theme-accent-2, #ddd)
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneGray)
           );
           overflow: hidden;
           text-overflow: ellipsis;

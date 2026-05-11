@@ -660,6 +660,12 @@ export class PageBreak extends IntersectionObserverMixin(
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
         }
+        @media (prefers-reduced-motion: reduce) {
+          :host([data-hax-ray]),
+          .link-url {
+            transition: none !important;
+          }
+        }
         @media (max-width: 600px) {
           #pageactionsbtn {
             display: none;

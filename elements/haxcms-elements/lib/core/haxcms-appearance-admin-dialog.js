@@ -268,7 +268,8 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             padding: var(--ddd-spacing-3);
           }
           .actions {
-            position: static;
+            position: sticky;
+            bottom: 0;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );
@@ -631,43 +632,43 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           this._regionField(
             "manifest-metadata-theme-regions-header",
             "Header",
-            "Page to use for the content of the header region",
+            "Page shown in the header region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-sidebarFirst",
             "Sidebar first",
-            "Page to use for the content of the sidebar first region",
+            "Page shown in the first sidebar region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-sidebarSecond",
             "Sidebar second",
-            "Page to use for the content of the sidebar second region",
+            "Page shown in the second sidebar region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-contentTop",
             "Content top",
-            "Page to use for the content of the content top region",
+            "Page shown in the top content region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-contentBottom",
             "Content bottom",
-            "Page to use for the content of the content bottom region",
+            "Page shown in the bottom content region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-footerPrimary",
             "Footer primary",
-            "Page to use for the content of the footer primary region",
+            "Page shown in the primary footer region",
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-footerSecondary",
             "Footer secondary",
-            "Page to use for the content of the footer secondary region",
+            "Page shown in the secondary footer region",
             regionItems,
           ),
         ],
@@ -1036,7 +1037,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             @click="${this._openThemePreviewTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            Theme preview
+            Theme Preview
           </button>
           <button
             type="button"

@@ -83,7 +83,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
         }
         main,
         main section {
-          width: 100vw;
+          width: 99vw;
           min-height: 100vh;
         }
         simple-blog-post {
@@ -230,16 +230,6 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
         this._locationChanged(location);
       }),
     );
-  }
-  /**
-   * detatched life cycle
-   */
-  disconnectedCallback() {
-    // clean up state
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-    super.disconnectedCallback();
   }
   /**
    * Listen for router location changes

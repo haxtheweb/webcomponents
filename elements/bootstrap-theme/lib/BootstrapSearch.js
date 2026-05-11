@@ -5,8 +5,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 class BootstrapSearch extends LitElement {
   constructor() {
     super();
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+    this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this.searchText = "";
   }
 
@@ -106,8 +105,16 @@ class BootstrapSearch extends LitElement {
     }
   }
 
-  getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
+  _resolveBootstrapStylesheetPath() {
+    const packageURL = decodeURIComponent(import.meta.url);
+    if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
+      return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
+        .href;
+    }
+    return new URL(
+      "../../../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      packageURL,
+    ).href;
   }
 }
 globalThis.customElements.define(BootstrapSearch.tag, BootstrapSearch);

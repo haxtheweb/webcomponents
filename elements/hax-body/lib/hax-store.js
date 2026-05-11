@@ -64,10 +64,10 @@ function sessionStorageSet(name, newItem) {
  */
 class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
-   * test a hook's existance in a target
+   * test a hook's existence in a target
    */
   testHook(el, op) {
-    // support for primatives
+    // support for primitives
     if (
       el &&
       el.tagName &&
@@ -160,7 +160,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                     // of any kind, we only need one but can then bind to multiple
                     if (typeof values[property] !== typeof undefined) {
                       // but ensure there's either no meta data OR
-                      // the meta data needs to NOT say anythinig about hiding
+                      // the meta data needs to NOT say anything about hiding
                       if (
                         gizmo.handles[i][property] !== "" &&
                         (guess === "inline" ||
@@ -704,9 +704,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: Array,
       },
       /**
-       * An active place holder item reference. This is used
+       * An active placeholder item reference. This is used
        * for inline drag and drop event detection so that we
-       * know what element replace in context.
+       * know what element replaces in context.
        */
       activePlaceHolder: {
         type: Object,
@@ -749,13 +749,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: Array,
       },
       /**
-       * Valid tag list, tag only and including primatives for a baseline.
+       * Valid tag list, tag only and including primitives for a baseline.
        */
       validTagList: {
         type: Array,
       },
       /**
-       * Valid tag list, tag only and including primatives for a baseline.
+       * Valid tag list, tag only and including primitives for a baseline.
        */
       validGridTagList: {
         type: Array,
@@ -1215,6 +1215,34 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     return new URL(url).origin !== location.origin;
   }
+  async _loadActiveDesignSystemIntegrations() {
+    if (
+      !globalThis.DesignSystemManager ||
+      typeof globalThis.DesignSystemManager.requestAvailability !== "function"
+    ) {
+      return;
+    }
+    const manager = globalThis.DesignSystemManager.requestAvailability();
+    if (
+      !manager ||
+      typeof manager.loadActiveSystemIntegrations !== "function"
+    ) {
+      return;
+    }
+    let isAuthenticated = true;
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS.instance.store &&
+      typeof globalThis.HAXCMS.instance.store.isLoggedIn !== "undefined"
+    ) {
+      isAuthenticated = !!globalThis.HAXCMS.instance.store.isLoggedIn;
+    }
+    await manager.loadActiveSystemIntegrations({
+      editMode: !!this.editMode,
+      isAuthenticated,
+    });
+  }
   _editModeChanged(newValue) {
     // trap for very slow loading environments that might miss on initial setup timing
     if (
@@ -1236,6 +1264,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     ) {
       this.forceAppStoreLoad();
     }
+    if (newValue) {
+      this._loadActiveDesignSystemIntegrations();
+    }
   }
   async _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
@@ -1255,11 +1286,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // we also don't need to instantly update language as it's an aggressive action
         // so this 100ms delay helps quiet this down
         this._debounceLang = setTimeout(async () => {
-          // run through language matches as nessecary to translate haxProperties definitions
+          // run through language matches as necessary to translate haxProperties definitions
           for (let i in this.elementList) {
             let el = this.elementList[i];
             // run through translations to see if we have any
-            // apply as nessecary; abstract out the current translation thing to be reused
+            // apply as necessary; abstract out the current translation thing to be reused
             el = await this.attemptGizmoTranslation(i, el);
             this.elementList[i] = el;
           }
@@ -1277,7 +1308,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
   }
   /**
-   * This only send if they consented to storage of data locally
+   * This only sends if they consented to storage of data locally
    */
   _haxConsentTap(e) {
     // store for future local storage usage
@@ -1293,7 +1324,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (propName == "appStore" && this[propName]) {
         this._appStoreChanged(this[propName], oldValue);
       }
-      // composite obervation
+      // composite observation
       if (
         ["ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
         this.ready &&
@@ -1432,7 +1463,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         }),
       );
-      // normalize the rich teext editor prompts w/ the rest of HAX
+      // normalize the rich text editor prompts w/ the rest of HAX
       let rtep = globalThis.RichTextEditorPrompt.requestAvailability();
       if (rtep) {
         rtep.shadowRoot.querySelector("#formfields").schematizer =
@@ -1844,7 +1875,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             var URLObj = globalThis.URL || globalThis.webkitURL;
             let img = globalThis.document.createElement("img");
             // turn blob into a url to visualize locally, this is just temporary
-            img.src = URLObj.createObjectURL(imageBlob);
+            const blobUrl = URLObj.createObjectURL(imageBlob);
+            img.onload = () => URLObj.revokeObjectURL(blobUrl);
+            img.onerror = () => URLObj.revokeObjectURL(blobUrl);
+            img.src = blobUrl;
             this.activeNode.parentNode.insertBefore(
               img,
               this.activeNode.nextElementSibling,
@@ -2501,7 +2535,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return null;
   }
 
-  // HTML primatives which are valid grid plate elements
+  // HTML primitives which are valid grid plate elements
   __validGridTags() {
     return [
       "p",
@@ -2524,7 +2558,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "figure",
     ];
   }
-  // internal list of HTML primatives which are valid
+  // internal list of HTML primitives which are valid
   __validTags() {
     return [
       "p",
@@ -2798,7 +2832,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "HAX/community/contribute",
       context: "community",
     });
-    // container for HTML primatives to have hooks declared on their behalf
+    // container for HTML primitives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
     this.registerLocalization({
@@ -4577,7 +4611,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
 
     try {
-      // Convert style guide content to HAXSchema elements using existing method
+      // Convert style guide content to HAX schema elements using existing method
       const styleGuideElements =
         await this.htmlToHaxElements(styleGuideContent);
 
@@ -4672,7 +4706,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   /**
    * Convert a node to the correct content object for saving.
-   * This DOES NOT acccept a HAXElement which is similar
+   * This DOES NOT accept a HAXElement which is similar
    */
   async nodeToContent(node) {
     // @see haxHooks: preProcessNodeToContent
@@ -4691,7 +4725,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     // force any and all content being taken from a dom node to content to be forced into sandbox mode
     // this way we can ensure that we don't have any scripts running that confuse the user into
-    // leaking sensative information
+    // leaking sensitive information
     if (tag === "iframe") {
       node.setAttribute("sandbox", "allow-scripts allow-same-origin");
     }
@@ -4922,7 +4956,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           if (typeof slotnodes[j].tagName !== typeof undefined) {
             // if we're a custom element, keep digging, otherwise a simple
             // self append is fine unless template tag cause it's a special
-            // case for the web in general as it'll register as not a primative
+            // case for the web in general as it'll register as not a primitive
             // even though it is...
             if (
               (!this.HTMLPrimativeTest(slotnodes[j]) ||

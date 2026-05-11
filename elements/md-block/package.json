@@ -44,7 +44,7 @@
     "@haxtheweb/d-d-d": "^25.0.0",
     "@polymer/marked-element": "3.0.1",
     "lit": "3.3.2",
-    "marked": "5.1.0"
+    "marked": "18.0.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

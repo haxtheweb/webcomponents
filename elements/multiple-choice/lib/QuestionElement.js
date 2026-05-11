@@ -704,7 +704,7 @@ export class QuestionElement extends SchemaBehaviors(
    * HAX preprocess Node to Content hook
    */
   async haxpreProcessNodeToContent(node) {
-    // ensure we dont accidently have the answer displayed!
+    // ensure we don't accidentally have the answer displayed!
     // this also rips the data into the lightDom for saving
     // so that we can unset the array data on the object at save time
     // this helps improve SEO / compatibility with CMS solutions
@@ -753,7 +753,7 @@ export class QuestionElement extends SchemaBehaviors(
    * HAX preprocess insert content hook
    */
   haxpreProcessInsertContent(detail, activeNode) {
-    // ensure we dont accidently have the answer displayed!
+    // ensure we don't accidentally have the answer displayed!
     if (
       detail.properties.answers &&
       detail.properties.answers.length > 0 &&

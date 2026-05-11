@@ -90,14 +90,16 @@ export const PDFPageMixin = function (SuperClass) {
         const link = globalThis.document.createElement("a");
         // click link to download file
         // @todo this downloads but claims to be corrupt.
-        link.href = globalThis.URL.createObjectURL(
+        const objectUrl = globalThis.URL.createObjectURL(
           b64toBlob(response.data, "application/pdf"),
         );
+        link.href = objectUrl;
         link.download = `${toJS(store.activeTitle)}.pdf`;
         link.target = "_blank";
         this.appendChild(link);
         link.click();
         this.removeChild(link);
+        globalThis.URL.revokeObjectURL(objectUrl);
       }
       this.__pdfLoading = false;
     }

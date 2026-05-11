@@ -175,7 +175,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   }
 
   /**
-   * HAXSchema for proper integration with the HAX editor
+   * HAX schema for proper integration with the HAX editor
    */
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)

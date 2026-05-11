@@ -980,7 +980,7 @@ export const displayBehaviors = function (SuperClass) {
      */
     loadSlottedTable() {
       let table = this.children.item(0);
-      // support wrapping editable-table-display tag or primative
+      // support wrapping editable-table-display tag or primitive
       if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
         table = table.children.item(0);
       }
@@ -1027,7 +1027,7 @@ export const displayBehaviors = function (SuperClass) {
     }
 
     /**
-     * Determines if an entire body column dontains numeric data
+     * Determines if an entire body column contains numeric data
      * @param {number} index column index
      * @returns {boolean} if columns contents are numeric
      */

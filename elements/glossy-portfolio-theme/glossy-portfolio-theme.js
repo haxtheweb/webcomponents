@@ -64,18 +64,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     };
   }
 
-  disconnectedCallback() {
-    if (this.__disposer) {
-      for (var i in this.__disposer) {
-        this.__disposer[i].dispose();
-      }
-    }
-    super.disconnectedCallback();
-  }
-
-
-
-  
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     const PortfolioFonts = [
@@ -135,6 +123,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         min-height: 100vh;
         background-color: var(--bg-color);
 
+      }
+      :host([dark-mode]) {
+        --bg-color: #111111;
+        --text-color: #ffffff;
+        --link-color: #6cddff;
+        --link-color-hover: #9ae7ff;
+        color-scheme: dark;
       }
 
       :host([edit-mode]) {
@@ -328,7 +323,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
     <div class="body-wrapper"> 
       ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
-      <div class="max-body-width">
+      <main class="max-body-width" role="main">
       
         <article id="contentcontainer" class="grow contentcontainer">
       
@@ -336,7 +331,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
             <site-active-title></site-active-title>          
             <div id="slot"><slot></slot></div>
         </article>
-      </div>
+      </main>
       <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
       <div class="padding-bottom"></div>
       <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>

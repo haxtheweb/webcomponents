@@ -296,7 +296,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       super.connectedCallback();
     }
     /**
-     * life cycle, element is detatched
+     * life cycle, element is detached
      */
     disconnectedCallback() {
       super.disconnectedCallback();
@@ -337,7 +337,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         this.range,
       );
       // optional callback so that custom buttons can perform
-      // custom toolbar and/or editor opperations
+      // custom toolbar and/or editor operations
       if (this.commandCallback)
         this.commandCallback(this.target, this.__toolbar, this);
       this.dispatchEvent(

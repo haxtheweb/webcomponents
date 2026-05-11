@@ -121,6 +121,15 @@ class HAXCMSFilesAdminDialog extends DDD {
           --editable-table-font-family: var(--ddd-font-navigation);
           --editable-table-font-size: var(--ddd-font-size-4xs);
         }
+        .table-scroll {
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .table-scroll editable-table {
+          display: block;
+          min-width: 980px;
+        }
         .preview-cell {
           min-width: 120px;
         }
@@ -221,7 +230,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                 var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
-            overflow-x: hidden;
+            overflow-x: auto;
             padding: var(--ddd-spacing-3);
           }
           .panel-shell {
@@ -231,14 +240,9 @@ class HAXCMSFilesAdminDialog extends DDD {
           .panel-scroll {
             flex: 0 0 auto;
             min-height: auto;
-            overflow: visible;
+            overflow-y: visible;
+            overflow-x: auto;
             padding-right: 0;
-          }
-          th.col-mime,
-          td.col-mime,
-          th.col-size,
-          td.col-size {
-            display: none;
           }
         }
       `,
@@ -601,26 +605,26 @@ class HAXCMSFilesAdminDialog extends DDD {
       <div class="panel-shell">
         <div class="panel-scroll">
           <div class="panel">
-            <h3 class="title">Show only items where</h3>
+            <h3 class="title">Show only files where</h3>
             <div class="controls">
               <label>
-                type
+                Type
                 <select .value="${this.typeFilter}" @change="${this._onTypeFilter}">
-                  <option value="any">any</option>
-                  <option value="image">image</option>
-                  <option value="video">video</option>
-                  <option value="audio">audio</option>
-                  <option value="document">document</option>
-                  <option value="file">file</option>
+                  <option value="any">Any</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                  <option value="audio">Audio</option>
+                  <option value="document">Document</option>
+                  <option value="file">File</option>
                 </select>
               </label>
               <label>
-                text
+                Text
                 <input
                   type="text"
                   .value="${this.textFilter}"
                   @input="${this._onTextFilter}"
-                  placeholder="name, mime, page title, path"
+                  placeholder="File name, MIME type, page title, or path"
                 />
               </label>
               <button
@@ -635,68 +639,72 @@ class HAXCMSFilesAdminDialog extends DDD {
             ? html`<div class="empty">No file references found in the manifest.</div>`
             : keyed(
                 `${this.typeFilter}|${this.textFilter}|${this.filteredRows.length}`,
-                html`<editable-table
-                  bordered
-                  condensed
-                  column-header
-                  sort
-                  striped
-                  scroll
-                >
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Preview</th>
-                        <th>File name</th>
-                        <th class="col-mime">Mime type</th>
-                        <th>Referenced by page</th>
-                        <th class="col-size">Size</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${this.filteredRows.map(
-                        (row) => html`
-                          <tr>
-                            <td class="preview-cell">
-                              <span class="preview-wrap">
-                                ${row.previewUrl
-                                  ? html`<img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="100px"
-                                      height="100px"
-                                      style="display: block; background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));"
-                                      class="preview-image"
-                                      src="${row.previewUrl}"
-                                      alt="Preview of ${row.name}"
-                                    />`
-                                  : html`<span class="sr-only">No image preview available</span>`}
-                              </span>
-                            </td>
-                            <td class="file-name-cell">
-                              <div class="file-name-main">
-                                <span>${row.name || "—"}</span>
-                              </div>
-                            </td>
-                            <td class="col-mime">${row.mimeType || "—"}</td>
-                            <td>
-                              ${row.pageRefs.length > 0
-                                ? row.pageRefs[0].slug
-                                  ? html`<a href="${row.pageRefs[0].slug}"
-                                      >${row.pageRefs[0].title}</a
-                                    >`
-                                  : html`${row.pageRefs[0].title}`
-                                : row.siteReferenced
-                                  ? html`Site settings`
-                                  : html`—`}
-                            </td>
-                            <td class="col-size">${row.sizeLabel || "—"}</td>
-                          </tr>
-                        `,
-                      )}
-                    </tbody>
-                  </table>
-                </editable-table>`,
+                html`<div class="table-scroll">
+                  <editable-table
+                    bordered
+                    condensed
+                    column-header
+                    sort
+                    striped
+                    scroll
+                  >
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Preview</th>
+                          <th>File Name</th>
+                          <th class="col-mime">MIME Type</th>
+                          <th>Referenced By</th>
+                          <th class="col-size">Size</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${this.filteredRows.map(
+                          (row) => html`
+                            <tr>
+                              <td class="preview-cell">
+                                <span class="preview-wrap">
+                                  ${row.previewUrl
+                                    ? html`<img
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="100px"
+                                        height="100px"
+                                        style="display: block; background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));"
+                                        class="preview-image"
+                                        src="${row.previewUrl}"
+                                        alt="Preview of ${row.name}"
+                                      />`
+                                    : html`<span class="sr-only"
+                                        >No image preview available</span
+                                      >`}
+                                </span>
+                              </td>
+                              <td class="file-name-cell">
+                                <div class="file-name-main">
+                                  <span>${row.name || "—"}</span>
+                                </div>
+                              </td>
+                              <td class="col-mime">${row.mimeType || "—"}</td>
+                              <td>
+                                ${row.pageRefs.length > 0
+                                  ? row.pageRefs[0].slug
+                                    ? html`<a href="${row.pageRefs[0].slug}"
+                                        >${row.pageRefs[0].title}</a
+                                      >`
+                                    : html`${row.pageRefs[0].title}`
+                                  : row.siteReferenced
+                                    ? html`Site Settings`
+                                    : html`—`}
+                              </td>
+                              <td class="col-size">${row.sizeLabel || "—"}</td>
+                            </tr>
+                          `,
+                        )}
+                      </tbody>
+                    </table>
+                  </editable-table>
+                </div>`,
               )}
         </div>
       </div>

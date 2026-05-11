@@ -17,6 +17,10 @@ import {
   ApplicationAttributeData,
   DDDAllStyles,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { DDDBorders } from "@haxtheweb/d-d-d/lib/DDDBorders.js";
+import { DDDMarginPadding } from "@haxtheweb/d-d-d/lib/DDDMarginPadding.js";
+import { DDDFontSizing } from "@haxtheweb/d-d-d/lib/DDDFontSizing.js";
+import { DDDLineHeight } from "@haxtheweb/d-d-d/lib/DDDLineHeight.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 import "@haxtheweb/figure-label/figure-label.js";
 import "@haxtheweb/media-image/media-image.js";
@@ -84,6 +88,10 @@ class DDDocs extends DDD {
     return [
       super.styles,
       DDDAllStyles,
+      DDDBorders,
+      DDDMarginPadding,
+      DDDFontSizing,
+      DDDLineHeight,
       css`
         /* used for demo */
         :host {

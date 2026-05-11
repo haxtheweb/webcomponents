@@ -74,9 +74,6 @@
     "@emotion/core": "0.13.1",
     "@emotion/styled": "0.10.6",
     "@open-wc/building-utils": "2.18.4",
-    "@open-wc/demoing-storybook": "2.4.7",
-    "@open-wc/storybook": "0.2.8",
-    "@open-wc/storybook-prebuilt": "1.2.0",
     "@open-wc/testing": "4.0.0",
     "@open-wc/webpack-import-meta-loader": "0.4.7",
     "@rollup/plugin-commonjs": "21.0.1",
@@ -190,8 +187,14 @@
     "lit-element": "4.2.2",
     "@lit-labs/virtualizer": "2.1.1",
     "@lit/reactive-element": "2.1.2",
+    "follow-redirects": "1.16.0",
+    "marked": "18.0.3",
+    "path-to-regexp": "3.3.0",
+    "phin": "3.7.1",
     "polymer-cli": "1.9.11",
-    "polymer-build": "3.1.4"
+    "polymer-build": "3.1.4",
+    "postcss": "8.5.10",
+    "tmp": "0.2.4"
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",

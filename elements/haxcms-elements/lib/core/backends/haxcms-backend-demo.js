@@ -14,7 +14,7 @@ import "@haxtheweb/jwt-login/jwt-login.js";
  * @demo demo/index.html
  *
  * @microcopy - the mental model for this element
- * - jwt - a json web token which is an encrypted security token to talk
+ * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
 class HAXCMSBackendDemo extends LitElement {
   /**
@@ -42,7 +42,7 @@ class HAXCMSBackendDemo extends LitElement {
     }
   }
   /**
-   * Detatched life cycle
+   * Detached life cycle
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {
@@ -72,7 +72,7 @@ class HAXCMSBackendDemo extends LitElement {
     super();
     this.jwt = false;
     this.__disposer = [];
-    // see up a tag to place RIGHT next to the site-builder itself
+    // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
@@ -104,7 +104,7 @@ class HAXCMSBackendDemo extends LitElement {
         jwtlogin.logoutUrl = globalThis.appSettings.logout;
         jwtlogin.redirectUrl = globalThis.appSettings.redirectUrl;
         // allow setting in session driven environments
-        // its not a real JWT but it drives the environment to operate correctly
+        // it's not a real JWT but it drives the environment to operate correctly
         if (globalThis.appSettings.jwt) {
           this.jwt = globalThis.appSettings.jwt;
         }

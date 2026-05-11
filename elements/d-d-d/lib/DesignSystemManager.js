@@ -12,6 +12,7 @@ export class DesignSystem extends LitElement {
     super();
     this.active = null;
     this.systems = [];
+    this.__loadedIntegrations = {};
   }
   static get tag() {
     return "design-system";
@@ -41,6 +42,26 @@ export class DesignSystem extends LitElement {
             oldValue ? this.systems[oldValue] : null,
             this.systems[this.active],
           );
+          const context = this._integrationContextFromRuntime();
+          Promise.resolve(this.loadActiveSystemIntegrations(context))
+            .catch((e) => {
+              console.warn(e);
+            })
+            .finally(() => {
+              this._rehydrateHAXElementList();
+              globalThis.dispatchEvent(
+                new CustomEvent("design-system-active-changed", {
+                  bubbles: true,
+                  cancelable: false,
+                  composed: true,
+                  detail: {
+                    active: this.active,
+                    previous: oldValue || null,
+                    context,
+                  },
+                }),
+              );
+            });
         }
       }
     });
@@ -50,6 +71,109 @@ export class DesignSystem extends LitElement {
     if (system.name && system.styles && system.fonts) {
       this.systems[system.name] = system;
     }
+  }
+  _integrationContextFromRuntime() {
+    let editMode = false;
+    let isAuthenticated = true;
+    if (
+      globalThis.HaxStore &&
+      typeof globalThis.HaxStore.requestAvailability === "function"
+    ) {
+      const haxStore = globalThis.HaxStore.requestAvailability();
+      editMode = !!haxStore.editMode;
+    }
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS.instance.store &&
+      typeof globalThis.HAXCMS.instance.store.isLoggedIn !== "undefined"
+    ) {
+      isAuthenticated = !!globalThis.HAXCMS.instance.store.isLoggedIn;
+    }
+    return {
+      editMode,
+      isAuthenticated,
+    };
+  }
+  _integrationCacheKey(systemName, integrationName) {
+    return `${systemName}::${integrationName}`;
+  }
+  async loadSystemIntegration(systemName, integrationName = "hax", context = {}) {
+    const system = this.systems[systemName];
+    if (
+      !system ||
+      !system.integrations ||
+      !system.integrations[integrationName]
+    ) {
+      return;
+    }
+    const integration = system.integrations[integrationName];
+    if (
+      !integration ||
+      (!integration.module && typeof integration.importer !== "function")
+    ) {
+      return;
+    }
+    if (
+      integration.shouldLoad &&
+      typeof integration.shouldLoad === "function" &&
+      !integration.shouldLoad(context)
+    ) {
+      return;
+    }
+    const cacheKey = this._integrationCacheKey(systemName, integrationName);
+    if (this.__loadedIntegrations[cacheKey]) {
+      return;
+    }
+    try {
+      const mod =
+        typeof integration.importer === "function"
+          ? await integration.importer()
+          : await import(integration.module);
+      const payload = {
+        manager: this,
+        systemName,
+        system,
+        integrationName,
+        integration,
+        context,
+        options: integration.options || {},
+      };
+      if (integration.exportName && typeof mod[integration.exportName] === "function") {
+        await mod[integration.exportName](payload);
+      } else if (typeof mod.default === "function") {
+        await mod.default(payload);
+      }
+      this.__loadedIntegrations[cacheKey] = true;
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  async loadActiveSystemIntegrations(context = {}, integrationName = "hax") {
+    if (!this.active) {
+      return;
+    }
+    await this.loadSystemIntegration(this.active, integrationName, context);
+  }
+  _rehydrateHAXElementList() {
+    if (
+      !globalThis.HaxStore ||
+      typeof globalThis.HaxStore.requestAvailability !== "function"
+    ) {
+      return;
+    }
+    const HAXStore = globalThis.HaxStore.requestAvailability();
+    if (!HAXStore || typeof HAXStore.designSystemHAXProperties !== "function") {
+      return;
+    }
+    Object.keys(HAXStore.elementList || {}).forEach((registeredTag) => {
+      if (HAXStore.elementList[registeredTag]) {
+        HAXStore.elementList[registeredTag] = HAXStore.designSystemHAXProperties(
+          HAXStore.elementList[registeredTag],
+          registeredTag,
+        );
+      }
+    });
   }
 
   applyDesignSystem(oldSystem, newSystem) {

@@ -167,7 +167,7 @@ class Store {
       editMode: observable, // global editing state
       adminMode: observable, // global admin modal state
       trayStatus: observable, // tray status (collapsed/expanded)
-      jwt: observable, // json web token
+      jwt: observable, // JSON Web Token
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up

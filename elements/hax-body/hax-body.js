@@ -3447,7 +3447,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.viewSourceElement = HAXStore.activeEditingElement;
         }
         break;
-      // text based operations for primatives
+      // text based operations for primitives
       case "text-tag":
         // trigger the default selected value in context menu to match
         HAXStore.activeNode = this.haxChangeTagName(
@@ -3960,7 +3960,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.__delHit = false;
                     continue;
                   }
-                  // no empty HTML primative tags w/ just a BR in it for spacing purposes
+                  // no empty HTML primitive tags w/ just a BR in it for spacing purposes
                   if (
                     node.tagName === "BR" &&
                     node.parentElement &&
@@ -4292,7 +4292,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         // our undo/redo history is being applied. Make sure events
         // are bound but that we don't actively track other changes
-        // or it'll poisen our undo stack
+        // or it'll poison our undo stack
         else if (this.undoStackIgnore) {
           mutations.forEach((mutation) => {
             if (mutation.addedNodes.length > 0) {
@@ -4339,15 +4339,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _validElementTest(node, allowInline = false) {
     // ignore hax internal tags
-    // search results can be drag'ed from their panel for exact placement
-    // special place holder in drag and drop
+    // search results can be dragged from their panel for exact placement
+    // special placeholder in drag and drop
     if (
       !node.haxUIElement &&
       node.tagName &&
       !["TEMPLATE", "HAX-BODY", "FAKE-HAX-BODY-END"].includes(node.tagName)
     ) {
       // special case of SPAN as it can often get embedded places without actually
-      // being the thing that should grad actual block level focus
+      // being the thing that should grab actual block-level focus
       // this would be like a B or I tag grabbing focus as well
       if (
         !allowInline &&
@@ -4375,7 +4375,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     );
   }
   /**
-   * Test if this is an HTML primative
+   * Test if this is an HTML primitive
    */
   _HTMLPrimativeTest(node) {
     if (
@@ -4805,7 +4805,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // this prevents issues where the mutation record was combined
       // and then blocked because of being moved
       this.undoManagerStackLogic({});
-      // esnure we clear the gravity scrolling drag effect
+      // ensure we clear the gravity scrolling drag effect
       clearTimeout(gravityScrollTimer);
       HAXStore._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
@@ -4843,7 +4843,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
-      // establish an activeNode /container based on drop poisition
+      // establish an activeNode /container based on drop position
       HAXStore.activeNode = target;
       // var for the local drop target
       var local;

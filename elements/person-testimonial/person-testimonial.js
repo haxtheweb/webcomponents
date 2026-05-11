@@ -155,6 +155,7 @@ class PersonTestimonial extends SimpleColors {
               <img
                 src="${this.image}"
                 loading="lazy"
+                alt="${this.name ? this.name : ''}"
                 aria-describedby="${this.describedBy}"
               />
             </div>`

@@ -137,8 +137,7 @@ class BootstrapFooter extends LitElement {
 
   constructor() {
     super();
-    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
-    this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+    this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this._forwardItem = {};
     this._backwardItem = {};
     this._activeItemIndex = -1;
@@ -207,8 +206,16 @@ class BootstrapFooter extends LitElement {
     `;
   }
 
-  getBasePath(url) {
-    return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
+  _resolveBootstrapStylesheetPath() {
+    const packageURL = decodeURIComponent(import.meta.url);
+    if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
+      return new URL("../../bootstrap/dist/css/bootstrap.min.css", packageURL)
+        .href;
+    }
+    return new URL(
+      "../../../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      packageURL,
+    ).href;
   }
 }
 

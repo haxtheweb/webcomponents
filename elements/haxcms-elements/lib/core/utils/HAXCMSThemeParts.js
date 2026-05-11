@@ -9,13 +9,21 @@ const HAXCMSThemeParts = function (SuperClass) {
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.__disposer.push(
         autorun((reaction) => {
-          this.editMode = toJS(store.editMode);
+          const editMode = toJS(store.editMode);
+          if (this.editMode !== editMode) {
+            this.editMode = editMode;
+          }
         }),
       );
       this.__disposer.push(
         autorun((reaction) => {
-          this.darkMode = toJS(store.darkMode);
-          this.dark = this.darkMode; // alignment w/ simple colors for reactive content!
+          const darkMode = toJS(store.darkMode);
+          if (this.darkMode !== darkMode) {
+            this.darkMode = darkMode;
+          }
+          if (this.dark !== darkMode) {
+            this.dark = darkMode; // alignment w/ simple colors for reactive content!
+          }
         }),
       );
     }

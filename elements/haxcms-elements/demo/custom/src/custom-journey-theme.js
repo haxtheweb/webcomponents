@@ -15,7 +15,10 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
-import { DDDAllStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import {
+  DDDVariables,
+  DDDPaletteStyles,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
@@ -164,7 +167,8 @@ class CustomJourneyTheme extends HAXCMSLitElementTheme {
   //styles function
   static get styles() {
     return [
-      DDDAllStyles,
+      DDDVariables,
+      DDDPaletteStyles,
       super.styles,
       css`
         :host {

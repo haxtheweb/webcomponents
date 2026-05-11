@@ -301,7 +301,7 @@ class RpgCharacter extends SimpleColors {
           edtechjoker: "712215550",
           btopro: "7122155501",
         };
-        // ensure huge numbers dont bust JS max
+        // ensure huge numbers don't bust JS max
         seed = BigInt(seed).toString();
         if (Object.keys(funKeys).includes(this[propName])) {
           seed = funKeys[this[propName]];

@@ -17,7 +17,11 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import { encapScript, haxElementToNode } from "@haxtheweb/utils/utils.js";
+import {
+  encapScript,
+  haxElementToNode,
+  isSafari,
+} from "@haxtheweb/utils/utils.js";
 /**
  * `outline-designer`
  * @element outline-designer
@@ -903,6 +907,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.liveRegionText = "";
     this._dropZone = null;
     this._dragPreviewElement = null;
+    this._isSafari = isSafari();
     this.activePage = null;
     this.selectedPages = [];
     this.zoomLevel = 1;
@@ -1328,6 +1333,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             : html`<span class="collapse-spacer collapse-slot" aria-hidden="true"></span>`}
           <simple-icon-button-lite
             ?disabled="${this.isLocked(index)}"
+            ?hidden="${this._isSafari}"
             @dragstart="${this._dragStart}"
             @dragend="${this._dragEnd}"
             @drag="${this._onDrag}"
@@ -2722,6 +2728,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       selectedPages: { type: Array },
       zoomLevel: { type: Number },
       _dragHandleActive: { type: String },
+      _isSafari: { type: Boolean },
     };
   }
 

@@ -474,16 +474,6 @@ class OutlinePlayer extends LTIResizingMixin(
       }),
     );
   }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
-    }
-
-    super.disconnectedCallback();
-  }
 }
 globalThis.customElements.define(OutlinePlayer.tag, OutlinePlayer);
 export { OutlinePlayer };

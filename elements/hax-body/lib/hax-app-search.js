@@ -161,7 +161,7 @@ class HaxAppSearch extends LitElement {
         type: Array,
       },
       /**
-       * Immediatley perform a request.
+       * Immediately perform a request.
        */
       auto: {
         type: Boolean,
@@ -217,7 +217,7 @@ class HaxAppSearch extends LitElement {
   updateSearchValues(values) {
     let requestParams = this.requestParams;
     for (let property in values) {
-      // dont send empty params in the request
+      // don't send empty params in the request
       if (values[property] != "") {
         requestParams[property] = values[property];
       }

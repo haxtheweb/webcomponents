@@ -48,7 +48,7 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     this.HAXCMSI18NMixinBase = "../../../";
     this.t = {
       rssFeed: "RSS Feed",
-      atomFeed: "ATOM Feed",
+      atomFeed: "Atom Feed",
     };
     this._link = {
       title: this.t.rssFeed,

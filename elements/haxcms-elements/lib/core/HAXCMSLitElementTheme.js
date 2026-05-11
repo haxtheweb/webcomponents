@@ -25,6 +25,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.editMode = false;
     this.trayStatus = '';
     this.isLoggedIn = false;
+    this.emptyContent = false;
     this.HAXSiteCustomRenderRoutes = {};
     this.__headingNodes = [];
     this.__copyLinkHandler = this.copyLink.bind(this);
@@ -45,6 +46,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__disposer.push(
       autorun((reaction) => {
         let tmp = toJS(store.activeItemContent);
+        this.emptyContent = !tmp || tmp.trim() === '';
         if (
           this.HAXCMSThemeSettings.autoScroll &&
           this.shadowRoot &&
@@ -220,6 +222,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         type: Object,
       },
       /**
+       * Indicates the active page has no meaningful rendered body content.
+       */
+      emptyContent: {
+        type: Boolean,
+        reflect: true,
+        attribute: 'empty-content',
+      },
+      /**
        * location as object
        */
       _location: {
@@ -246,8 +256,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         }
 
         @media (prefers-reduced-motion: reduce) {
-          * {
-            transition: none !important;
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+            scroll-behavior: auto !important;
           }
         }
         /**
@@ -257,7 +273,18 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           display: none;
         }
         #slot {
-          min-height: 50vh;
+          min-height: var(--haxcms-theme-content-min-height, 50vh);
+        }
+        :host([empty-content]) #slot {
+          min-height: var(--haxcms-theme-empty-content-min-height, 40vh);
+        }
+        @media (max-width: 900px) {
+          #slot {
+            min-height: var(--haxcms-theme-content-min-height-mobile, 38vh);
+          }
+          :host([empty-content]) #slot {
+            min-height: var(--haxcms-theme-empty-content-min-height-mobile, 22vh);
+          }
         }
       `,
     ];

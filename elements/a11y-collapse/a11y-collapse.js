@@ -322,7 +322,7 @@ class A11yCollapse extends DDD {
    */
   disconnectedCallback() {
     /**
-     * Fires when detatched, so that parent radio group will no longer listen for it.
+     * Fires when detached, so that parent radio group will no longer listen for it.
      *
      * @event a11y-collapse-detached
      */

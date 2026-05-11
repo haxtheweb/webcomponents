@@ -183,7 +183,7 @@ class SimpleBlogPost extends SimpleColors {
         attribute: "has-image",
       },
       /**
-       * editting state for the page
+       * editing state for the page
        */
       editMode: {
         type: Boolean,
@@ -227,13 +227,21 @@ class SimpleBlogPost extends SimpleColors {
     }, 0);
   }
   /**
-   * Detatched life cycle
+   * Detached lifecycle
    */
   disconnectedCallback() {
     this.windowControllers.abort();
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      if (typeof this.__disposer[i] === "function") {
+        this.__disposer[i]();
+      } else if (
+        this.__disposer[i] &&
+        typeof this.__disposer[i].dispose === "function"
+      ) {
+        this.__disposer[i].dispose();
+      }
     }
+    this.__disposer = [];
     super.disconnectedCallback();
   }
 

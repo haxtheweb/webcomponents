@@ -38,6 +38,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.isOverflow = false;
     this.isOpen = false;
     this.scrollPosition = 0; // Track scroll position
+    this.__onScroll = this.scrollFunction.bind(this);
 
     //get top level items (items shown on header -- they have no parent)
     this.__disposer.push(
@@ -371,13 +372,13 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     console.log("open")
     this.isOpen = true; // 
     nav.style.display = "flex"; // Show the mobile menu
-    document.body.classList.add('no-scroll'); // Disable scrolling on the body
+    globalThis.document.body.classList.add('no-scroll'); // Disable scrolling on the body
   }
   closeHamburger() {
     let nav = this.renderRoot.querySelector('.nav-menu');
     this.isOpen = false; // 
     nav.style.display = "none"; // Hide the mobile menu
-    document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
+    globalThis.document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
   }
 
 
@@ -407,12 +408,23 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     }
     requestAnimationFrame(() => this._checkOverflow());
 
-    window.onscroll = this.scrollFunction.bind(this); 
+    globalThis.addEventListener("scroll", this.__onScroll);
+  }
+  disconnectedCallback() {
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect();
+      this._resizeObserver = null;
+    }
+    globalThis.removeEventListener("scroll", this.__onScroll);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 
 
   scrollFunction() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollTop =
+      globalThis.scrollY || globalThis.document.documentElement.scrollTop;
     this.scrollPosition = scrollTop;
     if (scrollTop > 50) {
       this.halfOpacity();
@@ -466,7 +478,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           desktopHeader.style.padding = "var(--desktop-header-padding)"; // Hide desktop header
           desktopHeader.style.height = "auto"; // Show desktop header
           mobileHeader.style.display = "none"; // Hide mobile header
-          document.body.classList.remove('no-scroll');
+          globalThis.document.body.classList.remove('no-scroll');
           this.closeHamburger();
 
         }

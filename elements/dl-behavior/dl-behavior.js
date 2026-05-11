@@ -58,14 +58,16 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
         // download behavior supporting all but IE 11. This creates new link and then
         // clicks it to initiate download.
         const link = globalThis.document.createElement("a");
-        link.href = (globalThis.URL || globalThis.webkitURL).createObjectURL(
+        const objectUrl = (globalThis.URL || globalThis.webkitURL).createObjectURL(
           blob,
         );
+        link.href = objectUrl;
         link.download = filename;
         link.target = newTab ? "_blank" : "_self";
         this.appendChild(link);
         link.click();
         this.removeChild(link);
+        (globalThis.URL || globalThis.webkitURL).revokeObjectURL(objectUrl);
       }
     }
 

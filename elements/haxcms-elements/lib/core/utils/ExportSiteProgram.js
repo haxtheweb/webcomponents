@@ -24,44 +24,44 @@ export function createExportSiteProgram(context) {
         title: "Export site as HTML",
         icon: "hax:file-html",
         format: "html",
-        description: "Download entire site as consolidated HTML",
+        description: "Download the entire site as a single HTML document",
       },
       {
         title: "Export site as Markdown",
         icon: "hax:format-textblock",
         format: "markdown",
-        description: "Download entire site as Markdown files",
+        description: "Download the entire site as Markdown",
       },
       {
         title: "Export site as DOCX",
         icon: "hax:file-docx",
         format: "docx",
-        description: "Download entire site as Word document",
+        description: "Download the entire site as a Word document",
       },
       {
         title: "Export site as PDF",
         icon: "lrn:pdf",
         format: "pdf",
-        description: "Download entire site as PDF",
+        description: "Download the entire site as a PDF document",
       },
       {
         title: "Export site as EPUB",
         icon: "hax:file-ebook",
         format: "epub",
-        description: "Download site as EPUB book",
+        description: "Download the site as an EPUB book",
       },
       {
         title: "Download site archive",
         icon: "icons:archive",
         format: "zip",
-        description: "Download complete site as ZIP file",
+        description: "Download the complete site as a ZIP file",
       },
       {
         title: "Export site skeleton",
         icon: "icons:description",
         format: "skeleton",
         description:
-          "Export as reusable site template for creating similar sites",
+          "Export a reusable site template for creating similar sites",
       },
     ];
 
