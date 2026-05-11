@@ -266,12 +266,19 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
           if (previousDesignSystemHAXProperties) {
             props = previousDesignSystemHAXProperties(props, tag);
           }
+          if (!props) {
+            return props;
+          }
           if (!props.settings) {
             props.settings = {};
           }
-          if (!props.settings.configure) {
+          if (!Array.isArray(props.settings.configure)) {
             props.settings.configure = [];
           }
+          const designSystem =
+            props.designSystem && typeof props.designSystem === "object"
+              ? props.designSystem
+              : {};
           props.settings.configure = props.settings.configure.filter(
             (item) => item && item.property !== "ddd-styles",
           );
@@ -369,7 +376,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
           // design treatments are rather open ended but should be high up for things that have them
           if (
             props.designSystem === true ||
-            props.designSystem.designTreatment === true
+            designSystem.designTreatment === true
           ) {
             if (["p", "blockquote"].includes(tag)) {
               designTreatmentProps.push({
@@ -404,7 +411,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
           // can get the other 'card' like configuration pieces
           if (
             props.designSystem === true ||
-            props.designSystem.accent === true
+            designSystem.accent === true
           ) {
             colorProps.push({
               attribute: "data-accent",
@@ -416,7 +423,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
           }
           if (
             props.designSystem === true ||
-            props.designSystem.primary === true
+            designSystem.primary === true
           ) {
             colorProps.push({
               attribute: "data-primary",
@@ -429,7 +436,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
           }
           if (
             props.designSystem === true ||
-            props.designSystem.designTreatment === true
+            designSystem.designTreatment === true
           ) {
             if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
               designTreatmentProps.push({
@@ -441,7 +448,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
               });
             }
           }
-          if (props.designSystem === true || props.designSystem.text === true) {
+          if (props.designSystem === true || designSystem.text === true) {
             fontProps.push({
               attribute: "data-font-family",
               title: "Font family",
@@ -465,7 +472,7 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
               itemsList: [...HAXOptionSampleFactory("font-size")],
             });
           }
-          if (props.designSystem === true || props.designSystem.card === true) {
+          if (props.designSystem === true || designSystem.card === true) {
             cardProps = [
               {
                 attribute: "data-border-radius",
