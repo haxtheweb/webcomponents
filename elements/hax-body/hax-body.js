@@ -1130,6 +1130,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       !SuperDaemonInstance.opened
     ) {
       let key = e.key;
+      const keyboardInsertScroll = this.__keyboardInsertScrollSettings();
       this[`timesClicked${key}`]++;
       if (
         this[`timesClicked${key}`] >= 2 &&
@@ -1141,7 +1142,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.activeNode.previousElementSibling &&
             this.activeNode.previousElementSibling.tagName === "PAGE-BREAK"
           ) {
-            this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+            this.haxInsert(
+              "p",
+              "",
+              {},
+              this.activeNode.previousElementSibling,
+              false,
+              keyboardInsertScroll,
+            );
           } else if (
             this.activeNode.parentNode !== this &&
             this.activeNode.parentNode.previousElementSibling &&
@@ -1153,6 +1161,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               "",
               {},
               this.activeNode.parentNode.previousElementSibling,
+              false,
+              keyboardInsertScroll,
             );
             // would imply top of document, shouldn't be possible
           } else if (
@@ -1161,13 +1171,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ) {
             let p = globalThis.document.createElement("p");
             this.insertBefore(p, this.activeNode);
+            this.__applyNodeEditableStateWhenReady(p, this.editMode);
+            this.__focusLogic(p);
+            this.scrollHere(p, keyboardInsertScroll);
           }
         } else {
           if (
             !this.activeNode.nextElementSibling &&
             this.children[this.children.length - 1] === this.activeNode
           ) {
-            this.haxInsert("p", "", {});
+            this.haxInsert(
+              "p",
+              "",
+              {},
+              this.activeNode,
+              false,
+              keyboardInsertScroll,
+            );
           } else if (
             this.activeNode.parentNode &&
             this.activeNode.parentNode !== this &&
@@ -1175,7 +1195,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.children[this.children.length - 1] ===
               this.activeNode.parentNode
           ) {
-            this.haxInsert("p", "", {}, this.activeNode.parentNode);
+            this.haxInsert(
+              "p",
+              "",
+              {},
+              this.activeNode.parentNode,
+              false,
+              keyboardInsertScroll,
+            );
           }
           this[`timesClicked${key}`] = 0;
           this.prevKeyActiveNode = null;
@@ -1256,12 +1283,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 handledEnter = true;
+                const keyboardInsertScroll =
+                  this.__keyboardInsertScrollSettings();
                 // Check if there's already a DD following this DT
                 let nextSibling = this.activeNode.nextElementSibling;
                 if (nextSibling && nextSibling.tagName === "DD") {
                   // Jump to the existing DD
                   HAXStore.activeNode = nextSibling;
                   nextSibling.focus();
+                  this.scrollHere(nextSibling, keyboardInsertScroll);
                 } else {
                   // Create a new DD element after the DT
                   let dd = globalThis.document.createElement("dd");
@@ -1274,12 +1304,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   dd.focus();
                   // Position cursor at start of DD
                   HAXStore._positionCursorInNode(dd, 0);
+                  this.scrollHere(dd, keyboardInsertScroll);
                 }
               } else if (this.activeNode && this.activeNode.tagName === "DD") {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 handledEnter = true;
+                const keyboardInsertScroll =
+                  this.__keyboardInsertScrollSettings();
                 // Create a new DT + DD pair after the current DD
                 let dt = globalThis.document.createElement("dt");
                 let dd = globalThis.document.createElement("dd");
@@ -1298,6 +1331,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 dt.focus();
                 // Position cursor at start of DT
                 HAXStore._positionCursorInNode(dt, 0);
+                this.scrollHere(dt, keyboardInsertScroll);
               }
 
               if (
@@ -1684,6 +1718,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   /**
+   * Center keyboard-created insertion targets for better authoring readability.
+   */
+  __keyboardInsertScrollSettings() {
+    return {
+      block: "center",
+      inline: "nearest",
+    };
+  }
+  /**
    * Split text primitive content at the current selection range.
    * Paragraphs split into paragraphs; headings split into heading + paragraph.
    */
@@ -1741,7 +1784,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.__applyNodeEditableStateWhenReady(newNode, this.editMode);
     this.__focusLogic(newNode);
     HAXStore._positionCursorInNode(newNode, 0);
-    this.scrollHere(newNode);
+    this.scrollHere(newNode, this.__keyboardInsertScrollSettings());
     return true;
   }
   /**
@@ -1769,7 +1812,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
-    this.haxInsert("p", "", {}, node);
+    this.haxInsert(
+      "p",
+      "",
+      {},
+      node,
+      false,
+      this.__keyboardInsertScrollSettings(),
+    );
     return true;
   }
   /**
@@ -1826,7 +1876,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // and add a p since it's a divider really
       if (el.tagName === "HR") {
         // then insert a P which will assume active status
-        this.haxInsert("p", "", {});
+        this.haxInsert(
+          "p",
+          "",
+          {},
+          this.activeNode,
+          false,
+          this.__keyboardInsertScrollSettings(),
+        );
       }
     }
   }
@@ -2066,6 +2123,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     properties = {},
     active = this.activeNode,
     child = false,
+    insertScrollOptions = {},
   ) {
     // Signal that we're inserting content so the MutationObserver
     // doesn't try to re-process this node while we're actively
@@ -2194,7 +2252,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     const finalizeInsert = () => {
       requestAnimationFrame(() => {
         this.__focusLogic(newNode);
-        this.scrollHere(newNode);
+        this.scrollHere(newNode, insertScrollOptions);
         this._contentState.setState("inserting", false);
       });
     };
@@ -3681,15 +3739,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Simple utility to do nice scrolling or only scroll if we can't see it
    * as that is better behavior but not in all browsers
    */
-  scrollHere(node) {
+  scrollHere(node, scrollOptions = {}) {
+    if (!node || typeof node.scrollIntoView !== "function") {
+      return;
+    }
+    const options = {
+      behavior: "smooth",
+      inline: "nearest",
+      block: "end",
+      ...scrollOptions,
+    };
+    // respect reduced motion user preference when smooth scrolling is requested
+    if (
+      options.behavior === "smooth" &&
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      options.behavior = "auto";
+    }
     // scroll to it w/ timing delay as this uses resources
     // and we want to ensure it's in the next micro-task
     setTimeout(() => {
-      node.scrollIntoView({
-        behavior: "smooth",
-        inline: "nearest",
-        block: "end",
-      });
+      node.scrollIntoView(options);
     }, 100);
   }
   undo() {

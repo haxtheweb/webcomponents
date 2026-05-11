@@ -233,6 +233,14 @@ class HAXCMSSEOAdminDialog extends DDD {
             var(--ddd-theme-default-white)
           );
           --simple-fields-background-color: transparent;
+          --simple-fields-select-option-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --simple-fields-select-option-selected-background-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           --simple-fields-button-background-color: transparent;
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);

@@ -24,11 +24,22 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           }
           option {
             border-radius: 0;
+            background-color: var(
+              --simple-fields-select-option-background-color,
+              light-dark(
+                var(--ddd-theme-default-white, #ffffff),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
+            color: light-dark(
+              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
+              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+            );
           }
           option[selected] {
             background-color: var(
-              --simple-fields-faded-background-color,
-              rgba(0, 0, 0, 0.1)
+              --simple-fields-select-option-selected-background-color,
+              light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2))
             );
           }
           legend {
@@ -151,15 +162,22 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             width: calc(100% - 26px);
             padding-right: 26px;
             border: none;
-            background-color: var(
-              --simple-fields-background-color,
-              transparent
+            background-color: light-dark(
+              var(
+                --simple-fields-select-background-color,
+                var(--simple-fields-background-color, transparent)
+              ),
+              var(
+                --simple-fields-select-background-color,
+                var(--simple-fields-background-color, #1e1e1e)
+              )
             );
             border-radius: 0;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
             cursor: pointer;
+            color-scheme: light dark;
             color: light-dark(
               var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
               var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))

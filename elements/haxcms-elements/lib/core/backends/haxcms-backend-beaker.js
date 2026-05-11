@@ -74,6 +74,11 @@ class HAXCMSBackendBeaker extends LitElement {
       { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
+      "haxcms-save-seo-data",
+      this.saveSEOSettings.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
       { signal: this.windowControllers.signal },
@@ -202,6 +207,396 @@ class HAXCMSBackendBeaker extends LitElement {
       }),
     );
   }
+  async saveSEOSettings(e) {
+    const detail = e && e.detail ? e.detail : {};
+    this.manifest = store.cmsSiteEditor.instance.manifest;
+    if (!this.manifest || typeof this.manifest !== "object") {
+      return;
+    }
+    if (this._isScopedSEOPayload(detail)) {
+      this._applyScopedSEOPayload(detail);
+    } else if (detail && typeof detail === "object") {
+      this.manifest = detail;
+    }
+    await this.shadowRoot
+      .querySelector("#beaker")
+      .write("site.json", JSON.stringify(this.manifest, null, 2));
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show("SEO settings saved!");
+    store.cmsSiteEditor.instance.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+    store.cmsSiteEditor.instance.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest,
+      }),
+    );
+  }
+  _boolValue(value, defaultValue) {
+    if (value === true || value === "true" || value === 1 || value === "1") {
+      return true;
+    }
+    if (value === false || value === "false" || value === 0 || value === "0") {
+      return false;
+    }
+    return defaultValue;
+  }
+  _ensureManifestContainers() {
+    if (!this.manifest.metadata) {
+      this.manifest.metadata = {};
+    }
+    if (!this.manifest.metadata.site) {
+      this.manifest.metadata.site = {};
+    }
+    if (!this.manifest.metadata.site.settings) {
+      this.manifest.metadata.site.settings = {};
+    }
+    if (!this.manifest.metadata.author) {
+      this.manifest.metadata.author = {};
+    }
+  }
+  _isScopedDetailsPayload(detail) {
+    if (!detail || typeof detail !== "object") {
+      return false;
+    }
+    return (
+      Object.prototype.hasOwnProperty.call(detail, "title") ||
+      Object.prototype.hasOwnProperty.call(detail, "homePageId") ||
+      Object.prototype.hasOwnProperty.call(detail, "sw") ||
+      Object.prototype.hasOwnProperty.call(detail, "forceUpgrade") ||
+      (detail.manifest &&
+        detail.manifest.site &&
+        typeof detail.manifest.site === "object") ||
+      (detail.manifest &&
+        detail.manifest.seo &&
+        typeof detail.manifest.seo === "object")
+    );
+  }
+  _isScopedSEOPayload(detail) {
+    if (!detail || typeof detail !== "object") {
+      return false;
+    }
+    return (
+      Object.prototype.hasOwnProperty.call(detail, "license") ||
+      Object.prototype.hasOwnProperty.call(detail, "description") ||
+      Object.prototype.hasOwnProperty.call(detail, "logo") ||
+      Object.prototype.hasOwnProperty.call(detail, "domain") ||
+      Object.prototype.hasOwnProperty.call(detail, "lang") ||
+      Object.prototype.hasOwnProperty.call(detail, "gaID") ||
+      Object.prototype.hasOwnProperty.call(detail, "private") ||
+      Object.prototype.hasOwnProperty.call(detail, "canonical") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorImage") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorName") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorEmail") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorSocialLink") ||
+      Object.prototype.hasOwnProperty.call(detail, "pathauto") ||
+      Object.prototype.hasOwnProperty.call(detail, "publishPagesOn") ||
+      (detail.seo && typeof detail.seo === "object") ||
+      (detail.author && typeof detail.author === "object") ||
+      (detail.manifest &&
+        detail.manifest.author &&
+        typeof detail.manifest.author === "object") ||
+      (detail.manifest &&
+        detail.manifest.seo &&
+        typeof detail.manifest.seo === "object")
+    );
+  }
+  _applyScopedDetailsPayload(detail) {
+    this._ensureManifestContainers();
+    const manifestSite =
+      detail &&
+      detail.manifest &&
+      detail.manifest.site &&
+      typeof detail.manifest.site === "object"
+        ? detail.manifest.site
+        : {};
+    const manifestSeo =
+      detail &&
+      detail.manifest &&
+      detail.manifest.seo &&
+      typeof detail.manifest.seo === "object"
+        ? detail.manifest.seo
+        : {};
+    if (Object.prototype.hasOwnProperty.call(detail, "title")) {
+      this.manifest.title = String(detail.title || "");
+    } else if (
+      Object.prototype.hasOwnProperty.call(manifestSite, "manifest-title")
+    ) {
+      this.manifest.title = String(manifestSite["manifest-title"] || "");
+    }
+    let homePageIdValue = null;
+    if (Object.prototype.hasOwnProperty.call(detail, "homePageId")) {
+      homePageIdValue = String(detail.homePageId || "").trim();
+    } else if (
+      Object.prototype.hasOwnProperty.call(
+        manifestSite,
+        "manifest-metadata-site-homePageId",
+      )
+    ) {
+      homePageIdValue = String(
+        manifestSite["manifest-metadata-site-homePageId"] || "",
+      ).trim();
+    }
+    if (homePageIdValue !== null) {
+      let validPage = false;
+      if (
+        homePageIdValue &&
+        this.manifest.items &&
+        Array.isArray(this.manifest.items)
+      ) {
+        this.manifest.items.forEach((item) => {
+          if (item && item.id === homePageIdValue) {
+            validPage = true;
+          }
+        });
+      }
+      if (validPage) {
+        this.manifest.metadata.site.homePageId = homePageIdValue;
+      } else {
+        if (
+          this.manifest.metadata.site &&
+          this.manifest.metadata.site.homePageId
+        ) {
+          delete this.manifest.metadata.site.homePageId;
+        }
+        if (
+          this.manifest.metadata.site.settings &&
+          this.manifest.metadata.site.settings.homePageId
+        ) {
+          delete this.manifest.metadata.site.settings.homePageId;
+        }
+      }
+    }
+    if (Object.prototype.hasOwnProperty.call(detail, "sw")) {
+      this.manifest.metadata.site.settings.sw = this._boolValue(
+        detail.sw,
+        this.manifest.metadata.site.settings.sw,
+      );
+    } else if (
+      Object.prototype.hasOwnProperty.call(
+        manifestSeo,
+        "manifest-metadata-site-settings-sw",
+      )
+    ) {
+      this.manifest.metadata.site.settings.sw = this._boolValue(
+        manifestSeo["manifest-metadata-site-settings-sw"],
+        this.manifest.metadata.site.settings.sw,
+      );
+    }
+    if (Object.prototype.hasOwnProperty.call(detail, "forceUpgrade")) {
+      this.manifest.metadata.site.settings.forceUpgrade = this._boolValue(
+        detail.forceUpgrade,
+        this.manifest.metadata.site.settings.forceUpgrade,
+      );
+    } else if (
+      Object.prototype.hasOwnProperty.call(
+        manifestSeo,
+        "manifest-metadata-site-settings-forceUpgrade",
+      )
+    ) {
+      this.manifest.metadata.site.settings.forceUpgrade = this._boolValue(
+        manifestSeo["manifest-metadata-site-settings-forceUpgrade"],
+        this.manifest.metadata.site.settings.forceUpgrade,
+      );
+    }
+    this.manifest.metadata.site.updated = Math.floor(Date.now() / 1000);
+  }
+  _applyScopedSEOPayload(detail) {
+    this._ensureManifestContainers();
+    const author =
+      detail && detail.author && typeof detail.author === "object"
+        ? detail.author
+        : {};
+    const seo =
+      detail && detail.seo && typeof detail.seo === "object" ? detail.seo : {};
+    const manifestAuthor =
+      detail &&
+      detail.manifest &&
+      detail.manifest.author &&
+      typeof detail.manifest.author === "object"
+        ? detail.manifest.author
+        : {};
+    const manifestSeo =
+      detail &&
+      detail.manifest &&
+      detail.manifest.seo &&
+      typeof detail.manifest.seo === "object"
+        ? detail.manifest.seo
+        : {};
+    const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+    if (hasOwn(detail, "license")) {
+      this.manifest.license = String(detail.license || "");
+    } else if (hasOwn(author, "license")) {
+      this.manifest.license = String(author.license || "");
+    } else if (hasOwn(manifestAuthor, "manifest.license")) {
+      this.manifest.license = String(manifestAuthor["manifest.license"] || "");
+    }
+    if (hasOwn(detail, "authorImage")) {
+      this.manifest.metadata.author.image = String(detail.authorImage || "");
+    } else if (hasOwn(author, "image")) {
+      this.manifest.metadata.author.image = String(author.image || "");
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.image")) {
+      this.manifest.metadata.author.image = String(
+        manifestAuthor["manifest.metadata.author.image"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorName")) {
+      this.manifest.metadata.author.name = String(detail.authorName || "");
+    } else if (hasOwn(author, "name")) {
+      this.manifest.metadata.author.name = String(author.name || "");
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.name")) {
+      this.manifest.metadata.author.name = String(
+        manifestAuthor["manifest.metadata.author.name"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorEmail")) {
+      this.manifest.metadata.author.email = String(detail.authorEmail || "");
+    } else if (hasOwn(author, "email")) {
+      this.manifest.metadata.author.email = String(author.email || "");
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.email")) {
+      this.manifest.metadata.author.email = String(
+        manifestAuthor["manifest.metadata.author.email"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorSocialLink")) {
+      this.manifest.metadata.author.socialLink = String(
+        detail.authorSocialLink || "",
+      );
+    } else if (hasOwn(author, "socialLink")) {
+      this.manifest.metadata.author.socialLink = String(author.socialLink || "");
+    } else if (
+      hasOwn(manifestAuthor, "manifest.metadata.author.socialLink")
+    ) {
+      this.manifest.metadata.author.socialLink = String(
+        manifestAuthor["manifest.metadata.author.socialLink"] || "",
+      );
+    }
+    if (hasOwn(detail, "description")) {
+      this.manifest.description = String(detail.description || "");
+    } else if (hasOwn(seo, "description")) {
+      this.manifest.description = String(seo.description || "");
+    } else if (hasOwn(manifestSeo, "manifest.description")) {
+      this.manifest.description = String(manifestSeo["manifest.description"] || "");
+    }
+    if (hasOwn(detail, "logo")) {
+      this.manifest.metadata.site.logo = String(detail.logo || "");
+    } else if (hasOwn(seo, "logo")) {
+      this.manifest.metadata.site.logo = String(seo.logo || "");
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.logo")) {
+      this.manifest.metadata.site.logo = String(
+        manifestSeo["manifest.metadata.site.logo"] || "",
+      );
+    }
+    if (hasOwn(detail, "domain")) {
+      this.manifest.metadata.site.domain = String(detail.domain || "");
+    } else if (hasOwn(seo, "domain")) {
+      this.manifest.metadata.site.domain = String(seo.domain || "");
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.domain")) {
+      this.manifest.metadata.site.domain = String(
+        manifestSeo["manifest.metadata.site.domain"] || "",
+      );
+    }
+    if (hasOwn(detail, "lang")) {
+      this.manifest.metadata.site.settings.lang = String(detail.lang || "");
+    } else if (hasOwn(seo, "lang")) {
+      this.manifest.metadata.site.settings.lang = String(seo.lang || "");
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.settings.lang")) {
+      this.manifest.metadata.site.settings.lang = String(
+        manifestSeo["manifest.metadata.site.settings.lang"] || "",
+      );
+    }
+    if (hasOwn(detail, "gaID")) {
+      this.manifest.metadata.site.settings.gaID = String(detail.gaID || "");
+    } else if (hasOwn(seo, "gaID")) {
+      this.manifest.metadata.site.settings.gaID = String(seo.gaID || "");
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.settings.gaID")) {
+      this.manifest.metadata.site.settings.gaID = String(
+        manifestSeo["manifest.metadata.site.settings.gaID"] || "",
+      );
+    }
+    if (hasOwn(detail, "private")) {
+      this.manifest.metadata.site.settings.private = this._boolValue(
+        detail.private,
+        this.manifest.metadata.site.settings.private,
+      );
+    } else if (hasOwn(seo, "private")) {
+      this.manifest.metadata.site.settings.private = this._boolValue(
+        seo.private,
+        this.manifest.metadata.site.settings.private,
+      );
+    } else if (
+      hasOwn(manifestSeo, "manifest.metadata.site.settings.private")
+    ) {
+      this.manifest.metadata.site.settings.private = this._boolValue(
+        manifestSeo["manifest.metadata.site.settings.private"],
+        this.manifest.metadata.site.settings.private,
+      );
+    }
+    if (hasOwn(detail, "canonical")) {
+      this.manifest.metadata.site.settings.canonical = this._boolValue(
+        detail.canonical,
+        this.manifest.metadata.site.settings.canonical,
+      );
+    } else if (hasOwn(seo, "canonical")) {
+      this.manifest.metadata.site.settings.canonical = this._boolValue(
+        seo.canonical,
+        this.manifest.metadata.site.settings.canonical,
+      );
+    } else if (
+      hasOwn(manifestSeo, "manifest.metadata.site.settings.canonical")
+    ) {
+      this.manifest.metadata.site.settings.canonical = this._boolValue(
+        manifestSeo["manifest.metadata.site.settings.canonical"],
+        this.manifest.metadata.site.settings.canonical,
+      );
+    }
+    if (hasOwn(detail, "pathauto")) {
+      this.manifest.metadata.site.settings.pathauto = this._boolValue(
+        detail.pathauto,
+        this.manifest.metadata.site.settings.pathauto,
+      );
+    } else if (hasOwn(seo, "pathauto")) {
+      this.manifest.metadata.site.settings.pathauto = this._boolValue(
+        seo.pathauto,
+        this.manifest.metadata.site.settings.pathauto,
+      );
+    } else if (
+      hasOwn(manifestSeo, "manifest.metadata.site.settings.pathauto")
+    ) {
+      this.manifest.metadata.site.settings.pathauto = this._boolValue(
+        manifestSeo["manifest.metadata.site.settings.pathauto"],
+        this.manifest.metadata.site.settings.pathauto,
+      );
+    }
+    if (hasOwn(detail, "publishPagesOn")) {
+      this.manifest.metadata.site.settings.publishPagesOn = this._boolValue(
+        detail.publishPagesOn,
+        this.manifest.metadata.site.settings.publishPagesOn,
+      );
+    } else if (hasOwn(seo, "publishPagesOn")) {
+      this.manifest.metadata.site.settings.publishPagesOn = this._boolValue(
+        seo.publishPagesOn,
+        this.manifest.metadata.site.settings.publishPagesOn,
+      );
+    } else if (
+      hasOwn(manifestSeo, "manifest.metadata.site.settings.publishPagesOn")
+    ) {
+      this.manifest.metadata.site.settings.publishPagesOn = this._boolValue(
+        manifestSeo["manifest.metadata.site.settings.publishPagesOn"],
+        this.manifest.metadata.site.settings.publishPagesOn,
+      );
+    }
+    this.manifest.metadata.site.updated = Math.floor(Date.now() / 1000);
+  }
   /**
    * Outline save event.
    */
@@ -307,29 +702,41 @@ class HAXCMSBackendBeaker extends LitElement {
    * Manifest save event.
    */
   async saveManifest(e) {
-    this.manifest = e.detail;
-    // limits options but makes it possible to switch core themes
-    if (typeof this.manifest.metadata.theme === "string") {
-      const themeData = {
-        "haxcms-dev-theme": {
-          element: "haxcms-dev-theme",
-          path: "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
-          name: "Developer theme",
-        },
-        "outline-player": {
-          element: "outline-player",
-          path: "@haxtheweb/outline-player/outline-player.js",
-          name: "Outline player",
-        },
-        "simple-blog": {
-          element: "simple-blog",
-          path: "@haxtheweb/simple-blog/simple-blog.js",
-          name: "Simple blog",
-        },
-      };
-      // if it's not a core theme we can't really do it
-      if (themeData[this.manifest.metadata.theme]) {
-        this.manifest.metadata.theme = themeData[this.manifest.metadata.theme];
+    const detail = e && e.detail ? e.detail : {};
+    this.manifest = store.cmsSiteEditor.instance.manifest;
+    if (!this.manifest || typeof this.manifest !== "object") {
+      return;
+    }
+    if (this._isScopedDetailsPayload(detail)) {
+      this._applyScopedDetailsPayload(detail);
+    } else {
+      this.manifest = detail;
+      // limits options but makes it possible to switch core themes
+      if (
+        this.manifest.metadata &&
+        typeof this.manifest.metadata.theme === "string"
+      ) {
+        const themeData = {
+          "haxcms-dev-theme": {
+            element: "haxcms-dev-theme",
+            path: "@haxtheweb/haxcms-elements/lib/haxcms-dev-theme.js",
+            name: "Developer theme",
+          },
+          "outline-player": {
+            element: "outline-player",
+            path: "@haxtheweb/outline-player/outline-player.js",
+            name: "Outline player",
+          },
+          "simple-blog": {
+            element: "simple-blog",
+            path: "@haxtheweb/simple-blog/simple-blog.js",
+            name: "Simple blog",
+          },
+        };
+        // if it's not a core theme we can't really do it
+        if (themeData[this.manifest.metadata.theme]) {
+          this.manifest.metadata.theme = themeData[this.manifest.metadata.theme];
+        }
       }
     }
     await this.shadowRoot

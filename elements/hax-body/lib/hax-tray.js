@@ -1611,6 +1611,10 @@ class HaxTray extends I18NMixin(
                 (!prop.attribute || prop.attribute != "slot"),
             );
         const isLocked = this.locked;
+        const shouldAutoExpandConfigure =
+          !isLocked &&
+          propName === "configure" &&
+          (isGrid || !HAXStore.isTextElement(activeNode));
         // If the menu is advanced or developer, check the current platform audience. Else default to visible.
         const isExpertSetting = (propName === "advanced" || propName === "developer") ? !HAXStore.isPlatformAudience("expert") : false;
         this.activeSchema[0].properties.push({
@@ -1621,7 +1625,7 @@ class HaxTray extends I18NMixin(
           hidden: isExpertSetting || isLocked || filteredProps.length < 1,
           // we only auto expand (and hence auto focus) active nodes if they are NOT text based
           // grid plates are the exception to the rule here
-          expanded: !isLocked && propName === "configure",
+          expanded: shouldAutoExpandConfigure,
           accordion: true,
         });
       };

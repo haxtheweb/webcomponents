@@ -22,6 +22,27 @@ class SimpleIconPicker extends SimplePicker {
     return [
       super.styles,
       css`
+        :host {
+          --simple-picker-options-background-color: var(
+            --simple-fields-select-option-background-color,
+            light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
+          --simple-picker-option-selected-background-color: var(
+            --simple-fields-select-option-selected-background-color,
+            light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2))
+          );
+          --simple-picker-option-active-background-color: var(
+            --simple-fields-select-option-selected-background-color,
+            light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2))
+          );
+          --simple-picker-option-active-color: var(
+            --simple-fields-color,
+            currentColor
+          );
+        }
         simple-picker-option {
           --simple-picker-option-size: 32px;
         }
