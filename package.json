@@ -163,16 +163,15 @@
     "symlink-dir": "5.0.1",
     "trim": "1.0.1",
     "web-animations-js": "2.3.2",
-    "webpack": "5.106.2",
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.6.2",
-    "react":"19.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "yo": "7.0.1"
   },
   "resolutions": {
     "@mdjs/mdjs-preview": "0.5.9",
     "@google/model-viewer": "3.2.1",
-    "webpack": "5.106.2",
     "@rollup/plugin-node-resolve": "16.0.1",
     "roughjs": "4.4.5",
     "lit": "3.3.2",
