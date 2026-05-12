@@ -175,95 +175,98 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             ></simple-fields-field>
           </div>
 
-          ${HAXStore.platformAllows("popularGizmos") ? html`<a11y-collapse
-            id="popular"
-            heading="${this.t.popular}"
-            heading-button
-            expanded
-          >
-            <simple-button-grid columns="3" always-expanded part="grid">
-              ${this.popularGizmoList.map(
-                (gizmo, i) =>
-                  html` <simple-popover-selection
-                    data-index="popular-${i}"
-                    @opened-changed="${this._hoverForPreviewChange}"
-                    event="hover"
-                  >
-                    <hax-tray-button
-                      show-text-label
-                      voice-command="insert ${gizmo.title}"
-                      draggable="true"
-                      @dragstart="${this._dragStart}"
-                      index="popular-${i}"
-                      label="${gizmo.title}"
-                      event-name="insert-tag"
-                      event-data="${gizmo.tag}"
-                      data-demo-schema="true"
-                      icon-position="top"
-                      icon="${gizmo.icon}"
-                      part="grid-button"
-                      slot="button"
-                    ></hax-tray-button>
-                    ${this.activePreview === `popular-${i}`
-                      ? html`
-                          <hax-element-demo
-                            render-tag="${gizmo.tag}"
-                            gizmo-title="${gizmo.title}"
-                            gizmo-description="${gizmo.description || ''}"
-                            gizmo-icon="${gizmo.icon}"
-                            slot="options"
-                          ></hax-element-demo>
-                        `
-                      : ``}
-                  </simple-popover-selection>`,
-              )}
-            </simple-button-grid>
-          </a11y-collapse>` : html``}
-
-          ${HAXStore.platformAllows("recentGizmos") ? html`<a11y-collapse
-            id="recent"
-            heading="${this.t.recent}"
-            heading-button
-            expanded
-          >
-            <simple-button-grid columns="3" always-expanded part="grid">
-              ${this.recentGizmoList.map(
-                (gizmo, i) =>
-                  html` <simple-popover-selection
-                    data-index="${i}"
-                    @opened-changed="${this._hoverForPreviewChange}"
-                    event="hover"
-                  >
-                    <hax-tray-button
-                      show-text-label
-                      voice-command="insert ${gizmo.title}"
-                      draggable="true"
-                      @dragstart="${this._dragStart}"
-                      index="${i}"
-                      label="${gizmo.title}"
-                      event-name="insert-tag"
-                      event-data="${gizmo.tag}"
-                      data-demo-schema="true"
-                      icon-position="top"
-                      icon="${gizmo.icon}"
-                      part="grid-button"
-                      slot="button"
-                    ></hax-tray-button>
-                    ${this.activePreview === i.toString()
-                      ? html`
-                          <hax-element-demo
-                            render-tag="${gizmo.tag}"
-                            gizmo-title="${gizmo.title}"
-                            gizmo-description="${gizmo.description || ''}"
-                            gizmo-icon="${gizmo.icon}"
-                            slot="options"
-                          ></hax-element-demo>
-                        `
-                      : ``}
-                  </simple-popover-selection>`,
-              )}
-            </simple-button-grid>
-          </a11y-collapse>` : html``}
+          ${HAXStore.platformAllows("popularGizmos")
+            ? html`<a11y-collapse
+                id="popular"
+                heading="${this.t.popular}"
+                heading-button
+                expanded
+              >
+                <simple-button-grid columns="3" always-expanded part="grid">
+                  ${this.popularGizmoList.map(
+                    (gizmo, i) =>
+                      html` <simple-popover-selection
+                        data-index="popular-${i}"
+                        @opened-changed="${this._hoverForPreviewChange}"
+                        event="hover"
+                      >
+                        <hax-tray-button
+                          show-text-label
+                          voice-command="insert ${gizmo.title}"
+                          draggable="true"
+                          @dragstart="${this._dragStart}"
+                          index="popular-${i}"
+                          label="${gizmo.title}"
+                          event-name="insert-tag"
+                          event-data="${gizmo.tag}"
+                          data-demo-schema="true"
+                          icon-position="top"
+                          icon="${gizmo.icon}"
+                          part="grid-button"
+                          slot="button"
+                        ></hax-tray-button>
+                        ${this.activePreview === `popular-${i}`
+                          ? html`
+                              <hax-element-demo
+                                render-tag="${gizmo.tag}"
+                                gizmo-title="${gizmo.title}"
+                                gizmo-description="${gizmo.description || ""}"
+                                gizmo-icon="${gizmo.icon}"
+                                slot="options"
+                              ></hax-element-demo>
+                            `
+                          : ``}
+                      </simple-popover-selection>`,
+                  )}
+                </simple-button-grid>
+              </a11y-collapse>`
+            : html``}
+          ${HAXStore.platformAllows("recentGizmos")
+            ? html`<a11y-collapse
+                id="recent"
+                heading="${this.t.recent}"
+                heading-button
+                expanded
+              >
+                <simple-button-grid columns="3" always-expanded part="grid">
+                  ${this.recentGizmoList.map(
+                    (gizmo, i) =>
+                      html` <simple-popover-selection
+                        data-index="${i}"
+                        @opened-changed="${this._hoverForPreviewChange}"
+                        event="hover"
+                      >
+                        <hax-tray-button
+                          show-text-label
+                          voice-command="insert ${gizmo.title}"
+                          draggable="true"
+                          @dragstart="${this._dragStart}"
+                          index="${i}"
+                          label="${gizmo.title}"
+                          event-name="insert-tag"
+                          event-data="${gizmo.tag}"
+                          data-demo-schema="true"
+                          icon-position="top"
+                          icon="${gizmo.icon}"
+                          part="grid-button"
+                          slot="button"
+                        ></hax-tray-button>
+                        ${this.activePreview === i.toString()
+                          ? html`
+                              <hax-element-demo
+                                render-tag="${gizmo.tag}"
+                                gizmo-title="${gizmo.title}"
+                                gizmo-description="${gizmo.description || ""}"
+                                gizmo-icon="${gizmo.icon}"
+                                slot="options"
+                              ></hax-element-demo>
+                            `
+                          : ``}
+                      </simple-popover-selection>`,
+                  )}
+                </simple-button-grid>
+              </a11y-collapse>`
+            : html``}
           ${this.categories.map(
             (tag) =>
               html` <a11y-collapse
@@ -299,7 +302,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                                   <hax-element-demo
                                     render-tag="${gizmo.tag}"
                                     gizmo-title="${gizmo.title}"
-                                    gizmo-description="${gizmo.description || ''}"
+                                    gizmo-description="${gizmo.description ||
+                                    ""}"
                                     gizmo-icon="${gizmo.icon}"
                                     slot="options"
                                   ></hax-element-demo>

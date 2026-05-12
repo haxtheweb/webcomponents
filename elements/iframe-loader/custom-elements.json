@@ -12,6 +12,15 @@
           "name": "IframeLoader",
           "members": [
             {
+              "kind": "method",
+              "name": "_safeSource",
+              "parameters": [
+                {
+                  "name": "source"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -143,7 +152,7 @@
             {
               "kind": "field",
               "name": "__observer",
-              "default": "new MutationObserver((mutations) => { if (this.querySelector(\"iframe\")) { this.__iframe = this.querySelector(\"iframe\"); this.source = this.__iframe.getAttribute(\"src\"); // Listen for new this.__iframe.addEventListener( \"load\", this.iframeLoadingCallback.bind(this), ); this.__mutationObserver.observe(this.__iframe, { attributes: true, }); } })"
+              "default": "new MutationObserver((mutations) => { if (this.querySelector(\"iframe\")) { this.__iframe = this.querySelector(\"iframe\"); this.source = this._safeSource(this.__iframe.getAttribute(\"src\")); // Listen for new this.__iframe.addEventListener( \"load\", this.iframeLoadingCallback.bind(this), ); this.__mutationObserver.observe(this.__iframe, { attributes: true, }); } })"
             },
             {
               "kind": "field",

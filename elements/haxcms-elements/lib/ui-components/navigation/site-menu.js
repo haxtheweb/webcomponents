@@ -119,7 +119,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       autorun((reaction) => {
         this.activeId = toJS(store.activeId);
         this.updateComplete.then(() => {
-          const mapMenu = this.shadowRoot && this.shadowRoot.querySelector("map-menu");
+          const mapMenu =
+            this.shadowRoot && this.shadowRoot.querySelector("map-menu");
           if (mapMenu && mapMenu.selected !== this.activeId) {
             mapMenu.selected = this.activeId;
           }

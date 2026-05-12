@@ -71,6 +71,18 @@
                 {
                   "name": "modal",
                   "default": "false"
+                },
+                {
+                  "name": "showClose",
+                  "default": "false"
+                },
+                {
+                  "name": "titleIcon",
+                  "default": "null"
+                },
+                {
+                  "name": "breadcrumbs",
+                  "default": "[]"
                 }
               ],
               "description": "Show the modal and display the material"
@@ -78,6 +90,11 @@
             {
               "kind": "method",
               "name": "close",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
               "description": "Close the modal and do some clean up"
             },
             {
@@ -90,6 +107,20 @@
               "parameters": [
                 {
                   "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_queueFocusModalContent"
+            },
+            {
+              "kind": "method",
+              "name": "_focusModalContent",
+              "parameters": [
+                {
+                  "name": "attempt",
+                  "default": "0"
                 }
               ]
             },
@@ -114,9 +145,73 @@
               "description": "If there is no title, supply a generic aria-label"
             },
             {
+              "kind": "method",
+              "name": "_renderTitle"
+            },
+            {
+              "kind": "method",
+              "name": "_renderBreadcrumbs"
+            },
+            {
+              "kind": "method",
+              "name": "_mobileBreadcrumbLimit",
+              "parameters": [
+                {
+                  "name": "crumbs",
+                  "default": "[]"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isBreadcrumbClickable",
+              "parameters": [
+                {
+                  "name": "crumb"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "lastIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleBreadcrumbClick",
+              "parameters": [
+                {
+                  "name": "crumb"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "__focusRestoreTimer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__modalContentFocusTimer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -128,6 +223,39 @@
               "description": "heading / label of the modal",
               "default": "\"\"",
               "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "titleIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional icon shown with the modal title",
+              "default": "\"\"",
+              "attribute": "title-icon"
+            },
+            {
+              "kind": "field",
+              "name": "breadcrumbs",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional breadcrumb metadata for title rendering",
+              "default": "[]",
+              "attribute": "breadcrumbs"
+            },
+            {
+              "kind": "field",
+              "name": "showClose",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "support showing close icon while still in modal mode",
+              "default": "false",
+              "attribute": "show-close"
             },
             {
               "kind": "field",
@@ -196,6 +324,14 @@
               "reflects": true
             }
           ],
+          "events": [
+            {
+              "name": "simple-modal-breadcrumb-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
           "attributes": [
             {
               "name": "title",
@@ -251,12 +387,39 @@
               "fieldName": "modal"
             },
             {
+              "name": "show-close",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "support showing close icon while still in modal mode",
+              "default": "false",
+              "fieldName": "showClose"
+            },
+            {
               "name": "mode",
               "type": {
                 "text": "string"
               },
               "description": "can add a custom string to style modal based on what is calling it",
               "fieldName": "mode"
+            },
+            {
+              "name": "title-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional icon shown with the modal title",
+              "default": "\"\"",
+              "fieldName": "titleIcon"
+            },
+            {
+              "name": "breadcrumbs",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional breadcrumb metadata for title rendering",
+              "default": "[]",
+              "fieldName": "breadcrumbs"
             }
           ],
           "superclass": {

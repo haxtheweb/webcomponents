@@ -31,9 +31,7 @@ export const createEditTagsProgram = (context) => {
     // Save button first - most common action
     results.push({
       title:
-        input && input.trim() !== ""
-          ? `Save tags: ${input}`
-          : "Clear all tags",
+        input && input.trim() !== "" ? `Save tags: ${input}` : "Clear all tags",
       icon: "icons:check",
       tags: ["confirm", "save"],
       value: {

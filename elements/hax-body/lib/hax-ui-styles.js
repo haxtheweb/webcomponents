@@ -42,7 +42,7 @@ export const HaxUiColors = [
       --hax-ui-background-color-secondary: #e8e8e8;
       --hax-ui-background-color-faded: #b0b8bb;
 
-      --hax-ui-color-accent: var(--ddd-theme-default-skyBlue,#009dc7);
+      --hax-ui-color-accent: var(--ddd-theme-default-skyBlue, #009dc7);
       --hax-ui-color-accent-secondary: #007999;
       --hax-ui-background-color-accent: #e5f6fd;
 

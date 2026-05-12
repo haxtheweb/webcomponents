@@ -139,10 +139,9 @@
             }
           ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
         }
       ],
       "exports": [
@@ -885,25 +884,9 @@
       "exports": [
         {
           "kind": "js",
-          "name": "learningComponentNouns",
+          "name": "iconFromPageType",
           "declaration": {
-            "name": "learningComponentNouns",
-            "module": "lib/learning-component.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "learningComponentVerbs",
-          "declaration": {
-            "name": "learningComponentVerbs",
-            "module": "lib/learning-component.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "learningComponentTypes",
-          "declaration": {
-            "name": "learningComponentTypes",
+            "name": "iconFromPageType",
             "module": "lib/learning-component.js"
           }
         },
@@ -917,9 +900,25 @@
         },
         {
           "kind": "js",
-          "name": "iconFromPageType",
+          "name": "learningComponentNouns",
           "declaration": {
-            "name": "iconFromPageType",
+            "name": "learningComponentNouns",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "learningComponentTypes",
+          "declaration": {
+            "name": "learningComponentTypes",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "learningComponentVerbs",
+          "declaration": {
+            "name": "learningComponentVerbs",
             "module": "lib/learning-component.js"
           }
         },
@@ -1029,14 +1028,7 @@
           "kind": "class",
           "description": "",
           "name": "ResponsiveIframe",
-          "members": [
-            {
-              "kind": "field",
-              "name": "haxProperties",
-              "static": true,
-              "readonly": true
-            }
-          ],
+          "members": [],
           "superclass": {
             "name": "LitElement",
             "package": "lit"

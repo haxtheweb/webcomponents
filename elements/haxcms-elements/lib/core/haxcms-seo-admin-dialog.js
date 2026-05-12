@@ -60,8 +60,10 @@ class HAXCMSSEOAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -179,7 +181,8 @@ class HAXCMSSEOAdminDialog extends DDD {
           );
         }
         .error {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-original87Pink);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-original87Pink);
           background: light-dark(
             var(--ddd-theme-default-potentialMidnight),
             var(--ddd-theme-default-coalyGray)
@@ -336,7 +339,8 @@ class HAXCMSSEOAdminDialog extends DDD {
           {
             property: "manifest-metadata-site-logo",
             title: "Favicon",
-            description: "Browser tab image / used on phones as small site logo",
+            description:
+              "Browser tab image / used on phones as small site logo",
             inputMethod: "haxupload",
             required: false,
             noVoiceRecord: true,
@@ -374,8 +378,7 @@ class HAXCMSSEOAdminDialog extends DDD {
           {
             property: "manifest-metadata-site-settings-canonical",
             title: "Canonical",
-            description:
-              "Treat domain as canonical to improve SEO consistency",
+            description: "Treat domain as canonical to improve SEO consistency",
             inputMethod: "boolean",
             required: false,
           },
@@ -471,7 +474,9 @@ class HAXCMSSEOAdminDialog extends DDD {
     const topAuthorString =
       manifest && typeof manifest.author === "string" ? manifest.author : "";
     const siteSettings =
-      metadataSite && metadataSite.settings && typeof metadataSite.settings === "object"
+      metadataSite &&
+      metadataSite.settings &&
+      typeof metadataSite.settings === "object"
         ? metadataSite.settings
         : {};
     const seoSettings =
@@ -558,10 +563,8 @@ class HAXCMSSEOAdminDialog extends DDD {
       pathauto,
       true,
     );
-    values["manifest-metadata-site-settings-publishPagesOn"] = this._toBoolValue(
-      publishPagesOn,
-      true,
-    );
+    values["manifest-metadata-site-settings-publishPagesOn"] =
+      this._toBoolValue(publishPagesOn, true);
     return values;
   }
 
@@ -715,7 +718,9 @@ class HAXCMSSEOAdminDialog extends DDD {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          ${this.errorMessage ? html`<p class="error">${this.errorMessage}</p>` : ``}
+          ${this.errorMessage
+            ? html`<p class="error">${this.errorMessage}</p>`
+            : ``}
           ${!this.errorMessage && this.groups.length === 0
             ? html`<p class="status">No SEO settings are available.</p>`
             : ``}

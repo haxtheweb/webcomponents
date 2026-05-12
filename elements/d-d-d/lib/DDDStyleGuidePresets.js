@@ -30,66 +30,66 @@ export const DDDStyleGuidePresets = {
       "data-border-radius": "xs",
     },
   },
-}
+};
 
 function normalizeTag(tag) {
   if (tag && tag.toLowerCase) {
-    return tag.toLowerCase()
+    return tag.toLowerCase();
   }
-  return null
+  return null;
 }
 
 export function getDDDStyleGuidePresetByKey(presetKey) {
   if (presetKey && DDDStyleGuidePresets[presetKey]) {
-    return DDDStyleGuidePresets[presetKey]
+    return DDDStyleGuidePresets[presetKey];
   }
-  return null
+  return null;
 }
 
 export function getDDDStyleGuideOptionsForTag(tag) {
-  const normalizedTag = normalizeTag(tag)
+  const normalizedTag = normalizeTag(tag);
   if (!normalizedTag) {
-    return []
+    return [];
   }
   return Object.keys(DDDStyleGuidePresets)
     .filter((presetKey) => {
-      const preset = DDDStyleGuidePresets[presetKey]
+      const preset = DDDStyleGuidePresets[presetKey];
       return (
         preset &&
         Array.isArray(preset.allowedTags) &&
         preset.allowedTags.includes(normalizedTag)
-      )
+      );
     })
     .map((presetKey) => {
-      const preset = DDDStyleGuidePresets[presetKey]
+      const preset = DDDStyleGuidePresets[presetKey];
       return {
         value: presetKey,
         text: preset.name,
-      }
-    })
+      };
+    });
 }
 
 export function getDDDStyleGuidePresetManagedAttributes() {
-  const attributes = {}
+  const attributes = {};
   Object.keys(DDDStyleGuidePresets).forEach((presetKey) => {
-    const preset = DDDStyleGuidePresets[presetKey]
+    const preset = DDDStyleGuidePresets[presetKey];
     if (preset && preset.properties) {
       Object.keys(preset.properties).forEach((attribute) => {
-        attributes[attribute] = true
-      })
+        attributes[attribute] = true;
+      });
     }
-  })
-  return Object.keys(attributes)
+  });
+  return Object.keys(attributes);
 }
 
 export function getDDDStyleGuideDefaultPresetForTag(tag) {
-  const normalizedTag = normalizeTag(tag)
+  const normalizedTag = normalizeTag(tag);
   if (!normalizedTag) {
-    return null
+    return null;
   }
-  let defaultKey = null
+  let defaultKey = null;
   Object.keys(DDDStyleGuidePresets).forEach((presetKey) => {
-    const preset = DDDStyleGuidePresets[presetKey]
+    const preset = DDDStyleGuidePresets[presetKey];
     if (
       !defaultKey &&
       preset &&
@@ -97,26 +97,26 @@ export function getDDDStyleGuideDefaultPresetForTag(tag) {
       Array.isArray(preset.allowedTags) &&
       preset.allowedTags.includes(normalizedTag)
     ) {
-      defaultKey = presetKey
+      defaultKey = presetKey;
     }
-  })
+  });
   if (defaultKey) {
     return {
       key: defaultKey,
       ...DDDStyleGuidePresets[defaultKey],
-    }
+    };
   }
-  return null
+  return null;
 }
 
 export function getDDDStyleGuideSchemaOverride(tag) {
-  const normalizedTag = normalizeTag(tag)
+  const normalizedTag = normalizeTag(tag);
   if (!normalizedTag) {
-    return null
+    return null;
   }
-  const defaultPreset = getDDDStyleGuideDefaultPresetForTag(normalizedTag)
+  const defaultPreset = getDDDStyleGuideDefaultPresetForTag(normalizedTag);
   if (!defaultPreset || !defaultPreset.properties) {
-    return null
+    return null;
   }
   return {
     demoSchema: [
@@ -129,5 +129,5 @@ export function getDDDStyleGuideSchemaOverride(tag) {
         content: "",
       },
     ],
-  }
+  };
 }

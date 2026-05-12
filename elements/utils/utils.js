@@ -186,7 +186,6 @@ export function isURLAttribute(attributeName) {
   );
 }
 
-
 export function removeUnsafeURLAttributes(el) {
   if (!el) {
     return el;
@@ -207,7 +206,11 @@ export function removeUnsafeURLAttributes(el) {
     }
     for (let j = replacements[i].attributes.length - 1; j >= 0; j--) {
       const attr = replacements[i].attributes.item(j);
-      if (attr && isURLAttribute(attr.name) && hasUnsafeURLProtocol(attr.value)) {
+      if (
+        attr &&
+        isURLAttribute(attr.name) &&
+        hasUnsafeURLProtocol(attr.value)
+      ) {
         replacements[i].removeAttribute(attr.name);
       }
     }
@@ -217,9 +220,7 @@ export function removeUnsafeURLAttributes(el) {
 
 function isIframeLikeElement(el) {
   return (
-    el &&
-    el.tagName &&
-    ["iframe", "webview"].includes(el.tagName.toLowerCase())
+    el && el.tagName && ["iframe", "webview"].includes(el.tagName.toLowerCase())
   );
 }
 
@@ -322,7 +323,6 @@ export function sanitizeHTMLForImport(
   });
   return template.content.cloneNode(true);
 }
-
 
 /**
  * Convert a base64 encoded string to type Blob

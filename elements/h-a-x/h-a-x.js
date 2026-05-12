@@ -150,7 +150,9 @@ class HAX extends HTMLElement {
       return this.__canAdoptConstructedStylesheets;
     }
     try {
-      const existingSheets = Array.from(this.shadowRoot.adoptedStyleSheets || []);
+      const existingSheets = Array.from(
+        this.shadowRoot.adoptedStyleSheets || [],
+      );
       const testSheet = new globalThis.CSSStyleSheet();
       testSheet.replaceSync(":host{}");
       this.shadowRoot.adoptedStyleSheets = [...existingSheets, testSheet];
@@ -193,12 +195,17 @@ class HAX extends HTMLElement {
     let adopted = false;
     if (this.__supportsShadowSheetAdoption()) {
       try {
-        const existingSheets = Array.from(this.shadowRoot.adoptedStyleSheets || []);
+        const existingSheets = Array.from(
+          this.shadowRoot.adoptedStyleSheets || [],
+        );
         const newSheets = haxSheets.filter(
           (sheet) => !existingSheets.includes(sheet),
         );
         if (newSheets.length > 0) {
-          this.shadowRoot.adoptedStyleSheets = [...existingSheets, ...newSheets];
+          this.shadowRoot.adoptedStyleSheets = [
+            ...existingSheets,
+            ...newSheets,
+          ];
         }
         adopted = haxSheets.every((sheet) =>
           this.shadowRoot.adoptedStyleSheets.includes(sheet),
@@ -222,7 +229,10 @@ class HAX extends HTMLElement {
     }
     if (!fallbackStyle) {
       fallbackStyle = globalThis.document.createElement("style");
-      fallbackStyle.setAttribute("data-hax-sheet-fallback", "data-hax-sheet-fallback");
+      fallbackStyle.setAttribute(
+        "data-hax-sheet-fallback",
+        "data-hax-sheet-fallback",
+      );
     }
     fallbackStyle.textContent = fallbackCSSText;
     this.shadowRoot.appendChild(fallbackStyle);

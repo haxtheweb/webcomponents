@@ -101,7 +101,8 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.__allowNextModalClose = false;
     this.manifestItems = [];
     this.viewMode = false;
-    this._handleSimpleModalWillClose = this._handleSimpleModalWillClose.bind(this);
+    this._handleSimpleModalWillClose =
+      this._handleSimpleModalWillClose.bind(this);
     this._handleSimpleModalBreadcrumbClick =
       this._handleSimpleModalBreadcrumbClick.bind(this);
     this._outlineNavigateRequested = this._outlineNavigateRequested.bind(this);

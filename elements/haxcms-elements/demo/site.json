@@ -47,14 +47,12 @@
         "icon": "hax:hax2022"
       },
       "styleGuide": "theme/style-guide.html",
-      "regions": {
-      }
+      "regions": {}
     },
     "node": {
       "fields": {}
     },
-    "platform": {
-    },
+    "platform": {},
     "build": {
       "version": "6.0.1",
       "structure": "course",

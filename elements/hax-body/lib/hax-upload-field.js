@@ -46,10 +46,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     return "hax-upload-field";
   }
   _uploadsAllowed() {
-    if (
-      HAXStore &&
-      typeof HAXStore.platformAllows === "function"
-    ) {
+    if (HAXStore && typeof HAXStore.platformAllows === "function") {
       return HAXStore.platformAllows("uploadMedia");
     }
     return true;
@@ -154,12 +151,23 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     } else {
       // Fallback: try to build parameters from HAXCMSStore if available
       // This handles cases where appendUploadEndPoint wasn't set yet
-      if (globalThis.store && globalThis.store.manifest && globalThis.store.activeId) {
-        requestEndPoint += "?siteName=" + globalThis.store.manifest.metadata.site.name +
-                          "&nodeId=" + globalThis.store.activeId;
-        console.warn("HAXStore.connectionRewrites.appendUploadEndPoint was not set, using fallback from store");
+      if (
+        globalThis.store &&
+        globalThis.store.manifest &&
+        globalThis.store.activeId
+      ) {
+        requestEndPoint +=
+          "?siteName=" +
+          globalThis.store.manifest.metadata.site.name +
+          "&nodeId=" +
+          globalThis.store.activeId;
+        console.warn(
+          "HAXStore.connectionRewrites.appendUploadEndPoint was not set, using fallback from store",
+        );
       } else {
-        console.error("Cannot determine siteName and nodeId for file upload - appendUploadEndPoint not set and store not available");
+        console.error(
+          "Cannot determine siteName and nodeId for file upload - appendUploadEndPoint not set and store not available",
+        );
       }
     }
     if (HAXStore.connectionRewrites.appendJwt != null) {
@@ -186,12 +194,20 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         // Rebuild the endpoint with the new JWT
         let requestEndPoint = this.__pendingUploadRetry.baseEndpoint;
         if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
-          requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+          requestEndPoint +=
+            "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
         } else {
           // Fallback: try to build parameters from HAXCMSStore if available
-          if (globalThis.store && globalThis.store.manifest && globalThis.store.activeId) {
-            requestEndPoint += "?siteName=" + globalThis.store.manifest.metadata.site.name +
-                              "&nodeId=" + globalThis.store.activeId;
+          if (
+            globalThis.store &&
+            globalThis.store.manifest &&
+            globalThis.store.activeId
+          ) {
+            requestEndPoint +=
+              "?siteName=" +
+              globalThis.store.manifest.metadata.site.name +
+              "&nodeId=" +
+              globalThis.store.activeId;
           }
         }
         if (HAXStore.connectionRewrites.appendJwt != null) {
@@ -283,13 +299,16 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         this.shadowRoot.querySelector("#url").value = item.url;
         //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
         //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
-        
+
         // Execute callback if provided (e.g., for set-page-media operation)
-        if (HAXStore.activePlaceHolderCallback && typeof HAXStore.activePlaceHolderCallback === 'function') {
+        if (
+          HAXStore.activePlaceHolderCallback &&
+          typeof HAXStore.activePlaceHolderCallback === "function"
+        ) {
           HAXStore.activePlaceHolderCallback({
             file: item.url,
             item: item,
-            response: response
+            response: response,
           });
           // Clear callback after execution
           HAXStore.activePlaceHolderCallback = null;

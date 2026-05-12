@@ -128,10 +128,6 @@
             },
             {
               "kind": "method",
-              "name": "HAXBODYStyleSheetContent"
-            },
-            {
-              "kind": "method",
               "name": "_toggleNodeLocking",
               "parameters": [
                 {
@@ -167,6 +163,135 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_normalizeKeyboardShortcutGuess",
+              "parameters": [
+                {
+                  "name": "node",
+                  "default": "this.activeNode"
+                }
+              ],
+              "description": "Normalize keyboard shortcut text so empty-line BR/ZWSP artifacts\ndo not block markdown-style shortcut detection."
+            },
+            {
+              "kind": "method",
+              "name": "__isEffectivelyEmptyTextBlock",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Test if a text block is effectively empty in a way that should\nallow :empty styles and markdown shortcuts to work."
+            },
+            {
+              "kind": "method",
+              "name": "__removeDirectBreakChildren",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Remove direct BR children from a block."
+            },
+            {
+              "kind": "method",
+              "name": "__isKeyboardParagraphInsertTarget",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Text blocks where Enter should result in a fresh paragraph insert\nhandled by HAX instead of browser placeholder BR behavior."
+            },
+            {
+              "kind": "method",
+              "name": "__isHeadingNode",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Determines if a node is a heading tag."
+            },
+            {
+              "kind": "method",
+              "name": "__rangeFragmentToHTML",
+              "parameters": [
+                {
+                  "name": "fragment"
+                }
+              ],
+              "description": "Convert a document fragment into HTML string output."
+            },
+            {
+              "kind": "method",
+              "name": "__isTransientEditorStyleSpan",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Detect browser-injected transient spans used during editing operations."
+            },
+            {
+              "kind": "method",
+              "name": "__unwrapTransientEditorStyleSpan",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Remove a transient editor span while preserving content."
+            },
+            {
+              "kind": "method",
+              "name": "__scrubTransientEditorStyleSpans",
+              "parameters": [
+                {
+                  "name": "rootNode"
+                }
+              ],
+              "description": "Scrub transient editor style spans from a node subtree."
+            },
+            {
+              "kind": "method",
+              "name": "__keyboardInsertScrollSettings",
+              "description": "Center keyboard-created insertion targets for better authoring readability."
+            },
+            {
+              "kind": "method",
+              "name": "__splitTextBlockAtSelection",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Split text primitive content at the current selection range.\nParagraphs split into paragraphs; headings split into heading + paragraph."
+            },
+            {
+              "kind": "method",
+              "name": "__handleEnterKeyForTextBlock",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle Enter in text blocks with split-at-selection semantics where applicable."
+            },
+            {
+              "kind": "method",
+              "name": "__normalizeInsertedTextPrimitive",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Normalize newly inserted text primitives so BR-only placeholders\nare removed immediately."
             },
             {
               "kind": "method",
@@ -322,17 +447,6 @@
             },
             {
               "kind": "method",
-              "name": "haxClearBody",
-              "parameters": [
-                {
-                  "name": "confirm",
-                  "default": "true"
-                }
-              ],
-              "description": "Clear area."
-            },
-            {
-              "kind": "method",
               "name": "haxInsert",
               "parameters": [
                 {
@@ -352,6 +466,10 @@
                 {
                   "name": "child",
                   "default": "false"
+                },
+                {
+                  "name": "insertScrollOptions",
+                  "default": "{}"
                 }
               ],
               "description": "Insert new tag + content into the local DOM as a node."
@@ -467,13 +585,30 @@
             },
             {
               "kind": "method",
+              "name": "__nearestEditableSibling",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "direction",
+                  "default": "\"previous\""
+                }
+              ],
+              "description": "Delete the node passed in"
+            },
+            {
+              "kind": "method",
+              "name": "__ensureMinimumEditableNode"
+            },
+            {
+              "kind": "method",
               "name": "haxDeleteNode",
               "parameters": [
                 {
                   "name": "node"
                 }
-              ],
-              "description": "Delete the node passed in"
+              ]
             },
             {
               "kind": "method",
@@ -550,6 +685,10 @@
               "parameters": [
                 {
                   "name": "node"
+                },
+                {
+                  "name": "scrollOptions",
+                  "default": "{}"
                 }
               ],
               "description": "Simple utility to do nice scrolling or only scroll if we can't see it\nas that is better behavior but not in all browsers"
@@ -574,6 +713,16 @@
                 }
               ],
               "description": "Notice the change between states for editing."
+            },
+            {
+              "kind": "method",
+              "name": "_connectMutationObserverWhenReady",
+              "description": "Connect MutationObserver only when content is stable\nThis prevents spurious DOM corrections during content import"
+            },
+            {
+              "kind": "method",
+              "name": "_connectMutationObserver",
+              "description": "Create and connect the MutationObserver\nSplit out so it can be called after content stabilizes"
             },
             {
               "kind": "method",
@@ -617,7 +766,21 @@
                   "name": "node"
                 }
               ],
-              "description": "Test if this is an HTML primative"
+              "description": "Test if this is an HTML primitive"
+            },
+            {
+              "kind": "method",
+              "name": "__rehydrateLayoutDescendants",
+              "parameters": [
+                {
+                  "name": "layoutNode"
+                },
+                {
+                  "name": "status",
+                  "default": "this.editMode"
+                }
+              ],
+              "description": "Ensure layout/grid descendants retain HAX editable state and data-hax-* attributes."
             },
             {
               "kind": "method",
@@ -783,6 +946,33 @@
             },
             {
               "kind": "method",
+              "name": "__getLayoutEvents",
+              "parameters": [
+                {
+                  "name": "layout"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__getNodeDragDropHandlers",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__getLinkClickHandler",
+              "parameters": [
+                {
+                  "name": "link"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "__applyDragDropState",
               "parameters": [
                 {
@@ -801,6 +991,20 @@
                   "name": "el"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "__applyNodeEditableStateWhenReady",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "status",
+                  "default": "true"
+                }
+              ],
+              "description": "Apply node editable state after ensuring custom element is upgraded\nWrapper that handles async custom element upgrade before applying state"
             },
             {
               "kind": "method",
@@ -999,6 +1203,11 @@
             },
             {
               "kind": "field",
+              "name": "_contentState",
+              "default": "new ContentStateManager()"
+            },
+            {
+              "kind": "field",
               "name": "_useristyping",
               "privacy": "public",
               "type": {
@@ -1079,7 +1288,18 @@
             },
             {
               "kind": "field",
-              "name": "__lockIconPath"
+              "name": "__layoutDragEvents",
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "field",
+              "name": "__nodeDragDropHandlers",
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "field",
+              "name": "__linkClickHandlers",
+              "default": "new WeakMap()"
             },
             {
               "kind": "field",
@@ -1164,6 +1384,12 @@
           "events": [
             {
               "name": "hax-register-body",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "hax-body-content-ready",
               "type": {
                 "text": "CustomEvent"
               }
@@ -1499,7 +1725,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Immediatley perform a request.",
+              "description": "Immediately perform a request.",
               "default": "false",
               "attribute": "auto"
             },
@@ -1644,7 +1870,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Immediatley perform a request.",
+              "description": "Immediately perform a request.",
               "default": "false",
               "fieldName": "auto"
             },
@@ -2236,12 +2462,6 @@
               },
               "default": "false",
               "fieldName": "viewSource"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "SimpleTourFinder",
-              "package": "@haxtheweb/simple-popover/lib/SimpleTourFinder.js"
             }
           ],
           "parameters": [
@@ -3228,6 +3448,36 @@
               },
               "default": "-1",
               "attribute": "active-picker-schema"
+            },
+            {
+              "kind": "field",
+              "name": "gizmoTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "gizmo-title"
+            },
+            {
+              "kind": "field",
+              "name": "gizmoDescription",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "gizmo-description"
+            },
+            {
+              "kind": "field",
+              "name": "gizmoIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "gizmo-icon"
             }
           ],
           "attributes": [
@@ -3246,6 +3496,30 @@
               },
               "default": "-1",
               "fieldName": "activePickerSchema"
+            },
+            {
+              "name": "gizmo-title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "gizmoTitle"
+            },
+            {
+              "name": "gizmo-description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "gizmoDescription"
+            },
+            {
+              "name": "gizmo-icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "gizmoIcon"
             }
           ],
           "mixins": [
@@ -3362,6 +3636,15 @@
             {
               "kind": "method",
               "name": "closePopover"
+            },
+            {
+              "kind": "method",
+              "name": "_gizmoAllowedInTray",
+              "parameters": [
+                {
+                  "name": "gizmo"
+                }
+              ]
             },
             {
               "kind": "field",
@@ -3624,22 +3907,30 @@
           "members": [
             {
               "kind": "method",
+              "name": "_scheduleMapRefresh",
+              "parameters": [
+                {
+                  "name": "delay",
+                  "default": "75"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_disconnectBodyObserver"
+            },
+            {
+              "kind": "method",
+              "name": "_connectBodyObserver"
+            },
+            {
+              "kind": "method",
               "name": "updateHAXMap",
               "parameters": [
                 {
                   "name": "e"
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "calcStats",
-              "parameters": [
-                {
-                  "name": "elements"
-                }
-              ],
-              "description": "Calculate statistics from the array of hax elements"
             },
             {
               "kind": "method",
@@ -3711,11 +4002,46 @@
             },
             {
               "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dark",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__mapMutationObserver",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__mapMutationObserverTarget",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__mapRefreshDebounce",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ contentStatistics: \"Content Statistics\", words: \"Words\", headings: \"Headings\", paragraphs: \"Paragraphs\", widgets: \"Widgets\", characters: \"Characters\", listView: \"List view\", }"
+              "default": "{}"
             },
             {
               "kind": "field",
@@ -3739,60 +4065,6 @@
             },
             {
               "kind": "field",
-              "name": "cCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "cCount"
-            },
-            {
-              "kind": "field",
-              "name": "wCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "wCount"
-            },
-            {
-              "kind": "field",
-              "name": "bCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "bCount"
-            },
-            {
-              "kind": "field",
-              "name": "hCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "hCount"
-            },
-            {
-              "kind": "field",
-              "name": "pCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "pCount"
-            },
-            {
-              "kind": "field",
-              "name": "eCount",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "eCount"
-            },
-            {
-              "kind": "field",
               "name": "activeNode",
               "privacy": "public",
               "type": {
@@ -3804,6 +4076,12 @@
           "events": [
             {
               "name": "hax-context-item-selected",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "hax-toggle-active-node-lock",
               "type": {
                 "text": "CustomEvent"
               }
@@ -3826,54 +4104,20 @@
               "fieldName": "hidden"
             },
             {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dark"
+            },
+            {
               "name": "elementList",
               "type": {
                 "text": "array"
               },
               "default": "[]",
               "fieldName": "elementList"
-            },
-            {
-              "name": "cCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "cCount"
-            },
-            {
-              "name": "wCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "wCount"
-            },
-            {
-              "name": "bCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "bCount"
-            },
-            {
-              "name": "hCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "hCount"
-            },
-            {
-              "name": "pCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "pCount"
-            },
-            {
-              "name": "eCount",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "eCount"
             },
             {
               "name": "activeNode",
@@ -4250,6 +4494,24 @@
               "description": "HAX properties changed, update buttons available."
             },
             {
+              "kind": "method",
+              "name": "_isNodeLocked",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleActiveNodeLock",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "disableOps",
               "privacy": "public",
@@ -4313,7 +4575,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", }"
+              "default": "{ edit: \"Edit\", dragHandle: \"Drag handle\", moveUp: \"Move up\", moveDown: \"Move down\", addColumn: \"Add column\", removeColumn: \"Remove column\", remove: \"Remove\", duplicate: \"Duplicate\", confirmDelete: \"Confirm delete\", changeTo: \"Change to\", editElement: \"Edit Mode\", modifyHTMLSource: \"Modify HTML source\", regions: \"Available regions\", insertItemAbove: \"Insert item above\", insertItemAboveOrBelow: \"Insert item above or below\", insertItemBelow: \"Insert item below\", selectLayout: \"Select Layout Element\", lockContent: \"Lock content\", unlockContent: \"Unlock content\", }"
             },
             {
               "kind": "field",
@@ -4403,6 +4665,15 @@
                 "name": "HaxContextBehaviors",
                 "module": "lib/hax-context-behaviors.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "isLocked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "isLocked"
             },
             {
               "kind": "field",
@@ -4618,6 +4889,12 @@
               "type": {
                 "text": "CustomEvent"
               }
+            },
+            {
+              "name": "hax-toggle-active-node-lock",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [
@@ -4730,6 +5007,13 @@
                 "name": "HaxContextBehaviors",
                 "module": "lib/hax-context-behaviors.js"
               }
+            },
+            {
+              "name": "isLocked",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "isLocked"
             },
             {
               "name": "activeNode",
@@ -5088,7 +5372,7 @@
                   "name": "op"
                 }
               ],
-              "description": "test a hook's existance in a target"
+              "description": "test a hook's existence in a target"
             },
             {
               "kind": "method",
@@ -5177,6 +5461,19 @@
             },
             {
               "kind": "method",
+              "name": "_nearestContainerTag",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "tagName"
+                }
+              ],
+              "description": "Find the nearest ancestor element matching tag name from a starting node"
+            },
+            {
+              "kind": "method",
               "name": "_isImageElement",
               "parameters": [
                 {
@@ -5197,6 +5494,29 @@
                 }
               ],
               "description": "Create an image gallery by wrapping the original image and adding the new image"
+            },
+            {
+              "kind": "method",
+              "name": "_addImageToPlayList",
+              "parameters": [
+                {
+                  "name": "playListElement"
+                },
+                {
+                  "name": "imageSource"
+                }
+              ],
+              "description": "Add an image to an existing play-list"
+            },
+            {
+              "kind": "method",
+              "name": "_createSingleImageGallery",
+              "parameters": [
+                {
+                  "name": "imageSource"
+                }
+              ],
+              "description": "Create a single image gallery from Magic File Wand"
             },
             {
               "kind": "method",
@@ -5496,6 +5816,10 @@
             },
             {
               "kind": "method",
+              "name": "_loadActiveDesignSystemIntegrations"
+            },
+            {
+              "kind": "method",
               "name": "_editModeChanged",
               "parameters": [
                 {
@@ -5520,7 +5844,7 @@
                   "name": "e"
                 }
               ],
-              "description": "This only send if they consented to storage of data locally"
+              "description": "This only sends if they consented to storage of data locally"
             },
             {
               "kind": "method",
@@ -5535,6 +5859,44 @@
               "kind": "method",
               "name": "loadAppStoreFromRemote",
               "description": "generate appstore query"
+            },
+            {
+              "kind": "method",
+              "name": "platformAllows",
+              "parameters": [
+                {
+                  "name": "capability",
+                  "description": "Feature or Block name (e.g., 'delete', 'addPage', 'h4', 'inline-audio')",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Check if a platform capability is allowed\nDefaults to true if platformConfig is not explicitly defined",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isPlatformAudience",
+              "parameters": [
+                {
+                  "name": "expectedAudience",
+                  "description": "Audience name to compare against (e.g., 'novice', 'advanced', 'expert')",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Evaluates whether to enable a feature based on the current audience in platformConfig",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
             },
             {
               "kind": "method",
@@ -5576,6 +5938,17 @@
                 }
               ],
               "description": "Position cursor at the start of the position of the requested node"
+            },
+            {
+              "kind": "method",
+              "name": "_rehydrateInlineEditableState",
+              "parameters": [
+                {
+                  "name": "node",
+                  "default": "null"
+                }
+              ],
+              "description": "Re-apply editable / data-hax-ray state for inline insertion contexts.\nThis is intentionally called from inline insert paths so it does not\ndepend on MutationObserver timing or ignore-activation state."
             },
             {
               "kind": "method",
@@ -5951,7 +6324,7 @@
                   "name": "node"
                 }
               ],
-              "description": "Convert a node to the correct content object for saving.\nThis DOES NOT acccept a HAXElement which is similar"
+              "description": "Convert a node to the correct content object for saving.\nThis DOES NOT accept a HAXElement which is similar"
             },
             {
               "kind": "method",
@@ -6186,7 +6559,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.",
+              "description": "An active placeholder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replaces in context.",
               "default": "null",
               "attribute": "activePlaceHolder"
             },
@@ -6199,6 +6572,14 @@
               },
               "default": "null",
               "attribute": "activePlaceHolderOperationType"
+            },
+            {
+              "kind": "field",
+              "name": "activePlaceHolderCallback",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -6288,6 +6669,21 @@
             {
               "kind": "field",
               "name": "recentGizmoList"
+            },
+            {
+              "kind": "field",
+              "name": "platformConfig",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "platformConfig"
+            },
+            {
+              "kind": "field",
+              "name": "requiredPrimitives",
+              "default": "new Set([ \"webview\", \"h1\", \"h2\", \"ul\", \"ol\", \"li\", \"p\", \"a\", \"mark\", \"abbr\", \"img\", \"figure\", \"figcaption\", ])"
             },
             {
               "kind": "field",
@@ -6390,7 +6786,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", icon: \"hax:h1\", }, h2: { title: \"Heading\", icon: \"hax:h2\", tags: [\"Writing\", \"h2\", \"html\", \"text\", \"heading\", \"header\"], }, h3: { title: \"Heading\", icon: \"hax:h3\", }, h4: { title: \"Heading\", icon: \"hax:h4\", }, h5: { title: \"Heading\", icon: \"hax:h5\", }, h6: { title: \"Heading\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", icon: \"editor:format-quote\", }, code: { title: \"Code\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
+              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", description: \"Create a numbered list.\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", description: \"Create a bulleted list.\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", description: \"Top-level section heading.\", icon: \"hax:h1\", }, h2: { title: \"Heading\", description: \"Second-level section heading.\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"heading\", \"header\"], }, h3: { title: \"Heading\", description: \"Third-level section heading.\", icon: \"hax:h3\", }, h4: { title: \"Heading\", description: \"Fourth-level section heading.\", icon: \"hax:h4\", }, h5: { title: \"Heading\", description: \"Fifth-level section heading.\", icon: \"hax:h5\", }, h6: { title: \"Heading\", description: \"Sixth-level section heading.\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", description: \"Underline inline text.\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", description: \"Display quoted text as a block quote.\", icon: \"editor:format-quote\", }, code: { title: \"Code\", description: \"Display inline code.\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", description: \"Preserve whitespace in preformatted text.\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
             },
             {
               "kind": "field",
@@ -6399,7 +6795,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "Valid tag list, tag only and including primatives for a baseline.",
+              "description": "Valid tag list, tag only and including primitives for a baseline.",
               "attribute": "validTagList"
             },
             {
@@ -6409,7 +6805,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "Valid tag list, tag only and including primatives for a baseline.",
+              "description": "Valid tag list, tag only and including primitives for a baseline.",
               "attribute": "validGridTagList"
             },
             {
@@ -6439,14 +6835,6 @@
               },
               "description": "Sandboxed environment test",
               "attribute": "_isSandboxed"
-            },
-            {
-              "kind": "field",
-              "name": "revisionHistoryLink",
-              "type": {
-                "text": "null"
-              },
-              "default": "null"
             },
             {
               "kind": "field",
@@ -6514,6 +6902,14 @@
               "fieldName": "storageData"
             },
             {
+              "name": "platformConfig",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "platformConfig"
+            },
+            {
               "name": "haxTray",
               "type": {
                 "text": "null"
@@ -6554,7 +6950,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.",
+              "description": "An active placeholder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replaces in context.",
               "default": "null",
               "fieldName": "activePlaceHolder"
             },
@@ -6616,7 +7012,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "Valid tag list, tag only and including primatives for a baseline.",
+              "description": "Valid tag list, tag only and including primitives for a baseline.",
               "fieldName": "validTagList"
             },
             {
@@ -6624,7 +7020,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "Valid tag list, tag only and including primatives for a baseline.",
+              "description": "Valid tag list, tag only and including primitives for a baseline.",
               "fieldName": "validGridTagList"
             },
             {
@@ -6975,9 +7371,32 @@
           "name": "HaxTextEditorToolbar",
           "members": [
             {
-              "kind": "field",
-              "name": "tourTemplate",
-              "readonly": true
+              "kind": "method",
+              "name": "_platformAllowsTag",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_buttonTag",
+              "parameters": [
+                {
+                  "name": "button"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_filterButtonsByTag",
+              "parameters": [
+                {
+                  "name": "buttons",
+                  "default": "[]"
+                }
+              ]
             },
             {
               "kind": "field",
@@ -7011,6 +7430,18 @@
             {
               "kind": "field",
               "name": "formatBlocks",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "h1Button",
+              "description": "default config for a heading 1 button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "h2Button",
+              "description": "default config for a heading 2 button",
               "readonly": true
             },
             {
@@ -7142,7 +7573,13 @@
             {
               "kind": "field",
               "name": "blockquoteButton",
-              "description": "default config for a blockquote button",
+              "description": "default config for a blockquote button\nNote: Blockquote is available in the format dropdown, not as a toolbar button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "listIndentButtonGroup",
+              "description": "Override parent's listIndentButtonGroup to exclude blockquote button\nsince blockquote is in the format dropdown",
               "readonly": true
             },
             {
@@ -7159,6 +7596,12 @@
             },
             {
               "kind": "field",
+              "name": "alignmentPicker",
+              "description": "default config for alignment picker",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "sourceButton",
               "description": "default config for a view source button",
               "readonly": true
@@ -7171,6 +7614,11 @@
             {
               "kind": "field",
               "name": "iconButton",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "basicFormattingGroup",
               "readonly": true
             },
             {
@@ -7324,12 +7772,27 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_isInList",
+              "description": "Checks if current range or activeNode is inside a list element",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateContextualVisibility",
+              "description": "Updates visibility of contextual buttons based on selection and cursor position"
+            },
+            {
               "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", textEditorToolbarTour: \"Change how the text is structured and visualized in the page.\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", }"
             },
             {
               "kind": "field",
@@ -7352,14 +7815,6 @@
                 "text": "boolean"
               },
               "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "tourName",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"hax\""
             },
             {
               "kind": "field",
@@ -7394,6 +7849,26 @@
               },
               "default": "false",
               "attribute": "__updated"
+            },
+            {
+              "kind": "field",
+              "name": "__inList",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__inList"
+            },
+            {
+              "kind": "field",
+              "name": "__hasSelection",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__hasSelection"
             },
             {
               "kind": "field",
@@ -7611,6 +8086,22 @@
               },
               "default": "false",
               "fieldName": "__updated"
+            },
+            {
+              "name": "__inList",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__inList"
+            },
+            {
+              "name": "__hasSelection",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__hasSelection"
             },
             {
               "name": "activeNode",
@@ -9126,6 +9617,14 @@
             },
             {
               "kind": "method",
+              "name": "_uploadsAllowed",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_fileAboutToUpload",
               "parameters": [
                 {
@@ -9147,6 +9646,20 @@
                 }
               ],
               "description": "Event for an app being selected from a picker\nThis happens when multiple upload targets support the given type",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_jwtTokenRefreshed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle JWT token refresh",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -9220,7 +9733,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }",
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", }",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -9302,6 +9815,15 @@
             {
               "kind": "method",
               "name": "_undoChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleActiveNodeLock",
               "parameters": [
                 {
                   "name": "e"
@@ -9421,23 +9943,6 @@
             },
             {
               "kind": "method",
-              "name": "startTour"
-            },
-            {
-              "kind": "method",
-              "name": "stopTour"
-            },
-            {
-              "kind": "method",
-              "name": "_handleTourChanged",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
               "name": "_setupForm",
               "description": "When the preview node is updated, pull schema associated with it"
             },
@@ -9450,6 +9955,15 @@
                 }
               ],
               "description": "Convert an object to an array"
+            },
+            {
+              "kind": "method",
+              "name": "_isNodeLocked",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -9531,21 +10045,8 @@
             },
             {
               "kind": "field",
-              "name": "tourController",
-              "default": "new AbortController()"
-            },
-            {
-              "kind": "field",
               "name": "dragController",
               "default": "new AbortController()"
-            },
-            {
-              "kind": "field",
-              "name": "tourName",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"hax\""
             },
             {
               "kind": "field",
@@ -9553,7 +10054,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ \"can-redo-changed\": \"_redoChanged\", \"can-undo-changed\": \"_undoChanged\", \"hax-drop-focus-event\": \"_expandSettingsPanel\", }"
+              "default": "{ \"can-redo-changed\": \"_redoChanged\", \"can-undo-changed\": \"_undoChanged\", \"hax-drop-focus-event\": \"_expandSettingsPanel\", \"hax-toggle-active-node-lock\": \"_handleActiveNodeLock\", }"
             },
             {
               "kind": "field",
@@ -9562,7 +10063,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"settings\"",
+              "default": "\"image:tune\"",
               "attribute": "trayIcon"
             },
             {
@@ -9610,7 +10111,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Outline\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
+              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
             },
             {
               "kind": "field",
@@ -9641,6 +10142,16 @@
               "default": "true",
               "attribute": "collapsed",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "locked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "locked"
             },
             {
               "kind": "field",
@@ -9724,16 +10235,6 @@
                 "text": "string"
               },
               "attribute": "offset-margin"
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "loading",
-              "reflects": true
             },
             {
               "kind": "field",
@@ -9826,24 +10327,6 @@
               },
               "description": "heading of toggled section in tray",
               "attribute": "trayLabel"
-            },
-            {
-              "kind": "field",
-              "name": "tourOpened",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "tourOpened"
-            },
-            {
-              "kind": "field",
-              "name": "__tour",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "attribute": "__tour"
             }
           ],
           "events": [
@@ -9891,7 +10374,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"settings\"",
+              "default": "\"image:tune\"",
               "fieldName": "trayIcon"
             },
             {
@@ -9917,13 +10400,6 @@
               },
               "default": "\"hax:arrow-expand-right\"",
               "fieldName": "traySizeIcon"
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "loading"
             },
             {
               "name": "activeValue",
@@ -10034,6 +10510,14 @@
               "fieldName": "activeGizmo"
             },
             {
+              "name": "locked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "locked"
+            },
+            {
               "name": "edit-mode",
               "type": {
                 "text": "boolean"
@@ -10057,30 +10541,12 @@
               },
               "description": "heading of toggled section in tray",
               "fieldName": "trayLabel"
-            },
-            {
-              "name": "tourOpened",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "tourOpened"
-            },
-            {
-              "name": "__tour",
-              "type": {
-                "text": "object"
-              },
-              "fieldName": "__tour"
             }
           ],
           "mixins": [
             {
               "name": "I18NMixin",
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "SimpleTourFinder",
-              "package": "@haxtheweb/simple-popover/lib/SimpleTourFinder.js"
             },
             {
               "name": "winEventsElement",
@@ -10123,7 +10589,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --hax-ui-font-family: var(--ddd-font-navigation); --hax-ui-font-size-xs: 11px; --hax-ui-font-size-sm: 13px; --hax-ui-font-size: 16px; --hax-ui-font-size-lg: 16px; --hax-ui-font-size-xl: 20px; } `, ]"
+          "default": "[ css` body { --hax-ui-font-family: var(--ddd-font-navigation); --hax-ui-font-size-xs: 10px; --hax-ui-font-size-sm: 12px; --hax-ui-font-size: 14px; --hax-ui-font-size-lg: 16px; --hax-ui-font-size-xl: 20px; } `, ]"
         },
         {
           "kind": "variable",
@@ -10139,7 +10605,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --hax-ui-color: #222; --hax-ui-color-focus: #000; --hax-ui-color-faded: #444; --hax-ui-disabled-color: #bbb; --hax-ui-background-color: #fff; --hax-ui-background-color-secondary: #e8e8e8; --hax-ui-background-color-faded: #b0b8bb; --hax-ui-color-accent: #009dc7; --hax-ui-color-accent-secondary: #007999; --hax-ui-background-color-accent: #e5f6fd; --hax-ui-color-danger: #ee0000; --hax-ui-color-danger-secondary: #850000; --hax-ui-background-color-danger: #fdeded; --hax-ui-border-color: #ddd; } body[hax-ui-theme=\"haxdark\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-disabled-color: #666; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent: #77e2ff; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } @media (prefers-color-scheme: dark) { body[hax-ui-theme=\"system\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent: #77e2ff; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } } `, ]"
+          "default": "[ css` body { --hax-ui-color: #222; --hax-ui-color-focus: #000; --hax-ui-color-faded: #444; --hax-ui-disabled-color: #bbb; --hax-ui-background-color: #fff; --hax-ui-background-color-secondary: #e8e8e8; --hax-ui-background-color-faded: #b0b8bb; --hax-ui-color-accent: var(--ddd-theme-default-skyBlue, #009dc7); --hax-ui-color-accent-secondary: #007999; --hax-ui-background-color-accent: #e5f6fd; --hax-ui-color-danger: #ee0000; --hax-ui-color-danger-secondary: #850000; --hax-ui-background-color-danger: #fdeded; --hax-ui-border-color: #ddd; } body[hax-ui-theme=\"haxdark\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-disabled-color: #666; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } @media (prefers-color-scheme: dark) { body[hax-ui-theme=\"system\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } } `, ]"
         },
         {
           "kind": "variable",
@@ -10381,6 +10847,10 @@
             },
             {
               "kind": "method",
+              "name": "_uploadsAllowed"
+            },
+            {
+              "kind": "method",
               "name": "_canUpload"
             },
             {
@@ -10402,6 +10872,16 @@
                 }
               ],
               "description": "Event for an app being selected from a picker\nThis happens when multiple upload targets support the given type"
+            },
+            {
+              "kind": "method",
+              "name": "_jwtTokenRefreshed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle JWT token refresh"
             },
             {
               "kind": "method",
@@ -10469,7 +10949,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ \"hax-app-picker-selection\": \"_haxAppPickerSelection\", //TODO }"
+              "default": "{ \"hax-app-picker-selection\": \"_haxAppPickerSelection\", \"jwt-token\": \"_jwtTokenRefreshed\", }"
             },
             {
               "kind": "field",
@@ -10477,7 +10957,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", }"
             }
           ],
           "attributes": [
@@ -10550,66 +11030,6 @@
             },
             {
               "kind": "method",
-              "name": "download",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download file."
-            },
-            {
-              "kind": "method",
-              "name": "downloadDOCX",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download DOCX."
-            },
-            {
-              "kind": "method",
-              "name": "downloadDOCXviaMicro",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download DOCX, via microservice"
-            },
-            {
-              "kind": "method",
-              "name": "downloadMDviaMicro",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download MD, via microservice"
-            },
-            {
-              "kind": "method",
-              "name": "downloadPDFviaMicro",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download PDF, via microservice"
-            },
-            {
-              "kind": "method",
-              "name": "downloadfull",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Download file."
-            },
-            {
-              "kind": "method",
               "name": "updateBodyFromHTML",
               "parameters": [
                 {
@@ -10644,10 +11064,6 @@
             },
             {
               "kind": "method",
-              "name": "revisionHistoryClick"
-            },
-            {
-              "kind": "method",
               "name": "selectBody",
               "parameters": [
                 {
@@ -10655,16 +11071,6 @@
                 }
               ],
               "description": "selectBody"
-            },
-            {
-              "kind": "method",
-              "name": "htmlToHaxElements",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "HTML to HAX Elements"
             },
             {
               "kind": "method",
@@ -10690,7 +11096,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", downloadContent: \"Download content\", downloadHTML: \"Download HTML\", fileDownloaded: \"File downloaded\", downloadDOCX: \"Download DOCX\", downloadMD: \"Download Markdown\", downloadPDF: \"Download PDF\", PrettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAXSchema\", revisionHistory: \"Revision history\", }"
+              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", }"
             },
             {
               "kind": "field",
@@ -10750,10 +11156,6 @@
             {
               "name": "I18NMixin",
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "MtzFileDownloadBehaviors",
-              "package": "@haxtheweb/dl-behavior/dl-behavior.js"
             }
           ],
           "superclass": {

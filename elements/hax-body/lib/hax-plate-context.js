@@ -451,9 +451,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <hax-context-item
             action
             icon="${this.isLocked ? "icons:lock" : "icons:lock-open"}"
-            label="${this.isLocked
-              ? this.t.unlockContent
-              : this.t.lockContent}"
+            label="${this.isLocked ? this.t.unlockContent : this.t.lockContent}"
             ?disabled="${this.viewSource}"
             @click="${this._toggleActiveNodeLock}"
             toggles

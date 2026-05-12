@@ -359,8 +359,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     }
     // Use default suggestions
     else {
-      inputField.placeholder =
-        this.suggestPossibleAction() || "Search..";
+      inputField.placeholder = this.suggestPossibleAction() || "Search..";
     }
   }
 
@@ -490,7 +489,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           padding: var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-md);
           color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           line-height: normal;
           font-family: inherit;
           width: var(--super-daemon-search-width, 30vw);

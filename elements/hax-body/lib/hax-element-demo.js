@@ -11,9 +11,9 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
     super();
     this.renderTag = null;
     this.activePickerSchema = -1;
-    this.gizmoTitle = '';
-    this.gizmoDescription = '';
-    this.gizmoIcon = '';
+    this.gizmoTitle = "";
+    this.gizmoDescription = "";
+    this.gizmoIcon = "";
   }
   static get properties() {
     return {
@@ -104,25 +104,36 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   }
   render() {
     // Truncate description to 200 characters
-    const truncatedDescription = this.gizmoDescription && this.gizmoDescription.length > 200
-      ? this.gizmoDescription.substring(0, 200) + '...'
-      : this.gizmoDescription;
-    
+    const truncatedDescription =
+      this.gizmoDescription && this.gizmoDescription.length > 200
+        ? this.gizmoDescription.substring(0, 200) + "..."
+        : this.gizmoDescription;
+
     return html`
       <div class="preview-wrap">
         <slot></slot>
       </div>
-      ${this.gizmoTitle || truncatedDescription ? html`
-        <div class="info">
-          ${this.gizmoTitle ? html`
-            <div class="title">
-              ${this.gizmoIcon ? html`<simple-icon-lite icon="${this.gizmoIcon}"></simple-icon-lite>` : ''}
-              <span>${this.gizmoTitle}</span>
+      ${this.gizmoTitle || truncatedDescription
+        ? html`
+            <div class="info">
+              ${this.gizmoTitle
+                ? html`
+                    <div class="title">
+                      ${this.gizmoIcon
+                        ? html`<simple-icon-lite
+                            icon="${this.gizmoIcon}"
+                          ></simple-icon-lite>`
+                        : ""}
+                      <span>${this.gizmoTitle}</span>
+                    </div>
+                  `
+                : ""}
+              ${truncatedDescription
+                ? html`<div class="description">${truncatedDescription}</div>`
+                : ""}
             </div>
-          ` : ''}
-          ${truncatedDescription ? html`<div class="description">${truncatedDescription}</div>` : ''}
-        </div>
-      ` : ''}
+          `
+        : ""}
     `;
   }
   updated(changedProperties) {

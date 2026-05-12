@@ -3,10 +3,7 @@
   "data": {
     "saved": true,
     "platform": {
-      "allowedBlocks": [
-        "p",
-        "video-player"
-      ]
+      "allowedBlocks": ["p", "video-player"]
     }
   }
 }

@@ -19,7 +19,11 @@ class HAXCMSThemePreviewPanel extends DDD {
       selectedTheme: { type: String, attribute: "selected-theme" },
       selectedPalette: { type: String, attribute: "selected-palette" },
       themeOptions: { type: Array, attribute: false },
-      loadingThemes: { type: Boolean, attribute: "loading-themes", reflect: true },
+      loadingThemes: {
+        type: Boolean,
+        attribute: "loading-themes",
+        reflect: true,
+      },
       showAllThemes: { type: Boolean, attribute: "show-all-themes" },
       collapsed: { type: Boolean, reflect: true },
       _themesRegistry: { type: Object, attribute: false },
@@ -258,7 +262,11 @@ class HAXCMSThemePreviewPanel extends DDD {
           outline: none;
           border-color: var(--ddd-theme-default-skyBlue);
           box-shadow: 0 0 0 2px
-            color-mix(in srgb, var(--ddd-theme-default-skyBlue) 25%, transparent);
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-skyBlue) 25%,
+              transparent
+            );
         }
         @media screen and (max-width: 1100px) {
           :host {
@@ -328,7 +336,8 @@ class HAXCMSThemePreviewPanel extends DDD {
         typeof this.__snapshotThemeData.variables.palette !== "undefined" &&
         this.__snapshotThemeData.variables.palette !== null
       ) {
-        this.activePalette = `${this.__snapshotThemeData.variables.palette}`.trim();
+        this.activePalette =
+          `${this.__snapshotThemeData.variables.palette}`.trim();
       } else {
         this.activePalette = "";
       }
@@ -429,9 +438,14 @@ class HAXCMSThemePreviewPanel extends DDD {
 
   _buildThemeOptions() {
     const options = Object.keys(this._themesRegistry).map((key) => {
-      const theme = this._normalizeThemeMapEntry(this._themesRegistry[key], key);
+      const theme = this._normalizeThemeMapEntry(
+        this._themesRegistry[key],
+        key,
+      );
       const rawPriority =
-        typeof theme.priority === "number" ? theme.priority : Number(theme.priority);
+        typeof theme.priority === "number"
+          ? theme.priority
+          : Number(theme.priority);
       const priority = Number.isFinite(rawPriority) ? rawPriority : 0;
       return {
         key: key,
@@ -475,7 +489,10 @@ class HAXCMSThemePreviewPanel extends DDD {
     const merged = {};
     if (this._themesRegistry && typeof this._themesRegistry === "object") {
       Object.keys(this._themesRegistry).forEach((key) => {
-        merged[key] = this._normalizeThemeMapEntry(this._themesRegistry[key], key);
+        merged[key] = this._normalizeThemeMapEntry(
+          this._themesRegistry[key],
+          key,
+        );
       });
     }
     if (
@@ -587,7 +604,10 @@ class HAXCMSThemePreviewPanel extends DDD {
     if (!store.manifest || !store.manifest.metadata) {
       return;
     }
-    if (this.__snapshotThemeData && typeof this.__snapshotThemeData === "object") {
+    if (
+      this.__snapshotThemeData &&
+      typeof this.__snapshotThemeData === "object"
+    ) {
       store.manifest.metadata.theme = this._cloneData(this.__snapshotThemeData);
     }
   }

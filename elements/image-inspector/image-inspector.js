@@ -28,9 +28,22 @@ class ImageInspector extends LitElement {
           margin: 0 var(--ddd-spacing-1, 4px);
           padding: var(--ddd-spacing-1, 4px);
           border-radius: var(--ddd-radius-0, 0);
-          background-color: var(--image-inspector-background-color, light-dark(var(--ddd-theme-default-white, #fdfdfd), var(--ddd-theme-default-coalyGray, #262626)));
-          color: var(--image-inspector-color, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff)));
-          transition: var(--ddd-duration-normal, 0.3s) all var(--ddd-timing-ease, ease-in-out);
+          background-color: var(
+            --image-inspector-background-color,
+            light-dark(
+              var(--ddd-theme-default-white, #fdfdfd),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
+          color: var(
+            --image-inspector-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
+          transition: var(--ddd-duration-normal, 0.3s) all
+            var(--ddd-timing-ease, ease-in-out);
           cursor: pointer;
         }
         simple-icon-button-lite:hover,
@@ -38,7 +51,10 @@ class ImageInspector extends LitElement {
         simple-icon-button-lite:active {
           background-color: var(
             --image-inspector-background-color-active,
-            light-dark(var(--ddd-theme-default-limestoneLight, #e4e5e7), var(--ddd-theme-default-slateGray, #314d64))
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e4e5e7),
+              var(--ddd-theme-default-slateGray, #314d64)
+            )
           );
         }
 
@@ -55,8 +71,21 @@ class ImageInspector extends LitElement {
           display: flex;
         }
         .internal-btn-wrap {
-          border: var(--ddd-border-md, 2px) solid var(--image-inspector-border-color, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff)));
-          background-color: var(--image-inspector-background-color, light-dark(var(--ddd-theme-default-white, #fdfdfd), var(--ddd-theme-default-coalyGray, #262626)));
+          border: var(--ddd-border-md, 2px) solid
+            var(
+              --image-inspector-border-color,
+              light-dark(
+                var(--ddd-theme-default-coalyGray, #262626),
+                var(--ddd-theme-default-white, #ffffff)
+              )
+            );
+          background-color: var(
+            --image-inspector-background-color,
+            light-dark(
+              var(--ddd-theme-default-white, #fdfdfd),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
         }
       `,
     ];

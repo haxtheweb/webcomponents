@@ -81,6 +81,15 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "haxBreakOutPlaylist",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "items",
               "privacy": "public",

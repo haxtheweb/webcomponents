@@ -24,8 +24,9 @@ const RadioBehaviors = function (SuperClass) {
 
     constructor() {
       super();
-      this.__observerInstance = new MutationObserver((mutationsList, observer) =>
-        this._handleItemChange(mutationsList, observer),
+      this.__observerInstance = new MutationObserver(
+        (mutationsList, observer) =>
+          this._handleItemChange(mutationsList, observer),
       );
       this.addEventListener(this.__selectEvent, this._handleSelectItem);
     }

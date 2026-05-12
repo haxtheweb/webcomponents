@@ -98,7 +98,11 @@ export class DesignSystem extends LitElement {
   _integrationCacheKey(systemName, integrationName) {
     return `${systemName}::${integrationName}`;
   }
-  async loadSystemIntegration(systemName, integrationName = "hax", context = {}) {
+  async loadSystemIntegration(
+    systemName,
+    integrationName = "hax",
+    context = {},
+  ) {
     const system = this.systems[systemName];
     if (
       !system ||
@@ -139,7 +143,10 @@ export class DesignSystem extends LitElement {
         context,
         options: integration.options || {},
       };
-      if (integration.exportName && typeof mod[integration.exportName] === "function") {
+      if (
+        integration.exportName &&
+        typeof mod[integration.exportName] === "function"
+      ) {
         await mod[integration.exportName](payload);
       } else if (typeof mod.default === "function") {
         await mod.default(payload);
@@ -168,10 +175,11 @@ export class DesignSystem extends LitElement {
     }
     Object.keys(HAXStore.elementList || {}).forEach((registeredTag) => {
       if (HAXStore.elementList[registeredTag]) {
-        HAXStore.elementList[registeredTag] = HAXStore.designSystemHAXProperties(
-          HAXStore.elementList[registeredTag],
-          registeredTag,
-        );
+        HAXStore.elementList[registeredTag] =
+          HAXStore.designSystemHAXProperties(
+            HAXStore.elementList[registeredTag],
+            registeredTag,
+          );
       }
     });
   }

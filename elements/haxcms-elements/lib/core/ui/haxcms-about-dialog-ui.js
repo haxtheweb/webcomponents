@@ -66,7 +66,9 @@ class HAXCMSAboutDialogUI extends DDD {
     this.keyboardShortcuts = shortcuts
       .slice()
       .sort((a, b) =>
-        `${a.label} ${a.description}`.localeCompare(`${b.label} ${b.description}`),
+        `${a.label} ${a.description}`.localeCompare(
+          `${b.label} ${b.description}`,
+        ),
       );
   }
 
@@ -153,10 +155,11 @@ class HAXCMSAboutDialogUI extends DDD {
     }
     return html`<ul class="shortcut-list">
       ${shortcuts.map(
-        (shortcut) => html`<li>
-          <span class="shortcut-key">${shortcut.label}</span>
-          <span>${shortcut.description}</span>
-        </li>`,
+        (shortcut) =>
+          html`<li>
+            <span class="shortcut-key">${shortcut.label}</span>
+            <span>${shortcut.description}</span>
+          </li>`,
       )}
     </ul>`;
   }
@@ -169,10 +172,11 @@ class HAXCMSAboutDialogUI extends DDD {
     }
     return html`<ul class="shortcut-list">
       ${this.markdownShortcuts.map(
-        (shortcut) => html`<li>
-          <span class="shortcut-key"><code>${shortcut.trigger}</code></span>
-          <span>${shortcut.description}</span>
-        </li>`,
+        (shortcut) =>
+          html`<li>
+            <span class="shortcut-key"><code>${shortcut.trigger}</code></span>
+            <span>${shortcut.description}</span>
+          </li>`,
       )}
     </ul>`;
   }
@@ -183,9 +187,10 @@ class HAXCMSAboutDialogUI extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) -
-              var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -409,12 +414,10 @@ class HAXCMSAboutDialogUI extends DDD {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -459,13 +462,17 @@ class HAXCMSAboutDialogUI extends DDD {
         <div class="panel-scroll">
           <h2>Help &amp; About</h2>
           <p class="intro">
-            Keyboard shortcuts, tutorials, community and more to help you learn and grow HAX.
+            Keyboard shortcuts, tutorials, community and more to help you learn
+            and grow HAX.
           </p>
 
           <details class="section" open>
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="hax:hax2022" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="hax:hax2022"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>About HAX and Community</h3>
               </span>
             </summary>
@@ -518,7 +525,10 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="hardware:keyboard" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="hardware:keyboard"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>Keyboard shortcuts</h3>
               </span>
             </summary>
@@ -550,7 +560,10 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="hax:blocks" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="hax:blocks"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>Editor shortcuts</h3>
               </span>
             </summary>
@@ -560,8 +573,8 @@ class HAXCMSAboutDialogUI extends DDD {
                 In an empty text block, opens inline Search.
               </p>
               <p class="section-description">
-                In the editor, text triggers are converted to blocks
-                after typing a trigger and then space.
+                In the editor, text triggers are converted to blocks after
+                typing a trigger and then space.
               </p>
               ${this._renderMarkdownShortcutList()}
             </div>
@@ -570,7 +583,10 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="hax:page-edit" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="hax:page-edit"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>Tutorials and How-To</h3>
               </span>
             </summary>
@@ -595,9 +611,7 @@ class HAXCMSAboutDialogUI extends DDD {
                     >Custom theme development docs</a
                   >
                 </li>
-                <li>
-                  Search onboarding path: <code>CMS/welcome</code>
-                </li>
+                <li>Search onboarding path: <code>CMS/welcome</code></li>
               </ul>
             </div>
           </details>
@@ -605,23 +619,27 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="hax:hax2022" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="hax:hax2022"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>AI-Ready Content Interfaces</h3>
               </span>
             </summary>
             <div class="collapse-body">
               <p class="section-description">
-                HAXcms can publish pages in machine-friendly formats so LLM tools can
-                read and process your content with less cleanup.
+                HAXcms can publish pages in machine-friendly formats so LLM
+                tools can read and process your content with less cleanup.
               </p>
               <ul>
                 <li>
-                  Add <code>.md</code>, <code>.json</code>, <code>.yaml</code>, or
-                  <code>.xml</code> to page URLs to request alternate page outputs.
+                  Add <code>.md</code>, <code>.json</code>, <code>.yaml</code>,
+                  or <code>.xml</code> to page URLs to request alternate page
+                  outputs.
                 </li>
                 <li>
-                  Use <code>/llms.txt</code> as a model-facing index for this site,
-                  with links to key machine-readable resources.
+                  Use <code>/llms.txt</code> as a model-facing index for this
+                  site, with links to key machine-readable resources.
                 </li>
                 <li>
                   Pair <code>/site.json</code> (structure) with
@@ -629,7 +647,9 @@ class HAXCMSAboutDialogUI extends DDD {
                   AI-powered workflows.
                 </li>
               </ul>
-              <p class="section-description">Learn more in the HAX ecosystem:</p>
+              <p class="section-description">
+                Learn more in the HAX ecosystem:
+              </p>
               <ul>
                 <li>
                   <a
@@ -670,7 +690,10 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
-                <simple-icon-lite icon="icons:search" aria-hidden="true"></simple-icon-lite>
+                <simple-icon-lite
+                  icon="icons:search"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 <h3>Search Options in One Place</h3>
               </span>
             </summary>

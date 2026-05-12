@@ -282,6 +282,34 @@
           "members": [
             {
               "kind": "method",
+              "name": "_addActivationListeners",
+              "parameters": [
+                {
+                  "name": "eventType",
+                  "default": "this.event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_removeActivationListeners",
+              "parameters": [
+                {
+                  "name": "eventType",
+                  "default": "this.event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_removePopoverItemListeners"
+            },
+            {
+              "kind": "method",
+              "name": "_addPopoverItemListeners"
+            },
+            {
+              "kind": "method",
               "name": "openedToggle",
               "parameters": [
                 {
@@ -353,6 +381,30 @@
               "description": "event activation type",
               "default": "\"click\"",
               "attribute": "event"
+            },
+            {
+              "kind": "field",
+              "name": "__boundOpenedToggle"
+            },
+            {
+              "kind": "field",
+              "name": "__boundOpenPopover"
+            },
+            {
+              "kind": "field",
+              "name": "__boundClosePopover"
+            },
+            {
+              "kind": "field",
+              "name": "__boundItemSelect"
+            },
+            {
+              "kind": "field",
+              "name": "__popoverItemListeners",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "events": [

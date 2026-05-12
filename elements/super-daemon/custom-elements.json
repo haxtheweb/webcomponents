@@ -644,6 +644,16 @@
             },
             {
               "kind": "field",
+              "name": "inlineMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "inline-mode"
+            },
+            {
+              "kind": "field",
               "name": "_programValues",
               "type": {
                 "text": "object"
@@ -709,6 +719,14 @@
               },
               "default": "\"*\"",
               "attribute": "commandContext"
+            },
+            {
+              "kind": "field",
+              "name": "_programDebounceTimeout",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -903,6 +921,14 @@
               },
               "default": "false",
               "fieldName": "wand"
+            },
+            {
+              "name": "inline-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "inlineMode"
             },
             {
               "name": "activeNode",
@@ -1220,6 +1246,16 @@
               },
               "attribute": "mini",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "striped",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "striped",
+              "reflects": true
             }
           ],
           "events": [
@@ -1336,6 +1372,13 @@
               },
               "default": "false",
               "fieldName": "active"
+            },
+            {
+              "name": "striped",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "striped"
             }
           ],
           "mixins": [
@@ -1666,7 +1709,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[\"🔮 Insert blocks\", \"🕵 Find media 📺\"]",
+              "default": "[\"Search..\"]",
               "attribute": "possibleActions"
             },
             {
@@ -1749,7 +1792,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[\"🔮 Insert blocks\", \"🕵 Find media 📺\"]",
+              "default": "[\"Search..\"]",
               "fieldName": "possibleActions"
             },
             {
@@ -2235,7 +2278,13 @@
             },
             {
               "kind": "method",
-              "name": "setupProgram"
+              "name": "setupProgram",
+              "parameters": [
+                {
+                  "name": "initialProgramSearch",
+                  "default": "\"\""
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2277,6 +2326,19 @@
             {
               "kind": "method",
               "name": "focusedChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isWelcomeProgram"
+            },
+            {
+              "kind": "method",
+              "name": "_isInputIntentKey",
               "parameters": [
                 {
                   "name": "e"
@@ -2596,6 +2658,18 @@
               }
             },
             {
+              "name": "super-daemon-run-program",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "super-daemon-close",
               "type": {
                 "text": "CustomEvent"
@@ -2603,12 +2677,6 @@
             },
             {
               "name": "super-daemon-program-enter",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "super-daemon-run-program",
               "type": {
                 "text": "CustomEvent"
               }

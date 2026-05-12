@@ -243,14 +243,9 @@ class SimpleContextMenu extends DDD {
       return false;
     }
     if (
-      [
-        "BUTTON",
-        "A",
-        "INPUT",
-        "SELECT",
-        "TEXTAREA",
-        "SUMMARY",
-      ].includes(node.tagName)
+      ["BUTTON", "A", "INPUT", "SELECT", "TEXTAREA", "SUMMARY"].includes(
+        node.tagName,
+      )
     ) {
       return true;
     }

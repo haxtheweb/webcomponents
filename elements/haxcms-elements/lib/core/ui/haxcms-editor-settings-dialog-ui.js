@@ -1,9 +1,9 @@
-import { html, css } from 'lit'
-import { autorun, toJS } from 'mobx'
-import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
-import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
-import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
-import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
+import { html, css } from "lit";
+import { autorun, toJS } from "mobx";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `haxcms-editor-settings-dialog-ui`
@@ -11,43 +11,44 @@ import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
  */
 class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
-    return 'haxcms-editor-settings-dialog-ui'
+    return "haxcms-editor-settings-dialog-ui";
   }
 
   static get properties() {
     return {
       audience: { type: String },
       busy: { type: Boolean, reflect: true },
-    }
+    };
   }
 
   constructor() {
-    super()
-    this.audience = 'expert'
-    this.busy = false
-    this.__disposer = []
+    super();
+    this.audience = "expert";
+    this.busy = false;
+    this.__disposer = [];
     this.audienceOptions = [
-      { value: 'novice', label: 'Novice' },
-      { value: 'expert', label: 'Expert' },
-    ]
+      { value: "novice", label: "Novice" },
+      { value: "expert", label: "Expert" },
+    ];
 
-    this.t = this.t || {}
+    this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: 'Editor Settings',
-      experienceLevel: 'Experience Level',
+      title: "Editor Settings",
+      experienceLevel: "Experience Level",
       experienceLevelDescription:
-        'Select the editor experience and preview the toolbar layout.',
-      buttons: 'Buttons',
-      futureButtonConfiguration: 'Custom editor button configuration is coming soon.',
-      save: 'Save',
-      saving: 'Saving…',
-    }
+        "Select the editor experience and preview the toolbar layout.",
+      buttons: "Buttons",
+      futureButtonConfiguration:
+        "Custom editor button configuration is coming soon.",
+      save: "Save",
+      saving: "Saving…",
+    };
 
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-    })
+    });
   }
 
   static get styles() {
@@ -56,8 +57,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -263,12 +266,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -302,43 +303,43 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
           }
         }
       `,
-    ]
+    ];
   }
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
     this.__disposer.push(
       autorun((reaction) => {
-        const platformConfig = toJS(HAXStore.platformConfig)
+        const platformConfig = toJS(HAXStore.platformConfig);
         if (
           platformConfig &&
           platformConfig.audience &&
-          (platformConfig.audience === 'novice' ||
-            platformConfig.audience === 'expert')
+          (platformConfig.audience === "novice" ||
+            platformConfig.audience === "expert")
         ) {
-          this.audience = platformConfig.audience
+          this.audience = platformConfig.audience;
         } else {
-          this.audience = 'expert'
+          this.audience = "expert";
         }
       }),
-    )
+    );
   }
 
   disconnectedCallback() {
     while (this.__disposer.length) {
-      const d = this.__disposer.pop()
-      if (d && typeof d.dispose === 'function') {
-        d.dispose()
+      const d = this.__disposer.pop();
+      if (d && typeof d.dispose === "function") {
+        d.dispose();
       }
     }
-    super.disconnectedCallback()
+    super.disconnectedCallback();
   }
 
   render() {
     const toolbarImgPath = new URL(
       `./assets/${this.audience.toLowerCase()}.png`,
       import.meta.url,
-    ).href
+    ).href;
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -347,7 +348,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             <details class="section" open>
               <summary class="section-title">
                 <span class="summary-leading">
-                  <simple-icon-lite icon="hax:page-edit" aria-hidden="true"></simple-icon-lite>
+                  <simple-icon-lite
+                    icon="hax:page-edit"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
                   <h3>${this.t.experienceLevel}</h3>
                 </span>
               </summary>
@@ -386,7 +390,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             <details class="section">
               <summary class="section-title">
                 <span class="summary-leading">
-                  <simple-icon-lite icon="hax:add-brick" aria-hidden="true"></simple-icon-lite>
+                  <simple-icon-lite
+                    icon="hax:add-brick"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
                   <h3>${this.t.buttons}</h3>
                 </span>
               </summary>
@@ -404,23 +411,23 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
           </button>
         </div>
       </div>
-    `
+    `;
   }
 
   _audienceChanged(e) {
-    const value = e && e.target ? e.target.value : 'expert'
-    if (value === 'novice' || value === 'expert') {
-      this.audience = value
+    const value = e && e.target ? e.target.value : "expert";
+    if (value === "novice" || value === "expert") {
+      this.audience = value;
     } else {
-      this.audience = 'expert'
+      this.audience = "expert";
     }
   }
 
   _saveEditorSettings() {
     try {
-      this.busy = true
+      this.busy = true;
       this.dispatchEvent(
-        new CustomEvent('haxcms-save-editor-settings', {
+        new CustomEvent("haxcms-save-editor-settings", {
           bubbles: true,
           composed: true,
           cancelable: true,
@@ -428,30 +435,30 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             audience: this.audience,
           },
         }),
-      )
+      );
       this.dispatchEvent(
-        new CustomEvent('simple-modal-hide', {
+        new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: false,
         }),
-      )
+      );
     } catch (error) {
-      console.error('Saving editor settings failed:', error)
+      console.error("Saving editor settings failed:", error);
       HAXStore.toast(
         `Saving editor settings failed: ${error.message}`,
         5000,
         {},
-        'fit-bottom',
-      )
+        "fit-bottom",
+      );
     }
-    this.busy = false
+    this.busy = false;
   }
 }
 
 globalThis.customElements.define(
   HAXCMSEditorSettingsDialogUI.tag,
   HAXCMSEditorSettingsDialogUI,
-)
-export { HAXCMSEditorSettingsDialogUI }
+);
+export { HAXCMSEditorSettingsDialogUI };

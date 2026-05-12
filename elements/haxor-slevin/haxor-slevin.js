@@ -632,7 +632,9 @@ class HaxorSlevin extends HAXCMSThemeParts(
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+        this.activeManifestIndexCounter = toJS(
+          store.activeManifestIndexCounter,
+        );
       }),
     );
     this.__disposer.push(

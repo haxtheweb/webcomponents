@@ -286,7 +286,8 @@ class RetroCard extends SimpleColors {
           },
           {
             property: "hoverSource",
-            description: "Media source shown when the card is hovered or activated.",
+            description:
+              "Media source shown when the card is hovered or activated.",
             title: "Source on hover",
             inputMethod: "haxupload",
             noVoiceRecord: true,

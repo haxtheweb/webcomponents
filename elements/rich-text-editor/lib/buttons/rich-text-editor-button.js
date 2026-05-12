@@ -228,9 +228,13 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             }
           }
         });
-        this.addEventListener("mousedown", (e) => {
-          e.preventDefault();
-        }, true);
+        this.addEventListener(
+          "mousedown",
+          (e) => {
+            e.preventDefault();
+          },
+          true,
+        );
       }
     }
 
@@ -373,8 +377,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       // on pointerdown, before the toolbar's sendCommand pipeline runs.
       if (isWebKit()) {
         var target = this.__toolbar && this.__toolbar.target;
-        var saved = this.__webkitSavedRange
-          || (this.__toolbar && this.__toolbar.__webkitSavedRange);
+        var saved =
+          this.__webkitSavedRange ||
+          (this.__toolbar && this.__toolbar.__webkitSavedRange);
         if (target && saved) {
           target.focus({ preventScroll: true });
           var sel = globalThis.getSelection();
@@ -385,7 +390,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           // addRange may silently fail in shadow DOM; try setBaseAndExtent
           if (sel.rangeCount === 0) {
             try {
-              sel.setBaseAndExtent(saved.startContainer, saved.startOffset, saved.endContainer, saved.endOffset);
+              sel.setBaseAndExtent(
+                saved.startContainer,
+                saved.startOffset,
+                saved.endContainer,
+                saved.endOffset,
+              );
             } catch (err) {
               // last resort: collapse to caret position
               try {

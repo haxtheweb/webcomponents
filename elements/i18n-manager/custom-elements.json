@@ -96,6 +96,16 @@
               "description": "Determine if we need to load the manifest for this language"
             },
             {
+              "kind": "method",
+              "name": "_fetchJsonTarget",
+              "parameters": [
+                {
+                  "name": "fetchTarget"
+                }
+              ],
+              "description": "Fetch and parse JSON, returning false when URL/file is unavailable or invalid"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,

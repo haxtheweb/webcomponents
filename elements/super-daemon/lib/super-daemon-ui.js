@@ -513,7 +513,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   }
 
   _isInputIntentKey(e) {
-    return !!e.key && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+    return (
+      !!e.key && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
+    );
   }
 
   // feed results to the program as opposed to the global context based on program running

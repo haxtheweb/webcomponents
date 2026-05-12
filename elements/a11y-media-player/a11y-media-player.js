@@ -2816,7 +2816,8 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     if (!this.media) return;
 
     // Clamp the requested time to a sane range when duration is known.
-    const hasDuration = typeof this.duration === "number" && !isNaN(this.duration);
+    const hasDuration =
+      typeof this.duration === "number" && !isNaN(this.duration);
     const safeTime = hasDuration
       ? Math.max(0, Math.min(time, this.duration))
       : Math.max(0, time || 0);
@@ -3637,11 +3638,7 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       );
     }
     if (this._settingsClickHandler) {
-      globalThis.removeEventListener(
-        "click",
-        this._settingsClickHandler,
-        true,
-      );
+      globalThis.removeEventListener("click", this._settingsClickHandler, true);
     }
   }
 }

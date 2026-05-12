@@ -39,26 +39,32 @@ class FigureLabel extends DDD {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
-          
-          background-color: light-dark(var(
-            --ddd-component-figure-label-title,
+
+          background-color: light-dark(
             var(
-              --ddd-theme-accent,
+              --ddd-component-figure-label-title,
               var(
-                --simple-colors-default-theme-accent-2,
-                var(--ddd-theme-default-limestoneLight)
+                --ddd-theme-accent,
+                var(
+                  --simple-colors-default-theme-accent-2,
+                  var(--ddd-theme-default-limestoneLight)
+                )
               )
-            )), black
+            ),
+            black
           );
-          color: light-dark(var(
-            --ddd-component-figure-label-title-text,
+          color: light-dark(
             var(
-              --ddd-theme-primary,
+              --ddd-component-figure-label-title-text,
               var(
-                --simple-colors-default-theme-accent-11,
-                var(--ddd-theme-default-potentialMidnight)
-              ))
-            ), var(--ddd-theme-default-white)
+                --ddd-theme-primary,
+                var(
+                  --simple-colors-default-theme-accent-11,
+                  var(--ddd-theme-default-potentialMidnight)
+                )
+              )
+            ),
+            var(--ddd-theme-default-white)
           );
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
@@ -94,23 +100,31 @@ class FigureLabel extends DDD {
           border-left: none;
           padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
-          background-color: light-dark(var(
-            --ddd-component-figure-label-description-background,
-            var(--ddd-theme-default-white)), var(--ddd-theme-default-potential0)
-          );
-          color: light-dark(var(
-            --ddd-component-figure-label-description-text,
+          background-color: light-dark(
             var(
-              --simple-colors-default-theme-accent-11,
-              var(--ddd-theme-default-potentialMidnight)
-            )), var(--ddd-theme-default-white)
+              --ddd-component-figure-label-description-background,
+              var(--ddd-theme-default-white)
+            ),
+            var(--ddd-theme-default-potential0)
           );
-          
+          color: light-dark(
+            var(
+              --ddd-component-figure-label-description-text,
+              var(
+                --simple-colors-default-theme-accent-11,
+                var(--ddd-theme-default-potentialMidnight)
+              )
+            ),
+            var(--ddd-theme-default-white)
+          );
+
           font-weight: var(--ddd-font-weight-regular);
         }
         #text {
-          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) );
-
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
       `,
     ];

@@ -146,16 +146,20 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
-          margin: 0 auto; 
-          padding: 0 var(--ddd-spacing-5); 
+          margin: 0 auto;
+          padding: 0 var(--ddd-spacing-5);
           max-width: 100%;
         }
-        
+
         :host([edit-mode]) {
           opacity: 1;
           margin: var(
-          --hax-tray-element-align-margin,
-            0 var(--ddd-spacing-4) 0 calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width) + var(--ddd-spacing-4))
+            --hax-tray-element-align-margin,
+            0 var(--ddd-spacing-4) 0
+              calc(
+                var(--hax-tray-width) - var(--hax-tray-menubar-min-width) +
+                  var(--ddd-spacing-4)
+              )
           );
           transition: margin 0.6s ease-in-out;
         }
@@ -190,7 +194,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
           display: flex;
           text-decoration: none;
           height: fit-content;
-          margin: 0; 
+          margin: 0;
           transition: all 0.3s ease-in-out;
         }
 
@@ -271,7 +275,6 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         #slot {
           min-height: 50vh;
         }
-        
       `,
     ];
   }

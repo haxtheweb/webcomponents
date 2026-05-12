@@ -76,8 +76,7 @@ class HAXConfirmDialog extends DDD {
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
           );
-          background-image:
-            repeating-linear-gradient(
+          background-image: repeating-linear-gradient(
               0deg,
               transparent 0,
               transparent 11px,
@@ -121,7 +120,8 @@ class HAXConfirmDialog extends DDD {
         }
         button:hover,
         button:focus-visible {
-          outline: var(--ddd-border-xs) solid var(--ddd-theme-default-keystoneYellow);
+          outline: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
           background-color: var(--ddd-theme-default-nittanyNavy);
         }

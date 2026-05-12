@@ -111,9 +111,9 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
             <div class="format-routing-help">
               <h3>Native route for robots and LLMs</h3>
               <p>
-                You opened this using <code>?format=${routeFormat}</code>.
-                For machine-native access, append
-                <code>.${routeFormat}</code> to the current page slug instead.
+                You opened this using <code>?format=${routeFormat}</code>. For
+                machine-native access, append <code>.${routeFormat}</code> to
+                the current page slug instead.
               </p>
               <div class="native-route">
                 <code>${this.nativeFormatPath}</code>
@@ -329,10 +329,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       } catch (err) {
         const routeFormat = this.requestedFormat || "json";
         const copyFormat = this.getCopyFormatLabel(routeFormat);
-        console.error(
-          `Failed to copy ${copyFormat.toUpperCase()} data: `,
-          err,
-        );
+        console.error(`Failed to copy ${copyFormat.toUpperCase()} data: `, err);
         if (
           globalThis.SimpleToast &&
           globalThis.SimpleToast.requestAvailability

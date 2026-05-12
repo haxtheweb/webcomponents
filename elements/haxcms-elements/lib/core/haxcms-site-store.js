@@ -201,7 +201,7 @@ class Store {
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
       pageAllowed: observable, // if the page operations are allowed to be viewed
-      platformConfig: computed
+      platformConfig: computed,
     });
   }
 
@@ -1132,7 +1132,7 @@ class Store {
         "blockTemplates",
         "popularGizmos",
         "recentGizmos",
-        "community"
+        "community",
       ]);
 
       // If audience is not defined, default to expert mode
@@ -1140,7 +1140,9 @@ class Store {
 
       // Features may be declared as raw.features (new-style), or as booleans on raw (legacy)
       platformConfigObj.features =
-        raw.features && typeof raw.features === "object" ? { ...raw.features } : {};
+        raw.features && typeof raw.features === "object"
+          ? { ...raw.features }
+          : {};
 
       // Legacy support: if the raw object has known feature keys directly, absorb them
       platformConfigObj.__supportedFeatures.forEach((key) => {
@@ -1149,7 +1151,10 @@ class Store {
         }
       });
       // Legacy support: delete -> deletePage mapping
-      if (typeof raw.delete === "boolean" && typeof platformConfigObj.features.deletePage !== "boolean") {
+      if (
+        typeof raw.delete === "boolean" &&
+        typeof platformConfigObj.features.deletePage !== "boolean"
+      ) {
         platformConfigObj.features.deletePage = raw.delete;
       }
 
@@ -1199,12 +1204,12 @@ class Store {
     if (!this.platformConfig || typeof this.platformConfig !== "object") {
       return true; // No restrictions if no platform config
     }
-    
+
     // If the capability is in the list of accepted features, evaluate as feature
     // If not defined, default to true (allowed), if it is defined, use its value
-    if(this.platformConfig.__supportedFeatures.has(capability)){
+    if (this.platformConfig.__supportedFeatures.has(capability)) {
       return this.platformConfig.features[capability] !== false;
-    } 
+    }
 
     if (this.platformConfig.allowedBlocks === null) {
       return false;
@@ -1226,7 +1231,7 @@ class Store {
    * @param {string} expectedAudience - Audience name to compare against (e.g., 'novice', 'advanced', 'expert')
    * @returns {boolean} Whether the parameter matches the current audience
    */
-  isPlatformAudience(expectedAudience){
+  isPlatformAudience(expectedAudience) {
     if (!this.platformConfig || typeof this.platformConfig !== "object") {
       return "expert" === expectedAudience; // Default to expert mode if there's no platformConfig
     }
@@ -1654,12 +1659,13 @@ globalThis.HAXCMS.setTheme = function (theme) {
   globalThis.HAXCMS.instance.store.manifest.metadata.theme.element = theme;
 };
 // developer command to force platform audience to change for testing
-globalThis.HAXCMS.setPlatformAudience = function(audience) {
-  if(!globalThis.HAXCMS.instance.store.manifest.metadata.platform){
-    globalThis.HAXCMS.instance.store.manifest.metadata.platform = {}
+globalThis.HAXCMS.setPlatformAudience = function (audience) {
+  if (!globalThis.HAXCMS.instance.store.manifest.metadata.platform) {
+    globalThis.HAXCMS.instance.store.manifest.metadata.platform = {};
   }
-  globalThis.HAXCMS.instance.store.manifest.metadata.platform.audience = audience;
-}
+  globalThis.HAXCMS.instance.store.manifest.metadata.platform.audience =
+    audience;
+};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
@@ -1687,7 +1693,10 @@ class HAXCMSSiteStore extends HTMLElement {
     // source for reading in the store if different than default site.json
     this.source = "";
     globalThis.addEventListener("playaudio", this.playSoundEvent.bind(this));
-    globalThis.addEventListener("hax-tray-status-changed", this.trayStatusChanged.bind(this));
+    globalThis.addEventListener(
+      "hax-tray-status-changed",
+      this.trayStatusChanged.bind(this),
+    );
     /**
      * When location changes update activeItem
      */

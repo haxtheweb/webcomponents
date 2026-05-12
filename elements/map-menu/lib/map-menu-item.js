@@ -182,7 +182,10 @@ class MapMenuItem extends I18NMixin(LitElement) {
       </a>
       ${this.editControls && this.active
         ? html` <div class="ops">
-          <haxcms-page-operations class="op" action-id="${this.id}"></haxcms-page-operations>
+            <haxcms-page-operations
+              class="op"
+              action-id="${this.id}"
+            ></haxcms-page-operations>
           </div>`
         : ``}`;
   }

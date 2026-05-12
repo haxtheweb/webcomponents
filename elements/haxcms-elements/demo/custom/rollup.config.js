@@ -35,7 +35,7 @@ export default {
     /** Minify JS, compile JS to a lower language target */
     esbuild({
       minify: true,
-      target: ["chrome64", "firefox67", "safari11.1"],
+      target: ["chrome64", "firefox67"],
     }),
     /** Bundle assets references via import.meta.url */
     importMetaAssets(),

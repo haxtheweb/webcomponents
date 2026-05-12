@@ -257,6 +257,20 @@
             },
             {
               "kind": "method",
+              "name": "_prefersReducedMotion"
+            },
+            {
+              "kind": "method",
+              "name": "_getAnimation",
+              "parameters": [
+                {
+                  "name": "duration",
+                  "default": "this.duration"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "hide"
             },
             {
@@ -288,6 +302,14 @@
               },
               "default": "false",
               "attribute": "alwaysvisible"
+            },
+            {
+              "kind": "field",
+              "name": "awaitingMerlinInput",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "field",

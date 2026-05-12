@@ -305,7 +305,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
       setTimeout(() => {
-        this.shadowRoot.querySelector("super-daemon-ui").setupProgram(this.programSearch);
+        this.shadowRoot
+          .querySelector("super-daemon-ui")
+          .setupProgram(this.programSearch);
         setTimeout(async () => {
           try {
             this.loading = true;

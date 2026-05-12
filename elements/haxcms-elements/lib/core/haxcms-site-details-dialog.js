@@ -1,56 +1,56 @@
-import { html, css } from 'lit'
-import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
-import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
-import { autorun, toJS } from 'mobx'
+import { html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import {
   HaxSchematizer,
   HaxElementizer,
-} from '@haxtheweb/hax-body-behaviors/lib/HAXFields.js'
-import '@haxtheweb/simple-fields/simple-fields.js'
-import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 class HAXCMSSiteDetailsDialog extends DDD {
   static get tag() {
-    return 'haxcms-site-details-dialog'
+    return "haxcms-site-details-dialog";
   }
 
   static get properties() {
     return {
       groups: { type: Array },
       values: { type: Object },
-      errorMessage: { type: String, attribute: 'error-message' },
+      errorMessage: { type: String, attribute: "error-message" },
       homePageOptions: { type: Object, attribute: false },
-    }
+    };
   }
 
   constructor() {
-    super()
-    this.groups = []
-    this.values = {}
-    this.errorMessage = ''
+    super();
+    this.groups = [];
+    this.values = {};
+    this.errorMessage = "";
     this.homePageOptions = {
-      '': '-- default to first page --',
-    }
-    this.__valueChangeLock = false
-    this.__groupValues = {}
-    this.__manifestReaction = null
+      "": "-- default to first page --",
+    };
+    this.__valueChangeLock = false;
+    this.__groupValues = {};
+    this.__manifestReaction = null;
   }
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
     if (!this.__manifestReaction) {
       this.__manifestReaction = autorun(() => {
-        this.refreshFromManifest(toJS(store.manifest))
-      })
+        this.refreshFromManifest(toJS(store.manifest));
+      });
     }
   }
 
   disconnectedCallback() {
     if (this.__manifestReaction) {
-      this.__manifestReaction()
-      this.__manifestReaction = null
+      this.__manifestReaction();
+      this.__manifestReaction = null;
     }
-    super.disconnectedCallback()
+    super.disconnectedCallback();
   }
 
   static get styles() {
@@ -59,8 +59,10 @@ class HAXCMSSiteDetailsDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -175,7 +177,8 @@ class HAXCMSSiteDetailsDialog extends DDD {
           );
         }
         .error {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-original87Pink);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-original87Pink);
           background: light-dark(
             var(--ddd-theme-default-potentialMidnight),
             var(--ddd-theme-default-coalyGray)
@@ -248,12 +251,10 @@ class HAXCMSSiteDetailsDialog extends DDD {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -280,232 +281,244 @@ class HAXCMSSiteDetailsDialog extends DDD {
           }
         }
       `,
-    ]
+    ];
   }
 
   _cloneData(data) {
-    if (typeof data === 'undefined') {
-      return data
+    if (typeof data === "undefined") {
+      return data;
     }
     if (data === null) {
-      return null
+      return null;
     }
-    return JSON.parse(JSON.stringify(data))
+    return JSON.parse(JSON.stringify(data));
   }
 
   _toBoolValue(value, fallback = false) {
     if (value === true || value === false) {
-      return value
+      return value;
     }
-    if (value === 'true' || value === '1' || value === 1) {
-      return true
+    if (value === "true" || value === "1" || value === 1) {
+      return true;
     }
-    if (value === 'false' || value === '0' || value === 0) {
-      return false
+    if (value === "false" || value === "0" || value === 0) {
+      return false;
     }
-    return fallback
+    return fallback;
   }
 
   _manifestItems(manifest) {
-    if (store && store.getManifestItems && typeof store.getManifestItems === 'function') {
-      const manifestItems = store.getManifestItems(true)
+    if (
+      store &&
+      store.getManifestItems &&
+      typeof store.getManifestItems === "function"
+    ) {
+      const manifestItems = store.getManifestItems(true);
       if (Array.isArray(manifestItems) && manifestItems.length > 0) {
-        return manifestItems
+        return manifestItems;
       }
     }
     if (manifest && Array.isArray(manifest.items)) {
-      return manifest.items
+      return manifest.items;
     }
-    return []
+    return [];
   }
 
   _buildHomePageOptions(manifest) {
-    const itemManifest = this._manifestItems(manifest)
+    const itemManifest = this._manifestItems(manifest);
     const options = {
-      '': '-- default to first page --',
-    }
+      "": "-- default to first page --",
+    };
     itemManifest.forEach((item) => {
       if (!item || !item.id) {
-        return
+        return;
       }
-      let itemBuilder = item
-      let distance = '- '
+      let itemBuilder = item;
+      let distance = "- ";
       while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = itemManifest.find((i) => i.id === itemBuilder.parent)
+        itemBuilder = itemManifest.find((i) => i.id === itemBuilder.parent);
         if (itemBuilder) {
-          distance = `--${distance}`
+          distance = `--${distance}`;
         }
       }
-      const itemTitle = item.title ? item.title : item.id
-      options[item.id] = `${distance}${itemTitle}`
-    })
-    return options
+      const itemTitle = item.title ? item.title : item.id;
+      options[item.id] = `${distance}${itemTitle}`;
+    });
+    return options;
   }
 
   _buildDetailsGroups() {
     return [
       {
-        key: 'details',
-        label: 'Details',
-        icon: 'settings',
+        key: "details",
+        label: "Details",
+        icon: "settings",
         open: true,
         fields: [
           {
-            property: 'manifest-title',
-            title: 'Title',
-            description: 'Name of the site',
-            inputMethod: 'textfield',
+            property: "manifest-title",
+            title: "Title",
+            description: "Name of the site",
+            inputMethod: "textfield",
             required: true,
           },
           {
-            property: 'manifest-metadata-site-homePageId',
-            title: 'Home page',
-            description: 'Page to use as the default landing / home page',
-            inputMethod: 'select',
+            property: "manifest-metadata-site-homePageId",
+            title: "Home page",
+            description: "Page to use as the default landing / home page",
+            inputMethod: "select",
             options: this._cloneData(this.homePageOptions),
             required: false,
           },
         ],
       },
       {
-        key: 'advanced',
-        label: 'Advanced',
-        icon: 'hax:add-item',
+        key: "advanced",
+        label: "Advanced",
+        icon: "hax:add-item",
         open: false,
         fields: [
           {
-            property: 'manifest-metadata-site-settings-sw',
-            title: 'Add service worker to dynamic page',
+            property: "manifest-metadata-site-settings-sw",
+            title: "Add service worker to dynamic page",
             description:
-              'Disable this if users should always see the latest server output immediately.',
-            inputMethod: 'boolean',
+              "Disable this if users should always see the latest server output immediately.",
+            inputMethod: "boolean",
             required: false,
           },
           {
-            property: 'manifest-metadata-site-settings-forceUpgrade',
-            title: 'Force browser upgrade',
+            property: "manifest-metadata-site-settings-forceUpgrade",
+            title: "Force browser upgrade",
             description:
-              'Require evergreen browsers before loading the site experience.',
-            inputMethod: 'boolean',
+              "Require evergreen browsers before loading the site experience.",
+            inputMethod: "boolean",
             required: false,
           },
         ],
       },
-    ]
+    ];
   }
 
   _buildValueState(manifest) {
-    const values = {}
+    const values = {};
     const metadata =
-      manifest && manifest.metadata && typeof manifest.metadata === 'object'
+      manifest && manifest.metadata && typeof manifest.metadata === "object"
         ? manifest.metadata
-        : {}
+        : {};
     const metadataSite =
-      metadata && metadata.site && typeof metadata.site === 'object'
+      metadata && metadata.site && typeof metadata.site === "object"
         ? metadata.site
-        : {}
+        : {};
     const siteSettings =
-      metadataSite && metadataSite.settings && typeof metadataSite.settings === 'object'
+      metadataSite &&
+      metadataSite.settings &&
+      typeof metadataSite.settings === "object"
         ? metadataSite.settings
-        : {}
-    values['manifest-title'] = manifest && manifest.title ? String(manifest.title) : ''
-    values['manifest-metadata-site-homePageId'] =
-      metadataSite && metadataSite.homePageId ? String(metadataSite.homePageId) : ''
-    values['manifest-metadata-site-settings-sw'] = this._toBoolValue(
+        : {};
+    values["manifest-title"] =
+      manifest && manifest.title ? String(manifest.title) : "";
+    values["manifest-metadata-site-homePageId"] =
+      metadataSite && metadataSite.homePageId
+        ? String(metadataSite.homePageId)
+        : "";
+    values["manifest-metadata-site-settings-sw"] = this._toBoolValue(
       siteSettings.sw,
       true,
-    )
-    values['manifest-metadata-site-settings-forceUpgrade'] = this._toBoolValue(
+    );
+    values["manifest-metadata-site-settings-forceUpgrade"] = this._toBoolValue(
       siteSettings.forceUpgrade,
       false,
-    )
-    return values
+    );
+    return values;
   }
 
   refreshFromManifest(manifestData = null) {
-    const manifest = manifestData || toJS(store.manifest)
+    const manifest = manifestData || toJS(store.manifest);
     if (!manifest || !manifest.metadata) {
-      this.groups = []
-      this.values = {}
-      this.__groupValues = {}
-      this.errorMessage = 'Unable to load site details.'
-      return
+      this.groups = [];
+      this.values = {};
+      this.__groupValues = {};
+      this.errorMessage = "Unable to load site details.";
+      return;
     }
-    this.__valueChangeLock = true
-    this.errorMessage = ''
-    this.homePageOptions = this._buildHomePageOptions(manifest)
-    this.groups = this._buildDetailsGroups()
-    this.values = this._buildValueState(manifest)
-    this.__groupValues = {}
+    this.__valueChangeLock = true;
+    this.errorMessage = "";
+    this.homePageOptions = this._buildHomePageOptions(manifest);
+    this.groups = this._buildDetailsGroups();
+    this.values = this._buildValueState(manifest);
+    this.__groupValues = {};
     this.groups.forEach((group) => {
-      this.__groupValues[group.key] = this._buildGroupValue(group)
-    })
+      this.__groupValues[group.key] = this._buildGroupValue(group);
+    });
     setTimeout(() => {
-      this.__valueChangeLock = false
-    }, 0)
+      this.__valueChangeLock = false;
+    }, 0);
   }
 
   _buildGroupValue(group) {
-    const value = {}
+    const value = {};
     group.fields.forEach((field) => {
-      const key = field.property
+      const key = field.property;
       value[key] =
-        typeof this.values[key] !== 'undefined'
+        typeof this.values[key] !== "undefined"
           ? this._cloneData(this.values[key])
-          : ''
-    })
-    return value
+          : "";
+    });
+    return value;
   }
 
   _groupValue(group) {
     if (!this.__groupValues[group.key]) {
-      this.__groupValues[group.key] = this._buildGroupValue(group)
+      this.__groupValues[group.key] = this._buildGroupValue(group);
     }
-    return this.__groupValues[group.key]
+    return this.__groupValues[group.key];
   }
 
   _onGroupValueChanged(e) {
     if (this.__valueChangeLock) {
-      return
+      return;
     }
     if (!e || !e.detail || !e.detail.value) {
-      return
+      return;
     }
-    const incoming = this._cloneData(e.detail.value)
+    const incoming = this._cloneData(e.detail.value);
     const groupKey =
       e &&
       e.target &&
       e.target.getAttribute &&
-      e.target.getAttribute('data-group')
-        ? e.target.getAttribute('data-group')
-        : null
-    let changed = false
+      e.target.getAttribute("data-group")
+        ? e.target.getAttribute("data-group")
+        : null;
+    let changed = false;
     Object.keys(incoming).forEach((key) => {
       if (JSON.stringify(this.values[key]) !== JSON.stringify(incoming[key])) {
-        this.values[key] = incoming[key]
-        changed = true
+        this.values[key] = incoming[key];
+        changed = true;
       }
-    })
+    });
     if (groupKey) {
-      this.__groupValues[groupKey] = incoming
+      this.__groupValues[groupKey] = incoming;
     }
     if (!changed) {
-      return
+      return;
     }
   }
 
   _buildSavePayload() {
-    const title = this.values['manifest-title']
-      ? String(this.values['manifest-title']).trim()
-      : ''
-    const homePageId = this.values['manifest-metadata-site-homePageId']
-      ? String(this.values['manifest-metadata-site-homePageId']).trim()
-      : ''
-    const sw = this._toBoolValue(this.values['manifest-metadata-site-settings-sw'], true)
+    const title = this.values["manifest-title"]
+      ? String(this.values["manifest-title"]).trim()
+      : "";
+    const homePageId = this.values["manifest-metadata-site-homePageId"]
+      ? String(this.values["manifest-metadata-site-homePageId"]).trim()
+      : "";
+    const sw = this._toBoolValue(
+      this.values["manifest-metadata-site-settings-sw"],
+      true,
+    );
     const forceUpgrade = this._toBoolValue(
-      this.values['manifest-metadata-site-settings-forceUpgrade'],
+      this.values["manifest-metadata-site-settings-forceUpgrade"],
       false,
-    )
+    );
     return {
       title: title,
       homePageId: homePageId,
@@ -513,46 +526,48 @@ class HAXCMSSiteDetailsDialog extends DDD {
       forceUpgrade: forceUpgrade,
       manifest: {
         site: {
-          'manifest-title': title,
-          'manifest-metadata-site-homePageId': homePageId,
+          "manifest-title": title,
+          "manifest-metadata-site-homePageId": homePageId,
         },
         seo: {
-          'manifest-metadata-site-settings-sw': sw,
-          'manifest-metadata-site-settings-forceUpgrade': forceUpgrade,
+          "manifest-metadata-site-settings-sw": sw,
+          "manifest-metadata-site-settings-forceUpgrade": forceUpgrade,
         },
       },
-    }
+    };
   }
 
   _saveSiteDetailsTap() {
     if (this.groups.length === 0) {
-      return
+      return;
     }
-    store.playSound('click')
+    store.playSound("click");
     globalThis.dispatchEvent(
-      new CustomEvent('haxcms-save-site-data', {
+      new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
         composed: true,
         cancelable: true,
         detail: this._buildSavePayload(),
       }),
-    )
+    );
     setTimeout(() => {
       globalThis.dispatchEvent(
-        new CustomEvent('simple-modal-hide', {
+        new CustomEvent("simple-modal-hide", {
           bubbles: true,
           cancelable: true,
           detail: {},
         }),
-      )
-    }, 0)
+      );
+    }, 0);
   }
 
   render() {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          ${this.errorMessage ? html`<p class="error">${this.errorMessage}</p>` : ``}
+          ${this.errorMessage
+            ? html`<p class="error">${this.errorMessage}</p>`
+            : ``}
           ${!this.errorMessage && this.groups.length === 0
             ? html`<p class="status">No site details are available.</p>`
             : ``}
@@ -594,13 +609,13 @@ class HAXCMSSiteDetailsDialog extends DDD {
           </button>
         </div>
       </div>
-    `
+    `;
   }
 }
 
 globalThis.customElements.define(
   HAXCMSSiteDetailsDialog.tag,
   HAXCMSSiteDetailsDialog,
-)
+);
 
-export { HAXCMSSiteDetailsDialog }
+export { HAXCMSSiteDetailsDialog };

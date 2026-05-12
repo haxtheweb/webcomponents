@@ -10,9 +10,9 @@ class HaxTextEditorTagToggle extends RichTextEditorButtonBehaviors(LitElement) {
   sendCommand(e) {
     // Desired block tag from the toggle (ol, ul, h1, h2, blockquote)
     let newTag = this.operationCommand || this.command;
-    if(this.command && this.commandVal){
+    if (this.command && this.commandVal) {
       newTag = this.commandVal;
-    } else if (this.operationCommand && this.operationCommandVal){
+    } else if (this.operationCommand && this.operationCommandVal) {
       newTag = this.operationCommandVal;
     }
 
@@ -54,7 +54,7 @@ class HaxTextEditorTagToggle extends RichTextEditorButtonBehaviors(LitElement) {
 
     // Revert the selected block to a basic p if the user
     // presses the corresponding toggle again
-    if(node.tagName.toLowerCase()===newTag){
+    if (node.tagName.toLowerCase() === newTag) {
       const replacement = body.haxChangeTagName(node, "p", true);
 
       if (replacement && replacement.tagName) {

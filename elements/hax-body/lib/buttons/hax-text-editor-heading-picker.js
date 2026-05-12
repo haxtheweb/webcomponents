@@ -6,9 +6,7 @@
  */
 import { LitElement } from "lit";
 import { HAXStore } from "../hax-store.js";
-import {
-  RichTextEditorHeadingPicker,
-} from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
+import { RichTextEditorHeadingPicker } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
 
 class HaxTextEditorHeadingPicker extends RichTextEditorHeadingPicker {
   static get tag() {

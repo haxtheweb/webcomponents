@@ -209,7 +209,10 @@ class HaxPicker extends LitElement {
     var tmp = [],
       addKeywords = (i) => {
         if (pickerType === "gizmo") {
-          if (elements[i].gizmo.keywords && Array.isArray(elements[i].gizmo.keywords)) {
+          if (
+            elements[i].gizmo.keywords &&
+            Array.isArray(elements[i].gizmo.keywords)
+          ) {
             elements[i].gizmo.keywords.forEach((keyword) => {
               keyword = (keyword || "").toLowerCase();
               let sanitized = keyword.replace(/[\s\W]*/, "");
@@ -217,7 +220,10 @@ class HaxPicker extends LitElement {
             });
           }
         } else if (pickerType === "app") {
-          if (elements[i].details.tag && Array.isArray(elements[i].details.tag)) {
+          if (
+            elements[i].details.tag &&
+            Array.isArray(elements[i].details.tag)
+          ) {
             elements[i].details.tag.forEach((keyword) => {
               keyword = (keyword || "").toLowerCase();
               let sanitized = keyword.replace(/[\s\W]*/, "");

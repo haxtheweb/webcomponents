@@ -17,7 +17,8 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     this.isOpen = false;
     this.icon = "account-circle";
     this.__boundKeydownHandler = this._handleKeydown.bind(this);
-    this.__boundDocumentPointerDown = this._handleDocumentPointerDown.bind(this);
+    this.__boundDocumentPointerDown =
+      this._handleDocumentPointerDown.bind(this);
     this.__boundDocumentFocusIn = this._handleDocumentFocusIn.bind(this);
     this.addEventListener("keydown", this.__boundKeydownHandler);
   }
@@ -126,7 +127,10 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         .user-menu.open .main-menu ::slotted(*:hover),
         .user-menu.open .main-menu ::slotted(*:active),
         .user-menu.open .main-menu ::slotted(*:focus) {
-          background-color: light-dark(var(--ddd-theme-default-limestoneGray, #f5f5f5), var(--ddd-theme-default-coalyGray, #333));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray, #f5f5f5),
+            var(--ddd-theme-default-coalyGray, #333)
+          );
         }
 
         :host([dark]) .user-menu.open .main-menu ::slotted(*:hover),
@@ -265,7 +269,10 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
             e.preventDefault();
             this._focusLastItem(menuItems);
           }
-        } else if (currentIndex === menuItems.length - 1 || currentIndex === -1) {
+        } else if (
+          currentIndex === menuItems.length - 1 ||
+          currentIndex === -1
+        ) {
           e.preventDefault();
           this._focusFirstItem(menuItems);
         }

@@ -183,6 +183,10 @@
             },
             {
               "kind": "method",
+              "name": "mobileDevice"
+            },
+            {
+              "kind": "method",
               "name": "getDetails",
               "parameters": [
                 {
@@ -193,11 +197,19 @@
             },
             {
               "kind": "method",
+              "name": "detectMobileDevice"
+            },
+            {
+              "kind": "method",
               "name": "updateDetails"
             },
             {
               "kind": "field",
-              "name": "details"
+              "name": "details",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ lowMemory: false, lowProcessor: false, lowBattery: false, poorConnection: false, dataSaver: false, mobileDevice: false, }"
             }
           ],
           "superclass": {

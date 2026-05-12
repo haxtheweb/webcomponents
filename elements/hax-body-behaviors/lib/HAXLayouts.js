@@ -235,7 +235,10 @@ export const HaxLayoutBehaviors = function (SuperClass) {
         );
       });
       slots.forEach((slot) =>
-        slot.addEventListener("slotchange", this.__layoutEventHandlers.slotchange),
+        slot.addEventListener(
+          "slotchange",
+          this.__layoutEventHandlers.slotchange,
+        ),
       );
     }
     __removeLayoutEvents() {

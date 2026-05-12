@@ -118,7 +118,10 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             flex-wrap: wrap;
             row-gap: var(--ddd-spacing-1);
             column-gap: var(--ddd-spacing-2);
-            margin: var(--site-breadcrumb-margin-mobile, var(--ddd-spacing-4) 0);
+            margin: var(
+              --site-breadcrumb-margin-mobile,
+              var(--ddd-spacing-4) 0
+            );
           }
           ol.breadcrumb li {
             max-inline-size: 100%;
@@ -181,12 +184,16 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
       super.firstUpdated(changedProperties);
     }
     // keep editMode in sync globally
-    this.__disposer.push(autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-    }));
-    this.__disposer.push(autorun((reaction) => {
-      this._activeItemChanged(toJS(store.activeItem));
-    }));
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this._activeItemChanged(toJS(store.activeItem));
+      }),
+    );
   }
   /**
    * Notice the change and build

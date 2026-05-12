@@ -32,8 +32,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           --haxcms-insights-color: light-dark(
             var(--ddd-theme-default-coalyGray),
@@ -1077,15 +1079,19 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                               </h2>
                               <ul class="report-highlight-list">
                                 <li>
-                                  <lesson-highlight icon="editor:insert-drive-file">
+                                  <lesson-highlight
+                                    icon="editor:insert-drive-file"
+                                  >
                                     <p slot="title">
                                       ${data.pages ? data.pages : html`0`}
                                       ${this.t.pages}
                                     </p>
                                     <p>
-                                      ${data.objectives} ${this.t.learningObjectives},
+                                      ${data.objectives}
+                                      ${this.t.learningObjectives},
                                       ${data.authorNotes} ${this.t.authorNotes},
-                                      ${data.specialTags} ${this.t.specialElements},
+                                      ${data.specialTags}
+                                      ${this.t.specialElements},
                                       ${data.dataTables} ${this.t.dataTables},
                                       ${data.headings} ${this.t.headings}
                                     </p>
@@ -1094,10 +1100,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 ${data.video == 0
                                   ? ``
                                   : html`<li>
-                                      <lesson-highlight icon="av:play-circle-outline">
-                                        <p slot="title">${data.video} ${this.t.videos}</p>
+                                      <lesson-highlight
+                                        icon="av:play-circle-outline"
+                                      >
+                                        <p slot="title">
+                                          ${data.video} ${this.t.videos}
+                                        </p>
                                         ${data.videoLength != 0
-                                          ? html`<p>${toHHMMSS(data.videoLength)}</p>`
+                                          ? html`<p>
+                                              ${toHHMMSS(data.videoLength)}
+                                            </p>`
                                           : ``}
                                       </lesson-highlight>
                                     </li>`}
@@ -1112,7 +1124,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                   ? ``
                                   : html`<li>
                                       <lesson-highlight icon="av:music-video">
-                                        <p slot="title">${data.audio} ${this.t.audio}</p>
+                                        <p slot="title">
+                                          ${data.audio} ${this.t.audio}
+                                        </p>
                                       </lesson-highlight>
                                     </li>`}
                                 <li>
@@ -1123,7 +1137,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                   </lesson-highlight>
                                 </li>
                                 <li>
-                                  <lesson-highlight icon="communication:import-contacts">
+                                  <lesson-highlight
+                                    icon="communication:import-contacts"
+                                  >
                                     <p slot="title">
                                       ${this.getReadingTime(data.readTime)}
                                       ${this.t.ofReading}
@@ -1133,7 +1149,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 ${data.readability
                                   ? html`
                                       <li>
-                                        <lesson-highlight icon="editable-table:numbers">
+                                        <lesson-highlight
+                                          icon="editable-table:numbers"
+                                        >
                                           <p slot="title">
                                             ${data.readability.gradeLevel}
                                           </p>
@@ -1144,7 +1162,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                         </lesson-highlight>
                                       </li>
                                       <li>
-                                        <lesson-highlight icon="hax:format-textblock">
+                                        <lesson-highlight
+                                          icon="hax:format-textblock"
+                                        >
                                           <p slot="title">
                                             ${data.readability.lexiconCount}
                                             ${this.t.words}
@@ -1190,7 +1210,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                   href="${item.slug}"
                                                   >${item.title}
                                                   <relative-time
-                                                    datetime="${item.metadata.updated}"
+                                                    datetime="${item.metadata
+                                                      .updated}"
                                                   ></relative-time
                                                 ></a>
                                               </li>`,
@@ -1213,10 +1234,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               @toggle="${this._groupToggled}"
             >
               <summary class="group-summary">
-                ${this._reportHeading(
-                  "icons:link",
-                  this.t.linkChecker,
-                )}
+                ${this._reportHeading("icons:link", this.t.linkChecker)}
                 <span class="summary-toggle-icon" aria-hidden="true">
                   <simple-icon-lite
                     class="collapse-icon-collapsed"
@@ -1302,7 +1320,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 <simple-fields
                                   id="contentbrowser-schema"
                                   autofocus
-                                  @value-changed="${this.contentBrowserFormChanged}"
+                                  @value-changed="${this
+                                    .contentBrowserFormChanged}"
                                 ></simple-fields>
                               </form>
                               <ul class="content-list">
@@ -1405,7 +1424,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                     <simple-icon
                                                       icon="av:music-video"
                                                     ></simple-icon
-                                                    >${item.audio} ${this.t.audio}
+                                                    >${item.audio}
+                                                    ${this.t.audio}
                                                   </li>`
                                                 : ``}
                                               ${item.selfChecks > 0
@@ -1484,10 +1504,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               @toggle="${this._groupToggled}"
             >
               <summary class="group-summary">
-                ${this._reportHeading(
-                  "icons:perm-media",
-                  this.t.mediaBrowser,
-                )}
+                ${this._reportHeading("icons:perm-media", this.t.mediaBrowser)}
                 <span class="summary-toggle-icon" aria-hidden="true">
                   <simple-icon-lite
                     class="collapse-icon-collapsed"
@@ -1517,7 +1534,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                 <simple-fields
                                   id="mediabrowser-schema"
                                   autofocus
-                                  @value-changed="${this.mediaBrowserFormChanged}"
+                                  @value-changed="${this
+                                    .mediaBrowserFormChanged}"
                                 ></simple-fields>
                               </form>
                               <ul class="media-list">
@@ -1531,7 +1549,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                             <div class="media-item-header">
                                               <h3 class="media-item-title">
                                                 ${item.name}
-                                                ${item.title ? ` ${item.title}` : ``}
+                                                ${item.title
+                                                  ? ` ${item.title}`
+                                                  : ``}
                                               </h3>
                                               <p class="media-item-meta">
                                                 ${item.locType}, ${item.type}
@@ -1552,12 +1572,18 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                       height="240"
                                                       quality="80"
                                                     ></simple-img>
-                                                    <div class="media-item-audit">
-                                                      ${this.analyzeAltData(item)}
+                                                    <div
+                                                      class="media-item-audit"
+                                                    >
+                                                      ${this.analyzeAltData(
+                                                        item,
+                                                      )}
                                                     </div>`
                                                 : ``}
                                               ${item.type == "video" &&
-                                              item.source.includes("videoseries")
+                                              item.source.includes(
+                                                "videoseries",
+                                              )
                                                 ? html`<iframe
                                                     src="${item.source}"
                                                     title="${item.title
@@ -1567,7 +1593,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                   ></iframe>`
                                                 : ``}
                                               ${item.type == "video" &&
-                                              !item.source.includes("videoseries")
+                                              !item.source.includes(
+                                                "videoseries",
+                                              )
                                                 ? html`<video-player
                                                     source="${item.source}"
                                                   ></video-player>`

@@ -13,12 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "haxProperties",
-              "static": true,
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "tag",
               "static": true,
               "description": "Store the tag name to make it easier to obtain directly.",

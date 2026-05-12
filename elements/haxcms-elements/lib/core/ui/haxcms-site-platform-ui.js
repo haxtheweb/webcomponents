@@ -1,159 +1,156 @@
-import { html, css } from 'lit'
-import { autorun, toJS } from 'mobx'
-import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
-import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
-import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
-import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
+import { html, css } from "lit";
+import { autorun, toJS } from "mobx";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import '@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js'
+import "@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js";
 
 const FEATURE_DEFS = [
   {
-    key: 'addPage',
-    label: 'Add pages',
-    icon: 'hax:add-page',
-    group: 'CMS',
+    key: "addPage",
+    label: "Add pages",
+    icon: "hax:add-page",
+    group: "CMS",
     description:
-      'Allows creating new pages from the top bar, outline actions, and command search actions.',
+      "Allows creating new pages from the top bar, outline actions, and command search actions.",
   },
   {
-    key: 'deletePage',
-    label: 'Delete pages',
-    icon: 'icons:delete',
-    group: 'CMS',
+    key: "deletePage",
+    label: "Delete pages",
+    icon: "icons:delete",
+    group: "CMS",
     description:
-      'Allows deleting pages from page actions, outline actions, and related admin flows.',
+      "Allows deleting pages from page actions, outline actions, and related admin flows.",
   },
   {
-    key: 'outlineDesigner',
-    label: 'Outline designer',
-    icon: 'hax:site-map',
-    group: 'CMS',
+    key: "outlineDesigner",
+    label: "Outline designer",
+    icon: "hax:site-map",
+    group: "CMS",
     description:
-      'Enables site structure tools, including outline actions and Structure admin operations.',
+      "Enables site structure tools, including outline actions and Structure admin operations.",
   },
   {
-    key: 'styleGuide',
-    label: 'Style guide',
-    icon: 'lrn:palette',
-    group: 'CMS',
+    key: "styleGuide",
+    label: "Style guide",
+    icon: "lrn:palette",
+    group: "CMS",
     description:
-      'Shows Style Guide access in admin tools and command search shortcuts.',
+      "Shows Style Guide access in admin tools and command search shortcuts.",
   },
   {
     // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
-    key: 'insights',
-    label: 'Reports',
-    icon: 'hax:graph',
-    group: 'CMS',
+    key: "insights",
+    label: "Reports",
+    icon: "hax:graph",
+    group: "CMS",
     description:
-      'Enables Reports in admin and command search so analytics and insights views are available.',
+      "Enables Reports in admin and command search so analytics and insights views are available.",
   },
   {
-    key: 'siteManifest',
-    label: 'Site settings',
-    icon: 'hax:home-edit',
-    group: 'CMS',
+    key: "siteManifest",
+    label: "Site settings",
+    icon: "hax:home-edit",
+    group: "CMS",
     description:
-      'Controls Site Settings sections for Details, Blocks, and Editor configuration.',
+      "Controls Site Settings sections for Details, Blocks, and Editor configuration.",
   },
   {
-    key: 'themeManifest',
-    label: 'Theme settings',
-    icon: 'hax:home-edit',
-    group: 'CMS',
+    key: "themeManifest",
+    label: "Theme settings",
+    icon: "hax:home-edit",
+    group: "CMS",
     description:
-      'Enables the Appearance/Theme settings section in site administration.',
+      "Enables the Appearance/Theme settings section in site administration.",
   },
   {
-    key: 'authorManifest',
-    label: 'Author settings',
-    icon: 'hax:home-edit',
-    group: 'CMS',
+    key: "authorManifest",
+    label: "Author settings",
+    icon: "hax:home-edit",
+    group: "CMS",
     description:
-      'Enables author profile and author metadata settings in site administration.',
+      "Enables author profile and author metadata settings in site administration.",
   },
   {
-    key: 'seoManifest',
-    label: 'SEO settings',
-    icon: 'hax:home-edit',
-    group: 'CMS',
+    key: "seoManifest",
+    label: "SEO settings",
+    icon: "hax:home-edit",
+    group: "CMS",
     description:
-      'Enables search engine and metadata optimization settings in site administration.',
+      "Enables search engine and metadata optimization settings in site administration.",
   },
   {
-    key: 'pageBreak',
-    label: 'Edit page details',
-    icon: 'hax:page-edit',
-    group: 'CMS',
+    key: "pageBreak",
+    label: "Edit page details",
+    icon: "hax:page-edit",
+    group: "CMS",
     description:
-      'Shows page-level metadata editing controls like title, icon, status, tags, and locking.',
+      "Shows page-level metadata editing controls like title, icon, status, tags, and locking.",
   },
   {
-    key: 'addBlock',
-    label: 'Add blocks',
-    icon: 'hax:add-brick',
-    group: 'HAX',
+    key: "addBlock",
+    label: "Add blocks",
+    icon: "hax:add-brick",
+    group: "HAX",
     description:
-      'Shows the blocks browser and allows adding new content blocks while editing.',
+      "Shows the blocks browser and allows adding new content blocks while editing.",
   },
   {
-    key: 'popularGizmos',
-    label: 'Popular blocks section',
-    icon: 'hax:add-brick',
-    group: 'HAX',
-    description:
-      'Shows the Popular blocks section inside the block picker.',
+    key: "popularGizmos",
+    label: "Popular blocks section",
+    icon: "hax:add-brick",
+    group: "HAX",
+    description: "Shows the Popular blocks section inside the block picker.",
   },
   {
-    key: 'recentGizmos',
-    label: 'Recent blocks section',
-    icon: 'hax:add-brick',
-    group: 'HAX',
-    description:
-      'Shows the Recent blocks section inside the block picker.',
+    key: "recentGizmos",
+    label: "Recent blocks section",
+    icon: "hax:add-brick",
+    group: "HAX",
+    description: "Shows the Recent blocks section inside the block picker.",
   },
   {
-    key: 'contentMap',
-    label: 'Page content map',
-    icon: 'hax:newspaper',
-    group: 'HAX',
+    key: "contentMap",
+    label: "Page content map",
+    icon: "hax:newspaper",
+    group: "HAX",
     description:
-      'Shows the page content map/structure panel while editing content.',
+      "Shows the page content map/structure panel while editing content.",
   },
   {
-    key: 'viewSource',
-    label: 'View source',
-    icon: 'hax:html-code',
-    group: 'HAX',
-    description:
-      'Enables HTML source view for direct page markup editing.',
+    key: "viewSource",
+    label: "View source",
+    icon: "hax:html-code",
+    group: "HAX",
+    description: "Enables HTML source view for direct page markup editing.",
   },
   {
-    key: 'uploadMedia',
-    label: 'Upload media',
-    icon: 'hax:add-page',
-    group: 'HAX',
+    key: "uploadMedia",
+    label: "Upload media",
+    icon: "hax:add-page",
+    group: "HAX",
     description:
-      'Enables file upload workflows and related media/file management access.',
+      "Enables file upload workflows and related media/file management access.",
   },
   {
-    key: 'onlineMedia',
-    label: 'Online media search',
-    icon: 'hax:add-page',
-    group: 'HAX',
+    key: "onlineMedia",
+    label: "Online media search",
+    icon: "hax:add-page",
+    group: "HAX",
     description:
-      'Enables online media integrations and remote media search sources.',
+      "Enables online media integrations and remote media search sources.",
   },
   {
-    key: 'community',
-    label: 'Community outreach',
-    icon: 'hax:add-page',
-    group: 'HAX',
+    key: "community",
+    label: "Community outreach",
+    icon: "hax:add-page",
+    group: "HAX",
     description:
-      'Enables community-related command search context and outreach-oriented actions.',
+      "Enables community-related command search context and outreach-oriented actions.",
   },
-]
+];
 
 /**
  * `haxcms-site-platform-ui`
@@ -161,7 +158,7 @@ const FEATURE_DEFS = [
  */
 class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
-    return 'haxcms-site-platform-ui'
+    return "haxcms-site-platform-ui";
   }
 
   static get properties() {
@@ -170,62 +167,65 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       features: { type: Object },
       haxBlocks: { type: Array },
       allowedBlocks: { type: Object },
-      blockFilter: { type: String, attribute: 'block-filter' },
+      blockFilter: { type: String, attribute: "block-filter" },
       busy: { type: Boolean, reflect: true },
-      pageCount: { type: Number, attribute: 'page-count' },
+      pageCount: { type: Number, attribute: "page-count" },
       platformConfig: { type: Object },
-      platformSettingsMode: { type: Boolean, attribute: 'platform-settings-mode' },
-      isMobile: { type: Boolean, attribute: 'is-mobile', reflect: true },
-    }
+      platformSettingsMode: {
+        type: Boolean,
+        attribute: "platform-settings-mode",
+      },
+      isMobile: { type: Boolean, attribute: "is-mobile", reflect: true },
+    };
   }
 
   constructor() {
-    super()
-    this.audience = 'expert'
+    super();
+    this.audience = "expert";
     this.audienceOptions = [
-      { value: 'novice', label: 'Novice' },
-      { value: 'expert', label: 'Expert' },
+      { value: "novice", label: "Novice" },
+      { value: "expert", label: "Expert" },
     ];
     this.features = {};
     this.haxBlocks = [];
-    this.allowedBlocks = new Set()
-    this.blockFilter = ''
-    this.busy = false
-    this.pageCount = 0
+    this.allowedBlocks = new Set();
+    this.blockFilter = "";
+    this.busy = false;
+    this.pageCount = 0;
     this.platformConfig = {};
     this.platformSettingsMode = false;
     this.isMobile = false;
 
-    this.__disposer = []
+    this.__disposer = [];
 
-    this.t = this.t || {}
+    this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: 'Platform Features',
-      experienceLevel: 'Experience level',
-      cmsFeatures: 'CMS features',
-      editorFeatures: 'Editor features',
-      blocks: 'Blocks',
-      filterBlocks: 'Filter blocks',
+      title: "Platform Features",
+      experienceLevel: "Experience level",
+      cmsFeatures: "CMS features",
+      editorFeatures: "Editor features",
+      blocks: "Blocks",
+      filterBlocks: "Filter blocks",
       requiredTextNote:
-        'Some text tags are required and always enabled (shown disabled).',
-      download: 'Download skeleton',
-      save: 'Save',
-      generating: 'Generating skeleton…',
-      generated: 'Skeleton downloaded',
-      enabled: 'Enabled',
-      feature: 'Feature',
-      details: 'Details',
+        "Some text tags are required and always enabled (shown disabled).",
+      download: "Download skeleton",
+      save: "Save",
+      generating: "Generating skeleton…",
+      generated: "Skeleton downloaded",
+      enabled: "Enabled",
+      feature: "Feature",
+      details: "Details",
       featuresWarning:
-        'Disabling these options can remove major authoring and administration capabilities.',
+        "Disabling these options can remove major authoring and administration capabilities.",
       largeSiteWarning:
-        'This site has many pages. Skeleton generation may take a while.',
-    }
+        "This site has many pages. Skeleton generation may take a while.",
+    };
 
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-    })
+    });
   }
 
   static get styles() {
@@ -234,8 +234,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -400,7 +402,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           border-bottom: 0;
         }
         .feature-row {
-          transition: opacity 0.2s ease, background-color 0.2s ease;
+          transition:
+            opacity 0.2s ease,
+            background-color 0.2s ease;
         }
 
         .feature-row.enabled {
@@ -431,7 +435,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           text-align: center;
         }
 
-        .feature-table input[type='checkbox'] {
+        .feature-table input[type="checkbox"] {
           margin-top: 0;
           inline-size: var(--ddd-icon-xs);
           block-size: var(--ddd-icon-xs);
@@ -457,7 +461,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           opacity: 0.92;
         }
 
-
         .mobile-feature-list {
           display: none;
           flex-direction: column;
@@ -468,7 +471,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          transition: opacity 0.2s ease, background-color 0.2s ease;
+          transition:
+            opacity 0.2s ease,
+            background-color 0.2s ease;
           cursor: pointer;
           outline: none;
         }
@@ -501,7 +506,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           min-height: 44px;
         }
 
-        .feature-card-main input[type='checkbox'] {
+        .feature-card-main input[type="checkbox"] {
           margin-top: 0;
           inline-size: var(--ddd-icon-xs);
           block-size: var(--ddd-icon-xs);
@@ -534,9 +539,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           line-height: 1.4;
         }
 
-
         select,
-        input[type='text'] {
+        input[type="text"] {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-s);
           border: var(--ddd-border-xs);
@@ -679,12 +683,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -722,7 +724,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             display: block;
           }
 
-
           .mobile-feature-list {
             display: flex;
           }
@@ -736,20 +737,20 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           }
         }
       `,
-    ]
+    ];
   }
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
 
     this.__disposer.push(
       autorun((reaction) => {
-        const manifest = toJS(store.manifest)
+        const manifest = toJS(store.manifest);
         if (manifest && manifest.items) {
-          this.pageCount = manifest.items.length
+          this.pageCount = manifest.items.length;
         }
       }),
-    )
+    );
 
     this.__disposer.push(
       autorun((reaction) => {
@@ -790,17 +791,19 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           (item) =>
             !(
               item.meta &&
-              (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
+              (item.meta.inlineOnly ||
+                item.meta.hidden ||
+                item.meta.requiresParent)
             ),
         );
       }),
-    )
+    );
 
     this.__disposer.push(
       autorun((reaction) => {
-        this.isMobile = !!toJS(store.isMobile)
+        this.isMobile = !!toJS(store.isMobile);
       }),
-    )
+    );
 
     // this.__haxRegisterPropertiesHandler = () => {
     //   this._refreshBlocksList()
@@ -818,9 +821,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
   disconnectedCallback() {
     while (this.__disposer.length) {
-      const d = this.__disposer.pop()
-      if (d && typeof d.dispose === 'function') {
-        d.dispose()
+      const d = this.__disposer.pop();
+      if (d && typeof d.dispose === "function") {
+        d.dispose();
       }
     }
     // if (this.__haxRegisterPropertiesHandler) {
@@ -829,14 +832,17 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     //     this.__haxRegisterPropertiesHandler,
     //   )
     // }
-    super.disconnectedCallback()
+    super.disconnectedCallback();
   }
 
   render() {
-    const cmsFeatures = FEATURE_DEFS.filter((f) => f.group === 'CMS')
-    const editorFeatures = FEATURE_DEFS.filter((f) => f.group === 'HAX')
+    const cmsFeatures = FEATURE_DEFS.filter((f) => f.group === "CMS");
+    const editorFeatures = FEATURE_DEFS.filter((f) => f.group === "HAX");
 
-    let toolbarImgPath = new URL(`./assets/${this.audience.toLowerCase()}.png`, import.meta.url).href
+    let toolbarImgPath = new URL(
+      `./assets/${this.audience.toLowerCase()}.png`,
+      import.meta.url,
+    ).href;
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -850,12 +856,18 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                     <div class="audience-content">
                       <div class="audience-selector">
                         <label for="audience">${this.t.experienceLevel}</label>
-                        <select id="audience" @change="${this._audienceChanged}">
+                        <select
+                          id="audience"
+                          @change="${this._audienceChanged}"
+                        >
                           ${this.audienceOptions.map(
-                            (opt) => html`<option value="${opt.value}" ?selected=${
-                              this.audience === opt.value}>
-                              ${opt.label}
-                            </option>`,
+                            (opt) =>
+                              html`<option
+                                value="${opt.value}"
+                                ?selected=${this.audience === opt.value}
+                              >
+                                ${opt.label}
+                              </option>`,
                           )}
                         </select>
                       </div>
@@ -867,20 +879,19 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                     </div>
                     ${this.pageCount > 20
                       ? html`<div class="note">${this.t.largeSiteWarning}</div>`
-                      : ''}
+                      : ""}
                   </div>
                 `
               : ``}
-
             ${this._renderFeatureSection(
               this.t.cmsFeatures,
-              'hax:home-edit',
+              "hax:home-edit",
               cmsFeatures,
               true,
             )}
             ${this._renderFeatureSection(
               this.t.editorFeatures,
-              'hax:page-edit',
+              "hax:page-edit",
               editorFeatures,
             )}
           </div>
@@ -888,7 +899,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         <div class="actions">
           <button
             class="action"
-            @click="${this.platformSettingsMode ? this._savePlatformSettings : this._download}"
+            @click="${this.platformSettingsMode
+              ? this._savePlatformSettings
+              : this._download}"
           >
             ${this.busy
               ? this.t.generating
@@ -898,24 +911,24 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           </button>
         </div>
       </div>
-    `
+    `;
   }
 
   _isFeatureChecked(key) {
     if (this.features && Object.hasOwn(this.features, key)) {
-      return this.features[key] !== false
+      return this.features[key] !== false;
     }
-    return store.platformAllows(key)
+    return store.platformAllows(key);
   }
 
   _setFeatureChecked(key, checked) {
     if (!key) {
-      return
+      return;
     }
     this.features = {
       ...this.features,
       [key]: !!checked,
-    }
+    };
   }
 
   _renderFeatureSection(title, icon, features, open = false) {
@@ -923,7 +936,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       <details class="section" ?open=${open}>
         <summary class="section-title">
           <span class="summary-leading">
-            <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
+            <simple-icon-lite
+              icon="${icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>
             <h3>${title}</h3>
           </span>
         </summary>
@@ -951,13 +967,13 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
               `}
         </div>
       </details>
-    `
+    `;
   }
 
   _renderFeatureRow(item) {
-    const checked = this._isFeatureChecked(item.key)
-    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`
-    const rowClass = checked ? 'feature-row enabled' : 'feature-row disabled'
+    const checked = this._isFeatureChecked(item.key);
+    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`;
+    const rowClass = checked ? "feature-row enabled" : "feature-row disabled";
     return html`
       <tr class="${rowClass}">
         <td class="select-col">
@@ -977,19 +993,19 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           <p class="feature-description">${item.description}</p>
         </td>
       </tr>
-    `
+    `;
   }
 
   _renderFeatureCard(item) {
-    const checked = this._isFeatureChecked(item.key)
-    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`
-    const rowClass = checked ? 'feature-card enabled' : 'feature-card disabled'
+    const checked = this._isFeatureChecked(item.key);
+    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`;
+    const rowClass = checked ? "feature-card enabled" : "feature-card disabled";
     return html`
       <div
         class="${rowClass}"
         data-key="${item.key}"
         role="checkbox"
-        aria-checked="${checked ? 'true' : 'false'}"
+        aria-checked="${checked ? "true" : "false"}"
         tabindex="0"
         @click="${this._featureCardClicked}"
         @keydown="${this._featureCardKeydown}"
@@ -1023,7 +1039,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           <p class="feature-description">${item.description}</p>
         </details>
       </div>
-    `
+    `;
   }
 
   _renderBlockCheckbox(item) {
@@ -1040,248 +1056,252 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
         <span>${item.title}</span>
       </label>
-    `
+    `;
   }
 
   _audienceChanged(e) {
-    const value = e && e.target ? e.target.value : 'expert'
-    this.audience = value
+    const value = e && e.target ? e.target.value : "expert";
+    this.audience = value;
   }
   _isCardInteraction(e) {
-    const path = e && e.composedPath ? e.composedPath() : []
+    const path = e && e.composedPath ? e.composedPath() : [];
     for (const node of path) {
       if (!node) {
-        continue
+        continue;
       }
       if (
         node.getAttribute &&
-        node.getAttribute('data-stop-toggle') === 'true'
+        node.getAttribute("data-stop-toggle") === "true"
       ) {
-        return true
+        return true;
       }
       if (!node.tagName) {
-        continue
+        continue;
       }
-      const tag = node.tagName.toLowerCase()
+      const tag = node.tagName.toLowerCase();
       if (
-        tag === 'input' ||
-        tag === 'button' ||
-        tag === 'a' ||
-        tag === 'summary' ||
-        tag === 'details' ||
-        tag === 'simple-icon-button-lite'
+        tag === "input" ||
+        tag === "button" ||
+        tag === "a" ||
+        tag === "summary" ||
+        tag === "details" ||
+        tag === "simple-icon-button-lite"
       ) {
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   }
 
   _featureCardClicked(e) {
     if (this._isCardInteraction(e)) {
-      return
+      return;
     }
-    const key = e && e.currentTarget ? e.currentTarget.dataset.key : null
+    const key = e && e.currentTarget ? e.currentTarget.dataset.key : null;
     if (!key) {
-      return
+      return;
     }
-    this._setFeatureChecked(key, !this._isFeatureChecked(key))
+    this._setFeatureChecked(key, !this._isFeatureChecked(key));
   }
 
   _featureCardKeydown(e) {
-    const key = e && e.key ? e.key : ''
-    if (key !== ' ' && key !== 'Enter') {
-      return
+    const key = e && e.key ? e.key : "";
+    if (key !== " " && key !== "Enter") {
+      return;
     }
     if (this._isCardInteraction(e)) {
-      return
+      return;
     }
-    e.preventDefault()
-    const featureKey = e && e.currentTarget ? e.currentTarget.dataset.key : null
+    e.preventDefault();
+    const featureKey =
+      e && e.currentTarget ? e.currentTarget.dataset.key : null;
     if (!featureKey) {
-      return
+      return;
     }
-    this._setFeatureChecked(featureKey, !this._isFeatureChecked(featureKey))
+    this._setFeatureChecked(featureKey, !this._isFeatureChecked(featureKey));
   }
 
   _stopCardToggle(e) {
     if (e) {
-      e.stopPropagation()
+      e.stopPropagation();
     }
   }
 
-  _checkboxChanged(e){
+  _checkboxChanged(e) {
     const input = e.currentTarget;
-    if (!input || input.type !== 'checkbox') return;
+    if (!input || input.type !== "checkbox") return;
     const { key } = input.dataset;
 
-    if(key){
-      this._setFeatureChecked(key, input.checked)
+    if (key) {
+      this._setFeatureChecked(key, input.checked);
       return;
     }
   }
 
-
   _compareCategories(a, b) {
-    const categoryA = a || 'Other'
-    const categoryB = b || 'Other'
+    const categoryA = a || "Other";
+    const categoryB = b || "Other";
 
     // Writing / Text first, Other last, then alphabetical
-    const first = ['Writing', 'Text']
-    const last = ['Other']
+    const first = ["Writing", "Text"];
+    const last = ["Other"];
 
-    if (first.includes(categoryA) && !first.includes(categoryB)) return -1
-    if (!first.includes(categoryA) && first.includes(categoryB)) return 1
+    if (first.includes(categoryA) && !first.includes(categoryB)) return -1;
+    if (!first.includes(categoryA) && first.includes(categoryB)) return 1;
 
-    if (last.includes(categoryA) && !last.includes(categoryB)) return 1
-    if (!last.includes(categoryA) && last.includes(categoryB)) return -1
+    if (last.includes(categoryA) && !last.includes(categoryB)) return 1;
+    if (!last.includes(categoryA) && last.includes(categoryB)) return -1;
 
     if (first.includes(categoryA) && first.includes(categoryB)) {
-      return first.indexOf(categoryA) - first.indexOf(categoryB)
+      return first.indexOf(categoryA) - first.indexOf(categoryB);
     }
 
-    if (categoryA < categoryB) return -1
-    if (categoryA > categoryB) return 1
-    return 0
+    if (categoryA < categoryB) return -1;
+    if (categoryA > categoryB) return 1;
+    return 0;
   }
 
   _groupBlocksByCategory(items) {
-    const groupMap = {}
+    const groupMap = {};
     items.forEach((item) => {
       const required = HAXStore.requiredPrimitives.has(item.tag);
-      let category = "Other"
-      if(Array.isArray(item.tags) && item.tags.length > 0){
-        category = item.tags[0]
+      let category = "Other";
+      if (Array.isArray(item.tags) && item.tags.length > 0) {
+        category = item.tags[0];
       }
       // Ensure required text primitives show up in Writing group even if missing tags
-      if (required && category === "Other"){
-        category = "Text"
+      if (required && category === "Other") {
+        category = "Text";
       }
 
       if (!groupMap[category]) {
-        groupMap[category] = []
+        groupMap[category] = [];
       }
-      groupMap[category].push(item)
+      groupMap[category].push(item);
     });
 
-    const categories = Object.keys(groupMap)
-    categories.sort((a, b) => this._compareCategories(a, b))
-    
+    const categories = Object.keys(groupMap);
+    categories.sort((a, b) => this._compareCategories(a, b));
+
     return categories.map((category) => ({
       category,
       blocks: groupMap[category],
-    }))
+    }));
   }
 
   _platformConfigForExport() {
-    let allowedBlocks = []
+    let allowedBlocks = [];
     if (this.allowedBlocks === null) {
-      allowedBlocks = null
+      allowedBlocks = null;
     } else {
       allowedBlocks = Array.from(this.allowedBlocks || []).filter(
         (tag) => !HAXStore.requiredPrimitives.has(tag),
-      )
-      allowedBlocks.sort()
+      );
+      allowedBlocks.sort();
     }
 
     return {
       audience: this.audience,
       features: this.features,
       allowedBlocks: allowedBlocks,
-    }
+    };
   }
 
   async _download() {
     try {
-      this.busy = true
+      this.busy = true;
       // Load generator on demand
       const { SiteSkeletonGenerator } = await import(
-        '../utils/site-skeleton-generator.js'
-      )
+        "../utils/site-skeleton-generator.js"
+      );
 
-      const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite(true)
+      const skeleton =
+        await SiteSkeletonGenerator.generateFromCurrentSite(true);
 
-      const platformConfig = this._platformConfigForExport()
+      const platformConfig = this._platformConfigForExport();
       if (!skeleton.site) {
-        skeleton.site = {}
+        skeleton.site = {};
       }
-      skeleton.site.platform = platformConfig
+      skeleton.site.platform = platformConfig;
       if (!skeleton._skeleton) {
-        skeleton._skeleton = {}
+        skeleton._skeleton = {};
       }
       if (!skeleton._skeleton.originalMetadata) {
-        skeleton._skeleton.originalMetadata = {}
+        skeleton._skeleton.originalMetadata = {};
       }
-      skeleton._skeleton.originalMetadata.platform = platformConfig
+      skeleton._skeleton.originalMetadata.platform = platformConfig;
 
       // Ensure settings exist as well (some consumers key off site.settings)
       if (!skeleton._skeleton.originalSettings) {
-        skeleton._skeleton.originalSettings = {}
+        skeleton._skeleton.originalSettings = {};
       }
 
-      SiteSkeletonGenerator.downloadSkeleton(skeleton)
+      SiteSkeletonGenerator.downloadSkeleton(skeleton);
 
-      HAXStore.toast(this.t.generated, 3000, {}, 'fit-bottom')
+      HAXStore.toast(this.t.generated, 3000, {}, "fit-bottom");
 
       // close modal
       this.dispatchEvent(
-        new CustomEvent('simple-modal-hide', {
+        new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: false,
         }),
-      )
+      );
     } catch (error) {
-      console.error('Skeleton export failed:', error)
+      console.error("Skeleton export failed:", error);
       HAXStore.toast(
         `Skeleton export failed: ${error.message}`,
         5000,
         {},
-        'fit-bottom',
-      )
+        "fit-bottom",
+      );
     }
 
-    this.busy = false
+    this.busy = false;
   }
 
   async _savePlatformSettings() {
     try {
-      this.busy = true
-      const platformConfig = this._platformConfigForExport()
+      this.busy = true;
+      const platformConfig = this._platformConfigForExport();
 
       // bubble up to the site editor, which owns the iron-ajax calls
       this.dispatchEvent(
-        new CustomEvent('haxcms-save-platform-settings', {
+        new CustomEvent("haxcms-save-platform-settings", {
           bubbles: true,
           composed: true,
           cancelable: true,
           detail: platformConfig,
         }),
-      )
+      );
 
       // close modal; successful write will reload (just like saving the manifest)
       this.dispatchEvent(
-        new CustomEvent('simple-modal-hide', {
+        new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: false,
         }),
-      )
+      );
     } catch (error) {
-      console.error('Saving platform settings failed:', error)
+      console.error("Saving platform settings failed:", error);
       HAXStore.toast(
         `Saving platform settings failed: ${error.message}`,
         5000,
         {},
-        'fit-bottom',
-      )
+        "fit-bottom",
+      );
     }
 
-    this.busy = false
+    this.busy = false;
   }
 }
 
-globalThis.customElements.define(HAXCMSSitePlatformUI.tag, HAXCMSSitePlatformUI)
-export { HAXCMSSitePlatformUI }
+globalThis.customElements.define(
+  HAXCMSSitePlatformUI.tag,
+  HAXCMSSitePlatformUI,
+);
+export { HAXCMSSitePlatformUI };

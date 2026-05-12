@@ -287,6 +287,396 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lrnsys-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LrnsysButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists.",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_clickCard",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special support for HAX since the whole card is selectable",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "link",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:chevron-right\"",
+              "attribute": "icon",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideIcon",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-icon",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "label",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hotline",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "hotline",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "large",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "large",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "light",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "light",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "saturate",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "saturate",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "editMode",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "href"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "link",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "label",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:chevron-right\"",
+              "fieldName": "icon",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "editMode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "editMode",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "hide-icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideIcon",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "large",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "large",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "light",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "light",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "hotline",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "hotline",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "saturate",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "saturate",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "SimpleCta",
+            "package": "@haxtheweb/simple-cta/simple-cta.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrnsysButton",
+            "module": "lib/lrnsys-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LrnsysButton",
+          "declaration": {
+            "name": "LrnsysButton",
+            "module": "lib/lrnsys-button.js"
+          }
+        }
+      ]
     }
   ]
 }

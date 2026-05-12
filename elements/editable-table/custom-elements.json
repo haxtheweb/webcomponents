@@ -571,7 +571,7 @@
                   }
                 }
               ],
-              "description": "Determines if an entire body column dontains numeric data",
+              "description": "Determines if an entire body column contains numeric data",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -1150,7 +1150,7 @@
                   }
                 }
               ],
-              "description": "Determines if an entire body column dontains numeric data",
+              "description": "Determines if an entire body column contains numeric data",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -1755,7 +1755,7 @@
                   }
                 }
               ],
-              "description": "Determines if an entire body column dontains numeric data",
+              "description": "Determines if an entire body column contains numeric data",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -2444,6 +2444,14 @@
             },
             {
               "kind": "field",
+              "name": "__boundChangeSortMode"
+            },
+            {
+              "kind": "field",
+              "name": "__boundToggleFilter"
+            },
+            {
+              "kind": "field",
               "name": "_observer",
               "default": "new MutationObserver((mutations) => { if (this.shadowRoot) { this.importHTML(this.children.item(0)); } })"
             },
@@ -2779,7 +2787,7 @@
                   }
                 }
               ],
-              "description": "Determines if an entire body column dontains numeric data",
+              "description": "Determines if an entire body column contains numeric data",
               "return": {
                 "type": {
                   "text": "boolean"
@@ -4054,7 +4062,7 @@
                   }
                 }
               ],
-              "description": "Determines if an entire body column dontains numeric data",
+              "description": "Determines if an entire body column contains numeric data",
               "return": {
                 "type": {
                   "text": "boolean"

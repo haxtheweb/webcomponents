@@ -58,13 +58,26 @@
             },
             {
               "kind": "method",
-              "name": "hide",
+              "name": "_timeToMs",
+              "parameters": [
+                {
+                  "name": "time"
+                }
+              ],
               "description": "Hides the tooltip programatically",
               "return": {
                 "type": {
                   "text": "void"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "_getExitAnimationTiming"
+            },
+            {
+              "kind": "method",
+              "name": "hide"
             },
             {
               "kind": "method",
@@ -206,6 +219,22 @@
                 "text": "object"
               },
               "default": "{ entry: [{ name: \"fade-in-animation\", node: this, timing: { delay: 0 } }], exit: [{ name: \"fade-out-animation\", node: this }], }"
+            },
+            {
+              "kind": "field",
+              "name": "__boundAnimationEnd"
+            },
+            {
+              "kind": "field",
+              "name": "__boundHostMouseEnter"
+            },
+            {
+              "kind": "field",
+              "name": "__boundShow"
+            },
+            {
+              "kind": "field",
+              "name": "__boundHide"
             },
             {
               "kind": "field",

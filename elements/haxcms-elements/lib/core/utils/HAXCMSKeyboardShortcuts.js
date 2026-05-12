@@ -128,7 +128,6 @@ class HAXCMSKeyboardShortcuts {
     if (!this.enabled) return;
     if (store.adminMode) return;
 
-
     // Normalize the key (handles Shift+number keys)
     const normalizedKey = this._normalizeKey(e);
 

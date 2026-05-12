@@ -775,7 +775,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Show card list so that it SEEMS like its happenign when we click HAX elements",
+              "description": "Show card list so that it SEEMS like it's happening when we click HAX elements",
               "default": "false",
               "attribute": "showCardList"
             },
@@ -797,7 +797,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "HAXSchema array",
+              "description": "HAX schema array",
               "default": "[]",
               "attribute": "haxData"
             },
@@ -912,7 +912,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Show card list so that it SEEMS like its happenign when we click HAX elements",
+              "description": "Show card list so that it SEEMS like it's happening when we click HAX elements",
               "default": "false",
               "fieldName": "showCardList"
             },
@@ -930,7 +930,7 @@
               "type": {
                 "text": "array"
               },
-              "description": "HAXSchema array",
+              "description": "HAX schema array",
               "default": "[]",
               "fieldName": "haxData"
             },

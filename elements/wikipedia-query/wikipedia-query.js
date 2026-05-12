@@ -38,7 +38,10 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
           border-color: var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           line-height: var(--ddd-lh-150);
           font-size: var(--ddd-font-size-s);
         }

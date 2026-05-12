@@ -39,9 +39,11 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       ...this.simpleButtonCoreStyles,
       ...this.simpleButtonLayoutStyles,
       ...this.simpleButtonThemeStyles,
-      css`:host {
-        --simple-toolbar-border-radius: 0;
-      }`
+      css`
+        :host {
+          --simple-toolbar-border-radius: 0;
+        }
+      `,
     ];
   }
 

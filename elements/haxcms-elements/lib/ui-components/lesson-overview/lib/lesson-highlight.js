@@ -106,7 +106,10 @@ class LessonHighlight extends SimpleColors {
           border-radius: 50%;
           padding: var(--lesson-highlight-internal-padding, 0.4em);
           display: block;
-          background-color: var(--lesson-highlight-icon-background-color, transparent);
+          background-color: var(
+            --lesson-highlight-icon-background-color,
+            transparent
+          );
         }
         .text-wrapper {
           padding: 0 8px;

@@ -123,15 +123,15 @@ class SimpleModal extends LitElement {
           gap: var(--ddd-spacing-1);
           flex-wrap: wrap;
           color: currentColor;
-           font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
         }
         .title-inline span {
           transform: translateY(2px);
-          display: inline-block; 
+          display: inline-block;
         }
-        .title-icon{
+        .title-icon {
           --simple-icon-color: currentColor;
           --simple-icon-width: var(
             --simple-modal-title-icon-size,
@@ -141,8 +141,8 @@ class SimpleModal extends LitElement {
             --simple-modal-title-icon-size,
             var(--ddd-icon-sm, 40px)
           );
-          display: inline-flex; 
-          align-items: center;  
+          display: inline-flex;
+          align-items: center;
           vertical-align: middle;
         }
         .breadcrumb-icon {
@@ -155,8 +155,8 @@ class SimpleModal extends LitElement {
             --simple-modal-title-icon-size,
             var(--ddd-icon-sm, 40px)
           );
-          display: inline-flex; 
-          align-items: center;  
+          display: inline-flex;
+          align-items: center;
           vertical-align: middle;
         }
         .breadcrumbs {
@@ -188,7 +188,8 @@ class SimpleModal extends LitElement {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-m);
         }
-        .breadcrumb-button span, .breadcrumb-current span {
+        .breadcrumb-button span,
+        .breadcrumb-current span {
           transform: translateY(2px);
         }
         .breadcrumb-button {
@@ -938,7 +939,8 @@ class SimpleModal extends LitElement {
     return html`<nav class="breadcrumbs" aria-label="Modal breadcrumb">
       ${visibleCrumbs.map((crumb, index) => {
         const icon =
-          crumb.icon || (index === lastIndex && this.titleIcon ? this.titleIcon : "");
+          crumb.icon ||
+          (index === lastIndex && this.titleIcon ? this.titleIcon : "");
         const clickable = this._isBreadcrumbClickable(crumb, index, lastIndex);
         const item = clickable
           ? html`<button
@@ -966,10 +968,10 @@ class SimpleModal extends LitElement {
               <span>${crumb.label}</span>
             </span>`;
         return html`${index > 0
-            ? html`<span class="breadcrumb-separator" aria-hidden="true"
-                >&gt;</span
-              >`
-            : ``}${item}`;
+          ? html`<span class="breadcrumb-separator" aria-hidden="true"
+              >&gt;</span
+            >`
+          : ``}${item}`;
       })}
     </nav>`;
   }
@@ -977,7 +979,10 @@ class SimpleModal extends LitElement {
     if (!Array.isArray(crumbs) || crumbs.length <= 2) {
       return crumbs;
     }
-    if (globalThis.matchMedia && globalThis.matchMedia("(max-width: 800px)").matches) {
+    if (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(max-width: 800px)").matches
+    ) {
       return [crumbs[0], crumbs[crumbs.length - 1]];
     }
     return crumbs;

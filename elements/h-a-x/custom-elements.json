@@ -25,6 +25,27 @@
             },
             {
               "kind": "method",
+              "name": "__getHAXAdoptedSheets"
+            },
+            {
+              "kind": "method",
+              "name": "__supportsShadowSheetAdoption"
+            },
+            {
+              "kind": "method",
+              "name": "__sheetToCSSText",
+              "parameters": [
+                {
+                  "name": "sheet"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__applyHAXAdoptedStylesToShadowRoot"
+            },
+            {
+              "kind": "method",
               "name": "cancelEvent",
               "parameters": [
                 {
@@ -112,6 +133,14 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__canAdoptConstructedStylesheets",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",

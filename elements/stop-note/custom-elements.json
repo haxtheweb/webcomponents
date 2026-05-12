@@ -21,6 +21,23 @@
           "name": "StopNote",
           "members": [
             {
+              "kind": "method",
+              "name": "_handleSlotChange"
+            },
+            {
+              "kind": "method",
+              "name": "_syncSlottedLinkColor"
+            },
+            {
+              "kind": "method",
+              "name": "_applySlottedLinkColor",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,

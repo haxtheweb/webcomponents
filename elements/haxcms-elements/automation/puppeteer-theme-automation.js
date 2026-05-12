@@ -297,7 +297,7 @@ async function captureThemeScreenshot(page, themeElement) {
     // Switch to the theme
     console.log(`    → Switching to theme: ${themeElement}`);
     await page.evaluate((theme) => {
-      globalThis.HAXCMSContext="nodejs";
+      globalThis.HAXCMSContext = "nodejs";
       if (
         typeof globalThis.HAXCMS !== "undefined" &&
         globalThis.HAXCMS.setTheme

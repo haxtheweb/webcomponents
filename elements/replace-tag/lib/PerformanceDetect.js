@@ -88,9 +88,7 @@ class PerformanceDetect extends HTMLElement {
       globalThis.matchMedia &&
       globalThis.matchMedia("(pointer: coarse)").matches;
     return (
-      mobileUserAgent ||
-      iPadDesktopMode ||
-      (coarsePointer && touchPoints > 0)
+      mobileUserAgent || iPadDesktopMode || (coarsePointer && touchPoints > 0)
     );
   }
   async updateDetails() {

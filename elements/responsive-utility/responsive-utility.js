@@ -80,7 +80,9 @@ class ResponsiveUtility extends LitElement {
         detail.observer.disconnect();
       }
     });
-    this.details = this.details.filter((detail) => !detailsToDelete.includes(detail));
+    this.details = this.details.filter(
+      (detail) => !detailsToDelete.includes(detail),
+    );
   }
   /**
    * An array of objects. Each object is contains data about an element

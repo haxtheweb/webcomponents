@@ -407,7 +407,8 @@ class HAXCMSThemePicker extends DDD {
     const thumbnail = this._resolveThemeThumbnail(
       raw.thumbnail || raw.preview || registryTheme.thumbnail || "",
     );
-    const hidden = this._isTruthy(raw.hidden) || this._isTruthy(registryTheme.hidden);
+    const hidden =
+      this._isTruthy(raw.hidden) || this._isTruthy(registryTheme.hidden);
     const terrible =
       this._isTruthy(raw.terrible) ||
       this._isTruthy(registryTheme.terrible) ||
@@ -460,7 +461,9 @@ class HAXCMSThemePicker extends DDD {
     const activeValue = this._normalizeValue(this.activeValue);
     if (
       selectedValue &&
-      !options.find((option) => this._normalizeValue(option.value) === selectedValue)
+      !options.find(
+        (option) => this._normalizeValue(option.value) === selectedValue,
+      )
     ) {
       options.push(
         this._normalizeOption({
@@ -472,7 +475,9 @@ class HAXCMSThemePicker extends DDD {
     }
     if (
       activeValue &&
-      !options.find((option) => this._normalizeValue(option.value) === activeValue)
+      !options.find(
+        (option) => this._normalizeValue(option.value) === activeValue,
+      )
     ) {
       options.push(
         this._normalizeOption({
@@ -581,11 +586,16 @@ class HAXCMSThemePicker extends DDD {
     const checked =
       this._normalizeValue(option.value) === this._normalizeValue(this.value);
     const active =
-      this._normalizeValue(option.value) === this._normalizeValue(this.activeValue);
+      this._normalizeValue(option.value) ===
+      this._normalizeValue(this.activeValue);
     const showActiveState = this.showStatusFlags && active;
     const id = `${this.__inputId}-${index}`;
     return html`
-      <label class="option ${checked ? "selected" : ""} ${showActiveState ? "active" : ""}">
+      <label
+        class="option ${checked ? "selected" : ""} ${showActiveState
+          ? "active"
+          : ""}"
+      >
         <input
           id="${id}"
           type="radio"
@@ -598,7 +608,10 @@ class HAXCMSThemePicker extends DDD {
           @change="${() => this._handleSelection(option)}"
         />
         <div class="preview-wrap">
-          <div class="flags" ?hidden="${!this.showStatusFlags || !(active || checked)}">
+          <div
+            class="flags"
+            ?hidden="${!this.showStatusFlags || !(active || checked)}"
+          >
             <span class="flag active" ?hidden="${!active}">Active</span>
             <span class="flag selected" ?hidden="${!checked}">Selected</span>
           </div>
@@ -620,13 +633,22 @@ class HAXCMSThemePicker extends DDD {
               `}
         </div>
         <div class="theme-name">${option.label}</div>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(active && checked)}"
+        >
           Currently active and selected theme
         </span>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && !checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(active && !checked)}"
+        >
           Currently active theme
         </span>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(!active && checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(!active && checked)}"
+        >
           Selected theme to apply on save
         </span>
       </label>
@@ -653,7 +675,9 @@ class HAXCMSThemePicker extends DDD {
           ${this.description}
         </p>
         <div class="options" ?hidden="${pickerOptions.length === 0}">
-          ${pickerOptions.map((option, index) => this._renderOption(option, index))}
+          ${pickerOptions.map((option, index) =>
+            this._renderOption(option, index),
+          )}
         </div>
         <p class="empty" ?hidden="${pickerOptions.length !== 0}">
           No themes available.

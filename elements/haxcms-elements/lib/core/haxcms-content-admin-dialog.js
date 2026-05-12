@@ -39,8 +39,10 @@ class HAXCMSContentAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -67,7 +69,8 @@ class HAXCMSContentAdminDialog extends DDD {
           padding-right: var(--ddd-spacing-1);
         }
         .filters {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
           margin: 0 0 var(--ddd-spacing-3) 0;
@@ -96,7 +99,8 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         input,
         select {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2);
           min-height: 36px;
@@ -146,12 +150,10 @@ class HAXCMSContentAdminDialog extends DDD {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: auto;
@@ -268,7 +270,9 @@ class HAXCMSContentAdminDialog extends DDD {
       const visible = this._toBoolVisible(metadata.hideInMenu);
       const updated = this._toNumber(metadata.updated);
       const parentSlug =
-        item.parent && itemMap[item.parent] ? itemMap[item.parent].slug || "" : "";
+        item.parent && itemMap[item.parent]
+          ? itemMap[item.parent].slug || ""
+          : "";
       return {
         id: item.id,
         title: item.title || "",
@@ -366,7 +370,6 @@ class HAXCMSContentAdminDialog extends DDD {
     return `${delta} second${delta === 1 ? "" : "s"} ago`;
   }
 
-
   _onFilterField(e) {
     this.filterField = e.target.value;
     this.searchMatches = null;
@@ -394,7 +397,9 @@ class HAXCMSContentAdminDialog extends DDD {
     if (this.filterField !== "search") {
       return;
     }
-    const query = e.detail.query ? String(e.detail.query).toLowerCase().trim() : "";
+    const query = e.detail.query
+      ? String(e.detail.query).toLowerCase().trim()
+      : "";
     const matches = Array.isArray(e.detail.matches) ? e.detail.matches : [];
     this.searchLoading = false;
     this.lastSearchQuery = query;
@@ -447,7 +452,10 @@ class HAXCMSContentAdminDialog extends DDD {
             <div class="controls">
               <label>
                 Filter by
-                <select .value="${this.filterField}" @change="${this._onFilterField}">
+                <select
+                  .value="${this.filterField}"
+                  @change="${this._onFilterField}"
+                >
                   <option value="visibility">Visibility</option>
                   <option value="tags">Tags</option>
                   <option value="parents">Parent page</option>
@@ -457,7 +465,10 @@ class HAXCMSContentAdminDialog extends DDD {
               ${this.filterField === "visibility"
                 ? html`<label>
                     Value
-                    <select .value="${this.filterValue}" @change="${this._onFilterValue}">
+                    <select
+                      .value="${this.filterValue}"
+                      @change="${this._onFilterValue}"
+                    >
                       <option value="any">Any</option>
                       <option value="published">Published</option>
                       <option value="unpublished">Unpublished</option>

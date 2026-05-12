@@ -53,7 +53,7 @@ export class SiteSkeletonGenerator {
         // Fields used by app-hax v2 presentation layer
         useCaseTitle: this.getSiteMetaName(manifest),
         useCaseDescription: this.getSiteDescription(manifest),
-        useCaseImage: `@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-${themeConfig.element}-thumb.jpg` , // optional preview image; can be set later
+        useCaseImage: `@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-${themeConfig.element}-thumb.jpg`, // optional preview image; can be set later
         category: this.extractSiteCategories(manifest) || [],
         tags: this.extractSiteTags(manifest) || [],
         attributes: [], // optional icon badges [{icon, tooltip}]
@@ -215,7 +215,7 @@ export class SiteSkeletonGenerator {
     // Create UUID mappings for items
     const uuidMap = new Map();
     items.forEach((item) => {
-      uuidMap.set(item.id, generateResourceID(''));
+      uuidMap.set(item.id, generateResourceID(""));
     });
 
     const structure = [];
@@ -496,7 +496,7 @@ export class SiteSkeletonGenerator {
     // Create new UUIDs for all items first
     skeleton.structure.forEach((item) => {
       if (item.id) {
-        oldToNewMap.set(item.id, generateResourceID(''));
+        oldToNewMap.set(item.id, generateResourceID(""));
       }
     });
 

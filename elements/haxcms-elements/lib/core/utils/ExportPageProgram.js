@@ -82,7 +82,11 @@ export async function exportPageAs(format) {
   try {
     const haxBody = HAXStore.activeHaxBody;
     if (!haxBody) {
-      HAXStore.toast("No editable content found for export", 3000, "fit-bottom");
+      HAXStore.toast(
+        "No editable content found for export",
+        3000,
+        "fit-bottom",
+      );
       return;
     }
 

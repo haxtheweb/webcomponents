@@ -2,8 +2,8 @@
  * Copyright 2025 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from 'lit';
-import { RichTextEditorPickerBehaviors } from '@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-picker.js';
+import { LitElement } from "lit";
+import { RichTextEditorPickerBehaviors } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-picker.js";
 
 /**
  * `hax-text-editor-alignment-picker`
@@ -23,7 +23,7 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
-    return 'hax-text-editor-alignment-picker';
+    return "hax-text-editor-alignment-picker";
   }
 
   constructor() {
@@ -31,19 +31,20 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     this._isRTL = false;
     this.allowNull = true;
     this.hideNullOption = false;
-    this.icon = 'editor:format-align-left';
-    this.label = '';
+    this.icon = "editor:format-align-left";
+    this.label = "";
     // Block-level elements that can be aligned
-    this.tagsList = 'p,h1,h2,h3,h4,h5,h6,div,blockquote,pre,ul,ol,dl,table,section,article,aside,header,footer,nav,figure,figcaption';
+    this.tagsList =
+      "p,h1,h2,h3,h4,h5,h6,div,blockquote,pre,ul,ol,dl,table,section,article,aside,header,footer,nav,figure,figcaption";
     this.titleAsHtml = false;
-    this.value = '';
+    this.value = "";
     // Disable tooltip to prevent overlap with dropdown menu
     this.showTooltip = false;
     this._updateAlignments();
   }
 
   get labelVisibleClass() {
-    return 'hide';
+    return "hide";
   }
 
   // properties available to the custom element for data binding
@@ -69,14 +70,14 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'alignments') this._setOptions();
-      if (propName === 'range') {
+      if (propName === "alignments") this._setOptions();
+      if (propName === "range") {
         this._detectRTL();
         this._setRangeValue();
         // Disable picker if no valid block element is selected
         this.disabled = !this.rangeOrMatchingAncestor();
       }
-      if (propName === '_isRTL' && this._isRTL !== oldValue) {
+      if (propName === "_isRTL" && this._isRTL !== oldValue) {
         this._updateAlignments();
       }
     });
@@ -87,11 +88,11 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
    */
   _setRangeValue() {
     let ancestor = this.rangeOrMatchingAncestor(),
-      alignment = ancestor ? ancestor.getAttribute('data-text-align') : '';
+      alignment = ancestor ? ancestor.getAttribute("data-text-align") : "";
 
     // Update the picker button value
-    if (this.shadowRoot && this.shadowRoot.querySelector('#button')) {
-      this.shadowRoot.querySelector('#button').value = alignment || '';
+    if (this.shadowRoot && this.shadowRoot.querySelector("#button")) {
+      this.shadowRoot.querySelector("#button").value = alignment || "";
     }
 
     // Update the icon based on current alignment
@@ -101,10 +102,10 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
         this.icon = alignOption.icon;
       }
     } else {
-      this.icon = 'editor:format-align-left';
+      this.icon = "editor:format-align-left";
     }
 
-    this.value = alignment || '';
+    this.value = alignment || "";
   }
 
   /**
@@ -116,41 +117,41 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     if (this._isRTL) {
       this.alignments = [
         {
-          label: 'Right',
-          value: '',
-          icon: 'editor:format-align-right',
+          label: "Right",
+          value: "",
+          icon: "editor:format-align-right",
         },
         {
-          label: 'Center',
-          value: 'center',
-          icon: 'editor:format-align-center',
+          label: "Center",
+          value: "center",
+          icon: "editor:format-align-center",
         },
         {
-          label: 'Left',
-          value: 'left',
-          icon: 'editor:format-align-left',
+          label: "Left",
+          value: "left",
+          icon: "editor:format-align-left",
         },
       ];
-      this.icon = 'editor:format-align-right';
+      this.icon = "editor:format-align-right";
     } else {
       this.alignments = [
         {
-          label: 'Left',
-          value: '',
-          icon: 'editor:format-align-left',
+          label: "Left",
+          value: "",
+          icon: "editor:format-align-left",
         },
         {
-          label: 'Center',
-          value: 'center',
-          icon: 'editor:format-align-center',
+          label: "Center",
+          value: "center",
+          icon: "editor:format-align-center",
         },
         {
-          label: 'Right',
-          value: 'right',
-          icon: 'editor:format-align-right',
+          label: "Right",
+          value: "right",
+          icon: "editor:format-align-right",
         },
       ];
-      this.icon = 'editor:format-align-left';
+      this.icon = "editor:format-align-left";
     }
     this._setOptions();
   }
@@ -166,7 +167,7 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     let ancestor = this.rangeOrMatchingAncestor();
     if (ancestor) {
       const dir = globalThis.getComputedStyle(ancestor).direction;
-      this._isRTL = dir === 'rtl';
+      this._isRTL = dir === "rtl";
     } else {
       this._isRTL = false;
     }
@@ -200,10 +201,10 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
 
     if (ancestor) {
       // Remove attribute if empty/default, otherwise set it
-      if (newValue === '' || newValue === null) {
-        ancestor.removeAttribute('data-text-align');
+      if (newValue === "" || newValue === null) {
+        ancestor.removeAttribute("data-text-align");
       } else {
-        ancestor.setAttribute('data-text-align', newValue);
+        ancestor.setAttribute("data-text-align", newValue);
       }
 
       // Update icon
@@ -211,20 +212,20 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
       if (alignOption) {
         this.icon = alignOption.icon;
       } else {
-        this.icon = 'editor:format-align-left';
+        this.icon = "editor:format-align-left";
       }
 
       // Update picker display
-      this.value = newValue || '';
+      this.value = newValue || "";
 
       // Dispatch change event
       this.dispatchEvent(
-        new CustomEvent('command', {
+        new CustomEvent("command", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: {
-            command: 'setAlignment',
+            command: "setAlignment",
             value: newValue,
           },
         }),
@@ -247,16 +248,16 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     // Stop at hax-body or body to avoid going too far up
     while (node && node.tagName) {
       const tagName = node.tagName.toLowerCase();
-      
+
       // Stop if we hit the editor boundary
-      if (tagName === 'hax-body' || tagName === 'body') {
+      if (tagName === "hax-body" || tagName === "body") {
         return null;
       }
-      
+
       if (this.tagsArray.includes(tagName)) {
         return node;
       }
-      
+
       node = node.parentNode;
     }
 

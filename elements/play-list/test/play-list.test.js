@@ -465,7 +465,9 @@ describe("play-list test", () => {
     });
 
     it("should break playlist items out from data-driven items", () => {
-      element.items = [{ tag: "p", properties: {}, content: "From item array" }];
+      element.items = [
+        { tag: "p", properties: {}, content: "From item array" },
+      ];
       const parent = element.parentNode;
       const result = element.haxBreakOutPlaylist();
 

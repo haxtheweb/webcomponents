@@ -344,6 +344,17 @@
             },
             {
               "kind": "field",
+              "name": "showTooltip",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-tooltip",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "hidden",
               "privacy": "public",
               "type": {
@@ -470,6 +481,14 @@
             }
           ],
           "attributes": [
+            {
+              "name": "show-tooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showTooltip"
+            },
             {
               "name": "aria-label",
               "type": {

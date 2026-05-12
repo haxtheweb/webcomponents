@@ -1173,6 +1173,339 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/simple-context-menu.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-context-menu`\n`Reusable context menu dialog with keyboard navigation and accessibility`",
+          "name": "SimpleContextMenu",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "parameters": [
+                {
+                  "name": "anchorElement",
+                  "default": "null",
+                  "description": "Element to position menu relative to",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "Toggle menu visibility"
+            },
+            {
+              "kind": "method",
+              "name": "openMenu",
+              "parameters": [
+                {
+                  "name": "anchorElement",
+                  "default": "null",
+                  "description": "Element to position menu relative to",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "Open the menu"
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "description": "Close the menu"
+            },
+            {
+              "kind": "method",
+              "name": "_positionDialog",
+              "parameters": [
+                {
+                  "name": "dialog"
+                },
+                {
+                  "name": "anchorElement"
+                }
+              ],
+              "description": "Position the dialog based on strategy"
+            },
+            {
+              "kind": "method",
+              "name": "_isFocusableMenuNode",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Get all focusable items in the menu"
+            },
+            {
+              "kind": "method",
+              "name": "_getFocusableItems"
+            },
+            {
+              "kind": "method",
+              "name": "_pathContainsItem",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_itemMatchesFocus",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "activeElement"
+                },
+                {
+                  "name": "path"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getFocusedItemIndex",
+              "parameters": [
+                {
+                  "name": "menuItems"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_focusItem",
+              "parameters": [
+                {
+                  "name": "menuItems"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_activateMenuItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle keyboard navigation"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFocusOut"
+            },
+            {
+              "kind": "method",
+              "name": "_handleBackdropClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle backdrop click to close"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title displayed in menu header",
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the menu is open",
+              "default": "false",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "positionStrategy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Position strategy: 'anchor' (relative to trigger), 'fixed' (custom positioning)",
+              "default": "\"anchor\"",
+              "attribute": "position-strategy"
+            },
+            {
+              "kind": "field",
+              "name": "x",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "X coordinate for fixed positioning",
+              "default": "0",
+              "attribute": "x"
+            },
+            {
+              "kind": "field",
+              "name": "y",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Y coordinate for fixed positioning",
+              "default": "0",
+              "attribute": "y"
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Offset from anchor element (in pixels)",
+              "default": "4",
+              "attribute": "offset"
+            },
+            {
+              "kind": "field",
+              "name": "_anchorElement",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-context-menu-opened",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "simple-context-menu-closed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title displayed in menu header",
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the menu is open",
+              "default": "false",
+              "fieldName": "open"
+            },
+            {
+              "name": "position-strategy",
+              "type": {
+                "text": "string"
+              },
+              "description": "Position strategy: 'anchor' (relative to trigger), 'fixed' (custom positioning)",
+              "default": "\"anchor\"",
+              "fieldName": "positionStrategy"
+            },
+            {
+              "name": "x",
+              "type": {
+                "text": "number"
+              },
+              "description": "X coordinate for fixed positioning",
+              "default": "0",
+              "fieldName": "x"
+            },
+            {
+              "name": "y",
+              "type": {
+                "text": "number"
+              },
+              "description": "Y coordinate for fixed positioning",
+              "default": "0",
+              "fieldName": "y"
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "Offset from anchor element (in pixels)",
+              "default": "4",
+              "fieldName": "offset"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "simple-context-menu",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleContextMenu",
+            "module": "lib/simple-context-menu.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleContextMenu",
+          "declaration": {
+            "name": "SimpleContextMenu",
+            "module": "lib/simple-context-menu.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/simple-fields-array-item.js",
       "declarations": [],
       "exports": []

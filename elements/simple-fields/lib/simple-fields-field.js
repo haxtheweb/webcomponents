@@ -32,8 +32,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               )
             );
             color: light-dark(
-              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
-              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-coalyGray, #262626)
+              ),
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             );
           }
           option[selected] {
@@ -95,8 +101,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               transparent
             );
             color: light-dark(
-              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
-              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-coalyGray, #262626)
+              ),
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             );
           }
           input[type="text"] {
@@ -112,8 +124,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               transparent
             );
             color: light-dark(
-              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
-              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-coalyGray, #262626)
+              ),
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             );
           }
           input::placeholder,
@@ -154,8 +172,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             );
             font-style: normal;
             color: light-dark(
-              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
-              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-coalyGray, #262626)
+              ),
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             );
           }
           select.field {
@@ -179,8 +203,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             cursor: pointer;
             color-scheme: light dark;
             color: light-dark(
-              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
-              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-coalyGray, #262626)
+              ),
+              var(
+                --simple-fields-color,
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             );
           }
           :host([type="select"]) {

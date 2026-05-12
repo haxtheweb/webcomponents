@@ -481,6 +481,18 @@
             },
             {
               "kind": "method",
+              "name": "_targetFromPoint",
+              "parameters": [
+                {
+                  "name": "clientX"
+                },
+                {
+                  "name": "clientY"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_onDrag",
               "parameters": [
                 {
@@ -795,6 +807,15 @@
             },
             {
               "kind": "field",
+              "name": "_isSafari",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_isSafari"
+            },
+            {
+              "kind": "field",
               "name": "activePage",
               "privacy": "public",
               "type": {
@@ -843,6 +864,12 @@
             }
           ],
           "events": [
+            {
+              "name": "outline-designer-request-navigate",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
             {
               "name": "simple-modal-hide",
               "type": {
@@ -978,6 +1005,13 @@
               },
               "default": "null",
               "fieldName": "_dragHandleActive"
+            },
+            {
+              "name": "_isSafari",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_isSafari"
             }
           ],
           "mixins": [

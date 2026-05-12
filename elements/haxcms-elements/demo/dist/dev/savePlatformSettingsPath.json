@@ -17,10 +17,7 @@
         "viewSource": false,
         "onlineSearch": false
       },
-      "allowedBlocks": [
-        "p",
-        "video-player"
-      ]
+      "allowedBlocks": ["p", "video-player"]
     }
   }
 }

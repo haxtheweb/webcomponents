@@ -212,11 +212,14 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           type="button"
           class="dashboard-action ${size}"
           aria-label="${item.label}"
-          title="${item.tooltip || ''}"
+          title="${item.tooltip || ""}"
           ?disabled="${item.disabled}"
           @click="${() => this._actionTap(item.action)}"
         >
-          <simple-icon-lite icon="${item.icon}" aria-hidden="true"></simple-icon-lite>
+          <simple-icon-lite
+            icon="${item.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>
           <span>${item.label}</span>
         </button>
       </div>
@@ -312,7 +315,9 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     return html`
       <div class="dashboard-shell">
         <div class="primary-grid">
-          ${primaryActions.map((item) => this._renderActionButton(item, "primary"))}
+          ${primaryActions.map((item) =>
+            this._renderActionButton(item, "primary"),
+          )}
         </div>
         <div class="advanced-heading">
           <h3 class="advanced-title">Advanced</h3>

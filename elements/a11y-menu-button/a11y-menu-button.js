@@ -901,11 +901,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         super.disconnectedCallback();
       }
       if (this._docListenerAdded) {
-        globalThis.removeEventListener(
-          "click",
-          this._boundDocumentClick,
-          true,
-        );
+        globalThis.removeEventListener("click", this._boundDocumentClick, true);
         this._docListenerAdded = false;
       }
     }

@@ -4902,7 +4902,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true
             },
@@ -4986,7 +4986,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem"
             },
             {
@@ -5090,7 +5090,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -5770,7 +5770,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true,
               "inheritedFrom": {
@@ -6562,7 +6562,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true,
               "inheritedFrom": {
@@ -6652,7 +6652,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -7527,7 +7527,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true,
               "inheritedFrom": {
@@ -7624,7 +7624,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -8432,7 +8432,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true,
               "inheritedFrom": {
@@ -8514,7 +8514,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
@@ -9304,7 +9304,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "is-current-item",
               "reflects": true,
               "inheritedFrom": {
@@ -9446,7 +9446,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "isCurrentItem",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",

@@ -421,7 +421,12 @@ export function _downloadBlob(blob, filename) {
 }
 
 // Export site as skeleton template
-export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = {}) {
+export async function _exportSiteAsSkeleton(
+  manifest,
+  title,
+  baseUrl,
+  options = {},
+) {
   try {
     // Load the modal UI on demand
     await import("../ui/haxcms-site-platform-ui.js");

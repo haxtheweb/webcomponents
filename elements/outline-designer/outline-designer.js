@@ -493,8 +493,12 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .item-leading-operations .actions-menu-button {
           width: var(--outline-designer-control-slot-size);
           height: var(--outline-designer-control-slot-size);
-          --simple-toolbar-button-height: var(--outline-designer-control-slot-size);
-          --simple-toolbar-button-min-width: var(--outline-designer-control-slot-size);
+          --simple-toolbar-button-height: var(
+            --outline-designer-control-slot-size
+          );
+          --simple-toolbar-button-min-width: var(
+            --outline-designer-control-slot-size
+          );
           --simple-toolbar-button-padding: 0;
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
@@ -1003,7 +1007,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           ? html`
               <div class="import-controls">
                 <div class="import-field">
-                  <label for="targetselector">${this.t.importThisContent}</label>
+                  <label for="targetselector"
+                    >${this.t.importThisContent}</label
+                  >
                   <simple-fields-field
                     id="targetselector"
                     type="select"
@@ -1083,9 +1089,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               icon="delete"
               @click="${this.toggleDelete}"
               class="control"
-              label="${!this.hideDelete
-                ? "Hide Deleted"
-                : "Show Deleted"}"
+              label="${!this.hideDelete ? "Hide Deleted" : "Show Deleted"}"
             ></simple-toolbar-button>`
           : ``}
       </div>
@@ -1330,7 +1334,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                   : "Collapse children"}"
                 @click="${this.collapseExpand}"
               ></simple-icon-button-lite>`
-            : html`<span class="collapse-spacer collapse-slot" aria-hidden="true"></span>`}
+            : html`<span
+                class="collapse-spacer collapse-slot"
+                aria-hidden="true"
+              ></span>`}
           <simple-icon-button-lite
             ?disabled="${this.isLocked(index)}"
             ?hidden="${this._isSafari}"

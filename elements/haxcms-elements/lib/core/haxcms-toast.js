@@ -15,9 +15,7 @@ export class HAXCMSToast extends RPGCharacterToast {
         :host {
           --simple-toast-top: var(
             --haxcms-toast-top,
-            calc(
-              var(--top-bar-height, var(--ddd-spacing-16, 64px))
-            )
+            calc(var(--top-bar-height, var(--ddd-spacing-16, 64px)))
           );
           --haxcms-toast-user-menu-offset: 0;
           --simple-toast-right: var(

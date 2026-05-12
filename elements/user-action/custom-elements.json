@@ -27,6 +27,19 @@
               "default": "false"
             },
             {
+              "kind": "method",
+              "name": "_setTracking",
+              "parameters": [
+                {
+                  "name": "track"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clearTracking"
+            },
+            {
               "kind": "field",
               "name": "demo",
               "type": {
@@ -130,6 +143,30 @@
                 "text": "number"
               },
               "default": "0.5"
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__boundIntersectionHandler"
+            },
+            {
+              "kind": "field",
+              "name": "__boundUserActionEvent"
+            },
+            {
+              "kind": "field",
+              "name": "__trackedEventName",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             }
           ],
           "attributes": [

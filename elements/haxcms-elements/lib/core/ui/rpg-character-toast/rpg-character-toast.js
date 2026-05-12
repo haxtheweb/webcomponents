@@ -340,9 +340,7 @@ export class RPGCharacterToast extends SimpleToastEl {
                 ?walking="${this.walking}"
               ></rpg-character>
             `}
-        ${!this.merlin
-          ? html`<div class="buttons"><slot></slot></div>`
-          : ``}
+        ${!this.merlin ? html`<div class="buttons"><slot></slot></div>` : ``}
       </div>
     `;
   }

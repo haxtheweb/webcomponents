@@ -34,8 +34,10 @@ class HAXCMSFilesAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -61,7 +63,8 @@ class HAXCMSFilesAdminDialog extends DDD {
           padding-right: var(--ddd-spacing-1);
         }
         .panel {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
           margin: 0 0 var(--ddd-spacing-3) 0;
@@ -90,7 +93,8 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         input,
         select {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2);
           min-height: 36px;
@@ -142,7 +146,8 @@ class HAXCMSFilesAdminDialog extends DDD {
           max-width: 100px;
           max-height: 100px;
           overflow: hidden;
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           background: light-dark(
             var(--ddd-theme-default-limestoneGray),
@@ -222,12 +227,10 @@ class HAXCMSFilesAdminDialog extends DDD {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: auto;
@@ -274,7 +277,8 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   _buildRows(manifest) {
     const rowsByKey = {};
-    const items = manifest && Array.isArray(manifest.items) ? manifest.items : [];
+    const items =
+      manifest && Array.isArray(manifest.items) ? manifest.items : [];
     items.forEach((item) => {
       const references = this._itemFileReferences(item);
       references.forEach((reference) => {
@@ -435,7 +439,10 @@ class HAXCMSFilesAdminDialog extends DDD {
       const mimeType = this._normalizeMimeType(
         reference.type || reference.mimetype || reference.mime,
       );
-      if (!this._looksLikeFileReference(url) && !this._looksLikeFileReference(fullUrl)) {
+      if (
+        !this._looksLikeFileReference(url) &&
+        !this._looksLikeFileReference(fullUrl)
+      ) {
         return null;
       }
       return {
@@ -495,7 +502,8 @@ class HAXCMSFilesAdminDialog extends DDD {
     const target = reference.name || reference.url || reference.fullUrl || "";
     const extParts = target.toLowerCase().split("?");
     const extTarget = extParts.length > 0 ? extParts[0] : target.toLowerCase();
-    const extension = extTarget.indexOf(".") !== -1 ? extTarget.split(".").pop() : "";
+    const extension =
+      extTarget.indexOf(".") !== -1 ? extTarget.split(".").pop() : "";
     const mimeMap = {
       png: "image/png",
       jpg: "image/jpeg",
@@ -638,7 +646,10 @@ class HAXCMSFilesAdminDialog extends DDD {
             <div class="controls">
               <label>
                 Type
-                <select .value="${this.typeFilter}" @change="${this._onTypeFilter}">
+                <select
+                  .value="${this.typeFilter}"
+                  @change="${this._onTypeFilter}"
+                >
                   <option value="any">Any</option>
                   <option value="image">Image</option>
                   <option value="video">Video</option>
@@ -665,7 +676,9 @@ class HAXCMSFilesAdminDialog extends DDD {
             </div>
           </div>
           ${this.filteredRows.length === 0
-            ? html`<div class="empty">No file references found in the manifest.</div>`
+            ? html`<div class="empty">
+                No file references found in the manifest.
+              </div>`
             : keyed(
                 `${this.typeFilter}|${this.textFilter}|${this.filteredRows.length}`,
                 html`<div class="table-scroll">
@@ -712,7 +725,17 @@ class HAXCMSFilesAdminDialog extends DDD {
                               </td>
                               <td class="file-name-cell">
                                 <div class="file-name-main">
-                                  <span>${row.name || "—"} <simple-icon-button-lite title="${this._copyPath(row)}" data-copy-path="${this._copyPath(row)}" label="Copy file path for ${row.name || "file"}" icon="content-copy" class="copy-btn"></simple-icon-button-lite> </span>
+                                  <span
+                                    >${row.name || "—"}
+                                    <simple-icon-button-lite
+                                      title="${this._copyPath(row)}"
+                                      data-copy-path="${this._copyPath(row)}"
+                                      label="Copy file path for ${row.name ||
+                                      "file"}"
+                                      icon="content-copy"
+                                      class="copy-btn"
+                                    ></simple-icon-button-lite>
+                                  </span>
                                 </div>
                               </td>
                               <td class="col-mime">${row.mimeType || "—"}</td>
@@ -795,6 +818,9 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 }
 
-globalThis.customElements.define(HAXCMSFilesAdminDialog.tag, HAXCMSFilesAdminDialog);
+globalThis.customElements.define(
+  HAXCMSFilesAdminDialog.tag,
+  HAXCMSFilesAdminDialog,
+);
 
 export { HAXCMSFilesAdminDialog };

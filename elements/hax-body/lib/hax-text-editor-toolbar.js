@@ -11,7 +11,7 @@ import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./buttons/hax-text-editor-alignment-picker.js";
 import "./buttons/hax-text-editor-heading-picker.js";
-import "./buttons/hax-text-editor-tag-toggle.js"
+import "./buttons/hax-text-editor-tag-toggle.js";
 
 /**
  * `hax-text-editor-toolbar`
@@ -105,35 +105,31 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
 
   _platformAllowsTag(tag) {
     if (!tag) {
-      return true
+      return true;
     }
     if (HAXStore.requiredPrimitives && HAXStore.requiredPrimitives.has(tag)) {
-      return true
+      return true;
     }
-    return HAXStore.platformAllows(tag)
+    return HAXStore.platformAllows(tag);
   }
   _buttonTag(button) {
     if (!button) {
-      return null
+      return null;
     }
     if (button.tag) {
-      return button.tag
+      return button.tag;
     }
-    if (
-      button.element &&
-      button.element.gizmo &&
-      button.element.gizmo.tag
-    ) {
-      return button.element.gizmo.tag
+    if (button.element && button.element.gizmo && button.element.gizmo.tag) {
+      return button.element.gizmo.tag;
     }
-    return null
+    return null;
   }
 
   _filterButtonsByTag(buttons = []) {
     return buttons.filter((button) => {
-      const tag = this._buttonTag(button)
-      return tag ? this._platformAllowsTag(tag) : true
-    })
+      const tag = this._buttonTag(button);
+      return tag ? this._platformAllowsTag(tag) : true;
+    });
   }
 
   // render function
@@ -290,11 +286,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    *
    * @readonly
    */
-  get h1Button(){
+  get h1Button() {
     return {
       ...super.h1Button,
       label: this.t.h1Button,
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -302,12 +298,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    *
    * @readonly
    */
-  get h2Button(){
+  get h2Button() {
     return {
       ...super.h2Button,
       label: this.t.h2Button,
-      type: "hax-text-editor-tag-toggle"
-    }
+      type: "hax-text-editor-tag-toggle",
+    };
   }
   /**
    * default config for a bold button
@@ -414,17 +410,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.markButton,
       this.abbrButton,
       this.codeButton,
-      this.underlineButton
-    ]
+      this.underlineButton,
+    ];
 
-    if(HAXStore.isPlatformAudience("novice")){
-      buttons = [
-        this.linkButton,
-        this.unlinkButton,
-        this.strikethroughButton
-      ];
-    };
-    buttons = this._filterButtonsByTag(buttons)
+    if (HAXStore.isPlatformAudience("novice")) {
+      buttons = [this.linkButton, this.unlinkButton, this.strikethroughButton];
+    }
+    buttons = this._filterButtonsByTag(buttons);
 
     return {
       type: "button-group",
@@ -556,7 +548,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       command: "ol",
       tag: "ol",
       label: this.t.orderedListButton,
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -570,7 +562,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       command: "ul",
       tag: "ul",
       label: this.t.unorderedListButton,
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -584,7 +576,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.blockquoteButton,
       tag: "blockquote",
       label: "Blockquote",
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -597,11 +589,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       type: "button-group",
       subtype: "list-indent-button-group",
-      buttons: [
-        this.listButtonGroup,
-        this.indentButton,
-        this.outdentButton,
-      ],
+      buttons: [this.listButtonGroup, this.indentButton, this.outdentButton],
     };
   }
   /**
@@ -613,7 +601,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.indentButton,
       label: this.t.indentButton,
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -625,7 +613,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.outdentButton,
       label: this.t.outdentButton,
-      type: "hax-text-editor-tag-toggle"
+      type: "hax-text-editor-tag-toggle",
     };
   }
   /**
@@ -635,8 +623,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    */
   get alignmentPicker() {
     return {
-      label: '',
-      type: 'hax-text-editor-alignment-picker',
+      label: "",
+      type: "hax-text-editor-alignment-picker",
     };
   }
   /**
@@ -653,18 +641,14 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       type: "button-group",
       subtype: "hax-symbol-insert-button-group",
-      buttons: [
-        this.symbolButton,
-        this.emojiButton,
-        this.iconButton
-      ],
+      buttons: [this.symbolButton, this.emojiButton, this.iconButton],
     };
   }
 
   get iconButton() {
     return {
       ...super.iconButton,
-      label: 'Insert Icon',
+      label: "Insert Icon",
     };
   }
 
@@ -676,19 +660,19 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.italicButton,
       this.subscriptButton,
       this.superscriptButton,
-      this.removeFormatButton
+      this.removeFormatButton,
     ];
 
-    if(HAXStore.isPlatformAudience("novice")){
-      buttons = [ 
+    if (HAXStore.isPlatformAudience("novice")) {
+      buttons = [
         this.h1Button,
         this.h2Button,
         this.blockquoteButton,
         this.boldButton,
-        this.italicButton
+        this.italicButton,
       ];
     }
-    buttons = this._filterButtonsByTag(buttons)
+    buttons = this._filterButtonsByTag(buttons);
 
     return {
       type: "button-group",
@@ -706,23 +690,23 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.linkButtonGroup,
       this.haxSymbolInsertButtonGroup,
       this.advancedInlineButtonGroup,
-    ]
+    ];
 
-    if(HAXStore.isPlatformAudience("novice")){
+    if (HAXStore.isPlatformAudience("novice")) {
       buttonGroups = [
         this.listIndentButtonGroup,
         this.basicFormattingGroup,
-        this.advancedInlineButtonGroup
+        this.advancedInlineButtonGroup,
       ];
     }
 
-    return buttonGroups
+    return buttonGroups;
   }
 
   get filteredBlocks() {
     const blocks = this.formatBlocks.filter((block) =>
       this._platformAllowsTag(block.tag),
-    )
+    );
     return this.getFilteredBlocks(blocks);
   }
 
@@ -920,7 +904,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     let buttons = Object.keys(
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {},
     ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
-    buttons = this._filterButtonsByTag(buttons)
+    buttons = this._filterButtonsByTag(buttons);
     return buttons.length === 0
       ? [...(this.defaultConfig || [])]
       : [
@@ -943,13 +927,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     if (this.activeNode) {
       let node = this.activeNode;
       while (node && node !== this.target) {
-        if (node.tagName && (node.tagName === 'UL' || node.tagName === 'OL' || node.tagName === 'LI')) {
+        if (
+          node.tagName &&
+          (node.tagName === "UL" ||
+            node.tagName === "OL" ||
+            node.tagName === "LI")
+        ) {
           return true;
         }
         node = node.parentNode;
       }
     }
-    
+
     // Fallback to checking range if activeNode doesn't indicate a list
     if (!this.range) return false;
     let node = this.range.commonAncestorContainer;
@@ -957,7 +946,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       node = node.parentNode;
     }
     while (node && node !== this.target) {
-      if (node.tagName && (node.tagName === 'UL' || node.tagName === 'OL' || node.tagName === 'LI')) {
+      if (
+        node.tagName &&
+        (node.tagName === "UL" ||
+          node.tagName === "OL" ||
+          node.tagName === "LI")
+      ) {
         return true;
       }
       node = node.parentNode;
@@ -971,55 +965,65 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   _updateContextualVisibility() {
     // Check if any picker is currently expanded (dropdown open)
     // If so, preserve the current button state to avoid flickering
-    const alignmentPicker = this.querySelector('hax-text-editor-alignment-picker');
+    const alignmentPicker = this.querySelector(
+      "hax-text-editor-alignment-picker",
+    );
     const isPickerExpanded = alignmentPicker && alignmentPicker.expanded;
-    
+
     this.__inList = this._isInList();
     this.__hasSelection = this.range && !this.range.collapsed;
 
     // Show/hide indent/outdent buttons based on whether we're in a list
     // Don't update visibility if a picker is expanded to prevent buttons from disappearing
-    const listIndentGroup = this.querySelector('.list-indent-button-group');
+    const listIndentGroup = this.querySelector(".list-indent-button-group");
     if (listIndentGroup && !isPickerExpanded) {
       const indentButton = listIndentGroup.querySelector('[command="indent"]');
-      const outdentButton = listIndentGroup.querySelector('[command="outdent"]');
+      const outdentButton = listIndentGroup.querySelector(
+        '[command="outdent"]',
+      );
       if (indentButton) {
-        indentButton.style.display = this.__inList ? '' : 'none';
+        indentButton.style.display = this.__inList ? "" : "none";
       }
       if (outdentButton) {
-        outdentButton.style.display = this.__inList ? '' : 'none';
+        outdentButton.style.display = this.__inList ? "" : "none";
       }
     }
 
     // Show/hide selection-dependent buttons in the advanced inline group
     // These buttons only work when text is selected: strikethrough, mark, abbr, code, underline
-    const advancedInlineGroup = this.querySelector('.advanced-inline-button-group');
+    const advancedInlineGroup = this.querySelector(
+      ".advanced-inline-button-group",
+    );
     if (advancedInlineGroup) {
-      const allButtons = advancedInlineGroup.querySelectorAll('rich-text-editor-button, rich-text-editor-underline, [command], [tag]');
+      const allButtons = advancedInlineGroup.querySelectorAll(
+        "rich-text-editor-button, rich-text-editor-underline, [command], [tag]",
+      );
       allButtons.forEach((button) => {
         // All buttons in this group require a selection
-        button.style.display = this.__hasSelection ? '' : 'none';
+        button.style.display = this.__hasSelection ? "" : "none";
       });
     }
 
     // Show/hide selection-dependent inline insert buttons
     // Check the selectionRequired property in the element's HAX schema
-    const haxInsertGroup = this.querySelector('.hax-insert-button-group');
+    const haxInsertGroup = this.querySelector(".hax-insert-button-group");
     if (haxInsertGroup) {
-      const insertButtons = haxInsertGroup.querySelectorAll('hax-text-editor-button');
+      const insertButtons = haxInsertGroup.querySelectorAll(
+        "hax-text-editor-button",
+      );
       insertButtons.forEach((button) => {
         // Check if the element has selectionRequired in its meta
         const element = button.element || {};
         const gizmo = element.gizmo || {};
         const meta = gizmo.meta || {};
-        
+
         // If selectionRequired is explicitly false, always show the button
         // Otherwise, default to requiring selection for inline elements
         if (meta.selectionRequired === false) {
-          button.style.display = ''; // Always visible
+          button.style.display = ""; // Always visible
         } else {
           // Default: inline elements require selection
-          button.style.display = this.__hasSelection ? '' : 'none';
+          button.style.display = this.__hasSelection ? "" : "none";
         }
       });
     }

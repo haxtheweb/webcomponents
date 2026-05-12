@@ -324,7 +324,8 @@ export function enableHAXcmsServices() {
     endpoint: "/api/apps/haxcms/htmlToSite",
     name: "@haxcms/htmlToSite",
     title: "HTML to Site",
-    description: "Convert uploaded HTML, repoUrl HTML, or raw HTML to Site schema",
+    description:
+      "Convert uploaded HTML, repoUrl HTML, or raw HTML to Site schema",
     params: {
       body: "FormData upload or object payload with repoUrl/html plus method and parentId",
     },
@@ -394,7 +395,8 @@ export function enableHAXcmsServices() {
     endpoint: "/api/apps/haxcms/convert/wordpressPagesToSite",
     name: "@haxcms/wordpressPagesToSite",
     title: "WordPress Pages to Site",
-    description: "Convert WordPress pages (and menu structure where available) to Site schema",
+    description:
+      "Convert WordPress pages (and menu structure where available) to Site schema",
     params: {
       repoUrl: "Location of the WordPress site",
     },

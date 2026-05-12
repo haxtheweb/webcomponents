@@ -39,9 +39,7 @@ export class BlockQuote extends DDD {
               ></simple-icon-lite>
               <span><slot></slot></span>
               <span><slot name="quote"></slot></span>
-              <simple-icon-lite
-                icon="editor:format-quote"
-              ></simple-icon-lite>
+              <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
             </div>
             <div id="citation">
               ${this.citation

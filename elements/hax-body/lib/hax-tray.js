@@ -43,9 +43,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * `The tray / dashboard area which allows for customization of all major settings`
  * @element hax-tray
  */
-class HaxTray extends I18NMixin(
-  winEventsElement(SimpleColors)
-) {
+class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
   /**
    * Convention we use
    */
@@ -326,10 +324,10 @@ class HaxTray extends I18NMixin(
           left: 0px;
         }
         :host([edit-mode][element-align="right"]) .wrapper {
-          right: 0px; 
+          right: 0px;
           flex-direction: row-reverse;
         }
-        
+
         :host([edit-mode]) .wrapper.full-panel {
           width: unset;
           left: 0;
@@ -670,9 +668,7 @@ class HaxTray extends I18NMixin(
       ${this.panelOpsTemplate}
       <div class="wrapper ${this.trayStatus}">
         ${this.hideToolbar ? `` : html`${this.menuToolbarTemplate}`}
-        <div class="detail">
-          ${this.trayDetailTemplate}
-        </div>
+        <div class="detail">${this.trayDetailTemplate}</div>
         <div
           class="resize"
           id="resize"
@@ -994,19 +990,26 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}" show-sources></hax-tray-upload>
-      ${HAXStore.platformAllows("pageTemplates") ? html`<hax-stax-browser
-        id="pagesbrowser"
-        ?hidden="${hidden}"
-        label="${this.t.pages || "Pages"}"
-        template-type="page"
-      ></hax-stax-browser>` : ''}
-      ${HAXStore.platformAllows("blockTemplates") ? html`<hax-stax-browser
-        id="staxbrowser"
-        ?hidden="${hidden}"
-        label="${this.t.templates}"
-        template-type="area"
-      ></hax-stax-browser>` : ''}
+      <hax-tray-upload
+        ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}"
+        show-sources
+      ></hax-tray-upload>
+      ${HAXStore.platformAllows("pageTemplates")
+        ? html`<hax-stax-browser
+            id="pagesbrowser"
+            ?hidden="${hidden}"
+            label="${this.t.pages || "Pages"}"
+            template-type="page"
+          ></hax-stax-browser>`
+        : ""}
+      ${HAXStore.platformAllows("blockTemplates")
+        ? html`<hax-stax-browser
+            id="staxbrowser"
+            ?hidden="${hidden}"
+            label="${this.t.templates}"
+            template-type="area"
+          ></hax-stax-browser>`
+        : ""}
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
@@ -1026,10 +1029,10 @@ class HaxTray extends I18NMixin(
       .querySelector("#gizmobrowser")
       .resetList(toJS(HAXStore.gizmoList));
     const staxList = toJS(HAXStore.staxList);
-    if(HAXStore.platformAllows("blockTemplates")){
+    if (HAXStore.platformAllows("blockTemplates")) {
       this.shadowRoot.querySelector("#staxbrowser").staxList = [...staxList];
     }
-    if(HAXStore.platformAllows("pageTemplates")){
+    if (HAXStore.platformAllows("pageTemplates")) {
       this.shadowRoot.querySelector("#pagesbrowser").staxList = [...staxList];
     }
   }
@@ -1616,7 +1619,10 @@ class HaxTray extends I18NMixin(
           propName === "configure" &&
           (isGrid || !HAXStore.isTextElement(activeNode));
         // If the menu is advanced or developer, check the current platform audience. Else default to visible.
-        const isExpertSetting = (propName === "advanced" || propName === "developer") ? !HAXStore.isPlatformAudience("expert") : false;
+        const isExpertSetting =
+          propName === "advanced" || propName === "developer"
+            ? !HAXStore.isPlatformAudience("expert")
+            : false;
         this.activeSchema[0].properties.push({
           property: propName,
           title: propTitle,
@@ -1716,20 +1722,22 @@ class HaxTray extends I18NMixin(
         !this.activeNode ||
         !this.activeNode.tagName)
     ) {
-      if(!HAXStore.platformAllows("addBlock")){
+      if (!HAXStore.platformAllows("addBlock")) {
         try {
-          // if adding blocks is disabled, try to find a valid activeNode 
+          // if adding blocks is disabled, try to find a valid activeNode
           // and stay in the edit menu
-          const activeHaxBody = HAXStore && HAXStore.activeHaxBody
-          HAXStore.activeNode = Array.from(activeHaxBody.children).find(child => {
-            const tag = child.tagName.toLowerCase();
-            return (
-              HAXStore.platformAllows(tag) ||
-              HAXStore.requiredPrimitives.has(tag)
-            );
-          });
+          const activeHaxBody = HAXStore && HAXStore.activeHaxBody;
+          HAXStore.activeNode = Array.from(activeHaxBody.children).find(
+            (child) => {
+              const tag = child.tagName.toLowerCase();
+              return (
+                HAXStore.platformAllows(tag) ||
+                HAXStore.requiredPrimitives.has(tag)
+              );
+            },
+          );
           this.collapsed = false;
-        } catch(err){
+        } catch (err) {
           // collapse as a fallback if there are no valid nodes
           this.collapsed = true;
         }

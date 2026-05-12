@@ -326,7 +326,8 @@ class HaxPalettePicker extends DDD {
           ? [...fallbackOption.swatches]
           : [...DDDPaletteSwatches];
     return {
-      key: option.key || (fallbackOption ? fallbackOption.key : `${dataPalette}`),
+      key:
+        option.key || (fallbackOption ? fallbackOption.key : `${dataPalette}`),
       label:
         option.label ||
         option.text ||
@@ -411,7 +412,10 @@ class HaxPalettePicker extends DDD {
           ?disabled="${this.disabled}"
           @change="${() => this._handleSelection(option)}"
         />
-        <div class="flags" ?hidden="${!this.showStatusFlags || !(active || checked)}">
+        <div
+          class="flags"
+          ?hidden="${!this.showStatusFlags || !(active || checked)}"
+        >
           <span class="flag active" ?hidden="${!active}">Active</span>
           <span class="flag selected" ?hidden="${!checked}">Selected</span>
         </div>
@@ -427,13 +431,22 @@ class HaxPalettePicker extends DDD {
             )}
           </div>
         </div>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(active && checked)}"
+        >
           Currently active and selected palette
         </span>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && !checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(active && !checked)}"
+        >
           Currently active palette
         </span>
-        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(!active && checked)}">
+        <span
+          class="sr-only"
+          ?hidden="${!this.showStatusFlags || !(!active && checked)}"
+        >
           Selected palette to apply
         </span>
       </label>

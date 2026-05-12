@@ -472,10 +472,10 @@ class HAXCMSBackendUserfs extends LitElement {
         detail.authorSocialLink || "",
       );
     } else if (hasOwn(author, "socialLink")) {
-      this.manifest.metadata.author.socialLink = String(author.socialLink || "");
-    } else if (
-      hasOwn(manifestAuthor, "manifest.metadata.author.socialLink")
-    ) {
+      this.manifest.metadata.author.socialLink = String(
+        author.socialLink || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.socialLink")) {
       this.manifest.metadata.author.socialLink = String(
         manifestAuthor["manifest.metadata.author.socialLink"] || "",
       );
@@ -485,7 +485,9 @@ class HAXCMSBackendUserfs extends LitElement {
     } else if (hasOwn(seo, "description")) {
       this.manifest.description = String(seo.description || "");
     } else if (hasOwn(manifestSeo, "manifest.description")) {
-      this.manifest.description = String(manifestSeo["manifest.description"] || "");
+      this.manifest.description = String(
+        manifestSeo["manifest.description"] || "",
+      );
     }
     if (hasOwn(detail, "logo")) {
       this.manifest.metadata.site.logo = String(detail.logo || "");
@@ -533,9 +535,7 @@ class HAXCMSBackendUserfs extends LitElement {
         seo.private,
         this.manifest.metadata.site.settings.private,
       );
-    } else if (
-      hasOwn(manifestSeo, "manifest.metadata.site.settings.private")
-    ) {
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.settings.private")) {
       this.manifest.metadata.site.settings.private = this._boolValue(
         manifestSeo["manifest.metadata.site.settings.private"],
         this.manifest.metadata.site.settings.private,
@@ -758,7 +758,8 @@ class HAXCMSBackendUserfs extends LitElement {
         };
         // if it's not a core theme we can't really do it
         if (themeData[this.manifest.metadata.theme]) {
-          this.manifest.metadata.theme = themeData[this.manifest.metadata.theme];
+          this.manifest.metadata.theme =
+            themeData[this.manifest.metadata.theme];
         }
       }
     }

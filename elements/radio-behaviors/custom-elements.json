@@ -243,6 +243,11 @@
             },
             {
               "kind": "field",
+              "name": "__observerInstance",
+              "default": "new MutationObserver( (mutationsList, observer) => this._handleItemChange(mutationsList, observer), )"
+            },
+            {
+              "kind": "field",
               "name": "itemData",
               "privacy": "public",
               "type": {

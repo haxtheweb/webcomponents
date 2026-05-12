@@ -202,6 +202,19 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_onDocumentClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "Handles click events on the document to implement click-away\nbehavior for closing the menu when the user clicks outside."
+            },
+            {
               "kind": "field",
               "name": "itemListeners",
               "description": "menuitem event listeners and their handlers",
@@ -462,6 +475,18 @@
               "description": "disables menu i=opening on hover",
               "default": "false",
               "attribute": "no-open-on-hover"
+            },
+            {
+              "kind": "field",
+              "name": "_boundDocumentClick"
+            },
+            {
+              "kind": "field",
+              "name": "_docListenerAdded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "field",
@@ -1062,6 +1087,23 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_onDocumentClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "Handles click events on the document to implement click-away\nbehavior for closing the menu when the user clicks outside.",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "itemListeners",
               "description": "menuitem event listeners and their handlers",
@@ -1402,6 +1444,26 @@
               "description": "disables menu i=opening on hover",
               "default": "false",
               "attribute": "no-open-on-hover",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_boundDocumentClick",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_docListenerAdded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
                 "module": "a11y-menu-button.js"

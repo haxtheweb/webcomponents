@@ -79,7 +79,10 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          background-color: light-dark(var(--rich-text-editor-button-bg, #ffffff), #262626);
+          background-color: light-dark(
+            var(--rich-text-editor-button-bg, #ffffff),
+            #262626
+          );
         }
         .confirm-or-cancel {
           min-width: 40px;

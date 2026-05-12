@@ -21,7 +21,7 @@
               "kind": "field",
               "name": "haxProperties",
               "static": true,
-              "description": "HAXSchema for proper integration with the HAX editor",
+              "description": "HAX schema for proper integration with the HAX editor",
               "readonly": true
             },
             {

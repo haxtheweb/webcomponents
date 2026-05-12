@@ -241,7 +241,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeName = "link";
     }
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
-    
+
     // Auto-handle image drop scenarios without showing picker
     if (type === "image" && this.activePlaceHolder) {
       // Check if dropping on an image - auto-create gallery
@@ -253,10 +253,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // Check if dropping into or onto a play-list - auto-add to that gallery
       let targetPlayList = null;
       // Prefer checking from the placeholder (where the drop occurred)
-      targetPlayList = this._nearestContainerTag(this.activePlaceHolder, "play-list");
+      targetPlayList = this._nearestContainerTag(
+        this.activePlaceHolder,
+        "play-list",
+      );
       // Fallback: check from the active node (drop target container)
       if (!targetPlayList && this.activeNode) {
-        targetPlayList = this._nearestContainerTag(this.activeNode, "play-list");
+        targetPlayList = this._nearestContainerTag(
+          this.activeNode,
+          "play-list",
+        );
       }
       if (targetPlayList) {
         this._addImageToPlayList(targetPlayList, values.source);
@@ -331,7 +337,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _nearestContainerTag(node, tagName) {
     let current = node;
-    const match = (el) => el && el.tagName && el.tagName.toLowerCase() === tagName;
+    const match = (el) =>
+      el && el.tagName && el.tagName.toLowerCase() === tagName;
     // If node supports closest (Elements), use it first for performance
     try {
       if (current && typeof current.closest === "function") {
@@ -387,59 +394,62 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _createImageGallery(originalImageElement, newImageSource) {
     // Create the play-list element
-    const playList = globalThis.document.createElement('play-list');
-    
+    const playList = globalThis.document.createElement("play-list");
+
     // Set gallery-friendly defaults using properties
     playList.pagination = true;
     playList.navigation = true;
     playList.loop = true;
-    
+
     // Copy any slot attribute from the original image
-    if (originalImageElement.getAttribute('slot')) {
-      playList.setAttribute('slot', originalImageElement.getAttribute('slot'));
+    if (originalImageElement.getAttribute("slot")) {
+      playList.setAttribute("slot", originalImageElement.getAttribute("slot"));
     }
-    
+
     // Clone the original image element
     const originalImageClone = originalImageElement.cloneNode(true);
-    
+
     // Create the new image element
     let newImage;
-    if (originalImageElement.tagName.toLowerCase() === 'media-image') {
+    if (originalImageElement.tagName.toLowerCase() === "media-image") {
       // If original is media-image, create matching element
-      newImage = globalThis.document.createElement('media-image');
+      newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = 'Image from gallery';
-      
+      newImage.alt = "Image from gallery";
+
       // Copy relevant properties from original for consistency
-      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
-        if (originalImageElement[prop] !== undefined && originalImageElement[prop] !== null) {
+      ["card", "box", "round", "size", "offset"].forEach((prop) => {
+        if (
+          originalImageElement[prop] !== undefined &&
+          originalImageElement[prop] !== null
+        ) {
           newImage[prop] = originalImageElement[prop];
         }
       });
     } else {
       // For other image types, create a media-image
-      newImage = globalThis.document.createElement('media-image');
+      newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = 'Image from gallery';
+      newImage.alt = "Image from gallery";
     }
-    
+
     // Add both images to the play-list
     playList.appendChild(originalImageClone);
     playList.appendChild(newImage);
-    
+
     // Replace the original image with the play-list
     if (this.activeHaxBody && originalImageElement.parentNode) {
       this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
     }
-    
+
     // Clean up
     this.activePlaceHolder = null;
-    
+
     // Set the new play-list as active
     this.activeNode = playList;
-    
+
     // Show success message
-    this.toast('Image gallery created successfully!');
+    this.toast("Image gallery created successfully!");
   }
 
   /**
@@ -447,25 +457,25 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _addImageToPlayList(playListElement, imageSource) {
     // Create the new image element
-    const newImage = globalThis.document.createElement('media-image');
+    const newImage = globalThis.document.createElement("media-image");
     newImage.source = imageSource;
-    newImage.alt = 'Added to gallery';
-    
+    newImage.alt = "Added to gallery";
+
     // Check if there are existing images in the play-list to copy properties from
-    const existingImages = playListElement.querySelectorAll('media-image');
+    const existingImages = playListElement.querySelectorAll("media-image");
     if (existingImages.length > 0) {
       const firstImage = existingImages[0];
       // Copy relevant properties from first image for consistency
-      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+      ["card", "box", "round", "size", "offset"].forEach((prop) => {
         if (firstImage[prop] !== undefined && firstImage[prop] !== null) {
           newImage[prop] = firstImage[prop];
         }
       });
     }
-    
+
     // Add the new image to the play-list
     playListElement.appendChild(newImage);
-    
+
     // If a temporary placeholder node was created for drop positioning, remove it
     try {
       if (
@@ -476,15 +486,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
     } catch (e) {}
-    
+
     // Clean up
     this.activePlaceHolder = null;
-    
+
     // Set the play-list as active
     this.activeNode = playListElement;
-    
+
     // Show success message
-    this.toast('Image added to gallery successfully!');
+    this.toast("Image added to gallery successfully!");
   }
 
   /**
@@ -492,30 +502,32 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _createSingleImageGallery(imageSource) {
     // Create the play-list element
-    const playList = globalThis.document.createElement('play-list');
-    
+    const playList = globalThis.document.createElement("play-list");
+
     // Set gallery-friendly defaults using properties
     playList.pagination = true;
     playList.navigation = true;
     playList.loop = true;
-    
+
     // Create the image element
-    const image = globalThis.document.createElement('media-image');
+    const image = globalThis.document.createElement("media-image");
     image.source = imageSource;
-    image.alt = 'Gallery image';
-    
+    image.alt = "Gallery image";
+
     // Add the image to the play-list
     playList.appendChild(image);
-    
+
     // Insert the play-list using normal insertion logic
-    this.activeHaxBody.haxInsert('play-list', playList.innerHTML, {
+    this.activeHaxBody.haxInsert("play-list", playList.innerHTML, {
       pagination: true,
       navigation: true,
       loop: true,
     });
-    
+
     // Show success message
-    this.toast('Image gallery created! Add more images by editing the gallery.');
+    this.toast(
+      "Image gallery created! Add more images by editing the gallery.",
+    );
   }
 
   /**
@@ -1107,8 +1119,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
-          if(!this.platformAllows("onlineMedia")){
-            if(!Object.hasOwn(apps[i].connection.operations, "add")) continue;
+          if (!this.platformAllows("onlineMedia")) {
+            if (!Object.hasOwn(apps[i].connection.operations, "add")) continue;
           }
 
           let app = globalThis.document.createElement("hax-app");
@@ -1396,15 +1408,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         ? this.platformConfig.__supportedFeatures
         : new Set();
     const features =
-      this.platformConfig.features && typeof this.platformConfig.features === "object"
+      this.platformConfig.features &&
+      typeof this.platformConfig.features === "object"
         ? this.platformConfig.features
         : {};
 
     // If the capability is in the list of accepted features, evaluate as feature
     // If not defined, default to true (allowed), if it is defined, use its value
-    if(supportedFeatures.has(capability)){
+    if (supportedFeatures.has(capability)) {
       return features[capability] !== false;
-    } 
+    }
 
     if (this.platformConfig.allowedBlocks === null) {
       return false;
@@ -1426,7 +1439,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * @param {string} expectedAudience - Audience name to compare against (e.g., 'novice', 'advanced', 'expert')
    * @returns {boolean} Whether the parameter matches the current audience
    */
-  isPlatformAudience(expectedAudience){
+  isPlatformAudience(expectedAudience) {
     if (!this.platformConfig || typeof this.platformConfig !== "object") {
       return "expert" === expectedAudience; // Default to expert mode if there's no platformConfig
     }
@@ -1758,10 +1771,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           if (this.activeHaxBody) {
             // Apply full editable / drag-drop state, waiting for any
             // custom element upgrade if needed.
-            this.activeHaxBody.__applyNodeEditableStateWhenReady(
-              newNode,
-              true,
-            );
+            this.activeHaxBody.__applyNodeEditableStateWhenReady(newNode, true);
             // Re-run HAX focus logic so context menus and activeNode
             // tracking are aligned with the converted block.
             this.activeHaxBody.__focusLogic(newNode);
@@ -2925,20 +2935,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // Keep a master list of required blocks for the baseline HAX experience
     // NOTE: these can't be disabled by the user's skeleton
     this.requiredPrimitives = new Set([
-        "webview",
-        "h1", 
-        "h2", 
-        "ul", 
-        "ol",
-        "li",
-        "p",
-        "a",
-        "mark",
-        "abbr",
-        "img",
-        "figure",
-        "figcaption"
-      ]);
+      "webview",
+      "h1",
+      "h2",
+      "ul",
+      "ol",
+      "li",
+      "p",
+      "a",
+      "mark",
+      "abbr",
+      "img",
+      "figure",
+      "figcaption",
+    ]);
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -3643,16 +3653,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "Basic link element.",
         icon: "icons:link",
         color: "blue-grey",
-        tags: [
-          "Text",
-          "link",
-          "a",
-          "url",
-          "html",
-          "href",
-          "address",
-          "http",
-        ],
+        tags: ["Text", "link", "a", "url", "html", "href", "address", "http"],
         handles: [],
         meta: {
           author: "W3C",
@@ -3767,7 +3768,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ],
     };
     this.setHaxProperties(p, "p");
-    if(this.platformAllows("table")){
+    if (this.platformAllows("table")) {
       // table tag which has a custom editing interface
       let table = {
         type: "element",
@@ -3809,8 +3810,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       let eTable = globalThis.document.createElement("editable-table");
       this.haxAutoloader.appendChild(eTable);
     }
-    
-    if(this.platformAllows("iframe")){
+
+    if (this.platformAllows("iframe")) {
       // iframe needs a wrapper or you can't select them because of the spec
       let iframe = {
         type: "element",
@@ -3896,7 +3897,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           inputMethod: "select",
           options: {
             "": "Default (decimal)",
-            "list-decimal-leading-zero": "Decimal with leading zero (01, 02, 03)",
+            "list-decimal-leading-zero":
+              "Decimal with leading zero (01, 02, 03)",
             "list-lower-alpha": "Lower alpha (a, b, c)",
             "list-upper-alpha": "Upper alpha (A, B, C)",
             "list-lower-roman": "Lower roman (i, ii, iii)",
@@ -4099,7 +4101,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         );
         return;
       }
-      
+
       // Handle single image gallery creation (Magic File Wand)
       if (properties._isSingleImageGallery && properties._imageSource) {
         this._createSingleImageGallery(properties._imageSource);
@@ -5150,7 +5152,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           gizmo.tag = detail.tag;
 
           // validate whether platformConfig allows the block
-          if(!this.platformAllows(gizmo.tag) && !this.requiredPrimitives.has(gizmo.tag)){
+          if (
+            !this.platformAllows(gizmo.tag) &&
+            !this.requiredPrimitives.has(gizmo.tag)
+          ) {
             gizmo.platformRestricted = true;
           } else {
             gizmo.platformRestricted = false;
@@ -5162,7 +5167,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this.write("gizmoList", gizmos, this);
           // only add in support for commands we'd expect to see
           if (!gizmo.meta || (!gizmo.meta.inlineOnly && !gizmo.meta.hidden)) {
-            if(this.platformAllows("addBlock") && !gizmo.platformRestricted){
+            if (this.platformAllows("addBlock") && !gizmo.platformRestricted) {
               SuperDaemonInstance.defineOption({
                 title: gizmo.title,
                 icon: gizmo.icon,
@@ -5176,8 +5181,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 context: "HAX",
                 eventName: "hax-super-daemon-insert-tag",
                 path: "HAX/insert/block/" + gizmo.tag,
-              })
-            };
+              });
+            }
           }
         }
         this.elementList[detail.tag] = detail.properties;

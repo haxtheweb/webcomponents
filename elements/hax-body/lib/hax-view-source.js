@@ -49,7 +49,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
           --hax-ui-color: white;
           --hax-ui-background-color: var(--ddd-theme-default-skyBlue);
         }
-        
+
         hax-toolbar {
           flex: 0 0 auto;
           background-color: var(--hax-ui-background-color);

@@ -542,7 +542,9 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
   renderGalleryView() {
     const visibleThemes = this._getVisibleThemes();
     if (visibleThemes.length === 0) {
-      return html`<div class="loading">No themes available for this view.</div>`;
+      return html`<div class="loading">
+        No themes available for this view.
+      </div>`;
     }
     return html`
       <div class="gallery-grid">
@@ -603,7 +605,9 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
   renderTableView() {
     const visibleThemes = this._getVisibleThemes();
     if (visibleThemes.length === 0) {
-      return html`<div class="loading">No themes available for this view.</div>`;
+      return html`<div class="loading">
+        No themes available for this view.
+      </div>`;
     }
     return html`
       <table class="theme-table">
@@ -655,9 +659,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                     @click="${() => this.switchTheme(theme.element)}"
                   >
                     <simple-icon-lite icon="visibility"></simple-icon-lite>
-                    ${theme.element === this.currentTheme
-                      ? "Active"
-                      : "Apply"}
+                    ${theme.element === this.currentTheme ? "Active" : "Apply"}
                   </button>
                 </td>
               </tr>
@@ -730,7 +732,14 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
           "Display available HAXcms themes with live preview switching",
         icon: "image:collections",
         color: "purple",
-        tags: ["Other", "Theme", "Gallery", "HAXcms", "Developer", "Documentation"],
+        tags: [
+          "Other",
+          "Theme",
+          "Gallery",
+          "HAXcms",
+          "Developer",
+          "Documentation",
+        ],
         handles: [],
         meta: {
           author: "HAXTheWeb team",

@@ -116,7 +116,10 @@ function _matchesPaletteOption(option, normalizedValue) {
   if (!option || !normalizedValue) {
     return false;
   }
-  if (option.key === normalizedValue || option.dataPalette === normalizedValue) {
+  if (
+    option.key === normalizedValue ||
+    option.dataPalette === normalizedValue
+  ) {
     return true;
   }
   if (!Array.isArray(option.aliases)) {
@@ -143,7 +146,9 @@ function _fallbackPaletteOption(options, fallbackValue = "0") {
 function _normalizeOption(option) {
   const aliases = Array.isArray(option.aliases)
     ? [...option.aliases]
-    : [option.key, option.dataPalette].filter((value) => !!value || value === 0);
+    : [option.key, option.dataPalette].filter(
+        (value) => !!value || value === 0,
+      );
   return {
     key: option.key,
     label: option.label,

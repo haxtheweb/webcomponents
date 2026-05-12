@@ -234,30 +234,30 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @readonly
      */
-    get h1Button(){
+    get h1Button() {
       return {
         command: "formatBlock",
         commandVal: "h1",
         icon: "hax:h1",
         label: "Header 1",
         toggles: true,
-        type: "rich-text-editor-button"
-      }
+        type: "rich-text-editor-button",
+      };
     }
     /**
      * default config for a heading 2 button
      *
      * @readonly
      */
-    get h2Button(){
+    get h2Button() {
       return {
         command: "formatBlock",
         commandVal: "h2",
         icon: "hax:h2",
         label: "Header 2",
         toggles: true,
-        type: "rich-text-editor-button"
-      }
+        type: "rich-text-editor-button",
+      };
     }
     /**
      * default config for a remove format button
@@ -1462,7 +1462,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             var tbRef = toolbarRef;
             this.__webkitDblClickHandler = () => {
               setTimeout(() => {
-                if (tbRef.__webkitTargetSelHandler) tbRef.__webkitTargetSelHandler();
+                if (tbRef.__webkitTargetSelHandler)
+                  tbRef.__webkitTargetSelHandler();
               }, 10);
             };
           }
@@ -1494,7 +1495,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           target.removeEventListener("mouseup", this.__webkitTargetSelHandler);
           target.removeEventListener("keyup", this.__webkitTargetSelHandler);
           if (this.__webkitDblClickHandler) {
-            target.removeEventListener("dblclick", this.__webkitDblClickHandler);
+            target.removeEventListener(
+              "dblclick",
+              this.__webkitDblClickHandler,
+            );
           }
         }
         this.observeChanges(false);

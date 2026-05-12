@@ -210,7 +210,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     const currentItemId = currentItem && currentItem.id ? currentItem.id : null;
     if (
       this.__pendingPageLoad ||
-      (this.activeItemLocation && this.activeItemLocation !== previousLocation) ||
+      (this.activeItemLocation &&
+        this.activeItemLocation !== previousLocation) ||
       (currentItemId && previousItemId && currentItemId !== previousItemId)
     ) {
       this.__pendingPageLoad = false;
@@ -228,14 +229,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // cheat to ensure we get a rebuild of the content in case
       // they only modified page title / other page-break based details
       this.__pageContent = data;
-      const resolvedActiveItem = activeItem ? activeItem : toJS(store.activeItem);
+      const resolvedActiveItem = activeItem
+        ? activeItem
+        : toJS(store.activeItem);
       if (resolvedActiveItem && resolvedActiveItem.id) {
         this.__pageContentOwner = resolvedActiveItem.id;
       }
-      this._activeItemContentChanged(
-        this.__pageContent,
-        resolvedActiveItem,
-      );
+      this._activeItemContentChanged(this.__pageContent, resolvedActiveItem);
     }
     // punt, we didn't find anything
     else if (
@@ -335,7 +335,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             return;
           }
           const currentItem = toJS(store.activeItem);
-          const locationUnchanged = this.activeItemLocation === requestedLocation;
+          const locationUnchanged =
+            this.activeItemLocation === requestedLocation;
           const itemUnchanged =
             requestedItemId === null ||
             (currentItem &&
@@ -906,7 +907,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               }
             }
             const disableFeatures = urlParams.get("disable-features");
-            if (disableFeatures != null && this.disableFeatures !== disableFeatures) {
+            if (
+              disableFeatures != null &&
+              this.disableFeatures !== disableFeatures
+            ) {
               this.disableFeatures = disableFeatures;
             }
           }
@@ -1024,76 +1028,87 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           value !== null &&
           String(value) !== ""
         ) {
-          el.setAttribute(name, String(value))
+          el.setAttribute(name, String(value));
         }
-      }
+      };
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
-      const wrapper = globalThis.document.createElement("div")
-      const pageBreak = globalThis.document.createElement("page-break")
-      pageBreak.setAttribute("break-type", "site")
-      setAttrIfValue(pageBreak, "title", activeItem.title)
-      setAttrIfValue(pageBreak, "parent", activeItem.parent)
-      setAttrIfValue(pageBreak, "item-id", activeItem.id)
-      setAttrIfValue(pageBreak, "slug", activeItem.slug)
-      setAttrIfValue(pageBreak, "description", activeItem.description)
-      setAttrIfValue(pageBreak, "order", activeItem.order)
-      setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType)
-      setAttrIfValue(pageBreak, "tags", activeItem.metadata.tags)
-      setAttrIfValue(pageBreak, "related-items", activeItem.metadata.relatedItems)
-      setAttrIfValue(pageBreak, "image", activeItem.metadata.image)
-      setAttrIfValue(pageBreak, "icon", activeItem.metadata.icon)
-      setAttrIfValue(pageBreak, "accent-color", activeItem.metadata.accentColor)
-      if (
-        activeItem.metadata.theme &&
-        activeItem.metadata.theme.key
-      ) {
-        pageBreak.setAttribute("developer-theme", activeItem.metadata.theme.key)
+      const wrapper = globalThis.document.createElement("div");
+      const pageBreak = globalThis.document.createElement("page-break");
+      pageBreak.setAttribute("break-type", "site");
+      setAttrIfValue(pageBreak, "title", activeItem.title);
+      setAttrIfValue(pageBreak, "parent", activeItem.parent);
+      setAttrIfValue(pageBreak, "item-id", activeItem.id);
+      setAttrIfValue(pageBreak, "slug", activeItem.slug);
+      setAttrIfValue(pageBreak, "description", activeItem.description);
+      setAttrIfValue(pageBreak, "order", activeItem.order);
+      setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType);
+      setAttrIfValue(pageBreak, "tags", activeItem.metadata.tags);
+      setAttrIfValue(
+        pageBreak,
+        "related-items",
+        activeItem.metadata.relatedItems,
+      );
+      setAttrIfValue(pageBreak, "image", activeItem.metadata.image);
+      setAttrIfValue(pageBreak, "icon", activeItem.metadata.icon);
+      setAttrIfValue(
+        pageBreak,
+        "accent-color",
+        activeItem.metadata.accentColor,
+      );
+      if (activeItem.metadata.theme && activeItem.metadata.theme.key) {
+        pageBreak.setAttribute(
+          "developer-theme",
+          activeItem.metadata.theme.key,
+        );
       }
-      const safeLinkUrl = sanitizeURLValue(activeItem.metadata.linkUrl, "")
-      setAttrIfValue(pageBreak, "link-url", safeLinkUrl)
-      setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget)
+      const safeLinkUrl = sanitizeURLValue(activeItem.metadata.linkUrl, "");
+      setAttrIfValue(pageBreak, "link-url", safeLinkUrl);
+      setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget);
       if (activeItem.metadata.hideInMenu) {
-        pageBreak.setAttribute("hide-in-menu", "hide-in-menu")
+        pageBreak.setAttribute("hide-in-menu", "hide-in-menu");
       }
       if (activeItem.metadata.locked) {
-        pageBreak.setAttribute("locked", "locked")
+        pageBreak.setAttribute("locked", "locked");
       }
       if (pageBreakHidden) {
-        pageBreak.setAttribute("platform-hidden", "platform-hidden")
+        pageBreak.setAttribute("platform-hidden", "platform-hidden");
       }
       if (activeItem.metadata.published !== false) {
-        pageBreak.setAttribute("published", "published")
+        pageBreak.setAttribute("published", "published");
       }
-      wrapper.appendChild(pageBreak)
+      wrapper.appendChild(pageBreak);
       const contentFragment = globalThis.document
         .createRange()
-        .createContextualFragment(htmlcontent)
-      wrapper.appendChild(contentFragment)
+        .createContextualFragment(htmlcontent);
+      wrapper.appendChild(contentFragment);
 
       // If this page has a link URL configured and the user is not logged in,
       // append simple redirect messaging for a better user experience
       if (safeLinkUrl) {
-        const linkTargetCandidates = ["_self", "_blank", "_parent", "_top"]
-        const linkTarget = linkTargetCandidates.includes(activeItem.metadata.linkTarget)
+        const linkTargetCandidates = ["_self", "_blank", "_parent", "_top"];
+        const linkTarget = linkTargetCandidates.includes(
+          activeItem.metadata.linkTarget,
+        )
           ? activeItem.metadata.linkTarget
-          : "_self"
-        const linkParagraph = globalThis.document.createElement("p")
-        const link = globalThis.document.createElement("a")
-        link.setAttribute("href", String(safeLinkUrl))
-        link.setAttribute("target", String(linkTarget))
-        link.setAttribute("rel", "noopener noreferrer")
-        link.textContent = String(safeLinkUrl)
-        linkParagraph.appendChild(link)
-        const hintParagraph = globalThis.document.createElement("p")
-        const hint = globalThis.document.createElement("small")
-        hint.textContent = "If the redirect doesn't work, please click the link above."
-        hintParagraph.appendChild(hint)
-        wrapper.appendChild(linkParagraph)
-        wrapper.appendChild(hintParagraph)
+          : "_self";
+        const linkParagraph = globalThis.document.createElement("p");
+        const link = globalThis.document.createElement("a");
+        link.setAttribute("href", String(safeLinkUrl));
+        link.setAttribute("target", String(linkTarget));
+        link.setAttribute("rel", "noopener noreferrer");
+        link.textContent = String(safeLinkUrl);
+        linkParagraph.appendChild(link);
+        const hintParagraph = globalThis.document.createElement("p");
+        const hint = globalThis.document.createElement("small");
+        hint.textContent =
+          "If the redirect doesn't work, please click the link above.";
+        hintParagraph.appendChild(hint);
+        wrapper.appendChild(linkParagraph);
+        wrapper.appendChild(hintParagraph);
       }
-      htmlcontent = wrapper.innerHTML
+      htmlcontent = wrapper.innerHTML;
 
       // Previously, style-guide-driven defaults were applied here.
       // That behavior has been removed so page content renders as-is.

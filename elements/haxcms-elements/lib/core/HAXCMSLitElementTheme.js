@@ -23,7 +23,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     super();
     this.isSafari = globalThis.safari !== undefined;
     this.editMode = false;
-    this.trayStatus = '';
+    this.trayStatus = "";
     this.isLoggedIn = false;
     this.emptyContent = false;
     this.HAXSiteCustomRenderRoutes = {};
@@ -46,7 +46,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__disposer.push(
       autorun((reaction) => {
         let tmp = toJS(store.activeItemContent);
-        this.emptyContent = !tmp || tmp.trim() === '';
+        this.emptyContent = !tmp || tmp.trim() === "";
         if (
           this.HAXCMSThemeSettings.autoScroll &&
           this.shadowRoot &&
@@ -65,7 +65,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         }
         // delay bc this shouldn't block page load in any way
         setTimeout(() => {
-          if (typeof this.__refreshHeadingListeners === 'function') {
+          if (typeof this.__refreshHeadingListeners === "function") {
             this.__refreshHeadingListeners();
           }
         }, 100);
@@ -89,8 +89,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (this.__headingNodes && this.__headingNodes.length > 0) {
       this.__headingNodes.forEach((node) => {
         node.removeEventListener("click", this.__copyLinkHandler);
-        node.removeEventListener("pointerenter", this.__hoverIntentEnterHandler);
-        node.removeEventListener("pointerleave", this.__hoverIntentLeaveHandler);
+        node.removeEventListener(
+          "pointerenter",
+          this.__hoverIntentEnterHandler,
+        );
+        node.removeEventListener(
+          "pointerleave",
+          this.__hoverIntentLeaveHandler,
+        );
       });
     }
     this.__headingNodes = [];
@@ -227,7 +233,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       emptyContent: {
         type: Boolean,
         reflect: true,
-        attribute: 'empty-content',
+        attribute: "empty-content",
       },
       /**
        * location as object
@@ -283,7 +289,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             min-height: var(--haxcms-theme-content-min-height-mobile, 38vh);
           }
           :host([empty-content]) #slot {
-            min-height: var(--haxcms-theme-empty-content-min-height-mobile, 22vh);
+            min-height: var(
+              --haxcms-theme-empty-content-min-height-mobile,
+              22vh
+            );
           }
         }
       `,
@@ -321,7 +330,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           }
         }
       }, 0);
-      if (typeof this.__refreshHeadingListeners === 'function') {
+      if (typeof this.__refreshHeadingListeners === "function") {
         this.__refreshHeadingListeners();
       }
     }, 1500);

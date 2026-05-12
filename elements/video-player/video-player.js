@@ -90,18 +90,17 @@ class VideoPlayer extends IntersectionObserverMixin(
 
   // render function
   render() {
-    return html`
-      ${this.audioDescriptionSource && this.audioDescriptionEnabled
-        ? html`
-            <audio
-              id="audio-description"
-              .src="${this.audioDescriptionSource}"
-              crossorigin="${this.crossorigin || "anonymous"}"
-              style="display: none;"
-            ></audio>
-          `
-        : ``}
-      ${this.elementVisible
+    return html` ${this.audioDescriptionSource && this.audioDescriptionEnabled
+      ? html`
+          <audio
+            id="audio-description"
+            .src="${this.audioDescriptionSource}"
+            crossorigin="${this.crossorigin || "anonymous"}"
+            style="display: none;"
+          ></audio>
+        `
+      : ``}
+    ${this.elementVisible
       ? html`${!this.isA11yMedia
           ? html` <div
                 class="responsive-video-container"
@@ -160,7 +159,8 @@ class VideoPlayer extends IntersectionObserverMixin(
                 @play="${this.playEvent}"
                 @restart="${this.restartEvent}"
                 @pause="${this.pauseEvent}"
-                @audio-description-toggle="${this._handleAudioDescriptionToggle}"
+                @audio-description-toggle="${this
+                  ._handleAudioDescriptionToggle}"
                 lang="${this.lang || "en"}"
                 ?learning-mode="${this.learningMode}"
                 ?linkable="${this.linkable}"
@@ -196,8 +196,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       canEditSource: true,
       gizmo: {
         title: "Video",
-        description:
-          "Accessible video playback across multiple sources.",
+        description: "Accessible video playback across multiple sources.",
         icon: "av:play-circle-filled",
         color: "red",
         tags: [
@@ -377,8 +376,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           {
             property: "allowBackgroundPlay",
             title: "Allow background playback",
-            description:
-              "Keep playing when the browser tab loses focus.",
+            description: "Keep playing when the browser tab loses focus.",
             inputMethod: "boolean",
           },
           {
@@ -692,8 +690,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       ...this.t,
       embeddedMedia: "embedded media",
       gizmoTitle: "Video",
-      gizmoDescription:
-        "Accessible video playback across multiple sources.",
+      gizmoDescription: "Accessible video playback across multiple sources.",
       tagAudioVideo: "Media",
       tagMedia: "Media",
       sourceTitle: "Source",
@@ -778,7 +775,10 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.__adVolumeHandler = null;
     }
     if (this.__adRateHandler) {
-      globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+      globalThis.removeEventListener(
+        "playback-rate-changed",
+        this.__adRateHandler,
+      );
       this.__adRateHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
@@ -1201,9 +1201,12 @@ class VideoPlayer extends IntersectionObserverMixin(
           }
         }
       }
-      
+
       // Setup audio description sync when enabled changes
-      if (propName === "audioDescriptionEnabled" && this.audioDescriptionSource) {
+      if (
+        propName === "audioDescriptionEnabled" &&
+        this.audioDescriptionSource
+      ) {
         if (this.audioDescriptionEnabled) {
           // Wait for next render cycle to ensure audio element exists
           setTimeout(() => {
@@ -1225,7 +1228,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           if (audioElement) {
             audioElement.pause();
           }
-          
+
           // Restore video audio
           const mediaPlayer = this.shadowRoot
             ? this.shadowRoot.querySelector("a11y-media-player")
@@ -1236,16 +1239,22 @@ class VideoPlayer extends IntersectionObserverMixin(
               mediaPlayer.media.volume = mediaPlayer.volume / 100;
             }
           }
-          
+
           // Clean up volume listener
           if (this.__adVolumeHandler) {
-            globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
+            globalThis.removeEventListener(
+              "volume-changed",
+              this.__adVolumeHandler,
+            );
             this.__adVolumeHandler = null;
           }
 
           // Clean up playback-rate listener
           if (this.__adRateHandler) {
-            globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+            globalThis.removeEventListener(
+              "playback-rate-changed",
+              this.__adRateHandler,
+            );
             this.__adRateHandler = null;
           }
         }
@@ -1536,9 +1545,10 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.__adRateHandler = (e) => {
       // e.detail is the a11y-media-player instance
       const player = e && e.detail ? e.detail : null;
-      const rate = player && player.media && player.media.playbackRate
-        ? player.media.playbackRate
-        : 1;
+      const rate =
+        player && player.media && player.media.playbackRate
+          ? player.media.playbackRate
+          : 1;
       if (this.audioDescriptionEnabled && audioElement) {
         audioElement.playbackRate = rate;
       }

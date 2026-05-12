@@ -495,9 +495,13 @@ class HAXCMSSiteEditor extends LitElement {
         },
       }),
     );
-    store.toast(`Content search found ${matches.length} matching item(s).`, 3000, {
-      hat: "construction",
-    });
+    store.toast(
+      `Content search found ${matches.length} matching item(s).`,
+      3000,
+      {
+        hat: "construction",
+      },
+    );
   }
 
   /**
@@ -1046,8 +1050,7 @@ class HAXCMSSiteEditor extends LitElement {
                       "--simple-modal-max-height": "85vh",
                       "--simple-modal-min-height": "400px",
                       "--simple-modal-titlebar-height": "80px",
-                      "--simple-modal-content-padding":
-                        "var(--ddd-spacing-4)",
+                      "--simple-modal-content-padding": "var(--ddd-spacing-4)",
                       "--simple-modal-buttons-padding":
                         "0 var(--ddd-spacing-4) var(--ddd-spacing-4)",
                       "--simple-modal-border-radius": "var(--ddd-radius-md)",
@@ -1226,9 +1229,12 @@ class HAXCMSSiteEditor extends LitElement {
       if (this._restoreKeepEditMode && this._restoreActiveIndex !== null) {
         // Clean up any existing listener to prevent duplicates
         if (this._contentReadyHandler) {
-          HAXStore.activeHaxBody.removeEventListener('hax-body-content-ready', this._contentReadyHandler);
+          HAXStore.activeHaxBody.removeEventListener(
+            "hax-body-content-ready",
+            this._contentReadyHandler,
+          );
         }
-        
+
         // Wait for hax-body content-ready event instead of arbitrary timeout
         this._contentReadyHandler = () => {
           try {
@@ -1256,12 +1262,14 @@ class HAXCMSSiteEditor extends LitElement {
                 }
               }
             }
-            
+
             // Force UI component to re-render to update button visibility
             // editMode stayed true, so autorun won't fire - need manual update
             // Use RAF to ensure DOM is settled before requesting update
             requestAnimationFrame(() => {
-              const uiElement = globalThis.document.querySelector('haxcms-site-editor-ui');
+              const uiElement = globalThis.document.querySelector(
+                "haxcms-site-editor-ui",
+              );
               if (uiElement) {
                 // Force observable to fire by toggling and restoring
                 const currentMode = store.editMode;
@@ -1282,10 +1290,14 @@ class HAXCMSSiteEditor extends LitElement {
           this._restoreKeepEditMode = false;
           this._contentReadyHandler = null;
         };
-        
+
         // Listen for content-ready event from hax-body
         if (HAXStore.activeHaxBody) {
-          HAXStore.activeHaxBody.addEventListener('hax-body-content-ready', this._contentReadyHandler, { once: true });
+          HAXStore.activeHaxBody.addEventListener(
+            "hax-body-content-ready",
+            this._contentReadyHandler,
+            { once: true },
+          );
         }
       }
 
@@ -1412,7 +1424,7 @@ class HAXCMSSiteEditor extends LitElement {
       // the backend so we do not clobber freshly edited values here.
       let body = await HAXStore.activeHaxBody.haxToContent();
       const schema = await HAXStore.htmlToHaxElements(body);
-      
+
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
@@ -1577,7 +1589,9 @@ class HAXCMSSiteEditor extends LitElement {
           : "by-sa";
     const authorImage = normalizeString(
       detail.authorImage,
-      manifestAuthor && manifestAuthor.image ? String(manifestAuthor.image) : "",
+      manifestAuthor && manifestAuthor.image
+        ? String(manifestAuthor.image)
+        : "",
     );
     const authorName = normalizeString(
       detail.authorName,
@@ -1585,7 +1599,9 @@ class HAXCMSSiteEditor extends LitElement {
     );
     const authorEmail = normalizeString(
       detail.authorEmail,
-      manifestAuthor && manifestAuthor.email ? String(manifestAuthor.email) : "",
+      manifestAuthor && manifestAuthor.email
+        ? String(manifestAuthor.email)
+        : "",
     );
     const authorSocialLink = normalizeString(
       detail.authorSocialLink,

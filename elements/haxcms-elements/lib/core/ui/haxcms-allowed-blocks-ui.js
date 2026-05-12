@@ -1,13 +1,13 @@
-import { html, css } from 'lit'
-import { autorun, toJS } from 'mobx'
-import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
-import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
-import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
-import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
-import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
-import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
-import '@haxtheweb/simple-popover/lib/simple-popover-selection.js'
-import '@haxtheweb/hax-body/lib/hax-element-demo.js'
+import { html, css } from "lit";
+import { autorun, toJS } from "mobx";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
+import "@haxtheweb/hax-body/lib/hax-element-demo.js";
 
 /**
  * `haxcms-allowed-blocks-ui`
@@ -15,67 +15,70 @@ import '@haxtheweb/hax-body/lib/hax-element-demo.js'
  */
 class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
-    return 'haxcms-allowed-blocks-ui'
+    return "haxcms-allowed-blocks-ui";
   }
 
   static get properties() {
     return {
       haxBlocks: { type: Array },
       allowedBlocks: { type: Object },
-      allowedBlocksDefined: { type: Boolean, attribute: 'allowed-blocks-defined' },
-      blockFilter: { type: String, attribute: 'block-filter' },
+      allowedBlocksDefined: {
+        type: Boolean,
+        attribute: "allowed-blocks-defined",
+      },
+      blockFilter: { type: String, attribute: "block-filter" },
       busy: { type: Boolean, reflect: true },
-      inventoryReady: { type: Boolean, attribute: 'inventory-ready' },
+      inventoryReady: { type: Boolean, attribute: "inventory-ready" },
       activePreview: { type: String, attribute: false },
-      isMobile: { type: Boolean, attribute: 'is-mobile', reflect: true },
-    }
+      isMobile: { type: Boolean, attribute: "is-mobile", reflect: true },
+    };
   }
 
   constructor() {
-    super()
-    this.haxBlocks = []
-    this.allowedBlocks = new Set()
-    this.allowedBlocksDefined = false
-    this.blockFilter = ''
-    this.busy = false
-    this.inventoryReady = false
-    this.activePreview = null
-    this.isMobile = false
+    super();
+    this.haxBlocks = [];
+    this.allowedBlocks = new Set();
+    this.allowedBlocksDefined = false;
+    this.blockFilter = "";
+    this.busy = false;
+    this.inventoryReady = false;
+    this.activePreview = null;
+    this.isMobile = false;
     this.configurableHiddenTags = new Set([
-      'mark',
-      'ol',
-      'ul',
-      'blockquote',
-      'code',
-      'pre',
-      'h5',
-      'h6',
-      'u',
-    ])
-    this.__disposer = []
+      "mark",
+      "ol",
+      "ul",
+      "blockquote",
+      "code",
+      "pre",
+      "h5",
+      "h6",
+      "u",
+    ]);
+    this.__disposer = [];
 
-    this.t = this.t || {}
+    this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: 'Blocks',
-      enabled: 'Enabled',
-      block: 'Block',
-      preview: 'Preview',
-      filterBlocks: 'Filter blocks',
+      title: "Blocks",
+      enabled: "Enabled",
+      block: "Block",
+      preview: "Preview",
+      filterBlocks: "Filter blocks",
       requiredTextNote:
-        'Some text tags are required and always enabled (shown disabled).',
-      selectAll: 'Select all',
-      deselectAll: 'Deselect all',
-      save: 'Save',
-      noDescription: 'No description available.',
-      details: 'Details',
-      loadingInventory: 'Loading full block inventory…',
-    }
+        "Some text tags are required and always enabled (shown disabled).",
+      selectAll: "Select all",
+      deselectAll: "Deselect all",
+      save: "Save",
+      noDescription: "No description available.",
+      details: "Details",
+      loadingInventory: "Loading full block inventory…",
+    };
 
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-    })
+    });
   }
 
   static get styles() {
@@ -84,8 +87,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -173,7 +178,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           );
         }
 
-        input[type='text'] {
+        input[type="text"] {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-s);
           border: var(--ddd-border-xs);
@@ -278,7 +283,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .block-row {
-          transition: opacity 0.2s ease, background-color 0.2s ease;
+          transition:
+            opacity 0.2s ease,
+            background-color 0.2s ease;
         }
 
         .block-row.enabled {
@@ -310,7 +317,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           text-align: center;
         }
 
-        .block-table input[type='checkbox'] {
+        .block-table input[type="checkbox"] {
           margin-top: 0;
           inline-size: var(--ddd-icon-xs);
           block-size: var(--ddd-icon-xs);
@@ -400,7 +407,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          transition: opacity 0.2s ease, background-color 0.2s ease;
+          transition:
+            opacity 0.2s ease,
+            background-color 0.2s ease;
           cursor: pointer;
           outline: none;
         }
@@ -433,7 +442,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           min-height: 44px;
         }
 
-        .block-card-main input[type='checkbox'] {
+        .block-card-main input[type="checkbox"] {
           margin-top: 0;
           inline-size: var(--ddd-icon-xs);
           block-size: var(--ddd-icon-xs);
@@ -509,12 +518,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -567,29 +574,30 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           }
         }
       `,
-    ]
+    ];
   }
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
     const disposer = autorun(() => {
-
-      const currentGizmos = toJS(HAXStore.gizmoList)
-      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : []
-      const appStoreData = toJS(HAXStore.__appStoreData)
+      const currentGizmos = toJS(HAXStore.gizmoList);
+      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
+      const appStoreData = toJS(HAXStore.__appStoreData);
       const autoloader =
-        appStoreData && appStoreData.autoloader ? appStoreData.autoloader : null
+        appStoreData && appStoreData.autoloader
+          ? appStoreData.autoloader
+          : null;
       const hasAutoloaderInventory = !!(
         autoloader &&
         ((Array.isArray(autoloader) && autoloader.length > 0) ||
           (!Array.isArray(autoloader) &&
-            typeof autoloader === 'object' &&
+            typeof autoloader === "object" &&
             Object.keys(autoloader).length > 0))
-      )
-      const appStoreLoaded = !!toJS(HAXStore.appStoreLoaded)
+      );
+      const appStoreLoaded = !!toJS(HAXStore.appStoreLoaded);
       const shouldWaitForStableInventory =
-        hasAutoloaderInventory && !appStoreLoaded
-      this.inventoryReady = !shouldWaitForStableInventory
+        hasAutoloaderInventory && !appStoreLoaded;
+      this.inventoryReady = !shouldWaitForStableInventory;
       const blocks = gizmos.filter(
         (item) =>
           !(
@@ -597,70 +605,72 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             (item.meta.requiresParent ||
               (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
           ),
-      )
-      this.haxBlocks = shouldWaitForStableInventory ? [] : blocks
+      );
+      this.haxBlocks = shouldWaitForStableInventory ? [] : blocks;
 
-      const platformConfig = toJS(HAXStore.platformConfig)
-      const allowedBlocks = platformConfig ? platformConfig.allowedBlocks : undefined
-      const hasExplicitNoOptionalBlocks = allowedBlocks === null
+      const platformConfig = toJS(HAXStore.platformConfig);
+      const allowedBlocks = platformConfig
+        ? platformConfig.allowedBlocks
+        : undefined;
+      const hasExplicitNoOptionalBlocks = allowedBlocks === null;
       const hasAllowedBlocks =
         (allowedBlocks &&
-          typeof allowedBlocks.size === 'number' &&
+          typeof allowedBlocks.size === "number" &&
           allowedBlocks.size > 0) ||
-        (Array.isArray(allowedBlocks) && allowedBlocks.length > 0)
+        (Array.isArray(allowedBlocks) && allowedBlocks.length > 0);
       this.allowedBlocksDefined =
-        hasExplicitNoOptionalBlocks || !!hasAllowedBlocks
+        hasExplicitNoOptionalBlocks || !!hasAllowedBlocks;
 
       if (hasExplicitNoOptionalBlocks) {
-        this.allowedBlocks = new Set()
+        this.allowedBlocks = new Set();
       } else if (hasAllowedBlocks) {
         if (allowedBlocks instanceof Set) {
-          this.allowedBlocks = new Set(Array.from(allowedBlocks))
+          this.allowedBlocks = new Set(Array.from(allowedBlocks));
         } else if (Array.isArray(allowedBlocks)) {
-          this.allowedBlocks = new Set(allowedBlocks)
+          this.allowedBlocks = new Set(allowedBlocks);
         } else {
-          this.allowedBlocks = new Set()
+          this.allowedBlocks = new Set();
         }
       } else {
         this.allowedBlocks = new Set(
           blocks
             .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
             .map((item) => item.tag),
-        )
+        );
       }
-    })
-    this.__disposer.push(disposer)
+    });
+    this.__disposer.push(disposer);
 
     const mobileDisposer = autorun(() => {
-      this.isMobile = !!toJS(store.isMobile)
-    })
-    this.__disposer.push(mobileDisposer)
+      this.isMobile = !!toJS(store.isMobile);
+    });
+    this.__disposer.push(mobileDisposer);
   }
 
   disconnectedCallback() {
     while (this.__disposer.length) {
-      const d = this.__disposer.pop()
-      if (d && typeof d.dispose === 'function') {
-        d.dispose()
+      const d = this.__disposer.pop();
+      if (d && typeof d.dispose === "function") {
+        d.dispose();
       }
     }
-    super.disconnectedCallback()
+    super.disconnectedCallback();
   }
 
   render() {
-    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
     const toggleableTotal = blocks.filter(
       (b) => !b.gizmoList && !HAXStore.requiredPrimitives.has(b.tag),
-    ).length
+    ).length;
     const toggleableSelected = blocks.filter(
       (b) =>
         !b.gizmoList &&
         !HAXStore.requiredPrimitives.has(b.tag) &&
         this.allowedBlocks.has(b.tag),
-    ).length
+    ).length;
     const groupedBlocks = this.inventoryReady
       ? this._groupBlocksByCategory(blocks)
-      : []
+      : [];
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -701,10 +711,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             <div class="note">
               ${this.inventoryReady
                 ? html`${toggleableSelected} selected / ${toggleableTotal}
-                      available
-                      ${HAXStore.requiredPrimitives.size
-                        ? html`<span> • ${this.t.requiredTextNote}</span>`
-                        : ''}`
+                  available
+                  ${HAXStore.requiredPrimitives.size
+                    ? html`<span> • ${this.t.requiredTextNote}</span>`
+                    : ""}`
                 : html`${this.t.loadingInventory}`}
             </div>
             <div class="blocks-list">
@@ -728,7 +738,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                 icon="icons:select-all"
                                 label="${this.t.selectAll}"
                                 title="${this.t.selectAll}"
-                                data-category="${this._categoryKey(group.category)}"
+                                data-category="${this._categoryKey(
+                                  group.category,
+                                )}"
                                 @click="${this._selectAll}"
                                 >${this.t.selectAll}</simple-icon-button-lite
                               >
@@ -736,13 +748,17 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                 icon="icons:select-all"
                                 label="${this.t.deselectAll}"
                                 title="${this.t.deselectAll}"
-                                data-category="${this._categoryKey(group.category)}"
+                                data-category="${this._categoryKey(
+                                  group.category,
+                                )}"
                                 @click="${this._deselectAll}"
                                 >${this.t.deselectAll}</simple-icon-button-lite
                               >
                             </div>
                             <div class="mobile-block-list">
-                              ${group.blocks.map((item) => this._renderBlockCard(item))}
+                              ${group.blocks.map((item) =>
+                                this._renderBlockCard(item),
+                              )}
                             </div>
                           `
                         : html`
@@ -750,13 +766,19 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                               <table class="block-table">
                                 <thead>
                                   <tr>
-                                    <th class="select-col">${this.t.enabled}</th>
+                                    <th class="select-col">
+                                      ${this.t.enabled}
+                                    </th>
                                     <th>${this.t.block}</th>
-                                    <th class="preview-col">${this.t.preview}</th>
+                                    <th class="preview-col">
+                                      ${this.t.preview}
+                                    </th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  ${group.blocks.map((item) => this._renderBlockRow(item))}
+                                  ${group.blocks.map((item) =>
+                                    this._renderBlockRow(item),
+                                  )}
                                 </tbody>
                               </table>
                             </div>
@@ -765,7 +787,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                 icon="icons:select-all"
                                 label="${this.t.selectAll}"
                                 title="${this.t.selectAll}"
-                                data-category="${this._categoryKey(group.category)}"
+                                data-category="${this._categoryKey(
+                                  group.category,
+                                )}"
                                 @click="${this._selectAll}"
                                 >Select All</simple-icon-button-lite
                               >
@@ -773,7 +797,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                 icon="icons:select-all"
                                 label="${this.t.deselectAll}"
                                 title="${this.t.deselectAll}"
-                                data-category="${this._categoryKey(group.category)}"
+                                data-category="${this._categoryKey(
+                                  group.category,
+                                )}"
                                 @click="${this._deselectAll}"
                                 >Deselect All</simple-icon-button-lite
                               >
@@ -796,15 +822,15 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           </button>
         </div>
       </div>
-    `
+    `;
   }
 
   _renderBlockRow(item) {
-    const isDisabled = HAXStore.requiredPrimitives.has(item.tag)
-    const checked = this._isBlockChecked(item.tag)
-    const rowClass = checked ? 'enabled' : 'disabled'
-    const description = this._getBlockDescription(item)
-    const rowId = this._blockInputId(item.tag)
+    const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
+    const checked = this._isBlockChecked(item.tag);
+    const rowClass = checked ? "enabled" : "disabled";
+    const description = this._getBlockDescription(item);
+    const rowId = this._blockInputId(item.tag);
     return html`
       <tr class="block-row ${rowClass}">
         <td class="select-col">
@@ -851,27 +877,26 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                     gizmo-icon="${item.icon}"
                   ></hax-element-demo>
                 `
-              : ''}
+              : ""}
           </simple-popover-selection>
         </td>
       </tr>
-    `
+    `;
   }
 
-
   _renderBlockCard(item) {
-    const isDisabled = HAXStore.requiredPrimitives.has(item.tag)
-    const checked = this._isBlockChecked(item.tag)
-    const rowClass = checked ? 'block-card enabled' : 'block-card disabled'
-    const description = this._getBlockDescription(item)
-    const rowId = this._blockInputId(item.tag)
+    const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
+    const checked = this._isBlockChecked(item.tag);
+    const rowClass = checked ? "block-card enabled" : "block-card disabled";
+    const description = this._getBlockDescription(item);
+    const rowId = this._blockInputId(item.tag);
     return html`
       <div
         class="${rowClass}"
         data-tag="${item.tag}"
         role="checkbox"
-        aria-checked="${checked ? 'true' : 'false'}"
-        tabindex="${isDisabled ? '-1' : '0'}"
+        aria-checked="${checked ? "true" : "false"}"
+        tabindex="${isDisabled ? "-1" : "0"}"
         @click="${this._blockCardClicked}"
         @keydown="${this._blockCardKeydown}"
       >
@@ -929,282 +954,290 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                       gizmo-icon="${item.icon}"
                     ></hax-element-demo>
                   `
-                : ''}
+                : ""}
             </simple-popover-selection>
           </div>
         </details>
       </div>
-    `
+    `;
   }
   _isBlockChecked(tag) {
     if (!tag) {
-      return false
+      return false;
     }
     if (HAXStore.requiredPrimitives.has(tag)) {
-      return true
+      return true;
     }
-    return this.allowedBlocks.has(tag)
+    return this.allowedBlocks.has(tag);
   }
 
   _setBlockChecked(tag, checked) {
     if (!tag || HAXStore.requiredPrimitives.has(tag)) {
-      return
+      return;
     }
-    this.allowedBlocksDefined = true
+    this.allowedBlocksDefined = true;
     if (checked) {
-      this.allowedBlocks.add(tag)
+      this.allowedBlocks.add(tag);
     } else {
-      this.allowedBlocks.delete(tag)
+      this.allowedBlocks.delete(tag);
     }
-    this.requestUpdate()
+    this.requestUpdate();
   }
 
   _blockInputId(tag) {
-    const safeTag = (tag || '').replace(/[^a-zA-Z0-9-_]/g, '-')
-    return `allowed-block-${safeTag}`
+    const safeTag = (tag || "").replace(/[^a-zA-Z0-9-_]/g, "-");
+    return `allowed-block-${safeTag}`;
   }
 
   _isConfigurableHiddenTag(tag) {
-    return !!(tag && this.configurableHiddenTags.has(tag))
+    return !!(tag && this.configurableHiddenTags.has(tag));
   }
 
   _getBlockDescription(item) {
     if (item && item.description) {
-      return item.description
+      return item.description;
     }
     if (item && item.meta && item.meta.description) {
-      return item.meta.description
+      return item.meta.description;
     }
-    return this.t.noDescription
+    return this.t.noDescription;
   }
 
   _hoverForPreviewChange(e) {
-    const popover = e && e.detail ? e.detail : null
+    const popover = e && e.detail ? e.detail : null;
     if (!popover || !popover.opened) {
-      return
+      return;
     }
-    this.activePreview = popover.dataset.index
+    this.activePreview = popover.dataset.index;
     setTimeout(() => {
-      if (popover && typeof popover.openedChanged === 'function') {
-        popover.openedChanged(true)
+      if (popover && typeof popover.openedChanged === "function") {
+        popover.openedChanged(true);
       }
-    }, 10)
+    }, 10);
   }
   _isCardInteraction(e) {
-    const path = e && e.composedPath ? e.composedPath() : []
+    const path = e && e.composedPath ? e.composedPath() : [];
     for (const node of path) {
       if (!node) {
-        continue
+        continue;
       }
       if (
         node.getAttribute &&
-        node.getAttribute('data-stop-toggle') === 'true'
+        node.getAttribute("data-stop-toggle") === "true"
       ) {
-        return true
+        return true;
       }
       if (!node.tagName) {
-        continue
+        continue;
       }
-      const tag = node.tagName.toLowerCase()
+      const tag = node.tagName.toLowerCase();
       if (
-        tag === 'input' ||
-        tag === 'button' ||
-        tag === 'a' ||
-        tag === 'summary' ||
-        tag === 'details' ||
-        tag === 'simple-icon-button-lite' ||
-        tag === 'simple-popover-selection'
+        tag === "input" ||
+        tag === "button" ||
+        tag === "a" ||
+        tag === "summary" ||
+        tag === "details" ||
+        tag === "simple-icon-button-lite" ||
+        tag === "simple-popover-selection"
       ) {
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   }
 
   _blockCardClicked(e) {
     if (this._isCardInteraction(e)) {
-      return
+      return;
     }
-    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null
+    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null;
     if (!tag) {
-      return
+      return;
     }
-    this._setBlockChecked(tag, !this._isBlockChecked(tag))
+    this._setBlockChecked(tag, !this._isBlockChecked(tag));
   }
 
   _blockCardKeydown(e) {
-    const key = e && e.key ? e.key : ''
-    if (key !== ' ' && key !== 'Enter') {
-      return
+    const key = e && e.key ? e.key : "";
+    if (key !== " " && key !== "Enter") {
+      return;
     }
     if (this._isCardInteraction(e)) {
-      return
+      return;
     }
-    e.preventDefault()
-    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null
+    e.preventDefault();
+    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null;
     if (!tag) {
-      return
+      return;
     }
-    this._setBlockChecked(tag, !this._isBlockChecked(tag))
+    this._setBlockChecked(tag, !this._isBlockChecked(tag));
   }
 
   _stopCardToggle(e) {
     if (e) {
-      e.stopPropagation()
+      e.stopPropagation();
     }
   }
   _checkboxChanged(e) {
-    const input = e.currentTarget
-    if (!input || input.type !== 'checkbox') return
-    const tag = input.dataset.tag
-    if (!tag) return
-    this._setBlockChecked(tag, !!input.checked)
+    const input = e.currentTarget;
+    if (!input || input.type !== "checkbox") return;
+    const tag = input.dataset.tag;
+    if (!tag) return;
+    this._setBlockChecked(tag, !!input.checked);
   }
 
   _blockFilterChanged(e) {
-    this.blockFilter = e && e.target ? e.target.value : ''
+    this.blockFilter = e && e.target ? e.target.value : "";
   }
 
   _selectAll(e) {
-    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
-    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
-    this.allowedBlocksDefined = true
+    const category =
+      e && e.currentTarget ? e.currentTarget.dataset.category : null;
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
+    this.allowedBlocksDefined = true;
 
-    if (category === 'all-blocks') {
+    if (category === "all-blocks") {
       this.allowedBlocks = new Set(
         blocks
           .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
           .map((item) => item.tag),
-      )
-      this.requestUpdate()
-      return
+      );
+      this.requestUpdate();
+      return;
     }
     blocks
-      .filter((item) => this._categoryKey(this._blockCategory(item)) === category)
+      .filter(
+        (item) => this._categoryKey(this._blockCategory(item)) === category,
+      )
       .forEach((item) => {
         if (!HAXStore.requiredPrimitives.has(item.tag)) {
-          this.allowedBlocks.add(item.tag)
+          this.allowedBlocks.add(item.tag);
         }
-      })
-    this.requestUpdate()
+      });
+    this.requestUpdate();
   }
 
   _deselectAll(e) {
-    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
-    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
-    this.allowedBlocksDefined = true
+    const category =
+      e && e.currentTarget ? e.currentTarget.dataset.category : null;
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
+    this.allowedBlocksDefined = true;
 
-    if (category === 'all-blocks') {
-      this.allowedBlocks = new Set([])
-      this.requestUpdate()
-      return
+    if (category === "all-blocks") {
+      this.allowedBlocks = new Set([]);
+      this.requestUpdate();
+      return;
     }
     blocks
-      .filter((item) => this._categoryKey(this._blockCategory(item)) === category)
+      .filter(
+        (item) => this._categoryKey(this._blockCategory(item)) === category,
+      )
       .forEach((item) => {
         if (!HAXStore.requiredPrimitives.has(item.tag)) {
-          this.allowedBlocks.delete(item.tag)
+          this.allowedBlocks.delete(item.tag);
         }
-      })
-    this.requestUpdate()
+      });
+    this.requestUpdate();
   }
 
   _categoryKey(category) {
-    return (category || 'other').toLowerCase().replace(/[^a-z0-9]+/g, '-')
+    return (category || "other").toLowerCase().replace(/[^a-z0-9]+/g, "-");
   }
   _blockCategoryIcon(group) {
-    const blocks = group && Array.isArray(group.blocks) ? group.blocks : []
-    const itemWithIcon = blocks.find((item) => item && item.icon)
+    const blocks = group && Array.isArray(group.blocks) ? group.blocks : [];
+    const itemWithIcon = blocks.find((item) => item && item.icon);
     if (itemWithIcon && itemWithIcon.icon) {
-      return itemWithIcon.icon
+      return itemWithIcon.icon;
     }
-    return 'hax:blocks'
+    return "hax:blocks";
   }
 
   _blockCategory(item) {
     if (item && item.meta && item.meta.inlineOnly) {
-      return 'Inline'
+      return "Inline";
     }
     if (Array.isArray(item.tags) && item.tags.length > 0) {
-      return item.tags[0]
+      return item.tags[0];
     }
     if (HAXStore.requiredPrimitives.has(item.tag)) {
-      return 'Text'
+      return "Text";
     }
-    return 'Other'
+    return "Other";
   }
 
   _compareCategories(a, b) {
-    const categoryA = a || 'Other'
-    const categoryB = b || 'Other'
+    const categoryA = a || "Other";
+    const categoryB = b || "Other";
 
     // Writing / Text first, Other last, then alphabetical
-    const first = ['Writing', 'Text']
-    const last = ['Other']
+    const first = ["Writing", "Text"];
+    const last = ["Other"];
 
-    if (first.includes(categoryA) && !first.includes(categoryB)) return -1
-    if (!first.includes(categoryA) && first.includes(categoryB)) return 1
+    if (first.includes(categoryA) && !first.includes(categoryB)) return -1;
+    if (!first.includes(categoryA) && first.includes(categoryB)) return 1;
 
-    if (last.includes(categoryA) && !last.includes(categoryB)) return 1
-    if (!last.includes(categoryA) && last.includes(categoryB)) return -1
+    if (last.includes(categoryA) && !last.includes(categoryB)) return 1;
+    if (!last.includes(categoryA) && last.includes(categoryB)) return -1;
 
     if (first.includes(categoryA) && first.includes(categoryB)) {
-      return first.indexOf(categoryA) - first.indexOf(categoryB)
+      return first.indexOf(categoryA) - first.indexOf(categoryB);
     }
 
-    if (categoryA < categoryB) return -1
-    if (categoryA > categoryB) return 1
-    return 0
+    if (categoryA < categoryB) return -1;
+    if (categoryA > categoryB) return 1;
+    return 0;
   }
 
   _groupBlocksByCategory(items) {
-    const filter = this.blockFilter ? this.blockFilter.toLowerCase().trim() : ''
-    const groupMap = {}
+    const filter = this.blockFilter
+      ? this.blockFilter.toLowerCase().trim()
+      : "";
+    const groupMap = {};
     items.forEach((item) => {
       if (filter) {
-        const title = item && item.title ? item.title.toLowerCase() : ''
-        const tag = item && item.tag ? item.tag.toLowerCase() : ''
+        const title = item && item.title ? item.title.toLowerCase() : "";
+        const tag = item && item.tag ? item.tag.toLowerCase() : "";
         if (!title.includes(filter) && !tag.includes(filter)) {
-          return
+          return;
         }
       }
-      const category = this._blockCategory(item)
+      const category = this._blockCategory(item);
 
       if (!groupMap[category]) {
-        groupMap[category] = []
+        groupMap[category] = [];
       }
-      groupMap[category].push(item)
-    })
+      groupMap[category].push(item);
+    });
 
-    const categories = Object.keys(groupMap)
-    categories.sort((a, b) => this._compareCategories(a, b))
+    const categories = Object.keys(groupMap);
+    categories.sort((a, b) => this._compareCategories(a, b));
 
     return categories.map((category) => ({
       category,
       blocks: groupMap[category],
-    }))
+    }));
   }
 
   _allowedBlocksForSave() {
     return Array.from(this.allowedBlocks || [])
       .filter((tag) => !HAXStore.requiredPrimitives.has(tag))
-      .sort()
+      .sort();
   }
 
   async _saveAllowedBlocks() {
     if (!this.inventoryReady) {
-      HAXStore.toast(this.t.loadingInventory, 3000, {}, 'fit-bottom')
-      return
+      HAXStore.toast(this.t.loadingInventory, 3000, {}, "fit-bottom");
+      return;
     }
     try {
-      this.busy = true
-      const allowedBlocks = this._allowedBlocksForSave()
+      this.busy = true;
+      const allowedBlocks = this._allowedBlocksForSave();
       const allowedBlocksPayload =
         this.allowedBlocksDefined && allowedBlocks.length === 0
           ? null
-          : allowedBlocks
+          : allowedBlocks;
       this.dispatchEvent(
-        new CustomEvent('haxcms-save-allowed-blocks', {
+        new CustomEvent("haxcms-save-allowed-blocks", {
           bubbles: true,
           composed: true,
           cancelable: true,
@@ -1213,29 +1246,32 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             allowedBlocks: allowedBlocksPayload,
           },
         }),
-      )
+      );
 
       this.dispatchEvent(
-        new CustomEvent('simple-modal-hide', {
+        new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: false,
         }),
-      )
+      );
     } catch (error) {
-      console.error('Saving blocks failed:', error)
+      console.error("Saving blocks failed:", error);
       HAXStore.toast(
         `Saving blocks failed: ${error.message}`,
         5000,
         {},
-        'fit-bottom',
-      )
+        "fit-bottom",
+      );
     }
 
-    this.busy = false
+    this.busy = false;
   }
 }
 
-globalThis.customElements.define(HAXCMSAllowedBlocksUI.tag, HAXCMSAllowedBlocksUI)
-export { HAXCMSAllowedBlocksUI }
+globalThis.customElements.define(
+  HAXCMSAllowedBlocksUI.tag,
+  HAXCMSAllowedBlocksUI,
+);
+export { HAXCMSAllowedBlocksUI };

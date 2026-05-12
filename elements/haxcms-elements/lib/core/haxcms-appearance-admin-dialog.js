@@ -45,8 +45,10 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) -
-              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 85vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           display: flex;
           flex-direction: column;
@@ -174,7 +176,8 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           );
         }
         .error {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-original87Pink);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-original87Pink);
           background: light-dark(
             var(--ddd-theme-default-potentialMidnight),
             var(--ddd-theme-default-coalyGray)
@@ -252,12 +255,10 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             min-height: 0;
             height: auto;
             max-height: calc(
-              100dvh -
-                var(
+              100dvh - var(
                   --simple-modal-titlebar-mobile-height,
                   var(--simple-modal-titlebar-height, 80px)
-                ) -
-                var(--ddd-spacing-4, 16px)
+                ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
             overflow-x: hidden;
@@ -471,7 +472,9 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           : {};
       const label = theme && theme.name ? theme.name : key;
       const rawPriority =
-        typeof theme.priority === "number" ? theme.priority : Number(theme.priority);
+        typeof theme.priority === "number"
+          ? theme.priority
+          : Number(theme.priority);
       const priority = Number.isFinite(rawPriority) ? rawPriority : 0;
       return {
         key: key,
@@ -586,7 +589,8 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           {
             property: "manifest-metadata-theme-variables-palette",
             title: "Palette",
-            description: "DDD palette applied at theme scope for color-token cascading",
+            description:
+              "DDD palette applied at theme scope for color-token cascading",
             inputMethod: "hax-palette-picker",
             required: false,
           },
@@ -624,7 +628,8 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           {
             property: "manifest-metadata-theme-variables-icon",
             title: "Icon",
-            description: "Icon to represent the site in themes that implement it",
+            description:
+              "Icon to represent the site in themes that implement it",
             inputMethod: "iconpicker",
             required: false,
           },
@@ -696,10 +701,11 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       "manifest-metadata-theme-element",
       metadata.element,
     );
-    values["manifest-metadata-theme-variables-image"] = this._normalizeFieldValue(
-      "manifest-metadata-theme-variables-image",
-      variables.image,
-    );
+    values["manifest-metadata-theme-variables-image"] =
+      this._normalizeFieldValue(
+        "manifest-metadata-theme-variables-image",
+        variables.image,
+      );
     values["manifest-metadata-theme-variables-imageAlt"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-variables-imageAlt",
@@ -720,14 +726,16 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         "manifest-metadata-theme-variables-palette",
         variables.palette,
       );
-    values["manifest-metadata-theme-variables-icon"] = this._normalizeFieldValue(
-      "manifest-metadata-theme-variables-icon",
-      variables.icon,
-    );
-    values["manifest-metadata-theme-regions-header"] = this._normalizeFieldValue(
-      "manifest-metadata-theme-regions-header",
-      regions.header,
-    );
+    values["manifest-metadata-theme-variables-icon"] =
+      this._normalizeFieldValue(
+        "manifest-metadata-theme-variables-icon",
+        variables.icon,
+      );
+    values["manifest-metadata-theme-regions-header"] =
+      this._normalizeFieldValue(
+        "manifest-metadata-theme-regions-header",
+        regions.header,
+      );
     values["manifest-metadata-theme-regions-sidebarFirst"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-regions-sidebarFirst",
@@ -797,18 +805,18 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       typeof selection.theme !== "undefined" && selection.theme !== null;
     const hasPalette = typeof selection.palette !== "undefined";
     if (hasTheme) {
-      this.values["manifest-metadata-theme-element"] = this._normalizeFieldValue(
-        "manifest-metadata-theme-element",
-        selection.theme,
-      );
+      this.values["manifest-metadata-theme-element"] =
+        this._normalizeFieldValue(
+          "manifest-metadata-theme-element",
+          selection.theme,
+        );
     }
     if (hasPalette) {
-      this.values[
-        "manifest-metadata-theme-variables-palette"
-      ] = this._normalizeFieldValue(
-        "manifest-metadata-theme-variables-palette",
-        selection.palette,
-      );
+      this.values["manifest-metadata-theme-variables-palette"] =
+        this._normalizeFieldValue(
+          "manifest-metadata-theme-variables-palette",
+          selection.palette,
+        );
     }
   }
 
@@ -845,9 +853,9 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     if (this.groups.length === 0) {
       return;
     }
-    store.playSound('click');
+    store.playSound("click");
     globalThis.dispatchEvent(
-      new CustomEvent('simple-modal-hide', {
+      new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
         detail: {},
@@ -855,12 +863,12 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     );
     setTimeout(() => {
       globalThis.dispatchEvent(
-        new CustomEvent('haxcms-open-theme-preview-program', {
+        new CustomEvent("haxcms-open-theme-preview-program", {
           bubbles: true,
           composed: true,
           cancelable: true,
           detail: {
-            source: 'appearance-admin-dialog',
+            source: "appearance-admin-dialog",
           },
         }),
       );
@@ -993,9 +1001,12 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         <div class="panel-scroll">
           <h2>Appearance</h2>
           <p class="appearance-note">
-            Configure theme, palette, branding, and layout regions for your site.
+            Configure theme, palette, branding, and layout regions for your
+            site.
           </p>
-          ${this.errorMessage ? html`<p class="error">${this.errorMessage}</p>` : ``}
+          ${this.errorMessage
+            ? html`<p class="error">${this.errorMessage}</p>`
+            : ``}
           ${!this.errorMessage && this.groups.length === 0
             ? html`<p class="status">No appearance settings are available.</p>`
             : ``}

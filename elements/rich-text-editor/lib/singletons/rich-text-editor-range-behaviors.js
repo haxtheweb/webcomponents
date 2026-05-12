@@ -267,9 +267,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       if (node.nodeType === 11 && node.host) {
         return this.getRoot(node.host);
       }
-      return node.parentNode
-        ? this.getRoot(node.parentNode)
-        : node;
+      return node.parentNode ? this.getRoot(node.parentNode) : node;
     }
     debugRange(range = this.getRange()) {
       let contents =
@@ -644,11 +642,19 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             // addRange may silently fail in shadow DOM; try setBaseAndExtent
             if (sel.rangeCount === 0) {
               try {
-                sel.setBaseAndExtent(webkitRange.startContainer, webkitRange.startOffset, webkitRange.endContainer, webkitRange.endOffset);
+                sel.setBaseAndExtent(
+                  webkitRange.startContainer,
+                  webkitRange.startOffset,
+                  webkitRange.endContainer,
+                  webkitRange.endOffset,
+                );
               } catch (err) {
                 // last resort: collapse to caret position
                 try {
-                  sel.collapse(webkitRange.startContainer, webkitRange.startOffset);
+                  sel.collapse(
+                    webkitRange.startContainer,
+                    webkitRange.startOffset,
+                  );
                 } catch (err2) {}
               }
             }
