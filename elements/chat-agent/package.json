@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "chatbot agent style chat widget",
   "repository": {
     "type": "git",
@@ -42,16 +42,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^25.0.0",
-    "@haxtheweb/haxcms-elements": "^25.0.0",
-    "@haxtheweb/micro-frontend-registry": "^25.0.0",
-    "@haxtheweb/rpg-character": "^25.0.0",
-    "@haxtheweb/type-writer": "^25.0.0",
+    "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/haxcms-elements": "^26.0.0",
+    "@haxtheweb/micro-frontend-registry": "^26.0.0",
+    "@haxtheweb/rpg-character": "^26.0.0",
+    "@haxtheweb/type-writer": "^26.0.0",
     "lit": "3.3.2",
     "mobx": "6.13.7"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/deduping-fix": "^26.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

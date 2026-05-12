@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/demo-snippet",
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "Webcomponent demo-snippet following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -29,9 +29,9 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/code-sample": "^25.0.0",
-    "@haxtheweb/d-d-d": "^25.0.0",
-    "@haxtheweb/i18n-manager": "^25.0.0",
+    "@haxtheweb/code-sample": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/i18n-manager": "^26.0.0",
     "lit": "3.3.2"
   },
   "devDependencies": {

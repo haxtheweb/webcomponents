@@ -11,7 +11,7 @@
       "js": "src/iframe-loader.js"
     }
   },
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "Adds a loading indicator for iframes.",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/utils": "^25.0.0",
+    "@haxtheweb/utils": "^26.0.0",
     "@polymer/polymer": "3.5.2",
     "lit": "3.3.2"
   },

@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "a customizable toolbar",
   "repository": {
     "type": "git",
@@ -43,17 +43,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-menu-button": "^25.0.0",
-    "@haxtheweb/d-d-d": "^25.0.0",
-    "@haxtheweb/radio-behaviors": "^25.0.0",
-    "@haxtheweb/simple-icon": "^25.0.0",
-    "@haxtheweb/simple-tooltip": "^25.0.0",
-    "@haxtheweb/utils": "^25.0.0",
+    "@haxtheweb/a11y-menu-button": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/radio-behaviors": "^26.0.0",
+    "@haxtheweb/simple-icon": "^26.0.0",
+    "@haxtheweb/simple-tooltip": "^26.0.0",
+    "@haxtheweb/utils": "^26.0.0",
     "lit": "3.3.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/deduping-fix": "^26.0.0",
     "@open-wc/testing": "4.0.0",
     "concurrently": "9.1.2",
     "gulp-sourcemaps": "3.0.0"

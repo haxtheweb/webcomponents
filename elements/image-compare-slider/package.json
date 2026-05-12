@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -41,18 +41,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-compare-image": "^25.0.0",
-    "@haxtheweb/a11y-details": "^25.0.0",
-    "@haxtheweb/i18n-manager": "^25.0.0",
-    "@haxtheweb/intersection-element": "^25.0.0",
-    "@haxtheweb/schema-behaviors": "^25.0.0",
-    "@haxtheweb/simple-colors": "^25.0.0",
-    "@haxtheweb/user-action": "^25.0.0",
+    "@haxtheweb/a11y-compare-image": "^26.0.0",
+    "@haxtheweb/a11y-details": "^26.0.0",
+    "@haxtheweb/i18n-manager": "^26.0.0",
+    "@haxtheweb/intersection-element": "^26.0.0",
+    "@haxtheweb/schema-behaviors": "^26.0.0",
+    "@haxtheweb/simple-colors": "^26.0.0",
+    "@haxtheweb/user-action": "^26.0.0",
     "lit": "3.3.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/deduping-fix": "^26.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2"
