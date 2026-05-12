@@ -57,5 +57,6 @@
   "hax": {
     "cli": true
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "gitHead": "37a628376c24ddca5a47d9169e5a9d90107ce5b7"
 }
