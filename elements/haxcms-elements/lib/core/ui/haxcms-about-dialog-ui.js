@@ -459,8 +459,7 @@ class HAXCMSAboutDialogUI extends DDD {
         <div class="panel-scroll">
           <h2>Help &amp; About</h2>
           <p class="intro">
-            One place for keyboard shortcuts, editor shortcuts, and
-            Search options that help you learn HAXcms from inside HAXcms.
+            Keyboard shortcuts, tutorials, community and more to help you learn and grow HAX.
           </p>
 
           <details class="section" open>

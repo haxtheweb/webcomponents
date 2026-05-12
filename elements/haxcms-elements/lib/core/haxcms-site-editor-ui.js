@@ -1762,6 +1762,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "super-daemon-close": "sdCloseEvent",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
+    this.rpgWalk = false;
     enableServices(["core", "haxcms"]);
     this.konamiCodeActivated = false; // Track if cheat codes are unlocked
     this.rpgHat = "none";
@@ -3159,6 +3160,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             aria-label="User menu for ${this.userName}"
             aria-expanded="${this.userMenuOpen}"
             aria-haspopup="menu"
+            @mouseover="${this.rpgStartWalk}"
+            @focusin="${this.rpgStartWalk}"
+            @mouseout="${this.rpgStopWalk}"
+            @focusout="${this.rpgStopWalk}"
           >
             <rpg-character
               seed="${this.userName}"
@@ -3169,6 +3174,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               alt="Avatar for ${this.userName}"
               hat="${this.rpgHat}"
               title="${this.userName}"
+              ?walking="${this.rpgWalk}"
             ></rpg-character>
             <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
           </button>
@@ -3202,11 +3208,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </wired-button>
             <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
           </div>
-          <!-- <app-hax-user-menu-button
-          slot="main-menu"
-          icon="face"
-          label="${this.t.accountInfo}"
-        ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
           <a
             class="mysiteslink"
@@ -3241,6 +3242,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></haxcms-theme-preview-panel>`
         : ``}
     `;
+  }
+
+  rpgStartWalk() {
+    if (!globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.rpgWalk = true;
+    }
+  }
+  rpgStopWalk() {
+    this.rpgWalk = false;
   }
 
   /**
@@ -4874,6 +4884,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       t: {
         type: Object,
       },
+      rpgWalk: { type: Boolean },
       userName: {
         type: String,
         attribute: "user-name",

@@ -179,6 +179,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   constructor() {
     super();
+    this.rpgWalk = false;
     this.unlockComingSoon = false;
     this.unlockTerrible = false;
     this.__loginModalOpen = false;
@@ -601,6 +602,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   static get properties() {
     return {
       ...super.properties,
+      rpgWalk: { type: Boolean },
       unlockComingSoon: { type: Boolean },
       unlockTerrible: { type: Boolean },
       courses: { type: Array },
@@ -1576,6 +1578,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             >
                 <button
                   @click="${this.toggleMenu}"
+                  @mouseover="${this.rpgStartWalk}"
+                  @focusin="${this.rpgStartWalk}"
+                  @mouseout="${this.rpgStopWalk}"
+                  @focusout="${this.rpgStopWalk}"
                   class="topbar-character"
                   slot="menuButton"
                   id="tbchar"
@@ -1590,6 +1596,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   height="68"
                   hat="${this.userMenuOpen ? "edit" : "none"}"
                   alt="Avatar for ${this.userName}"
+                  ?walking="${this.rpgWalk}"
                   role="img"
                 ></rpg-character>
                 </button>
@@ -1642,6 +1649,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           </section>
         </confetti-container>
       </main>`;
+  }
+
+  rpgStartWalk() {
+    if (!globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.rpgWalk = true;
+    }
+  }
+  rpgStopWalk() {
+    this.rpgWalk = false;
   }
 
   siteReadyToGo(e) {

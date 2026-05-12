@@ -250,11 +250,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
       },
       {
-        action: "site-settings",
-        icon: "settings",
-        label: "Details",
-        disabled: siteDetailsDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
+        action: "reports",
+        icon: "hax:graph",
+        label: "Reports",
+        disabled: reportsDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(reportsDisabled),
       },
       {
         action: "about",
@@ -302,11 +302,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         tooltip: this._disabledViaFeaturesTooltip(seoDisabled),
       },
       {
-        action: "reports",
-        icon: "hax:graph",
-        label: "Reports",
-        disabled: reportsDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(reportsDisabled),
+        action: "site-settings",
+        icon: "settings",
+        label: "Details",
+        disabled: siteDetailsDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
       },
     ];
     return html`

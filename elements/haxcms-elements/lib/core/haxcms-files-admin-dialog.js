@@ -568,6 +568,35 @@ class HAXCMSFilesAdminDialog extends DDD {
     const precision = current >= 10 || unitIndex === 0 ? 0 : 1;
     return `${current.toFixed(precision)} ${units[unitIndex]}`;
   }
+  _toRelativeFilePath(value) {
+    const cleanValue = this._cleanString(value);
+    if (!cleanValue) {
+      return "";
+    }
+    const lowered = cleanValue.toLowerCase();
+    if (lowered.indexOf("files/") === 0) {
+      return cleanValue;
+    }
+    const filesWithSlashIndex = lowered.indexOf("/files/");
+    if (filesWithSlashIndex !== -1) {
+      return cleanValue.substring(filesWithSlashIndex + 1);
+    }
+    const filesIndex = lowered.indexOf("files/");
+    if (filesIndex !== -1) {
+      return cleanValue.substring(filesIndex);
+    }
+    return cleanValue;
+  }
+  _copyPath(row) {
+    if (!row) {
+      return "";
+    }
+    const relativePath = this._toRelativeFilePath(row.url || row.path || "");
+    if (relativePath) {
+      return relativePath;
+    }
+    return this._toRelativeFilePath(row.fullUrl || "");
+  }
 
   get filteredRows() {
     const txt = (this.textFilter || "").toLowerCase().trim();
@@ -647,6 +676,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                     sort
                     striped
                     scroll
+                    @click="${this.copyFilePath}"
                   >
                     <table>
                       <thead>
@@ -682,7 +712,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                               </td>
                               <td class="file-name-cell">
                                 <div class="file-name-main">
-                                  <span>${row.name || "—"}</span>
+                                  <span>${row.name || "—"} <simple-icon-button-lite title="${this._copyPath(row)}" data-copy-path="${this._copyPath(row)}" label="Copy file path for ${row.name || "file"}" icon="content-copy" class="copy-btn"></simple-icon-button-lite> </span>
                                 </div>
                               </td>
                               <td class="col-mime">${row.mimeType || "—"}</td>
@@ -709,6 +739,59 @@ class HAXCMSFilesAdminDialog extends DDD {
         </div>
       </div>
     `;
+  }
+
+  async copyFilePath(e) {
+    const path =
+      e && typeof e.composedPath === "function" ? e.composedPath() : [];
+    const copyButton = path.find(
+      (node) =>
+        node &&
+        node.classList &&
+        typeof node.classList.contains === "function" &&
+        node.classList.contains("copy-btn"),
+    );
+    if (!copyButton) {
+      return;
+    }
+    const filePath = this._cleanString(
+      copyButton.getAttribute("data-copy-path") ||
+        copyButton.getAttribute("title"),
+    );
+    if (!filePath) {
+      return;
+    }
+    let copied = false;
+    try {
+      if (
+        globalThis.navigator &&
+        globalThis.navigator.clipboard &&
+        globalThis.navigator.clipboard.writeText
+      ) {
+        await globalThis.navigator.clipboard.writeText(filePath);
+        copied = true;
+      }
+    } catch (e) {
+      copied = false;
+    }
+    if (!copied) {
+      try {
+        const textArea = globalThis.document.createElement("textarea");
+        textArea.value = filePath;
+        textArea.setAttribute("readonly", "true");
+        textArea.style.position = "absolute";
+        textArea.style.left = "-9999px";
+        globalThis.document.body.appendChild(textArea);
+        textArea.select();
+        copied = globalThis.document.execCommand("copy");
+        globalThis.document.body.removeChild(textArea);
+      } catch (e) {
+        copied = false;
+      }
+    }
+    if (copied) {
+      HAXStore.toast("File path copied", 3000, "fit-bottom");
+    }
   }
 }
 
