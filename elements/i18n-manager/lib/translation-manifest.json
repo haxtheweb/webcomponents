@@ -112,7 +112,9 @@
     ]
   },
   "manifest": {
-    "a11y-gif-player": ["es"],
+    "a11y-gif-player": [
+      "es"
+    ],
     "a11y-media-player": [
       "bg",
       "cy",
@@ -139,16 +141,44 @@
       "te",
       "yo"
     ],
-    "ai-usage-license.ar": ["haxProperties"],
-    "ai-usage-license": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "ai-usage-license.bn": ["haxProperties"],
-    "ai-usage-license.es": ["haxProperties"],
-    "ai-usage-license.fr": ["haxProperties"],
-    "ai-usage-license.hi": ["haxProperties"],
-    "ai-usage-license.ja": ["haxProperties"],
-    "ai-usage-license.pt": ["haxProperties"],
-    "ai-usage-license.ru": ["haxProperties"],
-    "ai-usage-license.zh": ["haxProperties"],
+    "ai-usage-license.ar": [
+      "haxProperties"
+    ],
+    "ai-usage-license": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "ai-usage-license.bn": [
+      "haxProperties"
+    ],
+    "ai-usage-license.es": [
+      "haxProperties"
+    ],
+    "ai-usage-license.fr": [
+      "haxProperties"
+    ],
+    "ai-usage-license.hi": [
+      "haxProperties"
+    ],
+    "ai-usage-license.ja": [
+      "haxProperties"
+    ],
+    "ai-usage-license.pt": [
+      "haxProperties"
+    ],
+    "ai-usage-license.ru": [
+      "haxProperties"
+    ],
+    "ai-usage-license.zh": [
+      "haxProperties"
+    ],
     "app-hax": [
       "af",
       "am",
@@ -255,17 +285,48 @@
       "zh_CN",
       "zu"
     ],
-    "author-card.ar": ["haxProperties"],
-    "author-card": ["ar", "bn", "en", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "author-card.bn": ["haxProperties"],
-    "author-card.es": ["haxProperties"],
-    "author-card.fr": ["haxProperties"],
-    "author-card.hi": ["haxProperties"],
-    "author-card.ja": ["haxProperties"],
-    "author-card.pt": ["haxProperties"],
-    "author-card.ru": ["haxProperties"],
-    "author-card.zh": ["haxProperties"],
-    "bibliography-builder.ar": ["haxProperties"],
+    "author-card.ar": [
+      "haxProperties"
+    ],
+    "author-card": [
+      "ar",
+      "bn",
+      "en",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "author-card.bn": [
+      "haxProperties"
+    ],
+    "author-card.es": [
+      "haxProperties"
+    ],
+    "author-card.fr": [
+      "haxProperties"
+    ],
+    "author-card.hi": [
+      "haxProperties"
+    ],
+    "author-card.ja": [
+      "haxProperties"
+    ],
+    "author-card.pt": [
+      "haxProperties"
+    ],
+    "author-card.ru": [
+      "haxProperties"
+    ],
+    "author-card.zh": [
+      "haxProperties"
+    ],
+    "bibliography-builder.ar": [
+      "haxProperties"
+    ],
     "bibliography-builder": [
       "ar",
       "bn",
@@ -277,49 +338,164 @@
       "ru",
       "zh"
     ],
-    "bibliography-builder.bn": ["haxProperties"],
-    "bibliography-builder.es": ["haxProperties"],
-    "bibliography-builder.fr": ["haxProperties"],
-    "bibliography-builder.hi": ["haxProperties"],
-    "bibliography-builder.ja": ["haxProperties"],
-    "bibliography-builder.pt": ["haxProperties"],
-    "bibliography-builder.ru": ["haxProperties"],
-    "bibliography-builder.zh": ["haxProperties"],
-    "career-timeline.ar": ["haxProperties"],
-    "career-timeline": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "career-timeline.bn": ["haxProperties"],
-    "career-timeline.es": ["haxProperties"],
-    "career-timeline.fr": ["haxProperties"],
-    "career-timeline.hi": ["haxProperties"],
-    "career-timeline.ja": ["haxProperties"],
-    "career-timeline.pt": ["haxProperties"],
-    "career-timeline.ru": ["haxProperties"],
-    "career-timeline.zh": ["haxProperties"],
-    "clean-one": ["de", "es", "fr", "ja"],
-    "code-sample": ["es"],
-    "ddd-card": ["es"],
-    "demo-snippet.ar": ["haxProperties"],
-    "demo-snippet": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "demo-snippet.bn": ["haxProperties"],
-    "demo-snippet.es": ["haxProperties"],
-    "demo-snippet.fr": ["haxProperties"],
-    "demo-snippet.hi": ["haxProperties"],
-    "demo-snippet.ja": ["haxProperties"],
-    "demo-snippet.pt": ["haxProperties"],
-    "demo-snippet.ru": ["haxProperties"],
-    "demo-snippet.zh": ["haxProperties"],
-    "example-hax-element.ar": ["haxProperties"],
-    "example-hax-element": ["ar", "es", "hi", "zh"],
-    "example-hax-element.es": ["haxProperties"],
-    "example-hax-element.hi": ["haxProperties"],
-    "example-hax-element.zh": ["haxProperties"],
-    "example-haxcms-theme.ar": ["haxProperties"],
-    "example-haxcms-theme": ["ar", "es", "hi", "zh"],
-    "example-haxcms-theme.es": ["haxProperties"],
-    "example-haxcms-theme.hi": ["haxProperties"],
-    "example-haxcms-theme.zh": ["haxProperties"],
-    "flash-card-answer-box": ["es", "fr", "ja"],
-    "grade-book": ["de", "es", "fr"],
+    "bibliography-builder.bn": [
+      "haxProperties"
+    ],
+    "bibliography-builder.es": [
+      "haxProperties"
+    ],
+    "bibliography-builder.fr": [
+      "haxProperties"
+    ],
+    "bibliography-builder.hi": [
+      "haxProperties"
+    ],
+    "bibliography-builder.ja": [
+      "haxProperties"
+    ],
+    "bibliography-builder.pt": [
+      "haxProperties"
+    ],
+    "bibliography-builder.ru": [
+      "haxProperties"
+    ],
+    "bibliography-builder.zh": [
+      "haxProperties"
+    ],
+    "career-timeline.ar": [
+      "haxProperties"
+    ],
+    "career-timeline": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "career-timeline.bn": [
+      "haxProperties"
+    ],
+    "career-timeline.es": [
+      "haxProperties"
+    ],
+    "career-timeline.fr": [
+      "haxProperties"
+    ],
+    "career-timeline.hi": [
+      "haxProperties"
+    ],
+    "career-timeline.ja": [
+      "haxProperties"
+    ],
+    "career-timeline.pt": [
+      "haxProperties"
+    ],
+    "career-timeline.ru": [
+      "haxProperties"
+    ],
+    "career-timeline.zh": [
+      "haxProperties"
+    ],
+    "clean-one": [
+      "de",
+      "es",
+      "fr",
+      "ja"
+    ],
+    "code-sample": [
+      "es"
+    ],
+    "ddd-card": [
+      "es"
+    ],
+    "demo-snippet.ar": [
+      "haxProperties"
+    ],
+    "demo-snippet": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "demo-snippet.bn": [
+      "haxProperties"
+    ],
+    "demo-snippet.es": [
+      "haxProperties"
+    ],
+    "demo-snippet.fr": [
+      "haxProperties"
+    ],
+    "demo-snippet.hi": [
+      "haxProperties"
+    ],
+    "demo-snippet.ja": [
+      "haxProperties"
+    ],
+    "demo-snippet.pt": [
+      "haxProperties"
+    ],
+    "demo-snippet.ru": [
+      "haxProperties"
+    ],
+    "demo-snippet.zh": [
+      "haxProperties"
+    ],
+    "example-hax-element.ar": [
+      "haxProperties"
+    ],
+    "example-hax-element": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-hax-element.es": [
+      "haxProperties"
+    ],
+    "example-hax-element.hi": [
+      "haxProperties"
+    ],
+    "example-hax-element.zh": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.ar": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-haxcms-theme.es": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.hi": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.zh": [
+      "haxProperties"
+    ],
+    "flash-card-answer-box": [
+      "es",
+      "fr",
+      "ja"
+    ],
+    "grade-book": [
+      "de",
+      "es",
+      "fr"
+    ],
     "hax": [
       "af",
       "am",
@@ -525,9 +701,18 @@
       "zh",
       "zu"
     ],
-    "image-compare-slider": ["es"],
-    "journey-theme": ["ar", "es", "hi", "zh"],
-    "map-menu": ["es"],
+    "image-compare-slider": [
+      "es"
+    ],
+    "journey-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "map-menu": [
+      "es"
+    ],
     "meme-maker.haxProperties": [
       "ar",
       "bn",
@@ -667,23 +852,74 @@
       "zh",
       "zu"
     ],
-    "post-card": ["de", "es", "fr", "it", "ja", "zh_CN"],
-    "screen-recorder.ar": ["haxProperties"],
-    "screen-recorder": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "screen-recorder.bn": ["haxProperties"],
-    "screen-recorder.es": ["haxProperties"],
-    "screen-recorder.fr": ["haxProperties"],
-    "screen-recorder.hi": ["haxProperties"],
-    "screen-recorder.ja": ["haxProperties"],
-    "screen-recorder.pt": ["haxProperties"],
-    "screen-recorder.ru": ["haxProperties"],
-    "screen-recorder.zh": ["haxProperties"],
-    "scroll-button": ["es"],
-    "self-check": ["es", "he", "ja"],
-    "simple-fields": ["es"],
-    "simple-login": ["es"],
-    "sorting-question": ["es", "he", "ja"],
-    "stop-note": ["es"],
+    "post-card": [
+      "de",
+      "es",
+      "fr",
+      "it",
+      "ja",
+      "zh_CN"
+    ],
+    "screen-recorder.ar": [
+      "haxProperties"
+    ],
+    "screen-recorder": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "screen-recorder.bn": [
+      "haxProperties"
+    ],
+    "screen-recorder.es": [
+      "haxProperties"
+    ],
+    "screen-recorder.fr": [
+      "haxProperties"
+    ],
+    "screen-recorder.hi": [
+      "haxProperties"
+    ],
+    "screen-recorder.ja": [
+      "haxProperties"
+    ],
+    "screen-recorder.pt": [
+      "haxProperties"
+    ],
+    "screen-recorder.ru": [
+      "haxProperties"
+    ],
+    "screen-recorder.zh": [
+      "haxProperties"
+    ],
+    "scroll-button": [
+      "es"
+    ],
+    "self-check": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "simple-fields": [
+      "es"
+    ],
+    "simple-login": [
+      "es"
+    ],
+    "sorting-question": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "stop-note": [
+      "es"
+    ],
     "super-daemon": [
       "af",
       "am",
@@ -722,8 +958,12 @@
       "vi",
       "zh"
     ],
-    "twitter-embed.haxProperties": ["es"],
-    "user-action.haxProperties": ["es"],
+    "twitter-embed.haxProperties": [
+      "es"
+    ],
+    "user-action.haxProperties": [
+      "es"
+    ],
     "video-player": [
       "af",
       "am",
@@ -828,7 +1068,14 @@
       "zh",
       "zu"
     ],
-    "wikipedia-query.haxProperties": ["es", "fr"],
-    "word-count": ["es", "fr", "ja"]
+    "wikipedia-query.haxProperties": [
+      "es",
+      "fr"
+    ],
+    "word-count": [
+      "es",
+      "fr",
+      "ja"
+    ]
   }
 }
