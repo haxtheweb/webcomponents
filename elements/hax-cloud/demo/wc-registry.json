@@ -54,7 +54,6 @@
   "audio-player": "@haxtheweb/audio-player/audio-player.js",
   "awesome-explosion": "@haxtheweb/awesome-explosion/awesome-explosion.js",
   "b-r": "@haxtheweb/b-r/b-r.js",
-  "barcode-reader": "@haxtheweb/barcode-reader/barcode-reader.js",
   "beaker-broker": "@haxtheweb/beaker-broker/beaker-broker.js",
   "bootstrap-theme": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
   "bootstrap-breadcrumb": "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js",

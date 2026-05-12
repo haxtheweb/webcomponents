@@ -6,7 +6,6 @@ lerna-debug.log
 *.local.js
 build
 npm-debug.log
-test/.wct-kludge
 .yo-rc.json
 *-*.tgz
 analysis.json

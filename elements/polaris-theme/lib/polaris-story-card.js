@@ -103,6 +103,12 @@ class PolarisStoryCard extends LitElement {
     `;
   }
   /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+  /**
    * Convention we use
    */
   static get tag() {

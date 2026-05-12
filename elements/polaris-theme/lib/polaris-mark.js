@@ -170,6 +170,13 @@ class PolarisMark extends LitElement {
   static get tag() {
     return "polaris-mark";
   }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
 }
 
 globalThis.customElements.define(PolarisMark.tag, PolarisMark);

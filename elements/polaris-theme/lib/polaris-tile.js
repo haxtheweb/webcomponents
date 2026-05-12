@@ -11,6 +11,7 @@ export class PolarisTile extends LitElement {
     this.line2 = null;
     this.image = null;
     this.link = null;
+    this.editMode = false;
   }
 
   static get properties() {
@@ -20,6 +21,7 @@ export class PolarisTile extends LitElement {
       line2: { type: String },
       image: { type: String },
       link: { type: String },
+      editMode: { type: Boolean },
     };
   }
 
@@ -149,6 +151,10 @@ export class PolarisTile extends LitElement {
             ? html`<a
                 class="button"
                 href="${this.link}"
+                @click="${this._clickLink}"
+                aria-label="${this.line1
+                  ? this.line1
+                  : "Additional details about this fact"}"
                 title="${this.line1
                   ? this.line1
                   : "Additional details about this fact"}"
@@ -157,6 +163,49 @@ export class PolarisTile extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+
+  /**
+   * Set a flag to test if we should block link clicking while in edit mode.
+   */
+  haxeditModeChanged(val) {
+    this.editMode = val;
+  }
+
+  /**
+   * Prevent navigation while editing in HAX.
+   */
+  _clickLink(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+
+  /**
+   * Ensure edit mode state is in sync with active element changes.
+   */
+  haxactiveElementChanged(el, val) {
+    this.editMode = val;
+    return false;
+  }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 

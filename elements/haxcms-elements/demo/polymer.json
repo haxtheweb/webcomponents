@@ -12,7 +12,7 @@
     "node_modules/lit-element/*.*.map",
     "node_modules/@polymer/app-layout/*/*.js",
     "node_modules/@vaadin/**",
-    "node_modules/@polymer/marked-element/node_modules/marked/lib/marked.js",
+    "node_modules/marked/lib/marked.esm.js",
     "node_modules/@haxtheweb/img-pan-zoom/lib/openseadragon/build/openseadragon/openseadragon.js",
     "node_modules/@haxtheweb/elmsln-apps/lib/*/*.js",
     "node_modules/@webcomponents/webcomponentsjs/*.js",

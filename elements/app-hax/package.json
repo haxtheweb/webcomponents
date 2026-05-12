@@ -71,20 +71,18 @@
     "@haxtheweb/super-daemon": "^25.0.0",
     "@haxtheweb/utils": "^25.0.0",
     "@haxtheweb/wc-autoload": "^25.0.0",
-    "@lit-labs/motion": "^1.0.7",
-    "@vaadin/router": "^1.7.5",
+    "@vaadin/router": "1.7.5",
     "lit": "3.3.2",
     "mobx": "6.13.7",
     "roughjs": "4.4.5",
-    "scrollable-component": "^1.2.0",
+    "scrollable-component": "1.2.1",
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {

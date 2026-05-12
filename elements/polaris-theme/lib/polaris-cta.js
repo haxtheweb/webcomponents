@@ -12,6 +12,7 @@ export class PolarisCta extends LitElement {
     this.type = "tinted";
     this.outlined = false;
     this.filled = false;
+    this.editMode = false;
   }
 
   static get properties() {
@@ -21,6 +22,7 @@ export class PolarisCta extends LitElement {
       type: { type: String, reflect: true },
       outlined: { type: Boolean, reflect: true },
       filled: { type: Boolean, reflect: true },
+      editMode: { type: Boolean },
     };
   }
 
@@ -129,7 +131,52 @@ export class PolarisCta extends LitElement {
   }
 
   render() {
-    return html`<a href="${this.link}"><slot>${this.text}</slot></a>`;
+    return html`<a href="${this.link}" @click="${this._clickLink}"
+      ><slot>${this.text}</slot></a
+    >`;
+  }
+
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+
+  /**
+   * Set a flag to test if we should block link clicking while in edit mode.
+   */
+  haxeditModeChanged(val) {
+    this.editMode = val;
+  }
+
+  /**
+   * Prevent navigation while editing in HAX.
+   */
+  _clickLink(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+
+  /**
+   * Ensure edit mode state is in sync with active element changes.
+   */
+  haxactiveElementChanged(el, val) {
+    this.editMode = val;
+    return false;
+  }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 

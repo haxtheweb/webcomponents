@@ -5,7 +5,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { animate } from "@lit-labs/motion";
 
 const DropDownBorder = new URL(
   "../assets/images/DropDownBorder.svg",
@@ -191,7 +190,7 @@ export class AppHaxSiteBars extends SimpleColors {
           @click=${this.__clickButton}
         ></simple-icon-button-lite>
       </div>
-      <div id="band-container" ${animate()}>
+      <div id="band-container">
         <slot name="band"></slot>
       </div>
       <simple-tooltip for="icon" position="left">Access site</simple-tooltip>

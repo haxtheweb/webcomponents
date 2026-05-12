@@ -15,13 +15,14 @@
   "main": "fill-in-the-blanks.js",
   "module": "fill-in-the-blanks.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@haxtheweb/fill-in-the-blanks/test/",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch"
   },
   "author": {
     "name": ""
@@ -38,7 +39,6 @@
     "concurrently": "9.1.2",
     "gulp-babel": "8.0.0",
     "polymer-build": "3.1.4",
-    "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
   },
   "private": false,

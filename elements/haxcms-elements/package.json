@@ -75,7 +75,6 @@
     "@haxtheweb/replace-tag": "^25.0.0",
     "@haxtheweb/retro-card": "^25.0.0",
     "@haxtheweb/rpg-character": "^25.0.0",
-    "@haxtheweb/runkit-embed": "^25.0.0",
     "@haxtheweb/schema-behaviors": "^25.0.0",
     "@haxtheweb/scroll-button": "^25.0.0",
     "@haxtheweb/simple-colors": "^25.0.0",
@@ -94,24 +93,22 @@
     "@haxtheweb/wc-autoload": "^25.0.0",
     "@polymer/iron-ajax": "3.0.1",
     "@polymer/iron-list": "3.1.0",
-    "@polymer/paper-input": "^3.0.2",
     "@polymer/polymer": "3.5.2",
-    "@vaadin/router": "^1.7.5",
-    "@vaadin/vaadin-grid": "^5.2.5",
+    "@vaadin/router": "1.7.5",
+    "@vaadin/vaadin-grid": "5.10.2",
     "lit": "3.3.2",
     "mobx": "6.13.7",
     "web-social-share": "8.0.1",
     "wired-elements": "3.0.0-rc.6"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^25.0.0",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "@web/dev-server-esbuild": "1.0.2",
     "concurrently": "9.1.2",
-    "gulp-babel": "8.0.0",
-    "wct-browser-legacy": "1.0.2"
+    "gulp-babel": "8.0.0"
   },
   "private": false,
   "publishConfig": {

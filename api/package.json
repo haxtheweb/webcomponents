@@ -5,11 +5,11 @@
     "postinstall": "./node_modules/.bin/patch-package"
   },
   "dependencies": {
-    "patch-package": "^8.0.0",
+    "patch-package": "8.0.1",
     "lit-html": "3.3.2",
-    "@lit-labs/ssr": "^3.3.1",
+    "@lit-labs/ssr": "4.0.0",
     "lit": "3.3.2",
-    "node-html-parser": "^6.1.13",
+    "node-html-parser": "7.1.0",
     "@haxtheweb/course-design": "^25.0.0",
     "@haxtheweb/lrn-math": "^25.0.0",
     "@haxtheweb/media-image": "^25.0.0",

@@ -46,7 +46,7 @@
     "@haxtheweb/absolute-position-behavior": "^25.0.0",
     "@haxtheweb/code-editor": "^25.0.0",
     "@haxtheweb/d-d-d": "^25.0.0",
-    "@haxtheweb/md-extra-icons": "^9.0.1",
+    "@haxtheweb/md-extra-icons": "9.0.1",
     "@haxtheweb/micro-frontend-registry": "^25.0.0",
     "@haxtheweb/simple-fields": "^25.0.0",
     "@haxtheweb/simple-icon": "^25.0.0",
@@ -63,8 +63,7 @@
     "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {

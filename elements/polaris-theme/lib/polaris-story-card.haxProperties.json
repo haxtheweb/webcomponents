@@ -1,0 +1,70 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Polaris story card",
+    "description": "Display a Polaris story card with a background image, pillar label, and headline text.",
+    "icon": "image:photo",
+    "color": "blue",
+    "tags": ["Layout", "Card", "Theme", "Polaris"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      },
+      {
+        "type": "text",
+        "source": "label"
+      },
+      {
+        "type": "text",
+        "source": "pillar"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Background image",
+        "description": "Image URL shown as the card background.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
+      },
+      {
+        "property": "pillar",
+        "title": "Pillar label",
+        "description": "Short uppercase label shown at the top of the card.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "label",
+        "title": "Card text",
+        "description": "Primary text displayed in the lower panel.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "polaris-story-card",
+      "properties": {
+        "image": "https://picsum.photos/480/640",
+        "pillar": "Accessible",
+        "label": "Design for everyone"
+      },
+      "content": ""
+    }
+  ]
+}

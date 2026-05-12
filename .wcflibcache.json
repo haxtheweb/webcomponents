@@ -1,66 +1,66 @@
-[{
-  "name": "Vanilla",
-  "description": "HTMLElement class extension, 0 dependencies",
-  "wcfactory": {
-    "customElementClass": "HTMLElement",
-    "templateReturnFunctionPart": "get html() {\n    return ",
-    "propertyBinding": false
-  },
-  "main": "HTMLElement/HTMLElement.js",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
-    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "web-animations-js": "2.3.2",
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "gulp-babel": "8.0.0",
-    "@web/dev-server": "0.4.6",
-    "concurrently": "5.3.0",
-    "polymer-build": "3.1.4",
-    "wct-browser-legacy": "1.0.2",
-    "@open-wc/testing": "4.0.0"
-  }
-}
-,
-{
-  "name": "lit-element",
-  "description": "data binding ++, about as small as possible library",
-  "wcfactory": {
-    "customElementClass": "LitElement",
-    "templateReturnFunctionPart": "render() {\n    return html",
-    "propertyBinding": {
-      "prefix": "${this.",
-      "suffix": "}"
+[
+  {
+    "name": "Vanilla",
+    "description": "HTMLElement class extension, 0 dependencies",
+    "wcfactory": {
+      "customElementClass": "HTMLElement",
+      "templateReturnFunctionPart": "get html() {\n    return ",
+      "propertyBinding": false
+    },
+    "main": "HTMLElement/HTMLElement.js",
+    "version": "0.0.1",
+    "scripts": {
+      "start": "yarn run dev",
+      "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+      "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+      "watch": "gulp dev --gulpfile=gulpfile.cjs",
+      "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+      "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "web-animations-js": "2.3.2",
+      "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+      "gulp-babel": "8.0.0",
+      "@web/dev-server": "0.4.6",
+      "concurrently": "5.3.0",
+      "polymer-build": "3.1.4",
+      "@open-wc/testing": "4.0.0"
     }
   },
-  "main": "LitElement/LitElement.js",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
-    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  {
+    "name": "lit-element",
+    "description": "data binding ++, about as small as possible library",
+    "wcfactory": {
+      "customElementClass": "LitElement",
+      "templateReturnFunctionPart": "render() {\n    return html",
+      "propertyBinding": {
+        "prefix": "${this.",
+        "suffix": "}"
+      }
+    },
+    "main": "LitElement/LitElement.js",
+    "version": "0.0.1",
+    "scripts": {
+      "start": "yarn run dev",
+      "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+      "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+      "watch": "gulp dev --gulpfile=gulpfile.cjs",
+      "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+      "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+    },
+    "dependencies": {
+      "lit": "^3.3.1"
+    },
+    "devDependencies": {
+      "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
+      "concurrently": "5.3.0",
+      "gulp-babel": "8.0.0",
+      "polymer-build": "3.1.4",
+      "@web/dev-server": "0.4.6",
+      "web-animations-js": "2.3.2",
+      "@open-wc/testing": "4.0.0"
+    }
   },
-  "dependencies": {
-    "lit": "^3.3.1"
-  },
-  "devDependencies": {
-    "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
-    "concurrently": "5.3.0",
-    "gulp-babel": "8.0.0",
-    "polymer-build": "3.1.4",
-    "@web/dev-server": "0.4.6",
-    "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2",
-    "@open-wc/testing": "4.0.0"
-  }
-},{}]
+  {}
+]

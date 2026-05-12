@@ -1,0 +1,98 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Polaris tile",
+    "description": "Display a Polaris tile with title, optional supporting text, and optional link.",
+    "icon": "view-quilt",
+    "color": "blue",
+    "tags": ["Layout", "Card", "Tile", "Polaris"],
+    "handles": [
+      {
+        "type": "text",
+        "source": "line1"
+      },
+      {
+        "type": "text",
+        "source": "line2"
+      },
+      {
+        "type": "image",
+        "source": "image"
+      },
+      {
+        "type": "link",
+        "source": "link",
+        "title": "line1"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primary text",
+        "description": "Main tile text.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "line2",
+        "title": "Secondary text",
+        "description": "Optional supporting text.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "type",
+        "title": "Tile style",
+        "description": "Preset tile visual style.",
+        "inputMethod": "select",
+        "options": {
+          "1": "Style 1",
+          "2": "Style 2",
+          "3": "Style 3",
+          "4": "Style 4",
+          "5": "Style 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Background image",
+        "description": "Background image URL used by image-capable tile styles.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optional destination URL for the tile action.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "polaris-tile",
+      "properties": {
+        "line1": "Invent with purpose",
+        "line2": "Explore interdisciplinary opportunities",
+        "type": "3",
+        "link": "https://invent.psu.edu/"
+      },
+      "content": ""
+    }
+  ]
+}

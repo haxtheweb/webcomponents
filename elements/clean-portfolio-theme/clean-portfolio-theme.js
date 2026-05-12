@@ -43,6 +43,32 @@ function getPostLogo(item) {
   }
 }
 
+function normalizeTags(tags) {
+  if (Array.isArray(tags)) {
+    return tags
+      .map((tag) => {
+        if (typeof tag === "string") {
+          return tag.trim();
+        }
+        if (tag === null || typeof tag === "undefined") {
+          return "";
+        }
+        return `${tag}`.trim();
+      })
+      .filter((tag) => tag);
+  }
+  if (typeof tags === "string") {
+    return tags
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter((tag) => tag);
+  }
+  if (tags === null || typeof tags === "undefined") {
+    return [];
+  }
+  return [`${tags}`.trim()].filter((tag) => tag);
+}
+
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   static get tag() {
@@ -91,12 +117,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     // gets active page's tags and inserts them into an array for media-tag
     this.__disposer.push(autorun((reaction) => {
-      let tags = toJS(store.activeTags);
-      if (tags && tags.length > 0) {
-        this.activeTags = tags.split(',');
-      } else {
-        this.activeTags = [];
-      }
+      this.activeTags = normalizeTags(toJS(store.activeTags));
     }));
 
     // gets top level items for menu-item
@@ -120,12 +141,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         );
 
         if (parent) {
-          const activeTags = active.metadata.tags && active.metadata.tags.split(",").map(tag => tag.trim());
-          const category = (activeTags && activeTags[0]) || null;
+          const activeTags = normalizeTags(active.metadata && active.metadata.tags);
+          const category = activeTags[0] || null;
           const siblings = store.manifest.items
             .filter((item) => {
-              const itemTags = item.metadata && item.metadata.tags && item.metadata.tags.split(",").map(tag => tag.trim());
-              const itemCategory = (itemTags && itemTags[0]) || null;
+              const itemTags = normalizeTags(item.metadata && item.metadata.tags);
+              const itemCategory = itemTags[0] || null;
               return (
                 item.parent === active.parent &&
                 itemCategory === category
@@ -164,9 +185,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
             // get tags for all children of activeItem, push to arrays
             items.forEach(item => {
-              let tags = toJS(item.metadata.tags);
-              if (tags) {
-                const tagArray = tags.split(',');
+              const tagArray = normalizeTags(toJS(item.metadata && item.metadata.tags));
+              if (tagArray.length > 0) {
                 if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
                   categoryTags.push(tagArray[0]);
                 }
@@ -1197,11 +1217,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     const filteredItems = this.selectedTag
       ? this.items.filter(item => {
           // Check if item has tags, and return it if it has the tag
-          let tags = toJS(item.metadata.tags);
-          if (tags) {
-            return tags.includes(this.selectedTag);
-          }
-          return false;
+          const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
+          return tags.includes(this.selectedTag);
         })
       : this.items;
 
@@ -1210,11 +1227,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ? this.categoryTags.filter(tag => 
           filteredItems.some(item => {
             // Will return true if at least one category has the selected tag
-            let tags = toJS(item.metadata.tags);
-            if (tags) {
-              return tags.includes(tag);
-            }
-            return false;
+            const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
+            return tags.includes(tag);
           })
         )
       : this.categoryTags;
@@ -1227,15 +1241,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               <h2 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h2>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
-                  let tags = toJS(item.metadata.tags);
-                  if (tags) {
-                    // Return all items with the filtered tag
-                    return tags.includes(topTag);
-                  }
-                  return false;
+                  const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
+                  // Return all items with the filtered tag
+                  return tags.includes(topTag);
                 }).map(item => {
                   // Get all tags from the item
-                  let secondTag = toJS(item.metadata.tags).split(',')[1];
+                  const itemTags = normalizeTags(toJS(item.metadata && item.metadata.tags));
+                  const secondTag = itemTags[1] || "";
 
                   return html`
                     <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" class="listing-card" href="${item.slug}" @click="${this.testEditMode}">
@@ -1257,13 +1269,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       <!-- Render cards with no tags -->
       ${(!this.selectedTag && this.items.some(item => {
         // Will return true if at least one item does not have tags
-        return !toJS(item.metadata.tags);
+        return normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0;
       })) ? html`
         <div class="listing-category"></div>
         <div class="listing-grid">
           ${this.items.filter(item => {
             // Return all items with no tags
-            return !toJS(item.metadata.tags);
+            return normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0;
           }).map(item => html`
             <a class="listing-card" href="${item.slug}" tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}">
               <div class="listing-cardimg">
@@ -1385,7 +1397,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               <div class="listing-titlecontainer">
                 <site-active-title></site-active-title>
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
-                ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => !item.metadata.tags)))
+                ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0)))
                   ? html`
                     <label class="list-filter-label" for="listing-filter">Tag filter:</label>
                     <select ?disabled="${this.editMode}" id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>

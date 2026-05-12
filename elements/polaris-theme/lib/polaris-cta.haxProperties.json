@@ -1,0 +1,81 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Display a themed Polaris call-to-action button.",
+    "icon": "link",
+    "color": "blue",
+    "tags": ["Action", "Button", "Link", "Polaris"],
+    "handles": [
+      {
+        "type": "link",
+        "source": "link",
+        "title": "text"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Button text",
+        "description": "Text shown in the call-to-action button.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Destination URL for the button.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visual style variant.",
+        "inputMethod": "select",
+        "options": {
+          "primary": "Primary",
+          "tinted": "Tinted",
+          "light": "Light"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Outlined style",
+        "description": "Enable outlined treatment.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "filled",
+        "title": "Filled style",
+        "description": "Enable filled treatment.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "polaris-cta",
+      "properties": {
+        "text": "Explore programs",
+        "link": "https://www.psu.edu/",
+        "type": "primary",
+        "outlined": true
+      },
+      "content": ""
+    }
+  ]
+}

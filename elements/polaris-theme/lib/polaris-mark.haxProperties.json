@@ -1,0 +1,67 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Polaris mark",
+    "description": "Display the PSU identity mark with optional college name and destination URL.",
+    "icon": "icons:book",
+    "color": "blue",
+    "tags": ["Brand", "Header", "Logo", "Polaris"],
+    "handles": [
+      {
+        "type": "link",
+        "source": "url",
+        "title": "name"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "College name",
+        "description": "Name rendered next to the mark.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Destination URL when the mark is clicked.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visual mark variant.",
+        "inputMethod": "select",
+        "options": {
+          "default": "Default",
+          "dark": "Dark"
+        }
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "polaris-mark",
+      "properties": {
+        "name": "Invent Penn State",
+        "url": "https://invent.psu.edu/",
+        "type": "default"
+      },
+      "content": ""
+    }
+  ]
+}

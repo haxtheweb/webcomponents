@@ -49,8 +49,7 @@
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-ajax": "3.0.1",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {

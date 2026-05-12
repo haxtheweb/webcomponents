@@ -45,8 +45,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^25.0.0",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {

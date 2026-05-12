@@ -42,9 +42,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^25.0.0",
-    "@haxtheweb/lrndesign-avatar": "9.0.1",
     "@haxtheweb/simple-icon": "^25.0.0",
-    "dummy-text": "^1.0.3",
+    "@haxtheweb/lrndesign-avatar": "9.0.1",
+    "dummy-text": "1.0.3",
     "lit": "3.3.2"
   },
   "devDependencies": {
@@ -52,8 +52,7 @@
     "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {
