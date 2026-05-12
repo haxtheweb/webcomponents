@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/webcomponents",
-  "version": "25.0.0",
+  "version": "26.0.0",
   "description": "HAXTheWeb web component library",
   "orgNpm": "@haxtheweb",
   "monorepo": "webcomponents",
