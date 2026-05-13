@@ -727,20 +727,17 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         }
         .version {
           position: fixed;
-          left: 0;
+          right: 0;
           bottom: 0;
           background-color: var(--simple-colors-default-theme-yellow-6);
           display: inline-block;
-          padding: 8px;
+          padding: 4px;
+          font-size: var(--ddd-font-size-4xs);
           color: var(--simple-colors-default-theme-grey-12);
-          border-right: 3px solid var(--simple-colors-default-theme-grey-12);
-          border-top: 3px solid var(--simple-colors-default-theme-grey-12);
         }
         body.dark-mode .version {
           background-color: var(--simple-colors-default-theme-yellow-8);
           color: var(--simple-colors-default-theme-grey-1);
-          border-right: 3px solid var(--simple-colors-default-theme-grey-1);
-          border-top: 3px solid var(--simple-colors-default-theme-grey-1);
         }
         simple-modal::part(title) {
           background-color: transparent;
