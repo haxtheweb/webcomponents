@@ -27,7 +27,7 @@ HAXTheWeb is dedicated to making contribution an accessible and simple experienc
       * Open **PowerShell**, run the command: `wsl --update`
     * Why: Certain Windows editions are bundled with an outdated **WSL 2** version.
 
-* On macOS or Linux: None
+* On macOS or Linux: None 
 
 ---
 ### Guide
