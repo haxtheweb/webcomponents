@@ -15,10 +15,6 @@ describe("outline-designer test", () => {
   });
 
   it("re-syncs when items arrive after first render", async () => {
-    let syncCount = 0;
-    element.__syncUIAndDataModel = () => {
-      syncCount++;
-    };
     element.items = [
       {
         id: "item-1",
@@ -31,10 +27,27 @@ describe("outline-designer test", () => {
           locked: false,
         },
       },
+      {
+        id: "item-2",
+        title: "Imported child page",
+        parent: "item-1",
+        // Start flat so the late-item resync has to recalculate nesting.
+        indent: 0,
+        order: 0,
+        contents: "<p>Imported child</p>",
+        metadata: {
+          locked: false,
+        },
+      },
     ];
     await element.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 10));
 
-    expect(syncCount).to.equal(1);
+    const renderedItems = element.shadowRoot.querySelectorAll("li.item");
+    expect(element.items[1].indent).to.equal(1);
+    expect(renderedItems.length).to.equal(2);
+    expect(renderedItems[0].className).to.contain("indent-0");
+    expect(renderedItems[1].className).to.contain("indent-1");
   });
 });
 

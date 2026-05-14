@@ -2746,7 +2746,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         propName === "items" &&
         this[propName] &&
         this[propName].length > 0 &&
-        oldValue !== this[propName]
+        (!oldValue || oldValue.length === 0)
       ) {
         this.__syncUIAndDataModel();
       }
