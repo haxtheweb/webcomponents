@@ -2742,6 +2742,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
+      if (
+        propName === "items" &&
+        this[propName] &&
+        this[propName].length > 0 &&
+        (!oldValue || oldValue.length === 0)
+      ) {
+        this.__syncUIAndDataModel();
+      }
       if (propName === "fidelity" && this[propName]) {
         // @todo these are just conceptual for the moment
         // need requirements / discussion with group to inform low vs high operations

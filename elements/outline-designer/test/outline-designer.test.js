@@ -13,6 +13,42 @@ describe("outline-designer test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("re-syncs when items arrive after first render", async () => {
+    element.items = [
+      {
+        id: "item-1",
+        title: "Imported page",
+        parent: null,
+        indent: 0,
+        order: 0,
+        contents: "<p>Imported</p>",
+        metadata: {
+          locked: false,
+        },
+      },
+      {
+        id: "item-2",
+        title: "Imported child page",
+        parent: "item-1",
+        // Start flat so the late-item resync has to recalculate nesting.
+        indent: 0,
+        order: 0,
+        contents: "<p>Imported child</p>",
+        metadata: {
+          locked: false,
+        },
+      },
+    ];
+    await element.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 10));
+
+    const renderedItems = element.shadowRoot.querySelectorAll("li.item");
+    expect(element.items[1].indent).to.equal(1);
+    expect(renderedItems.length).to.equal(2);
+    expect(renderedItems[0].className).to.contain("indent-0");
+    expect(renderedItems[1].className).to.contain("indent-1");
+  });
 });
 
 /*
