@@ -1,6 +1,6 @@
 import { stdResponse, invalidRequest, stdPostBody } from "../utilities/requestHelpers.js";
-//import { render } from '@lit-labs/ssr';
-import { render } from '@lit-labs/ssr/lib/render-with-global-dom-shim.js';
+import '@lit-labs/ssr/lib/install-global-dom-shim.js';
+import { renderThunked } from '@lit-labs/ssr';
 import {collectResult} from '@lit-labs/ssr/lib/render-result.js';
 import { html } from 'lit';
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
       }
     }
     const myServerTemplate = html`<div>${unsafeHTML(q)}</div>`;
-    const ssrResult = render(myServerTemplate);
+    const ssrResult = renderThunked(myServerTemplate);
     const content = await collectResult(ssrResult);
     // Awaits promises
     res = stdResponse(res, content, {cache: 86400,type : 'text/html' });
