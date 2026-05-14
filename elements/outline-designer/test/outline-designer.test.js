@@ -13,6 +13,29 @@ describe("outline-designer test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("re-syncs when items arrive after first render", async () => {
+    let syncCount = 0;
+    element.__syncUIAndDataModel = () => {
+      syncCount++;
+    };
+    element.items = [
+      {
+        id: "item-1",
+        title: "Imported page",
+        parent: null,
+        indent: 0,
+        order: 0,
+        contents: "<p>Imported</p>",
+        metadata: {
+          locked: false,
+        },
+      },
+    ];
+    await element.updateComplete;
+
+    expect(syncCount).to.equal(1);
+  });
 });
 
 /*
