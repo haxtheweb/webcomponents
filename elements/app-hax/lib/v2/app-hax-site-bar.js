@@ -632,8 +632,6 @@ export class AppHaxSiteBars extends SimpleColors {
               <a
                 class="imageLink"
                 href="${this.siteUrl}"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Open ${this.title || "site"}"
               >
                 <img
