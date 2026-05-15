@@ -68,6 +68,12 @@ If you already have a HAX development environment and just want to add these rul
    cp haxcms/WARP.md /path/to/your/haxcms-site/
    ```
 
+3. **Apply this shared Copilot custom agent** to another HAX repository by copying the agent definition:
+   ```bash
+   mkdir -p /path/to/your/haxcms-nodejs/.github/agents
+   cp .github/agents/my-agent.agent.md /path/to/your/haxcms-nodejs/.github/agents/my-agent.agent.md
+   ```
+
 ### For the Entire HAX Ecosystem
 
 If you're working across multiple HAX repositories, you can:
