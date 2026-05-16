@@ -18,20 +18,20 @@ jobs:
     steps:
       - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
-        uses: contributor-assistant/github-action@v2.6.1
+        uses: contributor-assistant/github-action@ca4a40a7d1004f18d9960b404b97e5f30a505a08 # v2.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_ACCESS_TOKEN }}
         with:
-          path-to-signatures: 'signatures/version1/cla.json'
-          path-to-document: 'https://github.com/haxtheweb/cla/blob/main/CLA.md'
+          path-to-signatures: "signatures/version1/cla.json"
+          path-to-document: "https://github.com/haxtheweb/cla/blob/main/CLA.md"
           # branch should not be protected
-          branch: 'main'
+          branch: "main"
           allowlist: bot*
           # the followings are the optional inputs - If the optional inputs are not given, then default values will be taken
-          remote-organization-name: 'haxtheweb'
-          remote-repository-name: 'cla'
-          create-file-commit-message: 'Creating file for storing CLA Signatures'
-          signed-commit-message: 'CLA signed by $contributorName'
+          remote-organization-name: "haxtheweb"
+          remote-repository-name: "cla"
+          create-file-commit-message: "Creating file for storing CLA Signatures"
+          signed-commit-message: "CLA signed by $contributorName"
           custom-notsigned-prcomment: 'Thank you for your contribution! Before we can merge your PR, we need you to sign our Contributor License Agreement (CLA). Please comment **"I have read the CLA Document and I hereby sign the CLA"** to agree to the [CLA terms](https://github.com/haxtheweb/cla/blob/main/CLA.md).'
-          custom-allsigned-prcomment: 'All contributors have signed the CLA. Thank you!'
+          custom-allsigned-prcomment: "All contributors have signed the CLA. Thank you!"
