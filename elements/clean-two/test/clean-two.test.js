@@ -334,6 +334,21 @@ describe("clean-two mobile responsiveness", () => {
     expect(mobileMenuContent).to.exist;
   });
 
+  it("keeps opened mobile menu layered with a solid background", async () => {
+    const el = await fixture(html`<clean-two menu-open></clean-two>`);
+    const cssText = el.constructor.styles
+      .map((style) => style.cssText || "")
+      .join("\n");
+    const leftCol = el.shadowRoot.querySelector(".left-col");
+    const leftColStyle = getComputedStyle(leftCol);
+
+    expect(cssText).to.include(":host([menu-open]) .body-wrapper .left-col");
+    expect(cssText).to.include("z-index: 16");
+    expect(cssText).to.include("background-color: light-dark(");
+    expect(leftColStyle.zIndex).to.equal("16");
+    expect(leftColStyle.backgroundColor).to.not.equal("rgba(0, 0, 0, 0)");
+  });
+
   it("maintains accessibility on mobile", async () => {
     const el = await fixture(html`<clean-two></clean-two>`);
     await expect(el).to.be.accessible();

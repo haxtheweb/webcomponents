@@ -250,6 +250,11 @@ class CleanTwo extends LTIResizingMixin(
           margin-left: 0px;
           position: sticky;
           top: 0px;
+          z-index: 16;
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
         }
         .body-wrapper .content-wrapper .content {
           margin: 0;
