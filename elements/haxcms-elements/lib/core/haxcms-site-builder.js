@@ -607,9 +607,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         themeElement.removeAttribute("data-palette");
       }
       themeElement.setAttribute("data-palette", normalizedPalette);
+      themeElement.__haxcmsManagedPalette = true;
       this._ensureDDDPaletteStyles();
-    } else {
+    } else if (themeElement.__haxcmsManagedPalette) {
       themeElement.removeAttribute("data-palette");
+      themeElement.__haxcmsManagedPalette = false;
     }
   }
 

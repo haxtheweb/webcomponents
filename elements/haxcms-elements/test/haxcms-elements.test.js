@@ -106,6 +106,58 @@ describe("haxcms-elements allowed blocks semantics", () => {
   });
 });
 
+describe("haxcms-elements theme palette behavior", () => {
+  let originalManifest;
+
+  beforeEach(() => {
+    originalManifest = store.manifest;
+    store.manifest = {
+      metadata: {
+        theme: {
+          variables: {},
+        },
+      },
+    };
+  });
+
+  afterEach(() => {
+    store.manifest = originalManifest;
+  });
+
+  it("preserves theme default palette when site settings provide none", async () => {
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    const builder = new Builder();
+    const themeElement = globalThis.document.createElement("div");
+    themeElement.setAttribute("data-palette", "8");
+
+    builder._applyThemePalette(themeElement, { variables: {} });
+
+    expect(themeElement.getAttribute("data-palette")).to.equal("8");
+  });
+
+  it("applies site palette when provided", async () => {
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    const builder = new Builder();
+    const themeElement = globalThis.document.createElement("div");
+    themeElement.setAttribute("data-palette", "8");
+
+    builder._applyThemePalette(themeElement, { variables: { palette: "3" } });
+
+    expect(themeElement.getAttribute("data-palette")).to.equal("3");
+  });
+
+  it("removes previously managed palette when settings palette is cleared", async () => {
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    const builder = new Builder();
+    const themeElement = globalThis.document.createElement("div");
+    builder._applyThemePalette(themeElement, { variables: { palette: "3" } });
+
+    builder._applyThemePalette(themeElement, { variables: {} });
+
+    expect(themeElement.hasAttribute("data-palette")).to.equal(false);
+  });
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("haxcms-elements passes accessibility test", async () => {
