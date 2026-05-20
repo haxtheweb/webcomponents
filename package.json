@@ -179,6 +179,7 @@
     "lit-element": "4.2.2",
     "@lit-labs/virtualizer": "2.1.1",
     "@lit/reactive-element": "2.1.2",
+    "errorstacks": "2.4.1",
     "follow-redirects": "1.16.0",
     "marked": "18.0.3",
     "path-to-regexp": "3.3.0",

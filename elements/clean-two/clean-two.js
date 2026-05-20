@@ -437,6 +437,7 @@ class CleanTwo extends LTIResizingMixin(
         }
         .header site-menu-content[mobile] {
           position: fixed;
+          z-index: 16;
           right: 72px;
           width: 32px;
           height: 32px;
