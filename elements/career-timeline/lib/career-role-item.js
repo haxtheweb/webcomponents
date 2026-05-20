@@ -21,6 +21,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     this.title = "Role Title";
     this.startDate = new Date();
     this.endDate = new Date();
+    this.skills = [];
   }
 
   // Lit reactive properties
@@ -29,7 +30,8 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       ...super.properties,
       title: { type: String },
       startDate: { type: String, attribute: "start-date" },
-      endDate: { type: String, attribute: "end-date" }
+      endDate: { type: String, attribute: "end-date" },
+      skills: { type: Array }
     };
   }
 
@@ -75,6 +77,11 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
           margin: 0;
         }
 
+        .skills {
+          display: inline;
+          font-weight: bold;
+        }
+
         h3 {
           margin: 4px 0 0 0;
           color: var(--lowContrast-override, var(--ddd-theme-primary, #1e407c));
@@ -111,6 +118,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
           <h5>${this.title}</h5>
           ${this._formatDate()}
           <div><slot></slot></div>
+          ${this._formatSkills()}
         </div>
       </div>
     `;
@@ -185,6 +193,19 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     return `${shortStart} - ${shortEnd} · ${totalYears} ${totalMonths}`;
   }
 
+  _formatSkills(){
+    if(this.skills.length === 0) return;
+
+    // SimpleFields/HAXFields defaults to an array of objects, so we map the skill names back out
+    const skills = this.skills.map(item => item.name);
+    // We don't want the list to be too long, especially with long skills names. This cuts off at 5 skills.
+    // TODO: Include full list in <career-timeline> export mode.
+    const output = skills.length > 5 ? `${skills.slice(0, 5).join(' · ')} and +${skills.length - 5} more`
+      : skills.join(' · ');
+
+    return html`<div class="skills">Skills:</div> ${output}`
+  }
+
   static get haxProperties() {
     return {
       "type": "grid",
@@ -221,6 +242,23 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
             "property": "endDate",
             "title": "End Date (Optional)",
             "inputMethod": "datepicker"
+          },
+          {
+            "property": "skills",
+            "title": "Associated Skills",
+            "description": "Select the + button to start adding skills",
+            "inputMethod": "array",
+            "itemLabel": "name",
+            "hideReorder": true,
+            "expanded": true,
+            "hideDuplicate": true,
+            "properties": [
+              {
+                "property": "name",
+                "title": "Skill",
+                "inputMethod": "textfield",
+              }
+            ]
           }
         ],
         "advanced": [],
