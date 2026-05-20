@@ -126,7 +126,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           color: var(--simple-colors-default-theme-accent-12, black);
           background-color: var(--simple-colors-default-theme-accent-1, white);
           border: none;
-          align-items: middle;
+          align-items: center;
           justify-content: space-between;
           background-color: transparent;
         }
@@ -236,6 +236,21 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           animation: details-show 100ms ease-in-out;
           line-height: var(--ddd-spacing-4);
           font-size: 12px;
+        }
+        @media screen and (max-width: 800px) {
+          :host(:not([mini])) button {
+            justify-content: flex-start;
+          }
+          :host(:not([mini])) .label-wrap {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+          :host(:not([mini])) .tags {
+            margin-left: auto;
+          }
+          :host(:not([mini])) .more {
+            margin-left: var(--ddd-spacing-2);
+          }
         }
       `,
     ];
