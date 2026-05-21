@@ -49,6 +49,13 @@ cp ~/haxtheweb/webcomponents/VERSION.txt ~/haxtheweb/haxcms-nodejs/src/public/VE
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/build-haxcms.js
 
+# haxsite
+# normalize build.js build-haxcms.js wc-registry.json and VERSION.txt
+cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxsite/build.js
+cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxsite/build-haxcms.js
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxsite/wc-registry.json
+cp ~/haxtheweb/webcomponents/VERSION.txt ~/haxtheweb/haxsite/VERSION.txt
+
 # psucdn
 # normalize build build.js build-haxcms.js wc-registry.json
 rm -rf ~/haxtheweb/psucdn/cdn/build
@@ -152,6 +159,12 @@ npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
 npm publish
+
+cd ~/haxtheweb/haxsite/
+git pull origin main
+git add -A
+git commit -m "ubiquity publish"
+git push --follow-tags origin main
 
 cd ~/haxtheweb/psucdn/
 git pull origin master

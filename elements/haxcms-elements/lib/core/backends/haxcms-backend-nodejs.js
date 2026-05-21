@@ -188,6 +188,12 @@ class HAXCMSBackendNodeJS extends LitElement {
               globalThis.appSettings.createNodePath;
             store.cmsSiteEditor.instance.deleteNodePath =
               globalThis.appSettings.deleteNodePath;
+            store.cmsSiteEditor.instance.listFilesPath =
+              globalThis.appSettings.listFilesPath;
+            store.cmsSiteEditor.instance.saveFilePath =
+              globalThis.appSettings.saveFilePath;
+            store.cmsSiteEditor.instance.fileOperationPath =
+              globalThis.appSettings.fileOperationPath;
             store.cmsSiteEditor.instance.contentSearchPath =
               globalThis.appSettings.contentSearchPath ||
               globalThis.appSettings.searchContentPath;

@@ -86,8 +86,8 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     /**
      * init the utility & register element
      */
-    firstUpdated() {
-      super.firstUpdated();
+    firstUpdated(changedProperties) {
+      super.firstUpdated(changedProperties);
       if (!this.disableResponsive) {
         globalThis.ResponsiveUtility.requestAvailability();
         this.dispatchEvent(

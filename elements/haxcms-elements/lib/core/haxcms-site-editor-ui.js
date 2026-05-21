@@ -247,8 +247,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .haxLogo {
           color: white;
           background-color: var(--ddd-primary-2) !important;
-          height: 64px;
-          width: 64px;
+          --simple-icon-height: var(--ddd-icon-md, 48px);
+          --simple-icon-width: var(--ddd-icon-md, 48px);
           display: block;
         }
         :host([dark-mode]) .haxLogo:hover,
@@ -2812,16 +2812,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     autorun(() => {
       const badDevice = toJS(store.badDevice);
       // good device, we can inject font we use
-      if (badDevice === false) {
-        const link = globalThis.document.createElement("link");
-        link.setAttribute(
-          "href",
-          "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap",
-        );
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        globalThis.document.head.appendChild(link);
-      } else if (badDevice === true) {
+      if (badDevice === true) {
         globalThis.document.body.classList.add("bad-device");
       }
     });
@@ -6840,6 +6831,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-files-admin-dialog",
       );
+      const siteEditor = store.cmsSiteEditorAvailability();
+      if (siteEditor) {
+        dialog.listFilesPath = siteEditor.listFilesPath || "";
+        dialog.saveFilePath = siteEditor.saveFilePath || "";
+        dialog.fileOperationPath = siteEditor.fileOperationPath || "";
+        dialog.jwt = siteEditor.jwt || toJS(store.jwt) || "";
+        dialog.method = siteEditor.method || "POST";
+      } else {
+        dialog.jwt = toJS(store.jwt) || "";
+        dialog.method = "POST";
+      }
+      if (
+        store.manifest &&
+        store.manifest.metadata &&
+        store.manifest.metadata.site &&
+        store.manifest.metadata.site.name
+      ) {
+        dialog.siteName = store.manifest.metadata.site.name;
+      }
+      if (store.activeItem && store.activeItem.id) {
+        dialog.nodeId = store.activeItem.id;
+      }
       let title = this.t.files;
       let breadcrumbs = [];
       if (fromSiteSettings) {

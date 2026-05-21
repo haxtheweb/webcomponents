@@ -11,6 +11,9 @@ import {
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import {
+  DDDVariables
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 /**
  * `editable-table-display`
@@ -28,8 +31,9 @@ class EditableTableDisplay extends displayBehaviors(
 ) {
   static get styles() {
     return [
-      ...(super.styles || []),
-      ...editableTableDisplayStyles,
+      DDDVariables,
+      super.styles,
+      editableTableDisplayStyles,
       css`
         :host([hidden]),
         :host([disabled]) {

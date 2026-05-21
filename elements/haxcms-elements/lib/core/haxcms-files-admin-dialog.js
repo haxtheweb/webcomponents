@@ -4,249 +4,158 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
-import "@haxtheweb/editable-table/editable-table.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
+import "@haxtheweb/hax-body/lib/hax-upload-field.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "./hax-file-actions.js";
+
+const SCALE_PRESETS = {
+  xs: { width: 200, height: 150, label: "ddd-xs  200\u00d7150" },
+  sm: { width: 320, height: 240, label: "ddd-sm  320\u00d7240" },
+  md: { width: 400, height: 300, label: "ddd-md  400\u00d7300" },
+  lg: { width: 800, height: 600, label: "ddd-lg  800\u00d7600" },
+  xl: { width: 1200, height: 900, label: "ddd-xl  1200\u00d7900" },
+};
 
 class HAXCMSFilesAdminDialog extends DDD {
   static get tag() {
     return "haxcms-files-admin-dialog";
   }
-
   static get properties() {
     return {
       rows: { type: Array },
-      textFilter: { type: String, attribute: "text-filter" },
-      typeFilter: { type: String, attribute: "type-filter" },
+      loading: { type: Boolean, reflect: true },
+      busy: { type: Boolean, reflect: true },
+      errorMessage: { type: String },
+      listFilesPath: { type: String, attribute: "list-files-path" },
+      method: { type: String },
+      saveFilePath: { type: String, attribute: "save-file-path" },
+      fileOperationPath: { type: String, attribute: "file-operation-path" },
+      jwt: { type: String },
+      siteName: { type: String, attribute: "site-name" },
+      nodeId: { type: String, attribute: "node-id" },
+      scalePreset: { type: String, attribute: "scale-preset" },
     };
   }
 
   constructor() {
     super();
     this.rows = [];
-    this.textFilter = "";
-    this.typeFilter = "any";
+    this.loading = false;
+    this.busy = false;
+    this.errorMessage = "";
+    this.listFilesPath = "";
+    this.saveFilePath = "";
+    this.fileOperationPath = "";
+    this.jwt = "";
+    this.siteName = "";
+    this.method = "POST";
+    this.nodeId = "";
+    this.scalePreset = "md";
     this.__disposer = [];
+    this.__refreshTimer = null;
+    this.__boundFileAction = this._onFileAction.bind(this);
   }
 
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
-          --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) - var(
-                --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
-          );
           display: flex;
           flex-direction: column;
-          min-width: 80vw;
-          min-height: min(60vh, var(--haxcms-admin-panel-height));
-          height: var(--haxcms-admin-panel-height);
-          max-height: var(--haxcms-admin-panel-height);
+          min-width: min(90vw, 1100px);
+          max-height: calc(
+            var(--simple-modal-height, 85vh) -
+              var(--simple-modal-titlebar-height, 80px) -
+              var(--ddd-spacing-8, 32px)
+          );
           overflow: hidden;
-          font-family: var(--ddd-font-navigation);
-        }
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-          padding: var(--ddd-spacing-4);
-          gap: var(--ddd-spacing-3);
-        }
-        .panel-scroll {
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          padding-right: var(--ddd-spacing-1);
-        }
-        .panel {
-          border: var(--ddd-border-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-md);
-          padding: var(--ddd-spacing-3);
-          margin: 0 0 var(--ddd-spacing-3) 0;
-        }
-        .title {
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-medium);
-        }
-        .controls {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          align-items: end;
-        }
-        label {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-4xs);
-        }
-        input,
-        select,
-        button {
-          font: inherit;
-        }
-        input,
-        select {
-          border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          min-height: 36px;
-          min-width: 180px;
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
         }
-        button {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-white);
-          cursor: pointer;
-          min-height: 36px;
+        .shell {
+          padding: var(--ddd-spacing-4);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          min-height: 0;
+          flex: 1;
         }
-        button[disabled] {
-          opacity: 0.6;
-          cursor: not-allowed;
+        .panel {
+          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-md);
+          padding: var(--ddd-spacing-3);
         }
-        editable-table {
+        .upload-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-3);
+          align-items: start;
+        }
+        .upload-main { flex: 1 1 280px; min-width: 260px; }
+        .upload-main hax-upload-field {
+          display: block;
+        }
+        .ctrl { display: flex; align-items: center; }
+        .toolbar { display: flex; flex-wrap: wrap; gap: var(--ddd-spacing-2); align-items: center; }
+        .helper { font-size: var(--ddd-font-size-5xs); color: var(--ddd-theme-default-slateGray); }
+        .status { font-size: var(--ddd-font-size-4xs); min-height: 1.2em; }
+        .status.error { color: var(--ddd-theme-default-error); }
+        .tw {
+          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-md);
+          overflow: auto;
+          flex: 1;
+          min-height: 0;
+        }
+        editable-table-display {
+          --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
           --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-4xs);
+          --editable-table-font-size: var(--ddd-font-size-5xs, 12px);
         }
         .table-scroll {
           width: 100%;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
-        .table-scroll editable-table {
+        .table-scroll editable-table-display {
           display: block;
-          min-width: 980px;
+          min-width: 760px;
         }
-        .preview-cell {
-          min-width: 120px;
+        table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: var(--ddd-font-size-4xs); }
+        thead th {
+          text-align: left;
+          padding: var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          background: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-charcoalGray));
+          position: sticky; top: 0; z-index: 1;
         }
-        .preview-wrap {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 100px;
-          height: 100px;
-          max-width: 100px;
-          max-height: 100px;
-          overflow: hidden;
-          border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-coalyGray)
-          );
+        td { padding: var(--ddd-spacing-2); border-bottom: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        .pw {
+          width: 200px; height: 100px; border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
         }
-        .preview-wrap img {
-          width: 100px;
-          height: 100px;
-          max-width: 100px;
-          max-height: 100px;
-          object-fit: contain;
-          border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          display: block;
-        }
-        .file-name-cell {
-          min-width: 230px;
-        }
-        .file-name-main {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          min-width: 0;
-        }
-        .file-name-main span {
-          overflow-wrap: anywhere;
-        }
-        .file-path {
-          margin-top: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-6xs, 0.62rem);
-          line-height: var(--ddd-lh-120, 1.2);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          overflow-wrap: anywhere;
-        }
-        .copy-btn {
+        .pw img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .fn { display: flex; align-items: center; gap: var(--ddd-spacing-1); }
+        .fn a { color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight)); text-decoration: none; overflow-wrap: anywhere; }
+        .fp { font-size: var(--ddd-font-size-5xs); margin-top: var(--ddd-spacing-1); color: var(--ddd-theme-default-slateGray); overflow-wrap: anywhere; }
+        .ib {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
-          --simple-icon-button-padding: var(--ddd-spacing-1);
-          --simple-icon-height: var(--ddd-icon-3xs);
-          --simple-icon-width: var(--ddd-icon-3xs);
-          flex: 0 0 auto;
+          --simple-icon-button-border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          --simple-icon-button-focus-border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
+          --simple-icon-height: var(--ddd-icon-xxs); --simple-icon-width: var(--ddd-icon-xxs);
+          padding: var(--ddd-spacing-2);
         }
-        a {
-          color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .empty {
-          margin: var(--ddd-spacing-4) 0;
-        }
-        .sr-only {
-          border: 0;
-          clip: rect(0, 0, 0, 0);
-          height: 1px;
-          margin: -1px;
-          overflow: hidden;
-          padding: 0;
-          position: absolute;
-          white-space: nowrap;
-          width: 1px;
-        }
-        @media screen and (max-width: 900px) {
-          :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
-            height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: auto;
-            padding: var(--ddd-spacing-3);
-          }
-          .panel-shell {
-            min-height: auto;
-            padding: 0;
-          }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow-y: visible;
-            overflow-x: auto;
-            padding-right: 0;
-          }
+        .empty { padding: var(--ddd-spacing-4); }
+        @media (max-width: 900px) {
+          :host { min-width: 0; width: 100%; }
+          .upload-row { flex-direction: column; }
         }
       `,
     ];
@@ -254,573 +163,484 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   connectedCallback() {
     super.connectedCallback();
+    this.addEventListener("hax-file-action", this.__boundFileAction);
     this.__disposer.push(
       autorun(() => {
-        const manifest = toJS(store.manifest);
-        this.rows = this._buildRows(manifest);
+        const m = toJS(store.manifest);
+        if (m && m.metadata && m.metadata.site && m.metadata.site.name) {
+          this.siteName = m.metadata.site.name;
+        }
       }),
     );
+    this.__disposer.push(
+      autorun(() => {
+        const ai = toJS(store.activeItem);
+        if (ai && ai.id) { this.nodeId = ai.id; }
+      }),
+    );
+    this.__disposer.push(
+      autorun(() => {
+        const j = toJS(store.jwt);
+        if (j) { this.jwt = j; }
+      }),
+    );
+    this.refreshFiles();
   }
 
   disconnectedCallback() {
+    if (this.__refreshTimer) { clearTimeout(this.__refreshTimer); this.__refreshTimer = null; }
+    this.removeEventListener("hax-file-action", this.__boundFileAction);
     for (var i in this.__disposer) {
-      const disposer = this.__disposer[i];
-      if (typeof disposer === "function") {
-        disposer();
-      } else if (disposer && typeof disposer.dispose === "function") {
-        disposer.dispose();
-      }
+      const d = this.__disposer[i];
+      if (typeof d === "function") { d(); }
+      else if (d && typeof d.dispose === "function") { d.dispose(); }
     }
     this.__disposer = [];
     super.disconnectedCallback();
   }
 
-  _buildRows(manifest) {
-    const rowsByKey = {};
-    const items =
-      manifest && Array.isArray(manifest.items) ? manifest.items : [];
-    items.forEach((item) => {
-      const references = this._itemFileReferences(item);
-      references.forEach((reference) => {
-        this._upsertReferenceRow(rowsByKey, reference, item);
-      });
-    });
-    this._siteFileReferences(manifest).forEach((reference) => {
-      this._upsertReferenceRow(rowsByKey, reference, null);
-    });
-    const rows = Object.keys(rowsByKey).map((key) => {
-      const row = rowsByKey[key];
-      row.pageRefs.sort((a, b) => a.title.localeCompare(b.title));
-      row.pageSearch = row.pageRefs
-        .map((page) => page.title.toLowerCase())
-        .join(" ");
-      row.name = row.name || this._extractFileName(row.url || row.fullUrl);
-      row.mimeType = row.mimeType || this._inferMimeType(row);
-      row.type = this._normalizeType(row.mimeType);
-      row.sizeLabel = this._formatBytes(row.size);
-      row.path = row.url || row.fullUrl || "";
-      row.previewUrl = row.type === "image" ? row.url || row.fullUrl : "";
-      return row;
-    });
-    rows.sort((a, b) => {
-      const left = (a.name || "").toLowerCase();
-      const right = (b.name || "").toLowerCase();
-      return left.localeCompare(right);
-    });
-    return rows;
-  }
-
-  _upsertReferenceRow(rowsByKey, reference, item) {
-    const key = this._rowKey(reference);
-    if (!key) {
-      return;
-    }
-    if (!rowsByKey[key]) {
-      rowsByKey[key] = {
-        key,
-        name: reference.name || "",
-        mimeType: reference.mimeType || "",
-        size: this._normalizeSize(reference.size),
-        url: reference.url || "",
-        fullUrl: reference.fullUrl || "",
-        pageRefs: [],
-        siteReferenced: false,
-        pageSearch: "",
-      };
-    }
-    const row = rowsByKey[key];
-    if (!row.name && reference.name) {
-      row.name = reference.name;
-    }
-    if (!row.mimeType && reference.mimeType) {
-      row.mimeType = reference.mimeType;
-    }
-    if (!row.size && reference.size) {
-      row.size = this._normalizeSize(reference.size);
-    }
-    if (!row.url && reference.url) {
-      row.url = reference.url;
-    }
-    if (!row.fullUrl && reference.fullUrl) {
-      row.fullUrl = reference.fullUrl;
-    }
-    if (item) {
-      const pageId = item.id || item.slug || item.title;
-      const hasReference = row.pageRefs.some((page) => page.id === pageId);
-      if (!hasReference) {
-        row.pageRefs.push({
-          id: pageId,
-          title: item.title || item.slug || "Untitled page",
-          slug: item.slug || "",
-        });
-      }
-    } else {
-      row.siteReferenced = true;
+  updated(cp) {
+    if (super.updated) { super.updated(cp); }
+    if ((cp.has("listFilesPath") || cp.has("siteName")) && this.listFilesPath && this.siteName) {
+      this.refreshFiles();
     }
   }
 
-  _siteFileReferences(manifest) {
-    const references = [];
-    if (!manifest || !manifest.metadata) {
-      return references;
-    }
-    const metadata = manifest.metadata;
-    const site = metadata.site || {};
-    const theme = metadata.theme || {};
-    if (site.logo) {
-      references.push(this._normalizeReference(site.logo));
-    }
-    if (theme.variables && theme.variables.image) {
-      references.push(this._normalizeReference(theme.variables.image));
-    }
-    if (theme.image) {
-      references.push(this._normalizeReference(theme.image));
-    }
-    if (theme.thumbnail) {
-      references.push(this._normalizeReference(theme.thumbnail));
-    }
-    return references.filter((reference) => !!reference);
+  get _canList() { return this.listFilesPath !== "" && this.siteName !== ""; }
+  get _canUpload() { return this.siteName !== "" && this.nodeId !== ""; }
+  get _canOp() { return this.fileOperationPath !== "" && this.siteName !== ""; }
+
+  _s(v) { return typeof v === "string" ? v.trim() : ""; }
+
+  _normPath(v) {
+    const c = this._s(v).replace(/\\/g, "/");
+    if (!c) return "";
+    if (c.indexOf("files/") === 0) return c;
+    const i = c.toLowerCase().indexOf("/files/");
+    if (i !== -1) return c.substring(i + 1);
+    const j = c.toLowerCase().indexOf("files/");
+    if (j !== -1) return c.substring(j);
+    return c;
   }
 
-  _itemFileReferences(item) {
-    const references = [];
-    if (!item || !item.metadata) {
-      return references;
+  _baseName(v) {
+    const c = this._s(v).split("?")[0];
+    if (!c) return "";
+    const p = c.split("/");
+    return p.length ? p[p.length - 1] : c;
+  }
+  _nameWithoutExt(v) {
+    const c = this._s(v);
+    if (!c) return "";
+    const i = c.lastIndexOf(".");
+    if (i <= 0) return c;
+    return c.substring(0, i);
+  }
+  _dateMs(v) {
+    if (typeof v === "number" && Number.isFinite(v) && v > 0) {
+      const normalized = v < 1000000000000 ? v * 1000 : v;
+      const d = new Date(normalized);
+      return Number.isNaN(d.getTime()) ? 0 : normalized;
     }
-    const metadata = item.metadata;
-    if (Array.isArray(metadata.files)) {
-      metadata.files.forEach((entry) => {
-        const normalized = this._normalizeReference(entry);
-        if (normalized) {
-          references.push(normalized);
-        }
-      });
-    }
-    if (Array.isArray(metadata.images)) {
-      metadata.images.forEach((entry) => {
-        const normalized = this._normalizeReference(entry);
-        if (normalized) {
-          references.push(normalized);
-        }
-      });
-    }
-    if (metadata.image) {
-      const normalized = this._normalizeReference(metadata.image);
-      if (normalized) {
-        references.push(normalized);
+    if (typeof v !== "string") return 0;
+    const c = v.trim();
+    if (!c) return 0;
+    if (/^[0-9]+$/.test(c)) {
+      const i = parseInt(c, 10);
+      if (!Number.isNaN(i) && i > 0) {
+        const normalized = i < 1000000000000 ? i * 1000 : i;
+        const d = new Date(normalized);
+        return Number.isNaN(d.getTime()) ? 0 : normalized;
       }
     }
-    return references;
+    const d = new Date(c);
+    if (Number.isNaN(d.getTime())) return 0;
+    return d.getTime();
   }
-
-  _normalizeReference(reference) {
-    if (!reference) {
-      return null;
+  _dateValue(v) {
+    const ms = this._dateMs(v);
+    if (!ms) return "";
+    return new Date(ms).toISOString();
+  }
+  _fmtDate(v) {
+    const i = this._dateValue(v);
+    if (!i) return "\u2014";
+    return i.replace("T", " ").replace("Z", " UTC");
+  }
+  _fmtRelativeDate(v) {
+    const ms = this._dateMs(v);
+    if (!ms) return "—";
+    const nowMs = Date.now();
+    let delta = Math.floor((nowMs - ms) / 1000);
+    if (delta < 0) {
+      delta = 0;
     }
-    if (typeof reference === "string") {
-      const url = this._cleanString(reference);
-      if (!this._looksLikeFileReference(url)) {
-        return null;
+    const month = 2592000;
+    const day = 86400;
+    const hour = 3600;
+    const minute = 60;
+    if (delta >= month) {
+      const months = Math.floor(delta / month);
+      return `${months} month${months === 1 ? "" : "s"} ago`;
+    }
+    if (delta >= day) {
+      const days = Math.floor(delta / day);
+      return `${days} day${days === 1 ? "" : "s"} ago`;
+    }
+    if (delta >= hour) {
+      const hours = Math.floor(delta / hour);
+      const minutes = Math.floor((delta % hour) / minute);
+      if (minutes > 0) {
+        return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"} ago`;
       }
-      return {
-        url,
-        fullUrl: "",
-        name: this._extractFileName(url),
-        mimeType: this._inferMimeType({ url }),
-        size: 0,
-      };
+      return `${hours} hour${hours === 1 ? "" : "s"} ago`;
     }
-    if (typeof reference === "object") {
-      const url = this._cleanString(reference.url || reference.path);
-      const fullUrl = this._cleanString(reference.fullUrl || "");
-      const name =
-        this._cleanString(reference.name) ||
-        this._extractFileName(url || fullUrl || "");
-      const mimeType = this._normalizeMimeType(
-        reference.type || reference.mimetype || reference.mime,
-      );
-      if (
-        !this._looksLikeFileReference(url) &&
-        !this._looksLikeFileReference(fullUrl)
-      ) {
-        return null;
-      }
-      return {
-        url,
-        fullUrl,
-        name,
-        mimeType,
-        size: this._normalizeSize(reference.size),
-      };
+    if (delta >= minute) {
+      const minutes = Math.floor(delta / minute);
+      const seconds = Math.floor(delta % minute);
+      return `${minutes} minute${minutes === 1 ? "" : "s"} ${seconds} second${seconds === 1 ? "" : "s"} ago`;
     }
-    return null;
+    return `${delta} second${delta === 1 ? "" : "s"} ago`;
   }
 
-  _cleanString(value) {
-    return typeof value === "string" ? value.trim() : "";
-  }
-
-  _looksLikeFileReference(value) {
-    const test = this._cleanString(value).toLowerCase();
-    if (!test) {
-      return false;
-    }
-    if (test.indexOf("files/") !== -1 || test.indexOf("/files/") !== -1) {
-      return true;
-    }
-    return false;
-  }
-
-  _rowKey(reference) {
-    const key =
-      this._cleanString(reference.url) ||
-      this._cleanString(reference.fullUrl) ||
-      this._cleanString(reference.name);
-    return key.toLowerCase();
-  }
-
-  _extractFileName(value) {
-    const clean = this._cleanString(value).split("?")[0];
-    if (!clean) {
-      return "";
-    }
-    const parts = clean.split("/");
-    const name = parts.length > 0 ? parts[parts.length - 1] : clean;
-    try {
-      return decodeURIComponent(name);
-    } catch (e) {
-      return name;
-    }
-  }
-
-  _normalizeMimeType(value) {
-    const mime = this._cleanString(value).toLowerCase();
-    return mime;
-  }
-
-  _inferMimeType(reference) {
-    const target = reference.name || reference.url || reference.fullUrl || "";
-    const extParts = target.toLowerCase().split("?");
-    const extTarget = extParts.length > 0 ? extParts[0] : target.toLowerCase();
-    const extension =
-      extTarget.indexOf(".") !== -1 ? extTarget.split(".").pop() : "";
-    const mimeMap = {
-      png: "image/png",
-      jpg: "image/jpeg",
-      jpeg: "image/jpeg",
-      gif: "image/gif",
-      webp: "image/webp",
-      svg: "image/svg+xml",
-      avif: "image/avif",
-      bmp: "image/bmp",
-      tif: "image/tiff",
-      tiff: "image/tiff",
-      mp4: "video/mp4",
-      m4v: "video/mp4",
-      webm: "video/webm",
-      mov: "video/quicktime",
-      ogv: "video/ogg",
-      mp3: "audio/mpeg",
-      wav: "audio/wav",
-      ogg: "audio/ogg",
-      m4a: "audio/mp4",
-      pdf: "application/pdf",
-      txt: "text/plain",
-      md: "text/markdown",
-      csv: "text/csv",
-      json: "application/json",
-      doc: "application/msword",
-      docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      xls: "application/vnd.ms-excel",
-      xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      ppt: "application/vnd.ms-powerpoint",
-      pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  _mime(v) {
+    const ext = this._s(v).toLowerCase().split("?")[0].split(".").pop();
+    const m = {
+      png:"image/png",jpg:"image/jpeg",jpeg:"image/jpeg",gif:"image/gif",
+      webp:"image/webp",svg:"image/svg+xml",avif:"image/avif",bmp:"image/bmp",
+      tif:"image/tiff",tiff:"image/tiff",mp4:"video/mp4",webm:"video/webm",
+      mov:"video/quicktime",mp3:"audio/mpeg",wav:"audio/wav",m4a:"audio/mp4",
+      pdf:"application/pdf",
     };
-    return extension && mimeMap[extension] ? mimeMap[extension] : "";
+    return ext && m[ext] ? m[ext] : "";
   }
 
-  _normalizeType(value) {
-    const lower = (value || "").toLowerCase();
-    if (lower.includes("image")) return "image";
-    if (lower.includes("video")) return "video";
-    if (lower.includes("audio")) return "audio";
-    if (lower.includes("pdf")) return "document";
-    if (lower.includes("text")) return "document";
-    if (lower.includes("application")) return "document";
-    return lower || "file";
-  }
-
-  _normalizeSize(value) {
-    if (typeof value === "number") {
-      return value;
-    }
-    if (typeof value === "string" && value !== "") {
-      const n = parseInt(value, 10);
-      return Number.isNaN(n) ? 0 : n;
-    }
+  _sz(v) {
+    if (typeof v === "number") return v;
+    if (typeof v === "string" && v) { const n = parseInt(v, 10); return Number.isNaN(n) ? 0 : n; }
     return 0;
   }
 
-  _formatBytes(size) {
-    const sizeValue = this._normalizeSize(size);
-    if (!sizeValue) {
-      return "";
-    }
-    const units = ["B", "KB", "MB", "GB"];
-    let unitIndex = 0;
-    let current = sizeValue;
-    while (current >= 1024 && unitIndex < units.length - 1) {
-      current = current / 1024;
-      unitIndex++;
-    }
-    const precision = current >= 10 || unitIndex === 0 ? 0 : 1;
-    return `${current.toFixed(precision)} ${units[unitIndex]}`;
-  }
-  _toRelativeFilePath(value) {
-    const cleanValue = this._cleanString(value);
-    if (!cleanValue) {
-      return "";
-    }
-    const lowered = cleanValue.toLowerCase();
-    if (lowered.indexOf("files/") === 0) {
-      return cleanValue;
-    }
-    const filesWithSlashIndex = lowered.indexOf("/files/");
-    if (filesWithSlashIndex !== -1) {
-      return cleanValue.substring(filesWithSlashIndex + 1);
-    }
-    const filesIndex = lowered.indexOf("files/");
-    if (filesIndex !== -1) {
-      return cleanValue.substring(filesIndex);
-    }
-    return cleanValue;
-  }
-  _copyPath(row) {
-    if (!row) {
-      return "";
-    }
-    const relativePath = this._toRelativeFilePath(row.url || row.path || "");
-    if (relativePath) {
-      return relativePath;
-    }
-    return this._toRelativeFilePath(row.fullUrl || "");
+  _fmtBytes(s) {
+    let v = this._sz(s); if (!v) return "\u2014";
+    const u = ["B","KB","MB","GB"]; let i = 0;
+    while (v >= 1024 && i < u.length - 1) { v /= 1024; i++; }
+    return `${v.toFixed(v >= 10 || i === 0 ? 0 : 1)} ${u[i]}`;
   }
 
-  get filteredRows() {
-    const txt = (this.textFilter || "").toLowerCase().trim();
-    return this.rows.filter((row) => {
-      if (this.typeFilter !== "any" && row.type !== this.typeFilter) {
-        return false;
+  _pubUrl(row) {
+    const f = this._s(row.fullUrl || "");
+    if (f) {
+      if (f.indexOf("http") === 0 || f.indexOf("/") === 0) return f;
+      return "/" + f.replace(/^\/+/, "");
+    }
+    const p = this._s(row.path || "");
+    return p ? "/" + p.replace(/^\/+/, "") : "";
+  }
+
+  _normItem(item, idx) {
+    if (!item || typeof item !== "object") return null;
+    const p = this._normPath(item.path || item.url || item.file || "");
+    if (!p || p.indexOf("files/") !== 0) return null;
+    const mt = this._s(item.mimetype || item.type || item.mimeType) || this._mime(p);
+    const updatedValue =
+      item.updated ||
+      item.dateUpdated ||
+      item.modified ||
+      item.lastModified ||
+      item.mtime ||
+      item.dateCreated ||
+      item.created ||
+      "";
+    const r = {
+      id: this._s(item.id) || `${p}-${idx}`,
+      path: p,
+      fullUrl: this._s(item.fullUrl || ""),
+      name: this._s(item.name) || this._baseName(p),
+      mimetype: mt,
+      size: this._sz(item.size),
+      updated: this._dateValue(updatedValue),
+      dateCreated: this._dateValue(item.dateCreated || item.created || ""),
+    };
+    r.publicUrl = this._pubUrl(r);
+    return r;
+  }
+
+  _normPayload(d) {
+    let arr = Array.isArray(d) ? d : d && Array.isArray(d.data) ? d.data : [];
+    const rows = [];
+    arr.forEach((it, i) => { const n = this._normItem(it, i); if (n) rows.push(n); });
+    rows.sort((a, b) => a.path.localeCompare(b.path));
+    return rows;
+  }
+
+  _isImg(r) { return r && typeof r.mimetype === "string" && r.mimetype.toLowerCase().indexOf("image/") === 0; }
+  _canScale(r) { return this._isImg(r) && r.mimetype.toLowerCase().indexOf("svg") === -1; }
+  _canConvertToJpg(r) { return this._canScale(r); }
+
+  async _rj(resp) { try { return await resp.json(); } catch(e) { return null; } }
+  _em(resp, d, fb) {
+    if (d && d.__failed && typeof d.__failed.message === "string" && d.__failed.message) return d.__failed.message;
+    if (d && typeof d.message === "string" && d.message) return d.message;
+    if (resp && resp.status) return `${fb} (${resp.status})`;
+    return fb;
+  }
+
+  async refreshFiles() {
+    if (!this._canList) return;
+    this.loading = true; this.errorMessage = "";
+    try {
+      const resp = await fetch(this.listFilesPath, {
+        method: this.method, credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: this.method === "POST" ? JSON.stringify({ jwt: this.jwt, site: { name: this.siteName } }) : undefined,
+      });
+      const d = await this._rj(resp);
+      if (!resp.ok) { this.errorMessage = this._em(resp, d, "Unable to load files"); this.rows = []; return; }
+      this.rows = this._normPayload(d);
+    } catch(e) { this.errorMessage = "Unable to load files"; this.rows = []; }
+    finally { this.loading = false; }
+  }
+
+  _onHaxUploadValueChanged(e) {
+    const value =
+      e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
+    if (!value) return;
+    this.errorMessage = "";
+    this._msg("Upload complete");
+    this._schedRefresh();
+  }
+  _schedRefresh() {
+    if (this.__refreshTimer) clearTimeout(this.__refreshTimer);
+    this.__refreshTimer = setTimeout(() => { this.refreshFiles(); this.__refreshTimer = null; }, 250);
+  }
+
+  _rowByIndex(index) {
+    const i = parseInt(index, 10);
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return null;
+    return { index: i, row: this.rows[i] };
+  }
+
+  _onFileAction(e) {
+    if (!e || !e.detail || this.busy) return;
+    const rowData = this._rowByIndex(e.detail.rowIndex);
+    if (!rowData) return;
+    if (e.detail.action === "scale") {
+      this._onScaleAction(rowData.index, e.detail.value);
+    } else if (e.detail.action === "transform") {
+      this._onTransformAction(rowData.index, e.detail.value);
+    } else if (e.detail.action === "rename") {
+      this._onRenameAction(rowData.index);
+    } else if (e.detail.action === "delete") {
+      this._delete(rowData.index);
+    }
+  }
+  async _op(row, op, options = {}) {
+    if (!this._canOp) { this._msg("File operation endpoint not configured.", true); return; }
+    this.busy = true; this.errorMessage = "";
+    try {
+      const body = { jwt: this.jwt, site: { name: this.siteName }, operation: op, path: row.path };
+      if (options && typeof options.size === "string" && options.size) body.size = options.size;
+      if (options && typeof options.newName === "string" && options.newName) body.newName = options.newName;
+      const resp = await fetch(this.fileOperationPath, {
+        method: this.method, credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const d = await this._rj(resp);
+      if (!resp.ok || d && d.__failed && d.__failed.message) {
+        this.errorMessage = this._em(resp, d, "File operation failed"); this._msg(this.errorMessage, true); return;
       }
-      if (!txt) {
-        return true;
-      }
-      return (
-        (row.name || "").toLowerCase().includes(txt) ||
-        (row.mimeType || "").toLowerCase().includes(txt) ||
-        (row.path || "").toLowerCase().includes(txt) ||
-        (row.pageSearch || "").includes(txt)
-      );
-    });
+      let message = "File operation complete";
+      if (op === "delete") message = "File deleted";
+      else if (op === "rename") message = "File renamed";
+      else if (op === "convert-jpg") message = "Image converted to JPG";
+      else if (op === "sepia") message = "Image transformed to sepia";
+      else if (op === "black-and-white") message = "Image transformed to black and white";
+      else if (op === "scale" && options && options.size) message = `Scaled to ${options.size}`;
+      this._msg(message);
+      await this.refreshFiles();
+    } catch(e) { this.errorMessage = "File operation failed"; this._msg(this.errorMessage, true); }
+    finally { this.busy = false; }
   }
 
-  _onTextFilter(e) {
-    this.textFilter = e.target.value;
+  async _onScaleAction(index, size) {
+    const i = parseInt(index, 10);
+    const normalizedSize = typeof size === "string" ? size.trim() : "";
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
+    if (!normalizedSize || !SCALE_PRESETS[normalizedSize]) return;
+    if (!this._canScale(this.rows[i])) {
+      this._msg("Only raster images can be scaled.", true);
+      return;
+    }
+    this.scalePreset = normalizedSize;
+    await this._op(this.rows[i], "scale", { size: normalizedSize });
+  }
+  async _onTransformAction(index, op) {
+    const i = parseInt(index, 10);
+    const normalizedOp = typeof op === "string" ? op.trim() : "";
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
+    if (!normalizedOp) return;
+    if (normalizedOp === "convert-jpg" && !this._canConvertToJpg(this.rows[i])) {
+      this._msg("Only raster images can be converted to JPG.", true);
+      return;
+    }
+    if (
+      (normalizedOp === "sepia" || normalizedOp === "black-and-white") &&
+      !this._canScale(this.rows[i])
+    ) {
+      this._msg("Only raster images can be transformed.", true);
+      return;
+    }
+    await this._op(this.rows[i], normalizedOp);
+  }
+  async _onRenameAction(index) {
+    const i = parseInt(index, 10);
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
+    const activeRow = this.rows[i];
+    const defaultName = this._nameWithoutExt(activeRow.name || activeRow.path);
+    const requestedName = globalThis.prompt(
+      "Rename file using letters, numbers, and hyphens. Keep the existing extension.",
+      defaultName,
+    );
+    if (typeof requestedName !== "string") return;
+    const normalizedName = requestedName.trim();
+    if (!normalizedName) {
+      this._msg("Rename cancelled", true);
+      return;
+    }
+    await this._op(activeRow, "rename", { newName: normalizedName });
+  }
+  async _delete(index) {
+    const i = parseInt(index, 10);
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
+    if (!globalThis.confirm(`Delete ${this.rows[i].path}? This cannot be undone.`)) return;
+    await this._op(this.rows[i], "delete");
   }
 
-  _onTypeFilter(e) {
-    this.typeFilter = e.target.value;
+
+  _msg(m, err) {
+    if (store && typeof store.toast === "function") { store.toast(m, 3000, { hat: err ? "fire" : "construction" }); return; }
+    if (HAXStore && typeof HAXStore.toast === "function") HAXStore.toast(m, 3000, "fit-bottom");
   }
 
-  _resetFilters() {
-    this.textFilter = "";
-    this.typeFilter = "any";
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) { super.firstUpdated(changedProperties); }
+    // on by default and we don't need this here
+    this.shadowRoot.querySelector("hax-upload-field").showSources = false;
   }
 
   render() {
     return html`
-      <div class="panel-shell">
-        <div class="panel-scroll">
-          <div class="panel">
-            <h3 class="title">Show only files where</h3>
-            <div class="controls">
-              <label>
-                Type
-                <select
-                  .value="${this.typeFilter}"
-                  @change="${this._onTypeFilter}"
-                >
-                  <option value="any">Any</option>
-                  <option value="image">Image</option>
-                  <option value="video">Video</option>
-                  <option value="audio">Audio</option>
-                  <option value="document">Document</option>
-                  <option value="file">File</option>
-                </select>
-              </label>
-              <label>
-                Text
-                <input
-                  type="text"
-                  .value="${this.textFilter}"
-                  @input="${this._onTextFilter}"
-                  placeholder="File name, MIME type, page title, or path"
-                />
-              </label>
-              <button
-                @click="${this._resetFilters}"
-                ?disabled="${!this.textFilter && this.typeFilter === "any"}"
+      <div class="shell">
+        <div class="panel">
+          <div class="upload-row">
+            <div class="upload-main">
+              <hax-upload-field
+                hide-input
+                no-camera
+                no-voice-record
+                no-screen-record
+                ?disabled="${!this._canUpload || this.busy}"
+                @value-changed="${this._onHaxUploadValueChanged}"
               >
-                Reset filters
-              </button>
+              </hax-upload-field>
+            </div>
+            <div class="ctrl">
+              <div class="toolbar">
+                <simple-icon-button-lite
+                  class="ib"
+                  icon="icons:refresh"
+                  label="Refresh"
+                  title="Refresh file list"
+                  ?disabled="${this.loading || !this._canList}"
+                  @click="${this.refreshFiles}"
+                >
+                </simple-icon-button-lite>
+              </div>
             </div>
           </div>
-          ${this.filteredRows.length === 0
-            ? html`<div class="empty">
-                No file references found in the manifest.
-              </div>`
+          <div class="status ${this.errorMessage ? "error" : ""}" aria-live="polite">
+            ${this.loading
+              ? "Loading\u2026"
+              : this.errorMessage
+                ? this.errorMessage
+                : `${this.rows.length} file(s)`}
+          </div>
+        </div>
+        <div class="tw">
+          ${this.rows.length === 0 && !this.loading
+            ? html`<div class="empty">No files found.</div>`
             : keyed(
-                `${this.typeFilter}|${this.textFilter}|${this.filteredRows.length}`,
-                html`<div class="table-scroll">
-                  <editable-table
-                    bordered
-                    condensed
-                    column-header
-                    sort
-                    striped
-                    scroll
-                    @click="${this.copyFilePath}"
-                  >
+                `${this.rows.length}|${this.rows.map((row) => row.path).join("|")}`,
+                html`
+                  <editable-table-display bordered condensed column-header responsive sort striped scroll>
                     <table>
                       <thead>
                         <tr>
                           <th>Preview</th>
-                          <th>File Name</th>
-                          <th class="col-mime">MIME Type</th>
-                          <th>Referenced By</th>
-                          <th class="col-size">Size</th>
+                          <th>File</th>
+                          <th>Type</th>
+                          <th>Size</th>
+                          <th>Updated</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                        ${this.filteredRows.map(
-                          (row) => html`
+                        ${this.rows.map(
+                          (r, i) => html`
                             <tr>
-                              <td class="preview-cell">
-                                <span class="preview-wrap">
-                                  ${row.previewUrl
-                                    ? html`<img
-                                        loading="lazy"
-                                        decoding="async"
-                                        width="100px"
-                                        height="100px"
-                                        style="display: block; background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));"
-                                        class="preview-image"
-                                        src="${row.previewUrl}"
-                                        alt="Preview of ${row.name}"
-                                      />`
-                                    : html`<span class="sr-only"
-                                        >No image preview available</span
-                                      >`}
+                              <td>
+                                <span class="pw">
+                                  ${this._isImg(r) && r.publicUrl
+                                    ? html`<img src="${r.publicUrl}" alt="${r.name}" height="100px" loading="lazy" decoding="async" />`
+                                    : html`\u2014`}
                                 </span>
                               </td>
-                              <td class="file-name-cell">
-                                <div class="file-name-main">
-                                  <span
-                                    >${row.name || "—"}
-                                    <simple-icon-button-lite
-                                      title="${this._copyPath(row)}"
-                                      data-copy-path="${this._copyPath(row)}"
-                                      label="Copy file path for ${row.name ||
-                                      "file"}"
-                                      icon="content-copy"
-                                      class="copy-btn"
-                                    ></simple-icon-button-lite>
-                                  </span>
-                                </div>
-                              </td>
-                              <td class="col-mime">${row.mimeType || "—"}</td>
                               <td>
-                                ${row.pageRefs.length > 0
-                                  ? row.pageRefs[0].slug
-                                    ? html`<a href="${row.pageRefs[0].slug}"
-                                        >${row.pageRefs[0].title}</a
-                                      >`
-                                    : html`${row.pageRefs[0].title}`
-                                  : row.siteReferenced
-                                    ? html`Site Settings`
-                                    : html`—`}
+                                <div class="fn">
+                                  ${r.publicUrl
+                                    ? html`<a href="${r.publicUrl}" target="_blank" rel="noopener">${r.name}</a>`
+                                    : html`${r.name}`}
+                                  <simple-clipboard-copy-button
+                                    class="ib"
+                                    label="Copy path"
+                                    title="${r.path}"
+                                    data-cp="${r.path}"
+                                    success-message="Path copied"
+                                  >
+                                  </simple-clipboard-copy-button>
+                                </div>
+                                <div class="fp">${r.path}</div>
                               </td>
-                              <td class="col-size">${row.sizeLabel || "—"}</td>
+                              <td>${r.mimetype || "\u2014"}</td>
+                              <td>${this._fmtBytes(r.size)}</td>
+                              <td title="${this._fmtDate(r.updated || r.dateCreated)}">
+                                ${this._fmtRelativeDate(r.updated || r.dateCreated)}
+                              </td>
+                              <td>
+                                <hax-file-actions
+                                  row-index="${i}"
+                                  path="${r.path}"
+                                  scale-preset="${this.scalePreset}"
+                                  ?busy="${this.busy}"
+                                  ?can-scale="${this._canScale(r)}"
+                                >
+                                </hax-file-actions>
+                              </td>
                             </tr>
                           `,
                         )}
                       </tbody>
                     </table>
-                  </editable-table>
-                </div>`,
+                  </editable-table-display>
+                `,
               )}
         </div>
       </div>
     `;
   }
-
-  async copyFilePath(e) {
-    const path =
-      e && typeof e.composedPath === "function" ? e.composedPath() : [];
-    const copyButton = path.find(
-      (node) =>
-        node &&
-        node.classList &&
-        typeof node.classList.contains === "function" &&
-        node.classList.contains("copy-btn"),
-    );
-    if (!copyButton) {
-      return;
-    }
-    const filePath = this._cleanString(
-      copyButton.getAttribute("data-copy-path") ||
-        copyButton.getAttribute("title"),
-    );
-    if (!filePath) {
-      return;
-    }
-    let copied = false;
-    try {
-      if (
-        globalThis.navigator &&
-        globalThis.navigator.clipboard &&
-        globalThis.navigator.clipboard.writeText
-      ) {
-        await globalThis.navigator.clipboard.writeText(filePath);
-        copied = true;
-      }
-    } catch (e) {
-      copied = false;
-    }
-    if (!copied) {
-      try {
-        const textArea = globalThis.document.createElement("textarea");
-        textArea.value = filePath;
-        textArea.setAttribute("readonly", "true");
-        textArea.style.position = "absolute";
-        textArea.style.left = "-9999px";
-        globalThis.document.body.appendChild(textArea);
-        textArea.select();
-        copied = globalThis.document.execCommand("copy");
-        globalThis.document.body.removeChild(textArea);
-      } catch (e) {
-        copied = false;
-      }
-    }
-    if (copied) {
-      HAXStore.toast("File path copied", 3000, "fit-bottom");
-    }
-  }
 }
 
-globalThis.customElements.define(
-  HAXCMSFilesAdminDialog.tag,
-  HAXCMSFilesAdminDialog,
-);
-
+globalThis.customElements.define(HAXCMSFilesAdminDialog.tag, HAXCMSFilesAdminDialog);
 export { HAXCMSFilesAdminDialog };

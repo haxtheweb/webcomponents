@@ -853,8 +853,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
 
         .haxLogo {
-          --simple-icon-height: var(--ddd-icon-2xl, 48px);
-          --simple-icon-width: var(--ddd-icon-2xl, 48px);
+          --simple-icon-height: var(--ddd-icon-md, 48px);
+          --simple-icon-width: var(--ddd-icon-md, 48px);
         }
 
         .right-group {

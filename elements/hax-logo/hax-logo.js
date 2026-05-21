@@ -79,7 +79,6 @@ class HaxLogo extends HTMLElement {
 }
 
 .wrap {
-  font-family: 'Press Start 2P', cursive;
   font-size: var(--hax-logo-font-size);
   letter-spacing: var(--hax-logo-letter-spacing);
   text-align: center;

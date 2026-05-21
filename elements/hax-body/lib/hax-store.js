@@ -2065,10 +2065,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           haxElements = await this.htmlToHaxElements(haxElements[0].content);
         }
       }
+      const localFileImagePathRegex = /^files\/.*\.(?:jpg|jpeg|png|gif|webp)$/i;
+      const isLocalFileImagePath = localFileImagePathRegex.test(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
-      if (haxElements.length === 0 && validURL(pasteContent)) {
+      if (haxElements.length === 0 && isLocalFileImagePath) {
+        // ONLY use this logic if we're on an empty container
+        // so that inline pastes of text keep current behavior
+        if (this.activeNode.innerText.trim() != "") {
+          newContent = pasteContent;
+          inlinePaste = true;
+        } else {
+          newContent = `<img src="${pasteContent}" alt="" loading="lazy" />`;
+        }
+      } else if (haxElements.length === 0 && validURL(pasteContent)) {
         // Check if there's selected text - if so, apply URL as link to selected text
         let range = this.getRange();
         let sel = this.getSelection();

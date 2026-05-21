@@ -147,7 +147,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     // implementation specific tweaks to talk to things like HAXcms and other CMSs
     // that have per load token based authentication
     if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
-      requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+      requestEndPoint +=
+        (requestEndPoint.includes("?") ? "&" : "?") +
+        HAXStore.connectionRewrites.appendUploadEndPoint;
     } else {
       // Fallback: try to build parameters from HAXCMSStore if available
       // This handles cases where appendUploadEndPoint wasn't set yet
@@ -172,7 +174,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     }
     if (HAXStore.connectionRewrites.appendJwt != null) {
       requestEndPoint +=
-        "&" +
+        (requestEndPoint.includes("?") ? "&" : "?") +
         HAXStore.connectionRewrites.appendJwt +
         "=" +
         localStorageGet(HAXStore.connectionRewrites.appendJwt);
@@ -195,7 +197,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         let requestEndPoint = this.__pendingUploadRetry.baseEndpoint;
         if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
           requestEndPoint +=
-            "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+            (requestEndPoint.includes("?") ? "&" : "?") +
+            HAXStore.connectionRewrites.appendUploadEndPoint;
         } else {
           // Fallback: try to build parameters from HAXCMSStore if available
           if (
@@ -212,7 +215,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         }
         if (HAXStore.connectionRewrites.appendJwt != null) {
           requestEndPoint +=
-            "&" +
+            (requestEndPoint.includes("?") ? "&" : "?") +
             HAXStore.connectionRewrites.appendJwt +
             "=" +
             localStorageGet(HAXStore.connectionRewrites.appendJwt);

@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 const SimpleModalCssVars = [
   "--simple-modal-resize",

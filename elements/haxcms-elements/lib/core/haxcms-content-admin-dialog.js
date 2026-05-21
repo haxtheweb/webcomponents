@@ -3,7 +3,7 @@ import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@haxtheweb/editable-table/editable-table.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
 
 class HAXCMSContentAdminDialog extends DDD {
   static get tag() {
@@ -15,6 +15,12 @@ class HAXCMSContentAdminDialog extends DDD {
       rows: { type: Array },
       filterField: { type: String, attribute: "filter-field" },
       filterValue: { type: String, attribute: "filter-value" },
+      searchMode: { type: String, attribute: "search-mode" },
+      searchCaseSensitive: {
+        type: Boolean,
+        attribute: "search-case-sensitive",
+      },
+      searchLimit: { type: Number, attribute: "search-limit" },
       searchLoading: { type: Boolean, attribute: "search-loading" },
       searchMatches: { type: Array, attribute: false },
       lastSearchQuery: { type: String, attribute: "last-search-query" },
@@ -24,13 +30,17 @@ class HAXCMSContentAdminDialog extends DDD {
   constructor() {
     super();
     this.rows = [];
-    this.filterField = "visibility";
-    this.filterValue = "any";
+    this.filterField = "search";
+    this.filterValue = "";
+    this.searchMode = "fulltext";
+    this.searchCaseSensitive = false;
+    this.searchLimit = 25;
     this.searchLoading = false;
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
+    this.__searchDebounceTimer = null;
   }
 
   static get styles() {
@@ -127,16 +137,17 @@ class HAXCMSContentAdminDialog extends DDD {
           opacity: 0.6;
           cursor: not-allowed;
         }
-        editable-table {
+        editable-table-display {
+          --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
           --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-5xs, 0.7rem);
+          --editable-table-font-size: var(--ddd-font-size-5xs, 12px);
         }
         .table-scroll {
           width: 100%;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
-        .table-scroll editable-table {
+        .table-scroll editable-table-display {
           display: block;
           min-width: 760px;
         }
@@ -191,6 +202,10 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   disconnectedCallback() {
+    if (this.__searchDebounceTimer) {
+      clearTimeout(this.__searchDebounceTimer);
+      this.__searchDebounceTimer = null;
+    }
     globalThis.removeEventListener(
       "haxcms-content-dashboard-search-results",
       this.__searchResponseHandler,
@@ -372,6 +387,10 @@ class HAXCMSContentAdminDialog extends DDD {
 
   _onFilterField(e) {
     this.filterField = e.target.value;
+    if (this.__searchDebounceTimer) {
+      clearTimeout(this.__searchDebounceTimer);
+      this.__searchDebounceTimer = null;
+    }
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this.searchLoading = false;
@@ -382,11 +401,79 @@ class HAXCMSContentAdminDialog extends DDD {
     }
   }
 
+  _onSearchMode(e) {
+    this.searchMode = e.target.value;
+    this.searchMatches = null;
+    this.lastSearchQuery = "";
+    this._debounceSearchRequest();
+  }
+
+  _onSearchCaseSensitive(e) {
+    this.searchCaseSensitive = e.target.value === "true";
+    this.searchMatches = null;
+    this.lastSearchQuery = "";
+    this._debounceSearchRequest();
+  }
+
+  _onSearchLimit(e) {
+    const value = parseInt(e.target.value);
+    if (isNaN(value)) {
+      this.searchLimit = 25;
+      this._debounceSearchRequest();
+      return;
+    }
+    if (value < 1) {
+      this.searchLimit = 1;
+      this._debounceSearchRequest();
+      return;
+    }
+    if (value > 200) {
+      this.searchLimit = 200;
+      this._debounceSearchRequest();
+      return;
+    }
+    this.searchLimit = value;
+    this._debounceSearchRequest();
+  }
+
+  _debounceSearchRequest() {
+    if (this.__searchDebounceTimer) {
+      clearTimeout(this.__searchDebounceTimer);
+      this.__searchDebounceTimer = null;
+    }
+    if (this.filterField !== "search") {
+      return;
+    }
+    const query = this.filterValue ? this.filterValue.trim() : "";
+    if (!query) {
+      this.searchLoading = false;
+      this.searchMatches = null;
+      this.lastSearchQuery = "";
+      return;
+    }
+    this.__searchDebounceTimer = setTimeout(() => {
+      this.__searchDebounceTimer = null;
+      this._applySearch();
+    }, 600);
+  }
+
+  _onSearchInputKeydown(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (this.__searchDebounceTimer) {
+        clearTimeout(this.__searchDebounceTimer);
+        this.__searchDebounceTimer = null;
+      }
+      this._applySearch();
+    }
+  }
+
   _onFilterValue(e) {
     this.filterValue = e.target.value;
     if (this.filterField === "search") {
       this.searchMatches = null;
       this.lastSearchQuery = "";
+      this._debounceSearchRequest();
     }
   }
 
@@ -401,9 +488,21 @@ class HAXCMSContentAdminDialog extends DDD {
       ? String(e.detail.query).toLowerCase().trim()
       : "";
     const matches = Array.isArray(e.detail.matches) ? e.detail.matches : [];
+    const ids = [];
+    matches.forEach((match) => {
+      if (typeof match === "string") {
+        ids.push(match);
+      } else if (match && typeof match === "object") {
+        if (typeof match.id === "string") {
+          ids.push(match.id);
+        } else if (typeof match.id === "number") {
+          ids.push(String(match.id));
+        }
+      }
+    });
     this.searchLoading = false;
     this.lastSearchQuery = query;
-    this.searchMatches = matches;
+    this.searchMatches = [...new Set(ids)];
   }
 
   _applySearch() {
@@ -417,15 +516,26 @@ class HAXCMSContentAdminDialog extends DDD {
     this.searchLoading = true;
     this.searchMatches = null;
     this.lastSearchQuery = query.toLowerCase();
+    const searchMode = this.searchMode || "fulltext";
+    const selectorMode = searchMode === "selector";
+    const detail = {
+      operation: "search",
+      search: query,
+      searchMode,
+      searchSelector: selectorMode,
+      searchField: "all",
+      searchLimit: this.searchLimit,
+      searchCaseSensitive: this.searchCaseSensitive === true,
+    };
+    if (selectorMode) {
+      detail.searchField = "content";
+    }
     this.dispatchEvent(
       new CustomEvent("haxcms-content-dashboard-operation", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {
-          operation: "search",
-          query,
-        },
+        detail: detail,
       }),
     );
   }
@@ -438,7 +548,10 @@ class HAXCMSContentAdminDialog extends DDD {
       return "Parent page title";
     }
     if (this.filterField === "search") {
-      return "Title or content";
+      if (this.searchMode === "selector") {
+        return 'Simple selector (example: h2, a[href], img[alt=""])';
+      }
+      return "Text to find across title, tags, and content";
     }
     return "Filter value";
   }
@@ -456,10 +569,10 @@ class HAXCMSContentAdminDialog extends DDD {
                   .value="${this.filterField}"
                   @change="${this._onFilterField}"
                 >
+                  <option value="search">Search content</option>
                   <option value="visibility">Visibility</option>
                   <option value="tags">Tags</option>
                   <option value="parents">Parent page</option>
-                  <option value="search">Search content</option>
                 </select>
               </label>
               ${this.filterField === "visibility"
@@ -482,16 +595,43 @@ class HAXCMSContentAdminDialog extends DDD {
                       type="text"
                       .value="${this.filterValue}"
                       @input="${this._onFilterValue}"
+                      @keydown="${this._onSearchInputKeydown}"
                       placeholder="${this._searchPlaceholder()}"
                     />
                   </label>`}
               ${this.filterField === "search"
-                ? html`<button
-                    @click="${this._applySearch}"
-                    ?disabled="${!this.filterValue || this.searchLoading}"
-                  >
-                    ${this.searchLoading ? "Searching..." : "Search Content"}
-                  </button>`
+                ? html`
+                    <label>
+                      Search type
+                      <select
+                        .value="${this.searchMode}"
+                        @change="${this._onSearchMode}"
+                      >
+                        <option value="fulltext">Full text</option>
+                        <option value="selector">Query selector</option>
+                      </select>
+                    </label>
+                    <label>
+                      Case sensitive
+                      <select
+                        .value="${this.searchCaseSensitive ? "true" : "false"}"
+                        @change="${this._onSearchCaseSensitive}"
+                      >
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                      </select>
+                    </label>
+                    <label>
+                      Limit
+                      <input
+                        type="number"
+                        min="1"
+                        max="200"
+                        .value="${String(this.searchLimit)}"
+                        @input="${this._onSearchLimit}"
+                      />
+                    </label>
+                  `
                 : ``}
             </div>
           </div>
@@ -500,7 +640,7 @@ class HAXCMSContentAdminDialog extends DDD {
             : keyed(
                 `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
                 html`<div class="table-scroll">
-                  <editable-table
+                  <editable-table-display
                     bordered
                     condensed
                     column-header
@@ -539,7 +679,7 @@ class HAXCMSContentAdminDialog extends DDD {
                         )}
                       </tbody>
                     </table>
-                  </editable-table>
+                  </editable-table-display>
                 </div>`,
               )}
         </div>

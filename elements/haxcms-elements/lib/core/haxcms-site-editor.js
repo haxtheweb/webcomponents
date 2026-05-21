@@ -249,7 +249,7 @@ class HAXCMSSiteEditor extends LitElement {
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="contentsearchajax"
         .url="${this.contentSearchPath}"
-        .method="${this.method}"
+        method="POST"
         content-type="application/json"
         handle-as="json"
         @response="${this._handleContentSearchResponse}"
@@ -330,6 +330,27 @@ class HAXCMSSiteEditor extends LitElement {
       deleteNodePath: {
         type: String,
         attribute: "delete-node-path",
+      },
+      /**
+       * end point for listing files
+       */
+      listFilesPath: {
+        type: String,
+        attribute: "list-files-path",
+      },
+      /**
+       * end point for uploading files
+       */
+      saveFilePath: {
+        type: String,
+        attribute: "save-file-path",
+      },
+      /**
+       * end point for file operations (delete / convert / scale)
+       */
+      fileOperationPath: {
+        type: String,
+        attribute: "file-operation-path",
       },
 
       /**
@@ -468,20 +489,47 @@ class HAXCMSSiteEditor extends LitElement {
   }
   _handleContentSearchResponse(e) {
     const response = e.detail && e.detail.response ? e.detail.response : {};
-    const query = this.__lastContentSearchQuery
+    let query = this.__lastContentSearchQuery
       ? String(this.__lastContentSearchQuery)
       : "";
-    let matches = [];
-    if (Array.isArray(response.matches)) {
-      matches = response.matches;
-    } else if (response.data && Array.isArray(response.data)) {
-      matches = response.data.filter((id) => typeof id === "string");
-    } else if (
+    if (
+      response.data &&
+      typeof response.data === "object" &&
+      typeof response.data.query === "string"
+    ) {
+      query = response.data.query;
+    }
+    let results = [];
+    if (
       response.data &&
       typeof response.data === "object" &&
       Array.isArray(response.data.matches)
     ) {
-      matches = response.data.matches;
+      results = response.data.matches;
+    } else if (Array.isArray(response.matches)) {
+      results = response.matches;
+    } else if (response.data && Array.isArray(response.data)) {
+      results = response.data;
+    }
+    const matchIds = [];
+    results.forEach((result) => {
+      if (typeof result === "string") {
+        matchIds.push(result);
+      } else if (result && typeof result === "object") {
+        if (typeof result.id === "string") {
+          matchIds.push(result.id);
+        } else if (typeof result.id === "number") {
+          matchIds.push(String(result.id));
+        }
+      }
+    });
+    const uniqueMatchIds = [...new Set(matchIds)];
+    if (uniqueMatchIds.length === 0 && Array.isArray(results)) {
+      results.forEach((result) => {
+        if (typeof result === "string") {
+          uniqueMatchIds.push(result);
+        }
+      });
     }
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-content-dashboard-search-results", {
@@ -490,17 +538,11 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           query,
-          matches,
+          matches: uniqueMatchIds,
+          results,
           raw: response,
         },
       }),
-    );
-    store.toast(
-      `Content search found ${matches.length} matching item(s).`,
-      3000,
-      {
-        hat: "construction",
-      },
     );
   }
 
@@ -1872,16 +1914,75 @@ class HAXCMSSiteEditor extends LitElement {
     }
     if (operation === "search") {
       if (this.contentSearchPath) {
-        this.__lastContentSearchQuery = e.detail.query || "";
-        this.querySelector("#contentsearchajax").body = {
+        const searchValue =
+          e.detail &&
+          typeof e.detail.search === "string" &&
+          e.detail.search.trim() !== ""
+            ? String(e.detail.search).trim()
+            : "";
+        if (!searchValue) {
+          return;
+        }
+        this.__lastContentSearchQuery = searchValue;
+        const body = {
           jwt: this.jwt,
-          site: {
-            name: this.manifest.metadata.site.name,
-          },
-          query: e.detail.query || "",
+          search: searchValue,
         };
-        this.setProcessingVisual();
-        this.querySelector("#contentsearchajax").generateRequest();
+        if (
+          this.manifest &&
+          this.manifest.metadata &&
+          this.manifest.metadata.site &&
+          this.manifest.metadata.site.name
+        ) {
+          body.site = {
+            name: this.manifest.metadata.site.name,
+          };
+        }
+        if (
+          e.detail &&
+          typeof e.detail.searchField === "string" &&
+          e.detail.searchField.trim() !== ""
+        ) {
+          body.searchField = e.detail.searchField.trim();
+        }
+        const requestedSearchMode =
+          e.detail &&
+          typeof e.detail.searchMode === "string" &&
+          e.detail.searchMode.trim() !== ""
+            ? e.detail.searchMode.trim().toLowerCase()
+            : "";
+        const selectorMode =
+          (e.detail &&
+            (e.detail.searchSelector === true ||
+              e.detail.searchSelector === "true" ||
+              e.detail.searchSelector === 1 ||
+              e.detail.searchSelector === "1")) ||
+          requestedSearchMode === "selector";
+        body.searchSelector = selectorMode;
+        if (selectorMode) {
+          body.searchMode = "selector";
+          body.searchField = "content";
+        } else if (requestedSearchMode) {
+          body.searchMode = requestedSearchMode;
+        }
+        if (e.detail && e.detail.searchCaseSensitive === true) {
+          body.searchCaseSensitive = true;
+        }
+        if (
+          e.detail &&
+          typeof e.detail.searchLimit !== "undefined" &&
+          e.detail.searchLimit !== null &&
+          e.detail.searchLimit !== ""
+        ) {
+          const searchLimit = parseInt(e.detail.searchLimit, 10);
+          if (!isNaN(searchLimit)) {
+            body.searchLimit = searchLimit;
+          }
+        }
+        const searchRequest = this.querySelector("#contentsearchajax");
+        searchRequest.params = {};
+        searchRequest.body = body;
+        searchRequest.generateRequest();
         return;
       }
       globalThis.dispatchEvent(
@@ -1892,9 +1993,6 @@ class HAXCMSSiteEditor extends LitElement {
           detail: e.detail,
         }),
       );
-      store.toast("Content search queued for backend endpoint wiring.", 3500, {
-        hat: "construction",
-      });
     }
   }
   filesDashboardOperation(e) {
