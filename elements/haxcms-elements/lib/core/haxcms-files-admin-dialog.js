@@ -385,8 +385,16 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (resp && resp.status) return `${fb} (${resp.status})`;
     return fb;
   }
+  _requestTableUpdate() {
+    if (!this.shadowRoot) return;
+    const tableDisplay = this.shadowRoot.querySelector("editable-table-display");
+    if (tableDisplay && typeof tableDisplay.requestUpdate === "function") {
+      tableDisplay.requestUpdate();
+    }
+  }
 
   async refreshFiles() {
+    this._requestTableUpdate();
     if (!this._canList) return;
     this.loading = true; this.errorMessage = "";
     try {
@@ -399,7 +407,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       if (!resp.ok) { this.errorMessage = this._em(resp, d, "Unable to load files"); this.rows = []; return; }
       this.rows = this._normPayload(d);
     } catch(e) { this.errorMessage = "Unable to load files"; this.rows = []; }
-    finally { this.loading = false; }
+    finally { this.loading = false; this._requestTableUpdate(); }
   }
 
   _onHaxUploadValueChanged(e) {
@@ -427,6 +435,8 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!rowData) return;
     if (e.detail.action === "scale") {
       this._onScaleAction(rowData.index, e.detail.value);
+    } else if (e.detail.action === "rotate") {
+      this._onRotateAction(rowData.index, e.detail.value);
     } else if (e.detail.action === "transform") {
       this._onTransformAction(rowData.index, e.detail.value);
     } else if (e.detail.action === "rename") {
@@ -438,6 +448,7 @@ class HAXCMSFilesAdminDialog extends DDD {
   async _op(row, op, options = {}) {
     if (!this._canOp) { this._msg("File operation endpoint not configured.", true); return; }
     this.busy = true; this.errorMessage = "";
+    this._requestTableUpdate();
     try {
       const body = { jwt: this.jwt, site: { name: this.siteName }, operation: op, path: row.path };
       if (options && typeof options.size === "string" && options.size) body.size = options.size;
@@ -455,13 +466,14 @@ class HAXCMSFilesAdminDialog extends DDD {
       if (op === "delete") message = "File deleted";
       else if (op === "rename") message = "File renamed";
       else if (op === "convert-jpg") message = "Image converted to JPG";
+      else if (op === "rotate-90") message = "Image rotated 90 degrees";
       else if (op === "sepia") message = "Image transformed to sepia";
       else if (op === "black-and-white") message = "Image transformed to black and white";
       else if (op === "scale" && options && options.size) message = `Scaled to ${options.size}`;
       this._msg(message);
       await this.refreshFiles();
     } catch(e) { this.errorMessage = "File operation failed"; this._msg(this.errorMessage, true); }
-    finally { this.busy = false; }
+    finally { this.busy = false; this._requestTableUpdate(); }
   }
 
   async _onScaleAction(index, size) {
@@ -475,6 +487,17 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
     this.scalePreset = normalizedSize;
     await this._op(this.rows[i], "scale", { size: normalizedSize });
+  }
+  async _onRotateAction(index, op) {
+    const i = parseInt(index, 10);
+    const normalizedOp = typeof op === "string" ? op.trim() : "";
+    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
+    if (normalizedOp !== "rotate-90") return;
+    if (!this._canScale(this.rows[i])) {
+      this._msg("Only raster images can be rotated.", true);
+      return;
+    }
+    await this._op(this.rows[i], normalizedOp);
   }
   async _onTransformAction(index, op) {
     const i = parseInt(index, 10);

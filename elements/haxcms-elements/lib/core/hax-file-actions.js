@@ -131,6 +131,10 @@ class HAXFileActions extends DDD {
     if (this.busy) return;
     this._dispatchAction("delete", "delete");
   }
+  _onRotate() {
+    if (this.busy || !this.canScale) return;
+    this._dispatchAction("rotate", "rotate-90");
+  }
   _onRename() {
     if (this.busy) return;
     this._dispatchAction("rename", "rename");
@@ -155,6 +159,15 @@ class HAXFileActions extends DDD {
           @value-changed="${this._onScaleAction}"
         >
         </simple-picker>
+        <simple-icon-button-lite
+          class="ib"
+          icon="image:rotate-right"
+          label="Rotate 90 degrees"
+          title="Rotate image 90 degrees clockwise"
+          ?disabled="${this.busy || !this.canScale}"
+          @click="${this._onRotate}"
+        >
+        </simple-icon-button-lite>
         <simple-icon-button-lite
           class="ib"
           icon="icons:create"
