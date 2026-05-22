@@ -21,7 +21,7 @@ class HAXConfirmDialog extends DDD {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    setTimeout(() => this._focusInitialAction(), 0);
+    setTimeout(() => this._focusInitialAction(), 300);
   }
 
   static get properties() {
@@ -143,7 +143,12 @@ class HAXConfirmDialog extends DDD {
       <div class="confirm-shell">
         <p class="message">${this.message}</p>
         <div class="actions">
-          <button type="button" data-action="cancel" @click=${this._cancelTap}>
+          <button
+            type="button"
+            data-action="cancel"
+            autofocus
+            @click=${this._cancelTap}
+          >
             ${this.cancelLabel}
           </button>
           <button

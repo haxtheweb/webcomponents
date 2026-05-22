@@ -10,6 +10,14 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     return "app-hax-confirmation-modal";
   }
 
+  focusCancelButton() {
+    const cancelButton =
+      this.shadowRoot && this.shadowRoot.querySelector(".button-cancel");
+    if (cancelButton && typeof cancelButton.focus === "function") {
+      cancelButton.focus();
+    }
+  }
+
   constructor() {
     super();
     this.open = false;
@@ -226,6 +234,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     if (modal) {
       modal.opened = true;
     }
+    setTimeout(() => this.focusCancelButton(), 300);
   }
 
   closeModal() {
@@ -298,14 +307,20 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     return html`
       <simple-modal
         .opened="${this.open}"
+        .modal="${true}"
         title="${this.title}"
         @simple-modal-closed="${this.handleModalClosed}"
+        @simple-modal-opened="${this.focusCancelButton}"
       >
         <div class="modal-content" slot="content">
           <p class="message">${this.message}</p>
         </div>
         <div class="button-group" slot="buttons">
-          <button class="button button-cancel" @click="${this.closeModal}">
+          <button
+            class="button button-cancel"
+            autofocus
+            @click="${this.closeModal}"
+          >
             ${this.cancelText}
           </button>
           <button class="button button-confirm" @click="${this.confirmModal}">
