@@ -1,0 +1,41 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
+        id: ACTIONS_ALLOW_UNSECURE_COMMANDS
+        run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
+
+      - name: set env variable actor
+        run: echo 'GITHUB_ACTOR=$GITHUB_ACTOR' >> $GITHUB_ENV
+        
+      - name: set env variable repo
+        run: echo 'GITHUB_REPOSITORY=$GITHUB_REPOSITORY' >> $GITHUB_ENV
+        
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4.1.7 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: Read CNAME
+        id: cname
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./CNAME
+      - name: set env variable CNAME
+        run: echo 'CNAME=${{ steps.cname.outputs.content }}' >> $GITHUB_ENV
+        
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.6.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: public # The folder the action should deploy.

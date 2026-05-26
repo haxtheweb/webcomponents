@@ -220,6 +220,19 @@
     "priority": 0,
     "terrible": false
   },
+  "link-card-theme": {
+    "element": "link-card-theme",
+    "path": "@haxtheweb/link-card-theme/link-card-theme.js",
+    "name": "Link Card",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-link-card-theme-thumb.jpg",
+    "description": "Start with a blank site using the Link Card",
+    "category": [
+      "Website"
+    ],
+    "hidden": false,
+    "priority": -6,
+    "terrible": false
+  },
   "outline-player": {
     "element": "outline-player",
     "path": "@haxtheweb/outline-player/outline-player.js",
@@ -391,6 +404,19 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
+    "terrible": false
+  },
+  "twenty-six-theme": {
+    "element": "twenty-six-theme",
+    "path": "@haxtheweb/twenty-six-theme/twenty-six-theme.js",
+    "name": "Twenty Six",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-twenty-six-theme-thumb.jpg",
+    "description": "Start with a blank site using the Twenty Six",
+    "category": [
+      "Website"
+    ],
+    "hidden": false,
     "priority": 0,
     "terrible": false
   }

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <meta
+    name="Description"
+    content="Demonstration for link-card-theme"
+  />
+  <title>link-card-theme</title>
+  <style>
+    :root,
+    html,
+    body {
+      margin: var(--ddd-spacing-0);
+      padding: var(--ddd-spacing-0);
+      min-height: 100%;
+    }
+    body {
+      background-color: var(--ddd-theme-default-shrineWhite);
+      color: var(--ddd-theme-default-coalyGray);
+      font-family: var(--ddd-font-navigation);
+    }
+    .demo-wrap {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <link-card-theme></link-card-theme>
+  </div>
+  <script type="module" src="./link-card-theme.js"></script>
+</body>
+</html>

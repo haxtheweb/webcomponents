@@ -1,0 +1,68 @@
+{
+  "name": "@haxtheweb/twenty-six-theme",
+  "version": "26.0.0",
+  "description": "HAXcms Twenty Fifteen inspired blog theme",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb",
+    "haxcms",
+    "theme",
+    "blog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "type": "module",
+  "main": "twenty-six-theme.js",
+  "module": "twenty-six-theme.js",
+  "scripts": {
+    "start": "web-dev-server",
+    "build": "rimraf public && rollup -c rollup.config.js && npm run analyze",
+    "analyze": "cem analyze --litelement --exclude public",
+    "dddaudit": "hax audit",
+    "release": "npm run build && commit-and-tag-version && git push --follow-tags origin main && npm publish",
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+  },
+  "dependencies": {
+    "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/haxcms-elements": "^26.0.0",
+    "@haxtheweb/simple-datetime": "^26.0.0",
+    "@haxtheweb/simple-icon": "^26.0.0",
+    "lit": "3.3.2",
+    "mobx": "6.10.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.29.5",
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@open-wc/building-rollup": "3.0.2",
+    "@open-wc/testing": "4.0.0",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@rollup/plugin-terser": "1.0.0",
+    "@web/dev-server": "0.4.6",
+    "@web/rollup-plugin-html": "3.1.0",
+    "@web/rollup-plugin-import-meta-assets": "2.3.0",
+    "@web/test-runner": "0.19.0",
+    "babel-plugin-template-html-minifier": "4.1.0",
+    "babel-plugin-transform-dynamic-import": "2.1.0",
+    "commit-and-tag-version": "12.7.3",
+    "rimraf": "5.0.7",
+    "rollup-plugin-esbuild": "6.2.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json",
+  "gitHead": "37a628376c24ddca5a47d9169e5a9d90107ce5b7"
+}
