@@ -58,7 +58,7 @@ class HAXCMSContentAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) - var(
+            var(--simple-modal-height, 80vh) - var(
                 --simple-modal-titlebar-height,
                 80px
               ) - var(--ddd-spacing-8, 32px)
@@ -133,6 +133,13 @@ class HAXCMSContentAdminDialog extends DDD {
         .table-scroll editable-table-display {
           display: block;
           min-width: 760px;
+        }
+        simple-icon-button-lite.row-action {
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
         }
         .empty {
           margin: var(--ddd-spacing-4) 0;
@@ -672,6 +679,80 @@ class HAXCMSContentAdminDialog extends DDD {
     }
     return "Filter value";
   }
+  _actionTargetFromEvent(e) {
+    const path = e && typeof e.composedPath === "function" ? e.composedPath() : [];
+    for (let i = 0; i < path.length; i++) {
+      const candidate = path[i];
+      if (
+        candidate &&
+        typeof candidate.getAttribute === "function" &&
+        candidate.getAttribute("data-action")
+      ) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
+  _openRevisions(e) {
+    if (e && typeof e.stopPropagation === "function") {
+      e.stopPropagation();
+    }
+    const target = e && e.currentTarget ? e.currentTarget : null;
+    if (!target || !target.getAttribute) {
+      return;
+    }
+    const nodeId = target.getAttribute("data-node-id")
+      ? target.getAttribute("data-node-id").trim()
+      : "";
+    const nodeTitle = target.getAttribute("data-node-title")
+      ? target.getAttribute("data-node-title")
+      : "";
+    if (!nodeId) {
+      return;
+    }
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-open-page-revisions", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          nodeId: nodeId,
+          nodeTitle: nodeTitle,
+          source: "content-admin-dialog",
+          invokedBy: target,
+        },
+      }),
+    );
+  }
+  _handleTableActionClick(e) {
+    const actionTarget = this._actionTargetFromEvent(e);
+    if (!actionTarget || actionTarget.getAttribute("data-action") !== "open-revisions") {
+      return;
+    }
+    if (typeof e.stopPropagation === "function") {
+      e.stopPropagation();
+    }
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-open-page-revisions", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          nodeId: actionTarget.getAttribute("data-node-id")
+            ? actionTarget.getAttribute("data-node-id").trim()
+            : "",
+          nodeTitle: actionTarget.getAttribute("data-node-title")
+            ? actionTarget.getAttribute("data-node-title")
+            : "",
+          source: "content-admin-dialog",
+          invokedBy: actionTarget,
+        },
+      }),
+    );
+  }
 
   render() {
     return html`
@@ -794,6 +875,7 @@ class HAXCMSContentAdminDialog extends DDD {
                     sort
                     striped
                     scroll
+                    @click="${this._handleTableActionClick}"
                   >
                     <table>
                       <thead>
@@ -803,6 +885,7 @@ class HAXCMSContentAdminDialog extends DDD {
                           <th>Updated</th>
                           <th>Parent</th>
                           <th>Slug</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -820,6 +903,17 @@ class HAXCMSContentAdminDialog extends DDD {
                                   : html`—`}
                               </td>
                               <td>${row.slug}</td>
+                              <td>
+                                <simple-icon-button-lite
+                                  class="row-action"
+                                  icon="icons:history"
+                                  label="View revisions"
+                                  title="View page revisions"
+                                  data-action="open-revisions"
+                                  data-node-id="${row.id}"
+                                  data-node-title="${row.title}"
+                                ></simple-icon-button-lite>
+                              </td>
                             </tr>
                           `,
                         )}

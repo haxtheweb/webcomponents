@@ -53,6 +53,7 @@ export class PageBreak extends IntersectionObserverMixin(
       modifyPageIcon: "Modify page icon",
       editMedia: "Edit Media",
       editTags: "Edit tags",
+      viewRevisions: "View revisions",
       lock: "Lock",
       unlock: "Unlock",
       publish: "Publish",
@@ -772,6 +773,13 @@ export class PageBreak extends IntersectionObserverMixin(
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
+                icon="icons:history"
+                label="${this.t.viewRevisions}"
+                show-text-label
+                @click="${this._openRevisions}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
                 icon="${this.published
                   ? "icons:visibility-off"
                   : "icons:visibility"}"
@@ -1050,6 +1058,33 @@ export class PageBreak extends IntersectionObserverMixin(
       }
     };
     globalThis.addEventListener("keydown", handleEscape, { once: true });
+  }
+
+  _openRevisions(e) {
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    const nodeId =
+      typeof this.itemId === "string" && this.itemId.trim() !== ""
+        ? this.itemId.trim()
+        : store.activeItem && store.activeItem.id
+          ? store.activeItem.id
+          : "";
+    if (!nodeId) {
+      return;
+    }
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-open-page-revisions", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          nodeId: nodeId,
+          nodeTitle: this.title || "",
+          source: "page-break",
+        },
+      }),
+    );
   }
 
   async _toggleLocked(e) {

@@ -60,7 +60,7 @@ class HAXCMSSEOAdminDialog extends DDD {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) - var(
+            var(--simple-modal-height, 80vh) - var(
                 --simple-modal-titlebar-height,
                 80px
               ) - var(--ddd-spacing-8, 32px)
@@ -68,7 +68,7 @@ class HAXCMSSEOAdminDialog extends DDD {
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
-          min-width: 70vw;
+          min-width: 80vw;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           overflow: hidden;
           font-family: var(--ddd-font-primary);

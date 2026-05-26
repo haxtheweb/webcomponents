@@ -185,6 +185,12 @@ class HAXCMSBackendPHP extends LitElement {
               globalThis.appSettings.createNodePath;
             store.cmsSiteEditor.instance.deleteNodePath =
               globalThis.appSettings.deleteNodePath;
+            store.cmsSiteEditor.instance.getNodeRevisionsPath =
+              globalThis.appSettings.getNodeRevisionsPath;
+            store.cmsSiteEditor.instance.getNodeRevisionPath =
+              globalThis.appSettings.getNodeRevisionPath;
+            store.cmsSiteEditor.instance.restoreNodeRevisionPath =
+              globalThis.appSettings.restoreNodeRevisionPath;
             store.cmsSiteEditor.instance.listFilesPath =
               globalThis.appSettings.listFilesPath;
             store.cmsSiteEditor.instance.saveFilePath =

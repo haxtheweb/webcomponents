@@ -56,7 +56,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
         :host {
           --simple-modal-z-index: 10000;
           --simple-modal-width: var(--ddd-spacing-32, 480px);
-          --simple-modal-max-width: 90vw;
+          --simple-modal-max-width: 80vw;
           --simple-modal-max-height: 80vh;
           --simple-modal-border-radius: var(--ddd-radius-md, 8px);
           --simple-modal-titlebar-background: var(

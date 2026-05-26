@@ -32,7 +32,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       css`
         :host {
           --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 85vh) - var(
+            var(--simple-modal-height, 80vh) - var(
                 --simple-modal-titlebar-height,
                 80px
               ) - var(--ddd-spacing-8, 32px)

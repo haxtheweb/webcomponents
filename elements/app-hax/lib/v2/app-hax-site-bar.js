@@ -311,7 +311,7 @@ export class AppHaxSiteBars extends SimpleColors {
               "var(--ddd-theme-default-nittanyNavy, #001e44)",
             "--simple-modal-titlebar-color":
               "var(--ddd-theme-default-white, white)",
-            "--simple-modal-width": "90vw",
+            "--simple-modal-width": "80vw",
             "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
             "--simple-modal-min-width": "300px",
             "--simple-modal-z-index": "1000",

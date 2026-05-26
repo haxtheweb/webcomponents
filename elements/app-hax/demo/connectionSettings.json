@@ -1,0 +1,48 @@
+{
+  "status": 200,
+  "data": {
+    "summary": {
+      "programmingLanguage": "node22.4",
+      "serverVersion": "nginx/1.26.2",
+      "haxcmsVersionCurrent": "26.0.0",
+      "haxcmsVersionLatest": "26.1.0"
+    },
+    "rows": [
+      {
+        "key": "runtime",
+        "tone": "ok",
+        "title": "Programming language runtime",
+        "value": "Node.js 22.4 (LTS)",
+        "description": "Runtime is available and meets minimum platform requirements."
+      },
+      {
+        "key": "server",
+        "tone": "ok",
+        "title": "Server version",
+        "value": "nginx/1.26.2",
+        "description": "Web server is responding and static asset delivery is healthy."
+      },
+      {
+        "key": "haxcms-version",
+        "tone": "warning",
+        "title": "HAXcms version",
+        "value": "26.0.0",
+        "description": "Current: 26.0.0 · Latest: 26.1.0"
+      },
+      {
+        "key": "jwt-signing",
+        "tone": "ok",
+        "title": "JWT signing configuration",
+        "value": "Configured",
+        "description": "Login and refresh token endpoints are enabled."
+      },
+      {
+        "key": "filesystem",
+        "tone": "ok",
+        "title": "Filesystem permissions",
+        "value": "Writable",
+        "description": "Page save, media upload, and build directories are writable."
+      }
+    ]
+  }
+}

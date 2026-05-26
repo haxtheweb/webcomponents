@@ -1369,12 +1369,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                               "var(--ddd-theme-default-white)",
                             "--simple-modal-content-container-background":
                               "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-                            "--simple-modal-width": "85vw",
-                            "--simple-modal-max-width": "85vw",
+                            "--simple-modal-width": "80vw",
+                            "--simple-modal-max-width": "80vw",
                             "--simple-modal-min-width": "300px",
                             "--simple-modal-z-index": "100000000",
-                            "--simple-modal-height": "85vh",
-                            "--simple-modal-max-height": "85vh",
+                            "--simple-modal-height": "80vh",
+                            "--simple-modal-max-height": "80vh",
                             "--simple-modal-min-height": "400px",
                             "--simple-modal-titlebar-height": "80px",
                             "--simple-modal-content-padding":
@@ -1769,6 +1769,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "haxcms-open-theme-preview-program": "_openThemePreviewFromProgram",
+      "haxcms-open-page-revisions": "_openPageRevisionsFromEvent",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
       popstate: "_adminRoutePopState",
@@ -4239,6 +4240,49 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    SuperDaemonInstance.defineOption({
+      title: "View page revisions",
+      icon: "icons:history",
+      tags: ["CMS", "edit", "revisions", "history", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/revisions",
+      context: ["CMS"],
+      voice: "page revisions",
+      value: {
+        name: "View page revisions",
+        machineName: "page-revisions",
+        placeholder: "Open revision history for the current page",
+        program: async (input, values) => {
+          const activeItem = toJS(store.activeItem);
+          if (!activeItem || !activeItem.id) {
+            return [
+              {
+                title: "No active page selected",
+                icon: "icons:error",
+                tags: ["error"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "No active page",
+              },
+            ];
+          }
+          return [
+            {
+              title: `Open revisions for ${activeItem.title || "current page"}`,
+              icon: "icons:history",
+              tags: ["revisions", "history", "page"],
+              value: {
+                target: this,
+                method: "_openPageRevisionsForActivePage",
+                args: [],
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/edit/revisions/current",
+            },
+          ];
+        },
+      },
+    });
 
     // Core site navigation programs - available regardless of theme
     SuperDaemonInstance.defineOption({
@@ -5739,6 +5783,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "blocks",
       "editor",
       "features",
+      "revisions",
     ]);
     if (allowed.has(normalized)) {
       return normalized;
@@ -5749,12 +5794,37 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const params = new URLSearchParams(globalThis.location.search);
     return this._normalizeAdminRoutePath(params.get("admin"));
   }
-  _setAdminRoutePathOnLocation(path = null, historyMode = "push") {
+  _normalizeAdminRouteNodeId(nodeId = "") {
+    if (typeof nodeId === "number") {
+      return `${nodeId}`;
+    }
+    if (typeof nodeId !== "string") {
+      return null;
+    }
+    const normalized = nodeId.trim();
+    if (!normalized) {
+      return null;
+    }
+    return normalized;
+  }
+  _getAdminRouteNodeIdFromLocation() {
     const params = new URLSearchParams(globalThis.location.search);
+    return this._normalizeAdminRouteNodeId(params.get("adminNode"));
+  }
+  _setAdminRoutePathOnLocation(path = null, historyMode = "push", routeContext = {}) {
+    const params = new URLSearchParams(globalThis.location.search);
+    const routeNodeId = this._normalizeAdminRouteNodeId(
+      routeContext ? routeContext.nodeId : null,
+    );
     if (path) {
       params.set("admin", path);
     } else {
       params.delete("admin");
+    }
+    if (path === "revisions" && routeNodeId) {
+      params.set("adminNode", routeNodeId);
+    } else {
+      params.delete("adminNode");
     }
     const nextSearch = params.toString();
     const nextUrl = `${globalThis.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${globalThis.location.hash || ""}`;
@@ -5789,6 +5859,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports":
         return "insights";
       case "content":
+      case "revisions":
         return null;
       case "files":
         return "uploadMedia";
@@ -5821,17 +5892,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return true;
     }
     const currentPath = this._getAdminRoutePathFromLocation();
-    if (currentPath === normalizedPath) {
+    const routeNodeId =
+      normalizedPath === "revisions"
+        ? this._normalizeAdminRouteNodeId(
+            routeOptions ? routeOptions.nodeId : null,
+          )
+        : null;
+    const currentNodeId =
+      normalizedPath === "revisions"
+        ? this._getAdminRouteNodeIdFromLocation()
+        : null;
+    if (
+      currentPath === normalizedPath &&
+      (normalizedPath !== "revisions" || currentNodeId === routeNodeId)
+    ) {
       return true;
     }
     this._setAdminRoutePathOnLocation(
       normalizedPath,
       routeOptions.historyMode || "push",
+      {
+        nodeId: routeNodeId,
+      },
     );
     return true;
   }
-  setAdminPath(path, historyMode = "push", silent = false) {
-    if (!this._syncAdminRoutePath(path, { historyMode: historyMode })) {
+  setAdminPath(path, historyMode = "push", silent = false, routeContext = {}) {
+    const syncOptions = {
+      historyMode: historyMode,
+    };
+    if (
+      routeContext &&
+      typeof routeContext === "object" &&
+      Object.prototype.hasOwnProperty.call(routeContext, "nodeId")
+    ) {
+      syncOptions.nodeId = routeContext.nodeId;
+    }
+    if (!this._syncAdminRoutePath(path, syncOptions)) {
       return false;
     }
     this._applyAdminRoutePath(
@@ -5862,6 +5959,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const invokedTarget =
       this.shadowRoot && this.shadowRoot.querySelector("#manifestbtn")
         ? this.shadowRoot.querySelector("#manifestbtn")
+        : null;
+    const routeNodeId =
+      normalizedPath === "revisions"
+        ? this._normalizeAdminRouteNodeId(
+            routeOptions ? routeOptions.nodeId : null,
+          ) || this._getAdminRouteNodeIdFromLocation()
         : null;
     switch (normalizedPath) {
       case "admin":
@@ -5897,6 +6000,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return true;
       case "content":
         this._openContentAdmin(true, routeOptions);
+        return true;
+      case "revisions":
+        this._openPageRevisions(routeNodeId, "", {
+          skipUrlUpdate: true,
+          silent: routeOptions && routeOptions.silent === true,
+          nodeId: routeNodeId,
+          invokedBy:
+            routeOptions &&
+            routeOptions.invokedBy &&
+            routeOptions.invokedBy.nodeType === 1
+              ? routeOptions.invokedBy
+              : invokedTarget,
+          fromContentAdmin: true,
+        });
         return true;
       case "files":
         this._openFilesAdmin(true, routeOptions);
@@ -5940,9 +6057,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
       return;
     }
+    const routeNodeId =
+      normalizedPath === "revisions"
+        ? this._getAdminRouteNodeIdFromLocation()
+        : null;
     const opened = this._openAdminRouteFromPath(normalizedPath, {
       skipUrlUpdate: true,
       silent: silent,
+      nodeId: routeNodeId,
     });
     if (!opened) {
       this._clearAdminRoutePathFromLocation("replace");
@@ -6064,12 +6186,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "85vw",
-          "--simple-modal-max-width": "85vw",
+          "--simple-modal-width": "80vw",
+          "--simple-modal-max-width": "80vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "85vh",
-          "--simple-modal-max-height": "85vh",
+          "--simple-modal-height": "80vh",
+          "--simple-modal-max-height": "80vh",
           "--simple-modal-min-height": "400px",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-content-padding": "var(--ddd-spacing-4)",
@@ -6148,6 +6270,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           target: this.shadowRoot.querySelector("#manifestbtn"),
         });
         break;
+      case "content-admin":
+        this._openContentAdmin(true);
+        break;
       default:
         break;
     }
@@ -6162,6 +6287,135 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   async _openThemePreviewFromProgram(e) {
     await this._openThemePreview(e);
+  }
+  _openPageRevisionsFromEvent(e) {
+    const detail = e && e.detail ? e.detail : {};
+    const nodeId =
+      typeof detail.nodeId === "undefined" || detail.nodeId === null
+        ? ""
+        : `${detail.nodeId}`.trim();
+    const nodeTitle =
+      typeof detail.nodeTitle === "undefined" || detail.nodeTitle === null
+        ? ""
+        : `${detail.nodeTitle}`;
+    const invokedBy =
+      detail &&
+      detail.invokedBy &&
+      detail.invokedBy.nodeType === 1
+        ? detail.invokedBy
+        : e && e.target
+          ? e.target
+          : null;
+    this._openPageRevisions(nodeId, nodeTitle, {
+      invokedBy: invokedBy,
+      silent: detail.silent === true,
+      fromContentAdmin: detail.source === "content-admin-dialog",
+    });
+  }
+  _openPageRevisionsForActivePage() {
+    const activeItem = toJS(store.activeItem);
+    const nodeId =
+      activeItem && activeItem.id ? `${activeItem.id}`.trim() : "";
+    const nodeTitle = activeItem && activeItem.title ? activeItem.title : "";
+    this._openPageRevisions(nodeId, nodeTitle, {
+      invokedBy: this.shadowRoot ? this.shadowRoot.querySelector("#merlin") : null,
+      silent: false,
+    });
+  }
+  _openPageRevisions(nodeId = "", nodeTitle = "", options = {}) {
+    const activeItem = toJS(store.activeItem);
+    let resolvedNodeId = "";
+    if (typeof nodeId === "string") {
+      resolvedNodeId = nodeId.trim();
+    } else if (nodeId) {
+      resolvedNodeId = String(nodeId);
+    }
+    if (!resolvedNodeId && activeItem && activeItem.id) {
+      resolvedNodeId = String(activeItem.id);
+    }
+    if (!resolvedNodeId) {
+      return;
+    }
+    if (
+      !this._syncAdminRoutePath("revisions", {
+        historyMode: options.historyMode || "push",
+        skipUrlUpdate: options.skipUrlUpdate === true,
+        nodeId: resolvedNodeId,
+      })
+    ) {
+      return;
+    }
+    let resolvedNodeTitle = "";
+    if (typeof nodeTitle === "string" && nodeTitle.trim() !== "") {
+      resolvedNodeTitle = nodeTitle;
+    } else if (activeItem && activeItem.title) {
+      resolvedNodeTitle = activeItem.title;
+    }
+    if (!options.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-page-revisions-dialog.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-page-revisions-dialog",
+      );
+      dialog.nodeId = resolvedNodeId;
+      dialog.nodeTitle = resolvedNodeTitle;
+      const invokedBy =
+        options && options.invokedBy
+          ? options.invokedBy
+          : this.shadowRoot.querySelector("#manifestbtn");
+      const breadcrumbs = [
+        {
+          label: "Admin",
+          icon: "home",
+          action: "site-settings-dashboard",
+          clickable: true,
+        },
+        {
+          label: this.t.content,
+          icon: "editor:insert-drive-file",
+          action: "content-admin",
+          clickable: true,
+        },
+        {
+          label: "Revisions",
+          icon: "icons:history",
+          clickable: false,
+        },
+      ];
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: `Page revisions${resolvedNodeTitle ? ` — ${resolvedNodeTitle}` : ""}`,
+            titleIcon: "icons:history",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-min-width": "320px",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
+              "--simple-modal-min-height": "420px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: invokedBy,
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
   }
   async _ensureThemePreviewLoaded() {
     if (
@@ -6623,10 +6877,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-z-index": "100000000",
           "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-width": "85vw",
-          "--simple-modal-max-width": "85vw",
-          "--simple-modal-height": "85vh",
-          "--simple-modal-max-height": "85vh",
+          "--simple-modal-width": "80vw",
+          "--simple-modal-max-width": "80vw",
+          "--simple-modal-height": "80vh",
+          "--simple-modal-max-height": "80vh",
           "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: {
@@ -6798,12 +7052,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
               "--simple-modal-min-width": "300px",
               "--simple-modal-min-width": "300px",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -6887,11 +7141,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
               "--simple-modal-min-width": "300px",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -6963,10 +7217,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7025,10 +7279,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7087,10 +7341,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7146,10 +7400,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7240,10 +7494,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7309,10 +7563,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "85vw",
-              "--simple-modal-max-width": "85vw",
-              "--simple-modal-height": "85vh",
-              "--simple-modal-max-height": "85vh",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
               "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
@@ -7388,10 +7642,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
             "--simple-modal-z-index": "100000000",
             "--simple-modal-titlebar-height": "80px",
-            "--simple-modal-width": "85vw",
-            "--simple-modal-max-width": "85vw",
-            "--simple-modal-height": "85vh",
-            "--simple-modal-max-height": "85vh",
+            "--simple-modal-width": "80vw",
+            "--simple-modal-max-width": "80vw",
+            "--simple-modal-height": "80vh",
+            "--simple-modal-max-height": "80vh",
             "--simple-modal-border-radius": "var(--ddd-radius-md)",
           },
           elements: {

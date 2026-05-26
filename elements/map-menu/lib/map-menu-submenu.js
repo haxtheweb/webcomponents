@@ -124,22 +124,17 @@ class MapMenuSubmenu extends LitElement {
     this.hideInMenu = false;
     this.icon = null;
     this.__icon = "";
-    setTimeout(() => {
-      this.addEventListener("active-item", this.__activeChanged.bind(this));
-      this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
-      this.addEventListener(
-        "link-clicked",
-        this._headerClickHandler.bind(this),
-      );
-      this.addEventListener(
-        "map-menu-item-hidden-check",
-        this._mapMenuItemHiddenCheckHandler.bind(this),
-      );
-      this.addEventListener("focusin", this.__active.bind(this));
-      this.addEventListener("focusout", this.__deactive.bind(this));
-      this.addEventListener("mouseover", this.__active.bind(this));
-      this.addEventListener("mouseleave", this.__deactive.bind(this));
-    }, 0);
+    this.addEventListener("active-item", this.__activeChanged.bind(this));
+    this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
+    this.addEventListener("link-clicked", this._headerClickHandler.bind(this));
+    this.addEventListener(
+      "map-menu-item-hidden-check",
+      this._mapMenuItemHiddenCheckHandler.bind(this),
+    );
+    this.addEventListener("focusin", this.__active.bind(this));
+    this.addEventListener("focusout", this.__deactive.bind(this));
+    this.addEventListener("mouseover", this.__active.bind(this));
+    this.addEventListener("mouseleave", this.__deactive.bind(this));
   }
 
   __active(e) {

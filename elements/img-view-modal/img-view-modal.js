@@ -42,8 +42,8 @@ class ImgViewModal extends LitElement {
     return css`
       :host {
         display: block;
-        --simple-modal-width: var(--img-view-modal-width, 90%);
-        --simple-modal-height: var(--img-view-modal-height, 90vh);
+        --simple-modal-width: var(--img-view-modal-width, 80vw);
+        --simple-modal-height: var(--img-view-modal-height, 80vh);
         --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-line-height: 40px;
         --simple-modal-titlebar-padding: 0px 5px 0px 15px;
@@ -96,9 +96,9 @@ class ImgViewModal extends LitElement {
       let evt,
         modalStyles = {
           "--simple-modal-width":
-            this._getCssVar("--simple-modal-width") || "90%",
+            this._getCssVar("--simple-modal-width") || "80vw",
           "--simple-modal-height":
-            this._getCssVar("--simple-modal-height") || "90vh",
+            this._getCssVar("--simple-modal-height") || "80vh",
           "--simple-modal-titlebar-height":
             this._getCssVar("--simple-modal-titlebar-height") || "40px",
           "--simple-modal-titlebar-line-height":
@@ -165,10 +165,10 @@ class ImgViewModal extends LitElement {
             content: img,
           },
           styles: {
-            "--simple-modal-width": "50vw",
-            "--simple-modal-max-width": "75vw",
+            "--simple-modal-width": "80vw",
+            "--simple-modal-max-width": "80vw",
             "--simple-modal-z-index": "100000000",
-            "--simple-modal-min-height": "50vh",
+            "--simple-modal-min-height": "80vh",
           },
           styles: modalStyles,
           invokedBy: this,

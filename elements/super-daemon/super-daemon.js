@@ -573,7 +573,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           resize: var(--simple-modal-resize, unset);
           padding: 0;
           --dialog-height: var(--simple-modal-height, auto);
-          --dialog-width: var(--simple-modal-width, 75vw);
+          --dialog-width: var(--simple-modal-width, 80vw);
           --dialog-max-width: var(--simple-modal-max-width, 100vw);
           --dialog-max-height: var(--simple-modal-max-height, 100vh);
         }
@@ -594,7 +594,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         }
         :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
         :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
-          left: calc(50% - var(--simple-modal-width, 75vw) / 2);
+          left: calc(50% - var(--simple-modal-width, 80vw) / 2);
         }
         #cancel {
           position: absolute;

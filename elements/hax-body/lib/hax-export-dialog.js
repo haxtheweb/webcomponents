@@ -16,7 +16,7 @@ class HaxExportDialog extends I18NMixin(LitElement) {
         :host {
           display: none;
           --simple-modal-resize: both;
-          --simple-modal-height: 100vh;
+          --simple-modal-height: 80vh;
         }
       `,
     ];

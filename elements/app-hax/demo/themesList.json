@@ -1,0 +1,35 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "machineName": "clean-one",
+      "name": "Course theme",
+      "description": "Default teaching layout with strong readability and simple navigation."
+    },
+    {
+      "machineName": "clean-two",
+      "name": "Course theme 2",
+      "description": "Alternative classroom layout focused on content-first presentation."
+    },
+    {
+      "machineName": "clean-portfolio-theme",
+      "name": "Clean Portfolio theme",
+      "description": "Portfolio-oriented theme for showcasing projects and artifacts."
+    },
+    {
+      "machineName": "journey-theme",
+      "name": "Journey theme",
+      "description": "Narrative-focused theme for guided, sequential experiences."
+    },
+    {
+      "machineName": "learn-two-theme",
+      "name": "Course theme 3",
+      "description": "Learning-focused theme optimized for large instructional sites."
+    },
+    {
+      "machineName": "polaris-theme",
+      "name": "Polaris",
+      "description": "Modern responsive theme for broad site use cases."
+    }
+  ]
+}

@@ -241,10 +241,10 @@ class HAXElementCardList extends LitElement {
           detail: {
             title: "Demo of " + e.target.getAttribute("data-tag"),
             styles: {
-              "--simple-modal-width": "75vw",
-              "--simple-modal-max-width": "75vw",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
               "--simple-modal-z-index": "100000000",
-              "--simple-modal-min-height": "50vh",
+              "--simple-modal-min-height": "80vh",
             },
             elements: {
               content: e.target.nextElementSibling,

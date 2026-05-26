@@ -238,6 +238,39 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="getnoderevisionsajax"
+        .url="${this.getNodeRevisionsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleNodeRevisionsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="getnoderevisionajax"
+        .url="${this.getNodeRevisionPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleNodeRevisionResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="restorenoderevisionajax"
+        .url="${this.restoreNodeRevisionPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleRestoreNodeRevisionResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -332,6 +365,27 @@ class HAXCMSSiteEditor extends LitElement {
       deleteNodePath: {
         type: String,
         attribute: "delete-node-path",
+      },
+      /**
+       * end point for listing revisions for a page
+       */
+      getNodeRevisionsPath: {
+        type: String,
+        attribute: "get-node-revisions-path",
+      },
+      /**
+       * end point for loading a specific revision payload for a page
+       */
+      getNodeRevisionPath: {
+        type: String,
+        attribute: "get-node-revision-path",
+      },
+      /**
+       * end point for restoring a specific revision for a page
+       */
+      restoreNodeRevisionPath: {
+        type: String,
+        attribute: "restore-node-revision-path",
       },
       /**
        * end point for listing files
@@ -852,6 +906,27 @@ class HAXCMSSiteEditor extends LitElement {
         signal: this.windowControllers.signal,
       },
     );
+    globalThis.addEventListener(
+      "haxcms-load-node-revisions",
+      this.loadNodeRevisions.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+    globalThis.addEventListener(
+      "haxcms-load-node-revision",
+      this.loadNodeRevision.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+    globalThis.addEventListener(
+      "haxcms-restore-node-revision",
+      this.restoreNodeRevision.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
 
     globalThis.addEventListener(
       "haxcms-delete-node",
@@ -1108,12 +1183,12 @@ class HAXCMSSiteEditor extends LitElement {
                         "var(--ddd-theme-default-white)",
                       "--simple-modal-content-container-background":
                         "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-                      "--simple-modal-width": "85vw",
-                      "--simple-modal-max-width": "85vw",
+                      "--simple-modal-width": "80vw",
+                      "--simple-modal-max-width": "80vw",
                       "--simple-modal-min-width": "300px",
                       "--simple-modal-z-index": "100000000",
-                      "--simple-modal-height": "85vh",
-                      "--simple-modal-max-height": "85vh",
+                      "--simple-modal-height": "80vh",
+                      "--simple-modal-max-height": "80vh",
                       "--simple-modal-min-height": "400px",
                       "--simple-modal-titlebar-height": "80px",
                       "--simple-modal-content-padding": "var(--ddd-spacing-4)",
@@ -1460,6 +1535,178 @@ class HAXCMSSiteEditor extends LitElement {
       );
       store.toast(`Operation completed!`, 3000, { hat: "construction" });
     }, 300);
+  }
+  _handleNodeRevisionsResponse(e) {
+    const response = e && e.detail ? e.detail.response : null;
+    if (!response || !response.data) {
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-node-revisions-loaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          source: "backend",
+          data: response.data,
+          raw: response,
+        },
+      }),
+    );
+  }
+  _handleNodeRevisionResponse(e) {
+    const response = e && e.detail ? e.detail.response : null;
+    if (!response || !response.data) {
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-node-revision-loaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          source: "backend",
+          data: response.data,
+          raw: response,
+        },
+      }),
+    );
+  }
+  _handleRestoreNodeRevisionResponse(e) {
+    const response = e && e.detail ? e.detail.response : null;
+    if (!response || !response.data) {
+      return;
+    }
+    setTimeout(() => {
+      store.playSound("coin");
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update-node", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      store.toast("Revision restored as a new commit.", 4000, {
+        hat: "construction",
+      });
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-node-revision-restored", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            source: "backend",
+            data: response.data,
+            raw: response,
+          },
+        }),
+      );
+    }, 300);
+  }
+  loadNodeRevisions(e) {
+    if (!this.getNodeRevisionsPath) {
+      return;
+    }
+    const detail = e && e.detail ? e.detail : {};
+    let nodeId = "";
+    if (detail.nodeId) {
+      nodeId = String(detail.nodeId);
+    } else if (detail.node && detail.node.id) {
+      nodeId = String(detail.node.id);
+    } else if (this.activeItem && this.activeItem.id) {
+      nodeId = String(this.activeItem.id);
+    }
+    nodeId = nodeId.trim();
+    if (!nodeId) {
+      return;
+    }
+    const body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      node: {
+        id: nodeId,
+      },
+    };
+    if (typeof detail.limit !== "undefined") {
+      body.limit = detail.limit;
+    }
+    if (typeof detail.offset !== "undefined") {
+      body.offset = detail.offset;
+    }
+    this.querySelector("#getnoderevisionsajax").body = body;
+    this.querySelector("#getnoderevisionsajax").generateRequest();
+  }
+  loadNodeRevision(e) {
+    if (!this.getNodeRevisionPath) {
+      return;
+    }
+    const detail = e && e.detail ? e.detail : {};
+    let nodeId = "";
+    if (detail.nodeId) {
+      nodeId = String(detail.nodeId);
+    } else if (detail.node && detail.node.id) {
+      nodeId = String(detail.node.id);
+    } else if (this.activeItem && this.activeItem.id) {
+      nodeId = String(this.activeItem.id);
+    }
+    nodeId = nodeId.trim();
+    const hash = detail.hash ? String(detail.hash).trim() : "";
+    if (!nodeId || !hash) {
+      return;
+    }
+    this.querySelector("#getnoderevisionajax").body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      node: {
+        id: nodeId,
+      },
+      hash: hash,
+    };
+    this.querySelector("#getnoderevisionajax").generateRequest();
+  }
+  restoreNodeRevision(e) {
+    if (!this.restoreNodeRevisionPath) {
+      return;
+    }
+    const detail = e && e.detail ? e.detail : {};
+    let nodeId = "";
+    if (detail.nodeId) {
+      nodeId = String(detail.nodeId);
+    } else if (detail.node && detail.node.id) {
+      nodeId = String(detail.node.id);
+    } else if (this.activeItem && this.activeItem.id) {
+      nodeId = String(this.activeItem.id);
+    }
+    nodeId = nodeId.trim();
+    const hash = detail.hash ? String(detail.hash).trim() : "";
+    if (!nodeId || !hash) {
+      return;
+    }
+    this.setProcessingVisual();
+    this.querySelector("#restorenoderevisionajax").body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      node: {
+        id: nodeId,
+      },
+      hash: hash,
+    };
+    this.querySelector("#restorenoderevisionajax").generateRequest();
   }
   /**
    * Save node event

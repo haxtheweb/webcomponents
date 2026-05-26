@@ -185,8 +185,8 @@ export const HaxUiSingletons = [
     simple-popover-manager[mode="hax"] {
       font-family: var(--hax-ui-font-family);
       font-size: var(--hax-ui-font-size);
-      --simple-modal-height: 70vh;
-      --simple-modal-width: 70vw;
+      --simple-modal-height: 80vh;
+      --simple-modal-width: 80vw;
       --simple-popover-border-color: var(--hax-ui-color);
       --simple-modal-border-color: var(--hax-ui-color);
     }

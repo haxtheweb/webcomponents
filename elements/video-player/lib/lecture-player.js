@@ -404,8 +404,8 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     c.innerHTML = `
     <style>
       simple-modal{
-        --simple-modal-width: 95%;
-        --simple-modal-height: 95%;
+        --simple-modal-width: 80vw;
+        --simple-modal-height: 80vh;
         font-family: var(--ddd-font-primary, sans-serif);
       }
 

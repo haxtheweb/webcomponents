@@ -35,6 +35,67 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
+const SYSTEM_SETTINGS_PANELS = {
+  dashboard: {
+    label: "Settings",
+    icon: "settings",
+    route: "",
+  },
+  status: {
+    label: "Status",
+    icon: "hax:graph",
+    route: "status",
+  },
+  skeletons: {
+    label: "Skeletons",
+    icon: "hax:site-map",
+    route: "skeletons",
+  },
+  themes: {
+    label: "Themes",
+    icon: "lrn:palette",
+    route: "themes",
+  },
+  blocks: {
+    label: "Blocks",
+    icon: "hax:blocks",
+    route: "blocks",
+  },
+  integrations: {
+    label: "Integrations",
+    icon: "communication:vpn-key",
+    route: "integrations",
+  },
+  media: {
+    label: "Media",
+    icon: "image:image",
+    route: "media",
+  },
+  "style-guide": {
+    label: "Style guide",
+    icon: "editor:format-color-text",
+    route: "style-guide",
+  },
+  "custom-code": {
+    label: "JS/CSS",
+    icon: "code",
+    route: "js-css",
+  },
+};
+
+const SYSTEM_SETTINGS_ROUTE_ALIASES = {
+  dashboard: "dashboard",
+  status: "status",
+  skeletons: "skeletons",
+  themes: "themes",
+  blocks: "blocks",
+  integrations: "integrations",
+  media: "media",
+  "style-guide": "style-guide",
+  "custom-code": "custom-code",
+  "js-css": "custom-code",
+};
+
 export class AppHax extends I18NMixin(ResponsiveUtilityBehaviors(DDD)) {
   static get tag() {
     return "app-hax";
@@ -164,6 +225,24 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     globalThis.addEventListener(
       "super-daemon-close",
       this._handleSuperDaemonClose.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener("popstate", this._adminRoutePopState.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+    globalThis.addEventListener(
+      "simple-modal-closed",
+      this._simpleModalClosed.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "haxcms-system-settings-panel-changed",
+      this._systemSettingsPanelChanged.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "simple-modal-breadcrumb-click",
+      this._simpleModalBreadcrumbClick.bind(this),
       { signal: this.windowControllers.signal },
     );
   }
@@ -339,6 +418,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       context: ["*"],
     });
+    SuperDaemonInstance.defineOption({
+      title: "System Settings",
+      icon: "settings",
+      tags: ["Administration", "settings", "system", "dashboard"],
+      value: {
+        target: this,
+        method: "openSystemSettingsFromMerlin",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: "HAX/action/systemSettings",
+      context: ["system-settings"],
+    });
     // contribution helpers
     SuperDaemonInstance.defineOption({
       title: "Join our Community",
@@ -448,6 +540,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     this.userMenuOpen = false;
     this.hasHeaderPre = false;
+    this.isHAXiamDeployment = false;
+    this.__currentAdminRoutePath = null;
+    this.__systemSettingsModalOpen = false;
+    this.__systemSettingsActivePanel = "dashboard";
+    this.__systemSettingsDialog = null;
     this.courses = [];
     this.activeItem = {};
     this.phrases = {
@@ -511,6 +608,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     autorun(() => {
       this.searchTerm = toJS(store.searchTerm);
+    });
+    autorun(() => {
+      const appSettings = toJS(store.appSettings);
+      this.isHAXiamDeployment = this._isHAXiamDeployment(appSettings);
+      this._syncSystemSettingsMerlinContext(appSettings);
     });
 
     /**
@@ -614,6 +716,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       isNewUser: { type: Boolean },
       phrases: { type: Object },
       userMenuOpen: { type: Boolean }, // leave here to ensure hat change and sound effects happen
+      isHAXiamDeployment: { type: Boolean, attribute: "is-haxiam-deployment" },
       hasHeaderPre: {
         type: Boolean,
         reflect: true,
@@ -1458,6 +1561,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
     });
     this._syncHeaderPreSlot();
+    this._applyInitialAdminRoutePath();
   }
 
   toggleMenu() {
@@ -1467,6 +1571,498 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   closeMenu() {
     this.userMenuOpen = false;
+  }
+
+  _isHAXiamDeployment(appSettings = null) {
+    if (!appSettings || typeof appSettings !== "object") {
+      return false;
+    }
+    if (appSettings.iam === true) {
+      return true;
+    }
+    if (appSettings.haxiamAddUserAccess) {
+      return true;
+    }
+    return false;
+  }
+
+  _allowSystemSettings(appSettings = null) {
+    const settings =
+      appSettings && typeof appSettings === "object"
+        ? appSettings
+        : toJS(store.appSettings);
+    if (!settings || typeof settings !== "object") {
+      return false;
+    }
+    return !this._isHAXiamDeployment(settings);
+  }
+
+  _syncSystemSettingsMerlinContext(appSettings = null) {
+    if (this._allowSystemSettings(appSettings)) {
+      SuperDaemonInstance.appendContext("system-settings");
+    } else {
+      SuperDaemonInstance.removeContext("system-settings");
+    }
+  }
+  _normalizeSystemSettingsPanel(panelKey = "dashboard") {
+    if (typeof panelKey !== "string") {
+      return "dashboard";
+    }
+    const normalized = panelKey.trim().toLowerCase();
+    if (
+      Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_ROUTE_ALIASES, normalized)
+    ) {
+      return SYSTEM_SETTINGS_ROUTE_ALIASES[normalized];
+    }
+    if (Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_PANELS, normalized)) {
+      return normalized;
+    }
+    return "dashboard";
+  }
+
+  _systemSettingsPanelMeta(panelKey = "dashboard") {
+    const normalized = this._normalizeSystemSettingsPanel(panelKey);
+    if (SYSTEM_SETTINGS_PANELS[normalized]) {
+      return SYSTEM_SETTINGS_PANELS[normalized];
+    }
+    return SYSTEM_SETTINGS_PANELS.dashboard;
+  }
+
+  _systemSettingsPanelFromRouteSegment(segment = "") {
+    if (typeof segment !== "string") {
+      return null;
+    }
+    const normalized = segment.trim().toLowerCase().replace(/^\/+/, "").replace(/\/+$/, "");
+    if (normalized === "") {
+      return "dashboard";
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_ROUTE_ALIASES, normalized)
+    ) {
+      return SYSTEM_SETTINGS_ROUTE_ALIASES[normalized];
+    }
+    return null;
+  }
+
+  _systemSettingsRouteSegment(panelKey = "dashboard") {
+    const meta = this._systemSettingsPanelMeta(panelKey);
+    if (meta && meta.route) {
+      return meta.route;
+    }
+    return "";
+  }
+
+  _systemSettingsRoutePath(panelKey = "dashboard") {
+    const segment = this._systemSettingsRouteSegment(panelKey);
+    if (!segment) {
+      return "admin";
+    }
+    return `admin/${segment}`;
+  }
+
+  _systemSettingsPanelFromAdminRoutePath(path = "admin") {
+    const normalized = this._normalizeAdminRoutePath(path);
+    if (!normalized) {
+      return null;
+    }
+    if (normalized === "admin") {
+      return "dashboard";
+    }
+    if (normalized.indexOf("admin/") === 0) {
+      return this._systemSettingsPanelFromRouteSegment(normalized.replace("admin/", ""));
+    }
+    return null;
+  }
+
+  _systemSettingsModalRouteState(panelKey = "dashboard") {
+    const normalizedPanel = this._normalizeSystemSettingsPanel(panelKey);
+    const panelMeta = this._systemSettingsPanelMeta(normalizedPanel);
+    if (normalizedPanel === "dashboard") {
+      return {
+        title: this.t.settings,
+        titleIcon: "settings",
+        breadcrumbs: [],
+      };
+    }
+    return {
+      title: `${this.t.settings} > ${panelMeta.label}`,
+      titleIcon: panelMeta.icon,
+      breadcrumbs: [
+        {
+          label: this.t.settings,
+          icon: "settings",
+          action: "system-settings-dashboard",
+          clickable: true,
+        },
+        {
+          label: panelMeta.label,
+          icon: panelMeta.icon,
+          clickable: false,
+        },
+      ],
+    };
+  }
+
+  _systemSettingsModalStyles() {
+    return {
+      "--simple-modal-titlebar-background": "black",
+      "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+      "--simple-modal-background":
+        "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+      "--simple-modal-z-index": "100000000",
+      "--simple-modal-titlebar-height": "80px",
+      "--simple-modal-width": "80vw",
+      "--simple-modal-max-width": "80vw",
+      "--simple-modal-height": "80vh",
+      "--simple-modal-max-height": "80vh",
+      "--simple-modal-border-radius": "var(--ddd-radius-md)",
+    };
+  }
+
+  _currentSystemSettingsDialog() {
+    if (this.__systemSettingsDialog && this.__systemSettingsDialog.isConnected) {
+      return this.__systemSettingsDialog;
+    }
+    if (globalThis.document && globalThis.document.querySelector) {
+      const existing = globalThis.document.querySelector("haxcms-system-settings");
+      if (existing) {
+        this.__systemSettingsDialog = existing;
+        return this.__systemSettingsDialog;
+      }
+    }
+    return null;
+  }
+
+  _setSystemSettingsDialogPanel(panelKey = "dashboard", dialog = null) {
+    const targetDialog = dialog || this._currentSystemSettingsDialog();
+    if (!targetDialog) {
+      return;
+    }
+    const normalizedPanel = this._normalizeSystemSettingsPanel(panelKey);
+    if (typeof targetDialog.setActivePanelFromRoute === "function") {
+      targetDialog.setActivePanelFromRoute(normalizedPanel);
+    } else {
+      targetDialog.activePanel = normalizedPanel;
+    }
+  }
+
+  _showSystemSettingsModal(dialog = null, panelKey = "dashboard") {
+    const targetDialog = dialog || this._currentSystemSettingsDialog();
+    if (!targetDialog) {
+      return false;
+    }
+    const routeState = this._systemSettingsModalRouteState(panelKey);
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: routeState.title,
+          titleIcon: routeState.titleIcon,
+          breadcrumbs: routeState.breadcrumbs,
+          styles: this._systemSettingsModalStyles(),
+          elements: {
+            content: targetDialog,
+          },
+          invokedBy: this._getSystemSettingsInvokedBy(),
+          clone: false,
+          modal: true,
+          showClose: true,
+        },
+      }),
+    );
+    return true;
+  }
+
+  _normalizeAdminRoutePath(path = "") {
+    if (typeof path !== "string") {
+      return null;
+    }
+    let normalized = path.trim().toLowerCase();
+    if (!normalized) {
+      return null;
+    }
+    normalized = normalized.replace(/^\/+/, "").replace(/\/+$/, "");
+    if (normalized === "admin") {
+      return "admin";
+    }
+    if (normalized.indexOf("admin/") === 0) {
+      const panel = this._systemSettingsPanelFromRouteSegment(
+        normalized.replace("admin/", ""),
+      );
+      if (!panel) {
+        return null;
+      }
+      return this._systemSettingsRoutePath(panel);
+    }
+    return null;
+  }
+
+  _getAdminRoutePathFromLocation() {
+    const params = new URLSearchParams(globalThis.location.search);
+    return this._normalizeAdminRoutePath(params.get("admin"));
+  }
+
+  _setAdminRoutePathOnLocation(path = null, historyMode = "push") {
+    const params = new URLSearchParams(globalThis.location.search);
+    const normalizedPath = path ? this._normalizeAdminRoutePath(path) : null;
+    if (normalizedPath) {
+      params.set("admin", normalizedPath);
+    } else {
+      params.delete("admin");
+    }
+    const nextSearch = params.toString();
+    const nextUrl = `${globalThis.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${globalThis.location.hash || ""}`;
+    if (historyMode === "replace") {
+      globalThis.history.replaceState(globalThis.history.state, "", nextUrl);
+    } else {
+      globalThis.history.pushState(globalThis.history.state, "", nextUrl);
+    }
+  }
+
+  _clearAdminRoutePathFromLocation(historyMode = "replace") {
+    this.__currentAdminRoutePath = null;
+    this.__systemSettingsModalOpen = false;
+    this.__systemSettingsActivePanel = "dashboard";
+    this.__systemSettingsDialog = null;
+    this._setAdminRoutePathOnLocation(null, historyMode);
+  }
+
+  _canApplyAdminRoutePath() {
+    return (
+      store.appReady &&
+      toJS(store.isLoggedIn) &&
+      this._allowSystemSettings()
+    );
+  }
+
+  _applyAdminRoutePath(path, attempt = 0) {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath) {
+      return;
+    }
+    if (!this._canApplyAdminRoutePath()) {
+      if (attempt < 120) {
+        setTimeout(() => {
+          this._applyAdminRoutePath(normalizedPath, attempt + 1);
+        }, 100);
+      }
+      return;
+    }
+    const panelKey =
+      this._systemSettingsPanelFromAdminRoutePath(normalizedPath) || "dashboard";
+    const opened = this.openSystemSettings(false, {
+      skipUrlUpdate: true,
+      silent: true,
+      panel: panelKey,
+    });
+    if (!opened) {
+      this._clearAdminRoutePathFromLocation("replace");
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+  }
+
+  _applyInitialAdminRoutePath() {
+    const routePath = this._getAdminRoutePathFromLocation();
+    if (routePath) {
+      this._applyAdminRoutePath(routePath);
+    }
+  }
+
+  _adminRoutePopState() {
+    const routePath = this._getAdminRoutePathFromLocation();
+    if (routePath) {
+      this._applyAdminRoutePath(routePath);
+      return;
+    }
+    if (
+      (typeof this.__currentAdminRoutePath === "string" &&
+        this.__currentAdminRoutePath.indexOf("admin") === 0) ||
+      this.__systemSettingsModalOpen
+    ) {
+      this.__currentAdminRoutePath = null;
+      this.__systemSettingsModalOpen = false;
+      this.__systemSettingsActivePanel = "dashboard";
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+  }
+
+  _simpleModalClosed() {
+    const hasSystemSettingsContext =
+      ((typeof this.__currentAdminRoutePath === "string" &&
+        this.__currentAdminRoutePath.indexOf("admin") === 0) ||
+        false) ||
+      this.__systemSettingsModalOpen;
+    if (!hasSystemSettingsContext) {
+      return;
+    }
+    setTimeout(() => {
+      let modalOpen = false;
+      if (globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability) {
+        modalOpen = globalThis.SimpleModal.requestAvailability().opened;
+      }
+      if (modalOpen) {
+        return;
+      }
+      const routePath = this._getAdminRoutePathFromLocation();
+      this.__systemSettingsModalOpen = false;
+      this.__systemSettingsDialog = null;
+      this.__systemSettingsActivePanel = "dashboard";
+      if (routePath && routePath.indexOf("admin") === 0) {
+        this._clearAdminRoutePathFromLocation("replace");
+      } else {
+        this.__currentAdminRoutePath = null;
+      }
+    }, 40);
+  }
+
+  _systemSettingsPanelChanged(e) {
+    if (!this.__systemSettingsModalOpen) {
+      return;
+    }
+    const detail = e && e.detail ? e.detail : {};
+    const panelKey = this._normalizeSystemSettingsPanel(
+      typeof detail.panel === "string" ? detail.panel : "dashboard",
+    );
+    const historyMode =
+      detail && detail.historyMode === "replace" ? "replace" : "push";
+    const routePath = this._systemSettingsRoutePath(panelKey);
+    this.__systemSettingsActivePanel = panelKey;
+    this.__currentAdminRoutePath = routePath;
+    if (this._getAdminRoutePathFromLocation() !== routePath) {
+      this._setAdminRoutePathOnLocation(routePath, historyMode);
+    }
+    this._showSystemSettingsModal(null, panelKey);
+  }
+
+  _simpleModalBreadcrumbClick(e) {
+    if (!e || !e.detail || !e.detail.breadcrumb) {
+      return;
+    }
+    if (!this.__systemSettingsModalOpen) {
+      return;
+    }
+    const breadcrumb = e.detail.breadcrumb;
+    if (breadcrumb.action !== "system-settings-dashboard") {
+      return;
+    }
+    this.openSystemSettings(false, {
+      panel: "dashboard",
+      historyMode: "push",
+    });
+  }
+
+  _openSystemSettingsMenuTap(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.openSystemSettings(false);
+  }
+
+  openSystemSettingsFromMerlin() {
+    this.openSystemSettings(true);
+  }
+
+  _getSystemSettingsInvokedBy() {
+    if (this.shadowRoot) {
+      const trigger = this.shadowRoot.querySelector("#systemsettingsbutton");
+      if (trigger) {
+        return trigger;
+      }
+      const fallback = this.shadowRoot.querySelector("#tbchar");
+      if (fallback) {
+        return fallback;
+      }
+    }
+    return null;
+  }
+
+  openSystemSettings(fromMerlin = false, routeOptions = {}) {
+    const options =
+      routeOptions && typeof routeOptions === "object" ? routeOptions : {};
+    if (!this._allowSystemSettings()) {
+      const deniedMessage =
+        "System settings are not available in HAXiam deployments.";
+      if (!options.silent) {
+        if (
+          fromMerlin &&
+          SuperDaemonInstance &&
+          typeof SuperDaemonInstance.merlinSpeak === "function"
+        ) {
+          SuperDaemonInstance.merlinSpeak(deniedMessage);
+        } else {
+          store.toast(deniedMessage, 3000, { hat: "random" });
+        }
+      }
+      return false;
+    }
+    const panelKey = this._normalizeSystemSettingsPanel(
+      typeof options.panel === "string" ? options.panel : "dashboard",
+    );
+    const routePath = this._systemSettingsRoutePath(panelKey);
+    if (!options.skipUrlUpdate) {
+      const currentPath = this._getAdminRoutePathFromLocation();
+      if (currentPath !== routePath) {
+        this._setAdminRoutePathOnLocation(
+          routePath,
+          options.historyMode || "push",
+        );
+      }
+    }
+    this.__currentAdminRoutePath = routePath;
+    this.__systemSettingsActivePanel = panelKey;
+    if (this.__systemSettingsModalOpen) {
+      this._setSystemSettingsDialogPanel(panelKey);
+      this._showSystemSettingsModal(null, panelKey);
+      return true;
+    }
+    this.__systemSettingsModalOpen = true;
+    this.closeMenu();
+    import("@haxtheweb/haxcms-elements/lib/core/haxcms-system-settings.js")
+      .then(() => {
+        import("@haxtheweb/simple-modal/simple-modal.js")
+          .then(() => {
+            const content = globalThis.document.createElement(
+              "haxcms-system-settings",
+            );
+            this.__systemSettingsDialog = content;
+            this._setSystemSettingsDialogPanel(panelKey, content);
+            this._showSystemSettingsModal(content, panelKey);
+          })
+          .catch(() => {
+            this.__systemSettingsModalOpen = false;
+            this.__systemSettingsDialog = null;
+            if (!options.silent) {
+              store.toast("Unable to load system settings UI", 3000, {
+                hat: "random",
+              });
+            }
+          });
+      })
+      .catch(() => {
+        this.__systemSettingsModalOpen = false;
+        this.__systemSettingsDialog = null;
+        if (!options.silent) {
+          store.toast("Unable to load system settings UI", 3000, {
+            hat: "random",
+          });
+        }
+      });
+    return true;
   }
 
   _syncHeaderPreSlot(e) {
@@ -1630,6 +2226,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   </wired-button>
                   <app-hax-wired-toggle id="wt"></app-hax-wired-toggle>
                 </div>
+                ${this._allowSystemSettings()
+                  ? html`
+                      <app-hax-user-menu-button
+                        id="systemsettingsbutton"
+                        slot="main-menu"
+                        icon="settings"
+                        label="${this.t.settings}"
+                        @click="${this._openSystemSettingsMenuTap}"
+                      ></app-hax-user-menu-button>
+                    `
+                  : ""}
                 <app-hax-user-menu-button
                   slot="post-menu"
                   class="logout"

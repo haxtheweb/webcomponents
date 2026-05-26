@@ -64,9 +64,9 @@ class HAXCMSFilesAdminDialog extends DDD {
         :host {
           display: flex;
           flex-direction: column;
-          min-width: min(90vw, 1100px);
+          min-width: min(80vw, 1100px);
           max-height: calc(
-            var(--simple-modal-height, 85vh) -
+            var(--simple-modal-height, 80vh) -
               var(--simple-modal-titlebar-height, 80px) -
               var(--ddd-spacing-8, 32px)
           );

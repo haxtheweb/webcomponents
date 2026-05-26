@@ -463,19 +463,16 @@ class MapMenu extends LitElement {
     this.items = [];
     this.autoScroll = false;
     this.activeIndicator = false;
-    setTimeout(() => {
-      this.addEventListener(
-        "link-clicked",
-        this.__linkClickedHandler.bind(this),
-      );
-      this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
-      this.addEventListener("active-item", this.__activeItemHandler.bind(this));
-      this.addEventListener("opened-changed", this.__openChanged.bind(this));
-      this.addEventListener(
-        "map-meu-item-hidden-check",
-        this._mapMeuItemHiddenCheckHandler.bind(this),
-      );
-    }, 0);
+    // Bind listeners immediately so we don't miss initial active-item updates
+    // when selected state is set quickly during first paint.
+    this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
+    this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
+    this.addEventListener("active-item", this.__activeItemHandler.bind(this));
+    this.addEventListener("opened-changed", this.__openChanged.bind(this));
+    this.addEventListener(
+      "map-meu-item-hidden-check",
+      this._mapMeuItemHiddenCheckHandler.bind(this),
+    );
   }
   /**
    * LitElement life cycle - render

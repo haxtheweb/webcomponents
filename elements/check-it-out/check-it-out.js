@@ -176,9 +176,9 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         }
         simple-modal-template[modal-id="m1"] {
           --simple-modal-width: var(--check-it-out-modal-width, 80vw);
-          --simple-modal-height: var(--check-it-out-modal-height, 55vh);
+          --simple-modal-height: var(--check-it-out-modal-height, 80vh);
           --simple-modal-min-width: var(--check-it-out-modal-width, 80vw);
-          --simple-modal-min-height: var(--check-it-out-modal-height, 55vh);
+          --simple-modal-min-height: var(--check-it-out-modal-height, 80vh);
         }
 
         .iframe-container {
