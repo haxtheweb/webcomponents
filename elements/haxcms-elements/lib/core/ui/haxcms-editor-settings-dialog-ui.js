@@ -3,6 +3,11 @@ import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import {
+  HaxSchematizer,
+  HaxElementizer,
+} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
@@ -259,6 +264,22 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         button.action:hover {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
         }
+        simple-fields {
+          --simple-fields-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-fields-background-color: transparent;
+          --simple-fields-select-option-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --simple-fields-select-option-selected-background-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-fields-button-background-color: transparent;
+        }
         @media screen and (max-width: 900px) {
           :host {
             min-width: 0;
@@ -361,23 +382,13 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
                 </p>
                 <div class="audience-content">
                   <div class="audience-selector">
-                    <label for="audience">${this.t.experienceLevel}</label>
-                    <select
-                      id="audience"
-                      .value="${this.audience}"
-                      @change="${this._audienceChanged}"
-                    >
-                      ${this.audienceOptions.map(
-                        (opt) => html`
-                          <option
-                            value="${opt.value}"
-                            ?selected="${this.audience === opt.value}"
-                          >
-                            ${opt.label}
-                          </option>
-                        `,
-                      )}
-                    </select>
+                    <simple-fields
+                      .fields="${this._audienceFields}"
+                      .value="${{ audience: this.audience }}"
+                      .schematizer="${HaxSchematizer}"
+                      .elementizer="${HaxElementizer}"
+                      @value-changed="${this._audienceChanged}"
+                    ></simple-fields>
                   </div>
                   <img
                     class="toolbar-preview"
@@ -414,8 +425,25 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     `;
   }
 
+  get _audienceFields() {
+    return [
+      {
+        property: "audience",
+        title: this.t.experienceLevel,
+        inputMethod: "select",
+        options: {
+          novice: "Novice",
+          expert: "Expert",
+        },
+      },
+    ];
+  }
+
   _audienceChanged(e) {
-    const value = e && e.target ? e.target.value : "expert";
+    const value =
+      e && e.detail && e.detail.value && e.detail.value.audience
+        ? e.detail.value.audience
+        : "expert";
     if (value === "novice" || value === "expert") {
       this.audience = value;
     } else {

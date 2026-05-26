@@ -79,7 +79,6 @@ class HAXCMSThemePicker extends DDD {
             var(--ddd-font-size-4xs)
           );
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1.2;
           letter-spacing: var(--ddd-ls-16-sm);
         }
         .description,
@@ -90,7 +89,6 @@ class HAXCMSThemePicker extends DDD {
             --haxcms-theme-picker-description-size,
             var(--ddd-font-size-4xs)
           );
-          line-height: 1.3;
           color: light-dark(
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-limestoneGray)
@@ -101,7 +99,7 @@ class HAXCMSThemePicker extends DDD {
           gap: var(--ddd-spacing-3);
           grid-template-columns: repeat(
             auto-fill,
-            minmax(var(--haxcms-theme-picker-min-card-width, 160px), 1fr)
+            minmax(var(--haxcms-theme-picker-min-card-width, 120px), 1fr)
           );
         }
         .option {
@@ -109,7 +107,7 @@ class HAXCMSThemePicker extends DDD {
           display: flex;
           flex-direction: column;
           align-items: stretch;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-1);
           cursor: pointer;
           border: var(--ddd-border-sm);
           border-color: light-dark(
@@ -177,9 +175,8 @@ class HAXCMSThemePicker extends DDD {
           font-family: var(--ddd-font-navigation);
           font-size: var(
             --haxcms-theme-picker-flag-size,
-            var(--ddd-font-size-4xs)
+            var(--ddd-font-size-6xs)
           );
-          line-height: 1.2;
         }
         .flag.active {
           background: var(--ddd-theme-default-keystoneYellow);
@@ -194,7 +191,7 @@ class HAXCMSThemePicker extends DDD {
           align-items: center;
           justify-content: center;
           inline-size: 100%;
-          block-size: var(--haxcms-theme-picker-preview-height, 220px);
+          block-size: var(--haxcms-theme-picker-preview-height, 120px);
           border-radius: var(--ddd-radius-xs);
           border: var(--ddd-border-xs);
           border-color: color-mix(
@@ -227,10 +224,9 @@ class HAXCMSThemePicker extends DDD {
           font-family: var(--ddd-font-navigation);
           font-size: var(
             --haxcms-theme-picker-theme-name-size,
-            var(--ddd-font-size-xs)
+            var(--ddd-font-size-4xs)
           );
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1.2;
         }
         .sr-only {
           position: absolute;

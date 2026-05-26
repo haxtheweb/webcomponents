@@ -580,19 +580,19 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         open: false,
         fields: [
           {
-            property: "manifest-metadata-theme-variables-cssVariable",
-            title: "Accent color",
-            description: "Accent color applied to themes that implement it",
-            inputMethod: "colorpicker",
-            required: true,
-          },
-          {
             property: "manifest-metadata-theme-variables-palette",
             title: "Palette",
             description:
               "DDD palette applied at theme scope for color-token cascading",
             inputMethod: "hax-palette-picker",
             required: false,
+          },
+          {
+            property: "manifest-metadata-theme-variables-cssVariable",
+            title: "Accent color",
+            description: "Accent color applied to themes that implement it",
+            inputMethod: "colorpicker",
+            required: true,
           },
         ],
       },

@@ -35,6 +35,8 @@ class HAXCMSSiteEditor extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
+    this.__lastContentDashboardOperation = "search";
+    this.__lastContentSearchQuery = "";
     this.method = "POST";
     this.editMode = false;
     globalThis.SimpleModal.requestAvailability();
@@ -489,23 +491,45 @@ class HAXCMSSiteEditor extends LitElement {
   }
   _handleContentSearchResponse(e) {
     const response = e.detail && e.detail.response ? e.detail.response : {};
+    const responseData =
+      response.data && typeof response.data === "object" ? response.data : {};
+    const responseOperation =
+      typeof responseData.operation === "string"
+        ? responseData.operation.toLowerCase().trim()
+        : "";
+    const operation =
+      responseOperation || this.__lastContentDashboardOperation || "search";
     let query = this.__lastContentSearchQuery
       ? String(this.__lastContentSearchQuery)
       : "";
     if (
-      response.data &&
-      typeof response.data === "object" &&
-      typeof response.data.query === "string"
+      responseData &&
+      typeof responseData.query === "string"
     ) {
-      query = response.data.query;
+      query = responseData.query;
+    }
+    if (operation === "replace") {
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-content-dashboard-replace-results", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            operation,
+            query,
+            data: responseData,
+            raw: response,
+          },
+        }),
+      );
+      return;
     }
     let results = [];
     if (
-      response.data &&
-      typeof response.data === "object" &&
-      Array.isArray(response.data.matches)
+      responseData &&
+      Array.isArray(responseData.matches)
     ) {
-      results = response.data.matches;
+      results = responseData.matches;
     } else if (Array.isArray(response.matches)) {
       results = response.matches;
     } else if (response.data && Array.isArray(response.data)) {
@@ -1912,7 +1936,7 @@ class HAXCMSSiteEditor extends LitElement {
       });
       return;
     }
-    if (operation === "search") {
+    if (operation === "search" || operation === "replace") {
       if (this.contentSearchPath) {
         const searchValue =
           e.detail &&
@@ -1923,9 +1947,11 @@ class HAXCMSSiteEditor extends LitElement {
         if (!searchValue) {
           return;
         }
+        this.__lastContentDashboardOperation = operation;
         this.__lastContentSearchQuery = searchValue;
         const body = {
           jwt: this.jwt,
+          operation: operation,
           search: searchValue,
         };
         if (
@@ -1938,45 +1964,64 @@ class HAXCMSSiteEditor extends LitElement {
             name: this.manifest.metadata.site.name,
           };
         }
-        if (
-          e.detail &&
-          typeof e.detail.searchField === "string" &&
-          e.detail.searchField.trim() !== ""
-        ) {
-          body.searchField = e.detail.searchField.trim();
-        }
-        const requestedSearchMode =
-          e.detail &&
-          typeof e.detail.searchMode === "string" &&
-          e.detail.searchMode.trim() !== ""
-            ? e.detail.searchMode.trim().toLowerCase()
-            : "";
-        const selectorMode =
-          (e.detail &&
-            (e.detail.searchSelector === true ||
-              e.detail.searchSelector === "true" ||
-              e.detail.searchSelector === 1 ||
-              e.detail.searchSelector === "1")) ||
-          requestedSearchMode === "selector";
-        body.searchSelector = selectorMode;
-        if (selectorMode) {
-          body.searchMode = "selector";
+        if (operation === "replace") {
+          body.searchMode = "fulltext";
+          body.searchSelector = false;
           body.searchField = "content";
-        } else if (requestedSearchMode) {
-          body.searchMode = requestedSearchMode;
-        }
-        if (e.detail && e.detail.searchCaseSensitive === true) {
-          body.searchCaseSensitive = true;
-        }
-        if (
-          e.detail &&
-          typeof e.detail.searchLimit !== "undefined" &&
-          e.detail.searchLimit !== null &&
-          e.detail.searchLimit !== ""
-        ) {
-          const searchLimit = parseInt(e.detail.searchLimit, 10);
-          if (!isNaN(searchLimit)) {
-            body.searchLimit = searchLimit;
+          body.replace =
+            e.detail && typeof e.detail.replace === "string"
+              ? e.detail.replace
+              : "";
+          if (e.detail && e.detail.replaceConfirm === true) {
+            body.replaceConfirm = true;
+          }
+          if (e.detail && e.detail.replaceDestroyConfirm === true) {
+            body.replaceDestroyConfirm = true;
+          }
+          if (e.detail && e.detail.searchCaseSensitive === true) {
+            body.searchCaseSensitive = true;
+          }
+        } else {
+          if (
+            e.detail &&
+            typeof e.detail.searchField === "string" &&
+            e.detail.searchField.trim() !== ""
+          ) {
+            body.searchField = e.detail.searchField.trim();
+          }
+          const requestedSearchMode =
+            e.detail &&
+            typeof e.detail.searchMode === "string" &&
+            e.detail.searchMode.trim() !== ""
+              ? e.detail.searchMode.trim().toLowerCase()
+              : "";
+          const selectorMode =
+            (e.detail &&
+              (e.detail.searchSelector === true ||
+                e.detail.searchSelector === "true" ||
+                e.detail.searchSelector === 1 ||
+                e.detail.searchSelector === "1")) ||
+            requestedSearchMode === "selector";
+          body.searchSelector = selectorMode;
+          if (selectorMode) {
+            body.searchMode = "selector";
+            body.searchField = "content";
+          } else if (requestedSearchMode) {
+            body.searchMode = requestedSearchMode;
+          }
+          if (e.detail && e.detail.searchCaseSensitive === true) {
+            body.searchCaseSensitive = true;
+          }
+          if (
+            e.detail &&
+            typeof e.detail.searchLimit !== "undefined" &&
+            e.detail.searchLimit !== null &&
+            e.detail.searchLimit !== ""
+          ) {
+            const searchLimit = parseInt(e.detail.searchLimit, 10);
+            if (!isNaN(searchLimit)) {
+              body.searchLimit = searchLimit;
+            }
           }
         }
         const searchRequest = this.querySelector("#contentsearchajax");
@@ -1986,12 +2031,17 @@ class HAXCMSSiteEditor extends LitElement {
         return;
       }
       globalThis.dispatchEvent(
-        new CustomEvent("haxcms-content-dashboard-search", {
+        new CustomEvent(
+          operation === "replace"
+            ? "haxcms-content-dashboard-replace"
+            : "haxcms-content-dashboard-search",
+          {
           bubbles: true,
           composed: true,
           cancelable: true,
           detail: e.detail,
-        }),
+          },
+        ),
       );
     }
   }

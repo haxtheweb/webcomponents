@@ -4,6 +4,8 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 class HAXCMSContentAdminDialog extends DDD {
   static get tag() {
@@ -24,6 +26,9 @@ class HAXCMSContentAdminDialog extends DDD {
       searchLoading: { type: Boolean, attribute: "search-loading" },
       searchMatches: { type: Array, attribute: false },
       lastSearchQuery: { type: String, attribute: "last-search-query" },
+      operationMode: { type: String, attribute: "operation-mode" },
+      replaceValue: { type: String, attribute: "replace-value" },
+      replaceLoading: { type: Boolean, attribute: "replace-loading" },
     };
   }
 
@@ -38,8 +43,12 @@ class HAXCMSContentAdminDialog extends DDD {
     this.searchLoading = false;
     this.searchMatches = null;
     this.lastSearchQuery = "";
+    this.operationMode = "search";
+    this.replaceValue = "";
+    this.replaceLoading = false;
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
+    this.__replaceResponseHandler = this._onReplaceResults.bind(this);
     this.__searchDebounceTimer = null;
   }
 
@@ -96,46 +105,20 @@ class HAXCMSContentAdminDialog extends DDD {
           gap: var(--ddd-spacing-2);
           align-items: end;
         }
-        label {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-4xs);
-        }
-        input,
-        select,
-        button {
-          font: inherit;
-        }
-        input,
-        select {
-          border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          min-height: 36px;
+        .controls simple-fields-field {
+          --simple-fields-font-size: var(--ddd-font-size-4xs);
+          --simple-fields-line-height: 1.4;
+          --simple-fields-margin: var(--ddd-spacing-1);
+          --simple-fields-margin-small: var(--ddd-spacing-1);
           min-width: 180px;
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
         }
-        button {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-white);
-          cursor: pointer;
-          min-height: 36px;
-        }
-        button[disabled] {
-          opacity: 0.6;
-          cursor: not-allowed;
+        simple-icon-button-lite.replace-btn {
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-navy);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
+          color: var(--ddd-theme-default-skyBlue);
         }
         editable-table-display {
           --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
@@ -153,6 +136,10 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         .empty {
           margin: var(--ddd-spacing-4) 0;
+        }
+        .meta {
+          margin: 0;
+          font-size: var(--ddd-font-size-4xs);
         }
         @media screen and (max-width: 900px) {
           :host {
@@ -199,6 +186,10 @@ class HAXCMSContentAdminDialog extends DDD {
       "haxcms-content-dashboard-search-results",
       this.__searchResponseHandler,
     );
+    globalThis.addEventListener(
+      "haxcms-content-dashboard-replace-results",
+      this.__replaceResponseHandler,
+    );
   }
 
   disconnectedCallback() {
@@ -209,6 +200,10 @@ class HAXCMSContentAdminDialog extends DDD {
     globalThis.removeEventListener(
       "haxcms-content-dashboard-search-results",
       this.__searchResponseHandler,
+    );
+    globalThis.removeEventListener(
+      "haxcms-content-dashboard-replace-results",
+      this.__replaceResponseHandler,
     );
     for (var i in this.__disposer) {
       const disposer = this.__disposer[i];
@@ -386,7 +381,7 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   _onFilterField(e) {
-    this.filterField = e.target.value;
+    this.filterField = e.detail.value;
     if (this.__searchDebounceTimer) {
       clearTimeout(this.__searchDebounceTimer);
       this.__searchDebounceTimer = null;
@@ -394,6 +389,9 @@ class HAXCMSContentAdminDialog extends DDD {
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this.searchLoading = false;
+    this.operationMode = "search";
+    this.replaceValue = "";
+    this.replaceLoading = false;
     if (this.filterField === "visibility") {
       this.filterValue = "any";
     } else {
@@ -402,21 +400,38 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   _onSearchMode(e) {
-    this.searchMode = e.target.value;
+    const requestedMode = e.detail.value;
+    if (this.operationMode === "replace" && requestedMode === "selector") {
+      this.searchMode = "fulltext";
+    } else {
+      this.searchMode = requestedMode;
+    }
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this._debounceSearchRequest();
   }
 
+  _onOperationMode(e) {
+    this.operationMode = e.detail.value;
+    if (this.operationMode === "replace" && this.searchMode !== "fulltext") {
+      this.searchMode = "fulltext";
+    }
+    this.searchMatches = null;
+    this.lastSearchQuery = "";
+    this.replaceLoading = false;
+    this.replaceValue = "";
+    this._debounceSearchRequest();
+  }
+
   _onSearchCaseSensitive(e) {
-    this.searchCaseSensitive = e.target.value === "true";
+    this.searchCaseSensitive = e.detail.value === "true";
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this._debounceSearchRequest();
   }
 
   _onSearchLimit(e) {
-    const value = parseInt(e.target.value);
+    const value = parseInt(e.detail.value);
     if (isNaN(value)) {
       this.searchLimit = 25;
       this._debounceSearchRequest();
@@ -469,12 +484,16 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   _onFilterValue(e) {
-    this.filterValue = e.target.value;
+    this.filterValue = e.detail.value;
     if (this.filterField === "search") {
       this.searchMatches = null;
       this.lastSearchQuery = "";
       this._debounceSearchRequest();
     }
+  }
+
+  _onReplaceValue(e) {
+    this.replaceValue = e.detail.value;
   }
 
   _onSearchResults(e) {
@@ -503,6 +522,104 @@ class HAXCMSContentAdminDialog extends DDD {
     this.searchLoading = false;
     this.lastSearchQuery = query;
     this.searchMatches = [...new Set(ids)];
+  }
+
+  _onReplaceResults(e) {
+    this.replaceLoading = false;
+    const detail = e && e.detail ? e.detail : {};
+    const data = detail && detail.data ? detail.data : {};
+    const updatedItems =
+      typeof data.updatedItems === "number" ? data.updatedItems : 0;
+    const totalReplacements =
+      typeof data.totalReplacements === "number" ? data.totalReplacements : 0;
+    store.toast(
+      `Updated ${updatedItems} page${updatedItems === 1 ? "" : "s"} with ${totalReplacements} replacement${totalReplacements === 1 ? "" : "s"}.`,
+      3000,
+      { hat: "construction" },
+    );
+    this._applySearch();
+  }
+
+  _searchMatchCount() {
+    if (this.filterField !== "search") {
+      return 0;
+    }
+    const query = this.filterValue ? this.filterValue.toLowerCase().trim() : "";
+    if (!query || this.lastSearchQuery !== query) {
+      return 0;
+    }
+    if (!Array.isArray(this.searchMatches)) {
+      return 0;
+    }
+    return this.searchMatches.length;
+  }
+
+  _canRunReplace() {
+    if (this.filterField !== "search" || this.operationMode !== "replace") {
+      return false;
+    }
+    if (this.searchMode !== "fulltext") {
+      return false;
+    }
+    const searchTerm = this.filterValue ? this.filterValue.trim() : "";
+    if (searchTerm.length <= 1) {
+      return false;
+    }
+    if (this.searchLoading || this.replaceLoading) {
+      return false;
+    }
+    if (this._searchMatchCount() < 1) {
+      return false;
+    }
+    const replaceLength = this.replaceValue
+      ? this.replaceValue.trim().length
+      : 0;
+    if (replaceLength === 1) {
+      return false;
+    }
+    return replaceLength === 0 || replaceLength > 1;
+  }
+
+  _applyReplace() {
+    if (!this._canRunReplace()) {
+      return;
+    }
+    const searchTerm = this.filterValue ? this.filterValue.trim() : "";
+    const replacement = this.replaceValue ? this.replaceValue.trim() : "";
+    const confirmation = globalThis.confirm(
+      "This bulk replacement cannot be undone. Continue?",
+    );
+    if (!confirmation) {
+      return;
+    }
+    let emptyReplacementConfirmed = false;
+    if (replacement === "") {
+      emptyReplacementConfirmed = globalThis.confirm(
+        "Replacement text is empty, so this will remove all matches. Confirm again to continue.",
+      );
+      if (!emptyReplacementConfirmed) {
+        return;
+      }
+    }
+    this.replaceLoading = true;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-content-dashboard-operation", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          operation: "replace",
+          search: searchTerm,
+          replace: replacement,
+          searchMode: "fulltext",
+          searchSelector: false,
+          searchField: "content",
+          searchCaseSensitive: this.searchCaseSensitive === true,
+          replaceConfirm: confirmation,
+          replaceDestroyConfirm: emptyReplacementConfirmed,
+        },
+      }),
+    );
   }
 
   _applySearch() {
@@ -563,74 +680,103 @@ class HAXCMSContentAdminDialog extends DDD {
           <div class="filters">
             <h3 class="filters-title">Show only items where</h3>
             <div class="controls">
-              <label>
-                Filter by
-                <select
-                  .value="${this.filterField}"
-                  @change="${this._onFilterField}"
-                >
-                  <option value="search">Search content</option>
-                  <option value="visibility">Visibility</option>
-                  <option value="tags">Tags</option>
-                  <option value="parents">Parent page</option>
-                </select>
-              </label>
+              <simple-fields-field
+                type="select"
+                label="Filter by"
+                .value="${this.filterField}"
+                .itemsList="${[
+                  { value: "search", text: "Search content" },
+                  { value: "visibility", text: "Visibility" },
+                  { value: "tags", text: "Tags" },
+                  { value: "parents", text: "Parent page" },
+                ]}"
+                @value-changed="${this._onFilterField}"
+              ></simple-fields-field>
               ${this.filterField === "visibility"
-                ? html`<label>
-                    Value
-                    <select
-                      .value="${this.filterValue}"
-                      @change="${this._onFilterValue}"
-                    >
-                      <option value="any">Any</option>
-                      <option value="published">Published</option>
-                      <option value="unpublished">Unpublished</option>
-                      <option value="visible">Visible</option>
-                      <option value="not-visible">Not visible</option>
-                    </select>
-                  </label>`
-                : html`<label>
-                    Value
-                    <input
-                      type="text"
-                      .value="${this.filterValue}"
-                      @input="${this._onFilterValue}"
-                      @keydown="${this._onSearchInputKeydown}"
-                      placeholder="${this._searchPlaceholder()}"
-                    />
-                  </label>`}
+                ? html`<simple-fields-field
+                    type="select"
+                    label="Value"
+                    .value="${this.filterValue}"
+                    .itemsList="${[
+                      { value: "any", text: "Any" },
+                      { value: "published", text: "Published" },
+                      { value: "unpublished", text: "Unpublished" },
+                      { value: "visible", text: "Visible" },
+                      { value: "not-visible", text: "Not visible" },
+                    ]}"
+                    @value-changed="${this._onFilterValue}"
+                  ></simple-fields-field>`
+                : html`<simple-fields-field
+                    type="text"
+                    label="Value"
+                    .value="${this.filterValue}"
+                    placeholder="${this._searchPlaceholder()}"
+                    @value-changed="${this._onFilterValue}"
+                    @keydown="${this._onSearchInputKeydown}"
+                  ></simple-fields-field>`}
               ${this.filterField === "search"
                 ? html`
-                    <label>
-                      Search type
-                      <select
-                        .value="${this.searchMode}"
-                        @change="${this._onSearchMode}"
-                      >
-                        <option value="fulltext">Full text</option>
-                        <option value="selector">Query selector</option>
-                      </select>
-                    </label>
-                    <label>
-                      Case sensitive
-                      <select
-                        .value="${this.searchCaseSensitive ? "true" : "false"}"
-                        @change="${this._onSearchCaseSensitive}"
-                      >
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
-                      </select>
-                    </label>
-                    <label>
-                      Limit
-                      <input
-                        type="number"
-                        min="1"
-                        max="200"
-                        .value="${String(this.searchLimit)}"
-                        @input="${this._onSearchLimit}"
-                      />
-                    </label>
+                    <simple-fields-field
+                      type="select"
+                      label="Mode"
+                      .value="${this.operationMode}"
+                      .itemsList="${[
+                        { value: "search", text: "Search" },
+                        { value: "replace", text: "Search and replace" },
+                      ]}"
+                      @value-changed="${this._onOperationMode}"
+                    ></simple-fields-field>
+                    <simple-fields-field
+                      type="select"
+                      label="Search type"
+                      .value="${this.searchMode}"
+                      .itemsList="${[
+                        { value: "fulltext", text: "Full text" },
+                        { value: "selector", text: "Query selector" },
+                      ]}"
+                      @value-changed="${this._onSearchMode}"
+                    ></simple-fields-field>
+                    <simple-fields-field
+                      type="select"
+                      label="Case sensitive"
+                      .value="${this.searchCaseSensitive ? "true" : "false"}"
+                      .itemsList="${[
+                        { value: "false", text: "No" },
+                        { value: "true", text: "Yes" },
+                      ]}"
+                      @value-changed="${this._onSearchCaseSensitive}"
+                    ></simple-fields-field>
+                    <simple-fields-field
+                      type="number"
+                      label="Limit"
+                      min="1"
+                      max="200"
+                      .value="${String(this.searchLimit)}"
+                      @value-changed="${this._onSearchLimit}"
+                    ></simple-fields-field>
+                    ${this.operationMode === "replace"
+                      ? html`
+                          <simple-fields-field
+                            type="text"
+                            label="Replace with"
+                            .value="${this.replaceValue}"
+                            placeholder="Replacement phrase (leave empty to remove)"
+                            @value-changed="${this._onReplaceValue}"
+                          ></simple-fields-field>
+                          <simple-icon-button-lite
+                            class="replace-btn"
+                            icon="find-replace"
+                            label="${this.replaceLoading ? "Replacing…" : "Replace"}"
+                            ?disabled="${!this._canRunReplace()}"
+                            @click="${this._applyReplace}"
+                          ></simple-icon-button-lite>
+                        `
+                      : ``}
+                    <p class="meta" role="status" aria-live="polite">
+                      ${this.searchLoading
+                        ? "Searching…"
+                        : `${this._searchMatchCount()} match${this._searchMatchCount() === 1 ? "" : "es"}`}
+                    </p>
                   `
                 : ``}
             </div>

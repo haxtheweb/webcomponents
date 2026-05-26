@@ -54,7 +54,6 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.nodeId = "";
     this.scalePreset = "md";
     this.__disposer = [];
-    this.__refreshTimer = null;
     this.__boundFileAction = this._onFileAction.bind(this);
   }
 
@@ -188,7 +187,6 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   disconnectedCallback() {
-    if (this.__refreshTimer) { clearTimeout(this.__refreshTimer); this.__refreshTimer = null; }
     this.removeEventListener("hax-file-action", this.__boundFileAction);
     for (var i in this.__disposer) {
       const d = this.__disposer[i];
@@ -394,8 +392,8 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   async refreshFiles() {
-    this._requestTableUpdate();
     if (!this._canList) return;
+    this._requestTableUpdate(); 
     this.loading = true; this.errorMessage = "";
     try {
       const resp = await fetch(this.listFilesPath, {
@@ -416,11 +414,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!value) return;
     this.errorMessage = "";
     this._msg("Upload complete");
-    this._schedRefresh();
-  }
-  _schedRefresh() {
-    if (this.__refreshTimer) clearTimeout(this.__refreshTimer);
-    this.__refreshTimer = setTimeout(() => { this.refreshFiles(); this.__refreshTimer = null; }, 250);
+    this.refreshFiles();
   }
 
   _rowByIndex(index) {
@@ -448,7 +442,6 @@ class HAXCMSFilesAdminDialog extends DDD {
   async _op(row, op, options = {}) {
     if (!this._canOp) { this._msg("File operation endpoint not configured.", true); return; }
     this.busy = true; this.errorMessage = "";
-    this._requestTableUpdate();
     try {
       const body = { jwt: this.jwt, site: { name: this.siteName }, operation: op, path: row.path };
       if (options && typeof options.size === "string" && options.size) body.size = options.size;
@@ -473,7 +466,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       this._msg(message);
       await this.refreshFiles();
     } catch(e) { this.errorMessage = "File operation failed"; this._msg(this.errorMessage, true); }
-    finally { this.busy = false; this._requestTableUpdate(); }
+    finally { this.busy = false; }
   }
 
   async _onScaleAction(index, size) {

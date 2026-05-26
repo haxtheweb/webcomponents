@@ -59,16 +59,14 @@ class HaxPalettePicker extends DDD {
         legend {
           margin: 0 0 var(--ddd-spacing-2);
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1.2;
           letter-spacing: var(--ddd-ls-16-sm);
         }
         .description {
           margin: 0 0 var(--ddd-spacing-3);
           font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.3;
+          font-size: var(--ddd-font-size-6xs);
           color: light-dark(
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-limestoneGray)
@@ -92,26 +90,23 @@ class HaxPalettePicker extends DDD {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
-          padding: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2);
           transition:
             border-color 120ms ease-in-out,
             box-shadow 120ms ease-in-out,
             background-color 120ms ease-in-out;
         }
         .flags {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          margin-bottom: var(--ddd-spacing-2);
-          min-block-size: var(--ddd-spacing-4);
+          position: absolute;
+          display: block;
+          right: var(--ddd-spacing-3);
+          top: 6px;
         }
         .flag {
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.2;
+          font-size: var(--ddd-font-size-6xs);
         }
         .flag.active {
           background: var(--ddd-theme-default-keystoneYellow);
@@ -146,7 +141,7 @@ class HaxPalettePicker extends DDD {
         }
         .option-display {
           display: grid;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-1);
         }
         .option-header {
           display: flex;
@@ -156,9 +151,8 @@ class HaxPalettePicker extends DDD {
         }
         .option-label {
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1.2;
         }
         .swatches {
           display: grid;
@@ -173,8 +167,7 @@ class HaxPalettePicker extends DDD {
             var(--ddd-theme-default-black) 35%,
             transparent
           );
-          border-radius: var(--ddd-radius-xs);
-          min-block-size: var(--ddd-spacing-8);
+          min-block-size: var(--ddd-spacing-6);
         }
         .swatch-1 {
           background-color: var(--ddd-palette-color-1);
