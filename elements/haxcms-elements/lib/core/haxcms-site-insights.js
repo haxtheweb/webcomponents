@@ -615,8 +615,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       method = toJS(store.appSettings.method);
     }
     if (store.appSettings.jwt) {
-        jwt = store.appSettings.jwt;
-      }
+      jwt = store.appSettings.jwt;
+    }
+    if (
+      (!jwt || jwt === "" || jwt === "null" || jwt === "undefined") &&
+      store.jwt
+    ) {
+      jwt = toJS(store.jwt);
+    }
     if (
       typeof jwt === "string" &&
       jwt !== "" &&
@@ -837,11 +843,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }, 0);
   }
   refreshData() {
-    let base = this.base;
-    if (base == "" && globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
     const site = toJS(store.manifest);
+    const selector =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("#selector")
+        : null;
+    const jwt =
+      store && store.jwt && typeof toJS(store.jwt) === "string"
+        ? toJS(store.jwt)
+        : "";
     const siteName =
       site &&
       site.metadata &&
@@ -850,20 +860,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         ? site.metadata.site.name
         : "";
     const params = {
-      type: "site",
       site: {
         name: siteName,
-        file: base + "site.json",
-        id: site.id,
-        title: site.title,
-        author: site.author,
-        description: site.description,
-        license: site.license,
-        metadata: site.metadata,
-        items: site.items,
       },
-      activeId: this.shadowRoot.querySelector("#selector").value,
-      link: base,
+      activeId: selector ? selector.value : null,
+      jwt: jwt,
     };
     this.loading = true;
     const internalEndpoint = this._activeTabInternalEndpoint();

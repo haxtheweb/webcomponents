@@ -26,6 +26,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
     super();
     this.windowControllers = new AbortController();
     globalThis.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
+    this._syncStoreAppSettings();
     this.applyContext();
     globalThis.addEventListener(
       "haxcms-site-editor-loaded",
@@ -50,6 +51,14 @@ class HAXCMSEditorBuilder extends HTMLElement {
     this.windowControllers.abort();
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
+    }
+  }
+  _syncStoreAppSettings() {
+    if (
+      globalThis.appSettings &&
+      typeof globalThis.appSettings === "object"
+    ) {
+      store.appSettings = globalThis.appSettings;
     }
   }
 
@@ -101,6 +110,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
         // append this script to global scope to show up via window
         // this is a unique case since it's server side generated in HAXCMS
         let script = globalThis.document.createElement("script");
+        script.addEventListener("load", this._syncStoreAppSettings.bind(this), {
+          once: true,
+        });
         // IF we're in a live environment this will always be 2 levels back
         if (
           globalThis.appSettings &&
@@ -116,6 +128,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
           if (response.ok && contentType.includes("application/javascript")) {
             this.__hasConnectionSettings = true;
             globalThis.document.documentElement.appendChild(script);
+            this._syncStoreAppSettings();
           }
         });
       }

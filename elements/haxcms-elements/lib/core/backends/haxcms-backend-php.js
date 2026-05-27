@@ -57,6 +57,7 @@ class HAXCMSBackendPHP extends LitElement {
   firstUpdated(changedProperties) {
     setTimeout(() => {
       if (globalThis.appSettings) {
+        store.appSettings = globalThis.appSettings;
         let jwtlogin = this.shadowRoot.querySelector("#jwt");
         jwtlogin.url = globalThis.appSettings.login;
         jwtlogin.refreshUrl = globalThis.appSettings.refreshUrl;
