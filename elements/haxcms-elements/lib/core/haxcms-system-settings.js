@@ -6,6 +6,7 @@ import {
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js";
 
@@ -27,6 +28,10 @@ class HAXCMSSystemSettings extends DDD {
       themeOptions: { type: Array, attribute: false },
       loadingSkeletons: { type: Boolean, attribute: "loading-skeletons" },
       loadingThemes: { type: Boolean, attribute: "loading-themes" },
+      apiKeysLoading: { type: Boolean, attribute: "api-keys-loading" },
+      apiKeysError: { type: String, attribute: "api-keys-error" },
+      apiKeyVisibility: { type: Object, attribute: false },
+      panelSaving: { type: Boolean, attribute: "panel-saving" },
     };
   }
 
@@ -42,9 +47,14 @@ class HAXCMSSystemSettings extends DDD {
     this.themeOptions = [];
     this.loadingSkeletons = false;
     this.loadingThemes = false;
+    this.apiKeysLoading = false;
+    this.apiKeysError = "";
+    this.apiKeyVisibility = {};
+    this.panelSaving = false;
     this.__statusLoaded = false;
     this.__skeletonsLoaded = false;
     this.__themesLoaded = false;
+    this.__integrationsLoaded = false;
     this.panelList = this._buildPanels();
     this.panelMap = this._buildPanelMap(this.panelList);
     this.defaultPanelValues = this._buildDefaultPanelValues(this.panelList);
@@ -256,7 +266,7 @@ class HAXCMSSystemSettings extends DDD {
           line-height: 1.35;
           opacity: 0.92;
         }
-        details.section {
+        .section {
           border: var(--ddd-border-sm) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
@@ -270,24 +280,11 @@ class HAXCMSSystemSettings extends DDD {
           padding: var(--ddd-spacing-4);
         }
         .section-title {
-          list-style: none;
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: var(--ddd-spacing-3);
-          cursor: pointer;
-          margin-bottom: 0;
-        }
-        details.section[open] .section-title {
-          margin-bottom: var(--ddd-spacing-3);
-        }
-        .section-title::-webkit-details-marker {
-          display: none;
-        }
-        .section-title:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
-          outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
+          margin: 0 0 var(--ddd-spacing-3) 0;
         }
         .section-leading {
           display: inline-flex;
@@ -527,6 +524,88 @@ class HAXCMSSystemSettings extends DDD {
             rgba(0, 0, 0, 0.2)
           );
         }
+        .api-key-list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+        }
+        .api-key-row {
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            rgba(255, 255, 255, 0.05)
+          );
+          padding: var(--ddd-spacing-3);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+        .api-key-row-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+        }
+        .api-key-label {
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .api-key-link {
+          font-size: var(--ddd-font-size-5xs);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-skyBlue)
+          );
+          text-decoration: none;
+        }
+        .api-key-link:focus-visible,
+        .api-key-link:hover {
+          text-decoration: underline;
+        }
+        .api-key-input-wrap {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .api-key-input {
+          flex: 1 1 auto;
+          min-width: 0;
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-black)
+          );
+          color: inherit;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: 1.4;
+        }
+        .api-key-input:focus-visible {
+          outline: var(--ddd-border-xs) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 0;
+          border-color: var(--ddd-theme-default-skyBlue);
+        }
+        .api-key-toggle {
+          flex: 0 0 auto;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+        }
         .actions {
           display: flex;
           justify-content: flex-end;
@@ -657,6 +736,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Enable or disable site skeletons discovered from the skeleton listing endpoint.",
         panelType: "skeletons",
+        disabled: true,
       },
       {
         key: "themes",
@@ -667,6 +747,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Enable or disable installable themes discovered from the theme listing source.",
         panelType: "themes",
+        disabled: true,
       },
       {
         key: "blocks",
@@ -677,6 +758,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Manage allowed blocks using the same grouped checkbox experience as allowed-blocks UI.",
         panelType: "blocks",
+        disabled: true,
       },
       {
         key: "integrations",
@@ -686,50 +768,68 @@ class HAXCMSSystemSettings extends DDD {
         description: "Third-party credentials",
         intro:
           "Configure API credentials and integration defaults used by media and automation features.",
-        panelType: "fields",
+        panelType: "integrations",
         sections: [
           {
             key: "api-keys",
             label: "API Keys",
             icon: "communication:vpn-key",
             description:
-              "Values are frontend placeholders for now and will be persisted by backend wiring.",
+              "Manage provider API keys used for media and AI integrations. Keys are stored server-side in _config/apiKeys.json.",
             fields: [
               {
                 property: "youtubeApiKey",
+                providerLabel: "YouTube",
+                storageKey: "youtube",
                 title: "YouTube API key",
+                helpUrl: "https://developers.google.com/youtube/v3/getting-started",
+                inputMethod: "textfield",
+                default: "",
+              },
+              {
+                property: "giphyApiKey",
+                providerLabel: "Giphy",
+                storageKey: "giphy",
+                title: "Giphy API key",
+                helpUrl: "https://developers.giphy.com/dashboard/",
                 inputMethod: "textfield",
                 default: "",
               },
               {
                 property: "vimeoApiKey",
+                providerLabel: "Vimeo",
+                storageKey: "vimeo",
                 title: "Vimeo API key",
+                helpUrl: "https://developer.vimeo.com/apps",
                 inputMethod: "textfield",
                 default: "",
               },
               {
                 property: "unsplashApiKey",
+                providerLabel: "Unsplash",
+                storageKey: "unsplash",
                 title: "Unsplash API key",
+                helpUrl: "https://unsplash.com/developers",
                 inputMethod: "textfield",
                 default: "",
               },
               {
-                property: "openaiApiKey",
-                title: "OpenAI API key",
+                property: "flickrApiKey",
+                providerLabel: "Flickr",
+                storageKey: "flickr",
+                title: "Flickr API key",
+                helpUrl: "https://www.flickr.com/services/apps/create/",
                 inputMethod: "textfield",
                 default: "",
               },
               {
                 property: "anthropicApiKey",
+                providerLabel: "Anthropic",
+                storageKey: "anthropic",
                 title: "Anthropic API key",
+                helpUrl: "https://console.anthropic.com/settings/keys",
                 inputMethod: "textfield",
                 default: "",
-              },
-              {
-                property: "proxyProviderRequests",
-                title: "Proxy provider requests through backend",
-                inputMethod: "boolean",
-                default: true,
               },
             ],
           },
@@ -744,6 +844,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Set image quality, upload constraints, and transformation behavior defaults.",
         panelType: "fields",
+        disabled: true,
         sections: [
           {
             key: "media-policy",
@@ -768,13 +869,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "acceptedFormats",
                 title: "Accepted file formats",
                 inputMethod: "textarea",
-                default: "jpg,jpeg,png,webp,avif,svg,gif",
-              },
-              {
-                property: "generateWebp",
-                title: "Generate WEBP derivatives",
-                inputMethod: "boolean",
-                default: true,
+                default: "jpg,jpeg,png,webp,gif",
               },
             ],
           },
@@ -800,6 +895,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Edit global CSS and JavaScript. Empty values are valid and will save as empty.",
         panelType: "custom-code",
+        disabled: true,
       },
     ];
   }
@@ -885,6 +981,8 @@ class HAXCMSSystemSettings extends DDD {
       this._loadSkeletonOptions();
     } else if (normalized === "themes") {
       this._loadThemeOptions();
+    } else if (normalized === "integrations") {
+      this._loadApiKeysData();
     } else if (normalized === "status") {
       this._loadStatusData();
     }
@@ -1040,12 +1138,14 @@ class HAXCMSSystemSettings extends DDD {
         globalJs: values && values.globalJs ? values.globalJs : "",
       };
     }
+    if (panelKey === "integrations") {
+      return this._buildIntegrationsSavePayload(values);
+    }
     return values;
   }
-
-  _saveActivePanel() {
+  async _saveActivePanel() {
     const panelKey = this.activePanel;
-    if (!panelKey || panelKey === "dashboard") {
+    if (!panelKey || panelKey === "dashboard" || this.panelSaving) {
       return;
     }
     const panel = this._getPanelByKey(panelKey);
@@ -1053,14 +1153,21 @@ class HAXCMSSystemSettings extends DDD {
       this.statusMessage = `${this._panelLabel(panelKey)}: Coming soon`;
       return;
     }
+    this.panelSaving = true;
     const values = this._cloneData(this._getPanelValue(panelKey));
     const savePayload = this._buildSavePayload(panelKey, values);
+    let saved = true;
     if (panelKey === "skeletons") {
       this.statusMessage = `${savePayload.enabledSkeletons.length} skeleton options saved locally`;
     } else if (panelKey === "themes") {
       this.statusMessage = `${savePayload.enabledThemes.length} theme options saved locally`;
     } else if (panelKey === "custom-code") {
       this.statusMessage = `${this._panelLabel(panelKey)} saved locally`;
+    } else if (panelKey === "integrations") {
+      saved = await this._saveApiKeysData(savePayload);
+      this.statusMessage = saved
+        ? `${this._panelLabel(panelKey)} saved`
+        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
     } else {
       this.statusMessage = `${this._panelLabel(
         panelKey,
@@ -1074,9 +1181,11 @@ class HAXCMSSystemSettings extends DDD {
         detail: {
           panel: panelKey,
           values: savePayload,
+          saved: saved,
         },
       }),
     );
+    this.panelSaving = false;
   }
 
   _onAllowedBlocksSaved(e) {
@@ -1154,6 +1263,216 @@ class HAXCMSSystemSettings extends DDD {
       }
     }
     return null;
+  }
+
+  async _callAppEndpointWithData(callKeys = [], data = {}) {
+    if (!Array.isArray(callKeys) || callKeys.length === 0) {
+      return null;
+    }
+    const api = this._backendApi();
+    if (!api || typeof api.makeCall !== "function") {
+      return null;
+    }
+    const settings = this._appSettings();
+    const payload =
+      data && typeof data === "object" && !Array.isArray(data) ? data : {};
+    for (let i = 0; i < callKeys.length; i++) {
+      const callKey = callKeys[i];
+      if (
+        settings &&
+        Object.prototype.hasOwnProperty.call(settings, callKey) &&
+        typeof settings[callKey] === "string" &&
+        settings[callKey].trim() !== ""
+      ) {
+        try {
+          const response = await api.makeCall(callKey, payload);
+          if (response) {
+            return response;
+          }
+        } catch (e) {
+          return null;
+        }
+      }
+    }
+    return null;
+  }
+
+  _integrationFields() {
+    const panel = this._getPanelByKey("integrations");
+    if (!panel || !Array.isArray(panel.sections)) {
+      return [];
+    }
+    for (let i = 0; i < panel.sections.length; i++) {
+      const section = panel.sections[i];
+      if (section && Array.isArray(section.fields) && section.fields.length > 0) {
+        return section.fields;
+      }
+    }
+    return [];
+  }
+
+  _integrationFieldByProperty(property = "") {
+    const fields = this._integrationFields();
+    for (let i = 0; i < fields.length; i++) {
+      if (fields[i] && fields[i].property === property) {
+        return fields[i];
+      }
+    }
+    return null;
+  }
+
+  _integrationInputId(property = "") {
+    const cleaned = `${property || ""}`.replace(/[^a-z0-9_-]/gi, "");
+    return `integration-${cleaned}`;
+  }
+
+  _normalizeIntegrationValue(value) {
+    if (typeof value === "string") {
+      return value;
+    }
+    if (value === null || typeof value === "undefined") {
+      return "";
+    }
+    return `${value}`;
+  }
+
+  _normalizeApiKeysRecord(source = {}) {
+    const fields = this._integrationFields();
+    const data =
+      source && typeof source === "object" && !Array.isArray(source)
+        ? source
+        : {};
+    const normalized = {};
+    for (let i = 0; i < fields.length; i++) {
+      const field = fields[i];
+      const property = field.property;
+      const storageKey =
+        typeof field.storageKey === "string" && field.storageKey
+          ? field.storageKey
+          : property;
+      let value = "";
+      if (Object.prototype.hasOwnProperty.call(data, property)) {
+        value = data[property];
+      } else if (Object.prototype.hasOwnProperty.call(data, storageKey)) {
+        value = data[storageKey];
+      }
+      normalized[property] = this._normalizeIntegrationValue(value);
+    }
+    return normalized;
+  }
+
+  _applyApiKeysRecord(record = {}) {
+    const fields = this._integrationFields();
+    if (fields.length === 0) {
+      return;
+    }
+    const currentValues = this._cloneData(this.panelValues || {});
+    const panelValues = this._cloneData(currentValues.integrations || {});
+    const data =
+      record && typeof record === "object" && !Array.isArray(record) ? record : {};
+    for (let i = 0; i < fields.length; i++) {
+      const property = fields[i].property;
+      const nextValue = Object.prototype.hasOwnProperty.call(data, property)
+        ? data[property]
+        : "";
+      panelValues[property] = this._normalizeIntegrationValue(nextValue);
+    }
+    currentValues.integrations = panelValues;
+    this.panelValues = currentValues;
+  }
+
+  _integrationFieldValue(property = "") {
+    const values = this._getPanelValue("integrations");
+    if (
+      values &&
+      Object.prototype.hasOwnProperty.call(values, property) &&
+      typeof values[property] !== "undefined" &&
+      values[property] !== null
+    ) {
+      return `${values[property]}`;
+    }
+    return "";
+  }
+
+  _isApiKeyVisible(property = "") {
+    return !!(
+      this.apiKeyVisibility &&
+      Object.prototype.hasOwnProperty.call(this.apiKeyVisibility, property) &&
+      this.apiKeyVisibility[property]
+    );
+  }
+
+  _toggleApiKeyVisibility(property = "", e = null) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!property) {
+      return;
+    }
+    const visibility = this._cloneData(this.apiKeyVisibility || {});
+    visibility[property] = !this._isApiKeyVisible(property);
+    this.apiKeyVisibility = visibility;
+  }
+
+  _onApiKeyInputChanged(property = "", e = null) {
+    const value =
+      e && e.currentTarget && typeof e.currentTarget.value === "string"
+        ? e.currentTarget.value
+        : "";
+    this._setPanelPropertyValue("integrations", property, value);
+  }
+
+  _buildIntegrationsSavePayload(values = {}) {
+    const fields = this._integrationFields();
+    const source =
+      values && typeof values === "object" && !Array.isArray(values) ? values : {};
+    const payload = {};
+    for (let i = 0; i < fields.length; i++) {
+      const field = fields[i];
+      const storageKey =
+        typeof field.storageKey === "string" && field.storageKey
+          ? field.storageKey
+          : field.property;
+      const value = Object.prototype.hasOwnProperty.call(source, field.property)
+        ? source[field.property]
+        : "";
+      payload[storageKey] = this._normalizeIntegrationValue(value);
+    }
+    return payload;
+  }
+
+  async _loadApiKeysData(force = false) {
+    if (this.apiKeysLoading) {
+      return;
+    }
+    if (this.__integrationsLoaded && !force) {
+      return;
+    }
+    this.apiKeysLoading = true;
+    this.apiKeysError = "";
+    const response = await this._callAppEndpoint(["getApiKeys"]);
+    if (response && response.data && typeof response.data === "object") {
+      this._applyApiKeysRecord(this._normalizeApiKeysRecord(response.data));
+      this.__integrationsLoaded = true;
+    } else {
+      this.apiKeysError = "Saved API keys could not be loaded right now.";
+    }
+    this.apiKeysLoading = false;
+  }
+
+  async _saveApiKeysData(payload = {}) {
+    this.apiKeysError = "";
+    const response = await this._callAppEndpointWithData(["saveApiKeys"], {
+      apiKeys: payload,
+    });
+    if (response && response.data && typeof response.data === "object") {
+      this._applyApiKeysRecord(this._normalizeApiKeysRecord(response.data));
+      this.__integrationsLoaded = true;
+      return true;
+    }
+    this.apiKeysError = "API key settings could not be saved.";
+    return false;
   }
 
   _normalizeMachineName(value = "") {
@@ -1716,13 +2035,13 @@ class HAXCMSSystemSettings extends DDD {
 
   _renderPanelSection(panelKey, section) {
     return html`
-      <details class="section" open>
-        <summary class="section-title">
+      <section class="section">
+        <div class="section-title">
           <span class="section-leading">
             <simple-icon-lite icon="${section.icon}" aria-hidden="true"></simple-icon-lite>
             <h3>${section.label}</h3>
           </span>
-        </summary>
+        </div>
         <div class="section-body">
           <p class="section-description">${section.description}</p>
           <simple-fields
@@ -1733,25 +2052,15 @@ class HAXCMSSystemSettings extends DDD {
             @value-changed="${(e) => this._onPanelValueChanged(panelKey, e)}"
           ></simple-fields>
         </div>
-      </details>
+      </section>
     `;
   }
 
   _renderSkeletonsPanel() {
     const fields = this._checkboxFields(this.skeletonOptions);
     return html`
-      <details class="section" open>
-        <summary class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite icon="hax:site-map" aria-hidden="true"></simple-icon-lite>
-            <h3>Skeleton availability</h3>
-          </span>
-        </summary>
+      <section class="section">
         <div class="section-body">
-          <p class="section-description">
-            Skeleton options come from the skeleton list endpoint and can be
-            toggled globally.
-          </p>
           ${this.loadingSkeletons
             ? html`<p class="helper">Loading skeleton options…</p>`
             : ""}
@@ -1767,25 +2076,15 @@ class HAXCMSSystemSettings extends DDD {
               `
             : html`<p class="empty-state">No skeleton options were returned.</p>`}
         </div>
-      </details>
+      </section>
     `;
   }
 
   _renderThemesPanel() {
     const fields = this._checkboxFields(this.themeOptions);
     return html`
-      <details class="section" open>
-        <summary class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite icon="lrn:palette" aria-hidden="true"></simple-icon-lite>
-            <h3>Theme availability</h3>
-          </span>
-        </summary>
+      <section class="section">
         <div class="section-body">
-          <p class="section-description">
-            Theme options come from the theme list source and can be toggled
-            globally.
-          </p>
           ${this.loadingThemes ? html`<p class="helper">Loading theme options…</p>` : ""}
           ${fields.length > 0
             ? html`
@@ -1799,7 +2098,7 @@ class HAXCMSSystemSettings extends DDD {
               `
             : html`<p class="empty-state">No theme options were returned.</p>`}
         </div>
-      </details>
+      </section>
     `;
   }
 
@@ -1842,19 +2141,8 @@ class HAXCMSSystemSettings extends DDD {
   _renderStatusPanel() {
     const rows = Array.isArray(this.statusRows) ? this.statusRows : [];
     return html`
-      <details class="section" open>
-        <summary class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite icon="hax:graph" aria-hidden="true"></simple-icon-lite>
-            <h3>System status report</h3>
-          </span>
-        </summary>
+      <section class="section">
         <div class="section-body">
-          <p class="section-description">
-            Status data supports both NodeJS and PHP backends using
-            backend-agnostic keys such as <code>programmingLanguage</code>,
-            <code>serverVersion</code>, and HAXcms version comparison data.
-          </p>
           ${this.statusLoading ? html`<p class="helper">Loading status report…</p>` : ""}
           ${this.statusError
             ? html`<p class="status-message error">${this.statusError}</p>`
@@ -1888,30 +2176,20 @@ class HAXCMSSystemSettings extends DDD {
             </table>
           </div>
         </div>
-      </details>
+      </section>
     `;
   }
 
   _renderBlocksPanel() {
     return html`
-      <details class="section" open>
-        <summary class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite icon="hax:blocks" aria-hidden="true"></simple-icon-lite>
-            <h3>Allowed blocks</h3>
-          </span>
-        </summary>
+      <section class="section">
         <div class="section-body">
-          <p class="section-description">
-            This panel reuses the same grouped allowed-blocks interface from
-            platform settings.
-          </p>
           <haxcms-allowed-blocks-ui
             @haxcms-save-allowed-blocks="${this._onAllowedBlocksSaved}"
             @simple-modal-hide="${this._onNestedModalHide}"
           ></haxcms-allowed-blocks-ui>
         </div>
-      </details>
+      </section>
     `;
   }
 
@@ -1926,18 +2204,8 @@ class HAXCMSSystemSettings extends DDD {
         ? panelValue.globalJs
         : "";
     return html`
-      <details class="section" open>
-        <summary class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite icon="code" aria-hidden="true"></simple-icon-lite>
-            <h3>Global CSS and JavaScript</h3>
-          </span>
-        </summary>
+      <section class="section">
         <div class="section-body">
-          <p class="section-description">
-            Enter global CSS and JavaScript directly. Leaving either editor empty
-            is valid and saves as empty.
-          </p>
           <div class="code-editor-grid">
             <div class="code-editor-wrapper">
               <code-editor
@@ -1961,7 +2229,7 @@ class HAXCMSSystemSettings extends DDD {
             </div>
           </div>
         </div>
-      </details>
+      </section>
     `;
   }
 
@@ -1976,6 +2244,79 @@ class HAXCMSSystemSettings extends DDD {
         </p>
         <button type="button" disabled>Coming soon</button>
       </div>
+    `;
+  }
+
+  _renderIntegrationsPanel() {
+    const fields = this._integrationFields();
+    return html`
+      <section class="section">
+        <div class="section-body">
+          ${this.apiKeysLoading ? html`<p class="helper">Loading saved API keys…</p>` : ""}
+          ${this.apiKeysError
+            ? html`<p class="status-message error">${this.apiKeysError}</p>`
+            : ""}
+          ${fields.length === 0
+            ? html`<p class="empty-state">No integration providers are configured.</p>`
+            : html`
+                <div class="api-key-list">
+                  ${fields.map(
+                    (field) => html`
+                      <div class="api-key-row">
+                        <div class="api-key-row-header">
+                          <label
+                            class="api-key-label"
+                            for="${this._integrationInputId(field.property)}"
+                          >
+                            ${field.providerLabel || field.title || field.property}
+                          </label>
+                          ${field.helpUrl
+                            ? html`
+                                <a
+                                  class="api-key-link"
+                                  href="${field.helpUrl}"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Get API key
+                                </a>
+                              `
+                            : ""}
+                        </div>
+                        <div class="api-key-input-wrap">
+                          <input
+                            id="${this._integrationInputId(field.property)}"
+                            class="api-key-input"
+                            type="${this._isApiKeyVisible(field.property)
+                              ? "text"
+                              : "password"}"
+                            .value="${this._integrationFieldValue(field.property)}"
+                            autocomplete="off"
+                            autocorrect="off"
+                            autocapitalize="none"
+                            spellcheck="false"
+                            @input="${(e) =>
+                              this._onApiKeyInputChanged(field.property, e)}"
+                          />
+                          <simple-icon-button-lite
+                            class="api-key-toggle"
+                            icon="${this._isApiKeyVisible(field.property)
+                              ? "icons:visibility-off"
+                              : "icons:visibility"}"
+                            label="${this._isApiKeyVisible(field.property)
+                              ? "Hide API key value"
+                              : "Show API key value"}"
+                            @click="${(e) =>
+                              this._toggleApiKeyVisibility(field.property, e)}"
+                          ></simple-icon-button-lite>
+                        </div>
+                      </div>
+                    `,
+                  )}
+                </div>
+              `}
+        </div>
+      </section>
     `;
   }
 
@@ -1997,6 +2338,9 @@ class HAXCMSSystemSettings extends DDD {
     }
     if (panel.panelType === "custom-code") {
       return this._renderCustomCodePanel();
+    }
+    if (panel.panelType === "integrations") {
+      return this._renderIntegrationsPanel();
     }
     if (panel.panelType === "style-guide") {
       return this._renderStyleGuidePanel();
@@ -2033,9 +2377,10 @@ class HAXCMSSystemSettings extends DDD {
                 <button
                   type="button"
                   class="action primary"
+                  ?disabled="${this.panelSaving}"
                   @click="${this._saveActivePanel}"
                 >
-                  Save
+                  ${this.panelSaving ? "Saving…" : "Save"}
                 </button>
               </div>
             `
