@@ -364,13 +364,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
-        .content-item-preview simple-img {
-          width: 100%;
-          max-width: 100%;
-          min-height: 140px;
-          border-radius: var(--ddd-radius-sm);
-          overflow: hidden;
-        }
         .content-item .meta {
           font-size: var(--ddd-font-size-xs, 12px);
           line-height: var(--ddd-lh-140, 1.4);
@@ -1086,10 +1079,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       updated: "",
       ...(this.data && typeof this.data === "object" ? this.data : {}),
     };
-    let base = this.base;
-    if (base == "" && globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -1402,18 +1391,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 ${item.title}</a
                                               >
                                             </h3>
-                                            <div class="content-item-preview">
-                                              <simple-img
-                                                loading="lazy"
-                                                fetchpriority="low"
-                                                decoding="async"
-                                                src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
-                                                alt="${item.title} preview"
-                                                width="320"
-                                                height="180"
-                                                quality="80"
-                                              ></simple-img>
-                                            </div>
                                             <div class="meta">
                                               <div>
                                                 ${this.t.created}

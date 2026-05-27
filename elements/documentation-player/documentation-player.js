@@ -3,7 +3,6 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css, render, nothing } from "lit";
-import "@haxtheweb/simple-img/simple-img.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/play-list/play-list.js";
 import "@haxtheweb/code-sample/code-sample.js";
@@ -79,17 +78,13 @@ class DocumentationPlayer extends LitElement {
     render(
       html` <div>
           <a href="${this.url}" rel="noopener" target="_blank">${this.label}</a>
-          <simple-img
-            loading="lazy"
-            fetchpriority="low"
-            decoding="async"
-            src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=10&amp;render=img&amp;urlToCapture=${this
-              .imageUrl}"
-            alt=""
-            width="300"
-            height="200"
-            quality="80"
-          ></simple-img>
+          ${this.imageUrl
+            ? html`<div>
+                <a href="${this.imageUrl}" rel="noopener" target="_blank"
+                  >Open preview source</a
+                >
+              </div>`
+            : nothing}
         </div>
         <div id="codesample"></div>
         <code-pen-button

@@ -179,18 +179,6 @@ export function enableCoreServices() {
     },
   });
 
-  // screenshot - kept by itself bc of size of getBrowserInstance
-  MicroFrontendRegistry.add({
-    endpoint: "https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl",
-    name: "@core/screenshotUrl",
-    method: "GET",
-    title: "Screenshot page",
-    description: "Takes screenshot of a URL and returns image",
-    params: {
-      urlToCapture: "full url with https",
-      quality: "Optional image quality parameter",
-    },
-  });
 
   // docxToPdf
   MicroFrontendRegistry.add({

@@ -29,7 +29,6 @@ export class DocxExample extends LitElement {
       html: { type: Boolean },
       pdf: { type: Boolean },
       ascii: { type: Boolean },
-      screenshot: { type: Boolean },
     };
   }
   constructor() {
@@ -37,7 +36,6 @@ export class DocxExample extends LitElement {
     this.html = false;
     this.pdf = false;
     this.ascii = false;
-    this.screenshot = false;
     // enable these services
     enableServices(["core"]);
   }
@@ -129,40 +127,12 @@ export class DocxExample extends LitElement {
     this.shadowRoot.querySelector("#response").value = JSON.stringify(data);
   }
 
-  screenshotUrlRender() {
-    return html`
-      <label>Enter a URL to get a screenshot of it</label>
-      <input type="text" id="screenshot" />
-      <button id="getthething" @click="${this.screenshotUrlLink}">
-        Get a screenshot
-      </button>
-      <h1>Image will appear here</h1>
-      <img id="replaceimg" src="" alt="" />
-    `;
-  }
-
-  screenshotUrlLink(event) {
-    const urlToCapture = this.shadowRoot.querySelector("#screenshot").value;
-    MicroFrontendRegistry.call(
-      "@core/screenshotUrl",
-      { urlToCapture: urlToCapture, quality: 80 },
-      this.screenshotUrlResponse.bind(this),
-    );
-  }
-
-  screenshotUrlResponse(data) {
-    this.shadowRoot.querySelector("#replaceimg").src =
-      `data:image/jpeg;base64, ${data.data.image}`;
-    this.shadowRoot.querySelector("#replaceimg").alt =
-      `screenshot of ${data.data.url}`;
-  }
 
   render() {
     return html`
       ${this.ascii ? this.asciiImgRender() : ``}
       ${this.html ? this.docxToHtmlRender() : ``}
       ${this.pdf ? this.docxToPdfRender() : ``}
-      ${this.screenshot ? this.screenshotUrlRender() : ``}
     `;
   }
 }
