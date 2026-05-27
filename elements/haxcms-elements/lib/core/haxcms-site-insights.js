@@ -13,7 +13,7 @@ import "@github/time-elements/dist/relative-time-element.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import { learningComponentTypes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
-enableServices(["haxcms", "core"]);
+enableServices(["core"]);
 
 /**
  * `haxcms-outline-editor-dialog`
@@ -591,6 +591,62 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         return null;
     }
   }
+  _activeTabInternalEndpoint() {
+    switch (this.activeTab) {
+      case "reports":
+        return toJS(store.appSettings.insightsPath) || null;
+      case "linkchecker":
+        return toJS(store.appSettings.linkCheckerPath) || null;
+      case "contentbrowser":
+        return toJS(store.appSettings.contentBrowserPath) || null;
+      case "mediabrowser":
+        return toJS(store.appSettings.mediaBrowserPath) || null;
+      default:
+        return null;
+    }
+  }
+  async _callInternalReportEndpoint(endpoint, params) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    let method;
+    let jwt;
+    if (store.appSettings.method) {
+      method = toJS(store.appSettings.method);
+    }
+    if (store.appSettings.jwt) {
+        jwt = store.appSettings.jwt;
+      }
+    if (
+      typeof jwt === "string" &&
+      jwt !== "" &&
+      jwt !== "null" &&
+      jwt !== "undefined"
+    ) {
+      headers.Authorization = `Bearer ${jwt}`;
+      params.jwt = jwt;
+    }
+    try {
+      const response = await fetch(endpoint + (method === "GET" ? "?" + new URLSearchParams(params) : ""), {
+        method: method || "POST",
+        credentials: "same-origin",
+        headers,
+        body: (method === "GET" ? undefined : JSON.stringify(params)),
+      });
+      if (!response.ok) {
+        throw new Error(`Status ${response.status}`);
+      }
+      const data = await response.json();
+      this._reportsResponse(data);
+    } catch (error) {
+      this.loading = false;
+      console.warn(
+        "haxcms-site-insights: failed internal report endpoint",
+        endpoint,
+        error,
+      );
+    }
+  }
   _reportHeading(icon, label) {
     return html`<span class="summary-leading">
       <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
@@ -786,9 +842,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       base = globalThis.document.querySelector("base").href;
     }
     const site = toJS(store.manifest);
+    const siteName =
+      site &&
+      site.metadata &&
+      site.metadata.site &&
+      site.metadata.site.name
+        ? site.metadata.site.name
+        : "";
     const params = {
       type: "site",
       site: {
+        name: siteName,
         file: base + "site.json",
         id: site.id,
         title: site.title,
@@ -802,45 +866,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       link: base,
     };
     this.loading = true;
-    switch (this.activeTab) {
-      case "reports":
-        // Backend service remains named "insights" for compatibility; this powers Reports.
-        MicroFrontendRegistry.call(
-          "@haxcms/insights",
-          params,
-          this._reportsResponse.bind(this),
-          this,
-        );
-        break;
-      case "linkchecker":
-        MicroFrontendRegistry.call(
-          "@haxcms/linkChecker",
-          params,
-          this._reportsResponse.bind(this),
-          this,
-        );
-        break;
-      case "contentbrowser":
-        MicroFrontendRegistry.call(
-          "@haxcms/contentBrowser",
-          params,
-          this._reportsResponse.bind(this),
-          this,
-        );
-        break;
-      case "mediabrowser":
-        MicroFrontendRegistry.call(
-          "@haxcms/mediaBrowser",
-          params,
-          this._reportsResponse.bind(this),
-          this,
-        );
-        break;
-      // bad selection
-      default:
-        this.loading = false;
-        break;
+    const internalEndpoint = this._activeTabInternalEndpoint();
+    if (!internalEndpoint) {
+      this.loading = false;
+      return;
     }
+    this._callInternalReportEndpoint(internalEndpoint, params);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -886,19 +917,31 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   contentBrowserFormChanged(e) {
-    this.data = JSON.parse(JSON.stringify(this._originalData));
-    let val = e.detail.value;
+    const baseData =
+      this._originalData && typeof this._originalData === "object"
+        ? this._originalData
+        : {};
+    this.data = JSON.parse(JSON.stringify(baseData));
+    let val =
+      e &&
+      e.detail &&
+      e.detail.value &&
+      typeof e.detail.value === "object"
+        ? e.detail.value
+        : {};
     this.filters = {
       title: val.title ? val.title : "",
-      sort: val.sort,
-      pageType: val.pageType,
-      hasVideo: val.hasVideo,
-      hasH5P: val.hasH5P,
-      hasAuthorNotes: val.hasAuthorNotes,
-      hasPlaceholders: val.hasPlaceholders,
-      hasSiteRemoteContent: val.hasSiteRemoteContent,
-      hasLinks: val.hasLinks,
-      hasImages: val.hasImages,
+      sort: val.sort ? val.sort : "title",
+      pageType: val.pageType ? val.pageType : "",
+      hasVideo: val.hasVideo ? val.hasVideo : false,
+      hasH5P: val.hasH5P ? val.hasH5P : false,
+      hasAuthorNotes: val.hasAuthorNotes ? val.hasAuthorNotes : false,
+      hasPlaceholders: val.hasPlaceholders ? val.hasPlaceholders : false,
+      hasSiteRemoteContent: val.hasSiteRemoteContent
+        ? val.hasSiteRemoteContent
+        : false,
+      hasLinks: val.hasLinks ? val.hasLinks : false,
+      hasImages: val.hasImages ? val.hasImages : false,
     };
     if (this.data && this.data.contentData) {
       this.data.contentData = this.data.contentData.filter((item) => {
@@ -958,8 +1001,18 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   mediaBrowserFormChanged(e) {
-    this.data = JSON.parse(JSON.stringify(this._originalData));
-    let val = e.detail.value;
+    const baseData =
+      this._originalData && typeof this._originalData === "object"
+        ? this._originalData
+        : {};
+    this.data = JSON.parse(JSON.stringify(baseData));
+    let val =
+      e &&
+      e.detail &&
+      e.detail.value &&
+      typeof e.detail.value === "object"
+        ? e.detail.value
+        : {};
     this.filters = {
       title: val.title ? val.title : "",
       type: val.type ? val.type : "all",
@@ -1698,13 +1751,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   // response is key'ed object by link and response data
   linkValidationResponse(e) {
-    let keys = Object.keys(e.data);
-    this.linkResponseData[keys[0]] = e.data[keys[0]];
-    // basic debounce so we only update every 500ms if we had a lot of links
-    clearTimeout(this.__interval);
-    this.__interval = setTimeout(() => {
-      this.requestUpdate();
-    }, 500);
+    if (e && e.data) {
+      let keys = Object.keys(e.data);
+      this.linkResponseData[keys[0]] = e.data[keys[0]];
+      // basic debounce so we only update every 500ms if we had a lot of links
+      clearTimeout(this.__interval);
+      this.__interval = setTimeout(() => {
+        this.requestUpdate();
+      }, 500);
+    }
   }
   renderLinkCheck(links, key) {
     // kick off a call that'll satisfy later down the road, but only if its a new key

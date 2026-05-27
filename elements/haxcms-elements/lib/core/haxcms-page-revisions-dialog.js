@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -15,7 +16,13 @@ class HAXCMSPageRevisionsDialog extends DDD {
       revisions: { type: Array },
       selectedHash: { type: String, attribute: "selected-hash" },
       selectedRevision: { type: Object, attribute: false },
+      selectedItemMetadata: { type: Object, attribute: false },
       previewContent: { type: String, attribute: false },
+      previewMode: {
+        type: String,
+        attribute: "preview-mode",
+        reflect: true,
+      },
       loading: { type: Boolean, reflect: true },
       revisionLoading: { type: Boolean, attribute: "revision-loading" },
       restoring: { type: Boolean, reflect: true },
@@ -31,7 +38,9 @@ class HAXCMSPageRevisionsDialog extends DDD {
     this.revisions = [];
     this.selectedHash = "";
     this.selectedRevision = null;
+    this.selectedItemMetadata = null;
     this.previewContent = "";
+    this.previewMode = "source";
     this.loading = false;
     this.revisionLoading = false;
     this.restoring = false;
@@ -81,7 +90,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           );
         }
         .panel-header {
-          display: flex;
+          display: block;
           align-items: center;
           justify-content: space-between;
           gap: var(--ddd-spacing-2);
@@ -91,9 +100,37 @@ class HAXCMSPageRevisionsDialog extends DDD {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
         }
+        .panel-header-title {
+          display: inline-flex;
+          align-items: center;
+          min-width: 0;
+          flex: 1 1 auto;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .preview-toggle {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          flex-shrink: 0;
+        }
+        simple-icon-button-lite.mode-toggle {
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
+        }
+        simple-icon-button-lite.mode-toggle.active {
+          color: var(--ddd-theme-default-skyBlue);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
         .status {
           font-size: var(--ddd-font-size-5xs);
-          color: var(--ddd-theme-default-slateGray);
           padding: 0 var(--ddd-spacing-3) var(--ddd-spacing-2);
         }
         .table-wrap {
@@ -148,15 +185,25 @@ class HAXCMSPageRevisionsDialog extends DDD {
           padding: var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
         }
-        .preview-meta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-5xs);
-          color: var(--ddd-theme-default-slateGray);
+        .preview-details {
+          margin: 0;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border-bottom: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
+        }
+        .preview-details summary {
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          cursor: pointer;
+        }
+        .preview-details[open] summary {
+          margin-bottom: var(--ddd-spacing-2);
+        }
+        .preview-details-empty {
+          font-size: var(--ddd-font-size-5xs);
+        }
+        .details-json {
+          margin-top: 0;
         }
         .preview {
           min-height: 0;
@@ -170,6 +217,13 @@ class HAXCMSPageRevisionsDialog extends DDD {
           font-size: var(--ddd-font-size-6xs);
           line-height: 1.4;
           font-family: monospace;
+        }
+        .preview-rendered {
+          font-size: var(--ddd-font-size-6xs);
+          line-height: 1.6;
+        }
+        .preview-rendered * {
+          max-width: 100%;
         }
         @media (max-width: 900px) {
           :host {
@@ -227,6 +281,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
       this.revisions = [];
       this.selectedHash = "";
       this.selectedRevision = null;
+      this.selectedItemMetadata = null;
       this.previewContent = "";
       this._loadRevisions();
     }
@@ -290,6 +345,9 @@ class HAXCMSPageRevisionsDialog extends DDD {
     if (!nodeId || !normalizedHash) {
       return;
     }
+    if (this._isCurrentRevisionHash(normalizedHash)) {
+      return;
+    }
     if (!globalThis.confirm("Restore this revision as a new commit?")) {
       return;
     }
@@ -348,8 +406,19 @@ class HAXCMSPageRevisionsDialog extends DDD {
     }
     this.revisionLoading = false;
     this.selectedRevision = data.revision ? data.revision : null;
+    this.selectedItemMetadata =
+      data.itemMetadata && typeof data.itemMetadata === "object"
+        ? data.itemMetadata
+        : null;
     if (this.selectedRevision && this.selectedRevision.hash) {
       this.selectedHash = this.selectedRevision.hash;
+    }
+    if (
+      this.selectedItemMetadata &&
+      typeof this.selectedItemMetadata.title === "string" &&
+      this.selectedItemMetadata.title.trim() !== ""
+    ) {
+      this.nodeTitle = this.selectedItemMetadata.title.trim();
     }
     this.previewContent = typeof data.content === "string" ? data.content : "";
   }
@@ -397,14 +466,31 @@ class HAXCMSPageRevisionsDialog extends DDD {
     }
     return null;
   }
+  _isCurrentRevisionHash(hash) {
+    const normalizedHash = this._normalizeNodeId(hash);
+    if (!normalizedHash || !Array.isArray(this.revisions) || this.revisions.length === 0) {
+      return false;
+    }
+    const firstRevision = this.revisions[0];
+    if (!firstRevision || !firstRevision.hash) {
+      return false;
+    }
+    return this._normalizeNodeId(firstRevision.hash) === normalizedHash;
+  }
 
   _handleTableActionClick(e) {
     const actionTarget = this._actionTargetFromEvent(e);
     if (!actionTarget) {
       return;
     }
+    if (actionTarget.hasAttribute("disabled")) {
+      return;
+    }
     const hash = this._normalizeNodeId(actionTarget.getAttribute("data-hash"));
     if (!hash) {
+      return;
+    }
+    if (this._isCurrentRevisionHash(hash)) {
       return;
     }
     const action = actionTarget.getAttribute("data-action");
@@ -428,6 +514,9 @@ class HAXCMSPageRevisionsDialog extends DDD {
     if (!hash) {
       return;
     }
+    if (this._isCurrentRevisionHash(hash)) {
+      return;
+    }
     this.selectedHash = hash;
     this._requestRestore(hash);
   }
@@ -447,13 +536,65 @@ class HAXCMSPageRevisionsDialog extends DDD {
     }
     return date.toISOString().replace("T", " ").replace("Z", " UTC");
   }
+  _setPreviewMode(e) {
+    const target = e && e.currentTarget ? e.currentTarget : null;
+    if (!target || !target.getAttribute) {
+      return;
+    }
+    const requestedMode = target.getAttribute("data-preview-mode");
+    if (requestedMode === "source" || requestedMode === "rendered") {
+      this.previewMode = requestedMode;
+    }
+  }
+
+  _renderPreviewContent() {
+    if (this.revisionLoading) {
+      return html`<div class="loading">Loading revision preview…</div>`;
+    }
+    if (!this.previewContent) {
+      return html`<div class="empty">No revision content loaded.</div>`;
+    }
+    if (this.previewMode === "rendered") {
+      return html`<div class="preview-rendered">${unsafeHTML(
+        this.previewContent,
+      )}</div>`;
+    }
+    return html`<pre>${this.previewContent}</pre>`;
+  }
 
   render() {
     const pageLabel = this.nodeTitle || this.nodeId;
+    const selectedItemMetadata =
+      this.selectedItemMetadata && typeof this.selectedItemMetadata === "object"
+        ? this.selectedItemMetadata
+        : null;
+    const selectedTitle =
+      selectedItemMetadata &&
+      typeof selectedItemMetadata.title === "string" &&
+      selectedItemMetadata.title.trim() !== ""
+        ? selectedItemMetadata.title.trim()
+        : "";
+    const previewTitle = selectedTitle || pageLabel || "Revision preview";
+    const revisionDetails = {};
+    if (this.selectedRevision && typeof this.selectedRevision === "object") {
+      revisionDetails.revision = this.selectedRevision;
+    }
+    if (selectedItemMetadata) {
+      revisionDetails.itemMetadata = selectedItemMetadata;
+    }
+    const revisionDetailsKeys = Object.keys(revisionDetails);
+    const revisionDetailsJson =
+      revisionDetailsKeys.length > 0
+        ? JSON.stringify(revisionDetails, null, 2)
+        : "";
     return html`
       <div class="shell">
         <section class="panel">
-          <div class="panel-header">Revisions for ${pageLabel || "page"}</div>
+          <div class="panel-header">
+            <span class="panel-header-title"
+              >Revisions for ${pageLabel || "page"}</span
+            >
+          </div>
           <div class="status" role="status" aria-live="polite">
             ${this.loading
               ? "Loading revisions…"
@@ -486,69 +627,97 @@ class HAXCMSPageRevisionsDialog extends DDD {
                       </thead>
                       <tbody>
                         ${this.revisions.map(
-                          (revision) => html`
-                            <tr
-                              class="${this.selectedHash === revision.hash
-                                ? "selected"
-                                : ""}"
-                            >
-                              <td class="hash">${revision.shortHash || revision.hash || ""}</td>
-                              <td>
-                                ${this._formatDate(
-                                  revision.timestamp || revision.date || 0,
-                                )}
-                              </td>
-                              <td>${revision.author || ""}</td>
-                              <td>${revision.authorEmail || ""}</td>
-                              <td class="message">${revision.message || ""}</td>
-                              <td class="action-cell">
-                                <simple-icon-button-lite
-                                  class="action"
-                                  icon="icons:visibility"
-                                  label="Preview revision"
-                                  title="Preview revision"
-                                  data-action="preview"
-                                  data-hash="${revision.hash || ""}"
-                                ></simple-icon-button-lite>
-                                <simple-icon-button-lite
-                                  class="action restore"
-                                  icon="icons:restore"
-                                  label="Restore revision"
-                                  title="Restore revision as a new commit"
-                                  data-action="restore"
-                                  data-hash="${revision.hash || ""}"
-                                  ?disabled="${this.restoring}"
-                                ></simple-icon-button-lite>
-                              </td>
-                            </tr>
-                          `,
+                          (revision, index) => {
+                            const isCurrentRevision = index === 0;
+                            return html`
+                              <tr
+                                class="${this.selectedHash === revision.hash
+                                  ? "selected"
+                                  : ""}"
+                              >
+                                <td class="hash">${revision.shortHash || revision.hash || ""}</td>
+                                <td>
+                                  ${this._formatDate(
+                                    revision.timestamp || revision.date || 0,
+                                  )}
+                                </td>
+                                <td>${revision.author || ""}</td>
+                                <td>${revision.authorEmail || ""}</td>
+                                <td class="message">${revision.message || ""}</td>
+                                <td class="action-cell">
+                                  <simple-icon-button-lite
+                                    class="action"
+                                    icon="icons:visibility"
+                                    label="Preview revision"
+                                    title="Preview revision"
+                                    data-action="preview"
+                                    data-hash="${revision.hash || ""}"
+                                    ?disabled="${isCurrentRevision}"
+                                  ></simple-icon-button-lite>
+                                  <simple-icon-button-lite
+                                    class="action restore"
+                                    icon="icons:restore"
+                                    label="Restore revision"
+                                    title="Restore revision as a new commit"
+                                    data-action="restore"
+                                    data-hash="${revision.hash || ""}"
+                                    ?disabled="${this.restoring || isCurrentRevision}"
+                                  ></simple-icon-button-lite>
+                                </td>
+                              </tr>
+                            `;
+                          },
                         )}
                       </tbody>
                     </table>
                   </editable-table-display>
                 `}
           </div>
-        </section>
-        <section class="panel">
-          <div class="panel-header">Revision preview</div>
-          <div class="preview-meta">
-            ${this.selectedRevision
-              ? html`
-                  <span>${this.selectedRevision.hash || ""}</span>
-                  <span>${this.selectedRevision.author || ""}</span>
-                  <span>${this.selectedRevision.authorEmail || ""}</span>
-                  <span>
-                    ${this.selectedRevision.date ||
-                    this._formatDate(this.selectedRevision.timestamp || 0)}
-                  </span>
-                `
-              : html`<span>Select a revision row to preview content.</span>`}
+          <div class="panel-header">
+            <div
+              class="preview-toggle"
+              role="group"
+              aria-label="Revision preview mode"
+            >
+              <simple-icon-button-lite
+                class="mode-toggle ${this.previewMode === "source"
+                  ? "active"
+                  : ""}"
+                icon="code"
+                label="HTML source"
+                title="Show HTML source"
+                data-preview-mode="source"
+                aria-pressed="${this.previewMode === "source"
+                  ? "true"
+                  : "false"}"
+                @click="${this._setPreviewMode}"
+              ></simple-icon-button-lite>
+              <simple-icon-button-lite
+                class="mode-toggle ${this.previewMode === "rendered"
+                  ? "active"
+                  : ""}"
+                icon="icons:visibility"
+                label="Rendered output"
+                title="Show rendered output"
+                data-preview-mode="rendered"
+                aria-pressed="${this.previewMode === "rendered"
+                  ? "true"
+                  : "false"}"
+                @click="${this._setPreviewMode}"
+              ></simple-icon-button-lite>
+            </div>
+            <span class="panel-header-title" title="${previewTitle}"
+              >${previewTitle}</span>
           </div>
-          <div class="preview">
-            ${this.revisionLoading
-              ? html`<div class="loading">Loading revision preview…</div>`
-              : html`<pre>${this.previewContent || ""}</pre>`}
-          </div>
+          <details class="preview-details">
+            <summary>Details</summary>
+            ${revisionDetailsJson
+              ? html`<pre class="details-json">${revisionDetailsJson}</pre>`
+              : html`<div class="preview-details-empty">
+                  Select a revision row to load details.
+                </div>`}
+          </details>
+          <div class="preview">${this._renderPreviewContent()}</div>
         </section>
       </div>
     `;

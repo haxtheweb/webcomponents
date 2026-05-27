@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": {
+    "nodeId": "item-d131e688-d93c-4cbc-b32d-f0d052aeb8d0",
+    "hash": "f87314f4ea8699305be8b2d4a537db3474eff7a9",
+    "restoredFrom": "4e95b7a4c7f1d244f9f7a086028f637f9f58e2d1",
+    "message": "Demo restore completed. Revision recreated as latest commit.",
+    "metadata": {
+      "source": "demo-fixture",
+      "operation": "restore-node-revision"
+    }
+  }
+}

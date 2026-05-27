@@ -423,55 +423,6 @@ export function enableHAXcmsServices() {
         "Optional: true to allow HTML fallback tree derivation when endpoint tree data is unavailable",
     },
   });
-  // insights
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/insights",
-    name: "@haxcms/insights",
-    title: "Site insights",
-    description:
-      "States relative to the page, lesson, and site as a whole. Used for content authors.",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      activeId: "id to query from",
-    },
-  });
-  // contentBrowser
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/contentBrowser",
-    name: "@haxcms/contentBrowser",
-    title: "Content browser",
-    description: "Returns details about content relative to an activeID",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      activeId: "id to query from",
-    },
-  });
-  // mediaBrowser
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/mediaBrowser",
-    name: "@haxcms/mediaBrowser",
-    title: "Media browser",
-    description: "Returns details about media relative to an activeID",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      activeId: "id to query from",
-    },
-  });
-  // linkChecker
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/linkChecker",
-    name: "@haxcms/linkChecker",
-    title: "Check site links",
-    description: "Returns details about links relative to an activeID",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      activeId: "id to query from",
-    },
-  });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",

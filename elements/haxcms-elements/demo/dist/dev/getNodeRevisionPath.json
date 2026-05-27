@@ -1,0 +1,47 @@
+{
+  "status": 200,
+  "data": {
+    "nodeId": "item-d131e688-d93c-4cbc-b32d-f0d052aeb8d0",
+    "hash": "4e95b7a4c7f1d244f9f7a086028f637f9f58e2d1",
+    "revision": {
+      "hash": "4e95b7a4c7f1d244f9f7a086028f637f9f58e2d1",
+      "shortHash": "4e95b7a",
+      "timestamp": 1736889300,
+      "date": "2025-01-14 20:35:00 UTC",
+      "author": "Demo Maintainer",
+      "authorEmail": "demo.maintainer@haxtheweb.org",
+      "message": "Refine instructional copy and add implementation checklist",
+      "metadata": {
+        "changeType": "content-update",
+        "reviewState": "approved-demo"
+      }
+    },
+    "content": "<section><h2>Meme generation workflow</h2><p>This revision snapshot demonstrates how the preview can show rendered HTML while preserving the raw source view.</p><h3>Implementation checklist</h3><ol><li>Select an input image that communicates context.</li><li>Apply concise text overlays that match the intended audience.</li><li>Run an accessibility pass for captions, alternative text, and heading hierarchy.</li></ol><table><thead><tr><th>Step</th><th>Tooling</th><th>Output</th></tr></thead><tbody><tr><td>Draft</td><td>HAX editor</td><td>Initial layout</td></tr><tr><td>Review</td><td>Content admin</td><td>Revision notes</td></tr><tr><td>Publish</td><td>HAXCMS</td><td>Live page update</td></tr></tbody></table></section>",
+    "json": {
+      "node": {
+        "id": "item-d131e688-d93c-4cbc-b32d-f0d052aeb8d0",
+        "title": "meme-maker",
+        "slug": "welcome/what-is-hax/meme-maker",
+        "status": "published"
+      },
+      "contentAudit": {
+        "wordCount": 240,
+        "headings": 3,
+        "tables": 1,
+        "interactiveBlocks": 2
+      },
+      "metadata": {
+        "tags": [
+          "media",
+          "workflow",
+          "authoring"
+        ],
+        "reviewState": "approved-demo"
+      }
+    },
+    "metadata": {
+      "responseType": "revision-detail",
+      "source": "demo-fixture"
+    }
+  }
+}

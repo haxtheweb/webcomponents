@@ -1,0 +1,57 @@
+{
+  "status": 200,
+  "data": {
+    "mediaData": [
+      {
+        "name": "HAX-The-Web.jpg",
+        "title": "HAX ecosystem image",
+        "locType": "internal",
+        "type": "image",
+        "status": "info",
+        "source": "files/HAX-The-Web.jpg",
+        "alt": "Illustration showing the HAX ecosystem",
+        "itemId": "item-06108b56-48b5-4c50-b262-81659edc750e"
+      },
+      {
+        "name": "hax-overview-video",
+        "title": "Intro playlist",
+        "locType": "external",
+        "type": "video",
+        "status": "warning",
+        "source": "https://www.youtube.com/embed/videoseries?list=PL6f9fM6fllf0haxdemo",
+        "alt": null,
+        "itemId": "item-06108b56-48b5-4c50-b262-81659edc750e"
+      },
+      {
+        "name": "H5P activity",
+        "title": "Practice interaction",
+        "locType": "external",
+        "type": "h5p",
+        "status": "info",
+        "source": "https://h5p.org/h5p/embed/123456",
+        "alt": null,
+        "itemId": "item-f424af2a-f6a2-46fb-b052-ef69836a1e2e"
+      },
+      {
+        "name": "Course outline",
+        "title": "downloadable PDF",
+        "locType": "internal",
+        "type": "document",
+        "status": "error",
+        "source": "files/hax-course-outline.pdf",
+        "alt": null,
+        "itemId": "item-e0580363-6b05-4092-8711-7413ae36a221"
+      },
+      {
+        "name": "Roadmap narration",
+        "title": "roadmap audio",
+        "locType": "internal",
+        "type": "audio",
+        "status": "info",
+        "source": "files/roadmap-audio.mp3",
+        "alt": null,
+        "itemId": "item-e0580363-6b05-4092-8711-7413ae36a221"
+      }
+    ]
+  }
+}

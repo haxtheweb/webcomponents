@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "data": {
+    "title": "HAXcellence",
+    "pages": 7,
+    "objectives": 9,
+    "authorNotes": 3,
+    "specialTags": 5,
+    "dataTables": 2,
+    "headings": 28,
+    "video": 2,
+    "videoLength": 1040,
+    "h5p": 1,
+    "audio": 1,
+    "links": 14,
+    "readTime": 38,
+    "created": "2023-05-03T20:12:36.000Z",
+    "updated": "2025-01-14T18:10:47.000Z",
+    "readability": {
+      "gradeLevel": "9th / 10th grade",
+      "difficultWords": 82,
+      "syllableCount": 1180,
+      "lexiconCount": 1460,
+      "sentenceCount": 126
+    },
+    "updatedItems": [
+      {
+        "id": "item-e0580363-6b05-4092-8711-7413ae36a221",
+        "slug": "roadmap",
+        "title": "Project roadmap",
+        "metadata": {
+          "updated": "2025-01-14T18:04:32.000Z"
+        }
+      },
+      {
+        "id": "item-06108b56-48b5-4c50-b262-81659edc750e",
+        "slug": "what-is-hax",
+        "title": "What is HAX?",
+        "metadata": {
+          "updated": "2025-01-14T17:58:03.000Z"
+        }
+      },
+      {
+        "id": "item-8a5bf844-d498-4f75-bf96-110eaedb42d9",
+        "slug": "welcome",
+        "title": "Welcome",
+        "metadata": {
+          "updated": "2025-01-14T17:50:43.000Z"
+        }
+      }
+    ]
+  }
+}

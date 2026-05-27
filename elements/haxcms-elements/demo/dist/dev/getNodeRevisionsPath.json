@@ -1,0 +1,69 @@
+{
+  "status": 200,
+  "data": {
+    "nodeId": "item-d131e688-d93c-4cbc-b32d-f0d052aeb8d0",
+    "nodeTitle": "meme-maker",
+    "metadata": {
+      "source": "demo-fixture",
+      "strategy": "static-json-response",
+      "totalRevisions": 4
+    },
+    "revisions": [
+      {
+        "hash": "4e95b7a4c7f1d244f9f7a086028f637f9f58e2d1",
+        "shortHash": "4e95b7a",
+        "timestamp": 1736889300,
+        "date": "2025-01-14 20:35:00 UTC",
+        "author": "Demo Maintainer",
+        "authorEmail": "demo.maintainer@haxtheweb.org",
+        "message": "Refine instructional copy and add implementation checklist",
+        "metadata": {
+          "changeType": "content-update",
+          "tags": [
+            "checklist",
+            "clarity"
+          ]
+        }
+      },
+      {
+        "hash": "7c4fa1f8cdb7da76bb8e8ed5b6a49d7f4e6c3044",
+        "shortHash": "7c4fa1f",
+        "timestamp": 1736885700,
+        "date": "2025-01-14 19:35:00 UTC",
+        "author": "Demo Reviewer",
+        "authorEmail": "demo.reviewer@haxtheweb.org",
+        "message": "Add table comparing meme generation workflows",
+        "metadata": {
+          "changeType": "structure-update",
+          "tableRows": 3
+        }
+      },
+      {
+        "hash": "b7f9d3e2a4ab58dd092f419f18f7459575bc8eb7",
+        "shortHash": "b7f9d3e",
+        "timestamp": 1736882400,
+        "date": "2025-01-14 18:40:00 UTC",
+        "author": "Demo Author",
+        "authorEmail": "demo.author@haxtheweb.org",
+        "message": "Introduce semantic section headings and examples",
+        "metadata": {
+          "changeType": "semantic-structure",
+          "headingsAdded": 2
+        }
+      },
+      {
+        "hash": "c8ab4de3f2d33be9084fd56b46d9c61310956f4e",
+        "shortHash": "c8ab4de",
+        "timestamp": 1736879400,
+        "date": "2025-01-14 17:50:00 UTC",
+        "author": "Demo Accessibility",
+        "authorEmail": "demo.a11y@haxtheweb.org",
+        "message": "Accessibility pass: alt text and list semantics",
+        "metadata": {
+          "changeType": "accessibility",
+          "listSemanticsValidated": true
+        }
+      }
+    ]
+  }
+}

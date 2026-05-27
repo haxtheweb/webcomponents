@@ -111,6 +111,7 @@ class Store {
     this.evaluatebadDevice();
     this.location = null;
     this.currentRouterLocation = {};
+    this.appSettings = globalThis.appSettings || {};
     this.jwt = null;
     this.version = null;
     this.soundStatus = getDefaultSoundStatus();
@@ -167,6 +168,7 @@ class Store {
       editMode: observable, // global editing state
       adminMode: observable, // global admin modal state
       trayStatus: observable, // tray status (collapsed/expanded)
+      appSettings: observable, // global app settings object
       jwt: observable, // JSON Web Token
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
