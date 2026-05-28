@@ -95,6 +95,12 @@
         "inputMethod": "boolean"
       },
       {
+        "property": "copyable",
+        "title": "Copy Button",
+        "description": "Add a button to copy table CSV data.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "printable",
         "title": "Print Button",
         "description": "Add a button to print only the table.",
@@ -127,6 +133,7 @@
       "tag": "editable-table",
       "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
       "properties": {
+        "copyable": true,
         "downloadable": true,
         "printable": true,
         "bordered": true,

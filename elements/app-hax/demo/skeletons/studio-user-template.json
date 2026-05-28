@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "name": "studio-user-template",
+    "machineName": "studio-user-template",
+    "type": "skeleton",
+    "scope": "user",
+    "priority": -8,
+    "version": "1.0.0"
+  },
+  "site": {
+    "name": "Studio Starter",
+    "description": "A user-managed starter used for demoing rename, delete, and upload patterns.",
+    "theme": "clean-two"
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-home-studio",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Studio starter</h2><p>This skeleton is marked as a user-scoped demo template.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["studio", "user"]
+        }
+      },
+      {
+        "id": "item-about-studio",
+        "title": "About",
+        "slug": "about",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>About this project</h2><p>Use this page to describe goals, collaborators, and timeline.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["studio", "overview"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {}
+}

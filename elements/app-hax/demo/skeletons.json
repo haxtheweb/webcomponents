@@ -26,6 +26,21 @@
       "skeleton-url": "skeletons/portfolio-site-template.json"
     },
     {
+      "title": "Studio Starter (User)",
+      "machineName": "studio-user-template",
+      "priority": -8,
+      "description": "User-provided starter used to demo rename and delete actions.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
+      "category": ["custom", "user"],
+      "scope": "user",
+      "enabled": true,
+      "attributes": [
+        { "icon": "hax:hax2022", "tooltip": "User skeleton" }
+      ],
+      "demo-url": "#",
+      "skeleton-url": "skeletons/studio-user-template.json"
+    },
+    {
       "title": "Blog",
       "priority": 0,
       "description": "A template for creating blog sites with posts and categories",

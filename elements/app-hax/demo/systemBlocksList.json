@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "apps": [],
+  "stax": [],
+  "autoloader": {
+    "page-break": "@haxtheweb/page-break/page-break.js",
+    "accent-card": "@haxtheweb/accent-card/accent-card.js",
+    "a11y-gif-player": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
+    "code-sample": "@haxtheweb/code-sample/code-sample.js",
+    "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
+    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
+    "stop-note": "@haxtheweb/stop-note/stop-note.js",
+    "video-player": "@haxtheweb/video-player/video-player.js"
+  },
+  "enabledBlocks": [
+    "page-break",
+    "accent-card",
+    "code-sample",
+    "multiple-choice",
+    "stop-note"
+  ]
+}

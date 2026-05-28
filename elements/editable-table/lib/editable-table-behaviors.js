@@ -365,6 +365,13 @@ export const editProperties = {
     attribute: "hide-downloadable",
   },
   /**
+   * Hide copyable menu option
+   */
+  hideCopyable: {
+    type: Boolean,
+    attribute: "hide-copyable",
+  },
+  /**
    * Hide filtering option.
    */
   hideFilter: {
@@ -419,6 +426,14 @@ export const dataProperties = {
    */
   downloadable: {
     attribute: "downloadable",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * Allow table to be copied as CSV.
+   */
+  copyable: {
+    attribute: "copyable",
     type: Boolean,
     reflect: true,
   },
@@ -524,6 +539,7 @@ export const displayBehaviors = function (SuperClass) {
       this.disabled = false;
       this.hidden = false;
       this.columnHeader = false;
+      this.copyable = false;
       this.downloadable = false;
       this.data = [];
       this.filter = false;
@@ -667,6 +683,54 @@ export const displayBehaviors = function (SuperClass) {
           },
         }),
       );
+    }
+    /**
+     * copies table CSV data to clipboard
+     * @returns {boolean} whether copy operation succeeded
+     */
+    async copy() {
+      const data = this.getTableCSV();
+      let copied = false;
+      try {
+        if (
+          globalThis.navigator &&
+          globalThis.navigator.clipboard &&
+          globalThis.navigator.clipboard.writeText
+        ) {
+          await globalThis.navigator.clipboard.writeText(data);
+          copied = true;
+        }
+      } catch (e) {
+        copied = false;
+      }
+      if (!copied) {
+        try {
+          const textArea = globalThis.document.createElement("textarea");
+          textArea.value = data;
+          textArea.setAttribute("readonly", "true");
+          textArea.style.position = "absolute";
+          textArea.style.left = "-9999px";
+          globalThis.document.body.appendChild(textArea);
+          textArea.select();
+          copied = globalThis.document.execCommand("copy");
+          globalThis.document.body.removeChild(textArea);
+        } catch (e) {
+          copied = false;
+        }
+      }
+      this.dispatchEvent(
+        new CustomEvent("csv-copied", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            table: this,
+            data: data,
+            copied: copied,
+          },
+        }),
+      );
+      return copied;
     }
 
     /**
@@ -895,6 +959,7 @@ export const displayBehaviors = function (SuperClass) {
         caption: this.caption,
         columnHeader: this.columnHeader,
         columnStriped: this.columnStriped,
+        copyable: this.copyable,
         condensed: !this.hideCondensed && this.condensed,
         data: this.data,
         downloadable: this.downloadable,
@@ -1109,6 +1174,7 @@ export const editBehaviors = function (SuperClass) {
       this.disabled = false;
       this.hideBordered = false;
       this.hideCondensed = false;
+      this.hideCopyable = false;
       this.hideDownloadable = false;
       this.hideFilter = false;
       this.hideResponsive = false;

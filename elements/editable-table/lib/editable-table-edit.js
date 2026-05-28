@@ -456,6 +456,22 @@ class EditableTableEdit extends editBehaviors(DDD) {
       </simple-toolbar-button>
     `;
   }
+  get copyButton() {
+    return html`
+      <simple-toolbar-button
+        id="copyable"
+        ?disabled="${this.hideCopyable}"
+        ?hidden="${this.hideCopyable}"
+        icon="content-copy"
+        label="Allow copying as CSV."
+        @button-toggled="${this._onTableSettingChange}"
+        part="simple-toolbar-button"
+        ?toggled="${this.copyable}"
+        toggles
+      >
+      </simple-toolbar-button>
+    `;
+  }
   get printButton() {
     return html`
       <simple-toolbar-button
@@ -481,7 +497,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
       >
         <div class="label" part="simple-toolbar-section-label">Data</div>
         ${this.sortButton} ${this.filterButton} ${this.downloadButton}
-        ${this.printButton}
+        ${this.copyButton} ${this.printButton}
       </div>
     `;
   }
@@ -526,6 +542,16 @@ class EditableTableEdit extends editBehaviors(DDD) {
                   <simple-icon-lite
                     calss="printable-icon"
                     icon="print"
+                    aria-hidden="true"
+                  >
+                  </simple-icon-lite>
+                `}
+            ${!this.copyable
+              ? ""
+              : html`
+                  <simple-icon-lite
+                    class="copyable-icon"
+                    icon="content-copy"
                     aria-hidden="true"
                   >
                   </simple-icon-lite>
@@ -661,6 +687,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         ?bordered="${this.bordered}"
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
+        ?copyable="${this.copyable}"
         ?condensed="${this.condensed}"
         ?downloadable="${this.downloadable}"
         ?filter="${this.filter}"

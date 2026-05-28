@@ -1,15 +1,12 @@
-import { store, iconFromPageType } from "./haxcms-site-store.js";
+import { store } from "./haxcms-site-store.js";
 import { toJS } from "mobx";
 import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/simple-img/simple-img.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "../ui-components/lesson-overview/lib/lesson-highlight.js";
-import "@github/time-elements/dist/relative-time-element.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import { learningComponentTypes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
@@ -78,6 +75,126 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           background: var(--haxcms-insights-surface);
           flex-shrink: 0;
         }
+        .report-tabs {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+          margin-bottom: var(--ddd-spacing-2);
+        }
+        .report-tabs .report-tab-button {
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--haxcms-insights-border-color);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-button-padding: var(--ddd-spacing-2)
+            var(--ddd-spacing-3);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-color: var(--haxcms-insights-color);
+          --simple-icon-button-background-color: var(--haxcms-insights-surface);
+          --simple-icon-button-focus-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          color: var(--haxcms-insights-color);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-s);
+        }
+        .report-tabs .report-tab-button[toggled] {
+          --simple-icon-button-border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-navy);
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-white)
+          );
+          --simple-icon-button-background-color: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .report-tabs .report-tab-button[toggled]::part(button) {
+          font-weight: var(--ddd-font-weight-bold);
+          box-shadow: inset 0 0 0 2px
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+        }
+        .report-tabs .report-tab-button::part(button) {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .report-tabs .report-tab-button:focus-within {
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-sm);
+        }
+        .report-panel {
+          display: flex;
+          flex-direction: column;
+          min-height: 0;
+          flex: 1;
+          border: var(--ddd-border-sm);
+          border-color: var(--haxcms-insights-border-color);
+          border-radius: var(--ddd-radius-md);
+          background: var(--haxcms-insights-surface-subtle);
+          padding: var(--ddd-spacing-4);
+          gap: var(--ddd-spacing-3);
+        }
+        .report-filters {
+          display: block;
+        }
+        .report-filters form {
+          margin: 0;
+        }
+        .report-table-scroll {
+          width: 100%;
+          min-height: 0;
+          overflow-x: auto;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .report-table-scroll editable-table-display {
+          --ddd-theme-body-font-size: var(--ddd-font-size-6xs, 10px);
+          --editable-table-font-family: var(--ddd-font-navigation);
+          --editable-table-font-size: var(--ddd-font-size-6xs, 10px);
+          display: block;
+          min-width: 760px;
+        }
+        .report-table-scroll .report-native-table {
+          width: 100%;
+          min-width: 760px;
+          border-collapse: collapse;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-6xs, 10px);
+          background: var(--haxcms-insights-surface);
+          color: var(--haxcms-insights-color);
+        }
+        .report-table-scroll .report-native-table caption {
+          text-align: left;
+          margin-bottom: var(--ddd-spacing-2);
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-xs);
+        }
+        .report-table-scroll .report-native-table th,
+        .report-table-scroll .report-native-table td {
+          border: var(--ddd-border-xs) solid var(--haxcms-insights-border-color);
+          padding: var(--ddd-spacing-2);
+          text-align: left;
+          vertical-align: top;
+        }
+        .report-table-scroll .report-native-table thead th {
+          background: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          font-weight: var(--ddd-font-weight-bold);
+        }
         .panel-shell {
           display: flex;
           flex-direction: column;
@@ -91,10 +208,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           flex: 1;
           min-height: 0;
           overflow: hidden;
-        }
-        :host([hide-results*="link-status-false"]) .link-status-false,
-        :host([hide-results*="link-status-true"]) .link-status-true {
-          display: none;
         }
         .selector-wrapper {
           margin-bottom: var(--ddd-spacing-6);
@@ -125,14 +238,29 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
           outline-offset: 2px;
         }
-        .selector-wrapper simple-toolbar-button {
-          --simple-toolbar-button-border-width: 1px;
-          --simple-toolbar-border-color: var(--haxcms-insights-border-color);
-          --simple-toolbar-border-radius: var(--ddd-radius-xs);
-          --simple-toolbar-button-padding: var(--ddd-spacing-2);
-          background-color: light-dark(
+        .selector-wrapper simple-icon-button-lite {
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--haxcms-insights-border-color);
+          --simple-icon-button-border-radius: var(--ddd-radius-xs);
+          --simple-icon-button-padding: var(--ddd-spacing-2)
+            var(--ddd-spacing-3);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-white)
+          );
+          --simple-icon-button-background-color: light-dark(
             var(--ddd-theme-default-skyBlue),
             var(--ddd-primary-4)
+          );
+          --simple-icon-button-focus-background-color: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-primary-5)
+          );
+          --simple-icon-button-focus-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-white)
           );
           color: light-dark(
             var(--ddd-theme-default-white),
@@ -140,13 +268,18 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           );
           font-family: var(--ddd-font-navigation);
         }
-        .selector-wrapper simple-toolbar-button:focus-within {
+        .selector-wrapper simple-icon-button-lite:focus-within {
           outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
-        .selector-wrapper simple-toolbar-button:hover {
-          background-color: light-dark(
+        .selector-wrapper simple-icon-button-lite::part(button) {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .selector-wrapper simple-icon-button-lite:hover {
+          --simple-icon-button-background-color: light-dark(
             var(--ddd-theme-default-original87Pink),
             var(--ddd-primary-5)
           );
@@ -646,32 +779,35 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       );
     }
   }
-  _reportHeading(icon, label) {
-    return html`<span class="summary-leading">
-      <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
-      <h3>${label}</h3>
-    </span>`;
+  _reportTabs() {
+    return [
+      { id: "reports", label: this.t.stats, icon: "hax:graph" },
+      { id: "mediabrowser", label: this.t.media, icon: "icons:perm-media" },
+      {
+        id: "contentbrowser",
+        label: this.t.content,
+        icon: "icons:view-module",
+      },
+      { id: "linkchecker", label: this.t.links, icon: "icons:link" },
+    ];
   }
-  _groupToggled(e) {
+  _activeReport() {
+    const tabs = this._reportTabs();
+    const current = tabs.find((tab) => tab.id === this.activeTab);
+    return current ? current : tabs[0];
+  }
+  _reportTabClicked(e) {
     if (!e || !e.currentTarget) {
       return;
     }
-    const item = e.currentTarget;
-    const itemId = item.getAttribute("data-id");
-    if (!itemId) {
+    const tabId = e.currentTarget.getAttribute("data-tab");
+    if (!tabId) {
       return;
     }
-    if (item.open) {
-      this.shadowRoot.querySelectorAll("details.group").forEach((group) => {
-        if (group !== item && group.open) {
-          group.open = false;
-        }
-      });
-      if (this.activeTab !== itemId) {
-        this.activeTab = itemId;
-      }
-    } else if (this.activeTab === itemId) {
-      this.activeTab = "";
+    if (this.activeTab !== tabId) {
+      this.activeTab = tabId;
+    } else {
+      this.refreshData();
     }
   }
 
@@ -691,6 +827,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       switch (this.activeTab) {
         case "linkchecker":
           this.filters = { links: "all" };
+          schema.value = this.filters;
+          schema.values = this.filters;
           schema.fields = [
             {
               property: "links",
@@ -835,6 +973,20 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       }
     }, 0);
   }
+  _normalizeReportSelectionValue(value) {
+    if (value === null || typeof value === "undefined") {
+      return "";
+    }
+    if (typeof value === "string") {
+      return value.trim();
+    }
+    return `${value}`;
+  }
+  _reportSelectionChanged(e) {
+    const value = e && e.currentTarget ? e.currentTarget.value : "";
+    this.selectedReportId = this._normalizeReportSelectionValue(value);
+    this.refreshData();
+  }
   refreshData() {
     const site = toJS(store.manifest);
     const selector =
@@ -856,9 +1008,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       site: {
         name: siteName,
       },
-      activeId: selector ? selector.value : null,
+      activeId: null,
       jwt: jwt,
     };
+    const selectedReportId = this._normalizeReportSelectionValue(
+      selector ? selector.value : this.selectedReportId,
+    );
+    this.selectedReportId = selectedReportId;
+    if (selectedReportId !== "") {
+      params.activeId = selectedReportId;
+    }
     this.loading = true;
     const internalEndpoint = this._activeTabInternalEndpoint();
     if (!internalEndpoint) {
@@ -900,15 +1059,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
   }
   linkFormChanged(e) {
-    this.filters.links = e.detail.value.links;
-    // @todo refactor
-    if (this.filters.links === "error") {
-      this.hideResults = "link-status-true";
-    } else if (this.filters.links === "ok") {
-      this.hideResults = "link-status-false";
+    if (
+      e &&
+      e.detail &&
+      e.detail.value &&
+      typeof e.detail.value.links === "string"
+    ) {
+      this.filters.links = e.detail.value.links;
     } else {
-      this.hideResults = "";
+      this.filters.links = "all";
     }
+    this.requestUpdate();
   }
   contentBrowserFormChanged(e) {
     const baseData =
@@ -1058,6 +1219,318 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       });
     }
   }
+  _renderActiveFilters() {
+    switch (this.activeTab) {
+      case "linkchecker":
+        return html`<div class="report-filters">
+          <form>
+            <simple-fields
+              id="linkchecker-schema"
+              autofocus
+              @value-changed="${this.linkFormChanged}"
+            ></simple-fields>
+          </form>
+        </div>`;
+      case "contentbrowser":
+        return html`<div class="report-filters">
+          <form>
+            <simple-fields
+              id="contentbrowser-schema"
+              autofocus
+              @value-changed="${this.contentBrowserFormChanged}"
+            ></simple-fields>
+          </form>
+        </div>`;
+      case "mediabrowser":
+        return html`<div class="report-filters">
+          <form>
+            <simple-fields
+              id="mediabrowser-schema"
+              autofocus
+              @value-changed="${this.mediaBrowserFormChanged}"
+            ></simple-fields>
+          </form>
+        </div>`;
+      default:
+        return html``;
+    }
+  }
+  _activeEmptyStateMessage() {
+    switch (this.activeTab) {
+      case "linkchecker":
+        return this.t.noLinksInSelectedPages;
+      case "mediabrowser":
+        return this.t.noMediaInSelectedPages;
+      case "contentbrowser":
+        return this.t.noContentInSelectedPages;
+      default:
+        return this.t.noReportData;
+    }
+  }
+  _activeTableData(data) {
+    switch (this.activeTab) {
+      case "linkchecker":
+        return this._buildLinkCheckerTableData(data);
+      case "contentbrowser":
+        return this._buildContentBrowserTableData(data);
+      case "mediabrowser":
+        return this._buildMediaBrowserTableData(data);
+      case "reports":
+      default:
+        return this._buildSummaryTableData(data);
+    }
+  }
+  _buildSummaryTableData(data) {
+    const rows = [["Metric", "Value", "Details"]];
+    rows.push([
+      this.t.pages,
+      this._toCellValue(data.pages),
+      `${this._toCellValue(data.objectives)} ${this.t.learningObjectives}, ${this._toCellValue(data.authorNotes)} ${this.t.authorNotes}, ${this._toCellValue(data.specialTags)} ${this.t.specialElements}, ${this._toCellValue(data.dataTables)} ${this.t.dataTables}, ${this._toCellValue(data.headings)} ${this.t.headings}`,
+    ]);
+    rows.push([
+      this.t.videos,
+      this._toCellValue(data.video),
+      data.videoLength ? toHHMMSS(data.videoLength) : "",
+    ]);
+    rows.push(["H5P", this._toCellValue(data.h5p), ""]);
+    rows.push([this.t.audio, this._toCellValue(data.audio), ""]);
+    rows.push([this.t.externalLinks, this._toCellValue(data.links), ""]);
+    rows.push([
+      this.t.ofReading,
+      this.getReadingTime(data.readTime) !== ""
+        ? this.getReadingTime(data.readTime)
+        : `0 ${this.t.minutes}`,
+      "",
+    ]);
+    if (data.readability && typeof data.readability === "object") {
+      rows.push([
+        "Readability",
+        this._toCellValue(data.readability.gradeLevel),
+        `Dale-Chall, ${this._toCellValue(data.readability.lexiconCount)} ${this.t.words}, ${this._toCellValue(data.readability.difficultWords)} ${this.t.longWords}`,
+      ]);
+    }
+    rows.push([this.t.created, this._toCellValue(data.created), ""]);
+    rows.push([this.t.lastUpdated, this._toCellValue(data.updated), ""]);
+    if (Array.isArray(data.updatedItems)) {
+      data.updatedItems.forEach((item) => {
+        const updated =
+          item && item.metadata && item.metadata.updated
+            ? item.metadata.updated
+            : "";
+        rows.push([this.t.recentUpdates, this._toCellValue(item.title), updated]);
+      });
+    }
+    return rows;
+  }
+  _buildLinkCheckerTableData(data) {
+    const rows = [["Status", "Link", "Usage count", "Used on"]];
+    const linkData =
+      data && data.linkData && typeof data.linkData === "object"
+        ? data.linkData
+        : null;
+    if (!linkData) {
+      return rows;
+    }
+    this._ensureLinkValidationData(linkData);
+    Object.keys(linkData).forEach((key) => {
+      const usages = Array.isArray(linkData[key]) ? linkData[key] : [];
+      const statusData = this.linkResponseData[key];
+      if (this.filters && this.filters.links === "error") {
+        if (!statusData || statusData.ok !== false) {
+          return;
+        }
+      }
+      if (this.filters && this.filters.links === "ok") {
+        if (!statusData || statusData.ok !== true) {
+          return;
+        }
+      }
+      const usedOn = usages
+        .map((usage) => {
+          const usageTitle =
+            usage && usage.linkTitle ? usage.linkTitle : this.t.onPage;
+          const pageTitle =
+            usage && usage.itemId ? this._itemTitleById(usage.itemId) : "";
+          return pageTitle ? `${usageTitle} (${pageTitle})` : usageTitle;
+        })
+        .join("; ");
+      rows.push([
+        this._linkStatusLabel(key),
+        key,
+        this._toCellValue(usages.length),
+        usedOn,
+      ]);
+    });
+    return rows;
+  }
+  _buildContentBrowserTableData(data) {
+    const rows = [
+      [
+        "Title",
+        "Type",
+        "Updated",
+        "Read time",
+        "Links",
+        "Images",
+        "Videos",
+        "Audio",
+        "H5P",
+        "Objectives",
+        "Author notes",
+        "Special",
+        "Data tables",
+        "Placeholders",
+        "Remote content",
+      ],
+    ];
+    const contentData =
+      data && Array.isArray(data.contentData) ? data.contentData : [];
+    contentData.forEach((item) => {
+      rows.push([
+        this._toCellValue(item.title),
+        this._toCellValue(item.pageType),
+        this._toCellValue(item.updated),
+        item.readTime ? this.getReadingTime(item.readTime) : "",
+        this._toCellValue(item.links),
+        this._toCellValue(item.images),
+        this._toCellValue(item.videos),
+        this._toCellValue(item.audio),
+        this._toCellValue(item.h5p),
+        this._toCellValue(item.objectives),
+        this._toCellValue(item.authorNotes),
+        this._toCellValue(item.specialTags),
+        this._toCellValue(item.dataTables),
+        this._toCellValue(item.placeholders),
+        this._toCellValue(item.siteremotecontent),
+      ]);
+    });
+    return rows;
+  }
+  _buildMediaBrowserTableData(data) {
+    const rows = [
+      ["Name", "Title", "Type", "Location", "Status", "Found under", "Page", "Alt"],
+    ];
+    const mediaData = data && Array.isArray(data.mediaData) ? data.mediaData : [];
+    mediaData.forEach((item) => {
+      rows.push([
+        this._toCellValue(item.name),
+        this._toCellValue(item.title),
+        this._toCellValue(item.type),
+        this._toCellValue(item.locType),
+        this._toCellValue(item.status),
+        this._mediaSourceCellValue(item),
+        item && item.itemId ? this._itemTitleById(item.itemId) : "",
+        this._toCellValue(item.alt),
+      ]);
+    });
+    return rows;
+  }
+  _mediaSourceCellValue(item) {
+    const mediaType = this._toCellValue(item && item.type ? item.type : "").toLowerCase();
+    const sourceValue = this._toCellValue(item && item.source ? item.source : "");
+    if (mediaType === "image" || mediaType === "video") {
+      const foundTag = this._mediaFoundTagValue(item);
+      if (foundTag !== "") {
+        return foundTag;
+      }
+      if (mediaType === "video") {
+        return "video-player";
+      }
+      return "img";
+    }
+    return sourceValue;
+  }
+  _mediaFoundTagValue(item) {
+    if (!item || typeof item !== "object") {
+      return "";
+    }
+    const fields = [
+      "foundTag",
+      "foundUnder",
+      "foundUnderTag",
+      "tag",
+      "tagName",
+      "nodeName",
+      "elementTag",
+      "sourceTag",
+    ];
+    for (let i = 0; i < fields.length; i++) {
+      const field = fields[i];
+      if (typeof item[field] === "string" && item[field].trim() !== "") {
+        return item[field].trim();
+      }
+    }
+    return "";
+  }
+  _itemTitleById(itemId) {
+    if (itemId == null) {
+      return "";
+    }
+    const item = toJS(store.findItem(itemId));
+    if (item && item.title) {
+      return item.title;
+    }
+    return "";
+  }
+  _linkStatusLabel(linkKey) {
+    const statusData = this.linkResponseData[linkKey];
+    if (!statusData || statusData.ok === "loading") {
+      return "Loading";
+    }
+    if (statusData.ok === true) {
+      return "OK";
+    }
+    if (statusData.ok === false) {
+      return statusData.status ? `Error (${statusData.status})` : "Error";
+    }
+    return "Unknown";
+  }
+  _ensureLinkValidationData(linkData) {
+    if (!linkData || typeof linkData !== "object") {
+      return;
+    }
+    Object.keys(linkData).forEach((key) => {
+      if (!this.linkResponseData[key]) {
+        this.linkResponseData[key] = {
+          ok: "loading",
+        };
+        MicroFrontendRegistry.call(
+          "@core/linkValidator",
+          { links: key },
+          this.__linkValidationHandler,
+        );
+      }
+    });
+  }
+  _toCellValue(value) {
+    if (value === null || typeof value === "undefined") {
+      return "";
+    }
+    return String(value);
+  }
+  _nativeReportTable(headerRow, bodyRows, caption) {
+    return html`
+      <table class="report-native-table">
+        <caption>${caption} ${this.t.reports}</caption>
+        <thead>
+          <tr>
+            ${headerRow.map(
+              (header) => html`<th scope="col">${this._toCellValue(header)}</th>`,
+            )}
+          </tr>
+        </thead>
+        <tbody>
+          ${bodyRows.map(
+            (row) => html`
+              <tr>
+                ${row.map((cell) => html`<td>${this._toCellValue(cell)}</td>`)}
+              </tr>
+            `,
+          )}
+        </tbody>
+      </table>
+    `;
+  }
   // render function
   render() {
     const data = {
@@ -1079,653 +1552,101 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       updated: "",
       ...(this.data && typeof this.data === "object" ? this.data : {}),
     };
+    const activeReport = this._activeReport();
+    const tableData = this._activeTableData(data);
+    const headerRow = tableData.length > 0 ? tableData[0] : [];
+    const bodyRows = tableData.length > 1 ? tableData.slice(1) : [];
+    const useNativeTable = this.activeTab === "linkchecker";
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
           ${this.pageSelector()}
-          <div class="group-set">
-            <details
-              class="group"
-              data-id="reports"
-              ?open="${this.activeTab === "reports"}"
-              @toggle="${this._groupToggled}"
-            >
-              <summary class="group-summary">
-                ${this._reportHeading("hax:graph", this.t.summary)}
-                <span class="summary-toggle-icon" aria-hidden="true">
-                  <simple-icon-lite
-                    class="collapse-icon-collapsed"
-                    icon="add"
-                  ></simple-icon-lite>
-                  <simple-icon-lite
-                    class="collapse-icon-expanded"
-                    icon="remove"
-                  ></simple-icon-lite>
-                </span>
-              </summary>
-              ${this.activeTab === "reports"
-                ? html`
-                    <div class="group-body">
-                      <loading-indicator
-                        full
-                        ?loading="${this.loading}"
-                      ></loading-indicator>
-                      ${this.loading
-                        ? html`<p role="status" aria-live="polite">
-                            ${this.t.loading} ${this.t.reports}..
-                          </p>`
-                        : html`
-                            <div class="reports reports-wrapper">
-                              <h2>
-                                ${data && data.title ? data.title : ""}
-                                ${this.t.reports}
-                              </h2>
-                              <ul class="report-highlight-list">
-                                <li>
-                                  <lesson-highlight
-                                    icon="editor:insert-drive-file"
-                                  >
-                                    <p slot="title">
-                                      ${data.pages ? data.pages : html`0`}
-                                      ${this.t.pages}
-                                    </p>
-                                    <p>
-                                      ${data.objectives}
-                                      ${this.t.learningObjectives},
-                                      ${data.authorNotes} ${this.t.authorNotes},
-                                      ${data.specialTags}
-                                      ${this.t.specialElements},
-                                      ${data.dataTables} ${this.t.dataTables},
-                                      ${data.headings} ${this.t.headings}
-                                    </p>
-                                  </lesson-highlight>
-                                </li>
-                                ${data.video == 0
-                                  ? ``
-                                  : html`<li>
-                                      <lesson-highlight
-                                        icon="av:play-circle-outline"
-                                      >
-                                        <p slot="title">
-                                          ${data.video} ${this.t.videos}
-                                        </p>
-                                        ${data.videoLength != 0
-                                          ? html`<p>
-                                              ${toHHMMSS(data.videoLength)}
-                                            </p>`
-                                          : ``}
-                                      </lesson-highlight>
-                                    </li>`}
-                                ${data.h5p == 0
-                                  ? ``
-                                  : html`<li>
-                                      <lesson-highlight icon="lrn:interact">
-                                        <p slot="title">${data.h5p} H5P</p>
-                                      </lesson-highlight>
-                                    </li>`}
-                                ${data.audio == 0
-                                  ? ``
-                                  : html`<li>
-                                      <lesson-highlight icon="av:music-video">
-                                        <p slot="title">
-                                          ${data.audio} ${this.t.audio}
-                                        </p>
-                                      </lesson-highlight>
-                                    </li>`}
-                                <li>
-                                  <lesson-highlight icon="icons:link">
-                                    <p slot="title">
-                                      ${data.links} ${this.t.externalLinks}
-                                    </p>
-                                  </lesson-highlight>
-                                </li>
-                                <li>
-                                  <lesson-highlight
-                                    icon="communication:import-contacts"
-                                  >
-                                    <p slot="title">
-                                      ${this.getReadingTime(data.readTime)}
-                                      ${this.t.ofReading}
-                                    </p>
-                                  </lesson-highlight>
-                                </li>
-                                ${data.readability
-                                  ? html`
-                                      <li>
-                                        <lesson-highlight
-                                          icon="editable-table:numbers"
-                                        >
-                                          <p slot="title">
-                                            ${data.readability.gradeLevel}
-                                          </p>
-                                          <p>
-                                            Dale-Chall
-                                            ${this.t.basedGradeReadingLevel}
-                                          </p>
-                                        </lesson-highlight>
-                                      </li>
-                                      <li>
-                                        <lesson-highlight
-                                          icon="hax:format-textblock"
-                                        >
-                                          <p slot="title">
-                                            ${data.readability.lexiconCount}
-                                            ${this.t.words}
-                                          </p>
-                                          <p>
-                                            ${data.readability.difficultWords}
-                                            ${this.t.longWords}
-                                          </p>
-                                        </lesson-highlight>
-                                      </li>
-                                    `
-                                  : ``}
-                                <li>
-                                  <lesson-highlight icon="device:access-time">
-                                    <p slot="title">
-                                      ${this.t.created}:
-                                      <relative-time
-                                        datetime="${data.created}"
-                                      ></relative-time>
-                                    </p>
-                                  </lesson-highlight>
-                                </li>
-                                <li>
-                                  <lesson-highlight icon="device:access-time">
-                                    <p slot="title">
-                                      ${this.t.lastUpdated}:
-                                      <relative-time
-                                        datetime="${data.updated}"
-                                      ></relative-time>
-                                    </p>
-                                  </lesson-highlight>
-                                </li>
-                                <li>
-                                  <lesson-highlight icon="av:av-timer">
-                                    <p slot="title">${this.t.recentUpdates}</p>
-                                    <ol class="recently-updated-items">
-                                      ${data.updatedItems
-                                        ? data.updatedItems.map(
-                                            (item) =>
-                                              html`<li>
-                                                <a
-                                                  @click="${this.closeModal}"
-                                                  href="${item.slug}"
-                                                  >${item.title}
-                                                  <relative-time
-                                                    datetime="${item.metadata
-                                                      .updated}"
-                                                  ></relative-time
-                                                ></a>
-                                              </li>`,
-                                          )
-                                        : ``}
-                                    </ol>
-                                  </lesson-highlight>
-                                </li>
-                              </ul>
-                            </div>
-                          `}
-                    </div>
-                  `
-                : ``}
-            </details>
-            <details
-              class="group"
-              data-id="linkchecker"
-              ?open="${this.activeTab === "linkchecker"}"
-              @toggle="${this._groupToggled}"
-            >
-              <summary class="group-summary">
-                ${this._reportHeading("icons:link", this.t.linkChecker)}
-                <span class="summary-toggle-icon" aria-hidden="true">
-                  <simple-icon-lite
-                    class="collapse-icon-collapsed"
-                    icon="add"
-                  ></simple-icon-lite>
-                  <simple-icon-lite
-                    class="collapse-icon-expanded"
-                    icon="remove"
-                  ></simple-icon-lite>
-                </span>
-              </summary>
-              ${this.activeTab == "linkchecker"
-                ? html`
-                    <div class="group-body">
-                      <loading-indicator
-                        full
-                        ?loading="${this.loading}"
-                      ></loading-indicator>
-                      ${this.loading
-                        ? html`<p role="status" aria-live="polite">
-                            ${this.t.loading} ${this.t.linkChecker}..
-                          </p>`
-                        : html`
-                            <div class="linkchecker-wrapper">
-                              <h2>${this.t.linkReport}</h2>
-                              <form>
-                                <simple-fields
-                                  id="linkchecker-schema"
-                                  autofocus
-                                  @value-changed="${this.linkFormChanged}"
-                                ></simple-fields>
-                              </form>
-                              <ul class="link-list">
-                                ${data.linkData
-                                  ? Object.keys(data.linkData).map((key) =>
-                                      this.renderLinkCheck(data.linkData, key),
-                                    )
-                                  : html`${this.t.noLinksInSelectedPages}`}
-                              </ul>
-                            </div>
-                          `}
-                    </div>
-                  `
-                : ``}
-            </details>
-            <details
-              class="group"
-              data-id="contentbrowser"
-              ?open="${this.activeTab === "contentbrowser"}"
-              @toggle="${this._groupToggled}"
-            >
-              <summary class="group-summary">
-                ${this._reportHeading(
-                  "icons:view-module",
-                  this.t.contentBrowser,
-                )}
-                <span class="summary-toggle-icon" aria-hidden="true">
-                  <simple-icon-lite
-                    class="collapse-icon-collapsed"
-                    icon="add"
-                  ></simple-icon-lite>
-                  <simple-icon-lite
-                    class="collapse-icon-expanded"
-                    icon="remove"
-                  ></simple-icon-lite>
-                </span>
-              </summary>
-              ${this.activeTab == "contentbrowser"
-                ? html`
-                    <div class="group-body">
-                      <loading-indicator
-                        full
-                        ?loading="${this.loading}"
-                      ></loading-indicator>
-                      ${this.loading
-                        ? html`<p role="status" aria-live="polite">
-                            ${this.t.loading} ${this.t.contentBrowser}..
-                          </p>`
-                        : html`
-                            <div class="contentbrowser-wrapper">
-                              <h2>${this.t.contentBrowser}</h2>
-                              <form>
-                                <simple-fields
-                                  id="contentbrowser-schema"
-                                  autofocus
-                                  @value-changed="${this
-                                    .contentBrowserFormChanged}"
-                                ></simple-fields>
-                              </form>
-                              <ul class="content-list">
-                                ${data.contentData
-                                  ? data.contentData.map(
-                                      (item) => html`
-                                        <li>
-                                          <article class="content-item">
-                                            <h3 class="content-item-title">
-                                              <a
-                                                class="title-link"
-                                                href="${item.slug}"
-                                                @click="${this.closeModal}"
-                                                >${item.pageType
-                                                  ? html`
-                                                      <simple-icon-lite
-                                                        title="${item.pageType}"
-                                                        icon="${iconFromPageType(
-                                                          item.pageType,
-                                                        )}"
-                                                      ></simple-icon-lite>
-                                                    `
-                                                  : ``}
-                                                ${item.title}</a
-                                              >
-                                            </h3>
-                                            <div class="meta">
-                                              <div>
-                                                ${this.t.created}
-                                                <relative-time
-                                                  datetime="${item.created}"
-                                                ></relative-time>
-                                              </div>
-                                              <div>
-                                                ${this.t.lastUpdated}
-                                                <relative-time
-                                                  datetime="${item.updated}"
-                                                ></relative-time>
-                                              </div>
-                                            </div>
-                                            <ul class="stats">
-                                              ${item.objectives > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="editor:format-list-bulleted"
-                                                    ></simple-icon
-                                                    >${item.objectives}
-                                                    ${this.t.learningObjectives}
-                                                  </li>`
-                                                : ``}
-                                              ${item.authorNotes > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="hax:figure"
-                                                    ></simple-icon
-                                                    >${item.authorNotes}
-                                                    ${this.t.authorNotes}
-                                                  </li>`
-                                                : ``}
-                                              ${item.videos > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="av:play-arrow"
-                                                    ></simple-icon
-                                                    >${item.videos}
-                                                    ${this.t.videos}
-                                                  </li>`
-                                                : ``}
-                                              ${item.h5p > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="lrn:interact"
-                                                    ></simple-icon
-                                                    >${item.h5p} H5P
-                                                  </li>`
-                                                : ``}
-                                              ${item.placeholders > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="hax:placeholder-image"
-                                                    ></simple-icon
-                                                    >${item.placeholders}
-                                                    ${this.t.placeholders}
-                                                  </li>`
-                                                : ``}
-                                              ${item.audio > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="av:music-video"
-                                                    ></simple-icon
-                                                    >${item.audio}
-                                                    ${this.t.audio}
-                                                  </li>`
-                                                : ``}
-                                              ${item.selfChecks > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="hardware:videogame-asset"
-                                                    ></simple-icon
-                                                    >${item.selfChecks}
-                                                    ${this.t.selfChecks}
-                                                  </li>`
-                                                : ``}
-                                              ${item.images > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="image:collections"
-                                                    ></simple-icon
-                                                    >${item.images}
-                                                    ${this.t.images}
-                                                  </li>`
-                                                : ``}
-                                              ${item.dataTables > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="image:grid-on"
-                                                    ></simple-icon
-                                                    >${item.dataTables}
-                                                    ${this.t.dataTables}
-                                                  </li>`
-                                                : ``}
-                                              ${item.specialTags > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="icons:stars"
-                                                    ></simple-icon
-                                                    >${item.specialTags}
-                                                    ${this.t.specialElements}
-                                                  </li>`
-                                                : ``}
-                                              ${item.links > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="icons:link"
-                                                    ></simple-icon
-                                                    >${item.links}
-                                                    ${this.t.links}
-                                                  </li>`
-                                                : ``}
-                                              ${item.readTime > 0
-                                                ? html`<li>
-                                                    <simple-icon
-                                                      icon="icons:chrome-reader-mode"
-                                                    ></simple-icon
-                                                    >${this.getReadingTime(
-                                                      item.readTime,
-                                                    )}
-                                                    ${this.t.ofReading}
-                                                  </li>`
-                                                : ``}
-                                            </ul>
-                                          </article>
-                                        </li>
-                                      `,
-                                    )
-                                  : ``}
-                              </ul>
-                            </div>
-                          `}
-                    </div>
-                  `
-                : ``}
-            </details>
-            <details
-              class="group"
-              data-id="mediabrowser"
-              ?open="${this.activeTab === "mediabrowser"}"
-              @toggle="${this._groupToggled}"
-            >
-              <summary class="group-summary">
-                ${this._reportHeading("icons:perm-media", this.t.mediaBrowser)}
-                <span class="summary-toggle-icon" aria-hidden="true">
-                  <simple-icon-lite
-                    class="collapse-icon-collapsed"
-                    icon="add"
-                  ></simple-icon-lite>
-                  <simple-icon-lite
-                    class="collapse-icon-expanded"
-                    icon="remove"
-                  ></simple-icon-lite>
-                </span>
-              </summary>
-              ${this.activeTab == "mediabrowser"
-                ? html`
-                    <div class="group-body">
-                      <loading-indicator
-                        full
-                        ?loading="${this.loading}"
-                      ></loading-indicator>
-                      ${this.loading
-                        ? html`<p role="status" aria-live="polite">
-                            ${this.t.loading} ${this.t.mediaBrowser}..
-                          </p>`
-                        : html`
-                            <div class="mediabrowser-wrapper">
-                              <h2>${this.t.mediaBrowser}</h2>
-                              <form>
-                                <simple-fields
-                                  id="mediabrowser-schema"
-                                  autofocus
-                                  @value-changed="${this
-                                    .mediaBrowserFormChanged}"
-                                ></simple-fields>
-                              </form>
-                              <ul class="media-list">
-                                ${data.mediaData
-                                  ? data.mediaData.map(
-                                      (item) => html`
-                                        <li>
-                                          <article
-                                            class="media-item ${item.locType} ${item.type}"
-                                          >
-                                            <div class="media-item-header">
-                                              <h3 class="media-item-title">
-                                                ${item.name}
-                                                ${item.title
-                                                  ? ` ${item.title}`
-                                                  : ``}
-                                              </h3>
-                                              <p class="media-item-meta">
-                                                ${item.locType}, ${item.type}
-                                              </p>
-                                            </div>
-                                            <div class="media-item-preview">
-                                              ${item.type == "image"
-                                                ? html`<simple-img
-                                                      loading="lazy"
-                                                      fetchpriority="low"
-                                                      decoding="async"
-                                                      src="${item.source}"
-                                                      alt="${item.alt &&
-                                                      item.alt != "null"
-                                                        ? item.alt
-                                                        : ""}"
-                                                      width="320"
-                                                      height="240"
-                                                      quality="80"
-                                                    ></simple-img>
-                                                    <div
-                                                      class="media-item-audit"
-                                                    >
-                                                      ${this.analyzeAltData(
-                                                        item,
-                                                      )}
-                                                    </div>`
-                                                : ``}
-                                              ${item.type == "video" &&
-                                              item.source.includes(
-                                                "videoseries",
-                                              )
-                                                ? html`<iframe
-                                                    src="${item.source}"
-                                                    title="${item.title
-                                                      ? item.title
-                                                      : this.t.video}"
-                                                    loading="lazy"
-                                                  ></iframe>`
-                                                : ``}
-                                              ${item.type == "video" &&
-                                              !item.source.includes(
-                                                "videoseries",
-                                              )
-                                                ? html`<video-player
-                                                    source="${item.source}"
-                                                  ></video-player>`
-                                                : ``}
-                                              ${item.type == "h5p"
-                                                ? html`<iframe
-                                                    src="${item.source}"
-                                                    title="${item.title
-                                                      ? item.title
-                                                      : "H5P content"}"
-                                                    loading="lazy"
-                                                  ></iframe>`
-                                                : ``}
-                                              ${item.type == "audio"
-                                                ? html`<video-player
-                                                    source="${item.source}"
-                                                  ></video-player>`
-                                                : ``}
-                                              ${item.type == "document"
-                                                ? html`<div>
-                                                    <a
-                                                      href="${item.source}"
-                                                      target="_blank"
-                                                      rel="noopener noreferrer"
-                                                      >${this.t.openInNewTab}</a
-                                                    >
-                                                  </div>`
-                                                : ``}
-                                            </div>
-                                            <div>
-                                              <div>
-                                                ${item.itemId
-                                                  ? this.renderItemLinkById(
-                                                      item.itemId,
-                                                    )
-                                                  : ``}
-                                              </div>
-                                            </div>
-                                          </article>
-                                        </li>
-                                      `,
-                                    )
-                                  : `${this.t.noMediaInSelectedPages}`}
-                              </ul>
-                            </div>
-                          `}
-                    </div>
-                  `
-                : ``}
-            </details>
+          <div class="report-tabs" role="tablist" aria-label="${this.t.reports}">
+            ${this._reportTabs().map(
+              (tab) => html`
+                <simple-icon-button-lite
+                  class="report-tab-button"
+                  data-tab="${tab.id}"
+                  icon="${tab.icon}"
+                  label="${tab.label}"
+                  role="tab"
+                  toggles
+                  aria-controls="report-table-panel"
+                  aria-selected="${this.activeTab === tab.id ? "true" : "false"}"
+                  ?toggled="${this.activeTab === tab.id}"
+                  @click="${this._reportTabClicked}"
+                >
+                  ${tab.label}
+                </simple-icon-button-lite>
+              `,
+            )}
           </div>
+          <section
+            id="report-table-panel"
+            class="report-panel"
+            role="tabpanel"
+            aria-label="${activeReport.label}"
+          >
+            <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+            ${this.loading
+              ? html`<p role="status" aria-live="polite">
+                  ${this.t.loading} ${activeReport.label}..
+                </p>`
+              : html`
+                  ${this._renderActiveFilters()}
+                  <div class="report-table-scroll">
+                    ${bodyRows.length === 0
+                      ? html`<p>${this._activeEmptyStateMessage()}</p>`
+                      : useNativeTable
+                        ? this._nativeReportTable(
+                            headerRow,
+                            bodyRows,
+                            activeReport.label,
+                          )
+                        : html`
+                          <editable-table-display
+                            bordered
+                            copyable
+                            condensed
+                            column-header
+                            downloadable
+                            printable
+                            responsive
+                            sort
+                            striped
+                            scroll
+                          >
+                            <table>
+                              <caption>${activeReport.label} ${this.t.reports}</caption>
+                              <thead>
+                                <tr>
+                                  ${headerRow.map(
+                                    (header) =>
+                                      html`<th>${this._toCellValue(header)}</th>`,
+                                  )}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                ${bodyRows.map(
+                                  (row) => html`
+                                    <tr>
+                                      ${row.map(
+                                        (cell) =>
+                                          html`<td>${this._toCellValue(cell)}</td>`,
+                                      )}
+                                    </tr>
+                                  `,
+                                )}
+                              </tbody>
+                            </table>
+                          </editable-table-display>
+                        `}
+                  </div>
+                `}
+          </section>
         </div>
       </div>
     `;
-  }
-  // alt feedback
-  analyzeAltData(item) {
-    if (item.alt == null || item.alt == "null") {
-      return html`<simple-icon
-        icon="error"
-        accent-color="red"
-        title="missing alt text"
-      ></simple-icon>`;
-    } else if (item.name == item.alt || item.source == item.alt) {
-      return html`<simple-icon
-        icon="error"
-        accent-color="red"
-        title="alt text matches file name"
-      ></simple-icon>`;
-    } else if (item.title == item.alt) {
-      return html`<simple-icon
-        icon="error"
-        accent-color="red"
-        title="alt text matches title"
-      ></simple-icon>`;
-    } else if (item.alt == "") {
-      return html`<simple-icon
-        icon="warning"
-        accent-color="yellow"
-        title="alt text set to blank, ensure decorative image"
-      ></simple-icon>`;
-    } else if (item.alt && item.alt.includes("image")) {
-      return html`<simple-icon
-        icon="warning"
-        accent-color="yellow"
-        title="alt text includes word 'image'"
-      ></simple-icon>`;
-    } else if (item.alt && item.alt.includes("picture")) {
-      return html`<simple-icon
-        icon="warning"
-        accent-color="yellow"
-        title="alt text includes word 'picture'"
-      ></simple-icon>`;
-    }
-    return html`<simple-icon
-      icon="info"
-      accent-color="blue"
-      title="alt text: ${item.alt}"
-    ></simple-icon>`;
   }
   // response is key'ed object by link and response data
   linkValidationResponse(e) {
@@ -1739,82 +1660,24 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       }, 500);
     }
   }
-  renderLinkCheck(links, key) {
-    // kick off a call that'll satisfy later down the road, but only if its a new key
-    if (!this.linkResponseData[key]) {
-      // set something so we don't get looped back  over and over
-      this.linkResponseData[key] = {
-        ok: "loading",
-      };
-      MicroFrontendRegistry.call(
-        "@core/linkValidator",
-        { links: key },
-        this.linkValidationResponse.bind(this),
-      );
-    }
-    return html`
-      <li class="link-status-${this.linkResponseData[key].ok}">
-        ${this.linkResponseData[key].ok === "loading"
-          ? html`<simple-icon
-              icon="hax:loading"
-              accent-color="grey"
-            ></simple-icon>`
-          : ``}
-        ${this.linkResponseData[key].ok != "loading"
-          ? this.linkResponseData[key].ok
-            ? html`<simple-icon
-                icon="check"
-                accent-color="green"
-              ></simple-icon>`
-            : html`<simple-icon
-                icon="clear"
-                accent-color="red"
-                title="${this.linkResponseData[key].status}"
-              ></simple-icon>`
-          : ``}
-        ${this.linkResponseData[key].ok != "loading"
-          ? this.linkResponseData[key].ok
-            ? html`<a
-                href="${key}"
-                target="_blank"
-                rel="noopener nofollow noreferrer"
-                >${key}</a
-              >`
-            : html`${key}`
-          : ``}
-        (${links[key].map(
-          (linkUsage) => html`
-            <strong>${linkUsage.linkTitle}</strong> ${this.t.onPage}
-            ${linkUsage.itemId ? this.renderItemLinkById(linkUsage.itemId) : ``}
-          `,
-        )})
-      </li>
-    `;
-  }
-  renderItemLinkById(itemId) {
-    // trap for highest level of the site
-    if (itemId != null) {
-      const item = toJS(store.findItem(itemId));
-      if (item) {
-        return html`<a href="${item.slug}" @click="${this.closeModal}"
-          >${item.title}</a
-        >`;
-      }
-    }
-    return html``;
-  }
 
   constructor() {
     super();
     this.base = "";
     this.filters = {};
     this.linkResponseData = {};
+    this.__linkValidationHandler = this.linkValidationResponse.bind(this);
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      stats: "Stats",
+      media: "Media",
+      content: "Content",
       pageToProvideReportsAbout: "Page to provide reports about",
       noLinksInSelectedPages: "No links in selected pages",
       noMediaInSelectedPages: "No media in selected pages",
+      noContentInSelectedPages: "No content in selected pages",
+      noReportData: "No report data available",
       recentUpdates: "Recent updates",
       created: "Created",
       lastUpdated: "Last updated",
@@ -1856,7 +1719,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       readability: {},
       updatedItems: [],
     };
-    this.activeTab = "";
+    this.selectedReportId = "";
+    this.activeTab = "reports";
     this.loading = false;
   }
   static get properties() {
@@ -1865,16 +1729,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       data: {
         type: Object,
       },
-      hideResults: {
-        type: String,
-        attribute: "hide-results",
-        reflect: true,
-      },
       filters: {
         type: Object,
       },
       linkResponseData: {
         type: Object,
+      },
+      selectedReportId: {
+        type: String,
+        attribute: "selected-report-id",
       },
       activeTab: {
         type: String,
@@ -1888,11 +1751,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   pageSelector() {
     const itemManifest = store.getManifestItems(true);
+    const selectedReportId = this._normalizeReportSelectionValue(
+      this.selectedReportId,
+    );
     // default to null parent as the whole site
     var items = [
       {
         text: `-- ${this.t.fullSite} --`,
-        value: null,
+        value: "",
       },
     ];
     itemManifest.forEach((el) => {
@@ -1909,29 +1775,32 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       }
       items.push({
         text: distance + el.title,
-        value: el.id,
+        value: this._normalizeReportSelectionValue(el.id),
       });
     });
     return html`<div class="selector-wrapper">
       <label for="selector">${this.t.pageToProvideReportsAbout}:</label>
-      <select id="selector">
+      <select
+        id="selector"
+        .value="${selectedReportId}"
+        @change="${this._reportSelectionChanged}"
+      >
         ${items.map(
           (item) => html`
-            <option
-              .value="${item.value}"
-              ?selected="${toJS(store.activeId) == item.value}"
-            >
+            <option .value="${this._normalizeReportSelectionValue(item.value)}">
               ${item.text}
             </option>
           `,
         )}
       </select>
-      <simple-toolbar-button
+      <simple-icon-button-lite
         @click="${this.refreshData}"
         icon="refresh"
         ?disabled="${this.loading}"
         label="${this.t.updateReports}"
-      ></simple-toolbar-button>
+      >
+        ${this.t.updateReports}
+      </simple-icon-button-lite>
     </div>`;
   }
 }

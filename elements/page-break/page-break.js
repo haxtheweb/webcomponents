@@ -54,6 +54,7 @@ export class PageBreak extends IntersectionObserverMixin(
       editMedia: "Edit Media",
       editTags: "Edit tags",
       viewRevisions: "View revisions",
+      pageReport: "Page report",
       lock: "Lock",
       unlock: "Unlock",
       publish: "Publish",
@@ -106,6 +107,34 @@ export class PageBreak extends IntersectionObserverMixin(
         this.isLoggedIn = toJS(store.isLoggedIn);
       }),
     );
+  }
+  _openPageReport(e) {
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    if (!store.platformAllows("insights")) {
+      return;
+    }
+    const nodeId =
+      typeof this.itemId === "string" && this.itemId.trim() !== ""
+        ? this.itemId.trim()
+        : store.activeItem && store.activeItem.id
+          ? `${store.activeItem.id}`
+          : "";
+    const editorUI =
+      store &&
+      store.cmsSiteEditor &&
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement
+        ? store.cmsSiteEditor.haxCmsSiteEditorUIElement
+        : null;
+    if (!nodeId || !editorUI || !editorUI._reportsButtonTap) {
+      return;
+    }
+    editorUI._reportsButtonTap(null, false, {
+      skipUrlUpdate: true,
+      reportScope: "page",
+      reportNodeId: nodeId,
+      invokedBy: e && e.target ? e.target : null,
+    });
   }
 
   static get properties() {
@@ -777,6 +806,14 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.viewRevisions}"
                 show-text-label
                 @click="${this._openRevisions}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="hax:graph"
+                label="${this.t.pageReport}"
+                show-text-label
+                @click="${this._openPageReport}"
+                ?hidden=${!store.platformAllows("insights")}
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"

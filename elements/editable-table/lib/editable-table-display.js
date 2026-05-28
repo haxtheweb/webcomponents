@@ -95,6 +95,17 @@ class EditableTableDisplay extends displayBehaviors(
                     >
                     </simple-toolbar-button>
                   `}
+              ${!this.copyable
+                ? ""
+                : html`
+                    <simple-toolbar-button
+                      id="copy"
+                      icon="content-copy"
+                      label="Copy as CSV."
+                      @click="${this.copy}"
+                    >
+                    </simple-toolbar-button>
+                  `}
               ${!this.printable
                 ? ""
                 : html`

@@ -8,7 +8,8 @@ import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/code-editor/code-editor.js";
-import "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js";
+import "@haxtheweb/hax-body/lib/hax-upload-field.js";
+import "./haxcms-system-allowed-blocks.js";
 
 class HAXCMSSystemSettings extends DDD {
   static get tag() {
@@ -32,6 +33,10 @@ class HAXCMSSystemSettings extends DDD {
       apiKeysError: { type: String, attribute: "api-keys-error" },
       apiKeyVisibility: { type: Object, attribute: false },
       panelSaving: { type: Boolean, attribute: "panel-saving" },
+      skeletonActionBusy: {
+        type: Boolean,
+        attribute: "skeleton-action-busy",
+      },
     };
   }
 
@@ -51,10 +56,18 @@ class HAXCMSSystemSettings extends DDD {
     this.apiKeysError = "";
     this.apiKeyVisibility = {};
     this.panelSaving = false;
+    this.skeletonActionBusy = false;
     this.__statusLoaded = false;
     this.__skeletonsLoaded = false;
     this.__themesLoaded = false;
     this.__integrationsLoaded = false;
+    this.__skeletonUploadField = null;
+    this.__skeletonUploadNode = null;
+    this.__boundSkeletonUploadBefore = this._onSkeletonUploadBefore.bind(this);
+    this.__boundSkeletonUploadResponse =
+      this._onSkeletonUploadResponse.bind(this);
+    this.__boundSkeletonUploadReject =
+      this._onSkeletonUploadReject.bind(this);
     this.panelList = this._buildPanels();
     this.panelMap = this._buildPanelMap(this.panelList);
     this.defaultPanelValues = this._buildDefaultPanelValues(this.panelList);
@@ -67,6 +80,33 @@ class HAXCMSSystemSettings extends DDD {
   connectedCallback() {
     super.connectedCallback();
     this._loadPanelData(this.activePanel);
+  }
+
+  disconnectedCallback() {
+    this._teardownSkeletonUploader();
+    super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    const needsSkeletonUploaderRefresh =
+      changedProperties &&
+      (changedProperties.has("activePanel") ||
+        changedProperties.has("skeletonOptions") ||
+        changedProperties.has("skeletonActionBusy"));
+    if (needsSkeletonUploaderRefresh && this.activePanel === "skeletons") {
+      this.updateComplete.then(() => {
+        this._setupSkeletonUploader();
+      });
+    } else if (
+      changedProperties &&
+      changedProperties.has("activePanel") &&
+      this.activePanel !== "skeletons"
+    ) {
+      this._teardownSkeletonUploader();
+    }
   }
 
   static get styles() {
@@ -524,6 +564,154 @@ class HAXCMSSystemSettings extends DDD {
             rgba(0, 0, 0, 0.2)
           );
         }
+        .settings-option-table-wrap {
+          overflow-x: auto;
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(255, 255, 255, 0.04)
+          );
+        }
+        table.settings-option-table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          min-width: 760px;
+        }
+        table.settings-option-table th,
+        table.settings-option-table td {
+          text-align: left;
+          vertical-align: top;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-bottom: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+        }
+        table.settings-option-table tbody tr:last-child td {
+          border-bottom: 0;
+        }
+        table.settings-option-table th {
+          font-size: var(--ddd-font-size-4xs);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        table.settings-option-table .select-col {
+          width: 88px;
+          text-align: center;
+        }
+        table.settings-option-table .preview-col {
+          width: 232px;
+        }
+        table.settings-option-table .actions-col {
+          width: 128px;
+          text-align: center;
+        }
+        table.settings-option-table input[type="checkbox"] {
+          margin-top: 0;
+          inline-size: var(--ddd-icon-xs);
+          block-size: var(--ddd-icon-xs);
+          cursor: pointer;
+        }
+        .settings-theme-preview {
+          inline-size: 200px;
+          block-size: 100px;
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            rgba(255, 255, 255, 0.06)
+          );
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .settings-theme-preview img {
+          inline-size: 100%;
+          block-size: 100%;
+          object-fit: cover;
+          object-position: top left;
+          display: block;
+        }
+        .settings-theme-preview-fallback {
+          font-size: var(--ddd-font-size-5xs);
+          opacity: 0.86;
+        }
+        .skeleton-upload-wrap {
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          border-radius: var(--ddd-radius-sm);
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            rgba(255, 255, 255, 0.04)
+          );
+          padding: var(--ddd-spacing-3);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+        .skeleton-upload-wrap hax-upload-field {
+          display: block;
+        }
+        .skeleton-actions {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .skeleton-action-button {
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+        }
+        .settings-option-row {
+          transition:
+            opacity 0.2s ease,
+            background-color 0.2s ease;
+        }
+        .settings-option-row.enabled {
+          opacity: 1;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0.02),
+            rgba(255, 255, 255, 0.06)
+          );
+        }
+        .settings-option-row.disabled {
+          opacity: 0.58;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.02)
+          );
+        }
+        .settings-option-title {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .settings-option-description {
+          margin: var(--ddd-spacing-1) 0 0 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.35;
+          opacity: 0.92;
+        }
         .api-key-list {
           display: flex;
           flex-direction: column;
@@ -736,7 +924,6 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Enable or disable site skeletons discovered from the skeleton listing endpoint.",
         panelType: "skeletons",
-        disabled: true,
       },
       {
         key: "themes",
@@ -747,7 +934,6 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Enable or disable installable themes discovered from the theme listing source.",
         panelType: "themes",
-        disabled: true,
       },
       {
         key: "blocks",
@@ -758,7 +944,6 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Manage allowed blocks using the same grouped checkbox experience as allowed-blocks UI.",
         panelType: "blocks",
-        disabled: true,
       },
       {
         key: "integrations",
@@ -956,6 +1141,289 @@ class HAXCMSSystemSettings extends DDD {
     return null;
   }
 
+  _schemaFileOperationEndpoint() {
+    const settings = this._appSettings();
+    if (
+      !settings ||
+      !Object.prototype.hasOwnProperty.call(settings, "schemaFileOperation")
+    ) {
+      return "";
+    }
+    const endpoint =
+      typeof settings.schemaFileOperation === "string"
+        ? settings.schemaFileOperation.trim()
+        : "";
+    if (!endpoint) {
+      return "";
+    }
+    if (
+      endpoint.indexOf("http://") === 0 ||
+      endpoint.indexOf("https://") === 0 ||
+      endpoint.indexOf("/") === 0
+    ) {
+      return endpoint;
+    }
+    const api = this._backendApi();
+    const basePath =
+      api && typeof api.basePath === "string" && api.basePath
+        ? api.basePath
+        : "/";
+    if (basePath.slice(-1) === "/" || endpoint.charAt(0) === "/") {
+      return `${basePath}${endpoint}`;
+    }
+    return `${basePath}/${endpoint}`;
+  }
+
+  _hasSchemaFileOperationEndpoint() {
+    return this._schemaFileOperationEndpoint() !== "";
+  }
+
+  _schemaOperationAuthPayload() {
+    const api = this._backendApi();
+    const payload = {};
+    if (api && typeof api.jwt === "string" && api.jwt) {
+      payload.jwt = api.jwt;
+    }
+    if (api && typeof api.token === "string" && api.token) {
+      payload.token = api.token;
+    }
+    return payload;
+  }
+
+  async _schemaFileOperationJson(payload = {}) {
+    const endpoint = this._schemaFileOperationEndpoint();
+    if (!endpoint) {
+      return {
+        ok: false,
+        status: 0,
+        data: null,
+        message: "Schema file operation endpoint is unavailable.",
+      };
+    }
+    const body = {};
+    const authPayload = this._schemaOperationAuthPayload();
+    const authKeys = Object.keys(authPayload);
+    for (let i = 0; i < authKeys.length; i++) {
+      const key = authKeys[i];
+      body[key] = authPayload[key];
+    }
+    if (payload && typeof payload === "object" && !Array.isArray(payload)) {
+      const keys = Object.keys(payload);
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        body[key] = payload[key];
+      }
+    }
+    let response = null;
+    let data = null;
+    try {
+      response = await fetch(endpoint, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      try {
+        data = await response.json();
+      } catch (e) {
+        data = null;
+      }
+    } catch (e) {
+      return {
+        ok: false,
+        status: 0,
+        data: null,
+        message: "Network request failed.",
+      };
+    }
+    if (response && response.ok) {
+      return {
+        ok: true,
+        status: response.status,
+        data: data,
+        message: "",
+      };
+    }
+    return {
+      ok: false,
+      status: response ? response.status : 0,
+      data: data,
+      message: this._schemaOperationResponseMessage(
+        data,
+        "Schema file operation failed.",
+      ),
+    };
+  }
+
+  _schemaOperationResponseMessage(response = null, fallback = "") {
+    if (
+      response &&
+      response.__failed &&
+      typeof response.__failed.message === "string" &&
+      response.__failed.message
+    ) {
+      return response.__failed.message;
+    }
+    if (response && typeof response.message === "string" && response.message) {
+      return response.message;
+    }
+    if (
+      response &&
+      response.data &&
+      typeof response.data.message === "string" &&
+      response.data.message
+    ) {
+      return response.data.message;
+    }
+    return fallback || "Request failed.";
+  }
+
+  _parseUploadJsonResponse(xhr = null) {
+    if (!xhr || typeof xhr.response !== "string" || xhr.response.trim() === "") {
+      return null;
+    }
+    try {
+      return JSON.parse(xhr.response);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  _setupSkeletonUploader() {
+    if (!this._hasSchemaFileOperationEndpoint()) {
+      this._teardownSkeletonUploader();
+      return;
+    }
+    if (!this.renderRoot) {
+      return;
+    }
+    const uploadField = this.renderRoot.querySelector("#skeleton-upload-field");
+    if (!uploadField || !uploadField.shadowRoot) {
+      return;
+    }
+    const uploadNode = uploadField.shadowRoot.querySelector("#fileupload");
+    if (!uploadNode) {
+      return;
+    }
+    if (
+      this.__skeletonUploadNode &&
+      this.__skeletonUploadNode !== uploadNode
+    ) {
+      this._teardownSkeletonUploader();
+    }
+    uploadField.showSources = false;
+    uploadField._canUpload = () => false;
+    uploadNode.method = "POST";
+    uploadNode.formDataName = "file";
+    uploadNode.accept = ".json,application/json";
+    uploadNode.withCredentials = true;
+    uploadNode.target = this._schemaFileOperationEndpoint();
+    if (this.__skeletonUploadNode !== uploadNode) {
+      uploadNode.addEventListener(
+        "upload-before",
+        this.__boundSkeletonUploadBefore,
+      );
+      uploadNode.addEventListener(
+        "upload-response",
+        this.__boundSkeletonUploadResponse,
+      );
+      uploadNode.addEventListener(
+        "file-reject",
+        this.__boundSkeletonUploadReject,
+      );
+    }
+    this.__skeletonUploadField = uploadField;
+    this.__skeletonUploadNode = uploadNode;
+  }
+
+  _teardownSkeletonUploader() {
+    if (this.__skeletonUploadNode) {
+      this.__skeletonUploadNode.removeEventListener(
+        "upload-before",
+        this.__boundSkeletonUploadBefore,
+      );
+      this.__skeletonUploadNode.removeEventListener(
+        "upload-response",
+        this.__boundSkeletonUploadResponse,
+      );
+      this.__skeletonUploadNode.removeEventListener(
+        "file-reject",
+        this.__boundSkeletonUploadReject,
+      );
+    }
+    this.__skeletonUploadField = null;
+    this.__skeletonUploadNode = null;
+  }
+
+  _clearSkeletonUploaderQueue() {
+    if (this.__skeletonUploadNode) {
+      this.__skeletonUploadNode.files = [];
+    }
+  }
+
+  _onSkeletonUploadBefore(e = null) {
+    if (!e || !e.detail || !e.detail.formData) {
+      return;
+    }
+    const formData = e.detail.formData;
+    if (typeof formData.delete === "function") {
+      formData.delete("schema");
+      formData.delete("action");
+      formData.delete("jwt");
+      formData.delete("token");
+    }
+    formData.append("schema", "skeleton");
+    formData.append("action", "upload");
+    const authPayload = this._schemaOperationAuthPayload();
+    const authKeys = Object.keys(authPayload);
+    for (let i = 0; i < authKeys.length; i++) {
+      const key = authKeys[i];
+      formData.append(key, authPayload[key]);
+    }
+    this.statusMessage = "Uploading skeleton…";
+  }
+
+  async _onSkeletonUploadResponse(e = null) {
+    const xhr = e && e.detail ? e.detail.xhr : null;
+    const status = xhr && typeof xhr.status === "number" ? xhr.status : 0;
+    const response = this._parseUploadJsonResponse(xhr);
+    if (status === 200) {
+      const machineName =
+        response &&
+        response.data &&
+        typeof response.data.machineName === "string" &&
+        response.data.machineName
+          ? response.data.machineName
+          : "";
+      this.statusMessage = machineName
+        ? `Uploaded skeleton: ${machineName}`
+        : "Skeleton uploaded.";
+      this._clearSkeletonUploaderQueue();
+      await this._loadSkeletonOptions(true);
+      return;
+    }
+    this.statusMessage = this._schemaOperationResponseMessage(
+      response,
+      "Unable to upload skeleton.",
+    );
+    this._clearSkeletonUploaderQueue();
+  }
+
+  _onSkeletonUploadReject(e = null) {
+    let message = "Unable to upload skeleton.";
+    if (
+      e &&
+      e.detail &&
+      typeof e.detail.error === "string" &&
+      e.detail.error.trim() !== ""
+    ) {
+      message = e.detail.error.trim();
+    }
+    this.statusMessage = message;
+  }
+
   _panelLabel(panelKey) {
     const panel = this._getPanelByKey(panelKey);
     return panel ? panel.label : "Settings";
@@ -1007,6 +1475,25 @@ class HAXCMSSystemSettings extends DDD {
         },
       }),
     );
+  }
+
+  async _saveEnabledBlocksData(payload = {}) {
+    let enabledBlocks = [];
+    if (payload && Array.isArray(payload.allowedBlocks)) {
+      enabledBlocks = payload.allowedBlocks
+        .map((tag) => (typeof tag === "string" ? tag.trim() : ""))
+        .filter((tag) => tag !== "");
+    } else if (
+      payload &&
+      payload.allowedBlocks !== null &&
+      typeof payload.allowedBlocks !== "undefined"
+    ) {
+      return false;
+    }
+    const response = await this._callAppEndpointWithData(["saveEnabledBlocks"], {
+      enabledBlocks: enabledBlocks,
+    });
+    return !!(response && response.status === 200);
   }
 
   _showDashboard(historyMode = "push") {
@@ -1143,6 +1630,15 @@ class HAXCMSSystemSettings extends DDD {
     }
     return values;
   }
+
+  _reloadAfterOptionSave(panelKey = "") {
+    if (!["skeletons", "themes"].includes(panelKey)) {
+      return;
+    }
+    setTimeout(() => {
+      globalThis.location.reload();
+    }, 300);
+  }
   async _saveActivePanel() {
     const panelKey = this.activePanel;
     if (!panelKey || panelKey === "dashboard" || this.panelSaving) {
@@ -1158,9 +1654,23 @@ class HAXCMSSystemSettings extends DDD {
     const savePayload = this._buildSavePayload(panelKey, values);
     let saved = true;
     if (panelKey === "skeletons") {
-      this.statusMessage = `${savePayload.enabledSkeletons.length} skeleton options saved locally`;
+      saved = await this._saveEnabledSkeletonsData(
+        savePayload.enabledSkeletons,
+      );
+      this.statusMessage = saved
+        ? `${savePayload.enabledSkeletons.length} skeleton options saved`
+        : "Unable to save skeleton options";
+      if (saved) {
+        this._reloadAfterOptionSave(panelKey);
+      }
     } else if (panelKey === "themes") {
-      this.statusMessage = `${savePayload.enabledThemes.length} theme options saved locally`;
+      saved = await this._saveEnabledThemesData(savePayload.enabledThemes);
+      this.statusMessage = saved
+        ? `${savePayload.enabledThemes.length} theme options saved`
+        : "Unable to save theme options";
+      if (saved) {
+        this._reloadAfterOptionSave(panelKey);
+      }
     } else if (panelKey === "custom-code") {
       this.statusMessage = `${this._panelLabel(panelKey)} saved locally`;
     } else if (panelKey === "integrations") {
@@ -1188,12 +1698,15 @@ class HAXCMSSystemSettings extends DDD {
     this.panelSaving = false;
   }
 
-  _onAllowedBlocksSaved(e) {
+  async _onAllowedBlocksSaved(e) {
     if (e && e.stopPropagation) {
       e.stopPropagation();
     }
     const payload = e && e.detail ? e.detail : {};
-    this.statusMessage = "Allowed blocks saved";
+    const saved = await this._saveEnabledBlocksData(payload);
+    this.statusMessage = saved
+      ? "Enabled blocks saved"
+      : "Unable to save enabled blocks";
     this.dispatchEvent(
       new CustomEvent("haxcms-system-settings-save", {
         bubbles: true,
@@ -1202,6 +1715,7 @@ class HAXCMSSystemSettings extends DDD {
         detail: {
           panel: "blocks",
           values: payload,
+          saved: saved,
         },
       }),
     );
@@ -1309,6 +1823,21 @@ class HAXCMSSystemSettings extends DDD {
       }
     }
     return [];
+  }
+
+  _resolveThemePreviewPath(path = "") {
+    if (typeof path !== "string") {
+      return "";
+    }
+    const normalized = path.trim();
+    if (!normalized) {
+      return "";
+    }
+    if (normalized.indexOf("@haxtheweb/") === 0) {
+      const packagePath = "../../../../" + normalized;
+      return new URL(packagePath, import.meta.url).href;
+    }
+    return normalized;
   }
 
   _integrationFieldByProperty(property = "") {
@@ -1475,6 +2004,32 @@ class HAXCMSSystemSettings extends DDD {
     return false;
   }
 
+  async _saveEnabledSkeletonsData(enabledSkeletons = []) {
+    const response = await this._callAppEndpointWithData(
+      ["saveEnabledSkeletons"],
+      {
+        enabledSkeletons: Array.isArray(enabledSkeletons)
+          ? enabledSkeletons
+          : [],
+      },
+    );
+    if (response && response.status === 200) {
+      await this._loadSkeletonOptions(true);
+      return true;
+    }
+    return false;
+  }
+  async _saveEnabledThemesData(enabledThemes = []) {
+    const response = await this._callAppEndpointWithData(["saveEnabledThemes"], {
+      enabledThemes: Array.isArray(enabledThemes) ? enabledThemes : [],
+    });
+    if (response && response.status === 200) {
+      await this._loadThemeOptions(true);
+      return true;
+    }
+    return false;
+  }
+
   _normalizeMachineName(value = "") {
     if (typeof value !== "string") {
       return "";
@@ -1546,6 +2101,12 @@ class HAXCMSSystemSettings extends DDD {
         property: this._checkboxProperty("skeleton", machineName),
         label: item.title || machineName,
         description: item.description || "",
+        scope:
+          typeof item.scope === "string" && item.scope
+            ? item.scope.toLowerCase()
+            : "core",
+        enabled:
+          typeof item.enabled === "boolean" ? item.enabled : true,
       };
       options.push(option);
     }
@@ -1566,11 +2127,21 @@ class HAXCMSSystemSettings extends DDD {
         if (!machineName) {
           continue;
         }
+        const screenshot = this._resolveThemePreviewPath(
+          `${theme.screenshot || theme.thumbnail || theme.preview || ""}`,
+        );
         options.push({
           machineName: machineName,
           property: this._checkboxProperty("theme", machineName),
           label: theme.name || theme.title || machineName,
           description: theme.description || "",
+          screenshot: screenshot,
+          enabled:
+            typeof theme.enabled === "boolean"
+              ? theme.enabled
+              : theme.hidden === true
+                ? false
+                : true,
         });
       }
       return options;
@@ -1584,11 +2155,21 @@ class HAXCMSSystemSettings extends DDD {
         if (!machineName) {
           continue;
         }
+        const screenshot = this._resolveThemePreviewPath(
+          `${theme.screenshot || theme.thumbnail || theme.preview || ""}`,
+        );
         options.push({
           machineName: machineName,
           property: this._checkboxProperty("theme", machineName),
           label: theme.name || theme.title || machineName,
           description: theme.description || "",
+          screenshot: screenshot,
+          enabled:
+            typeof theme.enabled === "boolean"
+              ? theme.enabled
+              : theme.hidden === true
+                ? false
+                : true,
         });
       }
     }
@@ -1603,7 +2184,8 @@ class HAXCMSSystemSettings extends DDD {
       const option = options[i];
       allowed[option.property] = true;
       if (typeof panelValues[option.property] === "undefined") {
-        panelValues[option.property] = true;
+        panelValues[option.property] =
+          typeof option.enabled === "boolean" ? option.enabled : true;
       }
     }
     const keys = Object.keys(panelValues);
@@ -1638,7 +2220,12 @@ class HAXCMSSystemSettings extends DDD {
     this.loadingSkeletons = true;
     this.statusError = "";
     let options = [];
-    const response = await this._callAppEndpoint(["skeletonsList"]);
+    const response = await this._callAppEndpointWithData(
+      ["skeletonsList"],
+      {
+        includeDisabled: true,
+      },
+    );
     const items = this._normalizeListResponseArray(response);
     if (items.length > 0) {
       options = this._normalizeSkeletonOptions(items);
@@ -1669,11 +2256,12 @@ class HAXCMSSystemSettings extends DDD {
     this.statusError = "";
     const settings = this._appSettings();
     let options = [];
-    const endpointResponse = await this._callAppEndpoint([
-      "themesList",
-      "listThemes",
-      "themeList",
-    ]);
+    const endpointResponse = await this._callAppEndpointWithData(
+      ["themesList"],
+      {
+        includeDisabled: true,
+      },
+    );
     if (endpointResponse && endpointResponse.data) {
       options = this._normalizeThemeOptions(endpointResponse.data);
     }
@@ -2057,22 +2645,54 @@ class HAXCMSSystemSettings extends DDD {
   }
 
   _renderSkeletonsPanel() {
-    const fields = this._checkboxFields(this.skeletonOptions);
+    const options = Array.isArray(this.skeletonOptions)
+      ? this.skeletonOptions
+      : [];
     return html`
       <section class="section">
         <div class="section-body">
           ${this.loadingSkeletons
             ? html`<p class="helper">Loading skeleton options…</p>`
             : ""}
-          ${fields.length > 0
+          <div class="skeleton-upload-wrap">
+            <p class="helper">
+              Drag and drop a skeleton JSON file to add it to user skeletons.
+            </p>
+            ${this._hasSchemaFileOperationEndpoint()
+              ? html`
+                  <hax-upload-field
+                    id="skeleton-upload-field"
+                    hide-source-selector
+                    hide-input
+                    no-camera
+                    no-voice-record
+                    no-screen-record
+                  ></hax-upload-field>
+                `
+              : html`
+                  <p class="empty-state">
+                    Upload endpoint unavailable for this backend.
+                  </p>
+                `}
+          </div>
+          ${options.length > 0
             ? html`
-                <simple-fields
-                  .fields="${fields}"
-                  .value="${this._getPanelValue("skeletons")}"
-                  .schematizer="${HaxSchematizer}"
-                  .elementizer="${HaxElementizer}"
-                  @value-changed="${(e) => this._onPanelValueChanged("skeletons", e)}"
-                ></simple-fields>
+                <div class="settings-option-table-wrap">
+                  <table class="settings-option-table">
+                    <thead>
+                      <tr>
+                        <th class="select-col">Enabled</th>
+                        <th>Skeleton</th>
+                        <th class="actions-col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${options.map((option, index) =>
+                        this._renderSkeletonOptionRow(option, index),
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               `
             : html`<p class="empty-state">No skeleton options were returned.</p>`}
         </div>
@@ -2080,25 +2700,280 @@ class HAXCMSSystemSettings extends DDD {
     `;
   }
 
+  _isSkeletonOptionChecked(option = null) {
+    if (!option || !option.property) {
+      return false;
+    }
+    const values = this._getPanelValue("skeletons");
+    if (
+      values &&
+      Object.prototype.hasOwnProperty.call(values, option.property)
+    ) {
+      return values[option.property] !== false;
+    }
+    return typeof option.enabled === "boolean" ? option.enabled : true;
+  }
+
+  _onSkeletonOptionChanged(option = null, e = null) {
+    if (!option || !option.property || !e || !e.currentTarget) {
+      return;
+    }
+    this._setPanelPropertyValue(
+      "skeletons",
+      option.property,
+      !!e.currentTarget.checked,
+    );
+  }
+
+  _isUserSkeletonOption(option = null) {
+    if (!option || typeof option.scope !== "string") {
+      return false;
+    }
+    return option.scope.toLowerCase() === "user";
+  }
+
+  _canMutateSkeletonOption(option = null) {
+    return this._isUserSkeletonOption(option) && this._hasSchemaFileOperationEndpoint();
+  }
+
+  _isSkeletonActionDisabled(option = null) {
+    if (this.skeletonActionBusy) {
+      return true;
+    }
+    return !this._canMutateSkeletonOption(option);
+  }
+
+  async _renameSkeletonOption(option = null, e = null) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!option || !option.machineName || this._isSkeletonActionDisabled(option)) {
+      return;
+    }
+    if (!globalThis || typeof globalThis.prompt !== "function") {
+      this.statusMessage = "Rename prompt is unavailable.";
+      return;
+    }
+    const currentName = this._normalizeMachineName(option.machineName);
+    const requestedName = globalThis.prompt(
+      "Rename skeleton machine name",
+      currentName,
+    );
+    if (typeof requestedName !== "string") {
+      return;
+    }
+    const nextName = this._normalizeMachineName(requestedName);
+    if (!nextName) {
+      this.statusMessage = "Skeleton name is required.";
+      return;
+    }
+    if (nextName === currentName) {
+      return;
+    }
+    this.skeletonActionBusy = true;
+    try {
+      const response = await this._schemaFileOperationJson({
+        action: "rename",
+        schema: "skeleton",
+        name: currentName,
+        newName: nextName,
+      });
+      if (response.ok) {
+        this.statusMessage = `Renamed skeleton to ${nextName}.`;
+        await this._loadSkeletonOptions(true);
+      } else {
+        this.statusMessage = this._schemaOperationResponseMessage(
+          response.data,
+          response.message || "Unable to rename skeleton.",
+        );
+      }
+    } finally {
+      this.skeletonActionBusy = false;
+    }
+  }
+
+  async _deleteSkeletonOption(option = null, e = null) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!option || !option.machineName || this._isSkeletonActionDisabled(option)) {
+      return;
+    }
+    if (!globalThis || typeof globalThis.confirm !== "function") {
+      this.statusMessage = "Delete confirmation is unavailable.";
+      return;
+    }
+    const machineName = this._normalizeMachineName(option.machineName);
+    const shouldDelete = globalThis.confirm(
+      `Delete skeleton "${machineName}"? This cannot be undone.`,
+    );
+    if (!shouldDelete) {
+      return;
+    }
+    this.skeletonActionBusy = true;
+    try {
+      const response = await this._schemaFileOperationJson({
+        action: "delete",
+        schema: "skeleton",
+        name: machineName,
+      });
+      if (response.ok) {
+        this.statusMessage = `Deleted skeleton ${machineName}.`;
+        await this._loadSkeletonOptions(true);
+      } else {
+        this.statusMessage = this._schemaOperationResponseMessage(
+          response.data,
+          response.message || "Unable to delete skeleton.",
+        );
+      }
+    } finally {
+      this.skeletonActionBusy = false;
+    }
+  }
+
+  _renderSkeletonOptionRow(option, index = 0) {
+    const checked = this._isSkeletonOptionChecked(option);
+    const inputId = `skeleton-option-${index}-${option.machineName}`;
+    const rowClass = checked
+      ? "settings-option-row enabled"
+      : "settings-option-row disabled";
+    const canMutate = this._canMutateSkeletonOption(option);
+    const actionDisabled = this._isSkeletonActionDisabled(option);
+    return html`
+      <tr class="${rowClass}">
+        <td class="select-col">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            .checked=${checked}
+            @change=${(e) => this._onSkeletonOptionChanged(option, e)}
+          />
+        </td>
+        <td>
+          <label class="settings-option-title" for="${inputId}">
+            <span>${option.label}</span>
+          </label>
+          ${option.description
+            ? html`<p class="settings-option-description">${option.description}</p>`
+            : ""}
+        </td>
+        <td class="actions-col">
+          ${canMutate
+            ? html`
+                <div class="skeleton-actions">
+                  <simple-icon-button-lite
+                    class="skeleton-action-button"
+                    icon="icons:create"
+                    label="Rename skeleton ${option.machineName}"
+                    ?disabled="${actionDisabled}"
+                    @click="${(e) => this._renameSkeletonOption(option, e)}"
+                  ></simple-icon-button-lite>
+                  <simple-icon-button-lite
+                    class="skeleton-action-button"
+                    icon="delete"
+                    label="Delete skeleton ${option.machineName}"
+                    ?disabled="${actionDisabled}"
+                    @click="${(e) => this._deleteSkeletonOption(option, e)}"
+                  ></simple-icon-button-lite>
+                </div>
+              `
+            : html`<span class="helper">—</span>`}
+        </td>
+      </tr>
+    `;
+  }
+
   _renderThemesPanel() {
-    const fields = this._checkboxFields(this.themeOptions);
+    const options = Array.isArray(this.themeOptions) ? this.themeOptions : [];
     return html`
       <section class="section">
         <div class="section-body">
           ${this.loadingThemes ? html`<p class="helper">Loading theme options…</p>` : ""}
-          ${fields.length > 0
+          ${options.length > 0
             ? html`
-                <simple-fields
-                  .fields="${fields}"
-                  .value="${this._getPanelValue("themes")}"
-                  .schematizer="${HaxSchematizer}"
-                  .elementizer="${HaxElementizer}"
-                  @value-changed="${(e) => this._onPanelValueChanged("themes", e)}"
-                ></simple-fields>
+                <div class="settings-option-table-wrap">
+                  <table class="settings-option-table">
+                    <thead>
+                      <tr>
+                        <th class="select-col">Enabled</th>
+                        <th class="preview-col">Preview</th>
+                        <th>Theme</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${options.map((option, index) =>
+                        this._renderThemeOptionRow(option, index),
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               `
             : html`<p class="empty-state">No theme options were returned.</p>`}
         </div>
       </section>
+    `;
+  }
+  _isThemeOptionChecked(option = null) {
+    if (!option || !option.property) {
+      return false;
+    }
+    const values = this._getPanelValue("themes");
+    if (values && Object.prototype.hasOwnProperty.call(values, option.property)) {
+      return values[option.property] !== false;
+    }
+    return typeof option.enabled === "boolean" ? option.enabled : true;
+  }
+  _onThemeOptionChanged(option = null, e = null) {
+    if (!option || !option.property || !e || !e.currentTarget) {
+      return;
+    }
+    this._setPanelPropertyValue("themes", option.property, !!e.currentTarget.checked);
+  }
+  _renderThemeOptionRow(option, index = 0) {
+    const checked = this._isThemeOptionChecked(option);
+    const inputId = `theme-option-${index}-${option.machineName}`;
+    const rowClass = checked
+      ? "settings-option-row enabled"
+      : "settings-option-row disabled";
+    return html`
+      <tr class="${rowClass}">
+        <td class="select-col">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            .checked=${checked}
+            @change=${(e) => this._onThemeOptionChanged(option, e)}
+          />
+        </td>
+        <td class="preview-col">
+          <div class="settings-theme-preview">
+            ${option.screenshot
+              ? html`
+                  <img
+                    src="${option.screenshot}"
+                    alt="Preview of ${option.label} theme"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                `
+              : html`
+                  <span class="settings-theme-preview-fallback"
+                    >No preview</span
+                  >
+                `}
+          </div>
+        </td>
+        <td>
+          <label class="settings-option-title" for="${inputId}">
+            <span>${option.label}</span>
+          </label>
+          ${option.description
+            ? html`<p class="settings-option-description">${option.description}</p>`
+            : ""}
+        </td>
+      </tr>
     `;
   }
 
@@ -2184,10 +3059,10 @@ class HAXCMSSystemSettings extends DDD {
     return html`
       <section class="section">
         <div class="section-body">
-          <haxcms-allowed-blocks-ui
+          <haxcms-system-allowed-blocks
             @haxcms-save-allowed-blocks="${this._onAllowedBlocksSaved}"
             @simple-modal-hide="${this._onNestedModalHide}"
-          ></haxcms-allowed-blocks-ui>
+          ></haxcms-system-allowed-blocks>
         </div>
       </section>
     `;

@@ -34,6 +34,31 @@ import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
+const ADMIN_ROUTE_QUERY_PATHS = {
+  admin: "admin",
+  about: "admin-about",
+  appearance: "admin-appearance",
+  "theme-preview": "admin-theme-preview",
+  site: "admin-site",
+  seo: "admin-seo",
+  author: "admin-author",
+  structure: "admin-structure",
+  content: "admin-content",
+  files: "admin-files",
+  reports: "admin-reports",
+  blocks: "admin-blocks",
+  editor: "admin-editor",
+  features: "admin-features",
+  revisions: "admin-content-revisions",
+};
+
+const ADMIN_QUERY_PATH_TO_ROUTE = {};
+Object.keys(ADMIN_ROUTE_QUERY_PATHS).forEach((routePath) => {
+  ADMIN_QUERY_PATH_TO_ROUTE[ADMIN_ROUTE_QUERY_PATHS[routePath]] = routePath;
+});
+
+const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
+
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -5768,31 +5793,44 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!normalized) {
       return null;
     }
-    const allowed = new Set([
-      "admin",
-      "about",
-      "appearance",
-      "theme-preview",
-      "site",
-      "seo",
-      "author",
-      "structure",
-      "content",
-      "files",
-      "reports",
-      "blocks",
-      "editor",
-      "features",
-      "revisions",
-    ]);
-    if (allowed.has(normalized)) {
+    if (ADMIN_ROUTE_PATHS.has(normalized)) {
       return normalized;
+    }
+    return null;
+  }
+  _adminRoutePathFromQueryValue(path = "") {
+    if (typeof path !== "string") {
+      return null;
+    }
+    const normalized = path.trim().toLowerCase().replace(/^\/+/, "").replace(/\/+$/, "");
+    if (!normalized) {
+      return null;
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(ADMIN_QUERY_PATH_TO_ROUTE, normalized)
+    ) {
+      return ADMIN_QUERY_PATH_TO_ROUTE[normalized];
+    }
+    return null;
+  }
+  _adminRouteQueryValueFromPath(path = "") {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath) {
+      return null;
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(
+        ADMIN_ROUTE_QUERY_PATHS,
+        normalizedPath,
+      )
+    ) {
+      return ADMIN_ROUTE_QUERY_PATHS[normalizedPath];
     }
     return null;
   }
   _getAdminRoutePathFromLocation() {
     const params = new URLSearchParams(globalThis.location.search);
-    return this._normalizeAdminRoutePath(params.get("admin"));
+    return this._adminRoutePathFromQueryValue(params.get("admin"));
   }
   _normalizeAdminRouteNodeId(nodeId = "") {
     if (typeof nodeId === "number") {
@@ -5813,15 +5851,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _setAdminRoutePathOnLocation(path = null, historyMode = "push", routeContext = {}) {
     const params = new URLSearchParams(globalThis.location.search);
+    const normalizedPath = path ? this._normalizeAdminRoutePath(path) : null;
     const routeNodeId = this._normalizeAdminRouteNodeId(
       routeContext ? routeContext.nodeId : null,
     );
-    if (path) {
-      params.set("admin", path);
+    if (normalizedPath) {
+      params.set("admin", this._adminRouteQueryValueFromPath(normalizedPath));
     } else {
       params.delete("admin");
     }
-    if (path === "revisions" && routeNodeId) {
+    if (normalizedPath === "revisions" && routeNodeId) {
       params.set("adminNode", routeNodeId);
     } else {
       params.delete("adminNode");
@@ -6165,6 +6204,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     // Legacy element tag name retained for compatibility; content is Reports UI.
     const c = globalThis.document.createElement("haxcms-site-insights");
+    const activeItem = toJS(store.activeItem);
+    const reportNodeId = this._normalizeAdminRouteNodeId(
+      routeOptions ? routeOptions.reportNodeId : null,
+    );
+    const routeNodeId = this._normalizeAdminRouteNodeId(
+      routeOptions ? routeOptions.nodeId : null,
+    );
+    if (routeOptions && routeOptions.reportScope === "page") {
+      if (reportNodeId) {
+        c.selectedReportId = reportNodeId;
+      } else if (routeNodeId) {
+        c.selectedReportId = routeNodeId;
+      } else if (activeItem && activeItem.id) {
+        c.selectedReportId = `${activeItem.id}`;
+      } else {
+        c.selectedReportId = "";
+      }
+    } else {
+      c.selectedReportId = "";
+    }
+    const invokedBy =
+      routeOptions &&
+      routeOptions.invokedBy &&
+      routeOptions.invokedBy.nodeType === 1
+        ? routeOptions.invokedBy
+        : this.shadowRoot.querySelector("#reportsbutton") ||
+          // Legacy button id fallback retained for compatibility.
+          this.shadowRoot.querySelector("#insightsbutton") ||
+          this.shadowRoot.querySelector("#manifestbtn");
     let title = this.t.reports;
     let breadcrumbs = [];
     if (fromSiteSettings) {
@@ -6200,11 +6268,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: { content: c },
-        invokedBy:
-          this.shadowRoot.querySelector("#reportsbutton") ||
-          // Legacy button id fallback retained for compatibility.
-          this.shadowRoot.querySelector("#insightsbutton") ||
-          this.shadowRoot.querySelector("#manifestbtn"),
+        invokedBy: invokedBy,
         clone: false,
         modal: true,
         showClose: true,

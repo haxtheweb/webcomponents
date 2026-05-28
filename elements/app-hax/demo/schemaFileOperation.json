@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "data": {
+    "schema": "skeleton",
+    "action": "rename",
+    "machineName": "studio-user-template",
+    "fileName": "studio-user-template.json",
+    "location": ".haxcmsconfig/user/skeletons/studio-user-template.json",
+    "path": ".haxcmsconfig/user/skeletons/studio-user-template.json",
+    "message": "Demo schema operation response."
+  }
+}

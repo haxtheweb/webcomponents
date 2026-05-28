@@ -320,13 +320,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     SuperDaemonInstance.icon = "hax:wizard-hat";
     SuperDaemonInstance.appendContext("*");
-    // ensure we are running HAX / ready and in edit mode before allowing commands to go through
-    SuperDaemonInstance.allowedCallback = () => {
-      if (toJS(store.appReady) && toJS(store.isLoggedIn)) {
-        return true;
-      }
-      return false;
-    };
+    this._restoreMerlinAllowedCallback();
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
@@ -1604,6 +1598,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       SuperDaemonInstance.removeContext("system-settings");
     }
   }
+
+  _restoreMerlinAllowedCallback() {
+    // Some admin imports pull in hax-store, which rewires this callback for editor-only mode.
+    // AppHAX should always allow Merlin while the app is ready and the user is logged in.
+    SuperDaemonInstance.allowedCallback = () => {
+      if (toJS(store.appReady) && toJS(store.isLoggedIn)) {
+        return true;
+      }
+      return false;
+    };
+  }
   _normalizeSystemSettingsPanel(panelKey = "dashboard") {
     if (typeof panelKey !== "string") {
       return "dashboard";
@@ -1657,7 +1662,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!segment) {
       return "admin";
     }
-    return `admin/${segment}`;
+    return `admin-${segment}`;
   }
 
   _systemSettingsPanelFromAdminRoutePath(path = "admin") {
@@ -1668,8 +1673,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (normalized === "admin") {
       return "dashboard";
     }
-    if (normalized.indexOf("admin/") === 0) {
-      return this._systemSettingsPanelFromRouteSegment(normalized.replace("admin/", ""));
+    if (normalized.indexOf("admin-") === 0) {
+      return this._systemSettingsPanelFromRouteSegment(
+        normalized.replace("admin-", ""),
+      );
     }
     return null;
   }
@@ -1787,9 +1794,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (normalized === "admin") {
       return "admin";
     }
-    if (normalized.indexOf("admin/") === 0) {
+    if (normalized.indexOf("admin-") === 0) {
       const panel = this._systemSettingsPanelFromRouteSegment(
-        normalized.replace("admin/", ""),
+        normalized.replace("admin-", ""),
       );
       if (!panel) {
         return null;
@@ -2032,10 +2039,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     this.__systemSettingsModalOpen = true;
     this.closeMenu();
-    import("@haxtheweb/haxcms-elements/lib/core/haxcms-system-settings.js")
+    import("./lib/v2/admin/haxcms-system-settings.js")
       .then(() => {
+        this._restoreMerlinAllowedCallback();
         import("@haxtheweb/simple-modal/simple-modal.js")
           .then(() => {
+            this._restoreMerlinAllowedCallback();
             const content = globalThis.document.createElement(
               "haxcms-system-settings",
             );

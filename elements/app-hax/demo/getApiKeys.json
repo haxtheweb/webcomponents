@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "data": {
+    "youtube": "",
+    "giphy": "demo-giphy-key",
+    "vimeo": "",
+    "unsplash": "demo-unsplash-key",
+    "flickr": "",
+    "anthropic": ""
+  }
+}

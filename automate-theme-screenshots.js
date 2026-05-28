@@ -21,14 +21,14 @@ const SCREENSHOTS_DIR = join(dirname(THEMES_JSON_PATH), 'theme-screenshots');
 
 // Load themes
 const themes = JSON.parse(readFileSync(THEMES_JSON_PATH, 'utf8'));
-const themeList = Object.entries(themes);
+const themesList = Object.entries(themes);
 
 console.log('\n=== HAX Theme Screenshot Automation Workflow ===\n');
 
 /**
  * STEP 1: Verify Setup
  */
-console.log('✓ Themes loaded:', themeList.length);
+console.log('✓ Themes loaded:', themesList.length);
 console.log('✓ Screenshots directory:', SCREENSHOTS_DIR);
 console.log('✓ Updated themes.json with paths');
 
@@ -49,7 +49,7 @@ console.log('\n3. Theme switching and screenshot commands:');
 console.log('   For each theme, run these 3 commands in sequence:\n');
 
 // Generate commands for first 5 themes as examples
-const exampleThemes = themeList.slice(0, 5);
+const exampleThemes = themesList.slice(0, 5);
 exampleThemes.forEach(([themeKey, themeData], index) => {
   console.log(`--- Theme ${index + 1}: ${themeData.name} (${themeData.element}) ---`);
   console.log(`a) Switch theme:`);
@@ -61,7 +61,7 @@ exampleThemes.forEach(([themeKey, themeData], index) => {
   console.log('');
 });
 
-console.log(`... repeat for all ${themeList.length} themes\n`);
+console.log(`... repeat for all ${themesList.length} themes\\n`);
 
 /**
  * STEP 3: Popular themes for quick demo
@@ -108,7 +108,7 @@ console.log('3. V2 app-hax can load themes.json and display screenshots');
  * Export automation data for programmatic use
  */
 export const automationWorkflow = {
-  totalThemes: themeList.length,
+  totalThemes: themesList.length,
   popularThemes: popularThemes,
   screenshotsDir: SCREENSHOTS_DIR,
   
@@ -129,7 +129,7 @@ export const automationWorkflow = {
   },
   
   // All themes list
-  allThemes: themeList.map(([key, data]) => ({
+  allThemes: themesList.map(([key, data]) => ({
     key,
     element: data.element,
     name: data.name,
