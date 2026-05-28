@@ -944,6 +944,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Manage allowed blocks using the same grouped checkbox experience as allowed-blocks UI.",
         panelType: "blocks",
+        disabled: true,
       },
       {
         key: "integrations",
@@ -1190,6 +1191,64 @@ class HAXCMSSystemSettings extends DDD {
     return payload;
   }
 
+  _schemaUploadPayload() {
+    const payload = {
+      schema: "skeleton",
+      action: "upload",
+    };
+    const authPayload = this._schemaOperationAuthPayload();
+    const authKeys = Object.keys(authPayload);
+    for (let i = 0; i < authKeys.length; i++) {
+      const key = authKeys[i];
+      payload[key] = authPayload[key];
+    }
+    return payload;
+  }
+
+  _appendQueryParams(endpoint = "", params = {}) {
+    const target = typeof endpoint === "string" ? endpoint.trim() : "";
+    if (!target) {
+      return "";
+    }
+    const hashIndex = target.indexOf("#");
+    const baseWithQuery = hashIndex === -1 ? target : target.substring(0, hashIndex);
+    const hash = hashIndex === -1 ? "" : target.substring(hashIndex);
+    const queryIndex = baseWithQuery.indexOf("?");
+    const basePath =
+      queryIndex === -1
+        ? baseWithQuery
+        : baseWithQuery.substring(0, queryIndex);
+    const existingQuery =
+      queryIndex === -1 ? "" : baseWithQuery.substring(queryIndex + 1);
+    const searchParams = new URLSearchParams(existingQuery);
+    const payload =
+      params && typeof params === "object" && !Array.isArray(params)
+        ? params
+        : {};
+    const keys = Object.keys(payload);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      const value = payload[key];
+      if (typeof value === "undefined" || value === null) {
+        continue;
+      }
+      const normalized = `${value}`.trim();
+      if (!normalized) {
+        continue;
+      }
+      searchParams.set(key, normalized);
+    }
+    const query = searchParams.toString();
+    return `${basePath}${query ? `?${query}` : ""}${hash}`;
+  }
+
+  _schemaFileUploadTarget() {
+    return this._appendQueryParams(
+      this._schemaFileOperationEndpoint(),
+      this._schemaUploadPayload(),
+    );
+  }
+
   async _schemaFileOperationJson(payload = {}) {
     const endpoint = this._schemaFileOperationEndpoint();
     if (!endpoint) {
@@ -1319,7 +1378,7 @@ class HAXCMSSystemSettings extends DDD {
     uploadNode.formDataName = "file";
     uploadNode.accept = ".json,application/json";
     uploadNode.withCredentials = true;
-    uploadNode.target = this._schemaFileOperationEndpoint();
+    uploadNode.target = this._schemaFileUploadTarget();
     if (this.__skeletonUploadNode !== uploadNode) {
       uploadNode.addEventListener(
         "upload-before",
@@ -1364,23 +1423,23 @@ class HAXCMSSystemSettings extends DDD {
   }
 
   _onSkeletonUploadBefore(e = null) {
-    if (!e || !e.detail || !e.detail.formData) {
-      return;
+    const payload = this._schemaUploadPayload();
+    if (this.__skeletonUploadNode) {
+      this.__skeletonUploadNode.target = this._schemaFileUploadTarget();
     }
-    const formData = e.detail.formData;
-    if (typeof formData.delete === "function") {
-      formData.delete("schema");
-      formData.delete("action");
-      formData.delete("jwt");
-      formData.delete("token");
-    }
-    formData.append("schema", "skeleton");
-    formData.append("action", "upload");
-    const authPayload = this._schemaOperationAuthPayload();
-    const authKeys = Object.keys(authPayload);
-    for (let i = 0; i < authKeys.length; i++) {
-      const key = authKeys[i];
-      formData.append(key, authPayload[key]);
+    const formData =
+      e && e.detail && e.detail.formData ? e.detail.formData : null;
+    if (formData) {
+      const keys = Object.keys(payload);
+      if (typeof formData.delete === "function") {
+        for (let i = 0; i < keys.length; i++) {
+          formData.delete(keys[i]);
+        }
+      }
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        formData.append(key, payload[key]);
+      }
     }
     this.statusMessage = "Uploading skeleton…";
   }
@@ -1834,7 +1893,35 @@ class HAXCMSSystemSettings extends DDD {
       return "";
     }
     if (normalized.indexOf("@haxtheweb/") === 0) {
-      const packagePath = "../../../../" + normalized;
+      const scopeMarker = "/@haxtheweb/";
+      const markerIndex = import.meta.url.indexOf(scopeMarker);
+      if (markerIndex !== -1) {
+        const scopedBase = import.meta.url.substring(
+          0,
+          markerIndex + scopeMarker.length,
+        );
+        const packagePath = normalized.replace("@haxtheweb/", "");
+        return `${scopedBase}${packagePath}`;
+      }
+      let basePath = "";
+      if (
+        globalThis.WCAutoloadBasePath &&
+        typeof globalThis.WCAutoloadBasePath === "string"
+      ) {
+        basePath = globalThis.WCAutoloadBasePath;
+      } else if (
+        globalThis.WCGlobalBasePath &&
+        typeof globalThis.WCGlobalBasePath === "string"
+      ) {
+        basePath = globalThis.WCGlobalBasePath;
+      }
+      if (basePath) {
+        if (basePath.charAt(basePath.length - 1) !== "/") {
+          basePath += "/";
+        }
+        return `${basePath}${normalized}`;
+      }
+      const packagePath = `../../../../${normalized}`;
       return new URL(packagePath, import.meta.url).href;
     }
     return normalized;
@@ -2756,19 +2843,28 @@ class HAXCMSSystemSettings extends DDD {
       return;
     }
     const currentName = this._normalizeMachineName(option.machineName);
+    const currentDisplayName =
+      typeof option.label === "string" && option.label.trim() !== ""
+        ? option.label.trim()
+        : currentName;
     const requestedName = globalThis.prompt(
-      "Rename skeleton machine name",
-      currentName,
+      "Rename skeleton",
+      currentDisplayName,
     );
     if (typeof requestedName !== "string") {
       return;
     }
-    const nextName = this._normalizeMachineName(requestedName);
-    if (!nextName) {
+    const displayName = requestedName.trim();
+    if (!displayName) {
       this.statusMessage = "Skeleton name is required.";
       return;
     }
-    if (nextName === currentName) {
+    const nextName = this._normalizeMachineName(displayName);
+    if (!nextName) {
+      this.statusMessage = "Skeleton name must include letters or numbers.";
+      return;
+    }
+    if (nextName === currentName && displayName === currentDisplayName) {
       return;
     }
     this.skeletonActionBusy = true;
@@ -2778,9 +2874,17 @@ class HAXCMSSystemSettings extends DDD {
         schema: "skeleton",
         name: currentName,
         newName: nextName,
+        displayName: displayName,
       });
       if (response.ok) {
-        this.statusMessage = `Renamed skeleton to ${nextName}.`;
+        const renamedDisplayName =
+          response &&
+          response.data &&
+          typeof response.data.displayName === "string" &&
+          response.data.displayName.trim() !== ""
+            ? response.data.displayName.trim()
+            : displayName;
+        this.statusMessage = `Renamed skeleton to ${renamedDisplayName}.`;
         await this._loadSkeletonOptions(true);
       } else {
         this.statusMessage = this._schemaOperationResponseMessage(

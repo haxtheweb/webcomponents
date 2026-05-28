@@ -598,7 +598,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       const shouldWaitForStableInventory =
         hasAutoloaderInventory && !appStoreLoaded;
       this.inventoryReady = !shouldWaitForStableInventory;
-      const blocks = gizmos.filter(
+      const blocksFromGizmos = gizmos.filter(
         (item) =>
           !(
             item.meta &&
@@ -606,6 +606,14 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
           ),
       );
+      let blocks = blocksFromGizmos;
+      if (
+        !shouldWaitForStableInventory &&
+        blocksFromGizmos.length === 0 &&
+        hasAutoloaderInventory
+      ) {
+        blocks = this._blocksFromAutoloaderInventory(autoloader);
+      }
       this.haxBlocks = shouldWaitForStableInventory ? [] : blocks;
 
       const platformConfig = toJS(HAXStore.platformConfig);
@@ -1001,6 +1009,60 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       return item.meta.description;
     }
     return this.t.noDescription;
+  }
+
+  _blocksFromAutoloaderInventory(autoloader) {
+    const fallback = [];
+    const knownTags = new Set();
+    if (!autoloader || typeof autoloader !== "object") {
+      return fallback;
+    }
+    const keys = Object.keys(autoloader);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      let tag = "";
+      if (key && isNaN(Number(key))) {
+        tag = key;
+      } else {
+        const value = autoloader[key];
+        if (typeof value === "string") {
+          tag = value;
+        } else if (value && typeof value.tag === "string") {
+          tag = value.tag;
+        }
+      }
+      if (typeof tag !== "string") {
+        continue;
+      }
+      tag = tag.trim();
+      if (tag === "" || knownTags.has(tag)) {
+        continue;
+      }
+      knownTags.add(tag);
+      fallback.push({
+        tag: tag,
+        title: this._titleFromTag(tag),
+        description: "",
+        icon: "hax:blocks",
+        tags: ["Other"],
+        meta: {},
+      });
+    }
+    fallback.sort((a, b) => a.title.localeCompare(b.title));
+    return fallback;
+  }
+
+  _titleFromTag(tag) {
+    if (typeof tag !== "string" || tag.trim() === "") {
+      return "";
+    }
+    return tag
+      .trim()
+      .split("-")
+      .map((word) =>
+        word ? `${word.charAt(0).toUpperCase()}${word.slice(1)}` : "",
+      )
+      .join(" ");
   }
 
   _hoverForPreviewChange(e) {
