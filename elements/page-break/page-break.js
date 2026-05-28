@@ -129,8 +129,58 @@ export class PageBreak extends IntersectionObserverMixin(
     if (!nodeId || !editorUI || !editorUI._reportsButtonTap) {
       return;
     }
+    const merlin =
+      globalThis.SuperDaemonManager &&
+      globalThis.SuperDaemonManager.requestAvailability
+        ? globalThis.SuperDaemonManager.requestAvailability()
+        : null;
+    const reportsAction =
+      merlin && merlin.allItems && Array.isArray(merlin.allItems)
+        ? merlin.allItems.find(
+            (item) =>
+              item &&
+              item.path === "CMS/admin/reports" &&
+              item.eventName === "super-daemon-element-method" &&
+              item.value &&
+              item.value.target &&
+              item.value.method,
+          )
+        : null;
+    if (reportsAction) {
+      const reportsArgs =
+        reportsAction.value &&
+        reportsAction.value.args &&
+        Array.isArray(reportsAction.value.args)
+          ? [...reportsAction.value.args]
+          : [];
+      let existingRouteOptions = {};
+      if (
+        reportsArgs[2] &&
+        typeof reportsArgs[2] === "object" &&
+        !Array.isArray(reportsArgs[2])
+      ) {
+        existingRouteOptions = { ...reportsArgs[2] };
+      }
+      reportsArgs[2] = {
+        ...existingRouteOptions,
+        reportScope: "page",
+        reportNodeId: nodeId,
+        invokedBy: e && e.target ? e.target : null,
+      };
+      globalThis.dispatchEvent(
+        new CustomEvent(reportsAction.eventName, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            ...reportsAction.value,
+            args: reportsArgs,
+          },
+        }),
+      );
+      return;
+    }
     editorUI._reportsButtonTap(null, false, {
-      skipUrlUpdate: true,
       reportScope: "page",
       reportNodeId: nodeId,
       invokedBy: e && e.target ? e.target : null,

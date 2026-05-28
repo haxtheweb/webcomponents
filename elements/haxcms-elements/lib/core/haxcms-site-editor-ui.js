@@ -6192,11 +6192,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }, 40);
   }
   _reportsButtonTap(e, fromSiteSettings = false, routeOptions = {}) {
+    const hasReportContext =
+      routeOptions &&
+      (routeOptions.reportScope === "page" ||
+        this._normalizeAdminRouteNodeId(
+          routeOptions ? routeOptions.reportNodeId : null,
+        ) ||
+        this._normalizeAdminRouteNodeId(
+          routeOptions ? routeOptions.nodeId : null,
+        ));
     if (!routeOptions.skipUrlUpdate) {
-      this.setAdminPath("reports", routeOptions.historyMode || "push", false);
-      return;
+      if (!hasReportContext) {
+        this.setAdminPath("reports", routeOptions.historyMode || "push", false);
+        return;
+      }
+      if (
+        !this._syncAdminRoutePath("reports", {
+          historyMode: routeOptions.historyMode || "push",
+        })
+      ) {
+        return;
+      }
     }
-    if (!this._syncAdminRoutePath("reports", routeOptions)) {
+    if (
+      routeOptions.skipUrlUpdate &&
+      !this._syncAdminRoutePath("reports", routeOptions)
+    ) {
       return;
     }
     if (!routeOptions.silent) {
