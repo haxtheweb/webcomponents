@@ -157,12 +157,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
         tbody td {
           vertical-align: top;
         }
-        .hash {
-          font-family: monospace;
-        }
-        .message {
-          min-width: 240px;
-          max-width: 540px;
+        .sort-value {
+          display: none;
         }
         .action-cell {
           white-space: nowrap;
@@ -204,6 +200,21 @@ class HAXCMSPageRevisionsDialog extends DDD {
         }
         .details-json {
           margin-top: 0;
+        }
+        .preview-collapse {
+          margin: 0;
+          border-bottom: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+        }
+        .preview-collapse summary {
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          cursor: pointer;
+        }
+        .preview-collapse[open] summary {
+          border-bottom: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
         }
         .preview {
           min-height: 0;
@@ -377,7 +388,24 @@ class HAXCMSPageRevisionsDialog extends DDD {
       return;
     }
     this.loading = false;
-    this.revisions = Array.isArray(data.revisions) ? data.revisions : [];
+    const revisions = Array.isArray(data.revisions) ? data.revisions : [];
+    const normalizedRevisions = revisions
+      .map((revision) => {
+        if (!revision || typeof revision !== "object") {
+          return null;
+        }
+        const normalizedRevision = { ...revision };
+        const timestamp = this._getRevisionTimestamp(normalizedRevision);
+        if (timestamp) {
+          normalizedRevision.timestamp = Math.floor(timestamp / 1000);
+        }
+        return normalizedRevision;
+      })
+      .filter((revision) => !!revision);
+    normalizedRevisions.sort((a, b) => {
+      return this._getRevisionTimestamp(b) - this._getRevisionTimestamp(a);
+    });
+    this.revisions = normalizedRevisions;
     if (typeof data.nodeTitle === "string" && data.nodeTitle.trim() !== "") {
       this.nodeTitle = data.nodeTitle.trim();
     }
@@ -521,20 +549,93 @@ class HAXCMSPageRevisionsDialog extends DDD {
     this._requestRestore(hash);
   }
 
-  _formatDate(value) {
+  _normalizeTimestamp(value) {
     if (!value) {
-      return "";
+      return 0;
     }
-    const timestamp = typeof value === "number" ? value : parseInt(value, 10);
+    if (value instanceof Date) {
+      const dateTimestamp = value.getTime();
+      return isNaN(dateTimestamp) ? 0 : dateTimestamp;
+    }
+    let timestamp = 0;
+    if (typeof value === "number") {
+      timestamp = value;
+    } else if (typeof value === "string") {
+      const trimmedValue = value.trim();
+      if (!trimmedValue) {
+        return 0;
+      }
+      if (/^[0-9]+$/.test(trimmedValue)) {
+        timestamp = parseInt(trimmedValue, 10);
+      } else {
+        const parsedDate = Date.parse(trimmedValue);
+        if (isNaN(parsedDate)) {
+          return 0;
+        }
+        return parsedDate;
+      }
+    }
     if (!timestamp || isNaN(timestamp)) {
+      return 0;
+    }
+    return timestamp < 1000000000000 ? timestamp * 1000 : timestamp;
+  }
+  _getRevisionTimestamp(revision) {
+    if (!revision || typeof revision !== "object") {
+      return 0;
+    }
+    const directTimestamp = this._normalizeTimestamp(revision.timestamp);
+    if (directTimestamp) {
+      return directTimestamp;
+    }
+    return this._normalizeTimestamp(revision.date);
+  }
+  _formatAbsoluteDate(value) {
+    const timestamp = this._normalizeTimestamp(value);
+    if (!timestamp) {
       return "";
     }
-    const asMs = timestamp < 1000000000000 ? timestamp * 1000 : timestamp;
-    const date = new Date(asMs);
+    const date = new Date(timestamp);
     if (isNaN(date.getTime())) {
       return "";
     }
     return date.toISOString().replace("T", " ").replace("Z", " UTC");
+  }
+  _formatTimeAgo(value) {
+    const timestamp = this._normalizeTimestamp(value);
+    if (!timestamp) {
+      return "";
+    }
+    const now = Date.now();
+    const delta = timestamp - now;
+    const absoluteDelta = Math.abs(delta);
+    const units = [
+      { unit: "year", ms: 31536000000 },
+      { unit: "month", ms: 2592000000 },
+      { unit: "week", ms: 604800000 },
+      { unit: "day", ms: 86400000 },
+      { unit: "hour", ms: 3600000 },
+      { unit: "minute", ms: 60000 },
+      { unit: "second", ms: 1000 },
+    ];
+    let selectedUnit = units[units.length - 1];
+    for (let i = 0; i < units.length; i++) {
+      if (absoluteDelta >= units[i].ms || i === units.length - 1) {
+        selectedUnit = units[i];
+        break;
+      }
+    }
+    const valueForUnit = Math.round(delta / selectedUnit.ms);
+    if (
+      globalThis.Intl &&
+      typeof globalThis.Intl.RelativeTimeFormat === "function"
+    ) {
+      const formatter = new Intl.RelativeTimeFormat(undefined, {
+        numeric: "auto",
+      });
+      return formatter.format(valueForUnit, selectedUnit.unit);
+    }
+    return this._formatAbsoluteDate(timestamp);
   }
   _setPreviewMode(e) {
     const target = e && e.currentTarget ? e.currentTarget : null;
@@ -617,11 +718,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
                     <table>
                       <thead>
                         <tr>
-                          <th>Hash</th>
                           <th>Date</th>
                           <th>Author</th>
-                          <th>Email</th>
-                          <th>Message</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -629,21 +727,34 @@ class HAXCMSPageRevisionsDialog extends DDD {
                         ${this.revisions.map(
                           (revision, index) => {
                             const isCurrentRevision = index === 0;
+                            const revisionTimestamp =
+                              this._getRevisionTimestamp(revision);
+                            const dateDisplay =
+                              this._formatTimeAgo(revisionTimestamp) || "Unknown";
+                            const dateTitle =
+                              this._formatAbsoluteDate(revisionTimestamp) ||
+                              "Unknown date";
+                            const authorEmail = revision.authorEmail || "";
+                            const authorDisplay = revision.author || "";
                             return html`
                               <tr
                                 class="${this.selectedHash === revision.hash
                                   ? "selected"
                                   : ""}"
                               >
-                                <td class="hash">${revision.shortHash || revision.hash || ""}</td>
                                 <td>
-                                  ${this._formatDate(
-                                    revision.timestamp || revision.date || 0,
-                                  )}
+                                  <span class="sort-value"
+                                    >${revisionTimestamp || 0}</span
+                                  >
+                                  <span title="${dateTitle}"
+                                    >${dateDisplay}</span
+                                  >
                                 </td>
-                                <td>${revision.author || ""}</td>
-                                <td>${revision.authorEmail || ""}</td>
-                                <td class="message">${revision.message || ""}</td>
+                                <td>
+                                  <span title="${authorEmail}"
+                                    >${authorDisplay}</span
+                                  >
+                                </td>
                                 <td class="action-cell">
                                   <simple-icon-button-lite
                                     class="action"
@@ -717,7 +828,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
                   Select a revision row to load details.
                 </div>`}
           </details>
-          <div class="preview">${this._renderPreviewContent()}</div>
+          <details class="preview-collapse" open>
+            <summary>Preview</summary>
+            <div class="preview">${this._renderPreviewContent()}</div>
+          </details>
         </section>
       </div>
     `;

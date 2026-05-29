@@ -1,10 +1,14 @@
 # Security Policy
 
-## Supported Versions
+This repository follows the HAX security policy (source of truth for `haxtheweb/*`):
+https://github.com/haxtheweb/issues/security/policy
 
-We often run master on production systems or slightly behind master. Tagged releases of all web components in this repo are published to npm and managed via lerna.
-If we get a security issue in a specific version, we are going to fix it in a newer release of the web component and you should update to the latest stable at that time.
+To report a vulnerability, submit a private advisory:
+https://github.com/haxtheweb/issues/security/advisories/new
 
-## Reporting a Vulnerability
+If you need to discuss first, contact the core team:
 
-Security related issues should be filed in our general issue queue https://github.com/haxtheweb/issues/issues
+- Discord: https://discord.gg/qGBZMBnHc
+- Email: hax@psu.edu
+
+Please do not open public issues for unpatched security vulnerabilities.

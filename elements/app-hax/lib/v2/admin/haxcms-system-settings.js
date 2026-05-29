@@ -61,6 +61,7 @@ class HAXCMSSystemSettings extends DDD {
     this.__skeletonsLoaded = false;
     this.__themesLoaded = false;
     this.__integrationsLoaded = false;
+    this.__mediaLoaded = false;
     this.__skeletonUploadField = null;
     this.__skeletonUploadNode = null;
     this.__boundSkeletonUploadBefore = this._onSkeletonUploadBefore.bind(this);
@@ -1030,14 +1031,13 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Set image quality, upload constraints, and transformation behavior defaults.",
         panelType: "fields",
-        disabled: true,
         sections: [
           {
             key: "media-policy",
             label: "Media policy",
             icon: "image:image",
             description:
-              "Media values are staged in UI while backend persistence is implemented.",
+              "Media policy values are stored in system-level media settings.",
             fields: [
               {
                 property: "jpegQuality",
@@ -1510,6 +1510,8 @@ class HAXCMSSystemSettings extends DDD {
       this._loadThemeOptions();
     } else if (normalized === "integrations") {
       this._loadApiKeysData();
+    } else if (normalized === "media") {
+      this._loadMediaSettingsData(true);
     } else if (normalized === "status") {
       this._loadStatusData();
     }
@@ -1687,6 +1689,9 @@ class HAXCMSSystemSettings extends DDD {
     if (panelKey === "integrations") {
       return this._buildIntegrationsSavePayload(values);
     }
+    if (panelKey === "media") {
+      return this._buildMediaSavePayload(values);
+    }
     return values;
   }
 
@@ -1734,6 +1739,11 @@ class HAXCMSSystemSettings extends DDD {
       this.statusMessage = `${this._panelLabel(panelKey)} saved locally`;
     } else if (panelKey === "integrations") {
       saved = await this._saveApiKeysData(savePayload);
+      this.statusMessage = saved
+        ? `${this._panelLabel(panelKey)} saved`
+        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
+    } else if (panelKey === "media") {
+      saved = await this._saveMediaSettingsData(savePayload);
       this.statusMessage = saved
         ? `${this._panelLabel(panelKey)} saved`
         : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
@@ -2088,6 +2098,156 @@ class HAXCMSSystemSettings extends DDD {
       return true;
     }
     this.apiKeysError = "API key settings could not be saved.";
+    return false;
+  }
+
+  _normalizeMediaNumberValue(value, fallback = null, min = null, max = null) {
+    let normalizedFallback = null;
+    if (
+      fallback !== null &&
+      typeof fallback !== "undefined" &&
+      fallback !== ""
+    ) {
+      const parsedFallback = parseInt(fallback, 10);
+      if (!Number.isNaN(parsedFallback)) {
+        normalizedFallback = parsedFallback;
+      }
+    }
+    if (value === null || typeof value === "undefined" || value === "") {
+      return normalizedFallback;
+    }
+    let parsedValue = parseInt(value, 10);
+    if (Number.isNaN(parsedValue)) {
+      return normalizedFallback;
+    }
+    if (typeof min === "number" && parsedValue < min) {
+      parsedValue = min;
+    }
+    if (typeof max === "number" && parsedValue > max) {
+      parsedValue = max;
+    }
+    return parsedValue;
+  }
+
+  _sanitizeAcceptedFormatsValue(value = "") {
+    let source = value;
+    if (Array.isArray(source)) {
+      source = source.join(",");
+    }
+    if (source === null || typeof source === "undefined") {
+      return "";
+    }
+    if (typeof source !== "string") {
+      source = `${source}`;
+    }
+    const parts = source.split(",");
+    const seen = {};
+    const normalized = [];
+    for (let i = 0; i < parts.length; i++) {
+      const format = `${parts[i] || ""}`
+        .trim()
+        .toLowerCase()
+        .replace(/^\.+/, "");
+      if (!format || !/^[a-z0-9]+$/.test(format) || seen[format]) {
+        continue;
+      }
+      seen[format] = true;
+      normalized.push(format);
+    }
+    return normalized.join(",");
+  }
+
+  _normalizeAcceptedFormatsValue(value, fallback = "") {
+    const normalized = this._sanitizeAcceptedFormatsValue(value);
+    if (normalized) {
+      return normalized;
+    }
+    return this._sanitizeAcceptedFormatsValue(fallback);
+  }
+
+  _normalizeMediaSettingsRecord(source = {}) {
+    const defaults =
+      this.defaultPanelValues &&
+      this.defaultPanelValues.media &&
+      typeof this.defaultPanelValues.media === "object"
+        ? this.defaultPanelValues.media
+        : {};
+    const data =
+      source && typeof source === "object" && !Array.isArray(source) ? source : {};
+    const payload =
+      data.mediaSettings &&
+      typeof data.mediaSettings === "object" &&
+      !Array.isArray(data.mediaSettings)
+        ? data.mediaSettings
+        : data;
+    return {
+      jpegQuality: this._normalizeMediaNumberValue(
+        payload.jpegQuality,
+        defaults.jpegQuality,
+        1,
+        100,
+      ),
+      maxUploadSizeMb: this._normalizeMediaNumberValue(
+        payload.maxUploadSizeMb,
+        defaults.maxUploadSizeMb,
+        1,
+        10240,
+      ),
+      acceptedFormats: this._normalizeAcceptedFormatsValue(
+        payload.acceptedFormats,
+        defaults.acceptedFormats,
+      ),
+    };
+  }
+
+  _applyMediaSettingsRecord(record = {}) {
+    const normalized = this._normalizeMediaSettingsRecord(record);
+    const currentValues = this._cloneData(this.panelValues || {});
+    currentValues.media = normalized;
+    this.panelValues = currentValues;
+  }
+
+  _buildMediaSavePayload(values = {}) {
+    const normalized = this._normalizeMediaSettingsRecord(values);
+    return {
+      jpegQuality: normalized.jpegQuality,
+      maxUploadSizeMb: normalized.maxUploadSizeMb,
+      acceptedFormats: normalized.acceptedFormats,
+    };
+  }
+
+  async _loadMediaSettingsData(force = false) {
+    if (this.__mediaLoaded && !force) {
+      return;
+    }
+    const response = await this._callAppEndpoint(["getMediaSettings"]);
+    if (response && response.data && typeof response.data === "object") {
+      this._applyMediaSettingsRecord(response.data);
+      this.__mediaLoaded = true;
+      return;
+    }
+    this._applyMediaSettingsRecord(this.defaultPanelValues.media || {});
+    this.statusMessage = "Saved media settings could not be loaded right now.";
+  }
+
+  async _saveMediaSettingsData(payload = {}) {
+    const mediaSettings = this._buildMediaSavePayload(payload);
+    const response = await this._callAppEndpointWithData(
+      ["saveMediaSettings"],
+      {
+        mediaSettings: mediaSettings,
+      },
+    );
+    if (response && response.data && typeof response.data === "object") {
+      this._applyMediaSettingsRecord(response.data);
+      this.__mediaLoaded = true;
+      return true;
+    }
+    if (response && response.status === 200) {
+      this._applyMediaSettingsRecord(mediaSettings);
+      this.__mediaLoaded = true;
+      return true;
+    }
     return false;
   }
 
