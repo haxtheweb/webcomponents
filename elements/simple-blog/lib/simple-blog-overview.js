@@ -115,6 +115,7 @@ class SimpleBlogOverview extends SimpleColors {
         <div class="card">
           <article
             class="post"
+            itemscope
             itemtype="http://schema.org/BlogPosting"
             role="article"
           >

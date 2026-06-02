@@ -151,6 +151,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
       <aside
         role="complementary"
         aria-label="Primary Sidebar"
+        itemscope
         itemtype="http://schema.org/WPSideBar"
         part="page-primary-sidebar"
       >

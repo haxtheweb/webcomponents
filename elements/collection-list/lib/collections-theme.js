@@ -297,12 +297,13 @@ class CollectionsTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <header itemtype="http://schema.org/WPHeader">
+      <header itemscope itemtype="http://schema.org/WPHeader">
         <site-region name="header"></site-region>
       </header>
       <nav
         id="nav"
         part="site-top-menu"
+        itemscope
         itemtype="http://schema.org/SiteNavigationElement"
       >
         <site-top-menu
@@ -326,6 +327,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         </article>
       </main>
       <footer
+        itemscope
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >

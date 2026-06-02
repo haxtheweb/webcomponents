@@ -564,7 +564,7 @@ class PolarisInventTheme extends LTIResizingMixin(
   render() {
     return html`
       <div id="haxcms-theme-top"></div>
-      <header itemtype="http://schema.org/WPHeader">
+      <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
           <site-region name="header"></site-region>
           <slot name="header"></slot>
@@ -644,6 +644,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         </main>
       </div>
       <footer
+        itemscope
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >

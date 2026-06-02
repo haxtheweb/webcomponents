@@ -112,13 +112,18 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
             itemtype="https://schema.org/BreadcrumbList"
           >
             ${this.items.map(
-              (item) =>
+              (item, index) =>
                 html`<li
                   itemprop="itemListElement"
                   itemscope
                   itemtype="https://schema.org/ListItem"
                 >
-                  <a itemprop="item" href="${item.slug}">${item.title}</a>
+                  <a itemprop="item" href="${item.slug}"
+                    ><span itemprop="name"
+                      >${item.title ? item.title : item.slug}</span
+                    ></a
+                  >
+                  <meta itemprop="position" content="${index + 1}" />
                 </li>`,
             )}
           </ol>

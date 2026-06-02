@@ -51,13 +51,14 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   }
   render() {
     return html`
-      <header itemtype="http://schema.org/WPHeader">
+      <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="logo-wrapper">
           <site-region name="header"></site-region>
         </div>
         <nav
           class="menu"
           .part="site-nav ${this.editMode ? `edit-mode-active` : ``}"
+          itemscope
           itemtype="http://schema.org/SiteNavigationElement"
         >
           ${this.getSections(this.sectionLoad).map(
@@ -82,6 +83,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         </article>
       </main>
       <footer
+        itemscope
         itemtype="http://schema.org/WPFooter"
         .part="site-nav ${this.editMode ? `edit-mode-active` : ``}"
       >

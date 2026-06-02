@@ -412,7 +412,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <header itemtype="http://schema.org/WPHeader">
+      <header itemscope itemtype="http://schema.org/WPHeader">
         <site-modal
           @site-modal-click="${this.siteModalClick}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -456,7 +456,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           </slot>
         </div>
       </header>
-      <nav itemtype="http://schema.org/SiteNavigationElement">
+      <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
         <site-top-menu indicator="none"></site-top-menu>
       </nav>
       <div class="content site-inner wrap">
@@ -477,6 +477,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         <aside
           role="complementary"
           aria-label="Primary Sidebar"
+          itemscope
           itemtype="http://schema.org/WPSideBar"
           part="page-primary-sidebar"
         >
@@ -490,6 +491,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
         </aside>
       </div>
       <footer
+        itemscope
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >

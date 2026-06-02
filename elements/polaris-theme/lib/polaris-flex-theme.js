@@ -782,7 +782,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
   render() {
     return html`
       <div id="haxcms-theme-top"></div>
-      <header itemtype="http://schema.org/WPHeader">
+      <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
           <div class="header-top-menu">
             <site-modal
@@ -831,6 +831,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         </main>
       </div>
       <footer
+        itemscope
         itemtype="http://schema.org/WPFooter"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
