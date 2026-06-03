@@ -7272,6 +7272,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         breadcrumbs = breadcrumbMeta.breadcrumbs;
       }
       dialog.addEventListener("haxcms-content-dashboard-operation", (e) => {
+        if (e && typeof e.stopPropagation === "function") {
+          e.stopPropagation();
+        }
         globalThis.dispatchEvent(
           new CustomEvent("haxcms-content-dashboard-operation", {
             bubbles: true,
