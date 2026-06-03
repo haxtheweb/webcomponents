@@ -3,6 +3,9 @@
  * Allows users to export the current page in multiple formats:
  * - HTML
  * - Markdown
+ * - JSON
+ * - YAML
+ * - XML
  * - DOCX
  * - PDF
  * - HAX schema JSON
@@ -10,47 +13,15 @@
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { b64toBlob } from "@haxtheweb/utils/utils.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
 
 export function createExportPageProgram(context) {
   return async (input, values) => {
     let results = [];
 
-    // Define available export formats
-    const exportFormats = [
-      {
-        title: "Export as HTML",
-        icon: "hax:file-html",
-        format: "html",
-        description: "Download current page as HTML file",
-      },
-      {
-        title: "Export as Markdown",
-        icon: "hax:format-textblock",
-        format: "markdown",
-        description: "Download current page as Markdown (.md) file",
-      },
-      {
-        title: "Export as DOCX",
-        icon: "hax:file-docx",
-        format: "docx",
-        description: "Download current page as Word document",
-      },
-      {
-        title: "Export as PDF",
-        icon: "lrn:pdf",
-        format: "pdf",
-        description: "Download current page as PDF file",
-      },
-      {
-        title: "Copy HAX schema JSON",
-        icon: "hax:code-json",
-        format: "haxschema",
-        description: "Copy HAX schema JSON to the clipboard",
-      },
-    ];
-
     // Filter results based on input
-    exportFormats.forEach((format) => {
+    PAGE_EXPORT_FORMATS.forEach((format) => {
       if (
         input === "" ||
         format.title.toLowerCase().includes(input.toLowerCase()) ||
@@ -80,38 +51,54 @@ export function createExportPageProgram(context) {
 // Export page method to be added to haxcms-site-editor-ui class
 export async function exportPageAs(format) {
   try {
-    const haxBody = HAXStore.activeHaxBody;
-    if (!haxBody) {
-      HAXStore.toast(
-        "No editable content found for export",
-        3000,
-        "fit-bottom",
-      );
-      return;
-    }
-
-    const pageContent = await haxBody.haxToContent();
     const pageTitle = globalThis.document.title || "page";
 
     switch (format) {
       case "html":
-        await this._exportPageAsHTML(pageContent, pageTitle);
+        await _exportPageRouteVariant.call(this, "html", pageTitle);
         break;
 
       case "markdown":
-        await this._exportPageAsMarkdown(pageContent, pageTitle);
+        await _exportPageRouteVariant.call(this, "markdown", pageTitle);
         break;
 
-      case "docx":
-        await this._exportPageAsDOCX(pageContent, pageTitle);
+      case "json":
+      case "yaml":
+      case "xml":
+        await _exportPageRouteVariant.call(this, format, pageTitle);
         break;
+      case "docx": {
+        const haxBody = HAXStore.activeHaxBody;
+        if (!haxBody) {
+          HAXStore.toast(
+            "No editable content found for export",
+            3000,
+            "fit-bottom",
+          );
+          return;
+        }
+        const pageContent = await haxBody.haxToContent();
+        await _exportPageAsDOCX.call(this, pageContent, pageTitle);
+        break;
+      }
 
-      case "pdf":
-        await this._exportPageAsPDF(pageContent, pageTitle);
+      case "pdf": {
+        const haxBody = HAXStore.activeHaxBody;
+        if (!haxBody) {
+          HAXStore.toast(
+            "No editable content found for export",
+            3000,
+            "fit-bottom",
+          );
+          return;
+        }
+        const pageContent = await haxBody.haxToContent();
+        await _exportPageAsPDF.call(this, pageContent, pageTitle);
         break;
+      }
 
       case "haxschema":
-        await this._exportPageAsHAXSchema();
+        await _exportPageAsHAXSchema.call(this);
         break;
 
       default:
@@ -129,46 +116,94 @@ export async function exportPageAs(format) {
 
 // Helper methods for different export formats
 export async function _exportPageAsHTML(content, title) {
-  const fullHTML = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>${title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script>
-    <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
-    <style>
-      body { padding: 32px; font-family: system-ui, sans-serif; }
-    </style>
-  </head>
-  <body>
-    ${content}
-  </body>
-</html>`;
-
-  this._downloadFile(fullHTML, `${title}.html`, "text/html");
-  HAXStore.toast("HTML file downloaded successfully", 3000, "fit-bottom");
+  return _exportPageRouteVariant.call(this, "html", title);
 }
 
 export async function _exportPageAsMarkdown(content, title) {
-  try {
-    const response = await MicroFrontendRegistry.call("@core/htmlToMd", {
-      html: content,
-    });
+  return _exportPageRouteVariant.call(this, "markdown", title);
+}
 
-    if (response.status === 200 && response.data) {
-      this._downloadFile(response.data, `${title}.md`, "text/markdown");
-      HAXStore.toast(
-        "Markdown file downloaded successfully",
-        3000,
-        "fit-bottom",
-      );
-    } else {
-      throw new Error("Failed to convert to Markdown");
+export function _pageRouteVariantExtension(format) {
+  switch (format) {
+    case "markdown":
+      return "md";
+    default:
+      return format;
+  }
+}
+
+export function _pageRouteVariantMimeType(format) {
+  switch (format) {
+    case "html":
+      return "text/html";
+    case "markdown":
+      return "text/markdown";
+    case "json":
+      return "application/json";
+    case "yaml":
+      return "application/yaml";
+    case "xml":
+      return "application/xml";
+    default:
+      return "text/plain";
+  }
+}
+
+export function _pageRouteVariantUrl(format) {
+  const activeItem = store.activeItem;
+  let slug = "";
+  if (activeItem && activeItem.slug) {
+    slug = `${activeItem.slug}`.trim();
+  }
+  if (!slug && globalThis.location && globalThis.location.pathname) {
+    slug = `${globalThis.location.pathname}`.trim();
+  }
+  if (!slug) {
+    return null;
+  }
+  const ext = _pageRouteVariantExtension(format);
+  const lowerSuffix = `.${ext}`.toLowerCase();
+  let path = slug;
+  if (`${path}`.toLowerCase().endsWith(lowerSuffix)) {
+    path = `${path}`;
+  } else {
+    path = `${path}`.replace(/\/+$/, "");
+    path = `${path}.${ext}`;
+  }
+  const baseElement = globalThis.document.querySelector("base");
+  const baseUrl =
+    (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+  try {
+    return new URL(path, baseUrl).toString();
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function _exportPageRouteVariant(format, title) {
+  try {
+    const ext = _pageRouteVariantExtension(format);
+    const mime = _pageRouteVariantMimeType(format);
+    const url = _pageRouteVariantUrl(format);
+    if (!url) {
+      throw new Error("Current page URL unavailable");
     }
+    const response = await fetch(url, {
+      credentials: "same-origin",
+    });
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+    const content = await response.text();
+    this._downloadFile(content, `${title}.${ext}`, mime);
+    HAXStore.toast(`${ext.toUpperCase()} file downloaded successfully`, 3000, "fit-bottom");
   } catch (error) {
-    console.error("Markdown export error:", error);
-    HAXStore.toast("Markdown export service not available", 3000, "fit-bottom");
+    console.error(`Page ${format} export error:`, error);
+    HAXStore.toast(
+      `Page ${format} export not available`,
+      3000,
+      "fit-bottom",
+    );
   }
 }
 

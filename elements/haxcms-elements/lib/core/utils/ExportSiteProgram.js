@@ -13,60 +13,14 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 import { b64toBlob } from "@haxtheweb/utils/utils.js";
+import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
 
 export function createExportSiteProgram(context) {
   return async (input, values) => {
     let results = [];
 
-    // Define available export formats
-    const exportFormats = [
-      {
-        title: "Export site as HTML",
-        icon: "hax:file-html",
-        format: "html",
-        description: "Download the entire site as a single HTML document",
-      },
-      {
-        title: "Export site as Markdown",
-        icon: "hax:format-textblock",
-        format: "markdown",
-        description: "Download the entire site as Markdown",
-      },
-      {
-        title: "Export site as DOCX",
-        icon: "hax:file-docx",
-        format: "docx",
-        description: "Download the entire site as a Word document",
-      },
-      {
-        title: "Export site as PDF",
-        icon: "lrn:pdf",
-        format: "pdf",
-        description: "Download the entire site as a PDF document",
-      },
-      {
-        title: "Export site as EPUB",
-        icon: "hax:file-ebook",
-        format: "epub",
-        description: "Download the site as an EPUB book",
-      },
-      {
-        title: "Download site archive",
-        icon: "icons:archive",
-        format: "zip",
-        description: "Download the complete site as a ZIP file",
-      },
-      {
-        title: "Export site skeleton",
-        icon: "icons:description",
-        format: "skeleton",
-        description:
-          "Export a reusable site template for creating similar sites",
-      },
-    ];
-
     // Filter results based on input
-    exportFormats.forEach((format) => {
+    SITE_EXPORT_FORMATS.forEach((format) => {
       if (
         input === "" ||
         format.title.toLowerCase().includes(input.toLowerCase()) ||

@@ -45,6 +45,7 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   structure: "admin-structure",
   content: "admin-content",
   files: "admin-files",
+  transfer: "admin-transfer",
   reports: "admin-reports",
   blocks: "admin-blocks",
   editor: "admin-editor",
@@ -3678,6 +3679,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/admin/files",
       });
     }
+    SuperDaemonInstance.defineOption({
+      title: "Admin - Import / Export",
+      icon: "icons:file-download",
+      tags: [
+        "CMS",
+        "admin",
+        "import",
+        "export",
+        "transfer",
+        "site settings",
+      ],
+      value: {
+        target: this,
+        method: "_openImportExportDashboard",
+        args: [true, "Import / Export"],
+      },
+      context: "admin",
+      eventName: "super-daemon-element-method",
+      path: "CMS/admin/import-export",
+    });
     if (store.platformAllows("styleGuide")) {
       SuperDaemonInstance.defineOption({
         title: `Admin - ${this.t.styleGuide}`,
@@ -5899,6 +5920,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return "insights";
       case "content":
       case "revisions":
+      case "transfer":
         return null;
       case "files":
         return "uploadMedia";
@@ -6056,6 +6078,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return true;
       case "files":
         this._openFilesAdmin(true, routeOptions);
+        return true;
+      case "transfer":
+        this._openImportExportDashboard(true, "Import / Export", routeOptions);
         return true;
       case "reports":
         this._reportsButtonTap(null, true, routeOptions);
@@ -7011,6 +7036,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // "insights" is the compatibility platform feature key for Reports availability.
       dashboard.allowReports = this._adminRouteAllowed("reports");
       dashboard.allowFiles = this._adminRouteAllowed("files");
+      dashboard.allowImportExport = this._adminRouteAllowed("transfer");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",
         this._siteSettingsDashboardAction.bind(this),
@@ -7088,8 +7114,140 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         case "files-admin":
           this._openFilesAdmin(true);
           break;
+        case "import-export":
+          this._openImportExportDashboard(true, "Import / Export");
+          break;
       }
     }, 0);
+  }
+  _importExportDashboardAction(e) {
+    const detail = e && e.detail ? e.detail : {};
+    const action = detail && detail.action ? `${detail.action}` : "";
+    const format = detail && detail.format ? `${detail.format}` : "";
+    switch (action) {
+      case "import-file":
+        store.playSound("click");
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+        setTimeout(() => {
+          this.selectFileToProcess();
+        }, 0);
+        break;
+      case "import-link": {
+        store.playSound("click");
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+        let urlInput = "";
+        setTimeout(() => {
+          urlInput = globalThis.prompt("Paste URL to import:", "");
+          if (typeof urlInput !== "string" || urlInput.trim() === "") {
+            return;
+          }
+          const trimmedUrl = urlInput.trim();
+          if (this.isValidUrl(trimmedUrl)) {
+            this.processUrlFromInput(trimmedUrl);
+          } else {
+            store.toast("Invalid URL provided", 3000, {
+              hat: "construction",
+            });
+          }
+        }, 0);
+        break;
+      }
+      case "export-page":
+        if (format) {
+          store.playSound("click");
+          this.exportPageAs(format);
+        }
+        break;
+      case "export-site":
+        if (format) {
+          store.playSound("click");
+          this.exportSiteAs(format);
+        }
+        break;
+    }
+  }
+  _openImportExportDashboard(
+    fromSiteSettings = false,
+    sectionTitle = "Import / Export",
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("transfer", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("transfer", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-site-import-export-dashboard.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-site-import-export-dashboard",
+      );
+      dialog.allowImportFiles = this._adminRouteAllowed("files");
+      dialog.allowImportLinks = true;
+      dialog.allowPageExport = true;
+      dialog.allowSiteExport = true;
+      dialog.addEventListener(
+        "haxcms-site-import-export-action",
+        this._importExportDashboardAction.bind(this),
+      );
+      let title = sectionTitle || "Import / Export";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          title,
+          "icons:file-download",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "icons:file-download",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-min-width": "300px",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
   }
   _openContentAdmin(fromSiteSettings = false, routeOptions = {}) {
     if (!routeOptions.skipUrlUpdate) {

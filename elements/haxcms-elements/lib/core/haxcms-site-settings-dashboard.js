@@ -20,6 +20,10 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
       allowFiles: { type: Boolean, attribute: "allow-files" },
+      allowImportExport: {
+        type: Boolean,
+        attribute: "allow-import-export",
+      },
       showDisabledActions: {
         type: Boolean,
         attribute: "show-disabled-actions",
@@ -40,6 +44,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     this.allowStyleGuide = false;
     this.allowReports = false;
     this.allowFiles = false;
+    this.allowImportExport = true;
     this.showDisabledActions = false;
   }
 
@@ -58,7 +63,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         }
         .primary-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: var(--ddd-spacing-4);
         }
         .advanced-grid {
@@ -160,7 +165,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           font-size: var(--ddd-font-size-s);
         }
         .dashboard-action.advanced {
-          min-height: 112px;
+          min-height: 120px;
         }
         .dashboard-action simple-icon-lite {
           --simple-icon-color: currentColor;
@@ -237,6 +242,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     const editorDisabled = !this.allowEditor;
     const reportsDisabled = !this.allowReports;
     const filesDisabled = !this.allowFiles;
+    const importExportDisabled = !this.allowImportExport;
     const primaryActions = [
       {
         action: "theme-settings",
@@ -251,6 +257,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Structure",
         disabled: structureDisabled,
         tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
+      },
+            {
+        action: "content-admin",
+        icon: "editor:insert-drive-file",
+        label: "Content",
+        disabled: contentDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
       },
       {
         action: "reports",
@@ -268,13 +281,6 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       },
     ];
     const advancedActions = [
-      {
-        action: "content-admin",
-        icon: "editor:insert-drive-file",
-        label: "Content",
-        disabled: contentDisabled,
-        tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
-      },
       {
         action: "files-admin",
         icon: "icons:folder",
@@ -303,6 +309,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "SEO",
         disabled: seoDisabled,
         tooltip: this._disabledViaFeaturesTooltip(seoDisabled),
+      },
+      {
+        action: "import-export",
+        icon: "icons:file-download",
+        label: "Import / Export",
+        disabled: importExportDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(importExportDisabled),
       },
       {
         action: "site-settings",
