@@ -4,7 +4,6 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { autorun, toJS } from "mobx";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
-//import "./course-intro-footer.js";
 
 export class CourseIntro extends LitElement {
   static get tag() {
@@ -17,7 +16,7 @@ export class CourseIntro extends LitElement {
           display: flex;
           flex-direction: column;
         }
-        course-intro-footer {
+        .course-intro-footer {
           display: flex;
           justify-content: space-between;
           background: #000;
@@ -61,7 +60,8 @@ export class CourseIntro extends LitElement {
       <course-intro-lesson-plans
         part="course-intro-lesson-plans"
       ></course-intro-lesson-plans>
-      <course-intro-footer
+      <div
+        class="course-intro-footer"
         part="course-intro-footer"
         style="border-top: 3px solid ${this.color};"
       >
@@ -71,7 +71,7 @@ export class CourseIntro extends LitElement {
         <div slot="footer-right">
           <slot name="footer-right"></slot>
         </div>
-      </course-intro-footer>
+      </div>
     `;
   }
 }
