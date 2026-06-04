@@ -141,9 +141,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         <div
           class="menuToggle"
           part="menuToggle"
-          aria-expanded="${this.isOpen}"
-          aria-haspopup="menu"
-          aria-controls="user-menu-dropdown"
+          tabindex="-1"
         >
           <slot name="menuButton"
             ><simple-icon-lite
@@ -247,8 +245,34 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Focus the menu toggle button
    */
   _focusToggle() {
+    const menuButtonSlot =
+      this.shadowRoot && this.shadowRoot.querySelector('slot[name="menuButton"]');
+    if (menuButtonSlot) {
+      const assignedElements = menuButtonSlot.assignedElements({
+        flatten: true,
+      });
+      if (assignedElements && assignedElements.length > 0) {
+        const firstAssigned = assignedElements[0];
+        if (firstAssigned && typeof firstAssigned.focus === "function") {
+          firstAssigned.focus();
+          return;
+        }
+        if (firstAssigned && firstAssigned.querySelector) {
+          const nestedFocusable = firstAssigned.querySelector(
+            'button, a, [tabindex]:not([tabindex="-1"])',
+          );
+          if (
+            nestedFocusable &&
+            typeof nestedFocusable.focus === "function"
+          ) {
+            nestedFocusable.focus();
+            return;
+          }
+        }
+      }
+    }
     const toggle = this.shadowRoot.querySelector(".menuToggle");
-    if (toggle) {
+    if (toggle && typeof toggle.focus === "function") {
       toggle.focus();
     }
   }

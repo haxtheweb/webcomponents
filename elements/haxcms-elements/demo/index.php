@@ -21,6 +21,14 @@
       margin: 0;
       min-height: 98vh;
     }
+    haxcms-site-builder {
+      display: block;
+      min-height: 100svh;
+    }
+    #haxcmsoutdatedfallback,
+    #haxcmsoutdatedfallbacksuperold {
+      display: none;
+    }
     .use-modern-browser a {
       font-size: 22px;
     }
@@ -39,12 +47,9 @@
     }
     #loading {
       background-color: white;
-      bottom: 0px;
-      left: 0px;
+      inset: 0;
       opacity: 1;
-      position: absolute;
-      right: 0px;
-      top: 0px;
+      position: fixed;
       transition: all linear 300ms;
       -webkit-transition: all linear 300ms;
       z-index: 99999999;
@@ -128,29 +133,44 @@
     }
     </style>
     <script id="loadingscript">
-    window.addEventListener('haxcms-ready', function(e) {
-      // give the web components a second to build
-      setTimeout(function() {
-        var loadingEl = document.querySelector('#loading');
-        if (loadingEl) {
-          loadingEl.classList.add('loaded');
+    (function () {
+      var loadingDismissed = false;
+      function hideLoading() {
+        if (loadingDismissed) {
+          return;
         }
-        setTimeout(function() {
-          var loadingEl = document.querySelector('#loading');
-          if (loadingEl && loadingEl.parentNode) {
-            loadingEl.parentNode.removeChild(loadingEl);
-          }
-          var loadingStylesEl = document.querySelector('#loadingstyles');
-          if (loadingStylesEl && loadingStylesEl.parentNode) {
-            loadingStylesEl.parentNode.removeChild(loadingStylesEl);
-          }
-          var loadingScriptEl = document.querySelector('#loadingscript');
-          if (loadingScriptEl && loadingScriptEl.parentNode) {
-            loadingScriptEl.parentNode.removeChild(loadingScriptEl);
-          }
-        }, 600);
-      }, 300);
-    });
+        loadingDismissed = true;
+        var loadingEl = document.querySelector('#loading');
+        if (!loadingEl) {
+          return;
+        }
+        globalThis.requestAnimationFrame(function () {
+          globalThis.requestAnimationFrame(function () {
+            loadingEl.classList.add('loaded');
+            loadingEl.setAttribute('aria-busy', 'false');
+            setTimeout(function () {
+              loadingEl.setAttribute('hidden', 'hidden');
+            }, 120);
+          });
+        });
+      }
+      globalThis.addEventListener(
+        'json-outline-schema-active-body-changed',
+        function () {
+          hideLoading();
+        },
+        { once: true }
+      );
+      globalThis.addEventListener(
+        'haxcms-ready',
+        function () {
+          setTimeout(function () {
+            hideLoading();
+          }, 2500);
+        },
+        { once: true }
+      );
+    })();
   </script>
 </head>
 <body no-js <?php print $site->getSitePageAttributes();?>>

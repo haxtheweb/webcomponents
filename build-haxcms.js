@@ -12,15 +12,32 @@ globalThis.customElements.define = (name, cl, conf) => {
 // HAXcms specific clean up and platforn integration
 // this ties in custom theme files as well as removes DOM nodes related
 // to serving a legacy audience in the event this is evergreen (most times)
+var outdatedFallback = document.getElementById('haxcmsoutdatedfallback');
+var outdatedFallbackSuperold = document.getElementById('haxcmsoutdatedfallbacksuperold');
+function hideOutdatedFallback() {
+  if (outdatedFallback) {
+    outdatedFallback.style.display = 'none';
+  }
+  if (outdatedFallbackSuperold) {
+    outdatedFallbackSuperold.style.display = 'none';
+  }
+}
+function showOutdatedFallback() {
+  if (outdatedFallback) {
+    outdatedFallback.style.display = 'block';
+  }
+  if (outdatedFallbackSuperold) {
+    outdatedFallbackSuperold.style.display = 'block';
+  }
+}
+hideOutdatedFallback();
 if (/^h/.test(document.location)) {
   try {
     var scriptDef = document.getElementsByTagName('script')[0];
     // if a dynamic import fails, we bail over to the compiled version
     new Function('import("");');
-    // remove fallback cause if we passed dynamic import then we are evergreen
-    if (document.getElementById("haxcmsoutdatedfallback")) {
-      document.body.removeChild(document.getElementById("haxcmsoutdatedfallback"));
-    }
+    // if we passed dynamic imports then we are evergreen
+    hideOutdatedFallback();
     if (!window.__appCustomEnv) {
         var build2 = document.createElement('script');
         build2.src = './custom/build/custom.es6.js';
@@ -39,17 +56,15 @@ if (/^h/.test(document.location)) {
       ancient = true;
     }
     if (!ancient) {
-      // remove fallback cause if we passed dynamic import then we are evergreen
-      if (document.getElementById("haxcmsoutdatedfallback")) {
-        document.body.removeChild(document.getElementById("haxcmsoutdatedfallback"));
-      }
+      // if we passed dynamic imports then we are evergreen
+      hideOutdatedFallback();
     }
     else {
       // we bombed somewhere above, this implies that it's some odd between version
       // most likely Safari 9ish, IE pre 11 and anything uber old. Serve no JS variation
       if (document.getElementById('site')) {
         document.getElementById('site').style.display = 'none';
-        document.getElementById('haxcmsoutdatedfallbacksuperold').style.display = 'block';
+        showOutdatedFallback();
       }
     }
   }
@@ -58,7 +73,7 @@ if (/^h/.test(document.location)) {
   // so let's show the simplistic site viewer / iframe theme
   if (document.getElementById('site')) {
     document.getElementById('site').style.display = 'none';
-    document.getElementById('haxcmsoutdatedfallbacksuperold').style.display = 'block';
+    showOutdatedFallback();
   }
 }
 var cdn = "./";

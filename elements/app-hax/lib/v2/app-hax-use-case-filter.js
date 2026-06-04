@@ -988,7 +988,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                     .demoLink=${item.demoLink || ""}
                     .iconImage=${item.useCaseIcon || []}
                     ?dark="${this.dark}"
-                    aria-label="Create from template: ${item.useCaseTitle}"
                     @click=${() => this.openTemplateModal(item)}
                   ></app-hax-use-case>
                 </div>
@@ -1002,7 +1001,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .description=${"Browse all template starters"}
                 .iconImage=${[{ icon: "icons:add", tooltip: "More templates" }]}
                 ?dark="${this.dark}"
-                aria-label=${isMobile ? "Templates" : "More templates"}
                 @click=${() =>
                   this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
@@ -1016,7 +1014,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                       .description=${"Start from a blank site using a theme"}
                       .iconImage=${[{ icon: "editor:insert-drive-file", tooltip: "From scratch" }]}
                       ?dark="${this.dark}"
-                      aria-label="From scratch"
                       @click=${() =>
                         this.scrollToGroup("from-scratch-heading", "blank")}
                     ></app-hax-use-case>
@@ -1033,7 +1030,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                       .description=${"Import content from an existing source"}
                       .iconImage=${[{ icon: "icons:cloud-download", tooltip: "Import content" }]}
                       ?dark="${this.dark}"
-                      aria-label="Import"
                       @click=${() =>
                         this.scrollToGroup("from-existing-heading", "import")}
                     ></app-hax-use-case>
@@ -1084,7 +1080,8 @@ export class AppHaxUseCaseFilter extends LitElement {
                 }}
                 aria-label="Sort options"
                 aria-expanded=${this.sortMenuOpen}
-                aria-has-popup="menu"
+                aria-haspopup="menu"
+                aria-controls="sort-menu"
               >
                 <simple-icon-lite 
                   icon="av:sort-by-alpha"
@@ -1092,7 +1089,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 ></simple-icon-lite>
               </button>
               ${this.sortMenuOpen ? html`
-                <div class="sort-menu" role="menu">
+                <div id="sort-menu" class="sort-menu" role="menu" aria-label="Sort options">
                   <button 
                     role="menuitem" 
                     class="sort-menu-item" 
@@ -1191,7 +1188,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                     }
                   });
 
-                  const renderEntries = (entries, typeLabel) => {
+                  const renderEntries = (entries) => {
                     return entries.map(
                       (entry, gridIndex) => html`
                         <div
@@ -1210,7 +1207,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                             .isSelected=${entry.item.isSelected || false}
                             .showContinue=${entry.item.showContinue || false}
                             ?dark="${this.dark}"
-                            aria-label="${typeLabel}: ${entry.item.useCaseTitle}"
                             @toggle-display=${(e) =>
                               this.toggleDisplay(entry.index, e)}
                             @continue-action=${() =>
@@ -1241,7 +1237,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                             aria-label="Template-based starters"
                             aria-describedby="template-count"
                           >
-                            ${renderEntries(skeletonEntries, "Template")}
+                            ${renderEntries(skeletonEntries)}
                           </div>`
                         : html`<p
                             role="status"
@@ -1271,7 +1267,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                             aria-label="Theme-based starters"
                             aria-describedby="template-count"
                           >
-                            ${renderEntries(blankEntries, "Theme")}
+                            ${renderEntries(blankEntries)}
                           </div>`
                         : html`<p
                             role="status"
@@ -1303,7 +1299,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                                   aria-label="Import options"
                                   aria-describedby="template-count"
                                 >
-                                  ${renderEntries(importEntries, "Import")}
+                                  ${renderEntries(importEntries)}
                                 </div>`
                               : html`<p
                                   role="status"
@@ -1352,7 +1348,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                           .isSelected=${this.selectedCardIndex === -1}
                           .showContinue=${this.selectedCardIndex === -1}
                           ?dark="${this.dark}"
-                          aria-label="Template: Blank Site"
                           @toggle-display=${(e) => this.toggleDisplay(-1, e)}
                           @continue-action=${() => this.continueAction(-1)}
                         ></app-hax-use-case>

@@ -125,7 +125,24 @@ globalThis.WCAutoload.process = (e) => {
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers
-globalThis.addEventListener("load", globalThis.WCAutoload.process);
+globalThis.WCAutoload.initialProcess = () => {
+  globalThis.WCAutoload.process().catch((e) => {
+    console.warn(e);
+  });
+};
+if (
+  globalThis.document &&
+  globalThis.document.readyState &&
+  globalThis.document.readyState !== "loading"
+) {
+  setTimeout(() => {
+    globalThis.WCAutoload.initialProcess();
+  }, 0);
+} else {
+  globalThis.addEventListener("load", globalThis.WCAutoload.initialProcess, {
+    once: true,
+  });
+}
 
 // edge case; definition to load comes in AFTER we have loaded the page
 // and MutationObserver doesn't pick up the tag being there

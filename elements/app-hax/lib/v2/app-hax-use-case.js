@@ -319,6 +319,18 @@ export class AppHaxUseCase extends LitElement {
       this.source &&
       typeof this.source === "string" &&
       this.source.trim() !== "";
+    const safeTitle =
+      this.title &&
+      typeof this.title === "string" &&
+      this.title.trim() !== ""
+        ? this.title.trim()
+        : "Untitled template";
+    const cardLabel =
+      this.description &&
+      typeof this.description === "string" &&
+      this.description.trim() !== ""
+        ? `${safeTitle}: ${this.description.trim()}`
+        : safeTitle;
 
     const primaryIcon =
       Array.isArray(this.iconImage) &&
@@ -328,12 +340,12 @@ export class AppHaxUseCase extends LitElement {
         : "icons:cloud-download";
 
     return html`
-      <button class="card" @click="${this.toggleDisplay}">
+      <button class="card" @click="${this.toggleDisplay}" aria-label="${cardLabel}">
         <div class="image">
           ${hasSource
             ? html`<img
             src="${this.source}"
-            alt="${this.title}"
+            alt="${safeTitle}"
             loading="lazy"
             decoding="async"
             fetchpriority="high"
@@ -343,7 +355,7 @@ export class AppHaxUseCase extends LitElement {
               </div>`}
         </div>
         <div class="title">
-          <h3>${this.title}</h3>
+          <h3>${safeTitle}</h3>
         </div>
       </button>
     `;

@@ -412,7 +412,7 @@ class SimpleModal extends LitElement {
             : ``
         }
       </div>
-      <h5 id="headerbar" part="headerbar"><slot name="header"></slot></h4>
+      <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
       <p id="simple-modal-content" part="content">
         <slot name="content"></slot>
       </p>

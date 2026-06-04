@@ -137,7 +137,7 @@ export class AppHaxScrollButton extends LitElement {
         aria-label="${this.label} - Navigate to section"
         aria-describedby="scroll-desc"
       >
-        <h5 aria-hidden="true">${this.label}</h5>
+        <span aria-hidden="true">${this.label}</span>
         <div id="scroll-desc" class="sr-only">
           Click to scroll to the ${this.label} section
         </div>

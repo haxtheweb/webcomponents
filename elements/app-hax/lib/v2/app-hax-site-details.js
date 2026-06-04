@@ -358,6 +358,8 @@ export class AppHaxSiteDetails extends SimpleColors {
                   icon="${item.icon}"
                   id="op-${item.op}"
                   class="info-icon"
+                  label="${item.name}"
+                  aria-label="${item.name}"
                   @click=${this.siteOperation}
                 >
                   <div class="info-item">${item.name.toLowerCase()}</div>

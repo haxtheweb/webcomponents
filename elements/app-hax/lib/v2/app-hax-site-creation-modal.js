@@ -516,6 +516,44 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     ];
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (
+      changedProperties.has("open") ||
+      changedProperties.has("currentStep")
+    ) {
+      this._syncDialogA11yLabel();
+    }
+  }
+
+  _getDialogLabel() {
+    if (this.currentStep === 1) {
+      return "Create New Site";
+    }
+    if (this.currentStep === 2) {
+      return "Creating Site";
+    }
+    return "Site Created";
+  }
+
+  _syncDialogA11yLabel() {
+    const modal =
+      this.shadowRoot && this.shadowRoot.querySelector("web-dialog");
+    if (!modal) {
+      return;
+    }
+    const label = this._getDialogLabel();
+    modal.setAttribute("aria-label", label);
+    if (modal.shadowRoot) {
+      const dialogFocusTrap = modal.shadowRoot.querySelector("#dialog");
+      if (dialogFocusTrap) {
+        dialogFocusTrap.setAttribute("aria-label", label);
+      }
+    }
+  }
+
   _getNameParamFromUrl() {
     try {
       const url = new URL(globalThis.location.href);
@@ -619,6 +657,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         this.shadowRoot && this.shadowRoot.querySelector("web-dialog");
       if (modal) {
         modal.open = true;
+        this._syncDialogA11yLabel();
       }
 
       // Focus the input after the modal opens
@@ -1201,6 +1240,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       <web-dialog
         .open="${this.open}"
         center
+        aria-label="${this._getDialogLabel()}"
         @close="${this.handleModalClosed}"
       >
         <div class="modal-header">

@@ -2145,6 +2145,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   render() {
+    const displayUserName =
+      this.userName && this.userName.trim() !== "" ? this.userName : "User";
     return html`<app-hax-router></app-hax-router>
       <header>
         <app-hax-top-bar>
@@ -2190,7 +2192,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   slot="menuButton"
                   id="tbchar"
                   title="System menu"
-                  aria-label="User menu for ${this.userName}"
+                  aria-label="User menu for ${displayUserName}"
                   aria-expanded="${this.userMenuOpen}"
                   aria-haspopup="menu"
                 >
@@ -2199,7 +2201,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   width="68"
                   height="68"
                   hat="${this.userMenuOpen ? "edit" : "none"}"
-                  alt="Avatar for ${this.userName}"
+                  alt="Avatar for ${displayUserName}"
                   ?walking="${this.rpgWalk}"
                   role="img"
                 ></rpg-character>
@@ -2209,7 +2211,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   slot="menuButton"
                   position="bottom"
                 >
-                  ${this.userName}
+                  ${displayUserName}
                 </simple-tooltip>
                 <div slot="pre-menu" class="ops-panel">
                   <wired-button

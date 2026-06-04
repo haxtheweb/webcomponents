@@ -43,6 +43,9 @@ export class AppHaxFilterTag extends LitElement {
           display: flex;
           align-items: center;
         }
+        .tag-label {
+          margin: 0;
+        }
         .remove {
           cursor: pointer;
           margin-left: 6px;
@@ -66,7 +69,7 @@ export class AppHaxFilterTag extends LitElement {
   render() {
     return html`
       <div>
-        <h4>${this.label}</h4>
+        <span class="tag-label">${this.label}</span>
         <span class="remove" @click="${this.removeTag}">✖</span>
       </div>
     `;

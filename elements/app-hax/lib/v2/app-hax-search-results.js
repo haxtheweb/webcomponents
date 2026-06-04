@@ -347,6 +347,10 @@ export class AppHaxSearchResults extends SimpleColors {
           text-align: center;
           padding: var(--ddd-spacing-6, 24px);
           margin: var(--ddd-spacing-4, 16px);
+          width: 100%;
+          min-width: 100%;
+          height: auto;
+          display: block;
         }
 
         /* Screen reader only text */
@@ -497,12 +501,12 @@ export class AppHaxSearchResults extends SimpleColors {
                     </app-hax-site-bar>
                   </li>`,
               )
-            : html`<div id="noResult">
+            : html`<li id="noResult" role="status" aria-live="polite">
                 No
                 results${this.searchTerm !== ""
                   ? html`<strong>"${this.searchTerm}"</strong>`
                   : ", Create a new site!"}
-              </div>`}
+              </li>`}
         </ul>
         <simple-tooltip for="scroll-right-btn" position="top"
           >Next</simple-tooltip
