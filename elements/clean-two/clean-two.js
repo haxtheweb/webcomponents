@@ -228,6 +228,7 @@ class CleanTwo extends LTIResizingMixin(
           flex: 1;
           height: auto;
           height: 100vh;
+          height: 100dvh;
           position: absolute;
           width: 100%;
           margin: 0 auto;
@@ -245,6 +246,7 @@ class CleanTwo extends LTIResizingMixin(
         }
         :host([is-logged-in]) .body-wrapper {
           height: calc(100vh - 56px);
+          height: calc(100dvh - 56px);
         }
         :host([menu-open]) .body-wrapper .left-col {
           margin-left: 0px;
@@ -349,6 +351,7 @@ class CleanTwo extends LTIResizingMixin(
           overflow-y: auto;
           flex: 1 1 auto;
           height: calc(100vh - var(--ddd-spacing-10));
+          height: calc(100dvh - var(--ddd-spacing-10));
           left: 0;
           margin: 0;
           display: block;
@@ -364,6 +367,7 @@ class CleanTwo extends LTIResizingMixin(
 
         :host([is-logged-in]) site-menu {
           height: calc(100vh - 56px);
+          height: calc(100dvh - 56px);
         }
 
         main {
@@ -394,8 +398,12 @@ class CleanTwo extends LTIResizingMixin(
           display: flex;
           padding: 0;
           flex-direction: column;
+          scroll-padding-top: var(--ddd-spacing-5);
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
+        }
+        :host([is-logged-in]) .content-wrapper {
+          scroll-padding-top: calc(var(--ddd-spacing-5) + 56px);
         }
         .header {
           z-index: 2;
@@ -453,6 +461,12 @@ class CleanTwo extends LTIResizingMixin(
           margin: 0px 16px;
           display: block;
           padding: 0;
+        }
+        #haxcms-theme-top {
+          scroll-margin-top: var(--ddd-spacing-5);
+        }
+        :host([is-logged-in]) #haxcms-theme-top {
+          scroll-margin-top: calc(var(--ddd-spacing-5) + 56px);
         }
         @media screen and (max-width: 640px) {
           site-breadcrumb {
@@ -649,14 +663,23 @@ class CleanTwo extends LTIResizingMixin(
       super.firstUpdated(changedProperties);
     }
     globalThis.document.body.style.overflow = "hidden";
-    this.HAXCMSThemeSettings.themeTop =
-      this.shadowRoot.querySelector("#haxcms-theme-top");
-    this.HAXCMSThemeSettings.siteMenuContent =
-      this.shadowRoot.querySelector(".body-wrapper");
+    const themeTop = this.shadowRoot.querySelector("#haxcms-theme-top");
+    const bodyWrapper = this.shadowRoot.querySelector(".body-wrapper");
+    const contentWrapper = this.shadowRoot.querySelector(".content-wrapper");
+    const inEmbeddedContext = globalThis.self !== globalThis.top;
+    this.HAXCMSThemeSettings.themeTop = themeTop;
+    this.HAXCMSThemeSettings.siteMenuContent = bodyWrapper;
+    this.HAXCMSThemeSettings.scrollSettings = {
+      behavior: "instant",
+      block: "start",
+      inline: "nearest",
+    };
     this.HAXCMSThemeSettings.scrollTarget =
-      this.shadowRoot.querySelector(".content-wrapper");
+      inEmbeddedContext && contentWrapper
+        ? contentWrapper
+        : themeTop || contentWrapper;
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
-      this.HAXCMSThemeSettings.scrollTarget;
+      contentWrapper || this.HAXCMSThemeSettings.siteMenuContent;
     // shadow ready which means we should be able to open this even on a slow load
     // if we are the route in question
     store.internalRoutes["search"].callback = this.siteModalForceClick;

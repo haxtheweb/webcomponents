@@ -348,6 +348,26 @@ describe("clean-two mobile responsiveness", () => {
     expect(leftColStyle.zIndex).to.equal("16");
     expect(leftColStyle.backgroundColor).to.not.equal("rgba(0, 0, 0, 0)");
   });
+  it("targets a true top anchor for route scroll in logged-in mobile", async () => {
+    const el = await fixture(html`<clean-two is-logged-in></clean-two>`);
+    const cssText = el.constructor.styles
+      .map((style) => style.cssText || "")
+      .join("\n");
+    const inEmbeddedContext = globalThis.self !== globalThis.top;
+    const themeTop = el.shadowRoot.querySelector("#haxcms-theme-top");
+    const contentWrapper = el.shadowRoot.querySelector(".content-wrapper");
+
+    expect(themeTop).to.exist;
+    expect(contentWrapper).to.exist;
+    expect(el.HAXCMSThemeSettings.scrollSettings.block).to.equal("start");
+    expect(el.HAXCMSThemeSettings.scrollTarget).to.equal(
+      inEmbeddedContext ? contentWrapper : themeTop,
+    );
+    expect(cssText).to.include("height: 100dvh;");
+    expect(cssText).to.include("height: calc(100dvh - 56px);");
+    expect(cssText).to.include("scroll-padding-top");
+    expect(cssText).to.include("scroll-margin-top");
+  });
 
   it("maintains accessibility on mobile", async () => {
     const el = await fixture(html`<clean-two></clean-two>`);
