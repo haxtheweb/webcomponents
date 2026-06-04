@@ -16,6 +16,10 @@ export class AppHaxBackendAPI extends LitElement {
   constructor() {
     super();
     this.jwt = localStorageGet("jwt", null);
+    this.__loopBlock = false;
+    this.__connectionTestPending = null;
+    this.__retryCounts = {};
+    this.__maxRefreshRetries = 2;
     this.method =
       window && globalThis.appSettings && globalThis.appSettings.demo
         ? "GET"
@@ -36,6 +40,147 @@ export class AppHaxBackendAPI extends LitElement {
     autorun(() => {
       this.token = toJS(store.token);
     });
+  }
+  _hasValidJWT(jwt) {
+    return jwt !== "null" && !!jwt;
+  }
+  _getRetryKey(call, data = {}) {
+    const safeData = {};
+    Object.keys(data).forEach((key) => {
+      if (key !== "jwt" && key !== "token") {
+        safeData[key] = data[key];
+      }
+    });
+    return `${call}:${JSON.stringify(safeData)}`;
+  }
+  _incrementRetryCount(retryKey) {
+    if (!this.__retryCounts[retryKey]) {
+      this.__retryCounts[retryKey] = 0;
+    }
+    this.__retryCounts[retryKey] += 1;
+    return this.__retryCounts[retryKey];
+  }
+  _clearRetryCount(retryKey) {
+    if (this.__retryCounts[retryKey]) {
+      delete this.__retryCounts[retryKey];
+    }
+  }
+  _clearAllRetryCounts() {
+    this.__retryCounts = {};
+  }
+  _triggerLogout() {
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+  }
+  _clearAuthSession(triggerLogout = false) {
+    this.jwt = null;
+    store.jwt = null;
+    store.authValidated = false;
+    store.authTesting = false;
+    store.user = {
+      name: "",
+    };
+    this._clearAllRetryCounts();
+    if (triggerLogout) {
+      this._triggerLogout();
+    }
+  }
+  async _validateConnection() {
+    if (!(this.appSettings && this.appSettings.connectionTest)) {
+      const hasJWT = this._hasValidJWT(this.jwt);
+      store.authValidated = hasJWT;
+      store.authTesting = false;
+      return hasJWT;
+    }
+    if (this.__connectionTestPending) {
+      return this.__connectionTestPending;
+    }
+    store.authTesting = true;
+    const payload = {};
+    if (this._hasValidJWT(this.jwt)) {
+      payload.jwt = this.jwt;
+    }
+    if (this.token) {
+      payload.token = this.token;
+    }
+    const options = {
+      method: this.method,
+    };
+    let requestUrl = `${this.basePath}${this.appSettings.connectionTest}`;
+    if (this.method === "GET") {
+      const search = new URLSearchParams(payload).toString();
+      if (search) {
+        requestUrl += `?${search}`;
+      }
+    } else {
+      options.headers = {
+        "Content-Type": "application/json",
+      };
+      options.body = JSON.stringify(payload);
+    }
+    this.__connectionTestPending = fetch(requestUrl, options)
+      .then(async (response) => {
+        if (!response.ok) {
+          return {
+            authenticated: false,
+          };
+        }
+        try {
+          return await response.json();
+        } catch (e) {
+          return {
+            authenticated: false,
+          };
+        }
+      })
+      .then((result) => {
+        if (result && result.authenticated) {
+          const nextJWT = result.jwt ? result.jwt : this.jwt;
+          if (this._hasValidJWT(nextJWT)) {
+            this.jwt = nextJWT;
+            store.jwt = nextJWT;
+            store.authValidated = true;
+            if (result.user && typeof result.user === "string") {
+              store.user = {
+                name: result.user,
+              };
+            }
+            return true;
+          }
+        }
+        store.authValidated = false;
+        return false;
+      })
+      .catch(() => {
+        store.authValidated = false;
+        return false;
+      })
+      .finally(() => {
+        store.authTesting = false;
+        this.__connectionTestPending = null;
+      });
+    return this.__connectionTestPending;
+  }
+  async _syncUserAfterValidation() {
+    if (this.__loopBlock) {
+      return;
+    }
+    this.__loopBlock = true;
+    const userData = await this.makeCall("getUserDataPath");
+    if (userData && userData.data) {
+      store.user = {
+        name: userData.data.userName,
+      };
+    } else {
+      this._clearAuthSession(false);
+    }
+    this.__loopBlock = false;
   }
 
   static get properties() {
@@ -64,96 +209,80 @@ export class AppHaxBackendAPI extends LitElement {
 
   // failed to get valid JWT, wipe current
   jwtFailed(e) {
-    this.jwt = null;
-    this.token = null;
+    this._clearAuthSession(false);
   }
   // event meaning we either got or removed the jwt
   async jwtChanged(e) {
     this.jwt = e.detail.value;
-    // sanity check we actually got a response
-    // this fires every time our JWT changes so it can update even after already logging in
-    // like hitting refresh or coming back to the app
-    if (!this.__loopBlock && this.jwt) {
-      this.__loopBlock = true;
-      const userData = await this.makeCall("getUserDataPath");
-      if (userData && userData.data) {
-        store.user = {
-          name: userData.data.userName,
-        };
-        this.__loopBlock = false;
-      } else {
-        // getUserData failed - JWT is invalid/expired
-        // Clear it and let the logout handler trigger login modal
-        this.__loopBlock = false;
-        this.jwt = null;
-        store.jwt = null;
-      }
+    if (!this._hasValidJWT(this.jwt)) {
+      this._clearAuthSession(false);
+      return;
     }
+    const isAuthenticated = await this._validateConnection();
+    if (!isAuthenticated) {
+      this._clearAuthSession(true);
+      return;
+    }
+    await this._syncUserAfterValidation();
   }
 
   async makeCall(call, data = {}, save = false, callback = false) {
     if (this.appSettings && this.appSettings[call]) {
+      const retryKey = this._getRetryKey(call, data);
+      const requestData = Object.assign({}, data);
       var urlRequest = `${this.basePath}${this.appSettings[call]}`;
       var options = {
         method: this.method,
       };
       if (this.jwt) {
-        data.jwt = this.jwt;
+        requestData.jwt = this.jwt;
       }
       if (this.token) {
-        data.token = this.token;
+        requestData.token = this.token;
       }
       // encode in search params or body of the request
       if (this.method === "GET") {
-        urlRequest += "?" + new URLSearchParams(data).toString();
+        urlRequest += "?" + new URLSearchParams(requestData).toString();
       } else {
-        options.body = JSON.stringify(data);
+        options.headers = {
+          "Content-Type": "application/json",
+        };
+        options.body = JSON.stringify(requestData);
       }
       const response = await fetch(`${urlRequest}`, options).then(
         (response) => {
           if (response.ok) {
+            this._clearRetryCount(retryKey);
             return response.json();
           } else if (response.status === 401) {
-            // call not allowed, log out bc unauthorized
-            globalThis.dispatchEvent(
-              new CustomEvent("jwt-login-logout", {
-                composed: true,
-                bubbles: true,
-                cancelable: false,
-                detail: true,
-              }),
-            );
+            this._clearRetryCount(retryKey);
+            this._clearAuthSession(true);
           }
           // we got a miss, logout cause something is wrong
           else if (response.status === 404) {
-            // call not allowed, log out bc unauthorized
-            globalThis.dispatchEvent(
-              new CustomEvent("jwt-login-logout", {
-                composed: true,
-                bubbles: true,
-                cancelable: false,
-                detail: true,
-              }),
-            );
+            this._clearRetryCount(retryKey);
+            this._clearAuthSession(true);
           } else if (response.status === 403) {
-            // if this was a 403 it should be because of a bad jwt
-            // or out of date one. let's kick off a call to get a new one
-            // hopefully from the timing token, knowing this ALSO could kick
-            // over here.
-            globalThis.dispatchEvent(
-              new CustomEvent("jwt-login-refresh-token", {
-                composed: true,
-                bubbles: true,
-                cancelable: false,
-                detail: {
-                  element: {
-                    obj: this,
-                    callback: "refreshRequest",
-                    params: [call, data, save, callback],
+            const retryCount = this._incrementRetryCount(retryKey);
+            if (retryCount > this.__maxRefreshRetries) {
+              this._clearRetryCount(retryKey);
+              this._clearAuthSession(true);
+            } else {
+              globalThis.dispatchEvent(
+                new CustomEvent("jwt-login-refresh-token", {
+                  composed: true,
+                  bubbles: true,
+                  cancelable: false,
+                  detail: {
+                    element: {
+                      obj: this,
+                      callback: "refreshRequest",
+                      params: [call, data, save, callback, retryKey],
+                    },
                   },
-                },
-              }),
-            );
+                }),
+              );
+            }
           }
           return {};
         },
@@ -175,12 +304,14 @@ export class AppHaxBackendAPI extends LitElement {
    * when our JWT needed refreshed
    */
   refreshRequest(jwt, response) {
-    const { call, data, save, callback } = response;
+    const { call, data, save, callback, retryKey } = response;
     // force the jwt to be the updated jwt
     // this helps avoid any possible event timing issue
     if (jwt) {
       this.jwt = jwt;
       this.makeCall(call, data, save, callback);
+    } else if (retryKey) {
+      this._clearRetryCount(retryKey);
     }
   }
 
@@ -198,6 +329,24 @@ export class AppHaxBackendAPI extends LitElement {
       async () =>
         await this.makeCall("createSite", this._formatSitePostData(), true),
     ];
+    if (this.appSettings && this.appSettings.connectionTest) {
+      this._validateConnection().then((isAuthenticated) => {
+        if (isAuthenticated) {
+          this._syncUserAfterValidation();
+        } else {
+          this._clearAuthSession(false);
+        }
+      });
+    } else if (this._hasValidJWT(this.jwt)) {
+      this.jwtChanged({
+        detail: {
+          value: this.jwt,
+        },
+      });
+    } else {
+      store.authValidated = false;
+      store.authTesting = false;
+    }
   }
 
   _normalizeSiteLicense(rawValue) {

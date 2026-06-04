@@ -35,20 +35,24 @@ class HAXCMSBackendPHP extends LitElement {
       ></jwt-login>
     `;
   }
-  jwtChanged(e) {
+  async jwtChanged(e) {
     this.jwt = e.detail.value;
     store.jwt = this.jwt;
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
-    // support updates after the fact
     if (
-      this.jwt != null &&
-      this.jwt != "null" &&
-      this.jwt != "" &&
-      typeof this.jwt == "string"
+      this.__ignoreNextJwtValidation &&
+      this.jwt === this.__ignoreNextJwtValidation
     ) {
-      this.dynamicallyImportEditor();
+      this.__ignoreNextJwtValidation = null;
+      return;
+    }
+    if (this._hasValidJWT(this.jwt)) {
+      await this._gateEditorAccess();
+    } else {
+      this._setConnectionValidated(false);
+      this._dispatchNotLoggedIn();
     }
   }
   /**
@@ -69,38 +73,124 @@ class HAXCMSBackendPHP extends LitElement {
           this.jwt = globalThis.appSettings.jwt;
         }
       }
-      if (
-        this.jwt != null &&
-        this.jwt != "null" &&
-        this.jwt != "" &&
-        typeof this.jwt == "string"
-      ) {
-        this.dynamicallyImportEditor();
+      const shouldValidateConnection =
+        (store.appSettings && store.appSettings.connectionTest) ||
+        this._hasValidJWT(this.jwt);
+      if (shouldValidateConnection) {
+        this._gateEditorAccess();
       } else {
-        // other things will have to sort out the fact that while we
-        // DO have a dynamic backend, we didn't get a hit on the JWT
-        // meaning that we are in a dynamic environment but logged out
-        // at the moment (or viewing a site we don't have authorization to)
-        globalThis.dispatchEvent(
-          new CustomEvent("haxcms-not-logged-in", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: this,
-          }),
-        );
+        this._setConnectionValidated(false);
+        this._dispatchNotLoggedIn();
       }
     }, 500);
   }
   constructor() {
     super();
     this.__disposer = [];
+    this.__connectionTestPending = null;
+    this.__ignoreNextJwtValidation = null;
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
         this.jwt = toJS(store.jwt);
       }),
     );
+  }
+  _hasValidJWT(jwt) {
+    return (
+      jwt != null &&
+      jwt != "null" &&
+      jwt != "" &&
+      typeof jwt == "string"
+    );
+  }
+  _setConnectionValidated(validated) {
+    store.connectionValidated = validated === true;
+  }
+  _dispatchNotLoggedIn() {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-not-logged-in", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this,
+      }),
+    );
+  }
+  async _runConnectionTest() {
+    if (!(store.appSettings && store.appSettings.connectionTest)) {
+      const hasValidJWT = this._hasValidJWT(this.jwt);
+      this._setConnectionValidated(hasValidJWT);
+      return hasValidJWT;
+    }
+    if (this.__connectionTestPending) {
+      return this.__connectionTestPending;
+    }
+    const requestData = {};
+    if (this._hasValidJWT(this.jwt)) {
+      requestData.jwt = this.jwt;
+    }
+    this.__connectionTestPending = fetch(store.appSettings.connectionTest, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          return {
+            authenticated: false,
+          };
+        }
+        try {
+          return await response.json();
+        } catch (e) {
+          return {
+            authenticated: false,
+          };
+        }
+      })
+      .then((result) => {
+        if (result && result.authenticated) {
+          const nextJWT = result.jwt ? result.jwt : this.jwt;
+          if (this._hasValidJWT(nextJWT)) {
+            if (result.jwt && result.jwt !== this.jwt) {
+              this.__ignoreNextJwtValidation = result.jwt;
+              this.jwt = result.jwt;
+            }
+            store.jwt = nextJWT;
+            if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
+              store.cmsSiteEditor.instance.jwt = nextJWT;
+            }
+            this._setConnectionValidated(true);
+            return true;
+          }
+        }
+        this._setConnectionValidated(false);
+        return false;
+      })
+      .catch(() => {
+        this._setConnectionValidated(false);
+        return false;
+      })
+      .finally(() => {
+        this.__connectionTestPending = null;
+      });
+    return this.__connectionTestPending;
+  }
+  async _gateEditorAccess() {
+    const isAuthenticated = await this._runConnectionTest();
+    if (isAuthenticated) {
+      this.dynamicallyImportEditor();
+      return;
+    }
+    this.jwt = null;
+    store.jwt = null;
+    if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
+      store.cmsSiteEditor.instance.jwt = null;
+    }
+    this._dispatchNotLoggedIn();
   }
   /**
    * Detached life cycle

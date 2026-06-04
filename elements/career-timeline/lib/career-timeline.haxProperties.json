@@ -34,7 +34,7 @@
     {
       "tag": "career-timeline",
       "properties": {
-        "title": "Career Timeline",
+        "title": "Career Timeline"
       },
       "content": "<career-org-item organization=\"Add Organization\" location=\"Enter Location\"></career-org-item>"
     }

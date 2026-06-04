@@ -1549,7 +1549,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         // if we get new data source, trigger a rebuild of the site list
         const results = await AppHaxAPI.makeCall("getSitesList");
         store.manifest = results.data;
-      } else if (toJS(store.appReady) && !toJS(store.isLoggedIn)) {
+      } else if (
+        toJS(store.appReady) &&
+        !toJS(store.isLoggedIn) &&
+        !toJS(store.authTesting)
+      ) {
         this.login();
       }
     });

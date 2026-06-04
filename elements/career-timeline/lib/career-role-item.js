@@ -19,8 +19,8 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.title = "Role Title";
-    this.startDate = new Date();
-    this.endDate = new Date();
+    this.startDate = new Date().toISOString();
+    this.endDate = new Date().toISOString();
     this.skills = [];
   }
 
@@ -133,9 +133,20 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "startDate" && oldValue !== undefined) {
+        const normalizedStartDate = this._normalizeDate(this.startDate);
+
+        if (!normalizedStartDate) {
+          this.startDate = new Date().toISOString();
+          return;
+        }
+
+        if (this.startDate !== normalizedStartDate) {
+          this.startDate = normalizedStartDate;
+          return;
+        }
         // When people hit "clear" from the HAX editor, default back to current day
         // Otherwise, the empty value returns all the way back to the start of Unix time!
-        if(!this.startDate) this.startDate = new Date();
+        if(!this.startDate) this.startDate = new Date().toISOString();
 
         this.dispatchEvent(new CustomEvent('start-date-changed', {
           bubbles: true,
@@ -146,7 +157,19 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       };
 
       if (propName === "endDate" && oldValue !== undefined) {
-        if(!this.endDate) this.endDate = new Date();
+        const normalizedEndDate = this._normalizeDate(this.endDate);
+
+        if (!normalizedEndDate) {
+          this.endDate = new Date().toISOString();
+          return;
+        }
+
+        if (this.endDate !== normalizedEndDate) {
+          this.endDate = normalizedEndDate;
+          return;
+        }
+
+        if(!this.endDate) this.endDate = new Date().toISOString();
       };
     });
   }
@@ -162,9 +185,49 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
     }
   }
 
+  _stripWrappedQuotes(value) {
+    return value
+      .replace(/(^&quot;|&quot;$)/g, "")
+      .replace(/(^"+|"+$)/g, "")
+      .replace(/(^'+|'+$)/g, "");
+  }
+
+  _normalizeDate(value) {
+    if (value === undefined || value === null) {
+      return "";
+    }
+
+    if (value instanceof Date) {
+      if (Number.isNaN(value.getTime())) {
+        return "";
+      }
+      return value.toISOString();
+    }
+
+    let normalizedValue = String(value).trim();
+    if (!normalizedValue) {
+      return "";
+    }
+
+    normalizedValue = this._stripWrappedQuotes(normalizedValue);
+    const dateObj = new Date(normalizedValue);
+    if (Number.isNaN(dateObj.getTime())) {
+      return "";
+    }
+
+    return dateObj.toISOString();
+  }
+
   _formatDate(){
-    const startDateObj = new Date(this.startDate);
-    const endDateObj = new Date(this.endDate);
+    const normalizedStartDate = this._normalizeDate(this.startDate);
+    const normalizedEndDate = this._normalizeDate(this.endDate);
+    if (!normalizedStartDate) {
+      return "";
+    }
+
+    const hasEndDate = this.hasAttribute("end-date") && !!normalizedEndDate;
+    const startDateObj = new Date(normalizedStartDate);
+    const endDateObj = hasEndDate ? new Date(normalizedEndDate) : new Date();
 
     // The career timeline also aggregates total timespan at a position
     let totalYears = endDateObj.getFullYear() - startDateObj.getFullYear()
@@ -188,7 +251,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
 
     const shortStart = shortDate.format(startDateObj);
     // If there's no explicit end date, interpret as ongoing role
-    const shortEnd = this.hasAttribute('end-date') ? shortDate.format(endDateObj) : "Present";
+    const shortEnd = hasEndDate ? shortDate.format(endDateObj) : "Present";
 
     return `${shortStart} - ${shortEnd} · ${totalYears} ${totalMonths}`;
   }

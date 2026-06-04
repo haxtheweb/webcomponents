@@ -43,6 +43,8 @@ class Store {
       localStorageSet("jwt", this.appSettings.jwt);
     }
     this.jwt = localStorageGet("jwt", null);
+    this.authValidated = false;
+    this.authTesting = false;
     // placeholder for when the actual API Backend gets plugged in here
     this.AppHaxAPI = {};
     this.newSitePromiseList = [
@@ -170,6 +172,8 @@ class Store {
       version: observable, // version of haxcms FRONTEND as per package.json
       // user related data
       jwt: observable, // JSON web token
+      authValidated: observable, // connectionTest state
+      authTesting: observable, // true while connectionTest is pending
       token: observable, // XSS prevention token
       manifest: observable, // sites the user has access to
       user: observable, // user object like name after login
@@ -261,9 +265,17 @@ class Store {
   }
 
   get isLoggedIn() {
-    if (this.appReady && this.AppHaxAPI) {
-      return this.jwt !== "null" && this.jwt;
+    if (!(this.appReady && this.AppHaxAPI)) {
+      return false;
     }
+    const hasJWT = this.jwt !== "null" && this.jwt;
+    if (!hasJWT) {
+      return false;
+    }
+    if (this.appSettings && this.appSettings.connectionTest) {
+      return this.authValidated === true;
+    }
+    return hasJWT;
   }
 
   get isMobile() {

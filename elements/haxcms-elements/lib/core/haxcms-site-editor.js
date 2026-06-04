@@ -37,6 +37,8 @@ class HAXCMSSiteEditor extends LitElement {
     this.__disposer = [];
     this.__lastContentDashboardOperation = "search";
     this.__lastContentSearchQuery = "";
+    this.__refreshRetryCounts = {};
+    this.__maxRefreshRetries = 2;
     this.method = "POST";
     this.editMode = false;
     globalThis.SimpleModal.requestAvailability();
@@ -623,6 +625,39 @@ class HAXCMSSiteEditor extends LitElement {
       }),
     );
   }
+  _getRefreshRetryKey(target) {
+    if (target && target.id) {
+      return target.id;
+    }
+    return "unknown-request";
+  }
+  _incrementRefreshRetryCount(target) {
+    const retryKey = this._getRefreshRetryKey(target);
+    if (!this.__refreshRetryCounts[retryKey]) {
+      this.__refreshRetryCounts[retryKey] = 0;
+    }
+    this.__refreshRetryCounts[retryKey] += 1;
+    return {
+      retryKey,
+      retryCount: this.__refreshRetryCounts[retryKey],
+    };
+  }
+  _clearRefreshRetryCount(targetOrKey) {
+    let retryKey = targetOrKey;
+    if (targetOrKey && typeof targetOrKey === "object") {
+      retryKey = this._getRefreshRetryKey(targetOrKey);
+    }
+    if (this.__refreshRetryCounts[retryKey]) {
+      delete this.__refreshRetryCounts[retryKey];
+    }
+  }
+  _clearAllRefreshRetryCounts() {
+    this.__refreshRetryCounts = {};
+  }
+  _resetRefreshRetryCountFromResponse(e) {
+    const target = normalizeEventPath(e)[0];
+    this._clearRefreshRetryCount(target);
+  }
 
   /**
    * Handle the last error rolling in
@@ -639,6 +674,7 @@ class HAXCMSSiteEditor extends LitElement {
         // if we KNOW an event must expire the timing token
         case 405:
         case 401:
+          this._clearAllRefreshRetryCounts();
           this.dispatchEvent(
             new CustomEvent("jwt-login-logout", {
               composed: true,
@@ -651,9 +687,22 @@ class HAXCMSSiteEditor extends LitElement {
           );
           break;
         case 403:
-          // if this was a 403 it should be because of a bad jwt
-          // or out of date one. This hopefully gets a new one if not
-          // other listeners will ensure we redirect appropriately
+          const retryMeta = this._incrementRefreshRetryCount(target);
+          if (retryMeta.retryCount > this.__maxRefreshRetries) {
+            this._clearRefreshRetryCount(retryMeta.retryKey);
+            this._clearAllRefreshRetryCounts();
+            this.dispatchEvent(
+              new CustomEvent("jwt-login-logout", {
+                composed: true,
+                bubbles: true,
+                cancelable: false,
+                detail: {
+                  redirect: true,
+                },
+              }),
+            );
+            return;
+          }
           this.dispatchEvent(
             new CustomEvent("jwt-login-refresh-token", {
               composed: true,
@@ -663,7 +712,7 @@ class HAXCMSSiteEditor extends LitElement {
                 element: {
                   obj: this,
                   callback: "refreshRequest",
-                  params: [target],
+                  params: [target, retryMeta.retryKey],
                 },
               },
             }),
@@ -684,17 +733,29 @@ class HAXCMSSiteEditor extends LitElement {
    * Attempt to salvage the request that was kicked off
    * when our JWT needed refreshed
    */
-  refreshRequest(jwt, element) {
+  refreshRequest(jwt, element, retryKey = null) {
     // force the jwt to be the updated jwt
     // this helps avoid any possible event timing issue
+    if (!jwt) {
+      if (retryKey) {
+        this._clearRefreshRetryCount(retryKey);
+      }
+      return;
+    }
     this.jwt = jwt;
-    element.body.jwt = jwt;
-    element.headers = {
-      Authorization: `Bearer ${this.jwt}`,
-    };
+    if (element && element.body) {
+      element.body.jwt = jwt;
+    }
+    if (element) {
+      element.headers = {
+        Authorization: `Bearer ${this.jwt}`,
+      };
+    }
     // again, sanity check on delay
     setTimeout(() => {
-      element.generateRequest();
+      if (element && typeof element.generateRequest === "function") {
+        element.generateRequest();
+      }
     }, 0);
   }
 
@@ -794,6 +855,7 @@ class HAXCMSSiteEditor extends LitElement {
    * Respond to a failed request to refresh the token by killing the logout process
    */
   _tokenRefreshFailed(e) {
+    this._clearAllRefreshRetryCounts();
     this.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
@@ -818,6 +880,11 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "jwt-login-refresh-error",
       this._tokenRefreshFailed.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    this.addEventListener(
+      "response",
+      this._resetRefreshRetryCountFromResponse.bind(this),
       { signal: this.windowControllers.signal },
     );
 

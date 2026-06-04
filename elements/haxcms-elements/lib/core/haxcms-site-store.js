@@ -113,6 +113,7 @@ class Store {
     this.currentRouterLocation = {};
     this.appSettings = globalThis.appSettings || {};
     this.jwt = null;
+    this.connectionValidated = false;
     this.version = null;
     this.soundStatus = getDefaultSoundStatus();
     this.darkMode = !localStorageGet("app-hax-darkMode")
@@ -170,6 +171,7 @@ class Store {
       trayStatus: observable, // tray status (collapsed/expanded)
       appSettings: observable, // global app settings object
       jwt: observable, // JSON Web Token
+      connectionValidated: observable, // auth gate result from connectionTest
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up
@@ -951,12 +953,14 @@ class Store {
     if (this.viewOnlyMode) {
       return false;
     }
-
-    // account for keypair storage issue since its a string bin
-    if (this.jwt && this.jwt != "null") {
-      return true;
+    const hasJWT = this.jwt && this.jwt != "null";
+    if (!hasJWT) {
+      return false;
     }
-    return false;
+    if (this.appSettings && this.appSettings.connectionTest) {
+      return this.connectionValidated === true;
+    }
+    return true;
   }
   /**
    * shortcut for active page ancestor title
