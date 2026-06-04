@@ -37,7 +37,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@juggle/resize-observer": "3.4.0",
     "lit": "3.3.2"
   },
   "devDependencies": {

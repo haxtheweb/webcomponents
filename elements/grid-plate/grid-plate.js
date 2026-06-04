@@ -296,10 +296,10 @@ class GridPlate extends LitElement {
     this.itemMargin = null;
     this.itemPadding = null;
     this.ready = false;
-    this.breakpointSm = 900;
-    this.breakpointMd = 1200;
-    this.breakpointLg = 1500;
-    this.breakpointXl = 1800;
+    this.breakpointSm = 600;
+    this.breakpointMd = 900;
+    this.breakpointLg = 1200;
+    this.breakpointXl = 1500;
     this.columns = 4;
     this.disableResponsive = false;
     this.layout = "1-1";
@@ -424,7 +424,7 @@ class GridPlate extends LitElement {
             property: "disableResponsive",
             title: "Disable responsive",
             description:
-              "Check box to force layout to stick regardless of screen size",
+              "Check box to keep columns on larger screens while still stacking on smallest screens",
             inputMethod: "boolean",
           },
           {
@@ -674,7 +674,10 @@ class GridPlate extends LitElement {
           "4/4/4": "1-1-1",
           "3/3/3/3": "1-1-1-1",
         },
-        size = disableResponsive !== false ? "xl" : responsiveSize;
+        size =
+          disableResponsive !== false && responsiveSize !== "xs"
+            ? "xl"
+            : responsiveSize;
       let oldl = oldLayouts[layout];
       if (newl !== undefined && newl[size] !== undefined) {
         //return the layout

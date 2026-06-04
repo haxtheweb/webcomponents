@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import { ResizeObserver } from "@juggle/resize-observer";
 
 /**
  * `responsive-utility`
@@ -38,22 +37,41 @@ class ResponsiveUtility extends LitElement {
       custom: e.detail.custom || "responsive-width",
     };
     detail.observer = this._getObserver(detail);
-    detail.observer.observe(detail.element);
+    if (detail.observer && detail.element) {
+      detail.observer.observe(detail.element);
+    }
     this.details.push(detail);
-    globalThis.ResponsiveUtility.setSize(detail);
+    globalThis.ResponsiveUtility.setSize(
+      detail,
+      detail.element ? detail.element.offsetWidth : 0,
+    );
   }
 
   _getObserver(detail) {
-    return new ResizeObserver((en) =>
-      en.forEach((e) =>
+    if (typeof globalThis.ResizeObserver !== "function") {
+      return null;
+    }
+    return new globalThis.ResizeObserver((entries) =>
+      entries.forEach((entry) => {
+        const width =
+          entry && entry.contentRect && entry.contentRect.width
+            ? entry.contentRect.width
+            : entry && entry.target
+              ? entry.target.offsetWidth
+              : 0;
+        globalThis.ResponsiveUtility.setSize(detail, width);
+      }),
+    );
+  }
+  __handleResizeFallback() {
+    this.details.forEach((detail) => {
+      if (detail && detail.element) {
         globalThis.ResponsiveUtility.setSize(
           detail,
-          e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
-            ? e.target.offsetWidth
-            : 0,
-        ),
-      ),
-    );
+          detail.element.offsetWidth || 0,
+        );
+      }
+    });
   }
   /**
    * deletes the responsive element from the details array
@@ -107,6 +125,10 @@ class ResponsiveUtility extends LitElement {
   constructor() {
     super();
     this.details = [];
+    this.__resizeFallbackHandler = this.__handleResizeFallback.bind(this);
+    if (typeof globalThis.ResizeObserver !== "function") {
+      globalThis.addEventListener("resize", this.__resizeFallbackHandler);
+    }
     globalThis.addEventListener(
       "responsive-element",
       this.responiveElementEvent.bind(this),
@@ -119,6 +141,14 @@ class ResponsiveUtility extends LitElement {
     );
     if (globalThis.ResponsiveUtility.instance == null)
       globalThis.ResponsiveUtility.instance = this;
+  }
+  disconnectedCallback() {
+    if (this.__resizeFallbackHandler) {
+      globalThis.removeEventListener("resize", this.__resizeFallbackHandler);
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 }
 globalThis.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);

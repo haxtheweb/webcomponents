@@ -24,10 +24,10 @@ describe("GridPlate test", () => {
     expect(element.layout).to.equal("1-1");
     expect(element.columns).to.equal(4);
     expect(element.disableResponsive).to.be.false;
-    expect(element.breakpointSm).to.equal(900);
-    expect(element.breakpointMd).to.equal(1200);
-    expect(element.breakpointLg).to.equal(1500);
-    expect(element.breakpointXl).to.equal(1800);
+    expect(element.breakpointSm).to.equal(600);
+    expect(element.breakpointMd).to.equal(900);
+    expect(element.breakpointLg).to.equal(1200);
+    expect(element.breakpointXl).to.equal(1500);
   });
 
   // Layout tests
@@ -85,6 +85,17 @@ describe("GridPlate test", () => {
 
     expect(element.disableResponsive).to.be.true;
     expect(element.hasAttribute("disable-responsive")).to.be.true;
+  });
+
+  it("stacks at xs breakpoint when responsive behavior is disabled", () => {
+    const widths = element._getColumnWidths(
+      "xs",
+      "1-1",
+      element.layouts,
+      true,
+    );
+
+    expect(widths).to.deep.equal(["100%", "100%"]);
   });
 
   // Margin and padding tests
