@@ -25,6 +25,14 @@ export class AppHaxBackendAPI extends LitElement {
         ? "GET"
         : "POST";
     this.basePath = "/";
+    if (globalThis.document && globalThis.document.querySelector("app-hax") && globalThis.document.querySelector("app-hax").getAttribute) {
+      const basePathAttr = globalThis.document
+        .querySelector("app-hax")
+        .getAttribute("base-path");
+      if (basePathAttr) {
+        this.basePath = basePathAttr;
+      }
+    }
     this.lastResponse = {};
     this.appSettings = {};
     autorun(() => {
