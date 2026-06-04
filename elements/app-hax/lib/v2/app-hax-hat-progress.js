@@ -237,6 +237,9 @@ export class AppHaxHatProgress extends SimpleColors {
       <img
         src="${new URL("../assets/images/HatBlank.svg", import.meta.url).href}"
         alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
       />
       <promise-progress
         id="progress2"

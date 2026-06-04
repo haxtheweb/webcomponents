@@ -1496,7 +1496,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (store.AppHaxAPI && this.basePath) {
       store.AppHaxAPI.basePath = this.basePath;
     }
-    import("./lib/v2/app-hax-steps.js");
     import("./lib/v2/app-hax-site-button.js");
     import("wired-elements/lib/wired-button.js");
     import("./lib/v2/app-hax-toast.js");

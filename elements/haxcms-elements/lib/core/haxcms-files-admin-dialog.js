@@ -36,6 +36,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       siteName: { type: String, attribute: "site-name" },
       nodeId: { type: String, attribute: "node-id" },
       scalePreset: { type: String, attribute: "scale-preset" },
+      cacheBustToken: { type: String, attribute: false },
     };
   }
 
@@ -53,6 +54,8 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.method = "POST";
     this.nodeId = "";
     this.scalePreset = "md";
+    this.cacheBustToken = "0";
+    this.__cacheBustCounter = 0;
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
   }
@@ -390,13 +393,37 @@ class HAXCMSFilesAdminDialog extends DDD {
       tableDisplay.requestUpdate();
     }
   }
+  _nextCacheBustToken() {
+    this.__cacheBustCounter += 1;
+    return `${Date.now()}-${this.__cacheBustCounter}`;
+  }
+  _withCacheBust(url, token = this.cacheBustToken) {
+    const cleanUrl = this._s(url);
+    const cleanToken = this._s(token);
+    if (!cleanUrl || !cleanToken) return cleanUrl;
+    if (/[?&]cb=/.test(cleanUrl)) {
+      return cleanUrl.replace(/([?&])cb=[^&]*/g, `$1cb=${cleanToken}`);
+    }
+    return `${cleanUrl}${cleanUrl.indexOf("?") === -1 ? "?" : "&"}cb=${cleanToken}`;
+  }
+  _previewUrl(row) {
+    if (!row || !row.publicUrl) return "";
+    return this._withCacheBust(row.publicUrl, this.cacheBustToken);
+  }
+  _rowsRenderKey() {
+    return `${this.cacheBustToken}|${this.rows.length}|${this.rows
+      .map((row) => `${row.path}:${row.updated || row.dateCreated || ""}:${row.size || 0}`)
+      .join("|")}`;
+  }
 
   async refreshFiles() {
     if (!this._canList) return;
+    const cacheBustToken = this._nextCacheBustToken();
+    this.cacheBustToken = cacheBustToken;
     this._requestTableUpdate(); 
     this.loading = true; this.errorMessage = "";
     try {
-      const resp = await fetch(this.listFilesPath, {
+      const resp = await fetch(this._withCacheBust(this.listFilesPath, cacheBustToken), {
         method: this.method, credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: this.method === "POST" ? JSON.stringify({ jwt: this.jwt, site: { name: this.siteName } }) : undefined,
@@ -588,7 +615,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           ${this.rows.length === 0 && !this.loading
             ? html`<div class="empty">No files found.</div>`
             : keyed(
-                `${this.rows.length}|${this.rows.map((row) => row.path).join("|")}`,
+                this._rowsRenderKey(),
                 html`
                   <editable-table-display bordered condensed column-header responsive sort striped scroll>
                     <table>
@@ -609,7 +636,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                               <td>
                                 <span class="pw">
                                   ${this._isImg(r) && r.publicUrl
-                                    ? html`<img src="${r.publicUrl}" alt="${r.name}" height="100px" loading="lazy" decoding="async" />`
+                                    ? html`<img src="${this._previewUrl(r)}" alt="${r.name}" height="100px" loading="lazy" decoding="async" />`
                                     : html`\u2014`}
                                 </span>
                               </td>

@@ -1074,7 +1074,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         ${this.source
           ? html`
               <div class="template-image">
-                <img src="${this.source}" alt="${this.title} preview" />
+                <img src="${this.source}" alt="${this.title} preview"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="high" />
               </div>
             `
           : ""}

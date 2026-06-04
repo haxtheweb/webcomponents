@@ -111,6 +111,9 @@ export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
           src="${new URL("../assets/images/HatBlank.svg", import.meta.url)
             .href}"
           alt="Progress Hat"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
         />
         <div class="progress-bar">
           <div class="progress-fill" style="width: ${percentage}%"></div>

@@ -638,6 +638,8 @@ export class AppHaxSiteBars extends SimpleColors {
                   src="${this.image}"
                   alt="Screenshot of ${this.title || "site"} theme"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
                 />
               </a>
             `

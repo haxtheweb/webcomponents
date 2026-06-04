@@ -331,7 +331,13 @@ export class AppHaxUseCase extends LitElement {
       <button class="card" @click="${this.toggleDisplay}">
         <div class="image">
           ${hasSource
-            ? html`<img src="${this.source}" alt="${this.title}" />`
+            ? html`<img
+            src="${this.source}"
+            alt="${this.title}"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="high"
+             />`
             : html`<div class="image-placeholder" aria-hidden="true">
                 <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
               </div>`}

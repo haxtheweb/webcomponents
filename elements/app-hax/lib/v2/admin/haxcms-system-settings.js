@@ -3220,6 +3220,7 @@ class HAXCMSSystemSettings extends DDD {
                     alt="Preview of ${option.label} theme"
                     loading="lazy"
                     decoding="async"
+                    fetchpriority="low"
                   />
                 `
               : html`
