@@ -11,16 +11,16 @@
     "designTreatment": false
   },
   "gizmo": {
-    "title": "career-timeline",
+    "title": "Career timeline",
     "description": "A career timeline containing organizations, roles, and other data",
     "icon": "icons:android",
     "color": "purple",
     "tags": [
-      "Other"
+      "Content", "portfolio", "career", "timeline", "resume"
     ],
     "handles": [],
     "meta": {
-      "author": "winstonwumbo"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {
@@ -34,9 +34,9 @@
     {
       "tag": "career-timeline",
       "properties": {
-        "title": "Sample property title"
+        "title": "Career Timeline",
       },
-      "content": ""
+      "content": "<career-org-item organization=\"Add Organization\" location=\"Enter Location\"></career-org-item>"
     }
   ]
 }

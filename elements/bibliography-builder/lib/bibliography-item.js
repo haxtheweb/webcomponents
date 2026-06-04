@@ -6,7 +6,7 @@ import { LitElement, html, css, render } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
@@ -61,8 +61,6 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
       :host([data-hax-active]) .wrapper{
@@ -94,13 +92,13 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
     <div class="wrapper">
         <div class="citation">${this.exportAPA()}</div>
         <div class="copy-button">
-            <simple-icon-button
+            <simple-icon-button-lite
               part="icon"
               class="icon"
               title="Copy"
               icon="content-copy"
               @click=${this._copyToClipboard}
-            ></simple-icon-button>
+            ></simple-icon-button-lite>
         </div>
     </div>`;
   }
@@ -120,22 +118,32 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _formatAuthors(){
-    if (!this.authors) return '';
+    if (!Array.isArray(this.authors) || this.authors.length === 0) return '';
 
     // author.given author.surname
-    const formattedArr = this.authors.map((author) => {
-      const surname = author.surname.trim()
-      const given = author.given.trim().replace(/\b(\w)\w*/g, '$1.').toUpperCase();
+    const formattedArr = this.authors
+      .map((author) => {
+        const authorObj = author && typeof author === 'object' ? author : {};
+        const surname = typeof authorObj.surname === 'string' ? authorObj.surname.trim() : '';
+        const given = typeof authorObj.given === 'string' ? authorObj.given.trim() : '';
+        const givenInitials = given
+          .split(/\s+/)
+          .filter((part) => part)
+          .map((part) => `${part.charAt(0).toUpperCase()}.`)
+          .join(' ');
 
-      return `${surname}, ${given}`
-    });
+        if (surname && givenInitials) return `${surname}, ${givenInitials}`;
+        if (surname) return surname;
+        if (givenInitials) return givenInitials;
+        return '';
+      })
+      .filter((author) => author);
 
-    if (this.authors.length === 1){
-      return formattedArr[0];
-    } else {
-      const last = formattedArr.pop();
-      return formattedArr.join(', ') + ', & ' + last;
-    }
+    if (formattedArr.length === 0) return '';
+    if (formattedArr.length === 1) return formattedArr[0];
+
+    const last = formattedArr.pop();
+    return formattedArr.join(', ') + ', & ' + last;
   }
 
   _formatSource(){
@@ -463,25 +471,18 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
       "canScale": true,
       "canEditSource": true,
       "type": "element",
-      "designSystem": {
-        "accent": true,
-        "primary": true,
-        "card": true,
-        "text": true,
-        "designTreatment": false
-      },
+      "designSystem": false,
       "gizmo": {
-        "title": "bibliography-item",
-        "description": "",
+        "title": "Bibliography item",
+        "description": "Item representing a single citation in a bibliography, supporting multiple formats and export options.",
         "icon": "icons:android",
         "color": "purple",
         "tags": [
-          "Other"
+          "Content", "portfolio", "citation", "reference", "bibliography"
         ],
         "handles": [],
         "meta": {
-          "hidden": true,
-          "author": "winstonwumbo"
+          "author": "HAXTheWeb core team",
         }
       },
       "settings": {

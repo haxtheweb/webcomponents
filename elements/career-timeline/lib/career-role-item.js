@@ -215,15 +215,14 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       "contentEditable": false,
       "hideDefaultSettings": true,
       "gizmo": {
-        "title": "Career Role Item",
+        "title": "Career Role",
         "description": "An individual role within an organization",
         "icon": "chrome-reader-mode",
         "color": "light-blue",
         "tags": ["Content", "list", "step"],
         "handles": [],
         "meta": {
-          "author": "winstonwumbo",
-          "hidden": true
+          "author": "HAXTheWeb core team",
         }
       },
       "settings": {

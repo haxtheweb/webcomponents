@@ -231,22 +231,19 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
     return {
       "type": "grid",
       "canScale": false,
-      "designSystem": {
-        "primary": true
-      },
+      "designSystem": false,
       "canEditSource": false,
       "contentEditable": false,
       "hideDefaultSettings": true,
       "gizmo": {
-        "title": "Career Organization Item",
+        "title": "Career Item",
         "description": "An individual organization and its affiliated roles",
         "icon": "chrome-reader-mode",
         "color": "light-blue",
         "tags": ["Content", "list", "step"],
         "handles": [],
         "meta": {
-          "author": "winstonwumbo",
-          "hidden": true
+          "author": "HAXTheWeb core team",
         }
       },
       "settings": {

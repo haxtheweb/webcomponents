@@ -59,8 +59,6 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
       .wrapper {
@@ -81,7 +79,6 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
 
       #export-button {
         align-self: center;
-        background-color: white;
       }
     `];
   }
@@ -95,9 +92,7 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
         <button id="export-button" @click=${this._showExportModal}>Export</button>
       </div>      
 
-      <slot>
-        <bibliography-item title="Make your own citation with the HAX Editor" publication-date="${new Date()}"></bibliography-item>
-      </slot>
+      <slot></slot>
     </div>`;
   }
 

@@ -4,24 +4,18 @@
   "canEditSource": true,
   "type": "grid",
   "contentEditable": false,
-  "designSystem": {
-    "accent": true,
-    "primary": true,
-    "card": true,
-    "text": true,
-    "designTreatment": false
-  },
+  "designSystem": false,
   "gizmo": {
-    "title": "bibliography-builder",
-    "description": "",
+    "title": "Bibliography builder",
+    "description": "A tool for creating and managing bibliographies",
     "icon": "icons:android",
     "color": "purple",
     "tags": [
-      "Other"
+      "Content", "portfolio", "citation", "reference", "bibliography"
     ],
     "handles": [],
     "meta": {
-      "author": "winstonwumbo"
+      "author": "HAXTheWeb core team"
     }
   },
   "settings": {
@@ -43,7 +37,7 @@
       "tag": "bibliography-builder",
       "properties": {
       },
-      "content": ""
+      "content": "<bibliography-item title=\"Make your own citation\"></bibliography-item>"
     }
   ]
 }

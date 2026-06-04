@@ -416,7 +416,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-2));
           --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
           --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
-          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
+          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-5));
           --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
           --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
 
@@ -654,7 +654,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .footer-link {
-        color: var(--ddd-lightDark-1) !important;
         transition: color .3s;
       }
 

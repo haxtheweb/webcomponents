@@ -49,8 +49,6 @@ export class CareerTimeline extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
       .wrapper {
@@ -65,7 +63,7 @@ export class CareerTimeline extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="wrapper">
-        <slot><career-org-item organization="Add an Organization" location="Enter a Location"></career-org-item></slot>
+        <slot></slot>
       </div>
     `;
   }
