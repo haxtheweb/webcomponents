@@ -89,7 +89,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.copyrightYear = 0;
     // support for custom rendering of route html
     this.HAXSiteCustomRenderRoutes = {
-      "x/tags": {
+      "x/displays/tags": {
         "items": this.HAXSiteRenderXTagsItems,
       }
     };
@@ -1237,7 +1237,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${filteredTags.length > 0
         ? filteredTags.map(
             (topTag) => html`
-              <h2 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h2>
+              <h2 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/displays/tags?tag=${topTag.trim()}">${topTag}</a></h2>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
                   const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
@@ -1251,7 +1251,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   return html`
                     <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" class="listing-card" href="${item.slug}" @click="${this.testEditMode}">
                       <div class="listing-cardimg">
-                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                        <img src="${getPostLogo(item)}" alt="" loading="lazy"
                             decoding="async"
                             fetchpriority="low" />
                       </div>
@@ -1278,7 +1278,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }).map(item => html`
             <a class="listing-card" href="${item.slug}" tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}">
               <div class="listing-cardimg">
-                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                <img src="${getPostLogo(item)}" alt="" loading="lazy"
                     decoding="async"
                     fetchpriority="low" />
               </div>
@@ -1290,7 +1290,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     `;
   }
 
-  // custom rendering of the x/tags route
+  // custom rendering of the x/displays/tags route
   // node is site-tags-route reference
   HAXSiteRenderXTagsItems(items) {
     return html`
@@ -1298,7 +1298,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${items.map(item => html`
         <a class="listing-card" href="${item.slug}" part="listing-card">
           <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${item.metadata.image}" onerror="this.style.display='none'" alt="${item.title ? item.title : ''}" part="listing-cardimg-img">
+            <img src="${item.metadata.image}" alt="${item.title ? item.title : ''}" part="listing-cardimg-img">
           </div>
           <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
         </a>`
@@ -1419,7 +1419,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                           ? this.activeTags
                           : this.activeTags.slice(1)
                         ).map(
-                          (item) => html`<li><a tabindex="${this.editMode ? '-1' : '0'}" @click="${this.testEditMode}" ?disabled="${this.editMode}" href="x/tags?tag=${item.trim()}">${item}</a></li>`
+                          (item) => html`<li><a tabindex="${this.editMode ? '-1' : '0'}" @click="${this.testEditMode}" ?disabled="${this.editMode}" href="x/displays/tags?tag=${item.trim()}">${item}</a></li>`
                         )}
                       </ul>
                   ` : ''}
@@ -1469,7 +1469,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
           <div>Site generated: ${this.lastUpdated}</div>
           <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
-          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/tags" ?disabled="${this.editMode}">View Content by Tag</a></div>
+          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">View Content by Tag</a></div>
         </div>
         <div
           class="license-body"

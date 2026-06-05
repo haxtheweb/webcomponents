@@ -53,7 +53,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
               (tag) =>
                 html` <a
                   @click="${this.testEditMode}"
-                  href="x/tags?tag=${tag.trim()}"
+                  href="x/displays/tags?tag=${tag.trim()}"
                 >
                   <simple-tag
                     ?auto-accent-color="${this.autoAccentColor}"

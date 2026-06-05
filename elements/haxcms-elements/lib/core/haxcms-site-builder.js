@@ -253,7 +253,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         this.t.couldNotBeLocated
       }. ${this.t.hereAreSomePossibleRemedies}
       <ul>
-        <li><a href="x/search?search=${store.getInternalRoute()}">${
+        <li><a href="x/displays/search?search=${store.getInternalRoute()}">${
           this.t.useSearchToLocateTheContentYouAreLookingFor
         }</a></li>
         <li><a href="./">${this.t.goToTheHomePage}</a></li>

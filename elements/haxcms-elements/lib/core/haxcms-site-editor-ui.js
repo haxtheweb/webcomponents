@@ -6393,7 +6393,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _styleGuideButtonTap(e) {
     this._clearAdminRoutePathFromLocation("replace");
     store.playSound("click");
-    globalThis.location.href = "x/theme/style-guide";
+    globalThis.location.href = "x/displays/style-guide";
   }
   async _openThemePreviewFromProgram(e) {
     await this._openThemePreview(e);

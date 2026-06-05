@@ -682,7 +682,7 @@ class CleanTwo extends LTIResizingMixin(
       contentWrapper || this.HAXCMSThemeSettings.siteMenuContent;
     // shadow ready which means we should be able to open this even on a slow load
     // if we are the route in question
-    store.internalRoutes["search"].callback = this.siteModalForceClick;
+    store.internalRoutes["displays/search"].callback = this.siteModalForceClick;
     let DesignSystemManager =
       globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.active = "ddd";
@@ -946,8 +946,8 @@ class CleanTwo extends LTIResizingMixin(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
-      if (store.getInternalRoute() !== 'search') {
-        globalThis.history.replaceState({}, null, "x/search");
+      if (store.getInternalRoute() !== 'displays/search') {
+        globalThis.history.replaceState({}, null, "x/displays/search");
       }
       const params = new URLSearchParams(store.currentRouterLocation.search);
       const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");

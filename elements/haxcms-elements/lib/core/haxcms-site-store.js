@@ -97,13 +97,33 @@ class Store {
   constructor() {
     this.badDevice = false;
     this.internalRoutes = {
-      search: {},
-      views: {},
-      tags: {},
-      random: {},
-      home: {},
-      print: {},
-      "theme/style-guide": {
+      "displays/search": {
+        titleKey: "search",
+        component: "site-search-route",
+      },
+      "displays/views": {
+        titleKey: "views",
+        component: "site-views-route",
+      },
+      "displays/tags": {
+        titleKey: "tags",
+        component: "site-tags-route",
+      },
+      random: {
+        titleKey: "random",
+        component: "site-random-route",
+      },
+      home: {
+        titleKey: "home",
+        component: "site-home-route",
+      },
+      print: {
+        titleKey: "print",
+        component: "site-print-route",
+      },
+      "displays/style-guide": {
+        titleKey: "displays/style-guide",
+        component: "site-theme-style-guide-route",
         callback: () => {},
         useHaxEditor: true,
       },
@@ -149,7 +169,7 @@ class Store {
       random: "Random page",
       home: "Home page",
       print: "Print page",
-      "theme/style-guide": "Theme Style Guide",
+      "displays/style-guide": "Theme Style Guide",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
@@ -719,20 +739,22 @@ class Store {
           };
           const internalRouteTest = store.getInternalRoute();
           if (internalRouteTest && store.internalRoutes[internalRouteTest]) {
+            const routeConfig = store.internalRoutes[internalRouteTest];
             // if we have an internal route callback then call it
             // also account for initial load in which this MAY not exist via TTFP
             // but does exist some time later
-            if (
-              typeof store.internalRoutes[internalRouteTest].callback ===
-              "function"
-            ) {
-              store.internalRoutes[internalRouteTest].callback();
+            if (typeof routeConfig.callback === "function") {
+              routeConfig.callback();
             }
             item = {
               id: "x/" + internalRouteTest,
               _internalRoute: true,
-              component: `site-${internalRouteTest.replace("/", "-")}-route`,
-              title: this.t[internalRouteTest] || internalRouteTest, // translation otherwise just the route name
+              component: routeConfig.component
+                ? routeConfig.component
+                : `site-${internalRouteTest.split("/").join("-")}-route`,
+              title:
+                this.t[routeConfig.titleKey || internalRouteTest] ||
+                internalRouteTest, // translation otherwise just the route name
               location: "hax-internal-route.html",
             };
           }

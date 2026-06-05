@@ -25,19 +25,22 @@ class HAXCMSEditorBuilder extends HTMLElement {
   constructor() {
     super();
     this.windowControllers = new AbortController();
+    this.__editorUILoadingPromise = null;
+    this.__editorLoadedHandler = this.editorLoaded.bind(this);
     globalThis.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
-    this._syncStoreAppSettings();
-    this.applyContext();
     globalThis.addEventListener(
       "haxcms-site-editor-loaded",
-      this.editorLoaded.bind(this),
+      this.__editorLoadedHandler,
       { signal: this.windowControllers.signal },
     );
+    this._syncStoreAppSettings();
+    this.applyContext();
   }
   connectedCallback() {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
+    this._dedupeEditorUIElements();
     this.dispatchEvent(
       new CustomEvent("haxcms-editor-builder-ready", {
         bubbles: true,
@@ -61,13 +64,92 @@ class HAXCMSEditorBuilder extends HTMLElement {
       store.appSettings = globalThis.appSettings;
     }
   }
+  _getEditorUIElements() {
+    const elements = [];
+    if (!(globalThis.document && globalThis.document.querySelectorAll)) {
+      return elements;
+    }
+    globalThis.document.querySelectorAll("haxcms-site-editor-ui").forEach((el) => {
+      elements.push(el);
+    });
+    return elements;
+  }
+  _dedupeEditorUIElements() {
+    const elements = this._getEditorUIElements();
+    if (elements.length === 0) {
+      return;
+    }
+    let keep = null;
+    if (
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
+      elements.includes(store.cmsSiteEditor.haxCmsSiteEditorUIElement)
+    ) {
+      keep = store.cmsSiteEditor.haxCmsSiteEditorUIElement;
+    } else {
+      keep = elements[0];
+    }
+    if (elements.length > 1) {
+      elements.forEach((el) => {
+        if (el !== keep && el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
+      });
+    }
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement = keep;
+  }
 
-  editorLoaded(e) {
+  _attachEditorUIElement() {
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-      // prettier-ignore
-      import(
-        "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
-      ).then(() => {
+      return;
+    }
+    if (store.cmsSiteEditor.haxCmsSiteEditorUIElement.isConnected) {
+      return;
+    }
+    if (this.parentNode) {
+      this.parentNode.insertBefore(store.cmsSiteEditor.haxCmsSiteEditorUIElement, this);
+    }
+    else if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+    }
+    // forces a nice fade in transition
+    setTimeout(() => {
+      if (store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+      }
+    }, 600);
+  }
+  editorLoaded(e) {
+    this._dedupeEditorUIElements();
+    if (
+      (!store.cmsSiteEditor.haxCmsSiteEditorUIElement ||
+        !store.cmsSiteEditor.haxCmsSiteEditorUIElement.isConnected) &&
+      this._getEditorUIElements().length > 0
+    ) {
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement = this._getEditorUIElements()[0];
+    }
+    if (
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement.isConnected
+    ) {
+      return;
+    }
+    if (store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      this._attachEditorUIElement();
+      this._dedupeEditorUIElements();
+      return;
+    }
+    if (this.__editorUILoadingPromise) {
+      this.__editorUILoadingPromise.then(() => {
+        this._dedupeEditorUIElements();
+        this._attachEditorUIElement();
+      });
+      return;
+    }
+    // prettier-ignore
+    this.__editorUILoadingPromise = import(
+      "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
+    ).then(() => {
+      if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
         store.cmsSiteEditor.haxCmsSiteEditorUIElement = globalThis.document.createElement(
           "haxcms-site-editor-ui"
         );
@@ -85,18 +167,12 @@ class HAXCMSEditorBuilder extends HTMLElement {
               break;
           }
         }
-        if (this.parentNode) {
-          this.parentNode.insertBefore(store.cmsSiteEditor.haxCmsSiteEditorUIElement, this);
-        }
-        else {
-          globalThis.document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
-        }
-        // forces a nice fade in transition
-        setTimeout(() => {
-          store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-        }, 600);
-      });
-    }
+      }
+      this._attachEditorUIElement();
+      this._dedupeEditorUIElements();
+    }).finally(() => {
+      this.__editorUILoadingPromise = null;
+    });
   }
   async applyContext(context = null) {
     if (!this.__appliedContext) {

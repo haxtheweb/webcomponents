@@ -644,8 +644,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
     ).then((m) => {
-      if (store.getInternalRoute() !== 'search') {
-        globalThis.history.replaceState({}, null, "x/search");
+      if (store.getInternalRoute() !== 'displays/search') {
+        globalThis.history.replaceState({}, null, "x/displays/search");
       }
       const params = new URLSearchParams(store.currentRouterLocation.search);
       const input = globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field");

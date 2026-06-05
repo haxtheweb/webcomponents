@@ -922,7 +922,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   }
 
   _tagLink(tag) {
-    return `x/tags?tag=${encodeURIComponent(tag)}`;
+    return `x/displays/tags?tag=${encodeURIComponent(tag)}`;
   }
 
   _preventInEditMode(e) {

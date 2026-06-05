@@ -301,7 +301,7 @@ export class SiteView extends SimpleColors {
                               .split(",")
                               .map(
                                 (tag) =>
-                                  html`<a href="x/views?tags=${tag.trim()}">
+                                  html`<a href="x/displays/views?tags=${tag.trim()}">
                                     <simple-tag
                                       auto-accent-color
                                       value="${tag.trim()}"
@@ -373,7 +373,7 @@ export class SiteView extends SimpleColors {
                         (tag) =>
                           html`<a
                             part="tag-link"
-                            href="x/views?tags=${tag.trim()}"
+                            href="x/displays/views?tags=${tag.trim()}"
                           >
                             <simple-tag
                               auto-accent-color
@@ -497,7 +497,7 @@ export class SiteView extends SimpleColors {
                   .split(",")
                   .map(
                     (tag) =>
-                      html`<a href="x/views?tags=${tag.trim()}">
+                      html`<a href="x/displays/views?tags=${tag.trim()}">
                         <simple-tag
                           auto-accent-color
                           value="${tag.trim()}"

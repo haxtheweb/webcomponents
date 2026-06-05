@@ -70,7 +70,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
     // support for custom rendering of route html
     this.HAXSiteCustomRenderRoutes = {
-      "x/tags": {
+      "x/displays/tags": {
         items: this.HAXSiteRenderXTagsItems,
       },
     };
@@ -155,7 +155,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     };
   }
 
-  // custom rendering of the x/tags route
+  // custom rendering of the x/displays/tags route
   // node is site-tags-route reference
   HAXSiteRenderXTagsItems(items) {
     return html`

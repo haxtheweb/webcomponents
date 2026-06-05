@@ -401,15 +401,15 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
   _searchValueChanged(e) {
     this.search = e.detail.value;
     if (this.search) {
-      if (store.getInternalRoute() !== "search") {
-        globalThis.history.replaceState({}, null, "x/search");
+      if (store.getInternalRoute() !== "displays/search") {
+        globalThis.history.replaceState({}, null, "x/displays/search");
       }
       const params = new URLSearchParams(globalThis.location.search);
       params.set("search", this.search);
       globalThis.history.replaceState(
         {},
         "",
-        decodeURIComponent(`./x/search?${params}`),
+        decodeURIComponent(`./x/displays/search?${params}`),
       );
     }
   }

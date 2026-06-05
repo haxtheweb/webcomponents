@@ -297,6 +297,14 @@ class HAXCMSBackendNodeJS extends LitElement {
             store.cmsSiteEditor.instance.getUserDataPath =
               globalThis.appSettings.getUserDataPath;
             store.cmsSiteEditor.instance.appStore = globalThis.appSettings.appStore;
+            globalThis.dispatchEvent(
+              new CustomEvent("haxcms-site-editor-loaded", {
+                bubbles: true,
+                composed: true,
+                cancelable: false,
+                detail: true,
+              }),
+            );
           }
         },
         (e) => {

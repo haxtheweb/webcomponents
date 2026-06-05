@@ -82,15 +82,17 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     if (
       theme &&
       theme.HAXSiteCustomRenderRoutes &&
-      theme.HAXSiteCustomRenderRoutes["x/tags"]
+      theme.HAXSiteCustomRenderRoutes["x/displays/tags"]
     ) {
-      if (theme.HAXSiteCustomRenderRoutes["x/tags"].items) {
-        this.renderXTagsItems = theme.HAXSiteCustomRenderRoutes["x/tags"].items;
+      if (theme.HAXSiteCustomRenderRoutes["x/displays/tags"].items) {
+        this.renderXTagsItems =
+          theme.HAXSiteCustomRenderRoutes["x/displays/tags"].items;
       } else {
         this.renderXTagsItems = this._renderXTagsItems;
       }
-      if (store.themeElement.HAXSiteCustomRenderRoutes["x/tags"].tag) {
-        this.renderXTagsTag = theme.HAXSiteCustomRenderRoutes["x/tags"].tag;
+      if (store.themeElement.HAXSiteCustomRenderRoutes["x/displays/tags"].tag) {
+        this.renderXTagsTag =
+          theme.HAXSiteCustomRenderRoutes["x/displays/tags"].tag;
       } else {
         this.renderXTagsTag = this._renderXTagsTag;
       }
@@ -120,7 +122,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     globalThis.history.replaceState(
       {},
       "",
-      decodeURIComponent(`./x/tags?${rawParams}`),
+      decodeURIComponent(`./x/displays/tags?${rawParams}`),
     );
     this.search = globalThis.location.search;
   }
@@ -128,7 +130,11 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   _resetClick(e) {
     const rawParams = new URLSearchParams(this.search);
     rawParams.delete("tag");
-    globalThis.history.replaceState({}, "", decodeURIComponent(`./x/tags`));
+    globalThis.history.replaceState(
+      {},
+      "",
+      decodeURIComponent("./x/displays/tags"),
+    );
     this.search = globalThis.location.search;
   }
 
@@ -204,7 +210,9 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
               line2="${item.description}"
               url="${item.slug}"
               image="${item.metadata.image}"
-              tags="${item.metadata.tags}"
+              tags="${this._normalizeTags(
+                item.metadata ? item.metadata.tags : null,
+              ).join(",")}"
               icon="${item.metadata.icon}"
               accent-color="grey"
               saturate
@@ -212,6 +220,32 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         )}
       </collection-list>
     `;
+  }
+
+  _normalizeTags(tags) {
+    if (Array.isArray(tags)) {
+      return tags
+        .map((tag) => {
+          if (typeof tag === "string") {
+            return tag.trim();
+          }
+          if (tag === null || typeof tag === "undefined") {
+            return "";
+          }
+          return `${tag}`.trim();
+        })
+        .filter((tag) => tag);
+    }
+    if (typeof tags === "string") {
+      return tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag);
+    }
+    if (tags === null || typeof tags === "undefined") {
+      return [];
+    }
+    return [`${tags}`.trim()].filter((tag) => tag);
   }
 
   updated(changedProperties) {
@@ -231,14 +265,12 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
             if (!this.params.tag) {
               return true;
             }
-            return (
-              item.metadata.tags &&
-              item.metadata.tags.split(",").some((tag) => {
-                return tag
-                  .toLowerCase()
-                  .includes(this.params.tag.toLowerCase());
-              })
+            const tags = this._normalizeTags(
+              item.metadata ? item.metadata.tags : null,
             );
+            return tags.some((tag) => {
+              return tag.toLowerCase().includes(this.params.tag.toLowerCase());
+            });
           }),
         ];
       }
@@ -251,10 +283,8 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   async updateResultsTags(filteredItems) {
     let resultsTags = [];
     await filteredItems.forEach(async (item) => {
-      if (item.metadata.tags) {
-        const tags = item.metadata.tags.trim().split(",");
-        resultsTags.push(...tags);
-      }
+      const tags = this._normalizeTags(item.metadata ? item.metadata.tags : null);
+      resultsTags.push(...tags);
     });
     this.resultsTags = { ...this.countDuplicates(resultsTags) };
   }

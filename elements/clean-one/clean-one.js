@@ -740,8 +740,8 @@ class CleanOne extends LTIResizingMixin(
       import(
          "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
        ).then(() => {
-        if (store.getInternalRoute() !== 'search') {
-          globalThis.history.replaceState({}, null, "x/search");
+        if (store.getInternalRoute() !== 'displays/search') {
+          globalThis.history.replaceState({}, null, "x/displays/search");
         }
          this.searchTerm = e.detail.value;
        });
@@ -830,7 +830,7 @@ class CleanOne extends LTIResizingMixin(
 
     const params = new URLSearchParams(store.currentRouterLocation.search);
     // if we have a search param already, set it to the field on open
-    if (store.getInternalRoute() === "search" && params.get("search")) {
+    if (store.getInternalRoute() === "displays/search" && params.get("search")) {
       import(
         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
