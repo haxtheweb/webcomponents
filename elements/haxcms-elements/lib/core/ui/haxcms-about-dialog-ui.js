@@ -1,9 +1,10 @@
 import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { store } from "../haxcms-site-store.js";
+import { store, HAXcmsStore } from "../haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSKeyboardShortcutsInstance } from "../utils/HAXCMSKeyboardShortcuts.js";
+import { _pageRouteVariantUrl } from "../utils/ExportPageProgram.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 class HAXCMSAboutDialogUI extends DDD {
@@ -179,6 +180,50 @@ class HAXCMSAboutDialogUI extends DDD {
           </li>`,
       )}
     </ul>`;
+  }
+
+  _currentSiteBaseHref() {
+    let outlineLocation = "";
+    if (
+      HAXcmsStore &&
+      HAXcmsStore.storePieces &&
+      HAXcmsStore.storePieces.siteBuilder &&
+      typeof HAXcmsStore.storePieces.siteBuilder.outlineLocation === "string"
+    ) {
+      outlineLocation = HAXcmsStore.storePieces.siteBuilder.outlineLocation;
+    }
+    const baseElement = globalThis.document.querySelector("base");
+    const baseHref =
+      baseElement && baseElement.href
+        ? baseElement.href
+        : `${globalThis.location.origin}/`;
+    try {
+      return new URL(outlineLocation || ".", baseHref).toString();
+    } catch (e) {}
+    return baseHref;
+  }
+
+  _currentSiteResourceHref(resource = "") {
+    const cleanResource = String(resource || "").replace(/^\/+/, "");
+    try {
+      return new URL(cleanResource, this._currentSiteBaseHref()).toString();
+    } catch (e) {}
+    return cleanResource;
+  }
+
+  _currentPageFormatHref(format = "json") {
+    const normalizedFormat = String(format || "")
+      .replace(/^\./, "")
+      .toLowerCase();
+    const routeFormat = normalizedFormat === "md" ? "markdown" : normalizedFormat;
+    const routeVariant = _pageRouteVariantUrl(routeFormat);
+    if (routeVariant) {
+      return routeVariant;
+    }
+    if (normalizedFormat === "md") {
+      return this._currentSiteResourceHref("index.md");
+    }
+    return this._currentSiteResourceHref(`index.${normalizedFormat}`);
   }
 
   static get styles() {
@@ -371,17 +416,6 @@ class HAXCMSAboutDialogUI extends DDD {
           margin-left: var(--ddd-spacing-2);
         }
 
-        .grouped-paths {
-          gap: var(--ddd-spacing-2);
-        }
-
-        .grouped-paths > li {
-          margin-bottom: var(--ddd-spacing-1);
-        }
-
-        .grouped-paths ul {
-          margin-top: var(--ddd-spacing-1);
-        }
 
         a {
           color: light-dark(
@@ -623,7 +657,7 @@ class HAXCMSAboutDialogUI extends DDD {
                   icon="hax:hax2022"
                   aria-hidden="true"
                 ></simple-icon-lite>
-                <h3>AI-Ready Content Interfaces</h3>
+                <h3>API Links</h3>
               </span>
             </summary>
             <div class="collapse-body">
@@ -633,18 +667,75 @@ class HAXCMSAboutDialogUI extends DDD {
               </p>
               <ul>
                 <li>
-                  Add <code>.md</code>, <code>.json</code>, <code>.yaml</code>,
-                  or <code>.xml</code> to page URLs to request alternate page
-                  outputs.
+                  Add
+                  <a
+                    href="${this._currentPageFormatHref("html")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>.html</code></a
+                  >,
+                  <a
+                    href="${this._currentPageFormatHref("md")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>.md</code></a
+                  >,
+                  <a
+                    href="${this._currentPageFormatHref("json")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>.json</code></a
+                  >,
+                  <a
+                    href="${this._currentPageFormatHref("yaml")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>.yaml</code></a
+                  >,
+                  <a
+                    href="${this._currentPageFormatHref("xml")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>.xml</code></a
+                  >
+                  to page URLs to request alternate page outputs.
                 </li>
                 <li>
-                  Use <code>/llms.txt</code> as a model-facing index for this
-                  site, with links to key machine-readable resources.
+                  Use
+                  <a
+                    href="${this._currentSiteResourceHref("llms.txt")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>/llms.txt</code></a
+                  >
+                  as a model-facing index for this site, with links to key
+                  machine-readable resources.
                 </li>
                 <li>
-                  Pair <code>/site.json</code> (structure) with
-                  <code>/lunrSearchIndex.json</code> (retrieval) for stronger
-                  AI-powered workflows.
+                  Pair
+                  <a
+                    href="${this._currentSiteResourceHref("site.json")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>/site.json</code></a
+                  >
+                  (structure) with
+                  <a
+                    href="${this._currentSiteResourceHref("lunrSearchIndex.json")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>/lunrSearchIndex.json</code></a
+                  >
+                  (retrieval) for stronger AI-powered workflows.
+                </li>
+                <li>
+                  Explore the site API contract at
+                  <a
+                    href="${this._currentSiteResourceHref("x/api/openapi")}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><code>/x/api/openapi</code></a
+                  >.
                 </li>
               </ul>
               <p class="section-description">
@@ -687,65 +778,6 @@ class HAXCMSAboutDialogUI extends DDD {
             </div>
           </details>
 
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="icons:search"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>Search Options in One Place</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">
-                Use these grouped Search paths to jump directly to major
-                workflows:
-              </p>
-              <ul class="grouped-paths">
-                <li>
-                  <strong>Help and onboarding</strong>
-                  <ul>
-                    <li><code>CMS/help/keyboard-shortcuts</code></li>
-                    <li><code>CMS/welcome</code></li>
-                    <li><code>CMS/admin/about</code></li>
-                  </ul>
-                </li>
-                <li>
-                  <strong>Admin and site configuration</strong>
-                  <ul>
-                    <li><code>CMS/admin/dashboard</code></li>
-                    <li><code>CMS/admin/structure</code></li>
-                    <li><code>CMS/admin/content</code></li>
-                    <li><code>CMS/admin/files</code></li>
-                    <li><code>CMS/admin/appearance</code></li>
-                    <li><code>CMS/admin/editor</code></li>
-                    <li><code>CMS/admin/seo</code></li>
-                  </ul>
-                </li>
-                <li>
-                  <strong>Page editing and metadata</strong>
-                  <ul>
-                    <li><code>CMS/action/edit</code></li>
-                    <li><code>CMS/action/save</code></li>
-                    <li><code>CMS/edit/title</code></li>
-                    <li><code>CMS/edit/description</code></li>
-                    <li><code>CMS/edit/slug</code></li>
-                    <li><code>CMS/edit/tags</code></li>
-                  </ul>
-                </li>
-                <li>
-                  <strong>Navigation and publishing operations</strong>
-                  <ul>
-                    <li><code>/site/navigation</code></li>
-                    <li><code>CMS/export/page</code></li>
-                    <li><code>CMS/export/site</code></li>
-                    <li><code>CMS/action/print</code></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </details>
         </div>
       </div>
     `;
