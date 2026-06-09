@@ -45,6 +45,7 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   structure: "admin-structure",
   content: "admin-content",
   files: "admin-files",
+  views: "admin-views",
   transfer: "admin-transfer",
   reports: "admin-reports",
   blocks: "admin-blocks",
@@ -2706,6 +2707,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       contentImported: "Content imported!",
       content: "Content",
       files: "Files",
+      views: "Views",
     };
     this.backText = "Sites Dashboard";
     this.painting = true;
@@ -3609,6 +3611,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "admin",
       eventName: "super-daemon-element-method",
       path: "CMS/admin/content",
+    });
+    SuperDaemonInstance.defineOption({
+      title: `Admin - ${this.t.views}`,
+      icon: "hax:view-gallery",
+      tags: ["CMS", "admin", "views", "display", "query", "site settings"],
+      value: {
+        target: this,
+        method: "_openViewsAdmin",
+        args: [true],
+      },
+      context: "admin",
+      eventName: "super-daemon-element-method",
+      path: "CMS/admin/views",
     });
     if (store.platformAllows("siteManifest")) {
       SuperDaemonInstance.defineOption({
@@ -5919,6 +5934,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports":
         return "insights";
       case "content":
+      case "views":
       case "revisions":
       case "transfer":
         return null;
@@ -6061,6 +6077,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return true;
       case "content":
         this._openContentAdmin(true, routeOptions);
+        return true;
+      case "views":
+        this._openViewsAdmin(true, routeOptions);
         return true;
       case "revisions":
         this._openPageRevisions(routeNodeId, "", {
@@ -7036,6 +7055,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       // "insights" is the compatibility platform feature key for Reports availability.
       dashboard.allowReports = this._adminRouteAllowed("reports");
       dashboard.allowFiles = this._adminRouteAllowed("files");
+      dashboard.allowViews = this._adminRouteAllowed("views");
       dashboard.allowImportExport = this._adminRouteAllowed("transfer");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",
@@ -7113,6 +7133,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           break;
         case "files-admin":
           this._openFilesAdmin(true);
+          break;
+        case "views-admin":
+          this._openViewsAdmin(true);
           break;
         case "import-export":
           this._openImportExportDashboard(true, "Import / Export");
@@ -7381,6 +7404,65 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           detail: {
             title: title,
             titleIcon: "icons:folder",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-min-width": "300px",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openViewsAdmin(fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("views", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("views", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-views-admin-dialog.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-views-admin-dialog",
+      );
+      let title = this.t.views || "Views";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          title,
+          "hax:view-gallery",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "hax:view-gallery",
             breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",

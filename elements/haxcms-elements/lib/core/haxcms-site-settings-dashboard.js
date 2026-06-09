@@ -20,6 +20,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
       allowFiles: { type: Boolean, attribute: "allow-files" },
+      allowViews: { type: Boolean, attribute: "allow-views" },
       allowImportExport: {
         type: Boolean,
         attribute: "allow-import-export",
@@ -44,6 +45,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     this.allowStyleGuide = false;
     this.allowReports = false;
     this.allowFiles = false;
+    this.allowViews = true;
     this.allowImportExport = true;
     this.showDisabledActions = false;
   }
@@ -242,6 +244,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     const editorDisabled = !this.allowEditor;
     const reportsDisabled = !this.allowReports;
     const filesDisabled = !this.allowFiles;
+    const viewsDisabled = !this.allowViews;
     const importExportDisabled = !this.allowImportExport;
     const primaryActions = [
       {
@@ -287,6 +290,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Files",
         disabled: filesDisabled,
         tooltip: this._disabledViaFeaturesTooltip(filesDisabled),
+      },
+      {
+        action: "views-admin",
+        icon: "hax:view-gallery",
+        label: "Views",
+        disabled: viewsDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(viewsDisabled),
       },
       { action: "platform", icon: "hax:add-item", label: "Features" },
       {
