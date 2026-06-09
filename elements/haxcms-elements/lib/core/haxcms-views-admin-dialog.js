@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   HaxSchematizer,
@@ -57,7 +58,7 @@ class HAXCMSViewsAdminDialog extends DDD {
     this.previewErrorMessage = "";
     this.entityOptions = [];
     this.selectedEntity = "";
-    this.renderer = "list";
+    this.renderer = "collection";
     this.queryFields = [];
     this.queryValues = {};
     this.selectedFields = [];
@@ -445,6 +446,60 @@ class HAXCMSViewsAdminDialog extends DDD {
         .card-link {
           font-size: var(--ddd-font-size-4xs);
         }
+        .record-html {
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-150);
+          overflow-wrap: anywhere;
+        }
+        .record-image {
+          display: block;
+          width: 100%;
+          max-height: 220px;
+          object-fit: cover;
+          border-radius: var(--ddd-radius-sm);
+          margin-bottom: var(--ddd-spacing-2);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+        }
+        .result-list {
+          margin: 0;
+          padding-left: var(--ddd-spacing-4);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+        }
+        .result-list-item {
+          margin: 0;
+          font-size: var(--ddd-font-size-5xs);
+        }
+        .result-title {
+          margin: 0 0 var(--ddd-spacing-1) 0;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .content-records {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-4);
+        }
+        .content-record {
+          border-bottom: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          padding-bottom: var(--ddd-spacing-3);
+        }
+        .content-record:last-child {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
+        .content-record-title {
+          margin: 0 0 var(--ddd-spacing-2) 0;
+          font-size: var(--ddd-font-size-s);
+        }
         .playlist-shell play-list {
           display: block;
         }
@@ -639,16 +694,84 @@ class HAXCMSViewsAdminDialog extends DDD {
     return this.specData.entityMap[this.selectedEntity];
   }
 
+  _isEntityAllowed(entity) {
+    if (!entity || !entity.name) {
+      return false;
+    }
+    const disallowedEntities = {
+      user: true,
+      site: true,
+      region: true,
+    };
+    const normalizedName = this._safeString(entity.name).toLowerCase();
+    return !Object.prototype.hasOwnProperty.call(
+      disallowedEntities,
+      normalizedName,
+    );
+  }
+
+  _manifestPageItems() {
+    if (
+      !globalThis.HAXCMS ||
+      typeof globalThis.HAXCMS.requestAvailability !== "function"
+    ) {
+      return [];
+    }
+    const cms = globalThis.HAXCMS.requestAvailability();
+    if (!cms || !cms.store || typeof cms.store.getManifestItems !== "function") {
+      return [];
+    }
+    const itemManifest = cms.store.getManifestItems(true);
+    if (!Array.isArray(itemManifest)) {
+      return [];
+    }
+    const options = [];
+    itemManifest.forEach((el) => {
+      if (!el || !el.id) {
+        return;
+      }
+      let itemBuilder = el;
+      let distance = "- ";
+      while (itemBuilder && itemBuilder.parent != null) {
+        itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+        if (itemBuilder) {
+          distance = `--${distance}`;
+        }
+      }
+      options.push({
+        value: this._safeString(el.id),
+        text: `${distance}${this._safeString(el.title || el.slug || el.id)}`,
+      });
+    });
+    return options;
+  }
+
+  _manifestPageOptions() {
+    const options = {
+      "": "-- Any --",
+    };
+    const items = this._manifestPageItems();
+    items.forEach((item) => {
+      if (!item || !item.value) {
+        return;
+      }
+      options[item.value] = item.text;
+    });
+    return options;
+  }
+
   async _loadSpecData() {
     this.specLoading = true;
     this.errorMessage = "";
     try {
       const specData = await loadHAXCMSViewsSpec();
       this.specData = specData;
-      this.entityOptions = (specData.entities || []).map((entity) => ({
-        value: entity.name,
-        text: entity.title,
-      }));
+      this.entityOptions = (specData.entities || [])
+        .filter((entity) => this._isEntityAllowed(entity))
+        .map((entity) => ({
+          value: entity.name,
+          text: entity.title,
+        }));
       if (this.entityOptions.length < 1) {
         this.errorMessage = "No entities were found in /x/api/v1/entities.";
         this.previewRecords = [];
@@ -660,7 +783,12 @@ class HAXCMSViewsAdminDialog extends DDD {
         specData.entityMap &&
         Object.prototype.hasOwnProperty.call(specData.entityMap, "item")
       ) {
-        defaultEntity = "item";
+        const itemAllowed = this.entityOptions.find(
+          (entity) => entity.value === "item",
+        );
+        if (itemAllowed) {
+          defaultEntity = "item";
+        }
       }
       this._applyEntityConfig(defaultEntity);
     } catch (e) {
@@ -705,7 +833,10 @@ class HAXCMSViewsAdminDialog extends DDD {
       include: true,
       sort: true,
       format: true,
+      "filter.pageType": true,
+      "filter.region": true,
     };
+    const pageFilterOptions = this._manifestPageOptions();
     return entityConfig.queryParams
       .filter((parameter) => {
         if (!parameter || !parameter.name) {
@@ -724,6 +855,14 @@ class HAXCMSViewsAdminDialog extends DDD {
           inputMethod: this._parameterInputMethod(parameter),
           required: parameter.required === true,
         };
+        if (
+          parameter.name === "filter.parent" ||
+          parameter.name === "filter.ancestor"
+        ) {
+          field.inputMethod = "select";
+          field.options = pageFilterOptions;
+          return field;
+        }
         if (
           field.inputMethod === "select" &&
           Array.isArray(parameter.enumValues) &&
@@ -762,6 +901,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       include: true,
       sort: true,
       format: true,
+      "filter.pageType": true,
+      "filter.region": true,
     };
     entityConfig.queryParams.forEach((parameter) => {
       if (!parameter || !parameter.name) {
@@ -797,7 +938,9 @@ class HAXCMSViewsAdminDialog extends DDD {
     this.queryFields = this._queryFieldsForEntity(entityConfig);
     this.queryValues = this._initialQueryValues(entityConfig);
     this.selectedFields = this._normalizeArrayValue(entityConfig.defaultFields);
-    this.selectedIncludes = [];
+    this.selectedIncludes = this._syncIncludesFromSelectedFields(
+      this.selectedFields,
+    );
     this.sortField = "";
     this.sortDescending = false;
     this.previewErrorMessage = "";
@@ -808,6 +951,58 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.__queryValueChangeLock = false;
     }, 0);
     this._schedulePreviewRefresh();
+  }
+
+  _syncIncludesFromSelectedFields(selectedFields = []) {
+    const entityConfig = this._selectedEntityConfig();
+    if (
+      !entityConfig ||
+      !Array.isArray(entityConfig.includes) ||
+      entityConfig.includes.length < 1
+    ) {
+      return this._normalizeArrayValue(this.selectedIncludes);
+    }
+    const fields = this._normalizeArrayValue(selectedFields);
+    const syncedIncludes = this._normalizeArrayValue(this.selectedIncludes);
+    const includeMap = {};
+    syncedIncludes.forEach((value) => {
+      includeMap[value] = true;
+    });
+    entityConfig.includes.forEach((includeItem) => {
+      const includeName = this._safeString(includeItem).trim();
+      if (!includeName) {
+        return;
+      }
+      const includePrefix = `${includeName}.`;
+      const includeBracketPrefix = `${includeName}[`;
+      for (let i = 0; i < fields.length; i++) {
+        const fieldName = fields[i];
+        if (
+          fieldName === includeName ||
+          fieldName.indexOf(includePrefix) === 0 ||
+          fieldName.indexOf(includeBracketPrefix) === 0
+        ) {
+          includeMap[includeName] = true;
+          return;
+        }
+      }
+    });
+    const normalizedIncludes = [];
+    entityConfig.includes.forEach((includeItem) => {
+      const includeName = this._safeString(includeItem).trim();
+      if (!includeName) {
+        return;
+      }
+      if (includeMap[includeName]) {
+        normalizedIncludes.push(includeName);
+      }
+    });
+    Object.keys(includeMap).forEach((includeName) => {
+      if (normalizedIncludes.indexOf(includeName) === -1) {
+        normalizedIncludes.push(includeName);
+      }
+    });
+    return normalizedIncludes;
   }
 
   _isEmptyValue(value) {
@@ -1185,16 +1380,6 @@ class HAXCMSViewsAdminDialog extends DDD {
       }
       const extracted = extractViewsRecords(payload, entityConfig);
       let records = Array.isArray(extracted.records) ? extracted.records : [];
-      if (
-        records.length < 1 &&
-        payload &&
-        payload.data &&
-        typeof payload.data === "object" &&
-        !Array.isArray(payload.data) &&
-        Object.keys(payload.data).length > 0
-      ) {
-        records = [payload.data];
-      }
       this.previewRecords = records;
       this.previewCount =
         typeof extracted.count === "number" ? extracted.count : records.length;
@@ -1225,7 +1410,7 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _onRendererChanged(e) {
-    const value = this._safeString(this._eventValue(e, "list")).trim();
+    const value = this._safeString(this._eventValue(e, "collection")).trim();
     if (!value) {
       return;
     }
@@ -1241,6 +1426,10 @@ class HAXCMSViewsAdminDialog extends DDD {
     const normalized = this._normalizeArrayValue(value);
     if (!this._deepEqual(normalized, this.selectedFields)) {
       this.selectedFields = normalized;
+    }
+    const syncedIncludes = this._syncIncludesFromSelectedFields(normalized);
+    if (!this._deepEqual(syncedIncludes, this.selectedIncludes)) {
+      this.selectedIncludes = syncedIncludes;
     }
     this._schedulePreviewRefresh();
   }
@@ -1348,7 +1537,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         return this._safeString(value);
       }
     }
-    return "Untitled record";
+    return "No results";
   }
 
   _recordDescription(record) {
@@ -1366,6 +1555,36 @@ class HAXCMSViewsAdminDialog extends DDD {
       }
     }
     return "";
+  }
+
+  _recordBody(record) {
+    const bodyCandidates = ["body", "content", "description"];
+    for (let i = 0; i < bodyCandidates.length; i++) {
+      const value = this._valueAtPath(record, bodyCandidates[i]);
+      if (!this._isEmptyValue(value)) {
+        return this._safeString(value);
+      }
+    }
+    return "";
+  }
+
+  _recordBodyIsHtml(record) {
+    const body = this._recordBody(record).trim();
+    if (!body) {
+      return false;
+    }
+    return body.indexOf("<") !== -1 && body.indexOf(">") !== -1;
+  }
+
+  _renderRecordBody(record, maxLength = 240) {
+    const body = this._recordBody(record);
+    if (!body) {
+      return html``;
+    }
+    if (this._recordBodyIsHtml(record)) {
+      return html`<div class="record-html">${unsafeHTML(body)}</div>`;
+    }
+    return html`<p>${this._shortValue(body, maxLength)}</p>`;
   }
 
   _recordUrl(record) {
@@ -1394,11 +1613,27 @@ class HAXCMSViewsAdminDialog extends DDD {
       "logo",
       "metadata.site.logo",
       "screenshot",
+      "preview",
+      "thumbnail",
+      "path",
+      "metadata.path",
     ];
     for (let i = 0; i < candidates.length; i++) {
       const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
       if (value) {
-        return value;
+        const resolvedPath = this._resolveSiteHref(value);
+        if (
+          candidates[i] === "path" ||
+          candidates[i] === "metadata.path" ||
+          candidates[i] === "preview" ||
+          candidates[i] === "thumbnail"
+        ) {
+          if (this._looksLikeImageSource(resolvedPath)) {
+            return resolvedPath;
+          }
+          continue;
+        }
+        return resolvedPath;
       }
     }
     return "";
@@ -1441,6 +1676,36 @@ class HAXCMSViewsAdminDialog extends DDD {
     return [];
   }
 
+  _looksLikeImageSource(url = "") {
+    const value = this._safeString(url).trim().toLowerCase();
+    if (!value) {
+      return false;
+    }
+    if (
+      value.endsWith(".png") ||
+      value.endsWith(".jpg") ||
+      value.endsWith(".jpeg") ||
+      value.endsWith(".gif") ||
+      value.endsWith(".webp") ||
+      value.endsWith(".svg") ||
+      value.endsWith(".avif")
+    ) {
+      return true;
+    }
+    if (
+      value.indexOf(".png?") !== -1 ||
+      value.indexOf(".jpg?") !== -1 ||
+      value.indexOf(".jpeg?") !== -1 ||
+      value.indexOf(".gif?") !== -1 ||
+      value.indexOf(".webp?") !== -1 ||
+      value.indexOf(".svg?") !== -1 ||
+      value.indexOf(".avif?") !== -1
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   _displayValue(value) {
     if (value === null || typeof value === "undefined" || value === "") {
       return "—";
@@ -1452,10 +1717,22 @@ class HAXCMSViewsAdminDialog extends DDD {
       return String(value);
     }
     if (Array.isArray(value)) {
+      const containsObject = value.some(
+        (item) => item && typeof item === "object",
+      );
+      if (containsObject) {
+        try {
+          return JSON.stringify(value, null, 2);
+        } catch (e) {}
+      }
       return value.map((item) => this._safeString(item)).join(", ");
     }
     if (typeof value === "object") {
-      return JSON.stringify(value);
+      try {
+        return JSON.stringify(value, null, 2);
+      } catch (e) {
+        return this._safeString(value);
+      }
     }
     return this._safeString(value);
   }
@@ -1466,6 +1743,15 @@ class HAXCMSViewsAdminDialog extends DDD {
       return normalized;
     }
     return `${normalized.substring(0, max)}…`;
+  }
+
+  _tableCellValue(column = "", value = null) {
+    const displayValue = this._displayValue(value);
+    const normalizedColumn = this._safeString(column).toLowerCase();
+    if (normalizedColumn.indexOf("haxelementschema") !== -1) {
+      return displayValue;
+    }
+    return this._shortValue(displayValue, 180);
   }
 
   _tableColumns() {
@@ -1554,23 +1840,28 @@ class HAXCMSViewsAdminDialog extends DDD {
     this._schedulePreviewRefresh();
   }
 
-  _renderListPreview() {
+  _renderCollectionPreview() {
     return html`
       <collection-list>
         ${this.previewRecords.map((record) => {
           const tags = this._recordTags(record);
           const url = this._recordUrl(record);
+          const bodyIsHtml = this._recordBodyIsHtml(record);
           return html`
             <collection-item
               line1="${this._recordTitle(record)}"
-              line2="${this._shortValue(this._recordDescription(record), 180)}"
+              line2="${bodyIsHtml
+                ? ""
+                : this._shortValue(this._recordDescription(record), 180)}"
               url="${url}"
               image="${this._recordImage(record)}"
               icon="${this._recordIcon(record)}"
               tags="${tags.join(",")}"
               accent-color="grey"
               saturate
-            ></collection-item>
+            >
+              ${this._renderRecordBody(record, 220)}
+            </collection-item>
           `;
         })}
       </collection-list>
@@ -1582,6 +1873,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       <div class="card-grid">
         ${this.previewRecords.map((record) => {
           const url = this._recordUrl(record);
+          const image = this._recordImage(record);
           return html`
             <accent-card accent-color="grey" no-border>
               <div slot="heading">${this._recordTitle(record)}</div>
@@ -1589,12 +1881,59 @@ class HAXCMSViewsAdminDialog extends DDD {
                 ${this._recordTags(record).slice(0, 5).join(", ")}
               </div>
               <div slot="content">
-                <p>${this._shortValue(this._recordDescription(record), 220)}</p>
+                ${image
+                  ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
+                  : html``}
+                ${this._renderRecordBody(record, 240)}
                 ${url
                   ? html`<a class="card-link" href="${url}" target="_blank" rel="noopener">Open record</a>`
                   : html``}
               </div>
             </accent-card>
+          `;
+        })}
+      </div>
+    `;
+  }
+
+  _renderBulletedListPreview() {
+    return html`
+      <ul class="result-list">
+        ${this.previewRecords.map((record) => {
+          const recordUrl = this._recordUrl(record);
+          return html`
+            <li class="result-list-item">
+              <h4 class="result-title">
+                ${recordUrl
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                  : this._recordTitle(record)}
+              </h4>
+              ${this._renderRecordBody(record, 360)}
+            </li>
+          `;
+        })}
+      </ul>
+    `;
+  }
+
+  _renderContentPreview() {
+    return html`
+      <div class="content-records">
+        ${this.previewRecords.map((record) => {
+          const recordUrl = this._recordUrl(record);
+          const image = this._recordImage(record);
+          return html`
+            <article class="content-record">
+              <h3 class="content-record-title">
+                ${recordUrl
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                  : this._recordTitle(record)}
+              </h3>
+              ${image
+                ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
+                : html``}
+              ${this._renderRecordBody(record, 720)}
+            </article>
           `;
         })}
       </div>
@@ -1620,7 +1959,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                   <tr>
                     ${columns.map((column) => {
                       const value = this._valueAtPath(record, column);
-                      return html`<td title="${this._displayValue(value)}">${this._shortValue(this._displayValue(value), 180)}</td>`;
+                      return html`<td title="${this._displayValue(value)}">${this._tableCellValue(column, value)}</td>`;
                     })}
                   </tr>
                 `,
@@ -1647,11 +1986,15 @@ class HAXCMSViewsAdminDialog extends DDD {
               `;
             }
             const recordUrl = this._recordUrl(record);
+            const image = this._recordImage(record);
             return html`
               <accent-card accent-color="grey">
                 <div slot="heading">${this._recordTitle(record)}</div>
                 <div slot="content">
-                  <p>${this._shortValue(this._recordDescription(record), 240)}</p>
+                  ${image
+                    ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
+                    : html``}
+                  ${this._renderRecordBody(record, 300)}
                   ${recordUrl
                     ? html`<a href="${recordUrl}" target="_blank" rel="noopener">Open record</a>`
                     : html``}
@@ -1683,7 +2026,13 @@ class HAXCMSViewsAdminDialog extends DDD {
     if (this.renderer === "playlist") {
       return this._renderPlaylistPreview();
     }
-    return this._renderListPreview();
+    if (this.renderer === "list") {
+      return this._renderBulletedListPreview();
+    }
+    if (this.renderer === "content") {
+      return this._renderContentPreview();
+    }
+    return this._renderCollectionPreview();
   }
 
   render() {
@@ -1713,10 +2062,12 @@ class HAXCMSViewsAdminDialog extends DDD {
           ]
         : [{ value: "", text: "Default" }];
     const rendererOptions = [
-      { value: "list", text: "List" },
+      { value: "collection", text: "Collection" },
       { value: "table", text: "Table" },
       { value: "cards", text: "Cards" },
       { value: "playlist", text: "Playlist" },
+      { value: "list", text: "List" },
+      { value: "content", text: "Content" },
     ];
     const leftColumnWidth = Number.isFinite(Number(this.leftPanelWidth))
       ? Math.max(24, Math.min(68, Number(this.leftPanelWidth)))
