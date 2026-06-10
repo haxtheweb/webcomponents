@@ -1559,7 +1559,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           if (results && results.data) {
             store.manifest = results.data;
           }
-        } catch {
+        } catch (e) {
+          void e
           // Fail quietly and avoid uncaught promise errors in the dashboard shell.
         }
       } else if (
