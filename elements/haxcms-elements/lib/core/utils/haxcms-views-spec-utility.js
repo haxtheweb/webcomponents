@@ -1,3 +1,5 @@
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "./haxcms-site-api-registry.js";
 const VIEWS_SPEC_CACHE = new Map();
 
 function normalizePath(path = "") {
@@ -217,6 +219,10 @@ function normalizeEntityDescriptor(entity = {}, openapi = {}, apiBasePath = "") 
     pathItem && pathItem.get && typeof pathItem.get === "object"
       ? pathItem.get
       : {};
+  const listOperationId =
+    getOperation && getOperation.operationId
+      ? String(getOperation.operationId)
+      : "";
   const pathParameters = Array.isArray(pathItem.parameters)
     ? pathItem.parameters
     : [];
@@ -261,6 +267,7 @@ function normalizeEntityDescriptor(entity = {}, openapi = {}, apiBasePath = "") 
     endpoints,
     listEndpoint: endpoint || `${apiBasePath}/v1/${entityName}s`,
     listPath: resolvedPath ? resolvedPath.pathKey : "",
+    listOperationId,
     queryParams,
     queryParamMap,
     filterableFields,
@@ -370,6 +377,80 @@ export function extractViewsRecords(payload = {}, entityConfig = {}) {
   };
 }
 
+function statusCode(response = null) {
+  if (!response || typeof response !== "object") {
+    return 0;
+  }
+  if (typeof response.status === "number") {
+    return response.status;
+  }
+  if (typeof response.status === "string") {
+    const parsed = parseInt(response.status, 10);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+  return 0;
+}
+
+function isOpenApiDocument(payload = null) {
+  return !!(
+    payload &&
+    typeof payload === "object" &&
+    !Array.isArray(payload) &&
+    typeof payload.openapi === "string" &&
+    payload.paths &&
+    typeof payload.paths === "object"
+  );
+}
+
+async function callSiteOperation(operationName = "", params = {}) {
+  if (
+    !operationName ||
+    !MicroFrontendRegistry ||
+    typeof MicroFrontendRegistry.call !== "function" ||
+    typeof MicroFrontendRegistry.has !== "function" ||
+    !MicroFrontendRegistry.has(operationName)
+  ) {
+    return null;
+  }
+  const response = await MicroFrontendRegistry.call(
+    operationName,
+    params,
+    null,
+    null,
+  );
+  if (!response || typeof response !== "object") {
+    return null;
+  }
+  const code = statusCode(response);
+  if (code > 0 && code !== 200) {
+    return null;
+  }
+  return response;
+}
+
+async function loadEntitiesPayload(apiBasePath = "") {
+  const registryResponse = await callSiteOperation("@site/listEntityDescriptors");
+  if (registryResponse && typeof registryResponse === "object") {
+    return registryResponse;
+  }
+  return await fetchJson(`${apiBasePath}/v1/entities`);
+}
+
+async function loadOpenApiPayload(apiBasePath = "") {
+  const registryResponse = await callSiteOperation("@site/getSiteOpenApiJson");
+  if (isOpenApiDocument(registryResponse)) {
+    return registryResponse;
+  }
+  if (
+    registryResponse &&
+    registryResponse.data &&
+    isOpenApiDocument(registryResponse.data)
+  ) {
+    return registryResponse.data;
+  }
+  return await fetchJson(`${apiBasePath}/openapi.json`);
+}
+
 async function fetchJson(url = "") {
   const response = await fetch(url, {
     method: "GET",
@@ -395,11 +476,10 @@ export async function loadHAXCMSViewsSpec(options = {}) {
     return await VIEWS_SPEC_CACHE.get(apiBasePath);
   }
   const loader = (async () => {
-    const entitiesUrl = `${apiBasePath}/v1/entities`;
-    const openapiUrl = `${apiBasePath}/openapi.json`;
+    await waitForHAXCMSSiteApiRegistryReady();
     const [entitiesPayload, openapi] = await Promise.all([
-      fetchJson(entitiesUrl),
-      fetchJson(openapiUrl),
+      loadEntitiesPayload(apiBasePath),
+      loadOpenApiPayload(apiBasePath),
     ]);
     const entities = getEntitiesFromPayload(entitiesPayload).map((entity) =>
       normalizeEntityDescriptor(entity, openapi, apiBasePath),

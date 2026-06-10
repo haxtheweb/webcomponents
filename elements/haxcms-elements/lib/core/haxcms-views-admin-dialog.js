@@ -9,6 +9,8 @@ import {
   extractViewsRecords,
   loadHAXCMSViewsSpec,
 } from "./utils/haxcms-views-spec-utility.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -1191,9 +1193,45 @@ class HAXCMSViewsAdminDialog extends DDD {
     return params;
   }
 
+  _queryParamValues(entityConfig) {
+    const params = this._buildQueryParams(entityConfig);
+    const values = {};
+    if (!params || typeof params.forEach !== "function") {
+      return values;
+    }
+    params.forEach((value, key) => {
+      values[key] = value;
+    });
+    return values;
+  }
+
+  _entityOperationName(entityConfig) {
+    if (!entityConfig || !entityConfig.listOperationId) {
+      return "";
+    }
+    const operationId = this._safeString(entityConfig.listOperationId).trim();
+    if (!operationId) {
+      return "";
+    }
+    return `@site/${operationId}`;
+  }
+
   _entityEndpoint(entityConfig) {
     if (!entityConfig) {
       return "";
+    }
+    const operationName = this._entityOperationName(entityConfig);
+    if (
+      operationName &&
+      MicroFrontendRegistry &&
+      typeof MicroFrontendRegistry.has === "function" &&
+      typeof MicroFrontendRegistry.get === "function" &&
+      MicroFrontendRegistry.has(operationName)
+    ) {
+      const operation = MicroFrontendRegistry.get(operationName, true);
+      if (operation && operation.endpoint) {
+        return this._safeString(operation.endpoint);
+      }
     }
     if (entityConfig.listEndpoint) {
       return this._safeString(entityConfig.listEndpoint);
@@ -1204,12 +1242,15 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _buildQueryDetails(entityConfig) {
+    const operationName = this._entityOperationName(entityConfig);
     const endpoint = this._entityEndpoint(entityConfig);
-    const params = this._buildQueryParams(entityConfig);
-    const queryString = params.toString();
+    const params = this._queryParamValues(entityConfig);
+    const queryString = new URLSearchParams(params).toString();
     const queryUrl = queryString ? `${endpoint}?${queryString}` : endpoint;
     return {
+      operationName,
       endpoint,
+      params,
       queryString,
       queryUrl,
     };
@@ -1406,6 +1447,20 @@ class HAXCMSViewsAdminDialog extends DDD {
     }
   }
 
+  _statusCode(response) {
+    if (!response || typeof response !== "object") {
+      return 0;
+    }
+    if (typeof response.status === "number") {
+      return response.status;
+    }
+    if (typeof response.status === "string") {
+      const parsed = parseInt(response.status, 10);
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
+  }
+
   _schedulePreviewRefresh() {
     const entityConfig = this._selectedEntityConfig();
     const details = this._buildQueryDetails(entityConfig);
@@ -1422,12 +1477,8 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _abortPreviewRequest() {
-    if (this.__previewAbortController) {
-      try {
-        this.__previewAbortController.abort();
-      } catch (e) {}
-      this.__previewAbortController = null;
-    }
+    this.__previewRequestId += 1;
+    this.__previewAbortController = null;
   }
 
   async _refreshPreview() {
@@ -1436,39 +1487,52 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.previewRecords = [];
       this.previewCount = 0;
       this.previewTotal = 0;
+      this.previewErrorMessage = "";
       return;
     }
     const queryDetails = this._buildQueryDetails(entityConfig);
     this.queryUrl = queryDetails.queryUrl;
     this.queryString = queryDetails.queryString;
-    const requestUrl = this._resolveFetchUrl(queryDetails.queryUrl);
-    if (!requestUrl) {
+    if (!queryDetails.operationName) {
       this.previewRecords = [];
       this.previewCount = 0;
       this.previewTotal = 0;
+      this.previewErrorMessage = "No list operation is defined for this entity.";
       return;
     }
     this._abortPreviewRequest();
     this.previewLoading = true;
     this.previewErrorMessage = "";
-    const activeRequestId = ++this.__previewRequestId;
-    const abortController = new AbortController();
-    this.__previewAbortController = abortController;
+    const activeRequestId = this.__previewRequestId;
     try {
-      const response = await fetch(requestUrl, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-        },
-        signal: abortController.signal,
-      });
-      if (!response.ok) {
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.call !== "function" ||
+        typeof MicroFrontendRegistry.has !== "function" ||
+        !MicroFrontendRegistry.has(queryDetails.operationName)
+      ) {
         throw new Error(
-          `Preview request failed (${response.status}) for ${queryDetails.endpoint}`,
+          `Missing registry operation ${queryDetails.operationName}`,
         );
       }
-      const payload = await response.json();
+      const payload = await MicroFrontendRegistry.call(
+        queryDetails.operationName,
+        queryDetails.params,
+        null,
+        this,
+      );
+      const status = this._statusCode(payload);
+      if (status > 0 && status !== 200) {
+        throw new Error(
+          `Preview request failed (${status}) for ${queryDetails.operationName}`,
+        );
+      }
+      if (!payload || typeof payload !== "object") {
+        throw new Error(
+          `Empty preview payload for ${queryDetails.operationName}`,
+        );
+      }
       if (activeRequestId !== this.__previewRequestId) {
         return;
       }
@@ -1480,7 +1544,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.previewTotal =
         typeof extracted.total === "number" ? extracted.total : records.length;
     } catch (e) {
-      if (e && e.name === "AbortError") {
+      if (activeRequestId !== this.__previewRequestId) {
         return;
       }
       this.previewRecords = [];

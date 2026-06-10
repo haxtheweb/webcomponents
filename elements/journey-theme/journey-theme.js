@@ -803,7 +803,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         this.location && this.location.route.name !== "home"
           ? html` ${this._items.map((item, index) => {
               return html`
-                <simple-tooltip for="${item.id}" position="bottom"
+                <simple-tooltip for="top-${item.id}" position="bottom"
                   >${item.title}</simple-tooltip
                 >
                 <a
@@ -815,7 +815,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                     ? "active"
                     : ""}"
                   ><simple-icon-button-lite
-                    id="${item.id}"
+                    id="top-${item.id}"
                     title="${item.title}"
                     label="${item.title}"
                     class="article"
