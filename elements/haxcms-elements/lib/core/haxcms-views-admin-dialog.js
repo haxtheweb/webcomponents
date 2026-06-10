@@ -19,6 +19,13 @@ import "@haxtheweb/collection-list/lib/collection-item.js";
 import "@haxtheweb/play-list/play-list.js";
 import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
+import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
+import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
+import "@haxtheweb/map-menu/map-menu.js";
 
 class HAXCMSViewsAdminDialog extends DDD {
   static get tag() {
@@ -464,6 +471,29 @@ class HAXCMSViewsAdminDialog extends DDD {
               var(--ddd-primary-5)
             );
         }
+        .record-media {
+          display: block;
+          width: 100%;
+          margin-bottom: var(--ddd-spacing-2);
+        }
+        .record-media video-player {
+          display: block;
+          width: 100%;
+        }
+        .record-element-preview {
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-2);
+          overflow: auto;
+        }
+        .record-element-preview > * {
+          max-width: 100%;
+        }
         .result-list {
           margin: 0;
           padding-left: var(--ddd-spacing-4);
@@ -500,8 +530,69 @@ class HAXCMSViewsAdminDialog extends DDD {
           margin: 0 0 var(--ddd-spacing-2) 0;
           font-size: var(--ddd-font-size-s);
         }
+        .carousel-shell play-list,
         .playlist-shell play-list {
           display: block;
+        }
+        .media-gallery {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: var(--ddd-spacing-3);
+        }
+        .media-gallery-item {
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(255, 255, 255, 0.03)
+          );
+        }
+        .media-gallery-item img {
+          display: block;
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+        }
+        .media-gallery-caption {
+          display: block;
+          padding: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-5xs);
+        }
+        .accordion-preview {
+          display: block;
+        }
+        .accordion-preview a11y-collapse {
+          --a11y-collapse-margin: 0 0 var(--ddd-spacing-2) 0;
+        }
+        .tabs-preview a11y-tabs {
+          --a11y-tabs-content-padding: var(--ddd-spacing-3);
+          --a11y-tabs-button-padding: var(--ddd-spacing-2);
+        }
+        .timeline-shell lrndesign-timeline {
+          display: block;
+        }
+        .chart-shell lrndesign-bar {
+          display: block;
+          min-height: 280px;
+        }
+        .tree-shell {
+          min-height: 320px;
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+        }
+        .tree-shell map-menu {
+          height: 320px;
+          --map-menu-gap: var(--ddd-spacing-2);
         }
         @media screen and (max-width: 1024px) {
           .workspace {
@@ -520,6 +611,9 @@ class HAXCMSViewsAdminDialog extends DDD {
             grid-template-columns: repeat(1, minmax(0, 1fr));
           }
           .card-grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+          }
+          .media-gallery {
             grid-template-columns: repeat(1, minmax(0, 1fr));
           }
         }
@@ -1410,9 +1504,15 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _onRendererChanged(e) {
-    const value = this._safeString(this._eventValue(e, "collection")).trim();
+    let value = this._safeString(this._eventValue(e, "collection")).trim();
     if (!value) {
       return;
+    }
+    if (value === "playlist") {
+      value = "carousel";
+    }
+    if (value === "cards") {
+      value = "grid";
     }
     if (value === this.renderer) {
       return;
@@ -1576,6 +1676,297 @@ class HAXCMSViewsAdminDialog extends DDD {
     return body.indexOf("<") !== -1 && body.indexOf(">") !== -1;
   }
 
+  _stripHtml(value = "") {
+    return this._safeString(value).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  _recordTag(record) {
+    const tagCandidates = [
+      "tag",
+      "haxElementSchema.tag",
+      "instances.0.haxElementSchema.tag",
+    ];
+    for (let i = 0; i < tagCandidates.length; i++) {
+      const value = this._safeString(this._valueAtPath(record, tagCandidates[i])).trim();
+      if (value) {
+        return value.toLowerCase();
+      }
+    }
+    return "";
+  }
+
+  _recordElementSchema(record) {
+    let schema = this._valueAtPath(record, "haxElementSchema");
+    if (Array.isArray(schema) && schema.length > 0) {
+      schema = schema[0];
+    }
+    if (
+      (!schema || typeof schema !== "object") &&
+      record &&
+      typeof record === "object"
+    ) {
+      schema = this._valueAtPath(record, "instances.0.haxElementSchema");
+    }
+    if (!schema || typeof schema !== "object" || Array.isArray(schema)) {
+      return null;
+    }
+    if (!schema.tag || this._safeString(schema.tag).trim() === "") {
+      return null;
+    }
+    return schema;
+  }
+
+  _isRenderableTag(tag = "") {
+    const normalized = this._safeString(tag).trim().toLowerCase();
+    if (!normalized) {
+      return false;
+    }
+    const nativeMediaTags = {
+      img: true,
+      video: true,
+      audio: true,
+      iframe: true,
+    };
+    if (Object.prototype.hasOwnProperty.call(nativeMediaTags, normalized)) {
+      return true;
+    }
+    return /^[a-z][a-z0-9]*-[a-z0-9-]*$/.test(normalized);
+  }
+
+  _attributeValue(value) {
+    if (value === null || typeof value === "undefined" || value === false) {
+      return "";
+    }
+    if (value === true) {
+      return "__BOOLEAN_TRUE__";
+    }
+    if (typeof value === "object") {
+      return "";
+    }
+    return this._safeString(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .trim();
+  }
+
+  _attributeStringFromProperties(properties = {}) {
+    if (!properties || typeof properties !== "object" || Array.isArray(properties)) {
+      return "";
+    }
+    const keys = Object.keys(properties);
+    let output = "";
+    for (let i = 0; i < keys.length; i++) {
+      const key = this._safeString(keys[i]).trim();
+      if (!key) {
+        continue;
+      }
+      const normalizedValue = this._attributeValue(properties[key]);
+      if (!normalizedValue) {
+        continue;
+      }
+      if (normalizedValue === "__BOOLEAN_TRUE__") {
+        output += ` ${key}`;
+        continue;
+      }
+      output += ` ${key}="${normalizedValue}"`;
+    }
+    return output;
+  }
+
+  _renderRecordElementPreview(record) {
+    const schema = this._recordElementSchema(record);
+    const tag = schema && schema.tag ? this._safeString(schema.tag).trim() : this._recordTag(record);
+    if (!this._isRenderableTag(tag)) {
+      return null;
+    }
+    const properties =
+      schema && schema.properties && typeof schema.properties === "object"
+        ? schema.properties
+        : {};
+    const content =
+      schema && typeof schema.content === "string" ? schema.content : "";
+    const attributeString = this._attributeStringFromProperties(properties);
+    const elementMarkup = `<${tag}${attributeString}>${content}</${tag}>`;
+    return html`<div class="record-element-preview">${unsafeHTML(elementMarkup)}</div>`;
+  }
+
+  _renderRecordPrimary(record, maxLength = 240) {
+    const videoSource = this._videoSource(record);
+    if (videoSource) {
+      return html`
+        <div class="record-media">
+          <video-player
+            source="${videoSource}"
+            media-title="${this._recordTitle(record)}"
+          ></video-player>
+        </div>
+      `;
+    }
+    const imageSource = this._recordImage(record);
+    if (imageSource) {
+      return html`
+        <img
+          class="record-image"
+          src="${imageSource}"
+          alt="${this._recordTitle(record)} preview"
+          loading="lazy"
+          decoding="async"
+        />
+      `;
+    }
+    const elementPreview = this._renderRecordElementPreview(record);
+    if (elementPreview) {
+      return elementPreview;
+    }
+    return this._renderRecordBody(record, maxLength);
+  }
+
+  _recordTimelineDate(record) {
+    const candidates = [
+      "generatedAt",
+      "dateCreated",
+      "updated",
+      "created",
+      "metadata.updated",
+      "metadata.created",
+    ];
+    for (let i = 0; i < candidates.length; i++) {
+      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      if (!value) {
+        continue;
+      }
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) {
+        return date.toISOString();
+      }
+    }
+    return "";
+  }
+
+  _timelineEvents() {
+    return this.previewRecords
+      .map((record) => {
+        const isoDate = this._recordTimelineDate(record);
+        const headingPrefix = isoDate
+          ? new Date(isoDate).toLocaleDateString()
+          : "Record";
+        const detailsSource =
+          this._recordDescription(record) || this._recordBody(record) || "";
+        const details = this._shortValue(this._stripHtml(detailsSource), 420);
+        return {
+          heading: `${headingPrefix} — ${this._recordTitle(record)}`,
+          details,
+          imagesrc: this._recordImage(record),
+          imagealt: `${this._recordTitle(record)} image`,
+        };
+      })
+      .filter((event) => event.heading && event.details);
+  }
+
+  _numericValue(value) {
+    if (typeof value === "number" && Number.isFinite(value)) {
+      return value;
+    }
+    const normalized = this._safeString(value).trim();
+    if (!normalized) {
+      return null;
+    }
+    const numeric = Number(normalized);
+    if (!Number.isNaN(numeric) && Number.isFinite(numeric)) {
+      return numeric;
+    }
+    return null;
+  }
+
+  _chartDescriptor() {
+    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
+      return null;
+    }
+    const firstRecord = this.previewRecords[0];
+    const selected = Array.isArray(this.selectedFields) ? this.selectedFields : [];
+    const flattened = this._flattenObject(firstRecord);
+    const candidateFields = selected.length > 0 ? selected : Object.keys(flattened);
+    let valueField = "";
+    for (let i = 0; i < candidateFields.length; i++) {
+      const field = candidateFields[i];
+      for (let j = 0; j < this.previewRecords.length; j++) {
+        const value = this._numericValue(this._valueAtPath(this.previewRecords[j], field));
+        if (value !== null) {
+          valueField = field;
+          break;
+        }
+      }
+      if (valueField) {
+        break;
+      }
+    }
+    if (!valueField) {
+      return null;
+    }
+    let labelField = "";
+    for (let i = 0; i < candidateFields.length; i++) {
+      const field = candidateFields[i];
+      if (field === valueField) {
+        continue;
+      }
+      const value = this._safeString(this._valueAtPath(firstRecord, field)).trim();
+      if (value) {
+        labelField = field;
+        break;
+      }
+    }
+    const labels = [];
+    const values = [];
+    const recordLimit = Math.min(this.previewRecords.length, 24);
+    for (let i = 0; i < recordLimit; i++) {
+      const record = this.previewRecords[i];
+      const label = labelField
+        ? this._safeString(this._valueAtPath(record, labelField)).trim()
+        : this._recordTitle(record);
+      const numeric = this._numericValue(this._valueAtPath(record, valueField));
+      labels.push(label || this._recordTitle(record));
+      values.push(numeric === null ? 0 : numeric);
+    }
+    return {
+      valueField,
+      labelField,
+      data: {
+        labels,
+        series: [values],
+      },
+    };
+  }
+
+  _treeRecords() {
+    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
+      return [];
+    }
+    const idLookup = {};
+    const records = this.previewRecords.map((record, index) => {
+      const rawId =
+        this._safeString(record.id || record.slug || record.path || record.tag || `${index + 1}`).trim();
+      const id = rawId || `${index + 1}`;
+      idLookup[id] = true;
+      return {
+        id,
+        parent: this._safeString(record.parent).trim(),
+        title: this._recordTitle(record),
+        slug: this._recordUrl(record),
+        metadata: {
+          icon: this._recordIcon(record),
+          pageType: this._safeString(record.pageType || ""),
+          published: true,
+        },
+      };
+    });
+    records.forEach((record) => {
+      if (!record.parent || !Object.prototype.hasOwnProperty.call(idLookup, record.parent)) {
+        record.parent = null;
+      }
+    });
+    return records;
+  }
+
   _renderRecordBody(record, maxLength = 240) {
     const body = this._recordBody(record);
     if (!body) {
@@ -1593,6 +1984,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       "slug",
       "url",
       "fullUrl",
+      "path",
+      "metadata.path",
       "links.self",
       "links.content",
     ];
@@ -1609,12 +2002,24 @@ class HAXCMSViewsAdminDialog extends DDD {
   _recordImage(record) {
     const candidates = [
       "image",
+      "src",
+      "properties.src",
+      "properties.image",
+      "haxElementSchema.properties.src",
+      "haxElementSchema.properties.image",
+      "instances.0.haxElementSchema.properties.src",
+      "instances.0.haxElementSchema.properties.image",
       "metadata.image",
       "logo",
       "metadata.site.logo",
       "screenshot",
       "preview",
       "thumbnail",
+      "poster",
+      "haxElementSchema.properties.poster",
+      "instances.0.haxElementSchema.properties.poster",
+      "url",
+      "fullUrl",
       "path",
       "metadata.path",
     ];
@@ -1622,18 +2027,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
       if (value) {
         const resolvedPath = this._resolveSiteHref(value);
-        if (
-          candidates[i] === "path" ||
-          candidates[i] === "metadata.path" ||
-          candidates[i] === "preview" ||
-          candidates[i] === "thumbnail"
-        ) {
-          if (this._looksLikeImageSource(resolvedPath)) {
-            return resolvedPath;
-          }
-          continue;
+        if (this._looksLikeImageSource(resolvedPath)) {
+          return resolvedPath;
         }
-        return resolvedPath;
       }
     }
     return "";
@@ -1688,7 +2084,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       value.endsWith(".gif") ||
       value.endsWith(".webp") ||
       value.endsWith(".svg") ||
-      value.endsWith(".avif")
+      value.endsWith(".avif") ||
+      value.endsWith(".bmp")
     ) {
       return true;
     }
@@ -1699,7 +2096,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       value.indexOf(".gif?") !== -1 ||
       value.indexOf(".webp?") !== -1 ||
       value.indexOf(".svg?") !== -1 ||
-      value.indexOf(".avif?") !== -1
+      value.indexOf(".avif?") !== -1 ||
+      value.indexOf(".bmp?") !== -1
     ) {
       return true;
     }
@@ -1773,14 +2171,22 @@ class HAXCMSViewsAdminDialog extends DDD {
     if (!value) {
       return false;
     }
-    if (value.indexOf("youtube.com/") !== -1 || value.indexOf("youtu.be/") !== -1) {
+    if (
+      value.indexOf("youtube.com/") !== -1 ||
+      value.indexOf("youtu.be/") !== -1 ||
+      value.indexOf("vimeo.com/") !== -1
+    ) {
       return true;
     }
     if (
       value.endsWith(".mp4") ||
       value.endsWith(".webm") ||
       value.endsWith(".ogg") ||
-      value.endsWith(".m3u8")
+      value.endsWith(".m3u8") ||
+      value.indexOf(".mp4?") !== -1 ||
+      value.indexOf(".webm?") !== -1 ||
+      value.indexOf(".ogg?") !== -1 ||
+      value.indexOf(".m3u8?") !== -1
     ) {
       return true;
     }
@@ -1790,20 +2196,42 @@ class HAXCMSViewsAdminDialog extends DDD {
   _videoSource(record) {
     const candidates = [
       "source",
+      "src",
       "video",
+      "properties.source",
+      "properties.src",
+      "haxElementSchema.properties.source",
+      "haxElementSchema.properties.src",
+      "haxElementSchema.properties.url",
+      "instances.0.haxElementSchema.properties.source",
+      "instances.0.haxElementSchema.properties.src",
+      "instances.0.haxElementSchema.properties.url",
       "url",
       "fullUrl",
+      "path",
+      "metadata.path",
       "links.self",
       "links.page",
       "links.content",
     ];
+    const recordTag = this._recordTag(record);
     for (let i = 0; i < candidates.length; i++) {
+      const candidateName = candidates[i];
       const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
       if (!value) {
         continue;
       }
-      if (this._looksLikeVideoSource(value)) {
-        return this._resolveSiteHref(value);
+      const resolvedPath = this._resolveSiteHref(value);
+      if (this._looksLikeVideoSource(resolvedPath)) {
+        return resolvedPath;
+      }
+      if (
+        recordTag &&
+        recordTag.indexOf("video") !== -1 &&
+        candidateName.indexOf("links.") !== 0 &&
+        resolvedPath.indexOf("/x/api/") === -1
+      ) {
+        return resolvedPath;
       }
     }
     return "";
@@ -1847,6 +2275,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           const tags = this._recordTags(record);
           const url = this._recordUrl(record);
           const bodyIsHtml = this._recordBodyIsHtml(record);
+          const elementPreview = this._renderRecordElementPreview(record);
           return html`
             <collection-item
               line1="${this._recordTitle(record)}"
@@ -1860,20 +2289,18 @@ class HAXCMSViewsAdminDialog extends DDD {
               accent-color="grey"
               saturate
             >
-              ${this._renderRecordBody(record, 220)}
+              ${elementPreview ? elementPreview : this._renderRecordBody(record, 220)}
             </collection-item>
           `;
         })}
       </collection-list>
     `;
   }
-
-  _renderCardsPreview() {
+  _renderGridPreview() {
     return html`
       <div class="card-grid">
         ${this.previewRecords.map((record) => {
           const url = this._recordUrl(record);
-          const image = this._recordImage(record);
           return html`
             <accent-card accent-color="grey" no-border>
               <div slot="heading">${this._recordTitle(record)}</div>
@@ -1881,10 +2308,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                 ${this._recordTags(record).slice(0, 5).join(", ")}
               </div>
               <div slot="content">
-                ${image
-                  ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
-                  : html``}
-                ${this._renderRecordBody(record, 240)}
+                ${this._renderRecordPrimary(record, 240)}
                 ${url
                   ? html`<a class="card-link" href="${url}" target="_blank" rel="noopener">Open record</a>`
                   : html``}
@@ -1894,6 +2318,10 @@ class HAXCMSViewsAdminDialog extends DDD {
         })}
       </div>
     `;
+  }
+
+  _renderCardsPreview() {
+    return this._renderGridPreview();
   }
 
   _renderBulletedListPreview() {
@@ -1908,7 +2336,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                   ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
                   : this._recordTitle(record)}
               </h4>
-              ${this._renderRecordBody(record, 360)}
+              ${this._renderRecordPrimary(record, 360)}
             </li>
           `;
         })}
@@ -1921,7 +2349,6 @@ class HAXCMSViewsAdminDialog extends DDD {
       <div class="content-records">
         ${this.previewRecords.map((record) => {
           const recordUrl = this._recordUrl(record);
-          const image = this._recordImage(record);
           return html`
             <article class="content-record">
               <h3 class="content-record-title">
@@ -1929,10 +2356,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                   ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
                   : this._recordTitle(record)}
               </h3>
-              ${image
-                ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
-                : html``}
-              ${this._renderRecordBody(record, 720)}
+              ${this._renderRecordPrimary(record, 720)}
             </article>
           `;
         })}
@@ -1971,9 +2395,32 @@ class HAXCMSViewsAdminDialog extends DDD {
     `;
   }
 
-  _renderPlaylistPreview() {
+  _renderCarouselPreview() {
+    const allImageRecords = this.previewRecords.every((record) => {
+      const hasVideo = this._videoSource(record);
+      const hasImage = this._recordImage(record);
+      return !hasVideo && !!hasImage;
+    });
+    if (allImageRecords) {
+      return html`
+        <div class="media-gallery">
+          ${this.previewRecords.map((record) => {
+            const image = this._recordImage(record);
+            const recordUrl = this._recordUrl(record);
+            return html`
+              <div class="media-gallery-item">
+                ${recordUrl
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"><img src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" /></a>`
+                  : html`<img src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`}
+                <span class="media-gallery-caption">${this._recordTitle(record)}</span>
+              </div>
+            `;
+          })}
+        </div>
+      `;
+    }
     return html`
-      <div class="playlist-shell">
+      <div class="carousel-shell">
         <play-list navigation pagination>
           ${this.previewRecords.map((record) => {
             const videoSource = this._videoSource(record);
@@ -1987,13 +2434,26 @@ class HAXCMSViewsAdminDialog extends DDD {
             }
             const recordUrl = this._recordUrl(record);
             const image = this._recordImage(record);
+            const elementPreview = this._renderRecordElementPreview(record);
+            if (image) {
+              return html`
+                <figure>
+                  <img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />
+                  <figcaption>
+                    ${recordUrl
+                      ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                      : this._recordTitle(record)}
+                  </figcaption>
+                </figure>
+              `;
+            }
+            if (elementPreview) {
+              return html`${elementPreview}`;
+            }
             return html`
               <accent-card accent-color="grey">
                 <div slot="heading">${this._recordTitle(record)}</div>
                 <div slot="content">
-                  ${image
-                    ? html`<img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`
-                    : html``}
                   ${this._renderRecordBody(record, 300)}
                   ${recordUrl
                     ? html`<a href="${recordUrl}" target="_blank" rel="noopener">Open record</a>`
@@ -2003,6 +2463,85 @@ class HAXCMSViewsAdminDialog extends DDD {
             `;
           })}
         </play-list>
+      </div>
+    `;
+  }
+
+  _renderAccordionPreview() {
+    return html`
+      <div class="accordion-preview">
+        <a11y-collapse-group>
+          ${this.previewRecords.map((record, index) => html`
+            <a11y-collapse
+              heading-button
+              heading="${this._recordTitle(record)}"
+              ?expanded="${index === 0}"
+            >
+              ${this._renderRecordPrimary(record, 420)}
+            </a11y-collapse>
+          `)}
+        </a11y-collapse-group>
+      </div>
+    `;
+  }
+
+  _renderTabsPreview() {
+    return html`
+      <div class="tabs-preview">
+        <a11y-tabs full-width>
+          ${this.previewRecords.map((record, index) => html`
+            <a11y-tab
+              id="views-preview-tab-${index}"
+              label="${this._recordTitle(record)}"
+            >
+              ${this._renderRecordPrimary(record, 520)}
+            </a11y-tab>
+          `)}
+        </a11y-tabs>
+      </div>
+    `;
+  }
+
+  _renderTimelinePreview() {
+    const events = this._timelineEvents();
+    if (!events || events.length < 1) {
+      return html`<p class="empty-preview">No date-oriented records available for timeline rendering.</p>`;
+    }
+    return html`
+      <div class="timeline-shell">
+        <lrndesign-timeline
+          timeline-title="${this._titleFromParameterName(this.selectedEntity)} timeline"
+          .events="${events}"
+        ></lrndesign-timeline>
+      </div>
+    `;
+  }
+
+  _renderChartPreview() {
+    const descriptor = this._chartDescriptor();
+    if (!descriptor) {
+      return html`<p class="empty-preview">No numeric field detected for chart rendering.</p>`;
+    }
+    return html`
+      <div class="chart-shell">
+        <p class="note">Charting <strong>${this._titleFromParameterName(descriptor.valueField)}</strong>${descriptor.labelField ? html` by <strong>${this._titleFromParameterName(descriptor.labelField)}</strong>` : html``}</p>
+        <lrndesign-bar
+          .data="${descriptor.data}"
+          chart-title="${this._titleFromParameterName(this.selectedEntity)} chart"
+          show-table
+        ></lrndesign-bar>
+      </div>
+    `;
+  }
+
+  _renderTreePreview() {
+    const records = this._treeRecords();
+    if (!records || records.length < 1) {
+      return html`<p class="empty-preview">No hierarchical records available for tree rendering.</p>`;
+    }
+    return html`
+      <div class="tree-shell">
+        <map-menu .data="${records}" auto-scroll></map-menu>
       </div>
     `;
   }
@@ -2017,20 +2556,40 @@ class HAXCMSViewsAdminDialog extends DDD {
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
       return html`<p class="empty-preview">No results yet for the current query configuration.</p>`;
     }
-    if (this.renderer === "table") {
+    const renderer = this.renderer === "playlist"
+      ? "carousel"
+      : this.renderer === "cards"
+        ? "grid"
+        : this.renderer;
+    if (renderer === "table") {
       return this._renderTablePreview();
     }
-    if (this.renderer === "cards") {
-      return this._renderCardsPreview();
+    if (renderer === "grid") {
+      return this._renderGridPreview();
     }
-    if (this.renderer === "playlist") {
-      return this._renderPlaylistPreview();
+    if (renderer === "carousel") {
+      return this._renderCarouselPreview();
     }
-    if (this.renderer === "list") {
+    if (renderer === "list") {
       return this._renderBulletedListPreview();
     }
-    if (this.renderer === "content") {
+    if (renderer === "content") {
       return this._renderContentPreview();
+    }
+    if (renderer === "accordion") {
+      return this._renderAccordionPreview();
+    }
+    if (renderer === "tabs") {
+      return this._renderTabsPreview();
+    }
+    if (renderer === "timeline") {
+      return this._renderTimelinePreview();
+    }
+    if (renderer === "chart") {
+      return this._renderChartPreview();
+    }
+    if (renderer === "tree") {
+      return this._renderTreePreview();
     }
     return this._renderCollectionPreview();
   }
@@ -2061,13 +2620,24 @@ class HAXCMSViewsAdminDialog extends DDD {
             })),
           ]
         : [{ value: "", text: "Default" }];
+    const selectedRenderer =
+      this.renderer === "playlist"
+        ? "carousel"
+        : this.renderer === "cards"
+          ? "grid"
+          : this.renderer;
     const rendererOptions = [
       { value: "collection", text: "Collection" },
       { value: "table", text: "Table" },
-      { value: "cards", text: "Cards" },
-      { value: "playlist", text: "Playlist" },
+      { value: "grid", text: "Grid" },
+      { value: "carousel", text: "Carousel" },
       { value: "list", text: "List" },
       { value: "content", text: "Content" },
+      { value: "accordion", text: "Accordion" },
+      { value: "tabs", text: "Tabs" },
+      { value: "timeline", text: "Timeline" },
+      { value: "chart", text: "Chart" },
+      { value: "tree", text: "Tree" },
     ];
     const leftColumnWidth = Number.isFinite(Number(this.leftPanelWidth))
       ? Math.max(24, Math.min(68, Number(this.leftPanelWidth)))
@@ -2101,7 +2671,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                           type="select"
                           label="Output renderer"
                           .itemsList="${rendererOptions}"
-                          .value="${this.renderer}"
+                          .value="${selectedRenderer}"
                           @value-changed="${this._onRendererChanged}"
                           @change="${this._onRendererChanged}"
                         ></simple-fields-field>
