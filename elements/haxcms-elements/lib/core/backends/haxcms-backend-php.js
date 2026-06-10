@@ -4,6 +4,7 @@
  */
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
 import { autorun, toJS } from "mobx";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
@@ -38,6 +39,7 @@ class HAXCMSBackendPHP extends LitElement {
   async jwtChanged(e) {
     this.jwt = e.detail.value;
     store.jwt = this.jwt;
+    this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
@@ -62,6 +64,7 @@ class HAXCMSBackendPHP extends LitElement {
     setTimeout(() => {
       if (globalThis.appSettings) {
         store.appSettings = globalThis.appSettings;
+        this._syncSiteApiRegistry();
         let jwtlogin = this.shadowRoot.querySelector("#jwt");
         jwtlogin.url = globalThis.appSettings.login;
         jwtlogin.refreshUrl = globalThis.appSettings.refreshUrl;
@@ -71,6 +74,7 @@ class HAXCMSBackendPHP extends LitElement {
         // it's not a real JWT but it drives the environment to operate correctly
         if (globalThis.appSettings.jwt) {
           this.jwt = globalThis.appSettings.jwt;
+          this._syncSiteApiRegistry();
         }
       }
       const shouldValidateConnection =
@@ -116,6 +120,9 @@ class HAXCMSBackendPHP extends LitElement {
         detail: this,
       }),
     );
+  }
+  _syncSiteApiRegistry() {
+    configureHAXCMSSiteApiRegistry(store.appSettings || {}, this.jwt);
   }
   async _runConnectionTest() {
     if (!(store.appSettings && store.appSettings.connectionTest)) {
@@ -187,6 +194,7 @@ class HAXCMSBackendPHP extends LitElement {
     }
     this.jwt = null;
     store.jwt = null;
+    this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = null;
     }

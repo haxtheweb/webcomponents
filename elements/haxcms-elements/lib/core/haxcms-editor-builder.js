@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
 
 /**
  * `haxcms-editor-builder`
@@ -62,6 +63,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       typeof globalThis.appSettings === "object"
     ) {
       store.appSettings = globalThis.appSettings;
+      configureHAXCMSSiteApiRegistry(store.appSettings);
     }
   }
   _getEditorUIElements() {

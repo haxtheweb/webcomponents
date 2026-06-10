@@ -4,6 +4,8 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
@@ -202,12 +204,12 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   updated(cp) {
     if (super.updated) { super.updated(cp); }
-    if ((cp.has("listFilesPath") || cp.has("siteName")) && this.listFilesPath && this.siteName) {
+    if ((cp.has("listFilesPath") || cp.has("siteName")) && this._canList) {
       this.refreshFiles();
     }
   }
 
-  get _canList() { return this.listFilesPath !== "" && this.siteName !== ""; }
+  get _canList() { return this.siteName !== ""; }
   get _canUpload() { return this.siteName !== "" && this.nodeId !== ""; }
   get _canOp() { return this.fileOperationPath !== "" && this.siteName !== ""; }
 
@@ -368,7 +370,12 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   _normPayload(d) {
-    let arr = Array.isArray(d) ? d : d && Array.isArray(d.data) ? d.data : [];
+    const arr =
+      d &&
+      d.data &&
+      Array.isArray(d.data.files)
+        ? d.data.files
+        : [];
     const rows = [];
     arr.forEach((it, i) => { const n = this._normItem(it, i); if (n) rows.push(n); });
     rows.sort((a, b) => a.path.localeCompare(b.path));
@@ -410,6 +417,34 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!row || !row.publicUrl) return "";
     return this._withCacheBust(row.publicUrl, this.cacheBustToken);
   }
+  _statusCode(response) {
+    if (!response || typeof response !== "object") return 0;
+    if (typeof response.status === "number") return response.status;
+    if (typeof response.status === "string") {
+      const parsed = parseInt(response.status, 10);
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
+  }
+  _messageFromResponse(response, fallbackMessage) {
+    if (!response || typeof response !== "object") return fallbackMessage;
+    if (typeof response.message === "string" && response.message) {
+      return response.message;
+    }
+    if (
+      response.data &&
+      typeof response.data === "object" &&
+      typeof response.data.message === "string" &&
+      response.data.message
+    ) {
+      return response.data.message;
+    }
+    const status = this._statusCode(response);
+    if (status > 0) {
+      return `${fallbackMessage} (${status})`;
+    }
+    return fallbackMessage;
+  }
   _rowsRenderKey() {
     return `${this.cacheBustToken}|${this.rows.length}|${this.rows
       .map((row) => `${row.path}:${row.updated || row.dateCreated || ""}:${row.size || 0}`)
@@ -423,14 +458,35 @@ class HAXCMSFilesAdminDialog extends DDD {
     this._requestTableUpdate(); 
     this.loading = true; this.errorMessage = "";
     try {
-      const resp = await fetch(this._withCacheBust(this.listFilesPath, cacheBustToken), {
-        method: this.method, credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: this.method === "POST" ? JSON.stringify({ jwt: this.jwt, site: { name: this.siteName } }) : undefined,
-      });
-      const d = await this._rj(resp);
-      if (!resp.ok) { this.errorMessage = this._em(resp, d, "Unable to load files"); this.rows = []; return; }
-      this.rows = this._normPayload(d);
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.call !== "function" ||
+        typeof MicroFrontendRegistry.has !== "function" ||
+        !MicroFrontendRegistry.has("@site/listFiles")
+      ) {
+        this.errorMessage = "Unable to load files";
+        this.rows = [];
+        return;
+      }
+      const response = await MicroFrontendRegistry.call(
+        "@site/listFiles",
+        {
+          cb: cacheBustToken,
+        },
+        null,
+        this,
+      );
+      const status = this._statusCode(response);
+      if (status !== 200) {
+        this.errorMessage = this._messageFromResponse(
+          response,
+          "Unable to load files",
+        );
+        this.rows = [];
+        return;
+      }
+      this.rows = this._normPayload(response);
     } catch(e) { this.errorMessage = "Unable to load files"; this.rows = []; }
     finally { this.loading = false; this._requestTableUpdate(); }
   }

@@ -10,6 +10,8 @@ const MicroFrontendKeys = [
   "title",
   "description",
   "params",
+  "headers",
+  "security",
   "callback",
   "method",
 ];
@@ -19,8 +21,10 @@ export class MicroFrontend {
   constructor(values = {}) {
     // set defaults for each key expected
     MicroFrontendKeys.map((key) =>
-      key === "params"
+      key === "params" || key === "headers"
         ? (this[key] = values[key] || {})
+        : key === "security"
+          ? (this[key] = values[key] || [])
         : (this[key] = values[key] || null),
     );
   }
@@ -32,6 +36,65 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       super();
       this.list = [];
       this.MicroFrontend = MicroFrontend;
+      this.authProvider = null;
+    }
+
+    setAuthProvider(provider = null) {
+      if (typeof provider === "function") {
+        this.authProvider = provider;
+      } else {
+        this.authProvider = null;
+      }
+    }
+
+    _resolveEndpointTemplate(endpoint = "", params = {}) {
+      let resolvedEndpoint = String(endpoint || "");
+      let cleanedParams = params;
+      if (
+        params &&
+        typeof params === "object" &&
+        !(params instanceof FormData)
+      ) {
+        cleanedParams = Object.assign({}, params);
+        resolvedEndpoint = resolvedEndpoint.replace(
+          /\{([A-Za-z0-9_]+)\}/g,
+          (match, tokenName) => {
+            if (
+              Object.prototype.hasOwnProperty.call(cleanedParams, tokenName) &&
+              cleanedParams[tokenName] != null
+            ) {
+              const replacementValue = cleanedParams[tokenName];
+              delete cleanedParams[tokenName];
+              return encodeURIComponent(String(replacementValue));
+            }
+            return match;
+          },
+        );
+      }
+      return {
+        endpoint: resolvedEndpoint,
+        params: cleanedParams,
+      };
+    }
+
+    async _resolveSecurityHeaders(item = null, context = {}) {
+      if (
+        !item ||
+        !Array.isArray(item.security) ||
+        item.security.length === 0 ||
+        typeof this.authProvider !== "function"
+      ) {
+        return {};
+      }
+      try {
+        const resolvedHeaders = await this.authProvider(item.security, context);
+        if (resolvedHeaders && typeof resolvedHeaders === "object") {
+          return resolvedHeaders;
+        }
+      } catch (e) {
+        console.warn("MicroFrontendRegistry auth provider failed", e);
+      }
+      return {};
     }
 
     /**
@@ -167,38 +230,97 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     ) {
       if (this.has(name)) {
         const item = this.get(name);
+        const endpointData = this._resolveEndpointTemplate(item.endpoint, params);
         // default post, but this is not cacheable
         let method = "POST";
         // support definition requiring a certain method
         if (item.method) {
           method = item.method;
         }
-        // support override when calling
-        if (params.__method) {
-          method = params.__method;
-          delete params.__method;
+        let requestParams = endpointData.params;
+        const endpoint = endpointData.endpoint;
+        if (!(requestParams instanceof FormData)) {
+          if (!requestParams || typeof requestParams !== "object") {
+            requestParams = {};
+          } else {
+            requestParams = Object.assign({}, requestParams);
+          }
+          // support override when calling
+          if (requestParams.__method) {
+            method = requestParams.__method;
+            delete requestParams.__method;
+          }
         }
+        method = String(method || "POST").toUpperCase();
+        const endpointHeaders =
+          item.headers && typeof item.headers === "object"
+            ? Object.assign({}, item.headers)
+            : {};
+        let requestHeaders = Object.assign({}, endpointHeaders);
+        let fetchOptions = {};
+        if (!(requestParams instanceof FormData)) {
+          if (
+            requestParams.__headers &&
+            typeof requestParams.__headers === "object"
+          ) {
+            requestHeaders = Object.assign(
+              requestHeaders,
+              requestParams.__headers,
+            );
+            delete requestParams.__headers;
+          }
+          if (
+            requestParams.__fetchOptions &&
+            typeof requestParams.__fetchOptions === "object"
+          ) {
+            fetchOptions = Object.assign({}, requestParams.__fetchOptions);
+            delete requestParams.__fetchOptions;
+          }
+        }
+        const securityHeaders = await this._resolveSecurityHeaders(item, {
+          name,
+          endpoint,
+          method,
+          params: requestParams,
+          caller,
+        });
+        if (
+          securityHeaders &&
+          typeof securityHeaders === "object" &&
+          Object.keys(securityHeaders).length > 0
+        ) {
+          requestHeaders = Object.assign(requestHeaders, securityHeaders);
+        }
+        const parseResponse = async (response) => {
+          if (rawResponse) {
+            return response.text();
+          }
+          return response.ok
+            ? response.json()
+            : { status: response.status, data: null };
+        };
         let data = null;
         switch (method) {
           case "GET":
           case "HEAD":
             // support for formdata which is already encoded
-            const searchParams = new URLSearchParams(params).toString();
+            const searchPayload =
+              requestParams instanceof FormData ? {} : requestParams;
+            const searchParams = new URLSearchParams(searchPayload).toString();
+            const getOptions = Object.assign({}, fetchOptions, {
+              method: method,
+            });
+            if (Object.keys(requestHeaders).length > 0) {
+              getOptions.headers = requestHeaders;
+            }
             data = await fetch(
               searchParams
-                ? `${item.endpoint}?${searchParams}${urlStringAddon}`
-                : item.endpoint + urlStringAddon,
-              {
-                method: method,
-              },
+                ? `${endpoint}?${searchParams}${urlStringAddon}`
+                : endpoint + urlStringAddon,
+              getOptions,
             )
-              .then((d) => {
-                if (rawResponse) {
-                  return d.text();
-                }
-                return d.ok ? d.json() : { status: d.status, data: null };
-              })
-              .catch((e, d) => {
+              .then((d) => parseResponse(d))
+              .catch((e) => {
                 console.warn("Request failed", e);
                 // this is endpoint completely failed to respond
                 return { status: 500, data: null };
@@ -206,16 +328,33 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
             break;
           case "POST":
           default:
-            // support for formdata which is already encoded
-            data = await fetch(item.endpoint + urlStringAddon, {
+            const postOptions = Object.assign({}, fetchOptions, {
               method: method,
-              body:
-                params instanceof FormData ? params : JSON.stringify(params),
-            })
-              .then((d) => {
-                return d.ok ? d.json() : { status: d.status, data: null };
-              })
-              .catch((e, d) => {
+            });
+            // support for formdata which is already encoded
+            if (requestParams instanceof FormData) {
+              postOptions.body = requestParams;
+              if (Object.keys(requestHeaders).length > 0) {
+                postOptions.headers = requestHeaders;
+              }
+            } else {
+              const normalizedParams =
+                requestParams && typeof requestParams === "object"
+                  ? requestParams
+                  : {};
+              const normalizedHeaders = Object.assign({}, requestHeaders);
+              if (
+                !normalizedHeaders["Content-Type"] &&
+                !normalizedHeaders["content-type"]
+              ) {
+                normalizedHeaders["Content-Type"] = "application/json";
+              }
+              postOptions.headers = normalizedHeaders;
+              postOptions.body = JSON.stringify(normalizedParams);
+            }
+            data = await fetch(endpoint + urlStringAddon, postOptions)
+              .then((d) => parseResponse(d))
+              .catch((e) => {
                 console.warn("Request failed", e);
                 // this is endpoint completely failed to respond
                 return { status: 500, data: null };
