@@ -138,8 +138,6 @@ class HAXCMSBackendDemo extends LitElement {
               globalThis.appSettings.saveManifestPath;
             store.cmsSiteEditor.instance.saveOutlinePath =
               globalThis.appSettings.saveOutlinePath;
-            store.cmsSiteEditor.instance.saveNodeDetailsPath =
-              globalThis.appSettings.saveNodeDetailsPath || globalThis.appSettings.saveNodePath;
             store.cmsSiteEditor.instance.savePlatformSettingsPath =
               globalThis.appSettings.savePlatformSettingsPath;
             store.cmsSiteEditor.instance.saveAllowedBlocksPath =

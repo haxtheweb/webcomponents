@@ -46,7 +46,7 @@ class HaxAppSearch extends LitElement {
   async loadAppData() {
     this.loading = true;
     let url = this.requestUrl(this.requestEndPoint, this.requestParams);
-    const requestHeaders = this.buildRequestHeaders(this.requestParams);
+    const requestHeaders = this.buildRequestHeaders(this.requestParams, url);
     return await fetch(url, {
       headers: requestHeaders,
       method: this.method,
@@ -58,22 +58,71 @@ class HaxAppSearch extends LitElement {
         return this._requestDataChanged(json);
       });
   }
-  buildRequestHeaders(params = {}) {
+  isV1ApiRequest(url = "") {
+    const requestUrl = String(url || "").trim();
+    if (requestUrl === "") {
+      return false;
+    }
+    let pathname = requestUrl.split("?")[0];
+    try {
+      pathname = new URL(requestUrl).pathname || pathname;
+    } catch (e) {}
+    if (pathname.charAt(0) !== "/") {
+      pathname = "/" + pathname;
+    }
+    return /\/x\/api\/v1(?:\/|$)/.test(pathname);
+  }
+  resolveJwtTransport(url = "", params = {}) {
+    if (HAXStore.connectionRewrites.appendJwt == null || !params.__HAXJWT__) {
+      return {
+        enabled: false,
+        useHeader: false,
+        useQuery: false,
+        jwtKey: "",
+        jwtValue: "",
+      };
+    }
+    const jwtKey = HAXStore.connectionRewrites.appendJwt;
+    const jwtValue = String(localStorageGet(jwtKey, "") || "").trim();
+    if (jwtValue === "") {
+      return {
+        enabled: false,
+        useHeader: false,
+        useQuery: false,
+        jwtKey: jwtKey,
+        jwtValue: "",
+      };
+    }
+    return {
+      enabled: true,
+      useHeader: true,
+      useQuery: false,
+      jwtKey: jwtKey,
+      jwtValue: jwtValue,
+    };
+  }
+  buildRequestHeaders(params = {}, requestUrl = "") {
     const headers =
       this.headers && typeof this.headers === "object" ? { ...this.headers } : {};
-    // Support passing JWT in Authorization header for app search paths that now
-    // require bearer auth (for example v1 site API file endpoints), while
-    // retaining existing query/body jwt transport for legacy system routes.
-    if (HAXStore.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
-      const jwtValue = localStorageGet(HAXStore.connectionRewrites.appendJwt, "");
-      if (
-        jwtValue &&
-        String(jwtValue).trim() !== "" &&
-        !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
-        !Object.prototype.hasOwnProperty.call(headers, "authorization")
-      ) {
-        headers.Authorization = `Bearer ${String(jwtValue).trim()}`;
-      }
+    const siteToken = params.site_token
+      ? String(params.site_token).trim()
+      : params.siteToken
+        ? String(params.siteToken).trim()
+        : "";
+    if (
+      siteToken !== "" &&
+      !Object.prototype.hasOwnProperty.call(headers, "X-HAXCMS-Site-Token") &&
+      !Object.prototype.hasOwnProperty.call(headers, "x-haxcms-site-token")
+    ) {
+      headers["X-HAXCMS-Site-Token"] = siteToken;
+    }
+    const jwtTransport = this.resolveJwtTransport(requestUrl, params);
+    if (
+      jwtTransport.useHeader &&
+      !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
+      !Object.prototype.hasOwnProperty.call(headers, "authorization")
+    ) {
+      headers.Authorization = `Bearer ${jwtTransport.jwtValue}`;
     }
     return headers;
   }
@@ -110,24 +159,29 @@ class HaxAppSearch extends LitElement {
     });
   }
   requestUrl(url = "", params = {}) {
+    const requestParams =
+      params && typeof params === "object" ? { ...params } : {};
+    if (Object.prototype.hasOwnProperty.call(requestParams, "site_token")) {
+      delete requestParams.site_token;
+    }
+    if (Object.prototype.hasOwnProperty.call(requestParams, "siteToken")) {
+      delete requestParams.siteToken;
+    }
     var queryString = "";
     // support specialized appending data that is a string
     // to allow devs more flexibility
     if (
       HAXStore.connectionRewrites.appendUploadEndPoint != null &&
-      params.__HAXAPPENDUPLOADENDPOINT__
+      requestParams.__HAXAPPENDUPLOADENDPOINT__
     ) {
       queryString = HAXStore.connectionRewrites.appendUploadEndPoint + "&";
     }
-    // specialized support for an internal facing path which requires a JWT
-    // this is deep in the weeds but is useful in allowing for safely
-    // searching internal app paths that leverage JWT for security
-    if (HAXStore.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
-      params[HAXStore.connectionRewrites.appendJwt] = localStorageGet(
-        HAXStore.connectionRewrites.appendJwt,
-      );
+    // JWT transport is header-only.
+    const jwtTransport = this.resolveJwtTransport(url, requestParams);
+    if (jwtTransport.useQuery) {
+      requestParams[jwtTransport.jwtKey] = jwtTransport.jwtValue;
     }
-    queryString = queryString + this.queryStringData(params);
+    queryString = queryString + this.queryStringData(requestParams);
     // look for a specialized param
     if (queryString) {
       var bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
@@ -146,7 +200,12 @@ class HaxAppSearch extends LitElement {
     for (param in params) {
       value = params[param];
       //param = globalThis.encodeURIComponent(param);
-      if (param == "__HAXJWT__" || param == "__HAXAPPENDUPLOADENDPOINT__") {
+      if (
+        param == "__HAXJWT__" ||
+        param == "__HAXAPPENDUPLOADENDPOINT__" ||
+        param == "site_token" ||
+        param == "siteToken"
+      ) {
         // do nothing we skip these internal values
       } else if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
@@ -269,7 +328,28 @@ class HaxAppSearch extends LitElement {
       this.method = app.connection.operations.browse.method;
       this.headers = {};
       if (typeof app.connection.headers !== typeof undefined) {
-        this.headers = app.connection.headers;
+        this.headers = { ...app.connection.headers };
+      }
+      const requestSiteToken = requestParams.site_token
+        ? String(requestParams.site_token).trim()
+        : requestParams.siteToken
+          ? String(requestParams.siteToken).trim()
+          : "";
+      if (requestSiteToken !== "") {
+        if (
+          !Object.prototype.hasOwnProperty.call(
+            this.headers,
+            "X-HAXCMS-Site-Token",
+          ) &&
+          !Object.prototype.hasOwnProperty.call(
+            this.headers,
+            "x-haxcms-site-token",
+          )
+        ) {
+          this.headers["X-HAXCMS-Site-Token"] = requestSiteToken;
+        }
+        delete requestParams.site_token;
+        delete requestParams.siteToken;
       }
       this.requestParams = { ...requestParams };
       // build the request end point

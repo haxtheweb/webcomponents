@@ -860,73 +860,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         return null;
     }
   }
-  _activeTabInternalEndpoint() {
-    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
-      case "overview":
-      case "insights":
-        return toJS(store.appSettings.insightsPath) || null;
-      case "links":
-        return toJS(store.appSettings.linkCheckerPath) || null;
-      case "content":
-        return toJS(store.appSettings.contentBrowserPath) || null;
-      case "media":
-        return toJS(store.appSettings.mediaBrowserPath) || null;
-      default:
-        return null;
-    }
-  }
-  async _callInternalReportEndpoint(endpoint, params) {
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    let method;
-    let jwt;
-    if (store.appSettings.method) {
-      method = toJS(store.appSettings.method);
-    }
-    if (store.appSettings.jwt) {
-      jwt = store.appSettings.jwt;
-    }
-    if (
-      (!jwt || jwt === "" || jwt === "null" || jwt === "undefined") &&
-      store.jwt
-    ) {
-      jwt = toJS(store.jwt);
-    }
-    if (
-      typeof jwt === "string" &&
-      jwt !== "" &&
-      jwt !== "null" &&
-      jwt !== "undefined"
-    ) {
-      headers.Authorization = `Bearer ${jwt}`;
-      params.jwt = jwt;
-    }
-    try {
-      const response = await fetch(
-        endpoint +
-          (method === "GET" ? "?" + new URLSearchParams(params) : ""),
-        {
-          method: method || "POST",
-          credentials: "same-origin",
-          headers,
-          body: method === "GET" ? undefined : JSON.stringify(params),
-        },
-      );
-      if (!response.ok) {
-        throw new Error(`Status ${response.status}`);
-      }
-      const data = await response.json();
-      this._reportsResponse(data);
-    } catch (error) {
-      this.loading = false;
-      console.warn(
-        "haxcms-site-insights: failed internal report endpoint",
-        endpoint,
-        error,
-      );
-    }
-  }
   _reportTabs() {
     if (Array.isArray(this.reportTabs) && this.reportTabs.length > 0) {
       return this.reportTabs;
@@ -1218,34 +1151,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         return;
       }
     } catch (e) {}
-    const site = toJS(store.manifest);
-    const jwt =
-      store && store.jwt && typeof toJS(store.jwt) === "string"
-        ? toJS(store.jwt)
-        : "";
-    const siteName =
-      site &&
-      site.metadata &&
-      site.metadata.site &&
-      site.metadata.site.name
-        ? site.metadata.site.name
-        : "";
-    const legacyParams = {
-      site: {
-        name: siteName,
-      },
-      activeId: null,
-      jwt: jwt,
-    };
-    if (selectedReportId !== "") {
-      legacyParams.activeId = selectedReportId;
-    }
-    const internalEndpoint = this._activeTabInternalEndpoint();
-    if (!internalEndpoint) {
-      this.loading = false;
-      return;
-    }
-    this._callInternalReportEndpoint(internalEndpoint, legacyParams);
+    this.loading = false;
   }
   /**
    * Store the tag name to make it easier to obtain directly.

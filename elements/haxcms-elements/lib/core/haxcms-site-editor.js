@@ -230,50 +230,6 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="nodedetailsajax"
-        .url="${this.saveNodeDetailsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleNodeDetailsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="getnoderevisionsajax"
-        .url="${this.getNodeRevisionsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleNodeRevisionsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="getnoderevisionajax"
-        .url="${this.getNodeRevisionPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleNodeRevisionResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="restorenoderevisionajax"
-        .url="${this.restoreNodeRevisionPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleRestoreNodeRevisionResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -370,27 +326,6 @@ class HAXCMSSiteEditor extends LitElement {
         attribute: "delete-node-path",
       },
       /**
-       * end point for listing revisions for a page
-       */
-      getNodeRevisionsPath: {
-        type: String,
-        attribute: "get-node-revisions-path",
-      },
-      /**
-       * end point for loading a specific revision payload for a page
-       */
-      getNodeRevisionPath: {
-        type: String,
-        attribute: "get-node-revision-path",
-      },
-      /**
-       * end point for restoring a specific revision for a page
-       */
-      restoreNodeRevisionPath: {
-        type: String,
-        attribute: "restore-node-revision-path",
-      },
-      /**
        * end point for listing files
        */
       listFilesPath: {
@@ -434,13 +369,6 @@ class HAXCMSSiteEditor extends LitElement {
         attribute: "save-seo-settings-path",
       },
 
-      /**
-       * end point for saving node details (singular operations)
-       */
-      saveNodeDetailsPath: {
-        type: String,
-        attribute: "save-node-details-path",
-      },
 
       appendTarget: {
         type: Object,
@@ -1604,42 +1532,6 @@ class HAXCMSSiteEditor extends LitElement {
       store.toast(`Operation completed!`, 3000, { hat: "construction" });
     }, 300);
   }
-  _handleNodeRevisionsResponse(e) {
-    const response = e && e.detail ? e.detail.response : null;
-    if (!response || !response.data) {
-      return;
-    }
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-node-revisions-loaded", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          source: "backend",
-          data: response.data,
-          raw: response,
-        },
-      }),
-    );
-  }
-  _handleNodeRevisionResponse(e) {
-    const response = e && e.detail ? e.detail.response : null;
-    if (!response || !response.data) {
-      return;
-    }
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-node-revision-loaded", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          source: "backend",
-          data: response.data,
-          raw: response,
-        },
-      }),
-    );
-  }
   _handleRestoreNodeRevisionResponse(e) {
     const response = e && e.detail ? e.detail.response : null;
     if (!response || !response.data) {
@@ -1747,31 +1639,8 @@ class HAXCMSSiteEditor extends LitElement {
         }
       } catch (error) {}
     }
-    if (!this.getNodeRevisionsPath) {
-      return;
-    }
-    const body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: nodeId,
-      },
-    };
-    if (typeof detail.limit !== "undefined") {
-      body.limit = detail.limit;
-    }
-    if (typeof detail.offset !== "undefined") {
-      body.offset = detail.offset;
-    }
-    this.querySelector("#getnoderevisionsajax").body = body;
-    this.querySelector("#getnoderevisionsajax").generateRequest();
   }
-  loadNodeRevision(e) {
-    if (!this.getNodeRevisionPath) {
-      return;
-    }
+  async loadNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
     if (detail.nodeId) {
@@ -1786,22 +1655,54 @@ class HAXCMSSiteEditor extends LitElement {
     if (!nodeId || !hash) {
       return;
     }
-    this.querySelector("#getnoderevisionajax").body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: nodeId,
-      },
-      hash: hash,
-    };
-    this.querySelector("#getnoderevisionajax").generateRequest();
-  }
-  restoreNodeRevision(e) {
-    if (!this.restoreNodeRevisionPath) {
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/getItemRevisionById")
+    ) {
       return;
     }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/getItemRevisionById",
+        {
+          idOrSlug: nodeId,
+          revisionId: hash,
+        },
+        null,
+        null,
+      );
+      let status = 0;
+      if (response && typeof response.status === "number") {
+        status = response.status;
+      } else if (response && typeof response.status === "string") {
+        const parsed = parseInt(response.status, 10);
+        status = Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (
+        (status === 0 || status === 200) &&
+        response &&
+        response.data &&
+        typeof response.data === "object"
+      ) {
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-node-revision-loaded", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              source: "backend",
+              data: response.data,
+              raw: response,
+            },
+          }),
+        );
+      }
+    } catch (error) {}
+  }
+  async restoreNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
     if (detail.nodeId) {
@@ -1814,20 +1715,48 @@ class HAXCMSSiteEditor extends LitElement {
     nodeId = nodeId.trim();
     const hash = detail.hash ? String(detail.hash).trim() : "";
     if (!nodeId || !hash) {
+      return;
+    }
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/restoreItemRevision")
+    ) {
       return;
     }
     this.setProcessingVisual();
-    this.querySelector("#restorenoderevisionajax").body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: nodeId,
-      },
-      hash: hash,
-    };
-    this.querySelector("#restorenoderevisionajax").generateRequest();
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/restoreItemRevision",
+        {
+          idOrSlug: nodeId,
+          revisionId: hash,
+        },
+        null,
+        null,
+      );
+      let status = 0;
+      if (response && typeof response.status === "number") {
+        status = response.status;
+      } else if (response && typeof response.status === "string") {
+        const parsed = parseInt(response.status, 10);
+        status = Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (
+        (status === 0 || status === 200) &&
+        response &&
+        response.data &&
+        typeof response.data === "object"
+      ) {
+        this._handleRestoreNodeRevisionResponse({
+          detail: {
+            response: response,
+          },
+        });
+      }
+    } catch (error) {}
   }
   /**
    * Save node event
@@ -1878,7 +1807,7 @@ class HAXCMSSiteEditor extends LitElement {
    * Save node event
    */
 
-  saveNodeDetails(e) {
+  async saveNodeDetails(e) {
     // Check platform configuration before allowing outline operations
     if (!store.platformAllows("outlineDesigner")) {
       store.toast("Outline operations are disabled for this site", 3000, {
@@ -1887,20 +1816,85 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
 
-    // send the request
-    if (this.saveNodeDetailsPath) {
-      this.querySelector("#nodedetailsajax").body = {
-        jwt: this.jwt,
-        site: {
-          name: this.manifest.metadata.site.name,
-        },
-        node: {
-          id: e.detail.id,
-          details: e.detail,
-        },
-      };
-      this.setProcessingVisual();
-      this.querySelector("#nodedetailsajax").generateRequest();
+    const detail =
+      e && e.detail && typeof e.detail === "object" ? e.detail : {};
+    const itemId =
+      detail && typeof detail.id === "string"
+        ? detail.id.trim()
+        : detail && detail.id
+          ? String(detail.id).trim()
+          : "";
+    if (!itemId) {
+      store.toast("Unable to complete operation: missing page id", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    const operation =
+      detail && typeof detail.operation === "string"
+        ? detail.operation.trim()
+        : "";
+    if (!operation) {
+      store.toast("Unable to complete operation: missing operation", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+
+    this.setProcessingVisual();
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/updateItem")
+    ) {
+      store.toast("Item update endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    const payload = {
+      ...detail,
+      idOrSlug: itemId,
+    };
+    if (Object.prototype.hasOwnProperty.call(payload, "id")) {
+      delete payload.id;
+    }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/updateItem",
+        payload,
+        null,
+        null,
+      );
+      let status = 0;
+      if (response && typeof response.status === "number") {
+        status = response.status;
+      } else if (response && typeof response.status === "string") {
+        const parsed = parseInt(response.status, 10);
+        status = Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (status === 0 || status === 200) {
+        this._handleNodeDetailsResponse({
+          detail: {
+            response: response,
+          },
+        });
+        return;
+      }
+      const message =
+        response && response.message
+          ? String(response.message)
+          : `Unable to complete operation (${status})`;
+      store.toast(message, 4000, { fire: true });
+      store.playSound("error");
+    } catch (error) {
+      store.toast("Unable to complete operation", 4000, { fire: true });
+      store.playSound("error");
     }
   }
   /**
