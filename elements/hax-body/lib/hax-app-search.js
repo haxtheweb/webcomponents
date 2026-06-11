@@ -46,8 +46,9 @@ class HaxAppSearch extends LitElement {
   async loadAppData() {
     this.loading = true;
     let url = this.requestUrl(this.requestEndPoint, this.requestParams);
+    const requestHeaders = this.buildRequestHeaders(this.requestParams);
     return await fetch(url, {
-      headers: this.headers,
+      headers: requestHeaders,
       method: this.method,
     })
       .then((response) => {
@@ -56,6 +57,25 @@ class HaxAppSearch extends LitElement {
       .then((json) => {
         return this._requestDataChanged(json);
       });
+  }
+  buildRequestHeaders(params = {}) {
+    const headers =
+      this.headers && typeof this.headers === "object" ? { ...this.headers } : {};
+    // Support passing JWT in Authorization header for app search paths that now
+    // require bearer auth (for example v1 site API file endpoints), while
+    // retaining existing query/body jwt transport for legacy system routes.
+    if (HAXStore.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
+      const jwtValue = localStorageGet(HAXStore.connectionRewrites.appendJwt, "");
+      if (
+        jwtValue &&
+        String(jwtValue).trim() !== "" &&
+        !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
+        !Object.prototype.hasOwnProperty.call(headers, "authorization")
+      ) {
+        headers.Authorization = `Bearer ${String(jwtValue).trim()}`;
+      }
+    }
+    return headers;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

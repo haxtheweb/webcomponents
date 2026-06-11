@@ -4,6 +4,7 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -697,35 +698,178 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     ];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this._loadReportTabsFromDescriptors();
+  }
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "activeTab" && this[propName]) {
-        this.refreshData();
+        const normalizedTab = this._normalizeLegacyReportTabId(this[propName]);
+        if (normalizedTab !== this[propName]) {
+          this.activeTab = normalizedTab;
+        } else {
+          this.refreshData();
+        }
       }
     });
   }
+  _defaultReportTabs() {
+    return [
+      { id: "overview", label: this.t.stats, icon: "hax:graph" },
+      { id: "insights", label: "Insights", icon: "icons:assessment" },
+      { id: "content", label: this.t.content, icon: "icons:view-module" },
+      { id: "links", label: this.t.links, icon: "icons:link" },
+      { id: "media", label: this.t.media, icon: "icons:perm-media" },
+    ];
+  }
+  _normalizeReportSelectionValue(value) {
+    if (value === null || typeof value === "undefined") {
+      return "";
+    }
+    if (typeof value === "string") {
+      return value.trim();
+    }
+    return `${value}`;
+  }
+  _normalizeLegacyReportTabId(tabId) {
+    const normalizedTab = this._normalizeReportSelectionValue(tabId);
+    if (normalizedTab === "reports") {
+      return "overview";
+    }
+    if (normalizedTab === "linkchecker") {
+      return "links";
+    }
+    if (normalizedTab === "contentbrowser") {
+      return "content";
+    }
+    if (normalizedTab === "mediabrowser") {
+      return "media";
+    }
+    return normalizedTab;
+  }
+  _normalizeReportDescriptor(descriptor) {
+    if (!descriptor || typeof descriptor !== "object") {
+      return null;
+    }
+    const reportId = this._normalizeLegacyReportTabId(descriptor.id);
+    if (reportId === "") {
+      return null;
+    }
+    const fallbackTabs = this._defaultReportTabs();
+    const fallbackTab = fallbackTabs.find((item) => item.id === reportId);
+    const label = this._normalizeReportSelectionValue(
+      descriptor.label || descriptor.title,
+    );
+    const icon = this._normalizeReportSelectionValue(descriptor.icon);
+    return {
+      id: reportId,
+      label: label || (fallbackTab ? fallbackTab.label : reportId),
+      icon: icon || (fallbackTab ? fallbackTab.icon : "hax:graph"),
+      title: this._normalizeReportSelectionValue(descriptor.title),
+      description: this._normalizeReportSelectionValue(descriptor.description),
+    };
+  }
+  _responseStatusCode(response) {
+    if (!response || typeof response !== "object") {
+      return 0;
+    }
+    if (typeof response.status === "number") {
+      return response.status;
+    }
+    if (typeof response.status === "string") {
+      const parsedStatus = parseInt(response.status, 10);
+      return Number.isNaN(parsedStatus) ? 0 : parsedStatus;
+    }
+    return 0;
+  }
+  _setReportTabsFromDescriptors(descriptors) {
+    const descriptorList = Array.isArray(descriptors) ? descriptors : [];
+    const nextTabs = [];
+    if (descriptorList.length > 0) {
+      descriptorList.forEach((descriptor) => {
+        const normalizedDescriptor = this._normalizeReportDescriptor(descriptor);
+        if (
+          normalizedDescriptor &&
+          !nextTabs.find((tab) => tab.id === normalizedDescriptor.id)
+        ) {
+          nextTabs.push(normalizedDescriptor);
+        }
+      });
+    }
+    if (nextTabs.length === 0) {
+      const fallbackTabs = this._defaultReportTabs();
+      fallbackTabs.forEach((tab) => {
+        nextTabs.push({ ...tab });
+      });
+    }
+    this.reportTabs = nextTabs;
+    const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
+    if (!nextTabs.find((tab) => tab.id === normalizedActiveTab)) {
+      this.activeTab = nextTabs[0].id;
+    } else if (normalizedActiveTab !== this.activeTab) {
+      this.activeTab = normalizedActiveTab;
+    }
+    this.__descriptorTabsLoaded = descriptorList.length > 0;
+  }
+  async _loadReportTabsFromDescriptors() {
+    if (this.__loadingReportTabs) {
+      return;
+    }
+    this.__loadingReportTabs = true;
+    let descriptors = [];
+    try {
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        MicroFrontendRegistry &&
+        typeof MicroFrontendRegistry.call === "function" &&
+        typeof MicroFrontendRegistry.has === "function" &&
+        MicroFrontendRegistry.has("@site/listReports")
+      ) {
+        const response = await MicroFrontendRegistry.call(
+          "@site/listReports",
+          {},
+          null,
+          this,
+        );
+        const status = this._responseStatusCode(response);
+        if (status === 0 || status === 200) {
+          const payload =
+            response && response.data && typeof response.data === "object"
+              ? response.data
+              : {};
+          if (payload && Array.isArray(payload.reports)) {
+            descriptors = payload.reports;
+          }
+        }
+      }
+    } catch (e) {}
+    this._setReportTabsFromDescriptors(descriptors);
+    this.__loadingReportTabs = false;
+  }
   _activeSchema() {
-    switch (this.activeTab) {
-      case "linkchecker":
+    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
+      case "links":
         return this.shadowRoot.querySelector("#linkchecker-schema");
-      case "contentbrowser":
+      case "content":
         return this.shadowRoot.querySelector("#contentbrowser-schema");
-      case "mediabrowser":
+      case "media":
         return this.shadowRoot.querySelector("#mediabrowser-schema");
       default:
         return null;
     }
   }
   _activeTabInternalEndpoint() {
-    switch (this.activeTab) {
-      case "reports":
+    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
+      case "overview":
+      case "insights":
         return toJS(store.appSettings.insightsPath) || null;
-      case "linkchecker":
+      case "links":
         return toJS(store.appSettings.linkCheckerPath) || null;
-      case "contentbrowser":
+      case "content":
         return toJS(store.appSettings.contentBrowserPath) || null;
-      case "mediabrowser":
+      case "media":
         return toJS(store.appSettings.mediaBrowserPath) || null;
       default:
         return null;
@@ -759,12 +903,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       params.jwt = jwt;
     }
     try {
-      const response = await fetch(endpoint + (method === "GET" ? "?" + new URLSearchParams(params) : ""), {
-        method: method || "POST",
-        credentials: "same-origin",
-        headers,
-        body: (method === "GET" ? undefined : JSON.stringify(params)),
-      });
+      const response = await fetch(
+        endpoint +
+          (method === "GET" ? "?" + new URLSearchParams(params) : ""),
+        {
+          method: method || "POST",
+          credentials: "same-origin",
+          headers,
+          body: method === "GET" ? undefined : JSON.stringify(params),
+        },
+      );
       if (!response.ok) {
         throw new Error(`Status ${response.status}`);
       }
@@ -780,27 +928,24 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _reportTabs() {
-    return [
-      { id: "reports", label: this.t.stats, icon: "hax:graph" },
-      { id: "mediabrowser", label: this.t.media, icon: "icons:perm-media" },
-      {
-        id: "contentbrowser",
-        label: this.t.content,
-        icon: "icons:view-module",
-      },
-      { id: "linkchecker", label: this.t.links, icon: "icons:link" },
-    ];
+    if (Array.isArray(this.reportTabs) && this.reportTabs.length > 0) {
+      return this.reportTabs;
+    }
+    return this._defaultReportTabs();
   }
   _activeReport() {
     const tabs = this._reportTabs();
-    const current = tabs.find((tab) => tab.id === this.activeTab);
+    const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
+    const current = tabs.find((tab) => tab.id === normalizedActiveTab);
     return current ? current : tabs[0];
   }
   _reportTabClicked(e) {
     if (!e || !e.currentTarget) {
       return;
     }
-    const tabId = e.currentTarget.getAttribute("data-tab");
+    const tabId = this._normalizeLegacyReportTabId(
+      e.currentTarget.getAttribute("data-tab"),
+    );
     if (!tabId) {
       return;
     }
@@ -810,22 +955,49 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       this.refreshData();
     }
   }
-
+  _normalizeReportPayloadData(responseData) {
+    if (
+      responseData &&
+      typeof responseData === "object" &&
+      responseData.data &&
+      typeof responseData.data === "object" &&
+      !Array.isArray(responseData.data)
+    ) {
+      const normalizedData = { ...responseData.data };
+      if (responseData.id) {
+        normalizedData.report = responseData.id;
+      }
+      if (responseData.generatedAt) {
+        normalizedData.generatedAt = responseData.generatedAt;
+      }
+      if (responseData.label) {
+        normalizedData.reportLabel = responseData.label;
+      }
+      if (responseData.icon) {
+        normalizedData.reportIcon = responseData.icon;
+      }
+      return normalizedData;
+    }
+    return responseData && typeof responseData === "object" ? responseData : {};
+  }
   _reportsResponse(data) {
     this.loading = false;
     const responseData =
       data && data.data && typeof data.data === "object" ? data.data : {};
-    this.data = responseData;
+    const normalizedResponseData =
+      this._normalizeReportPayloadData(responseData);
+    this.data = normalizedResponseData;
     // for filtering purposes
-    this._originalData = JSON.parse(JSON.stringify(responseData));
+    this._originalData = JSON.parse(JSON.stringify(normalizedResponseData));
     this.filters = {};
     setTimeout(() => {
       const schema = this._activeSchema();
-      if (!schema && this.activeTab !== "reports") {
+      const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
+      if (!schema && normalizedActiveTab !== "overview" && normalizedActiveTab !== "insights") {
         return;
       }
-      switch (this.activeTab) {
-        case "linkchecker":
+      switch (normalizedActiveTab) {
+        case "links":
           this.filters = { links: "all" };
           schema.value = this.filters;
           schema.values = this.filters;
@@ -842,7 +1014,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             },
           ];
           break;
-        case "contentbrowser":
+        case "content":
           this.filters = {
             sort: "title",
             title: "",
@@ -924,7 +1096,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             },
           ];
           break;
-        case "mediabrowser":
+        case "media":
           this.filters = { title: "", type: "all", location: "all" };
           schema.fields = [
             {
@@ -973,26 +1145,80 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       }
     }, 0);
   }
-  _normalizeReportSelectionValue(value) {
-    if (value === null || typeof value === "undefined") {
-      return "";
-    }
-    if (typeof value === "string") {
-      return value.trim();
-    }
-    return `${value}`;
-  }
   _reportSelectionChanged(e) {
     const value = e && e.currentTarget ? e.currentTarget.value : "";
     this.selectedReportId = this._normalizeReportSelectionValue(value);
     this.refreshData();
   }
-  refreshData() {
-    const site = toJS(store.manifest);
+  async _fetchReportByDescriptor(reportId, selectedReportId) {
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/getReportByName")
+    ) {
+      return false;
+    }
+    const params = {
+      report: reportId,
+    };
+    if (selectedReportId !== "") {
+      params["filter.ancestor"] = selectedReportId;
+    }
+    const response = await MicroFrontendRegistry.call(
+      "@site/getReportByName",
+      params,
+      null,
+      this,
+    );
+    const status = this._responseStatusCode(response);
+    if (
+      (status === 0 || status === 200) &&
+      response &&
+      response.data &&
+      typeof response.data === "object"
+    ) {
+      this._reportsResponse(response);
+      return true;
+    }
+    return false;
+  }
+  async refreshData() {
+    if (!this.__loadingReportTabs && !this.__descriptorTabsLoaded) {
+      this._loadReportTabsFromDescriptors();
+    }
     const selector =
       this.shadowRoot && this.shadowRoot.querySelector
         ? this.shadowRoot.querySelector("#selector")
         : null;
+    const selectedReportId = this._normalizeReportSelectionValue(
+      selector ? selector.value : this.selectedReportId,
+    );
+    this.selectedReportId = selectedReportId;
+    const activeReport = this._activeReport();
+    const normalizedActiveTab = this._normalizeLegacyReportTabId(
+      activeReport && activeReport.id ? activeReport.id : this.activeTab,
+    );
+    if (normalizedActiveTab === "") {
+      this.loading = false;
+      return;
+    }
+    if (normalizedActiveTab !== this.activeTab) {
+      this.activeTab = normalizedActiveTab;
+      return;
+    }
+    this.loading = true;
+    try {
+      const loadedFromV1 = await this._fetchReportByDescriptor(
+        normalizedActiveTab,
+        selectedReportId,
+      );
+      if (loadedFromV1) {
+        return;
+      }
+    } catch (e) {}
+    const site = toJS(store.manifest);
     const jwt =
       store && store.jwt && typeof toJS(store.jwt) === "string"
         ? toJS(store.jwt)
@@ -1004,27 +1230,22 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       site.metadata.site.name
         ? site.metadata.site.name
         : "";
-    const params = {
+    const legacyParams = {
       site: {
         name: siteName,
       },
       activeId: null,
       jwt: jwt,
     };
-    const selectedReportId = this._normalizeReportSelectionValue(
-      selector ? selector.value : this.selectedReportId,
-    );
-    this.selectedReportId = selectedReportId;
     if (selectedReportId !== "") {
-      params.activeId = selectedReportId;
+      legacyParams.activeId = selectedReportId;
     }
-    this.loading = true;
     const internalEndpoint = this._activeTabInternalEndpoint();
     if (!internalEndpoint) {
       this.loading = false;
       return;
     }
-    this._callInternalReportEndpoint(internalEndpoint, params);
+    this._callInternalReportEndpoint(internalEndpoint, legacyParams);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -1220,8 +1441,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _renderActiveFilters() {
-    switch (this.activeTab) {
-      case "linkchecker":
+    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
+      case "links":
         return html`<div class="report-filters">
           <form>
             <simple-fields
@@ -1231,7 +1452,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             ></simple-fields>
           </form>
         </div>`;
-      case "contentbrowser":
+      case "content":
         return html`<div class="report-filters">
           <form>
             <simple-fields
@@ -1241,7 +1462,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             ></simple-fields>
           </form>
         </div>`;
-      case "mediabrowser":
+      case "media":
         return html`<div class="report-filters">
           <form>
             <simple-fields
@@ -1256,26 +1477,25 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _activeEmptyStateMessage() {
-    switch (this.activeTab) {
-      case "linkchecker":
+    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
+      case "links":
         return this.t.noLinksInSelectedPages;
-      case "mediabrowser":
+      case "media":
         return this.t.noMediaInSelectedPages;
-      case "contentbrowser":
+      case "content":
         return this.t.noContentInSelectedPages;
       default:
         return this.t.noReportData;
     }
   }
   _activeTableData(data) {
-    switch (this.activeTab) {
-      case "linkchecker":
+    switch (this._normalizeLegacyReportTabId(this.activeTab)) {
+      case "links":
         return this._buildLinkCheckerTableData(data);
-      case "contentbrowser":
+      case "content":
         return this._buildContentBrowserTableData(data);
-      case "mediabrowser":
+      case "media":
         return this._buildMediaBrowserTableData(data);
-      case "reports":
       default:
         return this._buildSummaryTableData(data);
     }
@@ -1556,7 +1776,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     const tableData = this._activeTableData(data);
     const headerRow = tableData.length > 0 ? tableData[0] : [];
     const bodyRows = tableData.length > 1 ? tableData.slice(1) : [];
-    const useNativeTable = this.activeTab === "linkchecker";
+    const useNativeTable =
+      this._normalizeLegacyReportTabId(this.activeTab) === "links";
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -1665,7 +1886,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     super();
     this.base = "";
     this.filters = {};
+    this.reportTabs = [];
     this.linkResponseData = {};
+    this.__descriptorTabsLoaded = false;
+    this.__loadingReportTabs = false;
     this.__linkValidationHandler = this.linkValidationResponse.bind(this);
     this.t = this.t || {};
     this.t = {
@@ -1720,7 +1944,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       updatedItems: [],
     };
     this.selectedReportId = "";
-    this.activeTab = "reports";
+    this.reportTabs = this._defaultReportTabs();
+    this.activeTab = "overview";
     this.loading = false;
   }
   static get properties() {
@@ -1731,6 +1956,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       },
       filters: {
         type: Object,
+      },
+      reportTabs: {
+        type: Array,
       },
       linkResponseData: {
         type: Object,

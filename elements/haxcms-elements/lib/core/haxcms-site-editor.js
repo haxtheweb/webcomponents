@@ -16,6 +16,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 
 /**
  * `haxcms-site-editor`
@@ -1679,10 +1680,7 @@ class HAXCMSSiteEditor extends LitElement {
       );
     }, 300);
   }
-  loadNodeRevisions(e) {
-    if (!this.getNodeRevisionsPath) {
-      return;
-    }
+  async loadNodeRevisions(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
     if (detail.nodeId) {
@@ -1694,6 +1692,62 @@ class HAXCMSSiteEditor extends LitElement {
     }
     nodeId = nodeId.trim();
     if (!nodeId) {
+      return;
+    }
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      MicroFrontendRegistry &&
+      typeof MicroFrontendRegistry.call === "function" &&
+      typeof MicroFrontendRegistry.has === "function" &&
+      MicroFrontendRegistry.has("@site/listItemRevisions")
+    ) {
+      const params = {
+        idOrSlug: nodeId,
+      };
+      if (typeof detail.limit !== "undefined" && detail.limit !== null) {
+        params["page.limit"] = String(detail.limit);
+      }
+      if (typeof detail.offset !== "undefined" && detail.offset !== null) {
+        params["page.offset"] = String(detail.offset);
+      }
+      try {
+        const response = await MicroFrontendRegistry.call(
+          "@site/listItemRevisions",
+          params,
+          null,
+          null,
+        );
+        let status = 0;
+        if (response && typeof response.status === "number") {
+          status = response.status;
+        } else if (response && typeof response.status === "string") {
+          const parsed = parseInt(response.status, 10);
+          status = Number.isNaN(parsed) ? 0 : parsed;
+        }
+        if (status === 0 || status === 200) {
+          const responseData =
+            response && response.data && typeof response.data === "object"
+              ? response.data
+              : null;
+          if (responseData) {
+            globalThis.dispatchEvent(
+              new CustomEvent("haxcms-node-revisions-loaded", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {
+                  source: "backend",
+                  data: responseData,
+                  raw: response,
+                },
+              }),
+            );
+            return;
+          }
+        }
+      } catch (error) {}
+    }
+    if (!this.getNodeRevisionsPath) {
       return;
     }
     const body = {

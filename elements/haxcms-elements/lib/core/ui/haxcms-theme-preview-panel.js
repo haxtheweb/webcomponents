@@ -1,7 +1,9 @@
 import { html, css } from "lit";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "../haxcms-site-store.js";
+import { waitForHAXCMSSiteApiRegistryReady } from "../utils/haxcms-site-api-registry.js";
 import "../haxcms-theme-picker.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
@@ -530,13 +532,63 @@ class HAXCMSThemePreviewPanel extends DDD {
 
   async _loadThemeRegistry() {
     this.loadingThemes = true;
+    this._themesRegistry = {};
     try {
-      const themesUrl = new URL("../../themes.json", import.meta.url).href;
-      const response = await fetch(themesUrl);
-      if (response && response.ok) {
-        const data = await response.json();
-        if (data && typeof data === "object") {
-          this._themesRegistry = data;
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        MicroFrontendRegistry &&
+        typeof MicroFrontendRegistry.call === "function" &&
+        typeof MicroFrontendRegistry.has === "function" &&
+        MicroFrontendRegistry.has("@site/listThemes")
+      ) {
+        const response = await MicroFrontendRegistry.call(
+          "@site/listThemes",
+          {
+            "page.limit": "500",
+            includeDisabled: "true",
+          },
+          null,
+          null,
+        );
+        let status = 0;
+        if (response && typeof response.status === "number") {
+          status = response.status;
+        } else if (response && typeof response.status === "string") {
+          const parsed = parseInt(response.status, 10);
+          status = Number.isNaN(parsed) ? 0 : parsed;
+        }
+        if (status === 0 || status === 200) {
+          const payload =
+            response && response.data && typeof response.data === "object"
+              ? response.data
+              : {};
+          const themes =
+            payload && Array.isArray(payload.themes) ? payload.themes : [];
+          if (themes.length > 0) {
+            const registry = {};
+            themes.forEach((theme) => {
+              if (!theme || typeof theme !== "object") {
+                return;
+              }
+              const machineName =
+                typeof theme.machineName === "string"
+                  ? theme.machineName.trim()
+                  : "";
+              const element =
+                typeof theme.element === "string" ? theme.element.trim() : "";
+              const key = element || machineName;
+              if (!key) {
+                return;
+              }
+              registry[key] = {
+                ...theme,
+                element: key,
+                machineName: machineName || key,
+                thumbnail: theme.screenshot || theme.thumbnail || "",
+              };
+            });
+            this._themesRegistry = registry;
+          }
         }
       }
     } catch (e) {}

@@ -211,7 +211,7 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   get _canList() { return this.siteName !== ""; }
   get _canUpload() { return this.siteName !== "" && this.nodeId !== ""; }
-  get _canOp() { return this.fileOperationPath !== "" && this.siteName !== ""; }
+  get _canOp() { return this.siteName !== ""; }
 
   _s(v) { return typeof v === "string" ? v.trim() : ""; }
 
@@ -358,6 +358,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     const r = {
       id: this._s(item.id) || `${p}-${idx}`,
       path: p,
+      uuid: this._s(item.uuid || item.fileUuid || item.id || ""),
       fullUrl: this._s(item.fullUrl || ""),
       name: this._s(item.name) || this._baseName(p),
       mimetype: mt,
@@ -523,20 +524,49 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
   }
   async _op(row, op, options = {}) {
-    if (!this._canOp) { this._msg("File operation endpoint not configured.", true); return; }
+    if (!this._canOp) { this._msg("Unable to run file operation.", true); return; }
     this.busy = true; this.errorMessage = "";
     try {
-      const body = { jwt: this.jwt, site: { name: this.siteName }, operation: op, path: row.path };
-      if (options && typeof options.size === "string" && options.size) body.size = options.size;
-      if (options && typeof options.newName === "string" && options.newName) body.newName = options.newName;
-      const resp = await fetch(this.fileOperationPath, {
-        method: this.method, credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const d = await this._rj(resp);
-      if (!resp.ok || d && d.__failed && d.__failed.message) {
-        this.errorMessage = this._em(resp, d, "File operation failed"); this._msg(this.errorMessage, true); return;
+      const fileUuid = this._s(row && row.uuid ? row.uuid : "");
+      if (!fileUuid) {
+        this.errorMessage = "File UUID is missing";
+        this._msg(this.errorMessage, true);
+        return;
+      }
+      await waitForHAXCMSSiteApiRegistryReady();
+      const operationName =
+        op === "delete" ? "@site/deleteFileByUuid" : "@site/updateFileByUuid";
+      if (
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.call !== "function" ||
+        typeof MicroFrontendRegistry.has !== "function" ||
+        !MicroFrontendRegistry.has(operationName)
+      ) {
+        this.errorMessage = "File operation endpoint is not available";
+        this._msg(this.errorMessage, true);
+        return;
+      }
+      const params = { fileUuid };
+      if (op !== "delete") {
+        params.operation = op;
+      }
+      if (options && typeof options.size === "string" && options.size) {
+        params.size = options.size;
+      }
+      if (options && typeof options.newName === "string" && options.newName) {
+        params.newName = options.newName;
+      }
+      const d = await MicroFrontendRegistry.call(
+        operationName,
+        params,
+        null,
+        this,
+      );
+      const status = this._statusCode(d);
+      if (status !== 200) {
+        this.errorMessage = this._messageFromResponse(d, "File operation failed");
+        this._msg(this.errorMessage, true);
+        return;
       }
       let message = "File operation complete";
       if (op === "delete") message = "File deleted";
