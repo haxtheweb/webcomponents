@@ -42,6 +42,35 @@ export class PrintHelper {
       }, 60000);
     }
   }
+  static _activePageItemId() {
+    const activeItem = toJS(store.activeItem);
+    if (activeItem && activeItem.id) {
+      return `${activeItem.id}`.trim();
+    }
+    const activeId = toJS(store.activeId);
+    if (activeId) {
+      return `${activeId}`.trim();
+    }
+    return "";
+  }
+  static _activePageFormatUrl(format = "html") {
+    const itemId = this._activePageItemId();
+    if (!itemId) {
+      return "";
+    }
+    const normalizedFormat = String(format || "html").toLowerCase();
+    const baseElement = globalThis.document.querySelector("base");
+    const baseUrl =
+      (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+    try {
+      return new URL(
+        `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(normalizedFormat)}`,
+        baseUrl,
+      ).toString();
+    } catch (e) {
+      return "";
+    }
+  }
   static async printBranch() {
     let base = "";
     if (globalThis.document.querySelector("base")) {
@@ -148,8 +177,9 @@ export class PrintHelper {
   }
 
   static printFallback() {
+    const fallbackUrl = this._activePageFormatUrl("html");
     globalThis.open(
-      globalThis.location.href + "?format=print-page",
+      fallbackUrl || globalThis.location.href + "?format=print-page",
       "",
       "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
     );
@@ -160,11 +190,13 @@ export class PrintHelper {
   }
 
   static openPrintView() {
-    globalThis.open(globalThis.location.href + "?format=print-page", "_blank");
+    const printUrl = this._activePageFormatUrl("html");
+    globalThis.open(printUrl || globalThis.location.href + "?format=print-page", "_blank");
   }
 
   static openJSONView() {
-    globalThis.open(globalThis.location.href + "?format=json", "_blank");
+    const jsonUrl = this._activePageFormatUrl("json");
+    globalThis.open(jsonUrl || globalThis.location.href + "?format=json", "_blank");
   }
 }
 

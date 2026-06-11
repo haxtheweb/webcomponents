@@ -4039,10 +4039,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-run-program",
       path: ">developer/page-as-data",
       context: [">"],
-      more: html`<span
-        >Choose a page response format by applying
-        <code>?format={format}</code> to the current route.</span
-      >`,
       voice: "page as data",
       value: {
         name: "Page data formats",
@@ -4742,9 +4738,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (supportedFormats.indexOf(normalizedFormat) === -1) {
       return;
     }
-    const url = new URL(globalThis.location.href);
-    url.searchParams.set("format", normalizedFormat);
-    globalThis.location.href = url.toString();
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) {
+      HAXStore.toast("No active page found", 3000, "fit-bottom");
+      return;
+    }
+    const baseElement = globalThis.document.querySelector("base");
+    const baseUrl =
+      (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+    try {
+      const url = new URL(
+        `x/api/v1/items/${encodeURIComponent(String(activeItem.id).trim())}`,
+        baseUrl,
+      );
+      url.searchParams.set("format", normalizedFormat);
+      globalThis.location.href = url.toString();
+    } catch (e) {}
   }
   getCurrentPageShareLink(activeItem = null) {
     let item = activeItem;

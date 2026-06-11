@@ -151,30 +151,25 @@ export function _pageRouteVariantMimeType(format) {
 
 export function _pageRouteVariantUrl(format) {
   const activeItem = store.activeItem;
-  let slug = "";
-  if (activeItem && activeItem.slug) {
-    slug = `${activeItem.slug}`.trim();
+  let itemId = "";
+  if (activeItem && activeItem.id) {
+    itemId = `${activeItem.id}`.trim();
   }
-  if (!slug && globalThis.location && globalThis.location.pathname) {
-    slug = `${globalThis.location.pathname}`.trim();
-  }
-  if (!slug) {
+  if (!itemId) {
     return null;
   }
-  const ext = _pageRouteVariantExtension(format);
-  const lowerSuffix = `.${ext}`.toLowerCase();
-  let path = slug;
-  if (`${path}`.toLowerCase().endsWith(lowerSuffix)) {
-    path = `${path}`;
-  } else {
-    path = `${path}`.replace(/\/+$/, "");
-    path = `${path}.${ext}`;
+  let apiFormat = String(format || "html").toLowerCase();
+  if (apiFormat === "markdown") {
+    apiFormat = "md";
   }
   const baseElement = globalThis.document.querySelector("base");
   const baseUrl =
     (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
   try {
-    return new URL(path, baseUrl).toString();
+    return new URL(
+      `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(apiFormat)}`,
+      baseUrl,
+    ).toString();
   } catch (e) {
     return null;
   }

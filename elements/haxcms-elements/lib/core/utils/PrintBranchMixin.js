@@ -45,6 +45,35 @@ export const PrintBranchMixin = function (SuperClass) {
         __printBranchLoading: { type: Boolean },
       };
     }
+    _activePageItemId() {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem && activeItem.id) {
+        return `${activeItem.id}`.trim();
+      }
+      const activeId = toJS(store.activeId);
+      if (activeId) {
+        return `${activeId}`.trim();
+      }
+      return "";
+    }
+    _activePageFormatUrl(format = "html") {
+      const itemId = this._activePageItemId();
+      if (!itemId) {
+        return "";
+      }
+      const normalizedFormat = String(format || "html").toLowerCase();
+      const baseElement = globalThis.document.querySelector("base");
+      const baseUrl =
+        (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+      try {
+        return new URL(
+          `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(normalizedFormat)}`,
+          baseUrl,
+        ).toString();
+      } catch (e) {
+        return "";
+      }
+    }
     _revokeObjectUrlOnClose(objectUrl, printWindow) {
       let revoked = false;
       let closePoll = null;
@@ -149,8 +178,9 @@ export const PrintBranchMixin = function (SuperClass) {
         );
         this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
+        const fallbackUrl = this._activePageFormatUrl("html");
         globalThis.open(
-          globalThis.location.href + "?format=print-page",
+          fallbackUrl || globalThis.location.href + "?format=print-page",
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
@@ -230,8 +260,9 @@ export const PrintBranchMixin = function (SuperClass) {
         );
         this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
+        const fallbackUrl = this._activePageFormatUrl("html");
         globalThis.open(
-          globalThis.location.href + "?format=print-page",
+          fallbackUrl || globalThis.location.href + "?format=print-page",
           "",
           "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
         );
