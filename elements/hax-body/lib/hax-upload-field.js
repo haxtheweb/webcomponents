@@ -66,6 +66,33 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       },
     };
   }
+  _resolveUploadJwtValue() {
+    if (
+      !HAXStore ||
+      !HAXStore.connectionRewrites ||
+      HAXStore.connectionRewrites.appendJwt == null
+    ) {
+      return "";
+    }
+    const jwtValue = localStorageGet(HAXStore.connectionRewrites.appendJwt);
+    return typeof jwtValue === "string" ? jwtValue : "";
+  }
+  _buildUploadHeaders(connection, jwtValue = "") {
+    const headers =
+      connection &&
+      connection.headers &&
+      typeof connection.headers === "object"
+        ? { ...connection.headers }
+        : {};
+    if (
+      jwtValue !== "" &&
+      !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
+      !Object.prototype.hasOwnProperty.call(headers, "authorization")
+    ) {
+      headers.Authorization = `Bearer ${jwtValue}`;
+    }
+    return headers;
+  }
   /**
    * Respond to uploading a file
    */
@@ -142,6 +169,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     if (typeof connection.operations.add.endPoint !== typeof undefined) {
       requestEndPoint += connection.operations.add.endPoint;
     }
+    const uploadJwtValue = this._resolveUploadJwtValue();
     // Store base endpoint for potential retry after JWT refresh
     this.__baseEndpoint = requestEndPoint;
     // implementation specific tweaks to talk to things like HAXcms and other CMSs
@@ -172,14 +200,18 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         );
       }
     }
-    if (HAXStore.connectionRewrites.appendJwt != null) {
+    if (
+      HAXStore.connectionRewrites.appendJwt != null &&
+      uploadJwtValue !== ""
+    ) {
       requestEndPoint +=
         (requestEndPoint.includes("?") ? "&" : "?") +
         HAXStore.connectionRewrites.appendJwt +
         "=" +
-        localStorageGet(HAXStore.connectionRewrites.appendJwt);
+        uploadJwtValue;
     }
-    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").headers =
+      this._buildUploadHeaders(connection, uploadJwtValue);
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
     // invoke file uploading...
     this.__allowUpload = true;
@@ -195,6 +227,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       if (fileUpload) {
         // Rebuild the endpoint with the new JWT
         let requestEndPoint = this.__pendingUploadRetry.baseEndpoint;
+        const uploadJwtValue = this._resolveUploadJwtValue();
         if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
           requestEndPoint +=
             (requestEndPoint.includes("?") ? "&" : "?") +
@@ -213,13 +246,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
               globalThis.store.activeId;
           }
         }
-        if (HAXStore.connectionRewrites.appendJwt != null) {
+        if (
+          HAXStore.connectionRewrites.appendJwt != null &&
+          uploadJwtValue !== ""
+        ) {
           requestEndPoint +=
             (requestEndPoint.includes("?") ? "&" : "?") +
             HAXStore.connectionRewrites.appendJwt +
             "=" +
-            localStorageGet(HAXStore.connectionRewrites.appendJwt);
+            uploadJwtValue;
         }
+        fileUpload.headers = this._buildUploadHeaders(
+          this.__pendingUploadRetry.appUsed
+            ? this.__pendingUploadRetry.appUsed.connection
+            : null,
+          uploadJwtValue,
+        );
         fileUpload.target = requestEndPoint;
         // Retry the upload
         this.__allowUpload = true;

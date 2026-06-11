@@ -800,7 +800,11 @@ class HAXCMSSiteEditor extends LitElement {
           ? toJS(store.appSettings)
           : {};
     configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
-    if (element && element.body) {
+    if (
+      element &&
+      element.body &&
+      Object.prototype.hasOwnProperty.call(element.body, "jwt")
+    ) {
       element.body.jwt = jwt;
     }
     if (element) {
@@ -1182,8 +1186,10 @@ class HAXCMSSiteEditor extends LitElement {
 
     if (e.detail.values) {
       var reqBody = e.detail.values;
-      // ensure site name and jwt are set in request
-      reqBody.jwt = this.jwt;
+      // ensure site name is set in request
+      if (Object.prototype.hasOwnProperty.call(reqBody, "jwt")) {
+        delete reqBody.jwt;
+      }
       reqBody.site = {
         name: this.manifest.metadata.site.name,
       };
@@ -1438,7 +1444,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "deleteajax",
       operationName: "@site/deleteItem",
       payload: {
-        jwt: this.jwt,
         idOrSlug: itemId,
         site: {
           name: this._siteName(),
@@ -2007,7 +2012,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "nodeupdateajax",
       operationName: "@site/updateContentByIdOrSlug",
       payload: {
-        jwt: this.jwt,
         idOrSlug: itemId,
         site: {
           name: siteName,
@@ -2148,7 +2152,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "outlineupdateajax",
       operationName: "@site/updateSiteOutline",
       payload: {
-        jwt: this.jwt,
         site: {
           name: siteName,
         },
