@@ -258,30 +258,10 @@ class HAXCMSBackendPHP extends LitElement {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.jwt = this.jwt;
-            store.cmsSiteEditor.instance.saveNodePath =
-              globalThis.appSettings.saveNodePath;
-            store.cmsSiteEditor.instance.saveManifestPath =
-              globalThis.appSettings.saveManifestPath;
-            store.cmsSiteEditor.instance.saveOutlinePath =
-              globalThis.appSettings.saveOutlinePath;
-            store.cmsSiteEditor.instance.savePlatformSettingsPath =
-              globalThis.appSettings.savePlatformSettingsPath;
-            store.cmsSiteEditor.instance.saveAllowedBlocksPath =
-              globalThis.appSettings.saveAllowedBlocksPath;
-            store.cmsSiteEditor.instance.saveEditorSettingsPath =
-              globalThis.appSettings.saveEditorSettingsPath;
-            store.cmsSiteEditor.instance.saveAppearanceSettingsPath =
-              globalThis.appSettings.saveAppearanceSettingsPath;
-            store.cmsSiteEditor.instance.saveSeoSettingsPath =
-              globalThis.appSettings.saveSeoSettingsPath;
             store.cmsSiteEditor.instance.getSiteFieldsPath =
               globalThis.appSettings.getSiteFieldsPath;
             store.cmsSiteEditor.instance.getFormToken =
               globalThis.appSettings.getFormToken;
-            store.cmsSiteEditor.instance.createNodePath =
-              globalThis.appSettings.createNodePath;
-            store.cmsSiteEditor.instance.deleteNodePath =
-              globalThis.appSettings.deleteNodePath;
             store.cmsSiteEditor.instance.listFilesPath =
               globalThis.appSettings.listFilesPath;
             store.cmsSiteEditor.instance.saveFilePath =

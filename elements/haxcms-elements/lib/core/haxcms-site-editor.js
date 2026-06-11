@@ -5,7 +5,6 @@
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import "@haxtheweb/h-a-x/h-a-x.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
@@ -16,7 +15,10 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
+import {
+  configureHAXCMSSiteApiRegistry,
+  waitForHAXCMSSiteApiRegistryReady,
+} from "./utils/haxcms-site-api-registry.js";
 
 /**
  * `haxcms-site-editor`
@@ -91,7 +93,6 @@ class HAXCMSSiteEditor extends LitElement {
   }
   // render function
   render() {
-    const headers = { Authorization: `Bearer ${this.jwt}` };
     return html`
       <style>
         haxcms-site-editor {
@@ -116,140 +117,6 @@ class HAXCMSSiteEditor extends LitElement {
           display: block;
         }
       </style>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="nodeupdateajax"
-        .url="${this.saveNodePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @last-response-changed="${this._handleNodeResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="outlineupdateajax"
-        .url="${this.saveOutlinePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleOutlineResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="manifestupdateajax"
-        .url="${this.saveManifestPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleManifestResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="seoupdateajax"
-        .url="${this.saveSeoSettingsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleManifestResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="appearancesettingsajax"
-        .url="${this.saveAppearanceSettingsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleAppearanceSettingsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="platformsettingsajax"
-        .url="${this.savePlatformSettingsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handlePlatformSettingsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="allowedblocksajax"
-        .url="${this.saveAllowedBlocksPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleAllowedBlocksResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="editorsettingsajax"
-        .url="${this.saveEditorSettingsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleEditorSettingsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="createajax"
-        .url="${this.createNodePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleCreateResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-        @last-response-changed="${this.__createNodeResponseChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="deleteajax"
-        .url="${this.deleteNodePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleDeleteResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-        @last-response-changed="${this.__deleteNodeResponseChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="getuserdata"
-        url="${this.getUserDataPath}"
-        method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleUserDataResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${headers}"
-        id="contentsearchajax"
-        .url="${this.contentSearchPath}"
-        method="POST"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleContentSearchResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
       <h-a-x
         id="hax"
         element-align="left"
@@ -585,19 +452,268 @@ class HAXCMSSiteEditor extends LitElement {
     this.__refreshRetryCounts = {};
   }
   _resetRefreshRetryCountFromResponse(e) {
-    const target = normalizeEventPath(e)[0];
-    this._clearRefreshRetryCount(target);
+    let target = e && e.detail && e.detail.target ? e.detail.target : null;
+    if (!target && e && typeof e.composedPath === "function") {
+      const path = normalizeEventPath(e);
+      target = path && path.length > 0 ? path[0] : null;
+    }
+    if (target) {
+      this._clearRefreshRetryCount(target);
+    }
+  }
+  _responseStatusCode(response) {
+    if (!response || typeof response !== "object") {
+      return 0;
+    }
+    if (typeof response.status === "number") {
+      return response.status;
+    }
+    if (typeof response.status === "string") {
+      const parsed = parseInt(response.status, 10);
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
+  }
+  _responseStatusText(response, fallbackMessage = "Request failed") {
+    if (!response || typeof response !== "object") {
+      return fallbackMessage;
+    }
+    if (
+      typeof response.statusText === "string" &&
+      response.statusText.trim() !== ""
+    ) {
+      return response.statusText.trim();
+    }
+    if (typeof response.message === "string" && response.message.trim() !== "") {
+      return response.message.trim();
+    }
+    if (
+      response.data &&
+      typeof response.data === "object" &&
+      typeof response.data.message === "string" &&
+      response.data.message.trim() !== ""
+    ) {
+      return response.data.message.trim();
+    }
+    return fallbackMessage;
+  }
+  _isSuccessfulResponse(response) {
+    const status = this._responseStatusCode(response);
+    return status === 0 || (status >= 200 && status < 300);
+  }
+  _siteName() {
+    if (
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.site &&
+      this.manifest.metadata.site.name
+    ) {
+      return String(this.manifest.metadata.site.name);
+    }
+    return "";
+  }
+  _buildRequestTarget(requestId = "site-request", body = {}, requestExecutor) {
+    const target = {
+      id: requestId,
+      body: body && typeof body === "object" ? body : {},
+      headers: {},
+    };
+    target.generateRequest = async () => {
+      target.headers = {};
+      if (this.jwt) {
+        target.headers.Authorization = `Bearer ${this.jwt}`;
+      }
+      if (typeof requestExecutor === "function") {
+        return requestExecutor(target);
+      }
+      return null;
+    };
+    return target;
+  }
+  _emitRequestError(target, status, statusText = "Request failed") {
+    this.lastErrorChanged({
+      detail: {
+        value: {
+          status,
+          statusText,
+        },
+        target,
+      },
+    });
+  }
+  async _callSiteOperation(operationName, payload, target) {
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !operationName ||
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has(operationName)
+    ) {
+      return {
+        unavailable: true,
+        response: null,
+      };
+    }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        operationName,
+        payload,
+        null,
+        null,
+      );
+      if (this._isSuccessfulResponse(response)) {
+        return {
+          unavailable: false,
+          response,
+        };
+      }
+      const status = this._responseStatusCode(response);
+      const statusText = this._responseStatusText(response, "Operation failed");
+      this._emitRequestError(target, status, statusText);
+      return {
+        unavailable: false,
+        response: null,
+      };
+    } catch (error) {
+      let status = 500;
+      if (error && typeof error.status !== "undefined") {
+        const parsed = parseInt(error.status, 10);
+        if (!Number.isNaN(parsed)) {
+          status = parsed;
+        }
+      }
+      const statusText =
+        error && typeof error.message === "string" && error.message.trim() !== ""
+          ? error.message.trim()
+          : "Operation failed";
+      this._emitRequestError(target, status, statusText);
+      return {
+        unavailable: false,
+        response: null,
+      };
+    }
+  }
+  async _callLegacyJsonRoute(url, method, body, target) {
+    if (!url || typeof url !== "string" || url.trim() === "") {
+      return null;
+    }
+    try {
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      if (target && target.headers && target.headers.Authorization) {
+        headers.Authorization = target.headers.Authorization;
+      } else if (this.jwt) {
+        headers.Authorization = `Bearer ${this.jwt}`;
+      }
+      const response = await fetch(url, {
+        method: method || "POST",
+        credentials: "include",
+        headers,
+        body: JSON.stringify(body || {}),
+      });
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch (error) {
+        responseData = null;
+      }
+      const normalizedResponse =
+        responseData && typeof responseData === "object" ? responseData : {};
+      if (
+        !Object.prototype.hasOwnProperty.call(normalizedResponse, "status") &&
+        typeof response.status === "number"
+      ) {
+        normalizedResponse.status = response.status;
+      }
+      if (response.ok || this._isSuccessfulResponse(normalizedResponse)) {
+        return normalizedResponse;
+      }
+      this._emitRequestError(
+        target,
+        response.status,
+        this._responseStatusText(
+          normalizedResponse,
+          response.statusText || "Request failed",
+        ),
+      );
+      return null;
+    } catch (error) {
+      const statusText =
+        error && typeof error.message === "string" && error.message.trim() !== ""
+          ? error.message.trim()
+          : "Request failed";
+      this._emitRequestError(target, 500, statusText);
+      return null;
+    }
+  }
+  async _requestJson({
+    requestId = "site-request",
+    operationName = "",
+    payload = {},
+    fallbackUrl = "",
+    fallbackMethod = "POST",
+    unavailableMessage = "",
+    onSuccess = null,
+  } = {}) {
+    const requestTarget = this._buildRequestTarget(
+      requestId,
+      payload,
+      async (target) => {
+        let operationResult = {
+          unavailable: true,
+          response: null,
+        };
+        if (operationName && typeof operationName === "string") {
+          operationResult = await this._callSiteOperation(
+            operationName,
+            target.body,
+            target,
+          );
+        }
+        let response = operationResult.response;
+        if (!response && fallbackUrl) {
+          response = await this._callLegacyJsonRoute(
+            fallbackUrl,
+            fallbackMethod,
+            target.body,
+            target,
+          );
+        }
+        if (!response) {
+          if (operationResult.unavailable && !fallbackUrl && unavailableMessage) {
+            store.toast(unavailableMessage, 3000, {
+              fire: true,
+            });
+            store.playSound("error");
+          }
+          return null;
+        }
+        this._clearRefreshRetryCount(target);
+        if (typeof onSuccess === "function") {
+          onSuccess(response, target);
+        }
+        return response;
+      },
+    );
+    return requestTarget.generateRequest();
   }
 
   /**
    * Handle the last error rolling in
    */
   lastErrorChanged(e) {
-    if (e.detail.value) {
+    if (e && e.detail && e.detail.value) {
       console.error(e);
-      var target = normalizeEventPath(e)[0];
+      let target = e.detail.target ? e.detail.target : null;
+      if (!target && e && typeof e.composedPath === "function") {
+        const path = normalizeEventPath(e);
+        target = path && path.length > 0 ? path[0] : null;
+      }
       // check for JWT needing refreshed vs busted but must be 403
-      switch (parseInt(e.detail.value.status)) {
+      switch (parseInt(e.detail.value.status, 10)) {
         // cookie data not found, or illegal operation, need to go get it
         // @notice this currently isn't possible but we could modify
         // the backend in the future to support throwing 401s dynamically
@@ -649,8 +765,12 @@ class HAXCMSSiteEditor extends LitElement {
           );
           break;
         default:
+          const statusText =
+            e.detail.value.statusText && e.detail.value.statusText !== ""
+              ? e.detail.value.statusText
+              : "Request failed";
           store.toast(
-            e.detail.value.status + " " + e.detail.value.statusText,
+            e.detail.value.status + " " + statusText,
             5000,
             { fire: true },
           );
@@ -673,6 +793,13 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     this.jwt = jwt;
+    const appSettings =
+      globalThis.appSettings && typeof globalThis.appSettings === "object"
+        ? globalThis.appSettings
+        : store && store.appSettings
+          ? toJS(store.appSettings)
+          : {};
+    configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
     if (element && element.body) {
       element.body.jwt = jwt;
     }
@@ -971,10 +1098,22 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadUserData(e) {
-    this.querySelector("#getuserdata").body = {
-      jwt: this.jwt,
-    };
-    this.querySelector("#getuserdata").generateRequest();
+    this._requestJson({
+      requestId: "getuserdata",
+      payload: {
+        jwt: this.jwt,
+      },
+      fallbackUrl: this.getUserDataPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "User data endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleUserDataResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
   /**
    * Load site fields
@@ -1132,9 +1271,27 @@ class HAXCMSSiteEditor extends LitElement {
                   );
                 }
                 if (confirmation) {
-                  this.querySelector("#createajax").body = data;
                   this.setProcessingVisual();
-                  this.querySelector("#createajax").generateRequest();
+                  this._requestJson({
+                    requestId: "createajax",
+                    operationName: "@site/createItem",
+                    payload: data,
+                    fallbackUrl: this.createNodePath,
+                    fallbackMethod: this.method || "POST",
+                    unavailableMessage: "Create item endpoint is not available.",
+                    onSuccess: (response) => {
+                      this.__createNodeResponseChanged({
+                        detail: {
+                          value: response,
+                        },
+                      });
+                      this._handleCreateResponse({
+                        detail: {
+                          response,
+                        },
+                      });
+                    },
+                  });
                   const evt = new CustomEvent("simple-modal-hide", {
                     bubbles: true,
                     composed: true,
@@ -1200,9 +1357,27 @@ class HAXCMSSiteEditor extends LitElement {
           }
         });
       } else {
-        this.querySelector("#createajax").body = reqBody;
         this.setProcessingVisual();
-        await this.querySelector("#createajax").generateRequest();
+        await this._requestJson({
+          requestId: "createajax",
+          operationName: "@site/createItem",
+          payload: reqBody,
+          fallbackUrl: this.createNodePath,
+          fallbackMethod: this.method || "POST",
+          unavailableMessage: "Create item endpoint is not available.",
+          onSuccess: (response) => {
+            this.__createNodeResponseChanged({
+              detail: {
+                value: response,
+              },
+            });
+            this._handleCreateResponse({
+              detail: {
+                response,
+              },
+            });
+          },
+        });
         const evt = new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
@@ -1247,18 +1422,47 @@ class HAXCMSSiteEditor extends LitElement {
       store.toast("Delete is disabled for this site", 3000, { fire: true });
       return;
     }
-
-    this.querySelector("#deleteajax").body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      node: {
-        id: e.detail.item.id,
-      },
-    };
+    const itemId =
+      e && e.detail && e.detail.item && e.detail.item.id
+        ? String(e.detail.item.id)
+        : "";
+    if (!itemId) {
+      store.toast("Unable to delete page: missing page id", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
     this.setProcessingVisual();
-    this.querySelector("#deleteajax").generateRequest();
+    this._requestJson({
+      requestId: "deleteajax",
+      operationName: "@site/deleteItem",
+      payload: {
+        jwt: this.jwt,
+        idOrSlug: itemId,
+        site: {
+          name: this._siteName(),
+        },
+        node: {
+          id: itemId,
+        },
+      },
+      fallbackUrl: this.deleteNodePath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Delete item endpoint is not available.",
+      onSuccess: (response) => {
+        this.__deleteNodeResponseChanged({
+          detail: {
+            value: response,
+          },
+        });
+        this._handleDeleteResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       composed: true,
@@ -1763,46 +1967,70 @@ class HAXCMSSiteEditor extends LitElement {
    * Save node event
    */
   async saveNode(e) {
-    // send the request
-    if (this.saveNodePath) {
-      // Capture active element index before save for "keep editing" mode
-      let activeElementIndex = null;
-      if (
-        e.detail &&
-        e.detail.keepEditMode &&
-        HAXStore.activeHaxBody &&
-        HAXStore.activeNode
-      ) {
-        const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
-        activeElementIndex = bodyChildren.indexOf(HAXStore.activeNode);
-        // Store this for restoration after save
-        this._restoreActiveIndex = activeElementIndex;
-        this._restoreKeepEditMode = true;
-      } else {
-        this._restoreActiveIndex = null;
-        this._restoreKeepEditMode = false;
-      }
+    if (!this.activeItem || !this.activeItem.id || !HAXStore.activeHaxBody) {
+      return;
+    }
+    const siteName = this._siteName();
+    if (!siteName) {
+      store.toast("Unable to save page: missing site context", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    // Capture active element index before save for "keep editing" mode
+    let activeElementIndex = null;
+    if (
+      e.detail &&
+      e.detail.keepEditMode &&
+      HAXStore.activeHaxBody &&
+      HAXStore.activeNode
+    ) {
+      const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
+      activeElementIndex = bodyChildren.indexOf(HAXStore.activeNode);
+      // Store this for restoration after save
+      this._restoreActiveIndex = activeElementIndex;
+      this._restoreKeepEditMode = true;
+    } else {
+      this._restoreActiveIndex = null;
+      this._restoreKeepEditMode = false;
+    }
 
-      // Serialize current DOM content (including page-break) as-is. Entity
-      // normalization for attributes like title/description is handled on
-      // the backend so we do not clobber freshly edited values here.
-      let body = await HAXStore.activeHaxBody.haxToContent();
-      const schema = await HAXStore.htmlToHaxElements(body);
-
-      this.querySelector("#nodeupdateajax").body = {
+    // Serialize current DOM content (including page-break) as-is. Entity
+    // normalization for attributes like title/description is handled on
+    // the backend so we do not clobber freshly edited values here.
+    let body = await HAXStore.activeHaxBody.haxToContent();
+    const schema = await HAXStore.htmlToHaxElements(body);
+    const itemId = String(this.activeItem.id);
+    this.setProcessingVisual();
+    await this._requestJson({
+      requestId: "nodeupdateajax",
+      operationName: "@site/updateContentByIdOrSlug",
+      payload: {
         jwt: this.jwt,
+        idOrSlug: itemId,
         site: {
-          name: this.manifest.metadata.site.name,
+          name: siteName,
         },
+        body,
+        schema,
         node: {
-          id: this.activeItem.id,
+          id: itemId,
           body: body,
           schema: schema,
         },
-      };
-      this.setProcessingVisual();
-      this.querySelector("#nodeupdateajax").generateRequest();
-    }
+      },
+      fallbackUrl: this.saveNodePath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Page save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleNodeResponse({
+          detail: {
+            value: response,
+          },
+        });
+      },
+    });
   }
   /**
    * Save node event
@@ -1907,17 +2135,36 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   saveOutline(e) {
-    if (this.saveOutlinePath) {
-      this.querySelector("#outlineupdateajax").body = {
+    const siteName = this._siteName();
+    if (!siteName) {
+      store.toast("Outline save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    this.setProcessingVisual();
+    this._requestJson({
+      requestId: "outlineupdateajax",
+      operationName: "@site/updateSiteOutline",
+      payload: {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name,
+          name: siteName,
         },
-        items: e.detail,
-      };
-      this.setProcessingVisual();
-      this.querySelector("#outlineupdateajax").generateRequest();
-    }
+        items: e && e.detail ? e.detail : [],
+      },
+      fallbackUrl: this.saveOutlinePath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Outline save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleOutlineResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
   // processing visualization
   setProcessingVisual() {
@@ -1938,7 +2185,21 @@ class HAXCMSSiteEditor extends LitElement {
 
   saveManifest(e) {
     // now let's work on the outline
-    let values = e.detail; // if we have a cssVariable selected then generate a hexCode off of it
+    let values = e && e.detail ? e.detail : {}; // if we have a cssVariable selected then generate a hexCode off of it
+    if (!values || typeof values !== "object") {
+      values = {};
+    }
+    if (!values.manifest || typeof values.manifest !== "object") {
+      values.manifest = {};
+    }
+    const siteName = this._siteName();
+    if (!siteName) {
+      store.toast("Site save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
     // regions translation to simplify submission
     if (values.manifest.theme && values.manifest.theme.regions) {
       Object.keys(values.manifest.theme.regions).forEach((key, index) => {
@@ -1965,24 +2226,37 @@ class HAXCMSSiteEditor extends LitElement {
     values.jwt = this.jwt;
 
     if (values.site) {
-      values.site.name = this.manifest.metadata.site.name;
+      values.site.name = siteName;
     } else {
       values.site = {
-        name: this.manifest.metadata.site.name,
+        name: siteName,
       };
     }
-    if (this.saveManifestPath) {
-      this.querySelector("#manifestupdateajax").body = values;
-      this.setProcessingVisual();
-      this.querySelector("#manifestupdateajax").generateRequest();
-    }
+    this.setProcessingVisual();
+    this._requestJson({
+      requestId: "manifestupdateajax",
+      operationName: "@site/updateSiteSummary",
+      payload: values,
+      fallbackUrl: this.saveManifestPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Site save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleManifestResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
 
   saveSEOSettings(e) {
-    if (!this.saveSeoSettingsPath) {
+    const siteName = this._siteName();
+    if (!siteName) {
       store.toast("SEO save endpoint is not available.", 3000, {
         fire: true,
       });
+      store.playSound("error");
       return;
     }
     const detail = e && e.detail ? e.detail : {};
@@ -2109,10 +2383,10 @@ class HAXCMSSiteEditor extends LitElement {
       pathauto,
       publishPagesOn,
     };
-    this.querySelector("#seoupdateajax").body = {
+    const payload = {
       jwt: this.jwt,
       site: {
-        name: this.manifest.metadata.site.name,
+        name: siteName,
       },
       seo: seoValues,
       author: {
@@ -2144,14 +2418,30 @@ class HAXCMSSiteEditor extends LitElement {
       },
     };
     this.setProcessingVisual();
-    this.querySelector("#seoupdateajax").generateRequest();
+    this._requestJson({
+      requestId: "seoupdateajax",
+      operationName: "@site/updateSiteSeo",
+      payload,
+      fallbackUrl: this.saveSeoSettingsPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "SEO save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleManifestResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
 
   saveAppearanceSettings(e) {
-    if (!this.saveAppearanceSettingsPath) {
+    const siteName = this._siteName();
+    if (!siteName) {
       store.toast("Appearance save endpoint is not available.", 3000, {
         fire: true,
       });
+      store.playSound("error");
       return;
     }
     let values = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -2174,35 +2464,69 @@ class HAXCMSSiteEditor extends LitElement {
     }
     values.jwt = this.jwt;
     if (values.site) {
-      values.site.name = this.manifest.metadata.site.name;
+      values.site.name = siteName;
     } else {
       values.site = {
-        name: this.manifest.metadata.site.name,
+        name: siteName,
       };
     }
-    this.querySelector("#appearancesettingsajax").body = values;
     this.setProcessingVisual();
-    this.querySelector("#appearancesettingsajax").generateRequest();
+    this._requestJson({
+      requestId: "appearancesettingsajax",
+      operationName: "@site/updateSiteAppearance",
+      payload: values,
+      fallbackUrl: this.saveAppearanceSettingsPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Appearance save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleAppearanceSettingsResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
 
   savePlatformSettings(e) {
-    if (this.savePlatformSettingsPath) {
-      this.querySelector("#platformsettingsajax").body = {
+    const siteName = this._siteName();
+    if (!siteName) {
+      store.toast("Platform settings save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    this.setProcessingVisual();
+    this._requestJson({
+      requestId: "platformsettingsajax",
+      operationName: "@site/updateSitePlatform",
+      payload: {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name,
+          name: siteName,
         },
-        platform: e.detail,
-      };
-      this.setProcessingVisual();
-      this.querySelector("#platformsettingsajax").generateRequest();
-    }
+        platform: e && e.detail ? e.detail : {},
+      },
+      fallbackUrl: this.savePlatformSettingsPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Platform settings save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handlePlatformSettingsResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
   saveEditorSettings(e) {
-    if (!this.saveEditorSettingsPath) {
+    const siteName = this._siteName();
+    if (!siteName) {
       store.toast("Editor settings save endpoint is not available.", 3000, {
         fire: true,
       });
+      store.playSound("error");
       return;
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -2211,25 +2535,41 @@ class HAXCMSSiteEditor extends LitElement {
       store.toast("Editor settings are invalid.", 3000, {
         fire: true,
       });
+      store.playSound("error");
       return;
     }
-    this.querySelector("#editorsettingsajax").body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      platform: {
-        audience: audience,
-      },
-    };
     this.setProcessingVisual();
-    this.querySelector("#editorsettingsajax").generateRequest();
+    this._requestJson({
+      requestId: "editorsettingsajax",
+      operationName: "@site/updateSiteEditorSettings",
+      payload: {
+        jwt: this.jwt,
+        site: {
+          name: siteName,
+        },
+        platform: {
+          audience: audience,
+        },
+      },
+      fallbackUrl: this.saveEditorSettingsPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Editor settings save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleEditorSettingsResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
   saveAllowedBlocks(e) {
-    if (!this.saveAllowedBlocksPath) {
+    const siteName = this._siteName();
+    if (!siteName) {
       store.toast("Blocks save endpoint is not available.", 3000, {
         fire: true,
       });
+      store.playSound("error");
       return;
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -2253,15 +2593,28 @@ class HAXCMSSiteEditor extends LitElement {
     } else {
       platform.allowedBlocks = [];
     }
-    this.querySelector("#allowedblocksajax").body = {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name,
-      },
-      platform: platform,
-    };
     this.setProcessingVisual();
-    this.querySelector("#allowedblocksajax").generateRequest();
+    this._requestJson({
+      requestId: "allowedblocksajax",
+      operationName: "@site/updateSiteAllowedBlocks",
+      payload: {
+        jwt: this.jwt,
+        site: {
+          name: siteName,
+        },
+        platform: platform,
+      },
+      fallbackUrl: this.saveAllowedBlocksPath,
+      fallbackMethod: this.method || "POST",
+      unavailableMessage: "Blocks save endpoint is not available.",
+      onSuccess: (response) => {
+        this._handleAllowedBlocksResponse({
+          detail: {
+            response,
+          },
+        });
+      },
+    });
   }
   /**
    * Notice body of content has changed and import into HAX
@@ -2304,97 +2657,122 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     if (operation === "search" || operation === "replace") {
-      if (this.contentSearchPath) {
-        const searchValue =
-          e.detail &&
-          typeof e.detail.search === "string" &&
-          e.detail.search.trim() !== ""
-            ? String(e.detail.search).trim()
-            : "";
-        if (!searchValue) {
-          return;
-        }
-        this.__lastContentDashboardOperation = operation;
-        this.__lastContentSearchQuery = searchValue;
-        const body = {
-          jwt: this.jwt,
-          operation: operation,
-          search: searchValue,
+      const searchValue =
+        e.detail &&
+        typeof e.detail.search === "string" &&
+        e.detail.search.trim() !== ""
+          ? String(e.detail.search).trim()
+          : "";
+      if (!searchValue) {
+        return;
+      }
+      this.__lastContentDashboardOperation = operation;
+      this.__lastContentSearchQuery = searchValue;
+      const body = {
+        jwt: this.jwt,
+        operation: operation,
+        search: searchValue,
+      };
+      const siteName = this._siteName();
+      if (siteName !== "") {
+        body.site = {
+          name: siteName,
         };
+      }
+      if (operation === "replace") {
+        body.searchMode = "fulltext";
+        body.searchSelector = false;
+        body.searchField = "content";
+        body.replace =
+          e.detail && typeof e.detail.replace === "string"
+            ? e.detail.replace
+            : "";
+        if (e.detail && e.detail.replaceConfirm === true) {
+          body.replaceConfirm = true;
+        }
+        if (e.detail && e.detail.replaceDestroyConfirm === true) {
+          body.replaceDestroyConfirm = true;
+        }
+        if (e.detail && e.detail.searchCaseSensitive === true) {
+          body.searchCaseSensitive = true;
+        }
+      } else {
         if (
-          this.manifest &&
-          this.manifest.metadata &&
-          this.manifest.metadata.site &&
-          this.manifest.metadata.site.name
+          e.detail &&
+          typeof e.detail.searchField === "string" &&
+          e.detail.searchField.trim() !== ""
         ) {
-          body.site = {
-            name: this.manifest.metadata.site.name,
-          };
+          body.searchField = e.detail.searchField.trim();
         }
-        if (operation === "replace") {
-          body.searchMode = "fulltext";
-          body.searchSelector = false;
+        const requestedSearchMode =
+          e.detail &&
+          typeof e.detail.searchMode === "string" &&
+          e.detail.searchMode.trim() !== ""
+            ? e.detail.searchMode.trim().toLowerCase()
+            : "";
+        const selectorMode =
+          (e.detail &&
+            (e.detail.searchSelector === true ||
+              e.detail.searchSelector === "true" ||
+              e.detail.searchSelector === 1 ||
+              e.detail.searchSelector === "1")) ||
+          requestedSearchMode === "selector";
+        body.searchSelector = selectorMode;
+        if (selectorMode) {
+          body.searchMode = "selector";
           body.searchField = "content";
-          body.replace =
-            e.detail && typeof e.detail.replace === "string"
-              ? e.detail.replace
-              : "";
-          if (e.detail && e.detail.replaceConfirm === true) {
-            body.replaceConfirm = true;
-          }
-          if (e.detail && e.detail.replaceDestroyConfirm === true) {
-            body.replaceDestroyConfirm = true;
-          }
-          if (e.detail && e.detail.searchCaseSensitive === true) {
-            body.searchCaseSensitive = true;
-          }
-        } else {
-          if (
-            e.detail &&
-            typeof e.detail.searchField === "string" &&
-            e.detail.searchField.trim() !== ""
-          ) {
-            body.searchField = e.detail.searchField.trim();
-          }
-          const requestedSearchMode =
-            e.detail &&
-            typeof e.detail.searchMode === "string" &&
-            e.detail.searchMode.trim() !== ""
-              ? e.detail.searchMode.trim().toLowerCase()
-              : "";
-          const selectorMode =
-            (e.detail &&
-              (e.detail.searchSelector === true ||
-                e.detail.searchSelector === "true" ||
-                e.detail.searchSelector === 1 ||
-                e.detail.searchSelector === "1")) ||
-            requestedSearchMode === "selector";
-          body.searchSelector = selectorMode;
-          if (selectorMode) {
-            body.searchMode = "selector";
-            body.searchField = "content";
-          } else if (requestedSearchMode) {
-            body.searchMode = requestedSearchMode;
-          }
-          if (e.detail && e.detail.searchCaseSensitive === true) {
-            body.searchCaseSensitive = true;
-          }
-          if (
-            e.detail &&
-            typeof e.detail.searchLimit !== "undefined" &&
-            e.detail.searchLimit !== null &&
-            e.detail.searchLimit !== ""
-          ) {
-            const searchLimit = parseInt(e.detail.searchLimit, 10);
-            if (!isNaN(searchLimit)) {
-              body.searchLimit = searchLimit;
-            }
+        } else if (requestedSearchMode) {
+          body.searchMode = requestedSearchMode;
+        }
+        if (e.detail && e.detail.searchCaseSensitive === true) {
+          body.searchCaseSensitive = true;
+        }
+        if (
+          e.detail &&
+          typeof e.detail.searchLimit !== "undefined" &&
+          e.detail.searchLimit !== null &&
+          e.detail.searchLimit !== ""
+        ) {
+          const searchLimit = parseInt(e.detail.searchLimit, 10);
+          if (!isNaN(searchLimit)) {
+            body.searchLimit = searchLimit;
           }
         }
-        const searchRequest = this.querySelector("#contentsearchajax");
-        searchRequest.params = {};
-        searchRequest.body = body;
-        searchRequest.generateRequest();
+      }
+      let response = null;
+      if (operation === "replace") {
+        response = await this._requestJson({
+          requestId: "contentsearchajax",
+          operationName: "@site/replaceContent",
+          payload: body,
+          fallbackUrl: this.contentSearchPath,
+          fallbackMethod: "POST",
+          unavailableMessage: "Content replace endpoint is not available.",
+          onSuccess: (responseData) => {
+            this._handleContentSearchResponse({
+              detail: {
+                response: responseData,
+              },
+            });
+          },
+        });
+      } else if (this.contentSearchPath) {
+        response = await this._requestJson({
+          requestId: "contentsearchajax",
+          payload: body,
+          fallbackUrl: this.contentSearchPath,
+          fallbackMethod: "POST",
+          unavailableMessage: "Content search endpoint is not available.",
+          onSuccess: (responseData) => {
+            this._handleContentSearchResponse({
+              detail: {
+                response: responseData,
+              },
+            });
+          },
+        });
+      }
+      if (response) {
         return;
       }
       globalThis.dispatchEvent(
@@ -2403,10 +2781,10 @@ class HAXCMSSiteEditor extends LitElement {
             ? "haxcms-content-dashboard-replace"
             : "haxcms-content-dashboard-search",
           {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: e.detail,
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: e.detail,
           },
         ),
       );

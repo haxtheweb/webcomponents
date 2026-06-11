@@ -47,7 +47,6 @@
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^26.0.0",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-ajax": "3.0.1",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2"
   },

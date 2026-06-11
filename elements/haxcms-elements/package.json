@@ -91,7 +91,6 @@
     "@haxtheweb/super-daemon": "^26.0.0",
     "@haxtheweb/video-player": "^26.0.0",
     "@haxtheweb/wc-autoload": "^26.0.0",
-    "@polymer/iron-ajax": "3.0.1",
     "@polymer/iron-list": "3.1.0",
     "@polymer/polymer": "3.5.2",
     "@vaadin/router": "1.7.5",

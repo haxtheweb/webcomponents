@@ -48,7 +48,6 @@
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
     "@polymer/app-layout": "3.0.2",
-    "@polymer/iron-ajax": "3.0.1",
     "@polymer/polymer": "3.5.2"
   },
   "devDependencies": {
