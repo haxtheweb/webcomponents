@@ -74,6 +74,16 @@ export const PrintBranchMixin = function (SuperClass) {
         return "";
       }
     }
+    _legacyPrintViewUrl() {
+      try {
+        const printUrl = new URL(globalThis.location.href);
+        printUrl.searchParams.set("format", "print-page");
+        return printUrl.toString();
+      } catch (e) {
+        const separator = globalThis.location.href.includes("?") ? "&" : "?";
+        return `${globalThis.location.href}${separator}format=print-page`;
+      }
+    }
     _revokeObjectUrlOnClose(objectUrl, printWindow) {
       let revoked = false;
       let closePoll = null;
@@ -178,12 +188,16 @@ export const PrintBranchMixin = function (SuperClass) {
         );
         this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
-        const fallbackUrl = this._activePageFormatUrl("html");
-        globalThis.open(
-          fallbackUrl || globalThis.location.href + "?format=print-page",
-          "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
-        );
+        const fallbackUrl = this._legacyPrintViewUrl();
+        if (fallbackUrl) {
+          globalThis.open(
+            fallbackUrl,
+            "",
+            "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+          );
+        } else {
+          globalThis.print();
+        }
       }
       this.__printBranchLoading = false;
     }
@@ -260,12 +274,16 @@ export const PrintBranchMixin = function (SuperClass) {
         );
         this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
-        const fallbackUrl = this._activePageFormatUrl("html");
-        globalThis.open(
-          fallbackUrl || globalThis.location.href + "?format=print-page",
-          "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
-        );
+        const fallbackUrl = this._legacyPrintViewUrl();
+        if (fallbackUrl) {
+          globalThis.open(
+            fallbackUrl,
+            "",
+            "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+          );
+        } else {
+          globalThis.print();
+        }
       }
       this.__printBranchLoading = false;
     }

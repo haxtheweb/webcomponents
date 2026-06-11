@@ -44,6 +44,7 @@ export const createEditTagsProgram = (context) => {
             cancelable: true,
             detail: {
               id: activeItem.id,
+              idOrSlug: activeItem.id,
               operation: "setTags",
               tags: input || "",
             },

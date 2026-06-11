@@ -47,6 +47,7 @@ export const createEditTitleProgram = (context) => {
                 cancelable: true,
                 detail: {
                   id: activeItem.id,
+                  idOrSlug: activeItem.id,
                   operation: "setTitle",
                   title: currentTitle,
                 },
@@ -75,6 +76,7 @@ export const createEditTitleProgram = (context) => {
             cancelable: true,
             detail: {
               id: activeItem.id,
+              idOrSlug: activeItem.id,
               operation: "setTitle",
               title: input,
             },

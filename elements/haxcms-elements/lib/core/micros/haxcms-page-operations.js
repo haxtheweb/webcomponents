@@ -291,7 +291,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       return;
     }
     store.playSound("click");
-    const detail = { id: item.id, operation };
+    const detail = { id: item.id, idOrSlug: item.id, operation };
     this.dispatchEvent(
       new CustomEvent("haxcms-save-node-details", {
         bubbles: true,
@@ -354,6 +354,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         cancelable: true,
         detail: {
           id: item.id,
+          idOrSlug: item.id,
           operation: "setLocked",
           locked: !this.isLocked,
         },

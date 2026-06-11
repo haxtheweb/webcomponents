@@ -44,6 +44,7 @@ export const createEditSlugProgram = (context) => {
               cancelable: true,
               detail: {
                 id: activeItem.id,
+                idOrSlug: activeItem.id,
                 operation: "setSlug",
                 slug: input,
               },

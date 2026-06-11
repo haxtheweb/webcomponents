@@ -91,6 +91,7 @@ class HAXCMSSiteEditor extends LitElement {
   }
   // render function
   render() {
+    const headers = { Authorization: `Bearer ${this.jwt}` };
     return html`
       <style>
         haxcms-site-editor {
@@ -117,7 +118,7 @@ class HAXCMSSiteEditor extends LitElement {
       </style>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="nodeupdateajax"
         .url="${this.saveNodePath}"
         .method="${this.method}"
@@ -128,7 +129,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="outlineupdateajax"
         .url="${this.saveOutlinePath}"
         .method="${this.method}"
@@ -139,7 +140,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="manifestupdateajax"
         .url="${this.saveManifestPath}"
         .method="${this.method}"
@@ -150,7 +151,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="seoupdateajax"
         .url="${this.saveSeoSettingsPath}"
         .method="${this.method}"
@@ -161,7 +162,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="appearancesettingsajax"
         .url="${this.saveAppearanceSettingsPath}"
         .method="${this.method}"
@@ -172,7 +173,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="platformsettingsajax"
         .url="${this.savePlatformSettingsPath}"
         .method="${this.method}"
@@ -183,7 +184,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="allowedblocksajax"
         .url="${this.saveAllowedBlocksPath}"
         .method="${this.method}"
@@ -194,7 +195,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="editorsettingsajax"
         .url="${this.saveEditorSettingsPath}"
         .method="${this.method}"
@@ -205,7 +206,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="createajax"
         .url="${this.createNodePath}"
         .method="${this.method}"
@@ -217,7 +218,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="deleteajax"
         .url="${this.deleteNodePath}"
         .method="${this.method}"
@@ -229,7 +230,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -240,7 +241,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        .headers="${headers}"
         id="contentsearchajax"
         .url="${this.contentSearchPath}"
         method="POST"
@@ -1823,7 +1824,11 @@ class HAXCMSSiteEditor extends LitElement {
         ? detail.id.trim()
         : detail && detail.id
           ? String(detail.id).trim()
-          : "";
+          : detail && typeof detail.idOrSlug === "string"
+            ? detail.idOrSlug.trim()
+            : detail && detail.idOrSlug
+              ? String(detail.idOrSlug).trim()
+              : "";
     if (!itemId) {
       store.toast("Unable to complete operation: missing page id", 3000, {
         fire: true,

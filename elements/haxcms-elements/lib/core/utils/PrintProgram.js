@@ -42,6 +42,16 @@ export class PrintHelper {
       }, 60000);
     }
   }
+  static _legacyPrintViewUrl() {
+    try {
+      const printUrl = new URL(globalThis.location.href);
+      printUrl.searchParams.set("format", "print-page");
+      return printUrl.toString();
+    } catch (e) {
+      const separator = globalThis.location.href.includes("?") ? "&" : "?";
+      return `${globalThis.location.href}${separator}format=print-page`;
+    }
+  }
   static _activePageItemId() {
     const activeItem = toJS(store.activeItem);
     if (activeItem && activeItem.id) {
@@ -177,12 +187,16 @@ export class PrintHelper {
   }
 
   static printFallback() {
-    const fallbackUrl = this._activePageFormatUrl("html");
-    globalThis.open(
-      fallbackUrl || globalThis.location.href + "?format=print-page",
-      "",
-      "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
-    );
+    const fallbackUrl = this._legacyPrintViewUrl();
+    if (fallbackUrl) {
+      globalThis.open(
+        fallbackUrl,
+        "",
+        "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+      );
+    } else {
+      globalThis.print();
+    }
   }
 
   static printCurrentPage() {
@@ -190,13 +204,17 @@ export class PrintHelper {
   }
 
   static openPrintView() {
-    const printUrl = this._activePageFormatUrl("html");
-    globalThis.open(printUrl || globalThis.location.href + "?format=print-page", "_blank");
+    const printUrl = this._legacyPrintViewUrl();
+    if (printUrl) {
+      globalThis.open(printUrl, "_blank");
+    }
   }
 
   static openJSONView() {
     const jsonUrl = this._activePageFormatUrl("json");
-    globalThis.open(jsonUrl || globalThis.location.href + "?format=json", "_blank");
+    if (jsonUrl) {
+      globalThis.open(jsonUrl, "_blank");
+    }
   }
 }
 

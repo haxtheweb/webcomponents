@@ -772,8 +772,13 @@ export class PageBreak extends IntersectionObserverMixin(
     }
   }
   render() {
+    const pageAnchorId =
+      typeof this.itemId === "string" && this.itemId.trim() !== ""
+        ? this.itemId.trim()
+        : "";
+    const pagePath = pageAnchorId ? `#${pageAnchorId}` : this.slug;
     return html`
-      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only">${this.title}</a>
+      <a .href="${pagePath}" .name="${pageAnchorId}" class="sr-only">${this.title}</a>
       <div class="text">
         <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
           .selectToEditPageDetails}
@@ -1040,6 +1045,7 @@ export class PageBreak extends IntersectionObserverMixin(
                     cancelable: true,
                     detail: {
                       id: item.id,
+                      idOrSlug: item.id,
                       operation: "setIcon",
                       icon: icon,
                     },
@@ -1189,6 +1195,7 @@ export class PageBreak extends IntersectionObserverMixin(
         cancelable: true,
         detail: {
           id: item.id,
+          idOrSlug: item.id,
           operation: "setLocked",
           locked: !this.locked,
         },
@@ -1219,6 +1226,7 @@ export class PageBreak extends IntersectionObserverMixin(
         cancelable: true,
         detail: {
           id: item.id,
+          idOrSlug: item.id,
           operation: "setPublished",
           published: !this.published,
         },
