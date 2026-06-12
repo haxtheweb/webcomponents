@@ -1339,18 +1339,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         );
                       }
                       if (confirmation) {
-                        // @todo absolutely hate this solution. when we clean out the rats nest
-                        // that is iron-ajax calls in site-editor then we can simplify this action
-                        store
-                          .cmsSiteEditorAvailability()
-                          .querySelector("#createajax").body = data;
-                        this.setProcessingVisual();
-                        // @todo absolutely hate this solution. when we clean out the rats nest
-                        // that is iron-ajax calls in site-editor then we can simplify this action
-                        store
-                          .cmsSiteEditorAvailability()
-                          .querySelector("#createajax")
-                          .generateRequest();
+                        globalThis.dispatchEvent(
+                          new CustomEvent("haxcms-create-node", {
+                            bubbles: true,
+                            composed: true,
+                            cancelable: true,
+                            detail: {
+                              values: data,
+                              originalTarget: this,
+                            },
+                          }),
+                        );
                         const evt = new CustomEvent("simple-modal-hide", {
                           bubbles: true,
                           composed: true,

@@ -41,6 +41,7 @@ function getState() {
       siteApiBasePath: "",
       siteOpenApiPath: "",
       readyPromise: null,
+      bootstrapping: false,
       bootstrapped: false,
       previousAuthProvider: null,
       providerApplied: false,
@@ -375,19 +376,31 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
     siteApiBasePath,
   );
   if (siteApiBasePath === "" || siteOpenApiPath === "") {
+    state.bootstrapping = false;
     state.bootstrapped = false;
     state.readyPromise = Promise.resolve(false);
     return state.readyPromise;
   }
+  const sameBootstrapTarget =
+    state.siteApiBasePath === siteApiBasePath &&
+    state.siteOpenApiPath === siteOpenApiPath;
+  if (
+    sameBootstrapTarget &&
+    state.bootstrapping === true &&
+    state.readyPromise &&
+    typeof state.readyPromise.then === "function"
+  ) {
+    return state.readyPromise;
+  }
   const shouldReload =
-    state.siteApiBasePath !== siteApiBasePath ||
-    state.siteOpenApiPath !== siteOpenApiPath ||
+    !sameBootstrapTarget ||
     state.bootstrapped !== true;
   if (!shouldReload && state.readyPromise) {
     return state.readyPromise;
   }
   state.siteApiBasePath = siteApiBasePath;
   state.siteOpenApiPath = siteOpenApiPath;
+  state.bootstrapping = true;
   state.readyPromise = (async () => {
     try {
       await bootstrapFromOpenApi(
@@ -396,8 +409,10 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
         siteOpenApiPath,
       );
       state.bootstrapped = true;
+      state.bootstrapping = false;
       return true;
     } catch (e) {
+      state.bootstrapping = false;
       state.bootstrapped = false;
       return false;
     }

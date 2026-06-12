@@ -53,6 +53,7 @@ class HAXCMSBackendNodeJS extends LitElement {
     if (this._hasValidJWT(this.jwt)) {
       await this._gateEditorAccess();
     } else {
+      this.__validatedJwt = "";
       this._setConnectionValidated(false);
       this._dispatchNotLoggedIn();
     }
@@ -79,6 +80,7 @@ class HAXCMSBackendNodeJS extends LitElement {
     this.__disposer = [];
     this.__connectionTestPending = null;
     this.__ignoreNextJwtValidation = null;
+    this.__validatedJwt = "";
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
@@ -116,6 +118,14 @@ class HAXCMSBackendNodeJS extends LitElement {
       this._setConnectionValidated(hasValidJWT);
       return hasValidJWT;
     }
+    if (
+      this._hasValidJWT(this.jwt) &&
+      this.__validatedJwt &&
+      this.__validatedJwt === this.jwt &&
+      store.connectionValidated === true
+    ) {
+      return true;
+    }
     if (this.__connectionTestPending) {
       return this.__connectionTestPending;
     }
@@ -152,6 +162,7 @@ class HAXCMSBackendNodeJS extends LitElement {
               this.__ignoreNextJwtValidation = result.jwt;
               this.jwt = result.jwt;
             }
+            this.__validatedJwt = nextJWT;
             store.jwt = nextJWT;
             if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
               store.cmsSiteEditor.instance.jwt = nextJWT;
@@ -160,10 +171,12 @@ class HAXCMSBackendNodeJS extends LitElement {
             return true;
           }
         }
+        this.__validatedJwt = "";
         this._setConnectionValidated(false);
         return false;
       })
       .catch(() => {
+        this.__validatedJwt = "";
         this._setConnectionValidated(false);
         return false;
       })
@@ -179,6 +192,7 @@ class HAXCMSBackendNodeJS extends LitElement {
       return;
     }
     this.jwt = null;
+    this.__validatedJwt = "";
     store.jwt = null;
     this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
@@ -267,6 +281,8 @@ class HAXCMSBackendNodeJS extends LitElement {
               globalThis.appSettings.getFormToken;
             store.cmsSiteEditor.instance.getUserDataPath =
               globalThis.appSettings.getUserDataPath;
+            store.cmsSiteEditor.instance.getUserDataHeaders =
+              globalThis.appSettings.getUserDataHeaders;
             store.cmsSiteEditor.instance.appStore = globalThis.appSettings.appStore;
             globalThis.dispatchEvent(
               new CustomEvent("haxcms-site-editor-loaded", {

@@ -44,6 +44,7 @@ class HAXCMSSiteEditor extends LitElement {
     this.__maxRefreshRetries = 2;
     this.method = "POST";
     this.editMode = false;
+    this.getUserDataHeaders = {};
     globalThis.SimpleModal.requestAvailability();
     this.__setupDisposers();
   }
@@ -133,6 +134,9 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "get-user-data-path",
       },
+      getUserDataHeaders: {
+        type: Object,
+      },
 
       /**
        * Allow method to be overridden, useful in local testing
@@ -148,109 +152,11 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
       },
 
-      /**
-       * end point for saving nodes
-       */
-      saveNodePath: {
-        type: String,
-        attribute: "save-node-path",
-      },
-
-      /**
-       * end point for saving platform settings to site.json
-       */
-      savePlatformSettingsPath: {
-        type: String,
-        attribute: "save-platform-settings-path",
-      },
-      /**
-       * end point for saving blocks only
-       */
-      saveAllowedBlocksPath: {
-        type: String,
-        attribute: "save-allowed-blocks-path",
-      },
-      /**
-       * end point for saving editor settings only
-       */
-      saveEditorSettingsPath: {
-        type: String,
-        attribute: "save-editor-settings-path",
-      },
-
-      /**
-       * end point for create new nodes
-       */
-      createNodePath: {
-        type: String,
-        attribute: "create-node-path",
-      },
-
-      /**
-       * end point for delete nodes
-       */
-      deleteNodePath: {
-        type: String,
-        attribute: "delete-node-path",
-      },
-      /**
-       * end point for listing files
-       */
-      listFilesPath: {
-        type: String,
-        attribute: "list-files-path",
-      },
-      /**
-       * end point for uploading files
-       */
-      saveFilePath: {
-        type: String,
-        attribute: "save-file-path",
-      },
-      /**
-       * end point for file operations (delete / convert / scale)
-       */
-      fileOperationPath: {
-        type: String,
-        attribute: "file-operation-path",
-      },
-
-      /**
-       * end point for saving manifest
-       */
-      saveManifestPath: {
-        type: String,
-        attribute: "save-manifest-path",
-      },
-      /**
-       * end point for saving appearance settings only
-       */
-      saveAppearanceSettingsPath: {
-        type: String,
-        attribute: "save-appearance-settings-path",
-      },
-      /**
-       * end point for saving SEO settings
-       */
-      saveSeoSettingsPath: {
-        type: String,
-        attribute: "save-seo-settings-path",
-      },
-
-
       appendTarget: {
         type: Object,
       },
       appElement: {
         type: Object,
-      },
-
-      /**
-       * end point for saving outline
-       */
-      saveOutlinePath: {
-        type: String,
-        attribute: "save-outline-path",
       },
 
       /**
@@ -284,10 +190,6 @@ class HAXCMSSiteEditor extends LitElement {
       getSiteFieldsPath: {
         type: String,
         attribute: "save-site-fields-path",
-      },
-      contentSearchPath: {
-        type: String,
-        attribute: "content-search-path",
       },
       getFormToken: {
         type: String,
@@ -379,6 +281,11 @@ class HAXCMSSiteEditor extends LitElement {
     }
     let results = [];
     if (
+      responseData &&
+      Array.isArray(responseData.results)
+    ) {
+      results = responseData.results;
+    } else if (
       responseData &&
       Array.isArray(responseData.matches)
     ) {
@@ -512,14 +419,23 @@ class HAXCMSSiteEditor extends LitElement {
     }
     return "";
   }
-  _buildRequestTarget(requestId = "site-request", body = {}, requestExecutor) {
+  _buildRequestTarget(
+    requestId = "site-request",
+    body = {},
+    requestExecutor,
+    extraHeaders = {},
+  ) {
+    const defaultHeaders =
+      extraHeaders && typeof extraHeaders === "object"
+        ? Object.assign({}, extraHeaders)
+        : {};
     const target = {
       id: requestId,
       body: body && typeof body === "object" ? body : {},
-      headers: {},
+      headers: defaultHeaders,
     };
     target.generateRequest = async () => {
-      target.headers = {};
+      target.headers = Object.assign({}, defaultHeaders);
       if (this.jwt) {
         target.headers.Authorization = `Bearer ${this.jwt}`;
       }
@@ -653,6 +569,7 @@ class HAXCMSSiteEditor extends LitElement {
     requestId = "site-request",
     operationName = "",
     payload = {},
+    headers = {},
     fallbackUrl = "",
     fallbackMethod = "POST",
     unavailableMessage = "",
@@ -697,6 +614,7 @@ class HAXCMSSiteEditor extends LitElement {
         }
         return response;
       },
+      headers,
     );
     return requestTarget.generateRequest();
   }
@@ -1102,11 +1020,16 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadUserData(e) {
+    const userHeaders =
+      this.getUserDataHeaders && typeof this.getUserDataHeaders === "object"
+        ? this.getUserDataHeaders
+        : {};
     this._requestJson({
       requestId: "getuserdata",
       payload: {
         jwt: this.jwt,
       },
+      headers: userHeaders,
       fallbackUrl: this.getUserDataPath,
       fallbackMethod: this.method || "POST",
       unavailableMessage: "User data endpoint is not available.",
@@ -1282,8 +1205,6 @@ class HAXCMSSiteEditor extends LitElement {
                     requestId: "createajax",
                     operationName: "@site/createItem",
                     payload: data,
-                    fallbackUrl: this.createNodePath,
-                    fallbackMethod: this.method || "POST",
                     unavailableMessage: "Create item endpoint is not available.",
                     onSuccess: (response) => {
                       this.__createNodeResponseChanged({
@@ -1368,8 +1289,6 @@ class HAXCMSSiteEditor extends LitElement {
           requestId: "createajax",
           operationName: "@site/createItem",
           payload: reqBody,
-          fallbackUrl: this.createNodePath,
-          fallbackMethod: this.method || "POST",
           unavailableMessage: "Create item endpoint is not available.",
           onSuccess: (response) => {
             this.__createNodeResponseChanged({
@@ -1452,8 +1371,6 @@ class HAXCMSSiteEditor extends LitElement {
           id: itemId,
         },
       },
-      fallbackUrl: this.deleteNodePath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Delete item endpoint is not available.",
       onSuccess: (response) => {
         this.__deleteNodeResponseChanged({
@@ -2024,8 +1941,6 @@ class HAXCMSSiteEditor extends LitElement {
           schema: schema,
         },
       },
-      fallbackUrl: this.saveNodePath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Page save endpoint is not available.",
       onSuccess: (response) => {
         this._handleNodeResponse({
@@ -2157,8 +2072,6 @@ class HAXCMSSiteEditor extends LitElement {
         },
         items: e && e.detail ? e.detail : [],
       },
-      fallbackUrl: this.saveOutlinePath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Outline save endpoint is not available.",
       onSuccess: (response) => {
         this._handleOutlineResponse({
@@ -2240,8 +2153,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "manifestupdateajax",
       operationName: "@site/updateSiteSummary",
       payload: values,
-      fallbackUrl: this.saveManifestPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Site save endpoint is not available.",
       onSuccess: (response) => {
         this._handleManifestResponse({
@@ -2425,8 +2336,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "seoupdateajax",
       operationName: "@site/updateSiteSeo",
       payload,
-      fallbackUrl: this.saveSeoSettingsPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "SEO save endpoint is not available.",
       onSuccess: (response) => {
         this._handleManifestResponse({
@@ -2478,8 +2387,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "appearancesettingsajax",
       operationName: "@site/updateSiteAppearance",
       payload: values,
-      fallbackUrl: this.saveAppearanceSettingsPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Appearance save endpoint is not available.",
       onSuccess: (response) => {
         this._handleAppearanceSettingsResponse({
@@ -2511,8 +2418,6 @@ class HAXCMSSiteEditor extends LitElement {
         },
         platform: e && e.detail ? e.detail : {},
       },
-      fallbackUrl: this.savePlatformSettingsPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Platform settings save endpoint is not available.",
       onSuccess: (response) => {
         this._handlePlatformSettingsResponse({
@@ -2554,8 +2459,6 @@ class HAXCMSSiteEditor extends LitElement {
           audience: audience,
         },
       },
-      fallbackUrl: this.saveEditorSettingsPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Editor settings save endpoint is not available.",
       onSuccess: (response) => {
         this._handleEditorSettingsResponse({
@@ -2607,8 +2510,6 @@ class HAXCMSSiteEditor extends LitElement {
         },
         platform: platform,
       },
-      fallbackUrl: this.saveAllowedBlocksPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "Blocks save endpoint is not available.",
       onSuccess: (response) => {
         this._handleAllowedBlocksResponse({
@@ -2748,8 +2649,6 @@ class HAXCMSSiteEditor extends LitElement {
           requestId: "contentsearchajax",
           operationName: "@site/replaceContent",
           payload: body,
-          fallbackUrl: this.contentSearchPath,
-          fallbackMethod: "POST",
           unavailableMessage: "Content replace endpoint is not available.",
           onSuccess: (responseData) => {
             this._handleContentSearchResponse({
@@ -2759,12 +2658,34 @@ class HAXCMSSiteEditor extends LitElement {
             });
           },
         });
-      } else if (this.contentSearchPath) {
+      } else {
+        const searchPayload = {
+          q: searchValue,
+        };
+        if (
+          e.detail &&
+          typeof e.detail.searchField === "string" &&
+          e.detail.searchField.trim() !== ""
+        ) {
+          const searchField = e.detail.searchField.trim();
+          if (searchField !== "all") {
+            searchPayload.fields = searchField;
+          }
+        }
+        if (body.searchMode === "selector") {
+          searchPayload.fields = "content";
+        }
+        if (
+          typeof body.searchLimit === "number" &&
+          !Number.isNaN(body.searchLimit) &&
+          body.searchLimit > 0
+        ) {
+          searchPayload["page.limit"] = body.searchLimit;
+        }
         response = await this._requestJson({
           requestId: "contentsearchajax",
-          payload: body,
-          fallbackUrl: this.contentSearchPath,
-          fallbackMethod: "POST",
+          operationName: "@site/searchContent",
+          payload: searchPayload,
           unavailableMessage: "Content search endpoint is not available.",
           onSuccess: (responseData) => {
             this._handleContentSearchResponse({

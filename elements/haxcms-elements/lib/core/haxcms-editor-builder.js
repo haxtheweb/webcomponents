@@ -66,6 +66,83 @@ class HAXCMSEditorBuilder extends HTMLElement {
       configureHAXCMSSiteApiRegistry(store.appSettings);
     }
   }
+  _hasGlobalConnectionSettings() {
+    return (
+      globalThis.appSettings &&
+      typeof globalThis.appSettings === "object" &&
+      Object.keys(globalThis.appSettings).length > 0
+    );
+  }
+  async _loadConnectionSettingsScript(scriptSrc = "") {
+    if (this._hasGlobalConnectionSettings()) {
+      this.__hasConnectionSettings = true;
+      this._syncStoreAppSettings();
+      return true;
+    }
+    if (
+      globalThis.__haxcmsConnectionSettingsPromise &&
+      typeof globalThis.__haxcmsConnectionSettingsPromise.then === "function"
+    ) {
+      const loaded = await globalThis.__haxcmsConnectionSettingsPromise;
+      if (loaded) {
+        this.__hasConnectionSettings = true;
+        this._syncStoreAppSettings();
+      }
+      return loaded;
+    }
+    const resolvedScriptSrc =
+      typeof scriptSrc === "string" && scriptSrc.trim() !== ""
+        ? scriptSrc.trim()
+        : "../../system/api/v1/session/connection-settings";
+    globalThis.__haxcmsConnectionSettingsPromise = new Promise((resolve) => {
+      let existingScript = null;
+      if (globalThis.document && globalThis.document.querySelector) {
+        existingScript = globalThis.document.querySelector(
+          "script[data-haxcms-connection-settings]",
+        );
+      }
+      if (
+        existingScript &&
+        existingScript.getAttribute("data-haxcms-connection-settings-loaded") ===
+          "true"
+      ) {
+        resolve(true);
+        return;
+      }
+      const script = existingScript || globalThis.document.createElement("script");
+      script.setAttribute("data-haxcms-connection-settings", "true");
+      script.src = resolvedScriptSrc;
+      script.addEventListener(
+        "load",
+        () => {
+          script.setAttribute("data-haxcms-connection-settings-loaded", "true");
+          resolve(true);
+        },
+        { once: true },
+      );
+      script.addEventListener(
+        "error",
+        () => {
+          resolve(false);
+        },
+        { once: true },
+      );
+      if (!existingScript) {
+        globalThis.document.documentElement.appendChild(script);
+      }
+    }).then((loaded) => {
+      if (!loaded) {
+        globalThis.__haxcmsConnectionSettingsPromise = null;
+      }
+      return loaded;
+    });
+    const loaded = await globalThis.__haxcmsConnectionSettingsPromise;
+    if (loaded) {
+      this.__hasConnectionSettings = true;
+      this._syncStoreAppSettings();
+    }
+    return loaded;
+  }
   _getEditorUIElements() {
     const elements = [];
     if (!(globalThis.document && globalThis.document.querySelectorAll)) {
@@ -185,30 +262,18 @@ class HAXCMSEditorBuilder extends HTMLElement {
           globalThis.HAXCMS.requestAvailability().getApplicationContext();
       }
       if (["php", "nodejs", "desktop"].includes(context)) {
-        // append this script to global scope to show up via window
-        // this is a unique case since it's server side generated in HAXCMS
-        let script = globalThis.document.createElement("script");
-        script.addEventListener("load", this._syncStoreAppSettings.bind(this), {
-          once: true,
-        });
-        // IF we're in a live environment this will always be 2 levels back
+        let connectionSettingsScriptSrc = "";
         if (
           globalThis.appSettings &&
+          typeof globalThis.appSettings === "object" &&
           globalThis.appSettings.connectionSettings
         ) {
-          script.src = globalThis.appSettings.connectionSettings;
+          connectionSettingsScriptSrc = globalThis.appSettings.connectionSettings;
         } else {
-          script.src = `../../system/api/connectionSettings`;
+          connectionSettingsScriptSrc =
+            "../../system/api/v1/session/connection-settings";
         }
-        await fetch(script.src).then((response) => {
-          const contentType = response.headers.get("content-type");
-          // verify that we have a js file as that's the only valid response if appending a script tag into DOM
-          if (response.ok && contentType.includes("application/javascript")) {
-            this.__hasConnectionSettings = true;
-            globalThis.document.documentElement.appendChild(script);
-            this._syncStoreAppSettings();
-          }
-        });
+        await this._loadConnectionSettingsScript(connectionSettingsScriptSrc);
       }
       // demo's always fake that they have a connection so we can get the editing UI
       if (context == "demo") {

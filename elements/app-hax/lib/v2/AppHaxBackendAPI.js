@@ -20,6 +20,7 @@ export class AppHaxBackendAPI extends LitElement {
     this.__connectionTestPending = null;
     this.__retryCounts = {};
     this.__maxRefreshRetries = 2;
+    this.__validatedJwt = "";
     this.method =
       window && globalThis.appSettings && globalThis.appSettings.demo
         ? "GET"
@@ -89,6 +90,7 @@ export class AppHaxBackendAPI extends LitElement {
   _clearAuthSession(triggerLogout = false) {
     this.jwt = null;
     store.jwt = null;
+    this.__validatedJwt = "";
     store.authValidated = false;
     store.authTesting = false;
     store.user = {
@@ -105,6 +107,14 @@ export class AppHaxBackendAPI extends LitElement {
       store.authValidated = hasJWT;
       store.authTesting = false;
       return hasJWT;
+    }
+    if (
+      this._hasValidJWT(this.jwt) &&
+      this.__validatedJwt &&
+      this.__validatedJwt === this.jwt &&
+      store.authValidated === true
+    ) {
+      return true;
     }
     if (this.__connectionTestPending) {
       return this.__connectionTestPending;
@@ -153,6 +163,7 @@ export class AppHaxBackendAPI extends LitElement {
           if (this._hasValidJWT(nextJWT)) {
             this.jwt = nextJWT;
             store.jwt = nextJWT;
+            this.__validatedJwt = nextJWT;
             store.authValidated = true;
             if (result.user && typeof result.user === "string") {
               store.user = {
@@ -163,10 +174,12 @@ export class AppHaxBackendAPI extends LitElement {
           }
         }
         store.authValidated = false;
+        this.__validatedJwt = "";
         return false;
       })
       .catch(() => {
         store.authValidated = false;
+        this.__validatedJwt = "";
         return false;
       })
       .finally(() => {
@@ -189,6 +202,48 @@ export class AppHaxBackendAPI extends LitElement {
       this._clearAuthSession(false);
     }
     this.__loopBlock = false;
+  }
+  _mergeHeaderEntries(target = {}, source = null) {
+    if (!source || typeof source !== "object") {
+      return target;
+    }
+    Object.keys(source).forEach((key) => {
+      const headerName = String(key || "").trim();
+      if (headerName === "") {
+        return;
+      }
+      const headerValue = source[key];
+      if (typeof headerValue === "undefined" || headerValue === null) {
+        return;
+      }
+      const normalizedValue = String(headerValue).trim();
+      if (normalizedValue === "") {
+        return;
+      }
+      target[headerName] = normalizedValue;
+    });
+    return target;
+  }
+  _getCallHeaders(call = "") {
+    const headers = {};
+    if (!(this.appSettings && typeof this.appSettings === "object")) {
+      return headers;
+    }
+    if (call === "getUserDataPath") {
+      this._mergeHeaderEntries(headers, this.appSettings.getUserDataHeaders);
+      if (
+        Object.keys(headers).length === 0 &&
+        this.appSettings.userTokenHeader &&
+        this.appSettings.userToken
+      ) {
+        const headerName = String(this.appSettings.userTokenHeader).trim();
+        const headerValue = String(this.appSettings.userToken).trim();
+        if (headerName !== "" && headerValue !== "") {
+          headers[headerName] = headerValue;
+        }
+      }
+    }
+    return headers;
   }
 
   static get properties() {
@@ -238,6 +293,7 @@ export class AppHaxBackendAPI extends LitElement {
     if (this.appSettings && this.appSettings[call]) {
       const retryKey = this._getRetryKey(call, data);
       const requestData = Object.assign({}, data);
+      const callHeaders = this._getCallHeaders(call);
       var urlRequest = `${this.basePath}${this.appSettings[call]}`;
       var options = {
         method: this.method,
@@ -251,10 +307,16 @@ export class AppHaxBackendAPI extends LitElement {
       // encode in search params or body of the request
       if (this.method === "GET") {
         urlRequest += "?" + new URLSearchParams(requestData).toString();
+        if (Object.keys(callHeaders).length > 0) {
+          options.headers = Object.assign({}, callHeaders);
+        }
       } else {
         options.headers = {
           "Content-Type": "application/json",
         };
+        if (Object.keys(callHeaders).length > 0) {
+          options.headers = Object.assign(options.headers, callHeaders);
+        }
         options.body = JSON.stringify(requestData);
       }
       const response = await fetch(`${urlRequest}`, options).then(
