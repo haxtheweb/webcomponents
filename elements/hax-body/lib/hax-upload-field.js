@@ -308,40 +308,72 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       try {
         // convert response to object
         let response = JSON.parse(e.detail.xhr.response);
-        // access the app that did the upload
-        let map = this.__appUsed.connection.operations.add.resultMap;
         let data = {};
         let item = {};
-        // look for the items element to draw our data from at its root
+        let map = null;
+        // some upload flows can bypass app picker selection and configure
+        // endpoint / headers directly, so __appUsed can be undefined
         if (
-          typeof this._resolveObjectPath(map.item, response) !==
-          typeof undefined
+          this.__appUsed &&
+          this.__appUsed.connection &&
+          this.__appUsed.connection.operations &&
+          this.__appUsed.connection.operations.add &&
+          this.__appUsed.connection.operations.add.resultMap
         ) {
-          data = this._resolveObjectPath(map.item, response);
+          map = this.__appUsed.connection.operations.add.resultMap;
         }
-        item.type = map.defaultGizmoType;
-        // pull in prop matches
-        for (var prop in map.gizmo) {
-          item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
-        }
-        // another sanity check, if we don't have a url but have a source bind that too
-        if (
-          typeof item.url === typeof undefined &&
-          typeof item.source !== typeof undefined
-        ) {
-          item.url = item.source;
-        }
-        // gizmo type is also supported in the mapping element itself
-        // Think an asset management backend as opposed to a specific
-        // type of asset like video. If the item coming across can
-        // effectively check what kind of gizmo is required for it
-        // to work then we need to support that asset declaring the
-        // gizmo type needed
-        if (typeof map.gizmo.type !== typeof undefined) {
-          item.type = this._resolveObjectPath(map.gizmo.type, data);
+        if (map && map.gizmo && typeof map.gizmo === "object") {
+          // look for the items element to draw our data from at its root
+          if (
+            typeof this._resolveObjectPath(map.item, response) !==
+            typeof undefined
+          ) {
+            data = this._resolveObjectPath(map.item, response);
+          }
+          item.type = map.defaultGizmoType;
+          // pull in prop matches
+          for (var prop in map.gizmo) {
+            item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
+          }
+          // another sanity check, if we don't have a url but have a source bind that too
+          if (
+            typeof item.url === typeof undefined &&
+            typeof item.source !== typeof undefined
+          ) {
+            item.url = item.source;
+          }
+          // gizmo type is also supported in the mapping element itself
+          // Think an asset management backend as opposed to a specific
+          // type of asset like video. If the item coming across can
+          // effectively check what kind of gizmo is required for it
+          // to work then we need to support that asset declaring the
+          // gizmo type needed
+          if (typeof map.gizmo.type !== typeof undefined) {
+            item.type = this._resolveObjectPath(map.gizmo.type, data);
+          }
+        } else {
+          if (response && typeof response.url === "string" && response.url) {
+            item.url = response.url;
+          } else if (
+            response &&
+            response.data &&
+            typeof response.data.url === "string" &&
+            response.data.url
+          ) {
+            item.url = response.data.url;
+          } else if (
+            response &&
+            response.data &&
+            typeof response.data.file === "string" &&
+            response.data.file
+          ) {
+            item.url = response.data.file;
+          }
         }
         // set the value of the url which will update our URL and notify
-        this.shadowRoot.querySelector("#url").value = item.url;
+        if (this.shadowRoot.querySelector("#url") && item.url) {
+          this.shadowRoot.querySelector("#url").value = item.url;
+        }
         //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
         //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
 
@@ -351,7 +383,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           typeof HAXStore.activePlaceHolderCallback === "function"
         ) {
           HAXStore.activePlaceHolderCallback({
-            file: item.url,
+            file: typeof item.url === "string" ? item.url : "",
             item: item,
             response: response,
           });
