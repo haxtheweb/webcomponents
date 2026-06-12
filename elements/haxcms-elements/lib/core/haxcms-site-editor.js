@@ -510,91 +510,12 @@ class HAXCMSSiteEditor extends LitElement {
       };
     }
   }
-  async _callLegacyJsonRoute(url, method, body, target) {
-    if (!url || typeof url !== "string" || url.trim() === "") {
-      return null;
-    }
-    try {
-      const headers = {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      };
-      if (target && target.headers && typeof target.headers === "object") {
-        const targetHeaderKeys = Object.keys(target.headers);
-        for (let i = 0; i < targetHeaderKeys.length; i++) {
-          const targetHeaderKey = String(targetHeaderKeys[i] || "").trim();
-          if (targetHeaderKey === "") {
-            continue;
-          }
-          const targetHeaderValue = target.headers[targetHeaderKeys[i]];
-          if (
-            typeof targetHeaderValue === "undefined" ||
-            targetHeaderValue === null
-          ) {
-            continue;
-          }
-          const normalizedHeaderValue = String(targetHeaderValue).trim();
-          if (normalizedHeaderValue === "") {
-            continue;
-          }
-          headers[targetHeaderKey] = normalizedHeaderValue;
-        }
-      }
-      if (
-        !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
-        !Object.prototype.hasOwnProperty.call(headers, "authorization") &&
-        this.jwt
-      ) {
-        headers.Authorization = `Bearer ${this.jwt}`;
-      }
-      const response = await fetch(url, {
-        method: method || "POST",
-        credentials: "include",
-        headers,
-        body: JSON.stringify(body || {}),
-      });
-      let responseData = null;
-      try {
-        responseData = await response.json();
-      } catch (error) {
-        responseData = null;
-      }
-      const normalizedResponse =
-        responseData && typeof responseData === "object" ? responseData : {};
-      if (
-        !Object.prototype.hasOwnProperty.call(normalizedResponse, "status") &&
-        typeof response.status === "number"
-      ) {
-        normalizedResponse.status = response.status;
-      }
-      if (response.ok || this._isSuccessfulResponse(normalizedResponse)) {
-        return normalizedResponse;
-      }
-      this._emitRequestError(
-        target,
-        response.status,
-        this._responseStatusText(
-          normalizedResponse,
-          response.statusText || "Request failed",
-        ),
-      );
-      return null;
-    } catch (error) {
-      const statusText =
-        error && typeof error.message === "string" && error.message.trim() !== ""
-          ? error.message.trim()
-          : "Request failed";
-      this._emitRequestError(target, 500, statusText);
-      return null;
-    }
-  }
+
   async _requestJson({
     requestId = "site-request",
     operationName = "",
     payload = {},
     headers = {},
-    fallbackUrl = "",
-    fallbackMethod = "POST",
     unavailableMessage = "",
     onSuccess = null,
   } = {}) {
@@ -614,16 +535,8 @@ class HAXCMSSiteEditor extends LitElement {
           );
         }
         let response = operationResult.response;
-        if (!response && fallbackUrl) {
-          response = await this._callLegacyJsonRoute(
-            fallbackUrl,
-            fallbackMethod,
-            target.body,
-            target,
-          );
-        }
         if (!response) {
-          if (operationResult.unavailable && !fallbackUrl && unavailableMessage) {
+          if (operationResult.unavailable && unavailableMessage) {
             store.toast(unavailableMessage, 3000, {
               fire: true,
             });
@@ -1074,12 +987,7 @@ class HAXCMSSiteEditor extends LitElement {
     }
     this._requestJson({
       requestId: "getuserdata",
-      payload: {
-        jwt: this.jwt,
-      },
       headers: userHeaders,
-      fallbackUrl: this.getUserDataPath,
-      fallbackMethod: this.method || "POST",
       unavailableMessage: "User data endpoint is not available.",
       onSuccess: (response) => {
         this._handleUserDataResponse({
@@ -1110,7 +1018,6 @@ class HAXCMSSiteEditor extends LitElement {
       this.siteDashboard.jwt = this.jwt;
       this.siteDashboard.method = this.method;
       this.siteDashboard.body = {
-        jwt: this.jwt,
         token: this.getFormToken,
         site: {
           name: this.manifest.metadata.site.name,
@@ -2346,7 +2253,6 @@ class HAXCMSSiteEditor extends LitElement {
       publishPagesOn,
     };
     const payload = {
-      jwt: this.jwt,
       site: {
         name: siteName,
       },
@@ -2460,7 +2366,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "platformsettingsajax",
       operationName: "@site/updateSitePlatform",
       payload: {
-        jwt: this.jwt,
         site: {
           name: siteName,
         },
@@ -2499,7 +2404,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "editorsettingsajax",
       operationName: "@site/updateSiteEditorSettings",
       payload: {
-        jwt: this.jwt,
         site: {
           name: siteName,
         },
@@ -2552,7 +2456,6 @@ class HAXCMSSiteEditor extends LitElement {
       requestId: "allowedblocksajax",
       operationName: "@site/updateSiteAllowedBlocks",
       payload: {
-        jwt: this.jwt,
         site: {
           name: siteName,
         },
@@ -2621,7 +2524,6 @@ class HAXCMSSiteEditor extends LitElement {
       this.__lastContentDashboardOperation = operation;
       this.__lastContentSearchQuery = searchValue;
       const body = {
-        jwt: this.jwt,
         operation: operation,
         search: searchValue,
       };
