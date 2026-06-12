@@ -224,23 +224,238 @@ export class AppHaxBackendAPI extends LitElement {
     });
     return target;
   }
+  _getCallPath(call = "") {
+    if (!(this.appSettings && typeof this.appSettings === "object")) {
+      return "";
+    }
+    if (
+      !Object.prototype.hasOwnProperty.call(this.appSettings, call) ||
+      typeof this.appSettings[call] !== "string"
+    ) {
+      return "";
+    }
+    return this.appSettings[call].trim();
+  }
+  _isV1EndpointCall(call = "") {
+    const callPath = this._getCallPath(call);
+    if (!callPath) {
+      return false;
+    }
+    if (callPath.indexOf("/v1/") !== -1) {
+      return true;
+    }
+    return callPath.indexOf("v1/") === 0;
+  }
+  _callUsesHeaderAuth(call = "") {
+    return this._isV1EndpointCall(call);
+  }
+  _callUsesUserTokenHeader(call = "") {
+    if (this._isV1EndpointCall(call)) {
+      return true;
+    }
+    const userTokenHeaderCalls = [
+      "getUserDataPath",
+      "createSite",
+      "copySite",
+      "archiveSite",
+      "downloadSite",
+      "saveSiteAsTemplate",
+      "getSitesList",
+      "skeletonsList",
+      "getSkeleton",
+    ];
+    return userTokenHeaderCalls.includes(call);
+  }
+  _resolvePathParamValue(call = "", paramName = "", requestData = {}) {
+    const normalizedParamName = String(paramName || "").trim();
+    if (!normalizedParamName) {
+      return "";
+    }
+    const payload =
+      requestData && typeof requestData === "object" ? requestData : {};
+    if (normalizedParamName === "siteName") {
+      if (
+        payload.site &&
+        typeof payload.site === "object" &&
+        typeof payload.site.name === "string" &&
+        payload.site.name.trim() !== ""
+      ) {
+        return payload.site.name.trim();
+      }
+      if (
+        typeof payload.siteName === "string" &&
+        payload.siteName.trim() !== ""
+      ) {
+        return payload.siteName.trim();
+      }
+      if (typeof payload.name === "string" && payload.name.trim() !== "") {
+        return payload.name.trim();
+      }
+      return "";
+    }
+    if (normalizedParamName === "skeletonName") {
+      if (
+        typeof payload.skeletonName === "string" &&
+        payload.skeletonName.trim() !== ""
+      ) {
+        return payload.skeletonName.trim();
+      }
+      if (typeof payload.name === "string" && payload.name.trim() !== "") {
+        return payload.name.trim();
+      }
+      return "";
+    }
+    if (normalizedParamName === "name") {
+      if (typeof payload.name === "string" && payload.name.trim() !== "") {
+        return payload.name.trim();
+      }
+      if (
+        typeof payload.skeletonName === "string" &&
+        payload.skeletonName.trim() !== ""
+      ) {
+        return payload.skeletonName.trim();
+      }
+      if (
+        payload.site &&
+        typeof payload.site === "object" &&
+        typeof payload.site.name === "string" &&
+        payload.site.name.trim() !== ""
+      ) {
+        return payload.site.name.trim();
+      }
+      if (
+        typeof payload.siteName === "string" &&
+        payload.siteName.trim() !== ""
+      ) {
+        return payload.siteName.trim();
+      }
+      return "";
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(payload, normalizedParamName) &&
+      typeof payload[normalizedParamName] !== "undefined" &&
+      payload[normalizedParamName] !== null
+    ) {
+      const value = String(payload[normalizedParamName]).trim();
+      if (value !== "") {
+        return value;
+      }
+    }
+    return "";
+  }
+  _applyPathParams(call = "", requestUrl = "", requestData = {}) {
+    return String(requestUrl || "").replace(/\{([^}]+)\}/g, (match, token) => {
+      const value = this._resolvePathParamValue(call, token, requestData);
+      if (!value) {
+        return match;
+      }
+      return encodeURIComponent(value);
+    });
+  }
+  _getCallMethod(call = "") {
+    const fallbackMethod =
+      typeof this.method === "string" && this.method.trim() !== ""
+        ? this.method.trim().toUpperCase()
+        : "POST";
+    if (!(this.appSettings && typeof this.appSettings === "object")) {
+      return fallbackMethod;
+    }
+    const methodKey = `${call}Method`;
+    const methodValue =
+      typeof this.appSettings[methodKey] === "string"
+        ? this.appSettings[methodKey].trim().toUpperCase()
+        : "";
+    if (["GET", "POST", "PUT", "PATCH", "DELETE"].includes(methodValue)) {
+      return methodValue;
+    }
+    return fallbackMethod;
+  }
+  _appendQueryParams(requestUrl = "", requestData = {}) {
+    const target = typeof requestUrl === "string" ? requestUrl.trim() : "";
+    if (!target) {
+      return "";
+    }
+    const hashIndex = target.indexOf("#");
+    const baseWithQuery =
+      hashIndex === -1 ? target : target.substring(0, hashIndex);
+    const hash = hashIndex === -1 ? "" : target.substring(hashIndex);
+    const queryIndex = baseWithQuery.indexOf("?");
+    const basePath =
+      queryIndex === -1
+        ? baseWithQuery
+        : baseWithQuery.substring(0, queryIndex);
+    const existingQuery =
+      queryIndex === -1 ? "" : baseWithQuery.substring(queryIndex + 1);
+    const searchParams = new URLSearchParams(existingQuery);
+    const payload =
+      requestData && typeof requestData === "object" && !Array.isArray(requestData)
+        ? requestData
+        : {};
+    Object.keys(payload).forEach((key) => {
+      const value = payload[key];
+      if (typeof value === "undefined" || value === null) {
+        return;
+      }
+      const normalizedValue = String(value).trim();
+      if (normalizedValue === "") {
+        return;
+      }
+      searchParams.set(key, normalizedValue);
+    });
+    const query = searchParams.toString();
+    return `${basePath}${query ? `?${query}` : ""}${hash}`;
+  }
   _getCallHeaders(call = "") {
     const headers = {};
     if (!(this.appSettings && typeof this.appSettings === "object")) {
       return headers;
     }
+    const callHeaderKey = `${call}Headers`;
+    if (this.appSettings[callHeaderKey]) {
+      this._mergeHeaderEntries(headers, this.appSettings[callHeaderKey]);
+    }
     if (call === "getUserDataPath") {
       this._mergeHeaderEntries(headers, this.appSettings.getUserDataHeaders);
+    }
+    const hasHeaderName = (name = "") =>
+      Object.keys(headers).some(
+        (headerName) =>
+          String(headerName).toLowerCase() === String(name).toLowerCase(),
+      );
+    if (
+      this._callUsesUserTokenHeader(call) &&
+      this.appSettings.userTokenHeader &&
+      this.appSettings.userToken
+    ) {
+      const userTokenHeaderName = String(this.appSettings.userTokenHeader).trim();
+      const userTokenHeaderValue = String(this.appSettings.userToken).trim();
       if (
-        Object.keys(headers).length === 0 &&
-        this.appSettings.userTokenHeader &&
-        this.appSettings.userToken
+        userTokenHeaderName !== "" &&
+        userTokenHeaderValue !== "" &&
+        !hasHeaderName(userTokenHeaderName)
       ) {
-        const headerName = String(this.appSettings.userTokenHeader).trim();
-        const headerValue = String(this.appSettings.userToken).trim();
-        if (headerName !== "" && headerValue !== "") {
-          headers[headerName] = headerValue;
+        headers[userTokenHeaderName] = userTokenHeaderValue;
+      }
+    }
+    if (this._callUsesHeaderAuth(call)) {
+      let authorizationValue = "";
+      if (
+        this.appSettings &&
+        typeof this.appSettings.jwt === "string" &&
+        this.appSettings.jwt.trim() !== ""
+      ) {
+        authorizationValue = this.appSettings.jwt.trim();
+      } else if (typeof this.jwt === "string" && this.jwt.trim() !== "") {
+        authorizationValue = this.jwt.trim();
+      }
+      if (authorizationValue !== "" && !hasHeaderName("Authorization")) {
+        if (
+          authorizationValue.indexOf("Bearer ") !== 0 &&
+          authorizationValue.indexOf("bearer ") !== 0
+        ) {
+          authorizationValue = `Bearer ${authorizationValue}`;
         }
+        headers.Authorization = authorizationValue;
       }
     }
     return headers;
@@ -293,20 +508,45 @@ export class AppHaxBackendAPI extends LitElement {
     if (this.appSettings && this.appSettings[call]) {
       const retryKey = this._getRetryKey(call, data);
       const requestData = Object.assign({}, data);
+      const callMethod = this._getCallMethod(call);
       const callHeaders = this._getCallHeaders(call);
-      var urlRequest = `${this.basePath}${this.appSettings[call]}`;
+      const callUsesHeaderAuth = this._callUsesHeaderAuth(call);
+      const callUsesUserTokenHeader = this._callUsesUserTokenHeader(call);
+      if (
+        callUsesHeaderAuth &&
+        Object.prototype.hasOwnProperty.call(requestData, "jwt")
+      ) {
+        delete requestData.jwt;
+      }
+      if (
+        callUsesUserTokenHeader &&
+        Object.prototype.hasOwnProperty.call(requestData, "token")
+      ) {
+        delete requestData.token;
+      }
+      if (
+        callUsesUserTokenHeader &&
+        Object.prototype.hasOwnProperty.call(requestData, "user_token")
+      ) {
+        delete requestData.user_token;
+      }
+      var urlRequest = this._applyPathParams(
+        call,
+        `${this.basePath}${this.appSettings[call]}`,
+        requestData,
+      );
       var options = {
-        method: this.method,
+        method: callMethod,
       };
-      if (this.jwt) {
+      if (this.jwt && !callUsesHeaderAuth) {
         requestData.jwt = this.jwt;
       }
-      if (this.token) {
+      if (this.token && !callUsesUserTokenHeader) {
         requestData.token = this.token;
       }
       // encode in search params or body of the request
-      if (this.method === "GET") {
-        urlRequest += "?" + new URLSearchParams(requestData).toString();
+      if (callMethod === "GET") {
+        urlRequest = this._appendQueryParams(urlRequest, requestData);
         if (Object.keys(callHeaders).length > 0) {
           options.headers = Object.assign({}, callHeaders);
         }
