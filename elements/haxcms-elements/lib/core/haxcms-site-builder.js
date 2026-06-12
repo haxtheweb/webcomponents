@@ -1303,16 +1303,7 @@ globalThis.HAXme = function (context = null) {
     globalThis.appSettings = {
       login: "dist/dev/login.json",
       logout: "dist/dev/logout.json",
-      saveNodePath: "dist/dev/saveNode.json",
-      saveManifestPath: "dist/dev/saveManifestPath.json",
-      saveAppearanceSettingsPath: "dist/dev/saveAppearanceSettingsPath.json",
-      saveSeoSettingsPath: "dist/dev/saveSeoSettingsPath.json",
-      saveEditorSettingsPath: "dist/dev/saveEditorSettingsPath.json",
-      createNodePath: "dist/dev/saveNode.json",
-      deleteNodePath: "dist/dev/saveNode.json",
-      saveOutlinePath: "dist/dev/saveNode.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
-      contentSearchPath: "dist/dev/contentSearchPath.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
         url: "dist/dev/appstore.json",

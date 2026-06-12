@@ -30,10 +30,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       loading: { type: Boolean, reflect: true },
       busy: { type: Boolean, reflect: true },
       errorMessage: { type: String },
-      listFilesPath: { type: String, attribute: "list-files-path" },
       method: { type: String },
-      saveFilePath: { type: String, attribute: "save-file-path" },
-      fileOperationPath: { type: String, attribute: "file-operation-path" },
       jwt: { type: String },
       siteName: { type: String, attribute: "site-name" },
       nodeId: { type: String, attribute: "node-id" },
@@ -48,9 +45,6 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.loading = false;
     this.busy = false;
     this.errorMessage = "";
-    this.listFilesPath = "";
-    this.saveFilePath = "";
-    this.fileOperationPath = "";
     this.jwt = "";
     this.siteName = "";
     this.method = "POST";
@@ -204,7 +198,7 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   updated(cp) {
     if (super.updated) { super.updated(cp); }
-    if ((cp.has("listFilesPath") || cp.has("siteName")) && this._canList) {
+    if (cp.has("siteName") && this._canList) {
       this.refreshFiles();
     }
   }

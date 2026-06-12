@@ -5204,41 +5204,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // update buttons to match since we got a state response
         setTimeout(() => {
           if (!this.shadowRoot) return;
-          /** legacy comment:
-           * update buttons since these are triggered by a mix of
-           * different backend types we can't leverage the store
-           * since a CMS needs to just hardcode these at run time
-           * for some environments
-           */
           if (globalThis.appSettings && globalThis.appSettings.backText) {
             this.backText = globalThis.appSettings.backText;
           }
-          let ary = [
-            {
-              varPath: "saveNodePath",
-              selector: "#editbutton",
-            },
-            {
-              varPath: "createNodePath",
-              selector: "#addpagebutton",
-            },
-          ];
-          // see which features should be enabled
-          ary.forEach((pair) => {
-            // If the site supports skeletons (HAXcms), do not force visibility
-            if (store.platformConfig) return;
-            else if (
-              globalThis.appSettings &&
-              globalThis.appSettings[pair.varPath] &&
-              globalThis.appSettings[pair.varPath] != null &&
-              globalThis.appSettings[pair.varPath] != "" &&
-              globalThis.appSettings[pair.varPath] != "null"
-            ) {
-              this.shadowRoot
-                .querySelector(pair.selector)
-                .removeAttribute("hidden");
-            }
-          });
         }, 100);
 
         if (activeItem && activeItem.id) {
@@ -7364,9 +7332,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       const siteEditor = store.cmsSiteEditorAvailability();
       if (siteEditor) {
-        dialog.listFilesPath = siteEditor.listFilesPath || "";
-        dialog.saveFilePath = siteEditor.saveFilePath || "";
-        dialog.fileOperationPath = siteEditor.fileOperationPath || "";
         dialog.jwt = siteEditor.jwt || toJS(store.jwt) || "";
         dialog.method = siteEditor.method || "POST";
       } else {
