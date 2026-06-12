@@ -16,6 +16,26 @@ class HAXCMSSystemSettings extends DDD {
     return "haxcms-system-settings";
   }
 
+  _hasSkeletonRenameEndpoint() {
+    const settings = this._appSettings();
+    return !!(
+      settings &&
+      Object.prototype.hasOwnProperty.call(settings, "renameSkeleton") &&
+      typeof settings.renameSkeleton === "string" &&
+      settings.renameSkeleton.trim() !== ""
+    );
+  }
+
+  _hasSkeletonDeleteEndpoint() {
+    const settings = this._appSettings();
+    return !!(
+      settings &&
+      Object.prototype.hasOwnProperty.call(settings, "deleteSkeleton") &&
+      typeof settings.deleteSkeleton === "string" &&
+      settings.deleteSkeleton.trim() !== ""
+    );
+  }
+
   static get properties() {
     return {
       activePanel: { type: String, attribute: "active-panel" },
@@ -1179,30 +1199,71 @@ class HAXCMSSystemSettings extends DDD {
     return this._schemaFileOperationEndpoint() !== "";
   }
 
-  _schemaOperationAuthPayload() {
+  _schemaOperationHeaders() {
     const api = this._backendApi();
-    const payload = {};
-    if (api && typeof api.jwt === "string" && api.jwt) {
-      payload.jwt = api.jwt;
+    const settings = this._appSettings();
+    const headers = {};
+    if (
+      settings &&
+      settings.schemaFileOperationHeaders &&
+      typeof settings.schemaFileOperationHeaders === "object"
+    ) {
+      const presetHeaderKeys = Object.keys(settings.schemaFileOperationHeaders);
+      for (let i = 0; i < presetHeaderKeys.length; i++) {
+        const key = presetHeaderKeys[i];
+        const value = settings.schemaFileOperationHeaders[key];
+        if (
+          typeof key === "string" &&
+          key.trim() !== "" &&
+          typeof value !== "undefined" &&
+          value !== null &&
+          `${value}`.trim() !== ""
+        ) {
+          headers[key] = `${value}`.trim();
+        }
+      }
     }
-    if (api && typeof api.token === "string" && api.token) {
-      payload.token = api.token;
+    const userTokenHeaderName =
+      settings && typeof settings.userTokenHeader === "string"
+        ? settings.userTokenHeader.trim()
+        : "";
+    const userTokenValue =
+      settings && typeof settings.userToken === "string"
+        ? settings.userToken.trim()
+        : "";
+    if (
+      userTokenHeaderName !== "" &&
+      userTokenValue !== "" &&
+      !Object.prototype.hasOwnProperty.call(headers, userTokenHeaderName)
+    ) {
+      headers[userTokenHeaderName] = userTokenValue;
     }
-    return payload;
+    let jwtValue = "";
+    if (api && typeof api.jwt === "string" && api.jwt.trim() !== "") {
+      jwtValue = api.jwt.trim();
+    } else if (
+      settings &&
+      typeof settings.jwt === "string" &&
+      settings.jwt.trim() !== ""
+    ) {
+      jwtValue = settings.jwt.trim();
+    }
+    if (jwtValue !== "") {
+      if (jwtValue.indexOf("Bearer ") !== 0 && jwtValue.indexOf("bearer ") !== 0) {
+        jwtValue = `Bearer ${jwtValue}`;
+      }
+      if (!Object.prototype.hasOwnProperty.call(headers, "Authorization")) {
+        headers.Authorization = jwtValue;
+      }
+    }
+    return headers;
   }
 
   _schemaUploadPayload() {
-    const payload = {
+    return {
       schema: "skeleton",
       action: "upload",
     };
-    const authPayload = this._schemaOperationAuthPayload();
-    const authKeys = Object.keys(authPayload);
-    for (let i = 0; i < authKeys.length; i++) {
-      const key = authKeys[i];
-      payload[key] = authPayload[key];
-    }
-    return payload;
   }
 
   _appendQueryParams(endpoint = "", params = {}) {
@@ -1243,10 +1304,7 @@ class HAXCMSSystemSettings extends DDD {
   }
 
   _schemaFileUploadTarget() {
-    return this._appendQueryParams(
-      this._schemaFileOperationEndpoint(),
-      this._schemaUploadPayload(),
-    );
+    return this._schemaFileOperationEndpoint();
   }
 
   async _schemaFileOperationJson(payload = {}) {
@@ -1260,12 +1318,6 @@ class HAXCMSSystemSettings extends DDD {
       };
     }
     const body = {};
-    const authPayload = this._schemaOperationAuthPayload();
-    const authKeys = Object.keys(authPayload);
-    for (let i = 0; i < authKeys.length; i++) {
-      const key = authKeys[i];
-      body[key] = authPayload[key];
-    }
     if (payload && typeof payload === "object" && !Array.isArray(payload)) {
       const keys = Object.keys(payload);
       for (let i = 0; i < keys.length; i++) {
@@ -1273,15 +1325,15 @@ class HAXCMSSystemSettings extends DDD {
         body[key] = payload[key];
       }
     }
+    const headers = this._schemaOperationHeaders();
+    headers["Content-Type"] = "application/json";
     let response = null;
     let data = null;
     try {
       response = await fetch(endpoint, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(body),
       });
       try {
@@ -1379,6 +1431,7 @@ class HAXCMSSystemSettings extends DDD {
     uploadNode.accept = ".json,application/json";
     uploadNode.withCredentials = true;
     uploadNode.target = this._schemaFileUploadTarget();
+    uploadNode.headers = this._schemaOperationHeaders();
     if (this.__skeletonUploadNode !== uploadNode) {
       uploadNode.addEventListener(
         "upload-before",
@@ -1426,6 +1479,7 @@ class HAXCMSSystemSettings extends DDD {
     const payload = this._schemaUploadPayload();
     if (this.__skeletonUploadNode) {
       this.__skeletonUploadNode.target = this._schemaFileUploadTarget();
+      this.__skeletonUploadNode.headers = this._schemaOperationHeaders();
     }
     const formData =
       e && e.detail && e.detail.formData ? e.detail.formData : null;
@@ -2980,7 +3034,10 @@ class HAXCMSSystemSettings extends DDD {
   }
 
   _canMutateSkeletonOption(option = null) {
-    return this._isUserSkeletonOption(option) && this._hasSchemaFileOperationEndpoint();
+    return (
+      this._isUserSkeletonOption(option) &&
+      (this._hasSkeletonRenameEndpoint() || this._hasSkeletonDeleteEndpoint())
+    );
   }
 
   _isSkeletonActionDisabled(option = null) {
@@ -3027,29 +3084,31 @@ class HAXCMSSystemSettings extends DDD {
     if (nextName === currentName && displayName === currentDisplayName) {
       return;
     }
+    if (!this._hasSkeletonRenameEndpoint()) {
+      this.statusMessage = "Rename endpoint is unavailable.";
+      return;
+    }
     this.skeletonActionBusy = true;
     try {
-      const response = await this._schemaFileOperationJson({
-        action: "rename",
-        schema: "skeleton",
-        name: currentName,
+      const response = await this._callAppEndpointWithData(["renameSkeleton"], {
+        skeletonName: currentName,
         newName: nextName,
         displayName: displayName,
       });
-      if (response.ok) {
-        const renamedDisplayName =
+      if (response && response.status === 200) {
+        const renamedMachineName =
           response &&
           response.data &&
-          typeof response.data.displayName === "string" &&
-          response.data.displayName.trim() !== ""
-            ? response.data.displayName.trim()
-            : displayName;
-        this.statusMessage = `Renamed skeleton to ${renamedDisplayName}.`;
+          typeof response.data.machineName === "string" &&
+          response.data.machineName.trim() !== ""
+            ? response.data.machineName.trim()
+            : nextName;
+        this.statusMessage = `Renamed skeleton to ${renamedMachineName}.`;
         await this._loadSkeletonOptions(true);
       } else {
         this.statusMessage = this._schemaOperationResponseMessage(
-          response.data,
-          response.message || "Unable to rename skeleton.",
+          response,
+          "Unable to rename skeleton.",
         );
       }
     } finally {
@@ -3076,20 +3135,22 @@ class HAXCMSSystemSettings extends DDD {
     if (!shouldDelete) {
       return;
     }
+    if (!this._hasSkeletonDeleteEndpoint()) {
+      this.statusMessage = "Delete endpoint is unavailable.";
+      return;
+    }
     this.skeletonActionBusy = true;
     try {
-      const response = await this._schemaFileOperationJson({
-        action: "delete",
-        schema: "skeleton",
-        name: machineName,
+      const response = await this._callAppEndpointWithData(["deleteSkeleton"], {
+        skeletonName: machineName,
       });
-      if (response.ok) {
+      if (response && response.status === 200) {
         this.statusMessage = `Deleted skeleton ${machineName}.`;
         await this._loadSkeletonOptions(true);
       } else {
         this.statusMessage = this._schemaOperationResponseMessage(
-          response.data,
-          response.message || "Unable to delete skeleton.",
+          response,
+          "Unable to delete skeleton.",
         );
       }
     } finally {
@@ -3105,6 +3166,8 @@ class HAXCMSSystemSettings extends DDD {
       : "settings-option-row disabled";
     const canMutate = this._canMutateSkeletonOption(option);
     const actionDisabled = this._isSkeletonActionDisabled(option);
+    const canRename = canMutate && this._hasSkeletonRenameEndpoint();
+    const canDelete = canMutate && this._hasSkeletonDeleteEndpoint();
     return html`
       <tr class="${rowClass}">
         <td class="select-col">
@@ -3127,20 +3190,28 @@ class HAXCMSSystemSettings extends DDD {
           ${canMutate
             ? html`
                 <div class="skeleton-actions">
-                  <simple-icon-button-lite
-                    class="skeleton-action-button"
-                    icon="icons:create"
-                    label="Rename skeleton ${option.machineName}"
-                    ?disabled="${actionDisabled}"
-                    @click="${(e) => this._renameSkeletonOption(option, e)}"
-                  ></simple-icon-button-lite>
-                  <simple-icon-button-lite
-                    class="skeleton-action-button"
-                    icon="delete"
-                    label="Delete skeleton ${option.machineName}"
-                    ?disabled="${actionDisabled}"
-                    @click="${(e) => this._deleteSkeletonOption(option, e)}"
-                  ></simple-icon-button-lite>
+                  ${canRename
+                    ? html`
+                        <simple-icon-button-lite
+                          class="skeleton-action-button"
+                          icon="icons:create"
+                          label="Rename skeleton ${option.machineName}"
+                          ?disabled="${actionDisabled}"
+                          @click="${(e) => this._renameSkeletonOption(option, e)}"
+                        ></simple-icon-button-lite>
+                      `
+                    : ""}
+                  ${canDelete
+                    ? html`
+                        <simple-icon-button-lite
+                          class="skeleton-action-button"
+                          icon="delete"
+                          label="Delete skeleton ${option.machineName}"
+                          ?disabled="${actionDisabled}"
+                          @click="${(e) => this._deleteSkeletonOption(option, e)}"
+                        ></simple-icon-button-lite>
+                      `
+                    : ""}
                 </div>
               `
             : html`<span class="helper">—</span>`}

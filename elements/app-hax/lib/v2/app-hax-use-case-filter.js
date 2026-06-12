@@ -2389,7 +2389,85 @@ export class AppHaxUseCaseFilter extends LitElement {
           return;
         }
 
-        const response = await fetch(safeUrl);
+        const requestOptions = {
+          credentials: "include",
+        };
+        const requestHeaders = {};
+        const appSettings =
+          globalThis &&
+          globalThis.appSettings &&
+          typeof globalThis.appSettings === "object"
+            ? globalThis.appSettings
+            : {};
+        if (
+          appSettings &&
+          appSettings.getSkeletonHeaders &&
+          typeof appSettings.getSkeletonHeaders === "object"
+        ) {
+          const headerKeys = Object.keys(appSettings.getSkeletonHeaders);
+          for (let i = 0; i < headerKeys.length; i++) {
+            const key = headerKeys[i];
+            const value = appSettings.getSkeletonHeaders[key];
+            if (
+              typeof key === "string" &&
+              key.trim() !== "" &&
+              typeof value !== "undefined" &&
+              value !== null &&
+              `${value}`.trim() !== ""
+            ) {
+              requestHeaders[key] = `${value}`.trim();
+            }
+          }
+        }
+        const userTokenHeaderName =
+          appSettings && typeof appSettings.userTokenHeader === "string"
+            ? appSettings.userTokenHeader.trim()
+            : "";
+        const userTokenValue =
+          appSettings && typeof appSettings.userToken === "string"
+            ? appSettings.userToken.trim()
+            : "";
+        if (
+          userTokenHeaderName !== "" &&
+          userTokenValue !== "" &&
+          !Object.prototype.hasOwnProperty.call(
+            requestHeaders,
+            userTokenHeaderName,
+          )
+        ) {
+          requestHeaders[userTokenHeaderName] = userTokenValue;
+        }
+        let jwtValue = "";
+        if (
+          globalThis &&
+          globalThis.AppHaxAPI &&
+          typeof globalThis.AppHaxAPI.requestAvailability === "function"
+        ) {
+          const api = globalThis.AppHaxAPI.requestAvailability();
+          if (api && typeof api.jwt === "string" && api.jwt.trim() !== "") {
+            jwtValue = api.jwt.trim();
+          }
+        }
+        if (
+          jwtValue === "" &&
+          appSettings &&
+          typeof appSettings.jwt === "string" &&
+          appSettings.jwt.trim() !== ""
+        ) {
+          jwtValue = appSettings.jwt.trim();
+        }
+        if (jwtValue !== "") {
+          if (jwtValue.indexOf("Bearer ") !== 0 && jwtValue.indexOf("bearer ") !== 0) {
+            jwtValue = `Bearer ${jwtValue}`;
+          }
+          if (!Object.prototype.hasOwnProperty.call(requestHeaders, "Authorization")) {
+            requestHeaders.Authorization = jwtValue;
+          }
+        }
+        if (Object.keys(requestHeaders).length > 0) {
+          requestOptions.headers = requestHeaders;
+        }
+        const response = await fetch(safeUrl, requestOptions);
         if (response.ok) {
           const skeletonData = await response.json();
           // Store skeleton data for use in site creation
