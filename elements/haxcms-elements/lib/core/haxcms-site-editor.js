@@ -8,8 +8,6 @@ import { autorun, toJS } from "mobx";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import "@haxtheweb/h-a-x/h-a-x.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
-import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
-import "./haxcms-site-dashboard.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
@@ -186,14 +184,6 @@ class HAXCMSSiteEditor extends LitElement {
        */
       manifest: {
         type: Object,
-      },
-      getSiteFieldsPath: {
-        type: String,
-        attribute: "save-site-fields-path",
-      },
-      getFormToken: {
-        type: String,
-        attribute: "get-form-token",
       },
     };
   }
@@ -862,12 +852,6 @@ class HAXCMSSiteEditor extends LitElement {
     );
 
     globalThis.addEventListener(
-      "haxcms-load-site-dashboard",
-      this.loadSiteDashboard.bind(this),
-      { signal: this.windowControllers.signal },
-    );
-
-    globalThis.addEventListener(
       "haxcms-load-user-data",
       this.loadUserData.bind(this),
       { signal: this.windowControllers.signal },
@@ -997,38 +981,6 @@ class HAXCMSSiteEditor extends LitElement {
         });
       },
     });
-  }
-  /**
-   * Load site fields
-   */
-
-  loadSiteDashboard(e) {
-    if (globalThis.document.body.querySelector("haxcms-site-dashboard")) {
-      this.siteDashboard = globalThis.document.body.querySelector(
-        "haxcms-site-dashboard",
-      );
-      let activeSection = "site";
-      if (e && e.detail && e.detail.section) {
-        activeSection = e.detail.section;
-      }
-      this.siteDashboard.activeSection = activeSection;
-      this.siteDashboard.headers = {
-        Authorization: `Bearer ${this.jwt}`,
-      };
-      this.siteDashboard.jwt = this.jwt;
-      this.siteDashboard.method = this.method;
-      this.siteDashboard.body = {
-        token: this.getFormToken,
-        site: {
-          name: this.manifest.metadata.site.name,
-        },
-      };
-      this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
-      // delay so propagation can happen into thing building the form
-      setTimeout(() => {
-        this.siteDashboard.generateRequest();
-      }, 0);
-    }
   }
 
   _schemaFormValueChanged(e) {

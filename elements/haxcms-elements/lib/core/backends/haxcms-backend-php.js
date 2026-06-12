@@ -272,10 +272,6 @@ class HAXCMSBackendPHP extends LitElement {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.jwt = this.jwt;
-            store.cmsSiteEditor.instance.getSiteFieldsPath =
-              globalThis.appSettings.getSiteFieldsPath;
-            store.cmsSiteEditor.instance.getFormToken =
-              globalThis.appSettings.getFormToken;
             store.cmsSiteEditor.instance.getUserDataPath =
               globalThis.appSettings.getUserDataPath;
             store.cmsSiteEditor.instance.getUserDataHeaders =
