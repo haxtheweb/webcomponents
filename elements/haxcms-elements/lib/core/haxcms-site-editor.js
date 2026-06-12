@@ -519,9 +519,32 @@ class HAXCMSSiteEditor extends LitElement {
         Accept: "application/json",
         "Content-Type": "application/json",
       };
-      if (target && target.headers && target.headers.Authorization) {
-        headers.Authorization = target.headers.Authorization;
-      } else if (this.jwt) {
+      if (target && target.headers && typeof target.headers === "object") {
+        const targetHeaderKeys = Object.keys(target.headers);
+        for (let i = 0; i < targetHeaderKeys.length; i++) {
+          const targetHeaderKey = String(targetHeaderKeys[i] || "").trim();
+          if (targetHeaderKey === "") {
+            continue;
+          }
+          const targetHeaderValue = target.headers[targetHeaderKeys[i]];
+          if (
+            typeof targetHeaderValue === "undefined" ||
+            targetHeaderValue === null
+          ) {
+            continue;
+          }
+          const normalizedHeaderValue = String(targetHeaderValue).trim();
+          if (normalizedHeaderValue === "") {
+            continue;
+          }
+          headers[targetHeaderKey] = normalizedHeaderValue;
+        }
+      }
+      if (
+        !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
+        !Object.prototype.hasOwnProperty.call(headers, "authorization") &&
+        this.jwt
+      ) {
         headers.Authorization = `Bearer ${this.jwt}`;
       }
       const response = await fetch(url, {
@@ -1020,10 +1043,35 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadUserData(e) {
-    const userHeaders =
+    let userHeaders =
       this.getUserDataHeaders && typeof this.getUserDataHeaders === "object"
-        ? this.getUserDataHeaders
+        ? { ...this.getUserDataHeaders }
         : {};
+    if (Object.keys(userHeaders).length === 0) {
+      const appSettings =
+        globalThis.appSettings && typeof globalThis.appSettings === "object"
+          ? globalThis.appSettings
+          : null;
+      if (appSettings) {
+        if (
+          appSettings.getUserDataHeaders &&
+          typeof appSettings.getUserDataHeaders === "object"
+        ) {
+          userHeaders = { ...appSettings.getUserDataHeaders };
+        }
+        if (
+          Object.keys(userHeaders).length === 0 &&
+          appSettings.userTokenHeader &&
+          appSettings.userToken
+        ) {
+          const userTokenHeaderName = String(appSettings.userTokenHeader).trim();
+          const userTokenHeaderValue = String(appSettings.userToken).trim();
+          if (userTokenHeaderName !== "" && userTokenHeaderValue !== "") {
+            userHeaders[userTokenHeaderName] = userTokenHeaderValue;
+          }
+        }
+      }
+    }
     this._requestJson({
       requestId: "getuserdata",
       payload: {

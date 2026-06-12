@@ -1377,13 +1377,53 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * generate appstore query
    */
   loadAppStoreFromRemote() {
-    const searchParams = new URLSearchParams(this.appStore.params);
-    let url = this.appStore.url;
-    if (searchParams) {
-      url += `?${searchParams}`;
+    if (!this.appStore || typeof this.appStore !== "object") {
+      return;
+    }
+    const appStoreParams =
+      this.appStore.params && typeof this.appStore.params === "object"
+        ? { ...this.appStore.params }
+        : {};
+    const appStoreHeaders =
+      this.appStore.headers && typeof this.appStore.headers === "object"
+        ? { ...this.appStore.headers }
+        : {};
+    const siteToken = appStoreParams.site_token
+      ? String(appStoreParams.site_token).trim()
+      : appStoreParams.siteToken
+        ? String(appStoreParams.siteToken).trim()
+        : "";
+    if (
+      siteToken !== "" &&
+      !Object.prototype.hasOwnProperty.call(
+        appStoreHeaders,
+        "X-HAXCMS-Site-Token",
+      ) &&
+      !Object.prototype.hasOwnProperty.call(
+        appStoreHeaders,
+        "x-haxcms-site-token",
+      )
+    ) {
+      appStoreHeaders["X-HAXCMS-Site-Token"] = siteToken;
+    }
+    delete appStoreParams.site_token;
+    delete appStoreParams.siteToken;
+    const searchParams = new URLSearchParams(appStoreParams);
+    const queryString = searchParams.toString();
+    let url =
+      this.appStore.url && typeof this.appStore.url === "string"
+        ? this.appStore.url
+        : "";
+    if (queryString !== "") {
+      const bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
+      url += `${bindingChar}${queryString}`;
+    }
+    if (url === "") {
+      return;
     }
     fetch(url, {
       method: this.method,
+      headers: appStoreHeaders,
     })
       .then((response) => {
         if (response.ok) return response.json();
