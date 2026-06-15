@@ -3,8 +3,137 @@ import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "./AppHaxStore.js";
+import {
+  configureAppHAXSystemApiRegistry,
+  waitForAppHAXSystemApiRegistryReady,
+} from "./app-hax-system-api-registry.js";
 const SUPPORTED_SITE_LICENSES = Object.keys(new licenseList("select"));
+const APP_HAX_SYSTEM_CALL_ALIASES = {
+  getUserDataPath: {
+    operationId: "sessionUserGet",
+    method: "GET",
+  },
+  createSite: {
+    operationId: "createSite",
+    method: "POST",
+  },
+  copySite: {
+    operationId: "cloneSite",
+    method: "POST",
+    pathParams: ["siteName"],
+  },
+  archiveSite: {
+    operationId: "archiveSite",
+    method: "POST",
+    pathParams: ["siteName"],
+  },
+  downloadSite: {
+    operationId: "downloadSite",
+    method: "POST",
+    pathParams: ["siteName"],
+  },
+  downloadSiteSkeleton: {
+    operationId: "downloadSiteSkeleton",
+    method: "POST",
+    pathParams: ["siteName"],
+  },
+  saveSiteAsTemplate: {
+    operationId: "saveSiteAsTemplate",
+    method: "POST",
+    pathParams: ["siteName"],
+  },
+  getSitesList: {
+    operationId: "listSites",
+    method: "GET",
+  },
+  skeletonsList: {
+    operationId: "systemSkeletonsGet",
+    method: "GET",
+    queryDefaults: {
+      includeDisabled: true,
+    },
+  },
+  getSkeleton: {
+    operationId: "systemSkeletonDetailGet",
+    method: "GET",
+    pathParams: ["skeletonName"],
+  },
+  themesList: {
+    operationId: "systemThemesGet",
+    method: "GET",
+    queryDefaults: {
+      includeDisabled: true,
+    },
+  },
+  systemStatus: {
+    operationId: "systemStatusGet",
+    method: "GET",
+  },
+  status: {
+    operationId: "systemStatusGet",
+    method: "GET",
+  },
+  systemVersion: {
+    operationId: "systemVersionGet",
+    method: "GET",
+  },
+  entities: {
+    operationId: "systemEntitiesGet",
+    method: "GET",
+  },
+  schemas: {
+    operationId: "systemSchemasGet",
+    method: "GET",
+  },
+  getApiKeys: {
+    operationId: "getApiKeys",
+    method: "GET",
+  },
+  saveApiKeys: {
+    operationId: "saveApiKeysPost",
+    method: "POST",
+  },
+  getMediaSettings: {
+    operationId: "getMediaSettings",
+    method: "GET",
+  },
+  saveMediaSettings: {
+    operationId: "saveMediaSettingsPost",
+    method: "POST",
+  },
+  systemBlocksList: {
+    operationId: "systemBlocksGet",
+    method: "GET",
+  },
+  schemaFileOperation: {
+    operationId: "schemaFileOperation",
+    method: "POST",
+  },
+  renameSkeleton: {
+    operationId: "systemSkeletonDetailPatch",
+    method: "PATCH",
+    pathParams: ["skeletonName"],
+  },
+  deleteSkeleton: {
+    operationId: "systemSkeletonDetailDelete",
+    method: "DELETE",
+    pathParams: ["skeletonName"],
+  },
+  saveEnabledSkeletons: {
+    operationId: "saveEnabledSkeletonsPatch",
+    method: "PATCH",
+  },
+  saveEnabledThemes: {
+    operationId: "saveEnabledThemesPatch",
+    method: "PATCH",
+  },
+  saveEnabledBlocks: {
+    operationId: "saveEnabledBlocksPatch",
+    method: "PATCH",
+  },
+};
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
@@ -21,8 +150,9 @@ export class AppHaxBackendAPI extends LitElement {
     this.__retryCounts = {};
     this.__maxRefreshRetries = 2;
     this.__validatedJwt = "";
+    this.__systemApiRegistryReady = Promise.resolve(false);
     this.method =
-      window && globalThis.appSettings && globalThis.appSettings.demo
+      globalThis && globalThis.appSettings && globalThis.appSettings.demo
         ? "GET"
         : "POST";
     this.basePath = "/";
@@ -45,6 +175,7 @@ export class AppHaxBackendAPI extends LitElement {
       if (this.appSettings.jwt) {
         this.jwt = this.appSettings.jwt;
       }
+      this._configureSystemApiRegistry();
     });
     autorun(() => {
       this.token = toJS(store.token);
@@ -77,6 +208,276 @@ export class AppHaxBackendAPI extends LitElement {
   _clearAllRetryCounts() {
     this.__retryCounts = {};
   }
+  _configureSystemApiRegistry() {
+    this.__systemApiRegistryReady = configureAppHAXSystemApiRegistry(
+      this.appSettings,
+      this.jwt,
+    );
+    return this.__systemApiRegistryReady;
+  }
+  _getSystemOperationAlias(call = "") {
+    if (
+      !call ||
+      !Object.prototype.hasOwnProperty.call(APP_HAX_SYSTEM_CALL_ALIASES, call)
+    ) {
+      return null;
+    }
+    return APP_HAX_SYSTEM_CALL_ALIASES[call];
+  }
+  supportsCall(call = "") {
+    return !!(this._getSystemOperationAlias(call) || this._getCallPath(call));
+  }
+  _applySystemQueryDefaults(alias = {}, payload = {}) {
+    const updatedPayload = Object.assign({}, payload);
+    const queryDefaults =
+      alias && alias.queryDefaults && typeof alias.queryDefaults === "object"
+        ? alias.queryDefaults
+        : {};
+    Object.keys(queryDefaults).forEach((key) => {
+      if (
+        !Object.prototype.hasOwnProperty.call(updatedPayload, key) ||
+        typeof updatedPayload[key] === "undefined" ||
+        updatedPayload[key] === null ||
+        `${updatedPayload[key]}`.trim() === ""
+      ) {
+        updatedPayload[key] = queryDefaults[key];
+      }
+    });
+    return updatedPayload;
+  }
+  _injectSystemPathParams(call = "", alias = {}, payload = {}, data = {}) {
+    const updatedPayload = Object.assign({}, payload);
+    const pathParams = Array.isArray(alias.pathParams) ? alias.pathParams : [];
+    for (let i = 0; i < pathParams.length; i++) {
+      const paramName = pathParams[i];
+      const value = this._resolvePathParamValue(call, paramName, data);
+      if (
+        value !== "" &&
+        !Object.prototype.hasOwnProperty.call(updatedPayload, paramName)
+      ) {
+        updatedPayload[paramName] = value;
+      }
+    }
+    return updatedPayload;
+  }
+  _buildSystemOperationPayload(call = "", alias = {}, data = {}) {
+    const requestData =
+      data && typeof data === "object" && !Array.isArray(data)
+        ? Object.assign({}, data)
+        : {};
+    let payload = Object.assign({}, requestData);
+    if (Object.prototype.hasOwnProperty.call(payload, "jwt")) {
+      delete payload.jwt;
+    }
+    if (Object.prototype.hasOwnProperty.call(payload, "token")) {
+      delete payload.token;
+    }
+    if (Object.prototype.hasOwnProperty.call(payload, "user_token")) {
+      delete payload.user_token;
+    }
+    payload = this._applySystemQueryDefaults(alias, payload);
+    payload = this._injectSystemPathParams(call, alias, payload, requestData);
+    if (alias && alias.method) {
+      payload.__method = alias.method;
+    }
+    return payload;
+  }
+  _resolveResponseStatus(response = null) {
+    if (!response || typeof response !== "object") {
+      return 0;
+    }
+    if (typeof response.status === "number") {
+      return response.status;
+    }
+    return 200;
+  }
+  _handleFailedRequestStatus(
+    responseStatus = 0,
+    retryKey = "",
+    call = "",
+    data = {},
+    save = false,
+    callback = false,
+  ) {
+    if (responseStatus === 401) {
+      this._clearRetryCount(retryKey);
+      this._clearAuthSession(true);
+      return true;
+    }
+    if (responseStatus === 404) {
+      this._clearRetryCount(retryKey);
+      this._clearAuthSession(true);
+      return true;
+    }
+    if (responseStatus === 403) {
+      const retryCount = this._incrementRetryCount(retryKey);
+      if (retryCount > this.__maxRefreshRetries) {
+        this._clearRetryCount(retryKey);
+        this._clearAuthSession(true);
+      } else {
+        globalThis.dispatchEvent(
+          new CustomEvent("jwt-login-refresh-token", {
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: {
+              element: {
+                obj: this,
+                callback: "refreshRequest",
+                params: [call, data, save, callback, retryKey],
+              },
+            },
+          }),
+        );
+      }
+      return true;
+    }
+    return false;
+  }
+  _finalizeCallResponse(call, response = {}, save = false, callback = false) {
+    if (save) {
+      this.lastResponse[call] = response;
+    }
+    if (callback) {
+      callback();
+    }
+    return response;
+  }
+  async _makeSystemOperationCall(
+    call = "",
+    data = {},
+    retryKey = "",
+    save = false,
+    callback = false,
+  ) {
+    const alias = this._getSystemOperationAlias(call);
+    if (!alias || !alias.operationId) {
+      return null;
+    }
+    await this._configureSystemApiRegistry();
+    await waitForAppHAXSystemApiRegistryReady();
+    const operationName = `@system/${alias.operationId}`;
+    if (!MicroFrontendRegistry.has(operationName)) {
+      return null;
+    }
+    const payload = this._buildSystemOperationPayload(call, alias, data);
+    let response = null;
+    try {
+      response = await MicroFrontendRegistry.call(operationName, payload);
+    } catch (e) {
+      return null;
+    }
+    if (!response || typeof response !== "object") {
+      return {};
+    }
+    const responseStatus = this._resolveResponseStatus(response);
+    if (responseStatus === 404 && this._getCallPath(call)) {
+      return null;
+    }
+    if (
+      this._handleFailedRequestStatus(
+        responseStatus,
+        retryKey,
+        call,
+        data,
+        save,
+        callback,
+      )
+    ) {
+      return {};
+    }
+    if (responseStatus > 0 && responseStatus < 400) {
+      this._clearRetryCount(retryKey);
+    }
+    return response;
+  }
+  async _makeLegacyCall(
+    call = "",
+    data = {},
+    retryKey = "",
+    save = false,
+    callback = false,
+  ) {
+    const requestData = Object.assign({}, data);
+    const callMethod = this._getCallMethod(call);
+    const callHeaders = this._getCallHeaders(call);
+    const callUsesHeaderAuth = this._callUsesHeaderAuth(call);
+    const callUsesUserTokenHeader = this._callUsesUserTokenHeader(call);
+    if (
+      callUsesHeaderAuth &&
+      Object.prototype.hasOwnProperty.call(requestData, "jwt")
+    ) {
+      delete requestData.jwt;
+    }
+    if (
+      callUsesUserTokenHeader &&
+      Object.prototype.hasOwnProperty.call(requestData, "token")
+    ) {
+      delete requestData.token;
+    }
+    if (
+      callUsesUserTokenHeader &&
+      Object.prototype.hasOwnProperty.call(requestData, "user_token")
+    ) {
+      delete requestData.user_token;
+    }
+    let urlRequest = this._applyPathParams(
+      call,
+      `${this.basePath}${this.appSettings[call]}`,
+      requestData,
+    );
+    const options = {
+      method: callMethod,
+    };
+    if (this.jwt && !callUsesHeaderAuth) {
+      requestData.jwt = this.jwt;
+    }
+    if (this.token && !callUsesUserTokenHeader) {
+      requestData.token = this.token;
+    }
+    if (callMethod === "GET") {
+      urlRequest = this._appendQueryParams(urlRequest, requestData);
+      if (Object.keys(callHeaders).length > 0) {
+        options.headers = Object.assign({}, callHeaders);
+      }
+    } else {
+      options.headers = {
+        "Content-Type": "application/json",
+      };
+      if (Object.keys(callHeaders).length > 0) {
+        options.headers = Object.assign(options.headers, callHeaders);
+      }
+      options.body = JSON.stringify(requestData);
+    }
+    const response = await fetch(`${urlRequest}`, options)
+      .then(async (response) => {
+        if (response.ok) {
+          this._clearRetryCount(retryKey);
+          try {
+            return await response.json();
+          } catch (e) {
+            return {};
+          }
+        }
+        if (
+          this._handleFailedRequestStatus(
+            response.status,
+            retryKey,
+            call,
+            data,
+            save,
+            callback,
+          )
+        ) {
+          return {};
+        }
+        return {};
+      })
+      .catch(() => {
+        return {};
+      });
+    return response;
+  }
   _triggerLogout() {
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
@@ -97,6 +498,7 @@ export class AppHaxBackendAPI extends LitElement {
       name: "",
     };
     this._clearAllRetryCounts();
+    this._configureSystemApiRegistry();
     if (triggerLogout) {
       this._triggerLogout();
     }
@@ -492,6 +894,7 @@ export class AppHaxBackendAPI extends LitElement {
   // event meaning we either got or removed the jwt
   async jwtChanged(e) {
     this.jwt = e.detail.value;
+    this._configureSystemApiRegistry();
     if (!this._hasValidJWT(this.jwt)) {
       this._clearAuthSession(false);
       return;
@@ -505,108 +908,32 @@ export class AppHaxBackendAPI extends LitElement {
   }
 
   async makeCall(call, data = {}, save = false, callback = false) {
-    if (this.appSettings && this.appSettings[call]) {
-      const retryKey = this._getRetryKey(call, data);
-      const requestData = Object.assign({}, data);
-      const callMethod = this._getCallMethod(call);
-      const callHeaders = this._getCallHeaders(call);
-      const callUsesHeaderAuth = this._callUsesHeaderAuth(call);
-      const callUsesUserTokenHeader = this._callUsesUserTokenHeader(call);
-      if (
-        callUsesHeaderAuth &&
-        Object.prototype.hasOwnProperty.call(requestData, "jwt")
-      ) {
-        delete requestData.jwt;
-      }
-      if (
-        callUsesUserTokenHeader &&
-        Object.prototype.hasOwnProperty.call(requestData, "token")
-      ) {
-        delete requestData.token;
-      }
-      if (
-        callUsesUserTokenHeader &&
-        Object.prototype.hasOwnProperty.call(requestData, "user_token")
-      ) {
-        delete requestData.user_token;
-      }
-      var urlRequest = this._applyPathParams(
-        call,
-        `${this.basePath}${this.appSettings[call]}`,
-        requestData,
-      );
-      var options = {
-        method: callMethod,
-      };
-      if (this.jwt && !callUsesHeaderAuth) {
-        requestData.jwt = this.jwt;
-      }
-      if (this.token && !callUsesUserTokenHeader) {
-        requestData.token = this.token;
-      }
-      // encode in search params or body of the request
-      if (callMethod === "GET") {
-        urlRequest = this._appendQueryParams(urlRequest, requestData);
-        if (Object.keys(callHeaders).length > 0) {
-          options.headers = Object.assign({}, callHeaders);
-        }
-      } else {
-        options.headers = {
-          "Content-Type": "application/json",
-        };
-        if (Object.keys(callHeaders).length > 0) {
-          options.headers = Object.assign(options.headers, callHeaders);
-        }
-        options.body = JSON.stringify(requestData);
-      }
-      const response = await fetch(`${urlRequest}`, options).then(
-        (response) => {
-          if (response.ok) {
-            this._clearRetryCount(retryKey);
-            return response.json();
-          } else if (response.status === 401) {
-            this._clearRetryCount(retryKey);
-            this._clearAuthSession(true);
-          }
-          // we got a miss, logout cause something is wrong
-          else if (response.status === 404) {
-            this._clearRetryCount(retryKey);
-            this._clearAuthSession(true);
-          } else if (response.status === 403) {
-            const retryCount = this._incrementRetryCount(retryKey);
-            if (retryCount > this.__maxRefreshRetries) {
-              this._clearRetryCount(retryKey);
-              this._clearAuthSession(true);
-            } else {
-              globalThis.dispatchEvent(
-                new CustomEvent("jwt-login-refresh-token", {
-                  composed: true,
-                  bubbles: true,
-                  cancelable: false,
-                  detail: {
-                    element: {
-                      obj: this,
-                      callback: "refreshRequest",
-                      params: [call, data, save, callback, retryKey],
-                    },
-                  },
-                }),
-              );
-            }
-          }
-          return {};
-        },
-      );
-      // ability to save the output if this is being done as a bg task
-      // that way we can get access to the result later on
-      if (save) {
-        this.lastResponse[call] = response;
-      }
-      if (callback) {
-        callback();
-      }
-      return response;
+    const requestData =
+      data && typeof data === "object" && !Array.isArray(data)
+        ? Object.assign({}, data)
+        : {};
+    const retryKey = this._getRetryKey(call, requestData);
+    const systemResponse = await this._makeSystemOperationCall(
+      call,
+      requestData,
+      retryKey,
+      save,
+      callback,
+    );
+    if (systemResponse !== null) {
+      return this._finalizeCallResponse(call, systemResponse, save, callback);
     }
+    if (!this._getCallPath(call)) {
+      return this._finalizeCallResponse(call, {}, save, callback);
+    }
+    const legacyResponse = await this._makeLegacyCall(
+      call,
+      requestData,
+      retryKey,
+      save,
+      callback,
+    );
+    return this._finalizeCallResponse(call, legacyResponse, save, callback);
   }
 
   /**
@@ -619,6 +946,7 @@ export class AppHaxBackendAPI extends LitElement {
     // this helps avoid any possible event timing issue
     if (jwt) {
       this.jwt = jwt;
+      this._configureSystemApiRegistry();
       this.makeCall(call, data, save, callback);
     } else if (retryKey) {
       this._clearRetryCount(retryKey);
@@ -630,6 +958,7 @@ export class AppHaxBackendAPI extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._configureSystemApiRegistry();
     // set store refernece to this singleton
     store.AppHaxAPI = this;
     // site creation roped into the promise list
@@ -728,9 +1057,13 @@ export class AppHaxBackendAPI extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "jwt") {
         store.jwt = this[propName];
+        this._configureSystemApiRegistry();
       }
       if (propName === "token") {
         store.token = this[propName];
+      }
+      if (propName === "appSettings") {
+        this._configureSystemApiRegistry();
       }
     });
   }
