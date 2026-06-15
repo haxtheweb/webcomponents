@@ -1808,6 +1808,44 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
+  _normalizeThemeSource(rawThemes = {}) {
+    if (Array.isArray(rawThemes)) {
+      const normalizedThemes = {};
+      for (let i = 0; i < rawThemes.length; i++) {
+        const theme = rawThemes[i];
+        if (!theme || typeof theme !== "object") {
+          continue;
+        }
+        const machineName =
+          typeof theme.machineName === "string"
+            ? theme.machineName.trim()
+            : "";
+        const element =
+          typeof theme.element === "string" ? theme.element.trim() : "";
+        const key = machineName || element;
+        if (!key) {
+          continue;
+        }
+        normalizedThemes[key] = {
+          ...theme,
+          machineName: machineName || key,
+          element: element || key,
+          thumbnail:
+            typeof theme.thumbnail === "string" && theme.thumbnail.trim() !== ""
+              ? theme.thumbnail
+              : typeof theme.screenshot === "string"
+                ? theme.screenshot
+                : "",
+        };
+      }
+      return normalizedThemes;
+    }
+    if (rawThemes && typeof rawThemes === "object") {
+      return rawThemes;
+    }
+    return {};
+  }
+
   updateSkeletonResults() {
     this.loading = true;
     this.errorMessage = "";
@@ -1826,49 +1864,23 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Reset filters for a clean rebuild
     this.allFilters = new Set();
 
-    // Build promises: backend call for skeletons, appSettings themes or fallback fetch
+    // Build promises: backend calls for skeletons and themes.
     const skeletonsPromise =
       api && typeof api.makeCall === "function"
         ? api.makeCall("skeletonsList")
         : Promise.reject(new Error("API not available"));
-
-    // Prefer themes from appSettings (injected by backend); fallback to static file
-    let themesPromise;
-    if (
-      store.appSettings &&
-      store.appSettings.themes &&
-      Object.keys(store.appSettings.themes).length > 0
-    ) {
-      // Use themes from appSettings if available and not empty
-      themesPromise = Promise.resolve(store.appSettings.themes);
-    } else {
-      // Fallback to loading themes.json from static file
-      const themesUrl = new URL(
-        "../../../haxcms-elements/lib/themes.json",
-        import.meta.url,
-      ).href;
-      themesPromise = fetch(themesUrl)
-        .then((response) => {
-          if (!response.ok)
-            throw new Error(`Failed Themes (${response.status})`);
-          return response.json();
-        })
-        .catch((error) => {
-          console.warn(
-            "Failed to load themes.json, using minimal fallback:",
-            error,
-          );
-          // Return minimal fallback with just clean-one theme
-          return {
-            "clean-one": {
-              element: "clean-one",
-              name: "Clean One",
-              description: "A clean, simple theme",
-              category: ["Blank"],
-              hidden: false,
-            },
-          };
-        });
+    let themesPromise = Promise.resolve({
+      status: 200,
+      data: {},
+    });
+    const supportsThemesList =
+      api && typeof api.supportsCall === "function"
+        ? api.supportsCall("themesList")
+        : api && typeof api.makeCall === "function";
+    if (supportsThemesList && api && typeof api.makeCall === "function") {
+      themesPromise = api.makeCall("themesList", {
+        includeDisabled: true,
+      });
     }
 
     Promise.allSettled([skeletonsPromise, themesPromise])
@@ -1987,7 +1999,16 @@ export class AppHaxUseCaseFilter extends LitElement {
         );
 
         // Process themes data into blank use cases (filter out hidden themes)
-        const themeSource = themesData.value || {};
+        const themePayload =
+          themesData &&
+          themesData.value &&
+          typeof themesData.value === "object" &&
+          Object.prototype.hasOwnProperty.call(themesData.value, "data")
+            ? themesData.value.data
+            : themesData && Object.prototype.hasOwnProperty.call(themesData, "value")
+              ? themesData.value
+              : {};
+        const themeSource = this._normalizeThemeSource(themePayload);
         const themeItemsAll = Object.entries(themeSource)
           .map(([themeMachineName, theme]) => {
             let tags = [];

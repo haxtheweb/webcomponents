@@ -101,7 +101,6 @@ function getState() {
         jwt: '',
         siteToken: '',
         userToken: '',
-        appStoreToken: '',
       },
       securitySchemes: {},
       systemApiBasePath: '',
@@ -255,12 +254,6 @@ function resolveToken(schemeName = '', scheme = {}, auth = {}) {
     return cleanString(auth.jwt || '')
   }
   if (
-    normalizedSchemeName.indexOf('appstore') !== -1 ||
-    normalizedSchemeHeader === 'appstore_token'
-  ) {
-    return cleanString(auth.appStoreToken || '')
-  }
-  if (
     normalizedSchemeName.indexOf('site') !== -1 ||
     normalizedSchemeHeader === 'site_token'
   ) {
@@ -283,12 +276,6 @@ function resolveQueryTokenHeaderName(schemeName = '', scheme = {}) {
   }
   if (tokenKey === 'site_token' || normalizedSchemeName.indexOf('site') !== -1) {
     return 'X-HAXCMS-Site-Token'
-  }
-  if (
-    tokenKey === 'appstore_token' ||
-    normalizedSchemeName.indexOf('appstore') !== -1
-  ) {
-    return 'X-HAXCMS-Appstore-Token'
   }
   return ''
 }
@@ -411,21 +398,6 @@ function updateAuth(state, appSettings = {}, jwtValue, hasJwtOverride) {
   }
   if (Object.prototype.hasOwnProperty.call(appSettings, 'userToken')) {
     state.auth.userToken = cleanString(appSettings.userToken || '')
-  }
-  if (Object.prototype.hasOwnProperty.call(appSettings, 'appStoreToken')) {
-    state.auth.appStoreToken = cleanString(appSettings.appStoreToken || '')
-    return
-  }
-  const appStoreToken =
-    appSettings &&
-    appSettings.appStore &&
-    appSettings.appStore.params &&
-    typeof appSettings.appStore.params === 'object' &&
-    appSettings.appStore.params.appstore_token
-      ? cleanString(appSettings.appStore.params.appstore_token)
-      : ''
-  if (appStoreToken !== '') {
-    state.auth.appStoreToken = appStoreToken
   }
 }
 

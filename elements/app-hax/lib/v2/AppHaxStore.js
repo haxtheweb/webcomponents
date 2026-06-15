@@ -179,7 +179,7 @@ class Store {
       user: observable, // user object like name after login
       // user preferences
       searchTerm: observable, // current search term for filtering own list of sites
-      themesData: observable, // themes.json data for theme thumbnails
+      themesData: observable, // endpoint-backed theme data for thumbnails
       darkMode: observable, // dark mode pref
       responsiveSize: observable, // viewport size bucket from responsive utility
       soundStatus: observable, // toggle sounds on and off
@@ -306,21 +306,74 @@ class Store {
   }
 
   // load themes data for theme thumbnails
-  async loadThemesData() {
-    if (Object.keys(this.themesData).length === 0) {
+  async loadThemesData(force = false) {
+    if (!force && Object.keys(this.themesData).length > 0) {
+      return;
+    }
+    const api =
+      this.AppHaxAPI && typeof this.AppHaxAPI.makeCall === "function"
+        ? this.AppHaxAPI
+        : null;
+    const canLoadThemes =
+      api &&
+      (typeof api.supportsCall !== "function" || api.supportsCall("themesList"));
+    if (canLoadThemes) {
       try {
-        const themesUrl = new URL(
-          "../../../haxcms-elements/lib/themes.json",
-          import.meta.url,
-        ).href;
-        const response = await fetch(themesUrl);
-        if (response.ok) {
-          this.themesData = await response.json();
+        const response = await api.makeCall("themesList", {
+          includeDisabled: true,
+        });
+        const payload =
+          response && response.data && Array.isArray(response.data)
+            ? response.data
+            : [];
+        if (payload.length > 0) {
+          const normalizedThemes = {};
+          for (let i = 0; i < payload.length; i++) {
+            const theme = payload[i];
+            if (!theme || typeof theme !== "object") {
+              continue;
+            }
+            const machineName =
+              typeof theme.machineName === "string"
+                ? theme.machineName.trim()
+                : "";
+            const element =
+              typeof theme.element === "string" ? theme.element.trim() : "";
+            const key = element || machineName;
+            if (!key) {
+              continue;
+            }
+            const normalizedTheme = {
+              ...theme,
+              element: element || key,
+              machineName: machineName || key,
+              thumbnail:
+                typeof theme.thumbnail === "string" && theme.thumbnail.trim() !== ""
+                  ? theme.thumbnail
+                  : typeof theme.screenshot === "string"
+                    ? theme.screenshot
+                    : "",
+            };
+            if (!normalizedThemes[key]) {
+              normalizedThemes[key] = normalizedTheme;
+            }
+            if (machineName && !normalizedThemes[machineName]) {
+              normalizedThemes[machineName] = normalizedTheme;
+            }
+            if (element && !normalizedThemes[element]) {
+              normalizedThemes[element] = normalizedTheme;
+            }
+          }
+          if (Object.keys(normalizedThemes).length > 0) {
+            this.themesData = normalizedThemes;
+            return;
+          }
         }
       } catch (error) {
-        console.warn("Failed to load themes data:", error);
+        console.warn("Failed to load themes data from endpoint:", error);
       }
     }
+    this.themesData = {};
   }
 
   // centralize toast messages

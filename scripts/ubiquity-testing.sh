@@ -16,36 +16,36 @@ cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/hax11ty/app/unbundled-w
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/wc-registry.json
 
 # haxcms-php
-# normalize build build.js build-haxcms.js wc-registry.json and VERSION.txt
+# normalize build build.js build-haxcms.js wc-registry.json and .version
 rm -rf ~/haxtheweb/haxcms-php/build
 cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/haxcms-php/build
 
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-php/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-php/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxcms-php/wc-registry.json
-cp ~/haxtheweb/webcomponents/VERSION.txt ~/haxtheweb/haxcms-php/VERSION.txt
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxcms-php/.version
 
 # haxcms-nodejs
-# normalize build build.js build-haxcms.js wc-registry.json and VERSION.txt
+# normalize build build.js build-haxcms.js wc-registry.json and .version
 rm -rf ~/haxtheweb/haxcms-nodejs/src/public/build
 cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/haxcms-nodejs/src/public/build
 
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-nodejs/src/public/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-nodejs/src/public/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxcms-nodejs/src/public/wc-registry.json
-cp ~/haxtheweb/webcomponents/VERSION.txt ~/haxtheweb/haxcms-nodejs/src/public/VERSION.txt
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxcms-nodejs/src/.version
 
 ## build and build-haxcms live in site which gets boilerplate stamped
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/build-haxcms.js
 
 # haxsite
-# normalize build.js build-haxcms.js wc-registry.json and VERSION.txt
+# normalize build.js build-haxcms.js wc-registry.json and .version
 
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxsite/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxsite/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxsite/wc-registry.json
-cp ~/haxtheweb/webcomponents/VERSION.txt ~/haxtheweb/haxsite/VERSION.txt
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxsite/.version
 
 # psucdn
 # normalize build build.js build-haxcms.js wc-registry.json

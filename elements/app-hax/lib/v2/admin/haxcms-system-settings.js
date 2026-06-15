@@ -10,6 +10,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
 
 class HAXCMSSystemSettings extends DDD {
@@ -1185,42 +1186,20 @@ class HAXCMSSystemSettings extends DDD {
     }
     return operation.endpoint.trim();
   }
+  async _ensureSystemRegistryReady() {
+    const api = this._backendApi();
+    if (api && typeof api._configureSystemApiRegistry === "function") {
+      try {
+        await api._configureSystemApiRegistry();
+      } catch (e) {}
+    }
+    try {
+      await waitForAppHAXSystemApiRegistryReady();
+    } catch (e) {}
+  }
 
   _schemaFileOperationEndpoint() {
-    const systemEndpoint = this._getSystemOperationEndpoint("schemaFileOperation");
-    if (systemEndpoint) {
-      return systemEndpoint;
-    }
-    const settings = this._appSettings();
-    if (
-      !settings ||
-      !Object.prototype.hasOwnProperty.call(settings, "schemaFileOperation")
-    ) {
-      return "";
-    }
-    const endpoint =
-      typeof settings.schemaFileOperation === "string"
-        ? settings.schemaFileOperation.trim()
-        : "";
-    if (!endpoint) {
-      return "";
-    }
-    if (
-      endpoint.indexOf("http://") === 0 ||
-      endpoint.indexOf("https://") === 0 ||
-      endpoint.indexOf("/") === 0
-    ) {
-      return endpoint;
-    }
-    const api = this._backendApi();
-    const basePath =
-      api && typeof api.basePath === "string" && api.basePath
-        ? api.basePath
-        : "/";
-    if (basePath.slice(-1) === "/" || endpoint.charAt(0) === "/") {
-      return `${basePath}${endpoint}`;
-    }
-    return `${basePath}/${endpoint}`;
+    return this._getSystemOperationEndpoint("schemaFileOperation");
   }
 
   _hasSchemaFileOperationEndpoint() {
@@ -2516,6 +2495,7 @@ class HAXCMSSystemSettings extends DDD {
     }
     this.loadingSkeletons = true;
     this.statusError = "";
+    await this._ensureSystemRegistryReady();
     let options = [];
     const response = await this._callAppEndpointWithData(
       ["skeletonsList"],
@@ -2551,7 +2531,7 @@ class HAXCMSSystemSettings extends DDD {
     }
     this.loadingThemes = true;
     this.statusError = "";
-    const settings = this._appSettings();
+    await this._ensureSystemRegistryReady();
     let options = [];
     const endpointResponse = await this._callAppEndpointWithData(
       ["themesList"],
@@ -2561,9 +2541,6 @@ class HAXCMSSystemSettings extends DDD {
     );
     if (endpointResponse && endpointResponse.data) {
       options = this._normalizeThemeOptions(endpointResponse.data);
-    }
-    if (options.length === 0 && settings && settings.themes) {
-      options = this._normalizeThemeOptions(settings.themes);
     }
     if (options.length === 0) {
       options = this._normalizeThemeOptions({

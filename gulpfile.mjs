@@ -291,8 +291,8 @@ import packageVm from "./node_modules/@haxtheweb/haxcms-elements/package.json" w
 // mirror version numbers
 gulp.task(
   "version-match", async () => {
-    fs.writeFileSync('./VERSION.txt', packageVm.version , {encoding:'utf8',flag:'w'});
-    console.log(`${packageVm.version} written to VERSION.txt`);
+    fs.writeFileSync('./.version', packageVm.version , {encoding:'utf8',flag:'w'});
+    console.log(`${packageVm.version} written to .version`);
   }
 );
 gulp.task(

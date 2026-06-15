@@ -1538,24 +1538,25 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // App is ready and the user is Logged in
     autorun(async () => {
-      const appSettings = toJS(store.appSettings);
-      const hasSiteListEndpoint =
-        appSettings &&
-        typeof appSettings === "object" &&
-        typeof appSettings.getSitesList === "string" &&
-        appSettings.getSitesList !== "";
+      const api =
+        store.AppHaxAPI && typeof store.AppHaxAPI.makeCall === "function"
+          ? store.AppHaxAPI
+          : AppHaxAPI;
+      const canListSites =
+        api &&
+        typeof api.makeCall === "function" &&
+        (typeof api.supportsCall !== "function" ||
+          api.supportsCall("getSitesList"));
       if (
         toJS(store.appReady) &&
-        store.AppHaxAPI &&
+        canListSites &&
         toJS(store.isLoggedIn) &&
-        appSettings &&
-        hasSiteListEndpoint &&
         toJS(store.refreshSiteList)
       ) {
         // Need this for the auto run when testing new user
         // if we get new data source, trigger a rebuild of the site list
         try {
-          const results = await AppHaxAPI.makeCall("getSitesList");
+          const results = await api.makeCall("getSitesList");
           if (results && results.data) {
             store.manifest = results.data;
           }
