@@ -56,17 +56,21 @@ class HAXCMSSystemAllowedBlocks extends HAXCMSAllowedBlocksUI {
     }
     return null;
   }
+  _supportsCall(callKey = "") {
+    const normalizedCallKey = `${callKey || ""}`.trim();
+    if (!normalizedCallKey) {
+      return false;
+    }
+    const api = this._backendApi();
+    return !!(
+      api &&
+      typeof api.supportsCall === "function" &&
+      api.supportsCall(normalizedCallKey)
+    );
+  }
 
   _hasSystemBlocksEndpoint() {
-    const settings =
-      globalThis && globalThis.appSettings && typeof globalThis.appSettings === "object"
-        ? globalThis.appSettings
-        : null;
-    return !!(
-      settings &&
-      typeof settings.systemBlocksList === "string" &&
-      settings.systemBlocksList.trim() !== ""
-    );
+    return this._supportsCall("systemBlocksList");
   }
 
   async _ensureAutoloader() {

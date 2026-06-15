@@ -9,31 +9,32 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "./haxcms-system-allowed-blocks.js";
 
 class HAXCMSSystemSettings extends DDD {
   static get tag() {
     return "haxcms-system-settings";
   }
-
-  _hasSkeletonRenameEndpoint() {
-    const settings = this._appSettings();
+  _supportsCall(callKey = "") {
+    const normalizedCallKey = `${callKey || ""}`.trim();
+    if (!normalizedCallKey) {
+      return false;
+    }
+    const api = this._backendApi();
     return !!(
-      settings &&
-      Object.prototype.hasOwnProperty.call(settings, "renameSkeleton") &&
-      typeof settings.renameSkeleton === "string" &&
-      settings.renameSkeleton.trim() !== ""
+      api &&
+      typeof api.supportsCall === "function" &&
+      api.supportsCall(normalizedCallKey)
     );
   }
 
+  _hasSkeletonRenameEndpoint() {
+    return this._supportsCall("renameSkeleton");
+  }
+
   _hasSkeletonDeleteEndpoint() {
-    const settings = this._appSettings();
-    return !!(
-      settings &&
-      Object.prototype.hasOwnProperty.call(settings, "deleteSkeleton") &&
-      typeof settings.deleteSkeleton === "string" &&
-      settings.deleteSkeleton.trim() !== ""
-    );
+    return this._supportsCall("deleteSkeleton");
   }
 
   static get properties() {
@@ -1161,8 +1162,35 @@ class HAXCMSSystemSettings extends DDD {
     }
     return null;
   }
+  _getSystemOperationEndpoint(operationId = "") {
+    const normalizedOperationId = `${operationId || ""}`.trim();
+    if (!normalizedOperationId) {
+      return "";
+    }
+    const operationName = `@system/${normalizedOperationId}`;
+    const api = this._backendApi();
+    if (api && typeof api._configureSystemApiRegistry === "function") {
+      api._configureSystemApiRegistry();
+    }
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has(operationName)
+    ) {
+      return "";
+    }
+    const operation = MicroFrontendRegistry.get(operationName, true);
+    if (!operation || typeof operation.endpoint !== "string") {
+      return "";
+    }
+    return operation.endpoint.trim();
+  }
 
   _schemaFileOperationEndpoint() {
+    const systemEndpoint = this._getSystemOperationEndpoint("schemaFileOperation");
+    if (systemEndpoint) {
+      return systemEndpoint;
+    }
     const settings = this._appSettings();
     if (
       !settings ||
@@ -1203,26 +1231,6 @@ class HAXCMSSystemSettings extends DDD {
     const api = this._backendApi();
     const settings = this._appSettings();
     const headers = {};
-    if (
-      settings &&
-      settings.schemaFileOperationHeaders &&
-      typeof settings.schemaFileOperationHeaders === "object"
-    ) {
-      const presetHeaderKeys = Object.keys(settings.schemaFileOperationHeaders);
-      for (let i = 0; i < presetHeaderKeys.length; i++) {
-        const key = presetHeaderKeys[i];
-        const value = settings.schemaFileOperationHeaders[key];
-        if (
-          typeof key === "string" &&
-          key.trim() !== "" &&
-          typeof value !== "undefined" &&
-          value !== null &&
-          `${value}`.trim() !== ""
-        ) {
-          headers[key] = `${value}`.trim();
-        }
-      }
-    }
     const userTokenHeaderName =
       settings && typeof settings.userTokenHeader === "string"
         ? settings.userTokenHeader.trim()
@@ -1880,15 +1888,9 @@ class HAXCMSSystemSettings extends DDD {
     if (!api || typeof api.makeCall !== "function") {
       return null;
     }
-    const settings = this._appSettings();
     for (let i = 0; i < callKeys.length; i++) {
       const callKey = callKeys[i];
-      if (
-        settings &&
-        Object.prototype.hasOwnProperty.call(settings, callKey) &&
-        typeof settings[callKey] === "string" &&
-        settings[callKey].trim() !== ""
-      ) {
+      if (this._supportsCall(callKey)) {
         try {
           const response = await api.makeCall(callKey);
           if (response) {
@@ -1910,17 +1912,11 @@ class HAXCMSSystemSettings extends DDD {
     if (!api || typeof api.makeCall !== "function") {
       return null;
     }
-    const settings = this._appSettings();
     const payload =
       data && typeof data === "object" && !Array.isArray(data) ? data : {};
     for (let i = 0; i < callKeys.length; i++) {
       const callKey = callKeys[i];
-      if (
-        settings &&
-        Object.prototype.hasOwnProperty.call(settings, callKey) &&
-        typeof settings[callKey] === "string" &&
-        settings[callKey].trim() !== ""
-      ) {
+      if (this._supportsCall(callKey)) {
         try {
           const response = await api.makeCall(callKey, payload);
           if (response) {
@@ -2786,11 +2782,7 @@ class HAXCMSSystemSettings extends DDD {
       summary: this._cloneData(fallbackPayload.summary),
       rows: this._cloneData(fallbackPayload.rows),
     };
-    const response = await this._callAppEndpoint([
-      "systemStatus",
-      "status",
-      "connectionSettings",
-    ]);
+    const response = await this._callAppEndpoint(["systemStatus", "status"]);
     if (response && response.data && typeof response.data === "object") {
       const source = response.data;
       const summary = this._normalizeStatusSummary(

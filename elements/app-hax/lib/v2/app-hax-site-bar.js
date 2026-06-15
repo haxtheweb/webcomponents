@@ -168,12 +168,16 @@ export class AppHaxSiteBars extends SimpleColors {
   }
 
   async downloadSiteSkeleton(site) {
+    const api = store && store.AppHaxAPI ? store.AppHaxAPI : null;
+    const supportsDownloadSkeleton =
+      api && typeof api.supportsCall === "function"
+        ? api.supportsCall("downloadSiteSkeleton")
+        : false;
     if (
       !store ||
-      !store.appSettings ||
-      !store.appSettings.downloadSiteSkeleton ||
-      !store.AppHaxAPI ||
-      !store.AppHaxAPI.makeCall
+      !api ||
+      typeof api.makeCall !== "function" ||
+      !supportsDownloadSkeleton
     ) {
       store.toast("Download skeleton endpoint is not configured.", 3000, {
         hat: "random",
@@ -191,7 +195,7 @@ export class AppHaxSiteBars extends SimpleColors {
       return;
     }
     try {
-      const response = await store.AppHaxAPI.makeCall(
+      const response = await api.makeCall(
         "downloadSiteSkeleton",
         {
           site: {
@@ -229,12 +233,16 @@ export class AppHaxSiteBars extends SimpleColors {
   }
 
   async saveSiteAsTemplate(site) {
+    const api = store && store.AppHaxAPI ? store.AppHaxAPI : null;
+    const supportsSaveTemplate =
+      api && typeof api.supportsCall === "function"
+        ? api.supportsCall("saveSiteAsTemplate")
+        : false;
     if (
       !store ||
-      !store.appSettings ||
-      !store.appSettings.saveSiteAsTemplate ||
-      !store.AppHaxAPI ||
-      !store.AppHaxAPI.makeCall
+      !api ||
+      typeof api.makeCall !== "function" ||
+      !supportsSaveTemplate
     ) {
       store.toast("Save template endpoint is not configured.", 3000, {
         hat: "random",
@@ -252,7 +260,7 @@ export class AppHaxSiteBars extends SimpleColors {
       return;
     }
     try {
-      const response = await store.AppHaxAPI.makeCall(
+      const response = await api.makeCall(
         "saveSiteAsTemplate",
         {
           site: {
@@ -692,7 +700,10 @@ export class AppHaxSiteBars extends SimpleColors {
                   label="Archive"
                   @click=${this.archiveSite}
                 ></simple-toolbar-button>
-                ${store.appSettings && store.appSettings.haxiamAddUserAccess
+                ${store &&
+                store.AppHaxAPI &&
+                typeof store.AppHaxAPI.supportsCall === "function" &&
+                store.AppHaxAPI.supportsCall("haxiamAddUserAccess")
                   ? html`
                       <simple-toolbar-button
                         icon="account-circle"

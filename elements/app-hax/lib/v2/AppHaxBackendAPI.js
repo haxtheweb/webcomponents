@@ -225,7 +225,7 @@ export class AppHaxBackendAPI extends LitElement {
     return APP_HAX_SYSTEM_CALL_ALIASES[call];
   }
   supportsCall(call = "") {
-    return !!(this._getSystemOperationAlias(call) || this._getCallPath(call));
+    return !!this._getSystemOperationAlias(call);
   }
   _applySystemQueryDefaults(alias = {}, payload = {}) {
     const updatedPayload = Object.assign({}, payload);
@@ -358,22 +358,19 @@ export class AppHaxBackendAPI extends LitElement {
     await waitForAppHAXSystemApiRegistryReady();
     const operationName = `@system/${alias.operationId}`;
     if (!MicroFrontendRegistry.has(operationName)) {
-      return null;
+      return {};
     }
     const payload = this._buildSystemOperationPayload(call, alias, data);
     let response = null;
     try {
       response = await MicroFrontendRegistry.call(operationName, payload);
     } catch (e) {
-      return null;
+      return {};
     }
     if (!response || typeof response !== "object") {
       return {};
     }
     const responseStatus = this._resolveResponseStatus(response);
-    if (responseStatus === 404 && this._getCallPath(call)) {
-      return null;
-    }
     if (
       this._handleFailedRequestStatus(
         responseStatus,
@@ -389,93 +386,6 @@ export class AppHaxBackendAPI extends LitElement {
     if (responseStatus > 0 && responseStatus < 400) {
       this._clearRetryCount(retryKey);
     }
-    return response;
-  }
-  async _makeLegacyCall(
-    call = "",
-    data = {},
-    retryKey = "",
-    save = false,
-    callback = false,
-  ) {
-    const requestData = Object.assign({}, data);
-    const callMethod = this._getCallMethod(call);
-    const callHeaders = this._getCallHeaders(call);
-    const callUsesHeaderAuth = this._callUsesHeaderAuth(call);
-    const callUsesUserTokenHeader = this._callUsesUserTokenHeader(call);
-    if (
-      callUsesHeaderAuth &&
-      Object.prototype.hasOwnProperty.call(requestData, "jwt")
-    ) {
-      delete requestData.jwt;
-    }
-    if (
-      callUsesUserTokenHeader &&
-      Object.prototype.hasOwnProperty.call(requestData, "token")
-    ) {
-      delete requestData.token;
-    }
-    if (
-      callUsesUserTokenHeader &&
-      Object.prototype.hasOwnProperty.call(requestData, "user_token")
-    ) {
-      delete requestData.user_token;
-    }
-    let urlRequest = this._applyPathParams(
-      call,
-      `${this.basePath}${this.appSettings[call]}`,
-      requestData,
-    );
-    const options = {
-      method: callMethod,
-    };
-    if (this.jwt && !callUsesHeaderAuth) {
-      requestData.jwt = this.jwt;
-    }
-    if (this.token && !callUsesUserTokenHeader) {
-      requestData.token = this.token;
-    }
-    if (callMethod === "GET") {
-      urlRequest = this._appendQueryParams(urlRequest, requestData);
-      if (Object.keys(callHeaders).length > 0) {
-        options.headers = Object.assign({}, callHeaders);
-      }
-    } else {
-      options.headers = {
-        "Content-Type": "application/json",
-      };
-      if (Object.keys(callHeaders).length > 0) {
-        options.headers = Object.assign(options.headers, callHeaders);
-      }
-      options.body = JSON.stringify(requestData);
-    }
-    const response = await fetch(`${urlRequest}`, options)
-      .then(async (response) => {
-        if (response.ok) {
-          this._clearRetryCount(retryKey);
-          try {
-            return await response.json();
-          } catch (e) {
-            return {};
-          }
-        }
-        if (
-          this._handleFailedRequestStatus(
-            response.status,
-            retryKey,
-            call,
-            data,
-            save,
-            callback,
-          )
-        ) {
-          return {};
-        }
-        return {};
-      })
-      .catch(() => {
-        return {};
-      });
     return response;
   }
   _triggerLogout() {
@@ -605,69 +515,6 @@ export class AppHaxBackendAPI extends LitElement {
     }
     this.__loopBlock = false;
   }
-  _mergeHeaderEntries(target = {}, source = null) {
-    if (!source || typeof source !== "object") {
-      return target;
-    }
-    Object.keys(source).forEach((key) => {
-      const headerName = String(key || "").trim();
-      if (headerName === "") {
-        return;
-      }
-      const headerValue = source[key];
-      if (typeof headerValue === "undefined" || headerValue === null) {
-        return;
-      }
-      const normalizedValue = String(headerValue).trim();
-      if (normalizedValue === "") {
-        return;
-      }
-      target[headerName] = normalizedValue;
-    });
-    return target;
-  }
-  _getCallPath(call = "") {
-    if (!(this.appSettings && typeof this.appSettings === "object")) {
-      return "";
-    }
-    if (
-      !Object.prototype.hasOwnProperty.call(this.appSettings, call) ||
-      typeof this.appSettings[call] !== "string"
-    ) {
-      return "";
-    }
-    return this.appSettings[call].trim();
-  }
-  _isV1EndpointCall(call = "") {
-    const callPath = this._getCallPath(call);
-    if (!callPath) {
-      return false;
-    }
-    if (callPath.indexOf("/v1/") !== -1) {
-      return true;
-    }
-    return callPath.indexOf("v1/") === 0;
-  }
-  _callUsesHeaderAuth(call = "") {
-    return this._isV1EndpointCall(call);
-  }
-  _callUsesUserTokenHeader(call = "") {
-    if (this._isV1EndpointCall(call)) {
-      return true;
-    }
-    const userTokenHeaderCalls = [
-      "getUserDataPath",
-      "createSite",
-      "copySite",
-      "archiveSite",
-      "downloadSite",
-      "saveSiteAsTemplate",
-      "getSitesList",
-      "skeletonsList",
-      "getSkeleton",
-    ];
-    return userTokenHeaderCalls.includes(call);
-  }
   _resolvePathParamValue(call = "", paramName = "", requestData = {}) {
     const normalizedParamName = String(paramName || "").trim();
     if (!normalizedParamName) {
@@ -745,123 +592,6 @@ export class AppHaxBackendAPI extends LitElement {
     }
     return "";
   }
-  _applyPathParams(call = "", requestUrl = "", requestData = {}) {
-    return String(requestUrl || "").replace(/\{([^}]+)\}/g, (match, token) => {
-      const value = this._resolvePathParamValue(call, token, requestData);
-      if (!value) {
-        return match;
-      }
-      return encodeURIComponent(value);
-    });
-  }
-  _getCallMethod(call = "") {
-    const fallbackMethod =
-      typeof this.method === "string" && this.method.trim() !== ""
-        ? this.method.trim().toUpperCase()
-        : "POST";
-    if (!(this.appSettings && typeof this.appSettings === "object")) {
-      return fallbackMethod;
-    }
-    const methodKey = `${call}Method`;
-    const methodValue =
-      typeof this.appSettings[methodKey] === "string"
-        ? this.appSettings[methodKey].trim().toUpperCase()
-        : "";
-    if (["GET", "POST", "PUT", "PATCH", "DELETE"].includes(methodValue)) {
-      return methodValue;
-    }
-    return fallbackMethod;
-  }
-  _appendQueryParams(requestUrl = "", requestData = {}) {
-    const target = typeof requestUrl === "string" ? requestUrl.trim() : "";
-    if (!target) {
-      return "";
-    }
-    const hashIndex = target.indexOf("#");
-    const baseWithQuery =
-      hashIndex === -1 ? target : target.substring(0, hashIndex);
-    const hash = hashIndex === -1 ? "" : target.substring(hashIndex);
-    const queryIndex = baseWithQuery.indexOf("?");
-    const basePath =
-      queryIndex === -1
-        ? baseWithQuery
-        : baseWithQuery.substring(0, queryIndex);
-    const existingQuery =
-      queryIndex === -1 ? "" : baseWithQuery.substring(queryIndex + 1);
-    const searchParams = new URLSearchParams(existingQuery);
-    const payload =
-      requestData && typeof requestData === "object" && !Array.isArray(requestData)
-        ? requestData
-        : {};
-    Object.keys(payload).forEach((key) => {
-      const value = payload[key];
-      if (typeof value === "undefined" || value === null) {
-        return;
-      }
-      const normalizedValue = String(value).trim();
-      if (normalizedValue === "") {
-        return;
-      }
-      searchParams.set(key, normalizedValue);
-    });
-    const query = searchParams.toString();
-    return `${basePath}${query ? `?${query}` : ""}${hash}`;
-  }
-  _getCallHeaders(call = "") {
-    const headers = {};
-    if (!(this.appSettings && typeof this.appSettings === "object")) {
-      return headers;
-    }
-    const callHeaderKey = `${call}Headers`;
-    if (this.appSettings[callHeaderKey]) {
-      this._mergeHeaderEntries(headers, this.appSettings[callHeaderKey]);
-    }
-    if (call === "getUserDataPath") {
-      this._mergeHeaderEntries(headers, this.appSettings.getUserDataHeaders);
-    }
-    const hasHeaderName = (name = "") =>
-      Object.keys(headers).some(
-        (headerName) =>
-          String(headerName).toLowerCase() === String(name).toLowerCase(),
-      );
-    if (
-      this._callUsesUserTokenHeader(call) &&
-      this.appSettings.userTokenHeader &&
-      this.appSettings.userToken
-    ) {
-      const userTokenHeaderName = String(this.appSettings.userTokenHeader).trim();
-      const userTokenHeaderValue = String(this.appSettings.userToken).trim();
-      if (
-        userTokenHeaderName !== "" &&
-        userTokenHeaderValue !== "" &&
-        !hasHeaderName(userTokenHeaderName)
-      ) {
-        headers[userTokenHeaderName] = userTokenHeaderValue;
-      }
-    }
-    if (this._callUsesHeaderAuth(call)) {
-      let authorizationValue = "";
-      if (
-        this.appSettings &&
-        typeof this.appSettings.jwt === "string" &&
-        this.appSettings.jwt.trim() !== ""
-      ) {
-        authorizationValue = this.appSettings.jwt.trim();
-      } else if (typeof this.jwt === "string" && this.jwt.trim() !== "") {
-        authorizationValue = this.jwt.trim();
-      }
-      if (authorizationValue !== "" && !hasHeaderName("Authorization")) {
-        if (
-          authorizationValue.indexOf("Bearer ") !== 0 &&
-          authorizationValue.indexOf("bearer ") !== 0
-        ) {
-          authorizationValue = `Bearer ${authorizationValue}`;
-        }
-        headers.Authorization = authorizationValue;
-      }
-    }
-    return headers;
-  }
 
   static get properties() {
     return {
@@ -913,6 +643,10 @@ export class AppHaxBackendAPI extends LitElement {
         ? Object.assign({}, data)
         : {};
     const retryKey = this._getRetryKey(call, requestData);
+    const systemAlias = this._getSystemOperationAlias(call);
+    if (!systemAlias) {
+      return this._finalizeCallResponse(call, {}, save, callback);
+    }
     const systemResponse = await this._makeSystemOperationCall(
       call,
       requestData,
@@ -920,20 +654,7 @@ export class AppHaxBackendAPI extends LitElement {
       save,
       callback,
     );
-    if (systemResponse !== null) {
-      return this._finalizeCallResponse(call, systemResponse, save, callback);
-    }
-    if (!this._getCallPath(call)) {
-      return this._finalizeCallResponse(call, {}, save, callback);
-    }
-    const legacyResponse = await this._makeLegacyCall(
-      call,
-      requestData,
-      retryKey,
-      save,
-      callback,
-    );
-    return this._finalizeCallResponse(call, legacyResponse, save, callback);
+    return this._finalizeCallResponse(call, systemResponse, save, callback);
   }
 
   /**

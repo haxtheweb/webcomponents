@@ -1811,9 +1811,13 @@ export class AppHaxUseCaseFilter extends LitElement {
   updateSkeletonResults() {
     this.loading = true;
     this.errorMessage = "";
-
-    // Require configured endpoint
-    if (!store.appSettings || !store.appSettings.skeletonsList) {
+    const api = store && store.AppHaxAPI ? store.AppHaxAPI : null;
+    const supportsSkeletonsList =
+      api && typeof api.supportsCall === "function"
+        ? api.supportsCall("skeletonsList")
+        : false;
+    // Require API support for skeleton listing
+    if (!supportsSkeletonsList) {
       this.errorMessage = "Skeletons endpoint not configured";
       this.loading = false;
       return;
@@ -1824,8 +1828,8 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     // Build promises: backend call for skeletons, appSettings themes or fallback fetch
     const skeletonsPromise =
-      store.AppHaxAPI && store.AppHaxAPI.makeCall
-        ? store.AppHaxAPI.makeCall("skeletonsList")
+      api && typeof api.makeCall === "function"
+        ? api.makeCall("skeletonsList")
         : Promise.reject(new Error("API not available"));
 
     // Prefer themes from appSettings (injected by backend); fallback to static file
@@ -2399,26 +2403,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           typeof globalThis.appSettings === "object"
             ? globalThis.appSettings
             : {};
-        if (
-          appSettings &&
-          appSettings.getSkeletonHeaders &&
-          typeof appSettings.getSkeletonHeaders === "object"
-        ) {
-          const headerKeys = Object.keys(appSettings.getSkeletonHeaders);
-          for (let i = 0; i < headerKeys.length; i++) {
-            const key = headerKeys[i];
-            const value = appSettings.getSkeletonHeaders[key];
-            if (
-              typeof key === "string" &&
-              key.trim() !== "" &&
-              typeof value !== "undefined" &&
-              value !== null &&
-              `${value}`.trim() !== ""
-            ) {
-              requestHeaders[key] = `${value}`.trim();
-            }
-          }
-        }
         const userTokenHeaderName =
           appSettings && typeof appSettings.userTokenHeader === "string"
             ? appSettings.userTokenHeader.trim()
