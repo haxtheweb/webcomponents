@@ -28,15 +28,11 @@ class Store {
       globalThis.appSettings && globalThis.appSettings.token
         ? globalThis.appSettings.token
         : null;
-    this.version = "0.0.0";
     this.items = null;
     this.itemFiles = null;
     this.skeletonMachineName = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
-    fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
-      .then((response) => response.json())
-      .then((obj) => (this.version = obj.version));
     this.appSettings = globalThis.appSettings || {};
     // defer to local if we have it for JWT
     if (this.appSettings.jwt) {
@@ -169,7 +165,6 @@ class Store {
       newSitePromiseList: observable,
       items: observable, // site items / structure from a docx micro if option selected
       itemFiles: observable, // files related to the items to be imported from another site format
-      version: observable, // version of haxcms FRONTEND as per package.json
       // user related data
       jwt: observable, // JSON web token
       authValidated: observable, // connectionTest state

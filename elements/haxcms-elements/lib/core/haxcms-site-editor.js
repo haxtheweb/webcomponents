@@ -500,11 +500,161 @@ class HAXCMSSiteEditor extends LitElement {
       };
     }
   }
+  _normalizeEndpointTarget(endpoint = "") {
+    const normalizedEndpoint =
+      typeof endpoint === "string" ? endpoint.trim() : "";
+    if (normalizedEndpoint === "") {
+      return "";
+    }
+    if (
+      normalizedEndpoint.indexOf("http://") === 0 ||
+      normalizedEndpoint.indexOf("https://") === 0 ||
+      normalizedEndpoint.charAt(0) === "/"
+    ) {
+      return normalizedEndpoint;
+    }
+    return `/${normalizedEndpoint}`;
+  }
+
+  _normalizeRequestMethod(method = "") {
+    const normalizedMethod =
+      typeof method === "string" ? method.trim().toUpperCase() : "";
+    if (normalizedMethod !== "") {
+      return normalizedMethod;
+    }
+    if (this.method && typeof this.method === "string") {
+      const defaultMethod = this.method.trim().toUpperCase();
+      if (defaultMethod !== "") {
+        return defaultMethod;
+      }
+    }
+    return "POST";
+  }
+
+  async _callEndpointRequest(
+    endpoint = "",
+    payload = {},
+    target = null,
+    method = "",
+  ) {
+    const requestTarget = this._normalizeEndpointTarget(endpoint);
+    if (requestTarget === "") {
+      return {
+        unavailable: true,
+        response: null,
+      };
+    }
+    const requestPayload =
+      payload && typeof payload === "object" && !Array.isArray(payload)
+        ? payload
+        : {};
+    const requestMethod = this._normalizeRequestMethod(method);
+    const requestHeaders =
+      target && target.headers && typeof target.headers === "object"
+        ? Object.assign({}, target.headers)
+        : {};
+    let requestUrl = requestTarget;
+    const requestOptions = {
+      method: requestMethod,
+      headers: requestHeaders,
+      credentials: "include",
+    };
+    if (requestMethod === "GET" || requestMethod === "HEAD") {
+      const searchParams = new URLSearchParams();
+      const payloadKeys = Object.keys(requestPayload);
+      for (let i = 0; i < payloadKeys.length; i++) {
+        const key = payloadKeys[i];
+        const value = requestPayload[key];
+        if (
+          typeof value === "undefined" ||
+          value === null ||
+          typeof value === "object"
+        ) {
+          continue;
+        }
+        searchParams.append(key, `${value}`);
+      }
+      const queryString = searchParams.toString();
+      if (queryString !== "") {
+        requestUrl += requestUrl.indexOf("?") === -1 ? "?" : "&";
+        requestUrl += queryString;
+      }
+    } else {
+      if (
+        !Object.prototype.hasOwnProperty.call(
+          requestOptions.headers,
+          "Content-Type",
+        )
+      ) {
+        requestOptions.headers["Content-Type"] = "application/json";
+      }
+      requestOptions.body = JSON.stringify(requestPayload);
+    }
+    try {
+      const response = await fetch(requestUrl, requestOptions);
+      const responseText = await response.text();
+      let responseData = null;
+      if (responseText && responseText.trim() !== "") {
+        try {
+          responseData = JSON.parse(responseText);
+        } catch (e) {}
+      }
+      const normalizedResponse =
+        responseData && typeof responseData === "object"
+          ? Object.assign({}, responseData)
+          : {};
+      if (typeof normalizedResponse.status === "undefined") {
+        normalizedResponse.status = response.status;
+      }
+      if (
+        typeof normalizedResponse.statusText === "undefined" &&
+        typeof response.statusText === "string" &&
+        response.statusText.trim() !== ""
+      ) {
+        normalizedResponse.statusText = response.statusText;
+      }
+      if (this._isSuccessfulResponse(normalizedResponse)) {
+        return {
+          unavailable: false,
+          response: normalizedResponse,
+        };
+      }
+      const status = this._responseStatusCode(normalizedResponse);
+      const statusText = this._responseStatusText(
+        normalizedResponse,
+        "Operation failed",
+      );
+      this._emitRequestError(target, status || response.status, statusText);
+      return {
+        unavailable: false,
+        response: null,
+      };
+    } catch (error) {
+      let status = 500;
+      if (error && typeof error.status !== "undefined") {
+        const parsed = parseInt(error.status, 10);
+        if (!Number.isNaN(parsed)) {
+          status = parsed;
+        }
+      }
+      const statusText =
+        error && typeof error.message === "string" && error.message.trim() !== ""
+          ? error.message.trim()
+          : "Operation failed";
+      this._emitRequestError(target, status, statusText);
+      return {
+        unavailable: false,
+        response: null,
+      };
+    }
+  }
 
   async _requestJson({
     requestId = "site-request",
     operationName = "",
     payload = {},
+    endpoint = "",
+    method = "",
     headers = {},
     unavailableMessage = "",
     onSuccess = null,
@@ -517,11 +667,28 @@ class HAXCMSSiteEditor extends LitElement {
           unavailable: true,
           response: null,
         };
-        if (operationName && typeof operationName === "string") {
+        const normalizedOperationName =
+          operationName && typeof operationName === "string"
+            ? operationName.trim()
+            : "";
+        if (normalizedOperationName !== "") {
           operationResult = await this._callSiteOperation(
-            operationName,
+            normalizedOperationName,
             target.body,
             target,
+          );
+        }
+        if (
+          !operationResult.response &&
+          operationResult.unavailable === true &&
+          endpoint &&
+          typeof endpoint === "string"
+        ) {
+          operationResult = await this._callEndpointRequest(
+            endpoint,
+            target.body,
+            target,
+            method,
           );
         }
         let response = operationResult.response;
@@ -940,15 +1107,15 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   loadUserData(e) {
+    const appSettings =
+      globalThis.appSettings && typeof globalThis.appSettings === "object"
+        ? globalThis.appSettings
+        : null;
     let userHeaders =
       this.getUserDataHeaders && typeof this.getUserDataHeaders === "object"
         ? { ...this.getUserDataHeaders }
         : {};
     if (Object.keys(userHeaders).length === 0) {
-      const appSettings =
-        globalThis.appSettings && typeof globalThis.appSettings === "object"
-          ? globalThis.appSettings
-          : null;
       if (appSettings) {
         if (
           appSettings.getUserDataHeaders &&
@@ -969,8 +1136,19 @@ class HAXCMSSiteEditor extends LitElement {
         }
       }
     }
+    const userDataEndpoint =
+      typeof this.getUserDataPath === "string" && this.getUserDataPath.trim() !== ""
+        ? this.getUserDataPath.trim()
+        : appSettings &&
+            typeof appSettings.getUserDataPath === "string" &&
+            appSettings.getUserDataPath.trim() !== ""
+          ? appSettings.getUserDataPath.trim()
+          : "";
     this._requestJson({
       requestId: "getuserdata",
+      operationName: "@system/sessionUserGet",
+      endpoint: userDataEndpoint,
+      method: "GET",
       headers: userHeaders,
       unavailableMessage: "User data endpoint is not available.",
       onSuccess: (response) => {

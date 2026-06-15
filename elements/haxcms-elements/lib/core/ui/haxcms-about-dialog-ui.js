@@ -13,7 +13,6 @@ class HAXCMSAboutDialogUI extends DDD {
   }
   static get properties() {
     return {
-      haxVersion: { type: String, attribute: "hax-version" },
       keyboardShortcuts: { type: Array },
       markdownShortcuts: { type: Array },
     };
@@ -21,7 +20,6 @@ class HAXCMSAboutDialogUI extends DDD {
 
   constructor() {
     super();
-    this.haxVersion = "Loading…";
     this.keyboardShortcuts = [];
     this.markdownShortcuts = [];
     this.__disposer = [];
@@ -37,11 +35,6 @@ class HAXCMSAboutDialogUI extends DDD {
       "haxcms-keyboard-shortcuts-updated",
       this.__keyboardShortcutsUpdatedHandler,
     );
-    const disposeVersion = autorun(() => {
-      const version = toJS(store.version);
-      this.haxVersion = version ? version : "Loading…";
-    });
-    this.__disposer.push(disposeVersion);
     this._loadKeyboardShortcuts();
     this._loadMarkdownShortcuts();
   }
@@ -406,16 +399,6 @@ class HAXCMSAboutDialogUI extends DDD {
           font-weight: var(--ddd-font-weight-bold);
         }
 
-        .version-row {
-          margin: 0 0 var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.4;
-        }
-
-        .version-row code {
-          margin-left: var(--ddd-spacing-2);
-        }
-
 
         a {
           color: light-dark(
@@ -514,10 +497,6 @@ class HAXCMSAboutDialogUI extends DDD {
               <p class="section-description">
                 HAX is a web-native authoring system designed for accessible,
                 modular content publishing across many delivery environments.
-              </p>
-              <p class="version-row">
-                Current HAX version:
-                <code>${this.haxVersion}</code>
               </p>
               <ul>
                 <li>

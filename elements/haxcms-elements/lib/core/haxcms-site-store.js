@@ -134,7 +134,6 @@ class Store {
     this.appSettings = globalThis.appSettings || {};
     this.jwt = null;
     this.connectionValidated = false;
-    this.version = null;
     this.soundStatus = getDefaultSoundStatus();
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
@@ -148,9 +147,6 @@ class Store {
       "haxcms-site-editor-ui-main-menu": [],
       "haxcms-site-editor-ui-topbar-character-button": [],
     };
-    fetch(new URL("../../package.json", import.meta.url))
-      .then((response) => response.json())
-      .then((obj) => (this.version = obj.version));
     this.appReady = false;
     this.editMode = false;
     this.adminMode = false;
@@ -196,7 +192,6 @@ class Store {
       manifest: observable, // JOS / manifest
       activeItemContent: observable, // active site content, cleaned up
       themeElement: observable, // theme element
-      version: observable, // version of haxcms FRONTEND as per package.json
       routerManifest: computed, // router mixed in manifest w/ routes / paths
       siteTitle: computed, // site title
       siteDescription: computed, // site description
@@ -414,7 +409,6 @@ class Store {
       target = window;
     }
     // @todo replace this with a schema version mapper
-    // once we have versions
     if (varExists(manifest, "metadata.siteName")) {
       let git = varGet(manifest, "publishing.git", {});
       manifest.metadata.site = {
@@ -1869,26 +1863,6 @@ class HAXCMSSiteStore extends HTMLElement {
           store.showViewOnlyModeToast();
         }
       }, 1000);
-    });
-    autorun(() => {
-      const memVersion = UserScaffoldInstance.readMemory("versionLatest");
-      // @todo COMPARE CURRENT TO INITIAL AND IF IT IS NEW THEN WE PULSE MERLIN
-      // AS WELL AS INDICATE THAT HE HAS NEW THINGS AND THAT OPTION FLOWS TO THE TOP
-      if (store.version && memVersion != store.version) {
-        // store the initial version
-        if (memVersion == null) {
-          UserScaffoldInstance.writeMemory(
-            "versionInitial",
-            store.version,
-            "long",
-          );
-        }
-        UserScaffoldInstance.writeMemory(
-          "versionLatest",
-          store.version,
-          "long",
-        );
-      }
     });
 
     /**
