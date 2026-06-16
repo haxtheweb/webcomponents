@@ -143,16 +143,20 @@ class HAXCMSBackendPHP extends LitElement {
     if (this.__connectionTestPending) {
       return this.__connectionTestPending;
     }
-    const requestData = {};
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    // send the JWT via the Authorization header (Bearer) to match the
+    // header-based auth used by the rest of the site API; the server also
+    // falls back to the haxcms_refresh_token cookie, so include credentials
     if (this._hasValidJWT(this.jwt)) {
-      requestData.jwt = this.jwt;
+      headers.Authorization = `Bearer ${this.jwt}`;
     }
     this.__connectionTestPending = fetch(store.appSettings.connectionTest, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
+      credentials: "include",
+      headers: headers,
+      body: JSON.stringify({}),
     })
       .then(async (response) => {
         if (!response.ok) {
