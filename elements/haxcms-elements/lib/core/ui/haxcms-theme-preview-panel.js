@@ -497,36 +497,6 @@ class HAXCMSThemePreviewPanel extends DDD {
         );
       });
     }
-    if (
-      globalThis.appSettings &&
-      globalThis.appSettings.themes &&
-      typeof globalThis.appSettings.themes === "object"
-    ) {
-      Object.keys(globalThis.appSettings.themes).forEach((key) => {
-        const allowCustomTheme =
-          key === this.selectedTheme || key === this.activeTheme;
-        if (!merged[key] && !allowCustomTheme) {
-          return;
-        }
-        const incoming = globalThis.appSettings.themes[key];
-        const current = merged[key] ? merged[key] : { element: key };
-        if (incoming && typeof incoming === "object") {
-          merged[key] = {
-            ...current,
-            ...incoming,
-            element: key,
-          };
-        } else if (typeof incoming === "string") {
-          merged[key] = {
-            ...current,
-            name: incoming,
-            element: key,
-          };
-        } else {
-          merged[key] = current;
-        }
-      });
-    }
     this._themesRegistry = merged;
   }
 

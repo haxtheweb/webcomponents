@@ -326,17 +326,6 @@ class HAXCMSThemePicker extends DDD {
     return value.toString().trim();
   }
 
-  _themeRegistry() {
-    if (
-      globalThis.appSettings &&
-      globalThis.appSettings.themes &&
-      typeof globalThis.appSettings.themes === "object"
-    ) {
-      return globalThis.appSettings.themes;
-    }
-    return {};
-  }
-
   _resolveThemeThumbnail(thumbnail = "") {
     if (!thumbnail || typeof thumbnail !== "string") {
       return "";
@@ -391,7 +380,7 @@ class HAXCMSThemePicker extends DDD {
     if (!value) {
       return null;
     }
-    const registry = this._themeRegistry();
+    const registry = {};
     const registryTheme = registry[value] ? registry[value] : {};
     const label =
       raw.label ||
@@ -443,7 +432,7 @@ class HAXCMSThemePicker extends DDD {
         )
         .filter((option) => !!option);
     } else {
-      const registry = this._themeRegistry();
+      const registry = {};
       options = Object.keys(registry)
         .map((key) =>
           this._normalizeOption({

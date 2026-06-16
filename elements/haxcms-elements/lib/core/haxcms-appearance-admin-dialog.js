@@ -503,19 +503,6 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         mergedThemes[key] = this._cloneData(this.__themesRegistry[key]);
       });
     }
-    if (globalThis.appSettings && globalThis.appSettings.themes) {
-      Object.keys(globalThis.appSettings.themes).forEach((key) => {
-        const incomingTheme = globalThis.appSettings.themes[key];
-        const currentTheme =
-          mergedThemes[key] && typeof mergedThemes[key] === "object"
-            ? mergedThemes[key]
-            : {};
-        mergedThemes[key] = {
-          ...currentTheme,
-          ...incomingTheme,
-        };
-      });
-    }
     const options = Object.keys(mergedThemes).map((key) => {
       const theme =
         mergedThemes[key] && typeof mergedThemes[key] === "object"
