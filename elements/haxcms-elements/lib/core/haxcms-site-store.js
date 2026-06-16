@@ -93,6 +93,50 @@ export function iconFromPageType(type) {
   }
   return "courseicons:learning-objectives";
 }
+
+/**
+ * Dynamically injects prefetch speculation rules for sequential navigation.
+ * @param {string|null} nextUrl - The URL of the next page in the outline.
+ * @param {string|null} prevUrl - The URL of the previous page in the outline.
+ */
+function updateSequentialPrefetch(nextUrl, prevUrl) {
+  // 1. Clean up any existing speculative rules to avoid stacking clutter
+  if (globalThis.document && globalThis.document.head) {
+    const oldScript = globalThis.document.getElementById('haxcms-speculation-rules');
+    if (oldScript) {
+      oldScript.remove();
+    }
+
+    // 2. Build out the precise list of URLs we want to target
+    const urlsToPrefetch = [];
+    if (nextUrl) urlsToPrefetch.push(nextUrl);
+    if (prevUrl) urlsToPrefetch.push(prevUrl);
+
+    // If there are no sequential pages (e.g., standalone node), exit early
+    if (urlsToPrefetch.length === 0) return;
+
+    // 3. Define the speculation rules structure
+    const rules = {
+      "prefetch": [
+        {
+          "where": {
+            "href_matches": urlsToPrefetch
+          },
+          "eagerness": "eager"
+        }
+      ]
+    };
+
+    // 4. Inject the rule into the DOM
+    const script = globalThis.document.createElement('script');
+    script.id = 'haxcms-speculation-rules';
+    script.type = 'speculationrules';
+    script.textContent = JSON.stringify(rules);
+    
+    globalThis.document.head.appendChild(script);
+  }
+}
+
 class Store {
   constructor() {
     this.badDevice = false;
@@ -211,6 +255,7 @@ class Store {
       ancestorTitle: computed, // active page ancestor title
       ancestorItem: computed, // active page ancestor
       pageCounter: computed, // current and total page count
+      siblingsPrevNext: computed, // previous and next sibling items
       darkMode: observable, // dark mode pref
       responsiveSize: observable, // viewport size bucket from theme responsive utility
       showAllThemes: observable, // reveal hidden/terrible/legacy themes in theme pickers
@@ -908,7 +953,7 @@ class Store {
    * gets and previous siblings of activeItem
    */
   get siblingsPrevNext() {
-    if (this.manifest.items && this.activeItem) {
+    if (this.manifest && this.manifest.items && this.activeItem) {
       // filter siblings out from items using activeItem
       const siblings = this.manifest.items.filter(
         (item) => item.parent === this.activeItem.parent,
@@ -1863,6 +1908,15 @@ class HAXCMSSiteStore extends HTMLElement {
           store.showViewOnlyModeToast();
         }
       }, 1000);
+    });
+
+    autorun(() => {
+      const siblings = store.siblingsPrevNext;
+      // Resolve their clean slug/URL paths
+      const nextUrl = siblings && siblings.next ? siblings.next.slug : null;
+      const prevUrl = siblings && siblings.prev ? siblings.prev.slug : null;
+      // Trigger the self-updating speculation rules
+      updateSequentialPrefetch(nextUrl, prevUrl);
     });
 
     /**
