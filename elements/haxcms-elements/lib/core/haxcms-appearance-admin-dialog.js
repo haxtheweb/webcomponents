@@ -969,6 +969,20 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     }
   }
 
+  _regionValueToSavePayload(value) {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value
+      .map((item) => {
+        if (item && typeof item === "object" && item.node) {
+          return item.node;
+        }
+        return item;
+      })
+      .filter((item) => typeof item === "string" && item !== "");
+  }
+
   _buildSavePayload() {
     const manifest = toJS(store.manifest);
     let siteName = "";
@@ -981,7 +995,6 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       siteName = manifest.metadata.site.name;
     }
     const theme = {};
-    const regions = {};
     this.groups.forEach((group) => {
       group.fields.forEach((field) => {
         const key = field.property;
@@ -992,13 +1005,12 @@ class HAXCMSAppearanceAdminDialog extends DDD {
               ? []
               : "";
         if (group.key === "regions") {
-          regions[key] = this._normalizeFieldValue(key, value);
+          theme[key] = this._regionValueToSavePayload(value);
         } else {
           theme[key] = this._normalizeFieldValue(key, value);
         }
       });
     });
-    theme.regions = regions;
     return {
       site: {
         name: siteName,

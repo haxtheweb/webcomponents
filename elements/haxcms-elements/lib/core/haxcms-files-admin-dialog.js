@@ -176,12 +176,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         if (ai && ai.id) { this.nodeId = ai.id; }
       }),
     );
-    this.__disposer.push(
-      autorun(() => {
-        const j = toJS(store.jwt);
-        if (j) { this.jwt = j; }
-      }),
-    );
+    // JWT is handled by MicroFrontendRegistry via Authorization header; no body injection needed
     this.refreshFiles();
   }
 

@@ -837,29 +837,26 @@ class Store {
       if (varExists(this.manifest, "metadata.theme")) {
         themeData = this.manifest.metadata.theme;
       } else {
-        // fallback juuuuust to be safe...
+        // fallback: return a minimal valid theme object
         themeData = {
-          "haxcms-basic-theme": {
-            element: "haxcms-basic-theme",
-            path: "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
-            name: "Basic theme",
-            variables: {
-              icon: "icons:record-voice-over",
-              hexCode: "#da004e",
-              cssVariable: "pink",
-              image: "assets/banner.jpg",
-              imageAlt: "",
-              imageLink: "",
-            },
-            regions: {
-              header: null,
-              sidebarFirst: null,
-              sidebarSecond: null,
-              contentTop: null,
-              contentBottom: null,
-              footerPrimary: null,
-              footerSecondary: null,
-            },
+          element: "haxcms-basic-theme",
+          path: "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+          name: "Basic theme",
+          variables: {
+            icon: "icons:record-voice-over",
+            cssVariable: "pink",
+            image: "assets/banner.jpg",
+            imageAlt: "",
+            imageLink: "",
+          },
+          regions: {
+            header: null,
+            sidebarFirst: null,
+            sidebarSecond: null,
+            contentTop: null,
+            contentBottom: null,
+            footerPrimary: null,
+            footerSecondary: null,
           },
         };
       }

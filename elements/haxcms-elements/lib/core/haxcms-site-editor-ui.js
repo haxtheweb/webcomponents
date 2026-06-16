@@ -1289,7 +1289,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   await import(
                     "@haxtheweb/outline-designer/outline-designer.js"
                   ).then(async (e) => {
-                    reqBody.jwt = toJS(store.jwt);
                     reqBody.site = {
                       name: toJS(store.manifest.metadata.site.name),
                     };
@@ -4095,7 +4094,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         program: async (input, values) => {
           let results = [];
           // will work in a production haxiam environment to allow hopping between spaces
-          await fetch("./../../system/api/listSites")
+          await fetch("./../../system/api/v1/sites")
             .then((response) => {
               if (response.ok) {
                 return response.json();
@@ -7332,10 +7331,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       const siteEditor = store.cmsSiteEditorAvailability();
       if (siteEditor) {
-        dialog.jwt = siteEditor.jwt || toJS(store.jwt) || "";
         dialog.method = siteEditor.method || "POST";
       } else {
-        dialog.jwt = toJS(store.jwt) || "";
         dialog.method = "POST";
       }
       if (

@@ -2186,7 +2186,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   saveManifest(e) {
     // now let's work on the outline
-    let values = e && e.detail ? e.detail : {}; // if we have a cssVariable selected then generate a hexCode off of it
+    let values = e && e.detail ? e.detail : {};
     if (!values || typeof values !== "object") {
       values = {};
     }
@@ -2201,30 +2201,7 @@ class HAXCMSSiteEditor extends LitElement {
       store.playSound("error");
       return;
     }
-    // regions translation to simplify submission
-    if (values.manifest.theme && values.manifest.theme.regions) {
-      Object.keys(values.manifest.theme.regions).forEach((key, index) => {
-        if (
-          values.manifest.theme.regions[key] &&
-          values.manifest.theme.regions[key].length > 0
-        ) {
-          values.manifest.theme[key] = values.manifest.theme.regions[key].map(
-            (item) => (item.node ? item.node : null),
-          );
-        }
-      });
-      delete values.manifest.theme.regions;
-    }
-    if (values.cssVariable) {
-      values.hexCode =
-        globalThis.SimpleColorsSharedStyles.colors[
-          values.cssVariable
-            .replace("--simple-colors-default-theme-", "")
-            .replace("-7", "")
-        ][6];
-    } // add in our standard pieces
-
-    values.jwt = this.jwt;
+    // add in our standard pieces
 
     if (values.site) {
       values.site.name = siteName;
@@ -2447,18 +2424,6 @@ class HAXCMSSiteEditor extends LitElement {
     if (!values.manifest.theme) {
       values.manifest.theme = {};
     }
-    // regions translation to simplify submission
-    if (values.manifest.theme && values.manifest.theme.regions) {
-      Object.keys(values.manifest.theme.regions).forEach((key) => {
-        if (Array.isArray(values.manifest.theme.regions[key])) {
-          values.manifest.theme[key] = values.manifest.theme.regions[key].map(
-            (item) => (item.node ? item.node : null),
-          );
-        }
-      });
-      delete values.manifest.theme.regions;
-    }
-    values.jwt = this.jwt;
     if (values.site) {
       values.site.name = siteName;
     } else {

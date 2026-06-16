@@ -36,12 +36,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
     this.body = {};
     this.headers = {};
     this.__disposer = [];
-    // set up a tag to place RIGHT next to the site-builder itself
-    this.__disposer.push(
-      autorun((reaction) => {
-        this.jwt = toJS(store.jwt);
-      }),
-    );
     this.__disposer.push(
       autorun((reaction) => {
         this.siteTitle = toJS(store.siteTitle);
