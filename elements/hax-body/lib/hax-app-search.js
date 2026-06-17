@@ -72,35 +72,6 @@ class HaxAppSearch extends LitElement {
     }
     return /\/x\/api\/v1(?:\/|$)/.test(pathname);
   }
-  resolveJwtTransport(url = "", params = {}) {
-    if (HAXStore.connectionRewrites.appendJwt == null || !params.__HAXJWT__) {
-      return {
-        enabled: false,
-        useHeader: false,
-        useQuery: false,
-        jwtKey: "",
-        jwtValue: "",
-      };
-    }
-    const jwtKey = HAXStore.connectionRewrites.appendJwt;
-    const jwtValue = String(localStorageGet(jwtKey, "") || "").trim();
-    if (jwtValue === "") {
-      return {
-        enabled: false,
-        useHeader: false,
-        useQuery: false,
-        jwtKey: jwtKey,
-        jwtValue: "",
-      };
-    }
-    return {
-      enabled: true,
-      useHeader: true,
-      useQuery: false,
-      jwtKey: jwtKey,
-      jwtValue: jwtValue,
-    };
-  }
   buildRequestHeaders(params = {}, requestUrl = "") {
     const headers =
       this.headers && typeof this.headers === "object" ? { ...this.headers } : {};
@@ -116,13 +87,13 @@ class HaxAppSearch extends LitElement {
     ) {
       headers["X-HAXCMS-Site-Token"] = siteToken;
     }
-    const jwtTransport = this.resolveJwtTransport(requestUrl, params);
+    const jwtValue = String(localStorageGet("jwt", "") || "").trim();
     if (
-      jwtTransport.useHeader &&
+      jwtValue !== "" &&
       !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&
       !Object.prototype.hasOwnProperty.call(headers, "authorization")
     ) {
-      headers.Authorization = `Bearer ${jwtTransport.jwtValue}`;
+      headers.Authorization = `Bearer ${jwtValue}`;
     }
     return headers;
   }
@@ -176,11 +147,6 @@ class HaxAppSearch extends LitElement {
     ) {
       queryString = HAXStore.connectionRewrites.appendUploadEndPoint + "&";
     }
-    // JWT transport is header-only.
-    const jwtTransport = this.resolveJwtTransport(url, requestParams);
-    if (jwtTransport.useQuery) {
-      requestParams[jwtTransport.jwtKey] = jwtTransport.jwtValue;
-    }
     queryString = queryString + this.queryStringData(requestParams);
     // look for a specialized param
     if (queryString) {
@@ -201,7 +167,6 @@ class HaxAppSearch extends LitElement {
       value = params[param];
       //param = globalThis.encodeURIComponent(param);
       if (
-        param == "__HAXJWT__" ||
         param == "__HAXAPPENDUPLOADENDPOINT__" ||
         param == "site_token" ||
         param == "siteToken"

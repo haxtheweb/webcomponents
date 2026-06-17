@@ -1506,7 +1506,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   _storeReadyToGo(event) {
     if (event.detail) {
-      HAXStore.connectionRewrites.appendJwt = "jwt";
+      // JWT is now transmitted exclusively via Authorization header
     }
   }
 

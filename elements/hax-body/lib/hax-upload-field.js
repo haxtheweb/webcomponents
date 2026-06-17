@@ -67,14 +67,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     };
   }
   _resolveUploadJwtValue() {
-    if (
-      !HAXStore ||
-      !HAXStore.connectionRewrites ||
-      HAXStore.connectionRewrites.appendJwt == null
-    ) {
-      return "";
-    }
-    const jwtValue = localStorageGet(HAXStore.connectionRewrites.appendJwt);
+    const jwtValue = localStorageGet("jwt");
     return typeof jwtValue === "string" ? jwtValue : "";
   }
   _buildUploadHeaders(connection, jwtValue = "") {
@@ -200,16 +193,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         );
       }
     }
-    if (
-      HAXStore.connectionRewrites.appendJwt != null &&
-      uploadJwtValue !== ""
-    ) {
-      requestEndPoint +=
-        (requestEndPoint.includes("?") ? "&" : "?") +
-        HAXStore.connectionRewrites.appendJwt +
-        "=" +
-        uploadJwtValue;
-    }
     this.shadowRoot.querySelector("#fileupload").headers =
       this._buildUploadHeaders(connection, uploadJwtValue);
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
@@ -245,16 +228,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
               "&nodeId=" +
               globalThis.store.activeId;
           }
-        }
-        if (
-          HAXStore.connectionRewrites.appendJwt != null &&
-          uploadJwtValue !== ""
-        ) {
-          requestEndPoint +=
-            (requestEndPoint.includes("?") ? "&" : "?") +
-            HAXStore.connectionRewrites.appendJwt +
-            "=" +
-            uploadJwtValue;
         }
         fileUpload.headers = this._buildUploadHeaders(
           this.__pendingUploadRetry.appUsed
