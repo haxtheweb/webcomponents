@@ -1339,24 +1339,36 @@ export class PageBreak extends IntersectionObserverMixin(
           value: null,
         },
       ];
-      itemManifest.forEach((el) => {
-        if (el.id != this.itemId) {
-          // calculate -- depth so it looks like a tree
-          let itemBuilder = el;
-          // walk back through parent tree
-          let distance = "- ";
-          while (itemBuilder && itemBuilder.parent != null) {
-            itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
-            // double check structure is sound
-            if (itemBuilder) {
-              distance = "--" + distance;
-            }
+      // Build set of descendant IDs so current page and its children are visible but disabled
+      const descendantIds = new Set();
+      const collectDescendants = (parentId) => {
+        itemManifest.forEach((item) => {
+          if (item.parent === parentId) {
+            descendantIds.add(item.id);
+            collectDescendants(item.id);
           }
-          items.push({
-            text: distance + el.title,
-            value: el.id,
-          });
+        });
+      };
+      if (this.itemId) {
+        collectDescendants(this.itemId);
+      }
+      itemManifest.forEach((el) => {
+        // calculate -- depth so it looks like a tree
+        let itemBuilder = el;
+        // walk back through parent tree
+        let distance = "- ";
+        while (itemBuilder && itemBuilder.parent != null) {
+          itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+          // double check structure is sound
+          if (itemBuilder) {
+            distance = "--" + distance;
+          }
         }
+        items.push({
+          text: distance + el.title,
+          value: el.id,
+          disabled: el.id === this.itemId || descendantIds.has(el.id),
+        });
       });
       // apply same logic of the items in the active site to
       // parent and related items

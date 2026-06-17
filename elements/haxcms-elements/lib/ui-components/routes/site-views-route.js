@@ -15,6 +15,35 @@ import { autorun } from "mobx";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
 // simple fields schema for our filter and display capabilities
+function getItemsByHierarchy(items) {
+  const childrenMap = new Map();
+  childrenMap.set(null, []);
+
+  items.forEach((item) => {
+    const parent = item.parent || null;
+    if (!childrenMap.has(parent)) {
+      childrenMap.set(parent, []);
+    }
+    childrenMap.get(parent).push(item);
+  });
+
+  childrenMap.forEach((children) => {
+    children.sort((a, b) => (a.order || 0) - (b.order || 0));
+  });
+
+  const result = [];
+  function traverse(parentId) {
+    const children = childrenMap.get(parentId) || [];
+    children.forEach((child) => {
+      result.push(child);
+      traverse(child.id);
+    });
+  }
+
+  traverse(null);
+  return result;
+}
+
 export function loadViewsForm() {
   // get a fresh copy of the manifest so we can build the select
   // list based on UUIDs in this site, presented in a tree format
@@ -26,13 +55,14 @@ export function loadViewsForm() {
       value: null,
     },
   ];
-  itemManifest.items.forEach((el) => {
+  const sortedItems = getItemsByHierarchy(itemManifest.items);
+  sortedItems.forEach((el) => {
     // calculate -- depth so it looks like a tree
     let itemBuilder = el;
     // walk back through parent tree
     let distance = "- ";
     while (itemBuilder && itemBuilder.parent != null) {
-      itemBuilder = itemManifest.items.find((i) => i.id == itemBuilder.parent);
+      itemBuilder = sortedItems.find((i) => i.id == itemBuilder.parent);
       // double check structure is sound
       if (itemBuilder) {
         distance = "--" + distance;

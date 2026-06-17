@@ -806,6 +806,35 @@ class HAXCMSViewsAdminDialog extends DDD {
     );
   }
 
+  _sortItemsByHierarchy(items) {
+    const childrenMap = new Map();
+    childrenMap.set(null, []);
+
+    items.forEach((item) => {
+      const parent = item.parent || null;
+      if (!childrenMap.has(parent)) {
+        childrenMap.set(parent, []);
+      }
+      childrenMap.get(parent).push(item);
+    });
+
+    childrenMap.forEach((children) => {
+      children.sort((a, b) => (a.order || 0) - (b.order || 0));
+    });
+
+    const result = [];
+    function traverse(parentId) {
+      const children = childrenMap.get(parentId) || [];
+      children.forEach((child) => {
+        result.push(child);
+        traverse(child.id);
+      });
+    }
+
+    traverse(null);
+    return result;
+  }
+
   _manifestPageItems() {
     if (
       !globalThis.HAXCMS ||
@@ -821,15 +850,21 @@ class HAXCMSViewsAdminDialog extends DDD {
     if (!Array.isArray(itemManifest)) {
       return [];
     }
-    const options = [];
-    itemManifest.forEach((el) => {
+    const sortedItems = this._sortItemsByHierarchy(itemManifest);
+    const options = [
+      {
+        value: "",
+        text: "-- Any --",
+      },
+    ];
+    sortedItems.forEach((el) => {
       if (!el || !el.id) {
         return;
       }
       let itemBuilder = el;
       let distance = "- ";
       while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+        itemBuilder = sortedItems.find((i) => i.id == itemBuilder.parent);
         if (itemBuilder) {
           distance = `--${distance}`;
         }
@@ -932,7 +967,6 @@ class HAXCMSViewsAdminDialog extends DDD {
       "filter.pageType": true,
       "filter.region": true,
     };
-    const pageFilterOptions = this._manifestPageOptions();
     return entityConfig.queryParams
       .filter((parameter) => {
         if (!parameter || !parameter.name) {
@@ -956,7 +990,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           parameter.name === "filter.ancestor"
         ) {
           field.inputMethod = "select";
-          field.options = pageFilterOptions;
+          field.itemsList = this._manifestPageItems();
           return field;
         }
         if (

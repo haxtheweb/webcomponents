@@ -967,6 +967,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 ?selected="${this.multiple
                   ? this.value && this.value.includes(option.value)
                   : this.value === option.value}"
+                ?disabled="${option.disabled}"
                 .value="${option.value}"
               >
                 ${option.html ? html`${option.html}` : option.text}
