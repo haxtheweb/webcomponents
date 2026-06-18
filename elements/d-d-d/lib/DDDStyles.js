@@ -2679,24 +2679,24 @@ export const DDDPaletteStyles = css`
   /** Monotone Gray */
   [data-palette="monotone"],
   [data-palette="5"] {
-    --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-color-2: var(--simple-colors-fixed-theme-grey-9);
-    --ddd-palette-color-3: var(--simple-colors-fixed-theme-grey-7);
-    --ddd-palette-color-4: var(--simple-colors-fixed-theme-grey-5);
-    --ddd-palette-color-5: var(--simple-colors-fixed-theme-grey-3);
-    --ddd-palette-color-6: var(--simple-colors-fixed-theme-grey-11);
-    --ddd-palette-color-7: var(--simple-colors-fixed-theme-amber-6);
+    --ddd-palette-color-1: var(--simple-colors-fixed-theme-grey-12);
+    --ddd-palette-color-2: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-color-3: var(--simple-colors-fixed-theme-grey-9);
+    --ddd-palette-color-4: var(--simple-colors-fixed-theme-grey-7);
+    --ddd-palette-color-5: var(--simple-colors-fixed-theme-grey-5);
+    --ddd-palette-color-6: var(--simple-colors-fixed-theme-grey-3);
+    --ddd-palette-color-7: var(--ddd-theme-default-white);
 
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-2);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-grey-3);
+    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-1);
+    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-grey-1);
     --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-grey-1);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-grey-10);
-    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-grey-8);
-    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-grey-5);
-    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10);
+    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-grey-1);
+    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-grey-12);
+    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-grey-12);
+    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-12);
   }
 
   /** Salmon Season */

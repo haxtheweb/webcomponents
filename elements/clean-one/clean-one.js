@@ -20,6 +20,11 @@ import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/Prin
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDVariables,
+  DDDPaletteStyles,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
  * `Clean one`
@@ -34,7 +39,8 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends LTIResizingMixin(
+class CleanOne extends DDDSuper(
+  LTIResizingMixin(
   PrintBranchMixin(
     PDFPageMixin(
       QRCodeMixin(
@@ -46,13 +52,35 @@ class CleanOne extends LTIResizingMixin(
       ),
     ),
   ),
-) {
+)) {
   //styles function
   static get styles() {
     return [
       super.styles,
       css`
         :host {
+          --ddd-palette-light: var(--ddd-theme-default-white);
+          --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
+
+          --ddd-palette-1: var(--ddd-palette-color-1, default);
+          --ddd-palette-2: var(--ddd-palette-color-2, default);
+          --ddd-palette-3: var(--ddd-palette-color-3, default);
+          --ddd-palette-4: var(--ddd-palette-color-4, default);
+          --ddd-palette-5: var(--ddd-palette-color-5, default);
+          --ddd-palette-6: var(--ddd-palette-color-6, default);
+          --ddd-palette-7: var(--ddd-palette-color-7, default);
+
+          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
+          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
+          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
+          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-6));
+          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-7));
+          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-4));
+          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
+          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-2));
+          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-3));
+
+
           width: 100%;
           margin: 0;
           display: flex;
@@ -63,17 +91,14 @@ class CleanOne extends LTIResizingMixin(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
+          background-color: var(--ddd-lightDark-7);
+          color: var(--ddd-lightDark-text);
         }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
         }
         site-git-corner {
-          --site-git-corner-background: black;
+          --site-git-corner-background: var(--ddd-palette-dark);
         }
 
         :host([hidden]) {
@@ -94,35 +119,15 @@ class CleanOne extends LTIResizingMixin(
           padding: 8px 4px;
         }
         site-menu {
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
+          background-color: var(--ddd-lightDark-7);
+          color: var(--ddd-lightDark-1);
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
-          --site-menu-active-color: var(
-            --haxcms-user-styles-color-theme-color-3
-          );
-          --site-menu-item-active-item-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-primary-5)
-          );
-          --map-menu-item-a-active-background-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
-          --map-menu-item-a-active-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          --map-menu-item-icon-active-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
-          --site-menu-container-background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
+          --site-menu-active-color: var(--ddd-lightDark-2);
+          --site-menu-item-active-item-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-active-background-color: var(--ddd-lightDark-2);
+          --map-menu-item-a-active-color: var(--ddd-lightDark-7);
+          --map-menu-item-icon-active-color: var(--ddd-lightDark-1);
+          --site-menu-container-background-color: var(--ddd-lightDark-7);
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-3xs);
         }
@@ -131,42 +136,25 @@ class CleanOne extends LTIResizingMixin(
           height: var(--clean-one-site-menu-height, calc(100vh - 108px));
         }
         scroll-button {
-          --scroll-button-color: var(--haxcms-user-styles-color-theme-color-1);
-          --scroll-button-background-color: var(
-            --haxcms-user-styles-color-theme-color-2
-          );
-          --scroll-button-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-          --scroll-button-tooltip-color: var(
-            --haxcms-user-styles-color-theme-color-2
-          );
+          --scroll-button-color: var(--ddd-lightDark-7);
+          --scroll-button-background-color: var(--ddd-lightDark-6);
+          --scroll-button-tooltip-background-color: var(--ddd-palette-7);
+          --scroll-button-tooltip-color: var(--ddd-palette-1);
         }
         simple-icon-button,
         simple-icon-button-lite,
         site-rss-button,
         site-print-button,
         site-git-corner {
-          color: light-dark(
-            var(--site-print-button-color, black),
-            var(--ddd-accent-6)
-          );
-          --site-git-corner-background: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-          --site-git-corner-color: var(
-            --haxcms-user-styles-color-theme-color-2
-          );
-          --simple-icon-fill-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          color: var(--ddd-lightDark-1);
+          --site-git-corner-background: var(--ddd-lightDark-7);
+          --site-git-corner-color: var(--ddd-lightDark-1);
+          --simple-icon-fill-color: var(--ddd-lightDark-1);
 
         }
 
         button:focus, button:hover{
-          --simple-icon-button-background-color: var(
-            --ddd-palette-color-1
-          );
+          --simple-icon-button-background-color: var(--ddd-palette-color-1);
         }
         .pdf-page-btn,
         .print-branch-btn {
@@ -178,27 +166,16 @@ class CleanOne extends LTIResizingMixin(
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
         }
         site-menu-button {
-          --site-menu-button-icon-fill-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          --site-menu-button-icon-fill-color: var(--ddd-palette-1);
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: light-dark(
-            var(--ddd-primary-4),
-            black
-          );
-          --site-menu-button-button-hover-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-primary-5)
-          );
+          --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
+          --site-menu-button-button-hover-background-color: var(--ddd-lightDark-2);
         }
         scroll-button,
         site-breadcrumb {
-          color: light-dark(black, var(--ddd-accent-6));
-          --site-breadcrumb-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
-          );
-          --site-breadcrumb-last-color: light-dark(black, var(--ddd-accent-6));
+          color: var(--ddd-lightDark-1);
+          --site-breadcrumb-color:var(--ddd-lightDark-4);
+          --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
 
         * {
@@ -224,11 +201,8 @@ class CleanOne extends LTIResizingMixin(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
+          background-color:var(--ddd-lightDark-7);
+          color: var(--ddd-lightDark-1);
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease-in-out;
         }
@@ -350,7 +324,7 @@ class CleanOne extends LTIResizingMixin(
         }
         .main-content h6 {
           font-size: 1em;
-          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-3));
+          color: var(--ddd-lightDark-2);
         }
         .main-content h1,
         .main-content h2,
@@ -431,7 +405,7 @@ class CleanOne extends LTIResizingMixin(
             height: 50px;
             position: fixed;
             width: 100vw;
-            background-color: light-dark(white, black);
+            background-color: var(--ddd-lightDark-7);
           }
           .pdf-page-btn,
           .print-branch-btn,
@@ -456,11 +430,8 @@ class CleanOne extends LTIResizingMixin(
             display: none;
           }
           footer {
-            color: light-dark(black, white);
-            background-color: light-dark(
-              var(--ddd-accent-6),
-              var(--ddd-primary-4)
-            );
+            color: var(--ddd-lightDark-6);
+            background-color: var(--ddd-lightDark-7);
             margin-bottom: -1px;
           }
         }
@@ -497,7 +468,7 @@ class CleanOne extends LTIResizingMixin(
         .main-section {
           display: block;
           word-wrap: break-word;
-          color: var(--haxcms-user-styles-color-theme-color-color);
+          color: var(--ddd-lightDark-1);
           line-height: 1.7;
           text-size-adjust: 100%;
           -ms-text-size-adjust: 100%;
@@ -533,7 +504,7 @@ class CleanOne extends LTIResizingMixin(
           align-content: center;
           flex-direction: column;
           font-size: 40px;
-          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-3));
+          color:var(--ddd-lightDark-1);
           text-align: center;
         }
         @media screen and (max-width: 600px) {
@@ -581,8 +552,8 @@ class CleanOne extends LTIResizingMixin(
 
         .site-body {
           overflow-y: scroll;
-          color: var(--haxcms-user-styles-color-theme-color-color);
-          background: var(--haxcms-user-styles-color-theme-color-background);
+          color: var(--ddd-lightDark-1);
+          background: var(--ddd-lightDark-7);
         }
 
         button,
@@ -611,9 +582,9 @@ class CleanOne extends LTIResizingMixin(
           background: 0 0;
           transition: top 0.3s ease-in-out;
           border-bottom: 1px solid
-            light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
+            var(--ddd-lightDark-6);
           border-top: 1px solid
-            light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
+            var(--ddd-lightDark-6);
           margin-bottom: 10px;
           margin-top: -1px;
         }
@@ -621,15 +592,23 @@ class CleanOne extends LTIResizingMixin(
           height: auto;
           width: auto;
           font-size: inherit;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(black, var(--ddd-accent-6));
+          background-color: var(--ddd-lightDark-7);
+          color: var(--ddd-lightDark-1);
         }
       `,
     ];
   }
+
+      updated(changedProperties) {
+      super.updated(changedProperties);
+      if (changedProperties.has("dataPalette")) {
+        UserScaffoldInstance.writeMemory(
+          "HAXCMSSitePalette",
+          this.dataPalette,
+          "long",
+        );
+      }
+    }
 
   // render function
   render() {
@@ -753,6 +732,7 @@ class CleanOne extends LTIResizingMixin(
   static get properties() {
     return {
       ...super.properties,
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       searchTerm: {
         type: String,
       },
@@ -771,6 +751,8 @@ class CleanOne extends LTIResizingMixin(
    */
   constructor() {
     super();
+     const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
+        this.dataPalette = storedPalette === "" || storedPalette === null ? 5 : storedPalette;
     this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
@@ -802,6 +784,28 @@ class CleanOne extends LTIResizingMixin(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
+      :host, html, body{
+         --ddd-palette-light: var(--ddd-theme-default-white);
+          --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
+
+          --ddd-palette-1: var(--ddd-palette-color-1, default);
+          --ddd-palette-2: var(--ddd-palette-color-2, default);
+          --ddd-palette-3: var(--ddd-palette-color-3, default);
+          --ddd-palette-4: var(--ddd-palette-color-4, default);
+          --ddd-palette-5: var(--ddd-palette-color-5, default);
+          --ddd-palette-6: var(--ddd-palette-color-6, default);
+          --ddd-palette-7: var(--ddd-palette-color-7, default);
+
+          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
+          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
+          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
+          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-4));
+          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
+          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
+          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
+          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
+          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
+      }
         body stop-note a,
         body stop-note a:any-link,
         body stop-note a:-webkit-any-link {
@@ -810,6 +814,7 @@ class CleanOne extends LTIResizingMixin(
       `,
     ];
   }
+
 
   /**
    * life cycle, element is afixed to the DOM
@@ -857,6 +862,25 @@ class CleanOne extends LTIResizingMixin(
   /**
    * Previous page to hook into when prev is hit
    */
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("dataPalette")) {
+      UserScaffoldInstance.writeMemory(
+        "HAXCMSSitePalette",
+        this.dataPalette,
+        "long",
+      );
+    }
+    if (
+      changedProperties.has("topItems") ||
+      changedProperties.has("items") ||
+      changedProperties.has("activeLayout")
+    ) {
+      requestAnimationFrame(() => this._syncViewportLayout());
+    }
+  }
+  
   prevPage(e) {
     super.prevPage(e);
   }

@@ -33,7 +33,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "polaris-invent-theme",
+      "element": "clean-one",
       "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
       "name": "Learn Two",
       "thumbnail": "build/es6/node_modules/@haxtheweb/learn-two-theme/lib/assets/images/GreyStyle.svg",
@@ -43,7 +43,7 @@
         "imageLink": "",
         "hexCode": "#aeff00",
         "cssVariable": "--simple-colors-default-theme--7",
-        "palette": "3",
+        "palette": "5",
         "icon": "hax:hax2022"
       },
       "styleGuide": "theme/style-guide.html",
