@@ -78,7 +78,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   constructor() {
     super();
     this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
-
     this.selectedTag = "";
     this.activeLayout = "text"; // text, media, listing
     // mobile menu
