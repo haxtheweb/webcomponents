@@ -1,10 +1,5 @@
 {
   "entrypoint": "demo/index.html",
-  "extraDependencies": [
-    "node_modules/@webcomponents/webcomponentsjs/*.js",
-    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
-    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js"
-  ],
   "sources": [],
   "builds": [
     {
@@ -26,22 +21,6 @@
       "name": "es6-amd",
       "js": {
         "minify": true,
-        "transformModulesToAmd": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": false,
-      "addServiceWorker": false
-    },
-    {
-      "name": "es5-amd",
-      "js": {
-        "minify": true,
-        "compile": true,
         "transformModulesToAmd": true
       },
       "css": {

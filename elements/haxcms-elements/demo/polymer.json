@@ -15,8 +15,6 @@
     "node_modules/marked/lib/marked.esm.js",
     "node_modules/@haxtheweb/img-pan-zoom/lib/openseadragon/build/openseadragon/openseadragon.js",
     "node_modules/@haxtheweb/elmsln-apps/lib/*/*.js",
-    "node_modules/@webcomponents/webcomponentsjs/*.js",
-    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js",
     "node_modules/monaco-editor/min/**",
     "node_modules/monaco-editor/min-maps/**",
     "node_modules/lunr/lunr.js",
@@ -25,8 +23,7 @@
     "node_modules/pdfjs-dist/build/pdf.worker.js",
     "!node_modules/@haxtheweb/*/*.story.js",
     "node_modules/msr/MediaStreamRecorder.min.js",
-    "node_modules/@haxtheweb/chartist-render/lib/chartist/dist/chartist.min.js",
-    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js"
+    "node_modules/@haxtheweb/chartist-render/lib/chartist/dist/chartist.min.js"
   ],
   "sources": [],
   "builds": [

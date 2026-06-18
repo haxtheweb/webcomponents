@@ -67,8 +67,7 @@
     "@haxtheweb/stop-note": "^26.0.0",
     "@haxtheweb/video-player": "^26.0.0",
     "@haxtheweb/wikipedia-query": "^26.0.0",
-    "@haxtheweb/wysiwyg-hax": "^26.0.0",
-    "@webcomponents/webcomponentsjs": "2.8.0"
+    "@haxtheweb/wysiwyg-hax": "^26.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

@@ -19,7 +19,6 @@
     },
     "dependencies": {},
     "devDependencies": {
-      "web-animations-js": "2.3.2",
       "@haxtheweb/deduping-fix": "^9.0.0-alpha.0",
       "gulp-babel": "8.0.0",
       "@web/dev-server": "0.4.6",
@@ -58,7 +57,6 @@
       "gulp-babel": "8.0.0",
       "polymer-build": "3.1.4",
       "@web/dev-server": "0.4.6",
-      "web-animations-js": "2.3.2",
       "@open-wc/testing": "4.0.0"
     }
   },
