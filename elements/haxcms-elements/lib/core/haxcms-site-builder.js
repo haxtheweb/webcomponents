@@ -590,6 +590,15 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     ) {
       palette = String(store.manifest.metadata.theme.variables.palette).trim();
     }
+    // fallback to the theme's own default when the site has no palette defined
+    if (
+      (palette === null || palette === "") &&
+      store.themeElement &&
+      typeof store.themeElement.dataPalette !== typeof undefined &&
+      store.themeElement.dataPalette !== null
+    ) {
+      palette = String(store.themeElement.dataPalette).trim();
+    }
     return palette;
   }
 

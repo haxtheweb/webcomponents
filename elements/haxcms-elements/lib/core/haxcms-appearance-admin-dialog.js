@@ -579,6 +579,26 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     };
   }
 
+  _getSupportedPalettesForTheme(themeElement) {
+    if (!themeElement) {
+      return null;
+    }
+    // prefer backend registry if available
+    const theme = this.__themesRegistry && this.__themesRegistry[themeElement];
+    if (theme && Array.isArray(theme.supportedPalettes) && theme.supportedPalettes.length > 0) {
+      return theme.supportedPalettes;
+    }
+    // fallback: read from the custom element class if already defined
+    const ElClass = globalThis.customElements.get(themeElement);
+    if (ElClass && ElClass.supportedPalettes) {
+      const palettes = ElClass.supportedPalettes;
+      if (Array.isArray(palettes) && palettes.length > 0) {
+        return palettes;
+      }
+    }
+    return null;
+  }
+
   _buildAppearanceGroups(manifest) {
     const themeElement = this._normalizeFieldValue(
       "manifest-metadata-theme-element",
@@ -590,6 +610,18 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         : "",
     );
     const regionItems = this._buildRegionItemsList();
+    const paletteOptions = this._getSupportedPalettesForTheme(themeElement);
+    const paletteField = {
+      property: "manifest-metadata-theme-variables-palette",
+      title: "Palette",
+      description:
+        "DDD palette applied at theme scope for color-token cascading",
+      inputMethod: "hax-palette-picker",
+      required: false,
+    };
+    if (paletteOptions) {
+      paletteField.options = paletteOptions;
+    }
     return [
       {
         key: "theme",
@@ -617,14 +649,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         description: "Control accent colors and DDD palette tokens.",
         open: false,
         fields: [
-          {
-            property: "manifest-metadata-theme-variables-palette",
-            title: "Palette",
-            description:
-              "DDD palette applied at theme scope for color-token cascading",
-            inputMethod: "hax-palette-picker",
-            required: false,
-          },
+          paletteField,
           {
             property: "manifest-metadata-theme-variables-cssVariable",
             title: "Accent color",
@@ -759,11 +784,25 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         "manifest-metadata-theme-variables-cssVariable",
         variables.cssVariable,
       );
-    values["manifest-metadata-theme-variables-palette"] =
-      this._normalizeFieldValue(
-        "manifest-metadata-theme-variables-palette",
-        variables.palette,
-      );
+    if (
+      typeof variables.palette !== "undefined" &&
+      variables.palette !== null
+    ) {
+      values["manifest-metadata-theme-variables-palette"] =
+        this._normalizeFieldValue(
+          "manifest-metadata-theme-variables-palette",
+          variables.palette,
+        );
+    } else if (
+      store.themeElement &&
+      typeof store.themeElement.dataPalette !== typeof undefined &&
+      store.themeElement.dataPalette !== null
+    ) {
+      values["manifest-metadata-theme-variables-palette"] =
+        `${store.themeElement.dataPalette}`.trim();
+    } else {
+      values["manifest-metadata-theme-variables-palette"] = "";
+    }
     values["manifest-metadata-theme-variables-icon"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-variables-icon",
@@ -967,6 +1006,44 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     if (groupKey) {
       this.__groupValues[groupKey] = incoming;
     }
+    // if the theme changed, update the palette field options
+    if (incoming.hasOwnProperty("manifest-metadata-theme-element")) {
+      this._updatePaletteFieldOptions(incoming["manifest-metadata-theme-element"]);
+    }
+  }
+
+  _updatePaletteFieldOptions(themeElement) {
+    if (!themeElement || !this.groups) {
+      return;
+    }
+    const paletteOptions = this._getSupportedPalettesForTheme(themeElement);
+    const paletteGroupIndex = this.groups.findIndex((g) => g.key === "palette");
+    if (paletteGroupIndex === -1) {
+      return;
+    }
+    const paletteGroup = {
+      ...this.groups[paletteGroupIndex],
+      fields: [...this.groups[paletteGroupIndex].fields],
+    };
+    const paletteFieldIndex = paletteGroup.fields.findIndex(
+      (f) => f.property === "manifest-metadata-theme-variables-palette",
+    );
+    if (paletteFieldIndex === -1) {
+      return;
+    }
+    const paletteField = { ...paletteGroup.fields[paletteFieldIndex] };
+    if (paletteOptions) {
+      paletteField.options = paletteOptions;
+    } else if (paletteField.hasOwnProperty("options")) {
+      delete paletteField.options;
+    }
+    paletteGroup.fields[paletteFieldIndex] = paletteField;
+    this.groups = [
+      ...this.groups.slice(0, paletteGroupIndex),
+      paletteGroup,
+      ...this.groups.slice(paletteGroupIndex + 1),
+    ];
+    this.requestUpdate();
   }
 
   _regionValueToSavePayload(value) {

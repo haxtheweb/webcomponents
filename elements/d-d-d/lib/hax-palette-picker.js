@@ -341,7 +341,9 @@ class HaxPalettePicker extends DDD {
   _syncValueToOption() {
     const selectedOption =
       this._getMatchedOption(this.value) ||
-      this._getMatchedOption(this.fallbackValue);
+      (this.value === null || this.value === undefined || this.value === ""
+        ? null
+        : this._getMatchedOption(this.fallbackValue));
     if (selectedOption) {
       this.selectedKey = selectedOption.key;
       if (this.value !== selectedOption.dataPalette) {

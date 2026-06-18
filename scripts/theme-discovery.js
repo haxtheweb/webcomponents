@@ -187,6 +187,21 @@ function extractThemePriority(content) {
   return priority !== null ? priority : 0;
 }
 
+/**
+ * Extract supported palette numbers from a JSDoc block.
+ * Supports comma-separated values: @haxcms-theme-palettes 0, 4, 5, 8
+ */
+function extractThemePalettes(content) {
+  const match = content.match(/@haxcms-theme-palettes\s+([^\n]+)/i);
+  if (match) {
+    return match[1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter((s) => s !== '');
+  }
+  return null;
+}
+
 function extractThemeHidden(content, elementName) {
   // Prefer explicit hidden flag
   const hidden = extractBooleanDocblockTag(content, 'haxcms-theme-hidden');
@@ -345,6 +360,7 @@ async function discoverThemes() {
             hidden: hidden,
             priority: priority,
             terrible: extractThemeTerrible(content, elementName),
+            supportedPalettes: extractThemePalettes(content),
           };
           
           // Extract the class name from the content for inheritance tracking
@@ -395,8 +411,9 @@ async function discoverThemes() {
             hidden: hidden,
             priority: priority,
             terrible: extractThemeTerrible(content, elementName),
+            supportedPalettes: extractThemePalettes(content),
           };
-          
+
           // Extract the class name for future inheritance tracking
           const classMatch = content.match(/class\s+(\w+)\s+extends/);
           if (classMatch) {

@@ -5726,7 +5726,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return false;
     }
 
-    if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
+    if (this.editMode && HAXStore.haxTray && HAXStore.haxTray.trayDetail === "view-source") {
       this._confirmHtmlSourceExit(e);
       return false;
     }
@@ -6638,6 +6638,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._openAppearanceSettings(true, "Appearance");
   }
   async _cancelButtonTap(e) {
+    if (!HAXStore.activeHaxBody) {
+      this._cancelEditing(e);
+      return false;
+    }
     const body = await HAXStore.activeHaxBody.haxToContent();
     if (body != this._originalContent) {
       this._confirmCancelEditing(e);
@@ -7887,7 +7891,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (newValue) {
       // store a content copy of original state as text, waiting for a paint / full setup
       setTimeout(async () => {
-        this._originalContent = await HAXStore.activeHaxBody.haxToContent();
+        if (HAXStore.activeHaxBody) {
+          this._originalContent = await HAXStore.activeHaxBody.haxToContent();
+        }
       }, 100);
       this.__editIcon = "icons:save";
       SuperDaemonInstance.appendContext("HAX");

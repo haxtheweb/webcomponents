@@ -36,23 +36,29 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
  * @haxcms-theme-category Course
  * @haxcms-theme-internal false
  * @haxcms-theme-priority -2
+ * @haxcms-theme-palettes 4, 5
  * @demo demo/index.html
  * @element clean-one
+ *
+ * Palettes supported by this theme:
+ * 4 = Boring Blue Gray
+ * 5 = Monotone (default)
  */
 class CleanOne extends DDDSuper(
   LTIResizingMixin(
-  PrintBranchMixin(
-    PDFPageMixin(
-      QRCodeMixin(
-        HAXCMSThemeParts(
-          HAXCMSMobileMenuMixin(
-            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+    PrintBranchMixin(
+      PDFPageMixin(
+        QRCodeMixin(
+          HAXCMSThemeParts(
+            HAXCMSMobileMenuMixin(
+              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
+            ),
           ),
         ),
       ),
     ),
   ),
-)) {
+) {
   //styles function
   static get styles() {
     return [
@@ -70,16 +76,42 @@ class CleanOne extends DDDSuper(
           --ddd-palette-6: var(--ddd-palette-color-6, default);
           --ddd-palette-7: var(--ddd-palette-color-7, default);
 
-          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
-          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
-          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
-          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-6));
-          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-7));
-          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-4));
-          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
-          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-2));
-          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-3));
-
+          --ddd-lightDark-background: light-dark(
+            var(--ddd-palette-light),
+            var(--ddd-palette-dark)
+          );
+          --ddd-lightDark-text: light-dark(
+            var(--ddd-palette-dark),
+            var(--ddd-palette-light)
+          );
+          --ddd-lightDark-1: light-dark(
+            var(--ddd-palette-1),
+            var(--ddd-palette-5)
+          );
+          --ddd-lightDark-2: light-dark(
+            var(--ddd-palette-2),
+            var(--ddd-palette-6)
+          );
+          --ddd-lightDark-3: light-dark(
+            var(--ddd-palette-3),
+            var(--ddd-palette-7)
+          );
+          --ddd-lightDark-4: light-dark(
+            var(--ddd-palette-4),
+            var(--ddd-palette-4)
+          );
+          --ddd-lightDark-5: light-dark(
+            var(--ddd-palette-5),
+            var(--ddd-palette-1)
+          );
+          --ddd-lightDark-6: light-dark(
+            var(--ddd-palette-6),
+            var(--ddd-palette-2)
+          );
+          --ddd-lightDark-7: light-dark(
+            var(--ddd-palette-7),
+            var(--ddd-palette-3)
+          );
 
           width: 100%;
           margin: 0;
@@ -150,10 +182,10 @@ class CleanOne extends DDDSuper(
           --site-git-corner-background: var(--ddd-lightDark-7);
           --site-git-corner-color: var(--ddd-lightDark-1);
           --simple-icon-fill-color: var(--ddd-lightDark-1);
-
         }
 
-        button:focus, button:hover{
+        button:focus,
+        button:hover {
           --simple-icon-button-background-color: var(--ddd-palette-color-1);
         }
         .pdf-page-btn,
@@ -169,12 +201,14 @@ class CleanOne extends DDDSuper(
           --site-menu-button-icon-fill-color: var(--ddd-palette-1);
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
-          --site-menu-button-button-hover-background-color: var(--ddd-lightDark-2);
+          --site-menu-button-button-hover-background-color: var(
+            --ddd-lightDark-2
+          );
         }
         scroll-button,
         site-breadcrumb {
           color: var(--ddd-lightDark-1);
-          --site-breadcrumb-color:var(--ddd-lightDark-4);
+          --site-breadcrumb-color: var(--ddd-lightDark-4);
           --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
 
@@ -201,7 +235,7 @@ class CleanOne extends DDDSuper(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          background-color:var(--ddd-lightDark-7);
+          background-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-1);
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease-in-out;
@@ -504,7 +538,7 @@ class CleanOne extends DDDSuper(
           align-content: center;
           flex-direction: column;
           font-size: 40px;
-          color:var(--ddd-lightDark-1);
+          color: var(--ddd-lightDark-1);
           text-align: center;
         }
         @media screen and (max-width: 600px) {
@@ -581,10 +615,8 @@ class CleanOne extends DDDSuper(
           padding: 6px;
           background: 0 0;
           transition: top 0.3s ease-in-out;
-          border-bottom: 1px solid
-            var(--ddd-lightDark-6);
-          border-top: 1px solid
-            var(--ddd-lightDark-6);
+          border-bottom: 1px solid var(--ddd-lightDark-6);
+          border-top: 1px solid var(--ddd-lightDark-6);
           margin-bottom: 10px;
           margin-top: -1px;
         }
@@ -599,16 +631,16 @@ class CleanOne extends DDDSuper(
     ];
   }
 
-      updated(changedProperties) {
-      super.updated(changedProperties);
-      if (changedProperties.has("dataPalette")) {
-        UserScaffoldInstance.writeMemory(
-          "HAXCMSSitePalette",
-          this.dataPalette,
-          "long",
-        );
-      }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("dataPalette")) {
+      UserScaffoldInstance.writeMemory(
+        "HAXCMSSitePalette",
+        this.dataPalette,
+        "long",
+      );
     }
+  }
 
   // render function
   render() {
@@ -729,6 +761,10 @@ class CleanOne extends DDDSuper(
     }
   }
   // properties available to the custom element for data binding
+  static get supportedPalettes() {
+    return ["4", "5"];
+  }
+
   static get properties() {
     return {
       ...super.properties,
@@ -751,8 +787,7 @@ class CleanOne extends DDDSuper(
    */
   constructor() {
     super();
-     const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
-        this.dataPalette = storedPalette === "" || storedPalette === null ? 5 : storedPalette;
+    this.dataPalette = 5;
     this.searchTerm = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
@@ -784,8 +819,10 @@ class CleanOne extends DDDSuper(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :host, html, body{
-         --ddd-palette-light: var(--ddd-theme-default-white);
+        :host,
+        html,
+        body {
+          --ddd-palette-light: var(--ddd-theme-default-white);
           --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
           --ddd-palette-1: var(--ddd-palette-color-1, default);
@@ -796,16 +833,43 @@ class CleanOne extends DDDSuper(
           --ddd-palette-6: var(--ddd-palette-color-6, default);
           --ddd-palette-7: var(--ddd-palette-color-7, default);
 
-          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
-          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
-          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
-          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-4));
-          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
-          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
-          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
-          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
-          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
-      }
+          --ddd-lightDark-background: light-dark(
+            var(--ddd-palette-light),
+            var(--ddd-palette-dark)
+          );
+          --ddd-lightDark-text: light-dark(
+            var(--ddd-palette-dark),
+            var(--ddd-palette-light)
+          );
+          --ddd-lightDark-1: light-dark(
+            var(--ddd-palette-1),
+            var(--ddd-palette-5)
+          );
+          --ddd-lightDark-2: light-dark(
+            var(--ddd-palette-2),
+            var(--ddd-palette-4)
+          );
+          --ddd-lightDark-3: light-dark(
+            var(--ddd-palette-3),
+            var(--ddd-palette-3)
+          );
+          --ddd-lightDark-4: light-dark(
+            var(--ddd-palette-4),
+            var(--ddd-palette-2)
+          );
+          --ddd-lightDark-5: light-dark(
+            var(--ddd-palette-5),
+            var(--ddd-palette-1)
+          );
+          --ddd-lightDark-6: light-dark(
+            var(--ddd-palette-6),
+            var(--ddd-palette-6)
+          );
+          --ddd-lightDark-7: light-dark(
+            var(--ddd-palette-7),
+            var(--ddd-palette-7)
+          );
+        }
         body stop-note a,
         body stop-note a:any-link,
         body stop-note a:-webkit-any-link {
@@ -814,7 +878,6 @@ class CleanOne extends DDDSuper(
       `,
     ];
   }
-
 
   /**
    * life cycle, element is afixed to the DOM
@@ -835,7 +898,10 @@ class CleanOne extends DDDSuper(
 
     const params = new URLSearchParams(store.currentRouterLocation.search);
     // if we have a search param already, set it to the field on open
-    if (store.getInternalRoute() === "displays/search" && params.get("search")) {
+    if (
+      store.getInternalRoute() === "displays/search" &&
+      params.get("search")
+    ) {
       import(
         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
@@ -880,7 +946,7 @@ class CleanOne extends DDDSuper(
       requestAnimationFrame(() => this._syncViewportLayout());
     }
   }
-  
+
   prevPage(e) {
     super.prevPage(e);
   }

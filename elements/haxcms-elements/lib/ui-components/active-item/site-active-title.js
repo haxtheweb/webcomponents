@@ -92,6 +92,9 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           // micro-task so slotted children are inhjected correctly
           setTimeout(() => {
             const haxStore = globalThis.HaxStore.requestAvailability();
+            if (!haxStore || !haxStore.activeHaxBody) {
+              return;
+            }
             this.activateController = new AbortController();
             if (this.activePageBreak) {
               this.addEventListener(
@@ -109,34 +112,27 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "title":
-                        this.activeTitle =
-                          haxStore.activeHaxBody.querySelector(
-                            "page-break",
-                          ).title;
-                        this.__title = this._makeTitle(
-                          this.dynamicMethodology,
-                          this.activeTitle,
-                          this.parentTitle,
-                          this.ancestorTitle,
+                        const pageBreakTitle = haxStore.activeHaxBody.querySelector(
+                          "page-break",
                         );
+                        if (pageBreakTitle) {
+                          this.activeTitle = pageBreakTitle.title;
+                          this.__title = this._makeTitle(
+                            this.dynamicMethodology,
+                            this.activeTitle,
+                            this.parentTitle,
+                            this.ancestorTitle,
+                          );
+                        }
                         break;
                       case "icon":
                       case "page-type":
-                        if (
-                          haxStore.activeHaxBody.querySelector("page-break")
-                            .icon
-                        ) {
-                          this.icon =
-                            haxStore.activeHaxBody.querySelector(
-                              "page-break",
-                            ).icon;
-                        } else if (
-                          haxStore.activeHaxBody.querySelector("page-break")
-                            .pageType
-                        ) {
+                        const pageBreakIcon = haxStore.activeHaxBody.querySelector("page-break");
+                        if (pageBreakIcon && pageBreakIcon.icon) {
+                          this.icon = pageBreakIcon.icon;
+                        } else if (pageBreakIcon && pageBreakIcon.pageType) {
                           this.icon = iconFromPageType(
-                            haxStore.activeHaxBody.querySelector("page-break")
-                              .pageType,
+                            pageBreakIcon.pageType,
                           );
                         } else {
                           this.icon = null;
@@ -147,9 +143,10 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                 }
               });
             });
-            if (haxStore.activeHaxBody.querySelector("page-break")) {
+            const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+            if (pageBreak) {
               this._inProgressPageBreak.observe(
-                haxStore.activeHaxBody.querySelector("page-break"),
+                pageBreak,
                 {
                   attributeFilter: ["title", "page-type", "icon"],
                   attributes: true,

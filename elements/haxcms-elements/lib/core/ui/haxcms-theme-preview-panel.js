@@ -340,6 +340,12 @@ class HAXCMSThemePreviewPanel extends DDD {
       ) {
         this.activePalette =
           `${this.__snapshotThemeData.variables.palette}`.trim();
+      } else if (
+        store.themeElement &&
+        typeof store.themeElement.dataPalette !== typeof undefined &&
+        store.themeElement.dataPalette !== null
+      ) {
+        this.activePalette = `${store.themeElement.dataPalette}`.trim();
       } else {
         this.activePalette = "";
       }
@@ -370,6 +376,12 @@ class HAXCMSThemePreviewPanel extends DDD {
         manifest.metadata.theme.variables.palette !== null
       ) {
         activePalette = `${manifest.metadata.theme.variables.palette}`.trim();
+      } else if (
+        store.themeElement &&
+        typeof store.themeElement.dataPalette !== typeof undefined &&
+        store.themeElement.dataPalette !== null
+      ) {
+        activePalette = `${store.themeElement.dataPalette}`.trim();
       }
     }
     this.selectedTheme = activeTheme;
@@ -436,6 +448,26 @@ class HAXCMSThemePreviewPanel extends DDD {
       return new URL(packagePath, import.meta.url).href;
     }
     return thumbnail;
+  }
+
+  _getSupportedPalettesForTheme(themeKey) {
+    if (!themeKey) {
+      return null;
+    }
+    // prefer backend registry if available
+    const theme = this._themesRegistry && this._themesRegistry[themeKey];
+    if (theme && Array.isArray(theme.supportedPalettes) && theme.supportedPalettes.length > 0) {
+      return theme.supportedPalettes;
+    }
+    // fallback: read from the custom element class if already defined
+    const ElClass = globalThis.customElements.get(themeKey);
+    if (ElClass && ElClass.supportedPalettes) {
+      const palettes = ElClass.supportedPalettes;
+      if (Array.isArray(palettes) && palettes.length > 0) {
+        return palettes;
+      }
+    }
+    return null;
   }
 
   _buildThemeOptions() {
@@ -736,6 +768,7 @@ class HAXCMSThemePreviewPanel extends DDD {
               .value=${this.selectedPalette}
               .activeValue=${this.activePalette}
               .showStatusFlags=${true}
+              .options=${this._getSupportedPalettesForTheme(this.selectedTheme)}
               @value-changed=${this._paletteValueChanged}
             ></hax-palette-picker>
           </div>

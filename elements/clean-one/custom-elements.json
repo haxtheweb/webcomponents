@@ -22,6 +22,12 @@
             },
             {
               "kind": "field",
+              "name": "supportedPalettes",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "description": "Store the tag name to make it easier to obtain directly.",
@@ -38,8 +44,7 @@
                 {
                   "name": "e"
                 }
-              ],
-              "description": "Previous page to hook into when prev is hit"
+              ]
             },
             {
               "kind": "method",
@@ -50,6 +55,17 @@
                 }
               ],
               "description": "Next page to hook into when next is hit"
+            },
+            {
+              "kind": "field",
+              "name": "dataPalette",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "attribute": "data-palette",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -76,6 +92,14 @@
           ],
           "attributes": [
             {
+              "name": "data-palette",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "fieldName": "dataPalette"
+            },
+            {
               "name": "searchTerm",
               "type": {
                 "text": "string"
@@ -85,6 +109,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
             {
               "name": "LTIResizingMixin",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js"
