@@ -131,6 +131,9 @@ class SiteActiveTags extends I18NMixin(LitElement) {
           // micro-task so slotted children are inhjected correctly
           setTimeout(() => {
             const haxStore = globalThis.HaxStore.requestAvailability();
+            if (!haxStore.activeHaxBody) {
+              return;
+            }
             this.activateController = new AbortController();
             this.addEventListener(
               "click",
@@ -146,24 +149,22 @@ class SiteActiveTags extends I18NMixin(LitElement) {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "tags":
-                        this.tags =
-                          haxStore.activeHaxBody.querySelector(
-                            "page-break",
-                          ).tags;
+                        const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+                        if (pageBreak) {
+                          this.tags = pageBreak.tags;
+                        }
                         break;
                     }
                     break;
                 }
               });
             });
-            if (haxStore.activeHaxBody.querySelector("page-break")) {
-              this._inProgressPageBreak.observe(
-                haxStore.activeHaxBody.querySelector("page-break"),
-                {
-                  attributeFilter: ["tags"],
-                  attributes: true,
-                },
-              );
+            const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+            if (pageBreak) {
+              this._inProgressPageBreak.observe(pageBreak, {
+                attributeFilter: ["tags"],
+                attributes: true,
+              });
             }
           }, 0);
         } else {
