@@ -196,6 +196,7 @@ globalThis.ResponsiveUtility.setSize = (detail, width = 0) => {
   } else {
     size = "xl";
   }
+  width = Math.round(width);
   if (!el.getAttribute(custom) || width !== el.getAttribute(custom))
     el.setAttribute(custom, width);
   if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
