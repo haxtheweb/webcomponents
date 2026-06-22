@@ -29,9 +29,27 @@ function normalizePath(value = '') {
   return normalized
 }
 
+function deriveBasePath(appSettings = {}) {
+  const siteApi = normalizePath(appSettings.siteApiBasePath || '')
+  if (siteApi !== '') {
+    const xApiIdx = siteApi.indexOf('/x/api')
+    if (xApiIdx > 0) {
+      return siteApi.substring(0, xApiIdx)
+    }
+  }
+  return ''
+}
+
 function deriveSystemApiBasePath(appSettings = {}) {
-  const fromSettings = normalizePath(appSettings.systemApiBasePath || '')
+  const basePath = deriveBasePath(appSettings)
+  let fromSettings = normalizePath(appSettings.systemApiBasePath || '')
   if (fromSettings !== '') {
+    // In HAXiam / multi-tenant contexts, systemApiBasePath may be relative
+    // while siteApiBasePath already includes the tenant base path. Prepend
+    // the base path so that registry endpoints resolve correctly.
+    if (basePath !== '' && fromSettings.indexOf(basePath + '/') !== 0) {
+      fromSettings = basePath + fromSettings
+    }
     return fromSettings
   }
   const explicitOpenApiPath = cleanString(appSettings.systemOpenApiPath || '')
@@ -54,8 +72,13 @@ function deriveSystemApiBasePath(appSettings = {}) {
 }
 
 function getSystemOpenApiPath(appSettings = {}, systemApiBasePath = '') {
-  const explicitPath = cleanString(appSettings.systemOpenApiPath || '')
+  const basePath = deriveBasePath(appSettings)
+  let explicitPath = cleanString(appSettings.systemOpenApiPath || '')
   if (explicitPath !== '') {
+    // Prepend tenant base path if the explicit path is relative
+    if (explicitPath.charAt(0) !== '/' && basePath !== '') {
+      explicitPath = basePath + '/' + explicitPath
+    }
     return explicitPath
   }
   if (systemApiBasePath === '') {

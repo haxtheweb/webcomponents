@@ -151,6 +151,11 @@ export class AppHaxBackendAPI extends LitElement {
     this.__maxRefreshRetries = 2;
     this.__validatedJwt = "";
     this.__systemApiRegistryReady = Promise.resolve(false);
+    this.__authFailureCount = 0;
+    this.__lastAuthFailureTime = 0;
+    this.__maxRapidFailures = 3;
+    this.__rapidFailureWindowMs = 10000;
+    console.log('[AuthLoop] constructor: jwt=' + (this.jwt ? this.jwt.substring(0, 20) + '...' : 'null') + ' basePath=' + this.basePath);
     this.method =
       globalThis && globalThis.appSettings && globalThis.appSettings.demo
         ? "GET"
@@ -166,6 +171,36 @@ export class AppHaxBackendAPI extends LitElement {
     }
     this.lastResponse = {};
     this.appSettings = {};
+    // Detect stale store.appSettings from previous context and update before autorun
+    const freshAppSettings =
+      globalThis.appSettings &&
+      typeof globalThis.appSettings === 'object' &&
+      globalThis.appSettings.connectionTest
+        ? globalThis.appSettings
+        : null;
+    const storeSettings = toJS(store.appSettings);
+    if (
+      freshAppSettings &&
+      storeSettings.systemApiBasePath !== freshAppSettings.systemApiBasePath
+    ) {
+      console.log(
+        '[AuthLoop] constructor updating store.appSettings from fresh globalThis.appSettings',
+      );
+      store.appSettings = freshAppSettings;
+      this.appSettings = freshAppSettings;
+      if (this.appSettings.method) {
+        this.method = this.appSettings.method;
+      }
+      if (this.appSettings.jwt) {
+        console.log(
+          '[AuthLoop] constructor appSettings.jwt -> this.jwt=' +
+            this.appSettings.jwt.substring(0, 20) +
+            '...',
+        );
+        this.jwt = this.appSettings.jwt;
+      }
+      this._configureSystemApiRegistry();
+    }
     autorun(() => {
       this.appSettings = toJS(store.appSettings);
       // allow setting in session driven environments
@@ -173,6 +208,11 @@ export class AppHaxBackendAPI extends LitElement {
         this.method = this.appSettings.method;
       }
       if (this.appSettings.jwt) {
+        console.log(
+          '[AuthLoop] autorun appSettings.jwt -> this.jwt=' +
+            this.appSettings.jwt.substring(0, 20) +
+            '...',
+        );
         this.jwt = this.appSettings.jwt;
       }
       this._configureSystemApiRegistry();
@@ -389,16 +429,37 @@ export class AppHaxBackendAPI extends LitElement {
     return response;
   }
   _triggerLogout() {
+    console.log('[AuthLoop] _triggerLogout dispatched');
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: true,
+        detail: { redirect: true },
       }),
     );
   }
   _clearAuthSession(triggerLogout = false) {
+    const now = Date.now();
+    if (now - this.__lastAuthFailureTime < this.__rapidFailureWindowMs) {
+      this.__authFailureCount++;
+    } else {
+      this.__authFailureCount = 1;
+    }
+    this.__lastAuthFailureTime = now;
+    console.log('[AuthLoop] _clearAuthSession failureCount=' + this.__authFailureCount + ' triggerLogout=' + triggerLogout);
+
+    if (this.__authFailureCount > this.__maxRapidFailures) {
+      console.warn('Auth loop detected; redirecting to login.');
+      const redirectUrl = this._renderUrl(this.appSettings && this.appSettings.redirectUrl ? this.appSettings.redirectUrl : '');
+      if (redirectUrl) {
+        globalThis.location.href = redirectUrl;
+      } else {
+        globalThis.location.reload();
+      }
+      return;
+    }
+
     this.jwt = null;
     store.jwt = null;
     this.__validatedJwt = "";
@@ -413,9 +474,20 @@ export class AppHaxBackendAPI extends LitElement {
       this._triggerLogout();
     }
   }
+  _renderUrl(pathOrUrl) {
+    if (!pathOrUrl) {
+      return '';
+    }
+    if (pathOrUrl.startsWith('http://') || pathOrUrl.startsWith('https://')) {
+      return pathOrUrl;
+    }
+    return `${this.basePath}${pathOrUrl}`;
+  }
   async _validateConnection() {
+    console.log('[AuthLoop] _validateConnection start');
     if (!(this.appSettings && this.appSettings.connectionTest)) {
       const hasJWT = this._hasValidJWT(this.jwt);
+      console.log('[AuthLoop] no connectionTest setting, hasJWT=' + hasJWT);
       store.authValidated = hasJWT;
       store.authTesting = false;
       return hasJWT;
@@ -426,9 +498,11 @@ export class AppHaxBackendAPI extends LitElement {
       this.__validatedJwt === this.jwt &&
       store.authValidated === true
     ) {
+      console.log('[AuthLoop] already validated');
       return true;
     }
     if (this.__connectionTestPending) {
+      console.log('[AuthLoop] connectionTest pending, returning promise');
       return this.__connectionTestPending;
     }
     store.authTesting = true;
@@ -442,20 +516,27 @@ export class AppHaxBackendAPI extends LitElement {
     const options = {
       method: this.method,
     };
-    let requestUrl = `${this.basePath}${this.appSettings.connectionTest}`;
+    if (this._hasValidJWT(this.jwt)) {
+      options.headers = {
+        Authorization: `Bearer ${this.jwt}`,
+      };
+    }
+    let requestUrl = this._renderUrl(this.appSettings.connectionTest);
+    console.log('[AuthLoop] connectionTest URL=' + requestUrl + ' method=' + this.method + ' headers=' + JSON.stringify(options.headers || {}) + ' payload=' + JSON.stringify(payload));
     if (this.method === "GET") {
       const search = new URLSearchParams(payload).toString();
       if (search) {
         requestUrl += `?${search}`;
       }
     } else {
-      options.headers = {
+      options.headers = Object.assign(options.headers || {}, {
         "Content-Type": "application/json",
-      };
+      });
       options.body = JSON.stringify(payload);
     }
     this.__connectionTestPending = fetch(requestUrl, options)
       .then(async (response) => {
+        console.log('[AuthLoop] connectionTest response status=' + response.status + ' ok=' + response.ok);
         if (!response.ok) {
           return {
             authenticated: false,
@@ -470,26 +551,50 @@ export class AppHaxBackendAPI extends LitElement {
         }
       })
       .then((result) => {
+        console.log('[AuthLoop] connectionTest result=' + JSON.stringify(result).substring(0, 500));
+        let isAuth = false;
+        let nextJWT = null;
+        let userName = null;
         if (result && result.authenticated) {
-          const nextJWT = result.jwt ? result.jwt : this.jwt;
-          if (this._hasValidJWT(nextJWT)) {
-            this.jwt = nextJWT;
-            store.jwt = nextJWT;
-            this.__validatedJwt = nextJWT;
-            store.authValidated = true;
-            if (result.user && typeof result.user === "string") {
-              store.user = {
-                name: result.user,
-              };
-            }
-            return true;
+          isAuth = true;
+          nextJWT = result.jwt || this.jwt;
+          userName = result.user;
+        } else if (result && result.status === 200 && result.jwt) {
+          isAuth = true;
+          nextJWT = result.jwt;
+          if (result.user && typeof result.user === 'string') {
+            userName = result.user;
+          }
+        } else if (result && result.jwt && typeof result.jwt === 'string' && result.jwt !== '') {
+          isAuth = true;
+          nextJWT = result.jwt;
+        } else if (result && result.status === 200 && result.data && result.data.jwt) {
+          isAuth = true;
+          nextJWT = result.data.jwt;
+          if (result.data.user && typeof result.data.user === 'string') {
+            userName = result.data.user;
           }
         }
+        if (isAuth && this._hasValidJWT(nextJWT)) {
+          console.log('[AuthLoop] connectionTest authenticated, nextJWT=' + nextJWT.substring(0, 20) + '... userName=' + userName);
+          this.jwt = nextJWT;
+          store.jwt = nextJWT;
+          this.__validatedJwt = nextJWT;
+          store.authValidated = true;
+          if (userName && typeof userName === 'string') {
+            store.user = {
+              name: userName,
+            };
+          }
+          return true;
+        }
+        console.log('[AuthLoop] connectionTest NOT authenticated, result keys=' + Object.keys(result || {}).join(','));
         store.authValidated = false;
         this.__validatedJwt = "";
         return false;
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log('[AuthLoop] connectionTest catch error=' + err);
         store.authValidated = false;
         this.__validatedJwt = "";
         return false;
@@ -606,11 +711,11 @@ export class AppHaxBackendAPI extends LitElement {
   render() {
     return html`<jwt-login
       jwt="${this.jwt}"
-      url="${this.basePath}${this.appSettings.login}"
+      url="${this._renderUrl(this.appSettings.login)}"
       method="${this.method}"
-      refresh-url="${this.basePath}${this.appSettings.refreshUrl}"
-      redirect-url="${this.appSettings.redirectUrl}"
-      logout-url="${this.basePath}${this.appSettings.logout}"
+      refresh-url="${this._renderUrl(this.appSettings.refreshUrl)}"
+      redirect-url="${this._renderUrl(this.appSettings.redirectUrl)}"
+      logout-url="${this._renderUrl(this.appSettings.logout)}"
       id="jwt"
       @jwt-changed="${this.jwtChanged}"
       @jwt-login-login-failed="${this.jwtFailed}"
@@ -619,17 +724,21 @@ export class AppHaxBackendAPI extends LitElement {
 
   // failed to get valid JWT, wipe current
   jwtFailed(e) {
+    console.log('[AuthLoop] jwtFailed');
     this._clearAuthSession(false);
   }
   // event meaning we either got or removed the jwt
   async jwtChanged(e) {
+    console.log('[AuthLoop] jwtChanged value=' + (e.detail.value ? e.detail.value.substring(0, 20) + '...' : 'null'));
     this.jwt = e.detail.value;
     this._configureSystemApiRegistry();
     if (!this._hasValidJWT(this.jwt)) {
+      console.log('[AuthLoop] jwtChanged invalid JWT, clearing');
       this._clearAuthSession(false);
       return;
     }
     const isAuthenticated = await this._validateConnection();
+    console.log('[AuthLoop] jwtChanged isAuthenticated=' + isAuthenticated);
     if (!isAuthenticated) {
       this._clearAuthSession(true);
       return;
@@ -690,7 +799,9 @@ export class AppHaxBackendAPI extends LitElement {
         await this.makeCall("createSite", this._formatSitePostData(), true),
     ];
     if (this.appSettings && this.appSettings.connectionTest) {
+      console.log('[AuthLoop] firstUpdated: calling connectionTest');
       this._validateConnection().then((isAuthenticated) => {
+        console.log('[AuthLoop] firstUpdated connectionTest result=' + isAuthenticated);
         if (isAuthenticated) {
           this._syncUserAfterValidation();
         } else {
