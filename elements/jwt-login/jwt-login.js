@@ -137,12 +137,6 @@ class JwtLogin extends LitElement {
     });
   }
   _jwtChanged(newValue, oldValue) {
-    const safeValue = (val) => {
-      if (typeof val === 'string') return val.substring(0, 20) + '...';
-      if (val && typeof val === 'object' && val.jwt) return val.jwt.substring(0, 20) + '...';
-      return String(val);
-    };
-    console.log('[AuthLoop] jwt-login _jwtChanged newValue=' + safeValue(newValue) + ' oldValue=' + safeValue(oldValue));
     // Extract string jwt from object if needed (defensive)
     let actualValue = newValue;
     if (newValue && typeof newValue === 'object' && newValue.jwt && typeof newValue.jwt === 'string') {
@@ -236,18 +230,15 @@ class JwtLogin extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this.ready = true;
-    console.log('[AuthLoop] jwt-login firstUpdated this.jwt=' + (this.jwt ? this.jwt.substring(0, 20) + '...' : 'null'));
     // Only load from localStorage if a parent element hasn't already provided a JWT
     if (!this.jwt) {
       try {
         const stored = localStorage.getItem(this.key);
-        console.log('[AuthLoop] jwt-login firstUpdated localStorage stored=' + (stored ? stored.substring(0, 50) : 'null'));
         if (stored) {
           this.jwt = JSON.parse(stored);
         }
       } catch (e) {
         // Corrupted localStorage value; clear it to prevent future loops
-        console.log('[AuthLoop] jwt-login firstUpdated parse error, clearing localStorage');
         localStorage.removeItem(this.key);
         this.jwt = null;
       }
@@ -274,10 +265,8 @@ class JwtLogin extends LitElement {
     if (this.method != "GET") {
       data.body = JSON.stringify(body);
     }
-    console.log('[AuthLoop] jwt-login generateRequest url=' + url + ' method=' + this.method + ' context=' + this.__context + ' bodyKeys=' + Object.keys(body).join(','));
     fetch(url, data)
       .then((response) => {
-        console.log('[AuthLoop] jwt-login generateRequest response status=' + response.status + ' ok=' + response.ok + ' context=' + this.__context);
         if (response.ok) {
           return response.json();
         } else {
@@ -306,7 +295,6 @@ class JwtLogin extends LitElement {
         }
       })
       .then((jwtData) => {
-        console.log('[AuthLoop] jwt-login generateRequest jwtData=' + JSON.stringify(jwtData).substring(0, 300) + ' context=' + this.__context);
         try {
           const token = jwtData;
           if (token) {
@@ -346,7 +334,6 @@ class JwtLogin extends LitElement {
   logoutRequest(e) {
     this.__context = "logout";
     this.__redirect = e.detail.redirect;
-    console.log('[AuthLoop] jwt-login logoutRequest logoutUrl=' + this.logoutUrl + ' redirect=' + this.__redirect + ' redirectUrl=' + this.redirectUrl);
     // we were told to logout, reset body
     this.body = {};
     // reset jwt which will do all the events / local storage work
@@ -358,15 +345,12 @@ class JwtLogin extends LitElement {
       this.logoutUrl !== "undefined"
     ) {
       if (this.isDifferentDomain(this.logoutUrl)) {
-        console.log('[AuthLoop] jwt-login logoutRequest different domain, redirecting to ' + this.logoutUrl);
         globalThis.location.href = this.logoutUrl;
       } else {
-        console.log('[AuthLoop] jwt-login logoutRequest same domain, fetch ' + this.logoutUrl);
         this.generateRequest(this.logoutUrl);
       }
     } else if (this.__redirect && this.redirectUrl) {
       // if no logout endpoint but we have redirect, go there
-      console.log('[AuthLoop] jwt-login logoutRequest no logoutUrl, redirecting to ' + this.redirectUrl);
       setTimeout(() => {
         globalThis.location.href = this.redirectUrl;
       }, 100);
@@ -388,7 +372,6 @@ class JwtLogin extends LitElement {
    * Login bridge to get a JWT and hang onto it
    */
   loginResponse(response) {
-    console.log('[AuthLoop] jwt-login loginResponse context=' + this.__context + ' response=' + (typeof response === 'string' ? response.substring(0, 30) : JSON.stringify(response).substring(0, 100)));
     // trap in case front end thinks this is a valid response..
     let actualJwt = response;
     if (response && typeof response === 'object') {
@@ -398,7 +381,6 @@ class JwtLogin extends LitElement {
         actualJwt = response.data.jwt;
       }
     }
-    console.log('[AuthLoop] jwt-login loginResponse actualJwt=' + (typeof actualJwt === 'string' ? actualJwt.substring(0, 20) + '...' : typeof actualJwt));
     switch (this.__context) {
       case "login":
         this.jwt = actualJwt;
