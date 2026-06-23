@@ -441,6 +441,10 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   hide() {
+    if (this.__dismissTimer) {
+      clearTimeout(this.__dismissTimer);
+      this.__dismissTimer = null;
+    }
     if (!this.awaitingMerlinInput) {
       // to avoid constantly running in the background
       this.walking = false;

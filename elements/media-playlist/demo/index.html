@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MediaPlaylist: media-playlist Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/video-player/video-player.js";
+      import "@haxtheweb/audio-player/audio-player.js";
+      import '../media-playlist.js';
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: var(--ddd-spacing-4);
+        font-family: var(--ddd-font-navigation);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic media-playlist demo</h3>
+      <demo-snippet>
+        <template>
+          <media-playlist dark>
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="01 The Problem" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg">
+            </video-player>
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="02 Drupal ELMS" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg">
+            </video-player>
+            <audio-player source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3" media-title="03 Podcast Episode" thumbnail-src="">
+            </audio-player>
+          </media-playlist>
+        </template>
+      </demo-snippet>
+
+      <h3>Edit mode preview</h3>
+      <demo-snippet>
+        <template>
+          <media-playlist edit>
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="01 The Problem" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg">
+            </video-player>
+            <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="02 Drupal ELMS" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg">
+            </video-player>
+            <audio-player source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3" media-title="03 Podcast Episode" thumbnail-src="">
+            </audio-player>
+          </media-playlist>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

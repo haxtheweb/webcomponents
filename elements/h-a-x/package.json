@@ -41,7 +41,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-body": "^26.0.0"
+    "@haxtheweb/editable-table": "^26.0.0",
+    "@haxtheweb/hax-body": "^26.0.0",
+    "@haxtheweb/utils": "^26.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

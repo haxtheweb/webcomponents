@@ -28,9 +28,10 @@
       "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
     },
     "dependencies": {
-      "lit": "3.3.2",
-      "@haxtheweb/d-d-d": "^25.0.0",
-      "@haxtheweb/i18n-manager": "^25.0.0"
+      "lit": "3.3.3",
+      "@haxtheweb/d-d-d": "^26.0.0",
+      "@haxtheweb/i18n-manager": "^26.0.0",
+      "@haxtheweb/utils": "^26.0.0"
     },
     "devDependencies": {
       "@babel/preset-env": "7.29.5",

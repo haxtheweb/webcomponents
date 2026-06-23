@@ -45,6 +45,7 @@
     "@haxtheweb/intersection-element": "^26.0.0",
     "@haxtheweb/schema-behaviors": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",
+    "@haxtheweb/simple-icon": "^26.0.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

@@ -140,7 +140,7 @@ class SimpleToastEl extends DDD {
     this.awaitingMerlinInput = false;
     this.duration = 3000;
     this.opened = false;
-    this.__hideTimeout = null;
+    this.__dismissTimer = null;
     this.addEventListener("animationend", this._onAnimationEnd);
   }
 
@@ -148,12 +148,10 @@ class SimpleToastEl extends DDD {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "opened" && oldValue !== undefined) {
-        // clear any pending hide timeout to prevent race conditions
-        if (this.__hideTimeout) {
-          clearTimeout(this.__hideTimeout);
-          this.__hideTimeout = null;
+        if (this.__dismissTimer) {
+          clearTimeout(this.__dismissTimer);
+          this.__dismissTimer = null;
         }
-        // notify for others listening
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
             detail: {
@@ -167,12 +165,14 @@ class SimpleToastEl extends DDD {
           setTimeout(() => {
             this.style.animation = this._getAnimation();
           }, 0);
+          if (!this.alwaysvisible && !this.awaitingMerlinInput && this.duration > 0) {
+            this.__dismissTimer = setTimeout(() => {
+              this.__dismissTimer = null;
+              this.hide();
+            }, this.duration + 600);
+          }
         } else {
-          this.style.animation = "none";
-          this.__hideTimeout = setTimeout(() => {
-            this.__hideTimeout = null;
-            this.style.animation = this._getAnimation();
-          }, 600);
+          this.hide();
         }
       }
       if (propName === "duration" && this[propName]) {
@@ -194,6 +194,10 @@ class SimpleToastEl extends DDD {
     this.setAttribute("aria-relevant", "additions text");
   }
   hide() {
+    if (this.__dismissTimer) {
+      clearTimeout(this.__dismissTimer);
+      this.__dismissTimer = null;
+    }
     this.classList.remove("show");
     this.opened = false;
   }

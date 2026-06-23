@@ -43,6 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/micro-frontend-registry": "^26.0.0",
     "@haxtheweb/q-r": "^26.0.0",

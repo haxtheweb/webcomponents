@@ -36,7 +36,7 @@
     "@haxtheweb/simple-datetime": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
     "lit": "3.3.3",
-    "mobx": "6.10.2"
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@babel/preset-env": "7.29.5",

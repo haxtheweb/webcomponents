@@ -23,11 +23,6 @@
     media-playlist:hover {
       box-shadow: var(--ddd-boxShadow-sm);
     }
-    #example {
-      --media-playlist-font-size: var(--ddd-font-size-l);
-      background-color: var(--ddd-accent-2);
-      color: var(--ddd-primary-17);
-    }
   </style>
   <title>media-playlist</title>
 </head>
@@ -35,15 +30,18 @@
 <body>
   <div id="demo">
     <h1>media-playlist</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-    <h2>Default</h2>
-    <media-playlist></media-playlist>
-    <h2>Slot usage</h2>
-    <media-playlist data-accent="2" data-primary="17"><div>Sample slot content</div></media-playlist>
-    <h2>Property usage</h2>
-    <media-playlist id="example" title="Sample property title"></media-playlist>
+    <h2>Video + Audio Playlist</h2>
+    <media-playlist dark>
+      <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="01 The Problem" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg"></video-player>
+      <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" media-title="02 Drupal ELMS" thumbnail-src="https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg"></video-player>
+      <audio-player source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3" media-title="03 Podcast Episode" thumbnail-src=""></audio-player>
+    </media-playlist>
   </div>
   <script type="module" src="./media-playlist.js"></script>
+  <script type="module">
+    import "@haxtheweb/video-player/video-player.js";
+    import "@haxtheweb/audio-player/audio-player.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

@@ -42,13 +42,16 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.4",
+    "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/hax-iconset": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/schema-behaviors": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-datetime": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
-    "lit": "3.3.3"
+    "@haxtheweb/utils": "^26.0.0",
+    "lit": "3.3.3",
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

@@ -1,51 +1,81 @@
 {
-    "api": "1",
-    "canScale": true,
-    "canEditSource": true,
-    "type": "element",
-    "designSystem": {
-        "accent": true,
-        "primary": true,
-        "card": true,
-        "text": true,
-        "designTreatment": false
-    },
-    "gizmo": {
-        "title": "media-playlist",
-        "description": "",
-        "icon": "icons:android",
-        "color": "purple",
-        "tags": [
-            "Other"
-        ],
-        "handles": [],
-        "meta": {
-            "author": "haxtheweb"
+  "api": "1",
+  "canScale": false,
+  "canEditSource": true,
+  "type": "grid",
+  "contentEditable": true,
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Media Playlist",
+    "description": "A playlist that presents video and audio players in a player + sidebar layout.",
+    "icon": "av:playlist-play",
+    "color": "red",
+    "tags": [
+      "Media",
+      "video",
+      "audio",
+      "playlist",
+      "player"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dark",
+        "title": "Dark mode",
+        "description": "Enable dark mode for the playlist.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "activeIndex",
+        "title": "Active index",
+        "description": "Index of the active item to start on.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Aspect ratio",
+        "description": "Aspect ratio of the player area.",
+        "inputMethod": "select",
+        "options": {
+          "16:9": "16:9",
+          "4:3": "4:3",
+          "1:1": "1:1"
         }
-    },
-    "settings": {
-        "configure": [
-            {
-                "property": "title",
-                "title": "Title",
-                "description": "",
-                "inputMethod": "textfield",
-                "icon": "editor:title",
-                "required": true
-            }
-        ]
-    },
-    "saveOptions": {
-        "wipeSlot": false,
-        "unsetAttributes": []
-    },
-    "demoSchema": [
-        {
-            "tag": "media-playlist",
-            "properties": {
-              "title": "Sample property title"
-            },
-            "content": ""
-        }
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "items",
+      "edit",
+      "mediaItems"
     ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "media-playlist",
+      "properties": {
+        "dark": false
+      },
+      "content": "<video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"01 The Problem\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"02 Drupal ELMS\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><audio-player source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\" media-title=\"03 Podcast Episode\" thumbnail-src=\"\"></audio-player>"
+    }
+  ]
 }

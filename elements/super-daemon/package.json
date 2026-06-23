@@ -47,6 +47,7 @@
     "@haxtheweb/future-terminal-text": "^26.0.0",
     "@haxtheweb/hal-9000": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",
+    "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-fields": "^26.0.0",
     "@haxtheweb/simple-filter": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",

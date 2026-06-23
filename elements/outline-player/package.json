@@ -41,6 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/hax-iconset": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/map-menu": "^26.0.0",
@@ -48,7 +49,8 @@
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
     "@polymer/app-layout": "3.0.2",
-    "@polymer/polymer": "3.5.2"
+    "@polymer/polymer": "3.5.2",
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

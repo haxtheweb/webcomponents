@@ -43,6 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/responsive-utility": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-fields": "^26.0.0",

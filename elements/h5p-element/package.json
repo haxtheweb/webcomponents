@@ -43,6 +43,7 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
+    "@haxtheweb/iframe-loader": "^26.0.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

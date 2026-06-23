@@ -31,6 +31,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/multiple-choice": "^26.0.0",
+    "@haxtheweb/simple-toolbar": "^26.0.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

@@ -45,7 +45,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/file-system-broker": "^26.0.0",
     "@haxtheweb/future-terminal-text": "^26.0.0",
+    "@haxtheweb/hax-body": "^26.0.0",
     "@haxtheweb/grid-plate": "^26.0.0",
     "@haxtheweb/h-a-x": "^26.0.0",
     "@haxtheweb/hax-iconset": "^26.0.0",
