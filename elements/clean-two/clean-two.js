@@ -312,6 +312,7 @@ class CleanTwo extends LTIResizingMixin(
           }
         }
         site-menu {
+          padding-bottom: var(--ddd-spacing-3);
           --site-menu-color: light-dark(
             var(--ddd-primary-4),
             var(--ddd-accent-6)

@@ -145,7 +145,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     // - if the current page has a parent, it's Media
     this.__disposer.push(autorun((reaction) => {
       const _mobx_val_0 = toJS(store.activeItem);
-      const _mobx_val_1 = toJS(item.metadata && item.metadata.tags);
       Promise.resolve().then(() => {
         const active = _mobx_val_0;
         if (active) {
@@ -199,7 +198,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
               // get tags for all children of activeItem, push to arrays
               items.forEach(item => {
-                const tagArray = normalizeTags(_mobx_val_1);
+                const tagArray = normalizeTags(item.metadata && item.metadata.tags);
                 if (tagArray.length > 0) {
                   if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
                     categoryTags.push(tagArray[0]);
@@ -948,14 +947,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         max-width: 1236px;
         align-items: center;
         gap: 10px;
-        color: var(--ddd-lightDark-3);
+        color: var(--ddd-lightDark-text);
         font-family: var(--portfolio-font-header);
         font-size: clamp(14px, 2vw, 18px);
         view-transition-name: location;
       }
 
       .breadcrumb a {
-        color: var(--ddd-lightDark-3);
+        color: var(--ddd-lightDark-text);
         text-decoration: none;
         border-bottom: 2px solid var(--ddd-lightDark-4);
         font-weight: 450;
@@ -1047,7 +1046,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-category a {
-        color: var(--ddd-lightDark-3);
+        color: var(--ddd-lightDark-text);
       }
 
       .listing-grid {
@@ -1082,7 +1081,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardtitle {
-        color: var(--ddd-lightDark-2);
+        color: var(--ddd-lightDark-text);
         text-decoration: underline;
         text-decoration-color: var(--ddd-lightDark-5);
         text-decoration-thickness: 4px !important;
@@ -1097,7 +1096,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardtag {
-        color: var(--ddd-palette-light);
+        color: var(--ddd-lightDark-text);
         font-family: var(--portfolio-font-body);
         font-size: clamp(10px, 2vw, 16px);
         font-weight: 400;

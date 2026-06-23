@@ -44,7 +44,9 @@ export class AppHaxSearchResults extends SimpleColors {
           this.searchItems = manifest.items;
           this.displayItems = [...this.searchItems];
           // Ensure themes data is loaded for thumbnails
-          store.loadThemesData();
+          store.loadThemesData().then(() => {
+            this.requestUpdate();
+          });
         }
       });
     });

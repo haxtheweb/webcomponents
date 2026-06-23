@@ -39,7 +39,6 @@
     "node_modules/@lit-labs/virtualizer/layouts/shared/*.*.map",
     "node_modules/@github/time-elements/dist/*.js",
     "node_modules/@haxtheweb/*/*.js",
-    "node_modules/@haxtheweb/app-hax/lib/v1/*",
     "node_modules/@haxtheweb/*/lib/*",
     "node_modules/@haxtheweb/*/lib/**",
     "node_modules/@haxtheweb/*/locales/*.json",

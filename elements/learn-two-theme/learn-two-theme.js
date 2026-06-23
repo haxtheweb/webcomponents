@@ -479,6 +479,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         <style>
           app-drawer-layout {
             --app-drawer-content-container: {
+              padding: 0 !important;
               overflow: hidden;
               background-color: var(
                 --learn-two-theme-menu-color,

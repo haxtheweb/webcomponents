@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { store } from "../lib/v1/AppHaxStore.js";
+import { store } from "../lib/v2/AppHaxStore.js";
 import "../app-hax.js";
 
 describe("app-hax test", () => {

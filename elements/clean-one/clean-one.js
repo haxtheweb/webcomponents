@@ -154,6 +154,7 @@ class CleanOne extends DDDSuper(
           padding: 8px 4px;
         }
         site-menu {
+          padding-bottom: var(--ddd-spacing-3);
           background-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-1);
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
