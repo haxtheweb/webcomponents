@@ -2,7 +2,15 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 
 const SITE_STATE_KEY = "__HAXCMSSiteApiRegistryState";
 const SITE_OPERATION_PREFIX = "@site/";
-const SITE_METHODS = ["get", "post", "put", "patch", "delete", "options", "head"];
+const SITE_METHODS = [
+  "get",
+  "post",
+  "put",
+  "patch",
+  "delete",
+  "options",
+  "head",
+];
 
 function cleanString(value) {
   if (typeof value === "string") {
@@ -57,7 +65,9 @@ function deriveSiteApiBasePath(appSettings = {}) {
   }
   const openApiPath = cleanString(appSettings.siteOpenApiPath || "");
   if (openApiPath !== "") {
-    return normalizePath(openApiPath.replace(/\/openapi(?:\.json|\.yaml)?$/, ""));
+    return normalizePath(
+      openApiPath.replace(/\/openapi(?:\.json|\.yaml)?$/, ""),
+    );
   }
   return "";
 }
@@ -298,18 +308,25 @@ function ensureAuthProvider(state) {
   if (state.providerApplied) {
     return;
   }
-  if (!state.previousAuthProvider && typeof MicroFrontendRegistry.authProvider === "function") {
+  if (
+    !state.previousAuthProvider &&
+    typeof MicroFrontendRegistry.authProvider === "function"
+  ) {
     state.previousAuthProvider = MicroFrontendRegistry.authProvider;
   }
   const provider = async (security = [], context = {}) => {
     let headers = {};
     if (typeof state.previousAuthProvider === "function") {
-      const previousHeaders = await state.previousAuthProvider(security, context);
+      const previousHeaders = await state.previousAuthProvider(
+        security,
+        context,
+      );
       if (previousHeaders && typeof previousHeaders === "object") {
         headers = Object.assign(headers, previousHeaders);
       }
     }
-    const name = context && typeof context.name === "string" ? context.name : "";
+    const name =
+      context && typeof context.name === "string" ? context.name : "";
     if (name.indexOf(SITE_OPERATION_PREFIX) !== 0) {
       return headers;
     }
@@ -392,9 +409,7 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
   ) {
     return state.readyPromise;
   }
-  const shouldReload =
-    !sameBootstrapTarget ||
-    state.bootstrapped !== true;
+  const shouldReload = !sameBootstrapTarget || state.bootstrapped !== true;
   if (!shouldReload && state.readyPromise) {
     return state.readyPromise;
   }
@@ -403,11 +418,7 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
   state.bootstrapping = true;
   state.readyPromise = (async () => {
     try {
-      await bootstrapFromOpenApi(
-        state,
-        siteApiBasePath,
-        siteOpenApiPath,
-      );
+      await bootstrapFromOpenApi(state, siteApiBasePath, siteOpenApiPath);
       state.bootstrapped = true;
       state.bootstrapping = false;
       return true;

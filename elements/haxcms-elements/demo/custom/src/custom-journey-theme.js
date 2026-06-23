@@ -96,7 +96,9 @@ class CustomJourneyTheme extends HAXCMSLitElementTheme {
             this.location = location;
             this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
             setTimeout(() => {
-              this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
+              this.shadowRoot
+                .querySelector(".lower-header-box")
+                .scrollIntoView();
             }, 10);
           });
         } else {

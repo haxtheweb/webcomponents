@@ -12,6 +12,4 @@ try {
     cdn + "build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
     (build.type = "module"),
     def.parentNode.insertBefore(build, def);
-} catch (err) {
-
-}
+} catch (err) {}

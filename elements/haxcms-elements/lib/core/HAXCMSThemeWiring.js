@@ -255,7 +255,10 @@ const HAXCMSTheme = function (SuperClass) {
                 color = `var(${color})`;
               }
               // set this directly instead of messing w/ accentColor
-              globalThis.document.body.style.setProperty("--haxcms-color", color);
+              globalThis.document.body.style.setProperty(
+                "--haxcms-color",
+                color,
+              );
             }
           });
         }),

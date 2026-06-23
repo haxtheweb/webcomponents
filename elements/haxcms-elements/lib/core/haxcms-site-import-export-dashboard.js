@@ -180,7 +180,10 @@ class HAXCMSSiteImportExportDashboard extends DDD {
         ?disabled="${this._isActionDisabled(item)}"
         @click="${() => this._emitAction(item)}"
       >
-        <simple-icon-lite icon="${item.icon}" aria-hidden="true"></simple-icon-lite>
+        <simple-icon-lite
+          icon="${item.icon}"
+          aria-hidden="true"
+        ></simple-icon-lite>
         <span>
           <span class="action-title">${item.title}</span>
           <span class="action-description">${item.description}</span>

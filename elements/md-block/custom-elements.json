@@ -43,6 +43,16 @@
               },
               "default": "\"\"",
               "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "_parsedMarkdown",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_parsedMarkdown"
             }
           ],
           "attributes": [
@@ -61,6 +71,14 @@
               },
               "default": "\"\"",
               "fieldName": "markdown"
+            },
+            {
+              "name": "_parsedMarkdown",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_parsedMarkdown"
             }
           ],
           "superclass": {

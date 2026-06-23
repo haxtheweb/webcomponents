@@ -148,10 +148,9 @@ class HAXCMSViewsAdminDialog extends DDD {
           min-height: 0;
           min-width: 0;
           display: grid;
-          grid-template-columns: minmax(280px, var(--views-left-panel-width, 38%)) 12px minmax(
-              320px,
-              1fr
-            );
+          grid-template-columns:
+            minmax(280px, var(--views-left-panel-width, 38%))
+            12px minmax(320px, 1fr);
           align-items: stretch;
           gap: 0;
         }
@@ -681,12 +680,7 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _eventValue(e, fallback = "") {
-    if (
-      e &&
-      e.detail &&
-      typeof e.detail === "object" &&
-      "value" in e.detail
-    ) {
+    if (e && e.detail && typeof e.detail === "object" && "value" in e.detail) {
       return e.detail.value;
     }
     if (
@@ -698,12 +692,7 @@ class HAXCMSViewsAdminDialog extends DDD {
     ) {
       return e.detail;
     }
-    if (
-      e &&
-      e.target &&
-      typeof e.target === "object" &&
-      "value" in e.target
-    ) {
+    if (e && e.target && typeof e.target === "object" && "value" in e.target) {
       return e.target.value;
     }
     if (e && typeof e.composedPath === "function") {
@@ -843,7 +832,11 @@ class HAXCMSViewsAdminDialog extends DDD {
       return [];
     }
     const cms = globalThis.HAXCMS.requestAvailability();
-    if (!cms || !cms.store || typeof cms.store.getManifestItems !== "function") {
+    if (
+      !cms ||
+      !cms.store ||
+      typeof cms.store.getManifestItems !== "function"
+    ) {
       return [];
     }
     const itemManifest = cms.store.getManifestItems(true);
@@ -935,7 +928,10 @@ class HAXCMSViewsAdminDialog extends DDD {
     if (!parameter || !parameter.type) {
       return "textfield";
     }
-    if (Array.isArray(parameter.enumValues) && parameter.enumValues.length > 0) {
+    if (
+      Array.isArray(parameter.enumValues) &&
+      parameter.enumValues.length > 0
+    ) {
       return "select";
     }
     if (parameter.type === "boolean") {
@@ -972,7 +968,9 @@ class HAXCMSViewsAdminDialog extends DDD {
         if (!parameter || !parameter.name) {
           return false;
         }
-        if (Object.prototype.hasOwnProperty.call(blockedParams, parameter.name)) {
+        if (
+          Object.prototype.hasOwnProperty.call(blockedParams, parameter.name)
+        ) {
           return false;
         }
         return true;
@@ -1173,7 +1171,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       return params;
     }
     const queryParamMap =
-      entityConfig.queryParamMap && typeof entityConfig.queryParamMap === "object"
+      entityConfig.queryParamMap &&
+      typeof entityConfig.queryParamMap === "object"
         ? entityConfig.queryParamMap
         : {};
     const flatValues = this._flattenObject(this.queryValues || {});
@@ -1271,7 +1270,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       return this._safeString(entityConfig.listEndpoint);
     }
     const apiBasePath =
-      this.specData && this.specData.apiBasePath ? this.specData.apiBasePath : "/x/api";
+      this.specData && this.specData.apiBasePath
+        ? this.specData.apiBasePath
+        : "/x/api";
     return `${apiBasePath}/v1/${entityConfig.name}s`;
   }
 
@@ -1326,7 +1327,9 @@ class HAXCMSViewsAdminDialog extends DDD {
           try {
             const parsed = new URL(
               href,
-              globalThis.location ? globalThis.location.origin : "http://localhost",
+              globalThis.location
+                ? globalThis.location.origin
+                : "http://localhost",
             );
             sitePath = parsed.pathname;
           } catch (e) {
@@ -1531,7 +1534,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.previewRecords = [];
       this.previewCount = 0;
       this.previewTotal = 0;
-      this.previewErrorMessage = "No list operation is defined for this entity.";
+      this.previewErrorMessage =
+        "No list operation is defined for this entity.";
       return;
     }
     this._abortPreviewRequest();
@@ -1775,7 +1779,10 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _stripHtml(value = "") {
-    return this._safeString(value).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    return this._safeString(value)
+      .replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   _recordTag(record) {
@@ -1785,7 +1792,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       "instances.0.haxElementSchema.tag",
     ];
     for (let i = 0; i < tagCandidates.length; i++) {
-      const value = this._safeString(this._valueAtPath(record, tagCandidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, tagCandidates[i]),
+      ).trim();
       if (value) {
         return value.toLowerCase();
       }
@@ -1848,7 +1857,11 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _attributeStringFromProperties(properties = {}) {
-    if (!properties || typeof properties !== "object" || Array.isArray(properties)) {
+    if (
+      !properties ||
+      typeof properties !== "object" ||
+      Array.isArray(properties)
+    ) {
       return "";
     }
     const keys = Object.keys(properties);
@@ -1873,7 +1886,10 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _renderRecordElementPreview(record) {
     const schema = this._recordElementSchema(record);
-    const tag = schema && schema.tag ? this._safeString(schema.tag).trim() : this._recordTag(record);
+    const tag =
+      schema && schema.tag
+        ? this._safeString(schema.tag).trim()
+        : this._recordTag(record);
     if (!this._isRenderableTag(tag)) {
       return null;
     }
@@ -1885,7 +1901,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       schema && typeof schema.content === "string" ? schema.content : "";
     const attributeString = this._attributeStringFromProperties(properties);
     const elementMarkup = `<${tag}${attributeString}>${content}</${tag}>`;
-    return html`<div class="record-element-preview">${unsafeHTML(elementMarkup)}</div>`;
+    return html`<div class="record-element-preview">
+      ${unsafeHTML(elementMarkup)}
+    </div>`;
   }
 
   _renderRecordPrimary(record, maxLength = 240) {
@@ -1929,7 +1947,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       "metadata.created",
     ];
     for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, candidates[i]),
+      ).trim();
       if (!value) {
         continue;
       }
@@ -1981,14 +2001,19 @@ class HAXCMSViewsAdminDialog extends DDD {
       return null;
     }
     const firstRecord = this.previewRecords[0];
-    const selected = Array.isArray(this.selectedFields) ? this.selectedFields : [];
+    const selected = Array.isArray(this.selectedFields)
+      ? this.selectedFields
+      : [];
     const flattened = this._flattenObject(firstRecord);
-    const candidateFields = selected.length > 0 ? selected : Object.keys(flattened);
+    const candidateFields =
+      selected.length > 0 ? selected : Object.keys(flattened);
     let valueField = "";
     for (let i = 0; i < candidateFields.length; i++) {
       const field = candidateFields[i];
       for (let j = 0; j < this.previewRecords.length; j++) {
-        const value = this._numericValue(this._valueAtPath(this.previewRecords[j], field));
+        const value = this._numericValue(
+          this._valueAtPath(this.previewRecords[j], field),
+        );
         if (value !== null) {
           valueField = field;
           break;
@@ -2007,7 +2032,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       if (field === valueField) {
         continue;
       }
-      const value = this._safeString(this._valueAtPath(firstRecord, field)).trim();
+      const value = this._safeString(
+        this._valueAtPath(firstRecord, field),
+      ).trim();
       if (value) {
         labelField = field;
         break;
@@ -2041,8 +2068,9 @@ class HAXCMSViewsAdminDialog extends DDD {
     }
     const idLookup = {};
     const records = this.previewRecords.map((record, index) => {
-      const rawId =
-        this._safeString(record.id || record.slug || record.path || record.tag || `${index + 1}`).trim();
+      const rawId = this._safeString(
+        record.id || record.slug || record.path || record.tag || `${index + 1}`,
+      ).trim();
       const id = rawId || `${index + 1}`;
       idLookup[id] = true;
       return {
@@ -2058,7 +2086,10 @@ class HAXCMSViewsAdminDialog extends DDD {
       };
     });
     records.forEach((record) => {
-      if (!record.parent || !Object.prototype.hasOwnProperty.call(idLookup, record.parent)) {
+      if (
+        !record.parent ||
+        !Object.prototype.hasOwnProperty.call(idLookup, record.parent)
+      ) {
         record.parent = null;
       }
     });
@@ -2088,7 +2119,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       "links.content",
     ];
     for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, candidates[i]),
+      ).trim();
       if (!value) {
         continue;
       }
@@ -2122,7 +2155,9 @@ class HAXCMSViewsAdminDialog extends DDD {
       "metadata.path",
     ];
     for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, candidates[i]),
+      ).trim();
       if (value) {
         const resolvedPath = this._resolveSiteHref(value);
         if (this._looksLikeImageSource(resolvedPath)) {
@@ -2136,7 +2171,9 @@ class HAXCMSViewsAdminDialog extends DDD {
   _recordIcon(record) {
     const candidates = ["icon", "metadata.icon", "pageType"];
     for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, candidates[i]),
+      ).trim();
       if (value) {
         return value;
       }
@@ -2147,7 +2184,9 @@ class HAXCMSViewsAdminDialog extends DDD {
   _recordTags(record) {
     const tags = this._valueAtPath(record, "tags");
     if (Array.isArray(tags)) {
-      return tags.map((tag) => this._safeString(tag).trim()).filter((tag) => tag);
+      return tags
+        .map((tag) => this._safeString(tag).trim())
+        .filter((tag) => tag);
     }
     if (typeof tags === "string") {
       return tags
@@ -2315,7 +2354,9 @@ class HAXCMSViewsAdminDialog extends DDD {
     const recordTag = this._recordTag(record);
     for (let i = 0; i < candidates.length; i++) {
       const candidateName = candidates[i];
-      const value = this._safeString(this._valueAtPath(record, candidates[i])).trim();
+      const value = this._safeString(
+        this._valueAtPath(record, candidates[i]),
+      ).trim();
       if (!value) {
         continue;
       }
@@ -2387,7 +2428,9 @@ class HAXCMSViewsAdminDialog extends DDD {
               accent-color="grey"
               saturate
             >
-              ${elementPreview ? elementPreview : this._renderRecordBody(record, 220)}
+              ${elementPreview
+                ? elementPreview
+                : this._renderRecordBody(record, 220)}
             </collection-item>
           `;
         })}
@@ -2408,7 +2451,13 @@ class HAXCMSViewsAdminDialog extends DDD {
               <div slot="content">
                 ${this._renderRecordPrimary(record, 240)}
                 ${url
-                  ? html`<a class="card-link" href="${url}" target="_blank" rel="noopener">Open record</a>`
+                  ? html`<a
+                      class="card-link"
+                      href="${url}"
+                      target="_blank"
+                      rel="noopener"
+                      >Open record</a
+                    >`
                   : html``}
               </div>
             </accent-card>
@@ -2431,7 +2480,9 @@ class HAXCMSViewsAdminDialog extends DDD {
             <li class="result-list-item">
               <h4 class="result-title">
                 ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+                      >${this._recordTitle(record)}</a
+                    >`
                   : this._recordTitle(record)}
               </h4>
               ${this._renderRecordPrimary(record, 360)}
@@ -2451,7 +2502,9 @@ class HAXCMSViewsAdminDialog extends DDD {
             <article class="content-record">
               <h3 class="content-record-title">
                 ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+                      >${this._recordTitle(record)}</a
+                    >`
                   : this._recordTitle(record)}
               </h3>
               ${this._renderRecordPrimary(record, 720)}
@@ -2466,12 +2519,21 @@ class HAXCMSViewsAdminDialog extends DDD {
     const columns = this._tableColumns();
     return html`
       <div class="table-scroll">
-        <editable-table-display bordered condensed column-header responsive sort striped scroll>
+        <editable-table-display
+          bordered
+          condensed
+          column-header
+          responsive
+          sort
+          striped
+          scroll
+        >
           <table>
             <thead>
               <tr>
                 ${columns.map(
-                  (column) => html`<th>${this._titleFromParameterName(column)}</th>`,
+                  (column) =>
+                    html`<th>${this._titleFromParameterName(column)}</th>`,
                 )}
               </tr>
             </thead>
@@ -2481,7 +2543,9 @@ class HAXCMSViewsAdminDialog extends DDD {
                   <tr>
                     ${columns.map((column) => {
                       const value = this._valueAtPath(record, column);
-                      return html`<td title="${this._displayValue(value)}">${this._tableCellValue(column, value)}</td>`;
+                      return html`<td title="${this._displayValue(value)}">
+                        ${this._tableCellValue(column, value)}
+                      </td>`;
                     })}
                   </tr>
                 `,
@@ -2508,9 +2572,22 @@ class HAXCMSViewsAdminDialog extends DDD {
             return html`
               <div class="media-gallery-item">
                 ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"><img src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" /></a>`
-                  : html`<img src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />`}
-                <span class="media-gallery-caption">${this._recordTitle(record)}</span>
+                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+                      ><img
+                        src="${image}"
+                        alt="${this._recordTitle(record)} preview"
+                        loading="lazy"
+                        decoding="async"
+                    /></a>`
+                  : html`<img
+                      src="${image}"
+                      alt="${this._recordTitle(record)} preview"
+                      loading="lazy"
+                      decoding="async"
+                    />`}
+                <span class="media-gallery-caption"
+                  >${this._recordTitle(record)}</span
+                >
               </div>
             `;
           })}
@@ -2536,10 +2613,21 @@ class HAXCMSViewsAdminDialog extends DDD {
             if (image) {
               return html`
                 <figure>
-                  <img class="record-image" src="${image}" alt="${this._recordTitle(record)} preview" loading="lazy" decoding="async" />
+                  <img
+                    class="record-image"
+                    src="${image}"
+                    alt="${this._recordTitle(record)} preview"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <figcaption>
                     ${recordUrl
-                      ? html`<a href="${recordUrl}" target="_blank" rel="noopener">${this._recordTitle(record)}</a>`
+                      ? html`<a
+                          href="${recordUrl}"
+                          target="_blank"
+                          rel="noopener"
+                          >${this._recordTitle(record)}</a
+                        >`
                       : this._recordTitle(record)}
                   </figcaption>
                 </figure>
@@ -2554,7 +2642,9 @@ class HAXCMSViewsAdminDialog extends DDD {
                 <div slot="content">
                   ${this._renderRecordBody(record, 300)}
                   ${recordUrl
-                    ? html`<a href="${recordUrl}" target="_blank" rel="noopener">Open record</a>`
+                    ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+                        >Open record</a
+                      >`
                     : html``}
                 </div>
               </accent-card>
@@ -2569,15 +2659,17 @@ class HAXCMSViewsAdminDialog extends DDD {
     return html`
       <div class="accordion-preview">
         <a11y-collapse-group>
-          ${this.previewRecords.map((record, index) => html`
-            <a11y-collapse
-              heading-button
-              heading="${this._recordTitle(record)}"
-              ?expanded="${index === 0}"
-            >
-              ${this._renderRecordPrimary(record, 420)}
-            </a11y-collapse>
-          `)}
+          ${this.previewRecords.map(
+            (record, index) => html`
+              <a11y-collapse
+                heading-button
+                heading="${this._recordTitle(record)}"
+                ?expanded="${index === 0}"
+              >
+                ${this._renderRecordPrimary(record, 420)}
+              </a11y-collapse>
+            `,
+          )}
         </a11y-collapse-group>
       </div>
     `;
@@ -2587,14 +2679,16 @@ class HAXCMSViewsAdminDialog extends DDD {
     return html`
       <div class="tabs-preview">
         <a11y-tabs full-width>
-          ${this.previewRecords.map((record, index) => html`
-            <a11y-tab
-              id="views-preview-tab-${index}"
-              label="${this._recordTitle(record)}"
-            >
-              ${this._renderRecordPrimary(record, 520)}
-            </a11y-tab>
-          `)}
+          ${this.previewRecords.map(
+            (record, index) => html`
+              <a11y-tab
+                id="views-preview-tab-${index}"
+                label="${this._recordTitle(record)}"
+              >
+                ${this._renderRecordPrimary(record, 520)}
+              </a11y-tab>
+            `,
+          )}
         </a11y-tabs>
       </div>
     `;
@@ -2603,12 +2697,16 @@ class HAXCMSViewsAdminDialog extends DDD {
   _renderTimelinePreview() {
     const events = this._timelineEvents();
     if (!events || events.length < 1) {
-      return html`<p class="empty-preview">No date-oriented records available for timeline rendering.</p>`;
+      return html`<p class="empty-preview">
+        No date-oriented records available for timeline rendering.
+      </p>`;
     }
     return html`
       <div class="timeline-shell">
         <lrndesign-timeline
-          timeline-title="${this._titleFromParameterName(this.selectedEntity)} timeline"
+          timeline-title="${this._titleFromParameterName(
+            this.selectedEntity,
+          )} timeline"
           .events="${events}"
         ></lrndesign-timeline>
       </div>
@@ -2618,14 +2716,29 @@ class HAXCMSViewsAdminDialog extends DDD {
   _renderChartPreview() {
     const descriptor = this._chartDescriptor();
     if (!descriptor) {
-      return html`<p class="empty-preview">No numeric field detected for chart rendering.</p>`;
+      return html`<p class="empty-preview">
+        No numeric field detected for chart rendering.
+      </p>`;
     }
     return html`
       <div class="chart-shell">
-        <p class="note">Charting <strong>${this._titleFromParameterName(descriptor.valueField)}</strong>${descriptor.labelField ? html` by <strong>${this._titleFromParameterName(descriptor.labelField)}</strong>` : html``}</p>
+        <p class="note">
+          Charting
+          <strong>${this._titleFromParameterName(descriptor.valueField)}</strong
+          >${descriptor.labelField
+            ? html` by
+                <strong
+                  >${this._titleFromParameterName(
+                    descriptor.labelField,
+                  )}</strong
+                >`
+            : html``}
+        </p>
         <lrndesign-bar
           .data="${descriptor.data}"
-          chart-title="${this._titleFromParameterName(this.selectedEntity)} chart"
+          chart-title="${this._titleFromParameterName(
+            this.selectedEntity,
+          )} chart"
           show-table
         ></lrndesign-bar>
       </div>
@@ -2635,7 +2748,9 @@ class HAXCMSViewsAdminDialog extends DDD {
   _renderTreePreview() {
     const records = this._treeRecords();
     if (!records || records.length < 1) {
-      return html`<p class="empty-preview">No hierarchical records available for tree rendering.</p>`;
+      return html`<p class="empty-preview">
+        No hierarchical records available for tree rendering.
+      </p>`;
     }
     return html`
       <div class="tree-shell">
@@ -2646,19 +2761,26 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _renderPreview() {
     if (this.previewLoading) {
-      return html`<p class="status" role="status" aria-live="polite">Loading preview…</p>`;
+      return html`<p class="status" role="status" aria-live="polite">
+        Loading preview…
+      </p>`;
     }
     if (this.previewErrorMessage) {
-      return html`<p class="error" role="status" aria-live="polite">${this.previewErrorMessage}</p>`;
+      return html`<p class="error" role="status" aria-live="polite">
+        ${this.previewErrorMessage}
+      </p>`;
     }
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return html`<p class="empty-preview">No results yet for the current query configuration.</p>`;
+      return html`<p class="empty-preview">
+        No results yet for the current query configuration.
+      </p>`;
     }
-    const renderer = this.renderer === "playlist"
-      ? "carousel"
-      : this.renderer === "cards"
-        ? "grid"
-        : this.renderer;
+    const renderer =
+      this.renderer === "playlist"
+        ? "carousel"
+        : this.renderer === "cards"
+          ? "grid"
+          : this.renderer;
     if (renderer === "table") {
       return this._renderTablePreview();
     }
@@ -2744,10 +2866,14 @@ class HAXCMSViewsAdminDialog extends DDD {
     return html`
       <div class="panel-shell">
         ${this.errorMessage
-          ? html`<p class="error" role="status" aria-live="polite">${this.errorMessage}</p>`
+          ? html`<p class="error" role="status" aria-live="polite">
+              ${this.errorMessage}
+            </p>`
           : ""}
         ${this.specLoading
-          ? html`<p class="status" role="status" aria-live="polite">Loading entity and OpenAPI metadata…</p>`
+          ? html`<p class="status" role="status" aria-live="polite">
+              Loading entity and OpenAPI metadata…
+            </p>`
           : ""}
         ${!this.errorMessage && entityConfig
           ? html`
@@ -2774,7 +2900,9 @@ class HAXCMSViewsAdminDialog extends DDD {
                           @change="${this._onRendererChanged}"
                         ></simple-fields-field>
                       </div>
-                      <p class="note">${this._entityDescription(entityConfig)}</p>
+                      <p class="note">
+                        ${this._entityDescription(entityConfig)}
+                      </p>
                     </div>
                   </details>
                   <details class="group-panel" open>
@@ -2795,7 +2923,8 @@ class HAXCMSViewsAdminDialog extends DDD {
                               label="Include related resources"
                               .itemsList="${includeOptions}"
                               .value="${this.selectedIncludes}"
-                              @value-changed="${this._onIncludeSelectionChanged}"
+                              @value-changed="${this
+                                ._onIncludeSelectionChanged}"
                               @change="${this._onIncludeSelectionChanged}"
                             ></simple-fields-field>
                           `
@@ -2835,7 +2964,10 @@ class HAXCMSViewsAdminDialog extends DDD {
                               @input="${this._onQueryValuesChanged}"
                             ></simple-fields>
                           `
-                        : html`<p class="note">No additional query parameters are available for this entity endpoint.</p>`}
+                        : html`<p class="note">
+                            No additional query parameters are available for
+                            this entity endpoint.
+                          </p>`}
                     </div>
                   </details>
                   <details class="query-details" open>

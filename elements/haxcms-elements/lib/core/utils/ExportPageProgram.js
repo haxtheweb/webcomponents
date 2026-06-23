@@ -191,14 +191,14 @@ export async function _exportPageRouteVariant(format, title) {
     }
     const content = await response.text();
     this._downloadFile(content, `${title}.${ext}`, mime);
-    HAXStore.toast(`${ext.toUpperCase()} file downloaded successfully`, 3000, "fit-bottom");
-  } catch (error) {
-    console.error(`Page ${format} export error:`, error);
     HAXStore.toast(
-      `Page ${format} export not available`,
+      `${ext.toUpperCase()} file downloaded successfully`,
       3000,
       "fit-bottom",
     );
+  } catch (error) {
+    console.error(`Page ${format} export error:`, error);
+    HAXStore.toast(`Page ${format} export not available`, 3000, "fit-bottom");
   }
 }
 

@@ -1278,7 +1278,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       this.busy = true;
       const platformConfig = this._platformConfigForExport();
 
-      // bubble up to the site editor, which owns the iron-ajax calls
+      // bubble up to the site editor, which owns the calls
       this.dispatchEvent(
         new CustomEvent("haxcms-save-platform-settings", {
           bubbles: true,

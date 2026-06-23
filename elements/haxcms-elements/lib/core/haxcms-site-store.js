@@ -102,7 +102,9 @@ export function iconFromPageType(type) {
 function updateSequentialPrefetch(nextUrl, prevUrl) {
   // 1. Clean up any existing speculative rules to avoid stacking clutter
   if (globalThis.document && globalThis.document.head) {
-    const oldScript = globalThis.document.getElementById('haxcms-speculation-rules');
+    const oldScript = globalThis.document.getElementById(
+      "haxcms-speculation-rules",
+    );
     if (oldScript) {
       oldScript.remove();
     }
@@ -117,22 +119,22 @@ function updateSequentialPrefetch(nextUrl, prevUrl) {
 
     // 3. Define the speculation rules structure
     const rules = {
-      "prefetch": [
+      prefetch: [
         {
-          "where": {
-            "href_matches": urlsToPrefetch
+          where: {
+            href_matches: urlsToPrefetch,
           },
-          "eagerness": "eager"
-        }
-      ]
+          eagerness: "eager",
+        },
+      ],
     };
 
     // 4. Inject the rule into the DOM
-    const script = globalThis.document.createElement('script');
-    script.id = 'haxcms-speculation-rules';
-    script.type = 'speculationrules';
+    const script = globalThis.document.createElement("script");
+    script.id = "haxcms-speculation-rules";
+    script.type = "speculationrules";
     script.textContent = JSON.stringify(rules);
-    
+
     globalThis.document.head.appendChild(script);
   }
 }

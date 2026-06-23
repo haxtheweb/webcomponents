@@ -2,7 +2,7 @@
  * Copyright 2025 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * Inspired by @polymer version, updated for lit, DDD,
+ * Inspired by polymer version, updated for lit, DDD,
  * dark mode and to leverage the HAX ecosystem.
  */
 

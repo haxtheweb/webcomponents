@@ -505,13 +505,9 @@ class HAXCMSBackendUserfs extends LitElement {
       );
     }
     if (hasOwn(detail, "authorPhone")) {
-      this.manifest.metadata.author.phone = String(
-        detail.authorPhone || "",
-      );
+      this.manifest.metadata.author.phone = String(detail.authorPhone || "");
     } else if (hasOwn(author, "phone")) {
-      this.manifest.metadata.author.phone = String(
-        author.phone || "",
-      );
+      this.manifest.metadata.author.phone = String(author.phone || "");
     } else if (hasOwn(manifestAuthor, "manifest.metadata.author.phone")) {
       this.manifest.metadata.author.phone = String(
         manifestAuthor["manifest.metadata.author.phone"] || "",
@@ -522,9 +518,7 @@ class HAXCMSBackendUserfs extends LitElement {
         detail.authorLocation || "",
       );
     } else if (hasOwn(author, "location")) {
-      this.manifest.metadata.author.location = String(
-        author.location || "",
-      );
+      this.manifest.metadata.author.location = String(author.location || "");
     } else if (hasOwn(manifestAuthor, "manifest.metadata.author.location")) {
       this.manifest.metadata.author.location = String(
         manifestAuthor["manifest.metadata.author.location"] || "",
@@ -535,9 +529,7 @@ class HAXCMSBackendUserfs extends LitElement {
         detail.authorWebsite || "",
       );
     } else if (hasOwn(author, "website")) {
-      this.manifest.metadata.author.website = String(
-        author.website || "",
-      );
+      this.manifest.metadata.author.website = String(author.website || "");
     } else if (hasOwn(manifestAuthor, "manifest.metadata.author.website")) {
       this.manifest.metadata.author.website = String(
         manifestAuthor["manifest.metadata.author.website"] || "",
@@ -548,9 +540,7 @@ class HAXCMSBackendUserfs extends LitElement {
         detail.authorWebsite2 || "",
       );
     } else if (hasOwn(author, "website2")) {
-      this.manifest.metadata.author.website2 = String(
-        author.website2 || "",
-      );
+      this.manifest.metadata.author.website2 = String(author.website2 || "");
     } else if (hasOwn(manifestAuthor, "manifest.metadata.author.website2")) {
       this.manifest.metadata.author.website2 = String(
         manifestAuthor["manifest.metadata.author.website2"] || "",

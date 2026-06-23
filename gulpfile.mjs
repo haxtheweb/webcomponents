@@ -429,6 +429,24 @@ gulp.task("wc-autoloader", async () => {
       JSON.stringify(elements),
       {encoding:'utf8',flag:'w'}
     );
+    // write entries to demo for local work
+    fs.writeFileSync(
+      "./elements/replace-tag/demo/wc-registry.json",
+      JSON.stringify(elements),
+      {encoding:'utf8',flag:'w'}
+    );
+    // write entries to demo for local work
+    fs.writeFileSync(
+      "./elements/product-card/demo/wc-registry.json",
+      JSON.stringify(elements),
+      {encoding:'utf8',flag:'w'}
+    );
+    // write entries to demo for local work
+    fs.writeFileSync(
+      "./elements/hax-cloud/demo/wc-registry.json",
+      JSON.stringify(elements),
+      {encoding:'utf8',flag:'w'}
+    );
   });
 });
 

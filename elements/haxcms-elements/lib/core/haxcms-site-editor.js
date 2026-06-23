@@ -261,10 +261,7 @@ class HAXCMSSiteEditor extends LitElement {
     let query = this.__lastContentSearchQuery
       ? String(this.__lastContentSearchQuery)
       : "";
-    if (
-      responseData &&
-      typeof responseData.query === "string"
-    ) {
+    if (responseData && typeof responseData.query === "string") {
       query = responseData.query;
     }
     if (operation === "replace") {
@@ -284,15 +281,9 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     let results = [];
-    if (
-      responseData &&
-      Array.isArray(responseData.results)
-    ) {
+    if (responseData && Array.isArray(responseData.results)) {
       results = responseData.results;
-    } else if (
-      responseData &&
-      Array.isArray(responseData.matches)
-    ) {
+    } else if (responseData && Array.isArray(responseData.matches)) {
       results = responseData.matches;
     } else if (Array.isArray(response.matches)) {
       results = response.matches;
@@ -395,7 +386,10 @@ class HAXCMSSiteEditor extends LitElement {
     ) {
       return response.statusText.trim();
     }
-    if (typeof response.message === "string" && response.message.trim() !== "") {
+    if (
+      typeof response.message === "string" &&
+      response.message.trim() !== ""
+    ) {
       return response.message.trim();
     }
     if (
@@ -504,7 +498,9 @@ class HAXCMSSiteEditor extends LitElement {
         }
       }
       const statusText =
-        error && typeof error.message === "string" && error.message.trim() !== ""
+        error &&
+        typeof error.message === "string" &&
+        error.message.trim() !== ""
           ? error.message.trim()
           : "Operation failed";
       this._emitRequestError(target, status, statusText);
@@ -652,7 +648,9 @@ class HAXCMSSiteEditor extends LitElement {
         }
       }
       const statusText =
-        error && typeof error.message === "string" && error.message.trim() !== ""
+        error &&
+        typeof error.message === "string" &&
+        error.message.trim() !== ""
           ? error.message.trim()
           : "Operation failed";
       this._emitRequestError(target, status, statusText);
@@ -794,11 +792,9 @@ class HAXCMSSiteEditor extends LitElement {
             e.detail.value.statusText && e.detail.value.statusText !== ""
               ? e.detail.value.statusText
               : "Request failed";
-          store.toast(
-            e.detail.value.status + " " + statusText,
-            5000,
-            { fire: true },
-          );
+          store.toast(e.detail.value.status + " " + statusText, 5000, {
+            fire: true,
+          });
           store.playSound("error");
           break;
       }
@@ -1142,7 +1138,9 @@ class HAXCMSSiteEditor extends LitElement {
           appSettings.userTokenHeader &&
           appSettings.userToken
         ) {
-          const userTokenHeaderName = String(appSettings.userTokenHeader).trim();
+          const userTokenHeaderName = String(
+            appSettings.userTokenHeader,
+          ).trim();
           const userTokenHeaderValue = String(appSettings.userToken).trim();
           if (userTokenHeaderName !== "" && userTokenHeaderValue !== "") {
             userHeaders[userTokenHeaderName] = userTokenHeaderValue;
@@ -1151,7 +1149,8 @@ class HAXCMSSiteEditor extends LitElement {
       }
     }
     const userDataEndpoint =
-      typeof this.getUserDataPath === "string" && this.getUserDataPath.trim() !== ""
+      typeof this.getUserDataPath === "string" &&
+      this.getUserDataPath.trim() !== ""
         ? this.getUserDataPath.trim()
         : appSettings &&
             typeof appSettings.getUserDataPath === "string" &&
@@ -1304,7 +1303,8 @@ class HAXCMSSiteEditor extends LitElement {
                     requestId: "createajax",
                     operationName: "@site/createItem",
                     payload: data,
-                    unavailableMessage: "Create item endpoint is not available.",
+                    unavailableMessage:
+                      "Create item endpoint is not available.",
                     onSuccess: (response) => {
                       this.__createNodeResponseChanged({
                         detail: {
@@ -2306,6 +2306,36 @@ class HAXCMSSiteEditor extends LitElement {
         ? String(manifestAuthor.socialLink)
         : "",
     );
+    const authorSocialLink2 = normalizeString(
+      detail.authorSocialLink2,
+      manifestAuthor && manifestAuthor.socialLink2
+        ? String(manifestAuthor.socialLink2)
+        : "",
+    );
+    const authorPhone = normalizeString(
+      detail.authorPhone,
+      manifestAuthor && manifestAuthor.phone
+        ? String(manifestAuthor.phone)
+        : "",
+    );
+    const authorLocation = normalizeString(
+      detail.authorLocation,
+      manifestAuthor && manifestAuthor.location
+        ? String(manifestAuthor.location)
+        : "",
+    );
+    const authorWebsite = normalizeString(
+      detail.authorWebsite,
+      manifestAuthor && manifestAuthor.website
+        ? String(manifestAuthor.website)
+        : "",
+    );
+    const authorWebsite2 = normalizeString(
+      detail.authorWebsite2,
+      manifestAuthor && manifestAuthor.website2
+        ? String(manifestAuthor.website2)
+        : "",
+    );
     const description = normalizeString(
       detail.description,
       this.manifest && this.manifest.description
@@ -2384,6 +2414,11 @@ class HAXCMSSiteEditor extends LitElement {
         name: authorName,
         email: authorEmail,
         socialLink: authorSocialLink,
+        socialLink2: authorSocialLink2,
+        phone: authorPhone,
+        location: authorLocation,
+        website: authorWebsite,
+        website2: authorWebsite2,
       },
       manifest: {
         author: {
@@ -2392,6 +2427,11 @@ class HAXCMSSiteEditor extends LitElement {
           "manifest.metadata.author.name": authorName,
           "manifest.metadata.author.email": authorEmail,
           "manifest.metadata.author.socialLink": authorSocialLink,
+          "manifest.metadata.author.socialLink2": authorSocialLink2,
+          "manifest.metadata.author.phone": authorPhone,
+          "manifest.metadata.author.location": authorLocation,
+          "manifest.metadata.author.website": authorWebsite,
+          "manifest.metadata.author.website2": authorWebsite2,
         },
         seo: {
           "manifest.description": description,

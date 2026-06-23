@@ -683,7 +683,8 @@ class HAXCMSContentAdminDialog extends DDD {
     return "Filter value";
   }
   _actionTargetFromEvent(e) {
-    const path = e && typeof e.composedPath === "function" ? e.composedPath() : [];
+    const path =
+      e && typeof e.composedPath === "function" ? e.composedPath() : [];
     for (let i = 0; i < path.length; i++) {
       const candidate = path[i];
       if (
@@ -731,7 +732,10 @@ class HAXCMSContentAdminDialog extends DDD {
   }
   _handleTableActionClick(e) {
     const actionTarget = this._actionTargetFromEvent(e);
-    if (!actionTarget || actionTarget.getAttribute("data-action") !== "open-revisions") {
+    if (
+      !actionTarget ||
+      actionTarget.getAttribute("data-action") !== "open-revisions"
+    ) {
       return;
     }
     if (typeof e.stopPropagation === "function") {
@@ -850,7 +854,9 @@ class HAXCMSContentAdminDialog extends DDD {
                           <simple-icon-button-lite
                             class="replace-btn"
                             icon="find-replace"
-                            label="${this.replaceLoading ? "Replacing…" : "Replace"}"
+                            label="${this.replaceLoading
+                              ? "Replacing…"
+                              : "Replace"}"
                             ?disabled="${!this._canRunReplace()}"
                             @click="${this._applyReplace}"
                           ></simple-icon-button-lite>

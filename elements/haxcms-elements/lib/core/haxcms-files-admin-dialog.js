@@ -65,9 +65,10 @@ class HAXCMSFilesAdminDialog extends DDD {
           flex-direction: column;
           min-width: min(80vw, 1100px);
           max-height: calc(
-            var(--simple-modal-height, 80vh) -
-              var(--simple-modal-titlebar-height, 80px) -
-              var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 80vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           overflow: hidden;
           color: light-dark(
@@ -84,7 +85,8 @@ class HAXCMSFilesAdminDialog extends DDD {
           flex: 1;
         }
         .panel {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
         }
@@ -94,17 +96,37 @@ class HAXCMSFilesAdminDialog extends DDD {
           gap: var(--ddd-spacing-3);
           align-items: start;
         }
-        .upload-main { flex: 1 1 280px; min-width: 260px; }
+        .upload-main {
+          flex: 1 1 280px;
+          min-width: 260px;
+        }
         .upload-main hax-upload-field {
           display: block;
         }
-        .ctrl { display: flex; align-items: center; }
-        .toolbar { display: flex; flex-wrap: wrap; gap: var(--ddd-spacing-2); align-items: center; }
-        .helper { font-size: var(--ddd-font-size-5xs); color: var(--ddd-theme-default-slateGray); }
-        .status { font-size: var(--ddd-font-size-4xs); min-height: 1.2em; }
-        .status.error { color: var(--ddd-theme-default-error); }
+        .ctrl {
+          display: flex;
+          align-items: center;
+        }
+        .toolbar {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+          align-items: center;
+        }
+        .helper {
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-slateGray);
+        }
+        .status {
+          font-size: var(--ddd-font-size-4xs);
+          min-height: 1.2em;
+        }
+        .status.error {
+          color: var(--ddd-theme-default-error);
+        }
         .tw {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           overflow: auto;
           flex: 1;
@@ -124,36 +146,91 @@ class HAXCMSFilesAdminDialog extends DDD {
           display: block;
           min-width: 760px;
         }
-        table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: var(--ddd-font-size-4xs); }
+        table {
+          width: 100%;
+          min-width: 900px;
+          border-collapse: collapse;
+          font-size: var(--ddd-font-size-4xs);
+        }
         thead th {
           text-align: left;
           padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          background: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-charcoalGray));
-          position: sticky; top: 0; z-index: 1;
+          border-bottom: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          background: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-charcoalGray)
+          );
+          position: sticky;
+          top: 0;
+          z-index: 1;
         }
-        td { padding: var(--ddd-spacing-2); border-bottom: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray); vertical-align: middle; }
-        tr:last-child td { border-bottom: none; }
+        td {
+          padding: var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          vertical-align: middle;
+        }
+        tr:last-child td {
+          border-bottom: none;
+        }
         .pw {
-          width: 200px; height: 100px; border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+          width: 200px;
+          height: 100px;
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          overflow: hidden;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
-        .pw img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .fn { display: flex; align-items: center; gap: var(--ddd-spacing-1); }
-        .fn a { color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight)); text-decoration: none; overflow-wrap: anywhere; }
-        .fp { font-size: var(--ddd-font-size-5xs); margin-top: var(--ddd-spacing-1); color: var(--ddd-theme-default-slateGray); overflow-wrap: anywhere; }
+        .pw img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .fn {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .fn a {
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          text-decoration: none;
+          overflow-wrap: anywhere;
+        }
+        .fp {
+          font-size: var(--ddd-font-size-5xs);
+          margin-top: var(--ddd-spacing-1);
+          color: var(--ddd-theme-default-slateGray);
+          overflow-wrap: anywhere;
+        }
         .ib {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
-          --simple-icon-height: var(--ddd-icon-xxs); --simple-icon-width: var(--ddd-icon-xxs);
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-navy);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
         }
-        .empty { padding: var(--ddd-spacing-4); }
+        .empty {
+          padding: var(--ddd-spacing-4);
+        }
         @media (max-width: 900px) {
-          :host { min-width: 0; width: 100%; }
-          .upload-row { flex-direction: column; }
+          :host {
+            min-width: 0;
+            width: 100%;
+          }
+          .upload-row {
+            flex-direction: column;
+          }
         }
       `,
     ];
@@ -178,7 +255,9 @@ class HAXCMSFilesAdminDialog extends DDD {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const ai = _mobx_val_0;
-          if (ai && ai.id) { this.nodeId = ai.id; }
+          if (ai && ai.id) {
+            this.nodeId = ai.id;
+          }
         });
       }),
     );
@@ -190,25 +269,38 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.removeEventListener("hax-file-action", this.__boundFileAction);
     for (var i in this.__disposer) {
       const d = this.__disposer[i];
-      if (typeof d === "function") { d(); }
-      else if (d && typeof d.dispose === "function") { d.dispose(); }
+      if (typeof d === "function") {
+        d();
+      } else if (d && typeof d.dispose === "function") {
+        d.dispose();
+      }
     }
     this.__disposer = [];
     super.disconnectedCallback();
   }
 
   updated(cp) {
-    if (super.updated) { super.updated(cp); }
+    if (super.updated) {
+      super.updated(cp);
+    }
     if (cp.has("siteName") && this._canList) {
       this.refreshFiles();
     }
   }
 
-  get _canList() { return this.siteName !== ""; }
-  get _canUpload() { return this.siteName !== "" && this.nodeId !== ""; }
-  get _canOp() { return this.siteName !== ""; }
+  get _canList() {
+    return this.siteName !== "";
+  }
+  get _canUpload() {
+    return this.siteName !== "" && this.nodeId !== "";
+  }
+  get _canOp() {
+    return this.siteName !== "";
+  }
 
-  _s(v) { return typeof v === "string" ? v.trim() : ""; }
+  _s(v) {
+    return typeof v === "string" ? v.trim() : "";
+  }
 
   _normPath(v) {
     const c = this._s(v).replace(/\\/g, "/");
@@ -304,25 +396,45 @@ class HAXCMSFilesAdminDialog extends DDD {
   _mime(v) {
     const ext = this._s(v).toLowerCase().split("?")[0].split(".").pop();
     const m = {
-      png:"image/png",jpg:"image/jpeg",jpeg:"image/jpeg",gif:"image/gif",
-      webp:"image/webp",svg:"image/svg+xml",avif:"image/avif",bmp:"image/bmp",
-      tif:"image/tiff",tiff:"image/tiff",mp4:"video/mp4",webm:"video/webm",
-      mov:"video/quicktime",mp3:"audio/mpeg",wav:"audio/wav",m4a:"audio/mp4",
-      pdf:"application/pdf",
+      png: "image/png",
+      jpg: "image/jpeg",
+      jpeg: "image/jpeg",
+      gif: "image/gif",
+      webp: "image/webp",
+      svg: "image/svg+xml",
+      avif: "image/avif",
+      bmp: "image/bmp",
+      tif: "image/tiff",
+      tiff: "image/tiff",
+      mp4: "video/mp4",
+      webm: "video/webm",
+      mov: "video/quicktime",
+      mp3: "audio/mpeg",
+      wav: "audio/wav",
+      m4a: "audio/mp4",
+      pdf: "application/pdf",
     };
     return ext && m[ext] ? m[ext] : "";
   }
 
   _sz(v) {
     if (typeof v === "number") return v;
-    if (typeof v === "string" && v) { const n = parseInt(v, 10); return Number.isNaN(n) ? 0 : n; }
+    if (typeof v === "string" && v) {
+      const n = parseInt(v, 10);
+      return Number.isNaN(n) ? 0 : n;
+    }
     return 0;
   }
 
   _fmtBytes(s) {
-    let v = this._sz(s); if (!v) return "\u2014";
-    const u = ["B","KB","MB","GB"]; let i = 0;
-    while (v >= 1024 && i < u.length - 1) { v /= 1024; i++; }
+    let v = this._sz(s);
+    if (!v) return "\u2014";
+    const u = ["B", "KB", "MB", "GB"];
+    let i = 0;
+    while (v >= 1024 && i < u.length - 1) {
+      v /= 1024;
+      i++;
+    }
     return `${v.toFixed(v >= 10 || i === 0 ? 0 : 1)} ${u[i]}`;
   }
 
@@ -340,7 +452,8 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!item || typeof item !== "object") return null;
     const p = this._normPath(item.path || item.url || item.file || "");
     if (!p || p.indexOf("files/") !== 0) return null;
-    const mt = this._s(item.mimetype || item.type || item.mimeType) || this._mime(p);
+    const mt =
+      this._s(item.mimetype || item.type || item.mimeType) || this._mime(p);
     const updatedValue =
       item.updated ||
       item.dateUpdated ||
@@ -366,32 +479,54 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   _normPayload(d) {
-    const arr =
-      d &&
-      d.data &&
-      Array.isArray(d.data.files)
-        ? d.data.files
-        : [];
+    const arr = d && d.data && Array.isArray(d.data.files) ? d.data.files : [];
     const rows = [];
-    arr.forEach((it, i) => { const n = this._normItem(it, i); if (n) rows.push(n); });
+    arr.forEach((it, i) => {
+      const n = this._normItem(it, i);
+      if (n) rows.push(n);
+    });
     rows.sort((a, b) => a.path.localeCompare(b.path));
     return rows;
   }
 
-  _isImg(r) { return r && typeof r.mimetype === "string" && r.mimetype.toLowerCase().indexOf("image/") === 0; }
-  _canScale(r) { return this._isImg(r) && r.mimetype.toLowerCase().indexOf("svg") === -1; }
-  _canConvertToJpg(r) { return this._canScale(r); }
+  _isImg(r) {
+    return (
+      r &&
+      typeof r.mimetype === "string" &&
+      r.mimetype.toLowerCase().indexOf("image/") === 0
+    );
+  }
+  _canScale(r) {
+    return this._isImg(r) && r.mimetype.toLowerCase().indexOf("svg") === -1;
+  }
+  _canConvertToJpg(r) {
+    return this._canScale(r);
+  }
 
-  async _rj(resp) { try { return await resp.json(); } catch(e) { return null; } }
+  async _rj(resp) {
+    try {
+      return await resp.json();
+    } catch (e) {
+      return null;
+    }
+  }
   _em(resp, d, fb) {
-    if (d && d.__failed && typeof d.__failed.message === "string" && d.__failed.message) return d.__failed.message;
+    if (
+      d &&
+      d.__failed &&
+      typeof d.__failed.message === "string" &&
+      d.__failed.message
+    )
+      return d.__failed.message;
     if (d && typeof d.message === "string" && d.message) return d.message;
     if (resp && resp.status) return `${fb} (${resp.status})`;
     return fb;
   }
   _requestTableUpdate() {
     if (!this.shadowRoot) return;
-    const tableDisplay = this.shadowRoot.querySelector("editable-table-display");
+    const tableDisplay = this.shadowRoot.querySelector(
+      "editable-table-display",
+    );
     if (tableDisplay && typeof tableDisplay.requestUpdate === "function") {
       tableDisplay.requestUpdate();
     }
@@ -443,7 +578,10 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
   _rowsRenderKey() {
     return `${this.cacheBustToken}|${this.rows.length}|${this.rows
-      .map((row) => `${row.path}:${row.updated || row.dateCreated || ""}:${row.size || 0}`)
+      .map(
+        (row) =>
+          `${row.path}:${row.updated || row.dateCreated || ""}:${row.size || 0}`,
+      )
       .join("|")}`;
   }
 
@@ -451,8 +589,9 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!this._canList) return;
     const cacheBustToken = this._nextCacheBustToken();
     this.cacheBustToken = cacheBustToken;
-    this._requestTableUpdate(); 
-    this.loading = true; this.errorMessage = "";
+    this._requestTableUpdate();
+    this.loading = true;
+    this.errorMessage = "";
     try {
       await waitForHAXCMSSiteApiRegistryReady();
       if (
@@ -483,8 +622,13 @@ class HAXCMSFilesAdminDialog extends DDD {
         return;
       }
       this.rows = this._normPayload(response);
-    } catch(e) { this.errorMessage = "Unable to load files"; this.rows = []; }
-    finally { this.loading = false; this._requestTableUpdate(); }
+    } catch (e) {
+      this.errorMessage = "Unable to load files";
+      this.rows = [];
+    } finally {
+      this.loading = false;
+      this._requestTableUpdate();
+    }
   }
 
   _onHaxUploadValueChanged(e) {
@@ -519,8 +663,12 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
   }
   async _op(row, op, options = {}) {
-    if (!this._canOp) { this._msg("Unable to run file operation.", true); return; }
-    this.busy = true; this.errorMessage = "";
+    if (!this._canOp) {
+      this._msg("Unable to run file operation.", true);
+      return;
+    }
+    this.busy = true;
+    this.errorMessage = "";
     try {
       const fileUuid = this._s(row && row.uuid ? row.uuid : "");
       if (!fileUuid) {
@@ -559,7 +707,10 @@ class HAXCMSFilesAdminDialog extends DDD {
       );
       const status = this._statusCode(d);
       if (status !== 200) {
-        this.errorMessage = this._messageFromResponse(d, "File operation failed");
+        this.errorMessage = this._messageFromResponse(
+          d,
+          "File operation failed",
+        );
         this._msg(this.errorMessage, true);
         return;
       }
@@ -569,12 +720,18 @@ class HAXCMSFilesAdminDialog extends DDD {
       else if (op === "convert-jpg") message = "Image converted to JPG";
       else if (op === "rotate-90") message = "Image rotated 90 degrees";
       else if (op === "sepia") message = "Image transformed to sepia";
-      else if (op === "black-and-white") message = "Image transformed to black and white";
-      else if (op === "scale" && options && options.size) message = `Scaled to ${options.size}`;
+      else if (op === "black-and-white")
+        message = "Image transformed to black and white";
+      else if (op === "scale" && options && options.size)
+        message = `Scaled to ${options.size}`;
       this._msg(message);
       await this.refreshFiles();
-    } catch(e) { this.errorMessage = "File operation failed"; this._msg(this.errorMessage, true); }
-    finally { this.busy = false; }
+    } catch (e) {
+      this.errorMessage = "File operation failed";
+      this._msg(this.errorMessage, true);
+    } finally {
+      this.busy = false;
+    }
   }
 
   async _onScaleAction(index, size) {
@@ -605,7 +762,10 @@ class HAXCMSFilesAdminDialog extends DDD {
     const normalizedOp = typeof op === "string" ? op.trim() : "";
     if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
     if (!normalizedOp) return;
-    if (normalizedOp === "convert-jpg" && !this._canConvertToJpg(this.rows[i])) {
+    if (
+      normalizedOp === "convert-jpg" &&
+      !this._canConvertToJpg(this.rows[i])
+    ) {
       this._msg("Only raster images can be converted to JPG.", true);
       return;
     }
@@ -638,18 +798,26 @@ class HAXCMSFilesAdminDialog extends DDD {
   async _delete(index) {
     const i = parseInt(index, 10);
     if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
-    if (!globalThis.confirm(`Delete ${this.rows[i].path}? This cannot be undone.`)) return;
+    if (
+      !globalThis.confirm(`Delete ${this.rows[i].path}? This cannot be undone.`)
+    )
+      return;
     await this._op(this.rows[i], "delete");
   }
 
-
   _msg(m, err) {
-    if (store && typeof store.toast === "function") { store.toast(m, 3000, { hat: err ? "fire" : "construction" }); return; }
-    if (HAXStore && typeof HAXStore.toast === "function") HAXStore.toast(m, 3000, "fit-bottom");
+    if (store && typeof store.toast === "function") {
+      store.toast(m, 3000, { hat: err ? "fire" : "construction" });
+      return;
+    }
+    if (HAXStore && typeof HAXStore.toast === "function")
+      HAXStore.toast(m, 3000, "fit-bottom");
   }
 
   firstUpdated(changedProperties) {
-    if (super.firstUpdated) { super.firstUpdated(changedProperties); }
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // on by default and we don't need this here
     this.shadowRoot.querySelector("hax-upload-field").showSources = false;
   }
@@ -684,7 +852,10 @@ class HAXCMSFilesAdminDialog extends DDD {
               </div>
             </div>
           </div>
-          <div class="status ${this.errorMessage ? "error" : ""}" aria-live="polite">
+          <div
+            class="status ${this.errorMessage ? "error" : ""}"
+            aria-live="polite"
+          >
             ${this.loading
               ? "Loading\u2026"
               : this.errorMessage
@@ -698,7 +869,15 @@ class HAXCMSFilesAdminDialog extends DDD {
             : keyed(
                 this._rowsRenderKey(),
                 html`
-                  <editable-table-display bordered condensed column-header responsive sort striped scroll>
+                  <editable-table-display
+                    bordered
+                    condensed
+                    column-header
+                    responsive
+                    sort
+                    striped
+                    scroll
+                  >
                     <table>
                       <thead>
                         <tr>
@@ -717,14 +896,25 @@ class HAXCMSFilesAdminDialog extends DDD {
                               <td>
                                 <span class="pw">
                                   ${this._isImg(r) && r.publicUrl
-                                    ? html`<img src="${this._previewUrl(r)}" alt="${r.name}" height="100px" loading="lazy" decoding="async" />`
-                                    : html`\u2014`}
+                                    ? html`<img
+                                        src="${this._previewUrl(r)}"
+                                        alt="${r.name}"
+                                        height="100px"
+                                        loading="lazy"
+                                        decoding="async"
+                                      />`
+                                    : html`—`}
                                 </span>
                               </td>
                               <td>
                                 <div class="fn">
                                   ${r.publicUrl
-                                    ? html`<a href="${r.publicUrl}" target="_blank" rel="noopener">${r.name}</a>`
+                                    ? html`<a
+                                        href="${r.publicUrl}"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >${r.name}</a
+                                      >`
                                     : html`${r.name}`}
                                   <simple-clipboard-copy-button
                                     class="ib"
@@ -739,8 +929,14 @@ class HAXCMSFilesAdminDialog extends DDD {
                               </td>
                               <td>${r.mimetype || "\u2014"}</td>
                               <td>${this._fmtBytes(r.size)}</td>
-                              <td title="${this._fmtDate(r.updated || r.dateCreated)}">
-                                ${this._fmtRelativeDate(r.updated || r.dateCreated)}
+                              <td
+                                title="${this._fmtDate(
+                                  r.updated || r.dateCreated,
+                                )}"
+                              >
+                                ${this._fmtRelativeDate(
+                                  r.updated || r.dateCreated,
+                                )}
                               </td>
                               <td>
                                 <hax-file-actions
@@ -766,5 +962,8 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 }
 
-globalThis.customElements.define(HAXCMSFilesAdminDialog.tag, HAXCMSFilesAdminDialog);
+globalThis.customElements.define(
+  HAXCMSFilesAdminDialog.tag,
+  HAXCMSFilesAdminDialog,
+);
 export { HAXCMSFilesAdminDialog };

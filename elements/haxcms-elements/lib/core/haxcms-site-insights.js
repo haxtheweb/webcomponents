@@ -789,7 +789,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     const nextTabs = [];
     if (descriptorList.length > 0) {
       descriptorList.forEach((descriptor) => {
-        const normalizedDescriptor = this._normalizeReportDescriptor(descriptor);
+        const normalizedDescriptor =
+          this._normalizeReportDescriptor(descriptor);
         if (
           normalizedDescriptor &&
           !nextTabs.find((tab) => tab.id === normalizedDescriptor.id)
@@ -805,7 +806,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       });
     }
     this.reportTabs = nextTabs;
-    const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
+    const normalizedActiveTab = this._normalizeLegacyReportTabId(
+      this.activeTab,
+    );
     if (!nextTabs.find((tab) => tab.id === normalizedActiveTab)) {
       this.activeTab = nextTabs[0].id;
     } else if (normalizedActiveTab !== this.activeTab) {
@@ -868,7 +871,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   _activeReport() {
     const tabs = this._reportTabs();
-    const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
+    const normalizedActiveTab = this._normalizeLegacyReportTabId(
+      this.activeTab,
+    );
     const current = tabs.find((tab) => tab.id === normalizedActiveTab);
     return current ? current : tabs[0];
   }
@@ -925,8 +930,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.filters = {};
     setTimeout(() => {
       const schema = this._activeSchema();
-      const normalizedActiveTab = this._normalizeLegacyReportTabId(this.activeTab);
-      if (!schema && normalizedActiveTab !== "overview" && normalizedActiveTab !== "insights") {
+      const normalizedActiveTab = this._normalizeLegacyReportTabId(
+        this.activeTab,
+      );
+      if (
+        !schema &&
+        normalizedActiveTab !== "overview" &&
+        normalizedActiveTab !== "insights"
+      ) {
         return;
       }
       switch (normalizedActiveTab) {
@@ -1205,10 +1216,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         : {};
     this.data = JSON.parse(JSON.stringify(baseData));
     let val =
-      e &&
-      e.detail &&
-      e.detail.value &&
-      typeof e.detail.value === "object"
+      e && e.detail && e.detail.value && typeof e.detail.value === "object"
         ? e.detail.value
         : {};
     this.filters = {
@@ -1289,10 +1297,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         : {};
     this.data = JSON.parse(JSON.stringify(baseData));
     let val =
-      e &&
-      e.detail &&
-      e.detail.value &&
-      typeof e.detail.value === "object"
+      e && e.detail && e.detail.value && typeof e.detail.value === "object"
         ? e.detail.value
         : {};
     this.filters = {
@@ -1443,7 +1448,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           item && item.metadata && item.metadata.updated
             ? item.metadata.updated
             : "";
-        rows.push([this.t.recentUpdates, this._toCellValue(item.title), updated]);
+        rows.push([
+          this.t.recentUpdates,
+          this._toCellValue(item.title),
+          updated,
+        ]);
       });
     }
     return rows;
@@ -1534,9 +1543,19 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   _buildMediaBrowserTableData(data) {
     const rows = [
-      ["Name", "Title", "Type", "Location", "Status", "Found under", "Page", "Alt"],
+      [
+        "Name",
+        "Title",
+        "Type",
+        "Location",
+        "Status",
+        "Found under",
+        "Page",
+        "Alt",
+      ],
     ];
-    const mediaData = data && Array.isArray(data.mediaData) ? data.mediaData : [];
+    const mediaData =
+      data && Array.isArray(data.mediaData) ? data.mediaData : [];
     mediaData.forEach((item) => {
       rows.push([
         this._toCellValue(item.name),
@@ -1552,8 +1571,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return rows;
   }
   _mediaSourceCellValue(item) {
-    const mediaType = this._toCellValue(item && item.type ? item.type : "").toLowerCase();
-    const sourceValue = this._toCellValue(item && item.source ? item.source : "");
+    const mediaType = this._toCellValue(
+      item && item.type ? item.type : "",
+    ).toLowerCase();
+    const sourceValue = this._toCellValue(
+      item && item.source ? item.source : "",
+    );
     if (mediaType === "image" || mediaType === "video") {
       const foundTag = this._mediaFoundTagValue(item);
       if (foundTag !== "") {
@@ -1637,11 +1660,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   _nativeReportTable(headerRow, bodyRows, caption) {
     return html`
       <table class="report-native-table">
-        <caption>${caption} ${this.t.reports}</caption>
+        <caption>
+          ${caption} ${this.t.reports}
+        </caption>
         <thead>
           <tr>
             ${headerRow.map(
-              (header) => html`<th scope="col">${this._toCellValue(header)}</th>`,
+              (header) =>
+                html`<th scope="col">${this._toCellValue(header)}</th>`,
             )}
           </tr>
         </thead>
@@ -1688,7 +1714,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       <div class="panel-shell">
         <div class="panel-scroll">
           ${this.pageSelector()}
-          <div class="report-tabs" role="tablist" aria-label="${this.t.reports}">
+          <div
+            class="report-tabs"
+            role="tablist"
+            aria-label="${this.t.reports}"
+          >
             ${this._reportTabs().map(
               (tab) => html`
                 <simple-icon-button-lite
@@ -1699,7 +1729,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                   role="tab"
                   toggles
                   aria-controls="report-table-panel"
-                  aria-selected="${this.activeTab === tab.id ? "true" : "false"}"
+                  aria-selected="${this.activeTab === tab.id
+                    ? "true"
+                    : "false"}"
                   ?toggled="${this.activeTab === tab.id}"
                   @click="${this._reportTabClicked}"
                 >
@@ -1714,7 +1746,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             role="tabpanel"
             aria-label="${activeReport.label}"
           >
-            <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+            <loading-indicator
+              full
+              ?loading="${this.loading}"
+            ></loading-indicator>
             ${this.loading
               ? html`<p role="status" aria-live="polite">
                   ${this.t.loading} ${activeReport.label}..
@@ -1731,43 +1766,49 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                             activeReport.label,
                           )
                         : html`
-                          <editable-table-display
-                            bordered
-                            copyable
-                            condensed
-                            column-header
-                            downloadable
-                            printable
-                            responsive
-                            sort
-                            striped
-                            scroll
-                          >
-                            <table>
-                              <caption>${activeReport.label} ${this.t.reports}</caption>
-                              <thead>
-                                <tr>
-                                  ${headerRow.map(
-                                    (header) =>
-                                      html`<th>${this._toCellValue(header)}</th>`,
+                            <editable-table-display
+                              bordered
+                              copyable
+                              condensed
+                              column-header
+                              downloadable
+                              printable
+                              responsive
+                              sort
+                              striped
+                              scroll
+                            >
+                              <table>
+                                <caption>
+                                  ${activeReport.label} ${this.t.reports}
+                                </caption>
+                                <thead>
+                                  <tr>
+                                    ${headerRow.map(
+                                      (header) =>
+                                        html`<th>
+                                          ${this._toCellValue(header)}
+                                        </th>`,
+                                    )}
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  ${bodyRows.map(
+                                    (row) => html`
+                                      <tr>
+                                        ${row.map(
+                                          (cell) =>
+                                            html`<td>
+                                              ${this._toCellValue(cell)}
+                                            </td>`,
+                                        )}
+                                      </tr>
+                                    `,
                                   )}
-                                </tr>
-                              </thead>
-                              <tbody>
-                                ${bodyRows.map(
-                                  (row) => html`
-                                    <tr>
-                                      ${row.map(
-                                        (cell) =>
-                                          html`<td>${this._toCellValue(cell)}</td>`,
-                                      )}
-                                    </tr>
-                                  `,
-                                )}
-                              </tbody>
-                            </table>
-                          </editable-table-display>
-                        `}
+                                </tbody>
+                              </table>
+                            </editable-table-display>
+                          `}
                   </div>
                 `}
           </section>

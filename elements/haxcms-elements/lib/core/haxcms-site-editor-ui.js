@@ -2786,7 +2786,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         ) {
           if (validURL(SuperDaemonInstance.value)) {
             SuperDaemonInstance.waveWand(
-              [SuperDaemonInstance.value, "/", {}, "hax-agent", "Upload a file"],
+              [
+                SuperDaemonInstance.value,
+                "/",
+                {},
+                "hax-agent",
+                "Upload a file",
+              ],
               null,
               "coin2",
             );
@@ -2799,13 +2805,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           UserScaffoldInstance.data.architype == "url"
         ) {
           SuperDaemonInstance.waveWand(
-            [
-              _mobx_val_2,
-              "/",
-              {},
-              "hax-agent",
-              "Upload a file",
-            ],
+            [_mobx_val_2, "/", {}, "hax-agent", "Upload a file"],
             null,
             "coin2",
           );
@@ -3723,14 +3723,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: "Admin - Import / Export",
       icon: "icons:file-download",
-      tags: [
-        "CMS",
-        "admin",
-        "import",
-        "export",
-        "transfer",
-        "site settings",
-      ],
+      tags: ["CMS", "admin", "import", "export", "transfer", "site settings"],
       value: {
         target: this,
         method: "_openImportExportDashboard",
@@ -5777,7 +5770,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return false;
     }
 
-    if (this.editMode && HAXStore.haxTray && HAXStore.haxTray.trayDetail === "view-source") {
+    if (
+      this.editMode &&
+      HAXStore.haxTray &&
+      HAXStore.haxTray.trayDetail === "view-source"
+    ) {
       this._confirmHtmlSourceExit(e);
       return false;
     }
@@ -5864,12 +5861,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (typeof path !== "string") {
       return null;
     }
-    const normalized = path.trim().toLowerCase().replace(/^\/+/, "").replace(/\/+$/, "");
+    const normalized = path
+      .trim()
+      .toLowerCase()
+      .replace(/^\/+/, "")
+      .replace(/\/+$/, "");
     if (!normalized) {
       return null;
     }
     if (
-      Object.prototype.hasOwnProperty.call(ADMIN_QUERY_PATH_TO_ROUTE, normalized)
+      Object.prototype.hasOwnProperty.call(
+        ADMIN_QUERY_PATH_TO_ROUTE,
+        normalized,
+      )
     ) {
       return ADMIN_QUERY_PATH_TO_ROUTE[normalized];
     }
@@ -5911,7 +5915,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const params = new URLSearchParams(globalThis.location.search);
     return this._normalizeAdminRouteNodeId(params.get("adminNode"));
   }
-  _setAdminRoutePathOnLocation(path = null, historyMode = "push", routeContext = {}) {
+  _setAdminRoutePathOnLocation(
+    path = null,
+    historyMode = "push",
+    routeContext = {},
+  ) {
     const params = new URLSearchParams(globalThis.location.search);
     const normalizedPath = path ? this._normalizeAdminRoutePath(path) : null;
     const routeNodeId = this._normalizeAdminRouteNodeId(
@@ -6454,9 +6462,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         ? ""
         : `${detail.nodeTitle}`;
     const invokedBy =
-      detail &&
-      detail.invokedBy &&
-      detail.invokedBy.nodeType === 1
+      detail && detail.invokedBy && detail.invokedBy.nodeType === 1
         ? detail.invokedBy
         : e && e.target
           ? e.target
@@ -6469,11 +6475,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _openPageRevisionsForActivePage() {
     const activeItem = toJS(store.activeItem);
-    const nodeId =
-      activeItem && activeItem.id ? `${activeItem.id}`.trim() : "";
+    const nodeId = activeItem && activeItem.id ? `${activeItem.id}`.trim() : "";
     const nodeTitle = activeItem && activeItem.title ? activeItem.title : "";
     this._openPageRevisions(nodeId, nodeTitle, {
-      invokedBy: this.shadowRoot ? this.shadowRoot.querySelector("#merlin") : null,
+      invokedBy: this.shadowRoot
+        ? this.shadowRoot.querySelector("#merlin")
+        : null,
       silent: false,
     });
   }

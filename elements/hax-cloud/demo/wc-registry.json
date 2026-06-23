@@ -654,7 +654,6 @@
   "youtube-toolbar": "@polymer/app-route/demo/youtube-demo/youtube-toolbar.js",
   "iron-a11y-announcer": "@polymer/iron-a11y-announcer/iron-a11y-announcer.js",
   "iron-a11y-keys": "@polymer/iron-a11y-keys/iron-a11y-keys.js",
-  "iron-ajax": "@polymer/iron-ajax/iron-ajax.js",
   "iron-request": "@polymer/iron-ajax/iron-request.js",
   "iron-autogrow-textarea": "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js",
   "iron-component-page": "@polymer/iron-component-page/iron-component-page.js",

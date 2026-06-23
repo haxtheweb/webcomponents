@@ -1,239 +1,78 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
-import "@polymer/iron-ajax/iron-ajax.js";
+import { CMSBase } from "./cms-base.js";
 /**
  * `cms-views`
  * @element cms-views
- * `Render and process a  / views from a content management system.`
+ * `Render and process a views from a content management system.`
  */
-class CMSViews extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: block;
-          min-width: 112px;
-          min-height: 112px;
-          transition: 0.6s all ease;
-          background-color: transparent;
-        }
-        :host([hax-edit-mode]) #replacementcontent {
-          pointer-events: none;
-        }
-
-        #replacementcontent {
-          visibility: visible;
-          opacity: 1;
-        }
-        :host([loading]) {
-          text-align: center;
-        }
-
-        :host([loading]) #replacementcontent {
-          opacity: 0;
-          visibility: hidden;
-        }
-      </style>
-      <iron-ajax
-        id="viewsrequest"
-        method="GET"
-        params="[[bodyData]]"
-        url="[[viewsEndPoint]]"
-        handle-as="json"
-        last-response="{{viewsData}}"
-      ></iron-ajax>
-      <span id="replacementcontent"><slot></slot></span>
-    `;
-  }
+class CMSViews extends CMSBase {
   static get tag() {
     return "cms-views";
   }
+  constructor() {
+    super();
+    this._globalEndPointVar = "cmsviewsEndPoint";
+    this.viewsName = "";
+    this.viewsDisplay = "";
+    this.viewsEndPoint = null;
+    this.viewsPrefix = "";
+    this.viewsSuffix = "";
+  }
   static get properties() {
     return {
-      /**
-       * Loading state
-       */
-      loading: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false,
-      },
-      /**
-       * Name of the views to render
-       */
       viewsName: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
       },
-      /**
-       * Display from the views
-       */
       viewsDisplay: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
       },
-      /**
-       * views end point updated, change the way we do processing.
-       */
       viewsEndPoint: {
         type: String,
       },
-      /**
-       * Body data which is just views with some encapsulation.
-       */
-      bodyData: {
-        type: Object,
-        computed: "_generateBodyData(viewsName, viewsDisplay)",
-        observer: "_viewsChanged",
-      },
-      /**
-       * views data from the end point.
-       */
-      viewsData: {
-        type: String,
-        observer: "_handleviewsResponse",
-      },
-      /**
-       * Prefix for the views to be processed
-       */
       viewsPrefix: {
         type: String,
-        observer: "[",
       },
-      /**
-       * Suffix for the views to be processed
-       */
       viewsSuffix: {
         type: String,
-        observer: "]",
-      },
-      haxEditMode: {
-        type: Boolean,
-        value: false,
-        attribute: "hax-edit-mode",
-        reflectToAttribute: true,
       },
     };
-  }
-  haxHooks() {
-    return {
-      editModeChanged: "haxeditModeChanged",
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-
-  haxactiveElementChanged(element, value) {
-    if (value) {
-      this.haxEditMode = value;
-    }
-  }
-
-  haxeditModeChanged(value) {
-    this.haxEditMode = value;
   }
   /**
-   * Generate body data.
+   * Build request body data.
    */
-  _generateBodyData(name, display) {
-    if (name !== null && name !== "") {
+  _buildBodyData() {
+    if (this.viewsName && this.viewsName !== "") {
       return {
-        name: `${name}`,
-        display: `${display}`,
+        name: this.viewsName,
+        display: this.viewsDisplay,
       };
     }
+    return null;
   }
   /**
-   * Handle the response from the views processing endpoint
+   * Resolve endpoint.
    */
-  _handleviewsResponse(newValue, oldValue) {
-    if (newValue !== null && typeof newValue.content !== typeof undefined) {
-      // store the text and url callbacks
-      if (globalThis.document.getElementById("cmstokenidtolockonto") != null) {
-        document
-          .getElementById("cmstokenidtolockonto")
-          .setAttribute("href", newValue.editEndpoint);
-        globalThis.document.getElementById("cmstokenidtolockonto").innerHTML =
-          newValue.editText;
-      }
-      // wipe our own slot here
-      wipeSlot(this);
-      // now inject the content we got
-      microTask.run(() => {
-        let frag = globalThis.document.createElement("span");
-        frag.innerHTML = newValue.content;
-        let newNode = frag.cloneNode(true);
-        this.appendChild(newNode);
-        setTimeout(() => {
-          this.loading = false;
-          if (globalThis.WCAutoload) {
-            globalThis.WCAutoload.process();
-          }
-        }, 600);
-      });
+  _resolveEndPoint() {
+    if (this.viewsEndPoint) {
+      return this.viewsEndPoint;
     }
-  }
-  /**
-   * views end point changed
-   */
-  _viewsChanged(newValue, oldValue) {
-    // ensure we have something and are not loading currently
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue !== "" &&
-      !this.loading
-    ) {
-      // support going from a null element to a real one
-      if (
-        typeof this.viewsEndPoint === typeof undefined &&
-        typeof globalThis.cmsviewsEndPoint !== typeof undefined
-      ) {
-        this.viewsEndPoint = globalThis.cmsviewsEndPoint;
-      }
-      if (this.viewsEndPoint) {
-        this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#viewsrequest").generateRequest();
-        });
-      }
+    if (typeof globalThis.cmsviewsEndPoint !== typeof undefined) {
+      return globalThis.cmsviewsEndPoint;
     }
+    return null;
   }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  updated(changedProperties) {
     if (
-      typeof this.viewsName !== typeof undefined &&
-      this.viewsName !== null &&
-      this.viewsName !== ""
+      changedProperties.has("viewsName") ||
+      changedProperties.has("viewsDisplay")
     ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the views data needed for the request from globals
-        if (
-          typeof this.viewsEndPoint === typeof undefined &&
-          typeof globalThis.cmsviewsEndPoint !== typeof undefined
-        ) {
-          this.viewsEndPoint = globalThis.cmsviewsEndPoint;
-        }
-        if (this.viewsEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#viewsrequest").generateRequest();
-          });
-        }
-      }
+      this._doRequest();
     }
   }
   static get haxProperties() {
     return {
       canScale: true,
-
       canEditSource: true,
       gizmo: {
         title: "CMS View",
@@ -282,9 +121,6 @@ class CMSViews extends PolymerElement {
       },
     };
   }
-  /**
-   * Implements getHaxJSONSchema post processing callback.
-   */
   postProcessgetHaxJSONSchema(schema) {
     schema.properties["__editThis"] = {
       type: "string",

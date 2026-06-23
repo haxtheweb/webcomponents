@@ -142,10 +142,8 @@ function normalizeParameter(parameter = {}, openapi = {}) {
     type: schema.type ? String(schema.type) : "string",
     enumValues,
     defaultValue,
-    minimum:
-      typeof schema.minimum === "number" ? Number(schema.minimum) : null,
-    maximum:
-      typeof schema.maximum === "number" ? Number(schema.maximum) : null,
+    minimum: typeof schema.minimum === "number" ? Number(schema.minimum) : null,
+    maximum: typeof schema.maximum === "number" ? Number(schema.maximum) : null,
     referenceName:
       working.$ref && typeof working.$ref === "string"
         ? refNameFromPointer(working.$ref)
@@ -182,7 +180,10 @@ function getPathItemForEndpoint(openapiPaths = {}, endpointPath = "") {
   const keys = Object.keys(openapiPaths || {});
   for (let i = 0; i < keys.length; i++) {
     const pathKey = normalizePath(keys[i]);
-    if (normalizedEndpoint === pathKey || normalizedEndpoint.endsWith(pathKey)) {
+    if (
+      normalizedEndpoint === pathKey ||
+      normalizedEndpoint.endsWith(pathKey)
+    ) {
       return {
         pathKey,
         item: openapiPaths[keys[i]],
@@ -207,7 +208,11 @@ function getListEndpoint(entity = {}) {
   return endpoints[0];
 }
 
-function normalizeEntityDescriptor(entity = {}, openapi = {}, apiBasePath = "") {
+function normalizeEntityDescriptor(
+  entity = {},
+  openapi = {},
+  apiBasePath = "",
+) {
   const openapiPaths =
     openapi && openapi.paths && typeof openapi.paths === "object"
       ? openapi.paths
@@ -286,12 +291,11 @@ function normalizeEntityDescriptor(entity = {}, openapi = {}, apiBasePath = "") 
 
 function getEntitiesFromPayload(payload = {}) {
   const top =
-    payload && typeof payload === "object" ? payload : { data: { entities: [] } };
+    payload && typeof payload === "object"
+      ? payload
+      : { data: { entities: [] } };
   const data =
-    top &&
-    top.data &&
-    typeof top.data === "object" &&
-    !Array.isArray(top.data)
+    top && top.data && typeof top.data === "object" && !Array.isArray(top.data)
       ? top.data
       : {};
   return Array.isArray(data.entities) ? data.entities : [];
@@ -341,7 +345,9 @@ function getContentKeyByEntityName(entityName = "") {
 
 export function extractViewsRecords(payload = {}, entityConfig = {}) {
   const envelope =
-    payload && typeof payload === "object" ? payload : { status: 200, data: {} };
+    payload && typeof payload === "object"
+      ? payload
+      : { status: 200, data: {} };
   const data =
     envelope &&
     envelope.data &&
@@ -364,16 +370,9 @@ export function extractViewsRecords(payload = {}, entityConfig = {}) {
   const outputRecords = Array.isArray(records) ? records : [];
   return {
     records: outputRecords,
-    count:
-      typeof data.count === "number"
-        ? data.count
-        : outputRecords.length,
-    total:
-      typeof data.total === "number"
-        ? data.total
-        : outputRecords.length,
-    page:
-      data && data.page && typeof data.page === "object" ? data.page : {},
+    count: typeof data.count === "number" ? data.count : outputRecords.length,
+    total: typeof data.total === "number" ? data.total : outputRecords.length,
+    page: data && data.page && typeof data.page === "object" ? data.page : {},
   };
 }
 
@@ -429,7 +428,9 @@ async function callSiteOperation(operationName = "", params = {}) {
 }
 
 async function loadEntitiesPayload(apiBasePath = "") {
-  const registryResponse = await callSiteOperation("@site/listEntityDescriptors");
+  const registryResponse = await callSiteOperation(
+    "@site/listEntityDescriptors",
+  );
   if (registryResponse && typeof registryResponse === "object") {
     return registryResponse;
   }
@@ -517,4 +518,3 @@ export async function loadHAXCMSViewsSpec(options = {}) {
 export function clearHAXCMSViewsSpecCache() {
   VIEWS_SPEC_CACHE.clear();
 }
-

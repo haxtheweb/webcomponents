@@ -456,7 +456,11 @@ class HAXCMSThemePreviewPanel extends DDD {
     }
     // prefer backend registry if available
     const theme = this._themesRegistry && this._themesRegistry[themeKey];
-    if (theme && Array.isArray(theme.supportedPalettes) && theme.supportedPalettes.length > 0) {
+    if (
+      theme &&
+      Array.isArray(theme.supportedPalettes) &&
+      theme.supportedPalettes.length > 0
+    ) {
       return theme.supportedPalettes;
     }
     // fallback: read from the custom element class if already defined

@@ -106,12 +106,7 @@ class HAXCMSBackendPHP extends LitElement {
     );
   }
   _hasValidJWT(jwt) {
-    return (
-      jwt != null &&
-      jwt != "null" &&
-      jwt != "" &&
-      typeof jwt == "string"
-    );
+    return jwt != null && jwt != "null" && jwt != "" && typeof jwt == "string";
   }
   _setConnectionValidated(validated) {
     store.connectionValidated = validated === true;

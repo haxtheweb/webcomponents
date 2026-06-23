@@ -208,7 +208,8 @@ class HAXCMSAboutDialogUI extends DDD {
     const normalizedFormat = String(format || "")
       .replace(/^\./, "")
       .toLowerCase();
-    const routeFormat = normalizedFormat === "md" ? "markdown" : normalizedFormat;
+    const routeFormat =
+      normalizedFormat === "md" ? "markdown" : normalizedFormat;
     const routeVariant = _pageRouteVariantUrl(routeFormat);
     if (routeVariant) {
       return routeVariant;
@@ -398,7 +399,6 @@ class HAXCMSAboutDialogUI extends DDD {
           font-size: var(--ddd-font-size-3xs);
           font-weight: var(--ddd-font-weight-bold);
         }
-
 
         a {
           color: light-dark(
@@ -700,7 +700,9 @@ class HAXCMSAboutDialogUI extends DDD {
                   >
                   (structure) with
                   <a
-                    href="${this._currentSiteResourceHref("lunrSearchIndex.json")}"
+                    href="${this._currentSiteResourceHref(
+                      "lunrSearchIndex.json",
+                    )}"
                     target="_blank"
                     rel="noopener noreferrer"
                     ><code>/lunrSearchIndex.json</code></a
@@ -756,7 +758,6 @@ class HAXCMSAboutDialogUI extends DDD {
               </ul>
             </div>
           </details>
-
         </div>
       </div>
     `;

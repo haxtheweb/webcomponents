@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@haxtheweb/h-a-x/h-a-x.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 /**
@@ -23,17 +22,7 @@ class CmsHax extends LitElement {
     ];
   }
   render() {
-    return html`
-      <iron-ajax
-        id="pageupdateajax"
-        url="${this.endPoint}"
-        method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleUpdateResponse}"
-      ></iron-ajax>
-      <h-a-x app-store="${this.__appStore}"></h-a-x>
-    `;
+    return html`<h-a-x app-store="${this.__appStore}"></h-a-x>`;
   }
 
   static get tag() {
@@ -403,16 +392,27 @@ class CmsHax extends LitElement {
       if (HAXStore.editMode && !e.detail.keepEditMode) {
         HAXStore.editMode = false;
       }
-      this.shadowRoot.querySelector("#pageupdateajax").body = e.detail.value;
-      // send the request
-      this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
+      try {
+        const response = await fetch(this.endPoint, {
+          method: this.method || "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: e.detail.value,
+        });
+        if (response.ok) {
+          this._handleUpdateResponse();
+        }
+      } catch (err) {
+        // fail silently
+      }
     }
   }
 
   /**
    * _handleUpdateResponse
    */
-  _handleUpdateResponse(e) {
+  _handleUpdateResponse() {
     if (!this.hideMessage) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,

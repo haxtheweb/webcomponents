@@ -58,10 +58,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
     }
   }
   _syncStoreAppSettings() {
-    if (
-      globalThis.appSettings &&
-      typeof globalThis.appSettings === "object"
-    ) {
+    if (globalThis.appSettings && typeof globalThis.appSettings === "object") {
       store.appSettings = globalThis.appSettings;
       configureHAXCMSSiteApiRegistry(store.appSettings);
     }
@@ -103,13 +100,15 @@ class HAXCMSEditorBuilder extends HTMLElement {
       }
       if (
         existingScript &&
-        existingScript.getAttribute("data-haxcms-connection-settings-loaded") ===
-          "true"
+        existingScript.getAttribute(
+          "data-haxcms-connection-settings-loaded",
+        ) === "true"
       ) {
         resolve(true);
         return;
       }
-      const script = existingScript || globalThis.document.createElement("script");
+      const script =
+        existingScript || globalThis.document.createElement("script");
       script.setAttribute("data-haxcms-connection-settings", "true");
       script.src = resolvedScriptSrc;
       script.addEventListener(
@@ -148,9 +147,11 @@ class HAXCMSEditorBuilder extends HTMLElement {
     if (!(globalThis.document && globalThis.document.querySelectorAll)) {
       return elements;
     }
-    globalThis.document.querySelectorAll("haxcms-site-editor-ui").forEach((el) => {
-      elements.push(el);
-    });
+    globalThis.document
+      .querySelectorAll("haxcms-site-editor-ui")
+      .forEach((el) => {
+        elements.push(el);
+      });
     return elements;
   }
   _dedupeEditorUIElements() {
@@ -185,10 +186,14 @@ class HAXCMSEditorBuilder extends HTMLElement {
       return;
     }
     if (this.parentNode) {
-      this.parentNode.insertBefore(store.cmsSiteEditor.haxCmsSiteEditorUIElement, this);
-    }
-    else if (globalThis.document && globalThis.document.body) {
-      globalThis.document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+      this.parentNode.insertBefore(
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement,
+        this,
+      );
+    } else if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.appendChild(
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement,
+      );
     }
     // forces a nice fade in transition
     setTimeout(() => {
@@ -204,7 +209,8 @@ class HAXCMSEditorBuilder extends HTMLElement {
         !store.cmsSiteEditor.haxCmsSiteEditorUIElement.isConnected) &&
       this._getEditorUIElements().length > 0
     ) {
-      store.cmsSiteEditor.haxCmsSiteEditorUIElement = this._getEditorUIElements()[0];
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement =
+        this._getEditorUIElements()[0];
     }
     if (
       store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
@@ -268,7 +274,8 @@ class HAXCMSEditorBuilder extends HTMLElement {
           typeof globalThis.appSettings === "object" &&
           globalThis.appSettings.connectionSettings
         ) {
-          connectionSettingsScriptSrc = globalThis.appSettings.connectionSettings;
+          connectionSettingsScriptSrc =
+            globalThis.appSettings.connectionSettings;
         } else {
           connectionSettingsScriptSrc =
             "../../system/api/v1/session/connection-settings";

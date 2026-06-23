@@ -59,9 +59,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
           display: block;
           min-width: min(94vw, 1280px);
           max-height: calc(
-            var(--simple-modal-height, 80vh) -
-              var(--simple-modal-titlebar-height, 80px) -
-              var(--ddd-spacing-8, 32px)
+            var(--simple-modal-height, 80vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-8, 32px)
           );
           overflow: hidden;
           color: light-dark(
@@ -78,7 +79,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
           max-height: 100%;
         }
         .panel {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           display: flex;
           flex-direction: column;
@@ -384,7 +386,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
       return;
     }
     const incomingNodeId = this._normalizeNodeId(data.nodeId);
-    if (!incomingNodeId || incomingNodeId !== this._normalizeNodeId(this.nodeId)) {
+    if (
+      !incomingNodeId ||
+      incomingNodeId !== this._normalizeNodeId(this.nodeId)
+    ) {
       return;
     }
     this.loading = false;
@@ -429,7 +434,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
       return;
     }
     const incomingNodeId = this._normalizeNodeId(data.nodeId);
-    if (!incomingNodeId || incomingNodeId !== this._normalizeNodeId(this.nodeId)) {
+    if (
+      !incomingNodeId ||
+      incomingNodeId !== this._normalizeNodeId(this.nodeId)
+    ) {
       return;
     }
     this.revisionLoading = false;
@@ -458,7 +466,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
       return;
     }
     const incomingNodeId = this._normalizeNodeId(data.nodeId);
-    if (!incomingNodeId || incomingNodeId !== this._normalizeNodeId(this.nodeId)) {
+    if (
+      !incomingNodeId ||
+      incomingNodeId !== this._normalizeNodeId(this.nodeId)
+    ) {
       return;
     }
     this.restoring = false;
@@ -481,7 +492,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
     this._loadRevision(hash);
   }
   _actionTargetFromEvent(e) {
-    const path = e && typeof e.composedPath === "function" ? e.composedPath() : [];
+    const path =
+      e && typeof e.composedPath === "function" ? e.composedPath() : [];
     for (let i = 0; i < path.length; i++) {
       const candidate = path[i];
       if (
@@ -496,7 +508,11 @@ class HAXCMSPageRevisionsDialog extends DDD {
   }
   _isCurrentRevisionHash(hash) {
     const normalizedHash = this._normalizeNodeId(hash);
-    if (!normalizedHash || !Array.isArray(this.revisions) || this.revisions.length === 0) {
+    if (
+      !normalizedHash ||
+      !Array.isArray(this.revisions) ||
+      this.revisions.length === 0
+    ) {
       return false;
     }
     const firstRevision = this.revisions[0];
@@ -656,9 +672,9 @@ class HAXCMSPageRevisionsDialog extends DDD {
       return html`<div class="empty">No revision content loaded.</div>`;
     }
     if (this.previewMode === "rendered") {
-      return html`<div class="preview-rendered">${unsafeHTML(
-        this.previewContent,
-      )}</div>`;
+      return html`<div class="preview-rendered">
+        ${unsafeHTML(this.previewContent)}
+      </div>`;
     }
     return html`<pre>${this.previewContent}</pre>`;
   }
@@ -724,61 +740,58 @@ class HAXCMSPageRevisionsDialog extends DDD {
                         </tr>
                       </thead>
                       <tbody>
-                        ${this.revisions.map(
-                          (revision, index) => {
-                            const isCurrentRevision = index === 0;
-                            const revisionTimestamp =
-                              this._getRevisionTimestamp(revision);
-                            const dateDisplay =
-                              this._formatTimeAgo(revisionTimestamp) || "Unknown";
-                            const dateTitle =
-                              this._formatAbsoluteDate(revisionTimestamp) ||
-                              "Unknown date";
-                            const authorEmail = revision.authorEmail || "";
-                            const authorDisplay = revision.author || "";
-                            return html`
-                              <tr
-                                class="${this.selectedHash === revision.hash
-                                  ? "selected"
-                                  : ""}"
-                              >
-                                <td>
-                                  <span class="sort-value"
-                                    >${revisionTimestamp || 0}</span
-                                  >
-                                  <span title="${dateTitle}"
-                                    >${dateDisplay}</span
-                                  >
-                                </td>
-                                <td>
-                                  <span title="${authorEmail}"
-                                    >${authorDisplay}</span
-                                  >
-                                </td>
-                                <td class="action-cell">
-                                  <simple-icon-button-lite
-                                    class="action"
-                                    icon="icons:visibility"
-                                    label="Preview revision"
-                                    title="Preview revision"
-                                    data-action="preview"
-                                    data-hash="${revision.hash || ""}"
-                                    ?disabled="${isCurrentRevision}"
-                                  ></simple-icon-button-lite>
-                                  <simple-icon-button-lite
-                                    class="action restore"
-                                    icon="icons:restore"
-                                    label="Restore revision"
-                                    title="Restore revision as a new commit"
-                                    data-action="restore"
-                                    data-hash="${revision.hash || ""}"
-                                    ?disabled="${this.restoring || isCurrentRevision}"
-                                  ></simple-icon-button-lite>
-                                </td>
-                              </tr>
-                            `;
-                          },
-                        )}
+                        ${this.revisions.map((revision, index) => {
+                          const isCurrentRevision = index === 0;
+                          const revisionTimestamp =
+                            this._getRevisionTimestamp(revision);
+                          const dateDisplay =
+                            this._formatTimeAgo(revisionTimestamp) || "Unknown";
+                          const dateTitle =
+                            this._formatAbsoluteDate(revisionTimestamp) ||
+                            "Unknown date";
+                          const authorEmail = revision.authorEmail || "";
+                          const authorDisplay = revision.author || "";
+                          return html`
+                            <tr
+                              class="${this.selectedHash === revision.hash
+                                ? "selected"
+                                : ""}"
+                            >
+                              <td>
+                                <span class="sort-value"
+                                  >${revisionTimestamp || 0}</span
+                                >
+                                <span title="${dateTitle}">${dateDisplay}</span>
+                              </td>
+                              <td>
+                                <span title="${authorEmail}"
+                                  >${authorDisplay}</span
+                                >
+                              </td>
+                              <td class="action-cell">
+                                <simple-icon-button-lite
+                                  class="action"
+                                  icon="icons:visibility"
+                                  label="Preview revision"
+                                  title="Preview revision"
+                                  data-action="preview"
+                                  data-hash="${revision.hash || ""}"
+                                  ?disabled="${isCurrentRevision}"
+                                ></simple-icon-button-lite>
+                                <simple-icon-button-lite
+                                  class="action restore"
+                                  icon="icons:restore"
+                                  label="Restore revision"
+                                  title="Restore revision as a new commit"
+                                  data-action="restore"
+                                  data-hash="${revision.hash || ""}"
+                                  ?disabled="${this.restoring ||
+                                  isCurrentRevision}"
+                                ></simple-icon-button-lite>
+                              </td>
+                            </tr>
+                          `;
+                        })}
                       </tbody>
                     </table>
                   </editable-table-display>
@@ -818,7 +831,8 @@ class HAXCMSPageRevisionsDialog extends DDD {
               ></simple-icon-button-lite>
             </div>
             <span class="panel-header-title" title="${previewTitle}"
-              >${previewTitle}</span>
+              >${previewTitle}</span
+            >
           </div>
           <details class="preview-details">
             <summary>Details</summary>

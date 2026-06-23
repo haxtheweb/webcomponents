@@ -1,252 +1,90 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
+import { CMSBase } from "./cms-base.js";
 /**
  * `cms-entity`
  * @element cms-entity
- * `Render and process a  / entity from a content management system.`
+ * `Render and process a entity from a content management system.`
  */
-class CMSEntity extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: block;
-          min-width: 112px;
-          min-height: 112px;
-          transition: 0.6s all ease;
-          background-color: transparent;
-        }
-        :host([hax-edit-mode]) #replacementcontent {
-          pointer-events: none;
-        }
-
-        #replacementcontent {
-          visibility: visible;
-          opacity: 1;
-        }
-        :host([loading]) {
-          text-align: center;
-        }
-
-        :host([loading]) #replacementcontent {
-          opacity: 0;
-          visibility: hidden;
-        }
-      </style>
-      <iron-ajax
-        id="entityrequest"
-        method="GET"
-        params="[[bodyData]]"
-        url="[[entityEndPoint]]"
-        handle-as="json"
-        last-response="{{entityData}}"
-      ></iron-ajax>
-      <span id="replacementcontent"><slot></slot></span>
-    `;
-  }
+class CMSEntity extends CMSBase {
   static get tag() {
     return "cms-entity";
   }
+  constructor() {
+    super();
+    this._globalEndPointVar = "cmsentityEndPoint";
+    this.entityType = "";
+    this.entityId = "";
+    this.entityDisplayMode = "";
+    this.entityEndPoint = null;
+    this.entityPrefix = "";
+    this.entitySuffix = "";
+  }
   static get properties() {
     return {
-      /**
-       * Loading state
-       */
-      loading: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false,
-      },
-      /**
-       * Type of entity to load
-       */
       entityType: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
       },
-      /**
-       * ID of the item to load
-       */
       entityId: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
       },
-      /**
-       * Display mode of the entity
-       */
       entityDisplayMode: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
       },
-      /**
-       * entity end point updated, change the way we do processing.
-       */
       entityEndPoint: {
         type: String,
       },
-      /**
-       * Body data which is just entity with some encapsulation.
-       */
-      bodyData: {
-        type: Object,
-        computed: "_generateBodyData(entityType, entityId, entityDisplayMode)",
-        observer: "_entityChanged",
-      },
-      /**
-       * entity data from the end point.
-       */
-      entityData: {
-        type: String,
-        observer: "_handleEntityResponse",
-      },
-      /**
-       * Prefix for the entity to be processed
-       */
       entityPrefix: {
         type: String,
-        observer: "[",
       },
-      /**
-       * Suffix for the entity to be processed
-       */
       entitySuffix: {
         type: String,
-        observer: "]",
-      },
-      haxEditMode: {
-        type: Boolean,
-        value: false,
-        attribute: "hax-edit-mode",
-        reflectToAttribute: true,
       },
     };
-  }
-  haxHooks() {
-    return {
-      editModeChanged: "haxeditModeChanged",
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-
-  haxactiveElementChanged(element, value) {
-    if (value) {
-      this.haxEditMode = value;
-    }
-  }
-
-  haxeditModeChanged(value) {
-    this.haxEditMode = value;
   }
   /**
-   * Generate body data.
+   * Build request body data.
    */
-  _generateBodyData(entityType, entityId, entityDisplayMode) {
+  _buildBodyData() {
     if (
-      entityType !== null &&
-      entityType !== "" &&
-      entityId !== null &&
-      entityId !== ""
+      this.entityType &&
+      this.entityType !== "" &&
+      this.entityId &&
+      this.entityId !== ""
     ) {
       return {
-        type: `${entityType}`,
-        id: `${entityId}`,
-        display_mode: `${entityDisplayMode}`,
+        type: this.entityType,
+        id: this.entityId,
+        display_mode: this.entityDisplayMode,
       };
     }
+    return null;
   }
   /**
-   * Handle the response from the entity processing endpoint
+   * Resolve endpoint.
    */
-  _handleEntityResponse(newValue, oldValue) {
-    if (newValue !== null && typeof newValue.content !== typeof undefined) {
-      // store the text and url callbacks
-      if (globalThis.document.getElementById("cmstokenidtolockonto") != null) {
-        document
-          .getElementById("cmstokenidtolockonto")
-          .setAttribute("href", newValue.editEndpoint);
-        globalThis.document.getElementById("cmstokenidtolockonto").innerHTML =
-          newValue.editText;
-      }
-      // wipe our own slot here
-      wipeSlot(this);
-      // now inject the content we got
-      microTask.run(() => {
-        let frag = globalThis.document.createElement("span");
-        frag.innerHTML = newValue.content;
-        let newNode = frag.cloneNode(true);
-        this.appendChild(newNode);
-        setTimeout(() => {
-          this.loading = false;
-          if (globalThis.WCAutoload) {
-            globalThis.WCAutoload.process();
-          }
-        }, 600);
-      });
+  _resolveEndPoint() {
+    if (this.entityEndPoint) {
+      return this.entityEndPoint;
     }
-  }
-  /**
-   * entity end point changed
-   */
-  _entityChanged(newValue, oldValue) {
-    // ensure we have something and are not loading currently
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue !== "" &&
-      !this.loading
-    ) {
-      // support going from a null element to a real one
-      if (
-        typeof this.entityEndPoint === typeof undefined &&
-        typeof globalThis.cmsentityEndPoint !== typeof undefined
-      ) {
-        this.entityEndPoint = globalThis.cmsentityEndPoint;
-      }
-      if (this.entityEndPoint) {
-        this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#entityrequest").generateRequest();
-        });
-      }
+    if (typeof globalThis.cmsentityEndPoint !== typeof undefined) {
+      return globalThis.cmsentityEndPoint;
     }
+    return null;
   }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  updated(changedProperties) {
     if (
-      typeof this.entity !== typeof undefined &&
-      this.entity !== null &&
-      this.entity !== ""
+      changedProperties.has("entityType") ||
+      changedProperties.has("entityId") ||
+      changedProperties.has("entityDisplayMode")
     ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the entity data needed for the request from globals
-        if (
-          typeof this.entityEndPoint === typeof undefined &&
-          typeof globalThis.cmsentityEndPoint !== typeof undefined
-        ) {
-          this.entityEndPoint = globalThis.cmsentityEndPoint;
-        }
-        if (this.entityEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#entityrequest").generateRequest();
-          });
-        }
-      }
+      this._doRequest();
     }
   }
   static get haxProperties() {
     return {
       canScale: true,
-
       canEditSource: true,
       gizmo: {
         title: "CMS Entity",
@@ -307,9 +145,6 @@ class CMSEntity extends PolymerElement {
       },
     };
   }
-  /**
-   * Implements getHaxJSONSchema post processing callback.
-   */
   postProcessgetHaxJSONSchema(schema) {
     schema.properties["__editThis"] = {
       type: "string",

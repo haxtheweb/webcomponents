@@ -112,9 +112,8 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "title":
-                        const pageBreakTitle = haxStore.activeHaxBody.querySelector(
-                          "page-break",
-                        );
+                        const pageBreakTitle =
+                          haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreakTitle) {
                           this.activeTitle = pageBreakTitle.title;
                           this.__title = this._makeTitle(
@@ -127,13 +126,12 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                         break;
                       case "icon":
                       case "page-type":
-                        const pageBreakIcon = haxStore.activeHaxBody.querySelector("page-break");
+                        const pageBreakIcon =
+                          haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreakIcon && pageBreakIcon.icon) {
                           this.icon = pageBreakIcon.icon;
                         } else if (pageBreakIcon && pageBreakIcon.pageType) {
-                          this.icon = iconFromPageType(
-                            pageBreakIcon.pageType,
-                          );
+                          this.icon = iconFromPageType(pageBreakIcon.pageType);
                         } else {
                           this.icon = null;
                         }
@@ -143,15 +141,13 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                 }
               });
             });
-            const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+            const pageBreak =
+              haxStore.activeHaxBody.querySelector("page-break");
             if (pageBreak) {
-              this._inProgressPageBreak.observe(
-                pageBreak,
-                {
-                  attributeFilter: ["title", "page-type", "icon"],
-                  attributes: true,
-                },
-              );
+              this._inProgressPageBreak.observe(pageBreak, {
+                attributeFilter: ["title", "page-type", "icon"],
+                attributes: true,
+              });
             }
           }, 0);
         } else {

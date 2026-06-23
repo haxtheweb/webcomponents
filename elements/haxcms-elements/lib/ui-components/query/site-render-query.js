@@ -3,11 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@polymer/iron-list/iron-list.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 /**
  * `site-render-query`
- * `Render a query result as an iron-list`
+ * `Render a query result as a list`
  *
  * @demo demo/index.html
  */
@@ -19,6 +18,18 @@ class SiteRenderQuery extends LitElement {
     return [
       css`
         :host {
+          display: block;
+        }
+        .list {
+          display: flex;
+          flex-direction: column;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: var(--site-render-query-grid-gap, 16px);
+        }
+        .item {
           display: block;
         }
       `,
@@ -39,14 +50,15 @@ class SiteRenderQuery extends LitElement {
         .sort="${this.sort}"
         .conditions="${this.conditions}"
       ></site-query>
-      <iron-list
-        id="list"
-        .items="${this.__items}"
-        ?grid="${this.grid}"
-        mutable-data
-      >
-        <slot></slot>
-      </iron-list>
+      <div id="list" class="${this.grid ? "grid" : "list"}">
+        ${this.__items.map(
+          (item) => html`
+            <div class="item" .item="${item}">
+              <slot></slot>
+            </div>
+          `,
+        )}
+      </div>
     `;
   }
   resultEvent(e) {
@@ -70,7 +82,7 @@ class SiteRenderQuery extends LitElement {
         type: Object,
       },
       /**
-       * iron-list helper for this 1 flag
+       * Render items in a grid layout
        */
       grid: {
         type: Boolean,
@@ -101,7 +113,7 @@ class SiteRenderQuery extends LitElement {
             },
           }),
         );
-        this.__items = [...newValue];
+        this.__items = [...this.result];
       }
     });
   }

@@ -19,10 +19,7 @@
         "message": "Refine instructional copy and add implementation checklist",
         "metadata": {
           "changeType": "content-update",
-          "tags": [
-            "checklist",
-            "clarity"
-          ]
+          "tags": ["checklist", "clarity"]
         }
       },
       {

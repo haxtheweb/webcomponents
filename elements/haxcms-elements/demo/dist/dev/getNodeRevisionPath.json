@@ -31,11 +31,7 @@
         "interactiveBlocks": 2
       },
       "metadata": {
-        "tags": [
-          "media",
-          "workflow",
-          "authoring"
-        ],
+        "tags": ["media", "workflow", "authoring"],
         "reviewState": "approved-demo"
       }
     },

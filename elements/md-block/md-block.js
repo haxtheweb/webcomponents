@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { marked } from "marked";
+
 /**
  * `md-block`
  * `a markdown block`
@@ -29,19 +32,7 @@ class MdBlock extends DDD {
 
   // render function
   render() {
-    return html` <div>
-      ${this.markdown && this.source == ""
-        ? html` <marked-element markdown="${this.markdown}">
-            <div slot="markdown-html"></div>
-          </marked-element>`
-        : html` <marked-element>
-            <div slot="markdown-html"></div>
-            <script
-              type="text/markdown"
-              .src="${this.source ? this.source : undefined}"
-            ></script>
-          </marked-element>`}
-    </div>`;
+    return html`<div>${unsafeHTML(this._parsedMarkdown)}</div>`;
   }
 
   // haxProperty definition
@@ -112,24 +103,49 @@ class MdBlock extends DDD {
       markdown: {
         type: String,
       },
+      _parsedMarkdown: {
+        type: String,
+        state: true,
+      },
     };
   }
   constructor() {
     super();
     this.markdown = "";
     this.source = "";
-    import("@polymer/marked-element/marked-element.js");
+    this._parsedMarkdown = "";
     if (this.innerHTML) {
       this.markdown = this.innerHTML.trim();
       this.innerHTML = null;
     }
   }
+
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "md-block";
+  }
+
+  async updated(changedProperties) {
+    if (changedProperties.has("markdown") || changedProperties.has("source")) {
+      if (this.source && this.source !== "") {
+        try {
+          const response = await fetch(this.source);
+          if (response.ok) {
+            const text = await response.text();
+            this._parsedMarkdown = await marked.parse(text);
+          }
+        } catch (e) {
+          // fail silently, leave empty
+        }
+      } else if (this.markdown) {
+        this._parsedMarkdown = await marked.parse(this.markdown);
+      } else {
+        this._parsedMarkdown = "";
+      }
+    }
   }
 }
 globalThis.customElements.define(MdBlock.tag, MdBlock);

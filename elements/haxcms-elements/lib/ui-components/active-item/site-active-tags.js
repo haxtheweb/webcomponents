@@ -155,7 +155,8 @@ class SiteActiveTags extends I18NMixin(LitElement) {
                   case "attributes":
                     switch (mutation.attributeName) {
                       case "tags":
-                        const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+                        const pageBreak =
+                          haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreak) {
                           this.tags = pageBreak.tags;
                         }
@@ -165,7 +166,8 @@ class SiteActiveTags extends I18NMixin(LitElement) {
                 }
               });
             });
-            const pageBreak = haxStore.activeHaxBody.querySelector("page-break");
+            const pageBreak =
+              haxStore.activeHaxBody.querySelector("page-break");
             if (pageBreak) {
               this._inProgressPageBreak.observe(pageBreak, {
                 attributeFilter: ["tags"],

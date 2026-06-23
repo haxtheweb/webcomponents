@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.0.0",
-    "@polymer/marked-element": "3.0.1",
     "lit": "3.3.3",
     "marked": "18.0.3"
   },

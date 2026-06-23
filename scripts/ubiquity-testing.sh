@@ -6,6 +6,12 @@ cd ~/haxtheweb/webcomponents
 # this makes a new build available
 yarn run ubiquity
 
+# normalize internal wc-registry.json copies
+# (gulpfile generates these, but ensure they stay in sync for demos)
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/replace-tag/demo/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/product-card/demo/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/hax-cloud/demo/wc-registry.json
+
 ## STEP 2 NORMALIZE ACROSS ALL PROJECTS
 # hax11ty
 rm -rf ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build

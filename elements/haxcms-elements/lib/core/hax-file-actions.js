@@ -60,8 +60,10 @@ class HAXFileActions extends DDD {
         }
         .ib {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneGray);
+          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-navy);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
@@ -72,7 +74,9 @@ class HAXFileActions extends DDD {
 
   get scaleOptions() {
     const current =
-      this.scalePreset && SCALE_PRESETS[this.scalePreset] ? this.scalePreset : "md";
+      this.scalePreset && SCALE_PRESETS[this.scalePreset]
+        ? this.scalePreset
+        : "md";
     const out = [[{ alt: `Scale to ${current}`, value: null }]];
     Object.keys(SCALE_PRESETS).forEach((key) => {
       out.push([{ alt: SCALE_PRESETS[key].label, value: key }]);

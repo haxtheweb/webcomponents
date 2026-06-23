@@ -286,7 +286,9 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   async updateResultsTags(filteredItems) {
     let resultsTags = [];
     await filteredItems.forEach(async (item) => {
-      const tags = this._normalizeTags(item.metadata ? item.metadata.tags : null);
+      const tags = this._normalizeTags(
+        item.metadata ? item.metadata.tags : null,
+      );
       resultsTags.push(...tags);
     });
     this.resultsTags = { ...this.countDuplicates(resultsTags) };

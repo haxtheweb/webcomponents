@@ -261,7 +261,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         disabled: structureDisabled,
         tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
       },
-            {
+      {
         action: "content-admin",
         icon: "editor:insert-drive-file",
         label: "Content",
