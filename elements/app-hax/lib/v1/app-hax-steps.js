@@ -56,34 +56,54 @@ export class AppHaxSteps extends SimpleColors {
     this.themeNames = [];
     this.appSettings = {};
     autorun(() => {
-      this.appSettings = toJS(store.appSettings);
-      const contextKey = toJS(store.site.structure);
-      this.themeNames = Object.keys(this.appSettings.themes).filter(
-        (value) =>
-          contextKey &&
-          themeContext[contextKey] &&
-          themeContext[contextKey].includes(value),
-      );
+      const _mobx_val_0 = toJS(store.appSettings);
+      const _mobx_val_1 = toJS(store.site.structure);
+      Promise.resolve().then(() => {
+        this.appSettings = _mobx_val_0;
+        const contextKey = _mobx_val_1;
+        this.themeNames = Object.keys(this.appSettings.themes).filter(
+          (value) =>
+            contextKey &&
+            themeContext[contextKey] &&
+            themeContext[contextKey].includes(value),
+        );
+      });
     });
     autorun(() => {
-      this.dark = toJS(store.darkMode);
+      const _mobx_val_0 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.dark = _mobx_val_0;
+      });
     });
     autorun(() => {
-      localStorageSet("app-hax-step", toJS(store.step));
+      const _mobx_val_0 = toJS(store.step);
+      Promise.resolve().then(() => {
+        localStorageSet("app-hax-step", _mobx_val_0);
+      });
     });
     autorun(() => {
-      localStorageSet("app-hax-site", toJS(store.site));
-      this.step = store.stepTest(this.step);
-    });
-    autorun(() => {
-      if (toJS(store.createSiteSteps) && toJS(store.location)) {
+      const _mobx_val_0 = toJS(store.site);
+      Promise.resolve().then(() => {
+        localStorageSet("app-hax-site", _mobx_val_0);
         this.step = store.stepTest(this.step);
-      }
+      });
+    });
+    autorun(() => {
+      const _mobx_val_0 = toJS(store.createSiteSteps);
+      const _mobx_val_1 = toJS(store.location);
+      Promise.resolve().then(() => {
+        if (_mobx_val_0 && _mobx_val_1) {
+          this.step = store.stepTest(this.step);
+        }
+      });
     });
     // routes, but only the ones that have a step property
     autorun(() => {
-      const routes = toJS(store.routes);
-      this.stepRoutes = routes.filter((item) => item.step);
+      const _mobx_val_0 = toJS(store.routes);
+      Promise.resolve().then(() => {
+        const routes = _mobx_val_0;
+        this.stepRoutes = routes.filter((item) => item.step);
+      });
     });
   }
 
@@ -551,52 +571,62 @@ export class AppHaxSteps extends SimpleColors {
     }, 100);
 
     autorun(() => {
-      // verify we are in the site creation process
-      if (toJS(store.createSiteSteps) && toJS(store.appReady)) {
-        const location = toJS(store.location);
-        if (location.route && location.route.step && location.route.name) {
-          // account for an animated window drag... stupid.
-          setTimeout(() => {
-            this.scrollToThing("#".concat(location.route.name), {
-              behavior: "smooth",
-              block: "start",
-              inline: "nearest",
-            });
-            /// just for step 4 since it has an input
-            if (location.route.step === 4 && store.stepTest(4) === 4) {
-              setTimeout(() => {
-                this.shadowRoot.querySelector("#sitename").focus();
-                this.scrollToThing(`#step-4`, {
-                  behavior: "instant",
-                  block: "start",
-                  inline: "nearest",
-                });
-              }, 800);
-            }
-          }, 300); // this delay helps w/ initial paint timing but also user perception
-          // there's a desire to have a delay especialy when tapping things of
-          // about 300ms
+      const _mobx_val_0 = toJS(store.createSiteSteps);
+      const _mobx_val_1 = toJS(store.appReady);
+      const _mobx_val_2 = toJS(store.location);
+      Promise.resolve().then(() => {
+        // verify we are in the site creation process
+        if (_mobx_val_0 && _mobx_val_1) {
+          const location = _mobx_val_2;
+          if (location.route && location.route.step && location.route.name) {
+            // account for an animated window drag... stupid.
+            setTimeout(() => {
+              this.scrollToThing("#".concat(location.route.name), {
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+              });
+              /// just for step 4 since it has an input
+              if (location.route.step === 4 && store.stepTest(4) === 4) {
+                setTimeout(() => {
+                  this.shadowRoot.querySelector("#sitename").focus();
+                  this.scrollToThing(`#step-4`, {
+                    behavior: "instant",
+                    block: "start",
+                    inline: "nearest",
+                  });
+                }, 800);
+              }
+            }, 300); // this delay helps w/ initial paint timing but also user perception
+            // there's a desire to have a delay especialy when tapping things of
+            // about 300ms
+          }
         }
-      }
+      });
     });
     autorun(() => {
-      if (
-        this.shadowRoot &&
-        toJS(store.createSiteSteps) &&
-        toJS(store.appReady)
-      ) {
-        const activeItem = toJS(store.activeItem);
+      const _mobx_val_0 = toJS(store.createSiteSteps);
+      const _mobx_val_1 = toJS(store.appReady);
+      const _mobx_val_2 = toJS(store.activeItem);
+      Promise.resolve().then(() => {
         if (
-          activeItem &&
-          activeItem.name &&
-          activeItem.step &&
-          !this.__overrideProgression
+          this.shadowRoot &&
+          _mobx_val_0 &&
+          _mobx_val_1
         ) {
-          this.shadowRoot
-            .querySelector("#link-".concat(activeItem.name))
-            .click();
+          const activeItem = _mobx_val_2;
+          if (
+            activeItem &&
+            activeItem.name &&
+            activeItem.step &&
+            !this.__overrideProgression
+          ) {
+            this.shadowRoot
+              .querySelector("#link-".concat(activeItem.name))
+              .click();
+          }
         }
-      }
+      });
     });
   }
 

@@ -428,10 +428,16 @@ class SiteQuery extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.routerManifest = Object.assign({}, toJS(store.routerManifest));
+      const _mobx_val_0 = toJS(store.routerManifest);
+      Promise.resolve().then(() => {
+        this.routerManifest = Object.assign({}, _mobx_val_0);
+      });
     });
     this.__disposer2 = autorun(() => {
-      this.activeId = toJS(store.activeId);
+      const _mobx_val_0 = toJS(store.activeId);
+      Promise.resolve().then(() => {
+        this.activeId = _mobx_val_0;
+      });
     });
   }
   /**

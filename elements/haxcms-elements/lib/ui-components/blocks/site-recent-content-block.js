@@ -22,7 +22,10 @@ class SiteRecentContentBlock extends LitElement {
     this.conditions = {};
     this.title = "Recent content";
     this.__disposer = autorun(() => {
-      this.activeId = toJS(store.activeId);
+      const _mobx_val_0 = toJS(store.activeId);
+      Promise.resolve().then(() => {
+        this.activeId = _mobx_val_0;
+      });
     });
   }
 

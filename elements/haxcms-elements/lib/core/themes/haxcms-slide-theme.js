@@ -244,7 +244,10 @@ class HAXCMSSlideTheme extends DDDSuper(
     // store disposer so we can clean up later
     this.__disposer.push(
       autorun((reaction) => {
-        this.manifestLength = toJS(store.routerManifest.items.length);
+        const _mobx_val_0 = toJS(store.routerManifest.items.length);
+        Promise.resolve().then(() => {
+          this.manifestLength = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(

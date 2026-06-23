@@ -14,15 +14,18 @@ const HAXCMSRememberRoute = function (SuperClass) {
       this.t.resume = "Resume";
       this.__disposer.push(
         autorun((reaction) => {
-          if (store && store.location && store.location.pathname) {
-            const activePathName = toJS(store.location.pathname);
-            if (activePathName && this.__evaluateRoute) {
-              localStorageSet(
-                `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
-                activePathName,
-              );
+          const _mobx_val_0 = toJS(store.location.pathname);
+          Promise.resolve().then(() => {
+            if (store && store.location && store.location.pathname) {
+              const activePathName = _mobx_val_0;
+              if (activePathName && this.__evaluateRoute) {
+                localStorageSet(
+                  `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+                  activePathName,
+                );
+              }
             }
-          }
+          });
         }),
       );
     }

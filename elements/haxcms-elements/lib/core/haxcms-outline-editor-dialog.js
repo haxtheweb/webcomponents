@@ -202,15 +202,18 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     );
     this.__disposer.push(
       autorun(() => {
-        this.manifestItems = [...toJS(store.manifest.items)];
-        this.updateComplete.then(() => {
-          // force UI sync after render completes so data and UI stay aligned
-          if (this.shadowRoot) {
-            const outline = this.shadowRoot.querySelector("#outline");
-            if (outline && outline.__syncUIAndDataModel) {
-              outline.__syncUIAndDataModel();
+        const _mobx_val_0 = toJS(store.manifest.items);
+        Promise.resolve().then(() => {
+          this.manifestItems = [..._mobx_val_0];
+          this.updateComplete.then(() => {
+            // force UI sync after render completes so data and UI stay aligned
+            if (this.shadowRoot) {
+              const outline = this.shadowRoot.querySelector("#outline");
+              if (outline && outline.__syncUIAndDataModel) {
+                outline.__syncUIAndDataModel();
+              }
             }
-          }
+          });
         });
       }),
     );

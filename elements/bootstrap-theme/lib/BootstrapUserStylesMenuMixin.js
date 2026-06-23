@@ -18,18 +18,21 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       this._bootstrapPath = this._resolveBootstrapStylesheetPath();
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
       autorun(() => {
-        const darkMode = toJS(store.darkMode);
-        const localColorTheme = localStorageGet(
-          "haxcms-bootstrap-userPref-colorTheme",
-          0,
-        );
-        if (darkMode) {
-          this.colorTheme = 1;
-        } else if (localColorTheme === 1) {
-          this.colorTheme = 0;
-        } else {
-          this.colorTheme = localColorTheme;
-        }
+        const _mobx_val_0 = toJS(store.darkMode);
+        Promise.resolve().then(() => {
+          const darkMode = _mobx_val_0;
+          const localColorTheme = localStorageGet(
+            "haxcms-bootstrap-userPref-colorTheme",
+            0,
+          );
+          if (darkMode) {
+            this.colorTheme = 1;
+          } else if (localColorTheme === 1) {
+            this.colorTheme = 0;
+          } else {
+            this.colorTheme = localColorTheme;
+          }
+        });
       });
     }
     _resolveBootstrapStylesheetPath() {

@@ -28,13 +28,19 @@ class ChatMessage extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.darkMode = toJS(ChatStore.darkMode);
+        const _mobx_val_0 = toJS(ChatStore.darkMode);
+        Promise.resolve().then(() => {
+          this.darkMode = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.editMode = toJS(ChatStore.editMode);
+        const _mobx_val_0 = toJS(ChatStore.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
   }

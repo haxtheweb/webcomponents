@@ -324,6 +324,20 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "resume-theme": {
+    "element": "resume-theme",
+    "path": "@haxtheweb/resume-theme/resume-theme.js",
+    "name": "resume-theme",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-resume-theme-thumb.jpg",
+    "description": "Start with a blank site using the resume-theme",
+    "category": [
+      "Website"
+    ],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "simple-blog": {
     "element": "simple-blog",
     "path": "@haxtheweb/simple-blog/simple-blog.js",

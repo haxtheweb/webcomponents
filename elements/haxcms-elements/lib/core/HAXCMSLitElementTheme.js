@@ -34,41 +34,50 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.trayStatus = toJS(store.trayStatus);
+        const _mobx_val_0 = toJS(store.trayStatus);
+        Promise.resolve().then(() => {
+          this.trayStatus = _mobx_val_0;
+        });
       }),
     );
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
     this.__disposer.push(
       autorun((reaction) => {
-        let tmp = toJS(store.activeItemContent);
-        this.emptyContent = !tmp || tmp.trim() === "";
-        if (
-          this.HAXCMSThemeSettings.autoScroll &&
-          this.shadowRoot &&
-          this.HAXCMSThemeSettings.scrollTarget &&
-          this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
-        ) {
-          if (this.isSafari) {
-            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
-          } else {
-            setTimeout(() => {
-              this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
-                this.HAXCMSThemeSettings.scrollSettings,
-              );
-            }, 0);
+        const _mobx_val_0 = toJS(store.activeItemContent);
+        Promise.resolve().then(() => {
+          let tmp = _mobx_val_0;
+          this.emptyContent = !tmp || tmp.trim() === "";
+          if (
+            this.HAXCMSThemeSettings.autoScroll &&
+            this.shadowRoot &&
+            this.HAXCMSThemeSettings.scrollTarget &&
+            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+          ) {
+            if (this.isSafari) {
+              this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+            } else {
+              setTimeout(() => {
+                this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
+                  this.HAXCMSThemeSettings.scrollSettings,
+                );
+              }, 0);
+            }
           }
-        }
-        // delay bc this shouldn't block page load in any way
-        setTimeout(() => {
-          if (typeof this.__refreshHeadingListeners === "function") {
-            this.__refreshHeadingListeners();
-          }
-        }, 100);
+          // delay bc this shouldn't block page load in any way
+          setTimeout(() => {
+            if (typeof this.__refreshHeadingListeners === "function") {
+              this.__refreshHeadingListeners();
+            }
+          }, 100);
+        });
       }),
     );
   }

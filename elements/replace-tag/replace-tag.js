@@ -264,6 +264,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     }
     div {
       font-size: 12px;
+      color: #333333;
     }
     :host(:not([import-method="click"])) {
       background-color: #FEFEFE33;

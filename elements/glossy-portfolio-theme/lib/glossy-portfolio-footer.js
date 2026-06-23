@@ -30,13 +30,16 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     // gets licensing stuff
     this.__disposer.push(
       autorun((reaction) => {
-        this.manifest = toJS(store.manifest);
-        let LList = new licenseList();
-        if (this.manifest.license && LList[this.manifest.license]) {
-          this.licenseName = LList[this.manifest.license].name;
-          this.licenseLink = LList[this.manifest.license].link;
-          this.licenseImage = LList[this.manifest.license].image;
-        }
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0;
+          let LList = new licenseList();
+          if (this.manifest.license && LList[this.manifest.license]) {
+            this.licenseName = LList[this.manifest.license].name;
+            this.licenseLink = LList[this.manifest.license].link;
+            this.licenseImage = LList[this.manifest.license].image;
+          }
+        });
       }),
     );
     this.__disposer.push(

@@ -17,7 +17,10 @@ class LetterGrade extends LitElement {
     this.label = "";
     this.active = false;
     autorun(() => {
-      this.gradeScale = toJS(GradeBookStore.gradeScale);
+      const _mobx_val_0 = toJS(GradeBookStore.gradeScale);
+      Promise.resolve().then(() => {
+        this.gradeScale = _mobx_val_0;
+      });
     });
   }
   static get styles() {

@@ -13,7 +13,10 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       submitted: "Submitted",
     };
     autorun(() => {
-      this.activeSubmission = toJS(GradeBookStore.activeSubmission);
+      const _mobx_val_0 = toJS(GradeBookStore.activeSubmission);
+      Promise.resolve().then(() => {
+        this.activeSubmission = _mobx_val_0;
+      });
     });
   }
   // forces an open root because this will render in a pop up that cannot use css from parent window :(

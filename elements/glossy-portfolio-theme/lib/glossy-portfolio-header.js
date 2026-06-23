@@ -43,23 +43,32 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     //get top level items (items shown on header -- they have no parent)
     this.__disposer.push(
       autorun((reaction) => {
-        let items = toJS(store.getItemChildren(null));
-        if (items && items.length > 0) {
-          this.topItems = [...items];
-        }
+        const _mobx_val_0 = toJS(store.getItemChildren(null));
+        Promise.resolve().then(() => {
+          let items = _mobx_val_0;
+          if (items && items.length > 0) {
+            this.topItems = [...items];
+          }
+        });
       }),
     );
 
     // get home link (lading page slug)
     this.__disposer.push(
       autorun((reaction) => {
-        this.homeLink = toJS(store.homeLink);
+        const _mobx_val_0 = toJS(store.homeLink);
+        Promise.resolve().then(() => {
+          this.homeLink = _mobx_val_0;
+        });
       }),
     );
     //get logo
     this.__disposer.push(
       autorun((reaction) => {
-        this.logo = toJS(store.logo);
+        const _mobx_val_0 = toJS(store.logo);
+        Promise.resolve().then(() => {
+          this.logo = _mobx_val_0;
+        });
       }),
     );
   }

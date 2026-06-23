@@ -49,7 +49,10 @@ class SiteActiveFields extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.fields = toJS(store.activeItemFields);
+      const _mobx_val_0 = toJS(store.activeItemFields);
+      Promise.resolve().then(() => {
+        this.fields = _mobx_val_0;
+      });
     });
   }
   /**

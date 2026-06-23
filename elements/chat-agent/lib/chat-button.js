@@ -23,25 +23,37 @@ class ChatButton extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.buttonIcon = toJS(ChatStore.buttonIcon);
+        const _mobx_val_0 = toJS(ChatStore.buttonIcon);
+        Promise.resolve().then(() => {
+          this.buttonIcon = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.darkMode = toJS(ChatStore.darkMode);
+        const _mobx_val_0 = toJS(ChatStore.darkMode);
+        Promise.resolve().then(() => {
+          this.darkMode = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.isFullView = toJS(ChatStore.isFullView);
+        const _mobx_val_0 = toJS(ChatStore.isFullView);
+        Promise.resolve().then(() => {
+          this.isFullView = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+        const _mobx_val_0 = toJS(ChatStore.isInterfaceHidden);
+        Promise.resolve().then(() => {
+          this.isInterfaceHidden = _mobx_val_0;
+        });
       }),
     );
   }

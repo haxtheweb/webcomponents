@@ -148,13 +148,19 @@ class SiteQueryMenuSlice extends LitElement {
   firstUpdated(changedProperties) {
     this.__disposer.push(
       autorun((reaction) => {
-        this._routerManifest = Object.assign({}, toJS(store.routerManifest));
+        const _mobx_val_0 = toJS(store.routerManifest);
+        Promise.resolve().then(() => {
+          this._routerManifest = Object.assign({}, _mobx_val_0);
+        });
       }),
     );
     if (!this.fixedId) {
       this.__disposer.push(
         autorun((reaction) => {
-          this.parent = toJS(store.activeId);
+          const _mobx_val_0 = toJS(store.activeId);
+          Promise.resolve().then(() => {
+            this.parent = _mobx_val_0;
+          });
         }),
       );
     }

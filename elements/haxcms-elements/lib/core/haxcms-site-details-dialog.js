@@ -40,7 +40,10 @@ class HAXCMSSiteDetailsDialog extends DDD {
     super.connectedCallback();
     if (!this.__manifestReaction) {
       this.__manifestReaction = autorun(() => {
-        this.refreshFromManifest(toJS(store.manifest));
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.refreshFromManifest(_mobx_val_0);
+        });
       });
     }
   }

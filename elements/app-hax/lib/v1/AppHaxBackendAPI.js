@@ -24,17 +24,23 @@ export class AppHaxBackendAPI extends LitElement {
     this.lastResponse = {};
     this.appSettings = {};
     autorun(() => {
-      this.appSettings = toJS(store.appSettings);
-      // allow setting in session driven environments
-      if (this.appSettings.method) {
-        this.method = this.appSettings.method;
-      }
-      if (this.appSettings.jwt) {
-        this.jwt = this.appSettings.jwt;
-      }
+      const _mobx_val_0 = toJS(store.appSettings);
+      Promise.resolve().then(() => {
+        this.appSettings = _mobx_val_0;
+        // allow setting in session driven environments
+        if (this.appSettings.method) {
+          this.method = this.appSettings.method;
+        }
+        if (this.appSettings.jwt) {
+          this.jwt = this.appSettings.jwt;
+        }
+      });
     });
     autorun(() => {
-      this.token = toJS(store.token);
+      const _mobx_val_0 = toJS(store.token);
+      Promise.resolve().then(() => {
+        this.token = _mobx_val_0;
+      });
     });
   }
 

@@ -15,7 +15,10 @@ class LrsBridgeHaxcms extends LrsBridge {
   constructor() {
     super();
     autorun(() => {
-      this._locationChanged(toJS(store.location));
+      const _mobx_val_0 = toJS(store.location);
+      Promise.resolve().then(() => {
+        this._locationChanged(_mobx_val_0);
+      });
     });
   }
 

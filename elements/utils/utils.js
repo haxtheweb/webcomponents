@@ -1450,8 +1450,8 @@ function stripMSWord(input) {
   output = output.replace(/<li style=\".*?\">/gm, "<li>");
   output = output.replace(/<td style=\".*?\">/gm, "<td>");
   output = output.replace(/<tr style=\".*?\">/gm, "<tr>");
-  // drop list wrappers
-  output = output.replace(/<li><p>/gm, "<li>");
+  // drop list wrappers (handle attributes on <p> e.g. Google Docs)
+  output = output.replace(/<li><p[^>]*>/gm, "<li>");
   output = output.replace(/<\/p><\/li>/gm, "</li>");
   // bold wraps as an outer tag like p can, and on lists
   output = output.replace(/<b><ul>/gm, "<ul>");
@@ -1490,6 +1490,90 @@ function stripMSWord(input) {
   }
   output = output.trim();
   return output;
+}
+
+/**
+ * Normalize clipboard HTML for known sources (Google Docs, Notion, etc.)
+ * Uses DOM-based manipulation so nested structures are handled robustly.
+ */
+export function normalizeClipboardHTML(html) {
+  if (!html || typeof html !== "string") {
+    return html;
+  }
+  const template = globalThis.document.createElement("template");
+  template.innerHTML = html;
+  const fragment = template.content;
+
+  // Google Docs uses <b> as generic text wrappers.
+  // Real bold is indicated by an inline style with font-weight:700.
+  fragment.querySelectorAll("b").forEach((b) => {
+    const style = b.getAttribute("style") || "";
+    if (
+      style.includes("font-weight:700") ||
+      style.includes("font-weight:bold")
+    ) {
+      // Convert real bold to <strong> so stripMSWord can clean styles later
+      const strong = globalThis.document.createElement("strong");
+      while (b.firstChild) {
+        strong.appendChild(b.firstChild);
+      }
+      b.parentNode.replaceChild(strong, b);
+    } else {
+      // Fake bold: unwrap, preserving children
+      const parent = b.parentNode;
+      while (b.firstChild) {
+        parent.insertBefore(b.firstChild, b);
+      }
+      parent.removeChild(b);
+    }
+  });
+
+  // Convert Google Docs font-weight spans to <strong>
+  fragment.querySelectorAll('span[style*="font-weight:700"]').forEach((span) => {
+    const strong = globalThis.document.createElement("strong");
+    while (span.firstChild) {
+      strong.appendChild(span.firstChild);
+    }
+    span.parentNode.replaceChild(strong, span);
+  });
+
+  // Unwrap Google Docs <p> inside <li> (GDocs wraps each list item in a paragraph)
+  fragment.querySelectorAll("li > p").forEach((p) => {
+    const li = p.parentNode;
+    while (p.firstChild) {
+      li.insertBefore(p.firstChild, p);
+    }
+    li.removeChild(p);
+  });
+
+  // Remove Google Docs role="text" and generated class names
+  fragment.querySelectorAll('[role="text"]').forEach((el) => {
+    el.removeAttribute("role");
+  });
+  fragment.querySelectorAll('[class^="c"]').forEach((el) => {
+    const cls = el.getAttribute("class") || "";
+    if (/^c\d/.test(cls)) {
+      el.removeAttribute("class");
+    }
+  });
+
+  // Unwrap all spans using DOM methods.
+  // The regex-based unwrapping in stripMSWord is fragile with nested spans,
+  // which Notion and Google Docs both use extensively.
+  let span;
+  while ((span = fragment.querySelector("span"))) {
+    const parent = span.parentNode;
+    while (span.firstChild) {
+      parent.insertBefore(span.firstChild, span);
+    }
+    parent.removeChild(span);
+  }
+
+  // Serialize the DocumentFragment back to a string.
+  // DocumentFragment.innerHTML is not standard, so use a temporary element.
+  const wrapper = globalThis.document.createElement("div");
+  wrapper.appendChild(fragment);
+  return wrapper.innerHTML;
 }
 
 /**

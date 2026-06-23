@@ -364,50 +364,63 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     autorun(() => {
-      const badDevice = toJS(store.badDevice);
-      // good device, we can inject font we use
-      if (badDevice === false) {
-        const link = globalThis.document.createElement("link");
-        link.setAttribute(
-          "href",
-          "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap",
-        );
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        globalThis.document.head.appendChild(link);
-      }
+      const _mobx_val_0 = toJS(store.badDevice);
+      Promise.resolve().then(() => {
+        const badDevice = _mobx_val_0;
+        // good device, we can inject font we use
+        if (badDevice === false) {
+          const link = globalThis.document.createElement("link");
+          link.setAttribute(
+            "href",
+            "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap",
+          );
+          link.setAttribute("rel", "stylesheet");
+          link.setAttribute("fetchpriority", "low");
+          globalThis.document.head.appendChild(link);
+        }
+      });
     });
     this.__disposer.push(
       autorun((reaction) => {
-        let manifest = toJS(store.manifest);
-        this.color = this._getColor(manifest);
-        this.title = varGet(manifest, "title", "");
-        this.image = varGet(
-          manifest,
-          "metadata.theme.variables.image",
-          "assets/banner.jpg",
-        );
-        this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
-      }),
-    );
-    this.__disposer.push(
-      autorun((reaction) => {
-        let activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.metadata && activeItem.metadata.image) {
-          this.image = activeItem.metadata.image;
-        } else {
-          let manifest = toJS(store.manifest);
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          let manifest = _mobx_val_0;
+          this.color = this._getColor(manifest);
+          this.title = varGet(manifest, "title", "");
           this.image = varGet(
             manifest,
             "metadata.theme.variables.image",
             "assets/banner.jpg",
           );
-        }
+          this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeTitle = toJS(store.activeTitle);
+        const _mobx_val_0 = toJS(store.activeItem);
+        const _mobx_val_1 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          let activeItem = _mobx_val_0;
+          if (activeItem && activeItem.metadata && activeItem.metadata.image) {
+            this.image = activeItem.metadata.image;
+          } else {
+            let manifest = _mobx_val_1;
+            this.image = varGet(
+              manifest,
+              "metadata.theme.variables.image",
+              "assets/banner.jpg",
+            );
+          }
+        });
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const _mobx_val_0 = toJS(store.activeTitle);
+        Promise.resolve().then(() => {
+          this.activeTitle = _mobx_val_0;
+        });
       }),
     );
   }

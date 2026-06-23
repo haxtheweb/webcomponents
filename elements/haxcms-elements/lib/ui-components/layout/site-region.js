@@ -19,10 +19,13 @@ class SiteRegion extends LitElement {
     // load region data when we get access to it
     this.__disposer.push(
       autorun((reaction) => {
-        const data = toJS(store.regionData);
-        if (this.name && data[this.name]) {
-          this.contentItemIds = data[this.name];
-        }
+        const _mobx_val_0 = toJS(store.regionData);
+        Promise.resolve().then(() => {
+          const data = _mobx_val_0;
+          if (this.name && data[this.name]) {
+            this.contentItemIds = data[this.name];
+          }
+        });
       }),
     );
   }

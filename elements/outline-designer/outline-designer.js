@@ -943,18 +943,27 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     });
     // so we can prepopulate the parent options menu
     autorun(() => {
-      this.activeId = toJS(store.activeId);
+      const _mobx_val_0 = toJS(store.activeId);
+      Promise.resolve().then(() => {
+        this.activeId = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.appReady = toJS(store.appReady);
+      const _mobx_val_0 = toJS(store.appReady);
+      Promise.resolve().then(() => {
+        this.appReady = _mobx_val_0;
+      });
     });
     // valid list of hax Gizmos
     autorun(() => {
-      this.haxGizmos = toJS(HAXStore.gizmoList).filter((schema) => {
-        if (schema && schema.meta && schema.meta.outlineDesigner) {
-          return true;
-        }
-        return false;
+      const _mobx_val_0 = toJS(HAXStore.gizmoList);
+      Promise.resolve().then(() => {
+        this.haxGizmos = _mobx_val_0.filter((schema) => {
+          if (schema && schema.meta && schema.meta.outlineDesigner) {
+            return true;
+          }
+          return false;
+        });
       });
     });
     this.addEventListener("click", this.resetPopOver.bind(this));

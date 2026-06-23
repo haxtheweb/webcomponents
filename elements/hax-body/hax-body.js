@@ -649,20 +649,33 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.addEventListener("dragend", this.dragEndBody.bind(this));
     this.addEventListener("drop", this.dropEvent.bind(this));
     autorun(() => {
-      this.editMode = toJS(HAXStore.editMode);
+      const editMode = toJS(HAXStore.editMode);
+      Promise.resolve().then(() => {
+        this.editMode = editMode;
+      });
     });
     autorun(() => {
-      this.elementAlign = toJS(HAXStore.elementAlign);
+      const elementAlign = toJS(HAXStore.elementAlign);
+      Promise.resolve().then(() => {
+        this.elementAlign = elementAlign;
+      });
     });
     autorun(() => {
-      this.trayStatus = toJS(HAXStore.trayStatus);
-      this.trayDetail = toJS(HAXStore.trayDetail);
+      const trayStatus = toJS(HAXStore.trayStatus);
+      const trayDetail = toJS(HAXStore.trayDetail);
+      Promise.resolve().then(() => {
+        this.trayStatus = trayStatus;
+        this.trayDetail = trayDetail;
+      });
     });
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
-      if (this.activeNode && this.activeNode.setAttribute) {
-        this.activeNode.setAttribute("data-hax-active", "data-hax-active");
-      }
+      const activeNode = toJS(HAXStore.activeNode);
+      Promise.resolve().then(() => {
+        this.activeNode = activeNode;
+        if (this.activeNode && this.activeNode.setAttribute) {
+          this.activeNode.setAttribute("data-hax-active", "data-hax-active");
+        }
+      });
     });
     autorun(() => {
       const activeEditingElement = toJS(HAXStore.activeEditingElement);
@@ -1040,7 +1053,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     });
     // in case we miss this on the initial setup. possible in auto opening environments.
-    this.editMode = HAXStore.editMode;
+    // defer to avoid scheduling an update during the current firstUpdated cycle
+    const initialEditMode = HAXStore.editMode;
+    Promise.resolve().then(() => {
+      this.editMode = initialEditMode;
+    });
     // ensure this resets every append
     this.__tabTrap = false;
     this.ready = true;

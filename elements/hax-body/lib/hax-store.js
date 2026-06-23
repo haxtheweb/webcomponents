@@ -3212,40 +3212,52 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       appStoreLoaded: observable,
     });
     autorun(() => {
-      const trayStatus = toJS(this.trayStatus);
-      this.dispatchEvent(
-        new CustomEvent("hax-tray-status-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: trayStatus,
-        }),
-      );
+      const _mobx_val_0 = toJS(this.trayStatus);
+      Promise.resolve().then(() => {
+        const trayStatus = _mobx_val_0;
+        this.dispatchEvent(
+          new CustomEvent("hax-tray-status-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: trayStatus,
+          }),
+        );
+      });
     });
     autorun(() => {
-      this._globalPreferencesChanged(toJS(this.globalPreferences));
+      const _mobx_val_0 = toJS(this.globalPreferences);
+      Promise.resolve().then(() => {
+        this._globalPreferencesChanged(_mobx_val_0);
+      });
     });
     autorun(() => {
-      this._editModeChanged(toJS(this.editMode));
+      const _mobx_val_0 = toJS(this.editMode);
+      Promise.resolve().then(() => {
+        this._editModeChanged(_mobx_val_0);
+      });
     });
     // when recent updates anywhere, write this to memory
     autorun(() => {
-      const recentGizmoList = toJS(this.recentGizmoList);
-      if (recentGizmoList.length > 6) {
-        recentGizmoList.length = 6;
-      }
-      // prevent writing to memory while we are writing to memory
-      // so that MobX doesn't loop on itself
-      if (recentGizmoList.length > 0 && !this.__writingMemory) {
-        this.__writingMemory = true;
-        UserScaffoldInstance.writeMemory(
-          "recentGizmoList",
-          recentGizmoList,
-          "long",
-        );
-      } else {
-        this.__writingMemory = false;
-      }
+      const _mobx_val_0 = toJS(this.recentGizmoList);
+      Promise.resolve().then(() => {
+        const recentGizmoList = _mobx_val_0;
+        if (recentGizmoList.length > 6) {
+          recentGizmoList.length = 6;
+        }
+        // prevent writing to memory while we are writing to memory
+        // so that MobX doesn't loop on itself
+        if (recentGizmoList.length > 0 && !this.__writingMemory) {
+          this.__writingMemory = true;
+          UserScaffoldInstance.writeMemory(
+            "recentGizmoList",
+            recentGizmoList,
+            "long",
+          );
+        } else {
+          this.__writingMemory = false;
+        }
+      });
     });
   }
   pushWithLimit(array, element, limit) {

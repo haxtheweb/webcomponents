@@ -45,8 +45,6 @@
     "@emotion/core", 
     "strip-css-comments", 
     "actions/setup-node", 
-    "@vaadin/vaadin-split-layout", 
-    "@vaadin/vaadin-grid", 
     "@vaadin/vaadin-upload"
   ]
 }

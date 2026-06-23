@@ -61,13 +61,19 @@ class ChatAgent extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.isFullView = toJS(ChatStore.isFullView);
+        const _mobx_val_0 = toJS(ChatStore.isFullView);
+        Promise.resolve().then(() => {
+          this.isFullView = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+        const _mobx_val_0 = toJS(ChatStore.isInterfaceHidden);
+        Promise.resolve().then(() => {
+          this.isInterfaceHidden = _mobx_val_0;
+        });
       }),
     );
   }

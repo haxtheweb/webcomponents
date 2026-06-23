@@ -38,7 +38,10 @@ class HAXCMSSiteDashboard extends SimpleColors {
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.siteTitle = toJS(store.siteTitle);
+        const _mobx_val_0 = toJS(store.siteTitle);
+        Promise.resolve().then(() => {
+          this.siteTitle = _mobx_val_0;
+        });
       }),
     );
   }

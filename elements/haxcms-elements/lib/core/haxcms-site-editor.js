@@ -53,27 +53,41 @@ class HAXCMSSiteEditor extends LitElement {
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
-        // force import on editMode enabled
-        if (this.editMode && toJS(HAXStore.activeHaxBody)) {
-          HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
-        }
+        const _mobx_val_0 = toJS(store.editMode);
+        const _mobx_val_1 = toJS(HAXStore.activeHaxBody);
+        const _mobx_val_2 = toJS(store.activeItemContent);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+          // force import on editMode enabled
+          if (this.editMode && _mobx_val_1) {
+            HAXStore.activeHaxBody.importContent(_mobx_val_2);
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.manifest = toJS(store.manifest);
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0;
+        });
       }),
     );
     // Sync activeItem directly from store via MobX for proper state management
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeItem = toJS(store.activeItem);
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          this.activeItem = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        HAXStore.platformConfig = toJS(store.platformConfig);
+        const _mobx_val_0 = toJS(store.platformConfig);
+        Promise.resolve().then(() => {
+          HAXStore.platformConfig = _mobx_val_0;
+        });
       }),
     );
   }

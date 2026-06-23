@@ -41,7 +41,10 @@ class HAXCMSSEOAdminDialog extends DDD {
     super.connectedCallback();
     if (!this.__manifestReaction) {
       this.__manifestReaction = autorun(() => {
-        this.refreshFromManifest(toJS(store.manifest));
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.refreshFromManifest(_mobx_val_0);
+        });
       });
     }
   }
@@ -441,6 +444,41 @@ class HAXCMSSEOAdminDialog extends DDD {
             inputMethod: "textfield",
             required: false,
           },
+          {
+            property: "manifest-metadata-author-socialLink2",
+            title: "Social media link 2",
+            description: "An additional social space or point of contact",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-author-phone",
+            title: "Phone",
+            description: "Phone number for contact",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-author-location",
+            title: "Location",
+            description: "Author location or address",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-author-website",
+            title: "Website",
+            description: "Personal website or portfolio URL",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-author-website2",
+            title: "Website 2",
+            description: "Additional website URL",
+            inputMethod: "textfield",
+            required: false,
+          },
         ],
       },
     ];
@@ -507,6 +545,31 @@ class HAXCMSSEOAdminDialog extends DDD {
       topAuthorObject.social,
       siteAuthorObject.social,
     ]);
+    const authorSocialLink2 = this._firstDefinedString([
+      metadataAuthor.socialLink2,
+      topAuthorObject.socialLink2,
+      siteAuthorObject.socialLink2,
+    ]);
+    const authorPhone = this._firstDefinedString([
+      metadataAuthor.phone,
+      topAuthorObject.phone,
+      siteAuthorObject.phone,
+    ]);
+    const authorLocation = this._firstDefinedString([
+      metadataAuthor.location,
+      topAuthorObject.location,
+      siteAuthorObject.location,
+    ]);
+    const authorWebsite = this._firstDefinedString([
+      metadataAuthor.website,
+      topAuthorObject.website,
+      siteAuthorObject.website,
+    ]);
+    const authorWebsite2 = this._firstDefinedString([
+      metadataAuthor.website2,
+      topAuthorObject.website2,
+      siteAuthorObject.website2,
+    ]);
     const authorEmail = this._firstDefinedString([
       metadataAuthor.email,
       topAuthorObject.email,
@@ -546,6 +609,11 @@ class HAXCMSSEOAdminDialog extends DDD {
     values["manifest-metadata-author-name"] = authorName;
     values["manifest-metadata-author-email"] = authorEmail;
     values["manifest-metadata-author-socialLink"] = authorSocialLink;
+    values["manifest-metadata-author-socialLink2"] = authorSocialLink2;
+    values["manifest-metadata-author-phone"] = authorPhone;
+    values["manifest-metadata-author-location"] = authorLocation;
+    values["manifest-metadata-author-website"] = authorWebsite;
+    values["manifest-metadata-author-website2"] = authorWebsite2;
     values["manifest-description"] = siteDescription;
     values["manifest-metadata-site-logo"] = favicon;
     values["manifest-metadata-site-domain"] = domain;
@@ -678,6 +746,21 @@ class HAXCMSSEOAdminDialog extends DDD {
         : "",
       authorSocialLink: this.values["manifest-metadata-author-socialLink"]
         ? String(this.values["manifest-metadata-author-socialLink"])
+        : "",
+      authorSocialLink2: this.values["manifest-metadata-author-socialLink2"]
+        ? String(this.values["manifest-metadata-author-socialLink2"])
+        : "",
+      authorPhone: this.values["manifest-metadata-author-phone"]
+        ? String(this.values["manifest-metadata-author-phone"])
+        : "",
+      authorLocation: this.values["manifest-metadata-author-location"]
+        ? String(this.values["manifest-metadata-author-location"])
+        : "",
+      authorWebsite: this.values["manifest-metadata-author-website"]
+        ? String(this.values["manifest-metadata-author-website"])
+        : "",
+      authorWebsite2: this.values["manifest-metadata-author-website2"]
+        ? String(this.values["manifest-metadata-author-website2"])
         : "",
       pathauto: this._toBoolValue(
         this.values["manifest-metadata-site-settings-pathauto"],

@@ -29,18 +29,21 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.__disposer.push(
         autorun((reaction) => {
-          const activeId = toJS(store.activeId);
-          // if menu is open, and the active item changes AND we're on mobile...
-          // close the menu
-          if (
-            this.shadowRoot &&
-            this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
-            this.menuOpen &&
-            activeId &&
-            ["sm", "xs"].includes(this.responsiveSize)
-          ) {
-            this.__HAXCMSMobileMenuToggle();
-          }
+          const _mobx_val_0 = toJS(store.activeId);
+          Promise.resolve().then(() => {
+            const activeId = _mobx_val_0;
+            // if menu is open, and the active item changes AND we're on mobile...
+            // close the menu
+            if (
+              this.shadowRoot &&
+              this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
+              this.menuOpen &&
+              activeId &&
+              ["sm", "xs"].includes(this.responsiveSize)
+            ) {
+              this.__HAXCMSMobileMenuToggle();
+            }
+          });
         }),
       );
       this.dispatchEvent(

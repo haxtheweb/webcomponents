@@ -320,8 +320,11 @@ class HaxViewSource extends I18NMixin(LitElement) {
       namespace: "hax",
     });
     autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+      const _mobx_val_0 = toJS(HAXStore.globalPreferences);
+      Promise.resolve().then(() => {
+        this.globalPreferences = _mobx_val_0;
+        this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+      });
     });
   }
 }

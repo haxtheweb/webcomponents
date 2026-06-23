@@ -1876,19 +1876,22 @@ class HAXCMSSiteStore extends HTMLElement {
      * change the page.
      */
     autorun(() => {
-      const foundItem = toJS(store.findItem(store.activeId));
-      if (foundItem) {
-        globalThis.document.body.dispatchEvent(
-          new CustomEvent("json-outline-schema-active-item-changed", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: foundItem,
-          }),
-        );
-        //change site title when page changes
-        globalThis.document.title = store.activeTitle;
-      }
+      const _mobx_val_0 = toJS(store.findItem(store.activeId));
+      Promise.resolve().then(() => {
+        const foundItem = _mobx_val_0;
+        if (foundItem) {
+          globalThis.document.body.dispatchEvent(
+            new CustomEvent("json-outline-schema-active-item-changed", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: foundItem,
+            }),
+          );
+          //change site title when page changes
+          globalThis.document.title = store.activeTitle;
+        }
+      });
     });
     autorun(() => {
       if (store.appReady) {
@@ -1920,25 +1923,28 @@ class HAXCMSSiteStore extends HTMLElement {
      * When editMode changes notify HAXeditor.
      */
     autorun(() => {
-      const editMode = toJS(store.editMode);
-      // trap for early setup
-      if (
-        globalThis.HaxStore &&
-        globalThis.HaxStore.requestAvailability() &&
-        globalThis.HaxStore.requestAvailability().write
-      ) {
-        globalThis.dispatchEvent(
-          new CustomEvent("haxcms-edit-mode-changed", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: editMode,
-          }),
-        );
-        globalThis.HaxStore.requestAvailability().editMode = editMode;
-        globalThis.HaxStore.requestAvailability().toastShowEventName =
-          "haxcms-toast-show";
-      }
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        const editMode = _mobx_val_0;
+        // trap for early setup
+        if (
+          globalThis.HaxStore &&
+          globalThis.HaxStore.requestAvailability() &&
+          globalThis.HaxStore.requestAvailability().write
+        ) {
+          globalThis.dispatchEvent(
+            new CustomEvent("haxcms-edit-mode-changed", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: editMode,
+            }),
+          );
+          globalThis.HaxStore.requestAvailability().editMode = editMode;
+          globalThis.HaxStore.requestAvailability().toastShowEventName =
+            "haxcms-toast-show";
+        }
+      });
     });
   }
   trayStatusChanged(e) {

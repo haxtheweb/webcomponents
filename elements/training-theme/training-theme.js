@@ -52,16 +52,25 @@ class TrainingTheme extends HAXCMSOperationButtons(
     this.activeId = null; // To keep track of the active index
     this.time = 0; // To store the timecode of the content
     autorun(() => {
-      this.activeId = toJS(store.activeId);
+      const _mobx_val_0 = toJS(store.activeId);
+      Promise.resolve().then(() => {
+        this.activeId = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.items = toJS(store.manifest.items);
+      const _mobx_val_0 = toJS(store.manifest.items);
+      Promise.resolve().then(() => {
+        this.items = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const manIn = toJS(store.activeManifestIndex);
-      if (manIn > this.maxIndex) {
-        this.maxIndex = manIn;
-      }
+      const _mobx_val_0 = toJS(store.activeManifestIndex);
+      Promise.resolve().then(() => {
+        const manIn = _mobx_val_0;
+        if (manIn > this.maxIndex) {
+          this.maxIndex = manIn;
+        }
+      });
     });
   }
   /**

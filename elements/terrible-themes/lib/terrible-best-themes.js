@@ -39,7 +39,10 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+        });
       }),
     );
   }

@@ -36,15 +36,18 @@ export class CourseIntro extends LitElement {
     super();
     this.color = "";
     autorun(() => {
-      const manifest = toJS(store.manifest);
-      if (
-        manifest &&
-        manifest.metadata &&
-        manifest.metadata.theme &&
-        manifest.metadata.theme.variables
-      ) {
-        this.color = manifest.metadata.theme.variables.hexCode;
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        const manifest = _mobx_val_0;
+        if (
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.theme &&
+          manifest.metadata.theme.variables
+        ) {
+          this.color = manifest.metadata.theme.variables.hexCode;
+        }
+      });
     });
   }
   render() {

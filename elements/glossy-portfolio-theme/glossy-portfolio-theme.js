@@ -40,13 +40,16 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.__disposer = this.__disposer || [];
 
    autorun((reaction) => {
-    this.isHome = false; // default to false
-      const active = toJS(store.activeItem);
-      if (active) {
-        if(active.order === 0 && store.ancestorItem === null) {
-          this.isHome = true; 
+    const _mobx_val_0 = toJS(store.activeItem);
+    Promise.resolve().then(() => {
+      this.isHome = false; // default to false
+        const active = _mobx_val_0;
+        if (active) {
+          if(active.order === 0 && store.ancestorItem === null) {
+            this.isHome = true;
+          }
         }
-      }
+    });
     });
 
   }

@@ -32,9 +32,12 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun((reaction) => {
-        if (store && store.location && store.location.pathname) {
-          this.activePathName = toJS(store.location.pathname);
-        }
+        const _mobx_val_0 = toJS(store.location.pathname);
+        Promise.resolve().then(() => {
+          if (store && store.location && store.location.pathname) {
+            this.activePathName = _mobx_val_0;
+          }
+        });
       }),
     );
   }

@@ -53,68 +53,89 @@ export class AppHaxUseCaseFilter extends LitElement {
     if (typeof store !== "undefined") {
       import("mobx").then(({ autorun, toJS }) => {
         autorun(() => {
-          this.dark = toJS(store.darkMode);
+          const _mobx_val_0 = toJS(store.darkMode);
+          Promise.resolve().then(() => {
+            this.dark = _mobx_val_0;
+          });
         });
         autorun(() => {
-          this.isMobile = toJS(store.isMobile);
+          const _mobx_val_0 = toJS(store.isMobile);
+          Promise.resolve().then(() => {
+            this.isMobile = _mobx_val_0;
+          });
         });
         // Watch for appReady AND login state to trigger skeleton loading
         let hasLoaded = false;
         autorun(() => {
-          const appReady = toJS(store.appReady);
-          const loggedIn = toJS(store.isLoggedIn);
+          const _mobx_val_0 = toJS(store.appReady);
+          const _mobx_val_1 = toJS(store.isLoggedIn);
+          const _mobx_val_2 = toJS(store.showTerribleTemplates);
+          const _mobx_val_3 = toJS(store.showHiddenTemplates);
+          Promise.resolve().then(() => {
+            const appReady = _mobx_val_0;
+            const loggedIn = _mobx_val_1;
 
-          this.isLoggedIn = loggedIn;
+            this.isLoggedIn = loggedIn;
 
-          // Track advanced template visibility flags from the store
-          this.showTerrible = toJS(store.showTerribleTemplates);
-          this.showHidden = toJS(store.showHiddenTemplates);
+            // Track advanced template visibility flags from the store
+            this.showTerrible = _mobx_val_2;
+            this.showHidden = _mobx_val_3;
 
-          // Trigger skeleton/theme loading when both app is ready and user is logged in
-          // Only load once per session
-          if (appReady && loggedIn && !hasLoaded) {
-            hasLoaded = true;
-            this.updateSkeletonResults();
-            this.updateSiteResults();
-          }
+            // Trigger skeleton/theme loading when both app is ready and user is logged in
+            // Only load once per session
+            if (appReady && loggedIn && !hasLoaded) {
+              hasLoaded = true;
+              this.updateSkeletonResults();
+              this.updateSiteResults();
+            }
+          });
         });
 
         // Rebuild skeleton/theme listing when toggles change
         let lastShowTerrible = null;
         let lastShowHidden = null;
         autorun(() => {
-          const appReady = toJS(store.appReady);
-          const loggedIn = toJS(store.isLoggedIn);
-          const showTerrible = toJS(store.showTerribleTemplates);
-          const showHidden = toJS(store.showHiddenTemplates);
+          const _mobx_val_0 = toJS(store.appReady);
+          const _mobx_val_1 = toJS(store.isLoggedIn);
+          const _mobx_val_2 = toJS(store.showTerribleTemplates);
+          const _mobx_val_3 = toJS(store.showHiddenTemplates);
+          Promise.resolve().then(() => {
+            const appReady = _mobx_val_0;
+            const loggedIn = _mobx_val_1;
+            const showTerrible = _mobx_val_2;
+            const showHidden = _mobx_val_3;
 
-          if (
-            lastShowTerrible === null &&
-            lastShowHidden === null
-          ) {
-            lastShowTerrible = showTerrible;
-            lastShowHidden = showHidden;
-            return;
-          }
+            if (
+              lastShowTerrible === null &&
+              lastShowHidden === null
+            ) {
+              lastShowTerrible = showTerrible;
+              lastShowHidden = showHidden;
+              return;
+            }
 
-          if (
-            appReady &&
-            loggedIn &&
-            (showTerrible !== lastShowTerrible || showHidden !== lastShowHidden)
-          ) {
-            lastShowTerrible = showTerrible;
-            lastShowHidden = showHidden;
-            this.updateSkeletonResults();
-            // maintain filters list by re-appending site tags after rebuild
-            this.updateSiteResults();
-          }
+            if (
+              appReady &&
+              loggedIn &&
+              (showTerrible !== lastShowTerrible || showHidden !== lastShowHidden)
+            ) {
+              lastShowTerrible = showTerrible;
+              lastShowHidden = showHidden;
+              this.updateSkeletonResults();
+              // maintain filters list by re-appending site tags after rebuild
+              this.updateSiteResults();
+            }
+          });
         });
         // Watch for manifest changes and update site results
         autorun(() => {
-          const manifest = toJS(store.manifest);
-          if (manifest && manifest.items && manifest.items.length > 0) {
-            this.updateSiteResults();
-          }
+          const _mobx_val_0 = toJS(store.manifest);
+          Promise.resolve().then(() => {
+            const manifest = _mobx_val_0;
+            if (manifest && manifest.items && manifest.items.length > 0) {
+              this.updateSiteResults();
+            }
+          });
         });
       });
     }

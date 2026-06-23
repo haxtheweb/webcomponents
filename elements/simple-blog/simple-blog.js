@@ -221,13 +221,19 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     super.connectedCallback();
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
+        const _mobx_val_0 = toJS(store.activeId);
+        Promise.resolve().then(() => {
+          this.activeId = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        let location = toJS(store.location);
-        this._locationChanged(location);
+        const _mobx_val_0 = toJS(store.location);
+        Promise.resolve().then(() => {
+          let location = _mobx_val_0;
+          this._locationChanged(location);
+        });
       }),
     );
   }

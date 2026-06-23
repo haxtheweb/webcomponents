@@ -563,10 +563,16 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
-        this.__siteTitle = toJS(store.manifest.title);
-        this.__siteImage = toJS(store.manifest.metadata.author.image);
-        this.__pageTitle = toJS(store.activeTitle);
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        const _mobx_val_1 = toJS(store.manifest.title);
+        const _mobx_val_2 = toJS(store.manifest.metadata.author.image);
+        const _mobx_val_3 = toJS(store.activeTitle);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+          this.__siteTitle = _mobx_val_1;
+          this.__siteImage = _mobx_val_2;
+          this.__pageTitle = _mobx_val_3;
+        });
       }),
     );
   }

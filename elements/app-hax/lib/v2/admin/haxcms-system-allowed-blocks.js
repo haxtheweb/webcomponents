@@ -22,23 +22,27 @@ class HAXCMSSystemAllowedBlocks extends HAXCMSAllowedBlocksUI {
     super.connectedCallback();
     this._bootstrapInventoryFromSystemBlocks();
     const enabledBlocksDisposer = autorun(() => {
-      const platformConfig = toJS(HAXStore.platformConfig);
-      if (platformConfig) {
-        return;
-      }
-      const appStoreData = toJS(HAXStore.__appStoreData);
-      if (
-        !appStoreData ||
-        !Object.prototype.hasOwnProperty.call(appStoreData, "enabledBlocks")
-      ) {
-        return;
-      }
-      const enabledBlocks = appStoreData.enabledBlocks;
-      if (!Array.isArray(enabledBlocks)) {
-        return;
-      }
-      this.allowedBlocksDefined = true;
-      this.allowedBlocks = new Set(enabledBlocks);
+      const _mobx_val_0 = toJS(HAXStore.platformConfig);
+      const _mobx_val_1 = toJS(HAXStore.__appStoreData);
+      Promise.resolve().then(() => {
+        const platformConfig = _mobx_val_0;
+        if (platformConfig) {
+          return;
+        }
+        const appStoreData = _mobx_val_1;
+        if (
+          !appStoreData ||
+          !Object.prototype.hasOwnProperty.call(appStoreData, "enabledBlocks")
+        ) {
+          return;
+        }
+        const enabledBlocks = appStoreData.enabledBlocks;
+        if (!Array.isArray(enabledBlocks)) {
+          return;
+        }
+        this.allowedBlocksDefined = true;
+        this.allowedBlocks = new Set(enabledBlocks);
+      });
     });
     this.__disposer.push(enabledBlocksDisposer);
   }

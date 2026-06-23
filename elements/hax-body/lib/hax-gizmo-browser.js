@@ -83,7 +83,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.activePreview = null;
     this.daemonKeyCombo = null;
     autorun(() => {
-      this.daemonKeyCombo = toJS(HAXStore.daemonKeyCombo);
+      const _mobx_val_0 = toJS(HAXStore.daemonKeyCombo);
+      Promise.resolve().then(() => {
+        this.daemonKeyCombo = _mobx_val_0;
+      });
     });
     this.items = [];
     this.categories = [];
@@ -104,25 +107,28 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.addEventListener("mouseleave", this.closePopover.bind(this));
     this.addEventListener("mouseout", this.closePopover.bind(this));
     autorun(() => {
-      if (HAXStore.editMode) {
-        const recent = toJS(HAXStore.recentGizmoList);
-        let recentList = [];
-        let recentTags = [];
-        recent.forEach((gizmo) => {
-          if (this._gizmoAllowedInTray(gizmo)) {
-            if (!recentTags.includes(gizmo.tag)) {
-              recentTags.push(gizmo.tag);
-              recentList.push(gizmo);
-              // limit to 5, then remove the 1st one
-              if (recentList.length > 5) {
-                recentTags.shift();
-                recentList.shift();
+      const _mobx_val_0 = toJS(HAXStore.recentGizmoList);
+      Promise.resolve().then(() => {
+        if (HAXStore.editMode) {
+          const recent = _mobx_val_0;
+          let recentList = [];
+          let recentTags = [];
+          recent.forEach((gizmo) => {
+            if (this._gizmoAllowedInTray(gizmo)) {
+              if (!recentTags.includes(gizmo.tag)) {
+                recentTags.push(gizmo.tag);
+                recentList.push(gizmo);
+                // limit to 5, then remove the 1st one
+                if (recentList.length > 5) {
+                  recentTags.shift();
+                  recentList.shift();
+                }
               }
             }
-          }
-        });
-        this.recentGizmoList = recentList;
-      }
+          });
+          this.recentGizmoList = recentList;
+        }
+      });
     });
   }
   static get properties() {
@@ -437,9 +443,12 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     autorun(() => {
-      if (HAXStore.editMode) {
-        this.resetList(toJS(HAXStore.gizmoList));
-      }
+      const _mobx_val_0 = toJS(HAXStore.gizmoList);
+      Promise.resolve().then(() => {
+        if (HAXStore.editMode) {
+          this.resetList(_mobx_val_0);
+        }
+      });
     });
     // Initialize popular blocks list
     this._initializePopularBlocks();

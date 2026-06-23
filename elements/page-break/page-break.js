@@ -104,7 +104,10 @@ export class PageBreak extends IntersectionObserverMixin(
     // Set up HAXcms store observer for login status
     this.__disposer.push(
       autorun((reaction) => {
-        this.isLoggedIn = toJS(store.isLoggedIn);
+        const _mobx_val_0 = toJS(store.isLoggedIn);
+        Promise.resolve().then(() => {
+          this.isLoggedIn = _mobx_val_0;
+        });
       }),
     );
   }

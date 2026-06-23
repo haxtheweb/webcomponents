@@ -217,11 +217,14 @@ class SimpleBlogPost extends SimpleColors {
       });
       this.__disposer.push(
         autorun((reaction) => {
-          const fields = toJS(store.activeItemFields);
-          this.hasImage = this._computeHasImage(fields);
-          if (this.hasImage) {
-            this.image = fields.images[0].src;
-          }
+          const _mobx_val_0 = toJS(store.activeItemFields);
+          Promise.resolve().then(() => {
+            const fields = _mobx_val_0;
+            this.hasImage = this._computeHasImage(fields);
+            if (this.hasImage) {
+              this.image = fields.images[0].src;
+            }
+          });
         }),
       );
     }, 0);

@@ -30,30 +30,35 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.contentContainer = store.themeElement;
-        // target container if we have a fixed UI layout
-        if (
-          this.contentContainer &&
-          this.contentContainer.HAXCMSThemeSettings &&
-          this.contentContainer.HAXCMSThemeSettings.siteMenuContent
-        ) {
-          this.contentContainer.HAXCMSThemeSettings.siteMenuContent.addEventListener(
-            "scroll",
-            this._applyScrollDetect.bind(this),
-          );
-        }
-        setTimeout(() => {
-          this.updateMenu();
-        }, 10);
+        Promise.resolve().then(() => {
+          this.contentContainer = store.themeElement;
+          // target container if we have a fixed UI layout
+          if (
+            this.contentContainer &&
+            this.contentContainer.HAXCMSThemeSettings &&
+            this.contentContainer.HAXCMSThemeSettings.siteMenuContent
+          ) {
+            this.contentContainer.HAXCMSThemeSettings.siteMenuContent.addEventListener(
+              "scroll",
+              this._applyScrollDetect.bind(this),
+            );
+          }
+          setTimeout(() => {
+            this.updateMenu();
+          }, 10);
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        // forces a menu rebuild on content change
-        let content = toJS(store.activeItemContent);
-        setTimeout(() => {
-          this.updateMenu();
-        }, 10);
+        const _mobx_val_0 = toJS(store.activeItemContent);
+        Promise.resolve().then(() => {
+          // forces a menu rebuild on content change
+          let content = _mobx_val_0;
+          setTimeout(() => {
+            this.updateMenu();
+          }, 10);
+        });
       }),
     );
   }

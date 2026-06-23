@@ -6,27 +6,39 @@ class HAXCMSSiteDisqus extends DisqusEmbed {
   constructor() {
     super();
     autorun(() => {
-      this.pageTitle = toJS(store.activeTitle);
+      const _mobx_val_0 = toJS(store.activeTitle);
+      Promise.resolve().then(() => {
+        this.pageTitle = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.pageIdentifier = toJS(store.activeId);
+      const _mobx_val_0 = toJS(store.activeId);
+      Promise.resolve().then(() => {
+        this.pageIdentifier = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const location = toJS(store.location);
-      if (location && location.route && location.route.path) {
-        this.pageURL = location.route.path;
-      }
+      const _mobx_val_0 = toJS(store.location);
+      Promise.resolve().then(() => {
+        const location = _mobx_val_0;
+        if (location && location.route && location.route.path) {
+          this.pageURL = location.route.path;
+        }
+      });
     });
     autorun(() => {
-      const manifest = toJS(store.manifest);
-      if (
-        manifest &&
-        manifest.metadata &&
-        manifest.metadata.site &&
-        manifest.metadata.site.lang
-      ) {
-        this.lang = manifest.metadata.site.lang;
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        const manifest = _mobx_val_0;
+        if (
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.site &&
+          manifest.metadata.site.lang
+        ) {
+          this.lang = manifest.metadata.site.lang;
+        }
+      });
     });
   }
   static get tag() {

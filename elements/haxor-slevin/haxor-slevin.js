@@ -608,26 +608,32 @@ class HaxorSlevin extends HAXCMSThemeParts(
     this.activeManifestIndexCounter = 0;
     this.__disposer.push(
       autorun((reaction) => {
-        let location = toJS(store.location);
-        this._noticeLocationChange(location);
+        const _mobx_val_0 = toJS(store.location);
+        Promise.resolve().then(() => {
+          let location = _mobx_val_0;
+          this._noticeLocationChange(location);
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        let manifest = toJS(store.manifest);
-        this.color = this._getColor(manifest);
-        this.title = varGet(manifest, "title", "");
-        this.image = varGet(
-          manifest,
-          "metadata.theme.variables.image",
-          "assets/banner.jpg",
-        );
-        this.icon = varGet(
-          manifest,
-          "metadata.theme.variables.icon",
-          "icons:record-voice-over",
-        );
-        this.author = varGet(manifest, "metadata.author", {});
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          let manifest = _mobx_val_0;
+          this.color = this._getColor(manifest);
+          this.title = varGet(manifest, "title", "");
+          this.image = varGet(
+            manifest,
+            "metadata.theme.variables.image",
+            "assets/banner.jpg",
+          );
+          this.icon = varGet(
+            manifest,
+            "metadata.theme.variables.icon",
+            "icons:record-voice-over",
+          );
+          this.author = varGet(manifest, "metadata.author", {});
+        });
       }),
     );
     this.__disposer.push(
@@ -639,14 +645,20 @@ class HaxorSlevin extends HAXCMSThemeParts(
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeTitle = toJS(store.activeTitle);
-        this.shareUrl = globalThis.document.location.href;
-        this.shareMsg = this.activeTitle + " " + this.shareUrl;
+        const _mobx_val_0 = toJS(store.activeTitle);
+        Promise.resolve().then(() => {
+          this.activeTitle = _mobx_val_0;
+          this.shareUrl = globalThis.document.location.href;
+          this.shareMsg = this.activeTitle + " " + this.shareUrl;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeItem = toJS(store.activeItem);
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          this.activeItem = _mobx_val_0;
+        });
       }),
     );
   }

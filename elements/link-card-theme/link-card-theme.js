@@ -50,8 +50,11 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun(() => {
-        this.manifest = toJS(store.manifest) || {};
-        this._syncManifestData();
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0 || {};
+          this._syncManifestData();
+        });
       }),
     );
   }

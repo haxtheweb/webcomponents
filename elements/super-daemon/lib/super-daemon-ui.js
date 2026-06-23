@@ -59,27 +59,31 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this._activeDescendant = "";
     // user scaffolding wired up to superDaemon
     autorun(() => {
-      const usAction = toJS(UserScaffoldInstance.action);
-      const usData = toJS(UserScaffoldInstance.data);
-      const sdi = globalThis.SuperDaemonManager.requestAvailability();
-      // try to evaluate typing in merlin
-      if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        sdi.programName === null &&
-        usAction.type === "drag"
-      ) {
-        this.activeDrag = true;
-        this.activeType = usData.value || usData.architype;
-      } else if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        sdi.programName === null &&
-        usAction.type === "dragleave"
-      ) {
-        this.activeDrag = false;
-        this.activeType = null;
-      }
+      const _mobx_val_0 = toJS(UserScaffoldInstance.action);
+      const _mobx_val_1 = toJS(UserScaffoldInstance.data);
+      Promise.resolve().then(() => {
+        const usAction = _mobx_val_0;
+        const usData = _mobx_val_1;
+        const sdi = globalThis.SuperDaemonManager.requestAvailability();
+        // try to evaluate typing in merlin
+        if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          sdi.programName === null &&
+          usAction.type === "drag"
+        ) {
+          this.activeDrag = true;
+          this.activeType = usData.value || usData.architype;
+        } else if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          sdi.programName === null &&
+          usAction.type === "dragleave"
+        ) {
+          this.activeDrag = false;
+          this.activeType = null;
+        }
+      });
     });
   }
   static get tag() {

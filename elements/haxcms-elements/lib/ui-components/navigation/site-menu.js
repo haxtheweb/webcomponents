@@ -99,31 +99,40 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.routerManifest = Object.assign({}, toJS(store.routerManifest));
+        const _mobx_val_0 = toJS(store.routerManifest);
+        Promise.resolve().then(() => {
+          this.routerManifest = Object.assign({}, _mobx_val_0);
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
         if (!this.isFlex) {
-          this.editControls = toJS(store.isLoggedIn);
-          // dynamic import if we are logged in
-          if (this.editControls && !this.__operationsLoaded) {
-            this.__operationsLoaded = true;
-            import("../../core/micros/haxcms-page-operations.js");
-          }
+          const _mobx_val_0 = toJS(store.isLoggedIn);
+          Promise.resolve().then(() => {
+            this.editControls = _mobx_val_0;
+            // dynamic import if we are logged in
+            if (this.editControls && !this.__operationsLoaded) {
+              this.__operationsLoaded = true;
+              import("../../core/micros/haxcms-page-operations.js");
+            }
+          });
         }
       }),
     );
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
-        this.updateComplete.then(() => {
-          const mapMenu =
-            this.shadowRoot && this.shadowRoot.querySelector("map-menu");
-          if (mapMenu && mapMenu.selected !== this.activeId) {
-            mapMenu.selected = this.activeId;
-          }
+        const _mobx_val_0 = toJS(store.activeId);
+        Promise.resolve().then(() => {
+          this.activeId = _mobx_val_0;
+          this.updateComplete.then(() => {
+            const mapMenu =
+              this.shadowRoot && this.shadowRoot.querySelector("map-menu");
+            if (mapMenu && mapMenu.selected !== this.activeId) {
+              mapMenu.selected = this.activeId;
+            }
+          });
         });
       }),
     );

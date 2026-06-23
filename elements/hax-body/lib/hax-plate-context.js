@@ -548,23 +548,30 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
-      if (this.activeNode && this.activeNode.classList) {
-        this._resetCEMenu();
-      }
-      // if active, and we are editing, then make suree plate ops match expectation
-      if (this.activeNode && toJS(HAXStore.editMode)) {
-        setTimeout(() => {
-          this.__updatePlatePosition(this.activeNode);
-        }, 0);
-      }
+      const _mobx_val_0 = toJS(HAXStore.activeNode);
+      const _mobx_val_1 = toJS(HAXStore.editMode);
+      Promise.resolve().then(() => {
+        this.activeNode = _mobx_val_0;
+        if (this.activeNode && this.activeNode.classList) {
+          this._resetCEMenu();
+        }
+        // if active, and we are editing, then make suree plate ops match expectation
+        if (this.activeNode && _mobx_val_1) {
+          setTimeout(() => {
+            this.__updatePlatePosition(this.activeNode);
+          }, 0);
+        }
+      });
     });
     autorun(() => {
-      if (toJS(HAXStore.activeEditingElement)) {
-        this.hasActiveEditingElement = true;
-      } else {
-        this.hasActiveEditingElement = false;
-      }
+      const _mobx_val_0 = toJS(HAXStore.activeEditingElement);
+      Promise.resolve().then(() => {
+        if (_mobx_val_0) {
+          this.hasActiveEditingElement = true;
+        } else {
+          this.hasActiveEditingElement = false;
+        }
+      });
     });
     this.shadowRoot
       .querySelector("#drag")

@@ -167,23 +167,27 @@ class BootstrapBreadcrumb extends LitElement {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        let manifestHomeItem = toJS(store.manifest.items[0]);
-        let storeActiveItem = toJS(store.activeItem);
-        // check if home item has changed, if it has set new home item
-        if (this.homeItem !== manifestHomeItem) {
-          this.homeItem = manifestHomeItem;
-        }
-        // check if we have a new active item
-        // if so we clear our items array, set a new activeItem, push it to the items array
-        // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
-        if (storeActiveItem && this._activeItem !== storeActiveItem) {
-          this.items = [];
-          this._activeItem = storeActiveItem;
-          this.items.push(storeActiveItem);
-          if (storeActiveItem.parent) {
-            this.addParentToItems(storeActiveItem);
+        const _mobx_val_0 = toJS(store.manifest.items[0]);
+        const _mobx_val_1 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          let manifestHomeItem = _mobx_val_0;
+          let storeActiveItem = _mobx_val_1;
+          // check if home item has changed, if it has set new home item
+          if (this.homeItem !== manifestHomeItem) {
+            this.homeItem = manifestHomeItem;
           }
-        }
+          // check if we have a new active item
+          // if so we clear our items array, set a new activeItem, push it to the items array
+          // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
+          if (storeActiveItem && this._activeItem !== storeActiveItem) {
+            this.items = [];
+            this._activeItem = storeActiveItem;
+            this.items.push(storeActiveItem);
+            if (storeActiveItem.parent) {
+              this.addParentToItems(storeActiveItem);
+            }
+          }
+        });
       }),
     );
   }

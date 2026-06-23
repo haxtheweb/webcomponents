@@ -173,24 +173,27 @@ class SimpleBlogHeader extends SimpleColors {
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        let manifest = toJS(store.manifest);
-        if (manifest && manifest.description) {
-          this.description = manifest.description;
-        }
-        if (manifest && manifest.title) {
-          this.title = manifest.title;
-        }
-        this.image = varGet(
-          manifest,
-          "metadata.theme.variables.image",
-          "assets/banner.jpg",
-        );
-        this.icon = varGet(
-          manifest,
-          "metadata.theme.variables.icon",
-          "icons:record-voice-over",
-        );
-        this.author = varGet(manifest, "metadata.author", {});
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          let manifest = _mobx_val_0;
+          if (manifest && manifest.description) {
+            this.description = manifest.description;
+          }
+          if (manifest && manifest.title) {
+            this.title = manifest.title;
+          }
+          this.image = varGet(
+            manifest,
+            "metadata.theme.variables.image",
+            "assets/banner.jpg",
+          );
+          this.icon = varGet(
+            manifest,
+            "metadata.theme.variables.icon",
+            "icons:record-voice-over",
+          );
+          this.author = varGet(manifest, "metadata.author", {});
+        });
       }),
     );
   }

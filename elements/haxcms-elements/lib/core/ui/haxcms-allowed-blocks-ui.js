@@ -580,77 +580,86 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   connectedCallback() {
     super.connectedCallback();
     const disposer = autorun(() => {
-      const currentGizmos = toJS(HAXStore.gizmoList);
-      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
-      const appStoreData = toJS(HAXStore.__appStoreData);
-      const autoloader =
-        appStoreData && appStoreData.autoloader
-          ? appStoreData.autoloader
-          : null;
-      const hasAutoloaderInventory = !!(
-        autoloader &&
-        ((Array.isArray(autoloader) && autoloader.length > 0) ||
-          (!Array.isArray(autoloader) &&
-            typeof autoloader === "object" &&
-            Object.keys(autoloader).length > 0))
-      );
-      const appStoreLoaded = !!toJS(HAXStore.appStoreLoaded);
-      const shouldWaitForStableInventory =
-        hasAutoloaderInventory && !appStoreLoaded;
-      this.inventoryReady = !shouldWaitForStableInventory;
-      const blocksFromGizmos = gizmos.filter(
-        (item) =>
-          !(
-            item.meta &&
-            (item.meta.requiresParent ||
-              (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
-          ),
-      );
-      let blocks = blocksFromGizmos;
-      if (
-        !shouldWaitForStableInventory &&
-        blocksFromGizmos.length === 0 &&
-        hasAutoloaderInventory
-      ) {
-        blocks = this._blocksFromAutoloaderInventory(autoloader);
-      }
-      this.haxBlocks = shouldWaitForStableInventory ? [] : blocks;
-
-      const platformConfig = toJS(HAXStore.platformConfig);
-      const allowedBlocks = platformConfig
-        ? platformConfig.allowedBlocks
-        : undefined;
-      const hasExplicitNoOptionalBlocks = allowedBlocks === null;
-      const hasAllowedBlocks =
-        (allowedBlocks &&
-          typeof allowedBlocks.size === "number" &&
-          allowedBlocks.size > 0) ||
-        (Array.isArray(allowedBlocks) && allowedBlocks.length > 0);
-      this.allowedBlocksDefined =
-        hasExplicitNoOptionalBlocks || !!hasAllowedBlocks;
-
-      if (hasExplicitNoOptionalBlocks) {
-        this.allowedBlocks = new Set();
-      } else if (hasAllowedBlocks) {
-        if (allowedBlocks instanceof Set) {
-          this.allowedBlocks = new Set(Array.from(allowedBlocks));
-        } else if (Array.isArray(allowedBlocks)) {
-          this.allowedBlocks = new Set(allowedBlocks);
-        } else {
-          this.allowedBlocks = new Set();
-        }
-      } else {
-        this.allowedBlocks = new Set(
-          blocks
-            .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
-            .map((item) => item.tag),
+      const _mobx_val_0 = toJS(HAXStore.gizmoList);
+      const _mobx_val_1 = toJS(HAXStore.__appStoreData);
+      const _mobx_val_2 = toJS(HAXStore.appStoreLoaded);
+      const _mobx_val_3 = toJS(HAXStore.platformConfig);
+      Promise.resolve().then(() => {
+        const currentGizmos = _mobx_val_0;
+        const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
+        const appStoreData = _mobx_val_1;
+        const autoloader =
+          appStoreData && appStoreData.autoloader
+            ? appStoreData.autoloader
+            : null;
+        const hasAutoloaderInventory = !!(
+          autoloader &&
+          ((Array.isArray(autoloader) && autoloader.length > 0) ||
+            (!Array.isArray(autoloader) &&
+              typeof autoloader === "object" &&
+              Object.keys(autoloader).length > 0))
         );
-      }
+        const appStoreLoaded = !!_mobx_val_2;
+        const shouldWaitForStableInventory =
+          hasAutoloaderInventory && !appStoreLoaded;
+        this.inventoryReady = !shouldWaitForStableInventory;
+        const blocksFromGizmos = gizmos.filter(
+          (item) =>
+            !(
+              item.meta &&
+              (item.meta.requiresParent ||
+                (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
+            ),
+        );
+        let blocks = blocksFromGizmos;
+        if (
+          !shouldWaitForStableInventory &&
+          blocksFromGizmos.length === 0 &&
+          hasAutoloaderInventory
+        ) {
+          blocks = this._blocksFromAutoloaderInventory(autoloader);
+        }
+        this.haxBlocks = shouldWaitForStableInventory ? [] : blocks;
+
+        const platformConfig = _mobx_val_3;
+        const allowedBlocks = platformConfig
+          ? platformConfig.allowedBlocks
+          : undefined;
+        const hasExplicitNoOptionalBlocks = allowedBlocks === null;
+        const hasAllowedBlocks =
+          (allowedBlocks &&
+            typeof allowedBlocks.size === "number" &&
+            allowedBlocks.size > 0) ||
+          (Array.isArray(allowedBlocks) && allowedBlocks.length > 0);
+        this.allowedBlocksDefined =
+          hasExplicitNoOptionalBlocks || !!hasAllowedBlocks;
+
+        if (hasExplicitNoOptionalBlocks) {
+          this.allowedBlocks = new Set();
+        } else if (hasAllowedBlocks) {
+          if (allowedBlocks instanceof Set) {
+            this.allowedBlocks = new Set(Array.from(allowedBlocks));
+          } else if (Array.isArray(allowedBlocks)) {
+            this.allowedBlocks = new Set(allowedBlocks);
+          } else {
+            this.allowedBlocks = new Set();
+          }
+        } else {
+          this.allowedBlocks = new Set(
+            blocks
+              .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
+              .map((item) => item.tag),
+          );
+        }
+      });
     });
     this.__disposer.push(disposer);
 
     const mobileDisposer = autorun(() => {
-      this.isMobile = !!toJS(store.isMobile);
+      const _mobx_val_0 = toJS(store.isMobile);
+      Promise.resolve().then(() => {
+        this.isMobile = !!_mobx_val_0;
+      });
     });
     this.__disposer.push(mobileDisposer);
   }

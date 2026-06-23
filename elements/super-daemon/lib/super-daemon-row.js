@@ -324,7 +324,6 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   render() {
     return html`
       <button
-        role="option"
         part="button"
         tabindex="-1"
         aria-selected="false"

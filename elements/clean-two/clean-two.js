@@ -902,7 +902,10 @@ class CleanTwo extends LTIResizingMixin(
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+        });
       }),
     );
 
@@ -913,7 +916,10 @@ class CleanTwo extends LTIResizingMixin(
           store.activeItem.metadata &&
           store.activeItem.metadata.updated
         ) {
-          this.pageTimestamp = toJS(store.activeItem.metadata.updated);
+          const _mobx_val_0 = toJS(store.activeItem.metadata.updated);
+          Promise.resolve().then(() => {
+            this.pageTimestamp = _mobx_val_0;
+          });
         }
       }),
     );

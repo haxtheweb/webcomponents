@@ -15,7 +15,10 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
     this.slug = null;
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
   }

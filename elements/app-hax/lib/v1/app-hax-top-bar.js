@@ -122,7 +122,7 @@ export class AppHaxTopBar extends LitElement {
 
   render() {
     return html`
-      <div class="topBar" part="top-bar">
+      <div class="topBar" part="top-bar" role="banner" aria-label="Application header">
         <div class="left" part="left">
           <slot name="left"></slot>
         </div>

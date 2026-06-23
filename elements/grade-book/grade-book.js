@@ -131,22 +131,34 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.addEventListener("drop", this._handleDragDrop.bind(this));
     this.__disposer.push(
       autorun(() => {
-        this.activeStudent = toJS(GradeBookStore.activeStudent);
+        const _mobx_val_0 = toJS(GradeBookStore.activeStudent);
+        Promise.resolve().then(() => {
+          this.activeStudent = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.activeAssignment = toJS(GradeBookStore.activeAssignment);
+        const _mobx_val_0 = toJS(GradeBookStore.activeAssignment);
+        Promise.resolve().then(() => {
+          this.activeAssignment = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.database = toJS(GradeBookStore.database);
+        const _mobx_val_0 = toJS(GradeBookStore.database);
+        Promise.resolve().then(() => {
+          this.database = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.activeSubmission = toJS(GradeBookStore.activeSubmission);
+        const _mobx_val_0 = toJS(GradeBookStore.activeSubmission);
+        Promise.resolve().then(() => {
+          this.activeSubmission = _mobx_val_0;
+        });
       }),
     );
   }

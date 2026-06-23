@@ -407,8 +407,10 @@ class A11yCollapse extends DDD {
           detail: this,
         }),
       );
-      this.label = "collapse";
-      this.tooltip = "collapse";
+      Promise.resolve().then(() => {
+        this.label = "collapse";
+        this.tooltip = "collapse";
+      });
     } else {
       /**
        * Fires when collapsed.
@@ -423,8 +425,10 @@ class A11yCollapse extends DDD {
           detail: this,
         }),
       );
-      this.label = "expand";
-      this.tooltip = "expand";
+      Promise.resolve().then(() => {
+        this.label = "expand";
+        this.tooltip = "expand";
+      });
     }
   }
   /**

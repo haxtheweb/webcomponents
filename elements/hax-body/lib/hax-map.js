@@ -155,17 +155,21 @@ class HaxMap extends I18NMixin(SimpleColors) {
       namespace: "hax",
     });
     autorun(() => {
-      if (HAXStore.editMode) {
-        this.activeNode = toJS(HAXStore.activeNode);
-        setTimeout(() => {
+      const _mobx_val_0 = toJS(HAXStore.activeNode);
+      Promise.resolve().then(() => {
+        if (HAXStore.editMode) {
+          this.activeNode = _mobx_val_0;
           this.requestUpdate();
-        }, 0);
-      }
+        }
+      });
     });
     autorun(() => {
-      const globalPreferences = toJS(HAXStore.globalPreferences);
-      const haxUiTheme = (globalPreferences || {}).haxUiTheme || "hax";
-      this.dark = haxUiTheme === "haxdark";
+      const _mobx_val_0 = toJS(HAXStore.globalPreferences);
+      Promise.resolve().then(() => {
+        const globalPreferences = _mobx_val_0;
+        const haxUiTheme = (globalPreferences || {}).haxUiTheme || "hax";
+        this.dark = haxUiTheme === "haxdark";
+      });
     });
   }
   connectedCallback() {

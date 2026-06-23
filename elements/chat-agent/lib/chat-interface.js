@@ -24,27 +24,42 @@ class ChatInterface extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.chatLog = toJS(ChatStore.chatLog);
+        const _mobx_val_0 = toJS(ChatStore.chatLog);
+        Promise.resolve().then(() => {
+          this.chatLog = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.darkMode = toJS(ChatStore.darkMode);
+        const _mobx_val_0 = toJS(ChatStore.darkMode);
+        Promise.resolve().then(() => {
+          this.darkMode = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.developerModeEnabled = toJS(ChatStore.developerModeEnabled);
+        const _mobx_val_0 = toJS(ChatStore.developerModeEnabled);
+        Promise.resolve().then(() => {
+          this.developerModeEnabled = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.isFullView = toJS(ChatStore.isFullView);
+        const _mobx_val_0 = toJS(ChatStore.isFullView);
+        Promise.resolve().then(() => {
+          this.isFullView = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        this.isInterfaceHidden = toJS(ChatStore.isInterfaceHidden);
+        const _mobx_val_0 = toJS(ChatStore.isInterfaceHidden);
+        Promise.resolve().then(() => {
+          this.isInterfaceHidden = _mobx_val_0;
+        });
       }),
     );
   }

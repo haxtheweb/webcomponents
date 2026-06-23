@@ -426,7 +426,10 @@ class SiteTopMenu extends LitElement {
       .addEventListener("click", this.toggleOpen.bind(this));
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
     // minor timing thing to ensure store has picked active

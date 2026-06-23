@@ -119,14 +119,17 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    let needsGenerate = false;
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "type") {
-        this._generateLink(this[propName]);
-      }
-      if (propName == "t") {
-        this._generateLink(this.type);
+      if (propName == "type" || propName == "t") {
+        needsGenerate = true;
       }
     });
+    if (needsGenerate) {
+      Promise.resolve().then(() => {
+        this._generateLink(this.type);
+      });
+    }
   }
   /**
    * Generate a link when we get a new type.

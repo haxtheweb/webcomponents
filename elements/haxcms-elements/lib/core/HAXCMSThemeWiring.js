@@ -194,63 +194,78 @@ const HAXCMSTheme = function (SuperClass) {
       // keep activeItemContent in sync globally
       this.__disposer.push(
         autorun((reaction) => {
-          this.activeItemContent = toJS(store.activeItemContent);
+          const _mobx_val_0 = toJS(store.activeItemContent);
+          Promise.resolve().then(() => {
+            this.activeItemContent = _mobx_val_0;
+          });
         }),
       );
       // keep editMode in sync globally
       this.__disposer.push(
         autorun((reaction) => {
-          this.editMode = toJS(store.editMode);
+          const _mobx_val_0 = toJS(store.editMode);
+          Promise.resolve().then(() => {
+            this.editMode = _mobx_val_0;
+          });
         }),
       );
       // logged in so we can visualize things differently as needed
       this.__disposer.push(
         autorun((reaction) => {
-          this.isLoggedIn = toJS(store.isLoggedIn);
+          const _mobx_val_0 = toJS(store.isLoggedIn);
+          Promise.resolve().then(() => {
+            this.isLoggedIn = _mobx_val_0;
+          });
         }),
       );
       // store disposer so we can clean up later
       this.__disposer.push(
         autorun((reaction) => {
-          const __manifest = toJS(store.manifest);
-          if (__manifest && varExists(__manifest, "title")) {
-            globalThis.document.title = __manifest.title;
-          }
-          if (
-            __manifest &&
-            varExists(__manifest, "metadata.theme.variables.cssVariable")
-          ) {
-            // json outline schema changed, allow other things to react
-            // fake way of forcing an update of these items
-            let ary = __manifest.metadata.theme.variables.cssVariable
-              .replace("--simple-colors-default-theme-", "")
-              .split("-");
-            ary.pop();
-            // simple colors "accent color" property
-            this.accentColor = ary.join("-");
-            var color = varGet(
-              __manifest,
-              "metadata.theme.variables.cssVariable",
-              null,
-            );
-            // fallback if color wasn't set via css var
-            if (color == null) {
-              color = varGet(
-                __manifest,
-                "metadata.theme.variables.hexCode",
-                "#ff0074",
-              );
-            } else {
-              color = `var(${color})`;
+          const _mobx_val_0 = toJS(store.manifest);
+          Promise.resolve().then(() => {
+            const __manifest = _mobx_val_0;
+            if (__manifest && varExists(__manifest, "title")) {
+              globalThis.document.title = __manifest.title;
             }
-            // set this directly instead of messing w/ accentColor
-            globalThis.document.body.style.setProperty("--haxcms-color", color);
-          }
+            if (
+              __manifest &&
+              varExists(__manifest, "metadata.theme.variables.cssVariable")
+            ) {
+              // json outline schema changed, allow other things to react
+              // fake way of forcing an update of these items
+              let ary = __manifest.metadata.theme.variables.cssVariable
+                .replace("--simple-colors-default-theme-", "")
+                .split("-");
+              ary.pop();
+              // simple colors "accent color" property
+              this.accentColor = ary.join("-");
+              var color = varGet(
+                __manifest,
+                "metadata.theme.variables.cssVariable",
+                null,
+              );
+              // fallback if color wasn't set via css var
+              if (color == null) {
+                color = varGet(
+                  __manifest,
+                  "metadata.theme.variables.hexCode",
+                  "#ff0074",
+                );
+              } else {
+                color = `var(${color})`;
+              }
+              // set this directly instead of messing w/ accentColor
+              globalThis.document.body.style.setProperty("--haxcms-color", color);
+            }
+          });
         }),
       );
       this.__disposer.push(
         autorun((reaction) => {
-          this._location = toJS(store.location);
+          const _mobx_val_0 = toJS(store.location);
+          Promise.resolve().then(() => {
+            this._location = _mobx_val_0;
+          });
         }),
       );
     }

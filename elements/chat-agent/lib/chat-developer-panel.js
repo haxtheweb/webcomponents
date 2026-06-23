@@ -22,25 +22,37 @@ class ChatDeveloperPanel extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.chatLog = toJS(ChatStore.chatLog);
+        const _mobx_val_0 = toJS(ChatStore.chatLog);
+        Promise.resolve().then(() => {
+          this.chatLog = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.context = toJS(ChatStore.context);
+        const _mobx_val_0 = toJS(ChatStore.context);
+        Promise.resolve().then(() => {
+          this.context = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.engine = toJS(ChatStore.engine);
+        const _mobx_val_0 = toJS(ChatStore.engine);
+        Promise.resolve().then(() => {
+          this.engine = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.isFullView = toJS(ChatStore.isFullView);
+        const _mobx_val_0 = toJS(ChatStore.isFullView);
+        Promise.resolve().then(() => {
+          this.isFullView = _mobx_val_0;
+        });
       }),
     );
   }

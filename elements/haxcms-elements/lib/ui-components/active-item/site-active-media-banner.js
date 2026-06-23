@@ -28,20 +28,26 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
 
     this.__disposer.push(
       autorun((reaction) => {
-        let activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.metadata && activeItem.metadata.image) {
-          this.mediaSource = activeItem.metadata.image;
-        } else {
-          this.mediaSource = "";
-        }
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          let activeItem = _mobx_val_0;
+          if (activeItem && activeItem.metadata && activeItem.metadata.image) {
+            this.mediaSource = activeItem.metadata.image;
+          } else {
+            this.mediaSource = "";
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        let activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.description) {
-          this.description = activeItem.description;
-        }
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          let activeItem = _mobx_val_0;
+          if (activeItem && activeItem.description) {
+            this.description = activeItem.description;
+          }
+        });
       }),
     );
   }

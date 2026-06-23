@@ -231,50 +231,65 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     });
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
-          this.icon = activeItem.metadata.icon;
-        } else {
-          this.icon = null;
-        }
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          const activeItem = _mobx_val_0;
+          if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
+            this.icon = activeItem.metadata.icon;
+          } else {
+            this.icon = null;
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeTitle = toJS(store.activeTitle);
-        this.__title = this._makeTitle(
-          this.dynamicMethodology,
-          this.activeTitle,
-          this.parentTitle,
-          this.ancestorTitle,
-        );
+        const _mobx_val_0 = toJS(store.activeTitle);
+        Promise.resolve().then(() => {
+          this.activeTitle = _mobx_val_0;
+          this.__title = this._makeTitle(
+            this.dynamicMethodology,
+            this.activeTitle,
+            this.parentTitle,
+            this.ancestorTitle,
+          );
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.ancestorTitle = toJS(store.ancestorTitle);
-        this.__title = this._makeTitle(
-          this.dynamicMethodology,
-          this.activeTitle,
-          this.parentTitle,
-          this.ancestorTitle,
-        );
+        const _mobx_val_0 = toJS(store.ancestorTitle);
+        Promise.resolve().then(() => {
+          this.ancestorTitle = _mobx_val_0;
+          this.__title = this._makeTitle(
+            this.dynamicMethodology,
+            this.activeTitle,
+            this.parentTitle,
+            this.ancestorTitle,
+          );
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.parentTitle = toJS(store.parentTitle);
-        this.__title = this._makeTitle(
-          this.dynamicMethodology,
-          this.activeTitle,
-          this.parentTitle,
-          this.ancestorTitle,
-        );
+        const _mobx_val_0 = toJS(store.parentTitle);
+        Promise.resolve().then(() => {
+          this.parentTitle = _mobx_val_0;
+          this.__title = this._makeTitle(
+            this.dynamicMethodology,
+            this.activeTitle,
+            this.parentTitle,
+            this.ancestorTitle,
+          );
+        });
       }),
     );
   }

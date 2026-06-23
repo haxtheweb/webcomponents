@@ -25,7 +25,10 @@ class HaxTrayUpload extends HaxUploadField {
       "hax-file-upload": "_uploadFile",
     };
     autorun(() => {
-      this._editModeChanged(toJS(HAXStore.editMode));
+      const _mobx_val_0 = toJS(HAXStore.editMode);
+      Promise.resolve().then(() => {
+        this._editModeChanged(_mobx_val_0);
+      });
     });
   }
   updated(changedProperties) {

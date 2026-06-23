@@ -36,30 +36,39 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeItem = toJS(store.activeItem);
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          this.activeItem = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const manifest = toJS(store.manifest);
-        if (
-          manifest &&
-          manifest.metadata &&
-          manifest.metadata.author &&
-          manifest.metadata.author.name
-        ) {
-          this.author = manifest.metadata.author.name;
-        } else if (manifest && manifest.author) {
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          const manifest = _mobx_val_0;
+          if (
+            manifest &&
+            manifest.metadata &&
+            manifest.metadata.author &&
+            manifest.metadata.author.name
+          ) {
+            this.author = manifest.metadata.author.name;
+          } else if (manifest && manifest.author) {
+            this.author = manifest.author;
+          } else {
+            this.author = "Ac|d-$CoRpI()";
+          }
           this.author = manifest.author;
-        } else {
-          this.author = "Ac|d-$CoRpI()";
-        }
-        this.author = manifest.author;
+        });
       }),
     );
     globalThis.document.body.style.backgroundColor = "#000000";

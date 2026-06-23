@@ -71,21 +71,28 @@ export const HaxContextBehaviors = function (SuperClass) {
       super();
       this.viewSource = false;
       autorun(() => {
-        this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
+        const _mobx_val_0 = toJS(HAXStore.haxSelectedText);
+        Promise.resolve().then(() => {
+          this.hasSelectedText = _mobx_val_0.length > 0;
+        });
       });
       autorun(() => {
-        // this just forces this block to run when editMode is modified
-        const editMode = toJS(HAXStore.editMode);
-        const activeNode = toJS(HAXStore.activeNode);
-        this.sourceView = false;
-        if (activeNode && activeNode.tagName) {
-          let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
-          this.parentSchema =
-            activeNode && activeNode.parentNode
-              ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
-              : undefined;
-          this.sourceView = schema.canEditSource;
-        }
+        const _mobx_val_0 = toJS(HAXStore.editMode);
+        const _mobx_val_1 = toJS(HAXStore.activeNode);
+        Promise.resolve().then(() => {
+          // this just forces this block to run when editMode is modified
+          const editMode = _mobx_val_0;
+          const activeNode = _mobx_val_1;
+          this.sourceView = false;
+          if (activeNode && activeNode.tagName) {
+            let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
+            this.parentSchema =
+              activeNode && activeNode.parentNode
+                ? HAXStore.haxSchemaFromTag(activeNode.parentNode.tagName)
+                : undefined;
+            this.sourceView = schema.canEditSource;
+          }
+        });
       });
     }
     render() {

@@ -19,7 +19,6 @@ gulp.task("watch", () => {
   return gulp.watch(["./*.js","./lib/*", "./demo/*"], gulp.series("analyze"));
 });
 
-// simple developer flow
 gulp.task("dev", gulp.series("analyze", "watch"));
 
 gulp.task("default", gulp.series("analyze"));

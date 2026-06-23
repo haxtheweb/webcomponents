@@ -66,17 +66,21 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     );
     this.__disposer.push(
       autorun((reaction) => {
-        if (store.activeItem) {
-          let filePath =
-            varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-            store.activeItem.location;
-          // 11ty has a very unique setting for source vs input
-          // @note let's try to do this as little as possible..
-          if (globalThis.HAXCMSContext == "11ty") {
-            filePath = filePath.replace("/src/./pages/", "/src/content/");
+        const _mobx_val_0 = toJS(store.activeItem);
+        const _mobx_val_1 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          if (_mobx_val_0) {
+            let filePath =
+              varGet(_mobx_val_1, "metadata.site.git.publicRepoUrl", "") +
+              _mobx_val_0.location;
+            // 11ty has a very unique setting for source vs input
+            // @note let's try to do this as little as possible..
+            if (globalThis.HAXCMSContext == "11ty") {
+              filePath = filePath.replace("/src/./pages/", "/src/content/");
+            }
+            this.activeGitFileLink = filePath;
           }
-          this.activeGitFileLink = filePath;
-        }
+        });
       }),
     );
   }

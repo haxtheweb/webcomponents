@@ -102,21 +102,33 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     // gets site title and home link for site-title
     this.__disposer.push(autorun((reaction) => {
-      this.homeLink = toJS(store.homeLink);
+      const _mobx_val_0 = toJS(store.homeLink);
+      Promise.resolve().then(() => {
+        this.homeLink = _mobx_val_0;
+      });
     }));
 
     this.__disposer.push(autorun((reaction) => {
-      this.siteTitle = toJS(store.siteTitle);
+      const _mobx_val_0 = toJS(store.siteTitle);
+      Promise.resolve().then(() => {
+        this.siteTitle = _mobx_val_0;
+      });
     }));
 
     // gets active page's ancestor for menu-item:after
     this.__disposer.push(autorun((reaction) => {
-      this.ancestorItem = toJS(store.ancestorItem);
+      const _mobx_val_0 = toJS(store.ancestorItem);
+      Promise.resolve().then(() => {
+        this.ancestorItem = _mobx_val_0;
+      });
     }));
 
     // gets active page's tags and inserts them into an array for media-tag
     this.__disposer.push(autorun((reaction) => {
-      this.activeTags = normalizeTags(toJS(store.activeTags));
+      const _mobx_val_0 = toJS(store.activeTags);
+      Promise.resolve().then(() => {
+        this.activeTags = normalizeTags(_mobx_val_0);
+      });
     }));
 
     // gets top level items for menu-item
@@ -132,126 +144,139 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
     this.__disposer.push(autorun((reaction) => {
-      const active = toJS(store.activeItem);
-      if (active) {
-        // find parent of activeItem
-        let parent = store.manifest.items.find(
-          (d) => active.parent === d.id,
-        );
+      const _mobx_val_0 = toJS(store.activeItem);
+      const _mobx_val_1 = toJS(item.metadata && item.metadata.tags);
+      Promise.resolve().then(() => {
+        const active = _mobx_val_0;
+        if (active) {
+          // find parent of activeItem
+          let parent = store.manifest.items.find(
+            (d) => active.parent === d.id,
+          );
 
-        if (parent) {
-          const activeTags = normalizeTags(active.metadata && active.metadata.tags);
-          const category = activeTags[0] || null;
-          const siblings = store.manifest.items
-            .filter((item) => {
-              const itemTags = normalizeTags(item.metadata && item.metadata.tags);
-              const itemCategory = itemTags[0] || null;
-              return (
-                item.parent === active.parent &&
-                itemCategory === category
-              );
+          if (parent) {
+            const activeTags = normalizeTags(active.metadata && active.metadata.tags);
+            const category = activeTags[0] || null;
+            const siblings = store.manifest.items
+              .filter((item) => {
+                const itemTags = normalizeTags(item.metadata && item.metadata.tags);
+                const itemCategory = itemTags[0] || null;
+                return (
+                  item.parent === active.parent &&
+                  itemCategory === category
+                );
+              });
+
+            const i = siblings.findIndex((item) => item.id === active.id);
+            this.prevSibling = siblings[i - 1] || null;
+            this.nextSibling = siblings[i + 1] || null;
+          } else {
+            parent = "";
+          }
+
+          if (this.menuOpen) {
+            this.menuOpen = false;
+          }
+
+          if (globalThis.document && globalThis.document.startViewTransition) {
+            globalThis.document.startViewTransition(() => {
+              this.activeItem = active;
+              this.activeParent = parent;
             });
-
-          const i = siblings.findIndex((item) => item.id === active.id);
-          this.prevSibling = siblings[i - 1] || null;
-          this.nextSibling = siblings[i + 1] || null;
-        } else {
-          parent = "";
-        }
-
-        if (this.menuOpen) {
-          this.menuOpen = false;
-        }
-
-        if (globalThis.document && globalThis.document.startViewTransition) {
-          globalThis.document.startViewTransition(() => {
+          }
+          else {
             this.activeItem = active;
             this.activeParent = parent;
-          });
-        }
-        else {
-          this.activeItem = active;
-          this.activeParent = parent;
-        }
-        
-        const items = store.getItemChildren(store.activeId);
-        if (items) {
-          if (items.length > 0) {
-            this.setLayout("listing");
+          }
 
-            const categoryTags = [];
-            const allTags = [];
+          const items = store.getItemChildren(store.activeId);
+          if (items) {
+            if (items.length > 0) {
+              this.setLayout("listing");
 
-            // get tags for all children of activeItem, push to arrays
-            items.forEach(item => {
-              const tagArray = normalizeTags(toJS(item.metadata && item.metadata.tags));
-              if (tagArray.length > 0) {
-                if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
-                  categoryTags.push(tagArray[0]);
-                }
-                tagArray.forEach(tag => {
-                  if (tag && !allTags.includes(tag)) {
-                    allTags.push(tag);
+              const categoryTags = [];
+              const allTags = [];
+
+              // get tags for all children of activeItem, push to arrays
+              items.forEach(item => {
+                const tagArray = normalizeTags(_mobx_val_1);
+                if (tagArray.length > 0) {
+                  if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
+                    categoryTags.push(tagArray[0]);
                   }
+                  tagArray.forEach(tag => {
+                    if (tag && !allTags.includes(tag)) {
+                      allTags.push(tag);
+                    }
+                  });
+                }
+              });
+
+              if (globalThis.document && globalThis.document.startViewTransition) {
+                globalThis.document.startViewTransition(() => {
+                  this.items = [...items];
+                  this.categoryTags = [...categoryTags];
+                  this.allTags = [...allTags];
                 });
               }
-            });
-
-            if (globalThis.document && globalThis.document.startViewTransition) {
-              globalThis.document.startViewTransition(() => {
+              else {
                 this.items = [...items];
                 this.categoryTags = [...categoryTags];
                 this.allTags = [...allTags];
-              });
-            }
-            else {
-              this.items = [...items];
-              this.categoryTags = [...categoryTags];
-              this.allTags = [...allTags];         
-            }
-
-            // reset tag select filter
-            this.selectedTag = "";
-            if (this.shadowRoot) {
-              let select = this.shadowRoot.querySelector('#listing-filter');
-              if (select) {
-                select.value = ""
               }
+
+              // reset tag select filter
+              this.selectedTag = "";
+              if (this.shadowRoot) {
+                let select = this.shadowRoot.querySelector('#listing-filter');
+                if (select) {
+                  select.value = ""
+                }
+              }
+            } else if (active.parent) {
+              this.setLayout("media");
+            } else {
+              this.setLayout("text");
             }
-          } else if (active.parent) {
-            this.setLayout("media");
-          } else {
-            this.setLayout("text");
           }
         }
-      }
+      });
     }));
 
     // determines if hax editor is enabled
     this.__disposer.push(autorun((reaction) => {
-      const editMode = toJS(store.editMode);
-      if (editMode) {
-        const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        const editMode = _mobx_val_0;
+        if (editMode) {
+          const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
     }));
 
     // gets licensing stuff
     this.__disposer.push(autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      let LList = new licenseList();
-      if (this.manifest.license && LList[this.manifest.license]) {
-        this.licenseName = LList[this.manifest.license].name;
-        this.licenseLink = LList[this.manifest.license].link;
-        this.licenseImage = LList[this.manifest.license].image;
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        this.manifest = _mobx_val_0;
+        let LList = new licenseList();
+        if (this.manifest.license && LList[this.manifest.license]) {
+          this.licenseName = LList[this.manifest.license].name;
+          this.licenseLink = LList[this.manifest.license].link;
+          this.licenseImage = LList[this.manifest.license].image;
+        }
+      });
     }));
 
     // gets current and total page count
     this.__disposer.push(autorun((reaction) => {
-      const counter = toJS(store.pageCounter);
-      this.pageCurrent = counter.current;
-      this.pageTotal = counter.total;
+      const _mobx_val_0 = toJS(store.pageCounter);
+      Promise.resolve().then(() => {
+        const counter = _mobx_val_0;
+        this.pageCurrent = counter.current;
+        this.pageTotal = counter.total;
+      });
     }));
   }
 

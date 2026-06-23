@@ -27,14 +27,20 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     // get csite description
     this.__disposer.push(
       autorun((reaction) => {
-        this.siteDescription =
-          toJS(store.siteDescription) ||
-          "A portfolio showcasing my work and projects.";
+        const _mobx_val_0 = toJS(store.siteDescription);
+        Promise.resolve().then(() => {
+          this.siteDescription =
+            _mobx_val_0 ||
+            "A portfolio showcasing my work and projects.";
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.backgroundImage = toJS(store.themeData.variables.image);
+        const _mobx_val_0 = toJS(store.themeData.variables.image);
+        Promise.resolve().then(() => {
+          this.backgroundImage = _mobx_val_0;
+        });
       }),
     );
   }

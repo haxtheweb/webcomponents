@@ -9,21 +9,27 @@ const HAXCMSThemeParts = function (SuperClass) {
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.__disposer.push(
         autorun((reaction) => {
-          const editMode = toJS(store.editMode);
-          if (this.editMode !== editMode) {
-            this.editMode = editMode;
-          }
+          const _mobx_val_0 = toJS(store.editMode);
+          Promise.resolve().then(() => {
+            const editMode = _mobx_val_0;
+            if (this.editMode !== editMode) {
+              this.editMode = editMode;
+            }
+          });
         }),
       );
       this.__disposer.push(
         autorun((reaction) => {
-          const darkMode = toJS(store.darkMode);
-          if (this.darkMode !== darkMode) {
-            this.darkMode = darkMode;
-          }
-          if (this.dark !== darkMode) {
-            this.dark = darkMode; // alignment w/ simple colors for reactive content!
-          }
+          const _mobx_val_0 = toJS(store.darkMode);
+          Promise.resolve().then(() => {
+            const darkMode = _mobx_val_0;
+            if (this.darkMode !== darkMode) {
+              this.darkMode = darkMode;
+            }
+            if (this.dark !== darkMode) {
+              this.dark = darkMode; // alignment w/ simple colors for reactive content!
+            }
+          });
         }),
       );
     }

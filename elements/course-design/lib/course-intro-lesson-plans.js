@@ -15,9 +15,12 @@ class CourseIntroLessonPlans extends DDD {
     super();
     this.items = [];
     autorun(() => {
-      if (store.routerManifest && store.routerManifest.items) {
-        this._itemsChanged(toJS(store.routerManifest.items));
-      }
+      const _mobx_val_0 = toJS(store.routerManifest.items);
+      Promise.resolve().then(() => {
+        if (store.routerManifest && store.routerManifest.items) {
+          this._itemsChanged(_mobx_val_0);
+        }
+      });
     });
   }
   _itemsChanged(items) {

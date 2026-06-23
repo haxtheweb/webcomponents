@@ -27,13 +27,19 @@ class ChatSuggestion extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.messageIndex = toJS(ChatStore.messageIndex);
+        const _mobx_val_0 = toJS(ChatStore.messageIndex);
+        Promise.resolve().then(() => {
+          this.messageIndex = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.userIndex = toJS(ChatStore.userIndex);
+        const _mobx_val_0 = toJS(ChatStore.userIndex);
+        Promise.resolve().then(() => {
+          this.userIndex = _mobx_val_0;
+        });
       }),
     );
   }

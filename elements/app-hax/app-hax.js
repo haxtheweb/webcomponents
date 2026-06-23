@@ -516,21 +516,30 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.windowControllers = new AbortController();
     // manage title when activeItem changes
     autorun(() => {
-      const item = toJS(store.activeItem);
-      if (item && item.title) {
-        store.setPageTitle(item.title);
-      }
+      const _mobx_val_0 = toJS(store.activeItem);
+      Promise.resolve().then(() => {
+        const item = _mobx_val_0;
+        if (item && item.title) {
+          store.setPageTitle(item.title);
+        }
+      });
     });
     autorun(() => {
-      this.siteReady = toJS(store.siteReady);
+      const _mobx_val_0 = toJS(store.siteReady);
+      Promise.resolve().then(() => {
+        this.siteReady = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const badDevice = toJS(store.badDevice);
-      if (badDevice === false) {
-        import("@haxtheweb/rpg-character/rpg-character.js");
-      } else if (badDevice === true) {
-        globalThis.document.body.classList.add("bad-device");
-      }
+      const _mobx_val_0 = toJS(store.badDevice);
+      Promise.resolve().then(() => {
+        const badDevice = _mobx_val_0;
+        if (badDevice === false) {
+          import("@haxtheweb/rpg-character/rpg-character.js");
+        } else if (badDevice === true) {
+          globalThis.document.body.classList.add("bad-device");
+        }
+      });
     });
     this.userMenuOpen = false;
     this.hasHeaderPre = false;
@@ -582,31 +591,48 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.sound = new Audio();
     // @todo need this from app deploy itself
     autorun(() => {
-      this.isNewUser = toJS(store.isNewUser);
-      if (
-        this.isNewUser &&
-        toJS(store.appMode) !== "create" &&
-        toJS(store.appMode) !== "404"
-      ) {
-        store.appMode = "create";
-        setTimeout(() => {
-          store.createSiteSteps = true;
-        }, 0);
-      }
+      const _mobx_val_0 = toJS(store.isNewUser);
+      const _mobx_val_1 = toJS(store.appMode);
+      const _mobx_val_2 = toJS(store.appMode);
+      Promise.resolve().then(() => {
+        this.isNewUser = _mobx_val_0;
+        if (
+          this.isNewUser &&
+          _mobx_val_1 !== "create" &&
+          _mobx_val_2 !== "404"
+        ) {
+          store.appMode = "create";
+          setTimeout(() => {
+            store.createSiteSteps = true;
+          }, 0);
+        }
+      });
     });
     autorun(() => {
-      this.userName = toJS(store.user.name);
+      const _mobx_val_0 = toJS(store.user.name);
+      Promise.resolve().then(() => {
+        this.userName = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.appMode = toJS(store.appMode);
+      const _mobx_val_0 = toJS(store.appMode);
+      Promise.resolve().then(() => {
+        this.appMode = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.searchTerm = toJS(store.searchTerm);
+      const _mobx_val_0 = toJS(store.searchTerm);
+      Promise.resolve().then(() => {
+        this.searchTerm = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const appSettings = toJS(store.appSettings);
-      this.isHAXiamDeployment = this._isHAXiamDeployment(appSettings);
-      this._syncSystemSettingsMerlinContext(appSettings);
+      const _mobx_val_0 = toJS(store.appSettings);
+      Promise.resolve().then(() => {
+        const appSettings = _mobx_val_0;
+        this.isHAXiamDeployment = this._isHAXiamDeployment(appSettings);
+        this._syncSystemSettingsMerlinContext(appSettings);
+      });
     });
 
     /**
@@ -654,9 +680,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
 
     autorun(() => {
-      if (store.routes.length > 0 && store.location === null) {
-        store.location = toJS(store.routes[0]);
-      }
+      const _mobx_val_0 = toJS(store.routes[0]);
+      Promise.resolve().then(() => {
+        if (store.routes.length > 0 && store.location === null) {
+          store.location = _mobx_val_0;
+        }
+      });
     });
     // manage dark mode
     // only set this initially if we don't have an app state of our own
@@ -666,32 +695,39 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ).matches;
     }
     autorun(() => {
-      localStorageSet("app-hax-darkMode", toJS(store.darkMode));
-      requestAnimationFrame(() => {
-        if (toJS(store.darkMode)) {
-          globalThis.document.body.classList.add("dark-mode");
-          store.toast("I'm ascared of the dark", 2000, { fire: true });
-          this.dark = true;
-          SuperDaemonInstance.dark = true;
-          SuperDaemonInstance.toastInstance.darkMode = true;
-        } else {
-          globalThis.document.body.classList.remove("dark-mode");
-          store.toast("Sunny day it is", 2000, { hat: "random" });
-          this.dark = false;
-          SuperDaemonInstance.dark = false;
-          SuperDaemonInstance.toastInstance.darkMode = false;
-        }
+      const _mobx_val_0 = toJS(store.darkMode);
+      const _mobx_val_1 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        localStorageSet("app-hax-darkMode", _mobx_val_0);
+        requestAnimationFrame(() => {
+          if (_mobx_val_1) {
+            globalThis.document.body.classList.add("dark-mode");
+            store.toast("I'm ascared of the dark", 2000, { fire: true });
+            this.dark = true;
+            SuperDaemonInstance.dark = true;
+            SuperDaemonInstance.toastInstance.darkMode = true;
+          } else {
+            globalThis.document.body.classList.remove("dark-mode");
+            store.toast("Sunny day it is", 2000, { hat: "random" });
+            this.dark = false;
+            SuperDaemonInstance.dark = false;
+            SuperDaemonInstance.toastInstance.darkMode = false;
+          }
+        });
       });
     });
     autorun(() => {
-      const mode = toJS(store.appMode);
-      if (mode) {
-        globalThis.document.body.classList.remove("app-hax-search");
-        globalThis.document.body.classList.remove("app-hax-create");
-        globalThis.document.body.classList.remove("app-hax-404");
-        globalThis.document.body.classList.remove("app-hax-home");
-        globalThis.document.body.classList.add(`app-hax-${mode}`);
-      }
+      const _mobx_val_0 = toJS(store.appMode);
+      Promise.resolve().then(() => {
+        const mode = _mobx_val_0;
+        if (mode) {
+          globalThis.document.body.classList.remove("app-hax-search");
+          globalThis.document.body.classList.remove("app-hax-create");
+          globalThis.document.body.classList.remove("app-hax-404");
+          globalThis.document.body.classList.remove("app-hax-home");
+          globalThis.document.body.classList.add(`app-hax-${mode}`);
+        }
+      });
     });
   }
 
@@ -1513,27 +1549,37 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     );
     store.appReady = true;
     autorun(() => {
-      if (toJS(store.appReady)) {
-        globalThis.document.body.classList.add("app-loaded");
-      } else {
-        globalThis.document.body.classList.remove("app-loaded");
-      }
+      const _mobx_val_0 = toJS(store.appReady);
+      Promise.resolve().then(() => {
+        if (_mobx_val_0) {
+          globalThis.document.body.classList.add("app-loaded");
+        } else {
+          globalThis.document.body.classList.remove("app-loaded");
+        }
+      });
     });
     store.appEl = this;
     autorun(() => {
-      if (store.activeItem) {
-        this.activeItem = toJS(store.activeItem);
-      }
+      const _mobx_val_0 = toJS(store.activeItem);
+      Promise.resolve().then(() => {
+        if (store.activeItem) {
+          this.activeItem = _mobx_val_0;
+        }
+      });
     });
     autorun(() => {
-      this.soundIcon = toJS(store.soundStatus)
-        ? new URL("./lib/assets/images/FullVolume.svg", import.meta.url).href
-        : new URL("./lib/assets/images/Silence.svg", import.meta.url).href;
-      if (!toJS(store.soundStatus)) {
-        store.toast("Sound off.. hey! HELLO!?!", 2000, { fire: true });
-      } else {
-        store.toast("You can hear me now? Good.", 2000, { hat: "random" });
-      }
+      const _mobx_val_0 = toJS(store.soundStatus);
+      const _mobx_val_1 = toJS(store.soundStatus);
+      Promise.resolve().then(() => {
+        this.soundIcon = _mobx_val_0
+          ? new URL("./lib/assets/images/FullVolume.svg", import.meta.url).href
+          : new URL("./lib/assets/images/Silence.svg", import.meta.url).href;
+        if (!_mobx_val_1) {
+          store.toast("Sound off.. hey! HELLO!?!", 2000, { fire: true });
+        } else {
+          store.toast("You can hear me now? Good.", 2000, { hat: "random" });
+        }
+      });
     });
 
     // App is ready and the user is Logged in

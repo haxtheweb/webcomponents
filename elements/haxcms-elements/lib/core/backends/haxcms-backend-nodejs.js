@@ -84,7 +84,10 @@ class HAXCMSBackendNodeJS extends LitElement {
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
-        this.jwt = toJS(store.jwt);
+        const _mobx_val_0 = toJS(store.jwt);
+        Promise.resolve().then(() => {
+          this.jwt = _mobx_val_0;
+        });
       }),
     );
   }

@@ -81,8 +81,8 @@ class MapMenuSubmenu extends LitElement {
         a11y-collapse::part(icon) {
           position: var(--a11y-collapse-icon-position, absolute);
           margin-left: 4px;
-          --simple-icon-height: 18px;
-          --simple-icon-width: 18px;
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
         }
         :host(:not([icon=""])) a11y-collapse::part(icon) {
           visibility: none;

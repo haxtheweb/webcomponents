@@ -14,10 +14,16 @@ export class AppHaxHatProgress extends SimpleColors {
     this.promises = [];
     this.max = 100;
     autorun(() => {
-      this.promises = toJS(store.newSitePromiseList);
+      const _mobx_val_0 = toJS(store.newSitePromiseList);
+      Promise.resolve().then(() => {
+        this.promises = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.dark = toJS(store.darkMode);
+      const _mobx_val_0 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.dark = _mobx_val_0;
+      });
     });
   }
 

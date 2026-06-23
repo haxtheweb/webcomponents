@@ -155,9 +155,14 @@ export const SimpleIconBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "icon") {
           if (this[propName]) {
-            this.setSrcByIcon(this);
+            // defer src lookup to avoid scheduling an update during the current cycle
+            Promise.resolve().then(() => {
+              this.setSrcByIcon(this);
+            });
           } else {
-            this.src = null;
+            Promise.resolve().then(() => {
+              this.src = null;
+            });
           }
         }
         if (propName === "src") {

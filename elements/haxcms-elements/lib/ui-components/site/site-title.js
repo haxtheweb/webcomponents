@@ -74,17 +74,26 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
     this.notitle = false;
     this.__disposer.push(
       autorun((reaction) => {
-        this.siteTitle = toJS(store.siteTitle);
+        const _mobx_val_0 = toJS(store.siteTitle);
+        Promise.resolve().then(() => {
+          this.siteTitle = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.homeLink = toJS(store.homeLink);
+        const _mobx_val_0 = toJS(store.homeLink);
+        Promise.resolve().then(() => {
+          this.homeLink = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
   }

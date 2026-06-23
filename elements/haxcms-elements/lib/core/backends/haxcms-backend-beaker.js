@@ -60,7 +60,10 @@ class HAXCMSBackendBeaker extends LitElement {
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
       autorun((reaction) => {
-        this.jwt = toJS(store.jwt);
+        const _mobx_val_0 = toJS(store.jwt);
+        Promise.resolve().then(() => {
+          this.jwt = _mobx_val_0;
+        });
       }),
     );
     globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
@@ -298,6 +301,11 @@ class HAXCMSBackendBeaker extends LitElement {
       Object.prototype.hasOwnProperty.call(detail, "authorName") ||
       Object.prototype.hasOwnProperty.call(detail, "authorEmail") ||
       Object.prototype.hasOwnProperty.call(detail, "authorSocialLink") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorSocialLink2") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorPhone") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorLocation") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorWebsite") ||
+      Object.prototype.hasOwnProperty.call(detail, "authorWebsite2") ||
       Object.prototype.hasOwnProperty.call(detail, "pathauto") ||
       Object.prototype.hasOwnProperty.call(detail, "publishPagesOn") ||
       (detail.seo && typeof detail.seo === "object") ||
@@ -478,6 +486,71 @@ class HAXCMSBackendBeaker extends LitElement {
     } else if (hasOwn(manifestAuthor, "manifest.metadata.author.socialLink")) {
       this.manifest.metadata.author.socialLink = String(
         manifestAuthor["manifest.metadata.author.socialLink"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorSocialLink2")) {
+      this.manifest.metadata.author.socialLink2 = String(
+        detail.authorSocialLink2 || "",
+      );
+    } else if (hasOwn(author, "socialLink2")) {
+      this.manifest.metadata.author.socialLink2 = String(
+        author.socialLink2 || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.socialLink2")) {
+      this.manifest.metadata.author.socialLink2 = String(
+        manifestAuthor["manifest.metadata.author.socialLink2"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorPhone")) {
+      this.manifest.metadata.author.phone = String(
+        detail.authorPhone || "",
+      );
+    } else if (hasOwn(author, "phone")) {
+      this.manifest.metadata.author.phone = String(
+        author.phone || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.phone")) {
+      this.manifest.metadata.author.phone = String(
+        manifestAuthor["manifest.metadata.author.phone"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorLocation")) {
+      this.manifest.metadata.author.location = String(
+        detail.authorLocation || "",
+      );
+    } else if (hasOwn(author, "location")) {
+      this.manifest.metadata.author.location = String(
+        author.location || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.location")) {
+      this.manifest.metadata.author.location = String(
+        manifestAuthor["manifest.metadata.author.location"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorWebsite")) {
+      this.manifest.metadata.author.website = String(
+        detail.authorWebsite || "",
+      );
+    } else if (hasOwn(author, "website")) {
+      this.manifest.metadata.author.website = String(
+        author.website || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.website")) {
+      this.manifest.metadata.author.website = String(
+        manifestAuthor["manifest.metadata.author.website"] || "",
+      );
+    }
+    if (hasOwn(detail, "authorWebsite2")) {
+      this.manifest.metadata.author.website2 = String(
+        detail.authorWebsite2 || "",
+      );
+    } else if (hasOwn(author, "website2")) {
+      this.manifest.metadata.author.website2 = String(
+        author.website2 || "",
+      );
+    } else if (hasOwn(manifestAuthor, "manifest.metadata.author.website2")) {
+      this.manifest.metadata.author.website2 = String(
+        manifestAuthor["manifest.metadata.author.website2"] || "",
       );
     }
     if (hasOwn(detail, "description")) {

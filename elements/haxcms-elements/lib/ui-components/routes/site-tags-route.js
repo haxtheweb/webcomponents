@@ -64,8 +64,11 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun((reaction) => {
-        const theme = toJS(store.themeElement);
-        this._processCustomThemeRoutes();
+        const _mobx_val_0 = toJS(store.themeElement);
+        Promise.resolve().then(() => {
+          const theme = _mobx_val_0;
+          this._processCustomThemeRoutes();
+        });
       }),
     );
     window.addEventListener(

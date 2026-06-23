@@ -34,9 +34,12 @@ class HaxAppSearch extends LitElement {
     this.media = [];
     this.resultMap = {};
     autorun(() => {
-      if (HAXStore.editMode) {
-        this.activeApp = toJS(HAXStore.activeApp);
-      }
+      const _mobx_val_0 = toJS(HAXStore.activeApp);
+      Promise.resolve().then(() => {
+        if (HAXStore.editMode) {
+          this.activeApp = _mobx_val_0;
+        }
+      });
     });
     HAXStore.appSearch = this;
   }

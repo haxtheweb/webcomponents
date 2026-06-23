@@ -23,19 +23,22 @@ class CourseIntroHeader extends DDD {
     this.backgroundImage = "";
     this.color = "";
     autorun(() => {
-      const manifest = toJS(store.manifest);
-      if (
-        manifest &&
-        manifest.metadata &&
-        manifest.metadata.theme &&
-        manifest.metadata.theme.variables
-      ) {
-        this.title = manifest.title;
-        this.description = manifest.description;
-        this.icon = manifest.metadata.theme.variables.icon;
-        this.backgroundImage = `url('${manifest.metadata.theme.variables.image}')`;
-        this.color = manifest.metadata.theme.variables.hexCode;
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        const manifest = _mobx_val_0;
+        if (
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.theme &&
+          manifest.metadata.theme.variables
+        ) {
+          this.title = manifest.title;
+          this.description = manifest.description;
+          this.icon = manifest.metadata.theme.variables.icon;
+          this.backgroundImage = `url('${manifest.metadata.theme.variables.image}')`;
+          this.color = manifest.metadata.theme.variables.hexCode;
+        }
+      });
     });
   }
 

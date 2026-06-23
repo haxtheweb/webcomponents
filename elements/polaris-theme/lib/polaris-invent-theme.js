@@ -776,34 +776,46 @@ class PolarisInventTheme extends LTIResizingMixin(
 
     this.__disposer.push(
       autorun((reaction) => {
-        if (store.themeData && store.themeData.variables) {
-          const vars = toJS(store.themeData.variables);
-          this.imageAlt = vars.imageAlt;
-          this.image = vars.image;
-          this.imageLink = vars.imageLink;
-        }
+        const _mobx_val_0 = toJS(store.themeData.variables);
+        Promise.resolve().then(() => {
+          if (store.themeData && store.themeData.variables) {
+            const vars = _mobx_val_0;
+            this.imageAlt = vars.imageAlt;
+            this.image = vars.image;
+            this.imageLink = vars.imageLink;
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.siteDescription = toJS(store.siteDescription);
+        const _mobx_val_0 = toJS(store.siteDescription);
+        Promise.resolve().then(() => {
+          this.siteDescription = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun((reaction) => {
-        if (
-          store.activeItem &&
-          store.activeItem.metadata &&
-          store.activeItem.metadata.updated
-        ) {
-          this.pageTimestamp = toJS(store.activeItem.metadata.updated);
-        }
+        const _mobx_val_0 = toJS(store.activeItem.metadata.updated);
+        Promise.resolve().then(() => {
+          if (
+            store.activeItem &&
+            store.activeItem.metadata &&
+            store.activeItem.metadata.updated
+          ) {
+            this.pageTimestamp = _mobx_val_0;
+          }
+        });
       }),
     );
   }

@@ -244,34 +244,38 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.isLoggedIn = store.isLoggedIn;
+        Promise.resolve().then(() => {
+          this.isLoggedIn = store.isLoggedIn;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        let search = new URLSearchParams(store.currentRouterLocation.search);
-        const params = Object.fromEntries(search);
-        if (this.shadowRoot) {
-          this.shadowRoot.querySelector("#schema").fields = loadViewsForm();
-          setTimeout(() => {
-            this.shadowRoot.querySelector("#schema").value = {
-              settings: {
-                displayFormat: {
-                  displayedAs: params.display || "list",
-                  displayOf: params.displayOf || "title",
+        Promise.resolve().then(() => {
+          let search = new URLSearchParams(store.currentRouterLocation.search);
+          const params = Object.fromEntries(search);
+          if (this.shadowRoot) {
+            this.shadowRoot.querySelector("#schema").fields = loadViewsForm();
+            setTimeout(() => {
+              this.shadowRoot.querySelector("#schema").value = {
+                settings: {
+                  displayFormat: {
+                    displayedAs: params.display || "list",
+                    displayOf: params.displayOf || "title",
+                  },
+                  filters: {
+                    title: params.title || "",
+                    parent: params.parent || "",
+                    tags: params.tags || "",
+                    blockFilter: params.blockFilter || "",
+                  },
                 },
-                filters: {
-                  title: params.title || "",
-                  parent: params.parent || "",
-                  tags: params.tags || "",
-                  blockFilter: params.blockFilter || "",
-                },
-              },
-            };
-          }, 0);
-        } else {
-          this.params = params;
-        }
+              };
+            }, 0);
+          } else {
+            this.params = params;
+          }
+        });
       }),
     );
   }

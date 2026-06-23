@@ -27,22 +27,29 @@ export class AppHaxRouter extends HTMLElement {
     this.windowControllers = new AbortController();
     this.router = new Router(this, options);
     autorun(() => {
-      this._updateRouter(toJS(store.routes));
+      const _mobx_val_0 = toJS(store.routes);
+      Promise.resolve().then(() => {
+        this._updateRouter(_mobx_val_0);
+      });
     });
     autorun(() => {
-      const manifest = toJS(store.manifest);
-      const baseURI = toJS(store.AppHaxAPI.basePath);
-      if (manifest && manifest.items && manifest.items.length > 0) {
-        const siteItemRoutes = manifest.items.map((i) => {
-          return {
-            path: i.slug.replace(baseURI, ""), // replacement of the basePath ensures routes match in haxiam / subdirs
-            slug: i.slug,
-            name: i.id,
-            component: `fake-${i.id}-e`,
-          };
-        });
-        store.routes = [...siteItemRoutes].concat(store.baseRoutes);
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      const _mobx_val_1 = toJS(store.AppHaxAPI.basePath);
+      Promise.resolve().then(() => {
+        const manifest = _mobx_val_0;
+        const baseURI = _mobx_val_1;
+        if (manifest && manifest.items && manifest.items.length > 0) {
+          const siteItemRoutes = manifest.items.map((i) => {
+            return {
+              path: i.slug.replace(baseURI, ""), // replacement of the basePath ensures routes match in haxiam / subdirs
+              slug: i.slug,
+              name: i.id,
+              component: `fake-${i.id}-e`,
+            };
+          });
+          store.routes = [...siteItemRoutes].concat(store.baseRoutes);
+        }
+      });
     });
   }
 

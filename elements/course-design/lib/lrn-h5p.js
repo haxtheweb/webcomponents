@@ -13,7 +13,10 @@ export class LrnH5p extends LitElement {
     super();
     this._editing = false;
     this._disposer = autorun(() => {
-      this._editing = toJS(store.editMode);
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        this._editing = _mobx_val_0;
+      });
     });
     // remove script tags and work against light dom if there
     if (this.querySelector("span")) {

@@ -303,14 +303,16 @@ class MapMenuItem extends I18NMixin(LitElement) {
   }
   __selectedChanged(selected, id) {
     if (selected === id) {
-      this.dispatchEvent(
-        new CustomEvent("active-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        }),
-      );
+      Promise.resolve().then(() => {
+        this.dispatchEvent(
+          new CustomEvent("active-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this,
+          }),
+        );
+      });
     }
   }
 

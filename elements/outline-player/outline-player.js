@@ -470,7 +470,10 @@ class OutlinePlayer extends LTIResizingMixin(
 
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
+        const _mobx_val_0 = toJS(store.activeId);
+        Promise.resolve().then(() => {
+          this.activeId = _mobx_val_0;
+        });
       }),
     );
   }

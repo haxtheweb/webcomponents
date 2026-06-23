@@ -25,19 +25,28 @@ export class AppHaxSearchResults extends SimpleColors {
     // Default carousel order: sites most recently updated first
     this.sortOption = "newest";
     autorun(() => {
-      this.searchTerm = toJS(store.searchTerm);
+      const _mobx_val_0 = toJS(store.searchTerm);
+      Promise.resolve().then(() => {
+        this.searchTerm = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.dark = toJS(store.darkMode);
+      const _mobx_val_0 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.dark = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const manifest = toJS(store.manifest);
-      if (manifest && manifest.items) {
-        this.searchItems = manifest.items;
-        this.displayItems = [...this.searchItems];
-        // Ensure themes data is loaded for thumbnails
-        store.loadThemesData();
-      }
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        const manifest = _mobx_val_0;
+        if (manifest && manifest.items) {
+          this.searchItems = manifest.items;
+          this.displayItems = [...this.searchItems];
+          // Ensure themes data is loaded for thumbnails
+          store.loadThemesData();
+        }
+      });
     });
   }
 

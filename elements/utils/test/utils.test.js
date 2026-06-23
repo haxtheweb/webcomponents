@@ -23,6 +23,7 @@ import {
   sanitizeHTMLForImport,
   isURLAttribute,
   sanitizeURLValue,
+  normalizeClipboardHTML,
 } from "../utils.js";
 
 describe("Utils test", () => {
@@ -809,6 +810,140 @@ describe("Utils test", () => {
 
       expect(blob.size).to.be.greaterThan(10000);
       expect(end - start).to.be.lessThan(1000);
+    });
+  });
+
+  // Clipboard normalization tests
+  describe("Clipboard Normalization", () => {
+    describe("Notion inputs", () => {
+      it("preserves links wrapped in Notion spans", async () => {
+        const input = '<span>Some text with a </span><span><a href="https://example.com">link</a></span><span> and more</span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<a href="https://example.com">link</a>');
+        expect(result).to.not.include('<span>');
+      });
+
+      it("handles Notion nested spans with links", async () => {
+        const input = '<span><span><a href="https://notion.so">Notion link</a></span></span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<a href="https://notion.so">Notion link</a>');
+        expect(result).to.not.include('<span>');
+      });
+
+      it("handles plain text mixed with linked text from Notion", async () => {
+        const input = '<span>Before </span><span><a href="https://hax.psu.edu">HAX</a></span><span> after</span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('Before ');
+        expect(result).to.include('<a href="https://hax.psu.edu">HAX</a>');
+        expect(result).to.include(' after');
+        expect(result).to.not.include('<span>');
+      });
+    });
+
+    describe("Google Docs inputs", () => {
+      it("unwraps fake GDocs bold tags but preserves real bold as strong", async () => {
+        const input = '<b style="font-weight:700">Real bold</b><b>Not bold</b>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<strong>Real bold</strong>');
+        expect(result).to.include('Not bold');
+        expect(result).to.not.include('<b>');
+      });
+
+      it("converts GDocs font-weight spans to strong", async () => {
+        const input = '<span style="font-weight:700">Bold span</span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<strong>Bold span</strong>');
+        expect(result).to.not.include('<span');
+      });
+
+      it("unwraps paragraphs inside list items from GDocs", async () => {
+        const input = '<ul><li><p style="margin:0">Item 1</p></li><li><p>Item 2</p></li></ul>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<li>Item 1</li>');
+        expect(result).to.include('<li>Item 2</li>');
+        expect(result).to.not.include('<p');
+      });
+
+      it("removes GDocs role=\"text\" attributes", async () => {
+        const input = '<span role="text">Some text</span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('Some text');
+        expect(result).to.not.include('role=');
+      });
+
+      it("removes GDocs generated class names", async () => {
+        const input = '<p class="c0 c1">Text</p><span class="c2">More</span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('Text');
+        expect(result).to.include('More');
+        expect(result).to.not.include('class=');
+      });
+
+      it("preserves non-GDocs class names", async () => {
+        const input = '<p class="hax-active">Text</p>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('class="hax-active"');
+      });
+    });
+
+    describe("Edge cases", () => {
+      it("returns empty string for empty input", async () => {
+        expect(normalizeClipboardHTML('')).to.equal('');
+      });
+
+      it("returns null/undefined as-is", async () => {
+        expect(normalizeClipboardHTML(null)).to.equal(null);
+        expect(normalizeClipboardHTML(undefined)).to.equal(undefined);
+      });
+
+      it("handles deeply nested spans", async () => {
+        const input = '<span><span><span>Deep</span></span></span>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('Deep');
+        expect(result).to.not.include('<span>');
+      });
+
+      it("handles mixed content with links and bold", async () => {
+        const input = '<span><a href="https://example.com">link</a></span><b style="font-weight:700">bold</b>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<a href="https://example.com">link</a>');
+        expect(result).to.include('<strong>bold</strong>');
+        expect(result).to.not.include('<span>');
+      });
+
+      it("handles complex GDocs list with bold and links", async () => {
+        const input = '<ul><li><p class="c0"><b style="font-weight:700">Bold</b> and <a href="https://example.com">link</a></p></li></ul>';
+        const result = normalizeClipboardHTML(input);
+
+        expect(result).to.include('<strong>Bold</strong>');
+        expect(result).to.include('<a href="https://example.com">link</a>');
+        expect(result).to.include('<li>');
+        expect(result).to.not.include('<p');
+        expect(result).to.not.include('<b>');
+      });
+    });
+
+    describe("stripMSWord integration", () => {
+      it("stripMSWord handles <p> with attributes inside <li>", async () => {
+        // Test the regex improvement directly by checking stripMSWord output
+        const { stripMSWord } = await import('../utils.js');
+        const input = '<li><p style="margin:0">Item</p></li>';
+        const result = stripMSWord(input);
+
+        expect(result).to.include('<li>Item</li>');
+        expect(result).to.not.include('<p');
+      });
     });
   });
 });

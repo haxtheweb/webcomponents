@@ -140,39 +140,54 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       this._processTrayEvent.bind(this),
     );
     autorun(() => {
-      this.activeGizmo = toJS(HAXStore.activeGizmo);
+      const _mobx_val_0 = toJS(HAXStore.activeGizmo);
+      Promise.resolve().then(() => {
+        this.activeGizmo = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
+      const _mobx_val_0 = toJS(HAXStore.activeNode);
+      Promise.resolve().then(() => {
+        this.activeNode = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.elementAlign = toJS(HAXStore.elementAlign);
-      if (globalThis.document && globalThis.document.body) {
-        if (this.elementAlign === "left") {
-          globalThis.document.body.style.setProperty(
-            "--hax-tray-element-align-margin",
-            `0 0 0 var(--hax-tray-element-custom-width, calc(
-            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          ))`,
-          );
-        } else {
-          globalThis.document.body.style.setProperty(
-            "--hax-tray-element-align-margin",
-            `0 var(--hax-tray-element-custom-width, calc(
-            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          )) 0 0`,
-          );
+      const _mobx_val_0 = toJS(HAXStore.elementAlign);
+      Promise.resolve().then(() => {
+        this.elementAlign = _mobx_val_0;
+        if (globalThis.document && globalThis.document.body) {
+          if (this.elementAlign === "left") {
+            globalThis.document.body.style.setProperty(
+              "--hax-tray-element-align-margin",
+              `0 0 0 var(--hax-tray-element-custom-width, calc(
+              var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+            ))`,
+            );
+          } else {
+            globalThis.document.body.style.setProperty(
+              "--hax-tray-element-align-margin",
+              `0 var(--hax-tray-element-custom-width, calc(
+              var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+            )) 0 0`,
+            );
+          }
         }
-      }
+      });
     });
     autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
-      this.dark = this.haxUiTheme === "haxdark";
-      globalThis.document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
+      const _mobx_val_0 = toJS(HAXStore.globalPreferences);
+      Promise.resolve().then(() => {
+        this.globalPreferences = _mobx_val_0;
+        this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+        this.dark = this.haxUiTheme === "haxdark";
+        globalThis.document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
+      });
     });
     autorun(() => {
-      this.editMode = toJS(HAXStore.editMode);
+      const _mobx_val_0 = toJS(HAXStore.editMode);
+      Promise.resolve().then(() => {
+        this.editMode = _mobx_val_0;
+      });
     });
   }
   _expandSettingsPanel(e) {

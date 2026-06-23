@@ -25,33 +25,49 @@ class ChatInput extends DDD {
 
     this.__disposer.push(
       autorun(() => {
-        this.chatLog = toJS(ChatStore.chatLog);
+        const _mobx_val_0 = toJS(ChatStore.chatLog);
+        Promise.resolve().then(() => {
+          this.chatLog = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.darkMode = toJS(ChatStore.darkMode);
+        const _mobx_val_0 = toJS(ChatStore.darkMode);
+        Promise.resolve().then(() => {
+          this.darkMode = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        // ! these two need to run together to prevent bugs
-        this.messageIndex = toJS(ChatStore.messageIndex);
-        this.previousMessagesIndex = toJS(this.messageIndex);
+        const _mobx_val_0 = toJS(ChatStore.messageIndex);
+        const _mobx_val_1 = toJS(this.messageIndex);
+        Promise.resolve().then(() => {
+          // ! these two need to run together to prevent bugs
+          this.messageIndex = _mobx_val_0;
+          this.previousMessagesIndex = _mobx_val_1;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.userIndex = toJS(ChatStore.userIndex);
+        const _mobx_val_0 = toJS(ChatStore.userIndex);
+        Promise.resolve().then(() => {
+          this.userIndex = _mobx_val_0;
+        });
       }),
     );
 
     this.__disposer.push(
       autorun(() => {
-        this.userName = toJS(ChatStore.userName);
+        const _mobx_val_0 = toJS(ChatStore.userName);
+        Promise.resolve().then(() => {
+          this.userName = _mobx_val_0;
+        });
       }),
     );
   }

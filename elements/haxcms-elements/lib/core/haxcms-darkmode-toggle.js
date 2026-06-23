@@ -6,12 +6,15 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
   constructor() {
     super();
     autorun(() => {
-      this.checked = toJS(store.darkMode);
-      if (globalThis.matchMedia("(prefers-color-scheme: dark)").matches) {
-        this.disabled = true;
-      } else {
-        this.disabled = false;
-      }
+      const _mobx_val_0 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.checked = _mobx_val_0;
+        if (globalThis.matchMedia("(prefers-color-scheme: dark)").matches) {
+          this.disabled = true;
+        } else {
+          this.disabled = false;
+        }
+      });
     });
   }
 

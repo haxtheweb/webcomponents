@@ -29,17 +29,20 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       this.colorTheme = localStorageGet("haxcms-userPref-colorTheme", 0);
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
       autorun(() => {
-        const dark = toJS(store.darkMode);
-        let local = localStorageGet("haxcms-userPref-colorTheme", 0);
-        if (dark) {
-          this.colorTheme = 2;
-        } else {
-          if (local === 2) {
-            this.colorTheme = 0;
+        const _mobx_val_0 = toJS(store.darkMode);
+        Promise.resolve().then(() => {
+          const dark = _mobx_val_0;
+          let local = localStorageGet("haxcms-userPref-colorTheme", 0);
+          if (dark) {
+            this.colorTheme = 2;
           } else {
-            this.colorTheme = local;
+            if (local === 2) {
+              this.colorTheme = 0;
+            } else {
+              this.colorTheme = local;
+            }
           }
-        }
+        });
       });
     }
     static get styles() {

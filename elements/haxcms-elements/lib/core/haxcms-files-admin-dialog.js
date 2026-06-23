@@ -164,16 +164,22 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.addEventListener("hax-file-action", this.__boundFileAction);
     this.__disposer.push(
       autorun(() => {
-        const m = toJS(store.manifest);
-        if (m && m.metadata && m.metadata.site && m.metadata.site.name) {
-          this.siteName = m.metadata.site.name;
-        }
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          const m = _mobx_val_0;
+          if (m && m.metadata && m.metadata.site && m.metadata.site.name) {
+            this.siteName = m.metadata.site.name;
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun(() => {
-        const ai = toJS(store.activeItem);
-        if (ai && ai.id) { this.nodeId = ai.id; }
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          const ai = _mobx_val_0;
+          if (ai && ai.id) { this.nodeId = ai.id; }
+        });
       }),
     );
     // JWT is handled by MicroFrontendRegistry via Authorization header; no body injection needed

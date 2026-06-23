@@ -50,17 +50,20 @@ export class SiteSearchRoute extends HAXCMSI18NMixin(DDD) {
     this.__disposer = [];
     this.__disposer.push(
       autorun(() => {
-        const currentLocation = toJS(store.currentRouterLocation);
-        let locationSearch = globalThis.location.search;
-        if (
-          currentLocation &&
-          typeof currentLocation.search === "string" &&
-          currentLocation.search !== ""
-        ) {
-          locationSearch = currentLocation.search;
-        }
-        const params = new URLSearchParams(locationSearch);
-        this.search = params.get("search") || "";
+        const _mobx_val_0 = toJS(store.currentRouterLocation);
+        Promise.resolve().then(() => {
+          const currentLocation = _mobx_val_0;
+          let locationSearch = globalThis.location.search;
+          if (
+            currentLocation &&
+            typeof currentLocation.search === "string" &&
+            currentLocation.search !== ""
+          ) {
+            locationSearch = currentLocation.search;
+          }
+          const params = new URLSearchParams(locationSearch);
+          this.search = params.get("search") || "";
+        });
       }),
     );
   }

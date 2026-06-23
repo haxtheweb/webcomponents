@@ -79,39 +79,55 @@ class ChatAgentStore {
     });
 
     autorun(() => {
-      const buttonIcon = toJS(this.buttonIcon);
-      const chatLog = toJS(this.chatLog);
-      const context = toJS(this.context);
-      const darkMode = toJS(store.darkMode);
-      const dataCollectionEnabled = toJS(this.dataCollectionEnabled);
-      const developerModeEnabled = toJS(this.developerModeEnabled);
-      const editMode = toJS(store.editMode);
-      const engine = toJS(this.engine);
-      const isFullView = toJS(this.isFullView);
-      const isInterfaceHidden = toJS(this.isInterfaceHidden);
-      const isLoading = toJS(this.isLoading);
-      const merlinIndex = toJS(this.merlinIndex);
-      const messageIndex = toJS(this.messageIndex);
-      const userIndex = toJS(this.userIndex);
+      const _mobx_val_0 = toJS(this.buttonIcon);
+      const _mobx_val_1 = toJS(this.chatLog);
+      const _mobx_val_2 = toJS(this.context);
+      const _mobx_val_3 = toJS(store.darkMode);
+      const _mobx_val_4 = toJS(this.dataCollectionEnabled);
+      const _mobx_val_5 = toJS(this.developerModeEnabled);
+      const _mobx_val_6 = toJS(store.editMode);
+      const _mobx_val_7 = toJS(this.engine);
+      const _mobx_val_8 = toJS(this.isFullView);
+      const _mobx_val_9 = toJS(this.isInterfaceHidden);
+      const _mobx_val_10 = toJS(this.isLoading);
+      const _mobx_val_11 = toJS(this.merlinIndex);
+      const _mobx_val_12 = toJS(this.messageIndex);
+      const _mobx_val_13 = toJS(this.userIndex);
+      Promise.resolve().then(() => {
+        const buttonIcon = _mobx_val_0;
+        const chatLog = _mobx_val_1;
+        const context = _mobx_val_2;
+        const darkMode = _mobx_val_3;
+        const dataCollectionEnabled = _mobx_val_4;
+        const developerModeEnabled = _mobx_val_5;
+        const editMode = _mobx_val_6;
+        const engine = _mobx_val_7;
+        const isFullView = _mobx_val_8;
+        const isInterfaceHidden = _mobx_val_9;
+        const isLoading = _mobx_val_10;
+        const merlinIndex = _mobx_val_11;
+        const messageIndex = _mobx_val_12;
+        const userIndex = _mobx_val_13;
 
-      // these are here because these updates weren't working without them
-      if (isLoading) {
-        this.buttonIcon = "hax:loading";
-      } else {
-        this.buttonIcon = "hax:wizard-hat";
-      }
+        // these are here because these updates weren't working without them
+        if (isLoading) {
+          this.buttonIcon = "hax:loading";
+        } else {
+          this.buttonIcon = "hax:wizard-hat";
+        }
 
-      if (darkMode) {
-        this.darkMode = true;
-      } else {
-        this.darkMode = false;
-      }
+        if (darkMode) {
+          this.darkMode = true;
+        } else {
+          this.darkMode = false;
+        }
 
-      if (editMode) {
-        this.editMode = true;
-      } else {
-        this.editMode = false;
-      }
+        if (editMode) {
+          this.editMode = true;
+        } else {
+          this.editMode = false;
+        }
+      });
     });
   }
 

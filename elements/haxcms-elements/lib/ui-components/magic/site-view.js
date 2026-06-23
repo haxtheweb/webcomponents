@@ -135,10 +135,11 @@ export class SiteView extends SimpleColors {
     enableServices(["haxcms"]);
     this.__disposer.push(
       autorun((reaction) => {
-        this.dark = toJS(store.darkMode);
-        setTimeout(() => {
+        const _mobx_val_0 = toJS(store.darkMode);
+        Promise.resolve().then(() => {
+          this.dark = _mobx_val_0;
           this.requestUpdate();
-        }, 0);
+        });
       }),
     );
   }

@@ -793,23 +793,30 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
 
     autorun(() => {
-      localStorageSet("app-hax-darkMode", toJS(store.darkMode));
-      if (toJS(store.darkMode)) {
-        globalThis.document.body.classList.add("dark-mode");
-      } else {
-        globalThis.document.body.classList.remove("dark-mode");
-      }
+      const _mobx_val_0 = toJS(store.darkMode);
+      const _mobx_val_1 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        localStorageSet("app-hax-darkMode", _mobx_val_0);
+        if (_mobx_val_1) {
+          globalThis.document.body.classList.add("dark-mode");
+        } else {
+          globalThis.document.body.classList.remove("dark-mode");
+        }
+      });
     });
     autorun(() => {
-      const isLoggedIn = toJS(store.isLoggedIn);
-      if (this.isLoggedIn !== isLoggedIn) {
-        this.isLoggedIn = isLoggedIn;
-      }
-      const tstamp = Math.floor(Date.now() / 1000);
-      if (this.isLoggedIn && !this.loggedInTime) {
-        this.loggedInTime = tstamp;
-        this._timeStamp = this.loggedInTime;
-      }
+      const _mobx_val_0 = toJS(store.isLoggedIn);
+      Promise.resolve().then(() => {
+        const isLoggedIn = _mobx_val_0;
+        if (this.isLoggedIn !== isLoggedIn) {
+          this.isLoggedIn = isLoggedIn;
+        }
+        const tstamp = Math.floor(Date.now() / 1000);
+        if (this.isLoggedIn && !this.loggedInTime) {
+          this.loggedInTime = tstamp;
+          this._timeStamp = this.loggedInTime;
+        }
+      });
     });
   }
 
@@ -890,77 +897,83 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     setTimeout(() => {
       this.__disposer.push(
         autorun((reaction) => {
-          const themeData = toJS(store.themeData);
-          if (themeData && this.themeData !== themeData) {
-            this.themeData = themeData;
-          }
-          if (themeData) {
-            // special support for "format" in the URL dictating the possible output format
-            // this is for a11y, mobile, print and other possible output modes
-            const urlParams = new URLSearchParams(globalThis.location.search);
-            const formatParam = urlParams.get("format");
-            const format = formatParam ? formatParam.toLowerCase() : null;
-            if (format != null) {
-              switch (format) {
-                case "print-page":
-                  themeData.element = "haxcms-print-theme";
-                  break;
-                case "json":
-                case "yaml":
-                case "md":
-                case "xml":
-                  // dynamically import the JSON theme
-                  import("./themes/haxcms-json-theme.js");
-                  themeData.element = "haxcms-json-theme";
-                  break;
+          const _mobx_val_0 = toJS(store.themeData);
+          Promise.resolve().then(() => {
+            const themeData = _mobx_val_0;
+            if (themeData && this.themeData !== themeData) {
+              this.themeData = themeData;
+            }
+            if (themeData) {
+              // special support for "format" in the URL dictating the possible output format
+              // this is for a11y, mobile, print and other possible output modes
+              const urlParams = new URLSearchParams(globalThis.location.search);
+              const formatParam = urlParams.get("format");
+              const format = formatParam ? formatParam.toLowerCase() : null;
+              if (format != null) {
+                switch (format) {
+                  case "print-page":
+                    themeData.element = "haxcms-print-theme";
+                    break;
+                  case "json":
+                  case "yaml":
+                  case "md":
+                  case "xml":
+                    // dynamically import the JSON theme
+                    import("./themes/haxcms-json-theme.js");
+                    themeData.element = "haxcms-json-theme";
+                    break;
+                }
+              }
+              const disableFeatures = urlParams.get("disable-features");
+              if (
+                disableFeatures != null &&
+                this.disableFeatures !== disableFeatures
+              ) {
+                this.disableFeatures = disableFeatures;
               }
             }
-            const disableFeatures = urlParams.get("disable-features");
             if (
-              disableFeatures != null &&
-              this.disableFeatures !== disableFeatures
+              themeData &&
+              themeData.element !== this.themeName &&
+              themeData.element != null
             ) {
-              this.disableFeatures = disableFeatures;
+              this.themeName = themeData.element;
             }
-          }
-          if (
-            themeData &&
-            themeData.element !== this.themeName &&
-            themeData.element != null
-          ) {
-            this.themeName = themeData.element;
-          }
+          });
         }),
       );
       this.__disposer.push(
         autorun((reaction) => {
-          const activeItem = toJS(store.activeItem);
-          if (!activeItem || !activeItem.id) {
-            this.__activeItemId = null;
-          } else if (activeItem.id !== this.__activeItemId) {
-            this.__activeItemId = activeItem.id;
-            if (this.__pageContentOwner !== activeItem.id) {
-              this._clearStaleThemePresentation();
+          const _mobx_val_0 = toJS(store.activeItem);
+          Promise.resolve().then(() => {
+            const activeItem = _mobx_val_0;
+            if (!activeItem || !activeItem.id) {
+              this.__activeItemId = null;
+            } else if (activeItem.id !== this.__activeItemId) {
+              this.__activeItemId = activeItem.id;
+              if (this.__pageContentOwner !== activeItem.id) {
+                this._clearStaleThemePresentation();
+              }
             }
-          }
-          // often, active item is in the process of being updated on a page save
-          // this generates potential delay in presentation of the node, leading to the
-          // a short time where activeItem is not accurate while manifest is being rebuilt
-          if (
-            activeItem &&
-            activeItem.id &&
-            this.__pageContent &&
-            this.__pageContentOwner === activeItem.id
-          ) {
-            this._activeItemContentChanged(this.__pageContent, activeItem);
-          }
-          if (
-            activeItem &&
-            activeItem.location &&
-            this.activeItemLocation !== activeItem.location
-          ) {
-            this.activeItemLocation = activeItem.location;
-          }
+            // often, active item is in the process of being updated on a page save
+            // this generates potential delay in presentation of the node, leading to the
+            // a short time where activeItem is not accurate while manifest is being rebuilt
+            if (
+              activeItem &&
+              activeItem.id &&
+              this.__pageContent &&
+              this.__pageContentOwner === activeItem.id
+            ) {
+              this._activeItemContentChanged(this.__pageContent, activeItem);
+            }
+            if (
+              activeItem &&
+              activeItem.location &&
+              this.activeItemLocation !== activeItem.location
+            ) {
+              this.activeItemLocation = activeItem.location;
+            }
+          });
         }),
       );
     }, 0);

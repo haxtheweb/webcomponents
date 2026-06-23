@@ -1,8 +1,8 @@
 {
   "_meta": {
     "elementsScanned": 224,
-    "elementsWithTranslations": 36,
-    "translationFilesFound": 769,
+    "elementsWithTranslations": 37,
+    "translationFilesFound": 787,
     "languagesSupported": [
       "af",
       "am",
@@ -859,6 +859,44 @@
       "it",
       "ja",
       "zh_CN"
+    ],
+    "resume-theme.ar": [
+      "haxProperties"
+    ],
+    "resume-theme": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "resume-theme.bn": [
+      "haxProperties"
+    ],
+    "resume-theme.es": [
+      "haxProperties"
+    ],
+    "resume-theme.fr": [
+      "haxProperties"
+    ],
+    "resume-theme.hi": [
+      "haxProperties"
+    ],
+    "resume-theme.ja": [
+      "haxProperties"
+    ],
+    "resume-theme.pt": [
+      "haxProperties"
+    ],
+    "resume-theme.ru": [
+      "haxProperties"
+    ],
+    "resume-theme.zh": [
+      "haxProperties"
     ],
     "screen-recorder.ar": [
       "haxProperties"

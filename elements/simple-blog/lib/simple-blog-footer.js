@@ -282,26 +282,35 @@ class SimpleBlogFooter extends SimpleColors {
     super.connectedCallback();
     this.__disposer = [];
     this.__disposer.push(autorun((reaction) => {
-      this.manifest = toJS(store.routerManifest);
-      if (varExists(this.manifest, "title")) {
-        globalThis.document.title = this.manifest.title;
-      }
-      if (varExists(this.manifest, "metadata.theme.variables.cssVariable")) {
-        // json outline schema changed, allow other things to react
-        // fake way of forcing an update of these items
-        let ary = this.manifest.metadata.theme.variables.cssVariable
-          .replace("--simple-colors-default-theme-", "")
-          .split("-");
-        ary.pop();
-        this.accentColor = ary.join("-");
-      }
+      const _mobx_val_0 = toJS(store.routerManifest);
+      Promise.resolve().then(() => {
+        this.manifest = _mobx_val_0;
+        if (varExists(this.manifest, "title")) {
+          globalThis.document.title = this.manifest.title;
+        }
+        if (varExists(this.manifest, "metadata.theme.variables.cssVariable")) {
+          // json outline schema changed, allow other things to react
+          // fake way of forcing an update of these items
+          let ary = this.manifest.metadata.theme.variables.cssVariable
+            .replace("--simple-colors-default-theme-", "")
+            .split("-");
+          ary.pop();
+          this.accentColor = ary.join("-");
+        }
+      });
     }
     ));
     this.__disposer.push(autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
+      const _mobx_val_0 = toJS(store.activeManifestIndex);
+      Promise.resolve().then(() => {
+        this.activeManifestIndex = _mobx_val_0;
+      });
     }));
     this.__disposer.push(autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        this.editMode = _mobx_val_0;
+      });
     }));
   }
   /**

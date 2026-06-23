@@ -145,23 +145,27 @@ class BootstrapFooter extends LitElement {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        let storeActiveItemIndex = toJS(store.activeManifestIndex);
-        let storeRouterManifest = toJS(store.routerManifest);
-        if (
-          this._activeItem !== storeActiveItemIndex ||
-          this._routerManifest !== storeRouterManifest
-        ) {
-          this._activeItem = storeActiveItemIndex;
-          this._routerManifest = storeRouterManifest;
-          if (storeRouterManifest.items[storeActiveItemIndex - 1]) {
-            this._backwardItem =
-              storeRouterManifest.items[storeActiveItemIndex - 1];
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        const _mobx_val_1 = toJS(store.routerManifest);
+        Promise.resolve().then(() => {
+          let storeActiveItemIndex = _mobx_val_0;
+          let storeRouterManifest = _mobx_val_1;
+          if (
+            this._activeItem !== storeActiveItemIndex ||
+            this._routerManifest !== storeRouterManifest
+          ) {
+            this._activeItem = storeActiveItemIndex;
+            this._routerManifest = storeRouterManifest;
+            if (storeRouterManifest.items[storeActiveItemIndex - 1]) {
+              this._backwardItem =
+                storeRouterManifest.items[storeActiveItemIndex - 1];
+            }
+            if (storeRouterManifest.items[storeActiveItemIndex + 1]) {
+              this._forwardItem =
+                storeRouterManifest.items[storeActiveItemIndex + 1];
+            }
           }
-          if (storeRouterManifest.items[storeActiveItemIndex + 1]) {
-            this._forwardItem =
-              storeRouterManifest.items[storeActiveItemIndex + 1];
-          }
-        }
+        });
       }),
     );
   }

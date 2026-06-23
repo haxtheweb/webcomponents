@@ -122,17 +122,23 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
 
     // Watch for active item lock state
     autorun(() => {
-      const activeItem = toJS(store.activeItem);
-      this.isLocked =
-        activeItem && activeItem.metadata && activeItem.metadata.locked
-          ? true
-          : false;
+      const _mobx_val_0 = toJS(store.activeItem);
+      Promise.resolve().then(() => {
+        const activeItem = _mobx_val_0;
+        this.isLocked =
+          activeItem && activeItem.metadata && activeItem.metadata.locked
+            ? true
+            : false;
+      });
     });
 
     // Keep local editMode in sync with global store state so we can
     // hide page creation controls while actively editing content
     autorun(() => {
-      this.editMode = toJS(store.editMode);
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        this.editMode = _mobx_val_0;
+      });
     });
   }
 

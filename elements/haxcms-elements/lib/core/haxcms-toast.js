@@ -207,10 +207,16 @@ export class HAXCMSToast extends RPGCharacterToast {
     this.characterHeight = 48;
     this.characterWidth = 48;
     autorun(() => {
-      this.userName = toJS(store.userData.userName);
+      const _mobx_val_0 = toJS(store.userData.userName);
+      Promise.resolve().then(() => {
+        this.userName = _mobx_val_0;
+      });
     });
     autorun(() => {
-      this.darkMode = toJS(store.darkMode);
+      const _mobx_val_0 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.darkMode = _mobx_val_0;
+      });
     });
   }
 

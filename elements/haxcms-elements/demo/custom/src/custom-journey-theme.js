@@ -68,32 +68,41 @@ class CustomJourneyTheme extends HAXCMSLitElementTheme {
       this.basePath = globalThis.location.origin;
     }
     autorun(() => {
-      this.manifest = toJS(store.manifest);
-      let LList = new licenseList();
-      if (this.manifest.license && LList[this.manifest.license]) {
-        this.licenseName = LList[this.manifest.license].name;
-        this.licenseLink = LList[this.manifest.license].link;
-        this.licenseImage = LList[this.manifest.license].image;
-      }
-      this._items = this.getItemChildren(null);
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        this.manifest = _mobx_val_0;
+        let LList = new licenseList();
+        if (this.manifest.license && LList[this.manifest.license]) {
+          this.licenseName = LList[this.manifest.license].name;
+          this.licenseLink = LList[this.manifest.license].link;
+          this.licenseImage = LList[this.manifest.license].image;
+        }
+        this._items = this.getItemChildren(null);
+      });
     });
     autorun(() => {
-      this.activeItem = toJS(store.activeItem);
+      const _mobx_val_0 = toJS(store.activeItem);
+      Promise.resolve().then(() => {
+        this.activeItem = _mobx_val_0;
+      });
     });
     autorun(() => {
-      let location = toJS(store.location);
-      if (globalThis.document && globalThis.document.startViewTransition) {
-        globalThis.document.startViewTransition(() => {
-          this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
-          this.location = location;
-          this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
-          setTimeout(() => {
+      const _mobx_val_0 = toJS(store.location);
+      Promise.resolve().then(() => {
+        let location = _mobx_val_0;
+        if (globalThis.document && globalThis.document.startViewTransition) {
+          globalThis.document.startViewTransition(() => {
             this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
-          }, 10);
-        });
-      } else {
-        this.location = location;
-      }
+            this.location = location;
+            this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
+            setTimeout(() => {
+              this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
+            }, 10);
+          });
+        } else {
+          this.location = location;
+        }
+      });
     });
   }
 

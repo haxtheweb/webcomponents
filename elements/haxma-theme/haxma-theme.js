@@ -44,19 +44,28 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     // Set up reactivity to HAXcms store
     this.__disposer.push(
       autorun((reaction) => {
-        this.manifest = toJS(store.manifest);
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0;
+        });
       }),
     );
     
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeItem = toJS(store.activeItem);
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          this.activeItem = _mobx_val_0;
+        });
       }),
     );
     
     this.__disposer.push(
       autorun((reaction) => {
-        this._items = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
+        const _mobx_val_0 = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
+        Promise.resolve().then(() => {
+          this._items = _mobx_val_0;
+        });
       }),
     );
   }

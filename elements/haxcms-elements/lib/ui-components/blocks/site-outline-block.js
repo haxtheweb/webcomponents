@@ -256,13 +256,19 @@ class SiteOutlineBlock extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.manifest = toJS(store.manifest);
+      const _mobx_val_0 = toJS(store.manifest);
+      Promise.resolve().then(() => {
+        this.manifest = _mobx_val_0;
+      });
     });
     // minor timing thing to ensure store has picked active
     // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
       this.__disposer2 = autorun(() => {
-        this.activeId = toJS(store.activeId);
+        const _mobx_val_0 = toJS(store.activeId);
+        Promise.resolve().then(() => {
+          this.activeId = _mobx_val_0;
+        });
       });
     }, 50);
     globalThis.addEventListener(

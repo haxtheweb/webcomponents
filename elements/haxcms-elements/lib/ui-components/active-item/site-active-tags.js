@@ -112,12 +112,18 @@ class SiteActiveTags extends I18NMixin(LitElement) {
     });
     this.__disposer.push(
       autorun((reaction) => {
-        this.tags = toJS(store.activeTags);
+        const _mobx_val_0 = toJS(store.activeTags);
+        Promise.resolve().then(() => {
+          this.tags = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
   }

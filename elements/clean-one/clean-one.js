@@ -145,7 +145,10 @@ class CleanOne extends DDDSuper(
         .btn-container {
           z-index: 2;
           height: 50px;
-          padding: 6px;
+          padding: 6px 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         .btn-container .btn {
           padding: 8px 4px;
@@ -156,8 +159,9 @@ class CleanOne extends DDDSuper(
           height: var(--clean-one-site-menu-height, calc(100vh - 60px));
           --site-menu-active-color: var(--ddd-lightDark-2);
           --site-menu-item-active-item-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-color: var(--ddd-lightDark-1);
+          --map-menu-item-a-active-color: var(--ddd-lightDark-5);
           --map-menu-item-a-active-background-color: var(--ddd-lightDark-2);
-          --map-menu-item-a-active-color: var(--ddd-lightDark-7);
           --map-menu-item-icon-active-color: var(--ddd-lightDark-1);
           --site-menu-container-background-color: var(--ddd-lightDark-7);
           font-family: var(--ddd-font-navigation);
@@ -196,6 +200,8 @@ class CleanOne extends DDDSuper(
         site-breadcrumb {
           min-height: 48px;
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
+          --site-breadcrumb-color: var(--ddd-lightDark-2);
+          --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
         site-menu-button {
           --site-menu-button-icon-fill-color: var(--ddd-palette-1);
@@ -205,11 +211,8 @@ class CleanOne extends DDDSuper(
             --ddd-lightDark-2
           );
         }
-        scroll-button,
-        site-breadcrumb {
+        scroll-button {
           color: var(--ddd-lightDark-1);
-          --site-breadcrumb-color: var(--ddd-lightDark-4);
-          --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
 
         * {
@@ -239,6 +242,7 @@ class CleanOne extends DDDSuper(
           color: var(--ddd-lightDark-1);
           border-right: var(--ddd-border-xs);
           transition: left 0.3s ease-in-out;
+          contain: layout paint;
         }
         /* content */
         .main-section h1 {
@@ -248,33 +252,27 @@ class CleanOne extends DDDSuper(
           outline: 1px solid grey;
           outline-offset: 20px;
         }
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content h6 {
-          margin-top: 1.275em;
-          margin-bottom: 0.85em;
-          font-weight: 700;
-        }
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5 {
-          page-break-after: avoid;
-        }
         :host([responsive-size="xs"][menu-open]) .pull-right {
           display: none;
         }
         .pull-right {
-          top: 4px;
-          right: 16px;
-          position: fixed;
+          display: flex;
+          gap: 12px;
+          align-items: center;
         }
-        :host([is-logged-in]) .pull-right {
-          margin-top: 56px;
+        .pull-left {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+        }
+        .pull-right > simple-icon-button-lite,
+        .pull-right > simple-icon-button,
+        .pull-left > simple-icon-button-lite,
+        .pull-left > simple-icon-button,
+        .pull-right > div > simple-icon-button-lite,
+        .pull-left > site-print-button simple-icon-button-lite,
+        .pull-right > site-rss-button simple-icon-button-lite {
+          padding: 4px;
         }
         #emailbtnwrapper {
           display: inline-flex;
@@ -378,14 +376,6 @@ class CleanOne extends DDDSuper(
         .main-content h5 {
           page-break-after: avoid;
         }
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content p {
-          orphans: 3;
-          widows: 3;
-        }
         .main-content blockquote,
         .main-content dl,
         .main-content ol,
@@ -401,14 +391,6 @@ class CleanOne extends DDDSuper(
           margin: 0;
           margin-bottom: 0.85em;
           padding-left: 2em;
-        }
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content p {
-          orphans: 3;
-          widows: 3;
         }
         article,
         aside,
@@ -432,7 +414,12 @@ class CleanOne extends DDDSuper(
           background: transparent;
           position: fixed;
           display: block;
+          width: -moz-available;
+          width: fill-available;
+          width: -webkit-fill-available;
           padding: 0 16px;
+          contain: layout paint;
+          min-height: 50px;
         }
         @media (max-width: 1400px) {
           .site-header {
@@ -646,7 +633,7 @@ class CleanOne extends DDDSuper(
   render() {
     return html`
       <div class="site">
-        <div class="menu-outline">
+        <nav class="menu-outline" aria-label="Site menu">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box
               @input-changed="${this.searchChanged}"
@@ -654,7 +641,7 @@ class CleanOne extends DDDSuper(
             ></clean-one-search-box>
           </div>
           ${this.HAXCMSMobileMenu()}
-        </div>
+        </nav>
         <div id="body" class="site-body" part="site-body">
           <div id="haxcms-theme-top"></div>
           <div class="site-inner">
@@ -725,17 +712,18 @@ class CleanOne extends DDDSuper(
             </main>
           </div>
           <footer>
-            <!-- These two buttons allow you to go left and right through the pages in the manifest -->
-            <site-menu-button
-              type="prev"
-              position="right"
-              class="navigation"
-            ></site-menu-button>
-            <site-menu-button
-              type="next"
-              position="left"
-              class="navigation"
-            ></site-menu-button>
+            <nav aria-label="Page navigation">
+              <site-menu-button
+                type="prev"
+                position="right"
+                class="navigation"
+              ></site-menu-button>
+              <site-menu-button
+                type="next"
+                position="left"
+                class="navigation"
+              ></site-menu-button>
+            </nav>
           </footer>
         </div>
         <scroll-button
@@ -809,8 +797,11 @@ class CleanOne extends DDDSuper(
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
-        this.searchTerm = "";
+        const _mobx_val_0 = toJS(store.activeManifestIndex);
+        Promise.resolve().then(() => {
+          this.activeManifestIndex = _mobx_val_0;
+          this.searchTerm = "";
+        });
       }),
     );
   }

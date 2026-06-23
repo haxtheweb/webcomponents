@@ -91,38 +91,53 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        this.siteDescription = toJS(store.siteDescription);
+        const _mobx_val_0 = toJS(store.siteDescription);
+        Promise.resolve().then(() => {
+          this.siteDescription = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeId = toJS(store.activeId);
+        const _mobx_val_0 = toJS(store.activeId);
+        Promise.resolve().then(() => {
+          this.activeId = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.editMode = toJS(store.editMode);
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.activeTags = toJS(store.activeTags);
+        const _mobx_val_0 = toJS(store.activeTags);
+        Promise.resolve().then(() => {
+          this.activeTags = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.metadata) {
-          if (activeItem.metadata.created) {
-            this.pageCreated = activeItem.metadata.created;
-          } else if (activeItem.metadata.updated) {
-            this.pageCreated = activeItem.metadata.updated;
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          const activeItem = _mobx_val_0;
+          if (activeItem && activeItem.metadata) {
+            if (activeItem.metadata.created) {
+              this.pageCreated = activeItem.metadata.created;
+            } else if (activeItem.metadata.updated) {
+              this.pageCreated = activeItem.metadata.updated;
+            } else {
+              this.pageCreated = null;
+            }
           } else {
             this.pageCreated = null;
           }
-        } else {
-          this.pageCreated = null;
-        }
+        });
       }),
     );
   }

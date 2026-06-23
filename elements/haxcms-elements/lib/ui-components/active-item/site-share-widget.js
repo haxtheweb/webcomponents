@@ -64,9 +64,12 @@ class SiteShareWidget extends LitElement {
     this.__disposer = [];
     this.__disposer.push(
       autorun((reaction) => {
-        if (store.activeItem) {
-          this.activeItem = toJS(store.activeItem);
-        }
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          if (store.activeItem) {
+            this.activeItem = _mobx_val_0;
+          }
+        });
       }),
     );
   }

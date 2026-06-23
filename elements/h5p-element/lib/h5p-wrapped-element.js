@@ -50,7 +50,10 @@ class H5pWrappedElement extends LitElement {
     super();
     this.src = "";
     this.__disposer = autorun(() => {
-      this.__editMode = toJS(store.editMode);
+      const _mobx_val_0 = toJS(store.editMode);
+      Promise.resolve().then(() => {
+        this.__editMode = _mobx_val_0;
+      });
     });
   }
   disconnectedCallback() {

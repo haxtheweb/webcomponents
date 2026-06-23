@@ -184,9 +184,12 @@ class HAXCMSContentAdminDialog extends DDD {
     super.connectedCallback();
     this.__disposer.push(
       autorun(() => {
-        const manifest = toJS(store.manifest);
-        const items = manifest && manifest.items ? manifest.items : [];
-        this.rows = this._buildRows(items);
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          const manifest = _mobx_val_0;
+          const items = manifest && manifest.items ? manifest.items : [];
+          this.rows = this._buildRows(items);
+        });
       }),
     );
     globalThis.addEventListener(

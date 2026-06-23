@@ -2724,148 +2724,176 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.backLink = globalThis.appSettings.backLink;
     }
     autorun(() => {
-      const isLoggedIn = toJS(store.isLoggedIn);
-      if (isLoggedIn) {
-        this._ensureHaxcmsButtonAddLoaded();
-      }
-      UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
-      const tstamp = Math.floor(Date.now() / 1000);
-
-      if (isLoggedIn && !this.loggedInTime) {
-        this.displayConsoleWarning();
-        this.loggedInTime = tstamp;
-        var ll = UserScaffoldInstance.readMemory("recentLogins");
-        if (!ll) {
-          UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
-        } else if (ll) {
-          // cap at last 5 login times
-          if (ll.length < 5) {
-            ll.shift();
-          }
-          ll.push(tstamp);
-          UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
+      const _mobx_val_0 = toJS(store.isLoggedIn);
+      Promise.resolve().then(() => {
+        const isLoggedIn = _mobx_val_0;
+        if (isLoggedIn) {
+          this._ensureHaxcmsButtonAddLoaded();
         }
-      }
+        UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
+        const tstamp = Math.floor(Date.now() / 1000);
+
+        if (isLoggedIn && !this.loggedInTime) {
+          this.displayConsoleWarning();
+          this.loggedInTime = tstamp;
+          var ll = UserScaffoldInstance.readMemory("recentLogins");
+          if (!ll) {
+            UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
+          } else if (ll) {
+            // cap at last 5 login times
+            if (ll.length < 5) {
+              ll.shift();
+            }
+            ll.push(tstamp);
+            UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
+          }
+        }
+      });
     });
     // user scaffolding wired up to superDaemon
     autorun(() => {
-      const memory = toJS(UserScaffoldInstance.memory);
-      const usAction = toJS(UserScaffoldInstance.action);
-      // try to pulse edit / merlin if they are here and don't do anything...
-      if (
-        memory.editMode === false &&
-        memory.interactionDelay >= 3600 &&
-        usAction.type === null &&
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
-      ) {
-        // delay since it slides in
-        setTimeout(() => {
-          const editbtn =
-            store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
-              "#editbutton",
+      const _mobx_val_0 = toJS(UserScaffoldInstance.memory);
+      const _mobx_val_1 = toJS(UserScaffoldInstance.action);
+      const _mobx_val_2 = toJS(UserScaffoldInstance.data.value);
+      Promise.resolve().then(() => {
+        const memory = _mobx_val_0;
+        const usAction = _mobx_val_1;
+        // try to pulse edit / merlin if they are here and don't do anything...
+        if (
+          memory.editMode === false &&
+          memory.interactionDelay >= 3600 &&
+          usAction.type === null &&
+          store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
+          store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
+        ) {
+          // delay since it slides in
+          setTimeout(() => {
+            const editbtn =
+              store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
+                "#editbutton",
+              );
+            editbtn.dataPulse = "1";
+          }, 300);
+        }
+        // try to evaluate typing in merlin
+        if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
+          SuperDaemonInstance.programName === null &&
+          UserScaffoldInstance.memory.interactionDelay > 600 &&
+          ["paste", "key"].includes(usAction.type)
+        ) {
+          if (validURL(SuperDaemonInstance.value)) {
+            SuperDaemonInstance.waveWand(
+              [SuperDaemonInstance.value, "/", {}, "hax-agent", "Upload a file"],
+              null,
+              "coin2",
             );
-          editbtn.dataPulse = "1";
-        }, 300);
-      }
-      // try to evaluate typing in merlin
-      if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
-        SuperDaemonInstance.programName === null &&
-        UserScaffoldInstance.memory.interactionDelay > 600 &&
-        ["paste", "key"].includes(usAction.type)
-      ) {
-        if (validURL(SuperDaemonInstance.value)) {
+          }
+        } else if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          SuperDaemonInstance.programName === null &&
+          ["paste"].includes(usAction.type) &&
+          UserScaffoldInstance.data.architype == "url"
+        ) {
           SuperDaemonInstance.waveWand(
-            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Upload a file"],
+            [
+              _mobx_val_2,
+              "/",
+              {},
+              "hax-agent",
+              "Upload a file",
+            ],
             null,
             "coin2",
           );
         }
-      } else if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        SuperDaemonInstance.programName === null &&
-        ["paste"].includes(usAction.type) &&
-        UserScaffoldInstance.data.architype == "url"
-      ) {
-        SuperDaemonInstance.waveWand(
-          [
-            toJS(UserScaffoldInstance.data.value),
-            "/",
-            {},
-            "hax-agent",
-            "Upload a file",
-          ],
-          null,
-          "coin2",
-        );
-      }
+      });
     });
     // user scaffolding wired up to superDaemon
     autorun(() => {
-      const usAction = toJS(UserScaffoldInstance.action);
-      const usData = toJS(UserScaffoldInstance.data);
-      // try to evaluate typing in merlin
-      if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        SuperDaemonInstance.programName === null &&
-        usAction.type === "drag"
-      ) {
-        this.activeDrag = true;
-        this.activeType = usData.value || usData.architype;
-      } else if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        SuperDaemonInstance.programName === null &&
-        usAction.type === "dragleave"
-      ) {
-        this.activeDrag = false;
-        this.activeType = null;
-      }
+      const _mobx_val_0 = toJS(UserScaffoldInstance.action);
+      const _mobx_val_1 = toJS(UserScaffoldInstance.data);
+      Promise.resolve().then(() => {
+        const usAction = _mobx_val_0;
+        const usData = _mobx_val_1;
+        // try to evaluate typing in merlin
+        if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          SuperDaemonInstance.programName === null &&
+          usAction.type === "drag"
+        ) {
+          this.activeDrag = true;
+          this.activeType = usData.value || usData.architype;
+        } else if (
+          UserScaffoldInstance.active &&
+          UserScaffoldInstance.memory.isLoggedIn &&
+          SuperDaemonInstance.programName === null &&
+          usAction.type === "dragleave"
+        ) {
+          this.activeDrag = false;
+          this.activeType = null;
+        }
+      });
     });
     autorun(() => {
-      const activeGizmo = toJS(HAXStore.activeGizmo);
-      if (activeGizmo && activeGizmo.title) {
-        this.activeTagName = activeGizmo.title;
-      }
+      const _mobx_val_0 = toJS(HAXStore.activeGizmo);
+      Promise.resolve().then(() => {
+        const activeGizmo = _mobx_val_0;
+        if (activeGizmo && activeGizmo.title) {
+          this.activeTagName = activeGizmo.title;
+        }
+      });
     });
     autorun(() => {
-      this.activeNode = toJS(HAXStore.activeNode);
+      const _mobx_val_0 = toJS(HAXStore.activeNode);
+      Promise.resolve().then(() => {
+        this.activeNode = _mobx_val_0;
+      });
     });
     autorun(() => {
-      const badDevice = toJS(store.badDevice);
-      // good device, we can inject font we use
-      if (badDevice === true) {
-        globalThis.document.body.classList.add("bad-device");
-      }
+      const _mobx_val_0 = toJS(store.badDevice);
+      Promise.resolve().then(() => {
+        const badDevice = _mobx_val_0;
+        // good device, we can inject font we use
+        if (badDevice === true) {
+          globalThis.document.body.classList.add("bad-device");
+        }
+      });
     });
     autorun(() => {
-      this.darkMode = toJS(store.darkMode);
-      this.dark = this.darkMode;
-      if (toJS(store.darkMode)) {
-        SuperDaemonInstance.dark = true;
-        SuperDaemonInstance.toastInstance.darkMode = true;
-        HAXStore.globalPreferences.haxUiTheme = "haxdark";
-      } else {
-        HAXStore.globalPreferences.haxUiTheme = "hax";
-        SuperDaemonInstance.dark = false;
-        SuperDaemonInstance.toastInstance.darkMode = false;
-      }
+      const _mobx_val_0 = toJS(store.darkMode);
+      const _mobx_val_1 = toJS(store.darkMode);
+      Promise.resolve().then(() => {
+        this.darkMode = _mobx_val_0;
+        this.dark = this.darkMode;
+        if (_mobx_val_1) {
+          SuperDaemonInstance.dark = true;
+          SuperDaemonInstance.toastInstance.darkMode = true;
+          HAXStore.globalPreferences.haxUiTheme = "haxdark";
+        } else {
+          HAXStore.globalPreferences.haxUiTheme = "hax";
+          SuperDaemonInstance.dark = false;
+          SuperDaemonInstance.toastInstance.darkMode = false;
+        }
+      });
     });
     autorun(() => {
-      this.soundIcon = toJS(store.soundStatus)
-        ? new URL(
-            "../../../app-hax/lib/assets/images/FullVolume.svg",
-            import.meta.url,
-          ).href
-        : new URL(
-            "../../../app-hax/lib/assets/images/Silence.svg",
-            import.meta.url,
-          ).href;
+      const _mobx_val_0 = toJS(store.soundStatus);
+      Promise.resolve().then(() => {
+        this.soundIcon = _mobx_val_0
+          ? new URL(
+              "../../../app-hax/lib/assets/images/FullVolume.svg",
+              import.meta.url,
+            ).href
+          : new URL(
+              "../../../app-hax/lib/assets/images/Silence.svg",
+              import.meta.url,
+            ).href;
+      });
     });
     setTimeout(() => {
       // prettier-ignore
@@ -5130,7 +5158,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // so MobX actually tracks and updates this value.
     this.__disposer.push(
       autorun((reaction) => {
-        this.trayDetail = toJS(HAXStore.trayDetail);
+        const _mobx_val_0 = toJS(HAXStore.trayDetail);
+        Promise.resolve().then(() => {
+          this.trayDetail = _mobx_val_0;
+        });
       }),
     );
 
@@ -5150,108 +5181,128 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     this.__disposer.push(
       autorun((reaction) => {
-        if (store.userData) {
-          this.userName = toJS(store.userData.userName);
-          this.userPicture = toJS(store.userData.userPicture);
-        }
-      }),
-    );
-    this.__disposer.push(
-      autorun((reaction) => {
-        const previousEditMode = this.editMode;
-        const newEditMode = toJS(store.editMode);
-        this.editMode = newEditMode;
-        UserScaffoldInstance.writeMemory("editMode", this.editMode);
-        const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
-        // When we first enter edit mode and there is an active node selected,
-        // prefer the Configure tab over Blocks as the default tray panel.
-        if (
-          !previousEditMode &&
-          newEditMode &&
-          autoOpenTray &&
-          HAXStore.activeNode &&
-          HAXStore.activeNode.tagName
-        ) {
-          HAXStore.trayDetail = "content-edit";
-          if (HAXStore.haxTray) {
-            HAXStore.haxTray.trayDetail = "content-edit";
-            HAXStore.haxTray.collapsed = !autoOpenTray;
+        const _mobx_val_0 = toJS(store.userData.userName);
+        const _mobx_val_1 = toJS(store.userData.userPicture);
+        Promise.resolve().then(() => {
+          if (store.userData) {
+            this.userName = _mobx_val_0;
+            this.userPicture = _mobx_val_1;
           }
-        } else if (!previousEditMode && newEditMode && !autoOpenTray) {
-          HAXStore.trayDetail = "no-active-tray";
-          if (HAXStore.haxTray) {
-            HAXStore.haxTray.trayDetail = "no-active-tray";
-            HAXStore.haxTray.collapsed = true;
+        });
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          const previousEditMode = this.editMode;
+          const newEditMode = _mobx_val_0;
+          this.editMode = newEditMode;
+          UserScaffoldInstance.writeMemory("editMode", this.editMode);
+          const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
+          // When we first enter edit mode and there is an active node selected,
+          // prefer the Configure tab over Blocks as the default tray panel.
+          if (
+            !previousEditMode &&
+            newEditMode &&
+            autoOpenTray &&
+            HAXStore.activeNode &&
+            HAXStore.activeNode.tagName
+          ) {
+            HAXStore.trayDetail = "content-edit";
+            if (HAXStore.haxTray) {
+              HAXStore.haxTray.trayDetail = "content-edit";
+              HAXStore.haxTray.collapsed = !autoOpenTray;
+            }
+          } else if (!previousEditMode && newEditMode && !autoOpenTray) {
+            HAXStore.trayDetail = "no-active-tray";
+            if (HAXStore.haxTray) {
+              HAXStore.haxTray.trayDetail = "no-active-tray";
+              HAXStore.haxTray.collapsed = true;
+            }
           }
-        }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.manifestEditMode = toJS(store.adminMode);
+        const _mobx_val_0 = toJS(store.adminMode);
+        Promise.resolve().then(() => {
+          this.manifestEditMode = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.pageAllowed = toJS(store.pageAllowed);
+        const _mobx_val_0 = toJS(store.pageAllowed);
+        Promise.resolve().then(() => {
+          this.pageAllowed = _mobx_val_0;
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const activeItem = toJS(store.activeItem);
-        this.activeItem = activeItem;
-        // update buttons to match since we got a state response
-        setTimeout(() => {
-          if (!this.shadowRoot) return;
-          if (globalThis.appSettings && globalThis.appSettings.backText) {
-            this.backText = globalThis.appSettings.backText;
-          }
-        }, 100);
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          const activeItem = _mobx_val_0;
+          this.activeItem = activeItem;
+          // update buttons to match since we got a state response
+          setTimeout(() => {
+            if (!this.shadowRoot) return;
+            if (globalThis.appSettings && globalThis.appSettings.backText) {
+              this.backText = globalThis.appSettings.backText;
+            }
+          }, 100);
 
-        if (activeItem && activeItem.id) {
-          this.activeTitle = activeItem.title;
-          this.onInternalRoute = activeItem._internalRoute || false;
-          // Use the store method to determine if editing is allowed
-          const supportsEditor = store.currentRouteSupportsHaxEditor();
-          // Show the button if editor is supported, regardless of lock status
-          store.pageAllowed = supportsEditor;
-        } else {
-          this.onInternalRoute = false;
-          store.pageAllowed = false;
-        }
-        if (
-          this.themePreviewOpen &&
-          this._getAdminRoutePathFromLocation() !== "theme-preview"
-        ) {
-          this.__currentAdminRoutePath = "theme-preview";
-          store.adminMode = true;
-          this._setAdminRoutePathOnLocation("theme-preview", "replace");
-        }
+          if (activeItem && activeItem.id) {
+            this.activeTitle = activeItem.title;
+            this.onInternalRoute = activeItem._internalRoute || false;
+            // Use the store method to determine if editing is allowed
+            const supportsEditor = store.currentRouteSupportsHaxEditor();
+            // Show the button if editor is supported, regardless of lock status
+            store.pageAllowed = supportsEditor;
+          } else {
+            this.onInternalRoute = false;
+            store.pageAllowed = false;
+          }
+          if (
+            this.themePreviewOpen &&
+            this._getAdminRoutePathFromLocation() !== "theme-preview"
+          ) {
+            this.__currentAdminRoutePath = "theme-preview";
+            store.adminMode = true;
+            this._setAdminRoutePathOnLocation("theme-preview", "replace");
+          }
+        });
       }),
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const appReady = toJS(store.appReady);
-        const isLoggedIn = toJS(store.isLoggedIn);
-        const routePath = this._getAdminRoutePathFromLocation();
-        if (
-          appReady &&
-          isLoggedIn &&
-          this.themePreviewOpen &&
-          routePath !== "theme-preview"
-        ) {
-          this.__currentAdminRoutePath = "theme-preview";
-          store.adminMode = true;
-          this._setAdminRoutePathOnLocation("theme-preview", "replace");
-        }
-        if (
-          appReady &&
-          isLoggedIn &&
-          routePath &&
-          !this.__currentAdminRoutePath
-        ) {
-          this._applyAdminRoutePath(routePath, 0, true);
-        }
+        const _mobx_val_0 = toJS(store.appReady);
+        const _mobx_val_1 = toJS(store.isLoggedIn);
+        Promise.resolve().then(() => {
+          const appReady = _mobx_val_0;
+          const isLoggedIn = _mobx_val_1;
+          const routePath = this._getAdminRoutePathFromLocation();
+          if (
+            appReady &&
+            isLoggedIn &&
+            this.themePreviewOpen &&
+            routePath !== "theme-preview"
+          ) {
+            this.__currentAdminRoutePath = "theme-preview";
+            store.adminMode = true;
+            this._setAdminRoutePathOnLocation("theme-preview", "replace");
+          }
+          if (
+            appReady &&
+            isLoggedIn &&
+            routePath &&
+            !this.__currentAdminRoutePath
+          ) {
+            this._applyAdminRoutePath(routePath, 0, true);
+          }
+        });
       }),
     );
   }

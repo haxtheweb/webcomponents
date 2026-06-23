@@ -231,18 +231,20 @@ class JwtLogin extends LitElement {
     }
     this.ready = true;
     // Only load from localStorage if a parent element hasn't already provided a JWT
-    if (!this.jwt) {
-      try {
-        const stored = localStorage.getItem(this.key);
-        if (stored) {
-          this.jwt = JSON.parse(stored);
+    Promise.resolve().then(() => {
+      if (!this.jwt) {
+        try {
+          const stored = localStorage.getItem(this.key);
+          if (stored) {
+            this.jwt = JSON.parse(stored);
+          }
+        } catch (e) {
+          // Corrupted localStorage value; clear it to prevent future loops
+          localStorage.removeItem(this.key);
+          this.jwt = null;
         }
-      } catch (e) {
-        // Corrupted localStorage value; clear it to prevent future loops
-        localStorage.removeItem(this.key);
-        this.jwt = null;
       }
-    }
+    });
   }
   /**
    * Request a refresh token

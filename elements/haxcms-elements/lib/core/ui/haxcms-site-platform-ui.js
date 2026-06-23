@@ -745,63 +745,74 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
     this.__disposer.push(
       autorun((reaction) => {
-        const manifest = toJS(store.manifest);
-        if (manifest && manifest.items) {
-          this.pageCount = manifest.items.length;
-        }
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          const manifest = _mobx_val_0;
+          if (manifest && manifest.items) {
+            this.pageCount = manifest.items.length;
+          }
+        });
       }),
     );
 
     this.__disposer.push(
       autorun((reaction) => {
-        const platformConfig = toJS(HAXStore.platformConfig);
-        this.platformConfig = platformConfig || {};
+        const _mobx_val_0 = toJS(HAXStore.platformConfig);
+        const _mobx_val_1 = toJS(platformConfig.features);
+        const _mobx_val_2 = toJS(HAXStore.gizmoList);
+        Promise.resolve().then(() => {
+          const platformConfig = _mobx_val_0;
+          this.platformConfig = platformConfig || {};
 
-        // hydrate local state from platformConfig so the UI reflects current site settings
-        if (platformConfig) {
-          if (platformConfig.audience) {
-            this.audience = platformConfig.audience;
-          }
+          // hydrate local state from platformConfig so the UI reflects current site settings
+          if (platformConfig) {
+            if (platformConfig.audience) {
+              this.audience = platformConfig.audience;
+            }
 
-          if (platformConfig.features) {
-            this.features = toJS(platformConfig.features);
+            if (platformConfig.features) {
+              this.features = _mobx_val_1;
+            } else {
+              this.features = {};
+            }
+
+            // allowedBlocks may arrive as null, a Set (store), or an Array (serialized)
+            const allowedBlocks = platformConfig.allowedBlocks;
+            if (allowedBlocks === null) {
+              this.allowedBlocks = null;
+            } else if (allowedBlocks instanceof Set) {
+              this.allowedBlocks = new Set(Array.from(allowedBlocks));
+            } else if (Array.isArray(allowedBlocks)) {
+              this.allowedBlocks = new Set(allowedBlocks);
+            } else {
+              this.allowedBlocks = new Set();
+            }
           } else {
+            this.allowedBlocks = new Set();
             this.features = {};
           }
 
-          // allowedBlocks may arrive as null, a Set (store), or an Array (serialized)
-          const allowedBlocks = platformConfig.allowedBlocks;
-          if (allowedBlocks === null) {
-            this.allowedBlocks = null;
-          } else if (allowedBlocks instanceof Set) {
-            this.allowedBlocks = new Set(Array.from(allowedBlocks));
-          } else if (Array.isArray(allowedBlocks)) {
-            this.allowedBlocks = new Set(allowedBlocks);
-          } else {
-            this.allowedBlocks = new Set();
-          }
-        } else {
-          this.allowedBlocks = new Set();
-          this.features = {};
-        }
-
-        const currentGizmos = toJS(HAXStore.gizmoList);
-        const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
-        this.haxBlocks = gizmos.filter(
-          (item) =>
-            !(
-              item.meta &&
-              (item.meta.inlineOnly ||
-                item.meta.hidden ||
-                item.meta.requiresParent)
-            ),
-        );
+          const currentGizmos = _mobx_val_2;
+          const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
+          this.haxBlocks = gizmos.filter(
+            (item) =>
+              !(
+                item.meta &&
+                (item.meta.inlineOnly ||
+                  item.meta.hidden ||
+                  item.meta.requiresParent)
+              ),
+          );
+        });
       }),
     );
 
     this.__disposer.push(
       autorun((reaction) => {
-        this.isMobile = !!toJS(store.isMobile);
+        const _mobx_val_0 = toJS(store.isMobile);
+        Promise.resolve().then(() => {
+          this.isMobile = !!_mobx_val_0;
+        });
       }),
     );
 
