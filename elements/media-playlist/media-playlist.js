@@ -22,7 +22,6 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.edit = false;
     this.activeIndex = 0;
-    this.dark = false;
     this.aspectRatio = "16:9";
     this.mediaItems = [];
     this.t = this.t || {};
@@ -54,12 +53,32 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       subtree: false,
     });
     this.addEventListener("keydown", this._handleKeydown);
+    this._darkModeQuery = globalThis.matchMedia(
+      "(prefers-color-scheme: dark)",
+    );
+    this._darkModeHandler = (e) => {
+      this._setDarkMode(e.matches);
+    };
+    this._darkModeQuery.addEventListener("change", this._darkModeHandler);
+    this._setDarkMode(this._darkModeQuery.matches);
   }
 
   disconnectedCallback() {
     this._observer.disconnect();
     this.removeEventListener("keydown", this._handleKeydown);
+    if (this._darkModeQuery && this._darkModeHandler) {
+      this._darkModeQuery.removeEventListener(
+        "change",
+        this._darkModeHandler,
+      );
+    }
     super.disconnectedCallback();
+  }
+
+  _setDarkMode(isDark) {
+    this.mediaItems.forEach((item) => {
+      item.element.toggleAttribute("dark", isDark);
+    });
   }
 
   static get properties() {
@@ -67,7 +86,6 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       edit: { type: Boolean, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
-      dark: { type: Boolean, reflect: true },
       aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
       mediaItems: { type: Array },
     };
@@ -109,10 +127,18 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         .player-area {
           position: relative;
           background: var(--ddd-theme-default-black);
-          min-height: 300px;
+          width: 100%;
+          aspect-ratio: var(--media-playlist-aspect-ratio, 16 / 9);
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
+        }
+
+        .player-area ::slotted(*) {
+          width: 100%;
+          height: 100%;
+          display: block;
         }
 
         /* Hide the default slot that catches non-active children */
@@ -196,32 +222,34 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         /* Dark mode */
-        :host([dark]) .playlist {
-          background: var(--ddd-theme-default-black);
-        }
+        @media (prefers-color-scheme: dark) {
+          .playlist {
+            background: var(--ddd-theme-default-black);
+          }
 
-        :host([dark]) .playlist-header {
-          color: var(--ddd-theme-default-white);
-        }
+          .playlist-header {
+            color: var(--ddd-theme-default-white);
+          }
 
-        :host([dark]) .playlist-item {
-          background: var(--ddd-theme-default-coalyGray);
-        }
+          .playlist-item {
+            background: var(--ddd-theme-default-coalyGray);
+          }
 
-        :host([dark]) .playlist-item:hover {
-          background: var(--ddd-theme-default-shade);
-        }
+          .playlist-item:hover {
+            background: var(--ddd-theme-default-shade);
+          }
 
-        :host([dark]) .playlist-item.active {
-          background: var(--ddd-theme-default-limestoneGray);
-        }
+          .playlist-item.active {
+            background: var(--ddd-theme-default-limestoneGray);
+          }
 
-        :host([dark]) .playlist-title {
-          color: var(--ddd-theme-default-white);
-        }
+          .playlist-title {
+            color: var(--ddd-theme-default-white);
+          }
 
-        :host([dark]) .playlist-number {
-          color: var(--ddd-theme-default-limestoneLight);
+          .playlist-number {
+            color: var(--ddd-theme-default-limestoneLight);
+          }
         }
 
         /* Mobile */
@@ -253,7 +281,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       `;
     }
     return html`
-      <div class="layout">
+      <div class="layout" style="--media-playlist-aspect-ratio: ${this.aspectRatio.replace(':', ' / ')}">
         <div class="player-area">
           <slot name="active"></slot>
         </div>
@@ -273,7 +301,6 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
                 @click="${() => this._setActiveIndex(index)}"
                 aria-current="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${this.t.play} ${item.title}, ${item.duration}"
-                tabindex="${index === this.activeIndex ? "0" : "-1"}"
                 data-index="${index}"
               >
                 <span class="playlist-number">${index + 1}</span>
@@ -314,11 +341,12 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       duration: el.getAttribute("duration") || "",
       tagName: el.tagName,
     }));
-    if (this.dark) {
-      this.mediaItems.forEach((item) => {
-        item.element.toggleAttribute("dark", true);
-      });
-    }
+    const isDark =
+      this._darkModeQuery &&
+      this._darkModeQuery.matches;
+    this.mediaItems.forEach((item) => {
+      item.element.toggleAttribute("dark", isDark);
+    });
     this._syncActiveSlot();
   }
 
@@ -399,7 +427,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "edit") {
+    if (propName === "edit") {
         if (this.edit) {
           this.mediaItems.forEach((item) => {
             item.element.removeAttribute("slot");
@@ -408,10 +436,17 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
           this._syncActiveSlot();
         }
       }
-      if (propName === "dark") {
-        this.mediaItems.forEach((item) => {
-          item.element.toggleAttribute("dark", this.dark);
-        });
+      if (
+        propName === "activeIndex" &&
+        typeof oldValue !== "undefined" &&
+        this.mediaItems[this.activeIndex]
+      ) {
+        const newPlayer = this.mediaItems[this.activeIndex].element;
+        if (newPlayer.play && typeof newPlayer.play === "function") {
+          setTimeout(() => {
+            newPlayer.play();
+          }, 0);
+        }
       }
     });
   }

@@ -107,7 +107,7 @@
   "lrn-table": "Lrn Table",
   "lrn-vocab": "Vocab",
   "lrndesign-bar": "Lrndesign Bar",
-  "lrndesign-chart": "Accent Color",
+  "lrndesign-chart": "Lrndesign Chart",
   "lrndesign-line": "Lrndesign Line",
   "lrndesign-pie": "Lrndesign Pie",
   "lrndesign-timeline": "Timeline",
@@ -116,6 +116,7 @@
   "matching-question": "Matching Question",
   "md-block": "Markdown",
   "media-image": "Enhanced Image",
+  "media-playlist": "Media Playlist",
   "media-quote": "Media Quote",
   "meme-maker": "Meme Maker",
   "moar-sarcasm": "Moar Sarcasm",
@@ -187,6 +188,6 @@
   "vocab-term": "Vocab Term",
   "web-container": "Web Container",
   "web-container-doc-player": "Web Container Doc Player",
-  "wikipedia-query": "Wikipedia",
+  "wikipedia-query": "Wikipedia Query",
   "worksheet-download": "Worksheet Download"
 }

@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 223,
-    "elementsWithTranslations": 37,
-    "translationFilesFound": 787,
+    "elementsScanned": 224,
+    "elementsWithTranslations": 38,
+    "translationFilesFound": 805,
     "languagesSupported": [
       "af",
       "am",
@@ -712,6 +712,44 @@
     ],
     "map-menu": [
       "es"
+    ],
+    "media-playlist.ar": [
+      "haxProperties"
+    ],
+    "media-playlist": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "media-playlist.bn": [
+      "haxProperties"
+    ],
+    "media-playlist.es": [
+      "haxProperties"
+    ],
+    "media-playlist.fr": [
+      "haxProperties"
+    ],
+    "media-playlist.hi": [
+      "haxProperties"
+    ],
+    "media-playlist.ja": [
+      "haxProperties"
+    ],
+    "media-playlist.pt": [
+      "haxProperties"
+    ],
+    "media-playlist.ru": [
+      "haxProperties"
+    ],
+    "media-playlist.zh": [
+      "haxProperties"
     ],
     "meme-maker.haxProperties": [
       "ar",
