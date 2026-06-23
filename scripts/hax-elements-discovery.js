@@ -68,13 +68,17 @@ function extractElementName(content, filename) {
  * Extract title from gizmo object in haxProperties or setHaxProperties calls
  */
 function extractTitleFromGizmo(content, fallbackName) {
-  // Try to find gizmo title within an actual gizmo context.
-  // This looks for a "gizmo" object followed by a "title" property
-  // and captures the title value.
-  const gizmoTitleRegex = /gizmo\s*:\s*\{[\s\S]*?title\s*:\s*['"`]([^'"`]+)['"`][\s\S]*?\}/s;
-  const match = content.match(gizmoTitleRegex);
-  if (match && match[1]) {
-    return match[1];
+  // Extract the gizmo block, then strip nested arrays so we only
+  // match object-level properties (not "title" inside handles/tags).
+  const gizmoBlock = content.match(/gizmo\s*:\s*\{([\s\S]*?)\}(?=\s*,|\s*\}|\s*$)/s);
+  if (gizmoBlock && gizmoBlock[1]) {
+    // Remove any [...] blocks to avoid matching title inside handles, tags, etc.
+    const gizmoWithoutArrays = gizmoBlock[1].replace(/\[[\s\S]*?\]/g, '');
+    const titleMatch = gizmoWithoutArrays.match(/title\s*:\s*['"`]([^'"`]+)['"`]/);
+    const badTitles = ['title', 'label', 'alt', 'caption'];
+    if (titleMatch && titleMatch[1] && !badTitles.includes(titleMatch[1])) {
+      return titleMatch[1];
+    }
   }
   
   // Generate title from element name as fallback
