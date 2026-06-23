@@ -361,7 +361,6 @@ export const HaxIconsetManifest = [
       "github-circle",
       "google-plus-box",
       "google-plus",
-      null,
       "instagram",
       "instapaper",
       "linkedin",

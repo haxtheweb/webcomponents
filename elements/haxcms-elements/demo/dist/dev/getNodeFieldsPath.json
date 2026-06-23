@@ -90,16 +90,12 @@
                 "required": false,
                 "icon": "editor:format-paint",
                 "options": {
-                  "odl-haxtheme": "Eberly ODL",
-                  "key": "haxcms-theme-developer",
                   "learn-two-theme": "Learn",
                   "outline-player": "Documentation",
                   "simple-blog": "Simple blog",
                   "haxcms-basic-theme": "Basic site",
-                  "haxcms-minimalist-theme": "Minimalist site",
                   "haxcms-slide-theme": "Slide deck",
-                  "haxcms-dev-theme": "DEVELOPER: Test theme",
-                  "haxcms-theme-developer": "EXPERIMENTAL: HAX Theme Maker"
+                  "haxcms-dev-theme": "DEVELOPER: Test theme"
                 }
               }
             ]

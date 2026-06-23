@@ -41,9 +41,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 
 // themes are dynamically imported and without directly being mentioned
 import "@haxtheweb/haxcms-elements/lib/development/haxcms-dev-theme.js";
-import "@haxtheweb/haxcms-elements/lib/development/haxcms-theme-developer.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-slide-theme.js";
-import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-minimalist-theme.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-custom-theme.js";
 import "@haxtheweb/outline-player/outline-player.js";

@@ -9,7 +9,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `resume-theme`
@@ -273,7 +273,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
           flex-shrink: 0;
         }
 
-        .contact-icon simple-icon-button-lite {
+        .contact-icon simple-icon-lite {
           --simple-icon-width: 18px;
           --simple-icon-height: 18px;
           color: var(--ddd-theme-default-pughBlue);
@@ -397,13 +397,13 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
   socialLinkIcon(url) {
     if (!url) return 'icons:launch';
     const lower = url.toLowerCase();
-    if (lower.includes('linkedin.com')) return 'social-media:linkedin';
-    if (lower.includes('github.com') || lower.includes('gitlab.com')) return 'social-media:github';
-    if (lower.includes('twitter.com') || lower.includes('x.com') || lower.includes('t.co')) return 'social-media:twitter';
-    if (lower.includes('facebook.com') || lower.includes('fb.me')) return 'social-media:facebook';
-    if (lower.includes('instagram.com')) return 'social-media:instagram';
-    if (lower.includes('youtube.com') || lower.includes('youtu.be')) return 'social-media:youtube';
-    if (lower.includes('tiktok.com')) return 'social-media:tiktok';
+    if (lower.includes('linkedin.com')) return 'mdi-social:linkedin';
+    if (lower.includes('github.com') || lower.includes('gitlab.com')) return 'mdi-social:github-circle';
+    if (lower.includes('twitter.com') || lower.includes('x.com') || lower.includes('t.co')) return 'mdi-social:twitter';
+    if (lower.includes('facebook.com') || lower.includes('fb.me')) return 'mdi-social:facebook';
+    if (lower.includes('instagram.com')) return 'mdi-social:instagram';
+    if (lower.includes('youtube.com') || lower.includes('youtu.be')) return 'mdi-social:youtube';
+    if (lower.includes('tiktok.com')) return 'mdi-social:tiktok';
     return 'icons:launch';
   }
 
@@ -425,7 +425,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
     if (!url) return '';
     return html`
       <div class="contact-item" part="contact-item">
-        <div class="contact-icon"><simple-icon-button-lite icon="${this.socialLinkIcon(url)}" disabled></simple-icon-button-lite></div>
+        <div class="contact-icon"><simple-icon-lite icon="${this.socialLinkIcon(url)}"></simple-icon-lite></div>
         <div class="contact-text"><a href="${url}" target="_blank" rel="noopener noreferrer" part="contact-link">${this.socialLinkLabel(url)}</a></div>
       </div>
     `;
@@ -454,31 +454,31 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
           <div class="contact-ring" part="contact-ring">
             ${this.authorEmail
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-button-lite icon="icons:mail" disabled></simple-icon-button-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="icons:mail"></simple-icon-lite></div>
                   <div class="contact-text"><a href="mailto:${this.authorEmail}" part="contact-link">${this.authorEmail}</a></div>
                 </div>`
               : ""}
             ${this.authorPhone
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-button-lite icon="icons:phone" disabled></simple-icon-button-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="icons:phone"></simple-icon-lite></div>
                   <div class="contact-text"><a href="tel:${this.authorPhone}" part="contact-link">${this.authorPhone}</a></div>
                 </div>`
               : ""}
             ${this.authorLocation
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-button-lite icon="icons:room" disabled></simple-icon-button-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="icons:room"></simple-icon-lite></div>
                   <div class="contact-text"><span part="contact-text">${this.authorLocation}</span></div>
                 </div>`
               : ""}
             ${this.authorWebsite
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-button-lite icon="icons:language" disabled></simple-icon-button-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="icons:language"></simple-icon-lite></div>
                   <div class="contact-text"><a href="${this.authorWebsite}" target="_blank" rel="noopener noreferrer" part="contact-link">${this.authorWebsite.replace(/^https?:\/\//, "")}</a></div>
                 </div>`
               : ""}
             ${this.authorWebsite2
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-button-lite icon="icons:language" disabled></simple-icon-button-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="icons:language"></simple-icon-lite></div>
                   <div class="contact-text"><a href="${this.authorWebsite2}" target="_blank" rel="noopener noreferrer" part="contact-link">${this.authorWebsite2.replace(/^https?:\/\//, "")}</a></div>
                 </div>`
               : ""}

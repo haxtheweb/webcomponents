@@ -68,18 +68,13 @@ function extractElementName(content, filename) {
  * Extract title from gizmo object in haxProperties or setHaxProperties calls
  */
 function extractTitleFromGizmo(content, fallbackName) {
-  // Try to find gizmo title in various formats
-  const gizmoTitleMatches = [
-    /gizmo\s*:\s*{[^}]*title\s*:\s*['"`]([^'"`]+)['"`]/s,
-    /title\s*:\s*['"`]([^'"`]+)['"`][^}]*gizmo/s,
-    /['"`]title['"`]\s*:\s*['"`]([^'"`]+)['"`]/s
-  ];
-  
-  for (const regex of gizmoTitleMatches) {
-    const match = content.match(regex);
-    if (match && match[1]) {
-      return match[1];
-    }
+  // Try to find gizmo title within an actual gizmo context.
+  // This looks for a "gizmo" object followed by a "title" property
+  // and captures the title value.
+  const gizmoTitleRegex = /gizmo\s*:\s*\{[\s\S]*?title\s*:\s*['"`]([^'"`]+)['"`][\s\S]*?\}/s;
+  const match = content.match(gizmoTitleRegex);
+  if (match && match[1]) {
+    return match[1];
   }
   
   // Generate title from element name as fallback
@@ -122,11 +117,43 @@ function hasHaxSchema(content) {
 }
 
 /**
+ * Validate that the given name is a valid custom element name per spec.
+ * Must be all lowercase, contain at least one hyphen, not start with a digit
+ * or hyphen, and contain only lowercase letters, digits, and hyphens.
+ */
+function isValidCustomElementName(name) {
+  if (!name || typeof name !== 'string') {
+    return false;
+  }
+  // Must contain at least one hyphen
+  if (!name.includes('-')) {
+    return false;
+  }
+  // Must not start with a digit or hyphen
+  if (/^[0-9-]/.test(name)) {
+    return false;
+  }
+  // Must contain only lowercase a-z, 0-9, and hyphens
+  if (!/^[a-z0-9-]+$/.test(name)) {
+    return false;
+  }
+  // Must not end with a hyphen
+  if (name.endsWith('-')) {
+    return false;
+  }
+  // Must not contain consecutive hyphens or start with xml
+  if (name.includes('--') || name.toLowerCase().startsWith('xml')) {
+    return false;
+  }
+  return true;
+}
+
+/**
  * Check if element should be skipped
  */
 function shouldSkipElement(elementName, filePath) {
   // Skip if no element name or doesn't look like a custom element
-  if (!elementName || !elementName.includes('-')) {
+  if (!elementName || !isValidCustomElementName(elementName)) {
     return true;
   }
   

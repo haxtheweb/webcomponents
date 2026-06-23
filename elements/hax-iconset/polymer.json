@@ -1,6 +1,6 @@
 {
   "entrypoint": "demo/index.html",
-  
+
   "sources": [],
   "builds": [
     {

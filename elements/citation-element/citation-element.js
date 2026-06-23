@@ -277,7 +277,6 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   static get haxProperties() {
     return {
       canScale: false,
-
       canEditSource: true,
       gizmo: {
         title: "Citation",
