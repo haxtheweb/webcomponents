@@ -39,7 +39,7 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^26.0.0",
     "@haxtheweb/schema-behaviors": "^26.0.0",
-    "lit": "3.3.2"
+    "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

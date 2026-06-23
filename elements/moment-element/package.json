@@ -41,8 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/es-global-bridge": "^26.0.0",
-    "@polymer/polymer": "3.5.2"
+    "@haxtheweb/es-global-bridge": "^26.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

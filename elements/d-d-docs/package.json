@@ -42,7 +42,7 @@
     "@haxtheweb/simple-modal": "^26.0.0",
     "@haxtheweb/stop-note": "^26.0.0",
     "@haxtheweb/video-player": "^26.0.0",
-    "lit": "3.3.2"
+    "lit": "3.3.3"
   },
   "devDependencies": {
     "@babel/preset-env": "7.29.5",

@@ -40,9 +40,7 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@polymer/polymer": "3.5.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^26.0.0",

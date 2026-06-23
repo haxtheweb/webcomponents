@@ -52,7 +52,7 @@
     "@haxtheweb/simple-icon": "^26.0.0",
     "@haxtheweb/user-scaffold": "^26.0.0",
     "@lit-labs/virtualizer": "2.1.1",
-    "lit": "3.3.2",
+    "lit": "3.3.3",
     "mobx": "6.13.7",
     "web-dialog": "0.0.11"
   },

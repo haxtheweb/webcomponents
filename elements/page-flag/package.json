@@ -51,7 +51,7 @@
     "@haxtheweb/simple-fields": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
     "@haxtheweb/simple-picker": "^26.0.0",
-    "lit": "3.3.2"
+    "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

@@ -42,8 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/cms-hax": "^26.0.0",
-    "@haxtheweb/hax-body-behaviors": "^26.0.0",
-    "@polymer/polymer": "3.5.2"
+    "@haxtheweb/hax-body-behaviors": "^26.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
