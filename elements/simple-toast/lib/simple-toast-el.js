@@ -140,6 +140,7 @@ class SimpleToastEl extends DDD {
     this.awaitingMerlinInput = false;
     this.duration = 3000;
     this.opened = false;
+    this.__hideTimeout = null;
     this.addEventListener("animationend", this._onAnimationEnd);
   }
 
@@ -147,6 +148,11 @@ class SimpleToastEl extends DDD {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "opened" && oldValue !== undefined) {
+        // clear any pending hide timeout to prevent race conditions
+        if (this.__hideTimeout) {
+          clearTimeout(this.__hideTimeout);
+          this.__hideTimeout = null;
+        }
         // notify for others listening
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
@@ -156,10 +162,15 @@ class SimpleToastEl extends DDD {
           }),
         );
         if (this[propName]) {
+          this.style.animation = "none";
           this.show(this.text);
+          setTimeout(() => {
+            this.style.animation = this._getAnimation();
+          }, 0);
         } else {
           this.style.animation = "none";
-          setTimeout(() => {
+          this.__hideTimeout = setTimeout(() => {
+            this.__hideTimeout = null;
             this.style.animation = this._getAnimation();
           }, 600);
         }

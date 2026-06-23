@@ -460,7 +460,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
               : ""}
             ${this.authorPhone
               ? html`<div class="contact-item" part="contact-item">
-                  <div class="contact-icon"><simple-icon-lite icon="icons:phone"></simple-icon-lite></div>
+                  <div class="contact-icon"><simple-icon-lite icon="communication:phone"></simple-icon-lite></div>
                   <div class="contact-text"><a href="tel:${this.authorPhone}" part="contact-link">${this.authorPhone}</a></div>
                 </div>`
               : ""}

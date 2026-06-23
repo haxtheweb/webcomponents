@@ -1,10 +1,13 @@
-import { html, fixture, expect } from "@open-wc/testing";
-import "../lib/journey-sidebar-theme.js";
-describe("JourneySidebarTheme test", () => {
+import { html, fixture, expect } from '@open-wc/testing';
+import "../media-playlist.js";
+
+describe("MediaPlaylist test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <journey-sidebar-theme title="title"></journey-sidebar-theme>
+      <media-playlist
+        title="title"
+      ></media-playlist>
     `);
   });
 

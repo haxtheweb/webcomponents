@@ -42,8 +42,11 @@ class SimpleContextMenu extends DDD {
             0 2px 8px rgba(0, 0, 0, 0.15)
           );
           min-width: var(--simple-context-menu-min-width, 200px);
+          max-width: calc(100vw - var(--ddd-spacing-4));
           padding: 0;
           margin: 0;
+          right: auto;
+          bottom: auto;
           z-index: var(--simple-context-menu-z-index, 1000);
           border-radius: var(--ddd-radius-md);
         }
@@ -222,6 +225,11 @@ class SimpleContextMenu extends DDD {
    * Position the dialog based on strategy
    */
   _positionDialog(dialog, anchorElement) {
+    // Override browser default dialog positioning that may interfere
+    dialog.style.margin = '0';
+    dialog.style.right = 'auto';
+    dialog.style.bottom = 'auto';
+
     if (this.positionStrategy === "fixed") {
       dialog.style.top = `${this.y}px`;
       dialog.style.left = `${this.x}px`;
@@ -230,6 +238,47 @@ class SimpleContextMenu extends DDD {
       dialog.style.top = `${rect.bottom + this.offset}px`;
       dialog.style.left = `${rect.left}px`;
     }
+
+    // Ensure dialog stays within viewport
+    const dialogRect = dialog.getBoundingClientRect();
+    const viewportWidth = globalThis.innerWidth;
+    const viewportHeight = globalThis.innerHeight;
+
+    let top = dialogRect.top;
+    let left = dialogRect.left;
+
+    // Prevent overflow on the right — flip to right-align for anchor strategy
+    if (left + dialogRect.width > viewportWidth) {
+      if (this.positionStrategy === "anchor" && anchorElement) {
+        const rect = anchorElement.getBoundingClientRect();
+        left = rect.right - dialogRect.width;
+      } else {
+        left = Math.max(0, viewportWidth - dialogRect.width);
+      }
+    }
+
+    // Prevent overflow on the left
+    if (left < 0) {
+      left = 0;
+    }
+
+    // Prevent overflow on the bottom — flip above anchor for anchor strategy
+    if (top + dialogRect.height > viewportHeight) {
+      if (this.positionStrategy === "anchor" && anchorElement) {
+        const rect = anchorElement.getBoundingClientRect();
+        top = rect.top - dialogRect.height - this.offset;
+      } else {
+        top = Math.max(0, viewportHeight - dialogRect.height);
+      }
+    }
+
+    // Prevent overflow on the top
+    if (top < 0) {
+      top = 0;
+    }
+
+    dialog.style.top = `${top}px`;
+    dialog.style.left = `${left}px`;
   }
 
   /**

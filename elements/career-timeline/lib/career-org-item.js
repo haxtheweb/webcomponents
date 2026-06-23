@@ -102,7 +102,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="org-info">
-        <img id="logo" src="${this.source}"/>
+        <img id="logo" src="${this.source}" alt=""/>
         <div class="org">
           <h3>${this.organization}</h3>
           ${this.location} · ${this._formatDate()}

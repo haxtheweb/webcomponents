@@ -82,12 +82,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
           font-weight: bold;
         }
 
-        h3 {
-          margin: 4px 0 0 0;
-          color: var(--lowContrast-override, var(--ddd-theme-primary, #1e407c));
-        }
-
-        h5 {
+        h4 {
           margin-top: 0;
         }
 
@@ -115,7 +110,7 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       <div class="wrapper">
         <div class="circle"></div>
         <div class="role-content">
-          <h5>${this.title}</h5>
+          <h4>${this.title}</h4>
           ${this._formatDate()}
           <div><slot></slot></div>
           ${this._formatSkills()}

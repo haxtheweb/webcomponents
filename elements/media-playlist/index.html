@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for media-playlist">
+
+  <style>
+    :root, html, body {
+      margin: var(--ddd-spacing-0);
+      padding: var(--ddd-spacing-0);
+    }
+    #demo {
+      margin: var(--ddd-spacing-2);
+    }
+    media-playlist {
+      margin: var(--ddd-spacing-2);
+      border: var(--ddd-border-md);
+      border-radius: var(--ddd-radius-lg);
+    }
+    media-playlist:hover {
+      box-shadow: var(--ddd-boxShadow-sm);
+    }
+    #example {
+      --media-playlist-font-size: var(--ddd-font-size-l);
+      background-color: var(--ddd-accent-2);
+      color: var(--ddd-primary-17);
+    }
+  </style>
+  <title>media-playlist</title>
+</head>
+
+<body>
+  <div id="demo">
+    <h1>media-playlist</h1>
+    <!-- this is going to do whatever the tag's defaults are -->
+    <h2>Default</h2>
+    <media-playlist></media-playlist>
+    <h2>Slot usage</h2>
+    <media-playlist data-accent="2" data-primary="17"><div>Sample slot content</div></media-playlist>
+    <h2>Property usage</h2>
+    <media-playlist id="example" title="Sample property title"></media-playlist>
+  </div>
+  <script type="module" src="./media-playlist.js"></script>
+
+  <!-- Take HAX, the Web and you further down the rabbit hole -->
+  <style>
+    #follow-the-white-rabbit {
+      margin: var(--ddd-spacing-4) auto var(--ddd-spacing-16)  var(--ddd-spacing-4);
+      background-color: var(--ddd-accent-4);
+      color: var(--ddd-theme-default-coalyGray);
+    }
+    #follow-the-white-rabbit[open] summary {
+      background-color: var(--ddd-accent-4) !important;
+      color: var(--ddd-theme-default-coalyGray);
+    }
+    #follow-the-white-rabbit[open] .content {
+      padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
+    }
+    #follow-the-white-rabbit ul,
+    #follow-the-white-rabbit li {
+      padding: var(--ddd-spacing-0);
+      margin: var(--ddd-spacing-0);
+    }
+    #follow-the-white-rabbit li {
+      font-size: var(--ddd-font-size-xs);
+      list-style: none;
+    }
+    #follow-the-white-rabbit li strong,
+    #follow-the-white-rabbit li a {
+      padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+      color: var(--ddd-theme-default-coalyGray);
+      display: block;
+      font-weight: var(--ddd-font-weight-bold);
+    }
+    #follow-the-white-rabbit li:focus-within a,
+    #follow-the-white-rabbit li:hover a {
+      background-color: var(--ddd-theme-default-coalyGray);
+      color: var(--ddd-theme-default-globalNeon);
+    }
+  </style>
+  <details id="follow-the-white-rabbit" open>
+    <summary>How to Develop</summary>
+    <div class="content">
+      <p>
+      
+      </p>
+      <p>
+        You can edit the current page by modifying <code>index.html</code><br />
+        To edit your <strong>media-playlist</strong> tag, modify <code>src/media-playlist.js</code>.
+        This file contains all the HTML, CSS and JavaScript used to render your elements above!
+      </p>
+      <p>
+        Web components are easy to follow once you get used to their pattern.
+        Below are links to help on your journey. Good luck, we need you!
+      </p>
+      <ul>
+        <li><a href="https://haxtheweb.org/documentation/ddd" target="_blank">🧑‍🎨 Learn DDD HAX Design system</a></li>
+        <li><a href="https://lit.dev/playground/" target="_blank" rel="nofollow">🔥 Learn Lit</a></li>
+        <li><a href="https://hax.psu.edu" target="_blank">🧙 HAX The Web @ Penn State</a></li>
+      </ul>
+      <h2>Join and Share HAX</h2>
+      <ul>
+        <li><a href="https://github.com/haxtheweb/issues/issues" target="_blank" rel="nofollow">🔮 Ideas to HAX Harder, Better, Faster, Stronger</a></li>
+        <li><a href="https://bit.ly/hax-the-linkedin" target="_blank" rel="nofollow">👔 Share on LinkedIn</a></li>
+        <li><a href="https://bit.ly/hax-the-x" target="_blank" rel="nofollow">🧵 Tweet on X</a></li>
+        <li><a href="https://bit.ly/hax-discord" target="_blank" rel="nofollow">💬 Join Community</a></li>
+      </ul>
+      <h2>Learn the languages and tools</h2>
+      <ul>
+        <li><a href="https://w3schools.com" target="_blank" rel="nofollow">🌐 Learn HTML</a></li>
+        <li><a href="https://web.dev/learn/css/" target="_blank" rel="nofollow">🎨 Learn CSS</a></li>
+        <li><a href="http://Javascript.info" target="_blank" rel="nofollow">💻 Learn JavaScript (JS)</a></li>
+        <li><a href="https://gitimmersion.com" target="_blank" rel="nofollow">🦺 Learn Git / Github</a></li>
+        <li><a href="https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/" target="_blank" rel="nofollow">📦 Learn NPM</a></li>
+        <li><a href="http://learnux.io" target="_blank" rel="nofollow">📐 Learn UX / UI development</a></li>
+      </ul>
+      <h2>Find purpose and inspiration</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=eC7xzavzEKY" target="_blank" rel="nofollow">🐟 This is Water - David Foster Wallace</a></li>
+        <li><a href="https://www.youtube.com/watch?v=kYfNvmF0Bqw" target="_blank" rel="nofollow">🏗️ Secrets of Life - Steve Jobs</a></li>
+        <li><strong>💡 <em>Never. Stop. Innovating.</em></strong></li>
+      </ul>
+    </div>
+  </details>
+</body>
+</html>

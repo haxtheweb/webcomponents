@@ -52,7 +52,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     };
     this.activeDrag = false;
     this.activeType = null;
-    this.where = "index";
+    this.where = "title";
     this.icon = "hardware:keyboard-return";
     // Accessibility properties for ARIA management
     this._selectedIndex = -1;

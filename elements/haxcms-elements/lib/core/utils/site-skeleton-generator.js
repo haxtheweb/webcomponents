@@ -7,7 +7,7 @@ import { store } from "../haxcms-site-store.js";
 import { toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 
-export class SiteSkeletonGenerator {
+class SiteSkeletonGenerator {
   /**
    * Generate skeleton from current live site
    * @param {boolean} confirmed - Whether user confirmed for large sites

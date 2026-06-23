@@ -434,6 +434,10 @@ export class RPGCharacterToast extends SimpleToastEl {
     if (!this.opened) {
       this.opened = true;
     }
+    this.style.animation = "none";
+    setTimeout(() => {
+      this.style.animation = this._getAnimation();
+    }, 0);
   }
 
   hide() {

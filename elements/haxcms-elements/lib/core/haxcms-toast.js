@@ -162,7 +162,8 @@ export class HAXCMSToast extends RPGCharacterToast {
         }
         .dismiss {
           margin: 0;
-          color: inherit;
+          color: white;
+          background-color: black;
           --simple-icon-height: var(--ddd-icon-xs, 20px);
           --simple-icon-width: var(--ddd-icon-xs, 20px);
           --simple-icon-button-padding: var(--ddd-spacing-1, 4px);
