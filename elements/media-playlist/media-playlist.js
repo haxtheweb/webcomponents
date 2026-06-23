@@ -427,7 +427,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-    if (propName === "edit") {
+      if (propName === "edit") {
         if (this.edit) {
           this.mediaItems.forEach((item) => {
             item.element.removeAttribute("slot");
