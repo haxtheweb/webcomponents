@@ -38,6 +38,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/dynamic-import-registry": "^26.0.0",
+    "@haxtheweb/utils": "^26.0.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

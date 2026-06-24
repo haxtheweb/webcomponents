@@ -44,7 +44,8 @@
     "@haxtheweb/es-global-bridge": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/iframe-loader": "^26.0.0",
-    "lit": "3.3.3"
+    "lit": "3.3.3",
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

@@ -46,6 +46,7 @@
     "@haxtheweb/absolute-position-behavior": "^26.0.0",
     "@haxtheweb/code-editor": "^26.0.0",
     "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/hax-iconset": "^26.0.0",
     "@haxtheweb/md-extra-icons": "9.0.1",
     "@haxtheweb/micro-frontend-registry": "^26.0.0",
     "@haxtheweb/simple-fields": "^26.0.0",

@@ -7,8 +7,8 @@
     "url": "https://github.com/haxtheweb/webcomponents.git"
   },
   "type": "module",
-  "main": "lib/IntersectionElementSuper.js",
-  "module": "lib/IntersectionElementSuper.js",
+  "main": "lib/IntersectionObserverMixin.js",
+  "module": "lib/IntersectionObserverMixin.js",
   "author": {
     "name": "haxtheweb",
     "url": "https://hax.psu.edu/"

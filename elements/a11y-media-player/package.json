@@ -47,6 +47,7 @@
     "@haxtheweb/anchor-behaviors": "^26.0.0",
     "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/fullscreen-behaviors": "^26.0.0",
+    "@haxtheweb/hax-iconset": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",
     "@haxtheweb/responsive-utility": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",

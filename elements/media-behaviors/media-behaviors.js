@@ -14,7 +14,6 @@ globalThis.MediaBehaviors = globalThis.MediaBehaviors || {};
  * bar yet actually transform that address into a cookie free embed that
  * strips off the related videos and other options.
  *
- * @polymerBehavior MediaBehaviors.Video
  **/
 globalThis.MediaBehaviors.Video = {
   /**

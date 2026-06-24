@@ -35,17 +35,6 @@
         "title": "Active index",
         "description": "Index of the active item to start on.",
         "inputMethod": "number"
-      },
-      {
-        "property": "aspectRatio",
-        "title": "Aspect ratio",
-        "description": "Aspect ratio of the player area.",
-        "inputMethod": "select",
-        "options": {
-          "16:9": "16:9",
-          "4:3": "4:3",
-          "1:1": "1:1"
-        }
       }
     ],
     "advanced": [],

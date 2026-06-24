@@ -12,12 +12,6 @@ import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manif
  * `simple-iconset-demo`
  * @element simple-iconset-demo
  * `iterates through an iconset array to generate a demo of all of the icons`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
  */
 class SimpleIconsetDemo extends LitElement {

@@ -24,12 +24,6 @@ globalThis.RelativeHeadingStateManager.requestAvailability = () => {
  * `relative-heading-state-manager`
  * ` A utility that determines headings relative to their parents.`
  * @element relative-heading-state-manager
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  */
 class RelativeHeadingStateManager extends LitElement {
   /**

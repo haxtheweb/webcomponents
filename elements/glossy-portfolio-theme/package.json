@@ -28,6 +28,7 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
+    "@haxtheweb/bootstrap-theme": "^26.0.0",
     "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",

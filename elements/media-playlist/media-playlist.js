@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { copyToClipboard } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/video-player/video-player.js";
+import "@haxtheweb/audio-player/audio-player.js";
 
 /**
  * `media-playlist`
@@ -22,8 +24,8 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.edit = false;
     this.activeIndex = 0;
-    this.aspectRatio = "16:9";
     this.mediaItems = [];
+    this._playTimeout = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -72,6 +74,9 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         this._darkModeHandler,
       );
     }
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect();
+    }
     super.disconnectedCallback();
   }
 
@@ -86,7 +91,6 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       edit: { type: Boolean, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
-      aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
       mediaItems: { type: Array },
     };
   }
@@ -122,22 +126,18 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
           background: var(--ddd-theme-default-black);
           border-radius: var(--ddd-radius-sm);
           overflow: hidden;
+          align-items: start;
         }
 
         .player-area {
           position: relative;
           background: var(--ddd-theme-default-black);
           width: 100%;
-          aspect-ratio: var(--media-playlist-aspect-ratio, 16 / 9);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
+          display: block;
         }
 
-        .player-area ::slotted(*) {
+        .player-area > * {
           width: 100%;
-          height: 100%;
           display: block;
         }
 
@@ -151,7 +151,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
           flex-direction: column;
           gap: var(--ddd-spacing-1);
           overflow-y: auto;
-          max-height: 100%;
+          max-height: var(--playlist-max-height, 100%);
           padding: var(--ddd-spacing-2);
           background: var(--ddd-theme-default-coalyGray);
         }
@@ -280,10 +280,35 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         </div>
       `;
     }
+    const activeItem = this.mediaItems[this.activeIndex];
     return html`
-      <div class="layout" style="--media-playlist-aspect-ratio: ${this.aspectRatio.replace(':', ' / ')}">
+      <div class="layout">
         <div class="player-area">
-          <slot name="active"></slot>
+          ${activeItem
+            ? activeItem.isAudio
+              ? html`
+                  <audio-player
+                    id="player"
+                    source="${activeItem.source}"
+                    media-title="${activeItem.mediaTitle}"
+                    thumbnail-src="${activeItem.thumbnailSrc}"
+                    .tracks="${activeItem.tracks}"
+                    crossorigin="${activeItem.crossorigin}"
+                    lang="${activeItem.lang}"
+                  ></audio-player>
+                `
+              : html`
+                  <video-player
+                    id="player"
+                    source="${activeItem.source}"
+                    media-title="${activeItem.mediaTitle}"
+                    thumbnail-src="${activeItem.thumbnailSrc}"
+                    .tracks="${activeItem.tracks}"
+                    crossorigin="${activeItem.crossorigin}"
+                    lang="${activeItem.lang}"
+                  ></video-player>
+                `
+            : html``}
         </div>
         <div
           class="playlist"
@@ -334,53 +359,104 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     if (this.activeIndex >= items.length) {
       this.activeIndex = 0;
     }
-    this.mediaItems = items.map((el, index) => ({
-      element: el,
-      title: el.getAttribute("media-title") || `${this.t.item} ${index + 1}`,
-      thumbnailSrc: el.getAttribute("thumbnail-src") || "",
-      duration: el.getAttribute("duration") || "",
-      tagName: el.tagName,
-    }));
+    this.mediaItems = items.map((el, index) => {
+      let tracks = [];
+      if (el.tracks && Array.isArray(el.tracks)) {
+        tracks = el.tracks;
+      } else if (el.getAttribute("tracks")) {
+        try {
+          tracks = JSON.parse(el.getAttribute("tracks"));
+        } catch (e) {}
+      }
+      const mediaTitle =
+        el.mediaTitle ||
+        el.getAttribute("media-title") ||
+        `${this.t.item} ${index + 1}`;
+      return {
+        element: el,
+        tagName: el.tagName,
+        source: el.source || el.getAttribute("source") || "",
+        title: mediaTitle,
+        mediaTitle: mediaTitle,
+        thumbnailSrc:
+          el.thumbnailSrc || el.getAttribute("thumbnail-src") || "",
+        duration: el.duration || el.getAttribute("duration") || "",
+        tracks: tracks,
+        crossorigin:
+          el.crossorigin || el.getAttribute("crossorigin") || "anonymous",
+        lang: el.lang || el.getAttribute("lang") || "en",
+        isAudio: el.tagName === "AUDIO-PLAYER",
+      };
+    });
     const isDark =
       this._darkModeQuery &&
       this._darkModeQuery.matches;
     this.mediaItems.forEach((item) => {
       item.element.toggleAttribute("dark", isDark);
     });
-    this._syncActiveSlot();
-  }
-
-  _syncActiveSlot() {
-    if (this.edit) return;
-    this.mediaItems.forEach((item, index) => {
-      if (index === this.activeIndex) {
-        item.element.setAttribute("slot", "active");
-      } else {
-        item.element.removeAttribute("slot");
-      }
-    });
   }
 
   _setActiveIndex(index) {
-    if (
-      index === this.activeIndex ||
-      index < 0 ||
-      index >= this.mediaItems.length
-    ) {
+    if (index < 0 || index >= this.mediaItems.length) {
       return;
     }
-    const oldIndex = this.activeIndex;
-    if (
-      this.mediaItems[oldIndex] &&
-      this.mediaItems[oldIndex].element
-    ) {
-      const oldPlayer = this.mediaItems[oldIndex].element;
-      if (oldPlayer.pause && typeof oldPlayer.pause === "function") {
-        oldPlayer.pause();
+    if (index === this.activeIndex) {
+      const player = this.shadowRoot
+        ? this.shadowRoot.querySelector("#player")
+        : null;
+      if (player && player.play && typeof player.play === "function") {
+        player.play();
       }
+      return;
     }
     this.activeIndex = index;
-    this._syncActiveSlot();
+  }
+
+  _advanceToNext() {
+    const next = this.activeIndex + 1;
+    if (next < this.mediaItems.length) {
+      this._setActiveIndex(next);
+    }
+  }
+
+  _scrollToActiveItem() {
+    const item = this.shadowRoot.querySelector(
+      ".playlist-item.active",
+    );
+    if (item) {
+      item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }
+
+  _attachPlayerListeners() {
+    const player = this.shadowRoot.querySelector("#player");
+    if (!player) return;
+
+    // YouTube: a11y-media-youtube dispatches mediastatechange with composed: true
+    player.addEventListener("mediastatechange", (e) => {
+      if (e.detail && e.detail.data === 0) {
+        this._advanceToNext();
+      }
+    });
+
+    // HTML5: attach to the actual media element inside a11y-media-player
+    const a11yPlayer = player.shadowRoot
+      ? player.shadowRoot.querySelector("a11y-media-player")
+      : null;
+    if (a11yPlayer) {
+      const tryAttach = () => {
+        if (a11yPlayer.media && !a11yPlayer.isYoutube) {
+          a11yPlayer.media.addEventListener("ended", () => {
+            this._advanceToNext();
+          });
+          return true;
+        }
+        return false;
+      };
+      if (!tryAttach()) {
+        setTimeout(tryAttach, 500);
+      }
+    }
   }
 
   _handleKeydown(e) {
@@ -429,11 +505,20 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "edit") {
         if (this.edit) {
+          // entering edit mode - light dom children become visible
+        } else if (oldValue === true) {
+          // exiting edit mode - pause all light dom children so they don't
+          // keep playing in the hidden slot container
           this.mediaItems.forEach((item) => {
-            item.element.removeAttribute("slot");
+            try {
+              if (
+                item.element.pause &&
+                typeof item.element.pause === "function"
+              ) {
+                item.element.pause();
+              }
+            } catch (e) {}
           });
-        } else {
-          this._syncActiveSlot();
         }
       }
       if (
@@ -441,12 +526,17 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         typeof oldValue !== "undefined" &&
         this.mediaItems[this.activeIndex]
       ) {
-        const newPlayer = this.mediaItems[this.activeIndex].element;
-        if (newPlayer.play && typeof newPlayer.play === "function") {
-          setTimeout(() => {
-            newPlayer.play();
-          }, 0);
-        }
+        clearTimeout(this._playTimeout);
+        this._playTimeout = setTimeout(() => {
+          const player = this.shadowRoot
+            ? this.shadowRoot.querySelector("#player")
+            : null;
+          if (player && player.play && typeof player.play === "function") {
+            player.play();
+          }
+          this._attachPlayerListeners();
+          this._scrollToActiveItem();
+        }, 100);
       }
     });
   }
@@ -456,6 +546,25 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     this._updateMediaItems();
+    const playerArea = this.shadowRoot.querySelector(".player-area");
+    const playlist = this.shadowRoot.querySelector(".playlist");
+    if (
+      playerArea &&
+      playlist &&
+      "ResizeObserver" in globalThis
+    ) {
+      this._resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.target === playerArea && entry.target.offsetHeight > 0) {
+            playlist.style.setProperty(
+              "--playlist-max-height",
+              `${entry.target.offsetHeight}px`,
+            );
+          }
+        }
+      });
+      this._resizeObserver.observe(playerArea);
+    }
   }
 
   /**

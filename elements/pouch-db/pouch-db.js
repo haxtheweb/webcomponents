@@ -21,7 +21,6 @@ export const PouchDBElement = globalThis.PouchDb.requestAvailability();
 /**
  * `pouch-db`
  * `read and write localized data elements`
- * @polymer
  * @demo demo/index.html
  * @element pouch-db
  */

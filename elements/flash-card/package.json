@@ -45,6 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/i18n-manager": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/multiple-choice": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",

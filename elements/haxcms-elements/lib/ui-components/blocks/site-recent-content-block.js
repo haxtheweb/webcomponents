@@ -7,8 +7,12 @@ import { LitElement, css, html } from "lit";
  * `site-recent-content-block`
  * `Block to display recent content`
  *
-
- * @polymer
+ * @microcopy - the mental model for this element
+ * - site - the site this is being used on
+ * - recent content - the most recent content on the site
+ * - content type - the type of content being displayed
+ * 
+ * @customElement site-recent-content-block
  * @demo demo/index.html
  */
 class SiteRecentContentBlock extends LitElement {

@@ -39,6 +39,7 @@
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^26.0.0",
     "@haxtheweb/accent-card": "^26.0.0",
+    "@haxtheweb/a11y-collapse": "^26.0.0",
     "@haxtheweb/code-editor": "^26.0.0",
     "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/dl-behavior": "^26.0.0",
@@ -50,6 +51,7 @@
     "@haxtheweb/hexagon-loader": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",
     "@haxtheweb/iframe-loader": "^26.0.0",
+    "@haxtheweb/intersection-element": "^26.0.0",
     "@haxtheweb/media-behaviors": "^26.0.0",
     "@haxtheweb/media-image": "^26.0.0",
     "@haxtheweb/micro-frontend-registry": "^26.0.0",
@@ -73,7 +75,6 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/a11y-collapse": "^26.0.0",
     "@haxtheweb/a11y-gif-player": "^26.0.0",
     "@haxtheweb/a11y-menu-button": "^26.0.0",
     "@haxtheweb/citation-element": "^26.0.0",

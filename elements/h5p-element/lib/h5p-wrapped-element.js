@@ -1,5 +1,4 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { css, html, LitElement } from "lit";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
@@ -57,23 +56,22 @@ class H5pWrappedElement extends LitElement {
     });
   }
   disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+    }
     super.disconnectedCallback();
     this.__disposer();
   }
 
   firstUpdated() {
-    this._observer = new FlattenedNodesObserver(this, info => {
-      info.addedNodes.forEach(item => {
-        const iframe =
-          item.nodeName === "IFRAME" ? item : this.querySelector("iframe");
-        if (iframe) {
-          if (typeof iframe.src !== "undefined") {
-            // specific to elms / drupal paths from media system
-            this.__editLink = iframe.src.replace("entity_iframe/","") + "/edit";
-          }
-        }
-      });
+    this._observer = new MutationObserver(() => {
+      const iframe = this.querySelector("iframe");
+      if (iframe && typeof iframe.src !== "undefined") {
+        // specific to elms / drupal paths from media system
+        this.__editLink = iframe.src.replace("entity_iframe/", "") + "/edit";
+      }
     });
+    this._observer.observe(this, { childList: true, subtree: true });
   }
   render() {
     return html`
