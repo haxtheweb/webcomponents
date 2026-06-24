@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>OutlineDesigner: outline-designer Demo</title>
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }
@@ -14,7 +14,7 @@
     </script>
     <script type="module">
       import "@haxtheweb/wc-autoload/wc-autoload.js";
-      window.addEventListener('haxcms-ready', function(e) {
+      globalThis.addEventListener('haxcms-ready', function(e) {
         // give the web components a second to build
         setTimeout(async () => {
           // use this for items from a HAXcms site
@@ -51,7 +51,7 @@
       window.__appCDN="./node_modules/";window.__appForceUpgrade=false;
       window.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
       window.WCAutoloadBasePath = "/node_modules/";
-      window.WCGlobalBasePath = "/node_modules/";
+      globalThis.WCGlobalBasePath = "/node_modules/";
       // set this in order to simulate the published form of the site
       //window.HAXCMSContext="published";
       // set the below to simulate running a demo / end points to load data

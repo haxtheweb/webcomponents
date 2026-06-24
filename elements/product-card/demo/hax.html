@@ -6,7 +6,7 @@
     <title>HAX registry builder demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
-    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script>globalThis.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import "@haxtheweb/a11y-collapse/a11y-collapse.js";
       import "../lib/hax-element-list-selector.js";
@@ -20,7 +20,7 @@
       <json-editor id="jsonblob"></json-editor>
     </a11y-collapse>
     <script defer="defer" async="async">
-      window.addEventListener('load', (e) => {
+      globalThis.addEventListener('load', (e) => {
         setTimeout(() => {
           document.getElementsByTagName('hax-element-list-selector')[0].addEventListener('appstore-changed', (e) => {
             document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);

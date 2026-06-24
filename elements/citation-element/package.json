@@ -2,7 +2,7 @@
   "name": "@haxtheweb/citation-element",
   "wcfactory": {
     "className": "CitationElement",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "citation-element",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

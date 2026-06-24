@@ -2,7 +2,7 @@
   "name": "@haxtheweb/a11y-behaviors",
   "wcfactory": {
     "className": "A11YBehaviors",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "a11y-behaviors",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,

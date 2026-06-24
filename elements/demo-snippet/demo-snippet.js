@@ -2,7 +2,7 @@
  * Copyright 2025 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * Inspired by polymer version, updated for lit, DDD,
+ * Inspired by p_lymer version, updated for lit, DDD,
  * dark mode and to leverage the HAX ecosystem.
  */
 
@@ -14,7 +14,7 @@ import "@haxtheweb/code-sample/code-sample.js";
  * `demo-snippet` is a helper element that displays the source of a code snippet
  * and its rendered demo. It can be used for both native elements and Web Components.
  *
- * This is a modernized Lit-based version of the original Polymer demo-snippet
+ * This is a modernized Lit-based version of the original P_lymer demo-snippet
  * with dark mode compatibility using the DDD design system.
  *
  *     Example of a native element demo

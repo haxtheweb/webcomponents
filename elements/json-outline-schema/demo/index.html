@@ -13,7 +13,7 @@
       import '../json-outline-schema.js';
     </script>
     <script>
-      window.addEventListener('json-outline-schema-ready', () => {
+      globalThis.addEventListener('json-outline-schema-ready', () => {
         document.getElementById('button').addEventListener('tap', () => {
           const evt = new CustomEvent("json-outline-schema-debug-toggle", {
             bubbles: true,

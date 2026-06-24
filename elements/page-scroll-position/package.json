@@ -2,7 +2,7 @@
   "name": "@haxtheweb/page-scroll-position",
   "wcfactory": {
     "className": "PageScrollPosition",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "page-scroll-position",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

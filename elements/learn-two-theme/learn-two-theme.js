@@ -4,8 +4,6 @@
  */
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
@@ -13,10 +11,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * @title Learn2
  * @element learn-two-theme
@@ -123,8 +117,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           text-align: center;
           padding: 0 0 16px;
         }
-        :host([is-logged-in]) app-drawer {
-          top: 56px;
+        @media (min-width: 901px) {
+          :host([is-logged-in]) .drawer {
+            top: 56px;
+            height: calc(100vh - 56px);
+          }
         }
         site-git-corner {
           top: 0;
@@ -202,7 +199,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           opacity: 1;
         }
 
-        :host([edit-mode]) app-drawer {
+        :host([edit-mode]) .drawer {
           opacity: 0.2;
           pointer-events: none;
         }
@@ -211,20 +208,26 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           float: right;
         }
 
-        app-drawer {
+        .drawer {
           opacity: 1;
           position: fixed;
           top: 0;
+          left: 0;
+          width: 300px;
+          height: 100vh;
+          overflow-y: auto;
           transition: 0.2s linear all;
           box-shadow: var(--learn-two-theme-drawer-box-shadow, var(--ddd-boxShadow-sm));
-          overflow: hidden;
-          width: 300px;
-          --app-drawer-content-padding: 0;
+          background-color: var(
+            --learn-two-theme-menu-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
+          z-index: 1000;
         }
 
-        app-drawer-layout[narrow] #contentcontainer {
-          padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
-        }
 
         #menubutton,
         #menubutton2 {
@@ -237,17 +240,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           border-radius: var(--ddd-radius-sm);
         }
 
-        app-drawer-layout[narrow] #menubutton {
-          display: inline-flex;
-          margin: var(--ddd-spacing-3);
-        }
-
-        app-drawer-layout[narrow] #menubutton2 {
-          display: inline-flex;
-          position: absolute;
-          z-index: 1;
-          margin: var(--ddd-spacing-3);
-        }
 
         site-menu-button:not([disabled]):hover,
         site-menu-button:not([disabled]):active,
@@ -279,28 +271,12 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           right: 0;
         }
 
-        :host([is-logged-in]) app-drawer-layout[narrow] site-menu {
-          height: calc(100vh - 162px);
-        }
-        app-drawer-layout[narrow] site-menu {
-          height: calc(100vh - 116px);
-        }
 
         site-menu-button[type="next"] {
           right: 0;
           left: unset;
         }
 
-        :host([opened]) app-drawer-layout[narrow] site-menu-button[type="prev"],
-        :host([opened])
-          app-drawer-layout[narrow]
-          site-menu-button[type="next"] {
-          display: none;
-        }
-
-        app-drawer-layout[narrow] site-menu-button[type="prev"] {
-          left: 0;
-        }
 
         site-title {
           position: relative;
@@ -353,12 +329,14 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           height: calc(100vh - 162px);
         }
 
-        app-drawer-layout {
+        .layout {
+          position: relative;
           min-height: -moz-available;
           min-height: -webkit-fill-available;
           min-height: fill-available;
-          --app-drawer-width: 300px;
-          --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+        }
+        main {
+          margin-left: 300px;
         }
 
         site-menu-button {
@@ -383,10 +361,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           --site-menu-button-icon-fill-color: var(--ddd-theme-default-coalyGray);
         }
 
-        app-drawer-layout[narrow] site-menu-button {
-          bottom: 0;
-          top: unset;
-        }
 
         site-title {
           padding: var(--ddd-spacing-4);
@@ -415,6 +389,56 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           margin: var(--ddd-spacing-4) 0;
           padding: 0;
           font-size: var(--ddd-font-size-ml);
+        }
+        @media (max-width: 900px) {
+          #contentcontainer {
+            padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
+          }
+          #menubutton {
+            display: inline-flex;
+            margin: var(--ddd-spacing-3);
+          }
+          #menubutton2 {
+            display: inline-flex;
+            position: absolute;
+            z-index: 1;
+            margin: var(--ddd-spacing-3);
+          }
+          site-menu-button {
+            bottom: 0;
+            top: unset;
+          }
+          site-menu-button[type="prev"] {
+            left: 0;
+          }
+          :host([opened]) site-menu-button[type="prev"],
+          :host([opened]) site-menu-button[type="next"] {
+            display: none;
+          }
+          main {
+            margin-left: 0;
+          }
+          .drawer {
+            transform: translateX(-100%);
+            z-index: 1000000;
+          }
+          .drawer.opened {
+            transform: translateX(0);
+          }
+          .scrim {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(80, 80, 80, 0.8);
+            z-index: 999999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s linear;
+          }
+          .scrim.opened {
+            opacity: 1;
+            pointer-events: auto;
+          }
         }
       `,
     ];
@@ -475,38 +499,14 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          app-drawer-layout {
-            --app-drawer-content-container: {
-              padding: 0 !important;
-              overflow: hidden;
-              background-color: var(
-                --learn-two-theme-menu-color,
-                light-dark(
-                  var(--ddd-theme-default-coalyGray),
-                  var(--ddd-theme-default-potentialMidnight)
-                )
-              );
-              position: relative;
-            }
-          }
-        </style>
-      </custom-style>
-      <app-drawer-layout responsive-width="900px">
+      <div class="layout">
          <simple-icon-button
            id="menubutton"
            icon="menu"
            @click="${this.toggleDrawer}"
            title="Toggle site menu"
          ></simple-icon-button>
-           <app-drawer
-             swipe-open
-             part="app-drawer"
-             slot="drawer"
-             .opened="${this.opened}"
-             @opened="${this.__openedChanged}"
-           >
+           <div class="drawer ${this.opened ? 'opened' : ''}" id="drawer">
            <simple-icon-button
              id="menubutton2"
              icon="menu"
@@ -546,8 +546,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
            <nav>
              <site-menu part="site-menu"></site-menu>
            </nav>
-         </app-drawer>
-         </nav>
+         </div>
+         <div class="scrim ${this.opened ? 'opened' : ''}" @click="${this._closeDrawer}"></div>
          <main>
            <site-menu-button type="prev"></site-menu-button>
            <article id="contentcontainer">
@@ -560,7 +560,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
            </article>
            <site-menu-button type="next" position="left"></site-menu-button>
          </main>
-      </app-drawer-layout>`;
+      </div>
+    `;
   }
 
   /**
@@ -575,11 +576,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
       },
     };
   }
-  __openedChanged(e) {
-    this.opened = e.detail.value;
-  }
   toggleDrawer(e) {
-    this.shadowRoot.querySelector("app-drawer").toggle();
+    this.opened = !this.opened;
+  }
+  _closeDrawer(e) {
+    this.opened = false;
   }
 }
 globalThis.customElements.define(LearnTwoTheme.tag, LearnTwoTheme);

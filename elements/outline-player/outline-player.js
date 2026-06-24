@@ -8,11 +8,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
-
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * @title Outline Player
  * @element outline-player
@@ -81,13 +76,21 @@ class OutlinePlayer extends LTIResizingMixin(
           margin-bottom: 6px;
         }
 
-        app-drawer-layout {
+        .layout {
+          display: flex;
           min-height: 100vh;
           min-height: -moz-available; /* WebKit-based browsers will ignore this. */
           min-height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
           min-height: fill-available;
           /* if the user has set a specific value then override the defaults */
           min-height: var(--outline-player-min-height);
+        }
+        .content {
+          flex: 1;
+          min-width: 0;
+        }
+        .scrim {
+          display: none;
         }
 
         outline-player-navigation {
@@ -150,11 +153,48 @@ class OutlinePlayer extends LTIResizingMixin(
             padding: 8px 8px 8px 8px;
           }
         }
-        app-drawer {
+        .drawer {
+          width: var(--app-drawer-width, 300px);
+          flex-shrink: 0;
+          overflow-y: auto;
           box-shadow: 0 0 6px -3px var(--outline-player-dark);
-          overflow: hidden;
-          --app-drawer-scrim-background: rgba(0, 0, 0, 0.7);
           z-index: 1000000;
+          transition: width 0.3s ease;
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          height: 100vh;
+        }
+        @media (max-width: 640px) {
+          .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 300px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            height: 100vh;
+            overflow-y: auto;
+          }
+          .drawer.opened {
+            transform: translateX(0);
+          }
+          .scrim {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+          }
+          .scrim.opened {
+            opacity: 1;
+            pointer-events: auto;
+          }
         }
         .nav-btns {
           display: flex;
@@ -209,8 +249,10 @@ class OutlinePlayer extends LTIResizingMixin(
           font-weight: var(--ddd-font-weight-light);
           --site-menu-font-size: var(--ddd-font-size-3xs);
         }
-        :host([is-logged-in]) app-drawer {
-          top: -70px;
+        @media (min-width: 641px) {
+          :host([is-logged-in]) .drawer {
+            top: -70px;
+          }
         }
         site-menu-button {
           --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.2);
@@ -269,8 +311,7 @@ class OutlinePlayer extends LTIResizingMixin(
     super();
     this.__disposer = [];
     this.closed = false;
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+    this.opened = true;
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
@@ -304,6 +345,22 @@ class OutlinePlayer extends LTIResizingMixin(
       "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
     );
   }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._narrowMQ = window.matchMedia("(max-width: 640px)");
+    this._narrowHandler = (e) => this._narrowChanged(e);
+    this._narrowMQ.addEventListener("change", this._narrowHandler);
+    this._narrowChanged(this._narrowMQ);
+  }
+
+  disconnectedCallback() {
+    if (this._narrowMQ && this._narrowHandler) {
+      this._narrowMQ.removeEventListener("change", this._narrowHandler);
+    }
+    super.disconnectedCallback();
+  }
+
   /**
    * Delay importing site-search until we click to open it directly
    */
@@ -320,30 +377,13 @@ class OutlinePlayer extends LTIResizingMixin(
   render() {
     return html`
       <site-git-corner part="git-corner-btn"></site-git-corner>
-      <custom-style>
-        <style>
-          app-drawer {
-            --app-drawer-content-container: {
-              overflow: hidden;
-            };
-          }
-        </style>
-      </custom-style>
-      <app-drawer-layout
-        .narrow="${this.narrow}"
-        @narrow-changed="${this._narrowChanged}"
-      >
+      <div class="layout">
         <nav>
-          <app-drawer
-            id="drawer"
-            swipe-open=""
-            slot="drawer"
-            .opened="${this.opened}"
-            @opened-changed="${this._openedChanged}"
-          >
+          <div class="drawer ${this.opened ? 'opened' : ''} ${this.closed ? 'closed' : ''}" id="drawer">
             <site-menu></site-menu>
-          </app-drawer>
+          </div>
         </nav>
+        <div class="scrim ${this.opened ? 'opened' : ''}" @click="${this._closeDrawer}"></div>
         <div id="content">
           <header>
             <div class="nav-btns">
@@ -382,14 +422,14 @@ class OutlinePlayer extends LTIResizingMixin(
             </article>
           </main>
         </div>
-      </app-drawer-layout>
+      </div>
     `;
   }
   _narrowChanged(e) {
-    this.narrow = e.detail.value;
+    this.narrow = e.matches !== undefined ? e.matches : e.detail.value;
   }
-  _openedChanged(e) {
-    this.opened = e.detail.value;
+  _openedChanged(value) {
+    this.opened = value;
   }
   /**
    * LitElement / popular convention
@@ -440,22 +480,22 @@ class OutlinePlayer extends LTIResizingMixin(
    * Link menu button to open and closing the side panel.
    */
   _toggleMenu(e) {
-    this.shadowRoot.querySelector("#drawer").toggle();
-    // allow styling to trigger based on open status
-    this.closed = !this.shadowRoot.querySelector("#drawer").opened;
-    // kind of silly it doesn't just work this way but
-    // app-panel doesn't make any assumptions about how
-    // to handle the layout when it closes
-    // trick browser into thinking we just reized
+    this.opened = !this.opened;
+    this.closed = !this.opened;
     globalThis.dispatchEvent(new Event("resize"));
+  }
+
+  _closeDrawer(e) {
+    this.opened = false;
+    this.closed = true;
   }
   /**
    * active id has changed.
    */
   _activeIdChanged(newValue, oldValue) {
-    // close menu if it's narrow and something new is picked
     if (this.opened && this.narrow) {
-      this.shadowRoot.querySelector("#drawer").toggle();
+      this.opened = false;
+      this.closed = true;
     }
     globalThis.scrollTo({
       top: 0,

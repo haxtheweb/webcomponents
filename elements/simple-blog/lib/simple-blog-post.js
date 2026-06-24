@@ -3,10 +3,6 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `simple-blog-post`
  * @element simple-blog-post
  * `A simple blog and associated elements`
@@ -105,6 +101,26 @@ class SimpleBlogPost extends SimpleColors {
         :host([edit-mode]) #slot {
           display: none;
         }
+        site-active-title {
+          font-weight: var(--ddd-font-weight-bold);
+          font-style: normal;
+          letter-spacing: -0.04em;
+          font-size: var(--ddd-font-size-xl);
+          line-height: 1.1;
+          color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
+        }
+        :host([has-image]) site-active-title {
+          font-weight: var(--ddd-font-weight-bold);
+          font-style: normal;
+          letter-spacing: -0.04em;
+          font-size: var(--ddd-font-size-xl);
+          line-height: 1.1;
+          margin-bottom: var(--ddd-spacing-4);
+          text-shadow:
+            0 1px 16px rgba(0, 0, 0, 0.5),
+            0 0 1px rgba(0, 0, 0, 0.5);
+          color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
+        }
       `,
     ];
   }
@@ -117,30 +133,6 @@ class SimpleBlogPost extends SimpleColors {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          site-active-title {
-            font-weight: var(--ddd-font-weight-bold);
-            font-style: normal;
-            letter-spacing: -0.04em;
-            font-size: var(--ddd-font-size-xl);
-            line-height: 1.1;
-            color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
-          }
-          :host([has-image]) site-active-title {
-            font-weight: var(--ddd-font-weight-bold);
-            font-style: normal;
-            letter-spacing: -0.04em;
-            font-size: var(--ddd-font-size-xl);
-            line-height: 1.1;
-            margin-bottom: var(--ddd-spacing-4);
-            text-shadow:
-              0 1px 16px rgba(0, 0, 0, 0.5),
-              0 0 1px rgba(0, 0, 0, 0.5);
-            color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
-          }
-        </style>
-      </custom-style>
       <main>
         <article>
           <div class="article-image">

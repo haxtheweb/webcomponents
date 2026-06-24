@@ -2,7 +2,7 @@
   "name": "@haxtheweb/hax-iconset",
   "wcfactory": {
     "className": "HaxIconset",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hax-iconset",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": false,

@@ -2,7 +2,7 @@
   "name": "@haxtheweb/img-view-modal",
   "wcfactory": {
     "className": "imgViewModal",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "img-view-modal",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

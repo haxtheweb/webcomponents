@@ -121,7 +121,7 @@ v<!doctype html>
       </grid-plate>
     </div>
     <script defer async>
-    window.process = window.process || {
+    globalThis.process = globalThis.process || {
       env: {
         NODE_ENV: "production"
       }

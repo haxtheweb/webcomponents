@@ -24,7 +24,7 @@ import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 const HAXCMSTheme = function (SuperClass) {
   return class extends SuperClass {
     // leverage the wiring class element; this helps us clean things up smoothly later
-    // while still keeping it abstract enough for direct usage in PolymerLegacy elements
+    // while still keeping it abstract enough for direct usage in elements
     // as well as those wanting a custom integration methodology
     constructor() {
       super();

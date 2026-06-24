@@ -6,7 +6,7 @@
     <title>TerribleThemes: terrible-themes Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }

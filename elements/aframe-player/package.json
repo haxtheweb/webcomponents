@@ -2,7 +2,7 @@
   "name": "@haxtheweb/aframe-player",
   "wcfactory": {
     "className": "AframePlayer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "aframe-player",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
@@ -13,7 +13,7 @@
     "sharedStyles": []
   },
   "version": "26.0.0",
-  "description": "A-frame 3D player in the browser via data binding w/ polymer",
+  "description": "A-frame 3D player in the browser via data binding",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

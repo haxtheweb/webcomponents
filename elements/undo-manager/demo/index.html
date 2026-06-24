@@ -7,14 +7,14 @@
     
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
-    <script>window.WCGlobalBasePath = "/node_modules/@haxtheweb/undo-manager/";</script>
+    <script>globalThis.WCGlobalBasePath = "/node_modules/@haxtheweb/undo-manager/";</script>
     <script type="module">
       
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../undo-manager.js';
     </script>
     <script>
-      window.addEventListener("load", (e) => {
+      globalThis.addEventListener("load", (e) => {
         const manager = document.getElementById('manager');
         manager.addEventListener('can-undo-changed', (e) => {
           if (e.detail.value) {

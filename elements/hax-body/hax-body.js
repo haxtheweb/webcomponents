@@ -3937,7 +3937,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .querySelector("#body")
             .assignedNodes({ flatten: true })
         : [];
-    // fallback for content nodes if not polymer managed nodes above
+    // fallback for content nodes if not managed nodes above
     if (children.length === 0) {
       children = this.shadowRoot.querySelector("#body").children;
     }
@@ -4529,7 +4529,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       target.localName === "slot"
         ? target.assignedNodes({ flatten: true })
         : [];
-    // fallback for content nodes if not polymer managed nodes above
+    // fallback for content nodes if not managed nodes above
     if (children.length === 0) {
       children = target.children;
     }

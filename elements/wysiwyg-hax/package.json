@@ -2,7 +2,7 @@
   "name": "@haxtheweb/wysiwyg-hax",
   "wcfactory": {
     "className": "WysiwygHax",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "wysiwyg-hax",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

@@ -2,7 +2,7 @@
   "name": "@haxtheweb/media-behaviors",
   "wcfactory": {
     "className": "MediaBehaviors",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "media-behaviors",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": false,

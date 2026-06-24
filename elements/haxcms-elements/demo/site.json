@@ -33,7 +33,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "clean-one",
+      "element": "learn-two-theme",
       "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
       "name": "Learn Two",
       "thumbnail": "build/es6/node_modules/@haxtheweb/learn-two-theme/lib/assets/images/GreyStyle.svg",

@@ -2,7 +2,7 @@
   "name": "@haxtheweb/outline-player",
   "wcfactory": {
     "className": "OutlinePlayer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "outline-player",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -48,8 +48,6 @@
     "@haxtheweb/schema-behaviors": "^26.0.0",
     "@haxtheweb/simple-colors": "^26.0.0",
     "@haxtheweb/simple-icon": "^26.0.0",
-    "@polymer/app-layout": "3.0.2",
-    "@polymer/polymer": "3.5.2",
     "mobx": "6.13.7"
   },
   "devDependencies": {

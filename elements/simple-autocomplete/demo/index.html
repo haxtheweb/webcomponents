@@ -10,7 +10,7 @@
       import '../simple-autocomplete.js';
       import '../lib/simple-autocomplete-text-trigger.js';
     </script>
-    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script>globalThis.WCGlobalBasePath = "/node_modules/";</script>
     <style>
       body {
         margin: 50px;
@@ -127,7 +127,7 @@
           ]
       };
       }
-      window.addEventListener("value-changed", (e) => {
+      globalThis.addEventListener("value-changed", (e) => {
         console.log(e.detail.value);
       });
     };

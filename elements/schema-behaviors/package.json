@@ -13,7 +13,7 @@
     "sharedStyles": []
   },
   "version": "26.0.0",
-  "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
+  "description": "Apply schema helper behaviors to your custom elements",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

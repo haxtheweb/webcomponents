@@ -2,7 +2,7 @@
   "name": "@haxtheweb/paper-input-flagged",
   "wcfactory": {
     "className": "PaperInputFlagged",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "paper-input-flagged",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

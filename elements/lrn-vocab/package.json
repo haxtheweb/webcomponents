@@ -2,7 +2,7 @@
   "name": "@haxtheweb/lrn-vocab",
   "wcfactory": {
     "className": "LrnVocab",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrn-vocab",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

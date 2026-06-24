@@ -2,7 +2,7 @@
   "name": "@haxtheweb/hax-bookmarklet",
   "wcfactory": {
     "className": "HaxBookmarklet",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hax-bookmarklet",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

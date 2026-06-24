@@ -82,7 +82,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
       <div id="demo"></div>
   </body>
   <script>
-    window.process = window.process || {
+    globalThis.process = globalThis.process || {
       env: {
         NODE_ENV: "production"
       }

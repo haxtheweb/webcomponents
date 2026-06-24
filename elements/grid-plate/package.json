@@ -2,7 +2,7 @@
   "name": "@haxtheweb/grid-plate",
   "wcfactory": {
     "className": "GridPlate",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "grid-plate",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

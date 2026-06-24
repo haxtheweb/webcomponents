@@ -2,7 +2,7 @@
   "name": "@haxtheweb/self-check",
   "wcfactory": {
     "className": "SelfCheck",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "self-check",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

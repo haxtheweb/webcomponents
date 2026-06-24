@@ -2,7 +2,7 @@
   "name": "@haxtheweb/oer-schema",
   "wcfactory": {
     "className": "OerSchema",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "oer-schema",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

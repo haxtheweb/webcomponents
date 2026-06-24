@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 /**
  * `q-r`
- * `Polymer wrapper for a qr code.`
+ * `wrapper for a qr code.`
  *
  * @demo demo/index.html
  * @element q-r

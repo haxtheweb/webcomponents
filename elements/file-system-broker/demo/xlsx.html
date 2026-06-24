@@ -55,12 +55,12 @@
             // save to file format in question!
             await broker.saveFile("xlsx", output);
           });
-          window.addEventListener("xlsx-ready", () => {
+          globalThis.addEventListener("xlsx-ready", () => {
             document.getElementById('xlf').addEventListener('change', async (e) => {
               window.XLSXFileSystemBroker.requestAvailability().processFile(e.target.files[0], document.querySelector("#format").value, "output.xlsx");
             });
           });
-          window.addEventListener("xlsx-file-system-data", (e) => {
+          globalThis.addEventListener("xlsx-file-system-data", (e) => {
             console.log(e.detail.data);
             if (e.detail.action === "write") {
             }

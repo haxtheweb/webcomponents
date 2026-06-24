@@ -2,7 +2,7 @@
   "name": "@haxtheweb/haxcms-elements",
   "wcfactory": {
     "className": "HaxcmsElements",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "haxcms-elements",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

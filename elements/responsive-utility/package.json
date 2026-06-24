@@ -2,7 +2,7 @@
   "name": "@haxtheweb/responsive-utility",
   "wcfactory": {
     "className": "ResponsiveUtility",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "responsive-utility",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": false,

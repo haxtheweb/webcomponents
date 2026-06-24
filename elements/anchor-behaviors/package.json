@@ -2,7 +2,7 @@
   "name": "@haxtheweb/anchor-behaviors",
   "wcfactory": {
     "className": "AnchorBehaviors",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "anchor-behaviors",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": false,

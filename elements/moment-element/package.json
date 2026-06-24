@@ -2,7 +2,7 @@
   "name": "@haxtheweb/moment-element",
   "wcfactory": {
     "className": "MomentElement",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "moment-element",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

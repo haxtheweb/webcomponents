@@ -2,7 +2,7 @@
   "name": "@haxtheweb/dl-behavior",
   "wcfactory": {
     "className": "FileDownloadBehaviors",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "dl-behavior",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": false,

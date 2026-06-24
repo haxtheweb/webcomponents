@@ -2501,7 +2501,7 @@ class DDDocs extends DDD {
           <li>
             <a href="#">NEW: Interdisciplinary Science and Business Degree</a>
           </li>
-          <li><a href="#">NEW: Polymer Engineering and Science Degree</a></li>
+          <li><a href="#">NEW: Engineering and Science Degree</a></li>
           <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
         </ul>
         <p>Here's an example of a sub: H<sub>2</sub>O</p>

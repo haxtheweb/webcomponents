@@ -1171,7 +1171,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
   <link rel="stylesheet" href="/node_modules/@haxtheweb/haxcms-elements/lib/base.css" />
   <link rel="stylesheet" href="./theme/theme.css" />
   <script>
-    window.process = window.process || {
+    globalThis.process = globalThis.process || {
       env: {
         NODE_ENV: "production"
       }
@@ -1284,7 +1284,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    window.addEventListener('haxcms-ready', function(e) {
+    globalThis.addEventListener('haxcms-ready', function(e) {
       var s = document.createElement('script');
       s.async = true;
       document.body.appendChild(s);

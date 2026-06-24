@@ -463,8 +463,8 @@ function createUnityInstance(e, t, n) {
     (u.abortHandler = function (e) {
       return r(e, "", 0), !0;
     }),
-    window.addEventListener("error", a),
-    window.addEventListener("unhandledrejection", a),
+    globalThis.addEventListener("error", a),
+    globalThis.addEventListener("unhandledrejection", a),
     (Error.stackTraceLimit = Math.max(Error.stackTraceLimit || 0, 50)),
     (u.XMLHttpRequest = (function () {
       function e(e) {
@@ -478,7 +478,7 @@ function createUnityInstance(e, t, n) {
         );
       }
       function n(e) {
-        var t = window.location.href.match(/^[a-z]+:\/\/[^\/]+/);
+        var t = globalThis.location.href.match(/^[a-z]+:\/\/[^\/]+/);
         return !t || e.lastIndexOf(t[0], 0);
       }
       function r() {

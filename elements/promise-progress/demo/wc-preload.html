@@ -15,7 +15,7 @@
       window.WCAutoloadBasePath = "/node_modules/";
       window.WCAutoloadRegistryFile = "https://cdn.webcomponents.psu.edu/cdn/wc-registry.json";
       // local development and mobx
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "development"
         }

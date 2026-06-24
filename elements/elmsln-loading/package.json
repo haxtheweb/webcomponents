@@ -2,7 +2,7 @@
   "name": "@haxtheweb/elmsln-loading",
   "wcfactory": {
     "className": "ElmslnLoading",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "elmsln-loading",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,

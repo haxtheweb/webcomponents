@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>HAX: h-a-x Demo</title>
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }
@@ -57,7 +57,7 @@
         return false;
       }
       // handle save back to file system
-      window.addEventListener("hax-save-body-value", async (e) => {
+      globalThis.addEventListener("hax-save-body-value", async (e) => {
         setTimeout(async () => {
           const options = {
             types: [

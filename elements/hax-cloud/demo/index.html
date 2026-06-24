@@ -1166,7 +1166,7 @@
   
   <link rel="stylesheet" href="/node_modules/@haxtheweb/haxcms-elements/lib/base.css" />
   <script>
-    window.process = window.process || {
+    globalThis.process = globalThis.process || {
       env: {
         NODE_ENV: "production"
       }
@@ -1191,7 +1191,7 @@
   <script>
     window.WCAutoloadRegistryFile = "./wc-registry.json";
     window.WCAutoloadBasePath = "/node_modules/";
-    window.WCGlobalBasePath = "/node_modules/";
+    globalThis.WCGlobalBasePath = "/node_modules/";
   </script>
 </body>
 

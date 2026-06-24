@@ -1005,7 +1005,7 @@ export const HAXElement = function (SuperClass) {
   };
 };
 
-// LEGACY. This is a Polymer 1.x syntax element "behavior"
+// LEGACY. This is a P_lymer 1.x syntax element "behavior"
 // This has been replaced with HAXElement, a super class which can be used to wrap classes
 // invoke an instance so we can support behaviors as well
 globalThis.HAXWiring = new HAXWiring();

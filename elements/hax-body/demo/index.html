@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>HAX: h-a-x Demo</title>
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }
       };
-      window.WCGlobalBasePath = "/node_modules/";
+      globalThis.WCGlobalBasePath = "/node_modules/";
     </script>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 

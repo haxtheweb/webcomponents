@@ -280,7 +280,7 @@
     updateFeatureStatus();
     
     // Update feature status if window is resized (for responsive mobile detection)
-    window.addEventListener('resize', updateFeatureStatus);
+    globalThis.addEventListener('resize', updateFeatureStatus);
   </script>
 </body>
 </html>

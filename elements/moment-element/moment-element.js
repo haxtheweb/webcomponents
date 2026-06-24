@@ -1,20 +1,9 @@
 import { LitElement, html } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 /**
- * @license
- * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
- * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+ * Element wrapper for the [moment](https://github.com/moment/moment) library.
+ * @demo demo/index.html
  */
-/**
-Polymer element wrapper for the [moment](https://github.com/moment/moment) library.
-
-Examples:
-
-    <moment-element></moment-element>
-    <moment-element datetime="1991-12-31" output-format="MMM DD[,] YYYY"></moment-element>
-
-* @demo demo/index.html
-*/
 class MomentElement extends LitElement {
   render() {
     return html` ${this.output} `;

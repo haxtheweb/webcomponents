@@ -367,7 +367,7 @@
       }, 0);
     }
     // wait till we load the page
-    window.addEventListener("load", tokenHack);
+    globalThis.addEventListener("load", tokenHack);
     setTimeout(function(e) {
       // load if injected after page load
       if (window.WCAutoload) {

@@ -2,7 +2,7 @@
   "name": "@haxtheweb/media-image",
   "wcfactory": {
     "className": "MediaImage",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "media-image",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

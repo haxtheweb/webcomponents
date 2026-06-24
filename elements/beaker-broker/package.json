@@ -2,7 +2,7 @@
   "name": "@haxtheweb/beaker-broker",
   "wcfactory": {
     "className": "BeakerBroker",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "beaker-broker",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

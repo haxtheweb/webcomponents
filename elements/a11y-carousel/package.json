@@ -2,7 +2,7 @@
   "name": "@haxtheweb/a11y-carousel",
   "wcfactory": {
     "className": "a11yCarousel",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "a11y-carousel",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

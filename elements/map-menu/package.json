@@ -2,7 +2,7 @@
   "name": "@haxtheweb/map-menu",
   "wcfactory": {
     "className": "MapMenu",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "map-menu",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

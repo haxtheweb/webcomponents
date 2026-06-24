@@ -2,7 +2,7 @@
   "name": "@haxtheweb/responsive-grid",
   "wcfactory": {
     "className": "ResponsiveGrid",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "responsive-grid",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

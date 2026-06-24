@@ -2,7 +2,7 @@
   "name": "@haxtheweb/code-editor",
   "wcfactory": {
     "className": "CodeEditor",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "code-editor",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

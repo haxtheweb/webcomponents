@@ -2,7 +2,7 @@
   "name": "@haxtheweb/parallax-image",
   "wcfactory": {
     "className": "ParallaxImage",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "parallax-image",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

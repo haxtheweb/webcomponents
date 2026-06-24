@@ -2,7 +2,7 @@
   "name": "@haxtheweb/outline-designer",
   "wcfactory": {
     "className": "OutlineDesigner",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "outline-designer",
     "generator-wcfactory-version": "0.6.3",
     "useHAX": false,

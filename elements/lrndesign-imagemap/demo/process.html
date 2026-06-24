@@ -14,15 +14,6 @@
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import "../lrndesign-imagemap.js";
     </script>
-
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
     <script type="module">
 var $_documentContainer = document.createElement('div');
 

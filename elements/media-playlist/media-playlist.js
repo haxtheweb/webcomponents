@@ -7,7 +7,6 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/video-player/video-player.js";
-import "@haxtheweb/audio-player/audio-player.js";
 
 /**
  * `media-playlist`
@@ -46,6 +45,16 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         this._updateMediaItems();
       }, 100);
     });
+    this._onMediaStateChange = (e) => {
+      if (e.detail && e.detail.data === 0) {
+        this._advanceToNext();
+      }
+    };
+    this._onMediaEnded = () => {
+      this._advanceToNext();
+    };
+    this._lastPlayer = null;
+    this._mediaElementsWithListeners = new WeakSet();
   }
 
   connectedCallback() {
@@ -76,6 +85,20 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     }
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
+    }
+    clearTimeout(this._attachEndedTimeout);
+    if (this._lastPlayer) {
+      this._lastPlayer.removeEventListener(
+        "mediastatechange",
+        this._onMediaStateChange,
+      );
+      const oldA11y = this._lastPlayer.shadowRoot
+        ? this._lastPlayer.shadowRoot.querySelector("a11y-media-player")
+        : null;
+      if (oldA11y && oldA11y.media) {
+        oldA11y.media.removeEventListener("ended", this._onMediaEnded);
+      }
+      this._lastPlayer = null;
     }
     super.disconnectedCallback();
   }
@@ -285,29 +308,17 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       <div class="layout">
         <div class="player-area">
           ${activeItem
-            ? activeItem.isAudio
-              ? html`
-                  <audio-player
-                    id="player"
-                    source="${activeItem.source}"
-                    media-title="${activeItem.mediaTitle}"
-                    thumbnail-src="${activeItem.thumbnailSrc}"
-                    .tracks="${activeItem.tracks}"
-                    crossorigin="${activeItem.crossorigin}"
-                    lang="${activeItem.lang}"
-                  ></audio-player>
-                `
-              : html`
-                  <video-player
-                    id="player"
-                    source="${activeItem.source}"
-                    media-title="${activeItem.mediaTitle}"
-                    thumbnail-src="${activeItem.thumbnailSrc}"
-                    .tracks="${activeItem.tracks}"
-                    crossorigin="${activeItem.crossorigin}"
-                    lang="${activeItem.lang}"
-                  ></video-player>
-                `
+            ? html`
+                <video-player
+                  id="player"
+                  source="${activeItem.source}"
+                  media-title="${activeItem.mediaTitle}"
+                  thumbnail-src="${activeItem.thumbnailSrc}"
+                  .tracks="${activeItem.tracks}"
+                  crossorigin="${activeItem.crossorigin}"
+                  lang="${activeItem.lang}"
+                ></video-player>
+              `
             : html``}
         </div>
         <div
@@ -404,8 +415,10 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       const player = this.shadowRoot
         ? this.shadowRoot.querySelector("#player")
         : null;
-      if (player && player.play && typeof player.play === "function") {
-        player.play();
+      if (player && player.restart && typeof player.restart === "function") {
+        try {
+          player.restart();
+        } catch (e) {}
       }
       return;
     }
@@ -413,10 +426,15 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _advanceToNext() {
+    if (this._advancing) return;
+    this._advancing = true;
     const next = this.activeIndex + 1;
     if (next < this.mediaItems.length) {
       this._setActiveIndex(next);
     }
+    setTimeout(() => {
+      this._advancing = false;
+    }, 500);
   }
 
   _scrollToActiveItem() {
@@ -432,12 +450,27 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     const player = this.shadowRoot.querySelector("#player");
     if (!player) return;
 
-    // YouTube: a11y-media-youtube dispatches mediastatechange with composed: true
-    player.addEventListener("mediastatechange", (e) => {
-      if (e.detail && e.detail.data === 0) {
-        this._advanceToNext();
+    // Already attached to this player element — skip
+    if (this._lastPlayer === player) return;
+
+    // Clean up old listeners from previous player
+    if (this._lastPlayer) {
+      this._lastPlayer.removeEventListener(
+        "mediastatechange",
+        this._onMediaStateChange,
+      );
+      const oldA11y = this._lastPlayer.shadowRoot
+        ? this._lastPlayer.shadowRoot.querySelector("a11y-media-player")
+        : null;
+      if (oldA11y && oldA11y.media) {
+        oldA11y.media.removeEventListener("ended", this._onMediaEnded);
       }
-    });
+    }
+
+    this._lastPlayer = player;
+
+    // YouTube: a11y-media-youtube dispatches mediastatechange with composed: true
+    player.addEventListener("mediastatechange", this._onMediaStateChange);
 
     // HTML5: attach to the actual media element inside a11y-media-player
     const a11yPlayer = player.shadowRoot
@@ -445,16 +478,24 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       : null;
     if (a11yPlayer) {
       const tryAttach = () => {
-        if (a11yPlayer.media && !a11yPlayer.isYoutube) {
-          a11yPlayer.media.addEventListener("ended", () => {
-            this._advanceToNext();
-          });
+        if (
+          a11yPlayer.media &&
+          !a11yPlayer.isYoutube &&
+          !this._mediaElementsWithListeners.has(a11yPlayer.media)
+        ) {
+          a11yPlayer.media.addEventListener("ended", this._onMediaEnded);
+          this._mediaElementsWithListeners.add(a11yPlayer.media);
           return true;
         }
         return false;
       };
       if (!tryAttach()) {
-        setTimeout(tryAttach, 500);
+        clearTimeout(this._attachEndedTimeout);
+        this._attachEndedTimeout = setTimeout(() => {
+          if (this._lastPlayer === player) {
+            tryAttach();
+          }
+        }, 500);
       }
     }
   }
@@ -526,17 +567,23 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         typeof oldValue !== "undefined" &&
         this.mediaItems[this.activeIndex]
       ) {
-        clearTimeout(this._playTimeout);
-        this._playTimeout = setTimeout(() => {
-          const player = this.shadowRoot
-            ? this.shadowRoot.querySelector("#player")
-            : null;
-          if (player && player.play && typeof player.play === "function") {
-            player.play();
-          }
-          this._attachPlayerListeners();
-          this._scrollToActiveItem();
-        }, 100);
+          clearTimeout(this._playTimeout);
+          this._playTimeout = setTimeout(() => {
+            const player = this.shadowRoot
+              ? this.shadowRoot.querySelector("#player")
+              : null;
+            if (
+              player &&
+              player.restart &&
+              typeof player.restart === "function"
+            ) {
+              try {
+                player.restart();
+              } catch (e) {}
+            }
+            this._attachPlayerListeners();
+            this._scrollToActiveItem();
+          }, 100);
       }
     });
   }

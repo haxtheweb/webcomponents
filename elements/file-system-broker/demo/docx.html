@@ -54,7 +54,7 @@
           });
           // this runs when the file is read. This is a global call for the file being loaded
           // as this is a promise and needs to run complex converters it might take some time
-          window.addEventListener("docx-file-system-data", (e) => {
+          globalThis.addEventListener("docx-file-system-data", (e) => {
             document.getElementById('textarea').innerHTML = e.detail.value;
             document.getElementById('demo').innerHTML = e.detail.value;
           });

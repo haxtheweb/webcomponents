@@ -12,7 +12,7 @@
 <body>
   <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
   <script>
-    window.process = window.process || {
+    globalThis.process = globalThis.process || {
       env: {
         NODE_ENV: "production"
       }
