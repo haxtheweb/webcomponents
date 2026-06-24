@@ -1,9 +1,8 @@
 import { autorun, toJS } from "mobx";
-import { html, css } from "lit";
+import { DarkmodeToggle } from "@haxtheweb/haxcms-elements/lib/core/ui/darkmode-toggle/darkmode-toggle.js";
 import { store } from "./AppHaxStore.js";
-import { WiredDarkmodeToggle } from "@haxtheweb/haxcms-elements/lib/core/ui/wired-darkmode-toggle/wired-darkmode-toggle.js";
 
-export class AppHAXWiredToggle extends WiredDarkmodeToggle {
+export class AppHAXDarkmodeToggle extends DarkmodeToggle {
   constructor() {
     super();
     // Create a media query to monitor platform color scheme changes
@@ -30,7 +29,7 @@ export class AppHAXWiredToggle extends WiredDarkmodeToggle {
   }
 
   static get tag() {
-    return "app-hax-wired-toggle";
+    return "app-hax-darkmode-toggle";
   }
 
   disconnectedCallback() {
@@ -54,38 +53,5 @@ export class AppHAXWiredToggle extends WiredDarkmodeToggle {
       }
     });
   }
-
-  static get styles() {
-    return [
-      super.styles,
-      css`
-        /* Screen reader only text */
-        .sr-only {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border: 0;
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`
-      <div
-        data-label="${this.label}"
-        aria-describedby="dark-mode-desc"
-      >
-        ${super.render()}
-        <div id="dark-mode-desc" class="sr-only">
-          Toggle between light and dark mode themes
-        </div>
-      </div>
-    `;
-  }
 }
-globalThis.customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);
+globalThis.customElements.define(AppHAXDarkmodeToggle.tag, AppHAXDarkmodeToggle);

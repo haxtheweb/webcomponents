@@ -99,7 +99,7 @@ export class AppHaxToast extends RPGCharacterToast {
           margin: 0;
           height: auto;
           line-height: 1.45;
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           text-align: left;
           color: inherit;
         }

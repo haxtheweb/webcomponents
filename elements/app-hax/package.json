@@ -32,7 +32,7 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium --timeout 10000",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium --timeout 10000",
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "cd demo && web-dev-server -c ../../../web-dev-server.haxcms.config.cjs",
@@ -78,13 +78,11 @@
     "@haxtheweb/user-scaffold": "^26.0.0",
     "@haxtheweb/utils": "^26.0.0",
     "@haxtheweb/wc-autoload": "^26.0.0",
-    "@vaadin/router": "1.7.5",
     "lit": "3.3.3",
     "mobx": "6.13.7",
     "roughjs": "4.4.5",
     "scrollable-component": "1.2.1",
-    "web-dialog": "0.0.11",
-    "wired-elements": "3.0.0-rc.6"
+    "web-dialog": "0.0.11"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

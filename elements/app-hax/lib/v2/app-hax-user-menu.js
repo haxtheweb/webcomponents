@@ -16,7 +16,52 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     super();
     this.isOpen = false;
     this.icon = "account-circle";
-    this.addEventListener("keydown", this._handleKeydown.bind(this));
+    this.__boundKeydownHandler = this._handleKeydown.bind(this);
+    this.__boundDocumentPointerDown =
+      this._handleDocumentPointerDown.bind(this);
+    this.__boundDocumentFocusIn = this._handleDocumentFocusIn.bind(this);
+    this.addEventListener("keydown", this.__boundKeydownHandler);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.document.addEventListener(
+      "pointerdown",
+      this.__boundDocumentPointerDown,
+    );
+    globalThis.document.addEventListener(
+      "focusin",
+      this.__boundDocumentFocusIn,
+    );
+  }
+
+  disconnectedCallback() {
+    globalThis.document.removeEventListener(
+      "pointerdown",
+      this.__boundDocumentPointerDown,
+    );
+    globalThis.document.removeEventListener(
+      "focusin",
+      this.__boundDocumentFocusIn,
+    );
+    this.removeEventListener("keydown", this.__boundKeydownHandler);
+    super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "isOpen" && oldValue !== undefined) {
+        this.dispatchEvent(
+          new CustomEvent("is-open-changed", {
+            bubbles: true,
+            composed: true,
+            detail: {
+              value: this.isOpen,
+            },
+          }),
+        );
+      }
+    });
   }
 
   static get properties() {
@@ -71,7 +116,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           display: block;
           width: 100%;
           margin: 0;
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           text-align: left;
           font-family: var(--ddd-font-primary, sans-serif);
           color: light-dark(black, white);
@@ -141,7 +186,9 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         <div
           class="menuToggle"
           part="menuToggle"
-          tabindex="-1"
+          aria-expanded="${this.isOpen}"
+          aria-haspopup="menu"
+          aria-controls="user-menu-dropdown"
         >
           <slot name="menuButton"
             ><simple-icon-lite
@@ -157,13 +204,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           role="menu"
           aria-hidden="${!this.isOpen}"
         >
-          <div class="pre-menu" role="group" aria-label="Menu header">
+          <div class="pre-menu" role="group" aria-label="Menu Controls">
             <slot name="pre-menu"></slot>
           </div>
-          <div class="main-menu" role="group" aria-label="Main menu items">
+          <div class="main-menu" role="group" aria-label="Main Menu Items">
             <slot name="main-menu"></slot>
           </div>
-          <div class="post-menu" role="group" aria-label="Menu footer">
+          <div class="post-menu" role="group" aria-label="Account Actions">
             <slot name="post-menu"></slot>
           </div>
         </div>
@@ -241,6 +288,27 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     this.isOpen = false;
   }
 
+  _handleDocumentPointerDown(e) {
+    if (!this.isOpen) {
+      return;
+    }
+    const path = e && e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(this) === -1) {
+      this._closeMenu();
+    }
+  }
+
+  _handleDocumentFocusIn(e) {
+    if (!this.isOpen) {
+      return;
+    }
+    const path = e && e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(this) !== -1) {
+      return;
+    }
+    this._closeMenu();
+  }
+
   /**
    * Focus the menu toggle button
    */
@@ -278,6 +346,26 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
   }
 
   /**
+   * Collect all focusable elements from an element, piercing shadow DOM.
+   */
+  _collectFocusable(el, results) {
+    if (!el || el.nodeType !== Node.ELEMENT_NODE) return;
+    if (el.matches('a, button, [tabindex]:not([tabindex="-1"])')) {
+      results.push(el);
+    }
+    if (el.children) {
+      Array.from(el.children).forEach((child) => {
+        this._collectFocusable(child, results);
+      });
+    }
+    if (el.shadowRoot) {
+      Array.from(el.shadowRoot.querySelectorAll("*")).forEach((child) => {
+        this._collectFocusable(child, results);
+      });
+    }
+  }
+
+  /**
    * Get all focusable menu items
    */
   _getMenuItems() {
@@ -288,13 +376,9 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     const menuItems = [];
 
     items.forEach((slot) => {
-      const assignedElements = slot.assignedElements();
+      const assignedElements = slot.assignedElements({ flatten: true });
       assignedElements.forEach((el) => {
-        // Find focusable elements within slotted content
-        const focusable = el.matches('a, button, [tabindex="0"]')
-          ? [el]
-          : el.querySelectorAll('a, button, [tabindex="0"]');
-        menuItems.push(...focusable);
+        this._collectFocusable(el, menuItems);
       });
     });
 
@@ -302,11 +386,17 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
   }
 
   /**
-   * Get current focused menu item index
+   * Get current focused menu item index, piercing shadow DOM.
    */
   _getCurrentMenuItemIndex(menuItems) {
-    const activeElement =
-      this.shadowRoot.activeElement || document.activeElement;
+    let activeElement = document.activeElement;
+    while (
+      activeElement &&
+      activeElement.shadowRoot &&
+      activeElement.shadowRoot.activeElement
+    ) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
     return menuItems.indexOf(activeElement);
   }
 

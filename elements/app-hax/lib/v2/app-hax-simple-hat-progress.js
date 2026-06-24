@@ -46,10 +46,10 @@ export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
 
         .progress-bar {
           position: absolute;
-          bottom: 38px;
-          left: 8px;
-          right: 8px;
-          height: 16px;
+          bottom: 36px;
+          left: 12px;
+          right: 10px;
+          height: 20px;
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
           border-radius: var(--ddd-radius-sm, 4px);
           overflow: hidden;

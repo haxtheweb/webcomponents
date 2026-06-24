@@ -292,14 +292,57 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           transition: all 0.3s ease-in-out;
         }
         .soundToggle {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          border: none;
+          margin: 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-6xs, 12px);
+          text-align: left;
+          font-family: var(--ddd-font-primary, sans-serif);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, white)
+          );
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-height: var(--ddd-spacing-8, 32px);
+          box-sizing: border-box;
           position: relative;
-          display: inline-flex;
-          vertical-align: top;
         }
 
-        .soundToggle img {
-          width: 24px;
-          height: 24px;
+        .soundToggle:hover,
+        .soundToggle:active,
+        .soundToggle:focus {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray, #f5f5f5),
+            var(--ddd-theme-default-coalyGray, #333)
+          );
+        }
+
+        :host([dark-mode]) .soundToggle:hover,
+        :host([dark-mode]) .soundToggle:active,
+        :host([dark-mode]) .soundToggle:focus,
+        body.dark-mode .soundToggle:hover,
+        body.dark-mode .soundToggle:active,
+        body.dark-mode .soundToggle:focus {
+          color: var(--ddd-theme-default-white, white);
+        }
+
+        .soundToggle simple-icon-lite {
+          padding-right: var(--ddd-spacing-2, 8px);
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          --simple-icon-width: var(--ddd-icon-xs, 24px);
+          --simple-icon-height: var(--ddd-icon-xs, 24px);
+        }
+
+        .sound-label {
+          flex: 1;
+          text-align: left;
         }
 
         :host([edit-mode]) simple-toolbar simple-toolbar-button,
@@ -417,9 +460,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           flex: 0 1 auto;
         }
         .ops-panel {
-          justify-content: space-around;
           display: flex;
-          padding: 4px 0px;
+          flex-direction: column;
+          padding: 0;
+          width: 100%;
         }
 
         .topbar-character {
@@ -491,9 +535,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           text-decoration: none;
         }
 
-        app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
-          font-size: 12px;
-        }
         simple-toolbar-menu,
         simple-toolbar-button,
         haxcms-button-add {
@@ -3238,29 +3279,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${this.editMode}"
               >${this.userName}</simple-tooltip
             >
-            <div slot="pre-menu" class="ops-panel">
-              <slot name="haxcms-site-editor-ui-pre-menu"></slot>
-              <button
-                class="soundToggle"
-                @click="${this.soundToggle}"
-                aria-label="Toggle sound effects ${this.soundIcon &&
-                this.soundIcon.indexOf("Full") !== -1
-                  ? "off"
-                  : "on"}"
-                aria-pressed="${this.soundIcon &&
-                this.soundIcon.indexOf("Full") !== -1
-                  ? "true"
-                  : "false"}"
-              >
-                <simple-icon-lite
-                  src="${this.soundIcon}"
-                  loading="lazy"
-                  decoding="async"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </button>
-              <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
-            </div>
+          <div slot="pre-menu" class="ops-panel">
+            <slot name="haxcms-site-editor-ui-pre-menu"></slot>
+            <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
+            <button
+              class="soundToggle"
+              @click="${this.soundToggle}"
+              aria-label="Toggle sound effects ${this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1
+                ? "off"
+                : "on"}"
+              aria-pressed="${this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1
+                ? "true"
+                : "false"}"
+            >
+              <simple-icon-lite
+                src="${this.soundIcon}"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <span class="sound-label">Sound effects</span>
+            </button>
+          </div>
             <slot
               slot="main-menu"
               name="haxcms-site-editor-ui-main-menu"

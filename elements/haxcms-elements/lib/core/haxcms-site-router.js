@@ -1,4 +1,4 @@
-import { Router } from "@vaadin/router";
+import { HaxRouter } from "./hax-router.js";
 import { autorun } from "mobx";
 import { store } from "./haxcms-site-store.js";
 /**
@@ -30,7 +30,7 @@ class HAXCMSSiteRouter extends HTMLElement {
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
     }
-    this.router = new Router(this, options);
+    this.router = new HaxRouter(this, options);
     /**
      * Subscribe to changes in the manifest
      */
@@ -42,7 +42,7 @@ class HAXCMSSiteRouter extends HTMLElement {
     );
 
     globalThis.addEventListener(
-      "vaadin-router-location-changed",
+      "hax-router-location-changed",
       this._routerLocationChanged.bind(this),
       { signal: this.windowControllers.signal },
     );

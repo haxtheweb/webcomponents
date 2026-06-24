@@ -117,7 +117,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           display: block;
           width: 100%;
           margin: 0;
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           text-align: left;
           font-family: var(--ddd-font-primary, sans-serif);
           background: transparent;
@@ -260,23 +260,6 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         e.preventDefault();
         this._focusLastItem(menuItems);
         break;
-      case "Tab":
-        if (menuItems.length === 0) {
-          break;
-        }
-        if (e.shiftKey) {
-          if (currentIndex <= 0) {
-            e.preventDefault();
-            this._focusLastItem(menuItems);
-          }
-        } else if (
-          currentIndex === menuItems.length - 1 ||
-          currentIndex === -1
-        ) {
-          e.preventDefault();
-          this._focusFirstItem(menuItems);
-        }
-        break;
     }
   }
 
@@ -321,19 +304,62 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     if (path.indexOf(this) !== -1) {
       return;
     }
-    const menuItems = this._getMenuItems();
-    if (menuItems.length > 0) {
-      menuItems[0].focus();
-    }
+    this._closeMenu();
   }
 
   /**
    * Focus the menu toggle button
    */
   _focusToggle() {
+    const menuButtonSlot =
+      this.shadowRoot && this.shadowRoot.querySelector('slot[name="menuButton"]');
+    if (menuButtonSlot) {
+      const assignedElements = menuButtonSlot.assignedElements({
+        flatten: true,
+      });
+      if (assignedElements && assignedElements.length > 0) {
+        const firstAssigned = assignedElements[0];
+        if (firstAssigned && typeof firstAssigned.focus === "function") {
+          firstAssigned.focus();
+          return;
+        }
+        if (firstAssigned && firstAssigned.querySelector) {
+          const nestedFocusable = firstAssigned.querySelector(
+            'button, a, [tabindex]:not([tabindex="-1"])',
+          );
+          if (
+            nestedFocusable &&
+            typeof nestedFocusable.focus === "function"
+          ) {
+            nestedFocusable.focus();
+            return;
+          }
+        }
+      }
+    }
     const toggle = this.shadowRoot.querySelector(".menuToggle");
-    if (toggle) {
+    if (toggle && typeof toggle.focus === "function") {
       toggle.focus();
+    }
+  }
+
+  /**
+   * Collect all focusable elements from an element, piercing shadow DOM.
+   */
+  _collectFocusable(el, results) {
+    if (!el || el.nodeType !== Node.ELEMENT_NODE) return;
+    if (el.matches('a, button, [tabindex]:not([tabindex="-1"])')) {
+      results.push(el);
+    }
+    if (el.children) {
+      Array.from(el.children).forEach((child) => {
+        this._collectFocusable(child, results);
+      });
+    }
+    if (el.shadowRoot) {
+      Array.from(el.shadowRoot.querySelectorAll("*")).forEach((child) => {
+        this._collectFocusable(child, results);
+      });
     }
   }
 
@@ -348,13 +374,9 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     const menuItems = [];
 
     items.forEach((slot) => {
-      const assignedElements = slot.assignedElements();
+      const assignedElements = slot.assignedElements({ flatten: true });
       assignedElements.forEach((el) => {
-        // Find focusable elements within slotted content
-        const focusable = el.matches('a, button, [tabindex="0"]')
-          ? [el]
-          : el.querySelectorAll('a, button, [tabindex="0"]');
-        menuItems.push(...focusable);
+        this._collectFocusable(el, menuItems);
       });
     });
 
@@ -362,11 +384,17 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
   }
 
   /**
-   * Get current focused menu item index
+   * Get current focused menu item index, piercing shadow DOM.
    */
   _getCurrentMenuItemIndex(menuItems) {
-    const activeElement =
-      this.shadowRoot.activeElement || document.activeElement;
+    let activeElement = document.activeElement;
+    while (
+      activeElement &&
+      activeElement.shadowRoot &&
+      activeElement.shadowRoot.activeElement
+    ) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
     return menuItems.indexOf(activeElement);
   }
 

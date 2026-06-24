@@ -270,12 +270,6 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           margin: var(--ddd-spacing-4, 16px) 0;
         }
 
-        .progress-text {
-          font-size: var(--ddd-font-size-s, 16px);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          margin-bottom: var(--ddd-spacing-4, 16px);
-        }
-
         .hat-progress-container {
           display: flex;
           justify-content: center;

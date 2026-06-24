@@ -1,4 +1,4 @@
-import { Router } from "@vaadin/router";
+import { HaxRouter } from "@haxtheweb/haxcms-elements/lib/core/hax-router.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 
@@ -25,7 +25,7 @@ export class AppHaxRouter extends HTMLElement {
       options.baseUrl = this.baseURI;
     }
     this.windowControllers = new AbortController();
-    this.router = new Router(this, options);
+    this.router = new HaxRouter(this, options);
     autorun(() => {
       const _mobx_val_0 = toJS(store.routes);
       Promise.resolve().then(() => {
@@ -55,7 +55,7 @@ export class AppHaxRouter extends HTMLElement {
 
   connectedCallback() {
     globalThis.addEventListener(
-      "vaadin-router-location-changed",
+      "hax-router-location-changed",
       this._routerLocationChanged.bind(this),
       { signal: this.windowControllers.signal },
     );

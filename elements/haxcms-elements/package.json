@@ -27,7 +27,7 @@
   "module": "haxcms-elements.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "cd demo && yarn start",
@@ -119,9 +119,7 @@
     "@lit-labs/virtualizer": "2.1.1",
     "lit": "3.3.3",
     "mobx": "6.13.7",
-    "web-social-share": "8.0.1",
-    "@vaadin/router": "1.7.5",
-    "wired-elements": "3.0.0-rc.6"
+    "web-social-share": "8.0.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

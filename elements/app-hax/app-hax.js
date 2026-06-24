@@ -17,6 +17,7 @@ import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
+import "./lib/v2/app-hax-user-menu.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -1037,7 +1038,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
         .characterbtn-name {
           margin-left: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           vertical-align: bottom;
           line-height: var(--top-bar-height, 64px);
           overflow: hidden;
@@ -1046,24 +1047,59 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           word-break: break-all;
         }
         .ops-panel {
-          justify-content: space-around;
           display: flex;
-          align-items: center;
-          padding: var(--ddd-spacing-1, 4px) 0px;
-          gap: var(--ddd-spacing-2, 8px);
+          flex-direction: column;
+          padding: 0;
+          width: 100%;
         }
         .soundToggle {
-          position: relative;
-          display: inline-flex;
-          vertical-align: top;
-          min-width: var(--ddd-spacing-12, 48px);
-          min-height: var(--ddd-spacing-12, 48px);
+          display: flex;
           align-items: center;
-          justify-content: center;
+          width: 100%;
+          border: none;
+          margin: 0;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
+          text-align: left;
+          font-family: var(--ddd-font-primary, sans-serif);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, white)
+          );
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-height: var(--ddd-spacing-8, 32px);
+          box-sizing: border-box;
+          position: relative;
+        }
+        .soundToggle:hover,
+        .soundToggle:active,
+        .soundToggle:focus {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray, #f5f5f5),
+            var(--ddd-theme-default-coalyGray, #333)
+          );
+        }
+        :host([dark]) .soundToggle:hover,
+        :host([dark]) .soundToggle:active,
+        :host([dark]) .soundToggle:focus,
+        body.dark-mode .soundToggle:hover,
+        body.dark-mode .soundToggle:active,
+        body.dark-mode .soundToggle:focus {
+          color: var(--ddd-theme-default-white, white);
         }
         .soundToggle simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-xs, 24px);
+          padding-right: var(--ddd-spacing-2, 8px);
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
           --simple-icon-width: var(--ddd-icon-xs, 24px);
+          --simple-icon-height: var(--ddd-icon-xs, 24px);
+        }
+        .sound-label {
+          flex: 1;
+          text-align: left;
         }
 
         .characterbtn-menu-icon {
@@ -1295,7 +1331,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
 
         .filter-btn .icon {
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           color: inherit;
           display: flex;
           align-items: center;
@@ -1532,11 +1568,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (store.AppHaxAPI && this.basePath) {
       store.AppHaxAPI.basePath = this.basePath;
     }
-    import("./lib/v2/app-hax-site-button.js");
     import("./lib/v2/app-hax-toast.js");
-    import("./lib/v2/app-hax-wired-toggle.js");
+    import("./lib/v2/app-hax-darkmode-toggle.js");
     import("./lib/v2/app-hax-search-results.js");
-    import("./lib/v2/app-hax-user-menu.js");
     import("./lib/v2/app-hax-user-menu-button.js");
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
@@ -2278,8 +2312,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   ${displayUserName}
                 </simple-tooltip>
                 <div slot="pre-menu" class="ops-panel">
+                  <app-hax-darkmode-toggle id="wt"></app-hax-darkmode-toggle>
                   <button
-                    elevation="1"
                     class="soundToggle"
                     @click="${soundToggle}"
                     aria-label="Toggle sound effects ${this.soundIcon &&
@@ -2297,8 +2331,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                       decoding="async"
                       aria-hidden="true"
                     ></simple-icon-lite>
+                    <span class="sound-label">Sound effects</span>
                   </button>
-                  <app-hax-wired-toggle id="wt"></app-hax-wired-toggle>
                 </div>
                 ${this._allowSystemSettings()
                   ? html`

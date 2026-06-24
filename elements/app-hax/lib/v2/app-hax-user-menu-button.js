@@ -14,7 +14,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.icon = "account-circle";
-    this.label = "Default";
+    this.label = "Menu Item";
   }
 
   handleClick(e) {
@@ -46,12 +46,13 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
 
         .menu-button {
           display: flex;
+          text-decoration: none;
           align-items: center;
           width: 100%;
           border: none;
           margin: 0;
           padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--ddd-font-size-6xs, 12px);
           text-align: left;
           color: light-dark(var(--ddd-theme-default-coalyGray, #222), var(--ddd-theme-default-white, white));
           background: transparent;
@@ -62,42 +63,13 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
           box-sizing: border-box;
         }
 
-        :host([dark]) .menu-button,
-        body.dark-mode .menu-button {
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        .menu-button:hover,
-        .menu-button:active,
-        .menu-button:focus {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          outline: none;
-        }
-
-        :host([dark]) .menu-button:hover,
-        :host([dark]) .menu-button:active,
-        :host([dark]) .menu-button:focus,
-        body.dark-mode .menu-button:hover,
-        body.dark-mode .menu-button:active,
-        body.dark-mode .menu-button:focus {
-          background: var(--ddd-theme-default-slateGray, #666);
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        :host(.logout) .menu-button:hover,
-        :host(.logout) .menu-button:active,
-        :host(.logout) .menu-button:focus {
-          background: var(--ddd-theme-default-original87Pink, #e4007c);
-          color: var(--ddd-theme-default-white, white);
-        }
-
         .icon {
           padding-right: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-xs, 14px);
           flex-shrink: 0;
           display: flex;
           align-items: center;
+          --simple-icon-width: var(--ddd-icon-xs, 24px);
+          --simple-icon-height: var(--ddd-icon-xs, 24px);
         }
 
         .label {
