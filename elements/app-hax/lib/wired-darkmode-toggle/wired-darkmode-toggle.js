@@ -40,7 +40,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
     this.knobFill.setAttribute("r", 20);
     this.knobFill.setAttribute(
       "style",
-      "fill: var(--wired-toggle-off-color); transition: fill 0.3s ease-in-out;",
+      "fill: var(--hax-darkmode-toggle-off-color); transition: fill 0.3s ease-in-out;",
     );
     this.knobFill.classList.add("knobfill");
     this.knob.appendChild(this.knobFill);
@@ -51,12 +51,12 @@ export class WiredDarkmodeToggle extends WiredToggle {
     if (checked) {
       this.knobFill.setAttribute(
         "style",
-        "fill: var(--wired-toggle-on-color);",
+        "fill: var(--hax-darkmode-toggle-on-color);",
       );
     } else {
       this.knobFill.setAttribute(
         "style",
-        "fill: var(--wired-toggle-off-color);",
+        "fill: var(--hax-darkmode-toggle-off-color);",
       );
     }
   }
@@ -111,8 +111,8 @@ export class WiredDarkmodeToggle extends WiredToggle {
         :host div {
           background-image: url("${unsafeCSS(sun)}");
           background-repeat: no-repeat;
-          --wired-toggle-off-color: var(--simple-colors-fixed-theme-amber-7);
-          --wired-toggle-on-color: var(
+          --hax-darkmode-toggle-off-color: var(--simple-colors-fixed-theme-amber-7);
+          --hax-darkmode-toggle-on-color: var(
             --simple-colors-fixed-theme-light-blue-9
           );
           background-position-x: 60px;

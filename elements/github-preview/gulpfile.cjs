@@ -11,5 +11,5 @@ gulp.task("dev", gulp.series("watch"));
 
 gulp.task(
   "default",
-  gulp.series("analyze")
+  gulp.series("dev")
 );

@@ -1533,7 +1533,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       store.AppHaxAPI.basePath = this.basePath;
     }
     import("./lib/v2/app-hax-site-button.js");
-    import("wired-elements/lib/wired-button.js");
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-wired-toggle.js");
     import("./lib/v2/app-hax-search-results.js");
@@ -2279,7 +2278,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   ${displayUserName}
                 </simple-tooltip>
                 <div slot="pre-menu" class="ops-panel">
-                  <wired-button
+                  <button
                     elevation="1"
                     class="soundToggle"
                     @click="${soundToggle}"
@@ -2298,7 +2297,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                       decoding="async"
                       aria-hidden="true"
                     ></simple-icon-lite>
-                  </wired-button>
+                  </button>
                   <app-hax-wired-toggle id="wt"></app-hax-wired-toggle>
                 </div>
                 ${this._allowSystemSettings()

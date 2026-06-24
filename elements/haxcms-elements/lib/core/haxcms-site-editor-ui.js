@@ -32,7 +32,6 @@ import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
-import "wired-elements/lib/wired-button.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -2750,7 +2749,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       });
     });
-    // user scaffolding wired up to superDaemon
+    // user scaffolding to superDaemon
     autorun(() => {
       const _mobx_val_0 = toJS(UserScaffoldInstance.memory);
       const _mobx_val_1 = toJS(UserScaffoldInstance.action);
@@ -2812,7 +2811,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       });
     });
-    // user scaffolding wired up to superDaemon
+    // user scaffolding to superDaemon
     autorun(() => {
       const _mobx_val_0 = toJS(UserScaffoldInstance.action);
       const _mobx_val_1 = toJS(UserScaffoldInstance.data);
@@ -3241,8 +3240,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             >
             <div slot="pre-menu" class="ops-panel">
               <slot name="haxcms-site-editor-ui-pre-menu"></slot>
-              <wired-button
-                elevation="1"
+              <button
                 class="soundToggle"
                 @click="${this.soundToggle}"
                 aria-label="Toggle sound effects ${this.soundIcon &&
@@ -3260,7 +3258,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   decoding="async"
                   aria-hidden="true"
                 ></simple-icon-lite>
-              </wired-button>
+              </button>
               <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
             </div>
             <slot

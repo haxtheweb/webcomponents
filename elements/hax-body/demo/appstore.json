@@ -602,6 +602,7 @@
   ],
   "autoloader": {
     "media-image": "@haxtheweb/media-image/media-image.js",
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js",
     "self-check": "@haxtheweb/self-check/self-check.js",
     "stop-note": "@haxtheweb/stop-note/stop-note.js",
     "video-player": "@haxtheweb/video-player/video-player.js",

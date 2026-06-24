@@ -943,6 +943,7 @@
         "lrndesign-blockquote": "@haxtheweb/lrndesign-blockquote/lrndesign-blockquote.js",
         "magazine-cover": "@haxtheweb/magazine-cover/magazine-cover.js",
         "media-image": "@haxtheweb/media-image/media-image.js",
+        "media-playlist": "@haxtheweb/media-playlist/media-playlist.js",
         "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",
         "music-player": "@haxtheweb/music-player/music-player.js",
         "twitter-embed": "@haxtheweb/twitter-embed/twitter-embed.js",
