@@ -4899,15 +4899,23 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             (typeof value === "object" || value.constructor === Array)
           ) {
             if (value.constructor === Array && value != []) {
-              propvals[nodeName] = JSON.stringify(value).replace(
-                new RegExp('"', "g"),
-                "&quot;",
-              );
+              try {
+                propvals[nodeName] = JSON.stringify(value).replace(
+                  new RegExp('"', "g"),
+                  "&quot;",
+                );
+              } catch (e) {
+                // circular reference or other serialization issue, skip
+              }
             } else if (typeof value === "object" && value != {}) {
-              propvals[nodeName] = JSON.stringify(value).replace(
-                new RegExp('"', "g"),
-                "&quot;",
-              );
+              try {
+                propvals[nodeName] = JSON.stringify(value).replace(
+                  new RegExp('"', "g"),
+                  "&quot;",
+                );
+              } catch (e) {
+                // circular reference or other serialization issue, skip
+              }
             }
           }
           // only write things that aren't empty

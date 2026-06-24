@@ -548,8 +548,11 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         if (this.edit) {
           // entering edit mode - light dom children become visible
         } else if (oldValue === true) {
-          // exiting edit mode - pause all light dom children so they don't
-          // keep playing in the hidden slot container
+          // exiting edit mode - light dom children may have changed during
+          // edit, so rebuild the mediaItems array before rendering
+          this._updateMediaItems();
+          // pause all light dom children so they don't keep playing in the
+          // hidden slot container
           this.mediaItems.forEach((item) => {
             try {
               if (
