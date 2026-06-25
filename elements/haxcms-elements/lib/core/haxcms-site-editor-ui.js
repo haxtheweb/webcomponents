@@ -243,6 +243,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --bg-color: #000;
           --accent-color: #fff;
         }
+        app-hax-top-bar.drag-over {
+          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color);
+          outline-offset: -2px;
+        }
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
           overflow: visible;
@@ -1930,6 +1934,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
           const createType = values && values.type ? values.type : "sibling";
+          const templateContent = values && values.templateContent ? values.templateContent : null;
 
           // If no input provided, show default page creation option to match prior UX
           if (!input || input.trim() === "") {
@@ -1941,7 +1946,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: ["New Page", createType],
+                args: ["New Page", createType, templateContent],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page",
@@ -1958,13 +1963,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             // Add blank page option first
             results.push({
-              title: `Create ${title}`,
+              title: templateContent ? `Create ${title} with view` : `Create ${title}`,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
                 target: siteEditorUI,
                 method: "createPageWithTitle",
-                args: [title, createType],
+                args: [title, createType, templateContent],
               },
               eventName: "super-daemon-element-method",
               path: "CMS/action/create/page/blank",
@@ -1973,18 +1978,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add template options if templates are available
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, index) => {
-                results.push({
-                  title: `Create ${template.name} named ${title}`,
-                  icon: "hax:templates",
-                  tags: ["template", "page", "create"],
-                  value: {
-                    target: siteEditorUI,
-                    method: "createPageWithTitle",
-                    args: [title, createType, template.content],
-                  },
-                  eventName: "super-daemon-element-method",
-                  path: `CMS/action/create/page/template/${template.id}`,
-                });
+              results.push({
+                title: `Create ${template.name} named ${title}`,
+                icon: "hax:templates",
+                tags: ["template", "page", "create"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: [title, createType, templateContent || template.content],
+                },
+                eventName: "super-daemon-element-method",
+                path: `CMS/action/create/page/template/${template.id}`,
+              });
               });
             }
 
@@ -3011,7 +3016,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-      <app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}">
+<app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}" @drop="${this.topBarDropEvent}" @dragenter="${this.topBarDragEnterEvent}" @dragover="${this.topBarDragOverEvent}" @dragleave="${this.topBarDragLeaveEvent}">
         <div slot="left" class="topbar-left-group">
           <span class="home-btn">
             <a
@@ -3355,6 +3360,44 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.rpgWalk = false;
   }
 
+  /**
+   * Top bar drop-through: when a file is dropped on the top bar
+   * outside of Merlin, forward it to the Merlin upload pipeline.
+   */
+  topBarDropEvent(e) {
+    if (!this.editMode) return;
+    // If the drop originated from the Merlin search box, let it handle it
+    if (e.target && e.target.closest && e.target.closest("#search")) {
+      return;
+    }
+    this.dropEvent(e);
+    e.stopPropagation();
+  }
+  topBarDragEnterEvent(e) {
+    if (!this.editMode) return;
+    e.preventDefault();
+    const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
+    if (topBar) topBar.classList.add("drag-over");
+    if (this.sdSearch) {
+      this.sdSearch.dragover = true;
+    }
+  }
+  topBarDragOverEvent(e) {
+    if (!this.editMode) return;
+    e.preventDefault();
+    if (this.sdSearch) {
+      this.sdSearch.dragover = true;
+    }
+  }
+  topBarDragLeaveEvent(e) {
+    if (!this.editMode) return;
+    e.preventDefault();
+    const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
+    if (topBar) topBar.classList.remove("drag-over");
+    if (this.sdSearch) {
+      this.sdSearch.dragover = false;
+    }
+  }
   /**
    * drag / drop event block
    */

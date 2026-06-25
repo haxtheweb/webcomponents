@@ -521,28 +521,100 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           display: none;
         }
         /* drag and drop */
-        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*)::before {
-          background-color: var(--hax-body-possible-target-background-color);
-          content: " ";
-          width: 100%;
-          display: block;
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*) {
           position: relative;
-          margin: -12px 0 0 0;
-          z-index: 2;
-          height: 12px;
-          transition: 0.3s all ease-in-out;
         }
+
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*)::before {
+          content: "";
+          position: absolute;
+          top: -8px;
+          left: 0;
+          right: 0;
+          height: 16px;
+          z-index: 2;
+          pointer-events: none;
+          transition: all 0.3s ease-in-out;
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style) transparent;
+          outline-offset: -1px;
+          border-radius: var(--ddd-drop-zone-radius);
+          background-color: transparent;
+        }
+
         :host([edit-mode][hax-mover]) #bodycontainer ::slotted(img) {
           outline: var(--hax-body-editable-outline);
         }
-        :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered),
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered)::before {
-          background-color: var(--hax-body-target-background-color) !important;
+
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(--ddd-drop-zone-outline-color) !important;
+          outline-offset: var(--ddd-drop-zone-outline-offset);
         }
+
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered)::before {
+          background-color: var(--ddd-drop-zone-background-color) !important;
+          outline-color: var(--ddd-drop-zone-outline-color) !important;
+          animation: hax-drop-pulse 1s ease-in-out infinite;
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-drop-above)::before {
+          top: -10px;
+          height: 20px;
+          background-color: var(--ddd-drop-zone-background-color) !important;
+          outline-color: var(--ddd-drop-zone-outline-color) !important;
+          animation: hax-drop-pulse 1s ease-in-out infinite;
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-drop-below)::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          height: 20px;
+          z-index: 2;
+          pointer-events: none;
+          transition: all 0.3s ease-in-out;
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(--ddd-drop-zone-outline-color);
+          outline-offset: -1px;
+          border-radius: var(--ddd-drop-zone-radius);
+          background-color: var(--ddd-drop-zone-background-color) !important;
+          animation: hax-drop-pulse 1s ease-in-out infinite;
+        }
+
+        /* Image-specific hover states - ::before/::after don't work on replaced elements */
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
-          border-top: 8px
-            var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
-          margin-top: -8px;
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(--ddd-drop-zone-outline-color) !important;
+          outline-offset: var(--ddd-drop-zone-outline-offset);
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-drop-above) {
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(--ddd-drop-zone-outline-color) !important;
+          outline-offset: calc(-1 * var(--ddd-drop-zone-outline-offset));
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-drop-below) {
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(--ddd-drop-zone-outline-color) !important;
+          outline-offset: var(--ddd-drop-zone-outline-offset);
+        }
+        @keyframes hax-drop-pulse {
+          0%,
+          100% {
+            opacity: 0.6;
+          }
+          50% {
+            opacity: 1;
+          }
         }
         [hidden],
         :host([hidden]),
@@ -597,6 +669,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.__ignoreActive = false;
     this.__dragMoving = false;
     this.___moveLock = false;
+    this.__addAbove = true;
     this.viewSourceToggle = false;
     this.editMode = false;
     this.haxMover = false;
@@ -694,6 +767,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     HAXStore._lockContextPosition = false;
     this.querySelectorAll(".hax-hovered").forEach((el) => {
       el.classList.remove("hax-hovered");
+    });
+    this.querySelectorAll(".hax-drop-above").forEach((el) => {
+      el.classList.remove("hax-drop-above");
+    });
+    this.querySelectorAll(".hax-drop-below").forEach((el) => {
+      el.classList.remove("hax-drop-below");
     });
   }
   _mouseLeave(e) {
@@ -856,6 +935,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   dragEnterBody(e) {
     this.hideContextMenus();
     this._useristyping = false;
+    this.__addAbove = true;
     // insert a fake child at the end
     this.__manageFakeEndCap(true);
   }
@@ -4711,6 +4791,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         dragover: (e) => {
           this.__dragMoving = true;
           e.preventDefault();
+          if (
+            e.currentTarget &&
+            e.currentTarget.classList &&
+            e.currentTarget.classList.contains("hax-hovered")
+          ) {
+            this.__updateDropPosition(e.currentTarget, e);
+          }
         },
       });
     }
@@ -4955,6 +5042,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
       });
+      this.querySelectorAll(".hax-drop-above").forEach((el) => {
+        el.classList.remove("hax-drop-above");
+      });
+      this.querySelectorAll(".hax-drop-below").forEach((el) => {
+        el.classList.remove("hax-drop-below");
+      });
       // remove [data-hax-layout] drops
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
@@ -5024,7 +5117,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               } else {
                 tmp.removeAttribute("slot");
               }
-              local.parentNode.insertBefore(tmp, local);
+              if (this.__addAbove !== false) {
+                local.parentNode.insertBefore(tmp, local);
+              } else {
+                if (local.nextElementSibling) {
+                  local.parentNode.insertBefore(tmp, local.nextElementSibling);
+                } else {
+                  local.parentNode.appendChild(tmp);
+                }
+              }
             } else {
               if (eventPath[0].classList.contains("column")) {
                 tmp.setAttribute(
@@ -5106,7 +5207,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 } else {
                   target.removeAttribute("slot");
                 }
-                local.parentNode.insertBefore(target, local);
+                if (this.__addAbove !== false) {
+                  local.parentNode.insertBefore(target, local);
+                } else {
+                  if (local.nextElementSibling) {
+                    local.parentNode.insertBefore(
+                      target,
+                      local.nextElementSibling,
+                    );
+                  } else {
+                    local.parentNode.appendChild(target);
+                  }
+                }
               } else {
                 if (eventPath[0].classList.contains("column")) {
                   target.setAttribute(
@@ -5169,12 +5281,45 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Enter an element, meaning we've over it while dragging
    */
+  __isFileDrop(e) {
+    return (
+      e.dataTransfer &&
+      e.dataTransfer.items &&
+      e.dataTransfer.items.length > 0 &&
+      e.dataTransfer.items[0].kind === "file"
+    );
+  }
+  __updateDropPosition(target, e) {
+    const rect = target.getBoundingClientRect();
+    const midY = rect.top + rect.height / 2;
+    if (e.clientY < midY) {
+      target.classList.add("hax-drop-above");
+      target.classList.remove("hax-drop-below");
+      this.__addAbove = true;
+    } else {
+      target.classList.add("hax-drop-below");
+      target.classList.remove("hax-drop-above");
+      this.__addAbove = false;
+    }
+  }
+  dragLeave(e) {
+    if (this.editMode && e.currentTarget && e.currentTarget.classList) {
+      e.currentTarget.classList.remove("hax-hovered");
+      e.currentTarget.classList.remove("hax-drop-above");
+      e.currentTarget.classList.remove("hax-drop-below");
+    }
+  }
   dragEnter(e) {
-    if (this.editMode && e.target && HAXStore.__dragTarget) {
+    if (
+      this.editMode &&
+      e.currentTarget &&
+      (HAXStore.__dragTarget || this.__isFileDrop(e))
+    ) {
       this.__dragMoving = true;
       e.preventDefault();
-      if (e.target && e.target.classList) {
-        e.target.classList.add("hax-hovered");
+      if (e.currentTarget.classList) {
+        e.currentTarget.classList.add("hax-hovered");
+        this.__updateDropPosition(e.currentTarget, e);
       }
       // perform check for edge of screen
       this.handleMousemove(e);

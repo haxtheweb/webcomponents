@@ -77,7 +77,9 @@ class HaxAppSearch extends LitElement {
   }
   buildRequestHeaders(params = {}, requestUrl = "") {
     const headers =
-      this.headers && typeof this.headers === "object" ? { ...this.headers } : {};
+      this.headers && typeof this.headers === "object"
+        ? { ...this.headers }
+        : {};
     const siteToken = params.site_token
       ? String(params.site_token).trim()
       : params.siteToken

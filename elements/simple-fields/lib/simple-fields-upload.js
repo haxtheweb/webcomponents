@@ -144,10 +144,8 @@ class SimpleFieldsUpload extends I18NMixin(
           overflow-y: auto;
         }
         simple-file-upload[dragover] {
-          border-color: var(
-            --simple-fields-secondary-accent-color,
-            var(--ddd-theme-default-skyBlue, #009dc7)
-          );
+          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline-offset: -2px;
         }
         simple-file-upload::part(drop-label) {
           font-family: var(--simple-fields-font-family, sans-serif);
@@ -674,6 +672,7 @@ class SimpleFieldsUpload extends I18NMixin(
   __newPhotoShowedUp(e) {
     let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
     this.shadowRoot.querySelector("#fileupload").addFile(file);
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
   /**
    * We got a new photo
@@ -684,6 +683,7 @@ class SimpleFieldsUpload extends I18NMixin(
       "voice-recording-" + e.timeStamp + ".mp3",
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
     this.voice.remove();
     setTimeout(() => {
       this.voice = null;
@@ -698,6 +698,7 @@ class SimpleFieldsUpload extends I18NMixin(
       "screen-recording-" + e.timeStamp + ".webm",
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
     this.screenRecorder.remove();
     setTimeout(() => {
       this.screenRecorder = null;

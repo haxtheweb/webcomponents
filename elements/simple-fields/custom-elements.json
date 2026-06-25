@@ -22731,11 +22731,7 @@
             },
             {
               "kind": "field",
-              "name": "_dragoverCounter",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
+              "name": "_preventWindowDrop"
             }
           ],
           "events": [

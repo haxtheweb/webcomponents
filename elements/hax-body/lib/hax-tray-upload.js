@@ -107,6 +107,7 @@ class HaxTrayUpload extends HaxUploadField {
     // ! it to simulate the drop event using the same event structure that
     // ! would have happened if they had used this element in the first place
     this.shadowRoot.querySelector("#fileupload").addFile(e.detail.file);
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
 }
 

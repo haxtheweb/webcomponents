@@ -147,10 +147,6 @@ class Store {
         titleKey: "search",
         component: "site-search-route",
       },
-      "displays/views": {
-        titleKey: "views",
-        component: "site-views-route",
-      },
       "displays/tags": {
         titleKey: "tags",
         component: "site-tags-route",
@@ -206,7 +202,6 @@ class Store {
     this.t = {
       close: "Close",
       search: "Search",
-      views: "Content views",
       tags: "Content tags",
       random: "Random page",
       home: "Home page",

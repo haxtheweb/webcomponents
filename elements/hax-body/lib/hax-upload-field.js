@@ -72,9 +72,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
   _buildUploadHeaders(connection, jwtValue = "") {
     const headers =
-      connection &&
-      connection.headers &&
-      typeof connection.headers === "object"
+      connection && connection.headers && typeof connection.headers === "object"
         ? { ...connection.headers }
         : {};
     if (
@@ -198,7 +196,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
     // invoke file uploading...
     this.__allowUpload = true;
-    this.shadowRoot.querySelector("#fileupload").uploadFiles();
+    setTimeout(() => {
+      this.shadowRoot.querySelector("#fileupload").uploadFiles();
+    }, 0);
   }
   /**
    * Handle JWT token refresh

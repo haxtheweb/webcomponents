@@ -24,6 +24,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     this.activeIndex = 0;
     this.mode = "grid";
     this.images = [];
+    this._haxState = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -51,14 +52,18 @@ export class ImageGallery extends I18NMixin(DDD) {
     super.connectedCallback();
     this._observer.observe(this, {
       childList: true,
-      subtree: false,
+      attributes: true,
+      subtree: true,
+      attributeFilter: ["src", "alt", "source"],
     });
     this.addEventListener("keydown", this._handleKeydown);
+    this.addEventListener("drop", this._onDrop, true);
   }
 
   disconnectedCallback() {
     this._observer.disconnect();
     this.removeEventListener("keydown", this._handleKeydown);
+    this.removeEventListener("drop", this._onDrop, true);
     super.disconnectedCallback();
   }
 
@@ -69,6 +74,7 @@ export class ImageGallery extends I18NMixin(DDD) {
       mode: { type: String, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
       images: { type: Array },
+      _haxState: { type: Boolean },
     };
   }
 
@@ -358,16 +364,17 @@ export class ImageGallery extends I18NMixin(DDD) {
     return html`
       <div class="grid-layout">
         ${this.images.map(
-          (image) => html`
+          (image, index) => html`
             <button
               class="grid-item"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
-              @click="${() => this._openModal(image)}"
+              @click="${(e) => this._handleImageClick(e, image, index)}"
+              @dblclick="${() => this._handleDblClick(index)}"
               @keydown="${(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  this._openModal(image);
+                  this._handleImageClick(e, image, index);
                 }
               }}"
             >
@@ -383,12 +390,13 @@ export class ImageGallery extends I18NMixin(DDD) {
     return html`
       <div class="masonry-layout">
         ${this.images.map(
-          (image) => html`
+          (image, index) => html`
             <button
               class="masonry-item"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
-              @click="${() => this._openModal(image)}"
+              @click="${(e) => this._handleImageClick(e, image, index)}"
+              @dblclick="${() => this._handleDblClick(index)}"
             >
               <img src="${image.src}" alt="${image.alt}" loading="lazy" />
             </button>
@@ -424,7 +432,11 @@ export class ImageGallery extends I18NMixin(DDD) {
                     @click="${() => this._setActiveIndex(this.activeIndex + 1)}"
                   ></simple-icon-button-lite>
                 </div>
-                <img src="${activeImage.src}" alt="${activeImage.alt}" />
+                <img
+                  src="${activeImage.src}"
+                  alt="${activeImage.alt}"
+                  @dblclick="${() => this._handleDblClick(this.activeIndex)}"
+                />
               `
             : html``}
         </div>
@@ -446,7 +458,8 @@ export class ImageGallery extends I18NMixin(DDD) {
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${image.alt || ""}"
                 title="${image.alt || ""}"
-                @click="${() => this._setActiveIndex(index)}"
+                @click="${(e) => this._handleThumbnailClick(e, index)}"
+                @dblclick="${() => this._handleDblClick(index)}"
               >
                 <img src="${image.src}" alt="" loading="lazy" />
               </button>
@@ -534,6 +547,17 @@ export class ImageGallery extends I18NMixin(DDD) {
     this.dispatchEvent(evt);
   }
 
+  _handleImageClick(e, image, index) {
+    this._setActiveIndex(index);
+    if (!this._haxState) {
+      this._openModal(image);
+    }
+  }
+
+  _handleThumbnailClick(e, index) {
+    this._setActiveIndex(index);
+  }
+
   _handleKeydown(e) {
     if (this.mode !== "gallery" || this.edit) {
       return;
@@ -544,6 +568,43 @@ export class ImageGallery extends I18NMixin(DDD) {
     } else if (e.key === "ArrowRight") {
       e.preventDefault();
       this._setActiveIndex(this.activeIndex + 1);
+    }
+  }
+
+  _getHaxStore() {
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
+      try {
+        return globalThis.HaxStore.requestAvailability();
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  _onDrop(e) {
+    if (!this._haxState) return;
+    const store = this._getHaxStore();
+    if (!store || !store.__dragTarget) return;
+    const tag = store.__dragTarget.tagName;
+    if (tag !== "MEDIA-IMAGE" && tag !== "IMG") {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      store.__dragTarget = null;
+    }
+  }
+
+  async _handleDblClick(index) {
+    this._setActiveIndex(index);
+    const store = this._getHaxStore();
+    if (
+      this._haxState &&
+      store &&
+      this.images[index] &&
+      this.images[index].element
+    ) {
+      store.activeNode = this.images[index].element;
     }
   }
 
@@ -581,7 +642,44 @@ export class ImageGallery extends I18NMixin(DDD) {
   haxHooks() {
     return {
       inlineContextMenu: "haxinlineContextMenu",
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
     };
+  }
+
+  haxeditModeChanged(value) {
+    this._haxState = value;
+    const children = Array.from(this.children).filter(
+      (el) => el.tagName === "MEDIA-IMAGE" || el.tagName === "IMG",
+    );
+    children.forEach((child) => {
+      if (
+        child.haxeditModeChanged &&
+        typeof child.haxeditModeChanged === "function"
+      ) {
+        child.haxeditModeChanged(value);
+      }
+    });
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxState = value;
+    }
+  }
+
+  haxpreProcessNodeToContent(node) {
+    if (
+      node &&
+      node.tagName &&
+      node.tagName.toLowerCase() === "image-gallery"
+    ) {
+      const clone = node.cloneNode(true);
+      clone.removeAttribute("edit");
+      return clone;
+    }
+    return node;
   }
 
   haxinlineContextMenu(ceMenu) {

@@ -216,8 +216,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       // WebKit (Safari + all iOS browsers) clears the contenteditable
       // selection the moment mousedown fires on a non-editable element.
       // Capture the range on pointerdown (fires before mousedown)
-      // using the native Selection API — the shadow-selection-polyfill
-      // getRange() can return values WebKit rejects in addRange().
+      // using the native Selection API.
       if (isWebKit()) {
         this.addEventListener("pointerdown", (e) => {
           var sel = globalThis.getSelection();

@@ -62,10 +62,59 @@
             },
             {
               "kind": "method",
+              "name": "_handleImageClick",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "image"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleThumbnailClick",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_handleKeydown",
               "parameters": [
                 {
                   "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getHaxStore"
+            },
+            {
+              "kind": "method",
+              "name": "_onDrop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleDblClick",
+              "parameters": [
+                {
+                  "name": "index"
                 }
               ]
             },
@@ -80,6 +129,36 @@
               "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -171,6 +250,16 @@
             },
             {
               "kind": "field",
+              "name": "_haxState",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_haxState"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -215,6 +304,14 @@
               },
               "default": "[]",
               "fieldName": "images"
+            },
+            {
+              "name": "_haxState",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_haxState"
             }
           ],
           "mixins": [

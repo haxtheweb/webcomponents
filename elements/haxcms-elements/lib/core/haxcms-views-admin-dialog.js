@@ -1,6 +1,7 @@
 import { html, css } from "lit";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { store } from "./haxcms-site-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import {
   HaxSchematizer,
   HaxElementizer,
@@ -9,6 +10,10 @@ import {
   extractViewsRecords,
   loadHAXCMSViewsSpec,
 } from "./utils/haxcms-views-spec-utility.js";
+import {
+  renderPreview,
+  RENDERER_OPTIONS,
+} from "./utils/haxcms-views-render-utility.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
@@ -1703,677 +1708,12 @@ class HAXCMSViewsAdminDialog extends DDD {
     this._schedulePreviewRefresh();
   }
 
-  _valueAtPath(record, path = "") {
-    if (!path) {
-      return "";
-    }
-    const segments = String(path).split(".");
-    let pointer = record;
-    for (let i = 0; i < segments.length; i++) {
-      if (
-        pointer &&
-        typeof pointer === "object" &&
-        Object.prototype.hasOwnProperty.call(pointer, segments[i])
-      ) {
-        pointer = pointer[segments[i]];
-      } else {
-        return "";
-      }
-    }
-    return pointer;
-  }
-
-  _recordTitle(record) {
-    const titleCandidates = [
-      "title",
-      "name",
-      "tag",
-      "path",
-      "slug",
-      "id",
-      "machineName",
-    ];
-    for (let i = 0; i < titleCandidates.length; i++) {
-      const value = this._valueAtPath(record, titleCandidates[i]);
-      if (!this._isEmptyValue(value)) {
-        return this._safeString(value);
-      }
-    }
-    return "No results";
-  }
-
-  _recordDescription(record) {
-    const descCandidates = [
-      "description",
-      "summary",
-      "body",
-      "metadata.description",
-      "mimetype",
-    ];
-    for (let i = 0; i < descCandidates.length; i++) {
-      const value = this._valueAtPath(record, descCandidates[i]);
-      if (!this._isEmptyValue(value)) {
-        return this._safeString(value);
-      }
-    }
-    return "";
-  }
-
-  _recordBody(record) {
-    const bodyCandidates = ["body", "content", "description"];
-    for (let i = 0; i < bodyCandidates.length; i++) {
-      const value = this._valueAtPath(record, bodyCandidates[i]);
-      if (!this._isEmptyValue(value)) {
-        return this._safeString(value);
-      }
-    }
-    return "";
-  }
-
-  _recordBodyIsHtml(record) {
-    const body = this._recordBody(record).trim();
-    if (!body) {
-      return false;
-    }
-    return body.indexOf("<") !== -1 && body.indexOf(">") !== -1;
-  }
-
-  _stripHtml(value = "") {
-    return this._safeString(value)
-      .replace(/<[^>]*>/g, " ")
+  _titleFromParameterName(name = "") {
+    const label = this._safeString(name)
+      .replace(/[._-]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
-  }
-
-  _recordTag(record) {
-    const tagCandidates = [
-      "tag",
-      "haxElementSchema.tag",
-      "instances.0.haxElementSchema.tag",
-    ];
-    for (let i = 0; i < tagCandidates.length; i++) {
-      const value = this._safeString(
-        this._valueAtPath(record, tagCandidates[i]),
-      ).trim();
-      if (value) {
-        return value.toLowerCase();
-      }
-    }
-    return "";
-  }
-
-  _recordElementSchema(record) {
-    let schema = this._valueAtPath(record, "haxElementSchema");
-    if (Array.isArray(schema) && schema.length > 0) {
-      schema = schema[0];
-    }
-    if (
-      (!schema || typeof schema !== "object") &&
-      record &&
-      typeof record === "object"
-    ) {
-      schema = this._valueAtPath(record, "instances.0.haxElementSchema");
-    }
-    if (!schema || typeof schema !== "object" || Array.isArray(schema)) {
-      return null;
-    }
-    if (!schema.tag || this._safeString(schema.tag).trim() === "") {
-      return null;
-    }
-    return schema;
-  }
-
-  _isRenderableTag(tag = "") {
-    const normalized = this._safeString(tag).trim().toLowerCase();
-    if (!normalized) {
-      return false;
-    }
-    const nativeMediaTags = {
-      img: true,
-      video: true,
-      audio: true,
-      iframe: true,
-    };
-    if (Object.prototype.hasOwnProperty.call(nativeMediaTags, normalized)) {
-      return true;
-    }
-    return /^[a-z][a-z0-9]*-[a-z0-9-]*$/.test(normalized);
-  }
-
-  _attributeValue(value) {
-    if (value === null || typeof value === "undefined" || value === false) {
-      return "";
-    }
-    if (value === true) {
-      return "__BOOLEAN_TRUE__";
-    }
-    if (typeof value === "object") {
-      return "";
-    }
-    return this._safeString(value)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .trim();
-  }
-
-  _attributeStringFromProperties(properties = {}) {
-    if (
-      !properties ||
-      typeof properties !== "object" ||
-      Array.isArray(properties)
-    ) {
-      return "";
-    }
-    const keys = Object.keys(properties);
-    let output = "";
-    for (let i = 0; i < keys.length; i++) {
-      const key = this._safeString(keys[i]).trim();
-      if (!key) {
-        continue;
-      }
-      const normalizedValue = this._attributeValue(properties[key]);
-      if (!normalizedValue) {
-        continue;
-      }
-      if (normalizedValue === "__BOOLEAN_TRUE__") {
-        output += ` ${key}`;
-        continue;
-      }
-      output += ` ${key}="${normalizedValue}"`;
-    }
-    return output;
-  }
-
-  _renderRecordElementPreview(record) {
-    const schema = this._recordElementSchema(record);
-    const tag =
-      schema && schema.tag
-        ? this._safeString(schema.tag).trim()
-        : this._recordTag(record);
-    if (!this._isRenderableTag(tag)) {
-      return null;
-    }
-    const properties =
-      schema && schema.properties && typeof schema.properties === "object"
-        ? schema.properties
-        : {};
-    const content =
-      schema && typeof schema.content === "string" ? schema.content : "";
-    const attributeString = this._attributeStringFromProperties(properties);
-    const elementMarkup = `<${tag}${attributeString}>${content}</${tag}>`;
-    return html`<div class="record-element-preview">
-      ${unsafeHTML(elementMarkup)}
-    </div>`;
-  }
-
-  _renderRecordPrimary(record, maxLength = 240) {
-    const videoSource = this._videoSource(record);
-    if (videoSource) {
-      return html`
-        <div class="record-media">
-          <video-player
-            source="${videoSource}"
-            media-title="${this._recordTitle(record)}"
-          ></video-player>
-        </div>
-      `;
-    }
-    const imageSource = this._recordImage(record);
-    if (imageSource) {
-      return html`
-        <img
-          class="record-image"
-          src="${imageSource}"
-          alt="${this._recordTitle(record)} preview"
-          loading="lazy"
-          decoding="async"
-        />
-      `;
-    }
-    const elementPreview = this._renderRecordElementPreview(record);
-    if (elementPreview) {
-      return elementPreview;
-    }
-    return this._renderRecordBody(record, maxLength);
-  }
-
-  _recordTimelineDate(record) {
-    const candidates = [
-      "generatedAt",
-      "dateCreated",
-      "updated",
-      "created",
-      "metadata.updated",
-      "metadata.created",
-    ];
-    for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(
-        this._valueAtPath(record, candidates[i]),
-      ).trim();
-      if (!value) {
-        continue;
-      }
-      const date = new Date(value);
-      if (!Number.isNaN(date.getTime())) {
-        return date.toISOString();
-      }
-    }
-    return "";
-  }
-
-  _timelineEvents() {
-    return this.previewRecords
-      .map((record) => {
-        const isoDate = this._recordTimelineDate(record);
-        const headingPrefix = isoDate
-          ? new Date(isoDate).toLocaleDateString()
-          : "Record";
-        const detailsSource =
-          this._recordDescription(record) || this._recordBody(record) || "";
-        const details = this._shortValue(this._stripHtml(detailsSource), 420);
-        return {
-          heading: `${headingPrefix} — ${this._recordTitle(record)}`,
-          details,
-          imagesrc: this._recordImage(record),
-          imagealt: `${this._recordTitle(record)} image`,
-        };
-      })
-      .filter((event) => event.heading && event.details);
-  }
-
-  _numericValue(value) {
-    if (typeof value === "number" && Number.isFinite(value)) {
-      return value;
-    }
-    const normalized = this._safeString(value).trim();
-    if (!normalized) {
-      return null;
-    }
-    const numeric = Number(normalized);
-    if (!Number.isNaN(numeric) && Number.isFinite(numeric)) {
-      return numeric;
-    }
-    return null;
-  }
-
-  _chartDescriptor() {
-    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return null;
-    }
-    const firstRecord = this.previewRecords[0];
-    const selected = Array.isArray(this.selectedFields)
-      ? this.selectedFields
-      : [];
-    const flattened = this._flattenObject(firstRecord);
-    const candidateFields =
-      selected.length > 0 ? selected : Object.keys(flattened);
-    let valueField = "";
-    for (let i = 0; i < candidateFields.length; i++) {
-      const field = candidateFields[i];
-      for (let j = 0; j < this.previewRecords.length; j++) {
-        const value = this._numericValue(
-          this._valueAtPath(this.previewRecords[j], field),
-        );
-        if (value !== null) {
-          valueField = field;
-          break;
-        }
-      }
-      if (valueField) {
-        break;
-      }
-    }
-    if (!valueField) {
-      return null;
-    }
-    let labelField = "";
-    for (let i = 0; i < candidateFields.length; i++) {
-      const field = candidateFields[i];
-      if (field === valueField) {
-        continue;
-      }
-      const value = this._safeString(
-        this._valueAtPath(firstRecord, field),
-      ).trim();
-      if (value) {
-        labelField = field;
-        break;
-      }
-    }
-    const labels = [];
-    const values = [];
-    const recordLimit = Math.min(this.previewRecords.length, 24);
-    for (let i = 0; i < recordLimit; i++) {
-      const record = this.previewRecords[i];
-      const label = labelField
-        ? this._safeString(this._valueAtPath(record, labelField)).trim()
-        : this._recordTitle(record);
-      const numeric = this._numericValue(this._valueAtPath(record, valueField));
-      labels.push(label || this._recordTitle(record));
-      values.push(numeric === null ? 0 : numeric);
-    }
-    return {
-      valueField,
-      labelField,
-      data: {
-        labels,
-        series: [values],
-      },
-    };
-  }
-
-  _treeRecords() {
-    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return [];
-    }
-    const idLookup = {};
-    const records = this.previewRecords.map((record, index) => {
-      const rawId = this._safeString(
-        record.id || record.slug || record.path || record.tag || `${index + 1}`,
-      ).trim();
-      const id = rawId || `${index + 1}`;
-      idLookup[id] = true;
-      return {
-        id,
-        parent: this._safeString(record.parent).trim(),
-        title: this._recordTitle(record),
-        slug: this._recordUrl(record),
-        metadata: {
-          icon: this._recordIcon(record),
-          pageType: this._safeString(record.pageType || ""),
-          published: true,
-        },
-      };
-    });
-    records.forEach((record) => {
-      if (
-        !record.parent ||
-        !Object.prototype.hasOwnProperty.call(idLookup, record.parent)
-      ) {
-        record.parent = null;
-      }
-    });
-    return records;
-  }
-
-  _renderRecordBody(record, maxLength = 240) {
-    const body = this._recordBody(record);
-    if (!body) {
-      return html``;
-    }
-    if (this._recordBodyIsHtml(record)) {
-      return html`<div class="record-html">${unsafeHTML(body)}</div>`;
-    }
-    return html`<p>${this._shortValue(body, maxLength)}</p>`;
-  }
-
-  _recordUrl(record) {
-    const candidates = [
-      "links.page",
-      "slug",
-      "url",
-      "fullUrl",
-      "path",
-      "metadata.path",
-      "links.self",
-      "links.content",
-    ];
-    for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(
-        this._valueAtPath(record, candidates[i]),
-      ).trim();
-      if (!value) {
-        continue;
-      }
-      return this._resolveSiteHref(value);
-    }
-    return "";
-  }
-
-  _recordImage(record) {
-    const candidates = [
-      "image",
-      "src",
-      "properties.src",
-      "properties.image",
-      "haxElementSchema.properties.src",
-      "haxElementSchema.properties.image",
-      "instances.0.haxElementSchema.properties.src",
-      "instances.0.haxElementSchema.properties.image",
-      "metadata.image",
-      "logo",
-      "metadata.site.logo",
-      "screenshot",
-      "preview",
-      "thumbnail",
-      "poster",
-      "haxElementSchema.properties.poster",
-      "instances.0.haxElementSchema.properties.poster",
-      "url",
-      "fullUrl",
-      "path",
-      "metadata.path",
-    ];
-    for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(
-        this._valueAtPath(record, candidates[i]),
-      ).trim();
-      if (value) {
-        const resolvedPath = this._resolveSiteHref(value);
-        if (this._looksLikeImageSource(resolvedPath)) {
-          return resolvedPath;
-        }
-      }
-    }
-    return "";
-  }
-
-  _recordIcon(record) {
-    const candidates = ["icon", "metadata.icon", "pageType"];
-    for (let i = 0; i < candidates.length; i++) {
-      const value = this._safeString(
-        this._valueAtPath(record, candidates[i]),
-      ).trim();
-      if (value) {
-        return value;
-      }
-    }
-    return "hax:module";
-  }
-
-  _recordTags(record) {
-    const tags = this._valueAtPath(record, "tags");
-    if (Array.isArray(tags)) {
-      return tags
-        .map((tag) => this._safeString(tag).trim())
-        .filter((tag) => tag);
-    }
-    if (typeof tags === "string") {
-      return tags
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag);
-    }
-    const metadataTags = this._valueAtPath(record, "metadata.tags");
-    if (Array.isArray(metadataTags)) {
-      return metadataTags
-        .map((tag) => this._safeString(tag).trim())
-        .filter((tag) => tag);
-    }
-    if (typeof metadataTags === "string") {
-      return metadataTags
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag);
-    }
-    return [];
-  }
-
-  _looksLikeImageSource(url = "") {
-    const value = this._safeString(url).trim().toLowerCase();
-    if (!value) {
-      return false;
-    }
-    if (
-      value.endsWith(".png") ||
-      value.endsWith(".jpg") ||
-      value.endsWith(".jpeg") ||
-      value.endsWith(".gif") ||
-      value.endsWith(".webp") ||
-      value.endsWith(".svg") ||
-      value.endsWith(".avif") ||
-      value.endsWith(".bmp")
-    ) {
-      return true;
-    }
-    if (
-      value.indexOf(".png?") !== -1 ||
-      value.indexOf(".jpg?") !== -1 ||
-      value.indexOf(".jpeg?") !== -1 ||
-      value.indexOf(".gif?") !== -1 ||
-      value.indexOf(".webp?") !== -1 ||
-      value.indexOf(".svg?") !== -1 ||
-      value.indexOf(".avif?") !== -1 ||
-      value.indexOf(".bmp?") !== -1
-    ) {
-      return true;
-    }
-    return false;
-  }
-
-  _displayValue(value) {
-    if (value === null || typeof value === "undefined" || value === "") {
-      return "—";
-    }
-    if (typeof value === "boolean") {
-      return value ? "true" : "false";
-    }
-    if (typeof value === "number") {
-      return String(value);
-    }
-    if (Array.isArray(value)) {
-      const containsObject = value.some(
-        (item) => item && typeof item === "object",
-      );
-      if (containsObject) {
-        try {
-          return JSON.stringify(value, null, 2);
-        } catch (e) {}
-      }
-      return value.map((item) => this._safeString(item)).join(", ");
-    }
-    if (typeof value === "object") {
-      try {
-        return JSON.stringify(value, null, 2);
-      } catch (e) {
-        return this._safeString(value);
-      }
-    }
-    return this._safeString(value);
-  }
-
-  _shortValue(value = "", max = 240) {
-    const normalized = this._safeString(value);
-    if (normalized.length <= max) {
-      return normalized;
-    }
-    return `${normalized.substring(0, max)}…`;
-  }
-
-  _tableCellValue(column = "", value = null) {
-    const displayValue = this._displayValue(value);
-    const normalizedColumn = this._safeString(column).toLowerCase();
-    if (normalizedColumn.indexOf("haxelementschema") !== -1) {
-      return displayValue;
-    }
-    return this._shortValue(displayValue, 180);
-  }
-
-  _tableColumns() {
-    if (Array.isArray(this.selectedFields) && this.selectedFields.length > 0) {
-      return this.selectedFields;
-    }
-    if (this.previewRecords.length < 1) {
-      return ["id", "title", "slug"];
-    }
-    const firstRecord = this.previewRecords[0];
-    if (!firstRecord || typeof firstRecord !== "object") {
-      return ["value"];
-    }
-    return Object.keys(firstRecord).slice(0, 6);
-  }
-
-  _looksLikeVideoSource(url = "") {
-    const value = this._safeString(url).trim().toLowerCase();
-    if (!value) {
-      return false;
-    }
-    if (
-      value.indexOf("youtube.com/") !== -1 ||
-      value.indexOf("youtu.be/") !== -1 ||
-      value.indexOf("vimeo.com/") !== -1
-    ) {
-      return true;
-    }
-    if (
-      value.endsWith(".mp4") ||
-      value.endsWith(".webm") ||
-      value.endsWith(".ogg") ||
-      value.endsWith(".m3u8") ||
-      value.indexOf(".mp4?") !== -1 ||
-      value.indexOf(".webm?") !== -1 ||
-      value.indexOf(".ogg?") !== -1 ||
-      value.indexOf(".m3u8?") !== -1
-    ) {
-      return true;
-    }
-    return false;
-  }
-
-  _videoSource(record) {
-    const candidates = [
-      "source",
-      "src",
-      "video",
-      "properties.source",
-      "properties.src",
-      "haxElementSchema.properties.source",
-      "haxElementSchema.properties.src",
-      "haxElementSchema.properties.url",
-      "instances.0.haxElementSchema.properties.source",
-      "instances.0.haxElementSchema.properties.src",
-      "instances.0.haxElementSchema.properties.url",
-      "url",
-      "fullUrl",
-      "path",
-      "metadata.path",
-      "links.self",
-      "links.page",
-      "links.content",
-    ];
-    const recordTag = this._recordTag(record);
-    for (let i = 0; i < candidates.length; i++) {
-      const candidateName = candidates[i];
-      const value = this._safeString(
-        this._valueAtPath(record, candidates[i]),
-      ).trim();
-      if (!value) {
-        continue;
-      }
-      const resolvedPath = this._resolveSiteHref(value);
-      if (this._looksLikeVideoSource(resolvedPath)) {
-        return resolvedPath;
-      }
-      if (
-        recordTag &&
-        recordTag.indexOf("video") !== -1 &&
-        candidateName.indexOf("links.") !== 0 &&
-        resolvedPath.indexOf("/x/api/") === -1
-      ) {
-        return resolvedPath;
-      }
-    }
-    return "";
+    return label.replace(/\b\w/g, (char) => char.toUpperCase());
   }
 
   _entityDescription(entityConfig) {
@@ -2407,358 +1747,6 @@ class HAXCMSViewsAdminDialog extends DDD {
     this._schedulePreviewRefresh();
   }
 
-  _renderCollectionPreview() {
-    return html`
-      <collection-list>
-        ${this.previewRecords.map((record) => {
-          const tags = this._recordTags(record);
-          const url = this._recordUrl(record);
-          const bodyIsHtml = this._recordBodyIsHtml(record);
-          const elementPreview = this._renderRecordElementPreview(record);
-          return html`
-            <collection-item
-              line1="${this._recordTitle(record)}"
-              line2="${bodyIsHtml
-                ? ""
-                : this._shortValue(this._recordDescription(record), 180)}"
-              url="${url}"
-              image="${this._recordImage(record)}"
-              icon="${this._recordIcon(record)}"
-              tags="${tags.join(",")}"
-              accent-color="grey"
-              saturate
-            >
-              ${elementPreview
-                ? elementPreview
-                : this._renderRecordBody(record, 220)}
-            </collection-item>
-          `;
-        })}
-      </collection-list>
-    `;
-  }
-  _renderGridPreview() {
-    return html`
-      <div class="card-grid">
-        ${this.previewRecords.map((record) => {
-          const url = this._recordUrl(record);
-          return html`
-            <accent-card accent-color="grey" no-border>
-              <div slot="heading">${this._recordTitle(record)}</div>
-              <div slot="subheading">
-                ${this._recordTags(record).slice(0, 5).join(", ")}
-              </div>
-              <div slot="content">
-                ${this._renderRecordPrimary(record, 240)}
-                ${url
-                  ? html`<a
-                      class="card-link"
-                      href="${url}"
-                      target="_blank"
-                      rel="noopener"
-                      >Open record</a
-                    >`
-                  : html``}
-              </div>
-            </accent-card>
-          `;
-        })}
-      </div>
-    `;
-  }
-
-  _renderCardsPreview() {
-    return this._renderGridPreview();
-  }
-
-  _renderBulletedListPreview() {
-    return html`
-      <ul class="result-list">
-        ${this.previewRecords.map((record) => {
-          const recordUrl = this._recordUrl(record);
-          return html`
-            <li class="result-list-item">
-              <h4 class="result-title">
-                ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
-                      >${this._recordTitle(record)}</a
-                    >`
-                  : this._recordTitle(record)}
-              </h4>
-              ${this._renderRecordPrimary(record, 360)}
-            </li>
-          `;
-        })}
-      </ul>
-    `;
-  }
-
-  _renderContentPreview() {
-    return html`
-      <div class="content-records">
-        ${this.previewRecords.map((record) => {
-          const recordUrl = this._recordUrl(record);
-          return html`
-            <article class="content-record">
-              <h3 class="content-record-title">
-                ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
-                      >${this._recordTitle(record)}</a
-                    >`
-                  : this._recordTitle(record)}
-              </h3>
-              ${this._renderRecordPrimary(record, 720)}
-            </article>
-          `;
-        })}
-      </div>
-    `;
-  }
-
-  _renderTablePreview() {
-    const columns = this._tableColumns();
-    return html`
-      <div class="table-scroll">
-        <editable-table-display
-          bordered
-          condensed
-          column-header
-          responsive
-          sort
-          striped
-          scroll
-        >
-          <table>
-            <thead>
-              <tr>
-                ${columns.map(
-                  (column) =>
-                    html`<th>${this._titleFromParameterName(column)}</th>`,
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              ${this.previewRecords.map(
-                (record) => html`
-                  <tr>
-                    ${columns.map((column) => {
-                      const value = this._valueAtPath(record, column);
-                      return html`<td title="${this._displayValue(value)}">
-                        ${this._tableCellValue(column, value)}
-                      </td>`;
-                    })}
-                  </tr>
-                `,
-              )}
-            </tbody>
-          </table>
-        </editable-table-display>
-      </div>
-    `;
-  }
-
-  _renderCarouselPreview() {
-    const allImageRecords = this.previewRecords.every((record) => {
-      const hasVideo = this._videoSource(record);
-      const hasImage = this._recordImage(record);
-      return !hasVideo && !!hasImage;
-    });
-    if (allImageRecords) {
-      return html`
-        <div class="media-gallery">
-          ${this.previewRecords.map((record) => {
-            const image = this._recordImage(record);
-            const recordUrl = this._recordUrl(record);
-            return html`
-              <div class="media-gallery-item">
-                ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
-                      ><img
-                        src="${image}"
-                        alt="${this._recordTitle(record)} preview"
-                        loading="lazy"
-                        decoding="async"
-                    /></a>`
-                  : html`<img
-                      src="${image}"
-                      alt="${this._recordTitle(record)} preview"
-                      loading="lazy"
-                      decoding="async"
-                    />`}
-                <span class="media-gallery-caption"
-                  >${this._recordTitle(record)}</span
-                >
-              </div>
-            `;
-          })}
-        </div>
-      `;
-    }
-    return html`
-      <div class="carousel-shell">
-        <play-list navigation pagination>
-          ${this.previewRecords.map((record) => {
-            const videoSource = this._videoSource(record);
-            if (videoSource) {
-              return html`
-                <video-player
-                  source="${videoSource}"
-                  media-title="${this._recordTitle(record)}"
-                ></video-player>
-              `;
-            }
-            const recordUrl = this._recordUrl(record);
-            const image = this._recordImage(record);
-            const elementPreview = this._renderRecordElementPreview(record);
-            if (image) {
-              return html`
-                <figure>
-                  <img
-                    class="record-image"
-                    src="${image}"
-                    alt="${this._recordTitle(record)} preview"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>
-                    ${recordUrl
-                      ? html`<a
-                          href="${recordUrl}"
-                          target="_blank"
-                          rel="noopener"
-                          >${this._recordTitle(record)}</a
-                        >`
-                      : this._recordTitle(record)}
-                  </figcaption>
-                </figure>
-              `;
-            }
-            if (elementPreview) {
-              return html`${elementPreview}`;
-            }
-            return html`
-              <accent-card accent-color="grey">
-                <div slot="heading">${this._recordTitle(record)}</div>
-                <div slot="content">
-                  ${this._renderRecordBody(record, 300)}
-                  ${recordUrl
-                    ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
-                        >Open record</a
-                      >`
-                    : html``}
-                </div>
-              </accent-card>
-            `;
-          })}
-        </play-list>
-      </div>
-    `;
-  }
-
-  _renderAccordionPreview() {
-    return html`
-      <div class="accordion-preview">
-        <a11y-collapse-group>
-          ${this.previewRecords.map(
-            (record, index) => html`
-              <a11y-collapse
-                heading-button
-                heading="${this._recordTitle(record)}"
-                ?expanded="${index === 0}"
-              >
-                ${this._renderRecordPrimary(record, 420)}
-              </a11y-collapse>
-            `,
-          )}
-        </a11y-collapse-group>
-      </div>
-    `;
-  }
-
-  _renderTabsPreview() {
-    return html`
-      <div class="tabs-preview">
-        <a11y-tabs full-width>
-          ${this.previewRecords.map(
-            (record, index) => html`
-              <a11y-tab
-                id="views-preview-tab-${index}"
-                label="${this._recordTitle(record)}"
-              >
-                ${this._renderRecordPrimary(record, 520)}
-              </a11y-tab>
-            `,
-          )}
-        </a11y-tabs>
-      </div>
-    `;
-  }
-
-  _renderTimelinePreview() {
-    const events = this._timelineEvents();
-    if (!events || events.length < 1) {
-      return html`<p class="empty-preview">
-        No date-oriented records available for timeline rendering.
-      </p>`;
-    }
-    return html`
-      <div class="timeline-shell">
-        <lrndesign-timeline
-          timeline-title="${this._titleFromParameterName(
-            this.selectedEntity,
-          )} timeline"
-          .events="${events}"
-        ></lrndesign-timeline>
-      </div>
-    `;
-  }
-
-  _renderChartPreview() {
-    const descriptor = this._chartDescriptor();
-    if (!descriptor) {
-      return html`<p class="empty-preview">
-        No numeric field detected for chart rendering.
-      </p>`;
-    }
-    return html`
-      <div class="chart-shell">
-        <p class="note">
-          Charting
-          <strong>${this._titleFromParameterName(descriptor.valueField)}</strong
-          >${descriptor.labelField
-            ? html` by
-                <strong
-                  >${this._titleFromParameterName(
-                    descriptor.labelField,
-                  )}</strong
-                >`
-            : html``}
-        </p>
-        <lrndesign-bar
-          .data="${descriptor.data}"
-          chart-title="${this._titleFromParameterName(
-            this.selectedEntity,
-          )} chart"
-          show-table
-        ></lrndesign-bar>
-      </div>
-    `;
-  }
-
-  _renderTreePreview() {
-    const records = this._treeRecords();
-    if (!records || records.length < 1) {
-      return html`<p class="empty-preview">
-        No hierarchical records available for tree rendering.
-      </p>`;
-    }
-    return html`
-      <div class="tree-shell">
-        <map-menu .data="${records}" auto-scroll></map-menu>
-      </div>
-    `;
-  }
-
   _renderPreview() {
     if (this.previewLoading) {
       return html`<p class="status" role="status" aria-live="polite">
@@ -2781,37 +1769,71 @@ class HAXCMSViewsAdminDialog extends DDD {
         : this.renderer === "cards"
           ? "grid"
           : this.renderer;
-    if (renderer === "table") {
-      return this._renderTablePreview();
+    return renderPreview(this.previewRecords, renderer, {
+      selectedFields: this.selectedFields,
+      selectedEntity: this.selectedEntity,
+      resolveHref: this._resolveSiteHref.bind(this),
+    });
+  }
+
+  _embedTagMarkup() {
+    return `<site-view src="${this.queryUrl || ""}" renderer="${this.renderer}" entity="${this.selectedEntity}"></site-view>`;
+  }
+
+  _copyEmbedTag() {
+    const markup = this._embedTagMarkup();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(markup).catch(() => {});
     }
-    if (renderer === "grid") {
-      return this._renderGridPreview();
+  }
+
+  _insertAtBottom() {
+    store.editMode = true;
+    const haxBody = HAXStore.activeHaxBody;
+    if (haxBody) {
+      haxBody.haxInsert("site-view", "", {
+        src: this.queryUrl,
+        renderer: this.renderer,
+        entity: this.selectedEntity,
+      }, null);
     }
-    if (renderer === "carousel") {
-      return this._renderCarouselPreview();
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+  }
+
+  _createAsNewPage() {
+    const markup = this._embedTagMarkup();
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager &&
+      globalThis.SuperDaemonManager.requestAvailability();
+    if (SuperDaemonInstance) {
+      setTimeout(() => {
+        SuperDaemonInstance.runProgram(
+          null,
+          "CMS",
+          { type: "sibling", templateContent: markup },
+          "create-page",
+          "create-page",
+          "",
+          "Type page title to create page",
+        );
+        SuperDaemonInstance.open();
+      }, 0);
     }
-    if (renderer === "list") {
-      return this._renderBulletedListPreview();
-    }
-    if (renderer === "content") {
-      return this._renderContentPreview();
-    }
-    if (renderer === "accordion") {
-      return this._renderAccordionPreview();
-    }
-    if (renderer === "tabs") {
-      return this._renderTabsPreview();
-    }
-    if (renderer === "timeline") {
-      return this._renderTimelinePreview();
-    }
-    if (renderer === "chart") {
-      return this._renderChartPreview();
-    }
-    if (renderer === "tree") {
-      return this._renderTreePreview();
-    }
-    return this._renderCollectionPreview();
   }
 
   render() {
@@ -2846,19 +1868,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         : this.renderer === "cards"
           ? "grid"
           : this.renderer;
-    const rendererOptions = [
-      { value: "collection", text: "Collection" },
-      { value: "table", text: "Table" },
-      { value: "grid", text: "Grid" },
-      { value: "carousel", text: "Carousel" },
-      { value: "list", text: "List" },
-      { value: "content", text: "Content" },
-      { value: "accordion", text: "Accordion" },
-      { value: "tabs", text: "Tabs" },
-      { value: "timeline", text: "Timeline" },
-      { value: "chart", text: "Chart" },
-      { value: "tree", text: "Tree" },
-    ];
+    const rendererOptions = RENDERER_OPTIONS;
     const leftColumnWidth = Number.isFinite(Number(this.leftPanelWidth))
       ? Math.max(24, Math.min(68, Number(this.leftPanelWidth)))
       : 38;
@@ -2987,6 +1997,24 @@ class HAXCMSViewsAdminDialog extends DDD {
                       ></simple-icon-button-lite>
                     </div>
                     <code class="query-code">${this.queryUrl}</code>
+                    <div class="query-actions" style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+                      <simple-clipboard-copy-button
+                        icon="hax:embed"
+                        label="Copy embed tag"
+                        data-cp="${this._embedTagMarkup()}"
+                        success-message="Embed tag copied"
+                      ></simple-clipboard-copy-button>
+                      <simple-icon-button-lite
+                        icon="icons:content-paste"
+                        label="Insert at bottom"
+                        @click="${this._insertAtBottom}"
+                      ></simple-icon-button-lite>
+                      <simple-icon-button-lite
+                        icon="hax:add"
+                        label="Create as new page"
+                        @click="${this._createAsNewPage}"
+                      ></simple-icon-button-lite>
+                    </div>
                   </details>
                 </div>
                 <div

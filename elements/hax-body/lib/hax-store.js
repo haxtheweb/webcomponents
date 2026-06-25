@@ -244,10 +244,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // Auto-handle image drop scenarios without showing picker
     if (type === "image" && this.activePlaceHolder) {
-      // Check if dropping on an image - auto-create gallery
-      if (this._isImageElement(this.activePlaceHolder)) {
-        this._createImageGallery(this.activePlaceHolder, values.source);
+      // Check if dropping into or onto an image-gallery - auto-add to it
+      let targetGallery = null;
+      targetGallery = this._nearestContainerTag(
+        this.activePlaceHolder,
+        "image-gallery",
+      );
+      if (!targetGallery && this.activeNode) {
+        targetGallery = this._nearestContainerTag(
+          this.activeNode,
+          "image-gallery",
+        );
+      }
+      if (targetGallery) {
+        this._addImageToImageGallery(targetGallery, values.source);
         return true;
+      }
+
+      // Check if dropping on an image - prompt via Merlin if image-gallery is allowed
+      if (this._isImageElement(this.activePlaceHolder)) {
+        const imageGallerySchema = this.haxSchemaFromTag("image-gallery");
+        if (imageGallerySchema && imageGallerySchema.gizmo) {
+          this._promptImageDropChoice(values, context, this.activePlaceHolder);
+          return true;
+        }
+        // If image-gallery is not allowed, fall through to normal image insertion
       }
 
       // Check if dropping into or onto a play-list - auto-add to that gallery
@@ -390,20 +411,94 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
 
   /**
+   * Prompt user via Merlin / SuperDaemon to choose between uploading as separate image or creating an image gallery
+   */
+  _promptImageDropChoice(values, context, originalImageElement) {
+    this.__pendingImageDrop = { values, context, originalImageElement };
+    SuperDaemonInstance.waveWand(
+      [
+        "",
+        "*",
+        {},
+        async (input, values) => {
+          return [
+            {
+              title: "Upload as separate image",
+              icon: "image:image",
+              tags: ["image", "upload", "separate"],
+              value: {
+                target: this,
+                method: "_insertImageAsSeparateFromPending",
+                args: [],
+              },
+              eventName: "super-daemon-element-method",
+              path: "/image-drop/separate",
+            },
+            {
+              title: "Create image gallery",
+              icon: "image:photo-library",
+              tags: ["image", "gallery", "create"],
+              value: {
+                target: this,
+                method: "_createImageGalleryFromPending",
+                args: [],
+              },
+              eventName: "super-daemon-element-method",
+              path: "/image-drop/gallery",
+            },
+          ];
+        },
+        "image-drop-choice",
+        "",
+        "Image dropped: what would you like to do?",
+      ],
+      originalImageElement,
+      "click",
+    );
+  }
+
+  /**
+   * Insert the pending image as a separate image element
+   */
+  _insertImageAsSeparateFromPending() {
+    if (this.__pendingImageDrop) {
+      const { values, context } = this.__pendingImageDrop;
+      this.__pendingImageDrop = null;
+      let haxElements = this.guessGizmo("image", values, false, true);
+      if (haxElements.length > 0) {
+        context.dispatchEvent(
+          new CustomEvent("hax-insert-content", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: haxElements[0],
+          }),
+        );
+      }
+    }
+  }
+
+  /**
+   * Create an image gallery from the pending image drop
+   */
+  _createImageGalleryFromPending() {
+    if (this.__pendingImageDrop) {
+      const { values, originalImageElement } = this.__pendingImageDrop;
+      this.__pendingImageDrop = null;
+      this._createImageGallery(originalImageElement, values.source);
+    }
+  }
+
+  /**
    * Create an image gallery by wrapping the original image and adding the new image
    */
   _createImageGallery(originalImageElement, newImageSource) {
-    // Create the play-list element
-    const playList = globalThis.document.createElement("play-list");
-
-    // Set gallery-friendly defaults using properties
-    playList.pagination = true;
-    playList.navigation = true;
-    playList.loop = true;
+    // Create the image-gallery element
+    const gallery = globalThis.document.createElement("image-gallery");
 
     // Copy any slot attribute from the original image
     if (originalImageElement.getAttribute("slot")) {
-      playList.setAttribute("slot", originalImageElement.getAttribute("slot"));
+      gallery.setAttribute("slot", originalImageElement.getAttribute("slot"));
     }
 
     // Clone the original image element
@@ -433,20 +528,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       newImage.alt = "Image from gallery";
     }
 
-    // Add both images to the play-list
-    playList.appendChild(originalImageClone);
-    playList.appendChild(newImage);
+    // Add both images to the gallery
+    gallery.appendChild(originalImageClone);
+    gallery.appendChild(newImage);
 
-    // Replace the original image with the play-list
+    // Replace the original image with the gallery
     if (this.activeHaxBody && originalImageElement.parentNode) {
-      this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
+      this.activeHaxBody.haxReplaceNode(originalImageElement, gallery);
     }
 
     // Clean up
     this.activePlaceHolder = null;
 
-    // Set the new play-list as active
-    this.activeNode = playList;
+    // Set the new gallery as active
+    this.activeNode = gallery;
 
     // Show success message
     this.toast("Image gallery created successfully!");
@@ -492,6 +587,52 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     // Set the play-list as active
     this.activeNode = playListElement;
+
+    // Show success message
+    this.toast("Image added to gallery successfully!");
+  }
+
+  /**
+   * Add an image to an existing image-gallery
+   */
+  _addImageToImageGallery(galleryElement, imageSource) {
+    // Create the new image element
+    const newImage = globalThis.document.createElement("media-image");
+    newImage.source = imageSource;
+    newImage.alt = "Added to gallery";
+
+    // Check if there are existing images in the gallery to copy properties from
+    const existingImages = galleryElement.querySelectorAll("media-image");
+    if (existingImages.length > 0) {
+      const firstImage = existingImages[0];
+      // Copy relevant properties from first image for consistency
+      ["card", "box", "round", "size", "offset"].forEach((prop) => {
+        if (firstImage[prop] !== undefined && firstImage[prop] !== null) {
+          newImage[prop] = firstImage[prop];
+        }
+      });
+    }
+
+    // Add the new image to the gallery
+    galleryElement.appendChild(newImage);
+
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== galleryElement &&
+        this.activePlaceHolder.tagName.toLowerCase() === "p"
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+
+    // Clean up
+    this.activePlaceHolder = null;
+
+    // Set the gallery as active
+    this.activeNode = galleryElement;
 
     // Show success message
     this.toast("Image added to gallery successfully!");
@@ -2705,6 +2846,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   constructor() {
     super();
     enableServices(["core"]);
+    this.__pendingImageDrop = null;
     this.toastShowEventName = globalThis.HAXCMS
       ? "haxcms-toast-show"
       : "simple-toast-show";

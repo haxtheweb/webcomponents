@@ -286,6 +286,9 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (cp.has("siteName") && this._canList) {
       this.refreshFiles();
     }
+    if (cp.has("busy") && cp.get("busy") === true && !this.busy) {
+      this._reloadTableDisplay();
+    }
   }
 
   get _canList() {
@@ -529,6 +532,18 @@ class HAXCMSFilesAdminDialog extends DDD {
     );
     if (tableDisplay && typeof tableDisplay.requestUpdate === "function") {
       tableDisplay.requestUpdate();
+    }
+  }
+  _reloadTableDisplay() {
+    if (!this.shadowRoot) return;
+    const tableDisplay = this.shadowRoot.querySelector(
+      "editable-table-display",
+    );
+    if (
+      tableDisplay &&
+      typeof tableDisplay.loadSlottedTable === "function"
+    ) {
+      tableDisplay.loadSlottedTable();
     }
   }
   _nextCacheBustToken() {

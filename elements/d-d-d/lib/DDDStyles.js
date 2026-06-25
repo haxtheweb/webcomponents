@@ -643,6 +643,17 @@ export const DDDVariables = css`
     );
 
     /* ===========================================
+       DROP ZONES
+       Consistent drag-and-drop visual feedback
+       =========================================== */
+    --ddd-drop-zone-outline-color: var(--ddd-theme-default-skyBlue, #009dc7);
+    --ddd-drop-zone-outline-width: 2px;
+    --ddd-drop-zone-outline-style: dashed;
+    --ddd-drop-zone-outline-offset: 4px;
+    --ddd-drop-zone-background-color: var(--ddd-theme-default-skyLight, #ccf0ff);
+    --ddd-drop-zone-radius: var(--ddd-radius-xs);
+
+    /* ===========================================
        BOX SHADOWS
        Elevation system for depth and hierarchy
        Usage: box-shadow: var(--ddd-boxShadow-md);

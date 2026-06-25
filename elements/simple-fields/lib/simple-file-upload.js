@@ -87,7 +87,7 @@ class SimpleFileUpload extends DDD {
           word-break: break-word;
         }
         .file-status {
-          font-size: var(--ddd-font-size-5xs, 8px);
+          font-size: var(--ddd-font-size-5xs);
           opacity: 0.85;
         }
         .file-error {
@@ -121,7 +121,8 @@ class SimpleFileUpload extends DDD {
           color: inherit;
           cursor: pointer;
           padding: var(--ddd-spacing-1, 4px);
-          font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-5xs);
+          line-height: 1;
           border-radius: var(--ddd-radius-xs, 2px);
         }
         .file-actions button:focus-visible {
@@ -141,10 +142,12 @@ class SimpleFileUpload extends DDD {
           transition: border-color 0.2s ease;
         }
         .drop-zone[dragover] {
-          border-color: var(--ddd-theme-default-skyBlue, #009dc7);
+          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline-offset: -2px;
+          border-color: transparent;
           background: light-dark(
-            rgba(0, 157, 199, 0.06),
-            rgba(0, 157, 199, 0.12)
+            color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 10%, transparent),
+            color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 20%, transparent)
           );
         }
         .hidden-input {
@@ -161,7 +164,7 @@ class SimpleFileUpload extends DDD {
         @media (max-width: 640px) {
           [part="file-list"] {
             max-height: 48px;
-            font-size: 8px;
+            font-size: var(--ddd-font-size-5xs);
           }
         }
       `,
@@ -253,7 +256,29 @@ class SimpleFileUpload extends DDD {
     this.nodrop = false;
     this.capture = "";
     this._dragover = false;
-    this._dragoverCounter = 0;
+    this._preventWindowDrop = (e) => {
+      e.preventDefault();
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("dragenter", this._onDragEnter);
+    this.addEventListener("dragleave", this._onDragLeave);
+    this.addEventListener("dragover", this._onDragOver);
+    this.addEventListener("drop", this._onDrop);
+    window.addEventListener("dragover", this._preventWindowDrop, true);
+    window.addEventListener("drop", this._preventWindowDrop, true);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener("dragenter", this._onDragEnter);
+    this.removeEventListener("dragleave", this._onDragLeave);
+    this.removeEventListener("dragover", this._onDragOver);
+    this.removeEventListener("drop", this._onDrop);
+    window.removeEventListener("dragover", this._preventWindowDrop, true);
+    window.removeEventListener("drop", this._preventWindowDrop, true);
+    super.disconnectedCallback();
   }
 
   render() {
@@ -272,10 +297,6 @@ class SimpleFileUpload extends DDD {
       <div
         class="drop-zone"
         ?dragover="${this._dragover}"
-        @dragenter="${this._onDragEnter}"
-        @dragleave="${this._onDragLeave}"
-        @dragover="${this._onDragOver}"
-        @drop="${this._onDrop}"
         ?hidden="${this.nodrop}"
         aria-dropeffect="move"
       >
@@ -325,7 +346,9 @@ class SimpleFileUpload extends DDD {
                       </button>
                     `
                   : ""}
-                ${file.error
+                ${file.error ||
+                file.status === "Cancelled" ||
+                file.status === "Aborted"
                   ? html`
                       <button
                         @click="${() => this._retryFile(index)}"
@@ -336,7 +359,11 @@ class SimpleFileUpload extends DDD {
                       </button>
                     `
                   : ""}
-                ${file.complete || file.abort || file.error
+                ${file.complete ||
+                file.abort ||
+                file.error ||
+                file.status === "Cancelled" ||
+                file.status === "Aborted"
                   ? html`
                       <button
                         @click="${() => this._removeFile(index)}"
@@ -392,7 +419,6 @@ class SimpleFileUpload extends DDD {
       _file: file,
     };
     this.files = [...this.files, uploadFile];
-    this.uploadFiles();
   }
 
   /**
@@ -409,7 +435,6 @@ class SimpleFileUpload extends DDD {
     if (event.stopPropagation) {
       event.stopPropagation();
     }
-    this._dragoverCounter = 0;
     this._dragover = false;
     const dataTransfer = event.dataTransfer;
     if (dataTransfer && dataTransfer.files) {
@@ -417,6 +442,7 @@ class SimpleFileUpload extends DDD {
         this.addFile(dataTransfer.files[i]);
       }
     }
+    this.uploadFiles();
   }
 
   /**
@@ -425,7 +451,8 @@ class SimpleFileUpload extends DDD {
   uploadFiles() {
     for (let i = 0; i < this.files.length; i++) {
       const file = this.files[i];
-      if (!file.complete && !file.abort && !file.error && !file.xhr) {
+      const canUpload = !file.complete && !file.abort && !file.error && !file.xhr;
+      if (canUpload) {
         this._uploadFile(file, i);
       }
     }
@@ -457,7 +484,7 @@ class SimpleFileUpload extends DDD {
 
     if (beforeEvent.defaultPrevented) {
       file.xhr = null;
-      file.status = "Cancelled";
+      file.status = "Pending";
       this.requestUpdate();
       return;
     }
@@ -578,6 +605,9 @@ class SimpleFileUpload extends DDD {
 
   _removeFile(index) {
     const newFiles = [...this.files];
+    if (index < 0 || index >= newFiles.length) {
+      return;
+    }
     const file = newFiles[index];
     if (file && file.xhr && typeof file.xhr.abort === "function") {
       file.xhr.abort();
@@ -595,23 +625,19 @@ class SimpleFileUpload extends DDD {
     }
     // Reset input so the same file can be selected again
     input.value = "";
+    this.uploadFiles();
   }
 
   _onDragEnter(e) {
     if (this.nodrop) return;
     e.preventDefault();
-    this._dragoverCounter++;
-    if (this._dragoverCounter === 1) {
-      this._dragover = true;
-    }
+    this._dragover = true;
   }
 
   _onDragLeave(e) {
     if (this.nodrop) return;
     e.preventDefault();
-    this._dragoverCounter--;
-    if (this._dragoverCounter <= 0) {
-      this._dragoverCounter = 0;
+    if (!this.contains(e.relatedTarget)) {
       this._dragover = false;
     }
   }
@@ -619,7 +645,9 @@ class SimpleFileUpload extends DDD {
   _onDragOver(e) {
     if (this.nodrop) return;
     e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "move";
+    }
   }
 
   _onDrop(e) {

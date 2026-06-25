@@ -1,6 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { ImageGallery } from "../image-gallery.js";
 import "../image-gallery.js";
+import "@haxtheweb/media-image/media-image.js";
 
 describe("ImageGallery test", () => {
   let element;
@@ -154,6 +155,31 @@ describe("ImageGallery test", () => {
       expect(modalImg.getAttribute("src")).to.equal("a.jpg");
     });
 
+    it("should set activeIndex and not open modal in grid when _haxState is true", async () => {
+      element.haxeditModeChanged(true);
+      await element.updateComplete;
+
+      let eventFired = false;
+      element.addEventListener("simple-modal-show", () => {
+        eventFired = true;
+      });
+
+      const firstItem = element.shadowRoot.querySelector(".grid-item");
+      firstItem.click();
+      await element.updateComplete;
+
+      expect(eventFired).to.be.false;
+      expect(element.activeIndex).to.equal(0);
+      element.haxeditModeChanged(false);
+    });
+
+    it("should set activeIndex on grid item click", async () => {
+      const items = element.shadowRoot.querySelectorAll(".grid-item");
+      items[1].click();
+      await element.updateComplete;
+      expect(element.activeIndex).to.equal(1);
+    });
+
     it("should dispatch simple-modal-show on grid item Enter key", async () => {
       let eventFired = false;
       element.addEventListener("simple-modal-show", () => {
@@ -215,6 +241,31 @@ describe("ImageGallery test", () => {
       firstItem.click();
 
       expect(eventFired).to.be.true;
+    });
+
+    it("should set activeIndex and not open modal in masonry when _haxState is true", async () => {
+      element.haxeditModeChanged(true);
+      await element.updateComplete;
+
+      let eventFired = false;
+      element.addEventListener("simple-modal-show", () => {
+        eventFired = true;
+      });
+
+      const firstItem = element.shadowRoot.querySelector(".masonry-item");
+      firstItem.click();
+      await element.updateComplete;
+
+      expect(eventFired).to.be.false;
+      expect(element.activeIndex).to.equal(0);
+      element.haxeditModeChanged(false);
+    });
+
+    it("should set activeIndex on masonry item click", async () => {
+      const items = element.shadowRoot.querySelectorAll(".masonry-item");
+      items[1].click();
+      await element.updateComplete;
+      expect(element.activeIndex).to.equal(1);
     });
 
     it("should be accessible in masonry mode", async () => {
@@ -462,6 +513,56 @@ describe("ImageGallery test", () => {
       const hooks = element.haxHooks();
       expect(hooks).to.exist;
       expect(hooks.inlineContextMenu).to.equal("haxinlineContextMenu");
+      expect(hooks.editModeChanged).to.equal("haxeditModeChanged");
+      expect(hooks.activeElementChanged).to.equal("haxactiveElementChanged");
+      expect(hooks.preProcessNodeToContent).to.equal(
+        "haxpreProcessNodeToContent",
+      );
+    });
+
+    it("should set _haxState via haxeditModeChanged", () => {
+      expect(element._haxState).to.be.false;
+      element.haxeditModeChanged(true);
+      expect(element._haxState).to.be.true;
+      element.haxeditModeChanged(false);
+      expect(element._haxState).to.be.false;
+    });
+
+    it("should propagate haxeditModeChanged to media-image children", async () => {
+      await customElements.whenDefined("media-image");
+      const mediaImage = document.createElement("media-image");
+      mediaImage.source = "test.jpg";
+      mediaImage.alt = "Test";
+      element.appendChild(mediaImage);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      expect(mediaImage._haxState).to.be.undefined;
+      element.haxeditModeChanged(true);
+      expect(mediaImage._haxState).to.be.true;
+      element.haxeditModeChanged(false);
+      expect(mediaImage._haxState).to.be.false;
+      mediaImage.remove();
+    });
+
+    it("should set _haxState via haxactiveElementChanged", () => {
+      expect(element._haxState).to.be.false;
+      element.haxactiveElementChanged(element, true);
+      expect(element._haxState).to.be.true;
+    });
+
+    it("should remove edit attribute via haxpreProcessNodeToContent", async () => {
+      element.edit = true;
+      await element.updateComplete;
+      expect(element.hasAttribute("edit")).to.be.true;
+      const result = element.haxpreProcessNodeToContent(element);
+      expect(result).to.not.equal(element);
+      expect(result.hasAttribute("edit")).to.be.false;
+    });
+
+    it("should return node unchanged if not image-gallery via haxpreProcessNodeToContent", () => {
+      const div = document.createElement("div");
+      const result = element.haxpreProcessNodeToContent(div);
+      expect(result).to.equal(div);
     });
 
     it("should configure inline context menu", () => {
@@ -545,6 +646,164 @@ describe("ImageGallery test", () => {
       const result = element.haxRemoveLastImage();
       expect(result).to.be.true;
       expect(element.children).to.have.length(0);
+    });
+
+    it("should reject internal non-image drops", () => {
+      const store = { __dragTarget: document.createElement("div") };
+      globalThis.HaxStore = { requestAvailability: () => store };
+      element._haxState = true;
+
+      let stopped = false;
+      const event = new Event("drop", { bubbles: true, cancelable: true });
+      event.stopPropagation = () => {
+        stopped = true;
+      };
+      event.stopImmediatePropagation = () => {
+        stopped = true;
+      };
+      event.preventDefault = () => {};
+
+      element._onDrop(event);
+      expect(stopped).to.be.true;
+      expect(store.__dragTarget).to.be.null;
+      delete globalThis.HaxStore;
+    });
+
+    it("should allow internal img drops", () => {
+      const store = { __dragTarget: document.createElement("img") };
+      globalThis.HaxStore = { requestAvailability: () => store };
+      element._haxState = true;
+
+      let stopped = false;
+      const event = new Event("drop", { bubbles: true, cancelable: true });
+      event.stopPropagation = () => {
+        stopped = true;
+      };
+      event.stopImmediatePropagation = () => {
+        stopped = true;
+      };
+      event.preventDefault = () => {};
+
+      element._onDrop(event);
+      expect(stopped).to.be.false;
+      expect(store.__dragTarget).to.not.be.null;
+      delete globalThis.HaxStore;
+    });
+
+    it("should allow internal media-image drops", () => {
+      const store = { __dragTarget: document.createElement("media-image") };
+      globalThis.HaxStore = { requestAvailability: () => store };
+      element._haxState = true;
+
+      let stopped = false;
+      const event = new Event("drop", { bubbles: true, cancelable: true });
+      event.stopPropagation = () => {
+        stopped = true;
+      };
+      event.stopImmediatePropagation = () => {
+        stopped = true;
+      };
+      event.preventDefault = () => {};
+
+      element._onDrop(event);
+      expect(stopped).to.be.false;
+      expect(store.__dragTarget).to.not.be.null;
+      delete globalThis.HaxStore;
+    });
+
+    it("should set active index on double-click in grid", async () => {
+      const img = document.createElement("img");
+      img.src = "a.jpg";
+      img.alt = "Image A";
+      element.appendChild(img);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      element.mode = "grid";
+      await element.updateComplete;
+
+      const store = {};
+      globalThis.HaxStore = { requestAvailability: () => store };
+      element._haxState = true;
+      await element._handleDblClick(0);
+      await element.updateComplete;
+
+      expect(element.activeIndex).to.equal(0);
+      expect(element.edit).to.be.false;
+      delete globalThis.HaxStore;
+      img.remove();
+    });
+
+    it("should set HAX activeNode on double-click in grid", async () => {
+      const img = document.createElement("img");
+      img.src = "a.jpg";
+      img.alt = "Image A";
+      element.appendChild(img);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      element.mode = "grid";
+      await element.updateComplete;
+
+      const activeNodeSpy = { value: null };
+      const store = {
+        get activeNode() {
+          return activeNodeSpy.value;
+        },
+        set activeNode(val) {
+          activeNodeSpy.value = val;
+        },
+      };
+      globalThis.HaxStore = { requestAvailability: () => store };
+
+      element._haxState = true;
+      await element._handleDblClick(0);
+      await element.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      expect(element.activeIndex).to.equal(0);
+      expect(element.edit).to.be.false;
+      expect(activeNodeSpy.value).to.equal(img);
+      delete globalThis.HaxStore;
+      img.remove();
+    });
+
+    it("should set active index but not edit mode on double-click without HAX", async () => {
+      const img = document.createElement("img");
+      img.src = "a.jpg";
+      img.alt = "Image A";
+      element.appendChild(img);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      element.mode = "grid";
+      await element.updateComplete;
+
+      element._haxState = false;
+      await element._handleDblClick(0);
+      await element.updateComplete;
+
+      expect(element.activeIndex).to.equal(0);
+      expect(element.edit).to.be.false;
+      img.remove();
+    });
+
+    it("should update images when a child attribute changes", async () => {
+      const img = document.createElement("img");
+      img.src = "old.jpg";
+      img.alt = "Old";
+      element.appendChild(img);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      expect(element.images).to.have.length(1);
+      expect(element.images[0].src).to.include("old.jpg");
+      expect(element.images[0].alt).to.equal("Old");
+
+      img.setAttribute("src", "new.jpg");
+      img.setAttribute("alt", "New");
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      expect(element.images).to.have.length(1);
+      expect(element.images[0].src).to.include("new.jpg");
+      expect(element.images[0].alt).to.equal("New");
+      img.remove();
     });
   });
 

@@ -271,6 +271,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     search = "",
     placeholder = null,
   ) {
+    this._programValues = values;
     this.commandContext = context;
     // resolve program as string based name vs function passed in
     if (typeof program === "string") {
@@ -401,7 +402,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             this._programValues && this._programValues.type
               ? this._programValues.type
               : "sibling";
-          siteEditorUI.createPageWithTitle(input, createType);
+          siteEditorUI.createPageWithTitle(
+            input,
+            createType,
+            this._programValues && this._programValues.templateContent
+              ? this._programValues.templateContent
+              : null,
+          );
         }
       }
     }

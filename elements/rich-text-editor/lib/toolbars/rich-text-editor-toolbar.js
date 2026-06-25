@@ -12,7 +12,6 @@ import {
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
-import * as shadow from "shadow-selection-polyfill/shadow.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-source-code.js";
@@ -939,7 +938,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.breadcrumbsSelectAllLabel = "All";
       this.__toolbar = this;
       globalThis.document.addEventListener(
-        shadow.eventName,
+        "selectionchange",
         this._handleTargetSelection.bind(this.__toolbar),
         { signal: this.windowControllers.signal },
       );
@@ -1156,18 +1155,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
               }
             }
           } catch (e) {
-            // fall through to polyfill
+            // fall through to native fallback
           }
         }
       }
       try {
-        if (this.target.shadowRoot) {
-          this.range = shadow.getRange(this.target.shadowRoot);
-          if (this.range) return this.range;
+        var root = this.target.shadowRoot || this.target.getRootNode();
+        if (root && root.getSelection) {
+          var sel = root.getSelection();
+          if (sel && sel.rangeCount > 0) {
+            this.range = sel.getRangeAt(0);
+            return this.range;
+          }
         }
-        var el = this.target;
-        while (el && el.parentNode) el = el.parentNode;
-        this.range = el ? shadow.getRange(el) : undefined;
+        this.range = undefined;
       } catch (e) {
         this.range = undefined;
       }

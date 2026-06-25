@@ -50,13 +50,27 @@ describe("simple-file-upload", () => {
     element.nodrop = false;
     const dragEnter = new Event("dragenter", { bubbles: true });
     dragEnter.preventDefault = () => {};
-    element.shadowRoot.querySelector(".drop-zone").dispatchEvent(dragEnter);
+    element.dispatchEvent(dragEnter);
     expect(element._dragover).to.be.true;
 
     const dragLeave = new Event("dragleave", { bubbles: true });
     dragLeave.preventDefault = () => {};
-    element.shadowRoot.querySelector(".drop-zone").dispatchEvent(dragLeave);
+    element.dispatchEvent(dragLeave);
     expect(element._dragover).to.be.false;
+  });
+
+  it("keeps _dragover when dragleave fires to a child element", async () => {
+    element.nodrop = false;
+    const dragEnter = new Event("dragenter", { bubbles: true });
+    dragEnter.preventDefault = () => {};
+    element.dispatchEvent(dragEnter);
+    expect(element._dragover).to.be.true;
+
+    const dragLeave = new Event("dragleave", { bubbles: true });
+    dragLeave.preventDefault = () => {};
+    dragLeave.relatedTarget = element.shadowRoot.querySelector(".drop-zone");
+    element.dispatchEvent(dragLeave);
+    expect(element._dragover).to.be.true;
   });
 
   it("adds files via handleDrop() with a mock DragEvent", async () => {
@@ -70,12 +84,11 @@ describe("simple-file-upload", () => {
     expect(element.files[0].name).to.equal("drop.png");
   });
 
-  it("dispatches upload-before when uploadFiles() is called", async () => {
-    element.target = "";
-    element.method = "";
+  it("does not auto-upload when addFile() is called", async () => {
     const file = new File(["blob"], "trigger.png", { type: "image/png" });
     element.addFile(file);
-    // Without target/method, _uploadFile returns early, so upload-before won't fire
+    expect(element.files.length).to.equal(1);
+    expect(element.files[0].status).to.equal("Pending");
     expect(element.files[0].xhr).to.equal(null);
   });
 

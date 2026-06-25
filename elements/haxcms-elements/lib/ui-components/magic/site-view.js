@@ -1,25 +1,26 @@
-/**
- * Copyright 2022 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, css, render, nothing } from "lit";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css, render } from "lit";
 import {
-  store,
-  iconFromPageType,
-} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/simple-fields/lib/simple-tags.js";
-import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+  renderPreview,
+  RENDERER_OPTIONS,
+} from "../core/utils/haxcms-views-render-utility.js";
+import { extractViewsRecords } from "../core/utils/haxcms-views-spec-utility.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/collection-list/collection-list.js";
+import "@haxtheweb/collection-list/lib/collection-item.js";
 import "@haxtheweb/play-list/play-list.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-remote-content.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
-import { autorun, toJS } from "mobx";
+import "@haxtheweb/video-player/video-player.js";
+import "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
+import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
+import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
+import "@haxtheweb/map-menu/map-menu.js";
+import "@haxtheweb/editable-table/lib/editable-table-display.js";
 
 export const mediaKeys = [
   "audio",
@@ -37,86 +38,60 @@ export const mediaKeys = [
   "video",
 ];
 
-/**
- * `site-view`
- * `UUID to render an accurate link and title in the site`
- *
- * @demo demo/index.html
- */
-export class SiteView extends SimpleColors {
+export class SiteView extends DDD {
   static get tag() {
     return "site-view";
   }
 
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: block;
-          font-size: 16px;
         }
-        h3 {
-          margin: 4px 0;
-          padding: 0;
+        .loading {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: var(--ddd-spacing-8);
         }
-        editable-table-display::part(tag-link),
-        a {
-          text-decoration: none;
-          font-size: 16px;
+        .loading simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-lg);
+          --simple-icon-width: var(--ddd-icon-lg);
+          color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-futureLime)
+          );
         }
-        [data-active] {
-          background-color: var(--simple-colors-default-theme-accent-1);
+        .empty {
+          padding: var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
-        simple-icon-button-lite {
-          border-radius: 0;
-          font-size: 16px;
+        .error {
+          padding: var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--ddd-theme-default-original87Pink);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-original87Pink);
+          border-radius: var(--ddd-radius-sm);
+          background: light-dark(
+            var(--ddd-theme-default-potentialMidnight),
+            rgba(255, 255, 255, 0.04)
+          );
         }
-        :host([loading]) .loading {
-          width: 100%;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 50px;
+        .refresh-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          margin-top: var(--ddd-spacing-2);
         }
-        /* list display */
-        .list {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        .list-item {
-          margin: 0;
-          padding: 16px;
-          border-bottom: 1px solid var(--simple-colors-default-theme-grey-3);
-        }
-        .list-item:hover {
-          background-color: var(--simple-colors-default-theme-grey-2);
-        }
-        .list-link a {
-          font-size: 32px;
-        }
-        .list-breadcrumb {
-          font-size: 10px;
-        }
-
-        .overview {
-          padding: 0;
-          margin: 0;
-          list-style: none;
-          font-size: 12px;
-        }
-
-        /* editable table display */
-        editable-table-display,
-        editable-table-display::part(table),
-        table,
-        tr,
-        th,
-        td {
-          font-size: 16px;
-        }
-        editable-table-display {
-          --simple-icon-width: 50px;
-          --simple-icon-height: 36px;
+        script[data-site-view-cache] {
+          display: none;
         }
       `,
     ];
@@ -124,50 +99,243 @@ export class SiteView extends SimpleColors {
 
   constructor() {
     super();
+    this.src = "";
+    this.renderer = "collection";
+    this.entity = "";
     this.loading = false;
-    this.dark = false;
-    this.accentColor = "cyan";
     this.results = [];
-    this.params = {};
-    this.search = null;
-    this._searchDebounce = null;
-    this.__disposer = this.__disposer ? this.__disposer : [];
-    enableServices(["haxcms"]);
-    this.__disposer.push(
-      autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.darkMode);
-        Promise.resolve().then(() => {
-          this.dark = _mobx_val_0;
-          this.requestUpdate();
-        });
-      }),
-    );
+    this.error = "";
+    this.editMode = false;
+    this.breakSiteView = false;
+    this.__fetchDebounce = null;
   }
 
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      const disposer = this.__disposer[i];
-      if (typeof disposer === "function") {
-        disposer();
-      } else if (disposer && typeof disposer.dispose === "function") {
-        disposer.dispose();
-      }
+  static get properties() {
+    return {
+      ...super.properties,
+      src: { type: String },
+      renderer: { type: String },
+      entity: { type: String },
+      loading: { type: Boolean, reflect: true },
+      results: { type: Array },
+      error: { type: String },
+      editMode: { type: Boolean },
+      breakSiteView: {
+        type: Boolean,
+        reflect: true,
+        attribute: "break-site-view",
+      },
+    };
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
     }
-    super.disconnectedCallback();
+    this._loadFromCache();
+    this._fetchData();
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (["src", "renderer", "entity"].includes(propName)) {
+        this._fetchData();
+      }
+      if (propName === "results" && this.results) {
+        this._updateCache();
+      }
+      if (propName === "breakSiteView" && this.breakSiteView) {
+        this._breakSiteView();
+      }
+    });
+  }
+
+  _loadFromCache() {
+    const script = this.querySelector("script[data-site-view-cache]");
+    if (script && script.textContent) {
+      try {
+        const cache = JSON.parse(script.textContent);
+        if (cache.records && Array.isArray(cache.records)) {
+          this.results = cache.records;
+        }
+        if (cache.renderer) {
+          this.renderer = cache.renderer;
+        }
+        if (cache.entity) {
+          this.entity = cache.entity;
+        }
+        return true;
+      } catch (e) {}
+    }
+    return false;
+  }
+
+  _updateCache() {
+    if (!this.results || this.results.length < 1) {
+      return;
+    }
+    let script = this.querySelector("script[data-site-view-cache]");
+    if (!script) {
+      script = globalThis.document.createElement("script");
+      script.setAttribute("type", "application/json");
+      script.setAttribute("data-site-view-cache", "");
+      this.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
+      records: this.results,
+      renderer: this.renderer,
+      entity: this.entity,
+      src: this.src,
+    });
+  }
+
+  _fetchData() {
+    clearTimeout(this.__fetchDebounce);
+    this.__fetchDebounce = setTimeout(() => {
+      this._doFetch();
+    }, 100);
+  }
+
+  async _doFetch() {
+    if (!this.src) {
+      return;
+    }
+    this.loading = true;
+    this.error = "";
+    try {
+      const response = await fetch(this.src, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Fetch failed (${response.status})`);
+      }
+      const payload = await response.json();
+      const extracted = extractViewsRecords(payload, { name: this.entity });
+      const records = Array.isArray(extracted.records) ? extracted.records : [];
+      if (!this._recordsEqual(records, this.results)) {
+        this.results = records;
+      }
+    } catch (e) {
+      this.error = e.message || "Unable to load view data.";
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  _recordsEqual(a, b) {
+    if (!Array.isArray(a) || !Array.isArray(b)) {
+      return false;
+    }
+    if (a.length !== b.length) {
+      return false;
+    }
+    try {
+      return JSON.stringify(a) === JSON.stringify(b);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  render() {
+    if (this.loading) {
+      return html`
+        <div class="loading">
+          <simple-icon-lite icon="hax:loading"></simple-icon-lite>
+        </div>
+      `;
+    }
+    if (this.error && (!this.results || this.results.length < 1)) {
+      return html`
+        <div class="error" role="status" aria-live="polite">
+          ${this.error}
+        </div>
+      `;
+    }
+    if (!this.results || this.results.length < 1) {
+      return html`
+        <div class="empty" role="status" aria-live="polite">
+          No results found.
+        </div>
+      `;
+    }
+    return html`
+      ${renderPreview(this.results, this.renderer, {
+        selectedEntity: this.entity,
+      })}
+      <slot></slot>
+    `;
+  }
+
+  _breakSiteView() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    const container = globalThis.document.createElement("div");
+    container.className = "site-view-unwrapped";
+    render(
+      renderPreview(this.results, this.renderer, {
+        selectedEntity: this.entity,
+      }),
+      container,
+    );
+    this.parentNode.insertBefore(container, this);
+    setTimeout(() => {
+      this.remove();
+    }, 0);
+  }
+
+  refreshView() {
+    this._fetchData();
+  }
+
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+
+  haxeditModeChanged(value) {
+    this.editMode = value;
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this.editMode = value;
+    }
+  }
+
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:refresh",
+        callback: "refreshView",
+        label: "Refresh view",
+      },
+      {
+        icon: "icons:open-in-browser",
+        callback: "breakSiteView",
+        label: "Break into static content",
+      },
+    ];
   }
 
   static get haxProperties() {
     return {
       canScale: false,
-
       canEditSource: false,
       gizmo: {
         title: "Site View",
         description:
-          "A dynamic block that queries and displays certain information based on criteria",
+          "A dynamic block that queries and displays site data based on criteria",
         icon: "hax:view-gallery",
         color: "grey",
         tags: ["Other", "site", "views", "data", "display", "filter", "view"],
@@ -180,374 +348,55 @@ export class SiteView extends SimpleColors {
       settings: {
         configure: [
           {
-            property: "search",
+            property: "src",
             title: "View URL",
             description:
-              "URL containing criteria for generating the view. You can obtain this from the Views page.",
+              "Full URL to the view data feed. You can obtain this from the Views dashboard.",
             inputMethod: "textfield",
             required: true,
           },
+          {
+            property: "renderer",
+            title: "Display mode",
+            description: "How the view results should be rendered",
+            inputMethod: "select",
+            options: RENDERER_OPTIONS.reduce((acc, opt) => {
+              acc[opt.value] = opt.text;
+              return acc;
+            }, {}),
+          },
         ],
+        advanced: [
+          {
+            property: "entity",
+            title: "Entity type",
+            description: "Entity type used for parsing the response",
+            inputMethod: "textfield",
+          },
+        ],
+        developer: [
+          {
+            property: "breakSiteView",
+            title: "Break site view",
+            description:
+              "Convert to static content for direct editing; stops auto-updating from source.",
+            inputMethod: "boolean",
+          },
+        ],
+      },
+      saveOptions: {
+        unsetAttributes: ["editMode", "edit-mode", "loading", "error"],
       },
       demoSchema: [
         {
           tag: "site-view",
           properties: {
-            search: "?display=list&displayOf=title&parent=__ACTIVE__",
+            src: "?display=list&displayOf=title&parent=__ACTIVE__",
+            renderer: "collection",
           },
           content: "",
         },
       ],
-    };
-  }
-  rebuildSearchResults() {
-    clearTimeout(this._searchDebounce);
-    this._searchDebounce = setTimeout(async () => {
-      if (this.shadowRoot && !this.loading) {
-        const site = store.getManifest(true);
-        let base = globalThis.document.querySelector("base").href;
-        if (!base) {
-          base = "/";
-        }
-        const params = {
-          type: "site",
-          site: {
-            file: base + "site.json",
-            id: site.id,
-            title: site.title,
-            author: site.author,
-            description: site.description,
-            license: site.license,
-            metadata: site.metadata,
-            items: site.items,
-          },
-          link: base,
-          ...this.params,
-        };
-        this.loading = true;
-        const response = await MicroFrontendRegistry.call(
-          "@haxcms/views",
-          params,
-        );
-        if (response.data) {
-          this.results = [...response.data];
-        }
-        this.loading = false;
-      }
-    }, 100);
-  }
-
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.rebuildSearchResults();
-  }
-
-  render() {
-    return html` ${this.loading
-      ? html`<div class="loading">
-          ${this.loading
-            ? html`<simple-icon-lite icon="hax:loading"></simple-icon-lite>`
-            : ``}
-        </div> `
-      : html` ${this.results.length === 0 && !this.loading
-            ? html`<h4>No results found</h4>`
-            : nothing}
-          ${this.params.display === "list"
-            ? this.listTemplate(this.dark, this.accentColor)
-            : nothing}
-          ${this.params.display === "table"
-            ? this.tableTemplate(this.dark, this.accentColor)
-            : nothing}
-          ${this.params.display === "card"
-            ? this.cardTemplate(this.dark, this.accentColor)
-            : nothing}
-          ${this.params.display === "contentplayer"
-            ? this.contentplayerTemplate(this.dark, this.accentColor)
-            : nothing}
-          <slot></slot>`}`;
-  }
-
-  contentplayerTemplate() {
-    return html`<play-list id="contentplayertemplate"></play-list>`;
-  }
-
-  listTemplate() {
-    return html` <ul class="list">
-      ${this.results.map(
-        (item) =>
-          html` <li class="list-item">
-            ${this.params.displayOf === "blocks"
-              ? mediaKeys.map((key) =>
-                  item.media &&
-                  item.media[key] &&
-                  typeof item.media[key] == "string" &&
-                  this.params.blockFilter === key
-                    ? unsafeHTML(item.media[key])
-                    : nothing,
-                )
-              : html`<div class="play-list-item">
-                  ${this.params.displayOf === "title"
-                    ? html`<div class="list-link">
-                          <a href="${item.slug}">${item.title}</a>
-                        </div>
-                        <div class="list-breadcrumb">
-                          ${this.calculateBreadcrumb(item).map(
-                            (item) => html` <span>${item.title}</span> `,
-                          )}
-                        </div>
-                        ${item.metadata.tags && item.metadata.tags != ""
-                          ? item.metadata.tags
-                              .split(",")
-                              .map(
-                                (tag) =>
-                                  html`<a
-                                    href="x/displays/views?tags=${tag.trim()}"
-                                  >
-                                    <simple-tag
-                                      auto-accent-color
-                                      value="${tag.trim()}"
-                                      accent-color="${item.accentColor}"
-                                    ></simple-tag
-                                  ></a>`,
-                              )
-                          : nothing}`
-                    : this.params.displayOf === "full"
-                      ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
-                      : html`<site-remote-content
-                          player
-                          hide-reference
-                          uuid="${item.id}"
-                          show-title
-                        ></site-remote-content>`}
-                </div>`}
-          </li>`,
-      )}
-    </ul>`;
-  }
-
-  tableTemplate(dark, accentColor) {
-    return html` <editable-table-display
-      accent-color="cyan"
-      bordered
-      caption="Content matching your search criteria"
-      numeric-styles
-      column-header
-      printable
-      downloadable
-      sort
-      striped
-    >
-      <table>
-        <tr>
-          <th>Icon</th>
-          <th>Type</th>
-          <th>Title</th>
-          <th>Tags</th>
-          <th>Updated</th>
-          <th>Created</th>
-          <th>Status</th>
-        </tr>
-        ${this.results.map(
-          (item) =>
-            html` <tr>
-              <td>
-                ${item.metadata.pageType
-                  ? html`<simple-icon
-                      ?dark="${dark}"
-                      accent-color="${accentColor}"
-                      title="${item.metadata.pageType}"
-                      icon="${iconFromPageType(item.metadata.pageType)}"
-                    ></simple-icon>`
-                  : nothing}
-              </td>
-              <td>
-                ${item.metadata.pageType ? item.metadata.pageType : nothing}
-              </td>
-              <td>
-                <a href="${item.slug}" style="color:inherit">${item.title}</a>
-              </td>
-              <td>
-                ${item.metadata.tags && item.metadata.tags != ""
-                  ? item.metadata.tags
-                      .split(",")
-                      .map(
-                        (tag) =>
-                          html`<a
-                            part="tag-link"
-                            href="x/displays/views?tags=${tag.trim()}"
-                          >
-                            <simple-tag
-                              auto-accent-color
-                              value="${tag.trim()}"
-                              accent-color="${item.accentColor}"
-                            ></simple-tag
-                          ></a>`,
-                      )
-                  : nothing}
-              </td>
-              <td>
-                <simple-datetime
-                  format="m/j/y"
-                  timestamp="${item.metadata.created}"
-                  unix
-                  class="info-date"
-                ></simple-datetime>
-              </td>
-              <td>
-                <simple-datetime
-                  format="m/j/y"
-                  timestamp="${item.metadata.updated}"
-                  unix
-                  class="info-date"
-                ></simple-datetime>
-              </td>
-              <td>
-                ${item.metadata.published !== false
-                  ? `published`
-                  : `unpublished`}
-              </td>
-            </tr>`,
-        )}
-      </table>
-    </editable-table-display>`;
-  }
-
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "loading") {
-        this.dispatchEvent(
-          new CustomEvent("loading-changed", {
-            detail: {
-              value: this.loading,
-            },
-          }),
-        );
-      }
-      if (propName === "search") {
-        const rawParams = new URLSearchParams(this.search);
-        const searchParams = Object.fromEntries(rawParams);
-        this.params = { ...this.params, ...searchParams };
-        if (this.params.parent === "__ACTIVE__") {
-          this.params.parent = store.activeItem.id;
-        }
-        this.rebuildSearchResults();
-      }
-      if (propName === "results" && oldValue && this.results) {
-        if (this.params.display === "contentplayer") {
-          setTimeout(() => {
-            this.renderPlayListTemplate();
-          }, 0);
-        }
-      }
-    });
-  }
-  // because of how processed <template> tags work in lit (illegal) we have to specialized way of rendering
-  // so that the play-list element is empty for a second and then we template stamp it into placee
-  renderPlayListTemplate() {
-    let template = globalThis.document.createElement("template");
-    render(
-      html`${this.results.map(
-        (item) =>
-          html` ${this.params.displayOf === "blocks"
-            ? mediaKeys.map((key) =>
-                item.media &&
-                item.media[key] &&
-                typeof item.media[key] == "string" &&
-                this.params.blockFilter === key
-                  ? unsafeHTML(item.media[key])
-                  : nothing,
-              )
-            : html`<div class="play-list-item">
-                ${this.params.displayOf === "title"
-                  ? html`<div class="list-link">
-                        <a href="${item.slug}">${item.title}</a>
-                      </div>
-                      <div class="list-breadcrumb">
-                        ${this.calculateBreadcrumb(item).map(
-                          (item) => html` <span>${item.title}</span> `,
-                        )}
-                      </div>`
-                  : this.params.displayOf === "full"
-                    ? unsafeHTML(`<h3>${item.title}</h3>` + item.contents)
-                    : html`<site-remote-content
-                        player
-                        hide-reference
-                        uuid="${item.id}"
-                        show-title
-                      ></site-remote-content>`}
-              </div>`}`,
-      )}`,
-      template,
-    );
-    this.shadowRoot
-      .querySelector("#contentplayertemplate")
-      .appendChild(template);
-  }
-
-  cardTemplate() {
-    return html`${this.results.map(
-      (item) =>
-        html` <accent-card accent-color="red" horizontal accent-heading>
-          <div slot="heading">${item.title}</div>
-          <div slot="subheading">
-            ${item.metadata.tags && item.metadata.tags != ""
-              ? item.metadata.tags
-                  .split(",")
-                  .map(
-                    (tag) =>
-                      html`<a href="x/displays/views?tags=${tag.trim()}">
-                        <simple-tag
-                          auto-accent-color
-                          value="${tag.trim()}"
-                          accent-color="${item.accentColor}"
-                        ></simple-tag
-                      ></a>`,
-                  )
-              : nothing}
-          </div>
-          <div slot="content"><a href="${item.slug}">Link to content</a></div>
-        </accent-card>`,
-    )}`;
-  }
-
-  calculateBreadcrumb(activeItem) {
-    let items = [];
-    const site = store.getManifest(true);
-    let itemBuilder = activeItem;
-    // walk back through parent tree
-    while (itemBuilder && itemBuilder.parent != null) {
-      itemBuilder = site.items.find((i) => i.id == itemBuilder.parent);
-      // double check structure is sound
-      if (itemBuilder) {
-        items.unshift({
-          title: itemBuilder.title,
-        });
-      }
-    }
-    return items;
-  }
-
-  static get properties() {
-    return {
-      ...super.properties,
-      search: {
-        type: String,
-      },
-      results: {
-        type: Array,
-      },
-      loading: {
-        type: Boolean,
-        reflect: true,
-      },
-      params: {
-        type: Object,
-      },
     };
   }
 }
