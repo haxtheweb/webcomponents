@@ -18,6 +18,9 @@ class HaxTrayUpload extends HaxUploadField {
     this.hideInput = true;
     // Enable screen recording for the tray upload
     this.noScreenRecord = false;
+    this.__mediaBatchTotal = 0;
+    this.__mediaBatch = [];
+    this.__mediaBatchPlaceHolder = null;
     this.__winEvents = this.__winEvents || {};
     this.__winEvents = {
       ...this.__winEvents,
@@ -57,6 +60,86 @@ class HaxTrayUpload extends HaxUploadField {
     // if we don't have a URL we shouldn't do asset configuration
     // the super class if successful will have set the #url field to a parsed value
     if (e.detail.xhr.status === 200 && this.shadowRoot.querySelector("#url")) {
+      // Handle image dropped on a media player for thumbnail assignment
+      if (HAXStore.__mediaThumbnailTarget) {
+        const file = e.detail.file;
+        if (file && file.type && file.type.startsWith("image/")) {
+          HAXStore.__mediaThumbnailTarget.thumbnailSrc =
+            this.shadowRoot.querySelector("#url").value;
+          HAXStore.__mediaThumbnailTarget = null;
+          if (
+            HAXStore.activePlaceHolder &&
+            HAXStore.activePlaceHolder.parentNode
+          ) {
+            HAXStore.activePlaceHolder.remove();
+          }
+          HAXStore.activePlaceHolder = null;
+          this.option = "fileupload";
+          return;
+        }
+      }
+
+      // Handle batch media uploads into a media-playlist
+      if (this.__mediaBatchTotal > 0) {
+        const file = e.detail.file;
+        const isMedia =
+          file &&
+          ((file.type &&
+            (file.type.startsWith("audio/") ||
+              file.type.startsWith("video/"))) ||
+            /\.(mp3|mp4|webm|ogg|wav|mov|mkv|avi|m4a|m4v)$/i.test(
+              file.name,
+            ));
+        if (isMedia) {
+          this.__mediaBatch.push({
+            url: this.shadowRoot.querySelector("#url").value,
+            name: file.name,
+            type: file.type,
+          });
+          if (this.__mediaBatch.length >= this.__mediaBatchTotal) {
+            const playlist =
+              globalThis.document.createElement("media-playlist");
+            this.__mediaBatch.forEach((item) => {
+              const isAudio =
+                (item.type && item.type.startsWith("audio/")) ||
+                /\.(mp3|ogg|wav|m4a|flac|aac)$/i.test(item.name);
+              const media = globalThis.document.createElement(
+                isAudio ? "audio-player" : "video-player",
+              );
+              media.source = item.url;
+              media.mediaTitle = item.name;
+              playlist.appendChild(media);
+            });
+            if (
+              HAXStore.activeHaxBody &&
+              this.__mediaBatchPlaceHolder
+            ) {
+              HAXStore.activeHaxBody.haxReplaceNode(
+                this.__mediaBatchPlaceHolder,
+                playlist,
+              );
+            }
+            HAXStore.activePlaceHolder = null;
+            HAXStore.activeNode = playlist;
+            globalThis.dispatchEvent(
+              new CustomEvent("hax-drop-focus-event", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: playlist,
+              }),
+            );
+            this.__mediaBatchTotal = 0;
+            this.__mediaBatch = [];
+            this.__mediaBatchPlaceHolder = null;
+            this.option = "fileupload";
+            return;
+          }
+          this.option = "fileupload";
+          return;
+        }
+      }
+
       this.newAssetConfigure();
       // ensures that if we have selfie / audio it closes those widgets
       this.option = "fileupload";
@@ -85,6 +168,26 @@ class HaxTrayUpload extends HaxUploadField {
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
     HAXStore.activePlaceHolder = e.detail.placeHolderElement;
+    // Check for multiple media files to batch into a media-playlist
+    const files = Array.from(e.detail.dataTransfer.files || []);
+    const mediaFiles = files.filter((f) => {
+      const type = f.type || "";
+      const name = f.name || "";
+      return (
+        type.startsWith("audio/") ||
+        type.startsWith("video/") ||
+        /\.(mp3|mp4|webm|ogg|wav|mov|mkv|avi|m4a|m4v)$/i.test(name)
+      );
+    });
+    if (mediaFiles.length >= 2) {
+      this.__mediaBatchTotal = mediaFiles.length;
+      this.__mediaBatch = [];
+      this.__mediaBatchPlaceHolder = HAXStore.activePlaceHolder;
+    } else {
+      this.__mediaBatchTotal = 0;
+      this.__mediaBatch = [];
+      this.__mediaBatchPlaceHolder = null;
+    }
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that

@@ -1267,7 +1267,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // would imply top of document, shouldn't be possible
           } else if (
             !this.activeNode.previousElementSibling &&
-            this.activeNode.parentNode === this
+            this.activeNode.parentNode === this &&
+            this.activeNode.tagName !== "PAGE-BREAK"
           ) {
             let p = globalThis.document.createElement("p");
             this.insertBefore(p, this.activeNode);
@@ -2281,6 +2282,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
     removeBadJSEventAttributes(newNode);
+    // Prevent inserting above page-break at the root level
+    if (
+      active &&
+      active.tagName === "PAGE-BREAK" &&
+      active.parentNode === this &&
+      this.__addAbove
+    ) {
+      this.__addAbove = false;
+    }
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
@@ -2520,6 +2530,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Duplicate node into the local DOM below the current item if we can.
    */
   async haxDuplicateNode(node) {
+    if (node && node.tagName === "PAGE-BREAK") {
+      return false;
+    }
     // convert the node to a hax element
     let haxElement = await nodeToHaxElement(node, null);
     // @see haxHooks: preProcessInsertContent
@@ -2689,6 +2702,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       index = slot ? slots.indexOf(slot) : -1,
       move = slots[index + direction],
       sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
+    if (direction < 0 && target && target.tagName === "PAGE-BREAK" && parent === this) {
+      return true;
+    }
     if (!!target && (!slot || slot === target.getAttribute("slot"))) {
       //move within a slot
       parent.insertBefore(
@@ -2723,6 +2739,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Inject / modify a grid plate where something currently lives
    */
   async haxGridPlateOps(add = true, side = "right", node = this.activeNode) {
+    if (node && node.tagName === "PAGE-BREAK") {
+      return;
+    }
     // by design, we will prevent grid nesting because it's... ridiculous
     if (
       node.tagName !== "GRID-PLATE" &&
@@ -4497,6 +4516,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
+      // Safety net: ensure page-break remains the first direct child
+      const pageBreak = this.querySelector(":scope > page-break");
+      if (
+        pageBreak &&
+        pageBreak.parentNode === this &&
+        this.children[0] !== pageBreak
+      ) {
+        this.insertBefore(pageBreak, this.children[0]);
+      }
       HAXStore.haxTray.updateMap();
     });
     // Actually connect the observer
@@ -5053,6 +5081,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
+      // Redirect target away from page-break so it never becomes active
+      if (target && target.tagName === "PAGE-BREAK") {
+        target = target.nextElementSibling || target;
+      }
       // establish an activeNode /container based on drop position
       HAXStore.activeNode = target;
       // var for the local drop target
@@ -5081,6 +5113,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             local = e.target.closest("[data-hax-layout]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
+          }
+          // Prevent dropping before page-break
+          if (local && local.tagName === "PAGE-BREAK") {
+            this.__addAbove = false;
           }
 
           // inject a placeholder P tag which we will then immediately replace
@@ -5132,6 +5168,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               this.appendChild(tmp);
             }
           }
+          // Check if an image is being dropped on a media player for thumbnail assignment
+          if (
+            local &&
+            (local.tagName === "VIDEO-PLAYER" || local.tagName === "AUDIO-PLAYER")
+          ) {
+            const hasImageFile = Array.from(
+              e.dataTransfer.files || [],
+            ).some(
+              (file) => file.type && file.type.startsWith("image/"),
+            );
+            if (hasImageFile) {
+              HAXStore.__mediaThumbnailTarget = local;
+            }
+          }
           // this placeholder will be immediately replaced
           e.placeHolderElement = tmp;
           // fire this specialized event up so things like HAX can intercept
@@ -5154,6 +5204,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             local = e.target.closest("[data-hax-layout]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
+          }
+          // Prevent dropping before page-break
+          if (local && local.tagName === "PAGE-BREAK") {
+            this.__addAbove = false;
           }
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
@@ -5248,6 +5302,97 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   }),
                 );
                 this.scrollHere(gallery);
+                this.positionContextMenus();
+                e.preventDefault();
+                e.stopPropagation();
+                HAXStore.__dragTarget = null;
+                this.__manageFakeEndCap(false);
+                return;
+              }
+            }
+
+            // Auto-create media-playlist when dragging a media element onto another media element
+            // or onto an existing media-playlist
+            if (
+              HAXStore._isMediaElement(target) &&
+              (HAXStore._isMediaElement(local) ||
+                local.tagName === "MEDIA-PLAYLIST")
+            ) {
+              const mediaPlaylistSchema =
+                HAXStore.haxSchemaFromTag("media-playlist");
+              if (mediaPlaylistSchema && mediaPlaylistSchema.gizmo) {
+                // If the target is already inside a media-playlist, append the dragged media there
+                let playlistParent = eventPath.find(
+                  (el) => el.tagName === "MEDIA-PLAYLIST",
+                );
+                if (!playlistParent && local.getRootNode) {
+                  let root = local.getRootNode();
+                  while (root && root.host) {
+                    if (root.host.tagName === "MEDIA-PLAYLIST") {
+                      playlistParent = root.host;
+                      break;
+                    }
+                    root = root.host.getRootNode
+                      ? root.host.getRootNode()
+                      : null;
+                  }
+                }
+                if (!playlistParent && local.tagName === "MEDIA-PLAYLIST") {
+                  playlistParent = local;
+                }
+                if (playlistParent) {
+                  playlistParent.appendChild(target);
+                  HAXStore.activeNode = target;
+                  this.dispatchEvent(
+                    new CustomEvent("hax-drop-focus-event", {
+                      bubbles: true,
+                      cancelable: true,
+                      composed: true,
+                      detail: target,
+                    }),
+                  );
+                  this.scrollHere(target);
+                  this.positionContextMenus();
+                  e.preventDefault();
+                  e.stopPropagation();
+                  HAXStore.__dragTarget = null;
+                  this.__manageFakeEndCap(false);
+                  return;
+                }
+                const playlist =
+                  globalThis.document.createElement("media-playlist");
+                if (local.getAttribute("slot")) {
+                  playlist.setAttribute(
+                    "slot",
+                    local.getAttribute("slot"),
+                  );
+                } else if (eventPath[0].classList.contains("column")) {
+                  playlist.setAttribute(
+                    "slot",
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
+                  );
+                } else {
+                  playlist.removeAttribute("slot");
+                }
+                const parent = local.parentNode;
+                const nextSibling = local.nextElementSibling;
+                playlist.appendChild(local);
+                if (nextSibling && nextSibling.parentNode === parent) {
+                  parent.insertBefore(playlist, nextSibling);
+                } else {
+                  parent.appendChild(playlist);
+                }
+                playlist.appendChild(target);
+                HAXStore.activeNode = playlist;
+                this.dispatchEvent(
+                  new CustomEvent("hax-drop-focus-event", {
+                    bubbles: true,
+                    cancelable: true,
+                    composed: true,
+                    detail: playlist,
+                  }),
+                );
+                this.scrollHere(playlist);
                 this.positionContextMenus();
                 e.preventDefault();
                 e.stopPropagation();

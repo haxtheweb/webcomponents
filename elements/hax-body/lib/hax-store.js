@@ -576,6 +576,113 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
 
   /**
+   * Check if an element is a media element (video or audio) by tag name or schema metadata
+   */
+  _isMediaElement(element) {
+    if (!element || !element.tagName) {
+      return false;
+    }
+
+    const tagName = element.tagName.toLowerCase();
+
+    // Check for direct media element tag names
+    const directMediaElements = [
+      "video-player",
+      "audio-player",
+    ];
+    if (directMediaElements.includes(tagName)) {
+      return true;
+    }
+
+    // Check schema metadata for media tags
+    const schema = this.haxSchemaFromTag(tagName);
+    if (schema && schema.gizmo && schema.gizmo.tags) {
+      return schema.gizmo.tags.some(
+        (tag) =>
+          typeof tag === "string" &&
+          ["video", "audio", "media"].includes(tag.toLowerCase()),
+      );
+    }
+
+    return false;
+  }
+
+  /**
+   * Create a media-playlist by wrapping the original media element and adding the new media element
+   */
+  _createMediaPlaylist(originalMediaElement, newMediaElement) {
+    // Create the media-playlist element
+    const playlist = globalThis.document.createElement("media-playlist");
+
+    // Copy any slot attribute from the original media element
+    if (originalMediaElement.getAttribute("slot")) {
+      playlist.setAttribute("slot", originalMediaElement.getAttribute("slot"));
+    }
+
+    // Clone the original media element
+    const originalMediaClone = originalMediaElement.cloneNode(true);
+
+    // Add both media elements to the playlist
+    playlist.appendChild(originalMediaClone);
+    playlist.appendChild(newMediaElement);
+
+    // Replace the original media element with the playlist
+    if (this.activeHaxBody && originalMediaElement.parentNode) {
+      this.activeHaxBody.haxReplaceNode(originalMediaElement, playlist);
+    }
+
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== playlist &&
+        this.activePlaceHolder.tagName.toLowerCase() === "p"
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+
+    // Clean up
+    this.activePlaceHolder = null;
+
+    // Set the new playlist as active
+    this.activeNode = playlist;
+
+    // Show success message
+    this.toast("Media playlist created successfully!");
+  }
+
+  /**
+   * Add a media element to an existing media-playlist
+   */
+  _addMediaToMediaPlaylist(playlistElement, mediaElement) {
+    // Add the media element to the playlist
+    playlistElement.appendChild(mediaElement);
+
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== playlistElement &&
+        this.activePlaceHolder.tagName.toLowerCase() === "p"
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+
+    // Clean up
+    this.activePlaceHolder = null;
+
+    // Set the playlist as active
+    this.activeNode = playlistElement;
+
+    // Show success message
+    this.toast("Media added to playlist successfully!");
+  }
+
+  /**
    * Create a single image gallery from Magic File Wand
    */
   _createSingleImageGallery(imageSource) {
