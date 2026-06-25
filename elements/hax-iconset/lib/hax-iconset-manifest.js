@@ -119,6 +119,7 @@ export const HaxIconsetManifest = [
       "drupal",
       "duplicate",
       "email",
+      "embed",
       "engage",
       "engage2",
       "examity",

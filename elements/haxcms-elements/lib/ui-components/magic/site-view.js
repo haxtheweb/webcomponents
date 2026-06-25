@@ -3,8 +3,11 @@ import { html, css, render } from "lit";
 import {
   renderPreview,
   RENDERER_OPTIONS,
-} from "../core/utils/haxcms-views-render-utility.js";
-import { extractViewsRecords } from "../core/utils/haxcms-views-spec-utility.js";
+} from "../../core/utils/haxcms-views-render-utility.js";
+import {
+  extractViewsRecords,
+  resolveSiteApiBasePath,
+} from "../../core/utils/haxcms-views-spec-utility.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -119,9 +122,9 @@ export class SiteView extends DDD {
       renderer: { type: String },
       entity: { type: String },
       loading: { type: Boolean, reflect: true },
-      results: { type: Array },
+      results: { type: Array, attribute: false },
       error: { type: String },
-      editMode: { type: Boolean },
+      editMode: { type: Boolean, attribute: false },
       breakSiteView: {
         type: Boolean,
         reflect: true,
@@ -201,14 +204,38 @@ export class SiteView extends DDD {
     }, 100);
   }
 
-  async _doFetch() {
+  _getFetchUrl() {
     if (!this.src) {
+      return "";
+    }
+    const trimmed = this.src.trim();
+    if (
+      trimmed.indexOf("http://") === 0 ||
+      trimmed.indexOf("https://") === 0 ||
+      trimmed.indexOf("/x/api/") !== -1
+    ) {
+      return trimmed;
+    }
+    const apiBasePath = resolveSiteApiBasePath();
+    const entityName = this.entity || "item";
+    const endpoint = `${apiBasePath}/v1/${entityName}s`;
+    const query = trimmed.startsWith("?")
+      ? trimmed
+      : trimmed
+        ? `?${trimmed}`
+        : "";
+    return `${endpoint}${query}`;
+  }
+
+  async _doFetch() {
+    const url = this._getFetchUrl();
+    if (!url) {
       return;
     }
     this.loading = true;
     this.error = "";
     try {
-      const response = await fetch(this.src, {
+      const response = await fetch(url, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -280,17 +307,19 @@ export class SiteView extends DDD {
       return;
     }
     const container = globalThis.document.createElement("div");
-    container.className = "site-view-unwrapped";
     render(
       renderPreview(this.results, this.renderer, {
         selectedEntity: this.entity,
       }),
       container,
     );
-    this.parentNode.insertBefore(container, this);
-    setTimeout(() => {
-      this.remove();
-    }, 0);
+    const parent = this.parentNode;
+    if (parent) {
+      while (container.firstChild) {
+        parent.insertBefore(container.firstChild, this);
+      }
+      parent.removeChild(this);
+    }
   }
 
   refreshView() {
@@ -353,7 +382,7 @@ export class SiteView extends DDD {
             property: "src",
             title: "View URL",
             description:
-              "Full URL to the view data feed. You can obtain this from the Views dashboard.",
+              "Query parameters for the view data feed. You can obtain this from the Views dashboard.",
             inputMethod: "textfield",
             required: true,
           },
@@ -367,13 +396,23 @@ export class SiteView extends DDD {
               return acc;
             }, {}),
           },
-        ],
-        advanced: [
           {
             property: "entity",
             title: "Entity type",
             description: "Entity type used for parsing the response",
-            inputMethod: "textfield",
+            inputMethod: "select",
+            options: {
+              "": "Default (items)",
+              item: "Item",
+              page: "Page",
+              file: "File",
+              tag: "Tag",
+              block: "Block",
+              view: "View",
+              theme: "Theme",
+              region: "Region",
+              customElement: "Custom Element",
+            },
           },
         ],
         developer: [
@@ -387,7 +426,13 @@ export class SiteView extends DDD {
         ],
       },
       saveOptions: {
-        unsetAttributes: ["editMode", "edit-mode", "loading", "error"],
+        unsetAttributes: [
+          "editMode",
+          "edit-mode",
+          "loading",
+          "error",
+          "results",
+        ],
       },
       demoSchema: [
         {

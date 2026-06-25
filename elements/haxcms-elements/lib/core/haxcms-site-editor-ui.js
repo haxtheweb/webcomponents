@@ -243,12 +243,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --bg-color: #000;
           --accent-color: #fff;
         }
-        app-hax-top-bar.drag-over {
-          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color);
-          outline-offset: -2px;
-          transition-delay: 0s;
-          transition-duration: 0.15s;
-        }
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
           overflow: visible;
@@ -1874,6 +1868,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     };
     // track if site editor is using the initial version of platformConfig
     this.__initialPlatformConfig = true;
+    this.__dragCounter = 0;
 
     // allow commands to go through at any time
     // hax-store default is only when editor is open to avoid conflicts w/ other UX
@@ -3018,7 +3013,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-<app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}" @drop="${this.topBarDropEvent}" @dragenter="${this.topBarDragEnterEvent}" @dragover="${this.topBarDragOverEvent}" @dragleave="${this.topBarDragLeaveEvent}">
+<app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}">
         <div slot="left" class="topbar-left-group">
           <span class="home-btn">
             <a
@@ -3362,44 +3357,82 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.rpgWalk = false;
   }
 
+  __isFileDrop(e) {
+    return (
+      e.dataTransfer &&
+      e.dataTransfer.items &&
+      e.dataTransfer.items.length > 0 &&
+      e.dataTransfer.items[0].kind === "file"
+    );
+  }
   /**
-   * Top bar drop-through: when a file is dropped on the top bar
-   * outside of Merlin, forward it to the Merlin upload pipeline.
+   * Window-level drag enter: highlight Merlin whenever the user
+   * drags a file onto the page (regardless of edit mode).
    */
-  topBarDropEvent(e) {
-    e.preventDefault();
-    if (this.editMode) {
+  __windowDragEnter(e) {
+    this.__dragCounter++;
+    if (this.__isFileDrop(e) && this.__dragCounter === 1) {
+      if (this.sdSearch) {
+        this.sdSearch.classList.add("window-file-drag");
+      }
+    }
+  }
+  /**
+   * Window-level drag leave: remove highlight once the drag truly leaves
+   * the browser window (counter handles nested element churn).
+   */
+  __windowDragLeave(e) {
+    this.__dragCounter--;
+    if (this.__dragCounter <= 0) {
+      this.__dragCounter = 0;
+      if (this.sdSearch) {
+        this.sdSearch.classList.remove("window-file-drag");
+      }
+    }
+  }
+  /**
+   * Window-level drag over: prevent default for file drops so the browser
+   * allows a drop.
+   */
+  __windowDragOver(e) {
+    if (this.__isFileDrop(e)) {
+      e.preventDefault();
+    }
+  }
+  /**
+   * Window-level drop: if the user drops a file within the top bar (64px)
+   * and it didn't originate from Merlin, process it via Merlin.
+   */
+  __windowDrop(e) {
+    this.__dragCounter = 0;
+    if (this.sdSearch) {
+      this.sdSearch.classList.remove("window-file-drag");
+    }
+    if (!this.__isFileDrop(e)) {
       return;
     }
     // If the drop originated from the Merlin search box, let it handle it
     if (e.target && e.target.closest && e.target.closest("#search")) {
       return;
     }
-    this.dropEvent(e);
-    e.stopPropagation();
-  }
-  topBarDragEnterEvent(e) {
-    e.preventDefault();
-    if (!this.editMode) {
-      const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
-      if (topBar) topBar.classList.add("drag-over");
-      if (this.sdSearch) {
-        this.sdSearch.dragover = true;
-      }
+    // Only process drops that actually land on the top bar area
+    if (e.clientY <= 64) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.dropEvent(e);
     }
   }
-  topBarDragOverEvent(e) {
-    e.preventDefault();
-    if (!this.editMode && this.sdSearch) {
-      this.sdSearch.dragover = true;
+  /**
+   * Capture-phase drop listener to ensure the drag highlight is removed
+   * even when nested components (e.g., hax-body) stop event propagation.
+   */
+  __windowDropCleanup(e) {
+    if (!this.__isFileDrop(e)) {
+      return;
     }
-  }
-  topBarDragLeaveEvent(e) {
-    e.preventDefault();
-    const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
-    if (topBar) topBar.classList.remove("drag-over");
+    this.__dragCounter = 0;
     if (this.sdSearch) {
-      this.sdSearch.dragover = false;
+      this.sdSearch.classList.remove("window-file-drag");
     }
   }
   /**
@@ -5233,6 +5266,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._registerKeyboardShortcuts();
     HAXCMSKeyboardShortcutsInstance.enable();
 
+    // Window-level drag listeners so the top-bar drop zone is detectable
+    // from anywhere on the screen when NOT in edit mode.
+    this.__boundWindowDragEnter = this.__windowDragEnter.bind(this);
+    this.__boundWindowDragLeave = this.__windowDragLeave.bind(this);
+    this.__boundWindowDragOver = this.__windowDragOver.bind(this);
+    this.__boundWindowDrop = this.__windowDrop.bind(this);
+    this.__boundWindowDropCleanup = this.__windowDropCleanup.bind(this);
+    window.addEventListener("dragenter", this.__boundWindowDragEnter);
+    window.addEventListener("dragleave", this.__boundWindowDragLeave);
+    window.addEventListener("dragover", this.__boundWindowDragOver);
+    window.addEventListener("drop", this.__boundWindowDrop);
+    window.addEventListener("drop", this.__boundWindowDropCleanup, true);
+
     // Mirror HAX tray detail into this element so we can expose and style active state.
     // IMPORTANT: use the observable HAXStore.trayDetail, not haxTray.trayDetail,
     // so MobX actually tracks and updates this value.
@@ -5390,6 +5436,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Unregister keyboard shortcuts
     HAXCMSKeyboardShortcutsInstance.disable();
 
+    window.removeEventListener("dragenter", this.__boundWindowDragEnter);
+    window.removeEventListener("dragleave", this.__boundWindowDragLeave);
+    window.removeEventListener("dragover", this.__boundWindowDragOver);
+    window.removeEventListener("drop", this.__boundWindowDrop);
+    window.removeEventListener("drop", this.__boundWindowDropCleanup, true);
     for (var i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {

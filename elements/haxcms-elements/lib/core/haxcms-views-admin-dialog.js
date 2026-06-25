@@ -1779,7 +1779,8 @@ class HAXCMSViewsAdminDialog extends DDD {
   }
 
   _embedTagMarkup() {
-    return `<site-view src="${this.queryUrl || ""}" renderer="${this.renderer}" entity="${this.selectedEntity}"></site-view>`;
+    const src = this.queryString ? `?${this.queryString}` : "";
+    return `<site-view src="${src}" renderer="${this.renderer}" entity="${this.selectedEntity}"></site-view>`;
   }
 
   _copyEmbedTag() {
@@ -1794,7 +1795,7 @@ class HAXCMSViewsAdminDialog extends DDD {
     const haxBody = HAXStore.activeHaxBody;
     if (haxBody) {
       haxBody.haxInsert("site-view", "", {
-        src: this.queryUrl,
+        src: this.queryString ? `?${this.queryString}` : "",
         renderer: this.renderer,
         entity: this.selectedEntity,
       }, null);

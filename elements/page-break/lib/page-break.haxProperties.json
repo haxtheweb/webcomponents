@@ -198,7 +198,8 @@
       "noderefs",
       "style",
       "resource",
-      "prefix"
+      "prefix",
+      "is-logged-in"
     ]
   },
   "demoSchema": [

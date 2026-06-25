@@ -6,7 +6,6 @@ import {
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import {
   winEventsElement,
-  getRange,
   stripMSWord,
   removeBadJSEventAttributes,
   nodeToHaxElement,
@@ -99,20 +98,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // try and obtain the selection from the nearest shadow
     // which would give us the selection object when running native ShadowDOM
     // with fallback support for the entire window which would imply Shady
-    if (this.activeHaxBody && this.activeHaxBody.parentNode) {
-      // native API
-      if (this.activeHaxBody.parentNode.getSelection) {
-        return this.activeHaxBody.parentNode.getSelection();
+    if (this.activeHaxBody) {
+      const root = this.activeHaxBody.getRootNode();
+      // native API on ShadowRoot (Chrome) or Document
+      if (root.getSelection) {
+        return root.getSelection();
       }
-      // this could fail depending on polyfills and stuff
-      try {
-        // ponyfill from google
-        if (getRange(this.activeHaxBody.parentNode)) {
-          return getRange(this.activeHaxBody.parentNode);
-        }
-      } catch (e) {}
     }
-    // missed on both, hope the normal one will work
+    // missed on shadow root, hope the normal one will work
     return globalThis.getSelection();
   }
   /**
@@ -243,7 +236,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
 
     // Auto-handle image drop scenarios without showing picker
-    if (type === "image" && this.activePlaceHolder) {
+    // Also check activeNode so subsequent images in a multi-file drop
+    // still route into a gallery after activePlaceHolder was cleared.
+    if (type === "image" || type === "gif") {
       // Check if dropping into or onto an image-gallery - auto-add to it
       let targetGallery = null;
       targetGallery = this._nearestContainerTag(
@@ -262,10 +257,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
 
       // Check if dropping on an image - auto-create image-gallery if enabled
-      if (this._isImageElement(this.activePlaceHolder)) {
+      // Use activePlaceHolder if it is an image, otherwise fallback to activeNode
+      let imageTarget = this._isImageElement(this.activePlaceHolder)
+        ? this.activePlaceHolder
+        : (this._isImageElement(this.activeNode) ? this.activeNode : null);
+      if (imageTarget) {
         const imageGallerySchema = this.haxSchemaFromTag("image-gallery");
         if (imageGallerySchema && imageGallerySchema.gizmo) {
-          this._createImageGallery(this.activePlaceHolder, values.source);
+          this._createImageGallery(imageTarget, values.source);
           return true;
         }
         // If image-gallery is not allowed, fall through to normal image insertion
@@ -367,10 +366,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (found) return found;
       }
     } catch (e) {}
-    // Fallback manual traversal (covers non-Elements or when closest not available)
+    // Fallback manual traversal (covers non-Elements, shadow DOM, or when closest not available)
     while (current) {
       if (match(current)) return current;
-      current = current.parentNode;
+      // Cross shadow DOM boundaries
+      if (current.getRootNode && current.getRootNode().host) {
+        current = current.getRootNode().host;
+      } else {
+        current = current.parentNode;
+      }
     }
     return null;
   }
@@ -457,6 +461,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (this.activeHaxBody && originalImageElement.parentNode) {
       this.activeHaxBody.haxReplaceNode(originalImageElement, gallery);
     }
+
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== gallery &&
+        this.activePlaceHolder.tagName.toLowerCase() === "p"
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -5047,6 +5063,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     delete propvals["data-hax-layout"];
     delete propvals["data-hax-grid"];
     delete propvals["data-hax-active"];
+    delete propvals["schema-map"];
     if (propvals.class == "") {
       delete propvals.class;
     }
@@ -5288,7 +5305,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           // validate whether platformConfig allows the block
           if (
             !this.platformAllows(gizmo.tag) &&
-            !this.requiredPrimitives.has(gizmo.tag)
+            !this.requiredPrimitives.has(gizmo.tag) &&
+            !(gizmo.tag === "site-view" && this.platformAllows("views"))
           ) {
             gizmo.platformRestricted = true;
           } else {

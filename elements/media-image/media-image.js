@@ -297,6 +297,7 @@ class MediaImage extends DDD {
        */
       source: {
         type: String,
+        reflect: true,
       },
       /**
        * Thumbnail image source. If provided, shows thumbnail but opens full source in modal.
@@ -321,6 +322,7 @@ class MediaImage extends DDD {
        */
       alt: {
         type: String,
+        reflect: true,
       },
       /**
        * The size of the image (small, wide).

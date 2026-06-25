@@ -1194,6 +1194,7 @@ class Store {
         "popularGizmos",
         "recentGizmos",
         "community",
+        "views",
       ]);
 
       // If audience is not defined, default to expert mode

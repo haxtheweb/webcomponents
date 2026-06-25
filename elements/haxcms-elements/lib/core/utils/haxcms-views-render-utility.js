@@ -732,7 +732,6 @@ export const renderCollectionPreview = (records, options = {}) => {
             image="${recordImage(record, options)}"
             icon="${recordIcon(record)}"
             tags="${tags.join(",")}"
-            accent-color="grey"
             saturate
           >
             ${elementPreview
@@ -754,7 +753,7 @@ export const renderGridPreview = (records, options = {}) => {
       ${records.map((record) => {
         const url = recordUrl(record, options);
         return html`
-          <accent-card accent-color="grey" no-border>
+          <accent-card no-border>
             <div slot="heading">${recordTitle(record)}</div>
             <div slot="subheading">
               ${recordTags(record).slice(0, 5).join(", ")}
@@ -960,7 +959,7 @@ export const renderCarouselPreview = (records, options = {}) => {
             return html`${elementPreview}`;
           }
           return html`
-            <accent-card accent-color="grey">
+            <accent-card>
               <div slot="heading">${recordTitle(record)}</div>
               <div slot="content">
                 ${renderRecordBody(record, 300)}

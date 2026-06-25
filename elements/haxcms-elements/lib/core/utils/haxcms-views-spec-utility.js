@@ -68,7 +68,7 @@ function extractApiPathFromEndpoint(endpointPath = "") {
   return normalizedPath;
 }
 
-function resolveSiteApiBasePath() {
+export function resolveSiteApiBasePath() {
   let baseHref = "";
   const baseElement = globalThis.document
     ? globalThis.document.querySelector("base")

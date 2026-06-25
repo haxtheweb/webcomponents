@@ -47,7 +47,6 @@ class Store {
       () => import("@haxtheweb/i18n-manager/lib/I18NMixin.js"),
       () => import("@haxtheweb/wc-autoload/wc-autoload.js"),
       () => import("@haxtheweb/replace-tag/replace-tag.js"),
-      () => import("@haxtheweb/utils/utils.js"),
       () => import("@haxtheweb/grid-plate/grid-plate.js"),
       () => import("@haxtheweb/simple-fields/simple-fields.js"),
       () => import("mobx/dist/mobx.esm.js"),

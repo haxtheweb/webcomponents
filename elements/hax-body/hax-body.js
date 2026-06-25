@@ -27,6 +27,7 @@ import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
 // our default way of handing grids
 import "@haxtheweb/grid-plate/grid-plate.js";
+import "@haxtheweb/image-gallery/image-gallery.js";
 // our default image in core
 import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
@@ -5072,80 +5073,63 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           e.stopPropagation();
           e.stopImmediatePropagation();
 
-          // Check if we're dropping onto an image element for potential gallery creation
-          let imageTarget = null;
+          // Determine the drop target element for placement logic
           if (
             e.target.closest("[data-hax-layout]") &&
             e.target.parentNode != e.target.closest("[data-hax-layout]")
           ) {
             local = e.target.closest("[data-hax-layout]");
-            // Check if the layout element or its content is an image
-            if (HAXStore._isImageElement(local)) {
-              imageTarget = local;
-            }
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
-            // Check if we're dropping onto an image
-            if (HAXStore._isImageElement(local)) {
-              imageTarget = local;
-            }
           }
 
-          // If dropping onto an image, use it as the placeholder for gallery creation
-          let tmp;
-          if (imageTarget) {
-            tmp = imageTarget;
-          } else {
-            // inject a placeholder P tag which we will then immediately replace
-            tmp = globalThis.document.createElement("p");
-          }
-          // Only do placement logic if tmp is a new placeholder, not an existing element
-          if (!imageTarget) {
-            if (
-              (local &&
-                ((local.tagName && local.tagName !== "HAX-BODY") ||
-                  !local.getAttribute("data-hax-layout"))) ||
-              this.__isLayout(eventPath[0])
-            ) {
-              if (local.getAttribute("slot")) {
-                tmp.setAttribute("slot", local.getAttribute("slot"));
-              } else if (eventPath[0].classList.contains("column")) {
-                tmp.setAttribute(
-                  "slot",
-                  eventPath[0].getAttribute("id").replace("col", "col-"),
-                );
-              } else {
-                tmp.removeAttribute("slot");
-              }
-              if (this.__addAbove !== false) {
-                local.parentNode.insertBefore(tmp, local);
-              } else {
-                if (local.nextElementSibling) {
-                  local.parentNode.insertBefore(tmp, local.nextElementSibling);
-                } else {
-                  local.parentNode.appendChild(tmp);
-                }
-              }
+          // inject a placeholder P tag which we will then immediately replace
+          let tmp = globalThis.document.createElement("p");
+          // Always do placement logic to insert the placeholder next to the target
+          if (
+            (local &&
+              ((local.tagName && local.tagName !== "HAX-BODY") ||
+                !local.getAttribute("data-hax-layout"))) ||
+            this.__isLayout(eventPath[0])
+          ) {
+            if (local.getAttribute("slot")) {
+              tmp.setAttribute("slot", local.getAttribute("slot"));
+            } else if (eventPath[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                eventPath[0].getAttribute("id").replace("col", "col-"),
+              );
             } else {
-              if (eventPath[0].classList.contains("column")) {
-                tmp.setAttribute(
-                  "slot",
-                  eventPath[0].getAttribute("id").replace("col", "col-"),
-                );
-              }
-              // account for drop target of main body yet still having a slot attr
-              else if (
-                local &&
-                local.tagName === "HAX-BODY" &&
-                tmp.getAttribute("slot")
-              ) {
-                tmp.removeAttribute("slot");
-              }
-              if (local) {
-                local.appendChild(tmp);
+              tmp.removeAttribute("slot");
+            }
+            if (this.__addAbove !== false) {
+              local.parentNode.insertBefore(tmp, local);
+            } else {
+              if (local.nextElementSibling) {
+                local.parentNode.insertBefore(tmp, local.nextElementSibling);
               } else {
-                this.appendChild(tmp);
+                local.parentNode.appendChild(tmp);
               }
+            }
+          } else {
+            if (eventPath[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                eventPath[0].getAttribute("id").replace("col", "col-"),
+              );
+            }
+            // account for drop target of main body yet still having a slot attr
+            else if (
+              local &&
+              local.tagName === "HAX-BODY" &&
+              tmp.getAttribute("slot")
+            ) {
+              tmp.removeAttribute("slot");
+            }
+            if (local) {
+              local.appendChild(tmp);
+            } else {
+              this.appendChild(tmp);
             }
           }
           // this placeholder will be immediately replaced
@@ -5199,6 +5183,39 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               const imageGallerySchema =
                 HAXStore.haxSchemaFromTag("image-gallery");
               if (imageGallerySchema && imageGallerySchema.gizmo) {
+                // If the target is already inside an image-gallery, append the dragged image there
+                let galleryParent = eventPath.find(
+                  (el) => el.tagName === "IMAGE-GALLERY",
+                );
+                if (!galleryParent && local.getRootNode) {
+                  let root = local.getRootNode();
+                  while (root && root.host) {
+                    if (root.host.tagName === "IMAGE-GALLERY") {
+                      galleryParent = root.host;
+                      break;
+                    }
+                    root = root.host.getRootNode ? root.host.getRootNode() : null;
+                  }
+                }
+                if (galleryParent) {
+                  galleryParent.appendChild(target);
+                  HAXStore.activeNode = target;
+                  this.dispatchEvent(
+                    new CustomEvent("hax-drop-focus-event", {
+                      bubbles: true,
+                      cancelable: true,
+                      composed: true,
+                      detail: target,
+                    }),
+                  );
+                  this.scrollHere(target);
+                  this.positionContextMenus();
+                  e.preventDefault();
+                  e.stopPropagation();
+                  HAXStore.__dragTarget = null;
+                  this.__manageFakeEndCap(false);
+                  return;
+                }
                 const gallery =
                   globalThis.document.createElement("image-gallery");
                 gallery.mode = "masonry";
@@ -5215,12 +5232,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 const parent = local.parentNode;
                 const nextSibling = local.nextElementSibling;
                 gallery.appendChild(local);
-                gallery.appendChild(target);
-                if (nextSibling) {
+                if (nextSibling && nextSibling.parentNode === parent) {
                   parent.insertBefore(gallery, nextSibling);
                 } else {
                   parent.appendChild(gallery);
                 }
+                gallery.appendChild(target);
                 HAXStore.activeNode = gallery;
                 this.dispatchEvent(
                   new CustomEvent("hax-drop-focus-event", {
