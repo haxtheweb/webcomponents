@@ -89,7 +89,7 @@ class HaxTrayUpload extends HaxUploadField {
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that
     // ! would have happened if they had used this element in the first place
-    this.shadowRoot.querySelector("#fileupload")._onDrop(e.detail);
+    this.shadowRoot.querySelector("#fileupload").handleDrop(e.detail);
   }
   /**
    * A file event was detected from a drag and drop in the interface, most likely
@@ -106,7 +106,7 @@ class HaxTrayUpload extends HaxUploadField {
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that
     // ! would have happened if they had used this element in the first place
-    this.shadowRoot.querySelector("#fileupload")._addFile(e.detail.file);
+    this.shadowRoot.querySelector("#fileupload").addFile(e.detail.file);
   }
 }
 

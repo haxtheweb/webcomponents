@@ -226,9 +226,9 @@ class SimpleContextMenu extends DDD {
    */
   _positionDialog(dialog, anchorElement) {
     // Override browser default dialog positioning that may interfere
-    dialog.style.margin = '0';
-    dialog.style.right = 'auto';
-    dialog.style.bottom = 'auto';
+    dialog.style.margin = "0";
+    dialog.style.right = "auto";
+    dialog.style.bottom = "auto";
 
     if (this.positionStrategy === "fixed") {
       dialog.style.top = `${this.y}px`;

@@ -37,14 +37,13 @@ export class DddStepsList extends DDDSuper(LitElement) {
         :host {
           display: block;
           position: relative;
-          padding: var(--ddd-spacing-4, 16px);
-          font-family: var(--ddd-font-primary, sans-serif);
+          padding: var(--ddd-spacing-4);
         }
 
         .steps-container {
           position: relative;
           padding-left: calc(
-            var(--ddd-icon-size-xl, 50px) + var(--ddd-spacing-4, 16px)
+            var(--ddd-icon-lg) + var(--ddd-spacing-4)
           );
         }
 

@@ -2,12 +2,11 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
-import { LitElement, html, css, nothing } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import "@shoelace-style/shoelace/dist/components/carousel/carousel.js";
-import "@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js";
+import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import { generateStyleLinkEls } from "./lib/SLStyleManager.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
@@ -20,14 +19,12 @@ import {
  * @demo demo/index.html
  * @element play-list
  */
-class PlayList extends LitElement {
+class PlayList extends DDD {
   /**
    * HTMLElement
    */
   constructor() {
     super();
-    // handles SL styles link elements
-    generateStyleLinkEls();
     this.items = [];
     this.loop = false;
     this.edit = false;
@@ -36,6 +33,11 @@ class PlayList extends LitElement {
     this.aspectRatio = "16:9";
     this.slide = 0;
     this.orientation = "horizontal";
+    this._touchStartX = 0;
+    this._touchStartY = 0;
+    this._touchCurrentX = 0;
+    this._touchCurrentY = 0;
+    this._isDragging = false;
     // mutation observer for light dom changes
     this._observer = new MutationObserver((mutations) => {
       clearTimeout(this._debounceMutations);
@@ -70,10 +72,41 @@ class PlayList extends LitElement {
   // this has gone through filtering and is safe as a result as it's just rendering
   // whatever has been put into the light dom
   renderHAXItem(item) {
-    if (item.properties.innerHTML) {
+    if (item.properties && item.properties.innerHTML) {
       delete item.properties.innerHTML;
     }
     return html`${unsafeHTML(haxElementToNode(item).outerHTML)}`;
+  }
+
+  _getSlideTitle(item, index) {
+    if (!item) {
+      return `Slide ${index + 1}`;
+    }
+    if (item.properties) {
+      if (item.properties.alt) {
+        return item.properties.alt;
+      }
+      if (item.properties.title) {
+        return item.properties.title;
+      }
+      if (item.properties["media-title"]) {
+        return item.properties["media-title"];
+      }
+    }
+    if (item.content) {
+      const text = item.content.replace(/<[^>]*>/g, "").trim();
+      if (text) {
+        return text.length > 60 ? text.substring(0, 60) + "..." : text;
+      }
+    }
+    return `Slide ${index + 1}`;
+  }
+
+  disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+    }
+    super.disconnectedCallback();
   }
 
   /**
@@ -84,16 +117,9 @@ class PlayList extends LitElement {
       .href;
   }
 
-  disconnectedCallback() {
-    if (this._linkEls) {
-      globalThis.document.head.removeChild(this._linkEls[0]);
-      globalThis.document.head.removeChild(this._linkEls[1]);
-    }
-    super.disconnectedCallback();
-  }
-
   static get properties() {
     return {
+      ...super.properties,
       items: { type: Array },
       loop: { type: Boolean, reflect: true },
       edit: { type: Boolean, reflect: true },
@@ -120,60 +146,185 @@ class PlayList extends LitElement {
         :host {
           display: block;
         }
-        :host([orientation="vertical"]),
         :host([orientation="vertical"]) .carousel,
-        :host([orientation="vertical"]) .carousel .item {
+        :host([orientation="vertical"]) .carousel-viewport,
+        :host([orientation="vertical"]) .carousel-track,
+        :host([orientation="vertical"]) .carousel-item {
           max-height: 400px;
         }
-        :host([orientation="vertical"]) .carousel .item video-player {
-          max-height: 400px;
-          width: 500px;
-        }
-
-        :host .carousel .item .play-list-item {
+        :host([orientation="vertical"]) .carousel-item video-player {
+          max-height: 100%;
           width: 100%;
-          min-height: 400px;
         }
-        :host([orientation="vertical"]) .carousel::part(base) {
-          grid-template-areas: "slides slides pagination";
-        }
-        :host([orientation="vertical"]) .carousel::part(pagination) {
+        :host([orientation="vertical"]) .carousel-track {
           flex-direction: column;
         }
-        :host([orientation="vertical"]) .carousel::part(navigation) {
-          transform: rotate(90deg);
+        :host([orientation="vertical"]) .carousel-item {
+          min-height: 400px;
+        }
+        :host([orientation="vertical"]) .carousel-pagination {
+          flex-direction: column;
+          position: absolute;
+          right: var(--ddd-spacing-1, 8px);
+          top: 50%;
+          transform: translateY(-50%);
+          padding: 0;
+        }
+        :host([orientation="vertical"]) .carousel-nav {
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+          flex-direction: column;
+        }
+        .carousel {
+          position: relative;
+          display: block;
+        }
+        .carousel:focus {
+          outline: none;
+        }
+        .carousel:focus-visible {
+          outline: 2px solid var(--ddd-theme-primary, currentColor);
+          outline-offset: 2px;
+        }
+        .carousel-viewport {
+          overflow: hidden;
+          position: relative;
+          height: auto;
+          display: block;
+        }
+        .carousel-track {
           display: flex;
+          flex-direction: row;
+          transition: transform 0.5s ease-in-out;
+          height: 100%;
+          align-items: stretch;
         }
-        sl-carousel-item {
-          max-height: 400px;
-          padding: 8px;
-          overflow-y: auto;
-          justify-content: unset;
+        @media (prefers-reduced-motion: reduce) {
+          .carousel-track {
+            transition: none;
+          }
         }
-        simple-icon-button-lite {
-          color: var(--play-list-icon-color, #999999);
-          --simple-icon-width: 72px;
-          --simple-icon-height: 72px;
-          height: 72px;
-          width: 72px;
+        .carousel-item {
+          flex: 0 0 100%;
+          min-width: 100%;
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-1, 8px);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 0;
+        }
+        .carousel-item .play-list-item {
+          width: 100%;
+          max-height: 100%;
+        }
+        .carousel-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          pointer-events: none;
+          z-index: 1;
+        }
+        .carousel-nav button,
+        .carousel-nav simple-icon-button-lite {
+          pointer-events: all;
+        }
+        .carousel-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: var(--ddd-icon-4xs);
+          padding: var(--ddd-spacing-1, 8px) 0;
+          position: relative;
+          z-index: 1;
+        }
+        .pagination-dot {
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: 50%;
+          border: var(--ddd-border-sm, 1px solid transparent);
+          background-color: light-dark(
+            var(--ddd-theme-default-slateMaxLight, #cccccc),
+            var(--ddd-theme-default-limestoneGray, #666666)
+          );
+          cursor: pointer;
+          padding: 0;
+          transition:
+            background-color 0.25s ease-in-out,
+            transform 0.25s ease-in-out;
+        }
+        .pagination-dot:hover,
+        .pagination-dot:focus {
+          background-color: var(--ddd-theme-primary, currentColor);
+          transform: scale(1.2);
+          outline: none;
+        }
+        .pagination-dot:focus-visible {
+          outline: 2px solid var(--ddd-theme-primary, currentColor);
+          outline-offset: 2px;
+        }
+        .pagination-dot[aria-selected="true"] {
+          background-color: var(--ddd-theme-primary, currentColor);
+          transform: scale(1.2);
+        }
+        .carousel-nav simple-icon-button-lite {
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #999999),
+            var(--ddd-theme-default-limestoneGray, #666666)
+          );
+          --simple-icon-width: var(--ddd-icon-2xl);
+          --simple-icon-height: var(--ddd-icon-2xl);
+          height: var(--ddd-icon-2xl);
+          width: var(--ddd-icon-2xl);
+          transition: color 0.25s ease-in-out;
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-toggled-background-color: transparent;
+          background-color: transparent;
+        }
+        .carousel-nav simple-icon-button-lite:hover,
+        .carousel-nav simple-icon-button-lite:focus {
+          color: var(--ddd-theme-primary, currentColor);
+          outline: none;
+          background-color: transparent;
         }
 
         /** edit mode, hax, etc */
         :host([edit]) .edit-wrapper {
-          border: 2px dashed #999999;
+          border: 2px dashed
+            light-dark(
+              var(--ddd-theme-default-slateGray, #999999),
+              var(--ddd-theme-default-limestoneGray, #666666)
+            );
           box-sizing: border-box;
-          padding: 16px;
-          background-color: #f5f5f5;
+          padding: var(--ddd-spacing-2, 16px);
+          background-color: light-dark(
+            var(--ddd-theme-default-slateMaxLight, #f5f5f5),
+            var(--ddd-theme-default-navy, #1a1a1a)
+          );
         }
         :host([edit]) .edit-wrapper::before {
           content: "Play list edit mode";
           display: block;
-          font-size: 16px;
+          font-size: var(--ddd-font-size-xs, 16px);
+          color: light-dark(
+            var(--ddd-theme-default-navy, #333333),
+            var(--ddd-theme-default-slateMaxLight, #f5f5f5)
+          );
         }
         :host([edit]) .edit-wrapper ::slotted(*) {
           display: block;
           width: 100%;
-          padding: 16px;
+          padding: var(--ddd-spacing-2, 16px);
         }
       `,
     ];
@@ -183,37 +334,176 @@ class PlayList extends LitElement {
    */
   render() {
     return html`
-      ${this.items.length > 0 && !this.edit
+      ${this.items && this.items.length > 0 && !this.edit
         ? html`
-            <sl-carousel
-              ?navigation="${this.navigation &&
-              this.orientation === "horizontal"}"
-              ?pagination="${this.pagination}"
-              ?loop="${this.loop}"
-              orientation="${this.orientation}"
-              @sl-slide-change="${this.slideIndexChanged}"
+            <div
               class="carousel"
-              style="--aspect-ratio: ${this.aspectRatio};"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Playlist"
+              tabindex="0"
+              @keydown="${this._handleKeydown}"
+              @touchstart="${this._handleTouchStart}"
+              @touchmove="${this._handleTouchMove}"
+              @touchend="${this._handleTouchEnd}"
             >
-              <simple-icon-button-lite
-                icon="hardware:keyboard-arrow-left"
-                slot="previous-icon"
-              ></simple-icon-button-lite>
-              <simple-icon-button-lite
-                icon="hardware:keyboard-arrow-right"
-                slot="next-icon"
-              ></simple-icon-button-lite>
-              ${this.items.map(
-                (item, index) => html`
-                  <sl-carousel-item class="item">
-                    ${this.renderHAXItem(item)}
-                  </sl-carousel-item>
-                `,
-              )}
-            </sl-carousel>
+              <div
+                class="carousel-viewport"
+                style="--aspect-ratio: ${this.aspectRatio};"
+              >
+                <div
+                  class="carousel-track ${this.orientation === "vertical"
+                    ? "vertical"
+                    : ""}"
+                  style="transform: ${this._getTransform()};"
+                >
+                  ${this.items.map(
+                    (item, index) => html`
+                      <play-list-slide
+                        class="carousel-item"
+                        role="group"
+                        aria-roledescription="slide"
+                        aria-label="Slide ${index + 1} of ${this.items.length}"
+                        ?active="${index === this.slide}"
+                      >
+                        ${this.renderHAXItem(item)}
+                      </play-list-slide>
+                    `,
+                  )}
+                </div>
+              </div>
+              ${this.navigation && this.orientation === "horizontal"
+                ? html`
+                    <div class="carousel-nav">
+                      <simple-icon-button-lite
+                        icon="hardware:keyboard-arrow-left"
+                        label="Previous slide"
+                        title="Previous slide"
+                        @click="${this._goToPrevious}"
+                      ></simple-icon-button-lite>
+                      <simple-icon-button-lite
+                        icon="hardware:keyboard-arrow-right"
+                        label="Next slide"
+                        title="Next slide"
+                        @click="${this._goToNext}"
+                      ></simple-icon-button-lite>
+                    </div>
+                  `
+                : nothing}
+              ${this.pagination
+                ? html`
+                    <div
+                      class="carousel-pagination"
+                      role="tablist"
+                      aria-label="Slide pages"
+                    >
+                      ${this.items.map(
+                        (item, index) => html`
+                          <button
+                            class="pagination-dot"
+                            role="tab"
+                            aria-label="Go to slide ${index + 1}"
+                            title="${this._getSlideTitle(item, index)}"
+                            aria-selected="${index === this.slide}"
+                            tabindex="0"
+                            @click="${() => this._goToSlide(index)}"
+                          ></button>
+                        `,
+                      )}
+                    </div>
+                  `
+                : nothing}
+            </div>
           `
         : html`<div class="edit-wrapper"><slot></slot></div>`}
     `;
+  }
+
+  _getTransform() {
+    if (this.orientation === "vertical") {
+      return `translateY(-${this.slide * 100}%)`;
+    }
+    return `translateX(-${this.slide * 100}%)`;
+  }
+
+  _goToSlide(index) {
+    if (index < 0) {
+      index = this.loop ? this.items.length - 1 : 0;
+    } else if (index >= this.items.length) {
+      index = this.loop ? 0 : this.items.length - 1;
+    }
+    if (index !== this.slide) {
+      this.slide = index;
+    }
+  }
+
+  _goToPrevious() {
+    this._goToSlide(this.slide - 1);
+  }
+
+  _goToNext() {
+    this._goToSlide(this.slide + 1);
+  }
+
+  _handleKeydown(e) {
+    if (this.orientation === "horizontal") {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        this._goToPrevious();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        this._goToNext();
+      }
+    } else {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        this._goToPrevious();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        this._goToNext();
+      }
+    }
+  }
+
+  _handleTouchStart(e) {
+    this._isDragging = true;
+    const touch = e.touches[0];
+    this._touchStartX = touch.clientX;
+    this._touchStartY = touch.clientY;
+    this._touchCurrentX = touch.clientX;
+    this._touchCurrentY = touch.clientY;
+  }
+
+  _handleTouchMove(e) {
+    if (!this._isDragging) return;
+    const touch = e.touches[0];
+    this._touchCurrentX = touch.clientX;
+    this._touchCurrentY = touch.clientY;
+  }
+
+  _handleTouchEnd(e) {
+    if (!this._isDragging) return;
+    this._isDragging = false;
+    const deltaX = this._touchStartX - this._touchCurrentX;
+    const deltaY = this._touchStartY - this._touchCurrentY;
+    const threshold = 50;
+    if (this.orientation === "horizontal") {
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX > 0) {
+          this._goToNext();
+        } else {
+          this._goToPrevious();
+        }
+      }
+    } else {
+      if (Math.abs(deltaY) > threshold) {
+        if (deltaY > 0) {
+          this._goToNext();
+        } else {
+          this._goToPrevious();
+        }
+      }
+    }
   }
 
   slideIndexChanged(e) {
@@ -259,13 +549,6 @@ class PlayList extends LitElement {
             },
           }),
         );
-        if (
-          this.shadowRoot.querySelector(".carousel") &&
-          this.shadowRoot.querySelector(".carousel").activeSlide !==
-            this[propName]
-        ) {
-          // this.shadowRoot.querySelector('.carousel').goToSlide(parseInt(this[propName]));
-        }
       }
     });
   }

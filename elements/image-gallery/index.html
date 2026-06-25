@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>image-gallery</title>
+  <script type="module">
+    import "./image-gallery.js";
+    import "@haxtheweb/media-image/media-image.js";
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>image-gallery</h1>
+
+  <h2>Grid mode</h2>
+  <image-gallery mode="grid">
+    <media-image source="https://dummyimage.com/300x200/000/fff" alt="Black and white sample"></media-image>
+    <media-image source="https://dummyimage.com/300x300/111/eee" alt="Dark gray sample"></media-image>
+    <media-image source="https://dummyimage.com/400x200/222/ddd" alt="Medium gray sample"></media-image>
+    <media-image source="https://dummyimage.com/300x400/333/ccc" alt="Another sample"></media-image>
+    <media-image source="https://dummyimage.com/350x250/444/bbb" alt="Warm gray sample"></media-image>
+    <media-image source="https://dummyimage.com/200x300/555/aaa" alt="Tall sample"></media-image>
+  </image-gallery>
+
+  <h2>Masonry mode</h2>
+  <image-gallery mode="masonry">
+    <media-image source="https://dummyimage.com/300x200/600/fff" alt="Masonry sample 1"></media-image>
+    <media-image source="https://dummyimage.com/300x400/700/eee" alt="Masonry sample 2"></media-image>
+    <media-image source="https://dummyimage.com/400x300/800/ddd" alt="Masonry sample 3"></media-image>
+    <media-image source="https://dummyimage.com/200x300/900/ccc" alt="Masonry sample 4"></media-image>
+    <media-image source="https://dummyimage.com/350x200/a00/bbb" alt="Masonry sample 5"></media-image>
+    <media-image source="https://dummyimage.com/300x350/0a0/aaa" alt="Masonry sample 6"></media-image>
+  </image-gallery>
+
+  <h2>Gallery mode</h2>
+  <image-gallery mode="gallery" active-index="0">
+    <media-image source="https://dummyimage.com/800x400/006/fff" alt="Gallery sample 1"></media-image>
+    <media-image source="https://dummyimage.com/800x400/060/eee" alt="Gallery sample 2"></media-image>
+    <media-image source="https://dummyimage.com/800x400/600/ddd" alt="Gallery sample 3"></media-image>
+  </image-gallery>
+
+  <h2>Edit mode</h2>
+  <image-gallery edit>
+    <media-image source="https://dummyimage.com/300x200/000/fff" alt="Edit mode sample 1"></media-image>
+    <media-image source="https://dummyimage.com/300x200/111/eee" alt="Edit mode sample 2"></media-image>
+  </image-gallery>
+</body>
+</html>

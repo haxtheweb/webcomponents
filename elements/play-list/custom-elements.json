@@ -25,11 +25,80 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_getSlideTitle",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "haxProperties integration via file reference",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getTransform"
+            },
+            {
+              "kind": "method",
+              "name": "_goToSlide",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_goToPrevious"
+            },
+            {
+              "kind": "method",
+              "name": "_goToNext"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTouchStart",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTouchMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleTouchEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -178,6 +247,46 @@
             },
             {
               "kind": "field",
+              "name": "_touchStartX",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_touchStartY",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_touchCurrentX",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_touchCurrentY",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_isDragging",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "_observer",
               "default": "new MutationObserver((mutations) => { clearTimeout(this._debounceMutations); this._debounceMutations = setTimeout(() => { this.mirrorLightDomToItems(); }, 100); })"
             }
@@ -256,8 +365,8 @@
             }
           ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           },
           "tagName": "play-list",
           "customElement": true
@@ -283,20 +392,42 @@
     },
     {
       "kind": "javascript-module",
-      "path": "lib/SLStyleManager.js",
+      "path": "lib/play-list-slide.js",
       "declarations": [
         {
-          "kind": "function",
-          "name": "generateStyleLinkEls"
+          "kind": "class",
+          "description": "`play-list-slide`\n`lightweight wrapper for individual slides in a play-list carousel`",
+          "name": "PlayListSlide",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "play-list-slide",
+          "customElement": true
         }
       ],
       "exports": [
         {
-          "kind": "js",
-          "name": "generateStyleLinkEls",
+          "kind": "custom-element-definition",
           "declaration": {
-            "name": "generateStyleLinkEls",
-            "module": "lib/SLStyleManager.js"
+            "name": "PlayListSlide",
+            "module": "lib/play-list-slide.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PlayListSlide",
+          "declaration": {
+            "name": "PlayListSlide",
+            "module": "lib/play-list-slide.js"
           }
         }
       ]

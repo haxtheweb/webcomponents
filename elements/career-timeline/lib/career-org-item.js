@@ -42,7 +42,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
         :host {
           display: block;
           position: relative;
-          padding: var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-4);
           font-family: var(--ddd-font-primary, sans-serif);
         }
 
@@ -56,7 +56,7 @@ export class CareerOrgItem extends DDDSuper(LitElement) {
         .item-container {
           position: relative;
           padding-left: calc(
-            var(--ddd-icon-size-xl, 50px) + var(--ddd-spacing-4, 16px)
+            var(--ddd-icon-md) + var(--ddd-spacing-4)
           );
         }
 

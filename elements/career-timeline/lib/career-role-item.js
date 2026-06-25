@@ -58,8 +58,8 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
         }
 
         .circle {
-          width: var(--ddd-icon-size-xl, 8px);
-          height: var(--ddd-icon-size-xl, 8px);
+          width: var(--ddd-icon-4xs, 16px);
+          height: var(--ddd-icon-4xs, 16px);
           border-radius: 50%;
           background-color: var(--ddd-theme-default-limestoneLight);
           margin-left: -50px;

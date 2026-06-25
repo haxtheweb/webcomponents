@@ -7,7 +7,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "./simple-file-upload.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
@@ -46,13 +46,22 @@ class SimpleFieldsUpload extends I18NMixin(
             white
           );
           --simple-camera-snap-border-radius: var(--ddd-radius-sm);
-          --lumo-font-family: var(--ddd-font-navigation, sans-serif);
-          --lumo-error-color: var(--ddd-theme-default-error, #b40000);
-          --lumo-primary-font-color: var(
+          --simple-file-upload-font-family: var(
+            --ddd-font-navigation,
+            sans-serif
+          );
+          --simple-file-upload-error-color: var(
+            --ddd-theme-default-error,
+            #b40000
+          );
+          --simple-file-upload-primary-color: var(
             --ddd-theme-default-coalyGray,
             currentColor
           );
-          --lumo-base-color: var(--ddd-theme-default-white, white);
+          --simple-file-upload-base-color: var(
+            --ddd-theme-default-white,
+            white
+          );
         }
         :host([responsive-size="xs"]),
         div[part="description"] {
@@ -122,25 +131,25 @@ class SimpleFieldsUpload extends I18NMixin(
           white-space: nowrap;
           margin: var(--ddd-spacing-1, 4px);
         }
-        vaadin-upload {
+        simple-file-upload {
           padding: var(--ddd-spacing-2, 8px);
           position: relative;
           overflow: visible;
           border: none !important;
-          --lumo-font-size-s: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-4xs, 10px);
         }
-        vaadin-upload::part(file-list) {
+        simple-file-upload::part(file-list) {
           max-height: 140px;
           overflow-x: hidden;
           overflow-y: auto;
         }
-        vaadin-upload[dragover] {
+        simple-file-upload[dragover] {
           border-color: var(
             --simple-fields-secondary-accent-color,
             var(--ddd-theme-default-skyBlue, #009dc7)
           );
         }
-        vaadin-upload::part(drop-label) {
+        simple-file-upload::part(drop-label) {
           font-family: var(--simple-fields-font-family, sans-serif);
           color: var(--simple-fields-color, currentColor);
           display: flex;
@@ -151,16 +160,14 @@ class SimpleFieldsUpload extends I18NMixin(
           width: 100%;
           margin-top: -16px;
         }
-        vaadin-upload.option-selfie::part(drop-label) {
+        simple-file-upload.option-selfie::part(drop-label) {
           display: block;
         }
-        vaadin-upload::part(drop-label-icon) {
+        simple-file-upload::part(drop-label-icon) {
           display: none;
         }
-        vaadin-upload {
-          --disabled-text-color: #var(--simple-fields-border-color, #999);
-          --lumo-contrast-60pct: currentColor;
-          --lumo-contrast-90pct: currentColor;
+        simple-file-upload {
+          --disabled-text-color: var(--simple-fields-border-color, #999);
         }
         simple-camera-snap {
           --simple-camera-snap-button-container-bottom: var(
@@ -218,7 +225,7 @@ class SimpleFieldsUpload extends I18NMixin(
             width: 100%;
             margin: 0 0 16px 0;
           }
-          vaadin-upload::part(file-list) {
+          simple-file-upload::part(file-list) {
             max-height: 48px;
             font-size: 8px;
           }
@@ -333,7 +340,7 @@ class SimpleFieldsUpload extends I18NMixin(
   get fields() {
     return html`
       <div id="upload-options">
-        <vaadin-upload
+        <simple-file-upload
           capture=""
           class="option-${this.option}"
           form-data-name="file-upload"
@@ -416,7 +423,7 @@ class SimpleFieldsUpload extends I18NMixin(
             part="screen-preview"
           ></div>
           ${this.desc}
-        </vaadin-upload>
+        </simple-file-upload>
       </div>
     `;
   }
@@ -464,16 +471,17 @@ class SimpleFieldsUpload extends I18NMixin(
     this.option = "fileupload";
   }
   /**
-   * when browse button is clicked trigger the hidden add button in vaadin-upload
+   * when browse button is clicked trigger the file input in simple-file-upload
    *
    * @param {event} e
    * @memberof SimpleFieldsUpload
    */
   _handleBrowse(e) {
     e.preventDefault();
-    this.shadowRoot
-      .querySelector("#add-hidden")
-      .dispatchEvent(new CustomEvent("click", e));
+    const fileUpload = this.shadowRoot.querySelector("#fileupload");
+    if (fileUpload && typeof fileUpload.focusFileInput === "function") {
+      fileUpload.focusFileInput();
+    }
   }
   /**
    * update the value
@@ -665,7 +673,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   __newPhotoShowedUp(e) {
     let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
-    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.shadowRoot.querySelector("#fileupload").addFile(file);
   }
   /**
    * We got a new photo
@@ -675,7 +683,7 @@ class SimpleFieldsUpload extends I18NMixin(
       [e.detail.value],
       "voice-recording-" + e.timeStamp + ".mp3",
     );
-    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.voice.remove();
     setTimeout(() => {
       this.voice = null;
@@ -689,7 +697,7 @@ class SimpleFieldsUpload extends I18NMixin(
       [e.detail.blob],
       "screen-recording-" + e.timeStamp + ".webm",
     );
-    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.screenRecorder.remove();
     setTimeout(() => {
       this.screenRecorder = null;

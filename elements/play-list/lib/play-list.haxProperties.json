@@ -3,9 +3,7 @@
   "type": "grid",
   "canScale": false,
   "designSystem": {
-    "card": true,
-    "primary": true,
-    "accent": true
+    "primary": true
   },
   "canEditSource": true,
   "contentEditable": true,

@@ -44,7 +44,6 @@
     "@emotion/styled", 
     "@emotion/core", 
     "strip-css-comments", 
-    "actions/setup-node", 
-    "@vaadin/vaadin-upload"
+    "actions/setup-node"
   ]
 }

@@ -43,8 +43,8 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
         }
 
         .circle {
-          width: var(--ddd-icon-size-xl, 40px);
-          height: var(--ddd-icon-size-xl, 40px);
+          width: var(--ddd-icon-sm);
+          height: var(--ddd-icon-sm);
           border-radius: 50%;
           background-color: var(--ddd-theme-primary, #1e407c);
           color: var(

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "image-gallery.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`image-gallery`\n`An image gallery that accepts media-image and img tags in light DOM and presents them in grid, masonry, or gallery layouts.`",
+          "name": "ImageGallery",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setActiveIndex",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_renderGrid"
+            },
+            {
+              "kind": "method",
+              "name": "_renderMasonry"
+            },
+            {
+              "kind": "method",
+              "name": "_renderGallery"
+            },
+            {
+              "kind": "method",
+              "name": "_updateImages"
+            },
+            {
+              "kind": "method",
+              "name": "_setActiveIndex",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openModal",
+              "parameters": [
+                {
+                  "name": "image"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxAddImage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxRemoveLastImage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxBreakOutGallery",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "activeIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "active-index",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grid\"",
+              "attribute": "mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "images",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "images"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, gallery: \"Gallery\", previous: \"Previous\", next: \"Next\", editModeLabel: \"Image gallery edit mode\", openImage: \"Open image\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "default": "new MutationObserver(() => { clearTimeout(this._debounceMutations); this._debounceMutations = setTimeout(() => { this._updateImages(); }, 100); })"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grid\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "active-index",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "activeIndex"
+            },
+            {
+              "name": "images",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "images"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "image-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ImageGallery",
+          "declaration": {
+            "name": "ImageGallery",
+            "module": "image-gallery.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ImageGallery",
+            "module": "image-gallery.js"
+          }
+        }
+      ]
+    }
+  ]
+}

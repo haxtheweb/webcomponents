@@ -1,6 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { PlayList } from "../play-list.js";
 import "../play-list.js";
+import "../lib/play-list-slide.js";
 
 describe("play-list test", () => {
   let element;
@@ -151,7 +152,7 @@ describe("play-list test", () => {
       await element.updateComplete;
 
       const editWrapper = element.shadowRoot.querySelector(".edit-wrapper");
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
 
       expect(editWrapper).to.exist;
       expect(carousel).to.not.exist;
@@ -169,7 +170,7 @@ describe("play-list test", () => {
       element.edit = false;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       const editWrapper = element.shadowRoot.querySelector(".edit-wrapper");
 
       expect(carousel).to.exist;
@@ -181,7 +182,7 @@ describe("play-list test", () => {
       element.edit = false;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       const editWrapper = element.shadowRoot.querySelector(".edit-wrapper");
 
       expect(carousel).to.not.exist;
@@ -205,8 +206,8 @@ describe("play-list test", () => {
       element.orientation = "horizontal";
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.hasAttribute("navigation")).to.be.true;
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      expect(carousel.querySelector(".carousel-nav")).to.exist;
     });
 
     it("should not show navigation for vertical orientation", async () => {
@@ -214,43 +215,46 @@ describe("play-list test", () => {
       element.orientation = "vertical";
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.hasAttribute("navigation")).to.be.false;
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      expect(carousel.querySelector(".carousel-nav")).to.not.exist;
     });
 
     it("should configure carousel with pagination when enabled", async () => {
       element.pagination = true;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.hasAttribute("pagination")).to.be.true;
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      expect(carousel.querySelector(".carousel-pagination")).to.exist;
     });
 
     it("should configure carousel with loop when enabled", async () => {
       element.loop = true;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.hasAttribute("loop")).to.be.true;
+      expect(element.hasAttribute("loop")).to.be.true;
     });
 
     it("should set carousel orientation", async () => {
       element.orientation = "vertical";
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.getAttribute("orientation")).to.equal("vertical");
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      const track = carousel.querySelector(".carousel-track");
+      expect(track.classList.contains("vertical")).to.be.true;
     });
 
     it("should set carousel aspect ratio style", async () => {
       element.aspectRatio = "4:3";
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
-      expect(carousel.style.getPropertyValue("--aspect-ratio")).to.equal("4:3");
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      const viewport = carousel.querySelector(".carousel-viewport");
+      expect(viewport.style.getPropertyValue("--aspect-ratio")).to.equal("4:3");
     });
 
     it("should render navigation icons", async () => {
+      element.navigation = true;
+      element.orientation = "horizontal";
       await element.updateComplete;
 
       const prevIcon = element.shadowRoot.querySelector(
@@ -262,8 +266,8 @@ describe("play-list test", () => {
 
       expect(prevIcon).to.exist;
       expect(nextIcon).to.exist;
-      expect(prevIcon.getAttribute("slot")).to.equal("previous-icon");
-      expect(nextIcon.getAttribute("slot")).to.equal("next-icon");
+      expect(prevIcon.getAttribute("label")).to.equal("Previous slide");
+      expect(nextIcon.getAttribute("label")).to.equal("Next slide");
     });
   });
 
@@ -391,6 +395,95 @@ describe("play-list test", () => {
       expect(element.slide).to.equal(2);
     });
 
+    it("should navigate with keyboard arrow keys", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+        { tag: "div", properties: {}, content: "Item 3" },
+      ];
+      element.orientation = "horizontal";
+      await element.updateComplete;
+
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      carousel.focus();
+
+      const event = new KeyboardEvent("keydown", {
+        key: "ArrowRight",
+        bubbles: true,
+        cancelable: true,
+      });
+      carousel.dispatchEvent(event);
+      await element.updateComplete;
+      expect(element.slide).to.equal(1);
+
+      const event2 = new KeyboardEvent("keydown", {
+        key: "ArrowLeft",
+        bubbles: true,
+        cancelable: true,
+      });
+      carousel.dispatchEvent(event2);
+      await element.updateComplete;
+      expect(element.slide).to.equal(0);
+    });
+
+    it("should navigate vertically with arrow keys", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.orientation = "vertical";
+      await element.updateComplete;
+
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      carousel.focus();
+
+      const event = new KeyboardEvent("keydown", {
+        key: "ArrowDown",
+        bubbles: true,
+        cancelable: true,
+      });
+      carousel.dispatchEvent(event);
+      await element.updateComplete;
+      expect(element.slide).to.equal(1);
+    });
+
+    it("should loop slides when loop is enabled", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.loop = true;
+      element.slide = 0;
+      await element.updateComplete;
+
+      element._goToPrevious();
+      await element.updateComplete;
+      expect(element.slide).to.equal(1);
+
+      element._goToNext();
+      await element.updateComplete;
+      expect(element.slide).to.equal(0);
+    });
+
+    it("should not loop slides when loop is disabled", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.loop = false;
+      element.slide = 0;
+      await element.updateComplete;
+
+      element._goToPrevious();
+      await element.updateComplete;
+      expect(element.slide).to.equal(0);
+
+      element.slide = 1;
+      element._goToNext();
+      await element.updateComplete;
+      expect(element.slide).to.equal(1);
+    });
+
     it("should fire slide-changed event when slide property changes", async () => {
       let eventFired = false;
       let eventDetail = null;
@@ -497,28 +590,7 @@ describe("play-list test", () => {
       expect(called).to.be.true;
     });
 
-    it("should handle disconnectedCallback with existing link elements", () => {
-      // Mock proper link elements that are actually in the head
-      const link1 = document.createElement("link");
-      const link2 = document.createElement("link");
-      document.head.appendChild(link1);
-      document.head.appendChild(link2);
-
-      element._linkEls = [link1, link2];
-
-      expect(() => {
-        element.disconnectedCallback();
-      }).to.not.throw();
-
-      // Elements should be removed from head
-      expect(document.head.contains(link1)).to.be.false;
-      expect(document.head.contains(link2)).to.be.false;
-    });
-
-    it("should handle disconnectedCallback without link elements", () => {
-      // Ensure _linkEls doesn't exist
-      delete element._linkEls;
-
+    it("should handle disconnectedCallback without throwing", () => {
       expect(() => {
         element.disconnectedCallback();
       }).to.not.throw();
@@ -569,6 +641,21 @@ describe("play-list test", () => {
       await expect(element).shadowDom.to.be.accessible();
     });
 
+    it("should render play-list-slide elements", async () => {
+      const testItems = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.items = testItems;
+      await element.updateComplete;
+
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      const slides = carousel.querySelectorAll("play-list-slide");
+      expect(slides).to.have.length(2);
+      expect(slides[0].getAttribute("aria-label")).to.equal("Slide 1 of 2");
+      expect(slides[1].getAttribute("aria-label")).to.equal("Slide 2 of 2");
+    });
+
     it("should be accessible in vertical orientation", async () => {
       const testItems = [
         { tag: "div", properties: {}, content: "Item 1" },
@@ -605,7 +692,6 @@ describe("play-list test", () => {
       const styleString = styles.toString();
 
       expect(styleString).to.include(":host([edit]) .edit-wrapper");
-      expect(styleString).to.include("border: 2px dashed #999999");
       expect(styleString).to.include("Play list edit mode");
     });
 
@@ -728,7 +814,7 @@ describe("play-list test", () => {
       element.edit = false;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       editWrapper = element.shadowRoot.querySelector(".edit-wrapper");
 
       expect(carousel).to.exist;
@@ -783,10 +869,10 @@ describe("play-list test", () => {
       element.items = complexItems;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       expect(carousel).to.exist;
 
-      const carouselItems = carousel.querySelectorAll("sl-carousel-item");
+      const carouselItems = carousel.querySelectorAll("play-list-slide");
       expect(carouselItems).to.have.length(2);
     });
   });
@@ -834,10 +920,10 @@ describe("play-list test", () => {
       element.items = manyItems;
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       expect(carousel).to.exist;
 
-      const carouselItems = carousel.querySelectorAll("sl-carousel-item");
+      const carouselItems = carousel.querySelectorAll("play-list-slide");
       expect(carouselItems).to.have.length(100);
     });
   });
