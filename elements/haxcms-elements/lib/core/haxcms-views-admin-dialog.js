@@ -19,7 +19,6 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
@@ -95,6 +94,7 @@ class HAXCMSViewsAdminDialog extends DDD {
     this.__isResizing = false;
     this.__onResizeMoveBound = this._onResizePointerMove.bind(this);
     this.__onResizeEndBound = this._onResizePointerUp.bind(this);
+    this.__closeModalOnCreateNode = null;
   }
 
   connectedCallback() {
@@ -109,6 +109,13 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.__previewDebounce = null;
     }
     this._abortPreviewRequest();
+    if (this.__closeModalOnCreateNode) {
+      globalThis.removeEventListener(
+        "haxcms-create-node",
+        this.__closeModalOnCreateNode,
+      );
+      this.__closeModalOnCreateNode = null;
+    }
     super.disconnectedCallback();
   }
 
@@ -1783,22 +1790,42 @@ class HAXCMSViewsAdminDialog extends DDD {
     return `<site-view src="${src}" renderer="${this.renderer}" entity="${this.selectedEntity}"></site-view>`;
   }
 
-  _copyEmbedTag() {
-    const markup = this._embedTagMarkup();
+  _copyToClipboard(text = "") {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(markup).catch(() => {});
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          if (store && typeof store.toast === "function") {
+            store.toast("Copied to clipboard", 2000);
+          }
+        })
+        .catch(() => {});
     }
   }
 
-  _insertAtBottom() {
+  _copyQueryUrl() {
+    this._copyToClipboard(this.queryUrl);
+  }
+
+  _copyPath() {
+    const path = this.queryString ? `?${this.queryString}` : "";
+    this._copyToClipboard(path);
+  }
+
+  _embedInPage() {
     store.editMode = true;
     const haxBody = HAXStore.activeHaxBody;
     if (haxBody) {
-      haxBody.haxInsert("site-view", "", {
-        src: this.queryString ? `?${this.queryString}` : "",
-        renderer: this.renderer,
-        entity: this.selectedEntity,
-      }, null);
+      haxBody.haxInsert(
+        "site-view",
+        "",
+        {
+          src: this.queryString ? `?${this.queryString}` : "",
+          renderer: this.renderer,
+          entity: this.selectedEntity,
+        },
+        null,
+      );
     }
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
@@ -1812,31 +1839,48 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _createAsNewPage() {
     const markup = this._embedTagMarkup();
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
     const SuperDaemonInstance =
       globalThis.SuperDaemonManager &&
       globalThis.SuperDaemonManager.requestAvailability();
     if (SuperDaemonInstance) {
-      setTimeout(() => {
-        SuperDaemonInstance.runProgram(
-          null,
-          "CMS",
-          { type: "sibling", templateContent: markup },
-          "create-page",
-          "create-page",
-          "",
-          "Type page title to create page",
-        );
-        SuperDaemonInstance.open();
-      }, 0);
+      SuperDaemonInstance.mini = true;
+      SuperDaemonInstance.wand = true;
+      SuperDaemonInstance.activeNode = null;
+      SuperDaemonInstance.runProgram(
+        null,
+        "CMS",
+        { type: "sibling", templateContent: markup },
+        "create-page",
+        "create-page",
+        "",
+        "Type page title to create page",
+      );
     }
+    if (this.__closeModalOnCreateNode) {
+      globalThis.removeEventListener(
+        "haxcms-create-node",
+        this.__closeModalOnCreateNode,
+      );
+    }
+    this.__closeModalOnCreateNode = () => {
+      globalThis.removeEventListener(
+        "haxcms-create-node",
+        this.__closeModalOnCreateNode,
+      );
+      this.__closeModalOnCreateNode = null;
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    };
+    globalThis.addEventListener(
+      "haxcms-create-node",
+      this.__closeModalOnCreateNode,
+    );
   }
 
   render() {
@@ -1987,34 +2031,32 @@ class HAXCMSViewsAdminDialog extends DDD {
                     <summary>Query / data feed</summary>
                     <div class="query-copy-row">
                       <span class="note">Method: GET</span>
-                      <simple-clipboard-copy-button
+                      <simple-icon-button-lite
                         icon="icons:content-copy"
-                        label="Copy URL"
-                        data-cp="${this.queryUrl}"
-                        success-message="Query URL copied"
-                      ></simple-clipboard-copy-button>
+                        title="Copy URL"
+                        @click="${this._copyQueryUrl}"
+                      ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="icons:refresh"
-                        label="Refresh preview"
+                        title="Refresh preview"
                         @click="${this._refreshPreviewTap}"
                       ></simple-icon-button-lite>
                     </div>
                     <code class="query-code">${this.queryUrl}</code>
                     <div class="query-actions" style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
-                      <simple-clipboard-copy-button
-                        icon="hax:embed"
-                        label="Copy embed tag"
-                        data-cp="${this._embedTagMarkup()}"
-                        success-message="Embed tag copied"
-                      ></simple-clipboard-copy-button>
                       <simple-icon-button-lite
-                        icon="icons:content-paste"
-                        label="Insert at bottom"
-                        @click="${this._insertAtBottom}"
+                        icon="hax:embed"
+                        title="Embed in page"
+                        @click="${this._embedInPage}"
+                      ></simple-icon-button-lite>
+                      <simple-icon-button-lite
+                        icon="icons:content-copy"
+                        title="Copy path to clipboard"
+                        @click="${this._copyPath}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:add"
-                        label="Create as new page"
+                        title="Create as new page"
                         @click="${this._createAsNewPage}"
                       ></simple-icon-button-lite>
                     </div>
