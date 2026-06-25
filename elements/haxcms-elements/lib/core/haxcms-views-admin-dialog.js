@@ -1814,19 +1814,6 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _embedInPage() {
     store.editMode = true;
-    const haxBody = HAXStore.activeHaxBody;
-    if (haxBody) {
-      haxBody.haxInsert(
-        "site-view",
-        "",
-        {
-          src: this.queryString ? `?${this.queryString}` : "",
-          renderer: this.renderer,
-          entity: this.selectedEntity,
-        },
-        null,
-      );
-    }
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -1835,6 +1822,21 @@ class HAXCMSViewsAdminDialog extends DDD {
         detail: {},
       }),
     );
+    setTimeout(() => {
+      const haxBody = HAXStore.activeHaxBody;
+      if (haxBody) {
+        haxBody.haxInsert(
+          "site-view",
+          "",
+          {
+            src: this.queryString ? `?${this.queryString}` : "",
+            renderer: this.renderer,
+            entity: this.selectedEntity,
+          },
+          null,
+        );
+      }
+    }, 300);
   }
 
   _createAsNewPage() {
@@ -1843,17 +1845,18 @@ class HAXCMSViewsAdminDialog extends DDD {
       globalThis.SuperDaemonManager &&
       globalThis.SuperDaemonManager.requestAvailability();
     if (SuperDaemonInstance) {
-      SuperDaemonInstance.mini = true;
-      SuperDaemonInstance.wand = true;
-      SuperDaemonInstance.activeNode = null;
-      SuperDaemonInstance.runProgram(
+      SuperDaemonInstance.waveWand(
+        [
+          null,
+          "CMS",
+          { type: "sibling", templateContent: markup },
+          "create-page",
+          "create-page",
+          "",
+          "Type page title to create page",
+        ],
         null,
-        "CMS",
-        { type: "sibling", templateContent: markup },
-        "create-page",
-        "create-page",
-        "",
-        "Type page title to create page",
+        null,
       );
     }
     if (this.__closeModalOnCreateNode) {

@@ -76,6 +76,19 @@ export class HaxRouter {
 
     if (url.origin !== origin) return;
 
+    // Let the browser handle navigation to URLs outside this router's base scope
+    if (this.baseUrl && this.baseUrl !== "/" && this.baseUrl !== "") {
+      let basePath = this.baseUrl;
+      if (basePath.includes("://")) {
+        try {
+          basePath = new URL(basePath, globalThis.location.href).pathname;
+        } catch (e) {}
+      }
+      if (!url.pathname.startsWith(basePath)) {
+        return;
+      }
+    }
+
     // If this is just a fragment on the current page, let the browser handle it
     if (url.pathname === globalThis.location.pathname && url.hash) return;
 
