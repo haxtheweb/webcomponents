@@ -125,7 +125,7 @@ class HAXCMSSiteRouter extends HTMLElement {
     return false;
   }
   /**
-   * React to page changes in the vaadin router and convert it
+   * React to page changes in the router and convert it
    * to a change in the mobx store.
    * @param {event} e
    */

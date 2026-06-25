@@ -21,6 +21,8 @@ import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
 import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/image-gallery/image-gallery.js";
+import "@haxtheweb/media-playlist/media-playlist.js";
 
 export const mediaKeys = [
   "audio",

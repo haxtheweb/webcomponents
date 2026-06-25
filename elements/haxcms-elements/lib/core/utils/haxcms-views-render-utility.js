@@ -789,12 +789,12 @@ export const renderBulletedListPreview = (records, options = {}) => {
   return html`
     <ul class="result-list">
       ${records.map((record) => {
-        const recordUrl = recordUrl(record, options);
+        const url = recordUrl(record, options);
         return html`
           <li class="result-list-item">
             <h4 class="result-title">
-              ${recordUrl
-                ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+              ${url
+                ? html`<a href="${url}" target="_blank" rel="noopener"
                     >${recordTitle(record)}</a
                   >`
                 : recordTitle(record)}
@@ -814,12 +814,12 @@ export const renderContentPreview = (records, options = {}) => {
   return html`
     <div class="content-records">
       ${records.map((record) => {
-        const recordUrl = recordUrl(record, options);
+        const url = recordUrl(record, options);
         return html`
           <article class="content-record">
             <h3 class="content-record-title">
-              ${recordUrl
-                ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+              ${url
+                ? html`<a href="${url}" target="_blank" rel="noopener"
                     >${recordTitle(record)}</a
                   >`
                 : recordTitle(record)}
@@ -891,11 +891,11 @@ export const renderCarouselPreview = (records, options = {}) => {
       <div class="media-gallery">
         ${records.map((record) => {
           const image = recordImage(record, options);
-          const recordUrl = recordUrl(record, options);
+          const url = recordUrl(record, options);
           return html`
             <div class="media-gallery-item">
-              ${recordUrl
-                ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+              ${url
+                ? html`<a href="${url}" target="_blank" rel="noopener"
                     ><img
                       src="${image}"
                       alt="${recordTitle(record)} preview"
@@ -930,7 +930,7 @@ export const renderCarouselPreview = (records, options = {}) => {
               ></video-player>
             `;
           }
-          const recordUrl = recordUrl(record, options);
+          const url = recordUrl(record, options);
           const image = recordImage(record, options);
           const elementPreview = renderRecordElementPreview(record);
           if (image) {
@@ -944,9 +944,9 @@ export const renderCarouselPreview = (records, options = {}) => {
                   decoding="async"
                 />
                 <figcaption>
-                  ${recordUrl
+                  ${url
                     ? html`<a
-                        href="${recordUrl}"
+                        href="${url}"
                         target="_blank"
                         rel="noopener"
                         >${recordTitle(record)}</a
@@ -964,8 +964,8 @@ export const renderCarouselPreview = (records, options = {}) => {
               <div slot="heading">${recordTitle(record)}</div>
               <div slot="content">
                 ${renderRecordBody(record, 300)}
-                ${recordUrl
-                  ? html`<a href="${recordUrl}" target="_blank" rel="noopener"
+                ${url
+                  ? html`<a href="${url}" target="_blank" rel="noopener"
                       >Open record</a
                     >`
                   : html``}
@@ -1099,6 +1099,50 @@ export const renderTreePreview = (records, options = {}) => {
   `;
 };
 
+export const renderImageGalleryPreview = (records, options = {}) => {
+  if (!Array.isArray(records)) {
+    return html``;
+  }
+  const imageRecords = records.filter((record) => {
+    return !!recordImage(record, options);
+  });
+  if (imageRecords.length < 1) {
+    return html`<p class="empty-preview">No image records available for gallery rendering.</p>`;
+  }
+  return html`
+    <image-gallery mode="masonry">
+      ${imageRecords.map((record) => {
+        const image = recordImage(record, options);
+        return html`<img src="${image}" alt="${recordTitle(record)} preview" loading="lazy" decoding="async" />`;
+      })}
+    </image-gallery>
+  `;
+};
+
+export const renderMediaPlaylistPreview = (records, options = {}) => {
+  if (!Array.isArray(records)) {
+    return html``;
+  }
+  const mediaRecords = records.filter((record) => {
+    return !!videoSource(record, options) || !!recordImage(record, options);
+  });
+  if (mediaRecords.length < 1) {
+    return html`<p class="empty-preview">No media records available for playlist rendering.</p>`;
+  }
+  return html`
+    <media-playlist>
+      ${mediaRecords.map((record) => {
+        const vSource = videoSource(record, options);
+        if (vSource) {
+          return html`<video-player source="${vSource}" media-title="${recordTitle(record)}"></video-player>`;
+        }
+        const image = recordImage(record, options);
+        return html`<img src="${image}" alt="${recordTitle(record)} preview" loading="lazy" decoding="async" />`;
+      })}
+    </media-playlist>
+  `;
+};
+
 export const renderPreview = (records, renderer, options = {}) => {
   if (!Array.isArray(records)) {
     return html``;
@@ -1116,6 +1160,10 @@ export const renderPreview = (records, renderer, options = {}) => {
       return renderGridPreview(records, options);
     case "carousel":
       return renderCarouselPreview(records, options);
+    case "image-gallery":
+      return renderImageGalleryPreview(records, options);
+    case "media-playlist":
+      return renderMediaPlaylistPreview(records, options);
     case "list":
       return renderBulletedListPreview(records, options);
     case "content":
@@ -1141,6 +1189,8 @@ export const RENDERER_OPTIONS = [
   { value: "table", text: "Table" },
   { value: "grid", text: "Grid" },
   { value: "carousel", text: "Carousel" },
+  { value: "image-gallery", text: "Image Gallery" },
+  { value: "media-playlist", text: "Media Playlist" },
   { value: "list", text: "List" },
   { value: "content", text: "Content" },
   { value: "accordion", text: "Accordion" },

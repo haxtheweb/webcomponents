@@ -129,7 +129,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
           --a11y-tabs-tab-height: 60vh;
           --primary-color: var(--haxcms-color, #000000);
           --paper-input-container-focus-color: var(--haxcms-color, #000000);
-          --lumo-primary-text-color: var(--haxcms-color, #000000);
           --a11y-tabs-color: var(--haxcms-color, #000000);
           --a11y-tabs-focus-color: var(--haxcms-color, #000000);
           color: var(--hax-ui-color);

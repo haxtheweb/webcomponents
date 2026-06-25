@@ -7,7 +7,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `simple-file-upload`
- * `Accessible, DDD-styled file upload with XHR, drag-and-drop, and feature parity with vaadin-upload.`
+ * `Accessible, DDD-styled file upload with XHR, drag-and-drop, and feature parity.`
  *
  * @customElement
  * @element simple-file-upload

@@ -120,7 +120,6 @@ Before starting any work, check the unified issue queue:
 - **NO TypeScript**: HAX strictly avoids TypeScript to eliminate compilation requirements
 - **Unbundled Approach**: Components ship as native JS/HTML/CSS for maximum compatibility
 - **Third-party Libraries**: When using libraries written in TypeScript, always import the pre-compiled JavaScript distribution
-- **External Dependencies**: Leverage libraries like `vaadin-upload`, `shoelace-carousel`, etc. but always use their JS builds
 
 ### JavaScript Standards
 - **Global References**: Use `globalThis` instead of `window` for consistency across environments
@@ -416,8 +415,6 @@ lerna add package-name --scope=@haxtheweb/component-name
 - **CLI is pre-installed** - use directly without verification
 
 ### External Library Integration
-- **Vaadin Components**: Import from `@vaadin/[component]/[component].js`
-- **Shoelace Components**: Import from `@shoelace-style/shoelace/dist/components/[component]/[component].js`
 - **Other Libraries**: Always use the `/dist/` or compiled JavaScript version
 - **Open APIs**: Leverage https://open-apis.hax.cloud/ for conversion, analysis, and processing services
 - **Avoid**: Direct TypeScript imports or source files requiring compilation

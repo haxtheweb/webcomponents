@@ -33,6 +33,8 @@ import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
 import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
 import "@haxtheweb/map-menu/map-menu.js";
+import "@haxtheweb/image-gallery/image-gallery.js";
+import "@haxtheweb/media-playlist/media-playlist.js";
 
 class HAXCMSViewsAdminDialog extends DDD {
   static get tag() {
@@ -1903,7 +1905,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                         ></simple-fields-field>
                         <simple-fields-field
                           type="select"
-                          label="Output renderer"
+                          label="Display as"
                           .itemsList="${rendererOptions}"
                           .value="${selectedRenderer}"
                           @value-changed="${this._onRendererChanged}"

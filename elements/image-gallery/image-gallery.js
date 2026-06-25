@@ -586,13 +586,23 @@ export class ImageGallery extends I18NMixin(DDD) {
     if (!this._haxState) return;
     const store = this._getHaxStore();
     if (!store || !store.__dragTarget) return;
-    const tag = store.__dragTarget.tagName;
+    const target = store.__dragTarget;
+    const tag = target.tagName;
     if (tag !== "MEDIA-IMAGE" && tag !== "IMG") {
       e.stopPropagation();
       e.stopImmediatePropagation();
       e.preventDefault();
       store.__dragTarget = null;
+      return;
     }
+    // Accept image drops by moving them into this gallery's light DOM
+    if (!this.contains(target)) {
+      this.appendChild(target);
+    }
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    store.__dragTarget = null;
   }
 
   async _handleDblClick(index) {
@@ -714,7 +724,7 @@ export class ImageGallery extends I18NMixin(DDD) {
 
   haxAddImage(e) {
     const img = globalThis.document.createElement("media-image");
-    img.setAttribute("source", "");
+    img.setAttribute("source", "https://dummyimage.com/300x200/000/fff");
     img.setAttribute("alt", "New image");
     this.appendChild(img);
     return true;

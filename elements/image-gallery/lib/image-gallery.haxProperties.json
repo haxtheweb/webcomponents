@@ -58,7 +58,7 @@
     {
       "tag": "image-gallery",
       "properties": {
-        "mode": "grid"
+        "mode": "masonry"
       },
       "content": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" alt=\"Sample image 1\"></media-image><media-image source=\"https://dummyimage.com/300x300/111/eee\" alt=\"Sample image 2\"></media-image><media-image source=\"https://dummyimage.com/400x200/222/ddd\" alt=\"Sample image 3\"></media-image>"
     }

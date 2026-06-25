@@ -246,6 +246,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         app-hax-top-bar.drag-over {
           outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color);
           outline-offset: -2px;
+          transition-delay: 0s;
+          transition-duration: 0.15s;
         }
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -3365,7 +3367,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * outside of Merlin, forward it to the Merlin upload pipeline.
    */
   topBarDropEvent(e) {
-    if (!this.editMode) return;
+    e.preventDefault();
+    if (this.editMode) {
+      return;
+    }
     // If the drop originated from the Merlin search box, let it handle it
     if (e.target && e.target.closest && e.target.closest("#search")) {
       return;
@@ -3374,23 +3379,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     e.stopPropagation();
   }
   topBarDragEnterEvent(e) {
-    if (!this.editMode) return;
     e.preventDefault();
-    const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
-    if (topBar) topBar.classList.add("drag-over");
-    if (this.sdSearch) {
-      this.sdSearch.dragover = true;
+    if (!this.editMode) {
+      const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
+      if (topBar) topBar.classList.add("drag-over");
+      if (this.sdSearch) {
+        this.sdSearch.dragover = true;
+      }
     }
   }
   topBarDragOverEvent(e) {
-    if (!this.editMode) return;
     e.preventDefault();
-    if (this.sdSearch) {
+    if (!this.editMode && this.sdSearch) {
       this.sdSearch.dragover = true;
     }
   }
   topBarDragLeaveEvent(e) {
-    if (!this.editMode) return;
     e.preventDefault();
     const topBar = this.shadowRoot.querySelector("app-hax-top-bar");
     if (topBar) topBar.classList.remove("drag-over");

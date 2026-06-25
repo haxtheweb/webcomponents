@@ -42,7 +42,7 @@ describe("ImageGallery test", () => {
     it("should have correct default values", () => {
       expect(element.images).to.deep.equal([]);
       expect(element.edit).to.be.false;
-      expect(element.mode).to.equal("grid");
+      expect(element.mode).to.equal("masonry");
       expect(element.activeIndex).to.equal(0);
     });
 
@@ -589,7 +589,9 @@ describe("ImageGallery test", () => {
       expect(result).to.be.true;
       expect(element.children).to.have.length(1);
       expect(element.children[0].tagName).to.equal("MEDIA-IMAGE");
-      expect(element.children[0].getAttribute("source")).to.equal("");
+      expect(element.children[0].getAttribute("source")).to.equal(
+        "https://dummyimage.com/300x200/000/fff",
+      );
       expect(element.children[0].getAttribute("alt")).to.equal("New image");
     });
 
@@ -669,7 +671,7 @@ describe("ImageGallery test", () => {
       delete globalThis.HaxStore;
     });
 
-    it("should allow internal img drops", () => {
+    it("should accept and move internal img drops into the gallery", () => {
       const store = { __dragTarget: document.createElement("img") };
       globalThis.HaxStore = { requestAvailability: () => store };
       element._haxState = true;
@@ -685,12 +687,13 @@ describe("ImageGallery test", () => {
       event.preventDefault = () => {};
 
       element._onDrop(event);
-      expect(stopped).to.be.false;
-      expect(store.__dragTarget).to.not.be.null;
+      expect(stopped).to.be.true;
+      expect(store.__dragTarget).to.be.null;
+      expect(element.contains(store.__dragTarget)).to.be.false;
       delete globalThis.HaxStore;
     });
 
-    it("should allow internal media-image drops", () => {
+    it("should accept and move internal media-image drops into the gallery", () => {
       const store = { __dragTarget: document.createElement("media-image") };
       globalThis.HaxStore = { requestAvailability: () => store };
       element._haxState = true;
@@ -706,8 +709,9 @@ describe("ImageGallery test", () => {
       event.preventDefault = () => {};
 
       element._onDrop(event);
-      expect(stopped).to.be.false;
-      expect(store.__dragTarget).to.not.be.null;
+      expect(stopped).to.be.true;
+      expect(store.__dragTarget).to.be.null;
+      expect(element.contains(store.__dragTarget)).to.be.false;
       delete globalThis.HaxStore;
     });
 

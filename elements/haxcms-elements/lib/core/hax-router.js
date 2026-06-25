@@ -1,6 +1,6 @@
 /**
  * `hax-router`
- * Lightweight router replacement for @vaadin/router.
+ * Lightweight router replacement for router
  * Implements only the API surface used by HAXcms and app-hax.
  */
 export class HaxRouter {
@@ -22,7 +22,7 @@ export class HaxRouter {
   }
 
   /**
-   * Match Vaadin Router default: derive baseUrl from <base href> if present
+   * Match Router default: derive baseUrl from <base href> if present
    */
   _getDefaultBaseUrl() {
     if (globalThis.document && globalThis.document.head) {

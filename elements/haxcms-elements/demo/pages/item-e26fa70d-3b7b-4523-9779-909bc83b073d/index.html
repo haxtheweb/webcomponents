@@ -8,37 +8,6 @@
 "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
 "another-tag": {
   "import": "some-other-location/bare-import-name/whatever.js"
-},
-"vaadin-upload": {
-    "import": "@vaadin/vaadin-upload/vaadin-upload.js",
-    "haxProperties": {
-      "canScale": false,
-      "canPosition": false,
-      "canEditSource": true,
-      "gizmo": {
-        "title": "Vaadin upload button",
-        "icon": "upload",
-        "color": "orange",
-        "groups": ["upload", "community"],
-        "meta": {
-          "author": "Vaadin Elements"
-        }
-      },
-      "settings": {
-        "configure": [
-          {
-            "property": "label",
-            "title": "Label",
-            "description": "Label for the upload button",
-            "inputMethod": "textfield"
-          }
-        ]
-      },
-      "saveOptions": {
-        "wipeSlot": true
-      }
-    }
-  }
 }</template></code-sample>
 <h4 id="header-c15818dc-abac-d30d-8286-17f08032bc91">Definition from file</h4>
 <p>The most common method of import is simply <strong>"tag-name": "location-of-tag.js"</strong> . You'll see this for importing anything that's been published <i>WITH</i> &#160; <strong>static get haxProperties</strong> . You can also use this to add your own published / built elements that have their own haxProperties.</p>
