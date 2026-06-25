@@ -234,7 +234,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"grid\"",
+              "default": "\"masonry\"",
               "attribute": "mode",
               "reflects": true
             },
@@ -286,7 +286,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"grid\"",
+              "default": "\"masonry\"",
               "fieldName": "mode"
             },
             {

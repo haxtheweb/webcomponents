@@ -22,7 +22,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     super();
     this.edit = false;
     this.activeIndex = 0;
-    this.mode = "grid";
+    this.mode = "masonry";
     this.images = [];
     this._haxState = false;
     this.t = this.t || {};

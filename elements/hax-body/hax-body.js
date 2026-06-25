@@ -5191,6 +5191,55 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               local = local.parentElement;
             }
 
+            // Auto-create image gallery when dragging an image onto another image
+            if (
+              HAXStore._isImageElement(target) &&
+              HAXStore._isImageElement(local)
+            ) {
+              const imageGallerySchema =
+                HAXStore.haxSchemaFromTag("image-gallery");
+              if (imageGallerySchema && imageGallerySchema.gizmo) {
+                const gallery =
+                  globalThis.document.createElement("image-gallery");
+                gallery.mode = "masonry";
+                if (local.getAttribute("slot")) {
+                  gallery.setAttribute("slot", local.getAttribute("slot"));
+                } else if (eventPath[0].classList.contains("column")) {
+                  gallery.setAttribute(
+                    "slot",
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
+                  );
+                } else {
+                  gallery.removeAttribute("slot");
+                }
+                const parent = local.parentNode;
+                const nextSibling = local.nextElementSibling;
+                gallery.appendChild(local);
+                gallery.appendChild(target);
+                if (nextSibling) {
+                  parent.insertBefore(gallery, nextSibling);
+                } else {
+                  parent.appendChild(gallery);
+                }
+                HAXStore.activeNode = gallery;
+                this.dispatchEvent(
+                  new CustomEvent("hax-drop-focus-event", {
+                    bubbles: true,
+                    cancelable: true,
+                    composed: true,
+                    detail: gallery,
+                  }),
+                );
+                this.scrollHere(gallery);
+                this.positionContextMenus();
+                e.preventDefault();
+                e.stopPropagation();
+                HAXStore.__dragTarget = null;
+                this.__manageFakeEndCap(false);
+                return;
+              }
+            }
+
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (

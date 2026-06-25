@@ -261,11 +261,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         return true;
       }
 
-      // Check if dropping on an image - prompt via Merlin if image-gallery is allowed
+      // Check if dropping on an image - auto-create image-gallery if enabled
       if (this._isImageElement(this.activePlaceHolder)) {
         const imageGallerySchema = this.haxSchemaFromTag("image-gallery");
         if (imageGallerySchema && imageGallerySchema.gizmo) {
-          this._promptImageDropChoice(values, context, this.activePlaceHolder);
+          this._createImageGallery(this.activePlaceHolder, values.source);
           return true;
         }
         // If image-gallery is not allowed, fall through to normal image insertion
@@ -408,85 +408,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
 
     return false;
-  }
-
-  /**
-   * Prompt user via Merlin / SuperDaemon to choose between uploading as separate image or creating an image gallery
-   */
-  _promptImageDropChoice(values, context, originalImageElement) {
-    this.__pendingImageDrop = { values, context, originalImageElement };
-    SuperDaemonInstance.waveWand(
-      [
-        "",
-        "*",
-        {},
-        async (input, values) => {
-          return [
-            {
-              title: "Upload as separate image",
-              icon: "image:image",
-              tags: ["image", "upload", "separate"],
-              value: {
-                target: this,
-                method: "_insertImageAsSeparateFromPending",
-                args: [],
-              },
-              eventName: "super-daemon-element-method",
-              path: "/image-drop/separate",
-            },
-            {
-              title: "Create image gallery",
-              icon: "image:photo-library",
-              tags: ["image", "gallery", "create"],
-              value: {
-                target: this,
-                method: "_createImageGalleryFromPending",
-                args: [],
-              },
-              eventName: "super-daemon-element-method",
-              path: "/image-drop/gallery",
-            },
-          ];
-        },
-        "image-drop-choice",
-        "",
-        "Image dropped: what would you like to do?",
-      ],
-      originalImageElement,
-      "click",
-    );
-  }
-
-  /**
-   * Insert the pending image as a separate image element
-   */
-  _insertImageAsSeparateFromPending() {
-    if (this.__pendingImageDrop) {
-      const { values, context } = this.__pendingImageDrop;
-      this.__pendingImageDrop = null;
-      let haxElements = this.guessGizmo("image", values, false, true);
-      if (haxElements.length > 0) {
-        context.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: haxElements[0],
-          }),
-        );
-      }
-    }
-  }
-
-  /**
-   * Create an image gallery from the pending image drop
-   */
-  _createImageGalleryFromPending() {
-    if (this.__pendingImageDrop) {
-      const { values, originalImageElement } = this.__pendingImageDrop;
-      this.__pendingImageDrop = null;
-      this._createImageGallery(originalImageElement, values.source);
-    }
   }
 
   /**

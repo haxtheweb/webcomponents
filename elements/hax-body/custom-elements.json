@@ -5546,32 +5546,6 @@
             },
             {
               "kind": "method",
-              "name": "_promptImageDropChoice",
-              "parameters": [
-                {
-                  "name": "values"
-                },
-                {
-                  "name": "context"
-                },
-                {
-                  "name": "originalImageElement"
-                }
-              ],
-              "description": "Prompt user via Merlin / SuperDaemon to choose between uploading as separate image or creating an image gallery"
-            },
-            {
-              "kind": "method",
-              "name": "_insertImageAsSeparateFromPending",
-              "description": "Insert the pending image as a separate image element"
-            },
-            {
-              "kind": "method",
-              "name": "_createImageGalleryFromPending",
-              "description": "Create an image gallery from the pending image drop"
-            },
-            {
-              "kind": "method",
               "name": "_createImageGallery",
               "parameters": [
                 {
