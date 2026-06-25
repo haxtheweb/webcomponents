@@ -435,7 +435,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // If original is media-image, create matching element
       newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = "Image from gallery";
+      newImage.alt = "";
 
       // Copy relevant properties from original for consistency
       ["card", "box", "round", "size", "offset"].forEach((prop) => {
@@ -450,7 +450,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // For other image types, create a media-image
       newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = "Image from gallery";
+      newImage.alt = "";
     }
 
     // Add both images to the gallery
@@ -491,7 +491,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // Create the new image element
     const newImage = globalThis.document.createElement("media-image");
     newImage.source = imageSource;
-    newImage.alt = "Added to gallery";
+    newImage.alt = "";
 
     // Check if there are existing images in the play-list to copy properties from
     const existingImages = playListElement.querySelectorAll("media-image");
@@ -536,7 +536,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // Create the new image element
     const newImage = globalThis.document.createElement("media-image");
     newImage.source = imageSource;
-    newImage.alt = "Added to gallery";
+    newImage.alt = "";
 
     // Check if there are existing images in the gallery to copy properties from
     const existingImages = galleryElement.querySelectorAll("media-image");
@@ -590,7 +590,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // Create the image element
     const image = globalThis.document.createElement("media-image");
     image.source = imageSource;
-    image.alt = "Gallery image";
+    image.alt = "";
 
     // Add the image to the play-list
     playList.appendChild(image);

@@ -90,9 +90,17 @@ export class HaxRouter {
    */
   _getCleanPathname() {
     let pathname = globalThis.location.pathname;
-    if (this.baseUrl && this.baseUrl !== "/") {
-      if (pathname.startsWith(this.baseUrl)) {
-        pathname = pathname.slice(this.baseUrl.length);
+    let baseUrl = this.baseUrl;
+    if (baseUrl && baseUrl.includes('://')) {
+      try {
+        baseUrl = new URL(baseUrl, globalThis.location.href).pathname;
+      } catch (e) {
+        // baseUrl is not a valid URL, keep original
+      }
+    }
+    if (baseUrl && baseUrl !== "/") {
+      if (pathname.startsWith(baseUrl)) {
+        pathname = pathname.slice(baseUrl.length);
         if (!pathname.startsWith("/")) {
           pathname = "/" + pathname;
         }

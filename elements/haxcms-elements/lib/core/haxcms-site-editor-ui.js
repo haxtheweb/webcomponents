@@ -32,6 +32,7 @@ import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
+import { SiteView } from "../ui-components/magic/site-view.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -3771,6 +3772,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-method",
       path: "CMS/admin/views",
     });
+    if (store.platformAllows("views")) {
+      const evt = new CustomEvent("hax-register-properties", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          tag: "site-view",
+          properties: SiteView.haxProperties,
+        },
+      });
+      this.dispatchEvent(evt);
+    }
     if (store.platformAllows("siteManifest")) {
       SuperDaemonInstance.defineOption({
         title: "Admin - Details",

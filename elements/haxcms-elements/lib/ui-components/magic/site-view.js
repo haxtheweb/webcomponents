@@ -95,9 +95,6 @@ export class SiteView extends DDD {
           gap: var(--ddd-spacing-2);
           margin-top: var(--ddd-spacing-2);
         }
-        script[data-site-view-cache] {
-          display: none;
-        }
       `,
     ];
   }
@@ -137,7 +134,11 @@ export class SiteView extends DDD {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this._loadFromCache();
+    if (this.children.length > 0) {
+      while (this.firstChild) {
+        this.removeChild(this.firstChild);
+      }
+    }
     this._fetchData();
   }
 
@@ -149,51 +150,9 @@ export class SiteView extends DDD {
       if (["src", "renderer", "entity"].includes(propName)) {
         this._fetchData();
       }
-      if (propName === "results" && this.results) {
-        this._updateCache();
-      }
       if (propName === "breakSiteView" && this.breakSiteView) {
         this._breakSiteView();
       }
-    });
-  }
-
-  _loadFromCache() {
-    const script = this.querySelector("script[data-site-view-cache]");
-    if (script && script.textContent) {
-      try {
-        const cache = JSON.parse(script.textContent);
-        if (cache.records && Array.isArray(cache.records)) {
-          this.results = cache.records;
-        }
-        if (cache.renderer) {
-          this.renderer = cache.renderer;
-        }
-        if (cache.entity) {
-          this.entity = cache.entity;
-        }
-        return true;
-      } catch (e) {}
-    }
-    return false;
-  }
-
-  _updateCache() {
-    if (!this.results || this.results.length < 1) {
-      return;
-    }
-    let script = this.querySelector("script[data-site-view-cache]");
-    if (!script) {
-      script = globalThis.document.createElement("script");
-      script.setAttribute("type", "application/json");
-      script.setAttribute("data-site-view-cache", "");
-      this.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
-      records: this.results,
-      renderer: this.renderer,
-      entity: this.entity,
-      src: this.src,
     });
   }
 
@@ -298,7 +257,6 @@ export class SiteView extends DDD {
       ${renderPreview(this.results, this.renderer, {
         selectedEntity: this.entity,
       })}
-      <slot></slot>
     `;
   }
 
@@ -331,6 +289,7 @@ export class SiteView extends DDD {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
       inlineContextMenu: "haxinlineContextMenu",
+      preProcessNodeToContent: "haxPreProcessNodeToContent",
     };
   }
 
@@ -342,6 +301,26 @@ export class SiteView extends DDD {
     if (value) {
       this.editMode = value;
     }
+  }
+
+  haxPreProcessNodeToContent(node) {
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    }
+    if (this.shadowRoot) {
+      Array.from(this.shadowRoot.children).forEach((child) => {
+        const className = child.className || "";
+        if (
+          className.includes("loading") ||
+          className.includes("empty") ||
+          className.includes("error")
+        ) {
+          return;
+        }
+        node.appendChild(child.cloneNode(true));
+      });
+    }
+    return node;
   }
 
   haxinlineContextMenu(ceMenu) {

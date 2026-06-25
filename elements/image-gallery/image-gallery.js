@@ -26,7 +26,6 @@ export class ImageGallery extends I18NMixin(DDD) {
     this.images = [];
     this._haxState = false;
     this._newImageElement = null;
-    this._newImageTransitionName = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -316,6 +315,21 @@ export class ImageGallery extends I18NMixin(DDD) {
           display: none;
         }
 
+        .new-image {
+          animation: gallery-item-enter 600ms var(--ddd-timing-ease) forwards;
+        }
+
+        @keyframes gallery-item-enter {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
           .grid-item img,
@@ -325,6 +339,9 @@ export class ImageGallery extends I18NMixin(DDD) {
           .gallery-nav-wrap,
           .gallery-thumbnail {
             transition: none;
+          }
+          .new-image {
+            animation: none;
           }
         }
 
@@ -368,8 +385,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="grid-item"
-              style="${image.element === this._newImageElement ? `view-transition-name: ${this._newImageTransitionName};` : ""}"
+              class="grid-item ${image.element === this._newImageElement ? 'new-image' : ''}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -395,8 +411,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="masonry-item"
-              style="${image.element === this._newImageElement ? `view-transition-name: ${this._newImageTransitionName};` : ""}"
+              class="masonry-item ${image.element === this._newImageElement ? 'new-image' : ''}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -457,8 +472,7 @@ export class ImageGallery extends I18NMixin(DDD) {
               <button
                 class="gallery-thumbnail ${index === this.activeIndex
                   ? "active"
-                  : ""}"
-                style="${image.element === this._newImageElement ? `view-transition-name: ${this._newImageTransitionName};` : ""}"
+                  : ""} ${image.element === this._newImageElement ? 'new-image' : ''}"
                 role="tab"
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${image.alt || ""}"
@@ -602,38 +616,12 @@ export class ImageGallery extends I18NMixin(DDD) {
     }
     if (!this.contains(target)) {
       this._newImageElement = target;
-      this._newImageTransitionName = `gallery-drop-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      const doAppend = () => {
-        this.appendChild(target);
-        this._updateImages();
-      };
-      const prefersReducedMotion =
-        globalThis.matchMedia &&
-        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (
-        !prefersReducedMotion &&
-        globalThis.document &&
-        globalThis.document.startViewTransition
-      ) {
-        const transition = globalThis.document.startViewTransition(() => {
-          doAppend();
-        });
-        transition.finished
-          .then(() => {
-            this._newImageElement = null;
-            this._newImageTransitionName = null;
-            this.requestUpdate();
-          })
-          .catch(() => {
-            this._newImageElement = null;
-            this._newImageTransitionName = null;
-            this.requestUpdate();
-          });
-      } else {
-        doAppend();
+      this.appendChild(target);
+      this._updateImages();
+      clearTimeout(this._newImageTimeout);
+      this._newImageTimeout = setTimeout(() => {
         this._newImageElement = null;
-        this._newImageTransitionName = null;
-      }
+      }, 600);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
@@ -761,8 +749,13 @@ export class ImageGallery extends I18NMixin(DDD) {
   haxAddImage(e) {
     const img = globalThis.document.createElement("media-image");
     img.setAttribute("source", "https://dummyimage.com/300x200/000/fff");
-    img.setAttribute("alt", "New image");
+    img.setAttribute("alt", "");
+    this._newImageElement = img;
     this.appendChild(img);
+    clearTimeout(this._newImageTimeout);
+    this._newImageTimeout = setTimeout(() => {
+      this._newImageElement = null;
+    }, 600);
     return true;
   }
 
