@@ -2448,6 +2448,10 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
         ]),
         media = this.media ? this.media : this.__loadedTracks;
 
+      if (change(["source", "sources"])) {
+        this._updateMediaSource();
+      }
+
       if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
 
@@ -2962,6 +2966,26 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     primary.seek = (time) => (primary.currentTime = time);
     this._addSourcesAndTracks(primary, primary);
     return primary;
+  }
+
+  _updateMediaSource() {
+    if (!this.__loadedTracks) return;
+    const media = this.__loadedTracks;
+
+    // Clear existing src and child sources
+    media.removeAttribute("src");
+    media.querySelectorAll("source").forEach((node) => node.remove());
+
+    // Re-add sources from sources array
+    if (this.sources && Array.isArray(this.sources)) {
+      this.sources.forEach((source) => {
+        let node = globalThis.document.createElement("source");
+        Object.keys(source).forEach((key) => node.setAttribute(key, source[key]));
+        media.appendChild(node);
+      });
+    }
+
+    media.load();
   }
 
   /**

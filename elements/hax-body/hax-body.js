@@ -5316,7 +5316,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             if (
               HAXStore._isMediaElement(target) &&
               (HAXStore._isMediaElement(local) ||
-                local.tagName === "MEDIA-PLAYLIST")
+                local.tagName === "MEDIA-PLAYLIST" ||
+                eventPath.some((el) => el.tagName === "MEDIA-PLAYLIST"))
             ) {
               const mediaPlaylistSchema =
                 HAXStore.haxSchemaFromTag("media-playlist");
