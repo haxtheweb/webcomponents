@@ -2972,6 +2972,23 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     if (!this.__loadedTracks) return;
     const media = this.__loadedTracks;
 
+    // Build the desired list of source srcs from the sources array.
+    // video-player.sourceProperties returns a fresh array reference on every
+    // render, which makes Lit fire `updated` for `sources` even when the
+    // actual sources have not changed. Without this guard we would call
+    // media.load() on every render and constantly reset playback.
+    const desiredSrcs = (this.sources && Array.isArray(this.sources))
+      ? this.sources.map((s) => s.src || "")
+      : [];
+    const currentSrcs = Array.from(
+      media.querySelectorAll("source"),
+    ).map((s) => s.getAttribute("src") || "");
+
+    const same =
+      desiredSrcs.length === currentSrcs.length &&
+      desiredSrcs.every((s, i) => s === currentSrcs[i]);
+    if (same) return;
+
     // Clear existing src and child sources
     media.removeAttribute("src");
     media.querySelectorAll("source").forEach((node) => node.remove());
