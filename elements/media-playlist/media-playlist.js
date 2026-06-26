@@ -647,7 +647,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
         label: "Add video",
       },
       {
-        icon: "av:audiotrack",
+        icon: "image:audiotrack",
         callback: "haxAddAudio",
         label: "Add audio",
       },
