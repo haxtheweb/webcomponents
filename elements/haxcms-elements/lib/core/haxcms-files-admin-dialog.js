@@ -829,6 +829,33 @@ class HAXCMSFilesAdminDialog extends DDD {
       HAXStore.toast(m, 3000, "fit-bottom");
   }
 
+  _embedInPage(row) {
+    if (!row || !row.publicUrl) {
+      this._msg("No public URL available for this file.", true);
+      return;
+    }
+    store.editMode = true;
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    setTimeout(() => {
+      if (!HAXStore.activeHaxBody) {
+        this._msg("Unable to embed: no active page editor found.", true);
+        return;
+      }
+      const values = {
+        source: row.publicUrl,
+        title: row.name,
+      };
+      HAXStore.insertLogicFromValues(values, this);
+    }, 300);
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -939,6 +966,14 @@ class HAXCMSFilesAdminDialog extends DDD {
                                     success-message="Path copied"
                                   >
                                   </simple-clipboard-copy-button>
+                                  <simple-icon-button-lite
+                                    class="ib"
+                                    icon="hax:embed"
+                                    label="Embed in page"
+                                    title="Embed in page"
+                                    @click="${() => this._embedInPage(r)}"
+                                  >
+                                  </simple-icon-button-lite>
                                 </div>
                                 <div class="fp">${r.path}</div>
                               </td>
