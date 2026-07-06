@@ -16,7 +16,6 @@ import {
   getRange,
   internalGetShadowSelection,
   isElementInViewport,
-  ReplaceWithPolyfill,
 } from "./lib/selection.js";
 import { wipeSlot } from "./lib/slot.js";
 import {
@@ -39,7 +38,6 @@ export {
   markdownToHTML,
   normalizeEventPath,
   objectValFromStringPos,
-  ReplaceWithPolyfill,
   sanitizeEmbeddableURL,
   sanitizeURLValue,
   valueMapTransform,
@@ -442,11 +440,18 @@ function wrap(el, wrapper) {
 // then be consumed and rendered as part of the shadowDOM
 // tracking, self updating web engines, and SEO among reasons
 export function lightChildrenToShadowRootSelector(el, selector) {
+  if (!el || !el.shadowRoot) {
+    return null;
+  }
   let child = el.firstElementChild;
   while (child) {
-    el.shadowRoot.querySelector(selector).appendChild(child);
+    let target = el.shadowRoot.querySelector(selector);
+    if (target) {
+      target.appendChild(child);
+    }
     child = el.firstElementChild;
   }
+  return null;
 }
 
 /**
@@ -1095,12 +1100,15 @@ export function localStorageGet(name, defaultValue = "") {
     }
     return JSON.parse(localStorage.getItem(name));
   } catch (e) {
-    return false;
+    return defaultValue;
   }
 }
 
 // convert mimetype into a readable file extension
 export function mimeTypeToName(mimeType) {
+  if (!mimeType || typeof mimeType !== "string") {
+    return "file";
+  }
   let data = mimeType.split("/");
   switch (data[1]) {
     case "msword":
@@ -1347,6 +1355,9 @@ export function utf2Html(str) {
 }
 
 export function htmlEntities(s) {
+  if (!s || typeof s !== "string") {
+    return "";
+  }
   return s.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
     return "&#" + i.charCodeAt(0) + ";";
   });
@@ -1827,7 +1838,6 @@ export {
   haxElementToNode,
   dashToCamel,
   camelToDash,
-  camelCaseToDash,
   encapScript,
   findTagsInHTML,
   stripMSWord,

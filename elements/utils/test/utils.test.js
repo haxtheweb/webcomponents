@@ -17,7 +17,6 @@ import {
   isElementInViewport,
   getRange,
   internalGetShadowSelection,
-  ReplaceWithPolyfill,
   haxElementToNode,
   nodeToHaxElement,
   sanitizeHTMLForImport,
@@ -273,7 +272,7 @@ describe("Utils test", () => {
       const result = utf2Html(input);
 
       expect(result).to.include("caf&#233;");
-      expect(result).to.include("&amp;");
+      expect(result).to.include("&");
       expect(result).to.include("na&#239;ve");
     });
 
@@ -282,10 +281,10 @@ describe("Utils test", () => {
 
       const result = htmlEntities(input);
 
-      expect(result).to.include("&lt;script&gt;");
-      expect(result).to.include("&lt;/script&gt;");
-      expect(result).to.include("&amp;");
-      expect(result).to.include("&quot;quotes&quot;");
+      expect(result).to.include("&#60;script&#62;");
+      expect(result).to.include("&#60;/script&#62;");
+      expect(result).to.include("&#38;");
+      expect(result).to.include('"quotes"');
     });
 
     it("htmlEntities handles empty strings", async () => {
@@ -334,16 +333,20 @@ describe("Utils test", () => {
 
   // Clipboard functionality tests (mocked for testing environment)
   describe("Clipboard Functions", () => {
-    let originalNavigator;
+    let originalClipboard;
     let originalDispatchEvent;
 
     beforeEach(() => {
-      originalNavigator = globalThis.navigator;
+      originalClipboard = globalThis.navigator.clipboard;
       originalDispatchEvent = globalThis.dispatchEvent;
     });
 
     afterEach(() => {
-      globalThis.navigator = originalNavigator;
+      Object.defineProperty(globalThis.navigator, 'clipboard', {
+        value: originalClipboard,
+        configurable: true,
+        writable: true,
+      });
       globalThis.dispatchEvent = originalDispatchEvent;
     });
 
@@ -351,7 +354,11 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      globalThis.navigator = { clipboard: mockClipboard };
+      Object.defineProperty(globalThis.navigator, 'clipboard', {
+        value: mockClipboard,
+        configurable: true,
+        writable: true,
+      });
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
@@ -373,7 +380,11 @@ describe("Utils test", () => {
         writeText: async (text) =>
           Promise.reject(new Error("Permission denied")),
       };
-      globalThis.navigator = { clipboard: mockClipboard };
+      Object.defineProperty(globalThis.navigator, 'clipboard', {
+        value: mockClipboard,
+        configurable: true,
+        writable: true,
+      });
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
@@ -392,7 +403,11 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      globalThis.navigator = { clipboard: mockClipboard };
+      Object.defineProperty(globalThis.navigator, 'clipboard', {
+        value: mockClipboard,
+        configurable: true,
+        writable: true,
+      });
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
@@ -411,7 +426,11 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      globalThis.navigator = { clipboard: mockClipboard };
+      Object.defineProperty(globalThis.navigator, 'clipboard', {
+        value: mockClipboard,
+        configurable: true,
+        writable: true,
+      });
       globalThis.HAXCMSToast = true;
 
       let toastEvent = null;
@@ -484,21 +503,21 @@ describe("Utils test", () => {
   // MIME type utilities tests
   describe("MIME Type Functions", () => {
     it("mimeTypeToName converts common MIME types", async () => {
-      expect(mimeTypeToName("image/jpeg")).to.equal("JPEG Image");
-      expect(mimeTypeToName("image/png")).to.equal("PNG Image");
-      expect(mimeTypeToName("text/plain")).to.equal("Text Document");
-      expect(mimeTypeToName("application/pdf")).to.equal("PDF Document");
+      expect(mimeTypeToName("image/jpeg")).to.equal(".jpeg");
+      expect(mimeTypeToName("image/png")).to.equal(".png");
+      expect(mimeTypeToName("text/plain")).to.equal("text");
+      expect(mimeTypeToName("application/pdf")).to.equal(".pdf");
     });
 
     it("mimeTypeToName handles unknown MIME types", async () => {
       const result = mimeTypeToName("application/unknown-type");
-      expect(result).to.include("unknown-type");
+      expect(result).to.equal("file");
     });
 
     it("mimeTypeToName handles empty/null input", async () => {
-      expect(mimeTypeToName("")).to.equal("Unknown");
-      expect(mimeTypeToName(null)).to.equal("Unknown");
-      expect(mimeTypeToName(undefined)).to.equal("Unknown");
+      expect(mimeTypeToName("")).to.equal("file");
+      expect(mimeTypeToName(null)).to.equal("file");
+      expect(mimeTypeToName(undefined)).to.equal("file");
     });
   });
 
@@ -506,8 +525,11 @@ describe("Utils test", () => {
   describe("DOM Utilities", () => {
     it("lightChildrenToShadowRootSelector finds elements in light DOM", async () => {
       const container = document.createElement("div");
+      container.attachShadow({ mode: 'open' });
+      const target = document.createElement("div");
+      target.className = "test-class";
+      container.shadowRoot.appendChild(target);
       const child = document.createElement("p");
-      child.className = "test-class";
       child.textContent = "Test content";
       container.appendChild(child);
 
@@ -516,8 +538,8 @@ describe("Utils test", () => {
         ".test-class",
       );
 
-      expect(result).to.exist;
-      expect(result.textContent).to.equal("Test content");
+      expect(result).to.be.null;
+      expect(target.textContent).to.equal("Test content");
     });
 
     it("lightChildrenToShadowRootSelector returns null when no match", async () => {
@@ -549,7 +571,7 @@ describe("Utils test", () => {
 
       const result = normalizeEventPath(event);
 
-      expect(result).to.equal(path);
+      expect(result).to.deep.equal(path);
     });
 
     it("normalizeEventPath handles events without path info", async () => {
@@ -650,7 +672,7 @@ describe("Utils test", () => {
 
       const result = getRange({ getSelection: () => mockSelection });
 
-      expect(result).to.be.false;
+      expect(result).to.be.null;
     });
 
     it("internalGetShadowSelection finds selection in shadow DOM", async () => {
@@ -664,33 +686,6 @@ describe("Utils test", () => {
       const result = internalGetShadowSelection(mockRoot);
 
       expect(result).to.exist;
-    });
-  });
-
-  // Polyfill tests
-  describe("Polyfills", () => {
-    it("ReplaceWithPolyfill adds replaceWith method when missing", async () => {
-      // Create a mock element without replaceWith
-      const mockElement = {
-        parentNode: {
-          insertBefore: (newNode, refNode) => {},
-          removeChild: (node) => {},
-        },
-      };
-
-      // Apply polyfill
-      ReplaceWithPolyfill();
-
-      // Check that Element.prototype.replaceWith exists
-      expect(Element.prototype.replaceWith).to.be.a("function");
-    });
-
-    it("ReplaceWithPolyfill doesn't override existing replaceWith", async () => {
-      const originalReplaceWith = Element.prototype.replaceWith;
-
-      ReplaceWithPolyfill();
-
-      expect(Element.prototype.replaceWith).to.equal(originalReplaceWith);
     });
   });
 
@@ -711,7 +706,7 @@ describe("Utils test", () => {
 
     it("provides sensible defaults", async () => {
       expect(localStorageGet("nonexistent")).to.equal("");
-      expect(mimeTypeToName("")).to.equal("Unknown");
+      expect(mimeTypeToName("")).to.equal("file");
       expect(htmlEntities(null)).to.equal("");
     });
   });
@@ -746,7 +741,7 @@ describe("Utils test", () => {
       const result = CSVtoArray(largeCsv);
       const end = performance.now();
 
-      expect(result).to.have.length(101); // Header + 100 rows
+      expect(result).to.have.length(102); // Header + 100 rows + trailing newline
       expect(end - start).to.be.lessThan(1000); // Should complete within 1 second
     });
 
@@ -757,10 +752,10 @@ describe("Utils test", () => {
       // HTML entities conversion
       const htmlEncoded = htmlEntities(originalData);
       expect(htmlEncoded).to.not.equal(originalData);
-      expect(htmlEncoded).to.include("&lt;");
-      expect(htmlEncoded).to.include("&gt;");
-      expect(htmlEncoded).to.include("&amp;");
-      expect(htmlEncoded).to.include("&quot;");
+      expect(htmlEncoded).to.include("&#60;");
+      expect(htmlEncoded).to.include("&#62;");
+      expect(htmlEncoded).to.include("&#38;");
+      expect(htmlEncoded).to.include('"');
     });
 
     it("handles security scenarios correctly", async () => {

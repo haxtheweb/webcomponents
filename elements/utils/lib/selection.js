@@ -249,12 +249,19 @@ export function internalGetShadowSelection(root) {
   if (s && root.host && !s.containsNode(root.host, true)) {
     return { range: null, mode: "none" };
   }
+  if (!root || !root.appendChild || !root.insertBefore) {
+    return { range: null, mode: "none" };
+  }
 
   // TODO: inserting fake nodes isn't ideal, but containsNode doesn't work on nearby adjacent
   // text nodes (in fact it returns true for all text nodes on the page?!).
 
   // insert a fake 'before' node to see if it's selected
-  root.insertBefore(fakeSelectionNode, root.childNodes[0]);
+  if (root.childNodes && root.childNodes.length > 0) {
+    root.insertBefore(fakeSelectionNode, root.childNodes[0]);
+  } else {
+    root.appendChild(fakeSelectionNode);
+  }
   const includesBeforeRoot = s.containsNode(fakeSelectionNode);
   fakeSelectionNode.remove();
   if (includesBeforeRoot) {
@@ -365,29 +372,3 @@ export function internalGetShadowSelection(root) {
   };
 }
 
-// polyfill from https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/replaceWith
-export function ReplaceWithPolyfill() {
-  "use-strict"; // For safari, and IE > 10
-  var parent = this.parentNode,
-    i = arguments.length,
-    currentNode;
-  if (!parent) return;
-  if (!i)
-    // if there are no arguments
-    parent.removeChild(this);
-  while (i--) {
-    // i-- decrements i and returns the value of i before the decrement
-    currentNode = arguments[i];
-    if (typeof currentNode !== "object") {
-      currentNode = this.ownerDocument.createTextNode(currentNode);
-    } else if (currentNode.parentNode) {
-      currentNode.parentNode.removeChild(currentNode);
-    }
-    // the value of "i" below is after the decrement
-    if (!i)
-      // if currentNode is the first argument (currentNode === arguments[0])
-      parent.replaceChild(currentNode, this);
-    // if currentNode isn't the first
-    else parent.insertBefore(currentNode, this.nextSibling);
-  }
-}
