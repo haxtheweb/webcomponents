@@ -922,7 +922,7 @@ describe("Utils test", () => {
         expect(result).to.not.include('<span>');
       });
 
-      it("handles complex GDocs list with bold and links", async () => {
+    it("handles complex GDocs list with bold and links", async () => {
         const input = '<ul><li><p class="c0"><b style="font-weight:700">Bold</b> and <a href="https://example.com">link</a></p></li></ul>';
         const result = normalizeClipboardHTML(input);
 
@@ -931,6 +931,35 @@ describe("Utils test", () => {
         expect(result).to.include('<li>');
         expect(result).to.not.include('<p');
         expect(result).to.not.include('<b>');
+      });
+    });
+
+    describe("Google AI internal attributes", () => {
+      it("stripMSWord removes specific Google AI internal attributes", async () => {
+        const { stripMSWord } = await import('../utils.js');
+        const input = '<p jsaction="" jscontroller="zYmgkd#vvzi1e" jsuid="S3xTyd_h" jsname="abc" jsslot="def" jsan="ghi" jsdata="jkl">Text</p>';
+        const result = stripMSWord(input);
+        expect(result).to.include('<p>Text</p>');
+        expect(result).to.not.include('jsaction');
+        expect(result).to.not.include('jscontroller');
+        expect(result).to.not.include('jsuid');
+        expect(result).to.not.include('jsname');
+        expect(result).to.not.include('jsslot');
+        expect(result).to.not.include('jsan');
+        expect(result).to.not.include('jsdata');
+      });
+
+      it("normalizeClipboardHTML removes specific Google AI internal attributes", async () => {
+        const input = '<p jsaction="abc" jscontroller="x" jsuid="y" jsname="z" jsslot="w" jsan="q" jsdata="r">Text</p>';
+        const result = normalizeClipboardHTML(input);
+        expect(result).to.include('<p>Text</p>');
+        expect(result).to.not.include('jsaction');
+        expect(result).to.not.include('jscontroller');
+        expect(result).to.not.include('jsuid');
+        expect(result).to.not.include('jsname');
+        expect(result).to.not.include('jsslot');
+        expect(result).to.not.include('jsan');
+        expect(result).to.not.include('jsdata');
       });
     });
 

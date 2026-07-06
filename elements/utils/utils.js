@@ -1413,6 +1413,21 @@ function stripMSWord(input) {
   // Google Docs ones
   output = output.replace(/ dir="(\s|.)*?"/gim, "");
   output = output.replace(/ role="(\s|.)*?"/gim, "");
+  // Google AI internal tracking attributes (jsaction, jscontroller, jsuid, etc.)
+  output = output.replace(/ jsaction="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsaction='(\s|.)*?'/gim, "");
+  output = output.replace(/ jscontroller="(\s|.)*?"/gim, "");
+  output = output.replace(/ jscontroller='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsuid="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsuid='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsname="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsname='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsslot="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsslot='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsan="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsan='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsdata="(\s|.)*?"/gim, "");
+  output = output.replace(/ jsdata='(\s|.)*?'/gim, "");
   // these are universally true tho so fine to have here
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
   // some medium, box, github and other paste stuff as well as general paste clean up for classes
@@ -1555,6 +1570,24 @@ export function normalizeClipboardHTML(html) {
     if (/^c\d/.test(cls)) {
       el.removeAttribute("class");
     }
+  });
+
+  // Remove Google AI internal tracking attributes
+  const googleInternalAttributes = [
+    "jsaction",
+    "jscontroller",
+    "jsuid",
+    "jsname",
+    "jsslot",
+    "jsan",
+    "jsdata",
+  ];
+  fragment.querySelectorAll("*").forEach((el) => {
+    googleInternalAttributes.forEach((attr) => {
+      if (el.hasAttribute(attr)) {
+        el.removeAttribute(attr);
+      }
+    });
   });
 
   // Unwrap all spans using DOM methods.
