@@ -19,17 +19,6 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./editable-table-editor-rowcol.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button-group.js";
-import { ReplaceWithPolyfill } from "@haxtheweb/utils/lib/selection.js";
-
-if (!Element.prototype.replaceWith) {
-  Element.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!CharacterData.prototype.replaceWith) {
-  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!DocumentType.prototype.replaceWith) {
-  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
-}
 
 /**
  * `editable-table-edit`

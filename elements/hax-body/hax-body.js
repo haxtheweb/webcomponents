@@ -15,7 +15,6 @@ import {
   camelToDash,
   wrap,
   unwrap,
-  ReplaceWithPolyfill,
   normalizeEventPath,
 } from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
@@ -32,23 +31,6 @@ import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 
-// BURN A THOUSAND FIREY DEATHS SAFARI
-if (!Element.prototype.replaceWith) {
-  Element.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!CharacterData.prototype.replaceWith) {
-  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!DocumentType.prototype.replaceWith) {
-  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
-}
-// polyfill for replaceAll, I hate you Safari / really old stuff
-if (!String.prototype.replaceAll) {
-  String.prototype.replaceAll = function (find, replace) {
-    return this.split(find).join(replace);
-  };
-}
-// END OF 1000 DEATHS
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;

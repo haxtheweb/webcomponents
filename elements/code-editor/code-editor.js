@@ -5,16 +5,6 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
-import { ReplaceWithPolyfill } from "@haxtheweb/utils/lib/selection.js";
-if (!Element.prototype.replaceWith) {
-  Element.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!CharacterData.prototype.replaceWith) {
-  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!DocumentType.prototype.replaceWith) {
-  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
-}
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
