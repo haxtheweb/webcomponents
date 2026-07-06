@@ -120,8 +120,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           font-size: var(--ddd-font-size-6xs, 12px);
           text-align: left;
           font-family: var(--ddd-font-primary, sans-serif);
-          background: transparent;
+          color: light-dark(black, white);
+          background-color: light-dark(white, black);
           text-decoration: none;
+        }
+
+        :host([dark]) .user-menu.open ::slotted(*) {
+          color: var(--ddd-theme-default-white, white);
         }
 
         .user-menu.open .main-menu ::slotted(*:hover),

@@ -17,6 +17,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
+import "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
@@ -220,7 +221,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-button.top-bar-button::part(button):focus-visible,
         simple-toolbar-menu.top-bar-button::part(button):focus-visible,
         haxcms-button-add.top-bar-button::part(button):focus-visible,
-        .topbar-character:focus-visible,
         .haxLogo:focus-visible,
         .mysiteslink:focus-visible {
           outline: var(--ddd-border-sm, 2px solid)
@@ -467,68 +467,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           width: 100%;
         }
 
-        .topbar-character {
-          cursor: pointer;
-          border: none;
-          background-color: transparent;
-          min-height: var(--top-bar-height, 64px);
+        .menu-toggle-wrapper {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
-          padding: 0;
-          margin: 0;
-          line-height: 0;
-          -webkit-appearance: none;
-          appearance: none;
-        }
-        .characterbtn-name {
-          margin-left: 8px;
-          font-size: 12px;
-          vertical-align: bottom;
-          line-height: 64px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          height: 64px;
-          word-break: break-all;
-        }
-
-        .characterbtn-menu-icon {
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          margin-left: var(--ddd-spacing-1, 4px);
-          display: inline-flex;
-          vertical-align: top;
-          margin-top: 24px;
-          color: currentColor;
-          transform: rotate(0deg);
-          transition: transform var(--ddd-duration-fast, 150ms)
-            var(--ddd-timing-ease, ease);
-        }
-
-        .characterbtn-menu-icon.rotated {
-          transform: rotate(-90deg);
-        }
-        :host([dark-mode]) .topbar-character,
-        :host([dark-mode]) .topbar-character {
-          color: #e0e0e0;
-        }
-        .topbar-character rpg-character {
-          --simple-toolbar-border-radius: var(--ddd-radius-md);
-          border-radius: var(--ddd-radius-md);
-          background-color: var(--simple-colors-default-theme-grey-1);
-          border: var(--ddd-border-sm);
-          border-color: light-dark(black, white);
-          padding: 0;
-          margin: 0 8px 0 4px;
-          height: var(--ddd-spacing-11, 44px);
-          width: var(--ddd-spacing-11, 44px);
-          display: block;
-        }
-        .topbar-character:hover rpg-character,
-        .topbar-character:focus rpg-character,
-        .topbar-character:focus-visible rpg-character {
-          border-color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--simple-colors-default-theme-grey-3);
+          cursor: pointer;
+          min-height: var(--top-bar-height, 64px);
         }
 
         .mysiteslink {
@@ -561,10 +504,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           #undo,
           #redo {
             display: none;
-          }
-          .topbar-character {
-            padding: 0;
-            margin: 0;
           }
           simple-toolbar {
             --simple-toolbar-button-padding: 3px 3px;
@@ -3249,32 +3188,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ?is-open="${this.userMenuOpen}"
             @is-open-changed="${this._userMenuOpenChanged}"
           >
-            <button
-              class="topbar-character"
+            <div
+              class="menu-toggle-wrapper"
               slot="menuButton"
               id="menubtn"
               @click="${this.toggleMenu}"
-              aria-label="User menu for ${this.userName}"
-              aria-expanded="${this.userMenuOpen}"
-              aria-haspopup="menu"
-              @mouseover="${this.rpgStartWalk}"
-              @focusin="${this.rpgStartWalk}"
-              @mouseout="${this.rpgStopWalk}"
-              @focusout="${this.rpgStopWalk}"
             >
-              <rpg-character
+              <app-hax-user-menu-toggle
                 seed="${this.userName}"
                 width="68"
                 height="68"
-                part="rpgcharacter"
-                role="img"
-                alt="Avatar for ${this.userName}"
                 hat="${this.rpgHat}"
-                title="${this.userName}"
                 ?walking="${this.rpgWalk}"
-              ></rpg-character>
+                aria-label="User menu for ${this.userName}"
+                aria-expanded="${this.userMenuOpen}"
+                aria-haspopup="menu"
+                @mouseover="${this.rpgStartWalk}"
+                @focusin="${this.rpgStartWalk}"
+                @mouseout="${this.rpgStopWalk}"
+                @focusout="${this.rpgStopWalk}"
+              ></app-hax-user-menu-toggle>
               <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
-            </button>
+            </div>
             <simple-tooltip
               for="menubtn"
               slot="menuButton"

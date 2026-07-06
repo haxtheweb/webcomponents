@@ -13,11 +13,12 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./lib/v2/AppHaxRouter.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
+import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-toggle.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
-import "./lib/v2/app-hax-user-menu.js";
+import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -978,9 +979,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           color: var(--ddd-theme-default-white, #fff);
         }
 
-        #home:focus-visible,
-        .topbar-character:focus-visible,
-        #tbchar:focus-visible {
+        #home:focus-visible {
           outline: var(--ddd-border-sm, 2px solid)
             var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
@@ -997,54 +996,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: flex;
           gap: var(--ddd-spacing-2, 8px);
           height: var(--top-bar-height, 64px);
-        }
-
-        .topbar-character {
-          cursor: pointer;
-          border: none;
-          background-color: transparent;
-          min-height: var(--top-bar-height, 64px);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #222),
-            var(--ddd-theme-default-white, #fff)
-          );
-          padding: 0;
-          margin: 0;
-          line-height: 0;
-        }
-
-        .topbar-character rpg-character {
-          --simple-toolbar-border-radius: var(--ddd-radius-md);
-          border-radius: var(--ddd-radius-md);
-          background-color: var(--simple-colors-default-theme-grey-1);
-          border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          padding: 0;
-          margin: 0 8px 0 4px;
-          height: var(--ddd-spacing-11, 44px);
-          width: var(--ddd-spacing-11, 44px);
-          display: block;
-        }
-
-        .topbar-character:hover rpg-character,
-        .topbar-character:focus rpg-character,
-        .topbar-character:focus-visible rpg-character {
-          border-color: var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-grey-2);
-        }
-
-        .characterbtn-name {
-          margin-left: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-6xs, 12px);
-          vertical-align: bottom;
-          line-height: var(--top-bar-height, 64px);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          min-height: var(--top-bar-height, 64px);
-          word-break: break-all;
         }
         .ops-panel {
           display: flex;
@@ -1102,22 +1053,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           text-align: left;
         }
 
-        .characterbtn-menu-icon {
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          margin-left: var(--ddd-spacing-1, 4px);
-          display: inline-flex;
-          vertical-align: top;
-          margin-top: 24px;
-          color: currentColor;
-          transform: rotate(0deg);
-          transition: transform var(--ddd-duration-fast, 150ms)
-            var(--ddd-timing-ease, ease);
-        }
-
-        .characterbtn-menu-icon.rotated {
-          transform: rotate(-90deg);
-        }
 
         div[slot="center"] {
           display: flex;
@@ -1571,7 +1506,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-darkmode-toggle.js");
     import("./lib/v2/app-hax-search-results.js");
-    import("./lib/v2/app-hax-user-menu-button.js");
+    import("@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js");
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
         composed: true,
@@ -2280,30 +2215,23 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               id="user-menu"
               ?is-open="${this.userMenuOpen}"
             >
-                <button
+                <app-hax-user-menu-toggle
+                  slot="menuButton"
+                  id="tbchar"
+                  seed="${this.userName}"
+                  width="68"
+                  height="68"
+                  hat="${this.userMenuOpen ? "edit" : "none"}"
+                  aria-label="User menu for ${displayUserName}"
+                  aria-expanded="${this.userMenuOpen}"
+                  aria-haspopup="menu"
+                  ?walking="${this.rpgWalk}"
                   @click="${this.toggleMenu}"
                   @mouseover="${this.rpgStartWalk}"
                   @focusin="${this.rpgStartWalk}"
                   @mouseout="${this.rpgStopWalk}"
                   @focusout="${this.rpgStopWalk}"
-                  class="topbar-character"
-                  slot="menuButton"
-                  id="tbchar"
-                  title="System menu"
-                  aria-label="User menu for ${displayUserName}"
-                  aria-expanded="${this.userMenuOpen}"
-                  aria-haspopup="menu"
-                >
-                <rpg-character
-                  seed="${this.userName}"
-                  width="68"
-                  height="68"
-                  hat="${this.userMenuOpen ? "edit" : "none"}"
-                  alt="Avatar for ${displayUserName}"
-                  ?walking="${this.rpgWalk}"
-                  role="img"
-                ></rpg-character>
-                </button>
+                ></app-hax-user-menu-toggle>
                 <simple-tooltip
                   for="tbchar"
                   slot="menuButton"
