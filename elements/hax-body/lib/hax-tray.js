@@ -1,7 +1,7 @@
 import { html, css } from "lit";
 import {
   winEventsElement,
-  camelCaseToDash,
+  camelToDash,
   isURLAttribute,
   sanitizeURLValue,
   sanitizeEmbeddableURL,
@@ -1829,7 +1829,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           for (let prop in settings[key]) {
             setAhead = false;
             if (settings[key][prop] != null && !settings[key][prop].readOnly) {
-              const dashProp = camelCaseToDash(prop);
+              const dashProp = camelToDash(prop);
               if (
                 typeof settings[key][prop] === "string" &&
                 isURLAttribute(dashProp)
@@ -1981,22 +1981,22 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
                 }
               }
               // this will get reached often but tough to know if we had a slot
-              if (!setAhead && camelCaseToDash(prop) != "") {
+              if (!setAhead && camelToDash(prop) != "") {
                 try {
                   // silly but this is the spec way to do a boolean
                   if (settings[key][prop] === true) {
                     this.activeNode.setAttribute(
-                      camelCaseToDash(prop),
-                      camelCaseToDash(prop),
+                      camelToDash(prop),
+                      camelToDash(prop),
                     );
                   } else if (
                     settings[key][prop] === false ||
                     settings[key][prop] === ""
                   ) {
-                    this.activeNode.removeAttribute(camelCaseToDash(prop));
+                    this.activeNode.removeAttribute(camelToDash(prop));
                   } else {
                     this.activeNode.setAttribute(
-                      camelCaseToDash(prop),
+                      camelToDash(prop),
                       settings[key][prop],
                     );
                   }
@@ -2023,7 +2023,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
                 this.__lockAllSettings(false);
                 this.requestUpdate();
               }
-              this.activeNode.removeAttribute(camelCaseToDash(prop));
+              this.activeNode.removeAttribute(camelToDash(prop));
             }
           }
         }

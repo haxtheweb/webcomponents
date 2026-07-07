@@ -156,7 +156,7 @@ Verify your setup is working:
    - Enhance demo pages in component `demo/` directories
 
 4. **Ask for guidance:**
-   - Join our [Discord](https://bit.ly/hax-discord) and introduce yourself
+   - Join our [Discord](https://discord.gg/EKYJAjqGhf) and introduce yourself
    - Ask "What's a good first issue for someone new to the project?"
 
 **Before starting work:**
@@ -350,7 +350,7 @@ git checkout feature-branch-name
 ### Still Having Issues?
 
 1. **Check if it's a known issue:** Search https://github.com/haxtheweb/issues/issues
-2. **Ask on Discord:** Join https://bit.ly/hax-discord and describe your problem
+2. **Ask on Discord:** Join https://discord.gg/EKYJAjqGhf and describe your problem
 3. **Include helpful details:**
    - Your operating system and version
    - Node.js version (`node --version`)
@@ -361,7 +361,7 @@ git checkout feature-branch-name
 ## Communication
 
 Reporting issues? Our unified issue queue is a good place for this: https://github.com/haxtheweb/issues/issues
-Need to discuss something via chat? Our [Discord can be joined here](https://bit.ly/hax-discord).
+Need to discuss something via chat? Our [Discord can be joined here](https://discord.gg/EKYJAjqGhf).
 
 ## GitHub workflow
 
@@ -390,7 +390,7 @@ When reviewing PRs from others [The Gentle Art of Patch Review](http://sage.thes
 - Is the contribution architected correctly?
 - Is the contribution polished?
 
-Note: if your pull request isn't getting enough attention, you can use our [Discord channel](https://bit.ly/hax-discord) to get help finding reviewers.
+Note: if your pull request isn't getting enough attention, you can use our [Discord channel](https://discord.gg/EKYJAjqGhf) to get help finding reviewers.
 
 ## Best practices
 

@@ -58,6 +58,7 @@ class ImageCompareSlider extends I18NMixin(
             ?dark="${this.dark}"
             ?opacity="${this.opacity}"
             position="${this.position}"
+            data-pulse
           >
             <div slot="heading">
               ${this.title ? html` <h2>${this.title}</h2> ` : ``}

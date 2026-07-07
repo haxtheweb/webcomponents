@@ -1298,12 +1298,6 @@ function haxElementToNode(haxSchema) {
   return newNode;
 }
 /**
- * Conver camel case to dash case
- */
-function camelCaseToDash(key) {
-  return key.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
-}
-/**
  * Encapsulate script types in an HTML blob
  */
 function encapScript(html) {

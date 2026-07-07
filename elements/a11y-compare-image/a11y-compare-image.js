@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDDAnimations } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 /**
  * `a11y-compare-image`
@@ -14,6 +15,7 @@ class a11yCompareImage extends SimpleColors {
   static get styles() {
     return [
       super.styles,
+      DDDAnimations,
       css`
         :host {
           display: inline-flex;
@@ -89,6 +91,20 @@ class a11yCompareImage extends SimpleColors {
         #placeholder ::slotted([slot="bottom"]) {
           max-width: 100%;
         }
+        .knob-enticement {
+          position: absolute;
+          top: calc(0px - var(--simple-range-input-pin-height, 20px) / 2);
+          left: var(--a11y-compare-image-position, 50%);
+          transform: translateX(-50%);
+          width: var(--simple-range-input-pin-height, 20px);
+          height: var(--simple-range-input-pin-height, 20px);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 2;
+          animation: pulse 2s infinite;
+          --ddd-animation-pulse-color: var(--ddd-primary-1-rgb, 30, 64, 124);
+          --ddd-animation-pulse-size: var(--ddd-spacing-4, 16px);
+        }
       `,
     ];
   }
@@ -99,7 +115,22 @@ class a11yCompareImage extends SimpleColors {
     this.accentColor = "blue";
     this.__markers = [];
     this.label = "Compare images";
+    this.dataPulse = false;
     import("@haxtheweb/simple-range-input/simple-range-input.js");
+    this.addEventListener(
+      "mouseenter",
+      () => {
+        this.dataPulse = false;
+      },
+      { once: true },
+    );
+    this.addEventListener(
+      "focusin",
+      () => {
+        this.dataPulse = false;
+      },
+      { once: true },
+    );
   }
   render() {
     return html` <figure>
@@ -118,6 +149,9 @@ class a11yCompareImage extends SimpleColors {
         </div>
       </div>
       <div id="input">
+        ${this.dataPulse
+          ? html`<div class="knob-enticement" aria-hidden="true"></div>`
+          : ``}
         ${this.__markers.map(
           (marker) => html`
             <div
@@ -152,6 +186,11 @@ class a11yCompareImage extends SimpleColors {
         type: Number,
         attribute: "active-layer",
         reflect: true,
+      },
+      dataPulse: {
+        type: Boolean,
+        reflect: true,
+        attribute: "data-pulse",
       },
       /**
        * mode for the slider: wipe
@@ -196,7 +235,14 @@ class a11yCompareImage extends SimpleColors {
    */
   _slide() {
     let container = this.shadowRoot.querySelector("#container");
+    let input = this.shadowRoot.querySelector("#input");
     let layers = this.querySelectorAll("[slot=top],[slot=bottom]");
+    if (input) {
+      input.style.setProperty(
+        "--a11y-compare-image-position",
+        this.position + "%",
+      );
+    }
     // This is the total number of transitions between layers
     let total = layers.length - 1;
     //This is percent of the slider for each section

@@ -69,7 +69,7 @@ Watch and Learn more about HAX here:
 - Youtube channel - https://www.youtube.com/@haxtheweb
 
 ### Issues / Support / Community
-- Discord Channel - https://bit.ly/hax-discord
+- Discord Channel - https://discord.gg/EKYJAjqGhf
 - Unified issue queue - https://github.com/haxtheweb/issues/issues
 - Using Merlin directly in any HAX spaces and type "Issue" to jump start a report!
 

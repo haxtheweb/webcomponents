@@ -92,6 +92,17 @@
             },
             {
               "kind": "field",
+              "name": "dataPulse",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "data-pulse",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "activeLayer",
               "privacy": "public",
               "type": {
@@ -126,6 +137,14 @@
                 "text": "number"
               },
               "fieldName": "activeLayer"
+            },
+            {
+              "name": "data-pulse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dataPulse"
             },
             {
               "name": "opacity",
