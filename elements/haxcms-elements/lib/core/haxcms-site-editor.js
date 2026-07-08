@@ -1092,6 +1092,13 @@ class HAXCMSSiteEditor extends LitElement {
         signal: this.windowControllers.signal,
       },
     );
+    globalThis.addEventListener(
+      "haxcms-normalize-slugs",
+      this.normalizeSlugs.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
   }
   disconnectedCallback() {
     if (this.windowControllers) {
@@ -1687,6 +1694,22 @@ class HAXCMSSiteEditor extends LitElement {
         }),
       );
       store.toast(`Outline saved!`, 4000, { hat: "random" });
+      // If the active page's slug changed, redirect to the new URL
+      const activeItem = store.activeItem;
+      const responseItems =
+        e && e.detail && e.detail.response && e.detail.response.items
+          ? e.detail.response.items
+          : null;
+      if (activeItem && activeItem.id && responseItems) {
+        const updatedItem = responseItems.find(
+          (item) => item && item.id === activeItem.id,
+        );
+        if (updatedItem && updatedItem.slug && updatedItem.slug !== activeItem.slug) {
+          const newSlug = updatedItem.slug;
+          globalThis.history.replaceState({}, null, newSlug);
+          globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        }
+      }
     }, 300);
   }
 
@@ -2238,6 +2261,77 @@ class HAXCMSSiteEditor extends LitElement {
         });
       },
     });
+  }
+
+  async normalizeSlugs(e) {
+    const siteName = this._siteName();
+    if (!siteName) {
+      store.toast("Slug normalization endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    this.setProcessingVisual();
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      !MicroFrontendRegistry.has("@site/normalizeSiteSlugs")
+    ) {
+      store.toast("Slug normalization endpoint is not available.", 3000, {
+        fire: true,
+      });
+      store.playSound("error");
+      return;
+    }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/normalizeSiteSlugs",
+        { site: { name: siteName } },
+        null,
+        null,
+      );
+      if (response && response.data && response.data.items) {
+        store.playSound("success");
+        store.toast(
+          `Normalized ${response.data.items.length} page slugs`,
+          4000,
+          { hat: "random" },
+        );
+        this.dispatchEvent(
+          new CustomEvent("haxcms-trigger-update", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: true,
+          }),
+        );
+        // If the active page's slug changed, redirect to the new URL
+        const activeItem = store.activeItem;
+        if (activeItem && activeItem.id) {
+          const updatedItem = response.data.items.find(
+            (item) => item && item.id === activeItem.id,
+          );
+          if (
+            updatedItem &&
+            updatedItem.slug &&
+            updatedItem.slug !== activeItem.slug
+          ) {
+            globalThis.history.replaceState({}, null, updatedItem.slug);
+            globalThis.dispatchEvent(new PopStateEvent("popstate"));
+          }
+        }
+      } else {
+        store.playSound("success");
+        store.toast("Slug normalization completed.", 3000, {
+          hat: "random",
+        });
+      }
+    } catch (error) {
+      console.warn(error);
+      store.toast("Slug normalization failed.", 3000, { fire: true });
+      store.playSound("error");
+    }
   }
 
   saveSEOSettings(e) {

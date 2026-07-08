@@ -1428,6 +1428,20 @@ export class PageBreak extends IntersectionObserverMixin(
           }
         }
       });
+      // Disable the slug field when pathauto is enabled and override is not set
+      props.settings.advanced.forEach((attr, index) => {
+        if (attr.property === "slug") {
+          const manifest = store.manifest;
+          const pathautoEnabled =
+            manifest &&
+            manifest.metadata &&
+            manifest.metadata.site &&
+            manifest.metadata.site.settings &&
+            manifest.metadata.site.settings.pathauto === true;
+          props.settings.advanced[index].disabled =
+            pathautoEnabled && !this.overridePathauto;
+        }
+      });
     }
   }
   /**

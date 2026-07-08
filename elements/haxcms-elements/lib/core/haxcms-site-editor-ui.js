@@ -1652,15 +1652,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
 
-    // Generate initial slug from title
-    const baseSlug = this.generateSlugFromTitle(title);
-    // Get unique slug name to avoid conflicts
-    const uniqueSlug = store.getUniqueSlugName(baseSlug);
-
     const payload = {
       node: {
         title: title,
-        location: uniqueSlug,
       },
       order: order,
       parent: parent,
