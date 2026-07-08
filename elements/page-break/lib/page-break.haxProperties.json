@@ -95,6 +95,12 @@
         "inputMethod": "boolean"
       },
       {
+        "property": "overridePathauto",
+        "title": "Override automatic slug",
+        "description": "Lock the slug from automatic updates based on title or parent.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "slug",
         "title": "Path",
         "description": "URL slug for this page.",

@@ -1243,7 +1243,7 @@ class HAXCMSSiteEditor extends LitElement {
           formData.append("upload", file);
           this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
-            "@haxcms/docxToSite",
+            "@site/importDocx",
             formData,
           );
           store.toast("finished!", 300);

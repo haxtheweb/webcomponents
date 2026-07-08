@@ -1100,6 +1100,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (activeItem.metadata.published !== false) {
         pageBreak.setAttribute("published", "published");
       }
+      if (activeItem.metadata.overridePathauto) {
+        pageBreak.setAttribute("override-pathauto", "override-pathauto");
+      }
       wrapper.appendChild(pageBreak);
       const contentFragment = globalThis.document
         .createRange()

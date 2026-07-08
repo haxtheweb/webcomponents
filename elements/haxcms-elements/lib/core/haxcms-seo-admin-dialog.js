@@ -773,6 +773,18 @@ class HAXCMSSEOAdminDialog extends DDD {
     };
   }
 
+  _normalizeSlugsTap() {
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-normalize-slugs", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+  }
+
   _saveSEOSettingsTap() {
     if (this.groups.length === 0) {
       return;
@@ -836,6 +848,12 @@ class HAXCMSSEOAdminDialog extends DDD {
             : ``}
         </div>
         <div class="actions">
+          <button
+            class="action"
+            @click="${this._normalizeSlugsTap}"
+          >
+            Normalize slugs
+          </button>
           <button
             class="action"
             @click="${this._saveSEOSettingsTap}"

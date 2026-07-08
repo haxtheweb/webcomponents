@@ -79,6 +79,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.image = null;
     this.target = null;
     this.locked = false;
+    this.overridePathauto = false;
     this.order = null;
     this.depth = 0;
     this.itemId = null;
@@ -217,6 +218,11 @@ export class PageBreak extends IntersectionObserverMixin(
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
       locked: { type: Boolean, reflect: true },
+      overridePathauto: {
+        type: Boolean,
+        reflect: true,
+        attribute: "override-pathauto",
+      },
       depth: { type: Number, reflect: true },
       itemId: { type: String, attribute: "item-id", reflect: true },
       breakType: { type: String, attribute: "break-type" },
@@ -400,7 +406,7 @@ export class PageBreak extends IntersectionObserverMixin(
       // Auto-update author when content-related properties change
       // This indicates the page has been modified
       if (
-        ["title", "description", "tags", "published", "locked"].includes(
+      ["title", "description", "tags", "published", "locked", "overridePathauto"].includes(
           propName,
         ) &&
         oldValue !== undefined

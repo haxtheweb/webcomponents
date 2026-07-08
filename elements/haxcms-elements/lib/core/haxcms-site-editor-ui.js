@@ -1135,7 +1135,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // single file vs whole site processing
             endpointCall = "@core/docxToHtml";
             if (mode === "create-branch") {
-              endpointCall = "@haxcms/docxToSite";
+              endpointCall = "@site/importDocx";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent

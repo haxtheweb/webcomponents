@@ -277,16 +277,6 @@ export function enableCoreServices() {
 
 // HAXcms services
 export function enableHAXcmsServices() {
-  // docxToSite
-  MicroFrontendRegistry.add({
-    endpoint: "/x/api/v1/site/import/docx",
-    name: "@haxcms/docxToSite",
-    title: "Docx to Site",
-    description: "Convert .docx file to Site schema",
-    params: {
-      body: "FormData class w/ uploaded file encoded into it",
-    },
-  });
   // pdfToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/pdfToSite",
