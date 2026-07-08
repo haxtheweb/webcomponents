@@ -17,6 +17,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       cancelButton.focus();
     }
   }
+  /**
+   * Public alias so simple-modal can delegate initial focus consistently.
+   */
+  focusInitial() {
+    this.focusCancelButton();
+  }
 
   constructor() {
     super();
@@ -45,7 +51,10 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       cancelText: { type: String },
       dangerous: { type: Boolean },
       cancelIsNeutral: { type: Boolean },
-      cancelActionOnPassiveClose: { type: Boolean, attribute: "cancel-action-on-passive-close" },
+      cancelActionOnPassiveClose: {
+        type: Boolean,
+        attribute: "cancel-action-on-passive-close",
+      },
     };
   }
 
@@ -262,10 +271,19 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     } else {
       const runCancelAction =
         this._cancelClicked || this.cancelActionOnPassiveClose;
-      if (runCancelAction && this.cancelAction && typeof this.cancelAction === "function") {
+      if (
+        runCancelAction &&
+        this.cancelAction &&
+        typeof this.cancelAction === "function"
+      ) {
         this.cancelAction();
       }
-      if (runCancelAction && !this.cancelIsNeutral && store.appEl && store.appEl.playSound) {
+      if (
+        runCancelAction &&
+        !this.cancelIsNeutral &&
+        store.appEl &&
+        store.appEl.playSound
+      ) {
         store.appEl.playSound("error");
       }
     }

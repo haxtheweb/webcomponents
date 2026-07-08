@@ -229,9 +229,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this._handleSuperDaemonClose.bind(this),
       { signal: this.windowControllers.signal },
     );
-    globalThis.addEventListener("popstate", this._adminRoutePopState.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener(
+      "popstate",
+      this._adminRoutePopState.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
     globalThis.addEventListener(
       "simple-modal-closed",
       this._simpleModalClosed.bind(this),
@@ -1053,7 +1057,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           text-align: left;
         }
 
-
         div[slot="center"] {
           display: flex;
           align-items: center;
@@ -1067,7 +1070,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             var(--ddd-theme-default-white, #fff)
           );
         }
-                
+
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
@@ -1253,8 +1256,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
         .filter-btn.active:hover,
         .filter-btn.active:focus {
-            background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-            color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         :host([dark]) .filter-btn.active:hover,
@@ -1435,10 +1438,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           :host .collapseFilter {
             display: flex;
           }
-          h4, .returnTo h4, .startNew h4 {
+          h4,
+          .returnTo h4,
+          .startNew h4 {
             font-size: var(--ddd-font-size-m, 20px);
           }
-
         }
 
         /* 600px - 481px*/
@@ -1446,14 +1450,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           :host([show-filter]) .filter {
             width: 200px;
           }
-          h4, .returnTo h4, .startNew h4 {
+          h4,
+          .returnTo h4,
+          .startNew h4 {
             font-size: var(--ddd-font-size-s, 18px);
           }
         }
 
         /* 480px - 0px*/
         @media (max-width: 480px) {
-          h4, .returnTo h4, .startNew h4 {
+          h4,
+          .returnTo h4,
+          .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin-bottom: var(--ddd-spacing-3, 12px);
           }
@@ -1461,7 +1469,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             min-width: 100%;
           }
         }
-        
+
         .no-results {
           font-size: var(--ddd-font-size-s, 16px);
           color: light-dark(
@@ -1506,7 +1514,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-darkmode-toggle.js");
     import("./lib/v2/app-hax-search-results.js");
-    import("@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js");
+    import(
+      "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js"
+    );
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
         composed: true,
@@ -1575,7 +1585,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             store.manifest = results.data;
           }
         } catch (e) {
-          void e
+          void e;
           // Fail quietly and avoid uncaught promise errors in the dashboard shell.
         }
       } else if (
@@ -1647,11 +1657,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     const normalized = panelKey.trim().toLowerCase();
     if (
-      Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_ROUTE_ALIASES, normalized)
+      Object.prototype.hasOwnProperty.call(
+        SYSTEM_SETTINGS_ROUTE_ALIASES,
+        normalized,
+      )
     ) {
       return SYSTEM_SETTINGS_ROUTE_ALIASES[normalized];
     }
-    if (Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_PANELS, normalized)) {
+    if (
+      Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_PANELS, normalized)
+    ) {
       return normalized;
     }
     return "dashboard";
@@ -1669,12 +1684,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (typeof segment !== "string") {
       return null;
     }
-    const normalized = segment.trim().toLowerCase().replace(/^\/+/, "").replace(/\/+$/, "");
+    const normalized = segment
+      .trim()
+      .toLowerCase()
+      .replace(/^\/+/, "")
+      .replace(/\/+$/, "");
     if (normalized === "") {
       return "dashboard";
     }
     if (
-      Object.prototype.hasOwnProperty.call(SYSTEM_SETTINGS_ROUTE_ALIASES, normalized)
+      Object.prototype.hasOwnProperty.call(
+        SYSTEM_SETTINGS_ROUTE_ALIASES,
+        normalized,
+      )
     ) {
       return SYSTEM_SETTINGS_ROUTE_ALIASES[normalized];
     }
@@ -1759,11 +1781,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   _currentSystemSettingsDialog() {
-    if (this.__systemSettingsDialog && this.__systemSettingsDialog.isConnected) {
+    if (
+      this.__systemSettingsDialog &&
+      this.__systemSettingsDialog.isConnected
+    ) {
       return this.__systemSettingsDialog;
     }
     if (globalThis.document && globalThis.document.querySelector) {
-      const existing = globalThis.document.querySelector("haxcms-system-settings");
+      const existing = globalThis.document.querySelector(
+        "haxcms-system-settings",
+      );
       if (existing) {
         this.__systemSettingsDialog = existing;
         return this.__systemSettingsDialog;
@@ -1870,9 +1897,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   _canApplyAdminRoutePath() {
     return (
-      store.appReady &&
-      toJS(store.isLoggedIn) &&
-      this._allowSystemSettings()
+      store.appReady && toJS(store.isLoggedIn) && this._allowSystemSettings()
     );
   }
 
@@ -1890,7 +1915,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return;
     }
     const panelKey =
-      this._systemSettingsPanelFromAdminRoutePath(normalizedPath) || "dashboard";
+      this._systemSettingsPanelFromAdminRoutePath(normalizedPath) ||
+      "dashboard";
     const opened = this.openSystemSettings(false, {
       skipUrlUpdate: true,
       silent: true,
@@ -1941,16 +1967,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   _simpleModalClosed() {
     const hasSystemSettingsContext =
-      ((typeof this.__currentAdminRoutePath === "string" &&
+      (typeof this.__currentAdminRoutePath === "string" &&
         this.__currentAdminRoutePath.indexOf("admin") === 0) ||
-        false) ||
+      false ||
       this.__systemSettingsModalOpen;
     if (!hasSystemSettingsContext) {
       return;
     }
     setTimeout(() => {
       let modalOpen = false;
-      if (globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability) {
+      if (
+        globalThis.SimpleModal &&
+        globalThis.SimpleModal.requestAvailability
+      ) {
         modalOpen = globalThis.SimpleModal.requestAvailability().opened;
       }
       if (modalOpen) {
@@ -2189,11 +2218,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               @slotchange="${this._syncHeaderPreSlot}"
             ></slot>
             ${!this.hasHeaderPre
-              ? html`<a
-                    id="home"
-                    title="${this.t.home}"
-                    href="home"
-                  >
+              ? html`<a id="home" title="${this.t.home}" href="home">
                     <simple-icon-lite
                       id="hlogo"
                       icon="hax:hax2022"
@@ -2208,77 +2233,73 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           </div>
 
           <div slot="center">HAXcms Site Dashboard</div>
-          
+
           <div slot="right" class="right-group">
             <app-hax-user-menu
               slot="right"
               id="user-menu"
               ?is-open="${this.userMenuOpen}"
             >
-                <app-hax-user-menu-toggle
-                  slot="menuButton"
-                  id="tbchar"
-                  seed="${this.userName}"
-                  width="68"
-                  height="68"
-                  hat="${this.userMenuOpen ? "edit" : "none"}"
-                  aria-label="User menu for ${displayUserName}"
-                  aria-expanded="${this.userMenuOpen}"
-                  aria-haspopup="menu"
-                  ?walking="${this.rpgWalk}"
-                  @click="${this.toggleMenu}"
-                  @mouseover="${this.rpgStartWalk}"
-                  @focusin="${this.rpgStartWalk}"
-                  @mouseout="${this.rpgStopWalk}"
-                  @focusout="${this.rpgStopWalk}"
-                ></app-hax-user-menu-toggle>
-                <simple-tooltip
-                  for="tbchar"
-                  slot="menuButton"
-                  position="bottom"
+              <app-hax-user-menu-toggle
+                slot="menuButton"
+                id="tbchar"
+                seed="${this.userName}"
+                width="68"
+                height="68"
+                hat="${this.userMenuOpen ? "edit" : "none"}"
+                aria-label="User menu for ${displayUserName}"
+                aria-expanded="${this.userMenuOpen}"
+                aria-haspopup="menu"
+                ?walking="${this.rpgWalk}"
+                @click="${this.toggleMenu}"
+                @mouseover="${this.rpgStartWalk}"
+                @focusin="${this.rpgStartWalk}"
+                @mouseout="${this.rpgStopWalk}"
+                @focusout="${this.rpgStopWalk}"
+              ></app-hax-user-menu-toggle>
+              <simple-tooltip for="tbchar" slot="menuButton" position="bottom">
+                ${displayUserName}
+              </simple-tooltip>
+              <div slot="pre-menu" class="ops-panel">
+                <app-hax-darkmode-toggle id="wt"></app-hax-darkmode-toggle>
+                <button
+                  class="soundToggle"
+                  @click="${soundToggle}"
+                  aria-label="Toggle sound effects ${this.soundIcon &&
+                  this.soundIcon.indexOf("Full") !== -1
+                    ? "off"
+                    : "on"}"
+                  aria-pressed="${this.soundIcon &&
+                  this.soundIcon.indexOf("Full") !== -1
+                    ? "true"
+                    : "false"}"
                 >
-                  ${displayUserName}
-                </simple-tooltip>
-                <div slot="pre-menu" class="ops-panel">
-                  <app-hax-darkmode-toggle id="wt"></app-hax-darkmode-toggle>
-                  <button
-                    class="soundToggle"
-                    @click="${soundToggle}"
-                    aria-label="Toggle sound effects ${this.soundIcon &&
-                    this.soundIcon.indexOf("Full") !== -1
-                      ? "off"
-                      : "on"}"
-                    aria-pressed="${this.soundIcon &&
-                    this.soundIcon.indexOf("Full") !== -1
-                      ? "true"
-                      : "false"}"
-                  >
-                    <simple-icon-lite
-                      src="${this.soundIcon}"
-                      loading="lazy"
-                      decoding="async"
-                      aria-hidden="true"
-                    ></simple-icon-lite>
-                    <span class="sound-label">Sound effects</span>
-                  </button>
-                </div>
-                ${this._allowSystemSettings()
-                  ? html`
-                      <app-hax-user-menu-button
-                        id="systemsettingsbutton"
-                        slot="main-menu"
-                        icon="settings"
-                        label="${this.t.settings}"
-                        @click="${this._openSystemSettingsMenuTap}"
-                      ></app-hax-user-menu-button>
-                    `
-                  : ""}
-                <app-hax-user-menu-button
-                  slot="post-menu"
-                  class="logout"
-                  label="${this.t.logOut}"
-                  @click=${this.logout}
-                ></app-hax-user-menu-button>
+                  <simple-icon-lite
+                    src="${this.soundIcon}"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <span class="sound-label">Sound effects</span>
+                </button>
+              </div>
+              ${this._allowSystemSettings()
+                ? html`
+                    <app-hax-user-menu-button
+                      id="systemsettingsbutton"
+                      slot="main-menu"
+                      icon="settings"
+                      label="${this.t.settings}"
+                      @click="${this._openSystemSettingsMenuTap}"
+                    ></app-hax-user-menu-button>
+                  `
+                : ""}
+              <app-hax-user-menu-button
+                slot="post-menu"
+                class="logout"
+                label="${this.t.logOut}"
+                @click=${this.logout}
+              ></app-hax-user-menu-button>
             </app-hax-user-menu>
           </div>
         </app-hax-top-bar>
@@ -2316,7 +2337,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
   }
 }
-
 
 customElements.define(AppHax.tag, AppHax);
 

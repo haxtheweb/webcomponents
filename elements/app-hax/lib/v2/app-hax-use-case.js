@@ -33,245 +33,244 @@ export class AppHaxUseCase extends LitElement {
   }
 
   static get styles() {
-  return [
-    css`
-      :host {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        --app-hax-use-case-card-width: 180px;
-        --app-hax-use-case-card-height: 300px;
-        --app-hax-use-case-image-height: 240px;
-        --app-hax-use-case-title-font-size: var(--ddd-font-size-4xs, 14px);
-        text-align: left;
-        font-family: var(--ddd-font-primary);
-        color: light-dark(
-          var(--ddd-theme-default-nittanyNavy),
-          var(--ddd-theme-default-white)
-        );
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .card:hover .image,
-      .card:focus .image,
-      .card:focus-within .image {
-        transform: translateY(-2px) scale(1.02);
-        border: var(--ddd-border-lg);
-        box-shadow: light-dark(
-          4px 8px 24px rgba(28, 28, 28, 0.15),
-          4px 8px 24px rgba(0, 0, 0, 0.5)
-        );
-        border-color:var(--ddd-theme-default-beaverBlue);
-        outline: none;
-      }
-
-      :host([dark]) .card:hover .image,
-      :host([dark]) .card:focus .image,
-      :host([dark]) .card:focus-within .image {
-        border-color: var(--ddd-theme-default-skyBlue);
-      }
-
-      /* Layout Containers */
-      .card {
-        outline: none;
-        display: flex;
-        flex-direction: column;
-        padding: var(--ddd-spacing-1, 4px);
-        height: var(--app-hax-use-case-card-height);
-        width: var(--app-hax-use-case-card-width);
-        background-color: transparent;
-        border: none;
-        text-align: left;
-      }
-
-      .image {
-        transition: transform 0.2s ease-in-out;
-        height: var(--app-hax-use-case-image-height);
-        flex-shrink: 0;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: var(--ddd-border-xs);
-        border-color: var(--ddd-theme-default-slateGray, #c4c4c4);
-        box-shadow: light-dark(
-          0 1px 3px rgba(28, 28, 28, 0.1),
-          0 1px 3px rgba(0, 0, 0, 0.3)
-        );
-        background-color: white;
-      }
-
-      .image img,
-      .image-placeholder {
-        width: 85%;
-        height: 85%;
-      }
-
-      .image img {
-        object-fit: cover;
-        display: block;
-        object-position: left;
-      }
-
-      .image-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-      }
-
-      /* Icons */
-      .icons {
-        position: absolute;
-        bottom: 14px;
-        left: 8px;
-        display: flex;
-        gap: 4px;
-        z-index: 10;
-      }
-
-      .icon-wrapper {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .icon-wrapper::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        border-radius: 50%;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      simple-icon-lite {
-        color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        --simple-icon-width: var(--ddd-icon-4xs, 20px);
-        --simple-icon-height: var(--ddd-icon-4xs, 20px);
-      }
-
-      .image-placeholder simple-icon-lite {
-        --simple-icon-height: var(--ddd-icon-xl, 64px);
-        --simple-icon-width: var(--ddd-icon-xl, 64px);
-      }
-
-      /* Tooltip */
-      .tooltip-container {
-        display: none;
-        position: absolute;
-        top: 32px;
-        left: 0;
-        flex-direction: column;
-        width: max-content;
-        padding: 8px;
-        background-color: white;
-        color: black;
-        border-radius: 6px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
-        z-index: 20;
-      }
-
-      .icons:hover .tooltip-container {
-        display: block;
-      }
-
-      .tooltip-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 4px 8px;
-        border-bottom: 1px solid #ccc;
-      }
-
-      .tooltip-row:last-child {
-        border-bottom: none;
-      }
-
-      .tooltip {
-        font-size: 12px;
-        white-space: nowrap;
-      }
-
-      .tooltip-icon {
-        width: 20px;
-        height: 20px;
-      }
-
-      /* Links */
-      a:link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--ddd-font-primary, sans-serif);
-        font-size: var(--ddd-font-size-3xs, 11px);
-        font-weight: var(--ddd-font-weight-medium, 500);
-        color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        text-decoration: underline;
-        transition: color 0.2s ease;
-      }
-
-      a:visited {
-        color: var(--ddd-theme-default-slateGray, #666);
-      }
-
-      a:hover,
-      a:focus {
-        color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-        text-decoration: none;
-      }
-
-      /* Title */
-      .title {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 4px var(--ddd-spacing-1, 4px) 0;
-      }
-
-      .title h3 {
-        font-size: var(--app-hax-use-case-title-font-size);
-        line-height: 1.2;
-        height: calc(1.2em * 2); 
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        margin: 2px 0 0 0;
-      }
-
-      /* Responsive */
-      @media (max-width: 780px) {
+    return [
+      css`
         :host {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           margin: 0;
-          min-height: auto;
-          width: auto;
-          max-width: 100%;
+          --app-hax-use-case-card-width: 180px;
+          --app-hax-use-case-card-height: 300px;
+          --app-hax-use-case-image-height: 240px;
+          --app-hax-use-case-title-font-size: var(--ddd-font-size-4xs, 14px);
+          text-align: left;
+          font-family: var(--ddd-font-primary);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          cursor: pointer;
+          transition: all 0.2s ease;
         }
 
+        .card:hover .image,
+        .card:focus .image,
+        .card:focus-within .image {
+          transform: translateY(-2px) scale(1.02);
+          border: var(--ddd-border-lg);
+          box-shadow: light-dark(
+            4px 8px 24px rgba(28, 28, 28, 0.15),
+            4px 8px 24px rgba(0, 0, 0, 0.5)
+          );
+          border-color: var(--ddd-theme-default-beaverBlue);
+          outline: none;
+        }
+
+        :host([dark]) .card:hover .image,
+        :host([dark]) .card:focus .image,
+        :host([dark]) .card:focus-within .image {
+          border-color: var(--ddd-theme-default-skyBlue);
+        }
+
+        /* Layout Containers */
         .card {
+          outline: none;
+          display: flex;
+          flex-direction: column;
           padding: var(--ddd-spacing-1, 4px);
+          height: var(--app-hax-use-case-card-height);
+          width: var(--app-hax-use-case-card-width);
+          background-color: transparent;
+          border: none;
+          text-align: left;
         }
-      }
 
-      @media (max-width: 640px) {
-        :host {
-          --app-hax-use-case-card-width: clamp(120px, 30vw, 144px);
-          --app-hax-use-case-card-height: 220px;
-          --app-hax-use-case-image-height: 170px;
-          --app-hax-use-case-title-font-size: var(--ddd-font-size-5xs, 12px);
+        .image {
+          transition: transform 0.2s ease-in-out;
+          height: var(--app-hax-use-case-image-height);
+          flex-shrink: 0;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-slateGray, #c4c4c4);
+          box-shadow: light-dark(
+            0 1px 3px rgba(28, 28, 28, 0.1),
+            0 1px 3px rgba(0, 0, 0, 0.3)
+          );
+          background-color: white;
         }
-      }
-    `,
-  ];
-}
+
+        .image img,
+        .image-placeholder {
+          width: 85%;
+          height: 85%;
+        }
+
+        .image img {
+          object-fit: cover;
+          display: block;
+          object-position: left;
+        }
+
+        .image-placeholder {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Icons */
+        .icons {
+          position: absolute;
+          bottom: 14px;
+          left: 8px;
+          display: flex;
+          gap: 4px;
+          z-index: 10;
+        }
+
+        .icon-wrapper {
+          position: relative;
+          width: 24px;
+          height: 24px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .icon-wrapper::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        simple-icon-lite {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          --simple-icon-width: var(--ddd-icon-4xs, 20px);
+          --simple-icon-height: var(--ddd-icon-4xs, 20px);
+        }
+
+        .image-placeholder simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-xl, 64px);
+          --simple-icon-width: var(--ddd-icon-xl, 64px);
+        }
+
+        /* Tooltip */
+        .tooltip-container {
+          display: none;
+          position: absolute;
+          top: 32px;
+          left: 0;
+          flex-direction: column;
+          width: max-content;
+          padding: 8px;
+          background-color: white;
+          color: black;
+          border-radius: 6px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
+          z-index: 20;
+        }
+
+        .icons:hover .tooltip-container {
+          display: block;
+        }
+
+        .tooltip-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 4px 8px;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .tooltip-row:last-child {
+          border-bottom: none;
+        }
+
+        .tooltip {
+          font-size: 12px;
+          white-space: nowrap;
+        }
+
+        .tooltip-icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        /* Links */
+        a:link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          text-decoration: underline;
+          transition: color 0.2s ease;
+        }
+
+        a:visited {
+          color: var(--ddd-theme-default-slateGray, #666);
+        }
+
+        a:hover,
+        a:focus {
+          color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          text-decoration: none;
+        }
+
+        /* Title */
+        .title {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 4px var(--ddd-spacing-1, 4px) 0;
+        }
+
+        .title h3 {
+          font-size: var(--app-hax-use-case-title-font-size);
+          line-height: 1.2;
+          height: calc(1.2em * 2);
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          margin: 2px 0 0 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 780px) {
+          :host {
+            margin: 0;
+            min-height: auto;
+            width: auto;
+            max-width: 100%;
+          }
+
+          .card {
+            padding: var(--ddd-spacing-1, 4px);
+          }
+        }
+
+        @media (max-width: 640px) {
+          :host {
+            --app-hax-use-case-card-width: clamp(120px, 30vw, 144px);
+            --app-hax-use-case-card-height: 220px;
+            --app-hax-use-case-image-height: 170px;
+            --app-hax-use-case-title-font-size: var(--ddd-font-size-5xs, 12px);
+          }
+        }
+      `,
+    ];
+  }
 
   toggleDisplay() {
     this.isSelected = !this.isSelected;
@@ -320,9 +319,7 @@ export class AppHaxUseCase extends LitElement {
       typeof this.source === "string" &&
       this.source.trim() !== "";
     const safeTitle =
-      this.title &&
-      typeof this.title === "string" &&
-      this.title.trim() !== ""
+      this.title && typeof this.title === "string" && this.title.trim() !== ""
         ? this.title.trim()
         : "Untitled template";
     const cardLabel =
@@ -340,16 +337,20 @@ export class AppHaxUseCase extends LitElement {
         : "icons:cloud-download";
 
     return html`
-      <button class="card" @click="${this.toggleDisplay}" aria-label="${cardLabel}">
+      <button
+        class="card"
+        @click="${this.toggleDisplay}"
+        aria-label="${cardLabel}"
+      >
         <div class="image">
           ${hasSource
             ? html`<img
-            src="${this.source}"
-            alt="${safeTitle}"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="high"
-             />`
+                src="${this.source}"
+                alt="${safeTitle}"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="high"
+              />`
             : html`<div class="image-placeholder" aria-hidden="true">
                 <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
               </div>`}

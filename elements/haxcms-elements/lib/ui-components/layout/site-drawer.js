@@ -28,7 +28,10 @@ class SiteDrawer extends LitElement {
           padding: var(--ddd-spacing-4);
         }
         simple-icon-button-lite {
-          color: var(--site-drawer-button-color, var(--ddd-theme-default-white));
+          color: var(
+            --site-drawer-button-color,
+            var(--ddd-theme-default-white)
+          );
         }
         .drawer {
           position: fixed;
@@ -36,7 +39,10 @@ class SiteDrawer extends LitElement {
           width: var(--site-drawer-width, 300px);
           height: 100vh;
           overflow-y: auto;
-          background-color: var(--site-drawer-background-color, var(--ddd-theme-default-limestoneLight));
+          background-color: var(
+            --site-drawer-background-color,
+            var(--ddd-theme-default-limestoneLight)
+          );
           z-index: 1000000;
           transition: transform 0.3s ease;
           box-shadow: var(--ddd-boxShadow-sm);
@@ -87,8 +93,14 @@ class SiteDrawer extends LitElement {
         icon="${this.icon}"
         @click="${this.toggle}"
       ></simple-icon-button-lite>
-      <div class="scrim ${this.opened ? 'opened' : ''}" @click="${this.close}"></div>
-      <div class="drawer ${this.align} ${this.opened ? 'opened' : ''}" aria-hidden="${!this.opened}">
+      <div
+        class="scrim ${this.opened ? "opened" : ""}"
+        @click="${this.close}"
+      ></div>
+      <div
+        class="drawer ${this.align} ${this.opened ? "opened" : ""}"
+        aria-hidden="${!this.opened}"
+      >
         <div class="drawer-contents"><slot></slot></div>
       </div>
     `;

@@ -34,9 +34,7 @@
       "category": ["custom", "user"],
       "scope": "user",
       "enabled": true,
-      "attributes": [
-        { "icon": "hax:hax2022", "tooltip": "User skeleton" }
-      ],
+      "attributes": [{ "icon": "hax:hax2022", "tooltip": "User skeleton" }],
       "demo-url": "#",
       "skeleton-url": "skeletons/studio-user-template.json"
     },

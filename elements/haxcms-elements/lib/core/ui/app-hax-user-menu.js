@@ -317,7 +317,8 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    */
   _focusToggle() {
     const menuButtonSlot =
-      this.shadowRoot && this.shadowRoot.querySelector('slot[name="menuButton"]');
+      this.shadowRoot &&
+      this.shadowRoot.querySelector('slot[name="menuButton"]');
     if (menuButtonSlot) {
       const assignedElements = menuButtonSlot.assignedElements({
         flatten: true,
@@ -332,10 +333,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           const nestedFocusable = firstAssigned.querySelector(
             'button, a, [tabindex]:not([tabindex="-1"])',
           );
-          if (
-            nestedFocusable &&
-            typeof nestedFocusable.focus === "function"
-          ) {
+          if (nestedFocusable && typeof nestedFocusable.focus === "function") {
             nestedFocusable.focus();
             return;
           }

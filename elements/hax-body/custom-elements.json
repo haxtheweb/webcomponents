@@ -2268,6 +2268,11 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "focusInitial",
+              "description": "Focus the initial action button when the dialog becomes visible."
+            },
+            {
               "kind": "field",
               "name": "t",
               "type": {
@@ -5582,6 +5587,42 @@
                 }
               ],
               "description": "Add an image to an existing image-gallery"
+            },
+            {
+              "kind": "method",
+              "name": "_isMediaElement",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ],
+              "description": "Check if an element is a media element (video or audio) by tag name or schema metadata"
+            },
+            {
+              "kind": "method",
+              "name": "_createMediaPlaylist",
+              "parameters": [
+                {
+                  "name": "originalMediaElement"
+                },
+                {
+                  "name": "newMediaElement"
+                }
+              ],
+              "description": "Create a media-playlist by wrapping the original media element and adding the new media element"
+            },
+            {
+              "kind": "method",
+              "name": "_addMediaToMediaPlaylist",
+              "parameters": [
+                {
+                  "name": "playlistElement"
+                },
+                {
+                  "name": "mediaElement"
+                }
+              ],
+              "description": "Add a media element to an existing media-playlist"
             },
             {
               "kind": "method",
@@ -9685,6 +9726,30 @@
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "__mediaBatchTotal",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "__mediaBatch",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "__mediaBatchPlaceHolder",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",

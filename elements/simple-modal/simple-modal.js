@@ -394,23 +394,26 @@ class SimpleModal extends LitElement {
       @close="${this.close}"
     >
       <div id="titlebar" part="titlebar" class=${this.title ? "full" : "empty"}>
-        <h3 id="simple-modal-title" ?hidden="${!this.title}" part="title" class=${this.title ? "hr-vert" : ""}>
+        <h3
+          id="simple-modal-title"
+          ?hidden="${!this.title}"
+          part="title"
+          class=${this.title ? "hr-vert" : ""}
+        >
           ${this._renderTitle()}
         </h3>
         <div></div>
-        ${
-          !this.modal || this.showClose
-            ? html`<simple-icon-button-lite
-                id="close"
-                dark
-                icon="${this.closeIcon}"
-                @click="${this.close}"
-                label="${this.closeLabel}"
-                part="close"
-              >
-              </simple-icon-button-lite>`
-            : ``
-        }
+        ${!this.modal || this.showClose
+          ? html`<simple-icon-button-lite
+              id="close"
+              dark
+              icon="${this.closeIcon}"
+              @click="${this.close}"
+              label="${this.closeLabel}"
+              part="close"
+            >
+            </simple-icon-button-lite>`
+          : ``}
       </div>
       <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
       <p id="simple-modal-content" part="content">
@@ -717,7 +720,12 @@ class SimpleModal extends LitElement {
     this.titleIcon = "";
     this.breadcrumbs = [];
     this.showClose = false;
-
+    // Override web-dialog's focus restoration so it does not jump back to
+    // a contenteditable or tray field before our own invokedBy.focus() wins.
+    const wd = this.shadowRoot.querySelector("web-dialog");
+    if (wd && this.invokedBy) {
+      wd.$previousActiveElement = this.invokedBy;
+    }
     this.opened = false;
     if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
@@ -859,6 +867,18 @@ class SimpleModal extends LitElement {
       return;
     }
     const maxAttempts = 20;
+    // Check for slotted elements that expose a focusInitial method (e.g., hax-confirm-dialog)
+    const contentSlot = this.querySelector("[slot='content']");
+    if (contentSlot && typeof contentSlot.focusInitial === "function") {
+      contentSlot.focusInitial();
+      return;
+    }
+    const buttonsSlot = this.querySelector("[slot='buttons']");
+    if (buttonsSlot && typeof buttonsSlot.focusInitial === "function") {
+      buttonsSlot.focusInitial();
+      return;
+    }
+    // Try light DOM selectors first
     const contentTarget = this.querySelector(
       [
         "[slot='content'] [autofocus]",
@@ -875,6 +895,38 @@ class SimpleModal extends LitElement {
     if (contentTarget && typeof contentTarget.focus === "function") {
       contentTarget.focus();
       return;
+    }
+    // Piercing shadow DOMs of slotted content elements
+    const slottedContent = this.querySelector("[slot='content']");
+    if (slottedContent && slottedContent.shadowRoot) {
+      const focusableSelectors = [
+        "[autofocus]",
+        "button:not([disabled])",
+        "[href]",
+        "input:not([disabled]):not([type='hidden'])",
+        "select:not([disabled])",
+        "textarea:not([disabled])",
+        "[tabindex]:not([tabindex='-1'])",
+      ].join(", ");
+      const shadowTarget =
+        slottedContent.shadowRoot.querySelector(focusableSelectors);
+      if (shadowTarget && typeof shadowTarget.focus === "function") {
+        shadowTarget.focus();
+        return;
+      }
+    }
+    const slottedButtons = this.querySelector("[slot='buttons']");
+    if (slottedButtons && slottedButtons.shadowRoot) {
+      const focusableSelectors = [
+        "button:not([disabled])",
+        "[tabindex]:not([tabindex='-1'])",
+      ].join(", ");
+      const shadowTarget =
+        slottedButtons.shadowRoot.querySelector(focusableSelectors);
+      if (shadowTarget && typeof shadowTarget.focus === "function") {
+        shadowTarget.focus();
+        return;
+      }
     }
     const close = this.shadowRoot.querySelector("#close");
     if (close && close.shadowRoot) {

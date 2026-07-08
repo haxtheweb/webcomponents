@@ -241,9 +241,7 @@ export class SiteView extends DDD {
     }
     if (this.error && (!this.results || this.results.length < 1)) {
       return html`
-        <div class="error" role="status" aria-live="polite">
-          ${this.error}
-        </div>
+        <div class="error" role="status" aria-live="polite">${this.error}</div>
       `;
     }
     if (!this.results || this.results.length < 1) {

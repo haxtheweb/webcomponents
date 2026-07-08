@@ -260,7 +260,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // Use activePlaceHolder if it is an image, otherwise fallback to activeNode
       let imageTarget = this._isImageElement(this.activePlaceHolder)
         ? this.activePlaceHolder
-        : (this._isImageElement(this.activeNode) ? this.activeNode : null);
+        : this._isImageElement(this.activeNode)
+          ? this.activeNode
+          : null;
       if (imageTarget) {
         const imageGallerySchema = this.haxSchemaFromTag("image-gallery");
         if (imageGallerySchema && imageGallerySchema.gizmo) {
@@ -586,10 +588,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     const tagName = element.tagName.toLowerCase();
 
     // Check for direct media element tag names
-    const directMediaElements = [
-      "video-player",
-      "audio-player",
-    ];
+    const directMediaElements = ["video-player", "audio-player"];
     if (directMediaElements.includes(tagName)) {
       return true;
     }

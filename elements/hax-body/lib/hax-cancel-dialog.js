@@ -73,6 +73,18 @@ class HaxCancelDialog extends I18NMixin(LitElement) {
       }),
     );
   }
+  /**
+   * Focus the initial action button when the dialog becomes visible.
+   */
+  focusInitial() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    const noButton = this.shadowRoot.querySelector("#hax-cancel-no");
+    if (noButton && typeof noButton.focus === "function") {
+      noButton.focus();
+    }
+  }
 
   constructor() {
     super();

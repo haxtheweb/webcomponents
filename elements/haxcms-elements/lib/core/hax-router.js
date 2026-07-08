@@ -14,10 +14,7 @@ export class HaxRouter {
     this._clickHandler = this._onClick.bind(this);
     globalThis.addEventListener("popstate", this._onPopstate.bind(this));
     if (globalThis.document) {
-      globalThis.document.addEventListener(
-        "click",
-        this._clickHandler,
-      );
+      globalThis.document.addEventListener("click", this._clickHandler);
     }
   }
 
@@ -45,7 +42,8 @@ export class HaxRouter {
   _onClick(event) {
     if (event.defaultPrevented) return;
     if (event.button !== 0) return;
-    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
+      return;
 
     // Use composedPath so we can find the <a> even inside shadow DOM
     const path = event.composedPath ? event.composedPath() : [event.target];
@@ -69,7 +67,12 @@ export class HaxRouter {
     const origin = globalThis.location.origin;
     let url;
     try {
-      url = new URL(href, anchor.baseURI || globalThis.document.baseURI || globalThis.location.href);
+      url = new URL(
+        href,
+        anchor.baseURI ||
+          globalThis.document.baseURI ||
+          globalThis.location.href,
+      );
     } catch (e) {
       return;
     }
@@ -93,7 +96,11 @@ export class HaxRouter {
     if (url.pathname === globalThis.location.pathname && url.hash) return;
 
     event.preventDefault();
-    globalThis.history.pushState(null, "", url.pathname + url.search + url.hash);
+    globalThis.history.pushState(
+      null,
+      "",
+      url.pathname + url.search + url.hash,
+    );
     globalThis.scrollTo(0, 0);
     this._resolve();
   }
@@ -104,7 +111,7 @@ export class HaxRouter {
   _getCleanPathname() {
     let pathname = globalThis.location.pathname;
     let baseUrl = this.baseUrl;
-    if (baseUrl && baseUrl.includes('://')) {
+    if (baseUrl && baseUrl.includes("://")) {
       try {
         baseUrl = new URL(baseUrl, globalThis.location.href).pathname;
       } catch (e) {
@@ -150,10 +157,7 @@ export class HaxRouter {
       }
 
       // Wildcard: /(.*) or /(.*)?
-      if (
-        normalizedRoutePath === "/(.*)" ||
-        normalizedRoutePath === "/(.*)?"
-      ) {
+      if (normalizedRoutePath === "/(.*)" || normalizedRoutePath === "/(.*)?") {
         const remaining = pathname === "/" ? "" : pathname.slice(1);
         return { route, params: [remaining] };
       }

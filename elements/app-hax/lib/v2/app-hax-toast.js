@@ -14,9 +14,7 @@ export class AppHaxToast extends RPGCharacterToast {
         :host {
           --simple-toast-top: var(
             --app-hax-toast-top,
-            calc(
-              var(--top-bar-height, var(--ddd-spacing-16, 64px))
-            )
+            calc(var(--top-bar-height, var(--ddd-spacing-16, 64px)))
           );
           --app-hax-toast-user-menu-offset: 0;
           --simple-toast-right: var(

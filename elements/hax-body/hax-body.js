@@ -31,7 +31,6 @@ import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 
-
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
 const maxStep = 25;
@@ -1303,12 +1302,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
   _onKeyDown(e) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
+    // Also bail out if any modal is currently open so keyboard shortcuts don't
+    // fire behind confirmation dialogs.
+    const activeEl = globalThis.document.activeElement;
+    const inModal =
+      activeEl &&
+      (activeEl.tagName === "SIMPLE-MODAL" ||
+        activeEl.closest("simple-modal") ||
+        (globalThis.SimpleModal &&
+          globalThis.SimpleModal.instance &&
+          globalThis.SimpleModal.instance.opened));
     if (
       this.editMode &&
-      globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
-      globalThis.document.activeElement.tagName !== "BODY" &&
-      globalThis.document.activeElement.tagName !== "RICH-TEXT-EDITOR-PROMPT" &&
-      globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
+      activeEl.tagName !== "HAX-TRAY" &&
+      activeEl.tagName !== "BODY" &&
+      activeEl.tagName !== "RICH-TEXT-EDITOR-PROMPT" &&
+      activeEl.tagName !== "SIMPLE-MODAL" &&
+      !inModal
     ) {
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
@@ -2684,7 +2694,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       index = slot ? slots.indexOf(slot) : -1,
       move = slots[index + direction],
       sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
-    if (direction < 0 && target && target.tagName === "PAGE-BREAK" && parent === this) {
+    if (
+      direction < 0 &&
+      target &&
+      target.tagName === "PAGE-BREAK" &&
+      parent === this
+    ) {
       return true;
     }
     if (!!target && (!slot || slot === target.getAttribute("slot"))) {
@@ -5153,11 +5168,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // Check if an image is being dropped on a media player for thumbnail assignment
           if (
             local &&
-            (local.tagName === "VIDEO-PLAYER" || local.tagName === "AUDIO-PLAYER")
+            (local.tagName === "VIDEO-PLAYER" ||
+              local.tagName === "AUDIO-PLAYER")
           ) {
-            const hasImageFile = Array.from(
-              e.dataTransfer.files || [],
-            ).some(
+            const hasImageFile = Array.from(e.dataTransfer.files || []).some(
               (file) => file.type && file.type.startsWith("image/"),
             );
             if (hasImageFile) {
@@ -5230,7 +5244,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                       galleryParent = root.host;
                       break;
                     }
-                    root = root.host.getRootNode ? root.host.getRootNode() : null;
+                    root = root.host.getRootNode
+                      ? root.host.getRootNode()
+                      : null;
                   }
                 }
                 if (galleryParent) {
@@ -5345,10 +5361,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 const playlist =
                   globalThis.document.createElement("media-playlist");
                 if (local.getAttribute("slot")) {
-                  playlist.setAttribute(
-                    "slot",
-                    local.getAttribute("slot"),
-                  );
+                  playlist.setAttribute("slot", local.getAttribute("slot"));
                 } else if (eventPath[0].classList.contains("column")) {
                   playlist.setAttribute(
                     "slot",

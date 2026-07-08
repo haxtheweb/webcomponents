@@ -127,6 +127,15 @@ class HAXCMSKeyboardShortcuts {
   _handleKeydown(e) {
     if (!this.enabled) return;
     if (store.adminMode) return;
+    // Block shortcuts while any modal/dialog is open to avoid triggering
+    // actions behind a confirmation or admin dialog.
+    if (
+      globalThis.SimpleModal &&
+      globalThis.SimpleModal.instance &&
+      globalThis.SimpleModal.instance.opened
+    ) {
+      return;
+    }
 
     // Normalize the key (handles Shift+number keys)
     const normalizedKey = this._normalizeKey(e);

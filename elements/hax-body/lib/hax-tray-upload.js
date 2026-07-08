@@ -87,9 +87,7 @@ class HaxTrayUpload extends HaxUploadField {
           ((file.type &&
             (file.type.startsWith("audio/") ||
               file.type.startsWith("video/"))) ||
-            /\.(mp3|mp4|webm|ogg|wav|mov|mkv|avi|m4a|m4v)$/i.test(
-              file.name,
-            ));
+            /\.(mp3|mp4|webm|ogg|wav|mov|mkv|avi|m4a|m4v)$/i.test(file.name));
         if (isMedia) {
           this.__mediaBatch.push({
             url: this.shadowRoot.querySelector("#url").value,
@@ -110,10 +108,7 @@ class HaxTrayUpload extends HaxUploadField {
               media.mediaTitle = item.name;
               playlist.appendChild(media);
             });
-            if (
-              HAXStore.activeHaxBody &&
-              this.__mediaBatchPlaceHolder
-            ) {
+            if (HAXStore.activeHaxBody && this.__mediaBatchPlaceHolder) {
               HAXStore.activeHaxBody.haxReplaceNode(
                 this.__mediaBatchPlaceHolder,
                 playlist,

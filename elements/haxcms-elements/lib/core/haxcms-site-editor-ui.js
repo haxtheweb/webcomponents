@@ -1871,7 +1871,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
           const createType = values && values.type ? values.type : "sibling";
-          const templateContent = values && values.templateContent ? values.templateContent : null;
+          const templateContent =
+            values && values.templateContent ? values.templateContent : null;
 
           // If no input provided, show default page creation option to match prior UX
           if (!input || input.trim() === "") {
@@ -1883,7 +1884,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                args: ["New Page", createType, templateContent],
+                  args: ["New Page", createType, templateContent],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page",
@@ -1900,7 +1901,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             // Add blank page option first
             results.push({
-              title: templateContent ? `Create ${title} with view` : `Create ${title}`,
+              title: templateContent
+                ? `Create ${title} with view`
+                : `Create ${title}`,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -1915,18 +1918,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add template options if templates are available
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, index) => {
-              results.push({
-                title: `Create ${template.name} named ${title}`,
-                icon: "hax:templates",
-                tags: ["template", "page", "create"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [title, createType, templateContent || template.content],
-                },
-                eventName: "super-daemon-element-method",
-                path: `CMS/action/create/page/template/${template.id}`,
-              });
+                results.push({
+                  title: `Create ${template.name} named ${title}`,
+                  icon: "hax:templates",
+                  tags: ["template", "page", "create"],
+                  value: {
+                    target: siteEditorUI,
+                    method: "createPageWithTitle",
+                    args: [
+                      title,
+                      createType,
+                      templateContent || template.content,
+                    ],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: `CMS/action/create/page/template/${template.id}`,
+                });
               });
             }
 
@@ -2953,7 +2960,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-<app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}">
+      <app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}">
         <div slot="left" class="topbar-left-group">
           <span class="home-btn">
             <a
@@ -3217,30 +3224,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${this.editMode}"
               >${this.userName}</simple-tooltip
             >
-          <div slot="pre-menu" class="ops-panel">
-            <slot name="haxcms-site-editor-ui-pre-menu"></slot>
-            <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
-            <button
-              class="soundToggle"
-              @click="${this.soundToggle}"
-              aria-label="Toggle sound effects ${this.soundIcon &&
-              this.soundIcon.indexOf("Full") !== -1
-                ? "off"
-                : "on"}"
-              aria-pressed="${this.soundIcon &&
-              this.soundIcon.indexOf("Full") !== -1
-                ? "true"
-                : "false"}"
-            >
-              <simple-icon-lite
-                src="${this.soundIcon}"
-                loading="lazy"
-                decoding="async"
-                aria-hidden="true"
-              ></simple-icon-lite>
-              <span class="sound-label">Sound effects</span>
-            </button>
-          </div>
+            <div slot="pre-menu" class="ops-panel">
+              <slot name="haxcms-site-editor-ui-pre-menu"></slot>
+              <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
+              <button
+                class="soundToggle"
+                @click="${this.soundToggle}"
+                aria-label="Toggle sound effects ${this.soundIcon &&
+                this.soundIcon.indexOf("Full") !== -1
+                  ? "off"
+                  : "on"}"
+                aria-pressed="${this.soundIcon &&
+                this.soundIcon.indexOf("Full") !== -1
+                  ? "true"
+                  : "false"}"
+              >
+                <simple-icon-lite
+                  src="${this.soundIcon}"
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+                <span class="sound-label">Sound effects</span>
+              </button>
+            </div>
             <slot
               slot="main-menu"
               name="haxcms-site-editor-ui-main-menu"

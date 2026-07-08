@@ -186,6 +186,13 @@ class HAXConfirmDialog extends DDD {
       target.focus();
     }
   }
+  /**
+   * Public alias for _focusInitialAction so that simple-modal can delegate
+   * initial focus to this component via a consistent interface.
+   */
+  focusInitial() {
+    this._focusInitialAction();
+  }
   _handleKeydown(event) {
     if (!event || event.key !== "Tab") {
       return;

@@ -55,12 +55,7 @@ export class DarkmodeToggle extends LitElement {
         @click="${this._toggle}"
         @keydown="${this._handleKeydown}"
       >
-        <img
-          class="icon"
-          src="${iconSrc}"
-          alt=""
-          aria-hidden="true"
-        />
+        <img class="icon" src="${iconSrc}" alt="" aria-hidden="true" />
         <span class="label">${this.label}</span>
       </button>
     `;

@@ -54,4 +54,7 @@ export class AppHAXDarkmodeToggle extends DarkmodeToggle {
     });
   }
 }
-globalThis.customElements.define(AppHAXDarkmodeToggle.tag, AppHAXDarkmodeToggle);
+globalThis.customElements.define(
+  AppHAXDarkmodeToggle.tag,
+  AppHAXDarkmodeToggle,
+);

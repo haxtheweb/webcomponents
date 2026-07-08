@@ -19,6 +19,10 @@
             },
             {
               "kind": "method",
+              "name": "_syncResponsiveStoreState"
+            },
+            {
+              "kind": "method",
               "name": "_openExternalLink",
               "parameters": [
                 {
@@ -91,6 +95,10 @@
             },
             {
               "kind": "method",
+              "name": "fireHiddenTemplates"
+            },
+            {
+              "kind": "method",
               "name": "fireUnlocked"
             },
             {
@@ -112,10 +120,6 @@
             },
             {
               "kind": "method",
-              "name": "helpClick"
-            },
-            {
-              "kind": "method",
               "name": "toggleMenu"
             },
             {
@@ -124,7 +128,293 @@
             },
             {
               "kind": "method",
+              "name": "_isHAXiamDeployment",
+              "parameters": [
+                {
+                  "name": "appSettings",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_allowSystemSettings",
+              "parameters": [
+                {
+                  "name": "appSettings",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncSystemSettingsMerlinContext",
+              "parameters": [
+                {
+                  "name": "appSettings",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_restoreMerlinAllowedCallback"
+            },
+            {
+              "kind": "method",
+              "name": "_normalizeSystemSettingsPanel",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsPanelMeta",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsPanelFromRouteSegment",
+              "parameters": [
+                {
+                  "name": "segment",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsRouteSegment",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsRoutePath",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsPanelFromAdminRoutePath",
+              "parameters": [
+                {
+                  "name": "path",
+                  "default": "\"admin\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsModalRouteState",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsModalStyles"
+            },
+            {
+              "kind": "method",
+              "name": "_currentSystemSettingsDialog"
+            },
+            {
+              "kind": "method",
+              "name": "_setSystemSettingsDialogPanel",
+              "parameters": [
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                },
+                {
+                  "name": "dialog",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_showSystemSettingsModal",
+              "parameters": [
+                {
+                  "name": "dialog",
+                  "default": "null"
+                },
+                {
+                  "name": "panelKey",
+                  "default": "\"dashboard\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_normalizeAdminRoutePath",
+              "parameters": [
+                {
+                  "name": "path",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getAdminRoutePathFromLocation"
+            },
+            {
+              "kind": "method",
+              "name": "_setAdminRoutePathOnLocation",
+              "parameters": [
+                {
+                  "name": "path",
+                  "default": "null"
+                },
+                {
+                  "name": "historyMode",
+                  "default": "\"push\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clearAdminRoutePathFromLocation",
+              "parameters": [
+                {
+                  "name": "historyMode",
+                  "default": "\"replace\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_canApplyAdminRoutePath"
+            },
+            {
+              "kind": "method",
+              "name": "_applyAdminRoutePath",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "attempt",
+                  "default": "0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_applyInitialAdminRoutePath"
+            },
+            {
+              "kind": "method",
+              "name": "_adminRoutePopState"
+            },
+            {
+              "kind": "method",
+              "name": "_simpleModalClosed"
+            },
+            {
+              "kind": "method",
+              "name": "_systemSettingsPanelChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_simpleModalBreadcrumbClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openSystemSettingsMenuTap",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openSystemSettingsFromMerlin"
+            },
+            {
+              "kind": "method",
+              "name": "_getSystemSettingsInvokedBy"
+            },
+            {
+              "kind": "method",
+              "name": "openSystemSettings",
+              "parameters": [
+                {
+                  "name": "fromMerlin",
+                  "default": "false"
+                },
+                {
+                  "name": "routeOptions",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncHeaderPreSlot",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isDashboardModalOpen"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSuperDaemonClose",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "openMerlin"
+            },
+            {
+              "kind": "method",
+              "name": "rpgStartWalk"
+            },
+            {
+              "kind": "method",
+              "name": "rpgStopWalk"
             },
             {
               "kind": "method",
@@ -134,6 +424,16 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "rpgWalk",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "rpgWalk"
             },
             {
               "kind": "field",
@@ -169,7 +469,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, selectPage: \"Select page\", backToSiteList: \"Back to site list\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Site Outline\", pageOutline: \"Structure\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights dashboard\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", }"
+              "default": "{ ...this.t, selectPage: \"Select page\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site Settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Site Outline\", pageOutline: \"Structure\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", }"
             },
             {
               "kind": "field",
@@ -181,25 +481,8 @@
             },
             {
               "kind": "field",
-              "name": "allowedCallback"
-            },
-            {
-              "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
-            },
-            {
-              "kind": "field",
-              "name": "__tour",
-              "default": "SimpleTourManager"
-            },
-            {
-              "kind": "field",
-              "name": "tourName",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"hax\""
             },
             {
               "kind": "field",
@@ -210,6 +493,59 @@
               },
               "default": "false",
               "attribute": "userMenuOpen"
+            },
+            {
+              "kind": "field",
+              "name": "hasHeaderPre",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "has-header-pre",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isHAXiamDeployment",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-haxiam-deployment"
+            },
+            {
+              "kind": "field",
+              "name": "__currentAdminRoutePath",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__systemSettingsModalOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__systemSettingsActivePanel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"dashboard\""
+            },
+            {
+              "kind": "field",
+              "name": "__systemSettingsDialog",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",
@@ -345,6 +681,14 @@
           ],
           "attributes": [
             {
+              "name": "rpgWalk",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "rpgWalk"
+            },
+            {
               "name": "unlockComingSoon",
               "type": {
                 "text": "boolean"
@@ -432,6 +776,22 @@
               "fieldName": "userMenuOpen"
             },
             {
+              "name": "is-haxiam-deployment",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isHAXiamDeployment"
+            },
+            {
+              "name": "has-header-pre",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasHeaderPre"
+            },
+            {
               "name": "siteReady",
               "type": {
                 "text": "boolean"
@@ -460,13 +820,13 @@
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             },
             {
-              "name": "SimpleTourFinder",
-              "package": "@haxtheweb/simple-popover/lib/SimpleTourFinder.js"
+              "name": "ResponsiveUtilityBehaviors",
+              "package": "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js"
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           }
         }
       ],
@@ -494,7 +854,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`8-bit Overworld theme`",
+          "description": "",
           "name": "AppHaxTheme",
           "members": [
             {

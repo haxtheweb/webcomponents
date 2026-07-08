@@ -310,7 +310,8 @@ class Store {
         : null;
     const canLoadThemes =
       api &&
-      (typeof api.supportsCall !== "function" || api.supportsCall("themesList"));
+      (typeof api.supportsCall !== "function" ||
+        api.supportsCall("themesList"));
     if (canLoadThemes) {
       try {
         const response = await api.makeCall("themesList", {
@@ -342,7 +343,8 @@ class Store {
               element: element || key,
               machineName: machineName || key,
               thumbnail:
-                typeof theme.thumbnail === "string" && theme.thumbnail.trim() !== ""
+                typeof theme.thumbnail === "string" &&
+                theme.thumbnail.trim() !== ""
                   ? theme.thumbnail
                   : typeof theme.screenshot === "string"
                     ? theme.screenshot

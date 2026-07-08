@@ -11,7 +11,7 @@ import { LitElement, css, html } from "lit";
  * - site - the site this is being used on
  * - recent content - the most recent content on the site
  * - content type - the type of content being displayed
- * 
+ *
  * @customElement site-recent-content-block
  * @demo demo/index.html
  */

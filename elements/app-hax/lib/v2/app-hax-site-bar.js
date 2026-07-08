@@ -107,7 +107,9 @@ export class AppHaxSiteBars extends SimpleColors {
     if (!store || !store.manifest || !Array.isArray(store.manifest.items)) {
       return null;
     }
-    return toJS(store.manifest.items.filter((item) => item.id === this.siteId).pop());
+    return toJS(
+      store.manifest.items.filter((item) => item.id === this.siteId).pop(),
+    );
   }
 
   openCreateTemplateDialog(site) {
@@ -212,9 +214,7 @@ export class AppHaxSiteBars extends SimpleColors {
         throw new Error("Skeleton payload missing from response");
       }
       const fileName =
-        payload &&
-        payload.filename &&
-        typeof payload.filename === "string"
+        payload && payload.filename && typeof payload.filename === "string"
           ? payload.filename
           : `${this.getSiteMachineName() || "site-template"}.json`;
       this.triggerJsonDownload(skeletonData, fileName);
@@ -443,10 +443,7 @@ export class AppHaxSiteBars extends SimpleColors {
             a.click();
             globalThis.document.body.removeChild(a);
           } else {
-            console.error(
-              "downloadSite response missing data.link:",
-              response,
-            );
+            console.error("downloadSite response missing data.link:", response);
           }
         } else {
           // For copy and archive, refresh the site listing
@@ -497,16 +494,18 @@ export class AppHaxSiteBars extends SimpleColors {
             2px 2px 12px #1c1c1c,
             2px 2px 12px rgba(0, 0, 0, 0.3)
           );
-          transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border 0.2s ease;
           overflow: visible;
-          
         }
 
         :host(:hover),
         :host(:focus),
         :host(:focus-within) {
           border: var(--ddd-border-md);
-          border-color:var(--ddd-theme-default-beaverBlue);
+          border-color: var(--ddd-theme-default-beaverBlue);
           box-shadow: light-dark(
             4px 8px 24px rgba(28, 28, 28, 0.15),
             4px 8px 24px rgba(0, 0, 0, 0.5)
@@ -521,7 +520,6 @@ export class AppHaxSiteBars extends SimpleColors {
         :host([dark]:focus-within) {
           border-color: var(--ddd-theme-default-skyBlue);
         }
-
 
         #mainCard {
           display: flex;
@@ -635,24 +633,23 @@ export class AppHaxSiteBars extends SimpleColors {
     return html`
       <div id="mainCard">
         <div class="cardImage">
-        ${this.image
-          ? html`
-              <a
-                class="imageLink"
-                href="${this.siteUrl}"
-                aria-label="Open ${this.title || "site"}"
-              >
-                <img
-                  src="${this.image}"
-                  alt="Screenshot of ${this.title || "site"} theme"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                />
-              </a>
-            `
-          : ""}
-
+          ${this.image
+            ? html`
+                <a
+                  class="imageLink"
+                  href="${this.siteUrl}"
+                  aria-label="Open ${this.title || "site"}"
+                >
+                  <img
+                    src="${this.image}"
+                    alt="Screenshot of ${this.title || "site"} theme"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </a>
+              `
+            : ""}
         </div>
         <div class="cardContent">
           <div class="titleBar">
@@ -722,10 +719,10 @@ export class AppHaxSiteBars extends SimpleColors {
           <div class="date">
             <simple-icon icon="hax:calendar" title="Last updated"></simple-icon>
             <simple-datetime
-                title="Last updated"
-                format="m/j/y"
-                .timestamp="${this.lastUpdatedTime}"
-                unix
+              title="Last updated"
+              format="m/j/y"
+              .timestamp="${this.lastUpdatedTime}"
+              unix
             ></simple-datetime>
           </div>
         </div>

@@ -89,8 +89,7 @@ class HAXCMSSystemSettings extends DDD {
     this.__boundSkeletonUploadBefore = this._onSkeletonUploadBefore.bind(this);
     this.__boundSkeletonUploadResponse =
       this._onSkeletonUploadResponse.bind(this);
-    this.__boundSkeletonUploadReject =
-      this._onSkeletonUploadReject.bind(this);
+    this.__boundSkeletonUploadReject = this._onSkeletonUploadReject.bind(this);
     this.panelList = this._buildPanels();
     this.panelMap = this._buildPanelMap(this.panelList);
     this.defaultPanelValues = this._buildDefaultPanelValues(this.panelList);
@@ -991,7 +990,8 @@ class HAXCMSSystemSettings extends DDD {
                 providerLabel: "YouTube",
                 storageKey: "youtube",
                 title: "YouTube API key",
-                helpUrl: "https://developers.google.com/youtube/v3/getting-started",
+                helpUrl:
+                  "https://developers.google.com/youtube/v3/getting-started",
                 inputMethod: "textfield",
                 default: "",
               },
@@ -1236,7 +1236,10 @@ class HAXCMSSystemSettings extends DDD {
       jwtValue = settings.jwt.trim();
     }
     if (jwtValue !== "") {
-      if (jwtValue.indexOf("Bearer ") !== 0 && jwtValue.indexOf("bearer ") !== 0) {
+      if (
+        jwtValue.indexOf("Bearer ") !== 0 &&
+        jwtValue.indexOf("bearer ") !== 0
+      ) {
         jwtValue = `Bearer ${jwtValue}`;
       }
       if (!Object.prototype.hasOwnProperty.call(headers, "Authorization")) {
@@ -1259,7 +1262,8 @@ class HAXCMSSystemSettings extends DDD {
       return "";
     }
     const hashIndex = target.indexOf("#");
-    const baseWithQuery = hashIndex === -1 ? target : target.substring(0, hashIndex);
+    const baseWithQuery =
+      hashIndex === -1 ? target : target.substring(0, hashIndex);
     const hash = hashIndex === -1 ? "" : target.substring(hashIndex);
     const queryIndex = baseWithQuery.indexOf("?");
     const basePath =
@@ -1379,7 +1383,11 @@ class HAXCMSSystemSettings extends DDD {
   }
 
   _parseUploadJsonResponse(xhr = null) {
-    if (!xhr || typeof xhr.response !== "string" || xhr.response.trim() === "") {
+    if (
+      !xhr ||
+      typeof xhr.response !== "string" ||
+      xhr.response.trim() === ""
+    ) {
       return null;
     }
     try {
@@ -1405,10 +1413,7 @@ class HAXCMSSystemSettings extends DDD {
     if (!uploadNode) {
       return;
     }
-    if (
-      this.__skeletonUploadNode &&
-      this.__skeletonUploadNode !== uploadNode
-    ) {
+    if (this.__skeletonUploadNode && this.__skeletonUploadNode !== uploadNode) {
       this._teardownSkeletonUploader();
     }
     uploadField.showSources = false;
@@ -1592,9 +1597,12 @@ class HAXCMSSystemSettings extends DDD {
     ) {
       return false;
     }
-    const response = await this._callAppEndpointWithData(["saveEnabledBlocks"], {
-      enabledBlocks: enabledBlocks,
-    });
+    const response = await this._callAppEndpointWithData(
+      ["saveEnabledBlocks"],
+      {
+        enabledBlocks: enabledBlocks,
+      },
+    );
     return !!(response && response.status === 200);
   }
 
@@ -1694,9 +1702,7 @@ class HAXCMSSystemSettings extends DDD {
 
   _onCodeEditorValueChanged(panelKey, property, e) {
     const value =
-      e && e.detail && typeof e.detail.value === "string"
-        ? e.detail.value
-        : "";
+      e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
     this._setPanelPropertyValue(panelKey, property, value);
   }
 
@@ -1718,7 +1724,10 @@ class HAXCMSSystemSettings extends DDD {
     }
     if (panelKey === "themes") {
       return {
-        enabledThemes: this._selectedOptionMachineNames(values, this.themeOptions),
+        enabledThemes: this._selectedOptionMachineNames(
+          values,
+          this.themeOptions,
+        ),
       };
     }
     if (panelKey === "custom-code") {
@@ -1839,7 +1848,9 @@ class HAXCMSSystemSettings extends DDD {
 
   _appSettings() {
     const settings =
-      globalThis && globalThis.appSettings && typeof globalThis.appSettings === "object"
+      globalThis &&
+      globalThis.appSettings &&
+      typeof globalThis.appSettings === "object"
         ? globalThis.appSettings
         : {};
     return settings;
@@ -1916,7 +1927,11 @@ class HAXCMSSystemSettings extends DDD {
     }
     for (let i = 0; i < panel.sections.length; i++) {
       const section = panel.sections[i];
-      if (section && Array.isArray(section.fields) && section.fields.length > 0) {
+      if (
+        section &&
+        Array.isArray(section.fields) &&
+        section.fields.length > 0
+      ) {
         return section.fields;
       }
     }
@@ -2024,7 +2039,9 @@ class HAXCMSSystemSettings extends DDD {
     const currentValues = this._cloneData(this.panelValues || {});
     const panelValues = this._cloneData(currentValues.integrations || {});
     const data =
-      record && typeof record === "object" && !Array.isArray(record) ? record : {};
+      record && typeof record === "object" && !Array.isArray(record)
+        ? record
+        : {};
     for (let i = 0; i < fields.length; i++) {
       const property = fields[i].property;
       const nextValue = Object.prototype.hasOwnProperty.call(data, property)
@@ -2081,7 +2098,9 @@ class HAXCMSSystemSettings extends DDD {
   _buildIntegrationsSavePayload(values = {}) {
     const fields = this._integrationFields();
     const source =
-      values && typeof values === "object" && !Array.isArray(values) ? values : {};
+      values && typeof values === "object" && !Array.isArray(values)
+        ? values
+        : {};
     const payload = {};
     for (let i = 0; i < fields.length; i++) {
       const field = fields[i];
@@ -2202,7 +2221,9 @@ class HAXCMSSystemSettings extends DDD {
         ? this.defaultPanelValues.media
         : {};
     const data =
-      source && typeof source === "object" && !Array.isArray(source) ? source : {};
+      source && typeof source === "object" && !Array.isArray(source)
+        ? source
+        : {};
     const payload =
       data.mediaSettings &&
       typeof data.mediaSettings === "object" &&
@@ -2296,9 +2317,12 @@ class HAXCMSSystemSettings extends DDD {
     return false;
   }
   async _saveEnabledThemesData(enabledThemes = []) {
-    const response = await this._callAppEndpointWithData(["saveEnabledThemes"], {
-      enabledThemes: Array.isArray(enabledThemes) ? enabledThemes : [],
-    });
+    const response = await this._callAppEndpointWithData(
+      ["saveEnabledThemes"],
+      {
+        enabledThemes: Array.isArray(enabledThemes) ? enabledThemes : [],
+      },
+    );
     if (response && response.status === 200) {
       await this._loadThemeOptions(true);
       return true;
@@ -2381,8 +2405,7 @@ class HAXCMSSystemSettings extends DDD {
           typeof item.scope === "string" && item.scope
             ? item.scope.toLowerCase()
             : "core",
-        enabled:
-          typeof item.enabled === "boolean" ? item.enabled : true,
+        enabled: typeof item.enabled === "boolean" ? item.enabled : true,
       };
       options.push(option);
     }
@@ -2497,12 +2520,9 @@ class HAXCMSSystemSettings extends DDD {
     this.statusError = "";
     await this._ensureSystemRegistryReady();
     let options = [];
-    const response = await this._callAppEndpointWithData(
-      ["skeletonsList"],
-      {
-        includeDisabled: true,
-      },
-    );
+    const response = await this._callAppEndpointWithData(["skeletonsList"], {
+      includeDisabled: true,
+    });
     const items = this._normalizeListResponseArray(response);
     if (items.length > 0) {
       options = this._normalizeSkeletonOptions(items);
@@ -2766,7 +2786,8 @@ class HAXCMSSystemSettings extends DDD {
         source.summary ? source.summary : source,
         fallbackPayload.summary,
       );
-      const rowsSource = source.rows && Array.isArray(source.rows) ? source.rows : [];
+      const rowsSource =
+        source.rows && Array.isArray(source.rows) ? source.rows : [];
       if (rowsSource.length > 0) {
         statusPayload = this._ensureVersionStatusRow(
           this._normalizeStatusRows(rowsSource),
@@ -2814,7 +2835,11 @@ class HAXCMSSystemSettings extends DDD {
       return "Unknown";
     }
     const value = this.statusSummary[key];
-    if (typeof value === "undefined" || value === null || `${value}`.trim() === "") {
+    if (
+      typeof value === "undefined" ||
+      value === null ||
+      `${value}`.trim() === ""
+    ) {
       return "Unknown";
     }
     return `${value}`;
@@ -2847,7 +2872,10 @@ class HAXCMSSystemSettings extends DDD {
         aria-label="${panel.label}"
         title="${panel.description}"
       >
-        <simple-icon-lite icon="${panel.icon}" aria-hidden="true"></simple-icon-lite>
+        <simple-icon-lite
+          icon="${panel.icon}"
+          aria-hidden="true"
+        ></simple-icon-lite>
         <span class="label">${panel.label}</span>
         <span class="description">${panel.description}</span>
         ${panel.disabled
@@ -2878,12 +2906,18 @@ class HAXCMSSystemSettings extends DDD {
           </div>
           <div class="primary-grid">
             ${firstRowOrder.map((panelKey) =>
-              this._renderPanelLauncher(this._getPanelByKey(panelKey), "primary"),
+              this._renderPanelLauncher(
+                this._getPanelByKey(panelKey),
+                "primary",
+              ),
             )}
           </div>
           <div class="advanced-grid">
             ${secondRowOrder.map((panelKey) =>
-              this._renderPanelLauncher(this._getPanelByKey(panelKey), "primary"),
+              this._renderPanelLauncher(
+                this._getPanelByKey(panelKey),
+                "primary",
+              ),
             )}
           </div>
         </div>
@@ -2896,7 +2930,10 @@ class HAXCMSSystemSettings extends DDD {
       <section class="section">
         <div class="section-title">
           <span class="section-leading">
-            <simple-icon-lite icon="${section.icon}" aria-hidden="true"></simple-icon-lite>
+            <simple-icon-lite
+              icon="${section.icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>
             <h3>${section.label}</h3>
           </span>
         </div>
@@ -2964,7 +3001,9 @@ class HAXCMSSystemSettings extends DDD {
                   </table>
                 </div>
               `
-            : html`<p class="empty-state">No skeleton options were returned.</p>`}
+            : html`<p class="empty-state">
+                No skeleton options were returned.
+              </p>`}
         </div>
       </section>
     `;
@@ -3021,7 +3060,11 @@ class HAXCMSSystemSettings extends DDD {
       e.preventDefault();
       e.stopPropagation();
     }
-    if (!option || !option.machineName || this._isSkeletonActionDisabled(option)) {
+    if (
+      !option ||
+      !option.machineName ||
+      this._isSkeletonActionDisabled(option)
+    ) {
       return;
     }
     if (!globalThis || typeof globalThis.prompt !== "function") {
@@ -3090,7 +3133,11 @@ class HAXCMSSystemSettings extends DDD {
       e.preventDefault();
       e.stopPropagation();
     }
-    if (!option || !option.machineName || this._isSkeletonActionDisabled(option)) {
+    if (
+      !option ||
+      !option.machineName ||
+      this._isSkeletonActionDisabled(option)
+    ) {
       return;
     }
     if (!globalThis || typeof globalThis.confirm !== "function") {
@@ -3152,7 +3199,9 @@ class HAXCMSSystemSettings extends DDD {
             <span>${option.label}</span>
           </label>
           ${option.description
-            ? html`<p class="settings-option-description">${option.description}</p>`
+            ? html`<p class="settings-option-description">
+                ${option.description}
+              </p>`
             : ""}
         </td>
         <td class="actions-col">
@@ -3166,7 +3215,8 @@ class HAXCMSSystemSettings extends DDD {
                           icon="icons:create"
                           label="Rename skeleton ${option.machineName}"
                           ?disabled="${actionDisabled}"
-                          @click="${(e) => this._renameSkeletonOption(option, e)}"
+                          @click="${(e) =>
+                            this._renameSkeletonOption(option, e)}"
                         ></simple-icon-button-lite>
                       `
                     : ""}
@@ -3177,7 +3227,8 @@ class HAXCMSSystemSettings extends DDD {
                           icon="delete"
                           label="Delete skeleton ${option.machineName}"
                           ?disabled="${actionDisabled}"
-                          @click="${(e) => this._deleteSkeletonOption(option, e)}"
+                          @click="${(e) =>
+                            this._deleteSkeletonOption(option, e)}"
                         ></simple-icon-button-lite>
                       `
                     : ""}
@@ -3194,7 +3245,9 @@ class HAXCMSSystemSettings extends DDD {
     return html`
       <section class="section">
         <div class="section-body">
-          ${this.loadingThemes ? html`<p class="helper">Loading theme options…</p>` : ""}
+          ${this.loadingThemes
+            ? html`<p class="helper">Loading theme options…</p>`
+            : ""}
           ${options.length > 0
             ? html`
                 <div class="settings-option-table-wrap">
@@ -3224,7 +3277,10 @@ class HAXCMSSystemSettings extends DDD {
       return false;
     }
     const values = this._getPanelValue("themes");
-    if (values && Object.prototype.hasOwnProperty.call(values, option.property)) {
+    if (
+      values &&
+      Object.prototype.hasOwnProperty.call(values, option.property)
+    ) {
       return values[option.property] !== false;
     }
     return typeof option.enabled === "boolean" ? option.enabled : true;
@@ -3233,7 +3289,11 @@ class HAXCMSSystemSettings extends DDD {
     if (!option || !option.property || !e || !e.currentTarget) {
       return;
     }
-    this._setPanelPropertyValue("themes", option.property, !!e.currentTarget.checked);
+    this._setPanelPropertyValue(
+      "themes",
+      option.property,
+      !!e.currentTarget.checked,
+    );
   }
   _renderThemeOptionRow(option, index = 0) {
     const checked = this._isThemeOptionChecked(option);
@@ -3275,7 +3335,9 @@ class HAXCMSSystemSettings extends DDD {
             <span>${option.label}</span>
           </label>
           ${option.description
-            ? html`<p class="settings-option-description">${option.description}</p>`
+            ? html`<p class="settings-option-description">
+                ${option.description}
+              </p>`
             : ""}
         </td>
       </tr>
@@ -3300,19 +3362,27 @@ class HAXCMSSystemSettings extends DDD {
       <div class="status-summary-grid">
         <div class="status-summary">
           <span class="label">Programming language</span>
-          <span class="value">${this._statusSummaryValue("programmingLanguage")}</span>
+          <span class="value"
+            >${this._statusSummaryValue("programmingLanguage")}</span
+          >
         </div>
         <div class="status-summary">
           <span class="label">Server version</span>
-          <span class="value">${this._statusSummaryValue("serverVersion")}</span>
+          <span class="value"
+            >${this._statusSummaryValue("serverVersion")}</span
+          >
         </div>
         <div class="status-summary">
           <span class="label">HAXcms current</span>
-          <span class="value">${this._statusSummaryValue("haxcmsVersionCurrent")}</span>
+          <span class="value"
+            >${this._statusSummaryValue("haxcmsVersionCurrent")}</span
+          >
         </div>
         <div class="status-summary">
           <span class="label">HAXcms latest</span>
-          <span class="value">${this._statusSummaryValue("haxcmsVersionLatest")}</span>
+          <span class="value"
+            >${this._statusSummaryValue("haxcmsVersionLatest")}</span
+          >
         </div>
       </div>
     `;
@@ -3323,7 +3393,9 @@ class HAXCMSSystemSettings extends DDD {
     return html`
       <section class="section">
         <div class="section-body">
-          ${this.statusLoading ? html`<p class="helper">Loading status report…</p>` : ""}
+          ${this.statusLoading
+            ? html`<p class="helper">Loading status report…</p>`
+            : ""}
           ${this.statusError
             ? html`<p class="status-message error">${this.statusError}</p>`
             : ""}
@@ -3335,8 +3407,13 @@ class HAXCMSSystemSettings extends DDD {
                   (row) => html`
                     <tr class="status-row ${row.tone}">
                       <td class="status-icon">
-                        <span class="status-icon-marker" aria-hidden="true"></span>
-                        <span class="sr-only">${this._statusToneLabel(row.tone)}</span>
+                        <span
+                          class="status-icon-marker"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only"
+                          >${this._statusToneLabel(row.tone)}</span
+                        >
                       </td>
                       <td class="status-title">${row.title}</td>
                       <td class="status-value">${row.value || "—"}</td>
@@ -3394,7 +3471,11 @@ class HAXCMSSystemSettings extends DDD {
                 theme="auto"
                 .editorValue="${cssValue}"
                 @value-changed="${(e) =>
-                  this._onCodeEditorValueChanged("custom-code", "globalCss", e)}"
+                  this._onCodeEditorValueChanged(
+                    "custom-code",
+                    "globalCss",
+                    e,
+                  )}"
               ></code-editor>
             </div>
             <div class="code-editor-wrapper">
@@ -3432,12 +3513,16 @@ class HAXCMSSystemSettings extends DDD {
     return html`
       <section class="section">
         <div class="section-body">
-          ${this.apiKeysLoading ? html`<p class="helper">Loading saved API keys…</p>` : ""}
+          ${this.apiKeysLoading
+            ? html`<p class="helper">Loading saved API keys…</p>`
+            : ""}
           ${this.apiKeysError
             ? html`<p class="status-message error">${this.apiKeysError}</p>`
             : ""}
           ${fields.length === 0
-            ? html`<p class="empty-state">No integration providers are configured.</p>`
+            ? html`<p class="empty-state">
+                No integration providers are configured.
+              </p>`
             : html`
                 <div class="api-key-list">
                   ${fields.map(
@@ -3448,7 +3533,9 @@ class HAXCMSSystemSettings extends DDD {
                             class="api-key-label"
                             for="${this._integrationInputId(field.property)}"
                           >
-                            ${field.providerLabel || field.title || field.property}
+                            ${field.providerLabel ||
+                            field.title ||
+                            field.property}
                           </label>
                           ${field.helpUrl
                             ? html`
@@ -3470,7 +3557,9 @@ class HAXCMSSystemSettings extends DDD {
                             type="${this._isApiKeyVisible(field.property)
                               ? "text"
                               : "password"}"
-                            .value="${this._integrationFieldValue(field.property)}"
+                            .value="${this._integrationFieldValue(
+                              field.property,
+                            )}"
                             autocomplete="off"
                             autocorrect="off"
                             autocapitalize="none"
@@ -3530,7 +3619,9 @@ class HAXCMSSystemSettings extends DDD {
         this._renderPanelSection(panel.key, section),
       );
     }
-    return html`<p class="empty-state">No settings available for this panel yet.</p>`;
+    return html`<p class="empty-state">
+      No settings available for this panel yet.
+    </p>`;
   }
 
   _renderActivePanel(panel) {
@@ -3539,7 +3630,10 @@ class HAXCMSSystemSettings extends DDD {
         <div class="panel-header">
           <div class="panel-title-wrap">
             <h2>
-              <simple-icon-lite icon="${panel.icon}" aria-hidden="true"></simple-icon-lite>
+              <simple-icon-lite
+                icon="${panel.icon}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${panel.label}
             </h2>
             <p>${panel.intro}</p>

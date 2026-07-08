@@ -207,9 +207,7 @@ export const attributeStringFromProperties = (properties) => {
 export const renderRecordElementPreview = (record) => {
   const schema = recordElementSchema(record);
   const tag =
-    schema && schema.tag
-      ? safeString(schema.tag).trim()
-      : recordTag(record);
+    schema && schema.tag ? safeString(schema.tag).trim() : recordTag(record);
   if (!isRenderableTag(tag)) {
     return null;
   }
@@ -331,9 +329,7 @@ export const recordIcon = (record) => {
 export const recordTags = (record) => {
   const tags = valueAtPath(record, "tags");
   if (Array.isArray(tags)) {
-    return tags
-      .map((tag) => safeString(tag).trim())
-      .filter((tag) => tag);
+    return tags.map((tag) => safeString(tag).trim()).filter((tag) => tag);
   }
   if (typeof tags === "string") {
     return tags
@@ -575,7 +571,8 @@ export const chartDescriptor = (records, selectedFields, selectedEntity) => {
     walk(input);
     return output;
   })();
-  const candidateFields = selected.length > 0 ? selected : Object.keys(flattened);
+  const candidateFields =
+    selected.length > 0 ? selected : Object.keys(flattened);
   let valueField = "";
   for (let i = 0; i < candidateFields.length; i++) {
     const field = candidateFields[i];
@@ -734,9 +731,7 @@ export const renderCollectionPreview = (records, options = {}) => {
             tags="${tags.join(",")}"
             saturate
           >
-            ${elementPreview
-              ? elementPreview
-              : renderRecordBody(record, 220)}
+            ${elementPreview ? elementPreview : renderRecordBody(record, 220)}
           </collection-item>
         `;
       })}
@@ -851,8 +846,7 @@ export const renderTablePreview = (records, options = {}) => {
           <thead>
             <tr>
               ${columns.map(
-                (column) =>
-                  html`<th>${titleFromParameterName(column)}</th>`,
+                (column) => html`<th>${titleFromParameterName(column)}</th>`,
               )}
             </tr>
           </thead>
@@ -907,9 +901,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                     loading="lazy"
                     decoding="async"
                   />`}
-              <span class="media-gallery-caption"
-                >${recordTitle(record)}</span
-              >
+              <span class="media-gallery-caption">${recordTitle(record)}</span>
             </div>
           `;
         })}
@@ -944,10 +936,7 @@ export const renderCarouselPreview = (records, options = {}) => {
                 />
                 <figcaption>
                   ${url
-                    ? html`<a
-                        href="${url}"
-                        target="_blank"
-                        rel="noopener"
+                    ? html`<a href="${url}" target="_blank" rel="noopener"
                         >${recordTitle(record)}</a
                       >`
                     : recordTitle(record)}
@@ -1065,9 +1054,7 @@ export const renderChartPreview = (records, options = {}) => {
         <strong>${titleFromParameterName(descriptor.valueField)}</strong
         >${descriptor.labelField
           ? html` by
-              <strong
-                >${titleFromParameterName(descriptor.labelField)}</strong
-              >`
+              <strong>${titleFromParameterName(descriptor.labelField)}</strong>`
           : html``}
       </p>
       <lrndesign-bar
@@ -1106,13 +1093,20 @@ export const renderImageGalleryPreview = (records, options = {}) => {
     return !!recordImage(record, options);
   });
   if (imageRecords.length < 1) {
-    return html`<p class="empty-preview">No image records available for gallery rendering.</p>`;
+    return html`<p class="empty-preview">
+      No image records available for gallery rendering.
+    </p>`;
   }
   return html`
     <image-gallery mode="masonry">
       ${imageRecords.map((record) => {
         const image = recordImage(record, options);
-        return html`<img src="${image}" alt="${recordTitle(record)} preview" loading="lazy" decoding="async" />`;
+        return html`<img
+          src="${image}"
+          alt="${recordTitle(record)} preview"
+          loading="lazy"
+          decoding="async"
+        />`;
       })}
     </image-gallery>
   `;
@@ -1126,17 +1120,27 @@ export const renderMediaPlaylistPreview = (records, options = {}) => {
     return !!videoSource(record, options) || !!recordImage(record, options);
   });
   if (mediaRecords.length < 1) {
-    return html`<p class="empty-preview">No media records available for playlist rendering.</p>`;
+    return html`<p class="empty-preview">
+      No media records available for playlist rendering.
+    </p>`;
   }
   return html`
     <media-playlist>
       ${mediaRecords.map((record) => {
         const vSource = videoSource(record, options);
         if (vSource) {
-          return html`<video-player source="${vSource}" media-title="${recordTitle(record)}"></video-player>`;
+          return html`<video-player
+            source="${vSource}"
+            media-title="${recordTitle(record)}"
+          ></video-player>`;
         }
         const image = recordImage(record, options);
-        return html`<img src="${image}" alt="${recordTitle(record)} preview" loading="lazy" decoding="async" />`;
+        return html`<img
+          src="${image}"
+          alt="${recordTitle(record)} preview"
+          loading="lazy"
+          decoding="async"
+        />`;
       })}
     </media-playlist>
   `;
@@ -1216,10 +1220,7 @@ export const viewsRendererStyles = css`
     vertical-align: top;
     padding: var(--ddd-spacing-2);
     border-bottom: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     font-size: var(--ddd-font-size-5xs);
   }
   .card-grid {
@@ -1246,10 +1247,7 @@ export const viewsRendererStyles = css`
     border-radius: var(--ddd-radius-sm);
     margin-bottom: var(--ddd-spacing-2);
     border: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
   }
   .record-media {
     display: block;
@@ -1262,10 +1260,7 @@ export const viewsRendererStyles = css`
   }
   .record-element-preview {
     border: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     padding: var(--ddd-spacing-2);
     margin-bottom: var(--ddd-spacing-2);
@@ -1296,10 +1291,7 @@ export const viewsRendererStyles = css`
   }
   .content-record {
     border-bottom: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     padding-bottom: var(--ddd-spacing-3);
   }
   .content-record:last-child {
@@ -1321,10 +1313,7 @@ export const viewsRendererStyles = css`
   }
   .media-gallery-item {
     border: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     overflow: hidden;
     background: light-dark(
@@ -1363,10 +1352,7 @@ export const viewsRendererStyles = css`
   .tree-shell {
     min-height: 320px;
     border: var(--ddd-border-xs) solid
-      light-dark(
-        var(--ddd-theme-default-limestoneGray),
-        var(--ddd-primary-5)
-      );
+      light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     overflow: hidden;
   }

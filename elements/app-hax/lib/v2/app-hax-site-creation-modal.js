@@ -514,10 +514,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (
-      changedProperties.has("open") ||
-      changedProperties.has("currentStep")
-    ) {
+    if (changedProperties.has("open") || changedProperties.has("currentStep")) {
       this._syncDialogA11yLabel();
     }
   }
@@ -1039,7 +1036,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           ) {
             return false;
           }
-          return item.metadata.site.name.trim().toLowerCase() === normalizedSiteName;
+          return (
+            item.metadata.site.name.trim().toLowerCase() === normalizedSiteName
+          );
         });
       }
 
@@ -1107,10 +1106,13 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         ${this.source
           ? html`
               <div class="template-image">
-                <img src="${this.source}" alt="${this.title} preview"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="high" />
+                <img
+                  src="${this.source}"
+                  alt="${this.title} preview"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="high"
+                />
               </div>
             `
           : ""}

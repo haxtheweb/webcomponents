@@ -105,10 +105,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             const showTerrible = _mobx_val_2;
             const showHidden = _mobx_val_3;
 
-            if (
-              lastShowTerrible === null &&
-              lastShowHidden === null
-            ) {
+            if (lastShowTerrible === null && lastShowHidden === null) {
               lastShowTerrible = showTerrible;
               lastShowHidden = showHidden;
               return;
@@ -117,7 +114,8 @@ export class AppHaxUseCaseFilter extends LitElement {
             if (
               appReady &&
               loggedIn &&
-              (showTerrible !== lastShowTerrible || showHidden !== lastShowHidden)
+              (showTerrible !== lastShowTerrible ||
+                showHidden !== lastShowHidden)
             ) {
               lastShowTerrible = showTerrible;
               lastShowHidden = showHidden;
@@ -237,7 +235,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
           box-sizing: border-box;
         }
-        
+
         .template-group-heading {
           font-family: var(--ddd-font-primary, sans-serif);
           color: var(--accent-color);
@@ -260,15 +258,13 @@ export class AppHaxUseCaseFilter extends LitElement {
         #returnToSection {
           padding-left: var(--ddd-spacing-6, 24px);
           padding-right: var(--ddd-spacing-6, 24px);
-          
         }
         #returnToSection app-hax-search-results {
-          
           box-sizing: border-box;
         }
 
         #startJourneySection {
-           padding-left: var(--ddd-spacing-6, 24px);
+          padding-left: var(--ddd-spacing-6, 24px);
           padding-right: var(--ddd-spacing-6, 24px);
         }
 
@@ -377,7 +373,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: center;
         }
-      
+
         input[type="checkbox"] {
           display: none;
         }
@@ -407,25 +403,29 @@ export class AppHaxUseCaseFilter extends LitElement {
           --simple-icon-height: 40px;
         }
 
-        :host([dark]) .sort-button, body.dark-mode .sort-button {
+        :host([dark]) .sort-button,
+        body.dark-mode .sort-button {
           color: var(--ddd-theme-default-white, white);
         }
 
-        :host([dark]) .sort-button:hover, body.dark-mode .sort-button:hover {
+        :host([dark]) .sort-button:hover,
+        body.dark-mode .sort-button:hover {
           color: var(--ddd-theme-default-limestoneGray);
         }
 
-        .sort-button:hover, body.dark-mode .sort-button:hover{
+        .sort-button:hover,
+        body.dark-mode .sort-button:hover {
           color: var(--ddd-theme-default-accent);
         }
-        
+
         .sort-menu {
           position: absolute;
           top: 100%;
           left: 0;
           margin-top: var(--ddd-spacing-1, 4px);
           background: var(--ddd-theme-default-limestoneLight);
-          border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-limestoneLight);
+          border: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-limestoneLight);
           border-radius: var(--ddd-radius-sm, 4px);
           box-shadow: var(--ddd-boxShadow-md);
           min-width: 200px;
@@ -448,7 +448,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
         }
         .sort-menu-item:focus {
-          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: var(--ddd-border-md, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: -2px;
         }
         :host([dark]) .sort-menu-item,
@@ -615,7 +616,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         @media (max-width: 480px) {
-          h4, .returnTo h4, .startNew h4 {
+          h4,
+          .returnTo h4,
+          .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
           }
@@ -639,41 +642,41 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   _getUseCaseParamFromUrl() {
     try {
-      const url = new URL(globalThis.location.href)
-      const useCase = url.searchParams.get('use-case')
+      const url = new URL(globalThis.location.href);
+      const useCase = url.searchParams.get("use-case");
       if (useCase) {
-        return useCase
+        return useCase;
       }
-      const useCaseAlt = url.searchParams.get('use_case')
+      const useCaseAlt = url.searchParams.get("use_case");
       if (useCaseAlt) {
-        return useCaseAlt
+        return useCaseAlt;
       }
-      const useCaseAlt2 = url.searchParams.get('useCase')
+      const useCaseAlt2 = url.searchParams.get("useCase");
       if (useCaseAlt2) {
-        return useCaseAlt2
+        return useCaseAlt2;
       }
     } catch (e) {
       // do nothing
     }
-    return ''
+    return "";
   }
 
   _updateUrlQueryParam(param, value) {
-    if (!param || typeof param !== 'string') {
-      return
+    if (!param || typeof param !== "string") {
+      return;
     }
     try {
-      const url = new URL(globalThis.location.href)
-      if (value === null || typeof value === 'undefined' || value === '') {
-        url.searchParams.delete(param)
+      const url = new URL(globalThis.location.href);
+      if (value === null || typeof value === "undefined" || value === "") {
+        url.searchParams.delete(param);
       } else {
-        url.searchParams.set(param, value)
+        url.searchParams.set(param, value);
       }
       globalThis.history.replaceState(
         globalThis.history.state,
-        '',
+        "",
         `${url.pathname}${url.search}${url.hash}`,
-      )
+      );
     } catch (e) {
       // do nothing
     }
@@ -681,131 +684,134 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   _getUseCaseMachineNameForTemplate(template) {
     if (!template) {
-      return ''
+      return "";
     }
-    const candidates = this._getTemplateMachineNameCandidates(template)
+    const candidates = this._getTemplateMachineNameCandidates(template);
     if (candidates && candidates.length > 0) {
-      return candidates[0]
+      return candidates[0];
     }
-    return ''
+    return "";
   }
 
   _normalizeUseCaseMachineName(raw) {
-    if (!raw || typeof raw !== 'string') {
-      return ''
+    if (!raw || typeof raw !== "string") {
+      return "";
     }
-    let name = raw.trim().toLowerCase()
+    let name = raw.trim().toLowerCase();
     // If it's a path/URL-ish string, take the last segment
-    if (name.indexOf('/') !== -1) {
-      name = name.split('/').pop()
+    if (name.indexOf("/") !== -1) {
+      name = name.split("/").pop();
     }
     // Strip query/hash if present
-    if (name.indexOf('?') !== -1) {
-      name = name.split('?').shift()
+    if (name.indexOf("?") !== -1) {
+      name = name.split("?").shift();
     }
-    if (name.indexOf('#') !== -1) {
-      name = name.split('#').shift()
+    if (name.indexOf("#") !== -1) {
+      name = name.split("#").shift();
     }
     // Remove file extension (e.g. .json)
-    name = name.replace(/\.[^/.]+$/, '')
+    name = name.replace(/\.[^/.]+$/, "");
     // Normalize separators + strip non-url-safe chars
-    name = name.replace(/[\s_]+/g, '-')
-    name = name.replace(/[^a-z0-9-]/g, '-')
-    name = name.replace(/-+/g, '-')
-    name = name.replace(/^-+/, '').replace(/-+$/, '')
-    return name
+    name = name.replace(/[\s_]+/g, "-");
+    name = name.replace(/[^a-z0-9-]/g, "-");
+    name = name.replace(/-+/g, "-");
+    name = name.replace(/^-+/, "").replace(/-+$/, "");
+    return name;
   }
 
   _looseNormalizeUseCaseMachineName(raw) {
-    let name = this._normalizeUseCaseMachineName(raw)
+    let name = this._normalizeUseCaseMachineName(raw);
     if (!name) {
-      return ''
+      return "";
     }
     // Many templates wind up with an extra "-site-" segment in their machine names.
     // Strip that segment so that (course-template) can match (course-site-template).
-    name = name.replace(/-site-/g, '-')
-    if (name.indexOf('-site') !== -1 && name.lastIndexOf('-site') === name.length - 5) {
-      name = name.replace(/-site$/, '')
+    name = name.replace(/-site-/g, "-");
+    if (
+      name.indexOf("-site") !== -1 &&
+      name.lastIndexOf("-site") === name.length - 5
+    ) {
+      name = name.replace(/-site$/, "");
     }
-    name = name.replace(/-+/g, '-')
-    name = name.replace(/^-+/, '').replace(/-+$/, '')
-    return name
+    name = name.replace(/-+/g, "-");
+    name = name.replace(/^-+/, "").replace(/-+$/, "");
+    return name;
   }
 
-  _deriveTemplateMachineName(primary, fallbackTitle = '') {
-    const derived = this._normalizeUseCaseMachineName(primary)
+  _deriveTemplateMachineName(primary, fallbackTitle = "") {
+    const derived = this._normalizeUseCaseMachineName(primary);
     if (derived) {
-      return derived
+      return derived;
     }
-    return this._normalizeUseCaseMachineName(fallbackTitle)
+    return this._normalizeUseCaseMachineName(fallbackTitle);
   }
 
   _getTemplateMachineNameCandidates(template) {
-    const candidates = []
+    const candidates = [];
     if (!template) {
-      return candidates
+      return candidates;
     }
     if (template.machineName) {
-      candidates.push(template.machineName)
+      candidates.push(template.machineName);
     }
     if (template.skeletonUrl) {
-      candidates.push(template.skeletonUrl)
+      candidates.push(template.skeletonUrl);
     }
     if (template.importType) {
-      candidates.push('import-' + template.importType)
-      candidates.push(template.importType)
+      candidates.push("import-" + template.importType);
+      candidates.push(template.importType);
     }
     if (template.themeElement) {
-      candidates.push(template.themeElement)
+      candidates.push(template.themeElement);
     }
     if (template.originalData && template.originalData.element) {
-      candidates.push(template.originalData.element)
+      candidates.push(template.originalData.element);
     }
     if (template.useCaseTitle) {
-      candidates.push(template.useCaseTitle)
+      candidates.push(template.useCaseTitle);
     }
 
     const normalized = candidates
       .map((c) => this._normalizeUseCaseMachineName(c))
-      .filter((c) => c)
-    return [...new Set(normalized)]
+      .filter((c) => c);
+    return [...new Set(normalized)];
   }
 
   _matchesUseCaseParam(template, rawParam) {
-    const target = this._normalizeUseCaseMachineName(rawParam)
-    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam)
+    const target = this._normalizeUseCaseMachineName(rawParam);
+    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam);
     if (!target) {
-      return false
+      return false;
     }
 
-    const candidates = this._getTemplateMachineNameCandidates(template)
+    const candidates = this._getTemplateMachineNameCandidates(template);
     for (let i = 0; i < candidates.length; i++) {
-      const cand = candidates[i]
+      const cand = candidates[i];
       if (cand === target) {
-        return true
+        return true;
       }
-      const candLoose = this._looseNormalizeUseCaseMachineName(cand)
+      const candLoose = this._looseNormalizeUseCaseMachineName(cand);
       if (candLoose && candLoose === targetLoose) {
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   }
 
   _scrollUseCaseIndexIntoView(index) {
-    if (typeof index !== 'number' || index < 0) {
-      return
+    if (typeof index !== "number" || index < 0) {
+      return;
     }
     const el =
       this.shadowRoot &&
       this.shadowRoot.querySelector(
         `app-hax-use-case[data-item-index="${index}"]`,
-      )
-    if (el && typeof el.scrollIntoView === 'function') {
+      );
+    if (el && typeof el.scrollIntoView === "function") {
       try {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
       } catch (e) {
-        el.scrollIntoView()
+        el.scrollIntoView();
       }
     }
   }
@@ -817,99 +823,102 @@ export class AppHaxUseCaseFilter extends LitElement {
         : this.items;
 
     if (!rawParam || !Array.isArray(list) || list.length === 0) {
-      return null
+      return null;
     }
 
-    const target = this._normalizeUseCaseMachineName(rawParam)
-    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam)
+    const target = this._normalizeUseCaseMachineName(rawParam);
+    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam);
 
     // Pass 1: exact match
     for (let i = 0; i < list.length; i++) {
-      const item = list[i]
-      const candidates = this._getTemplateMachineNameCandidates(item)
+      const item = list[i];
+      const candidates = this._getTemplateMachineNameCandidates(item);
       if (candidates.indexOf(target) !== -1) {
-        return item
+        return item;
       }
     }
 
     // Pass 2: loose match
     for (let i = 0; i < list.length; i++) {
-      const item = list[i]
-      const candidates = this._getTemplateMachineNameCandidates(item)
+      const item = list[i];
+      const candidates = this._getTemplateMachineNameCandidates(item);
       for (let j = 0; j < candidates.length; j++) {
-        const candLoose = this._looseNormalizeUseCaseMachineName(candidates[j])
+        const candLoose = this._looseNormalizeUseCaseMachineName(candidates[j]);
         if (candLoose && candLoose === targetLoose) {
-          return item
+          return item;
         }
       }
     }
 
-    return null
+    return null;
   }
 
   async _maybeAutoOpenUseCaseFromUrl() {
     if (this.__useCaseParamHandled || this.__useCaseParamHandling) {
-      return
+      return;
     }
 
-    const useCaseParam = this._getUseCaseParamFromUrl()
+    const useCaseParam = this._getUseCaseParamFromUrl();
     if (!useCaseParam) {
-      this.__useCaseParamHandled = true
-      return
+      this.__useCaseParamHandled = true;
+      return;
     }
 
     if (
       (!Array.isArray(this.items) || this.items.length === 0) &&
       (!Array.isArray(this.__allItems) || this.__allItems.length === 0)
     ) {
-      return
+      return;
     }
 
-    this.__useCaseParamHandling = true
+    this.__useCaseParamHandling = true;
 
     try {
-      await this.updateComplete
+      await this.updateComplete;
 
-      const template = this._findTemplateByUseCaseParam(useCaseParam)
+      const template = this._findTemplateByUseCaseParam(useCaseParam);
       if (template) {
         // Update selection state so the UI reflects what was deep-linked.
-        if (Array.isArray(this.filteredItems) && this.filteredItems.length > 0) {
+        if (
+          Array.isArray(this.filteredItems) &&
+          this.filteredItems.length > 0
+        ) {
           const idx = this.filteredItems.findIndex((i) =>
             this._matchesUseCaseParam(i, useCaseParam),
-          )
+          );
           if (idx !== -1) {
-            this.selectedCardIndex = idx
+            this.selectedCardIndex = idx;
             if (this.filteredItems[idx]) {
-              this.filteredItems[idx].isSelected = true
-              this.filteredItems[idx].showContinue = true
+              this.filteredItems[idx].isSelected = true;
+              this.filteredItems[idx].showContinue = true;
             }
             // Ensure the selected card is visible in the viewport.
-            this._scrollUseCaseIndexIntoView(idx)
+            this._scrollUseCaseIndexIntoView(idx);
           } else if (template && template.dataType) {
             // Fallback: scroll to the relevant group heading.
-            if (template.dataType === 'skeleton') {
-              this.scrollToGroup('from-template-heading', 'skeleton')
+            if (template.dataType === "skeleton") {
+              this.scrollToGroup("from-template-heading", "skeleton");
             }
-            if (template.dataType === 'blank') {
-              this.scrollToGroup('from-scratch-heading', 'blank')
+            if (template.dataType === "blank") {
+              this.scrollToGroup("from-scratch-heading", "blank");
             }
-            if (template.dataType === 'import') {
-              this.scrollToGroup('from-existing-heading', 'import')
+            if (template.dataType === "import") {
+              this.scrollToGroup("from-existing-heading", "import");
             }
           }
         }
 
-        await this.openTemplateModal(template)
+        await this.openTemplateModal(template);
       } else if (store && store.toast) {
-        store.toast(`Could not find use-case: ${useCaseParam}`, 4000)
+        store.toast(`Could not find use-case: ${useCaseParam}`, 4000);
       }
 
-      this.__useCaseParamHandled = true
+      this.__useCaseParamHandled = true;
     } catch (e) {
-      this.__useCaseParamHandled = true
+      this.__useCaseParamHandled = true;
     }
 
-    this.__useCaseParamHandling = false
+    this.__useCaseParamHandling = false;
   }
 
   testKeydown(e) {
@@ -962,7 +971,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     if (el && el.shadowRoot) {
       const focusTarget = el.shadowRoot.querySelector(
-        "button.card, button.select, button, a[href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])",
+        'button.card, button.select, button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );
       if (focusTarget && typeof focusTarget.focus === "function") {
         try {
@@ -1033,7 +1042,12 @@ export class AppHaxUseCaseFilter extends LitElement {
                       .source=${""}
                       .title=${"From Scratch"}
                       .description=${"Start from a blank site using a theme"}
-                      .iconImage=${[{ icon: "editor:insert-drive-file", tooltip: "From scratch" }]}
+                      .iconImage=${[
+                        {
+                          icon: "editor:insert-drive-file",
+                          tooltip: "From scratch",
+                        },
+                      ]}
                       ?dark="${this.dark}"
                       @click=${() =>
                         this.scrollToGroup("from-scratch-heading", "blank")}
@@ -1041,7 +1055,6 @@ export class AppHaxUseCaseFilter extends LitElement {
                   </div>
                 `
               : ""}
-
             ${!isMobile
               ? html`
                   <div role="listitem">
@@ -1049,7 +1062,12 @@ export class AppHaxUseCaseFilter extends LitElement {
                       .source=${""}
                       .title=${"Import"}
                       .description=${"Import content from an existing source"}
-                      .iconImage=${[{ icon: "icons:cloud-download", tooltip: "Import content" }]}
+                      .iconImage=${[
+                        {
+                          icon: "icons:cloud-download",
+                          tooltip: "Import content",
+                        },
+                      ]}
                       ?dark="${this.dark}"
                       @click=${() =>
                         this.scrollToGroup("from-existing-heading", "import")}
@@ -1068,9 +1086,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           >
             <!-- Search bar -->
             <div class="upper-filter">
-              <label for="searchField" class="visually-hidden"
-                >Search</label
-              >
+              <label for="searchField" class="visually-hidden">Search</label>
               <slot>
                 <simple-icon-lite
                   class="search-icon"
@@ -1096,7 +1112,8 @@ export class AppHaxUseCaseFilter extends LitElement {
             <div class="sort-control">
               <button
                 class="sort-button"
-                @click=${(e) => {e.stopPropagation();
+                @click=${(e) => {
+                  e.stopPropagation();
                   this.sortMenuOpen = !this.sortMenuOpen;
                 }}
                 aria-label="Sort options"
@@ -1104,50 +1121,57 @@ export class AppHaxUseCaseFilter extends LitElement {
                 aria-haspopup="menu"
                 aria-controls="sort-menu"
               >
-                <simple-icon-lite 
+                <simple-icon-lite
                   icon="av:sort-by-alpha"
                   aria-hidden="true"
                 ></simple-icon-lite>
               </button>
-              ${this.sortMenuOpen ? html`
-                <div id="sort-menu" class="sort-menu" role="menu" aria-label="Sort options">
-                  <button 
-                    role="menuitem" 
-                    class="sort-menu-item" 
-                    @click=${() => this.handleSortChange("newest")}
-                  >
-                    Recently updated
-                  </button>
-                  <button 
-                    role="menuitem" 
-                    class="sort-menu-item" 
-                    @click=${() => this.handleSortChange("az")}
-                  >
-                    Title A–Z
-                  </button>
-                  <button 
-                    role="menuitem" 
-                    class="sort-menu-item" 
-                    @click=${() => this.handleSortChange("za")}
-                  >
-                    Title Z–A
-                  </button>
-                  <button 
-                    role="menuitem" 
-                    class="sort-menu-item" 
-                    @click=${() => this.handleSortChange("oldest")}
-                  >
-                    Least recently updated
-                  </button>
-                  <button 
-                    role="menuitem" 
-                    class="sort-menu-item" 
-                    @click=${() => this.handleSortChange("theme")}
-                  >
-                    Theme name
-                  </button>
-                </div>
-              ` : ""}
+              ${this.sortMenuOpen
+                ? html`
+                    <div
+                      id="sort-menu"
+                      class="sort-menu"
+                      role="menu"
+                      aria-label="Sort options"
+                    >
+                      <button
+                        role="menuitem"
+                        class="sort-menu-item"
+                        @click=${() => this.handleSortChange("newest")}
+                      >
+                        Recently updated
+                      </button>
+                      <button
+                        role="menuitem"
+                        class="sort-menu-item"
+                        @click=${() => this.handleSortChange("az")}
+                      >
+                        Title A–Z
+                      </button>
+                      <button
+                        role="menuitem"
+                        class="sort-menu-item"
+                        @click=${() => this.handleSortChange("za")}
+                      >
+                        Title Z–A
+                      </button>
+                      <button
+                        role="menuitem"
+                        class="sort-menu-item"
+                        @click=${() => this.handleSortChange("oldest")}
+                      >
+                        Least recently updated
+                      </button>
+                      <button
+                        role="menuitem"
+                        class="sort-menu-item"
+                        @click=${() => this.handleSortChange("theme")}
+                      >
+                        Theme name
+                      </button>
+                    </div>
+                  `
+                : ""}
             </div>
 
             <div id="reset-help" class="visually-hidden">
@@ -1235,7 +1259,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                           ></app-hax-use-case>
                         </div>
                       `,
-                    )
+                    );
                   };
 
                   return html`
@@ -1332,7 +1356,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                           </div>
                         `
                       : ""}
-                  `
+                  `;
                 })()
               : this.loading
                 ? html`<p
@@ -1343,21 +1367,13 @@ export class AppHaxUseCaseFilter extends LitElement {
                     Loading templates...
                   </p>`
                 : this.items && this.items.length > 0
-                  ? html`<p
-                      role="status"
-                      class="no-results"
-                      aria-live="polite"
-                    >
+                  ? html`<p role="status" class="no-results" aria-live="polite">
                       No templates match your current filters. Reset filters to
                       see more options.
                     </p>`
                   : html`
                       <div class="fallback-message">
-                        <p
-                          role="status"
-                          class="no-results"
-                          aria-live="polite"
-                        >
+                        <p role="status" class="no-results" aria-live="polite">
                           ${this.errorMessage ||
                           "No templates available. You can still create a blank site."}
                         </p>
@@ -1565,7 +1581,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         useCaseTitle: "Plone",
         useCaseImage: "",
         useCaseDescription: "Import a Plone site URL into HAX",
-        useCaseIcon: [{ icon: "communication:business", tooltip: "Plone import" }],
+        useCaseIcon: [
+          { icon: "communication:business", tooltip: "Plone import" },
+        ],
         useCaseTag: ["Import", "Plone"],
         demoLink: "#",
       },
@@ -1623,13 +1641,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     document.addEventListener("click", this._boundOutsideSortClick);
   }
 
-
   disconnectedCallback() {
     document.removeEventListener("click", this._boundOutsideSortClick);
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
-
 
   _jwtLoggedIn(e) {
     // When login status changes to true, refresh skeleton list
@@ -1659,7 +1675,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     // If a URL param like `?use-case=course-template` is present, try to
     // auto-open the corresponding template once the items are loaded.
     if (changedProperties.has("items")) {
-      this._maybeAutoOpenUseCaseFromUrl()
+      this._maybeAutoOpenUseCaseFromUrl();
     }
   }
 
@@ -1693,7 +1709,12 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   handleSortChange(value) {
-    const sortValue = typeof value === "string" ? value : (value && value.target && value.target.value ? value.target.value : "newest");
+    const sortValue =
+      typeof value === "string"
+        ? value
+        : value && value.target && value.target.value
+          ? value.target.value
+          : "newest";
     this.sortOption = sortValue;
     this.sortMenuOpen = false;
     this.requestUpdate();
@@ -1755,8 +1776,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         // useCaseTag list (which may be populated from build data) so that
         // newly created sites still filter correctly by type.
         let siteCategory =
-          typeof siteMeta.category !== "undefined" &&
-          siteMeta.category !== null
+          typeof siteMeta.category !== "undefined" && siteMeta.category !== null
             ? siteMeta.category
             : item.useCaseTag || [];
         const title = (original.title || "").toLowerCase();
@@ -1771,7 +1791,9 @@ export class AppHaxUseCaseFilter extends LitElement {
           description.indexOf(lowerCaseQuery) !== -1 ||
           author.indexOf(lowerCaseQuery) !== -1 ||
           slug.indexOf(lowerCaseQuery) !== -1 ||
-          tags.some((tag) => tag.toLowerCase().indexOf(lowerCaseQuery) !== -1) ||
+          tags.some(
+            (tag) => tag.toLowerCase().indexOf(lowerCaseQuery) !== -1,
+          ) ||
           (typeof siteCategory === "string" &&
             siteCategory.toLowerCase().indexOf(lowerCaseQuery) !== -1) ||
           (Array.isArray(siteCategory) &&
@@ -1838,9 +1860,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           continue;
         }
         const machineName =
-          typeof theme.machineName === "string"
-            ? theme.machineName.trim()
-            : "";
+          typeof theme.machineName === "string" ? theme.machineName.trim() : "";
         const element =
           typeof theme.element === "string" ? theme.element.trim() : "";
         const key = machineName || element;
@@ -1961,7 +1981,8 @@ export class AppHaxUseCaseFilter extends LitElement {
             const isHidden = item && item.hidden ? true : false;
             const isTerrible = item && item.terrible ? true : false;
             const visible =
-              (!isHidden || this.showHidden) && (!isTerrible || this.showTerrible);
+              (!isHidden || this.showHidden) &&
+              (!isTerrible || this.showTerrible);
             if (visible) {
               tags.forEach((tag) => this.allFilters.add(tag));
             }
@@ -2026,12 +2047,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           typeof themesData.value === "object" &&
           Object.prototype.hasOwnProperty.call(themesData.value, "data")
             ? themesData.value.data
-            : themesData && Object.prototype.hasOwnProperty.call(themesData, "value")
+            : themesData &&
+                Object.prototype.hasOwnProperty.call(themesData, "value")
               ? themesData.value
               : {};
         const themeSource = this._normalizeThemeSource(themePayload);
-        const themeItemsAll = Object.entries(themeSource)
-          .map(([themeMachineName, theme]) => {
+        const themeItemsAll = Object.entries(themeSource).map(
+          ([themeMachineName, theme]) => {
             let tags = [];
             if (Array.isArray(theme.category)) {
               tags = theme.category.filter(
@@ -2056,7 +2078,8 @@ export class AppHaxUseCaseFilter extends LitElement {
               isTerrible = true;
             }
             const visible =
-              (!isHidden || this.showHidden) && (!isTerrible || this.showTerrible);
+              (!isHidden || this.showHidden) &&
+              (!isTerrible || this.showTerrible);
             if (visible) {
               tags.forEach((tag) => this.allFilters.add(tag));
             }
@@ -2075,7 +2098,8 @@ export class AppHaxUseCaseFilter extends LitElement {
               thumbnailPath = new URL(packagePath, import.meta.url).href;
             }
 
-            const themeElement = theme && theme.element ? theme.element : themeMachineName;
+            const themeElement =
+              theme && theme.element ? theme.element : themeMachineName;
 
             return {
               dataType: "blank",
@@ -2092,7 +2116,8 @@ export class AppHaxUseCaseFilter extends LitElement {
               demoLink: `https://playground.hax.cloud/site.html?theme=${themeMachineName}`,
               originalData: theme,
             };
-          });
+          },
+        );
 
         // Sort themes by priority so recommended themes float above legacy options.
         themeItemsAll.sort(_sortUseCasesByPriority);
@@ -2113,7 +2138,11 @@ export class AppHaxUseCaseFilter extends LitElement {
         });
 
         // Combine skeleton, theme, and import items
-        this.__allItems = [...skeletonItemsAll, ...themeItemsAll, ...importItems];
+        this.__allItems = [
+          ...skeletonItemsAll,
+          ...themeItemsAll,
+          ...importItems,
+        ];
         this.items = [...skeletonItems, ...themeItems, ...importItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all visible items
 
@@ -2167,7 +2196,11 @@ export class AppHaxUseCaseFilter extends LitElement {
             // Incorporate site tags from the manifest so that any tags the
             // user edits there become available as filters in the dashboard.
             let manifestTagsSource = null;
-            if (item.metadata && item.metadata.site && item.metadata.site.tags) {
+            if (
+              item.metadata &&
+              item.metadata.site &&
+              item.metadata.site.tags
+            ) {
               manifestTagsSource = item.metadata.site.tags;
             } else if (item.metadata && item.metadata.tags) {
               manifestTagsSource = item.metadata.tags;
@@ -2209,9 +2242,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             // so that the Website filter still shows these sites.
             tags = [
               ...new Set(
-                tags.filter(
-                  (c) => typeof c === "string" && c.trim() !== "",
-                ),
+                tags.filter((c) => typeof c === "string" && c.trim() !== ""),
               ),
             ];
             if (tags.length === 0) tags = ["Website"];
@@ -2283,7 +2314,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Handle fallback case when index is -1 (blank site with clean-one)
     if (index === -1) {
       // Keep URL in sync for link sharing
-      this._updateUrlQueryParam('use-case', 'blank-site')
+      this._updateUrlQueryParam("use-case", "blank-site");
 
       modal.title = "Blank Site";
       modal.description = "Create a blank site using the clean-one theme";
@@ -2378,9 +2409,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
 
     // Keep URL in sync for link sharing
-    const useCaseMachineName = this._getUseCaseMachineNameForTemplate(selectedTemplate)
+    const useCaseMachineName =
+      this._getUseCaseMachineNameForTemplate(selectedTemplate);
     if (useCaseMachineName) {
-      this._updateUrlQueryParam('use-case', useCaseMachineName)
+      this._updateUrlQueryParam("use-case", useCaseMachineName);
     }
 
     // Set the template details in the modal
@@ -2398,17 +2430,26 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
 
     // Handle skeleton templates by loading the skeleton file
-    if (selectedTemplate.dataType === "skeleton" && !selectedTemplate.skeletonUrl) {
+    if (
+      selectedTemplate.dataType === "skeleton" &&
+      !selectedTemplate.skeletonUrl
+    ) {
       if (store && store.appEl && store.appEl.playSound) {
         store.appEl.playSound("error");
       }
       if (store && store.toast) {
-        store.toast("This template isn't configured yet (missing skeleton URL).", 4000);
+        store.toast(
+          "This template isn't configured yet (missing skeleton URL).",
+          4000,
+        );
       }
       return;
     }
 
-    if (selectedTemplate.dataType === "skeleton" && selectedTemplate.skeletonUrl) {
+    if (
+      selectedTemplate.dataType === "skeleton" &&
+      selectedTemplate.skeletonUrl
+    ) {
       try {
         if (
           selectedTemplate.machineName &&
@@ -2483,10 +2524,18 @@ export class AppHaxUseCaseFilter extends LitElement {
           jwtValue = appSettings.jwt.trim();
         }
         if (jwtValue !== "") {
-          if (jwtValue.indexOf("Bearer ") !== 0 && jwtValue.indexOf("bearer ") !== 0) {
+          if (
+            jwtValue.indexOf("Bearer ") !== 0 &&
+            jwtValue.indexOf("bearer ") !== 0
+          ) {
             jwtValue = `Bearer ${jwtValue}`;
           }
-          if (!Object.prototype.hasOwnProperty.call(requestHeaders, "Authorization")) {
+          if (
+            !Object.prototype.hasOwnProperty.call(
+              requestHeaders,
+              "Authorization",
+            )
+          ) {
             requestHeaders.Authorization = jwtValue;
           }
         }
@@ -2567,7 +2616,8 @@ export class AppHaxUseCaseFilter extends LitElement {
                 order: 0,
                 parent: null,
                 indent: 0,
-                content: "<p>Edit this page to get started on your HAX site!</p>",
+                content:
+                  "<p>Edit this page to get started on your HAX site!</p>",
                 metadata: {
                   published: true,
                   hideInMenu: false,
@@ -2607,12 +2657,14 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   async processImportTemplate(selectedTemplate, modal) {
     try {
-      const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all([
-        import(
-          "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
-        ),
-        import("@haxtheweb/micro-frontend-registry/lib/microServices.js"),
-      ]);
+      const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all(
+        [
+          import(
+            "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
+          ),
+          import("@haxtheweb/micro-frontend-registry/lib/microServices.js"),
+        ],
+      );
 
       enableServices(["haxcms"]);
 
@@ -2638,7 +2690,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         formData.append("type", "import");
         formData.append("upload", file);
 
-        response = await MicroFrontendRegistry.call(selectedTemplate.callback, formData);
+        response = await MicroFrontendRegistry.call(
+          selectedTemplate.callback,
+          formData,
+        );
       } else if (selectedTemplate.importKind === "url") {
         const promptText = selectedTemplate.prompt || "Enter a URL";
         const promptUrl = globalThis.prompt(promptText);
@@ -2647,7 +2702,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         const params = {};
         params[selectedTemplate.param || "repoUrl"] = promptUrl;
-        response = await MicroFrontendRegistry.call(selectedTemplate.callback, params);
+        response = await MicroFrontendRegistry.call(
+          selectedTemplate.callback,
+          params,
+        );
       }
 
       if (
@@ -2728,4 +2786,4 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 }
-customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter); 
+customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

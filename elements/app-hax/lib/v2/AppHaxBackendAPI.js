@@ -160,7 +160,11 @@ export class AppHaxBackendAPI extends LitElement {
         ? "GET"
         : "POST";
     this.basePath = "/";
-    if (globalThis.document && globalThis.document.querySelector("app-hax") && globalThis.document.querySelector("app-hax").getAttribute) {
+    if (
+      globalThis.document &&
+      globalThis.document.querySelector("app-hax") &&
+      globalThis.document.querySelector("app-hax").getAttribute
+    ) {
       const basePathAttr = globalThis.document
         .querySelector("app-hax")
         .getAttribute("base-path");
@@ -173,7 +177,7 @@ export class AppHaxBackendAPI extends LitElement {
     // Detect stale store.appSettings from previous context and update before autorun
     const freshAppSettings =
       globalThis.appSettings &&
-      typeof globalThis.appSettings === 'object' &&
+      typeof globalThis.appSettings === "object" &&
       globalThis.appSettings.connectionTest
         ? globalThis.appSettings
         : null;
@@ -440,8 +444,12 @@ export class AppHaxBackendAPI extends LitElement {
     this.__lastAuthFailureTime = now;
 
     if (this.__authFailureCount > this.__maxRapidFailures) {
-      console.warn('Auth loop detected; redirecting to login.');
-      const redirectUrl = this._renderUrl(this.appSettings && this.appSettings.redirectUrl ? this.appSettings.redirectUrl : '');
+      console.warn("Auth loop detected; redirecting to login.");
+      const redirectUrl = this._renderUrl(
+        this.appSettings && this.appSettings.redirectUrl
+          ? this.appSettings.redirectUrl
+          : "",
+      );
       if (redirectUrl) {
         globalThis.location.href = redirectUrl;
       } else {
@@ -466,9 +474,9 @@ export class AppHaxBackendAPI extends LitElement {
   }
   _renderUrl(pathOrUrl) {
     if (!pathOrUrl) {
-      return '';
+      return "";
     }
-    if (pathOrUrl.startsWith('http://') || pathOrUrl.startsWith('https://')) {
+    if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
       return pathOrUrl;
     }
     return `${this.basePath}${pathOrUrl}`;
@@ -545,16 +553,26 @@ export class AppHaxBackendAPI extends LitElement {
         } else if (result && result.status === 200 && result.jwt) {
           isAuth = true;
           nextJWT = result.jwt;
-          if (result.user && typeof result.user === 'string') {
+          if (result.user && typeof result.user === "string") {
             userName = result.user;
           }
-        } else if (result && result.jwt && typeof result.jwt === 'string' && result.jwt !== '') {
+        } else if (
+          result &&
+          result.jwt &&
+          typeof result.jwt === "string" &&
+          result.jwt !== ""
+        ) {
           isAuth = true;
           nextJWT = result.jwt;
-        } else if (result && result.status === 200 && result.data && result.data.jwt) {
+        } else if (
+          result &&
+          result.status === 200 &&
+          result.data &&
+          result.data.jwt
+        ) {
           isAuth = true;
           nextJWT = result.data.jwt;
-          if (result.data.user && typeof result.data.user === 'string') {
+          if (result.data.user && typeof result.data.user === "string") {
             userName = result.data.user;
           }
         }
@@ -563,7 +581,7 @@ export class AppHaxBackendAPI extends LitElement {
           store.jwt = nextJWT;
           this.__validatedJwt = nextJWT;
           store.authValidated = true;
-          if (userName && typeof userName === 'string') {
+          if (userName && typeof userName === "string") {
             store.user = {
               name: userName,
             };
@@ -798,10 +816,7 @@ export class AppHaxBackendAPI extends LitElement {
     if (!rawValue || typeof rawValue !== "string") {
       return null;
     }
-    const value = rawValue
-      .trim()
-      .toLowerCase()
-      .replace(/_/g, "-");
+    const value = rawValue.trim().toLowerCase().replace(/_/g, "-");
     if (value === "") {
       return null;
     }

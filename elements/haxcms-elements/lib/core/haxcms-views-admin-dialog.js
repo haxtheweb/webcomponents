@@ -2046,7 +2046,10 @@ class HAXCMSViewsAdminDialog extends DDD {
                       ></simple-icon-button-lite>
                     </div>
                     <code class="query-code">${this.queryUrl}</code>
-                    <div class="query-actions" style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div
+                      class="query-actions"
+                      style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;"
+                    >
                       <simple-icon-button-lite
                         icon="hax:embed"
                         title="Embed in page"

@@ -111,8 +111,7 @@ export class AppHaxSearchResults extends SimpleColors {
         .scroll-right {
           background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
-          border: var(--ddd-border-sm, 2px solid)
-            white;
+          border: var(--ddd-border-sm, 2px solid) white;
           border-radius: var(--ddd-radius-circle);
           padding: var(--ddd-spacing-4, 16px);
           cursor: pointer;
@@ -172,7 +171,7 @@ export class AppHaxSearchResults extends SimpleColors {
           background: var(--ddd-theme-default-limestoneGray, #a2aaad);
           color: var(--ddd-theme-default-coalyGray, #444);
         }
-        
+
         #results {
           display: flex;
           flex-wrap: nowrap;
@@ -197,7 +196,6 @@ export class AppHaxSearchResults extends SimpleColors {
           scrollbar-color: var(--ddd-theme-default-limestoneGray, #a2aaad)
             var(--ddd-theme-default-coalyGray, #444);
         }
-
 
         #results::-webkit-scrollbar {
           height: 8px;
@@ -242,9 +240,8 @@ export class AppHaxSearchResults extends SimpleColors {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start; 
+          justify-content: flex-start;
         }
-
 
         app-hax-site-bar {
           margin: 0 var(--ddd-spacing-3, 12px);
@@ -264,8 +261,8 @@ export class AppHaxSearchResults extends SimpleColors {
         @media (max-width: 1200px) {
           :host {
             min-width: calc(
-              2 * var(--app-hax-site-card-width) + var(--app-hax-site-card-gap) + 2 *
-                var(--ddd-spacing-12, 56px)
+              2 * var(--app-hax-site-card-width) + var(--app-hax-site-card-gap) +
+                2 * var(--ddd-spacing-12, 56px)
             );
           }
         }
@@ -410,9 +407,7 @@ export class AppHaxSearchResults extends SimpleColors {
         store.themesData[themeElement] &&
         store.themesData[themeElement].name
       ) {
-        return store.themesData[themeElement].name
-          .toString()
-          .toLowerCase();
+        return store.themesData[themeElement].name.toString().toLowerCase();
       }
       return themeElement.toString().toLowerCase();
     };
@@ -464,10 +459,7 @@ export class AppHaxSearchResults extends SimpleColors {
             >View previous sites in the carousel</span
           >
         </button>
-        <ul
-          id="results"
-          @scroll="${this.handleScroll}"
-        >
+        <ul id="results" @scroll="${this.handleScroll}">
           ${itemsToRender.length > 0
             ? itemsToRender.map(
                 (item) =>
@@ -546,10 +538,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
   get isAtEnd() {
     const el = this.shadowRoot && this.shadowRoot.querySelector("#results");
-    return (
-      !el ||
-      el.scrollLeft + el.clientWidth >= el.scrollWidth - 2
-    );
+    return !el || el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
   }
 
   scrollLeft() {
@@ -565,7 +554,6 @@ export class AppHaxSearchResults extends SimpleColors {
       el.scrollBy({ left: -itemWidth, behavior: "smooth" });
     }
   }
-
 
   scrollRight() {
     const el = this.shadowRoot.querySelector("#results");

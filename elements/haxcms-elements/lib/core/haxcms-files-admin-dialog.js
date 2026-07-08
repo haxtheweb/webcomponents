@@ -539,10 +539,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     const tableDisplay = this.shadowRoot.querySelector(
       "editable-table-display",
     );
-    if (
-      tableDisplay &&
-      typeof tableDisplay.loadSlottedTable === "function"
-    ) {
+    if (tableDisplay && typeof tableDisplay.loadSlottedTable === "function") {
       tableDisplay.loadSlottedTable();
     }
   }
