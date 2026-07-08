@@ -5,7 +5,9 @@
     "name": "8-Bit Land",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
     "description": "Start with a blank site using the 8-Bit Land",
-    "category": ["Course"],
+    "category": [
+      "Course"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -17,7 +19,9 @@
     "name": "Bootstrap",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-bootstrap-theme-thumb.jpg",
     "description": "Start with a blank site using the Bootstrap",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 100,
     "terrible": false,
@@ -29,11 +33,16 @@
     "name": "Clean One",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
     "description": "Start with a blank site using the Clean One",
-    "category": ["Course"],
+    "category": [
+      "Course"
+    ],
     "hidden": false,
     "priority": -2,
     "terrible": false,
-    "supportedPalettes": ["4", "5"]
+    "supportedPalettes": [
+      "4",
+      "5"
+    ]
   },
   "clean-portfolio-theme": {
     "element": "clean-portfolio-theme",
@@ -41,7 +50,9 @@
     "name": "Clean Portfolio",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Clean Portfolio",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": -10,
     "terrible": false,
@@ -53,7 +64,9 @@
     "name": "Clean Two",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
     "description": "Start with a blank site using the Clean Two",
-    "category": ["Course"],
+    "category": [
+      "Course"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -65,7 +78,9 @@
     "name": "Collections",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-collections-theme-thumb.jpg",
     "description": "Start with a blank site using the Collections",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -77,7 +92,9 @@
     "name": "Brochure",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-ddd-brochure-theme-thumb.jpg",
     "description": "Start with a blank site using the Brochure",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -89,7 +106,9 @@
     "name": "Glossy Portfolio",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Glossy Portfolio",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -101,7 +120,9 @@
     "name": "Haxcms Blank Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-blank-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Blank Theme",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -113,7 +134,9 @@
     "name": "Haxcms Json Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-json-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Json Theme",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -125,7 +148,9 @@
     "name": "Haxcms Print Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-print-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Print Theme",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -137,7 +162,9 @@
     "name": "Design docs",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
     "description": "Start with a blank site using the Design docs",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -149,7 +176,9 @@
     "name": "Haxor blog",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxor-slevin-thumb.jpg",
     "description": "Start with a blank site using the Haxor blog",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -161,7 +190,9 @@
     "name": "Journey Side",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-sidebar-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey Side",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -173,7 +204,9 @@
     "name": "Journey",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": -1,
     "terrible": false,
@@ -185,7 +218,9 @@
     "name": "Journey Top",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-topbar-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey Top",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -197,7 +232,9 @@
     "name": "Learn2",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-learn-two-theme-thumb.jpg",
     "description": "Start with a blank site using the Learn2",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -209,7 +246,9 @@
     "name": "Link Card",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-link-card-theme-thumb.jpg",
     "description": "Start with a blank site using the Link Card",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": -6,
     "terrible": false,
@@ -221,7 +260,9 @@
     "name": "Outline Player",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-outline-player-thumb.jpg",
     "description": "Start with a blank site using the Outline Player",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -233,7 +274,9 @@
     "name": "Polaris Sidebar",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
     "description": "Start with a blank site using the Polaris Sidebar",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": -1,
     "terrible": false,
@@ -245,7 +288,9 @@
     "name": "Polaris Flex",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Flex",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": -1,
     "terrible": false,
@@ -257,7 +302,9 @@
     "name": "Polaris Invent",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-invent-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Invent",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -269,7 +316,9 @@
     "name": "Polaris",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 10,
     "terrible": false,
@@ -281,7 +330,9 @@
     "name": "resume-theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-resume-theme-thumb.jpg",
     "description": "Start with a blank site using the resume-theme",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -293,7 +344,9 @@
     "name": "Simple Blog",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-simple-blog-thumb.jpg",
     "description": "Start with a blank site using the Simple Blog",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -305,7 +358,9 @@
     "name": "Space Book",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-spacebook-theme-thumb.jpg",
     "description": "Start with a blank site using the Space Book",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -317,7 +372,10 @@
     "name": "Terrible hockey",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-best-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible hockey",
-    "category": ["Fun", "Website"],
+    "category": [
+      "Fun",
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": true,
@@ -329,7 +387,10 @@
     "name": "Terrible Blog",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-outlet-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible Blog",
-    "category": ["Fun", "Website"],
+    "category": [
+      "Fun",
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": true,
@@ -341,7 +402,10 @@
     "name": "Terrible Productionz",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-productionz-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible Productionz",
-    "category": ["Fun", "Website"],
+    "category": [
+      "Fun",
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": true,
@@ -353,7 +417,10 @@
     "name": "Terrible Resume",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-resume-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible Resume",
-    "category": ["Fun", "Website"],
+    "category": [
+      "Fun",
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": true,
@@ -365,7 +432,10 @@
     "name": "Terrible 407",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 407",
-    "category": ["Fun", "Website"],
+    "category": [
+      "Fun",
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": true,
@@ -377,7 +447,9 @@
     "name": "Training",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-training-theme-thumb.jpg",
     "description": "Start with a blank site using the Training",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": true,
     "priority": 0,
     "terrible": false,
@@ -389,7 +461,9 @@
     "name": "Twenty Six",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-twenty-six-theme-thumb.jpg",
     "description": "Start with a blank site using the Twenty Six",
-    "category": ["Website"],
+    "category": [
+      "Website"
+    ],
     "hidden": false,
     "priority": 0,
     "terrible": false,
