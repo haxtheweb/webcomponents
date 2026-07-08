@@ -659,10 +659,10 @@ export const DDDVariables = css`
        Usage: box-shadow: var(--ddd-boxShadow-md);
        =========================================== */
     --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
-    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.1) 0px 4px 8px 0px; /* Subtle elevation */
-    --ddd-boxShadow-md: rgba(0, 3, 33, 0.15) 0px 8px 16px 0px; /* Standard elevation */
-    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.2) 0px 12px 24px 0px; /* High elevation */
-    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.25) 0px 16px 32px 0px; /* Maximum elevation */
+    --ddd-boxShadow-sm: light-dark(rgba(0, 3, 33, 0.1), rgba(150, 190, 230, 0.08)) 0px 4px 8px 0px; /* Subtle elevation */
+    --ddd-boxShadow-md: light-dark(rgba(0, 3, 33, 0.15), rgba(150, 190, 230, 0.10)) 0px 8px 16px 0px; /* Standard elevation */
+    --ddd-boxShadow-lg: light-dark(rgba(0, 3, 33, 0.2), rgba(150, 190, 230, 0.12)) 0px 12px 24px 0px; /* High elevation */
+    --ddd-boxShadow-xl: light-dark(rgba(0, 3, 33, 0.25), rgba(150, 190, 230, 0.14)) 0px 16px 32px 0px; /* Maximum elevation */
 
     /* ===========================================
        BREAKPOINTS
