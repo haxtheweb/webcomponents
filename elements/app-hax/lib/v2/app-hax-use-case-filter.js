@@ -1410,7 +1410,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         dataType: "import",
         importKind: "file",
         importType: "docx",
-        callback: "@site/importDocx",
+        callback: "@system/importDocx",
         fileType: "docx",
         useCaseTitle: "Word Doc",
         useCaseImage: "",

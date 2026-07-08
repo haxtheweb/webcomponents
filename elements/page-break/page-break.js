@@ -454,6 +454,11 @@ export class PageBreak extends IntersectionObserverMixin(
       ) {
         this._updateHAXCEMenu();
       }
+      // Refresh HAX tray form when overridePathauto changes so the slug field
+      // disabled state updates correctly based on pathauto settings
+      if (propName === "overridePathauto" && oldValue !== undefined) {
+        globalThis.dispatchEvent(new CustomEvent("hax-refresh-tray-form", {}));
+      }
       // fire event for reaction so we can update sgtate elsewhere
       if (["title", "parent", "slug"].includes(propName)) {
         globalThis.dispatchEvent(
