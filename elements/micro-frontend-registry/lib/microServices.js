@@ -203,7 +203,7 @@ export function enableCoreServices() {
 
   // docxToHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/docxToHtml",
+    endpoint: "/system/api/v1/actions/docx-to-html",
     name: "@core/docxToHtml",
     title: "Docx to HTML",
     description: "Convert .docx file to HTML",
@@ -224,7 +224,7 @@ export function enableCoreServices() {
 
   // htmlToDocx
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/htmlToDocx",
+    endpoint: "/system/api/v1/actions/html-to-docx",
     name: "@core/htmlToDocx",
     title: "HTML to docx",
     description: "Convert HTML to .docx file",
@@ -279,7 +279,7 @@ export function enableCoreServices() {
 export function enableHAXcmsServices() {
   // docxToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/docxToSite",
+    endpoint: "/x/api/v1/site/import/docx",
     name: "@haxcms/docxToSite",
     title: "Docx to Site",
     description: "Convert .docx file to Site schema",
