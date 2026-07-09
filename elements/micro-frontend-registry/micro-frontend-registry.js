@@ -128,12 +128,14 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           if (globalThis.MicroFrontendRegistryConfig.base) {
             base = globalThis.MicroFrontendRegistryConfig.base;
           }
+          // in nodejs backend context, resolve against current origin
+          else if (globalThis.HAXCMSContext === "nodejs") {
+            base = globalThis.location.origin;
+          }
           // keep local based on if we're local, otherwise we need to leverage deployed address
           else if (
-            (!globalThis.HAXCMSContext ||
-              globalThis.HAXCMSContext !== "nodejs") &&
-            (globalThis.location.origin.startsWith("http://127.0.0.1") ||
-              globalThis.location.origin.startsWith("http://localhost"))
+            globalThis.location.origin.startsWith("http://127.0.0.1") ||
+            globalThis.location.origin.startsWith("http://localhost")
           ) {
             base = globalThis.location.origin
               .replace(/127.0.0.1:8(.*)/, "localhost:3000")

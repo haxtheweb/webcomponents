@@ -76,7 +76,7 @@ export function enableCoreServices() {
 
   // mdToHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/mdToHtml",
+    endpoint: "/system/api/v1/actions/md-to-html",
     name: "@core/mdToHtml",
     title: "Markdown to HTML",
     description: "Convert Markdown string (or file) to HTML",
@@ -88,7 +88,7 @@ export function enableCoreServices() {
 
   // htmlToMd
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/htmlToMd",
+    endpoint: "/system/api/v1/actions/html-to-md",
     name: "@core/htmlToMd",
     title: "HTML to MD",
     description: "Convert HTML string (or file) to MD",
@@ -99,7 +99,7 @@ export function enableCoreServices() {
   });
   // htmlToPdf
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/htmlToPdf",
+    endpoint: "/system/api/v1/actions/html-to-pdf",
     name: "@core/htmlToPdf",
     title: "HTML to PDF",
     description: "Convert HTML string (or file) to a PDF",
@@ -111,7 +111,7 @@ export function enableCoreServices() {
 
   // prettyHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/prettyHtml",
+    endpoint: "/system/api/v1/actions/pretty-html",
     name: "@core/prettyHtml",
     title: "Pretty HTML",
     description: "Format HTML string (or file) to be more human readable",
@@ -123,7 +123,7 @@ export function enableCoreServices() {
 
   // jsonToYaml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/jsonToYaml",
+    endpoint: "/system/api/v1/actions/json-to-yaml",
     name: "@core/jsonToYaml",
     title: "JSON to YAML",
     description: "Convert JSON object or string to YAML format",
@@ -135,7 +135,7 @@ export function enableCoreServices() {
 
   // xlsxToCsv
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/xlsxToCsv",
+    endpoint: "/system/api/v1/actions/xlsx-to-csv",
     name: "@core/xlsxToCsv",
     title: "Excel to CSV",
     description: "Convert .xls/.xlsx spreadsheet to CSV string",
@@ -147,7 +147,7 @@ export function enableCoreServices() {
   });
   // yamlToJson
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/yamlToJson",
+    endpoint: "/system/api/v1/actions/yaml-to-json",
     name: "@core/yamlToJson",
     title: "YAML to JSON",
     description: "Convert YAML string to JSON format",
@@ -182,7 +182,7 @@ export function enableCoreServices() {
 
   // docxToPdf
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/docxToPdf",
+    endpoint: "/system/api/v1/actions/docx-to-pdf",
     name: "@core/docxToPdf",
     title: "Docx to pdf",
     description: "Convert .docx file to PDF response (downloaded)",
@@ -192,7 +192,7 @@ export function enableCoreServices() {
   });
   // pdfToHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/pdfToHtml",
+    endpoint: "/system/api/v1/actions/pdf-to-html",
     name: "@core/pdfToHtml",
     title: "PDF to HTML",
     description: "Convert .pdf file to semantic HTML",
@@ -213,7 +213,7 @@ export function enableCoreServices() {
   });
   // pptxToHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/pptxToHtml",
+    endpoint: "/system/api/v1/actions/pptx-to-html",
     name: "@core/pptxToHtml",
     title: "PPTX to HTML",
     description: "Convert .pptx file to HTML",
@@ -279,7 +279,7 @@ export function enableCoreServices() {
 export function enableHAXcmsServices() {
   // pdfToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/pdfToSite",
+    endpoint: "/x/api/v1/site/import/pdf",
     name: "@haxcms/pdfToSite",
     title: "PDF to Site",
     description: "Convert .pdf file to Site schema",
@@ -289,7 +289,7 @@ export function enableHAXcmsServices() {
   });
   // pptxToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/pptxToSite",
+    endpoint: "/x/api/v1/site/import/pptx",
     name: "@haxcms/pptxToSite",
     title: "PPTX to Site",
     description: "Convert .pptx file to Site schema",
@@ -299,7 +299,7 @@ export function enableHAXcmsServices() {
   });
   // xlsxToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/xlsxToSite",
+    endpoint: "/x/api/v1/site/import/xlsx",
     name: "@haxcms/xlsxToSite",
     title: "Excel to Site",
     description: "Convert .xlsx/.xls file to Site schema",
@@ -309,7 +309,7 @@ export function enableHAXcmsServices() {
   });
   // htmlToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/htmlToSite",
+    endpoint: "/x/api/v1/site/import/html",
     name: "@haxcms/htmlToSite",
     title: "HTML to Site",
     description:
@@ -320,7 +320,7 @@ export function enableHAXcmsServices() {
   });
   // gitbookToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/gitbookToSite",
+    endpoint: "/system/api/v1/site/import/gitbook",
     name: "@haxcms/gitbookToSite",
     title: "Gitbook to Site",
     description: "Convert Gitbook baseed repo to valid HAXcms",
@@ -330,7 +330,7 @@ export function enableHAXcmsServices() {
   });
   // notionToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/notionToSite",
+    endpoint: "/system/api/v1/site/import/notion",
     name: "@haxcms/notionToSite",
     title: "Notion to Site",
     description: "Convert notion baseed repo to valid HAXcms",
@@ -340,7 +340,7 @@ export function enableHAXcmsServices() {
   });
   // haxcmsToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/haxcmsToSite",
+    endpoint: "/system/api/v1/site/import/haxcms",
     name: "@haxcms/haxcmsToSite",
     title: "HAXcms to Site",
     description: "Use a HAXcms site as the basis for a new one",
@@ -350,7 +350,7 @@ export function enableHAXcmsServices() {
   });
   // elmslnToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/elmslnToSite",
+    endpoint: "/system/api/v1/site/import/elmsln",
     name: "@haxcms/elmslnToSite",
     title: "ELMS:LN to Site",
     description: "Import an ELMS:LN site to HAXcms",
@@ -360,7 +360,7 @@ export function enableHAXcmsServices() {
   });
   // pressbooksToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/pressbooksToSite",
+    endpoint: "/system/api/v1/site/import/pressbooks",
     name: "@haxcms/pressbooksToSite",
     title: "Pressbooks to Site",
     description: "Convert pressbooks site URL to Site schema",
@@ -370,7 +370,7 @@ export function enableHAXcmsServices() {
   });
   // ploneToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/ploneToSite",
+    endpoint: "/system/api/v1/site/import/plone",
     name: "@haxcms/ploneToSite",
     title: "Plone to Site",
     description: "Convert Plone REST API content to Site schema",
@@ -380,7 +380,7 @@ export function enableHAXcmsServices() {
   });
   // wordpressPagesToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/wordpressPagesToSite",
+    endpoint: "/system/api/v1/site/import/wordpress",
     name: "@haxcms/wordpressPagesToSite",
     title: "WordPress Pages to Site",
     description:
@@ -391,7 +391,7 @@ export function enableHAXcmsServices() {
   });
   // drupalBookToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/drupalBookToSite",
+    endpoint: "/system/api/v1/site/import/drupal-book",
     name: "@haxcms/drupalBookToSite",
     title: "Drupal Book to Site",
     description: "Convert Drupal book content to Site schema",
