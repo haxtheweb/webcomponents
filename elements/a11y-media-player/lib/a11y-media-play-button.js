@@ -37,7 +37,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         :host {
           display: block;
           opacity: 1;
-          transition: opacity 0.5s;
+          transition: opacity 0.6s;
         }
         :host([action="pause"]) {
           opacity: 0;
@@ -48,7 +48,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
           top: 0;
           left: 0;
           opacity: 1;
-          transition: opacity 0.5s;
+          transition: opacity 0.6s;
         }
         #button {
           position: absolute;

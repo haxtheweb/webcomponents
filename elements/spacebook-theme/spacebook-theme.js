@@ -175,7 +175,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         left: 0;
         right: 0;
         z-index: 10;
-        transition: all 0.2s;
+        transition: all 0.3s ease-in-out;
       }
       
       /* Adjust header position when user is logged in to accommodate HAX editing bar */
@@ -270,13 +270,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         width: 100%;
         background-color: var(--spacebook-theme-bg-gray-50);
         opacity: 0.8;
-        transition: all 0.2s;
+        transition: all 0.3s ease-in-out;
       }
 
       .header-buttons:hover {
         background-color: var(--spacebook-theme-bg-gray-100);
         opacity: 1;
-        transition: all 0.2s;
+        transition: all 0.3s ease-in-out;
       }
 
       :host([dark-mode]) .header-buttons {

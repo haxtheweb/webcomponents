@@ -250,7 +250,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-ray]:hover) {
           cursor: pointer;
           outline: 2px solid var(--hax-ui-color-hover, #0001);
-          transition: 0.2s outline-width ease-in-out;
+          transition: 0.3s outline-width ease-in-out;
           outline-offset: 8px;
         }
 

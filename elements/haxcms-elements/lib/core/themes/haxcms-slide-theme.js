@@ -158,7 +158,7 @@ class HAXCMSSlideTheme extends DDDSuper(
           height: 60px;
           left: 0;
           right: 0;
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
           opacity: 1;
           width: 100vw;
         }

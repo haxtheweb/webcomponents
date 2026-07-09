@@ -81,14 +81,14 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
           opacity: 0;
           padding: 0;
           transition:
-            width ease-in-out 0.5s,
-            opacity 0.5s ease-in-out 0s;
+            width ease-in-out 0.6s,
+            opacity 0.6s ease-in-out 0s;
         }
         :host([is-current-item]:not([full-display])) ::slotted(:focus) {
           width: 100px;
           opacity: 1;
           padding: unset;
-          transition: width ease-in-out 0.5s;
+          transition: width ease-in-out 0.6s;
         }
       `,
     ];

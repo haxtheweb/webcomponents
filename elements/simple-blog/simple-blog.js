@@ -71,7 +71,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
           );
           opacity: 0.5;
           border-radius: 50%;
-          transition: all 0.6s linear;
+          transition: all 0.6s ease-in-out;
           /* ensure the back icon contrasts with its circular background */
           --simple-icon-color: light-dark(#000000, #ffffff);
         }

@@ -54,7 +54,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 
 
       .thumbnail{
-        transition: 0.3s ease-out;
+        transition: all 0.3s ease-in-out;
         width: 100%;
         height:448px; 
         border-radius: 1.5%;
@@ -70,7 +70,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
  
       }
       .title{
-        transition: opacity 0.3s ease-out;
+        transition: opacity 0.3s ease-in-out;
         position: absolute;
         bottom: 36px;
         left: 36px;
@@ -84,7 +84,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         
       }
       .arrow{
-        transition: .3s ease-out;
+        transition: all 0.3s ease-in-out;
         position: absolute;
 
         width: 60px;

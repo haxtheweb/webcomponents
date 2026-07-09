@@ -100,11 +100,11 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             width: 0;
             border-bottom: var(--simple-fields-border-bottom-focus-size, 2px)
               solid var(--simple-fields-accent-color, #3f51b5);
-            transition: width 0.5s ease-in-out;
+            transition: width 0.6s ease-in-out;
           }
           :host(:focus-within) .border-bottom.focus {
             width: 100%;
-            transition: width 0.5s ease-in-out;
+            transition: width 0.6s ease-in-out;
           }
           :host([type="checkbox"]) .border-bottom,
           :host([type="color"]) .border-bottom,
@@ -124,7 +124,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           }
           ::slotted(textarea[slot="field"]) {
             margin: 0;
-            transition: height 0.5s ease-in-out;
+            transition: height 0.6s ease-in-out;
             box-sizing: border-box;
             vertical-align: bottom;
           }

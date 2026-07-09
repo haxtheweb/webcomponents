@@ -76,7 +76,7 @@ export class LrnH5p extends LitElement {
           left: 0;
           top: 0;
           transform: translateY(-100%);
-          transition: transform 0.2s ease-in-out;
+          transition: transform 0.3s ease-in-out;
           background: #2196f3;
           color: white;
           text-decoration: none;

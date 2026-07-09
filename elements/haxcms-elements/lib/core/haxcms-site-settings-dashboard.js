@@ -138,9 +138,9 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           justify-content: center;
           gap: var(--ddd-spacing-2);
           transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
+            transform 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out,
+            border-color 0.3s ease-in-out;
         }
         .dashboard-action:hover,
         .dashboard-action:focus-visible {

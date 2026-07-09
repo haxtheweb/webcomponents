@@ -197,7 +197,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--ddd-radius-sm);
           cursor: pointer;
           text-align: left;
-          transition: background-color 0.1s ease;
+          transition: background-color 0.3s ease;
         }
 
         .playlist-item:hover {

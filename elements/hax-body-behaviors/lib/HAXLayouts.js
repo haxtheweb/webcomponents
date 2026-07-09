@@ -18,9 +18,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           :host([ready]) [data-layout-slotname] {
             transition: var(
               --hax-layout-container-transition,
-              0.5s width ease-in-out,
-              0.5s padding ease-in-out,
-              0.5s margin ease-in-out
+              0.6s width ease-in-out,
+              0.6s padding ease-in-out,
+              0.6s margin ease-in-out
             );
           }
           /** this implies hax editing state is available **/

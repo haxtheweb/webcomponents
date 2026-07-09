@@ -127,7 +127,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
           border-radius: var(--theme-gallery-border-radius);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
@@ -248,7 +248,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           font-family: var(--ddd-font-navigation);
         }
 

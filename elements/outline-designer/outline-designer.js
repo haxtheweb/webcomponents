@@ -804,7 +804,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           opacity: 0;
           transform: scaleY(0);
           transform-origin: top;
-          transition: all 0.15s ease-out;
+          transition: all 0.3s ease-out;
         }
         .drop-indicator.show {
           opacity: 1;

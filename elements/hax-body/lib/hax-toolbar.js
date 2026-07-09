@@ -18,7 +18,7 @@ const HaxToolbarBehaviors = function (SuperClass) {
             --hax-ui-border-radius: 0px;
           }
           .selected-buttons {
-            transition: 0.1s all ease-in-out;
+            transition: 0.3s all ease-in-out;
             width: 0;
           }
           :host([has-selected-text]) .selected-buttons {

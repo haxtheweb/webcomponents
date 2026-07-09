@@ -229,9 +229,9 @@ class HAXCMSSystemSettings extends DDD {
           text-align: center;
           padding: var(--ddd-spacing-3);
           transition:
-            transform 0.2s ease,
-            border-color 0.2s ease,
-            box-shadow 0.2s ease;
+            transform 0.3s ease-in-out,
+            border-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
         }
         .launcher:hover,
         .launcher:focus-visible {
@@ -705,8 +705,8 @@ class HAXCMSSystemSettings extends DDD {
         }
         .settings-option-row {
           transition:
-            opacity 0.2s ease,
-            background-color 0.2s ease;
+            opacity 0.3s ease-in-out,
+            background-color 0.3s ease-in-out;
         }
         .settings-option-row.enabled {
           opacity: 1;
@@ -852,9 +852,9 @@ class HAXCMSSystemSettings extends DDD {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           cursor: pointer;
           transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
+            transform 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out,
+            border-color 0.3s ease-in-out;
         }
         button.action:hover,
         button.action:focus-visible {

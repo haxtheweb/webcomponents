@@ -39,7 +39,7 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
                 var(--simple-toolbar-button-height, 24px)
               )
             );
-            transition: all 0.5s;
+            transition: all 0.6s ease-in-out;
             transition: z-index 0s;
           }
           :host([hidden]) {

@@ -316,7 +316,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           border-color: var(--ddd-theme-default-limestoneGray);
           background: var(--ddd-theme-default-limestoneLight);
           color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           margin: 0;
@@ -360,7 +360,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           max-width: 700px;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
-          transition: box-shadow 0.2s ease;
+          transition: box-shadow 0.3s ease-in-out;
           padding-left: var(--ddd-spacing-5, 20px);
           padding-right: var(--ddd-spacing-5, 20px);
           display: flex;
@@ -395,7 +395,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           outline: none;
           min-height: var(--ddd-spacing-7, 28px);
           min-width: var(--ddd-spacing-7, 28px);
@@ -442,7 +442,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-3xs, 11px);
           color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
         }
         .sort-menu-item:hover {
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
@@ -499,7 +499,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           gap: var(--ddd-spacing-1, 4px);
           box-shadow: var(--ddd-boxShadow-sm);
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           min-height: var(--ddd-spacing-7, 28px);
         }
         .reset-button:hover,

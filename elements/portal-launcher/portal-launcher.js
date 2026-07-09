@@ -85,9 +85,9 @@ class PortalLauncher extends HTMLElement {
           }
           .portal-transition {
             transition:
-              transform 0.4s,
-              bottom 0.7s,
-              left 0.7s,
+              transform 0.3s,
+              bottom 0.6s,
+              left 0.6s,
               opacity 1.0s;
           }
           @media (prefers-reduced-motion: reduce) {

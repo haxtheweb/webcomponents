@@ -84,7 +84,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         button {
           cursor: pointer;
           color: inherit;
-          transition: 0.1s ease-in all;
+          transition: 0.3s ease-in all;
           display: flex;
           font-family: inherit;
           background-color: transparent;

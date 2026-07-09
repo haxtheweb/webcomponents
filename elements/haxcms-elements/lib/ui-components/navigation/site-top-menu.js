@@ -50,7 +50,7 @@ class SiteTopMenu extends LitElement {
           display: block;
           --site-top-menu-bg: var(--haxcms-color, #ffffff);
           --site-top-menu-indicator-arrow: 6px;
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
           opacity: 1;
         }
         :host([edit-mode]) {
@@ -102,8 +102,7 @@ class SiteTopMenu extends LitElement {
           color: var(--site-top-menu-link-active-color, #000000);
         }
         #indicator {
-          transition: 0.4s ease-in-out all;
-          transition-delay: 0.2s;
+          transition: 0.3s ease-in-out all;
           position: relative;
           width: 0;
           height: 0;

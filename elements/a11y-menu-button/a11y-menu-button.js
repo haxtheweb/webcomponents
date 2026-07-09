@@ -79,7 +79,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             border-bottom: var(--a11y-menu-button-border-bottom, unset);
             border: var(--a11y-menu-button-border, 1px solid #ddd);
             box-shadow: var(--a11y-menu-button-box-shadow, unset);
-            transition: all 0.25s ease-in-out;
+            transition: all 0.3s ease-in-out;
           }
           button[part="button"]:focus,
           button[part="button"]:hover {

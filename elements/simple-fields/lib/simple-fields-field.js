@@ -116,7 +116,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           }
           textarea {
             margin: 0;
-            transition: height 0.5s ease-in-out;
+            transition: height 0.6s ease-in-out;
             box-sizing: border-box;
             vertical-align: bottom;
             background-color: var(

@@ -33,7 +33,7 @@ class SimpleBlogHeader extends SimpleColors {
           background-color: var(--haxcms-color, black);
         }
         .teaserimage-image {
-          transition: all 0.6s linear;
+          transition: all 0.6s ease-in-out;
           background-size: cover;
           background-position: center;
           position: absolute;

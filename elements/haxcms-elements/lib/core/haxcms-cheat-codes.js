@@ -457,7 +457,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       rpgCharacter.style.filter =
         "hue-rotate(120deg) saturate(1.5) contrast(1.2) sepia(0.3)";
       rpgCharacter.style.transform = "translateY(-5px)";
-      rpgCharacter.style.transition = "all 0.5s ease-in-out";
+      rpgCharacter.style.transition = "all 0.6s ease-in-out";
 
       // Add floating effect using transform animation
       let floatDirection = 1;
@@ -1440,7 +1440,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         font-family: 'Comic Sans MS', cursive, sans-serif;
         color: #333;
         text-align: center;
-        animation: furby-bounce 0.8s ease-out;
+        animation: furby-bounce 0.6s ease-out;
         cursor: move;
         user-select: none;
       `;
@@ -1538,7 +1538,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       const wiggleInterval = setInterval(
         () => {
           if (popup.parentNode && furbyAttackActive) {
-            popup.style.animation = "furby-wiggle 0.5s ease-in-out";
+            popup.style.animation = "furby-wiggle 0.6s ease-in-out";
             setTimeout(() => {
               if (popup.parentNode) {
                 popup.style.animation = "";
@@ -1554,7 +1554,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       // Close button functionality - spawn two more when closed!
       const closeBtn = popup.querySelector(`#close-furby-${popupCount}`);
       closeBtn.addEventListener("click", () => {
-        popup.style.animation = "furby-bounce 0.5s ease-in reverse";
+        popup.style.animation = "furby-bounce 0.6s ease-in reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
@@ -1589,7 +1589,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       const allFurbyPopups =
         globalThis.document.querySelectorAll(".furby-popup");
       allFurbyPopups.forEach((popup) => {
-        popup.style.animation = "furby-bounce 0.5s ease-in reverse";
+        popup.style.animation = "furby-bounce 0.6s ease-in reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
@@ -2087,7 +2087,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         background: white;
         z-index: 10007;
         pointer-events: none;
-        animation: eternal-flash 0.5s ease-out;
+        animation: eternal-flash 0.6s ease-out;
       `;
       globalThis.document.body.appendChild(flash);
 
@@ -2402,7 +2402,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
               left: ${Math.random() * 100}%;
               top: ${Math.random() * 100}%;
               font-size: 20px;
-              transition: font-size 0.5s ease-out;
+              transition: font-size 0.6s ease-out;
               animation: zombie-float ${Math.random() * 3 + 2}s ease-in-out infinite alternate;
             `;
             invasionContainer.appendChild(zombie);
@@ -2562,7 +2562,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         case "mouseScaleDown":
           const body = globalThis.document.body;
           body.style.transformOrigin = "center center";
-          body.style.transition = "transform 0.1s ease-out";
+          body.style.transition = "transform 0.3s ease-out";
 
           const mouseDownHandler = (e) => {
             const centerX = globalThis.innerWidth / 2;
@@ -2599,7 +2599,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         case "mouseScaleUp":
           const bodyUp = globalThis.document.body;
           bodyUp.style.transformOrigin = "center center";
-          bodyUp.style.transition = "transform 0.1s ease-out";
+          bodyUp.style.transition = "transform 0.3s ease-out";
 
           const mouseUpHandler = (e) => {
             const centerX = globalThis.innerWidth / 2;
@@ -2653,7 +2653,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           background: white;
           z-index: 10007;
           pointer-events: none;
-          animation: eternal-flash 0.8s ease-out;
+          animation: eternal-flash 0.6s ease-out;
         `;
 
         // Add flash animation CSS
@@ -2759,7 +2759,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       color: yellow;
       text-shadow: 2px 2px 0px red, -2px -2px 0px red, 2px -2px 0px red, -2px 2px 0px red;
       text-align: center;
-      animation: ytmnd-text-flash 0.5s linear infinite;
+      animation: ytmnd-text-flash 0.6s linear infinite;
     `;
 
     ytmndOverlay.appendChild(imageContainer);
@@ -2887,7 +2887,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         </div>
 
         <div style="background: rgba(0,0,255,0.8); color: white; padding: 15px; margin: 20px auto; width: 80%; max-width: 600px; border: 2px solid yellow;">
-          <h3 style="animation: geocities-blink 0.5s linear infinite;">📊 VISITOR COUNTER 📊</h3>
+          <h3 style="animation: geocities-blink 0.6s linear infinite;">📊 VISITOR COUNTER 📊</h3>
           <div style="font-size: 24px; font-weight: bold; color: lime;">You are visitor #${Math.floor(Math.random() * 999999) + 100000}</div>
         </div>
 
@@ -2898,7 +2898,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
         <div style="margin: 30px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
           <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite;">📧 E-mail Me!</div>
-          <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite 0.5s;">📝 Sign Guestbook</div>
+          <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite 0.6s;">📝 Sign Guestbook</div>
           <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite 1s;">🔗 Cool Links</div>
         </div>
 
@@ -3063,7 +3063,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           height: 8px;
           background: black;
           border-radius: 50%;
-          animation: clippy-blink 3s infinite 0.1s;
+          animation: clippy-blink 3s infinite 0.3s;
         "></div>
       </div>
     `;
@@ -3392,7 +3392,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         z-index: ${isSpecial ? 10002 : 10001};
         cursor: ${isSpecial ? "pointer" : "default"};
         user-select: none;
-        transition: transform 0.2s ease;
+        transition: transform 0.3s ease-in-out;
       `;
 
       element.innerHTML = emoji;

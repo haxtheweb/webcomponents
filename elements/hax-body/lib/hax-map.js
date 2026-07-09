@@ -68,7 +68,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
           background-color: var(--ddd-theme-default-white, #ffffff);
           border: var(--ddd-border-xs, 1px solid);
           border-color: var(--ddd-theme-default-limestoneGray, #999999);
-          transition: all 0.2s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
         li simple-icon-button-lite:hover,
         li simple-icon-button-lite:focus,

@@ -198,7 +198,7 @@ class PlayList extends DDD {
         .carousel-track {
           display: flex;
           flex-direction: row;
-          transition: transform 0.5s ease-in-out;
+          transition: transform 0.6s ease-in-out;
           height: 100%;
           align-items: stretch;
         }

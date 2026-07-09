@@ -63,6 +63,9 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           cursor: pointer;
           transition: background-color 0.3s ease;
         }
+        button.hax-modal-btn.import {
+          margin-left: var(--ddd-spacing-3);
+        }
         button.hax-modal-btn:hover,
         button.hax-modal-btn:focus {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
@@ -91,6 +94,9 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         <button @click="${this._saveTap}" class="hax-modal-btn">
           ${this.t.save}
         </button>
+        <button @click="${this._importTap}" class="hax-modal-btn import">
+          ${this.t.import}
+        </button>
       </div>
     `;
   }
@@ -110,6 +116,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save Outline",
+      import: "Import From File",
     };
   }
   static get properties() {
@@ -378,6 +385,29 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     if (hasUnsavedChanges) {
       this.__allowNextModalClose = true;
     }
+  }
+  _importTap(e) {
+    if (!this._confirmDiscardUnsavedOutlineChanges()) {
+      return;
+    }
+    this.__allowNextModalClose = true;
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      }),
+    );
+    setTimeout(() => {
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-outline-import-request", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+    }, 0);
   }
 
   /**

@@ -548,7 +548,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
         }
 
         #copybtn:hover,

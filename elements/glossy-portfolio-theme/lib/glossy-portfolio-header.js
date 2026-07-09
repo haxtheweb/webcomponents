@@ -126,7 +126,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: var(--desktop-header-padding);
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
-        transition: all 0.1s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
 
@@ -445,14 +445,14 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
   fullOpacity() {
     const desktopContainer = this.renderRoot.querySelector('.container.desktop');
 
-    desktopContainer.style.transition = 'opacity 0.05s ease-in-out';
+    desktopContainer.style.transition = 'opacity 0.3s ease-in-out';
     desktopContainer.style.opacity = '1';
   }
   halfOpacity() {
     const desktopContainer = this.renderRoot.querySelector('.container.desktop');
 
     if (this.scrollPosition > 50){
-      desktopContainer.style.transition = 'opacity 0.1s ease-in-out';
+      desktopContainer.style.transition = 'opacity 0.3s ease-in-out';
       desktopContainer.style.opacity = '0.4';
     }
   }

@@ -111,7 +111,7 @@ class LrndesignTimeline extends SimpleColors {
 
         .media-outer > div {
           opacity: 1;
-          transition: opacity 0.5s;
+          transition: opacity 0.6s;
         }
 
         .media-outer > div,
@@ -188,7 +188,6 @@ class LrndesignTimeline extends SimpleColors {
             border-bottom: 0px solid transparent;
             border-left: 0px solid transparent;
             transition: all 0.3s;
-            transition-delay: 0.2s;
           }
 
           :host(:not([timeline-size="xs"]))
@@ -260,7 +259,6 @@ class LrndesignTimeline extends SimpleColors {
             .media-outer
             > div {
             opacity: 1;
-            transition-delay: 0s;
           }
 
           :host(:not([timeline-size="xs"])) .details {
@@ -271,7 +269,7 @@ class LrndesignTimeline extends SimpleColors {
             background-color: var(--lrndesign-timeline-background);
             border: 1px solid var(--lrndesign-timeline-background);
             border-radius: 3px;
-            transition: all 0.5s;
+            transition: all 0.6s ease-in-out;
           }
 
           :host(:not([timeline-size="xs"])) .event:last-of-type .details {

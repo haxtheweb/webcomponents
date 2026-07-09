@@ -153,8 +153,8 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           width: 100%;
           box-sizing: border-box;
           transition:
-            border-color 0.2s ease,
-            box-shadow 0.2s ease;
+            border-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
         }
         input::placeholder {
           color: light-dark(
@@ -190,7 +190,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-medium);
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           min-width: 100px;
           display: flex;
           align-items: center;

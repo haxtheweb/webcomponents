@@ -80,9 +80,9 @@ class HAXCMSSiteImportExportDashboard extends DDD {
           align-items: start;
           gap: var(--ddd-spacing-3);
           transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
+            transform 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out,
+            border-color 0.3s ease-in-out;
         }
         .action-button:hover,
         .action-button:focus-visible {

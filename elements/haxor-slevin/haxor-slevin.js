@@ -197,7 +197,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           z-index: 99;
           margin-left: -10vw;
           opacity: 1;
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
         }
         .social-float.disable-items {
           pointer-events: none;
@@ -259,7 +259,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           height: 36px;
           z-index: 100;
           opacity: 1;
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
         }
         .annoy-user.disable-items {
           pointer-events: none;
@@ -317,7 +317,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           #home {
             padding-left: 8px;
             padding-right: 8px;
-            transition: 0.5s opacity ease-in-out;
+            transition: 0.6s opacity ease-in-out;
           }
           .hide-small {
             display: none !important;

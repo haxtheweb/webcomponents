@@ -101,7 +101,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           font-size: var(--ddd-font-size-s, 16px);
           font-family: var(--ddd-font-primary, sans-serif);
           box-sizing: border-box;
-          transition: border-color 0.2s ease;
+          transition: border-color 0.3s ease;
           background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
           color: var(--ddd-theme-default-coalyGray, #444);
         }
@@ -123,7 +123,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           font-weight: var(--ddd-font-weight-medium, 500);
           font-family: var(--ddd-font-primary, sans-serif);
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           border: none;
           display: flex;
           align-items: center;
@@ -175,7 +175,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           cursor: pointer;
           padding: var(--ddd-spacing-1, 4px);
           border-radius: var(--ddd-radius-xs, 2px);
-          transition: color 0.2s ease;
+          transition: color 0.3s ease-in-out;
           --simple-icon-width: var(--ddd-icon-xs, 16px);
           --simple-icon-height: var(--ddd-icon-xs, 16px);
         }

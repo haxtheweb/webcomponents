@@ -403,8 +403,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
         .feature-row {
           transition:
-            opacity 0.2s ease,
-            background-color 0.2s ease;
+            opacity 0.3s ease-in-out,
+            background-color 0.3s ease-in-out;
         }
 
         .feature-row.enabled {

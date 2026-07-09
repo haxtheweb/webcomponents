@@ -31,7 +31,7 @@ class MapMenu extends LitElement {
           overflow-y: scroll;
           position: relative;
           height: 100%;
-          transition: all 0.1s ease-in-out;
+          transition: all 0.3s ease-in-out;
           opacity: 1;
           background-color: transparent;
         }
@@ -53,7 +53,7 @@ class MapMenu extends LitElement {
         }
         #activeindicator {
           background: var(--map-menu-item-active-item-color);
-          transition: all 0.1s ease-in-out;
+          transition: all 0.3s ease-in-out;
           position: absolute;
           pointer-events: none;
           z-index: -1;

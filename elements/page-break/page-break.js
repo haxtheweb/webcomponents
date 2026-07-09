@@ -661,7 +661,7 @@ export class PageBreak extends IntersectionObserverMixin(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-limestoneLight)
           );
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
         }
         .link-url:hover {
           background-color: light-dark(

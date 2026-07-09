@@ -30,7 +30,7 @@ class SocialShareLink extends LitElement {
           display: inline-flex;
           align-items: center;
           color: var(--social-share-link-color, inherit);
-          transition: all 0.5s;
+          transition: all 0.6s ease-in-out;
           margin: 5px;
           padding: var(--social-share-button-padding, 0px);
           border-radius: var(--social-share-button-border-radius, 0px);
@@ -58,7 +58,7 @@ class SocialShareLink extends LitElement {
           color: var(--social-share-button-color, white);
           background-color: var(--social-share-button-bg, #0066ff);
           text-decoration: none;
-          transition: all 0.5s;
+          transition: all 0.6s ease-in-out;
         }
 
         :host([button-style]) a:visited {

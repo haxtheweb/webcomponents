@@ -216,7 +216,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           width: 300px;
           height: 100vh;
           overflow-y: auto;
-          transition: 0.2s linear all;
+          transition: 0.3s linear all;
           box-shadow: var(--learn-two-theme-drawer-box-shadow, var(--ddd-boxShadow-sm));
           background-color: var(
             --learn-two-theme-menu-color,

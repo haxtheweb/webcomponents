@@ -299,10 +299,10 @@ div.h5p-fullscreen {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   opacity: 0;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
   background: #000;
   background: rgba(0,0,0,0.75);
 }

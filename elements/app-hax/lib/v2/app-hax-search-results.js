@@ -121,7 +121,7 @@ export class AppHaxSearchResults extends SimpleColors {
           align-items: center;
           justify-content: center;
           font-size: var(--ddd-font-size-s, 20px);
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           flex-shrink: 0;
           z-index: 10;
           position: relative;
@@ -209,7 +209,7 @@ export class AppHaxSearchResults extends SimpleColors {
         #results::-webkit-scrollbar-thumb {
           background: var(--ddd-theme-default-slateGray, #666);
           border-radius: var(--ddd-radius-xs, 2px);
-          transition: background 0.2s ease;
+          transition: background 0.3s ease-in-out;
         }
 
         #results::-webkit-scrollbar-thumb:hover {

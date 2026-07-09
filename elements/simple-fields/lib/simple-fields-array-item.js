@@ -51,7 +51,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           display: block;
           border: none;
           transform: rotate(0deg);
-          transition: all 0.5s ease;
+          transition: all 0.6s ease-in-out;
           z-index: 1;
           position: relative;
         }
@@ -62,11 +62,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           padding: var(--simple-fields-margin, 16px)
             var(--simple-fields-margin-small, 8px);
           outline: 1px solid var(--simple-fields-border-color-light, #ccc);
-          transition: all 0.5s ease;
+          transition: all 0.6s ease-in-out;
         }
         :host([error]) {
           outline: 1px solid var(--simple-fields-error-color, #b40000);
-          transition: border 0.5s ease;
+          transition: border 0.6s ease;
         }
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;
@@ -109,11 +109,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           flex-wrap: wrap;
           overflow: hidden;
           max-height: 0;
-          transition: max-height 0.75s ease;
+          transition: max-height 0.6s ease-in-out;
         }
         :host([aria-expanded="true"]) #content {
           max-height: 20000vh;
-          transition: max-height 0.75s ease;
+          transition: max-height 0.6s ease-in-out;
         }
         :host([aria-expanded="true"]) #content-inner {
           max-height: 20000vh;
@@ -172,7 +172,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
 
         :host([aria-expanded="true"]) #expand::part(icon) {
           transform: rotate(90deg);
-          transition: all 0.5s ease;
+          transition: all 0.6s ease-in-out;
         }
         ::slotted([slot="preview"]),
         ::slotted(*:first-child) {

@@ -69,7 +69,7 @@ export class FlashCard extends DDD {
         :host([status="incorrect"]) {
           outline: 3px dotted var(--ddd-theme-default-wonderPurple);
           outline-offset: -3px;
-          animation: incorrectShake 0.4s ease-in-out;
+          animation: incorrectShake 0.3s ease-in-out;
         }
 
         /* Animations for feedback */

@@ -493,7 +493,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           border-radius: 6px;
           margin-bottom: 12px;
           height: 120px;
-          transition: all 0.2s ease-in-out;
+          transition: all 0.3s ease-in-out;
           overflow: hidden;
           display: block;
         }
@@ -608,7 +608,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       header {
         background-color: var(--ddd-palette-2);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
         padding: 22px;
       }
 
@@ -701,7 +701,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         text-transform: uppercase;
         text-decoration: none;
         border: 5px solid var(--ddd-palette-light);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
       #site-title:hover,
@@ -733,7 +733,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         height: clamp(0.1em, 5vw, 0.2em);
         background-color: var(--ddd-palette-5);
         transform: translateX(-50%);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
       .menu-item:hover,
@@ -765,7 +765,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           height: 4em;
           cursor: pointer;
           margin-left: 10px;
-          transition: all 0.2s ease-in-out;
+          transition: all 0.3s ease-in-out;
       }
 
       .navicon {
@@ -1069,7 +1069,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         border-radius: 6px;
         margin-bottom: 12px;
         height: 120px;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
         overflow: hidden;
         display: block;
       }

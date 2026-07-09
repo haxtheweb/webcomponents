@@ -114,7 +114,7 @@ class PageContentsMenu extends DDD {
           text-overflow: ellipsis;
           transition:
             font 0.3s ease-in-out,
-            border 0.1s ease-in-out;
+            border 0.3s ease-in-out;
           border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
         .link:not(.active):hover {

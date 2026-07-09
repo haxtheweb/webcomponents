@@ -64,10 +64,10 @@ class RetroCard extends SimpleColors {
           border: 16px var(--retro-card-level-1) solid;
           box-shadow: 16px 16px 0px 0px var(--retro-card-shadow);
           transition:
-            background-color 0.2s ease-in-out 0s,
-            padding 0.4s ease-in-out 0s,
-            border 0.4s ease-in-out 0s,
-            box-shadow 0.2s ease-in-out 0s;
+            background-color 0.3s ease-in-out 0s,
+            padding 0.3s ease-in-out 0s,
+            border 0.3s ease-in-out 0s,
+            box-shadow 0.3s ease-in-out 0s;
         }
 
         .link:nth-child(1n + 0) {
@@ -83,9 +83,9 @@ class RetroCard extends SimpleColors {
           padding: var(--retro-card-padding, 2rem);
           box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
           transition:
-            padding 0.4s ease-in-out 0s,
-            border 0.4s ease-in-out 0s,
-            box-shadow 0.2s ease-in-out 0s;
+            padding 0.3s ease-in-out 0s,
+            border 0.3s ease-in-out 0s,
+            box-shadow 0.3s ease-in-out 0s;
           text-align: center;
           color: var(--retro-card-dark-color);
           text-decoration: none;

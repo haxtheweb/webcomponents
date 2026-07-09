@@ -1254,138 +1254,26 @@ class HAXCMSSiteEditor extends LitElement {
             formData,
           );
           store.toast("finished!", 300);
-          // must be a valid response and have at least SOME html to bother attempting
           if (
-            response.status == 200 &&
+            response.status === 200 &&
             response.data &&
-            response.data.contents != ""
+            response.data.items &&
+            response.data.items.length > 0
           ) {
-            // @todo right here is where we need to interject our confirmation dialog
-            // workflow. We can take the items that just came back and visualize them
-            // using our outline / hierarchy visualization
-            reqBody.items = response.data.items;
-            await import(
-              "@haxtheweb/outline-designer/outline-designer.js"
-            ).then(async (e) => {
-              const outline =
-                globalThis.document.createElement("outline-designer");
-              outline.items = response.data.items;
-              outline.eventData = reqBody;
-              outline.storeTools = true;
-
-              const b1 = globalThis.document.createElement("button");
-              b1.innerText = "Save";
-              b1.classList.add("hax-modal-btn");
-              b1.addEventListener("click", async (e) => {
-                const data = await outline.getData();
-                let deleted = 0;
-                let modified = 0;
-                let added = 0;
-                data.items.map((item) => {
-                  if (item.delete) {
-                    deleted++;
-                  } else if (item.new) {
-                    added++;
-                  } else if (item.modified) {
-                    modified++;
-                  }
-                });
-                let sumChanges = `${
-                  added > 0 ? `‣ ${added} new pages will be created\n` : ""
-                }${
-                  modified > 0 ? `‣ ${modified} pages will be updated\n` : ""
-                }${deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""}`;
-                let confirmation = false;
-                // no confirmation required if there are no tracked changes
-                if (sumChanges == "") {
-                  confirmation = true;
-                } else {
-                  confirmation = globalThis.confirm(
-                    `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
-                  );
-                }
-                if (confirmation) {
-                  this.setProcessingVisual();
-                  this._requestJson({
-                    requestId: "createajax",
-                    operationName: "@site/createItem",
-                    payload: data,
-                    unavailableMessage:
-                      "Create item endpoint is not available.",
-                    onSuccess: (response) => {
-                      this.__createNodeResponseChanged({
-                        detail: {
-                          value: response,
-                        },
-                      });
-                      this._handleCreateResponse({
-                        detail: {
-                          response,
-                        },
-                      });
-                    },
-                  });
-                  const evt = new CustomEvent("simple-modal-hide", {
-                    bubbles: true,
-                    composed: true,
-                    cancelable: true,
-                    detail: {},
-                  });
-                  globalThis.dispatchEvent(evt);
-                }
-              });
-              const b2 = globalThis.document.createElement("button");
-              b2.innerText = "Cancel";
-              b2.classList.add("hax-modal-btn");
-              b2.classList.add("cancel");
-              b2.addEventListener("click", (e) => {
-                const evt = new CustomEvent("simple-modal-hide", {
-                  bubbles: true,
-                  composed: true,
-                  cancelable: true,
-                  detail: {},
-                });
-                globalThis.dispatchEvent(evt);
-              });
-              // button container
-              const div = globalThis.document.createElement("div");
-              div.classList.add("hax-modal-actions");
-              div.appendChild(b2);
-              div.appendChild(b1);
-
-              this.dispatchEvent(
-                new CustomEvent("simple-modal-show", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: {
-                    title: "Confirm structure",
-                    titleIcon: "hax:site-map",
-                    elements: { content: outline, buttons: div },
-                    modal: true,
-                    showClose: true,
-                    styles: {
-                      "--simple-modal-titlebar-background": "black",
-                      "--simple-modal-titlebar-color":
-                        "var(--ddd-theme-default-white)",
-                      "--simple-modal-content-container-background":
-                        "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-                      "--simple-modal-width": "80vw",
-                      "--simple-modal-max-width": "80vw",
-                      "--simple-modal-min-width": "300px",
-                      "--simple-modal-z-index": "100000000",
-                      "--simple-modal-height": "80vh",
-                      "--simple-modal-max-height": "80vh",
-                      "--simple-modal-min-height": "400px",
-                      "--simple-modal-titlebar-height": "80px",
-                      "--simple-modal-content-padding": "var(--ddd-spacing-4)",
-                      "--simple-modal-buttons-padding":
-                        "0 var(--ddd-spacing-4) var(--ddd-spacing-4)",
-                      "--simple-modal-border-radius": "var(--ddd-radius-md)",
-                    },
-                  },
-                }),
-              );
+            globalThis.dispatchEvent(
+              new CustomEvent("haxcms-docx-import-items", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {
+                  items: response.data.items,
+                  parentId: reqBody.parent,
+                },
+              }),
+            );
+          } else {
+            store.toast("Invalid response from DOCX import.", 4000, {
+              hat: "construction",
             });
           }
         });

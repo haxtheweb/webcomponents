@@ -97,7 +97,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         button {
-          transition: 0.1s ease-in all;
+          transition: 0.3s ease-in all;
           cursor: pointer;
           font-family: inherit;
           color: inherit;

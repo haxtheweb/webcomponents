@@ -339,8 +339,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           padding: var(--ddd-spacing-4);
           user-select: none;
           transition:
-            background-color 0.2s ease-in-out,
-            color 0.2s ease-in-out;
+            background-color 0.3s ease-in-out,
+            color 0.3s ease-in-out;
         }
         .group[open] .group-summary {
           margin-bottom: var(--ddd-spacing-3);

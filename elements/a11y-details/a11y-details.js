@@ -115,7 +115,7 @@ class A11yDetails extends LitElement {
           position: absolute;
           display: none;
           max-height: 0px;
-          transition: all 0.7s ease-in-out 0.2s;
+          transition: all 0.6s ease-in-out;
           overflow-y: auto;
           padding: 0;
           font-size: var(--a11y-details-fontSize, 0.8em);
@@ -150,12 +150,12 @@ class A11yDetails extends LitElement {
           height: auto;
           max-height: 0;
           overflow: hidden;
-          transition: all 0.7s ease-in-out 0.2s;
+          transition: all 0.6s ease-in-out;
         }
 
         details[open] ::slotted([slot="details"]) {
           max-height: var(--a11y-details-maxHeight, 400px);
-          transition: all 0.7s ease-in-out 0.2s;
+          transition: all 0.6s ease-in-out;
         }
 
         details[open] #details-inner {
@@ -167,7 +167,7 @@ class A11yDetails extends LitElement {
           max-height: var(--a11y-details-maxHeight, 400px);
           padding: var(--a11y-details-padding, 0.5em);
           width: calc(auto - 2 * var(--a11y-details-padding, 0.5em));
-          transition: all 0.7s ease-in-out 0.2s;
+          transition: all 0.6s ease-in-out;
         }
       `,
     ];

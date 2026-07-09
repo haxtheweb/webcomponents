@@ -63,7 +63,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         }
 
         :host([correct]) {
-          animation: answerReveal 0.5s ease-in-out;
+          animation: answerReveal 0.6s ease-in-out;
         }
         :host([hidden]),
         *[hidden] {
@@ -266,7 +266,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           opacity: 1;
           position: relative;
           left: 0;
-          animation: slideInAnswer 0.4s ease-out;
+          animation: slideInAnswer 0.3s ease-out;
         }
 
         /* Animations for smooth answer reveal */

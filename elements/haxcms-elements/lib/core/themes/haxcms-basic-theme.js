@@ -91,7 +91,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
         );
         color: white;
         padding: 16px;
-        transition: 0.2s opacity linear;
+        transition: 0.3s opacity linear;
         opacity: 1;
       }
       site-active-title {

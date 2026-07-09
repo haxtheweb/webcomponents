@@ -163,7 +163,7 @@ class GridPlate extends LitElement {
           ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
-          transition: 0.2s opacity ease-in-out;
+          transition: 0.3s opacity ease-in-out;
           margin: 0;
         }
         :host .column ::slotted(*) {
@@ -181,9 +181,9 @@ class GridPlate extends LitElement {
         :host([ready][data-hax-ray]) [data-layout-slotname] {
           transition: var(
             --hax-layout-container-transition,
-            0.5s width ease-in-out,
-            0.5s padding ease-in-out,
-            0.5s margin ease-in-out
+            0.6s width ease-in-out,
+            0.6s padding ease-in-out,
+            0.6s margin ease-in-out
           );
         }
         /** this implies hax editing state is available **/

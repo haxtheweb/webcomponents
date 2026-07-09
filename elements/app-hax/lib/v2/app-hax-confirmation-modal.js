@@ -153,7 +153,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
           font-weight: var(--ddd-font-weight-medium, 500);
           font-family: var(--ddd-font-primary, sans-serif);
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           border: none;
           display: flex;
           align-items: center;

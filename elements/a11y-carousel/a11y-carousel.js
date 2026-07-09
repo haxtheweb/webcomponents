@@ -64,7 +64,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             opacity: 0;
             --simple-icon-width: 30%;
             --simple-icon-height: 30%;
-            transition: 0.5s all ease-in-out;
+            transition: 0.6s all ease-in-out;
           }
           a11y-carousel-button.prevnext:focus,
           a11y-carousel-button.prevnext:hover {

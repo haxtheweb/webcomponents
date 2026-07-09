@@ -32,8 +32,8 @@ class SimpleBlogOverview extends SimpleColors {
           background-color: light-dark(#ffffff, var(--ddd-primary-4, #222));
           border-radius: var(--ddd-radius-md, 4px);
           transition:
-            box-shadow 0.2s ease-in-out,
-            transform 0.2s ease-in-out;
+            box-shadow 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
         }
         .post-title {
           letter-spacing: -0.04em;

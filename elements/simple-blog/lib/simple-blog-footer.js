@@ -25,7 +25,7 @@ class SimpleBlogFooter extends SimpleColors {
           position: relative;
           overflow: hidden;
           opacity: 1;
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
           font-family: var(--ddd-font-body);
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }
@@ -47,7 +47,7 @@ class SimpleBlogFooter extends SimpleColors {
           background-repeat: no-repeat;
           background-position: center;
           opacity: 0.4;
-          transition: all 0.6s linear;
+          transition: all 0.6s ease-in-out;
         }
         .background-closer-image-wrap {
           position: absolute;
@@ -57,7 +57,7 @@ class SimpleBlogFooter extends SimpleColors {
           right: 0;
           bottom: 0;
           text-indent: -9999px;
-          transition: all 0.6s linear;
+          transition: all 0.6s ease-in-out;
           opacity: 1;
         }
         :host([active]) .background-closer-image {

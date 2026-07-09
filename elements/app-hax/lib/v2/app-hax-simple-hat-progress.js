@@ -65,7 +65,7 @@ export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
             var(--ddd-theme-default-futureLime, #99cc33) 100%
           );
           border-radius: var(--ddd-radius-sm, 4px);
-          transition: width 0.5s ease;
+          transition: width 0.6s ease;
           width: 0%;
         }
 

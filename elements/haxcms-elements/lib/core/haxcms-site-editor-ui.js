@@ -44,6 +44,7 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   seo: "admin-seo",
   author: "admin-author",
   structure: "admin-structure",
+  "structure-import": "admin-structure-import",
   content: "admin-content",
   files: "admin-files",
   views: "admin-views",
@@ -237,8 +238,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 0px;
           left: 0px;
           position: fixed;
-          transition-delay: 0.9s;
-          transition: all 0.9s ease-in-out;
+          transition: all 0.6s ease-in-out;
         }
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #000;
@@ -308,7 +308,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
           background: transparent;
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
           position: relative;
@@ -1259,140 +1259,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   values && values.contextItemId ? values.contextItemId : null,
                 );
               } else {
-                // must be a valid response and have at least SOME html to bother attempting
-                if (response.data && response.data.contents != "") {
-                  // right here is where we need to interject our confirmation dialog
-                  // workflow. We can take the items that just came back and visualize them
-                  // using our outline / hierarchy visualization
-                  let reqBody = {};
-                  reqBody.items = response.data.items;
-                  await import(
-                    "@haxtheweb/outline-designer/outline-designer.js"
-                  ).then(async (e) => {
-                    reqBody.site = {
-                      name: toJS(store.manifest.metadata.site.name),
-                    };
-                    const outline =
-                      globalThis.document.createElement("outline-designer");
-                    outline.items = response.data.items;
-                    outline.eventData = reqBody;
-                    outline.storeTools = true;
-
-                    const b1 = globalThis.document.createElement("button");
-                    b1.innerText = this.t.save || "Save";
-                    b1.classList.add("hax-modal-btn");
-                    b1.addEventListener("click", async (e) => {
-                      const data = await outline.getData();
-                      let deleted = 0;
-                      let modified = 0;
-                      let added = 0;
-                      data.items.map((item) => {
-                        if (item.delete) {
-                          deleted++;
-                        } else if (item.new) {
-                          added++;
-                        } else if (item.modified) {
-                          modified++;
-                        }
-                      });
-                      let sumChanges = `${
-                        added > 0
-                          ? `‣ ${added} new pages will be created\n`
-                          : ""
-                      }${
-                        modified > 0
-                          ? `‣ ${modified} pages will be updated\n`
-                          : ""
-                      }${
-                        deleted > 0
-                          ? `‣ ${deleted} pages will be deleted\n`
-                          : ""
-                      }`;
-                      let confirmation = false;
-                      // no confirmation required if there are no tracked changes
-                      if (sumChanges == "") {
-                        confirmation = true;
-                      } else {
-                        confirmation = globalThis.confirm(
-                          `Saving will commit the following actions:\n${sumChanges}\nAre you sure?`,
-                        );
-                      }
-                      if (confirmation) {
-                        globalThis.dispatchEvent(
-                          new CustomEvent("haxcms-create-node", {
-                            bubbles: true,
-                            composed: true,
-                            cancelable: true,
-                            detail: {
-                              values: data,
-                              originalTarget: this,
-                            },
-                          }),
-                        );
-                        const evt = new CustomEvent("simple-modal-hide", {
-                          bubbles: true,
-                          composed: true,
-                          cancelable: true,
-                          detail: {},
-                        });
-                        globalThis.dispatchEvent(evt);
-                      }
-                    });
-                    const b2 = globalThis.document.createElement("button");
-                    b2.innerText = this.t.cancel || "Cancel";
-                    b2.classList.add("hax-modal-btn");
-                    b2.classList.add("cancel");
-                    b2.addEventListener("click", (e) => {
-                      const evt = new CustomEvent("simple-modal-hide", {
-                        bubbles: true,
-                        composed: true,
-                        cancelable: true,
-                        detail: {},
-                      });
-                      globalThis.dispatchEvent(evt);
-                    });
-                    // button container
-                    const div = globalThis.document.createElement("div");
-                    div.classList.add("hax-modal-actions");
-                    div.appendChild(b2);
-                    div.appendChild(b1);
-
-                    this.dispatchEvent(
-                      new CustomEvent("simple-modal-show", {
-                        bubbles: true,
-                        cancelable: true,
-                        composed: true,
-                        detail: {
-                          title: "Confirm structure",
-                          titleIcon: "hax:site-map",
-                          elements: { content: outline, buttons: div },
-                          modal: true,
-                          showClose: true,
-                          styles: {
-                            "--simple-modal-titlebar-background": "black",
-                            "--simple-modal-titlebar-color":
-                              "var(--ddd-theme-default-white)",
-                            "--simple-modal-content-container-background":
-                              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-                            "--simple-modal-width": "80vw",
-                            "--simple-modal-max-width": "80vw",
-                            "--simple-modal-min-width": "300px",
-                            "--simple-modal-z-index": "100000000",
-                            "--simple-modal-height": "80vh",
-                            "--simple-modal-max-height": "80vh",
-                            "--simple-modal-min-height": "400px",
-                            "--simple-modal-titlebar-height": "80px",
-                            "--simple-modal-content-padding":
-                              "var(--ddd-spacing-4)",
-                            "--simple-modal-buttons-padding":
-                              "0 var(--ddd-spacing-4) var(--ddd-spacing-4)",
-                            "--simple-modal-border-radius":
-                              "var(--ddd-radius-md)",
-                          },
-                        },
-                      }),
-                    );
-                  });
+                if (
+                  response.data &&
+                  response.data.items &&
+                  response.data.items.length > 0
+                ) {
+                  this._openImportHierarchy(response.data.items, false, {});
+                } else {
+                  store.toast(
+                    "No valid items found in import response.",
+                    4000,
+                    {
+                      hat: "construction",
+                    },
+                  );
                 }
               }
             }
@@ -1769,6 +1649,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-undo-changed": "_undoChanged",
       "haxcms-open-theme-preview-program": "_openThemePreviewFromProgram",
       "haxcms-open-page-revisions": "_openPageRevisionsFromEvent",
+      "haxcms-docx-import-items": "_openImportHierarchyFromEvent",
+      "haxcms-outline-import-request": "_selectFileForHierarchyImport",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
       popstate: "_adminRoutePopState",
@@ -6051,6 +5933,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "author":
         return "authorManifest";
       case "structure":
+      case "structure-import":
         return "outlineDesigner";
       case "reports":
         return "insights";
@@ -6170,6 +6053,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return true;
       case "structure":
         this._outlineButtonTap(null, true, "Structure", routeOptions);
+        return true;
+      case "structure-import":
+        if (
+          !this.__importHierarchyItems ||
+          this.__importHierarchyItems.length === 0
+        ) {
+          this._outlineButtonTap(null, true, "Structure", {
+            skipUrlUpdate: true,
+          });
+          return true;
+        }
+        this._openImportHierarchy(this.__importHierarchyItems, true, {
+          skipUrlUpdate: true,
+          silent: true,
+        });
         return true;
       case "appearance":
         this._openAppearanceSettings(true, "Appearance", routeOptions);
@@ -6522,6 +6420,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         break;
       case "content-admin":
         this._openContentAdmin(true);
+        break;
+      case "structure":
+        this._outlineButtonTap(null, true, "Structure", {
+          skipUrlUpdate: true,
+        });
         break;
       default:
         break;
@@ -7148,6 +7051,152 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     globalThis.dispatchEvent(evt);
+  }
+  _openImportHierarchy(items, fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.__importHierarchyItems = items;
+      this.setAdminPath(
+        "structure-import",
+        routeOptions.historyMode || "push",
+        false,
+      );
+      return;
+    }
+    if (!this._syncAdminRoutePath("structure-import", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    let title = "Import";
+    let breadcrumbs = [];
+    if (fromSiteSettings) {
+      breadcrumbs = [
+        {
+          label: this.t.siteSettings,
+          icon: "home",
+          action: "site-settings-dashboard",
+          clickable: true,
+        },
+        {
+          label: "Structure",
+          icon: "hax:site-map",
+          action: "structure",
+          clickable: true,
+        },
+        {
+          label: "Import",
+          icon: "hax:site-map",
+          clickable: false,
+        },
+      ];
+    }
+    const siteName =
+      store.manifest &&
+      store.manifest.metadata &&
+      store.manifest.metadata.site &&
+      store.manifest.metadata.site.name
+        ? store.manifest.metadata.site.name
+        : "";
+    const c = globalThis.document.createElement("outline-designer");
+    c.storeTools = true;
+    c.hideDelete = true;
+    c.eventData = {
+      site: {
+        name: siteName,
+      },
+      items: items,
+    };
+    const saveBtn = globalThis.document.createElement("button");
+    saveBtn.classList.add("hax-modal-btn");
+    saveBtn.innerText = "Save";
+    saveBtn.addEventListener("click", async () => {
+      const data = await c.getData();
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-create-node", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            originalTarget: this,
+            values: data,
+          },
+        }),
+      );
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    });
+    const cancelBtn = globalThis.document.createElement("button");
+    cancelBtn.classList.add("hax-modal-btn");
+    cancelBtn.innerText = "Cancel";
+    cancelBtn.addEventListener("click", () => {
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    });
+    const buttonContainer = globalThis.document.createElement("div");
+    buttonContainer.appendChild(saveBtn);
+    buttonContainer.appendChild(cancelBtn);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: title,
+        titleIcon: "hax:site-map",
+        breadcrumbs: breadcrumbs,
+        styles: {
+          "--simple-modal-titlebar-background": "black",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-width": "80vw",
+          "--simple-modal-max-width": "80vw",
+          "--simple-modal-height": "80vh",
+          "--simple-modal-max-height": "80vh",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
+        },
+        elements: {
+          content: c,
+          buttons: buttonContainer,
+        },
+        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
+        clone: false,
+        modal: true,
+        showClose: true,
+      },
+    });
+    globalThis.dispatchEvent(evt);
+  }
+  _openImportHierarchyFromEvent(e) {
+    const detail = e && e.detail ? e.detail : {};
+    const items = detail.items || [];
+    this._openImportHierarchy(items, false, {});
+  }
+  _selectFileForHierarchyImport(e) {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-create-node", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          originalTarget: this,
+          values: {
+            docximport: "branch",
+            parent: null,
+          },
+        },
+      }),
+    );
   }
   /**
    * toggle state on button tap

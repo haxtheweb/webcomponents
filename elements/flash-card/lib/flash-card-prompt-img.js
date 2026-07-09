@@ -101,7 +101,7 @@ export class FlashCardPromptImg extends DDD {
         display: flex;
         background: var(--ddd-theme-default-wonderPurple);
         filter: opacity(0.75);
-        animation: incorrectOverlay 0.4s ease-in-out;
+        animation: incorrectOverlay 0.3s ease-in-out;
       }
 
       /* Feedback animations */

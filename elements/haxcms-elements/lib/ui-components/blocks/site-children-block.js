@@ -114,7 +114,7 @@ class SiteChildrenBlock extends LitElement {
           display: block;
           --site-children-block-indent: 16px;
           --site-children-block-link-active-bg: rgba(255, 255, 255, 0.1);
-          transition: 0.2s opacity linear;
+          transition: 0.3s opacity linear;
           opacity: 1;
         }
         :host([edit-mode]) {

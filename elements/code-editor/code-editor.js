@@ -72,7 +72,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         }
         label {
           color: var(--code-editor-label-color, #444);
-          transition: all 0.5s;
+          transition: all 0.6s ease-in-out;
           flex: 0 0 auto;
           margin: var(--code-editor-margin, 12px);
         }

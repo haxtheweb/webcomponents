@@ -58,7 +58,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
             border-top: var(--a11y-menu-button-item-border-top, none);
             border-bottom: var(--a11y-menu-button-item-border-bottom, none);
             border: var(--a11y-menu-button-item-border, none);
-            transition: all 0.25s ease-in-out;
+            transition: all 0.3s ease-in-out;
           }
           button[role="menuitem"],
           button[role="menuitem"]:visited {

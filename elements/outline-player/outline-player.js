@@ -123,7 +123,7 @@ class OutlinePlayer extends LTIResizingMixin(
           margin: 40px;
           padding: 0 16px 16px 16px;
           flex: none;
-          transition: 0.5s opacity ease-in-out;
+          transition: 0.6s opacity ease-in-out;
           background-color: light-dark(
             #ffffff,
             var(--ddd-primary-4)

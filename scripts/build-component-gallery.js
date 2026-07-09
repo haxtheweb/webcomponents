@@ -332,7 +332,7 @@ function generateHTML(components) {
       font-family: var(--ddd-font-primary);
       font-size: var(--ddd-font-size-4xs);
       font-weight: var(--ddd-font-weight-medium);
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       flex: 1;
       min-width: 0;
       text-align: center;
@@ -374,7 +374,7 @@ function generateHTML(components) {
       border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
       border-radius: var(--ddd-radius-xs);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       text-align: left;
       font-family: var(--ddd-font-primary);
       color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
@@ -522,7 +522,7 @@ function generateHTML(components) {
       font-size: var(--ddd-font-size-3xs);
       font-weight: var(--ddd-font-weight-medium);
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       display: inline-flex;
       align-items: center;
       gap: var(--ddd-spacing-1);

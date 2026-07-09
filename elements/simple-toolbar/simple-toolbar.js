@@ -49,7 +49,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             font-size: inherit;
             margin: 0;
             padding: 0;
-            transition: all 0.5s;
+            transition: all 0.6s ease-in-out;
             transition: z-index 0s;
           }
           :host([hidden]) {
