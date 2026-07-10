@@ -37,13 +37,28 @@
     <h1>example-hax-element</h1>
     <!-- this is going to do whatever the tag's defaults are -->
     <h2>Default</h2>
-    <example-hax-element></example-hax-element>
+    <demo-snippet>
+      <template>
+        <example-hax-element></example-hax-element>
+      </template>
+    </demo-snippet>
     <h2>Slot usage</h2>
-    <example-hax-element data-accent="2" data-primary="17"><div>Sample slot content</div></example-hax-element>
+    <demo-snippet>
+      <template>
+        <example-hax-element data-accent="2" data-primary="17"><div>Sample slot content</div></example-hax-element>
+      </template>
+    </demo-snippet>
     <h2>Property usage</h2>
-    <example-hax-element id="example" title="Sample property title"></example-hax-element>
+    <demo-snippet>
+      <template>
+        <example-hax-element id="example" title="Sample property title"></example-hax-element>
+      </template>
+    </demo-snippet>
   </div>
   <script type="module" src="../example-hax-element.js"></script>
+  <script type="module">
+    import "@haxtheweb/demo-snippet/demo-snippet.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

@@ -15,6 +15,7 @@
       };
     </script>
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import "../grade-book.js";
     </script>
     <style>
@@ -38,13 +39,17 @@
       </div>
     </grade-book>
     -->
-    <grade-book
-      accent-color="blue"
-    >
-    <div slot="app-name">
-      <img style="height:32px;" src="https://standard.psu.edu/images/uploads/psu-mark.svg" alt="Penn State University">
-      <div style="margin: -20px 0 0 35px;font-weight:bold;">Gradebook</div>
-    </div>
-  </grade-book>
+    <demo-snippet>
+      <template>
+        <grade-book
+          accent-color="blue"
+        >
+        <div slot="app-name">
+          <img style="height:32px;" src="https://standard.psu.edu/images/uploads/psu-mark.svg" alt="Penn State University">
+          <div style="margin: -20px 0 0 35px;font-weight:bold;">Gradebook</div>
+        </div>
+      </grade-book>
+      </template>
+    </demo-snippet>
   </body>
 </html>

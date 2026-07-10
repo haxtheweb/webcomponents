@@ -17,6 +17,7 @@
       }
     </style>
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import { pageFlagManager } from '../page-flag.js';
       import "@haxtheweb/grid-plate/grid-plate.js";
       // most common way to access registry
@@ -28,11 +29,15 @@
     <grid-plate layout="1-1">
       <div slot="col-1">
         <h3>Basic page-flag demo</h3>
-        <page-flag accent-color="yellow">
-          <page-flag-comment seed="Bryan" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
+        <demo-snippet>
+          <template>
+            <page-flag accent-color="yellow">
+              <page-flag-comment seed="Bryan" accent-color="grey">This is a comment</page-flag-comment>
+              <page-flag-comment seed="Other person" accent-color="orange">This is a comment</page-flag-comment>
+              <page-flag-comment seed="Bryan" accent-color="green">This is a comment</page-flag-comment>
+            </page-flag>
+          </template>
+        </demo-snippet>
         <p>Here's a bunch of content</p>
         <p>Here's a bunch of content</p>
         <p>Here's a bunch of content</p>
@@ -49,11 +54,15 @@
       </div>
       <div slot="col-2">
         <h3>Basic page-flag demo</h3>
-        <page-flag accent-color="yellow">
-          <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
-          <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
-        </page-flag>
+        <demo-snippet>
+          <template>
+            <page-flag accent-color="yellow">
+              <page-flag-comment seed="Bryan" date="2 days ago" accent-color="grey">This is a comment</page-flag-comment>
+              <page-flag-comment seed="Other person" date="2 days ago" accent-color="orange">This is a comment</page-flag-comment>
+              <page-flag-comment seed="Bryan" date="3 days ago" accent-color="green">This is a comment</page-flag-comment>
+            </page-flag>
+          </template>
+        </demo-snippet>
         <p>Here's a bunch of content</p>
         <p>Here's a bunch of content</p>
         <p>Here's a bunch of content</p>

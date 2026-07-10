@@ -3,27 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>FullWidthImage: full-width-image Demo</title>
-    
+    <title>Resume theme: resume-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
     <script type="module">
-      
       import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../full-width-image.js';
+      import '../resume-theme.js';
     </script>
-    
   </head>
   <body>
-    <div style="max-width: 800px; margin: 20px auto;">
-      <h3>Basic full-width-image demo</h3>
+    <div class="vertical-section-container centered">
+      <h3>Basic resume-theme demo</h3>
       <demo-snippet>
         <template>
-          <full-width-image caption="This is the text of the caption" source="//placekitten.com/800/800"></full-width-image>
+          <resume-theme>
+            This is resume-theme
+          </resume-theme>
         </template>
       </demo-snippet>
-      <p>Stuff and things</p>
-      <p>Stuff and things</p>
     </div>
   </body>
 </html>

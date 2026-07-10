@@ -8,7 +8,7 @@
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
-      
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../count-up.js';
     </script>
   </head>
@@ -41,6 +41,21 @@
     </style>
     </custom-style>
       <h3>Basic count-up demo</h3>
+      <demo-snippet>
+        <template>
+          <div class="vertical-section-container centered">
+            <count-up id="one" end="100" suffixtext="%">
+              <div slot="suffix">Free</div>
+            </count-up>
+            <count-up id="two" end="64" duration="5" suffixtext="k">
+              <div slot="suffix">Total Sites</div>
+            </count-up>
+            <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+              <div slot="suffix">Total Users</div>
+            </count-up>
+          </div>
+        </template>
+      </demo-snippet>
     <div class="vertical-section-container centered">
       <count-up id="one" end="100" suffixtext="%">
         <div slot="suffix">Free</div>

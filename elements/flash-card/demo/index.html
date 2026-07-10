@@ -52,10 +52,14 @@
     </flash-card-set>
       <br><p>-------------------------------------</p><br>
       <h2>Static flash-card with properties</h2>
-      <flash-card img-keyword="strawberry" inverted>
-        <p slot="front">What is strawberry in Spanish?</p>
-        <p slot="back">fresa</p>
-      </flash-card>
+      <demo-snippet>
+        <template>
+          <flash-card img-keyword="strawberry" inverted>
+            <p slot="front">What is strawberry in Spanish?</p>
+            <p slot="back">fresa</p>
+          </flash-card>
+        </template>
+      </demo-snippet>
       <script>
         const jsonBlob = {
           "fronts": ["What is strawberry in Spanish?", "What is penguin in Spanish?", "What is strawberry in Spanish?", "What is Bryan in Spanish?", "What is hello in Japanese?"],

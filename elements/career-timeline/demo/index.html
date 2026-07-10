@@ -30,31 +30,38 @@
 <body>
   <div id="demo">
     <h1>career-timeline</h1>
-    <career-timeline title="My Career">
-      <career-org-item organization="HAX Lab" location="University Park, Pennsylvania, PA">
-        <career-role-item title="Senior Web Developer">
-          <p>You will need to complete this before the Fall 2026 semester...</p>
-          <ul>
-              <li>Thing 1</li>
-          </ul>
-        </career-role-item>
-        <career-role-item title="Web Developer">
-          <p>You will need to complete this before the Fall 2026 semester...</p>
-          <ul>
-              <li>Thing 1</li>
-          </ul>
-        </career-role-item>
-        <career-role-item title="Web Intern">
-          <p>You will need to complete this before the Fall 2026 semester...</p>
-          <ul>
-              <li>Thing 1</li>
-          </ul>
-        </career-role-item>
-      </career-org-item>
-    </career-timeline>
+    <demo-snippet>
+      <template>
+        <career-timeline title="My Career">
+          <career-org-item organization="HAX Lab" location="University Park, Pennsylvania, PA">
+            <career-role-item title="Senior Web Developer">
+              <p>You will need to complete this before the Fall 2026 semester...</p>
+              <ul>
+                  <li>Thing 1</li>
+              </ul>
+            </career-role-item>
+            <career-role-item title="Web Developer">
+              <p>You will need to complete this before the Fall 2026 semester...</p>
+              <ul>
+                  <li>Thing 1</li>
+              </ul>
+            </career-role-item>
+            <career-role-item title="Web Intern">
+              <p>You will need to complete this before the Fall 2026 semester...</p>
+              <ul>
+                  <li>Thing 1</li>
+              </ul>
+            </career-role-item>
+          </career-org-item>
+        </career-timeline>
+      </template>
+    </demo-snippet>
   </div>
   <script type="module" src="../career-timeline.js"></script>
   <script type="module" src="../lib/career-org-item.js"></script>
   <script type="module" src="../lib/career-role-item.js"></script>
+  <script type="module">
+    import "@haxtheweb/demo-snippet/demo-snippet.js";
+  </script>
 </body>
 </html>

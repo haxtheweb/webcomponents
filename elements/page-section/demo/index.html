@@ -6,6 +6,7 @@
     <title>PageSection: page-section Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '@haxtheweb/simple-cta/simple-cta.js';
       import "@haxtheweb/simple-icon/lib/simple-icons.js";
       import "@haxtheweb/future-terminal-text/future-terminal-text.js";
@@ -28,13 +29,18 @@
     </style>
   </head>
   <body>
-    <page-section large full filter bg="blue" fold scroller 
-    image="http://staging-static.vmhost.psu.edu/components/img/homepage-hero/homepage-hero-test-0.jpg">
-      <h1 data-primary="12" data-design-treatment="horz">We'll meet you where you are.</h1>
-      <p>
-        We’re ready for you, future Nittany Lions! From virtual tours, online orientation experiences to connecting with current students, staff, and faculty in real time.
-      </p>
-    </page-section>
+    <h3>page-section example</h3>
+    <demo-snippet>
+      <template>
+        <page-section large full filter bg="blue" fold scroller 
+        image="http://staging-static.vmhost.psu.edu/components/img/homepage-hero/homepage-hero-test-0.jpg">
+          <h1 data-primary="12" data-design-treatment="horz">We'll meet you where you are.</h1>
+          <p>
+            We’re ready for you, future Nittany Lions! From virtual tours, online orientation experiences to connecting with current students, staff, and faculty in real time.
+          </p>
+        </page-section>
+      </template>
+    </demo-snippet>
 
     <page-section large id="section-1" full="" class="section top" filter="" accent-color="blue" fold scroller="" scroller-label="Let's learn about HAX" image="https://hax.psu.edu/assets/images/splash.jpg">
       <h1>

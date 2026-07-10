@@ -9,6 +9,7 @@
 
     <script>globalThis.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../lunr-search.js';
       import '@haxtheweb/simple-icon/lib/simple-icon-lite.js';
       import '@haxtheweb/d-d-d/d-d-d.js';
@@ -18,7 +19,11 @@
     <div class="vertical-section-container centered">
       <h3>Basic lunr-search demo</h3>
       <p>This illustrates some data binding <a href="lunrSearchIndex.json">leveraging this as a data set</a>.</p>
-      <lunr-search-demo></lunr-search-demo>
+      <demo-snippet>
+        <template>
+          <lunr-search-demo></lunr-search-demo>
+        </template>
+      </demo-snippet>
     </div>
 
     <script type="module">

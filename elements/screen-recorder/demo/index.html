@@ -37,13 +37,28 @@
     <h1>screen-recorder</h1>
     <!-- this is going to do whatever the tag's defaults are -->
     <h2>Default</h2>
-    <screen-recorder></screen-recorder>
+    <demo-snippet>
+      <template>
+        <screen-recorder></screen-recorder>
+      </template>
+    </demo-snippet>
     <h2>Slot usage</h2>
-    <screen-recorder data-accent="2" data-primary="17"><div>Sample slot content</div></screen-recorder>
+    <demo-snippet>
+      <template>
+        <screen-recorder data-accent="2" data-primary="17"><div>Sample slot content</div></screen-recorder>
+      </template>
+    </demo-snippet>
     <h2>Property usage</h2>
-    <screen-recorder id="example" title="Sample property title"></screen-recorder>
+    <demo-snippet>
+      <template>
+        <screen-recorder id="example" title="Sample property title"></screen-recorder>
+      </template>
+    </demo-snippet>
   </div>
   <script type="module" src="../screen-recorder.js"></script>
+  <script type="module">
+    import "@haxtheweb/demo-snippet/demo-snippet.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

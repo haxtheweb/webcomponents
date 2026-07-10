@@ -14,6 +14,7 @@
       };
     </script>
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../simple-img.js';      
     </script>
     
@@ -21,28 +22,36 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-img demo</h3>
-      <simple-img
-        height="500"
-        width="500"
-        fit="contain"
-        quality="60"
-        watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
-        wmspot="ne">
+      <demo-snippet>
         <template>
-          <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
+          <simple-img
+            height="500"
+            width="500"
+            fit="contain"
+            quality="60"
+            watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
+            wmspot="ne">
+            <template>
+              <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
+            </template>
+          </simple-img>
         </template>
-      </simple-img>
+      </demo-snippet>
 
-      <simple-img
-      height="200"
-      width="300"
-      quality="30"
-      watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
-      wmspot="sw">
-      <template>
-        <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
-      </template>
-    </simple-img>
+      <demo-snippet>
+        <template>
+          <simple-img
+            height="200"
+            width="300"
+            quality="30"
+            watermark="https://drupal.psu.edu/sites/default/files/whiterevmark.png"
+            wmspot="sw">
+            <template>
+              <img src="https://www.psu.edu/psu-edu-assets/images/blue-ribbon-banners/students-walking-path_1.jpg" decoding="async" fetchpriority="low" />
+            </template>
+          </simple-img>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

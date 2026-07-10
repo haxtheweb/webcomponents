@@ -7,6 +7,7 @@
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../simple-autocomplete.js';
       import '../lib/simple-autocomplete-text-trigger.js';
     </script>
@@ -19,18 +20,30 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-
-      Cool things <simple-autocomplete item-limit="5" hide-input></simple-autocomplete> Some other stuff.
+      <h2>Basic simple-autocomplete</h2>
+      <demo-snippet>
+        <template>
+          Cool things <simple-autocomplete item-limit="5" hide-input></simple-autocomplete> Some other stuff.
+        </template>
+      </demo-snippet>
 
       <h2>Implementation inside of a textarea</h2>
-      <simple-autocomplete-text-trigger>
-        <textarea value="Cool"></textarea>
-      </simple-autocomplete-text-trigger>
+      <demo-snippet>
+        <template>
+          <simple-autocomplete-text-trigger>
+            <textarea value="Cool"></textarea>
+          </simple-autocomplete-text-trigger>
+        </template>
+      </demo-snippet>
 
       <h2>Implementation inside of a contenteditable div</h2>
-      <simple-autocomplete-text-trigger>
-        <div contenteditable>Cool</div>
-      </simple-autocomplete-text-trigger>
+      <demo-snippet>
+        <template>
+          <simple-autocomplete-text-trigger>
+            <div contenteditable>Cool</div>
+          </simple-autocomplete-text-trigger>
+        </template>
+      </demo-snippet>
     </div>
   <script>
     window.onload = (e) => {

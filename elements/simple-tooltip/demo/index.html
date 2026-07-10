@@ -8,6 +8,7 @@
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import "@haxtheweb/simple-icon/lib/simple-icons.js";
       import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
       import '../simple-tooltip.js';
@@ -19,10 +20,15 @@
     </style>
   </head>
   <body>
-    <simple-icon-button-lite
-    id="edit"
-    icon="icons:create"
-  >Edit</simple-icon-button-lite>
-  <simple-tooltip for="edit" animation-delay="0">Some tip you</simple-tooltip>
+    <h3>Basic simple-tooltip demo</h3>
+    <demo-snippet>
+      <template>
+        <simple-icon-button-lite
+          id="edit"
+          icon="icons:create"
+        >Edit</simple-icon-button-lite>
+        <simple-tooltip for="edit" animation-delay="0">Some tip you</simple-tooltip>
+      </template>
+    </demo-snippet>
   </body>
 </html>

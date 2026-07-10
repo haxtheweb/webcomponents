@@ -38,44 +38,63 @@
     <p>Display author information with photo, bio, and social links</p>
     
     <h2>Basic Example</h2>
-    <author-card 
-      name="btopro" 
-      title="Developer & Educator"
-      description="btopro is a developer and educator working on HAX and web components."
-      image="https://github.com/btopro.png"
-      profile-url="/u/btopro"
-      social-link="https://x.com/btopro"
-      social-handle="@btopro">
-    </author-card>
+    <demo-snippet>
+      <template>
+        <author-card 
+          name="btopro" 
+          title="Developer & Educator"
+          description="btopro is a developer and educator working on HAX and web components."
+          image="https://github.com/btopro.png"
+          profile-url="/u/btopro"
+          social-link="https://x.com/btopro"
+          social-handle="@btopro">
+        </author-card>
+      </template>
+    </demo-snippet>
     
     <h2>Without Image</h2>
-    <author-card 
-      name="Jane Developer" 
-      title="Frontend Engineer"
-      description="Passionate about creating accessible and performant web experiences."
-      social-link="https://github.com/jane"
-      social-handle="@janedev">
-    </author-card>
+    <demo-snippet>
+      <template>
+        <author-card 
+          name="Jane Developer" 
+          title="Frontend Engineer"
+          description="Passionate about creating accessible and performant web experiences."
+          social-link="https://github.com/jane"
+          social-handle="@janedev">
+        </author-card>
+      </template>
+    </demo-snippet>
     
     <h2>Minimal Version</h2>
-    <author-card 
-      name="John Writer" 
-      title="Content Creator">
-    </author-card>
+    <demo-snippet>
+      <template>
+        <author-card 
+          name="John Writer" 
+          title="Content Creator">
+        </author-card>
+      </template>
+    </demo-snippet>
     
     <h2>Dark Theme</h2>
-    <author-card 
-      dark
-      name="Alex Designer" 
-      title="UI/UX Designer"
-      description="Creating beautiful and intuitive user interfaces."
-      image="https://github.com/btopro.png"
-      profile-url="/team/alex"
-      social-link="https://dribbble.com/alex"
-      social-handle="@alexdesigns">
-    </author-card>
+    <demo-snippet>
+      <template>
+        <author-card 
+          dark
+          name="Alex Designer" 
+          title="UI/UX Designer"
+          description="Creating beautiful and intuitive user interfaces."
+          image="https://github.com/btopro.png"
+          profile-url="/team/alex"
+          social-link="https://dribbble.com/alex"
+          social-handle="@alexdesigns">
+        </author-card>
+      </template>
+    </demo-snippet>
   </div>
   <script type="module" src="../author-card.js"></script>
+  <script type="module">
+    import "@haxtheweb/demo-snippet/demo-snippet.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

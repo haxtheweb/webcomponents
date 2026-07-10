@@ -8,15 +8,24 @@
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import './simple-wc-demo.js';
     </script>
   </head>
   <body>
     <h3>simple-wc with properties</h3>
-    <simple-wc title="Hello World" color="blue"></simple-wc>
-    <simple-wc title="HAX The Web" color="green"></simple-wc>
+    <demo-snippet>
+      <template>
+        <simple-wc title="Hello World" color="blue"></simple-wc>
+        <simple-wc title="HAX The Web" color="green"></simple-wc>
+      </template>
+    </demo-snippet>
     <h3>simple-wc-demo (wrapper example)</h3>
-    <simple-wc-demo title="This is a title" color="green"></simple-wc-demo>
-    <simple-wc-demo title="This is a title" color="blue"></simple-wc-demo>
+    <demo-snippet>
+      <template>
+        <simple-wc-demo title="This is a title" color="green"></simple-wc-demo>
+        <simple-wc-demo title="This is a title" color="blue"></simple-wc-demo>
+      </template>
+    </demo-snippet>
   </body>
 </html>
