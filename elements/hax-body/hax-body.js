@@ -260,6 +260,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             [contenteditable][data-hax-ray]:empty:not(
                 [data-instructional-action]
               )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            [contenteditable][data-hax-ray]:has(> br:only-child):not(
+                [data-instructional-action]
+              )
           )::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
@@ -270,6 +277,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           #bodycontainer
           ::slotted(
             p[contenteditable][data-hax-ray][data-hax-active]:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            p[contenteditable][data-hax-ray][data-hax-active]:has(> br:only-child):not(
                 [data-instructional-action]
               )
           )::before {
@@ -283,6 +297,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             [contenteditable][data-hax-ray]:hover:empty:not(
                 [data-instructional-action]
               )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            [contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+                [data-instructional-action]
+              )
           )::before {
           opacity: 0.4;
           cursor: text;
@@ -292,6 +313,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           #bodycontainer
           ::slotted(
             [contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            [contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
                 [data-instructional-action]
               )
           )::before {
@@ -330,6 +358,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             dt[contenteditable][data-hax-ray]:empty:not(
                 [data-instructional-action]
               )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:has(> br:only-child):not(
+                [data-instructional-action]
+              )
           )::before {
           content: "Definition term...";
           opacity: 0.4;
@@ -344,6 +379,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             dd[contenteditable][data-hax-ray]:empty:not(
                 [data-instructional-action]
               )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:has(> br:only-child):not(
+                [data-instructional-action]
+              )
           )::before {
           content: "Definition description...";
           opacity: 0.4;
@@ -355,6 +397,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           #bodycontainer
           ::slotted(
             dl[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:has(> br:only-child):not(
                 [data-instructional-action]
               )
           )::before {
@@ -385,6 +434,27 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             dl[contenteditable][data-hax-ray]:hover:empty:not(
                 [data-instructional-action]
               )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+                [data-instructional-action]
+              )
           )::before {
           opacity: 0.6;
           cursor: text;
@@ -409,6 +479,27 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           #bodycontainer
           ::slotted(
             dl[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
                 [data-instructional-action]
               )
           )::before {
@@ -1558,8 +1649,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               const rng = HAXStore.getRange();
               if (
                 this.activeNode &&
-                HAXStore.isTextElement(this.activeNode) &&
-                rng.commonAncestorContainer.textContent.trim() == ""
+                (HAXStore.isTextElement(this.activeNode) ||
+                  this.activeNode.tagName === "LI") &&
+                this.__isEffectivelyEmptyTextBlock(this.activeNode)
               ) {
                 e.preventDefault();
                 SuperDaemonInstance.mini = true;
@@ -1674,7 +1766,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!node || !node.tagName) {
       return false;
     }
-    if (!HAXStore.__validGridTags().includes(node.tagName.toLowerCase())) {
+    if (
+      !HAXStore.__validGridTags().includes(node.tagName.toLowerCase()) &&
+      node.tagName.toLowerCase() !== "li"
+    ) {
       return false;
     }
     let meaningfulText = "";
@@ -4165,8 +4260,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               this.__scrubTransientEditorStyleSpans(node);
               if (this._validElementTest(node)) {
+                // Ensure newly added valid nodes get HAX editing state applied
+                this.__applyNodeEditableStateWhenReady(node, this.editMode);
+                if (HAXStore.isGridPlateElement(node)) {
+                  this.__rehydrateLayoutDescendants(node, this.editMode);
+                }
                 // text primitives may be inserted as a whole node with a BR inside
-                // (for example <p><br></p>). Normalize this immediately.
                 if (this.__normalizeInsertedTextPrimitive(node)) {
                   HAXStore.activeNode = node;
                   this.__delHit = false;

@@ -277,10 +277,10 @@ export function enableCoreServices() {
 
 // HAXcms services
 export function enableHAXcmsServices() {
-  // pdfToSite
+  // importPdf
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/import-pdf",
-    name: "@system/pdfToSite",
+    name: "@system/importPdf",
     title: "PDF to Site",
     description: "Convert .pdf file to Site schema",
     params: {
@@ -297,10 +297,10 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
-  // xlsxToSite
+  // importXlsx
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/import-xlsx",
-    name: "@system/xlsxToSite",
+    name: "@system/importXlsx",
     title: "Excel to Site",
     description: "Convert .xlsx/.xls file to Site schema",
     params: {
@@ -378,10 +378,10 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the Plone site",
     },
   });
-  // wordpressPagesToSite
+  // wordpressToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/wordpress",
-    name: "@system/wordpressPagesToSite",
+    name: "@system/wordpressToSite",
     title: "WordPress Pages to Site",
     description:
       "Convert WordPress pages (and menu structure where available) to Site schema",

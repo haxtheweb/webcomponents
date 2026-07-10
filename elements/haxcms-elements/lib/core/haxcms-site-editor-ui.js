@@ -1147,7 +1147,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             dataToPost.append("upload", values.data);
             endpointCall = "@core/pdfToHtml";
             if (mode === "create-branch") {
-              endpointCall = "@system/pdfToSite";
+              endpointCall = "@system/importPdf";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent
