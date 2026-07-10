@@ -11,7 +11,7 @@ configure({ enforceActions: false });
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
   endpoint: "/api/apps/haxcms/aiChat",
-  name: "@haxcms/aiChat",
+  name: "@system/aiChat",
   title: "AI Chat",
   description: "AI based chat agent that can answer questions about a site",
   params: {
@@ -381,7 +381,7 @@ class ChatAgentStore {
 
         this.isLoading = true;
 
-        MicroFrontendRegistry.call("@haxcms/aiChat", params)
+        MicroFrontendRegistry.call("@system/aiChat", params)
           .then((d) => {
             if (d.status == 200) {
               this.answers = [d.data.answers];

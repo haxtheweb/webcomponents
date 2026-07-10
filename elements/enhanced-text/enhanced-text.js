@@ -134,7 +134,7 @@ class EnhancedText extends LitElement {
     if (this.haxcmsGlossary && (this.haxcmsSiteLocation || this.haxcmsSite)) {
       if (this.haxcmsSite) {
         await MicroFrontendRegistry.call(
-          "@haxcms/termsInPage",
+          "@system/termsInPage",
           {
             body: body,
             type: "site",
@@ -145,7 +145,7 @@ class EnhancedText extends LitElement {
         );
       } else {
         await MicroFrontendRegistry.call(
-          "@haxcms/termsInPage",
+          "@system/termsInPage",
           {
             body: body,
             type: "link",

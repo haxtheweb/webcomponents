@@ -650,7 +650,7 @@ class CleanOne extends DDDSuper(
               <div class="btn-container">
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
-                  ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+                  ${MicroFrontendRegistry.has("@system/siteToHtml")
                     ? this.PrintBranchButton("bottom")
                     : html`
                         <site-print-button

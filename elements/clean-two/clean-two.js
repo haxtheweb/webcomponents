@@ -742,7 +742,7 @@ class CleanTwo extends LTIResizingMixin(
               ${MicroFrontendRegistry.has("@core/htmlToPdf")
                 ? this.PDFPageButton()
                 : ``}
-              ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+              ${MicroFrontendRegistry.has("@system/siteToHtml")
                 ? html`${this.PrintSiteButton()}${this.PrintBranchButton()}`
                 : html`<replace-tag
                     with="site-print-button"

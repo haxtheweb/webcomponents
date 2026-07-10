@@ -117,7 +117,7 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     PrintBranchButton(position = "auto") {
       return html`
-        ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+        ${MicroFrontendRegistry.has("@system/siteToHtml")
           ? html` <div
               class="print-branch-btn"
               part="${this.editMode ? `edit-mode-active` : ``}"
@@ -171,7 +171,7 @@ export const PrintBranchMixin = function (SuperClass) {
         format: "json",
       };
       const response = await MicroFrontendRegistry.call(
-        "@haxcms/siteToHtml",
+        "@system/siteToHtml",
         params,
       );
       if (response.status == 200 && response.data) {
@@ -203,7 +203,7 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     PrintSiteButton(position = "auto") {
       return html`
-        ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+        ${MicroFrontendRegistry.has("@system/siteToHtml")
           ? html` <div
               class="print-branch-btn"
               part="${this.editMode ? `edit-mode-active` : ``}"
@@ -257,7 +257,7 @@ export const PrintBranchMixin = function (SuperClass) {
         format: "json",
       };
       const response = await MicroFrontendRegistry.call(
-        "@haxcms/siteToHtml",
+        "@system/siteToHtml",
         params,
       );
       if (response.status == 200 && response.data) {

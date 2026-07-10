@@ -108,7 +108,7 @@ export class PrintHelper {
 
     try {
       const response = await MicroFrontendRegistry.call(
-        "@haxcms/siteToHtml",
+        "@system/siteToHtml",
         params,
       );
       if (response.status == 200 && response.data) {
@@ -161,7 +161,7 @@ export class PrintHelper {
 
     try {
       const response = await MicroFrontendRegistry.call(
-        "@haxcms/siteToHtml",
+        "@system/siteToHtml",
         params,
       );
       if (response.status == 200 && response.data) {
@@ -282,7 +282,7 @@ export const createPrintProgram = (i18nMixin) => {
     });
 
     // Option 4: Download as PDF (uses same service as branch print)
-    if (MicroFrontendRegistry.has("@haxcms/siteToHtml")) {
+    if (MicroFrontendRegistry.has("@system/siteToHtml")) {
       results.push({
         title: t.downloadPdf,
         icon: "hax:file-pdf",

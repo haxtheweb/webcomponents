@@ -202,7 +202,7 @@ export class MfHtmlExample extends LitElement {
           __method: "GET",
         };
         MicroFrontendRegistry.call(
-          "@haxcms/siteToHtml",
+          "@system/siteToHtml",
           params,
           this.haxcmsCallback.bind(this),
         );
@@ -218,7 +218,7 @@ export class MfHtmlExample extends LitElement {
           __method: "GET",
         };
         MicroFrontendRegistry.call(
-          "@haxcms/siteToEpub",
+          "@system/siteToEpub",
           params,
           this.haxcmsepubCallback.bind(this),
         );

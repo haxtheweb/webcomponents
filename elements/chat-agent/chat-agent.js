@@ -23,7 +23,7 @@ configure({ enforceActions: false });
 enableServices(["haxcms"]);
 MicroFrontendRegistry.add({
   endpoint: "/api/apps/haxcms/aiChat",
-  name: "@haxcms/aiChat",
+  name: "@system/aiChat",
   title: "AI Chat",
   description: "AI based chat agent that can answer questions about a site",
   params: {

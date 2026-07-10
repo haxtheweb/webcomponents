@@ -280,7 +280,7 @@ export function enableHAXcmsServices() {
   // pdfToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/import-pdf",
-    name: "@haxcms/pdfToSite",
+    name: "@system/pdfToSite",
     title: "PDF to Site",
     description: "Convert .pdf file to Site schema",
     params: {
@@ -300,7 +300,7 @@ export function enableHAXcmsServices() {
   // xlsxToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/import-xlsx",
-    name: "@haxcms/xlsxToSite",
+    name: "@system/xlsxToSite",
     title: "Excel to Site",
     description: "Convert .xlsx/.xls file to Site schema",
     params: {
@@ -310,7 +310,7 @@ export function enableHAXcmsServices() {
   // htmlToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/html",
-    name: "@haxcms/htmlToSite",
+    name: "@system/htmlToSite",
     title: "HTML to Site",
     description:
       "Convert uploaded HTML, repoUrl HTML, or raw HTML to Site schema",
@@ -321,7 +321,7 @@ export function enableHAXcmsServices() {
   // gitbookToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/gitbook",
-    name: "@haxcms/gitbookToSite",
+    name: "@system/gitbookToSite",
     title: "Gitbook to Site",
     description: "Convert Gitbook baseed repo to valid HAXcms",
     params: {
@@ -331,7 +331,7 @@ export function enableHAXcmsServices() {
   // notionToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/notion",
-    name: "@haxcms/notionToSite",
+    name: "@system/notionToSite",
     title: "Notion to Site",
     description: "Convert notion baseed repo to valid HAXcms",
     params: {
@@ -341,7 +341,7 @@ export function enableHAXcmsServices() {
   // haxcmsToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/haxcms",
-    name: "@haxcms/haxcmsToSite",
+    name: "@system/haxcmsToSite",
     title: "HAXcms to Site",
     description: "Use a HAXcms site as the basis for a new one",
     params: {
@@ -351,7 +351,7 @@ export function enableHAXcmsServices() {
   // elmslnToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/elmsln",
-    name: "@haxcms/elmslnToSite",
+    name: "@system/elmslnToSite",
     title: "ELMS:LN to Site",
     description: "Import an ELMS:LN site to HAXcms",
     params: {
@@ -361,7 +361,7 @@ export function enableHAXcmsServices() {
   // pressbooksToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/pressbooks",
-    name: "@haxcms/pressbooksToSite",
+    name: "@system/pressbooksToSite",
     title: "Pressbooks to Site",
     description: "Convert pressbooks site URL to Site schema",
     params: {
@@ -371,7 +371,7 @@ export function enableHAXcmsServices() {
   // ploneToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/plone",
-    name: "@haxcms/ploneToSite",
+    name: "@system/ploneToSite",
     title: "Plone to Site",
     description: "Convert Plone REST API content to Site schema",
     params: {
@@ -381,7 +381,7 @@ export function enableHAXcmsServices() {
   // wordpressPagesToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/wordpress",
-    name: "@haxcms/wordpressPagesToSite",
+    name: "@system/wordpressPagesToSite",
     title: "WordPress Pages to Site",
     description:
       "Convert WordPress pages (and menu structure where available) to Site schema",
@@ -392,7 +392,7 @@ export function enableHAXcmsServices() {
   // drupalBookToSite
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/site/import/drupal-book",
-    name: "@haxcms/drupalBookToSite",
+    name: "@system/drupalBookToSite",
     title: "Drupal Book to Site",
     description: "Convert Drupal book content to Site schema",
     params: {
@@ -404,7 +404,7 @@ export function enableHAXcmsServices() {
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",
-    name: "@haxcms/courseStats",
+    name: "@system/courseStats",
     title: "Course stats",
     description:
       "Relevant stats for teaching relative to the ancestor in question",
@@ -417,7 +417,7 @@ export function enableHAXcmsServices() {
   // siteToHtml
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/siteToHtml",
-    name: "@haxcms/siteToHtml",
+    name: "@system/siteToHtml",
     title: "HAXcms Full Site HTML",
     description: "Load entire HAXcms site via URL as HTML",
     params: {
@@ -430,7 +430,7 @@ export function enableHAXcmsServices() {
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/pageCache",
     method: "GET",
-    name: "@haxcms/pageCache",
+    name: "@system/pageCache",
     title: "HAXcms Page cache",
     description: "Load a page from a site via uuid",
     params: {
@@ -442,7 +442,7 @@ export function enableHAXcmsServices() {
   // siteManifest
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/siteManifest",
-    name: "@haxcms/siteManifest",
+    name: "@system/siteManifest",
     title: "HAXcms manifest",
     description: "Load the manifest for a site based on URL",
     params: {
@@ -453,7 +453,7 @@ export function enableHAXcmsServices() {
   // siteGlossary
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/siteGlossary",
-    name: "@haxcms/siteGlossary",
+    name: "@system/siteGlossary",
     title: "HAXcms site Glossary",
     description: "array of terms found in the glossary slug",
     params: {
@@ -464,7 +464,7 @@ export function enableHAXcmsServices() {
   // views
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/views",
-    name: "@haxcms/views",
+    name: "@system/views",
     title: "Views, but for HAX",
     description: "Views criteria for slicing and remixing HAX site data",
     params: {
@@ -475,7 +475,7 @@ export function enableHAXcmsServices() {
   // termsInPage
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/termsInPage",
-    name: "@haxcms/termsInPage",
+    name: "@system/termsInPage",
     title: "HAXcms Page terms",
     description: "array of terms from glossary found in a blob of html",
     params: {
@@ -490,7 +490,7 @@ export function enableHAXcmsServices() {
   // siteToEpub
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/siteToEpub",
-    name: "@haxcms/siteToEpub",
+    name: "@system/siteToEpub",
     title: "HAXcms Full Site EPUB",
     description: "generate .epub of entire HAXcms site via URL",
     params: {

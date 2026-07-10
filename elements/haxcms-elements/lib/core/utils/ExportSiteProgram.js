@@ -110,7 +110,7 @@ export async function exportSiteAs(format, options = {}) {
 // Helper methods for different export formats
 export async function _exportSiteAsHTML(manifest, title, baseUrl) {
   try {
-    const response = await MicroFrontendRegistry.call("@haxcms/siteToHtml", {
+    const response = await MicroFrontendRegistry.call("@system/siteToHtml", {
       type: "site",
       site: {
         file: baseUrl + "/site.json",
@@ -149,7 +149,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
   try {
     // First get site as HTML, then convert to Markdown
     const htmlResponse = await MicroFrontendRegistry.call(
-      "@haxcms/siteToHtml",
+      "@system/siteToHtml",
       {
         type: "site",
         site: {
@@ -209,7 +209,7 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
   try {
     // First get site as HTML, then convert to DOCX
     const htmlResponse = await MicroFrontendRegistry.call(
-      "@haxcms/siteToHtml",
+      "@system/siteToHtml",
       {
         type: "site",
         site: {
@@ -265,7 +265,7 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   try {
     // Get site HTML first, then convert to PDF
     const htmlResponse = await MicroFrontendRegistry.call(
-      "@haxcms/siteToHtml",
+      "@system/siteToHtml",
       {
         type: "site",
         site: {
@@ -310,7 +310,7 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
 
 export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
   try {
-    const response = await MicroFrontendRegistry.call("@haxcms/siteToEpub", {
+    const response = await MicroFrontendRegistry.call("@system/siteToEpub", {
       type: "link",
       site: `${baseUrl}/site.json`,
       ancestor: null, // null means whole site

@@ -1147,7 +1147,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             dataToPost.append("upload", values.data);
             endpointCall = "@core/pdfToHtml";
             if (mode === "create-branch") {
-              endpointCall = "@haxcms/pdfToSite";
+              endpointCall = "@system/pdfToSite";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent
@@ -1180,11 +1180,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ["insert-html", "create-sibling", "create-child"].includes(mode)
             ) {
               dataToPost.append("upload", values.data);
-              endpointCall = "@haxcms/htmlToSite";
+              endpointCall = "@system/htmlToSite";
               dataToPost.append("method", "page");
             } else if (mode === "create-branch") {
               dataToPost.append("upload", values.data);
-              endpointCall = "@haxcms/htmlToSite";
+              endpointCall = "@system/htmlToSite";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent
