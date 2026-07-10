@@ -924,12 +924,16 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       // Set the real site URL from the API response
       if (createResponse && createResponse.slug) {
         this.siteUrl = createResponse.slug.replace("index.html", "");
+      } else if (createResponse && createResponse.link) {
+        this.siteUrl = createResponse.link;
       } else {
         // Fallback URL if API doesn't return proper response
         const siteSlug = this.siteName
           .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-");
-        this.siteUrl = siteSlug;
+          .replace(/[^a-z0-9_-]+/g, "-")
+          .replace(/[-_]{2,}/g, "-")
+          .replace(/^[-_]+|[-_]+$/g, "");
+        this.siteUrl = `/_sites/${siteSlug}/`;
       }
 
       // Success!
@@ -1020,13 +1024,19 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       }
 
       if (!matchedSite && createResponse && createResponse.slug) {
+        const createSlug = createResponse.slug.replace("index.html", "");
         matchedSite = results.data.items.find(
-          (item) => item && item.slug === createResponse.slug,
+          (item) => item && item.slug && (item.slug === createSlug || item.slug === createResponse.slug),
         );
       }
 
       if (!matchedSite && this.siteName) {
-        const normalizedSiteName = this.siteName.trim().toLowerCase();
+        const normalizedSiteName = this.siteName
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9_-]+/g, "-")
+          .replace(/[-_]{2,}/g, "-")
+          .replace(/^[-_]+|[-_]+$/g, "");
         matchedSite = results.data.items.find((item) => {
           if (
             !item ||
@@ -1036,9 +1046,13 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           ) {
             return false;
           }
-          return (
-            item.metadata.site.name.trim().toLowerCase() === normalizedSiteName
-          );
+          const itemName = item.metadata.site.name
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9_-]+/g, "-")
+            .replace(/[-_]{2,}/g, "-")
+            .replace(/^[-_]+|[-_]+$/g, "");
+          return itemName === normalizedSiteName;
         });
       }
 
