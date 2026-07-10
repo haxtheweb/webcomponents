@@ -1071,7 +1071,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         try {
           const excelResponse = await MicroFrontendRegistry.call(
-            "@core/xlsxToCsv",
+            "@system/xlsxToCsv",
             excelDataToPost,
           );
 
