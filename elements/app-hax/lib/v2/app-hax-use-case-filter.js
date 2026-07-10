@@ -1436,7 +1436,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         dataType: "import",
         importKind: "file",
         importType: "pptx",
-        callback: "@haxcms/pptxToSite",
+        callback: "@system/importPptx",
         fileType: "pptx",
         useCaseTitle: "PowerPoint",
         useCaseImage: "",

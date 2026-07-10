@@ -279,7 +279,7 @@ export function enableCoreServices() {
 export function enableHAXcmsServices() {
   // pdfToSite
   MicroFrontendRegistry.add({
-    endpoint: "/x/api/v1/site/import/pdf",
+    endpoint: "/system/api/v1/actions/import-pdf",
     name: "@haxcms/pdfToSite",
     title: "PDF to Site",
     description: "Convert .pdf file to Site schema",
@@ -287,10 +287,10 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
-  // pptxToSite
+  // importPptx
   MicroFrontendRegistry.add({
-    endpoint: "/x/api/v1/site/import/pptx",
-    name: "@haxcms/pptxToSite",
+    endpoint: "/system/api/v1/actions/import-pptx",
+    name: "@system/importPptx",
     title: "PPTX to Site",
     description: "Convert .pptx file to Site schema",
     params: {
@@ -299,7 +299,7 @@ export function enableHAXcmsServices() {
   });
   // xlsxToSite
   MicroFrontendRegistry.add({
-    endpoint: "/x/api/v1/site/import/xlsx",
+    endpoint: "/system/api/v1/actions/import-xlsx",
     name: "@haxcms/xlsxToSite",
     title: "Excel to Site",
     description: "Convert .xlsx/.xls file to Site schema",
@@ -309,7 +309,7 @@ export function enableHAXcmsServices() {
   });
   // htmlToSite
   MicroFrontendRegistry.add({
-    endpoint: "/x/api/v1/site/import/html",
+    endpoint: "/system/api/v1/site/import/html",
     name: "@haxcms/htmlToSite",
     title: "HTML to Site",
     description:

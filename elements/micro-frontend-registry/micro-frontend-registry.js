@@ -128,10 +128,10 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           if (globalThis.MicroFrontendRegistryConfig.base) {
             base = globalThis.MicroFrontendRegistryConfig.base;
           }
-          // in nodejs backend context, resolve against current origin
-          else if (globalThis.HAXCMSContext === "nodejs") {
-            base = globalThis.location.origin;
-          }
+      // in nodejs backend context, unmigrated /api/ endpoints still need cloud fallback
+      else if (globalThis.HAXCMSContext === "nodejs") {
+        base = "https://open-apis.hax.cloud";
+      }
           // keep local based on if we're local, otherwise we need to leverage deployed address
           else if (
             globalThis.location.origin.startsWith("http://127.0.0.1") ||

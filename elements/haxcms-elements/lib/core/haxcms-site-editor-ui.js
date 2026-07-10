@@ -1159,7 +1159,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             dataToPost.append("upload", values.data);
             endpointCall = "@core/pptxToHtml";
             if (mode === "create-branch") {
-              endpointCall = "@haxcms/pptxToSite";
+              endpointCall = "@system/importPptx";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent
