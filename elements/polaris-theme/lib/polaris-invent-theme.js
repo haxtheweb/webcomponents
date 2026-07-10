@@ -586,9 +586,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           >
             <site-search></site-search>
           </site-modal>
-          ${MicroFrontendRegistry.has("@core/htmlToPdf")
-            ? this.PDFPageButton("right")
-            : ``}
+          ${this.PDFPageButton("right")}
           ${MicroFrontendRegistry.has("@system/siteToHtml")
             ? this.PrintBranchButton("right")
             : html`<replace-tag

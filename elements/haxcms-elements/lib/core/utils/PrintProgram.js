@@ -4,7 +4,6 @@
  */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
-import { b64toBlob } from "@haxtheweb/utils/utils.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
@@ -82,41 +81,31 @@ export class PrintHelper {
     }
   }
   static async printBranch() {
-    let base = "";
-    if (globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
-    const site = toJS(store.manifest);
-    const params = {
-      type: "site",
-      site: {
-        file: base + "site.json",
-        id: site.id,
-        title: site.title,
-        author: site.author,
-        description: site.description,
-        license: site.license,
-        metadata: site.metadata,
-        items: site.items,
-      },
-      ancestor: toJS(store.activeId),
-      link: base,
-      magic: globalThis.__appCDN,
-      base: base,
-      format: "json",
-    };
-
     try {
-      const response = await MicroFrontendRegistry.call(
-        "@system/siteToHtml",
-        params,
-      );
-      if (response.status == 200 && response.data) {
+      const baseElement = globalThis.document.querySelector("base");
+      const base =
+        (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+      const magic =
+        globalThis.__appCDN &&
+        (globalThis.__appCDN.startsWith("http://") ||
+          globalThis.__appCDN.startsWith("https://"))
+          ? globalThis.__appCDN
+          : "";
+      const ancestor = toJS(store.activeId);
+      const url = new URL("./x/api/v1/site/export/html", base);
+      if (magic) {
+        url.searchParams.set("magic", magic);
+      }
+      if (ancestor) {
+        url.searchParams.set("filter.ancestor", ancestor);
+      }
+      const response = await fetch(url.toString(), {
+        credentials: "include",
+      });
+      if (response.ok) {
+        const html = await response.text();
         const objectUrl = globalThis.URL.createObjectURL(
-          b64toBlob(
-            btoa(unescape(encodeURIComponent(response.data))),
-            "text/html",
-          ),
+          new Blob([html], { type: "text/html" }),
         );
         const printWindow = globalThis.open(
           objectUrl,
@@ -125,7 +114,6 @@ export class PrintHelper {
         );
         this._revokeObjectUrlOnClose(objectUrl, printWindow);
       } else {
-        // Fallback
         this.printFallback();
       }
     } catch (error) {
@@ -135,41 +123,27 @@ export class PrintHelper {
   }
 
   static async printWholeSite() {
-    let base = "";
-    if (globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
-    const site = toJS(store.manifest);
-    const params = {
-      type: "site",
-      site: {
-        file: base + "site.json",
-        id: site.id,
-        title: site.title,
-        author: site.author,
-        description: site.description,
-        license: site.license,
-        metadata: site.metadata,
-        items: site.items,
-      },
-      ancestor: null, // null means whole site
-      link: base,
-      magic: globalThis.__appCDN,
-      base: base,
-      format: "json",
-    };
-
     try {
-      const response = await MicroFrontendRegistry.call(
-        "@system/siteToHtml",
-        params,
-      );
-      if (response.status == 200 && response.data) {
+      const baseElement = globalThis.document.querySelector("base");
+      const base =
+        (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+      const magic =
+        globalThis.__appCDN &&
+        (globalThis.__appCDN.startsWith("http://") ||
+          globalThis.__appCDN.startsWith("https://"))
+          ? globalThis.__appCDN
+          : "";
+      const url = new URL("./x/api/v1/site/export/html", base);
+      if (magic) {
+        url.searchParams.set("magic", magic);
+      }
+      const response = await fetch(url.toString(), {
+        credentials: "include",
+      });
+      if (response.ok) {
+        const html = await response.text();
         const objectUrl = globalThis.URL.createObjectURL(
-          b64toBlob(
-            btoa(unescape(encodeURIComponent(response.data))),
-            "text/html",
-          ),
+          new Blob([html], { type: "text/html" }),
         );
         const printWindow = globalThis.open(
           objectUrl,

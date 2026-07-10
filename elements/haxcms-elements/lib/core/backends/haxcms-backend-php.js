@@ -39,7 +39,7 @@ class HAXCMSBackendPHP extends LitElement {
   async jwtChanged(e) {
     this.jwt = e.detail.value;
     store.jwt = this.jwt;
-    this._syncSiteApiRegistry();
+    await this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
@@ -62,10 +62,10 @@ class HAXCMSBackendPHP extends LitElement {
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    setTimeout(() => {
+    setTimeout(async () => {
       if (globalThis.appSettings) {
         store.appSettings = globalThis.appSettings;
-        this._syncSiteApiRegistry();
+        await this._syncSiteApiRegistry();
         let jwtlogin = this.shadowRoot.querySelector("#jwt");
         jwtlogin.url = globalThis.appSettings.login;
         jwtlogin.refreshUrl = globalThis.appSettings.refreshUrl;
@@ -75,7 +75,7 @@ class HAXCMSBackendPHP extends LitElement {
         // it's not a real JWT but it drives the environment to operate correctly
         if (globalThis.appSettings.jwt) {
           this.jwt = globalThis.appSettings.jwt;
-          this._syncSiteApiRegistry();
+          await this._syncSiteApiRegistry();
         }
       }
       const shouldValidateConnection =
@@ -121,8 +121,21 @@ class HAXCMSBackendPHP extends LitElement {
       }),
     );
   }
-  _syncSiteApiRegistry() {
-    configureHAXCMSSiteApiRegistry(store.appSettings || {}, this.jwt);
+  async _syncSiteApiRegistry() {
+    const appSettings = store.appSettings || {};
+    const systemAppSettings = Object.assign({}, appSettings);
+    if (!systemAppSettings.systemApiBasePath) {
+      systemAppSettings.systemApiBasePath = "/system/api/v1";
+    }
+    try {
+      const { configureAppHAXSystemApiRegistry } = await import(
+        "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js"
+      );
+      await configureAppHAXSystemApiRegistry(systemAppSettings, this.jwt);
+    } catch (e) {
+      console.warn("System API registry not available in site context", e);
+    }
+    configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
   }
   async _runConnectionTest() {
     if (!(store.appSettings && store.appSettings.connectionTest)) {
@@ -210,7 +223,7 @@ class HAXCMSBackendPHP extends LitElement {
     this.jwt = null;
     this.__validatedJwt = "";
     store.jwt = null;
-    this._syncSiteApiRegistry();
+    await this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = null;
     }

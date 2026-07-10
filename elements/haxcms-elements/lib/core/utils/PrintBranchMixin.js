@@ -1,7 +1,6 @@
 import { html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import { b64toBlob } from "@haxtheweb/utils/utils.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -147,47 +146,43 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     async printBranchOfSite(e) {
       this.__printBranchLoading = true;
-      var base = "";
-      if (globalThis.document.querySelector("base")) {
-        base = globalThis.document.querySelector("base").href;
-      }
-      const site = toJS(store.manifest);
-      const params = {
-        type: "site",
-        site: {
-          file: base + "site.json",
-          id: site.id,
-          title: site.title,
-          author: site.author,
-          description: site.description,
-          license: site.license,
-          metadata: site.metadata,
-          items: site.items,
-        },
-        ancestor: toJS(store.activeId),
-        link: base,
-        magic: globalThis.__appCDN,
-        base: base,
-        format: "json",
-      };
-      const response = await MicroFrontendRegistry.call(
-        "@system/siteToHtml",
-        params,
-      );
-      if (response.status == 200 && response.data) {
-        const objectUrl = globalThis.URL.createObjectURL(
-          b64toBlob(
-            btoa(unescape(encodeURIComponent(response.data))),
-            "text/html",
-          ),
-        );
-        const printWindow = globalThis.open(
-          objectUrl,
-          "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
-        );
-        this._revokeObjectUrlOnClose(objectUrl, printWindow);
-      } else {
+      try {
+        const baseElement = globalThis.document.querySelector("base");
+        const base =
+          (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+        const magic =
+          globalThis.__appCDN &&
+          (globalThis.__appCDN.startsWith("http://") ||
+            globalThis.__appCDN.startsWith("https://"))
+            ? globalThis.__appCDN
+            : "";
+        const ancestor = toJS(store.activeId);
+        const url = new URL("./x/api/v1/site/export/html", base);
+        if (magic) {
+          url.searchParams.set("magic", magic);
+        }
+        if (ancestor) {
+          url.searchParams.set("filter.ancestor", ancestor);
+        }
+        const response = await fetch(url.toString(), {
+          credentials: "include",
+        });
+        if (response.ok) {
+          const html = await response.text();
+          const objectUrl = globalThis.URL.createObjectURL(
+            new Blob([html], { type: "text/html" }),
+          );
+          const printWindow = globalThis.open(
+            objectUrl,
+            "",
+            "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+          );
+          this._revokeObjectUrlOnClose(objectUrl, printWindow);
+        } else {
+          throw new Error(`Failed to print: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Print error:", error);
         const fallbackUrl = this._legacyPrintViewUrl();
         if (fallbackUrl) {
           globalThis.open(
@@ -233,47 +228,39 @@ export const PrintBranchMixin = function (SuperClass) {
     }
     async printWholeSite(e) {
       this.__printBranchLoading = true;
-      var base = "";
-      if (globalThis.document.querySelector("base")) {
-        base = globalThis.document.querySelector("base").href;
-      }
-      const site = toJS(store.manifest);
-      const params = {
-        type: "site",
-        site: {
-          file: base + "site.json",
-          id: site.id,
-          title: site.title,
-          author: site.author,
-          description: site.description,
-          license: site.license,
-          metadata: site.metadata,
-          items: site.items,
-        },
-        ancestor: null,
-        link: base,
-        magic: globalThis.__appCDN,
-        base: base,
-        format: "json",
-      };
-      const response = await MicroFrontendRegistry.call(
-        "@system/siteToHtml",
-        params,
-      );
-      if (response.status == 200 && response.data) {
-        const objectUrl = globalThis.URL.createObjectURL(
-          b64toBlob(
-            btoa(unescape(encodeURIComponent(response.data))),
-            "text/html",
-          ),
-        );
-        const printWindow = globalThis.open(
-          objectUrl,
-          "",
-          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
-        );
-        this._revokeObjectUrlOnClose(objectUrl, printWindow);
-      } else {
+      try {
+        const baseElement = globalThis.document.querySelector("base");
+        const base =
+          (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+        const magic =
+          globalThis.__appCDN &&
+          (globalThis.__appCDN.startsWith("http://") ||
+            globalThis.__appCDN.startsWith("https://"))
+            ? globalThis.__appCDN
+            : "";
+        const url = new URL("./x/api/v1/site/export/html", base);
+        if (magic) {
+          url.searchParams.set("magic", magic);
+        }
+        const response = await fetch(url.toString(), {
+          credentials: "include",
+        });
+        if (response.ok) {
+          const html = await response.text();
+          const objectUrl = globalThis.URL.createObjectURL(
+            new Blob([html], { type: "text/html" }),
+          );
+          const printWindow = globalThis.open(
+            objectUrl,
+            "",
+            "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+          );
+          this._revokeObjectUrlOnClose(objectUrl, printWindow);
+        } else {
+          throw new Error(`Failed to print: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Print error:", error);
         const fallbackUrl = this._legacyPrintViewUrl();
         if (fallbackUrl) {
           globalThis.open(

@@ -658,9 +658,7 @@ class CleanOne extends DDDSuper(
                           part="print-btn"
                         ></site-print-button>
                       `}
-                  ${MicroFrontendRegistry.has("@core/htmlToPdf")
-                    ? this.PDFPageButton("bottom")
-                    : ``}
+              ${this.PDFPageButton("bottom")}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}

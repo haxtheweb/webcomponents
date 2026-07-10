@@ -8,12 +8,33 @@
  * - EPUB
  * - Zip (download site)
  */
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
-import { b64toBlob } from "@haxtheweb/utils/utils.js";
 import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
+
+function _buildV1ExportUrl(baseUrl, format, queryParams = {}) {
+  const url = new URL(
+    `./x/api/v1/site/export/${encodeURIComponent(format)}`,
+    baseUrl,
+  );
+  Object.entries(queryParams).forEach(([key, value]) => {
+    if (value !== null && value !== undefined && value !== "") {
+      url.searchParams.set(key, value);
+    }
+  });
+  return url.toString();
+}
+
+function _buildV1ContentUrl(baseUrl, queryParams = {}) {
+  const url = new URL(`./x/api/v1/content`, baseUrl);
+  Object.entries(queryParams).forEach(([key, value]) => {
+    if (value !== null && value !== undefined && value !== "") {
+      url.searchParams.set(key, value);
+    }
+  });
+  return url.toString();
+}
 
 export function createExportSiteProgram(context) {
   return async (input, values) => {
@@ -110,30 +131,21 @@ export async function exportSiteAs(format, options = {}) {
 // Helper methods for different export formats
 export async function _exportSiteAsHTML(manifest, title, baseUrl) {
   try {
-    const response = await MicroFrontendRegistry.call("@system/siteToHtml", {
-      type: "site",
-      site: {
-        file: baseUrl + "/site.json",
-        id: manifest.id,
-        title: manifest.title,
-        author: manifest.author,
-        description: manifest.description,
-        license: manifest.license,
-        metadata: manifest.metadata,
-        items: manifest.items,
-      },
-      ancestor: null, // null means whole site
-      link: baseUrl,
-      magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-      base: baseUrl,
-      format: "json",
-    });
+    const magic =
+      globalThis.__appCDN &&
+      (globalThis.__appCDN.startsWith("http://") ||
+        globalThis.__appCDN.startsWith("https://"))
+        ? globalThis.__appCDN
+        : "";
+    const url = _buildV1ExportUrl(baseUrl, "html", { magic });
+    const response = await fetch(url, { credentials: "include" });
 
-    if (response.status === 200 && response.data) {
-      this._downloadFile(response.data, `${title}.html`, "text/html");
+    if (response.ok) {
+      const html = await response.text();
+      this._downloadFile(html, `${title}.html`, "text/html");
       HAXStore.toast("Site HTML downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to export site as HTML");
+      throw new Error(`Failed to export site as HTML: ${response.status}`);
     }
   } catch (error) {
     console.error("Site HTML export error:", error);
@@ -147,53 +159,21 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
 
 export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
   try {
-    // First get site as HTML, then convert to Markdown
-    const htmlResponse = await MicroFrontendRegistry.call(
-      "@system/siteToHtml",
-      {
-        type: "site",
-        site: {
-          file: baseUrl + "/site.json",
-          id: manifest.id,
-          title: manifest.title,
-          author: manifest.author,
-          description: manifest.description,
-          license: manifest.license,
-          metadata: manifest.metadata,
-          items: manifest.items,
-        },
-        ancestor: null, // null means whole site
-        link: baseUrl,
-        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-        base: baseUrl,
-        format: "json",
-      },
-    );
+    const url = _buildV1ContentUrl(baseUrl, { mode: "concat", format: "md" });
+    const response = await fetch(url, { credentials: "include" });
 
-    if (htmlResponse.status === 200 && htmlResponse.data) {
-      const markdownResponse = await MicroFrontendRegistry.call(
-        "@core/htmlToMd",
-        {
-          html: htmlResponse.data,
-        },
+    if (response.ok) {
+      const markdown = await response.text();
+      this._downloadFile(markdown, `${title}.md`, "text/markdown");
+      HAXStore.toast(
+        "Site Markdown downloaded successfully",
+        3000,
+        "fit-bottom",
       );
-
-      if (markdownResponse.status === 200 && markdownResponse.data) {
-        this._downloadFile(
-          markdownResponse.data,
-          `${title}.md`,
-          "text/markdown",
-        );
-        HAXStore.toast(
-          "Site Markdown downloaded successfully",
-          3000,
-          "fit-bottom",
-        );
-      } else {
-        throw new Error("Failed to convert site HTML to Markdown");
-      }
     } else {
-      throw new Error("Failed to get site HTML for Markdown conversion");
+      throw new Error(
+        `Failed to export site as Markdown: ${response.status}`,
+      );
     }
   } catch (error) {
     console.error("Site Markdown export error:", error);
@@ -207,49 +187,15 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
 
 export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
   try {
-    // First get site as HTML, then convert to DOCX
-    const htmlResponse = await MicroFrontendRegistry.call(
-      "@system/siteToHtml",
-      {
-        type: "site",
-        site: {
-          file: baseUrl + "/site.json",
-          id: manifest.id,
-          title: manifest.title,
-          author: manifest.author,
-          description: manifest.description,
-          license: manifest.license,
-          metadata: manifest.metadata,
-          items: manifest.items,
-        },
-        ancestor: null, // null means whole site
-        link: baseUrl,
-        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-        base: baseUrl,
-        format: "json",
-      },
-    );
+    const url = _buildV1ExportUrl(baseUrl, "docx");
+    const response = await fetch(url, { credentials: "include" });
 
-    if (htmlResponse.status === 200 && htmlResponse.data) {
-      const docxResponse = await MicroFrontendRegistry.call(
-        "@core/htmlToDocx",
-        {
-          html: htmlResponse.data,
-        },
-      );
-
-      if (docxResponse.status === 200 && docxResponse.data) {
-        const blob = b64toBlob(
-          docxResponse.data,
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        );
-        this._downloadBlob(blob, `${title}.docx`);
-        HAXStore.toast("Site DOCX downloaded successfully", 3000, "fit-bottom");
-      } else {
-        throw new Error("Failed to convert site HTML to DOCX");
-      }
+    if (response.ok) {
+      const blob = await response.blob();
+      this._downloadBlob(blob, `${title}.docx`);
+      HAXStore.toast("Site DOCX downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to get site HTML for DOCX conversion");
+      throw new Error(`Failed to export site as DOCX: ${response.status}`);
     }
   } catch (error) {
     console.error("Site DOCX export error:", error);
@@ -263,44 +209,15 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
 
 export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   try {
-    // Get site HTML first, then convert to PDF
-    const htmlResponse = await MicroFrontendRegistry.call(
-      "@system/siteToHtml",
-      {
-        type: "site",
-        site: {
-          file: baseUrl + "/site.json",
-          id: manifest.id,
-          title: manifest.title,
-          author: manifest.author,
-          description: manifest.description,
-          license: manifest.license,
-          metadata: manifest.metadata,
-          items: manifest.items,
-        },
-        ancestor: null, // null means whole site
-        link: baseUrl,
-        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-        base: baseUrl,
-        format: "json",
-      },
-    );
+    const url = _buildV1ExportUrl(baseUrl, "pdf");
+    const response = await fetch(url, { credentials: "include" });
 
-    if (htmlResponse.status === 200 && htmlResponse.data) {
-      const pdfResponse = await MicroFrontendRegistry.call("@core/htmlToPdf", {
-        base: baseUrl,
-        html: htmlResponse.data,
-      });
-
-      if (pdfResponse.status === 200 && pdfResponse.data) {
-        const blob = b64toBlob(pdfResponse.data, "application/pdf");
-        this._downloadBlob(blob, `${title}.pdf`);
-        HAXStore.toast("Site PDF downloaded successfully", 3000, "fit-bottom");
-      } else {
-        throw new Error("Failed to convert site HTML to PDF");
-      }
+    if (response.ok) {
+      const blob = await response.blob();
+      this._downloadBlob(blob, `${title}.pdf`);
+      HAXStore.toast("Site PDF downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to get site HTML for PDF conversion");
+      throw new Error(`Failed to export site as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("Site PDF export error:", error);
@@ -310,19 +227,15 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
 
 export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
   try {
-    const response = await MicroFrontendRegistry.call("@system/siteToEpub", {
-      type: "link",
-      site: `${baseUrl}/site.json`,
-      ancestor: null, // null means whole site
-    });
+    const url = _buildV1ExportUrl(baseUrl, "epub");
+    const response = await fetch(url, { credentials: "include" });
 
-    if (response.status === 200 && response.data) {
-      // Response data should be the EPUB binary data
-      const blob = new Blob([response.data], { type: "application/epub+zip" });
+    if (response.ok) {
+      const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);
       HAXStore.toast("Site EPUB downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to export site as EPUB");
+      throw new Error(`Failed to export site as EPUB: ${response.status}`);
     }
   } catch (error) {
     console.error("Site EPUB export error:", error);

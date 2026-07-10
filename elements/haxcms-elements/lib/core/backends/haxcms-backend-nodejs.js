@@ -39,7 +39,7 @@ class HAXCMSBackendNodeJS extends LitElement {
   async jwtChanged(e) {
     this.jwt = e.detail.value;
     store.jwt = this.jwt;
-    this._syncSiteApiRegistry();
+    await this._syncSiteApiRegistry();
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
@@ -107,8 +107,24 @@ class HAXCMSBackendNodeJS extends LitElement {
       }),
     );
   }
-  _syncSiteApiRegistry() {
-    configureHAXCMSSiteApiRegistry(store.appSettings || {}, this.jwt);
+  async _syncSiteApiRegistry() {
+    const appSettings = store.appSettings || {};
+    // Bootstrap system API registry so @system/ entries are registered from
+    // the system OpenAPI spec and their auth headers are resolved. Call this
+    // before the site registry so the site auth provider chains to it.
+    const systemAppSettings = Object.assign({}, appSettings);
+    if (!systemAppSettings.systemApiBasePath) {
+      systemAppSettings.systemApiBasePath = "/system/api/v1";
+    }
+    try {
+      const { configureAppHAXSystemApiRegistry } = await import(
+        "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js"
+      );
+      await configureAppHAXSystemApiRegistry(systemAppSettings, this.jwt);
+    } catch (e) {
+      console.warn("System API registry not available in site context", e);
+    }
+    configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
   }
   async _runConnectionTest() {
     if (!(store.appSettings && store.appSettings.connectionTest)) {

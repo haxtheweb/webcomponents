@@ -97,18 +97,6 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
-  // htmlToPdf
-  MicroFrontendRegistry.add({
-    endpoint: "/system/api/v1/actions/html-to-pdf",
-    name: "@core/htmlToPdf",
-    title: "HTML to PDF",
-    description: "Convert HTML string (or file) to a PDF",
-    params: {
-      html: "HTML or link to be converted",
-      type: "link for processing as link otherwise unused",
-    },
-  });
-
   // prettyHtml
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/pretty-html",
@@ -219,17 +207,6 @@ export function enableCoreServices() {
     description: "Convert .pptx file to HTML",
     params: {
       body: "FormData class w/ uploaded file encoded into it",
-    },
-  });
-
-  // htmlToDocx
-  MicroFrontendRegistry.add({
-    endpoint: "/system/api/v1/actions/html-to-docx",
-    name: "@core/htmlToDocx",
-    title: "HTML to docx",
-    description: "Convert HTML to .docx file",
-    params: {
-      html: "html body to be converted to a docx file download",
     },
   });
 
@@ -416,14 +393,14 @@ export function enableHAXcmsServices() {
   });
   // siteToHtml
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/siteToHtml",
+    endpoint: "/x/api/v1/site/export/html",
+    method: "GET",
     name: "@system/siteToHtml",
     title: "HAXcms Full Site HTML",
     description: "Load entire HAXcms site via URL as HTML",
     params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      ancestor: "optional: ancestor to print from as opposed to entire site",
+      magic: "optional CDN URL to wrap HTML in full document",
+      "filter.ancestor": "optional: ancestor to print from as opposed to entire site",
     },
   });
   // pageCache
@@ -489,14 +466,13 @@ export function enableHAXcmsServices() {
   });
   // siteToEpub
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/siteToEpub",
+    endpoint: "/x/api/v1/site/export/epub",
+    method: "GET",
     name: "@system/siteToEpub",
     title: "HAXcms Full Site EPUB",
     description: "generate .epub of entire HAXcms site via URL",
     params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      ancestor: "optional: ancestor to print from as opposed to entire site",
+      "filter.ancestor": "optional: ancestor to print from as opposed to entire site",
     },
   });
 }

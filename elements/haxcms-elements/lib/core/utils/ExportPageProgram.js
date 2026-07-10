@@ -10,9 +10,7 @@
  * - PDF
  * - HAX schema JSON
  */
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import { b64toBlob } from "@haxtheweb/utils/utils.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
 
@@ -67,35 +65,13 @@ export async function exportPageAs(format) {
       case "xml":
         await _exportPageRouteVariant.call(this, format, pageTitle);
         break;
-      case "docx": {
-        const haxBody = HAXStore.activeHaxBody;
-        if (!haxBody) {
-          HAXStore.toast(
-            "No editable content found for export",
-            3000,
-            "fit-bottom",
-          );
-          return;
-        }
-        const pageContent = await haxBody.haxToContent();
-        await _exportPageAsDOCX.call(this, pageContent, pageTitle);
+      case "docx":
+        await _exportPageAsDOCX.call(this, pageTitle);
         break;
-      }
 
-      case "pdf": {
-        const haxBody = HAXStore.activeHaxBody;
-        if (!haxBody) {
-          HAXStore.toast(
-            "No editable content found for export",
-            3000,
-            "fit-bottom",
-          );
-          return;
-        }
-        const pageContent = await haxBody.haxToContent();
-        await _exportPageAsPDF.call(this, pageContent, pageTitle);
+      case "pdf":
+        await _exportPageAsPDF.call(this, pageTitle);
         break;
-      }
 
       case "haxschema":
         await _exportPageAsHAXSchema.call(this);
@@ -202,21 +178,19 @@ export async function _exportPageRouteVariant(format, title) {
   }
 }
 
-export async function _exportPageAsDOCX(content, title) {
+export async function _exportPageAsDOCX(title) {
   try {
-    const response = await MicroFrontendRegistry.call("@core/htmlToDocx", {
-      html: content,
-    });
-
-    if (response.status === 200 && response.data) {
-      const blob = b64toBlob(
-        response.data,
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      );
+    const url = _pageItemExportUrl("docx");
+    if (!url) {
+      throw new Error("Current page URL unavailable for DOCX export");
+    }
+    const response = await fetch(url, { credentials: "include" });
+    if (response.ok) {
+      const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
       HAXStore.toast("DOCX file downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to convert to DOCX");
+      throw new Error(`Failed to export page as DOCX: ${response.status}`);
     }
   } catch (error) {
     console.error("DOCX export error:", error);
@@ -224,28 +198,45 @@ export async function _exportPageAsDOCX(content, title) {
   }
 }
 
-export async function _exportPageAsPDF(content, title) {
+export async function _exportPageAsPDF(title) {
   try {
-    // Get base URL for PDF generation
-    const baseElement = globalThis.document.querySelector("base");
-    const baseUrl =
-      (baseElement && baseElement.href) || globalThis.location.origin;
-
-    const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
-      base: baseUrl,
-      html: content,
-    });
-
-    if (response.status === 200 && response.data) {
-      const blob = b64toBlob(response.data, "application/pdf");
+    const url = _pageItemExportUrl("pdf");
+    if (!url) {
+      throw new Error("Current page URL unavailable for PDF export");
+    }
+    const response = await fetch(url, { credentials: "include" });
+    if (response.ok) {
+      const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
       HAXStore.toast("PDF file downloaded successfully", 3000, "fit-bottom");
     } else {
-      throw new Error("Failed to convert to PDF");
+      throw new Error(`Failed to export page as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("PDF export error:", error);
     HAXStore.toast("PDF export service not available", 3000, "fit-bottom");
+  }
+}
+
+export function _pageItemExportUrl(format = "pdf") {
+  const activeItem = store.activeItem;
+  let itemId = "";
+  if (activeItem && activeItem.id) {
+    itemId = `${activeItem.id}`.trim();
+  }
+  if (!itemId) {
+    return null;
+  }
+  const baseElement = globalThis.document.querySelector("base");
+  const baseUrl =
+    (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
+  try {
+    return new URL(
+      `x/api/v1/items/${encodeURIComponent(itemId)}/export/${encodeURIComponent(format)}`,
+      baseUrl,
+    ).toString();
+  } catch (e) {
+    return null;
   }
 }
 

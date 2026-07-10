@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for web-container">
+
+  <style>
+    :root, html, body {
+      margin: 0;
+      padding: 0;
+    }
+    #demo {
+      margin: var(--ddd-spacing-2);
+    }
+    web-container {
+      margin: var(--ddd-spacing-2);
+      border: var(--ddd-border-md);
+      border-radius: var(--ddd-radius-lg);
+    }
+    web-container:hover {
+      box-shadow: var(--ddd-boxShadow-sm);
+    }
+    #example {
+      --web-container-font-size: var(--ddd-font-size-l);
+      background-color: var(--ddd-accent-2);
+      color: var(--ddd-primary-17);
+    }
+  </style>
+  <title>web-container</title>
+</head>
+
+<body>
+  <div id="demo">
+    <web-container-wc-registry-docs></web-container-wc-registry-docs>
+  </div>
+  <script type="module" src="../lib/web-container-wc-registry-docs.js"></script>
+</body>
+</html>

@@ -1250,7 +1250,7 @@ class HAXCMSSiteEditor extends LitElement {
           formData.append("upload", file);
           this.setProcessingVisual();
           const response = await MicroFrontendRegistry.call(
-            "@site/importDocx",
+            "@system/importDocx",
             formData,
           );
           store.toast("finished!", 300);
