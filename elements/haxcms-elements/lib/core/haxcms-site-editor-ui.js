@@ -7101,6 +7101,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const c = globalThis.document.createElement("outline-designer");
     c.storeTools = true;
     c.hideDelete = true;
+    c.items = items;
     c.eventData = {
       site: {
         name: siteName,
