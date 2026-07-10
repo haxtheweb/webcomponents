@@ -1133,9 +1133,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           case "doc":
             dataToPost.append("upload", values.data); // should contain our file
             // single file vs whole site processing
-            endpointCall = "@core/docxToHtml";
+            endpointCall = "@system/docxToHtml";
             if (mode === "create-branch") {
-              endpointCall = "@site/importDocx";
+              endpointCall = "@system/importDocx";
               dataToPost.append("method", "branch");
               dataToPost.append("type", "branch");
               // set parent to same as current page's parent
@@ -1145,7 +1145,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             break;
           case "pdf":
             dataToPost.append("upload", values.data);
-            endpointCall = "@core/pdfToHtml";
+            endpointCall = "@system/pdfToHtml";
             if (mode === "create-branch") {
               endpointCall = "@system/importPdf";
               dataToPost.append("method", "branch");
@@ -1157,7 +1157,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             break;
           case "pptx":
             dataToPost.append("upload", values.data);
-            endpointCall = "@core/pptxToHtml";
+            endpointCall = "@system/pptxToHtml";
             if (mode === "create-branch") {
               endpointCall = "@system/importPptx";
               dataToPost.append("method", "branch");
@@ -1169,7 +1169,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             break;
           case "md":
           case "txt":
-            endpointCall = "@core/mdToHtml";
+            endpointCall = "@system/mdToHtml";
             dataToPost = {
               md: values.contents,
             };

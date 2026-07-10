@@ -1222,7 +1222,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     try {
       this.busy = true;
       // Load generator on demand
-      const { SiteSkeletonGenerator } = await import(
+      const { default: SiteSkeletonGenerator } = await import(
         "../utils/site-skeleton-generator.js"
       );
 
