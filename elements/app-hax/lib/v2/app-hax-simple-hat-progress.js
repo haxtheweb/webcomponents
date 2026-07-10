@@ -46,7 +46,7 @@ export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
 
         .progress-bar {
           position: absolute;
-          bottom: 36px;
+          bottom: 29px;
           left: 12px;
           right: 10px;
           height: 20px;

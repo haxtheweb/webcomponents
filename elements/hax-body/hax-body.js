@@ -264,7 +264,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            [contenteditable][data-hax-ray]:has(> br:only-child):not(
+            [contenteditable][data-hax-ray][data-hax-empty]:not(
                 [data-instructional-action]
               )
           )::before {
@@ -283,7 +283,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            p[contenteditable][data-hax-ray][data-hax-active]:has(> br:only-child):not(
+            p[contenteditable][data-hax-ray][data-hax-active][data-hax-empty]:not(
                 [data-instructional-action]
               )
           )::before {
@@ -301,7 +301,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            [contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+            [contenteditable][data-hax-ray][data-hax-empty]:hover:not(
                 [data-instructional-action]
               )
           )::before {
@@ -319,7 +319,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            [contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+            [contenteditable][data-hax-ray][data-hax-empty]:focus:not(
                 [data-instructional-action]
               )
           )::before {
@@ -362,7 +362,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dt[contenteditable][data-hax-ray]:has(> br:only-child):not(
+            dt[contenteditable][data-hax-ray][data-hax-empty]:not(
                 [data-instructional-action]
               )
           )::before {
@@ -383,7 +383,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dd[contenteditable][data-hax-ray]:has(> br:only-child):not(
+            dd[contenteditable][data-hax-ray][data-hax-empty]:not(
                 [data-instructional-action]
               )
           )::before {
@@ -403,7 +403,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dl[contenteditable][data-hax-ray]:has(> br:only-child):not(
+            dl[contenteditable][data-hax-ray][data-hax-empty]:not(
                 [data-instructional-action]
               )
           )::before {
@@ -438,21 +438,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dt[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+            dt[contenteditable][data-hax-ray][data-hax-empty]:hover:not(
                 [data-instructional-action]
               )
           )::before,
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dd[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+            dd[contenteditable][data-hax-ray][data-hax-empty]:hover:not(
                 [data-instructional-action]
               )
           )::before,
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dl[contenteditable][data-hax-ray]:hover:has(> br:only-child):not(
+            dl[contenteditable][data-hax-ray][data-hax-empty]:hover:not(
                 [data-instructional-action]
               )
           )::before {
@@ -485,21 +485,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dt[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+            dt[contenteditable][data-hax-ray][data-hax-empty]:focus:not(
                 [data-instructional-action]
               )
           )::before,
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dd[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+            dd[contenteditable][data-hax-ray][data-hax-empty]:focus:not(
                 [data-instructional-action]
               )
           )::before,
         :host([edit-mode])
           #bodycontainer
           ::slotted(
-            dl[contenteditable][data-hax-ray]:has(> br:only-child):focus:not(
+            dl[contenteditable][data-hax-ray][data-hax-empty]:focus:not(
                 [data-instructional-action]
               )
           )::before {
@@ -1461,8 +1461,139 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
 
+              // Handle empty list item exit: prevent browser from creating bare <p>
+              let rangeEnter = HAXStore.getRange();
+              let currentLi = null;
+              if (rangeEnter) {
+                let container = rangeEnter.commonAncestorContainer;
+                if (container && container.nodeType === Node.TEXT_NODE) {
+                  container = container.parentElement;
+                }
+                if (container && container.closest) {
+                  currentLi = container.closest("li");
+                }
+                // Fallback: if commonAncestorContainer is the list itself, try startContainer
+                if (!currentLi && rangeEnter.startContainer) {
+                  let startContainer = rangeEnter.startContainer;
+                  if (startContainer && startContainer.nodeType === Node.TEXT_NODE) {
+                    startContainer = startContainer.parentElement;
+                  }
+                  if (startContainer && startContainer.closest) {
+                    currentLi = startContainer.closest("li");
+                  }
+                }
+                // Fallback: try endContainer
+                if (!currentLi && rangeEnter.endContainer) {
+                  let endContainer = rangeEnter.endContainer;
+                  if (endContainer && endContainer.nodeType === Node.TEXT_NODE) {
+                    endContainer = endContainer.parentElement;
+                  }
+                  if (endContainer && endContainer.closest) {
+                    currentLi = endContainer.closest("li");
+                  }
+                }
+              }
+              if (currentLi && this.__isEffectivelyEmptyTextBlock(currentLi)) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                handledEnter = true;
+
+                const keyboardInsertScroll =
+                  this.__keyboardInsertScrollSettings();
+                let list = currentLi.parentElement;
+                let parentList = list.parentElement;
+                let isNestedInLi = parentList && parentList.tagName === "LI";
+                let isNestedInList =
+                  parentList &&
+                  (parentList.tagName === "UL" || parentList.tagName === "OL");
+
+                if (isNestedInLi || isNestedInList) {
+                  let targetList;
+                  let insertAfter;
+                  if (isNestedInLi) {
+                    targetList = parentList.parentElement;
+                    insertAfter = parentList;
+                  } else {
+                    targetList = parentList;
+                    insertAfter = list;
+                  }
+                  if (
+                    targetList &&
+                    (targetList.tagName === "UL" ||
+                      targetList.tagName === "OL")
+                  ) {
+                    // Remove the empty <li> from the nested list
+                    currentLi.remove();
+                    // Remove the nested list if it's now empty
+                    if (list.children.length === 0) {
+                      list.remove();
+                    }
+                    // Create a new <li> in the target list
+                    let newLi = globalThis.document.createElement("li");
+                    targetList.insertBefore(
+                      newLi,
+                      insertAfter.nextElementSibling,
+                    );
+                    // Ensure HAX state is applied immediately
+                    newLi.setAttribute("contenteditable", "true");
+                    newLi.setAttribute("data-hax-ray", "li");
+                    newLi.setAttribute("data-hax-layout", "true");
+                    this.__isEffectivelyEmptyTextBlock(newLi);
+                    this.__applyNodeEditableStateWhenReady(
+                      newLi,
+                      this.editMode,
+                    );
+                    // Focus and position cursor
+                    this.__focusLogic(newLi);
+                    HAXStore._positionCursorInNode(newLi, 0);
+                    this.scrollHere(newLi, keyboardInsertScroll);
+                  }
+                } else {
+                  // Find the outermost list to place <p> after it
+                  let outermostList = list;
+                  let ancestor = list.parentElement;
+                  while (ancestor) {
+                    if (
+                      ancestor.tagName === "UL" ||
+                      ancestor.tagName === "OL"
+                    ) {
+                      outermostList = ancestor;
+                    } else if (ancestor.tagName !== "LI") {
+                      break;
+                    }
+                    ancestor = ancestor.parentElement;
+                  }
+                  // Top-level list: create a <p> after the outermost list
+                  let p = globalThis.document.createElement("p");
+                  if (outermostList.getAttribute("slot")) {
+                    p.setAttribute("slot", outermostList.getAttribute("slot"));
+                  }
+                  outermostList.parentNode.insertBefore(
+                    p,
+                    outermostList.nextElementSibling,
+                  );
+                  // Ensure HAX state is applied immediately
+                  p.setAttribute("contenteditable", "true");
+                  p.setAttribute("data-hax-ray", "p");
+                  p.setAttribute("data-hax-layout", "true");
+                  this.__isEffectivelyEmptyTextBlock(p);
+                  this.__applyNodeEditableStateWhenReady(p, this.editMode);
+                  // Focus and position cursor
+                  this.__focusLogic(p);
+                  HAXStore._positionCursorInNode(p, 0);
+                  this.scrollHere(p, keyboardInsertScroll);
+                  // Remove the empty <li>
+                  currentLi.remove();
+                  // Remove the list if it's now empty
+                  if (list.children.length === 0) {
+                    list.remove();
+                  }
+                }
+              }
+
               // Handle definition list (DL/DT/DD) keyboard behavior
-              if (this.activeNode && this.activeNode.tagName === "DT") {
+              if (!handledEnter && this.activeNode && this.activeNode.tagName === "DT") {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
@@ -1490,7 +1621,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   HAXStore._positionCursorInNode(dd, 0);
                   this.scrollHere(dd, keyboardInsertScroll);
                 }
-              } else if (this.activeNode && this.activeNode.tagName === "DD") {
+              } else if (!handledEnter && this.activeNode && this.activeNode.tagName === "DD") {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
@@ -1515,8 +1646,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 dt.focus();
                 // Position cursor at start of DT
                 HAXStore._positionCursorInNode(dt, 0);
-                this.scrollHere(dt, keyboardInsertScroll);
+              this.scrollHere(dt, keyboardInsertScroll);
               }
+              setTimeout(() => {
+                this.__syncDataHaxEmpty(this.activeNode);
+              }, 0);
 
               if (
                 this.activeNode &&
@@ -1640,6 +1774,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.__focusLogic(rng.commonAncestorContainer, false);
                   }
                 }
+                this.__syncDataHaxEmpty(this.activeNode);
               }, 100);
               break;
             case "Escape":
@@ -1647,11 +1782,54 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               break;
             case "/":
               const rng = HAXStore.getRange();
+              let slashTarget = this.activeNode;
+              // If the cursor is inside a list item, use the LI as the target
               if (
-                this.activeNode &&
-                (HAXStore.isTextElement(this.activeNode) ||
-                  this.activeNode.tagName === "LI") &&
-                this.__isEffectivelyEmptyTextBlock(this.activeNode)
+                slashTarget &&
+                (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
+              ) {
+                let container = rng ? rng.commonAncestorContainer : null;
+                if (container && container.nodeType === Node.TEXT_NODE) {
+                  container = container.parentElement;
+                }
+                if (container && container.closest) {
+                  let li = container.closest("li");
+                  if (li) {
+                    slashTarget = li;
+                  }
+                }
+                // Fallback: if commonAncestorContainer is the list itself, try startContainer
+                if (slashTarget && (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")) {
+                  let startContainer = rng ? rng.startContainer : null;
+                  if (startContainer && startContainer.nodeType === Node.TEXT_NODE) {
+                    startContainer = startContainer.parentElement;
+                  }
+                  if (startContainer && startContainer.closest) {
+                    let li = startContainer.closest("li");
+                    if (li) {
+                      slashTarget = li;
+                    }
+                  }
+                }
+                // Fallback: try endContainer
+                if (slashTarget && (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")) {
+                  let endContainer = rng ? rng.endContainer : null;
+                  if (endContainer && endContainer.nodeType === Node.TEXT_NODE) {
+                    endContainer = endContainer.parentElement;
+                  }
+                  if (endContainer && endContainer.closest) {
+                    let li = endContainer.closest("li");
+                    if (li) {
+                      slashTarget = li;
+                    }
+                  }
+                }
+              }
+              if (
+                slashTarget &&
+                (HAXStore.isTextElement(slashTarget) ||
+                  slashTarget.tagName === "LI") &&
+                this.__isEffectivelyEmptyTextBlock(slashTarget)
               ) {
                 e.preventDefault();
                 SuperDaemonInstance.mini = true;
@@ -1709,6 +1887,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.__focusLogic(rng.commonAncestorContainer, false);
                   }
                 }
+                this.__syncDataHaxEmpty(this.activeNode);
               }, 0);
               break;
             default:
@@ -1733,6 +1912,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     this.keyboardShortCutProcess(guess);
                   }
                 }
+                this.__syncDataHaxEmpty(this.activeNode);
               }, 0);
               break;
           }
@@ -1761,15 +1941,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Test if a text block is effectively empty in a way that should
    * allow :empty styles and markdown shortcuts to work.
+   * Also syncs the transient data-hax-empty attribute so CSS can target
+   * elements with only a BR placeholder.
    */
   __isEffectivelyEmptyTextBlock(node) {
     if (!node || !node.tagName) {
+      if (node && node.hasAttribute && node.hasAttribute("data-hax-empty")) {
+        node.removeAttribute("data-hax-empty");
+      }
       return false;
     }
     if (
       !HAXStore.__validGridTags().includes(node.tagName.toLowerCase()) &&
       node.tagName.toLowerCase() !== "li"
     ) {
+      if (node.hasAttribute && node.hasAttribute("data-hax-empty")) {
+        node.removeAttribute("data-hax-empty");
+      }
       return false;
     }
     let meaningfulText = "";
@@ -1779,12 +1967,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     ) {
       meaningfulText = node.textContent
         .replaceAll(/\u200b/g, "")
-        .replaceAll(/ /g, " ")
+        .replaceAll(/ /g, " ")
         .replaceAll(/\n/g, "")
         .replaceAll(/\r/g, "")
         .trim();
     }
     if (meaningfulText !== "") {
+      if (node.hasAttribute && node.hasAttribute("data-hax-empty")) {
+        node.removeAttribute("data-hax-empty");
+      }
       return false;
     }
     for (let i = 0; i < node.childNodes.length; i++) {
@@ -1793,10 +1984,24 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         child.nodeType === globalThis.Node.ELEMENT_NODE &&
         child.tagName !== "BR"
       ) {
+        if (node.hasAttribute && node.hasAttribute("data-hax-empty")) {
+          node.removeAttribute("data-hax-empty");
+        }
         return false;
       }
     }
+    if (node.setAttribute && !node.hasAttribute("data-hax-empty")) {
+      node.setAttribute("data-hax-empty", "");
+    }
     return true;
+  }
+  /**
+   * Sync data-hax-empty attribute on the active node based on content.
+   */
+  __syncDataHaxEmpty(node = this.activeNode) {
+    if (node && node.tagName) {
+      this.__isEffectivelyEmptyTextBlock(node);
+    }
   }
   /**
    * Remove direct BR children from a block.
@@ -3942,6 +4147,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           !activeNode.classList.contains("ignore-activation")
         ) {
           HAXStore.activeNode = activeNode;
+          this.__syncDataHaxEmpty(activeNode);
           setTimeout(() => {
             if (
               autoFocus &&
@@ -4114,12 +4320,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.hideContextMenus();
       // clean up for nested items we might miss
       let activeKids = this.querySelectorAll(
-        "[contenteditable],[data-hax-active]",
+        "[contenteditable],[data-hax-active],[data-hax-empty]",
       );
       for (var i = 0; i < activeKids.length; i++) {
         let el = activeKids[i];
         el.removeAttribute("contenteditable");
         el.removeAttribute("data-hax-active");
+        el.removeAttribute("data-hax-empty");
       }
     }
     // support for elements caring about the state change
@@ -4612,6 +4819,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
+      // Keep data-hax-empty in sync with actual DOM state so CSS
+      // placeholders for BR-only blocks continue to render correctly
+      const targets = new Set();
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList" && mutation.target && mutation.target.tagName) {
+          targets.add(mutation.target);
+        }
+        for (const node of [...mutation.addedNodes, ...mutation.removedNodes]) {
+          if (node.parentElement && node.parentElement.tagName) {
+            targets.add(node.parentElement);
+          }
+        }
+      });
+      for (const target of targets) {
+        this.__isEffectivelyEmptyTextBlock(target);
+      }
       // Safety net: ensure page-break remains the first direct child
       const pageBreak = this.querySelector(":scope > page-break");
       if (
@@ -5043,13 +5266,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let i = toJS(HAXStore.gizmoList).findIndex((j) => {
+    let gizmoList = toJS(HAXStore.gizmoList) || [];
+    let i = gizmoList.findIndex((j) => {
       if (j) {
         return j.tag === node.tagName.toLowerCase();
       }
     });
     if (i !== -1) {
-      haxRay = toJS(HAXStore.gizmoList)[i].title;
+      haxRay = gizmoList[i].title;
     }
     if (node.tagName !== "PAGE-BREAK") {
       // force images to NOT be draggable as we will manage D&D

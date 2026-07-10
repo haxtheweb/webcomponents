@@ -4992,6 +4992,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       "data-hax-layout",
       "data-hax-grid",
       "data-hax-active",
+      "data-hax-empty",
       '="true"',
       "contenteditable",
       "draggable",
@@ -5169,6 +5170,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     delete propvals["data-hax-layout"];
     delete propvals["data-hax-grid"];
     delete propvals["data-hax-active"];
+    delete propvals["data-hax-empty"];
     delete propvals["schema-map"];
     if (propvals.class == "") {
       delete propvals.class;
