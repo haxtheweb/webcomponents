@@ -640,6 +640,7 @@
     "flash-card": "@haxtheweb/flash-card/flash-card.js",
     "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
     "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
+    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js",
     "twitter-embed": "@haxtheweb/twitter-embed/twitter-embed.js",
     "self-check": "@haxtheweb/self-check/self-check.js",
     "course-model": "@haxtheweb/course-model/course-model.js",

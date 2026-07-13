@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 225,
-    "elementsWithTranslations": 38,
-    "translationFilesFound": 805,
+    "elementsScanned": 226,
+    "elementsWithTranslations": 39,
+    "translationFilesFound": 823,
     "languagesSupported": [
       "af",
       "am",
@@ -1033,6 +1033,44 @@
       "ur",
       "vi",
       "zh"
+    ],
+    "tableau-embed.ar": [
+      "haxProperties"
+    ],
+    "tableau-embed": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "tableau-embed.bn": [
+      "haxProperties"
+    ],
+    "tableau-embed.es": [
+      "haxProperties"
+    ],
+    "tableau-embed.fr": [
+      "haxProperties"
+    ],
+    "tableau-embed.hi": [
+      "haxProperties"
+    ],
+    "tableau-embed.ja": [
+      "haxProperties"
+    ],
+    "tableau-embed.pt": [
+      "haxProperties"
+    ],
+    "tableau-embed.ru": [
+      "haxProperties"
+    ],
+    "tableau-embed.zh": [
+      "haxProperties"
     ],
     "twitter-embed.haxProperties": [
       "es"

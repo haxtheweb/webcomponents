@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>TableauEmbed: tableau-embed Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../tableau-embed.js';
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic tableau-embed demo</h3>
+      <tableau-embed
+        src="https://public.tableau.com/views/Superstore_embedded_800x800/Overview"
+        height="800px"
+        width="100%"
+        toolbar="bottom"
+        hide-tabs
+        device="desktop"
+      ></tableau-embed>
+    </div>
+  </body>
+</html>

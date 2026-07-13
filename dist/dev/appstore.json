@@ -947,6 +947,7 @@
         "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",
         "music-player": "@haxtheweb/music-player/music-player.js",
         "twitter-embed": "@haxtheweb/twitter-embed/twitter-embed.js",
+        "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js",
         "grid-plate": "@haxtheweb/grid-plate/grid-plate.js",
         "md-block": "@haxtheweb/md-block/md-block.js",
         "github-preview": "@haxtheweb/github-preview/github-preview.js",

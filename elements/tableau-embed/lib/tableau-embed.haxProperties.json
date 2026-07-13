@@ -1,0 +1,96 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "designSystem": false,
+  "hideDefaultSettings": true,
+  "canScale": true,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Embed Tableau visualizations from a share URL.",
+    "icon": "hax:chart",
+    "color": "blue",
+    "tags": ["Media", "tableau", "chart", "data", "visualization", "embed"],
+    "handles": [
+      {
+        "type": "link",
+        "source": "src",
+        "height": "height",
+        "width": "width"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL to the Tableau workbook or view.",
+        "inputMethod": "textfield",
+        "icon": "link",
+        "required": true,
+        "validationType": "url"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "Visualization height.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "Visualization width.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "toolbar",
+        "title": "Toolbar",
+        "description": "Toolbar position.",
+        "inputMethod": "select",
+        "options": {
+          "top": "Top",
+          "bottom": "Bottom",
+          "hidden": "Hidden"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Hide tabs",
+        "description": "Hide sheet tabs.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "device",
+        "title": "Device layout",
+        "description": "Device layout to render.",
+        "inputMethod": "select",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Phone"
+        }
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "tableau-embed",
+      "content": "",
+      "properties": {
+        "src": "https://public.tableau.com/views/Superstore_embedded_800x800/Overview",
+        "height": "800px",
+        "width": "100%",
+        "toolbar": "bottom",
+        "hideTabs": true,
+        "device": "desktop"
+      }
+    }
+  ]
+}
