@@ -3163,8 +3163,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     // fake a schema so we can force an order update to JOS format
     // this way the above will ALWAYS order correctly if the data model change is accurate
     let site = new JsonOutlineSchema();
+    // Normalize parent values so itemsToNodes correctly identifies top-level items
+    // when the backend omits parent or sends "" instead of null
+    let normalizedItems = this.items.map((item) => {
+      let normalized = { ...item };
+      if (normalized.parent === undefined || normalized.parent === "") {
+        normalized.parent = null;
+      }
+      return normalized;
+    });
     // we already have our items, pass them in
-    let nodes = site.itemsToNodes(this.items);
+    let nodes = site.itemsToNodes(normalizedItems);
     // smash outline into flat to get the correct order
     let correctOrder = site.nodesToItems(nodes);
     let newItems = [];
@@ -3172,14 +3181,21 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     // delete "children" key as we deal in JOS only here
     for (var key in correctOrder) {
       let newItem = this.items.find((element) => {
-        return element.id === correctOrder[key].id;
+        // IDs may be converted to strings during DOM round-trip;
+        // compare as strings to avoid losing items on mismatch
+        return String(element.id) === String(correctOrder[key].id);
       });
       if (newItem) {
         delete newItem.children;
         newItems.push(newItem);
       }
     }
-    this.items = newItems;
+    // Only replace items if the round-trip successfully matched them.
+    // If newItems is empty (e.g., structural mismatch), preserve the original
+    // array so the UI doesn't go blank.
+    if (newItems.length > 0) {
+      this.items = newItems;
+    }
   }
 }
 globalThis.customElements.define(OutlineDesigner.tag, OutlineDesigner);
