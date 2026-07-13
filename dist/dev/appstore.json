@@ -936,6 +936,7 @@
         "citation-element": "@haxtheweb/citation-element/citation-element.js",
         "hero-banner": "@haxtheweb/hero-banner/hero-banner.js",
         "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
+        "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
         "license-element": "@haxtheweb/license-element/license-element.js",
         "lrn-math": "@haxtheweb/lrn-math/lrn-math.js",
         "lrn-table": "@haxtheweb/lrn-table/lrn-table.js",

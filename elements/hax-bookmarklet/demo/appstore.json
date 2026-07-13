@@ -628,6 +628,7 @@
     "video-player": "@haxtheweb/video-player/video-player.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
     "date-card": "@haxtheweb/date-card/date-card.js",
-    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js"
+    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js",
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js"
   }
 }

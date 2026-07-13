@@ -629,6 +629,8 @@
     "q-r": "@haxtheweb/q-r/q-r.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
     "date-card": "@haxtheweb/date-card/date-card.js",
-    "a11y-collapse-group": "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js"
+    "a11y-collapse-group": "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
+    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js"
   }
 }

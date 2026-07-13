@@ -633,6 +633,8 @@
     "stop-note": "@haxtheweb/stop-note/stop-note.js",
     "video-player": "@haxtheweb/video-player/video-player.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
-    "date-card": "@haxtheweb/date-card/date-card.js"
+    "date-card": "@haxtheweb/date-card/date-card.js",
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js"
   }
 }
