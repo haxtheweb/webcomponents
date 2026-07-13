@@ -564,8 +564,14 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.__disposer.push(
       autorun((reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
-        const _mobx_val_1 = toJS(store.manifest.title);
-        const _mobx_val_2 = toJS(store.manifest.metadata.author.image);
+        const _mobx_val_1 = toJS(
+          store.manifest && store.manifest.title ? store.manifest.title : null,
+        );
+        const _mobx_val_2 = toJS(
+          store.manifest && store.manifest.metadata && store.manifest.metadata.author
+            ? store.manifest.metadata.author.image
+            : null,
+        );
         const _mobx_val_3 = toJS(store.activeTitle);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;

@@ -15,14 +15,17 @@ import { autorun, toJS } from "mobx";
  */
 function getPostLogo(item) {
   // Check if item has a logo, otherwise use the image from metadata
-  if (item.metadata.image) {
+  if (item && item.metadata && item.metadata.image) {
     return item.metadata.image;
-  } else if (store.manifest.metadata.theme.variables.image) {
-    return toJS(store.manifest.metadata.theme.variables.image);
-  } else {
-    // Fallback to the site's default image
-    return toJS(store.manifest.metadata.site.logo);
   }
+  const manifest = store.manifest;
+  if (manifest && manifest.metadata && manifest.metadata.theme && manifest.metadata.theme.variables && manifest.metadata.theme.variables.image) {
+    return toJS(manifest.metadata.theme.variables.image);
+  }
+  if (manifest && manifest.metadata && manifest.metadata.site && manifest.metadata.site.logo) {
+    return toJS(manifest.metadata.site.logo);
+  }
+  return "";
 }
 export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
@@ -297,7 +300,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
         <div class="logo-hamburger desktop">
           <a class="logo-link desktop" href="${this.homeLink}" @focus=${this.fullOpacity}>
-            <img class="logo desktop" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
+            <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="Logo" />
           </a>
         </div>
         <ul class="nav-links desktop">
@@ -315,7 +318,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <div class="container mobile">
         <div class="logo-hamburger mobile">
           <a class="logo-link mobile" href="${this.homeLink}" @click="${this.closeHamburger}">
-            <img class="logo mobile" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
+            <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="Logo" />
           </a> 
 
           <!-- hamburger/close button -->

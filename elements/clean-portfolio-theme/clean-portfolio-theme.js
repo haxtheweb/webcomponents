@@ -33,14 +33,17 @@ const PortfolioFonts = [
 
 function getPostLogo(item) {
   // Check if item has a logo, otherwise use the image from metadata
-  if (item.metadata.image) {
+  if (item && item.metadata && item.metadata.image) {
     return item.metadata.image;
-  } else if (store.manifest.metadata.theme.variables.image) {
-    return toJS(store.manifest.metadata.theme.variables.image);
-  } else {
-    // Fallback to the site's default image
-    return toJS(store.manifest.metadata.site.logo);
   }
+  const manifest = store.manifest;
+  if (manifest && manifest.metadata && manifest.metadata.theme && manifest.metadata.theme.variables && manifest.metadata.theme.variables.image) {
+    return toJS(manifest.metadata.theme.variables.image);
+  }
+  if (manifest && manifest.metadata && manifest.metadata.site && manifest.metadata.site.logo) {
+    return toJS(manifest.metadata.site.logo);
+  }
+  return "";
 }
 
 function normalizeTags(tags) {
@@ -149,9 +152,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         const active = _mobx_val_0;
         if (active) {
           // find parent of activeItem
-          let parent = store.manifest.items.find(
-            (d) => active.parent === d.id,
-          );
+          let parent = store.manifest && store.manifest.items
+            ? store.manifest.items.find((d) => active.parent === d.id)
+            : undefined;
 
           if (parent) {
             const activeTags = normalizeTags(active.metadata && active.metadata.tags);
@@ -292,8 +295,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     DesignSystemManager.active = 'clean-portfolio-theme';
 
     // get timestamps for footer
-    this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
-    this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+    if (store.manifest && store.manifest.metadata && store.manifest.metadata.site) {
+      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
+      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+    }
 
     // window resize observer for mobile menu
     // NOTE: an event listener works for this too, but only for manual resizing and not in

@@ -80,14 +80,20 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
-          this.lastUpdated = new Date(
-            store.manifest.metadata.site.updated * 1000,
-          ).toDateString();
-          this.copyrightYear = new Date(
-            store.manifest.metadata.site.created * 1000,
-          ).getFullYear();
+          if (
+            this.manifest &&
+            this.manifest.metadata &&
+            this.manifest.metadata.site
+          ) {
+            this.lastUpdated = new Date(
+              this.manifest.metadata.site.updated * 1000,
+            ).toDateString();
+            this.copyrightYear = new Date(
+              this.manifest.metadata.site.created * 1000,
+            ).getFullYear();
+          }
           let LList = new licenseList();
-          if (this.manifest.license && LList[this.manifest.license]) {
+          if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
             this.licenseName = LList[this.manifest.license].name;
             this.licenseLink = LList[this.manifest.license].link;
             this.licenseImage = LList[this.manifest.license].image;
@@ -195,8 +201,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    src="${store.manifest.metadata.author.image}"
-                    alt="${store.manifest.metadata.author.name}"
+                    src="${store.manifest && store.manifest.metadata && store.manifest.metadata.author ? store.manifest.metadata.author.image : ''}"
+                    alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.author ? store.manifest.metadata.author.name : ''}"
                   />`}
               ${item.title}
             </a>`,
