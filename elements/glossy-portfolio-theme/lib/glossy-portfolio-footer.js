@@ -44,8 +44,24 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     );
     this.__disposer.push(
       autorun((reaction) => {
-        this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
-        this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+        const _mobx_val_0 = toJS(
+          store.manifest && store.manifest.metadata && store.manifest.metadata.site
+            ? store.manifest.metadata.site.updated
+            : null,
+        );
+        const _mobx_val_1 = toJS(
+          store.manifest && store.manifest.metadata && store.manifest.metadata.site
+            ? store.manifest.metadata.site.created
+            : null,
+        );
+        Promise.resolve().then(() => {
+          if (_mobx_val_0) {
+            this.lastUpdated = new Date(_mobx_val_0 * 1000).toDateString();
+          }
+          if (_mobx_val_1) {
+            this.copyrightYear = new Date(_mobx_val_1 * 1000).getFullYear();
+          }
+        });
       }),
     );
 

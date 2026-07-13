@@ -14,14 +14,23 @@ const HAXCMSRememberRoute = function (SuperClass) {
       this.t.resume = "Resume";
       this.__disposer.push(
         autorun((reaction) => {
-          const _mobx_val_0 = toJS(store.location.pathname);
+          const _mobx_val_0 = toJS(
+            store && store.location && store.location.pathname
+              ? store.location.pathname
+              : null,
+          );
           Promise.resolve().then(() => {
-            if (store && store.location && store.location.pathname) {
-              const activePathName = _mobx_val_0;
-              if (activePathName && this.__evaluateRoute) {
+            if (_mobx_val_0 && this.__evaluateRoute) {
+              const siteName =
+                store.manifest &&
+                store.manifest.metadata &&
+                store.manifest.metadata.site
+                  ? store.manifest.metadata.site.name
+                  : null;
+              if (siteName) {
                 localStorageSet(
-                  `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
-                  activePathName,
+                  `HAXCMSlastRoute-${siteName}`,
+                  _mobx_val_0,
                 );
               }
             }
@@ -34,22 +43,29 @@ const HAXCMSRememberRoute = function (SuperClass) {
         super.firstUpdated(changedProperties);
       }
       setTimeout(() => {
+        const siteName =
+          store.manifest &&
+          store.manifest.metadata &&
+          store.manifest.metadata.site
+            ? store.manifest.metadata.site.name
+            : null;
         if (
+          siteName &&
           store &&
           store.location &&
           store.location.pathname &&
           localStorageGet(
-            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+            `HAXCMSlastRoute-${siteName}`,
           ) &&
           localStorageGet(
-            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+            `HAXCMSlastRoute-${siteName}`,
           ) != toJS(store.location.pathname)
         ) {
           let btn = globalThis.document.createElement("a");
           btn.setAttribute(
             "href",
             localStorageGet(
-              `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+              `HAXCMSlastRoute-${siteName}`,
             ),
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
