@@ -640,6 +640,9 @@
     "audio-player": "@haxtheweb/audio-player/audio-player.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
     "date-card": "@haxtheweb/date-card/date-card.js",
-    "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js"
+    "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js",
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js",
+    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js"
   }
 }

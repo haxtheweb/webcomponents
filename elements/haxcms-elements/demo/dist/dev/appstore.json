@@ -683,6 +683,8 @@
     "page-break": "@haxtheweb/page-break/page-break.js",
     "rpg-character": "@haxtheweb/rpg-character/rpg-character.js",
     "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js",
-    "flash-card": "@haxtheweb/flash-card/flash-card.js"
+    "flash-card": "@haxtheweb/flash-card/flash-card.js",
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js"
   }
 }
