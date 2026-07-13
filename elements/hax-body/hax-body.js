@@ -619,6 +619,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: var(--hax-body-editable-outline);
         }
 
+        /* Ensure empty contenteditable placeholders don't collapse when hax-mover
+           applies position:absolute drop-zone styling */
+        :host([edit-mode][hax-mover])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before,
+        :host([edit-mode][hax-mover])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray][data-hax-empty]:not([data-instructional-action]))::before {
+          position: relative;
+          top: 0;
+          height: auto;
+        }
+
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
           outline: var(--ddd-drop-zone-outline-width)
             var(--ddd-drop-zone-outline-style)
@@ -2583,6 +2596,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     ) {
       this.__addAbove = false;
     }
+    // Guard against hax-body or invalid elements being used as insertion anchors
+    if (active && (active === this || !this._validElementTest(active, true))) {
+      active = null;
+    }
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
@@ -2611,7 +2628,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           active.parentNode.insertBefore(newNode, active.nextElementSibling);
         }
       } else {
-        if (active.parentNode && active.parentNode.nextElementSibling) {
+        if (active.parentNode && active.parentNode !== this && active.parentNode.nextElementSibling) {
           active.parentNode.nextElementSibling.parentNode.insertBefore(
             newNode,
             active.parentNode.nextElementSibling,
@@ -5401,9 +5418,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
-      // Redirect target away from page-break so it never becomes active
-      if (target && target.tagName === "PAGE-BREAK") {
-        target = target.nextElementSibling || target;
+      // Redirect target away from page-break / hax-body / invalid so it never becomes active
+      if (target && !this._validElementTest(target, true)) {
+        let fallback = target.nextElementSibling;
+        while (fallback && !this._validElementTest(fallback, true)) {
+          fallback = fallback.nextElementSibling;
+        }
+        target = fallback || null;
       }
       // establish an activeNode /container based on drop position
       HAXStore.activeNode = target;
@@ -5439,53 +5460,138 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.__addAbove = false;
           }
 
-          // inject a placeholder P tag which we will then immediately replace
-          let tmp = globalThis.document.createElement("p");
-          // Always do placement logic to insert the placeholder next to the target
-          if (
-            (local &&
-              ((local.tagName && local.tagName !== "HAX-BODY") ||
-                !local.getAttribute("data-hax-layout"))) ||
-            this.__isLayout(eventPath[0])
-          ) {
-            if (local.getAttribute("slot")) {
-              tmp.setAttribute("slot", local.getAttribute("slot"));
-            } else if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            } else {
-              tmp.removeAttribute("slot");
-            }
-            if (this.__addAbove !== false) {
-              local.parentNode.insertBefore(tmp, local);
-            } else {
-              if (local.nextElementSibling) {
-                local.parentNode.insertBefore(tmp, local.nextElementSibling);
-              } else {
-                local.parentNode.appendChild(tmp);
+          // Check if dropping on an existing image-gallery so we can inject a
+          // skeleton placeholder directly into the gallery rather than a generic P
+          let galleryParent = null;
+          if (local) {
+            galleryParent = local.closest ? local.closest("image-gallery") : null;
+            if (!galleryParent) {
+              let root = local.getRootNode();
+              while (root && root.host) {
+                if (root.host.tagName === "IMAGE-GALLERY") {
+                  galleryParent = root.host;
+                  break;
+                }
+                root = root.host.getRootNode ? root.host.getRootNode() : null;
               }
             }
+          }
+          if (!galleryParent) {
+            galleryParent = eventPath.find((el) => el.tagName === "IMAGE-GALLERY");
+          }
+          let tmp;
+          if (galleryParent) {
+            tmp = globalThis.document.createElement("media-image");
+            tmp.setAttribute("uploading", "");
+            tmp.setAttribute("source", "");
+            galleryParent.appendChild(tmp);
           } else {
-            if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            }
-            // account for drop target of main body yet still having a slot attr
-            else if (
-              local &&
-              local.tagName === "HAX-BODY" &&
-              tmp.getAttribute("slot")
-            ) {
-              tmp.removeAttribute("slot");
-            }
+            // Check if dropping on a media-playlist or video/audio player so we
+            // can inject a skeleton placeholder directly into the playlist
+            let playlistParent = null;
             if (local) {
-              local.appendChild(tmp);
+              playlistParent = local.closest ? local.closest("media-playlist") : null;
+              if (!playlistParent) {
+                let root = local.getRootNode();
+                while (root && root.host) {
+                  if (root.host.tagName === "MEDIA-PLAYLIST") {
+                    playlistParent = root.host;
+                    break;
+                  }
+                  root = root.host.getRootNode ? root.host.getRootNode() : null;
+                }
+              }
+            }
+            if (!playlistParent) {
+              playlistParent = eventPath.find((el) => el.tagName === "MEDIA-PLAYLIST");
+            }
+            if (!playlistParent && local && (local.tagName === "VIDEO-PLAYER" || local.tagName === "AUDIO-PLAYER")) {
+              playlistParent = local;
+            }
+            if (!playlistParent) {
+              const mediaPlayer = eventPath.find(
+                (el) => el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
+              );
+              if (mediaPlayer) {
+                playlistParent = mediaPlayer;
+              }
+            }
+            if (playlistParent) {
+              const firstFile = e.dataTransfer.files && e.dataTransfer.files[0];
+              const isAudio =
+                firstFile &&
+                ((firstFile.type && firstFile.type.startsWith("audio/")) ||
+                  /\.(mp3|ogg|wav|m4a|flac|aac)$/i.test(firstFile.name));
+              const isVideo =
+                firstFile &&
+                ((firstFile.type && firstFile.type.startsWith("video/")) ||
+                  /\.(mp4|webm|ogg|mov|mkv|avi|m4v)$/i.test(firstFile.name));
+              tmp = globalThis.document.createElement(
+                isAudio ? "audio-player" : "video-player",
+              );
+              tmp.setAttribute("uploading", "");
+              tmp.setAttribute("source", "");
+              tmp.setAttribute("media-title", firstFile ? firstFile.name : "");
+              if (playlistParent.tagName === "MEDIA-PLAYLIST") {
+                playlistParent.appendChild(tmp);
+              } else if (playlistParent.tagName === "VIDEO-PLAYER" || playlistParent.tagName === "AUDIO-PLAYER") {
+                // Wrap the existing player and the new placeholder in a media-playlist
+                const playlist = globalThis.document.createElement("media-playlist");
+                const existingClone = playlistParent.cloneNode(true);
+                playlist.appendChild(existingClone);
+                playlist.appendChild(tmp);
+                playlistParent.parentNode.insertBefore(playlist, playlistParent);
+                playlistParent.remove();
+              }
             } else {
-              this.appendChild(tmp);
+              // inject a placeholder P tag which we will then immediately replace
+              tmp = globalThis.document.createElement("p");
+            // Always do placement logic to insert the placeholder next to the target
+            if (
+              (local &&
+                ((local.tagName && local.tagName !== "HAX-BODY") ||
+                  !local.getAttribute("data-hax-layout"))) ||
+              this.__isLayout(eventPath[0])
+            ) {
+              if (local.getAttribute("slot")) {
+                tmp.setAttribute("slot", local.getAttribute("slot"));
+              } else if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              } else {
+                tmp.removeAttribute("slot");
+              }
+              if (this.__addAbove !== false) {
+                local.parentNode.insertBefore(tmp, local);
+              } else {
+                if (local.nextElementSibling) {
+                  local.parentNode.insertBefore(tmp, local.nextElementSibling);
+                } else {
+                  local.parentNode.appendChild(tmp);
+                }
+              }
+            } else {
+              if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              }
+              // account for drop target of main body yet still having a slot attr
+              else if (
+                local &&
+                local.tagName === "HAX-BODY" &&
+                tmp.getAttribute("slot")
+              ) {
+                tmp.removeAttribute("slot");
+              }
+              if (local) {
+                local.appendChild(tmp);
+              } else {
+                this.appendChild(tmp);
+              }
             }
           }
           // Check if an image is being dropped on a media player for thumbnail assignment
@@ -5512,6 +5618,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               detail: e,
             }),
           );
+          }
         } else {
           // set taget based on drag target
           target = HAXStore.__dragTarget;

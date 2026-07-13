@@ -50,12 +50,16 @@ function deriveBasePath(appSettings = {}) {
 
 function deriveSystemApiBasePath(appSettings = {}) {
   const basePath = deriveBasePath(appSettings);
-  let fromSettings = normalizePath(appSettings.systemApiBasePath || "");
+  const rawSystemApiBasePath = cleanString(appSettings.systemApiBasePath || "");
+  let fromSettings = normalizePath(rawSystemApiBasePath);
   if (fromSettings !== "") {
     // In HAXiam / multi-tenant contexts, systemApiBasePath may be relative
-    // while siteApiBasePath already includes the tenant base path. Prepend
-    // the base path so that registry endpoints resolve correctly.
-    if (basePath !== "" && fromSettings.indexOf(basePath + "/") !== 0) {
+    // (no leading slash in the original value from appSettings) while
+    // siteApiBasePath already includes the tenant base path. Only prepend the
+    // base path for truly relative paths; if the original value already starts
+    // with '/' it is an absolute server-root path and must not be prefixed.
+    const isRelative = rawSystemApiBasePath.charAt(0) !== "/";
+    if (basePath !== "" && isRelative && fromSettings.indexOf(basePath + "/") !== 0) {
       fromSettings = basePath + fromSettings;
     }
     return fromSettings;

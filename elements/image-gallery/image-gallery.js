@@ -319,6 +319,35 @@ export class ImageGallery extends I18NMixin(DDD) {
           animation: gallery-item-enter 600ms var(--ddd-timing-ease) forwards;
         }
 
+        /* Uploading skeleton state */
+        .uploading {
+          position: relative;
+          overflow: hidden;
+          background: var(--ddd-theme-default-limestoneGray);
+        }
+        .uploading::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+        .uploading img {
+          opacity: 0;
+        }
+        @keyframes skeleton-shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
         @keyframes gallery-item-enter {
           0% {
             transform: scale(0);
@@ -385,7 +414,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="grid-item ${image.element === this._newImageElement ? 'new-image' : ''}"
+              class="grid-item ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -411,7 +440,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="masonry-item ${image.element === this._newImageElement ? 'new-image' : ''}"
+              class="masonry-item ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -472,7 +501,7 @@ export class ImageGallery extends I18NMixin(DDD) {
               <button
                 class="gallery-thumbnail ${index === this.activeIndex
                   ? "active"
-                  : ""} ${image.element === this._newImageElement ? 'new-image' : ''}"
+                  : ""} ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
                 role="tab"
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${image.alt || ""}"
@@ -512,6 +541,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         tagName: el.tagName,
         src: src,
         alt: alt,
+        uploading: el.hasAttribute("uploading"),
       };
     });
   }
@@ -604,6 +634,19 @@ export class ImageGallery extends I18NMixin(DDD) {
   _onDrop(e) {
     if (!this._haxState) return;
     const store = this._getHaxStore();
+    // Handle file drops from the computer by forwarding to hax-body
+    if (
+      (!store || !store.__dragTarget) &&
+      e.dataTransfer &&
+      e.dataTransfer.files &&
+      e.dataTransfer.files.length > 0
+    ) {
+      const haxBody = store && store.activeHaxBody;
+      if (haxBody && typeof haxBody.dropEvent === 'function') {
+        haxBody.dropEvent(e);
+      }
+      return;
+    }
     if (!store || !store.__dragTarget) return;
     const target = store.__dragTarget;
     const tag = target.tagName;

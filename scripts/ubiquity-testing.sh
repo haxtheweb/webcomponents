@@ -94,7 +94,6 @@ cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwe
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/nav-card ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/nav-card
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/simple-drawer ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/simple-drawer
 
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polymer/* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@polymer/
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 

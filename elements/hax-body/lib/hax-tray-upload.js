@@ -135,6 +135,74 @@ class HaxTrayUpload extends HaxUploadField {
         }
       }
 
+      // Handle image-gallery uploading placeholder: fill in the source instead of
+      // creating a new element, which lets the gallery animate the image in.
+      if (
+        HAXStore.activePlaceHolder &&
+        HAXStore.activePlaceHolder.tagName === "MEDIA-IMAGE" &&
+        HAXStore.activePlaceHolder.hasAttribute("uploading")
+      ) {
+        const file = e.detail.file;
+        if (file && file.type && file.type.startsWith("image/")) {
+          HAXStore.activePlaceHolder.source =
+            this.shadowRoot.querySelector("#url").value;
+          HAXStore.activePlaceHolder.removeAttribute("uploading");
+          // Trigger the gallery new-image animation so the uploaded image fades in
+          const gallery = HAXStore.activePlaceHolder.closest
+            ? HAXStore.activePlaceHolder.closest("image-gallery")
+            : null;
+          if (gallery) {
+            gallery._newImageElement = HAXStore.activePlaceHolder;
+            setTimeout(() => {
+              gallery._newImageElement = null;
+            }, 600);
+          }
+          HAXStore.activePlaceHolder = null;
+          this.option = "fileupload";
+          return;
+        }
+      }
+
+      // Handle media-playlist uploading placeholder: fill in source / swap tag type
+      if (
+        HAXStore.activePlaceHolder &&
+        (HAXStore.activePlaceHolder.tagName === "VIDEO-PLAYER" ||
+          HAXStore.activePlaceHolder.tagName === "AUDIO-PLAYER") &&
+        HAXStore.activePlaceHolder.hasAttribute("uploading")
+      ) {
+        const file = e.detail.file;
+        const isAudio =
+          (file.type && file.type.startsWith("audio/")) ||
+          /\.(mp3|ogg|wav|m4a|flac|aac)$/i.test(file.name);
+        const isVideo =
+          (file.type && file.type.startsWith("video/")) ||
+          /\.(mp4|webm|ogg|mov|mkv|avi|m4v)$/i.test(file.name);
+        if (isAudio || isVideo) {
+          const url = this.shadowRoot.querySelector("#url").value;
+          const placeholder = HAXStore.activePlaceHolder;
+          const expectedTag = isAudio ? "AUDIO-PLAYER" : "VIDEO-PLAYER";
+          if (placeholder.tagName === expectedTag) {
+            placeholder.source = url;
+            placeholder.mediaTitle = file.name;
+            placeholder.removeAttribute("uploading");
+          } else {
+            // Tag mismatch: replace placeholder with correct media type
+            const media = globalThis.document.createElement(
+              isAudio ? "audio-player" : "video-player",
+            );
+            media.source = url;
+            media.mediaTitle = file.name;
+            if (placeholder.parentNode) {
+              placeholder.parentNode.insertBefore(media, placeholder);
+              placeholder.remove();
+            }
+          }
+          HAXStore.activePlaceHolder = null;
+          this.option = "fileupload";
+          return;
+        }
+      }
+
       this.newAssetConfigure();
       // ensures that if we have selfie / audio it closes those widgets
       this.option = "fileupload";

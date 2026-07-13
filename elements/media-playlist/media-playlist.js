@@ -55,6 +55,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       this._advanceToNext();
     };
     this._lastMediaElement = null;
+    this._haxState = false;
   }
 
   connectedCallback() {
@@ -64,6 +65,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       subtree: false,
     });
     this.addEventListener("keydown", this._handleKeydown);
+    this.addEventListener("drop", this._onDrop, true);
     this._darkModeQuery = globalThis.matchMedia(
       "(prefers-color-scheme: dark)",
     );
@@ -77,6 +79,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
   disconnectedCallback() {
     this._observer.disconnect();
     this.removeEventListener("keydown", this._handleKeydown);
+    this.removeEventListener("drop", this._onDrop, true);
     if (this._darkModeQuery && this._darkModeHandler) {
       this._darkModeQuery.removeEventListener(
         "change",
@@ -115,6 +118,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       edit: { type: Boolean, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
       mediaItems: { type: Array },
+      _haxState: { type: Boolean },
     };
   }
 
@@ -626,7 +630,30 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
   haxHooks() {
     return {
       inlineContextMenu: "haxinlineContextMenu",
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
+  }
+
+  haxeditModeChanged(value) {
+    this._haxState = value;
+    const children = Array.from(this.children).filter(
+      (el) => el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
+    );
+    children.forEach((child) => {
+      if (
+        child.haxeditModeChanged &&
+        typeof child.haxeditModeChanged === "function"
+      ) {
+        child.haxeditModeChanged(value);
+      }
+    });
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxState = value;
+    }
   }
 
   haxinlineContextMenu(ceMenu) {
@@ -708,6 +735,40 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
   haxCopyActiveIndex(e) {
     copyToClipboard(this.activeIndex);
     return true;
+  }
+
+  _getHaxStore() {
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
+      try {
+        return globalThis.HaxStore.requestAvailability();
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  _onDrop(e) {
+    if (!this._haxState) return;
+    const store = this._getHaxStore();
+    if (!store || !store.__dragTarget) return;
+    const target = store.__dragTarget;
+    const tag = target.tagName;
+    if (tag !== "VIDEO-PLAYER" && tag !== "AUDIO-PLAYER") {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      store.__dragTarget = null;
+      return;
+    }
+    if (!this.contains(target)) {
+      this.appendChild(target);
+      this._updateMediaItems();
+    }
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    store.__dragTarget = null;
   }
 }
 

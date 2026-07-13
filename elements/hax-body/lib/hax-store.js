@@ -292,6 +292,44 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
 
+    // Auto-handle media (video/audio) drops onto or into media-playlist / media players
+    if (type === "video" || type === "audio") {
+      let targetPlaylist = null;
+      targetPlaylist = this._nearestContainerTag(
+        this.activePlaceHolder,
+        "media-playlist",
+      );
+      if (!targetPlaylist && this.activeNode) {
+        targetPlaylist = this._nearestContainerTag(
+          this.activeNode,
+          "media-playlist",
+        );
+      }
+      if (!targetPlaylist && this.activeNode) {
+        const tagName = this.activeNode.tagName
+          ? this.activeNode.tagName.toLowerCase()
+          : "";
+        if (tagName === "video-player" || tagName === "audio-player") {
+          targetPlaylist = this.activeNode;
+        }
+      }
+      if (targetPlaylist) {
+        const isAudio = type === "audio";
+        const media = globalThis.document.createElement(
+          isAudio ? "audio-player" : "video-player",
+        );
+        media.source = values.source;
+        media.mediaTitle = values.title || values.source;
+        if (targetPlaylist.tagName === "MEDIA-PLAYLIST") {
+          this._addMediaToMediaPlaylist(targetPlaylist, media);
+        } else {
+          // targetPlaylist is a video/audio player, wrap it in a media-playlist
+          this._createMediaPlaylist(targetPlaylist, media);
+        }
+        return true;
+      }
+    }
+
     // see if we got anything
     if (haxElements.length > 0) {
       // if we ONLY have 1 thing or we say "make it a link if multiple"
@@ -758,9 +796,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (
         source.indexOf(".mp3") != -1 ||
         source.indexOf(".midi") != -1 ||
-        source.indexOf(".mid") != -1
+        source.indexOf(".mid") != -1 ||
+        source.indexOf(".m4a") != -1 ||
+        source.indexOf(".wav") != -1 ||
+        source.indexOf(".ogg") != -1 ||
+        source.indexOf(".flac") != -1 ||
+        source.indexOf(".aac") != -1
       ) {
         return "audio";
+      } else if (
+        source.indexOf(".mp4") != -1 ||
+        source.indexOf(".webm") != -1 ||
+        source.indexOf(".mov") != -1 ||
+        source.indexOf(".mkv") != -1 ||
+        source.indexOf(".avi") != -1 ||
+        source.indexOf(".m4v") != -1
+      ) {
+        return "video";
       } else if (
         source.indexOf(".png") != -1 ||
         source.indexOf(".jpg") != -1 ||

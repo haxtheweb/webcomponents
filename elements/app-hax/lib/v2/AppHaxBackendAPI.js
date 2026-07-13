@@ -479,6 +479,12 @@ export class AppHaxBackendAPI extends LitElement {
     if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
       return pathOrUrl;
     }
+    // Absolute server-root path — return as-is to avoid a double-slash when
+    // basePath is '/' (which would produce '//system/...' and let the browser
+    // treat 'system' as a hostname).
+    if (pathOrUrl.startsWith("/")) {
+      return pathOrUrl;
+    }
     return `${this.basePath}${pathOrUrl}`;
   }
   async _validateConnection() {
