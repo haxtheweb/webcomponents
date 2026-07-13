@@ -1,27 +1,5 @@
 {
   "name": "@haxtheweb/hax-iconset",
-  "wcfactory": {
-    "className": "HaxIconset",
-    "customElementClass": "LitElement",
-    "elementName": "hax-iconset",
-    "generator-wcfactory-version": "0.7.1",
-    "useHAX": false,
-    "useSass": false,
-    "files": {
-      "css": "src/hax-iconset.css",
-      "html": "src/hax-iconset.html",
-      "js": "src/hax-iconset.js",
-      "properties": "src/hax-iconset-properties.json",
-      "hax": "src/hax-iconset-hax.json"
-    },
-    "iconset": {
-      "exportName": "HaxIconsetManifest",
-      "manifestFilename": "hax-iconset-manifest",
-      "manifestPath": "./lib",
-      "svgsPath": "./lib/svgs"
-    },
-    "sharedStyles": []
-  },
   "version": "26.0.0",
   "description": "HAX-specific icons",
   "repository": {
