@@ -804,13 +804,13 @@ class PolarisInventTheme extends LTIResizingMixin(
 
     this.__disposer.push(
       autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.activeItem.metadata.updated);
+        const _mobx_val_0 = toJS(
+          store.activeItem && store.activeItem.metadata
+            ? store.activeItem.metadata.updated
+            : null,
+        );
         Promise.resolve().then(() => {
-          if (
-            store.activeItem &&
-            store.activeItem.metadata &&
-            store.activeItem.metadata.updated
-          ) {
+          if (_mobx_val_0) {
             this.pageTimestamp = _mobx_val_0;
           }
         });

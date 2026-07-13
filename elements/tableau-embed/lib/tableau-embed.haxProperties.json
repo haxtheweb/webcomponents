@@ -4,21 +4,19 @@
   "editingElement": "core",
   "designSystem": false,
   "hideDefaultSettings": true,
-  "canScale": true,
+  "canScale": false,
   "canEditSource": false,
   "contentEditable": false,
   "gizmo": {
     "title": "Tableau",
     "description": "Embed Tableau visualizations from a share URL.",
-    "icon": "hax:chart",
+    "icon": "hax:graph",
     "color": "blue",
     "tags": ["Media", "tableau", "chart", "data", "visualization", "embed"],
     "handles": [
       {
         "type": "link",
-        "source": "src",
-        "height": "height",
-        "width": "width"
+        "source": "src"
       }
     ],
     "meta": {
@@ -64,7 +62,9 @@
         "title": "Hide tabs",
         "description": "Hide sheet tabs.",
         "inputMethod": "boolean"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "device",
         "title": "Device layout",
@@ -76,8 +76,7 @@
           "phone": "Phone"
         }
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
