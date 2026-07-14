@@ -645,6 +645,7 @@ export class ImageGallery extends I18NMixin(DDD) {
       if (haxBody && typeof haxBody.dropEvent === 'function') {
         haxBody.dropEvent(e);
       }
+      this._updateImages();
       return;
     }
     if (!store || !store.__dragTarget) return;

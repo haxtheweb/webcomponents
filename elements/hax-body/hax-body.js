@@ -5594,6 +5594,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
             }
           }
+          }
           // Check if an image is being dropped on a media player for thumbnail assignment
           if (
             local &&
@@ -5618,7 +5619,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               detail: e,
             }),
           );
-          }
         } else {
           // set taget based on drag target
           target = HAXStore.__dragTarget;

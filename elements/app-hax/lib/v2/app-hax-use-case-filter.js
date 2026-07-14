@@ -1477,7 +1477,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         importType: "gitbook",
         callback: "@system/gitbookToSite",
         prompt: "URL for the GitBook git repo",
-        param: "md",
+        param: "repoUrl",
         useCaseTitle: "GitBook",
         useCaseImage: "",
         useCaseDescription: "Import a GitBook repo into a new HAX site",
