@@ -43,26 +43,44 @@ class SiteActiveTags extends I18NMixin(LitElement) {
     ];
   }
   /**
+   * Normalize tags into a flat list of trimmed, non-empty strings.
+   * Supports comma-separated strings (legacy storage) and arrays of
+   * strings so metadata.tags can be stored in either format.
+   */
+  get tagList() {
+    if (!this.tags) {
+      return [];
+    }
+    let list = this.tags;
+    if (typeof this.tags === "string") {
+      list = this.tags.split(",");
+    }
+    if (Array.isArray(list)) {
+      return list
+        .map((tag) => (typeof tag === "string" ? tag.trim() : tag))
+        .filter((tag) => tag !== "" && tag != null);
+    }
+    return [];
+  }
+  /**
    * LitElement
    */
   render() {
     return html`
       <div class="tag-wrap">
-        ${this.tags && this.tags != "" && this.tags.split
-          ? this.tags.split(",").map(
-              (tag) =>
-                html` <a
-                  @click="${this.testEditMode}"
-                  href="x/displays/tags?tag=${tag.trim()}"
-                >
-                  <simple-tag
-                    ?auto-accent-color="${this.autoAccentColor}"
-                    value="${tag.trim()}"
-                    accent-color="${this.accentColor}"
-                  ></simple-tag>
-                </a>`,
-            )
-          : ``}
+        ${this.tagList.map(
+          (tag) =>
+            html` <a
+              @click="${this.testEditMode}"
+              href="x/displays/tags?tag=${tag}"
+            >
+              <simple-tag
+                ?auto-accent-color="${this.autoAccentColor}"
+                value="${tag}"
+                accent-color="${this.accentColor}"
+              ></simple-tag>
+            </a>`,
+        )}
       </div>
     `;
   }
