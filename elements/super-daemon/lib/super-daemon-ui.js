@@ -394,8 +394,26 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // Set programSearch from the passed parameter if provided
     // This avoids timing issues with property propagation from parent to child
     this.programSearch = initialProgramSearch;
+    // Robustly pre-fill the search input so programs that pass an initial
+    // value (e.g. edit-tags passing the page's current tags) actually display
+    // it. The Lit property binding alone is not reliable once the input has
+    // had prior user interaction, so mirror the value into the search element
+    // and its inner input field (same approach as the Konami clear sequence).
+    const search = this.shadowRoot.querySelector("super-daemon-search");
+    if (search) {
+      search.value = initialProgramSearch;
+      const inputField = search.shadowRoot.querySelector("#inputfilter");
+      if (inputField) {
+        inputField.value = initialProgramSearch;
+      }
+    }
     this.focusInput();
-    this.selectInput();
+    // Only select-all when there is no initial value; when pre-filled (e.g.
+    // current tags) place the cursor at the end so the user can edit/append
+    // instead of accidentally replacing everything on the first keystroke.
+    if (!initialProgramSearch) {
+      this.selectInput();
+    }
     // reset to top of results
     this.shadowRoot.querySelector(".results").scrollTo(0, 0);
   }

@@ -1418,6 +1418,33 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         this.humanName = props.gizmo.title;
       }
 
+      // Adaptive link content field: when an <a> wraps HTML (e.g. an image
+      // brought in via content migration), edit its content as HTML through a
+      // code editor so nested markup is preserved instead of being destroyed.
+      // Text-only links keep the default innerText textfield (no change).
+      if (
+        activeNode.tagName.toLowerCase() === "a" &&
+        this.activeHaxElement &&
+        this.activeHaxElement.properties &&
+        this.activeHaxElement.properties.__htmlContent
+      ) {
+        props.settings.configure = (props.settings.configure || []).map(
+          (field) => {
+            if (field.attribute === "innerText") {
+              return {
+                ...field,
+                attribute: "innerHTML",
+                title: "Content",
+                description:
+                  "HTML inside this link. Nested elements like images are preserved; edit carefully.",
+                inputMethod: "code-editor",
+                required: false,
+              };
+            }
+            return field;
+          },
+        );
+      }
       // first, allow element properties to dictate defaults
       for (let property in this.activeHaxElement.properties) {
         // step through the 3 keys we have so we write less code
@@ -1874,6 +1901,13 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
               // that is only a text node (like a link)
               else if (prop === "innerText") {
                 this.activeNode.innerText = settings[key][prop];
+                setAhead = true;
+              }
+              // innerHTML is the HTML-wrapping link case (content migrations):
+              // write as HTML so nested elements survive instead of being
+              // coerced into a text node the way innerText would.
+              else if (prop === "innerHTML") {
+                this.activeNode.innerHTML = settings[key][prop];
                 setAhead = true;
               }
               // try and set the pop directly if it is a prop already set

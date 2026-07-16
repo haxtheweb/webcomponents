@@ -187,6 +187,8 @@
  *   postProcessNodeToContent : "haxpostProcessNodeToContent", // input (content) where content is an HTML blob about to be returned for export
  *   // @see @haxtheweb/multiple-choice/multiple-choice.js
  *   preProcessInsertContent : "haxpreProcessInsertContent", // input (node) where node is item about to be inserted into the content
+ *   // @see @haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js
+ *   siteToSkeleton : "haxsiteToSkeleton", // input (details) where details is { uuidMap, direction }; element rewrites its own site-item UUID references so skeleton structure + content stay in sync
  * }
  *
  * The callback if defined is handed the element / item to act against

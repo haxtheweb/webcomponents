@@ -4258,6 +4258,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: "Update page tags",
         machineName: "edit-tags",
         placeholder: "Enter tags separated by commas",
+        // Pre-fill the input with the active page's current tags so the
+        // user can edit them in place when launched from Merlin search.
+        initialValue: (values) => {
+          const activeItem = toJS(store.activeItem);
+          return (activeItem && activeItem.metadata && activeItem.metadata.tags) || "";
+        },
         program: async (input, values) => {
           const { createEditTagsProgram } = await import(
             "./utils/EditTagsProgram.js"

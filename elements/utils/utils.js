@@ -1759,7 +1759,18 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
     slotContent = node.innerText;
   }
   // special edge case for slot binding in primatives
-  if (tag === "a" || tag === "mark" || tag === "abbr") {
+  // links (a) can wrap HTML such as an image when content is imported or
+  // pasted from elsewhere; detect element children so the form can edit the
+  // nested markup as HTML instead of coercing it into a destroyed text node.
+  // mark/abbr stay text-only as they rarely wrap elements.
+  if (tag === "a") {
+    if (node && node.children && node.children.length > 0) {
+      props.innerHTML = slotContent;
+      props.__htmlContent = true;
+    } else {
+      props.innerText = slotContent;
+    }
+  } else if (tag === "mark" || tag === "abbr") {
     props.innerText = slotContent;
   } else if (
     tag === "p" ||

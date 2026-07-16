@@ -232,6 +232,9 @@ class SiteSkeletonGenerator {
         console.warn(`Could not fetch content for page ${item.id}:`, error);
         content = "";
       }
+      // rewrite site-item UUIDs embedded in content so they match the
+      // newly generated structure UUIDs (see siteToSkeleton haxHook)
+      content = this.rewriteContentUuids(content, uuidMap);
 
       structure.push({
         id: uuidMap.get(item.id),
@@ -251,6 +254,63 @@ class SiteSkeletonGenerator {
     }
 
     return structure;
+  }
+
+  /**
+   * Rewrite site-item UUIDs embedded in page content so the skeleton's
+   * structure and content stay in sync. Fires the siteToSkeleton haxHook
+   * on any custom element in the content that declares it.
+   * @see haxHooks: siteToSkeleton
+   * @param {string} content - HTML content string
+   * @param {Map} uuidMap - old item id -> new item id
+   * @returns {string} Rewritten content, or the original on any failure
+   */
+  static rewriteContentUuids(content, uuidMap) {
+    if (!content || typeof content !== "string" || content.trim() === "") {
+      return content;
+    }
+    try {
+      const container = document.createElement("div");
+      container.innerHTML = content;
+      const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_ELEMENT,
+      );
+      const targets = [];
+      let node = walker.nextNode();
+      while (node) {
+        if (
+          node.tagName &&
+          node.tagName.indexOf("-") !== -1 &&
+          globalThis.customElements.get(node.tagName.toLowerCase())
+        ) {
+          globalThis.customElements.upgrade(node);
+          if (
+            typeof node.haxHooks === "function" &&
+            node.haxHooks()["siteToSkeleton"]
+          ) {
+            targets.push(node);
+          }
+        }
+        node = walker.nextNode();
+      }
+      for (let i = 0; i < targets.length; i++) {
+        try {
+          const details = { uuidMap, direction: "site-to-skeleton" };
+          targets[i][targets[i].haxHooks()["siteToSkeleton"]](details);
+        } catch (e) {
+          console.warn(
+            "siteToSkeleton hook failed for",
+            targets[i].tagName,
+            e,
+          );
+        }
+      }
+      return container.innerHTML;
+    } catch (e) {
+      console.warn("rewriteContentUuids failed, using original content", e);
+      return content;
+    }
   }
 
   /**
@@ -485,73 +545,6 @@ class SiteSkeletonGenerator {
     return files;
   }
 
-  /**
-   * Rewrite skeleton UUIDs for new site creation
-   * @param {Object} skeleton - Original skeleton
-   * @returns {Object} Skeleton with new UUIDs
-   */
-  static rewriteSkeletonUuids(skeleton) {
-    const oldToNewMap = new Map();
-
-    // Create new UUIDs for all items first
-    skeleton.structure.forEach((item) => {
-      if (item.id) {
-        oldToNewMap.set(item.id, generateResourceID(""));
-      }
-    });
-
-    // Rewrite structure with new UUIDs and update parent references
-    const newStructure = skeleton.structure.map((item) => {
-      const newItem = { ...item };
-
-      if (item.id) {
-        newItem.id = oldToNewMap.get(item.id);
-      }
-
-      if (item.parent && oldToNewMap.has(item.parent)) {
-        newItem.parent = oldToNewMap.get(item.parent);
-      }
-
-      return newItem;
-    });
-
-    // Also rewrite UUIDs in theme settings regions if they exist
-    const newTheme = { ...skeleton.theme };
-    if (newTheme.settings && newTheme.settings.regions) {
-      const newRegions = { ...newTheme.settings.regions };
-      Object.keys(newRegions).forEach((regionKey) => {
-        const region = newRegions[regionKey];
-        if (region && typeof region === "object") {
-          // Check if region has UUID references that need updating
-          Object.keys(region).forEach((prop) => {
-            const value = region[prop];
-            if (typeof value === "string" && oldToNewMap.has(value)) {
-              region[prop] = oldToNewMap.get(value);
-            } else if (Array.isArray(value)) {
-              // Handle arrays that might contain UUIDs
-              region[prop] = value.map((item) =>
-                typeof item === "string" && oldToNewMap.has(item)
-                  ? oldToNewMap.get(item)
-                  : item,
-              );
-            }
-          });
-        }
-      });
-      newTheme.settings.regions = newRegions;
-    }
-
-    return {
-      ...skeleton,
-      structure: newStructure,
-      theme: newTheme,
-      meta: {
-        ...skeleton.meta,
-        created: new Date().toISOString(),
-        sourceUuids: "rewritten",
-      },
-    };
-  }
 }
 
 export default SiteSkeletonGenerator;

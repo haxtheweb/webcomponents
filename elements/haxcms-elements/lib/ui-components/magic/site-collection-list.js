@@ -175,7 +175,33 @@ export class SiteCollectionList extends CollectionList {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
       setupActiveElementForm: "haxsetupActiveElementForm",
+      siteToSkeleton: "haxsiteToSkeleton",
     };
+  }
+
+  /**
+   * Rewrite our own site-item UUID references when this page is converted
+   * into a skeleton, so the skeleton's structure and embedded content stay
+   * in sync. parent and related-items are single item UUID values; we set
+   * attributes directly so the serialized HTML reflects the change.
+   * @see haxHooks: siteToSkeleton
+   * @param {Object} details - { uuidMap: Map<oldId, newId>, direction: string }
+   * @returns {HTMLElement} this
+   */
+  haxsiteToSkeleton(details) {
+    if (!details || !details.uuidMap) {
+      return this;
+    }
+    const map = details.uuidMap;
+    const parentVal = this.getAttribute("parent");
+    if (parentVal && map.has(parentVal)) {
+      this.setAttribute("parent", map.get(parentVal));
+    }
+    const relatedVal = this.getAttribute("related-items");
+    if (relatedVal && map.has(relatedVal)) {
+      this.setAttribute("related-items", map.get(relatedVal));
+    }
+    return this;
   }
 
   haxeditModeChanged(value) {

@@ -287,6 +287,27 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         if (!placeholder && itemMatch.value.placeholder) {
           placeholder = itemMatch.value.placeholder;
         }
+        // Allow a program to supply an initial input value when it is
+        // launched generically (e.g. via Merlin search/voice) with no
+        // explicit like/search. This lets programs such as edit-tags
+        // pre-fill the input with the active page's current value without
+        // every caller having to pass it in. We intentionally only set
+        // programSearch/value (not like) so SimpleFilterMixin does not
+        // filter the program's own results.
+        if (
+          like == null &&
+          (!search || search === "") &&
+          typeof itemMatch.value.initialValue === "function"
+        ) {
+          const initialValue = await itemMatch.value.initialValue(values);
+          if (
+            initialValue &&
+            typeof initialValue === "string" &&
+            initialValue.trim() !== ""
+          ) {
+            search = initialValue;
+          }
+        }
       } else {
         console.error("Incorrect program called", program);
       }
@@ -303,6 +324,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         this.programSearch = like;
       }
     }
+    // Keep the top-level value in sync with the initial program input so
+    // handlers that read this.value (e.g. handleProgramEnter) don't see stale
+    // text from a previous Merlin session.
+    this.value = this.programSearch;
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
       setTimeout(() => {
@@ -679,6 +704,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.activeNode = null;
     this.loading = false;
     this.like = "";
+    this.value = "";
     this.opened = false;
     this.mini = false;
     this.wand = false;
@@ -690,6 +716,24 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
+    // Clear any lingering text in the search input so it does not leak into
+    // the next Merlin session (matches the Konami clear sequence).
+    const ui =
+      this.shadowRoot && this.shadowRoot.querySelector("super-daemon-ui");
+    if (ui) {
+      ui.like = "";
+      ui.programSearch = "";
+      const search =
+        ui.shadowRoot && ui.shadowRoot.querySelector("super-daemon-search");
+      if (search) {
+        search.value = "";
+        const inputField =
+          search.shadowRoot && search.shadowRoot.querySelector("#inputfilter");
+        if (inputField) {
+          inputField.value = "";
+        }
+      }
+    }
     // Reset Konami Code sequence when closing
     this.resetKonamiCode();
     // important we stop listening when the UI goes away

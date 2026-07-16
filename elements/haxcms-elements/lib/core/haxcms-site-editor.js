@@ -1656,6 +1656,55 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   _handleNodeDetailsResponse(e) {
+    // Patch the local manifest item from the server response so the editor
+    // reflects the change immediately (title/slug/description/tags/icon/etc.)
+    // without waiting for the manifest reload. This avoids stale values when
+    // re-opening quick operations like edit-tags, especially when successive
+    // saves happen within the same second (the _timeStamp cache-buster would
+    // otherwise not change and skip the loadJOSData reload).
+    const response = e && e.detail ? e.detail.response : null;
+    const data = response && response.data ? response.data : null;
+    if (data && data.id) {
+      const item = store.findItem(data.id);
+      if (item) {
+        if (typeof data.title === "string") {
+          item.title = data.title;
+        }
+        if (typeof data.slug === "string") {
+          item.slug = data.slug;
+        }
+        if (typeof data.description === "string") {
+          item.description = data.description;
+        }
+        if (data.metadata && typeof data.metadata === "object") {
+          if (!item.metadata || typeof item.metadata !== "object") {
+            item.metadata = {};
+          }
+          // node-detail operations set or clear these metadata fields; the
+          // backend deletes on clear, so mirror that locally to keep the
+          // manifest item in sync with the server.
+          const metadataKeys = [
+            "tags",
+            "icon",
+            "image",
+            "relatedItems",
+            "locked",
+            "published",
+            "hideInMenu",
+            "overridePathauto",
+          ];
+          metadataKeys.forEach((key) => {
+            if (Object.prototype.hasOwnProperty.call(data.metadata, key)) {
+              item.metadata[key] = data.metadata[key];
+            } else if (
+              Object.prototype.hasOwnProperty.call(item.metadata, key)
+            ) {
+              delete item.metadata[key];
+            }
+          });
+        }
+      }
+    }
     setTimeout(() => {
       store.playSound("coin");
       this.dispatchEvent(

@@ -143,7 +143,7 @@ export function _pageRouteVariantUrl(format) {
     (baseElement && baseElement.href) || `${globalThis.location.origin}/`;
   try {
     return new URL(
-      `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(apiFormat)}`,
+      `x/api/v1/items/${encodeURIComponent(itemId)}/export/${encodeURIComponent(apiFormat)}`,
       baseUrl,
     ).toString();
   } catch (e) {
