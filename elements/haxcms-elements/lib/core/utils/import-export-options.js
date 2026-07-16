@@ -62,6 +62,12 @@ export const PAGE_EXPORT_FORMATS = [
     description: "Download current page as PDF file",
   },
   {
+    title: "Export as EPUB",
+    icon: "hax:file-html",
+    format: "epub",
+    description: "Download current page as an EPUB book",
+  },
+  {
     title: "Copy HAX schema JSON",
     icon: "hax:code-json",
     format: "haxschema",

@@ -8,6 +8,7 @@
  * - XML
  * - DOCX
  * - PDF
+ * - EPUB
  * - HAX schema JSON
  */
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
@@ -73,6 +74,10 @@ export async function exportPageAs(format) {
         await _exportPageAsPDF.call(this, pageTitle);
         break;
 
+      case "epub":
+        await _exportPageAsEPUB.call(this, pageTitle);
+        break;
+
       case "haxschema":
         await _exportPageAsHAXSchema.call(this);
         break;
@@ -103,6 +108,8 @@ export function _pageRouteVariantExtension(format) {
   switch (format) {
     case "markdown":
       return "md";
+    case "epub":
+      return "epub";
     default:
       return format;
   }
@@ -120,6 +127,8 @@ export function _pageRouteVariantMimeType(format) {
       return "application/yaml";
     case "xml":
       return "application/xml";
+    case "epub":
+      return "application/epub+zip";
     default:
       return "text/plain";
   }
@@ -215,6 +224,26 @@ export async function _exportPageAsPDF(title) {
   } catch (error) {
     console.error("PDF export error:", error);
     HAXStore.toast("PDF export service not available", 3000, "fit-bottom");
+  }
+}
+
+export async function _exportPageAsEPUB(title) {
+  try {
+    const url = _pageItemExportUrl("epub");
+    if (!url) {
+      throw new Error("Current page URL unavailable for EPUB export");
+    }
+    const response = await fetch(url, { credentials: "include" });
+    if (response.ok) {
+      const blob = await response.blob();
+      this._downloadBlob(blob, `${title}.epub`);
+      HAXStore.toast("EPUB file downloaded successfully", 3000, "fit-bottom");
+    } else {
+      throw new Error(`Failed to export page as EPUB: ${response.status}`);
+    }
+  } catch (error) {
+    console.error("EPUB export error:", error);
+    HAXStore.toast("EPUB export service not available", 3000, "fit-bottom");
   }
 }
 
