@@ -758,7 +758,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     this.__disposer.push(
       autorun((reaction) => {
         const _mobx_val_0 = toJS(HAXStore.platformConfig);
-        const _mobx_val_1 = toJS(platformConfig.features);
+        const _mobx_val_1 = HAXStore.platformConfig
+          ? toJS(HAXStore.platformConfig.features)
+          : undefined;
         const _mobx_val_2 = toJS(HAXStore.gizmoList);
         Promise.resolve().then(() => {
           const platformConfig = _mobx_val_0;

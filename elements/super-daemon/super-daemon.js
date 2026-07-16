@@ -289,11 +289,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         }
         // Allow a program to supply an initial input value when it is
         // launched generically (e.g. via Merlin search/voice) with no
-        // explicit like/search. This lets programs such as edit-tags
-        // pre-fill the input with the active page's current value without
-        // every caller having to pass it in. We intentionally only set
-        // programSearch/value (not like) so SimpleFilterMixin does not
-        // filter the program's own results.
+        // explicit like/search. The search input is rendered bound to
+        // `like` (value="${this.like}" in super-daemon-ui), so to actually
+        // display a pre-filled value we must set `like` -- exactly what
+        // callers like page-break._editTags already do. Mirror that path
+        // by promoting initialValue to `like` so the existing like != null
+        // branch propagates it to this.like / programSearch / value and
+        // the input field renders it.
         if (
           like == null &&
           (!search || search === "") &&
@@ -305,7 +307,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             typeof initialValue === "string" &&
             initialValue.trim() !== ""
           ) {
-            search = initialValue;
+            like = initialValue;
           }
         }
       } else {
