@@ -22,6 +22,7 @@ class SimpleBlogFooter extends SimpleColors {
         :host {
           display: block;
           width: 100%;
+          color-scheme: light dark;
           position: relative;
           overflow: hidden;
           opacity: 1;
@@ -120,10 +121,10 @@ class SimpleBlogFooter extends SimpleColors {
           margin: var(--ddd-spacing-4) 0;
           padding: 0;
         }
-        button:focus,
+        button:focus-visible,
         button:active,
         button:hover,
-        site-menu-button:focus,
+        site-menu-button:focus-visible,
         site-menu-button:active,
         site-menu-button:hover {
           outline: 2px solid var(--haxcms-color);
@@ -192,11 +193,11 @@ class SimpleBlogFooter extends SimpleColors {
         <h2 class="blog-title">
           ${varExists(this.manifest, "title") ? this.manifest.title : ""}
         </h2>
-        <h3 class="blog-description">
+        <p class="blog-description">
           ${varExists(this.manifest, "description")
             ? this.manifest.description
             : ""}
-        </h3>
+        </p>
       </div>
     `;
   }

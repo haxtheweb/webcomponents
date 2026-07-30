@@ -177,11 +177,9 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<glossy-portfolio-header></glossy-portfolio-header>
-
 <div class="hero">
   <div class="image">
-    <img src="../lib/components/headshot.webp">
+    <img src="../lib/components/headshot.webp" alt="Portrait of Mortiz">
   </div>
   <div class="text">  
     <div class="header">

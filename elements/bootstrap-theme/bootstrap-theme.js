@@ -10,6 +10,7 @@ import { HAXCMSUserStylesMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/u
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
 import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystemStyles.js";
+import { adoptBootstrapStylesheet } from "@haxtheweb/bootstrap-theme/lib/BootstrapStylesheetManager.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite";
@@ -65,10 +66,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
       css`
         /* var declaration and default styles */
         :host {
+          color-scheme: light dark;
           --bootstrap-theme-link-color: #007bff;
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
-          --bootstrap-theme-light-color: #000000;
-          --bootstrap-theme-light-background-color: #ffffff;
+          --bootstrap-theme-light-color: var(
+            --ddd-theme-default-coalyGray,
+            #000000
+          );
+          --bootstrap-theme-light-background-color: var(
+            --ddd-theme-default-white,
+            #ffffff
+          );
           --bootstrap-theme-light-secondary-background-color: rgb(
             242,
             244,
@@ -77,7 +85,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-theme-light-secondary-color: rgb(233, 236, 239);
           --bootstrap-theme-dark-background-color: #212121;
           --bootstrap-theme-dark-secondary-background-color: #343a40;
-          --bootstrap-theme-dark-color: #ffffff;
+          --bootstrap-theme-dark-color: var(--ddd-theme-default-white, #ffffff);
           --bootstrap-theme-palenight-background-color: rgb(13, 18, 41);
           --bootstrap-theme-palenight-secondary-background-color: rgb(
             26,
@@ -110,6 +118,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
         [hidden] {
           display: none;
         }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
         a {
           color: #007bff;
         }
@@ -122,10 +135,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .menu-outline {
           position: absolute;
           top: 50px;
-          left: -300px;
+          left: calc(-1 * min(300px, 85vw));
           bottom: 0;
           z-index: 1;
-          width: 300px;
+          width: min(300px, 85vw);
           color: #364149;
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
@@ -218,12 +231,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
           overflow-y: auto;
         }
         :host([menu-open]) .site-body {
-          left: 300px;
+          left: min(300px, 85vw);
         }
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {
           overflow-x: hidden;
           position: fixed;
+          min-width: 0;
         }
         :host([responsive-size="xs"]) .main-content,
         :host([responsive-size="sm"]) .main-content {
@@ -266,7 +280,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           place-content: center;
           flex-direction: column;
           font-size: 40px;
-          color: rgb(204, 204, 204);
+          color: #595959;
           text-align: center;
           transition: all 0.35s ease 0s;
         }
@@ -278,7 +292,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           padding: 0 8px;
           z-index: 2;
           font-size: 0.85em;
-          color: #7e888b;
+          color: #495057;
           background: 0 0;
         }
         .page-title {
@@ -423,6 +437,25 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host([color-theme="1"]) .site-header site-active-title,
         :host([dark-mode][color-theme="0"]) .site-header site-active-title {
           color: #fff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          :host([color-theme="0"]) {
+            background-color: var(--bootstrap-theme-dark-background-color);
+            --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
+            --site-menu-background-color: var(
+              --bootstrap-theme-dark-background-color
+            );
+            --simple-icon-color: var(--bootstrap-theme-dark-color);
+            --haxcms-user-styles-color-theme-color-color: var(
+              --bootstrap-theme-dark-color
+            );
+            color: var(--bootstrap-theme-dark-color);
+          }
+          :host([color-theme="0"]) .site,
+          :host([color-theme="0"]) .menu-outline {
+            background-color: var(--bootstrap-theme-dark-background-color);
+          }
         }
 
         /* Palenight Theme */
@@ -585,8 +618,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   render() {
     return html`
-      <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site ">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <div
           class="menu-outline"
           role="navigation"
@@ -633,7 +666,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   part="print-btn"
                 ></replace-tag>
                 ${this.BootstrapUserStylesMenu()}
-                <h3 class="display-6 page-title">${this.__pageTitle}</h3>
+                <h1 class="display-6 page-title">${this.__pageTitle}</h1>
               </div>
               <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">
@@ -653,6 +686,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   <section
                     class="p-2"
                     id="contentcontainer"
+                    tabindex="-1"
                     ?aria-hidden="${this.searchTerm !== "" ? "true" : "false"}"
                     style="${this.searchTerm !== "" ? "display: none;" : ""}"
                   >
@@ -735,6 +769,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
       this.HAXCMSThemeSettings.scrollTarget;
 
     this._bootstrapLink = this._generateBootstrapLink();
+    adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 
   /*

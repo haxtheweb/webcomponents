@@ -29,26 +29,42 @@ export class PolarisTile extends LitElement {
     return css`
       :host {
         display: inline-block;
+        color-scheme: light dark;
       }
 
       :host .button {
         position: absolute;
         bottom: 14px;
         right: 14px;
-        width: 23px;
-        height: 23px;
-        background-image: url("https://static-00.iconduck.com/assets.00/external-link-icon-2048x2048-wo7lfgrz.png");
-        background-size: cover;
+        width: 24px;
+        height: 24px;
+        color: var(--ddd-theme-default-white, #fff);
         transition: transform 0.2s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
-      :host([type="1"]) .button,
-      :host([type="3"]) .button,
-      :host([type="5"]) .button {
-        filter: brightness(4);
+      :host([type="2"]) .button {
+        color: light-dark(
+          var(--ddd-theme-default-nittanyNavy, #001e44),
+          var(--ddd-theme-default-white, #fff)
+        );
       }
 
       :host([type]) .button:hover {
         transform: scale(1.3);
+      }
+      a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        :host .button {
+          transition: none;
+        }
+        :host([type]) .button:hover {
+          transform: none;
+        }
       }
 
       .tile.clickable:hover {
@@ -61,6 +77,7 @@ export class PolarisTile extends LitElement {
         align-items: center;
         height: 281px;
         width: 336px;
+        max-width: 100%;
         font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
         font-size: 32px;
         color: white;
@@ -77,13 +94,17 @@ export class PolarisTile extends LitElement {
         margin: 0 0 16px 0;
         border: 16px;
         height: 3px;
-        background-color: rgb(0, 30, 68);
+        /* inherit the tile's per-type text color (white on dark types,
+           navy on type-2 light, white on type-2 dark) so the line is
+           always visible against its background. */
+        background-color: currentColor;
       }
 
       .additionalText {
         font-family: Tahoma;
         display: block;
-        color: rgb(0, 30, 68);
+        /* inherit the tile's per-type text color for guaranteed contrast. */
+        color: inherit;
         font-size: 18px;
         font-weight: normal;
         margin: 0 0 20px 0;
@@ -103,8 +124,14 @@ export class PolarisTile extends LitElement {
         background-color: rgb(30, 64, 124);
       }
       :host([type="2"]) .tile {
-        background-color: #ffffff;
-        color: rgb(0, 30, 68);
+        background-color: light-dark(
+          #ffffff,
+          var(--ddd-theme-default-coalyGray, #262626)
+        );
+        color: light-dark(
+          rgb(0, 30, 68),
+          var(--ddd-theme-default-white, #fff)
+        );
       }
 
       :host([type="3"]) .tile {
@@ -158,7 +185,16 @@ export class PolarisTile extends LitElement {
                 title="${this.line1
                   ? this.line1
                   : "Additional details about this fact"}"
-              ></a>`
+              ><svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                  focusable="false"
+                ><path
+                    fill="currentColor"
+                    d="M14 3v2h3.59l-9.3 9.3 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"
+                  ></path></svg></a>`
             : ``}
         </div>
       </div>

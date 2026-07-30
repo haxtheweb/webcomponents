@@ -67,16 +67,30 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           } else {
             this.author = "Ac|d-$CoRpI()";
           }
-          this.author = manifest.author;
         });
       }),
     );
-    globalThis.document.body.style.backgroundColor = "#000000";
-    globalThis.document.body.style.color = "#D2D2D2";
     globalThis.document.body.style.backgroundImage = `url(${
       new URL("assets/header.jpg", import.meta.url).href
     }/../productionzbg.jpg)`;
   }
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body {
+          background-color: #2a2a2a;
+          color: #D2D2D2;
+        }
+        body.dark-mode {
+          background-color: #000000;
+          color: #D2D2D2;
+        }
+      `,
+    ];
+  }
+
   /**
    * LitElement style callback
    */
@@ -91,6 +105,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
+          color-scheme: light dark;
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: #ffffff;
@@ -145,7 +160,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
         }
         #slot {
           max-width: 530px;
-          width: 530px;
+          width: 100%;
         }
         a {
           color: lime;
@@ -156,7 +171,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           text-decoration: none;
         }
         a:hover {
-          color: green;
+          color: #00cc00;
           text-decoration: none;
         }
 
@@ -166,11 +181,24 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
         }
 
         .posted {
-          font-size: 8pt;
+          font-size: 12px;
         }
         simple-datetime {
-          font-size: 8pt;
+          font-size: 12px;
           display: inline-block;
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        table {
+          max-width: 100%;
+        }
+        @media (max-width: 820px) {
+          :host table {
+            width: 100% !important;
+          }
         }
       `,
     ];
@@ -180,8 +208,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <div align="center">
-        <table width="800" border="0" cellpadding="0" cellspacing="0">
+        <table role="presentation" width="800" border="0" cellpadding="0" cellspacing="0">
           <tbody>
             <tr>
               <td width="800" colspan="5" align="center">
@@ -191,6 +220,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                   border="0"
                   align="absbottom"
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
               </td>
             </tr>
@@ -203,23 +234,26 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
               ></td>
               <td width="128" valign="top">
                 <site-menu></site-menu>
-                <hr color="#252F26" />
-                <font size="4"
-                  >&nbsp;Sites of Interest
-                  <hr color="#252F26" />
-                  <div align="center">
-                    <a href="http://www.acidscorpio.com/" target="_blank"
-                      ><img
-                        src="${new URL("assets/header.jpg", import.meta.url)
-                          .href}/../acid88.gif"
-                        border="0"
-                        width="88"
-                        height="31"
-                        vspace="3"
-                        alt="Acid Scorpio website" /></a
-                    ><br />
-                  </div>
-                </font>
+                <hr />
+                &nbsp;Sites of Interest
+                <hr />
+                <div align="center">
+                  <a
+                    href="http://www.acidscorpio.com/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="${new URL("assets/header.jpg", import.meta.url)
+                        .href}/../acid88.gif"
+                      border="0"
+                      width="88"
+                      height="31"
+                      vspace="3"
+                      alt="Acid Scorpio website"
+                      loading="lazy"
+                      decoding="async" /></a
+                  ><br />
+                </div>
               </td>
               <td
                 width="8"
@@ -232,7 +266,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 <!-- *******************************************************
 		THIS IS THE PLACE WHERE THE MAIN BODY FOR THE DOCs GOES
 		********************************************************-->
-                <main id="contentcontainer" role="main">
+                <main id="contentcontainer" role="main" tabindex="-1">
                   <site-active-title
                     class="title-text"
                     style="background-image: url(${new URL(
@@ -240,11 +274,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                       import.meta.url,
                     ).href}/../movies.jpg)"
                   ></site-active-title>
-                  <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                  <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
                     <tbody>
                       <tr>
                         <td>
-                          <table width="100%">
+                          <table role="presentation" width="100%">
                             <tbody>
                               <tr>
                                 <td align="left">
@@ -328,15 +362,13 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     this.__link = globalThis.document.createElement("link");
     this.__link.rel = "stylesheet";
     this.__link.href =
-      "https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans&family=Press+Start+2P&display=swap";
+      "https://fonts.googleapis.com/css2?family=Caveat&display=swap";
     globalThis.document.head.appendChild(this.__link);
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    globalThis.document.body.style.removeProperty("background-color");
-    globalThis.document.body.style.removeProperty("color");
     globalThis.document.body.style.removeProperty("background-image");
     if (this.__link) {
       this.__link.remove();

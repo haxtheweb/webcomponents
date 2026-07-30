@@ -65,8 +65,9 @@ export class PolarisCta extends LitElement {
           background-color: var(--polaris-cta-background-color);
         }
 
-        a:focus {
-          outline: none;
+        a:focus-visible {
+          outline: 2px solid var(--polaris-cta-psu-blue);
+          outline-offset: 2px;
         }
 
         :host([type="primary"][outlined]) a {

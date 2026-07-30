@@ -52,7 +52,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
       super.styles,
       css`
         :host {
-          color: #242a31;
+          color: light-dark(#242a31, var(--ddd-accent-6, #f5f5f5));
           width: 100%;
           margin: 0;
           display: flex;
@@ -91,9 +91,13 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           text-decoration: none;
         }
         a:hover,
-        a:focus,
         a:active {
           outline: thin dotted;
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
         a:-webkit-any-link {
           color: -webkit-link;
@@ -112,14 +116,10 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           z-index: 1;
           overflow-y: hidden;
           width: 300px;
-          color: #364149;
-          background-color: #ffffffee;
+          color: light-dark(#364149, var(--ddd-accent-6, #f5f5f5));
+          background-color: light-dark(#ffffffee, #000000aa);
           border-right: 1px solid rgba(0, 0, 0, 0.07);
           transition: left 0.3s ease;
-        }
-        :host([dark]) .menu-outline {
-          color: white;
-          background-color: #000000aa;
         }
         /* content */
         .main-section h1 {
@@ -181,6 +181,10 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           overflow-y: auto;
           transition: left 0.3s ease;
         }
+        :host([responsive-size="xs"]) .site-body,
+        :host([responsive-size="sm"]) .site-body {
+          min-width: 0;
+        }
 
         :host([responsive-size="xs"]) .page-inner,
         :host([responsive-size="sm"]) .page-inner,
@@ -233,7 +237,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         }
         .main-content h6 {
           font-size: 1em;
-          color: #777;
+          color: light-dark(#6e6e6e, var(--ddd-accent-6, #b3b3b3));
         }
         .main-content h1,
         .main-content h2,
@@ -316,7 +320,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
             height: 50px;
             position: fixed;
             width: 100vw;
-            background-color: white;
+            background-color: light-dark(white, var(--ddd-primary-4, #222));
           }
         }
         @media (max-width: 900px) {
@@ -370,11 +374,8 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           margin: 0 24px;
           min-height: 90vh;
           padding: 20px 15px 40px 15px;
-          background-color: #ffffffaa;
-        }
-        :host([dark]) .page-inner {
-          color: white;
-          background-color: #000000aa;
+          color: light-dark(#242a31, var(--ddd-accent-6, #f5f5f5));
+          background-color: light-dark(#ffffffaa, #000000aa);
         }
         .main-section {
           display: block;
@@ -403,7 +404,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           align-content: center;
           flex-direction: column;
           font-size: 40px;
-          color: #ccc;
+          color: light-dark(#595959, #a6a6a6);
           text-align: center;
         }
         @media screen and (max-width: 600px) {
@@ -479,6 +480,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
   render() {
     return html`
       <div class="site">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <div class="menu-outline">${this.HAXCMSMobileMenu()}</div>
         <div id="body" class="site-body" part="site-body">
           <div id="haxcms-theme-top"></div>
@@ -735,7 +737,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           text-align: center;
           font-size: 20px;
           line-height: 20px;
-          color: black;
+          color: light-dark(black, white);
         }
         simple-modal button.hax-modal-btn {
           font-size: 30px;

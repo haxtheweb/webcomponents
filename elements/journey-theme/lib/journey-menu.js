@@ -8,7 +8,31 @@ export class JourneyMenu extends LitElement {
     return {
       items: { type: Array },
       activeId: { type: String },
+      open: { type: Boolean, reflect: true },
     };
+  }
+
+  constructor() {
+    super();
+    this.open = false;
+  }
+
+  toggleOpen() {
+    this.open = !this.open;
+  }
+
+  closeNav() {
+    this.open = false;
+  }
+
+  _navKeydown(e) {
+    if (e.key === "Escape" && this.open) {
+      this.closeNav();
+      const toggle = this.shadowRoot.querySelector(".menu-toggle");
+      if (toggle) {
+        toggle.focus();
+      }
+    }
   }
   static get styles() {
     return css`
@@ -92,11 +116,58 @@ export class JourneyMenu extends LitElement {
         border-left: var(--ddd-spacing-1) solid var(--accent-color);
       }
       
+      /* Mobile menu toggle / close buttons (hidden on desktop) */
+      .menu-toggle,
+      .menu-close {
+        display: none;
+      }
+
+      .menu-toggle:focus-visible,
+      .menu-close:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+
       /* Responsive design for smaller screens */
       @media (max-width: 768px) {
+        .menu-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: var(--ddd-spacing-2);
+          left: var(--ddd-spacing-2);
+          z-index: 3;
+          width: 44px;
+          height: 44px;
+          padding: 0;
+          cursor: pointer;
+          color: var(--ddd-theme-default-coalyGray);
+          background-color: var(--accent-color);
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-xs);
+        }
+
+        .menu-close {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+          width: 44px;
+          height: 44px;
+          padding: 0;
+          cursor: pointer;
+          color: var(--text-primary);
+          background: transparent;
+          border: 0;
+        }
+
         nav {
           transform: translateX(-100%);
           transition: transform var(--ddd-duration-rapid, 0.3s) ease;
+          padding-top: 60px;
         }
         
         nav.open {
@@ -136,7 +207,56 @@ export class JourneyMenu extends LitElement {
     }
 
     return html`
-      <nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="${this.open ? "true" : "false"}"
+        aria-controls="journeymenu-nav"
+        @click="${this.toggleOpen}"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <nav
+        id="journeymenu-nav"
+        class="${this.open ? "open" : ""}"
+        aria-label="Page navigation"
+        @keydown="${this._navKeydown}"
+      >
+        <button
+          class="menu-close"
+          type="button"
+          aria-label="Close navigation menu"
+          @click="${this.closeNav}"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
         <ul>
           ${menuItems.map(
             (item) => html`
@@ -144,6 +264,7 @@ export class JourneyMenu extends LitElement {
                 <a
                   href="${item.slug}"
                   class="${item.id === this.activeId ? "active" : ""}"
+                  @click="${this.closeNav}"
                 >
                   ${item.title}
                 </a>

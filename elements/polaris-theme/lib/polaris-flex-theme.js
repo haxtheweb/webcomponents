@@ -123,6 +123,17 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --polaris-content-bg-color: var(--ddd-accent-6);
           --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
         }
+        /* Safari < 17.4 lacks light-dark(); dark fallback */
+        :host([is-safari][dark-mode]) {
+          background-color: var(--ddd-primary-4);
+          color: var(--ddd-accent-6);
+          --polaris-content-bg-color: var(--ddd-primary-4);
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
 
         scroll-button {
           position: fixed;
@@ -781,6 +792,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#main">Skip to content</a>
       <div id="haxcms-theme-top"></div>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
@@ -815,7 +827,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
       </header>
       <div class="content site-inner">
         ${this.renderSideBar()}
-        <main id="main">
+        <main id="main" tabindex="-1">
           <article id="contentcontainer">
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-tags

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
 
 class BootstrapSearch extends LitElement {
   constructor() {
@@ -34,7 +35,11 @@ class BootstrapSearch extends LitElement {
         }
         input {
           max-width: var(--bootstrap-search-max-width, 300px);
-          width: var(--bootstrap-search-width, 300px);
+          width: var(--bootstrap-search-width, 100%);
+        }
+        input:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
         .visually-hidden {
           position: absolute !important;
@@ -53,7 +58,6 @@ class BootstrapSearch extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="${this._bootstrapPath}" />
       <form class="d-flex" role="search" @submit=${this.handleSubmit}>
         <label for="bootstrap-search-input" class="visually-hidden"
           >Search site content</label
@@ -73,6 +77,10 @@ class BootstrapSearch extends LitElement {
         </div>
       </form>
     `;
+  }
+
+  firstUpdated() {
+    adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 
   inputChanged(evt) {

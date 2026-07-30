@@ -261,6 +261,13 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
           color: var(--ddd-theme-default-pughBlue);
           text-decoration: underline;
         }
+        .contact-item:focus-within {
+          background-color: var(--ddd-theme-default-beaver70);
+        }
+        .contact-item a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
 
         .contact-icon {
           width: 36px;
@@ -352,6 +359,11 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
         .main-content ::slotted(a:hover) {
           text-decoration: underline;
         }
+        .main-content a:focus-visible,
+        .main-content ::slotted(a:focus-visible) {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
 
         @media (max-width: 960px) {
           .resume-layout {
@@ -434,10 +446,11 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
   render() {
     return html`
       <div class="resume-layout">
-        <aside class="sidebar" part="sidebar">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <aside class="sidebar" part="sidebar" aria-label="Contact information">
           <div class="avatar-wrapper" part="avatar-wrapper">
             ${this.authorImage
-              ? html`<img class="avatar" src="${this.authorImage}" alt="${this.authorName}" part="avatar" />`
+              ? html`<img class="avatar" src="${this.authorImage}" alt="${this.authorName}" part="avatar" fetchpriority="high" />`
               : html`<div class="avatar-placeholder" part="avatar" aria-label="${this.authorName}">
                   ${this.authorName
                     ? this.authorName

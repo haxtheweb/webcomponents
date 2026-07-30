@@ -260,6 +260,37 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     return [
       styles,
       css`
+        /* Skip link (WCAG 2.4.1 Bypass Blocks) — visually hidden until focused */
+        .skip-link {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        .skip-link:focus {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: auto;
+          height: auto;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          margin: var(--ddd-spacing-2);
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+          z-index: 10000;
+          background: var(--ddd-theme-default-white, #fff);
+          color: var(--ddd-theme-default-coalyGray, #000);
+          border: 2px solid currentColor;
+          text-decoration: none;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
         :host([edit-mode]) {
           opacity: 1;
         }

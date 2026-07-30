@@ -327,7 +327,12 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           ?hidden="${!this.elementVisible || !this.imageSrc}"
         >
           ${this.imageSrc
-            ? html` <img src="${this.imageSrc}" class="image" part="image" /> `
+            ? html` <img
+                src="${this.imageSrc}"
+                alt="${this.imageAlt || ""}"
+                class="image"
+                part="image"
+              /> `
             : ""}
           <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>
@@ -444,6 +449,14 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             icon: "editor:insert-photo",
           },
           {
+            property: "imageAlt",
+            title: "Image Alt Text",
+            description:
+              "Alternative text describing the image for screen readers. Leave empty only if the image is purely decorative.",
+            inputMethod: "textfield",
+            icon: "editor:mode-edit",
+          },
+          {
             property: "imageAlign",
             title: "imageAlign",
             description: "Image Horizontal Alignment",
@@ -547,6 +560,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
     this.horizontal = false;
     this.imageAlign = null;
     this.imageSrc = null;
+    this.imageAlt = null;
     this.imageValign = null;
     this.noBorder = false;
     this.ready = false;
@@ -621,6 +635,15 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
       imageSrc: {
         type: String,
         attribute: "image-src",
+      },
+
+      /**
+       * "Optional": alt text for the image on card. Leave empty if the image
+       * is purely decorative; otherwise describe the image for screen readers.
+       */
+      imageAlt: {
+        type: String,
+        attribute: "image-alt",
       },
 
       /**

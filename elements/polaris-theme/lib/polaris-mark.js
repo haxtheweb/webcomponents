@@ -23,6 +23,10 @@ class PolarisMark extends LitElement {
         :host {
           display: block;
         }
+        a:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
 
         @media screen and (min-width: 320px) {
           #logo-wrap {
@@ -68,7 +72,12 @@ class PolarisMark extends LitElement {
   render() {
     return html`
       <div id="logo-wrap">
-        <a href="${this.url}" target="_blank" rel="noopener">
+        <a
+          href="${this.url}"
+          target="_blank"
+          rel="noopener"
+          aria-label="${this.name || "Penn State"} — visit psu.edu"
+        >
           ${this.renderSource(this.type)}
         </a>
       </div>
@@ -88,6 +97,7 @@ class PolarisMark extends LitElement {
     return html`
       <div id="svg">
         <svg viewBox="0 0 550 89">
+          <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
               .b7fa77f5-1930-4db8-8b8c-83ec9083c90c {
@@ -130,6 +140,7 @@ class PolarisMark extends LitElement {
     return html`
       <div id="svg">
         <svg viewBox="0 0 550 89">
+          <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
               .b7fa77f5-1930-4db8-8b8c-83ec9083c90c {

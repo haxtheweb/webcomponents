@@ -112,6 +112,8 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         body.dark-mode {
           background-color: #1a1a1a;
           color: #e5e5e5;
+          --haxma-primary: #8B88FF;
+          --haxma-primary-hover: #A5A2FF;
           --haxma-bg: #1a1a1a;
           --haxma-text: #e5e5e5;
           --haxma-text-dark: #ffffff;
@@ -123,6 +125,13 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
           body:not(.light-mode) {
             background-color: #1a1a1a;
             color: #e5e5e5;
+            --haxma-primary: #8B88FF;
+            --haxma-primary-hover: #A5A2FF;
+            --haxma-bg: #1a1a1a;
+            --haxma-text: #e5e5e5;
+            --haxma-text-dark: #ffffff;
+            --haxma-border: #404040;
+            --haxma-border-light: #2a2a2a;
           }
         }
       `,
@@ -143,6 +152,13 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       :host([dark-mode]) {
         background-color: #1a1a1a;
+        --haxma-primary: #8B88FF;
+        --haxma-primary-hover: #A5A2FF;
+        --haxma-bg: #1a1a1a;
+        --haxma-text: #e5e5e5;
+        --haxma-text-dark: #ffffff;
+        --haxma-border: #404040;
+        --haxma-border-light: #2a2a2a;
       }
       
       .app-container {
@@ -367,7 +383,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         max-width: 1000px;
         padding: 1rem;
         overflow-x: hidden;
-        min-width: 400px;
+        min-width: 0;
       }
       
       @media (min-width: 768px) {
@@ -636,6 +652,17 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         color: var(--haxma-primary);
       }
       
+      /* Keyboard focus indicators (WCAG 2.4.7) */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
+      .nav-link:focus-within {
+        outline: 2px solid var(--haxma-primary);
+        outline-offset: 2px;
+      }
+      
       /* HAX button styling for better visibility when logged in */
       :host([is-logged-in]) haxcms-button-add,
       :host([is-logged-in]) simple-icon-button[part="edit-mode-active"] {
@@ -693,6 +720,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     
     return html`
       <div class="app-container">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
@@ -703,7 +731,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         
         <!-- Fixed Header -->
         <header class="site-header">
-          <nav class="header-nav">
+          <nav class="header-nav" aria-label="Primary">
             <!-- Brand/Logo -->
             <a href="" class="nav-brand">
               <span>${site.name || 'HAXma'}</span>
@@ -732,7 +760,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
                 class="mobile-menu-btn" 
                 @click="${this.toggleMobileNav}"
                 aria-label="Toggle navigation">
-                <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor">
+                <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
               </button>
@@ -741,12 +769,12 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         </header>
         
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav">
+        <nav class="mobile-nav" aria-label="Mobile">
           <button 
             class="mobile-close-btn" 
             @click="${this.closeMobileNav}"
             aria-label="Close navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -778,7 +806,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             </div>
             
             <!-- Page Navigation -->
-            <nav class="page-navigation">
+            <nav class="page-navigation" aria-label="Page">
               <div class="nav-item">
                 <site-menu-button 
                   type="prev" 
@@ -809,8 +837,8 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
           
           <!-- Table of Contents Sidebar -->
           <aside class="sidebar-toc">
-            <div class="toc-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="toc-title" role="heading" aria-level="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <line x1="8" y1="6" x2="21" y2="6"></line>
                 <line x1="8" y1="12" x2="21" y2="12"></line>
                 <line x1="8" y1="18" x2="21" y2="18"></line>

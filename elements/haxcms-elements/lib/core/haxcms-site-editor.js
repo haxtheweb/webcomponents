@@ -40,6 +40,8 @@ class HAXCMSSiteEditor extends LitElement {
     this.__lastContentSearchQuery = "";
     this.__refreshRetryCounts = {};
     this.__maxRefreshRetries = 2;
+    // recovered-edit snapshot (sessionStorage safety net) once restored
+    this.__pendingRestore = null;
     this.method = "POST";
     this.editMode = false;
     this.getUserDataHeaders = {};
@@ -61,6 +63,11 @@ class HAXCMSSiteEditor extends LitElement {
           // force import on editMode enabled
           if (this.editMode && _mobx_val_1) {
             HAXStore.activeHaxBody.importContent(_mobx_val_2);
+            // if we recovered unsaved edits from a prior session, apply them
+            // after the saved content has been imported into the body
+            if (this.__pendingRestore) {
+              setTimeout(() => this._applyPendingRestoreIfMatch(), 0);
+            }
           }
         });
       }),
@@ -735,31 +742,36 @@ class HAXCMSSiteEditor extends LitElement {
         const path = normalizeEventPath(e);
         target = path && path.length > 0 ? path[0] : null;
       }
-      // check for JWT needing refreshed vs busted but must be 403
+      // Expired/invalid JWT OR forbidden. The Site API returns 401 for an
+      // expired bearer while the System API returns 403; treat both as
+      // "try to refresh first" when we still have a jwt, and only log out
+      // when the refresh retry cap is exceeded or there are no credentials
+      // to refresh in the first place.
       switch (parseInt(e.detail.value.status, 10)) {
-        // cookie data not found, or illegal operation, need to go get it
-        // @notice this currently isn't possible but we could modify
-        // the backend in the future to support throwing 401s dynamically
-        // if we KNOW an event must expire the timing token
-        case 405:
         case 401:
-          this._clearAllRefreshRetryCounts();
-          this.dispatchEvent(
-            new CustomEvent("jwt-login-logout", {
-              composed: true,
-              bubbles: true,
-              cancelable: false,
-              detail: {
-                redirect: true,
-              },
-            }),
-          );
-          break;
-        case 403:
+        case 405:
+        case 403: {
+          // no credentials at all -> genuine logged-out state
+          if (!this.jwt || this.jwt === "" || this.jwt === "null") {
+            this._clearAllRefreshRetryCounts();
+            this._snapshotPendingEditForLogout();
+            this.dispatchEvent(
+              new CustomEvent("jwt-login-logout", {
+                composed: true,
+                bubbles: true,
+                cancelable: false,
+                detail: {
+                  redirect: true,
+                },
+              }),
+            );
+            return;
+          }
           const retryMeta = this._incrementRefreshRetryCount(target);
           if (retryMeta.retryCount > this.__maxRefreshRetries) {
             this._clearRefreshRetryCount(retryMeta.retryKey);
             this._clearAllRefreshRetryCounts();
+            this._snapshotPendingEditForLogout();
             this.dispatchEvent(
               new CustomEvent("jwt-login-logout", {
                 composed: true,
@@ -787,6 +799,7 @@ class HAXCMSSiteEditor extends LitElement {
             }),
           );
           break;
+        }
         default:
           const statusText =
             e.detail.value.statusText && e.detail.value.statusText !== ""
@@ -811,6 +824,14 @@ class HAXCMSSiteEditor extends LitElement {
       if (retryKey) {
         this._clearRefreshRetryCount(retryKey);
       }
+      // refresh returned no usable jwt (malformed success). The reactive
+      // refresh-failure path (_tokenRefreshFailed) handles the normal case;
+      // toast here too so this rare path isn't a silent kick to the homepage.
+      try {
+        store.toast("Session expired, please log in again", 4000, {
+          fire: true,
+        });
+      } catch (e) {}
       return;
     }
     this.jwt = jwt;
@@ -936,8 +957,24 @@ class HAXCMSSiteEditor extends LitElement {
   /**
    * Respond to a failed request to refresh the token by killing the logout process
    */
+  // Phase 6 (L2 documentation): refresh-token family revocation on logout
+  // (implemented in both backends via revokeRefreshSession) is the primary L2
+  // fix. A refresh token exfiltrated before logout is invalidated server-side
+  // when the user logs out. Access JWTs remain valid until their 15-minute exp
+  // and are NOT revoked server-side; revoking those would require access-token
+  // jti denylisting, which is not recommended unless the threat model changes.
   _tokenRefreshFailed(e) {
     this._clearAllRefreshRetryCounts();
+    // only message + snapshot when we actually had a session to lose,
+    // so a login failure (no jwt) doesn't toast "session expired"
+    if (this.jwt && this.jwt !== "" && this.jwt !== "null") {
+      try {
+        store.toast("Session expired, please log in again", 4000, {
+          fire: true,
+        });
+      } catch (ex) {}
+      this._snapshotPendingEditForLogout();
+    }
     this.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
@@ -1414,9 +1451,113 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _storeReadyToGo(event) {
-    if (event.detail) {
+    if (event && event.detail) {
       // JWT is now transmitted exclusively via Authorization header
     }
+    // offer to restore any unsaved edits recovered from a prior session
+    this._offerPendingEditRestore();
+  }
+  /**
+   * Snapshot the in-memory HAX body into sessionStorage so that a hard
+   * logout redirect (real auth failure) doesn't silently destroy the edits
+   * the user was working on. Best-effort; only when actively editing.
+   */
+  _snapshotPendingEditForLogout() {
+    try {
+      if (!this.editMode) {
+        return;
+      }
+      const activeItem = toJS(store.activeItem);
+      if (!activeItem || !activeItem.id) {
+        return;
+      }
+      const body = HAXStore.activeHaxBody;
+      if (!body) {
+        return;
+      }
+      const content = body.innerHTML;
+      if (!content || content.trim() === "") {
+        return;
+      }
+      const snapshot = {
+        itemId: String(activeItem.id),
+        slug: activeItem.slug || "",
+        title: activeItem.title || "",
+        content: content,
+        savedAt: Date.now(),
+      };
+      globalThis.sessionStorage.setItem(
+        "haxcms-pending-edit",
+        JSON.stringify(snapshot),
+      );
+    } catch (e) {}
+  }
+  /**
+   * On editor startup, look for a recovered-edit snapshot and notify the
+   * user. The snapshot is applied automatically when they enter edit mode
+   * on the matching page (see the editMode autorun + _applyPendingRestoreIfMatch).
+   */
+  _offerPendingEditRestore() {
+    try {
+      const snapRaw = globalThis.sessionStorage.getItem("haxcms-pending-edit");
+      if (!snapRaw) {
+        return;
+      }
+      const snapshot = JSON.parse(snapRaw);
+      if (!snapshot || !snapshot.itemId || !snapshot.content) {
+        globalThis.sessionStorage.removeItem("haxcms-pending-edit");
+        return;
+      }
+      // Phase 4 (L1): enforce a retention TTL so stale snapshots from a
+      // long-closed session are not offered indefinitely. Default 30 minutes.
+      var maxAgeMs = 30 * 60 * 1000;
+      if (
+        typeof snapshot.savedAt === "number" &&
+        Date.now() - snapshot.savedAt > maxAgeMs
+      ) {
+        globalThis.sessionStorage.removeItem("haxcms-pending-edit");
+        return;
+      }
+      this.__pendingRestore = snapshot;
+      const title = snapshot.title || "a previous page";
+      store.toast(
+        `Recovered unsaved edits to ${title}. Open that page and select Edit to restore them.`,
+        6000,
+        { fire: true, hat: "save" },
+      );
+    } catch (e) {}
+  }
+  /**
+   * Apply a recovered-edit snapshot when the user is editing the page it
+   * belonged to. Called after the saved content is imported into the body.
+   */
+  _applyPendingRestoreIfMatch() {
+    if (!this.__pendingRestore) {
+      return;
+    }
+    const snapshot = this.__pendingRestore;
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) {
+      return;
+    }
+    if (String(activeItem.id) !== String(snapshot.itemId)) {
+      return;
+    }
+    if (!this.editMode || !HAXStore.activeHaxBody) {
+      return;
+    }
+    HAXStore.activeHaxBody.importContent(snapshot.content);
+    this.__pendingRestore = null;
+    try {
+      globalThis.sessionStorage.removeItem("haxcms-pending-edit");
+    } catch (e) {}
+    try {
+      const title = snapshot.title || "this page";
+      store.toast(`Restored unsaved edits to ${title}`, 4000, {
+        fire: true,
+        hat: "save",
+      });
+    } catch (e) {}
   }
 
   /**
@@ -1463,6 +1604,18 @@ class HAXCMSSiteEditor extends LitElement {
       globalThis.history.replaceState({}, null, e.detail.value.data.slug);
       globalThis.dispatchEvent(new PopStateEvent("popstate"));
     }
+    // clear a recovered-edit snapshot when its page is successfully saved
+    try {
+      const snapRaw = globalThis.sessionStorage.getItem("haxcms-pending-edit");
+      if (snapRaw) {
+        const snap = JSON.parse(snapRaw);
+        const currentId = this.activeItem && this.activeItem.id;
+        if (snap && String(snap.itemId) === String(currentId)) {
+          globalThis.sessionStorage.removeItem("haxcms-pending-edit");
+          this.__pendingRestore = null;
+        }
+      }
+    } catch (err) {}
     setTimeout(() => {
       store.playSound("coin");
       this.dispatchEvent(

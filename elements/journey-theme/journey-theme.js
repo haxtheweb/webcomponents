@@ -220,7 +220,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --haxcms-site-theme-low-tone: white;
+          color-scheme: light dark;
+          --haxcms-site-theme-low-tone: var(--ddd-theme-default-white);
           --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
           --color: light-dark(
             var(--haxcms-site-theme-high-tone),
@@ -442,6 +443,18 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           font-size: var(--ddd-font-size-xl);
         }
 
+        header .site-title-heading {
+          font-size: var(--ddd-font-size-4xl);
+          font-weight: bold;
+          margin: 0.67em 0;
+        }
+
+        header .site-description {
+          font-size: var(--ddd-font-size-xl);
+          font-weight: bold;
+          margin: 0.83em 0;
+        }
+
         article {
           display: block;
         }
@@ -496,7 +509,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           simple-icon-button-lite::part(button):focus-within {
           transition: var(--haxcms-site-transition);
           transform: scale(1.05);
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           opacity: 1;
         }
 
@@ -517,7 +530,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           transition: var(--haxcms-site-transition);
         }
         .home .article-link-icon.top simple-icon-button-lite::part(button) {
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
         }
         .article-link-icon.active simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-low-tone);
@@ -527,6 +540,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
         a {
           display: block;
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
 
         simple-icon-button-lite.article {
@@ -649,7 +667,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         .home simple-icon-button-lite::part(button):focus-within {
           transition: var(--haxcms-site-transition);
           transform: scale(1.05);
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           opacity: 1;
         }
         site-active-title {
@@ -708,10 +726,12 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           .article-link-icon.top::before {
             width: var(--ddd-spacing-10);
           }
-          header h1 {
+          header h1,
+          header .site-title-heading {
             font-size: var(--ddd-font-size-xl);
           }
-          header h2 {
+          header h2,
+          header .site-description {
             font-size: var(--ddd-font-size-sm);
           }
           main {
@@ -797,6 +817,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
+    <a class="skip-link" href="#contentcontainer">Skip to content</a>
     <header>
       <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
       <div class="author">
@@ -812,12 +833,15 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               />`
             : ``
         }
-          <h1>${this.manifest.title}</h1>
-          <h2>${this.manifest.description}</h2>
+          ${this.location && this.location.route.name === "home"
+            ? html`<h1>${this.manifest.title}</h1>
+                <h2>${this.manifest.description}</h2>`
+            : html`<div class="site-title-heading">${this.manifest.title}</div>
+                <div class="site-description">${this.manifest.description}</div>`}
         </a>
       </div>
     </header>
-    <div class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
+    <nav class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}" aria-label="Site sections">
       <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
       <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
       ${
@@ -849,7 +873,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
             })}`
           : ``
       }
-    </div>
+    </nav>
     <main class="main ${this.location && this.location.route.name === "home" ? "home" : "not-home"}"> 
       <div class="articles">
         ${

@@ -108,6 +108,16 @@ class TrainingTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
 
         .alignContent {
@@ -118,11 +128,26 @@ class TrainingTheme extends HAXCMSOperationButtons(
           grid-template-areas: ". .";
         }
 
+        @media (max-width: 768px) {
+          .alignContent {
+            grid-template-columns: 1fr;
+            grid-template-areas: ".";
+          }
+          .training-column {
+            height: auto;
+          }
+          .main {
+            width: 100%;
+          }
+        }
+
         .training-topics {
           margin: 0;
           padding: 16px;
           flex-direction: column;
-          display: sticky;
+          display: flex;
+          position: sticky;
+          top: 0;
         }
         .training-column {
           height: 100vh;
@@ -133,7 +158,14 @@ class TrainingTheme extends HAXCMSOperationButtons(
           padding: 16px;
           width: 80%;
           height: 100%;
-          border: 1px solid #dadce0;
+          background-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          border: 1px solid light-dark(
+            var(--ddd-theme-default-limestoneLight, #dadce0),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
           border-radius: 5px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           -webkit-font-smoothing: antialiased;
@@ -142,7 +174,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
         }
 
         site-active-title h1 {
-          border-left: 4px solid blue;
+          border-left: 4px solid var(--ddd-theme-default-beaverBlue, #1e407c);
           padding-left: 4px;
         }
 
@@ -194,7 +226,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid #e6ecf1;
+          border-top: 2px solid light-dark(
+            var(--ddd-theme-default-limestoneLight, #e6ecf1),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -221,7 +256,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
             --haxcms-color,
             var(--ddd-theme-default-wonderPurple)
           );
-          border: 1px solid #e6ecf1;
+          border: 1px solid light-dark(
+            var(--ddd-theme-default-limestoneLight, #e6ecf1),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
           margin: 0;
           display: block;
           padding: 0;
@@ -310,10 +348,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
 
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <training-top time="${this.time}"></training-top>
       <div class="alignContent">
         <div class="training-column">
-          <div class="training-topics">
+          <nav aria-label="Training topics" class="training-topics">
             ${this.items.map(
               (item, index) => html`
                 <training-button
@@ -326,7 +365,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
                 </training-button>
               `,
             )}
-          </div>
+          </nav>
         </div>
         <main class="main">
           <site-active-title></site-active-title>

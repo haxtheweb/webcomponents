@@ -47,16 +47,14 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
         :host {
           display: block;
           margin: 8px 0px;
-          border: 2px solid rgb(218, 220, 224);
-          border-radius: 4px;
+          border: 2px solid var(--ddd-theme-default-limestoneLight, #e4e5e7);
+          border-radius: var(--ddd-radius-xs, 4px);
         }
-        button {
+        a.wrapper {
           border: none;
-          background-color: rgb(255, 255, 255);
           text-decoration: none;
           cursor: pointer;
           display: flex;
-          -webkit-box-align: center;
           align-items: center;
           background-color: transparent;
           min-height: 52px;
@@ -70,6 +68,10 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           font-family: Roboto, Noto, sans-serif;
           -webkit-font-smoothing: antialiased;
         }
+        a.wrapper:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
         #title {
           font-size: 18px;
           text-align: left;
@@ -80,7 +82,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           font-size: 24px;
           align-items: center;
           margin: auto 0px;
-          color: white;
+          color: var(--ddd-theme-default-white, #ffffff);
           height: 32px;
           line-height: 32px;
           width: 32px;
@@ -90,19 +92,18 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           height: 32px;
           width: 32px;
           margin: 16px;
-          background-color: rgb(128 134 140);
+          background-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
         }
-        a,
-        button {
+        a {
           text-decoration: none;
         }
 
         :host([disabled]) {
-          background-color: #dddddd;
+          background-color: var(--ddd-theme-default-disabled, #f4f4f4);
           cursor: not-allowed;
           pointer-events: none;
           opacity: 0.8;
@@ -110,21 +111,21 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
 
         :host:hover,
         :host:focus-within,
-        :host:focus,
+        :host:focus-visible,
         :host:active {
-          border: 2px solid grey;
-          color: black;
+          border: 2px solid var(--ddd-theme-default-limestoneGray, #a2aaad);
+          color: var(--ddd-theme-default-coalyGray, #262626);
         }
         :host([active]) {
-          border: 2px solid black;
+          border: 2px solid var(--ddd-theme-default-coalyGray, #262626);
         }
         :host([active]) .dot {
-          background-color: black;
-          color: white;
+          background-color: var(--ddd-theme-default-coalyGray, #262626);
+          color: var(--ddd-theme-default-white, #ffffff);
         }
         :host([active]) {
-          color: white;
-          background-color: #1a73e8;
+          color: var(--ddd-theme-default-white, #ffffff);
+          background-color: #1b6fd6;
         }
       `,
     ];
@@ -134,19 +135,16 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
   render() {
     return html`
       <a
-        ?disabled="${this.disabled || this.editMode}"
         href="${this.slug}"
-        tabindex="-1"
+        class="wrapper"
         @click="${this._editClick}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <button ?disabled="${this.disabled}" class="wrapper">
-          <span class="dot">
-            <div>${this.index}</div>
-          </span>
-          <span id="title">${this.title}</span>
-          <slot></slot>
-        </button>
+        <span class="dot">
+          <div>${this.index}</div>
+        </span>
+        <span id="title">${this.title}</span>
+        <slot></slot>
       </a>
     `;
   }

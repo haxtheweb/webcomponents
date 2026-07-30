@@ -67,27 +67,48 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       super.styles,
       css`
         :host {
-          --nav-link-color: #363533;
-          --icon-color: #363533;
+          --nav-link-color: var(--ddd-theme-default-coalyGray, #262626);
+          --icon-color: var(--ddd-theme-default-coalyGray, #262626);
           --header-bg-color: var(
             --haxcms-color,
-            var(--simple-colors-default-theme-orange-6, #e2801e)
+            light-dark(
+              var(--simple-colors-default-theme-orange-6, #e2801e),
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
           );
           --nav-bg-color: var(
             --haxcms-color,
-            var(--simple-colors-default-theme-orange-6, #e2801e)
+            light-dark(
+              var(--simple-colors-default-theme-orange-6, #e2801e),
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
           );
+          /* footer uses DDD navy for sufficient white-on-navy contrast */
           --footer-secondary-bg-color: var(
             --haxcms-color,
-            var(--simple-colors-default-theme-orange-6, #e2801e)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
           );
           --footer-primary-bg-color: var(
             --haxcms-color,
-            var(--simple-colors-default-theme-orange-6, #e2801e)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+          );
+          --bg-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
           );
 
           display: block;
           letter-spacing: normal;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #ffffff)
+          );
           background-color: var(--bg-color);
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
@@ -149,6 +170,17 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           .link a {
             font-size: 16px;
             padding: 4px;
+          }
+        }
+
+        @media only screen and (max-width: 768px) {
+          #nav {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          site-top-menu::part(button) {
+            font-size: 14px;
+            padding: 8px;
           }
         }
 
@@ -248,14 +280,21 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         }
         .legal-item a {
           text-decoration: none;
-          color: #ffffff;
+          color: var(--ddd-theme-default-white, #ffffff);
         }
-        .legal-item a:focus,
+        .legal-item a:focus-visible,
         .legal-item a:hover {
-          color: #000000;
+          color: var(--ddd-theme-default-skyLight, #ccf0ff);
+          text-decoration: underline;
         }
-        .legal-item a:focus {
+        .legal-item a:focus-visible {
+          outline: 2px solid currentColor;
           outline-offset: 4px;
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
         .mark a {
           display: flex;
@@ -297,12 +336,14 @@ class CollectionsTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <site-region name="header"></site-region>
       </header>
       <nav
         id="nav"
         part="site-top-menu"
+        aria-label="Site"
         itemscope
         itemtype="http://schema.org/SiteNavigationElement"
       >

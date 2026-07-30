@@ -58,6 +58,12 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           background-color: #020613;
           color: #f5f5f5;
         }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #020613;
+            color: #f5f5f5;
+          }
+        }
       `,
     ];
   }
@@ -73,6 +79,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
+          color-scheme: light dark;
         }
         :host([dark-mode]) {
           color: #f5f5f5;
@@ -111,6 +118,25 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           --scroll-button-tooltip-background-color: #020613;
           --scroll-button-tooltip-color: #9bbcff;
         }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        table {
+          max-width: 100%;
+        }
+        @media (max-width: 600px) {
+          :host table tbody tr td:first-child,
+          :host table tbody tr td:last-child {
+            display: none;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          :host {
+            color: #f5f5f5;
+          }
+        }
       `,
     ];
   }
@@ -119,14 +145,15 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr valign="top">
             <td style="background-image:url('${skater}')">
-              <img src="${skater}" width="68" height="72" border="0" alt="" />
+              <img src="${skater}" width="68" height="72" border="0" alt="" loading="lazy" decoding="async" />
             </td>
             <td align="center">
-              <main id="contentcontainer">
+              <main id="contentcontainer" tabindex="-1">
                 <site-active-title></site-active-title>
                 <section id="slot">
                   <slot></slot>
@@ -134,7 +161,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
               </main>
             </td>
             <td style="background-image:url('${skater}')">
-              <img src="${skater}" width="68" height="72" border="0" alt="" />
+              <img src="${skater}" width="68" height="72" border="0" alt="" loading="lazy" decoding="async" />
             </td>
           </tr>
           <tr>

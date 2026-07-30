@@ -87,6 +87,11 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           simple-icon-button-lite {
             color: inherit;
           }
+          #haxcmsmobilemenunav a:focus-visible,
+          #haxcmsmobilemenunav button:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+          }
         `,
       ];
     }
@@ -132,6 +137,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <nav
           id="haxcmsmobilemenunav"
           role="navigation"
+          aria-label="Site navigation"
           aria-labelledby="sitemenu"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
@@ -150,6 +156,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <nav
           id="haxcmsmobilemenunav"
           role="navigation"
+          aria-label="Site navigation"
           aria-labelledby="sitemenu"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"

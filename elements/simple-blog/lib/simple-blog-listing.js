@@ -17,6 +17,7 @@ class SimpleBlogListing extends SimpleColors {
       css`
         :host {
           display: block;
+          color-scheme: light dark;
         }
         .listing {
           width: 100%;

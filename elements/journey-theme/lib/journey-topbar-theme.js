@@ -68,13 +68,17 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
+          color-scheme: light dark;
           --my-theme-low-tone: var(--ddd-palette-color-5, var(--ddd-theme-default-slateMaxLight));
           --my-theme-high-tone: var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray));
         }
         body {
           padding: var(--ddd-spacing-0);
           margin: var(--ddd-spacing-0);
-          background-color: var(--my-theme-low-tone);
+          background-color: light-dark(
+            var(--my-theme-low-tone),
+            var(--my-theme-high-tone)
+          );
         }
         body.dark-mode {
           background-color: var(--my-theme-high-tone);
@@ -91,8 +95,10 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <header>
       <div class="topbar-container">
-        <nav class="topbar-scroll">
+        <nav class="topbar-scroll" aria-label="Page navigation">
           <ul>
             ${this._items.map(
               (item) => html`
@@ -104,6 +110,7 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
           </ul>
         </nav>
       </div>
+      </header>
 
       <main>
         <site-active-title></site-active-title>

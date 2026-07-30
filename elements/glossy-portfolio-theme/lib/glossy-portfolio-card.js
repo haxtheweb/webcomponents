@@ -157,7 +157,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     // console.log(this.thumbnail);
     return html`
-<a class="link" href=${this.slug}>
+<a class="link" href=${this.slug} aria-label="${this.title}">
   <div class="container">
     <img 
       @error=${this.handleImageError}

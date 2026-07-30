@@ -42,6 +42,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     this.profileImage = "";
     this.profileName = "My profile";
     this.profileDescription = "";
+    this.paletteAnnouncement = "";
     const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
     this.dataPalette =
       storedPalette === null || storedPalette === ""
@@ -69,6 +70,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       profileName: { type: String, attribute: "profile-name" },
       profileDescription: { type: String, attribute: "profile-description" },
       dataPalette: { type: String, reflect: true, attribute: "data-palette" },
+      paletteAnnouncement: { type: String },
     };
   }
 
@@ -150,6 +152,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           background-color: var(--link-card-card-bg);
           color: var(--link-card-card-text);
           text-align: center;
+          contain: layout;
         }
         .profile-image {
           width: var(--ddd-spacing-30);
@@ -246,8 +249,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           gap: var(--ddd-spacing-3);
         }
         .social-link {
-          width: var(--ddd-spacing-9);
-          height: var(--ddd-spacing-9);
+          width: var(--ddd-spacing-12);
+          height: var(--ddd-spacing-12);
           border-radius: var(--ddd-radius-circle);
           border: var(--ddd-border-sm) solid var(--link-card-outline);
           display: inline-flex;
@@ -292,8 +295,28 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           opacity: 0;
           pointer-events: none;
         }
+        .visually-hidden {
+          position: absolute !important;
+          width: 1px !important;
+          height: 1px !important;
+          padding: 0 !important;
+          margin: -1px !important;
+          overflow: hidden !important;
+          clip: rect(0, 0, 0, 0) !important;
+          white-space: nowrap !important;
+          border: 0 !important;
+        }
         :host(:not([edit-mode])) #contentcontainer {
           display: none;
+        }
+        @media (max-width: 360px) {
+          .theme-shell {
+            padding: var(--ddd-spacing-4) var(--ddd-spacing-2);
+            gap: var(--ddd-spacing-4);
+          }
+          .card {
+            padding: var(--ddd-spacing-5) var(--ddd-spacing-3);
+          }
         }
       `,
     ];
@@ -498,6 +521,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       paletteValue = 0;
     }
     this.dataPalette = `${paletteValue}`;
+    this.paletteAnnouncement =
+      "Color palette updated to option " + (paletteValue + 1) + ".";
   }
 
   testEditMode(e) {
@@ -517,15 +542,26 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     const profileLabel = this.profileName ? this.profileName : "Link card profile";
     return html`
       <div class="theme-shell">
+        <a class="skip-link" href="#main-content">Skip to content</a>
         <span class="contrast-color-resolver" aria-hidden="true"></span>
+        <span class="visually-hidden" aria-live="polite"
+          >${this.paletteAnnouncement}</span
+        >
         <simple-icon-button-lite
           class="palette-picker"
           icon="image:style"
           label="Change palette"
           title="Change palette"
+          aria-pressed="${this.dataPalette !== "0" ? "true" : "false"}"
           @click="${this.togglePalette}"
         ></simple-icon-button-lite>
-        <main class="card" role="main" aria-label="${profileLabel}">
+        <main
+          class="card"
+          role="main"
+          aria-label="${profileLabel}"
+          id="main-content"
+          tabindex="-1"
+        >
           ${this.profileImage
             ? html`<img
                 class="profile-image"

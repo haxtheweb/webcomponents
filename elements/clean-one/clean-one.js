@@ -125,6 +125,7 @@ class CleanOne extends DDDSuper(
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           background-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-text);
+          color-scheme: light dark;
         }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
@@ -189,9 +190,14 @@ class CleanOne extends DDDSuper(
           --simple-icon-fill-color: var(--ddd-lightDark-1);
         }
 
-        button:focus,
+        button:focus-visible,
         button:hover {
           --simple-icon-button-background-color: var(--ddd-palette-color-1);
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
         .pdf-page-btn,
         .print-branch-btn {
@@ -273,7 +279,7 @@ class CleanOne extends DDDSuper(
         .pull-right > div > simple-icon-button-lite,
         .pull-left > site-print-button simple-icon-button-lite,
         .pull-right > site-rss-button simple-icon-button-lite {
-          padding: 4px;
+          padding: 8px;
         }
         #emailbtnwrapper {
           display: inline-flex;
@@ -634,6 +640,7 @@ class CleanOne extends DDDSuper(
   render() {
     return html`
       <div class="site">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <nav class="menu-outline" aria-label="Site menu">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box

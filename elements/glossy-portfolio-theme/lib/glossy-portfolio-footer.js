@@ -111,7 +111,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       p {
         margin: 0;
         font-family: Inter;
-        color: #ffffff97;
+        color: var(--ddd-theme-default-white);
         font-size: 0.8rem;
         text-align: center; /* Center-align text inside the grid cell */
         font-weight: 300;
@@ -136,7 +136,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="background">
+<footer class="background" role="contentinfo">
   <div class="wrapper">
       <p class="item"> Last updated: ${this.lastUpdated} </p>
       <p class="center">© ${this.copyrightYear}   </p>
@@ -146,7 +146,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       </a>
     </div>
   </div>
-</div>
+</footer>
 
 
   `;

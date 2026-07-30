@@ -116,6 +116,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <journey-menu .items="${this._items}" .activeId="${this.activeId}">
       </journey-menu>
 

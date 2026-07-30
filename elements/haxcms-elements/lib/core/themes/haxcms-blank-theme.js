@@ -12,8 +12,10 @@ import { CleanTwo } from "@haxtheweb/clean-two/clean-two.js";
 class HAXCMSBlankTheme extends CleanTwo {
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <main>
         <article id="contentcontainer">
+          <site-active-title></site-active-title>
           <section id="slot">
             <slot></slot>
           </section>
@@ -25,7 +27,6 @@ class HAXCMSBlankTheme extends CleanTwo {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    globalThis.document.body.style.setProperty("--haxcms-color", "white");
     // in-case coming from a theme that undoes this
     globalThis.document.body.style.overflow = "auto";
   }
@@ -38,7 +39,7 @@ class HAXCMSBlankTheme extends CleanTwo {
     super.disconnectedCallback();
   }
   static get styles() {
-    return css`
+    return [super.styles, css`
       :host([edit-mode]) {
         opacity: 1;
       }
@@ -47,12 +48,6 @@ class HAXCMSBlankTheme extends CleanTwo {
       }
       [hidden] {
         display: none !important;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-        }
       }
       /**
         * Hide the slotted content during edit mode. This must be here to work.
@@ -67,7 +62,7 @@ class HAXCMSBlankTheme extends CleanTwo {
         display: block;
         margin: 0px;
       }
-    `;
+    `];
   }
   static get tag() {
     return "haxcms-blank-theme";

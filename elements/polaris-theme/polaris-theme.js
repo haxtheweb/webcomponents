@@ -67,7 +67,10 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --polaris-footer-primary-bg-color: light-dark(#141720, #0b0e17);
           --polaris-link-color: light-dark(#1173ca, #7bb7ff);
           --polaris-link-hover-color: light-dark(#0b4b83, #b2d5ff);
-          --polaris-muted-color: light-dark(#999, #c7ceda);
+          --polaris-muted-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            #c7ceda
+          );
           background-color: var(--polaris-bg-color);
         }
         :host([dark-mode]) {
@@ -78,6 +81,22 @@ class PolarisTheme extends HAXCMSOperationButtons(
           --polaris-nav-bg-color: #0b4b83;
           --polaris-footer-secondary-bg-color: #111827;
           --polaris-footer-primary-bg-color: #020617;
+          --polaris-link-hover-color: #b2d5ff;
+          --polaris-muted-color: #c7ceda;
+        }
+        /* Safari < 17.4 lacks light-dark(); provide explicit light values */
+        :host([is-safari]) {
+          color: var(--ddd-theme-default-coalyGray);
+          background-color: #f5f5f5;
+          --polaris-bg-color: #f5f5f5;
+          --polaris-content-bg-color: #ffffff;
+          --polaris-header-bg-color: #262c3a;
+          --polaris-nav-bg-color: #1173ca;
+          --polaris-footer-secondary-bg-color: #262c3a;
+          --polaris-footer-primary-bg-color: #141720;
+          --polaris-link-color: #1173ca;
+          --polaris-link-hover-color: #0b4b83;
+          --polaris-muted-color: var(--ddd-theme-default-limestoneGray);
         }
 
         .search-modal-btn {
@@ -374,6 +393,11 @@ class PolarisTheme extends HAXCMSOperationButtons(
           color: var(--polaris-link-color);
           text-decoration: none;
         }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
         @media only screen and (max-width: 1139px) {
           main {
             width: 620px;
@@ -412,6 +436,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <site-modal
           @site-modal-click="${this.siteModalClick}"
@@ -456,12 +481,16 @@ class PolarisTheme extends HAXCMSOperationButtons(
           </slot>
         </div>
       </header>
-      <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <nav
+        itemscope
+        itemtype="http://schema.org/SiteNavigationElement"
+        aria-label="Primary"
+      >
         <site-top-menu indicator="none"></site-top-menu>
       </nav>
       <div class="content site-inner wrap">
         <main>
-          <article id="contentcontainer">
+          <article id="contentcontainer" tabindex="-1">
             <div id="haxcms-theme-top"></div>
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-title part="page-title"></site-active-title>

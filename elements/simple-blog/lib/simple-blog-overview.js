@@ -22,6 +22,7 @@ class SimpleBlogOverview extends SimpleColors {
           display: block;
           outline: none;
           text-transform: none;
+          color-scheme: light dark;
         }
         div.card {
           box-shadow: var(--ddd-boxShadow-sm, 0 2px 6px rgba(0, 0, 0, 0.15));
@@ -71,7 +72,7 @@ class SimpleBlogOverview extends SimpleColors {
         }
         .post-meta {
           font-size: var(--ddd-font-size-2xs);
-          color: light-dark(#b3b3b1, var(--ddd-accent-6, #cccccc));
+          color: light-dark(#6e6e6e, var(--ddd-accent-6, #cccccc));
           line-height: 1.6;
           margin-top: var(--ddd-spacing-2);
         }
@@ -81,6 +82,10 @@ class SimpleBlogOverview extends SimpleColors {
         a:focus,
         a:active {
           color: inherit;
+        }
+        a:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
       `,
     ];

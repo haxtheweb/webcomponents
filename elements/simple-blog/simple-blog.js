@@ -120,7 +120,8 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   // render function
   render() {
     return html`
-      <main>
+      <main id="main-content" tabindex="-1">
+        <a class="skip-link" href="#main-content">Skip to content</a>
         ${this.selectedPage === 0
           ? html`
               <section>
@@ -132,6 +133,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
               <simple-icon-button
                 id="backbutton"
                 icon="icons:arrow-back"
+                label="Back to blog"
                 @click="${this._goBack}"
               ></simple-icon-button>
               <simple-tooltip

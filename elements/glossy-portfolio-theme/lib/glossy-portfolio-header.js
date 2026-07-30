@@ -42,6 +42,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.isOpen = false;
     this.scrollPosition = 0; // Track scroll position
     this.__onScroll = this.scrollFunction.bind(this);
+    this.__onKeydown = this._handleKeydown.bind(this);
 
     //get top level items (items shown on header -- they have no parent)
     this.__disposer.push(
@@ -198,6 +199,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       button:hover, button:focus-visible{
         background-color: #1f1f1f;
       }
+      /* Restore a visible keyboard focus ring — "all: unset" strips the default outline */
+      button:focus-visible{
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
 
       a:focus-visible{
         border: 1px solid white;
@@ -284,6 +290,12 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         }
       }
 
+      /* Respect reduced-motion: disable the JS-driven opacity transition on the header */
+      @media (prefers-reduced-motion: reduce) {
+        .container.desktop {
+          transition: none !important;
+        }
+      }
 
     `];
   }
@@ -300,9 +312,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
         <div class="logo-hamburger desktop">
           <a class="logo-link desktop" href="${this.homeLink}" @focus=${this.fullOpacity}>
-            <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="Logo" />
+            <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" />
           </a>
         </div>
+        <nav aria-label="Site">
         <ul class="nav-links desktop">
           ${Array.from(this.topItems).map((item) => html`
               <li>
@@ -312,17 +325,18 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
               </li>
             `)}
         </ul>
+        </nav>
       </div>
       
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
           <a class="logo-link mobile" href="${this.homeLink}" @click="${this.closeHamburger}">
-            <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="Logo" />
+            <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" />
           </a> 
 
           <!-- hamburger/close button -->
-          <button @click="${this.toggleHamburger}" aria-label="Toggle navigation menu">
+          <button @click="${this.toggleHamburger}" aria-label="Toggle navigation menu" aria-expanded="${this.isOpen}" aria-controls="mobile-nav-menu">
             ${this.isOpen ? html`
               <svg class="cross mobile"
                 version="1.1" 
@@ -353,8 +367,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           </button>
 
         </div>
-        <div class="mobile nav-menu" >
-          
+        <div class="mobile nav-menu" id="mobile-nav-menu">
+          <nav aria-label="Site">
           <ul class="nav-links mobile">
             ${Array.from(this.topItems).map((item) => html`
                 <li class="mobile">
@@ -364,6 +378,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
                 </li>
               `)}
           </ul>
+          </nav>
         </div>
       </div>
     `;
@@ -381,7 +396,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
   openHamburger() {
     let nav = this.renderRoot.querySelector('.nav-menu');
-    console.log("open")
     this.isOpen = true; // 
     nav.style.display = "flex"; // Show the mobile menu
     globalThis.document.body.classList.add('no-scroll'); // Disable scrolling on the body
@@ -393,9 +407,17 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     globalThis.document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
   }
 
+  // Close the mobile menu when Escape is pressed (WCAG 2.1.2 No keyboard trap)
+  _handleKeydown(e) {
+    if (e.key === "Escape" && this.isOpen) {
+      this.closeHamburger();
+    }
+  }
+
 
   toggleHamburger(){
-    if (globalThis.document.startViewTransition) {
+    const reduceMotion = globalThis.matchMedia && globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && globalThis.document.startViewTransition) {
       globalThis.document.startViewTransition(() => {
         this._toggleHamburger();
       });
@@ -421,6 +443,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     requestAnimationFrame(() => this._checkOverflow());
 
     globalThis.addEventListener("scroll", this.__onScroll);
+    globalThis.addEventListener("keydown", this.__onKeydown);
   }
   disconnectedCallback() {
     if (this._resizeObserver) {
@@ -428,6 +451,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       this._resizeObserver = null;
     }
     globalThis.removeEventListener("scroll", this.__onScroll);
+    globalThis.removeEventListener("keydown", this.__onKeydown);
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
@@ -435,14 +459,22 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
 
   scrollFunction() {
-    const scrollTop =
-      globalThis.scrollY || globalThis.document.documentElement.scrollTop;
-    this.scrollPosition = scrollTop;
-    if (scrollTop > 50) {
-      this.halfOpacity();
-    } else {
-      this.fullOpacity();
+    // Throttle scroll handling to a single pass per animation frame
+    if (this.__scrollTicking) {
+      return;
     }
+    this.__scrollTicking = true;
+    requestAnimationFrame(() => {
+      const scrollTop =
+        globalThis.scrollY || globalThis.document.documentElement.scrollTop;
+      this.scrollPosition = scrollTop;
+      if (scrollTop > 50) {
+        this.halfOpacity();
+      } else {
+        this.fullOpacity();
+      }
+      this.__scrollTicking = false;
+    });
   }
 
   fullOpacity() {
@@ -500,11 +532,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
-  //show home icon if it fails to load
+  // hide the logo image if it fails to load (removed external icons8 fallback dependency)
   handleImageError(event) {
     const img = event.target;
-    img.src='https://img.icons8.com/m_sharp/512/FFFFFF/home.png';
-  
+    img.style.visibility = 'hidden';
   }
   
   /**

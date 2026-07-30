@@ -82,6 +82,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       : `Native .${routeFormat} file was not found. Showing generated ${generatedData.type.toUpperCase()} fallback from activeItem data.`;
 
     return html`
+      <a class="skip-link" href="#main-content">Skip to content</a>
       <header>
         <simple-icon-button-lite
           @click="${this.copyToClipboard}"
@@ -98,10 +99,10 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           title="Go back"
         ></simple-icon-button-lite>
       </header>
-      <main>
+      <main id="main-content" tabindex="-1">
         <article>
           <section>
-            <h2>Active Item Data (${routeFormat.toUpperCase()})</h2>
+            <h1>Active Item Data (${routeFormat.toUpperCase()})</h1>
             <p>
               This view prefers the native <code>.${routeFormat}</code> page
               file and falls back to generated data only when that file is not
@@ -109,7 +110,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
             </p>
             <p class="source-note">${sourceMessage}</p>
             <div class="format-routing-help">
-              <h3>Native route for robots and LLMs</h3>
+              <h2>Native route for robots and LLMs</h2>
               <p>
                 You opened this using <code>?format=${routeFormat}</code>. For
                 machine-native access, append <code>.${routeFormat}</code> to
@@ -499,6 +500,50 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     return [
       super.styles,
       css`
+        /* Skip link (WCAG 2.4.1) — copied from base; print super.styles omits it */
+        .skip-link {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        .skip-link:focus {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: auto;
+          height: auto;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          margin: var(--ddd-spacing-2);
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+          z-index: 10000;
+          background: var(--ddd-theme-default-white, #fff);
+          color: var(--ddd-theme-default-coalyGray, #000);
+          border: 2px solid currentColor;
+          text-decoration: none;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            transition-delay: 0ms !important;
+            scroll-behavior: auto !important;
+          }
+        }
+
         :host {
           --text-color: var(--ddd-theme-default-coalyGray, #444);
           --bg-color: var(--ddd-theme-default-white, #fff);
@@ -522,6 +567,15 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           }
         }
 
+        :host([dark-mode]) {
+          --text-color: var(--ddd-theme-default-white, #fff);
+          --bg-color: var(--ddd-theme-default-coalyGray, #222);
+          --secondary-text-color: var(--ddd-theme-default-limestoneLight, #ccc);
+          --border-color: var(--ddd-theme-default-slateGray, #555);
+          --hover-bg-color: var(--ddd-theme-default-slateGray, #333);
+          --code-bg-color: var(--ddd-theme-default-coalyGray, #1a1a1a);
+        }
+
         header {
           display: flex;
           justify-content: flex-end;
@@ -531,6 +585,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           right: 0;
           z-index: 1000;
           background: var(--bg-color);
+          -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
           padding: 8px;
           border-radius: 0 0 0 8px;
@@ -548,13 +603,26 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);
-          transition: all 0.3s ease-in-out;
+          transition: background-color 0.3s ease-in-out,
+            border-color 0.3s ease-in-out, color 0.3s ease-in-out;
         }
 
         #copybtn:hover,
         #backbtn:hover,
         #togglebtn:hover {
           background: var(--hover-bg-color);
+        }
+
+        #copybtn:focus-visible,
+        #backbtn:focus-visible,
+        #togglebtn:focus-visible,
+        #copyroutebtn:focus-visible,
+        #copybtn:focus-within,
+        #backbtn:focus-within,
+        #togglebtn:focus-within,
+        #copyroutebtn:focus-within {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
         #togglebtn {
           width: auto;
@@ -586,7 +654,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           background: var(--code-bg-color);
         }
 
-        .format-routing-help h3 {
+        .format-routing-help h2 {
           margin: 0 0 var(--ddd-spacing-2, 8px);
           color: var(--text-color);
           font-family: var(--ddd-font-navigation, sans-serif);
@@ -623,6 +691,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           padding-left: var(--ddd-spacing-2, 8px);
         }
 
+        h1,
         h2 {
           color: var(--text-color);
           font-family: var(--ddd-font-navigation, sans-serif);

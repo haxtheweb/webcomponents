@@ -18,6 +18,7 @@ class SimpleBlogHeader extends SimpleColors {
       css`
         :host {
           display: block;
+          color-scheme: light dark;
           font-family: var(--ddd-font-primary);
           color: light-dark(
             var(--ddd-theme-default-text, #333),
@@ -100,7 +101,7 @@ class SimpleBlogHeader extends SimpleColors {
         .custom-links {
           margin: 0 auto var(--ddd-spacing-8);
           text-align: center;
-          color: light-dark(#808080, var(--ddd-accent-6, #e0e0e0));
+          color: light-dark(#6e6e6e, var(--ddd-accent-6, #e0e0e0));
           display: flex;
           justify-content: center;
           gap: var(--ddd-spacing-2);
@@ -141,7 +142,7 @@ class SimpleBlogHeader extends SimpleColors {
         <simple-icon class="blog-logo" icon="${this.icon}"></simple-icon>
         ${this.title ? html`<h1 class="site-title">${this.title}</h1>` : ``}
         ${this.title
-          ? html`<h2 class="blog-description">${this.description}</h2>`
+          ? html`<p class="blog-description">${this.description}</p>`
           : ``}
         <div class="custom-links">
           <site-rss-button type="atom"></site-rss-button>

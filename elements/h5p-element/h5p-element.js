@@ -1,14 +1,17 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
+ *
+ * H5P content is rendered with the MIT-licensed h5p-standalone player
+ * (https://www.npmjs.com/package/h5p-standalone), loaded at runtime as a
+ * global (H5PStandalone) via ESGlobalBridge. The formerly vendored GPL-3.0
+ * H5P core has been removed, so this Apache-2.0 package conveys no H5P core
+ * code. lib/h5p-resizer.js and lib/h5p-wrapped-element.js are first-party
+ * Apache-2.0 helpers kept alongside this element.
  */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
-globalThis.__H5PBridgeTimeOut = function () {
-  setTimeout(function () {
-    globalThis.H5P.init();
-  }, 500);
-};
+import "./lib/h5p-resizer.js";
 /**
   * `h5p-element`
   * @element h5p-element
@@ -17,7 +20,6 @@ globalThis.__H5PBridgeTimeOut = function () {
   * @microcopy - language worth noting:
   *  - h5p is it's own eco system, we're just trying to wrap it a bit
   *
- 
   * @lit-element
   * @demo demo/index.html
   */
@@ -57,10 +59,20 @@ class H5PElement extends LitElement {
       ...super.properties,
 
       /**
-       * Source of the .h5p file
+       * Source of the .h5p file (URL path to an extracted .h5p content folder)
        */
       source: {
         name: "source",
+        type: String,
+      },
+      /**
+       * Optional override for the base URL where the h5p-standalone dist is
+       * served (must contain main.bundle.js, frame.bundle.js, styles/h5p.css).
+       * Set this to point at an on-prem copy when the default resolution does
+       * not match your deployment.
+       */
+      h5pLibPath: {
+        name: "h5pLibPath",
         type: String,
       },
     };
@@ -79,6 +91,7 @@ class H5PElement extends LitElement {
     super();
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
+    this.h5pLibPath = "";
   }
   /**
    * This breaks shadowRoot in LitElement
@@ -90,37 +103,36 @@ class H5PElement extends LitElement {
     return super.createRenderRoot();
   }
   /**
+   * Base URL where the MIT-licensed h5p-standalone dist is served.
+   * Defaults to the co-installed package relative to this element; honor an
+   * explicit h5pLibPath for on-prem/custom serving.
+   */
+  get h5pStandaloneBase() {
+    if (this.h5pLibPath) {
+      return this.h5pLibPath.replace(/\/$/, "") + "/";
+    }
+    const here = import.meta.url;
+    // published @haxtheweb layout: node_modules/@haxtheweb/h5p-element/../../h5p-standalone/dist/
+    if (here.includes("/node_modules/@haxtheweb/")) {
+      return new URL("../../h5p-standalone/dist/", here).href;
+    }
+    // local dev layout: webcomponents/elements/h5p-element/../../node_modules/h5p-standalone/dist/
+    return new URL("../../node_modules/h5p-standalone/dist/", here).href;
+  }
+  /**
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
     this.windowControllers = new AbortController();
-    const basePath =
-      new URL("./lib/h5p-resizer.js", import.meta.url).href + "/../";
-    this.h5pJSDeps = [
-      basePath + "h5p-resizer.js",
-      basePath + "h5p/js/jquery.js",
-      basePath + "h5p/js/h5p.js",
-      basePath + "h5p/js/h5p-event-dispatcher.js",
-      basePath + "h5p/js/h5p-content-type.js",
-      basePath + "h5p/js/h5p-action-bar.js",
-      basePath + "h5p/js/h5p-confirmation-dialog.js",
-      basePath + "h5p/js/h5p-x-api-event.js",
-      basePath + "h5p/js/h5p-x-api.js",
-    ];
-    this.__h5pDepsLength = this.h5pJSDeps.length - 1;
-    await globalThis.ESGlobalBridge.requestAvailability().load(
-      "h5p-jquery",
-      basePath + "h5p/js/jquery.js",
-    );
+    // MIT h5p-standalone player (replaces the formerly vendored GPL H5P core)
     globalThis.addEventListener(
-      "es-bridge-h5p-jquery-loaded",
-      this.h5pJqueryReady.bind(this),
-      { signal: this.windowControllers.signal },
-    );
-    globalThis.addEventListener(
-      "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
+      "es-bridge-h5p-standalone-loaded",
       this.h5pReadyCallback.bind(this),
       { signal: this.windowControllers.signal },
+    );
+    await globalThis.ESGlobalBridge.requestAvailability().load(
+      "h5p-standalone",
+      this.h5pStandaloneBase + "main.bundle.js",
     );
   }
   generateUUID() {
@@ -141,7 +153,7 @@ class H5PElement extends LitElement {
     if (
       this.source &&
       globalThis.ESGlobalBridge.requestAvailability().imports[
-        "h5p-" + this.__h5pDepsLength
+        "h5p-standalone"
       ] === true &&
       this.contentId
     ) {
@@ -152,21 +164,13 @@ class H5PElement extends LitElement {
       import("./lib/h5p-wrapped-element.js");
     }
   }
-  async h5pJqueryReady(e) {
-    for (var i in this.h5pJSDeps) {
-      await globalThis.ESGlobalBridge.requestAvailability().load(
-        "h5p-" + i,
-        this.h5pJSDeps[i],
-      );
-    }
-  }
   h5pReadyCallback(e) {
     if (this.contentId) {
       this.setupH5P(this.contentId);
     }
   }
   /**
-   * This does the heavy lifting to kick it off
+   * Hand the .h5p content folder off to the h5p-standalone player.
    */
   async setupH5P(id = 1, displayOptions = {}) {
     displayOptions = Object.assign(displayOptions, {
@@ -177,40 +181,30 @@ class H5PElement extends LitElement {
       icon: (displayOptions.icon = false),
       export: (displayOptions.export = false),
     });
-    const basePath =
-      new URL("./lib/h5p-element.js", import.meta.url).href + "/../";
-    H5PIntegration.core = {
-      styles: [
-        basePath + "h5p/styles/h5p.css",
-        basePath + "h5p/styles/h5p-confirmation-dialog.css",
-        basePath + "h5p/styles/h5p-core-button.css",
-      ],
-      scripts: this.h5pJSDeps,
-    };
-    let frag = globalThis.document.createRange().createContextualFragment(`
-     <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
-       <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
-     </div>
-     `);
-    if (
-      this.querySelector('[data-content-id="wrapper-' + this.contentId + '"')
-    ) {
-      this.querySelector(
-        '[data-content-id="wrapper-' + this.contentId + '"',
-      ).appendChild(frag);
+    const container = this.querySelector(
+      '[data-content-id="wrapper-' + this.contentId + '"',
+    );
+    if (!container) {
+      return false;
     }
-
-    if (this.source) {
-      let stand = new H5PStandalone(id, this.source, displayOptions);
-      await stand.init();
-      // clear previous calls to this exact thing
-      // this accounts for multiples on the DOM and the exccess
-      // file parsing required per each in order to use this thing
-      if (globalThis.__H5PBridgeTimeOut) {
-        clearTimeout(globalThis.__H5PBridgeTimeOut);
-        globalThis.__H5PBridgeTimeOut();
-      }
+    const H5PStandalone = globalThis.H5PStandalone;
+    if (!H5PStandalone || !H5PStandalone.H5P) {
+      // player script not available yet
+      return false;
     }
+    const libBase = this.h5pStandaloneBase;
+    await new H5PStandalone.H5P(container, {
+      h5pJsonPath: this.source,
+      frameJs: libBase + "frame.bundle.js",
+      frameCss: libBase + "styles/h5p.css",
+      frame: displayOptions.frame,
+      copyright: displayOptions.copyright,
+      export: displayOptions.export,
+      download: displayOptions.download,
+      embed: displayOptions.embed,
+      icon: displayOptions.icon,
+      id: "h5p-iframe-" + id,
+    });
     return true;
   }
   connectedCallback() {
@@ -265,384 +259,4 @@ H5PIntegration.l10n = {
   },
 };
 
-class H5PStandalone {
-  constructor(id = 1, pathToContent, displayOptions) {
-    this.id = id;
-    this.path = pathToContent;
-    this.displayOptions = displayOptions;
-    return true;
-  }
-  getJSONPromise(url) {
-    return fetch(url).then(function (response) {
-      return response.json();
-    });
-  }
-  /**
-   * Initialize the H5P
-   */
-  async init() {
-    this.h5p = await this.getJSONPromise(`${this.path}/h5p.json`);
-    this.content = JSON.stringify(
-      await this.getJSONPromise(`${this.path}/content/content.json`),
-    );
-    globalThis.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion =
-      await this.checkIfPathIncludesVersion();
-
-    this.mainLibrary = await this.findMainLibrary();
-
-    const dependencies = await this.findAllDependencies();
-
-    const { styles, scripts } = await this.sortDependencies(dependencies);
-
-    H5PIntegration.url = this.path;
-    H5PIntegration.contents = H5PIntegration.contents
-      ? H5PIntegration.contents
-      : {};
-    H5PIntegration.contents["cid-" + this.id] = {
-      library: `${this.mainLibrary.machineName} ${this.mainLibrary.majorVersion}.${this.mainLibrary.minorVersion}`,
-      jsonContent: this.content,
-      styles: styles,
-      scripts: scripts,
-      displayOptions: this.displayOptions,
-    };
-    return true;
-  }
-
-  /**
-   * Check if the library folder include the version or not
-   * This was changed at some point in H5P and we need to be backwards compatible
-   *
-   * @return {boolean}
-   */
-  async checkIfPathIncludesVersion() {
-    let dependency = this.h5p.preloadedDependencies[0];
-    let machinePath =
-      dependency.machineName +
-      "-" +
-      dependency.majorVersion +
-      "." +
-      dependency.minorVersion;
-
-    let pathIncludesVersion;
-
-    try {
-      await this.getJSONPromise(`${this.path}/${machinePath}/library.json`);
-      pathIncludesVersion = true;
-    } catch (e) {
-      pathIncludesVersion = false;
-    }
-    return pathIncludesVersion;
-  }
-
-  /**
-   * return the path to a library
-   * @param {object} library
-   * @return {string}
-   */
-  libraryPath(library) {
-    return (
-      library.machineName +
-      (this.pathIncludesVersion
-        ? "-" + library.majorVersion + "." + library.minorVersion
-        : "")
-    );
-  }
-
-  /**
-   * FInd the main library for this H5P
-   * @return {Promise}
-   */
-  findMainLibrary() {
-    const mainLibraryInfo = this.h5p.preloadedDependencies.find(
-      (dep) => dep.machineName === this.h5p.mainLibrary,
-    );
-
-    this.mainLibraryPath =
-      this.h5p.mainLibrary +
-      (this.pathIncludesVersion
-        ? "-" +
-          mainLibraryInfo.majorVersion +
-          "." +
-          mainLibraryInfo.minorVersion
-        : "");
-    return this.getJSONPromise(
-      `${this.path}/${this.mainLibraryPath}/library.json`,
-    );
-  }
-
-  /**
-   * find all the libraries used in this H5P
-   * @return {Promise}
-   */
-  findAllDependencies() {
-    const directDependencyNames = this.h5p.preloadedDependencies.map(
-      (dependency) => this.libraryPath(dependency),
-    );
-
-    return this.loadDependencies(directDependencyNames, []);
-  }
-
-  /**
-   * searches through all supplied libraries for dependencies, this is recursive and repeats until all deep dependencies have been found
-   * @param {string[]} toFind list of libraries to find the dependencies of
-   * @param {string[]} alreadyFound the dependencies that have already been found
-   */
-  async loadDependencies(toFind, alreadyFound) {
-    // dependencyDepth++;
-    let dependencies = alreadyFound;
-    let findNext = [];
-    let newDependencies = await Promise.all(
-      toFind.map((libraryName) => this.findLibraryDependencies(libraryName)),
-    );
-    // loop over newly found libraries
-    newDependencies.forEach((library) => {
-      // push into found list
-      dependencies.push(library);
-      // check if any dependencies haven't been found yet
-      library.dependencies.forEach((dependency) => {
-        if (
-          !dependencies.find(
-            (foundLibrary) => foundLibrary.libraryPath === dependency,
-          ) &&
-          !newDependencies.find(
-            (foundLibrary) => foundLibrary.libraryPath === dependency,
-          )
-        ) {
-          findNext.push(dependency);
-        }
-      });
-    });
-
-    if (findNext.length > 0) {
-      return this.loadDependencies(findNext, dependencies);
-    }
-    return dependencies;
-  }
-
-  /**
-   * Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs
-   * @param {string} libraryName
-   */
-  async findLibraryDependencies(libraryName) {
-    const library = await this.getJSONPromise(
-      `${this.path}/${libraryName}/library.json`,
-    );
-    const libraryPath = this.libraryPath(library);
-
-    let dependencies = [];
-    if (library.preloadedDependencies) {
-      dependencies = library.preloadedDependencies.map((dependency) =>
-        this.libraryPath(dependency),
-      );
-    }
-
-    return {
-      libraryPath,
-      dependencies,
-      preloadedCss: library.preloadedCss,
-      preloadedJs: library.preloadedJs,
-    };
-  }
-
-  /**
-   * Resolves the library dependency tree and sorts the JS and CSS files into order
-   * @param {object[]} dependencies
-   * @return {object}
-   */
-  async sortDependencies(dependencies) {
-    const dependencySorter = new Toposort();
-    let CSSDependencies = {};
-    let JSDependencies = {};
-
-    dependencies.forEach((dependency) => {
-      dependencySorter.add(dependency.libraryPath, dependency.dependencies);
-
-      if (dependency.preloadedCss) {
-        CSSDependencies[dependency.libraryPath] = CSSDependencies[
-          dependency.libraryPath
-        ]
-          ? CSSDependencies[dependency.libraryPath]
-          : [];
-        dependency.preloadedCss.forEach((style) => {
-          CSSDependencies[dependency.libraryPath].push(
-            `${this.path}/${dependency.libraryPath}/${style.path}`,
-          );
-        });
-      }
-
-      if (dependency.preloadedJs) {
-        JSDependencies[dependency.libraryPath] = JSDependencies[
-          dependency.libraryPath
-        ]
-          ? JSDependencies[dependency.libraryPath]
-          : [];
-        dependency.preloadedJs.forEach((script) => {
-          JSDependencies[dependency.libraryPath].push(
-            `${this.path}/${dependency.libraryPath}/${script.path}`,
-          );
-        });
-      }
-    });
-
-    let styles = [];
-    let scripts = [];
-
-    dependencySorter
-      .sort()
-      .reverse()
-      .forEach(function (dependencyName) {
-        Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
-        Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
-      });
-
-    Array.prototype.push.apply(
-      styles,
-      this.mainLibrary.preloadedCss.map(
-        (style) => `${this.path}/${this.mainLibraryPath}/${style.path}`,
-      ),
-    );
-    Array.prototype.push.apply(
-      scripts,
-      this.mainLibrary.preloadedJs.map(
-        (script) => `${this.path}/${this.mainLibraryPath}/${script.path}`,
-      ),
-    );
-
-    return { styles, scripts };
-  }
-}
-
-class Toposort {
-  constructor() {
-    this.edges = [];
-  }
-  /**
-   * Adds dependency edges.
-   *
-   * @since   0.1.0
-   * @param   {String} item               An dependent name. Must be an string and not empty
-   * @param   {String[]|String} [deps]    An dependency or array of dependencies
-   * @returns {Toposort}                  The Toposort instance
-   */
-  add(item, deps) {
-    if (typeof item !== "string" || !item) {
-      throw new TypeError("Dependent name must be given as a not empty string");
-    }
-
-    deps = Array.isArray(deps) ? deps : [deps];
-
-    if (deps.length > 0) {
-      for (let dep of deps) {
-        if (typeof dep !== "string" || !dep) {
-          throw new TypeError(
-            "Dependency name must be given as a not empty string",
-          );
-        }
-
-        this.edges.push([item, dep]);
-      }
-    } else {
-      this.edges.push([item]);
-    }
-
-    return this;
-  }
-
-  /**
-   * Runs the toposorting and return an ordered array of strings
-   *
-   * @since   0.1.0
-   * @returns {String[]}  The list of items topologically sorted.
-   */
-  sort() {
-    let nodes = [];
-
-    //accumulate unique nodes into a large list
-    for (let edge of this.edges) {
-      for (let node of edge) {
-        if (nodes.indexOf(node) === -1) {
-          nodes.push(node);
-        }
-      }
-    }
-
-    //initialize the placement of nodes into the sorted array at the end
-    let place = nodes.length;
-
-    //initialize the sorted array with the same length as the unique nodes array
-    let sorted = new Array(nodes.length);
-
-    //define a visitor function that recursively traverses dependencies.
-    var visit = (node, predecessors) => {
-      //check if a node is dependent of itself
-      if (predecessors.length !== 0 && predecessors.indexOf(node) !== -1) {
-        throw new Error(
-          `Cyclic dependency found. ${node} is dependent of itself.\nDependency chain: ${predecessors.join(
-            " -> ",
-          )} => ${node}`,
-        );
-      }
-
-      let index = nodes.indexOf(node);
-
-      //if the node still exists, traverse its dependencies
-      if (index !== -1) {
-        let copy = false;
-
-        //mark the node as false to exclude it from future iterations
-        nodes[index] = false;
-
-        //loop through all edges and follow dependencies of the current node
-        for (let edge of this.edges) {
-          if (edge[0] === node) {
-            //lazily create a copy of predecessors with the current node concatenated onto it
-            copy = copy || predecessors.concat([node]);
-
-            //recurse to node dependencies
-            visit(edge[1], copy);
-          }
-        }
-
-        //add the node to the next place in the sorted array
-        sorted[--place] = node;
-      }
-    };
-
-    for (let i = 0; i < nodes.length; i++) {
-      let node = nodes[i];
-
-      //ignore nodes that have been excluded
-      if (node !== false) {
-        //mark the node as false to exclude it from future iterations
-        nodes[i] = false;
-
-        //loop through all edges and follow dependencies of the current node
-        for (let edge of this.edges) {
-          if (edge[0] === node) {
-            //recurse to node dependencies
-            visit(edge[1], [node]);
-          }
-        }
-
-        //add the node to the next place in the sorted array
-        sorted[--place] = node;
-      }
-    }
-
-    return sorted;
-  }
-
-  /**
-   * Clears edges
-   *
-   * @since   0.4.0
-   * @returns {Toposort}                  The Toposort instance
-   */
-  clear() {
-    this.edges = [];
-
-    return this;
-  }
-}
-
-export { H5PElement, H5PStandalone, Toposort };
+export { H5PElement };

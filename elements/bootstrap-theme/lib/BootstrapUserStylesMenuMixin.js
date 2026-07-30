@@ -313,7 +313,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       import("@haxtheweb/simple-popover/simple-popover.js");
       import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       return html`
-        <link rel="stylesheet" href="${this._bootstrapPath}" />
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
@@ -329,6 +328,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           class="hcusm pull-left font-settings js-toolbar-action hcusm-settings-container"
           ?hidden="${this.hideUserStylesMenu}"
           id="haxcmsuserstylesmenu"
+          aria-label="Text settings"
           auto
         >
           <div class="open">
@@ -337,22 +337,28 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <span class="hcusm-caret-inner"></span>
             </div>
             <div class="btn-group-title">Font Size</div>
-            <div class="btn-group" role="group">
-              <button class="btn btn-size" @click="${this.UserStylesSizeDown}">
+            <div class="btn-group" role="group" aria-label="Font size">
+              <button
+                class="btn btn-size"
+                aria-label="Decrease font size"
+                @click="${this.UserStylesSizeDown}"
+              >
                 A
               </button>
               <button
                 class="btn btn-size size-2"
+                aria-label="Increase font size"
                 @click="${this.UserStylesSizeUp}"
               >
                 A
               </button>
             </div>
             <div class="btn-group-title">Font Family</div>
-            <div class="btn-group" role="group">
+            <div class="btn-group" role="group" aria-label="Font family">
               <button
                 class="btn btn-font"
                 data-font="0"
+                aria-pressed="${this.fontFamily === 0 ? "true" : "false"}"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Sans
@@ -360,16 +366,18 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <button
                 class="btn btn-font"
                 data-font="1"
+                aria-pressed="${this.fontFamily === 1 ? "true" : "false"}"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Monospace
               </button>
             </div>
             <div class="btn-group-title">Theme Color</div>
-            <div class="btn-group">
+            <div class="btn-group" role="group" aria-label="Theme color">
               <button
                 class="btn btn-light"
                 data-theme="0"
+                aria-pressed="${this.colorTheme === 0 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
                 Light
@@ -377,6 +385,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <button
                 class="btn btn-palenight"
                 data-theme="2"
+                aria-pressed="${this.colorTheme === 2 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
                 Palenight
@@ -384,6 +393,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <button
                 class="btn btn-dark"
                 data-theme="1"
+                aria-pressed="${this.colorTheme === 1 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
                 Dark

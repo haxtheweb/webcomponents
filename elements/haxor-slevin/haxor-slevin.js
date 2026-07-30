@@ -94,6 +94,13 @@ class HaxorSlevin extends HAXCMSThemeParts(
           padding-right: 20px;
           margin: 0 auto;
         }
+        .home-title {
+          font-size: var(--ddd-font-size-xl);
+          font-weight: var(--ddd-font-weight-bold);
+          text-align: center;
+          margin: 0 0 var(--ddd-spacing-6);
+          padding: 0 var(--ddd-spacing-4);
+        }
         :host([selected-page="1"]) #home {
           display: none;
         }
@@ -195,7 +202,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           top: 160px;
           position: fixed;
           z-index: 99;
-          margin-left: -10vw;
+          margin-left: max(-10vw, -96px);
           opacity: 1;
           transition: 0.3s opacity linear;
         }
@@ -326,11 +333,20 @@ class HaxorSlevin extends HAXCMSThemeParts(
             display: none;
           }
         }
+        a:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        .backbutton::part(button):focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
       `,
     ];
   }
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header class="header-wrapper">
         <div>
           <site-modal
@@ -346,6 +362,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
         <div>
           <simple-icon-button-lite
             class="backbutton"
+            label="Home"
             @click="${this._goBack}"
             icon="${this.icon}"
           >
@@ -356,6 +373,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
       </header>
       <div class="wrapper">
         <div id="home">
+          <h1 class="home-title">${this.title}</h1>
           <site-query
             @result-changed="${this.__mainPostsChanged}"
             limit="10"
@@ -374,6 +392,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
                   image-src="${post.metadata && post.metadata.image
                     ? post.metadata.image
                     : this.image}"
+                  image-alt="${post.title}"
                 >
                   <div slot="heading"><h3>${post.title}</h3></div>
                   <p slot="content">
@@ -428,6 +447,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
                   image-src="${post.metadata && post.metadata.image
                     ? post.metadata.image
                     : this.image}"
+                  image-alt="${post.title}"
                 >
                   <div slot="heading"><h3>${post.title}</h3></div>
                   <div slot="subheading">
@@ -443,7 +463,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
               >
             `,
           )}
-          <nav class="social-float hide-small ${this.stateClass}">
+          <nav class="social-float hide-small ${this.stateClass}" aria-label="Social links">
             <ul>
               <li>
                 <social-share-link

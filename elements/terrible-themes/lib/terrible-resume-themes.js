@@ -12,7 +12,6 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
-import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
  * @title Terrible Resume
@@ -59,6 +58,12 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
           background-color: #020613;
           color: #f5f5f5;
         }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #020613;
+            color: #f5f5f5;
+          }
+        }
       `,
     ];
   }
@@ -74,6 +79,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
+          color-scheme: light dark;
         }
         :host([dark-mode]) {
           color: #f5f5f5;
@@ -91,7 +97,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
           text-decoration: none;
         }
         a:hover {
-          color: red;
+          color: #cc0000;
           text-decoration: none;
         }
         :host([dark-mode]) a {
@@ -111,7 +117,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
           text-decoration: none;
         }
         a.menu:hover {
-          color: gray;
+          color: #555555;
           text-decoration: none;
         }
         site-top-menu {
@@ -135,6 +141,24 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
         site-top-menu::part(button) {
           font-size: 18px;
         }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        table {
+          max-width: 100%;
+        }
+        @media (max-width: 820px) {
+          :host table {
+            width: 100% !important;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          :host {
+            color: #f5f5f5;
+          }
+        }
       `,
     ];
   }
@@ -143,7 +167,9 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <table
+        role="presentation"
         align="center"
         cellspacing="0"
         cellpadding="0"
@@ -153,11 +179,12 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
         <tbody>
           <tr>
             <td>
-              <table border="0" cellpadding="0" cellspacing="0" width="800">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="800">
                 <tbody>
                   <tr>
                     <td bgcolor="white">
                       <table
+                        role="presentation"
                         cellpadding="0"
                         cellspacing="0"
                         border="0"
@@ -182,6 +209,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                   <tr>
                     <td>
                       <table
+                        role="presentation"
                         border="0"
                         cellpadding="0"
                         align="center"
@@ -195,7 +223,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           <tr>
                             <td width="25"></td>
                             <td>
-                              <main id="contentcontainer" role="main">
+                              <main id="contentcontainer" role="main" tabindex="-1">
                                 <site-active-title
                                   dynamic-methodology="ancestor"
                                 ></site-active-title>
@@ -207,7 +235,7 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           </tr>
                         </tbody>
                       </table>
-                      <aside>
+                      <aside aria-label="Sub-pages">
                         <site-children-block
                           dynamic-methodology="ancestor"
                         ></site-children-block>

@@ -17,25 +17,19 @@ class JwtLogin extends LitElement {
     this.key = "jwt";
     this.jwt = null;
     this.ready = false;
-  }
-  /**
-   * Handle the last error rolling in
-   */
-  lastErrorChanged(e) {
-    if (e && this.__context != "logout" && this.__context != "refresh") {
-      // check for JWT needing refreshed vs busted but must be 403
-      console.warn(e);
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-refresh-error", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: {
-            value: e,
-          },
-        }),
-      );
-    }
+    // Phase 2 (M2 race fix): per-request context is now captured in closures
+    // inside generateRequest, so overlapping login/refresh/logout fetches can
+    // no longer clobber each other via a single mutable __context field.
+    // Shared refresh state so overlapping reactive refreshes subscribe to the
+    // same promise instead of overwriting each other's __element.
+    this.__refreshInFlight = false;
+    this.__refreshPromise = null;
+    this.__refreshSubscribers = [];
+    // Track login/logout in-flight so proactive refresh is skipped while those
+    // are active, and so logout can cancel a pending proactive refresh.
+    this.__loginInFlight = false;
+    this.__logoutInFlight = false;
+    this.__proactiveRefreshTimer = null;
   }
 
   static get tag() {
@@ -44,68 +38,18 @@ class JwtLogin extends LitElement {
 
   static get properties() {
     return {
-      /**
-       * auto, useful for demos
-       */
-      auto: {
-        type: Boolean,
-      },
-      /**
-       * refreshUrl to get a new JSON web token
-       */
-      refreshUrl: {
-        type: String,
-        attribute: "refresh-url",
-      },
-      /**
-       * where to redirect for a login token if we REALLY are logged out
-       */
-      redirectUrl: {
-        type: String,
-        attribute: "redirect-url",
-      },
-      /**
-       * logout url
-       */
-      logoutUrl: {
-        type: String,
-        attribute: "logout-url",
-      },
-      /**
-       * url to get the JWT
-       */
-      url: {
-        type: String,
-      },
-      /**
-       * Request method
-       */
-      method: {
-        type: String,
-      },
-      /**
-       * Optional body, useful when doing posts
-       */
-      body: {
-        type: Object,
-      },
-      /**
-       * Key that contains the token in local storage
-       */
-      key: {
-        type: String,
-      },
-      /**
-       * JSON Web token to securely pass around
-       */
-      jwt: {
-        type: String,
-      },
+      auto: { type: Boolean },
+      refreshUrl: { type: String, attribute: "refresh-url" },
+      redirectUrl: { type: String, attribute: "redirect-url" },
+      logoutUrl: { type: String, attribute: "logout-url" },
+      url: { type: String },
+      method: { type: String },
+      body: { type: Object },
+      key: { type: String },
+      jwt: { type: String },
     };
   }
-  /**
-   * LitElement life cycle - properties changed callback
-   */
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -120,24 +64,28 @@ class JwtLogin extends LitElement {
       ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
-          this.generateRequest(this.url, this.body);
+          this.generateRequest(this.url, this.body, {
+            context: "login",
+          });
         }, 0);
       }
       if (propName == "jwt") {
         this._jwtChanged(this[propName], oldValue);
-        // notify
         this.dispatchEvent(
           new CustomEvent("jwt-changed", {
-            detail: {
-              value: this[propName],
-            },
+            detail: { value: this[propName] },
           }),
         );
       }
     });
   }
+
+  // Phase 3 (M1): the access JWT is no longer written to or read from
+  // localStorage. It lives in element state / MobX stores only for the current
+  // page lifetime. Rehydration after a page reload happens via connectionTest
+  // + the HttpOnly refresh cookie. HAXiam's server-injected appSettings.jwt
+  // is preserved as a non-persistent bootstrap input (see firstUpdated).
   _jwtChanged(newValue, oldValue) {
-    // Extract string jwt from object if needed (defensive)
     let actualValue = newValue;
     if (newValue && typeof newValue === 'object' && newValue.jwt && typeof newValue.jwt === 'string') {
       actualValue = newValue.jwt;
@@ -146,9 +94,9 @@ class JwtLogin extends LitElement {
       (actualValue == null || actualValue == "" || actualValue == "null") &&
       typeof oldValue !== typeof undefined
     ) {
-      // remove this key from local storage bin
-      localStorage.removeItem(this.key);
-      // jwt was invalid some how
+      // Phase 3: clear any stale localStorage key from a previous version so
+      // users are migrated away from persisted access tokens.
+      try { localStorage.removeItem(this.key); } catch (e) {}
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,
@@ -158,10 +106,7 @@ class JwtLogin extends LitElement {
         }),
       );
     } else if (actualValue) {
-      // set the jwt into local storage so we can reference later
-      try {
-        localStorage.setItem(this.key, JSON.stringify(actualValue));
-      } catch (e) {}
+      // Phase 3: no longer writing to localStorage; the token stays in-memory.
       this.dispatchEvent(
         new CustomEvent("jwt-token", {
           bubbles: true,
@@ -179,10 +124,9 @@ class JwtLogin extends LitElement {
         }),
       );
     }
+    this._scheduleProactiveRefresh();
   }
-  /**
-   * HTMLElement
-   */
+
   connectedCallback() {
     super.connectedCallback();
     globalThis.addEventListener(
@@ -190,74 +134,98 @@ class JwtLogin extends LitElement {
       this.requestRefreshToken.bind(this),
       { signal: this.windowControllers.signal },
     );
-
     globalThis.addEventListener(
       "jwt-login-toggle",
       this.toggleLogin.bind(this),
-      {
-        signal: this.windowControllers.signal,
-      },
+      { signal: this.windowControllers.signal },
     );
-
     globalThis.addEventListener(
       "jwt-login-login",
       this.loginRequest.bind(this),
-      {
-        signal: this.windowControllers.signal,
-      },
+      { signal: this.windowControllers.signal },
     );
-
     globalThis.addEventListener(
       "jwt-login-logout",
       this.logoutRequest.bind(this),
-      {
-        signal: this.windowControllers.signal,
-      },
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "visibilitychange",
+      this._onVisibilityChange.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "focus",
+      this._onVisibilityChange.bind(this),
+      { signal: this.windowControllers.signal },
     );
   }
-  /**
-   * HTMLElement
-   */
+
   disconnectedCallback() {
+    clearTimeout(this.__proactiveRefreshTimer);
+    this.__proactiveRefreshTimer = null;
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
-  /**
-   * LitElement life cycle - ready
-   */
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
     this.ready = true;
-    // Only load from localStorage if a parent element hasn't already provided a JWT
+    // Phase 3 (M1): no longer reading the JWT from localStorage on startup.
+    // The access JWT must come from appSettings.jwt (HAXiam / server-injected
+    // bootstrap) or from connectionTest + the HttpOnly refresh cookie. Clear
+    // any stale localStorage key from a previous version.
     Promise.resolve().then(() => {
-      if (!this.jwt) {
-        try {
-          const stored = localStorage.getItem(this.key);
-          if (stored) {
-            this.jwt = JSON.parse(stored);
-          }
-        } catch (e) {
-          // Corrupted localStorage value; clear it to prevent future loops
-          localStorage.removeItem(this.key);
-          this.jwt = null;
-        }
-      }
+      try { localStorage.removeItem(this.key); } catch (e) {}
     });
   }
-  /**
-   * Request a refresh token
-   */
+
+  // Phase 2 (M2 race fix): requestRefreshToken now subscribes to a shared
+  // refresh promise when one is in flight, instead of overwriting the single
+  // __element/__context fields. This prevents overlapping reactive refreshes
+  // from dropping each other's retry callbacks.
   requestRefreshToken(e) {
-    this.__context = "refresh";
-    if (e.detail.element) {
-      this.__element = e.detail.element;
+    const element = e && e.detail && e.detail.element ? e.detail.element : null;
+    if (this.__refreshInFlight && this.__refreshPromise) {
+      if (element) {
+        this.__refreshSubscribers.push(element);
+      }
+      return;
     }
-    this.generateRequest(this.refreshUrl);
+    this._startRefresh(element, false);
   }
-  // generate request for token data
-  generateRequest(url, body = {}) {
+
+  // Centralized refresh starter. `element` is the requesting element (for
+  // reactive refresh) or null (for proactive refresh). `proactive` indicates
+  // whether this is a silent proactive refresh (failure stays non-fatal).
+  _startRefresh(element, proactive) {
+    if (!this.refreshUrl || this.refreshUrl === "") {
+      return;
+    }
+    this.__refreshInFlight = true;
+    this.__refreshSubscribers = [];
+    if (element) {
+      this.__refreshSubscribers.push(element);
+    }
+    const meta = {
+      context: "refresh",
+      element: null,
+      proactive: proactive,
+    };
+    this.__refreshPromise = this.generateRequest(this.refreshUrl, {}, meta);
+  }
+
+  // Phase 2 (M2 race fix): generateRequest now accepts a `meta` object and
+  // captures it in closures so the async response handlers use the context
+  // that was active when the request was started, not a mutable field that
+  // may have been overwritten by a later entry point.
+  generateRequest(url, body = {}, meta = {}) {
+    const ctx = meta.context || "login";
+    const element = meta.element || null;
+    const proactive = meta.proactive || false;
+    const redirect = meta.redirect || false;
     let data = {
       method: this.method,
       headers: {
@@ -267,80 +235,195 @@ class JwtLogin extends LitElement {
     if (this.method != "GET") {
       data.body = JSON.stringify(body);
     }
-    fetch(url, data)
+    return fetch(url, data)
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          // prevent infinite loop if we fail on the logout endpoint
-          if (
-            this.__context == "logout" &&
-            this.__redirect &&
-            this.redirectUrl
-          ) {
-            setTimeout(() => {
-              globalThis.location.href = this.redirectUrl;
-            }, 100);
-          }
-          // message so things know out login attempt failed
-          else if (this.__context == "login") {
-            this.dispatchEvent(
-              new CustomEvent("jwt-login-login-failed", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: true,
-              }),
-            );
-          }
-          this.lastErrorChanged(response);
+          this._handleResponseError(response, { ctx, element, proactive, redirect });
+          return null;
         }
       })
       .then((jwtData) => {
+        if (!jwtData) {
+          return;
+        }
         try {
           const token = jwtData;
-          if (token) {
-            // support direct response back
-            // or nested object (v0 envelope: {status, data: {jwt}})
-            if (token.jwt && typeof token.jwt === 'string') {
-              this.loginResponse(token.jwt);
-            } else if (token.data && token.data.jwt && typeof token.data.jwt === 'string') {
-              this.loginResponse(token.data.jwt);
-            } else {
-              this.loginResponse(token);
-            }
+          let actualJwt = token;
+          if (token.jwt && typeof token.jwt === 'string') {
+            actualJwt = token.jwt;
+          } else if (token.data && token.data.jwt && typeof token.data.jwt === 'string') {
+            actualJwt = token.data.jwt;
+          } else if (typeof token === 'string') {
+            actualJwt = token;
           }
+          this._handleResponseSuccess(actualJwt, { ctx, element, proactive, redirect });
         } catch (e) {
           console.warn(e);
         }
+      })
+      .catch((err) => {
+        this._handleNetworkError(err, { ctx, element, proactive, redirect });
       });
   }
-  /**
-   * Request a user login if we need one or log out
-   */
+
+  // Phase 2: success handler uses the captured context, not this.__context
+  _handleResponseSuccess(actualJwt, meta) {
+    const ctx = meta.ctx;
+    const element = meta.element;
+    switch (ctx) {
+      case "login":
+        this.__loginInFlight = false;
+        this.jwt = actualJwt;
+        break;
+      case "refresh":
+        this.__refreshInFlight = false;
+        this.__refreshPromise = null;
+        this.jwt = actualJwt;
+        if (element) {
+          this._invokeRefreshCallback(element, actualJwt);
+        }
+        var subs = this.__refreshSubscribers;
+        this.__refreshSubscribers = [];
+        for (var i = 0; i < subs.length; i++) {
+          this._invokeRefreshCallback(subs[i], actualJwt);
+        }
+        break;
+      case "logout":
+        this.__logoutInFlight = false;
+        if (meta.redirect && this.redirectUrl) {
+          setTimeout(() => {
+            globalThis.location.href = this.redirectUrl;
+          }, 100);
+        }
+        break;
+    }
+  }
+
+  _invokeRefreshCallback(element, jwt) {
+    if (!element || !element.obj || typeof element.obj[element.callback] !== 'function') {
+      return;
+    }
+    try {
+      element.obj[element.callback](jwt, ...element.params);
+    } catch (e) {
+      console.warn("jwt refresh callback error", e);
+    }
+  }
+
+  // Phase 2: error handler uses the captured context
+  _handleResponseError(response, meta) {
+    var ctx = meta.ctx;
+    var proactive = meta.proactive;
+    var redirect = meta.redirect;
+    if (ctx === "logout" && redirect && this.redirectUrl) {
+      setTimeout(() => {
+        globalThis.location.href = this.redirectUrl;
+      }, 100);
+      return;
+    }
+    if (ctx === "login") {
+      this.__loginInFlight = false;
+      this.dispatchEvent(
+        new CustomEvent("jwt-login-login-failed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true,
+        }),
+      );
+    }
+    if (ctx === "refresh") {
+      this.__refreshInFlight = false;
+      this.__refreshPromise = null;
+      this.__refreshSubscribers = [];
+      if (proactive) {
+        console.warn("jwt proactive refresh failed", response);
+        return;
+      }
+      console.warn("jwt refresh failed", response);
+      this.dispatchEvent(
+        new CustomEvent("jwt-login-refresh-error", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: { value: response },
+        }),
+      );
+      return;
+    }
+    console.warn(response);
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-refresh-error", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: { value: response },
+      }),
+    );
+  }
+
+  // Phase 2: network error handler uses the captured context
+  _handleNetworkError(err, meta) {
+    var ctx = meta.ctx;
+    var proactive = meta.proactive;
+    if (ctx === "login") {
+      this.__loginInFlight = false;
+    }
+    if (ctx === "refresh") {
+      this.__refreshInFlight = false;
+      this.__refreshPromise = null;
+      this.__refreshSubscribers = [];
+      if (proactive) {
+        console.warn("jwt proactive refresh network error", err);
+        return;
+      }
+      console.warn("jwt refresh network error", err);
+      this.dispatchEvent(
+        new CustomEvent("jwt-login-refresh-error", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: { value: err },
+        }),
+      );
+      return;
+    }
+    if (ctx === "logout") {
+      this.__logoutInFlight = false;
+    }
+    console.warn(err);
+  }
+
   toggleLogin(e) {
-    // null is default, if we don't have anything go get one
     if (this.jwt == null) {
       this.loginRequest(e);
     } else {
       this.logoutRequest(e);
     }
   }
+
   loginRequest(e) {
-    this.__context = "login";
-    // detail of a login request event is the body which should have
-    // the authorization data in it
+    this.__loginInFlight = true;
     this.body = e.detail;
-    this.generateRequest(this.url, this.body);
+    this.generateRequest(this.url, this.body, {
+      context: "login",
+    });
   }
+
+  // Phase 2: logout cancels any pending proactive refresh and marks logout
+  // in-flight so a late proactive refresh result cannot re-arm the JWT
   logoutRequest(e) {
-    this.__context = "logout";
-    this.__redirect = e.detail.redirect;
-    // we were told to logout, reset body
+    clearTimeout(this.__proactiveRefreshTimer);
+    this.__proactiveRefreshTimer = null;
+    this.__logoutInFlight = true;
+    this.__refreshInFlight = false;
+    this.__refreshPromise = null;
+    this.__refreshSubscribers = [];
     this.body = {};
-    // reset jwt which will do all the events / local storage work
     this.jwt = null;
-    // only attempt logout call if we have a valid logoutUrl
+    var redirect = e && e.detail ? e.detail.redirect : false;
     if (
       this.logoutUrl &&
       this.logoutUrl !== "" &&
@@ -349,63 +432,141 @@ class JwtLogin extends LitElement {
       if (this.isDifferentDomain(this.logoutUrl)) {
         globalThis.location.href = this.logoutUrl;
       } else {
-        this.generateRequest(this.logoutUrl);
+        this.generateRequest(this.logoutUrl, {}, {
+          context: "logout",
+          redirect: redirect,
+        });
       }
-    } else if (this.__redirect && this.redirectUrl) {
-      // if no logout endpoint but we have redirect, go there
+    } else if (redirect && this.redirectUrl) {
       setTimeout(() => {
         globalThis.location.href = this.redirectUrl;
       }, 100);
     }
   }
+
   isDifferentDomain(urlToCheck) {
     try {
-      const currentUrl = new URL(globalThis.location.href);
-      // Handle both absolute and relative URLs by providing base URL
-      const targetUrl = new URL(urlToCheck, globalThis.location.href);
-
+      var currentUrl = new URL(globalThis.location.href);
+      var targetUrl = new URL(urlToCheck, globalThis.location.href);
       return currentUrl.hostname !== targetUrl.hostname;
     } catch (error) {
       console.error("Invalid URL provided:", error);
-      return false; // Or handle the error as appropriate for your application
+      return false;
     }
   }
-  /**
-   * Login bridge to get a JWT and hang onto it
-   */
-  loginResponse(response) {
-    // trap in case front end thinks this is a valid response..
-    let actualJwt = response;
-    if (response && typeof response === 'object') {
-      if (response.jwt && typeof response.jwt === 'string') {
-        actualJwt = response.jwt;
-      } else if (response.data && typeof response.data === 'object' && response.data.jwt && typeof response.data.jwt === 'string') {
-        actualJwt = response.data.jwt;
-      }
+
+  // Phase 5 (L3): renamed from _decodeJwtExp to make it explicit that this is
+  // an UNVERIFIED decode of the exp claim for proactive-refresh scheduling
+  // only. It does NOT validate the JWT signature -- the server always
+  // re-validates the real token on the refresh call. Do not use this for any
+  // auth/security decision.
+  _decodeJwtExpUnverified(jwt) {
+    if (!jwt || typeof jwt !== "string") {
+      return 0;
     }
-    switch (this.__context) {
-      case "login":
-        this.jwt = actualJwt;
-        break;
-      case "refresh":
-        // jwt change events will propagate and do their thing
-        this.jwt = actualJwt;
-        // if we had a requesting element, let's let it do its thing
-        if (this.__element) {
-          this.__element.obj[this.__element.callback](
-            this.jwt,
-            ...this.__element.params,
-          );
-          this.__element = false;
-        }
-        break;
-      case "logout":
-        if (this.__redirect && this.redirectUrl) {
-          setTimeout(() => {
-            globalThis.location.href = this.redirectUrl;
-          }, 100);
-        }
-        break;
+    var parts = jwt.split(".");
+    if (parts.length < 2) {
+      return 0;
+    }
+    try {
+      var payload = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+      while (payload.length % 4) {
+        payload += "=";
+      }
+      var decoded = globalThis.atob(payload);
+      var parsed = JSON.parse(decoded);
+      if (parsed && typeof parsed.exp === "number") {
+        return parsed.exp;
+      }
+    } catch (e) {}
+    return 0;
+  }
+
+  _hasValidJwtForRefresh(jwt) {
+    if (!jwt) {
+      return false;
+    }
+    if (typeof jwt === "string") {
+      return jwt !== "" && jwt !== "null";
+    }
+    if (typeof jwt === "object" && jwt.jwt && typeof jwt.jwt === "string") {
+      return jwt.jwt !== "" && jwt.jwt !== "null";
+    }
+    return false;
+  }
+
+  _scheduleProactiveRefresh() {
+    clearTimeout(this.__proactiveRefreshTimer);
+    this.__proactiveRefreshTimer = null;
+    if (!this.refreshUrl || this.refreshUrl === "") {
+      return;
+    }
+    if (this.__loginInFlight || this.__logoutInFlight) {
+      return;
+    }
+    if (globalThis.appSettings && globalThis.appSettings.jwt) {
+      return;
+    }
+    if (!this._hasValidJwtForRefresh(this.jwt)) {
+      return;
+    }
+    var exp = this._decodeJwtExpUnverified(this.jwt);
+    if (!exp) {
+      return;
+    }
+    var msUntilExpiry = exp * 1000 - Date.now();
+    if (msUntilExpiry <= 0) {
+      return;
+    }
+    var leadMs = 60000;
+    var delay = msUntilExpiry - leadMs;
+    if (delay < 0) {
+      delay = 0;
+    }
+    this.__proactiveRefreshTimer = setTimeout(() => {
+      this.__proactiveRefreshTimer = null;
+      this._requestProactiveRefreshToken();
+    }, delay);
+  }
+
+  _requestProactiveRefreshToken() {
+    if (this.__refreshInFlight) {
+      return;
+    }
+    if (this.__loginInFlight || this.__logoutInFlight) {
+      return;
+    }
+    if (!this._hasValidJwtForRefresh(this.jwt)) {
+      return;
+    }
+    if (!this.refreshUrl || this.refreshUrl === "") {
+      return;
+    }
+    this._startRefresh(null, true);
+  }
+
+  _onVisibilityChange() {
+    if (
+      !globalThis.document ||
+      globalThis.document.visibilityState !== "visible"
+    ) {
+      return;
+    }
+    if (!this._hasValidJwtForRefresh(this.jwt)) {
+      return;
+    }
+    if (this.__loginInFlight || this.__logoutInFlight) {
+      return;
+    }
+    var exp = this._decodeJwtExpUnverified(this.jwt);
+    if (!exp) {
+      return;
+    }
+    var msUntilExpiry = exp * 1000 - Date.now();
+    if (msUntilExpiry <= 0 || msUntilExpiry < 120000) {
+      this._requestProactiveRefreshToken();
+    } else {
+      this._scheduleProactiveRefresh();
     }
   }
 }

@@ -60,7 +60,8 @@ class CleanTwo extends LTIResizingMixin(
         :host {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           display: block;
-          color: light-dark(black, var(--ddd-accent-6));
+          color-scheme: light dark;
+          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -192,7 +193,7 @@ class CleanTwo extends LTIResizingMixin(
           max-height: 50px;
           overflow: hidden;
         }
-        site-menu-button:focus,
+        site-menu-button:focus-visible,
         site-menu-button:focus-within,
         site-menu-button:hover {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -243,6 +244,7 @@ class CleanTwo extends LTIResizingMixin(
           -moz-transition: margin-bottom 0.3s ease;
           -webkit-box-align: stretch;
           overflow-x: hidden;
+          contain: layout paint;
         }
         :host([is-logged-in]) .body-wrapper {
           height: calc(100vh - 56px);
@@ -284,6 +286,7 @@ class CleanTwo extends LTIResizingMixin(
           -webkit-box-align: stretch;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
+          contain: layout paint;
         }
         .left-col {
           display: -webkit-box;
@@ -329,7 +332,7 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
-          color: light-dark(black, var(--ddd-accent-6));
+          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),
             var(--ddd-accent-6)
@@ -645,15 +648,20 @@ class CleanTwo extends LTIResizingMixin(
         }
         site-breadcrumb {
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
-          color: light-dark(black, var(--ddd-accent-6));
+          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
           --site-breadcrumb-color: light-dark(
             var(--ddd-theme-default-link),
             var(--ddd-theme-default-linkLight)
           );
-          --site-breadcrumb-last-color: light-dark(black, var(--ddd-accent-6));
+          --site-breadcrumb-last-color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
         }
         .search-modal-btn {
           margin-top: 16px;
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
       `,
     ];
@@ -711,6 +719,7 @@ class CleanTwo extends LTIResizingMixin(
   render() {
     return html`
       <div class="body-wrapper">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">

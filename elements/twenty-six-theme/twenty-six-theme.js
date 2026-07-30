@@ -12,7 +12,6 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@haxtheweb/simple-datetime/simple-datetime.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
@@ -251,6 +250,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           color: var(--twenty-six-sidebar-text);
           min-height: calc(100vh - var(--ddd-spacing-16));
           box-sizing: border-box;
+          contain: layout paint;
         }
 
         site-title {
@@ -452,6 +452,11 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           color: var(--twenty-six-post-hover-text);
         }
 
+        site-menu-button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+
         site-menu-button .top {
           display: block;
           font-family: var(--ddd-font-navigation);
@@ -541,6 +546,10 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       super.updated(changedProperties);
     }
     this.__queueContrastSync();
+    if (changedProperties.has("pageCreated") && this.pageCreated) {
+      // Defer simple-datetime import until a page date is actually needed
+      import("@haxtheweb/simple-datetime/simple-datetime.js");
+    }
   }
 
   render() {
@@ -550,13 +559,14 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const tags = this._tagsArray(this.activeTags);
     const hasMetadata = this.pageCreated || tags.length > 0;
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <site-query
         @result-changed="${this.__topMenuResultChanged}"
         .conditions="${this.topMenuConditions}"
         .sort="${this.topMenuSort}"
       ></site-query>
       <div class="layout">
-        <aside class="sidebar" part="sidebar">
+        <aside class="sidebar" part="sidebar" aria-label="Site information">
           <div class="sidebar-inner">
             <site-title
               .part="${this.editMode ? `edit-mode-active` : ``}"

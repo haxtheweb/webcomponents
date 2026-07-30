@@ -110,6 +110,18 @@ class PolarisInventTheme extends LTIResizingMixin(
           --polaris-content-bg-color: var(--ddd-palette-light);
           --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
         }
+        /* Safari < 17.4 lacks light-dark(); dark fallback */
+        :host([is-safari][dark-mode]) {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-palette-light);
+          --polaris-content-bg-color: var(--ddd-theme-default-coalyGray);
+          --polaris-nav-bg-color: var(--ddd-theme-default-coalyGray);
+        }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
 
         :host([data-palette="8"]) site-menu,
         :host([data-palette="11"]) site-menu,
@@ -376,12 +388,18 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
 
         .footer-secondary a:hover {
-          color: #ddd;
+          color: var(--ddd-theme-default-white, #fff);
         }
 
         .footer-secondary a {
-          border-bottom: 1px solid #666;
-          color: #999;
+          border-bottom: 1px solid var(
+            --ddd-palette-text-color-3,
+            var(--ddd-theme-default-limestoneGray)
+          );
+          color: var(
+            --ddd-palette-text-color-3,
+            var(--ddd-theme-default-limestoneGray)
+          );
         }
         .footer-secondary p {
           margin: 0 0 24px;
@@ -563,6 +581,7 @@ class PolarisInventTheme extends LTIResizingMixin(
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#main">Skip to content</a>
       <div id="haxcms-theme-top"></div>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
@@ -601,7 +620,7 @@ class PolarisInventTheme extends LTIResizingMixin(
             ${this.HAXCMSMobileMenu()}
           </div>
         </div>
-        <main id="main">
+        <main id="main" tabindex="-1">
           <article id="contentcontainer">
             <site-active-title part="page-title"></site-active-title>
             <site-active-tags

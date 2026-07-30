@@ -138,11 +138,16 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         background-color: #1f1f1f;
   
       }
+      /* Strengthen keyboard focus indicator on filter buttons (WCAG 2.4.7) */
+      .filter:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
 
       .filter{
         font-family: "Inter", "Inter Placeholder", sans-serif;
         font-size: 1rem;
-        color: rgb(153, 153, 153);
+        color: #b3b3b3; /* lightened from #999 to meet >=4.5:1 contrast on #111 bg */
         padding: 8px 12px;
         border-radius: 24px;
       }

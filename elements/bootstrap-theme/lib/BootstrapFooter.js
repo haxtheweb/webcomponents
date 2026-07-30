@@ -3,6 +3,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
 
 class BootstrapFooter extends LitElement {
   static get tag() {
@@ -58,6 +59,10 @@ class BootstrapFooter extends LitElement {
           text-decoration: none;
           color: #007bff;
         }
+        a:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
         /* dark theme */
         :host([color-theme="1"]) {
           --simple-icon-color: var(--bootstrap-theme-dark-color);
@@ -67,7 +72,7 @@ class BootstrapFooter extends LitElement {
           color: var(--bootstrap-theme-dark-color);
           background-color: transparent;
           background-image: none;
-          border-color: #6c757d;
+          border-color: #adb5bd;
         }
 
         :host([color-theme="1"]) .btn:hover {
@@ -96,7 +101,7 @@ class BootstrapFooter extends LitElement {
           color: var(--bootstrap-theme-palenight-color);
           background-color: transparent;
           background-image: none;
-          border-color: #6c757d;
+          border-color: #adb5bd;
         }
 
         :host([color-theme="2"]) .btn:hover {
@@ -172,7 +177,6 @@ class BootstrapFooter extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="${this._bootstrapPath}" />
       <nav class="container" role="navigation" aria-label="Page navigation">
         ${this._backwardItem && this._backwardItem.slug
           ? html`
@@ -208,6 +212,10 @@ class BootstrapFooter extends LitElement {
           : ""}
       </nav>
     `;
+  }
+
+  firstUpdated() {
+    adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 
   _resolveBootstrapStylesheetPath() {

@@ -54,12 +54,14 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   }
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="logo-wrapper">
           <site-region name="header"></site-region>
         </div>
         <nav
           class="menu"
+          aria-label="Section navigation"
           .part="site-nav ${this.editMode ? `edit-mode-active` : ``}"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
@@ -68,11 +70,9 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
             (section) => html`
               <a
                 href="${this.activePathName}#${section.id}"
-                tabindex="-1"
                 class="menu-item"
-                ><button data-target="${section.id}">
-                  ${section.label}
-                </button></a
+                data-target="${section.id}"
+                >${section.label}</a
               >
             `,
           )}
@@ -127,7 +127,6 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    globalThis.document.body.style.setProperty("--haxcms-color", "white");
     // in-case coming from a theme that undoes this
     globalThis.document.body.style.overflow = "auto";
   }
@@ -197,30 +196,33 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
 
         .menu .menu-item {
           display: flex;
+          align-items: center;
+          justify-content: center;
           text-decoration: none;
-          height: fit-content;
-          margin: 0;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .menu .menu-item button {
+          height: var(--ddd-spacing-16);
           margin: 0 var(--ddd-spacing-4);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           cursor: pointer;
-          text-decoration: none;
           font-size: var(--ddd-font-size-xs);
           background-color: transparent;
-          color: var(--primary-color-3);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
           border: 0;
-          height: var(--ddd-spacing-16);
           transition: all 0.3s ease-in-out;
         }
 
-        .menu .menu-item button:hover,
-        .menu .menu-item button:focus {
-          color: var(--secondary-color-1);
-          background-color: var(--primary-color-1);
+        .menu .menu-item:hover,
+        .menu .menu-item:focus-visible {
+          color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
           text-decoration: underline;
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
         }
 
         #top {
@@ -238,19 +240,19 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
             margin-right: 0px;
             margin-top: var(--ddd-spacing-1);
           }
-          .menu .menu-item button {
+          .menu .menu-item {
             margin: 0px var(--ddd-spacing-1);
           }
         }
 
         @media (max-width: 1200px) {
-          .menu .menu-item button {
+          .menu .menu-item {
             font-size: var(--ddd-font-size-3xs);
           }
         }
 
         @media (max-width: 1000px) {
-          .menu .menu-item button {
+          .menu .menu-item {
             padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           }
         }
@@ -259,7 +261,11 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
           #top {
             display: none;
           }
-          .menu .menu-item button {
+          .menu {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .menu .menu-item {
             margin: 0px var(--ddd-spacing-1);
             padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
             font-size: var(--ddd-font-size-4xs);

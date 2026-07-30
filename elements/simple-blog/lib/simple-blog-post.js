@@ -18,6 +18,7 @@ class SimpleBlogPost extends SimpleColors {
         :host {
           display: block;
           min-height: 80vh;
+          color-scheme: light dark;
         }
         main {
           transition:
@@ -244,18 +245,34 @@ class SimpleBlogPost extends SimpleColors {
    * Scroll event listener to do image effects.
    */
   _scrollListener(e) {
-    if (this.hasImage) {
-      let top =
-        (globalThis.pageYOffset || globalThis.document.scrollTop) -
-        (globalThis.document.clientTop || 0);
-      if (top < 0 || top > 1500) {
-        return;
-      }
-      this.shadowRoot.querySelector("#image").style.transform =
-        "translate3d(0px, " + top / 3 + "px, 0px)";
-      this.shadowRoot.querySelector("#image").style.opacity =
-        1 - Math.max(top / 700, 0);
+    // respect reduced-motion: skip JS parallax entirely
+    if (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
     }
+    if (this._scrollTicking) {
+      return;
+    }
+    this._scrollTicking = true;
+    requestAnimationFrame(() => {
+      this._scrollTicking = false;
+      if (this.hasImage) {
+        let top =
+          (globalThis.pageYOffset || globalThis.document.scrollTop) -
+          (globalThis.document.clientTop || 0);
+        if (top < 0 || top > 1500) {
+          return;
+        }
+        const image = this.shadowRoot.querySelector("#image");
+        if (image) {
+          image.style.transform =
+            "translate3d(0px, " + top / 3 + "px, 0px)";
+          image.style.opacity = 1 - Math.max(top / 700, 0);
+        }
+      }
+    });
   }
 
   /**

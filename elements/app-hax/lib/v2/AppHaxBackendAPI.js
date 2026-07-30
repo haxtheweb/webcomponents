@@ -144,7 +144,14 @@ export class AppHaxBackendAPI extends LitElement {
 
   constructor() {
     super();
-    this.jwt = localStorageGet("jwt", null);
+    // Phase 3 (M1): no longer reading the access JWT from localStorage. The
+    // token is initialized from globalThis.appSettings.jwt when present
+    // (HAXiam / server-injected bootstrap), otherwise null. Rehydration after
+    // a page reload happens via connectionTest + the HttpOnly refresh cookie.
+    this.jwt =
+      globalThis && globalThis.appSettings && globalThis.appSettings.jwt
+        ? globalThis.appSettings.jwt
+        : null;
     this.__loopBlock = false;
     this.__connectionTestPending = null;
     this.__retryCounts = {};
@@ -336,6 +343,32 @@ export class AppHaxBackendAPI extends LitElement {
     callback = false,
   ) {
     if (responseStatus === 401) {
+      // expired/invalid bearer: try to refresh first when we still have a
+      // jwt, mirroring the 403 path. Only clear the session when there are
+      // no credentials to refresh or the retry cap is exceeded.
+      if (this._hasValidJWT(this.jwt)) {
+        const retryCount = this._incrementRetryCount(retryKey);
+        if (retryCount > this.__maxRefreshRetries) {
+          this._clearRetryCount(retryKey);
+          this._clearAuthSession(true);
+        } else {
+          globalThis.dispatchEvent(
+            new CustomEvent("jwt-login-refresh-token", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                element: {
+                  obj: this,
+                  callback: "refreshRequest",
+                  params: [call, data, save, callback, retryKey],
+                },
+              },
+            }),
+          );
+        }
+        return true;
+      }
       this._clearRetryCount(retryKey);
       this._clearAuthSession(true);
       return true;
@@ -506,13 +539,9 @@ export class AppHaxBackendAPI extends LitElement {
       return this.__connectionTestPending;
     }
     store.authTesting = true;
-    const payload = {};
-    if (this._hasValidJWT(this.jwt)) {
-      payload.jwt = this.jwt;
-    }
-    if (this.token) {
-      payload.token = this.token;
-    }
+    // JWT travels via the Authorization Bearer header only. We no longer send
+    // jwt/token as request params (query string or body) for security and to
+    // match the NodeJS/PHP connectionTest backends which read Bearer only.
     const options = {
       method: this.method,
     };
@@ -521,17 +550,12 @@ export class AppHaxBackendAPI extends LitElement {
         Authorization: `Bearer ${this.jwt}`,
       };
     }
-    let requestUrl = this._renderUrl(this.appSettings.connectionTest);
-    if (this.method === "GET") {
-      const search = new URLSearchParams(payload).toString();
-      if (search) {
-        requestUrl += `?${search}`;
-      }
-    } else {
+    const requestUrl = this._renderUrl(this.appSettings.connectionTest);
+    if (this.method !== "GET" && this.method !== "HEAD") {
       options.headers = Object.assign(options.headers || {}, {
         "Content-Type": "application/json",
       });
-      options.body = JSON.stringify(payload);
+      options.body = JSON.stringify({});
     }
     this.__connectionTestPending = fetch(requestUrl, options)
       .then(async (response) => {
@@ -770,8 +794,14 @@ export class AppHaxBackendAPI extends LitElement {
    * Attempt to salvage the request that was kicked off
    * when our JWT needed refreshed
    */
-  refreshRequest(jwt, response) {
-    const { call, data, save, callback, retryKey } = response;
+  refreshRequest(
+    jwt,
+    call,
+    data = {},
+    save = false,
+    callback = false,
+    retryKey = "",
+  ) {
     // force the jwt to be the updated jwt
     // this helps avoid any possible event timing issue
     if (jwt) {

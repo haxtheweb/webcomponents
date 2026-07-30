@@ -53,14 +53,6 @@ export const JourneyTopbarThemeStyles = css`
     scroll-behavior: smooth;
   }
 
-  .active button {
-    background-color: light-dark(
-      var(--my-theme-low-tone),
-      var(--my-theme-high-tone)
-    );
-    color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
-    font-weight: bold;
-  }
   main {
     margin-top: 0px;
     padding: var(--ddd-spacing-8);
@@ -179,7 +171,7 @@ export const JourneyTopbarThemeStyles = css`
     }
     nav ul li a,
     nav.topbar-scroll a {
-      padding: 6px 10px;
+      padding: 12px 10px;
     }
   }
 

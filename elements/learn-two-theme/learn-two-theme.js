@@ -243,7 +243,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
 
         site-menu-button:not([disabled]):hover,
         site-menu-button:not([disabled]):active,
-        site-menu-button:not([disabled]):focus {
+        site-menu-button:not([disabled]):focus-visible {
           opacity: 1;
           background-color: var(
             --site-menu-button-button-hover-background-color,
@@ -500,11 +500,14 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   render() {
     return html`
       <div class="layout">
+         <a class="skip-link" href="#contentcontainer">Skip to content</a>
          <simple-icon-button
            id="menubutton"
            icon="menu"
            @click="${this.toggleDrawer}"
            title="Toggle site menu"
+           aria-expanded="${this.opened}"
+           aria-controls="drawer"
          ></simple-icon-button>
            <div class="drawer ${this.opened ? 'opened' : ''}" id="drawer">
            <simple-icon-button
@@ -512,6 +515,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
              icon="menu"
              @click="${this.toggleDrawer}"
              title="Toggle site menu"
+             aria-expanded="${this.opened}"
+             aria-controls="drawer"
            ></simple-icon-button>
            <header class="header-wrapper">
              <div class="header">
@@ -543,11 +548,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
              ></site-rss-button>
              </div>
            </header>
-           <nav>
+           <nav aria-label="Site navigation">
              <site-menu part="site-menu"></site-menu>
            </nav>
          </div>
-         <div class="scrim ${this.opened ? 'opened' : ''}" @click="${this._closeDrawer}"></div>
+         <div class="scrim ${this.opened ? 'opened' : ''}" role="presentation" @click="${this._closeDrawer}"></div>
          <main>
            <site-menu-button type="prev"></site-menu-button>
            <article id="contentcontainer">

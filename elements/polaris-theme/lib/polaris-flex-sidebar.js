@@ -29,6 +29,17 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
         :host {
           display: block;
         }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
         aside {
           margin-top: var(--ddd-spacing-4);
           margin-left: var(--ddd-spacing-10);
@@ -156,7 +167,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
         part="page-primary-sidebar"
       >
         <section>
-          <!-- <h4>Contents</h4> -->
+          <h4 class="sr-only">Contents</h4>
           <site-children-block
             part="page-children-block"
             dynamic-methodology="ancestor"

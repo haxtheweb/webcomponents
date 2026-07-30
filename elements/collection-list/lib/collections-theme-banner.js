@@ -115,13 +115,15 @@ class CollectionsThemeBanner extends LitElement {
         .company {
           width: 76%;
           margin: 0 0 0 auto;
-          padding: 0;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-4, 32px);
+          /* DDD navy panel ensures white h2 text has sufficient contrast */
+          background-color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         .company h2 {
           font-size: calc(18px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
-          font-weight: 400;
-          color: #ffffff;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--ddd-theme-default-white, #ffffff);
           margin: 4px 0 4px 0;
           padding: 0;
         }
@@ -138,7 +140,7 @@ class CollectionsThemeBanner extends LitElement {
       </div>
       <div class="branding">
         <div class="logo">
-          <img src="${this.logo}" alt="" decoding="async" fetchpriority="low" />
+          <img src="${this.logo}" alt="${this.sitename}" decoding="async" fetchpriority="low" />
         </div>
         <div class="company">
           <h2>${this.sitename}</h2>

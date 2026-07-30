@@ -59,6 +59,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
       css`
         :host {
           color: #242a31;
+          color-scheme: light dark;
           width: 100%;
           margin: 0;
           display: flex;
@@ -177,7 +178,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
         }
         /*ASP Message passed between pages*/
         p.message {
-          color: #ff0000;
+          color: #cc0000;
           font-size: 12px;
           font-weight: bold;
           font-family: Arial, Helvetica, sans-serif;
@@ -258,8 +259,8 @@ class TerribleThemes extends HAXCMSRememberRoute(
         site-top-menu {
           font-size: 18px;
           --site-top-menu-bg: pink;
-          --site-top-menu-link-color: #ffffff;
-          --site-top-menu-indicator-color: #ffffff;
+          --site-top-menu-link-color: #000000;
+          --site-top-menu-indicator-color: #000000;
           --site-top-menu-link-active-color: var(
             --haxcms-basic-theme-accent-color
           );
@@ -278,6 +279,25 @@ class TerribleThemes extends HAXCMSRememberRoute(
           background-color: #222233;
           color: #ffffff;
         }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        table {
+          max-width: 100%;
+        }
+        @media (max-width: 800px) {
+          :host table {
+            width: 100% !important;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          :host {
+            background: #111111;
+            color: #f5f7f9;
+          }
+        }
       `,
     ];
   }
@@ -286,6 +306,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <table
         role="presentation"
         border="4"
@@ -300,6 +321,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
             <td>
               <!-- Header -->
               <table
+                role="presentation"
                 border="0"
                 cellspacing="0"
                 cellpadding="3"
@@ -314,13 +336,13 @@ class TerribleThemes extends HAXCMSRememberRoute(
                     </td>
                     <td align="right" width="100">
                       <p class="loginState">
-                        <a href="" class="loginState">Log in</a>
+                        <a class="loginState" aria-disabled="true" role="link" tabindex="-1">Log in</a>
                       </p>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <a href=""
+              <a aria-disabled="true" role="link" tabindex="-1"
                 ><img
                   src="${new URL("lib/assets/header.jpg", import.meta.url)
                     .href}/../header-room407.jpg"
@@ -331,6 +353,8 @@ class TerribleThemes extends HAXCMSRememberRoute(
                   align="absbottom"
                   vspace="0"
                   hspace="0"
+                  loading="lazy"
+                  decoding="async"
               /></a>
             </td>
           </tr>
@@ -338,6 +362,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
             <!-- Menu -->
             <td>
               <table
+                role="presentation"
                 width="100%"
                 height="26"
                 cellspacing="0"
@@ -360,15 +385,16 @@ class TerribleThemes extends HAXCMSRememberRoute(
           <tr>
             <!-- Main body of text -->
             <td>
-              <table border="0" cellspacing="0" cellpadding="5" width="100%">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="5" width="100%">
                 <tbody>
                   <tr>
                     <td>
-                      <table border="0" cellspacing="0" cellpadding="0">
+                      <table role="presentation" border="0" cellspacing="0" cellpadding="0">
                         <tbody>
                           <tr valign="top">
                             <td>
                               <table
+                                role="presentation"
                                 width="100%"
                                 cellspacing="0"
                                 cellpadding="0"
@@ -376,9 +402,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                               >
                                 <tbody>
                                   <tr>
-                                    <td id="contentcontainer">
-                                      <site-active-title></site-active-title>
+                                    <td id="contentcontainer" tabindex="-1">
                                       <section id="slot" role="main" aria-label="Page content">
+                                        <site-active-title></site-active-title>
                                         <slot></slot>
                                       </section>
                                       <aside aria-label="Page navigation">

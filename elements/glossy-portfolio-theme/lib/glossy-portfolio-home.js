@@ -132,6 +132,13 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       }
      }
 
+      /* Respect reduced-motion: fixed backgrounds can cause vestibular distress */
+      @media (prefers-reduced-motion: reduce) {
+        .background {
+          background-attachment: scroll;
+        }
+      }
+
     `];
   }
 

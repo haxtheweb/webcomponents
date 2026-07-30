@@ -69,10 +69,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
+    // Reduced to the two families actually used: Manrope (main font) + Inter (titles/filters/footer).
+    // Playfair Display, Source Code Pro, and Work Sans were loaded but never referenced.
+    // Note: 'DM Serif Display' is referenced in glossy-portfolio-home .title em but was never
+    // loaded; left as-is (falls back to serif) to avoid changing the rendered appearance.
     const PortfolioFonts = [
-      "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      ,"https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" 
-    ,"https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     ];
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
@@ -91,6 +94,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     css`
     :host{
         box-sizing: border-box; 
+        color-scheme: dark;
         --bg-color: #111111;
         --main-font: "Manrope", "Manrope Placeholder", sans-serif;
         --max-width: 1200px;
@@ -99,7 +103,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --link-color-hover: #9ae7ff;
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
-        --text-color: #ffffff; /* Default text color */
+        --text-color: var(--ddd-theme-default-white); /* Default text color */
         --footer-height: 76px;   
         --max-width-text: 840px; /* Max width for text content */ 
       }
@@ -129,7 +133,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       }
       :host([dark-mode]) {
         --bg-color: #111111;
-        --text-color: #ffffff;
+        --text-color: var(--ddd-theme-default-white);
         --link-color: #6cddff;
         --link-color-hover: #9ae7ff;
         color-scheme: dark;
@@ -233,6 +237,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         color: var(--link-color-hover); /* Bright Cyan for hover effect */
         text-decoration: underline;
       }
+      /* Keyboard focus indicators (WCAG 2.4.7) — currentColor adapts to the dark palette */
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
       
       site-active-title h1{
         margin-bottom: 0;
@@ -322,6 +331,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const activeTitle = (this.activeItem && this.activeItem.title) || "Default Title"; // Use explicit null check and a fallback value
     return html`
     <!-- temporary margin-top  -->
+    <a class="skip-link" href="#contentcontainer">Skip to content</a>
     <glossy-portfolio-header></glossy-portfolio-header>
 
     <div class="body-wrapper"> 

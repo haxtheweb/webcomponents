@@ -268,6 +268,12 @@ class OutlinePlayer extends LTIResizingMixin(
         :host([responsive-size="xs"]) site-git-corner {
           display: none;
         }
+        a:focus-visible,
+        button:focus-visible,
+        simple-icon-button-lite::part(button):focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
       `,
     ];
   }
@@ -348,15 +354,28 @@ class OutlinePlayer extends LTIResizingMixin(
 
   connectedCallback() {
     super.connectedCallback();
-    this._narrowMQ = window.matchMedia("(max-width: 640px)");
+    this._narrowMQ = globalThis.matchMedia("(max-width: 640px)");
     this._narrowHandler = (e) => this._narrowChanged(e);
     this._narrowMQ.addEventListener("change", this._narrowHandler);
     this._narrowChanged(this._narrowMQ);
+    this._escHandler = (e) => {
+      if (
+        e.key === "Escape" &&
+        this.opened &&
+        this.narrow
+      ) {
+        this._closeDrawer();
+      }
+    };
+    globalThis.addEventListener("keydown", this._escHandler);
   }
 
   disconnectedCallback() {
     if (this._narrowMQ && this._narrowHandler) {
       this._narrowMQ.removeEventListener("change", this._narrowHandler);
+    }
+    if (this._escHandler) {
+      globalThis.removeEventListener("keydown", this._escHandler);
     }
     super.disconnectedCallback();
   }
@@ -376,9 +395,10 @@ class OutlinePlayer extends LTIResizingMixin(
   // render function
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <site-git-corner part="git-corner-btn"></site-git-corner>
       <div class="layout">
-        <nav>
+        <nav aria-label="Site navigation">
           <div class="drawer ${this.opened ? 'opened' : ''} ${this.closed ? 'closed' : ''}" id="drawer">
             <site-menu></site-menu>
           </div>
@@ -388,7 +408,11 @@ class OutlinePlayer extends LTIResizingMixin(
           <header>
             <div class="nav-btns">
               <simple-icon-button-lite
+                class="menu-toggle"
                 icon="menu"
+                label="Toggle navigation"
+                aria-expanded="${this.opened}"
+                aria-controls="drawer"
                 @click="${this._toggleMenu}"
               ></simple-icon-button-lite>
               <site-modal
@@ -474,6 +498,9 @@ class OutlinePlayer extends LTIResizingMixin(
           }),
         );
       }
+      if (propName == "opened") {
+        this._syncMenuToggleA11y();
+      }
     });
   }
   /**
@@ -490,6 +517,22 @@ class OutlinePlayer extends LTIResizingMixin(
     this.closed = true;
   }
   /**
+   * Mirror menu-toggle state onto the inner button so screen readers
+   * expose aria-expanded/aria-controls (simple-icon-button-lite does not
+   * bind these itself).
+   */
+  _syncMenuToggleA11y() {
+    const toggle =
+      this.shadowRoot && this.shadowRoot.querySelector(".menu-toggle");
+    if (toggle && toggle.shadowRoot) {
+      const btn = toggle.shadowRoot.querySelector("button");
+      if (btn) {
+        btn.setAttribute("aria-expanded", this.opened ? "true" : "false");
+        btn.setAttribute("aria-controls", "drawer");
+      }
+    }
+  }
+  /**
    * active id has changed.
    */
   _activeIdChanged(newValue, oldValue) {
@@ -497,16 +540,20 @@ class OutlinePlayer extends LTIResizingMixin(
       this.opened = false;
       this.closed = true;
     }
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     globalThis.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: reduceMotion ? "auto" : "smooth",
     });
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._syncMenuToggleA11y();
 
     this.__disposer.push(
       autorun((reaction) => {

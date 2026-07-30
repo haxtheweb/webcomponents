@@ -180,7 +180,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             this.menuOpen = false;
           }
 
-          if (globalThis.document && globalThis.document.startViewTransition) {
+          if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             globalThis.document.startViewTransition(() => {
               this.activeItem = active;
               this.activeParent = parent;
@@ -214,7 +214,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 }
               });
 
-              if (globalThis.document && globalThis.document.startViewTransition) {
+              if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 globalThis.document.startViewTransition(() => {
                   this.items = [...items];
                   this.categoryTags = [...categoryTags];
@@ -350,17 +350,25 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       const items = Array.from(nav.children);
       const availableWidth = nav.clientWidth - 100;
 
+      // Write phase: make all items visible so they can be measured
+      items.forEach((item) => {
+        item.style.display = 'inline-block';
+      });
+
+      // Read phase: batch all offsetWidth reads to avoid layout thrash
+      const widths = items.map((item) => item.offsetWidth + 25);
+
+      // Write phase: apply display writes based on accumulated widths
       let usedWidth = 0;
       const overflow = [];
 
-      for (const item of items) {
-        item.style.display = 'inline-block';
-        usedWidth += item.offsetWidth + 25;
+      items.forEach((item, index) => {
+        usedWidth += widths[index];
         if (usedWidth > availableWidth) {
           item.style.display = 'none';
-          overflow.push(this.topItems.find(i => i.slug === item.getAttribute('href')));
+          overflow.push(this.topItems.find(topItem => topItem.slug === item.getAttribute('href')));
         }
-      }
+      });
 
       this.menuOverflow = overflow;
       this.requestUpdate();
@@ -482,7 +490,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           display: grid;
           gap: 24px;
           width: 100%;
-          view-transition-name: location;
+          view-transition-name: tags-listing-grid;
           grid-template-columns: repeat(4, 1fr);
         }
         
@@ -696,6 +704,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         outline-offset: 8px;
       }
 
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
+
       /* Site header elements */
       #site-title {
         padding: 0.5rem;
@@ -890,10 +904,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* Imported elements */
       site-active-title h1 {
         font-family: "Playfair Display";
-        font-size: 88px;
+        font-size: clamp(40px, 8vw, 88px);
         font-weight: bold;
         transition: .3s;
-        view-transition-name: location;
+        view-transition-name: page-title;
       }
 
       site-active-media-banner {
@@ -925,8 +939,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         list-style-type: none;
         margin: 0 0 20px 0;
         padding: 0;
-        border-top: 3px solid var(--ddd-palette-light);
-        border-bottom: 1px solid var(--ddd-palette-light);
+        border-top: 3px solid var(--ddd-lightDark-text);
+        border-bottom: 1px solid var(--ddd-lightDark-text);
       }
 
       .tag-list li {
@@ -936,7 +950,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .tag-list li a {
-        color: var(--ddd-palette-light);
+        color: var(--ddd-lightDark-text);
         font-weight: 400;
         font-size: clamp(20px, 3vw, 27.5px);
         text-transform: uppercase;
@@ -955,7 +969,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         color: var(--ddd-lightDark-text);
         font-family: var(--portfolio-font-header);
         font-size: clamp(14px, 2vw, 18px);
-        view-transition-name: location;
+        view-transition-name: breadcrumb;
       }
 
       .breadcrumb a {
@@ -1008,7 +1022,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 90%;
         max-width: 840px;
         text-align: left;
-        view-transition-name: location;
+        view-transition-name: main-content;
       }
 
       #contentcontainer {
@@ -1026,7 +1040,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         flex-wrap: wrap;
         gap: 12px;
         margin-bottom: 20px;
-        view-transition-name: location;
+        view-transition-name: listing-header;
       }
 
       #listing-filter {
@@ -1058,7 +1072,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         display: grid;
         gap: 24px;
         width: 100%;
-        view-transition-name: location;
+        view-transition-name: listing-grid;
         grid-template-columns: repeat(4, 1fr);
       }
 
@@ -1127,7 +1141,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         gap: 24px;
         flex-direction: row;
         align-items: center;
-        view-transition-name: location;
+        view-transition-name: pagination;
       }
       .pagination a {
         display: flex;
@@ -1207,6 +1221,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           margin-left: 0;
           margin-right: 0;
           width: 100%;
+        }
+      }
+
+      @media (max-width: 48em) {
+        .container {
+          width: 95%;
+          margin: 32px auto;
+        }
+        site-active-title h1 {
+          font-size: clamp(32px, 7vw, 56px);
+        }
+        .breadcrumb {
+          padding: 0 12px;
         }
       }
 
@@ -1335,7 +1362,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   }
 
   setLayout(layout) {
-    if (globalThis.document && globalThis.document.startViewTransition) {
+    if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       globalThis.document.startViewTransition(() => {
         this.activeLayout = layout;
       });
@@ -1353,10 +1380,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   // Lit render the HTML
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header>
         <div class="header-inner">
           <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
-          <nav>
+          <nav aria-label="Main navigation">
             ${this.topItems.map(
                 (item) => html`
                   <a

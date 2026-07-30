@@ -37,9 +37,7 @@ export class TrainingTop extends LitElement {
         --site-title-link-h1-display: inline-block;
         --site-title-link-display: flex;
         --site-title-link-text-decoration: none;
-        --site-title-heading-font-family: var(
-          --__learn-two-theme-default-font-family
-        );
+        --site-title-heading-font-family: var(--ddd-font-primary);
         --site-title-heading-font-size: 32px;
         --site-title-heading-margin: 0;
         --site-title-heading-padding: 0;
@@ -84,6 +82,11 @@ export class TrainingTop extends LitElement {
         color: #5a5e61;
         text-decoration: none;
       }
+
+      .time-remaining:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
     `;
   }
   // LitElement rendering template of your element
@@ -96,6 +99,7 @@ export class TrainingTop extends LitElement {
             class="time-remaining"
             tabindex="0"
             role="timer"
+            aria-label="${this.time === "" ? "Estimated time remaining: 40 minutes" : ""}"
             data-title="Estimated time remaining: 40 minutes"
           >
             ${this.time}

@@ -41,17 +41,35 @@ class PolarisStoryCard extends LitElement {
       css`
         :host {
           display: inline-flex;
+          color-scheme: light dark;
         }
 
         .wrapper {
           text-align: center;
           min-height: 389px;
           border-radius: 12px;
-          background-color: var(--polaris-story-card-background-color, #0016e0);
-          color: var(--polaris-story-card-color, #fff);
+          overflow: hidden;
+          max-width: 100%;
+          background-color: var(
+            --polaris-story-card-background-color,
+            light-dark(#0016e0, var(--ddd-theme-default-nittanyNavy, #001e44))
+          );
+          color: var(
+            --polaris-story-card-color,
+            var(--ddd-theme-default-white, #fff)
+          );
           position: relative;
           min-width: var(--polaris-story-card-min-width, 255px);
           display: block;
+        }
+        .card-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 12px;
         }
 
         .body {
@@ -59,8 +77,8 @@ class PolarisStoryCard extends LitElement {
           bottom: 0.5rem;
           text-align: center;
           font-family: "Roboto", Arial, Helvetica, sans-serif;
-          color: #fff;
-          border: 3px solid #fff;
+          color: var(--ddd-theme-default-white, #fff);
+          border: 3px solid var(--ddd-theme-default-white, #fff);
           background-color: rgba(0, 0, 0, 0.58);
           width: 195px;
           left: 1.5rem;
@@ -76,12 +94,21 @@ class PolarisStoryCard extends LitElement {
         .pillar {
           text-transform: uppercase;
           font-family: "Roboto", Arial, Helvetica, sans-serif;
-          color: white;
+          color: var(--ddd-theme-default-white, #fff);
           position: relative;
           top: 4px;
           padding: 4px 10px;
-          background-color: #001e44;
+          background-color: var(--ddd-theme-default-nittanyNavy, #001e44);
           font-weight: 500;
+        }
+        @media (max-width: 360px) {
+          .wrapper {
+            min-width: 0;
+            width: 100%;
+          }
+          .body {
+            width: calc(100% - 3rem);
+          }
         }
       `,
     ];
@@ -91,10 +118,16 @@ class PolarisStoryCard extends LitElement {
    */
   render() {
     return html`
-      <div
-        class="wrapper"
-        style="background: url('${this.image}') center center no-repeat;"
-      >
+      <div class="wrapper">
+        ${this.image
+          ? html`<img
+              class="card-image"
+              src="${this.image}"
+              alt="${this.label || this.pillar || "Story image"}"
+              loading="lazy"
+              decoding="async"
+            />`
+          : ``}
         <span class="pillar">${this.pillar}</span>
         <div class="body">
           <div class="label">${this.label}</div>

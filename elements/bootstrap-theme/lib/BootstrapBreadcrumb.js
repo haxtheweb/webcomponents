@@ -7,6 +7,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
 
 /**
  * `bootstrap-breadcrumb`
@@ -19,6 +20,7 @@ class BootstrapBreadcrumb extends LitElement {
     return [
       css`
         :host {
+          color-scheme: light dark;
           --bootstrap-dark-theme-secondary-background-color: #343a40;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
@@ -55,7 +57,7 @@ class BootstrapBreadcrumb extends LitElement {
 
         /* dark mode */
         :host([color-theme="1"]) {
-          --simple-icon-color: #999;
+          --simple-icon-color: #b8b8b8;
         }
 
         :host([color-theme="1"]) simple-icon-lite:hover {
@@ -81,7 +83,7 @@ class BootstrapBreadcrumb extends LitElement {
         }
 
         :host([color-theme="1"]) a {
-          color: #999;
+          color: #b8b8b8;
         }
 
         :host([color-theme="1"]) a:hover {
@@ -194,7 +196,6 @@ class BootstrapBreadcrumb extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="container p-0 mb-3">
         <nav aria-label="Breadcrumb navigation">
           <ol class="breadcrumb m-auto">
@@ -275,7 +276,9 @@ class BootstrapBreadcrumb extends LitElement {
     }
   }
 
-  firstUpdated(changedProperties) {}
+  firstUpdated(changedProperties) {
+    adoptBootstrapStylesheet(this, this._bootstrapPath);
+  }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {});

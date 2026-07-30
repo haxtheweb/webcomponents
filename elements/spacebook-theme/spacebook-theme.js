@@ -39,6 +39,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     this.nextPageTitle = '';
     this.prevPageTitle = '';
     this.homeLink = '';
+    this.__onKeydown = this._handleKeydown.bind(this);
     
     // Set up reactivity to HAXcms store
     this.__disposer.push(
@@ -100,7 +101,9 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --spacebook-theme-bg-white: #ffffff;
+          /* DDD token mapping (exact #ffffff match). Other gray-scale vars kept as Tailwind
+             neutrals — DDD grays are tinted and would shift the palette (see agent report). */
+          --spacebook-theme-bg-white: var(--ddd-theme-default-white);
           --spacebook-theme-bg-gray-50: #f9fafb;
           --spacebook-theme-bg-gray-100: #f3f4f6;
           --spacebook-theme-bg-gray-200: #e5e7eb;
@@ -154,6 +157,19 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.5;
       }
+
+      /* Keyboard focus indicators (WCAG 2.4.7 Focus visible, 2.4.11 Focus not obscured) */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
+
+      /* Full-screen overlay: use a high-contrast inset outline (currentColor would be lost at the viewport edge) */
+      .mobile-nav-overlay:focus-visible {
+        outline: 2px solid var(--ddd-theme-default-white, #ffffff);
+        outline-offset: -2px;
+      }
       
       :host([dark-mode]) {
         background-color: var(--spacebook-theme-bg-gray-900);
@@ -175,7 +191,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         left: 0;
         right: 0;
         z-index: 10;
-        transition: all 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
       }
       
       /* Adjust header position when user is logged in to accommodate HAX editing bar */
@@ -270,13 +286,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         width: 100%;
         background-color: var(--spacebook-theme-bg-gray-50);
         opacity: 0.8;
-        transition: all 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
       }
 
       .header-buttons:hover {
         background-color: var(--spacebook-theme-bg-gray-100);
         opacity: 1;
-        transition: all 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
       }
 
       :host([dark-mode]) .header-buttons {
@@ -372,6 +388,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         overflow-y: auto;
         padding: 1.5rem 1rem;
         z-index: 5;
+        contain: layout paint;
       }
       
       /* Adjust sidebar position when user is logged in */
@@ -607,6 +624,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       .article-content {
         align-self: center;
         color: var(--spacebook-theme-text-gray-800);
+        content-visibility: auto;
+        contain-intrinsic-size: auto 1000px;
       }
       
       :host([dark-mode]) .article-content {
@@ -800,6 +819,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
   closeMobileNav() {
     this.mobileNavOpen = false;
   }
+
+  // Close the mobile nav when Escape is pressed (WCAG 2.1.2 No keyboard trap)
+  _handleKeydown(e) {
+    if (e.key === "Escape" && this.mobileNavOpen) {
+      this.closeMobileNav();
+    }
+  }
   
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
@@ -838,6 +864,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     
     return html`
       <div class="app-container">
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
@@ -848,10 +875,10 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         
         <!-- Fixed Header -->
         <div class="site-header">
-          <nav class="header-nav">
+          <nav class="header-nav" aria-label="Main">
             <!-- Mobile site info (hidden on desktop) -->
             <div class="header-content">
-              <a href="" class="site-title-link">
+              <a href="${this.homeLink}" class="site-title-link">
                 <div>
                   <span class="site-title">${site.name || 'Site Title'}</span>
                   ${manifest.description ? html`<span class="site-subtitle">${manifest.description}</span>` : ''}
@@ -893,7 +920,9 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                 class="mobile-menu-btn" 
                 @click="${this.toggleMobileNav}"
                 title="Show navigation"
-                aria-label="Show navigation">
+                aria-label="Show navigation"
+                aria-expanded="${this.mobileNavOpen}"
+                aria-controls="sidebar-nav">
                 <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -903,7 +932,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         </div>
         
         <!-- Sidebar Navigation -->
-        <nav class="sidebar-nav">
+        <nav class="sidebar-nav" id="sidebar-nav" aria-label="Site navigation">
           <button 
             class="sidebar-close-btn" 
             @click="${this.closeMobileNav}"
@@ -1003,8 +1032,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     `;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener("keydown", this.__onKeydown);
+  }
+
   // Cleanup method to dispose of MobX reactions
   disconnectedCallback() {
+    globalThis.removeEventListener("keydown", this.__onKeydown);
     if (this.__disposer) {
       this.__disposer.forEach((disposer) => {
         if (typeof disposer === 'function') {
