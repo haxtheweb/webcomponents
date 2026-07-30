@@ -52,7 +52,7 @@
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "haxschema": "./node_modules/.bin/gulp haxschema",
     "new": "hax",
-    "ubiquity": "polymer build && yarn run terser && yarn run wc-autoloader && yarn run theme-discovery && yarn run hax-elements-discovery && yarn run translation-manifest && yarn run version-match && mkdir build/es6/node_modules/@lrnwebcomponents && cp -R build/es6/node_modules/@haxtheweb/wc-autoload build/es6/node_modules/@lrnwebcomponents/wc-autoload && cp -R build/es6/node_modules/@haxtheweb/dynamic-import-registry build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry",
+    "ubiquity": "polymer build && yarn run terser && yarn run wc-autoloader && yarn run theme-discovery && yarn run hax-elements-discovery && yarn run translation-manifest && yarn run version-match && mkdir build/es6/node_modules/@lrnwebcomponents && cp -R build/es6/node_modules/@haxtheweb/wc-autoload build/es6/node_modules/@lrnwebcomponents/wc-autoload && cp -R build/es6/node_modules/@haxtheweb/dynamic-import-registry build/es6/node_modules/@lrnwebcomponents/dynamic-import-registry && yarn run license-restore",
     "ubiquity-build": "bash scripts/ubiquity-testing.sh",
     "ubiquity-publish": "bash scripts/ubiquity-push.sh",
     "terser": "gulp terser --gulpfile=gulpfile.mjs",
@@ -62,6 +62,7 @@
     "hax-elements-discovery": "gulp hax-elements-discovery --gulpfile=gulpfile.mjs",
     "translation-manifest": "node scripts/generate-translation-manifest.js",
     "version-match": "gulp version-match --gulpfile=gulpfile.mjs",
+    "license-restore": "node scripts/copy-dep-licenses.js",
     "depcheck": "depcheck"
   },
   "peerDependencies": {
