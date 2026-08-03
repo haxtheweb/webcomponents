@@ -2,8 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import {
   editBehaviors,
   editableTableStyles,
@@ -78,7 +79,7 @@ Custom property | Description | Default
  * @extends ResponsiveUtilityBehaviors
  * @extends editableTableStyles
  */
-class EditableTable extends editBehaviors(DDD) {
+class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
   static get styles() {
     return [
       css`
@@ -95,6 +96,7 @@ class EditableTable extends editBehaviors(DDD) {
   }
   render() {
     return html`
+      ${this.rubricMode ? this.renderRubricSchema() : nothing}
       <editable-table-display
         ?bordered="${this.bordered}"
         caption="${this.caption}"
@@ -153,6 +155,69 @@ class EditableTable extends editBehaviors(DDD) {
     `;
   }
 
+  /**
+   * Emit OER Schema Rubric metadata when rubricMode is enabled.
+   * The host <editable-table> element receives typeof="oer:Rubric" via
+   * setAttribute in firstUpdated/updated. This hidden block emits the
+   * rubricType property, a RubricScale with hasLevel children for each
+   * performance-level column, a RubricCriterion for each body row, and a
+   * RubricLevel (levelOrdinal/levelPoints) for each criterion/level cell.
+   */
+  renderRubricSchema() {
+    const headerRow = this.thead.length ? this.thead[0] : [];
+    const startCol = this.rowHeader ? 1 : 0;
+    return html`
+      <div class="oer-rubric-schema" hidden>
+        ${this.rubricType
+          ? html`<meta property="oer:rubricType" content="${this.rubricType}" />`
+          : nothing}
+        ${headerRow.length
+          ? html`
+              <span typeof="oer:RubricScale">
+                ${headerRow.map((cell, colIndex) =>
+                  colIndex < startCol
+                    ? nothing
+                    : html`
+                        <span typeof="oer:RubricLevel" property="oer:hasLevel">
+                          <meta
+                            property="oer:levelOrdinal"
+                            content="${colIndex - startCol + 1}"
+                          />
+                        </span>
+                      `,
+                )}
+              </span>
+            `
+          : nothing}
+        ${this.tbody.map(
+          (row, rowIndex) => html`
+            <span typeof="oer:RubricCriterion">
+              <meta property="oer:criterionWeight" content="1" />
+              ${row.map((cell, colIndex) =>
+                colIndex < startCol
+                  ? nothing
+                  : html`
+                      <span typeof="oer:RubricLevel">
+                        <meta
+                          property="oer:levelOrdinal"
+                          content="${colIndex - startCol + 1}"
+                        />
+                        ${this._isNumericCell(cell)
+                          ? html`<meta
+                              property="oer:levelPoints"
+                              content="${cell}"
+                            />`
+                          : nothing}
+                      </span>
+                    `,
+              )}
+            </span>
+          `,
+        )}
+      </div>
+    `;
+  }
+
   static get tag() {
     return "editable-table";
   }
@@ -196,6 +261,8 @@ class EditableTable extends editBehaviors(DDD) {
     super();
     //this.haxUIElement = true;
     this.editMode = false;
+    this.rubricMode = false;
+    this.rubricType = "";
   }
   static get properties() {
     return {
@@ -208,7 +275,46 @@ class EditableTable extends editBehaviors(DDD) {
         attribute: "edit-mode",
         reflect: true,
       },
+      /**
+       * Opt-in: interpret this table as an OER Schema Rubric so that
+       * Rubric/RubricScale/RubricCriterion/RubricLevel metadata is emitted.
+       */
+      rubricMode: {
+        type: Boolean,
+        attribute: "rubric-mode",
+        reflect: true,
+      },
+      /**
+       * Rubric style (analytic, holistic, single-point, checklist) emitted
+       * as oer:rubricType when rubricMode is true.
+       */
+      rubricType: {
+        type: String,
+        attribute: "rubric-type",
+      },
     };
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    if (this.rubricMode) {
+      this.setAttribute("typeof", "oer:Rubric");
+    }
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "rubricMode") {
+        if (this.rubricMode) {
+          this.setAttribute("typeof", "oer:Rubric");
+        } else {
+          this.removeAttribute("typeof");
+        }
+      }
+    });
   }
 
   get display() {

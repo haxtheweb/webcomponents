@@ -42,6 +42,8 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     this.accentColor = "primary";
     this.title = "Self-Check";
     this.fullWidthImage = false;
+    this.hasLearningObjective = "";
+    this.assessing = "";
     this.t = {
       revealAnswer: "Reveal Answer",
       close: "Close",
@@ -398,6 +400,15 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   }
   render() {
     return html`
+      ${this.hasLearningObjective
+        ? html`<meta
+            property="oer:hasLearningObjective"
+            content="${this.hasLearningObjective}"
+          />`
+        : ``}
+      ${this.assessing
+        ? html`<meta property="oer:assessing" content="${this.assessing}" />`
+        : ``}
       <div class="card">
         <div class="image-wrap">
           ${this.image
@@ -502,6 +513,12 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   static get tag() {
     return "self-check";
   }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:Assessment");
+  }
   static get properties() {
     return {
       ...super.properties,
@@ -558,6 +575,20 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         type: String,
         attribute: "accent-color",
         reflect: true,
+      },
+      /**
+       * Learning objective reference emitted as oer:hasLearningObjective.
+       */
+      hasLearningObjective: {
+        type: String,
+        attribute: "has-learning-objective",
+      },
+      /**
+       * Activity reference emitted as oer:assessing.
+       */
+      assessing: {
+        type: String,
+        attribute: "assessing",
       },
     };
   }
