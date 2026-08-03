@@ -3,6 +3,7 @@
  * @license , see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "./lib/model-option.js";
 import "./lib/model-info.js";
 /**
@@ -11,7 +12,7 @@ import "./lib/model-info.js";
  * @demo demo/index.html
  * @element course-model
  */
-class CourseModel extends LitElement {
+class CourseModel extends SchemaBehaviors(LitElement) {
   static get tag() {
     return "course-model";
   }
@@ -25,6 +26,7 @@ class CourseModel extends LitElement {
       title: { type: String },
       src: { type: String },
       alt: { type: String },
+      poster: { type: String },
     };
   }
 
@@ -142,6 +144,7 @@ class CourseModel extends LitElement {
     this.visible = "model";
     this.title = "";
     this.src = "";
+    this.poster = "";
     if (globalThis.HaxStore) {
       globalThis.ModelViewerController = new AbortController();
       globalThis.addEventListener(
@@ -367,12 +370,14 @@ class CourseModel extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:MediaObject");
     // this is a heavy library in memory so import if we actually are rendering
     import("@google/model-viewer/dist/model-viewer.js");
   }
 
   render() {
     return html`
+      <meta property="oer:image" content="${this.poster}" />
       <div class="model-wrap">
         <div id="toolbar-wrap">
           <div id="nav">
@@ -425,7 +430,7 @@ class CourseModel extends LitElement {
               </svg>
             </button>
           </div>
-          <div id="title"><h1>${this.title}</h1></div>
+          <div id="title"><h1 property="oer:name">${this.title}</h1></div>
           <div id="logo">
             <slot name="logo"></slot>
           </div>

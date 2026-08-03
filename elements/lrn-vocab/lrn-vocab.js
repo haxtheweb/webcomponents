@@ -43,12 +43,13 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.description = "";
     setTimeout(() => {
       this.addEventListener("click", this.openDialog.bind(this));
     }, 0);
   }
   render() {
-    return html` <button>${this.term}</button> `;
+    return html`<meta property="oer:description" content="${this.description}" /><button property="oer:name">${this.term}</button>`;
   }
 
   static get tag() {
@@ -60,6 +61,9 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       term: {
         type: String,
         reflect: true,
+      },
+      description: {
+        type: String,
       },
     };
   }
@@ -133,6 +137,10 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:LearningComponent");
+    if (!this.description) {
+      this.description = (this.textContent || "").trim();
+    }
     globalThis.SimpleModal.requestAvailability();
   }
   static get haxProperties() {
@@ -182,6 +190,13 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
               "The definitition to display when the term is clicked.",
             inputMethod: "textarea",
             required: true,
+          },
+          {
+            property: "description",
+            title: "Description (OER Schema)",
+            description:
+              "OER Schema: a short description of the vocabulary term. Auto-populated from the definition text if left blank.",
+            inputMethod: "textfield",
           },
         ],
         advanced: [],

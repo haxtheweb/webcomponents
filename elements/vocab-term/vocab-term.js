@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 
@@ -17,7 +18,7 @@ Custom property | Description | Default
 `--vocab-term-bottom-border` | Underline of the vocab term. | 1px dashed gray
 `--vocab-term-color` | Color of the vocab term. | black
  */
-class VocabTerm extends LitElement {
+class VocabTerm extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       popoverMode: { type: Boolean, reflect: true, attribute: "popover-mode" },
@@ -128,10 +129,10 @@ class VocabTerm extends LitElement {
       ? html`
           <div>
             <div part="term">
-              <summary id="summary">${this.term}</summary>
+              <summary id="summary" property="oer:name">${this.term}</summary>
             </div>
             <simple-modal-template title="${this.term ? this.term : ""}">
-              <p slot="content">${this.information}</p>
+              <p slot="content" property="oer:description">${this.information}</p>
               ${this.links && this.links.length > 0 && this.links.map
                 ? html` <ul slot="content">
                     ${this.links.map(
@@ -153,10 +154,10 @@ class VocabTerm extends LitElement {
         `
       : html`
           <details>
-            <summary id="summary">${this.term}</summary>
+            <summary id="summary" property="oer:name">${this.term}</summary>
             <div part="information">
               <simple-popover for="summary" position="top" auto>
-                <p>${this.information}</p>
+                <p property="oer:description">${this.information}</p>
                 <div part="links">
                   ${this.links && this.links.length > 0 && this.links.map
                     ? html`
@@ -252,6 +253,7 @@ class VocabTerm extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:LearningComponent");
     if (!this.term && this.innerHTML) {
       this.term = this.innerHTML;
     }
@@ -294,6 +296,9 @@ class VocabTerm extends LitElement {
   }
 
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "popoverMode") {
         if (this[propName]) {

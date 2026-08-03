@@ -1,11 +1,12 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
 
-export class FlashCard extends DDD {
+export class FlashCard extends SchemaBehaviors(DDD) {
   static get tag() {
     return "flash-card";
   }
@@ -15,6 +16,8 @@ export class FlashCard extends DDD {
     super();
     this.imgKeyword = "";
     this.imgSource = "";
+    this.typeOfAction = "";
+    this.hasLearningObjective = "";
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -25,6 +28,11 @@ export class FlashCard extends DDD {
       imgSource: { type: String, attribute: "img-source", reflect: true },
       imgKeyword: { type: String, attribute: "img-keyword" },
       status: { type: String, reflect: true },
+      typeOfAction: { type: String, attribute: "type-of-action" },
+      hasLearningObjective: {
+        type: String,
+        attribute: "has-learning-objective",
+      },
     };
   }
 
@@ -195,9 +203,21 @@ export class FlashCard extends DDD {
     );
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:Practice");
+  }
+
   // HTML - specific to Lit
   render() {
     return html`
+      <meta property="oer:typeOfAction" content="${this.typeOfAction}" />
+      <meta
+        property="oer:hasLearningObjective"
+        content="${this.hasLearningObjective}"
+      />
       <confetti-container id="confetti">
         ${!this.imgSource && !this.imgKeyword
           ? ``

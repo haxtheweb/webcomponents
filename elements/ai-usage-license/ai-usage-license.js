@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 
 /**
  * `ai-usage-license`
@@ -13,7 +14,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @demo index.html
  * @element ai-usage-license
  */
-class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
+class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -68,8 +69,16 @@ class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
     ]
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:SupportingMaterial");
+  }
+
   render() {
     return html`
+      <meta property="oer:uri" content="${this.uri || this.licenseLink}" />
       <div class="license-body">
         ${this.licenseImage
           ? html`
@@ -159,6 +168,16 @@ class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
         type: String,
         attribute: "license-tag",
       },
+      /**
+       * OER Schema: URI for the AI Usage License (AIUL) reference page/code.
+       * Falls back to licenseLink when not explicitly set.
+       * NOTE: The v1.2.0 aiUsageConstraint property (domain [Task]) is not
+       * emitted here because this element is a SupportingMaterial badge,
+       * not a Task. aiUsageConstraint resolves once the vocab is integrated.
+       */
+      uri: {
+        type: String,
+      },
     }
   }
 
@@ -171,6 +190,7 @@ class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
     this.licenseLink = null;
     this.licenseDescription = null;
     this.licenseTag = null;
+    this.uri = null;
     this.__aiulDataPromise = null;
     this._setAIULData();
   }
@@ -217,6 +237,9 @@ class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "license" || propName === "modifier") {
         this._licenseUpdated(this.license, this.modifier);
@@ -289,6 +312,13 @@ class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
               "": "No modifier",
             },
             icon: "image:photo",
+          },
+          {
+            property: "uri",
+            title: "AIUL URI (OER Schema)",
+            description:
+              "OER Schema: URI for the AI Usage License reference page. Auto-populated from the license link when not set.",
+            inputMethod: "textfield",
           },
         ],
         advanced: [],
