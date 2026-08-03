@@ -333,6 +333,27 @@ export class QuestionElement extends SchemaBehaviors(
         attribute: "related-resource",
       },
       /**
+       * OER Schema: grading format for this assessment
+       */
+      gradingFormat: {
+        type: String,
+        attribute: "grading-format",
+      },
+      /**
+       * OER Schema: learning objective associated with this assessment
+       */
+      hasLearningObjective: {
+        type: String,
+        attribute: "has-learning-objective",
+      },
+      /**
+       * OER Schema: course this assessment is for
+       */
+      forCourse: {
+        type: String,
+        attribute: "for-course",
+      },
+      /**
        * Question to ask
        */
       question: {
@@ -781,6 +802,15 @@ export class QuestionElement extends SchemaBehaviors(
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
+      ${this.gradingFormat
+        ? html`<meta property="oer:gradingFormat" content="${this.gradingFormat}" />`
+        : nothing}
+      ${this.hasLearningObjective
+        ? html`<meta property="oer:hasLearningObjective" content="${this.hasLearningObjective}" />`
+        : nothing}
+      ${this.forCourse
+        ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
+        : nothing}
       <confetti-container id="confetti">
         <grid-plate layout="1-1">
           <div slot="col-1">
