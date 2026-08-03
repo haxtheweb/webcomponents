@@ -4,6 +4,7 @@
  */
 import { html, css, render, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   validURL,
@@ -37,7 +38,7 @@ import { XLSXFileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/lib
  * @demo demo/index.html Grade book
  * @element grade-book
  */
-class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
+class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors))) {
   constructor() {
     super();
     this.__disposer = [];
@@ -71,6 +72,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       surname: true,
       email: true,
     };
+    this.forCourse = "";
     this.disabled = false;
     // shows progress indicator as it loads
     this.loading = false;
@@ -578,6 +580,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       assessmentView: { type: Object, attribute: false },
       activeGrading: { type: Object, attribute: false },
       activeStudentSubmissions: { type: Array },
+      /**
+       * Course reference emitted as oer:forCourse on each Assessment.
+       */
+      forCourse: { type: String, attribute: "for-course" },
     };
   }
   async changeStudent(e) {
@@ -1357,11 +1363,43 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     }
   }
   /**
+   * Emit OER Schema Assessment metadata for each graded assignment.
+   * Each assignment in the database becomes an oer:Assessment resource
+   * with gradingFormat (points) and forCourse (when set) properties.
+   */
+  renderAssessmentSchema() {
+    if (
+      !this.database ||
+      !this.database.assignments ||
+      !this.database.assignments.length
+    ) {
+      return nothing;
+    }
+    return html`
+      <div class="oer-assessment-schema" hidden>
+        ${this.database.assignments.map(
+          (a) => html`
+            <span typeof="oer:Assessment">
+              <meta property="oer:gradingFormat" content="${a.points || ""}" />
+              ${this.forCourse
+                ? html`<meta
+                    property="oer:forCourse"
+                    content="${this.forCourse}"
+                  />`
+                : nothing}
+            </span>
+          `,
+        )}
+      </div>
+    `;
+  }
+  /**
    * LitElement render method
    */
   render() {
     return html`
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+      ${this.renderAssessmentSchema()}
       <div class="top-controls">
         <div class="group divider-right app-name">
           <slot name="app-name"></slot>
@@ -2122,6 +2160,51 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   }
   static get tag() {
     return "grade-book";
+  }
+  static get haxProperties() {
+    return {
+      canScale: false,
+      gizmo: {
+        title: "Grade Book",
+        description: "A headless gradebook that supports multiple backends with rubrics.",
+        icon: "icons:assignment",
+        color: "green",
+        tags: ["Instructional", "gradebook", "grading", "assessment", "rubric"],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "source",
+            title: "Source",
+            description: "Data source type (googledocs, url, json, filesystem).",
+            inputMethod: "select",
+            options: {
+              googledocs: "Google Docs",
+              url: "URL endpoint (JSON)",
+              json: "JSON data blob",
+              filesystem: "File system",
+            },
+          },
+          {
+            property: "sourceData",
+            title: "Source Data",
+            description: "URL or JSON data for the gradebook.",
+            inputMethod: "textfield",
+          },
+          {
+            property: "forCourse",
+            title: "Course Reference",
+            description:
+              "Course identifier emitted as oer:forCourse on each Assessment resource.",
+            inputMethod: "textfield",
+          },
+        ],
+      },
+    };
   }
 }
 globalThis.customElements.define(GradeBook.tag, GradeBook);

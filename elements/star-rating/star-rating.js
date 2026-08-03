@@ -2,10 +2,11 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `star-rating`
  * `Rating display widget or button to do rating`
@@ -13,9 +14,68 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @element star-rating
  */
-class StarRating extends SimpleColors {
+class StarRating extends SchemaBehaviors(SimpleColors) {
   static get tag() {
     return "star-rating";
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: true,
+      gizmo: {
+        title: "Star Rating",
+        description: "Rating display widget or button to do rating.",
+        icon: "icons:star",
+        color: "yellow",
+        tags: [
+          "Instructional",
+          "rating",
+          "stars",
+          "rubric",
+          "scale",
+          "feedback",
+        ],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "score",
+            title: "Score",
+            description: "Current score value.",
+            inputMethod: "number",
+          },
+          {
+            property: "possible",
+            title: "Possible",
+            description: "Maximum possible score.",
+            inputMethod: "number",
+          },
+          {
+            property: "numStars",
+            title: "Number of Stars",
+            description: "Number of stars to display.",
+            inputMethod: "number",
+          },
+          {
+            property: "interactive",
+            title: "Interactive",
+            description: "Allow user interaction to set the rating.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "rubricScaleMode",
+            title: "Rubric Scale Mode",
+            description:
+              "Emit OER Schema RubricScale and RubricLevel metadata (levelOrdinal/levelPoints) for each star.",
+            inputMethod: "boolean",
+          },
+        ],
+      },
+    };
   }
 
   static get styles() {
@@ -69,6 +129,14 @@ class StarRating extends SimpleColors {
       interactive: { type: Boolean, reflect: true },
       numStars: { type: Number, attribute: "num-stars" },
       _calPercent: { type: Number }, // this value we'll calculate based on changes to score and possible
+      /**
+       * Opt-in: emit OER Schema RubricScale + RubricLevel metadata.
+       */
+      rubricScaleMode: {
+        type: Boolean,
+        attribute: "rubric-scale-mode",
+        reflect: true,
+      },
     };
   }
 
@@ -82,11 +150,15 @@ class StarRating extends SimpleColors {
     this.dark = true;
     this.contrast = 0;
     this.accentColor = "yellow";
+    this.rubricScaleMode = false;
   }
 
   render() {
     return html`
-      <div class="wrapper">
+      <div
+        class="wrapper"
+        typeof="${this.rubricScaleMode ? "oer:RubricScale" : nothing}"
+      >
         <div class="stars">
           ${this.renderStar(this.numStars, this.interactive)}
         </div>
@@ -125,7 +197,18 @@ class StarRating extends SimpleColors {
             contrast="${this.contrast}"
             class="star"
             data-value="${Number(count + 1)}"
-          ></simple-icon-button>`,
+            typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
+            property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
+          >${this.rubricScaleMode
+              ? html`<meta
+                    property="oer:levelOrdinal"
+                    content="${count + 1}"
+                  /><meta
+                    property="oer:levelPoints"
+                    content="${this._rubricLevelPoints(count + 1)}"
+                  />`
+              : nothing}</simple-icon-button
+          >`,
         );
       } else {
         content.push(
@@ -135,7 +218,18 @@ class StarRating extends SimpleColors {
             ?dark="${this.dark}"
             contrast="${this.contrast}"
             class="star"
-          ></simple-icon>`,
+            typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
+            property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
+          >${this.rubricScaleMode
+              ? html`<meta
+                    property="oer:levelOrdinal"
+                    content="${count + 1}"
+                  /><meta
+                    property="oer:levelPoints"
+                    content="${this._rubricLevelPoints(count + 1)}"
+                  />`
+              : nothing}</simple-icon
+          >`,
         );
       }
       count++;
@@ -153,6 +247,14 @@ class StarRating extends SimpleColors {
         },
       }),
     );
+  }
+  /**
+   * Calculate the points assigned to a given rubric level (1-indexed)
+   * based on the total possible score spread evenly across all stars.
+   */
+  _rubricLevelPoints(level) {
+    if (this.numStars === 0) return 0;
+    return Math.round((this.possible / this.numStars) * level);
   }
   updated(changedProperties) {
     if (super.updated) {

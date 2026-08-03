@@ -74,6 +74,18 @@
           "error": "Error",
           "info": "Info"
         }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning Objective",
+        "description": "Learning objective reference emitted as oer:hasLearningObjective.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "assessing",
+        "title": "Assessing",
+        "description": "Activity reference emitted as oer:assessing.",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [

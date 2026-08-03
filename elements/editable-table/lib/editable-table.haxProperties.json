@@ -68,6 +68,25 @@
         "title": "Responsive",
         "description": "Adjust table layout on small screens.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric Mode",
+        "description": "Interpret this table as an OER Schema Rubric so that Rubric, RubricScale, RubricCriterion, and RubricLevel metadata is emitted.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric Type",
+        "description": "Rubric style emitted as oer:rubricType (only meaningful when Rubric Mode is on).",
+        "inputMethod": "select",
+        "options": {
+          "": "(none)",
+          "analytic": "Analytic",
+          "holistic": "Holistic",
+          "single-point": "Single Point",
+          "checklist": "Checklist"
+        }
       }
     ],
     "advanced": [
