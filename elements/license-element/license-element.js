@@ -122,9 +122,12 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       />
       <div
         class="license-body"
+        typeof="oer:SupportingMaterial"
         xmlns:cc="${this.licenseLink}"
         xmlns:dc="http://purl.org/dc/elements/1.1/"
       >
+        <meta property="oer:name" content="${this.title}" />
+        <meta property="oer:uri" content="${this.source}" />
         ${this.licenseImage
           ? html`
               <a
