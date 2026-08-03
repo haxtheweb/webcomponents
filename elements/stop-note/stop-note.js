@@ -2,6 +2,7 @@ import { html, css } from "lit";
 import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
@@ -27,7 +28,7 @@ export const StopNoteIconList = {
   info: "stopnoteicons:book-icon",
 };
 
-class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
+class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -208,7 +209,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           </div>
         </div>
         <div class="message_wrap">
-          <h3 class="main_message ${this.url ? "mt-2" : "mt-5"}" id="title">
+          <h3 class="main_message ${this.url ? "mt-2" : "mt-5"}" id="title" property="oer:mainContent">
             ${this.title}
           </h3>
           <div class="secondary_message">
@@ -328,6 +329,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.setAttribute("typeof", "oer:LearningComponent");
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
     this._syncSlottedLinkColor();
     // if we have no status BUT icon was supplied; this is to support legacy implementations

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
-export class UnSdg extends LitElement {
+import { SchemaBehaviors } from '@haxtheweb/schema-behaviors/schema-behaviors.js';
+export class UnSdg extends SchemaBehaviors(LitElement) {
   static get tag() {
     return 'un-sdg';
   }
@@ -58,11 +59,13 @@ export class UnSdg extends LitElement {
     // ensure we are between the 17 goals we support
     if (this.goal >= 1 && this.goal <= 17) {
       if (this.colorOnly) {
-        return html`<div style="background-color: ${unSDGGoalData[this.goal - 1].color};"></div>`;
+        return html`<meta property="oer:name" content="${unSDGGoalData[this.goal - 1].name}" /><div style="background-color: ${unSDGGoalData[this.goal - 1].color};"></div>`;
       }
       else {
         return html`
+        <meta property="oer:name" content="${unSDGGoalData[this.goal - 1].name}" />
         <img
+          property="oer:image"
           src="${unSDGGoalData[this.goal - 1].image}"
           alt="${this.alt}"
           loading="${this.loading}"
@@ -71,6 +74,13 @@ export class UnSdg extends LitElement {
       `;
       }
     }
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute('typeof', 'oer:Topic');
   }
 
   static get haxProperties() {

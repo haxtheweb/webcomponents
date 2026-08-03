@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
@@ -16,7 +17,7 @@ import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
  * @lit-element
  * @demo demo/index.html
  */
-class LrndesignTimeline extends SimpleColors {
+class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   //styles function
   static get styles() {
     return [
@@ -315,7 +316,7 @@ class LrndesignTimeline extends SimpleColors {
                 @focus="${this._setScroll}"
               >
                 <div class="event-overview">
-                  <div class="heading"><h2>${event.heading}</h2></div>
+                <div class="heading"><h2 property="oer:name">${event.heading}</h2></div>
                   <div class="media-outer">
                     ${!event.imagesrc || event.imagesrc === ""
                       ? ``
@@ -331,7 +332,7 @@ class LrndesignTimeline extends SimpleColors {
                         `}
                   </div>
                 </div>
-                <div class="details">${event.details}</div>
+                <div class="details" property="oer:description">${event.details}</div>
               </section>
             `,
           )}
@@ -538,6 +539,7 @@ class LrndesignTimeline extends SimpleColors {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.setAttribute("typeof", "oer:LearningComponent");
     globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
