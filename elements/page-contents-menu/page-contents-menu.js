@@ -5,13 +5,14 @@
 import { html, css } from "lit";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `page-contents-menu`
  * `Links that jump you to the right place in the page's content`
  * @demo demo/index.html
  * @element page-contents-menu
  */
-class PageContentsMenu extends DDD {
+class PageContentsMenu extends SchemaBehaviors(DDD) {
   //styles function
   static get styles() {
     return [
@@ -157,7 +158,7 @@ class PageContentsMenu extends DDD {
   // render function
   render() {
     return html`
-      <section class="wrapper" role="navigation">
+      <section class="wrapper" role="navigation" typeof="oer:TableOfContents">
         <div class="header">
           <a
             class="svg"
@@ -271,11 +272,17 @@ class PageContentsMenu extends DDD {
     if (item.link == null && item.id) {
       // tab index ensures browser treats it like a normal link
       return html`
-        <li class="item">
+        <li
+          class="item"
+          typeof="oer:TableOfContentsEntry"
+          property="oer:entry"
+        >
+          <meta property="oer:forComponent" content="${item.id || item.link || ''}" />
           <a
             class="link indent-${item.indent} ${item.active}"
             tabindex="0"
             title="${item.title}"
+            property="oer:title"
             @click="${this.scrollToObject}"
             @keypress="${this.keyScroll}"
             data-index="${index}"
@@ -285,11 +292,17 @@ class PageContentsMenu extends DDD {
       `;
     }
     return html`
-      <li class="item">
+      <li
+        class="item"
+        typeof="oer:TableOfContentsEntry"
+        property="oer:entry"
+      >
+        <meta property="oer:forComponent" content="${item.id || item.link || ''}" />
         <a
           class="link indent-${item.indent} ${item.active}"
           href="${item.link}"
           title="${item.title}"
+          property="oer:title"
           @click="${this.scrollToObject}"
           @keypress="${this.keyScroll}"
           data-index="${index}"
@@ -302,6 +315,7 @@ class PageContentsMenu extends DDD {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      schemaMap: { type: Object },
       contentContainer: {
         type: Object,
       },
