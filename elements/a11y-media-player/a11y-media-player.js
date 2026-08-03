@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
@@ -105,7 +106,7 @@ import "./lib/a11y-media-youtube.js";
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
-class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
+class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD))) {
   //styles function
   static get styles() {
     return [
@@ -931,7 +932,9 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
 
   // render function
   render() {
-    return html` <div class="sr-only" ?hidden="${!this.mediaCaption}">
+    return html` <meta property="oer:name" content="${this.mediaTitle}" />
+      <meta property="oer:uri" content="${this.source}" />
+      <div class="sr-only" ?hidden="${!this.mediaCaption}">
         ${this.mediaCaption}
       </div>
       <div id="player-section">
@@ -3507,6 +3510,7 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:MediaObject");
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
       this.height ? "146px" : "unset",

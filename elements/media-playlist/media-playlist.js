@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/audio-player/audio-player.js";
@@ -15,7 +16,7 @@ import "@haxtheweb/audio-player/audio-player.js";
  * @demo index.html
  * @element media-playlist
  */
-export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
+export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement))) {
   static get tag() {
     return "media-playlist";
   }
@@ -25,6 +26,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     this.edit = false;
     this.activeIndex = 0;
     this.mediaItems = [];
+    this.forCourse = "";
     this._playTimeout = null;
     this.t = this.t || {};
     this.t = {
@@ -118,6 +120,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
       edit: { type: Boolean, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
       mediaItems: { type: Array },
+      forCourse: { type: String, attribute: "for-course" },
       _haxState: { type: Boolean },
     };
   }
@@ -309,6 +312,11 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     }
     const activeItem = this.mediaItems[this.activeIndex];
     return html`
+      ${this.mediaItems.map(
+        (item) =>
+          html`<meta property="oer:hasComponent" content="${item.source}" />`,
+      )}
+      <meta property="oer:forCourse" content="${this.forCourse}" />
       <div class="layout">
         <div class="player-area">
           ${activeItem
@@ -594,6 +602,7 @@ export class MediaPlaylist extends DDDSuper(I18NMixin(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:LearningComponent");
     this._updateMediaItems();
     const playerArea = this.shadowRoot.querySelector(".player-area");
     const playlist = this.shadowRoot.querySelector(".playlist");

@@ -35,6 +35,13 @@
         "title": "Active index",
         "description": "Index of the active item to start on.",
         "inputMethod": "number"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "The Course this playlist is meant for (course identifier or URL).",
+        "inputMethod": "textfield",
+        "validationType": "text"
       }
     ],
     "advanced": [],
