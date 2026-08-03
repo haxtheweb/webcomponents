@@ -8,6 +8,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * @title Outline Player
  * @element outline-player
@@ -16,8 +17,8 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * @haxcms-theme-hidden true
  * @demo demo/index.html
  */
-class OutlinePlayer extends LTIResizingMixin(
-  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
+class OutlinePlayer extends SchemaBehaviors(
+  LTIResizingMixin(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
 ) {
   /**
    * LitElement style render
@@ -398,7 +399,7 @@ class OutlinePlayer extends LTIResizingMixin(
       <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <site-git-corner part="git-corner-btn"></site-git-corner>
       <div class="layout">
-        <nav aria-label="Site navigation">
+        <nav aria-label="Site navigation" typeof="oer:TableOfContents">
           <div class="drawer ${this.opened ? 'opened' : ''} ${this.closed ? 'closed' : ''}" id="drawer">
             <site-menu></site-menu>
           </div>
@@ -461,6 +462,7 @@ class OutlinePlayer extends LTIResizingMixin(
   static get properties() {
     return {
       ...super.properties,
+      schemaMap: { type: Object },
       opened: {
         type: Boolean,
         reflect: true,
