@@ -1385,8 +1385,13 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
                             cue.endTime,
                             this.media.duration,
                           )}"
-                          tabindex="0"
+                          tabindex="${this.disableInteractive ||
+                          this.disableSeek ||
+                          this.duration === 0
+                            ? -1
+                            : 0}"
                           @click="${(e) => this._handleCueSeek(cue)}"
+                          @keydown="${(e) => this._handleCueKeydown(e, cue)}"
                           @active-changed="${this._setActiveCue}"
                           ?active="${cue.track.activeCues &&
                           cue.track.activeCues[0] === cue}"
@@ -3361,6 +3366,20 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
   _handleCueSeek(cue) {
     if (!this.standAlone) {
       this.seek(cue.startTime);
+    }
+  }
+
+  /**
+   * handles keyboard activation of a transcript cue
+   * (custom element with role="button" does not activate on Enter/Space automatically)
+   *
+   * @param {event} e keydown event
+   * @param {object} cue cue to seek to
+   */
+  _handleCueKeydown(e, cue) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+      e.preventDefault();
+      this._handleCueSeek(cue);
     }
   }
 

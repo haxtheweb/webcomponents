@@ -87,6 +87,33 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]:focus {
           outline: none;
         }
+        input[type="range"]:focus::-webkit-slider-thumb {
+          border: 2px solid
+            var(
+              --simple-range-input-focus-border-color,
+              var(--simple-colors-default-theme-accent-8, grey)
+            );
+          box-shadow: 0 0 0 2px
+            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+        }
+        input[type="range"]:focus::-moz-range-thumb {
+          border: 2px solid
+            var(
+              --simple-range-input-focus-border-color,
+              var(--simple-colors-default-theme-accent-8, grey)
+            );
+          box-shadow: 0 0 0 2px
+            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+        }
+        input[type="range"]:focus::-ms-thumb {
+          border: 2px solid
+            var(
+              --simple-range-input-focus-border-color,
+              var(--simple-colors-default-theme-accent-8, grey)
+            );
+          box-shadow: 0 0 0 2px
+            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+        }
         input[type="range"]::-webkit-slider-runnable-track {
           width: 100%;
           height: var(--simple-range-input-track-height, 10px);

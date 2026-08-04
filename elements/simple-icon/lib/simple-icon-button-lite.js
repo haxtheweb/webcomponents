@@ -118,12 +118,12 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         <button
           ?autofocus="${this.autofocus}"
           aria-labelledby="${this.ariaLabelledby}"
-          .aria-pressed="${this.toggles || this.toggled
-            ? "true"
-            : this.toggles
-              ? "false"
-              : undefined}"
-          controls="${this.controls}"
+          aria-pressed="${this.toggles
+            ? this.toggled
+              ? "true"
+              : "false"
+            : undefined}"
+          aria-controls="${this.controls || undefined}"
           part="button"
           ?disabled="${this.disabled}"
           form="${this.form}"

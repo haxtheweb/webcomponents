@@ -102,11 +102,28 @@ class LectureAnchor extends DDD {
 
   render() {
     return html`
-      <mark @click="${this.clickHandler}">
-        <simple-icon-lite icon="${this.icon}" dir="ltr"></simple-icon-lite>
+      <mark
+        @click="${this.clickHandler}"
+        @keydown="${this._handleKeydown}"
+        role="button"
+        tabindex="0"
+      >
+        <simple-icon-lite
+          icon="${this.icon}"
+          dir="ltr"
+          aria-hidden="true"
+        ></simple-icon-lite>
         <slot></slot>
       </mark>
     `;
+  }
+  _handleKeydown(e) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+      e.preventDefault();
+      if (!this._haxState) {
+        this.clickHandler(e);
+      }
+    }
   }
 
   static get tag() {

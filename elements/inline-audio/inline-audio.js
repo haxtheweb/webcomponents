@@ -259,6 +259,10 @@ class InlineAudio extends I18NMixin(DDD) {
         label="${this.aria}"
         icon="${this.icon}"
       ></simple-icon-button>
+      <span class="sr-only" aria-live="polite" aria-atomic="true">${this
+        .playing
+        ? this.t.pause
+        : this.t.play}</span>
       <slot></slot>
       <audio
         class="player"

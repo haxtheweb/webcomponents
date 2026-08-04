@@ -95,6 +95,10 @@ class a11yCarouselButton extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (["controls", "active"].includes(propName))
         this.disabled = !this.controls || this.active;
+      if (["controls", "active", "disabled"].includes(propName)) {
+        this.setAttribute("aria-disabled", this.disabled ? "true" : "false");
+        this.setAttribute("tabindex", this.disabled ? "-1" : "0");
+      }
     });
   }
 

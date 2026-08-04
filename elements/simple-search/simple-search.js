@@ -105,7 +105,7 @@ class SimpleSearch extends LitElement {
           border-color: var(--simple-search-button-disabled-border-color, #ccc);
         }
 
-        button:not([controls]) {
+        button:not([aria-controls]) {
           display: none;
         }
 
@@ -138,16 +138,19 @@ class SimpleSearch extends LitElement {
           slot="${this.inline ? "label-prefix" : "prefix"}"
         ></simple-icon-lite>
       </simple-fields-field>
-      <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+      <div
+        id="xofy"
+        ?shrink-hide="${this._hasNoSearch(this.searchTerms)}"
+        aria-live="polite"
+        aria-atomic="true"
+      >
         ${this._getResultsSpan(this.resultPointer, this.resultCount)}
       </div>
       <div id="searchnav" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         <button
           id="prev"
           aria-label="${this.prevButtonLabel}"
-          role="button"
-          controls="${this.controls}"
-          tabindex="0"
+          aria-controls="${this.controls || undefined}"
           ?disabled="${this.__hidePrev}"
           @click="${this._navigateResults}"
         >
@@ -157,9 +160,7 @@ class SimpleSearch extends LitElement {
         <button
           id="next"
           aria-label="${this.nextButtonLabel}"
-          role="button"
-          controls="${this.controls}"
-          tabindex="0"
+          aria-controls="${this.controls || undefined}"
           ?disabled="${this.__hideNext}"
           @click="${this._navigateResults}"
         >

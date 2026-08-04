@@ -32,6 +32,10 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           outline: none;
           padding: 0 2px;
         }
+        #input:focus {
+          outline: 2px solid var(--simple-autocomplete-focus-color, #3f51b5);
+          outline-offset: 2px;
+        }
         simple-popover {
           max-width: var(--simple-autocomplete-popover-max-width, 50vw);
           padding: 0;
@@ -131,6 +135,11 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             part="input"
             id="input"
             name="input"
+            role="combobox"
+            aria-expanded="${this.opened}"
+            aria-controls="list"
+            aria-autocomplete="list"
+            aria-label="${this.inputLabel || "Search"}"
             @input="${this.inputChanged}"
             contenteditable
             @keydown="${this.a11yInputKeys}"
@@ -145,8 +154,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         for="input"
       >
         ${this.filtered.length > 0 && this.opened
-          ? html` <ul
+            ? html` <ul
               part="list"
+              id="list"
               role="listbox"
               @keydown="${this.a11yListKeys}"
             >
@@ -175,7 +185,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
                     : ``}`,
               )}
             </ul>`
-          : html`<div class="no-results" part="no-result">No results</div>`}
+          : html`<div class="no-results" part="no-result" role="status">No results</div>`}
       </simple-popover>
     `;
   }
@@ -264,6 +274,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     super();
     // default limit of items to show even if there are more results
     this.itemLimit = 6;
+    this.inputLabel = "Search";
     // flag to hide input; useful if something else is implementing this tag w/ own input
     this.hideInput = false;
     this.selectionPosition = false;
@@ -424,6 +435,10 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       itemLimit: {
         type: Number,
         attribute: "item-limit",
+      },
+      inputLabel: {
+        type: String,
+        attribute: "input-label",
       },
     };
   }

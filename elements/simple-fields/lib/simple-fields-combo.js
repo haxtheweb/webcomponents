@@ -239,13 +239,15 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   get inputTemplate() {
     return html`
       <input
-        .aria-activedescendant="${this.activeDescendant}"
-        .aria-autocomplete="${this.autocomplete}"
-        .aria-descrbedby="${this.describedBy}"
-        .aria-expanded="${this.expanded}"
-        aria-haspopup="true"
-        .aria-invalid="${this.error ? "true" : "false"}"
-        .aria-owns="${this.id}-list"
+        role="combobox"
+        aria-activedescendant="${this.activeDescendant}"
+        aria-autocomplete="${this.autocomplete}"
+        aria-describedby="${this.describedBy || "description error-message"}"
+        aria-expanded="${this.expanded}"
+        aria-haspopup="listbox"
+        aria-invalid="${this.error ? "true" : "false"}"
+        aria-label="${this.label || ""}"
+        aria-owns="${this.id}-list"
         ?autofocus="${this.autofocus}"
         @blur="${this._onInputBlur}"
         @change="${this._handleFieldChange}"
@@ -286,7 +288,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   get listboxTemplate() {
     return html`
       <ul
-        .aria-labelledBy="${this.fieldId}-label"
+        aria-labelledby="${this.fieldId}-label"
         class="${this.listFocus ? "focus" : ""}"
         data-items="${this.itemsList.join()}"
         data-options="${this.filteredOptions

@@ -641,6 +641,13 @@ class MapMenu extends LitElement {
     if (newValue) {
       // set the new active attribute to the item
       newValue.setAttribute("active", "active");
+      // convey the current page to assistive technology
+      const link = newValue.querySelector && newValue.querySelector("a");
+      if (link) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        newValue.setAttribute("aria-current", "page");
+      }
       // move the highlight thingy
       if (this.activeIndicator) {
         this.__updateActiveIndicator(newValue);
@@ -658,6 +665,12 @@ class MapMenu extends LitElement {
 
     if (oldValue) {
       oldValue.removeAttribute("active");
+      const oldLink = oldValue.querySelector && oldValue.querySelector("a");
+      if (oldLink) {
+        oldLink.removeAttribute("aria-current");
+      } else {
+        oldValue.removeAttribute("aria-current");
+      }
       this.__updateActiveIndicator(newValue);
     }
   }

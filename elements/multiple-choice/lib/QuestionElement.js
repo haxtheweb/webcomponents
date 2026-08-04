@@ -626,6 +626,17 @@ export class QuestionElement extends SchemaBehaviors(
           font-weight: bold;
           text-align: center;
         }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
         dl .correct {
           border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
           padding-left: 8px;
@@ -792,7 +803,7 @@ export class QuestionElement extends SchemaBehaviors(
                 ></simple-icon-lite
                 >Question
               </summary>
-              <div class="container">
+          <div class="container">
                 <h3 property="oer:name">${this.question}</h3>
                 ${this.renderInteraction()}
                 ${!this.hideButtons ? this.renderButtons() : nothing}
@@ -809,8 +820,15 @@ export class QuestionElement extends SchemaBehaviors(
                 <simple-icon-lite
                   class="details-icon"
                   icon="icons:feedback"
+                  aria-hidden="true"
                 ></simple-icon-lite
                 >Feedback
+                <span class="sr-only" aria-live="polite" aria-atomic="true">${this
+                  .showAnswer
+                  ? this.isCorrect()
+                    ? this.correctText
+                    : this.incorrectText
+                  : ""}</span>
               </summary>
               <div class="container">
                 <details id="legend">
@@ -881,6 +899,12 @@ export class QuestionElement extends SchemaBehaviors(
                   ? "correct"
                   : "incorrect"
                 : ""}"
+              aria-invalid="${this.showAnswer &&
+              answer &&
+              answer.userGuess &&
+              !answer.correct
+                ? "true"
+                : undefined}"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"

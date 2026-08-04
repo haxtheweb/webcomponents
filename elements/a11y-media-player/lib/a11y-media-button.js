@@ -181,8 +181,8 @@ class A11yMediaButton extends LitElement {
       <button
         id="button"
         aria-label="${this.label}"
-        aria-pressed="${this.toggle ? "true" : "false"}"
-        controls="${this.controls}"
+        aria-pressed="${this.toggle ? "true" : undefined}"
+        aria-controls="${this.controls || undefined}"
         tabindex="0"
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"

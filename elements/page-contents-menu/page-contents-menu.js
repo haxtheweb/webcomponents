@@ -157,12 +157,12 @@ class PageContentsMenu extends DDD {
   // render function
   render() {
     return html`
-      <section class="wrapper" role="navigation">
+      <section class="wrapper" role="navigation" aria-label="${this.label}">
         <div class="header">
           <a
             class="svg"
             @click="${this.toggleSettings}"
-            @keypress="${this.keyToggle}"
+            @keydown="${this.keyToggle}"
             id="popovertarget"
             role="button"
             aria-label="${this.label}"
@@ -179,6 +179,7 @@ class PageContentsMenu extends DDD {
               stroke-linejoin="round"
               stroke="currentColor"
               class="icon-7f6730be--text-3f89f380"
+              aria-hidden="true"
             >
               <g>
                 <line x1="21" y1="10" x2="7" y2="10"></line>
@@ -221,12 +222,12 @@ class PageContentsMenu extends DDD {
     `;
   }
   keyToggle(e) {
-    if (["Enter", "Space"].includes(e.key)) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
       this.toggleSettings(e);
     }
   }
   keyScroll(e) {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       this.scrollToObject(e);
     }
   }
@@ -268,16 +269,19 @@ class PageContentsMenu extends DDD {
     }
   }
   renderItem(item, index) {
+    const isActive = item.active === "active";
     if (item.link == null && item.id) {
       // tab index ensures browser treats it like a normal link
       return html`
         <li class="item">
           <a
             class="link indent-${item.indent} ${item.active}"
-            tabindex="0"
+            href="#${item.id}"
+            role="link"
             title="${item.title}"
+            aria-current="${isActive ? "true" : undefined}"
             @click="${this.scrollToObject}"
-            @keypress="${this.keyScroll}"
+            @keydown="${this.keyScroll}"
             data-index="${index}"
             >${item.title}</a
           >
@@ -290,8 +294,9 @@ class PageContentsMenu extends DDD {
           class="link indent-${item.indent} ${item.active}"
           href="${item.link}"
           title="${item.title}"
+          aria-current="${isActive ? "true" : undefined}"
           @click="${this.scrollToObject}"
-          @keypress="${this.keyScroll}"
+          @keydown="${this.keyScroll}"
           data-index="${index}"
           >${item.title}</a
         >

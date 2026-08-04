@@ -153,7 +153,9 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
         <a
           role="menuitem"
           href="${this.href}"
-          ?disabled="${this.disabled}"
+          aria-disabled="${this.disabled ? "true" : undefined}"
+          tabindex="${this.disabled ? -1 : undefined}"
+          @click="${this._handleDisabledClick}"
           part="button"
         >
           <slot></slot>
@@ -170,7 +172,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
         <li role="none">
           <button
             role="menuitem"
-            controls="${this.controls}"
+            aria-controls="${this.controls || undefined}"
             ?disabled="${this.disabled}"
             part="button"
           >
@@ -196,6 +198,12 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
      */
     focus() {
       if (this.menuItem) this.menuItem.focus();
+    }
+    _handleDisabledClick(e) {
+      if (this.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
     }
     connectedCallback() {
       super.connectedCallback();
