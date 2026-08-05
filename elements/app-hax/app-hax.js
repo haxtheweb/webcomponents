@@ -1596,6 +1596,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.login();
       }
     });
+    // If the login modal opened before async session rehydration finished
+    // (connection-test + refresh cookie), close it once the user is validated.
+    autorun(() => {
+      if (toJS(store.isLoggedIn) && this.__loginModalOpen) {
+        this.__loginModalOpen = false;
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {},
+          }),
+        );
+      }
+    });
     this._syncHeaderPreSlot();
     this._applyInitialAdminRoutePath();
   }

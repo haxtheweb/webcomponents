@@ -154,6 +154,13 @@ export class AppHaxBackendAPI extends LitElement {
         : null;
     this.__loopBlock = false;
     this.__connectionTestPending = null;
+    // true once the initial connectionTest rehydration attempt has completed
+    // (success OR failure). Until then, jwt-changed events carrying an invalid
+    // jwt (e.g. jwt-login's first render with jwt=null) must NOT clear the
+    // session, because _clearAuthSession would set store.authTesting=false
+    // while the connection test is still in flight, letting the login modal
+    // autorun fire mid-rehydration.
+    this.__rehydrationSettled = false;
     this.__retryCounts = {};
     this.__maxRefreshRetries = 2;
     this.__validatedJwt = "";
@@ -525,6 +532,7 @@ export class AppHaxBackendAPI extends LitElement {
       const hasJWT = this._hasValidJWT(this.jwt);
       store.authValidated = hasJWT;
       store.authTesting = false;
+      this.__rehydrationSettled = true;
       return hasJWT;
     }
     if (
@@ -630,6 +638,7 @@ export class AppHaxBackendAPI extends LitElement {
       .finally(() => {
         store.authTesting = false;
         this.__connectionTestPending = null;
+        this.__rehydrationSettled = true;
       });
     return this.__connectionTestPending;
   }
@@ -759,6 +768,22 @@ export class AppHaxBackendAPI extends LitElement {
     this.jwt = e.detail.value;
     this._configureSystemApiRegistry();
     if (!this._hasValidJWT(this.jwt)) {
+      // RACE GUARD: jwt-login dispatches jwt-changed with a null jwt on its
+      // very first render (page reload). If the connectionTest rehydration is
+      // still pending (or hasn't settled yet), clearing the session here
+      // stomps store.authTesting and opens the login modal even though the
+      // refresh-cookie rehydration is about to succeed. Let the pending
+      // validation decide instead.
+      const connectionTestConfigured = !!(
+        (this.appSettings && this.appSettings.connectionTest) ||
+        (globalThis.appSettings && globalThis.appSettings.connectionTest)
+      );
+      if (
+        this.__connectionTestPending ||
+        (connectionTestConfigured && !this.__rehydrationSettled)
+      ) {
+        return;
+      }
       this._clearAuthSession(false);
       return;
     }
