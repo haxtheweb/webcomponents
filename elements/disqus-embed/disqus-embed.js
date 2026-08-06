@@ -170,6 +170,11 @@ class DisqusBroker extends LitElement {
   }
 
   createEmbedScript(target, name) {
+    // security: validate shortName before interpolating into the Disqus host (prevents host injection)
+    if (!name || !/^[a-zA-Z0-9_-]+$/.test(name)) {
+      console.warn("disqus-embed: invalid shortName, refusing to load embed script");
+      return;
+    }
     this.renderTarget = target;
     this.innerHTML = "";
     if (!this._embed) {
@@ -177,6 +182,7 @@ class DisqusBroker extends LitElement {
       this._embed.setAttribute("data-timestamp", +new Date());
       this._embed.type = "text/javascript";
       this._embed.async = true;
+      // security note: Disqus embed.js has no published SRI hash; shortName validation is the primary control here.
       this._embed.src = `https://${name}.disqus.com/embed.js`;
       this.insertAdjacentElement("afterend", this._embed);
     }

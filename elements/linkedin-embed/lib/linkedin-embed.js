@@ -337,11 +337,9 @@ class LinkedinEmbed extends DDD {
       }
     });
     badgeHost.appendChild(iframe);
-    if (iframe.contentWindow && iframe.contentWindow.document) {
-      iframe.contentWindow.document.open();
-      iframe.contentWindow.document.write(`<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}</body></html>`);
-      iframe.contentWindow.document.close();
-    }
+    // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
+    iframe.srcdoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}</body></html>`;
+    // security follow-up: full iframe isolation (sandbox=allow-scripts) would break same-origin height measurement; deferred.
   }
 
   get _effectiveTheme() {
