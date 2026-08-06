@@ -92,16 +92,16 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
     method: "GET",
   },
   saveApiKeys: {
-    operationId: "saveApiKeysPost",
-    method: "POST",
+    operationId: "saveApiKeysPatch",
+    method: "PATCH",
   },
   getMediaSettings: {
     operationId: "getMediaSettings",
     method: "GET",
   },
   saveMediaSettings: {
-    operationId: "saveMediaSettingsPost",
-    method: "POST",
+    operationId: "saveMediaSettingsPatch",
+    method: "PATCH",
   },
   systemBlocksList: {
     operationId: "systemBlocksGet",
