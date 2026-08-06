@@ -294,7 +294,8 @@ class JwtLogin extends LitElement {
         this.__logoutInFlight = false;
         if (meta.redirect && this.redirectUrl) {
           setTimeout(() => {
-            globalThis.location.href = this.redirectUrl;
+            // security: validate scheme before navigation (JS-URL-001)
+            globalThis.location.href = this.safeRedirect(this.redirectUrl);
           }, 100);
         }
         break;
@@ -319,7 +320,8 @@ class JwtLogin extends LitElement {
     var redirect = meta.redirect;
     if (ctx === "logout" && redirect && this.redirectUrl) {
       setTimeout(() => {
-        globalThis.location.href = this.redirectUrl;
+        // security: validate scheme before navigation (JS-URL-001)
+        globalThis.location.href = this.safeRedirect(this.redirectUrl);
       }, 100);
       return;
     }
@@ -430,7 +432,8 @@ class JwtLogin extends LitElement {
       this.logoutUrl !== "undefined"
     ) {
       if (this.isDifferentDomain(this.logoutUrl)) {
-        globalThis.location.href = this.logoutUrl;
+        // security: validate scheme before navigation (JS-URL-001)
+        globalThis.location.href = this.safeRedirect(this.logoutUrl);
       } else {
         this.generateRequest(this.logoutUrl, {}, {
           context: "logout",
@@ -439,7 +442,8 @@ class JwtLogin extends LitElement {
       }
     } else if (redirect && this.redirectUrl) {
       setTimeout(() => {
-        globalThis.location.href = this.redirectUrl;
+        // security: validate scheme before navigation (JS-URL-001)
+        globalThis.location.href = this.safeRedirect(this.redirectUrl);
       }, 100);
     }
   }
@@ -452,6 +456,19 @@ class JwtLogin extends LitElement {
     } catch (error) {
       console.error("Invalid URL provided:", error);
       return false;
+    }
+  }
+
+  // security: only allow http(s) navigation; blocks javascript:/data: schemes that would execute on location.href assignment (JS-URL-001)
+  safeRedirect(raw) {
+    try {
+      const u = new URL(raw, globalThis.location.href);
+      if (u.protocol !== "https:" && u.protocol !== "http:") {
+        return "/";
+      }
+      return u.href;
+    } catch (e) {
+      return "/";
     }
   }
 
