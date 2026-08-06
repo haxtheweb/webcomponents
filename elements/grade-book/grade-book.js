@@ -1380,7 +1380,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors)))
         ${this.database.assignments.map(
           (a) => html`
             <span typeof="oer:Assessment">
-              <meta property="oer:gradingFormat" content="${a.points || ""}" />
+              <meta property="oer:gradingFormat" content="points" />
               ${this.forCourse
                 ? html`<meta
                     property="oer:forCourse"
