@@ -173,7 +173,7 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
           : nothing}
         ${headerRow.length
           ? html`
-              <span typeof="oer:RubricScale">
+              <span typeof="oer:RubricScale" property="oer:rubricScale">
                 ${headerRow.map((cell, colIndex) =>
                   colIndex < startCol
                     ? nothing
