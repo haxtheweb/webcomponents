@@ -552,6 +552,7 @@ export class AppHaxSiteBars extends SimpleColors {
         .more-options {
           display: flex;
           align-items: center;
+          color: black;
         }
 
         .more-options simple-icon-button-lite {

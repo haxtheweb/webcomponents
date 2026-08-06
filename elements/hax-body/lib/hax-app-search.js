@@ -92,7 +92,24 @@ class HaxAppSearch extends LitElement {
     ) {
       headers["X-HAXCMS-Site-Token"] = siteToken;
     }
-    const jwtValue = String(localStorageGet("jwt", "") || "").trim();
+    // Phase 3 (M1): the access JWT is no longer persisted to localStorage.
+    // Read it from the live HAXcms site store when present; fall back to
+    // localStorage for non-HAXcms backends that still persist it there.
+    let jwtValue = "";
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS.instance.store &&
+      typeof globalThis.HAXCMS.instance.store.jwt === "string"
+    ) {
+      jwtValue = String(globalThis.HAXCMS.instance.store.jwt || "").trim();
+    }
+    if (jwtValue === "" || jwtValue === "null") {
+      jwtValue = String(localStorageGet("jwt", "") || "").trim();
+    }
+    if (jwtValue === "null") {
+      jwtValue = "";
+    }
     if (
       jwtValue !== "" &&
       !Object.prototype.hasOwnProperty.call(headers, "Authorization") &&

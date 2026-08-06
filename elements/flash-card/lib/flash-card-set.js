@@ -2,6 +2,7 @@ import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "../flash-card.js";
 
 export class FlashCardSet extends SimpleColors {
@@ -31,22 +32,18 @@ export class FlashCardSet extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
     this.renderTags();
-    this.shadowRoot
-      .querySelector(".arrow-left")
-      .addEventListener("click", () => {
-        if (this.currentQuestion > 0) {
-          this.currentQuestion -= 1;
-          this.changeVisible();
-        }
-      });
-    this.shadowRoot
-      .querySelector(".arrow-right")
-      .addEventListener("click", () => {
-        if (this.currentQuestion < this.questions.length / 4 - 1) {
-          this.currentQuestion += 1;
-          this.changeVisible();
-        }
-      });
+  }
+  _prevCard() {
+    if (this.currentQuestion > 0) {
+      this.currentQuestion -= 1;
+      this.changeVisible();
+    }
+  }
+  _nextCard() {
+    if (this.currentQuestion < this.questions.length / 4 - 1) {
+      this.currentQuestion += 1;
+      this.changeVisible();
+    }
   }
 
   getData() {
@@ -170,18 +167,19 @@ export class FlashCardSet extends SimpleColors {
     return html`
       <div id="container">
         <div style="display: inline-flex">
-          <simple-icon-lite
-            tabindex="0"
+          <simple-icon-button-lite
             icon="arrow-back"
+            label="Previous card"
             class="arrow-left"
-            onclick="${this.changeVisible()}"
-          ></simple-icon-lite>
+            @click="${this._prevCard}"
+          ></simple-icon-button-lite>
           <div id="content"></div>
-          <simple-icon-lite
-            tabindex="0"
+          <simple-icon-button-lite
             icon="arrow-forward"
+            label="Next card"
             class="arrow-right"
-          ></simple-icon-lite>
+            @click="${this._nextCard}"
+          ></simple-icon-button-lite>
         </div>
         <slot style="display: none"></slot>
       </div>

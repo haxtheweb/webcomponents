@@ -67,6 +67,19 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     };
   }
   _resolveUploadJwtValue() {
+    // Phase 3 (M1): the access JWT is no longer persisted to localStorage.
+    // Read it from the live HAXcms site store when present; fall back to
+    // localStorage for non-HAXcms backends that still persist it there.
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS.instance.store &&
+      typeof globalThis.HAXCMS.instance.store.jwt === "string" &&
+      globalThis.HAXCMS.instance.store.jwt !== "" &&
+      globalThis.HAXCMS.instance.store.jwt !== "null"
+    ) {
+      return globalThis.HAXCMS.instance.store.jwt;
+    }
     const jwtValue = localStorageGet("jwt");
     return typeof jwtValue === "string" ? jwtValue : "";
   }

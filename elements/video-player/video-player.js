@@ -127,6 +127,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                       <iframe
                         loading="lazy"
                         resource="${this.schemaResourceID}-video"
+                        title="${this.mediaTitle || "Embedded video player"}"
                         .src="${(this.sourceData &&
                           this.sourceData[0] &&
                           this.sourceData[0].src) ||

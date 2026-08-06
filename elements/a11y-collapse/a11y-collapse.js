@@ -451,11 +451,11 @@ class A11yCollapse extends DDD {
         @click="${this._onClick}"
         aria-controls="content"
         aria-expanded="${this.expanded ? "true" : "false"}"
+        ?disabled="${this.disabled}"
       >
         <div
           id="heading"
           part="heading-id"
-          ?disabled="${this.disabled}"
           .label="${this._getExpanded(
             this.label,
             this.labelExpanded,

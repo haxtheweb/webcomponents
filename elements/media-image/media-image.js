@@ -211,6 +211,7 @@ class MediaImage extends DDD {
             alt="${this.alt}"
             tabindex="${!this.disableZoom ? "0" : "-1"}"
             @click="${this._handleClick}"
+            @keydown="${this._handleImageKeydown}"
           ></media-image-image>`}
       <media-image-citation>
         <slot class="citation" name="citation"
@@ -254,6 +255,17 @@ class MediaImage extends DDD {
     // click the link
     if (!this._haxState && this.link && this.disableZoom) {
       this.shadowRoot.querySelector("a").click();
+    }
+  }
+  _handleImageKeydown(event) {
+    if (this._haxState || this.disableZoom) return;
+    if (
+      event.key === "Enter" ||
+      event.key === " " ||
+      event.key === "Spacebar"
+    ) {
+      event.preventDefault();
+      event.target.click();
     }
   }
   haxeditModeChanged(value) {

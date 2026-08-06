@@ -40,7 +40,11 @@ class Store {
     }
     this.jwt = localStorageGet("jwt", null);
     this.authValidated = false;
-    this.authTesting = false;
+    // When a connectionTest endpoint exists, session rehydration (connection-test
+    // + HttpOnly refresh cookie) runs asynchronously at boot. Start in the
+    // "testing" state so the login modal doesn't open in the window between
+    // appReady flipping true and the connection test actually starting.
+    this.authTesting = !!(this.appSettings && this.appSettings.connectionTest);
     // placeholder for when the actual API Backend gets plugged in here
     this.AppHaxAPI = {};
     this.newSitePromiseList = [

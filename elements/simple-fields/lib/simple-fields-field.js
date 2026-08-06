@@ -826,12 +826,12 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         <span class="input-option" part="option-inner">
           <slot name="input-prefix"></slot>
           <input
-            ?autofocus="${this.autofocus}"
-            .aria-descrbedby="${this.describedBy || ""}"
-            .aria-invalid="${this.error ? "true" : "false"}"
-            @blur="${this._onFocusout}"
-            @change="${this._handleFieldChange}"
-            ?checked="${checked}"
+          ?autofocus="${this.autofocus}"
+          aria-describedby="${this.describedBy || "description error-message"}"
+          aria-invalid="${this.error ? "true" : "false"}"
+          @blur="${this._onFocusout}"
+          @change="${this._handleFieldChange}"
+          ?checked="${checked}"
             class="field ${[
               "checkbox",
               "color",
@@ -851,9 +851,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             .placeholder="${this.placeholder || ""}"
             ?readonly="${this.readonly}"
             ?required="${this.required}"
-            tabindex="0"
-            aria-label="${!!this.describedBy ? "" : this.label}"
-            type="${this.type}"
+          tabindex="0"
+          aria-label="${this.label || ""}"
+          type="${this.type}"
             value="${!option ? this.value : (option || {}).value}"
             part="option-input"
           />
@@ -943,8 +943,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return html`
         <select
           ?autofocus="${this.autofocus}"
-          .aria-descrbedby="${this.describedBy || ""}"
+          aria-describedby="${this.describedBy || "description error-message"}"
           aria-invalid="${this.error ? "true" : "false"}"
+          aria-label="${this.label || ""}"
           @blur="${this._onFocusout}"
           @change="${this._handleFieldChange}"
           class="field"
@@ -998,6 +999,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return html`
         <textarea
           aria-invalid="${this.error ? "true" : "false"}"
+          aria-label="${this.label || ""}"
+          aria-describedby="${this.describedBy || "description error-message"}"
           ?autofocus="${this.autofocus}"
           @blur="${this._onFocusout}"
           class="field box-input"

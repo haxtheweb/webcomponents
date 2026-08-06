@@ -308,14 +308,17 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       const slideAnchor = globalThis.document.querySelector(`#${key}`);
       const valueBtn = globalThis.document.createElement("button");
       valueBtn.classList.add("valueBtn");
-      valueBtn.textContent = slideAnchor
+      const headingLabel = slideAnchor
         ? slideAnchor.getAttribute("data-lecture-heading")
         : this.t.missingTitle;
+      valueBtn.textContent = headingLabel;
+      valueBtn.setAttribute("aria-label", `Go to slide ${headingLabel}`);
       valueBtn.addEventListener("click", () => {
         this.activeIndex = key;
       });
       if (key === this.activeIndex) {
         valueBtn.classList.add("active");
+        valueBtn.setAttribute("aria-current", "true");
       }
       valueList.appendChild(valueBtn);
     });
@@ -564,16 +567,16 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
           ${this.videoPlayer}
         <div class="jumbotron"></div>
         <div class="lecture-mode-controls">
-        <simple-icon-button-lite class="lecture-control" id="lecture-size-small" icon="image:photo-size-select-large"></simple-icon-button-lite>
-        <simple-icon-button-lite class="lecture-control" id="lecture-size-normal" icon="image:switch-video"></simple-icon-button-lite>
-        <simple-icon-button-lite class="lecture-control" id="lecture-size-large" icon="image:photo-size-select-actual"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-small" icon="image:photo-size-select-large" label="Small video size"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-normal" icon="image:switch-video" label="Normal video size"></simple-icon-button-lite>
+        <simple-icon-button-lite class="lecture-control" id="lecture-size-large" icon="image:photo-size-select-actual" label="Large video size"></simple-icon-button-lite>
       </div>
       </div>
       <div class="playlist">
-        <button class="value-navigation-button" id="prevSlideBtn"><simple-icon-lite icon="lrn:arrow-left"></simple-icon-lite></button>
+        <button class="value-navigation-button" id="prevSlideBtn" aria-label="Previous slide"><simple-icon-lite icon="lrn:arrow-left" aria-hidden="true"></simple-icon-lite></button>
         <div class="valueList">
         </div>
-        <button class="value-navigation-button" id="nextSlideBtn"><simple-icon-lite icon="lrn:arrow-right"></simple-icon-lite></button>
+        <button class="value-navigation-button" id="nextSlideBtn" aria-label="Next slide"><simple-icon-lite icon="lrn:arrow-right" aria-hidden="true"></simple-icon-lite></button>
       </div>
     `;
     this.querySelector("video-player").setAttribute("hidden", true);

@@ -554,7 +554,16 @@ class A11yMediaYoutube extends LitElement {
         this._handleMediaStateChange(e);
       });
       this.innerHTML = "";
-      this.appendChild(youtube.getIframe());
+      const ytIframe = youtube.getIframe();
+      if (ytIframe) {
+        const mediaTitle =
+          (this.mediaTitle && this.mediaTitle.trim() !== ""
+            ? this.mediaTitle
+            : "YouTube video player");
+        ytIframe.setAttribute("title", `YouTube video player: ${mediaTitle}`);
+        ytIframe.setAttribute("aria-label", `YouTube video player: ${mediaTitle}`);
+      }
+      this.appendChild(ytIframe);
       div.remove();
     }
     return youtube;

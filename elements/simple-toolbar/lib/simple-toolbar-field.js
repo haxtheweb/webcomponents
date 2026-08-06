@@ -171,13 +171,25 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "isCurrentItem" && this.focusableElement) {
-        this.focusableElement.setAttribute(
-          "tabindex",
-          this.isCurrentItem ? 0 : -1,
-        );
+      if (
+        (propName === "isCurrentItem" || propName === "disabled") &&
+        this.focusableElement
+      ) {
+        this._syncFocusableState();
       }
     });
+  }
+  _syncFocusableState() {
+    if (!this.focusableElement) return;
+    this.focusableElement.setAttribute(
+      "tabindex",
+      this.disabled || !this.isCurrentItem ? -1 : 0,
+    );
+    if (this.disabled) {
+      this.focusableElement.setAttribute("aria-disabled", "true");
+    } else {
+      this.focusableElement.removeAttribute("aria-disabled");
+    }
   }
 
   /**
@@ -191,11 +203,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
   }
 
   _watchChildren(mutationsList) {
-    if (this.focusableElement)
-      this.focusableElement.setAttribute(
-        "tabindex",
-        this.isCurrentItem ? 0 : -1,
-      );
+    this._syncFocusableState();
   }
 }
 globalThis.customElements.define(SimpleToolbarField.tag, SimpleToolbarField);
