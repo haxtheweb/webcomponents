@@ -98,6 +98,55 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     return headers;
   }
   /**
+   * Detect the local HAXcms site file store. Both the nodejs and PHP backends
+   * build this connection via siteConnectionJSON with details.author
+   * "HAXCMS" / details.title "Local files" and an add.endPoint of
+   * x/api/v1/files. External app-store providers (YouTube, Unsplash, etc.)
+   * only expose browse operations, so they never reach the upload path; any
+   * custom provider with its own add operation is treated as external.
+   */
+  _isLocalHaxcmsStore(app) {
+    if (!app || typeof app !== "object") {
+      return false;
+    }
+    const details =
+      app.details && typeof app.details === "object" ? app.details : null;
+    if (details) {
+      const author = String(details.author || "").trim().toLowerCase();
+      const title = String(details.title || "").trim().toLowerCase();
+      if (author === "haxcms" || title === "local files") {
+        return true;
+      }
+    }
+    return false;
+  }
+  /**
+   * Resolve the active node id for v1 file uploads. Prefers the dedicated
+   * connectionRewrites.uploadNodeId set by haxcms-site-editor, falling back
+   * to parsing nodeId out of the legacy appendUploadEndPoint string.
+   */
+  _resolveUploadNodeId() {
+    if (HAXStore && HAXStore.connectionRewrites) {
+      const rewrites = HAXStore.connectionRewrites;
+      if (rewrites.uploadNodeId) {
+        return String(rewrites.uploadNodeId);
+      }
+      if (rewrites.appendUploadEndPoint) {
+        const match = String(rewrites.appendUploadEndPoint).match(
+          /(?:^|&)nodeId=([^&]+)/,
+        );
+        if (match && match[1]) {
+          try {
+            return decodeURIComponent(match[1]);
+          } catch (err) {
+            return match[1];
+          }
+        }
+      }
+    }
+    return "";
+  }
+  /**
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {
@@ -147,6 +196,21 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       }
     } else {
       this.__allowUpload = false;
+      // Local HAXcms v1 uploads send nodeId as a multipart form field.
+      // The target/headers/field-name were wired in _haxAppPickerSelection;
+      // here (the "let it proceed" pass) the simple-file-upload FormData is
+      // live on e.detail.formData, so append nodeId before it ships.
+      const localNodeId = this.__localUploadNodeId;
+      if (
+        localNodeId &&
+        e &&
+        e.detail &&
+        e.detail.formData &&
+        typeof e.detail.formData.append === "function" &&
+        !e.defaultPrevented
+      ) {
+        e.detail.formData.append("nodeId", String(localNodeId));
+      }
     }
   }
   /**
@@ -174,22 +238,37 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       requestEndPoint += connection.operations.add.endPoint;
     }
     const uploadJwtValue = this._resolveUploadJwtValue();
+    const fileUpload = this.shadowRoot.querySelector("#fileupload");
     // Store base endpoint for potential retry after JWT refresh
     this.__baseEndpoint = requestEndPoint;
-    // implementation specific tweaks to talk to things like HAXcms and other CMSs
-    // that have per load token based authentication
-    if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
-      requestEndPoint +=
-        (requestEndPoint.includes("?") ? "&" : "?") +
-        HAXStore.connectionRewrites.appendUploadEndPoint;
+    // Reset per-upload local-v1 state; _haxAppPickerSelection runs for each
+    // upload selection so this stays fresh across target changes.
+    this.__localUploadNodeId = "";
+    if (this._isLocalHaxcmsStore(e.detail)) {
+      // Local HAXcms site store: retarget to the v1 createFile endpoint
+      // (POST /x/api/v1/files). The connection already points at
+      // x/api/v1/files and carries X-HAXCMS-Site-Token in its headers, so
+      // we do NOT append the legacy siteName/nodeId query string. nodeId
+      // is sent as a multipart form field instead (see _fileAboutToUpload),
+      // and the file is sent under the `upload` field name per the v1 spec.
+      fileUpload.formDataName = "upload";
+      this.__localUploadNodeId = this._resolveUploadNodeId();
     } else {
-      // Fallback: try to build parameters from HAXCMSStore if available
-      // This handles cases where appendUploadEndPoint wasn't set yet
-      if (
+      // External app-store provider: preserve the legacy wiring. The file
+      // is sent under the default `file-upload` field name and the
+      // appendUploadEndPoint query string (siteName/nodeId) is appended.
+      fileUpload.formDataName = "file-upload";
+      if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+        requestEndPoint +=
+          (requestEndPoint.includes("?") ? "&" : "?") +
+          HAXStore.connectionRewrites.appendUploadEndPoint;
+      } else if (
         globalThis.store &&
         globalThis.store.manifest &&
         globalThis.store.activeId
       ) {
+        // Fallback: try to build parameters from HAXCMSStore if available.
+        // This handles cases where appendUploadEndPoint wasn't set yet.
         requestEndPoint +=
           "?siteName=" +
           globalThis.store.manifest.metadata.site.name +
@@ -204,13 +283,12 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         );
       }
     }
-    this.shadowRoot.querySelector("#fileupload").headers =
-      this._buildUploadHeaders(connection, uploadJwtValue);
-    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
+    fileUpload.headers = this._buildUploadHeaders(connection, uploadJwtValue);
+    fileUpload.target = requestEndPoint;
     // invoke file uploading...
     this.__allowUpload = true;
     setTimeout(() => {
-      this.shadowRoot.querySelector("#fileupload").uploadFiles();
+      fileUpload.uploadFiles();
     }, 0);
   }
   /**
@@ -224,10 +302,16 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         // Rebuild the endpoint with the new JWT
         let requestEndPoint = this.__pendingUploadRetry.baseEndpoint;
         const uploadJwtValue = this._resolveUploadJwtValue();
-        if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+        if (this.__localUploadNodeId) {
+          // Local v1 retarget: no appendUploadEndPoint query string; nodeId
+          // is re-injected as a multipart form field in _fileAboutToUpload
+          // when the retry upload proceeds.
+          fileUpload.formDataName = "upload";
+        } else if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
           requestEndPoint +=
             (requestEndPoint.includes("?") ? "&" : "?") +
             HAXStore.connectionRewrites.appendUploadEndPoint;
+          fileUpload.formDataName = "file-upload";
         } else {
           // Fallback: try to build parameters from HAXCMSStore if available
           if (
@@ -241,6 +325,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
               "&nodeId=" +
               globalThis.store.activeId;
           }
+          fileUpload.formDataName = "file-upload";
         }
         fileUpload.headers = this._buildUploadHeaders(
           this.__pendingUploadRetry.appUsed
@@ -355,6 +440,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           ) {
             item.url = response.data.file;
           }
+        }
+        // Local HAXcms v1 createFile returns {data:{file:{url, fullUrl, ...}}}
+        // where `url` is a site-relative path and `fullUrl` is the absolute
+        // path (with cache-buster). Prefer fullUrl so the embedded URL
+        // resolves correctly from any page depth. External providers do not
+        // carry data.file.fullUrl, so this only affects local-store uploads.
+        if (
+          response &&
+          response.data &&
+          response.data.file &&
+          typeof response.data.file === "object" &&
+          typeof response.data.file.fullUrl === "string" &&
+          response.data.file.fullUrl
+        ) {
+          item.url = response.data.file.fullUrl;
+          item.source = response.data.file.fullUrl;
         }
         // set the value of the url which will update our URL and notify
         if (this.shadowRoot.querySelector("#url") && item.url) {
