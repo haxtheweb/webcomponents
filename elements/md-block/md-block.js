@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { marked } from "marked";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 /**
  * `md-block`
@@ -135,13 +136,19 @@ class MdBlock extends DDD {
           const response = await fetch(this.source);
           if (response.ok) {
             const text = await response.text();
-            this._parsedMarkdown = await marked.parse(text);
+            // security: sanitize remote markdown HTML before unsafeHTML (prevents stored XSS)
+            this._parsedMarkdown = sanitizeHTMLString(
+              await marked.parse(text),
+            );
           }
         } catch (e) {
           // fail silently, leave empty
         }
       } else if (this.markdown) {
-        this._parsedMarkdown = await marked.parse(this.markdown);
+        // security: sanitize markdown HTML before unsafeHTML (prevents stored XSS)
+        this._parsedMarkdown = sanitizeHTMLString(
+          await marked.parse(this.markdown),
+        );
       } else {
         this._parsedMarkdown = "";
       }
