@@ -86,9 +86,8 @@
   
     // Listen for messages from iframes
     globalThis.addEventListener('message', function receiveMessage(event) {
-      // if (event.data.context !== 'h5p') {
-      //   return; // Only handle h5p requests.
-      // }
+      // security: ignore non-object message data (JS-MSG-001)
+      if (!event.data || typeof event.data !== 'object') { return; }
   
       // Find out who sent the message
       var iframe, iframes = globalThis.document.getElementsByTagName('iframe');
@@ -104,7 +103,8 @@
       }
   
       // Find action handler handler
-      if (actionHandlers[event.data.action]) {
+      // security: standard h5p resize messages require context === 'h5p' (JS-MSG-001)
+      if (event.data.context === 'h5p' && actionHandlers[event.data.action]) {
         actionHandlers[event.data.action](iframe, event.data, function respond(action, data) {
           if (data === undefined) {
             data = {};
@@ -142,7 +142,8 @@
     };
     for (var i = 0; i < iframes.length; i++) {
       if (iframes[i].src.indexOf('h5p') !== -1) {
-        iframes[i].contentWindow.postMessage(ready, '*');
+        // security: target the iframe's own origin instead of '*' (JS-MSG-001)
+        try { iframes[i].contentWindow.postMessage(ready, new URL(iframes[i].src).origin); } catch (e) {}
       }
     }
   
