@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { localStorageGet, localStorageSet } from "@haxtheweb/utils/utils.js";
+import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false }); // strict mode off
@@ -34,11 +34,13 @@ class Store {
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     this.appSettings = globalThis.appSettings || {};
-    // defer to local if we have it for JWT
-    if (this.appSettings.jwt) {
-      localStorageSet("jwt", this.appSettings.jwt);
-    }
-    this.jwt = localStorageGet("jwt", null);
+    // Phase 3 (M1): the access JWT is no longer persisted to or read from
+    // localStorage. It is bootstrapped from appSettings.jwt (HAXiam /
+    // server-injected) and otherwise null; rehydration after a page reload
+    // happens via connectionTest + the HttpOnly refresh cookie. Mirrors
+    // AppHaxBackendAPI's init and avoids re-introducing the XSS exposure
+    // the Phase 3 migration removed.
+    this.jwt = this.appSettings.jwt || null;
     this.authValidated = false;
     // When a connectionTest endpoint exists, session rehydration (connection-test
     // + HttpOnly refresh cookie) runs asynchronously at boot. Start in the

@@ -1,5 +1,4 @@
 import { LitElement, html } from "lit";
-import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
