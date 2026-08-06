@@ -63,7 +63,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         typeof="${this.typeof}"
         content="${this.title}"
       />
-      <meta property="oer:uri" content="${this.source}" />
+      <meta about="${this.relatedResource}" property="oer:uri" content="${this.source}" />
       <meta
         rel="cc:license"
         href="${this.licenseLink}"
