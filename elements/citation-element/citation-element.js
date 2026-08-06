@@ -60,9 +60,10 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       <meta
         about="${this.relatedResource}"
         property="cc:attributionName"
-        typeof="oer:Text"
+        typeof="${this.typeof}"
         content="${this.title}"
       />
+      <meta about="${this.relatedResource}" property="oer:uri" content="${this.source}" />
       <meta
         rel="cc:license"
         href="${this.licenseLink}"
@@ -74,6 +75,8 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           rel="noopener noreferrer"
           class="license-link"
           href="${this.source}"
+          property="oer:name"
+          content="${this.title}"
           >${this.title}</a
         >
         by
@@ -111,6 +114,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     super();
     this.scope = "sibling";
     this.source = "";
+    this.typeof = "oer:ReferencedMaterial";
   }
   /**
    * LitElement properties changed
@@ -197,6 +201,13 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
        * License short hand. Options cc0,
        */
       license: {
+        type: String,
+      },
+      /**
+       * OER Schema class for the cited work (default oer:ReferencedMaterial).
+       * Authors can override via the HAX editor to use a more specific OER class.
+       */
+      typeof: {
         type: String,
       },
     };
@@ -359,6 +370,14 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
             description: "Creator or owner of the cited work.",
             inputMethod: "textfield",
             icon: "link",
+          },
+          {
+            property: "typeof",
+            title: "OER Schema type",
+            description:
+              "OER Schema class for this citation. Defaults to oer:ReferencedMaterial; override only with a valid OER class (e.g. oer:SupportingMaterial).",
+            inputMethod: "textfield",
+            icon: "code",
           },
         ],
         advanced: [],

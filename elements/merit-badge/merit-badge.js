@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "./lib/badge-sticker.js";
 
 /**
@@ -11,7 +12,7 @@ import "./lib/badge-sticker.js";
  * @demo demo/index.html
  * @element merit-badge
  */
-class MeritBadge extends LitElement {
+class MeritBadge extends SchemaBehaviors(LitElement) {
   static get tag() {
     return "merit-badge";
   }
@@ -27,6 +28,7 @@ class MeritBadge extends LitElement {
       detailsOpened: { type: Boolean },
       badgeUnlocked: { type: Boolean },
       badgeColor: { type: String },
+      skill: { type: String },
     };
   }
 
@@ -78,10 +80,12 @@ class MeritBadge extends LitElement {
   constructor() {
     super();
     this.badgeUnlocked = false;
+    this.skill = "";
   }
 
   render() {
     return html`
+      <meta property="oer:skill" content="${this.skill}" />
       <div class="container">
         ${this.badgeUnlocked
           ? html`<badge-sticker
@@ -100,6 +104,74 @@ class MeritBadge extends LitElement {
         </button>
       </div>
     `;
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:LearningObjective");
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Merit Badge",
+        description: "Visual badge to communicate obtaining a skill.",
+        icon: "icons:verified",
+        color: "green",
+        tags: ["Instructional", "badge", "skill", "achievement"],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "badgeTitle",
+            title: "Badge Title",
+            description: "Title displayed on the badge.",
+            inputMethod: "textfield",
+          },
+          {
+            property: "badgeImage",
+            title: "Badge Image",
+            description: "Image URL for the badge.",
+            inputMethod: "haxupload",
+            noVoiceRecord: true,
+          },
+          {
+            property: "badgeDetails",
+            title: "Badge Details",
+            description: "Details about the badge.",
+            inputMethod: "textfield",
+          },
+          {
+            property: "hyperLink",
+            title: "Hyperlink",
+            description: "Link associated with the badge.",
+            inputMethod: "textfield",
+          },
+          {
+            property: "badgeSkills",
+            title: "Badge Skills",
+            description: "Skills displayed on the badge.",
+            inputMethod: "textfield",
+          },
+          {
+            property: "skill",
+            title: "Skill (OER Schema)",
+            description:
+              "OER Schema: a learned skill obtained by completion of this learning objective.",
+            inputMethod: "textfield",
+          },
+        ],
+        advanced: [],
+      },
+    };
   }
 
   unlockButtonClicked() {

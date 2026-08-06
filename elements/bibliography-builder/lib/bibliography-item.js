@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, render } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -15,7 +16,9 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * @demo index.html
  * @element bibliography-item
  */
-export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
+export class BibliographyItem extends SchemaBehaviors(
+  DDDSuper(I18NMixin(LitElement)),
+) {
 
   static get tag() {
     return "bibliography-item";
@@ -89,7 +92,8 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-    <div class="wrapper">
+    <div class="wrapper" typeof="oer:ReferencedMaterial">
+        <meta property="oer:uri" content="${this.url}" />
         <div class="citation">${this.exportAPA()}</div>
         <div class="copy-button">
             <simple-icon-button-lite
@@ -233,12 +237,12 @@ export class BibliographyItem extends DDDSuper(I18NMixin(LitElement)) {
   exportAPA(){
     switch(this.citationType) {
       case "journal":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. ${this.title}. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <span property="oer:name">${this.title}</span>. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
       case "book":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i>${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i property="oer:name">${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`
       case "web":
       default:
-        return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i>${this.title}</i>. ${this.publisher}. ${this.url}`
+        return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i property="oer:name">${this.title}</i>. ${this.publisher}. ${this.url}`
     }
   }
 

@@ -25,6 +25,13 @@
         "title": "Citations",
         "description": "Citation items in this bibliography",
         "inputMethod": "code-editor"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "Identifier or name of the Course this bibliography is for (OER Schema forCourse).",
+        "inputMethod": "textfield",
+        "icon": "link"
       }
     ]
   },

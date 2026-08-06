@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "./lib/career-org-item.js";
 
 /**
@@ -13,7 +14,7 @@ import "./lib/career-org-item.js";
  * @demo index.html
  * @element career-timeline
  */
-export class CareerTimeline extends DDDSuper(I18NMixin(LitElement)) {
+export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement))) {
 
   static get tag() {
     return "career-timeline";
@@ -59,9 +60,17 @@ export class CareerTimeline extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:LearningComponent");
+  }
+
   // Lit render the HTML
   render() {
     return html`
+      <meta property="oer:name" content="${this.title}" />
       <div class="wrapper">
         <slot></slot>
       </div>

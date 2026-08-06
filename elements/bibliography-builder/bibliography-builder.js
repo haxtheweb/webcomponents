@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, render } from "lit";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
@@ -17,7 +18,9 @@ import "./lib/bibliography-item.js"
  * @demo index.html
  * @element bibliography-builder
  */
-export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
+export class BibliographyBuilder extends SchemaBehaviors(
+  DDDSuper(I18NMixin(LitElement)),
+) {
 
   static get tag() {
     return "bibliography-builder";
@@ -26,6 +29,7 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
+    this.forCourse = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -49,7 +53,8 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       exportMode: { type: String, attribute: "export-mode" },
-      citationArr: { type: Array, attribute: "citation-array" }
+      citationArr: { type: Array, attribute: "citation-array" },
+      forCourse: { type: String, attribute: "for-course" }
     };
   }
 
@@ -86,7 +91,8 @@ export class BibliographyBuilder extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-    <div class="wrapper">
+    <div class="wrapper" typeof="oer:LearningComponent">
+      <meta property="oer:forCourse" content="${this.forCourse}" />
       <div class="title-card">
         <h3><span>${this.t.title}:</span> ${this.title}</h3>
         <button id="export-button" @click=${this._showExportModal}>Export</button>

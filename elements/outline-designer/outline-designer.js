@@ -4,6 +4,7 @@
  */
 import { LitElement, css, html } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -28,7 +29,7 @@ import {
  * `tools to modify and visualize JSON Outline Schema for editing`
  * @demo demo/index.html
  */
-export class OutlineDesigner extends I18NMixin(LitElement) {
+export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   static get styles() {
     return [
       css`
@@ -1106,6 +1107,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         id="list"
         role="tree"
         aria-label="Outline structure of pages and content"
+        typeof="oer:TableOfContents"
       >
         ${this.items.map((item, index) =>
           this.getItemParentsCollapsed(item) === ""
@@ -1326,7 +1328,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ?data-has-children="${this.hasChildren(item.id)}"
         ?data-about-to-delete="${item.delete}"
         ?hidden="${this.hideDelete && item.delete}"
+        typeof="oer:TableOfContentsEntry"
+        property="oer:entry"
       >
+        <meta property="oer:forComponent" content="${item.id}" />
         <div class="item-leading-operations">
           ${this.hasChildren(item.id)
             ? html`<simple-icon-button-lite
@@ -1399,6 +1404,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           @dblclick="${this.editTitle}"
           @keydown="${this.handleLabelKeydown}"
           tabindex="0"
+          property="oer:title"
           >${item.title}</span
         >
         <span
@@ -2724,6 +2730,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      schemaMap: { type: Object },
       haxGizmos: { type: Array },
       hideDelete: { type: Boolean },
       activeItemForActions: { type: String },

@@ -1,12 +1,13 @@
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `person-testimonial`
  * @element person-testimonial
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */
-class PersonTestimonial extends SimpleColors {
+class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
   static get styles() {
     return [
       super.styles,
@@ -153,6 +154,7 @@ class PersonTestimonial extends SimpleColors {
         ${this.image
           ? html` <div class="image">
               <img
+                property="oer:image"
                 src="${this.image}"
                 loading="lazy"
                 alt="${this.name ? this.name : ""}"
@@ -166,16 +168,22 @@ class PersonTestimonial extends SimpleColors {
             <svg id="quotestart">
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
-            <slot></slot>
+            <slot property="oer:description"></slot>
             <svg id="quoteend">
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
           </div>
-          <div class="name">${this.name}</div>
+          <div class="name" property="oer:name">${this.name}</div>
           <div class="position">${this.position}</div>
         </div>
       </div>
     `;
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.setAttribute("typeof", "oer:SupportingMaterial");
   }
   static get tag() {
     return "person-testimonial";

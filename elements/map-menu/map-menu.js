@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/map-menu/lib/map-menu-builder.js";
 import "@haxtheweb/map-menu/lib/map-menu-container.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 
 /**
  * `map-menu`
@@ -14,7 +15,7 @@ import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
  * @demo demo/index.html
  * @element map-menu
  */
-class MapMenu extends LitElement {
+class MapMenu extends SchemaBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -479,7 +480,7 @@ class MapMenu extends LitElement {
    */
   render() {
     return html`
-      <div id="itemslist">
+      <div id="itemslist" typeof="oer:TableOfContents">
         <map-menu-container>
           <div id="activeindicator"></div>
           <map-menu-builder
@@ -502,6 +503,7 @@ class MapMenu extends LitElement {
 
   static get properties() {
     return {
+      schemaMap: { type: Object },
       disabled: {
         type: Boolean,
         reflect: true,

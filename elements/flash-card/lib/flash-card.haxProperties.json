@@ -29,6 +29,18 @@
         "description": "Image file used for the card. Overrides Image Keyword.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Type of Action",
+        "description": "OER Schema: the type of action this practice involves (e.g. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning Objective",
+        "description": "OER Schema: ID or URL of the learning objective this practice supports.",
+        "inputMethod": "textfield"
       }
     ],
     "advanced": [

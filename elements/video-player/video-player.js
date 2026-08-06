@@ -90,7 +90,9 @@ class VideoPlayer extends IntersectionObserverMixin(
 
   // render function
   render() {
-    return html` ${this.audioDescriptionSource && this.audioDescriptionEnabled
+    return html` <meta property="oer:name" content="${this.mediaTitle}" />
+    <meta property="oer:uri" content="${this.source}" />
+    ${this.audioDescriptionSource && this.audioDescriptionEnabled
       ? html`
           <audio
             id="audio-description"
@@ -1270,6 +1272,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.setAttribute("typeof", "oer:MediaObject");
     changedProperties.forEach((oldValue, propName) => {
       if (
         propName === "allowBackgroundPlay" &&

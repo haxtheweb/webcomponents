@@ -24,7 +24,14 @@
     }
   },
   "settings": {
-    "configure": []
+    "configure": [
+      {
+        "property": "title",
+        "title": "Timeline Title",
+        "description": "A title for the career timeline (OER Schema: oer:name).",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
     "wipeSlot": false,
