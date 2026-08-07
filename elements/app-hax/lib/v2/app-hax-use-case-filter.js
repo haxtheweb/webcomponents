@@ -2712,7 +2712,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         response &&
         response.status == 200 &&
         response.data &&
-        response.data.contents != "" &&
         Array.isArray(response.data.items)
       ) {
         const items = response.data.items;
