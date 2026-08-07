@@ -1572,6 +1572,12 @@ class HAXCMSSiteEditor extends LitElement {
         newValue.metadata.site.name +
         "&nodeId=" +
         this.activeItem.id;
+      // Also expose the active node id directly so hax-upload-field can
+      // retarget local HAXcms uploads to POST /x/api/v1/files and send
+      // nodeId as a multipart form field (v1 createFile) instead of as a
+      // legacy query param. appendUploadEndPoint is kept because the media
+      // browser browse path (hax-app-search) still reads it.
+      HAXStore.connectionRewrites.uploadNodeId = String(this.activeItem.id);
     }
   }
   /**
@@ -1586,6 +1592,9 @@ class HAXCMSSiteEditor extends LitElement {
         this.manifest.metadata.site.name +
         "&nodeId=" +
         newValue.id;
+      // Mirror the active node id for the v1 upload retarget (see
+      // _manifestChanged for the rationale).
+      HAXStore.connectionRewrites.uploadNodeId = String(newValue.id);
     }
   }
   /**
@@ -1737,9 +1746,16 @@ class HAXCMSSiteEditor extends LitElement {
       store.toast(`Outline saved!`, 4000, { hat: "random" });
       // If the active page's slug changed, redirect to the new URL
       const activeItem = store.activeItem;
+      // MicroFrontendRegistry.call returns the full {status, data} envelope,
+      // and saveOutline returns {status:200, data:{items: site.manifest.items}}.
+      // Read data.items (not response.items, which is always undefined).
       const responseItems =
-        e && e.detail && e.detail.response && e.detail.response.items
-          ? e.detail.response.items
+        e &&
+        e.detail &&
+        e.detail.response &&
+        e.detail.response.data &&
+        e.detail.response.data.items
+          ? e.detail.response.data.items
           : null;
       if (activeItem && activeItem.id && responseItems) {
         const updatedItem = responseItems.find(
@@ -2381,13 +2397,23 @@ class HAXCMSSiteEditor extends LitElement {
         null,
         null,
       );
-      if (response && response.data && response.data.items) {
+      // normalizeSiteSlugs returns {status:200, data:{changed, preview,
+      // changes:[{id,title,oldSlug,newSlug}], skipped:[{...}]}}. Read the
+      // changes array (not data.items, which does not exist on this payload).
+      if (response && response.data && Array.isArray(response.data.changes)) {
+        const changes = response.data.changes;
         store.playSound("success");
-        store.toast(
-          `Normalized ${response.data.items.length} page slugs`,
-          4000,
-          { hat: "random" },
-        );
+        if (changes.length > 0) {
+          store.toast(
+            `Normalized ${changes.length} page slugs`,
+            4000,
+            { hat: "random" },
+          );
+        } else {
+          store.toast("Slug normalization completed.", 3000, {
+            hat: "random",
+          });
+        }
         this.dispatchEvent(
           new CustomEvent("haxcms-trigger-update", {
             bubbles: true,
@@ -2399,15 +2425,15 @@ class HAXCMSSiteEditor extends LitElement {
         // If the active page's slug changed, redirect to the new URL
         const activeItem = store.activeItem;
         if (activeItem && activeItem.id) {
-          const updatedItem = response.data.items.find(
-            (item) => item && item.id === activeItem.id,
+          const updatedItem = changes.find(
+            (change) => change && change.id === activeItem.id,
           );
           if (
             updatedItem &&
-            updatedItem.slug &&
-            updatedItem.slug !== activeItem.slug
+            updatedItem.newSlug &&
+            updatedItem.newSlug !== activeItem.slug
           ) {
-            globalThis.history.replaceState({}, null, updatedItem.slug);
+            globalThis.history.replaceState({}, null, updatedItem.newSlug);
             globalThis.dispatchEvent(new PopStateEvent("popstate"));
           }
         }
