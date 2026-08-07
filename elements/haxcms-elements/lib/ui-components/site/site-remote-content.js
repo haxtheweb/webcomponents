@@ -9,6 +9,7 @@ import {
   wipeSlot,
   lightChildrenToShadowRootSelector,
   unwrap,
+  sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -228,19 +229,10 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
       const cid = this.shadowRoot.querySelector("#content");
       // remove past stuff
       wipeSlot(cid);
-      // build fake div and encap the content from endpoint
-      let div = globalThis.document.createElement("div");
-      // encap script just to be paranoid
-      let html = response.data.content.replace(
-        /<script[\s\S]*?>/gi,
-        "&lt;script&gt;",
-      );
-      html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-      div.innerHTML = html;
-      // append as child of this element
-      this.appendChild(div);
-      // kill the div, the children spill into this tag
-      unwrap(div);
+      // security: sanitize remote page HTML via the shared import sanitizer (prevents stored XSS via onerror/onload)
+      const frag = sanitizeHTMLForImport(response.data.content);
+      // append sanitized fragment as child of this element
+      this.appendChild(frag);
       // update title and loading status
       this._remoteTitle = response.data.title;
       this.loading = false;

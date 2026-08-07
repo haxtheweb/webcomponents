@@ -1,4 +1,5 @@
 import { markdownToHTML } from "@haxtheweb/utils/lib/markdown.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 export class WCMarkdown extends HTMLElement {
   static get observedAttributes() {
@@ -69,17 +70,13 @@ export class WCMarkdown extends HTMLElement {
     let contents = this.__value;
     contents = WCMarkdown.prepare(contents);
     contents = await WCMarkdown.toHtml(contents);
-    this.innerHTML = contents;
+    // security: sanitize markdown HTML before innerHTML assignment (prevents stored XSS)
+    this.innerHTML = sanitizeHTMLString(contents);
   }
 
+  // security: do not un-escape HTML entities for untrusted remote markdown (re-activates escaped markup)
   static prepare(markdown) {
-    return markdown
-      .split("\n")
-      .map((line) => {
-        line = line.replace("&lt;", "<");
-        return line.replace("&gt;", ">");
-      })
-      .join("\n");
+    return markdown;
   }
 
   static async toHtml(markdown) {

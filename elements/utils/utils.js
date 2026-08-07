@@ -323,6 +323,33 @@ export function sanitizeHTMLForImport(
 }
 
 /**
+ * Sanitize an HTML string and return a safe serialized string for use with
+ * `unsafeHTML` / `innerHTML` sinks (mirrors sanitizeHTMLForImport's pipeline
+ * but returns a string instead of a DocumentFragment).
+ * @param {String} html - raw HTML to sanitize
+ * @param {Object} opts - same options as sanitizeHTMLForImport
+ * @returns {String} sanitized HTML string safe for string-based DOM sinks
+ */
+export function sanitizeHTMLString(
+  html,
+  { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
+) {
+  const safeHTML = encapsulateScriptTags
+    ? encapScript(typeof html === "string" ? html : "")
+    : typeof html === "string"
+      ? html
+      : "";
+  const template = globalThis.document.createElement("template");
+  template.innerHTML = safeHTML;
+  sanitizeNodeTree(template.content, {
+    sanitizeTemplateContents: sanitizeTemplateContents,
+  });
+  // security: return serialized safe HTML for unsafeHTML/innerHTML sinks
+  // (prevents stored XSS via onerror/onload event handlers and javascript: URLs)
+  return template.innerHTML;
+}
+
+/**
  * Convert a base64 encoded string to type Blob
  * @param {String} b64Data - base64 encoded string
  * @param {String} contentType - type to mark as the encoding of the blob
