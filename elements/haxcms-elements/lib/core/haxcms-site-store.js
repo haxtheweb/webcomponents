@@ -134,6 +134,21 @@ function updateSequentialPrefetch(nextUrl, prevUrl) {
     script.id = "haxcms-speculation-rules";
     script.type = "speculationrules";
     script.textContent = JSON.stringify(rules);
+    // Security (CSP nonce / M2): the HAXcms backend serves pages with a
+    // Content-Security-Policy that drops 'unsafe-inline' from script-src in
+    // favor of a per-response nonce, so inline <script> blocks (including
+    // speculation rules) only execute when stamped with that nonce. The server
+    // exposes the nonce to same-origin JS via <meta name="csp-nonce">; read it
+    // and stamp it here so the speculation rules are authorized. Without this,
+    // Chrome blocks the inline speculation rules with a CSP violation. No-op
+    // when the meta is absent (e.g. static-published sites or local dev with
+    // CSP disabled), preserving prior behavior in those environments.
+    const nonceMeta = globalThis.document.querySelector(
+      'meta[name="csp-nonce"]',
+    );
+    if (nonceMeta && nonceMeta.content) {
+      script.nonce = nonceMeta.content;
+    }
 
     globalThis.document.head.appendChild(script);
   }
