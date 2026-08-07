@@ -12,13 +12,16 @@ function getLtiTargetOrigin() {
       globalThis.HAXCMS.instance.store;
     const settings = cmsStore && cmsStore.appSettings;
     if (settings && settings.ltiOrigin) {
-      return settings.ltiOrigin;
+      if (settings.ltiOrigin === '*') {
+        return '*';
+      }
+      return new URL(settings.ltiOrigin).origin;
     }
     if (globalThis.document && globalThis.document.referrer) {
       return new URL(globalThis.document.referrer).origin;
     }
   } catch (e) {}
-  return globalThis.location.origin;
+  return globalThis.location && globalThis.location.origin ? globalThis.location.origin : '*';
 }
 
 export const LTIResizingMixin = function (SuperClass) {
