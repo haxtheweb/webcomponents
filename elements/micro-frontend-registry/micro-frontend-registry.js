@@ -297,9 +297,29 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           if (rawResponse) {
             return response.text();
           }
-          return response.ok
-            ? response.json()
-            : { status: response.status, data: null };
+          if (response.ok) {
+            return response.json();
+          }
+          // On non-ok, attempt to parse the JSON body so callers can read
+          // the backend message (e.g. authorization denial reason). Keep
+          // `data: null` for backward compatibility with existing callers.
+          let body = null;
+          try {
+            body = await response.json();
+          } catch (e) {
+            body = null;
+          }
+          return {
+            status: response.status,
+            data: null,
+            message:
+              body &&
+              typeof body === "object" &&
+              typeof body.message === "string"
+                ? body.message
+                : "",
+            body: body,
+          };
         };
         let data = null;
         switch (method) {

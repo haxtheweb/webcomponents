@@ -428,7 +428,20 @@ export class AppHaxSiteBars extends SimpleColors {
         // Download is special - it opens a download link
         if (activeOp === "downloadSite") {
           const response = store.AppHaxAPI.lastResponse.downloadSite;
-          if (response && response.data && response.data.link) {
+          // Guard against the failure shape: a non-2xx status or missing
+          // data means the download did not succeed — do not open a link.
+          if (
+            response &&
+            typeof response === "object" &&
+            typeof response.status === "number" &&
+            response.status >= 400
+          ) {
+            console.error(
+              "downloadSite failed with status:",
+              response.status,
+              response,
+            );
+          } else if (response && response.data && response.data.link) {
             const link = response.data.link;
             const name = response.data.name || "";
             // Use an anchor element so this is treated as a real navigation
@@ -462,13 +475,33 @@ export class AppHaxSiteBars extends SimpleColors {
     // Success sound for confirm is now handled centrally in
     // app-hax-confirmation-modal to avoid duplicate sounds.
 
-    store.toast(
-      `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
-      3000,
-      {
-        hat: "random",
-      },
-    );
+    // Report the operation outcome accurately. A non-2xx status means the
+    // operation failed — surface the backend message instead of a false
+    // "successful" toast.
+    const opResponse =
+      store.AppHaxAPI && store.AppHaxAPI.lastResponse
+        ? store.AppHaxAPI.lastResponse[op]
+        : null;
+    if (
+      opResponse &&
+      typeof opResponse === "object" &&
+      typeof opResponse.status === "number" &&
+      opResponse.status >= 400
+    ) {
+      const errMsg =
+        typeof opResponse.message === "string" && opResponse.message
+          ? opResponse.message
+          : `${site.metadata.site.name} ${op.replace("Site", "")} failed`;
+      store.toast(errMsg, 3000, { hat: "random" });
+    } else {
+      store.toast(
+        `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+        3000,
+        {
+          hat: "random",
+        },
+      );
+    }
   }
 
   // CSS - specific to Lit
