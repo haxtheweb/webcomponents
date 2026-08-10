@@ -122,6 +122,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     super();
     this.codePenData = null;
     this.haxUIElement = true;
+    this.value = "";
+    this.editorValue = "";
     this.showCodePen = false;
     this.readOnly = false;
     this.theme = "vs-dark";
@@ -460,6 +462,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (newValue) {
       this.innerHTML = "";
       this.innerHTML = `<template>${newValue}</template>`;
+      // keep value in sync immediately so consumers reading .value
+      // don't get undefined before the monaco iframe round-trips
+      this.value = newValue;
       this.updateEditorValue();
     }
   }

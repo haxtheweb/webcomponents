@@ -445,6 +445,24 @@ class MonacoElement extends LitElement {
     if (src) ele.src = src;
     if (text) ele.text = text;
     if (onload) ele.onload = onload;
+    // Security (CSP nonce / M2): this iframe is about:blank, so it inherits
+    // the parent page's Content-Security-Policy. The HAXcms backend drops
+    // 'unsafe-inline' from script-src in favor of a per-response nonce, so
+    // the inline bootstrap script injected via `text` is blocked unless it
+    // carries that nonce. The server exposes the nonce to same-origin JS via
+    // <meta name="csp-nonce"> in the PARENT document (this.document is the
+    // iframe's doc, which has no meta); read it from the parent and stamp it
+    // on the inline script. External scripts (src) are covered by 'self'.
+    // No-op when the meta is absent (static-published sites or local dev with
+    // CSP disabled), preserving prior behavior.
+    if (text && !src) {
+      var nonceMeta = globalThis.document.querySelector(
+        'meta[name="csp-nonce"]',
+      );
+      if (nonceMeta && nonceMeta.content) {
+        ele.nonce = nonceMeta.content;
+      }
+    }
     this.document.head.appendChild(ele);
   }
 

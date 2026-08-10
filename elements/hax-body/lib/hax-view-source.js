@@ -142,7 +142,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
    */
   async updateBodyFromHTML(e) {
     // import contents of this text area into the activeHaxBody
-    let htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    let htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
     let children =
       HAXStore.activeHaxBody.shadowRoot.querySelector("#body").localName ===
       "slot"
@@ -172,7 +172,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
    */
   scrubContent(e) {
     // import contents of this text area into the activeHaxBody
-    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    const htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
     HAXStore.toast("Scrubbed. Content updated.");
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     this.close();
@@ -190,7 +190,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }
-    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    const htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
     HAXStore.toast("Formatting updated. Content updated.");
     HAXStore.activeHaxBody.importContent(htmlBody);
   }
@@ -222,7 +222,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
    */
   selectBody(e) {
     let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
-    hiddenarea.value = this.shadowRoot.querySelector("#textarea").value;
+    hiddenarea.value = this.shadowRoot.querySelector("#textarea").value || "";
     hiddenarea.removeAttribute("hidden");
     hiddenarea.focus();
     hiddenarea.select();
