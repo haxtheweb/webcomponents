@@ -341,6 +341,7 @@ export class AppHaxBackendAPI extends LitElement {
     return 200;
   }
   _handleFailedRequestStatus(
+    response = null,
     responseStatus = 0,
     retryKey = "",
     call = "",
@@ -385,6 +386,32 @@ export class AppHaxBackendAPI extends LitElement {
       return true;
     }
     if (responseStatus === 403) {
+      // Distinguish a hard authorization denial (no refresh can fix it)
+      // from a refreshable expired-bearer 403. Hard denials must NOT
+      // trigger the refresh -> retry -> logout loop.
+      const HARD_DENIAL_MESSAGES = [
+        "Admin access required",
+        "Access denied",
+        "system admin route requires system dashboard access",
+        "X-HAXCMS-User-Token header is required for this endpoint",
+        "Invalid X-HAXCMS-User-Token header",
+      ];
+      const denialMessage =
+        response &&
+        typeof response === "object" &&
+        typeof response.message === "string"
+          ? response.message
+          : "";
+      if (
+        denialMessage &&
+        HARD_DENIAL_MESSAGES.indexOf(denialMessage) !== -1
+      ) {
+        // Hard denial: surface the error, leave the session intact.
+        this._clearRetryCount(retryKey);
+        return true;
+      }
+      // Refreshable 403 (expired bearer, or no hard-denial message):
+      // keep the existing refresh -> retry -> clear behavior.
       const retryCount = this._incrementRetryCount(retryKey);
       if (retryCount > this.__maxRefreshRetries) {
         this._clearRetryCount(retryKey);
@@ -448,6 +475,7 @@ export class AppHaxBackendAPI extends LitElement {
     const responseStatus = this._resolveResponseStatus(response);
     if (
       this._handleFailedRequestStatus(
+        response,
         responseStatus,
         retryKey,
         call,
@@ -456,7 +484,9 @@ export class AppHaxBackendAPI extends LitElement {
         callback,
       )
     ) {
-      return {};
+      // Return the real response (status + message) so callers can
+      // detect and surface the failure instead of seeing an empty object.
+      return response;
     }
     if (responseStatus > 0 && responseStatus < 400) {
       this._clearRetryCount(retryKey);

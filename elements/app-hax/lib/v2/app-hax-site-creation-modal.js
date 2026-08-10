@@ -918,8 +918,34 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
   async promiseProgressFinished(e) {
     if (e.detail.value) {
+      // Verify the create actually succeeded before showing the success
+      // view. A non-2xx status or missing data means creation failed —
+      // surface the backend message instead of confetti + "Go to Site".
+      const createResult = store.AppHaxAPI.lastResponse.createSite;
+      if (
+        !(
+          createResult &&
+          typeof createResult === "object" &&
+          typeof createResult.status === "number" &&
+          createResult.status >= 200 &&
+          createResult.status < 400 &&
+          createResult.data
+        )
+      ) {
+        this.currentStep = 1;
+        this.isCreating = false;
+        this.errorMessage =
+          createResult &&
+          typeof createResult === "object" &&
+          typeof createResult.message === "string" &&
+          createResult.message
+            ? createResult.message
+            : "Site creation failed. Please try again.";
+        return;
+      }
+
       // Site creation completed successfully!
-      const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
+      const createResponse = createResult.data;
 
       // Set the real site URL from the API response
       if (createResponse && createResponse.slug) {
@@ -986,14 +1012,23 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       return;
     }
 
-    let createResponse = null;
+    // Verify the create succeeded (status < 400 with data) before trusting
+    // the create response to match against the server list. On failure,
+    // skip the server-list refresh and return early.
+    const createResult =
+      api.lastResponse && api.lastResponse.createSite
+        ? api.lastResponse.createSite
+        : null;
     if (
-      api.lastResponse &&
-      api.lastResponse.createSite &&
-      api.lastResponse.createSite.data
+      !createResult ||
+      typeof createResult !== "object" ||
+      typeof createResult.status !== "number" ||
+      createResult.status >= 400 ||
+      !createResult.data
     ) {
-      createResponse = api.lastResponse.createSite.data;
+      return;
     }
+    const createResponse = createResult.data;
 
     // Give the backend a brief moment to complete async writes before a
     // cache-busted list refresh.
