@@ -668,8 +668,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             }, 500);
           }
           // then home / landing page which is default expectation
+          // "welcome" is the dashboard root ("/") route; treat it as home so
+          // popstate back to the dashboard from a site actually repaints
+          // (without this, Back to "/" updates the URL but appMode never
+          // changes so the view never re-renders).
           else if (
             location.route.name === "home" ||
+            location.route.name === "welcome" ||
             location.route.name === "search"
           ) {
             store.appMode = "home";

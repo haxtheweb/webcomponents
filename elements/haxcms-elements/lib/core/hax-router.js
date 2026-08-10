@@ -96,6 +96,19 @@ export class HaxRouter {
     if (url.pathname === globalThis.location.pathname && url.hash) return;
 
     event.preventDefault();
+    // Routes that carry a `slug` (e.g. dashboard site cards) trigger a full
+    // document navigation in the consuming app (globalThis.location = slug).
+    // If we pushState first, the outgoing document keeps an orphan history
+    // entry for the destination URL, so pressing Back from the destination
+    // resolves that orphan and re-fires the full navigation — Back appears to
+    // reload the destination instead of returning. Match the target route and,
+    // when it has a slug, dispatch without pushState so the consuming app's
+    // full navigation is the only history entry added.
+    const targetMatch = this._matchRoute(this._cleanPathnameForUrl(url));
+    if (targetMatch && targetMatch.route && targetMatch.route.slug) {
+      this._resolve(url);
+      return;
+    }
     globalThis.history.pushState(
       null,
       "",
@@ -109,7 +122,18 @@ export class HaxRouter {
    * Get pathname with baseUrl stripped
    */
   _getCleanPathname() {
-    let pathname = globalThis.location.pathname;
+    return this._cleanPathnameForUrl(globalThis.location);
+  }
+
+  /**
+   * Clean a pathname (baseUrl stripped) for a given URL-like object.
+   * Lets click resolution match a target URL before it is pushed onto history.
+   */
+  _cleanPathnameForUrl(url) {
+    if (!url || typeof url.pathname !== "string") {
+      return "/";
+    }
+    let pathname = url.pathname;
     let baseUrl = this.baseUrl;
     if (baseUrl && baseUrl.includes("://")) {
       try {
@@ -188,18 +212,21 @@ export class HaxRouter {
   }
 
   /**
-   * Resolve current location and dispatch event
+   * Resolve current location (or an explicit target URL) and dispatch event.
+   * Pass a URL-like object to resolve a click target before it is pushed onto
+   * history (used for slug routes that trigger a full document navigation).
    */
-  _resolve() {
+  _resolve(targetUrl = null) {
     if (!this.routes.length) return;
 
-    const pathname = this._getCleanPathname();
+    const useUrl = targetUrl || globalThis.location;
+    const pathname = this._cleanPathnameForUrl(useUrl);
     const match = this._matchRoute(pathname);
 
     if (match) {
       const location = {
-        pathname: globalThis.location.pathname,
-        search: globalThis.location.search,
+        pathname: useUrl.pathname,
+        search: useUrl.search,
         baseUrl: this.baseUrl,
         route: match.route,
         params: match.params,
