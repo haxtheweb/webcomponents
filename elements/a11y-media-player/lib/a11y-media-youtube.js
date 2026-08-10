@@ -281,7 +281,10 @@ class A11yMediaYoutube extends LitElement {
     globalThis.A11yMediaYoutubeManager.queue.push(this);
     /* checks for api and either uses it to get iframes or gets it */
     if (globalThis.A11yMediaYoutubeManager.api) {
-      if (globalThis.YT) globalThis.A11yMediaYoutubeManager.getIframes();
+      /* YT can exist as a placeholder before YT.Player is a real
+         constructor, so only preload once the constructor is available */
+      if (globalThis.YT && globalThis.YT.Player)
+        globalThis.A11yMediaYoutubeManager.getIframes();
     } else {
       globalThis.onYouTubeIframeAPIReady = (e) => {
         globalThis.A11yMediaYoutubeManager.getIframes();
@@ -514,15 +517,12 @@ class A11yMediaYoutube extends LitElement {
     globalThis.document.body.appendChild(div);
     div.setAttribute("id", divid);
     if (load) {
-      // Warm the connection for the poster image
-      A11yMediaYoutube.addPrefetch(
-        "preload",
-        `https://img.youtube.com/vi/${this.videoId.replace(
-          /[\?&].*/,
-          "",
-        )}/hqdefault.jpg`,
-        "image",
-      );
+      // NOTE: the lite-youtube-embed facade pattern preloads the poster
+      // thumbnail here, but a11y-media-player creates the YouTube iframe
+      // immediately via the JS API (no poster facade), so the preloaded image
+      // is never rendered and the browser warns it was unused. The
+      // warmConnections() preconnect links in connectedCallback() are kept
+      // (they don't fetch); only the image preload is omitted.
       let setYT = (e) => (this.__video = e.target),
         port = globalThis.location.port ? `:${globalThis.location.port}` : ``,
         origin = `${globalThis.location.protocol}//${globalThis.location.hostname}${port}`;
