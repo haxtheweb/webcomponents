@@ -4178,7 +4178,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 range.collapse(true);
                 sel.removeAllRanges();
                 sel.addRange(range);
-                this.activeNode.focus();
+                // preventScroll during edit-mode transitions so focus doesn't
+                // scroll the viewport; the active-node state still updates.
+                this.activeNode.focus(
+                  this.__editTransitionScroll
+                    ? { preventScroll: true }
+                    : undefined,
+                );
               } catch (e) {
                 console.warn(e);
               }
@@ -4198,6 +4204,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * as that is better behavior but not in all browsers
    */
   scrollHere(node, scrollOptions = {}) {
+    // Suppress during edit-mode transitions so the viewport doesn't jump as
+    // focus/insert routines fire while the editor mounts/unmounts. Our own
+    // restore uses globalThis.scrollTo directly, not this method, so it is
+    // unaffected. See _editModeChanged where the guard is set/cleared.
+    if (this.__editTransitionScroll) {
+      return;
+    }
     if (!node || typeof node.scrollIntoView !== "function") {
       return;
     }
@@ -4251,6 +4264,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   async _editModeChanged(newValue, oldValue) {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
+      // Suppress scroll-to-active/focus routines during the edit-mode
+      // transition so the viewport doesn't jump around as focus(), scrollHere
+      // and the editor mount/unmount reflow fire. Our restore uses
+      // globalThis.scrollTo directly (not scrollHere), so it is unaffected.
+      // Cleared once the restore lands; 600ms fallback covers re-import reflow.
+      this.__editTransitionScroll = true;
+      clearTimeout(this.__editTransitionScrollTimer);
+      this.__editTransitionScrollTimer = setTimeout(() => {
+        this.__editTransitionScroll = false;
+      }, 600);
       this._applyContentEditable(newValue);
       if (newValue) {
         // If content is currently being imported and there are no children yet,
@@ -4293,7 +4316,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               range.collapse(true);
               sel.removeAllRanges();
               sel.addRange(range);
-              this.activeNode.focus();
+              this.activeNode.focus(
+                this.__editTransitionScroll
+                  ? { preventScroll: true }
+                  : undefined,
+              );
             } catch (e) {
               console.warn(e);
             }
@@ -4305,11 +4332,69 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             value: true,
           },
         });
+        // Restore the scroll position captured in the editor UI's updated()
+        // (HAXStore.__editModeScrollY). Native focus() on the first body element
+        // (above) scrolls it into view, jumping the viewport to the top of a
+        // long page. We snap back to the saved offset after the focus-scroll
+        // settles. behavior:"instant" because :root sets scroll-behavior:smooth
+        // globally (base.css / DDD), which would animate the restore as a
+        // distracting slide. A double rAF lands after the native focus-scroll's
+        // layout; a trailing re-apply covers later scroll triggers. We restore
+        // the raw offset (no toolbar-shift compensation) so the exact position
+        // is preserved, including staying at 0 when the user was at the top.
+        const __savedScrollY = HAXStore.__editModeScrollY;
+        if (__savedScrollY != null) {
+          HAXStore.__editModeScrollY = null;
+          const __targetY = Math.max(0, __savedScrollY);
+          const restoreScroll = () =>
+            globalThis.scrollTo({
+              top: __targetY,
+              behavior: "instant",
+            });
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              restoreScroll();
+              setTimeout(() => {
+                restoreScroll();
+                clearTimeout(this.__editTransitionScrollTimer);
+                this.__editTransitionScroll = false;
+              }, 120);
+            }),
+          );
+        }
       } else {
         //make sure ective node is not still in edit mode
         if (!!this.activeNode) {
           this.unsetSlotEditMode(this.activeNode);
           this.unsetElementEditMode(this.activeNode);
+        }
+        // Restore the scroll position captured in the editor UI's updated()
+        // (HAXStore.__editModeScrollY). Exiting edit mode reflows the page
+        // (re-showing #slot, unmounting the editor, re-importing content) which
+        // can move scrollY (e.g. jump to the bottom). We snap back to the saved
+        // offset after the exit reflow settles so cancel/save keeps the user in
+        // place. behavior:"instant" to avoid a distracting slide from the
+        // global scroll-behavior:smooth. The exit reflow can take a few frames,
+        // so we re-apply on a slightly longer trailing timeout than on entry.
+        const __savedScrollY = HAXStore.__editModeScrollY;
+        if (__savedScrollY != null) {
+          HAXStore.__editModeScrollY = null;
+          const __targetY = Math.max(0, __savedScrollY);
+          const restoreScroll = () =>
+            globalThis.scrollTo({
+              top: __targetY,
+              behavior: "instant",
+            });
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              restoreScroll();
+              setTimeout(() => {
+                restoreScroll();
+                clearTimeout(this.__editTransitionScrollTimer);
+                this.__editTransitionScroll = false;
+              }, 200);
+            }),
+          );
         }
       }
       // force a reset when we start editing

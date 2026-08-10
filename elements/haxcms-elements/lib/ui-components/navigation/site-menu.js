@@ -107,17 +107,17 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     );
     this.__disposer.push(
       autorun((reaction) => {
-        if (!this.isFlex) {
-          const _mobx_val_0 = toJS(store.isLoggedIn);
-          Promise.resolve().then(() => {
-            this.editControls = _mobx_val_0;
-            // dynamic import if we are logged in
-            if (this.editControls && !this.__operationsLoaded) {
-              this.__operationsLoaded = true;
-              import("../../core/micros/haxcms-page-operations.js");
-            }
-          });
-        }
+        const _mobx_val_0 = toJS(store.isLoggedIn);
+        Promise.resolve().then(() => {
+          // Flex / horizontal site menus (polaris-flex, etc.) must never show
+          // in-menu outline action pencils — they overlap nav labels.
+          this.editControls = !!_mobx_val_0 && !this.isFlex;
+          // dynamic import if we are logged in and controls are active
+          if (this.editControls && !this.__operationsLoaded) {
+            this.__operationsLoaded = true;
+            import("../../core/micros/haxcms-page-operations.js");
+          }
+        });
       }),
     );
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
@@ -138,6 +138,18 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     );
   }
   /**
+   * Keep edit controls in sync when flex mode changes after login state.
+   * isFlex is not a MobX value, so the login autorun alone cannot react to it.
+   */
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("isFlex") && this.isFlex && this.editControls) {
+      this.editControls = false;
+    }
+  }
+  /**
    * LitElement life cycle - render callback
    */
   render() {
@@ -145,7 +157,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       <map-menu
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
         .manifest="${this.routerManifest}"
-        ?edit-controls="${this.editControls}"
+        ?edit-controls="${this.editControls && !this.isFlex}"
         ?is-flex="${this.isFlex}"
         ?is-horizontal="${this.isHorizontal}"
         max-depth="${this.maxDepth}"
@@ -197,6 +209,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       isFlex: {
         type: Boolean,
         attribute: "is-flex",
+        reflect: true,
       },
       isHorizontal: {
         type: Boolean,

@@ -62,6 +62,13 @@ cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxsite/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxsite/wc-registry.json
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxsite/.version
 
+# haxiam
+# mirror ecosystem version so the HAXiam upgrade runner auto-applies
+# any scripts/upgrade/system/*.sh between the deployment's SYSTEM_VERSION
+# and this version on the next haxiam-bash-upgrade.sh run
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/HAXiam/.version
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/HAXiam/VERSION.txt
+
 # psucdn
 # normalize build build.js build-haxcms.js wc-registry.json
 rm -rf ~/haxtheweb/psucdn/cdn/build
@@ -171,6 +178,12 @@ git pull origin main
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin main
+
+cd ~/haxtheweb/HAXiam/
+git pull origin master
+git add -A
+git commit -m "ubiquity publish"
+git push --follow-tags origin master
 
 cd ~/haxtheweb/psucdn/
 git pull origin master

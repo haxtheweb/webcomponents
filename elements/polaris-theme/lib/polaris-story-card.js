@@ -15,6 +15,13 @@ class PolarisStoryCard extends LitElement {
       image: { type: String },
       label: { type: String },
       pillar: { type: String },
+      link: { type: String },
+      backgroundSize: { type: String, attribute: "background-size" },
+      backgroundAttachment: {
+        type: String,
+        attribute: "background-attachment",
+      },
+      editMode: { type: Boolean },
     };
   }
 
@@ -26,6 +33,10 @@ class PolarisStoryCard extends LitElement {
     this.image = "";
     this.label = "";
     this.pillar = "";
+    this.link = "";
+    this.backgroundSize = "cover";
+    this.backgroundAttachment = "scroll";
+    this.editMode = false;
   }
   /**
    * LitElement style callback
@@ -41,7 +52,22 @@ class PolarisStoryCard extends LitElement {
       css`
         :host {
           display: inline-flex;
+          flex: 1 1 var(--polaris-story-card-flex-basis, 260px);
+          min-width: 0;
+          max-width: 100%;
           color-scheme: light dark;
+        }
+
+        .link {
+          display: flex;
+          width: 100%;
+          text-decoration: none;
+          color: inherit;
+        }
+        .link:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 4px;
+          border-radius: 12px;
         }
 
         .wrapper {
@@ -50,6 +76,7 @@ class PolarisStoryCard extends LitElement {
           border-radius: 12px;
           overflow: hidden;
           max-width: 100%;
+          width: 100%;
           background-color: var(
             --polaris-story-card-background-color,
             light-dark(#0016e0, var(--ddd-theme-default-nittanyNavy, #001e44))
@@ -68,7 +95,8 @@ class PolarisStoryCard extends LitElement {
           left: 0;
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           border-radius: 12px;
         }
 
@@ -81,6 +109,7 @@ class PolarisStoryCard extends LitElement {
           border: 3px solid var(--ddd-theme-default-white, #fff);
           background-color: rgba(0, 0, 0, 0.58);
           width: 195px;
+          max-width: calc(100% - 3rem);
           left: 1.5rem;
           font-size: 1.5rem !important;
           line-height: 1.875rem !important;
@@ -101,6 +130,11 @@ class PolarisStoryCard extends LitElement {
           background-color: var(--ddd-theme-default-nittanyNavy, #001e44);
           font-weight: 500;
         }
+        /* Keep the pillar's layout box when empty so the relative offset
+           is preserved and cards line up correctly when placed side by side. */
+        .pillar.pillar-hidden {
+          visibility: hidden;
+        }
         @media (max-width: 360px) {
           .wrapper {
             min-width: 0;
@@ -117,23 +151,67 @@ class PolarisStoryCard extends LitElement {
    * LitElement render callback
    */
   render() {
-    return html`
+    const card = html`
       <div class="wrapper">
         ${this.image
-          ? html`<img
+          ? html`<div
               class="card-image"
-              src="${this.image}"
-              alt="${this.label || this.pillar || "Story image"}"
-              loading="lazy"
-              decoding="async"
-            />`
+              role="img"
+              aria-hidden="${this.link ? "true" : "false"}"
+              aria-label="${this.label || this.pillar || "Story image"}"
+              style="background-image: url(${this.image}); background-size: ${this.backgroundSize}; background-attachment: ${this.backgroundAttachment};"
+            ></div>`
           : ``}
-        <span class="pillar">${this.pillar}</span>
+        <span class="pillar${this.pillar ? `` : ` pillar-hidden`}"
+          >${this.pillar}</span
+        >
         <div class="body">
           <div class="label">${this.label}</div>
         </div>
       </div>
     `;
+    return this.link
+      ? html`<a
+          class="link"
+          href="${this.link}"
+          aria-label="${this.label || this.pillar || "Story card"}"
+          @click="${this._clickLink}"
+          >${card}</a
+        >`
+      : card;
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   * Keeps the card editable inside HAX while a link wraps it.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * Set a flag to test if we should block link clicking while in edit mode.
+   */
+  haxeditModeChanged(val) {
+    this.editMode = val;
+  }
+  /**
+   * Prevent navigation while editing in HAX.
+   */
+  _clickLink(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+  /**
+   * Ensure edit mode state is in sync with active element changes.
+   */
+  haxactiveElementChanged(el, val) {
+    this.editMode = val;
+    return false;
   }
   /**
    * haxProperties integration via file reference

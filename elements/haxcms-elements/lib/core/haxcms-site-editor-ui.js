@@ -4925,6 +4925,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._updateEditButtonLabel();
       }
       if (propName == "editMode") {
+        // Capture the user's scroll position BEFORE _editModeChanged writes
+        // store.editMode. That store write triggers the theme + hax-body
+        // autoruns to reflect the edit-mode change, which reflows the page
+        // (hiding/showing #slot, mounting/unmounting the editor) and can
+        // clamp or otherwise move scrollY. Capturing here (editor UI's own
+        // update, before the store propagates) preserves the real position
+        // for hax-body to restore on BOTH entering and exiting edit mode.
+        if (oldValue !== undefined) {
+          HAXStore.__editModeScrollY =
+            globalThis.scrollY != null
+              ? globalThis.scrollY
+              : globalThis.pageYOffset;
+        }
         if (this.editMode) {
           this.rpgHat = "construction";
         } else {

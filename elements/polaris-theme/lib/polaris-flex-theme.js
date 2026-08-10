@@ -63,6 +63,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
         :host {
           display: block;
           overflow-x: hidden;
+          /* Page actions pencil sits under the sticky flex nav; push it down */
+          --page-break-menu-button-top: var(--ddd-spacing-2);
           --polaris-content-bg-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)

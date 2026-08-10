@@ -12,18 +12,17 @@
       import '../lib/polaris-mark.js';
     </script>
     <style>
-      a {
-        text-decoration: none;
-        padding: 0;
-        margin: 0;
-        display: inline-flex;
-        margin-top: 2.5rem;
-      }
-      polaris-story-card {
-        padding: 0 15px;
-      }
       .container {
         margin: 64px;
+      }
+      h3 {
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
+      }
+      /* Put cards in a flex row so they auto-size 3-4 across. */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
       }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;500&family=Roboto:wght@400;500;700;900&display=swap" />
@@ -39,31 +38,64 @@
           </div>
         </template>
       </demo-snippet>
-      <h3>Basic polaris-story-card demo</h3>
+      <h3>Linked story cards — 3 across (auto-sized)</h3>
       <demo-snippet>
         <template>
           <div class="container">
-            <a href="https://hax.psu.edu/">
+            <div class="row">
               <polaris-story-card
-                image="https://www.psu.edu/impact-assets/images/cards/Shevy-card.jpg"
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/600x400/001e44/EEE"
                 pillar="Education"
                 label="From the Waiting Room to the Living Room"
               ></polaris-story-card>
-            </a>
-            <a href="https://hax.psu.edu/">
               <polaris-story-card
-                image="https://www.psu.edu/impact-assets/images/cards/Kenneth.png"
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/500x200/1e407c/EEE"
                 pillar="Education"
                 label="Beyond Limitations"
               ></polaris-story-card>
-            </a>
-            <a href="https://hax.psu.edu/">
               <polaris-story-card
-                image="https://www.psu.edu/impact-assets/images/cards/Shoba-Wahdia_concluding.jpg"
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/300x400/96bee6/001e44"
                 pillar="Community"
                 label="Building Community Through Compassion"
               ></polaris-story-card>
-            </a>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+      <h3>Story cards — 4 across (background sizing, empty pillar)</h3>
+      <demo-snippet>
+        <template>
+          <div class="container">
+            <div class="row">
+              <polaris-story-card
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/480/640/001e44/EEE?text=cover"
+                pillar="Research"
+                label="Discovery in action"
+              ></polaris-story-card>
+              <polaris-story-card
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/480/640/1e407c/EEE?text=cover"
+                pillar="Service"
+                label="Leading with care"
+              ></polaris-story-card>
+              <polaris-story-card
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/480/640/96bee6/001e44?text=no-pillar"
+                label="No pillar label rendered here"
+              ></polaris-story-card>
+              <polaris-story-card
+                link="https://hax.psu.edu/"
+                image="https://placehold.co/480/640/4f627c/EEE?text=contain+fixed"
+                pillar="Global"
+                background-size="contain"
+                background-attachment="fixed"
+                label="Contain + fixed attachment"
+              ></polaris-story-card>
+            </div>
           </div>
         </template>
       </demo-snippet>

@@ -21,6 +21,11 @@
       {
         "type": "text",
         "source": "pillar"
+      },
+      {
+        "type": "link",
+        "source": "link",
+        "title": "label"
       }
     ],
     "meta": {
@@ -39,9 +44,32 @@
         "validationType": "url"
       },
       {
+        "property": "backgroundSize",
+        "title": "Background size",
+        "description": "How the background image fills the card (CSS background-size).",
+        "inputMethod": "select",
+        "options": {
+          "cover": "cover",
+          "contain": "contain",
+          "auto": "auto",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Background attachment",
+        "description": "How the background image behaves when scrolling (CSS background-attachment).",
+        "inputMethod": "select",
+        "options": {
+          "scroll": "scroll",
+          "fixed": "fixed",
+          "local": "local"
+        }
+      },
+      {
         "property": "pillar",
         "title": "Pillar label",
-        "description": "Short uppercase label shown at the top of the card.",
+        "description": "Short uppercase label shown at the top of the card. Leave empty to hide.",
         "inputMethod": "textfield"
       },
       {
@@ -49,12 +77,21 @@
         "title": "Card text",
         "description": "Primary text displayed in the lower panel.",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optional destination URL that wraps the whole card.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true,
+        "validationType": "url"
       }
     ],
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": []
+    "unsetAttributes": ["editMode"]
   },
   "demoSchema": [
     {
@@ -62,7 +99,8 @@
       "properties": {
         "image": "https://picsum.photos/480/640",
         "pillar": "Accessible",
-        "label": "Design for everyone"
+        "label": "Design for everyone",
+        "link": "https://haxtheweb.org/"
       },
       "content": ""
     }

@@ -700,7 +700,7 @@ export class PageBreak extends IntersectionObserverMixin(
           --simple-toolbar-button-hover-border-color: transparent;
         }
         simple-toolbar-button.menu-button {
-          top: -8px;
+          top: var(--page-break-menu-button-top, -8px);
           right: var(--page-break-menu-button-right, 0);
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-circle);
