@@ -718,7 +718,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   _defaultReportTabs() {
     return [
       { id: "overview", label: this.t.stats, icon: "hax:graph" },
-      { id: "insights", label: "Insights", icon: "icons:assessment" },
       { id: "content", label: this.t.content, icon: "icons:view-module" },
       { id: "links", label: this.t.links, icon: "icons:link" },
       { id: "media", label: this.t.media, icon: "icons:perm-media" },
@@ -933,11 +932,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       const normalizedActiveTab = this._normalizeLegacyReportTabId(
         this.activeTab,
       );
-      if (
-        !schema &&
-        normalizedActiveTab !== "overview" &&
-        normalizedActiveTab !== "insights"
-      ) {
+      if (!schema && normalizedActiveTab !== "overview") {
         return;
       }
       switch (normalizedActiveTab) {
@@ -1480,15 +1475,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           return;
         }
       }
-      const usedOn = usages
-        .map((usage) => {
-          const usageTitle =
-            usage && usage.linkTitle ? usage.linkTitle : this.t.onPage;
-          const pageTitle =
-            usage && usage.itemId ? this._itemTitleById(usage.itemId) : "";
-          return pageTitle ? `${usageTitle} (${pageTitle})` : usageTitle;
-        })
-        .join("; ");
+      const usedOn = usages.map((usage) => {
+        const pageTitle = usage && usage.pageTitle
+          ? usage.pageTitle
+          : (usage && usage.itemId
+            ? this._itemTitleById(usage.itemId)
+            : "");
+        const link = usage && usage.link ? usage.link : "";
+        const text = pageTitle || (usage && usage.linkTitle) || this.t.onPage;
+        return { text: text, link: link };
+      });
       rows.push([
         this._linkStatusLabel(key),
         key,
@@ -1522,7 +1518,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       data && Array.isArray(data.contentData) ? data.contentData : [];
     contentData.forEach((item) => {
       rows.push([
-        this._toCellValue(item.title),
+        { text: item.title, link: item.link },
         this._toCellValue(item.pageType),
         this._toCellValue(item.updated),
         item.readTime ? this.getReadingTime(item.readTime) : "",
@@ -1557,6 +1553,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     const mediaData =
       data && Array.isArray(data.mediaData) ? data.mediaData : [];
     mediaData.forEach((item) => {
+      const pageTitle = item && item.pageTitle
+        ? item.pageTitle
+        : (item && item.itemId ? this._itemTitleById(item.itemId) : "");
       rows.push([
         this._toCellValue(item.name),
         this._toCellValue(item.title),
@@ -1564,7 +1563,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         this._toCellValue(item.locType),
         this._toCellValue(item.status),
         this._mediaSourceCellValue(item),
-        item && item.itemId ? this._itemTitleById(item.itemId) : "",
+        { text: pageTitle, link: item.pageLink },
         this._toCellValue(item.alt),
       ]);
     });
@@ -1657,6 +1656,28 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     return String(value);
   }
+  _renderCell(cell) {
+    if (cell === null || typeof cell === "undefined") {
+      return html``;
+    }
+    if (Array.isArray(cell)) {
+      return html`${cell.map((entry, idx) => {
+        if (idx > 0) {
+          return html`, ${this._renderCell(entry)}`;
+        }
+        return this._renderCell(entry);
+      })}`;
+    }
+    if (cell && typeof cell === "object" && !Array.isArray(cell)) {
+      const text = this._toCellValue(cell.text);
+      const link = cell.link ? cell.link : "";
+      if (link) {
+        return html`<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+      }
+      return html`${text}`;
+    }
+    return html`${this._toCellValue(cell)}`;
+  }
   _nativeReportTable(headerRow, bodyRows, caption) {
     return html`
       <table class="report-native-table">
@@ -1675,7 +1696,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           ${bodyRows.map(
             (row) => html`
               <tr>
-                ${row.map((cell) => html`<td>${this._toCellValue(cell)}</td>`)}
+                ${row.map((cell) => html`<td>${this._renderCell(cell)}</td>`)}
               </tr>
             `,
           )}
@@ -1799,7 +1820,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                         ${row.map(
                                           (cell) =>
                                             html`<td>
-                                              ${this._toCellValue(cell)}
+                                              ${this._renderCell(cell)}
                                             </td>`,
                                         )}
                                       </tr>
