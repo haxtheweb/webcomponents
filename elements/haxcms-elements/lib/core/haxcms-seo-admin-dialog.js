@@ -71,7 +71,6 @@ class HAXCMSSEOAdminDialog extends DDD {
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
-          min-width: 80vw;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           overflow: hidden;
           font-family: var(--ddd-font-primary);

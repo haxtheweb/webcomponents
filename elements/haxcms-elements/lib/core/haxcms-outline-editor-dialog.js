@@ -25,7 +25,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           display: block;
           height: 70vh;
           overflow: auto;
-          min-width: 80vw;
           font-family: var(--ddd-font-navigation);
         }
         .buttons {

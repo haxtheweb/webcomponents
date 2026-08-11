@@ -235,7 +235,6 @@ class HAXCMSAboutDialogUI extends DDD {
           flex-direction: column;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary);
-          min-width: 80vw;
           min-height: min(40vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
