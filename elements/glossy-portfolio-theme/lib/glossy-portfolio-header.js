@@ -418,9 +418,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
   toggleHamburger(){
     const reduceMotion = globalThis.matchMedia && globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduceMotion && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
+      const transition = globalThis.document.startViewTransition(() => {
         this._toggleHamburger();
       });
+      transition.ready.catch(() => {});
     }
     else {
       this._toggleHamburger();

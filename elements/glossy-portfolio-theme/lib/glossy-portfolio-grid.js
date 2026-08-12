@@ -278,13 +278,17 @@ ${this.data.length > 0 ?   html`
   //called when a filter is clicked
   updateFilter(e){
     const currentTarget = e.currentTarget;
-    if (globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && globalThis.document.startViewTransition) {
+      const transition = globalThis.document.startViewTransition(() => {
         this._updateFilter(currentTarget);
       });
+      transition.ready.catch(() => {});
     }
     else {
-      this._updateFilter(target, currentTarget);
+      this._updateFilter(currentTarget);
     }
   }
   _updateFilter(currentTarget){   

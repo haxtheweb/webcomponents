@@ -386,14 +386,28 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "_location") {
+        // skip the transition on the very first location assignment (initial
+        // page load); there's no meaningful prior visual state to animate
+        // from and the browser is still settling, which is what causes the
+        // benign but noisy `AbortError: Transition was skipped` rejection.
+        const hadPriorLocation = typeof oldValue !== typeof undefined;
+        const reduceMotion =
+          globalThis.matchMedia &&
+          globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (
           this.HAXCMSThemeSettings.locationStartViewTransition &&
           globalThis.document &&
-          globalThis.document.startViewTransition
+          globalThis.document.startViewTransition &&
+          hadPriorLocation &&
+          !reduceMotion
         ) {
-          globalThis.document.startViewTransition(() => {
+          const transition = globalThis.document.startViewTransition(() => {
             this._locationChanged(this[propName], oldValue);
           });
+          // a superseded/skipped transition rejects `ready`; this is expected
+          // per spec so swallow it instead of letting it surface as an
+          // unhandled promise rejection in the console.
+          transition.ready.catch(() => {});
         } else {
           this._locationChanged(this[propName], oldValue);
         }

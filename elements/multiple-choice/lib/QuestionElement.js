@@ -183,10 +183,18 @@ export class QuestionElement extends SchemaBehaviors(
    * that they want to see how they did.
    */
   checkAnswer(e) {
-    if (globalThis.document && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (
+      globalThis.document &&
+      globalThis.document.startViewTransition &&
+      !reduceMotion
+    ) {
+      const transition = globalThis.document.startViewTransition(() => {
         this.checkAnswerCallback();
       });
+      transition.ready.catch(() => {});
     } else {
       this.checkAnswerCallback();
     }

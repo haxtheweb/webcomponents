@@ -90,8 +90,16 @@ class CustomJourneyTheme extends HAXCMSLitElementTheme {
       const _mobx_val_0 = toJS(store.location);
       Promise.resolve().then(() => {
         let location = _mobx_val_0;
-        if (globalThis.document && globalThis.document.startViewTransition) {
-          globalThis.document.startViewTransition(() => {
+        const reduceMotion =
+          globalThis.matchMedia &&
+          globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (
+          globalThis.document &&
+          globalThis.document.startViewTransition &&
+          this.location &&
+          !reduceMotion
+        ) {
+          const transition = globalThis.document.startViewTransition(() => {
             this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
             this.location = location;
             this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
@@ -101,6 +109,7 @@ class CustomJourneyTheme extends HAXCMSLitElementTheme {
                 .scrollIntoView();
             }, 10);
           });
+          transition.ready.catch(() => {});
         } else {
           this.location = location;
         }

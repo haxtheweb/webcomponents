@@ -181,10 +181,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }
 
           if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            globalThis.document.startViewTransition(() => {
+            const transition = globalThis.document.startViewTransition(() => {
               this.activeItem = active;
               this.activeParent = parent;
             });
+            transition.ready.catch(() => {});
           }
           else {
             this.activeItem = active;
@@ -215,11 +216,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               });
 
               if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                globalThis.document.startViewTransition(() => {
+                const transition = globalThis.document.startViewTransition(() => {
                   this.items = [...items];
                   this.categoryTags = [...categoryTags];
                   this.allTags = [...allTags];
                 });
+                transition.ready.catch(() => {});
               }
               else {
                 this.items = [...items];

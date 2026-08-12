@@ -59,10 +59,18 @@ export class SortingOption extends DDDSuper(LitElement) {
   }
 
   dragStart(e) {
-    if (globalThis.document && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (
+      globalThis.document &&
+      globalThis.document.startViewTransition &&
+      !reduceMotion
+    ) {
+      const transition = globalThis.document.startViewTransition(() => {
         this.dragStartCallback(e);
       });
+      transition.ready.catch(() => {});
     } else {
       this.dragStartCallback(e);
     }
@@ -126,10 +134,18 @@ export class SortingOption extends DDDSuper(LitElement) {
 
   arrowSort(e) {
     const target = e.target;
-    if (globalThis.document && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (
+      globalThis.document &&
+      globalThis.document.startViewTransition &&
+      !reduceMotion
+    ) {
+      const transition = globalThis.document.startViewTransition(() => {
         this.arrowSortCallback(target);
       });
+      transition.ready.catch(() => {});
     } else {
       this.arrowSortCallback(target);
     }
