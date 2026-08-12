@@ -1,0 +1,20 @@
+diff --git a/node_modules/polymer-analyzer/lib/javascript/javascript-parser.js b/node_modules/polymer-analyzer/lib/javascript/javascript-parser.js
+index ceadb4e..4e732d9 100644
+--- a/node_modules/polymer-analyzer/lib/javascript/javascript-parser.js
++++ b/node_modules/polymer-analyzer/lib/javascript/javascript-parser.js
+@@ -24,6 +24,15 @@ const baseParseOptions = {
+         // tslint:disable-next-line: no-any Remove this once typings updated.
+         'importMeta',
+         'objectRestSpread',
++        'optionalChaining',
++        'nullishCoalescingOperator',
++        'classProperties',
++        'optionalCatchBinding',
++        'logicalAssignment',
++        'classPrivateProperties',
++        'classPrivateMethods',
++        'numericSeparator',
++        'exportNamespaceFrom',
+     ],
+ };
+ // TODO(usergenic): Move this to regular baseParseOptions declaration once
