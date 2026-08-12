@@ -5,9 +5,6 @@
     "node_modules/@webcontainer/api/dist/vendor/*.js",
     "node_modules/@webcontainer/api/dist/utils/*.js",
     "node_modules/@webcontainer/api/dist/internal/*.js",
-    "node_modules/@xterm/xterm/lib/*",
-    "node_modules/@xterm/xterm/css/*",
-    "node_modules/@xterm/addon-fit/lib/*",
     "node_modules/marked/lib/marked.esm.js",
     "node_modules/@google/model-viewer/dist/model-viewer.js",
     "node_modules/@vowo/chart-elements/*.js",
@@ -105,13 +102,7 @@
       "browserCapabilities": ["es2018", "modules"],
       "js": {
         "minify": false,
-        "transformImportMeta": true,
-        "exclude": [
-          "node_modules/@xterm/**/*.js",
-          "**/node_modules/@xterm/**/*.js",
-          "node_modules/@xterm/**/*.mjs",
-          "**/node_modules/@xterm/**/*.mjs"
-        ]
+        "transformImportMeta": true
       },
       "css": {
         "minify": false

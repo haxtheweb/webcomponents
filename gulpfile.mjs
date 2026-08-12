@@ -298,8 +298,11 @@ gulp.task(
 gulp.task(
   "terser", () => {
     // now work on all the other files
+    // @xterm is a pre-minified vendor bundle; it's copied verbatim via
+    // "vendor-copy-xterm" and should not be re-parsed/minified here.
     return gulp.src([
-      './build/es6/**/*.js'
+      './build/es6/**/*.js',
+      '!./build/es6/node_modules/@xterm/**/*.js'
     ]).pipe(terser({
         ecma: 2022,
         keep_fnames: true,
@@ -309,6 +312,20 @@ gulp.task(
       .pipe(gulp.dest('./build/es6/'));
   }
 );
+// @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
+// bundles. Modern esbuild output (e.g. class static initialization blocks)
+// isn't understood by polymer-build's bundled babylon parser, which caused
+// "js-transform: Unable to optimize" warnings on every ubiquity build. Since
+// there's nothing useful for Babel/terser to do to these files anyway, copy
+// them straight from node_modules instead of routing them through the
+// polymer build/optimize pipeline.
+gulp.task("vendor-copy-xterm", () => {
+  return gulp.src([
+    './node_modules/@xterm/xterm/lib/*',
+    './node_modules/@xterm/xterm/css/*',
+    './node_modules/@xterm/addon-fit/lib/*'
+  ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
+});
 // https://html.spec.whatwg.org/multipage/scripting.html#valid-custom-element-name
 const reservedNames = new Set([
 	'annotation-xml',
