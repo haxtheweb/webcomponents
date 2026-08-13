@@ -246,15 +246,25 @@ class HAXCMSSiteEditor extends LitElement {
   }
   /**
    * Wait until the store has adopted the just-created page as the active
-   * item before entering edit mode. Replaces a fixed-time delay that raced
-   * with the manifest refresh + router re-resolve: if the new page's route
-   * wasn't registered yet when editMode flipped on, the active item could
-   * still be the duplication source, so edits saved against the wrong page.
+   * item AND its content (with the correct <page-break item-id>) has loaded
+   * before entering edit mode. Replaces a fixed-time delay that raced with
+   * the manifest refresh + router re-resolve + page-content fetch.
    *
-   * A self-disposing autorun fires once store.activeItem.id matches the new
-   * node id and its content has loaded. A safety timeout forces activeId if
-   * the router never caught up, and bails out (leaving edit to the user) if
-   * the manifest never received the new page.
+   * Why the page-break id check: the HAX body is saved by serializing its
+   * children, the first of which is <page-break item-id="X">. The backend
+   * saveNode resolves the target page from that item-id, OVERRIDING the
+   * payload node.id. If editMode engages while store.activeItemContent still
+   * holds the PREVIOUS page's content (whose page-break points at the
+   * duplication source / parent), the body inherits the wrong item-id and
+   * the save silently writes to the wrong page, then redirects to that
+   * page's slug. Verifying the content's page-break matches the new node
+   * before engaging edit mode closes the race for both duplicate and child
+   * creates.
+   *
+   * A self-disposing autorun fires once activeItem.id and the content's
+   * page-break item-id both match the new node. A safety timeout bails out
+   * (leaving edit to the user) if the store never catches up, rather than
+   * risk editing the wrong page.
    */
   _autoEnterEditModeForCreatedNode(node) {
     if (!node || !node.id) {
@@ -284,43 +294,53 @@ class HAXCMSSiteEditor extends LitElement {
         this.__autoEditSafetyTimer = null;
       }
     };
-    // fire once the store has adopted the new page and its content loaded
+    // fire once the store has adopted the new page as active AND the
+    // content loaded for it (page-break item-id matches). Checking the
+    // page-break id — not just "content non-empty" — is what prevents
+    // importing the previous page's content (and its page-break) into
+    // the HAX body, which would route the save to the wrong page.
     this.__autoEditDisposer = autorun(() => {
       const activeItem = toJS(store.activeItem);
       const content = toJS(store.activeItemContent);
       if (
         activeItem &&
         String(activeItem.id) === targetId &&
-        typeof content === "string" &&
-        content.trim() !== ""
+        this._extractPageBreakItemId(content) === targetId
       ) {
         finish();
       }
     });
-    // safety net: if the router/manifest refresh never catches up, force
-    // activeId to the new node so the autorun can complete; if the page
-    // still isn't in the manifest, abandon auto-edit rather than risk
-    // editing the wrong page
+    // safety net: if the store hasn't adopted the new page + content in
+    // time, abandon auto-edit rather than risk editing the wrong page.
+    // The user can open the new page and edit manually.
     this.__autoEditSafetyTimer = setTimeout(() => {
-      const activeItem = toJS(store.activeItem);
-      if (activeItem && String(activeItem.id) === targetId) {
+      if (!this.__autoEditDisposer) {
         return;
       }
-      if (store.findItem(targetId)) {
-        store.activeId = targetId;
-      } else {
-        this._merlinCreated = false;
-        if (this.__autoEditDisposer) {
-          this.__autoEditDisposer();
-          this.__autoEditDisposer = null;
-        }
-        store.toast(
-          `Created ${node.title || "page"} — open it to edit`,
-          4000,
-          { hat: "random" },
-        );
-      }
-    }, 6000);
+      this._merlinCreated = false;
+      this.__autoEditDisposer();
+      this.__autoEditDisposer = null;
+      store.toast(
+        `Created ${node.title || "page"} — open it to edit`,
+        4000,
+        { hat: "random" },
+      );
+    }, 10000);
+  }
+  /**
+   * Extract the item-id from the first <page-break> in an HTML content
+   * string. Used by _autoEnterEditModeForCreatedNode to verify the loaded
+   * content actually belongs to the just-created page before editing.
+   * Returns null if there's no page-break or no item-id.
+   */
+  _extractPageBreakItemId(content) {
+    if (typeof content !== "string" || content === "") {
+      return null;
+    }
+    const match = content.match(
+      /<page-break[^>]*?\sitem-id=["']([^"']+)["']/i,
+    );
+    return match ? String(match[1]) : null;
   }
 
   _handleUserDataResponse(e) {
@@ -1693,14 +1713,73 @@ class HAXCMSSiteEditor extends LitElement {
   _handleNodeResponse(e) {
     // node response may include the item that got updated
     // it also may be a new path so let's ensure that's reflected
+    const nodeResponse =
+      e && e.detail && e.detail.value ? e.detail.value : null;
+    const nodeData =
+      nodeResponse && nodeResponse.data ? nodeResponse.data : null;
     if (
-      e.detail.value &&
-      e.detail.value.data &&
-      e.detail.value.data.slug &&
-      this.activeItem.slug !== e.detail.value.data.slug
+      nodeData &&
+      nodeData.slug &&
+      this.activeItem &&
+      this.activeItem.slug !== nodeData.slug
     ) {
-      globalThis.history.replaceState({}, null, e.detail.value.data.slug);
+      globalThis.history.replaceState({}, null, nodeData.slug);
       globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    }
+    // Patch the local manifest item from the server response so the editor
+    // reflects the change immediately (slug/title/metadata.overridePathauto)
+    // without waiting for the manifest reload. Without this, a second save
+    // within the same second resubmits stale slug/override state (the
+    // _timeStamp cache-buster doesn't change in-window, so loadJOSData is
+    // skipped), which clobbers a just-set override or reverts a custom slug.
+    if (nodeData && nodeData.id) {
+      const item = store.findItem(nodeData.id);
+      if (item) {
+        if (typeof nodeData.title === "string") {
+          item.title = nodeData.title;
+        }
+        if (typeof nodeData.slug === "string") {
+          item.slug = nodeData.slug;
+        }
+        if (typeof nodeData.description === "string") {
+          item.description = nodeData.description;
+        }
+        if (nodeData.metadata && typeof nodeData.metadata === "object") {
+          if (!item.metadata || typeof item.metadata !== "object") {
+            item.metadata = {};
+          }
+          // content saves set or clear these metadata fields; mirror the
+          // server state locally so the next save serializes fresh values.
+          const metadataKeys = [
+            "tags",
+            "icon",
+            "image",
+            "relatedItems",
+            "locked",
+            "published",
+            "hideInMenu",
+            "overridePathauto",
+            "pageType",
+            "theme",
+            "accentColor",
+            "linkUrl",
+            "linkTarget",
+            "author",
+            "readtime",
+            "videos",
+            "images",
+          ];
+          metadataKeys.forEach((key) => {
+            if (Object.prototype.hasOwnProperty.call(nodeData.metadata, key)) {
+              item.metadata[key] = nodeData.metadata[key];
+            } else if (
+              Object.prototype.hasOwnProperty.call(item.metadata, key)
+            ) {
+              delete item.metadata[key];
+            }
+          });
+        }
+      }
     }
     // clear a recovered-edit snapshot when its page is successfully saved
     try {
