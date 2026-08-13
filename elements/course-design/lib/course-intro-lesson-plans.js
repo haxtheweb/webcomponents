@@ -15,9 +15,10 @@ class CourseIntroLessonPlans extends DDD {
     super();
     this.items = [];
     autorun(() => {
-      const _mobx_val_0 = toJS(store.routerManifest.items);
+      const routerManifest = store.routerManifest;
+      const _mobx_val_0 = routerManifest ? toJS(routerManifest.items) : undefined;
       Promise.resolve().then(() => {
-        if (store.routerManifest && store.routerManifest.items) {
+        if (routerManifest && routerManifest.items) {
           this._itemsChanged(_mobx_val_0);
         }
       });
