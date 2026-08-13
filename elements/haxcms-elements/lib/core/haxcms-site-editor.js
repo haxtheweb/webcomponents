@@ -232,14 +232,95 @@ class HAXCMSSiteEditor extends LitElement {
           hat: "random",
         });
 
-        // Auto-enter edit mode if this page was created by a Merlin program
+        // Auto-enter edit mode if this page was created by a Merlin program.
+        // Wait until the store has actually adopted the new page as the
+        // active item before flipping editMode on; otherwise the editMode
+        // autorun imports the previous page's content into the HAX body and
+        // the eventual save writes to the duplication source instead of the
+        // new page. See haxtheweb/issues#938.
         if (this._merlinCreated) {
-          store.editMode = true;
-          // Clear the flag
-          this._merlinCreated = false;
+          this._autoEnterEditModeForCreatedNode(node);
         }
       }, 900);
     }
+  }
+  /**
+   * Wait until the store has adopted the just-created page as the active
+   * item before entering edit mode. Replaces a fixed-time delay that raced
+   * with the manifest refresh + router re-resolve: if the new page's route
+   * wasn't registered yet when editMode flipped on, the active item could
+   * still be the duplication source, so edits saved against the wrong page.
+   *
+   * A self-disposing autorun fires once store.activeItem.id matches the new
+   * node id and its content has loaded. A safety timeout forces activeId if
+   * the router never caught up, and bails out (leaving edit to the user) if
+   * the manifest never received the new page.
+   */
+  _autoEnterEditModeForCreatedNode(node) {
+    if (!node || !node.id) {
+      this._merlinCreated = false;
+      return;
+    }
+    // tear down any prior pending auto-edit reaction so repeated page
+    // creations don't stack reactions against different nodes
+    if (this.__autoEditDisposer) {
+      this.__autoEditDisposer();
+      this.__autoEditDisposer = null;
+    }
+    if (this.__autoEditSafetyTimer) {
+      clearTimeout(this.__autoEditSafetyTimer);
+      this.__autoEditSafetyTimer = null;
+    }
+    const targetId = String(node.id);
+    const finish = () => {
+      store.editMode = true;
+      this._merlinCreated = false;
+      if (this.__autoEditDisposer) {
+        this.__autoEditDisposer();
+        this.__autoEditDisposer = null;
+      }
+      if (this.__autoEditSafetyTimer) {
+        clearTimeout(this.__autoEditSafetyTimer);
+        this.__autoEditSafetyTimer = null;
+      }
+    };
+    // fire once the store has adopted the new page and its content loaded
+    this.__autoEditDisposer = autorun(() => {
+      const activeItem = toJS(store.activeItem);
+      const content = toJS(store.activeItemContent);
+      if (
+        activeItem &&
+        String(activeItem.id) === targetId &&
+        typeof content === "string" &&
+        content.trim() !== ""
+      ) {
+        finish();
+      }
+    });
+    // safety net: if the router/manifest refresh never catches up, force
+    // activeId to the new node so the autorun can complete; if the page
+    // still isn't in the manifest, abandon auto-edit rather than risk
+    // editing the wrong page
+    this.__autoEditSafetyTimer = setTimeout(() => {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem && String(activeItem.id) === targetId) {
+        return;
+      }
+      if (store.findItem(targetId)) {
+        store.activeId = targetId;
+      } else {
+        this._merlinCreated = false;
+        if (this.__autoEditDisposer) {
+          this.__autoEditDisposer();
+          this.__autoEditDisposer = null;
+        }
+        store.toast(
+          `Created ${node.title || "page"} — open it to edit`,
+          4000,
+          { hat: "random" },
+        );
+      }
+    }, 6000);
   }
 
   _handleUserDataResponse(e) {
@@ -1151,6 +1232,14 @@ class HAXCMSSiteEditor extends LitElement {
         this._contentReadyHandler,
       );
       this._contentReadyHandler = null;
+    }
+    if (this.__autoEditDisposer) {
+      this.__autoEditDisposer();
+      this.__autoEditDisposer = null;
+    }
+    if (this.__autoEditSafetyTimer) {
+      clearTimeout(this.__autoEditSafetyTimer);
+      this.__autoEditSafetyTimer = null;
     }
     this.__disposeDisposers();
     super.disconnectedCallback();
