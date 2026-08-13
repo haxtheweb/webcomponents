@@ -1411,6 +1411,22 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       HAXStore.elementList[activeNode.tagName.toLowerCase()]
     ) {
       let props = { ...HAXStore.elementList[activeNode.tagName.toLowerCase()] };
+      // Normalize the three settings containers to arrays. Some HAX schemas
+      // only declare a subset of configure/advanced/developer (e.g. figure,
+      // figcaption, iframe, p, table, hr, webview) and can reach the tray via
+      // paths that skip setHaxProperties normalization. Without this guard the
+      // iteration below throws "Cannot read properties of undefined (reading
+      // 'forEach')". Default missing containers to [] and build a new settings
+      // object so the shared elementList entry is not mutated.
+      if (!props.settings) {
+        props.settings = {};
+      }
+      props.settings = {
+        ...props.settings,
+        configure: props.settings.configure || [],
+        advanced: props.settings.advanced || [],
+        developer: props.settings.developer || [],
+      };
       // generate a human name for this
       if (typeof props.gizmo.title === typeof undefined) {
         this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
