@@ -12,6 +12,8 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 
 function _buildV1ExportUrl(baseUrl, format, queryParams = {}) {
   const url = new URL(
@@ -249,22 +251,73 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
 
 export async function _downloadSiteArchive() {
   try {
-    // Use the built-in site download functionality
-    if (globalThis.HAXCMS && globalThis.HAXCMS.siteName) {
-      // Trigger site download - this functionality is built into HAXcms
-      const downloadUrl = `${globalThis.location.origin}${globalThis.location.pathname}?download-site=true`;
-      const link = globalThis.document.createElement("a");
-      link.href = downloadUrl;
-      link.download = `${globalThis.HAXCMS.siteName}.zip`;
-      link.target = "_blank";
-      globalThis.document.body.appendChild(link);
-      link.click();
-      globalThis.document.body.removeChild(link);
-
-      HAXStore.toast("Site archive download initiated", 3000, "fit-bottom");
-    } else {
-      throw new Error("Site download not available");
+    const manifest = toJS(store.manifest);
+    const siteName =
+      manifest &&
+      manifest.metadata &&
+      manifest.metadata.site &&
+      manifest.metadata.site.name
+        ? String(manifest.metadata.site.name)
+        : "";
+    if (!siteName) {
+      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      return;
     }
+    // downloadSite is a system-level operation (it zips the site folder off
+    // the filesystem), so route it through the authenticated @system/ registry
+    // — the same endpoint the HAXiam dashboard uses. The previous code guarded
+    // on globalThis.HAXCMS.siteName, which is never set, and targeted
+    // ?download-site=true, which no backend handles, so this always toasted
+    // "not available" from the site import/export admin panel.
+    await waitForAppHAXSystemApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      !MicroFrontendRegistry.has("@system/downloadSite")
+    ) {
+      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      return;
+    }
+    const response = await MicroFrontendRegistry.call(
+      "@system/downloadSite",
+      {
+        siteName,
+        site: { name: siteName },
+        __method: "POST",
+      },
+      null,
+      null,
+    );
+    if (
+      response &&
+      typeof response === "object" &&
+      typeof response.status === "number" &&
+      response.status >= 400
+    ) {
+      const message =
+        typeof response.message === "string" && response.message
+          ? response.message
+          : "Site archive download not available";
+      HAXStore.toast(message, 3000, "fit-bottom");
+      return;
+    }
+    if (!(response && response.data && response.data.link)) {
+      HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
+      return;
+    }
+    // Use an anchor element so this is treated as a real navigation and not
+    // blocked as a popup by the browser (mirrors app-hax-site-details).
+    const link = globalThis.document.createElement("a");
+    link.href = response.data.link;
+    if (response.data.name) {
+      link.setAttribute("download", response.data.name);
+    }
+    link.style.display = "none";
+    globalThis.document.body.appendChild(link);
+    link.click();
+    globalThis.document.body.removeChild(link);
+    HAXStore.toast("Site archive download initiated", 3000, "fit-bottom");
   } catch (error) {
     console.error("Site archive download error:", error);
     HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
