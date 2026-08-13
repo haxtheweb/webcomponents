@@ -977,6 +977,7 @@ class HAXCMSSystemSettings extends DDD {
         intro:
           "Configure API credentials and integration defaults used by media and automation features.",
         panelType: "integrations",
+        disabled: true,
         sections: [
           {
             key: "api-keys",
