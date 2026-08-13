@@ -22,6 +22,18 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/product-card/demo/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/hax-cloud/demo/wc-registry.json
 
+## STEP 1.5 AGENT SKILLS DISCOVERY (.well-known/agent-skills)
+# praw is the canonical source for HAX agent skills. Build the index, then snapshot
+# curated sets into the per-site boilerplate and deployment roots. The site set is
+# copied into the nodejs boilerplate; STEP 4 mirrors the whole nodejs boilerplate
+# into haxcms-php, so PHP sites get it automatically. The system set goes to both
+# deployment roots explicitly (they are not part of the boilerplate mirror).
+cd ~/haxtheweb/praw
+node scripts/build-agent-skills-index.js
+node scripts/snapshot-agent-skills.js site ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/.well-known/agent-skills
+node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-nodejs/.well-known/agent-skills
+node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-php/.well-known/agent-skills
+
 ## STEP 2 NORMALIZE ACROSS ALL PROJECTS
 # hax11ty
 rm -rf ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build

@@ -3334,7 +3334,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "media-program":
         store.playSound("click");
         SuperDaemonInstance.waveWand(
-          ["sources", "/"],
+          ["", "/"],
           this.shadowRoot.querySelector("#merlin"),
           null,
         );

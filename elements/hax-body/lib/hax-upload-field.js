@@ -506,7 +506,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.value = e.detail.value;
   }
   _clickMediaButton(e) {
-    var type = "sources";
+    var type = "";
     if (this.label.toLowerCase().includes("image")) {
       type = "image";
     } else if (this.label.toLowerCase().includes("video")) {

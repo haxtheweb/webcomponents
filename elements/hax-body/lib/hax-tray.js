@@ -927,7 +927,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       </hax-tray-button>`;
   }
   _clickMediaButton(e) {
-    SuperDaemonInstance.runProgram("sources");
+    SuperDaemonInstance.runProgram("");
     SuperDaemonInstance.open();
   }
   get moreButtons() {
