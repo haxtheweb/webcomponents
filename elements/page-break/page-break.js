@@ -213,7 +213,7 @@ export class PageBreak extends IntersectionObserverMixin(
       tags: { type: String, reflect: true },
       developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },
-      slug: { type: String },
+      slug: { type: String, reflect: true },
       image: { type: String },
       parent: { type: String, reflect: true },
       published: { type: Boolean, reflect: true },
