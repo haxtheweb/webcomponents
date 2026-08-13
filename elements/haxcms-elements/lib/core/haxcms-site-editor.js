@@ -2588,10 +2588,10 @@ class HAXCMSSiteEditor extends LitElement {
           );
     const pathauto =
       typeof detail.pathauto !== typeof undefined
-        ? toBoolValue(detail.pathauto, true)
+        ? toBoolValue(detail.pathauto, false)
         : toBoolValue(
             manifestSiteSettings ? manifestSiteSettings.pathauto : undefined,
-            true,
+            false,
           );
     const publishPagesOn =
       typeof detail.publishPagesOn !== typeof undefined

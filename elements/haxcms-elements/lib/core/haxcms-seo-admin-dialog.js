@@ -628,7 +628,7 @@ class HAXCMSSEOAdminDialog extends DDD {
     );
     values["manifest-metadata-site-settings-pathauto"] = this._toBoolValue(
       pathauto,
-      true,
+      false,
     );
     values["manifest-metadata-site-settings-publishPagesOn"] =
       this._toBoolValue(publishPagesOn, true);
@@ -763,7 +763,7 @@ class HAXCMSSEOAdminDialog extends DDD {
         : "",
       pathauto: this._toBoolValue(
         this.values["manifest-metadata-site-settings-pathauto"],
-        true,
+        false,
       ),
       publishPagesOn: this._toBoolValue(
         this.values["manifest-metadata-site-settings-publishPagesOn"],
