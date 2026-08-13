@@ -1833,6 +1833,17 @@ class HAXCMSSiteEditor extends LitElement {
     // otherwise not change and skip the loadJOSData reload).
     const response = e && e.detail ? e.detail.response : null;
     const data = response && response.data ? response.data : null;
+    // Capture the active page's slug BEFORE patching so we can redirect the
+    // browser when a node-details op (setTitle/setParent/indent/outdent/setSlug)
+    // changed the active page's slug. Without this, the URL bar keeps the stale
+    // slug and the next navigation/reload hits page-not-found.
+    const activeItem = store.activeItem;
+    const activeId =
+      activeItem && activeItem.id ? activeItem.id : null;
+    const previousActiveSlug =
+      activeItem && typeof activeItem.slug === "string"
+        ? activeItem.slug
+        : null;
     if (data && data.id) {
       const item = store.findItem(data.id);
       if (item) {
@@ -1885,6 +1896,21 @@ class HAXCMSSiteEditor extends LitElement {
         }),
       );
       store.toast(`Operation completed!`, 3000, { hat: "construction" });
+      // If this operation changed the active page's slug, redirect to the
+      // new URL so the browser doesn't sit on a stale slug that no longer
+      // resolves. Mirrors _handleOutlineResponse's redirect behavior.
+      if (
+        data &&
+        data.id &&
+        activeId &&
+        data.id === activeId &&
+        typeof data.slug === "string" &&
+        previousActiveSlug !== null &&
+        data.slug !== previousActiveSlug
+      ) {
+        globalThis.history.replaceState({}, null, data.slug);
+        globalThis.dispatchEvent(new PopStateEvent("popstate"));
+      }
     }, 300);
   }
   _handleRestoreNodeRevisionResponse(e) {
