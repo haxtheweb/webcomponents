@@ -326,6 +326,20 @@ gulp.task("vendor-copy-xterm", () => {
     './node_modules/@xterm/addon-fit/lib/*'
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
+// @haxtheweb/la-tex/lib/latex2html5.js is a pre-transpiled browserify UMD
+// bundle loaded as a classic script via es-global-bridge (no ESM
+// imports/import.meta), so polymer-build's Babel pass has nothing useful to
+// do to it. Worse, jsTransform's replaceTemplateObjectNames() mints a fresh
+// UUID v1 onto every `_templateObject` identifier on each run, so the
+// committed bytes change every ubiquity build even though nothing meaningful
+// changed. Copy it verbatim from node_modules and let the terser step
+// minify it (terser is deterministic), which keeps the file byte-stable
+// build-to-build while staying ~529KB instead of the 1.59MB raw source.
+gulp.task("vendor-copy-latex2html5", () => {
+  return gulp.src([
+    './node_modules/@haxtheweb/la-tex/lib/latex2html5.js',
+  ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
+});
 // https://html.spec.whatwg.org/multipage/scripting.html#valid-custom-element-name
 const reservedNames = new Set([
 	'annotation-xml',

@@ -75,6 +75,7 @@
     "node_modules/@haxtheweb/code-sample/lib/highlightjs/languages/*.js",
     "node_modules/idb-keyval/dist/*.js",
     "node_modules/safari-14-idb-fix/dist/*.js",
+    "!node_modules/@haxtheweb/la-tex/lib/latex2html5.js",
     "!node_modules/@haxtheweb/haxcms-elements/demo/dist/*.js",
     "!node_modules/@haxtheweb/elmsln-apps/lib/*/demo/*",
     "!node_modules/@haxtheweb/simple-icon/lib/svgs/elmsln-custom",
