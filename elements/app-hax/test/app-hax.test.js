@@ -339,6 +339,7 @@ describe("app-hax test", () => {
     it("should navigate to specified location", () => {
       let capturedLocation = null;
       Object.defineProperty(globalThis, "location", {
+        get: () => ({ href: "https://test.local/" }),
         set: (value) => {
           capturedLocation = value;
         },
@@ -346,7 +347,22 @@ describe("app-hax test", () => {
       });
 
       element.goToLocation("https://example.com");
-      expect(capturedLocation).to.equal("https://example.com");
+      // safeNavigateHref normalizes to a fully-resolved http(s) href
+      expect(capturedLocation).to.equal("https://example.com/");
+    });
+
+    it("should neutralize javascript: scheme navigation (F7/JS-URL-001)", () => {
+      let capturedLocation = null;
+      Object.defineProperty(globalThis, "location", {
+        get: () => ({ href: "https://test.local/" }),
+        set: (value) => {
+          capturedLocation = value;
+        },
+        configurable: true,
+      });
+
+      element.goToLocation("javascript:alert(1)");
+      expect(capturedLocation).to.equal("/");
     });
 
     it("should open external links", () => {

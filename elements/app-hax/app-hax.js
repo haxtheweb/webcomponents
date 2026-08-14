@@ -1,6 +1,10 @@
 import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
-import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
+import {
+  localStorageSet,
+  localStorageGet,
+  safeNavigateHref,
+} from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -254,7 +258,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   goToLocation(location) {
-    globalThis.location = location;
+    // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+    globalThis.location = safeNavigateHref(location);
   }
 
   disconnectedCallback() {
@@ -653,7 +658,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           if (location.route.slug) {
             this.reset();
             setTimeout(() => {
-              globalThis.location = location.route.slug;
+              // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+              globalThis.location = safeNavigateHref(location.route.slug);
             }, 0);
           }
           // page miss is high check too

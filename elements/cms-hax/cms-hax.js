@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/h-a-x/h-a-x.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { safeNavigateHref } from "@haxtheweb/utils/utils.js";
 /**
  * `cms-hax`
  * @element cms-hax
@@ -375,8 +376,8 @@ class CmsHax extends LitElement {
     // if there's a redirect on save, then redirect to it bc of the cancel event
     if (this.redirectOnSave) {
       setTimeout(() => {
-        // trigger redirect
-        globalThis.location = this.redirectLocation;
+        // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+        globalThis.location = safeNavigateHref(this.redirectLocation);
       }, 0);
     }
   }
@@ -437,8 +438,8 @@ class CmsHax extends LitElement {
       // in the integration point
       if (this.redirectOnSave) {
         setTimeout(() => {
-          // trigger redirect
-          globalThis.location = this.redirectLocation;
+          // security (F7/JS-URL-001): validate scheme before navigation; block javascript:/data:/vbscript:
+          globalThis.location = safeNavigateHref(this.redirectLocation);
         }, 2000);
       }
     }

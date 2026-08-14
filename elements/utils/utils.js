@@ -350,6 +350,28 @@ export function sanitizeHTMLString(
 }
 
 /**
+ * Validate a navigation target so only http/https schemes reach a
+ * `globalThis.location` assignment sink. Mirrors jwt-login.safeRedirect:
+ * resolve the value relative to the current page, then reject any
+ * non-http(s) scheme so attacker-influenced values can't execute script
+ * on navigation (blocks javascript:/data:/vbscript:).
+ * @param {String} raw - raw navigation target (absolute href or relative path)
+ * @returns {String} validated href safe for globalThis.location assignment
+ */
+// security (F7/JS-URL-001): validate scheme before navigation
+export function safeNavigateHref(raw) {
+  try {
+    const u = new URL(raw, globalThis.location.href);
+    if (u.protocol !== "https:" && u.protocol !== "http:") {
+      return "/";
+    }
+    return u.href;
+  } catch (e) {
+    return "/";
+  }
+}
+
+/**
  * Convert a base64 encoded string to type Blob
  * @param {String} b64Data - base64 encoded string
  * @param {String} contentType - type to mark as the encoding of the blob
