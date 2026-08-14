@@ -13,7 +13,6 @@ analysis.json
 yarn-error.log
 .cache
 .yarn
-yarn.lock
 test/index.html
 component-gallery.html
 elements/video-player/demo/samples/ad/
