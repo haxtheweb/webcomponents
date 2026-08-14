@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/tableau-embed",
-  "version": "26.0.0",
+  "version": "26.8.0",
   "description": "Tableau visualization embed wrapper with HAX capabilities.",
   "license": "Apache-2.0",
   "author": {
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^26.0.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2"
   },

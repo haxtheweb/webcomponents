@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/resume-theme",
-  "version": "26.0.0",
+  "version": "26.8.0",
   "description": "Single-page résumé theme for HAXcms",
   "license": "Apache-2.0",
   "author": {
@@ -25,15 +25,15 @@
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/haxcms-elements": "^26.0.0",
-    "@haxtheweb/simple-icon": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/simple-icon": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^26.0.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

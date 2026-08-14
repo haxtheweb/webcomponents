@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/link-card-theme",
-  "version": "26.0.0",
+  "version": "26.8.0",
   "description": "HAXcms link-card theme for single-page personal profile and menu-link hubs",
   "license": "Apache-2.0",
   "author": {
@@ -31,11 +31,11 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/hax-iconset": "^26.0.0",
-    "@haxtheweb/haxcms-elements": "^26.0.0",
-    "@haxtheweb/simple-icon": "^26.0.0",
-    "@haxtheweb/user-scaffold": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/hax-iconset": "^26.8.0",
+    "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/simple-icon": "^26.8.0",
+    "@haxtheweb/user-scaffold": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "6.13.7"
   },
