@@ -1,0 +1,32 @@
+# Root-level Netlify configuration for the webcomponents monorepo.
+#
+# This backs a NEW root-level Netlify site (separate from the per-element
+# Netlify sites, each of which has its own elements/<el>/netlify.toml). It
+# serves the repository as-is so that element demos under
+# elements/*/demo/index.html are reachable at /elements/<el>/demo/index.html.
+#
+# The build command is intentionally ONLY `yarn install`: it hydrates
+# node_modules so bare `@haxtheweb/*` imports resolve via the lerna/yarn
+# workspace symlinks. It does NOT run a top-level monorepo build (that is
+# forbidden) and it does NOT run the ubiquity script. Installing dependencies is
+# not building.
+[build]
+  publish = "."
+  command = "yarn install"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "max-age=31536001"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"

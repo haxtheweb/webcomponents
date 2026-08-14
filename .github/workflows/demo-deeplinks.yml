@@ -1,0 +1,101 @@
+name: demo-deeplinks
+
+# Post a single PR comment listing deep links to the demo/index.html of every
+# element touched by the PR. Links point at the root-level Netlify preview site
+# that serves the repo with `publish = "."` after a `yarn install`
+# (see netlify.toml at the repo root).
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Fork-safety caveat: GitHub blocks `pull_request`-event comment writes from
+# forked repositories by default (the GITHUB_TOKEN is read-only for forks), so
+# the comment step below is skipped for fork PRs. A `workflow_run` fallback that
+# re-runs on the base branch and posts the comment from there is a future
+# follow-up and is intentionally out of scope for this workflow.
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  post-demo-deeplinks:
+    name: Post element demo deep links
+    runs-on: ubuntu-latest
+    env:
+      # Base URL of the root-level Netlify preview site for this repo. Netlify
+      # does not expose the per-PR deploy-preview URL to a `pull_request`
+      # workflow in a simple, reliable way, so deep links target the main site
+      # URL. Replace the placeholder by setting NETLIFY_SITE_URL as a repository
+      # (or Environment) variable once the Netlify site is connected.
+      NETLIFY_SITE_URL: https://webcomponents-preview.netlify.app
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Find affected elements that have a demo
+        id: demos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Ask GitHub for the exact set of files this PR changed (paginated).
+          mapfile -t changed < <(gh api \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files" \
+            --paginate --jq '.[].path')
+
+          # Collect unique element slugs whose changed files live under
+          # elements/<slug>/ and that actually ship a demo/index.html in the
+          # checked-out PR head.
+          declare -A seen=()
+          affected=()
+          for path in "${changed[@]}"; do
+            case "$path" in
+              elements/*/*)
+                slug="${path#elements/}"
+                slug="${slug%%/*}"
+                if [[ -z "${seen[$slug]+_}" && -f "elements/$slug/demo/index.html" ]]; then
+                  seen[$slug]=1
+                  affected+=("$slug")
+                fi
+                ;;
+            esac
+          done
+
+          if [[ ${#affected[@]} -eq 0 ]]; then
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "found=true"
+              echo "links<<EOF"
+              for slug in $(printf '%s\n' "${affected[@]}" | sort -u); do
+                echo "- [\`$slug\`](${NETLIFY_SITE_URL}/elements/$slug/demo/index.html)"
+              done
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Comment demo deep links on the PR
+        if: steps.demos.outputs.found == 'true' && github.event.pull_request.head.repo.fork == false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          LINKS: ${{ steps.demos.outputs.links }}
+        run: |
+          set -euo pipefail
+          {
+            echo '## Element demo deep links'
+            echo ''
+            echo 'This PR modifies the following elements. Each link opens the `demo/index.html` of that element on the root-level Netlify preview site:'
+            echo ''
+            printf '%s\n' "$LINKS"
+            echo ''
+            echo '---'
+            echo ''
+            echo '**Rendering caveat (read before reviewing):**'
+            echo '- Demos that load components through the magic-script / `wc-registry.json` from the CDN render the **published** version, **not** the local source changed in this PR.'
+            echo '- Demos that import relatively (e.g. `./src/...`) reflect the **local source from this PR**.'
+            echo '- Each deep link above renders whichever strategy that demo uses, so review accordingly.'
+          } > comment.md
+          gh pr comment "$PR_NUMBER" --body-file comment.md
