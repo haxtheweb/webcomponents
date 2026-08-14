@@ -2,6 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 /**
  * `html-block`
  * @element html-block
@@ -141,22 +142,15 @@ class HtmlBlock extends HTMLElement {
     }
   }
   __sanitizeHTML() {
-    if (!this.__pen) {
-      this.__pen = globalThis.document.createElement("div");
-    }
-    this.__pen.innerHTML = this.innerHTML;
-    this.__rawHTML = this.__pen.cloneNode(true).innerHTML;
-    // clear it up
-    if (typeof this.innerHTML === "function") {
-      this.innerHTML = this.innerHTML.replace(
-        /<script[\s\S]*?>/gi,
-        "&lt;script&gt;",
-      );
-      this.innerHTML = this.innerHTML.replace(
-        /<\/script>/gi,
-        "&lt;/script&gt;",
-      );
-    }
+    // security (F2/JS-XSS-001): route untrusted slotted HTML through the shared
+    // sanitizer before writing back to innerHTML; preserve the raw value in
+    // __rawHTML so toggling allowscript back on restores it (attributeChangedCallback).
+    const rawHTML = this.innerHTML;
+    this.__rawHTML = rawHTML;
+    // break the MutationObserver feedback loop: render() checks __ignoreChange
+    // and resets it to false, preventing re-sanitization of our own write.
+    this.__ignoreChange = true;
+    this.innerHTML = sanitizeHTMLString(rawHTML);
   }
 }
 globalThis.customElements.define(HtmlBlock.tag, HtmlBlock);

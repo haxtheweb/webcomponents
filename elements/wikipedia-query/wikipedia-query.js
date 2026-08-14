@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
@@ -205,10 +206,9 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
           this.shadowRoot.querySelector("#result")
         ) {
           let html = response.query.pages[key].extract;
-          html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-          html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-          html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-          html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+          // security (F1/JS-XSS-001): sanitize network HTML from Wikipedia API
+          // before assigning to innerHTML (neutralizes onerror/javascript:/iframe/svg)
+          html = sanitizeHTMLString(html);
           // need to innerHTML this or it won't set
           this.shadowRoot.querySelector("#result").innerHTML = html;
         }

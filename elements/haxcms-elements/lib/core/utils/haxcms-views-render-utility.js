@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 export const safeString = (value) => {
   if (value === null || typeof value === "undefined") {
@@ -218,7 +219,10 @@ export const renderRecordElementPreview = (record) => {
   const content =
     schema && typeof schema.content === "string" ? schema.content : "";
   const attributeString = attributeStringFromProperties(properties);
-  const elementMarkup = `<${tag}${attributeString}>${content}</${tag}>`;
+  // security (F3/JS-XSS-001): sanitize raw record slot HTML before unsafeHTML;
+  // tag/attribute validation above is retained, only the slotted body is sanitized.
+  const safeContent = sanitizeHTMLString(content);
+  const elementMarkup = `<${tag}${attributeString}>${safeContent}</${tag}>`;
   return html`<div class="record-element-preview">
     ${unsafeHTML(elementMarkup)}
   </div>`;
@@ -664,7 +668,8 @@ export const renderRecordBody = (record, maxLength = 240) => {
     return html``;
   }
   if (recordBodyIsHtml(record)) {
-    return html`<div class="record-html">${unsafeHTML(body)}</div>`;
+    // security (F3/JS-XSS-001): sanitize record body HTML before unsafeHTML sink
+    return html`<div class="record-html">${unsafeHTML(sanitizeHTMLString(body))}</div>`;
   }
   return html`<p>${shortValue(body, maxLength)}</p>`;
 };
