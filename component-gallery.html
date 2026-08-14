@@ -115,7 +115,7 @@
       font-family: var(--ddd-font-primary);
       font-size: var(--ddd-font-size-4xs);
       font-weight: var(--ddd-font-weight-medium);
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       flex: 1;
       min-width: 0;
       text-align: center;
@@ -157,7 +157,7 @@
       border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
       border-radius: var(--ddd-radius-xs);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       text-align: left;
       font-family: var(--ddd-font-primary);
       color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
@@ -305,7 +305,7 @@
       font-size: var(--ddd-font-size-3xs);
       font-weight: var(--ddd-font-weight-medium);
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease-in-out;
       display: inline-flex;
       align-items: center;
       gap: var(--ddd-spacing-1);
@@ -398,15 +398,15 @@
     <div class="sidebar">
       <div class="sidebar-header">
         <h1>Web Components Gallery</h1>
-        <div class="stats">198 Components Available</div>
+        <div class="stats">219 Components Available</div>
         
         <!-- Filter buttons -->
         <div class="filter-buttons">
           <button class="filter-btn active" data-filter="all" title="Show all components">
-            🔍 All (198)
+            🔍 All (219)
           </button>
           <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            🧱 HAX (82)
+            🧱 HAX (102)
           </button>
           <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
             ⚡ HAX-* (6)
@@ -702,11 +702,31 @@
   {
     "name": "aframe-player",
     "packageName": "@haxtheweb/aframe-player",
-    "description": "A-frame 3D player in the browser via data binding w/ polymer",
+    "description": "A-frame 3D player in the browser via data binding",
     "version": "26.0.0",
     "demoPath": "elements/aframe-player/demo/index.html",
     "importPath": "@haxtheweb/aframe-player/aframe-player.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "ai-usage-license",
+    "packageName": "@haxtheweb/ai-usage-license",
+    "description": "Webcomponent ai-usage-license following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/ai-usage-license/demo/index.html",
+    "importPath": "@haxtheweb/ai-usage-license/ai-usage-license.js",
+    "haxDemoSchema": [
+      {
+        "tag": "ai-usage-license",
+        "properties": {
+          "license": "CD",
+          "modifier": "IM"
+        },
+        "content": ""
+      }
+    ],
     "isHaxCapable": true,
     "additionalDemos": []
   },
@@ -762,6 +782,31 @@
           "mediaTitle": "Jonny Quest Theme",
           "crossorigin": "anonymous",
           "source": "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "author-card",
+    "packageName": "@haxtheweb/author-card",
+    "description": "Webcomponent author-card following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/author-card/demo/index.html",
+    "importPath": "@haxtheweb/author-card/author-card.js",
+    "haxDemoSchema": [
+      {
+        "tag": "author-card",
+        "properties": {
+          "name": "btopro",
+          "title": "Developer & Educator",
+          "description": "btopro is a developer and educator working on HAX and web components.",
+          "image": "https://github.com/btopro.png",
+          "profileUrl": "/u/btopro",
+          "socialLink": "https://x.com/btopro",
+          "socialHandle": "@btopro"
         },
         "content": ""
       }
@@ -843,6 +888,23 @@
     "additionalDemos": []
   },
   {
+    "name": "bibliography-builder",
+    "packageName": "bibliography-builder",
+    "description": "Webcomponent bibliography-builder following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/bibliography-builder/demo/index.html",
+    "importPath": "@haxtheweb/bibliography-builder/bibliography-builder.js",
+    "haxDemoSchema": [
+      {
+        "tag": "bibliography-builder",
+        "properties": {},
+        "content": "<bibliography-item title=\"Make your own citation\"></bibliography-item>"
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
     "name": "bootstrap-theme",
     "packageName": "@haxtheweb/bootstrap-theme",
     "description": "Hax bootstrap themeing",
@@ -851,6 +913,25 @@
     "importPath": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
+    "name": "career-timeline",
+    "packageName": "career-timeline",
+    "description": "Webcomponent career-timeline following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/career-timeline/demo/index.html",
+    "importPath": "@haxtheweb/career-timeline/career-timeline.js",
+    "haxDemoSchema": [
+      {
+        "tag": "career-timeline",
+        "properties": {
+          "title": "Career Timeline"
+        },
+        "content": "<career-org-item organization=\"Add Organization\" location=\"Enter Location\"></career-org-item>"
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -934,6 +1015,17 @@
     "version": "26.0.0",
     "demoPath": "elements/clean-one/demo/index.html",
     "importPath": "@haxtheweb/clean-one/clean-one.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
+    "name": "clean-portfolio-theme",
+    "packageName": "@haxtheweb/clean-portfolio-theme",
+    "description": "Webcomponent clean-portfolio-theme following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/clean-portfolio-theme/demo/index.html",
+    "importPath": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
     "additionalDemos": []
@@ -1023,7 +1115,7 @@
     "demoPath": "elements/course-design/demo/index.html",
     "importPath": "@haxtheweb/course-design/course-design.js",
     "haxDemoSchema": null,
-    "isHaxCapable": false,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1071,6 +1163,23 @@
     ]
   },
   {
+    "name": "d-d-docs",
+    "packageName": "@haxtheweb/d-d-docs",
+    "description": "Webcomponent d-d-docs following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/d-d-docs/demo/index.html",
+    "importPath": "@haxtheweb/d-d-docs/d-d-docs.js",
+    "haxDemoSchema": [
+      {
+        "tag": "d-d-docs",
+        "content": "",
+        "properties": {}
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
     "name": "data-viz",
     "packageName": "@haxtheweb/data-viz",
     "description": "display pouch-db data using graphs",
@@ -1101,6 +1210,25 @@
           "border-spacing": "20",
           "accent-color": "blue",
           "dark": true
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "demo-snippet",
+    "packageName": "@haxtheweb/demo-snippet",
+    "description": "Webcomponent demo-snippet following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/demo-snippet/demo/index.html",
+    "importPath": "@haxtheweb/demo-snippet/demo-snippet.js",
+    "haxDemoSchema": [
+      {
+        "tag": "demo-snippet",
+        "properties": {
+          "title": "Sample property title"
         },
         "content": ""
       }
@@ -1181,6 +1309,7 @@
         "tag": "editable-table",
         "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
         "properties": {
+          "copyable": true,
           "downloadable": true,
           "printable": true,
           "bordered": true,
@@ -1265,6 +1394,44 @@
           "logo": "https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png",
           "sepia": false,
           "blackwhite": false
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "example-hax-element",
+    "packageName": "@haxtheweb/example-hax-element",
+    "description": "Webcomponent example-hax-element following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/example-hax-element/demo/index.html",
+    "importPath": "@haxtheweb/example-hax-element/example-hax-element.js",
+    "haxDemoSchema": [
+      {
+        "tag": "example-hax-element",
+        "properties": {
+          "title": "Sample property title"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "example-haxcms-theme",
+    "packageName": "@haxtheweb/example-haxcms-theme",
+    "description": "Webcomponent example-haxcms-theme following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/example-haxcms-theme/demo/index.html",
+    "importPath": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
+    "haxDemoSchema": [
+      {
+        "tag": "example-haxcms-theme",
+        "properties": {
+          "title": "Sample property title"
         },
         "content": ""
       }
@@ -1433,6 +1600,17 @@
     "additionalDemos": []
   },
   {
+    "name": "glossy-portfolio-theme",
+    "packageName": "@haxtheweb/glossy-portfolio-theme",
+    "description": "Webcomponent glossy-portfolio-theme following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/glossy-portfolio-theme/demo/index.html",
+    "importPath": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
     "name": "grade-book",
     "packageName": "@haxtheweb/grade-book",
     "description": "A headless gradebook that supports multiple backends with rubrics",
@@ -1440,7 +1618,7 @@
     "demoPath": "elements/grade-book/demo/index.html",
     "importPath": "@haxtheweb/grade-book/grade-book.js",
     "haxDemoSchema": null,
-    "isHaxCapable": false,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "letter-grade-picker",
@@ -1523,10 +1701,6 @@
       {
         "name": "local-save",
         "path": "elements/hax-body/demo/local-save.html"
-      },
-      {
-        "name": "shoelace",
-        "path": "elements/hax-body/demo/shoelace.html"
       }
     ]
   },
@@ -1572,12 +1746,7 @@
     "importPath": "@haxtheweb/hax-iconset/hax-iconset.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
-    "additionalDemos": [
-      {
-        "name": "iconset",
-        "path": "elements/hax-iconset/demo/iconset.html"
-      }
-    ]
+    "additionalDemos": []
   },
   {
     "name": "hax-logo",
@@ -1634,6 +1803,17 @@
         "path": "elements/haxcms-elements/demo/upgrade-browser.html"
       }
     ]
+  },
+  {
+    "name": "haxma-theme",
+    "packageName": "@haxtheweb/haxma-theme",
+    "description": "HAXma theme for HAXcms inspired by Figma documentation design",
+    "version": "26.0.0",
+    "demoPath": "elements/haxma-theme/demo/index.html",
+    "importPath": "@haxtheweb/haxma-theme/haxma-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": []
   },
   {
     "name": "haxor-slevin",
@@ -1748,6 +1928,25 @@
     "additionalDemos": []
   },
   {
+    "name": "image-gallery",
+    "packageName": "@haxtheweb/image-gallery",
+    "description": "Webcomponent image-gallery following hax / open-wc recommendations",
+    "version": "0.0.0",
+    "demoPath": "elements/image-gallery/demo/index.html",
+    "importPath": "@haxtheweb/image-gallery/image-gallery.js",
+    "haxDemoSchema": [
+      {
+        "tag": "image-gallery",
+        "properties": {
+          "mode": "masonry"
+        },
+        "content": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" alt=\"Sample image 1\"></media-image><media-image source=\"https://dummyimage.com/300x300/111/eee\" alt=\"Sample image 2\"></media-image><media-image source=\"https://dummyimage.com/400x200/222/ddd\" alt=\"Sample image 3\"></media-image>"
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
     "name": "image-inspector",
     "packageName": "@haxtheweb/image-inspector",
     "description": "Inspector tools on an image wrapping open seadragon library",
@@ -1803,6 +2002,17 @@
       }
     ],
     "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "journey-theme",
+    "packageName": "@haxtheweb/journey-theme",
+    "description": "Webcomponent journey-theme following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/journey-theme/demo/index.html",
+    "importPath": "@haxtheweb/journey-theme/journey-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1905,6 +2115,17 @@
     "additionalDemos": []
   },
   {
+    "name": "link-card-theme",
+    "packageName": "@haxtheweb/link-card-theme",
+    "description": "HAXcms link-card theme for single-page personal profile and menu-link hubs",
+    "version": "26.0.0",
+    "demoPath": "elements/link-card-theme/demo/index.html",
+    "importPath": "@haxtheweb/link-card-theme/link-card-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
     "name": "linkedin-embed",
     "packageName": "@haxtheweb/linkedin-embed",
     "description": "LinkedIn profile badge embed web component",
@@ -1931,17 +2152,6 @@
     "version": "26.0.0",
     "demoPath": "elements/lorem-data/demo/index.html",
     "importPath": "@haxtheweb/lorem-data/lorem-data.js",
-    "haxDemoSchema": null,
-    "isHaxCapable": false,
-    "additionalDemos": []
-  },
-  {
-    "name": "lrn-gitgraph",
-    "packageName": "@haxtheweb/lrn-gitgraph",
-    "description": "Render git data in a graphing tree format",
-    "version": "26.0.0",
-    "demoPath": "elements/lrn-gitgraph/demo/index.html",
-    "importPath": "@haxtheweb/lrn-gitgraph/lrn-gitgraph.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
     "additionalDemos": []
@@ -2164,6 +2374,23 @@
     "additionalDemos": []
   },
   {
+    "name": "media-playlist",
+    "packageName": "@haxtheweb/media-playlist",
+    "description": "Webcomponent media-playlist following hax / open-wc recommendations",
+    "version": "0.0.0",
+    "demoPath": "elements/media-playlist/demo/index.html",
+    "importPath": "@haxtheweb/media-playlist/media-playlist.js",
+    "haxDemoSchema": [
+      {
+        "tag": "media-playlist",
+        "properties": {},
+        "content": "<video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"01 The Problem\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"02 Drupal ELMS\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><audio-player source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\" media-title=\"03 Podcast Episode\" thumbnail-src=\"\"></audio-player>"
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
     "name": "media-quote",
     "packageName": "@haxtheweb/media-quote",
     "description": "A quote focused around a piece of media with citation",
@@ -2213,7 +2440,7 @@
     "demoPath": "elements/merit-badge/demo/index.html",
     "importPath": "@haxtheweb/merit-badge/merit-badge.js",
     "haxDemoSchema": null,
-    "isHaxCapable": false,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2437,17 +2664,6 @@
     "version": "26.0.0",
     "demoPath": "elements/paper-input-flagged/demo/index.html",
     "importPath": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
-    "haxDemoSchema": null,
-    "isHaxCapable": false,
-    "additionalDemos": []
-  },
-  {
-    "name": "paper-stepper",
-    "packageName": "@haxtheweb/paper-stepper",
-    "description": "Start of paper-stepper",
-    "version": "26.0.0",
-    "demoPath": "elements/paper-stepper/demo/index.html",
-    "importPath": "@haxtheweb/paper-stepper/paper-stepper.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
     "additionalDemos": []
@@ -2719,6 +2935,34 @@
     ]
   },
   {
+    "name": "replace-tag",
+    "packageName": "@haxtheweb/replace-tag",
+    "description": "Loading helpers and css",
+    "version": "26.0.0",
+    "demoPath": "elements/replace-tag/demo/index.html",
+    "importPath": "@haxtheweb/replace-tag/replace-tag.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": [
+      {
+        "name": "magicDeviceMethod",
+        "path": "elements/replace-tag/demo/magicDeviceMethod.html"
+      },
+      {
+        "name": "magicMethod",
+        "path": "elements/replace-tag/demo/magicMethod.html"
+      },
+      {
+        "name": "traditionalDeviceMethod",
+        "path": "elements/replace-tag/demo/traditionalDeviceMethod.html"
+      },
+      {
+        "name": "traditionalMethod",
+        "path": "elements/replace-tag/demo/traditionalMethod.html"
+      }
+    ]
+  },
+  {
     "name": "responsive-grid",
     "packageName": "@haxtheweb/responsive-grid",
     "description": "Automated conversion of responsive-grid/",
@@ -2743,6 +2987,25 @@
     "importPath": "@haxtheweb/responsive-utility/responsive-utility.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
+    "name": "resume-theme",
+    "packageName": "@haxtheweb/resume-theme",
+    "description": "Single-page résumé theme for HAXcms",
+    "version": "26.0.0",
+    "demoPath": "elements/resume-theme/demo/index.html",
+    "importPath": "@haxtheweb/resume-theme/resume-theme.js",
+    "haxDemoSchema": [
+      {
+        "tag": "resume-theme",
+        "properties": {
+          "title": "Sample property title"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2856,12 +3119,31 @@
   {
     "name": "schema-behaviors",
     "packageName": "@haxtheweb/schema-behaviors",
-    "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
+    "description": "Apply schema helper behaviors to your custom elements",
     "version": "26.0.0",
     "demoPath": "elements/schema-behaviors/demo/index.html",
     "importPath": "@haxtheweb/schema-behaviors/schema-behaviors.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
+    "name": "screen-recorder",
+    "packageName": "@haxtheweb/screen-recorder",
+    "description": "Webcomponent screen-recorder following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/screen-recorder/demo/index.html",
+    "importPath": "@haxtheweb/screen-recorder/screen-recorder.js",
+    "haxDemoSchema": [
+      {
+        "tag": "screen-recorder",
+        "properties": {
+          "title": "Sample property title"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3330,6 +3612,17 @@
     "additionalDemos": []
   },
   {
+    "name": "spacebook-theme",
+    "packageName": "@haxtheweb/spacebook-theme",
+    "description": "Webcomponent spacebook-theme following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/spacebook-theme/demo/index.html",
+    "importPath": "@haxtheweb/spacebook-theme/spacebook-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
     "name": "spotify-embed",
     "packageName": "@haxtheweb/spotify-embed",
     "description": "embed spotify playlists",
@@ -3358,7 +3651,7 @@
     "demoPath": "elements/star-rating/demo/index.html",
     "importPath": "@haxtheweb/star-rating/star-rating.js",
     "haxDemoSchema": null,
-    "isHaxCapable": false,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3397,6 +3690,30 @@
     "importPath": "@haxtheweb/super-daemon/super-daemon.js",
     "haxDemoSchema": null,
     "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
+    "name": "tableau-embed",
+    "packageName": "@haxtheweb/tableau-embed",
+    "description": "Tableau visualization embed wrapper with HAX capabilities.",
+    "version": "26.0.0",
+    "demoPath": "elements/tableau-embed/demo/index.html",
+    "importPath": "@haxtheweb/tableau-embed/tableau-embed.js",
+    "haxDemoSchema": [
+      {
+        "tag": "tableau-embed",
+        "content": "",
+        "properties": {
+          "src": "https://public.tableau.com/views/Superstore_embedded_800x800/Overview",
+          "height": "800px",
+          "width": "100%",
+          "toolbar": "bottom",
+          "hideTabs": true,
+          "device": "desktop"
+        }
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3442,6 +3759,17 @@
     "additionalDemos": []
   },
   {
+    "name": "twenty-six-theme",
+    "packageName": "@haxtheweb/twenty-six-theme",
+    "description": "HAXcms Twenty Fifteen inspired blog theme",
+    "version": "26.0.0",
+    "demoPath": "elements/twenty-six-theme/demo/index.html",
+    "importPath": "@haxtheweb/twenty-six-theme/twenty-six-theme.js",
+    "haxDemoSchema": null,
+    "isHaxCapable": false,
+    "additionalDemos": []
+  },
+  {
     "name": "twitter-embed",
     "packageName": "@haxtheweb/twitter-embed",
     "description": "A simple twitter embed w/ singleton for performance / multiple embed",
@@ -3468,6 +3796,25 @@
     "demoPath": "elements/type-writer/demo/index.html",
     "importPath": "@haxtheweb/type-writer/type-writer.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
+    "additionalDemos": []
+  },
+  {
+    "name": "un-sdg",
+    "packageName": "@haxtheweb/un-sdg",
+    "description": "Webcomponent un-sdg following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/un-sdg/demo/index.html",
+    "importPath": "@haxtheweb/un-sdg/un-sdg.js",
+    "haxDemoSchema": [
+      {
+        "tag": "un-sdg",
+        "properties": {
+          "goal": 4
+        },
+        "content": ""
+      }
+    ],
     "isHaxCapable": true,
     "additionalDemos": []
   },
@@ -3635,6 +3982,23 @@
         "path": "elements/wc-autoload/demo/wc-registry-tag.html"
       }
     ]
+  },
+  {
+    "name": "web-container",
+    "packageName": "@haxtheweb/web-container",
+    "description": "Webcomponent web-container following hax / open-wc recommendations",
+    "version": "26.0.0",
+    "demoPath": "elements/web-container/demo/index.html",
+    "importPath": "@haxtheweb/web-container/web-container.js",
+    "haxDemoSchema": [
+      {
+        "tag": "web-container",
+        "properties": {},
+        "content": "<template>npm install @haxtheweb/create</template>"
+      }
+    ],
+    "isHaxCapable": true,
+    "additionalDemos": []
   },
   {
     "name": "wikipedia-query",
