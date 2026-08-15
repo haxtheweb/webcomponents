@@ -1,5 +1,5 @@
 var __assign =
-    (this && this.__assign) ||
+    (globalThis && globalThis.__assign) ||
     function () {
       return (__assign =
         Object.assign ||
@@ -9,7 +9,7 @@ var __assign =
               Object.prototype.hasOwnProperty.call(i, n) && (t[n] = i[n]);
 
           return t;
-        }).apply(this, arguments);
+        }).apply(globalThis, arguments);
     },
   CountUp = (function () {
     function t(t, i, a) {
