@@ -106,6 +106,26 @@ globalThis.MediaBehaviors.Video = {
       ) {
         return input + "/embed";
       }
+      // copy and paste a Kaltura MediaSpace share URL into the secure embed
+      // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
+      // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/54679342/st/0
+      else if (
+        input.indexOf("mediaspace.kaltura.com") != -1 &&
+        input.indexOf("/media/t/") != -1
+      ) {
+        let match = input.match(
+          /^https?:\/\/([^\/]+)\/media\/t\/([^\/?#]+)/i,
+        );
+        if (match) {
+          return (
+            "https://" +
+            match[1] +
+            "/embed/secure/iframe/entryId/" +
+            match[2] +
+            "/uiConfId/54679342/st/0"
+          );
+        }
+      }
     }
     return input;
   },
@@ -141,6 +161,12 @@ globalThis.MediaBehaviors.Video = {
       return "sketchfab";
     } else if (source.indexOf("twitch.tv") != -1) {
       return "twitch";
+    } else if (
+      source.indexOf("mediaspace.kaltura.com") != -1 &&
+      (source.indexOf("/media/t/") != -1 ||
+        source.indexOf("/embed/secure/iframe/entryId/") != -1)
+    ) {
+      return "kaltura";
     }
     for (let i = 0; i < localFormats.length; i++) {
       if (!isLocal && source.toLowerCase().indexOf("." + localFormats[i]) > -1)
@@ -240,6 +266,26 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         ) {
           return input + "/embed";
         }
+        // copy and paste a Kaltura MediaSpace share URL into the secure embed
+        // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
+        // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/54679342/st/0
+        else if (
+          input.indexOf("mediaspace.kaltura.com") != -1 &&
+          input.indexOf("/media/t/") != -1
+        ) {
+          let match = input.match(
+            /^https?:\/\/([^\/]+)\/media\/t\/([^\/?#]+)/i,
+          );
+          if (match) {
+            return (
+              "https://" +
+              match[1] +
+              "/embed/secure/iframe/entryId/" +
+              match[2] +
+              "/uiConfId/54679342/st/0"
+            );
+          }
+        }
       }
       return input;
     }
@@ -275,6 +321,12 @@ export const MediaBehaviorsVideo = function (SuperClass) {
         return "sketchfab";
       } else if (source.indexOf("twitch.tv") != -1) {
         return "twitch";
+      } else if (
+        source.indexOf("mediaspace.kaltura.com") != -1 &&
+        (source.indexOf("/media/t/") != -1 ||
+          source.indexOf("/embed/secure/iframe/entryId/") != -1)
+      ) {
+        return "kaltura";
       }
       for (let i = 0; i < localFormats.length; i++) {
         if (

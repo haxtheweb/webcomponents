@@ -140,12 +140,10 @@ class VideoPlayer extends IntersectionObserverMixin(
                     `}
               </div>
               <div id="videocaption" class="video-caption">
-                <p>
-                  ${this.mediaTitle}
-                  <span class="media-type print-only"
-                    >(${this.t.embeddedMedia})</span
-                  >
-                </p>
+                ${this.mediaTitle} 
+                <span class="media-type print-only"
+                  >(${this.t.embeddedMedia})</span
+                >
                 <slot name="caption"></slot>
               </div>
               <slot hidden></slot>`

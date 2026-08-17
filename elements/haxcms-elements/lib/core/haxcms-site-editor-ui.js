@@ -649,6 +649,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return "youtube";
       }
 
+      // Kaltura MediaSpace detection
+      // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
+      if (
+        hostname.includes("mediaspace.kaltura.com") &&
+        pathname.includes("/media/t/")
+      ) {
+        return "kaltura";
+      }
+
       // Image detection (by extension)
       if (pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i)) {
         return "image";
@@ -702,6 +711,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               },
             );
           }
+          break;
+
+        case "embed-kaltura":
+          // Insert the Kaltura MediaSpace share URL; video-player's
+          // cleanVideoSource will transform it into the secure embed iframe URL.
+          // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
+          elementToInsert = HAXStore.activeHaxBody.haxInsert(
+            "video-player",
+            "",
+            {
+              source: url,
+              "source-type": "kaltura",
+            },
+          );
           break;
 
         case "insert-image":
@@ -2327,6 +2350,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   },
                   eventName: "super-daemon-element-method",
                   path: "YouTube video embedded in page",
+                });
+                break;
+
+              case "kaltura":
+                results.push({
+                  title: `Embed Kaltura Media`,
+                  icon: "av:play-circle-filled",
+                  tags: ["agent", "video", "kaltura", "mediaspace"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "embed-kaltura"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Kaltura media embedded in page",
                 });
                 break;
 
