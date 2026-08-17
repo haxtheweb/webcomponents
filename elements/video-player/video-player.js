@@ -79,10 +79,18 @@ class VideoPlayer extends IntersectionObserverMixin(
             var(--simple-colors-default-theme-accent-8, #444444)
           );
 
-          --a11y-media-disabled-color: var(
-            --video-player-disabled-color,
-            var(--simple-colors-default-theme-accent-5, #bbbbbb)
-          );
+        --a11y-media-disabled-color: var(
+          --video-player-disabled-color,
+          var(--simple-colors-default-theme-accent-5, #bbbbbb)
+        );
+        }
+        /* Kaltura MediaSpace secure embed: force a responsive iframe so the
+           share URL paste renders at a sensible, consistent size. A cross-origin
+           Kaltura iframe can't be auto-sized to its internal content from the
+           parent, so we use a fixed 280px height with full-width responsiveness. */
+        :host([source-type="kaltura"]) .responsive-video-container iframe {
+          width: 100%;
+          height: 280px;
         }
       `,
     ];
@@ -416,6 +424,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           "playing",
           "__forcePaused",
           "t",
+          "source-type",
         ],
       },
       demoSchema: [
@@ -435,7 +444,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get properties() {
     return {
       ...super.properties,
-      sourceType: { type: String },
+      sourceType: { type: String, attribute: "source-type", reflect: true },
       /**
        * Optional accent color for controls,
        * using these colors:
