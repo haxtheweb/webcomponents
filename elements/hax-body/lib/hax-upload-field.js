@@ -442,21 +442,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           }
         }
         // Local HAXcms v1 createFile returns {data:{file:{url, fullUrl, ...}}}
-        // where `url` is a site-relative path and `fullUrl` is the absolute
-        // path (with cache-buster). Prefer fullUrl so the embedded URL
-        // resolves correctly from any page depth. External providers do not
-        // carry data.file.fullUrl, so this only affects local-store uploads.
-        if (
-          response &&
-          response.data &&
-          response.data.file &&
-          typeof response.data.file === "object" &&
-          typeof response.data.file.fullUrl === "string" &&
-          response.data.file.fullUrl
-        ) {
-          item.url = response.data.file.fullUrl;
-          item.source = response.data.file.fullUrl;
-        }
+        // where `url` is a site-relative path (matches the browse resultMap's
+        // gizmo.source mapping) and `fullUrl` is the absolute path (with
+        // cache-buster), used only for preview thumbnails. Keep the relative
+        // `url` here so the persisted source stays portable across base path
+        // / domain changes instead of breaking when the URL changes.
         // set the value of the url which will update our URL and notify
         if (this.shadowRoot.querySelector("#url") && item.url) {
           this.shadowRoot.querySelector("#url").value = item.url;
@@ -519,7 +509,16 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         type = tmp;
       }
     }
-    SuperDaemonInstance.runProgram(type);
+    // `type` is a gizmo type hint (image/video/etc), not free-text search
+    // input. Passing it as the `like` argument pre-fills the visible Merlin
+    // search box with that literal word, which then also filters the
+    // (unrelated) app-search items by title, producing "No results for this
+    // term" since none of Merlin's registered search apps have "image" or
+    // "video" in their title. Leave the search field empty (mirrors
+    // hax-tray.js's working `runProgram("")` pattern) and pass the type
+    // through as a value instead so it remains available if a program
+    // wants to use it for scoping later.
+    SuperDaemonInstance.runProgram("", "/", { type });
 
     //SuperDaemonInstance.appendContext();
     // allows for diverting input back to target
