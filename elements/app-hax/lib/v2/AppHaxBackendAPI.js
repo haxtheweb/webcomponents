@@ -132,6 +132,10 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
     operationId: "saveEnabledBlocksPatch",
     method: "PATCH",
   },
+  haxiamAddUserAccess: {
+    operationId: "haxiamAddUserAccess",
+    method: "POST",
+  },
 };
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
