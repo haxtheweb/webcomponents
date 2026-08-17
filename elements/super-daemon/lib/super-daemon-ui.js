@@ -319,6 +319,31 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     ];
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Immediately recompute filtered when items change so the UI never
+    // renders a stale "No results" state while a program's results are
+    // already loaded. SimpleFilterMixin debounces the recompute by 250ms
+    // which is correct for `like` (rapid typing) but creates a window for
+    // `items` where `loading` has flipped to false (parent binding) while
+    // `filtered` still reflects the old empty items array — producing a
+    // flash of "No results for this term" that only clears once another
+    // watched property (like a keystroke in `like`) trips the debounce.
+    // Clearing the pending like-debounce here is safe because the immediate
+    // recompute already accounts for the current `like` value.
+    if (changedProperties.has("items") && this.shadowRoot) {
+      clearTimeout(this.__debounce);
+      this.filtered = this._computeFiltered(
+        this.items,
+        this.where,
+        this.like,
+        this.caseSensitive,
+        this.multiMatch,
+      );
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
