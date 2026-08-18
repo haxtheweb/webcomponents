@@ -17,6 +17,7 @@ import {
   localStorageSet,
   detectMarkdown,
   markdownToHTML,
+  normalizeClipboardHTML,
   sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import {
@@ -2246,6 +2247,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // verify this is HTML prior to treating it as such
       // HTML pasting to ensure it's clean is very slow
       // Clean paste content FIRST before any processing
+      // Normalize Google Docs / Notion clipboard HTML (unwrap fake-bold <b>
+      // and <span> wrappers) BEFORE stripMSWord, whose regex span-stripping
+      // is fragile on nested spans.
+      pasteContent = normalizeClipboardHTML(pasteContent);
       pasteContent = stripMSWord(pasteContent);
 
       let fragment = globalThis.document.createElement("div");
