@@ -51,6 +51,17 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
           line-height: normal;
           text-align: start;
         }
+        /*
+         * When the page is actively being edited, block navigation through the
+         * breadcrumb so the user can't leave the page and lose unsaved changes.
+         * Mirrors the edit-mode blocking applied to site-menu and the
+         * prev/next site-menu-button elements.
+         */
+        :host([edit-mode]) ol.breadcrumb {
+          pointer-events: none;
+          opacity: var(--haxcms-theme-parts-edit-mode-active-opacity, 0.5);
+          filter: var(--haxcms-theme-parts-edit-mode-active-filter, blur(1px));
+        }
         ol.breadcrumb li {
           font-size: var(
             --site-breadcrumb-font-size,
@@ -153,6 +164,8 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
       ? html`
           <ol
             class="breadcrumb"
+            part="${this.editMode ? `breadcrumb edit-mode-active` : `breadcrumb`}"
+            aria-disabled="${this.editMode ? `true` : `false`}"
             itemscope
             itemtype="https://schema.org/BreadcrumbList"
           >
@@ -163,7 +176,11 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
                   itemscope
                   itemtype="https://schema.org/ListItem"
                 >
-                  <a itemprop="item" href="${item.slug}"
+                  <a
+                    itemprop="item"
+                    href="${item.slug}"
+                    tabindex="${this.editMode ? -1 : 0}"
+                    aria-disabled="${this.editMode ? `true` : `false`}"
                     ><span itemprop="name"
                       >${item.title ? item.title : item.slug}</span
                     ></a
