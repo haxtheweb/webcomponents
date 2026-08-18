@@ -310,3 +310,76 @@ describe("clean-one error handling", () => {
     expect(el.searchTerm).to.equal("search 9");
   });
 });
+
+// Edit-mode inert behavior tests
+// Mirrors the edit-mode blocking applied to site-menu and site-breadcrumb so
+// users can't tab to / activate header buttons or the search box (which can
+// influence the route) while a page is being edited.
+describe("clean-one edit-mode inert behavior", () => {
+  // Child components (site-active-title / site-active-tags) call a global
+  // singleton manager via requestAvailability() that isn't bootstrapped when
+  // clean-one is fixture'd in isolation. That pre-existing harness error is
+  // unrelated to the edit-mode binding under test, so swallow it during these
+  // assertions (by overriding window.onerror, which @web/test-runner-mocha
+  // hooks to record uncaught errors as test failures).
+  let originalOnError;
+  beforeEach(() => {
+    originalOnError = globalThis.onerror;
+    globalThis.onerror = (msg, url, line, col, err) => {
+      const text = typeof msg === "string" ? msg : err && err.message ? err.message : "";
+      if (text.includes("requestAvailability")) {
+        return true;
+      }
+      return originalOnError
+        ? originalOnError.call(globalThis, msg, url, line, col, err)
+        : false;
+    };
+  });
+  afterEach(() => {
+    globalThis.onerror = originalOnError;
+  });
+
+  it("leaves header buttons and search box interactive by default", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    await el.updateComplete;
+    const btnContainer = el.shadowRoot.querySelector(".btn-container");
+    const searchBox = el.shadowRoot.querySelector("clean-one-search-box");
+
+    expect(btnContainer.hasAttribute("inert")).to.be.false;
+    expect(searchBox.hasAttribute("inert")).to.be.false;
+    expect(btnContainer.getAttribute("aria-disabled")).to.equal("false");
+    expect(searchBox.getAttribute("aria-disabled")).to.equal("false");
+    expect(btnContainer.getAttribute("part")).to.not.include("edit-mode-active");
+    expect(searchBox.getAttribute("part")).to.not.include("edit-mode-active");
+  });
+
+  it("makes header buttons and search box inert in edit mode", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.editMode = true;
+    await el.updateComplete;
+    const btnContainer = el.shadowRoot.querySelector(".btn-container");
+    const searchBox = el.shadowRoot.querySelector("clean-one-search-box");
+
+    expect(btnContainer.hasAttribute("inert")).to.be.true;
+    expect(searchBox.hasAttribute("inert")).to.be.true;
+    expect(btnContainer.getAttribute("aria-disabled")).to.equal("true");
+    expect(searchBox.getAttribute("aria-disabled")).to.equal("true");
+    expect(btnContainer.getAttribute("part")).to.include("edit-mode-active");
+    expect(searchBox.getAttribute("part")).to.include("edit-mode-active");
+  });
+
+  it("restores interactivity when edit mode is turned off", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.editMode = true;
+    await el.updateComplete;
+    el.editMode = false;
+    await el.updateComplete;
+    const btnContainer = el.shadowRoot.querySelector(".btn-container");
+    const searchBox = el.shadowRoot.querySelector("clean-one-search-box");
+
+    expect(btnContainer.hasAttribute("inert")).to.be.false;
+    expect(searchBox.hasAttribute("inert")).to.be.false;
+    expect(btnContainer.getAttribute("aria-disabled")).to.equal("false");
+    expect(searchBox.getAttribute("aria-disabled")).to.equal("false");
+  });
+});

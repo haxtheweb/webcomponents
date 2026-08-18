@@ -644,6 +644,11 @@ class CleanOne extends DDDSuper(
         <nav class="menu-outline" aria-label="Site menu">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box
+              part="${this.editMode
+                ? `search-box edit-mode-active`
+                : `search-box`}"
+              ?inert="${this.editMode}"
+              aria-disabled="${this.editMode ? `true` : `false`}"
               @input-changed="${this.searchChanged}"
               value="${this.searchTerm}"
             ></clean-one-search-box>
@@ -654,7 +659,14 @@ class CleanOne extends DDDSuper(
           <div id="haxcms-theme-top"></div>
           <div class="site-inner">
             <header class="site-header">
-              <div class="btn-container">
+              <div
+                class="btn-container"
+                part="${this.editMode
+                  ? `btn-container edit-mode-active`
+                  : `btn-container`}"
+                ?inert="${this.editMode}"
+                aria-disabled="${this.editMode ? `true` : `false`}"
+              >
                 <div class="pull-left">
                   ${this.HAXCMSMobileMenuButton()}
                   ${MicroFrontendRegistry.has("@system/siteToHtml")
