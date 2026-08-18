@@ -156,6 +156,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     return html`
       <map-menu
         .part="map-menu ${this.editMode ? `edit-mode-active` : ``}"
+        ?inert="${this.editMode}"
+        aria-disabled="${this.editMode ? `true` : `false`}"
         .manifest="${this.routerManifest}"
         ?edit-controls="${this.editControls && !this.isFlex}"
         ?is-flex="${this.isFlex}"

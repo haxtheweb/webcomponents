@@ -114,6 +114,8 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
         @click="${this._editClick}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
         ?disabled="${this.disabled || this.editMode}"
+        ?inert="${this.disabled || this.editMode}"
+        aria-disabled="${this.disabled || this.editMode ? `true` : `false`}"
       >
         <simple-icon-lite
           ?hidden="${this.icon ? false : true}"

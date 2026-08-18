@@ -23,6 +23,7 @@ import {
   isURLAttribute,
   sanitizeURLValue,
   normalizeClipboardHTML,
+  normalizeTypography,
 } from "../utils.js";
 
 describe("Utils test", () => {
@@ -967,6 +968,101 @@ describe("Utils test", () => {
 
         expect(result).to.include('<li>Item</li>');
         expect(result).to.not.include('<p');
+      });
+    });
+
+    describe("HAX paste pipeline integration (Google Docs full-paragraph wrappers)", () => {
+      // Reproduces the exact patterns observed when pasting from Google Docs
+      // into the HAX editor, where whole paragraphs are wrapped in a bare <b>
+      // (no font-weight) and often an extra <span>. Mirrors the pipeline order
+      // in HAXStore._onPaste: normalizeClipboardHTML THEN stripMSWord.
+      it("unwraps <p><b>...</b></p> and <p><span><b>...</b></span></p> wrappers", async () => {
+        const { stripMSWord } = await import('../utils.js');
+        const input = [
+          '<p><b></b></p>',
+          '<p><span>Earlier in the class, we discussed fine arts.</span></p>',
+          '<p><span><b>Graphic designers are trying to solve a problem.</b></span></p>',
+          '<p><b>In each of these examples, you have an audience in mind.</b></p>',
+        ].join('');
+        const result = stripMSWord(normalizeClipboardHTML(input));
+
+        expect(result).to.not.include('<b>');
+        expect(result).to.not.include('</b>');
+        expect(result).to.not.include('<span');
+        // Regression guard: without normalizeClipboardHTML, stripMSWord would
+        // promote these fake-bold <b> tags to <strong>, bolding everything.
+        expect(result).to.not.include('<strong>Graphic designers');
+        expect(result).to.not.include('<strong>In each of these examples');
+        expect(result).to.include('<p>Graphic designers are trying to solve a problem.</p>');
+        expect(result).to.include('<p>In each of these examples, you have an audience in mind.</p>');
+        expect(result).to.include('<p>Earlier in the class, we discussed fine arts.</p>');
+      });
+
+      it('preserves real Google Docs bold (font-weight:700) as <strong>', async () => {
+        const { stripMSWord } = await import('../utils.js');
+        const input = '<p><b style="font-weight:700">Actually bold</b> and <b>not bold</b></p>';
+        const result = stripMSWord(normalizeClipboardHTML(input));
+
+        expect(result).to.include('<strong>Actually bold</strong>');
+        expect(result).to.include('not bold');
+        expect(result).to.not.include('<b>');
+      });
+    });
+
+    describe("normalizeTypography", () => {
+      it("converts curly double quotes to straight quotes", async () => {
+        const input = '<p>He said \u201Chello\u201D and \u201Cgoodbye\u201D</p>';
+        expect(normalizeTypography(input)).to.equal(
+          '<p>He said "hello" and "goodbye"</p>',
+        );
+      });
+
+      it("converts curly single quotes and apostrophes to straight quotes", async () => {
+        const input = '<p>It\u2019s \u2018quoted\u2019</p>';
+        expect(normalizeTypography(input)).to.equal("<p>It's 'quoted'</p>");
+      });
+
+      it("converts all curly quote variants to straight quotes", async () => {
+        // singles: U+2018, U+2019, U+201A, U+201B -> '
+        // doubles: U+201C, U+201D, U+201E, U+201F -> "
+        const result = normalizeTypography(
+          "\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F",
+        );
+        expect(result).to.equal(
+          "'" + "'" + "'" + "'" + '"' + '"' + '"' + '"',
+        );
+      });
+
+      it("leaves attribute values intact so HTML parsing is not broken", async () => {
+        const input = '<img alt="a \u201Cfancy\u201D image" src="x.png">';
+        // curly quotes inside the alt value must NOT become " or the
+        // attribute would be terminated early and break the markup
+        expect(normalizeTypography(input)).to.equal(input);
+      });
+
+      it("normalizes quotes across nested elements", async () => {
+        const input =
+          '<ul><li>\u201Citem one\u201D</li><li>it\u2019s \u2018two\u2019</li></ul>';
+        expect(normalizeTypography(input)).to.equal(
+          '<ul><li>"item one"</li><li>it\'s \'two\'</li></ul>',
+        );
+      });
+
+      it("returns empty/null/undefined as-is", async () => {
+        expect(normalizeTypography("")).to.equal("");
+        expect(normalizeTypography(null)).to.equal(null);
+        expect(normalizeTypography(undefined)).to.equal(undefined);
+      });
+
+      it("mirrors the HAX paste pipeline order with stripMSWord", async () => {
+        const { stripMSWord } = await import("../utils.js");
+        const input = '<p style="font-weight:700">\u201CHello\u201D</p>';
+        const result = normalizeTypography(
+          stripMSWord(normalizeClipboardHTML(input)),
+        );
+        expect(result).to.not.include("\u201C");
+        expect(result).to.not.include("\u201D");
+        expect(result).to.include('"Hello"');
       });
     });
   });

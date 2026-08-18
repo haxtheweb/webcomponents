@@ -204,7 +204,12 @@ class SiteTopMenu extends LitElement {
         .sort="${this.sort}"
         .conditions="${this.conditions}"
       ></site-query>
-      <div id="wrapper" class="wrapper">
+      <div
+        id="wrapper"
+        class="wrapper"
+        ?inert="${this.editMode}"
+        aria-disabled="${this.editMode ? `true` : `false`}"
+      >
         <simple-icon-button-lite
           class="mobile-button"
           icon="menu"

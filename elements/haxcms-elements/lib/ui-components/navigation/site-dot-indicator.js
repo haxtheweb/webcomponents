@@ -81,7 +81,11 @@ class SiteDotIndicator extends LitElement {
   }
   // render function
   render() {
-    return html` <ol id="list"></ol> `;
+    return html` <ol
+      id="list"
+      ?inert="${this.editMode}"
+      aria-disabled="${this.editMode ? `true` : `false`}"
+    ></ol> `;
   }
   /**
    * Props
@@ -102,6 +106,11 @@ class SiteDotIndicator extends LitElement {
       scrollOnActive: {
         type: Boolean,
         attribute: "scroll-on-active",
+      },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
       },
     };
   }
@@ -165,6 +174,16 @@ class SiteDotIndicator extends LitElement {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;
+        });
+      }),
+    );
+    // keep editMode in sync globally so we can block navigation through the
+    // dot indicator while the user is modifying the active page
+    this.__disposer.push(
+      autorun((reaction) => {
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          this.editMode = _mobx_val_0;
         });
       }),
     );

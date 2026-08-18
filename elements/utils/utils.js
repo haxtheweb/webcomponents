@@ -1664,6 +1664,47 @@ export function normalizeClipboardHTML(html) {
 }
 
 /**
+ * Normalize "smart" / curly quotes injected by Word, GDocs, and other rich
+ * editors (U+2018–U+201F) down to ASCII straight quotes so pasted content
+ * renders and encodes consistently across platforms and downstream tools.
+ *
+ * Only touches text outside HTML tags. Curly quotes that appear inside
+ * attribute values (e.g. alt="a “fancy” image") are left intact so a
+ * literal curly quote is never converted into a quote delimiter that
+ * would break attribute parsing.
+ *
+ * @param {string} html
+ * @returns {string}
+ */
+export function normalizeTypography(html) {
+  if (!html || typeof html !== "string") {
+    return html;
+  }
+  return html.replace(
+    /<[^>]*>|[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g,
+    (match) => {
+      if (match.charAt(0) === "<") {
+        return match;
+      }
+      switch (match) {
+        case "\u201C":
+        case "\u201D":
+        case "\u201E":
+        case "\u201F":
+          return '"';
+        case "\u2018":
+        case "\u2019":
+        case "\u201A":
+        case "\u201B":
+          return "'";
+        default:
+          return match;
+      }
+    },
+  );
+}
+
+/**
  * Convert a node to a HAX element. Hax elements ensure
  * a certain level of sanitization by verifying tags and
  * properties / attributes that have values.

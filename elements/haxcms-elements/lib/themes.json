@@ -27,6 +27,20 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "chamfer-theme": {
+    "element": "chamfer-theme",
+    "path": "@haxtheweb/chamfer-theme/chamfer-theme.js",
+    "name": "Chamfer",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-chamfer-theme-thumb.jpg",
+    "description": "Start with a blank site using the Chamfer",
+    "category": [
+      "Website"
+    ],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "clean-one": {
     "element": "clean-one",
     "path": "@haxtheweb/clean-one/clean-one.js",

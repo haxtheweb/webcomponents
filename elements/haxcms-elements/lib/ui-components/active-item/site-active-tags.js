@@ -67,7 +67,11 @@ class SiteActiveTags extends I18NMixin(LitElement) {
    */
   render() {
     return html`
-      <div class="tag-wrap">
+      <div
+        class="tag-wrap"
+        ?inert="${this.editMode}"
+        aria-disabled="${this.editMode ? `true` : `false`}"
+      >
         ${this.tagList.map(
           (tag) =>
             html` <a

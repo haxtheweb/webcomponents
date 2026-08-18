@@ -18,6 +18,7 @@ import {
   detectMarkdown,
   markdownToHTML,
   normalizeClipboardHTML,
+  normalizeTypography,
   sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import {
@@ -2252,6 +2253,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // is fragile on nested spans.
       pasteContent = normalizeClipboardHTML(pasteContent);
       pasteContent = stripMSWord(pasteContent);
+      // normalize curly "smart" quotes (Word / GDocs) to straight ASCII
+      // quotes so content renders and encodes consistently across platforms
+      pasteContent = normalizeTypography(pasteContent);
 
       let fragment = globalThis.document.createElement("div");
       fragment.innerHTML = pasteContent;

@@ -291,6 +291,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           font-family: var(--ddd-font-primary, sans-serif);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
+        /*
+         * In edit mode the slotted content is replaced by the HAX editor, so
+         * the skip-to-content link has no valid target. Hide it and remove it
+         * from the tab order so the user can't Tab to it and jump focus into
+         * the editor / hidden content area while modifying the page. Mirrors
+         * the edit-mode blocking applied to site-breadcrumb and site-menu.
+         */
+        :host([edit-mode]) .skip-link {
+          display: none;
+        }
         :host([edit-mode]) {
           opacity: 1;
         }
