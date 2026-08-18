@@ -135,6 +135,13 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
   haxiamAddUserAccess: {
     operationId: "haxiamAddUserAccess",
     method: "POST",
+    // HAXiam-managed deployments only: the backend's connectionSettings
+    // response only includes this key (a URL string) when the operator has
+    // enabled HAXiam mode (PHP: config->iam === true). Plain self-hosted
+    // PHP deploys and haxcms-nodejs (which does not implement this
+    // operation) never set it, so supportsCall() below must also confirm
+    // this signal is present before advertising the call as available.
+    requiresAppSettingsFlag: "haxiamAddUserAccess",
   },
 };
 // this element will manage all connectivity to the backend
@@ -278,7 +285,21 @@ export class AppHaxBackendAPI extends LitElement {
     return APP_HAX_SYSTEM_CALL_ALIASES[call];
   }
   supportsCall(call = "") {
-    return !!this._getSystemOperationAlias(call);
+    const alias = this._getSystemOperationAlias(call);
+    if (!alias) {
+      return false;
+    }
+    // Some operations are only valid in specific deployment environments
+    // (e.g. HAXiam-managed). The backend signals this by including a
+    // matching key in appSettings (populated from connectionSettings);
+    // require that signal in addition to the static alias existing.
+    if (alias.requiresAppSettingsFlag) {
+      return !!(
+        this.appSettings &&
+        this.appSettings[alias.requiresAppSettingsFlag]
+      );
+    }
+    return true;
   }
   _applySystemQueryDefaults(alias = {}, payload = {}) {
     const updatedPayload = Object.assign({}, payload);
