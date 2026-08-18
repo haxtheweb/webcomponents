@@ -28,6 +28,7 @@ import "@haxtheweb/scroll-button/scroll-button.js";
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-hidden true
  * @haxcms-theme-priority 0
  * @demo demo/index.html
  * @element chamfer-theme

@@ -36,7 +36,7 @@
     "category": [
       "Website"
     ],
-    "hidden": false,
+    "hidden": true,
     "priority": 0,
     "terrible": false,
     "supportedPalettes": null
