@@ -96,7 +96,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         aria-hidden="${this.disabled ? "true" : "false"}"
         controls="video"
         aria-label="${this.label}"
-        tabindex="0"
+        tabindex="-1"
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
       >

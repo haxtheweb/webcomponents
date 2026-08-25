@@ -306,7 +306,6 @@ class A11yMediaYoutube extends LitElement {
       if (propName === "duration" && this.duration > 0)
         this._handleMediaLoaded();
       if (propName === "loop") this.setLoop(this.loop);
-      if (propName === "currentTime") this.seek(this.currentTime);
       if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
       if (propName === "volume") this.setVolume(this.volume);
 
@@ -345,11 +344,31 @@ class A11yMediaYoutube extends LitElement {
     ) {
       this.__playQueued = true;
       var yt = this.__yt,
-        fn = function () {
+        root = this,
+        startPlay = function () {
+          root.__playRaf = null;
+          root.__playTimeout = null;
           yt.playVideo();
-          this.__playQueued = false;
+          root.__playQueued = false;
         };
-      setTimeout(fn, 1000);
+      // Start the timeupdate interval immediately so progress updates flow
+      // even if onStateChange races or doesn't report state 1 promptly
+      // (e.g. after a seek that leaves the player in a buffering state).
+      clearInterval(root.__ytTimeupdateInterval);
+      root.__ytTimeupdateInterval = setInterval(
+        () => root._handleTimeupdate(),
+        250,
+      );
+      // Defer to the next paint frame rather than a flat 1000ms delay. The
+      // original setTimeout(1000) was a 2021 paint-issue hedge; rAF keeps that
+      // settle-on-paint protection at ~one frame of latency. rAF does not fire
+      // while the tab is hidden, so fall back to a 0ms timeout in that case to
+      // keep background playback working.
+      if (globalThis.document.hidden) {
+        root.__playTimeout = setTimeout(startPlay, 0);
+      } else {
+        root.__playRaf = globalThis.requestAnimationFrame(startPlay);
+      }
     }
   }
 
@@ -358,6 +377,10 @@ class A11yMediaYoutube extends LitElement {
    */
   pause() {
     if (this.__yt && this.__yt.pauseVideo) this.__yt.pauseVideo();
+    // Stop the timeupdate interval immediately on explicit pause so we
+    // don't keep polling a paused player.
+    clearInterval(this.__ytTimeupdateInterval);
+    this.__ytTimeupdateInterval = null;
   }
 
   /**
@@ -365,7 +388,6 @@ class A11yMediaYoutube extends LitElement {
    * @param {number} time in seconds
    */
   seek(time = 0) {
-    let root = this;
     if (this.__yt && this.__yt.seekTo) {
       this.__yt.seekTo(time, true);
     }
@@ -376,7 +398,7 @@ class A11yMediaYoutube extends LitElement {
    * @param {boolean} whether video should loop after playback finishes
    */
   setLoop(loop) {
-    if (this.__yt && this.__yt.setLoop) this.media.setLoop(loop);
+    if (this.__yt && this.__yt.setLoop) this.__yt.setLoop(loop);
   }
 
   /**
@@ -471,6 +493,21 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
+   * Fires when YouTube playback ends (YT state 0)
+   * @event ended
+   */
+  _handleEnded() {
+    this.dispatchEvent(
+      new CustomEvent("ended", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      }),
+    );
+  }
+
+  /**
    * loads metadata by playing a small clip on mute and stopping
    */
   _autoMetadata() {
@@ -544,12 +581,27 @@ class A11yMediaYoutube extends LitElement {
           widget_referrer: globalThis.location.href,
         },
       });
-      youtube.timeupdate;
       youtube.addEventListener("onStateChange", (e) => {
-        if (root.paused) {
-          clearInterval(youtube.timeupdate);
-        } else {
-          youtube.timeupdate = setInterval(() => root._handleTimeupdate(), 1);
+        // Only clear the timeupdate interval on explicit pause (state 2) or
+        // ended (state 0). Buffering (state 3) is transient and can race with
+        // play/seek — clearing on it could kill the interval permanently if
+        // state 1 doesn't fire again, leaving the progress pin frozen.
+        if (e && (e.data === 2 || e.data === 0)) {
+          clearInterval(root.__ytTimeupdateInterval);
+          root.__ytTimeupdateInterval = null;
+        } else if (e && e.data === 1) {
+          // Playing: ensure the interval is running (redundant with play()
+          // but covers auto-play and resume-from-state-change paths).
+          clearInterval(root.__ytTimeupdateInterval);
+          root.__ytTimeupdateInterval = setInterval(
+            () => root._handleTimeupdate(),
+            250,
+          );
+        }
+        // YT state 0 = ended; bridge it as a standard `ended` event so the
+        // parent can react uniformly with HTML5 media.
+        if (e && e.data === 0) {
+          root._handleEnded();
         }
         this._handleMediaStateChange(e);
       });
@@ -566,15 +618,29 @@ class A11yMediaYoutube extends LitElement {
       this.appendChild(ytIframe);
       div.remove();
     }
-    return youtube;
+    // If we skipped loading (e.g. because __video already exists from a prior
+    // onReady), return the existing player so callers that reassign
+    // `this.__yt = _preloadVideo(...)` don't null out a live player reference.
+    return youtube || this.__yt;
   }
 
   /**
    * removes iframe aand resets container
    */
   _removeIframe() {
+    if (this.__ytTimeupdateInterval) {
+      clearInterval(this.__ytTimeupdateInterval);
+      this.__ytTimeupdateInterval = null;
+    }
+    if (this.__playRaf) {
+      globalThis.cancelAnimationFrame(this.__playRaf);
+      this.__playRaf = null;
+    }
+    if (this.__playTimeout) {
+      clearTimeout(this.__playTimeout);
+      this.__playTimeout = null;
+    }
     if (this.__yt) {
-      this.__yt.remove;
       try {
         this.__yt.destroy();
       } catch (e) {

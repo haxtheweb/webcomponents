@@ -32,15 +32,32 @@ class SimpleRangeInput extends SimpleColors {
       this.dragging = false;
       this.value = this.immediateValue;
     });
-    this.addEventListener("keydown", () => {
-      this.dragging = true;
-      setTimeout(() => {
-        this.value = this.immediateValue;
-      }, 0);
+    // Only treat value-changing keys as drag interactions. Tab and other
+    // non-value keys would otherwise set value = immediateValue on keyup,
+    // committing a stale immediateValue and yanking the slider back.
+    let valueKeys = [
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "PageUp",
+      "PageDown",
+    ];
+    this.addEventListener("keydown", (e) => {
+      if (valueKeys.includes(e.key)) {
+        this.dragging = true;
+        setTimeout(() => {
+          this.value = this.immediateValue;
+        }, 0);
+      }
     });
-    this.addEventListener("keyup", () => {
-      this.dragging = false;
-      this.value = this.immediateValue;
+    this.addEventListener("keyup", (e) => {
+      if (valueKeys.includes(e.key)) {
+        this.dragging = false;
+        this.value = this.immediateValue;
+      }
     });
   }
   static get properties() {

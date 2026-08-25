@@ -971,11 +971,11 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
                       ? ``
                       : `hidden`}"
                     lang="${this.mediaLang}"
-                    preload="${this.t ? "auto" : this.preload}"
-                    .t="${this.t}"
+                    preload="${this.preload}"
                     video-id="${this.videoId}"
                     playback-rate="${this.playbackRate}"
                     @timeupdate="${this._handleTimeUpdate}"
+                    @ended="${this._handleMediaEnded}"
                     ?hidden=${!this.isYoutube}
                   >
                   </a11y-media-youtube>
@@ -1350,7 +1350,7 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
                 ?dark="${this.dark}"
                 id="download"
                 controls="transcript"
-                icon="download"
+                icon="icons:file-download"
                 label="${this.t.downloadLabel}"
                 @click="${this.download}"
               >
@@ -2283,12 +2283,10 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
    * @returns {number} media duration in seconds
    */
   get currentTime() {
-    let slider = this.shadowRoot
-      ? this.shadowRoot.querySelector("#slider")
-      : false;
+    let slider = this.__sliderEl;
     let currentTime =
       slider && !slider.disabled && slider.dragging
-        ? this.shadowRoot.querySelector("#slider").immediateValue
+        ? slider.immediateValue
         : this.__currentTime;
     return currentTime;
   }
@@ -2836,6 +2834,14 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
 
     if (isNaN(safeTime)) return;
 
+    // Mark a seek in flight so _handleTimeUpdate ignores stale media time
+    // until the seek settles. Time-bounded so pin updates always resume.
+    this.__seeking = true;
+    clearTimeout(this.__seekingFallback);
+    this.__seekingFallback = setTimeout(() => {
+      this.__seeking = false;
+    }, 300);
+
     if (this.mediaSeekable && typeof this.media.seek === "function") {
       // Normal path when the browser reports a seekable range
       this.media.seek(safeTime);
@@ -2846,11 +2852,15 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
         this.media.currentTime = safeTime;
       } catch (e) {
         // Some environments may still refuse manual seeking; in that case just bail.
+        this.__seeking = false;
+        clearTimeout(this.__seekingFallback);
         return;
       }
     }
 
-    this._handleTimeUpdate();
+    // Reflect the requested time immediately so the pin jumps without waiting
+    // for the next media timeupdate.
+    this.__currentTime = safeTime;
     /**
      * Fires when media seeks
      * @event seek
@@ -2973,6 +2983,11 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
     /* provides a seek function for primary media */
     primary.seek = (time) => (primary.currentTime = time);
     this._addSourcesAndTracks(primary, primary);
+    // Force the media to start loading so that seeking works. Without this,
+    // preload="metadata" only loads metadata and setting currentTime (seeking
+    // while paused) silently fails — the pin shows the right place but the
+    // media actually stays at 0, so play() restarts from the beginning.
+    primary.load();
     return primary;
   }
 
@@ -3369,6 +3384,13 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
   _handleCueSeek(cue) {
     if (!this.standAlone) {
       this.seek(cue.startTime);
+      // For video, clicking a transcript cue should fully initiate playback,
+      // not just reposition while leaving the play scrim visible over the
+      // iframe. For audio-only, auto-playing on every cue click can surprise
+      // the user (and restart the track), so only auto-play for video.
+      if (!this.__playing && !this.audioOnly) {
+        this.play();
+      }
     }
   }
 
@@ -3384,6 +3406,23 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
       e.preventDefault();
       this._handleCueSeek(cue);
     }
+  }
+
+  /**
+   * handles media ending: stop and reset to the start so the UI doesn't hang
+   * near the end with __playing stuck true. Native HTML5 fires `ended`; the
+   * YouTube bridge dispatches a matching `ended` for YT state 0. When looping
+   * is enabled, restart playback instead (HTML5 loops natively and never
+   * reaches this branch; for YouTube this provides single-video looping).
+   */
+  _handleMediaEnded() {
+    if (this.loop) {
+      this.seek(0);
+      this.play();
+      return;
+    }
+    this.pause();
+    this.seek(0);
   }
 
   /**
@@ -3422,19 +3461,25 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
    * @param {event} e slider start event
    */
   _handleSliderDragging(e) {
-    let slider = this.shadowRoot
-      ? this.shadowRoot.querySelector("#slider")
-      : false;
-    if (slider && !slider.disabled && slider.dragging) {
-      if (this.__playing && slider.dragging) {
-        let startDrag = setInterval(() => {
-          if (!slider.dragging) {
-            this.play();
-            clearInterval(startDrag);
-          }
-        });
-        this.pause();
-      }
+    let slider = this.__sliderEl;
+    if (!slider || slider.disabled || !slider.dragging) return;
+    // Only pause-on-drag-start if actually playing; remember to resume on
+    // release so we don't force playback on a paused scrub.
+    if (this.__playing) {
+      this.__resumeOnRelease = true;
+      this.pause();
+      // Resume on the next pointer up (anywhere) or slider blur so we don't
+      // leak a polling interval. Listeners are one-shot and clean themselves up.
+      let resume = () => {
+        if (this.__resumeOnRelease) {
+          this.__resumeOnRelease = false;
+          this.play();
+        }
+        globalThis.removeEventListener("pointerup", resume);
+        if (slider) slider.removeEventListener("blur", resume);
+      };
+      globalThis.addEventListener("pointerup", resume);
+      if (slider) slider.addEventListener("blur", resume);
     }
   }
 
@@ -3443,29 +3488,46 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
    * @param {event} e slider start event
    */
   _handleSliderChanged(e) {
-    let slider = this.shadowRoot
-      ? this.shadowRoot.querySelector("#slider")
-      : false;
-    if (!this.playing || slider.immediateValue == this.__currentTime) {
-      this.seek(slider.immediateValue);
-    }
+    // simple-range-input dispatches `value-changed` for BOTH user commits
+    // (drag release / track click) AND programmatic value syncs from our
+    // render binding `.value="${this.__currentTime}"`. The programmatic
+    // sync's detail.value is exactly the __currentTime we just rendered, so
+    // seeking on it would yank playback back to a stale immediateValue every
+    // timeupdate tick (a feedback loop that looked like the video looping one
+    // frame). Skip when the committed value matches current time; only seek on
+    // a genuine user commit whose value differs.
+    const v = e && e.detail ? Number(e.detail.value) : NaN;
+    if (isNaN(v) || v === this.__currentTime) return;
+    this.seek(v);
   }
 
   /**
    * handles time updates
    */
   _handleTimeUpdate() {
-    if (!this.__wait) {
-      /* update current time with media's current time property */
-      this.__currentTime =
+    // Coalesce rapid timeupdate events into a single per-frame read so the
+    // progress pin updates aligned to paint instead of once per second.
+    if (this.__timeUpdateRaf) return;
+    this.__timeUpdateRaf = globalThis.requestAnimationFrame(() => {
+      this.__timeUpdateRaf = null;
+      // While a seek is in flight, ignore media-driven time so the pin does
+      // not snap back to a stale value before the seek settles. __seeking is
+      // time-bounded in seek() so updates always resume.
+      if (this.__seeking) return;
+      const mediaTime =
         this.media && this.media.currentTime && this.media.currentTime > 0
           ? this.media.currentTime
           : 0;
-      this.__wait = true;
-      setTimeout(() => {
-        this.__wait = false;
-      }, 1000);
-    }
+      // __currentTime is a reactive Lit property, so every write re-renders
+      // the whole player template. Writing it at rAF cadence (~60fps) thrashes
+      // Lit and can break ChildPart commits (lit-html "no parentNode" errors),
+      // which in turn wedges subsequent updates so the pin appears stuck.
+      // Quantize to 4Hz (0.25s) so we only re-render when the displayed time
+      // would actually change — smooth enough for a progress pin, ~4 renders/s.
+      if (Math.round(mediaTime * 4) !== Math.round(this.__currentTime * 4)) {
+        this.__currentTime = mediaTime;
+      }
+    });
   }
 
   /**
@@ -3530,6 +3592,11 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
       super.firstUpdated(changedProperties);
     }
     this.setAttribute("typeof", "oer:MediaObject");
+    // Cache the slider element so currentTime reads and slider handlers don't
+    // re-query the shadow root on every call.
+    this.__sliderEl = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : null;
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
       this.height ? "146px" : "unset",
@@ -3541,6 +3608,13 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
     );
     this.__loadedTracks.addEventListener("timeupdate", (e) => {
       this._handleTimeUpdate(e);
+    });
+    // Native HTML5 media fires `ended` at the end of playback; the YouTube
+    // bridge dispatches a matching `ended` event for YT state 0. Without an
+    // ended handler, __playing stays true and the pin freezes ~1s before the
+    // end (the last timeupdate sample before the interval clears).
+    this.__loadedTracks.addEventListener("ended", (e) => {
+      this._handleMediaEnded(e);
     });
     /**
      * Fires player needs the size of parent container to add responsive styling
@@ -3694,6 +3768,15 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
+    if (this.__timeUpdateRaf) {
+      globalThis.cancelAnimationFrame(this.__timeUpdateRaf);
+      this.__timeUpdateRaf = null;
+    }
+    if (this.__seekingFallback) {
+      clearTimeout(this.__seekingFallback);
+      this.__seekingFallback = null;
+    }
+    this.__sliderEl = null;
     if (this._settingsKeydownHandler) {
       globalThis.removeEventListener(
         "keydown",

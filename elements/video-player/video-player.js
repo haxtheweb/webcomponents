@@ -792,6 +792,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.__adRateHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    this.__mediaPlayerEl = null;
     super.disconnectedCallback();
   }
   /**
@@ -1324,10 +1325,8 @@ class VideoPlayer extends IntersectionObserverMixin(
    * mapping down into the shadowRoot element bc these are common things to want to know
    */
   get currentTime() {
-    if (this.shadowRoot) {
-      return this.shadowRoot.querySelector("a11y-media-player").currentTime;
-    }
-    return 0;
+    const player = this.__getMediaPlayer();
+    return player ? player.currentTime : 0;
   }
   restart() {
     this.pause();
@@ -1345,30 +1344,39 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.endTimeTest();
     }
   }
+  /**
+   * Lazily caches the inner a11y-media-player so hot paths (currentTime,
+   * pause/play/seek) don't re-query the shadow root on every call. The child
+   * only exists once elementVisible + isA11yMedia render it, so we query on
+   * demand and invalidate on disconnect.
+   */
+  __getMediaPlayer() {
+    if (!this.__mediaPlayerEl && this.shadowRoot) {
+      this.__mediaPlayerEl = this.shadowRoot.querySelector(
+        "a11y-media-player",
+      );
+    }
+    return this.__mediaPlayerEl;
+  }
   pause() {
-    if (
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("a11y-media-player").__playing
-    ) {
-      this.shadowRoot.querySelector("a11y-media-player").pause();
+    const player = this.__getMediaPlayer();
+    if (player && player.__playing) {
+      player.pause();
     }
   }
   play() {
-    if (
-      this.shadowRoot &&
-      !this.shadowRoot.querySelector("a11y-media-player").__playing
-    ) {
-      this.shadowRoot.querySelector("a11y-media-player").play();
+    const player = this.__getMediaPlayer();
+    if (player && !player.__playing) {
+      player.play();
     }
   }
   seek(time) {
-    if (this.shadowRoot) {
-      if (!this.shadowRoot.querySelector("a11y-media-player").__playing) {
-        this.play();
-      }
-      setTimeout(() => {
-        this.shadowRoot.querySelector("a11y-media-player").seek(parseInt(time));
-      }, 0);
+    const player = this.__getMediaPlayer();
+    // Seek directly without a setTimeout(0) wrapper and without forcing
+    // playback; callers that want play+seek call play() first. Use Number so
+    // sub-second jumps land precisely instead of being truncated by parseInt.
+    if (player) {
+      player.seek(Number(time));
     }
   }
   // end timer needs to be handled in a special way so we don't flood listeners
