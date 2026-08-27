@@ -85,8 +85,8 @@ class CleanOne extends DDDSuper(
             var(--ddd-palette-light)
           );
           --ddd-lightDark-1: light-dark(
-            var(--ddd-palette-1),
-            var(--ddd-palette-5)
+            var(--simple-colors-default-theme-grey-9),
+            var(--simple-colors-default-theme-grey-3)
           );
           --ddd-lightDark-2: light-dark(
             var(--ddd-palette-2),
@@ -901,8 +901,8 @@ class CleanOne extends DDDSuper(
             var(--ddd-palette-light)
           );
           --ddd-lightDark-1: light-dark(
-            var(--ddd-palette-1),
-            var(--ddd-palette-5)
+            var(--simple-colors-default-theme-grey-9),
+            var(--simple-colors-default-theme-grey-3)
           );
           --ddd-lightDark-2: light-dark(
             var(--ddd-palette-2),

@@ -70,6 +70,19 @@ class ScrollButton extends LitElement {
           color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
           background-color: var(--scroll-button-color, white);
         }
+        /*
+         * scroll-button is used across every HAXCMS theme (clean-one,
+         * clean-two, polaris, journey, chamfer, collections, app-hax, etc.)
+         * and each theme fixed-positions it on top of page content. On
+         * mobile viewports that overlap is more disruptive than helpful, so
+         * hide it below the shared "xs" responsive breakpoint (600px) here
+         * once, rather than every theme needing its own media query.
+         */
+        @media (max-width: 600px) {
+          :host {
+            display: none;
+          }
+        }
       `,
     ];
   }
