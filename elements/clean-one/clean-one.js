@@ -251,6 +251,18 @@ class CleanOne extends DDDSuper(
           transition: left 0.3s ease-in-out;
           contain: layout paint;
         }
+        /*
+         * Suppress the slide transition until the theme has completed its
+         * first render (theme-ready). HAXCMSMobileMenuMixin auto-closes the
+         * menu on initial mobile load, which would otherwise visibly slide
+         * off-screen; on a fresh/mobile load the menu should just appear
+         * already closed. Once theme-ready is set, user-triggered toggles
+         * animate normally again.
+         */
+        :host(:not([theme-ready])) .menu-outline,
+        :host(:not([theme-ready])) .site-body {
+          transition: none;
+        }
         /* content */
         .main-section h1 {
           font-size: 2em;

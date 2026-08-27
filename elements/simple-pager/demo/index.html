@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>SimplePager: simple-pager Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../simple-pager.js";
+      import "@haxtheweb/simple-icon/lib/simple-icons.js";
+    </script>
+    <style>
+      body {
+        font-family: var(--ddd-font-navigation, system-ui, sans-serif);
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray, #1a1a1a),
+          var(--ddd-theme-default-white, #fff)
+        );
+        background: light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-coalyGray, #111)
+        );
+        margin: 0;
+        padding: var(--ddd-spacing-6, 32px);
+      }
+      .demo-section {
+        border: var(--ddd-border-xs, 1px) solid
+          var(--ddd-theme-default-limestoneGray, #ccc);
+        border-radius: var(--ddd-radius-md, 8px);
+        padding: var(--ddd-spacing-4, 16px);
+        margin-bottom: var(--ddd-spacing-5, 20px);
+        background: light-dark(
+          var(--ddd-theme-default-white, #fff),
+          rgba(255, 255, 255, 0.04)
+        );
+      }
+      .demo-section h2 {
+        font-size: var(--ddd-font-size-m, 32px);
+        margin: 0 0 var(--ddd-spacing-2, 8px);
+      }
+      .demo-section h3 {
+        font-size: var(--ddd-font-size-s, 24px);
+        margin: var(--ddd-spacing-4, 16px) 0 var(--ddd-spacing-2, 8px);
+      }
+      .demo-section p {
+        font-size: var(--ddd-font-size-xs, 16px);
+        line-height: var(--ddd-lh-150, 1.5);
+        margin: 0 0 var(--ddd-spacing-3, 12px);
+      }
+      .record-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--ddd-spacing-2, 8px);
+        margin-bottom: var(--ddd-spacing-3, 12px);
+      }
+      .record-chip {
+        border: var(--ddd-border-xs, 1px) solid
+          var(--ddd-theme-default-limestoneGray, #ccc);
+        border-radius: var(--ddd-radius-sm, 4px);
+        padding: var(--ddd-spacing-2, 8px);
+        font-size: var(--ddd-font-size-4xs, 12px);
+        text-align: center;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ddd-spacing-2, 8px);
+        align-items: center;
+        margin-bottom: var(--ddd-spacing-3, 12px);
+        font-size: var(--ddd-font-size-xs, 16px);
+      }
+      .controls label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--ddd-spacing-1, 4px);
+      }
+      .controls input,
+      .controls select {
+        font: inherit;
+        padding: var(--ddd-spacing-1, 4px);
+        border: var(--ddd-border-xs, 1px) solid
+          var(--ddd-theme-default-limestoneGray, #ccc);
+        border-radius: var(--ddd-radius-sm, 4px);
+        background: transparent;
+        color: inherit;
+      }
+      .event-log {
+        font-size: var(--ddd-font-size-4xs, 12px);
+        color: var(--ddd-theme-default-slateGray, #666);
+        margin-top: var(--ddd-spacing-2, 8px);
+        min-height: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-section">
+      <h2>simple-pager</h2>
+      <p>
+        A reusable, presentational pager that mirrors a backend PageInfo shape
+        (<code>limit</code>, <code>offset</code>, <code>total</code>) and fires
+        a single bubbling <code>page-changed</code> event with
+        <code>{ limit, offset }</code>. It owns no data fetching; the consumer
+        re-issues its request and reflects the new offset back.
+      </p>
+    </div>
+
+    <div class="demo-section">
+      <h3>Shared controls</h3>
+      <div class="controls">
+        <label
+          >total
+          <input id="total" type="number" min="0" value="137" />
+        </label>
+        <label
+          >limit
+          <input id="limit" type="number" min="1" value="25" />
+        </label>
+        <label
+          >max page buttons
+          <input id="maxbuttons" type="number" min="1" value="7" />
+        </label>
+        <label
+          >mode
+          <select id="mode">
+            <option value="mini">mini</option>
+            <option value="full" selected>full</option>
+          </select>
+        </label>
+        <label
+          >force-visible
+          <input id="force" type="checkbox" />
+        </label>
+      </div>
+
+      <h3>Records on the current page</h3>
+      <div class="record-grid" id="records"></div>
+
+      <simple-pager
+        id="pager"
+        mode="full"
+        limit="25"
+        offset="0"
+        total="137"
+        count="25"
+        max-page-buttons="7"
+      ></simple-pager>
+      <div class="event-log" id="log"></div>
+    </div>
+
+    <div class="demo-section">
+      <h3>Inline / mini mode</h3>
+      <p>
+        A compact Previous / Next control with a terse status string, suited to
+        narrow toolbars and inline widgets.
+      </p>
+      <simple-pager
+        id="miniPager"
+        mode="mini"
+        limit="10"
+        offset="0"
+        total="42"
+        count="10"
+      ></simple-pager>
+    </div>
+
+    <script type="module">
+      const pager = document.getElementById("pager");
+      const miniPager = document.getElementById("miniPager");
+      const records = document.getElementById("records");
+      const log = document.getElementById("log");
+      const totalInput = document.getElementById("total");
+      const limitInput = document.getElementById("limit");
+      const maxButtonsInput = document.getElementById("maxbuttons");
+      const modeSelect = document.getElementById("mode");
+      const forceInput = document.getElementById("force");
+
+      function renderRecords(target, limit, offset, total) {
+        const safeLimit = Math.max(1, limit);
+        const safeTotal = Math.max(0, total);
+        const totalPages = Math.max(1, Math.ceil(safeTotal / safeLimit));
+        const currentPage = Math.max(
+          1,
+          Math.min(Math.floor(offset / safeLimit) + 1, totalPages),
+        );
+        const start = (currentPage - 1) * safeLimit;
+        const end = Math.min(start + safeLimit, safeTotal);
+        const count = Math.max(0, end - start);
+        const html = [];
+        for (let i = 0; i < count; i++) {
+          html.push(`<div class="record-chip">record ${start + i + 1}</div>`);
+        }
+        if (count === 0) {
+          html.push(`<div class="record-chip">no records</div>`);
+        }
+        target.innerHTML = html.join("");
+      }
+
+      function applyControls() {
+        const total = parseInt(totalInput.value, 10) || 0;
+        const limit = parseInt(limitInput.value, 10) || 25;
+        const maxButtons = parseInt(maxButtonsInput.value, 10) || 10;
+        const mode = modeSelect.value;
+        const force = forceInput.checked;
+        pager.total = total;
+        pager.limit = limit;
+        pager.maxPageButtons = maxButtons;
+        pager.mode = mode;
+        pager.forceVisible = force;
+        renderRecords(records, limit, pager.offset, total);
+      }
+
+      pager.addEventListener("page-changed", (e) => {
+        pager.offset = e.detail.offset;
+        pager.limit = e.detail.limit;
+        const count = Math.min(
+          e.detail.limit,
+          Math.max(0, pager.total - e.detail.offset),
+        );
+        pager.count = count;
+        log.textContent = `page-changed -> limit=${e.detail.limit}, offset=${e.detail.offset}`;
+        renderRecords(records, e.detail.limit, e.detail.offset, pager.total);
+      });
+
+      miniPager.addEventListener("page-changed", (e) => {
+        miniPager.offset = e.detail.offset;
+        miniPager.limit = e.detail.limit;
+      });
+
+      [totalInput, limitInput, maxButtonsInput, modeSelect, forceInput].forEach(
+        (el) => {
+          el.addEventListener("input", applyControls);
+          el.addEventListener("change", applyControls);
+        },
+      );
+
+      applyControls();
+    </script>
+  </body>
+</html>

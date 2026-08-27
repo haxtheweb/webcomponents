@@ -10,6 +10,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
+import "@haxtheweb/simple-pager/simple-pager.js";
 import "./hax-file-actions.js";
 
 const SCALE_PRESETS = {
@@ -36,6 +37,9 @@ class HAXCMSFilesAdminDialog extends DDD {
       nodeId: { type: String, attribute: "node-id" },
       scalePreset: { type: String, attribute: "scale-preset" },
       cacheBustToken: { type: String, attribute: false },
+      pageLimit: { type: Number, attribute: "page-limit" },
+      pageOffset: { type: Number, attribute: "page-offset" },
+      pageTotal: { type: Number, attribute: "page-total" },
     };
   }
 
@@ -52,6 +56,9 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.scalePreset = "md";
     this.cacheBustToken = "0";
     this.__cacheBustCounter = 0;
+    this.pageLimit = 25;
+    this.pageOffset = 0;
+    this.pageTotal = 0;
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
   }
@@ -284,6 +291,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       super.updated(cp);
     }
     if (cp.has("siteName") && this._canList) {
+      this.pageOffset = 0;
       this.refreshFiles();
     }
     if (cp.has("busy") && cp.get("busy") === true && !this.busy) {
@@ -492,6 +500,29 @@ class HAXCMSFilesAdminDialog extends DDD {
     return rows;
   }
 
+  _readPageTotal(response) {
+    const data = response && response.data ? response.data : null;
+    if (!data) {
+      return 0;
+    }
+    if (typeof data.total === "number") {
+      return data.total;
+    }
+    if (data.page && typeof data.page.total === "number") {
+      return data.page.total;
+    }
+    return 0;
+  }
+
+  _onPageChanged(e) {
+    if (!e || !e.detail) {
+      return;
+    }
+    this.pageLimit = e.detail.limit;
+    this.pageOffset = e.detail.offset;
+    this.refreshFiles();
+  }
+
   _isImg(r) {
     return (
       r &&
@@ -614,12 +645,15 @@ class HAXCMSFilesAdminDialog extends DDD {
       ) {
         this.errorMessage = "Unable to load files";
         this.rows = [];
+        this.pageTotal = 0;
         return;
       }
       const response = await MicroFrontendRegistry.call(
         "@site/listFiles",
         {
           cb: cacheBustToken,
+          "page.limit": this.pageLimit,
+          "page.offset": this.pageOffset,
         },
         null,
         this,
@@ -631,12 +665,15 @@ class HAXCMSFilesAdminDialog extends DDD {
           "Unable to load files",
         );
         this.rows = [];
+        this.pageTotal = 0;
         return;
       }
+      this.pageTotal = this._readPageTotal(response);
       this.rows = this._normPayload(response);
     } catch (e) {
       this.errorMessage = "Unable to load files";
       this.rows = [];
+      this.pageTotal = 0;
     } finally {
       this.loading = false;
       this._requestTableUpdate();
@@ -899,7 +936,9 @@ class HAXCMSFilesAdminDialog extends DDD {
               ? "Loading\u2026"
               : this.errorMessage
                 ? this.errorMessage
-                : `${this.rows.length} file(s)`}
+                : this.pageTotal > 0
+                  ? `${this.rows.length} of ${this.pageTotal} file(s)`
+                  : `${this.rows.length} file(s)`}
           </div>
         </div>
         <div class="tw">
@@ -1004,6 +1043,15 @@ class HAXCMSFilesAdminDialog extends DDD {
                 `,
               )}
         </div>
+        <simple-pager
+          mode="full"
+          limit="${this.pageLimit}"
+          offset="${this.pageOffset}"
+          total="${this.pageTotal}"
+          count="${this.rows.length}"
+          label="Files pagination"
+          @page-changed="${this._onPageChanged}"
+        ></simple-pager>
       </div>
     `;
   }

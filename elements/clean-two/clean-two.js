@@ -301,6 +301,18 @@ class CleanTwo extends LTIResizingMixin(
           transition: margin 0.3s ease;
           height: fit-content;
         }
+        /*
+         * Suppress the slide transition until the theme has completed its
+         * first render (theme-ready). HAXCMSMobileMenuMixin auto-closes the
+         * menu on initial mobile load, which would otherwise visibly slide
+         * off-screen; on a fresh/mobile load the menu should just appear
+         * already closed. Once theme-ready is set, user-triggered toggles
+         * animate normally again.
+         */
+        :host(:not([theme-ready])) .left-col,
+        :host(:not([theme-ready])) .body-wrapper {
+          transition: none;
+        }
         @media screen and (min-width: 900px) {
           .left-col {
             flex: 0 0 auto;

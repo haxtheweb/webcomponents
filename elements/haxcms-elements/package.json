@@ -105,6 +105,7 @@
     "@haxtheweb/simple-img": "^26.8.0",
     "@haxtheweb/simple-login": "^26.8.0",
     "@haxtheweb/simple-modal": "^26.8.0",
+    "@haxtheweb/simple-pager": "^26.8.0",
     "@haxtheweb/simple-picker": "^26.8.0",
     "@haxtheweb/simple-popover": "^26.8.0",
     "@haxtheweb/simple-progress": "^26.8.0",
