@@ -1,5 +1,7 @@
 # Contributing
 
+> **New to the HAX ecosystem?** Start with the [ecosystem-wide developer onboarding](https://github.com/haxtheweb/issues/blob/master/CONTRIBUTING.md) — it covers prerequisites, cloning the core repos, and getting a local environment running. The guide below is specific to the webcomponents monorepo.
+
 - [Contributing](#contributing)
   - [What is HAX and this Project?](#what-is-hax-and-this-project)
   - [Getting Started](#getting-started)

@@ -14,6 +14,10 @@
 # Welcome to the HaxTheWeb project!
 Web components that can work in just about anything, are very small (Vanila or Lit based) and have full on authoring solutions if you dig deeper; Enjoy!
 
+## Onboarding
+
+New to the HAX ecosystem? **[Start here](https://github.com/haxtheweb/issues/blob/master/CONTRIBUTING.md)** — the single onboarding guide covers prerequisites, cloning the core repos, installing, and running each project locally.
+
 ## Getting Started
 
 ### Quick install: Dev Containers (as a core dev, forks preferrable)
