@@ -490,6 +490,9 @@ class CleanOne extends DDDSuper(
             max-width: unset;
             width: 44px;
             height: 44px;
+            /* the base .navigation rule also sets margin: 0 auto, which as
+             * a flex-item auto margin would fight the tray's gap spacing */
+            margin: 0;
             /* smaller mobile touch target than desktop's 100px icon, while
              * still meeting a reasonable minimum tap-target size */
             --site-menu-button-icon-width: 24px;
