@@ -8,7 +8,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
@@ -501,23 +501,23 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     return html`
       <div class="layout">
          <a class="skip-link" href="#contentcontainer">Skip to content</a>
-         <simple-icon-button
+         <simple-icon-button-lite
            id="menubutton"
            icon="menu"
            @click="${this.toggleDrawer}"
            title="Toggle site menu"
            aria-expanded="${this.opened}"
            aria-controls="drawer"
-         ></simple-icon-button>
+         ></simple-icon-button-lite>
            <div class="drawer ${this.opened ? 'opened' : ''}" id="drawer">
-           <simple-icon-button
+           <simple-icon-button-lite
              id="menubutton2"
              icon="menu"
              @click="${this.toggleDrawer}"
              title="Toggle site menu"
              aria-expanded="${this.opened}"
              aria-controls="drawer"
-           ></simple-icon-button>
+           ></simple-icon-button-lite>
            <header class="header-wrapper">
              <div class="header">
                <site-title ?disabled="${this.editMode}" part="site-title"></site-title>

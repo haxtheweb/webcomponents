@@ -460,9 +460,44 @@ class CleanOne extends DDDSuper(
             bottom: 0;
             left: 0;
             right: 0;
+            /* anchor the prev/next tray to the bottom-right corner instead
+             * of spanning/centering across the full width */
+            justify-content: flex-end;
+            padding: 0 var(--ddd-spacing-3) var(--ddd-spacing-3) 0;
+            /* no background on the tray itself so scrolling content stays
+             * visible/interactable underneath; only the buttons themselves
+             * get a background (via the circular treatment below) */
+            background: transparent;
+            /* let clicks/scroll gestures pass through the transparent tray
+             * area; re-enabled on the buttons themselves just below */
+            pointer-events: none;
           }
           :host([menu-open]) footer {
             left: 300px;
+          }
+          footer nav {
+            display: flex;
+            align-items: center;
+            gap: var(--ddd-spacing-2);
+          }
+          footer site-menu-button.navigation {
+            pointer-events: auto;
+            opacity: 1;
+            /* the base .navigation rule sets min/max-width for the fixed
+             * desktop rail; override so the host box matches the small
+             * circular button instead of leaving large empty tap padding */
+            min-width: unset;
+            max-width: unset;
+            width: 44px;
+            height: 44px;
+            /* smaller mobile touch target than desktop's 100px icon, while
+             * still meeting a reasonable minimum tap-target size */
+            --site-menu-button-icon-width: 24px;
+            --site-menu-button-icon-height: 24px;
+            --site-menu-button-button-width: 44px;
+            --site-menu-button-button-height: 44px;
+            --site-menu-button-button-background-color: var(--ddd-lightDark-7);
+            --site-menu-button-button-border-radius: 50%;
           }
         }
 
@@ -472,7 +507,6 @@ class CleanOne extends DDDSuper(
           }
           footer {
             color: var(--ddd-lightDark-6);
-            background-color: var(--ddd-lightDark-7);
             margin-bottom: -1px;
           }
         }
