@@ -336,7 +336,8 @@ class CleanOne extends DDDSuper(
 
         :host([responsive-size="xs"]) .page-inner {
           overflow-x: auto;
-          text-align: left;
+          /* start (not left) so RTL languages lay out correctly */
+          text-align: start;
         }
         @media screen and (max-width: 640px) {
           site-breadcrumb {
