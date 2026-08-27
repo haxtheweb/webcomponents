@@ -1242,14 +1242,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           this.themeLoaded = true;
           setTimeout(() => {
             globalThis.WCAutoload.process();
-            globalThis.dispatchEvent(
-              new CustomEvent("haxcms-theme-ready", {
-                bubbles: true,
-                composed: true,
-                cancelable: false,
-                detail: this,
-              }),
-            );
           }, 5);
         } else {
           // import the reference to the item dynamically, if we can

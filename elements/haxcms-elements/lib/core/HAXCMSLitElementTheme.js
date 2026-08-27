@@ -26,6 +26,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.trayStatus = "";
     this.isLoggedIn = false;
     this.emptyContent = false;
+    // set true once this theme instance has completed its first render and
+    // is safe to reveal; distinct from haxcms-site-builder's `themeLoaded`
+    // (module import resolved) which fires before this element ever paints
+    this.themeReady = false;
     this.HAXSiteCustomRenderRoutes = {};
     this.__headingNodes = [];
     this.__copyLinkHandler = this.copyLink.bind(this);
@@ -250,6 +254,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       _location: {
         type: Object,
       },
+      /**
+       * True once this theme instance has completed its first render and
+       * its content is safe to reveal (used to gate the initial FOUC fade-in).
+       */
+      themeReady: {
+        type: Boolean,
+        reflect: true,
+        attribute: "theme-ready",
+      },
     };
   }
   static get styles() {
@@ -309,6 +322,23 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         }
         [hidden] {
           display: none !important;
+        }
+        /*
+         * Initial-load-only fade-in: hidden until this theme instance has
+         * completed its first render (theme-ready), to reduce FOUC. This
+         * never re-triggers on in-app navigation since themeReady only
+         * flips once, on first paint. visibility is toggled alongside
+         * opacity (mirroring haxcms-site-builder's own theme-loaded gate)
+         * so hidden content also isn't focusable/interactive in the interim.
+         */
+        :host {
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.6s ease-in-out;
+        }
+        :host([theme-ready]) {
+          opacity: 1;
+          visibility: visible;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -384,6 +414,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         this.__refreshHeadingListeners();
       }
     }, 1500);
+    // wait a couple of frames past firstUpdated so the browser has actually
+    // painted this theme's first render before revealing it; this is what
+    // distinguishes theme-ready from firstUpdated firing (which happens
+    // before paint is guaranteed to have settled)
+    globalThis.requestAnimationFrame(() => {
+      globalThis.requestAnimationFrame(() => {
+        this.themeReady = true;
+      });
+    });
   }
   disconnectedCallback() {
     this.__removeHeadingListeners();
@@ -443,6 +482,23 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       }
       if (propName == "responsiveSize") {
         this._syncResponsiveStoreState();
+      }
+      if (propName == "themeReady" && this.themeReady) {
+        // this replaces the old `haxcms-theme-ready` global event, which used
+        // to fire from haxcms-site-builder at module-import/registration time
+        // (before this theme instance had painted anything). This event fires
+        // once, at the exact moment `theme-ready` is set on this instance
+        // (post first-paint), and bubbles/composes up through the DOM so any
+        // ecosystem code can listen for it at `globalThis`/`window` level
+        // without haxcms-site-builder needing to relay it.
+        this.dispatchEvent(
+          new CustomEvent("theme-ready-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this,
+          }),
+        );
       }
       if (propName == "contentContainer") {
         // fire an to match notify

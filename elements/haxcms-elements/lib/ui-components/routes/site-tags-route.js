@@ -72,7 +72,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
       }),
     );
     globalThis.addEventListener(
-      "haxcms-theme-ready",
+      "theme-ready-changed",
       (e) => {
         this._processCustomThemeRoutes();
       },
