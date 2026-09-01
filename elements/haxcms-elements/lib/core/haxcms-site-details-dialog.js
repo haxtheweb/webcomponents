@@ -19,7 +19,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
       groups: { type: Array },
       values: { type: Object },
       errorMessage: { type: String, attribute: "error-message" },
-      homePageOptions: { type: Object, attribute: false },
+      homePageItemsList: { type: Array, attribute: false },
     };
   }
 
@@ -28,9 +28,9 @@ class HAXCMSSiteDetailsDialog extends DDD {
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
-    this.homePageOptions = {
-      "": "-- default to first page --",
-    };
+    this.homePageItemsList = [
+      { value: "", text: "-- default to first page --" },
+    ];
     this.__valueChangeLock = false;
     this.__groupValues = {};
     this.__manifestReaction = null;
@@ -326,11 +326,13 @@ class HAXCMSSiteDetailsDialog extends DDD {
     return [];
   }
 
-  _buildHomePageOptions(manifest) {
+  // Build an ordered items list (not a keyed `options` object) because
+  // simple-fields-field's `options` property is always re-sorted
+  // alphabetically by key before rendering, which would scramble the page
+  // hierarchy/order presented here. `itemsList` preserves given order.
+  _buildHomePageItemsList(manifest) {
     const itemManifest = this._manifestItems(manifest);
-    const options = {
-      "": "-- default to first page --",
-    };
+    const items = [{ value: "", text: "-- default to first page --" }];
     itemManifest.forEach((item) => {
       if (!item || !item.id) {
         return;
@@ -344,9 +346,9 @@ class HAXCMSSiteDetailsDialog extends DDD {
         }
       }
       const itemTitle = item.title ? item.title : item.id;
-      options[item.id] = `${distance}${itemTitle}`;
+      items.push({ value: item.id, text: `${distance}${itemTitle}` });
     });
-    return options;
+    return items;
   }
 
   _buildDetailsGroups() {
@@ -369,7 +371,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
             title: "Home page",
             description: "Page to use as the default landing / home page",
             inputMethod: "select",
-            options: this._cloneData(this.homePageOptions),
+            itemsList: this._cloneData(this.homePageItemsList),
             required: false,
           },
         ],
@@ -445,7 +447,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
     }
     this.__valueChangeLock = true;
     this.errorMessage = "";
-    this.homePageOptions = this._buildHomePageOptions(manifest);
+    this.homePageItemsList = this._buildHomePageItemsList(manifest);
     this.groups = this._buildDetailsGroups();
     this.values = this._buildValueState(manifest);
     this.__groupValues = {};
