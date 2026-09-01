@@ -178,6 +178,7 @@ class CleanOne extends DDDSuper(
           --scroll-button-background-color: var(--ddd-lightDark-6);
           --scroll-button-tooltip-background-color: var(--ddd-palette-7);
           --scroll-button-tooltip-color: var(--ddd-palette-1);
+          color: var(--ddd-lightDark-1);
         }
         simple-icon-button,
         simple-icon-button-lite,
@@ -217,9 +218,6 @@ class CleanOne extends DDDSuper(
           --site-menu-button-button-hover-background-color: var(
             --ddd-lightDark-2
           );
-        }
-        scroll-button {
-          color: var(--ddd-lightDark-1);
         }
 
         * {
@@ -340,9 +338,6 @@ class CleanOne extends DDDSuper(
           text-align: start;
         }
         @media screen and (max-width: 640px) {
-          site-breadcrumb {
-            display: none;
-          }
           .site-header {
             padding: 0px;
           }
@@ -455,6 +450,18 @@ class CleanOne extends DDDSuper(
           }
         }
         @media (max-width: 900px) {
+          /* hide the top bar (print/PDF/QR/RSS/git controls and the desktop
+             menu button) on mobile; the menu open/close control is relocated
+             into the bottom nav tray so navigation stays reachable */
+          .site-header {
+            display: none;
+          }
+          site-breadcrumb {
+            display: none;
+          }
+          scroll-button {
+            display: none;
+          }
           footer {
             position: fixed;
             bottom: 0;
@@ -479,6 +486,17 @@ class CleanOne extends DDDSuper(
             display: flex;
             align-items: center;
             gap: var(--ddd-spacing-2);
+            padding: var(--ddd-spacing-1);
+            background-color: var(--ddd-lightDark-background);
+            opacity: 0.9;
+            border-radius: var(--ddd-radius-xs);
+            transition: opacity 0.3s ease-in-out;
+          }
+          footer nav site-menu-button:hover,
+          footer nav site-menu-button:focus-within,
+          footer nav:hover, footer nav:focus-within,
+          footer:hover, footer:focus-within {
+            opacity: 1;
           }
           footer site-menu-button.navigation {
             pointer-events: auto;
@@ -495,22 +513,42 @@ class CleanOne extends DDDSuper(
             margin: 0;
             /* smaller mobile touch target than desktop's 100px icon, while
              * still meeting a reasonable minimum tap-target size */
-            --site-menu-button-icon-width: 24px;
-            --site-menu-button-icon-height: 24px;
+            --site-menu-button-icon-width: var(--ddd-icon-xxs);
+            --site-menu-button-icon-height: var(--ddd-icon-xxs);
             --site-menu-button-button-width: 44px;
             --site-menu-button-button-height: 44px;
             --site-menu-button-button-background-color: var(--ddd-lightDark-7);
-            --site-menu-button-button-border-radius: 50%;
+            --site-menu-button-button-border-radius: var(--ddd-radius-circle);
+          }
+          /* menu open/close button relocated into the bottom tray on mobile;
+             same circular treatment as the prev/next arrows above */
+          footer #haxcmsmobilemenubutton {
+            pointer-events: auto;
+            margin: 0;
+            width: 44px;
+            height: 44px;
+            --simple-icon-height: var(--ddd-icon-xxs);
+            --simple-icon-width: var(--ddd-icon-xxs);
+            --simple-icon-button-background-color: var(--ddd-lightDark-7);
+            --simple-icon-button-border-radius: var(--ddd-radius-circle);
+            color: var(--ddd-lightDark-1);
+          }
+          /* suppress tooltips in the bottom tray on mobile so they do not
+             overlap content when the buttons are tapped; the buttons retain
+             their aria-labels for screen-reader access */
+          footer simple-tooltip {
+            display: none !important;
           }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 640px) {
           .link-actions {
             display: none;
           }
           footer {
             color: var(--ddd-lightDark-6);
-            margin-bottom: -1px;
+            margin: 0;
+            padding: 0;
           }
         }
         @media (max-width: 1240px) {
@@ -541,7 +579,7 @@ class CleanOne extends DDDSuper(
           max-width: 840px;
           margin: 0 auto;
           min-height: 90vh;
-          padding: 20px 15px 40px 15px;
+          padding: 40px 16px 40px 16px;
         }
         .main-section {
           display: block;
@@ -585,7 +623,7 @@ class CleanOne extends DDDSuper(
           color: var(--ddd-lightDark-1);
           text-align: center;
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 640px) {
           .page-wrapper {
             width: 100vw;
           }
@@ -652,8 +690,8 @@ class CleanOne extends DDDSuper(
         }
         scroll-button {
           position: absolute;
-          bottom: 0;
-          right: 16px;
+          bottom: 12px;
+          right: 20px;
         }
         #site-search-input {
           padding: 6px;
@@ -718,7 +756,9 @@ class CleanOne extends DDDSuper(
                 aria-disabled="${this.editMode ? `true` : `false`}"
               >
                 <div class="pull-left">
-                  ${this.HAXCMSMobileMenuButton()}
+                  ${!["xs", "sm"].includes(this.responsiveSize)
+                    ? this.HAXCMSMobileMenuButton()
+                    : ``}
                   ${MicroFrontendRegistry.has("@system/siteToHtml")
                     ? this.PrintBranchButton("bottom")
                     : html`
@@ -785,12 +825,17 @@ class CleanOne extends DDDSuper(
                 type="prev"
                 position="right"
                 class="navigation"
+                ?hide-label="${["xs", "sm"].includes(this.responsiveSize)}"
               ></site-menu-button>
               <site-menu-button
                 type="next"
                 position="left"
                 class="navigation"
+                ?hide-label="${["xs", "sm"].includes(this.responsiveSize)}"
               ></site-menu-button>
+              ${["xs", "sm"].includes(this.responsiveSize)
+                ? this.HAXCMSMobileMenuButton("top")
+                : ``}
             </nav>
           </footer>
         </div>

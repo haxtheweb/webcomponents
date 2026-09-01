@@ -279,6 +279,79 @@ describe("clean-one menu functionality", () => {
   });
 });
 
+// Mobile menu relocation tests (issue #2968)
+// On mobile the top bar is hidden and the menu open/close button is relocated
+// into the bottom nav tray just before the prev/next arrows. Tooltips are
+// suppressed on mobile so they do not overlap content on tap.
+describe("clean-one mobile menu relocation", () => {
+  afterEach(async () => {
+    await setViewport({ width: 1024, height: 768 });
+  });
+
+  it("renders exactly one mobile menu button (no duplicate ids)", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    await el.updateComplete;
+    const buttons = el.shadowRoot.querySelectorAll("#haxcmsmobilemenubutton");
+    expect(buttons.length).to.equal(1);
+  });
+
+  it("hides the top bar on mobile viewport", async () => {
+    await setViewport({ width: 375, height: 750 });
+    const el = await fixture(html`<clean-one></clean-one>`);
+    await el.updateComplete;
+    const header = el.shadowRoot.querySelector(".site-header");
+    expect(getComputedStyle(header).display).to.equal("none");
+  });
+
+  it("relocates the menu button into the footer on mobile", async () => {
+    await setViewport({ width: 375, height: 750 });
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.responsiveSize = "xs";
+    await el.updateComplete;
+    const footerButton = el.shadowRoot.querySelector(
+      "footer #haxcmsmobilemenubutton",
+    );
+    const headerButton = el.shadowRoot.querySelector(
+      ".site-header #haxcmsmobilemenubutton",
+    );
+    expect(footerButton).to.exist;
+    expect(headerButton).to.be.null;
+  });
+
+  it("keeps the menu button in the top bar on desktop", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.responsiveSize = "md";
+    await el.updateComplete;
+    const headerButton = el.shadowRoot.querySelector(
+      ".site-header #haxcmsmobilemenubutton",
+    );
+    const footerButton = el.shadowRoot.querySelector(
+      "footer #haxcmsmobilemenubutton",
+    );
+    expect(headerButton).to.exist;
+    expect(footerButton).to.be.null;
+  });
+
+  it("suppresses nav arrow tooltips on mobile", async () => {
+    await setViewport({ width: 375, height: 750 });
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.responsiveSize = "xs";
+    await el.updateComplete;
+    const prev = el.shadowRoot.querySelector('site-menu-button[type="prev"]');
+    const next = el.shadowRoot.querySelector('site-menu-button[type="next"]');
+    expect(prev.hasAttribute("hide-label")).to.be.true;
+    expect(next.hasAttribute("hide-label")).to.be.true;
+  });
+
+  it("shows nav arrow tooltips on desktop", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    el.responsiveSize = "md";
+    await el.updateComplete;
+    const prev = el.shadowRoot.querySelector('site-menu-button[type="prev"]');
+    expect(prev.hasAttribute("hide-label")).to.be.false;
+  });
+});
+
 // Error handling and edge cases
 describe("clean-one error handling", () => {
   it("handles missing or invalid content gracefully", async () => {
