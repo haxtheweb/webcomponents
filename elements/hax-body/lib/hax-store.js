@@ -2766,6 +2766,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               else {
                 this.activeHaxBody.appendChild(activeEl);
               }
+              // ensure every pasted block gets the same editable / drag-drop
+              // state applied immediately; otherwise only the node that went
+              // through haxReplaceNode (the 1st one) is selectable until the
+              // MutationObserver eventually catches up (or a save/reload)
+              if (this.activeHaxBody.editMode) {
+                this.activeHaxBody.__applyNodeEditableStateWhenReady(
+                  activeEl,
+                  this.activeHaxBody.editMode,
+                );
+              }
               siblingEl = activeEl;
             }
             setTimeout(() => {

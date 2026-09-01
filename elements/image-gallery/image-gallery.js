@@ -692,7 +692,16 @@ export class ImageGallery extends I18NMixin(DDD) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "edit") {
-        if (!this.edit && oldValue === true) {
+        if (this.edit) {
+          // Entering gallery edit mode: push the current HAX edit state
+          // (_haxState) down to each image child so they are immediately
+          // selectable / content-editable without first clicking away and
+          // back. Children may have upgraded after the global
+          // editModeChanged hook ran, or that hook never reached us when
+          // nested inside a grid-plate, so we re-propagate now that the
+          // edit-wrapper slot is visible and the children are upgraded.
+          this._propagateHaxEditState();
+        } else if (oldValue === true) {
           this._updateImages();
         }
       }
@@ -744,7 +753,91 @@ export class ImageGallery extends I18NMixin(DDD) {
   haxactiveElementChanged(element, value) {
     if (value) {
       this._haxState = value;
+      // Ensure children inherit edit state when the gallery becomes the
+      // active node. This covers the nested-in-grid case where the global
+      // editModeChanged hook never reached this gallery, so its children
+      // would otherwise lack _haxState until manually re-selected.
+      this._propagateHaxEditState();
     }
+  }
+
+  /**
+   * Push the effective HAX edit state down to each image child, awaiting
+   * custom element upgrade so the child's haxeditModeChanged hook is
+   * present before we call it. Also re-applies the hax-body editable /
+   * selection machinery (data-hax-ray, drag/drop handlers) to each child
+   * so they are immediately clickable + selectable in the editor without
+   * first clicking away and back.
+   *
+   * Why this is needed: hax-body runs __rehydrateLayoutDescendants when the
+   * gallery becomes the active node, but that calls
+   * __applyNodeEditableStateWhenReady which awaits customElement upgrade +
+   * a rAF. When gallery edit mode is toggled immediately after selection,
+   * the image children are often not upgraded yet so the state never lands
+   * and nothing re-triggers it. Re-applying here, after awaiting upgrade,
+   * guarantees the children are interactive at the moment the user enters
+   * gallery edit mode. Idempotent; safe to run repeatedly.
+   */
+  async _propagateHaxEditState() {
+    await this.updateComplete;
+    const value = this._resolveHaxEditState();
+    const store = this._getHaxStore();
+    const children = Array.from(this.children).filter(
+      (el) => el.tagName === "MEDIA-IMAGE" || el.tagName === "IMG",
+    );
+    for (const child of children) {
+      if (child.tagName.includes("-")) {
+        try {
+          await customElements.whenDefined(child.tagName.toLowerCase());
+        } catch (e) {
+          // not registered yet; fall through to direct assignment below
+        }
+      }
+      // set the media-image internal flag so it suppresses zoom / modal
+      // while the editor is active
+      if (
+        child.haxeditModeChanged &&
+        typeof child.haxeditModeChanged === "function"
+      ) {
+        child.haxeditModeChanged(value);
+      } else {
+        child._haxState = value;
+      }
+      // apply the HAX selection machinery (data-hax-ray, drag/drop handlers)
+      // so children are immediately selectable in the editor. This is the
+      // same operation hax-body performs via __rehydrateLayoutDescendants;
+      // we re-run it here because the initial pass often missed the
+      // children due to upgrade timing.
+      if (
+        value &&
+        store &&
+        store.activeHaxBody &&
+        typeof store.activeHaxBody.__applyNodeEditableStateWhenReady ===
+          "function"
+      ) {
+        await store.activeHaxBody.__applyNodeEditableStateWhenReady(
+          child,
+          true,
+        );
+      }
+    }
+  }
+
+  /**
+   * Resolve the effective HAX edit state to propagate to children. Falls
+   * back to the global HaxStore / activeHaxBody editMode so we propagate
+   * true whenever the editor is active, even if this gallery's _haxState
+   * has not yet been set (e.g. nested inside a grid-plate).
+   */
+  _resolveHaxEditState() {
+    if (this._haxState) {
+      return true;
+    }
+    const store = this._getHaxStore();
+    if (store && store.activeHaxBody && store.activeHaxBody.editMode) {
+      return true;
+    }
+    return false;
   }
 
   haxpreProcessNodeToContent(node) {

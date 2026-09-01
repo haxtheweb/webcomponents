@@ -550,6 +550,91 @@ describe("ImageGallery test", () => {
       expect(element._haxState).to.be.true;
     });
 
+    it("should propagate _haxState to children when edit mode is toggled on", async () => {
+      await customElements.whenDefined("media-image");
+      const mediaImage = document.createElement("media-image");
+      mediaImage.source = "test.jpg";
+      mediaImage.alt = "Test";
+      element.appendChild(mediaImage);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      // simulate the gallery being the active HAX node while in edit mode,
+      // then enter gallery edit mode. Children must receive _haxState so
+      // they are immediately selectable without clicking away and back.
+      element._haxState = true;
+      expect(mediaImage._haxState).to.be.undefined;
+
+      element.edit = true;
+      await element.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(element.edit).to.be.true;
+      expect(mediaImage._haxState).to.be.true;
+
+      element.edit = false;
+      mediaImage.remove();
+    });
+
+    it("should propagate _haxState to children via haxactiveElementChanged", async () => {
+      await customElements.whenDefined("media-image");
+      const mediaImage = document.createElement("media-image");
+      mediaImage.source = "test.jpg";
+      mediaImage.alt = "Test";
+      element.appendChild(mediaImage);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      // covers the nested-in-grid case where the global editModeChanged
+      // hook never reached this gallery: becoming active must still push
+      // _haxState down to the image children.
+      element.haxactiveElementChanged(element, true);
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(element._haxState).to.be.true;
+      expect(mediaImage._haxState).to.be.true;
+      mediaImage.remove();
+    });
+
+    it("should apply hax-body editable state to children on edit entry", async () => {
+      await customElements.whenDefined("media-image");
+      const mediaImage = document.createElement("media-image");
+      mediaImage.source = "test.jpg";
+      mediaImage.alt = "Test";
+      element.appendChild(mediaImage);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      // mock the HaxStore + activeHaxBody so we can verify the gallery
+      // asks hax-body to apply its selection machinery (data-hax-ray,
+      // drag/drop handlers) to each child when entering gallery edit mode.
+      // This is what makes children immediately clickable/selectable
+      // without first clicking away and back.
+      const appliedNodes = [];
+      const fakeBody = {
+        editMode: true,
+        __applyNodeEditableStateWhenReady: async (node, status) => {
+          appliedNodes.push({ node, status });
+          // mimic real hax-body: tag the node so it looks selectable
+          node.setAttribute("data-hax-ray", "media image");
+        },
+      };
+      globalThis.HaxStore = {
+        requestAvailability: () => ({ activeHaxBody: fakeBody }),
+      };
+
+      element._haxState = true;
+      element.edit = true;
+      await element.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(appliedNodes).to.have.length(1);
+      expect(appliedNodes[0].node).to.equal(mediaImage);
+      expect(appliedNodes[0].status).to.be.true;
+      expect(mediaImage.hasAttribute("data-hax-ray")).to.be.true;
+
+      element.edit = false;
+      mediaImage.remove();
+      delete globalThis.HaxStore;
+    });
+
     it("should remove edit attribute via haxpreProcessNodeToContent", async () => {
       element.edit = true;
       await element.updateComplete;
@@ -592,7 +677,10 @@ describe("ImageGallery test", () => {
       expect(element.children[0].getAttribute("source")).to.equal(
         "https://dummyimage.com/300x200/000/fff",
       );
-      expect(element.children[0].getAttribute("alt")).to.equal("New image");
+      // alt is intentionally empty on insert so the author supplies a
+      // meaningful description via the HAX tray; matches the convention
+      // used by _createImageGallery / _addImageToImageGallery in hax-store.
+      expect(element.children[0].getAttribute("alt")).to.equal("");
     });
 
     it("should remove last image via haxRemoveLastImage", async () => {
