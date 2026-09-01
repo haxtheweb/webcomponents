@@ -25,10 +25,6 @@
       display: block;
       min-height: 100svh;
     }
-    #haxcmsoutdatedfallback,
-    #haxcmsoutdatedfallbacksuperold {
-      display: none;
-    }
     .use-modern-browser a {
       font-size: 22px;
     }
@@ -184,16 +180,23 @@
   <haxcms-site-builder id="site" file="site.json<?php print $HAXCMS->cacheBusterHash();?>">
     <?php print $site->getPageContent($page); ?>
   </haxcms-site-builder>
-  <div id="haxcmsoutdatedfallback">
-    <div id="haxcmsoutdatedfallbacksuperold"> 
-      <iframe id="outline" style="width:18%;float:left;height:90vh;padding:0;margin:0;" name="outline" id="frame1"
-        src="legacy-outline.html" loading="lazy"></iframe>
-      <iframe id="content" style="width:80%;float:left;height:90vh;padding:0;margin:0;" name="content" id="frame2" src="" loading="lazy"></iframe>
-      <div class="use-modern-browser">Please use a modern browser to
-        view our website correctly. <a href="http://outdatedbrowser.com/">Update my browser now</a></div>
-    </div>
-  </div>
-  <script>window.HAXCMSContext="php";document.body.removeAttribute('no-js');window.__appCDN="<?php print $HAXCMS->getCDNForDynamic($site);?>";window.__appForceUpgrade=<?php print $site->getForceUpgrade();?>;</script>
+  <script>
+      // reduce FOUC for dark mode so it starts in dark rapidly if selected
+    (function () {
+      try {
+        var ls = globalThis.localStorage;
+        var stored = ls ? ls.getItem('app-hax-darkMode') : null;
+        var dark = stored !== null
+          ? stored === 'true'
+          : !!(globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  window.HAXCMSContext="php";document.body.removeAttribute('no-js');window.__appCDN="<?php print $HAXCMS->getCDNForDynamic($site);?>";window.__appForceUpgrade=<?php print $site->getForceUpgrade();?>;</script>
   <script src="./build-haxcms.js"></script>
   <script src="<?php print $HAXCMS->getCDNForDynamic($site);?>build.js"></script>
 </body>

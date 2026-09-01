@@ -830,7 +830,7 @@ export const DDDGlobalStyles = css`
     font-weight: var(--ddd-font-weight-regular);
     letter-spacing: normal;
   }
-
+  body.dark-mode .haxcms-theme-element,
   body.dark-mode {
     color-scheme: only dark;
   }

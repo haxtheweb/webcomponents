@@ -151,7 +151,7 @@ class Store {
     }
     this.step = this.stepTest(null);
     this.darkMode = !localStorageGet("app-hax-darkMode")
-      ? false
+      ? !!(globalThis.matchMedia && globalThis.matchMedia("(prefers-color-scheme: dark)").matches)
       : localStorageGet("app-hax-darkMode");
     this.responsiveSize = "";
 

@@ -45,92 +45,160 @@
   </script>
   <style>
     body {
-      margin: 0;
-      min-height: 98vh;
-    }
-    haxcms-site-builder {
-      display: block;
-      min-height: 100svh;
-    }
-    #haxcmsoutdatedfallback,
-    #haxcmsoutdatedfallbacksuperold {
-      display: none;
-    }
-  </style>
-  <style id="loadingstyles">
-    haxcms-site-builder {
-      display: block;
-    }
-    body[no-js] haxcms-site-builder {
-      display: none !important;
-    }
-    #loading {
-      font-family: 'Open Sans', 'arial', 'serif';
-      color-scheme: light dark;
-      background-color: light-dark(#DDDDDD, #15202b);
-      color: light-dark(#15202b, #dadada);
-      inset: 0;
-      opacity: 1;
-      position: fixed;
-      transition: all linear 300ms;
-      -webkit-transition: all linear 300ms;
-      z-index: 99999999;
-    }
-    #loading.loaded {
-      animation: fade-out .7s ease-in-out;
-      animation-fill-mode: forwards;
-    }
-    #loading div.messaging {
-      left: 0px;
-      margin-top: -75px;
-      position: absolute;
-      right: 0px;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .progress-line,
-    .progress-line:before {
-      height: 8px;
-      width: 100%;
-      margin: auto;
-    }
-    .progress-line {
-      background-color: light-dark(rgba(0,0,0, 0.05), rgba(255,255,255, 0.05));
-      display: -webkit-flex;
-      display: flex;
-      width: 30vw;
-    }
-    .progress-line:before {
-      background-color: #930d0d;
-      content: '';
-      animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-    @keyframes running-progress {
-      0% {
-        margin-left: 0px;
-        margin-right: 100%;
+        color-scheme: light;
+        margin: 0;
+        padding: 0;
+        font-family: var(--ddd-font-primary, sans-serif);
+        overflow-x: hidden;
+        --app-hax-accent-color: black;
+        --app-hax-background-color: white;
+        --simple-tooltip-background: #000000;
+        --simple-tooltip-opacity: 1;
+        --simple-tooltip-text-color: #ffffff;
+        --simple-tooltip-delay-in: 0;
+        --simple-tooltip-duration-in: 200ms;
+        --simple-tooltip-duration-out: 0;
+        --simple-tooltip-border-radius: 0;
+        --simple-tooltip-font-size: 14px;
       }
-      50% {
-        margin-left: 25%;
-        margin-right: 0%;
+      body.dark-mode {
+        color-scheme: dark;
+        background-color: black;
+        --app-hax-accent-color: white;
+        --app-hax-background-color: black;
+        --simple-tooltip-background: #ffffff;
+        --simple-tooltip-text-color: #000000;
       }
-      100% {
-        margin-left: 100%;
-        margin-right: 0;
+      div[slot="externalproviders"] {
+        display: none;
       }
-    }
-    @keyframes fade-out {
-      0% {
+      body.app-loaded div[slot="externalproviders"] {
+        display: unset;
+      }
+      app-hax {
+        display: block;
+        min-height: 100vh;
+      }
+
+      #loading {
+        color-scheme: light dark;
+        background-color: light-dark(#dadada, #15202b);
+        color: light-dark(#15202b, #dadada);
+        inset: 0;
         opacity: 1;
+        position: fixed;
+        z-index: 99999999;
       }
-      99% {
-        opacity: 0;
+      #loading .loading-circle {
+        width: 20vw;
+        height: 20vw;
+        background-color: #06b9a5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 24px auto;
       }
-      100% {
-        opacity: 0;
+      #loading.loaded {
+        animation: fade-out .1s ease-in-out;
+        animation-fill-mode: forwards;
       }
-    }
+      #loading div.messaging {
+        left: 0px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: 10vh;
+      }
+      #loading div.messaging h1 {
+        font-family: Helvetica, Verdana, sans-serif !important;
+        font-size: 4vw !important;
+        margin: 24px auto 0;
+        padding: 0;
+      }
+
+      .progress-line,
+      .progress-line:before {
+        border-radius: 8px;
+        height: 20px;
+        width: 100%;
+        margin: auto;
+      }
+      .progress-line {
+        background-color: #ab2101;
+        border-radius: 8px;
+        display: -webkit-flex;
+        display: flex;
+        width: 40vw;
+        margin: 0 auto;
+      }
+      .progress-line:before {
+        border-radius: 8px;
+        background-color: #930d0d;
+        content: '';
+        animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+      @keyframes running-progress {
+        0% {
+          margin-left: 0px;
+          margin-right: 100%;
+        }
+        50% {
+          margin-left: 25%;
+          margin-right: 0%;
+        }
+        100% {
+          margin-left: 100%;
+          margin-right: 0;
+        }
+      }
+      @keyframes fade-out {
+        0% {
+          opacity: 1;
+        }
+        99% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (min-width: 721px) {
+        :root {
+          background-size: auto, 23% auto, 23% auto;
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 720px) {
+        :root {
+          background-size: auto, 26% auto, 26% auto;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 600px) {
+        :root {
+          background-size: auto, 30% auto, 30% auto;
+        }
+      }
+
+      @media (min-width: 371px) and (max-width: 480px) {
+        :root {
+          background-size: auto, 35% auto, 35% auto;
+        }
+      }
+
+      @media (max-width: 370px) {
+        :root {
+          background-size: auto, 37% auto, 37% auto;
+        }
+      }
   </style>
   <script id="loadingscript">
     globalThis.dataLayer = globalThis.dataLayer || [];
@@ -205,21 +273,29 @@
 <body no-js vocab="http://schema.org/" prefix="oer:http://oerschema.org cc:http://creativecommons.org/ns dc:http://purl.org/dc/terms/">
   <section id="loading" role="alert" aria-busy="true">
     <div class="messaging">
+      <div class="loading-circle"></div>
       <div class="progress-line"></div>
       <h1>Loading site..</h1>
     </div>
   </section>
   <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
-  <div id="haxcmsoutdatedfallback">
-    <div id="haxcmsoutdatedfallbacksuperold">
-      <iframe id="outline" style="width:18%;float:left;height:500px;padding:0;margin:0;" name="outline" id="frame1"
-        src="legacy-outline.html" loading="lazy"></iframe>
-      <iframe id="content" style="width:80%;float:left;height:500px;padding:0;margin:0;" name="content" id="frame2" src="" loading="lazy"></iframe>
-      <div style="float:left;padding:16px 0;font-size:32px;text-align: center;width:100%;">Please use a modern browser to
-        view our website correctly. <a href="http://outdatedbrowser.com/">Update my browser now</a></div>
-    </div>
-  </div>
-  <script>document.body.removeAttribute('no-js');globalThis.__appCDN='./node_modules/';globalThis.__appForceUpgrade=false;</script>
+  <script>
+      // reduce FOUC for dark mode so it starts in dark rapidly if selected
+    (function () {
+      try {
+        var ls = globalThis.localStorage;
+        var stored = ls ? ls.getItem('app-hax-darkMode') : null;
+        var dark = stored !== null
+          ? stored === 'true'
+          : !!(globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  document.body.removeAttribute('no-js');globalThis.__appCDN='./node_modules/';globalThis.__appForceUpgrade=false;</script>
   <script type="module">
     import "@haxtheweb/wc-autoload/wc-autoload.js";
     import './custom/src/custom.js';

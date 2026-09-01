@@ -781,9 +781,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this._triggerUpdatedNode.bind(this),
       { signal: this.windowControllers.signal },
     );
-    // in-case we miss the initial state as opposed to a change event
-    if (globalThis.matchMedia("(prefers-color-scheme: dark)").matches) {
-      store.darkMode = true;
+    // in-case we miss the initial state as opposed to a change event.
+    // Only apply the platform preference on a first-ever visit (no stored
+    // choice) so we never clobber an explicit light/dark override.
+    if (localStorageGet("app-hax-darkMode", null) === null) {
+      store.darkMode = globalThis.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     // change is if platform / browser preference changes while using
     globalThis
