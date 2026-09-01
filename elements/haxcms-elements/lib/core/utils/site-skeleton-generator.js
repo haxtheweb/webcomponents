@@ -84,9 +84,10 @@ class SiteSkeletonGenerator {
 
       // Additional metadata for template system
       _skeleton: {
-        originalMetadata: originalMetadata,
-        originalSettings: originalSettings,
-        fullThemeConfig: themeConfig,
+        fullThemeConfig: {
+          element: themeConfig.element,
+          variables: themeConfig.variables,
+        },
       },
     };
 
@@ -447,6 +448,11 @@ class SiteSkeletonGenerator {
         extractedSettings[key] = value;
       }
     });
+
+    // Reset instance-specific settings to sane defaults so skeletons never
+    // carry over the source site's live values.
+    extractedSettings.canonical = true;
+    extractedSettings.gaID = "";
 
     return extractedSettings;
   }

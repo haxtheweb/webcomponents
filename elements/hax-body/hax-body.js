@@ -1362,6 +1362,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.scrollHere(p, keyboardInsertScroll);
           }
         } else {
+          // explicitly insert below so double-tap-down never lands
+          // above active due to leftover drag-and-drop state
+          this.__addAbove = false;
           if (
             !this.activeNode.nextElementSibling &&
             this.children[this.children.length - 1] === this.activeNode
@@ -2362,7 +2365,96 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
 
   get primitiveTextBlocks() {
-    return ["p", "div", "pre", "h1", "h2", "h3", "h4", "h5", "h6"];
+    return [
+      "p",
+      "div",
+      "pre",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "blockquote",
+      "ul",
+      "ol",
+      "li",
+      "dl",
+      "dt",
+      "dd",
+    ];
+  }
+  /**
+   * Test if the given node is one of the "text primitive" tags that a
+   * user could reasonably start typing directly into (as opposed to a
+   * media / grid / other non-text element that needs a click-to-convert
+   * affordance placed after it).
+   */
+  __isTextPrimitiveTag(node) {
+    return (
+      !!node &&
+      !!node.tagName &&
+      this.primitiveTextBlocks.includes(node.tagName.toLowerCase())
+    );
+  }
+  /**
+   * Ensure that when the last valid child of the body is not a text
+   * primitive (eg an image, video, grid-plate, or other non-text
+   * element), we append a blank `<p data-hax-auto>` after it so the
+   * user has an obvious way to keep typing / adding text content.
+   * If left empty, this paragraph is stripped from saved output via
+   * the `data-hax-auto` marker (see haxToContent); if the user types
+   * into it, it's treated as normal saved paragraph content.
+   */
+  __ensureTrailingTextAffordance() {
+    if (!this.editMode || !this.shadowRoot) {
+      return;
+    }
+    const bodySlot = this.shadowRoot.querySelector("#body");
+    if (!bodySlot) {
+      return;
+    }
+    let children =
+      bodySlot.localName === "slot"
+        ? bodySlot.assignedNodes({ flatten: true })
+        : [];
+    if (children.length === 0) {
+      children = Array.from(bodySlot.children || []);
+    }
+    // only consider actual valid elements, ignore hax internal / inline tags
+    const validChildren = children.filter((child) =>
+      this._validElementTest(child),
+    );
+    const lastChild = validChildren[validChildren.length - 1];
+    // find any existing auto-inserted trailing paragraph
+    const existingAuto = this.querySelector(":scope > p[data-hax-auto]");
+    if (!lastChild || this.__isTextPrimitiveTag(lastChild)) {
+      // last child is text (or there's no content at all, which is
+      // handled by __ensureMinimumEditableNode); remove any stale
+      // trailing affordance that's no longer needed, so long as it's
+      // still empty (don't eat content the user typed into it)
+      if (existingAuto && this.__isEffectivelyEmptyTextBlock(existingAuto)) {
+        existingAuto.remove();
+      }
+      return;
+    }
+    // if the existing auto paragraph is already the last child, nothing to do
+    if (existingAuto && existingAuto === this.lastElementChild) {
+      return;
+    }
+    // remove a stale one before adding a fresh one at the end, so long
+    // as it's still empty (don't eat content the user typed into it)
+    if (existingAuto) {
+      if (this.__isEffectivelyEmptyTextBlock(existingAuto)) {
+        existingAuto.remove();
+      } else {
+        existingAuto.removeAttribute("data-hax-auto");
+      }
+    }
+    const paragraph = globalThis.document.createElement("p");
+    paragraph.setAttribute("data-hax-auto", "data-hax-auto");
+    this.appendChild(paragraph);
+    this.__applyNodeEditableStateWhenReady(paragraph, this.editMode);
   }
   /**
    *
@@ -2722,6 +2814,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         : [];
     var content = "";
     for (var i = 0; i < children.length; i++) {
+      // skip the auto-inserted trailing text affordance entirely when
+      // it's still empty; it's a UX-only aid and should never be part
+      // of saved / serialized content. If the user actually typed
+      // into it, let it fall through to normal paragraph handling
+      // below (data-hax-auto itself is stripped via badAttributes).
+      if (
+        children[i].tagName === "P" &&
+        children[i].hasAttribute &&
+        children[i].hasAttribute("data-hax-auto") &&
+        this.__isEffectivelyEmptyTextBlock(children[i])
+      ) {
+        continue;
+      }
       // some mild front-end sanitization
       if (this._validElementTest(children[i], true)) {
         this.__applyDragDropState(children[i], false);
@@ -3531,6 +3636,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     }
+    this.__ensureTrailingTextAffordance();
   }
   haxDeleteNode(node) {
     if (!node || !node.tagName) {
@@ -3685,25 +3791,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
-        if (this.activeNode && this.activeNode.previousElementSibling) {
-          // Insert a paragraph between the previous sibling and the
-          // current active node. haxInsert will handle editable state
-          // and focusing the new paragraph.
-          this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
-        } else if (this.activeNode) {
-          // Active node is the first child in the body (or in a slot).
-          // Manually inject a new paragraph before it and make sure it
-          // is editable and focused.
-          const p = globalThis.document.createElement("p");
-          // account for slot being set in this edge case of being
-          // the 1st child inserted into an element that is NOT parent body
-          if (this.activeNode.getAttribute("slot")) {
-            p.setAttribute("slot", this.activeNode.getAttribute("slot"));
-          }
-          this.activeNode.parentNode.insertBefore(p, this.activeNode);
-          this.__applyNodeEditableStateWhenReady(p, this.editMode);
-          this.__focusLogic(p);
-          this.scrollHere(p);
+        if (this.activeNode) {
+          // Insert a paragraph directly above the active node.
+          // haxInsert will handle editable state and focusing the
+          // new paragraph; the explicit __addAbove flag ensures
+          // insertion lands directly above regardless of any
+          // leftover drag-and-drop positioning state.
+          this.__addAbove = true;
+          this.haxInsert("p", "", {}, this.activeNode);
         } else {
           // No active node yet; create a new paragraph at the end of
           // the body and focus it so the user can start typing.
@@ -3715,7 +3810,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "insert-below-active":
-        this.haxInsert("p", "", {});
+        // Explicitly insert below the active node, regardless of any
+        // leftover drag-and-drop positioning state.
+        this.__addAbove = false;
+        this.haxInsert("p", "", {}, this.activeNode);
         break;
       case "move-to-slot":
         if (
@@ -4326,6 +4424,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
           }
         }
+        this.__ensureTrailingTextAffordance();
         this._haxContextOperation({
           detail: {
             eventName: "content-edit",
@@ -4878,6 +4977,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 100);
           }
         });
+        // Keep the trailing click-to-convert text affordance in sync
+        // with whatever just changed (nodes added, removed, or
+        // reordered). Scoped to this branch so undo/redo playback and
+        // drag-move states don't get extra placeholder mutations mixed
+        // into their tracked changes.
+        this.__ensureTrailingTextAffordance();
       }
       // when active-node transitions are being ignored, still ensure
       // newly added nodes receive editable + data-hax-* state so

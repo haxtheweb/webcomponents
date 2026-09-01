@@ -1235,18 +1235,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         skeleton.site = {};
       }
       skeleton.site.platform = platformConfig;
-      if (!skeleton._skeleton) {
-        skeleton._skeleton = {};
-      }
-      if (!skeleton._skeleton.originalMetadata) {
-        skeleton._skeleton.originalMetadata = {};
-      }
-      skeleton._skeleton.originalMetadata.platform = platformConfig;
-
-      // Ensure settings exist as well (some consumers key off site.settings)
-      if (!skeleton._skeleton.originalSettings) {
-        skeleton._skeleton.originalSettings = {};
-      }
 
       SiteSkeletonGenerator.downloadSkeleton(skeleton);
 
