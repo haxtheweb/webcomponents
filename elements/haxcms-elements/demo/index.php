@@ -46,7 +46,9 @@
       display: none !important;
     }
     #loading {
-      background-color: white;
+      background-color: light-dark(white, black);
+      font-family: 'Open Sans', 'arial', 'serif';
+      color: light-dark(black, white);
       inset: 0;
       opacity: 1;
       position: fixed;
@@ -60,8 +62,7 @@
       animation-fill-mode: forwards;
     }
     #loading div.messaging {
-      color: rgba(255,255,255, 0.7);
-      font-family: Roboto;
+      color: light-dark(rgba(255,255,255, 0.7), rgba(0,0,0, 0.7));
       left: 0px;
       margin-top: -75px;
       position: absolute;
@@ -71,8 +72,7 @@
       transform: translateY(-50%);
     }
     #loading div.messaging h1 {
-      color: white;
-      font-family: 'Open Sans', 'arial', 'serif';
+      color: light-dark(black, white);
       font-size: 40px;
       background-color: <?php print $color; ?>;
       transition: .4s ease-in-out all;

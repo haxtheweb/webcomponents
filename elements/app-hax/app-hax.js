@@ -2258,7 +2258,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               : ``}
           </div>
 
-          <div slot="center">HAXcms Site Dashboard</div>
+          <div slot="center">HAX Site Dashboard</div>
 
           <div slot="right" class="right-group">
             <app-hax-user-menu

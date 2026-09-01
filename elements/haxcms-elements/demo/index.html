@@ -65,7 +65,10 @@
       display: none !important;
     }
     #loading {
-      background-color: white;
+      font-family: 'Open Sans', 'arial', 'serif';
+      color-scheme: light dark;
+      background-color: light-dark(#DDDDDD, #15202b);
+      color: light-dark(#15202b, #dadada);
       inset: 0;
       opacity: 1;
       position: fixed;
@@ -78,8 +81,6 @@
       animation-fill-mode: forwards;
     }
     #loading div.messaging {
-      color: rgba(255,255,255, 0.7);
-      font-family: Roboto;
       left: 0px;
       margin-top: -75px;
       position: absolute;
@@ -95,13 +96,13 @@
       margin: auto;
     }
     .progress-line {
-      background-color: rgba(0,0,0, 0.05);
+      background-color: light-dark(rgba(0,0,0, 0.05), rgba(255,255,255, 0.05));
       display: -webkit-flex;
       display: flex;
       width: 30vw;
     }
     .progress-line:before {
-      background-color: orange;
+      background-color: #930d0d;
       content: '';
       animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }

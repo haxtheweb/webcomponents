@@ -1012,6 +1012,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     }
   }
   /**
+   * Tags that should never be wrapped in replace-tag. These are tags whose
+   * definitions are effectively free by the time this runs (their
+   * dependencies - lit, mobx, the haxcms store, DDD, simple-icon - are
+   * already loaded as part of core site building) and/or that render no
+   * visible content for anonymous users, so gating them behind
+   * replace-tag's low-performance "click to load" UX only confuses users
+   * with a placeholder for something that isn't actually visible.
+   * See haxtheweb/issues#2989.
+   */
+  static get replaceTagExcludedTags() {
+    return ["page-break"];
+  }
+  /**
    * Find custom element tags and replace with replace-tag for performance gains based on device context
    */
   replaceTagReplacement(html) {
@@ -1025,7 +1038,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         tag = tag.split(" ")[0];
       }
       // replace the matching custom element tag name with replace-tag
-      if (tag.indexOf("-") != -1) {
+      // unless it's in the exclusion list (see replaceTagExcludedTags)
+      if (
+        tag.indexOf("-") != -1 &&
+        !HAXCMSSiteBuilder.replaceTagExcludedTags.includes(tag)
+      ) {
         // shift the replacement over to with; leave everything else the same
         html = html.replace("<" + tag, '<replace-tag with="' + tag + '" ');
         // ensure a matching closing tag is also updated
