@@ -297,7 +297,7 @@ class CleanTwo extends LTIResizingMixin(
           flex: 0 1 0%;
           margin: 0;
           padding: 0;
-          margin-left: -332px;
+          margin-left: -333px;
           transition: margin 0.3s ease;
           height: fit-content;
         }
@@ -409,6 +409,9 @@ class CleanTwo extends LTIResizingMixin(
           width: 36px;
         }
         .content-wrapper {
+          width: -moz-available;          
+          width: -webkit-fill-available;  
+          width: stretch;   
           max-width: 100%;
           margin: 0;
           display: flex;
