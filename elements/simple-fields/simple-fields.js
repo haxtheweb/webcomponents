@@ -45,13 +45,24 @@ import "./lib/simple-fields-field.js";
  `--simple-fields-disabled-color` | disabled text color | #999
  `--simple-fields-disabled-opacity` | opacity for disabled field | 0.7
  
- #### Radio Buttons and Checkboxes
- Custom property | Description | Default
- ----------------|-------------|--------
- `--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
- `--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
- 
- ### Configuring schemaConversion Property
+#### Radio Buttons and Checkboxes
+Custom property | Description | Default
+----------------|-------------|--------
+`--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
+`--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
+
+#### Row layout (Ubuntu-style settings rows, issue #2996)
+Custom property | Description | Default
+----------------|-------------|--------
+`--simple-fields-row-hover-background-color` | background color of a row on hover | light-dark(rgba(0,0,0,0.08), rgba(255,255,255,0.12))
+`--simple-fields-row-focus-outline-width` | outline width of a row when it (or a child) has focus | 1px
+`--simple-fields-row-focus-outline-color` | outline color of a row when it (or a child) has focus | var(--simple-fields-accent-color)
+`--simple-fields-info-icon-size` | size of the (i) info icon shown for descriptions longer than 5 words (tooltip shows on hover/focus, positioned above) | calc(var(--ddd-icon-4xs) - 2px)
+`--simple-fields-info-icon-color` | color of the (i) info icon | var(--simple-fields-accent-color)
+`--simple-fields-select-max-width` | max width of a single-select value in a row before it truncates to an ellipsis (multiple selects unaffected) | 40ch
+`--simple-fields-number-max-width` | max width of a bounded (min/max/step) number input in a row | 12ch
+
+### Configuring schemaConversion Property
  You can customise elements from JSON schema conversion by setting `schemaConversion` property.
  ```
  type: {                                       //For properties in "this.schema", define elements based on a property's "type"

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
+import { SimpleFieldsRowStyles } from "./simple-fields-ui.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
@@ -15,6 +16,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
     static get styles() {
       return [
         super.styles,
+        ...SimpleFieldsRowStyles,
         css`
           fieldset {
             margin: 0;
@@ -82,6 +84,34 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             color: var(--simple-fields-accent-color, #003f7d);
             transition: color ease-in-out;
           }
+          /* Ubuntu-style settings row layout for multi-checkbox groups
+             (issue #2996): each option row gets label-left/control-right,
+             vertically centered, with its own hover/focus affordance. */
+          :host([type="checkbox"]) .option {
+            align-items: center;
+            border-radius: var(--simple-fields-border-radius, 2px);
+            transition: background-color 0.3s ease-in-out;
+          }
+          :host([type="checkbox"]) .option label {
+            flex: 1 1 auto;
+            width: auto;
+            text-align: start;
+          }
+          :host([type="checkbox"]) .option:hover {
+            background-color: var(
+              --simple-fields-row-hover-background-color,
+              light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12))
+            );
+          }
+          :host([type="checkbox"]) .option:focus-within {
+            outline: var(--simple-fields-row-focus-outline-width, 1px) solid
+              var(
+                --simple-fields-row-focus-outline-color,
+                var(--simple-fields-accent-color, #3f51b5)
+              );
+            outline-offset: -1px;
+            transition: outline-color 0.3s ease-in-out;
+          }
           :host([type]) fieldset .border-bottom {
             display: block;
           }
@@ -94,6 +124,23 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           }
           .field-main.inline {
             align-items: center;
+          }
+          /* Ubuntu-style settings row layout (issue #2996): label+description
+             sit to the left, control is right-aligned and vertically
+             centered. Applied per-type as each phase converts it.
+             Self-contained as a flex row so non-inline types (e.g. select,
+             bounded number) do not depend on .field-main.inline for
+             display:flex. */
+          .field-main.row-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .field-main.row-layout #field-main-inner {
+            display: flex;
+            align-items: center;
+            flex: 0 1 auto;
+            min-width: 0;
           }
           input {
             background-color: var(
@@ -225,12 +272,43 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           select:focus-within {
             outline: none;
           }
+          /* Ubuntu-style settings row layout for single select (issue #2996):
+             the select sizes to its selected value and sits right-aligned,
+             with the chevron immediately adjacent so it aligns with where
+             the native dropdown opens. Long values truncate to an ellipsis
+             at the consistent max width. Multiple selects keep the legacy
+             full-width list-box treatment (absolute chevron, full width). */
+          .field-main.row-layout select.field {
+            width: auto;
+            max-width: var(--simple-fields-select-max-width, 40ch);
+            min-width: 0;
+            flex: 0 1 auto;
+            padding-right: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          :host([type="select"]) .field-main.row-layout simple-icon-lite {
+            position: static;
+            flex: 0 0 auto;
+            margin-inline-start: var(--simple-fields-margin-small, 8px);
+            pointer-events: none;
+          }
+          /* Bounded number fields (min/max/step) behave like a select-style
+             stepper (issue #2996): compact, right-aligned value. Plain number
+             fields without bounds stay full-width (Phase 5). */
+          .field-main.row-layout input[type="number"] {
+            width: auto;
+            max-width: var(--simple-fields-number-max-width, 12ch);
+            min-width: 0;
+            flex: 0 1 auto;
+            text-align: end;
+          }
           :host([type="checkbox"]) span,
           :host([type="radio"]) span {
             position: relative;
             flex: 0 0 auto;
             display: flex;
-            align-items: center;
           }
           :host([type="checkbox"]) fieldset.block-options span,
           :host([type="radio"]) fieldset.block-options span {
@@ -246,7 +324,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="radio"]) span:focus-within {
             color: var(--simple-fields-accent-color, #003f7d);
           }
-          :host([type="checkbox"]) label.checkbox-label,
+          :host([type="checkbox"]) label.checkbox-label {
+            flex: 1 1 auto;
+            width: auto;
+          }
           :host([type="radio"]) label.radio-label {
             flex: 0 0 auto;
             width: 80%;
@@ -607,6 +688,12 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.addEventListener("focusout", this._hoverStateOff.bind(this));
         this.addEventListener("mouseout", this._hoverStateOff.bind(this));
       }
+      // clicking anywhere on a single-select row should activate the
+      // native select, not only a direct click on the combobox
+      // (issue #2996, Phase 2 feedback)
+      if (this.type === "select" && !this.multiple) {
+        this.addEventListener("click", this._selectClickActivate.bind(this));
+      }
     }
     _selectionShortCut(e) {
       let checked = true
@@ -616,6 +703,26 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           : (this.value || []).includes((false || {}).value);
       this._handleIconClick(checked);
     }
+    /**
+     * clicking anywhere on a single-select row activates the native
+     * select: focus it and open its dropdown, so users do not have to
+     * click directly on the combobox (issue #2996, Phase 2 feedback).
+     * A direct click on the select itself is left to the native handler.
+     */
+    _selectClickActivate(e) {
+      const path = e.composedPath ? e.composedPath() : [];
+      if (path[0] === this.field) return;
+      if (this.field && typeof this.field.focus === "function") {
+        this.field.focus();
+      }
+      if (this.field && typeof this.field.showPicker === "function") {
+        try {
+          this.field.showPicker();
+        } catch (err) {
+          // showPicker unsupported or blocked; focus is the fallback
+        }
+      }
+    }
     _hoverState() {
       this.hovered = true;
     }
@@ -624,6 +731,12 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
     }
     updated(changedProperties) {
       if (!this.field) this._updateField();
+      // mirror isRowBasedField onto the host as a [row-layout] attribute
+      // (issue #2996) so shared :host([row-layout]) CSS applies to every
+      // row-based field type (checkbox, single select, bounded number)
+      // without per-type selectors.
+      if (this.isRowBasedField) this.setAttribute("row-layout", "");
+      else this.removeAttribute("row-layout");
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "id" && !this.id) this.id = this._generateUUID();
         if (this._getAttributes(this.type).includes(propName))
@@ -688,7 +801,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             : "field-main"} ${this.sortedOptions &&
           !this.sortedOptions.length > 0
             ? "field-main-multi"
-            : "field-main-single"}"
+            : "field-main-single"} ${this.isRowBasedField
+            ? "row-layout"
+            : ""}"
           part="field-main"
         >
           ${this.labelTemplate}

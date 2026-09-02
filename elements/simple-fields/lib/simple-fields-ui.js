@@ -13,7 +13,13 @@ export const SimpleFieldsBaseStyles = [
       font-size: var(--simple-fields-detail-font-size, 12px);
       font-family: var(--simple-fields-detail-font-family, sans-serif);
       line-height: var(--simple-fields-detail-line-height, 130%);
-      background-color: var(--simple-fields-background-color, white);
+      background-color: var(
+        --simple-fields-background-color,
+        light-dark(
+          var(--ddd-theme-default-white, #ffffff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
+      );
       color: var(--simple-fields-color, currentColor);
       margin: 0 0
         var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
@@ -275,6 +281,50 @@ export const SimpleFieldsDescriptionStyles = [
     :host:hover *[part="error-meta"] {
       color: var(--simple-fields-focus-meta-color);
       opacity: var(--simple-fields-focus-meta-opacity, unset);
+    }
+    /* Row-based fields (Ubuntu-style settings layout, issue #2996):
+       description text is relocated as subtext under the label (or behind
+       an (i) info icon for long text), so the field-desc shown here is
+       not gated by hover. The host carries a [row-layout] attribute
+       (mirrored from isRowBasedField) so this auto-applies to every
+       field type as later phases convert it. */
+    :host([row-layout]) *[part="field-desc"] {
+      opacity: var(--simple-fields-meta-opacity, 1);
+    }
+  `,
+];
+export const SimpleFieldsRowStyles = [
+  css`
+    /* Ubuntu-style settings row hover/focus affordance (issue #2996).
+       Scoped to the [row-layout] host attribute so it applies to every
+       row-based field type (checkbox, single select, bounded number, and
+       future phases) without affecting non-row fields. */
+    :host([row-layout]:hover) {
+      background-color: var(
+        --simple-fields-row-hover-background-color,
+        light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12))
+      );
+      transition: background-color 0.3s ease-in-out;
+    }
+    :host([row-layout]:focus-within) {
+      outline: var(--simple-fields-row-focus-outline-width, 1px) solid
+        var(
+          --simple-fields-row-focus-outline-color,
+          var(--simple-fields-accent-color, #3f51b5)
+        );
+      outline-offset: -1px;
+      transition: outline-color 0.3s ease-in-out;
+    }
+    /* Ubuntu-style settings rows are start-aligned (issue #2996).
+       The pre-existing .inline label rule sets text-align to
+       var(--simple-fields-text-align) with no fallback, so when that
+       custom property is unset the value inherits from the host page.
+       The .label-text wrapper stretches its children to a shared width,
+       which exposes any inherited ambient center alignment. Force start
+       here so row-layout labels and descriptions never inherit center. */
+    .field-main.row-layout .label-main,
+    .field-main.row-layout .label-text {
+      text-align: start;
     }
   `,
 ];

@@ -501,12 +501,14 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
+          margin: 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-1);
         }
         #settingsform a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-1);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
         }
         #settingsform a11y-collapse span[slot="heading"] {
           --a11y-collapse-heading-color: var(
@@ -517,9 +519,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-sm));
           line-height: var(--ddd-lh-140, 140%);
           font-weight: var(--ddd-font-weight-medium);
-        }
-        #settingsform simple-fields-field:hover::part(label) {
-          font-weight: var(--ddd-font-weight-bold);
         }
         #settingsform a11y-collapse span[slot="heading"] {
           line-height: var(--ddd-spacing-7);

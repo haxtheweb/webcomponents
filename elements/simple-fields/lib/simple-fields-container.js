@@ -3,7 +3,18 @@ import {
   SimpleFieldsBaseStyles,
   SimpleFieldsLabelStyles,
   SimpleFieldsDescriptionStyles,
+  SimpleFieldsRowStyles,
 } from "./simple-fields-ui.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+
+/**
+ * descriptions at or below this many words render as plain subtext
+ * under the label (Ubuntu-style settings row, issue #2996). Longer
+ * descriptions collapse behind an (i) info icon whose tooltip shows on
+ * hover/focus (positioned above) and hides on blur/mouseleave.
+ */
+const SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS = 5;
 
 /**
  * @class SimpleFieldsContainerBehaviors
@@ -18,7 +29,29 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         ...SimpleFieldsBaseStyles,
         ...SimpleFieldsLabelStyles,
         ...SimpleFieldsDescriptionStyles,
+        ...SimpleFieldsRowStyles,
         css`
+          .info-toggle {
+            --simple-fields-info-icon-size: var(--ddd-icon-4xs);
+            width: var(--simple-fields-info-icon-size);
+            height: var(--simple-fields-info-icon-size);
+            --simple-icon-width: var(
+              --simple-fields-info-icon-size);
+            --simple-icon-height: var(--simple-fields-info-icon-size);
+            color: var(
+              --simple-fields-info-icon-color,
+              var(--simple-fields-meta-color, currentColor)
+            );
+            margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+          }
+          .label-main {
+            display: flex;
+            align-items: center;
+          }
+          .label-text {
+            display: flex;
+            flex-direction: column;
+          }
           :host {
             display: block;
           }
@@ -436,6 +469,33 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     }
 
     /**
+     * whether this field type has been converted to the Ubuntu-style
+     * settings row layout (issue #2996), where the label/description
+     * live to the left of the control and the description is rendered
+     * inline under the label (or behind an info-icon tooltip) instead
+     * of in the field-bottom area
+     *
+     * @readonly
+     * @returns {boolean}
+     * @memberof SimpleFieldsContainer
+     */
+    get isRowBasedField() {
+      // multi-option fieldsets (checkbox/radio groups) render a <legend>
+      // instead of the label template, so the group-level description
+      // still belongs in fieldBottom; only single-value fields adopt the
+      // new label-embedded description/info-icon behavior for now.
+      // Single (non-multiple) selects join the row layout; multiple
+      // selects keep the legacy full-width list-box treatment. A number
+      // field with min/max/step is effectively a bounded stepper, so it
+      // adopts the row layout too; plain numbers stay full-width (Phase 5).
+      return (
+        (this.type === "checkbox" && !this.hasFieldset) ||
+        (this.type === "select" && !this.multiple) ||
+        (this.type === "number" &&
+          (this.min != null || this.max != null || this.step != null))
+      );
+    }
+    /**
      * template for slotted or shadow DOM description
      *
      * @readonly
@@ -443,6 +503,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     get descriptionTemplate() {
+      if (this.isRowBasedField) return ``;
       return html`
         <div id="description" part="field-desc">
           <slot name="description"></slot>
@@ -564,10 +625,97 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ?hidden="${this.type === "fieldset"}"
           part="label"
         >
-          <slot name="label-prefix"></slot>
-          <slot name="label"></slot>
-          ${this.label}${this.error || this.required ? "*" : ""}
+          <span class="label-text">
+            <span>
+              <slot name="label-prefix"></slot>
+              <slot name="label"></slot>
+              ${this.label}${this.error || this.required ? "*" : ""}
+            </span>
+            ${this.inlineDescriptionTemplate}
+          </span>
+          ${this.infoToggleTemplate}
         </label>
+      `;
+    }
+    /**
+     * whether the description is short enough to render as plain subtext
+     * under the label (Ubuntu-style row layout) instead of behind a
+     * click-triggered info icon
+     *
+     * @readonly
+     * @returns {boolean}
+     * @memberof SimpleFieldsContainer
+     */
+    get hasInlineDescription() {
+      return (
+        this.isRowBasedField &&
+        !!this.description &&
+        this.description.trim().split(/\s+/).filter(Boolean).length <=
+          SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
+      );
+    }
+    /**
+     * whether the description is long enough to require the
+     * (i) info icon / tooltip instead of inline subtext
+     *
+     * @readonly
+     * @returns {boolean}
+     * @memberof SimpleFieldsContainer
+     */
+    get hasInfoTooltip() {
+      return (
+        this.isRowBasedField &&
+        !!this.description &&
+        this.description.trim().split(/\s+/).filter(Boolean).length >
+          SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
+      );
+    }
+    /**
+     * template for description subtext rendered under the label
+     * when the description is short enough to display inline
+     *
+     * @readonly
+     * @returns {object}
+     * @memberof SimpleFieldsContainer
+     */
+    get inlineDescriptionTemplate() {
+      return !this.hasInlineDescription
+        ? ``
+        : html` <span id="description" part="field-desc"
+            >${this.description}</span
+          >`;
+    }
+    /**
+     * template for the (i) info icon and its tooltip, used when a
+     * description is too long (over 5 words) to render as inline
+     * subtext. The tooltip is native (shows on hover/focus, hides on
+     * blur/mouseleave) and positioned above the icon.
+     *
+     * @readonly
+     * @returns {object}
+     * @memberof SimpleFieldsContainer
+     */
+    get infoToggleTemplate() {
+      if (!this.hasInfoTooltip) return ``;
+      const infoId = `${this.fieldId}-info`;
+      return html`
+        <simple-icon-button-lite
+          id="${infoId}"
+          icon="icons:info-outline"
+          label="${this.label ? `${this.label} details` : `Field details`}"
+          part="info-toggle"
+          class="info-toggle"
+          @click="${(e) => e.stopPropagation()}"
+        ></simple-icon-button-lite>
+        <simple-tooltip
+          id="description"
+          for="${infoId}"
+          position="top"
+          fit-to-visible-bounds
+          part="info-tooltip"
+        >
+          ${this.description}
+        </simple-tooltip>
       `;
     }
     get multicheck() {

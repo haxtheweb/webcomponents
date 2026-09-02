@@ -65,11 +65,11 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         :host([responsive-size="xs"]),
         div[part="description"] {
-          font-size: var(--ddd-font-size-4xs, 10px);
-          --simple-fields-font-size: var(--ddd-font-size-4xs, 10px);
-          --simple-fields-button-font-size: var(--ddd-font-size-3xs, 11px);
-          --simple-fields-legend-font-size: var(--ddd-font-size-3xs, 11px);
-          --simple-fields-detail-font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-6xs);
+          --simple-fields-font-size: var(--ddd-font-size-6xs);
+          --simple-fields-button-font-size: var(--ddd-font-size-5xs, 10px);
+          --simple-fields-legend-font-size: var(--ddd-font-size-5xs, 10px);
+          --simple-fields-detail-font-size: var(--ddd-font-size-6xs);
         }
         fieldset {
           padding: 0px;
@@ -107,7 +107,7 @@ class SimpleFieldsUpload extends I18NMixin(
         simple-toolbar-button {
           display: inline-flex;
           font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-6xs);
           color: var(--ddd-theme-default-coalyGray, black);
           margin: var(--ddd-spacing-1, 4px);
           padding: 0;
@@ -136,7 +136,7 @@ class SimpleFieldsUpload extends I18NMixin(
           position: relative;
           overflow: visible;
           border: none !important;
-          font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-6xs);
         }
         simple-file-upload::part(file-list) {
           max-height: 140px;
@@ -190,7 +190,7 @@ class SimpleFieldsUpload extends I18NMixin(
           padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
           margin: 0 var(--ddd-spacing-1, 4px);
           font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--ddd-font-size-6xs);
           min-width: 60px;
           text-align: center;
           cursor: pointer;

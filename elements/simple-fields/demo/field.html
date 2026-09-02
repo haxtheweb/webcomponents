@@ -24,6 +24,14 @@
             {value: "dinner", "text": "Dinner"}
           ];
         });
+        document.querySelectorAll('#select-row simple-fields-field').forEach(el=>{
+          el.itemsList=[
+            {value: "public", "text": "Public"},
+            {value: "members", "text": "Members only"},
+            {value: "private", "text": "Private"},
+            {value: "inherit", "text": "Inherit from parent"}
+          ];
+        });
         document.querySelectorAll('#check').forEach(el=>{
           el.options={
             "red": "Red",
@@ -104,6 +112,30 @@
             type="number"
             suffix="red ballons">
           </simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Row Layout (Ubuntu-style settings row, issue #2996)</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field type="checkbox" label="Enable notifications"></simple-fields-field>
+          <simple-fields-field type="checkbox" label="Enable notifications" description="Get notified of updates"></simple-fields-field>
+          <simple-fields-field type="checkbox" label="Enable notifications" description="Receive a summary of activity across all of your connected sites, delivered on the schedule you configure below, including digest frequency and quiet hours."></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Select Row Layout (Ubuntu-style settings row, issue #2996)</h2>
+      <demo-snippet id="select-row">
+        <template>
+          <simple-fields-field type="select" label="Default visibility" description="Who can view this element"></simple-fields-field>
+          <simple-fields-field type="select" label="Default visibility" description="Control who can view this element across the site and in search results, including inherited permissions from parent pages."></simple-fields-field>
+          <simple-fields-field type="select" multiple label="Allowed roles" description="Pick all that apply (legacy full-width list box)"></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Number Row Layout (bounded min/max/step, issue #2996)</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field type="number" label="Columns" description="Grid column count" min="1" max="12" step="1" value="3"></simple-fields-field>
+          <simple-fields-field type="number" label="Font size" description="Base body font size in pixels for this element and nested content" min="8" max="72" step="1" value="16"></simple-fields-field>
+          <simple-fields-field type="number" label="Any number" description="No bounds (legacy full-width)"></simple-fields-field>
         </template>
       </demo-snippet>
       <h2>Multiple Options</h2>
