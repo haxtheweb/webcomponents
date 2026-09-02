@@ -188,17 +188,33 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: 100%;
           padding: var(--ddd-spacing-4) 0;
         }
-        :host([mini]) .results lit-virtualizer {
-          max-height: unset;
-          height: unset;
-        }
-        .results lit-virtualizer {
+        .results lit-virtualizer,
+        .results-list {
           max-height: 50vh;
           width: 100%;
           display: block;
           height: 50vh;
           border: var(--ddd-border-sm) solid
             var(--simple-colors-default-theme-grey-10, black);
+        }
+        /* Mini/inline Merlin: do NOT use lit-virtualizer. With scroller +
+           contain:size it computes viewport via clipping-ancestor
+           intersection; absolute-position-behavior often yields an empty
+           active range (sizer translates, zero rows). Result sets are small.
+           Cap visible height to ~5 mini rows so the popup stays compact. */
+        :host([mini]) .results-list {
+          height: auto;
+          /* ~5 mini rows: button pad + title + path (see super-daemon-row mini) */
+          max-height: calc(
+            5 *
+              (
+                (var(--ddd-spacing-3) * 2) + var(--super-daemon-row-label, 14px) +
+                  var(--ddd-spacing-1) + var(--super-daemon-row-path, 10px)
+              )
+          );
+          overflow-x: hidden;
+          overflow-y: auto;
+          border: none;
         }
         .results super-daemon-row {
           scroll-snap-align: start;
@@ -382,7 +398,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
             // reset to top of results
-            this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+            const list = this.shadowRoot.querySelector(".results-list");
+            if (list) {
+              list.scrollTo(0, 0);
+            } else {
+              this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+            }
           }
         }
       }
@@ -413,6 +434,35 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
 
   selectInput() {
     this.shadowRoot.querySelector("super-daemon-search").selectInput();
+  }
+
+  /**
+   * Shared row template for mini (plain list) and full (lit-virtualizer).
+   */
+  _renderResultRow(item, i) {
+    if (!item) {
+      return nothing;
+    }
+    return html`<super-daemon-row
+      role="option"
+      id="option-${i}"
+      tabindex="-1"
+      aria-selected="${this._selectedIndex === i}"
+      data-row-index="${i}"
+      ?striped="${i % 2 !== 0}"
+      .value="${item.value || {}}"
+      icon="${item.icon}"
+      image="${item.image}"
+      ?dark="${this.dark}"
+      text-character="${item.textCharacter}"
+      title="${item.title}"
+      .tags="${item.tags || []}"
+      event-name="${item.eventName}"
+      path="${item.path}"
+      ?more="${item.more && (!this.mini || this.wand)}"
+      ?mini="${this.mini}"
+      >${item.more ? item.more : nothing}</super-daemon-row
+    >`;
   }
 
   setupProgram(initialProgramSearch = "") {
@@ -457,16 +507,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // Use requestAnimationFrame to ensure DOM is updated before setting active state
     requestAnimationFrame(() => {
       // Update active property on all options after re-render
-      this.shadowRoot.querySelectorAll("super-daemon-row").forEach((row, i) => {
-        const isSelected = i === index;
-        row.active = isSelected; // This controls the visual highlighting
+      const rows = this.shadowRoot.querySelectorAll("super-daemon-row");
+      rows.forEach((row, i) => {
+        row.active = i === index;
       });
 
-      // Scroll the selected item into view
-      if (index >= 0 && this.shadowRoot.querySelector("lit-virtualizer")) {
-        this.shadowRoot
-          .querySelector("lit-virtualizer")
-          .scrollToIndex(index, "center");
+      // Scroll the selected item into view (virtualizer or plain mini list)
+      if (index >= 0) {
+        const virtualizer = this.shadowRoot.querySelector("lit-virtualizer");
+        if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
+          virtualizer.scrollToIndex(index, "center");
+        } else if (rows[index] && typeof rows[index].scrollIntoView === "function") {
+          rows[index].scrollIntoView({ block: "nearest" });
+        }
       }
     });
   }
@@ -507,6 +560,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       this.filtered.length > 0 &&
       this.shadowRoot.querySelector("super-daemon-row[active]")
     ) {
+      const virtualizer = this.shadowRoot.querySelector("lit-virtualizer");
       switch (e.key) {
         case "ArrowUp":
         case "ArrowLeft":
@@ -515,13 +569,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
             this.shadowRoot.querySelector("super-daemon-row")
           ) {
-            this.shadowRoot
-              .querySelector("lit-virtualizer")
-              .scrollToIndex(this.filtered.length - 1, "center");
+            if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
+              virtualizer.scrollToIndex(this.filtered.length - 1, "center");
+            }
             requestAnimationFrame(() => {
-              this.shadowRoot
-                .querySelector("super-daemon-row:last-of-type")
-                .focus();
+              const last = this.shadowRoot.querySelector(
+                "super-daemon-row:last-of-type",
+              );
+              if (last) {
+                last.focus();
+                if (typeof last.scrollIntoView === "function") {
+                  last.scrollIntoView({ block: "nearest" });
+                }
+              }
             });
           } else {
             this.shadowRoot
@@ -536,11 +596,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
             this.shadowRoot.querySelector("super-daemon-row:last-of-type")
           ) {
-            this.shadowRoot
-              .querySelector("lit-virtualizer")
-              .scrollToIndex(0, "center");
+            if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
+              virtualizer.scrollToIndex(0, "center");
+            }
             requestAnimationFrame(() => {
-              this.shadowRoot.querySelector("super-daemon-row").focus();
+              const first = this.shadowRoot.querySelector("super-daemon-row");
+              if (first) {
+                first.focus();
+                if (typeof first.scrollIntoView === "function") {
+                  first.scrollIntoView({ block: "nearest" });
+                }
+              }
             });
           } else {
             this.shadowRoot
@@ -849,40 +915,30 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                     ${this.t.noResultsForThisTerm || "No results for this term"}
                     <div class="slotted"><slot></slot></div>
                   </div> `
-                : html`
-                    <lit-virtualizer
-                      role="listbox"
-                      id="results-listbox"
-                      aria-label="${this.t.results || "Results"}"
-                      scroller
-                      .items=${this.filtered}
-                      .renderItem=${(item, i) =>
-                        item
-                          ? html`<super-daemon-row
-                              role="option"
-                              id="option-${i}"
-                              tabindex="-1"
-                              aria-selected="${this._selectedIndex === i}"
-                              data-row-index="${i}"
-                              ?striped="${i % 2 !== 0}"
-                              .value="${item.value || {}}"
-                              icon="${item.icon}"
-                              image="${item.image}"
-                              ?dark="${this.dark}"
-                              text-character="${item.textCharacter}"
-                              title="${item.title}"
-                              .tags="${item.tags || []}"
-                              event-name="${item.eventName}"
-                              path="${item.path}"
-                              ?more="${item.more && (!this.mini || this.wand)}"
-                              ?mini="${this.mini}"
-                              >${item.more
-                                ? item.more
-                                : nothing}</super-daemon-row
-                            >`
-                          : nothing}
-                    ></lit-virtualizer>
-                  `}
+                : this.mini
+                  ? html`
+                      <div
+                        class="results-list"
+                        role="listbox"
+                        id="results-listbox"
+                        aria-label="${this.t.results || "Results"}"
+                      >
+                        ${this.filtered.map((item, i) =>
+                          this._renderResultRow(item, i),
+                        )}
+                      </div>
+                    `
+                  : html`
+                      <lit-virtualizer
+                        role="listbox"
+                        id="results-listbox"
+                        aria-label="${this.t.results || "Results"}"
+                        scroller
+                        .items=${this.filtered}
+                        .renderItem=${(item, i) =>
+                          this._renderResultRow(item, i)}
+                      ></lit-virtualizer>
+                    `}
             `}
         <div class="results-stats">
           ${this.filtered.length} / ${this.items.length}
