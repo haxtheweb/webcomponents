@@ -483,7 +483,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       <div class="random-content-container">
         <div class="header">
           <simple-icon-button-lite
-            icon="icons:shuffle"
+            icon="av:shuffle"
             @click="${this.shuffleContent}"
             title="${this.t.shuffle}"
             class="shuffle-btn"
@@ -525,7 +525,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       gizmo: {
         title: "Random Page Content",
         description: "Display a random top-level element from a selected page",
-        icon: "icons:shuffle",
+        icon: "av:shuffle",
         color: "purple",
         tags: ["Other"],
         handles: [],

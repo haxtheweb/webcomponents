@@ -52,7 +52,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     };
     this.activeDrag = false;
     this.activeType = null;
-    this.where = "title";
+    // search across the combined index (title, tags, description, path/tag name, etc.)
+    // built by SuperDaemon.defineOption(), not just the title, so typing a partial
+    // HTML tag name (e.g. "grid" for grid-plate, "img" for Basic Image) surfaces results.
+    this.where = "index";
     this.icon = "hardware:keyboard-return";
     // Accessibility properties for ARIA management
     this._selectedIndex = -1;

@@ -184,6 +184,12 @@ export const HaxSchematizer = {
         format: "fileupload",
       },
     },
+    srcset: {
+      defaultSettings: {
+        type: "string",
+        format: "srcset",
+      },
+    },
   },
 };
 
@@ -577,6 +583,13 @@ export const HaxElementizer = {
             properties: {
               accepts: "accepts",
             },
+          },
+        },
+        srcset: {
+          defaultSettings: {
+            import: "@haxtheweb/hax-body/lib/simple-fields-srcset.js",
+            element: "simple-fields-srcset",
+            noWrap: true,
           },
         },
       },

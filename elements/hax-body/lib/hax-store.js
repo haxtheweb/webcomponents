@@ -3752,6 +3752,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             description: "Image URL.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noScreenRecord: true,
             icon: "link",
             required: true,
             validationType: "url",
@@ -3781,6 +3782,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               lazy: "Load when visible",
               auto: "Automatic",
             },
+          },
+          {
+            attribute: "srcset",
+            title: "Responsive sources (srcset)",
+            description:
+              "List image URLs and descriptors (eg. 480w or 2x) so browsers pick the best size for the screen. Stored as the standard srcset attribute.",
+            inputMethod: "srcset",
+            icon: "image:image",
           },
         ],
       },
@@ -5503,6 +5512,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             if (this.platformAllows("addBlock") && !gizmo.platformRestricted) {
               SuperDaemonInstance.defineOption({
                 title: gizmo.title,
+                description: gizmo.description || "",
                 icon: gizmo.icon,
                 tags: gizmo.tags || [],
                 inline: true,

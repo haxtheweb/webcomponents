@@ -506,6 +506,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         if (gizmo.tags) {
           items[i].index += " " + gizmo.tags.join(" ");
         }
+        if (gizmo.description) {
+          items[i].index += " " + gizmo.description;
+        }
         if (gizmo.meta && gizmo.meta.author) {
           items[i].index += " " + gizmo.meta.author;
         }

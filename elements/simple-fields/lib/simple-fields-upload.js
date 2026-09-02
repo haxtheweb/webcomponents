@@ -81,8 +81,8 @@ class SimpleFieldsUpload extends I18NMixin(
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
-          width: 100%;
-          padding: var(--ddd-spacing-2, 8px);
+          width: stretch;
+          padding: var(--ddd-spacing-1, 4px);
         }
         #upload {
           border-radius: var(--ddd-radius-sm, 2px);
@@ -91,7 +91,7 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         #url {
           flex: 1 1 100%;
-          margin: var(--ddd-spacing-2, 8px) 0;
+          margin: 0;
           background-color: transparent;
         }
         #upload-options {
@@ -110,12 +110,12 @@ class SimpleFieldsUpload extends I18NMixin(
           font-size: var(--ddd-font-size-4xs, 10px);
           color: var(--ddd-theme-default-coalyGray, black);
           margin: var(--ddd-spacing-1, 4px);
-          padding: var(--ddd-spacing-1, 4px);
+          padding: 0;
           border: none;
           border-radius: var(--ddd-radius-sm, 4px);
           text-align: center;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
         }
         simple-toolbar-button[part="cancel-media"] {
           position: absolute;
@@ -127,12 +127,12 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         span[part="drop-area-text"] {
           font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--ddd-font-size-3xs, 11px);
+          font-size: var(--ddd-font-size-6xs);
           white-space: nowrap;
-          margin: var(--ddd-spacing-1, 4px);
+          margin: 0;
         }
         simple-file-upload {
-          padding: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-1, 4px);
           position: relative;
           overflow: visible;
           border: none !important;

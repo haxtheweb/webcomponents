@@ -462,6 +462,7 @@ class MediaImage extends DDD {
             description: "The URL for the image.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noScreenRecord: true,
             required: true,
           },
           {
@@ -478,6 +479,7 @@ class MediaImage extends DDD {
             inputMethod: "haxupload",
             noVoiceRecord: true,
             noCamera: true,
+            noScreenRecord: true,
             required: false,
           },
           {
