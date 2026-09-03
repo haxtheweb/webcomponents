@@ -148,6 +148,30 @@ class SimplePopover extends AbsolutePositionBehavior {
     super();
     this.offset = -10;
     this.fitToVisibleBounds = true;
+    // Reposition whenever the popover's content box changes size.
+    // The popover is positioned absolutely and its vertical centering
+    // (setAlign in absolute-position-state-manager) depends on its own
+    // height. Content (e.g. hax-element-demo previews) is injected
+    // asynchronously after the popover opens, so the height measured at
+    // open time is stale and the popover is placed too low, then grows
+    // downward instead of re-centering on the target. ResizeObserver
+    // fires after layout but before paint, so repositioning here keeps
+    // the popover aligned with its target without a visible flash.
+    // Setting top/left does not change border-box size, so there is no
+    // feedback loop.
+    this.__popoverResizeObserver = new ResizeObserver(() => {
+      if (!this.hidden) {
+        this.updatePosition();
+      }
+    });
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__popoverResizeObserver.observe(this);
+  }
+  disconnectedCallback() {
+    this.__popoverResizeObserver.disconnect();
+    super.disconnectedCallback();
   }
 
   /**
@@ -164,6 +188,7 @@ class SimplePopover extends AbsolutePositionBehavior {
    * @returns {string} a string with margin styles to offset pointer
    */
   _getMargins(positions) {
+    console.log(positions);
     if (positions && positions.target) {
       let self = this.getBoundingClientRect(),
         h = this.position === "bottom" || this.position === "top",

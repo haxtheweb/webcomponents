@@ -84,6 +84,29 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             color: var(--simple-fields-accent-color, #003f7d);
             transition: color ease-in-out;
           }
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) #options,
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) #options {
+            display: flex;
+            flex-wrap: balance;
+          }
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option,
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option {
+            width: fit-content;
+            margin: 0;
+            padding: 4px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+          }
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option label,
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option label {
+            margin: 0;
+          }
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option label d-d-d-sample,
+          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option label d-d-d-sample {
+            padding: 0;
+          }
+          
           /* Ubuntu-style settings row layout for multi-checkbox and radio
              groups (issue #2996): each option row gets label-left /
              control-right, vertically centered, with its own hover/focus

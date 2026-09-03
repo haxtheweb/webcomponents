@@ -530,6 +530,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           display: block;
           margin: var(--ddd-spacing-2);
         }
+        #settingsform a11y-collapse a11y-collapse span[slot="heading"] {
+          padding-left: 8px;
+        }
         #settingsform simple-fields-field::part(label) {
           font-size: var(--hax-ui-font-size-sm);
           line-height: var(--ddd-lh-120);

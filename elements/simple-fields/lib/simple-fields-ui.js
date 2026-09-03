@@ -9,7 +9,7 @@ import { css } from "lit";
  * simple-fields-upload (hax-upload-field) so every field type uses the
  * same threshold for the inline-description-vs-info-icon behavior.
  */
-export const SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS = 4;
+export const SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS = 2;
 export const SimpleFieldsBaseStyles = [
   css`
     :host {

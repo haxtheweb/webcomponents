@@ -4,6 +4,7 @@
  */
 import { LitElement, css, html } from "lit";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import {
   DDDReset,
   DDDAllStyles,
@@ -177,6 +178,7 @@ export class DDDSample extends DDDSuper(LitElement) {
     super();
     this.type = null;
     this.option = 0;
+    this.tooltip = false;
   }
 
   static get styles() {
@@ -186,20 +188,23 @@ export class DDDSample extends DDDSuper(LitElement) {
       css`
         :host {
           display: flex;
-          min-height: var(--ddd-spacing-4);
-          padding: var(--ddd-spacing-1) 0;
+          padding: 0;
           margin: 0;
           font-size: var(--ddd-font-size-4xs);
-          line-height: normal;
+        }
+
+        .sample {
+          transition: background-color .3s ease-in-out,
+          color .3s ease-in-out,
+          border-color .3s ease-in-out;
         }
 
         :host([type="accent"]) .sample,
         :host([type="primary"]) .sample {
-          border: var(--ddd-border-sm);
+          border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-xs);
-          box-shadow: var(--ddd-boxShadow-sm);
-          height: var(--ddd-spacing-4);
-          width: var(--ddd-spacing-8);
+          height: var(--ddd-spacing-6);
+          width: var(--ddd-spacing-6);
           display: inline-block;
         }
 
@@ -273,12 +278,13 @@ export class DDDSample extends DDDSuper(LitElement) {
 
         :host([type="margin"]) .sample[data-margin],
         :host([type="padding"]) .sample {
+          --ddd-theme-primary: var(--ddd-sample-theme-primary, light-dark(black, white));
           display: inline-block;
-          height: var(--ddd-spacing-6);
+          height: var(--ddd-spacing-4);
           padding-top: 0;
           padding-bottom: 0;
           padding-left: 0;
-          background-color: var(--ddd-primary-2);
+          background-color: var(--ddd-theme-primary);
           margin: 0;
         }
 
@@ -291,8 +297,8 @@ export class DDDSample extends DDDSuper(LitElement) {
             var(--ddd-primary-0)
           );
           min-height: calc(
-            (var(--initialLetter) / 3 * var(--ddd-theme-body-font-size) * 1.5) +
-              20px
+            (var(--initialLetter) / 4 * var(--ddd-theme-body-font-size) * 1.5) +
+              4px
           );
         }
 
@@ -305,7 +311,7 @@ export class DDDSample extends DDDSuper(LitElement) {
 
         :host([type="font-weight"]) .label,
         :host([type="font-family"]) .label {
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-2xs);
         }
 
         /* @hack just for the docs bc we can't visualize margins */
@@ -355,6 +361,21 @@ export class DDDSample extends DDDSuper(LitElement) {
           content: " (50% scale)";
           font-size: var(--ddd-font-size-4xs);
         }
+
+        /* when tooltip is active, keep the label available to assistive
+           tech but visually hide it since the name is presented on hover
+           via simple-tooltip instead */
+        :host([tooltip]) .label {
+          position: absolute;
+          left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          margin: 0;
+          overflow: hidden;
+        }
       `,
     ];
   }
@@ -402,11 +423,16 @@ export class DDDSample extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="wrapper">
-        <span class="sample"></span
+        <span class="sample" id="sample"></span
         ><span class="label"
           >${ApplicationAttributeData[this.type][this.option]}<slot></slot
         ></span>
       </div>
+      ${this.tooltip
+        ? html`<simple-tooltip for="sample" fit-to-visible-bounds position="top"
+            >${ApplicationAttributeData[this.type][this.option]}</simple-tooltip
+          >`
+        : ``}
     `;
   }
 
@@ -414,6 +440,11 @@ export class DDDSample extends DDDSuper(LitElement) {
     return {
       type: { type: String, reflect: true },
       option: { type: String },
+      /**
+       * present the label as a tooltip on hover/focus instead of
+       * displaying it visibly next to the sample swatch
+       */
+      tooltip: { type: Boolean, reflect: true },
     };
   }
 

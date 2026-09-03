@@ -255,6 +255,7 @@ export function HAXOptionSampleFactory(type) {
             @click="${updatePreviewColorVar}"
             type="${type}"
             option="${key}"
+            tooltip
           ></d-d-d-sample>`
         : html`<d-d-d-sample type="${type}" option="${key}"></d-d-d-sample>`,
     };

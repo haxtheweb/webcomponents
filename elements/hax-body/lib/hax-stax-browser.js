@@ -23,6 +23,7 @@ class HaxStaxBrowser extends LitElement {
           box-sizing: border-box;
           overflow-x: hidden;
           overflow-y: auto;
+          --a11y-collapse-padding-left: 8px;
         }
         :host > * {
           width: 100%;
