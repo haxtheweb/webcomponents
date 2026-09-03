@@ -238,7 +238,14 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
+          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
+          --simple-fields-fieldset-background-color: transparent;
+          --simple-fields-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
           --simple-fields-select-option-background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)

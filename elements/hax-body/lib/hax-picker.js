@@ -57,7 +57,7 @@ class HaxPicker extends LitElement {
         simple-fields-field::part(option-label) {
           flex: 1 1 auto;
           margin: 0;
-          font-size: var(--hax-ui-font-size-sm, 13px);
+          font-size: var(--hax-ui-font-size-sm);
         }
         :host([filter-on]) simple-button-grid {
           margin-bottom: var(--simple-fields-margin-small, 8px);

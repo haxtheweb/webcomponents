@@ -28,7 +28,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          gap: var(--ddd-spacing-2);
           overflow-x: hidden;
           overflow-y: auto;
         }
@@ -55,22 +54,19 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         hax-tray-button::part(button) {
           font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
         }
+        simple-fields-field {
+          margin: 0;
+          padding: var(--ddd-spacing-4);
+        }
         simple-button-grid {
           --simple-button-grid-margin: var(--ddd-spacing-1);
         }
-        simple-fields-field {
-          margin-top: 0;
-          margin-bottom: var(--ddd-spacing-2);
-        }
-        simple-fields-field::part(option-input) {
-          padding: 0 var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-6xs, 12px);
-        }
         a11y-collapse {
           margin: 0;
+          border-top-width: 2px;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
         }
         a11y-collapse::part(heading) {
           margin: var(--ddd-spacing-2) 0;
@@ -96,7 +92,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.recentGizmoList = [];
     this.popularGizmoList = [];
     this.t = {
-      filterContentTypes: "Filter Content Types",
+      filterContentTypes: "Filter Blocks",
       recent: "Recent",
       popular: "Popular",
     };
@@ -167,13 +163,53 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     }
     return true;
   }
+  /**
+   * Build a searchable index string for a gizmo, matching the same
+   * fields used when indexing the main items list.
+   */
+  _gizmoSearchIndex(gizmo) {
+    let index = (gizmo.title || "") + " " + (gizmo.tag || "");
+    if (gizmo.tags) {
+      index += " " + gizmo.tags.join(" ");
+    }
+    if (gizmo.description) {
+      index += " " + gizmo.description;
+    }
+    if (gizmo.meta && gizmo.meta.author) {
+      index += " " + gizmo.meta.author;
+    }
+    return index;
+  }
+  /**
+   * Filter an auxiliary gizmo list (recent / popular) using the same
+   * filter query applied to the main block list.
+   */
+  _filterAuxList(list) {
+    if (!this.like) {
+      return list;
+    }
+    const indexed = list.map((gizmo) => ({
+      ...gizmo,
+      index: this._gizmoSearchIndex(gizmo),
+    }));
+    return this._computeFiltered(
+      indexed,
+      "index",
+      this.like,
+      this.caseSensitive,
+      this.multiMatch,
+    );
+  }
   render() {
+    const filteredPopularList = this._filterAuxList(this.popularGizmoList);
+    const filteredRecentList = this._filterAuxList(this.recentGizmoList);
     return html`${this.hidden
       ? ``
       : html`<div class="toolbar-inner" part="toolbar">
             <simple-fields-field
               id="inputfilter"
               @value-changed="${this.inputfilterChanged}"
+              @keydown="${this._inputKeydown}"
               label="${this.t.filterContentTypes}"
               type="text"
               auto-validate=""
@@ -187,9 +223,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 heading="${this.t.popular}"
                 heading-button
                 expanded
+                ?disabled="${filteredPopularList.length === 0}"
               >
                 <simple-button-grid columns="3" always-expanded part="grid">
-                  ${this.popularGizmoList.map(
+                  ${filteredPopularList.map(
                     (gizmo, i) =>
                       html` <simple-popover-selection
                         data-index="popular-${i}"
@@ -233,9 +270,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 heading="${this.t.recent}"
                 heading-button
                 expanded
+                ?disabled="${filteredRecentList.length === 0}"
               >
                 <simple-button-grid columns="3" always-expanded part="grid">
-                  ${this.recentGizmoList.map(
+                  ${filteredRecentList.map(
                     (gizmo, i) =>
                       html` <simple-popover-selection
                         data-index="${i}"
@@ -368,6 +406,15 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       this.collapseAll();
     } else {
       this.expandAll();
+    }
+  }
+  // pressing escape while focused on the filter clears it, matching
+  // the same behavior Merlin (super-daemon) uses for its search input
+  _inputKeydown(e) {
+    if (e.key === "Escape" && e.target.value !== "") {
+      e.preventDefault();
+      e.stopPropagation();
+      e.target.value = "";
     }
   }
   expandAll() {

@@ -88,7 +88,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         }
         .description {
           font-size: var(--ddd-font-size-4xs);
-          line-height: var(--ddd-lh-140);
+          line-height: var(--ddd-lh-120);
           color: light-dark(
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-limestoneGray)

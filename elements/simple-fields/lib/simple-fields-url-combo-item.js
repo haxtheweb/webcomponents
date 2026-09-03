@@ -45,7 +45,7 @@ class SimpleFieldsUrlComboItem extends LitElement {
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          border-radius: var(--simple-fields-border-radius, 2px);
+          border-radius: var(--simple-fields-border-radius, 4px);
         }
         span[part="label"] {
           max-width: 100%;

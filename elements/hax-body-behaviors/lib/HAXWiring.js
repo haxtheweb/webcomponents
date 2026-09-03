@@ -546,46 +546,42 @@ export class HAXWiring {
         props.settings.advanced.push({
           attribute: "data-hax-lock",
           title: "Lock editing",
-          description: "Prevent changes to this element and all its content.",
+          description: "Prevent changes to this element and its content.",
           inputMethod: "boolean",
         });
         // allow classes to be modified this way
         props.settings.developer.push({
           attribute: "class",
           title: "Classes",
-          description: "CSS classes applied manually to the element.",
+          description: "CSS classes applied to the element.",
           inputMethod: "textfield",
         });
         // allow styles to be modified this way
         props.settings.developer.push({
           attribute: "style",
           title: "Styles",
-          description: "Custom CSS styles applied to the element.",
+          description: "CSS styles applied to the element.",
           inputMethod: "textfield",
         });
         // allow schema definitions
         props.settings.developer.push({
           attribute: "prefix",
           title: "Schema: prefix",
-          description: "Schema prefixes.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "typeof",
           title: "Schema: TypeOf",
-          description: "Schema typeof value.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "property",
           title: "Schema: Property",
-          description: "Schema property value.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "resource",
           title: "Schema: Resource ID",
-          description: "Schema resource identifier.",
           inputMethod: "textfield",
         });
         // allow the id to be modified

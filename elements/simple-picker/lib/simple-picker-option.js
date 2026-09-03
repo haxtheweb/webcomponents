@@ -77,7 +77,7 @@ class SimplePickerOption extends LitElement {
         .icon="${this.icon}"
         aria-hidden="true"
       ></simple-icon-lite>
-      <div id="label">
+      <div id="label" title="${this.label || ""}">
         <slot ?hidden="${!this.titleAsHtml}"></slot>
         ${this.titleAsHtml ? `` : this.label}
       </div>

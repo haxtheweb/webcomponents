@@ -481,9 +481,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     return html` <simple-toolbar-button
         ?disabled="${this.disabled}"
         label="${this.t.selectMedia}.."
-        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
         icon="hax:multimedia"
-        show-text-label
         @click="${this._clickMediaButton}"
         controls="fieldset"
         part="merlin"

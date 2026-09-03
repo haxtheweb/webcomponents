@@ -145,7 +145,10 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
    */
   get fieldMainTemplate() {
     return html`
-      <div class="field-main" part="field-main">
+      <div
+        class="field-main ${this.isRowBasedField ? "row-layout" : ""}"
+        part="field-main"
+      >
         ${this.labelTemplate}
         <code-editor
           ?autofocus="${this.autofocus}"

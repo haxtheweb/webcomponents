@@ -32,6 +32,14 @@
             {value: "inherit", "text": "Inherit from parent"}
           ];
         });
+        document.querySelectorAll('#radio-row simple-fields-field').forEach(el=>{
+          el.itemsList=[
+            {value: "small", "text": "Small"},
+            {value: "medium", "text": "Medium"},
+            {value: "large", "text": "Large"},
+            {value: "xlarge", "text": "Extra large"}
+          ];
+        });
         document.querySelectorAll('#check').forEach(el=>{
           el.options={
             "red": "Red",
@@ -136,6 +144,33 @@
           <simple-fields-field type="number" label="Columns" description="Grid column count" min="1" max="12" step="1" value="3"></simple-fields-field>
           <simple-fields-field type="number" label="Font size" description="Base body font size in pixels for this element and nested content" min="8" max="72" step="1" value="16"></simple-fields-field>
           <simple-fields-field type="number" label="Any number" description="No bounds (legacy full-width)"></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Color Row Layout (Ubuntu-style settings row, issue #2996)</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field type="color" label="Background color" value="#ff00ff"></simple-fields-field>
+          <simple-fields-field type="color" label="Background color" description="Pick a base color" value="#1e407c"></simple-fields-field>
+          <simple-fields-field type="color" label="Background color" description="Choose the base background color used for this element and its nested content across light and dark modes" value="#1e407c"></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Text Row Layout (Ubuntu-style settings row, issue #2996)</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field type="text" label="Display name" description="Shown publicly"></simple-fields-field>
+          <simple-fields-field type="text" label="Display name" description="The name shown publicly across the site for this author, including in bylines, author cards, and search results."></simple-fields-field>
+          <simple-fields-field type="textarea" label="Summary" description="Short bio text"></simple-fields-field>
+          <simple-fields-field type="textarea" label="Summary" description="A longer author summary used in expanded profiles and directory listings, covering background, expertise, and recent work across multiple projects."></simple-fields-field>
+          <simple-fields-field type="password" label="API key" description="Secret token"></simple-fields-field>
+          <simple-fields-field type="email" label="Contact email" description="Address used for account notifications and security alerts when important changes are made to this site."></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Radio Row Layout (Ubuntu-style settings row, issue #2996)</h2>
+      <demo-snippet id="radio-row">
+        <template>
+          <simple-fields-field type="radio" label="Thumbnail size" description="Pick one size"></simple-fields-field>
+          <simple-fields-field block-list type="radio" label="Thumbnail size" description="Pick one size (block options)"></simple-fields-field>
+          <simple-fields-field type="radio" label="Thumbnail size" description="Choose how large generated thumbnail images appear across this site, including in lists, cards, and full-width hero regions."></simple-fields-field>
         </template>
       </demo-snippet>
       <h2>Multiple Options</h2>

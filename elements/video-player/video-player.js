@@ -263,6 +263,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Poster image URL.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noScreenRecord: true,
             validationType: "url",
           },
         ],

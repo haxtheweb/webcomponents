@@ -4,17 +4,10 @@ import {
   SimpleFieldsLabelStyles,
   SimpleFieldsDescriptionStyles,
   SimpleFieldsRowStyles,
+  SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS,
 } from "./simple-fields-ui.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-
-/**
- * descriptions at or below this many words render as plain subtext
- * under the label (Ubuntu-style settings row, issue #2996). Longer
- * descriptions collapse behind an (i) info icon whose tooltip shows on
- * hover/focus (positioned above) and hides on blur/mouseleave.
- */
-const SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS = 5;
 
 /**
  * @class SimpleFieldsContainerBehaviors
@@ -42,7 +35,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
               --simple-fields-info-icon-color,
               var(--simple-fields-meta-color, currentColor)
             );
-            margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+            margin: -2px 8px 0 8px;
+            flex: initial;
           }
           .label-main {
             display: flex;
@@ -69,6 +63,41 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             align-items: stretch;
             justify-content: flex-start;
           }
+          /* Ubuntu-style row layout for slotted fields (issue #2996):
+             the field-inner group pins right and sizes to content instead
+             of stretching full-width, so a slotted control (e.g.
+             simple-colors-picker) sits compact on the right. */
+          .field-main.row-layout [part="field-inner"] {
+            flex: 0 1 auto;
+          }
+          .field-main.row-layout ::slotted([slot="field"]) {
+            flex: 0 0 auto;
+            width: auto;
+          }
+          /* Phase 5: slotted text entry fields (issue #2996) fill the right
+             side of the row (vs compact slotted pickers), so the field-inner
+             grows and the slotted input/textarea fills it. Scoped by the
+             reflected [type] host attribute. */
+          :host([type="text"]) .field-main.row-layout [part="field-inner"],
+          :host([type="textarea"]) .field-main.row-layout [part="field-inner"],
+          :host([type="password"]) .field-main.row-layout [part="field-inner"],
+          :host([type="email"]) .field-main.row-layout [part="field-inner"],
+          :host([type="tel"]) .field-main.row-layout [part="field-inner"],
+          :host([type="url"]) .field-main.row-layout [part="field-inner"],
+          :host([type="search"]) .field-main.row-layout [part="field-inner"] {
+            flex: 1 1 auto;
+          }
+          .field-main.row-layout ::slotted(input[type="text"]),
+          .field-main.row-layout ::slotted(input[type="password"]),
+          .field-main.row-layout ::slotted(input[type="email"]),
+          .field-main.row-layout ::slotted(input[type="tel"]),
+          .field-main.row-layout ::slotted(input[type="url"]),
+          .field-main.row-layout ::slotted(input[type="search"]),
+          .field-main.row-layout ::slotted(textarea) {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+          }
           * {
             flex: 1 1 auto;
           }
@@ -78,10 +107,10 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           .field,
           ::slotted([slot="field"]) {
             width: auto;
-            border: none;
+            border: var(--simple-fields-input-border, none);
             color: var(--simple-fields-color, currentColor);
             background-color: var(
-              --simple-fields-background-color,
+              --simple-fields-input-background-color,
               transparent
             );
             transition: opacity ease-in-out;
@@ -112,39 +141,6 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           :host([disabled]) ::slotted([slot="field"]) {
             cursor: not-allowed;
             pointer-events: none;
-          }
-          .border-bottom {
-            height: 0;
-          }
-          :host([disabled]) .border-bottom {
-            border-bottom: var(
-                --simple-fields-border-bottom-disabled-size,
-                var(--simple-fields-border-bottom-size, 1px)
-              )
-              dashed var(--simple-fields-border-color, #999);
-          }
-          .border-bottom.blur {
-            border-bottom: var(--simple-fields-border-bottom-size, 1px) solid
-              var(--simple-fields-border-color, #999);
-            width: 100%;
-          }
-          .border-bottom.focus {
-            margin: -1px auto 0;
-            width: 0;
-            border-bottom: var(--simple-fields-border-bottom-focus-size, 2px)
-              solid var(--simple-fields-accent-color, #3f51b5);
-            transition: width 0.6s ease-in-out;
-          }
-          :host(:focus-within) .border-bottom.focus {
-            width: 100%;
-            transition: width 0.6s ease-in-out;
-          }
-          :host([type="checkbox"]) .border-bottom,
-          :host([type="color"]) .border-bottom,
-          :host([type="file"]) .border-bottom,
-          :host([type="radio"]) .border-bottom,
-          :host([type="range"]) .border-bottom {
-            display: none;
           }
           ::slotted(label:hover),
           ::slotted(label:focus),
@@ -348,6 +344,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
          */
         type: {
           type: String,
+          reflect: true,
         },
         /**
          * List of valid field types
@@ -452,6 +449,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     updated(changedProperties) {
+      // mirror isRowBasedField onto the host as a [row-layout] attribute
+      // (issue #2996) so shared :host([row-layout]) hover/focus/description
+      // CSS applies to slotted-field containers (e.g. simple-colors-picker)
+      // the same way it applies to shadow-DOM simple-fields-field hosts.
+      if (this.isRowBasedField) this.setAttribute("row-layout", "");
+      else this.removeAttribute("row-layout");
       let errorChanged = false;
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "error" && this.error !== oldValue)
@@ -482,17 +485,30 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     get isRowBasedField() {
       // multi-option fieldsets (checkbox/radio groups) render a <legend>
       // instead of the label template, so the group-level description
-      // still belongs in fieldBottom; only single-value fields adopt the
-      // new label-embedded description/info-icon behavior for now.
+      // is handled in the fieldset legend (see simple-fields-field.js
+      // fieldsetTemplate); they do not adopt the horizontal row layout.
       // Single (non-multiple) selects join the row layout; multiple
       // selects keep the legacy full-width list-box treatment. A number
       // field with min/max/step is effectively a bounded stepper, so it
-      // adopts the row layout too; plain numbers stay full-width (Phase 5).
+      // adopts the row layout too; plain numbers stay full-width.
+      // Color fields adopt the row layout: the raw <input type="color">
+      // case (shadow DOM) and the slotted simple-colors-picker case (the
+      // legacy "accent color" combobox) both render label/description left
+      // with a compact swatch control right (Phase 4, issue #2996).
+      // Phase 5: text entry fields (text, textarea, password, email, tel,
+      // url, search) adopt the row layout so label/description sit left
+      // and the input fills the right side, with the focus underline
+      // preserved for text/textarea. Plain file/range/date/time/month/
+      // week keep the legacy full-width treatment.
       return (
         (this.type === "checkbox" && !this.hasFieldset) ||
         (this.type === "select" && !this.multiple) ||
-        (this.type === "number" &&
-          (this.min != null || this.max != null || this.step != null))
+        this.type === "color" ||
+        ["text", "number", "textarea", "password", "email", "tel", "url", "search"].includes(
+          this.type,
+        ) ||
+        (this.field &&
+          this.field.tagName.toLowerCase() === "simple-colors-picker")
       );
     }
     /**
@@ -503,7 +519,13 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     get descriptionTemplate() {
-      if (this.isRowBasedField) return ``;
+      // The description is rendered as inline subtext under the label (short)
+      // or behind the (i) info-icon tooltip (long) in labelTemplate, so the
+      // standalone field-desc block is suppressed for any field with a
+      // description. This applies to every field type (row-based, fieldset,
+      // and legacy full-width) so the inline/info-icon behavior is uniform
+      // (issue #2996). Fields with no description render nothing here.
+      if (this.hasInlineDescription || this.hasInfoTooltip) return ``;
       return html`
         <div id="description" part="field-desc">
           <slot name="description"></slot>
@@ -542,10 +564,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      */
     get fieldBottom() {
       return html`
-        <div class="border-bottom blur"></div>
-        <div class="border-bottom focus"></div>
-        <div id="field-bottom" part="field-bottom">
-          <div id="error-desc" part="field-bottom-inner">
+        <div id="field-bottom">
+          <div id="error-desc">
             ${this.descriptionTemplate} ${this.errorTemplate}
           </div>
           ${this.fieldMeta}
@@ -577,7 +597,9 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           class="${this.inline ||
           ["checkbox", "color", "radio"].includes(this.type || "text")
             ? "field-main inline"
-            : "field-main"}"
+            : "field-main"} ${this.isRowBasedField
+            ? "row-layout"
+            : ""}"
           part="field-main"
         >
           ${this.labelTemplate}
@@ -647,8 +669,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     get hasInlineDescription() {
+      // Applies to every field type (not just row-based) so that short
+      // descriptions consistently render as subtext under the label and
+      // long descriptions collapse behind the (i) info icon. Radio/
+      // checkbox fieldset groups render this via their legend in
+      // simple-fields-field.js fieldsetTemplate (issue #2996).
       return (
-        this.isRowBasedField &&
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length <=
           SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
@@ -663,8 +689,11 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsContainer
      */
     get hasInfoTooltip() {
+      // Applies to every field type (not just row-based) so that long
+      // descriptions consistently collapse behind the (i) info icon. Radio/
+      // checkbox fieldset groups render this via their legend in
+      // simple-fields-field.js fieldsetTemplate (issue #2996).
       return (
-        this.isRowBasedField &&
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length >
           SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
@@ -697,7 +726,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      */
     get infoToggleTemplate() {
       if (!this.hasInfoTooltip) return ``;
-      const infoId = `${this.fieldId}-info`;
+      const infoId = `${this.fieldId}-info`.replaceAll('.', '-');
       return html`
         <simple-icon-button-lite
           id="${infoId}"
@@ -708,9 +737,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           @click="${(e) => e.stopPropagation()}"
         ></simple-icon-button-lite>
         <simple-tooltip
-          id="description"
           for="${infoId}"
-          position="top"
+          position="bottom"
           fit-to-visible-bounds
           part="info-tooltip"
         >

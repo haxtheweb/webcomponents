@@ -84,26 +84,32 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             color: var(--simple-fields-accent-color, #003f7d);
             transition: color ease-in-out;
           }
-          /* Ubuntu-style settings row layout for multi-checkbox groups
-             (issue #2996): each option row gets label-left/control-right,
-             vertically centered, with its own hover/focus affordance. */
-          :host([type="checkbox"]) .option {
+          /* Ubuntu-style settings row layout for multi-checkbox and radio
+             groups (issue #2996): each option row gets label-left /
+             control-right, vertically centered, with its own hover/focus
+             affordance. Radio and checkbox share the fieldsetTemplate /
+             .option path, so the treatment is identical. */
+          :host([type="checkbox"]) .option,
+          :host([type="radio"]) .option {
             align-items: center;
-            border-radius: var(--simple-fields-border-radius, 2px);
+            border-radius: var(--simple-fields-border-radius, 4px);
             transition: background-color 0.3s ease-in-out;
           }
-          :host([type="checkbox"]) .option label {
+          :host([type="checkbox"]) .option label,
+          :host([type="radio"]) .option label {
             flex: 1 1 auto;
             width: auto;
             text-align: start;
           }
-          :host([type="checkbox"]) .option:hover {
+          :host([type="checkbox"]) .option:hover,
+          :host([type="radio"]) .option:hover {
             background-color: var(
               --simple-fields-row-hover-background-color,
               light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12))
             );
           }
-          :host([type="checkbox"]) .option:focus-within {
+          :host([type="checkbox"]) .option:focus-within,
+          :host([type="radio"]) .option:focus-within {
             outline: var(--simple-fields-row-focus-outline-width, 1px) solid
               var(
                 --simple-fields-row-focus-outline-color,
@@ -232,18 +238,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           select.field {
             width: calc(100% - 26px);
             padding-right: 26px;
-            border: none;
-            background-color: light-dark(
-              var(
-                --simple-fields-select-background-color,
-                var(--simple-fields-background-color, transparent)
-              ),
-              var(
-                --simple-fields-select-background-color,
-                var(--simple-fields-background-color, #1e1e1e)
-              )
+            background-color: var(
+              --simple-fields-input-background-color,
+              transparent
             );
-            border-radius: 0;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -280,13 +278,16 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
              full-width list-box treatment (absolute chevron, full width). */
           .field-main.row-layout select.field {
             width: auto;
-            max-width: var(--simple-fields-select-max-width, 40ch);
+            max-width: var(--simple-fields-select-max-width, 140px);
             min-width: 0;
             flex: 0 1 auto;
-            padding-right: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            border-radius: var(--simple-fields-border-radius, 4px);
+            padding: 0 24px 0 4px;
+            caret-color: var(--simple-fields-accent-color, #3f51b5);
+            line-height: 1.5;
           }
           :host([type="select"]) .field-main.row-layout simple-icon-lite {
             position: static;
@@ -303,6 +304,74 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             min-width: 0;
             flex: 0 1 auto;
             text-align: end;
+          }
+          /* Raw color fields (issue #2996, Phase 4): the native color input
+             renders as a small square swatch pinned right. */
+          .field-main.row-layout input[type="color"] {
+            width: auto;
+            flex: 0 0 auto;
+            height: var(--simple-fields-color-swatch-size, 20px);
+            min-width: 0;
+            padding: 0;
+          }
+          /* Phase 5: text entry fields (issue #2996). The control fills the
+             right side of the row instead of being compact like select,
+             number, or color, so the inner container grows and the
+             input/textarea fills it. The focus underline (.border-bottom)
+             stays as the primary focus affordance for text/textarea. */
+          :host([type="text"]) .field-main.row-layout #field-main-inner,
+          :host([type="number"]) .field-main.row-layout #field-main-inner,
+          :host([type="textarea"]) .field-main.row-layout #field-main-inner,
+          :host([type="password"]) .field-main.row-layout #field-main-inner,
+          :host([type="email"]) .field-main.row-layout #field-main-inner,
+          :host([type="tel"]) .field-main.row-layout #field-main-inner,
+          :host([type="url"]) .field-main.row-layout #field-main-inner,
+          :host([type="search"]) .field-main.row-layout #field-main-inner {
+            flex: initial;
+          }
+          :host([type="textarea"]) .field-main.row-layout #field-main-inner {
+            align-items: flex-start;
+          }
+          .field-main.row-layout input[type="number"],
+          .field-main.row-layout input[type="text"],
+          .field-main.row-layout input[type="password"],
+          .field-main.row-layout input[type="email"],
+          .field-main.row-layout input[type="tel"],
+          .field-main.row-layout input[type="url"],
+          .field-main.row-layout input[type="search"],
+          .field-main.row-layout textarea.field {
+            width: 100%;
+            border-radius: var(--simple-fields-border-radius, 4px);
+            min-width: 0;
+            flex: 1 1 auto;
+            max-width: var(--simple-fields-input-max-width, 140px);
+            padding: 0 4px;
+            caret-color: var(--simple-fields-accent-color, #3f51b5);
+            line-height: 1.5;
+          }
+          .field-main.row-layout input[type="number"] {
+            width: stretch;
+          }
+          .field-main.row-layout select:focus,
+          .field-main.row-layout input:focus,
+          .field-main.row-layout textarea.field:focus {
+            outline: var(--simple-fields-row-focus-outline-width, 1px) solid
+              var(
+                --simple-fields-row-focus-outline-color,
+                var(--simple-fields-accent-color, #3f51b5)
+              );
+            outline-offset: -1px;
+            transition: outline-color 0.3s ease-in-out;
+          }
+          /* Styles the option that is currently selected inside the open list */
+          select option:checked,
+          select option:hover,
+          select option:focus {
+            color: light-dark(white, black) !important;
+            background-color: var(
+                --simple-fields-row-focus-outline-color,
+                var(--simple-fields-accent-color, #3f51b5)
+              ) !important;
           }
           :host([type="checkbox"]) span,
           :host([type="radio"]) span {
@@ -329,8 +398,19 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             width: auto;
           }
           :host([type="radio"]) label.radio-label {
-            flex: 0 0 auto;
-            width: 80%;
+            flex: 1 1 auto;
+            width: auto;
+          }
+          :host([type="checkbox"]),
+          :host([type="radio"]) {
+            min-height: 24px;
+            padding: var(--simple-fields-margin-small, 8px);
+            margin-bottom: 4px;
+          }
+          :host([type="checkbox"]) .option,
+          :host([type="radio"]) .option {
+            width: calc(100% - 8px);
+            padding: 2px 4px;
           }
           :host([type="checkbox"]) input,
           :host([type="radio"]) input,
@@ -688,6 +768,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.addEventListener("focusout", this._hoverStateOff.bind(this));
         this.addEventListener("mouseout", this._hoverStateOff.bind(this));
       }
+      // radio groups: arrow keys move focus between options without
+      // selecting (overriding native radio behavior), and Enter/Space
+      // selects — or deselects if already selected — so a value is never
+      // forced by navigation alone (issue #2996, Phase 3 feedback)
+      if (this.type === "radio") {
+        this.addEventListener("keydown", this._radioKeydown.bind(this));
+      }
       // clicking anywhere on a single-select row should activate the
       // native select, not only a direct click on the combobox
       // (issue #2996, Phase 2 feedback)
@@ -702,6 +789,48 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           ? this.value === (false || {}).value
           : (this.value || []).includes((false || {}).value);
       this._handleIconClick(checked);
+    }
+    /**
+     * keyboard handler for radio groups (issue #2996, Phase 3 feedback):
+     * arrow keys move focus between options WITHOUT selecting (overriding
+     * native radio behavior where arrows auto-select the destination), and
+     * Enter/Space selects the focused option — or deselects it if already
+     * selected, allowing "no value" to be set via keyboard instead of being
+     * forced by arrow navigation.
+     */
+    _radioKeydown(e) {
+      if (this.disabled || this.readonly) return;
+      const key = e.key;
+      const isArrow =
+        key === "ArrowUp" ||
+        key === "ArrowDown" ||
+        key === "ArrowLeft" ||
+        key === "ArrowRight";
+      const isActivate = key === "Enter" || key === " ";
+      if (!isArrow && !isActivate) return;
+      const inputs = this.shadowRoot
+        ? [...this.shadowRoot.querySelectorAll('input[type="radio"]')]
+        : [];
+      if (!inputs.length) return;
+      const focused = this.shadowRoot.activeElement;
+      const focusedIndex = inputs.indexOf(focused);
+      if (isActivate) {
+        e.preventDefault();
+        if (focusedIndex < 0) return;
+        const option = (this.sortedOptions || [])[focusedIndex];
+        if (option) this._handleIconClick(this.getChecked(option), option);
+        return;
+      }
+      // arrow keys: move focus only, do not select
+      e.preventDefault();
+      const start = focusedIndex < 0 ? 0 : focusedIndex;
+      let nextIndex;
+      if (key === "ArrowDown" || key === "ArrowRight") {
+        nextIndex = (start + 1) % inputs.length;
+      } else {
+        nextIndex = (start - 1 + inputs.length) % inputs.length;
+      }
+      if (inputs[nextIndex]) inputs[nextIndex].focus();
     }
     /**
      * clicking anywhere on a single-select row activates the native
@@ -853,7 +982,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ?hidden="${!this.label}"
             part="fieldset-legend"
           >
-            ${this.label}${this.error || this.required ? "*" : ""}
+            <span class="label-text">
+              <span>${this.label}${this.error || this.required ? "*" : ""}</span>
+              ${this.inlineDescriptionTemplate}
+            </span>
+            ${this.infoToggleTemplate}
           </legend>
           <div id="options" part="fieldset-options">
             ${(this.sortedOptions || []).map(

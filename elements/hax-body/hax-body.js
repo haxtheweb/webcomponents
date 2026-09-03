@@ -1307,12 +1307,38 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }, 100);
     }
   }
+  /**
+   * Determine if keyboard focus is currently outside the editable hax-body
+   * context (e.g. in the hax-tray settings form, a modal, or the document
+   * body). Shared by keydown/keyup handlers so shortcuts scoped to body
+   * editing never fire while the user is interacting with tray form fields.
+   */
+  _isFocusOutsideEditingContext() {
+    const activeEl = globalThis.document.activeElement;
+    const inModal =
+      activeEl &&
+      (activeEl.tagName === "SIMPLE-MODAL" ||
+        activeEl.closest("simple-modal") ||
+        (globalThis.SimpleModal &&
+          globalThis.SimpleModal.instance &&
+          globalThis.SimpleModal.instance.opened));
+    return (
+      !activeEl ||
+      activeEl.tagName === "HAX-TRAY" ||
+      activeEl.tagName === "BODY" ||
+      activeEl.tagName === "RICH-TEXT-EDITOR-PROMPT" ||
+      activeEl.tagName === "SIMPLE-MODAL" ||
+      activeEl.closest("hax-tray") ||
+      !!inModal
+    );
+  }
   _onKeyUp(e) {
     if (
       ["ArrowUp", "ArrowDown"].includes(e.key) &&
       this.activeNode &&
       HAXStore.isTextElement(this.activeNode) &&
-      !SuperDaemonInstance.opened
+      !SuperDaemonInstance.opened &&
+      !this._isFocusOutsideEditingContext()
     ) {
       let key = e.key;
       const keyboardInsertScroll = this.__keyboardInsertScrollSettings();
@@ -1411,22 +1437,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     // Also bail out if any modal is currently open so keyboard shortcuts don't
     // fire behind confirmation dialogs.
-    const activeEl = globalThis.document.activeElement;
-    const inModal =
-      activeEl &&
-      (activeEl.tagName === "SIMPLE-MODAL" ||
-        activeEl.closest("simple-modal") ||
-        (globalThis.SimpleModal &&
-          globalThis.SimpleModal.instance &&
-          globalThis.SimpleModal.instance.opened));
-    if (
-      this.editMode &&
-      activeEl.tagName !== "HAX-TRAY" &&
-      activeEl.tagName !== "BODY" &&
-      activeEl.tagName !== "RICH-TEXT-EDITOR-PROMPT" &&
-      activeEl.tagName !== "SIMPLE-MODAL" &&
-      !inModal
-    ) {
+    if (this.editMode && !this._isFocusOutsideEditingContext()) {
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);

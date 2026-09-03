@@ -1,4 +1,15 @@
 import { css } from "lit";
+/**
+ * Descriptions at or below this many words render as plain subtext
+ * under the label (Ubuntu-style settings row, issue #2996). Longer
+ * descriptions collapse behind an (i) info icon whose tooltip shows on
+ * hover/focus (positioned above) and hides on blur/mouseleave.
+ * Shared by simple-fields-container (shadow + slotted fields),
+ * simple-fields-field (radio/checkbox fieldsets), and
+ * simple-fields-upload (hax-upload-field) so every field type uses the
+ * same threshold for the inline-description-vs-info-icon behavior.
+ */
+export const SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS = 4;
 export const SimpleFieldsBaseStyles = [
   css`
     :host {
@@ -164,7 +175,7 @@ export const SimpleFieldsButtonStyles = [
       font-size: var(--simple-fields-button-font-size, 14px);
       line-height: var(--simple-fields-button-line-height 22px);
       text-transform: var(--simple-fields-button-text-transform, unset);
-      border-radius: var(--simple-fields-border-radius, 2px);
+      border-radius: var(--simple-fields-border-radius, 4px);
       padding: var(--simple-fields-button-padding-sm, 1px)
         var(--simple-fields-button-padding, 2px);
       min-height: calc(
@@ -326,6 +337,29 @@ export const SimpleFieldsRowStyles = [
     .field-main.row-layout .label-text {
       text-align: start;
     }
+    /* Row-layout labels grow to fill the left side so the (i) info icon
+       (fixed-size, flex: 0 0 auto) is pushed to the right edge of the
+       label and sits next to the field control (issue #2996). Without
+       this, the pre-existing .inline label flex rule in
+       SimpleFieldsLabelStyles keeps checkbox/color/radio labels at
+       content width, stranding the info icon at the far left while
+       text/select labels grow and place it next to the field. */
+    .field-main.row-layout .label-main,
+    .field-main.row-layout > label {
+      flex: 1 1 auto;
+    }
+    /* Base row-layout flex (issue #2996). Declared in the shared styles so
+       every consumer that writes the row-layout class gets the horizontal
+       label-left / control-right row, including elements that do NOT
+       inherit simple-fields-field.js styles (e.g. simple-fields-code, which
+       extends the container directly) and slotted-field containers. Elements
+       that also inherit field.js carry an identical rule; the duplication is
+       harmless and keeps each module self-consistent. */
+    .field-main.row-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   `,
 ];
 export const SimpleFieldsFieldsetStyles = [
@@ -341,7 +375,7 @@ export const SimpleFieldsFieldsetStyles = [
         --simple-fields-fieldset-border-color,
         var(--simple-fields-border-color-light, #ccc)
       );
-      border-radius: var(--simple-fields-border-radius, 2px);
+      border-radius: var(--simple-fields-border-radius, 4px);
       transition: all 0.3s ease-in-out;
       max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px);
     }

@@ -29,7 +29,6 @@ class AudioPlayer extends VideoPlayer {
   static get haxProperties() {
     return {
       canScale: true,
-
       canEditSource: true,
       gizmo: {
         title: "Audio",
@@ -61,6 +60,7 @@ class AudioPlayer extends VideoPlayer {
             description: "The URL for this media.",
             inputMethod: "haxupload",
             noCamera: true,
+            noScreenRecord: true,
             validationType: "url",
           },
           {
@@ -83,6 +83,7 @@ class AudioPlayer extends VideoPlayer {
             inputMethod: "haxupload",
             noCamera: true,
             noVoiceRecord: true,
+            noScreenRecord: true,
             validationType: "url",
           },
         ],
@@ -93,6 +94,7 @@ class AudioPlayer extends VideoPlayer {
             description: "Optional. The URL for a thumbnail/poster image.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noScreenRecord: true,
             validationType: "url",
           },
           {

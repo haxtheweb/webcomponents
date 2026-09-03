@@ -47,7 +47,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       css`
         :host {
           padding: 0;
-          border-radius: var(--simple-fields-border-radius, 2px);
+          border-radius: var(--simple-fields-border-radius, 4px);
           display: block;
           border: none;
           transform: rotate(0deg);

@@ -42,7 +42,7 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
         .label-main {
           font-size: var(--ddd-font-size-6xs, 12px);
           font-weight: var(--ddd-font-weight-medium, 500);
-          line-height: var(--ddd-lh-140, 140%);
+          line-height: var(--ddd-lh-120);
           display: block;
           margin: 0 0 var(--ddd-spacing-1, 4px) 0;
         }

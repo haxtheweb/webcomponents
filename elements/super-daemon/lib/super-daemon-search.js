@@ -531,6 +531,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host([mini][wand]) simple-fields-field::part(option-input) {
           font-size: 16px;
           font-family: "Arial", sans-serif;
+          outline: unset;
+          max-width: unset;
         }
         simple-fields-field::part(option-input) {
           padding: 0 var(--ddd-spacing-1);

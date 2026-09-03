@@ -107,7 +107,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           ?toggled="${this.expanded}"
           ?hidden="${this.hideExpand}"
           toggles
-          ?show-text-label="${this.responsiveSize !== "xs"}"
           label="${this.expanded ? "Collapse All" : "Expand All"}"
           part="expand"
         >
@@ -125,7 +124,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
           icon="more-vert"
           ?toggled="${this.expanded}"
           toggles
-          ?show-text-label="${this.responsiveSize !== "xs"}"
           label="Add Item"
         >
         </simple-toolbar-button>

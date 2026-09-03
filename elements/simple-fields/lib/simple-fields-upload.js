@@ -1,10 +1,15 @@
 import { html, css, LitElement } from "lit";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
+import {
+  SimpleFieldsButtonStyles,
+  SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS,
+} from "./simple-fields-ui.js";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import "./simple-fields-url-combo.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./simple-file-upload.js";
@@ -71,6 +76,31 @@ class SimpleFieldsUpload extends I18NMixin(
           --simple-fields-legend-font-size: var(--ddd-font-size-5xs, 10px);
           --simple-fields-detail-font-size: var(--ddd-font-size-6xs);
         }
+        /* Ubuntu-style settings row label/description affordance
+           (issue #2996): the legend lays out label + inline description
+           (short) on the left and the (i) info icon (long description)
+           inline, matching simple-fields-field row-based fields. */
+        .label-main {
+          display: flex;
+          align-items: center;
+        }
+        .label-text {
+          display: flex;
+          flex-direction: column;
+        }
+        .info-toggle {
+          --simple-fields-info-icon-size: var(--ddd-icon-4xs);
+          width: var(--simple-fields-info-icon-size);
+          height: var(--simple-fields-info-icon-size);
+          --simple-icon-width: var(--simple-fields-info-icon-size);
+          --simple-icon-height: var(--simple-fields-info-icon-size);
+          color: var(
+            --simple-fields-info-icon-color,
+            var(--simple-fields-meta-color, currentColor)
+          );
+          margin: -2px 8px 0 8px;
+          flex: initial;
+        }
         fieldset {
           padding: 0px;
           max-width: 100%;
@@ -127,12 +157,13 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         span[part="drop-area-text"] {
           font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--ddd-font-size-6xs);
+          font-size: var(--simple-fields-upload-drop-area-text-size, var(--ddd-font-size-6xs));
           white-space: nowrap;
           margin: 0;
+          font-weight: var(--ddd-font-weight-medium);
         }
         simple-file-upload {
-          padding: var(--ddd-spacing-1, 4px);
+          padding: var(--simple-file-upload-padding, var(--ddd-spacing-1));
           position: relative;
           overflow: visible;
           border: none !important;
@@ -271,15 +302,92 @@ class SimpleFieldsUpload extends I18NMixin(
       <fieldset part="fieldset">${this.legend} ${this.fields}</fieldset>
     `;
   }
+  /**
+   * word count of the description, used to decide between inline
+   * subtext (<= threshold) and the (i) info-icon tooltip (> threshold)
+   * so hax-upload-field matches the simple-fields row-layout behavior
+   * (issue #2996, shared threshold from simple-fields-ui.js).
+   */
+  get _descWordCount() {
+    return !!this.description
+      ? this.description.trim().split(/\s+/).filter(Boolean).length
+      : 0;
+  }
+  get _hasInlineDescription() {
+    return (
+      !!this.description &&
+      this._descWordCount <= SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
+    );
+  }
+  get _hasInfoTooltip() {
+    return (
+      !!this.description &&
+      this._descWordCount > SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS
+    );
+  }
+  /**
+   * Override of SimpleFieldsFieldsetBehaviors.legend: lays out the label
+   * with a short description as inline subtext, or collapses a long
+   * description behind an (i) info icon whose tooltip shows on hover/focus
+   * (positioned above), matching the Ubuntu-style settings row fields.
+   */
+  get legend() {
+    if (!this.label && !this.description) return html``;
+    const infoId = `${this.id || "upload"}-info`.replaceAll(".", "-");
+    return html`
+      <legend id="label" ?hidden="${!this.label}" part="legend"
+        class="label-main">
+        <span class="label-text">
+          <span>${this.label}${this.error ? "*" : ""}</span>
+          ${this._hasInlineDescription
+            ? html`<span id="description" part="description"
+                >${this.description}</span
+              >`
+            : ``}
+        </span>
+        ${this._hasInfoTooltip
+          ? html`<simple-icon-button-lite
+              id="${infoId}"
+              icon="icons:info-outline"
+              label="${this.label
+                ? `${this.label} details`
+                : `Upload details`}"
+              part="info-toggle"
+              class="info-toggle"
+              @click="${(e) => e.stopPropagation()}"
+            ></simple-icon-button-lite>
+            <simple-tooltip
+              for="${infoId}"
+              position="bottom"
+              fit-to-visible-bounds
+              part="info-tooltip"
+            >
+              ${this.description}
+            </simple-tooltip>`
+          : ``}
+      </legend>
+    `;
+  }
+  /**
+   * Override of SimpleFieldsFieldsetBehaviors.desc: the description is now
+   * rendered in the legend (inline or info-icon), so the standalone desc
+   * block inside the upload area is suppressed to avoid duplication.
+   */
+  get desc() {
+    if (this._hasInlineDescription || this._hasInfoTooltip) return html``;
+    return html`
+      <div id="description" ?hidden="${!this.description}" part="description">
+        ${this.description}
+      </div>
+    `;
+  }
   get sources() {
     return html`
       <simple-toolbar-button
         id="browse"
         ?disabled="${this.disabled}"
         label="${this.t.upload}.."
-        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
         icon="icons:file-upload"
-        show-text-label
         @click="${this._handleBrowse}"
         controls="fieldset"
         part="browse"
@@ -289,7 +397,6 @@ class SimpleFieldsUpload extends I18NMixin(
         icon="image:camera-alt"
         ?disabled="${this.disabled}"
         label="${this.t.takePhoto}.."
-        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleCameraOption}"
@@ -302,7 +409,6 @@ class SimpleFieldsUpload extends I18NMixin(
         icon="hardware:keyboard-voice"
         ?disabled="${this.disabled}"
         label="${this.t.recordAudio}.."
-        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleAudioOption}"
@@ -315,7 +421,6 @@ class SimpleFieldsUpload extends I18NMixin(
         icon="hardware:desktop-windows"
         ?disabled="${this.disabled}"
         label="${this.t.recordScreen}.."
-        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleScreenOption}"
@@ -372,7 +477,6 @@ class SimpleFieldsUpload extends I18NMixin(
               auto-validate=""
               part="url"
               ?disabled="${this.disabled}"
-              ?always-expanded="${this.responsiveSize.indexOf("s") < 0}"
               display-as="${this.responsiveSize.indexOf("l") > -1
                 ? "grid"
                 : ""}"

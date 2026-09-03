@@ -113,7 +113,7 @@ class MediaImage extends DDD {
           );
           padding: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-5);
-          line-height: var(--ddd-lh-140);
+          line-height: var(--ddd-lh-120);
         }
         :host(:not([disable-zoom])) media-image-image:hover {
           cursor: pointer;

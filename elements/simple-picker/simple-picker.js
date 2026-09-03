@@ -81,7 +81,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             --simple-picker-color: var(--simple-fields-color, black);
             --simple-picker-color-active: var(
               --simple-fields-faded-background-color,
-              orange
+              var(--simple-fields-accent-color, #3f51b5)
             );
             --simple-picker-option-active-color: var(
               --simple-fields-background-color

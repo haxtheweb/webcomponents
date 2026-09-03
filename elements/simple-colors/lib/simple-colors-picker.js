@@ -54,6 +54,27 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
         .row {
           width: 100%;
         }
+        /* Ubuntu-style color swatches (issue #2996, Phase 4): options and
+           the sample render as small circular swatches instead of the
+           oversized default. Scoped to simple-colors-picker only so other
+           simple-picker consumers (icon/emoji pickers) are unaffected.
+           Circular clipping is scoped to [hide-option-labels] (shades
+           mode, where each option is a solid color swatch with no
+           visible text) so accent-name rows -- which show text labels
+           and no per-option background -- are not clipped into an oval/
+           circle outline when the menu is expanded. */
+        :host {
+          --simple-picker-option-size: var(
+            --simple-fields-color-swatch-size,
+            20px
+          );
+          --simple-picker-sample-padding: 2px;
+        }
+        simple-picker-option[hide-option-labels],
+        #sample simple-picker-option[hide-option-labels] {
+          border-radius: 50%;
+          overflow: hidden;
+        }
       `,
     ];
   }

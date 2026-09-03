@@ -57,10 +57,13 @@ Custom property | Description | Default
 `--simple-fields-row-hover-background-color` | background color of a row on hover | light-dark(rgba(0,0,0,0.08), rgba(255,255,255,0.12))
 `--simple-fields-row-focus-outline-width` | outline width of a row when it (or a child) has focus | 1px
 `--simple-fields-row-focus-outline-color` | outline color of a row when it (or a child) has focus | var(--simple-fields-accent-color)
-`--simple-fields-info-icon-size` | size of the (i) info icon shown for descriptions longer than 5 words (tooltip shows on hover/focus, positioned above) | calc(var(--ddd-icon-4xs) - 2px)
+`--simple-fields-info-icon-size` | size of the (i) info icon shown for descriptions longer than 4 words (tooltip shows on hover/focus, positioned above) | calc(var(--ddd-icon-4xs) - 2px)
 `--simple-fields-info-icon-color` | color of the (i) info icon | var(--simple-fields-accent-color)
 `--simple-fields-select-max-width` | max width of a single-select value in a row before it truncates to an ellipsis (multiple selects unaffected) | 40ch
 `--simple-fields-number-max-width` | max width of a bounded (min/max/step) number input in a row | 12ch
+`--simple-fields-color-swatch-size` | size of circular color swatches in a simple-colors-picker row (and raw color input height) | 20px
+
+Note (issue #2996): the row layout and the inline-description-vs-(i)-info-icon behavior apply uniformly across field types. Descriptions of 4 words or fewer render as subtext under the label; longer descriptions collapse behind the (i) info icon. This covers checkboxes, single selects, bounded numbers, color (raw + simple-colors-picker), radio/checkbox fieldset groups (legend), text entry fields (text, textarea, password, email, tel, url, search), and hax-upload-field. Text entry fields fill the right side of the row and keep the focus underline; plain file/range/date/time/month/week retain the legacy full-width treatment. The threshold is shared from simple-fields-ui.js (SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS).
 
 ### Configuring schemaConversion Property
  You can customise elements from JSON schema conversion by setting `schemaConversion` property.

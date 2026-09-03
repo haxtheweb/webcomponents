@@ -4,11 +4,11 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: var(--ddd-font-navigation);
-      --hax-ui-font-size-xs: 10px;
-      --hax-ui-font-size-sm: 12px;
-      --hax-ui-font-size: 14px;
-      --hax-ui-font-size-lg: 16px;
-      --hax-ui-font-size-xl: 20px;
+      --hax-ui-font-size-xs: 12px;
+      --hax-ui-font-size-sm: 14px;
+      --hax-ui-font-size: 16px;
+      --hax-ui-font-size-lg: 18px;
+      --hax-ui-font-size-xl: 24px;
     }
   `,
 ];
@@ -19,7 +19,7 @@ export const HaxUiSpacing = [
       --hax-tray-menubar-min-width: 44px;
       --hax-tray-menubar-min-height: 34px;
       --hax-ui-spacing-xs: 4px;
-      --hax-ui-border-radius: 2px;
+      --hax-ui-border-radius: 4px;
       --hax-ui-spacing-sm: calc(1 * var(--hax-ui-spacing-xs, 4px));
       --hax-ui-spacing: calc(2 * var(--hax-ui-spacing-xs, 4px));
       --hax-ui-spacing-lg: calc(3 * var(--hax-ui-spacing-xs, 4px));
@@ -104,7 +104,7 @@ export const HaxUiTooltip = [
       --simple-tooltip-duration-in: 300ms;
       --simple-tooltip-duration-out: 0;
       --simple-tooltip-border-radius: 2px;
-      --simple-tooltip-font-size: var(--hax-ui-font-size-sm);
+      --simple-tooltip-font-size: var(--hax-ui-font-size-xs);
     }
   `,
 ];
@@ -486,15 +486,14 @@ export const HaxTrayDetail = [
       overflow: hidden;
       word-break: break-all;
       text-overflow: ellipsis;
-      margin: 0 -8px;
-      padding: var(--ddd-spacing-3);
-      padding-top: var(--ddd-spacing-4);
-      width: 100%;
+      margin: 0;
+      padding: var(--ddd-spacing-2);
+      width: stretch;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
-      height: 36px;
+      height: 32px;
       top: 0;
       z-index: 3;
     }

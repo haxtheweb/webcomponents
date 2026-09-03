@@ -433,8 +433,18 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           --loading-indicator-color: var(--ddd-theme-default-skyBlue);
         }
         simple-fields {
-          --simple-fields-color: var(--haxcms-insights-color);
+          --simple-fields-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
+          --simple-fields-fieldset-background-color: transparent;
+          --simple-fields-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
           --simple-fields-select-option-background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
@@ -444,8 +454,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--ddd-theme-default-potentialMidnight)
           );
           --simple-fields-button-background-color: transparent;
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
         }
         simple-fields-field[type="checkbox"],
         simple-fields-field[type="select"] {
@@ -500,7 +508,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .content-item .meta {
           font-size: var(--ddd-font-size-xs, 12px);
-          line-height: var(--ddd-lh-140, 1.4);
+          line-height: var(--ddd-lh-120);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-1);
@@ -596,7 +604,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .reports .recently-updated-items {
           font-size: var(--ddd-font-size-s);
-          line-height: var(--ddd-lh-140, 1.4);
+          line-height: var(--ddd-lh-120);
           margin: 0;
           padding-left: var(--ddd-spacing-4);
         }

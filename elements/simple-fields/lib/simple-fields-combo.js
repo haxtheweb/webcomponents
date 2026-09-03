@@ -352,7 +352,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    */
   get fieldMainTemplate() {
     return html`
-      <div class="field-main" part="field-main" ?hidden="${this.hidden}">
+      <div
+        class="field-main ${this.isRowBasedField ? "row-layout" : ""}"
+        part="field-main"
+        ?hidden="${this.hidden}"
+      >
         ${this.labelTemplate}
         <div id="field-main-inner" part="field-main-inner">
           ${this.prefixTemplate}

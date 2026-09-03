@@ -244,6 +244,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         :host {
           --simple-fields-detail-font-family: var(--hax-ui-font-family);
           --simple-fields-font-family: var(--hax-ui-font-family);
+          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-border: 1px solid black;
           z-index: var(--hax-ui-focus-z-index - 1);
           top: 0;
           font-family: var(--hax-ui-font-family);
@@ -267,8 +269,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           bottom: 0;
           min-width: calc(var(--hax-tray-width) - 100px);
           max-width: 70vw;
-          height: calc(100vh - 48px);
-          max-height: calc(100vh - 48px);
+          height: calc(100vh - 64px);
+          max-height: calc(100vh - 64px);
           z-index: var(--hax-ui-focus-z-index);
           transition:
             height 0.6s ease-in-out,
@@ -393,7 +395,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           visibility: visible;
           pointer-events: all;
           background-color: var(--hax-ui-background-color);
-          max-height: calc(100vh - 48px);
+          max-height: calc(100vh - 64px);
           width: var(
             --hax-tray-element-custom-width,
             calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
@@ -431,7 +433,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         #tray-detail {
           width: auto;
-          padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
+          padding: 0;
           transition: opacity 0.3s ease-in-out;
           opacity: 1;
           overflow: hidden;
@@ -455,19 +457,19 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         #settingsform {
           margin: 0;
-          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding: 0;
           width: 100%;
           max-width: 100%;
           min-width: 0;
           box-sizing: border-box;
-          --simple-fields-margin: var(--ddd-spacing-2);
-          --simple-fields-margin-small: var(--ddd-spacing-2);
-          --simple-fields-field-margin: var(--ddd-spacing-3);
-          --simple-fields-detail-line-height: var(--ddd-lh-140, 140%);
-          --a11y-collapse-padding-top: var(--ddd-spacing-3);
-          --a11y-collapse-padding-bottom: var(--ddd-spacing-5);
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
+          --simple-fields-margin: var(--ddd-spacing-1);
+          --simple-fields-margin-small: var(--ddd-spacing-1);
+          --simple-fields-field-margin: var(--ddd-spacing-2);
+          --simple-fields-detail-line-height: var(--ddd-lh-120);
+          --a11y-collapse-padding-top: var(--ddd-spacing-1);
+          --a11y-collapse-padding-bottom: var(--ddd-spacing-1);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-1);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
           --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
@@ -478,7 +480,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         .block-add-wrapper {
           overflow-y: auto;
           overflow-x: hidden;
-          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-4);
           width: 100%;
           max-width: 100%;
           min-width: 0;
@@ -502,44 +503,43 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           min-width: 0;
           box-sizing: border-box;
           margin: 0;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-1);
+          padding: 0;
+        }
+        #settingsform simple-fields-tab,
+        #settingsform simple-fields-field,
+        #settingsform hax-upload-field {
+          padding: var(--ddd-spacing-2);
         }
         #settingsform a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-1);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-0);
+        }
+        /** ensure that nested a11y collapses for settings have padding but top doesn't **/
+        #settingsform a11y-collapse a11y-collapse {
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-0);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-2);
         }
         #settingsform a11y-collapse span[slot="heading"] {
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
           ) !important;
+          line-height: var(--ddd-spacing-6);
+          min-height: var(--ddd-spacing-6);
+          display: block;
+          margin: var(--ddd-spacing-2);
         }
         #settingsform simple-fields-field::part(label) {
-          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-sm));
-          line-height: var(--ddd-lh-140, 140%);
+          font-size: var(--hax-ui-font-size-sm);
+          line-height: var(--ddd-lh-120);
           font-weight: var(--ddd-font-weight-medium);
-        }
-        #settingsform a11y-collapse span[slot="heading"] {
-          line-height: var(--ddd-spacing-7);
-          min-height: var(--ddd-spacing-7);
-          display: block;
-          margin: var(--ddd-spacing-2) 0;
         }
         #settingsform a11y-collapse-group {
           margin: 0;
           padding: 0;
           --a11y-collapse-group-margin: 0;
           --a11y-collapse-margin: 0;
-        }
-        /* If hax-tray hides several unused a11y-collapse tags, this corrects the 
-        border color for the first VISIBLE a11y-collapse */
-        #settingsform
-          a11y-collapse:not([hidden]):nth-child(
-            1 of a11y-collapse:not([hidden])
-          ) {
-          border-top: var(--ddd-border-sm);
-          border-top-color: var(--ddd-theme-default-coalyGray);
         }
         hax-tray-button,
         hax-gizmo-browser {
@@ -554,6 +554,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         }
         hax-tray-upload {
           flex: 0 0 auto;
+          --simple-fields-margin: 0px;
+          --simple-fields-margin-small: 0px;
+          --simple-file-upload-padding: 0;
+          font-weight: var(--ddd-font-weight-medium);
+          --simple-fields-upload-drop-area-text-size: var(--ddd-font-size-5xs);
+          line-height: 1;
         }
         *[hidden] {
           display: none;

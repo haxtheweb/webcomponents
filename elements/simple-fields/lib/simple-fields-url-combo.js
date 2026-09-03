@@ -34,7 +34,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
         }
         :host([display-as="columns"]) ul[role="listbox"] li[role="option"],
         :host([display-as="grid"]) ul[role="listbox"] li[role="option"] {
-          border-radius: var(--simple-fields-border-radius, 2px);
+          border-radius: var(--simple-fields-border-radius, 4px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
         }
         :host([always-expanded]) #field-main-inner {

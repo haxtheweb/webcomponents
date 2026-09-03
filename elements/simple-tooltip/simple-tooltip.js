@@ -323,7 +323,7 @@ class SimpleTooltip extends LitElement {
     var ownerRoot = this.getRootNode();
     var target;
     if (this.for) {
-      target = ownerRoot.querySelector("#" + this.for);
+      target = ownerRoot.querySelector("#" + CSS.escape(this.for));
     } else {
       target =
         parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE

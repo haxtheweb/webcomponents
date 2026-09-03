@@ -192,14 +192,6 @@ export class DDDSample extends DDDSuper(LitElement) {
           font-size: var(--ddd-font-size-4xs);
           line-height: normal;
         }
-        :host([type="accent"]:hover),
-        :host([type="primary"]:hover) {
-          color: black;
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-limestoneGray)
-          );
-        }
 
         :host([type="accent"]) .sample,
         :host([type="primary"]) .sample {
@@ -214,7 +206,7 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="border"]) .sample,
         :host([type="border-radius"]) .sample,
         :host([type="box-shadow"]) .sample {
-          --ddd-theme-primary: var(--ddd-sample-theme-primary, black);
+          --ddd-theme-primary: var(--ddd-sample-theme-primary, light-dark(black,white));
           --ddd-theme-accent: var(
             --ddd-sample-theme-accent,
             var(--ddd-accent-3)
@@ -231,14 +223,15 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
         :host([type="border-radius"]) .sample {
           border: var(--ddd-border-lg);
-          height: var(--ddd-spacing-8);
-          width: var(--ddd-spacing-8);
+          height: var(--ddd-spacing-2);
+          width: var(--ddd-spacing-2);
           border-color: var(--ddd-theme-primary);
           clip-path: polygon(50% 0, 0 50%, 0 0, 0 0);
-          transform: scale(4);
+          transform: scale(2);
           padding: 0;
-          margin-left: 64px;
-          margin-top: 64px;
+          margin-left: 6px;
+          margin-top: 6px;
+      }
         }
         :host([type="box-shadow"]) .sample {
           border: var(--ddd-border-sm);
@@ -262,11 +255,9 @@ export class DDDSample extends DDDSuper(LitElement) {
           vertical-align: top;
         }
         :host([type="border-radius"]) .label {
-          margin-left: calc(-1 * var(--ddd-spacing-5));
+          margin-left: calc(-1 * var(--ddd-spacing-2));
           display: inline-block;
           vertical-align: top;
-          height: var(--ddd-spacing-20);
-          line-height: var(--ddd-spacing-20);
         }
 
         :host([type="margin"]) .label,
