@@ -171,7 +171,6 @@ class SimplePopoverManager extends LitElement {
         }
         this.context = context;
         this.setAttribute("mode", mode || "");
-        console.log(this.popover);
         this.popover.target = null;
         this.popover.target = el;
       }

@@ -34,12 +34,12 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           overflow: hidden;
           width: 300px;
           color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
           );
           background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
           );
         }
         .preview-wrap {
@@ -59,12 +59,12 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           padding: var(--ddd-spacing-2);
           border-top: var(--ddd-border-xs) solid
             light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
+              var(--ddd-accent-6),
+            var(--ddd-primary-4)
             );
           background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
           );
           max-height: var(--ddd-spacing-16);
           overflow: hidden;
@@ -77,8 +77,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           font-size: var(--ddd-font-size-4xs);
           margin-bottom: var(--ddd-spacing-1);
           color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
           );
         }
         .title simple-icon {
@@ -90,8 +90,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-120);
           color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
           );
           overflow: hidden;
           text-overflow: ellipsis;

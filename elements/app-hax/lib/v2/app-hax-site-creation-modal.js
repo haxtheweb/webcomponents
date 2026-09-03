@@ -588,6 +588,15 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     }
   }
 
+  _clearUseCaseUrlParams() {
+    // The `use-case` deep-link param (and its historical spelling variants)
+    // should not linger in the URL once a site has actually been created,
+    // otherwise reloading the page looks like the use-case was never opened.
+    this._updateUrlQueryParam("use-case", "");
+    this._updateUrlQueryParam("use_case", "");
+    this._updateUrlQueryParam("useCase", "");
+  }
+
   _syncUrlNameParam() {
     const current = this._sanitizeNameForUrl(this.siteName);
     const defaultName = this._sanitizeNameForUrl(this.__defaultSiteName);
@@ -962,7 +971,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         this.siteUrl = `/_sites/${siteSlug}/`;
       }
 
-      // Success!
+      // Success! Now that the site actually exists, drop the deep-link
+      // `use-case` param so a reload doesn't look like nothing happened.
+      this._clearUseCaseUrlParams();
+
       this.currentStep = 3;
       this.isCreating = false;
       this.creationProgress = this.max || 100; // Ensure 100% completion

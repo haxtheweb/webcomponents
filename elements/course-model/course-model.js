@@ -65,6 +65,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
                 property: "poster",
                 title: "Poster image",
                 inputMethod: "haxupload",
+                noScreenRecord: true,
                 noVoiceRecord: true,
               },
               {
@@ -72,6 +73,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
                 title: "Source",
                 inputMethod: "haxupload",
                 noVoiceRecord: true,
+                noScreenRecord: true,
                 noCamera: true,
               },
               {
@@ -85,6 +87,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
                 attribute: "environment-image",
                 title: "Environment Image",
                 inputMethod: "haxupload",
+                noScreenRecord: true,
                 noVoiceRecord: true,
                 noCamera: true,
               },

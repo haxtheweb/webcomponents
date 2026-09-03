@@ -96,11 +96,12 @@
             "description": "Image shown with this answer.",
             "inputMethod": "haxupload",
             "noVoiceRecord": true,
+            "noScreenRecord": true,
             "noCamera": true
           },
           {
             "property": "alt",
-            "title": "Image Alternative text",
+            "title": "Image Alt text",
             "description": "Alternative text for the image.",
             "inputMethod": "textfield"
           }

@@ -535,6 +535,7 @@ const LrndesignChart = function (SuperClass) {
               title: "CSV File",
               description: "Load data from a CSV.",
               inputMethod: "haxupload",
+              noScreenRecord: true,
               noVoiceRecord: true,
               noCamera: true,
               icon: "link",

@@ -187,7 +187,19 @@ export const HaxUiSingletons = [
       font-size: var(--hax-ui-font-size);
       --simple-modal-height: 80vh;
       --simple-modal-width: 80vw;
-      --simple-popover-border-color: var(--hax-ui-color);
+      --simple-popover-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+      --simple-popover-padding: var(--hax-ui-spacing);
+      --simple-popover-border-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+      --simple-popover-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
       --simple-modal-border-color: var(--hax-ui-color);
     }
     rich-text-editor-prompt {

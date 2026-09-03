@@ -315,7 +315,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="select"]) .field-main.row-layout simple-icon-lite {
             position: static;
             flex: 0 0 auto;
-            margin-inline-start: var(--simple-fields-margin-small, 8px);
+            margin-inline-start: -24px;
             pointer-events: none;
           }
           /* Bounded number fields (min/max/step) behave like a select-style

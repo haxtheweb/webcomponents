@@ -73,21 +73,21 @@ class SimplePopover extends AbsolutePositionBehavior {
         #content {
           margin: 0;
           pointer-events: all;
-          padding: var(--simple-popover-padding, 10px);
-          color: var(--simple-popover-color, #222);
-          background-color: var(--simple-popover-background-color, white);
+          min-height: var(--simple-popover-min-height, 20px);
+          max-height: var(--simple-popover-max-height, auto);
+          scroll-behavior: smooth;
+          border-radius: var(--simple-popover-border-radius, 4px);
           border: var(
             --simple-popover-border,
-            1px solid var(--simple-popover-border-color, #bbb)
+            1px solid var(--simple-popover-border-color, light-dark(black, white))
           );
-          border-radius: var(--simple-popover-border-radius, 3px);
+          color: var(--simple-popover-color, var(--simple-popover-border-color, light-dark(black, white)));
+          background-color: var(--simple-popover-background-color, light-dark(white, black));
+          padding: var(--simple-popover-padding, 10px);
           box-shadow: var(
             --simple-popover-box-shadow,
             rgba(60, 64, 67, 0.3) 0px 4px 8px 3px
           );
-          min-height: var(--simple-popover-min-height, 20px);
-          max-height: var(--simple-popover-max-height, 200px);
-          scroll-behavior: smooth;
         }
 
         #pointer-outer {
@@ -107,8 +107,8 @@ class SimplePopover extends AbsolutePositionBehavior {
           position: absolute;
           width: 10px;
           height: 10px;
-          background-color: var(--simple-popover-background-color, white);
-          border: 1px solid var(--simple-popover-border-color, #bbb);
+          background-color: var(--simple-popover-background-color, light-dark(white, black));
+          border: 1px solid var(--simple-popover-border-color, light-dark(black, white));
           transform: rotate(45deg);
           top: 15px;
           left: 5px;
@@ -188,7 +188,6 @@ class SimplePopover extends AbsolutePositionBehavior {
    * @returns {string} a string with margin styles to offset pointer
    */
   _getMargins(positions) {
-    console.log(positions);
     if (positions && positions.target) {
       let self = this.getBoundingClientRect(),
         h = this.position === "bottom" || this.position === "top",

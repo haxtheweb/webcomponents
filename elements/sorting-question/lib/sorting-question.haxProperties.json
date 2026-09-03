@@ -72,7 +72,7 @@
           },
           {
             "property": "alt",
-            "title": "Image Alternative text",
+            "title": "Image Alt text",
             "description": "Alternative text for the image.",
             "inputMethod": "textfield"
           }

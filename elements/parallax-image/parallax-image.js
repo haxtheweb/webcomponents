@@ -167,6 +167,8 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             description: "image to be involved in the background",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noCamera: true,
+            noScreenRecord: true,
           },
           {
             slot: "parallax_heading",

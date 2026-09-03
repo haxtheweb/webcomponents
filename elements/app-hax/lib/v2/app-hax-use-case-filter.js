@@ -2408,11 +2408,14 @@ export class AppHaxUseCaseFilter extends LitElement {
       return;
     }
 
-    // Keep URL in sync for link sharing
-    const useCaseMachineName =
-      this._getUseCaseMachineNameForTemplate(selectedTemplate);
-    if (useCaseMachineName) {
-      this._updateUrlQueryParam("use-case", useCaseMachineName);
+    // Keep URL in sync for link sharing. Import flows aren't a deep-linkable
+    // "use case" template, so don't append `use-case=import-*` for them.
+    if (selectedTemplate.dataType !== "import") {
+      const useCaseMachineName =
+        this._getUseCaseMachineNameForTemplate(selectedTemplate);
+      if (useCaseMachineName) {
+        this._updateUrlQueryParam("use-case", useCaseMachineName);
+      }
     }
 
     // Set the template details in the modal

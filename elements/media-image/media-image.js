@@ -524,14 +524,14 @@ class MediaImage extends DDD {
           },
           {
             property: "figureLabelTitle",
-            title: "Figure Label Title",
+            title: "Figure Title",
             description: "Title for the figure label.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "figureLabelDescription",
-            title: "Figure Label Description",
+            title: "Figure Description",
             description: "Description for the figure label.",
             inputMethod: "textfield",
             required: false,
@@ -544,6 +544,9 @@ class MediaImage extends DDD {
             description:
               "Thumbnail image source. Shows thumbnail but opens full source in modal.",
             inputMethod: "haxupload",
+            noVoiceRecord: true,
+            noCamera: true,
+            noScreenRecord: true,
             required: false,
           },
           {

@@ -82,13 +82,13 @@
           },
           {
             "property": "selectedFeedback",
-            "title": "Feedback if selected",
+            "title": "Feedback, selected",
             "inputMethod": "textfield",
             "required": true
           },
           {
             "property": "unselectedFeedback",
-            "title": "Feedback if NOT selected",
+            "title": "Feedback, not selected",
             "inputMethod": "textfield",
             "required": true
           }

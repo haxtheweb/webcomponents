@@ -305,22 +305,25 @@ class AbsolutePositionStateManager extends LitElement {
     //if justify is set, re-adjust element to
     //target width before getting other dimensions
     if (el.justify) el.style.width = `${t.width}px`;
-    //get body, parent, and element dimensions
-    let doc = globalThis.document,
-      boundsNode = doc ? doc.body || doc.documentElement : null,
-      viewportHeight = globalThis.innerHeight || 0,
+    //get viewport, parent, and element dimensions
+    //fit-to-visible-bounds is measured against the viewport, not
+    //document.body content box: getBoundingClientRect (used for t and e)
+    //is viewport-relative, and el.style.top is body-relative which the
+    //min/scroll adjust below converts. Using body.height breaks when the
+    //body does not fill the viewport (e.g. HAX editor shells where body
+    //content is short): max = min + bodyHeight - elHeight goes negative and
+    //the Math.max/Math.min clamp pins the element to top 0 even when the
+    //correct centered position (align) is well inside the viewport.
+    let viewportHeight = globalThis.innerHeight || 0,
       viewportWidth = globalThis.innerWidth || 0,
-      w =
-        boundsNode && boundsNode.getBoundingClientRect
-          ? boundsNode.getBoundingClientRect()
-          : {
-              top: 0,
-              left: 0,
-              right: viewportWidth,
-              bottom: viewportHeight,
-              width: viewportWidth,
-              height: viewportHeight,
-            },
+      w = {
+        top: 0,
+        left: 0,
+        right: viewportWidth,
+        bottom: viewportHeight,
+        width: viewportWidth,
+        height: viewportHeight,
+      },
       p = parent.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
       //optional offset property
@@ -439,8 +442,8 @@ class AbsolutePositionStateManager extends LitElement {
         tt = scrollTop + maxH - parent.offsetTop - eheight;
     }
     //set top and left positions
-    el.style.top = tt + "px";
-    el.style.left = ll + "px";
+    el.style.top = Math.round(tt) + "px";
+    el.style.left = parseInt(ll) + "px";
     //provide positions for element and target (in case furthor positioning adjustments are needed)
     el.__positions = {
       self: e,

@@ -142,6 +142,9 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
             description: "Image URL for the badge.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
+            noCamera: true,
+            noScreenRecord: true,
+            noVoiceRecord: true,
           },
           {
             property: "badgeDetails",

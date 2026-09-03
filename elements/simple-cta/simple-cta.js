@@ -242,6 +242,7 @@ class SimpleCta extends DDDPulseEffectSuper(
             inputMethod: "haxupload",
             noVoiceRecord: true,
             noCamera: true,
+            noScreenRecord: true,
             required: true,
           },
           {

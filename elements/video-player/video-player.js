@@ -281,8 +281,9 @@ class VideoPlayer extends IntersectionObserverMixin(
                 title: "Track file",
                 description: "URL for the track file (WebVTT format).",
                 inputMethod: "haxupload",
-                noCamera: true,
                 noVoiceRecord: true,
+                noCamera: true,
+                noScreenRecord: true,
                 validationType: "url",
               },
               {

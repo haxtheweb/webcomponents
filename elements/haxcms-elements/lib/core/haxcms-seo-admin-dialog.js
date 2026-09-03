@@ -351,6 +351,8 @@ class HAXCMSSEOAdminDialog extends DDD {
             inputMethod: "haxupload",
             required: false,
             noVoiceRecord: true,
+            noScreenRecord: true,
+            noCamera: true,
           },
           {
             property: "manifest-metadata-site-domain",
@@ -426,6 +428,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             inputMethod: "haxupload",
             required: false,
             noVoiceRecord: true,
+            noScreenRecord: true,
           },
           {
             property: "manifest-metadata-author-name",

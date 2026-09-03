@@ -412,6 +412,7 @@ export class QuestionElement extends SchemaBehaviors(
         :host {
           display: block;
           min-width: 160px;
+          text-align: start;
           padding: var(--ddd-spacing-4);
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-sm);
@@ -541,7 +542,8 @@ export class QuestionElement extends SchemaBehaviors(
         simple-fields-field {
           view-transition-name: field;
           border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-4);
+          padding: 8px;
+          min-height: 52px;
           margin-top: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-2);
           border: var(--ddd-border-xs);

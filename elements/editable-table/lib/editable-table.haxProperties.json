@@ -132,6 +132,9 @@
         "title": "CSV Data",
         "description": "Create a table from an uploaded CSV file.",
         "inputMethod": "fileupload",
+        "noScreenRecord": true,
+        "noVoiceRecord": true,
+        "noCamera": true,
         "accepts": "csv"
       }
     ]

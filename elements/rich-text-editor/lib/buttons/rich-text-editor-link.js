@@ -22,6 +22,9 @@ const hrefField = {
   description: "The URL to a resource.",
   required: true,
   inputMethod: "haxupload",
+  noVoiceRecord: true,
+  noCamera: true,
+  noScreenRecord: true,
   autofocus: true,
 };
 
