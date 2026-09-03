@@ -451,12 +451,6 @@ export class QuestionElement extends SchemaBehaviors(
           --grid-plate-item-padding: 0 8px;
         }
 
-        :host(:focus),
-        :host(:focus-within),
-        :host(:hover) {
-          border-color: var(--simple-colors-default-theme-accent-12);
-        }
-
         :host button {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
@@ -466,13 +460,6 @@ export class QuestionElement extends SchemaBehaviors(
         :host simple-fields-field:focus-within,
         :host simple-fields-field:active {
           cursor: pointer;
-          background-color: var(
-            --ddd-theme-accent,
-            var(--simple-colors-default-theme-accent-3)
-          );
-          color: var(--simple-colors-default-theme-accent-12);
-          box-shadow: var(--ddd-boxShadow-sm);
-          border-color: black;
         }
         p {
           padding: 0;
@@ -544,16 +531,37 @@ export class QuestionElement extends SchemaBehaviors(
           border-radius: var(--ddd-radius-xs);
           padding: 8px;
           min-height: 52px;
+          width: stretch;
+          --simple-fields-min-width: 120px;
+          --simple-fields-input-max-width: auto;
           margin-top: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-2);
-          border: var(--ddd-border-xs);
-          color: var(--simple-colors-default-theme-accent-12);
-          background-color: var(--simple-colors-default-theme-accent-2);
           --simple-fields-font-family: var(--ddd-font-navigation);
           --simple-fields-font-size: var(--ddd-font-size-xs);
           --simple-fields-line-height: var(--ddd-font-size-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
+                    --simple-fields-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-border: 1px solid black;
+          --simple-fields-background-color: transparent;
+          --simple-fields-fieldset-background-color: transparent;
+          --simple-fields-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
+          --simple-fields-select-option-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --simple-fields-select-option-selected-background-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-fields-button-background-color: transparent;
         }
         simple-fields-field[type="textfield"] {
           padding: var(--ddd-spacing-4);
@@ -673,7 +681,7 @@ export class QuestionElement extends SchemaBehaviors(
           padding-left: 8px;
         }
         dl .incorrect {
-          border-left: 4px dotted var(--ddd-theme-default-wonderPurple);
+          border-left: 4px dotted light-dark(var(--ddd-theme-default-wonderPurple), var(--ddd-theme-default-athertonViolet));
           padding-left: 8px;
         }
         .tag-option.correct {
@@ -682,7 +690,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
 
         .tag-option.incorrect {
-          outline: 3px dotted var(--ddd-theme-default-wonderPurple);
+          outline: 3px dotted light-dark(var(--ddd-theme-default-wonderPurple), var(--ddd-theme-default-athertonViolet));
           outline-offset: -3px;
         }
         /** edit mode, hax, etc */
@@ -833,8 +841,6 @@ export class QuestionElement extends SchemaBehaviors(
         ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
         : nothing}
       <confetti-container id="confetti">
-        <grid-plate layout="1-1">
-          <div slot="col-1">
             <details open>
               <summary id="question">
                 <simple-icon-lite
@@ -849,8 +855,6 @@ export class QuestionElement extends SchemaBehaviors(
                 ${!this.hideButtons ? this.renderButtons() : nothing}
               </div>
             </details>
-          </div>
-          <div slot="col-2">
             <details
               tabindex="${!this.showAnswer ? "-1" : ""}"
               ?disabled="${!this.showAnswer && !this.edit}"
@@ -914,8 +918,6 @@ export class QuestionElement extends SchemaBehaviors(
               </summary>
               <div class="container">${this.renderDirections()}</div>
             </details>
-          </div>
-        </grid-plate>
       </confetti-container>
     `;
   }

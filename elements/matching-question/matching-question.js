@@ -92,7 +92,7 @@ class MatchingQuestion extends QuestionElement {
 
         :host(:not([show-answer])) .tag-option:hover,
         :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
         }
 
         :host([show-answer]) .tag-option {
@@ -122,7 +122,7 @@ class MatchingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
           cursor: pointer;
           user-select: none;
           transition: background-color 0.3s ease;

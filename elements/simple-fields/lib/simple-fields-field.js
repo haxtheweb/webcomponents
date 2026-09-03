@@ -324,7 +324,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           .field-main.row-layout input[type="number"] {
             width: auto;
             max-width: var(--simple-fields-number-max-width, 12ch);
-            min-width: 0;
+            min-width: var(--simple-fields-min-width, 0);
             flex: 0 1 auto;
             text-align: end;
           }
@@ -334,17 +334,17 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             width: auto;
             flex: 0 0 auto;
             height: var(--simple-fields-color-swatch-size, 20px);
-            min-width: 0;
+            min-width: var(--simple-fields-min-width, 0);
             padding: 0;
           }
-          /* Phase 5: text entry fields (issue #2996). The control fills the
-             right side of the row instead of being compact like select,
-             number, or color, so the inner container grows and the
-             input/textarea fills it. The focus underline (.border-bottom)
-             stays as the primary focus affordance for text/textarea. */
+          /* Phase 5: single-line text entry fields (issue #2996). The control
+             fills the right side of the row instead of being compact like
+             select, number, or color, so the inner container grows and the
+             input fills it. The focus underline (.border-bottom) stays as
+             the primary focus affordance. Textarea is excluded (it keeps the
+             legacy full-width treatment). */
           :host([type="text"]) .field-main.row-layout #field-main-inner,
           :host([type="number"]) .field-main.row-layout #field-main-inner,
-          :host([type="textarea"]) .field-main.row-layout #field-main-inner,
           :host([type="password"]) .field-main.row-layout #field-main-inner,
           :host([type="email"]) .field-main.row-layout #field-main-inner,
           :host([type="tel"]) .field-main.row-layout #field-main-inner,
@@ -352,20 +352,16 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="search"]) .field-main.row-layout #field-main-inner {
             flex: initial;
           }
-          :host([type="textarea"]) .field-main.row-layout #field-main-inner {
-            align-items: flex-start;
-          }
           .field-main.row-layout input[type="number"],
           .field-main.row-layout input[type="text"],
           .field-main.row-layout input[type="password"],
           .field-main.row-layout input[type="email"],
           .field-main.row-layout input[type="tel"],
           .field-main.row-layout input[type="url"],
-          .field-main.row-layout input[type="search"],
-          .field-main.row-layout textarea.field {
+          .field-main.row-layout input[type="search"] {
             width: 100%;
             border-radius: var(--simple-fields-border-radius, 4px);
-            min-width: 0;
+            min-width: var(--simple-fields-min-width, 0);
             flex: 1 1 auto;
             max-width: var(--simple-fields-input-max-width, 140px);
             padding: 0 4px;
@@ -376,8 +372,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             width: stretch;
           }
           .field-main.row-layout select:focus,
-          .field-main.row-layout input:focus,
-          .field-main.row-layout textarea.field:focus {
+          .field-main.row-layout input:focus {
             outline: var(--simple-fields-row-focus-outline-width, 1px) solid
               var(
                 --simple-fields-row-focus-outline-color,

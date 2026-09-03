@@ -47,7 +47,7 @@ class ShortAnswerQuestion extends QuestionElement {
   renderInteraction() {
     return html`
       <simple-fields-field
-        type="textfield"
+        type="textarea"
         ?disabled="${this.disabled || this.showAnswer}"
         class="tag-option ${this.showAnswer
           ? this.isCorrect()

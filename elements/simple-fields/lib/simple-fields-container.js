@@ -74,12 +74,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             flex: 0 0 auto;
             width: auto;
           }
-          /* Phase 5: slotted text entry fields (issue #2996) fill the right
-             side of the row (vs compact slotted pickers), so the field-inner
-             grows and the slotted input/textarea fills it. Scoped by the
-             reflected [type] host attribute. */
+          /* Phase 5: slotted single-line text entry fields (issue #2996)
+             fill the right side of the row (vs compact slotted pickers), so
+             the field-inner grows and the slotted input fills it. Scoped by
+             the reflected [type] host attribute. Textarea is excluded (it
+             keeps the legacy full-width treatment). */
           :host([type="text"]) .field-main.row-layout [part="field-inner"],
-          :host([type="textarea"]) .field-main.row-layout [part="field-inner"],
           :host([type="password"]) .field-main.row-layout [part="field-inner"],
           :host([type="email"]) .field-main.row-layout [part="field-inner"],
           :host([type="tel"]) .field-main.row-layout [part="field-inner"],
@@ -92,8 +92,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           .field-main.row-layout ::slotted(input[type="email"]),
           .field-main.row-layout ::slotted(input[type="tel"]),
           .field-main.row-layout ::slotted(input[type="url"]),
-          .field-main.row-layout ::slotted(input[type="search"]),
-          .field-main.row-layout ::slotted(textarea) {
+          .field-main.row-layout ::slotted(input[type="search"]) {
             flex: 1 1 auto;
             width: 100%;
             min-width: 0;
@@ -495,20 +494,43 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // case (shadow DOM) and the slotted simple-colors-picker case (the
       // legacy "accent color" combobox) both render label/description left
       // with a compact swatch control right (Phase 4, issue #2996).
-      // Phase 5: text entry fields (text, textarea, password, email, tel,
+      // Phase 5: single-line text entry fields (text, password, email, tel,
       // url, search) adopt the row layout so label/description sit left
       // and the input fills the right side, with the focus underline
-      // preserved for text/textarea. Plain file/range/date/time/month/
-      // week keep the legacy full-width treatment.
+      // preserved. Scalable full-width fields (textarea, code editor) do
+      // NOT adopt the row layout: they are too tall / editable to benefit
+      // from the compact settings row and keep the legacy full-width
+      // treatment with the description in the field-bottom area.
+      // Plain file/range/date/time/month/week keep the legacy full-width
+      // treatment.
       return (
         (this.type === "checkbox" && !this.hasFieldset) ||
         (this.type === "select" && !this.multiple) ||
         this.type === "color" ||
-        ["text", "number", "textarea", "password", "email", "tel", "url", "search"].includes(
+        ["text", "number", "password", "email", "tel", "url", "search"].includes(
           this.type,
         ) ||
         (this.field &&
           this.field.tagName.toLowerCase() === "simple-colors-picker")
+      );
+    }
+    /**
+     * Scalable, full-width text entry fields (textarea and the code
+     * editor) keep the legacy description layout: the description renders
+     * in the field-bottom area instead of as inline subtext or an (i)
+     * info icon under the label. These fields are too tall / editable to
+     * benefit from the compact Ubuntu-style settings row, so they are
+     * excluded from both the row layout and the inline-description /
+     * info-icon behavior (issue #2996 Phase 5 revert).
+     *
+     * @readonly
+     * @returns {boolean}
+     * @memberof SimpleFieldsContainer
+     */
+    get _isScalableTextField() {
+      return (
+        this.type === "textarea" ||
+        this.tagName.toLowerCase() === "simple-fields-code"
       );
     }
     /**
@@ -674,6 +696,10 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // long descriptions collapse behind the (i) info icon. Radio/
       // checkbox fieldset groups render this via their legend in
       // simple-fields-field.js fieldsetTemplate (issue #2996).
+      // Scalable full-width fields (textarea, code editor) are excluded:
+      // they keep the legacy description in the field-bottom area
+      // (issue #2996 Phase 5 revert).
+      if (this._isScalableTextField) return false;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length <=
@@ -693,6 +719,10 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
       // descriptions consistently collapse behind the (i) info icon. Radio/
       // checkbox fieldset groups render this via their legend in
       // simple-fields-field.js fieldsetTemplate (issue #2996).
+      // Scalable full-width fields (textarea, code editor) are excluded:
+      // they keep the legacy description in the field-bottom area
+      // (issue #2996 Phase 5 revert).
+      if (this._isScalableTextField) return false;
       return (
         !!this.description &&
         this.description.trim().split(/\s+/).filter(Boolean).length >

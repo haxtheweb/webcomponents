@@ -85,25 +85,12 @@ export class MarkTheWords extends QuestionElement {
         button.selected,
         button.selected:focus,
         button.selected:hover {
-          outline: 2px solid
-            light-dark(
-              var(
-                --lowContrast-override,
-                var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
-              ),
-              var(--ddd-theme-default-link)
-            );
+          outline: 4px solid orange;
         }
         button:focus,
         button:hover {
           outline: 1px solid
-            light-dark(
-              var(
-                --lowContrast-override,
-                var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
-              ),
-              var(--ddd-theme-default-link)
-            );
+             light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
         }
 
         button {
@@ -133,7 +120,7 @@ export class MarkTheWords extends QuestionElement {
           display: inline-block;
           font-family: var(--ddd-font-navigation);
           border-radius: var(--ddd-radius-md);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
           margin: 0;
           cursor: pointer;
           user-select: none;

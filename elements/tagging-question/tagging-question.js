@@ -96,12 +96,12 @@ class TaggingQuestion extends QuestionElement {
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
           border-color: black;
-          background-color: var(--ddd-theme-default-coalyGray);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
-          background-color: var(--ddd-theme-default-coalyGray);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
         }
 
         .tag-option {
@@ -112,7 +112,7 @@ class TaggingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-coalyGray);
+          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
           cursor: pointer;
           user-select: none;
           transition: background-color 0.3s ease;
