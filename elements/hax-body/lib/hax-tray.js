@@ -466,10 +466,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           --simple-fields-margin-small: var(--ddd-spacing-1);
           --simple-fields-field-margin: var(--ddd-spacing-2);
           --simple-fields-detail-line-height: var(--ddd-lh-120);
-          --a11y-collapse-padding-top: var(--ddd-spacing-1);
-          --a11y-collapse-padding-bottom: var(--ddd-spacing-1);
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-1);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-1);
+          --a11y-collapse-padding-top: 0;
+          --a11y-collapse-padding-bottom: 0;
+          --a11y-collapse-vertical-padding: 0;
+          --a11y-collapse-horizontal-padding: 0;
           --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
