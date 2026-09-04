@@ -442,6 +442,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       icon: "hax:discord",
       priority: -100,
       tags: ["community", "discord", "chat", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -456,6 +457,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       icon: "hax:hax2022",
       priority: -1000,
       tags: ["Documentation", "community", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -469,6 +471,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       title: "User Documentation",
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -482,6 +485,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       title: "HAX Teaching Excellence",
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",

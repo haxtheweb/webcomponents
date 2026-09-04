@@ -24,6 +24,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.textCharacter = null;
     this.eventName = null;
     this.shortcut = null;
+    this.externalLink = false;
     this.more = false;
     this.showDetails = false;
     this.value = {};
@@ -51,6 +52,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       showDetails: { type: Boolean },
       eventName: { type: String, attribute: "event-name" },
       shortcut: { type: String },
+      externalLink: { type: Boolean, attribute: "external-link" },
       value: { type: Object },
       tags: { type: Array },
       active: { type: Boolean, reflect: true },
@@ -212,6 +214,17 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           color: var(--ddd-theme-default-white);
           background-color: rgba(255, 255, 255, 0.12);
           border-color: rgba(255, 255, 255, 0.2);
+        }
+        .external-link-icon {
+          display: inline-flex;
+          align-self: center;
+          margin-left: var(--ddd-spacing-1);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          color: var(--ddd-theme-default-discoveryCoral);
+        }
+        :host([dark]) .external-link-icon {
+          color: var(--ddd-theme-default-discoveryCoral);
         }
         .label-wrap .action {
           font-size: var(--super-daemon-row-label, 24px);
@@ -395,6 +408,14 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
               >${this.shortcut}</kbd
             >`
+          : ""}
+        ${this.externalLink
+          ? html`<simple-icon-lite
+              icon="icons:open-in-new"
+              class="external-link-icon"
+              title="Opens in a new window"
+              aria-hidden="true"
+            ></simple-icon-lite>`
           : ""}
         ${this.more
           ? html`<simple-icon-button

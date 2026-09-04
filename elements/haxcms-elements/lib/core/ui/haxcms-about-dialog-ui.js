@@ -3,7 +3,10 @@ import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store, HAXcmsStore } from "../haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import { HAXCMSKeyboardShortcutsInstance } from "../utils/HAXCMSKeyboardShortcuts.js";
+import {
+  KeyboardShortcutManagerInstance,
+  KeyboardShortcutManager,
+} from "@haxtheweb/utils/utils.js";
 import { _pageRouteVariantUrl } from "../utils/ExportPageProgram.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
@@ -14,19 +17,16 @@ class HAXCMSAboutDialogUI extends DDD {
   static get properties() {
     return {
       keyboardShortcuts: { type: Array },
-      markdownShortcuts: { type: Array },
     };
   }
 
   constructor() {
     super();
     this.keyboardShortcuts = [];
-    this.markdownShortcuts = [];
     this.__disposer = [];
     this.__keyboardShortcutsUpdatedHandler =
       this._handleKeyboardShortcutsUpdated.bind(this);
     this._loadKeyboardShortcuts();
-    this._loadMarkdownShortcuts();
   }
 
   connectedCallback() {
@@ -36,7 +36,6 @@ class HAXCMSAboutDialogUI extends DDD {
       this.__keyboardShortcutsUpdatedHandler,
     );
     this._loadKeyboardShortcuts();
-    this._loadMarkdownShortcuts();
   }
 
   disconnectedCallback() {
@@ -56,8 +55,29 @@ class HAXCMSAboutDialogUI extends DDD {
   }
 
   _loadKeyboardShortcuts() {
-    const shortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
-    this.keyboardShortcuts = shortcuts
+    // Pull every descriptor (bindings + markdown triggers) from the shared
+    // registry so this single list is the source of truth. Markdown
+    // descriptors carry their own description (e.g. "Heading 1" for the #
+    // trigger, which inserts h2 for a11y); the tag-based helper is only a
+    // fallback for descriptors that did not set one.
+    const descriptors = KeyboardShortcutManagerInstance.getAll();
+    this.keyboardShortcuts = descriptors
+      .map((d) => {
+        const label =
+          d.type === "markdown"
+            ? d.trigger
+            : KeyboardShortcutManager.generateLabel(d);
+        let description = d.description;
+        if (!description && d.type === "markdown") {
+          description = this._markdownShortcutDescription({ tag: d.tag });
+        }
+        return {
+          label: label,
+          description: description || "",
+          context: d.context,
+          type: d.type,
+        };
+      })
       .slice()
       .sort((a, b) =>
         `${a.label} ${a.description}`.localeCompare(
@@ -70,46 +90,14 @@ class HAXCMSAboutDialogUI extends DDD {
     this._loadKeyboardShortcuts();
   }
 
-  _loadMarkdownShortcuts() {
-    const shortcutMap = HAXStore.keyboardShortcuts || {};
-    const preferredOrder = [
-      "#",
-      "##",
-      "###",
-      "####",
-      "#####",
-      "######",
-      "1.",
-      "-",
-      "*",
-      "+",
-      ">",
-      "```",
-      "---",
-      "***",
-      "___",
-    ];
-    const allKeys = Object.keys(shortcutMap);
-    const ordered = [...preferredOrder];
-    allKeys.forEach((key) => {
-      if (!ordered.includes(key)) {
-        ordered.push(key);
-      }
-    });
-    this.markdownShortcuts = ordered
-      .filter((key) => shortcutMap[key])
-      .map((key) => ({
-        trigger: key,
-        description: this._markdownShortcutDescription(shortcutMap[key]),
-      }));
-  }
-
   _markdownShortcutDescription(shortcut) {
     if (!shortcut || !shortcut.tag) {
       return "Insert block";
     }
     const tag = shortcut.tag.toLowerCase();
     switch (tag) {
+      case "h1":
+        return "Heading 1";
       case "h2":
         return "Heading 2";
       case "h3":
@@ -151,24 +139,11 @@ class HAXCMSAboutDialogUI extends DDD {
       ${shortcuts.map(
         (shortcut) =>
           html`<li>
-            <span class="shortcut-key">${shortcut.label}</span>
-            <span>${shortcut.description}</span>
-          </li>`,
-      )}
-    </ul>`;
-  }
-
-  _renderMarkdownShortcutList() {
-    if (!this.markdownShortcuts || this.markdownShortcuts.length === 0) {
-      return html`<p class="section-description">
-        No editor shortcuts are registered.
-      </p>`;
-    }
-    return html`<ul class="shortcut-list">
-      ${this.markdownShortcuts.map(
-        (shortcut) =>
-          html`<li>
-            <span class="shortcut-key"><code>${shortcut.trigger}</code></span>
+            <span class="shortcut-key"
+              >${shortcut.type === "markdown"
+                ? html`<code>${shortcut.label}</code>`
+                : shortcut.label}</span
+            >
             <span>${shortcut.description}</span>
           </li>`,
       )}
@@ -546,7 +521,10 @@ class HAXCMSAboutDialogUI extends DDD {
             </summary>
             <div class="collapse-body">
               <p class="section-description">
-                Registered centrally in HAXcms and shown by active context:
+                Registered centrally in HAXcms and shown by active context.
+                Bindings use Ctrl+Shift+[Key]; in the editor, typing a markdown
+                trigger then space converts the block. Type
+                <code>/</code> in an empty text block to open inline Search.
               </p>
               <div class="shortcut-groups">
                 <div class="shortcut-group">
@@ -566,29 +544,6 @@ class HAXCMSAboutDialogUI extends DDD {
                 Search shortcut browser path:
                 <code>CMS/help/keyboard-shortcuts</code>
               </p>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="hax:blocks"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>Editor shortcuts</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">
-                <span class="shortcut-key"><code>/</code></span>
-                In an empty text block, opens inline Search.
-              </p>
-              <p class="section-description">
-                In the editor, text triggers are converted to blocks after
-                typing a trigger and then space.
-              </p>
-              ${this._renderMarkdownShortcutList()}
             </div>
           </details>
 

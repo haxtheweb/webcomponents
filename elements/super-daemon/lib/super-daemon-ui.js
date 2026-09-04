@@ -502,6 +502,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       shortcut="${item.shortcutLabel || ""}"
       ?more="${item.more && (!this.mini || this.wand)}"
       ?mini="${this.mini}"
+      ?external-link="${item.externalLink}"
       >${item.more ? item.more : nothing}</super-daemon-row
     >`;
   }

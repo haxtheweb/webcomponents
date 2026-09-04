@@ -8,6 +8,7 @@ import {
   winEventsElement,
   validURL,
   removeBadJSEventAttributes,
+  KeyboardShortcutManagerInstance,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -1774,6 +1775,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "hax:add-page",
       priority: -2000,
       tags: ["page", "add", "create", "new", "CMS"],
+      // Links this Merlin option to the Ctrl+Shift+3 (cms-add-page) binding
+      // registered in _registerKeyboardShortcuts via the shared shortcut
+      // registry so the row renders the shortcut chip.
+      shortcut: "cms-add-page",
       eventName: "super-daemon-run-program",
       path: "CMS/action/add/page",
       context: "addPage",
@@ -3971,6 +3976,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         );
       }
     });
+    // The "Create a page" option is defined in the constructor, which runs
+    // before _registerKeyboardShortcuts (connectedCallback) registers the
+    // cms-add-page binding. Re-resolve its shortcut label now that the
+    // binding is in the shared registry so the row renders the chip.
+    const createPageOption = SuperDaemonInstance.allItems.find(
+      (item) => item.path === "CMS/action/add/page",
+    );
+    if (createPageOption && createPageOption.shortcut) {
+      createPageOption.shortcutLabel =
+        SuperDaemonInstance._resolveShortcutLabel(
+          createPageOption.shortcut,
+        );
+    }
     SuperDaemonInstance.defineOption({
       title: "Show getting started tasks",
       icon: "hax:hax2022",
@@ -4531,7 +4549,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
 
-    // Keyboard shortcuts program - displays all shortcuts and executes them on click
+    // Keyboard shortcuts program - displays all shortcuts (bindings +
+    // markdown triggers) from the shared registry and executes the selected
+    // one on click.
     SuperDaemonInstance.defineOption({
       title: "View keyboard shortcuts",
       icon: "hardware:keyboard",
@@ -4544,24 +4564,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: ["CMS"],
         program: async (input) => {
           const shortcuts =
-            HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
+            KeyboardShortcutManagerInstance.getForDisplay();
           const results = [];
 
           shortcuts.forEach((shortcut) => {
-            // Filter by search input
-            if (
-              input === "" ||
-              shortcut.description
-                .toLowerCase()
-                .includes(input.toLowerCase()) ||
-              shortcut.label.toLowerCase().includes(input.toLowerCase())
-            ) {
+            // Filter by search input against the description and label
+            const haystack = `${shortcut.description || ""} ${shortcut.label || ""}`.toLowerCase();
+            if (input === "" || haystack.includes(input.toLowerCase())) {
               results.push({
                 title: `${shortcut.description} • ${shortcut.label}`,
                 icon: "hardware:keyboard",
                 tags: ["shortcut", "keyboard", shortcut.context],
+                shortcutLabel: shortcut.label,
                 value: {
-                  shortcutKey: shortcut.key,
+                  shortcutId: shortcut.id,
                 },
                 context: ["CMS"],
                 eventName: "execute-keyboard-shortcut",
@@ -4593,39 +4609,51 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
     }
 
-    // Listen for keyboard shortcut execution from Merlin
+    // Listen for keyboard shortcut execution from Merlin. The row dispatches
+    // its value object as the event detail, so e.detail is the { shortcutId }
+    // value we pushed in the program above. Resolve the descriptor by id from
+    // the shared registry and dispatch it: bindings run their callback when
+    // the condition passes; markdown triggers insert their block in edit mode.
     this.addEventListener("execute-keyboard-shortcut", (e) => {
       if (store.adminMode) {
         return;
       }
-      const shortcutKey = e.detail.value.shortcutKey;
-      // Parse the shortcut key to get individual components
-      const parts = shortcutKey.split("+");
-      const key = parts[parts.length - 1];
-      const ctrl = parts.includes("Ctrl");
-      const shift = parts.includes("Shift");
-      const alt = parts.includes("Alt");
-      const meta = parts.includes("Meta");
-
-      // Get the shortcut and execute its callback
-      const shortcut = HAXCMSKeyboardShortcutsInstance.getShortcut(
-        key,
-        ctrl,
-        shift,
-        alt,
-        meta,
-      );
-      if (shortcut && shortcut.callback && shortcut.condition()) {
-        // Create a synthetic keyboard event
+      const shortcutId = e.detail && e.detail.shortcutId;
+      if (!shortcutId) {
+        return;
+      }
+      const descriptor = KeyboardShortcutManagerInstance.getById(shortcutId);
+      if (!descriptor) {
+        return;
+      }
+      if (descriptor.type === "markdown") {
+        // Markdown triggers only apply in edit mode; insert the block. Skip
+        // tagless markdown entries (e.g. inline-token programs like :::)
+        // since they open a Merlin program rather than insert a block.
+        if (
+          this.editMode &&
+          HAXStore.activeHaxBody &&
+          descriptor.tag
+        ) {
+          HAXStore.activeHaxBody.haxInsert(
+            descriptor.tag,
+            descriptor.content || "",
+            {},
+          );
+        }
+        return;
+      }
+      // Binding shortcut: run its callback when the condition passes.
+      if (descriptor.callback && descriptor.condition && descriptor.condition()) {
         const syntheticEvent = new KeyboardEvent("keydown", {
-          key: key,
-          ctrlKey: ctrl,
-          shiftKey: shift,
-          altKey: alt,
-          metaKey: meta,
+          key: descriptor.key,
+          ctrlKey: descriptor.ctrl,
+          shiftKey: descriptor.shift,
+          altKey: descriptor.alt,
+          metaKey: descriptor.meta,
           bubbles: true,
         });
-        shortcut.callback(syntheticEvent);
+        descriptor.callback(syntheticEvent);
       }
     });
 

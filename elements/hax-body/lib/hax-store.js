@@ -3384,6 +3384,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       icon: "hax:discord",
       priority: -100,
       tags: ["community", "discord", "chat", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -3398,6 +3399,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       icon: "hax:hax2022",
       priority: -1000,
       tags: ["Documentation", "community", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -3411,6 +3413,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       title: "User Documentation",
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -3424,6 +3427,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       title: "HAX Teaching Excellence",
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
+      externalLink: true,
       value: {
         target: this,
         method: "_openExternalLink",
@@ -3579,12 +3583,46 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // existing readers keep working. gizmoRegistration / gizmo.shortcut can
     // add or override these per-element.
     [
-      { trigger: "#", tag: "h2", content: "" },
-      { trigger: "##", tag: "h3", content: "" },
-      { trigger: "###", tag: "h4", content: "" },
-      { trigger: "####", tag: "h5", content: "" },
-      { trigger: "#####", tag: "h6", content: "" },
-      { trigger: "######", tag: "h6", content: "" },
+      // Heading triggers are labeled with their standard markdown heading
+      // numbers even though HAX inserts them shifted (h2..h6) because pages
+      // always own the h1 for the page title (a11y). The tag stays the actual
+      // insertion target; the description communicates the markdown convention.
+      {
+        trigger: "#",
+        tag: "h2",
+        content: "",
+        description: "Heading 1",
+      },
+      {
+        trigger: "##",
+        tag: "h3",
+        content: "",
+        description: "Heading 2",
+      },
+      {
+        trigger: "###",
+        tag: "h4",
+        content: "",
+        description: "Heading 3",
+      },
+      {
+        trigger: "####",
+        tag: "h5",
+        content: "",
+        description: "Heading 4",
+      },
+      {
+        trigger: "#####",
+        tag: "h6",
+        content: "",
+        description: "Heading 5",
+      },
+      {
+        trigger: "######",
+        tag: "h6",
+        content: "",
+        description: "Heading 6",
+      },
       { trigger: "1.", tag: "ol", content: "<li></li>" },
       { trigger: "-", tag: "ul", content: "<li></li>" },
       { trigger: "*", tag: "ul", content: "<li></li>" },
@@ -3601,7 +3639,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         trigger: entry.trigger,
         tag: entry.tag,
         content: entry.content || "",
-        description: `Insert ${entry.tag}`,
+        description: entry.description || `Insert ${entry.tag}`,
         context: "edit",
       }),
     );
@@ -3734,7 +3772,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       code: {
         title: "Code",
-        description: "Display inline code.",
+        description: "Display code.",
         icon: "icons:code",
       },
       pre: {
@@ -4742,6 +4780,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             handles: this.__primsBuilder[tag].handles || [],
             meta: {
               author: "W3C",
+              // code is intentionally not inlineOnly here so its block
+              // insert option is created for the Merlin block browser; it
+              // stays inline via isInlineElement's own list.
               inlineOnly: [
                 "em",
                 "b",
@@ -4752,13 +4793,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 "sub",
                 "sup",
                 "span",
-                "code",
                 "time",
                 "cite",
               ].includes(tag)
                 ? true
                 : false,
-              hidden: ["h1", "h2", "h3", "h4", "ul"].includes(tag)
+              // blockquote + code are un-hidden so their block insert
+              // options surface in edit-mode Merlin results (matching the
+              // ``` and > markdown triggers).
+              hidden: ["h1", "h2", "h3", "h4", "ul", "blockquote", "code"].includes(
+                tag,
+              )
                 ? false
                 : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
