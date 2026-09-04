@@ -2987,14 +2987,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return false;
     };
 
-    // emoji picker
+    // emoji picker; hidden from the source / media endpoints list so it is
+    // only reached via a dedicated shortcut (waveWand / runProgram by
+    // machineName "insert-emoji") while staying registered in allItems
     SuperDaemonInstance.defineOption({
       title: "Insert emoji",
       icon: "editor:insert-emoticon",
       tags: ["emoji"],
+      hidden: true,
       value: {
         name: "Insert emoji",
+        machineName: "insert-emoji",
         context: "/",
+        placeholder: "Search for an emoji",
         program: async (input, values) => {
           let results = [];
           let txt = globalThis.document.createElement("textarea");
@@ -3030,14 +3035,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "/HAX/text/emoji",
     });
 
-    // symbol picker
+    // symbol picker; hidden from the source / media endpoints list so it is
+    // only reached via a dedicated shortcut (waveWand / runProgram by
+    // machineName "insert-symbol") while staying registered in allItems
     SuperDaemonInstance.defineOption({
       title: "Insert symbol",
       icon: "editor:functions",
       tags: ["symbol"],
+      hidden: true,
       value: {
         name: "Insert symbol",
+        machineName: "insert-symbol",
         context: "/",
+        placeholder: "Search for a symbol",
         program: async (input, values) => {
           let results = [];
           let txt = globalThis.document.createElement("textarea");

@@ -791,6 +791,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   }
   filterItems(items, context) {
     let tmpItems = items.filter((item) => {
+      // options can opt out of being listed in Merlin browse / search results
+      // (e.g. the emoji + symbol pickers) while remaining registered in
+      // allItems so a dedicated shortcut can still invoke them by machineName
+      // via runProgram / waveWand.
+      if (item.hidden) {
+        return false;
+      }
       if (this.inlineMode && !item.inline) {
         return false;
       }
