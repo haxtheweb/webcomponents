@@ -28,15 +28,21 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
+    "@babel/core": "7.29.7",
+    "@haxtheweb/create": "26.8.1",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/simple-icon": "^26.8.0",
+    "@web/dev-server-esbuild": "1.0.5",
+    "gulp-sourcemaps": "2.6.5",
+    "lerna": "10.0.1",
+    "lint-staged": "15.5.2",
     "lit": "3.3.3"
   },
   "devDependencies": {
     "@babel/preset-env": "7.29.5",
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@open-wc/building-rollup": "3.0.2",
+    "@open-wc/building-rollup": "^3.0.0",
     "@open-wc/testing": "4.0.0",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-node-resolve": "16.0.1",
@@ -44,7 +50,7 @@
     "@web/dev-server": "0.4.6",
     "@web/rollup-plugin-html": "3.1.0",
     "@web/rollup-plugin-import-meta-assets": "2.3.0",
-    "@web/test-runner": "0.19.0",
+    "@web/test-runner": "^1.0.0",
     "babel-plugin-template-html-minifier": "4.1.0",
     "babel-plugin-transform-dynamic-import": "2.1.0",
     "commit-and-tag-version": "12.7.3",
