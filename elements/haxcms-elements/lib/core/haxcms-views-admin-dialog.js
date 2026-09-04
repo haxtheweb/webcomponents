@@ -34,6 +34,7 @@ import "@haxtheweb/lrndesign-chart/lib/lrndesign-bar.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-playlist/media-playlist.js";
+import "@haxtheweb/simple-pager/simple-pager.js";
 
 class HAXCMSViewsAdminDialog extends DDD {
   static get tag() {
@@ -62,6 +63,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       previewTotal: { type: Number, attribute: "preview-total" },
       specData: { type: Object, attribute: false },
       leftPanelWidth: { type: Number, attribute: false },
+      pageLimit: { type: Number, attribute: "page-limit" },
+      pageOffset: { type: Number, attribute: "page-offset" },
     };
   }
 
@@ -87,6 +90,8 @@ class HAXCMSViewsAdminDialog extends DDD {
     this.previewTotal = 0;
     this.specData = null;
     this.leftPanelWidth = 38;
+    this.pageLimit = 25;
+    this.pageOffset = 0;
     this.__previewDebounce = null;
     this.__previewRequestId = 0;
     this.__previewAbortController = null;
@@ -975,6 +980,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       format: true,
       "filter.pageType": true,
       "filter.region": true,
+      "page.limit": true,
+      "page.offset": true,
     };
     return entityConfig.queryParams
       .filter((parameter) => {
@@ -1044,6 +1051,8 @@ class HAXCMSViewsAdminDialog extends DDD {
       format: true,
       "filter.pageType": true,
       "filter.region": true,
+      "page.limit": true,
+      "page.offset": true,
     };
     entityConfig.queryParams.forEach((parameter) => {
       if (!parameter || !parameter.name) {
@@ -1196,7 +1205,9 @@ class HAXCMSViewsAdminDialog extends DDD {
         key === "fields" ||
         key === "include" ||
         key === "sort" ||
-        key === "format"
+        key === "format" ||
+        key === "page.limit" ||
+        key === "page.offset"
       ) {
         continue;
       }
@@ -1513,6 +1524,7 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _schedulePreviewRefresh() {
     const entityConfig = this._selectedEntityConfig();
+    this.pageOffset = 0;
     const details = this._buildQueryDetails(entityConfig);
     this.queryUrl = details.queryUrl;
     this.queryString = details.queryString;
@@ -1567,9 +1579,14 @@ class HAXCMSViewsAdminDialog extends DDD {
           `Missing registry operation ${queryDetails.operationName}`,
         );
       }
+      const previewParams = {
+        ...queryDetails.params,
+        "page.limit": String(this.pageLimit),
+        "page.offset": String(this.pageOffset),
+      };
       const payload = await MicroFrontendRegistry.call(
         queryDetails.operationName,
-        queryDetails.params,
+        previewParams,
         null,
         this,
       );
@@ -1753,6 +1770,15 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   _refreshPreviewTap() {
     this._schedulePreviewRefresh();
+  }
+
+  _onPageChanged(e) {
+    if (!e || !e.detail) {
+      return;
+    }
+    this.pageLimit = e.detail.limit;
+    this.pageOffset = e.detail.offset;
+    this._refreshPreview();
   }
 
   _renderPreview() {
@@ -2090,6 +2116,15 @@ class HAXCMSViewsAdminDialog extends DDD {
                       </span>
                     </div>
                     <div class="preview-body">${this._renderPreview()}</div>
+                    <simple-pager
+                      mode="full"
+                      limit="${this.pageLimit}"
+                      offset="${this.pageOffset}"
+                      total="${this.previewTotal}"
+                      count="${this.previewRecords.length}"
+                      label="Preview pagination"
+                      @page-changed="${this._onPageChanged}"
+                    ></simple-pager>
                   </div>
                 </div>
               </div>

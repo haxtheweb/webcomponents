@@ -6,6 +6,7 @@ import { autorun, toJS } from "mobx";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-pager/simple-pager.js";
 
 class HAXCMSContentAdminDialog extends DDD {
   static get tag() {
@@ -29,6 +30,8 @@ class HAXCMSContentAdminDialog extends DDD {
       operationMode: { type: String, attribute: "operation-mode" },
       replaceValue: { type: String, attribute: "replace-value" },
       replaceLoading: { type: Boolean, attribute: "replace-loading" },
+      pageLimit: { type: Number, attribute: "page-limit" },
+      pageOffset: { type: Number, attribute: "page-offset" },
     };
   }
 
@@ -46,6 +49,8 @@ class HAXCMSContentAdminDialog extends DDD {
     this.operationMode = "search";
     this.replaceValue = "";
     this.replaceLoading = false;
+    this.pageLimit = 25;
+    this.pageOffset = 0;
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
     this.__replaceResponseHandler = this._onReplaceResults.bind(this);
@@ -227,6 +232,20 @@ class HAXCMSContentAdminDialog extends DDD {
     super.disconnectedCallback();
   }
 
+  updated(cp) {
+    if (super.updated) {
+      super.updated(cp);
+    }
+    if (
+      cp.has("filterField") ||
+      cp.has("filterValue") ||
+      cp.has("searchMatches") ||
+      cp.has("rows")
+    ) {
+      this.pageOffset = 0;
+    }
+  }
+
   get filteredRows() {
     const value = (this.filterValue || "").toLowerCase().trim();
     const queryMatchesCurrentFilter =
@@ -274,6 +293,19 @@ class HAXCMSContentAdminDialog extends DDD {
       }
       return true;
     });
+  }
+
+  get pagedRows() {
+    const start = this.pageOffset;
+    return this.filteredRows.slice(start, start + this.pageLimit);
+  }
+
+  _onPageChanged(e) {
+    if (!e || !e.detail) {
+      return;
+    }
+    this.pageLimit = e.detail.limit;
+    this.pageOffset = e.detail.offset;
   }
 
   _buildRows(items) {
@@ -874,7 +906,7 @@ class HAXCMSContentAdminDialog extends DDD {
           ${this.filteredRows.length === 0
             ? html`<div class="empty">No matching content found.</div>`
             : keyed(
-                `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
+                `${this.filterField}|${this.filterValue}|${this.filteredRows.length}|${this.pageOffset}|${this.pageLimit}`,
                 html`<div class="table-scroll">
                   <editable-table-display
                     bordered
@@ -898,7 +930,7 @@ class HAXCMSContentAdminDialog extends DDD {
                         </tr>
                       </thead>
                       <tbody>
-                        ${this.filteredRows.map(
+                        ${this.pagedRows.map(
                           (row) => html`
                             <tr>
                               <td><a href="${row.slug}">${row.title}</a></td>
@@ -932,6 +964,15 @@ class HAXCMSContentAdminDialog extends DDD {
                 </div>`,
               )}
         </div>
+        <simple-pager
+          mode="full"
+          limit="${this.pageLimit}"
+          offset="${this.pageOffset}"
+          total="${this.filteredRows.length}"
+          count="${this.pagedRows.length}"
+          label="Content pagination"
+          @page-changed="${this._onPageChanged}"
+        ></simple-pager>
       </div>
     `;
   }
