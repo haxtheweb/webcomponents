@@ -2305,7 +2305,11 @@ class HAXCMSSiteEditor extends LitElement {
           },
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.warn("Restore revision error:", error);
+    } finally {
+      this.clearProcessingVisual();
+    }
   }
   /**
    * Save node event
@@ -2505,17 +2509,33 @@ class HAXCMSSiteEditor extends LitElement {
     });
   }
   // processing visualization
-  setProcessingVisual() {
+  // duration defaults to 5s for short operations; pass a larger value for
+  // long-running import/export work on very large sites so the indicator
+  // does not vanish mid-operation. Pair with clearProcessingVisual().
+  setProcessingVisual(duration = 5000) {
     let loadingIcon = globalThis.document.createElement("simple-icon-lite");
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.height = "150px";
     loadingIcon.style.marginLeft = "8px";
-    store.toast(`Processing`, 5000, {
+    store.toast(`Processing`, duration, {
       hat: "construction",
       slot: loadingIcon,
     });
+  }
+
+  // dismiss the processing toast. Call this before firing a result toast
+  // (success or error) so the new toast gets a fresh auto-hide timer.
+  clearProcessingVisual() {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
   }
   /**
    * Save the outline based on an event firing.

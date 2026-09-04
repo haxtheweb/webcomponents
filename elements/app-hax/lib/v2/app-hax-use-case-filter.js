@@ -2693,6 +2693,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         formData.append("type", "import");
         formData.append("upload", file);
 
+        store.setProcessingVisual();
         response = await MicroFrontendRegistry.call(
           selectedTemplate.callback,
           formData,
@@ -2705,6 +2706,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         const params = {};
         params[selectedTemplate.param || "repoUrl"] = promptUrl;
+        store.setProcessingVisual();
         response = await MicroFrontendRegistry.call(
           selectedTemplate.callback,
           params,
@@ -2751,11 +2753,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           modal.skeletonData.site.license = response.data.site.license;
         }
         modal.siteName = importedName;
+        store.clearProcessingVisual();
         modal.openModal();
       } else {
         if (store && store.appEl && store.appEl.playSound) {
           store.appEl.playSound("error");
         }
+        store.clearProcessingVisual();
         if (store && store.toast) {
           store.toast("Import did not return a valid structure", 3000);
         }
@@ -2765,10 +2769,15 @@ export class AppHaxUseCaseFilter extends LitElement {
       if (store && store.appEl && store.appEl.playSound) {
         store.appEl.playSound("error");
       }
+      store.clearProcessingVisual();
       if (store && store.toast) {
         store.toast("Import failed", 3000);
       }
       console.warn("Import error:", error);
+    } finally {
+      // safety net: ensure the processing toast never lingers if an early
+      // return or unhandled path left it showing.
+      store.clearProcessingVisual();
     }
   }
 

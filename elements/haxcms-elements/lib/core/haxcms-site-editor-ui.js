@@ -848,18 +848,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   // processing visualization
-  setProcessingVisual() {
+  // duration defaults to 5s for short operations (page saves, deletes);
+  // pass a larger value (e.g. 600000) for long-running import/export work
+  // on very large sites so the indicator does not vanish mid-operation.
+  // Always pair with clearProcessingVisual() once the work finishes.
+  setProcessingVisual(duration = 5000) {
     let loadingIcon = globalThis.document.createElement("simple-icon-lite");
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.marginLeft = "8px";
-    store.toast(`Processing`, 5000, {
+    store.toast(`Processing`, duration, {
       hat: "construction",
       speed: 150,
       walking: true,
       slot: loadingIcon,
     });
+  }
+
+  // dismiss the processing toast. Call this before firing a result toast
+  // (success or error) so the new toast gets a fresh auto-hide timer.
+  clearProcessingVisual() {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
   }
 
   // Convert CSV text to an HTML table element

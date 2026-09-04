@@ -2,6 +2,7 @@
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 configure({ enforceActions: false }); // strict mode off
 
 function hasStoredSoundPreference() {
@@ -390,6 +391,34 @@ class Store {
           duration: duration,
           ...extras,
         },
+      }),
+    );
+  }
+  // processing visualization for long-running dashboard operations
+  // (import-to-new-site, site download/archive/clone). duration defaults
+  // to 10 minutes so the indicator stays visible for very large sites;
+  // always pair with clearProcessingVisual() once work finishes.
+  setProcessingVisual(duration = 600000) {
+    let loadingIcon = globalThis.document.createElement("simple-icon-lite");
+    loadingIcon.icon = "hax:loading";
+    loadingIcon.style.setProperty("--simple-icon-height", "40px");
+    loadingIcon.style.setProperty("--simple-icon-width", "40px");
+    loadingIcon.style.marginLeft = "8px";
+    this.toast(`Processing`, duration, {
+      hat: "construction",
+      speed: 150,
+      walking: true,
+      slot: loadingIcon,
+    });
+  }
+  // dismiss the processing toast. Call before firing a result toast.
+  clearProcessingVisual() {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
       }),
     );
   }

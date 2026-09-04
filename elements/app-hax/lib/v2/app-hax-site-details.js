@@ -256,90 +256,108 @@ export class AppHaxSiteDetails extends SimpleColors {
   async confirmOperation() {
     const op = toJS(store.activeSiteOp);
     const site = toJS(store.activeSite);
-    // @todo bother to implement these / translate to the path via switch
-    await store.AppHaxAPI.makeCall(
-      op,
-      {
-        site: {
-          name: site.metadata.site.name,
-          id: site.id,
-        },
-      },
-      true,
-      () => {
-        const activeOp = toJS(store.activeSiteOp);
-        // download is weird relative to the others
-        if (activeOp === "downloadSite") {
-          const response = store.AppHaxAPI.lastResponse.downloadSite;
-          // Guard against the failure shape: a non-2xx status or missing
-          // data means the download did not succeed — do not open a link.
-          if (
-            response &&
-            typeof response === "object" &&
-            typeof response.status === "number" &&
-            response.status >= 400
-          ) {
-            console.error(
-              "downloadSite failed with status:",
-              response.status,
-              response,
-            );
-          } else if (response && response.data && response.data.link) {
-            const link = response.data.link;
-            const name = response.data.name || "";
-            // Use an anchor element so this is treated as a real navigation
-            // and not blocked as a popup by the browser.
-            const a = globalThis.document.createElement("a");
-            a.href = link;
-            if (name) {
-              a.setAttribute("download", name);
-            }
-            a.style.display = "none";
-            globalThis.document.body.appendChild(a);
-            a.click();
-            globalThis.document.body.removeChild(a);
-          } else {
-            console.error("downloadSite response missing data.link:", response);
-          }
-        } else {
-          store.refreshSiteListing();
-        }
-      },
-    );
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-      }),
-    );
-    // Success sound for confirm is now handled centrally in
-    // app-hax-confirmation-modal to avoid duplicate sounds.
-    // Report the operation outcome accurately. A non-2xx status means the
-    // operation failed — surface the backend message instead of a false
-    // "successful" toast.
-    const opResponse =
-      store.AppHaxAPI && store.AppHaxAPI.lastResponse
-        ? store.AppHaxAPI.lastResponse[op]
-        : null;
-    if (
-      opResponse &&
-      typeof opResponse === "object" &&
-      typeof opResponse.status === "number" &&
-      opResponse.status >= 400
-    ) {
-      const errMsg =
-        typeof opResponse.message === "string" && opResponse.message
-          ? opResponse.message
-          : `${site.metadata.site.name} ${op.replace("Site", "")} failed`;
-      store.toast(errMsg, 3000, { hat: "random" });
-    } else {
-      store.toast(
-        `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
-        3000,
+    store.setProcessingVisual();
+    try {
+      // @todo bother to implement these / translate to the path via switch
+      await store.AppHaxAPI.makeCall(
+        op,
         {
-          hat: "random",
+          site: {
+            name: site.metadata.site.name,
+            id: site.id,
+          },
+        },
+        true,
+        () => {
+          const activeOp = toJS(store.activeSiteOp);
+          // download is weird relative to the others
+          if (activeOp === "downloadSite") {
+            const response = store.AppHaxAPI.lastResponse.downloadSite;
+            // Guard against the failure shape: a non-2xx status or missing
+            // data means the download did not succeed — do not open a link.
+            if (
+              response &&
+              typeof response === "object" &&
+              typeof response.status === "number" &&
+              response.status >= 400
+            ) {
+              console.error(
+                "downloadSite failed with status:",
+                response.status,
+                response,
+              );
+            } else if (response && response.data && response.data.link) {
+              const link = response.data.link;
+              const name = response.data.name || "";
+              // Use an anchor element so this is treated as a real navigation
+              // and not blocked as a popup by the browser.
+              const a = globalThis.document.createElement("a");
+              a.href = link;
+              if (name) {
+                a.setAttribute("download", name);
+              }
+              a.style.display = "none";
+              globalThis.document.body.appendChild(a);
+              a.click();
+              globalThis.document.body.removeChild(a);
+            } else {
+              console.error("downloadSite response missing data.link:", response);
+            }
+          } else {
+            store.refreshSiteListing();
+          }
         },
       );
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      store.clearProcessingVisual();
+      // Success sound for confirm is now handled centrally in
+      // app-hax-confirmation-modal to avoid duplicate sounds.
+      // Report the operation outcome accurately. A non-2xx status means the
+      // operation failed — surface the backend message instead of a false
+      // "successful" toast.
+      const opResponse =
+        store.AppHaxAPI && store.AppHaxAPI.lastResponse
+          ? store.AppHaxAPI.lastResponse[op]
+          : null;
+      if (
+        opResponse &&
+        typeof opResponse === "object" &&
+        typeof opResponse.status === "number" &&
+        opResponse.status >= 400
+      ) {
+        const errMsg =
+          typeof opResponse.message === "string" && opResponse.message
+            ? opResponse.message
+            : `${site.metadata.site.name} ${op.replace("Site", "")} failed`;
+        store.toast(errMsg, 3000, { hat: "random" });
+      } else {
+        store.toast(
+          `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+          3000,
+          {
+            hat: "random",
+          },
+        );
+      }
+    } catch (error) {
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+        }),
+      );
+      store.clearProcessingVisual();
+      store.toast(
+        `${site.metadata.site.name} ${op.replace("Site", "")} failed`,
+        3000,
+        { hat: "random" },
+      );
+      console.warn("Site operation error:", error);
     }
   }
 

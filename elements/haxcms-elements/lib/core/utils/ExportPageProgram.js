@@ -161,6 +161,7 @@ export function _pageRouteVariantUrl(format) {
 }
 
 export async function _exportPageRouteVariant(format, title) {
+  this.setProcessingVisual(600000);
   try {
     const ext = _pageRouteVariantExtension(format);
     const mime = _pageRouteVariantMimeType(format);
@@ -176,6 +177,7 @@ export async function _exportPageRouteVariant(format, title) {
     }
     const content = await response.text();
     this._downloadFile(content, `${title}.${ext}`, mime);
+    this.clearProcessingVisual();
     HAXStore.toast(
       `${ext.toUpperCase()} file downloaded successfully`,
       3000,
@@ -183,11 +185,13 @@ export async function _exportPageRouteVariant(format, title) {
     );
   } catch (error) {
     console.error(`Page ${format} export error:`, error);
+    this.clearProcessingVisual();
     HAXStore.toast(`Page ${format} export not available`, 3000, "fit-bottom");
   }
 }
 
 export async function _exportPageAsDOCX(title) {
+  this.setProcessingVisual(600000);
   try {
     const url = _pageItemExportUrl("docx");
     if (!url) {
@@ -197,17 +201,20 @@ export async function _exportPageAsDOCX(title) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
+      this.clearProcessingVisual();
       HAXStore.toast("DOCX file downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export page as DOCX: ${response.status}`);
     }
   } catch (error) {
     console.error("DOCX export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("DOCX export service not available", 3000, "fit-bottom");
   }
 }
 
 export async function _exportPageAsPDF(title) {
+  this.setProcessingVisual(600000);
   try {
     const url = _pageItemExportUrl("pdf");
     if (!url) {
@@ -217,17 +224,20 @@ export async function _exportPageAsPDF(title) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
+      this.clearProcessingVisual();
       HAXStore.toast("PDF file downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export page as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("PDF export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("PDF export service not available", 3000, "fit-bottom");
   }
 }
 
 export async function _exportPageAsEPUB(title) {
+  this.setProcessingVisual(600000);
   try {
     const url = _pageItemExportUrl("epub");
     if (!url) {
@@ -237,12 +247,14 @@ export async function _exportPageAsEPUB(title) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);
+      this.clearProcessingVisual();
       HAXStore.toast("EPUB file downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export page as EPUB: ${response.status}`);
     }
   } catch (error) {
     console.error("EPUB export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("EPUB export service not available", 3000, "fit-bottom");
   }
 }
@@ -270,6 +282,7 @@ export function _pageItemExportUrl(format = "pdf") {
 }
 
 export async function _exportPageAsHAXSchema() {
+  this.setProcessingVisual(600000);
   try {
     // Use existing HAXStore method to get HAX schema JSON
     const body = await HAXStore.activeHaxBody.haxToContent();
@@ -280,9 +293,11 @@ export async function _exportPageAsHAXSchema() {
 
     // Copy to clipboard
     await navigator.clipboard.writeText(haxSchema);
+    this.clearProcessingVisual();
     HAXStore.toast("HAX schema JSON copied to clipboard", 3000, "fit-bottom");
   } catch (error) {
     console.error("HAX schema export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("Failed to export HAX schema JSON", 3000, "fit-bottom");
   }
 }

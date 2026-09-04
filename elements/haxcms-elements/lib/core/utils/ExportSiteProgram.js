@@ -132,6 +132,7 @@ export async function exportSiteAs(format, options = {}) {
 
 // Helper methods for different export formats
 export async function _exportSiteAsHTML(manifest, title, baseUrl) {
+  this.setProcessingVisual(600000);
   try {
     const magic =
       globalThis.__appCDN &&
@@ -145,12 +146,14 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
     if (response.ok) {
       const html = await response.text();
       this._downloadFile(html, `${title}.html`, "text/html");
+      this.clearProcessingVisual();
       HAXStore.toast("Site HTML downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export site as HTML: ${response.status}`);
     }
   } catch (error) {
     console.error("Site HTML export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast(
       "Site HTML export service not available",
       3000,
@@ -160,6 +163,7 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
 }
 
 export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
+  this.setProcessingVisual(600000);
   try {
     const url = _buildV1ContentUrl(baseUrl, { mode: "concat", format: "md" });
     const response = await fetch(url, { credentials: "include" });
@@ -167,6 +171,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
     if (response.ok) {
       const markdown = await response.text();
       this._downloadFile(markdown, `${title}.md`, "text/markdown");
+      this.clearProcessingVisual();
       HAXStore.toast(
         "Site Markdown downloaded successfully",
         3000,
@@ -179,6 +184,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
     }
   } catch (error) {
     console.error("Site Markdown export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast(
       "Site Markdown export service not available",
       3000,
@@ -188,6 +194,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
 }
 
 export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
+  this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "docx");
     const response = await fetch(url, { credentials: "include" });
@@ -195,12 +202,14 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
+      this.clearProcessingVisual();
       HAXStore.toast("Site DOCX downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export site as DOCX: ${response.status}`);
     }
   } catch (error) {
     console.error("Site DOCX export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast(
       "Site DOCX export service not available",
       3000,
@@ -210,6 +219,7 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
 }
 
 export async function _exportSiteAsPDF(manifest, title, baseUrl) {
+  this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "pdf");
     const response = await fetch(url, { credentials: "include" });
@@ -217,17 +227,20 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
+      this.clearProcessingVisual();
       HAXStore.toast("Site PDF downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export site as PDF: ${response.status}`);
     }
   } catch (error) {
     console.error("Site PDF export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("Site PDF export service not available", 3000, "fit-bottom");
   }
 }
 
 export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
+  this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "epub");
     const response = await fetch(url, { credentials: "include" });
@@ -235,12 +248,14 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);
+      this.clearProcessingVisual();
       HAXStore.toast("Site EPUB downloaded successfully", 3000, "fit-bottom");
     } else {
       throw new Error(`Failed to export site as EPUB: ${response.status}`);
     }
   } catch (error) {
     console.error("Site EPUB export error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast(
       "Site EPUB export service not available",
       3000,
@@ -279,6 +294,7 @@ export async function _downloadSiteArchive() {
       HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
       return;
     }
+    this.setProcessingVisual(600000);
     const response = await MicroFrontendRegistry.call(
       "@system/downloadSite",
       {
@@ -299,10 +315,12 @@ export async function _downloadSiteArchive() {
         typeof response.message === "string" && response.message
           ? response.message
           : "Site archive download not available";
+      this.clearProcessingVisual();
       HAXStore.toast(message, 3000, "fit-bottom");
       return;
     }
     if (!(response && response.data && response.data.link)) {
+      this.clearProcessingVisual();
       HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
       return;
     }
@@ -317,9 +335,11 @@ export async function _downloadSiteArchive() {
     globalThis.document.body.appendChild(link);
     link.click();
     globalThis.document.body.removeChild(link);
+    this.clearProcessingVisual();
     HAXStore.toast("Site archive download initiated", 3000, "fit-bottom");
   } catch (error) {
     console.error("Site archive download error:", error);
+    this.clearProcessingVisual();
     HAXStore.toast("Site archive download not available", 3000, "fit-bottom");
   }
 }
