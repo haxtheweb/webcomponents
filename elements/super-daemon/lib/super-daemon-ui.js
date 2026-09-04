@@ -786,6 +786,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       switch (e.key) {
         case "Enter":
           e.preventDefault();
+          // Stop the keydown from bubbling to window-level listeners (e.g.
+          // hax-body's _onKeyDown) which would split the active paragraph.
+          // selected() runs synchronously and calls close() before this
+          // event would reach window, so a guard on `opened` there can't help.
+          e.stopPropagation();
           if (this._selectedIndex >= 0) {
             // Select the currently highlighted item
             this.shadowRoot
@@ -798,6 +803,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           break;
         case "ArrowUp":
           e.preventDefault();
+          e.stopPropagation();
           const prevIndex =
             this._selectedIndex <= 0
               ? this.filtered.length - 1
@@ -806,6 +812,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           break;
         case "ArrowDown":
           e.preventDefault();
+          e.stopPropagation();
           const nextIndex =
             this._selectedIndex >= this.filtered.length - 1
               ? 0
@@ -814,6 +821,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           break;
         case "Escape":
           e.preventDefault();
+          e.stopPropagation();
           this._updateActiveDescendant(-1);
           this.dispatchEvent(
             new CustomEvent("super-daemon-close", {
@@ -831,6 +839,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     ) {
       // Handle Enter key for programs when no filtered results are available
       // This enables direct program execution on Enter press
+      e.stopPropagation();
       this.dispatchEvent(
         new CustomEvent("super-daemon-program-enter", {
           bubbles: true,

@@ -739,6 +739,35 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
    * Close the modal and do some clean up
    */
   close(e = {}) {
+    // If an inline-token trigger (:: / :::) was cancelled WITHOUT a
+    // selection, restore the stripped token at the strip point before
+    // clearing state. _insertTextResult clears inlineTextInsert after a
+    // successful insert, so this only fires on Escape / click-away.
+    if (
+      this.inlineTextInsert &&
+      this.__inlineShortcutToken &&
+      this.activeRange &&
+      this.activeSelection
+    ) {
+      try {
+        if (this.activeNode && this.activeNode.focus) {
+          this.activeNode.focus();
+        }
+        this.activeSelection.removeAllRanges();
+        this.activeSelection.addRange(this.activeRange);
+        globalThis.document.execCommand(
+          "insertHTML",
+          false,
+          this.__inlineShortcutToken,
+        );
+      } catch (err) {
+        console.warn(err);
+      }
+      // Suppress the inline-token trigger for the very next keystroke after a
+      // cancel. The restored token (e.g. ":: ") still ends with "::" so
+      // __maybeTriggerInlineShortcut would immediately re-fire without this.
+      this.__inlineShortcutSuppressNext = true;
+    }
     // clean up event for click away in mini mode if active
     this.activeNode = null;
     this.loading = false;
@@ -1038,19 +1067,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     ) {
       try {
         if (this.inlineTextInsert) {
-          // inline-token path: restore the stripped token (:: / ::: + space)
-          // at the strip point instead of overwriting the whole block with
-          // the search value (which would destroy surrounding text).
-          this.activeNode.focus();
-          this.activeSelection.removeAllRanges();
-          this.activeSelection.addRange(this.activeRange);
-          if (this.__inlineShortcutToken) {
-            globalThis.document.execCommand(
-              "insertHTML",
-              false,
-              this.__inlineShortcutToken,
-            );
-          }
+          // inline-token path: close() restores the stripped token, so do
+          // nothing here — just fall through to this.close() below.
         } else {
           this.activeNode.textContent = this.value;
           this.activeNode.focus();

@@ -57,26 +57,10 @@ class HAXCMSPageRevisionsDialog extends DDD {
       css`
         :host {
           display: block;
-          min-width: min(94vw, 1280px);
-          max-height: calc(
-            var(--simple-modal-height, 80vh) - var(
-                --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
-          );
-          overflow: hidden;
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-        }
-        .shell {
-          display: grid;
-          grid-template-rows: minmax(240px, 1fr) minmax(220px, 1fr);
-          gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-4);
-          min-height: 0;
-          max-height: 100%;
         }
         .panel {
           border: var(--ddd-border-sm) solid

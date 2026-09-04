@@ -2172,7 +2172,7 @@ export const DDDReset = css`
     font-size: var(--ddd-theme-body-font-size);
     font-family: var(--ddd-font-primary);
     letter-spacing: normal;
-    text-align: justify;
+    text-align: start;
   }
   @media (max-width: 900px) {
     hax-body,

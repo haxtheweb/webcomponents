@@ -1438,7 +1438,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     // Also bail out if any modal is currently open so keyboard shortcuts don't
     // fire behind confirmation dialogs.
-    if (this.editMode && !this._isFocusOutsideEditingContext()) {
+    if (
+      this.editMode &&
+      !this._isFocusOutsideEditingContext() &&
+      !SuperDaemonInstance.opened
+    ) {
       if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);
@@ -1959,6 +1963,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * on SuperDaemonInstance.allItems (markdown-type shortcut descriptors).
    */
   __maybeTriggerInlineShortcut() {
+    // One-shot suppression after an inline-token cancel: close() restores the
+    // stripped token (e.g. ":: ") and sets this flag so the next keystroke
+    // doesn't immediately re-trigger on the restored text. Cleared here so
+    // subsequent typing (including re-typing ::) works normally.
+    if (SuperDaemonInstance.__inlineShortcutSuppressNext) {
+      SuperDaemonInstance.__inlineShortcutSuppressNext = false;
+      return;
+    }
     if (
       !this.editMode ||
       !this.activeNode ||
@@ -1966,8 +1978,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     ) {
       return;
     }
-    // operate in any text element (p, h1-h6, li, blockquote, pre, etc.),
-    // not just paragraphs
+    // operate in any text element (p, h1-h6, li, blockquote, pre, etc.)
     if (
       !HAXStore.isTextElement(this.activeNode) &&
       this.activeNode.tagName !== "LI"
@@ -2010,43 +2021,98 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // longest token first so ::: is tested before ::
     specs.sort((a, b) => b.token.length - a.token.length);
-    // compute text before the cursor within the active block. The probe
-    // range works whether the caret is inside a text node or at an element
-    // boundary (range.startContainer can be either).
+    // compute text before the cursor within the active block.
     const probe = globalThis.document.createRange();
     probe.setStart(this.activeNode, 0);
     probe.setEnd(range.startContainer, range.startOffset);
     const textBefore = probe.toString();
+    const trimmed = textBefore.trimEnd();
+    // match the longest token at the end of the trimmed text. No trailing
+    // space is required. ::: fires immediately; :: is debounced briefly so
+    // that typing ::: can still reach the symbol program before the emoji
+    // program opens.
     for (let spec of specs) {
-      const fullToken = spec.token + " ";
-      if (textBefore.endsWith(fullToken)) {
-        // locate the text node + local offsets for the token so we can
-        // strip it even when the caret sits at an element boundary
-        const startChar = textBefore.length - fullToken.length;
-        const endChar = textBefore.length;
-        const start = this.__findTextNodeAtOffset(this.activeNode, startChar);
-        const end = this.__findTextNodeAtOffset(this.activeNode, endChar);
-        if (start && end) {
-          const stripRange = globalThis.document.createRange();
-          stripRange.setStart(start.node, start.offset);
-          stripRange.setEnd(end.node, end.offset);
-          selection.removeAllRanges();
-          selection.addRange(stripRange);
-          stripRange.deleteContents();
-          // stripRange is now collapsed at the strip point
-          HAXStore._openInlineProgramAtCursor({
-            machineName: spec.machineName,
-            name: spec.name,
-            placeholder: spec.placeholder,
-            range: stripRange,
-            selection: selection,
-            activeBlock: this.activeNode,
-            token: fullToken,
-          });
+      if (trimmed.endsWith(spec.token)) {
+        if (spec.token.length >= 3) {
+          // longer token (e.g. :::) — fire immediately
+          clearTimeout(this.__inlineShortcutTimer);
+          this.__fireInlineShortcut(spec);
+        } else {
+          // shorter token (e.g. ::) — debounce so a longer token can win
+          clearTimeout(this.__inlineShortcutTimer);
+          const self = this;
+          this.__inlineShortcutTimer = setTimeout(function () {
+            self.__fireInlineShortcut(spec);
+          }, 300);
         }
         return;
       }
     }
+    // no match — clear any pending debounced fire
+    clearTimeout(this.__inlineShortcutTimer);
+  }
+  /**
+   * Re-validate state and fire an inline shortcut: strip the token at the
+   * cursor and open the matching inline Merlin program. Re-reads the range
+   * so it works whether called directly or from a debounced timer.
+   */
+  __fireInlineShortcut(spec) {
+    if (
+      !this.editMode ||
+      !this.activeNode ||
+      SuperDaemonInstance.opened
+    ) {
+      return;
+    }
+    if (
+      !HAXStore.isTextElement(this.activeNode) &&
+      this.activeNode.tagName !== "LI"
+    ) {
+      return;
+    }
+    const selection = HAXStore.getSelection();
+    const range = HAXStore.getRange();
+    if (!selection || !range || !range.collapsed) {
+      return;
+    }
+    let walker = range.startContainer;
+    while (walker && walker !== this.activeNode) {
+      walker = walker.parentNode;
+    }
+    if (walker !== this.activeNode) {
+      return;
+    }
+    const probe = globalThis.document.createRange();
+    probe.setStart(this.activeNode, 0);
+    probe.setEnd(range.startContainer, range.startOffset);
+    const textBefore = probe.toString();
+    const trimmed = textBefore.trimEnd();
+    if (!trimmed.endsWith(spec.token)) {
+      return;
+    }
+    // strip the token + any trailing whitespace after it
+    const startChar = trimmed.length - spec.token.length;
+    const endChar = textBefore.length;
+    const start = this.__findTextNodeAtOffset(this.activeNode, startChar);
+    const end = this.__findTextNodeAtOffset(this.activeNode, endChar);
+    if (!start || !end) {
+      return;
+    }
+    const stripRange = globalThis.document.createRange();
+    stripRange.setStart(start.node, start.offset);
+    stripRange.setEnd(end.node, end.offset);
+    selection.removeAllRanges();
+    selection.addRange(stripRange);
+    stripRange.deleteContents();
+    HAXStore._openInlineProgramAtCursor({
+      machineName: spec.machineName,
+      name: spec.name,
+      placeholder: spec.placeholder,
+      range: stripRange,
+      selection: selection,
+      activeBlock: this.activeNode,
+      token: spec.token + " ",
+    });
   }
   /**
    * Given a block element and a character offset within that block's
