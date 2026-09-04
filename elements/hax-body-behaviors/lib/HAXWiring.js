@@ -77,7 +77,13 @@
  *    'tags': ['Content', 'csv'],
  *     'meta': {
  *       'author': 'HAXTheWeb'
- *     }
+ *     },
+ *     // optional: declare keyboard/markdown shortcut(s) for this gizmo.
+ *     // A markdown entry like { type:'markdown', trigger:'###' } makes typing
+ *     // the trigger + space insert this gizmo; a binding entry like
+ *     // { type:'binding', key:'h', ctrl:true, shift:true } declares a key
+ *     // combo. HAXStore auto-registers these into the shared registry.
+ *     'shortcut': []
  *   },
  *
  * Groups is like a filter that someone could search amongst dozens of gizmos for the type of one they are looking for. So if you said your gizmo is for presenting video then you could tag it as Video and people looking for ways to present videos could filter by just Video gizmos.
@@ -780,6 +786,9 @@ export class HAXWiring {
           },
           requiresChildren: false,
           requiresParent: false,
+          // optional: descriptor(s) auto-registered into the shared
+          // KeyboardShortcutManager registry by HAXStore
+          shortcut: [],
         },
         settings: {
           configure: [

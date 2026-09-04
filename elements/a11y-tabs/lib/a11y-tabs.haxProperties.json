@@ -7,7 +7,14 @@
     "description": "Set of tabs.",
     "icon": "view-day",
     "color": "grey",
-    "tags": ["Layout", "tabs", "display", "layout"]
+    "tags": ["Layout", "tabs", "display", "layout"],
+    "shortcut": [
+      {
+        "type": "markdown",
+        "trigger": ">t",
+        "description": "Insert a tab set (type >t then space)"
+      }
+    ]
   },
   "settings": {
     "configure": [

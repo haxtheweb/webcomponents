@@ -1007,101 +1007,21 @@ export class PageBreak extends IntersectionObserverMixin(
     const menu = this.shadowRoot.querySelector("#menu");
     if (menu) menu.close();
 
-    const { SimpleIconsetStore } = await import("@haxtheweb/simple-icon/lib/simple-iconset.js");
     const item = toJS(store.activeItem);
     if (!item || !item.id) return;
 
     const SuperDaemonInstance =
       globalThis.SuperDaemonManager.requestAvailability();
+    // Ensure Merlin / SuperDaemon is in a clean state before launching the
+    // edit-icon program. This avoids any lingering program context from a
+    // previous run interfering with subsequent icon edits.
+    SuperDaemonInstance.close();
     store.playSound("click");
 
-    const allIcons =
-      SimpleIconsetStore && SimpleIconsetStore.iconlist
-        ? [...SimpleIconsetStore.iconlist].sort()
-        : [];
-
-    SuperDaemonInstance.defineOption({
-      title: "Edit Icon",
-      icon: "icons:image",
-      priority: -10000,
-      tags: ["edit", "icon"],
-      eventName: "super-daemon-run-program",
-      path: "CMS/edit/icon",
-      value: {
-        name: "edit-icon",
-        machineName: "edit-icon",
-        placeholder: "Type to search icons by name",
-        program: async (input) => {
-          const searchTerm = input ? input.toLowerCase() : "";
-          const results = [];
-
-          const filteredIcons = searchTerm
-            ? allIcons.filter((icon) => icon.toLowerCase().includes(searchTerm))
-            : allIcons.slice(0, 50);
-
-          filteredIcons.forEach((icon) => {
-            const friendlyName = icon
-              .replace(/^.*:/, "")
-              .replace(/-/g, " ")
-              .replace(/\b\w/g, (l) => l.toUpperCase());
-
-            results.push({
-              title: `${friendlyName} (${icon})`,
-              icon: icon,
-              tags: ["icon"],
-              value: {
-                target: globalThis,
-                method: "dispatchEvent",
-                args: [
-                  new CustomEvent("haxcms-save-node-details", {
-                    bubbles: true,
-                    composed: true,
-                    cancelable: true,
-                    detail: {
-                      id: item.id,
-                      idOrSlug: item.id,
-                      operation: "setIcon",
-                      icon: icon,
-                    },
-                  }),
-                ],
-              },
-              eventName: "super-daemon-element-method",
-              path: `CMS/edit/icon/${icon}`,
-            });
-          });
-
-          if (results.length === 0) {
-            return [
-              {
-                title: searchTerm
-                  ? `No icons found for "${searchTerm}"`
-                  : "No icons available",
-                icon: "icons:search",
-                tags: ["empty"],
-                value: { disabled: true },
-                eventName: "disabled",
-                path: "No results",
-              },
-            ];
-          }
-
-          if (!searchTerm && allIcons.length > 50) {
-            results.push({
-              title: `Showing 50 of ${allIcons.length} icons - type to search`,
-              icon: "icons:info",
-              tags: ["hint"],
-              value: { disabled: true },
-              eventName: "disabled",
-              path: "Hint",
-            });
-          }
-
-          return results;
-        },
-      },
-    });
-
+    // Use the centrally defined edit-icon program (registered once in
+    // haxcms-site-editor-ui). The program reads the active item lazily so
+    // the icon is always set on the currently active page, and we avoid
+    // re-registering a new option (with a stale closure) on every call.
     SuperDaemonInstance.waveWand(["", "/", {}, "edit-icon", "Edit Icon"]);
   }
 

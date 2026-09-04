@@ -5,6 +5,7 @@ import {
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import {
+  KeyboardShortcutManagerInstance,
   winEventsElement,
   stripMSWord,
   removeBadJSEventAttributes,
@@ -2987,98 +2988,137 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return false;
     };
 
-    // emoji picker; hidden from the source / media endpoints list so it is
-    // only reached via a dedicated shortcut (waveWand / runProgram by
-    // machineName "insert-emoji") while staying registered in allItems
+    // emoji picker; inline-triggerable via the ":: " token (see hax-body
+    // __maybeTriggerInlineShortcut) and surfaced globally in Merlin so the
+    // "::" shortcut chip renders on its row. Resolved by machineName
+    // "insert-emoji" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
       title: "Insert emoji",
       icon: "editor:insert-emoticon",
       tags: ["emoji"],
-      hidden: true,
+      inline: true,
+      shortcut: {
+        id: "inline-emoji",
+        type: "markdown",
+        trigger: "::",
+        description: "Insert emoji (inline token)",
+      },
+      voice: "insert emoji",
       value: {
         name: "Insert emoji",
         machineName: "insert-emoji",
         context: "/",
         placeholder: "Search for an emoji",
         program: async (input, values) => {
+          if (!globalThis.SimplePickerEmojis) {
+            await import(
+              "@haxtheweb/simple-picker/lib/SimplePickerEmojis.js",
+            );
+          }
           let results = [];
           let txt = globalThis.document.createElement("textarea");
-          await Object.keys(globalThis.SimplePickerEmojis).forEach(
-            async (category) => {
-              await globalThis.SimplePickerEmojis[category].forEach(
-                async (emoji) => {
-                  if (input == "" || emoji.description.includes(input)) {
-                    txt.innerHTML = emoji.value;
-                    results.push({
-                      title: emoji.description,
-                      textCharacter: txt.value,
-                      tags: [category],
-                      value: {
-                        target: this,
-                        method: "_insertTextResult",
-                        args: [txt.value],
-                      },
-                      context: ["/", "/HAX/text/emoji/" + txt.value],
-                      eventName: "super-daemon-element-method",
-                      path: "/HAX/text/emoji/" + txt.value,
-                    });
-                  }
-                },
-              );
-            },
-          );
+          let capped = false;
+          for (let category of Object.keys(globalThis.SimplePickerEmojis)) {
+            for (let emoji of globalThis.SimplePickerEmojis[category]) {
+              if (input == "" || emoji.description.includes(input)) {
+                txt.innerHTML = emoji.value;
+                results.push({
+                  title: emoji.description,
+                  textCharacter: txt.value,
+                  tags: [category],
+                  value: {
+                    target: this,
+                    method: "_insertTextResult",
+                    args: [txt.value],
+                  },
+                  context: ["/", "/HAX/text/emoji/" + txt.value],
+                  eventName: "super-daemon-element-method",
+                  path: "/HAX/text/emoji/" + txt.value,
+                });
+                if (input === "" && results.length >= 60) {
+                  capped = true;
+                  break;
+                }
+              }
+            }
+            if (capped) {
+              break;
+            }
+          }
           return results;
         },
       },
-      context: ["HAX", "/"],
+      context: "*",
       eventName: "super-daemon-run-program",
       path: "/HAX/text/emoji",
     });
 
-    // symbol picker; hidden from the source / media endpoints list so it is
-    // only reached via a dedicated shortcut (waveWand / runProgram by
-    // machineName "insert-symbol") while staying registered in allItems
+    // symbol picker; inline-triggerable via the "::: " token (see hax-body
+    // __maybeTriggerInlineShortcut) and surfaced globally in Merlin so the
+    // ":::" shortcut chip renders on its row. Resolved by machineName
+    // "insert-symbol" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
       title: "Insert symbol",
       icon: "editor:functions",
       tags: ["symbol"],
-      hidden: true,
+      inline: true,
+      shortcut: {
+        id: "inline-symbol",
+        type: "markdown",
+        trigger: ":::",
+        description: "Insert symbol (inline token)",
+      },
+      voice: "insert symbol",
       value: {
         name: "Insert symbol",
         machineName: "insert-symbol",
         context: "/",
         placeholder: "Search for a symbol",
         program: async (input, values) => {
+          // SimplePickerSymbols is defined inline at the bottom of
+          // simple-symbol-picker.js (no standalone data file), so importing
+          // that module populates the globalThis entry as a side effect.
+          if (!globalThis.SimplePickerSymbols) {
+            await import(
+              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js",
+            );
+          }
           let results = [];
           let txt = globalThis.document.createElement("textarea");
-          await Object.keys(globalThis.SimplePickerSymbols).forEach(
-            async (category) => {
-              await globalThis.SimplePickerSymbols[category].forEach(
-                async (symbol) => {
-                  if (input == "" || category.includes(input)) {
-                    txt.innerHTML = symbol.value;
-                    results.push({
-                      title: `${category}: ${txt.value}`,
-                      textCharacter: txt.value,
-                      tags: [category],
-                      value: {
-                        target: this,
-                        method: "_insertTextResult",
-                        args: [txt.value],
-                      },
-                      context: ["/", "/HAX/text/symbol/" + txt.value],
-                      eventName: "super-daemon-element-method",
-                      path: "/HAX/text/symbol/" + txt.value,
-                    });
-                  }
-                },
-              );
-            },
-          );
+          let capped = false;
+          for (let category of Object.keys(
+            globalThis.SimplePickerSymbols,
+          )) {
+            for (let symbol of globalThis.SimplePickerSymbols[category]) {
+              if (input == "" || category.includes(input)) {
+                txt.innerHTML = symbol.value;
+                results.push({
+                  title: `${category}: ${txt.value}`,
+                  textCharacter: txt.value,
+                  tags: [category],
+                  value: {
+                    target: this,
+                    method: "_insertTextResult",
+                    args: [txt.value],
+                  },
+                  context: ["/", "/HAX/text/symbol/" + txt.value],
+                  eventName: "super-daemon-element-method",
+                  path: "/HAX/text/symbol/" + txt.value,
+                });
+                if (input === "" && results.length >= 60) {
+                  capped = true;
+                  break;
+                }
+              }
+            }
+            if (capped) {
+              break;
+            }
+          }
           return results;
         },
       },
-      context: ["HAX", "/"],
+      context: "*",
       eventName: "super-daemon-run-program",
       path: "/HAX/text/symbol",
     });
@@ -3276,25 +3316,39 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.daemonCommands = {};
-    // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
-    // these are basic markdown shortcuts
-    this.keyboardShortcuts = {
-      "#": { tag: "h2", content: "" },
-      "##": { tag: "h3", content: "" },
-      "###": { tag: "h4", content: "" },
-      "####": { tag: "h5", content: "" },
-      "#####": { tag: "h6", content: "" },
-      "######": { tag: "h6", content: "" },
-      "1.": { tag: "ol", content: "<li></li>" },
-      "-": { tag: "ul", content: "<li></li>" },
-      "*": { tag: "ul", content: "<li></li>" },
-      "+": { tag: "ul", content: "<li></li>" },
-      "---": { tag: "hr" },
-      "***": { tag: "hr" },
-      ___: { tag: "hr" },
-      "```": { tag: "code", content: "" },
-      ">": { tag: "blockquote", content: "" },
-    };
+    // Markdown insertion shortcuts are registered into the shared
+    // KeyboardShortcutManager registry (single source of truth, also read by
+    // hax-body.keyboardShortCutProcess and the About dialog). The legacy
+    // `keyboardShortcuts` map shape is still exposed via the getter below so
+    // existing readers keep working. gizmoRegistration / gizmo.shortcut can
+    // add or override these per-element.
+    [
+      { trigger: "#", tag: "h2", content: "" },
+      { trigger: "##", tag: "h3", content: "" },
+      { trigger: "###", tag: "h4", content: "" },
+      { trigger: "####", tag: "h5", content: "" },
+      { trigger: "#####", tag: "h6", content: "" },
+      { trigger: "######", tag: "h6", content: "" },
+      { trigger: "1.", tag: "ol", content: "<li></li>" },
+      { trigger: "-", tag: "ul", content: "<li></li>" },
+      { trigger: "*", tag: "ul", content: "<li></li>" },
+      { trigger: "+", tag: "ul", content: "<li></li>" },
+      { trigger: "---", tag: "hr", content: "" },
+      { trigger: "***", tag: "hr", content: "" },
+      { trigger: "___", tag: "hr", content: "" },
+      { trigger: "```", tag: "code", content: "" },
+      { trigger: ">", tag: "blockquote", content: "" },
+    ].forEach((entry) =>
+      KeyboardShortcutManagerInstance.register({
+        id: `markdown-${entry.trigger}`,
+        type: "markdown",
+        trigger: entry.trigger,
+        tag: entry.tag,
+        content: entry.content || "",
+        description: `Insert ${entry.tag}`,
+        context: "edit",
+      }),
+    );
     // used for helping to build out the primitives schemas
     this.__primsBuilder = {
       caption: {
@@ -5521,6 +5575,45 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
+          // Auto-register any declarative shortcut(s) the gizmo declares
+          // (haxProperties.gizmo.shortcut) into the shared registry BEFORE
+          // building the insert option so the option can reference the
+          // resolved shortcut id and render a chip in Merlin. Markdown
+          // entries default their insert tag to the gizmo's tag when omitted.
+          let insertShortcutId = "";
+          if (gizmo.shortcut) {
+            const shortcuts = Array.isArray(gizmo.shortcut)
+              ? gizmo.shortcut
+              : [gizmo.shortcut];
+            shortcuts.forEach((entry, idx) => {
+              if (!entry || typeof entry !== "object") return;
+              const descriptor = { ...entry };
+              if (
+                (descriptor.type === "markdown" || descriptor.trigger) &&
+                !descriptor.tag
+              ) {
+                descriptor.tag = gizmo.tag;
+              }
+              if (!descriptor.context) {
+                descriptor.context = "edit";
+              }
+              const stored =
+                KeyboardShortcutManagerInstance.register(descriptor);
+              if (stored && stored.id && idx === 0) {
+                insertShortcutId = stored.id;
+              }
+            });
+          }
+          // Fallback: if the gizmo's tag matches a registered markdown
+          // shortcut (e.g. a primitive like h3/ul), surface that trigger so
+          // its insert option still shows the matching markdown chip.
+          if (!insertShortcutId) {
+            const md =
+              KeyboardShortcutManagerInstance.getMarkdownByTag(gizmo.tag);
+            if (md) {
+              insertShortcutId = md.id;
+            }
+          }
           // only add in support for commands we'd expect to see
           if (!gizmo.meta || (!gizmo.meta.inlineOnly && !gizmo.meta.hidden)) {
             if (this.platformAllows("addBlock") && !gizmo.platformRestricted) {
@@ -5538,6 +5631,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 context: "HAX",
                 eventName: "hax-super-daemon-insert-tag",
                 path: "HAX/insert/block/" + gizmo.tag,
+                shortcut: insertShortcutId,
               });
             }
           }
@@ -5585,6 +5679,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.haxAutoloader.removeChild(e.target);
       }
     }
+  }
+  /**
+   * Legacy markdown shortcut map derived from the shared registry.
+   * Returns the { trigger: { tag, content } } shape HAXStore historically
+   * held so existing readers (About dialog, hax-body fallback) keep working
+   * without knowing about the registry. The registry remains the single
+   * source of truth; mutating this object does not write back.
+   */
+  get keyboardShortcuts() {
+    const map = {};
+    KeyboardShortcutManagerInstance.getByType("markdown").forEach((d) => {
+      map[d.trigger] = { tag: d.tag, content: d.content };
+    });
+    return map;
   }
   get activeGizmo() {
     let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));

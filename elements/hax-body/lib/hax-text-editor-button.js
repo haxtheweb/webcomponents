@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { RichTextEditorPromptButtonBehaviors } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-text-editor-button`
@@ -151,6 +152,29 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    * this overrides the default button behavior so that the gizmo's content doen't get doubled
    */
   updateSelection() {
+    // Re-entrant wrap guard. tagClickCallback (fired on dblclick of an
+    // existing inline gizmo in the page) calls open(node) -> highlightNode
+    // -> __highlight.wrap(range). If that wrap raced (e.g. with the native
+    // dblclick word-selection), the highlight does NOT end up containing
+    // our tag, so targetedNode falls back to this.__highlight. Running the
+    // create-new-tag + unwrap flow in that state injects a BLANK duplicate
+    // next to the still-intact original (highlight.innerHTML="" never
+    // cleared the real node, and unwrap drops it back as a sibling).
+    //
+    // Detection: targetedNode === this.__highlight means the highlight
+    // isn't wrapping our tag. If HAX's activeNode IS our tag, we know the
+    // real element is still in the page — so this is a raced re-entry, not
+    // a fresh insert. Bail without creating a new node. A genuine insert
+    // (toolbar button with a text selection) has activeNode = a text
+    // block, so activeIsTag is false there and we proceed normally.
+    let targeted = this.targetedNode;
+    let activeIsTag =
+      HAXStore.activeNode &&
+      HAXStore.activeNode.tagName &&
+      HAXStore.activeNode.tagName.toLowerCase() === this.tagsList;
+    if (targeted === this.__highlight && activeIsTag) {
+      return;
+    }
     let tag = globalThis.document.createElement(this.tagsList),
       html = "";
     this.fields.forEach((field) => {

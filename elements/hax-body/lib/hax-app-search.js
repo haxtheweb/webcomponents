@@ -33,6 +33,10 @@ class HaxAppSearch extends LitElement {
     this.requestData = {};
     this.media = [];
     this.resultMap = {};
+    // initialize so updateSearchValues / loadAppData never read undefined
+    // before _resetAppSearch (which runs on a 10ms timeout once activeApp
+    // propagates) has populated the real browse params.
+    this.requestParams = {};
     autorun(() => {
       const _mobx_val_0 = toJS(HAXStore.activeApp);
       Promise.resolve().then(() => {
@@ -283,9 +287,14 @@ class HaxAppSearch extends LitElement {
   updateSearchValues(values) {
     let requestParams = this.requestParams;
     for (let property in values) {
-      // don't send empty params in the request
       if (values[property] != "") {
         requestParams[property] = values[property];
+      } else {
+        // Input was cleared: drop the stale search param so we do not
+        // re-request the previously typed term when the field is emptied.
+        // Removing the param also satisfies the original don't-send-empty
+        // intent (the param is simply omitted from the query string).
+        delete requestParams[property];
       }
     }
     this.requestParams = { ...this.requestParams };

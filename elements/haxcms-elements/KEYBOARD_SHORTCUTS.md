@@ -4,15 +4,62 @@ HAXcms includes a centralized keyboard shortcut system that provides quick acces
 
 ## Architecture
 
-The keyboard shortcut system is implemented in:
-- **`lib/core/utils/HAXCMSKeyboardShortcuts.js`** - Centralized keyboard shortcut manager
-- **`lib/core/haxcms-site-editor-ui.js`** - Registers all shortcuts in `_registerKeyboardShortcuts()`
+HAX keyboard/insertion shortcuts funnel through one shared registry so that
+HAXcms key bindings, HAXStore markdown triggers, and Super Daemon (Merlin)
+options all share a single descriptor shape and source of truth.
+
+- **`@haxtheweb/utils/lib/keyboardShortcuts.js`** - `KeyboardShortcutManager`,
+  the dependency-free shared registry singleton (re-exported from
+  `@haxtheweb/utils/utils.js`). Holds canonical descriptors and provides
+  `register`/`unregister`/`getAll`/`getByContext`/`getById`/`getByType`/
+  `getByBinding`/`getByTrigger`/`getLabel`/`getForDisplay` plus a static
+  `generateLabel`. Importable from haxcms-elements, hax-body, and
+  super-daemon without circular dependencies.
+- **`lib/core/utils/HAXCMSKeyboardShortcuts.js`** - `HAXCMSKeyboardShortcuts`,
+  a backward-compatible facade over the shared registry. It keeps the
+  CMS-specific keydown *execution* engine (modifier / admin-mode / modal
+  guards + callback dispatch) and the legacy query/label API
+  (`register`, `getShortcuts`, `getShortcutsByContext`, `getShortcut`,
+  `getShortcutLabel`, `getShortcutsForDisplay`, static `generateLabel`).
+  Storage is delegated to the registry, so `HAXCMSKeyboardShortcutsInstance`
+  and `KeyboardShortcutManagerInstance` see the same data.
+- **`lib/core/haxcms-site-editor-ui.js`** - Registers all CMS bindings in
+  `_registerKeyboardShortcuts()` (called from `connectedCallback`).
+- **`elements/hax-body/lib/hax-store.js`** - Registers the default markdown
+  insertion triggers into the registry at construction; exposes the legacy
+  `HAXStore.keyboardShortcuts` `{ trigger: { tag, content } }` map via a
+  getter derived from the registry.
+- **`elements/hax-body/hax-body.js`** - `keyboardShortCutProcess()` reads
+  markdown triggers from the registry via `getByTrigger`.
+- **`elements/super-daemon/super-daemon.js`** - `defineOption()` accepts an
+  optional `shortcut` (registry id or inline descriptor) and resolves it to
+  `option.shortcutLabel` for the Merlin UI.
+
+### Canonical descriptor shape
+
+```js
+{
+  id: 'cms-save' | 'markdown-h3' | ...,  // stable unique id
+  type: 'binding' | 'markdown',          // binding = modifier+key; markdown = typed trigger
+  key: 'S',                              // physical key (binding)
+  ctrl, shift, alt, meta,                // binding modifiers
+  trigger: '###',                        // markdown trigger
+  tag: 'h3', content: '',                // markdown insert payload
+  description: 'Save page',
+  context: 'edit' | 'view' | 'global',
+  allowInInput: false,
+  callback: (e) => {},                   // optional (binding)
+  condition: () => true,                 // optional active-condition (binding)
+  eventName: '...',                      // optional
+}
+```
 
 ### Key Features
 - **Context-aware**: Shortcuts only work in appropriate contexts (edit mode vs view mode)
 - **Condition-based**: Each shortcut has conditions that determine when it's active
 - **No conflicts**: Uses `Ctrl+Shift` modifier to avoid conflicts with browser shortcuts and Super Daemon
 - **Permission-aware**: Respects platform permissions (e.g., `platformAllows('addPage')`)
+- **Single source of truth**: Bindings, markdown triggers, and Merlin options all query one registry
 
 ## Available Shortcuts
 
@@ -67,27 +114,45 @@ These don't conflict because they use different modifier key combinations.
 
 ## Programmatic Access
 
+The shared registry (`KeyboardShortcutManagerInstance`) is the primary API.
+The CMS facade (`HAXCMSKeyboardShortcutsInstance`) delegates to it and keeps
+the legacy method names working.
+
 ### Getting Shortcut Labels
 
-The keyboard shortcut system provides methods to programmatically access shortcut information:
+```javascript
+// Preferred: import the shared registry from anywhere in the ecosystem
+import {
+  KeyboardShortcutManagerInstance,
+  KeyboardShortcutManager,
+} from '@haxtheweb/utils/utils.js';
+
+// Resolve a binding by its key + modifiers
+const save = KeyboardShortcutManagerInstance.getByBinding('S', true, true);
+// Resolve a markdown trigger
+const h3 = KeyboardShortcutManagerInstance.getByTrigger('###');
+// Label for an arbitrary descriptor
+const label = KeyboardShortcutManager.generateLabel({ key: '[', ctrl: true, shift: true });
+// Returns: 'Ctrl⇧['
+
+// All shortcuts formatted for display (label/description/context/key)
+const display = KeyboardShortcutManagerInstance.getForDisplay();
+```
+
+The CMS facade still works for existing call sites:
 
 ```javascript
-import { HAXCMSKeyboardShortcutsInstance } from './lib/core/utils/HAXCMSKeyboardShortcuts.js';
+import {
+  HAXCMSKeyboardShortcutsInstance,
+  HAXCMSKeyboardShortcuts,
+} from './lib/core/utils/HAXCMSKeyboardShortcuts.js';
 
-// Get all shortcuts formatted for display (e.g., in Merlin)
+// Binding shortcuts only (markdown sourced separately from HAXStore.keyboardShortcuts)
 const shortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
-// Returns: [{ label: 'Ctrl⇧[', description: 'Create new page', context: 'view', key: 'Ctrl+Shift+[' }, ...]
+// [{ label: 'Ctrl⇧E', description: 'Enter edit mode', context: 'view', key: 'E' }, ...]
 
-// Get all shortcuts with full details
-const allShortcuts = HAXCMSKeyboardShortcutsInstance.getShortcuts();
-
-// Get shortcuts for a specific context
 const editShortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsByContext('edit');
-
-// Generate a label for a shortcut
-import { HAXCMSKeyboardShortcuts } from './lib/core/utils/HAXCMSKeyboardShortcuts.js';
 const label = HAXCMSKeyboardShortcuts.generateLabel({ key: '[', ctrl: true, shift: true });
-// Returns: 'Ctrl⇧['
 ```
 
 ### Displaying Shortcuts in Merlin
@@ -108,10 +173,17 @@ const byContext = shortcuts.reduce((acc, s) => {
 
 ### Registering a New Shortcut
 
-To add a new keyboard shortcut, add it to the `_registerKeyboardShortcuts()` method in `haxcms-site-editor-ui.js`:
+There are three registration paths, all writing into the same shared
+`KeyboardShortcutManager` registry.
+
+#### 1. Direct registry call (bindings and markdown triggers)
+
+For CMS-level bindings, add to `_registerKeyboardShortcuts()` in
+`haxcms-site-editor-ui.js` (the facade forwards to the registry):
 
 ```javascript
 HAXCMSKeyboardShortcutsInstance.register({
+  id: 'cms-your-action',       // optional but recommended; defaults to the combo
   key: 'X',                    // The key to press
   ctrl: true,                  // Require Ctrl
   shift: true,                 // Require Shift
@@ -119,13 +191,62 @@ HAXCMSKeyboardShortcutsInstance.register({
     this.yourMethod(e);
   },
   condition: () =>             // When shortcut should be active
-    store.isLoggedIn && 
-    this.pageAllowed && 
+    store.isLoggedIn &&
+    this.pageAllowed &&
     !this.editMode,
   description: 'Your action',  // Human-readable description
   context: 'view'              // Context: 'edit', 'view', or 'global'
 });
 ```
+
+For markdown triggers outside the CMS facade, register directly:
+
+```javascript
+import { KeyboardShortcutManagerInstance } from '@haxtheweb/utils/utils.js';
+KeyboardShortcutManagerInstance.register({
+  id: 'markdown-callout',
+  type: 'markdown',
+  trigger: '/callout',
+  tag: 'my-callout',
+  content: '',
+  description: 'Insert callout',
+  context: 'edit',
+});
+```
+
+#### 2. Declarative `haxProperties.gizmo.shortcut`
+
+Element authors can declare shortcut(s) inline in `haxProperties` without
+hand-editing `hax-store.js`. When HAXStore registers the element's gizmo it
+auto-registers any `gizmo.shortcut` descriptor(s) into the shared registry
+(a markdown entry defaults its `tag` to the gizmo's tag if omitted):
+
+```javascript
+gizmo: {
+  title: 'My block',
+  // ...
+  shortcut: [
+    { type: 'markdown', trigger: '/myblock' }
+  ],
+}
+```
+
+#### 3. Super Daemon `defineOption` reference
+
+Merlin options can reference a registry id (or inline descriptor) so the
+row can display the matching shortcut. `defineOption` resolves it to
+`option.shortcutLabel`:
+
+```javascript
+SuperDaemonInstance.defineOption({
+  title: 'Save',
+  // ...
+  shortcut: 'cms-save',   // id lookup into the shared registry
+});
+```
+
+The `gizmoRegistration` haxHook remains the programmatic override point for
+elements that need custom registration logic.
 
 ### Input Field Handling
 

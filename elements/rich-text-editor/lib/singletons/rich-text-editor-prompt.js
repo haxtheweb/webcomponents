@@ -26,11 +26,38 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           display: block;
           width: 300px;
           max-width: 300px;
+          color-scheme: light dark;
           --simple-popover-padding: 0px;
           --simple-popover-max-height: auto;
           --simple-popover-color: light-dark(#222, #e4e5e7);
           --simple-popover-background-color: light-dark(#ffffff, #262626);
           --simple-popover-border-color: light-dark(#bbb, #444);
+          /* Keep the field surface flush with the popover and align the
+             simple-fields spacing to DDD tokens so the row-layout
+             hover/focus affordance reads edge-to-edge (issue #2996). */
+          --simple-fields-background-color: var(--simple-popover-background-color);
+          --simple-fields-margin: var(--ddd-spacing-1);
+          --simple-fields-margin-small: var(--ddd-spacing-1);
+          --simple-fields-field-margin: var(--ddd-spacing-2);
+          --simple-fields-accent-color: var(
+            --hax-ui-color-accent,
+            var(--ddd-theme-default-skyBlue, #3f51b5)
+          );
+          /* Offset the field control surface slightly from the popover
+             surface so inputs read as inputs in both light and dark,
+             and give them a visible border/outline so they are
+             distinguishable when focused/selected. Mirrors the
+             --simple-fields-input-* treatment in hax-tray (#settingsform),
+             adapted so the border and fill stay legible against the
+             prompt's #262626 dark popover (issue #2996). */
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            #3a3a3a
+          );
+          --simple-fields-input-border: 1px solid light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-limestoneGray)
+          );
           z-index: 2;
         }
         #prompt[hidden] {
@@ -39,17 +66,25 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
         #prompt #form {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
+          align-items: stretch;
           z-index: 2;
         }
         #formfields {
-          width: calc(100% - 20px);
-          padding: 10px 10px 0;
+          width: 100%;
+          padding: 0;
           overflow: visible;
         }
-        #prompt simple-fields-field {
-          padding: 0;
+        /* Row-based fields (checkbox / single select / bounded number)
+           adopt the Ubuntu settings-row layout from simple-fields. Give
+           every field DDD spacing and full width so the host hover
+           background and focus-within outline fill the menu edge-to-edge
+           instead of floating as a cramped band. Mirrors the #settingsform
+           treatment in hax-tray (issue #2996). */
+        #prompt #formfields simple-fields-field {
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+          padding: var(--ddd-spacing-2);
         }
         #confirm,
         #cancel {
@@ -74,15 +109,16 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           background-color: var(--rich-text-editor-button-hover-bg);
         }
         .actions {
-          width: calc(100% - 20px);
-          padding: 0 10px 3px;
+          padding: var(--ddd-spacing-2);
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          gap: var(--ddd-spacing-2);
           background-color: light-dark(
             var(--rich-text-editor-button-bg, #ffffff),
             #262626
           );
+          border-top: 1px solid var(--simple-popover-border-color);
         }
         .confirm-or-cancel {
           min-width: 40px;

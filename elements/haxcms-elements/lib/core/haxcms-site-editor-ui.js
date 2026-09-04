@@ -2019,7 +2019,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     SuperDaemonInstance.defineOption({
       title: "Upload a file",
-      icon: "hax:hax2022",
+      icon: "icons:file-upload",
       priority: -10000,
       tags: ["Agent", "help", "merlin"],
       eventName: "super-daemon-run-program",
@@ -3457,6 +3457,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       title: this.t.save,
       icon: "icons:save",
       tags: ["CMS", "save", "page", "operation", "command"],
+      // Links this Merlin option to the Ctrl+Shift+S binding registered in
+      // _registerKeyboardShortcuts via the shared shortcut registry.
+      shortcut: "cms-save",
       value: {
         target: this,
         method: "_editButtonTap",
@@ -3485,6 +3488,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: "hax:page-edit",
       priority: -1500,
       tags: ["CMS", "edit", "page", "operation", "command"],
+      // Links this Merlin option to the Ctrl+Shift+E binding registered in
+      // _registerKeyboardShortcuts via the shared shortcut registry.
+      shortcut: "cms-edit",
       value: {
         target: this,
         method: "_editButtonTap",
@@ -3497,6 +3503,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       title: `Admin - ${this.t.siteSettings}`,
       icon: "hax:site-settings",
       tags: ["CMS", "admin", "site", "settings", "operation", "command"],
+      // Links this Merlin option to the Ctrl+Shift+6 binding registered in
+      // _registerKeyboardShortcuts via the shared shortcut registry.
+      shortcut: "cms-site-settings",
       value: {
         target: this,
         method: "_manifestButtonTap",
@@ -3789,6 +3798,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "command",
           "structure",
         ],
+        // Links this Merlin option to the Ctrl+Shift+5 binding registered in
+        // _registerKeyboardShortcuts via the shared shortcut registry.
+        shortcut: "cms-outline",
         value: {
           target: this,
           method: "_outlineButtonTap",
@@ -3852,6 +3864,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Edit this page",
         icon: "hax:page-edit",
         tags: ["welcome", "common", "operation"],
+        shortcut: "cms-edit",
         value: {
           target: this,
           method: "executeWelcomeAction",
@@ -3878,6 +3891,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Create a new page",
         icon: "hax:add-page",
         tags: ["welcome", "common", "operation"],
+        shortcut: "cms-add-page",
         value: {
           target: this,
           method: "executeWelcomeAction",
@@ -3891,6 +3905,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Edit site outline",
         icon: "hax:site-map",
         tags: ["welcome", "common", "operation"],
+        shortcut: "cms-outline",
         value: {
           target: this,
           method: "executeWelcomeAction",
@@ -3904,6 +3919,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Change site settings",
         icon: "hax:site-settings",
         tags: ["welcome", "common", "operation"],
+        shortcut: "cms-site-settings",
         value: {
           target: this,
           method: "executeWelcomeAction",
@@ -3927,6 +3943,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         path: "CMS/welcome/dismiss",
       },
     ];
+    // Resolve each welcome op's shortcut id into a display label so the
+    // rows render a chip in the welcome program. Bindings are registered in
+    // connectedCallback (_registerKeyboardShortcuts) which runs before this
+    // firstUpdated hook, so the registry lookups succeed.
+    welcomeOps.forEach((op) => {
+      if (op.shortcut) {
+        op.shortcutLabel = SuperDaemonInstance._resolveShortcutLabel(
+          op.shortcut,
+        );
+      }
+    });
     SuperDaemonInstance.defineOption({
       title: "Show getting started tasks",
       icon: "hax:hax2022",
@@ -4311,6 +4338,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+
+    // Edit Icon Program
+    SuperDaemonInstance.defineOption({
+      title: "Update page icon",
+      icon: "hax:hax2022",
+      tags: ["CMS", "edit", "icon", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/icon",
+      context: ["CMS"],
+      voice: "edit icon",
+      value: {
+        name: "Update page icon",
+        machineName: "edit-icon",
+        placeholder: "Type to search icons by name",
+        program: async (input, values) => {
+          const { createEditIconProgram } = await import(
+            "./utils/EditIconProgram.js"
+          );
+          const editIconProgram = createEditIconProgram(this);
+          return await editIconProgram(input, values);
+        },
+      },
+    });
+
     SuperDaemonInstance.defineOption({
       title: "View page revisions",
       icon: "icons:history",
@@ -5562,6 +5613,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _registerKeyboardShortcuts() {
     // Ctrl+Shift+S - Save (only when in edit mode)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-save",
       key: "S",
       ctrl: true,
       shift: true,
@@ -5575,6 +5627,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+E - Edit (only when NOT in edit mode)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-edit",
       key: "E",
       ctrl: true,
       shift: true,
@@ -5659,6 +5712,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+3 - Blocks browser (edit) OR Add page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-add-page",
       key: "3",
       ctrl: true,
       shift: true,
@@ -5713,6 +5767,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+5 - Outline designer (view mode)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-outline",
       key: "5",
       ctrl: true,
       shift: true,
@@ -5729,6 +5784,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Ctrl+Shift+6 - Site settings (view mode)
     HAXCMSKeyboardShortcutsInstance.register({
+      id: "cms-site-settings",
       key: "6",
       ctrl: true,
       shift: true,

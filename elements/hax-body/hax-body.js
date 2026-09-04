@@ -6,6 +6,7 @@ import { autorun, toJS } from "mobx";
 import "./lib/hax-text-editor-toolbar.js";
 import {
   encapScript,
+  KeyboardShortcutManagerInstance,
   removeBadJSEventAttributes,
   sanitizeHTMLForImport,
   wipeSlot,
@@ -2268,9 +2269,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Process input to see if it matches any defined keyboard shortcuts
    */
   keyboardShortCutProcess(guess) {
-    // see if our map matches
-    if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
-      let shortcut = HAXStore.keyboardShortcuts[guess.replace(" ", "")];
+    // see if our map matches; markdown shortcuts live in the shared
+    // KeyboardShortcutManager registry (single source of truth).
+    const trigger = guess.replace(" ", "");
+    const descriptor = KeyboardShortcutManagerInstance.getByTrigger(trigger);
+    if (descriptor) {
+      let shortcut = {
+        tag: descriptor.tag,
+        content: descriptor.content,
+        ...descriptor.properties,
+      };
 
       // Apply style guide defaults for elements created via keyboard shortcuts
       const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(

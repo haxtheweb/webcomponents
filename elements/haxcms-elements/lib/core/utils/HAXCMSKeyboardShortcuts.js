@@ -3,6 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { store } from "../haxcms-site-store.js";
+import {
+  KeyboardShortcutManager,
+  KeyboardShortcutManagerInstance,
+} from "@haxtheweb/utils/utils.js";
 
 /**
  * HAXCMSKeyboardShortcuts
@@ -14,7 +18,11 @@ import { store } from "../haxcms-site-store.js";
  */
 class HAXCMSKeyboardShortcuts {
   constructor() {
-    this.shortcuts = new Map();
+    // Storage is delegated to the shared KeyboardShortcutManager registry
+    // (see @haxtheweb/utils/lib/keyboardShortcuts.js). This facade retains
+    // only the CMS-specific keydown execution engine (modifier / admin-mode /
+    // modal guards + callback dispatch) and the backward-compatible
+    // query/label API used by haxcms-site-editor-ui and the About dialog.
     this.enabled = true;
     this._boundHandler = this._handleKeydown.bind(this);
   }
@@ -34,41 +42,21 @@ class HAXCMSKeyboardShortcuts {
    * @param {Boolean} options.allowInInput - Allow shortcut while focused in non-editor input fields
    */
   register(options) {
-    const {
-      key,
-      ctrl = false,
-      shift = false,
-      alt = false,
-      meta = false,
-      callback,
-      condition = () => true,
-      description = "",
-      context = "global",
-      allowInInput = false,
-    } = options;
-
-    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
-
-    this.shortcuts.set(shortcutKey, {
-      key,
-      ctrl,
-      shift,
-      alt,
-      meta,
-      callback,
-      condition,
-      description,
-      context,
-      allowInInput,
-    });
+    // Delegate storage to the shared registry. Defaults (type 'binding',
+    // id derived from combo) preserve the legacy call shape used by
+    // _registerKeyboardShortcuts(); CMS execution fields (callback,
+    // condition, allowInInput) ride along on the descriptor and are read
+    // back by _handleKeydown via getByBinding.
+    return KeyboardShortcutManagerInstance.register(options);
   }
 
   /**
    * Unregister a keyboard shortcut
    */
   unregister(key, ctrl = false, shift = false, alt = false, meta = false) {
-    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
-    this.shortcuts.delete(shortcutKey);
+    // Forward to the shared registry, which accepts both the legacy
+    // (key, ctrl, shift, alt, meta) signature and an id string.
+    KeyboardShortcutManagerInstance.unregister(key, ctrl, shift, alt, meta);
   }
 
   /**
@@ -140,16 +128,14 @@ class HAXCMSKeyboardShortcuts {
     // Normalize the key (handles Shift+number keys)
     const normalizedKey = this._normalizeKey(e);
 
-    // Generate key for current key combination
-    const shortcutKey = this._generateKey(
+    // Resolve the binding via the shared registry.
+    const shortcut = KeyboardShortcutManagerInstance.getByBinding(
       normalizedKey,
       e.ctrlKey,
       e.shiftKey,
       e.altKey,
       e.metaKey,
     );
-
-    const shortcut = this.shortcuts.get(shortcutKey);
     if (!shortcut) return;
 
     // Don't intercept if user is typing in an input field (unless in HAX editor
@@ -192,10 +178,14 @@ class HAXCMSKeyboardShortcuts {
    * Get all registered shortcuts
    */
   getShortcuts() {
-    return Array.from(this.shortcuts.entries()).map(([key, shortcut]) => ({
-      key,
-      ...shortcut,
-    }));
+    // Legacy shape: an array of descriptor objects where `key` is the
+    // physical key (the legacy { key, ...shortcut } spread overrode the
+    // combo string with shortcut.key). Only binding shortcuts lived here
+    // historically, so we scope to type 'binding' to preserve that split
+    // (markdown shortcuts remain sourced from HAXStore.keyboardShortcuts).
+    return KeyboardShortcutManagerInstance.getByType("binding").map(
+      (shortcut) => ({ ...shortcut }),
+    );
   }
 
   /**
@@ -218,20 +208,8 @@ class HAXCMSKeyboardShortcuts {
    * @returns {String} - Formatted label (e.g., "Ctrl⇧P")
    */
   static generateLabel(options) {
-    const {
-      key,
-      ctrl = false,
-      shift = false,
-      alt = false,
-      meta = false,
-    } = options;
-    const parts = [];
-    if (ctrl) parts.push("Ctrl");
-    if (alt) parts.push("Alt");
-    if (meta) parts.push("Meta");
-    if (shift) parts.push("⇧");
-    parts.push(key.toUpperCase());
-    return parts.join("");
+    // Delegate to the shared registry so label formatting is defined once.
+    return KeyboardShortcutManager.generateLabel(options);
   }
 
   /**
@@ -244,9 +222,16 @@ class HAXCMSKeyboardShortcuts {
    * @returns {Object|null} - Shortcut object or null if not found
    */
   getShortcut(key, ctrl = false, shift = false, alt = false, meta = false) {
-    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
-    const shortcut = this.shortcuts.get(shortcutKey);
-    return shortcut ? { key: shortcutKey, ...shortcut } : null;
+    // Legacy returned { key: combo, ...shortcut } which (due to spread
+    // order) netted key = physical key. The registry descriptor already
+    // carries key = physical, so we return it directly.
+    return KeyboardShortcutManagerInstance.getByBinding(
+      key,
+      ctrl,
+      shift,
+      alt,
+      meta,
+    );
   }
 
   /**
@@ -311,3 +296,6 @@ globalThis.HAXCMSKeyboardShortcutsManager.requestAvailability = () => {
 
 export const HAXCMSKeyboardShortcutsInstance =
   globalThis.HAXCMSKeyboardShortcutsManager.requestAvailability();
+// Expose the class too so callers can use the static generateLabel helper
+// (matches the usage documented in KEYBOARD_SHORTCUTS.md).
+export { HAXCMSKeyboardShortcuts };

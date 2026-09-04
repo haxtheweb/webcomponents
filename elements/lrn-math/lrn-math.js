@@ -133,8 +133,19 @@ function check_handler(el) {
   ) {
     globalThis.document.head.appendChild(handler);
   }
+  // Ensure the element renders once the MathJax controller is wired up.
+  // We intentionally do NOT clone-and-replace the node here (the old
+  // refresh() hack). Replacing the node after HAX has already applied
+  // activation state (data-hax-active, data-hax-ray, drag/drop handlers,
+  // and the activeNode reference) drops all of that state, which is why
+  // a freshly inserted <lrn-math> would not appear active until the user
+  // clicked away and clicked back. It also created a "replacement of a
+  // replacement" race: the clone's connectedCallback would re-set mathtext
+  // and trigger another innerHTML wipe while the original's was still
+  // settling. updateMath() re-typesets in place via the controller queue,
+  // so re-rendering does not require node replacement.
   setTimeout(() => {
-    el.refresh();
+    el.updateMath();
   }, 0);
 }
 
@@ -190,12 +201,30 @@ class LrnMath extends HTMLElement {
   connectedCallback() {
     check_handler(this);
     setTimeout(() => {
-      // if in hax and we have innerHTML, we always defer to it
-      if (this._haxstate && this.innerHTML) {
-        this.mathtext = this.innerHTML;
-      } else {
-        this.updateMath();
+      // Sync the real math text into mathtext so the HAX form field is
+      // populated on initial inline creation from highlighted text.
+      //
+      // We deliberately read textContent (not innerHTML) here: a HAX
+      // source-view / double-click capture can write this element's own
+      // outerHTML back into its light DOM innerHTML, producing a
+      // self-referential blob like
+      //   <lrn-math ...><lrn-math ...>understandf</lrn-math></lrn-math>
+      // innerHTML would adopt that whole blob as the "math text" and then
+      // render it escaped into itself (a replacement of a replacement).
+      // textContent strips the nested tags and yields just the real LaTeX
+      // ("understandf"), so the self-reference is normalized away on the
+      // very first connectedCallback pass. The attributeChangedCallback
+      // wipe then rebuilds a clean <span> from it.
+      //
+      // Previously this was gated on _haxstate, but that flag is not set
+      // yet when connectedCallback fires on a freshly inserted node.
+      if (!this.getAttribute("mathtext")) {
+        const text = (this.textContent || "").trim();
+        if (text) {
+          this.mathtext = text;
+        }
       }
+      this.updateMath();
     }, 0);
   }
 
@@ -225,6 +254,24 @@ class LrnMath extends HTMLElement {
   }
 
   /**
+   * Reflected `processing` flag (much like a `loading` attribute) that is
+   * true while the element is actively replacing its light DOM innards in
+   * response to a mathtext change. Used internally as a re-entrancy guard
+   * and reflected so HAX / CSS can observe the busy state.
+   */
+  get processing() {
+    return this.hasAttribute("processing");
+  }
+
+  set processing(val) {
+    if (val) {
+      this.setAttribute("processing", "processing");
+    } else {
+      this.removeAttribute("processing");
+    }
+  }
+
+  /**
    * Use mathtext as a method for transfering values
    * from hax inline text to the slot.
    */
@@ -235,13 +282,49 @@ class LrnMath extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case "mathtext":
+        // Self-reference guard. A HAX source-view / double-click capture
+        // can serialize this element's own outerHTML (including HAX state
+        // attributes like data-hax-active, data-hax-ray, role=textbox) and
+        // write it back INTO the mathtext attribute. Without this guard the
+        // normalization below would set innerText to that outerHTML string,
+        // rendering escaped HTML "into itself" and nesting a copy of the
+        // tag inside the tag. If the incoming value contains our own tag,
+        // it is not valid LaTeX — rebuild mathtext from the real textContent
+        // and let the re-triggered callback run the normal clean path.
+        if (
+          newValue &&
+          newValue.indexOf("<lrn-math") !== -1
+        ) {
+          const real = (this.textContent || "").trim();
+          // bypass the setter to avoid a redundant change event pair; the
+          // setAttribute here re-triggers attributeChangedCallback with the
+          // clean value, which is the path we want.
+          this.setAttribute("mathtext", real || "");
+          return;
+        }
         if (newValue !== "" && newValue !== null) {
           clearTimeout(this._typingTimeout);
           this._typingTimeout = setTimeout(() => {
+            // Re-entrancy guard: if we are already mid-replacement of the
+            // light DOM innards, do not start another replacement. This
+            // prevents a "replacement of a replacement" when mathtext
+            // changes land while a prior normalization (or a HAX source
+            // capture) is still in flight. processing is reflected as an
+            // attribute so HAX / CSS can also see the element is busy,
+            // much like a `loading` flag.
+            if (this.processing) {
+              return;
+            }
+            this.processing = true;
             const container = globalThis.document.createElement("span");
             container.innerText = newValue;
             this.innerHTML = "";
             this.appendChild(container);
+            // Re-typeset from the normalized textContent. updateMath is
+            // idempotent (cached by content check) so this is safe even if
+            // the MutationObserver already queued one.
+            this.updateMath();
+            this.processing = false;
           }, 300);
         } else {
           this.updateMath();
@@ -263,11 +346,11 @@ class LrnMath extends HTMLElement {
         handles: [
           {
             type: "math",
-            math: "mathText",
+            math: "mathtext",
           },
           {
             type: "inline",
-            text: "mathText",
+            text: "mathtext",
           },
         ],
         meta: {
@@ -289,16 +372,6 @@ class LrnMath extends HTMLElement {
         advanced: [],
       },
     };
-  }
-  /**
-   * forces a refresh to prevent dom reattachment issue
-   */
-  refresh() {
-    let root = this;
-    let clone = globalThis.document.createElement("lrn-math");
-    root.parentNode.insertBefore(clone, root);
-    clone.innerHTML = this.innerHTML;
-    this.remove();
   }
 }
 

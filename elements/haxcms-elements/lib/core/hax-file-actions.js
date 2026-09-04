@@ -1,7 +1,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-picker/simple-picker.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 
 const SCALE_PRESETS = {
   xs: { width: 200, height: 150, label: "ddd-xs  200\u00d7150" },
@@ -11,11 +11,11 @@ const SCALE_PRESETS = {
   xl: { width: 1200, height: 900, label: "ddd-xl  1200\u00d7900" },
 };
 
-const TRANSFORM_OPTIONS = [
-  [{ alt: "Transform", value: null }],
-  [{ alt: "Convert to JPG", value: "convert-jpg" }],
-  [{ alt: "Sepia", value: "sepia" }],
-  [{ alt: "Black and white", value: "black-and-white" }],
+const TRANSFORM_ITEMS = [
+  { value: "", text: "Choose\u2026" },
+  { value: "convert-jpg", text: "Convert to JPG" },
+  { value: "sepia", text: "Sepia" },
+  { value: "black-and-white", text: "Black and white" },
 ];
 
 class HAXFileActions extends DDD {
@@ -51,35 +51,34 @@ class HAXFileActions extends DDD {
         }
         .acts {
           display: flex;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-1);
           align-items: center;
           flex-wrap: wrap;
         }
-        .acts simple-picker {
-          min-width: 172px;
+        .acts simple-fields-field {
+          --simple-fields-font-size: var(--ddd-font-size-5xs);
+          --simple-fields-select-max-width: 100px;
+          margin: 0;
         }
         .ib {
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-button-border-radius: var(--ddd-radius-xs);
           --simple-icon-button-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-focus-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-navy);
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-          padding: var(--ddd-spacing-2);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          padding: 0;
+          margin: 0;
         }
       `,
     ];
   }
 
-  get scaleOptions() {
-    const current =
-      this.scalePreset && SCALE_PRESETS[this.scalePreset]
-        ? this.scalePreset
-        : "md";
-    const out = [[{ alt: `Scale to ${current}`, value: null }]];
+  get scaleItems() {
+    const out = [{ value: "", text: "Choose\u2026" }];
     Object.keys(SCALE_PRESETS).forEach((key) => {
-      out.push([{ alt: SCALE_PRESETS[key].label, value: key }]);
+      out.push({ value: key, text: SCALE_PRESETS[key].label });
     });
     return out;
   }
@@ -100,35 +99,35 @@ class HAXFileActions extends DDD {
     );
   }
 
-  _resetPicker(e) {
-    const picker = e && e.currentTarget ? e.currentTarget : null;
-    if (picker) picker.value = null;
+  _resetField(e) {
+    const field = e && e.detail ? e.detail : null;
+    if (field) field.value = "";
   }
 
   _onTransformAction(e) {
     const value =
-      e && e.currentTarget && typeof e.currentTarget.value === "string"
-        ? e.currentTarget.value.trim()
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
         : "";
     if (!value || this.busy || !this.canScale) {
-      this._resetPicker(e);
+      this._resetField(e);
       return;
     }
     this._dispatchAction("transform", value);
-    this._resetPicker(e);
+    this._resetField(e);
   }
 
   _onScaleAction(e) {
     const value =
-      e && e.currentTarget && typeof e.currentTarget.value === "string"
-        ? e.currentTarget.value.trim()
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
         : "";
     if (!value || this.busy || !this.canScale) {
-      this._resetPicker(e);
+      this._resetField(e);
       return;
     }
     this._dispatchAction("scale", value);
-    this._resetPicker(e);
+    this._resetField(e);
   }
 
   _onDelete() {
@@ -147,22 +146,22 @@ class HAXFileActions extends DDD {
   render() {
     return html`
       <div class="acts" role="group" aria-label="File actions">
-        <simple-picker
+        <simple-fields-field
           label="Transform"
-          allow-null
-          .options="${TRANSFORM_OPTIONS}"
+          type="select"
+          .itemsList="${TRANSFORM_ITEMS}"
           ?disabled="${this.busy || !this.canScale}"
           @value-changed="${this._onTransformAction}"
         >
-        </simple-picker>
-        <simple-picker
+        </simple-fields-field>
+        <simple-fields-field
           label="Scale"
-          allow-null
-          .options="${this.scaleOptions}"
+          type="select"
+          .itemsList="${this.scaleItems}"
           ?disabled="${this.busy || !this.canScale}"
           @value-changed="${this._onScaleAction}"
         >
-        </simple-picker>
+        </simple-fields-field>
         <simple-icon-button-lite
           class="ib"
           icon="image:rotate-right"

@@ -24,6 +24,12 @@ import {
   sanitizeEmbeddableURL,
   sanitizeURLValue,
 } from "./lib/url.js";
+// Centralized keyboard shortcut registry (shared across haxcms-elements,
+// hax-body, and super-daemon). See lib/keyboardShortcuts.js for the API.
+export {
+  KeyboardShortcutManager,
+  KeyboardShortcutManagerInstance,
+} from "./lib/keyboardShortcuts.js";
 export {
   badURLProtocols,
   copyToClipboard,

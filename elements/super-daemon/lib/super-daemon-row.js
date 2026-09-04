@@ -23,6 +23,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.image = null;
     this.textCharacter = null;
     this.eventName = null;
+    this.shortcut = null;
     this.more = false;
     this.showDetails = false;
     this.value = {};
@@ -49,6 +50,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       more: { type: Boolean },
       showDetails: { type: Boolean },
       eventName: { type: String, attribute: "event-name" },
+      shortcut: { type: String },
       value: { type: Object },
       tags: { type: Array },
       active: { type: Boolean, reflect: true },
@@ -180,8 +182,36 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           text-align: left;
           overflow: hidden;
         }
+        /* Tags are hidden in mini mode (compact) and in the modal/larger
+           view (kept clean so the shortcut chip and label dominate the row).
+           Net: tags never render in Merlin rows. */
         :host([mini]) .tags {
           display: none;
+        }
+        :host(:not([mini])) .tags {
+          display: none;
+        }
+        .shortcut {
+          display: inline-flex;
+          align-items: center;
+          align-self: center;
+          margin-left: var(--ddd-spacing-1);
+          padding: var(--ddd-spacing-1);
+          font-family: sans-serif;
+          font-size: var(--ddd-font-size-6xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: 1;
+          white-space: nowrap;
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-limestoneMaxLight);
+          color: var(--ddd-theme-default-coalyGray);
+          background-color: var(--ddd-theme-default-limestoneGray);
+        }
+        :host([dark]) .shortcut {
+          color: var(--ddd-theme-default-white);
+          background-color: rgba(255, 255, 255, 0.12);
+          border-color: rgba(255, 255, 255, 0.2);
         }
         .label-wrap .action {
           font-size: var(--super-daemon-row-label, 24px);
@@ -350,7 +380,6 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           : ``}
         <div class="label-wrap" part="label-wrap">
           <div class="action" part="action">${this.title}</div>
-          <div class="path" part="path">${this.path}</div>
         </div>
         <div class="tags" part="tags">
           ${this.tags.map(
@@ -362,6 +391,11 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
               ></simple-tag>`,
           )}
         </div>
+        ${this.shortcut
+          ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
+              >${this.shortcut}</kbd
+            >`
+          : ""}
         ${this.more
           ? html`<simple-icon-button
               class="more"

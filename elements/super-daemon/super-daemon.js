@@ -10,6 +10,7 @@ import "./lib/super-daemon-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { KeyboardShortcutManagerInstance } from "@haxtheweb/utils/utils.js";
 
 /**
  * `super-daemon`
@@ -332,13 +333,22 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.value = this.programSearch;
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
+      // Show the loading state immediately so the results area never renders
+      // a stale No results message during the window between launching the
+      // program and the async programResults arriving. The program execution
+      // itself is still deferred (via setTimeout) so setupProgram can wire up
+      // the search input first, but loading must be true up front to keep the
+      // UI in a Loading results state until results land. Without this, the
+      // nested setTimeout(0) then setTimeout(50) chain leaves loading false
+      // while programResults is still empty, so super-daemon-ui render falls
+      // into the no-results branch even though a search is actively running.
+      this.loading = true;
       setTimeout(() => {
         this.shadowRoot
           .querySelector("super-daemon-ui")
           .setupProgram(this.programSearch);
         setTimeout(async () => {
           try {
-            this.loading = true;
             this.programResults = await this._programToRun(
               this.programSearch,
               values,
@@ -464,6 +474,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       if (typeof option.inline === typeof undefined) {
         option.inline = false;
       }
+      // Resolve optional shortcut metadata linking this option to the shared
+      // KeyboardShortcutManager registry. `shortcut` may be a registry id
+      // string (e.g. 'cms-save') or an inline descriptor object. The resolved
+      // human-readable label is stored on option.shortcutLabel for the UI;
+      // both fields are excluded from the search index to preserve existing
+      // search behavior.
+      if (option.shortcut) {
+        option.shortcutLabel = this._resolveShortcutLabel(option.shortcut);
+      }
       // create new object from existing so we can build an index
       // remove icon, image, value, textCharacter, eventName as these are not searchable values
       // then create an idex by making everything else into a space separated string
@@ -473,6 +492,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       delete indexBuilder.textCharacter;
       delete indexBuilder.value;
       delete indexBuilder.eventName;
+      delete indexBuilder.shortcut;
+      delete indexBuilder.shortcutLabel;
       indexBuilder = Object.values(indexBuilder).filter((i) => {
         if (
           !["boolean", "number"].includes(typeof i) &&
@@ -513,6 +534,22 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     }
   }
 
+  /**
+   * Resolve a `shortcut` value on a defineOption into a display label via
+   * the shared KeyboardShortcutManager registry. Accepts a registry id
+   * string or an inline descriptor object. Returns "" when no label resolves
+   * so the UI can treat absent/empty labels uniformly.
+   */
+  _resolveShortcutLabel(shortcut) {
+    if (!shortcut) return "";
+    if (typeof shortcut === "string") {
+      const descriptor = KeyboardShortcutManagerInstance.getById(shortcut);
+      return descriptor
+        ? KeyboardShortcutManagerInstance.getLabel(descriptor)
+        : "";
+    }
+    return KeyboardShortcutManagerInstance.getLabel(shortcut);
+  }
   updateSearchInputViaVoice(input) {
     this.shadowRoot.querySelector("super-daemon-ui").like = input;
     this.shadowRoot.querySelector("super-daemon-ui").focusInput();
@@ -1388,6 +1425,14 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (this.programName && this._programToRun) {
       // Debounce program execution to prevent flickering on rapid input
       clearTimeout(this._programDebounceTimeout);
+      // When the input is cleared, immediately enter loading state so the
+      // UI shows we are re-fetching (the empty/default search) instead of
+      // leaving the previously typed term's results visible through the
+      // entire debounce window. For non-empty typing we keep the prior
+      // results visible until the debounced request fires (smoother UX).
+      if (e.detail.value === "") {
+        this.loading = true;
+      }
       this._programDebounceTimeout = setTimeout(async () => {
         this.loading = true;
         this.programResults = await this._programToRun(

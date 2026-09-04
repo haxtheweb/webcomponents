@@ -20,6 +20,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.t = {
       ...this.t,
       noResultsForThisTerm: this._defaultTextEmpty,
+      typeToSeeResults: "Type something to see results",
       voiceSearch: "Voice search",
       results: "Results",
       loadingResults: "Loading results",
@@ -138,7 +139,14 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         super-daemon-search {
           display: flex;
-          margin: var(--ddd-spacing-4);
+          margin: 0 var(--ddd-spacing-3);
+        }
+        /* Modal (non-mini) Merlin: give the search bar breathing room from
+           the dialog's top edge / cancel button so it lines up consistently
+           with the padded results area below. Mini/wand modes keep their own
+           margins and are unaffected. */
+        :host(:not([mini])) super-daemon-search {
+          margin-top: var(--ddd-spacing-4);
         }
         :host([wand]) super-daemon-search {
           margin: calc(-1 * var(--ddd-spacing-6)) 0 0 0;
@@ -178,11 +186,33 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           font-style: italic;
           margin: var(--ddd-spacing-4);
         }
+        /* Results count footer. Modal (results-stats) and mini
+           (mini-results-counter) share the same Merlin-matched treatment —
+           light-dark limestone/coaly surface, ddd-font-navigation, consistent
+           border-top — so the two read as one component family. Modal is the
+           full "X / Y Results" right-aligned bar; mini is the simplified
+           "X results" centered bar. */
         .results-stats {
-          font-size: 12px;
-          color: var(--simple-colors-default-theme-grey-10, black);
-          padding: var(--ddd-spacing-2);
-          float: right;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          background: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+          border-top: var(--ddd-border-sm) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              rgba(255, 255, 255, 0.15)
+            );
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          text-align: right;
+          display: block;
+          float: none;
         }
         :host([focused][wand]) .results {
           display: block;
@@ -256,7 +286,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             --simple-icon-width: 30px;
           }
           super-daemon-search {
-            margin: var(--ddd-spacing-2);
+            margin: 0 var(--ddd-spacing-2);
           }
           .results-stats {
             display: none;
@@ -296,40 +326,28 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           display: none;
         }
         .mini-results-counter {
-          font-size: 11px;
-          color: var(
-            --ddd-theme-default-keystoneYellow,
-            var(--simple-colors-default-theme-grey-8, #666)
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneGray)
           );
-          padding: var(--ddd-spacing-1);
-          text-align: center;
-          border-top: 1px solid
-            var(
-              --ddd-theme-default-limestoneGray,
-              var(--simple-colors-default-theme-grey-4, #ddd)
+          background: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+          border-top: var(--ddd-border-sm) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              rgba(255, 255, 255, 0.15)
             );
-          background: var(
-            --ddd-theme-default-coalyGray,
-            var(--simple-colors-default-theme-grey-2, #f8f8f8)
-          );
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          text-align: center;
           display: none;
         }
         :host([mini]) .mini-results-counter {
           display: block;
-        }
-        :host([dark][mini]) .mini-results-counter {
-          color: var(
-            --ddd-theme-default-coalyGray,
-            var(--simple-colors-default-theme-grey-4, #ccc)
-          );
-          border-top-color: var(
-            --ddd-theme-default-coalyGray,
-            var(--simple-colors-default-theme-grey-8, #444)
-          );
-          background: var(
-            --ddd-theme-default-slateMaxLight,
-            var(--simple-colors-default-theme-grey-10, #222)
-          );
         }
         :host([mini]) .results {
           padding: 0;
@@ -392,6 +410,25 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             }
           }, 600);
         }
+      }
+      if (
+        propName == "items" &&
+        this.shadowRoot &&
+        !this.mini
+      ) {
+        // lit-virtualizer can fail to stamp rows the first time it mounts
+        // right after the loading/no-results branch unmounts it (it does not
+        // re-measure its viewport until a layout/scroll event). That is why
+        // initial program results (e.g. an empty-param NASA search) load but
+        // never appear, while typing later works: typing keeps loading false
+        // so the virtualizer is never unmounted and updates in place. Nudge
+        // it after paint so a freshly mounted virtualizer measures and stamps.
+        requestAnimationFrame(() => {
+          const v = this.shadowRoot.querySelector("lit-virtualizer");
+          if (v && typeof v.requestUpdate === "function") {
+            v.requestUpdate();
+          }
+        });
       }
       if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
@@ -462,6 +499,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       .tags="${item.tags || []}"
       event-name="${item.eventName}"
       path="${item.path}"
+      shortcut="${item.shortcutLabel || ""}"
       ?more="${item.more && (!this.mini || this.wand)}"
       ?mini="${this.mini}"
       >${item.more ? item.more : nothing}</super-daemon-row
@@ -472,6 +510,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // Set programSearch from the passed parameter if provided
     // This avoids timing issues with property propagation from parent to child
     this.programSearch = initialProgramSearch;
+    // Clear any stale `like` left over from the Merlin typing that selected
+    // this program (e.g. the user typed "nasa" to find "Search NASA").
+    // SimpleFilterMixin filters program results against `where="index"`, but
+    // program result objects do not carry an `index` field, so a stale
+    // non-empty `like` yields zero matches and the results never render.
+    // Programs that supply an initial value (e.g. edit-tags) pass it through
+    // and keep their `like`; only truly-empty launches reset it.
+    if (!initialProgramSearch) {
+      this.like = "";
+    }
     // Robustly pre-fill the search input so programs that pass an initial
     // value (e.g. edit-tags passing the page's current tags) actually display
     // it. The Lit property binding alone is not reliable once the input has
@@ -908,41 +956,44 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         @keydown="${this._resultsKeydown}"
         @super-daemon-row-selected="${this.itemSelected}"
       >
-        ${this.loading
-          ? html`<div class="loading">
-              ${this.t.loadingResults || "Loading results"}..
-            </div>`
-          : html`
-              ${!this.filtered.length || this.filtered.length === 0
-                ? html`<div class="no-results">
-                    ${this.t.noResultsForThisTerm || "No results for this term"}
-                    <div class="slotted"><slot></slot></div>
-                  </div> `
-                : this.mini
-                  ? html`
-                      <div
-                        class="results-list"
-                        role="listbox"
-                        id="results-listbox"
-                        aria-label="${this.t.results || "Results"}"
-                      >
-                        ${this.filtered.map((item, i) =>
-                          this._renderResultRow(item, i),
-                        )}
-                      </div>
-                    `
-                  : html`
-                      <lit-virtualizer
-                        role="listbox"
-                        id="results-listbox"
-                        aria-label="${this.t.results || "Results"}"
-                        scroller
-                        .items=${this.filtered}
-                        .renderItem=${(item, i) =>
-                          this._renderResultRow(item, i)}
-                      ></lit-virtualizer>
-                    `}
-            `}
+        ${this.filtered.length > 0
+          ? this.mini
+            ? html`
+                <div
+                  class="results-list"
+                  role="listbox"
+                  id="results-listbox"
+                  aria-label="${this.t.results || "Results"}"
+                >
+                  ${this.filtered.map((item, i) =>
+                    this._renderResultRow(item, i),
+                  )}
+                </div>
+              `
+            : html`
+                <lit-virtualizer
+                  role="listbox"
+                  id="results-listbox"
+                  aria-label="${this.t.results || "Results"}"
+                  scroller
+                  .items=${this.filtered}
+                  .renderItem=${(item, i) =>
+                    this._renderResultRow(item, i)}
+                ></lit-virtualizer>
+              `
+          : this.loading
+            ? html`<div class="loading">
+                ${this.t.loadingResults || "Loading results"}..
+              </div>`
+            : html`<div class="no-results">
+                ${this.programName &&
+                (this.programSearch || "").trim() === ""
+                  ? this.t.typeToSeeResults ||
+                    "Type something to see results"
+                  : this.t.noResultsForThisTerm ||
+                    "No results for this term"}
+                <div class="slotted"><slot></slot></div>
+              </div> `}
         <div class="results-stats">
           ${this.filtered.length} / ${this.items.length}
           ${this.t.results || "Results"}
