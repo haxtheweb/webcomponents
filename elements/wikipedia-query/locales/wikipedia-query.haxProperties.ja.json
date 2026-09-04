@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "これはさまざまな形式でコンテキスト内にWikipediaの記事を表示できます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "記事名",
+        "description": "Wikipediaで検索する単語。"
+      },
+      {
+        "title": "タイトルを非表示",
+        "description": "記事のタイトルを表示するかどうか。"
+      },
+      {
+        "title": "言語",
+        "description": "記事の言語。",
+        "options": {
+          "en": "英語",
+          "es": "スペイン語",
+          "fr": "フランス語",
+          "de": "ドイツ語",
+          "ja": "日本語"
+        }
+      }
+    ]
+  }
+}

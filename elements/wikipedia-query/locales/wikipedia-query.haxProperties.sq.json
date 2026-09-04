@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ky mund të shfaqë një artikull të Wikipedisë në kontekst në një sërë formatesh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Emri i artikullit",
+        "description": "Fjala për të kërkuar në Wikipedia."
+      },
+      {
+        "title": "Fshih titullin",
+        "description": "Nëse duhet apo jo të shfaqet titulli i artikullit."
+      },
+      {
+        "title": "Gjuha",
+        "description": "Gjuha e artikullit.",
+        "options": {
+          "en": "Anglisht",
+          "es": "Spanjisht",
+          "fr": "Frëngjisht",
+          "de": "Gjermanisht",
+          "ja": "Japonisht"
+        }
+      }
+    ]
+  }
+}

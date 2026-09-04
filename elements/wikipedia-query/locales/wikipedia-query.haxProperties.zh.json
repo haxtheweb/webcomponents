@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "这可以在各种格式中显示维基百科文章。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "文章名称",
+        "description": "要在维基百科中搜索的词。"
+      },
+      {
+        "title": "隐藏标题",
+        "description": "是否显示文章的标题。"
+      },
+      {
+        "title": "语言",
+        "description": "文章的语言。",
+        "options": {
+          "en": "英语",
+          "es": "西班牙语",
+          "fr": "法语",
+          "de": "德语",
+          "ja": "日语"
+        }
+      }
+    ]
+  }
+}

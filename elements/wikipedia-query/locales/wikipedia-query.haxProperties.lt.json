@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Tai gali rodyti Vikipedijos straipsnį kontekste įvairiais formatais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Straipsnio pavadinimas",
+        "description": "Žodis, kurio ieškoti Vikipedijoje."
+      },
+      {
+        "title": "Slėpti pavadinimą",
+        "description": "Ar rodyti straipsnio pavadinimą."
+      },
+      {
+        "title": "Kalba",
+        "description": "Straipsnio kalba.",
+        "options": {
+          "en": "Anglų",
+          "es": "Ispanų",
+          "fr": "Prancūzų",
+          "de": "Vokiečių",
+          "ja": "Japonų"
+        }
+      }
+    ]
+  }
+}

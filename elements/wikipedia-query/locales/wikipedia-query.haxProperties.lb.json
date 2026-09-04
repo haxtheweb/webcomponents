@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dëst kann en Wikipedia-Artikel am Kontext an enger Rei vun Formater uweisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikelnumm",
+        "description": "Wuert fir op Wikipedia ze sichen."
+      },
+      {
+        "title": "Titel verstoppen",
+        "description": "Ob den Titel vum Artikel ugewise gëtt oder net."
+      },
+      {
+        "title": "Sprooch",
+        "description": "D'Sprooch vum Artikel.",
+        "options": {
+          "en": "Englesch",
+          "es": "Spuenesch",
+          "fr": "Franséisch",
+          "de": "Däitsch",
+          "ja": "Japanesch"
+        }
+      }
+    ]
+  }
+}

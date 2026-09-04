@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dette kan vise en Wikipedia-artikel i kontekst i en række formater."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikelnavn",
+        "description": "Ord at søge efter på Wikipedia."
+      },
+      {
+        "title": "Skjul titel",
+        "description": "Om titlen på artiklen skal vises eller ej."
+      },
+      {
+        "title": "Sprog",
+        "description": "Artiklens sprog.",
+        "options": {
+          "en": "Engelsk",
+          "es": "Spansk",
+          "fr": "Fransk",
+          "de": "Tysk",
+          "ja": "Japansk"
+        }
+      }
+    ]
+  }
+}

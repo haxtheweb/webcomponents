@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Bu Vikipediya maqolasini turli formatlarda kontekstda ko'rsatishi mumkin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqola nomi",
+        "description": "Vikipediyada qidirish uchun so'z."
+      },
+      {
+        "title": "Sarlavhani yashirish",
+        "description": "Maqolaning sarlavhasi ko'rsatiladimi yoki yo'qmi."
+      },
+      {
+        "title": "Til",
+        "description": "Maqolaning tili.",
+        "options": {
+          "en": "Ingliz tili",
+          "es": "Ispan tili",
+          "fr": "Fransuz tili",
+          "de": "Nemis tili",
+          "ja": "Yapon tili"
+        }
+      }
+    ]
+  }
+}

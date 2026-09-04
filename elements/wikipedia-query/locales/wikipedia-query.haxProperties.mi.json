@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ka taea te whakaatu i tētahi tuhinga Wikipedia i roto i ngā hōputu rerekē."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ingoa tuhinga",
+        "description": "Te kupu hei rapu i te Wikipedia."
+      },
+      {
+        "title": "Huna te taitara",
+        "description": "Me whakaatu rānei te taitara o te tuhinga."
+      },
+      {
+        "title": "Reo",
+        "description": "Te reo o te tuhinga.",
+        "options": {
+          "en": "Ingarihi",
+          "es": "Pāniora",
+          "fr": "Wīwī",
+          "de": "Tiamana",
+          "ja": "Hapana"
+        }
+      }
+    ]
+  }
+}

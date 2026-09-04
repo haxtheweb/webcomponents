@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Hiki iā kēia ke hōʻike i kekahi ʻatikala Wikipedia ma loko o ke kūlana i nā ʻano like ʻole."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inoa ʻatikala",
+        "description": "Huaʻōlelo e ʻimi ai ma Wikipedia."
+      },
+      {
+        "title": "Hūnā ka poʻo inoa",
+        "description": "Ke hōʻike ʻia ana ka poʻo inoa o ke ʻatikala ʻole paha."
+      },
+      {
+        "title": "ʻŌlelo",
+        "description": "Ka ʻōlelo o ke ʻatikala.",
+        "options": {
+          "en": "Pelekānia",
+          "es": "Kepania",
+          "fr": "Palani",
+          "de": "Kelemānia",
+          "ja": "Iāpana"
+        }
+      }
+    ]
+  }
+}

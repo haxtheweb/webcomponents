@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Hii inaweza kuonyesha makala ya Wikipedia katika muktadha katika muundo tofauti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jina la makala",
+        "description": "Neno la kutafuta kwenye Wikipedia."
+      },
+      {
+        "title": "Ficha kichwa",
+        "description": "Kama kichwa cha makala kionyeshe au la."
+      },
+      {
+        "title": "Lugha",
+        "description": "Lugha ya makala.",
+        "options": {
+          "en": "Kiingereza",
+          "es": "Kihispania",
+          "fr": "Kifaransa",
+          "de": "Kijerumani",
+          "ja": "Kijapani"
+        }
+      }
+    ]
+  }
+}

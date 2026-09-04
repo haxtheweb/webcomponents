@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "다양한 형식으로 위키피디아 문서를 문맥에 맞게 표시할 수 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "문서 이름",
+        "description": "위키피디아에서 검색할 단어입니다."
+      },
+      {
+        "title": "제목 숨기기",
+        "description": "문서의 제목을 표시할지 여부입니다."
+      },
+      {
+        "title": "언어",
+        "description": "문서의 언어입니다.",
+        "options": {
+          "en": "영어",
+          "es": "스페인어",
+          "fr": "프랑스어",
+          "de": "독일어",
+          "ja": "일본어"
+        }
+      }
+    ]
+  }
+}

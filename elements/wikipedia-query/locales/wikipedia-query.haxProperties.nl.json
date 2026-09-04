@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dit kan een Wikipedia-artikel in context weergeven in verschillende formaten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikelnaam",
+        "description": "Woord om op Wikipedia te zoeken."
+      },
+      {
+        "title": "Titel verbergen",
+        "description": "Of de titel van het artikel wel of niet wordt weergegeven."
+      },
+      {
+        "title": "Taal",
+        "description": "De taal van het artikel.",
+        "options": {
+          "en": "Engels",
+          "es": "Spaans",
+          "fr": "Frans",
+          "de": "Duits",
+          "ja": "Japans"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Lokhu kungakhombisa inqaku le-Wikipedia ngaphakathi kwesimo ngokwezinhlobo ezahlukene."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Igama lenqaku",
+        "description": "Igama elingasetshenziselwa ukusesha ku-Wikipedia."
+      },
+      {
+        "title": "Fihla isihloko",
+        "description": "Noma kufanele sikhombiswe isihloko senqaku noma cha."
+      },
+      {
+        "title": "Ulimi",
+        "description": "Ulimi lwesiqikili.",
+        "options": {
+          "en": "isiNgisi",
+          "es": "isiSpanish",
+          "fr": "isiFulentshi",
+          "de": "isiJalimani",
+          "ja": "isiJaphani"
+        }
+      }
+    ]
+  }
+}

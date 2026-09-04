@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Això pot mostrar un article de la Viquipèdia en context en una varietat de formats."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nom de l'article",
+        "description": "Paraula per cercar a la Viquipèdia."
+      },
+      {
+        "title": "Amaga el títol",
+        "description": "Si s'ha de renderitzar el títol de l'article o no."
+      },
+      {
+        "title": "Idioma",
+        "description": "L'idioma de l'article.",
+        "options": {
+          "en": "Anglès",
+          "es": "Espanyol",
+          "fr": "Francès",
+          "de": "Alemany",
+          "ja": "Japonès"
+        }
+      }
+    ]
+  }
+}

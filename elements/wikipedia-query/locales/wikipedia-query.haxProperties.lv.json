@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Šis var parādīt Vikipēdijas rakstu kontekstā dažādos formātos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Raksta nosaukums",
+        "description": "Vārds, ko meklēt Vikipēdijā."
+      },
+      {
+        "title": "Slēpt nosaukumu",
+        "description": "Vai rādīt raksta nosaukumu."
+      },
+      {
+        "title": "Valoda",
+        "description": "Raksta valoda.",
+        "options": {
+          "en": "Angļu",
+          "es": "Spāņu",
+          "fr": "Franču",
+          "de": "Vācu",
+          "ja": "Japāņu"
+        }
+      }
+    ]
+  }
+}

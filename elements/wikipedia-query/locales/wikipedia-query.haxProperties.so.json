@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Kani waxa uu ku bandhigi karaa maqaal Wikipedia ah oo kontekst ah siyaabo kala duwan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Magaca maqaalka",
+        "description": "Erey aad Wikipedia u raadinayso."
+      },
+      {
+        "title": "Qari cinwaanka",
+        "description": "Haddii ay cinwaanka maqaalka la bandhiginayo iyo in kale."
+      },
+      {
+        "title": "Luqadda",
+        "description": "Luqadda maqaalka.",
+        "options": {
+          "en": "Ingiriis",
+          "es": "Isbaanish",
+          "fr": "Faransiis",
+          "de": "Jarmal",
+          "ja": "Jabaanis"
+        }
+      }
+    ]
+  }
+}

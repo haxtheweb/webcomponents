@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "See saab kuvada Wikipedia artiklit kontekstis mitmesugustes vormingutes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikli nimi",
+        "description": "Sõna, mida otsida Wikipediast."
+      },
+      {
+        "title": "Peida pealkiri",
+        "description": "Kas kuvada artikli pealkiri või mitte."
+      },
+      {
+        "title": "Keel",
+        "description": "Artikli keel.",
+        "options": {
+          "en": "Inglise",
+          "es": "Hispaania",
+          "fr": "Prantsuse",
+          "de": "Saksa",
+          "ja": "Jaapani"
+        }
+      }
+    ]
+  }
+}

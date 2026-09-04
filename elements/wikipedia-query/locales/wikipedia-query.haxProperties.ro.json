@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Acesta poate afișa un articol Wikipedia în context într-o varietate de formate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numele articolului",
+        "description": "Cuvânt de căutat pe Wikipedia."
+      },
+      {
+        "title": "Ascunde titlul",
+        "description": "Dacă se afișează sau nu titlul articolului."
+      },
+      {
+        "title": "Limba",
+        "description": "Limba articolului.",
+        "options": {
+          "en": "Engleză",
+          "es": "Spaniolă",
+          "fr": "Franceză",
+          "de": "Germană",
+          "ja": "Japoneză"
+        }
+      }
+    ]
+  }
+}

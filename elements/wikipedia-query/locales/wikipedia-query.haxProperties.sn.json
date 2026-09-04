@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Iyi inogona kuratidza chinyorwa cheWikipedia muchidengu ngefomati dzakasiyana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita rechinyorwa",
+        "description": "Shoko rekutsvaka paWikipedia."
+      },
+      {
+        "title": "Vanza musoro",
+        "description": "Kana musoro wechinyorwa unofanirwa kuratidzwa kana kwete."
+      },
+      {
+        "title": "Mutaura",
+        "description": "Mutaura wechinyorwa.",
+        "options": {
+          "en": "Chirungu",
+          "es": "Chisipeini",
+          "fr": "Chifurenji",
+          "de": "Chijemani",
+          "ja": "Chijapani"
+        }
+      }
+    ]
+  }
+}

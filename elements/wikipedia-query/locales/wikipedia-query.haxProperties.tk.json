@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Bu Wikipediýanyň makalasyny dürli formatlarda kontekstde görkezip biler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Makalanyň ady",
+        "description": "Wikipediýada gözlemek üçin söz."
+      },
+      {
+        "title": "Sözbaşy gizle",
+        "description": "Makalanyň sözbaşysyny görkezmeli ýa-da ýok."
+      },
+      {
+        "title": "Dil",
+        "description": "Makalanyň dili.",
+        "options": {
+          "en": "Iňlis",
+          "es": "Ispan",
+          "fr": "Fransuz",
+          "de": "Nemes",
+          "ja": "Ýapon"
+        }
+      }
+    ]
+  }
+}

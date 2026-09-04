@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Questo può visualizzare un articolo di Wikipedia in contesto in diversi formati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome dell'articolo",
+        "description": "Parola da cercare su Wikipedia."
+      },
+      {
+        "title": "Nascondi titolo",
+        "description": "Se mostrare o meno il titolo dell'articolo."
+      },
+      {
+        "title": "Lingua",
+        "description": "La lingua dell'articolo.",
+        "options": {
+          "en": "Inglese",
+          "es": "Spagnolo",
+          "fr": "Francese",
+          "de": "Tedesco",
+          "ja": "Giapponese"
+        }
+      }
+    ]
+  }
+}

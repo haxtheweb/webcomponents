@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Is féidir leis alt Vicipéide a thaispeáint i gcomhthéacs i raon formátí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ainm an ailt",
+        "description": "Focal chun cuardach a dhéanamh ar Vicipéid."
+      },
+      {
+        "title": "Folaigh an teideal",
+        "description": "Cé acu teideal an ailt a thaispeáint nó nach bhfuil."
+      },
+      {
+        "title": "Teanga",
+        "description": "Teanga an ailt.",
+        "options": {
+          "en": "Béarla",
+          "es": "Spáinnis",
+          "fr": "Fraincis",
+          "de": "Gearmáinis",
+          "ja": "Seapáinis"
+        }
+      }
+    ]
+  }
+}

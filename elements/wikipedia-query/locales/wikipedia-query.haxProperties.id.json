@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ini dapat menampilkan artikel Wikipedia dalam konteks dalam berbagai format."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nama artikel",
+        "description": "Kata untuk dicari di Wikipedia."
+      },
+      {
+        "title": "Sembunyikan judul",
+        "description": "Apakah akan menampilkan judul artikel atau tidak."
+      },
+      {
+        "title": "Bahasa",
+        "description": "Bahasa artikel.",
+        "options": {
+          "en": "Inggris",
+          "es": "Spanyol",
+          "fr": "Prancis",
+          "de": "Jerman",
+          "ja": "Jepang"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ev dikare gotarekî Wîkîpediyayê di formatên cuda de nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navê gotarê",
+        "description": "Peyva ku were lêgerîn di Wîkîpediyayê de."
+      },
+      {
+        "title": "Sernav veşêre",
+        "description": "Ka sernavê gotarê were nîşandan yan na."
+      },
+      {
+        "title": "Ziman",
+        "description": "Zimanê gotarê.",
+        "options": {
+          "en": "Îngilîzî",
+          "es": "Spanyolî",
+          "fr": "Frensî",
+          "de": "Almanî",
+          "ja": "Japonî"
+        }
+      }
+    ]
+  }
+}

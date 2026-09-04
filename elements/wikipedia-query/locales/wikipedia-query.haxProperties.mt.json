@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dan jista' juri artiklu ta' Wikipedia f'diversi formati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isem l-artiklu",
+        "description": "Kliem biex tfittex f'Wikipedia."
+      },
+      {
+        "title": "Aħbi t-titlu",
+        "description": "Jekk titlu tal-artiklu għandu jintwera jew le."
+      },
+      {
+        "title": "Lingwa",
+        "description": "Il-lingwa tal-artiklu.",
+        "options": {
+          "en": "Ingliż",
+          "es": "Spanjol",
+          "fr": "Franċiż",
+          "de": "Ġermaniż",
+          "ja": "Ġappuniż"
+        }
+      }
+    ]
+  }
+}

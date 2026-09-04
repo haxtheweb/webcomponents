@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ez egy wikipédia cikket jeleníthet meg kontextusban különböző formátumokban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cikk neve",
+        "description": "Keresendő szó a Wikipédián."
+      },
+      {
+        "title": "Cím elrejtése",
+        "description": "Megjelenjen-e a cikk címe vagy sem."
+      },
+      {
+        "title": "Nyelv",
+        "description": "A cikk nyelve.",
+        "options": {
+          "en": "Angol",
+          "es": "Spanyol",
+          "fr": "Francia",
+          "de": "Német",
+          "ja": "Japán"
+        }
+      }
+    ]
+  }
+}

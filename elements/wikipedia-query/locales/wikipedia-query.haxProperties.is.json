@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Þetta getur birt Wikipedia-grein í samhengi í ýmsum sniðum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti greinar",
+        "description": "Orð til að leita á Wikipedia."
+      },
+      {
+        "title": "Fela titil",
+        "description": "Hvort eigi að birta titil greinar eða ekki."
+      },
+      {
+        "title": "Tungumál",
+        "description": "Tungumál greinar.",
+        "options": {
+          "en": "Enska",
+          "es": "Spænska",
+          "fr": "Franska",
+          "de": "Þýska",
+          "ja": "Japanska"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dit kin in Wikipedia-artikel yn kontekst sjen litte yn ferskate formaten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikelnamme",
+        "description": "Wurd om op Wikipedia te sykjen."
+      },
+      {
+        "title": "Ferbergje titel",
+        "description": "Of de titel fan it artikel werjûn wurde moat of net."
+      },
+      {
+        "title": "Taal",
+        "description": "De taal fan it artikel.",
+        "options": {
+          "en": "Ingelsk",
+          "es": "Spaansk",
+          "fr": "Frânsk",
+          "de": "Dútsk",
+          "ja": "Japansk"
+        }
+      }
+    ]
+  }
+}

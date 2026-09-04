@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Tämä voi näyttää Wikipedia-artikkelin kontekstissa useissa eri muodoissa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikkelin nimi",
+        "description": "Wikipediasta haettava sana."
+      },
+      {
+        "title": "Piilota otsikko",
+        "description": "Näytetäänkö artikkelin otsikko vai ei."
+      },
+      {
+        "title": "Kieli",
+        "description": "Artikkelin kieli.",
+        "options": {
+          "en": "Englanti",
+          "es": "Espanja",
+          "fr": "Ranska",
+          "de": "Saksa",
+          "ja": "Japani"
+        }
+      }
+    ]
+  }
+}

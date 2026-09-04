@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Hetta kann vísa eina Wikipedia grein í samanhangi í ymsum sniðum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Greinarheiti",
+        "description": "Orð at leita eftir á Wikipedia."
+      },
+      {
+        "title": "Fjal yvirskrift",
+        "description": "Hvørt yvirskriftin á greinini skal vístast ella ikki."
+      },
+      {
+        "title": "Mál",
+        "description": "Málið á greinini.",
+        "options": {
+          "en": "Enskt",
+          "es": "Spanskt",
+          "fr": "Franskt",
+          "de": "Týskt",
+          "ja": "Japanskt"
+        }
+      }
+    ]
+  }
+}

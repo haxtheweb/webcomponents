@@ -5,17 +5,18 @@
   },
   "settings": {
     "configure": [
-      {
-        "title": "Nombre del artículo",
-        "description": "Palabra para buscar en wikipedia."
-      },
-      {
-        "title": "Ocultar título",
-        "description": "Si reproducir o no el título del artículo."
-      },
+      null,
+      null,
       {
         "title": "Idioma",
-        "description": "El idioma del artículo."
+        "description": "El idioma del artículo.",
+        "options": {
+          "en": "Inglés",
+          "es": "Español",
+          "fr": "Francés",
+          "de": "Alemán",
+          "ja": "Japonés"
+        }
       }
     ]
   },

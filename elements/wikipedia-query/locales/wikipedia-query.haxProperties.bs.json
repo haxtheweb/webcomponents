@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ovo može prikazati članak s Wikipedije u kontekstu u različitim formatima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naziv članka",
+        "description": "Riječ za pretragu na Wikipediji."
+      },
+      {
+        "title": "Sakrij naslov",
+        "description": "Da li prikazati naslov članka ili ne."
+      },
+      {
+        "title": "Jezik",
+        "description": "Jezik članka.",
+        "options": {
+          "en": "Engleski",
+          "es": "Španski",
+          "fr": "Francuski",
+          "de": "Njemački",
+          "ja": "Japanski"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Kun barreeffama Wikipedia adda addaa haala adda addaatiin agarsiisuu danda'a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa barreeffamaa",
+        "description": "Jechoota Wikipedia irratti barbaadu."
+      },
+      {
+        "title": "Mata duree dhoksuu",
+        "description": "Mata duree barreeffama agarsiisuu ykn dhoksuu."
+      },
+      {
+        "title": "Afaan",
+        "description": "Afaan barreeffamaa.",
+        "options": {
+          "en": "Ingliffa",
+          "es": "Afaan Ispeen",
+          "fr": "Afaan Faransaay",
+          "de": "Afaan Jarmanii",
+          "ja": "Afaan Japanii"
+        }
+      }
+    ]
+  }
+}

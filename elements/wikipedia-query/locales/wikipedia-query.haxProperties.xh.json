@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Oku kungenisa inqaku le-Wikipedia ngokwezinto ezahlukeneyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Igama lenqaku",
+        "description": "Igama eliya kusingelwa kwi-Wikipedia."
+      },
+      {
+        "title": "Fihla isihloko",
+        "description": "Nokuba ngaba siveza isihloko senqaku na."
+      },
+      {
+        "title": "Ulwimi",
+        "description": "Ulwimi lwenqaku.",
+        "options": {
+          "en": "isiNgesi",
+          "es": "isiSpanish",
+          "fr": "isiFrentshi",
+          "de": "isiJamani",
+          "ja": "isiJapanese"
+        }
+      }
+    ]
+  }
+}

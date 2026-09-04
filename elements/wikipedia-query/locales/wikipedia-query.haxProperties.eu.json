@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Honek Wikipedia artikulu bat testuinguruan erakutsi dezake hainbat formatotan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikuluaren izena",
+        "description": "Wikipedian bilatzeko hitza."
+      },
+      {
+        "title": "Ezkutatu izenburua",
+        "description": "Artikuluaren izenburua erakutsi ala ez."
+      },
+      {
+        "title": "Hizkuntza",
+        "description": "Artikuluaren hizkuntza.",
+        "options": {
+          "en": "Ingelesa",
+          "es": "Gaztelania",
+          "fr": "Frantsesa",
+          "de": "Alemana",
+          "ja": "Japoniera"
+        }
+      }
+    ]
+  }
+}

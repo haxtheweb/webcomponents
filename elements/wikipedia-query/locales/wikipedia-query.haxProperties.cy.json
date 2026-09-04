@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Gall hwn ddangos erthygl Wicipedia mewn cyd-destun mewn amrywiaeth o ffurfiau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Enw'r erthygl",
+        "description": "Gair i'w chwilio ar Wicipedia."
+      },
+      {
+        "title": "Cuddio'r teitl",
+        "description": "A ddylid rendro teitl yr erthygl ai peidio."
+      },
+      {
+        "title": "Iaith",
+        "description": "Iaith yr erthygl.",
+        "options": {
+          "en": "Saesneg",
+          "es": "Sbaeneg",
+          "fr": "Ffrangeg",
+          "de": "Almaeneg",
+          "ja": "Siapaneg"
+        }
+      }
+    ]
+  }
+}

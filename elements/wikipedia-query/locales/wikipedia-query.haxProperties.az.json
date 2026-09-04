@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Bu, Vikipediya məqaləsini müxtəlif formatlarda kontekstdə göstərə bilər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Məqalə adı",
+        "description": "Vikipediyada axtarılacaq söz."
+      },
+      {
+        "title": "Başlığı gizlət",
+        "description": "Məqalənin başlığının göstərilib-göstərilməməsi."
+      },
+      {
+        "title": "Dil",
+        "description": "Məqalənin dili.",
+        "options": {
+          "en": "İngilis",
+          "es": "İspan",
+          "fr": "Fransız",
+          "de": "Alman",
+          "ja": "Yapon"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Quessu pò mostra un articulu di Wikipedia in cuntestu in una varietà di formati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome di l'articulu",
+        "description": "Parolla da cercà in Wikipedia."
+      },
+      {
+        "title": "Nasconde u titulu",
+        "description": "Se rende u titulu di l'articulu o no."
+      },
+      {
+        "title": "Lingua",
+        "description": "A lingua di l'articulu.",
+        "options": {
+          "en": "Inglese",
+          "es": "Spagnolu",
+          "fr": "Francese",
+          "de": "Tedescu",
+          "ja": "Giappunese"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Điều này có thể hiển thị một bài viết Wikipedia trong ngữ cảnh ở nhiều định dạng khác nhau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tên bài viết",
+        "description": "Từ để tìm kiếm trên Wikipedia."
+      },
+      {
+        "title": "Ẩn tiêu đề",
+        "description": "Có hiển thị tiêu đề của bài viết hay không."
+      },
+      {
+        "title": "Ngôn ngữ",
+        "description": "Ngôn ngữ của bài viết.",
+        "options": {
+          "en": "Tiếng Anh",
+          "es": "Tiếng Tây Ban Nha",
+          "fr": "Tiếng Pháp",
+          "de": "Tiếng Đức",
+          "ja": "Tiếng Nhật"
+        }
+      }
+    ]
+  }
+}

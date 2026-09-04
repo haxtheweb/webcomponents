@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Maaari itong magpakita ng artikulo ng Wikipedia sa konteksto sa iba't ibang format."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pangalan ng artikulo",
+        "description": "Salitang hahanapin sa Wikipedia."
+      },
+      {
+        "title": "Itago ang pamagat",
+        "description": "Kung ipapakita o hindi ang pamagat ng artikulo."
+      },
+      {
+        "title": "Wika",
+        "description": "Wika ng artikulo.",
+        "options": {
+          "en": "Ingles",
+          "es": "Espanyol",
+          "fr": "Pranses",
+          "de": "Aleman",
+          "ja": "Hapones"
+        }
+      }
+    ]
+  }
+}

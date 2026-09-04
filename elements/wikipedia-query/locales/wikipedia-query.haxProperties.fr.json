@@ -5,17 +5,18 @@
   },
   "settings": {
     "configure": [
-      {
-        "title": "nom d'article",
-        "description": "Mot à rechercher sur wikipedia."
-      },
-      {
-        "title": "Masquer le titre",
-        "description": "Rendre ou non le titre de l'article."
-      },
+      null,
+      null,
       {
         "title": "Langue",
-        "description": "La langue de l'article."
+        "description": "La langue de l'article.",
+        "options": {
+          "en": "Anglais",
+          "es": "Espagnol",
+          "fr": "Français",
+          "de": "Allemand",
+          "ja": "Japonais"
+        }
       }
     ]
   },

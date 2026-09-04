@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Toto môže zobraziť článok z Wikipédie v kontexte v rôznych formátoch."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov článku",
+        "description": "Slovo, ktoré sa má vyhľadať na Wikipédii."
+      },
+      {
+        "title": "Skryť názov",
+        "description": "Či sa má vykresliť názov článku."
+      },
+      {
+        "title": "Jazyk",
+        "description": "Jazyk článku.",
+        "options": {
+          "en": "Angličtina",
+          "es": "Španielčina",
+          "fr": "Francúzština",
+          "de": "Nemčina",
+          "ja": "Japončina"
+        }
+      }
+    ]
+  }
+}

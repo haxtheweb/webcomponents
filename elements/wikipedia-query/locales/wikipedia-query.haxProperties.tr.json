@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Bu, bir Wikipedia makalesini çeşitli biçimlerde bağlam içinde görüntüleyebilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Makale adı",
+        "description": "Wikipedia'da aramak için kelime."
+      },
+      {
+        "title": "Başlığı gizle",
+        "description": "Makalenin başlığının görüntülenip görüntülenmeyeceği."
+      },
+      {
+        "title": "Dil",
+        "description": "Makalenin dili.",
+        "options": {
+          "en": "İngilizce",
+          "es": "İspanyolca",
+          "fr": "Fransızca",
+          "de": "Almanca",
+          "ja": "Japonca"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Dies kann einen Wikipedia-Artikel im Kontext in einer Vielzahl von Formaten anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikelname",
+        "description": "Wort, nach dem auf Wikipedia gesucht werden soll."
+      },
+      {
+        "title": "Titel ausblenden",
+        "description": "Ob der Titel des Artikels angezeigt werden soll oder nicht."
+      },
+      {
+        "title": "Sprache",
+        "description": "Die Sprache des Artikels.",
+        "options": {
+          "en": "Englisch",
+          "es": "Spanisch",
+          "fr": "Französisch",
+          "de": "Deutsch",
+          "ja": "Japanisch"
+        }
+      }
+    ]
+  }
+}

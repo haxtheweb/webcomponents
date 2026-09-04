@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Wannan yana iya nuna wata maƙala ta Wikipedia a cikin yanayi ta hanyoyi daban-daban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sunan maƙala",
+        "description": "Kalmar da za a bincika a Wikipedia."
+      },
+      {
+        "title": "Ɓoye take",
+        "description": "Ko za a nuna take maƙalar ko a'a."
+      },
+      {
+        "title": "Yare",
+        "description": "Yaren maƙalar.",
+        "options": {
+          "en": "Turanci",
+          "es": "Sifaniyanci",
+          "fr": "Faransanci",
+          "de": "Jamusanci",
+          "ja": "Japananci"
+        }
+      }
+    ]
+  }
+}

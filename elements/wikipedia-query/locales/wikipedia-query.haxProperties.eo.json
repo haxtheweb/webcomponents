@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Ĉi tio povas montri vikipedian artikolon en kunteksto en diversaj formatoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Artikola nomo",
+        "description": "Vorto por serĉi en Vikipedio."
+      },
+      {
+        "title": "Kaŝi titolon",
+        "description": "Ĉu montri la titolon de la artikolo aŭ ne."
+      },
+      {
+        "title": "Lingvo",
+        "description": "La lingvo de la artikolo.",
+        "options": {
+          "en": "Angla",
+          "es": "Hispana",
+          "fr": "Franca",
+          "de": "Germana",
+          "ja": "Japana"
+        }
+      }
+    ]
+  }
+}

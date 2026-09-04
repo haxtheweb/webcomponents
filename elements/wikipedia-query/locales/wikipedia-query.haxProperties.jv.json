@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Iki bisa nuduhake artikel Wikipedia ing konteks ing maneka format."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jeneng artikel",
+        "description": "Tembung kanggo digoleki ing Wikipedia."
+      },
+      {
+        "title": "Uculake judhul",
+        "description": "Preduli arep nampilake judhul artikel utawa ora."
+      },
+      {
+        "title": "Basa",
+        "description": "Basa artikel.",
+        "options": {
+          "en": "Inggris",
+          "es": "Spanyol",
+          "fr": "Prancis",
+          "de": "Jerman",
+          "ja": "Jepang"
+        }
+      }
+    ]
+  }
+}

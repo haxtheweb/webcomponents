@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Kóva ikatu ohechauka peteĩ Wikipedia ñe'ẽryru ojehúpe heta hendáicha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ñe'ẽryru réra",
+        "description": "Ñe'ẽ ehekava'erã Wikipediápe."
+      },
+      {
+        "title": "Mokañy téra",
+        "description": "Ojehechaukava'erãpa ñe'ẽryru téra."
+      },
+      {
+        "title": "Ñe'ẽ",
+        "description": "Ñe'ẽryru ñe'ẽ.",
+        "options": {
+          "en": "Inglyaterrañe'ẽ",
+          "es": "Epañañe'ẽ",
+          "fr": "Hyãsiañe'ẽ",
+          "de": "Alemañañe'ẽ",
+          "ja": "Hapõñe'ẽ"
+        }
+      }
+    ]
+  }
+}

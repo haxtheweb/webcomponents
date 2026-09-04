@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Iyi itha kuonetsa nkhani ya Wikipedia m'masamu osiyanasiyana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dzina la nkhani",
+        "description": "Mawu ofufuza pa Wikipedia."
+      },
+      {
+        "title": "Bisa mutu",
+        "description": "Kusiya kuti mutu wa nkhani uwonetsedwe kapena ayi."
+      },
+      {
+        "title": "Chiyankhulo",
+        "description": "Chiyankhulo cha nkhaniyo.",
+        "options": {
+          "en": "Chingerezi",
+          "es": "Chisipani",
+          "fr": "Chifalanji",
+          "de": "Chijalimani",
+          "ja": "Chijapani"
+        }
+      }
+    ]
+  }
+}

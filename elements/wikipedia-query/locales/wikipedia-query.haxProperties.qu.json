@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Kayqa achka formatukunapi Wikipedia willata rikuchiyta atin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Willapaq sutin",
+        "description": "Wikipipi ariykachaypaq rimay."
+      },
+      {
+        "title": "Sutita pakay",
+        "description": "Willapaq sutin rikuchikunmanchú icha manachu."
+      },
+      {
+        "title": "Rimay",
+        "description": "Willapaq rimaynin.",
+        "options": {
+          "en": "Inlish simi",
+          "es": "Ispaña simi",
+          "fr": "Phransis simi",
+          "de": "Aliman simi",
+          "ja": "Nihun simi"
+        }
+      }
+    ]
+  }
+}

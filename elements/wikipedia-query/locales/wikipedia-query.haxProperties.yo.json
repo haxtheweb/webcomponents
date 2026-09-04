@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Eyi le ṣe àfihàn àyọkà Wikipedia ní àyíká ní àwọn ọ̀nà oríṣiríṣi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Orúkọ àyọkà",
+        "description": "Ọ̀rọ̀ láti wá lórí Wikipedia."
+      },
+      {
+        "title": "Fi àkọlé pamọ́",
+        "description": "Bóyá láti ṣe àfihàn àkọlé àyọkà tàbí bẹ́ẹ̀ kọ́."
+      },
+      {
+        "title": "Èdè",
+        "description": "Èdè àyọkà náà.",
+        "options": {
+          "en": "Gẹ̀ẹ́sì",
+          "es": "Sipáníṣì",
+          "fr": "Faransé",
+          "de": "Jámánì",
+          "ja": "Jápánì"
+        }
+      }
+    ]
+  }
+}

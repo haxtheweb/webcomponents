@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Wikipedia",
+    "description": "Nke a nwere ike igosi ederede Wikipedia n'ime ọnụọgụ n'ụdị dị iche iche."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha ederede",
+        "description": "Okwu iji chọọ na Wikipedia."
+      },
+      {
+        "title": "Zo aha",
+        "description": "Ma ọ gosiri aha ederede ma ọ bụ na ọ gaghị."
+      },
+      {
+        "title": "Asụsụ",
+        "description": "Asụsụ ederede.",
+        "options": {
+          "en": "Bekee",
+          "es": "Spenịsh",
+          "fr": "Fụrench",
+          "de": "Jamanị",
+          "ja": "Japanịs"
+        }
+      }
+    ]
+  }
+}
