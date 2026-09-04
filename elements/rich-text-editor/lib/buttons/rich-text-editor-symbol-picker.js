@@ -3,26 +3,26 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
-import "@haxtheweb/simple-picker/lib/simple-symbol-picker.js";
+import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-symbol-picker`
- * a symbol picker for the rich-text-editor
+ * a symbol button for the rich-text-editor that opens inline Merlin's
+ * "Insert symbol" program at the cursor instead of rendering a full option
+ * grid. Tag name is preserved so existing toolbar configs keep working.
  *
  * @customElement
  * @lit-html
  * @lit-element
- * @extends RichTextEditorPickerBehaviors
+ * @extends RichTextEditorButtonBehaviors
  * @extends LitElement
  * @element rich-text-editor-symbol-picker
  * @demo ./demo/buttons.html
  */
-class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
+class RichTextEditorSymbolPicker extends RichTextEditorButtonBehaviors(
   LitElement,
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
-   *
    */
   static get tag() {
     return "rich-text-editor-symbol-picker";
@@ -30,42 +30,13 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
 
   // render function for template
   render() {
-    return html`
-      <simple-symbol-picker
-        id="button"
-        ?allow-null="${this.allowNull}"
-        class="rtebutton ${this.labelVisibleClass}-label ${this.toggled
-          ? "toggled"
-          : ""}"
-        .controls="${super.controls}"
-        ?disabled="${this.disabled}"
-        @keydown="${this._pickerFocus}"
-        .label="${this.currentLabel}"
-        @mouseover="${this._pickerFocus}"
-        .symbol-types="${this.symbolTypes}"
-        tabindex="0"
-        title-as-html
-        ?toggled="${this.toggled}"
-        @value-changed="${this._pickerChange}"
-      >
-      </simple-symbol-picker>
-      ${super.tooltipTemplate}
-    `;
+    return super.render();
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-
-      /**
-       * Symbol types to include
-       */
-      symbolTypes: {
-        name: "symbolTypes",
-        type: Array,
-        attribute: "symbol-types",
-      },
     };
   }
 
@@ -73,17 +44,63 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
     super();
     this.icon = "editor:functions";
     this.label = "Insert symbol";
-    this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
     this.command = "insertHTML";
+    this.tagsList = "";
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
-   * since simple-symbol-picker already handles options
-   *
-   * @memberof RichTextEditorSymbolPicker
+   * Override the click handler so the button opens inline Merlin's
+   * "Insert symbol" program at the RTE cursor instead of running an
+   * execCommand. HAXStore listens for the event and opens the program.
    */
-  _setOptions() {}
+  _handleClick(e) {
+    if (this.disabled) {
+      return;
+    }
+    this._openInlineProgram(
+      "insert-symbol",
+      "Insert symbol",
+      "Search for a symbol",
+    );
+  }
+
+  /**
+   * Dispatch a bubbling event with the RTE's preserved range/selection/target
+   * so HAXStore can open the inline Merlin program without rich-text-editor
+   * depending on hax-body (which would be a circular import).
+   */
+  _openInlineProgram(machineName, name, placeholder) {
+    const range = this.range;
+    const target =
+      this.target ||
+      (this.__highlight && this.__highlight.parentNode);
+    if (!range || !target) {
+      return;
+    }
+    const selection = globalThis.getSelection();
+    try {
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } catch (err) {
+      console.warn(err);
+      return;
+    }
+    this.dispatchEvent(
+      new CustomEvent("rich-text-editor-open-inline-program", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          machineName: machineName,
+          name: name,
+          placeholder: placeholder,
+          range: range,
+          selection: selection,
+          target: target,
+        },
+      }),
+    );
+  }
 }
 globalThis.customElements.define(
   RichTextEditorSymbolPicker.tag,

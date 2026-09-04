@@ -3227,6 +3227,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "hax-refresh-tray-form": "refreshActiveNodeForm",
       "rich-text-editor-prompt-open": "_richTextEditorPromptOpen",
       "rich-text-editor-prompt-confirm": "_richTextEditorPromptConfirm",
+      "rich-text-editor-open-inline-program": "_handleRteInlineProgram",
     };
     // prevent leaving if we are in editMode
     globalThis.onbeforeunload = (e) => {
@@ -3587,22 +3588,167 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       array.shift(); // Remove the first element (oldest)
     }
   }
+  /**
+   * Open an inline Merlin program at the cursor. Used by the `:: `/`::: `
+   * inline-token trigger in hax-body (which strips the token first) and by
+   * the rich-text-editor emoji/symbol toolbar buttons (no strip). `range`
+   * should be collapsed at the insertion point; `token` is the string to
+   * restore on cancel (e.g. ":: "), or null for the toolbar-button path.
+   * Captures the range/selection/activeNode onto SuperDaemonInstance and
+   * sets `inlineTextInsert` so `_insertTextResult` inserts at the cursor
+   * instead of end-of-node.
+   */
+  _openInlineProgramAtCursor({
+    machineName,
+    name,
+    placeholder,
+    range,
+    selection,
+    activeBlock,
+    token = null,
+  }) {
+    if (!range || !selection || !activeBlock || !machineName) {
+      return false;
+    }
+    // The caller is responsible for stripping any inline token (e.g. ":: ")
+    // before calling; `range` should be collapsed at the insertion point.
+    // `token` is the string to restore on cancel (e.g. ":: "), or null for
+    // the toolbar-button path where nothing was stripped.
+    SuperDaemonInstance.activeRange = range.cloneRange();
+    SuperDaemonInstance.activeSelection = selection;
+    SuperDaemonInstance.activeNode = activeBlock;
+    SuperDaemonInstance.mini = true;
+    SuperDaemonInstance.inlineMode = true;
+    SuperDaemonInstance.inlineTextInsert = true;
+    SuperDaemonInstance.__inlineShortcutToken = token || null;
+    SuperDaemonInstance.runProgram(
+      "",
+      "/",
+      {},
+      machineName,
+      name,
+      "",
+      placeholder,
+    );
+    SuperDaemonInstance.open();
+    return true;
+  }
+  /**
+   * Find the innermost contenteditable element containing the given range's
+   * start point. Used by _insertTextResult (inline-token / RTE-button paths)
+   * to focus the correct editable before restoring the selection and
+   * inserting, and by the RTE toolbar handler to position Merlin at the
+   * active element instead of the rich-text-editor wrapper.
+   */
+  __editableForRange(range) {
+    if (!range) return null;
+    let node = range.startContainer;
+    if (node && node.nodeType === globalThis.Node.TEXT_NODE) {
+      node = node.parentElement || node.parentNode;
+    }
+    while (node && node !== globalThis.document.body) {
+      if (node.isContentEditable) return node;
+      node = node.parentNode;
+    }
+    return null;
+  }
+  /**
+   * Handle a rich-text-editor toolbar button (emoji/symbol) requesting an
+   * inline Merlin program at the RTE cursor. rich-text-editor cannot import
+   * HAXStore (hax-body depends on rich-text-editor), so it dispatches a
+   * bubbling event; this handler routes it through the shared
+   * _openInlineProgramAtCursor helper with no token (button path = no strip).
+   */
+  _handleRteInlineProgram(e) {
+    const detail = e.detail;
+    if (
+      !detail ||
+      !detail.range ||
+      !detail.target ||
+      !detail.machineName
+    ) {
+      return;
+    }
+    // Position Merlin at the contenteditable block containing the cursor
+    // (the "active element") rather than the rich-text-editor wrapper, and
+    // align HAXStore.activeNode so the insert path focuses the correct
+    // editable. Falls back to the RTE target if no contenteditable is found.
+    const activeBlock = this.__editableForRange(detail.range) || detail.target;
+    this.activeNode = activeBlock;
+    this._openInlineProgramAtCursor({
+      machineName: detail.machineName,
+      name: detail.name,
+      placeholder: detail.placeholder,
+      range: detail.range,
+      selection: detail.selection,
+      activeBlock: activeBlock,
+    });
+  }
   // select the text in question and insert in the correct location
   async _insertTextResult(text) {
-    this.activeNode.focus();
-    // @todo seems to insert at the end always
-    if (SuperDaemonInstance.activeRange) {
-      SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
-      SuperDaemonInstance.activeRange.collapse(true);
+    // inline-token / RTE-button path: focus the contenteditable that
+    // actually contains the captured range, restore the strip-point range,
+    // then insert at the cursor immediately (before close() can clear state).
+    // Focusing the correct editable is required so execCommand lands at the
+    // restored selection instead of defaulting to the start of the element.
+    if (
+      SuperDaemonInstance.inlineTextInsert &&
+      SuperDaemonInstance.activeRange
+    ) {
+      const editable = this.__editableForRange(
+        SuperDaemonInstance.activeRange,
+      );
+      if (editable && editable.focus) {
+        editable.focus();
+      } else if (this.activeNode && this.activeNode.focus) {
+        this.activeNode.focus();
+      }
       SuperDaemonInstance.activeSelection.removeAllRanges();
       SuperDaemonInstance.activeSelection.addRange(
         SuperDaemonInstance.activeRange,
       );
-      SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
-      SuperDaemonInstance.activeSelection.collapseToEnd();
+      globalThis.document.execCommand("insertHTML", false, text);
+      return;
+    }
+    // legacy empty-block `/` path: collapse to end-of-node, then insert.
+    // `activeNode` can be null when an inline-capable program (e.g. the
+    // globally-unhidden emoji/symbol program) is selected from global
+    // Merlin with no block active, so guard every access. If we have a
+    // saved activeRange but no activeNode, fall back to cursor-accurate
+    // insert (restore the range + execCommand) rather than crashing.
+    if (this.activeNode) {
+      if (this.activeNode.focus) {
+        this.activeNode.focus();
+      }
+      if (SuperDaemonInstance.activeRange) {
+        SuperDaemonInstance.activeRange.setStart(this.activeNode, 0);
+        SuperDaemonInstance.activeRange.collapse(true);
+        SuperDaemonInstance.activeSelection.removeAllRanges();
+        SuperDaemonInstance.activeSelection.addRange(
+          SuperDaemonInstance.activeRange,
+        );
+        SuperDaemonInstance.activeSelection.selectAllChildren(this.activeNode);
+        SuperDaemonInstance.activeSelection.collapseToEnd();
+      }
+    } else if (
+      SuperDaemonInstance.activeRange &&
+      SuperDaemonInstance.activeSelection
+    ) {
+      const editable = this.__editableForRange(
+        SuperDaemonInstance.activeRange,
+      );
+      if (editable && editable.focus) {
+        editable.focus();
+      }
+      SuperDaemonInstance.activeSelection.removeAllRanges();
+      SuperDaemonInstance.activeSelection.addRange(
+        SuperDaemonInstance.activeRange,
+      );
+      globalThis.document.execCommand("insertHTML", false, text);
+      return;
     }
     setTimeout(() => {
-      if (this.activeNode.textContent == "") {
+      if (this.activeNode && this.activeNode.textContent == "") {
         this.activeNode.textContent = text;
       } else {
         globalThis.document.execCommand("insertHTML", false, text);

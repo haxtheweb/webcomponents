@@ -1941,12 +1941,137 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   }
                 }
                 this.__syncDataHaxEmpty(this.activeNode);
+                // inline-token trigger (:: / ::: + space) — fires after the
+                // markdown-shortcut check so both can coexist in the same tick
+                this.__maybeTriggerInlineShortcut();
               }, 0);
               break;
           }
         }
       }
     }
+  }
+  /**
+   * Inline-token trigger: when the cursor sits in a text block and the text
+   * immediately before the cursor ends with a registered `:: `/`::: ` token
+   * (plus trailing space), strip the token and open the matching inline
+   * Merlin program at the cursor. Tokens are read from the shortcut registry
+   * on SuperDaemonInstance.allItems (markdown-type shortcut descriptors).
+   */
+  __maybeTriggerInlineShortcut() {
+    if (
+      !this.editMode ||
+      !this.activeNode ||
+      SuperDaemonInstance.opened
+    ) {
+      return;
+    }
+    // operate in any text element (p, h1-h6, li, blockquote, pre, etc.),
+    // not just paragraphs
+    if (
+      !HAXStore.isTextElement(this.activeNode) &&
+      this.activeNode.tagName !== "LI"
+    ) {
+      return;
+    }
+    const selection = HAXStore.getSelection();
+    const range = HAXStore.getRange();
+    if (!selection || !range || !range.collapsed) {
+      return;
+    }
+    // ensure the cursor lives inside the active block
+    let walker = range.startContainer;
+    while (walker && walker !== this.activeNode) {
+      walker = walker.parentNode;
+    }
+    if (walker !== this.activeNode) {
+      return;
+    }
+    // build the trigger table from the shortcut registry (markdown-type only)
+    const specs = [];
+    for (let item of SuperDaemonInstance.allItems) {
+      if (
+        item.shortcut &&
+        item.shortcut.type === "markdown" &&
+        item.shortcut.trigger &&
+        item.value &&
+        item.value.machineName
+      ) {
+        specs.push({
+          machineName: item.value.machineName,
+          name: item.value.name,
+          placeholder: item.value.placeholder,
+          token: item.shortcut.trigger,
+        });
+      }
+    }
+    if (specs.length === 0) {
+      return;
+    }
+    // longest token first so ::: is tested before ::
+    specs.sort((a, b) => b.token.length - a.token.length);
+    // compute text before the cursor within the active block. The probe
+    // range works whether the caret is inside a text node or at an element
+    // boundary (range.startContainer can be either).
+    const probe = globalThis.document.createRange();
+    probe.setStart(this.activeNode, 0);
+    probe.setEnd(range.startContainer, range.startOffset);
+    const textBefore = probe.toString();
+    for (let spec of specs) {
+      const fullToken = spec.token + " ";
+      if (textBefore.endsWith(fullToken)) {
+        // locate the text node + local offsets for the token so we can
+        // strip it even when the caret sits at an element boundary
+        const startChar = textBefore.length - fullToken.length;
+        const endChar = textBefore.length;
+        const start = this.__findTextNodeAtOffset(this.activeNode, startChar);
+        const end = this.__findTextNodeAtOffset(this.activeNode, endChar);
+        if (start && end) {
+          const stripRange = globalThis.document.createRange();
+          stripRange.setStart(start.node, start.offset);
+          stripRange.setEnd(end.node, end.offset);
+          selection.removeAllRanges();
+          selection.addRange(stripRange);
+          stripRange.deleteContents();
+          // stripRange is now collapsed at the strip point
+          HAXStore._openInlineProgramAtCursor({
+            machineName: spec.machineName,
+            name: spec.name,
+            placeholder: spec.placeholder,
+            range: stripRange,
+            selection: selection,
+            activeBlock: this.activeNode,
+            token: fullToken,
+          });
+        }
+        return;
+      }
+    }
+  }
+  /**
+   * Given a block element and a character offset within that block's
+   * textContent, find the text node and local offset at that position.
+   * Used by __maybeTriggerInlineShortcut to strip an inline token even
+   * when the caret sits at an element boundary (range.startContainer is
+   * an Element rather than a Text node).
+   */
+  __findTextNodeAtOffset(block, charOffset) {
+    let remaining = charOffset;
+    const walk = (node) => {
+      if (node.nodeType === globalThis.Node.TEXT_NODE) {
+        if (remaining <= node.textContent.length) {
+          return { node: node, offset: remaining };
+        }
+        remaining -= node.textContent.length;
+        return null;
+      }
+      for (let i = 0; i < node.childNodes.length; i++) {
+        const result = walk(node.childNodes[i]);
+        if (result) return result;
+      }
+      return null;
+    };
+    return walk(block);
   }
   /**
    * Normalize keyboard shortcut text so empty-line BR/ZWSP artifacts
