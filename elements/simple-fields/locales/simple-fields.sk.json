@@ -1,9 +1,9 @@
 {
-  "dropMediaHereOr": "drop media here or",
-  "upload": "Upload",
-  "takePhoto": "Take photo",
-  "recordAudio": "Record audio",
-  "recordScreen": "Record screen",
-  "cancel": "Cancel",
-  "uploadMedia": "Upload media"
+  "dropMediaHereOr": "pustite médiá sem alebo",
+  "upload": "Nahrať",
+  "takePhoto": "Zhotoviť fotografiu",
+  "recordAudio": "Nahrať zvuk",
+  "recordScreen": "Nahrať obrazovku",
+  "cancel": "Zrušiť",
+  "uploadMedia": "Nahrať médiá"
 }

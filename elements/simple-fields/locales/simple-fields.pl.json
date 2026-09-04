@@ -1,9 +1,9 @@
 {
-  "dropMediaHereOr": "drop media here or",
-  "upload": "Upload",
-  "takePhoto": "Take photo",
-  "recordAudio": "Record audio",
-  "recordScreen": "Record screen",
-  "cancel": "Cancel",
-  "uploadMedia": "Upload media"
+  "dropMediaHereOr": "upuść media tutaj lub",
+  "upload": "Prześlij",
+  "takePhoto": "Zrób zdjęcie",
+  "recordAudio": "Nagraj dźwięk",
+  "recordScreen": "Nagraj ekran",
+  "cancel": "Anuluj",
+  "uploadMedia": "Prześlij media"
 }

@@ -1,9 +1,9 @@
 {
-  "dropMediaHereOr": "drop media here or",
-  "upload": "Upload",
-  "takePhoto": "Take photo",
-  "recordAudio": "Record audio",
-  "recordScreen": "Record screen",
-  "cancel": "Cancel",
-  "uploadMedia": "Upload media"
+  "dropMediaHereOr": "میډیا دلته پرېږدئ یا",
+  "upload": "اپلوډ کړئ",
+  "takePhoto": "عکس واخلئ",
+  "recordAudio": "غږ ریکارډ کړئ",
+  "recordScreen": "سکرین ریکارډ کړئ",
+  "cancel": "لغوه کړئ",
+  "uploadMedia": "میډیا اپلوډ کړئ"
 }

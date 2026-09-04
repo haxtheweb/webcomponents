@@ -1,9 +1,9 @@
 {
-  "dropMediaHereOr": "drop media here or",
-  "upload": "Upload",
-  "takePhoto": "Take photo",
-  "recordAudio": "Record audio",
-  "recordScreen": "Record screen",
-  "cancel": "Cancel",
-  "uploadMedia": "Upload media"
+  "dropMediaHereOr": "මාධ්‍ය මෙතැන හෙළන්න හෝ",
+  "upload": "උඩුගත කරන්න",
+  "takePhoto": "ඡායාරූපයක් ගන්න",
+  "recordAudio": "ශ්‍රව්‍ය පටිගත කරන්න",
+  "recordScreen": "තිරය පටිගත කරන්න",
+  "cancel": "අවලංගු කරන්න",
+  "uploadMedia": "මාධ්‍ය උඩුගත කරන්න"
 }
