@@ -1,6 +1,5 @@
 {
   "selectPage": "Sahifani tanlang",
-  "backToSiteList": "Saytlar ro'yxatiga qaytish",
   "listMySites": "Mening saytlarim ro'yxati",
   "cancel": "Bekor qilish",
   "editDetails": "Sahifa tafsilotlari",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlinni chaqirish",
   "logOut": "Chiqish",
   "menu": "Menyu",
-  "showMore": "Ko'proq ko'rsatish"
+  "showMore": "Ko'proq ko'rsatish",
+  "userAccess": "Foydalanuvchi kirishi"
 }

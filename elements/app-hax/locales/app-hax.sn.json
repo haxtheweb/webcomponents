@@ -1,6 +1,5 @@
 {
   "selectPage": "Sarudza peji",
-  "backToSiteList": "Dzokera kurondedzero yemasaiti",
   "listMySites": "Rondedzero yemasaiti angu",
   "cancel": "Kanzura",
   "editDetails": "Rondedzero dzepeji",
@@ -39,5 +38,6 @@
   "summonMerlin": "Dana Merlin",
   "logOut": "Buda",
   "menu": "Menu",
-  "showMore": "Ratidza zvimwe"
+  "showMore": "Ratidza zvimwe",
+  "userAccess": "Kuwanikwa kwe mushandisi"
 }

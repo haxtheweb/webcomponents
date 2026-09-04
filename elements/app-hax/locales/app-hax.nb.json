@@ -1,6 +1,5 @@
 {
   "selectPage": "Velg side",
-  "backToSiteList": "Tilbake til nettstedliste",
   "listMySites": "Liste mine nettsteder",
   "cancel": "Avbryt",
   "editDetails": "Sidedetaljer",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kall Merlin",
   "logOut": "Logg ut",
   "menu": "Meny",
-  "showMore": "Vis mer"
+  "showMore": "Vis mer",
+  "userAccess": "Brukertilgang"
 }

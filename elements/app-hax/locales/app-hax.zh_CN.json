@@ -1,6 +1,5 @@
 {
   "selectPage": "选择页面",
-  "backToSiteList": "返回站点列表",
   "listMySites": "列出我的站点",
   "cancel": "取消",
   "editDetails": "页面详情",
@@ -39,5 +38,6 @@
   "summonMerlin": "召唤梅林",
   "logOut": "退出登录",
   "menu": "菜单",
-  "showMore": "显示更多"
+  "showMore": "显示更多",
+  "userAccess": "用户访问"
 }

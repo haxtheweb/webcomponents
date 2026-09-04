@@ -1,6 +1,5 @@
 {
   "selectPage": "Vel síðu",
-  "backToSiteList": "Aftur til heimasaíðulista",
   "listMySites": "Lista mínar heimasaíður",
   "cancel": "Strika",
   "editDetails": "Síðu smáluti",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kall Merlin",
   "logOut": "Rita út",
   "menu": "Skrá",
-  "showMore": "Vís meira"
+  "showMore": "Vís meira",
+  "userAccess": "Brúkaraatgongd"
 }

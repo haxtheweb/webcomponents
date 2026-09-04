@@ -1,6 +1,5 @@
 {
   "selectPage": "Selektearje side",
-  "backToSiteList": "Werom nei sitelist",
   "listMySites": "List fan myn sites",
   "cancel": "Ôfbrekke",
   "editDetails": "Side details",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin oproppe",
   "logOut": "Útlogge",
   "menu": "Menu",
-  "showMore": "Mear sjen litte"
+  "showMore": "Mear sjen litte",
+  "userAccess": "Brûkerstagong"
 }

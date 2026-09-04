@@ -1,6 +1,5 @@
 {
   "selectPage": "Jeporavo kuatiavé",
-  "backToSiteList": "Jeku jevy kuatiavéñemi rysyivépe",
   "listMySites": "Che kuatiavéñemi rysyi",
   "cancel": "Ani",
   "editDetails": "Kuatiavé mba'ekúapa",
@@ -39,5 +38,6 @@
   "summonMerlin": "Hendu Merlin",
   "logOut": "Jeseha",
   "menu": "Menú",
-  "showMore": "Jehechauka hetavé"
+  "showMore": "Jehechauka hetavé",
+  "userAccess": "Jeikepuruhára"
 }

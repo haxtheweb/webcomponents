@@ -1,6 +1,5 @@
 {
   "selectPage": "Rûpelê hilbijêre",
-  "backToSiteList": "Vegere lîsteya malan",
   "listMySites": "Lîsteya malên min",
   "cancel": "Betal bike",
   "editDetails": "Hûrguliyên rûpelê",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin bi xwere",
   "logOut": "Derkeve",
   "menu": "Menu",
-  "showMore": "Zêdetir nîşan bide"
+  "showMore": "Zêdetir nîşan bide",
+  "userAccess": "Gihîştina bikarhêner"
 }

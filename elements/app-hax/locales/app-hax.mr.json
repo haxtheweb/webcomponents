@@ -1,6 +1,5 @@
 {
   "selectPage": "पान निवडा",
-  "backToSiteList": "साइट यादीला परत या",
   "listMySites": "माझ्या साइट्सची यादी",
   "cancel": "रद्द करा",
   "editDetails": "पेज विवरण",
@@ -39,5 +38,6 @@
   "summonMerlin": "मर्लिनला बोलवा",
   "logOut": "लॉग आउट",
   "menu": "मेनू",
-  "showMore": "अधिक दाखवा"
+  "showMore": "अधिक दाखवा",
+  "userAccess": "वापरकर्ता प्रवेश"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "صفحو چُنيو",
-  "backToSiteList": "سائيٽن جي فهرسٽ مان واپس وا۽و",
   "listMySites": "موۼ سائيٽن جو فهرسٽ",
   "cancel": "رد ڪريو",
   "editDetails": "صفحو جا تفصيل",
@@ -39,5 +38,6 @@
   "summonMerlin": "مرلن ڤريو",
   "logOut": "لاگ آءٽ",
   "menu": "مينيو",
-  "showMore": "وچو ڊُأيو"
+  "showMore": "وچو ڊُأيو",
+  "userAccess": "صارف جي رسائي"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "Kōwhiri whaarangi",
-  "backToSiteList": "Hoki ki te rārangi pae",
   "listMySites": "Rārangi o ōku pae",
   "cancel": "Whakakore",
   "editDetails": "Kōhia o te whaarangi",
@@ -39,5 +38,6 @@
   "summonMerlin": "Karanga a Merlin",
   "logOut": "Takiputa",
   "menu": "Tahua",
-  "showMore": "Whakaatu atu"
+  "showMore": "Whakaatu atu",
+  "userAccess": "Uru tāngata"
 }

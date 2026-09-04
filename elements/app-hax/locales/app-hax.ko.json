@@ -1,6 +1,5 @@
 {
   "selectPage": "페이지 선택",
-  "backToSiteList": "사이트 목록으로 돌아가기",
   "listMySites": "내 사이트 목록",
   "cancel": "취소",
   "editDetails": "페이지 세부사항",
@@ -39,5 +38,6 @@
   "summonMerlin": "머린 소환",
   "logOut": "로그아웃",
   "menu": "메뉴",
-  "showMore": "더 많이 보기"
+  "showMore": "더 많이 보기",
+  "userAccess": "사용자 액세스"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "Sankhani tsamba",
-  "backToSiteList": "Bwererani ku mndandanda wa masamba",
   "listMySites": "Mndandanda wa masamba anga",
   "cancel": "Lekani",
   "editDetails": "Zambiri za tsamba",
@@ -39,5 +38,6 @@
   "summonMerlin": "Itanani Merlin",
   "logOut": "Tulukani",
   "menu": "Menu",
-  "showMore": "Onetsani zambiri"
+  "showMore": "Onetsani zambiri",
+  "userAccess": "Kulowa kwa wogwiritsa"
 }

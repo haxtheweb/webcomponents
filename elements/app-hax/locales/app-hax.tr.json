@@ -1,6 +1,5 @@
 {
   "selectPage": "Sayfa seç",
-  "backToSiteList": "Site listesine geri dön",
   "listMySites": "Sitelerimi listele",
   "cancel": "İptal",
   "editDetails": "Sayfa detayları",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin'ı çağır",
   "logOut": "Çıkış yap",
   "menu": "Menü",
-  "showMore": "Daha fazla göster"
+  "showMore": "Daha fazla göster",
+  "userAccess": "Kullanıcı erişimi"
 }

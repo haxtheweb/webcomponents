@@ -1,6 +1,5 @@
 {
   "selectPage": "Orrialdea aukeratu",
-  "backToSiteList": "Webguneen zerrendara itzuli",
   "listMySites": "Nire webguneak zerrendatu",
   "cancel": "Ezeztatu",
   "editDetails": "Orrialde xehetasunak",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin deitu",
   "logOut": "Saioa itxi",
   "menu": "Menua",
-  "showMore": "Gehiago erakutsi"
+  "showMore": "Gehiago erakutsi",
+  "userAccess": "Erabiltzailearen sarbidea"
 }

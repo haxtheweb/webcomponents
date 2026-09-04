@@ -1,6 +1,5 @@
 {
   "selectPage": "Veldu síðu",
-  "backToSiteList": "Til baka í vefsvæðalistann",
   "listMySites": "Sýna mínar síður",
   "cancel": "Hætta við",
   "editDetails": "Síðu upplýsingar",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kalla á Merlin",
   "logOut": "Skrá út",
   "menu": "Valmynd",
-  "showMore": "Sýna meira"
+  "showMore": "Sýna meira",
+  "userAccess": "Notandaaðgangur"
 }

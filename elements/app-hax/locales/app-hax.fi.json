@@ -1,6 +1,5 @@
 {
   "selectPage": "Valitse sivu",
-  "backToSiteList": "Takaisin sivustoluetteloon",
   "listMySites": "Näytä sivustoni",
   "cancel": "Peruuta",
   "editDetails": "Sivun tiedot",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kutsu Merlin",
   "logOut": "Kirjaudu ulos",
   "menu": "Valikko",
-  "showMore": "Näytä lisää"
+  "showMore": "Näytä lisää",
+  "userAccess": "Käyttöoikeus"
 }

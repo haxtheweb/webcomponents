@@ -1,6 +1,5 @@
 {
   "selectPage": "Välj sida",
-  "backToSiteList": "Tillbaka till webbplatslista",
   "listMySites": "Lista mina webbplatser",
   "cancel": "Avbryt",
   "editDetails": "Siddetaljer",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kalla på Merlin",
   "logOut": "Logga ut",
   "menu": "Meny",
-  "showMore": "Visa mer"
+  "showMore": "Visa mer",
+  "userAccess": "Användaråtkomst"
 }

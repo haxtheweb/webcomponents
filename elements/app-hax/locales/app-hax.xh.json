@@ -1,6 +1,5 @@
 {
   "selectPage": "Khetha iphepha",
-  "backToSiteList": "Buyela kuluhlu lwewebhusayithi",
   "listMySites": "Uluhlu lwazo iwebhusayithi zam",
   "cancel": "Rhoxisa",
   "editDetails": "Iinkcukacha zephepha",
@@ -39,5 +38,6 @@
   "summonMerlin": "Biza uMerlin",
   "logOut": "Phuma",
   "menu": "Imenyu",
-  "showMore": "Bonisa ngaphezulu"
+  "showMore": "Bonisa ngaphezulu",
+  "userAccess": "Ufikelelo lomsebenzisi"
 }

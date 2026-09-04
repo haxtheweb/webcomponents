@@ -1,6 +1,5 @@
 {
   "selectPage": "Dewis tudalen",
-  "backToSiteList": "Yn ôl i'r rhestr safleoedd",
   "listMySites": "Rhestr fy safleoedd",
   "cancel": "Canslo",
   "editDetails": "Manylion tudalen",
@@ -39,5 +38,6 @@
   "summonMerlin": "Galw Merlin",
   "logOut": "Allgofnodi",
   "menu": "Dewislen",
-  "showMore": "Dangos mwy"
+  "showMore": "Dangos mwy",
+  "userAccess": "Mynediad defnyddiwr"
 }

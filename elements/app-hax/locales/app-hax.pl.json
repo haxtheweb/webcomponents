@@ -1,6 +1,5 @@
 {
   "selectPage": "Wybierz stronę",
-  "backToSiteList": "Powróć do listy stron",
   "listMySites": "Lista moich stron",
   "cancel": "Anuluj",
   "editDetails": "Szczegóły strony",
@@ -39,5 +38,6 @@
   "summonMerlin": "Przyzwij Merlina",
   "logOut": "Wyloguj",
   "menu": "Menu",
-  "showMore": "Pokaż więcej"
+  "showMore": "Pokaż więcej",
+  "userAccess": "Dostęp użytkownika"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "پاڼه غوره کړئ",
-  "backToSiteList": "د سایٽونو فهرست ته بیرته ولاړه",
   "listMySites": "د زما سایٽونو فهرست",
   "cancel": "لغوه کړه",
   "editDetails": "د پاڼے جزیات",
@@ -39,5 +38,6 @@
   "summonMerlin": "میرلین راوبلا",
   "logOut": "وزا",
   "menu": "مینیو",
-  "showMore": "نور وګایا"
+  "showMore": "نور وګایا",
+  "userAccess": "د کارن لاسرسی"
 }

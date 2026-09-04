@@ -1,6 +1,5 @@
 {
   "selectPage": "Izvēlēties lapu",
-  "backToSiteList": "Atpakaļ uz vietni sarakstu",
   "listMySites": "Parādīt manas vietnes",
   "cancel": "Atcelt",
   "editDetails": "Lapas detaļas",
@@ -39,5 +38,6 @@
   "summonMerlin": "Iesaukt Mērlinu",
   "logOut": "Iziet",
   "menu": "Izvēlne",
-  "showMore": "Rādīt vairāk"
+  "showMore": "Rādīt vairāk",
+  "userAccess": "Lietotāja piekļuve"
 }

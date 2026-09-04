@@ -1,6 +1,5 @@
 {
   "selectPage": "Pagina selecteren",
-  "backToSiteList": "Terug naar sitelijst",
   "listMySites": "Mijn sites weergeven",
   "cancel": "Annuleren",
   "editDetails": "Pagina details",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin oproepen",
   "logOut": "Uitloggen",
   "menu": "Menu",
-  "showMore": "Meer tonen"
+  "showMore": "Meer tonen",
+  "userAccess": "Gebruikerstoegang"
 }

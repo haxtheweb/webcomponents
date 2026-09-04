@@ -1,6 +1,5 @@
 {
   "selectPage": "P'anqata akllay",
-  "backToSiteList": "Sitiokunap listanman kutiy",
   "listMySites": "Ñoqap sitiokunap listan",
   "cancel": "Ama niy",
   "editDetails": "P'anqap willayninkunata",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlinta waqyay",
   "logOut": "Lluqsiy",
   "menu": "Menu",
-  "showMore": "Aswan rikuchiy"
+  "showMore": "Aswan rikuchiy",
+  "userAccess": "Ruraqpa yaykunan"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "Pilih halaman",
-  "backToSiteList": "Bali menyang dhaptar situs",
   "listMySites": "Dhaptar situs kula",
   "cancel": "Batalaken",
   "editDetails": "Rincian kaca",
@@ -39,5 +38,6 @@
   "summonMerlin": "Celuk Merlin",
   "logOut": "Metu",
   "menu": "Menu",
-  "showMore": "Tuduhaken luwih akeh"
+  "showMore": "Tuduhaken luwih akeh",
+  "userAccess": "Akses panganggo"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "Roghnaigh leathanach",
-  "backToSiteList": "Ar ais chuig liosta na suíomhanna",
   "listMySites": "Liosta mo shuíomhanna",
   "cancel": "Cealaigh",
   "editDetails": "Sonraí an leathanaigh",
@@ -39,5 +38,6 @@
   "summonMerlin": "Glaoigh ar Merlin",
   "logOut": "Logáil amach",
   "menu": "Roghchlár",
-  "showMore": "Taispeáin tuilleadh"
+  "showMore": "Taispeáin tuilleadh",
+  "userAccess": "Rochtain úsáideora"
 }

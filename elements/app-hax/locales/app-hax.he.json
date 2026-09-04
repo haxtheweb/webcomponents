@@ -1,6 +1,5 @@
 {
   "selectPage": "בחר עמוד",
-  "backToSiteList": "חזר לרשימת אתרים",
   "listMySites": "רשימת האתרים שלי",
   "cancel": "ביטול",
   "editDetails": "פרטי העמוד",
@@ -39,5 +38,6 @@
   "summonMerlin": "קרא למרלין",
   "logOut": "התנתק",
   "menu": "תפריט",
-  "showMore": "הראה עוד"
+  "showMore": "הראה עוד",
+  "userAccess": "גישת משתמש"
 }

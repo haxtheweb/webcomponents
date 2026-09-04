@@ -1,6 +1,5 @@
 {
   "selectPage": "Säit eraussichen",
-  "backToSiteList": "Zréck op d'Websiten-Lëscht",
   "listMySites": "Lëscht vun menge Websiten",
   "cancel": "Ofbriechen",
   "editDetails": "Säiten-Detailer",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin ruffen",
   "logOut": "Ofmellen",
   "menu": "Menü",
-  "showMore": "Méi weisen"
+  "showMore": "Méi weisen",
+  "userAccess": "Benotzerzougrëff"
 }

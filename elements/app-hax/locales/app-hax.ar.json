@@ -1,6 +1,5 @@
 {
   "selectPage": "اختر الصفحة",
-  "backToSiteList": "العودة إلى قائمة المواقع",
   "listMySites": "اعرض مواقعي",
   "cancel": "إلغاء",
   "editDetails": "تفاصيل الصفحة",
@@ -39,5 +38,6 @@
   "summonMerlin": "استدعاء مرلين",
   "logOut": "تسجيل خروج",
   "menu": "القائمة",
-  "showMore": "المزيد"
+  "showMore": "المزيد",
+  "userAccess": "وصول المستخدم"
 }

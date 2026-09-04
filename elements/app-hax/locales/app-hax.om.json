@@ -1,6 +1,5 @@
 {
   "selectPage": "Fuula fili",
-  "backToSiteList": "Gara tarree marsaawwaniitti deebi'i",
   "listMySites": "Tarree marsaawwanii koo",
   "cancel": "Dhiisi",
   "editDetails": "Bal'ina fuulaa",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin waami",
   "logOut": "Ba'i",
   "menu": "Baafata",
-  "showMore": "Dabalata agarsiisi"
+  "showMore": "Dabalata agarsiisi",
+  "userAccess": "Seensa fayyadamaa"
 }

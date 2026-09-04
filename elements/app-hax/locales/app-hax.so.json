@@ -1,6 +1,5 @@
 {
   "selectPage": "Dooro bog",
-  "backToSiteList": "Dib ugu noqo liiska bogagga",
   "listMySites": "Liiska bogaggayga",
   "cancel": "Jooji",
   "editDetails": "Faahfaahinta bogga",
@@ -39,5 +38,6 @@
   "summonMerlin": "U yeedh Merlin",
   "logOut": "Ka bax",
   "menu": "Liiska",
-  "showMore": "Muuji wax badan"
+  "showMore": "Muuji wax badan",
+  "userAccess": "Helitaanka isticmaalaha"
 }

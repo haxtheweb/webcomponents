@@ -1,6 +1,5 @@
 {
   "selectPage": "Seleccionar páxina",
-  "backToSiteList": "Volver á lista de sitios",
   "listMySites": "Lista dos meus sitios",
   "cancel": "Cancelar",
   "editDetails": "Detalles da páxina",
@@ -39,5 +38,6 @@
   "summonMerlin": "Invocar a Merlin",
   "logOut": "Pechar sesión",
   "menu": "Menú",
-  "showMore": "Mostrar máis"
+  "showMore": "Mostrar máis",
+  "userAccess": "Acceso de usuario"
 }

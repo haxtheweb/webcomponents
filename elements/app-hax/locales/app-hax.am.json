@@ -1,6 +1,5 @@
 {
   "selectPage": "ገፅ ምረጥ",
-  "backToSiteList": "ወደ ድረ-ገፅ ዝርዝር መመለስ",
   "listMySites": "የእኔ ድረ-ገፆች ዝርዝር",
   "cancel": "ሰርዝ",
   "editDetails": "ገፅ ዝርዝሮች",
@@ -39,5 +38,6 @@
   "summonMerlin": "መርሊንን ጥራ",
   "logOut": "ውጣ",
   "menu": "ዝርዝር",
-  "showMore": "ተጨማሪ አሳይ"
+  "showMore": "ተጨማሪ አሳይ",
+  "userAccess": "የተጠቃሚ መዳረሻ"
 }

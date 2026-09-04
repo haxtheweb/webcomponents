@@ -1,6 +1,5 @@
 {
   "selectPage": "Chọn trang",
-  "backToSiteList": "Trở về danh sách trang web",
   "listMySites": "Liệt kê các trang web của tôi",
   "cancel": "Hủy",
   "editDetails": "Chi tiết trang",
@@ -39,5 +38,6 @@
   "summonMerlin": "Gọi Merlin",
   "logOut": "Đăng xuất",
   "menu": "Trình đơn",
-  "showMore": "Hiển thị thêm"
+  "showMore": "Hiển thị thêm",
+  "userAccess": "Quyền truy cập người dùng"
 }

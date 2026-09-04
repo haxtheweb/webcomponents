@@ -1,6 +1,5 @@
 {
   "selectPage": "Chagua ukurasa",
-  "backToSiteList": "Rudi kwenye orodha ya tovuti",
   "listMySites": "Orodhesha tovuti zangu",
   "cancel": "Ghairi",
   "editDetails": "Maelezo ya ukurasa",
@@ -39,5 +38,6 @@
   "summonMerlin": "Ita Merlin",
   "logOut": "Toka",
   "menu": "Menyu",
-  "showMore": "Onyesha zaidi"
+  "showMore": "Onyesha zaidi",
+  "userAccess": "Ufikiaji wa mtumiaji"
 }

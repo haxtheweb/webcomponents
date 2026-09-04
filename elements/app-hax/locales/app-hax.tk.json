@@ -1,6 +1,5 @@
 {
   "selectPage": "Sahypa saýlañ",
-  "backToSiteList": "Saýt sanawyna gaýt",
   "listMySites": "Meniñ saýtlarymñ sanawy",
   "cancel": "Ýatyr",
   "editDetails": "Sahypa jikme-jiklikleri",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin çağyrmak",
   "logOut": "Çykmak",
   "menu": "Menýu",
-  "showMore": "Has köp görkezmek"
+  "showMore": "Has köp görkezmek",
+  "userAccess": "Ulanyjy girmek"
 }

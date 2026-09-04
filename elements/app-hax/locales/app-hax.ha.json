@@ -1,6 +1,5 @@
 {
   "selectPage": "Zaɓi shafi",
-  "backToSiteList": "Koma ga lissafin shafukan yanar gizo",
   "listMySites": "Lissafin shafukan yanar gizo na",
   "cancel": "Soke",
   "editDetails": "Bayanan shafi",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kira Merlin",
   "logOut": "Fita",
   "menu": "Menu",
-  "showMore": "Nuna kari"
+  "showMore": "Nuna kari",
+  "userAccess": "Dammar mai amfani"
 }

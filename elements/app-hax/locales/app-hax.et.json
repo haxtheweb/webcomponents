@@ -1,6 +1,5 @@
 {
   "selectPage": "Vali lehekülg",
-  "backToSiteList": "Tagasi saitide loendisse",
   "listMySites": "Kuva minu saidid",
   "cancel": "Tühista",
   "editDetails": "Lehe üksikasjad",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kutsu Merlin",
   "logOut": "Logi välja",
   "menu": "Menüü",
-  "showMore": "Näita rohkem"
+  "showMore": "Näita rohkem",
+  "userAccess": "Kasutaja juurdepääs"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "انتخاب صفحه",
-  "backToSiteList": "بازگشت به لیست سایت‌ها",
   "listMySites": "لیست سایت‌های من",
   "cancel": "لغو",
   "editDetails": "جزئیات صفحو",
@@ -39,5 +38,6 @@
   "summonMerlin": "فراخوانی مرلین",
   "logOut": "خروج",
   "menu": "منو",
-  "showMore": "نمایش بیشتر"
+  "showMore": "نمایش بیشتر",
+  "userAccess": "دسترسی کاربر"
 }

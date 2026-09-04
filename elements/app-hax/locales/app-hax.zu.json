@@ -1,6 +1,5 @@
 {
   "selectPage": "Khetha ikhasi",
-  "backToSiteList": "Buyela kuluhlu lwewebhusayithi",
   "listMySites": "Uhlu lwamawebhusayithi ami",
   "cancel": "Khansela",
   "editDetails": "Imininingwane yekhasi",
@@ -39,5 +38,6 @@
   "summonMerlin": "Biza uMerlin",
   "logOut": "Phuma",
   "menu": "Imenyu",
-  "showMore": "Bonisa okuningi"
+  "showMore": "Bonisa okuningi",
+  "userAccess": "Ukufinyelela komsebenzisi"
 }

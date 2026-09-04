@@ -1,6 +1,5 @@
 {
   "selectPage": "Agħżel paġna",
-  "backToSiteList": "Lura għal-lista tas-siti",
   "listMySites": "Lista tas-siti tiegħi",
   "cancel": "Ikkanċella",
   "editDetails": "Dettalji tal-paġna",
@@ -39,5 +38,6 @@
   "summonMerlin": "Sejjaħ lil Merlin",
   "logOut": "Oħroġ",
   "menu": "Menu",
-  "showMore": "Uri aktar"
+  "showMore": "Uri aktar",
+  "userAccess": "Aċċess tal-utent"
 }

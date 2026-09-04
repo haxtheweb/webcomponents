@@ -1,6 +1,5 @@
 {
   "selectPage": "Pasirinkti puslapį",
-  "backToSiteList": "Grįžti į svetainių sąrašą",
   "listMySites": "Rodеti mano svetaines",
   "cancel": "Atšaukti",
   "editDetails": "Puslapio išsamūs duomenys",
@@ -39,5 +38,6 @@
   "summonMerlin": "Iškviesti Merliną",
   "logOut": "Atsijungti",
   "menu": "Meniu",
-  "showMore": "Rodеti daugiau"
+  "showMore": "Rodеti daugiau",
+  "userAccess": "Naudotojo prieiga"
 }

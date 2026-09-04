@@ -1,6 +1,5 @@
 {
   "selectPage": "Koho i ka 'ao'ao",
-  "backToSiteList": "Ho'i i ka papa inoa pūnaewele",
   "listMySites": "Papa inoa o ko'u mau pūnaewele",
   "cancel": "Ho'oki",
   "editDetails": "Nā kikowaena 'ao'ao",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kāhea iā Merlin",
   "logOut": "Ho'oku'u",
   "menu": "Papa kuhikuhi",
-  "showMore": "Ho'ike hou aku"
+  "showMore": "Ho'ike hou aku",
+  "userAccess": "Kaʻe o ka mea hoʻohana"
 }

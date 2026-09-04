@@ -1,6 +1,5 @@
 {
   "selectPage": "Elektu paĝon",
-  "backToSiteList": "Reen al retejlisto",
   "listMySites": "Listi miajn retejojn",
   "cancel": "Nuligi",
   "editDetails": "Paĝaj detaloj",
@@ -39,5 +38,6 @@
   "summonMerlin": "Voki Merlinon",
   "logOut": "Elsaluti",
   "menu": "Menuo",
-  "showMore": "Montri pli"
+  "showMore": "Montri pli",
+  "userAccess": "Uzantaliro"
 }

@@ -1,6 +1,5 @@
 {
   "selectPage": "選頁面",
-  "backToSiteList": "轉去網站列表",
   "listMySites": "我個網站列表",
   "cancel": "取消",
   "editDetails": "頁面詳情",
@@ -39,5 +38,6 @@
   "summonMerlin": "召喚默林",
   "logOut": "退出",
   "menu": "菜單",
-  "showMore": "顯示更多"
+  "showMore": "顯示更多",
+  "userAccess": "用户访问"
 }

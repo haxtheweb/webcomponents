@@ -1,6 +1,5 @@
 {
   "selectPage": "Selectați pagina",
-  "backToSiteList": "Înapoierea la lista site-ului",
   "listMySites": "Lista site-urile mele",
   "cancel": "Anulează",
   "editDetails": "Detaliile paginii",
@@ -39,5 +38,6 @@
   "summonMerlin": "Chemați pe Merlin",
   "logOut": "Ieșiți",
   "menu": "Meniul",
-  "showMore": "Afișați mai mult"
+  "showMore": "Afișați mai mult",
+  "userAccess": "Acces utilizator"
 }

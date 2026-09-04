@@ -1,6 +1,5 @@
 {
   "selectPage": "Kies bladsy",
-  "backToSiteList": "Terug na werfslys",
   "listMySites": "Lys my werwe",
   "cancel": "Kanselleer",
   "editDetails": "Bladsy besonderhede",
@@ -39,5 +38,6 @@
   "summonMerlin": "Roep Merlin",
   "logOut": "Teken uit",
   "menu": "Kieslys",
-  "showMore": "Wys meer"
+  "showMore": "Wys meer",
+  "userAccess": "Gebruikerstoegang"
 }

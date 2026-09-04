@@ -1,6 +1,5 @@
 {
   "selectPage": "පෙට තොරන්න",
-  "backToSiteList": "කෙතර පිට සන්ද පරිසරයට පග යමු",
   "listMySites": "මගේ කෙතර පිටවල සන්දය",
   "cancel": "රද්ද කරන්න",
   "editDetails": "පෙට සුනිතරු",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin වැඩා ගන්න",
   "logOut": "ස්වාමීන් විසින් කරන්න",
   "menu": "ලිස්තුව",
-  "showMore": "වැඩි සිරඊිම කරන්න"
+  "showMore": "වැඩි සිරඊිම කරන්න",
+  "userAccess": "පරිශීලක ප්‍රවේශය"
 }

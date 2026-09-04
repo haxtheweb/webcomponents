@@ -1,6 +1,5 @@
 {
   "selectPage": "Zgjidh faqen",
-  "backToSiteList": "Kthehu te lista e faqeve",
   "listMySites": "Listo faqet e mia",
   "cancel": "Anulo",
   "editDetails": "Detajet e faqes",
@@ -39,5 +38,6 @@
   "summonMerlin": "Thirr Merlinin",
   "logOut": "Dil",
   "menu": "Meny",
-  "showMore": "Shfaq më shumë"
+  "showMore": "Shfaq më shumë",
+  "userAccess": "Qasja e përdoruesit"
 }

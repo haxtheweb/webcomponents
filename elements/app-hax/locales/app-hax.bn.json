@@ -1,6 +1,5 @@
 {
   "selectPage": "পৃষ্ঠা নির্বাচন করুন",
-  "backToSiteList": "সাইটের তালিকায় ফিরে যান",
   "listMySites": "আমার সাইটগুলি দেখান",
   "cancel": "বাতিল",
   "editDetails": "পৃষ্ঠার বিস্তারিত",
@@ -39,5 +38,6 @@
   "summonMerlin": "মার্লিনকে ডাকুন",
   "logOut": "লগ আউট",
   "menu": "মেনু",
-  "showMore": "আরো দেখান"
+  "showMore": "আরো দেখান",
+  "userAccess": "ব্যবহারকারী অ্যাক্সেস"
 }

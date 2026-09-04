@@ -1,6 +1,5 @@
 {
   "selectPage": "Vælg side",
-  "backToSiteList": "Tilbage til siteliste",
   "listMySites": "Vis mine sites",
   "cancel": "Annuller",
   "editDetails": "Sidedetaljer",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kald Merlin",
   "logOut": "Log ud",
   "menu": "Menu",
-  "showMore": "Vis mere"
+  "showMore": "Vis mere",
+  "userAccess": "Brugeradgang"
 }

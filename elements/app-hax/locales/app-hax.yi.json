@@ -1,6 +1,5 @@
 {
   "selectPage": "קליבן א בלאט",
-  "backToSiteList": "צוריק צו דער וועבסייט ליסטע",
   "listMySites": "ליסטע פון מיין וועבסייטן",
   "cancel": "אנולירן",
   "editDetails": "בלאט דעטאילס",
@@ -39,5 +38,6 @@
   "summonMerlin": "רופן מערלין",
   "logOut": "ארויסלאגירן",
   "menu": "מעניו",
-  "showMore": "ווייזן מער"
+  "showMore": "ווייזן מער",
+  "userAccess": "באַניצער צוטריט"
 }

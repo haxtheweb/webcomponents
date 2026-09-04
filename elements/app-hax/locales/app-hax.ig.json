@@ -1,6 +1,5 @@
 {
   "selectPage": "Họrọ peeji",
-  "backToSiteList": "Laghachi na ndepụta saịtị",
   "listMySites": "Ndepụta saịtị m",
   "cancel": "Kagbuo",
   "editDetails": "Nkọwa peeji",
@@ -39,5 +38,6 @@
   "summonMerlin": "Kpọọ Merlin",
   "logOut": "Pụọ",
   "menu": "Menu",
-  "showMore": "Gosipụta ọzọ"
+  "showMore": "Gosipụta ọzọ",
+  "userAccess": "Nweta onye ọrụ"
 }

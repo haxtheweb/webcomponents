@@ -1,6 +1,5 @@
 {
   "selectPage": "Oldal kiválasztása",
-  "backToSiteList": "Vissza az oldal listához",
   "listMySites": "Oldalak listázása",
   "cancel": "Mégse",
   "editDetails": "Oldal részletei",
@@ -39,5 +38,6 @@
   "summonMerlin": "Merlin megidézése",
   "logOut": "Kijelentkezés",
   "menu": "Menü",
-  "showMore": "Több megjelenítése"
+  "showMore": "Több megjelenítése",
+  "userAccess": "Felhasználói hozzáférés"
 }

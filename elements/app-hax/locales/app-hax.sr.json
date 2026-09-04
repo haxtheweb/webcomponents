@@ -1,6 +1,5 @@
 {
   "selectPage": "Izaberi stranu",
-  "backToSiteList": "Nazad na listu sajtova",
   "listMySites": "Prikaži moje sajtove",
   "cancel": "Otkaži",
   "editDetails": "Detalji strane",
@@ -39,5 +38,6 @@
   "summonMerlin": "Pozovi Merlina",
   "logOut": "Odjavi se",
   "menu": "Meni",
-  "showMore": "Prikaži više"
+  "showMore": "Prikaži više",
+  "userAccess": "Кориснички приступ"
 }

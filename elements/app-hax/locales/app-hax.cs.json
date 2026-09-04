@@ -1,6 +1,5 @@
 {
   "selectPage": "Vybrat stránku",
-  "backToSiteList": "Zpět na seznam stránek",
   "listMySites": "Seznam mých stránek",
   "cancel": "Zrušit",
   "editDetails": "Podrobnosti stránky",
@@ -39,5 +38,6 @@
   "summonMerlin": "Pvolat Merlina",
   "logOut": "Odhlásit se",
   "menu": "Menu",
-  "showMore": "Zobrazit více"
+  "showMore": "Zobrazit více",
+  "userAccess": "Přístup uživatele"
 }

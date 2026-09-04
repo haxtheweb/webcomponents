@@ -1,6 +1,5 @@
 {
   "selectPage": "Piliin ang pahina",
-  "backToSiteList": "Bumalik sa listahan ng site",
   "listMySites": "Listahan ng aking mga site",
   "cancel": "Kanselahin",
   "editDetails": "Mga detalye ng pahina",
@@ -39,5 +38,6 @@
   "summonMerlin": "Tawagin si Merlin",
   "logOut": "Mag-log out",
   "menu": "Menu",
-  "showMore": "Ipakita ang higit pa"
+  "showMore": "Ipakita ang higit pa",
+  "userAccess": "Pag-access ng gumagamit"
 }

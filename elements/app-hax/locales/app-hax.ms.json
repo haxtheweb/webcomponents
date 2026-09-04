@@ -1,6 +1,5 @@
 {
   "selectPage": "Pilih halaman",
-  "backToSiteList": "Kembali ke senarai laman web",
   "listMySites": "Senaraikan laman web saya",
   "cancel": "Batal",
   "editDetails": "Butiran halaman",
@@ -39,5 +38,6 @@
   "summonMerlin": "Panggil Merlin",
   "logOut": "Log keluar",
   "menu": "Menu",
-  "showMore": "Tunjuk lagi"
+  "showMore": "Tunjuk lagi",
+  "userAccess": "Akses pengguna"
 }

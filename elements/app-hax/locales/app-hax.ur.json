@@ -1,6 +1,5 @@
 {
   "selectPage": "صفحہ منتخب کریں",
-  "backToSiteList": "سائٹ کی فہرست پر واپس جائیں",
   "listMySites": "میری سائٹس کی فہرست",
   "cancel": "منسوخ کریں",
   "editDetails": "صفحہ کی تفصیلات",
@@ -39,5 +38,6 @@
   "summonMerlin": "مرلن کو بلائیں",
   "logOut": "لاگ آؤٹ",
   "menu": "مینو",
-  "showMore": "مزید دکھائیں"
+  "showMore": "مزید دکھائیں",
+  "userAccess": "صارف تک رسائی"
 }

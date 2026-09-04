@@ -1,6 +1,5 @@
 {
   "selectPage": "Yan ojú-ìwé náà",
-  "backToSiteList": "Padà sí àtokọ awọn ibí",
   "listMySites": "Àtokọ awọn ibí mi",
   "cancel": "Fàgíle",
   "editDetails": "Awọn alkúnnia ojú-ìwé",
@@ -39,5 +38,6 @@
   "summonMerlin": "Pe Merlin",
   "logOut": "Jade",
   "menu": "Menu",
-  "showMore": "Fi diẹ sí i han"
+  "showMore": "Fi diẹ sí i han",
+  "userAccess": "Wiwọle olumulo"
 }
