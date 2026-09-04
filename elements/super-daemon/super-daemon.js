@@ -755,6 +755,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
+    // reset inline-token trigger state so it does not leak across sessions
+    this.inlineTextInsert = false;
+    this.__inlineShortcutToken = null;
     // Clear any lingering text in the search input so it does not leak into
     // the next Merlin session (matches the Konami clear sequence).
     const ui =
@@ -1034,14 +1037,30 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.activeSelection
     ) {
       try {
-        this.activeNode.textContent = this.value;
-        this.activeNode.focus();
-        this.activeRange.setStart(this.activeNode, 0);
-        this.activeRange.collapse(true);
-        this.activeSelection.removeAllRanges();
-        this.activeSelection.addRange(this.activeRange);
-        this.activeSelection.selectAllChildren(this.activeNode);
-        this.activeSelection.collapseToEnd();
+        if (this.inlineTextInsert) {
+          // inline-token path: restore the stripped token (:: / ::: + space)
+          // at the strip point instead of overwriting the whole block with
+          // the search value (which would destroy surrounding text).
+          this.activeNode.focus();
+          this.activeSelection.removeAllRanges();
+          this.activeSelection.addRange(this.activeRange);
+          if (this.__inlineShortcutToken) {
+            globalThis.document.execCommand(
+              "insertHTML",
+              false,
+              this.__inlineShortcutToken,
+            );
+          }
+        } else {
+          this.activeNode.textContent = this.value;
+          this.activeNode.focus();
+          this.activeRange.setStart(this.activeNode, 0);
+          this.activeRange.collapse(true);
+          this.activeSelection.removeAllRanges();
+          this.activeSelection.addRange(this.activeRange);
+          this.activeSelection.selectAllChildren(this.activeNode);
+          this.activeSelection.collapseToEnd();
+        }
       } catch (e) {
         console.warn(e);
       }

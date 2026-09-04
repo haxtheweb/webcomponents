@@ -22,6 +22,7 @@
   "results": "Výsledky",
   "loadingResults": "Načítání výsledků",
   "noResultsForThisTerm": "Žádné výsledky pro tento termín",
+  "typeToSeeResults": "Napište něco pro zobrazení výsledků",
   "filterCommands": "Filtrovat příkazy",
   "commands": "Příkazy",
   "slashCommandsActive": "Lomítko příkazy aktivní",

@@ -22,6 +22,7 @@
   "results": "Sonuçlar",
   "loadingResults": "Sonuçlar yükleniyor",
   "noResultsForThisTerm": "Bu terim için sonuç yok",
+  "typeToSeeResults": "Sonuçları görmek için bir şey yazın",
   "filterCommands": "Komutları filtrele",
   "commands": "Komutlar",
   "slashCommandsActive": "Slash komutları etkin",

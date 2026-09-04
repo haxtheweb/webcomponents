@@ -22,6 +22,7 @@
   "results": "Результати",
   "loadingResults": "Завантаження результатів",
   "noResultsForThisTerm": "Немає результатів для цього терміна",
+  "typeToSeeResults": "Введіть щось, щоб побачити результати",
   "filterCommands": "Фільтрувати команди",
   "commands": "Команди",
   "slashCommandsActive": "Слеш-команди активні",

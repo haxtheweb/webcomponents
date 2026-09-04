@@ -22,6 +22,7 @@
   "results": "Resultat",
   "loadingResults": "Laddar resultat",
   "noResultsForThisTerm": "Inga resultat för denna term",
+  "typeToSeeResults": "Skriv något för att se resultat",
   "filterCommands": "Filtrera kommandon",
   "commands": "Kommandon",
   "slashCommandsActive": "Snedstreck-kommandon aktiva",

@@ -22,6 +22,7 @@
   "results": "Αποτελέσματα",
   "loadingResults": "Φόρτωση αποτελεσμάτων",
   "noResultsForThisTerm": "Δεν υπάρχουν αποτελέσματα για αυτόν τον όρο",
+  "typeToSeeResults": "Πληκτρολογήστε κάτι για να δείτε αποτελέσματα",
   "filterCommands": "Φιλτράρισμα εντολών",
   "commands": "Εντολές",
   "slashCommandsActive": "Οι εντολές slash είναι ενεργές",

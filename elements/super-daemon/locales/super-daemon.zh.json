@@ -22,6 +22,7 @@
   "results": "结果",
   "loadingResults": "正在加载结果",
   "noResultsForThisTerm": "此术语无结果",
+  "typeToSeeResults": "输入内容以查看结果",
   "filterCommands": "筛选命令",
   "commands": "命令",
   "slashCommandsActive": "斜杠命令已激活",

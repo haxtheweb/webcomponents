@@ -22,6 +22,7 @@
   "results": "Resultaten",
   "loadingResults": "Resultaten laden",
   "noResultsForThisTerm": "Geen resultaten voor deze term",
+  "typeToSeeResults": "Typ iets om resultaten te zien",
   "filterCommands": "Opdrachten filteren",
   "commands": "Opdrachten",
   "slashCommandsActive": "Slash-opdrachten actief",

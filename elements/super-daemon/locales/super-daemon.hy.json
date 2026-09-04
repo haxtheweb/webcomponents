@@ -22,6 +22,7 @@
   "results": "Արդյունքներ",
   "loadingResults": "Բեռնում են արդյունքները",
   "noResultsForThisTerm": "Այս տերմինի համար արդյունքներ չկան",
+  "typeToSeeResults": "Արդյունքները տեսնելու համար ինչ-որ բան մուտքագրեք",
   "filterCommands": "Զտել հրամանները",
   "commands": "Հրամաններ",
   "slashCommandsActive": "Slash հրամանները ակտիվ են",

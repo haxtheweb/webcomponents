@@ -22,6 +22,7 @@
   "results": "Kết quả",
   "loadingResults": "Đang tải kết quả",
   "noResultsForThisTerm": "Không có kết quả cho thuật ngữ này",
+  "typeToSeeResults": "Nhập nội dung để xem kết quả",
   "filterCommands": "Lọc lệnh",
   "commands": "Lệnh",
   "slashCommandsActive": "Lệnh gạch chéo đang hoạt động",

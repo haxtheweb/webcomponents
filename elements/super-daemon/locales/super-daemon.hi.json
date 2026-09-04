@@ -22,6 +22,7 @@
   "results": "परिणाम",
   "loadingResults": "परिणाम लोड हो रहे हैं",
   "noResultsForThisTerm": "इस शब्द के लिए कोई परिणाम नहीं",
+  "typeToSeeResults": "परिणाम देखने के लिए कुछ टाइप करें",
   "filterCommands": "कमांड फ़िल्टर करें",
   "commands": "कमांड",
   "slashCommandsActive": "स्लैश कमांड सक्रिय",

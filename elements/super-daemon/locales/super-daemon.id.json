@@ -22,6 +22,7 @@
   "results": "Hasil",
   "loadingResults": "Memuat hasil",
   "noResultsForThisTerm": "Tidak ada hasil untuk istilah ini",
+  "typeToSeeResults": "Ketik sesuatu untuk melihat hasil",
   "filterCommands": "Filter perintah",
   "commands": "Perintah",
   "slashCommandsActive": "Perintah slash aktif",

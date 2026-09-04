@@ -22,6 +22,7 @@
   "results": "Tulokset",
   "loadingResults": "Ladataan tuloksia",
   "noResultsForThisTerm": "Ei tuloksia tälle hakutermille",
+  "typeToSeeResults": "Kirjoita jotain nähdäksesi tulokset",
   "filterCommands": "Suodata komentoja",
   "commands": "Komennot",
   "slashCommandsActive": "Kauttaviiva-komennot aktiivisia",

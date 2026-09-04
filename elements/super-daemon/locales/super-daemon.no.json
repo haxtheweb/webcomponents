@@ -22,6 +22,7 @@
   "results": "Resultater",
   "loadingResults": "Laster resultater",
   "noResultsForThisTerm": "Ingen resultater for dette begrepet",
+  "typeToSeeResults": "Skriv noe for å se resultater",
   "filterCommands": "Filtrer kommandoer",
   "commands": "Kommandoer",
   "slashCommandsActive": "Skråstrek-kommandoer aktive",

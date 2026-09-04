@@ -22,6 +22,7 @@
   "results": "Rezultate",
   "loadingResults": "Se încarcă rezultatele",
   "noResultsForThisTerm": "Niciun rezultat pentru acest termen",
+  "typeToSeeResults": "Tastează ceva pentru a vedea rezultatele",
   "filterCommands": "Filtrează comenzile",
   "commands": "Comenzi",
   "slashCommandsActive": "Comenzi slash active",

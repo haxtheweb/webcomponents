@@ -22,6 +22,7 @@
   "results": "Результаты",
   "loadingResults": "Загружаются результаты",
   "noResultsForThisTerm": "Нет результатов для этого термина",
+  "typeToSeeResults": "Введите что-нибудь, чтобы увидеть результаты",
   "filterCommands": "Фильтровать команды",
   "commands": "Команды",
   "slashCommandsActive": "Слэш-команды активны",

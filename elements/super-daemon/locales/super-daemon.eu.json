@@ -22,6 +22,7 @@
   "results": "Emaitzak",
   "loadingResults": "Emaitzak kargatzen",
   "noResultsForThisTerm": "Ez dago emaitzarik termino honentzat",
+  "typeToSeeResults": "Idatzi zerbait emaitzak ikusteko",
   "filterCommands": "Komandoak iragazi",
   "commands": "Komandoak",
   "slashCommandsActive": "Barra komandoak aktibo",

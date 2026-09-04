@@ -22,6 +22,7 @@
   "results": "ผลลัพธ์",
   "loadingResults": "กำลังโหลดผลลัพธ์",
   "noResultsForThisTerm": "ไม่มีผลลัพธ์สำหรับคำนี้",
+  "typeToSeeResults": "พิมพ์บางอย่างเพื่อดูผลลัพธ์",
   "filterCommands": "กรองคำสั่ง",
   "commands": "คำสั่ง",
   "slashCommandsActive": "คำสั่งเครื่องหมายทับทำงานอยู่",

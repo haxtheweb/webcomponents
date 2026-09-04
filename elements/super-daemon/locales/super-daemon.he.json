@@ -22,6 +22,7 @@
   "results": "תוצאות",
   "loadingResults": "טוען תוצאות",
   "noResultsForThisTerm": "אין תוצאות למונח זה",
+  "typeToSeeResults": "הקלד משהו כדי לראות תוצאות",
   "filterCommands": "סנן פקודות",
   "commands": "פקודות",
   "slashCommandsActive": "פקודות קו נטוי פעילות",

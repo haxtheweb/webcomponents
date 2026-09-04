@@ -22,6 +22,7 @@
   "results": "Résultats",
   "loadingResults": "Chargement des résultats",
   "noResultsForThisTerm": "Aucun résultat pour ce terme",
+  "typeToSeeResults": "Tapez quelque chose pour voir les résultats",
   "filterCommands": "Filtrer les commandes",
   "commands": "Commandes",
   "slashCommandsActive": "Commandes slash actives",
