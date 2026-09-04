@@ -1,6 +1,5 @@
 {
   "selectPage": "Select page",
-  "backToSiteList": "Back to site list",
   "listMySites": "List my sites",
   "cancel": "Cancel",
   "editDetails": "Page details",
@@ -34,10 +33,11 @@
   "pageOutline": "Structure",
   "more": "More",
   "siteActions": "Site actions",
-  "insights": "Insights dashboard",
+  "insights": "Insights",
   "merlin": "Merlin",
   "summonMerlin": "Summon Merlin",
   "logOut": "Log out",
   "menu": "Menu",
-  "showMore": "More"
+  "showMore": "More",
+  "userAccess": "User Access"
 }
