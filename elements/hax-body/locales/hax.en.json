@@ -120,5 +120,7 @@
   "viewPageSource": "View Page Source",
   "filterContentTypes": "Filter Blocks",
   "recent": "Recent",
-  "popular": "Popular"
+  "popular": "Popular",
+  "copiedToClipboard": "Copied to clipboard",
+  "pages": "Pages"
 }

@@ -310,6 +310,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
     this.t = {
       updateHTML: "Update HTML",
       copyHTML: "Copy HTML",
+      copiedToClipboard: "Copied to clipboard",
       prettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAX schema JSON",

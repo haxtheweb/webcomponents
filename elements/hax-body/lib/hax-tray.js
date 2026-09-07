@@ -104,6 +104,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       center: "Center",
       right: "Right",
       search: "Search",
+      pages: "Pages",
       templates: "Templates",
       width: "Width",
     };
@@ -1021,7 +1022,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         ? html`<hax-stax-browser
             id="pagesbrowser"
             ?hidden="${hidden}"
-            label="${this.t.pages || "Pages"}"
+            label="${this.t.pages}"
             template-type="page"
           ></hax-stax-browser>`
         : ""}
