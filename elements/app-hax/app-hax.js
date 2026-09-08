@@ -77,6 +77,11 @@ const SYSTEM_SETTINGS_PANELS = {
     icon: "image:image",
     route: "media",
   },
+  configuration: {
+    label: "Configuration",
+    icon: "icons:language",
+    route: "configuration",
+  },
   "style-guide": {
     label: "Style guide",
     icon: "editor:format-color-text",
@@ -97,6 +102,7 @@ const SYSTEM_SETTINGS_ROUTE_ALIASES = {
   blocks: "blocks",
   integrations: "integrations",
   media: "media",
+  configuration: "configuration",
   "style-guide": "style-guide",
   "custom-code": "custom-code",
   "js-css": "custom-code",
