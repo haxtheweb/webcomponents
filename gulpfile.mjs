@@ -385,12 +385,30 @@ function validateElementName(name) {
 gulp.task("wc-autoloader", async () => {
   glob(path.join("./build/es6/node_modules/**/*.js"), (er, files) => {
     let elements = {};
+    // adjacency map: fLocation -> array of raw static import specifiers
+    // (relative paths as written in the built file). Used below to compute
+    // per-tag transitive static-import closures for wc-registry-graph.json.
+    // This is a server-side build artifact consumed by the HAXcms PHP/NodeJS
+    // backends to emit accurate, capped modulepreload hints; it is NOT
+    // fetched by the browser, so zero added runtime cost.
+    let importsByFile = {};
+    // regex for static ESM import/export...from "x.js" and side-effect import "x.js"
+    // (dynamic import("x") uses parens and does not match; import.meta has no quote)
+    const staticImportRegex = /(?:from|import)\s*["']([^"']+\.js)["']/g;
     // async loop over files
     files.forEach((file) => {
       // grab the name of the file
       if (fs.existsSync(file)) {
         let fLocation = file.replace("build/es6/node_modules/", "");
         const contents = fs.readFileSync(file, "utf8");
+        // collect static imports for the graph adjacency (same pass, no re-read)
+        let importMatches = [];
+        let im;
+        staticImportRegex.lastIndex = 0;
+        while ((im = staticImportRegex.exec(contents)) !== null) {
+          importMatches.push(im[1]);
+        }
+        importsByFile[fLocation] = importMatches;
         // This Regex is looking for tags that are defined by string values
         // this will work for customElements.define("local-time",s))
         // This will NOT work for customElements.define(LocalTime.tagName,s))
@@ -442,6 +460,86 @@ gulp.task("wc-autoloader", async () => {
       }
     });
 
+    // -- build wc-registry-graph.json (Phase 1 of the magic-script perf plan) --
+    // For each registered tag, BFS the static-import graph from its entry
+    // point to collect the transitive module closure. Intern all paths into
+    // a single `paths` array and map each tag to { e: entryIdx, d: directIdxs,
+    // c: closureIdxs }. Backends use `d` (depth-1) to emit capped (<=12,
+    // depth<=2) modulepreload hints and `c` for idle editor warmup.
+    const NODE_MODULES_BASE = path.resolve("build/es6/node_modules");
+    // resolve a raw relative import (as written in fromFile) to a
+    // registry-relative location key; null for non-relative/out-of-tree/missing
+    function resolveImportLocation(fromFile, importPath) {
+      if (!importPath) return null;
+      // only relative specifiers are present in the built tree; skip bare/URL
+      if (importPath.charAt(0) !== "." && importPath.charAt(0) !== "/") {
+        return null;
+      }
+      const resolved = path.resolve(path.dirname(fromFile), importPath);
+      if (resolved.indexOf(NODE_MODULES_BASE) !== 0) return null;
+      let rel = path.relative(NODE_MODULES_BASE, resolved);
+      if (!rel) return null;
+      rel = rel.split(path.sep).join("/");
+      if (!rel.endsWith(".js")) return null;
+      return rel;
+    }
+    // set of all registry-relative locations that actually exist on disk
+    const fileSet = new Set();
+    for (const k in importsByFile) fileSet.add(k);
+    // intern all paths into a single `paths` array and build the full
+    // adjacency map `adj` (path index -> array of import path indices).
+    // Storing adjacency (not just per-tag closures) lets the backend helper
+    // compute depth-<=2 preloads for ANY entry -- shell lib modules
+    // (haxcms-site-builder, site-store, etc. which are NOT custom-element
+    // tags), the active theme entry, and content tags alike.
+    const graphPaths = [];
+    const graphPathIndex = {};
+    function internPath(p) {
+      if (!(p in graphPathIndex)) {
+        graphPathIndex[p] = graphPaths.length;
+        graphPaths.push(p);
+      }
+      return graphPathIndex[p];
+    }
+    // adjacency as a plain object: { "pathIdx": [importIdx, ...], ... }
+    // (JSON object keys are strings; the helper casts back to numbers).
+    // Only entries with at least one in-tree import are stored to save bytes.
+    const graphAdj = {};
+    for (const fLoc in importsByFile) {
+      const fromIdx = internPath(fLoc);
+      const imports = importsByFile[fLoc] || [];
+      const outIdxs = [];
+      for (let j = 0; j < imports.length; j++) {
+        const resolved = resolveImportLocation(
+          "build/es6/node_modules/" + fLoc,
+          imports[j]
+        );
+        if (resolved) outIdxs.push(internPath(resolved));
+      }
+      if (outIdxs.length) graphAdj[fromIdx] = outIdxs;
+    }
+    // tags: tag name -> entry path index. The helper resolves the entry and
+    // walks `adj` for direct imports (content-tag preload) or full closure
+    // (editor warmup).
+    const graphTags = {};
+    for (const tag in elements) {
+      if (fileSet.has(elements[tag])) {
+        graphTags[tag] = internPath(elements[tag]);
+      }
+    }
+    const graphJson = JSON.stringify({
+      paths: graphPaths,
+      adj: graphAdj,
+      tags: graphTags,
+    });
+    // write graph to the same locations as wc-registry.json so backends
+    // can read it co-located with the flat registry
+    fs.writeFileSync("./wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
+    fs.writeFileSync("./dist/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
+    fs.writeFileSync("./elements/haxcms-elements/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
+    fs.writeFileSync("./elements/replace-tag/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
+    fs.writeFileSync("./elements/product-card/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
+    fs.writeFileSync("./elements/hax-cloud/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
     // write entries to file
     fs.writeFileSync(
       "./wc-registry.json",

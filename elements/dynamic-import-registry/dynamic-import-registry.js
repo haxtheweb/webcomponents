@@ -61,6 +61,23 @@ class DynamicImportRegistry extends HTMLElement {
     if (item.tag && item.path) {
       if (!this.list[item.tag]) {
         this.list[item.tag] = item.path;
+        // Revive the late-registration safety net: notify the autoloader that
+        // a new tag became available AFTER the initial bulk registration. The
+        // guard on WCAutoloadRegistryRegistered (set by wc-autoload after its
+        // bulk register loop) prevents fanning out a DOM query per entry during
+        // the ~595-entry initial load. postLoaded then loads the definition if
+        // the tag is already present in the DOM (e.g. late <wc-registry> blocks).
+        if (
+          globalThis.WCAutoloadRegistryRegistered &&
+          globalThis.dispatchEvent
+        ) {
+          globalThis.dispatchEvent(
+            new CustomEvent(
+              "dynamic-import-registry--new-registration",
+              { detail: { tag: item.tag, path: item.path } },
+            ),
+          );
+        }
       }
     } else {
       console.warn(

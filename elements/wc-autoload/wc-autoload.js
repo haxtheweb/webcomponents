@@ -29,6 +29,9 @@ const fetch_retry = async (url, options, n) => {
     } catch (err) {
       const isLastAttempt = i + 1 === n;
       if (isLastAttempt) throw err;
+      // modest backoff so a transient CDN hiccup doesn't immediately retry
+      // at full speed; attempt * 250ms (250ms, 500ms, ...)
+      await new Promise((resolve) => setTimeout(resolve, (i + 1) * 250));
     }
   }
 };
@@ -52,8 +55,9 @@ globalThis.WCAutoload.process = (e) => {
         target = loader.target;
         loader.processNewElement(target);
       }
-      // hack to convert children into array
-      target.querySelectorAll("*").forEach((el) => {
+      // hack to convert children into array; :not(:defined) limits the sweep
+      // to not-yet-upgraded custom elements instead of every node in the tree
+      target.querySelectorAll(":not(:defined)").forEach((el) => {
         if (el.tagName && !list[el.tagName]) {
           loader.processNewElement(el);
           list[el.tagName] = el.tagName;
@@ -105,6 +109,11 @@ globalThis.WCAutoload.process = (e) => {
             });
           }
         }
+        // mark the initial bulk registration complete so late register()
+        // calls (from <wc-registry> blocks or the register event) can safely
+        // dispatch dynamic-import-registry--new-registration without fanning
+        // out a DOM query per entry during this bulk load.
+        globalThis.WCAutoloadRegistryRegistered = true;
         let target = document;
         if (loader.target) {
           target = loader.target;
@@ -112,7 +121,8 @@ globalThis.WCAutoload.process = (e) => {
         }
         // mutation observer will pick up changes after initial load
         // but this gets us at load time with fallback support for legacy
-        target.querySelectorAll("*").forEach((el) => {
+        // :not(:defined) limits the sweep to not-yet-upgraded custom elements
+        target.querySelectorAll(":not(:defined)").forEach((el) => {
           if (el.tagName && !list[el.tagName]) {
             loader.processNewElement(el);
             list[el.tagName] = el.tagName;
@@ -123,25 +133,38 @@ globalThis.WCAutoload.process = (e) => {
     }
   });
 };
-// forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers
 globalThis.WCAutoload.initialProcess = () => {
   globalThis.WCAutoload.process().catch((e) => {
     console.warn(e);
   });
 };
+// Default eagerness is "dom" (DOMContentLoaded) so content components hydrate
+// as soon as the DOM is parsed, without waiting for window.load (images,
+// iframes, analytics). HAXcms/app-hax rely on this default. Consumers that
+// explicitly want load-timing (e.g. non-HAXcms standalone usage) set
+// globalThis.WCAutoloadEagerness = "load" to opt back into the old behavior.
 if (
   globalThis.document &&
   globalThis.document.readyState &&
   globalThis.document.readyState !== "loading"
 ) {
+  // already parsed (interactive/complete) -> process on the next microtask
   setTimeout(() => {
     globalThis.WCAutoload.initialProcess();
   }, 0);
-} else {
+} else if (globalThis.WCAutoloadEagerness === "load") {
+  // explicit opt-back into window.load timing
   globalThis.addEventListener("load", globalThis.WCAutoload.initialProcess, {
     once: true,
   });
+} else {
+  // default: hydrate at DOMContentLoaded
+  globalThis.addEventListener(
+    "DOMContentLoaded",
+    globalThis.WCAutoload.initialProcess,
+    { once: true },
+  );
 }
 
 // edge case; definition to load comes in AFTER we have loaded the page

@@ -817,6 +817,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         if (this.isLoggedIn && !this.loggedInTime) {
           this.loggedInTime = tstamp;
           this._timeStamp = this.loggedInTime;
+          // idle-warm the HAX editor closure so entering edit mode (or the
+          // system dashboard) is near-instant for logged-in users instead of
+          // a cold multi-second import chain. No-op for anonymous visitors.
+          this._scheduleEditorWarmup();
         }
       });
     });
@@ -1206,9 +1210,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             }
           }
         } else if (globalThis.WCAutoload) {
-          setTimeout(() => {
-            globalThis.WCAutoload.process();
-          }, 0);
+          // process() is fire-and-forget and takes the fast path once the
+          // registry file is processed; call it directly instead of an
+          // extra setTimeout(0) hop (manual process() contract unchanged).
+          globalThis.WCAutoload.process();
         }
       }, 5);
     }
@@ -1280,10 +1285,134 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
     }
   }
+  /**
+   * Idle-warm the HAX editor closure for logged-in users so entering edit
+   * mode (or the system dashboard) is near-instant instead of a cold
+   * multi-second import chain. Runs via requestIdleCallback after first
+   * login, fetches the server-side wc-registry-graph.json (small, and only
+   * for logged-in users -- never taxes anonymous visitors), BFSes the
+   * transitive closure of the editor entry tags, and injects modulepreload
+   * links for paths not already preloaded. No-ops gracefully when the graph
+   * is absent (older CDN builds / older backends) or on any error.
+   */
+  _scheduleEditorWarmup() {
+    // only for logged-in users; anonymous visitors never pay this cost
+    if (!store.isLoggedIn) {
+      return;
+    }
+    const ric =
+      globalThis.requestIdleCallback ||
+      function (cb) {
+        return setTimeout(cb, 200);
+      };
+    const run = () => {
+      try {
+        // module basePath is used both for the graph URL fallback and for
+        // building modulepreload hrefs below, so resolve it up front.
+        const loader =
+          globalThis.WCAutoload &&
+          globalThis.WCAutoload.requestAvailability
+            ? globalThis.WCAutoload.requestAvailability()
+            : null;
+        const basePath =
+          (loader && loader.registry && loader.registry.basePath) ||
+          globalThis.WCAutoloadBasePath ||
+          globalThis.WCGlobalBasePath ||
+          "./";
+        // derive the graph URL from the registry file URL (site root) rather
+        // than the module basePath, since wc-registry-graph.json lives next
+        // to wc-registry.json, not inside build/es6/node_modules/
+        const registryFile = globalThis.WCAutoloadRegistryFile || "";
+        let graphUrl = "";
+        if (registryFile && registryFile.indexOf("wc-registry.json") !== -1) {
+          graphUrl = registryFile.replace(
+            /wc-registry\.json$/,
+            "wc-registry-graph.json",
+          );
+        } else {
+          graphUrl = basePath + "wc-registry-graph.json";
+        }
+        fetch(graphUrl)
+          .then((r) => r.json())
+          .then((graph) => {
+            if (!graph || !graph.paths || !graph.adj || !graph.tags) {
+              return;
+            }
+            const editorTags = [
+              "hax-body",
+              "hax-tray",
+              "hax-store",
+              "haxcms-site-editor-ui",
+            ];
+            const seen = new Set();
+            const queue = [];
+            for (let i = 0; i < editorTags.length; i++) {
+              const idx = graph.tags[editorTags[i]];
+              if (idx !== undefined && !seen.has(idx)) {
+                seen.add(idx);
+                queue.push(idx);
+              }
+            }
+            // BFS the closure, capped so we don't over-preload
+            const cap = 40;
+            const ordered = [];
+            while (queue.length && ordered.length < cap) {
+              const idx = queue.shift();
+              ordered.push(idx);
+              const imports = graph.adj[String(idx)];
+              if (Array.isArray(imports)) {
+                for (let j = 0; j < imports.length; j++) {
+                  const impIdx = imports[j];
+                  if (!seen.has(impIdx)) {
+                    seen.add(impIdx);
+                    queue.push(impIdx);
+                  }
+                }
+              }
+            }
+            const head = globalThis.document.head;
+            if (!head) {
+              return;
+            }
+            const existing = new Set();
+            head
+              .querySelectorAll('link[rel="modulepreload"]')
+              .forEach((l) => {
+                const href = l.getAttribute("href");
+                if (href) {
+                  existing.add(href);
+                }
+              });
+            for (let i = 0; i < ordered.length; i++) {
+              const p = graph.paths[ordered[i]];
+              if (!p) {
+                continue;
+              }
+              const href = basePath + "build/es6/node_modules/" + p;
+              if (existing.has(href)) {
+                continue;
+              }
+              const link = globalThis.document.createElement("link");
+              link.rel = "modulepreload";
+              link.href = href;
+              link.setAttribute("crossorigin", "anonymous");
+              link.setAttribute("data-hax-editor-warmup", "");
+              head.appendChild(link);
+            }
+          })
+          .catch(() => {
+            /* graph absent on older builds -- no-op */
+          });
+      } catch (e) {
+        /* never let warmup break rendering */
+      }
+    };
+    ric(run, { timeout: 3000 });
+  }
 
   /**
    * Style guide integration for HAX - adds template selector when templates are available
-   * This should be called by HaxStore's designSystemHAXProperties method
+   * This is called by HaxStore's designSystemHAXProperties method
    */
   async addStyleGuideTemplateSelector(props, tag) {
     try {
