@@ -535,6 +535,22 @@ class HAXCMSSystemSettings extends DDD {
           font-size: var(--ddd-font-size-5xs);
           line-height: 1.35;
         }
+        .status-link {
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-skyBlue)
+          );
+          text-decoration: none;
+        }
+        .status-link:focus-visible,
+        .status-link:hover {
+          text-decoration: underline;
+        }
+        .status-links {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+        }
         .status-row.ok {
           color: var(--ddd-theme-default-opportunityGreen);
         }
@@ -2713,15 +2729,45 @@ class HAXCMSSystemSettings extends DDD {
       const value =
         typeof row.value === "undefined" || row.value === null ? "" : row.value;
       const description = row.description || row.details || "";
-      normalizedRows.push({
+      const normalized = {
         key: row.key || this._normalizeMachineName(`${title}`),
         tone: tone,
         title: `${title}`,
         value: `${value}`,
         description: `${description || ""}`,
-      });
+      };
+      if (typeof row.valueLink === "string" && row.valueLink.trim() !== "") {
+        normalized.valueLink = row.valueLink.trim();
+      }
+      if (Array.isArray(row.links) && row.links.length > 0) {
+        const normalizedLinks = this._normalizeStatusLinks(row.links);
+        if (normalizedLinks.length > 0) {
+          normalized.links = normalizedLinks;
+        }
+      }
+      normalizedRows.push(normalized);
     }
     return normalizedRows;
+  }
+
+  _normalizeStatusLinks(links = []) {
+    const normalized = [];
+    if (!Array.isArray(links)) {
+      return normalized;
+    }
+    for (let i = 0; i < links.length; i++) {
+      const link = links[i] || {};
+      const url = typeof link.url === "string" ? link.url.trim() : "";
+      if (!url) {
+        continue;
+      }
+      const label =
+        typeof link.label === "string" && link.label.trim() !== ""
+          ? link.label.trim()
+          : url;
+      normalized.push({ url: url, label: label });
+    }
+    return normalized;
   }
 
   _ensureVersionStatusRow(
@@ -3360,6 +3406,45 @@ class HAXCMSSystemSettings extends DDD {
     `;
   }
 
+  _renderStatusValue(row) {
+    if (!row) {
+      return "—";
+    }
+    const value =
+      typeof row.value === "string" && row.value !== "" ? row.value : "—";
+    if (
+      value !== "—" &&
+      typeof row.valueLink === "string" &&
+      row.valueLink !== ""
+    ) {
+      return html`<a
+        class="status-link"
+        href="${row.valueLink}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >${value}</a
+      >`;
+    }
+    return html`${value}`;
+  }
+
+  _renderStatusLinks(links) {
+    if (!Array.isArray(links) || links.length === 0) {
+      return "";
+    }
+    return html`<span class="status-links">
+      ${links.map(
+        (link) => html`<a
+          class="status-link"
+          href="${link.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >${link.label}</a
+        >`,
+      )}
+    </span>`;
+  }
+
   _renderStatusSummaryCards() {
     return html`
       <div class="status-summary-grid">
@@ -3419,13 +3504,26 @@ class HAXCMSSystemSettings extends DDD {
                         >
                       </td>
                       <td class="status-title">${row.title}</td>
-                      <td class="status-value">${row.value || "—"}</td>
+                      <td class="status-value">
+                        ${this._renderStatusValue(row)}
+                      </td>
                     </tr>
-                    ${row.description
+                    ${row.description ||
+                    (Array.isArray(row.links) && row.links.length > 0)
                       ? html`
                           <tr class="status-row ${row.tone}">
                             <td colspan="3" class="status-description">
-                              ${this._renderStatusDescription(row.description)}
+                              ${row.description
+                                ? this._renderStatusDescription(
+                                    row.description,
+                                  )
+                                : ""}
+                              ${row.description &&
+                              Array.isArray(row.links) &&
+                              row.links.length > 0
+                                ? html`<br />`
+                                : ""}
+                              ${this._renderStatusLinks(row.links)}
                             </td>
                           </tr>
                         `
