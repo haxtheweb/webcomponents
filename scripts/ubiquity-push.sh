@@ -36,12 +36,12 @@ node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-php/.well-known/
 
 ## STEP 2 NORMALIZE ACROSS ALL PROJECTS
 # hax11ty
-rm -rf ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build
-cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build
+rm -rf ~/haxtheweb/hax11ty/app/build
+cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/hax11ty/app/build
 
-cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build.js
-cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/build-haxcms.js
-cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/hax11ty/app/unbundled-webcomponents/app/dist/wc-registry.json
+cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/hax11ty/app/build.js
+cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/hax11ty/app/build-haxcms.js
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/hax11ty/app/wc-registry.json
 
 # haxcms-php
 # normalize build build.js build-haxcms.js wc-registry.json and .version
