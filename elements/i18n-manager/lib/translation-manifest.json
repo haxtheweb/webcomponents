@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 228,
-    "elementsWithTranslations": 40,
-    "translationFilesFound": 1307,
+    "elementsScanned": 229,
+    "elementsWithTranslations": 41,
+    "translationFilesFound": 1325,
     "languagesSupported": [
       "af",
       "am",
@@ -594,6 +594,44 @@
       "de",
       "es",
       "fr"
+    ],
+    "hax-app-installer.ar": [
+      "haxProperties"
+    ],
+    "hax-app-installer": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "hax-app-installer.bn": [
+      "haxProperties"
+    ],
+    "hax-app-installer.es": [
+      "haxProperties"
+    ],
+    "hax-app-installer.fr": [
+      "haxProperties"
+    ],
+    "hax-app-installer.hi": [
+      "haxProperties"
+    ],
+    "hax-app-installer.ja": [
+      "haxProperties"
+    ],
+    "hax-app-installer.pt": [
+      "haxProperties"
+    ],
+    "hax-app-installer.ru": [
+      "haxProperties"
+    ],
+    "hax-app-installer.zh": [
+      "haxProperties"
     ],
     "hax": [
       "af",
