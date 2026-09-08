@@ -488,7 +488,7 @@ HAX includes purpose-built components for learning:
 
 ### Community & Support
 - **HAX Community**: Run `hax party` for involvement opportunities
-- **Discord**: https://discord.gg/EKYJAjqGhf
+- **Discord**: https://discord.gg/aCGxmRHEJP
 - **Issue Reporting**: Use `haxtheweb/issues` or GitHub interface
 - **Merlin Integration**: Use "Issue" command in HAX spaces for automated reporting
 - **Documentation**: Run `man hax` (Linux/macOS) for comprehensive CLI docs
