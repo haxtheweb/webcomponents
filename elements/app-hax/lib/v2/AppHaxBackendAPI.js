@@ -102,6 +102,14 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
     operationId: "saveMediaSettingsPatch",
     method: "PATCH",
   },
+  getLocalizationSettings: {
+    operationId: "getLocalizationSettings",
+    method: "GET",
+  },
+  saveLocalizationSettings: {
+    operationId: "saveLocalizationSettingsPatch",
+    method: "PATCH",
+  },
   systemBlocksList: {
     operationId: "systemBlocksGet",
     method: "GET",
