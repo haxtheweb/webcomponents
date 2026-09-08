@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/hax-app-installer",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "description": "Webcomponent hax-app-installer following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -28,12 +28,12 @@
   },
   "dependencies": {
     "lit": "3.3.3",
-    "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/i18n-manager": "^26.0.0"
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^26.0.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2"
   },
