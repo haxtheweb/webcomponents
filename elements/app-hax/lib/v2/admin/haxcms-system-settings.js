@@ -84,6 +84,7 @@ class HAXCMSSystemSettings extends DDD {
     this.__themesLoaded = false;
     this.__integrationsLoaded = false;
     this.__mediaLoaded = false;
+    this.__localizationLoaded = false;
     this.__skeletonUploadField = null;
     this.__skeletonUploadNode = null;
     this.__boundSkeletonUploadBefore = this._onSkeletonUploadBefore.bind(this);
@@ -1103,6 +1104,68 @@ class HAXCMSSystemSettings extends DDD {
         ],
       },
       {
+        key: "configuration",
+        label: "Configuration",
+        icon: "icons:language",
+        group: "advanced",
+        description: "System-wide defaults",
+        intro:
+          "Set the default language applied to newly created sites and other system-wide configuration defaults.",
+        panelType: "fields",
+        sections: [
+          {
+            key: "localization",
+            label: "Localization",
+            icon: "icons:language",
+            description:
+              "Localization defaults are stored in the system config localization block.",
+            fields: [
+              {
+                property: "defaultLanguage",
+                title: "Default language for new sites",
+                inputMethod: "select",
+                options: {
+                  "en-US": "English (United States)",
+                  "en-GB": "English (United Kingdom)",
+                  "es-ES": "Spanish (Spain)",
+                  "es-MX": "Spanish (Mexico)",
+                  "fr-FR": "French (France)",
+                  "de-DE": "German (Germany)",
+                  "it-IT": "Italian (Italy)",
+                  "pt-BR": "Portuguese (Brazil)",
+                  "pt-PT": "Portuguese (Portugal)",
+                  "nl-NL": "Dutch (Netherlands)",
+                  "pl-PL": "Polish (Poland)",
+                  "ru-RU": "Russian (Russia)",
+                  "uk-UA": "Ukrainian (Ukraine)",
+                  "ja-JP": "Japanese (Japan)",
+                  "ko-KR": "Korean (Korea)",
+                  "zh-CN": "Chinese (Simplified)",
+                  "zh-TW": "Chinese (Traditional)",
+                  "ar-SA": "Arabic (Saudi Arabia)",
+                  "hi-IN": "Hindi (India)",
+                  "tr-TR": "Turkish (Turkey)",
+                  "sv-SE": "Swedish (Sweden)",
+                  "da-DK": "Danish (Denmark)",
+                  "fi-FI": "Finnish (Finland)",
+                  "nb-NO": "Norwegian (Norway)",
+                  "cs-CZ": "Czech (Czech Republic)",
+                  "el-GR": "Greek (Greece)",
+                  "he-IL": "Hebrew (Israel)",
+                  "th-TH": "Thai (Thailand)",
+                  "vi-VN": "Vietnamese (Vietnam)",
+                  "id-ID": "Indonesian (Indonesia)",
+                  "ro-RO": "Romanian (Romania)",
+                  "hu-HU": "Hungarian (Hungary)",
+                  "ca-ES": "Catalan (Spain)",
+                },
+                default: "en-US",
+              },
+            ],
+          },
+        ],
+      },
+      {
         key: "style-guide",
         label: "Style Guide",
         icon: "editor:format-color-text",
@@ -1577,6 +1640,8 @@ class HAXCMSSystemSettings extends DDD {
       this._loadApiKeysData();
     } else if (normalized === "media") {
       this._loadMediaSettingsData(true);
+    } else if (normalized === "configuration") {
+      this._loadLocalizationSettingsData(true);
     } else if (normalized === "status") {
       this._loadStatusData();
     }
@@ -1761,6 +1826,9 @@ class HAXCMSSystemSettings extends DDD {
     if (panelKey === "media") {
       return this._buildMediaSavePayload(values);
     }
+    if (panelKey === "configuration") {
+      return this._buildLocalizationSavePayload(values);
+    }
     return values;
   }
 
@@ -1813,6 +1881,11 @@ class HAXCMSSystemSettings extends DDD {
         : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
     } else if (panelKey === "media") {
       saved = await this._saveMediaSettingsData(savePayload);
+      this.statusMessage = saved
+        ? `${this._panelLabel(panelKey)} saved`
+        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
+    } else if (panelKey === "configuration") {
+      saved = await this._saveLocalizationSettingsData(savePayload);
       this.statusMessage = saved
         ? `${this._panelLabel(panelKey)} saved`
         : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
@@ -2315,6 +2388,129 @@ class HAXCMSSystemSettings extends DDD {
     if (response && response.status === 200) {
       this._applyMediaSettingsRecord(mediaSettings);
       this.__mediaLoaded = true;
+      return true;
+    }
+    return false;
+  }
+
+  _localizationLanguageOptions() {
+    const panel = this._getPanelByKey("configuration");
+    if (!panel || !Array.isArray(panel.sections)) {
+      return {};
+    }
+    for (let i = 0; i < panel.sections.length; i++) {
+      const section = panel.sections[i];
+      if (!section || !Array.isArray(section.fields)) {
+        continue;
+      }
+      for (let j = 0; j < section.fields.length; j++) {
+        const field = section.fields[j];
+        if (
+          field &&
+          field.property === "defaultLanguage" &&
+          field.options &&
+          typeof field.options === "object" &&
+          !Array.isArray(field.options)
+        ) {
+          return field.options;
+        }
+      }
+    }
+    return {};
+  }
+
+  _normalizeLanguageTagValue(value, fallback = "") {
+    const options = this._localizationLanguageOptions();
+    const normalized = typeof value === "string" ? value.trim() : "";
+    if (
+      normalized &&
+      Object.prototype.hasOwnProperty.call(options, normalized)
+    ) {
+      return normalized;
+    }
+    const normalizedFallback =
+      typeof fallback === "string" ? fallback.trim() : "";
+    if (
+      normalizedFallback &&
+      Object.prototype.hasOwnProperty.call(options, normalizedFallback)
+    ) {
+      return normalizedFallback;
+    }
+    return "en-US";
+  }
+
+  _normalizeLocalizationSettingsRecord(source = {}) {
+    const defaults =
+      this.defaultPanelValues &&
+      this.defaultPanelValues.configuration &&
+      typeof this.defaultPanelValues.configuration === "object"
+        ? this.defaultPanelValues.configuration
+        : {};
+    const data =
+      source && typeof source === "object" && !Array.isArray(source)
+        ? source
+        : {};
+    const payload =
+      data.localizationSettings &&
+      typeof data.localizationSettings === "object" &&
+      !Array.isArray(data.localizationSettings)
+        ? data.localizationSettings
+        : data;
+    return {
+      defaultLanguage: this._normalizeLanguageTagValue(
+        payload.defaultLanguage,
+        defaults.defaultLanguage,
+      ),
+    };
+  }
+
+  _applyLocalizationSettingsRecord(record = {}) {
+    const normalized = this._normalizeLocalizationSettingsRecord(record);
+    const currentValues = this._cloneData(this.panelValues || {});
+    currentValues.configuration = normalized;
+    this.panelValues = currentValues;
+  }
+
+  _buildLocalizationSavePayload(values = {}) {
+    const normalized = this._normalizeLocalizationSettingsRecord(values);
+    return {
+      defaultLanguage: normalized.defaultLanguage,
+    };
+  }
+
+  async _loadLocalizationSettingsData(force = false) {
+    if (this.__localizationLoaded && !force) {
+      return;
+    }
+    const response = await this._callAppEndpoint(["getLocalizationSettings"]);
+    if (response && response.data && typeof response.data === "object") {
+      this._applyLocalizationSettingsRecord(response.data);
+      this.__localizationLoaded = true;
+      return;
+    }
+    this._applyLocalizationSettingsRecord(
+      this.defaultPanelValues.configuration || {},
+    );
+    this.statusMessage =
+      "Saved localization settings could not be loaded right now.";
+  }
+
+  async _saveLocalizationSettingsData(payload = {}) {
+    const localizationSettings = this._buildLocalizationSavePayload(payload);
+    const response = await this._callAppEndpointWithData(
+      ["saveLocalizationSettings"],
+      {
+        localizationSettings: localizationSettings,
+      },
+    );
+    if (response && response.data && typeof response.data === "object") {
+      this._applyLocalizationSettingsRecord(response.data);
+      this.__localizationLoaded = true;
+      return true;
+    }
+    if (response && response.status === 200) {
+      this._applyLocalizationSettingsRecord(localizationSettings);
+      this.__localizationLoaded = true;
       return true;
     }
     return false;
@@ -2939,6 +3135,7 @@ class HAXCMSSystemSettings extends DDD {
     const secondRowOrder = [
       "integrations",
       "media",
+      "configuration",
       "style-guide",
       "custom-code",
     ];
@@ -2949,8 +3146,8 @@ class HAXCMSSystemSettings extends DDD {
             <h2>System settings</h2>
             <p>
               System-level controls for runtime status, skeletons, themes,
-              allowed blocks, integrations, media defaults, and global custom
-              code.
+              allowed blocks, integrations, media defaults, configuration
+              defaults, and global custom code.
             </p>
           </div>
           <div class="primary-grid">
