@@ -15053,7 +15053,7 @@ latest-version@^3.0.0:
 
 "launchpad@git+https://github.com/web-padawan/launchpad.git#fdd994d089572e2c2152d70cc74abf497d08d5b7":
   version "0.7.5"
-  resolved "git+ssh://git@github.com/web-padawan/launchpad.git#fdd994d089572e2c2152d70cc74abf497d08d5b7"
+  resolved "git+https://github.com/web-padawan/launchpad.git#fdd994d089572e2c2152d70cc74abf497d08d5b7"
   integrity sha512-NC13VV6UiXI+RHX8NJ95D6t/tkP1CmSWigJTTT6IWjLx3zlqe+vPEEbQgl6anr3K84nam/Gj8yjEYm8YuMctHg==
   dependencies:
     async "^2.0.1"
