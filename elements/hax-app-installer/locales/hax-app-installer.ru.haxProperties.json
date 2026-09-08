@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "Заголовок"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "Пользовательское значение"
+            }
+        }
+    ]
+}

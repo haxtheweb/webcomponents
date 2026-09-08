@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "タイトル"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "カスタム値"
+            }
+        }
+    ]
+}

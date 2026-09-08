@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>HaxAppInstaller: hax-app-installer Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: var(--ddd-font-primary, "Roboto", sans-serif);
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: light-dark(#eff2f5, #000321);
+        color: light-dark(#000321, #ffffff);
+        min-height: 100vh;
+      }
+      .demo-controls {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: var(--ddd-spacing-4, 16px);
+        flex-wrap: wrap;
+        padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-6, 24px);
+        background: light-dark(#001e44, #000321);
+        color: #ffffff;
+        box-shadow: var(--ddd-boxShadow-sm, 0 4px 8px rgba(0, 0, 0, 0.1));
+        font-family: var(--ddd-font-navigation, "Roboto Condensed", sans-serif);
+      }
+      .demo-controls h2 {
+        margin: 0;
+        font-size: var(--ddd-font-size-4xs, 16px);
+        font-weight: var(--ddd-font-weight-bold, 700);
+        color: #ffffff;
+        font-family: var(--ddd-font-secondary, "Roboto Slab", serif);
+      }
+      .demo-controls label {
+        font-size: var(--ddd-font-size-5xs, 14px);
+        font-weight: var(--ddd-font-weight-medium, 500);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--ddd-spacing-2, 8px);
+      }
+      .demo-controls select {
+        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-3, 12px);
+        font-size: var(--ddd-font-size-5xs, 14px);
+        border: 1px solid var(--ddd-primary-5, #a2aaad);
+        border-radius: var(--ddd-radius-xs, 4px);
+        background: light-dark(#ffffff, #262626);
+        color: light-dark(#000321, #ffffff);
+        font-family: var(--ddd-font-navigation, "Roboto Condensed", sans-serif);
+        cursor: pointer;
+      }
+      .demo-controls select:focus {
+        outline: 2px solid var(--ddd-primary-8, #009cde);
+        outline-offset: 2px;
+      }
+      .demo-controls .spacer {
+        flex: 1;
+      }
+      .demo-controls .badge {
+        font-size: var(--ddd-font-size-6xs, 12px);
+        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+        border-radius: var(--ddd-radius-xs, 4px);
+        background: var(--ddd-primary-8, #009cde);
+        color: #ffffff;
+        font-weight: var(--ddd-font-weight-bold, 700);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-controls">
+      <h2>Installer Demo</h2>
+      <label>
+        Scenario:
+        <select id="scenario-select">
+          <option value="failures">All failures</option>
+          <option value="successes" selected>All successes</option>
+        </select>
+      </label>
+      <label>
+        Step:
+        <select id="step-select">
+          <option value="1" selected>Step 1 — Choose language</option>
+          <option value="2">Step 2 — Verify requirements</option>
+          <option value="3">Step 3 — Configure system</option>
+          <option value="4">Step 4 — Start HAXing</option>
+        </select>
+      </label>
+      <span class="spacer"></span>
+      <span class="badge" id="state-badge">step 1</span>
+    </div>
+
+    <script type="module">
+      import "../hax-app-installer.js";
+
+      // Mock state — controlled by the demo control bar
+      globalThis.__installerMock = {
+        scenario: "successes",
+        step: 1,
+      };
+
+      // Canned data for each scenario + step
+      const MOCK_DATA = {
+        failures: {
+          1: { step: 1, language: "en" },
+          2: {
+            step: 2,
+            language: "en",
+            hasErrors: true,
+            needsConfiguration: [
+              {
+                title: "Configuration directory",
+                value: "Missing",
+                description: "Expected path: /var/www/html/_config",
+                suggestedCommand: "mkdir -p '/var/www/html/_config'",
+                tone: "error",
+              },
+              {
+                title: "PHP version",
+                value: "7.4.3",
+                description: "HAX requires PHP 8.0 or higher.",
+                suggestedCommand:
+                  "apt-get install php8.1 && a2enmod php8.1",
+                tone: "error",
+              },
+              {
+                title: "Write permissions",
+                value: "_config/ is not writable",
+                description:
+                  "The web server needs write access to the _config directory.",
+                suggestedCommand: "chmod 755 '/var/www/html/_config'",
+                tone: "error",
+              },
+              {
+                title: "JSON extension",
+                value: "Not loaded",
+                description: "The PHP JSON extension is required.",
+                suggestedCommand: "apt-get install php-json",
+                tone: "error",
+              },
+              {
+                title: "cURL extension",
+                value: "Not loaded",
+                description:
+                  "The PHP cURL extension is recommended for external API calls.",
+                suggestedCommand: "apt-get install php-curl",
+                tone: "warning",
+              },
+              {
+                title: "OPcache",
+                value: "Disabled",
+                description:
+                  "OPcache is recommended for better performance.",
+                suggestedCommand: "Enable opcache in php.ini",
+                tone: "warning",
+              },
+            ],
+            allPassed: [],
+          },
+          3: { step: 3, language: "en", username: "admin" },
+          4: {
+            step: 4,
+            language: "en",
+            credentials: {
+              username: "admin",
+              password: "FailedInstall123!",
+              passwordWasGenerated: true,
+            },
+            status: "Installation completed with warnings.",
+          },
+        },
+        successes: {
+          1: { step: 1, language: "en" },
+          2: {
+            step: 2,
+            language: "en",
+            hasErrors: false,
+            needsConfiguration: [],
+            allPassed: [
+              {
+                title: "Configuration directory",
+                value: "/var/www/html/_config",
+                description: "Directory exists and is writable.",
+                tone: "ok",
+              },
+              {
+                title: "PHP version",
+                value: "8.2.1",
+                description: "Meets the minimum requirement of PHP 8.0.",
+                tone: "ok",
+              },
+              {
+                title: "Write permissions",
+                value: "Writable",
+                description:
+                  "_config/ directory has correct permissions (755).",
+                tone: "ok",
+              },
+              {
+                title: "JSON extension",
+                value: "Loaded",
+                description: "PHP JSON extension is available.",
+                tone: "ok",
+              },
+              {
+                title: "cURL extension",
+                value: "Loaded",
+                description: "PHP cURL extension is available.",
+                tone: "ok",
+              },
+              {
+                title: "OPcache",
+                value: "Enabled",
+                description:
+                  "OPcache is enabled for optimal performance.",
+                tone: "ok",
+              },
+            ],
+          },
+          3: { step: 3, language: "en", username: "admin" },
+          4: {
+            step: 4,
+            language: "en",
+            credentials: {
+              username: "admin",
+              password: "Hx9$mK2pLq",
+              passwordWasGenerated: true,
+            },
+            status: "Installation completed successfully.",
+          },
+        },
+      };
+
+      function getMockData(scenario, step) {
+        var s = scenario || "successes";
+        var st = step || 1;
+        if (MOCK_DATA[s] && MOCK_DATA[s][st]) {
+          return JSON.parse(JSON.stringify(MOCK_DATA[s][st]));
+        }
+        return { step: 1, language: "en" };
+      }
+
+      // Override fetch to intercept mock API calls
+      var originalFetch = globalThis.fetch;
+      globalThis.fetch = function (url, options) {
+        var urlStr = String(url);
+        if (urlStr.indexOf("mock://") !== -1) {
+          var op = "state";
+          if (urlStr.indexOf("op=advance") !== -1) {
+            op = "advance";
+          }
+          var mock = globalThis.__installerMock;
+          var step = mock.step;
+          var scenario = mock.scenario;
+
+          if (op === "advance" && options && options.body) {
+            try {
+              var body = JSON.parse(options.body);
+              if (body.toStep) {
+                step = body.toStep;
+                // sync the control bar step selector
+                mock.step = step;
+                var stepSelect = document.getElementById("step-select");
+                if (stepSelect) {
+                  stepSelect.value = String(step);
+                }
+              }
+            } catch (e) {
+              // ignore parse errors
+            }
+          }
+
+          var data = getMockData(scenario, step);
+          var response = {
+            ok: true,
+            status: 200,
+            json: function () {
+              return Promise.resolve(data);
+            },
+            text: function () {
+              return Promise.resolve(JSON.stringify(data));
+            },
+          };
+          return Promise.resolve(response);
+        }
+        // pass through non-mock requests
+        return originalFetch.apply(this, arguments);
+      };
+
+      // Wait for the element to be defined, then create it
+      customElements.whenDefined("hax-app-installer").then(function () {
+        var el = document.createElement("hax-app-installer");
+        el.setAttribute("api-endpoint", "mock://install.php");
+        document.body.appendChild(el);
+        globalThis.__installerElement = el;
+
+        // Wire up control bar
+        var scenarioSelect = document.getElementById("scenario-select");
+        var stepSelect = document.getElementById("step-select");
+        var badge = document.getElementById("state-badge");
+
+        function updateBadge() {
+          if (badge) {
+            badge.textContent =
+              "step " + globalThis.__installerMock.step +
+              " · " + globalThis.__installerMock.scenario;
+          }
+        }
+
+        scenarioSelect.addEventListener("change", function (e) {
+          globalThis.__installerMock.scenario = e.target.value;
+          updateBadge();
+          if (el.fetchState) {
+            el.fetchState();
+          }
+        });
+
+        stepSelect.addEventListener("change", function (e) {
+          globalThis.__installerMock.step = parseInt(e.target.value, 10);
+          updateBadge();
+          if (el.fetchState) {
+            el.fetchState();
+          }
+        });
+
+        // Update badge when element step changes
+        var origStep;
+        setInterval(function () {
+          if (el.step !== origStep) {
+            origStep = el.step;
+            globalThis.__installerMock.step = el.step;
+            if (stepSelect) {
+              stepSelect.value = String(el.step);
+            }
+            updateBadge();
+          }
+        }, 200);
+
+        updateBadge();
+      });
+    </script>
+  </body>
+</html>
