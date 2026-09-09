@@ -1256,12 +1256,19 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   _applyState(data) {
     if (!data) return;
     const prevStep = this.step;
+    const prevLang = this.language;
     if (typeof data.step === "number") {
       this.step = data.step;
     }
     if (typeof data.language === "string") {
       this.language = data.language;
       this._selectedLanguage = data.language;
+      // Issue #2974: when the language changes, tell the i18n-manager to
+      // load the locale so the UI re-renders in the new language. Without
+      // this, the wizard advances to the next step still showing English.
+      if (prevLang !== data.language) {
+        this._dispatchLanguageChange(data.language);
+      }
     }
     if (typeof data.username === "string") {
       this._usernameInput = data.username;
@@ -1307,6 +1314,14 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         detail: lang,
       }),
     );
+    // Safety net: the i18n-manager loads the locale file asynchronously
+    // after the languagechange event. It calls requestUpdate() when done,
+    // but timing issues can cause the re-render to be missed. Schedule a
+    // delayed requestUpdate() so the translations are reflected even if
+    // the i18n-manager's callback fires at an awkward time.
+    setTimeout(() => {
+      this.requestUpdate();
+    }, 300);
   }
 
   /**
@@ -1357,13 +1372,12 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
    */
   async _handleStep1Submit() {
     const lang = this._selectedLanguage || this.language || "en";
-    const data = await this.advanceStep({
+    await this.advanceStep({
       toStep: 2,
       language: lang,
     });
-    if (data) {
-      this._dispatchLanguageChange(lang);
-    }
+    // _applyState (called inside advanceStep) now dispatches the
+    // language change when the language differs from the previous one.
   }
 
   /**
