@@ -42,6 +42,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       loading: { type: Boolean, reflect: true },
       busy: { type: Boolean, reflect: true },
       bulkBusy: { type: Boolean, attribute: false },
+      selectAllAllBusy: { type: Boolean, attribute: false },
       selectedRows: { type: Object, attribute: false },
       errorMessage: { type: String },
       method: { type: String },
@@ -77,6 +78,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.filterExtension = "";
     this.filterNameContains = "";
     this.bulkBusy = false;
+    this.selectAllAllBusy = false;
     this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
@@ -122,12 +124,12 @@ class HAXCMSFilesAdminDialog extends DDD {
         .upload-row {
           display: flex;
           flex-wrap: wrap;
+          flex-direction: column;
           gap: var(--ddd-spacing-3);
           align-items: start;
         }
         .upload-main {
-          flex: 1 1 280px;
-          min-width: 260px;
+          width: 100%;
         }
         .upload-main hax-upload-field {
           display: block;
@@ -268,6 +270,20 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         .empty {
           padding: var(--ddd-spacing-4);
+        }
+        .select-all-all {
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-link);
+          background: none;
+          border: none;
+          padding: 0;
+          margin: 0 0 0 var(--ddd-spacing-2);
+          cursor: pointer;
+          text-decoration: underline;
+        }
+        .select-all-all:disabled {
+          color: var(--ddd-theme-default-slateGray);
+          cursor: default;
         }
         @media (max-width: 900px) {
           :host {
@@ -607,6 +623,28 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.filterNameContains = value;
     this._debounceFilterRefresh();
   }
+  _onFilterKeydown(e, propName) {
+    if (e && e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      if (this[propName]) {
+        this[propName] = "";
+        this._debounceFilterRefresh();
+      }
+    }
+  }
+  _onPageSizeChanged(e) {
+    const raw =
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
+        : "";
+    const parsed = parseInt(raw, 10);
+    const next = [10, 25, 50, 75].includes(parsed) ? parsed : 25;
+    if (next === this.pageLimit) return;
+    this.pageLimit = next;
+    this.pageOffset = 0;
+    this.refreshFiles();
+  }
 
   _isImg(r) {
     return (
@@ -811,6 +849,60 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
   _selectedRowObjects() {
     return this.rows.filter((r) => this.selectedRows.has(this._rowKey(r)));
+  }
+  get _canSelectAllAcrossPages() {
+    return (
+      this.rows.length > 0 &&
+      this.selectedRows.size === this.rows.length &&
+      this.pageTotal > this.rows.length
+    );
+  }
+  async _selectAllAcrossPages() {
+    if (this.selectAllAllBusy || !this._canList) return;
+    this.selectAllAllBusy = true;
+    try {
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.call !== "function" ||
+        !MicroFrontendRegistry.has("@site/listFiles")
+      ) {
+        return;
+      }
+      const limit = 500;
+      let offset = 0;
+      const all = [];
+      let total = this.pageTotal;
+      while (true) {
+        const params = {
+          cb: this._nextCacheBustToken(),
+          "page.limit": limit,
+          "page.offset": offset,
+        };
+        if (this.filterType) params["filter.type"] = this.filterType;
+        if (this.filterExtension)
+          params["filter.extension"] = this.filterExtension;
+        if (this.filterNameContains)
+          params["filter.nameContains"] = this.filterNameContains;
+        const response = await MicroFrontendRegistry.call(
+          "@site/listFiles",
+          params,
+          null,
+          this,
+        );
+        if (this._statusCode(response) !== 200) break;
+        const rows = this._normPayload(response);
+        total = this._readPageTotal(response) || total;
+        all.push(...rows);
+        if (rows.length < limit || all.length >= total) break;
+        offset += limit;
+      }
+      this.selectedRows = new Set(all.map((r) => this._rowKey(r)));
+      this._syncVisibleCheckboxes();
+      this._msg(`Selected ${all.length} file(s) across all pages`);
+    } finally {
+      this.selectAllAllBusy = false;
+    }
   }
   _rowByKey(key) {
     const k = this._s(key);
@@ -1305,7 +1397,20 @@ class HAXCMSFilesAdminDialog extends DDD {
         HAXStore.activeHaxBody.haxInsert("image-gallery", innerHTML, {
           mode: "grid",
         });
+      } else if (mode === "standalone") {
+        // Multiple images as individual media-image elements. haxInsert is
+        // loop-safe (the store's own _haxStoreInsertMultiple loops it), so we
+        // mirror the gallery path instead of insertLogicFromValues, whose
+        // auto-gallery/selection logic is fragile in a tight loop.
+        insertable.forEach((row) => {
+          HAXStore.activeHaxBody.haxInsert("media-image", "", {
+            source: row.publicUrl,
+            alt: row.name || "",
+          });
+        });
       } else {
+        // Single file (any type) — gizmo guessing inserts non-image types
+        // (PDF, video, audio) via their correct element.
         insertable.forEach((row) => {
           HAXStore.insertLogicFromValues(
             { source: row.publicUrl, title: row.name },
@@ -1366,6 +1471,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                   .value="${this.filterExtension}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterExtensionChanged}"
+                  @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
                 >
                 </simple-fields-field>
                 <simple-fields-field
@@ -1375,6 +1481,21 @@ class HAXCMSFilesAdminDialog extends DDD {
                   .value="${this.filterNameContains}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterNameContainsChanged}"
+                  @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
+                >
+                </simple-fields-field>
+                <simple-fields-field
+                  label="Per page"
+                  type="select"
+                  .value="${String(this.pageLimit)}"
+                  .itemsList="${[
+                    { value: "10", text: "10" },
+                    { value: "25", text: "25" },
+                    { value: "50", text: "50" },
+                    { value: "75", text: "75" },
+                  ]}"
+                  ?disabled="${this.busy || !this._canList}"
+                  @value-changed="${this._onPageSizeChanged}"
                 >
                 </simple-fields-field>
                 <simple-icon-button-lite
@@ -1401,6 +1522,17 @@ class HAXCMSFilesAdminDialog extends DDD {
                   ? `${this.rows.length} of ${this.pageTotal} file(s)`
                   : `${this.rows.length} file(s)`}
           </div>
+          ${this._canSelectAllAcrossPages
+            ? html`<button
+                class="select-all-all"
+                ?disabled="${this.selectAllAllBusy}"
+                @click="${this._selectAllAcrossPages}"
+              >
+                ${this.selectAllAllBusy
+                  ? "Selecting\u2026"
+                  : `Select all ${this.pageTotal} files`}
+              </button>`
+            : ""}
           ${this.selectedRows.size > 0
             ? html`
                 <hax-file-actions

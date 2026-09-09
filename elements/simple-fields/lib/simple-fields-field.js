@@ -269,7 +269,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             -moz-appearance: none;
             appearance: none;
             cursor: pointer;
-            color-scheme: light dark;
+            color-scheme: inherit;
             color: light-dark(
               var(
                 --simple-fields-color,

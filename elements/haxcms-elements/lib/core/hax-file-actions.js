@@ -101,6 +101,11 @@ class HAXFileActions extends DDD {
           value: "transform:black-and-white",
           text: "Black and white",
         },
+        {
+          group: "Transform",
+          value: "rotate:rotate-90",
+          text: "Rotate 90\u00b0",
+        },
       );
       Object.keys(COMPRESS_PRESETS).forEach((key) => {
         items.push({
@@ -116,10 +121,7 @@ class HAXFileActions extends DDD {
           text: SCALE_PRESETS[key].label,
         });
       });
-      items.push({ value: "rotate:rotate-90", text: "Rotate 90\u00b0" });
     }
-    items.push({ value: "duplicate:duplicate", text: "Duplicate" });
-    items.push({ value: "rename:rename", text: "Rename" });
     if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
       items.push(
         {
@@ -136,7 +138,11 @@ class HAXFileActions extends DDD {
     } else {
       items.push({ value: "insert:page", text: "Insert into page" });
     }
-    items.push({ value: "delete:delete", text: "Delete" });
+    items.push(
+      { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
+      { group: "Operations", value: "rename:rename", text: "Rename" },
+      { group: "Operations", value: "delete:delete", text: "Delete" },
+    );
     return items;
   }
 
