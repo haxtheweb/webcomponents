@@ -1797,16 +1797,20 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           ></simple-icon-lite>
           ${this.t.back}
         </button>
-        <button
-          class="btn btn-secondary"
-          @click="${() => this.fetchState()}"
-        >
-          <simple-icon-lite
-            icon="icons:refresh"
-            style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
-          ></simple-icon-lite>
-          ${this.t.recheckRequirements}
-        </button>
+        ${hasErrors
+          ? html`
+              <button
+                class="btn btn-secondary"
+                @click="${() => this.fetchState()}"
+              >
+                <simple-icon-lite
+                  icon="icons:refresh"
+                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                ></simple-icon-lite>
+                ${this.t.recheckRequirements}
+              </button>
+            `
+          : ""}
         ${!hasErrors
           ? html`
               <button
@@ -1814,6 +1818,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
                 @click="${this._handleStep2Continue}"
               >
                 ${this.t.continue}
+                <simple-icon-lite
+                  icon="icons:arrow-forward"
+                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                ></simple-icon-lite>
               </button>
             `
           : ""}
