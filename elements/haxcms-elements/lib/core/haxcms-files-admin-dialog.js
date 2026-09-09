@@ -45,7 +45,6 @@ class HAXCMSFilesAdminDialog extends DDD {
       selectedRows: { type: Object, attribute: false },
       errorMessage: { type: String },
       method: { type: String },
-      jwt: { type: String },
       siteName: { type: String, attribute: "site-name" },
       nodeId: { type: String, attribute: "node-id" },
       scalePreset: { type: String, attribute: "scale-preset" },
@@ -65,7 +64,6 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.loading = false;
     this.busy = false;
     this.errorMessage = "";
-    this.jwt = "";
     this.siteName = "";
     this.method = "POST";
     this.nodeId = "";
@@ -83,6 +81,8 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
     this.__filterDebounceTimer = null;
+    this.__boundTableClick = this._handleTableClick.bind(this);
+    this.__boundTableChange = this._handleTableChange.bind(this);
   }
 
   static get styles() {
@@ -339,6 +339,10 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
     if (cp.has("busy") && cp.get("busy") === true && !this.busy) {
       this._reloadTableDisplay();
+    }
+    this._wireTableDelegate();
+    if (cp.has("rows") || cp.has("selectedRows")) {
+      setTimeout(() => this._syncVisibleCheckboxes(), 0);
     }
   }
 
@@ -839,24 +843,110 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
     return null;
   }
+  _tableStyleText() {
+    return `
+      th[cell-index="0"],
+      td[cell-index="0"] {
+        width: var(--ddd-spacing-6);
+        text-align: center;
+      }
+      .pw {
+        width: 200px;
+        max-width: 200px;
+        height: 100px;
+        max-height: 100px;
+        border-radius: var(--ddd-radius-sm);
+        border: var(--ddd-border-xs) solid
+          var(--ddd-theme-default-limestoneGray);
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pw img {
+        width: 200px;
+        height: 100px;
+        max-width: 200px;
+        max-height: 100px;
+        object-fit: cover;
+        display: block;
+      }
+      .fn {
+        display: flex;
+        align-items: center;
+        gap: var(--ddd-spacing-1);
+      }
+      .fn a {
+        color: light-dark(
+          var(--ddd-theme-default-link),
+          var(--ddd-theme-default-linkLight)
+        );
+        text-decoration: none;
+        overflow-wrap: anywhere;
+      }
+      .fp {
+        font-size: var(--ddd-font-size-5xs);
+        margin-top: var(--ddd-spacing-1);
+        color: var(--ddd-theme-default-slateGray);
+        overflow-wrap: anywhere;
+      }
+      .ib {
+        --simple-icon-button-border-radius: var(--ddd-radius-sm);
+        --simple-icon-button-border: var(--ddd-border-xs) solid
+          var(--ddd-theme-default-limestoneGray);
+        --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+          var(--ddd-theme-default-navy);
+        --simple-icon-button-height: var(--ddd-icon-xxs);
+        --simple-icon-button-width: var(--ddd-icon-xxs);
+        padding: var(--ddd-spacing-2);
+      }
+    `;
+  }
+  _wireTableDelegate() {
+    if (!this.shadowRoot) return;
+    const td = this.shadowRoot.querySelector("editable-table-display");
+    if (!td || !td.shadowRoot) return;
+    if (!td.__filesDelegateWired) {
+      td.__filesDelegateWired = true;
+      td.shadowRoot.addEventListener("click", this.__boundTableClick);
+      td.shadowRoot.addEventListener("change", this.__boundTableChange);
+    }
+    if (!td.__filesStyleInjected) {
+      td.__filesStyleInjected = true;
+      const style = globalThis.document.createElement("style");
+      style.setAttribute("data-files-table", "");
+      style.textContent = this._tableStyleText();
+      td.shadowRoot.appendChild(style);
+    }
+  }
   _handleTableClick(e) {
     const target = this._actionTargetFromEvent(e);
     if (!target) return;
-    if (target.getAttribute("data-action") === "embed") {
+    const action = target.getAttribute("data-action");
+    if (action === "embed") {
       if (typeof e.stopPropagation === "function") {
         e.stopPropagation();
       }
       const row = this._rowByKey(target.getAttribute("data-row-key"));
       if (row) this._embedInPage(row);
+      return;
+    }
+    if (action === "select-all" || action === "select-row") {
+      this._applySelection(target, action);
     }
   }
   _handleTableChange(e) {
     const target = this._actionTargetFromEvent(e);
     if (!target) return;
     const action = target.getAttribute("data-action");
+    if (action === "select-all" || action === "select-row") {
+      this._applySelection(target, action);
+    }
+  }
+  _applySelection(target, action) {
     if (action === "select-all") {
       this._toggleSelectAll(target.checked);
-    } else if (action === "select-row") {
+    } else {
       this._toggleRowSelectedByKey(
         target.getAttribute("data-row-key"),
         target.checked,
@@ -1341,8 +1431,6 @@ class HAXCMSFilesAdminDialog extends DDD {
                     sort
                     striped
                     scroll
-                    @change="${this._handleTableChange}"
-                    @click="${this._handleTableClick}"
                   >
                     <table>
                       <thead>
@@ -1385,6 +1473,8 @@ class HAXCMSFilesAdminDialog extends DDD {
                                     ? html`<img
                                         src="${this._previewUrl(r)}"
                                         alt="${r.name}"
+                                        width="200"
+                                        height="100"
                                         loading="lazy"
                                         decoding="async"
                                       />`
