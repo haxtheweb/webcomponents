@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Wymagania wymagające konfiguracji",
   "passedChecks": "Sprawdzenia zakończone pomyślnie",
   "recheckRequirements": "Sprawdź ponownie wymagania",
-  "createMissingDirectories": "Utwórz brakujące katalogi",
+  "createMissingFiles": "Utwórz brakujące katalogi",
   "continue": "Kontynuuj",
   "allRequirementsMet": "Wszystkie wymagania są spełnione. Możesz przejść do następnego kroku.",
   "requirement": "Wymaganie",

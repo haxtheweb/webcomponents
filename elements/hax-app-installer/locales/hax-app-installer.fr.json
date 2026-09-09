@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Prérequis nécessitant une configuration",
   "passedChecks": "Vérifications réussies",
   "recheckRequirements": "Revérifier les prérequis",
-  "createMissingDirectories": "Créer les répertoires manquants",
+  "createMissingFiles": "Créer les répertoires manquants",
   "continue": "Continuer",
   "allRequirementsMet": "Tous les prérequis sont satisfaits. Vous pouvez passer à l'étape suivante.",
   "requirement": "Prérequis",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Zofunika zomwe zikufuna kukonzedwa",
   "passedChecks": "Zomwe zinakwaniritsidwa",
   "recheckRequirements": "Onaninso zofunika",
-  "createMissingDirectories": "Pangani mafoda omwe alibe",
+  "createMissingFiles": "Pangani mafoda omwe alibe",
   "continue": "Pitirizani",
   "allRequirementsMet": "Zofunika zonse zakwaniritsidwa. Mungapitire pamalopo patsamba lotsatira.",
   "requirement": "Chofunika",

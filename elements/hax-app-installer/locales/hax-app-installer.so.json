@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Baahiyaha u baahan habayn",
   "passedChecks": "Baaritaanno la soo dhaafay",
   "recheckRequirements": "Dib u baari baahiyaha",
-  "createMissingDirectories": "Abuur galka la waayay",
+  "createMissingFiles": "Abuur galka la waayay",
   "continue": "Sii wad",
   "allRequirementsMet": "Dhammaan baahiyaha waa la buuxshay. Waxaad sii wadi kartaa talaabadan xigta.",
   "requirement": "Baahid",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfigurointia vaativat vaatimukset",
   "passedChecks": "Läpäistyt tarkistukset",
   "recheckRequirements": "Tarkista vaatimukset uudelleen",
-  "createMissingDirectories": "Luo puuttuvat hakemistot",
+  "createMissingFiles": "Luo puuttuvat hakemistot",
   "continue": "Jatka",
   "allRequirementsMet": "Kaikki vaatimukset on täytetty. Voit jatkaa seuraavaan vaiheeseen.",
   "requirement": "Vaatimus",

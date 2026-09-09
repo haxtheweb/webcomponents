@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Tekotevẽ oñemoĩva'erãva",
   "passedChecks": "Jehecha ohasáva",
   "recheckRequirements": "Ehechajey tekotevẽ",
-  "createMissingDirectories": "Emoĩ ñongatuhájeypy oĩ'ỹva",
+  "createMissingFiles": "Emoĩ ñongatuhájeypy oĩ'ỹva",
   "continue": "Eku'é",
   "allRequirementsMet": "Opaite tekotevẽ oñembohupi. Ikatu eku'é tenondeve gotyo.",
   "requirement": "Tekotevẽ",

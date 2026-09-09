@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Prasības, kurām nepieciešama konfigurācija",
   "passedChecks": "Izturētās pārbaudes",
   "recheckRequirements": "Pārbaudīt prasības atkārtoti",
-  "createMissingDirectories": "Izveidot trūkstošās mapes",
+  "createMissingFiles": "Izveidot trūkstošās mapes",
   "continue": "Turpināt",
   "allRequirementsMet": "Visas prasības ir izpildītas. Varat turpināt uz nākamo soli.",
   "requirement": "Prasība",

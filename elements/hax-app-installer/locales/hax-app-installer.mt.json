@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Rekwiżiti li jeħtieġu konfigurazzjoni",
   "passedChecks": "Tixħit li għaddew",
   "recheckRequirements": "Erġa' ivverifika r-rekwiżiti",
-  "createMissingDirectories": "Oħloq direttorji neqsin",
+  "createMissingFiles": "Oħloq direttorji neqsin",
   "continue": "Kompli",
   "allRequirementsMet": "Ir-rekwiżiti kollha ġew sodisfatti. Tista' tkompli għall-pass li jmiss.",
   "requirement": "Rekwiżit",

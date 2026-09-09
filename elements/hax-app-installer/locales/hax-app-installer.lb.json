@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Ufuerderungen déi configuréiert musse ginn",
   "passedChecks": "Bestodene Kontrollen",
   "recheckRequirements": "Ufuerderungen nach eng Kéier iwwerpréifen",
-  "createMissingDirectories": "Fehlend Dossieren erstellen",
+  "createMissingFiles": "Fehlend Dossieren erstellen",
   "continue": "Weiderfueren",
   "allRequirementsMet": "All Ufuerderungen sinn erfëllt. Dir kënnt op de nächste Schrëtt weiderfueren.",
   "requirement": "Ufuerderung",

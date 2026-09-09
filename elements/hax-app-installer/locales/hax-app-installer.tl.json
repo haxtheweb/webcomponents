@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Mga kinakailangan na nangangailangan ng configuration",
   "passedChecks": "Mga pumasa na pagsusuri",
   "recheckRequirements": "Muling suriin ang mga kinakailangan",
-  "createMissingDirectories": "Likhain ang mga nawawalang directory",
+  "createMissingFiles": "Likhain ang mga nawawalang directory",
   "continue": "Magpatuloy",
   "allRequirementsMet": "Lahat ng kinakailangan ay natutugunan. Maaari kang magpatuloy sa susunod na hakbang.",
   "requirement": "Kinakailangan",

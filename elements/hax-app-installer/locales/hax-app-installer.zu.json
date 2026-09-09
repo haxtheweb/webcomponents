@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Izidingo ezidinga ukumiswa",
   "passedChecks": "Ukuhlola okupumelele",
   "recheckRequirements": "Phinda uhlole izidingo",
-  "createMissingDirectories": "Dala amafolda abangekho",
+  "createMissingFiles": "Dala amafolda abangekho",
   "continue": "Qhubeka",
   "allRequirementsMet": "Zonke izidingo sezihambisene. Ungaqhubeka kulenye isinyathelo.",
   "requirement": "Isidingo",

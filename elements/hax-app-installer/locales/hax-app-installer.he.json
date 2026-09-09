@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "דרישות שדורשות הגדרה",
   "passedChecks": "בדיקות שעברו",
   "recheckRequirements": "בדקו שוב את הדרישות",
-  "createMissingDirectories": "צרו תיקיות חסרות",
+  "createMissingFiles": "צרו תיקיות חסרות",
   "continue": "המשיכו",
   "allRequirementsMet": "כל הדרישות מתקיימות. ניתן להמשיך לשלב הבא.",
   "requirement": "דרישה",

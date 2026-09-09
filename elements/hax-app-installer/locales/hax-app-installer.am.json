@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ማዋቀር የሚጠርጡ መስፈርቶች",
   "passedChecks": "የተሳኩ ምርመራዎች",
   "recheckRequirements": "መስፈርቶችን እንደገና ያረጋግጡ",
-  "createMissingDirectories": "የጎደሉ ማውጫዎችን ይፍጠሩ",
+  "createMissingFiles": "የጎደሉ ማውጫዎችን ይፍጠሩ",
   "continue": "ቀጥል",
   "allRequirementsMet": "ሁሉም መስፈርቶች ተሟልተዋል። ወደሚቀጥለው ደረጃ መቀጠል ይችላሉ።",
   "requirement": "መስፈርት",

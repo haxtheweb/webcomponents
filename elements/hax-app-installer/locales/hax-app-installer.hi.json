@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "कॉन्फ़िगरेशन की आवश्यकता वाली आवश्यकताएँ",
   "passedChecks": "उत्तीर्ण जांच",
   "recheckRequirements": "पुनः जांचें",
-  "createMissingDirectories": "गायब निर्देशिकाएँ बनाएँ",
+  "createMissingFiles": "गायब निर्देशिकाएँ बनाएँ",
   "continue": "जारी रखें",
   "allRequirementsMet": "सभी आवश्यकताएँ पूरी हो गई हैं। आप अगले चरण पर जा सकते हैं।",
   "requirement": "आवश्यकता",

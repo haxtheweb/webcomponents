@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Requisits que cal configurar",
   "passedChecks": "Comprovacions superades",
   "recheckRequirements": "Torna a comprovar els requisits",
-  "createMissingDirectories": "Crea els directoris que falten",
+  "createMissingFiles": "Crea els directoris que falten",
   "continue": "Continua",
   "allRequirementsMet": "Tots els requisits estan complets. Podeu continuar al pas següent.",
   "requirement": "Requisit",

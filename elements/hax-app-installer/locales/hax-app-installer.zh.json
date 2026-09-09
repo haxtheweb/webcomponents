@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "需要配置的要求",
   "passedChecks": "通过的检查",
   "recheckRequirements": "重新检查要求",
-  "createMissingDirectories": "创建缺失的目录",
+  "createMissingFiles": "创建缺失的目录",
   "continue": "继续",
   "allRequirementsMet": "所有要求均已满足。您可以继续进行下一步。",
   "requirement": "要求",

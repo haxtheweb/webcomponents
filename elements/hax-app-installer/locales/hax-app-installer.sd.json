@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ترتيب ڪرڻ جي ضرورت واريون گهرجون",
   "passedChecks": "پاس ٿيل چيڪون",
   "recheckRequirements": "گهرجن کي ٻيهر چيڪ ڪريو",
-  "createMissingDirectories": "گهربل ڊائريڪٽريون ٺاهيو",
+  "createMissingFiles": "گهربل ڊائريڪٽريون ٺاهيو",
   "continue": "جاري رکو",
   "allRequirementsMet": "سڀ گهرجون پوريون ٿي ويون آهن. توهان اڳئين قدم تي وڃي سگهو ٿا.",
   "requirement": "گهرج",

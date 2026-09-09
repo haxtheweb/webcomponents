@@ -166,7 +166,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       requirementsNeedingConfiguration: "Requirements needing configuration",
       passedChecks: "Passed checks",
       recheckRequirements: "Re-check requirements",
-      createMissingDirectories: "Create missing directories",
+      createMissingFiles: "Create missing files",
       permissionRequired: "Permission required",
       continue: "Continue",
       allRequirementsMet:
@@ -826,6 +826,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           margin: 0;
           white-space: pre-wrap;
           word-break: break-all;
+        }
+
+        .prepare-action {
+          margin-bottom: var(--ddd-spacing-6);
         }
 
         .community-section h3 {
@@ -1715,6 +1719,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     const needsConfig =
       (this.stateData && this.stateData.needsConfiguration) || [];
     const allPassed = (this.stateData && this.stateData.allPassed) || [];
+    const hasErrors = !!(this.stateData && this.stateData.hasErrors);
     return html`
       <h2>${this.t.verifyRequirements}</h2>
       <p class="description">${this.t.verifyRequirementsDescription}</p>
@@ -1731,6 +1736,22 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
                   </p>`
                 : ""}
               <pre class="cmd-block permission-cmd">${this._preparePermissionCommand}</pre>
+            </div>
+          `
+        : ""}
+      ${hasErrors
+        ? html`
+            <div class="prepare-action">
+              <button
+                class="btn btn-primary"
+                @click="${this._prepareEnvironment}"
+              >
+                <simple-icon-lite
+                  icon="icons:create-new-folder"
+                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
+                ></simple-icon-lite>
+                ${this.t.createMissingFiles}
+              </button>
             </div>
           `
         : ""}
@@ -1776,20 +1797,6 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           ></simple-icon-lite>
           ${this.t.back}
         </button>
-        ${needsConfig.length > 0
-          ? html`
-              <button
-                class="btn btn-secondary"
-                @click="${this._prepareEnvironment}"
-              >
-                <simple-icon-lite
-                  icon="icons:create-new-folder"
-                  style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
-                ></simple-icon-lite>
-                ${this.t.createMissingDirectories}
-              </button>
-            `
-          : ""}
         <button
           class="btn btn-secondary"
           @click="${() => this.fetchState()}"
@@ -1800,7 +1807,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           ></simple-icon-lite>
           ${this.t.recheckRequirements}
         </button>
-        ${needsConfig.length === 0
+        ${!hasErrors
           ? html`
               <button
                 class="btn btn-primary"

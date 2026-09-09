@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "වින්‍යාසය අවශ්‍ය අවශ්‍යතා",
   "passedChecks": "සමත් වූ පරීක්ෂණ",
   "recheckRequirements": "අවශ්‍යතා නැවත පරීක්ෂා කරන්න",
-  "createMissingDirectories": "අස්ථාපිත නාමාවලි සාදන්න",
+  "createMissingFiles": "අස්ථාපිත නාමාවලි සාදන්න",
   "continue": "ඉදිරියට යන්න",
   "allRequirementsMet": "සියලුම අවශ්‍යතා සපුරා ඇත. ඔබට ඊළඟ පියවරට ඉදිරියට යා හැක.",
   "requirement": "අවශ්‍යතාවය",

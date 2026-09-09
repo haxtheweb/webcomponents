@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "متطلبات تحتاج إلى إعداد",
   "passedChecks": "عمليات تحقق ناجحة",
   "recheckRequirements": "إعادة التحقق من المتطلبات",
-  "createMissingDirectories": "إنشاء الدلائل المفقودة",
+  "createMissingFiles": "إنشاء الدلائل المفقودة",
   "continue": "متابعة",
   "allRequirementsMet": "تم استيفاء جميع المتطلبات. يمكنك المتابعة إلى الخطوة التالية.",
   "requirement": "المتطلب",

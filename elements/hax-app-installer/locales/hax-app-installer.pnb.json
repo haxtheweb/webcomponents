@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ترتیب دی لوڑ والیاں ضرورتاں",
   "passedChecks": "پاس ہوئیاں چیکاں",
   "recheckRequirements": "ضرورتاں دوبارہ چیک کرو",
-  "createMissingDirectories": "گمشدہ ڈائریکٹریاں بݨاؤ",
+  "createMissingFiles": "گمشدہ ڈائریکٹریاں بݨاؤ",
   "continue": "جاری رکھو",
   "allRequirementsMet": "ساریاں ضرورتاں پوریاں ہو گئیاں نیں۔ تسیں اگلے قدم تے جا سکدے او۔",
   "requirement": "ضرورت",

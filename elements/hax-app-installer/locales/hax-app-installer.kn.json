@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ಸಂರಚನೆ ಬೇಕಾದ ಅವಶ್ಯಕತೆಗಳು",
   "passedChecks": "ಉತ್ತೀರ್ಣ ಪರಿಶೀಲನೆಗಳು",
   "recheckRequirements": "ಅವಶ್ಯಕತೆಗಳನ್ನು ಮತ್ತೆ ಪರಿಶೀಲಿಸಿ",
-  "createMissingDirectories": "ಕಾಣೆಯಾದ ಡೈರೆಕ್ಟರಿಗಳನ್ನು ರಚಿಸಿ",
+  "createMissingFiles": "ಕಾಣೆಯಾದ ಡೈರೆಕ್ಟರಿಗಳನ್ನು ರಚಿಸಿ",
   "continue": "ಮುಂದುವರಿಯಿರಿ",
   "allRequirementsMet": "ಎಲ್ಲಾ ಅವಶ್ಯಕತೆಗಳು ಪೂರೈಸಲ್ಪಟ್ಟಿವೆ. ನೀವು ಮುಂದಿನ ಹಂತಕ್ಕೆ ಮುಂದುವರೆಯಬಹುದು.",
   "requirement": "ಅವಶ್ಯಕತೆ",

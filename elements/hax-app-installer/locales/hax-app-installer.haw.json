@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Nā koi e pono ai ka hoʻonohonoho ʻana",
   "passedChecks": "Nā hōʻoia ʻia maikaʻi",
   "recheckRequirements": "E hōʻoia hou i nā koi",
-  "createMissingDirectories": "Hana i nā waihona nalowale",
+  "createMissingFiles": "Hana i nā waihona nalowale",
   "continue": "Kūʻokoʻa i ka hele ʻana",
   "allRequirementsMet": "Ua mālama ʻia nā koi āpau. Hiki iā ʻoe ke hele i ke ala aʻe.",
   "requirement": "Koi",

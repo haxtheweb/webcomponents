@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Persyaratan yang perlu dikonfigurasi",
   "passedChecks": "Pemeriksaan lolos",
   "recheckRequirements": "Periksa kembali persyaratan",
-  "createMissingDirectories": "Buat direktori yang hilang",
+  "createMissingFiles": "Buat direktori yang hilang",
   "continue": "Lanjutkan",
   "allRequirementsMet": "Semua persyaratan terpenuhi. Anda dapat melanjutkan ke langkah berikutnya.",
   "requirement": "Persyaratan",

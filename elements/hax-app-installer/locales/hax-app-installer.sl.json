@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Zahteve, ki potrebujejo konfiguracijo",
   "passedChecks": "Opravljeni pregledi",
   "recheckRequirements": "Ponovno preveri zahteve",
-  "createMissingDirectories": "Ustvari manjkajoče mape",
+  "createMissingFiles": "Ustvari manjkajoče mape",
   "continue": "Nadaljuj",
   "allRequirementsMet": "Vse zahteve so izpolnjene. Lahko nadaljujete na naslednji korak.",
   "requirement": "Zahteva",

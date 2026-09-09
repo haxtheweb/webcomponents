@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Postuloj bezonantaj agordon",
   "passedChecks": "Sukcesaj kontroloj",
   "recheckRequirements": "Rekontrolu postulojn",
-  "createMissingDirectories": "Kreu mankantajn dosierujojn",
+  "createMissingFiles": "Kreu mankantajn dosierujojn",
   "continue": "Daŭrigi",
   "allRequirementsMet": "Ĉiuj postuloj estas plenumitaj. Vi povas daŭrigi al la sekva paŝo.",
   "requirement": "Postulo",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Požadavky vyžadující konfiguraci",
   "passedChecks": "Úspěšné kontroly",
   "recheckRequirements": "Znovu zkontrolovat požadavky",
-  "createMissingDirectories": "Vytvořit chybějící adresáře",
+  "createMissingFiles": "Vytvořit chybějící adresáře",
   "continue": "Pokračovat",
   "allRequirementsMet": "Všechny požadavky jsou splněny. Můžete pokračovat k dalšímu kroku.",
   "requirement": "Požadavek",

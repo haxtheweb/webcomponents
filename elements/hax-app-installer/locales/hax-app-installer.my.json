@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "စီစဉ်ရန် လိုအပ်သော လိုအပ်ချက်များ",
   "passedChecks": "အောင်မြင်သော စစ်ဆေးမှုများ",
   "recheckRequirements": "လိုအပ်ချက်များကို ပြန်လည်စစ်ဆေးရန်",
-  "createMissingDirectories": "ပျောက်နေသော ဖိုင်တွဲများကို ဖန်တီးရန်",
+  "createMissingFiles": "ပျောက်နေသော ဖိုင်တွဲများကို ဖန်တီးရန်",
   "continue": "ဆက်လက်လုပ်ဆောင်ရန်",
   "allRequirementsMet": "လိုအပ်ချက်များအားလုံး ပြည့်စုံပါပြီ။ နောက်အဆင့်သို့ ဆက်လက်နိုင်ပါပြီ။",
   "requirement": "လိုအပ်ချက်",

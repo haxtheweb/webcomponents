@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Vereistes wat konfigurasie benodig",
   "passedChecks": "Geslaagde kontroles",
   "recheckRequirements": "Herkontroleer vereistes",
-  "createMissingDirectories": "Skep ontbrekende gidse",
+  "createMissingFiles": "Skep ontbrekende gidse",
   "continue": "Gaan voort",
   "allRequirementsMet": "Alle vereistes is nagekom. Jy kan na die volgende stap gaan.",
   "requirement": "Vereiste",

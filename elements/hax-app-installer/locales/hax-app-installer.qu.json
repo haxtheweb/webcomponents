@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Necesitasqakuna kamaychanankupaq",
   "passedChecks": "Qhawaykuna pasaqsqakuna",
   "recheckRequirements": "Necesitasqakunata musuqmanta qhaway",
-  "createMissingDirectories": "Mana kachkanankuna kamay",
+  "createMissingFiles": "Mana kachkanankuna kamay",
   "continue": "Puriy",
   "allRequirementsMet": "Necesitasqakunapas hunt'achisqañam. Hamut'a puriyta atinki.",
   "requirement": "Necesitasqakuna",

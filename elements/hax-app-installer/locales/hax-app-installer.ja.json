@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "設定が必要な要件",
   "passedChecks": "合格したチェック",
   "recheckRequirements": "要件を再確認",
-  "createMissingDirectories": "不足しているディレクトリを作成",
+  "createMissingFiles": "不足しているディレクトリを作成",
   "continue": "続行",
   "allRequirementsMet": "すべての要件が満たされています。次のステップに進むことができます。",
   "requirement": "要件",

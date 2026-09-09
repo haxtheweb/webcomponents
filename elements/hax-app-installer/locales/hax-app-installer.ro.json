@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Cerințe care necesită configurare",
   "passedChecks": "Verificări reușite",
   "recheckRequirements": "Reverificați cerințele",
-  "createMissingDirectories": "Creați directoarele lipsă",
+  "createMissingFiles": "Creați directoarele lipsă",
   "continue": "Continuați",
   "allRequirementsMet": "Toate cerințele sunt îndeplinite. Puteți trece la pasul următor.",
   "requirement": "Cerință",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Կարգավորում պահանջող պահանջներ",
   "passedChecks": "Անցած ստուգումներ",
   "recheckRequirements": "Կրկին ստուգել պահանջները",
-  "createMissingDirectories": "Ստեղծել բացակայող պանակները",
+  "createMissingFiles": "Ստեղծել բացակայող պանակները",
   "continue": "Շարունակել",
   "allRequirementsMet": "Բոլոր պահանջները բավարարված են։ Կարող եք անցնել հաջորդ քայլին։",
   "requirement": "Պահանջ",

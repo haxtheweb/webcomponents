@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Požiadavky vyžadujúce konfiguráciu",
   "passedChecks": "Úspešné kontroly",
   "recheckRequirements": "Znovu skontrolovať požiadavky",
-  "createMissingDirectories": "Vytvoriť chýbajúce priečinky",
+  "createMissingFiles": "Vytvoriť chýbajúce priečinky",
   "continue": "Pokračovať",
   "allRequirementsMet": "Všetky požiadavky sú splnené. Môžete pokračovať na ďalší krok.",
   "requirement": "Požiadavka",

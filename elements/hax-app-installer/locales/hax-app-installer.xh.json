@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Iimfuno ezifuna ukumiselwa",
   "passedChecks": "Iingqinisiso ezipunyezelekileyo",
   "recheckRequirements": "Khangela iimfuno kwakhona",
-  "createMissingDirectories": "Yakha iikhava ezikhoyo zibe zingekho",
+  "createMissingFiles": "Yakha iikhava ezikhoyo zibe zingekho",
   "continue": "Qhubeka",
   "allRequirementsMet": "Zonke iimfuno zihlangabezene. Ungaqhubeka kumzila olandelayo.",
   "requirement": "Imfuno",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "მოთხოვნები, რომლებიც კონფიგურაციას საჭიროებენ",
   "passedChecks": "გავლილი შემოწმებები",
   "recheckRequirements": "მოთხოვნების ხელახალი შემოწმება",
-  "createMissingDirectories": "ნაკლული დირექტორიების შექმნა",
+  "createMissingFiles": "ნაკლული დირექტორიების შექმნა",
   "continue": "გაგრძელება",
   "allRequirementsMet": "ყველა მოთხოვნა დაკმაყოფილებულია. შეგიძლიათ გააგრძელოთ შემდეგ ნაბიჯზე.",
   "requirement": "მოთხოვნა",

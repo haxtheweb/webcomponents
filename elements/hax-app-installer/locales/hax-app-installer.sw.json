@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Mahitaji yanayohitaji usanidi",
   "passedChecks": "Ukaguzi uliopitishwa",
   "recheckRequirements": "Kagua tena mahitaji",
-  "createMissingDirectories": "Tengeneza saraka zinazokosekana",
+  "createMissingFiles": "Tengeneza saraka zinazokosekana",
   "continue": "Endelea",
   "allRequirementsMet": "Mahitaji yote yametimizwa. Unaweza kuendelea kwenye hatua inayofuata.",
   "requirement": "Hitaji",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ગોઠવણની જરૂર ધરાવતી જરૂરિયાતો",
   "passedChecks": "પાસ થયેલ તપાસો",
   "recheckRequirements": "જરૂરિયાતો ફરીથી ચકાસો",
-  "createMissingDirectories": "ગુમ થયેલ ડિરેક્ટરીઓ બનાવો",
+  "createMissingFiles": "ગુમ થયેલ ડિરેક્ટરીઓ બનાવો",
   "continue": "ચાલુ રાખો",
   "allRequirementsMet": "બધી જરૂરિયાતો પૂર્ણ થયેલ છે. તમે આગળના પગલા પર જઈ શકો છો.",
   "requirement": "જરૂરિયાત",

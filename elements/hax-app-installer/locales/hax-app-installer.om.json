@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Haajaa qindaa'ina barbaadu",
   "passedChecks": "Mirkaneessitii darban",
   "recheckRequirements": "Haajaa irra deebi'i mirkaneessi",
-  "createMissingDirectories": "Galmee dhabamte uumi",
+  "createMissingFiles": "Galmee dhabamte uumi",
   "continue": "Itti fufi",
   "allRequirementsMet": "Haajaa hundi guutameera. Sadarkaa itti aanutti itti fufuu dandeessa.",
   "requirement": "Haajaa",

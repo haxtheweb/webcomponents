@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Конфигурацияны талап кылган талаптар",
   "passedChecks": "Өткөн текшерүүлөр",
   "recheckRequirements": "Талаптарды кайра текшерүү",
-  "createMissingDirectories": "Жоголгон каталогдорду түзүү",
+  "createMissingFiles": "Жоголгон каталогдорду түзүү",
   "continue": "Улантуу",
   "allRequirementsMet": "Бардык талаптар аткарылды. Сиз кийинки кадарга өтө аласыз.",
   "requirement": "Талап",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ข้อกำหนดที่ต้องมีการกำหนดค่า",
   "passedChecks": "การตรวจสอบที่ผ่านแล้ว",
   "recheckRequirements": "ตรวจสอบข้อกำหนดอีกครั้ง",
-  "createMissingDirectories": "สร้างไดเรกทอรีที่ขาดหายไป",
+  "createMissingFiles": "สร้างไดเรกทอรีที่ขาดหายไป",
   "continue": "ดำเนินการต่อ",
   "allRequirementsMet": "ข้อกำหนดทั้งหมดได้รับการตรวจสอบแล้ว คุณสามารถดำเนินการต่อไปยังขั้นตอนถัดไปได้",
   "requirement": "ข้อกำหนด",

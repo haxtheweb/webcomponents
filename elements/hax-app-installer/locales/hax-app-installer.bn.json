@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "কনফিগারেশন প্রয়োজন এমন প্রয়োজনীয়তা",
   "passedChecks": "সফল যাচাই",
   "recheckRequirements": "পুনরায় যাচাই করুন",
-  "createMissingDirectories": "অনুপস্থিত ডিরেক্টরি তৈরি করুন",
+  "createMissingFiles": "অনুপস্থিত ডিরেক্টরি তৈরি করুন",
   "continue": "এগিয়ে যান",
   "allRequirementsMet": "সব প্রয়োজনীয়তা পূরণ হয়েছে। আপনি পরবর্তী ধাপে এগিয়ে যেতে পারেন।",
   "requirement": "প্রয়োজনীয়তা",

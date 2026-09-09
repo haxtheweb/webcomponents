@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Патрабаванні, якія патрабуюць налады",
   "passedChecks": "Прайдзены праверкі",
   "recheckRequirements": "Пераправерыць патрабаванні",
-  "createMissingDirectories": "Стварыць адсутныя каталогі",
+  "createMissingFiles": "Стварыць адсутныя каталогі",
   "continue": "Працягнуць",
   "allRequirementsMet": "Усе патрабаванні выкананы. Вы можаце працягнуць да наступнага кроку.",
   "requirement": "Патрабаванне",

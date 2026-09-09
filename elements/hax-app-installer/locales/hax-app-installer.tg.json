@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Талаботҳое ки танзимро лозим доранд",
   "passedChecks": "Тафтишҳои гузашта",
   "recheckRequirements": "Талаботро аз нав тафтиш кунед",
-  "createMissingDirectories": "Директорияҳои мавҷуднабударо эҷод кунед",
+  "createMissingFiles": "Директорияҳои мавҷуднабударо эҷод кунед",
   "continue": "Идома",
   "allRequirementsMet": "Ҳамаи талаботҳо бароварда шуданд. Шумо метавонед ба қадами оянда идома диҳед.",
   "requirement": "Талабот",

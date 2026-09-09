@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ຄວາມຕ້ອງການທີ່ຕ້ອງການການຕັ້ງຄ່າ",
   "passedChecks": "ການກວດສອບທີ່ຜ່ານ",
   "recheckRequirements": "ກວດສອບຄວາມຕ້ອງການຄືນໃໝ່",
-  "createMissingDirectories": "ສ້າງໂຟນເດີທີ່ຂາດຫາຍ",
+  "createMissingFiles": "ສ້າງໂຟນເດີທີ່ຂາດຫາຍ",
   "continue": "ສືບຕໍ່",
   "allRequirementsMet": "ຄວາມຕ້ອງການທັງໝົດໄດ້ຮັບການຕອບສະໜອງແລ້ວ ທ່ານສາມາດສືບຕໍ່ໄປຍັງຂັ້ນຕອນຕໍ່ໄປ",
   "requirement": "ຄວາມຕ້ອງການ",

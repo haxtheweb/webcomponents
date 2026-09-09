@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Riachtanais a theastaíonn cumraíocht uathu",
   "passedChecks": "Seiceálacha a ritheadh",
   "recheckRequirements": "Athsheiceáil riachtanais",
-  "createMissingDirectories": "Cruthaigh comhadlanna in easnamh",
+  "createMissingFiles": "Cruthaigh comhadlanna in easnamh",
   "continue": "Lean ar aghaidh",
   "allRequirementsMet": "Tá gach riachtanas comhlíonta. Is féidir leat dul ar aghaidh chuig an chéad chéim eile.",
   "requirement": "Riachtanas",

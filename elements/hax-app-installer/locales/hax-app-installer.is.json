@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Kröfur sem þarfnast stillingar",
   "passedChecks": "Staðar athuganir",
   "recheckRequirements": "Athuga kröfur aftur",
-  "createMissingDirectories": "Búa til möppur sem vantar",
+  "createMissingFiles": "Búa til möppur sem vantar",
   "continue": "Halda áfram",
   "allRequirementsMet": "Allar kröfur eru uppfylltar. Þú getur haldið áfram til næsta skrefs.",
   "requirement": "Krafa",

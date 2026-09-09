@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Krav som trenger konfigurasjon",
   "passedChecks": "Beståtte kontroller",
   "recheckRequirements": "Kontroller krav på nytt",
-  "createMissingDirectories": "Opprett manglende mapper",
+  "createMissingFiles": "Opprett manglende mapper",
   "continue": "Fortsett",
   "allRequirementsMet": "Alle krav er oppfylt. Du kan fortsette til neste trinn.",
   "requirement": "Krav",

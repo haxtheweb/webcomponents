@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ਸੰਰਚਨਾ ਦੀ ਲੋੜ ਵਾਲੀਆਂ ਲੋੜਾਂ",
   "passedChecks": "ਪਾਸ ਹੋਈਆਂ ਜਾਂਚਾਂ",
   "recheckRequirements": "ਲੋੜਾਂ ਮੁੜ-ਜਾਂਚੋ",
-  "createMissingDirectories": "ਗੁਆਚੀਆਂ ਡਾਇਰੈਕਟਰੀਆਂ ਬਣਾਓ",
+  "createMissingFiles": "ਗੁਆਚੀਆਂ ਡਾਇਰੈਕਟਰੀਆਂ ਬਣਾਓ",
   "continue": "ਜਾਰੀ ਰੱਖੋ",
   "allRequirementsMet": "ਸਾਰੀਆਂ ਲੋੜਾਂ ਪੂਰੀਆਂ ਹੋ ਗਈਆਂ ਹਨ। ਤੁਸੀਂ ਅਗਲੇ ਕਦਮ ਤੇ ਜਾਰੀ ਰੱਖ ਸਕਦੇ ਹੋ।",
   "requirement": "ਲੋੜ",

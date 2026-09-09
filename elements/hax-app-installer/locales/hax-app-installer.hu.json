@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Beállítást igénylő követelmények",
   "passedChecks": "Sikeres ellenőrzések",
   "recheckRequirements": "Követelmények újraellenőrzése",
-  "createMissingDirectories": "Hiányzó könyvtárak létrehozása",
+  "createMissingFiles": "Hiányzó könyvtárak létrehozása",
   "continue": "Folytatás",
   "allRequirementsMet": "Minden követelmény teljesül. Folytathatja a következő lépésre.",
   "requirement": "Követelmény",

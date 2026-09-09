@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "కాన్ఫిగరేషన్ అవసరం ఉన్న అవసరాలు",
   "passedChecks": "ఉత్తీర్ణమైన తనిఖీలు",
   "recheckRequirements": "అవసరాలను మళ్ళీ తనిఖీ చేయండి",
-  "createMissingDirectories": "లేని డైరెక్టరీలను సృష్టించండి",
+  "createMissingFiles": "లేని డైరెక్టరీలను సృష్టించండి",
   "continue": "కొనసాగండి",
   "allRequirementsMet": "అన్ని అవసరాలు తీరిపోయాయి. మీరు తదుపరి దశకు కొనసాగవచ్చు.",
   "requirement": "అవసరం",

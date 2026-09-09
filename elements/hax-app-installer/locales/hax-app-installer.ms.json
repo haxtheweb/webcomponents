@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Keperluan yang memerlukan konfigurasi",
   "passedChecks": "Semakan lulus",
   "recheckRequirements": "Semak semula keperluan",
-  "createMissingDirectories": "Cipta direktori yang hilang",
+  "createMissingFiles": "Cipta direktori yang hilang",
   "continue": "Teruskan",
   "allRequirementsMet": "Semua keperluan dipenuhi. Anda boleh teruskan ke langkah seterusnya.",
   "requirement": "Keperluan",

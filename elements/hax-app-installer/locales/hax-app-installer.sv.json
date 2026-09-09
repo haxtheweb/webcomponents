@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Krav som behöver konfiguration",
   "passedChecks": "Godkända kontroller",
   "recheckRequirements": "Kontrollera krav igen",
-  "createMissingDirectories": "Skapa saknade kataloger",
+  "createMissingFiles": "Skapa saknade kataloger",
   "continue": "Fortsätt",
   "allRequirementsMet": "Alla krav är uppfyllda. Du kan fortsätta till nästa steg.",
   "requirement": "Krav",

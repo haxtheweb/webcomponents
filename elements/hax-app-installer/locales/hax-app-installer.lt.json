@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Reikalavimai, kuriuos reikia sukonfigūruoti",
   "passedChecks": "Sėkmingos patikros",
   "recheckRequirements": "Iš naujo patikrinti reikalavimus",
-  "createMissingDirectories": "Sukurti trūkstamus katalogus",
+  "createMissingFiles": "Sukurti trūkstamus katalogus",
   "continue": "Tęsti",
   "allRequirementsMet": "Visi reikalavimai įvykdyti. Galite pereiti prie kito žingsnio.",
   "requirement": "Reikalavimas",

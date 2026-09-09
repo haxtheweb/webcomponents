@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Zu konfigurierende Voraussetzungen",
   "passedChecks": "Bestandene Prüfungen",
   "recheckRequirements": "Voraussetzungen erneut überprüfen",
-  "createMissingDirectories": "Fehlende Verzeichnisse erstellen",
+  "createMissingFiles": "Fehlende Verzeichnisse erstellen",
   "continue": "Weiter",
   "allRequirementsMet": "Alle Voraussetzungen sind erfüllt. Sie können mit dem nächsten Schritt fortfahren.",
   "requirement": "Voraussetzung",

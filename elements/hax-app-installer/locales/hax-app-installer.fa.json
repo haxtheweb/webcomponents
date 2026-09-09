@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "نیازمندی‌های نیازمند پیکربندی",
   "passedChecks": "بررسی‌های موفق",
   "recheckRequirements": "بررسی مجدد نیازمندی‌ها",
-  "createMissingDirectories": "ایجاد پوشه‌های گمشده",
+  "createMissingFiles": "ایجاد پوشه‌های گمشده",
   "continue": "ادامه",
   "allRequirementsMet": "تمام نیازمندی‌ها برآورده شده‌اند. می‌توانید به مرحله بعد ادامه دهید.",
   "requirement": "نیازمندی",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Yapılandırma gerektiren gereksinimler",
   "passedChecks": "Geçen kontroller",
   "recheckRequirements": "Gereksinimleri yeniden kontrol et",
-  "createMissingDirectories": "Eksik dizinleri oluştur",
+  "createMissingFiles": "Eksik dizinleri oluştur",
   "continue": "Devam et",
   "allRequirementsMet": "Tüm gereksinimler karşılandı. Sonraki adıma devam edebilirsiniz.",
   "requirement": "Gereksinim",

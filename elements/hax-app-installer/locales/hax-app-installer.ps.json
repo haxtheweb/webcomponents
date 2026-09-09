@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "اړتیاوې چې تنظیم ته اړتیا لري",
   "passedChecks": "تېر شوي ارسرونه",
   "recheckRequirements": "اړتیاوې بیا ارسره کړئ",
-  "createMissingDirectories": "ورک شوي لارښودونه جوړ کړئ",
+  "createMissingFiles": "ورک شوي لارښودونه جوړ کړئ",
   "continue": "دوام ورکړئ",
   "allRequirementsMet": "ټولې اړتیاوې پوره شوې. تاسو کولی شئ راتلونکي ګام ته دوام ورکړئ.",
   "requirement": "اړتیا",

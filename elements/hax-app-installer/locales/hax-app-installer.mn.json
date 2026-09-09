@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Тохиргоо шаардсан шаардлагууд",
   "passedChecks": "Амжилттай шалгалтууд",
   "recheckRequirements": "Шаардлагуудыг дахин шалгах",
-  "createMissingDirectories": "Дутуу хавтсуудыг үүсгэх",
+  "createMissingFiles": "Дутуу хавтсуудыг үүсгэх",
   "continue": "Үргэлжлүүлэх",
   "allRequirementsMet": "Бүх шаардлагууд хангагдсан. Та дараагийн алхам руу үргэлжлүүлэх боломжтой.",
   "requirement": "Шаардлага",

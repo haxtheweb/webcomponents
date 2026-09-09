@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Àwọn ohun èlò tó nílò ìtò",
   "passedChecks": "Àwọn àyẹ̀wò tó kọjá",
   "recheckRequirements": "Tún ẹ̀rí àwọn ohun èlò tó yẹ ṣe",
-  "createMissingDirectories": "Ṣẹ̀dá àwọn fọ́ldà tó sọnù",
+  "createMissingFiles": "Ṣẹ̀dá àwọn fọ́ldà tó sọnù",
   "continue": "Tètè kọjá",
   "allRequirementsMet": "Gbogbo àwọn ohun èlò tó yẹ ti wà. O le tèsiwaju lọ sí ìpìn tó kàn.",
   "requirement": "Ohun èlò tó yẹ",

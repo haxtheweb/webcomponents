@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Баптауды қажет ететін талаптар",
   "passedChecks": "Өткен тексерістер",
   "recheckRequirements": "Талаптарды қайта тексеру",
-  "createMissingDirectories": "Жоқ каталогтарды жасау",
+  "createMissingFiles": "Жоқ каталогтарды жасау",
   "continue": "Жалғастыру",
   "allRequirementsMet": "Барлық талаптар орындалды. Келесі қадамға өте аласыз.",
   "requirement": "Талап",

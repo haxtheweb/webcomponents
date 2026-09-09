@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Zahtjevi koji trebaju konfiguraciju",
   "passedChecks": "Uspješne provjere",
   "recheckRequirements": "Ponovno provjeri zahtjeve",
-  "createMissingDirectories": "Stvorite nedostajuće direktorije",
+  "createMissingFiles": "Stvorite nedostajuće direktorije",
   "continue": "Nastavi",
   "allRequirementsMet": "Svi zahtjevi su ispunjeni. Možete nastaviti na sljedeći korak.",
   "requirement": "Zahtjev",

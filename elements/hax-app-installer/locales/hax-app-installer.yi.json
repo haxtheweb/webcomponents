@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "רעקווירעמענטן וואָס דאַרפֿן קאָנפֿיגוראַציע",
   "passedChecks": "דורכגעגאַנגענע קאָנטראָלן",
   "recheckRequirements": "קאָנטראָליר רעקווירעמענטן נאָך אַמאָל",
-  "createMissingDirectories": "שאַף פֿעלנדיקע פּאַפּקעס",
+  "createMissingFiles": "שאַף פֿעלנדיקע פּאַפּקעס",
   "continue": "פֿאָרטזעצן",
   "allRequirementsMet": "אַלע רעקווירעמענטן זענען דערפֿילט. דו קענסט פֿאָרטזעצן צום קומענדיקן שריט.",
   "requirement": "רעקווירעמענט",

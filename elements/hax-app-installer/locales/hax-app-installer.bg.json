@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Изисквания, нуждаещи се от конфигурация",
   "passedChecks": "Минали проверки",
   "recheckRequirements": "Проверете отново изискванията",
-  "createMissingDirectories": "Създайте липсващите директории",
+  "createMissingFiles": "Създайте липсващите директории",
   "continue": "Продължете",
   "allRequirementsMet": "Всички изисквания са изпълнени. Можете да продължите към следващата стъпка.",
   "requirement": "Изискване",

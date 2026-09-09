@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Easken dy't konfiguraasje nedich binne",
   "passedChecks": "Slagge kontrôles",
   "recheckRequirements": "Easken op 'e nij kontrolearje",
-  "createMissingDirectories": "Missende mappen oanmeitsje",
+  "createMissingFiles": "Missende mappen oanmeitsje",
   "continue": "Trochgean",
   "allRequirementsMet": "Alle easken binne foldien. Jo kinne trochgean nei de folgjende stap.",
   "requirement": "Eask",

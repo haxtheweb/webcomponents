@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Buƙatun da ke buƙatar daidaitawa",
   "passedChecks": "Tabbatarwar da ta wuce",
   "recheckRequirements": "Sake tabbatar da buƙatu",
-  "createMissingDirectories": "Ƙirƙiri fayilolin da suka ɓace",
+  "createMissingFiles": "Ƙirƙiri fayilolin da suka ɓace",
   "continue": "Ci gaba",
   "allRequirementsMet": "Duk buƙatun sun cika. Zaka iya ci gaba zuwa mataki na gaba.",
   "requirement": "Buƙata",

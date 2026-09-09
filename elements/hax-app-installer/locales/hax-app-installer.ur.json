@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "ضروریات جنہیں کنفیگریشن کی ضرورت ہے",
   "passedChecks": "پاس شدہ جانچیں",
   "recheckRequirements": "ضروریات دوبارہ چیک کریں",
-  "createMissingDirectories": "غیر موجود ڈائریکٹریاں بنائیں",
+  "createMissingFiles": "غیر موجود ڈائریکٹریاں بنائیں",
   "continue": "جاری رکھیں",
   "allRequirementsMet": "تمام ضروریات پوری ہو گئی ہیں۔ آپ اگلے مرحلے پر جاری رکھ سکتے ہیں۔",
   "requirement": "ضرورت",

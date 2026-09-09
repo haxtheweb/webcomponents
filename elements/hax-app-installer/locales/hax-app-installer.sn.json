@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Zvinodikanwa zvinoda kugadzirwa",
   "passedChecks": "Tsoro dzakabudirira",
   "recheckRequirements": "Tarisazve zvinodikanwa",
-  "createMissingDirectories": "Gadzira mafolda akushaya",
+  "createMissingFiles": "Gadzira mafolda akushaya",
   "continue": "Ende mberi",
   "allRequirementsMet": "Zvinodikanwa zvose zvazvizere. Unogona kuenderera kune nhanho inotevera.",
   "requirement": "Chinodikanwa",

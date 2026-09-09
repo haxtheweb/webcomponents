@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Απαιτήσεις που χρειάζονται ρύθμιση",
   "passedChecks": "Ελεγμένοι έλεγχοι",
   "recheckRequirements": "Επανέλεγχος απαιτήσεων",
-  "createMissingDirectories": "Δημιουργία καταλόγων που λείπουν",
+  "createMissingFiles": "Δημιουργία καταλόγων που λείπουν",
   "continue": "Συνέχεια",
   "allRequirementsMet": "Όλες οι απαιτήσεις πληρούνται. Μπορείτε να συνεχίσετε στο επόμενο βήμα.",
   "requirement": "Απαίτηση",

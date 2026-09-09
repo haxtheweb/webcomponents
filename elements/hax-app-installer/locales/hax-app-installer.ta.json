@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "உள்ளமைவு தேவைப்படும் தேவைகள்",
   "passedChecks": "தேர்வு செய்யப்பட்ட சரிபார்ப்புகள்",
   "recheckRequirements": "தேவைகளை மீண்டும் சரிபார்க்கவும்",
-  "createMissingDirectories": "விடுபட்ட அடைவுகளை உருவாக்கவும்",
+  "createMissingFiles": "விடுபட்ட அடைவுகளை உருவாக்கவும்",
   "continue": "தொடரவும்",
   "allRequirementsMet": "அனைத்து தேவைகளும் பூர்த்தி செய்யப்பட்டன. நீங்கள் அடுத்த படியை தொடரலாம்.",
   "requirement": "தேவை",

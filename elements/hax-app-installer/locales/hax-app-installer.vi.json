@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Yêu cầu cần cấu hình",
   "passedChecks": "Kiểm tra đã đạt",
   "recheckRequirements": "Kiểm tra lại yêu cầu",
-  "createMissingDirectories": "Tạo các thư mục bị thiếu",
+  "createMissingFiles": "Tạo các thư mục bị thiếu",
   "continue": "Tiếp tục",
   "allRequirementsMet": "Tất cả yêu cầu đã được đáp ứng. Bạn có thể tiếp tục đến bước tiếp theo.",
   "requirement": "Yêu cầu",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Ngā hiahiatanga e hiahia ana ki te whirihoranga",
   "passedChecks": "Ngā arotakeanga kua hipa",
   "recheckRequirements": "Arotapu anō ngā hiahiatanga",
-  "createMissingDirectories": "Hanga ngā kōpaki ngaro",
+  "createMissingFiles": "Hanga ngā kōpaki ngaro",
   "continue": "Haere tonu",
   "allRequirementsMet": "Kua tutuki ngā hiahiatanga katoa. Ka taea te haere tonu ki te tūranga whai ake.",
   "requirement": "Hiahiatanga",

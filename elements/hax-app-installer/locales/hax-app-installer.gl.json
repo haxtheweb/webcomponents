@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Requisitos que necesitan configuración",
   "passedChecks": "Comprobacións superadas",
   "recheckRequirements": "Volver comprobar requisitos",
-  "createMissingDirectories": "Crear directorios perdidos",
+  "createMissingFiles": "Crear directorios perdidos",
   "continue": "Continuar",
   "allRequirementsMet": "Todos os requisitos están cumpridos. Podes continuar ao seguinte paso.",
   "requirement": "Requisito",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Gofynion sydd angen ffurfweddu",
   "passedChecks": "Gwiriadau a pasiwyd",
   "recheckRequirements": "Ail-wirio gofynion",
-  "createMissingDirectories": "Creu cyfeiriaduron coll",
+  "createMissingFiles": "Creu cyfeiriaduron coll",
   "continue": "Parhau",
   "allRequirementsMet": "Mae pob gofyniad wedi'i fodloni. Gallwch barhau i'r cam nesaf.",
   "requirement": "Gofyniad",

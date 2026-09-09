@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Көйләү таләп ителә торган таләпләр",
   "passedChecks": "Уңышлы тикшерүләр",
   "recheckRequirements": "Таләпләрне кабат тикшерегез",
-  "createMissingDirectories": "Җитмешкән директорияләрне булдырыгыз",
+  "createMissingFiles": "Җитмешкән директорияләрне булдырыгыз",
   "continue": "Дәвам итегез",
   "allRequirementsMet": "Барлык таләпләр үтәлде. Сез киләсе адымга дәвам итә аласыз.",
   "requirement": "Таләп",

@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Sarat sing butuh konfigurasi",
   "passedChecks": "Priksa sing lulus",
   "recheckRequirements": "Priksa maneh sarat",
-  "createMissingDirectories": "Gawe direktori sing ilang",
+  "createMissingFiles": "Gawe direktori sing ilang",
   "continue": "Terusake",
   "allRequirementsMet": "Kabeh sarat wis dicukupi. Panjenengan bisa terus menyang langkah sabanjure.",
   "requirement": "Sarat",

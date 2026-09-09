@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfigurasiýa talap edýän talaplar",
   "passedChecks": "Geçen barlaglar",
   "recheckRequirements": "Talaplary gaýtadan barla",
-  "createMissingDirectories": "Tapylmadyk kataloglary döret",
+  "createMissingFiles": "Tapylmadyk kataloglary döret",
   "continue": "Dowam et",
   "allRequirementsMet": "Hemme talaplar ýerine ýetirildi. Indiki ädimä geçip bilersiňiz.",
   "requirement": "Talap",

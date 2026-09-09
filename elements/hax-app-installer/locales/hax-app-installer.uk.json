@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Вимоги, що потребують налаштування",
   "passedChecks": "Успішні перевірки",
   "recheckRequirements": "Перевірити вимоги знову",
-  "createMissingDirectories": "Створити відсутні каталоги",
+  "createMissingFiles": "Створити відсутні каталоги",
   "continue": "Продовжити",
   "allRequirementsMet": "Усі вимоги виконано. Ви можете перейти до наступного кроку.",
   "requirement": "Вимога",

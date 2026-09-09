@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Ihe achọrọ na-achọ ntọala",
   "passedChecks": "Nyocha ndị gafere",
   "recheckRequirements": "Nyochaa ihe achọrọ ọzọ",
-  "createMissingDirectories": "Mepụta akwụkwọ ndekọ ndị na-adịghị",
+  "createMissingFiles": "Mepụta akwụkwọ ndekọ ndị na-adịghị",
   "continue": "Gaa n'ihu",
   "allRequirementsMet": "Ihe niile achọrọ zuru okè. Ị nwere ike ịga n'ihu na nzọụkwụ ọzọ.",
   "requirement": "Ihe achọrọ",

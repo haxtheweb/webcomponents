@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Vereisten die configuratie nodig hebben",
   "passedChecks": "Geslaagde controles",
   "recheckRequirements": "Vereisten opnieuw controleren",
-  "createMissingDirectories": "Ontbrekende mappen aanmaken",
+  "createMissingFiles": "Ontbrekende mappen aanmaken",
   "continue": "Doorgaan",
   "allRequirementsMet": "Alle vereisten zijn vervuld. U kunt doorgaan naar de volgende stap.",
   "requirement": "Vereiste",

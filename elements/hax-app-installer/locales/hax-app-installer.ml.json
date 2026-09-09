@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "കോൺഫിഗറേഷൻ ആവശ്യമായ ആവശ്യകതകൾ",
   "passedChecks": "പാസായ പരിശോധനകൾ",
   "recheckRequirements": "ആവശ്യകതകൾ വീണ്ടും പരിശോധിക്കുക",
-  "createMissingDirectories": "ലഭ്യമല്ലാത്ത ഡയറക്ടറികൾ സൃഷ്ടിക്കുക",
+  "createMissingFiles": "ലഭ്യമല്ലാത്ത ഡയറക്ടറികൾ സൃഷ്ടിക്കുക",
   "continue": "തുടരുക",
   "allRequirementsMet": "എല്ലാ ആവശ്യകതകളും പാലിക്കപ്പെട്ടു. അടുത്ത ഘട്ടത്തിലേക്ക് തുടരാം.",
   "requirement": "ആവശ്യകത",

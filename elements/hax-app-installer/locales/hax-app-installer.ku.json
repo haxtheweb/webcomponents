@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Pêdiviyên ku hewceyê veavakirinê ne",
   "passedChecks": "Kontrolên derbaskirî",
   "recheckRequirements": "Dîsa pêdiviyan kontrol bike",
-  "createMissingDirectories": "Peldankên wenda çê bike",
+  "createMissingFiles": "Peldankên wenda çê bike",
   "continue": "Bidomîne",
   "allRequirementsMet": "Hemû pêdivî tên cih. Tu dikarî biçî gava pêş.",
   "requirement": "Pêdivî",

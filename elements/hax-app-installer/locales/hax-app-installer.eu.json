@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfigurazioa behar duten betebeharrak",
   "passedChecks": "Egiaztapen gaindituak",
   "recheckRequirements": "Berregiaztatu betebeharrak",
-  "createMissingDirectories": "Sortu falta diren direktorioak",
+  "createMissingFiles": "Sortu falta diren direktorioak",
   "continue": "Jarraitu",
   "allRequirementsMet": "Betebeharrak guztiak bete dira. Hurrengo urratsera jarraitu dezakezu.",
   "requirement": "Betebeharra",

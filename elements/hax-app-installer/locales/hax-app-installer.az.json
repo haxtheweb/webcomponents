@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfiqurasiya tələb edən tələblər",
   "passedChecks": "Keçən yoxlamalar",
   "recheckRequirements": "Tələbləri yenidən yoxlayın",
-  "createMissingDirectories": "Çatışmayan qovluqları yaradın",
+  "createMissingFiles": "Çatışmayan qovluqları yaradın",
   "continue": "Davam et",
   "allRequirementsMet": "Bütün tələblər yerinə yetirilir. Növbəti addıma keçə bilərsiniz.",
   "requirement": "Tələb",

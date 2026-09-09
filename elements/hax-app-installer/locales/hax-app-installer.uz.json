@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfiguratsiya talab qiladigan talablar",
   "passedChecks": "O'tgan tekshiruvlar",
   "recheckRequirements": "Talablarni qayta tekshirish",
-  "createMissingDirectories": "Yetishmayotgan papkalarni yaratish",
+  "createMissingFiles": "Yetishmayotgan papkalarni yaratish",
   "continue": "Davom etish",
   "allRequirementsMet": "Barcha talablar bajarildi. Keyingi qadamga o'tishingiz mumkin.",
   "requirement": "Talab",

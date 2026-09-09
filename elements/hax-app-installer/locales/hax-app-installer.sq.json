@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Kërkesat që kanë nevojë për konfigurim",
   "passedChecks": "Kontrollet e kaluara",
   "recheckRequirements": "Rikontrollo kërkesat",
-  "createMissingDirectories": "Krijo direktoritë e mungguara",
+  "createMissingFiles": "Krijo direktoritë e mungguara",
   "continue": "Vazhdo",
   "allRequirementsMet": "Të gjitha kërkesat janë përmbushur. Mund të vazhdoni me hapin e ardhshëm.",
   "requirement": "Kërkesë",

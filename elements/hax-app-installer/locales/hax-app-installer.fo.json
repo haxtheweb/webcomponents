@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Krøv, ið tørva uppseting",
   "passedChecks": "Góðtiknar kanningar",
   "recheckRequirements": "Kanna krøv aftur",
-  "createMissingDirectories": "Stovna manglandi faldarar",
+  "createMissingFiles": "Stovna manglandi faldarar",
   "continue": "Halt áfram",
   "allRequirementsMet": "Allir krøv eru uppfyltir. Tú kanst halda áfram til næsta stig.",
   "requirement": "Krav",

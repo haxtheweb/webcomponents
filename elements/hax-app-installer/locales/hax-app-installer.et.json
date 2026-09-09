@@ -10,7 +10,7 @@
   "requirementsNeedingConfiguration": "Konfigureerimist vajavad nõuded",
   "passedChecks": "Läbitud kontrollid",
   "recheckRequirements": "Kontrolli nõudeid uuesti",
-  "createMissingDirectories": "Loo puuduvad kataloogid",
+  "createMissingFiles": "Loo puuduvad kataloogid",
   "continue": "Jätka",
   "allRequirementsMet": "Kõik nõuded on täidetud. Võid jätkata järgmise sammuga.",
   "requirement": "Nõue",
