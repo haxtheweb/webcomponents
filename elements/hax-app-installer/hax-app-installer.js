@@ -148,6 +148,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     this._confettiBurst = false;
     this._confirmPasswordInput = "";
     this._passwordMismatch = false;
+    this._preparePermissionCommand = "";
+    this._preparePermissionHint = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -165,6 +167,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       passedChecks: "Passed checks",
       recheckRequirements: "Re-check requirements",
       createMissingDirectories: "Create missing directories",
+      permissionRequired: "Permission required",
       continue: "Continue",
       allRequirementsMet:
         "All requirements are met. You can continue to the next step.",
@@ -782,6 +785,49 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           flex-shrink: 0;
         }
 
+        .permission-banner {
+          background: light-dark(
+            var(--ddd-theme-default-infoLight),
+            var(--ddd-primary-24)
+          );
+          color: light-dark(
+            var(--ddd-primary-24)
+            var(--ddd-accent-6)
+          );
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-4);
+          margin-bottom: var(--ddd-spacing-6);
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-140);
+        }
+
+        .permission-banner-head {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .permission-banner-head simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          color: light-dark(
+            var(--ddd-primary-24)
+            var(--ddd-accent-6)
+          );
+        }
+
+        .permission-banner-hint {
+          margin: 0 0 var(--ddd-spacing-2) 0;
+          opacity: var(--ddd-opacity-90);
+        }
+
+        .permission-cmd {
+          margin: 0;
+          white-space: pre-wrap;
+          word-break: break-all;
+        }
+
         .community-section h3 {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -1152,6 +1198,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   async fetchState() {
     this.loading = true;
     this.error = "";
+    // Re-check clears any prior permission notice; if permissions are still
+    // wrong, ?op=prepare will re-surface it when clicked again.
+    this._preparePermissionCommand = "";
+    this._preparePermissionHint = "";
     try {
       const url = this.apiEndpoint + "?op=state";
       const response = await fetch(url);
@@ -1331,6 +1381,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   async _prepareEnvironment() {
     this.loading = true;
     this.error = "";
+    this._preparePermissionCommand = "";
+    this._preparePermissionHint = "";
     try {
       const url = this.apiEndpoint + "?op=prepare";
       const response = await fetch(url, {
@@ -1343,6 +1395,14 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       }
       const data = await response.json();
       this._applyState(data);
+      // Issue #2974: if the server could not auto-create the _config tree
+      // / boilerplate due to permissions, it returns a single SSH command
+      // to run as the file owner. Surface it so the user has one call to
+      // fix everything instead of toggling 777.
+      if (data && data.permissionCommand) {
+        this._preparePermissionCommand = data.permissionCommand;
+        this._preparePermissionHint = data.permissionHint || "";
+      }
       return data;
     } catch (e) {
       this.error = e.message || String(e);
@@ -1658,6 +1718,22 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <h2>${this.t.verifyRequirements}</h2>
       <p class="description">${this.t.verifyRequirementsDescription}</p>
+      ${this._preparePermissionCommand
+        ? html`
+            <div class="permission-banner">
+              <div class="permission-banner-head">
+                <simple-icon-lite icon="icons:lock"></simple-icon-lite>
+                <strong>${this.t.permissionRequired}</strong>
+              </div>
+              ${this._preparePermissionHint
+                ? html`<p class="permission-banner-hint">
+                    ${this._preparePermissionHint}
+                  </p>`
+                : ""}
+              <pre class="cmd-block permission-cmd">${this._preparePermissionCommand}</pre>
+            </div>
+          `
+        : ""}
       ${needsConfig.length === 0
         ? html`
             <div class="no-issues">
