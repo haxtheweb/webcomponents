@@ -1,6 +1,5 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 
 const SCALE_PRESETS = {
@@ -11,13 +10,23 @@ const SCALE_PRESETS = {
   xl: { width: 1200, height: 900, label: "ddd-xl  1200\u00d7900" },
 };
 
-const TRANSFORM_ITEMS = [
-  { value: "", text: "Choose\u2026" },
-  { value: "convert-jpg", text: "Convert to JPG" },
-  { value: "sepia", text: "Sepia" },
-  { value: "black-and-white", text: "Black and white" },
-];
+const COMPRESS_PRESETS = {
+  light: { quality: 90, label: "Light (90)" },
+  medium: { quality: 70, label: "Medium (70)" },
+  heavy: { quality: 50, label: "Heavy (50)" },
+  maximum: { quality: 30, label: "Maximum (30)" },
+};
 
+/**
+ * `hax-file-actions`
+ * A bulk-action bar operating on a set of currently-selected files rather
+ * than a single row. Consolidates all operations (transform, compress,
+ * scale, rotate, duplicate, rename, insert into page, delete) into one
+ * hierarchical `<select>` (group headers are non-selectable, leaves are
+ * the actual actions), so the control takes minimal horizontal space and
+ * can be reused wherever a "operate on a selection of files" bar is
+ * needed (e.g. issue #3028).
+ */
 class HAXFileActions extends DDD {
   static get tag() {
     return "hax-file-actions";
@@ -25,9 +34,8 @@ class HAXFileActions extends DDD {
 
   static get properties() {
     return {
-      rowIndex: { type: Number, attribute: "row-index" },
-      path: { type: String },
-      scalePreset: { type: String, attribute: "scale-preset" },
+      selectedCount: { type: Number, attribute: "selected-count" },
+      imageCount: { type: Number, attribute: "image-count" },
       canScale: { type: Boolean, attribute: "can-scale", reflect: true },
       busy: { type: Boolean, reflect: true },
     };
@@ -35,9 +43,8 @@ class HAXFileActions extends DDD {
 
   constructor() {
     super();
-    this.rowIndex = -1;
-    this.path = "";
-    this.scalePreset = "md";
+    this.selectedCount = 0;
+    this.imageCount = 0;
     this.canScale = false;
     this.busy = false;
   }
@@ -51,36 +58,86 @@ class HAXFileActions extends DDD {
         }
         .acts {
           display: flex;
-          gap: var(--ddd-spacing-1);
+          gap: var(--ddd-spacing-2);
           align-items: center;
           flex-wrap: wrap;
         }
+        .count {
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-slateGray);
+          white-space: nowrap;
+        }
         .acts simple-fields-field {
           --simple-fields-font-size: var(--ddd-font-size-5xs);
-          --simple-fields-select-max-width: 100px;
-          margin: 0;
-        }
-        .ib {
-          --simple-icon-button-border-radius: var(--ddd-radius-xs);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          padding: 0;
+          --simple-fields-select-max-width: 220px;
           margin: 0;
         }
       `,
     ];
   }
 
-  get scaleItems() {
-    const out = [{ value: "", text: "Choose\u2026" }];
-    Object.keys(SCALE_PRESETS).forEach((key) => {
-      out.push({ value: key, text: SCALE_PRESETS[key].label });
-    });
-    return out;
+  /**
+   * Builds the full hierarchical option list for the single bulk-action
+   * select. Options with a shared `group` render as an `<optgroup>` in
+   * `simple-fields-field`'s select template; options without a `group`
+   * render as flat top-level `<option>`s. Values are encoded as
+   * `"action:value"` so `_onAction` can split on the first `:` to
+   * recover the action name and its parameter.
+   *
+   * @readonly
+   */
+  get actionItems() {
+    const items = [{ value: "", text: "Choose an action\u2026" }];
+    if (this.canScale) {
+      items.push(
+        {
+          group: "Transform",
+          value: "transform:convert-jpg",
+          text: "Convert to JPG",
+        },
+        { group: "Transform", value: "transform:sepia", text: "Sepia" },
+        {
+          group: "Transform",
+          value: "transform:black-and-white",
+          text: "Black and white",
+        },
+      );
+      Object.keys(COMPRESS_PRESETS).forEach((key) => {
+        items.push({
+          group: "Compress",
+          value: `compress:${key}`,
+          text: COMPRESS_PRESETS[key].label,
+        });
+      });
+      Object.keys(SCALE_PRESETS).forEach((key) => {
+        items.push({
+          group: "Scale",
+          value: `scale:${key}`,
+          text: SCALE_PRESETS[key].label,
+        });
+      });
+      items.push({ value: "rotate:rotate-90", text: "Rotate 90\u00b0" });
+    }
+    items.push({ value: "duplicate:duplicate", text: "Duplicate" });
+    items.push({ value: "rename:rename", text: "Rename" });
+    if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
+      items.push(
+        {
+          group: "Insert into page",
+          value: "insert:gallery",
+          text: "Insert as gallery",
+        },
+        {
+          group: "Insert into page",
+          value: "insert:standalone",
+          text: "Insert as standalone images",
+        },
+      );
+    } else {
+      items.push({ value: "insert:page", text: "Insert into page" });
+    }
+    items.push({ value: "delete:delete", text: "Delete" });
+    return items;
   }
 
   _dispatchAction(action, value) {
@@ -92,8 +149,6 @@ class HAXFileActions extends DDD {
         detail: {
           action,
           value,
-          rowIndex: this.rowIndex,
-          path: this.path,
         },
       }),
     );
@@ -104,91 +159,39 @@ class HAXFileActions extends DDD {
     if (field) field.value = "";
   }
 
-  _onTransformAction(e) {
-    const value =
+  _onAction(e) {
+    const raw =
       e && e.detail && typeof e.detail.value === "string"
         ? e.detail.value.trim()
         : "";
-    if (!value || this.busy || !this.canScale) {
+    if (!raw || this.busy || this.selectedCount < 1) {
       this._resetField(e);
       return;
     }
-    this._dispatchAction("transform", value);
+    const sep = raw.indexOf(":");
+    const action = sep === -1 ? raw : raw.substring(0, sep);
+    const value = sep === -1 ? "" : raw.substring(sep + 1);
+    this._dispatchAction(action, value);
     this._resetField(e);
-  }
-
-  _onScaleAction(e) {
-    const value =
-      e && e.detail && typeof e.detail.value === "string"
-        ? e.detail.value.trim()
-        : "";
-    if (!value || this.busy || !this.canScale) {
-      this._resetField(e);
-      return;
-    }
-    this._dispatchAction("scale", value);
-    this._resetField(e);
-  }
-
-  _onDelete() {
-    if (this.busy) return;
-    this._dispatchAction("delete", "delete");
-  }
-  _onRotate() {
-    if (this.busy || !this.canScale) return;
-    this._dispatchAction("rotate", "rotate-90");
-  }
-  _onRename() {
-    if (this.busy) return;
-    this._dispatchAction("rename", "rename");
   }
 
   render() {
     return html`
-      <div class="acts" role="group" aria-label="File actions">
+      <div class="acts" role="group" aria-label="Bulk file actions">
+        <span class="count"
+          >${this.selectedCount} file${this.selectedCount === 1
+            ? ""
+            : "s"}
+          selected</span
+        >
         <simple-fields-field
-          label="Transform"
+          label="Action"
           type="select"
-          .itemsList="${TRANSFORM_ITEMS}"
-          ?disabled="${this.busy || !this.canScale}"
-          @value-changed="${this._onTransformAction}"
+          .itemsList="${this.actionItems}"
+          ?disabled="${this.busy || this.selectedCount < 1}"
+          @value-changed="${this._onAction}"
         >
         </simple-fields-field>
-        <simple-fields-field
-          label="Scale"
-          type="select"
-          .itemsList="${this.scaleItems}"
-          ?disabled="${this.busy || !this.canScale}"
-          @value-changed="${this._onScaleAction}"
-        >
-        </simple-fields-field>
-        <simple-icon-button-lite
-          class="ib"
-          icon="image:rotate-right"
-          label="Rotate 90 degrees"
-          title="Rotate image 90 degrees clockwise"
-          ?disabled="${this.busy || !this.canScale}"
-          @click="${this._onRotate}"
-        >
-        </simple-icon-button-lite>
-        <simple-icon-button-lite
-          class="ib"
-          icon="icons:create"
-          label="Rename"
-          title="Rename file"
-          ?disabled="${this.busy}"
-          @click="${this._onRename}"
-        >
-        </simple-icon-button-lite>
-        <simple-icon-button-lite
-          class="ib"
-          icon="icons:delete"
-          label="Delete"
-          title="Delete file"
-          ?disabled="${this.busy}"
-          @click="${this._onDelete}"
-        >
-        </simple-icon-button-lite>
       </div>
     `;
   }

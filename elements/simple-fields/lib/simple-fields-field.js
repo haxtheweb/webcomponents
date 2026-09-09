@@ -1199,6 +1199,64 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return sorted;
     }
     /**
+     * template for a single `option` element in a `select`
+     *
+     * @param {object} option
+     * @returns {object}
+     * @memberof SimpleFieldsField
+     */
+    _optionTemplate(option) {
+      return html`
+        <option
+          part="select-option"
+          .id="${this.id}.${option.value}"
+          ?selected="${this.multiple
+            ? this.value && this.value.includes(option.value)
+            : this.value === option.value}"
+          ?disabled="${option.disabled}"
+          .value="${option.value}"
+        >
+          ${option.html ? html`${option.html}` : option.text}
+        </option>
+      `;
+    }
+    /**
+     * renders a list of options, wrapping consecutive items that share
+     * an optional `group` property in an `optgroup`. Items without a
+     * `group` render exactly as before (no behavior change for existing
+     * consumers that don't set `group`).
+     *
+     * @param {array} options
+     * @returns {object}
+     * @memberof SimpleFieldsField
+     */
+    _groupedOptionsTemplate(options) {
+      const templates = [];
+      let i = 0;
+      while (i < options.length) {
+        const option = options[i];
+        if (option && option.group) {
+          const group = option.group;
+          const groupItems = [];
+          while (i < options.length && options[i] && options[i].group === group) {
+            groupItems.push(options[i]);
+            i++;
+          }
+          templates.push(html`
+            <optgroup label="${group}" part="select-optgroup">
+              ${groupItems.map((groupOption) =>
+                this._optionTemplate(groupOption),
+              )}
+            </optgroup>
+          `);
+        } else {
+          templates.push(this._optionTemplate(option));
+          i++;
+        }
+      }
+      return templates;
+    }
+    /**
      * template for `select` in shadow DOM
      *
      * @readonly
@@ -1226,21 +1284,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           tabindex="0"
           part="select"
         >
-          ${(this.sortedOptions || []).map(
-            (option) => html`
-              <option
-                part="select-option"
-                .id="${this.id}.${option.value}"
-                ?selected="${this.multiple
-                  ? this.value && this.value.includes(option.value)
-                  : this.value === option.value}"
-                ?disabled="${option.disabled}"
-                .value="${option.value}"
-              >
-                ${option.html ? html`${option.html}` : option.text}
-              </option>
-            `,
-          )}
+          ${this._groupedOptionsTemplate(this.sortedOptions || [])}
         </select>
         <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
       `;

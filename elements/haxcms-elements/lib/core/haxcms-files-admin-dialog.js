@@ -11,7 +11,18 @@ import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "./hax-file-actions.js";
+
+const FILE_TYPE_FILTER_ITEMS = [
+  { value: "", text: "All types" },
+  { value: "image", text: "Images" },
+  { value: "video", text: "Video" },
+  { value: "audio", text: "Audio" },
+  { value: "application/pdf", text: "PDF" },
+];
+
+const COMPRESS_LEVELS = ["light", "medium", "heavy", "maximum"];
 
 const SCALE_PRESETS = {
   xs: { width: 200, height: 150, label: "ddd-xs  200\u00d7150" },
@@ -30,6 +41,8 @@ class HAXCMSFilesAdminDialog extends DDD {
       rows: { type: Array },
       loading: { type: Boolean, reflect: true },
       busy: { type: Boolean, reflect: true },
+      bulkBusy: { type: Boolean, attribute: false },
+      selectedRows: { type: Object, attribute: false },
       errorMessage: { type: String },
       method: { type: String },
       jwt: { type: String },
@@ -40,6 +53,9 @@ class HAXCMSFilesAdminDialog extends DDD {
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
       pageTotal: { type: Number, attribute: "page-total" },
+      filterType: { type: String, attribute: "filter-type" },
+      filterExtension: { type: String, attribute: "filter-extension" },
+      filterNameContains: { type: String, attribute: "filter-name-contains" },
     };
   }
 
@@ -59,8 +75,14 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.pageLimit = 25;
     this.pageOffset = 0;
     this.pageTotal = 0;
+    this.filterType = "";
+    this.filterExtension = "";
+    this.filterNameContains = "";
+    this.bulkBusy = false;
+    this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
+    this.__filterDebounceTimer = null;
   }
 
   static get styles() {
@@ -119,6 +141,11 @@ class HAXCMSFilesAdminDialog extends DDD {
           flex-wrap: wrap;
           gap: var(--ddd-spacing-2);
           align-items: center;
+        }
+        .toolbar simple-fields-field {
+          --simple-fields-font-size: var(--ddd-font-size-5xs);
+          --simple-fields-select-max-width: 140px;
+          margin: 0;
         }
         .helper {
           font-size: var(--ddd-font-size-5xs);
@@ -183,7 +210,9 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         .pw {
           width: 200px;
+          max-width: 200px;
           height: 100px;
+          max-height: 100px;
           border-radius: var(--ddd-radius-sm);
           border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
@@ -195,8 +224,18 @@ class HAXCMSFilesAdminDialog extends DDD {
         .pw img {
           width: 100%;
           height: 100%;
+          max-width: 200px;
+          max-height: 100px;
           object-fit: cover;
           display: block;
+        }
+        td.pw-col {
+          max-width: 200px;
+        }
+        th:first-child,
+        td:first-child {
+          width: var(--ddd-spacing-6);
+          text-align: center;
         }
         .fn {
           display: flex;
@@ -274,6 +313,10 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   disconnectedCallback() {
     this.removeEventListener("hax-file-action", this.__boundFileAction);
+    if (this.__filterDebounceTimer) {
+      clearTimeout(this.__filterDebounceTimer);
+      this.__filterDebounceTimer = null;
+    }
     for (var i in this.__disposer) {
       const d = this.__disposer[i];
       if (typeof d === "function") {
@@ -523,6 +566,44 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.refreshFiles();
   }
 
+  _debounceFilterRefresh() {
+    if (this.__filterDebounceTimer) {
+      clearTimeout(this.__filterDebounceTimer);
+    }
+    this.__filterDebounceTimer = setTimeout(() => {
+      this.__filterDebounceTimer = null;
+      this.pageOffset = 0;
+      this.refreshFiles();
+    }, 400);
+  }
+  _onFilterTypeChanged(e) {
+    const value =
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
+        : "";
+    if (value === this.filterType) return;
+    this.filterType = value;
+    this._debounceFilterRefresh();
+  }
+  _onFilterExtensionChanged(e) {
+    const value =
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
+        : "";
+    if (value === this.filterExtension) return;
+    this.filterExtension = value;
+    this._debounceFilterRefresh();
+  }
+  _onFilterNameContainsChanged(e) {
+    const value =
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
+        : "";
+    if (value === this.filterNameContains) return;
+    this.filterNameContains = value;
+    this._debounceFilterRefresh();
+  }
+
   _isImg(r) {
     return (
       r &&
@@ -648,13 +729,23 @@ class HAXCMSFilesAdminDialog extends DDD {
         this.pageTotal = 0;
         return;
       }
+      const params = {
+        cb: cacheBustToken,
+        "page.limit": this.pageLimit,
+        "page.offset": this.pageOffset,
+      };
+      if (this.filterType) {
+        params["filter.type"] = this.filterType;
+      }
+      if (this.filterExtension) {
+        params["filter.extension"] = this.filterExtension;
+      }
+      if (this.filterNameContains) {
+        params["filter.nameContains"] = this.filterNameContains;
+      }
       const response = await MicroFrontendRegistry.call(
         "@site/listFiles",
-        {
-          cb: cacheBustToken,
-          "page.limit": this.pageLimit,
-          "page.offset": this.pageOffset,
-        },
+        params,
         null,
         this,
       );
@@ -670,6 +761,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
       this.pageTotal = this._readPageTotal(response);
       this.rows = this._normPayload(response);
+      this.selectedRows = new Set();
     } catch (e) {
       this.errorMessage = "Unable to load files";
       this.rows = [];
@@ -689,41 +781,150 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.refreshFiles();
   }
 
-  _rowByIndex(index) {
-    const i = parseInt(index, 10);
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return null;
-    return { index: i, row: this.rows[i] };
+  _rowKey(row) {
+    return row ? this._s(row.uuid || row.id || row.path) : "";
+  }
+  _isRowSelected(row) {
+    return this.selectedRows.has(this._rowKey(row));
+  }
+  _toggleRowSelected(row, checked) {
+    const key = this._rowKey(row);
+    if (!key) return;
+    const next = new Set(this.selectedRows);
+    if (checked) {
+      next.add(key);
+    } else {
+      next.delete(key);
+    }
+    this.selectedRows = next;
+  }
+  _toggleSelectAll(checked) {
+    if (checked) {
+      this.selectedRows = new Set(this.rows.map((r) => this._rowKey(r)));
+    } else {
+      this.selectedRows = new Set();
+    }
+  }
+  _selectedRowObjects() {
+    return this.rows.filter((r) => this.selectedRows.has(this._rowKey(r)));
+  }
+  _rowByKey(key) {
+    const k = this._s(key);
+    if (!k) return null;
+    return this.rows.find((r) => this._rowKey(r) === k) || null;
+  }
+  _toggleRowSelectedByKey(key, checked) {
+    const k = this._s(key);
+    if (!k) return;
+    const next = new Set(this.selectedRows);
+    if (checked) {
+      next.add(k);
+    } else {
+      next.delete(k);
+    }
+    this.selectedRows = next;
+  }
+  _actionTargetFromEvent(e) {
+    const path =
+      e && typeof e.composedPath === "function" ? e.composedPath() : [];
+    for (let i = 0; i < path.length; i++) {
+      const candidate = path[i];
+      if (
+        candidate &&
+        typeof candidate.getAttribute === "function" &&
+        candidate.getAttribute("data-action")
+      ) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+  _handleTableClick(e) {
+    const target = this._actionTargetFromEvent(e);
+    if (!target) return;
+    if (target.getAttribute("data-action") === "embed") {
+      if (typeof e.stopPropagation === "function") {
+        e.stopPropagation();
+      }
+      const row = this._rowByKey(target.getAttribute("data-row-key"));
+      if (row) this._embedInPage(row);
+    }
+  }
+  _handleTableChange(e) {
+    const target = this._actionTargetFromEvent(e);
+    if (!target) return;
+    const action = target.getAttribute("data-action");
+    if (action === "select-all") {
+      this._toggleSelectAll(target.checked);
+    } else if (action === "select-row") {
+      this._toggleRowSelectedByKey(
+        target.getAttribute("data-row-key"),
+        target.checked,
+      );
+    }
+    this._syncVisibleCheckboxes();
+  }
+  _syncVisibleCheckboxes() {
+    const td =
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("editable-table-display");
+    if (!td || !td.shadowRoot) return;
+    const allBox = td.shadowRoot.querySelector(
+      'input[data-action="select-all"]',
+    );
+    if (allBox) {
+      allBox.checked =
+        this.rows.length > 0 && this.selectedRows.size === this.rows.length;
+    }
+    const rowBoxes = td.shadowRoot.querySelectorAll(
+      'input[data-action="select-row"]',
+    );
+    rowBoxes.forEach((box) => {
+      box.checked = this.selectedRows.has(
+        this._s(box.getAttribute("data-row-key")),
+      );
+    });
   }
 
   _onFileAction(e) {
     if (!e || !e.detail || this.busy) return;
-    const rowData = this._rowByIndex(e.detail.rowIndex);
-    if (!rowData) return;
-    if (e.detail.action === "scale") {
-      this._onScaleAction(rowData.index, e.detail.value);
-    } else if (e.detail.action === "rotate") {
-      this._onRotateAction(rowData.index, e.detail.value);
-    } else if (e.detail.action === "transform") {
-      this._onTransformAction(rowData.index, e.detail.value);
-    } else if (e.detail.action === "rename") {
-      this._onRenameAction(rowData.index);
-    } else if (e.detail.action === "delete") {
-      this._delete(rowData.index);
+    const selected = this._selectedRowObjects();
+    if (selected.length === 0) return;
+    const action = e.detail.action;
+    const value = typeof e.detail.value === "string" ? e.detail.value : "";
+    if (action === "scale") {
+      this._onBulkScale(selected, value);
+    } else if (action === "rotate") {
+      this._onBulkRotate(selected);
+    } else if (action === "transform") {
+      this._onBulkTransform(selected, value);
+    } else if (action === "compress") {
+      this._onBulkCompress(selected, value);
+    } else if (action === "duplicate") {
+      this._onBulkDuplicate(selected);
+    } else if (action === "rename") {
+      this._onBulkRename(selected);
+    } else if (action === "delete") {
+      this._onBulkDelete(selected);
+    } else if (action === "insert") {
+      this._onBulkInsert(selected, value);
     }
   }
   async _op(row, op, options = {}) {
+    const silent = !!(options && options.silent);
+    const skipRefresh = !!(options && options.skipRefresh);
     if (!this._canOp) {
-      this._msg("Unable to run file operation.", true);
-      return;
+      if (!silent) this._msg("Unable to run file operation.", true);
+      return { ok: false, message: "Unable to run file operation." };
     }
-    this.busy = true;
+    if (!silent) this.busy = true;
     this.errorMessage = "";
     try {
       const fileUuid = this._s(row && row.uuid ? row.uuid : "");
       if (!fileUuid) {
         this.errorMessage = "File UUID is missing";
-        this._msg(this.errorMessage, true);
-        return;
+        if (!silent) this._msg(this.errorMessage, true);
+        return { ok: false, message: this.errorMessage };
       }
       await waitForHAXCMSSiteApiRegistryReady();
       const operationName =
@@ -735,8 +936,8 @@ class HAXCMSFilesAdminDialog extends DDD {
         !MicroFrontendRegistry.has(operationName)
       ) {
         this.errorMessage = "File operation endpoint is not available";
-        this._msg(this.errorMessage, true);
-        return;
+        if (!silent) this._msg(this.errorMessage, true);
+        return { ok: false, message: this.errorMessage };
       }
       const params = { fileUuid };
       if (op !== "delete") {
@@ -747,6 +948,9 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
       if (options && typeof options.newName === "string" && options.newName) {
         params.newName = options.newName;
+      }
+      if (options && typeof options.level === "string" && options.level) {
+        params.level = options.level;
       }
       const d = await MicroFrontendRegistry.call(
         operationName,
@@ -760,8 +964,8 @@ class HAXCMSFilesAdminDialog extends DDD {
           d,
           "File operation failed",
         );
-        this._msg(this.errorMessage, true);
-        return;
+        if (!silent) this._msg(this.errorMessage, true);
+        return { ok: false, message: this.errorMessage };
       }
       let message = "File operation complete";
       if (op === "delete") message = "File deleted";
@@ -773,85 +977,191 @@ class HAXCMSFilesAdminDialog extends DDD {
         message = "Image transformed to black and white";
       else if (op === "scale" && options && options.size)
         message = `Scaled to ${options.size}`;
-      this._msg(message);
-      await this.refreshFiles();
+      else if (op === "compress" && options && options.level)
+        message = `Compressed (${options.level})`;
+      else if (op === "duplicate") message = "File duplicated";
+      if (!silent) this._msg(message);
+      if (!skipRefresh) await this.refreshFiles();
+      return { ok: true, message };
     } catch (e) {
       this.errorMessage = "File operation failed";
-      this._msg(this.errorMessage, true);
+      if (!silent) this._msg(this.errorMessage, true);
+      return { ok: false, message: this.errorMessage };
     } finally {
-      this.busy = false;
+      if (!silent) this.busy = false;
     }
   }
 
-  async _onScaleAction(index, size) {
-    const i = parseInt(index, 10);
+  /**
+   * Runs `opFn` sequentially against each row in `rows`, aggregating
+   * success/failure counts and surfacing a single summary toast rather
+   * than one per file. Used by all bulk (multi-row) actions.
+   */
+  async _runBulkOp(rows, opFn, summaryVerb) {
+    if (!rows || rows.length === 0) return;
+    this.busy = true;
+    this.bulkBusy = true;
+    this.errorMessage = "";
+    let okCount = 0;
+    let failCount = 0;
+    let lastError = "";
+    try {
+      for (let idx = 0; idx < rows.length; idx++) {
+        const row = rows[idx];
+        const result = await opFn(row, idx);
+        if (result && result.ok) {
+          okCount++;
+        } else {
+          failCount++;
+          if (result && result.message) lastError = result.message;
+        }
+      }
+      await this.refreshFiles();
+      if (failCount === 0) {
+        this._msg(`${summaryVerb}: ${okCount} file${okCount === 1 ? "" : "s"}`);
+      } else if (okCount === 0) {
+        this.errorMessage = lastError || `${summaryVerb} failed`;
+        this._msg(
+          `${summaryVerb} failed for all ${failCount} file${failCount === 1 ? "" : "s"}`,
+          true,
+        );
+      } else {
+        this._msg(
+          `${summaryVerb}: ${okCount} succeeded, ${failCount} failed`,
+          true,
+        );
+      }
+    } finally {
+      this.busy = false;
+      this.bulkBusy = false;
+    }
+  }
+
+  async _onBulkScale(rows, size) {
     const normalizedSize = typeof size === "string" ? size.trim() : "";
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
     if (!normalizedSize || !SCALE_PRESETS[normalizedSize]) return;
-    if (!this._canScale(this.rows[i])) {
+    const scalable = rows.filter((r) => this._canScale(r));
+    if (scalable.length === 0) {
       this._msg("Only raster images can be scaled.", true);
       return;
     }
     this.scalePreset = normalizedSize;
-    await this._op(this.rows[i], "scale", { size: normalizedSize });
+    await this._runBulkOp(
+      scalable,
+      (row) =>
+        this._op(row, "scale", {
+          size: normalizedSize,
+          silent: true,
+          skipRefresh: true,
+        }),
+      `Scaled to ${normalizedSize}`,
+    );
   }
-  async _onRotateAction(index, op) {
-    const i = parseInt(index, 10);
-    const normalizedOp = typeof op === "string" ? op.trim() : "";
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
-    if (normalizedOp !== "rotate-90") return;
-    if (!this._canScale(this.rows[i])) {
+  async _onBulkRotate(rows) {
+    const scalable = rows.filter((r) => this._canScale(r));
+    if (scalable.length === 0) {
       this._msg("Only raster images can be rotated.", true);
       return;
     }
-    await this._op(this.rows[i], normalizedOp);
+    await this._runBulkOp(
+      scalable,
+      (row) =>
+        this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
+      "Rotated",
+    );
   }
-  async _onTransformAction(index, op) {
-    const i = parseInt(index, 10);
+  async _onBulkTransform(rows, op) {
     const normalizedOp = typeof op === "string" ? op.trim() : "";
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
     if (!normalizedOp) return;
-    if (
-      normalizedOp === "convert-jpg" &&
-      !this._canConvertToJpg(this.rows[i])
-    ) {
-      this._msg("Only raster images can be converted to JPG.", true);
-      return;
+    let applicable;
+    if (normalizedOp === "convert-jpg") {
+      applicable = rows.filter((r) => this._canConvertToJpg(r));
+      if (applicable.length === 0) {
+        this._msg("Only raster images can be converted to JPG.", true);
+        return;
+      }
+    } else {
+      applicable = rows.filter((r) => this._canScale(r));
+      if (applicable.length === 0) {
+        this._msg("Only raster images can be transformed.", true);
+        return;
+      }
     }
-    if (
-      (normalizedOp === "sepia" || normalizedOp === "black-and-white") &&
-      !this._canScale(this.rows[i])
-    ) {
-      this._msg("Only raster images can be transformed.", true);
-      return;
-    }
-    await this._op(this.rows[i], normalizedOp);
+    await this._runBulkOp(
+      applicable,
+      (row) =>
+        this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
+      "Transformed",
+    );
   }
-  async _onRenameAction(index) {
-    const i = parseInt(index, 10);
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
-    const activeRow = this.rows[i];
-    const defaultName = this._nameWithoutExt(activeRow.name || activeRow.path);
+  async _onBulkCompress(rows, level) {
+    const normalizedLevel = typeof level === "string" ? level.trim() : "";
+    if (!normalizedLevel || COMPRESS_LEVELS.indexOf(normalizedLevel) === -1)
+      return;
+    const compressible = rows.filter((r) => this._canScale(r));
+    if (compressible.length === 0) {
+      this._msg("Only raster images can be compressed.", true);
+      return;
+    }
+    await this._runBulkOp(
+      compressible,
+      (row) =>
+        this._op(row, "compress", {
+          level: normalizedLevel,
+          silent: true,
+          skipRefresh: true,
+        }),
+      `Compressed (${normalizedLevel})`,
+    );
+  }
+  async _onBulkDuplicate(rows) {
+    await this._runBulkOp(
+      rows,
+      (row) => this._op(row, "duplicate", { silent: true, skipRefresh: true }),
+      "Duplicated",
+    );
+  }
+  async _onBulkRename(rows) {
+    const defaultName =
+      rows.length === 1
+        ? this._nameWithoutExt(rows[0].name || rows[0].path)
+        : "";
     const requestedName = globalThis.prompt(
-      "Rename file using letters, numbers, and hyphens. Keep the existing extension.",
+      rows.length === 1
+        ? "Rename file using letters, numbers, and hyphens. Keep the existing extension."
+        : `Rename ${rows.length} files. Enter a base name; files will be named base-1, base-2, etc.`,
       defaultName,
     );
     if (typeof requestedName !== "string") return;
-    const normalizedName = requestedName.trim();
-    if (!normalizedName) {
+    const baseName = requestedName.trim();
+    if (!baseName) {
       this._msg("Rename cancelled", true);
       return;
     }
-    await this._op(activeRow, "rename", { newName: normalizedName });
+    await this._runBulkOp(
+      rows,
+      (row, idx) => {
+        const newName = rows.length === 1 ? baseName : `${baseName}-${idx + 1}`;
+        return this._op(row, "rename", {
+          newName,
+          silent: true,
+          skipRefresh: true,
+        });
+      },
+      "Renamed",
+    );
   }
-  async _delete(index) {
-    const i = parseInt(index, 10);
-    if (Number.isNaN(i) || i < 0 || !this.rows[i]) return;
-    if (
-      !globalThis.confirm(`Delete ${this.rows[i].path}? This cannot be undone.`)
-    )
-      return;
-    await this._op(this.rows[i], "delete");
+  async _onBulkDelete(rows) {
+    const label =
+      rows.length === 1
+        ? rows[0].path
+        : `${rows.length} selected files`;
+    if (!globalThis.confirm(`Delete ${label}? This cannot be undone.`)) return;
+    await this._runBulkOp(
+      rows,
+      (row) => this._op(row, "delete", { silent: true, skipRefresh: true }),
+      "Deleted",
+    );
   }
 
   _msg(m, err) {
@@ -864,8 +1174,21 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   _embedInPage(row) {
-    if (!row || !row.publicUrl) {
-      this._msg("No public URL available for this file.", true);
+    this._onBulkInsert([row], "page");
+  }
+
+  /**
+   * Bulk-aware insert-into-page. Single file: unchanged behavior (one
+   * `insertLogicFromValues` call). Multiple images: caller has already
+   * chosen gallery vs. standalone via the hax-file-actions select
+   * (`insert:gallery` / `insert:standalone`); mixed/non-image multi
+   * selections loop `insertLogicFromValues` once per file.
+   */
+  _onBulkInsert(rows, mode) {
+    const insertable = rows.filter((r) => r && r.publicUrl);
+    const skipped = rows.length - insertable.length;
+    if (insertable.length === 0) {
+      this._msg("No public URL available for the selected file(s).", true);
       return;
     }
     store.editMode = true;
@@ -882,11 +1205,32 @@ class HAXCMSFilesAdminDialog extends DDD {
         this._msg("Unable to embed: no active page editor found.", true);
         return;
       }
-      const values = {
-        source: row.publicUrl,
-        title: row.name,
-      };
-      HAXStore.insertLogicFromValues(values, this);
+      if (mode === "gallery") {
+        const innerHTML = insertable
+          .map(
+            (row) =>
+              `<media-image source="${row.publicUrl}" alt="${row.name || ""}"></media-image>`,
+          )
+          .join("");
+        HAXStore.activeHaxBody.haxInsert("image-gallery", innerHTML, {
+          mode: "grid",
+        });
+      } else {
+        insertable.forEach((row) => {
+          HAXStore.insertLogicFromValues(
+            { source: row.publicUrl, title: row.name },
+            this,
+          );
+        });
+      }
+      if (skipped > 0) {
+        this._msg(
+          `Inserted ${insertable.length} file(s); skipped ${skipped} without a public URL.`,
+          true,
+        );
+      } else {
+        this._msg(`Inserted ${insertable.length} file(s) into page`);
+      }
     }, 300);
   }
 
@@ -916,6 +1260,33 @@ class HAXCMSFilesAdminDialog extends DDD {
             </div>
             <div class="ctrl">
               <div class="toolbar">
+                <simple-fields-field
+                  label="Type"
+                  type="select"
+                  .value="${this.filterType}"
+                  .itemsList="${FILE_TYPE_FILTER_ITEMS}"
+                  ?disabled="${this.busy || !this._canList}"
+                  @value-changed="${this._onFilterTypeChanged}"
+                >
+                </simple-fields-field>
+                <simple-fields-field
+                  label="Extension"
+                  type="text"
+                  placeholder="e.g. png"
+                  .value="${this.filterExtension}"
+                  ?disabled="${this.busy || !this._canList}"
+                  @value-changed="${this._onFilterExtensionChanged}"
+                >
+                </simple-fields-field>
+                <simple-fields-field
+                  label="Name contains"
+                  type="text"
+                  placeholder="filename\u2026"
+                  .value="${this.filterNameContains}"
+                  ?disabled="${this.busy || !this._canList}"
+                  @value-changed="${this._onFilterNameContainsChanged}"
+                >
+                </simple-fields-field>
                 <simple-icon-button-lite
                   class="ib"
                   icon="icons:refresh"
@@ -940,6 +1311,21 @@ class HAXCMSFilesAdminDialog extends DDD {
                   ? `${this.rows.length} of ${this.pageTotal} file(s)`
                   : `${this.rows.length} file(s)`}
           </div>
+          ${this.selectedRows.size > 0
+            ? html`
+                <hax-file-actions
+                  selected-count="${this.selectedRows.size}"
+                  image-count="${this._selectedRowObjects().filter((r) =>
+                    this._isImg(r),
+                  ).length}"
+                  ?busy="${this.busy}"
+                  ?can-scale="${this._selectedRowObjects().some((r) =>
+                    this._canScale(r),
+                  )}"
+                >
+                </hax-file-actions>
+              `
+            : ""}
         </div>
         <div class="tw">
           ${this.rows.length === 0 && !this.loading
@@ -955,16 +1341,28 @@ class HAXCMSFilesAdminDialog extends DDD {
                     sort
                     striped
                     scroll
+                    @change="${this._handleTableChange}"
+                    @click="${this._handleTableClick}"
                   >
                     <table>
                       <thead>
                         <tr>
+                          <th>
+                            <input
+                              type="checkbox"
+                              aria-label="Select all files"
+                              title="Select all files"
+                              data-action="select-all"
+                              ?disabled="${this.busy}"
+                              ?checked="${this.rows.length > 0 &&
+                              this.selectedRows.size === this.rows.length}"
+                            />
+                          </th>
                           <th>Preview</th>
                           <th>File</th>
                           <th>Type</th>
                           <th>Size</th>
                           <th>Updated</th>
-                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -972,12 +1370,21 @@ class HAXCMSFilesAdminDialog extends DDD {
                           (r, i) => html`
                             <tr>
                               <td>
+                                <input
+                                  type="checkbox"
+                                  aria-label="Select ${r.name}"
+                                  data-action="select-row"
+                                  data-row-key="${this._rowKey(r)}"
+                                  ?disabled="${this.busy}"
+                                  ?checked="${this._isRowSelected(r)}"
+                                />
+                              </td>
+                              <td class="pw-col">
                                 <span class="pw">
                                   ${this._isImg(r) && r.publicUrl
                                     ? html`<img
                                         src="${this._previewUrl(r)}"
                                         alt="${r.name}"
-                                        height="100px"
                                         loading="lazy"
                                         decoding="async"
                                       />`
@@ -1007,7 +1414,8 @@ class HAXCMSFilesAdminDialog extends DDD {
                                     icon="hax:embed"
                                     label="Embed in page"
                                     title="Embed in page"
-                                    @click="${() => this._embedInPage(r)}"
+                                    data-action="embed"
+                                    data-row-key="${this._rowKey(r)}"
                                   >
                                   </simple-icon-button-lite>
                                 </div>
@@ -1023,16 +1431,6 @@ class HAXCMSFilesAdminDialog extends DDD {
                                 ${this._fmtRelativeDate(
                                   r.updated || r.dateCreated,
                                 )}
-                              </td>
-                              <td>
-                                <hax-file-actions
-                                  row-index="${i}"
-                                  path="${r.path}"
-                                  scale-preset="${this.scalePreset}"
-                                  ?busy="${this.busy}"
-                                  ?can-scale="${this._canScale(r)}"
-                                >
-                                </hax-file-actions>
                               </td>
                             </tr>
                           `,
