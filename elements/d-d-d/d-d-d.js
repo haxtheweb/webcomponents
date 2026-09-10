@@ -173,40 +173,22 @@ export { DDD };
 
 export { DDDFonts };
 
-// Activate the DDD Atomic Design pattern library -> HAX stax rail.
-// Lazy-loaded: the pattern registry (lib/DDDPatternStax.js and its
-// DDDPatternLibrary dependency) is only imported once the HAX editor is
-// available, so sites that only consume DDD design-system variables never
-// pay that cost. activateDDDPatternStax() still waits for DDD to be the
-// active design system and is idempotent. See lib/DDDPatternStax.js.
-(function activateDDDPatternStaxWhenEditorAvailable() {
-  function load() {
-    import("./lib/DDDPatternStax.js").then(
-      ({ activateDDDPatternStax }) => activateDDDPatternStax(),
-      () => {},
-    );
-  }
-  // HAX editor already assembled — load now.
-  if (
-    globalThis.HaxStore &&
-    typeof globalThis.HaxStore.requestAvailability === "function"
-  ) {
-    let store = null;
-    try {
-      store = globalThis.HaxStore.requestAvailability();
-    } catch (e) {
-      store = null;
-    }
-    if (store && store.ready) {
-      load();
-      return;
-    }
-  }
-  // Otherwise wait for the editor to come online (once).
-  if (globalThis.addEventListener) {
-    globalThis.addEventListener("hax-store-ready", load, { once: true });
-  }
-})();
+// DDD Atomic Design pattern library -> HAX stax rail activation.
+// DISABLED for now: the publish-into-stax wiring exists in
+// lib/DDDPatternStax.js (see DDDPatternLibrary.js), but we are not
+// populating the stax rail yet. The next step is designing the page-level
+// compositions to turn into patterns before re-enabling this.
+// Follow-up: https://github.com/haxtheweb/issues/issues/3040
+// (parent: https://github.com/haxtheweb/issues/issues/3039)
+//
+// To re-enable, lazy-load and call activateDDDPatternStax() only when the
+// HAX editor is available so sites that just use DDD variables don't pay
+// the registry cost, e.g.:
+//   import("./lib/DDDPatternStax.js").then(
+//     ({ activateDDDPatternStax }) => activateDDDPatternStax(),
+//     () => {},
+//   );
+// gated on globalThis.HaxStore / the "hax-store-ready" event.
 
 export class DDDSample extends DDDSuper(LitElement) {
   constructor() {
