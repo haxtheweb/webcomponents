@@ -142,12 +142,33 @@ class SimpleFileUpload extends DDD {
           transition: border-color 0.2s ease;
         }
         .drop-zone[dragover] {
-          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(
+              --ddd-drop-zone-outline-color,
+              var(--ddd-theme-default-skyBlue, #009dc7)
+            );
           outline-offset: -2px;
           border-color: transparent;
           background: light-dark(
-            color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 10%, transparent),
-            color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 20%, transparent)
+            color-mix(
+              in srgb,
+              var(
+                  --ddd-drop-zone-background-color,
+                  var(--ddd-theme-default-skyBlue, #009dc7)
+                )
+                10%,
+              transparent
+            ),
+            color-mix(
+              in srgb,
+              var(
+                  --ddd-drop-zone-background-color,
+                  var(--ddd-theme-default-skyBlue, #009dc7)
+                )
+                20%,
+              transparent
+            )
           );
         }
         .hidden-input {
@@ -451,7 +472,8 @@ class SimpleFileUpload extends DDD {
   uploadFiles() {
     for (let i = 0; i < this.files.length; i++) {
       const file = this.files[i];
-      const canUpload = !file.complete && !file.abort && !file.error && !file.xhr;
+      const canUpload =
+        !file.complete && !file.abort && !file.error && !file.xhr;
       if (canUpload) {
         this._uploadFile(file, i);
       }

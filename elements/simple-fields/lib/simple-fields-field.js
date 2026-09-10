@@ -46,7 +46,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             );
           }
           optgroup {
-            opacity: .8;
+            opacity: 0.8;
           }
           option[selected] {
             background-color: var(
@@ -88,13 +88,25 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             color: var(--simple-fields-accent-color, #003f7d);
             transition: color ease-in-out;
           }
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) #options,
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) #options {
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]
+            )
+            #options,
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]
+            )
+            #options {
             display: flex;
             flex-wrap: balance;
           }
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option,
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option {
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]
+            )
+            .option,
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]
+            )
+            .option {
             width: fit-content;
             margin: 0;
             padding: 4px;
@@ -102,15 +114,33 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             display: flex;
             flex-direction: column;
           }
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option label,
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option label {
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]
+            )
+            .option
+            label,
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]
+            )
+            .option
+            label {
             margin: 0;
           }
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]) .option label d-d-d-sample,
-          :host([type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]) .option label d-d-d-sample {
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-accent"]
+            )
+            .option
+            label
+            d-d-d-sample,
+          :host(
+              [type="radio"][id="settings.configure.ddd-styles.ddd-card.data-primary"]
+            )
+            .option
+            label
+            d-d-d-sample {
             padding: 0;
           }
-          
+
           /* Ubuntu-style settings row layout for multi-checkbox and radio
              groups (issue #2996): each option row gets label-left /
              control-right, vertically centered, with its own hover/focus
@@ -391,9 +421,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           select option:focus {
             color: light-dark(white, black) !important;
             background-color: var(
-                --simple-fields-row-focus-outline-color,
-                var(--simple-fields-accent-color, #3f51b5)
-              ) !important;
+              --simple-fields-row-focus-outline-color,
+              var(--simple-fields-accent-color, #3f51b5)
+            ) !important;
           }
           :host([type="checkbox"]) span,
           :host([type="radio"]) span {
@@ -952,9 +982,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             : "field-main"} ${this.sortedOptions &&
           !this.sortedOptions.length > 0
             ? "field-main-multi"
-            : "field-main-single"} ${this.isRowBasedField
-            ? "row-layout"
-            : ""}"
+            : "field-main-single"} ${this.isRowBasedField ? "row-layout" : ""}"
           part="field-main"
         >
           ${this.labelTemplate}
@@ -1005,7 +1033,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             part="fieldset-legend"
           >
             <span class="label-text">
-              <span>${this.label}${this.error || this.required ? "*" : ""}</span>
+              <span
+                >${this.label}${this.error || this.required ? "*" : ""}</span
+              >
               ${this.inlineDescriptionTemplate}
             </span>
             ${this.infoToggleTemplate}
@@ -1096,12 +1126,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         <span class="input-option" part="option-inner">
           <slot name="input-prefix"></slot>
           <input
-          ?autofocus="${this.autofocus}"
-          aria-describedby="${this.describedBy || "description error-message"}"
-          aria-invalid="${this.error ? "true" : "false"}"
-          @blur="${this._onFocusout}"
-          @change="${this._handleFieldChange}"
-          ?checked="${checked}"
+            ?autofocus="${this.autofocus}"
+            aria-describedby="${this.describedBy ||
+            "description error-message"}"
+            aria-invalid="${this.error ? "true" : "false"}"
+            @blur="${this._onFocusout}"
+            @change="${this._handleFieldChange}"
+            ?checked="${checked}"
             class="field ${[
               "checkbox",
               "color",
@@ -1121,9 +1152,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             .placeholder="${this.placeholder || ""}"
             ?readonly="${this.readonly}"
             ?required="${this.required}"
-          tabindex="0"
-          aria-label="${this.label || ""}"
-          type="${this.type}"
+            tabindex="0"
+            aria-label="${this.label || ""}"
+            type="${this.type}"
             value="${!option ? this.value : (option || {}).value}"
             part="option-input"
           />
@@ -1242,7 +1273,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         if (option && option.group) {
           const group = option.group;
           const groupItems = [];
-          while (i < options.length && options[i] && options[i].group === group) {
+          while (
+            i < options.length &&
+            options[i] &&
+            options[i].group === group
+          ) {
             groupItems.push(options[i]);
             i++;
           }

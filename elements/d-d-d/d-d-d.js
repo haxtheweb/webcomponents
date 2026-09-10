@@ -16,6 +16,7 @@ import {
   HAXOptionSampleFactory,
 } from "./lib/DDDStyles.js";
 import { DesignSystemManager } from "./lib/DesignSystemManager.js";
+import { activateDDDPatternStax } from "./lib/DDDPatternStax.js";
 
 /**
  * `d-d-d`
@@ -172,6 +173,11 @@ globalThis.customElements.define(DDD.tag, DDD);
 export { DDD };
 
 export { DDDFonts };
+
+// Activate the DDD Atomic Design pattern library -> HAX stax rail.
+// Self-activates only when DDD is the active design system and the HAX store
+// is ready; idempotent. See lib/DDDPatternStax.js.
+activateDDDPatternStax();
 
 export class DDDSample extends DDDSuper(LitElement) {
   constructor() {

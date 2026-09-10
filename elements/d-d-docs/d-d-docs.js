@@ -22,6 +22,30 @@ import { DDDMarginPadding } from "@haxtheweb/d-d-d/lib/DDDMarginPadding.js";
 import { DDDFontSizing } from "@haxtheweb/d-d-d/lib/DDDFontSizing.js";
 import { DDDLineHeight } from "@haxtheweb/d-d-d/lib/DDDLineHeight.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
+// DDD Atomic Design pattern library (single source of truth)
+import {
+  DDDPATTERNS,
+  INTERNAL_CONTRACTS,
+  getPatternsByLevel,
+  getContractsForElement,
+  resolveHaxCapabilityReport,
+} from "@haxtheweb/d-d-d/lib/DDDPatternLibrary.js";
+// Elements referenced by pattern previews not already imported above
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-figure/a11y-figure.js";
+import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/author-card/author-card.js";
+import "@haxtheweb/audio-player/audio-player.js";
+import "@haxtheweb/editable-table/editable-table.js";
+import "@haxtheweb/grid-plate/grid-plate.js";
+import "@haxtheweb/image-compare-slider/image-compare-slider.js";
+import "@haxtheweb/image-gallery/image-gallery.js";
+import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
+import "@haxtheweb/media-playlist/media-playlist.js";
+import "@haxtheweb/person-testimonial/person-testimonial.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-fields/lib/simple-tag.js";
+import "@haxtheweb/count-up/count-up.js";
 import "@haxtheweb/figure-label/figure-label.js";
 import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/page-section/page-section.js";
@@ -30,6 +54,7 @@ import "@haxtheweb/simple-cta/simple-cta.js";
 import "@haxtheweb/stop-note/stop-note.js";
 import "@haxtheweb/video-player/video-player.js";
 import { css, html } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 /**
  * `d-d-docs`
@@ -58,6 +83,12 @@ export const styleGuideTopics = {
   StepsList: "Steps List",
   Buttons: "Buttons",
   PageSections: "PageSections",
+  // DDD Atomic Design pattern library topics
+  Atoms: "Atoms",
+  Molecules: "Molecules",
+  Organisms: "Organisms",
+  Templates: "Templates",
+  InternalContracts: "InternalContracts",
 };
 
 class DDDocs extends DDD {
@@ -278,6 +309,187 @@ class DDDocs extends DDD {
         }
         .palette-picker-swatch-7 {
           background-color: var(--ddd-palette-color-7);
+        }
+        /* DDD Atomic Design pattern library cards */
+        .pattern-section {
+          margin: var(--ddd-spacing-4) 0;
+        }
+        .pattern-card {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-4) 0;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
+        }
+        .pattern-card-header {
+          display: flex;
+          align-items: baseline;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+          margin-bottom: var(--ddd-spacing-2);
+        }
+        .pattern-card-title {
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          margin: 0;
+        }
+        .pattern-card-level {
+          font-size: var(--ddd-font-size-5xs);
+          text-transform: uppercase;
+          letter-spacing: var(--ddd-ls-14-sm);
+          color: var(--ddd-theme-default-slateGray);
+        }
+        .pattern-card-desc {
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-slateGray);
+          margin: 0 0 var(--ddd-spacing-3);
+        }
+        .pattern-preview {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneLight);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-4);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+          margin-bottom: var(--ddd-spacing-3);
+          overflow: hidden;
+        }
+        .pattern-recipe {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          white-space: pre-wrap;
+          word-break: break-word;
+          margin: 0 0 var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-3);
+          background-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateLight)
+          );
+          border-radius: var(--ddd-radius-xs);
+        }
+        .pattern-meta {
+          display: flex;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+          align-items: center;
+          font-size: var(--ddd-font-size-5xs);
+        }
+        .pattern-token-pill {
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
+          padding: 0 var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-6xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-slateLight)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .contract-example {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneLight);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-3) 0;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        .contract-example-label {
+          font-size: var(--ddd-font-size-6xs);
+          text-transform: uppercase;
+          letter-spacing: var(--ddd-ls-14-sm);
+          color: var(--ddd-theme-default-slateGray);
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        .pattern-recipe-wrapper {
+          position: relative;
+          margin: 0 0 var(--ddd-spacing-3);
+        }
+        .pattern-recipe-copy {
+          position: absolute;
+          top: var(--ddd-spacing-2);
+          right: var(--ddd-spacing-2);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateLight)
+          );
+          opacity: 0.7;
+        }
+        .pattern-recipe-copy:hover {
+          opacity: 1;
+        }
+        .pattern-copy-feedback {
+          font-size: var(--ddd-font-size-6xs);
+          color: var(--ddd-theme-default-success);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          background-color: var(--ddd-theme-default-successLight);
+          animation: ddd-pattern-copy-fade 1.6s ease-out forwards;
+        }
+        @keyframes ddd-pattern-copy-fade {
+          0% { opacity: 1; }
+          70% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+        .pattern-gap {
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-default-error);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          margin: var(--ddd-spacing-2) 0;
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
+        }
+        .contract-card {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-4) 0;
+        }
+        .contract-card-title {
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          margin: 0 0 var(--ddd-spacing-1);
+        }
+        .contract-card-surface {
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-slateGray);
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        .contract-card-structure {
+          font-size: var(--ddd-font-size-5xs);
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        .contract-card-targets {
+          font-size: var(--ddd-font-size-6xs);
+          color: var(--ddd-theme-default-slateGray);
         }
       `,
     ];
@@ -3082,6 +3294,210 @@ class DDDocs extends DDD {
             <div slot="footer">Read More...</div>
           </accent-card>
         </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Shared helper: render one pattern card (live preview + recipe + meta +
+   * insert/copy affordance). Used by renderAtoms/Molecules/Organisms/Templates.
+   */
+  _renderPatternCard(pattern) {
+    const gateReport = resolveHaxCapabilityReport();
+    const flagged = gateReport.flaggedPatterns.find(
+      (f) => f.id === pattern.id,
+    );
+    return html`
+      <div class="pattern-card">
+        <div class="pattern-card-header">
+          <span class="pattern-card-title">${pattern.title}</span>
+          <span class="pattern-card-level">${pattern.level}</span>
+        </div>
+        <p class="pattern-card-desc">${pattern.description}</p>
+        ${flagged
+          ? html`<div class="pattern-gap">
+              HAX-capability gap: ${flagged.excludedComponents.join(
+                ", ",
+              )} is not HAX-capable. This pattern is documented but not
+              published to the insert rail until wiring is created.
+            </div>`
+          : ``}
+        <div class="pattern-preview">
+          ${unsafeHTML(pattern.html)}
+        </div>
+        <div class="pattern-recipe-wrapper">
+          <simple-icon-button-lite
+            class="pattern-recipe-copy"
+            icon="content-copy"
+            label="Copy HTML"
+            @click="${() => this._copyToClipboard(pattern.html, pattern.id)}"
+          ></simple-icon-button-lite>
+          <pre class="pattern-recipe">${pattern.html}</pre>
+        </div>
+        <div class="pattern-meta">
+          ${(pattern.tokens || []).map(
+            (tok) =>
+              html`<simple-tag
+                value="${tok}"
+                accent-color="grey"
+                readonly
+              ></simple-tag>`,
+          )}
+          <simple-cta
+            hide-icon
+            @click="${() => this._copyToClipboard(pattern.html, pattern.id)}"
+            >Copy</simple-cta
+          >
+          <simple-cta
+            ?disabled="${!!flagged}"
+            @click="${() => this._insertPattern(pattern)}"
+            >Insert</simple-cta
+          >
+          <span
+            class="pattern-copy-feedback"
+            id="copy-feedback-${pattern.id}"
+            hidden
+            >Copied!</span
+          >
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Render all patterns at a given level under a heading.
+   */
+  _renderPatternsByLevel(level, heading) {
+    const items = getPatternsByLevel(level);
+    return html`
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${heading}</h2>
+      <div class="pattern-section">
+        ${items.map((p) => this._renderPatternCard(p))}
+      </div>
+    `;
+  }
+
+  /**
+   * Copy the canonical HTML recipe to the clipboard and show a brief
+   * "Copied!" feedback badge next to the pattern's action row.
+   * @param {string} text HTML to copy
+   * @param {string} id pattern id (used to locate the feedback element)
+   */
+  async _copyToClipboard(text, id) {
+    try {
+      await globalThis.navigator.clipboard.writeText(text);
+    } catch (e) {
+      // no-op; clipboard may be unavailable in some contexts
+    }
+    const feedback = this.shadowRoot.querySelector(
+      `#copy-feedback-${id}`,
+    );
+    if (feedback) {
+      feedback.hidden = false;
+      // restart the fade animation
+      feedback.style.animation = "none";
+      void feedback.offsetWidth;
+      feedback.style.animation = "";
+      clearTimeout(this[`__copyTimer-${id}`]);
+      this[`__copyTimer-${id}`] = setTimeout(() => {
+        feedback.hidden = true;
+      }, 1600);
+    }
+  }
+
+  /**
+   * Insert affordance: when HAX is present, convert the canonical HTML to
+   * HAX elements via the store and dispatch hax-insert-content-array (the
+   * same event the stax tray fires). Otherwise copy the HTML to the clipboard.
+   */
+  async _insertPattern(pattern) {
+    if (
+      globalThis.HaxStore &&
+      typeof globalThis.HaxStore.requestAvailability === "function"
+    ) {
+      try {
+        const store = globalThis.HaxStore.requestAvailability();
+        if (
+          store &&
+          typeof store.htmlToHaxElements === "function" &&
+          store.activeHaxBody
+        ) {
+          const elements = await store.htmlToHaxElements(pattern.html);
+          store.activeHaxBody.dispatchEvent(
+            new CustomEvent("hax-insert-content-array", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: elements,
+            }),
+          );
+          return;
+        }
+      } catch (e) {
+        // fall through to clipboard copy
+      }
+    }
+    try {
+      await globalThis.navigator.clipboard.writeText(pattern.html);
+    } catch (e) {
+      // no-op; clipboard may be unavailable
+    }
+  }
+
+  renderAtoms() {
+    return this._renderPatternsByLevel("atom", "Atoms");
+  }
+
+  renderMolecules() {
+    return this._renderPatternsByLevel("molecule", "Molecules");
+  }
+
+  renderOrganisms() {
+    return this._renderPatternsByLevel("organism", "Organisms");
+  }
+
+  renderTemplates() {
+    return this._renderPatternsByLevel("template", "Templates");
+  }
+
+  renderInternalContracts() {
+    return html`
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Internal consistency contracts</h2>
+      <p class="pattern-card-desc">
+        Cross-cutting contracts for element internals (titles, callouts,
+        collapsibles, embeds, admin fieldsets). These are what the
+        hax-pattern-library-audit skill grades; mass-enforcement across the
+        ecosystem is later work.
+      </p>
+      <div class="pattern-section">
+        ${INTERNAL_CONTRACTS.map(
+          (c) => html`
+            <div class="contract-card">
+              <p class="contract-card-title">${c.title}</p>
+              <p class="contract-card-surface">Surface: ${c.surface}</p>
+              <p class="contract-card-structure">${c.structure}</p>
+              ${c.example
+                ? html`<p class="contract-example-label">Example</p>
+                    <div class="contract-example">
+                      ${unsafeHTML(c.example)}
+                    </div>`
+                : ``}
+              <div class="pattern-meta">
+                ${(c.tokens || []).map(
+                  (tok) =>
+                    html`<simple-tag
+                      value="${tok}"
+                      accent-color="grey"
+                      readonly
+                    ></simple-tag>`,
+                )}
+              </div>
+              <p class="contract-card-targets">
+                Applies to: ${(c.targetElements || []).join(", ")}
+              </p>
+            </div>
+          `,
+        )}
       </div>
     `;
   }

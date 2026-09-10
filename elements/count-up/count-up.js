@@ -135,6 +135,13 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   static get tag() {
     return "count-up";
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
   constructor() {
     super();
     this.start = 0;

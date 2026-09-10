@@ -651,7 +651,10 @@ export const DDDVariables = css`
     --ddd-drop-zone-outline-width: 2px;
     --ddd-drop-zone-outline-style: dashed;
     --ddd-drop-zone-outline-offset: 4px;
-    --ddd-drop-zone-background-color: var(--ddd-theme-default-skyLight, #ccf0ff);
+    --ddd-drop-zone-background-color: var(
+      --ddd-theme-default-skyLight,
+      #ccf0ff
+    );
     --ddd-drop-zone-radius: var(--ddd-radius-xs);
 
     /* ===========================================
@@ -660,10 +663,26 @@ export const DDDVariables = css`
        Usage: box-shadow: var(--ddd-boxShadow-md);
        =========================================== */
     --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
-    --ddd-boxShadow-sm: light-dark(rgba(0, 3, 33, 0.1), rgba(150, 190, 230, 0.08)) 0px 4px 8px 0px; /* Subtle elevation */
-    --ddd-boxShadow-md: light-dark(rgba(0, 3, 33, 0.15), rgba(150, 190, 230, 0.10)) 0px 8px 16px 0px; /* Standard elevation */
-    --ddd-boxShadow-lg: light-dark(rgba(0, 3, 33, 0.2), rgba(150, 190, 230, 0.12)) 0px 12px 24px 0px; /* High elevation */
-    --ddd-boxShadow-xl: light-dark(rgba(0, 3, 33, 0.25), rgba(150, 190, 230, 0.14)) 0px 16px 32px 0px; /* Maximum elevation */
+    --ddd-boxShadow-sm: light-dark(
+        rgba(0, 3, 33, 0.1),
+        rgba(150, 190, 230, 0.08)
+      )
+      0px 4px 8px 0px; /* Subtle elevation */
+    --ddd-boxShadow-md: light-dark(
+        rgba(0, 3, 33, 0.15),
+        rgba(150, 190, 230, 0.1)
+      )
+      0px 8px 16px 0px; /* Standard elevation */
+    --ddd-boxShadow-lg: light-dark(
+        rgba(0, 3, 33, 0.2),
+        rgba(150, 190, 230, 0.12)
+      )
+      0px 12px 24px 0px; /* High elevation */
+    --ddd-boxShadow-xl: light-dark(
+        rgba(0, 3, 33, 0.25),
+        rgba(150, 190, 230, 0.14)
+      )
+      0px 16px 32px 0px; /* Maximum elevation */
 
     /* ===========================================
        BREAKPOINTS

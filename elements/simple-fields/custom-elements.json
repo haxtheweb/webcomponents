@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`simple-fields`\nUses JSON Schema to display a series of fields\n\n### Styling\n`<simple-fields>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-margin` | vertical margin around container | 16px\n`--simple-fields-margin-small` | smaller vertical margin above field itself | 8px\n`--simple-fields-border-radus` | default border-radius | 2px\n`--simple-fields-color` | text color | black\n`--simple-fields-error-color` | error text color | #b40000\n`--simple-fields-accent-color` | accent text/underline color | #3f51b5\n`--simple-fields-border-color` | border-/underline color | #999\n`--simple-fields-border-color-light` | used for range tracks | #ccc\n`--simple-fields-faded-error-color` | used for range tracks | #ffc0c0\n\n#### Field text\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-font-size` | font-size of field | 16px\n`--simple-fields-font-family` | font-size of field | sans-serif\n`--simple-fields-line-height` | line-height of field | 22px\n\n#### Detail text\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-detail-font-size` | font-size of field details | 12px\n`--simple-fields-detail-font-family` | font-size of field details | sans-serif\n`--simple-fields-detail-line-height` | line-height of field details | 22px\n\n#### Disabled Fields\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-disabled-color` | disabled text color | #999\n`--simple-fields-disabled-opacity` | opacity for disabled field | 0.7\n\n#### Radio Buttons and Checkboxes\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex\n`--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap\n\n### Configuring schemaConversion Property\nYou can customise elements from JSON schema conversion by setting `schemaConversion` property.\n```\ntype: {                                       //For properties in \"this.schema\", define elements based on a property's \"type\"\nobject: {                                   //Defines element used when property's \"type\" is an \"object\"\n format: {                                 //Optional: define elements for \"object\" properties by \"format\"\n   \"tabs\": {                               //Defines element used for object properties when \"format\" is \"tabs\"\n     element: \"a11y-tabs\"                  //Element to create, eg. \"paper-input\", \"select\", \"simple-fields-array\", etc.\n     descriptionProperty: \"description\"    //Optional: element's property that sets its description, e.g. \"description\"\n     descriptionSlot: \"description\"        //Optional: element's slot that contains its description, e.g. \"description\"\n     errorProperty: \"error\"                //Optional: element's property that sets its error status, e.g. \"error\"\n     errorChangedProperty: \"error\"         //Optional: event element fires when error status changes, e.g. \"error-changed\"\n     errorMessageProperty: \"errorMessage\"  //Optional: element's property that sets its error message, e.g. \"errorMessage\"\n     errorMessageSlot: \"errorMessage\"      //Optional: element's slot that contains its error message, e.g. \"errorMessage\"\n     labelProperty: \"label\"                //Optional: element's property that sets its label, e.g. \"label\"\n     labelSlot: \"label\"                    //Optional: element's slot that contains its label, e.g. \"label\"\n     valueProperty: \"value\"                //Optional: element's property that gets its value, e.g. \"value\" or \"checked\"\n     setValueProperty: \"value\"             //Optional: element's property that sets its value, e.g. \"value\" or \"checked\" (default is same as valueProperty)\n     valueChangedProperty: \"value-changed\" //Optional: event element fires when value property changes, e.g. \"value-changed\" or \"click\"\n     valueSlot: \"\"                         //Optional: element's slot that's used to set its value, e.g. \"\"\n     description: \"\"                       //Optional: element that contains description, e.g. \"p\", \"span\", etc.\n     child: {                              //Optional: child elements to be appended\n       element: \"a11y-tab\"                 //Optional: type of child element, eg. \"paper-input\", \"select\", \"simple-fields-array\", etc.\n       attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion\n         disabled: true                    //Example: sets disabled to true  \n       } \n       properties: {                       //Optional: sets child element's attributes based on this.schema properties\n         icon: \"iconName\"                  //Example: sets child element's icon property to this.schema property's iconName \n       }, \n       slots: {                            //Optional: inserts schema properties in child element's slots\n         label: \"label\",                   //Example: places schema property's label into child element's label slot\n         \"\": \"description\"                 //Example: places schema property's description into child element's unnamed slot\n       } \n     },\n     attributes: {},\n     properties: {},\n     slots: {}\n   }\n },\n defaultSettings: {                        //Default element used for object properties\n   element: \"\"\n   label: \"\"\n   description: \"\"     \n   attributes: {}       \n   properties: {}       \n   slots: {}           \n }\n}\n}\n``` \n### Configuring fieldsConversion Property\nYou can customise fields to JSON schema conversion by setting `fieldsConversion` property.\n```\ndefaultSettings: {            //default JSON schema type if no type is matched\ntype: \"string\"              //sets JSON schema type to string\n},\ninputMethod: {                //for fields in \"this.fields\", define elements based on a property's \"inputMethod\"\ncolorpicker: {              //settings if inputMethod is color picker\n defaultSettings: {        //default colorpicker settings\n   type: \"string\",         //sets JSON schema type to string\n   format: \"color\"         //sets JSON schema format to color\n }\n}\n}\n```",
+          "description": "`simple-fields`\nUses JSON Schema to display a series of fields\n\n### Styling\n`<simple-fields>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-margin` | vertical margin around container | 16px\n`--simple-fields-margin-small` | smaller vertical margin above field itself | 8px\n`--simple-fields-border-radus` | default border-radius | 2px\n`--simple-fields-color` | text color | black\n`--simple-fields-error-color` | error text color | #b40000\n`--simple-fields-accent-color` | accent text/underline color | #3f51b5\n`--simple-fields-border-color` | border-/underline color | #999\n`--simple-fields-border-color-light` | used for range tracks | #ccc\n`--simple-fields-faded-error-color` | used for range tracks | #ffc0c0\n\n#### Field text\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-font-size` | font-size of field | 16px\n`--simple-fields-font-family` | font-size of field | sans-serif\n`--simple-fields-line-height` | line-height of field | 22px\n\n#### Detail text\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-detail-font-size` | font-size of field details | 12px\n`--simple-fields-detail-font-family` | font-size of field details | sans-serif\n`--simple-fields-detail-line-height` | line-height of field details | 22px\n\n#### Disabled Fields\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-disabled-color` | disabled text color | #999\n`--simple-fields-disabled-opacity` | opacity for disabled field | 0.7\n\n#### Radio Buttons and Checkboxes\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex\n`--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap\n\n#### Row layout (Ubuntu-style settings rows, issue #2996)\nCustom property | Description | Default\n----------------|-------------|--------\n`--simple-fields-row-hover-background-color` | background color of a row on hover | light-dark(rgba(0,0,0,0.08), rgba(255,255,255,0.12))\n`--simple-fields-row-focus-outline-width` | outline width of a row when it (or a child) has focus | 1px\n`--simple-fields-row-focus-outline-color` | outline color of a row when it (or a child) has focus | var(--simple-fields-accent-color)\n`--simple-fields-info-icon-size` | size of the (i) info icon shown for descriptions longer than 4 words (tooltip shows on hover/focus, positioned above) | calc(var(--ddd-icon-4xs) - 2px)\n`--simple-fields-info-icon-color` | color of the (i) info icon | var(--simple-fields-accent-color)\n`--simple-fields-select-max-width` | max width of a single-select value in a row before it truncates to an ellipsis (multiple selects unaffected) | 40ch\n`--simple-fields-number-max-width` | max width of a bounded (min/max/step) number input in a row | 12ch\n`--simple-fields-color-swatch-size` | size of circular color swatches in a simple-colors-picker row (and raw color input height) | 20px\n\nNote (issue #2996): the row layout and the inline-description-vs-(i)-info-icon behavior apply uniformly across field types. Descriptions of 4 words or fewer render as subtext under the label; longer descriptions collapse behind the (i) info icon. This covers checkboxes, single selects, bounded numbers, color (raw + simple-colors-picker), radio/checkbox fieldset groups (legend), text entry fields (text, textarea, password, email, tel, url, search), and hax-upload-field. Text entry fields fill the right side of the row and keep the focus underline; plain file/range/date/time/month/week retain the legacy full-width treatment. The threshold is shared from simple-fields-ui.js (SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS).\n\n### Configuring schemaConversion Property\nYou can customise elements from JSON schema conversion by setting `schemaConversion` property.\n```\ntype: {                                       //For properties in \"this.schema\", define elements based on a property's \"type\"\nobject: {                                   //Defines element used when property's \"type\" is an \"object\"\n format: {                                 //Optional: define elements for \"object\" properties by \"format\"\n   \"tabs\": {                               //Defines element used for object properties when \"format\" is \"tabs\"\n     element: \"a11y-tabs\"                  //Element to create, eg. \"paper-input\", \"select\", \"simple-fields-array\", etc.\n     descriptionProperty: \"description\"    //Optional: element's property that sets its description, e.g. \"description\"\n     descriptionSlot: \"description\"        //Optional: element's slot that contains its description, e.g. \"description\"\n     errorProperty: \"error\"                //Optional: element's property that sets its error status, e.g. \"error\"\n     errorChangedProperty: \"error\"         //Optional: event element fires when error status changes, e.g. \"error-changed\"\n     errorMessageProperty: \"errorMessage\"  //Optional: element's property that sets its error message, e.g. \"errorMessage\"\n     errorMessageSlot: \"errorMessage\"      //Optional: element's slot that contains its error message, e.g. \"errorMessage\"\n     labelProperty: \"label\"                //Optional: element's property that sets its label, e.g. \"label\"\n     labelSlot: \"label\"                    //Optional: element's slot that contains its label, e.g. \"label\"\n     valueProperty: \"value\"                //Optional: element's property that gets its value, e.g. \"value\" or \"checked\"\n     setValueProperty: \"value\"             //Optional: element's property that sets its value, e.g. \"value\" or \"checked\" (default is same as valueProperty)\n     valueChangedProperty: \"value-changed\" //Optional: event element fires when value property changes, e.g. \"value-changed\" or \"click\"\n     valueSlot: \"\"                         //Optional: element's slot that's used to set its value, e.g. \"\"\n     description: \"\"                       //Optional: element that contains description, e.g. \"p\", \"span\", etc.\n     child: {                              //Optional: child elements to be appended\n       element: \"a11y-tab\"                 //Optional: type of child element, eg. \"paper-input\", \"select\", \"simple-fields-array\", etc.\n       attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion\n         disabled: true                    //Example: sets disabled to true  \n       } \n       properties: {                       //Optional: sets child element's attributes based on this.schema properties\n         icon: \"iconName\"                  //Example: sets child element's icon property to this.schema property's iconName \n       }, \n       slots: {                            //Optional: inserts schema properties in child element's slots\n         label: \"label\",                   //Example: places schema property's label into child element's label slot\n         \"\": \"description\"                 //Example: places schema property's description into child element's unnamed slot\n       } \n     },\n     attributes: {},\n     properties: {},\n     slots: {}\n   }\n },\n defaultSettings: {                        //Default element used for object properties\n   element: \"\"\n   label: \"\"\n   description: \"\"     \n   attributes: {}       \n   properties: {}       \n   slots: {}           \n }\n}\n}\n``` \n### Configuring fieldsConversion Property\nYou can customise fields to JSON schema conversion by setting `fieldsConversion` property.\n```\ndefaultSettings: {            //default JSON schema type if no type is matched\ntype: \"string\"              //sets JSON schema type to string\n},\ninputMethod: {                //for fields in \"this.fields\", define elements based on a property's \"inputMethod\"\ncolorpicker: {              //settings if inputMethod is color picker\n defaultSettings: {        //default colorpicker settings\n   type: \"string\",         //sets JSON schema type to string\n   format: \"color\"         //sets JSON schema format to color\n }\n}\n}\n```",
           "name": "SimpleFields",
           "members": [
             {
@@ -3115,6 +3115,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -3201,6 +3231,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -3913,6 +4003,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -5027,6 +5118,34 @@
             },
             {
               "kind": "method",
+              "name": "_radioKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "keyboard handler for radio groups (issue #2996, Phase 3 feedback):\narrow keys move focus between options WITHOUT selecting (overriding\nnative radio behavior where arrows auto-select the destination), and\nEnter/Space selects the focused option — or deselects it if already\nselected, allowing \"no value\" to be set via keyboard instead of being\nforced by arrow navigation.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_selectClickActivate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "clicking anywhere on a single-select row activates the native\nselect: focus it and open its dropdown, so users do not have to\nclick directly on the combobox (issue #2996, Phase 2 feedback).\nA direct click on the select itself is left to the native handler.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_hoverState",
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
@@ -5162,6 +5281,50 @@
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_optionTemplate",
+              "parameters": [
+                {
+                  "name": "option",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "template for a single `option` element in a `select`",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_groupedOptionsTemplate",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "renders a list of options, wrapping consecutive items that share\nan optional `group` property in an `optgroup`. Items without a\n`group` render exactly as before (no behavior change for existing\nconsumers that don't set `group`).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
               }
             },
             {
@@ -5645,6 +5808,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -5707,6 +5900,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -6420,6 +6673,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -7250,6 +7504,28 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -7323,6 +7599,50 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -7921,7 +8241,8 @@
                 "text": "string"
               },
               "description": "Type of input form control",
-              "attribute": "type"
+              "attribute": "type",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -8642,6 +8963,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -8743,6 +9094,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -9566,6 +9977,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -9687,6 +10099,26 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_radioKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "keyboard handler for radio groups (issue #2996, Phase 3 feedback):\narrow keys move focus between options WITHOUT selecting (overriding\nnative radio behavior where arrows auto-select the destination), and\nEnter/Space selects the focused option — or deselects it if already\nselected, allowing \"no value\" to be set via keyboard instead of being\nforced by arrow navigation."
+            },
+            {
+              "kind": "method",
+              "name": "_selectClickActivate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "clicking anywhere on a single-select row activates the native\nselect: focus it and open its dropdown, so users do not have to\nclick directly on the combobox (issue #2996, Phase 2 feedback).\nA direct click on the select itself is left to the native handler."
             },
             {
               "kind": "method",
@@ -9841,6 +10273,42 @@
               "name": "sortedOptions",
               "description": "gets a sorted list of option",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_optionTemplate",
+              "parameters": [
+                {
+                  "name": "option",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "template for a single `option` element in a `select`",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_groupedOptionsTemplate",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "renders a list of options, wrapping consecutive items that share\nan optional `group` property in an `optgroup`. Items without a\n`group` render exactly as before (no behavior change for existing\nconsumers that don't set `group`).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
             },
             {
               "kind": "field",
@@ -10238,6 +10706,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -10300,6 +10798,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -11013,6 +11571,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -12277,6 +12836,34 @@
             },
             {
               "kind": "method",
+              "name": "_radioKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "keyboard handler for radio groups (issue #2996, Phase 3 feedback):\narrow keys move focus between options WITHOUT selecting (overriding\nnative radio behavior where arrows auto-select the destination), and\nEnter/Space selects the focused option — or deselects it if already\nselected, allowing \"no value\" to be set via keyboard instead of being\nforced by arrow navigation.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_selectClickActivate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "clicking anywhere on a single-select row activates the native\nselect: focus it and open its dropdown, so users do not have to\nclick directly on the combobox (issue #2996, Phase 2 feedback).\nA direct click on the select itself is left to the native handler.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_hoverState",
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
@@ -12472,6 +13059,50 @@
               "name": "sortedOptions",
               "description": "gets a sorted list of option",
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_optionTemplate",
+              "parameters": [
+                {
+                  "name": "option",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "template for a single `option` element in a `select`",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_groupedOptionsTemplate",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "renders a list of options, wrapping consecutive items that share\nan optional `group` property in an `optgroup`. Items without a\n`group` render exactly as before (no behavior change for existing\nconsumers that don't set `group`).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
                 "module": "lib/simple-fields-field.js"
@@ -12973,6 +13604,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -13035,6 +13696,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -13748,6 +14469,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -16029,6 +16751,34 @@
             },
             {
               "kind": "method",
+              "name": "_radioKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "keyboard handler for radio groups (issue #2996, Phase 3 feedback):\narrow keys move focus between options WITHOUT selecting (overriding\nnative radio behavior where arrows auto-select the destination), and\nEnter/Space selects the focused option — or deselects it if already\nselected, allowing \"no value\" to be set via keyboard instead of being\nforced by arrow navigation.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_selectClickActivate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "clicking anywhere on a single-select row activates the native\nselect: focus it and open its dropdown, so users do not have to\nclick directly on the combobox (issue #2996, Phase 2 feedback).\nA direct click on the select itself is left to the native handler.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_hoverState",
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
@@ -16211,6 +16961,50 @@
               "name": "sortedOptions",
               "description": "gets a sorted list of option",
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_optionTemplate",
+              "parameters": [
+                {
+                  "name": "option",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "template for a single `option` element in a `select`",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldBehaviors",
+                "module": "lib/simple-fields-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_groupedOptionsTemplate",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "renders a list of options, wrapping consecutive items that share\nan optional `group` property in an `optgroup`. Items without a\n`group` render exactly as before (no behavior change for existing\nconsumers that don't set `group`).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldBehaviors",
                 "module": "lib/simple-fields-field.js"
@@ -16653,6 +17447,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -16715,6 +17539,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -17352,6 +18236,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18072,11 +18957,20 @@
       "declarations": [
         {
           "kind": "variable",
+          "name": "SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS",
+          "type": {
+            "text": "number"
+          },
+          "default": "2",
+          "description": "Descriptions at or below this many words render as plain subtext\nunder the label (Ubuntu-style settings row, issue #2996). Longer\ndescriptions collapse behind an (i) info icon whose tooltip shows on\nhover/focus (positioned above) and hides on blur/mouseleave.\nShared by simple-fields-container (shadow + slotted fields),\nsimple-fields-field (radio/checkbox fieldsets), and\nsimple-fields-upload (hax-upload-field) so every field type uses the\nsame threshold for the inline-description-vs-info-icon behavior."
+        },
+        {
+          "kind": "variable",
           "name": "SimpleFieldsBaseStyles",
           "type": {
             "text": "array"
           },
-          "default": "[ css` :host { visibility: visible; box-sizing: border-box; display: block; margin: 0 0 var(--simple-fields-margin, 16px); padding: 0; font-size: var(--simple-fields-font-size); font-family: var(--simple-fields-font-family, sans-serif); line-height: var(--simple-fields-line-height); font-size: var(--simple-fields-detail-font-size, 12px); font-family: var(--simple-fields-detail-font-family, sans-serif); line-height: var(--simple-fields-detail-line-height, 130%); background-color: var(--simple-fields-background-color, white); color: var(--simple-fields-color, currentColor); margin: 0 0 var(--simple-fields-field-margin, var(--simple-fields-margin, 16px)); --simple-picker-options-border: 1px solid var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); --simple-picker-options-focus-border: 1px solid var(--simple-fields-accent-color, #3f51b5); } ::slotted([slot=\"field\"]) { --simple-picker-options-left: 0; --simple-picker-options-right: 0; --simple-picker-options-border: 1px var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ) solid; --simple-picker-options-focus-border: 1px var(--simple-fields-accent-color, #3f51b5) solid; } :host([hidden]), :host [hidden], :host([type=\"hidden\"]) { display: none !important; } ul[role=\"listbox\"] { z-index: 2; opacity: 0; margin: 0; padding: 0; top: 100%; background-color: var(--simple-fields-background-color, white); color: var(--simple-fields-color, currentColor); border: 1px var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ) solid; overflow: auto; } ul[role=\"listbox\"].focus, ul[role=\"listbox\"]:focus, ul[role=\"listbox\"]:focus-within { border-color: var(--simple-fields-accent-color, #3f51b5); } :host([disabled]), *[disabled] { pointer-events: none !important; } `, ]"
+          "default": "[ css` :host { visibility: visible; box-sizing: border-box; display: block; margin: 0 0 var(--simple-fields-margin, 16px); padding: 0; font-size: var(--simple-fields-font-size); font-family: var(--simple-fields-font-family, sans-serif); line-height: var(--simple-fields-line-height); font-size: var(--simple-fields-detail-font-size, 12px); font-family: var(--simple-fields-detail-font-family, sans-serif); line-height: var(--simple-fields-detail-line-height, 130%); background-color: var( --simple-fields-background-color, light-dark( var(--ddd-theme-default-white, #ffffff), var(--ddd-theme-default-coalyGray, #262626) ) ); color: var(--simple-fields-color, currentColor); margin: 0 0 var(--simple-fields-field-margin, var(--simple-fields-margin, 16px)); --simple-picker-options-border: 1px solid var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); --simple-picker-options-focus-border: 1px solid var(--simple-fields-accent-color, #3f51b5); } ::slotted([slot=\"field\"]) { --simple-picker-options-left: 0; --simple-picker-options-right: 0; --simple-picker-options-border: 1px var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ) solid; --simple-picker-options-focus-border: 1px var(--simple-fields-accent-color, #3f51b5) solid; } :host([hidden]), :host [hidden], :host([type=\"hidden\"]) { display: none !important; } ul[role=\"listbox\"] { z-index: 2; opacity: 0; margin: 0; padding: 0; top: 100%; background-color: var(--simple-fields-background-color, white); color: var(--simple-fields-color, currentColor); border: 1px var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ) solid; overflow: auto; } ul[role=\"listbox\"].focus, ul[role=\"listbox\"]:focus, ul[role=\"listbox\"]:focus-within { border-color: var(--simple-fields-accent-color, #3f51b5); } :host([disabled]), *[disabled] { pointer-events: none !important; } `, ]"
         },
         {
           "kind": "variable",
@@ -18100,7 +18994,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ ...SimpleFieldsTooltipStyles, css` button, button[aria-selected], simple-toolbar-button::part(button), simple-toolbar-menu::part(button) { color: var(--simple-fields-button-color, var(--simple-fields-color)); background-color: var( --simple-fields-button-background-color, var(--simple-fields-background-color) ); border-width: 1px; border-style: solid; border-color: var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); opacity: var(--simple-fields-button-focus-opacity, 1); font-family: var( --simple-fields-button-font-family, var(--simple-fields-font-family, sans-serif) ); font-size: var(--simple-fields-button-font-size, 14px); line-height: var(--simple-fields-button-line-height 22px); text-transform: var(--simple-fields-button-text-transform, unset); border-radius: var(--simple-fields-border-radius, 2px); padding: var(--simple-fields-button-padding-sm, 1px) var(--simple-fields-button-padding, 2px); min-height: calc( 24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px ); } simple-toolbar-menu-item > simple-toolbar-button::part(button) { border-color: transparent; border-radius: 0 !important; } simple-toolbar-button.danger::part(button), simple-toolbar-menu.danger::part(button) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); } button[aria-pressed=\"true\"], button[aria-selected=\"true\"], simple-toolbar-button[toggled]::part(button) { color: var( --simple-fields-button-toggled-color, var(--simple-fields-accent-color, #3f51b5) ); background-color: var( --simple-fields-button-toggled-background-color, unset ); border-color: var( --simple-fields-button-toggled-border-color, var(--simple-fields-color, currentColor) ); opacity: var(--simple-fields-button-toggled-opacity, 1); } simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button[aria-pressed=\"true\"]), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part( button[aria-pressed=\"true\"] ) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:focus, button:hover, button[aria-selected=\"false\"]:not([disabled]):focus, button[aria-selected=\"false\"]:not([disabled]):hover, simple-toolbar-button:focus-within::part(button), simple-toolbar-button:hover::part(button), simple-toolbar-menu:focus-within::part(button), simple-toolbar-menu:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:focus-within::part(button) { color: var(--simple-fields-button-focus-color, unset); background-color: var( --simple-fields-button-focus-background-color, var(--simple-fields-accent-color-light, #d9eaff) ); border-color: var( --simple-fields-button-focus-border-color, var(--simple-fields-accent-color, #3f51b5) ); opacity: var(--simple-fields-button-focus-opacity, 1); text-decoration: var(--simple-fields-button-focus-text-decoration, unset); } simple-toolbar-menu.danger:focus-within::part(button), simple-toolbar-menu.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part(button) { background-color: var(--simple-fields-button-danger-focus-color, #8a0000); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:disabled, button[disabled], simple-toolbar-button[disabled], simple-toolbar-menu[disabled] { color: var(--simple-fields-button-disabled-color, unset); background-color: var( --simple-fields-button-disabled-background-color, unset ); border-color: var(--simple-fields-button-disabled-border-color, unset); opacity: var( --simple-fields-button-disabled-opacity, var(--simple-fields-disabled-opacity, 0.7) ); } `, ]"
+          "default": "[ ...SimpleFieldsTooltipStyles, css` button, button[aria-selected], simple-toolbar-button::part(button), simple-toolbar-menu::part(button) { color: var(--simple-fields-button-color, var(--simple-fields-color)); background-color: var( --simple-fields-button-background-color, var(--simple-fields-background-color) ); border-width: 1px; border-style: solid; border-color: var( --simple-fields-button-border-color, var(--simple-fields-border-color, #999) ); opacity: var(--simple-fields-button-focus-opacity, 1); font-family: var( --simple-fields-button-font-family, var(--simple-fields-font-family, sans-serif) ); font-size: var(--simple-fields-button-font-size, 14px); line-height: var(--simple-fields-button-line-height 22px); text-transform: var(--simple-fields-button-text-transform, unset); border-radius: var(--simple-fields-border-radius, 4px); padding: var(--simple-fields-button-padding-sm, 1px) var(--simple-fields-button-padding, 2px); min-height: calc( 24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px ); } simple-toolbar-menu-item > simple-toolbar-button::part(button) { border-color: transparent; border-radius: 0 !important; } simple-toolbar-button.danger::part(button), simple-toolbar-menu.danger::part(button) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); } button[aria-pressed=\"true\"], button[aria-selected=\"true\"], simple-toolbar-button[toggled]::part(button) { color: var( --simple-fields-button-toggled-color, var(--simple-fields-accent-color, #3f51b5) ); background-color: var( --simple-fields-button-toggled-background-color, unset ); border-color: var( --simple-fields-button-toggled-border-color, var(--simple-fields-color, currentColor) ); opacity: var(--simple-fields-button-toggled-opacity, 1); } simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button[aria-pressed=\"true\"]), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part( button[aria-pressed=\"true\"] ) { background-color: var( --simple-fields-button-danger-color, var(--simple-fields-error-color, #b40000) ); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:focus, button:hover, button[aria-selected=\"false\"]:not([disabled]):focus, button[aria-selected=\"false\"]:not([disabled]):hover, simple-toolbar-button:focus-within::part(button), simple-toolbar-button:hover::part(button), simple-toolbar-menu:focus-within::part(button), simple-toolbar-menu:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button:focus-within::part(button) { color: var(--simple-fields-button-focus-color, unset); background-color: var( --simple-fields-button-focus-background-color, var(--simple-fields-accent-color-light, #d9eaff) ); border-color: var( --simple-fields-button-focus-border-color, var(--simple-fields-accent-color, #3f51b5) ); opacity: var(--simple-fields-button-focus-opacity, 1); text-decoration: var(--simple-fields-button-focus-text-decoration, unset); } simple-toolbar-menu.danger:focus-within::part(button), simple-toolbar-menu.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button), simple-toolbar-menu-item > simple-toolbar-button.danger:focus-within::part(button) { background-color: var(--simple-fields-button-danger-focus-color, #8a0000); color: var(--simple-fields-button-danger-background-color, white); border-color: var(--simple-fields-button-danger-focus-color, #8a0000); } button:disabled, button[disabled], simple-toolbar-button[disabled], simple-toolbar-menu[disabled] { color: var(--simple-fields-button-disabled-color, unset); background-color: var( --simple-fields-button-disabled-background-color, unset ); border-color: var(--simple-fields-button-disabled-border-color, unset); opacity: var( --simple-fields-button-disabled-opacity, var(--simple-fields-disabled-opacity, 0.7) ); } `, ]"
         },
         {
           "kind": "variable",
@@ -18108,7 +19002,15 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` *[part=\"field-desc\"], *[part=\"error-desc\"], *[part=\"error-meta\"] { color: var(--simple-fields-meta-color); font-size: var(--simple-fields-meta-font-size, 10px); line-height: var(--simple-fields-meta-line-height, 110%); opacity: var(--simple-fields-meta-opacity, unset); text-transform: none; } :host:hover *[part=\"field-desc\"], :host:hover-within *[part=\"error-desc\"], :host:hover-within *[part=\"error-meta\"], :host:hover *[part=\"field-desc\"], :host:hover *[part=\"error-desc\"], :host:hover *[part=\"error-meta\"] { color: var(--simple-fields-focus-meta-color); opacity: var(--simple-fields-focus-meta-opacity, unset); } `, ]"
+          "default": "[ css` *[part=\"field-desc\"], *[part=\"error-desc\"], *[part=\"error-meta\"] { color: var(--simple-fields-meta-color); font-size: var(--simple-fields-meta-font-size, 10px); line-height: var(--simple-fields-meta-line-height, 110%); opacity: var(--simple-fields-meta-opacity, unset); text-transform: none; } :host:hover *[part=\"field-desc\"], :host:hover-within *[part=\"error-desc\"], :host:hover-within *[part=\"error-meta\"], :host:hover *[part=\"field-desc\"], :host:hover *[part=\"error-desc\"], :host:hover *[part=\"error-meta\"] { color: var(--simple-fields-focus-meta-color); opacity: var(--simple-fields-focus-meta-opacity, unset); } /* Row-based fields (Ubuntu-style settings layout, issue #2996): description text is relocated as subtext under the label (or behind an (i) info icon for long text), so the field-desc shown here is not gated by hover. The host carries a [row-layout] attribute (mirrored from isRowBasedField) so this auto-applies to every field type as later phases convert it. */ :host([row-layout]) *[part=\"field-desc\"] { opacity: var(--simple-fields-meta-opacity, 1); } `, ]"
+        },
+        {
+          "kind": "variable",
+          "name": "SimpleFieldsRowStyles",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ css` /* Ubuntu-style settings row hover/focus affordance (issue #2996). Scoped to the [row-layout] host attribute so it applies to every row-based field type (checkbox, single select, bounded number, and future phases) without affecting non-row fields. */ :host([row-layout]:hover) { background-color: var( --simple-fields-row-hover-background-color, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)) ); transition: background-color 0.3s ease-in-out; } :host([row-layout]:focus-within) { outline: var(--simple-fields-row-focus-outline-width, 1px) solid var( --simple-fields-row-focus-outline-color, var(--simple-fields-accent-color, #3f51b5) ); outline-offset: -1px; transition: outline-color 0.3s ease-in-out; } /* Ubuntu-style settings rows are start-aligned (issue #2996). The pre-existing .inline label rule sets text-align to var(--simple-fields-text-align) with no fallback, so when that custom property is unset the value inherits from the host page. The .label-text wrapper stretches its children to a shared width, which exposes any inherited ambient center alignment. Force start here so row-layout labels and descriptions never inherit center. */ .field-main.row-layout .label-main, .field-main.row-layout .label-text { text-align: start; } /* Row-layout labels grow to fill the left side so the (i) info icon (fixed-size, flex: 0 0 auto) is pushed to the right edge of the label and sits next to the field control (issue #2996). Without this, the pre-existing .inline label flex rule in SimpleFieldsLabelStyles keeps checkbox/color/radio labels at content width, stranding the info icon at the far left while text/select labels grow and place it next to the field. */ .field-main.row-layout .label-main, .field-main.row-layout > label { flex: 1 1 auto; } /* Base row-layout flex (issue #2996). Declared in the shared styles so every consumer that writes the row-layout class gets the horizontal label-left / control-right row, including elements that do NOT inherit simple-fields-field.js styles (e.g. simple-fields-code, which extends the container directly) and slotted-field containers. Elements that also inherit field.js carry an identical rule; the duplication is harmless and keeps each module self-consistent. */ .field-main.row-layout { display: flex; align-items: center; justify-content: space-between; } `, ]"
         },
         {
           "kind": "variable",
@@ -18116,10 +19018,18 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` fieldset { padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px); margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px); border-width: 1px; border-style: solid; border-color: var( --simple-fields-fieldset-border-color, var(--simple-fields-border-color-light, #ccc) ); border-radius: var(--simple-fields-border-radius, 2px); transition: all 0.3s ease-in-out; max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px); } :host(:last-of-type) { margin-bottom: 0; } *[part=\"legend\"] { font-family: var(--simple-fields-font-family, sans-serif); font-size: var( --simple-fields-legend-font-size, var(--simple-fields-font-size, 16px) ); line-height: var(--simple-fields-line-height, 22px); text-transform: var(--simple-fields-legend-text-transform, unset); } :host([error]) *[part=\"legend\"] { color: var(--simple-fields-error-color, #b40000); transition: all 0.3s ease-in-out; } `, ]"
+          "default": "[ css` fieldset { padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px); margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px); border-width: 1px; border-style: solid; border-color: var( --simple-fields-fieldset-border-color, var(--simple-fields-border-color-light, #ccc) ); border-radius: var(--simple-fields-border-radius, 4px); transition: all 0.3s ease-in-out; max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px); } :host(:last-of-type) { margin-bottom: 0; } *[part=\"legend\"] { font-family: var(--simple-fields-font-family, sans-serif); font-size: var( --simple-fields-legend-font-size, var(--simple-fields-font-size, 16px) ); line-height: var(--simple-fields-line-height, 22px); text-transform: var(--simple-fields-legend-text-transform, unset); } :host([error]) *[part=\"legend\"] { color: var(--simple-fields-error-color, #b40000); transition: all 0.3s ease-in-out; } `, ]"
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS",
+          "declaration": {
+            "name": "SIMPLE_FIELDS_INLINE_DESCRIPTION_MAX_WORDS",
+            "module": "lib/simple-fields-ui.js"
+          }
+        },
         {
           "kind": "js",
           "name": "SimpleFieldsBaseStyles",
@@ -18162,6 +19072,14 @@
         },
         {
           "kind": "js",
+          "name": "SimpleFieldsRowStyles",
+          "declaration": {
+            "name": "SimpleFieldsRowStyles",
+            "module": "lib/simple-fields-ui.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "SimpleFieldsFieldsetStyles",
           "declaration": {
             "name": "SimpleFieldsFieldsetStyles",
@@ -18184,6 +19102,42 @@
               "name": "tag",
               "static": true,
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldsetBehaviors",
+                "module": "lib/simple-fields-fieldset.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_descWordCount",
+              "description": "word count of the description, used to decide between inline\nsubtext (<= threshold) and the (i) info-icon tooltip (> threshold)\nso hax-upload-field matches the simple-fields row-layout behavior\n(issue #2996, shared threshold from simple-fields-ui.js).",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_hasInlineDescription",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_hasInfoTooltip",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "legend",
+              "readonly": true,
+              "description": "Override of SimpleFieldsFieldsetBehaviors.legend: lays out the label\nwith a short description as inline subtext, or collapses a long\ndescription behind an (i) info icon whose tooltip shows on hover/focus\n(positioned above), matching the Ubuntu-style settings row fields.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsFieldsetBehaviors",
+                "module": "lib/simple-fields-fieldset.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "desc",
+              "readonly": true,
+              "description": "Override of SimpleFieldsFieldsetBehaviors.desc: the description is now\nrendered in the legend (inline or info-icon), so the standalone desc\nblock inside the upload area is suppressed to avoid duplication.",
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldsetBehaviors",
                 "module": "lib/simple-fields-fieldset.js"
@@ -18525,24 +19479,6 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "SimpleFieldsFieldsetBehaviors",
-                "module": "lib/simple-fields-fieldset.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "legend",
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "SimpleFieldsFieldsetBehaviors",
-                "module": "lib/simple-fields-fieldset.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "desc",
               "readonly": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsFieldsetBehaviors",
@@ -19533,6 +20469,34 @@
             },
             {
               "kind": "method",
+              "name": "_radioKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "keyboard handler for radio groups (issue #2996, Phase 3 feedback):\narrow keys move focus between options WITHOUT selecting (overriding\nnative radio behavior where arrows auto-select the destination), and\nEnter/Space selects the focused option — or deselects it if already\nselected, allowing \"no value\" to be set via keyboard instead of being\nforced by arrow navigation.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_selectClickActivate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "clicking anywhere on a single-select row activates the native\nselect: focus it and open its dropdown, so users do not have to\nclick directly on the combobox (issue #2996, Phase 2 feedback).\nA direct click on the select itself is left to the native handler.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_hoverState",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
@@ -19718,6 +20682,50 @@
               "name": "numberError",
               "description": "determines if number of items selected\nis not between min and max",
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_optionTemplate",
+              "parameters": [
+                {
+                  "name": "option",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "template for a single `option` element in a `select`",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_groupedOptionsTemplate",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "renders a list of options, wrapping consecutive items that share\nan optional `group` property in an `optgroup`. Items without a\n`group` render exactly as before (no behavior change for existing\nconsumers that don't set `group`).",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"
@@ -20219,6 +21227,36 @@
             },
             {
               "kind": "field",
+              "name": "isRowBasedField",
+              "description": "whether this field type has been converted to the Ubuntu-style\nsettings row layout (issue #2996), where the label/description\nlive to the left of the control and the description is rendered\ninline under the label (or behind an info-icon tooltip) instead\nof in the field-bottom area",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isScalableTextField",
+              "description": "Scalable, full-width text entry fields (textarea and the code\neditor) keep the legacy description layout: the description renders\nin the field-bottom area instead of as inline subtext or an (i)\ninfo icon under the label. These fields are too tall / editable to\nbenefit from the compact Ubuntu-style settings row, so they are\nexcluded from both the row layout and the inline-description /\ninfo-icon behavior (issue #2996 Phase 5 revert).",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "descriptionTemplate",
               "description": "template for slotted or shadow DOM description",
               "readonly": true,
@@ -20281,6 +21319,66 @@
               "kind": "field",
               "name": "labelTemplate",
               "description": "template for slotted or shadow DOM label",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInlineDescription",
+              "description": "whether the description is short enough to render as plain subtext\nunder the label (Ubuntu-style row layout) instead of behind a\nclick-triggered info icon",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasInfoTooltip",
+              "description": "whether the description is long enough to require the\n(i) info icon / tooltip instead of inline subtext",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "inlineDescriptionTemplate",
+              "description": "template for description subtext rendered under the label\nwhen the description is short enough to display inline",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "infoToggleTemplate",
+              "description": "template for the (i) info icon and its tooltip, used when a\ndescription is too long (over 5 words) to render as inline\nsubtext. The tooltip is native (shows on hover/focus, hides on\nblur/mouseleave) and positioned above the icon.",
               "readonly": true,
               "return": {
                 "type": {
@@ -20994,6 +22092,7 @@
               },
               "description": "Type of input form control",
               "attribute": "type",
+              "reflects": true,
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"
@@ -22480,7 +23579,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`simple-file-upload`\n`Accessible, DDD-styled file upload with XHR, drag-and-drop, and feature parity with vaadin-upload.`",
+          "description": "`simple-file-upload`\n`Accessible, DDD-styled file upload with XHR, drag-and-drop, and feature parity.`",
           "name": "SimpleFileUpload",
           "members": [
             {
@@ -23408,6 +24507,13 @@
               "kind": "field",
               "name": "tag",
               "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
               "readonly": true
             },
             {

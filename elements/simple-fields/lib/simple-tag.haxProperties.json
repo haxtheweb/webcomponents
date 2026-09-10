@@ -1,0 +1,113 @@
+{
+  "type": "grid",
+  "canScale": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Tag / Pill",
+    "description": "A compact pill-shaped label with optional accent color, cancel button, or toggle.",
+    "icon": "icons:label",
+    "color": "grey",
+    "tags": ["Content", "tag", "pill", "label", "chip", "badge", "metadata"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Text shown inside the pill.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "SimpleColors accent name for the pill background.",
+        "inputMethod": "select",
+        "options": {
+          "": "-- default --",
+          "red": "Red",
+          "pink": "Pink",
+          "purple": "Purple",
+          "deep-purple": "Deep Purple",
+          "indigo": "Indigo",
+          "blue": "Blue",
+          "light-blue": "Light Blue",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Green",
+          "light-green": "Light Green",
+          "lime": "Lime",
+          "yellow": "Yellow",
+          "amber": "Amber",
+          "orange": "Orange",
+          "deep-orange": "Deep Orange",
+          "brown": "Brown",
+          "blue-grey": "Blue Grey",
+          "grey": "Grey"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Auto accent color",
+        "description": "Derive the accent color from the label text automatically.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "cancelButton",
+        "title": "Cancel button",
+        "description": "Show a remove/cancel icon button inside the pill.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "readonly",
+        "title": "Read only",
+        "description": "Hide the cancel button so the pill is display-only.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Toggles",
+        "description": "Make the pill toggle on/off when the button is clicked.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "toggled",
+        "title": "Toggled",
+        "description": "Whether the pill is currently toggled on.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Toggled icon",
+        "description": "Icon to show when the pill is toggled on.",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "description": "Disable interaction with the pill.",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["data"]
+  },
+  "demoSchema": [
+    {
+      "tag": "simple-tag",
+      "properties": {
+        "value": "NEW",
+        "accent-color": "blue",
+        "readonly": true
+      },
+      "content": ""
+    }
+  ]
+}

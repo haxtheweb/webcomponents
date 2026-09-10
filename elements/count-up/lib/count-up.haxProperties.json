@@ -1,0 +1,110 @@
+{
+  "type": "grid",
+  "canScale": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Count Up",
+    "description": "Animate a number counting up to a target value when it scrolls into view.",
+    "icon": "icons:trending-up",
+    "color": "green",
+    "tags": ["Media", "data", "number", "animation", "counter", "stats"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "End value",
+        "description": "The number to count up to.",
+        "inputMethod": "number",
+        "required": true
+      },
+      {
+        "property": "start",
+        "title": "Start value",
+        "description": "The number to count up from.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "duration",
+        "title": "Duration",
+        "description": "Seconds the count animation should take.",
+        "inputMethod": "number",
+        "suffix": "s"
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefix text",
+        "description": "Text shown before the number (e.g. '$').",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffix text",
+        "description": "Text shown after the number (e.g. '%').",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefix slot",
+        "description": "Optional slotted content before the number.",
+        "inputMethod": "textfield",
+        "slotWrapper": "span",
+        "allowedSlotWrappers": ["span", "div", "p"]
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffix slot",
+        "description": "Optional slotted content after the number.",
+        "inputMethod": "textfield",
+        "slotWrapper": "span",
+        "allowedSlotWrappers": ["span", "div", "p"]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimal places",
+        "description": "Number of decimal places to display.",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 10
+      },
+      {
+        "property": "separator",
+        "title": "Thousands separator",
+        "description": "Character separating thousands groups.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "decimal",
+        "title": "Decimal character",
+        "description": "Character used for the decimal point.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "noeasing",
+        "title": "No easing",
+        "description": "Disable easing so the count is linear.",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["elementVisible", "ratio", "thresholds", "rootMargin"]
+  },
+  "demoSchema": [
+    {
+      "tag": "count-up",
+      "properties": {
+        "end": 1250,
+        "duration": 2.5,
+        "suffixtext": "+"
+      },
+      "content": ""
+    }
+  ]
+}

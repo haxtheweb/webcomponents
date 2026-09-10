@@ -42,9 +42,7 @@ export class DddStepsList extends DDDSuper(LitElement) {
 
         .steps-container {
           position: relative;
-          padding-left: calc(
-            var(--ddd-icon-lg) + var(--ddd-spacing-4)
-          );
+          padding-left: calc(var(--ddd-icon-lg) + var(--ddd-spacing-4));
         }
 
         @media (max-width: 768px) {

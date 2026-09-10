@@ -157,7 +157,10 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         span[part="drop-area-text"] {
           font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--simple-fields-upload-drop-area-text-size, var(--ddd-font-size-6xs));
+          font-size: var(
+            --simple-fields-upload-drop-area-text-size,
+            var(--ddd-font-size-6xs)
+          );
           white-space: nowrap;
           margin: 0;
           font-weight: var(--ddd-font-weight-medium);
@@ -175,7 +178,12 @@ class SimpleFieldsUpload extends I18NMixin(
           overflow-y: auto;
         }
         simple-file-upload[dragover] {
-          outline: var(--ddd-drop-zone-outline-width) var(--ddd-drop-zone-outline-style) var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline: var(--ddd-drop-zone-outline-width)
+            var(--ddd-drop-zone-outline-style)
+            var(
+              --ddd-drop-zone-outline-color,
+              var(--ddd-theme-default-skyBlue, #009dc7)
+            );
           outline-offset: -2px;
         }
         simple-file-upload::part(drop-label) {
@@ -335,8 +343,12 @@ class SimpleFieldsUpload extends I18NMixin(
     if (!this.label && !this.description) return html``;
     const infoId = `${this.id || "upload"}-info`.replaceAll(".", "-");
     return html`
-      <legend id="label" ?hidden="${!this.label}" part="legend"
-        class="label-main">
+      <legend
+        id="label"
+        ?hidden="${!this.label}"
+        part="legend"
+        class="label-main"
+      >
         <span class="label-text">
           <span>${this.label}${this.error ? "*" : ""}</span>
           ${this._hasInlineDescription
@@ -347,23 +359,23 @@ class SimpleFieldsUpload extends I18NMixin(
         </span>
         ${this._hasInfoTooltip
           ? html`<simple-icon-button-lite
-              id="${infoId}"
-              icon="icons:info-outline"
-              label="${this.label
-                ? `${this.label} details`
-                : `Upload details`}"
-              part="info-toggle"
-              class="info-toggle"
-              @click="${(e) => e.stopPropagation()}"
-            ></simple-icon-button-lite>
-            <simple-tooltip
-              for="${infoId}"
-              position="bottom"
-              fit-to-visible-bounds
-              part="info-tooltip"
-            >
-              ${this.description}
-            </simple-tooltip>`
+                id="${infoId}"
+                icon="icons:info-outline"
+                label="${this.label
+                  ? `${this.label} details`
+                  : `Upload details`}"
+                part="info-toggle"
+                class="info-toggle"
+                @click="${(e) => e.stopPropagation()}"
+              ></simple-icon-button-lite>
+              <simple-tooltip
+                for="${infoId}"
+                position="bottom"
+                fit-to-visible-bounds
+                part="info-tooltip"
+              >
+                ${this.description}
+              </simple-tooltip>`
           : ``}
       </legend>
     `;

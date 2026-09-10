@@ -28,8 +28,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             --simple-fields-info-icon-size: var(--ddd-icon-4xs);
             width: var(--simple-fields-info-icon-size);
             height: var(--simple-fields-info-icon-size);
-            --simple-icon-width: var(
-              --simple-fields-info-icon-size);
+            --simple-icon-width: var(--simple-fields-info-icon-size);
             --simple-icon-height: var(--simple-fields-info-icon-size);
             color: var(
               --simple-fields-info-icon-color,
@@ -507,9 +506,15 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         (this.type === "checkbox" && !this.hasFieldset) ||
         (this.type === "select" && !this.multiple) ||
         this.type === "color" ||
-        ["text", "number", "password", "email", "tel", "url", "search"].includes(
-          this.type,
-        ) ||
+        [
+          "text",
+          "number",
+          "password",
+          "email",
+          "tel",
+          "url",
+          "search",
+        ].includes(this.type) ||
         (this.field &&
           this.field.tagName.toLowerCase() === "simple-colors-picker")
       );
@@ -619,9 +624,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           class="${this.inline ||
           ["checkbox", "color", "radio"].includes(this.type || "text")
             ? "field-main inline"
-            : "field-main"} ${this.isRowBasedField
-            ? "row-layout"
-            : ""}"
+            : "field-main"} ${this.isRowBasedField ? "row-layout" : ""}"
           part="field-main"
         >
           ${this.labelTemplate}
@@ -756,7 +759,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      */
     get infoToggleTemplate() {
       if (!this.hasInfoTooltip) return ``;
-      const infoId = `${this.fieldId}-info`.replaceAll('.', '-');
+      const infoId = `${this.fieldId}-info`.replaceAll(".", "-");
       return html`
         <simple-icon-button-lite
           id="${infoId}"

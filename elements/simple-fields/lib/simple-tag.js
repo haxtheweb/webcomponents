@@ -107,5 +107,11 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
   static get tag() {
     return "simple-tag";
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
 }
 globalThis.customElements.define(SimpleTag.tag, SimpleTag);
