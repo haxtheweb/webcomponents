@@ -37,6 +37,8 @@
         "title": "Image",
         "description": "Image for the self-check.",
         "inputMethod": "haxupload",
+        "fileActions": true,
+        "noScreenRecord": true,
         "noVoiceRecord": true
       },
       {

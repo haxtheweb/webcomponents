@@ -812,10 +812,10 @@
               }
             }
           ],
-          "description": "Publish all gate-passing patterns to the HAX store. Called once the store\nis ready and DDD is the active design system. Respects platformAllows\ngating for blockTemplates (area) and pageTemplates (page).",
+          "description": "Publish all gate-passing patterns to the HAX store. Called once the store\nis ready and DDD is the active design system. Respects platformAllows\ngating for blockTemplates (area) and pageTemplates (page).\nAsync because each pattern's HTML recipe must be converted to HAX element\nobjects via store.htmlToHaxElements() before registering.",
           "return": {
             "type": {
-              "text": "{registeredStax: string[], registeredOverrides: string[], skipped: object[], gaps: object[]}"
+              "text": "Promise<{registeredStax: string[], registeredOverrides: string[], skipped: object[], gaps: object[]}>"
             }
           }
         },

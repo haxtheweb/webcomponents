@@ -29,26 +29,22 @@ import {
 } from "./DDDPatternLibrary.js";
 
 /**
- * Build a stax-shaped object from a registry pattern (the same shape
- * hax-store._haxStoreRegisterStax consumes via the <hax-stax> data property).
+ * Build the stax details metadata (title, description, tags, etc).
+ * The actual stax payload (HAX element objects) is set by the caller
+ * after converting the HTML recipe via store.htmlToHaxElements().
  * @param {object} pattern registry entry
- * @returns {object} stax data shape
+ * @returns {object} stax details shape
  */
-function buildStaxData(pattern) {
+function buildStaxDetails(pattern) {
   return {
-    details: {
-      title: pattern.title,
-      image: "",
-      author: "DDD Pattern Library",
-      description: pattern.description,
-      status: "available",
-      rating: "0",
-      tags: ["ddd", "pattern-library", pattern.level, pattern.hax.templateType],
-      templateType: pattern.hax.templateType,
-    },
-    // The stax payload is the canonical HTML recipe; hax-store will convert
-    // it via htmlToHaxElements at registration time.
-    stax: pattern.html,
+    title: pattern.title,
+    image: "",
+    author: "DDD Pattern Library",
+    description: pattern.description,
+    status: "available",
+    rating: "0",
+    tags: ["ddd", "pattern-library", pattern.level, pattern.hax.templateType],
+    templateType: pattern.hax.templateType,
   };
 }
 
@@ -102,30 +98,48 @@ function isDDDActive() {
 
 /**
  * Register a single pattern as a stax entry via the existing store hook.
- * Mirrors how hax-store._loadAppStoreData registers stax from the app store:
- * it creates a <hax-stax> element, sets .data, and appends it; the store's
- * _haxStoreRegisterStax listener picks it up and adds it to staxList.
+ * Converts the canonical HTML recipe to HAX element objects (the shape
+ * hax-insert-content-array expects) using store.htmlToHaxElements(),
+ * then creates a <hax-stax> element with that data. Mirrors how
+ * hax-store.detectAndRegisterPageTemplateStax builds stax entries.
  * @param {object} store HaxStore instance
  * @param {object} pattern registry entry
  */
-function registerStaxPattern(store, pattern) {
+async function registerStaxPattern(store, pattern) {
   if (!store || !globalThis.document) {
     return;
   }
+  // Convert the HTML recipe to HAX element objects — this is the shape
+  // the stax tray passes to hax-insert-content-array on click.
+  let staxElements = [];
+  try {
+    staxElements = await store.htmlToHaxElements(pattern.html);
+  } catch (e) {
+    // if conversion fails, skip this pattern rather than insert undefined
+    return;
+  }
+  if (!staxElements || staxElements.length === 0) {
+    return;
+  }
   const staxEl = globalThis.document.createElement("hax-stax");
-  staxEl.data = buildStaxData(pattern);
+  staxEl.data = {
+    details: buildStaxDetails(pattern),
+    stax: staxElements,
+  };
   store.appendChild(staxEl);
 }
 
 /**
  * Register a single-element molecule as a demoSchema override for its
- * target element. Mirrors hax-store._updateElementDemoSchema: writes into
+ * target element. Converts the canonical HTML recipe to a HAX element
+ * object so the tag, properties, and inner content are correctly split.
+ * Mirrors hax-store._updateElementDemoSchema: writes into
  * HAXStore.styleGuideSchema[targetTag].demoSchema so inserting that element
  * from the gizmo tray uses the canonical recipe.
  * @param {object} store HaxStore instance
  * @param {object} pattern registry entry (hax.publish === 'demoSchemaOverride')
  */
-function registerDemoSchemaOverride(store, pattern) {
+async function registerDemoSchemaOverride(store, pattern) {
   if (!store) {
     return;
   }
@@ -133,20 +147,31 @@ function registerDemoSchemaOverride(store, pattern) {
   if (!tag) {
     return;
   }
+  // Convert the HTML recipe to HAX element objects so we get the correct
+  // tag / properties / content split rather than dumping the full HTML
+  // string as content (which would double-wrap the tag).
+  let elements = [];
+  try {
+    elements = await store.htmlToHaxElements(pattern.html);
+  } catch (e) {
+    return;
+  }
+  if (!elements || elements.length === 0) {
+    return;
+  }
+  // Use the first (root) element as the demoSchema entry.
+  const el = elements[0];
   if (!store.styleGuideSchema) {
     store.styleGuideSchema = {};
   }
   if (!store.styleGuideSchema[tag]) {
     store.styleGuideSchema[tag] = {};
   }
-  // Wrap the canonical HTML so it parses as a single HAX element with its
-  // slotted content. hax-store expects demoSchema items of shape
-  // { tag, properties, content }.
   store.styleGuideSchema[tag].demoSchema = [
     {
-      tag: tag,
-      properties: {},
-      content: pattern.html,
+      tag: el.tag || tag,
+      properties: el.properties || {},
+      content: el.content || "",
     },
   ];
 }
@@ -155,10 +180,12 @@ function registerDemoSchemaOverride(store, pattern) {
  * Publish all gate-passing patterns to the HAX store. Called once the store
  * is ready and DDD is the active design system. Respects platformAllows
  * gating for blockTemplates (area) and pageTemplates (page).
+ * Async because each pattern's HTML recipe must be converted to HAX element
+ * objects via store.htmlToHaxElements() before registering.
  * @param {object} store HaxStore instance
- * @returns {{registeredStax: string[], registeredOverrides: string[], skipped: object[], gaps: object[]}}
+ * @returns {Promise<{registeredStax: string[], registeredOverrides: string[], skipped: object[], gaps: object[]}>}
  */
-export function publishDDDPatternsToHax(store) {
+export async function publishDDDPatternsToHax(store) {
   const result = {
     registeredStax: [],
     registeredOverrides: [],
@@ -174,10 +201,11 @@ export function publishDDDPatternsToHax(store) {
   const allowPage = store.platformAllows
     ? store.platformAllows("pageTemplates")
     : true;
-  DDDPATTERNS.forEach((pattern) => {
+  // Process patterns sequentially so each htmlToHaxElements call completes
+  // before the next registration. This avoids race conditions in the store.
+  for (const pattern of DDDPATTERNS) {
     if (!pattern.hax || pattern.hax.publish === "recipe-only") {
-      // atoms and pure-HTML molecules: documentation only, no rail entry
-      return;
+      continue;
     }
     if (!patternPassesGate(pattern)) {
       result.gaps.push({
@@ -188,7 +216,7 @@ export function publishDDDPatternsToHax(store) {
           (tag) => HAX_CAPABILITY[tag] !== true,
         ),
       });
-      return;
+      continue;
     }
     if (pattern.hax.publish === "stax-area") {
       if (!allowBlock) {
@@ -196,9 +224,9 @@ export function publishDDDPatternsToHax(store) {
           id: pattern.id,
           reason: "blockTemplates not allowed on this platform",
         });
-        return;
+        continue;
       }
-      registerStaxPattern(store, pattern);
+      await registerStaxPattern(store, pattern);
       result.registeredStax.push(pattern.id);
     } else if (pattern.hax.publish === "stax-page") {
       if (!allowPage) {
@@ -206,15 +234,15 @@ export function publishDDDPatternsToHax(store) {
           id: pattern.id,
           reason: "pageTemplates not allowed on this platform",
         });
-        return;
+        continue;
       }
-      registerStaxPattern(store, pattern);
+      await registerStaxPattern(store, pattern);
       result.registeredStax.push(pattern.id);
     } else if (pattern.hax.publish === "demoSchemaOverride") {
-      registerDemoSchemaOverride(store, pattern);
+      await registerDemoSchemaOverride(store, pattern);
       result.registeredOverrides.push(pattern.id);
     }
-  });
+  }
   return result;
 }
 
@@ -226,13 +254,13 @@ export function publishDDDPatternsToHax(store) {
  */
 export function activateDDDPatternStax() {
   const KEY = "__dddPatternStaxPublished";
-  function tryPublish() {
+  async function tryPublish() {
     const store = getHaxStore();
     if (!store || store[KEY] || !isDDDActive()) {
       return;
     }
     store[KEY] = true;
-    publishDDDPatternsToHax(store);
+    await publishDDDPatternsToHax(store);
   }
   tryPublish();
   if (globalThis.addEventListener) {

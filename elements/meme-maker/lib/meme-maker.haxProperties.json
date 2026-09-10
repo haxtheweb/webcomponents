@@ -28,7 +28,10 @@
         "title": "Source",
         "description": "Source URL for the meme image.",
         "inputMethod": "haxupload",
-        "noVoiceRecord": true
+        "fileActions": true,
+        "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "required": true
       },
       {
         "property": "topText",

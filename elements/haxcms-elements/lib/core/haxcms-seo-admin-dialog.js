@@ -350,9 +350,9 @@ class HAXCMSSEOAdminDialog extends DDD {
               "Browser tab image / used on phones as small site logo",
             inputMethod: "haxupload",
             required: false,
+            fileActions: true,
             noVoiceRecord: true,
-            noScreenRecord: true,
-            noCamera: true,
+            noScreenRecord: true
           },
           {
             property: "manifest-metadata-site-domain",
@@ -427,6 +427,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             description: "Photo path or URL",
             inputMethod: "haxupload",
             required: false,
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
           },

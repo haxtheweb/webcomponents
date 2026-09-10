@@ -44,7 +44,9 @@
         "title": "Profile Image",
         "description": "Author profile photo.",
         "inputMethod": "haxupload",
+        "fileActions": true,
         "noVoiceRecord": true,
+        "noScreenRecord": true,
         "icon": "editor:insert-photo"
       },
       {

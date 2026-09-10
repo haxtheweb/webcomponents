@@ -292,7 +292,7 @@ const MOLECULES = [
     darkMode: "supported",
     html:
       '<div class="m-4 p-4">\n' +
-      '  <media-image source="files/photo.jpg" figure-label-title="1.1" figure-label-description="Field site" alt="Researchers at the field site">\n' +
+      '  <media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-01.jpeg" figure-label-title="1.1" figure-label-description="Field site" alt="Researchers at the field site">\n' +
       '    <div slot="caption">A caption describing the scene.</div>\n' +
       "  </media-image>\n" +
       "  <h3>Media object heading</h3>\n" +
@@ -365,7 +365,7 @@ const MOLECULES = [
     tokens: ["data-primary", "data-accent", "data-border-radius"],
     darkMode: "supported",
     html:
-      '<accent-card accent-color="blue" link="https://haxtheweb.org" image-src="files/card.jpg" data-primary="1" data-accent="2">\n' +
+      '<accent-card accent-color="blue" link="https://haxtheweb.org" image-src="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-02.png" data-primary="1" data-accent="2">\n' +
       '  <h3 slot="heading">Get started with HAX</h3>\n' +
       '  <div slot="content">A quick tour of the authoring experience.</div>\n' +
       '  <div slot="footer">Read more</div>\n' +
@@ -381,7 +381,7 @@ const MOLECULES = [
     components: ["author-card"],
     tokens: ["data-primary", "data-accent", "data-border-radius"],
     darkMode: "supported",
-    html: '<author-card name="Bryan Ollendieck" title="Product Owner, HAX" description="Builds open authoring tools for the web." image="files/avatar.jpg" profile-url="https://hax.psu.edu" social-link="https://x.com/btopro" social-handle="@btopro" data-primary="1" data-accent="2"></author-card>',
+    html: '<author-card name="Bryan Ollendieck" title="Product Owner, HAX" description="Builds open authoring tools for the web." image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-03.png" profile-url="https://hax.psu.edu" social-link="https://x.com/btopro" social-handle="@btopro" data-primary="1" data-accent="2"></author-card>',
     hax: { publish: "demoSchemaOverride", targetTag: "author-card" },
   },
   {
@@ -406,7 +406,7 @@ const MOLECULES = [
     tokens: ["data-primary", "data-accent", "data-border-left"],
     darkMode: "supported",
     html:
-      '<block-quote citation="Albert Einstein" image="files/einstein.jpg" data-primary="2">\n' +
+      '<block-quote citation="Albert Einstein" image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-04.png" data-primary="2">\n' +
       '  <span slot="quote">If a person falls freely, he will not feel his own weight.</span>\n' +
       "</block-quote>",
     hax: { publish: "demoSchemaOverride", targetTag: "block-quote" },
@@ -452,7 +452,7 @@ const MOLECULES = [
     tokens: ["data-primary", "data-accent"],
     darkMode: "supported",
     html:
-      '<self-check title="Sharks Self Check" image="files/shark.jpg" alt="Great white shark" data-primary="17">\n' +
+      '<self-check title="Sharks Self Check" image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-05.png" alt="Great white shark" data-primary="17">\n' +
       '  <span slot="question">How large can the average great white shark grow to be?</span>\n' +
       "  The Great White shark can grow to be 15 ft to more than 20 ft in length.\n" +
       "</self-check>",
@@ -468,7 +468,7 @@ const MOLECULES = [
     tokens: ["data-border-radius", "data-padding"],
     darkMode: "supported",
     html:
-      '<a11y-figure img-src="files/chart.png" img-alt="Bar chart: enrollment doubled 2019-2024">\n' +
+      '<a11y-figure img-src="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-06.jpeg" img-alt="Bar chart: enrollment doubled 2019-2024">\n' +
       '  <div slot="figcaption">Enrollment growth, 2019-2024.</div>\n' +
       '  <div slot="summary">Data details</div>\n' +
       '  <div slot="details">Source: institutional research office, fall census.</div>\n' +
@@ -617,7 +617,7 @@ const ORGANISMS = [
     tokens: ["data-primary", "data-accent"],
     darkMode: "supported",
     html:
-      '<page-section large full filter fold image="files/hero.jpg" accent-color="blue">\n' +
+      '<page-section large full filter fold image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-07.png" accent-color="blue">\n' +
       "  <h1>We will meet you where you are.</h1>\n" +
       "  <hr />\n" +
       "  <p>Ready for you, future Nittany Lions.</p>\n" +
@@ -669,7 +669,7 @@ const ORGANISMS = [
     tokens: ["data-primary", "data-accent"],
     darkMode: "todo",
     html:
-      '<person-testimonial image="files/person.jpg" name="Jamie Rivera" position="Instructional Designer">\n' +
+      '<person-testimonial image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-08.png" name="Jamie Rivera" position="Instructional Designer">\n' +
       "  HAX let me ship a course site in an afternoon.\n" +
       "</person-testimonial>",
     hax: { publish: "demoSchemaOverride", targetTag: "person-testimonial" },
@@ -914,9 +914,9 @@ const ORGANISMS = [
     darkMode: "todo",
     html:
       '<a11y-carousel data-primary="2">\n' +
-      '  <figure><media-image source="files/slide1.jpg" alt="Slide 1"></media-image></figure>\n' +
-      '  <figure><media-image source="files/slide2.jpg" alt="Slide 2"></media-image></figure>\n' +
-      '  <figure><media-image source="files/slide3.jpg" alt="Slide 3"></media-image></figure>\n' +
+      '  <figure><media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-09.jpeg" alt="Slide 1"></media-image></figure>\n' +
+      '  <figure><media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-10.png" alt="Slide 2"></media-image></figure>\n' +
+      '  <figure><media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-11.jpeg" alt="Slide 3"></media-image></figure>\n' +
       "</a11y-carousel>",
     hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
   },
@@ -966,7 +966,7 @@ const ORGANISMS = [
       '<h1 data-design-treatment="vert" data-primary="2">A new approach to open authoring</h1>\n' +
       '<p class="byline" data-design-treatment="horz-10p" data-primary="8">By Bryan Ollendieck</p>\n' +
       '<date-card month="Sep" date="10" day="Wednesday" title="Published" accent-color="light-blue"></date-card>\n' +
-      '<media-image source="files/featured.jpg" figure-label-title="Featured" figure-label-description="Hero image" alt="Featured article image"><div slot="caption">The HAX authoring workspace.</div></media-image>',
+      '<media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-01.jpeg" figure-label-title="Featured" figure-label-description="Hero image" alt="Featured article image"><div slot="caption">The HAX authoring workspace.</div></media-image>',
     hax: { publish: "stax-area", templateType: "area" },
   },
   {
@@ -1193,7 +1193,7 @@ const TEMPLATES = [
     tokens: ["data-primary", "data-accent"],
     darkMode: "supported",
     html:
-      '<page-section large full filter fold image="files/hero.jpg" accent-color="blue">\n' +
+      '<page-section large full filter fold image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-07.png" accent-color="blue">\n' +
       "  <h1>Create anything with HAX</h1>\n" +
       "  <hr />\n" +
       "  <p>Open authoring for the web.</p>\n" +
@@ -1221,7 +1221,7 @@ const TEMPLATES = [
       '<p class="byline" data-design-treatment="horz-10p" data-primary="8">By Bryan Ollendieck</p>\n' +
       "<p>Body paragraph one.</p>\n" +
       '<block-quote citation="A reader" data-primary="2"><span slot="quote">This changed how I build courses.</span></block-quote>\n' +
-      '<media-image source="files/figure.jpg" figure-label-title="1.1" figure-label-description="Workflow" alt="Authoring workflow diagram"><div slot="caption">The HAX authoring loop.</div></media-image>\n' +
+      '<media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-02.png" figure-label-title="1.1" figure-label-description="Workflow" alt="Authoring workflow diagram"><div slot="caption">The HAX authoring loop.</div></media-image>\n' +
       '<self-check title="Check your understanding" data-primary="17"><span slot="question">What does HAX prioritize?</span>Accessibility, extensibility, and remixability.</self-check>',
     hax: { publish: "stax-page", templateType: "page" },
   },
@@ -1254,8 +1254,8 @@ const TEMPLATES = [
     tokens: ["data-primary", "data-accent"],
     darkMode: "supported",
     html:
-      '<author-card name="Bryan Ollendieck" title="Product Owner, HAX" description="Builds open authoring tools." image="files/avatar.jpg" profile-url="https://hax.psu.edu" data-primary="1" data-accent="2"></author-card>\n' +
-      '<media-image source="files/workspace.jpg" figure-label-title="Workspace" figure-label-description="Where it happens" alt="Workspace photo"><div slot="caption">The desk where HAX is built.</div></media-image>\n' +
+      '<author-card name="Bryan Ollendieck" title="Product Owner, HAX" description="Builds open authoring tools." image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-03.png" profile-url="https://hax.psu.edu" data-primary="1" data-accent="2"></author-card>\n' +
+      '<media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-03.png" figure-label-title="Workspace" figure-label-description="Where it happens" alt="Workspace photo"><div slot="caption">The desk where HAX is built.</div></media-image>\n' +
       '<grid-plate layout="1-1-1">\n' +
       '  <div slot="col-1" class="b-xs p-4 r-md bs-sm" style="text-align:center"><div style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)" data-primary="10">250+</div><div class="label">Components</div></div>\n' +
       '  <div slot="col-2" class="b-xs p-4 r-md bs-sm" style="text-align:center"><div style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)" data-primary="10">10yr</div><div class="label">Of OER</div></div>\n' +
@@ -1293,9 +1293,9 @@ const TEMPLATES = [
     html:
       '<grid-plate layout="1">\n' +
       '  <image-gallery slot="col-1" mode="masonry">\n' +
-      '    <media-image source="files/a.jpg" alt="Project A"></media-image>\n' +
-      '    <media-image source="files/b.jpg" alt="Project B"></media-image>\n' +
-      '    <media-image source="files/c.jpg" alt="Project C"></media-image>\n' +
+      '    <media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-04.png" alt="Project A"></media-image>\n' +
+      '    <media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-05.png" alt="Project B"></media-image>\n' +
+      '    <media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-06.jpeg" alt="Project C"></media-image>\n' +
       "  </image-gallery>\n" +
       "</grid-plate>",
     hax: { publish: "stax-page", templateType: "page" },

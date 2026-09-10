@@ -4260,6 +4260,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             title: "Source",
             description: "Image URL.",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
             icon: "link",

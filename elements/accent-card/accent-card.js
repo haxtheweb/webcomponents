@@ -445,6 +445,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             title: "Image",
             description: "Optional image",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
             icon: "editor:insert-photo",

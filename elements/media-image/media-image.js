@@ -545,6 +545,7 @@ class MediaImage extends DDD {
             description:
               "Thumbnail image source. Shows thumbnail but opens full source in modal.",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noCamera: true,
             noScreenRecord: true,

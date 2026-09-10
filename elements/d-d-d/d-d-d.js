@@ -16,7 +16,6 @@ import {
   HAXOptionSampleFactory,
 } from "./lib/DDDStyles.js";
 import { DesignSystemManager } from "./lib/DesignSystemManager.js";
-import { activateDDDPatternStax } from "./lib/DDDPatternStax.js";
 
 /**
  * `d-d-d`
@@ -175,9 +174,39 @@ export { DDD };
 export { DDDFonts };
 
 // Activate the DDD Atomic Design pattern library -> HAX stax rail.
-// Self-activates only when DDD is the active design system and the HAX store
-// is ready; idempotent. See lib/DDDPatternStax.js.
-activateDDDPatternStax();
+// Lazy-loaded: the pattern registry (lib/DDDPatternStax.js and its
+// DDDPatternLibrary dependency) is only imported once the HAX editor is
+// available, so sites that only consume DDD design-system variables never
+// pay that cost. activateDDDPatternStax() still waits for DDD to be the
+// active design system and is idempotent. See lib/DDDPatternStax.js.
+(function activateDDDPatternStaxWhenEditorAvailable() {
+  function load() {
+    import("./lib/DDDPatternStax.js").then(
+      ({ activateDDDPatternStax }) => activateDDDPatternStax(),
+      () => {},
+    );
+  }
+  // HAX editor already assembled — load now.
+  if (
+    globalThis.HaxStore &&
+    typeof globalThis.HaxStore.requestAvailability === "function"
+  ) {
+    let store = null;
+    try {
+      store = globalThis.HaxStore.requestAvailability();
+    } catch (e) {
+      store = null;
+    }
+    if (store && store.ready) {
+      load();
+      return;
+    }
+  }
+  // Otherwise wait for the editor to come online (once).
+  if (globalThis.addEventListener) {
+    globalThis.addEventListener("hax-store-ready", load, { once: true });
+  }
+})();
 
 export class DDDSample extends DDDSuper(LitElement) {
   constructor() {

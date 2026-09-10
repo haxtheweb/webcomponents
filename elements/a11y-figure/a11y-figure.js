@@ -167,6 +167,7 @@ class A11yFigure extends A11yDetails {
             property: "imgSrc",
             title: "Image",
             inputMethod: "haxupload",
+            fileActions: true,
             noScreenRecord: true,
             noVoiceRecord: true,
           },

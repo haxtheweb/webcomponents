@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": {
+    "file": {
+      "path": "files/demo-upload.jpg",
+      "fullUrl": "/sites/scyihaprogramming/files/demo-upload.jpg",
+      "url": "files/demo-upload.jpg",
+      "type": "image/jpeg",
+      "name": "demo-upload.jpg",
+      "size": 482000,
+      "uuid": "a1b2c3d4-0099-4aaa-8bbb-000000000099",
+      "width": 2048,
+      "height": 1536,
+      "dateCreated": 1700000000
+    }
+  }
+}

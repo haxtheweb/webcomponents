@@ -6,6 +6,7 @@ import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 // #3028: reuse the real hax-file-actions element (field mode) and its preset
 // table as the single source of truth for transforms/compress/scale, instead
 // of duplicating the option list here. The op itself reuses the existing
@@ -61,7 +62,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       size: "Size",
       dimensions: "Dimensions",
       type: "Type",
-      optimizationAvailable: "Optimization available",
       done: "done",
       noFileUuid: "File reference unavailable; re-upload to enable actions.",
       fileOpsUnavailable: "File operations are not available for this site.",
@@ -98,9 +98,12 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       /**
        * #3028: opt-in flag on a haxupload/fileupload schema field. When true,
        * the field surfaces an Image Info panel (size / dimensions / mimetype)
-       * with advisory (!) flags plus a collapsed Image Actions area offering
-       * in-place transform/compress/scale run via @site/updateFileByUuid.
-       * Default false so nothing changes for existing schemas.
+       * with actionable compress/resize icons plus a collapsed Image Actions
+       * area offering in-place transform/compress/scale run via
+       * @site/updateFileByUuid. Stats + actions hydrate from the field's
+       * current value (via @site/listFiles) so they appear for an already-set
+       * source, not only after a fresh upload. Default false so nothing
+       * changes for existing schemas.
        */
       fileActions: {
         type: Boolean,
@@ -140,24 +143,26 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           padding: var(--ddd-spacing-1) 0;
         }
         .file-info-grid dt {
-          color: var(--ddd-theme-default-slateGray);
           font-weight: var(--ddd-font-weight-medium);
         }
         .file-info-grid dd {
           margin: 0;
-          color: var(--ddd-theme-default-coalyGray);
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
         }
-        .opt-flag {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
+        .info-action-btn {
+          --simple-icon-button-background-color: var(--ddd-theme-default-skyBlue);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm);
+          --simple-icon-button-padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          --simple-icon-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-white);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-bold);
-          color: var(--ddd-theme-default-warning, #b8860b);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1;
+          gap: var(--ddd-spacing-1);
         }
         .rec-chips {
           display: flex;
@@ -683,33 +688,35 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   get _fileActionsTemplate() {
     if (!this.fileActions) return html``;
     const f = this.__lastUploadedFile;
-    const recs = this.__fileRecs || [];
-    const hasUploaded = !!(f && f.uuid);
     const isImage = !!(f && this._isImageMime(f.type));
-    if (!hasUploaded || !isImage) return html``;
-    const hasCompressRec = recs.some((r) => r.kind === "compress");
-    const hasResizeRec = recs.some((r) => r.kind === "scale");
-    const showOptFlag = hasCompressRec || hasResizeRec;
+    if (!f || !isImage) return html``;
+    const recs = this.__fileRecs || [];
+    const compressRec = recs.find((r) => r.kind === "compress");
+    const resizeRec = recs.find((r) => r.kind === "scale");
+    const hasUuid = !!f.uuid;
     return html`
       <div class="file-actions-wrap">
         <a11y-collapse
           class="file-info-collapse"
           heading-button
-          heading="${this.t.imageInfo}"
+          accordion
         >
+          <span slot="heading">${this.t.imageInfo}</span>
           <dl class="file-info-grid">
             <dt>${this.t.created}</dt>
             <dd>${this._fmtDate(f.dateCreated)}</dd>
             <dt>${this.t.size}</dt>
             <dd>
               ${this._fmtBytes(f.size)}
-              ${showOptFlag
-                ? html`<span
-                    class="opt-flag"
-                    role="img"
-                    aria-label="${this.t.optimizationAvailable}"
-                    title="${this.t.optimizationAvailable}"
-                    >(!)</span
+              ${compressRec
+                ? html`<simple-icon-button-lite
+                    class="info-action-btn"
+                    icon="icons:compress"
+                    label="${compressRec.label}"
+                    title="${compressRec.label}"
+                    ?disabled="${this.__fileActionsBusy}"
+                    @click="${() => this._runFileRec(compressRec)}"
+                    >90</simple-icon-button-lite
                   >`
                 : html``}
             </dd>
@@ -718,46 +725,32 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
               ${f.width && f.height
                 ? f.width + " \u00d7 " + f.height
                 : "\u2014"}
+              ${resizeRec
+                ? html`<simple-icon-button-lite
+                    class="info-action-btn"
+                    icon="image:transform"
+                    label="${resizeRec.label}"
+                    title="${resizeRec.label}"
+                    ?disabled="${this.__fileActionsBusy}"
+                    @click="${() => this._runFileRec(resizeRec)}"
+                  ></simple-icon-button-lite>`
+                : html``}
             </dd>
             <dt>${this.t.type}</dt>
             <dd>${f.type || "\u2014"}</dd>
           </dl>
-        </a11y-collapse>
-        <a11y-collapse
-          class="file-actions-collapse"
-          heading-button
-          heading="${this.t.imageActions}"
-        >
-          ${recs.length > 0
-            ? html`<div
-                class="rec-chips"
-                role="group"
-                aria-label="${this.t.imageRecommendations}"
-              >
-                ${recs.map(
-                  (rec) => html`
-                    <button
-                      class="rec-chip"
-                      ?disabled="${this.__fileActionsBusy}"
-                      aria-label="${rec.label}"
-                      @click="${() => this._runFileRec(rec)}"
-                    >
-                      ${rec.label}
-                    </button>
-                  `,
-                )}
+          ${hasUuid
+            ? html`<div class="rec-more">
+                <hax-file-actions
+                  mode="field"
+                  selected-count="1"
+                  image-count="1"
+                  ?can-scale="${!this.__fileActionsBusy}"
+                  ?busy="${this.__fileActionsBusy}"
+                  @hax-file-action="${this._onInlineFileAction}"
+                ></hax-file-actions>
               </div>`
             : html``}
-          <div class="rec-more">
-            <hax-file-actions
-              mode="field"
-              selected-count="1"
-              image-count="1"
-              ?can-scale="${!this.__fileActionsBusy}"
-              ?busy="${this.__fileActionsBusy}"
-              @hax-file-action="${this._onInlineFileAction}"
-            ></hax-file-actions>
-          </div>
           <div
             class="rec-status ${this.__fileActionsError ? "error" : ""}"
             aria-live="polite"
@@ -770,18 +763,221 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
   /**
    * Preserve SimpleFieldsUpload.updated (value-changed notify + delayed focus)
-   * and recompute recommendations when the value or opt-in flag changes.
+   * and hydrate stats + uuid from the current field value so the info panel
+   * and actions appear for an already-set source, not only after a fresh
+   * upload. Recompute recommendations when the value or opt-in flag changes.
    */
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
+    if (!this.fileActions) return;
+    let hydrate = false;
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value" || propName === "fileActions") hydrate = true;
+    });
+    if (hydrate) this._maybeHydrateFromValue();
+  }
+  /**
+   * If the field has a value that we haven't yet hydrated from, resolve the
+   * file record (uuid/size/mimetype/dateCreated) via @site/listFiles and read
+   * pixel dimensions client-side. If the value is cleared, drop the cache.
+   * Skips re-hydration when the value already matches the cached source
+   * (e.g. a cache-busting ?t= query appended after an in-place op).
+   */
+  _maybeHydrateFromValue() {
+    const v = typeof this.value === "string" ? this.value : "";
+    const norm = this._normalizeSource(v);
+    if (!v) {
+      if (this.__lastUploadedFile) {
+        this.__lastUploadedFile = null;
+        this.__fileRecs = [];
+      }
+      return;
+    }
+    const cur = this.__lastUploadedFile
+      ? this._normalizeSource(this.__lastUploadedFile.source)
+      : "";
+    if (norm === cur) {
+      this._recomputeRecs();
+      return;
+    }
+    this._hydrateFromFileValue(v);
+  }
+  async _hydrateFromFileValue(value) {
+    const norm = this._normalizeSource(value);
+    if (!norm) return;
+    // For absolute same-origin URLs, drill to the files/... portion so the
+    // record matching still aligns with the relative path the API returns.
+    const filesPath = this._filesPathFromValue(norm);
+    // The @site/listFiles `filename` filter matches against the file's
+    // relativePath (no "files/" prefix) and entryName, so strip the prefix
+    // for the filter or no results come back. Keep the prefixed `norm` for
+    // matching the returned record's url/path (which DO carry "files/").
+    const filenameFilter = filesPath.replace(/^files\//, "");
+    // Only local site files (relative files/... paths or same-origin URLs
+    // containing files/) can be operated on via @site/updateFileByUuid, so
+    // only those warrant a listFiles UUID lookup. Remote URLs skip straight
+    // to the client-side fallback (dims only, no uuid -> no actions).
+    const isLocal = this._isLocalFileValue(norm);
+    // Race guard: only the latest hydration call wins.
+    const token = (this.__hydrateToken =
+      (this.__hydrateToken || 0) + 1);
+    const ready = isLocal
+      ? await this._waitForSiteOp("@site/listFiles")
+      : false;
+    if (token !== this.__hydrateToken) return;
+    if (
+      ready &&
+      MicroFrontendRegistry &&
+      typeof MicroFrontendRegistry.call === "function"
+    ) {
+      try {
+        const d = await MicroFrontendRegistry.call(
+          "@site/listFiles",
+          { filename: filenameFilter, "page.limit": 500 },
+          null,
+          this,
+        );
+        if (token !== this.__hydrateToken) return;
+        if (
+          d &&
+          d.status === 200 &&
+          d.data &&
+          Array.isArray(d.data.files)
+        ) {
+          const rec = d.data.files.find(
+            (r) =>
+              r &&
+              (r.url === filesPath ||
+                r.path === filesPath ||
+                r.url === norm ||
+                r.path === norm ||
+                r.url === value ||
+                r.path === value),
+          );
+          if (rec) {
+            this.__lastUploadedFile = {
+              uuid: rec.uuid || "",
+              width: 0,
+              height: 0,
+              size: rec.size || 0,
+              type: rec.mimetype || "",
+              dateCreated: rec.dateCreated || 0,
+              source: rec.url || rec.path || norm,
+              fullUrl: rec.fullUrl || "",
+            };
+            this._recomputeRecs();
+            this._readDimsIntoCache(this.__lastUploadedFile, token);
+            return;
+          }
+        }
+      } catch (e) {}
+    }
+    // Fallback: client-side stats only (no uuid -> actions disabled with a
+    // noFileUuid toast). Dims via Image(); size+mimetype via same-origin fetch.
+    const mime = this._mimeFromUrl(norm);
+    this.__lastUploadedFile = {
+      uuid: "",
+      width: 0,
+      height: 0,
+      size: 0,
+      type: mime,
+      dateCreated: 0,
+      source: norm,
+      fullUrl: value,
+    };
+    this._recomputeRecs();
+    this._readDimsIntoCache(this.__lastUploadedFile, token);
+    try {
+      const resp = await fetch(value);
+      if (token !== this.__hydrateToken) return;
+      if (resp && resp.ok) {
+        const blob = await resp.blob();
+        if (token !== this.__hydrateToken) return;
+        if (
+          this.__lastUploadedFile &&
+          this.__lastUploadedFile.source === norm
+        ) {
+          this.__lastUploadedFile.size = (blob && blob.size) || 0;
+          if (!this.__lastUploadedFile.type && blob && blob.type) {
+            this.__lastUploadedFile.type = blob.type;
+          }
+          this._recomputeRecs();
+        }
+      }
+    } catch (e) {}
+  }
+  /**
+   * Read pixel dimensions from the cached file's fullUrl (or source) and merge
+   * them back if the hydration token is still current (no newer value won).
+   */
+  _readDimsIntoCache(f, token) {
+    const url = (f && (f.fullUrl || f.source)) || "";
+    if (!url) return;
+    this._readImageDimsFromUrl(url).then((dims) => {
       if (
-        (propName === "value" || propName === "fileActions") &&
-        this.fileActions
+        token === this.__hydrateToken &&
+        this.__lastUploadedFile &&
+        this.__lastUploadedFile.source === f.source
       ) {
+        this.__lastUploadedFile.width = dims.width;
+        this.__lastUploadedFile.height = dims.height;
         this._recomputeRecs();
       }
     });
+  }
+  /**
+   * Strip a cache-busting ?t=<ts> query so a post-op source still matches the
+   * cached file's clean relative path.
+   */
+  _normalizeSource(v) {
+    return String(v || "")
+      .replace(/[?&]t=\d+/, "")
+      .replace(/[?&]$/, "");
+  }
+  _mimeFromUrl(url) {
+    const ext = String(url || "")
+      .split("?")[0]
+      .split(".")
+      .pop()
+      .toLowerCase();
+    const map = {
+      jpg: "image/jpeg",
+      jpeg: "image/jpeg",
+      png: "image/png",
+      gif: "image/gif",
+      webp: "image/webp",
+      svg: "image/svg+xml",
+    };
+    return map[ext] || "";
+  }
+  /**
+   * Extract the leading "files/..." portion of a value so an absolute
+   * same-origin URL (e.g. https://host/sites/x/files/a.jpg) still resolves to
+   * its file record via the relative-path listFiles filter. Returns the input
+   * unchanged when no files/ segment is present.
+   */
+  _filesPathFromValue(v) {
+    const s = String(v || "");
+    const i = s.indexOf("files/");
+    if (i === -1) return s;
+    return s.substring(i);
+  }
+  /**
+   * True when the value references a local site file: a relative path, or a
+   * same-origin absolute URL containing a files/ segment. Remote (cross-origin)
+   * URLs return false so we skip the listFiles UUID lookup for them.
+   */
+  _isLocalFileValue(v) {
+    const s = String(v || "");
+    if (!s) return false;
+    if (s.indexOf("http://") !== 0 && s.indexOf("https://") !== 0) return true;
+    if (s.indexOf("files/") === -1) return false;
+    try {
+      const u = new URL(s, globalThis.location.href);
+      return u.origin === globalThis.location.origin;
+    } catch (e) {
+      return false;
+    }
   }
   /**
    * Capture an uploaded image's metadata from the v1 createFile response so
@@ -1033,21 +1229,72 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     return false;
   }
   /**
-   * Reload the field source with a cache-busting query so the live preview
-   * (media-image) re-renders the transformed image immediately. Mirrors the
-   * admin dialog cacheBustToken / _previewUrl pattern.
+   * After an in-place file op, force the live preview to re-render the
+   * transformed image WITHOUT writing the cache-busting ?t= query into the
+   * saved content.
+   *
+   * this.value is what the hax-tray persists into page content, so it must
+   * stay clean (no ?t=). For in-place ops the clean path is unchanged, so
+   * setting this.value is a no-op and no value-changed fires — the preview
+   * would keep showing the stale HTTP-cached bytes. The browser's HTTP cache
+   * for the clean URL can't be invalidated from JS, so the only way to force
+   * a re-fetch is to change the URL.
+   *
+   * Solution: poke the <img> elements living in the active node's SHADOW DOM
+   * directly with a cache-busted src (?t=<ts>) and leave it there (no revert).
+   * Shadow DOM <img> srcs are NOT serialized into saved page content — HAX
+   * serializes the light DOM, which carries the clean `source` property —
+   * so ?t= never reaches saved content. When the op changed the path (e.g.
+   * convert-jpg), setting this.value to the new clean path fires value-changed
+   * and the element re-renders with the new URL (fresh, no cache issue), so no
+   * poke is needed.
    */
   _reloadSourceCacheBust() {
     const urlField = this.shadowRoot.querySelector("#url");
-    let v = urlField ? urlField.value : "";
-    if (!v && typeof this.value === "string") v = this.value;
-    if (!v) return;
-    v = v.replace(/[?&]t=\d+/, "");
-    v = v.replace(/[?&]$/, "");
-    const join = v.indexOf("?") === -1 ? "?" : "&";
-    v = v + join + "t=" + Date.now();
-    if (urlField) urlField.value = v;
-    this.value = v;
+    const f = this.__lastUploadedFile;
+    let clean = f && f.source ? this._normalizeSource(f.source) : "";
+    if (!clean) {
+      let v = urlField ? urlField.value : "";
+      if (!v && typeof this.value === "string") v = this.value;
+      clean = this._normalizeSource(v);
+    }
+    if (!clean) return;
+    const prevClean = this._normalizeSource(this.value || "");
+    // Always keep this.value + #url clean so saved content never carries ?t=.
+    if (urlField) urlField.value = clean;
+    this.value = clean;
+    // Path-changing ops (e.g. convert-jpg): the new clean path triggers a
+    // value-changed → tray writes new source → element re-renders with the
+    // new URL (fresh, no cache issue). No shadow-DOM poke needed.
+    if (prevClean !== clean) return;
+    // In-place ops (compress / scale / sepia / b&w / rotate): path unchanged,
+    // so this.value doesn't change and no re-render fires. Poke every <img>
+    // in the active node's shadow DOM tree with a cache-busted src so the
+    // browser re-fetches the fresh bytes. The ?t= stays on the shadow DOM
+    // img only — light DOM serialization reads the clean source property.
+    const node = HAXStore && HAXStore.activeNode ? HAXStore.activeNode : null;
+    if (!node || !node.shadowRoot) return;
+    const ts = Date.now();
+    const join = clean.indexOf("?") === -1 ? "?" : "&";
+    const busted = clean + join + "t=" + ts;
+    this._pokeShadowImgs(node.shadowRoot, busted);
+  }
+  /**
+   * Recursively set src on every <img> in a shadow root tree, piercing
+   * nested shadow roots (e.g. media-image → media-image-image → <img>).
+   */
+  _pokeShadowImgs(root, src) {
+    if (!root || typeof root.querySelectorAll !== "function") return;
+    const imgs = root.querySelectorAll("img");
+    for (let i = 0; i < imgs.length; i++) {
+      imgs[i].src = src;
+    }
+    const all = root.querySelectorAll("*");
+    for (let i = 0; i < all.length; i++) {
+      if (all[i] && all[i].shadowRoot) {
+        this._pokeShadowImgs(all[i].shadowRoot, src);
+      }
+    }
   }
   /**
    * Format bytes for the Image Info panel (e.g. 312 KB, 1.4 MB).

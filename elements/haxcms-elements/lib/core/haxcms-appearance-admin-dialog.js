@@ -681,6 +681,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             title: "Image",
             description: "Image applied to themes that implement one",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
             noCamera: true,
