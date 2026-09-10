@@ -24,6 +24,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             border: none;
             background-color: transparent;
           }
+          optgroup,
           option {
             border-radius: 0;
             background-color: var(
@@ -43,6 +44,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 var(--ddd-theme-default-limestoneLight, #e4e5e7)
               )
             );
+          }
+          optgroup {
+            opacity: .8;
           }
           option[selected] {
             background-color: var(

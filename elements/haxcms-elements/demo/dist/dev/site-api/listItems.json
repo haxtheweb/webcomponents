@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "data": {
+    "count": 5,
+    "total": 5,
+    "page": { "limit": 25, "offset": 0, "total": 5 },
+    "items": [
+      { "id": "item-1", "title": "Welcome to the Demo", "slug": "welcome", "parent": null, "indent": 0, "order": 0, "location": "pages/welcome/index.html", "description": "Introductory page for the demo site", "metadata": {}, "region": null, "tags": ["intro", "demo"], "published": true, "links": { "self": "/x/api/v1/items/item-1" } },
+      { "id": "item-2", "title": "Getting Started", "slug": "getting-started", "parent": "item-1", "indent": 1, "order": 1, "location": "pages/getting-started/index.html", "description": "First steps with the platform", "metadata": {}, "region": null, "tags": ["tutorial"], "published": true, "links": { "self": "/x/api/v1/items/item-2" } },
+      { "id": "item-3", "title": "Advanced Topics", "slug": "advanced-topics", "parent": "item-1", "indent": 1, "order": 2, "location": "pages/advanced-topics/index.html", "description": "Deep-dive material", "metadata": {}, "region": null, "tags": ["advanced"], "published": true, "links": { "self": "/x/api/v1/items/item-3" } },
+      { "id": "item-4", "title": "Resources", "slug": "resources", "parent": null, "indent": 0, "order": 3, "location": "pages/resources/index.html", "description": "Helpful links and downloads", "metadata": {}, "region": "sidebar", "tags": ["resources"], "published": true, "links": { "self": "/x/api/v1/items/item-4" } },
+      { "id": "item-5", "title": "About", "slug": "about", "parent": null, "indent": 0, "order": 4, "location": "pages/about/index.html", "description": "About this demo", "metadata": {}, "region": null, "tags": ["about"], "published": true, "links": { "self": "/x/api/v1/items/item-5" } }
+    ],
+    "links": { "self": "/x/api/v1/items" }
+  }
+}

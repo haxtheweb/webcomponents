@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": {
+    "count": 2,
+    "total": 2,
+    "page": { "limit": 25, "offset": 0, "total": 2 },
+    "views": [
+      { "id": "view-all-items", "title": "All Items", "description": "Every outline item in the site", "query": { "entity": "item" }, "display": { "renderer": "collection" }, "links": { "self": "/x/api/v1/views/view-all-items" } },
+      { "id": "view-image-gallery", "title": "Image Gallery", "description": "All image files as a gallery", "query": { "entity": "file", "filter.type": "image" }, "display": { "renderer": "grid" }, "links": { "self": "/x/api/v1/views/view-image-gallery" } }
+    ],
+    "links": { "self": "/x/api/v1/views" }
+  }
+}

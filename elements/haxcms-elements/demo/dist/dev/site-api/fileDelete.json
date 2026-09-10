@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "data": {
+    "ok": true,
+    "message": "File deleted",
+    "deleted": true
+  }
+}

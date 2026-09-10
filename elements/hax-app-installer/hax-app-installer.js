@@ -148,6 +148,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     this._confettiBurst = false;
     this._confirmPasswordInput = "";
     this._passwordMismatch = false;
+    this._serverErrors = [];
     this._preparePermissionCommand = "";
     this._preparePermissionHint = "";
     this.t = this.t || {};
@@ -181,7 +182,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       adminUsername: "Admin username",
       adminPassword: "Admin password",
       passwordHelp:
-        "Leave blank for an auto-generated secure password, or enter 10+ characters with at least one letter and one number.",
+        "Enter a password that meets all the requirements below, then confirm it to enable installation.",
       confirmPassword: "Confirm password",
       passwordsDoNotMatch: "Passwords do not match.",
       passwordsMatch: "Passwords match.",
@@ -190,6 +191,12 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       good: "Good",
       strong: "Strong",
       passwordStrength: "Password strength",
+      passwordRequirements: "Password requirements",
+      requirementLength: "At least 8 characters",
+      requirementUppercase: "One uppercase letter",
+      requirementLowercase: "One lowercase letter",
+      requirementNumber: "One number",
+      requirementSymbol: "One symbol",
       saveAndInstall: "Save and install",
       startHaxcms: "Start HAXcms",
       installationComplete: "Installation complete! Here are your credentials.",
@@ -1103,14 +1110,135 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           margin-top: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .confirm-feedback simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          flex-shrink: 0;
         }
 
         .confirm-feedback.match {
           color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
         }
 
+        .confirm-feedback.match simple-icon-lite {
+          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+        }
+
         .confirm-feedback.mismatch {
           color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+        }
+
+        .confirm-feedback.mismatch simple-icon-lite {
+          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+        }
+
+        .password-criteria {
+          margin-top: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          background: light-dark(
+            var(--ddd-accent-2),
+            var(--ddd-primary-5)
+          );
+          border-radius: var(--ddd-radius-sm);
+        }
+
+        .password-criteria-title {
+          font-size: var(--ddd-font-size-6xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-primary-3),
+            var(--ddd-accent-6)
+          );
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .criteria-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .criteria-item {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-6xs);
+          color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+        }
+
+        .criteria-item simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          flex-shrink: 0;
+        }
+
+        .criteria-item.met simple-icon-lite {
+          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+        }
+
+        .criteria-item.unmet simple-icon-lite {
+          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+        }
+
+        .btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .btn-primary:disabled,
+        .btn-primary:disabled:hover {
+          background: var(--ddd-primary-8);
+          box-shadow: none;
+        }
+
+        .btn-secondary:disabled,
+        .btn-secondary:disabled:hover {
+          background: light-dark(
+            var(--ddd-accent-2),
+            var(--ddd-primary-5)
+          );
+          box-shadow: none;
+        }
+
+        .server-error-banner {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-3);
+          background: light-dark(
+            var(--ddd-theme-default-errorLight),
+            var(--ddd-primary-22)
+          );
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-4);
+          margin-bottom: var(--ddd-spacing-6);
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-140);
+        }
+
+        .server-error-banner simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          flex-shrink: 0;
+        }
+
+        .server-error-banner ul {
+          margin: 0;
+          padding-left: var(--ddd-spacing-4);
         }
 
         .confetti {
@@ -1447,12 +1575,28 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       return;
     }
     this.error = "";
-    await this.advanceStep({
+    const data = await this.advanceStep({
       toStep: 4,
       language: this.language,
       username: this._usernameInput,
       password: this._passwordInput,
     });
+    // The backend rejects a password that fails the minimum policy
+    // (8+ chars, uppercase + lowercase + number + symbol) by keeping the
+    // wizard on step 3 with hasErrors + errors. The disabled submit gate
+    // above normally prevents this, but surface any server errors inline
+    // as defense-in-depth (e.g. direct-install token path).
+    if (
+      data &&
+      data.hasErrors &&
+      Array.isArray(data.errors) &&
+      data.errors.length
+    ) {
+      this._serverErrors = data.errors;
+    } else {
+      this._serverErrors = [];
+    }
+    this.requestUpdate();
   }
 
   /**
@@ -1471,6 +1615,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   _handleUsernameChange(e) {
     const target = e.target;
     this._usernameInput = target.value;
+    this._serverErrors = [];
   }
 
   /**
@@ -1480,12 +1625,17 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   _handlePasswordChange(e) {
     const target = e.target;
     this._passwordInput = target.value;
+    this._serverErrors = [];
     // Recompute mismatch state as the user types the primary password.
     if (this._confirmPasswordInput !== "") {
       this._passwordMismatch = this._confirmPasswordInput !== target.value;
     } else {
       this._passwordMismatch = false;
     }
+    // _passwordInput is internal state (not a reactive property), so the
+    // criteria checklist, strength meter, and submit-disabled state won't
+    // re-render on their own. Drive an update explicitly.
+    this.requestUpdate();
   }
 
   /**
@@ -1495,14 +1645,52 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   _handleConfirmPasswordChange(e) {
     const target = e.target;
     this._confirmPasswordInput = target.value;
+    this._serverErrors = [];
     this._passwordMismatch =
       target.value !== "" && target.value !== this._passwordInput;
+    // Drive an update so the match indicator and submit-disabled state
+    // re-render as the user types the confirmation.
+    this.requestUpdate();
+  }
+
+  /**
+   * Compute per-criterion booleans for the password checklist. Mirrors the
+   * backend haxcmsInstallerPasswordMeetsPolicy so the front-end only enables
+   * submit when the backend will accept the password.
+   * @param {String} password
+   * @returns {Object} { length, uppercase, lowercase, number, symbol }
+   */
+  _computePasswordCriteria(password) {
+    const pwd = password || "";
+    return {
+      length: pwd.length >= 8,
+      uppercase: /[A-Z]/.test(pwd),
+      lowercase: /[a-z]/.test(pwd),
+      number: /[0-9]/.test(pwd),
+      symbol: /[^a-zA-Z0-9]/.test(pwd),
+    };
+  }
+
+  /**
+   * Whether all password criteria are met AND the confirmation matches.
+   * Used to gate the "Save and install" button on step 3 so the wizard
+   * never submits a password the backend would reject.
+   * @returns {Boolean}
+   */
+  _step3CanSubmit() {
+    const c = this._computePasswordCriteria(this._passwordInput);
+    const criteriaMet =
+      c.length && c.uppercase && c.lowercase && c.number && c.symbol;
+    const confirmed =
+      this._confirmPasswordInput !== "" &&
+      this._confirmPasswordInput === this._passwordInput;
+    return !!(criteriaMet && confirmed);
   }
 
   /**
    * Compute an interactive password strength score (0-4) and a label key.
-   * Mirrors the backend policy (10+ chars, letter + number) as the floor
-   * for "fair", then rewards length, mixed case, and special characters.
+   * Aligned to the policy: 0 = empty, 1 = weak (missing criteria),
+   * 2 = fair (meets all criteria, 8+), 3 = good (12+), 4 = strong (16+).
    * @param {String} password
    * @returns {Object} { score: 0|1|2|3|4, labelKey: string }
    */
@@ -1510,35 +1698,20 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     if (!password || password === "") {
       return { score: 0, labelKey: "" };
     }
-    let score = 0;
-    const hasLetter = /[a-zA-Z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasLower = /[a-z]/.test(password);
-    const hasUpper = /[A-Z]/.test(password);
-    const hasSpecial = /[^a-zA-Z0-9]/.test(password);
-    if (password.length >= 10) {
-      score++;
+    const c = this._computePasswordCriteria(password);
+    const allMet =
+      c.length && c.uppercase && c.lowercase && c.number && c.symbol;
+    if (!allMet) {
+      return { score: 1, labelKey: "weak" };
     }
-    if (hasLetter && hasNumber) {
-      score++;
-    }
-    if (password.length >= 14) {
-      score++;
-    }
-    if ((hasLower && hasUpper) || hasSpecial) {
-      score++;
-    }
-    // cap at 4
-    if (score > 4) {
+    let score = 2;
+    let labelKey = "fair";
+    if (password.length >= 16) {
       score = 4;
-    }
-    let labelKey = "weak";
-    if (score >= 4) {
       labelKey = "strong";
-    } else if (score === 3) {
+    } else if (password.length >= 12) {
+      score = 3;
       labelKey = "good";
-    } else if (score === 2) {
-      labelKey = "fair";
     }
     return { score, labelKey };
   }
@@ -1890,9 +2063,33 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
 
   renderStep3() {
     const strength = this._computePasswordStrength(this._passwordInput);
+    const criteria = this._computePasswordCriteria(this._passwordInput);
+    const canSubmit = this._step3CanSubmit();
+    const confirmed =
+      this._confirmPasswordInput !== "" &&
+      this._confirmPasswordInput === this._passwordInput;
+    const criteriaItems = [
+      { met: criteria.length, label: this.t.requirementLength },
+      { met: criteria.uppercase, label: this.t.requirementUppercase },
+      { met: criteria.lowercase, label: this.t.requirementLowercase },
+      { met: criteria.number, label: this.t.requirementNumber },
+      { met: criteria.symbol, label: this.t.requirementSymbol },
+    ];
     return html`
       <h2>${this.t.configureSystem}</h2>
       <p class="description">${this.t.configureSystemDescription}</p>
+      ${this._serverErrors && this._serverErrors.length
+        ? html`
+            <div class="server-error-banner" role="alert">
+              <simple-icon-lite icon="icons:error"></simple-icon-lite>
+              <ul>
+                ${this._serverErrors.map(
+                  (msg) => html`<li>${msg}</li>`,
+                )}
+              </ul>
+            </div>
+          `
+        : ""}
       <div class="field-group">
         <label for="username-input">${this.t.adminUsername}</label>
         <input
@@ -1928,6 +2125,25 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
               </div>
             `
           : ""}
+        <div
+          class="password-criteria"
+          role="group"
+          aria-label="${this.t.passwordRequirements}"
+        >
+          <div class="password-criteria-title">${this.t.passwordRequirements}</div>
+          <ul class="criteria-list">
+            ${criteriaItems.map(
+              (item) => html`
+                <li class="criteria-item ${item.met ? "met" : "unmet"}">
+                  <simple-icon-lite
+                    icon="${item.met ? "icons:check" : "icons:close"}"
+                  ></simple-icon-lite>
+                  <span>${item.label}</span>
+                </li>
+              `,
+            )}
+          </ul>
+        </div>
       </div>
       <div class="field-group">
         <label for="confirm-password-input">${this.t.confirmPassword}</label>
@@ -1941,13 +2157,14 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         ${this._confirmPasswordInput !== ""
           ? html`
               <div
-                class="confirm-feedback ${this._passwordMismatch
-                  ? "mismatch"
-                  : "match"}"
+                class="confirm-feedback ${confirmed ? "match" : "mismatch"}"
               >
-                ${this._passwordMismatch
-                  ? this.t.passwordsDoNotMatch
-                  : this.t.passwordsMatch}
+                <simple-icon-lite
+                  icon="${confirmed ? "icons:check" : "icons:close"}"
+                ></simple-icon-lite>
+                ${confirmed
+                  ? this.t.passwordsMatch
+                  : this.t.passwordsDoNotMatch}
               </div>
             `
           : ""}
@@ -1963,7 +2180,11 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           ></simple-icon-lite>
           ${this.t.back}
         </button>
-        <button class="btn btn-primary" @click="${this._handleStep3Submit}">
+        <button
+          class="btn btn-primary"
+          @click="${this._handleStep3Submit}"
+          ?disabled="${!canSubmit}"
+        >
           ${this.t.saveAndInstall}
         </button>
       </div>

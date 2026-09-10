@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "data": {
+    "count": 6,
+    "total": 6,
+    "page": { "limit": 25, "offset": 0, "total": 6 },
+    "tags": [
+      { "tag": "intro", "count": 2, "items": ["item-1", "item-2"] },
+      { "tag": "demo", "count": 1, "items": ["item-1"] },
+      { "tag": "tutorial", "count": 1, "items": ["item-2"] },
+      { "tag": "advanced", "count": 1, "items": ["item-3"] },
+      { "tag": "resources", "count": 1, "items": ["item-4"] },
+      { "tag": "about", "count": 1, "items": ["item-5"] }
+    ],
+    "links": { "self": "/x/api/v1/tags" }
+  }
+}

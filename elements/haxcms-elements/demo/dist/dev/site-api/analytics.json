@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "data": {
+    "mode": "basic",
+    "xapi": { "enabled": false, "notes": ["xAPI reporting is planned for a future release."] },
+    "notes": ["Analytics capabilities reported by the demo fixture."],
+    "links": { "self": "/x/api/v1/analytics" }
+  }
+}

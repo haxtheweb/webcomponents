@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "data": {
+    "count": 3,
+    "total": 3,
+    "page": { "limit": 25, "offset": 0, "total": 3 },
+    "revisions": [
+      { "revisionNumber": 3, "hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4", "shortHash": "a1b2c3d", "author": "Demo Author", "authorEmail": "demo@example.com", "timestamp": 1701900000, "date": "2023-12-06T22:00:00.000Z", "message": "Update welcome page", "content": "<p>Welcome to the demo site.</p>", "itemMetadata": null, "itemMetadataRestored": false },
+      { "revisionNumber": 2, "hash": "b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5", "shortHash": "b2c3d4e", "author": "Demo Author", "authorEmail": "demo@example.com", "timestamp": 1701800000, "date": "2023-12-05T18:13:20.000Z", "message": "Add getting started section", "content": "<p>Follow these steps to get started.</p>", "itemMetadata": null, "itemMetadataRestored": false },
+      { "revisionNumber": 1, "hash": "c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f6", "shortHash": "c3d4e5f", "author": "Demo Author", "authorEmail": "demo@example.com", "timestamp": 1701700000, "date": "2023-12-04T14:26:40.000Z", "message": "Initial import", "content": "<p>Initial content.</p>", "itemMetadata": null, "itemMetadataRestored": false }
+    ],
+    "links": { "self": "/x/api/v1/items/item-1/revisions" }
+  }
+}

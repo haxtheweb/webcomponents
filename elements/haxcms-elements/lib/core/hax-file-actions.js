@@ -3,11 +3,11 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 
 const SCALE_PRESETS = {
-  xs: { width: 200, height: 150, label: "ddd-xs  200\u00d7150" },
-  sm: { width: 320, height: 240, label: "ddd-sm  320\u00d7240" },
-  md: { width: 400, height: 300, label: "ddd-md  400\u00d7300" },
-  lg: { width: 800, height: 600, label: "ddd-lg  800\u00d7600" },
-  xl: { width: 1200, height: 900, label: "ddd-xl  1200\u00d7900" },
+  xs: { width: 200, height: 150, label: "200\u00d7150" },
+  sm: { width: 320, height: 240, label: "320\u00d7240" },
+  md: { width: 400, height: 300, label: "400\u00d7300" },
+  lg: { width: 800, height: 600, label: "800\u00d7600" },
+  xl: { width: 1200, height: 900, label: "1200\u00d7900" },
 };
 
 const COMPRESS_PRESETS = {
@@ -58,17 +58,16 @@ class HAXFileActions extends DDD {
         }
         .acts {
           display: flex;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-4);
           align-items: center;
           flex-wrap: wrap;
         }
         .count {
-          font-size: var(--ddd-font-size-5xs);
-          color: var(--ddd-theme-default-slateGray);
+          font-size: var(--ddd-font-size-xs);
           white-space: nowrap;
         }
         .acts simple-fields-field {
-          --simple-fields-font-size: var(--ddd-font-size-5xs);
+          --simple-fields-font-size: var(--ddd-font-size-xs);
           --simple-fields-select-max-width: 220px;
           margin: 0;
         }
@@ -88,6 +87,27 @@ class HAXFileActions extends DDD {
    */
   get actionItems() {
     const items = [{ value: "", text: "Choose an action\u2026" }];
+    if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
+      items.push(
+        {
+          group: "Operations",
+          value: "insert:gallery",
+          text: "Insert Gallery",
+        },
+        {
+          group: "Operations",
+          value: "insert:standalone",
+          text: "Insert Image",
+        },
+      );
+    } else {
+      items.push({group: "Operations", value: "insert:standalone", text: "Insert Image" });
+    }
+    items.push(
+      { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
+      { group: "Operations", value: "rename:rename", text: "Rename" },
+      { group: "Operations", value: "delete:delete", text: "Delete" },
+    );
     if (this.canScale) {
       items.push(
         {
@@ -122,27 +142,6 @@ class HAXFileActions extends DDD {
         });
       });
     }
-    if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
-      items.push(
-        {
-          group: "Insert into page",
-          value: "insert:gallery",
-          text: "Insert as gallery",
-        },
-        {
-          group: "Insert into page",
-          value: "insert:standalone",
-          text: "Insert as standalone images",
-        },
-      );
-    } else {
-      items.push({ value: "insert:page", text: "Insert into page" });
-    }
-    items.push(
-      { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
-      { group: "Operations", value: "rename:rename", text: "Rename" },
-      { group: "Operations", value: "delete:delete", text: "Delete" },
-    );
     return items;
   }
 

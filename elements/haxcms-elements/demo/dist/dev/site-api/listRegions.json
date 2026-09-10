@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": {
+    "count": 2,
+    "total": 2,
+    "page": { "limit": 25, "offset": 0, "total": 2 },
+    "regions": [
+      { "name": "main", "count": 4, "links": { "self": "/x/api/v1/regions/main" } },
+      { "name": "sidebar", "count": 1, "links": { "self": "/x/api/v1/regions/sidebar" } }
+    ],
+    "links": { "self": "/x/api/v1/regions" }
+  }
+}

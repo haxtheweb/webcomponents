@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "data": {
+    "count": 5,
+    "total": 5,
+    "page": { "limit": 25, "offset": 0, "total": 5 },
+    "blocks": [
+      { "tag": "media-image", "enabled": true, "usageCount": 12, "used": true, "usedIn": ["item-1", "item-2", "item-4"], "import": "@haxtheweb/media-image/media-image.js", "package": "@haxtheweb/media-image", "haxProperties": { "gizmo": { "title": "Image" } }, "links": { "self": "/x/api/v1/blocks/media-image" } },
+      { "tag": "accent-card", "enabled": true, "usageCount": 5, "used": true, "usedIn": ["item-1", "item-3"], "import": "@haxtheweb/accent-card/accent-card.js", "package": "@haxtheweb/accent-card", "haxProperties": { "gizmo": { "title": "Accent Card" } }, "links": { "self": "/x/api/v1/blocks/accent-card" } },
+      { "tag": "a11y-collapse", "enabled": true, "usageCount": 3, "used": true, "usedIn": ["item-2"], "import": "@haxtheweb/a11y-collapse/a11y-collapse.js", "package": "@haxtheweb/a11y-collapse", "haxProperties": { "gizmo": { "title": "Collapse" } }, "links": { "self": "/x/api/v1/blocks/a11y-collapse" } },
+      { "tag": "video-player", "enabled": true, "usageCount": 2, "used": true, "usedIn": ["item-3"], "import": "@haxtheweb/video-player/video-player.js", "package": "@haxtheweb/video-player", "haxProperties": { "gizmo": { "title": "Video" } }, "links": { "self": "/x/api/v1/blocks/video-player" } },
+      { "tag": "media-playlist", "enabled": true, "usageCount": 1, "used": true, "usedIn": ["item-4"], "import": "@haxtheweb/media-playlist/media-playlist.js", "package": "@haxtheweb/media-playlist", "haxProperties": { "gizmo": { "title": "Playlist" } }, "links": { "self": "/x/api/v1/blocks/media-playlist" } }
+    ],
+    "links": { "self": "/x/api/v1/blocks" }
+  }
+}

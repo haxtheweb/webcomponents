@@ -205,7 +205,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           id="user-menu-dropdown"
           class="user-menu ${this.isOpen ? "open" : ""}"
           role="menu"
-          aria-hidden="${!this.isOpen}"
+          ?inert="${!this.isOpen}"
         >
           <div class="pre-menu" role="group" aria-label="Menu Controls">
             <slot name="pre-menu"></slot>

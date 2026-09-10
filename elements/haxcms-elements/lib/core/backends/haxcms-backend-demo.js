@@ -5,6 +5,7 @@
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
+import { configureHAXCMSDemoSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-demo-site-api-registry.js";
 import { autorun, toJS } from "mobx";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
@@ -58,6 +59,9 @@ class HAXCMSBackendDemo extends LitElement {
       console.warn("System API registry not available in site context", e);
     }
     configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
+    // In demo mode, register @site/* operations against static JSON fixtures
+    // so Files Admin / Views Admin work without a live backend.
+    configureHAXCMSDemoSiteApiRegistry(appSettings);
   }
   /**
    * Detached life cycle

@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "data": {
+    "count": 2,
+    "reports": [
+      { "id": "content-overview", "label": "Content Overview", "icon": "icons:assessment", "title": "Content Overview", "description": "Summary of site content counts and structure", "links": { "self": "/x/api/v1/reports/content-overview" } },
+      { "id": "media-usage", "label": "Media Usage", "icon": "icons:photo-library", "title": "Media Usage", "description": "Report of media files and their usage", "links": { "self": "/x/api/v1/reports/media-usage" } }
+    ],
+    "links": { "self": "/x/api/v1/reports" }
+  }
+}

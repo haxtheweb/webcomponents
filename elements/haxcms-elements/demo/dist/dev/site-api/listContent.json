@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "data": {
+    "mode": "bundle",
+    "count": 4,
+    "total": 4,
+    "page": { "limit": 25, "offset": 0, "total": 4 },
+    "content": [
+      { "id": "item-1", "slug": "welcome", "title": "Welcome to the Demo", "format": "text/html", "mode": "bundle", "body": "<p>Welcome to the demo site. This page introduces the platform and its capabilities.</p>", "links": { "self": "/x/api/v1/content/item-1" } },
+      { "id": "item-2", "slug": "getting-started", "title": "Getting Started", "format": "text/html", "mode": "bundle", "body": "<p>Follow these steps to get up and running quickly with your first project.</p>", "links": { "self": "/x/api/v1/content/item-2" } },
+      { "id": "item-3", "slug": "advanced-topics", "title": "Advanced Topics", "format": "text/html", "mode": "bundle", "body": "<p>Explore advanced configuration, theming, and extensibility options.</p>", "links": { "self": "/x/api/v1/content/item-3" } },
+      { "id": "item-5", "slug": "about", "title": "About", "format": "text/html", "mode": "bundle", "body": "<p>This demo showcases mock API responses for local UI development.</p>", "links": { "self": "/x/api/v1/content/item-5" } }
+    ],
+    "links": { "self": "/x/api/v1/content" }
+  }
+}

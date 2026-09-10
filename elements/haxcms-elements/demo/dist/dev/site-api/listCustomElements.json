@@ -1,0 +1,16 @@
+{
+  "status": 200,
+  "data": {
+    "count": 5,
+    "total": 5,
+    "page": { "limit": 25, "offset": 0, "total": 5 },
+    "customElements": [
+      { "tag": "media-image", "import": "@haxtheweb/media-image/media-image.js", "package": "@haxtheweb/media-image", "description": "Responsive image with caption and HAX wiring", "haxProperties": { "gizmo": { "title": "Image", "icon": "image" } }, "links": { "self": "/x/api/v1/custom-elements/media-image" } },
+      { "tag": "accent-card", "import": "@haxtheweb/accent-card/accent-card.js", "package": "@haxtheweb/accent-card", "description": "Highlighted content card with accent color", "haxProperties": { "gizmo": { "title": "Accent Card", "icon": "icons:card-membership" } }, "links": { "self": "/x/api/v1/custom-elements/accent-card" } },
+      { "tag": "a11y-collapse", "import": "@haxtheweb/a11y-collapse/a11y-collapse.js", "package": "@haxtheweb/a11y-collapse", "description": "Accessible expandable content region", "haxProperties": { "gizmo": { "title": "Collapse", "icon": "icons:unfold-more" } }, "links": { "self": "/x/api/v1/custom-elements/a11y-collapse" } },
+      { "tag": "video-player", "import": "@haxtheweb/video-player/video-player.js", "package": "@haxtheweb/video-player", "description": "Accessible video/audio player", "haxProperties": { "gizmo": { "title": "Video", "icon": "icons:play-circle-filled" } }, "links": { "self": "/x/api/v1/custom-elements/video-player" } },
+      { "tag": "media-playlist", "import": "@haxtheweb/media-playlist/media-playlist.js", "package": "@haxtheweb/media-playlist", "description": "Playlist of media items", "haxProperties": { "gizmo": { "title": "Playlist", "icon": "icons:playlist-play" } }, "links": { "self": "/x/api/v1/custom-elements/media-playlist" } }
+    ],
+    "links": { "self": "/x/api/v1/custom-elements" }
+  }
+}

@@ -25,11 +25,11 @@ const FILE_TYPE_FILTER_ITEMS = [
 const COMPRESS_LEVELS = ["light", "medium", "heavy", "maximum"];
 
 const SCALE_PRESETS = {
-  xs: { width: 200, height: 150, label: "ddd-xs  200\u00d7150" },
-  sm: { width: 320, height: 240, label: "ddd-sm  320\u00d7240" },
-  md: { width: 400, height: 300, label: "ddd-md  400\u00d7300" },
-  lg: { width: 800, height: 600, label: "ddd-lg  800\u00d7600" },
-  xl: { width: 1200, height: 900, label: "ddd-xl  1200\u00d7900" },
+  xs: { width: 200, height: 150, label: "200\u00d7150" },
+  sm: { width: 320, height: 240, label: "320\u00d7240" },
+  md: { width: 400, height: 300, label: "400\u00d7300" },
+  lg: { width: 800, height: 600, label: "800\u00d7600" },
+  xl: { width: 1200, height: 900, label: "1200\u00d7900" },
 };
 
 class HAXCMSFilesAdminDialog extends DDD {
@@ -42,7 +42,6 @@ class HAXCMSFilesAdminDialog extends DDD {
       loading: { type: Boolean, reflect: true },
       busy: { type: Boolean, reflect: true },
       bulkBusy: { type: Boolean, attribute: false },
-      selectAllAllBusy: { type: Boolean, attribute: false },
       selectedRows: { type: Object, attribute: false },
       errorMessage: { type: String },
       method: { type: String },
@@ -78,7 +77,6 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.filterExtension = "";
     this.filterNameContains = "";
     this.bulkBusy = false;
-    this.selectAllAllBusy = false;
     this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
@@ -119,7 +117,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           border: var(--ddd-border-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
-          padding: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2);
         }
         .upload-row {
           display: flex;
@@ -169,9 +167,15 @@ class HAXCMSFilesAdminDialog extends DDD {
           min-height: 0;
         }
         editable-table-display {
-          --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
+          --ddd-theme-body-font-size: var(--ddd-font-size-6xs);
           --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-5xs, 12px);
+          --editable-table-font-size: var(--ddd-font-size-6xs);
+          margin: 0;
+        }
+        simple-pager {
+          --simple-pager-font-size: var(--ddd-font-size-6xs);
+          margin: 0;
+          padding: var(--ddd-spacing-3) 0;
         }
         .table-scroll {
           width: 100%;
@@ -245,17 +249,12 @@ class HAXCMSFilesAdminDialog extends DDD {
           gap: var(--ddd-spacing-1);
         }
         .fn a {
-          color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
-          );
           text-decoration: none;
           overflow-wrap: anywhere;
         }
         .fp {
-          font-size: var(--ddd-font-size-5xs);
+          font-size: var(--ddd-font-size-6xs);
           margin-top: var(--ddd-spacing-1);
-          color: var(--ddd-theme-default-slateGray);
           overflow-wrap: anywhere;
         }
         .ib {
@@ -270,20 +269,6 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         .empty {
           padding: var(--ddd-spacing-4);
-        }
-        .select-all-all {
-          font-size: var(--ddd-font-size-5xs);
-          color: var(--ddd-theme-default-link);
-          background: none;
-          border: none;
-          padding: 0;
-          margin: 0 0 0 var(--ddd-spacing-2);
-          cursor: pointer;
-          text-decoration: underline;
-        }
-        .select-all-all:disabled {
-          color: var(--ddd-theme-default-slateGray);
-          cursor: default;
         }
         @media (max-width: 900px) {
           :host {
@@ -850,60 +835,6 @@ class HAXCMSFilesAdminDialog extends DDD {
   _selectedRowObjects() {
     return this.rows.filter((r) => this.selectedRows.has(this._rowKey(r)));
   }
-  get _canSelectAllAcrossPages() {
-    return (
-      this.rows.length > 0 &&
-      this.selectedRows.size === this.rows.length &&
-      this.pageTotal > this.rows.length
-    );
-  }
-  async _selectAllAcrossPages() {
-    if (this.selectAllAllBusy || !this._canList) return;
-    this.selectAllAllBusy = true;
-    try {
-      await waitForHAXCMSSiteApiRegistryReady();
-      if (
-        !MicroFrontendRegistry ||
-        typeof MicroFrontendRegistry.call !== "function" ||
-        !MicroFrontendRegistry.has("@site/listFiles")
-      ) {
-        return;
-      }
-      const limit = 500;
-      let offset = 0;
-      const all = [];
-      let total = this.pageTotal;
-      while (true) {
-        const params = {
-          cb: this._nextCacheBustToken(),
-          "page.limit": limit,
-          "page.offset": offset,
-        };
-        if (this.filterType) params["filter.type"] = this.filterType;
-        if (this.filterExtension)
-          params["filter.extension"] = this.filterExtension;
-        if (this.filterNameContains)
-          params["filter.nameContains"] = this.filterNameContains;
-        const response = await MicroFrontendRegistry.call(
-          "@site/listFiles",
-          params,
-          null,
-          this,
-        );
-        if (this._statusCode(response) !== 200) break;
-        const rows = this._normPayload(response);
-        total = this._readPageTotal(response) || total;
-        all.push(...rows);
-        if (rows.length < limit || all.length >= total) break;
-        offset += limit;
-      }
-      this.selectedRows = new Set(all.map((r) => this._rowKey(r)));
-      this._syncVisibleCheckboxes();
-      this._msg(`Selected ${all.length} file(s) across all pages`);
-    } finally {
-      this.selectAllAllBusy = false;
-    }
-  }
   _rowByKey(key) {
     const k = this._s(key);
     if (!k) return null;
@@ -969,17 +900,12 @@ class HAXCMSFilesAdminDialog extends DDD {
         gap: var(--ddd-spacing-1);
       }
       .fn a {
-        color: light-dark(
-          var(--ddd-theme-default-link),
-          var(--ddd-theme-default-linkLight)
-        );
         text-decoration: none;
         overflow-wrap: anywhere;
       }
       .fp {
-        font-size: var(--ddd-font-size-5xs);
+        font-size: var(--ddd-font-size-6xs);
         margin-top: var(--ddd-spacing-1);
-        color: var(--ddd-theme-default-slateGray);
         overflow-wrap: anywhere;
       }
       .ib {
@@ -1356,7 +1282,7 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
 
   _embedInPage(row) {
-    this._onBulkInsert([row], "page");
+    this._onBulkInsert([row], "standalone");
   }
 
   /**
@@ -1493,6 +1419,9 @@ class HAXCMSFilesAdminDialog extends DDD {
                     { value: "25", text: "25" },
                     { value: "50", text: "50" },
                     { value: "75", text: "75" },
+                    { value: "100", text: "100" },
+                    { value: "250", text: "250" },
+                    { value: "500", text: "500" },
                   ]}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onPageSizeChanged}"
@@ -1518,21 +1447,9 @@ class HAXCMSFilesAdminDialog extends DDD {
               ? "Loading\u2026"
               : this.errorMessage
                 ? this.errorMessage
-                : this.pageTotal > 0
-                  ? `${this.rows.length} of ${this.pageTotal} file(s)`
-                  : `${this.rows.length} file(s)`}
+                : ``}
           </div>
-          ${this._canSelectAllAcrossPages
-            ? html`<button
-                class="select-all-all"
-                ?disabled="${this.selectAllAllBusy}"
-                @click="${this._selectAllAcrossPages}"
-              >
-                ${this.selectAllAllBusy
-                  ? "Selecting\u2026"
-                  : `Select all ${this.pageTotal} files`}
-              </button>`
-            : ""}
+          
           ${this.selectedRows.size > 0
             ? html`
                 <hax-file-actions
@@ -1548,6 +1465,15 @@ class HAXCMSFilesAdminDialog extends DDD {
                 </hax-file-actions>
               `
             : ""}
+                          <simple-pager
+          mode="full"
+          limit="${this.pageLimit}"
+          offset="${this.pageOffset}"
+          total="${this.pageTotal}"
+          count="${this.rows.length}"
+          label="Files pagination"
+          @page-changed="${this._onPageChanged}"
+        ></simple-pager>
         </div>
         <div class="tw">
           ${this.rows.length === 0 && !this.loading
@@ -1663,15 +1589,6 @@ class HAXCMSFilesAdminDialog extends DDD {
                 `,
               )}
         </div>
-        <simple-pager
-          mode="full"
-          limit="${this.pageLimit}"
-          offset="${this.pageOffset}"
-          total="${this.pageTotal}"
-          count="${this.rows.length}"
-          label="Files pagination"
-          @page-changed="${this._onPageChanged}"
-        ></simple-pager>
       </div>
     `;
   }

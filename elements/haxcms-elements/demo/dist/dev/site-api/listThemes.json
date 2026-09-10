@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "data": {
+    "count": 3,
+    "total": 3,
+    "page": { "limit": 25, "offset": 0, "total": 3 },
+    "themes": [
+      { "machineName": "clean-one", "name": "Clean One", "description": "Minimal single-column theme", "enabled": true, "active": true, "hidden": false, "screenshot": "", "priority": 10, "terrible": false, "legacy": false, "links": { "self": "/x/api/v1/themes/clean-one" } },
+      { "machineName": "clean-two", "name": "Clean Two", "description": "Minimal two-column theme", "enabled": true, "active": false, "hidden": false, "screenshot": "", "priority": 20, "terrible": false, "legacy": false, "links": { "self": "/x/api/v1/themes/clean-two" } },
+      { "machineName": "haxcms-dev-theme", "name": "Developer theme", "description": "Developer-focused demo theme", "enabled": true, "active": false, "hidden": false, "screenshot": "", "priority": 30, "terrible": false, "legacy": false, "links": { "self": "/x/api/v1/themes/haxcms-dev-theme" } }
+    ],
+    "links": { "self": "/x/api/v1/themes" }
+  }
+}

@@ -1,0 +1,1693 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "HAXcms Site API",
+    "description": "Read-only site API for discovery, metadata, and content/query surfaces.",
+    "version": "1.0.0",
+    "license": {
+      "name": "Apache-2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Site base path"
+    }
+  ],
+  "tags": [
+    {
+      "name": "discovery",
+      "description": "API discovery and OpenAPI document endpoints."
+    },
+    {
+      "name": "site",
+      "description": "Site-level metadata and configuration operations."
+    },
+    {
+      "name": "entities",
+      "description": "Entity catalog and descriptor endpoints."
+    },
+    {
+      "name": "schemas",
+      "description": "Schema descriptor and JSON schema endpoints."
+    },
+    {
+      "name": "items",
+      "description": "Outline item records, revisions, and export endpoints."
+    },
+    {
+      "name": "content",
+      "description": "Content retrieval and content mutation endpoints."
+    },
+    {
+      "name": "files",
+      "description": "File listing, upload, retrieval, and management endpoints."
+    },
+    {
+      "name": "tags",
+      "description": "Tag listing and tag frequency endpoints."
+    },
+    {
+      "name": "search",
+      "description": "Full-text and metadata search endpoints."
+    },
+    {
+      "name": "custom-elements",
+      "description": "Custom element registry and descriptor endpoints."
+    },
+    {
+      "name": "blocks",
+      "description": "Block catalog, usage analytics, and block descriptor endpoints."
+    },
+    {
+      "name": "regions",
+      "description": "Region listing and region member endpoints."
+    },
+    {
+      "name": "themes",
+      "description": "Theme listing and active theme endpoints."
+    },
+    {
+      "name": "reports",
+      "description": "Report descriptor and report payload endpoints."
+    },
+    {
+      "name": "analytics",
+      "description": "Analytics capability and integration metadata endpoints."
+    },
+    {
+      "name": "views",
+      "description": "Saved view definitions and resolved results endpoints."
+    },
+    {
+      "name": "integrations",
+      "description": "Third-party integration and provider broker endpoints."
+    }
+  ],
+  "paths": {
+    "/x/api": {
+      "get": {
+        "operationId": "getSiteApiDiscovery",
+        "summary": "Get API capabilities and discovery links",
+        "tags": [
+          "discovery"
+        ]
+      }
+    },
+    "/x/api/openapi": {
+      "get": {
+        "operationId": "getSiteOpenApi",
+        "summary": "Get OpenAPI document (JSON by default)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "tags": [
+          "discovery"
+        ]
+      }
+    },
+    "/x/api/openapi.json": {
+      "get": {
+        "operationId": "getSiteOpenApiJson",
+        "summary": "Get OpenAPI document in JSON",
+        "tags": [
+          "discovery"
+        ]
+      }
+    },
+    "/x/api/openapi.yaml": {
+      "get": {
+        "operationId": "getSiteOpenApiYaml",
+        "summary": "Get OpenAPI document in YAML",
+        "tags": [
+          "discovery"
+        ]
+      }
+    },
+    "/.well-known/api-catalog": {
+      "get": {
+        "operationId": "getApiCatalog",
+        "summary": "Get API catalog linkset",
+        "tags": [
+          "discovery"
+        ]
+      }
+    },
+    "/x/api/v1/site": {
+      "get": {
+        "operationId": "getSiteSummary",
+        "summary": "Get site-level metadata and counts",
+        "tags": [
+          "site"
+        ]
+      },
+      "patch": {
+        "operationId": "updateSiteSummary",
+        "summary": "Update site summary and manifest-level metadata",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/updateAlternativeFormats": {
+      "post": {
+        "operationId": "updateSiteAlternativeFormats",
+        "summary": "Regenerate alternative output formats for the current site",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/appearance": {
+      "patch": {
+        "operationId": "updateSiteAppearance",
+        "summary": "Update site appearance settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/platform": {
+      "patch": {
+        "operationId": "updateSitePlatform",
+        "summary": "Update site platform feature settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/blocks": {
+      "patch": {
+        "operationId": "updateSiteAllowedBlocks",
+        "summary": "Update site allowed blocks settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/editor": {
+      "patch": {
+        "operationId": "updateSiteEditorSettings",
+        "summary": "Update site editor settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/seo": {
+      "patch": {
+        "operationId": "updateSiteSeo",
+        "summary": "Update site SEO and author settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/outline": {
+      "patch": {
+        "operationId": "updateSiteOutline",
+        "summary": "Update site outline structure as a single atomic operation",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/site/normalize-slugs": {
+      "post": {
+        "operationId": "normalizeSiteSlugs",
+        "summary": "Normalize all site page slugs based on current titles and pathauto settings",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/items/{idOrSlug}/export/{format}": {
+      "get": {
+        "operationId": "downloadItemExport",
+        "summary": "Download an item export file (HTML, Markdown, JSON, YAML, XML, PDF, DOCX, or EPUB)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/ItemExportFormat"
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/entities": {
+      "get": {
+        "operationId": "listEntityDescriptors",
+        "summary": "List entity descriptors for the site API",
+        "tags": [
+          "entities"
+        ]
+      }
+    },
+    "/x/api/v1/schemas": {
+      "get": {
+        "operationId": "listSchemas",
+        "summary": "List schema descriptors and JSON schema fragments",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterKind"
+          },
+          {
+            "$ref": "#/components/parameters/FilterWebcomponentName"
+          }
+        ],
+        "tags": [
+          "schemas"
+        ]
+      }
+    },
+    "/x/api/v1/items": {
+      "get": {
+        "operationId": "listItems",
+        "summary": "List outline items",
+        "description": "Anonymous requests only return published items that are not hidden from navigation.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "security": [],
+        "tags": [
+          "items"
+        ]
+      },
+      "post": {
+        "operationId": "createItem",
+        "summary": "Create a new item in the outline",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/site/export/{format}": {
+      "get": {
+        "operationId": "getSiteExport",
+        "summary": "Download a site export file (PDF, DOCX, EPUB, or HTML) or get descriptor metadata",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SiteExportFormat"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "name": "magic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "CDN URL for HTML document wrapping mode (only used with html format)"
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      },
+      "post": {
+        "operationId": "createSiteExport",
+        "summary": "Get a site export descriptor for a format (metadata only, no binary download)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SiteExportFormat"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "site"
+        ]
+      }
+    },
+    "/x/api/v1/items/{idOrSlug}": {
+      "get": {
+        "operationId": "getItemByIdOrSlug",
+        "summary": "Get an item by id or slug",
+        "description": "Anonymous requests only return items that are published and not hidden from navigation.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "security": [],
+        "tags": [
+          "items"
+        ]
+      },
+      "patch": {
+        "operationId": "updateItem",
+        "summary": "Update an item using outline and page detail operations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteItem",
+        "summary": "Delete an item by id or slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/items/{idOrSlug}/revisions": {
+      "get": {
+        "operationId": "listItemRevisions",
+        "summary": "List git-backed revision history for one item",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}": {
+      "get": {
+        "operationId": "getItemRevisionById",
+        "summary": "Get one item revision payload by git hash",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/RevisionId"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}/restore": {
+      "post": {
+        "operationId": "restoreItemRevision",
+        "summary": "Restore one item revision as a new commit",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/RevisionId"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "items"
+        ]
+      }
+    },
+    "/x/api/v1/content": {
+      "get": {
+        "operationId": "listContent",
+        "summary": "List content records",
+        "description": "Anonymous requests only return content for published items that are not hidden from navigation.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          },
+          {
+            "$ref": "#/components/parameters/Mode"
+          }
+        ],
+        "security": [],
+        "tags": [
+          "content"
+        ]
+      },
+      "patch": {
+        "operationId": "replaceContent",
+        "summary": "Replace text across site content in a single operation",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "content"
+        ]
+      }
+    },
+    "/x/api/v1/content/{idOrSlug}": {
+      "get": {
+        "operationId": "getContentByIdOrSlug",
+        "summary": "Get content for an item by id or slug",
+        "description": "Anonymous requests only return content for items that are published and not hidden from navigation.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          },
+          {
+            "$ref": "#/components/parameters/Mode"
+          }
+        ],
+        "security": [],
+        "tags": [
+          "content"
+        ]
+      },
+      "patch": {
+        "operationId": "updateContentByIdOrSlug",
+        "summary": "Update one item content payload by id or slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdOrSlug"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "content"
+        ]
+      }
+    },
+    "/x/api/v1/files": {
+      "get": {
+        "operationId": "listFiles",
+        "summary": "List site files and metadata",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterExtension"
+          },
+          {
+            "$ref": "#/components/parameters/FilterStartsWith"
+          },
+          {
+            "$ref": "#/components/parameters/FilterNameContains"
+          },
+          {
+            "$ref": "#/components/parameters/FileName"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      },
+      "post": {
+        "operationId": "createFile",
+        "summary": "Upload a file to the site files directory",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      }
+    },
+    "/x/api/v1/files/{fileUuid}": {
+      "get": {
+        "operationId": "getFileByUuid",
+        "summary": "Get one file record by UUID",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FileUuid"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      },
+      "patch": {
+        "operationId": "updateFileByUuid",
+        "summary": "Update or transform a file by UUID",
+        "description": "Supported operation values: rename, convert-jpg, scale, sepia, black-and-white, rotate-90, compress, duplicate. Use the DELETE method for the delete operation instead.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FileUuid"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      },
+      "delete": {
+        "operationId": "deleteFileByUuid",
+        "summary": "Delete a file by UUID",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FileUuid"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      }
+    },
+    "/x/api/v1/tags": {
+      "get": {
+        "operationId": "listTags",
+        "summary": "List tags and frequencies",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          }
+        ],
+        "tags": [
+          "tags"
+        ]
+      }
+    },
+    "/x/api/v1/search": {
+      "get": {
+        "operationId": "searchContent",
+        "summary": "Search item metadata and content",
+        "description": "Anonymous requests only search published items that are not hidden from navigation.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/RequiredSearchQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "security": [],
+        "tags": [
+          "search"
+        ]
+      }
+    },
+    "/x/api/v1/custom-elements": {
+      "get": {
+        "operationId": "listCustomElements",
+        "summary": "List custom element descriptors from registry",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterTag"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          }
+        ],
+        "tags": [
+          "custom-elements"
+        ]
+      }
+    },
+    "/x/api/v1/custom-elements/{webcomponentName}": {
+      "get": {
+        "operationId": "getCustomElementByName",
+        "summary": "Get one custom element descriptor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/WebcomponentName"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          }
+        ],
+        "tags": [
+          "custom-elements"
+        ]
+      }
+    },
+    "/x/api/v1/blocks": {
+      "get": {
+        "operationId": "listBlocks",
+        "summary": "List block records and usage counts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FilterTag"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          }
+        ],
+        "tags": [
+          "blocks"
+        ]
+      }
+    },
+    "/x/api/v1/blocks/{webcomponentName}": {
+      "get": {
+        "operationId": "getBlockByName",
+        "summary": "Get one block record by custom element name",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/WebcomponentName"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Include"
+          }
+        ],
+        "tags": [
+          "blocks"
+        ]
+      }
+    },
+    "/x/api/v1/regions": {
+      "get": {
+        "operationId": "listRegions",
+        "summary": "List regions and item counts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "regions"
+        ]
+      }
+    },
+    "/x/api/v1/regions/{regionName}": {
+      "get": {
+        "operationId": "getRegionByName",
+        "summary": "Get one region and member item records",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/RegionName"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "regions"
+        ]
+      }
+    },
+    "/x/api/v1/themes": {
+      "get": {
+        "operationId": "listThemes",
+        "summary": "List available themes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IncludeDisabled"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "themes"
+        ]
+      }
+    },
+    "/x/api/v1/themes/active": {
+      "get": {
+        "operationId": "getActiveTheme",
+        "summary": "Get active theme",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "themes"
+        ]
+      }
+    },
+    "/x/api/v1/themes/{themeName}": {
+      "get": {
+        "operationId": "getThemeByName",
+        "summary": "Get one theme by machine name",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ThemeName"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/IncludeDisabled"
+          }
+        ],
+        "tags": [
+          "themes"
+        ]
+      }
+    },
+    "/x/api/v1/reports": {
+      "get": {
+        "operationId": "listReports",
+        "summary": "List report descriptors",
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "reports"
+        ]
+      }
+    },
+    "/x/api/v1/reports/{report}": {
+      "get": {
+        "operationId": "getReportByName",
+        "summary": "Get one report payload",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ReportName"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "reports"
+        ]
+      }
+    },
+    "/x/api/v1/analytics": {
+      "get": {
+        "operationId": "getAnalyticsCapabilities",
+        "summary": "Get analytics capability metadata",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/x/api/v1/views": {
+      "get": {
+        "operationId": "listViews",
+        "summary": "List saved views/displays",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "views"
+        ]
+      }
+    },
+    "/x/api/v1/views/{viewId}": {
+      "get": {
+        "operationId": "getViewById",
+        "summary": "Get one view descriptor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ViewId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "views"
+        ]
+      }
+    },
+    "/x/api/v1/views/{viewId}/results": {
+      "get": {
+        "operationId": "getViewResults",
+        "summary": "Resolve and return results for a view",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ViewId"
+          },
+          {
+            "$ref": "#/components/parameters/OptionalSearchQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "tags": [
+          "views"
+        ]
+      }
+    },
+    "/x/api/v1/displays": {
+      "get": {
+        "operationId": "listDisplaysAlias",
+        "summary": "Alias for listing views",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "views"
+        ]
+      }
+    },
+    "/x/api/v1/displays/{viewId}/results": {
+      "get": {
+        "operationId": "getDisplayResultsAlias",
+        "summary": "Alias for view results",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ViewId"
+          },
+          {
+            "$ref": "#/components/parameters/OptionalSearchQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Format"
+          }
+        ],
+        "tags": [
+          "views"
+        ]
+      }
+    },
+    "/x/api/v1/blocks/{webcomponentName}/usage": {
+      "get": {
+        "operationId": "getBlockUsage",
+        "summary": "List pages where the block is used",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/WebcomponentName"
+          },
+          {
+            "$ref": "#/components/parameters/FilterParent"
+          },
+          {
+            "$ref": "#/components/parameters/FilterAncestor"
+          },
+          {
+            "$ref": "#/components/parameters/FilterDepth"
+          },
+          {
+            "$ref": "#/components/parameters/FilterTags"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPublished"
+          },
+          {
+            "$ref": "#/components/parameters/FilterPageType"
+          },
+          {
+            "$ref": "#/components/parameters/FilterRegion"
+          },
+          {
+            "$ref": "#/components/parameters/PageLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PageOffset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          }
+        ],
+        "tags": [
+          "blocks"
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "IdOrSlug": {
+        "name": "idOrSlug",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RevisionId": {
+        "name": "revisionId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 64
+        }
+      },
+      "FileUuid": {
+        "name": "fileUuid",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "SiteExportFormat": {
+        "name": "format",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "zip",
+            "markdown",
+            "pdf",
+            "docx",
+            "epub",
+            "html",
+            "skeleton"
+          ]
+        }
+      },
+      "ItemExportFormat": {
+        "name": "format",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "pdf",
+            "docx",
+            "html",
+            "md",
+            "json",
+            "yaml",
+            "xml",
+            "epub"
+          ]
+        }
+      },
+      "WebcomponentName": {
+        "name": "webcomponentName",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RegionName": {
+        "name": "regionName",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ThemeName": {
+        "name": "themeName",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ReportName": {
+        "name": "report",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ViewId": {
+        "name": "viewId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "RequiredSearchQuery": {
+        "name": "q",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 256
+        }
+      },
+      "OptionalSearchQuery": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "maxLength": 256
+        }
+      },
+      "FilterParent": {
+        "name": "filter.parent",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterAncestor": {
+        "name": "filter.ancestor",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterDepth": {
+        "name": "filter.depth",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "FilterTags": {
+        "name": "filter.tags",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterPublished": {
+        "name": "filter.published",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "FilterPageType": {
+        "name": "filter.pageType",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterRegion": {
+        "name": "filter.region",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterTag": {
+        "name": "filter.tag",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterType": {
+        "name": "filter.type",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterExtension": {
+        "name": "filter.extension",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterStartsWith": {
+        "name": "filter.startsWith",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterNameContains": {
+        "name": "filter.nameContains",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FileName": {
+        "name": "filename",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Substring filter applied to both the file relative path and the file name. When supplied, only files whose path or name contains the value (case-insensitive) are returned.\n"
+      },
+      "FilterKind": {
+        "name": "filter.kind",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FilterWebcomponentName": {
+        "name": "filter.webcomponentName",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "IncludeDisabled": {
+        "name": "includeDisabled",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "PageLimit": {
+        "name": "page.limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 25
+        }
+      },
+      "PageOffset": {
+        "name": "page.offset",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "Sort": {
+        "name": "sort",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Fields": {
+        "name": "fields",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Include": {
+        "name": "include",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Format": {
+        "name": "format",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "json",
+            "md",
+            "yaml",
+            "xml",
+            "html"
+          ]
+        }
+      },
+      "Mode": {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "bundle",
+            "concat"
+          ],
+          "default": "bundle"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "siteTokenHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-HAXCMS-Site-Token"
+      }
+    }
+  }
+}

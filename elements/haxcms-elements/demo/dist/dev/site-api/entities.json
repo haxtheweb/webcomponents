@@ -1,0 +1,631 @@
+{
+  "status": 200,
+  "data": {
+    "count": 14,
+    "entities": [
+      {
+        "name": "site",
+        "description": "Site-level metadata and API capability summary.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/site",
+          "/x/api/v1/site/export/{format}"
+        ],
+        "filterableFields": [],
+        "sortableFields": [
+          "title",
+          "updated"
+        ],
+        "selectableFields": [
+          "id",
+          "name",
+          "title",
+          "description",
+          "language",
+          "basePath",
+          "theme",
+          "updated",
+          "counts",
+          "links",
+          "jsonld"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "item",
+        "description": "Outline item metadata records and hierarchy.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/items",
+          "/x/api/v1/items/{idOrSlug}",
+          "/x/api/v1/items/{idOrSlug}/export/{format}"
+        ],
+        "filterableFields": [
+          "filter.parent",
+          "filter.ancestor",
+          "filter.depth",
+          "filter.tags",
+          "filter.pageType",
+          "filter.published",
+          "filter.region"
+        ],
+        "sortableFields": [
+          "title",
+          "order",
+          "updated",
+          "created"
+        ],
+        "selectableFields": [
+          "id",
+          "title",
+          "slug",
+          "parent",
+          "indent",
+          "order",
+          "description",
+          "metadata",
+          "links",
+          "exports",
+          "jsonld",
+          "haxElementSchema"
+        ],
+        "includes": [
+          "content",
+          "tags",
+          "region",
+          "jsonld",
+          "haxElementSchema"
+        ],
+        "formats": [
+          "application/json",
+          "text/markdown",
+          "application/yaml",
+          "application/xml",
+          "text/html"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ],
+        "notes": [
+          "Anonymous reads are restricted to published items where metadata.hideInMenu is not true."
+        ],
+        "related": [
+          {
+            "rel": "entity",
+            "type": "item",
+            "href": "/x/api/v1/entities#item"
+          },
+          {
+            "rel": "schema",
+            "type": "jsonOutlineSchema",
+            "href": "/x/api/v1/schemas?filter.kind=jsonOutlineSchema"
+          },
+          {
+            "rel": "schema",
+            "type": "jsonOutlineSchemaItem",
+            "href": "/x/api/v1/schemas?filter.kind=jsonOutlineSchemaItem"
+          }
+        ]
+      },
+      {
+        "name": "content",
+        "description": "Page body/content representations and transformed variants.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/content",
+          "/x/api/v1/content/{idOrSlug}"
+        ],
+        "filterableFields": [
+          "filter.parent",
+          "filter.ancestor",
+          "filter.depth",
+          "filter.tags",
+          "filter.published",
+          "filter.region"
+        ],
+        "sortableFields": [
+          "title",
+          "updated",
+          "created"
+        ],
+        "selectableFields": [
+          "id",
+          "slug",
+          "title",
+          "format",
+          "mode",
+          "body"
+        ],
+        "includes": [
+          "item",
+          "region",
+          "tags"
+        ],
+        "formats": [
+          "application/json",
+          "text/markdown",
+          "application/yaml",
+          "application/xml",
+          "text/html"
+        ],
+        "modes": [
+          "bundle",
+          "concat"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ],
+        "notes": [
+          "Anonymous reads are restricted to content from published items where metadata.hideInMenu is not true."
+        ]
+      },
+      {
+        "name": "file",
+        "description": "File assets available in the site files directory.",
+        "primaryKey": "uuid",
+        "endpoints": [
+          "/x/api/v1/files",
+          "/x/api/v1/files/{fileUuid}"
+        ],
+        "filterableFields": [
+          "filter.type",
+          "filter.extension",
+          "filter.startsWith",
+          "filter.nameContains"
+        ],
+        "sortableFields": [
+          "name",
+          "path",
+          "dateCreated",
+          "size"
+        ],
+        "selectableFields": [
+          "uuid",
+          "path",
+          "url",
+          "fullUrl",
+          "name",
+          "mimetype",
+          "size",
+          "dateCreated"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json",
+          "text/markdown",
+          "application/yaml",
+          "application/xml"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "authenticated-site",
+        "supportedOperations": [
+          "read",
+          "create",
+          "update",
+          "delete"
+        ]
+      },
+      {
+        "name": "tag",
+        "description": "Tag facet values and usage counts.",
+        "primaryKey": "tag",
+        "endpoints": [
+          "/x/api/v1/tags"
+        ],
+        "filterableFields": [
+          "filter.tags"
+        ],
+        "sortableFields": [
+          "tag",
+          "count"
+        ],
+        "selectableFields": [
+          "tag",
+          "count"
+        ],
+        "includes": [
+          "items"
+        ],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "customElement",
+        "description": "Custom element metadata available to the site.",
+        "primaryKey": "tag",
+        "endpoints": [
+          "/x/api/v1/custom-elements",
+          "/x/api/v1/custom-elements/{webcomponentName}"
+        ],
+        "filterableFields": [
+          "filter.tag"
+        ],
+        "sortableFields": [
+          "tag"
+        ],
+        "selectableFields": [
+          "tag",
+          "import",
+          "package",
+          "description",
+          "haxProperties"
+        ],
+        "includes": [
+          "haxProperties",
+          "haxSchema",
+          "haxElementSchema"
+        ],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ],
+        "related": [
+          {
+            "rel": "entity",
+            "type": "block",
+            "href": "/x/api/v1/entities#block"
+          },
+          {
+            "rel": "endpoint",
+            "type": "usage",
+            "href": "/x/api/v1/blocks/{webcomponentName}/usage"
+          },
+          {
+            "rel": "schema",
+            "type": "haxProperties",
+            "href": "/x/api/v1/schemas?filter.kind=haxProperties"
+          },
+          {
+            "rel": "schema",
+            "type": "haxSchema",
+            "href": "/x/api/v1/schemas?filter.kind=haxSchema"
+          },
+          {
+            "rel": "schema",
+            "type": "haxElementSchema",
+            "href": "/x/api/v1/schemas?filter.kind=haxElementSchema"
+          }
+        ]
+      },
+      {
+        "name": "block",
+        "description": "Block usage and HAX schema details for custom element tags.",
+        "primaryKey": "tag",
+        "endpoints": [
+          "/x/api/v1/blocks",
+          "/x/api/v1/blocks/{webcomponentName}",
+          "/x/api/v1/blocks/{webcomponentName}/usage"
+        ],
+        "filterableFields": [
+          "filter.tag",
+          "filter.enabled",
+          "filter.region"
+        ],
+        "sortableFields": [
+          "tag",
+          "usageCount"
+        ],
+        "selectableFields": [
+          "tag",
+          "enabled",
+          "usageCount",
+          "haxProperties",
+          "haxSchema",
+          "haxElementSchema"
+        ],
+        "includes": [
+          "item",
+          "region",
+          "haxProperties",
+          "haxSchema",
+          "haxElementSchema"
+        ],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "region",
+        "description": "Region-level grouping of site items and content.",
+        "primaryKey": "name",
+        "endpoints": [
+          "/x/api/v1/regions",
+          "/x/api/v1/regions/{regionName}"
+        ],
+        "filterableFields": [
+          "filter.region"
+        ],
+        "sortableFields": [
+          "name",
+          "count"
+        ],
+        "selectableFields": [
+          "name",
+          "count"
+        ],
+        "includes": [
+          "items"
+        ],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "theme",
+        "description": "Theme metadata records, including active and available themes.",
+        "primaryKey": "machineName",
+        "endpoints": [
+          "/x/api/v1/themes",
+          "/x/api/v1/themes/{themeName}",
+          "/x/api/v1/themes/active"
+        ],
+        "filterableFields": [
+          "filter.enabled",
+          "filter.active"
+        ],
+        "sortableFields": [
+          "machineName",
+          "name"
+        ],
+        "selectableFields": [
+          "machineName",
+          "name",
+          "description",
+          "enabled",
+          "active",
+          "screenshot"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "report",
+        "description": "Report datasets used by dashboards.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/reports",
+          "/x/api/v1/reports/{report}"
+        ],
+        "filterableFields": [
+          "filter.report",
+          "filter.parent",
+          "filter.ancestor"
+        ],
+        "sortableFields": [
+          "id",
+          "generatedAt"
+        ],
+        "selectableFields": [
+          "id",
+          "label",
+          "icon",
+          "title",
+          "description",
+          "generatedAt",
+          "data"
+        ],
+        "includes": [
+          "items",
+          "links",
+          "content",
+          "media"
+        ],
+        "formats": [
+          "application/json",
+          "text/markdown",
+          "application/yaml",
+          "application/xml"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "authenticated-site",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "revision",
+        "description": "Git-backed revision history for individual items.",
+        "primaryKey": "hash",
+        "endpoints": [
+          "/x/api/v1/items/{idOrSlug}/revisions",
+          "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}",
+          "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}/restore"
+        ],
+        "filterableFields": [],
+        "sortableFields": [
+          "timestamp"
+        ],
+        "selectableFields": [
+          "revisionNumber",
+          "hash",
+          "shortHash",
+          "author",
+          "authorEmail",
+          "timestamp",
+          "date",
+          "message",
+          "content",
+          "itemMetadata",
+          "itemMetadataRestored"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "authenticated-site",
+        "supportedOperations": [
+          "read",
+          "create"
+        ]
+      },
+      {
+        "name": "analytics",
+        "description": "Analytics capabilities and future xAPI-oriented reporting surface.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/analytics"
+        ],
+        "filterableFields": [],
+        "sortableFields": [],
+        "selectableFields": [
+          "mode",
+          "xapi",
+          "notes"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ],
+        "related": [
+          {
+            "rel": "schema",
+            "type": "xapi",
+            "href": "/x/api/v1/schemas?filter.kind=xapi"
+          }
+        ]
+      },
+      {
+        "name": "view",
+        "description": "Saved display/view definitions and resolved results.",
+        "primaryKey": "id",
+        "endpoints": [
+          "/x/api/v1/views",
+          "/x/api/v1/views/{viewId}",
+          "/x/api/v1/views/{viewId}/results",
+          "/x/api/v1/displays",
+          "/x/api/v1/displays/{viewId}/results"
+        ],
+        "filterableFields": [
+          "filter.view",
+          "filter.tags",
+          "filter.region"
+        ],
+        "sortableFields": [
+          "id",
+          "title"
+        ],
+        "selectableFields": [
+          "id",
+          "title",
+          "description",
+          "query",
+          "display"
+        ],
+        "includes": [
+          "results"
+        ],
+        "formats": [
+          "application/json",
+          "text/markdown",
+          "application/yaml",
+          "application/xml"
+        ],
+        "modes": [
+          "bundle"
+        ],
+        "auth": "public",
+        "supportedOperations": [
+          "read"
+        ]
+      },
+      {
+        "name": "user",
+        "description": "User identity and operations are reserved for secured APIs and future phases.",
+        "primaryKey": "id",
+        "endpoints": [],
+        "filterableFields": [],
+        "sortableFields": [],
+        "selectableFields": [
+          "id",
+          "name",
+          "roles",
+          "permissions"
+        ],
+        "includes": [],
+        "formats": [
+          "application/json"
+        ],
+        "modes": [],
+        "auth": "authenticated-user",
+        "supportedOperations": [],
+        "enabled": false,
+        "notes": [
+          "Reserved for future secured routes; not exposed on public site API in read-only phase.",
+          "Session and identity routes are expected to require bearer JWT plus X-HAXCMS-User-Token when enabled."
+        ]
+      }
+    ],
+    "links": {
+      "self": "/x/api/v1/entities",
+      "site": "/x/api/v1/site",
+      "schemas": "/x/api/v1/schemas",
+      "openapi": "/x/api/openapi",
+      "openapiJson": "/x/api/openapi.json",
+      "openapiYaml": "/x/api/openapi.yaml"
+    }
+  }
+}
