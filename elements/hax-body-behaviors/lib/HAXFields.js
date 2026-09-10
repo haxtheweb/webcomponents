@@ -326,6 +326,7 @@ export const HaxElementizer = {
         },
         properties: {
           accepts: "accepts",
+          fileActions: "file-actions",
         },
       },
     },
@@ -512,6 +513,7 @@ export const HaxElementizer = {
             },
             properties: {
               accepts: "accepts",
+              fileActions: "file-actions",
             },
           },
         },

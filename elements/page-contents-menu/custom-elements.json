@@ -212,9 +212,25 @@
                 "text": "array"
               },
               "default": "[\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]"
+            },
+            {
+              "kind": "field",
+              "name": "schemaMap",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "schemaMap"
             }
           ],
           "attributes": [
+            {
+              "name": "schemaMap",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "schemaMap"
+            },
             {
               "name": "contentContainer",
               "type": {
@@ -286,6 +302,12 @@
               },
               "default": "true",
               "fieldName": "isEmpty"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             }
           ],
           "superclass": {

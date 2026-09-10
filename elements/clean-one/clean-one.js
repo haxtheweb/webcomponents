@@ -44,7 +44,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
  * 4 = Boring Blue Gray
  * 5 = Monotone (default)
  */
-class CleanOne extends DDDSuper(
+class CleanOne extends 
   LTIResizingMixin(
     PrintBranchMixin(
       PDFPageMixin(
@@ -57,8 +57,7 @@ class CleanOne extends DDDSuper(
         ),
       ),
     ),
-  ),
-) {
+  ) {
   //styles function
   static get styles() {
     return [

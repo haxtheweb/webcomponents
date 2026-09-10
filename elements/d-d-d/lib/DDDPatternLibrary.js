@@ -71,6 +71,49 @@ export const HAX_CAPABILITY = {
   "count-up": true,
   // simple-fields pill/tag element; external haxProperties JSON now wired
   "simple-tag": true,
+  // simple-fields form ecosystem (ships haxProperties inline)
+  "simple-fields": true,
+  // System UI elements: NOT HAX-capable (not author-insertable content blocks).
+  // They are login/pagination/contents-navigation infrastructure. Patterns
+  // that reference them are recipe-only (documented for reference, not
+  // published to the insert rail).
+  "simple-pager": false,
+  "page-contents-menu": false,
+  "simple-login": false,
+  // flash-card-set reuses flash-card.haxProperties.json
+  "flash-card-set": true,
+  // progress-donut ships haxProperties inline
+  "progress-donut": true,
+  // Phase 2: HAX-capable (verified external JSON or inline)
+  "audio-player": true,
+  "lrndesign-bar": true,
+  "lrndesign-line": true,
+  "lrndesign-pie": true,
+  "q-r": true,
+  "date-card": true,
+  "post-card": true,
+  // Phase 2: NOT HAX-capable (recipe-only documentation patterns)
+  "a11y-carousel": false,
+  "social-share-link": false,
+  "promise-progress": false,
+  // Phase 3: HAX-capable (verified)
+  "collection-list": true,
+  "vocab-term": true,
+  "oer-schema": true,
+  // Phase 3: site-* system UI elements (theme-internal, not author-insertable)
+  "site-menu": false,
+  "site-top-menu": false,
+  "site-breadcrumb": false,
+  "site-title": false,
+  "site-footer": false,
+  "site-menu-button": false,
+  // Phase 3: DDD tooling elements (not content blocks)
+  "hax-palette-picker": false,
+  // Presentational/programmatic helpers: recipe-only, not gate-published
+  "simple-toast": false,
+  "simple-progress": false,
+  "hexagon-loader": false,
+  "simple-search": false,
 };
 
 /**
@@ -176,6 +219,59 @@ const ATOMS = [
     darkMode: "supported",
     html: '<simple-icon-lite icon="icons:info" style="--simple-icon-height: var(--ddd-icon-sm); --simple-icon-width: var(--ddd-icon-sm); color: var(--ddd-primary-8)"></simple-icon-lite>',
     hax: { publish: "recipe-only", dataAttributes: [] },
+  },
+  // ---- Phase 3: theming atoms ----
+  {
+    id: "atom-gradient-surface",
+    level: "atom",
+    title: "Gradient surface",
+    description:
+      "A surface using a DDD gradient token (--ddd-theme-default-gradient-*) as its background. Demonstrates the hero, navBar, footer, newsFeature, and button gradient tokens.",
+    components: [],
+    tokens: [
+      "--ddd-theme-default-gradient-hero",
+      "--ddd-theme-default-gradient-navBar",
+      "--ddd-theme-default-gradient-footer",
+      "--ddd-theme-default-gradient-buttons",
+      "--ddd-theme-default-gradient-newsFeature",
+    ],
+    darkMode: "supported",
+    html:
+      '<div class="p-4 r-md bg-gradient-hero" style="min-height: var(--ddd-spacing-12)"></div>\n' +
+      '<div class="p-4 r-md bg-gradient-navBar" style="min-height: var(--ddd-spacing-12)"></div>\n' +
+      '<div class="p-4 r-md bg-gradient-footer" style="min-height: var(--ddd-spacing-12)"></div>',
+    hax: { publish: "recipe-only", dataAttributes: [] },
+  },
+  {
+    id: "atom-palette-preview",
+    level: "atom",
+    title: "Palette preview",
+    description:
+      "hax-palette-picker plus a swatch grid showing the 7 palette-color tokens. Recipe-only: hax-palette-picker is a DDD tooling element, not an author-insertable content block.",
+    components: ["hax-palette-picker"],
+    tokens: [
+      "--ddd-palette-color-1",
+      "--ddd-palette-color-2",
+      "--ddd-palette-color-3",
+      "--ddd-palette-color-4",
+      "--ddd-palette-color-5",
+      "--ddd-palette-color-6",
+      "--ddd-palette-color-7",
+      "data-palette",
+    ],
+    darkMode: "supported",
+    html:
+      '<hax-palette-picker label="Theme palette"></hax-palette-picker>\n' +
+      '<div class="grid-7 mt-4">\n' +
+      '  <span style="background-color: var(--ddd-palette-color-1); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-2); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-3); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-4); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-5); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-6); min-height: var(--ddd-spacing-8)"></span>\n' +
+      '  <span style="background-color: var(--ddd-palette-color-7); min-height: var(--ddd-spacing-8)"></span>\n' +
+      "</div>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-palette"] },
   },
 ];
 
@@ -379,6 +475,132 @@ const MOLECULES = [
       "</a11y-figure>",
     hax: { publish: "demoSchemaOverride", targetTag: "a11y-figure" },
   },
+  // ---- Phase 1: navigation, feedback, forms molecules ----
+  {
+    id: "mol-breadcrumb",
+    level: "molecule",
+    title: "Breadcrumb",
+    description:
+      "Static breadcrumb trail using the DDD .breadcrumb CSS class. Matches site-breadcrumb's token usage (--ddd-font-weight-light, --ddd-font-size-4xs, light-dark() link colors, list-style: /) so the static atom composes into the same look the stateful site-breadcrumb produces.",
+    components: [],
+    tokens: [
+      "--ddd-font-weight-light",
+      "--ddd-font-size-4xs",
+      "--ddd-theme-default-link",
+      "data-primary",
+    ],
+    darkMode: "supported",
+    html:
+      '<ol class="breadcrumb" data-primary="2">\n' +
+      '  <li><a href="#">Home</a></li>\n' +
+      '  <li><a href="#">Courses</a></li>\n' +
+      '  <li><a href="#" aria-current="page">Intro to HAX</a></li>\n' +
+      "</ol>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "mol-toast",
+    level: "molecule",
+    title: "Toast notification",
+    description:
+      "simple-toast singleton invoked via a simple-toast-show event. Recipe-only because simple-toast is a programmatic singleton, not an author-inserted block. Demonstrates the canonical event-based invocation.",
+    components: ["simple-toast"],
+    tokens: ["--ddd-theme-primary", "--ddd-boxShadow-sm", "--ddd-spacing-4"],
+    darkMode: "supported",
+    html: '<simple-toast opened text="Saved successfully" close-button close-text="Dismiss" duration="3000"></simple-toast>',
+    hax: { publish: "recipe-only", dataAttributes: [] },
+  },
+  {
+    id: "mol-progress-bar",
+    level: "molecule",
+    title: "Progress bar",
+    description:
+      "simple-progress indeterminate linear indicator. Recipe-only because simple-progress is a presentational helper (plain HTMLElement) usually embedded by other components, not an author-inserted block.",
+    components: ["simple-progress"],
+    tokens: ["--simple-progress-color"],
+    darkMode: "todo",
+    html: "<simple-progress></simple-progress>",
+    hax: { publish: "recipe-only", dataAttributes: [] },
+  },
+  {
+    id: "mol-form-field",
+    level: "molecule",
+    title: "Form field",
+    description:
+      "A single simple-fields input with label and help text — the atomic form unit. simple-fields is HAX-capable.",
+    components: ["simple-fields"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<simple-fields data-primary="1">\n' +
+      '  <simple-fields-field type="text" label="Your name" required></simple-fields-field>\n' +
+      "</simple-fields>",
+    hax: { publish: "demoSchemaOverride", targetTag: "simple-fields" },
+  },
+  // ---- Phase 2: media, data viz, actions molecules ----
+  {
+    id: "mol-audio-player",
+    level: "molecule",
+    title: "Audio player",
+    description:
+      "Standalone audio-player with a media title. audio-player is HAX-capable.",
+    components: ["audio-player"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html: '<audio-player source="files/lecture.mp3" media-title="Lecture 1: Introduction" data-primary="2"></audio-player>',
+    hax: { publish: "demoSchemaOverride", targetTag: "audio-player" },
+  },
+  {
+    id: "mol-count-display",
+    level: "molecule",
+    title: "Count display",
+    description:
+      "Standalone count-up animated number. count-up is HAX-capable.",
+    components: ["count-up"],
+    tokens: ["data-primary", "--ddd-font-size-3xl", "--ddd-font-weight-bold"],
+    darkMode: "supported",
+    html: '<count-up end="1250" duration="2.5" suffixtext="+" data-primary="10" style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)"></count-up>',
+    hax: { publish: "demoSchemaOverride", targetTag: "count-up" },
+  },
+  {
+    id: "mol-qr-code",
+    level: "molecule",
+    title: "QR code",
+    description:
+      "q-r wrapper rendering a scannable QR code. q-r is HAX-capable.",
+    components: ["q-r"],
+    tokens: ["data-primary"],
+    darkMode: "n/a",
+    html: '<q-r data="https://haxtheweb.org" title="HAX website" data-primary="2"></q-r>',
+    hax: { publish: "demoSchemaOverride", targetTag: "q-r" },
+  },
+  {
+    id: "mol-social-share",
+    level: "molecule",
+    title: "Social share links",
+    description:
+      "A row of social-share-link elements for Twitter, LinkedIn, Facebook, and Pinterest. Recipe-only: social-share-link is not HAX-capable, so this pattern is documented for reference but not published to the insert rail.",
+    components: ["social-share-link"],
+    tokens: ["data-primary"],
+    darkMode: "supported",
+    html:
+      '<social-share-link type="Twitter" url="https://haxtheweb.org" text="HAX" button-style data-primary="8"></social-share-link>\n' +
+      '<social-share-link type="LinkedIn" url="https://haxtheweb.org" button-style data-primary="8"></social-share-link>\n' +
+      '<social-share-link type="Facebook" url="https://haxtheweb.org" button-style data-primary="8"></social-share-link>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "mol-progress-promise",
+    level: "molecule",
+    title: "Promise progress",
+    description:
+      "promise-progress multi-step progress indicator for async operations. Recipe-only: promise-progress is a programmatic element (accepts promise children), not an author-inserted content block.",
+    components: ["promise-progress"],
+    tokens: ["data-primary"],
+    darkMode: "todo",
+    html: '<promise-progress data-primary="2"></promise-progress>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
 ];
 
 /**
@@ -533,6 +755,427 @@ const ORGANISMS = [
       '  <ddd-steps-list-item title="Go to class"><p>Attend and engage.</p></ddd-steps-list-item>\n' +
       "</ddd-steps-list>",
     hax: { publish: "stax-area", templateType: "area" },
+  },
+  // ---- Phase 1: navigation, feedback, forms, education organisms ----
+  {
+    id: "org-pagination",
+    level: "organism",
+    title: "Pagination",
+    description:
+      "simple-pager with first/prev/next/last and numbered page buttons. Recipe-only: simple-pager is a system UI element (pagination infrastructure), not an author-insertable content block, so this pattern is documented for reference but not published to the insert rail.",
+    components: ["simple-pager"],
+    tokens: ["data-primary", "--ddd-font-navigation"],
+    darkMode: "supported",
+    html: '<simple-pager total="250" limit="25" offset="0" mode="full" data-primary="2"></simple-pager>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-contents-menu",
+    level: "organism",
+    title: "Page contents menu",
+    description:
+      "page-contents-menu for in-page table of contents navigation. Recipe-only: page-contents-menu is a system UI element (in-page navigation infrastructure), not an author-insertable content block, so this pattern is documented for reference but not published to the insert rail.",
+    components: ["page-contents-menu"],
+    tokens: ["--ddd-font-navigation", "--ddd-font-size-3xs", "data-primary"],
+    darkMode: "supported",
+    html: '<page-contents-menu label="On this page" data-primary="2"></page-contents-menu>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-empty-state",
+    level: "organism",
+    title: "Empty state",
+    description:
+      "Composed: accent-card with an icon, a message, and a simple-cta action. Guides users when no content is available.",
+    components: ["accent-card", "simple-icon-lite", "simple-cta"],
+    tokens: ["data-primary", "data-accent", "--ddd-icon-xl"],
+    darkMode: "supported",
+    html:
+      '<accent-card data-primary="5" data-accent="2">\n' +
+      '  <simple-icon-lite slot="heading" icon="icons:inbox" style="--simple-icon-height: var(--ddd-icon-xl); --simple-icon-width: var(--ddd-icon-xl)"></simple-icon-lite>\n' +
+      '  <h3 slot="subheading">No items yet</h3>\n' +
+      '  <div slot="content">Add your first item to get started.</div>\n' +
+      '  <div slot="footer"><simple-cta link="#" data-primary="5">Add item</simple-cta></div>\n' +
+      "</accent-card>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-contact-form",
+    level: "organism",
+    title: "Contact form",
+    description:
+      "simple-fields composed into a contact form (name, email, message) with a simple-cta submit. simple-fields is HAX-capable.",
+    components: ["simple-fields", "simple-cta"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<simple-fields data-primary="1">\n' +
+      '  <simple-fields-field type="text" label="Name" required></simple-fields-field>\n' +
+      '  <simple-fields-field type="email" label="Email" required></simple-fields-field>\n' +
+      '  <simple-fields-field type="textarea" label="Message"></simple-fields-field>\n' +
+      '  <simple-cta link="#" data-primary="1" filled>Send message</simple-cta>\n' +
+      "</simple-fields>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-settings-panel",
+    level: "organism",
+    title: "Settings panel",
+    description:
+      "simple-fields fieldset groups in an a11y-collapse layout. Mirrors the admin-fieldset internal contract.",
+    components: ["simple-fields", "a11y-collapse"],
+    tokens: ["data-primary", "heading-button", "--ddd-font-weight-bold"],
+    darkMode: "supported",
+    html:
+      '<a11y-collapse heading-button heading="Profile" expanded data-primary="2">\n' +
+      '  <simple-fields><simple-fields-field type="text" label="Display name"></simple-fields-field></simple-fields>\n' +
+      "</a11y-collapse>\n" +
+      '<a11y-collapse heading-button heading="Notifications" data-primary="2">\n' +
+      '  <simple-fields><simple-fields-field type="boolean" label="Email me updates"></simple-fields-field></simple-fields>\n' +
+      "</a11y-collapse>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-learning-objectives",
+    level: "organism",
+    title: "Learning objectives",
+    description:
+      "learning-component with an objectives list and icon. learning-component is HAX-capable.",
+    components: ["learning-component"],
+    tokens: ["data-primary", "data-accent", "data-instructional-action"],
+    darkMode: "supported",
+    html:
+      '<learning-component subtitle="Unit 1" accent-color="indigo" title="Learning Objectives" icon="courseicons:learning-objectives" data-instructional-action="objectives">\n' +
+      "  <ul>\n" +
+      "    <li>Define open educational resources</li>\n" +
+      "    <li>Identify the 5Rs of OER</li>\n" +
+      "  </ul>\n" +
+      "</learning-component>",
+    hax: { publish: "demoSchemaOverride", targetTag: "learning-component" },
+  },
+  {
+    id: "org-quiz",
+    level: "organism",
+    title: "Quiz (multiple-choice)",
+    description:
+      "multiple-choice question block with directions. multiple-choice is HAX-capable.",
+    components: ["multiple-choice"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<multiple-choice question="What does OER stand for?" data-primary="13">\n' +
+      "  <option correct>Open Educational Resources</option>\n" +
+      "  <option>Online Education Resource</option>\n" +
+      "  <option>Open Endpoint Registry</option>\n" +
+      "</multiple-choice>",
+    hax: { publish: "demoSchemaOverride", targetTag: "multiple-choice" },
+  },
+  {
+    id: "org-flashcard-set",
+    level: "organism",
+    title: "Flashcard set",
+    description:
+      "flash-card-set with front/back/image slotted cards. flash-card-set is HAX-capable (reuses flash-card.haxProperties.json).",
+    components: ["flash-card-set"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "todo",
+    html:
+      "<flash-card-set>\n" +
+      '  <flash-card><p slot="front">What is HAX?</p><p slot="back">A headless authoring experience</p></flash-card>\n' +
+      '  <flash-card><p slot="front">What is OER?</p><p slot="back">Open Educational Resources</p></flash-card>\n' +
+      "</flash-card-set>",
+    hax: { publish: "demoSchemaOverride", targetTag: "flash-card-set" },
+  },
+  // ---- Phase 2: media, data viz, blog organisms ----
+  {
+    id: "org-video-feature",
+    level: "organism",
+    title: "Video feature",
+    description:
+      "video-player inside a page-section with a caption and transcript link. video-player is HAX-capable.",
+    components: ["video-player", "page-section"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<page-section accent-color="blue" data-primary="2">\n' +
+      '  <video-player source="https://www.youtube.com/watch?v=example" media-title="Lecture 1: Introduction"></video-player>\n' +
+      '  <p><a href="#transcript">View transcript</a></p>\n' +
+      "</page-section>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-carousel",
+    level: "organism",
+    title: "Image carousel",
+    description:
+      "a11y-carousel rotating media-image figures. Recipe-only: a11y-carousel is not HAX-capable, so this pattern is documented for reference but not published to the insert rail.",
+    components: ["a11y-carousel", "media-image"],
+    tokens: ["data-primary"],
+    darkMode: "todo",
+    html:
+      '<a11y-carousel data-primary="2">\n' +
+      '  <figure><media-image source="files/slide1.jpg" alt="Slide 1"></media-image></figure>\n' +
+      '  <figure><media-image source="files/slide2.jpg" alt="Slide 2"></media-image></figure>\n' +
+      '  <figure><media-image source="files/slide3.jpg" alt="Slide 3"></media-image></figure>\n' +
+      "</a11y-carousel>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-chart",
+    level: "organism",
+    title: "Chart (bar)",
+    description:
+      "lrndesign-bar chart from a CSV data source with heading and description slots. lrndesign-bar is HAX-capable. Line and pie variants use lrndesign-line / lrndesign-pie.",
+    components: ["lrndesign-bar"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<lrndesign-bar accent-color="blue" data-source="files/enrollment.csv" data-primary="2">\n' +
+      '  <h3 slot="heading">Enrollment growth</h3>\n' +
+      '  <p slot="desc">Enrollment doubled from 2019 to 2024.</p>\n' +
+      "</lrndesign-bar>",
+    hax: { publish: "demoSchemaOverride", targetTag: "lrndesign-bar" },
+  },
+  {
+    id: "org-stats-grid",
+    level: "organism",
+    title: "Stats grid",
+    description:
+      "grid-plate of count-up stat tiles. Both grid-plate and count-up are HAX-capable.",
+    components: ["grid-plate", "count-up"],
+    tokens: ["data-primary", "--ddd-font-size-3xl", "--ddd-font-weight-bold"],
+    darkMode: "supported",
+    html:
+      '<grid-plate layout="1-1-1">\n' +
+      '  <div slot="col-1" class="b-xs p-4 r-md bs-sm" style="text-align:center"><count-up end="250" suffixtext="+" data-primary="10" style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)"></count-up><div class="label">Components</div></div>\n' +
+      '  <div slot="col-2" class="b-xs p-4 r-md bs-sm" style="text-align:center"><count-up end="10" suffixtext="yr" data-primary="10" style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)"></count-up><div class="label">Of OER</div></div>\n' +
+      '  <div slot="col-3" class="b-xs p-4 r-md bs-sm" style="text-align:center"><count-up end="100" suffixtext="%" data-primary="10" style="font-size: var(--ddd-font-size-3xl); font-weight: var(--ddd-font-weight-bold)"></count-up><div class="label">Open</div></div>\n' +
+      "</grid-plate>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-post-header",
+    level: "organism",
+    title: "Post header",
+    description:
+      "Headline + byline + date-card + featured media-image. date-card and media-image are HAX-capable.",
+    components: ["date-card", "media-image"],
+    tokens: ["data-primary", "data-accent", "data-design-treatment"],
+    darkMode: "supported",
+    html:
+      '<h1 data-design-treatment="vert" data-primary="2">A new approach to open authoring</h1>\n' +
+      '<p class="byline" data-design-treatment="horz-10p" data-primary="8">By Bryan Ollendieck</p>\n' +
+      '<date-card month="Sep" date="10" day="Wednesday" title="Published" accent-color="light-blue"></date-card>\n' +
+      '<media-image source="files/featured.jpg" figure-label-title="Featured" figure-label-description="Hero image" alt="Featured article image"><div slot="caption">The HAX authoring workspace.</div></media-image>',
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-post-list",
+    level: "organism",
+    title: "Post list",
+    description:
+      "A list of post-card items for browsing articles. post-card is HAX-capable.",
+    components: ["post-card"],
+    tokens: ["data-primary"],
+    darkMode: "todo",
+    html:
+      '<div class="m-4">\n' +
+      '  <post-card to="Readers" from="Bryan" message="Welcome to HAX"></post-card>\n' +
+      '  <post-card to="Students" from="Bryan" message="Getting started with OER"></post-card>\n' +
+      "</div>",
+    hax: { publish: "demoSchemaOverride", targetTag: "post-card" },
+  },
+  {
+    id: "org-footer",
+    level: "organism",
+    title: "Footer",
+    description:
+      "Composed footer with link columns using simple-tag and social links. Recipe-only: includes social-share-link which is not HAX-capable, so this pattern is documented for reference but not published to the insert rail. Aligns with the stateful site-footer element per contract-site-footer.",
+    components: ["simple-tag", "social-share-link"],
+    tokens: ["data-primary", "--ddd-font-size-4xs", "--ddd-spacing-4"],
+    darkMode: "supported",
+    html:
+      '<footer class="p-4" data-primary="2">\n' +
+      '  <div class="grid-3">\n' +
+      '    <div><h4>Resources</h4><ul><li><a href="#">Docs</a></li><li><a href="#">Tutorials</a></li></ul></div>\n' +
+      '    <div><h4>Community</h4><ul><li><a href="#">Discord</a></li><li><a href="#">GitHub</a></li></ul></div>\n' +
+      '    <div><h4>Share</h4><social-share-link type="Twitter" url="https://haxtheweb.org" mode="icon-only"></social-share-link> <social-share-link type="LinkedIn" url="https://haxtheweb.org" mode="icon-only"></social-share-link></div>\n' +
+      "  </div>\n" +
+      '  <p class="mt-4" style="font-size: var(--ddd-font-size-4xs)">© 2026 HAXTheWeb. Open source under Apache-2.0.</p>\n' +
+      "</footer>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-banner",
+    level: "organism",
+    title: "Announcement banner",
+    description:
+      "accent-card with a message and a simple-cta action for announcements and calls to action.",
+    components: ["accent-card", "simple-cta"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<accent-card accent-background accent-color="blue" data-primary="1" data-accent="9">\n' +
+      '  <h3 slot="heading">New: HAX AI assistant</h3>\n' +
+      '  <div slot="content">Try the new AI-powered authoring assistant now available in beta.</div>\n' +
+      '  <div slot="footer"><simple-cta link="#" data-primary="9" filled>Try it now</simple-cta></div>\n' +
+      "</accent-card>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-newsletter",
+    level: "organism",
+    title: "Newsletter signup",
+    description:
+      "simple-fields email capture with a simple-cta submit. simple-fields is HAX-capable.",
+    components: ["simple-fields", "simple-cta"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<accent-card data-primary="1" data-accent="2">\n' +
+      '  <h3 slot="heading">Subscribe to our newsletter</h3>\n' +
+      '  <div slot="content"><simple-fields><simple-fields-field type="email" label="Email address" required></simple-fields-field></simple-fields></div>\n' +
+      '  <div slot="footer"><simple-cta link="#" data-primary="1" filled>Subscribe</simple-cta></div>\n' +
+      "</accent-card>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  // ---- Phase 3: layout, education, site-* documentation organisms ----
+  {
+    id: "org-sidebar-layout",
+    level: "organism",
+    title: "Sidebar layout",
+    description:
+      "grid-plate 2-1 layout with a sidebar navigation column and a main content column. Aligns with polaris-flex-sidebar and the site-menu sidebar used by themes. grid-plate is HAX-capable.",
+    components: ["grid-plate"],
+    tokens: ["data-primary", "--ddd-font-navigation"],
+    darkMode: "supported",
+    html:
+      '<grid-plate layout="2-1">\n' +
+      '  <nav slot="col-1" class="p-4" data-primary="2">\n' +
+      "    <h4>On this page</h4>\n" +
+      "    <ul>\n" +
+      '      <li><a href="#overview">Overview</a></li>\n' +
+      '      <li><a href="#details">Details</a></li>\n' +
+      '      <li><a href="#resources">Resources</a></li>\n' +
+      "    </ul>\n" +
+      "  </nav>\n" +
+      '  <main slot="col-2" class="p-4">\n' +
+      "    <h2>Main content</h2>\n" +
+      "    <p>Body content goes here.</p>\n" +
+      "  </main>\n" +
+      "</grid-plate>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-two-column",
+    level: "organism",
+    title: "Two column",
+    description:
+      "grid-plate 1-1 layout with a heading and two content columns. grid-plate is HAX-capable.",
+    components: ["grid-plate"],
+    tokens: ["data-primary"],
+    darkMode: "supported",
+    html:
+      '<grid-plate layout="1-1">\n' +
+      '  <div slot="col-1" class="p-4" data-primary="2">\n' +
+      "    <h3>Left column</h3>\n" +
+      "    <p>Left content.</p>\n" +
+      "  </div>\n" +
+      '  <div slot="col-2" class="p-4" data-primary="2">\n' +
+      "    <h3>Right column</h3>\n" +
+      "    <p>Right content.</p>\n" +
+      "  </div>\n" +
+      "</grid-plate>",
+    hax: { publish: "stax-area", templateType: "area" },
+  },
+  {
+    id: "org-site-header",
+    level: "organism",
+    title: "Site header (theme documentation)",
+    description:
+      "Documents the theme header composition: site-title + site-breadcrumb + site-menu-button row. Recipe-only: all three components are system UI elements (theme-internal, not HAX-capable). This pattern is the reference target for contract-theme-header conformance.",
+    components: ["site-title", "site-breadcrumb", "site-menu-button"],
+    tokens: ["--ddd-spacing-4", "--ddd-font-weight-bold", "data-primary"],
+    darkMode: "supported",
+    html:
+      '<header class="p-4" data-primary="2">\n' +
+      "  <site-title></site-title>\n" +
+      "  <site-breadcrumb></site-breadcrumb>\n" +
+      '  <site-menu-button type="prev"></site-menu-button>\n' +
+      '  <site-menu-button type="next"></site-menu-button>\n' +
+      "</header>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-vocab-term",
+    level: "organism",
+    title: "Vocabulary term",
+    description:
+      "vocab-term inline definition with a term and its meaning. vocab-term is HAX-capable.",
+    components: ["vocab-term"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<vocab-term term="OER" accent-color="blue" data-primary="24">\n' +
+      "  <p>Open Educational Resources — freely accessible, openly licensed teaching, learning, and research materials.</p>\n" +
+      "</vocab-term>",
+    hax: { publish: "demoSchemaOverride", targetTag: "vocab-term" },
+  },
+  {
+    id: "org-course-syllabus",
+    level: "organism",
+    title: "Course syllabus",
+    description:
+      "oer-schema course metadata block with a course outline. oer-schema is HAX-capable.",
+    components: ["oer-schema"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<oer-schema schemaType="oer:Course" data-primary="2">\n' +
+      "  <h2>Introduction to HAX</h2>\n" +
+      "  <p>A hands-on course covering open authoring for the web.</p>\n" +
+      "</oer-schema>",
+    hax: { publish: "demoSchemaOverride", targetTag: "oer-schema" },
+  },
+  {
+    id: "org-category-list",
+    level: "organism",
+    title: "Category list",
+    description:
+      "collection-list grouping items by category. collection-list is HAX-capable.",
+    components: ["collection-list"],
+    tokens: ["data-primary", "data-accent"],
+    darkMode: "supported",
+    html:
+      '<collection-list accent-color="blue" data-primary="2">\n' +
+      '  <collection-item title="Getting Started"><p>Beginner tutorials</p></collection-item>\n' +
+      '  <collection-item title="Advanced Topics"><p>Deep dives</p></collection-item>\n' +
+      "</collection-list>",
+    hax: { publish: "demoSchemaOverride", targetTag: "collection-list" },
+  },
+  {
+    id: "org-site-menu",
+    level: "organism",
+    title: "Site menu (theme documentation)",
+    description:
+      "Documents the stateful site-menu + map-menu sidebar navigation pattern used by themes. Recipe-only: site-menu is a system UI element (theme-internal, not HAX-capable). This pattern is the reference target for contract-site-menu conformance.",
+    components: ["site-menu"],
+    tokens: ["--ddd-font-navigation", "--ddd-font-size-3xs", "data-primary"],
+    darkMode: "supported",
+    html: '<site-menu data-primary="2"></site-menu>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
+  },
+  {
+    id: "org-site-top-menu",
+    level: "organism",
+    title: "Site top menu (theme documentation)",
+    description:
+      "Documents the stateful site-top-menu horizontal navigation pattern. Recipe-only: site-top-menu is a system UI element (theme-internal, not HAX-capable).",
+    components: ["site-top-menu"],
+    tokens: ["--ddd-font-navigation", "data-primary"],
+    darkMode: "supported",
+    html: '<site-top-menu data-primary="2"></site-top-menu>',
+    hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
   },
 ];
 
@@ -766,6 +1409,82 @@ export const INTERNAL_CONTRACTS = [
     targetElements: ["simple-fields", "grade-book", "cms-hax"],
     example:
       '<a11y-collapse heading-button heading="Site settings" expanded><div style="font-size: var(--ddd-font-size-5xs); padding: var(--ddd-spacing-2) var(--ddd-spacing-4)"><p>Field one</p><p>Field two</p></div></a11y-collapse>',
+  },
+  // ---- Phase 3: site-* and theme conformance contracts ----
+  {
+    id: "contract-site-menu",
+    title: "Site menu internals",
+    surface:
+      "Sidebar / horizontal menu internals in theme navigation (scrollbar, item, active state).",
+    tokens: [
+      "--ddd-theme-default-coalyGray",
+      "--ddd-theme-default-limestoneGray",
+      "--ddd-font-navigation",
+      "--ddd-font-size-3xs",
+      "data-primary",
+    ],
+    structure:
+      "Migrate hardcoded scrollbar colors (#252737, #999999) to DDD tokens (--ddd-theme-default-coalyGray / --ddd-theme-default-limestoneGray); heading and item typography via --ddd-font-navigation + --ddd-font-size-3xs; active-item color via data-primary. These elements are NOT DDD-extending today; the contract documents the target state, and conformance is a later migration.",
+    targetElements: ["site-menu", "site-top-menu", "map-menu"],
+    example:
+      '<site-menu style="--site-menu-background-color: var(--ddd-theme-default-coalyGray); --site-menu-color: var(--ddd-theme-default-limestoneMaxLight); --site-menu-font-size: var(--ddd-font-size-3xs)"></site-menu>',
+  },
+  {
+    id: "contract-site-footer",
+    title: "Site footer internals",
+    surface:
+      "Footer typography, spacing, and license alignment in theme footers.",
+    tokens: [
+      "--ddd-font-size-4xs",
+      "--ddd-spacing-4",
+      "--ddd-font-weight-light",
+    ],
+    structure:
+      "Footer typography via --ddd-font-size-4xs, spacing via --ddd-spacing-4, license-element aligned with DDD font-weight. site-footer is plain LitElement today (not DDD); the contract documents the target state.",
+    targetElements: ["site-footer", "license-element"],
+    example:
+      '<footer style="padding: var(--ddd-spacing-4); font-size: var(--ddd-font-size-4xs); font-weight: var(--ddd-font-weight-light)"><license-element></license-element></footer>',
+  },
+  {
+    id: "contract-site-title",
+    title: "Site title typography",
+    surface: "The site title heading displayed in theme headers.",
+    tokens: [
+      "--ddd-theme-h1-font-size",
+      "--ddd-font-weight-bold",
+      "data-primary",
+    ],
+    structure:
+      "Site title uses --ddd-theme-h1-font-size + --ddd-font-weight-bold per the existing contract-element-title, so site-title matches element titles across the ecosystem. site-title is plain LitElement today (not DDD); the contract documents the target state.",
+    targetElements: ["site-title"],
+    example:
+      '<h1 style="font-size: var(--ddd-theme-h1-font-size); font-weight: var(--ddd-font-weight-bold)" data-primary="2">Site Title</h1>',
+  },
+  {
+    id: "contract-theme-header",
+    title: "Theme header composition",
+    surface:
+      "The composed header row in a theme (site-title + site-breadcrumb + site-menu-button).",
+    tokens: ["--ddd-spacing-4", "--ddd-font-weight-bold", "data-primary"],
+    structure:
+      "Theme header composition: site-title + site-breadcrumb + site-menu-button row spacing via --ddd-spacing-4, alignment, and responsive stacking. Applies to ALL 13 DDD-based themes (learn-two-theme, chamfer-theme, journey-theme, twenty-six-theme, training-theme, haxma-theme, resume-theme, spacebook-theme, clean-portfolio-theme, glossy-portfolio-theme, polaris-theme, clean-one, clean-two). This contract ensures theme headers share the library vocabulary even though each theme renders its own header.",
+    targetElements: [
+      "learn-two-theme",
+      "chamfer-theme",
+      "journey-theme",
+      "twenty-six-theme",
+      "training-theme",
+      "haxma-theme",
+      "resume-theme",
+      "spacebook-theme",
+      "clean-portfolio-theme",
+      "glossy-portfolio-theme",
+      "polaris-theme",
+      "clean-one",
+      "clean-two",
+    ],
+    example:
+      '<header style="display: flex; align-items: center; gap: var(--ddd-spacing-4); padding: var(--ddd-spacing-4)" data-primary="2"><site-title></site-title><site-breadcrumb></site-breadcrumb><site-menu-button type="prev"></site-menu-button><site-menu-button type="next"></site-menu-button></header>',
   },
 ];
 

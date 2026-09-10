@@ -12,7 +12,7 @@ import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "./hax-file-actions.js";
+import "@haxtheweb/hax-body/lib/hax-file-actions.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
   { value: "", text: "All types" },

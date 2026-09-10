@@ -2989,14 +2989,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     };
 
     // emoji picker; inline-triggerable via the ":: " token (see hax-body
-    // __maybeTriggerInlineShortcut) and surfaced globally in Merlin so the
-    // "::" shortcut chip renders on its row. Resolved by machineName
-    // "insert-emoji" via runProgram / waveWand.
+    // __maybeTriggerInlineShortcut). Listed in Merlin ONLY when invoked inline
+    // (inlineOnly) so it never clutters the global / and > browse / search
+    // lists; the "::" shortcut chip still renders on its row in inline mode.
+    // Resolved by machineName "insert-emoji" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
       title: "Insert emoji",
       icon: "editor:insert-emoticon",
       tags: ["emoji"],
-      inline: true,
+      inlineOnly: true,
       shortcut: {
         id: "inline-emoji",
         type: "markdown",
@@ -3294,14 +3295,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "&piv;": "pi symbol",
     };
     // symbol picker; inline-triggerable via the ":::" token (see hax-body
-    // __maybeTriggerInlineShortcut) and surfaced globally in Merlin so the
-    // ":::" shortcut chip renders on its row. Resolved by machineName
-    // "insert-symbol" via runProgram / waveWand.
+    // __maybeTriggerInlineShortcut). Listed in Merlin ONLY when invoked inline
+    // (inlineOnly) so it never clutters the global / and > browse / search
+    // lists; the ":::" shortcut chip still renders on its row in inline mode.
+    // Resolved by machineName "insert-symbol" via runProgram / waveWand.
     SuperDaemonInstance.defineOption({
       title: "Insert symbol",
       icon: "editor:functions",
       tags: ["symbol"],
-      inline: true,
+      inlineOnly: true,
       shortcut: {
         id: "inline-symbol",
         type: "markdown",

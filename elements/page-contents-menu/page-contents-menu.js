@@ -158,7 +158,12 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
   // render function
   render() {
     return html`
-      <section class="wrapper" role="navigation" typeof="oer:TableOfContents" aria-label="${this.label}">
+      <section
+        class="wrapper"
+        role="navigation"
+        typeof="oer:TableOfContents"
+        aria-label="${this.label}"
+      >
         <div class="header">
           <a
             class="svg"
@@ -274,12 +279,11 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
     if (item.link == null && item.id) {
       // tab index ensures browser treats it like a normal link
       return html`
-        <li
-          class="item"
-          typeof="oer:TableOfContentsEntry"
-          property="oer:entry"
-        >
-          <meta property="oer:forComponent" content="${item.id || item.link || ''}" />
+        <li class="item" typeof="oer:TableOfContentsEntry" property="oer:entry">
+          <meta
+            property="oer:forComponent"
+            content="${item.id || item.link || ""}"
+          />
           <a
             class="link indent-${item.indent} ${item.active}"
             href="#${item.id}"
@@ -296,12 +300,11 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       `;
     }
     return html`
-      <li
-        class="item"
-        typeof="oer:TableOfContentsEntry"
-        property="oer:entry"
-      >
-        <meta property="oer:forComponent" content="${item.id || item.link || ''}" />
+      <li class="item" typeof="oer:TableOfContentsEntry" property="oer:entry">
+        <meta
+          property="oer:forComponent"
+          content="${item.id || item.link || ""}"
+        />
         <a
           class="link indent-${item.indent} ${item.active}"
           href="${item.link}"

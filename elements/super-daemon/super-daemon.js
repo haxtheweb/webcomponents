@@ -867,7 +867,18 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       if (item.hidden) {
         return false;
       }
-      if (this.inlineMode && !item.inline) {
+      // inlineOnly programs (e.g. the emoji + symbol pickers) are listed in
+      // Merlin ONLY when it is invoked inline (slash-in-empty-block, :: / :::
+      // token, or RTE toolbar button). They never appear in the global / and
+      // > browse / search contexts so they stop polluting media and block
+      // searches. They stay registered in allItems so the inline triggers can
+      // still resolve them by machineName via runProgram / waveWand.
+      // inlineOnly also implies inline-eligibility, so such items do NOT also
+      // need inline: true (avoiding dual flags on the same option).
+      if (item.inlineOnly && !this.inlineMode) {
+        return false;
+      }
+      if (this.inlineMode && !item.inline && !item.inlineOnly) {
         return false;
       }
       // ensuire we have a context at all

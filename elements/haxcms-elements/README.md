@@ -180,7 +180,8 @@ The following tables list every custom element in the package, grouped by the `l
 | `haxcms-toast` | `lib/core/haxcms-toast.js` | Global toast notification. |
 | `haxcms-darkmode-toggle` | `lib/core/haxcms-darkmode-toggle.js` | Dark-mode toggle. |
 | `hax-router` | `lib/core/hax-router.js` | HAX app router. |
-| `hax-file-actions` | `lib/core/hax-file-actions.js` | File action handler. |
+
+> Note: `hax-file-actions` has moved to `@haxtheweb/hax-body` (`lib/hax-file-actions.js`) so both the file-admin dialog and inline schema-field UIs share one source of truth (issue #3028).
 
 #### Admin dialogs (`lib/core/`)
 

@@ -19,13 +19,23 @@ const COMPRESS_PRESETS = {
 
 /**
  * `hax-file-actions`
- * A bulk-action bar operating on a set of currently-selected files rather
- * than a single row. Consolidates all operations (transform, compress,
+ * A file-action bar that consolidates all operations (transform, compress,
  * scale, rotate, duplicate, rename, insert into page, delete) into one
  * hierarchical `<select>` (group headers are non-selectable, leaves are
  * the actual actions), so the control takes minimal horizontal space and
- * can be reused wherever a "operate on a selection of files" bar is
- * needed (e.g. issue #3028).
+ * can be reused wherever a "operate on a file selection" bar is needed.
+ *
+ * Two presentation modes (issue #3028):
+ * - `mode="bulk"` (default): full action set including Operations
+ *   (insert/duplicate/rename/delete), used by the haxcms file-admin dialog
+ *   to act on a set of selected files.
+ * - `mode="field"`: transformations only (Transform/Compress/Scale), used
+ *   inline under a single haxupload schema field so destructive / insert
+ *   operations are never offered in a single-field context.
+ *
+ * SCALE_PRESETS / COMPRESS_PRESETS are exported so callers (e.g.
+ * hax-upload-field's post-upload recommendation logic) share this single
+ * source of truth instead of duplicating the preset table.
  */
 class HAXFileActions extends DDD {
   static get tag() {
@@ -38,6 +48,16 @@ class HAXFileActions extends DDD {
       imageCount: { type: Number, attribute: "image-count" },
       canScale: { type: Boolean, attribute: "can-scale", reflect: true },
       busy: { type: Boolean, reflect: true },
+      /**
+       * Presentation mode.
+       * - "bulk" (default): full action set including Operations
+       *   (insert/duplicate/rename/delete) for the file-admin dialog.
+       * - "field": transformations only (Transform/Compress/Scale),
+       *   used inline under a single haxupload schema field so the
+       *   destructive / insert operations are never offered in a
+       *   single-field context. See issue #3028.
+       */
+      mode: { type: String, reflect: true },
     };
   }
 
@@ -47,6 +67,16 @@ class HAXFileActions extends DDD {
     this.imageCount = 0;
     this.canScale = false;
     this.busy = false;
+    this.mode = "bulk";
+  }
+
+  /**
+   * In "field" mode the Operations group (insert/duplicate/rename/delete)
+   * is omitted entirely; only image transformations remain. "bulk" keeps
+   * the full set for the file-admin dialog.
+   */
+  get _isFieldMode() {
+    return String(this.mode || "").toLowerCase() === "field";
   }
 
   static get styles() {
@@ -87,27 +117,32 @@ class HAXFileActions extends DDD {
    */
   get actionItems() {
     const items = [{ value: "", text: "Choose an action\u2026" }];
-    if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
+    // In field mode we only surface image transformations; the Operations
+    // group (insert/duplicate/rename/delete) is intentionally omitted so a
+    // single haxupload field never offers destructive or insert actions.
+    if (!this._isFieldMode) {
+      if (this.selectedCount >= 2 && this.imageCount === this.selectedCount) {
+        items.push(
+          {
+            group: "Operations",
+            value: "insert:gallery",
+            text: "Insert Gallery",
+          },
+          {
+            group: "Operations",
+            value: "insert:standalone",
+            text: "Insert Image",
+          },
+        );
+      } else {
+        items.push({group: "Operations", value: "insert:standalone", text: "Insert Image" });
+      }
       items.push(
-        {
-          group: "Operations",
-          value: "insert:gallery",
-          text: "Insert Gallery",
-        },
-        {
-          group: "Operations",
-          value: "insert:standalone",
-          text: "Insert Image",
-        },
+        { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
+        { group: "Operations", value: "rename:rename", text: "Rename" },
+        { group: "Operations", value: "delete:delete", text: "Delete" },
       );
-    } else {
-      items.push({group: "Operations", value: "insert:standalone", text: "Insert Image" });
     }
-    items.push(
-      { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
-      { group: "Operations", value: "rename:rename", text: "Rename" },
-      { group: "Operations", value: "delete:delete", text: "Delete" },
-    );
     if (this.canScale) {
       items.push(
         {
@@ -181,14 +216,24 @@ class HAXFileActions extends DDD {
   }
 
   render() {
+    // In field mode we operate on a single uploaded image; the
+    // "N files selected" count is noise there, so only render it in bulk mode.
     return html`
-      <div class="acts" role="group" aria-label="Bulk file actions">
-        <span class="count"
-          >${this.selectedCount} file${this.selectedCount === 1
-            ? ""
-            : "s"}
-          selected</span
-        >
+      <div
+        class="acts"
+        role="group"
+        aria-label="${this._isFieldMode
+          ? "Image actions"
+          : "Bulk file actions"}"
+      >
+        ${this._isFieldMode
+          ? ""
+          : html`<span class="count"
+              >${this.selectedCount} file${this.selectedCount === 1
+                ? ""
+                : "s"}
+              selected</span
+            >`}
         <simple-fields-field
           label="Action"
           type="select"
@@ -203,4 +248,4 @@ class HAXFileActions extends DDD {
 }
 
 globalThis.customElements.define(HAXFileActions.tag, HAXFileActions);
-export { HAXFileActions };
+export { HAXFileActions, SCALE_PRESETS, COMPRESS_PRESETS };

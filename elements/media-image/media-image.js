@@ -461,6 +461,7 @@ class MediaImage extends DDD {
             title: "Source",
             description: "The URL for the image.",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
             required: true,
