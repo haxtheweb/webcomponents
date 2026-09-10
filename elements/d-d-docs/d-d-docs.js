@@ -3480,6 +3480,19 @@ class DDDocs extends DDD {
                 ? html`<p class="contract-example-label">Example</p>
                     <div class="contract-example">
                       ${unsafeHTML(c.example)}
+                      <div class="pattern-meta" style="margin-top: var(--ddd-spacing-3)">
+                        <simple-cta
+                          hide-icon
+                          @click="${() => this._copyToClipboard(c.example, c.id)}"
+                          >Copy</simple-cta
+                        >
+                        <span
+                          class="pattern-copy-feedback"
+                          id="copy-feedback-${c.id}"
+                          hidden
+                          >Copied!</span
+                        >
+                      </div>
                     </div>`
                 : ``}
               <div class="pattern-meta">
