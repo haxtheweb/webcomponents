@@ -45,22 +45,6 @@ import "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
 
-function sessionStorageGet(name) {
-  try {
-    return sessionStorage.getItem(name);
-  } catch (e) {
-    return false;
-  }
-}
-
-function sessionStorageSet(name, newItem) {
-  try {
-    return sessionStorage.setItem(name, newItem);
-  } catch (e) {
-    return false;
-  }
-}
-
 /**
  * @element hax-store
  */
@@ -914,14 +898,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return {
       ...super.properties,
       /**
-       * skipHAXConfirmation
-       */
-      skipHAXConfirmation: {
-        type: Boolean,
-        reflect: true,
-        attribute: "skip-hax-confirmation",
-      },
-      /**
        * Local storage bridge
        */
       storageData: {
@@ -1045,11 +1021,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _storageDataChanged(newValue) {
     if (newValue && this.ready && this.__storageDataProcessed) {
-      if (localStorageGet("haxConfirm", false)) {
-        localStorageSet("haxUserData", newValue);
-      } else if (sessionStorageGet("haxConfirm", false)) {
-        sessionStorageSet("haxUserData", newValue);
-      }
+      localStorageSet("haxUserData", newValue);
     }
   }
 
@@ -1558,15 +1530,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
-  /**
-   * This only sends if they consented to storage of data locally
-   */
-  _haxConsentTap(e) {
-    // store for future local storage usage
-    localStorageSet("haxConfirm", true);
-    // most likely nothing but set it anyway
-    localStorageSet("haxUserData", JSON.stringify(this.storageData));
-  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -1779,47 +1742,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
       }
       this.ready = true;
-      // see if a global was used to prevent this check
-      // this is useful when in trusted environments where the statement
-      // has been consented to in the application this is utilized in
-      if (this.skipHAXConfirmation) {
-        sessionStorageSet("haxConfirm", true);
-        localStorageSet("haxConfirm", true);
-      }
-      // check for local storage object
-      // if not, then store it in sessionStorage so that all our checks
-      // and balances are the same. This could allow for storing these
-      // settings on a server in theory
-      let haxConfirm =
-        sessionStorageGet("haxConfirm") || localStorageGet("haxConfirm");
-      if (!haxConfirm) {
-        // this way it isn't shown EVERY reload, but if they didn't confirm
-        // it will show up in the future
-        sessionStorageSet("haxConfirm", true);
-        let msg = `
-      The HAX content editor keeps preferences in order to improve your experience.
-      This data is stored in your browser and is never sent anywhere.
-      Click to accept.
-      `;
-        this.toast(msg, "-1", {}, "fit-bottom", "I Accept", "hax-consent-tap");
-      } else {
-        if (sessionStorageGet("haxConfirm") && !localStorageGet("haxConfirm")) {
-          // verify there is something there
-          try {
-            let globalData = sessionStorageGet("haxUserData")
-              ? JSON.parse(sessionStorageGet("haxUserData"))
-              : {};
-            this.storageData = globalData;
-            this._storageDataChanged(this.storageData);
-          } catch (e) {}
-        } else {
-          try {
-            let globalData = localStorageGet("haxUserData", {});
-            this.storageData = globalData;
-            this._storageDataChanged(this.storageData);
-          } catch (e) {}
-        }
-      }
+      // load previously stored user preferences from local storage
+      try {
+        let globalData = localStorageGet("haxUserData", {});
+        this.storageData = globalData;
+        this._storageDataChanged(this.storageData);
+      } catch (e) {}
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
 
@@ -3475,7 +3403,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.__winEvents = {
       "hax-super-daemon-insert-tag": "_superDaemonInsert",
       "hax-register-properties": "_haxStoreRegisterProperties",
-      "hax-consent-tap": "_haxConsentTap",
       onbeforeunload: "_onBeforeUnload",
       paste: "_onPaste",
       command: "_onCommand",
@@ -3521,7 +3448,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         margin: 8px 2px;
       }`,
     });
-    this.skipHAXConfirmation = false;
     this.storageData = {};
     this.appStore = {
       url: "",
