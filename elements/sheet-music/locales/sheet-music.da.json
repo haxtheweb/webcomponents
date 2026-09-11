@@ -1,0 +1,13 @@
+{
+  "play": "Afspil",
+  "pause": "Pause",
+  "stop": "Stop",
+  "zoomIn": "Zoom ind",
+  "zoomOut": "Zoom ud",
+  "stretch": "Skift afstand",
+  "layout": "Skift layout",
+  "downloadMidi": "Hent MIDI",
+  "print": "Udskriv / Gem PDF",
+  "loading": "Indlæser",
+  "sheetMusic": "Noder"
+}

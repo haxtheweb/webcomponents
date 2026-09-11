@@ -1,0 +1,13 @@
+{
+  "play": "Oynat",
+  "pause": "Duraklat",
+  "stop": "Durdur",
+  "zoomIn": "Yakınlaştır",
+  "zoomOut": "Uzaklaştır",
+  "stretch": "Aralığı değiştir",
+  "layout": "Düzeni değiştir",
+  "downloadMidi": "MIDI indir",
+  "print": "Yazdır / PDF kaydet",
+  "loading": "Yükleniyor",
+  "sheetMusic": "Müzik notaları"
+}

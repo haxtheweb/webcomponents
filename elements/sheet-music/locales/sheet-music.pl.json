@@ -1,0 +1,13 @@
+{
+  "play": "Odtwórz",
+  "pause": "Pauza",
+  "stop": "Zatrzymaj",
+  "zoomIn": "Powiększ",
+  "zoomOut": "Pomniejsz",
+  "stretch": "Przełącz odstęp",
+  "layout": "Przełącz układ",
+  "downloadMidi": "Pobierz MIDI",
+  "print": "Drukuj / Zapisz PDF",
+  "loading": "Ładowanie",
+  "sheetMusic": "Nuty"
+}

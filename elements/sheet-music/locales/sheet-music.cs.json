@@ -1,0 +1,13 @@
+{
+  "play": "Přehrát",
+  "pause": "Pozastavit",
+  "stop": "Zastavit",
+  "zoomIn": "Přiblížit",
+  "zoomOut": "Oddálit",
+  "stretch": "Přepnout rozestup",
+  "layout": "Přepnout rozložení",
+  "downloadMidi": "Stáhnout MIDI",
+  "print": "Tisk / Uložit PDF",
+  "loading": "Načítání",
+  "sheetMusic": "Noty"
+}

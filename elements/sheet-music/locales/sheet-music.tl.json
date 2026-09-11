@@ -1,0 +1,13 @@
+{
+  "play": "I-play",
+  "pause": "I-pause",
+  "stop": "Itigil",
+  "zoomIn": "Palakihin",
+  "zoomOut": "Paliitin",
+  "stretch": "Palitan ang espasyo",
+  "layout": "Palitan ang layout",
+  "downloadMidi": "I-download ang MIDI",
+  "print": "I-print / I-save ang PDF",
+  "loading": "Naglo-load",
+  "sheetMusic": "Partitura"
+}

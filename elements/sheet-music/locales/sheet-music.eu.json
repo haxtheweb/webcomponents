@@ -1,0 +1,13 @@
+{
+  "play": "Erreproduzitu",
+  "pause": "Pausatu",
+  "stop": "Gelditu",
+  "zoomIn": "Handiagotu",
+  "zoomOut": "Txikiagotu",
+  "stretch": "Aldatu tartea",
+  "layout": "Aldatu diseinua",
+  "downloadMidi": "Deskargatu MIDI",
+  "print": "Inprimatu / Gorde PDF",
+  "loading": "Kargatzen",
+  "sheetMusic": "Partitura"
+}

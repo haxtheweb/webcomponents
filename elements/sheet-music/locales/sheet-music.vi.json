@@ -1,0 +1,13 @@
+{
+  "play": "Phát",
+  "pause": "Tạm dừng",
+  "stop": "Dừng",
+  "zoomIn": "Phóng to",
+  "zoomOut": "Thu nhỏ",
+  "stretch": "Chuyển đổi khoảng cách",
+  "layout": "Chuyển đổi bố cục",
+  "downloadMidi": "Tải xuống MIDI",
+  "print": "In / Lưu PDF",
+  "loading": "Đang tải",
+  "sheetMusic": "Bản nhạc"
+}

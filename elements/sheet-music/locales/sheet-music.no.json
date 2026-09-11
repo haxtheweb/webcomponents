@@ -1,0 +1,13 @@
+{
+  "play": "Spill",
+  "pause": "Pause",
+  "stop": "Stopp",
+  "zoomIn": "Zoom inn",
+  "zoomOut": "Zoom ut",
+  "stretch": "Veksle avstand",
+  "layout": "Veksle oppsett",
+  "downloadMidi": "Last ned MIDI",
+  "print": "Skriv ut / Lagre PDF",
+  "loading": "Laster",
+  "sheetMusic": "Noter"
+}

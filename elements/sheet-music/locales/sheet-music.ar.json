@@ -1,0 +1,13 @@
+{
+  "play": "تشغيل",
+  "pause": "إيقاف مؤقت",
+  "stop": "إيقاف",
+  "zoomIn": "تكبير",
+  "zoomOut": "تصغير",
+  "stretch": "تبديل التباعد",
+  "layout": "تبديل التخطيط",
+  "downloadMidi": "تنزيل MIDI",
+  "print": "طباعة / حفظ PDF",
+  "loading": "جارٍ التحميل",
+  "sheetMusic": "نوتة موسيقية"
+}

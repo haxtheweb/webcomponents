@@ -1,0 +1,13 @@
+{
+  "play": "Puter",
+  "pause": "Jeda",
+  "stop": "Mandheg",
+  "zoomIn": "Ngedhekake",
+  "zoomOut": "Ngedohake",
+  "stretch": "Ganti jarak",
+  "layout": "Ganti tata letak",
+  "downloadMidi": "Unduh MIDI",
+  "print": "Cithak / Simpen PDF",
+  "loading": "Ngemuat",
+  "sheetMusic": "Partitur"
+}

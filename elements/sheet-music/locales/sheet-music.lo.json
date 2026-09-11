@@ -1,0 +1,13 @@
+{
+  "play": "ຫຼິ້ນ",
+  "pause": "ຢຸດຊົ່ວຄາວ",
+  "stop": "ຢຸດ",
+  "zoomIn": "ຂະຫຍາຍ",
+  "zoomOut": "ຫຍໍ້",
+  "stretch": "ສະຫຼັບໄລຍະຫ່າງ",
+  "layout": "ສະຫຼັບເຄື່ອງແບບ",
+  "downloadMidi": "ດາວໂຫລດ MIDI",
+  "print": "ພິມ / ບັນທຶກ PDF",
+  "loading": "ກຳລັງໂຫຼດ",
+  "sheetMusic": "ໂນດສຳລັບ"
+}

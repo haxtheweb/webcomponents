@@ -1,0 +1,13 @@
+{
+  "play": "Reproduciraj",
+  "pause": "Pauza",
+  "stop": "Zaustavi",
+  "zoomIn": "Uvećaj",
+  "zoomOut": "Umanji",
+  "stretch": "Uključi/isključi razmak",
+  "layout": "Uključi/isključi raspored",
+  "downloadMidi": "Preuzmi MIDI",
+  "print": "Štampaj / Sačuvaj PDF",
+  "loading": "Učitavanje",
+  "sheetMusic": "Note"
+}

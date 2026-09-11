@@ -1,0 +1,13 @@
+{
+  "play": "Esita",
+  "pause": "Paus",
+  "stop": "Peata",
+  "zoomIn": "Suurenda",
+  "zoomOut": "Vähenda",
+  "stretch": "Lülita vahesid",
+  "layout": "Lülita paigutust",
+  "downloadMidi": "Laadi MIDI alla",
+  "print": "Prindi / Salvesta PDF",
+  "loading": "Laadimine",
+  "sheetMusic": "Noodid"
+}

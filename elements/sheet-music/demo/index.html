@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>SheetMusic: sheet-music Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module" src="../sheet-music.js"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        padding: var(--ddd-spacing-4);
+        font-family: var(--ddd-font-navigation);
+        background-color: light-dark(
+          var(--ddd-theme-default-background),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-text, #111),
+          var(--ddd-theme-default-white)
+        );
+      }
+      h1 {
+        font-size: var(--ddd-font-size-xl);
+        margin: 0 0 var(--ddd-spacing-5);
+      }
+      h2 {
+        font-size: var(--ddd-font-size-l);
+        margin: var(--ddd-spacing-6) 0 var(--ddd-spacing-2);
+        color: light-dark(
+          var(--ddd-theme-default-nittanyNavy),
+          var(--ddd-theme-default-white)
+        );
+      }
+      p {
+        font-size: var(--ddd-font-size-s);
+        color: light-dark(
+          var(--ddd-theme-default-limestoneGray),
+          var(--ddd-theme-default-slateMaxLight)
+        );
+        margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-3);
+      }
+      code {
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneMaxLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-text, #111),
+          var(--ddd-theme-default-white)
+        );
+        padding: var(--ddd-spacing-1);
+        border-radius: var(--ddd-radius-xs);
+      }
+      .demo-card {
+        padding: var(--ddd-spacing-4);
+        margin-bottom: var(--ddd-spacing-4);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-slateMaxLight)
+        );
+        border-radius: var(--ddd-radius-sm);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>sheet-music demo</h1>
+
+    <h2>Inline alphaTex with audio</h2>
+    <p>
+      Notation is authored as alphaTex in a slotted
+      <code>&lt;template preserve-content&gt;</code>; audio playback is on by
+      default. The alphaTab engine only loads when this scrolls into view. Dark
+      mode follows your system preference automatically.
+    </p>
+    <div class="demo-card">
+      <sheet-music audio>
+        <template preserve-content="preserve-content">\title "C Major Scale"
+.
+:4 0.5 2.5 3.5 0.4 | 2.4 3.4 0.3 2.3</template>
+      </sheet-music>
+    </div>
+
+    <h2>Viewer mode (audio off)</h2>
+    <p>Omit <code>audio</code> (or set it to false) for a notation-only view.</p>
+    <div class="demo-card">
+      <sheet-music>
+        <template preserve-content="preserve-content">\title "G Major Scale"
+.
+:4 0.5 2.5 4.5 0.4 | 2.4 4.4 0.3 2.3</template>
+      </sheet-music>
+    </div>
+
+    <h2>MusicXML file — Ode to Joy (public domain)</h2>
+    <p>
+      Loads a local <code>.xml</code> (MusicXML) file — Beethoven's Ode to Joy,
+      which is in the public domain. MusicXML is the open standard for sharing
+      sheet music.
+    </p>
+    <div class="demo-card">
+      <sheet-music source="ode-to-joy.xml" audio></sheet-music>
+    </div>
+
+    <h2>Guitar Pro file — Canon (hosted demo)</h2>
+    <p>
+      Loads a <code>.gp</code> (Guitar Pro 7) file from alphaTab's demo server.
+      Guitar Pro files are proprietary but widely used for guitar tabs.
+    </p>
+    <div class="demo-card">
+      <sheet-music source="https://www.alphatab.net/files/canon.gp" audio>
+      </sheet-music>
+    </div>
+
+    <h2>Display options and export hidden</h2>
+    <p>
+      <code>show-display-options</code> and <code>show-export</code> can be set
+      to false to strip the control bar down to just play/pause/stop.
+    </p>
+    <div class="demo-card">
+      <sheet-music
+        audio
+        show-display-options="false"
+        show-export="false"
+        data-primary="21"
+      >
+        <template preserve-content="preserve-content">\title "Minimal Controls"
+.
+:4 0.5 2.5 3.5 0.4 | 2.4 3.4 0.3 2.3</template>
+      </sheet-music>
+    </div>
+  </body>
+</html>

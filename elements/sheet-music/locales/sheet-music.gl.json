@@ -1,0 +1,13 @@
+{
+  "play": "Reproducir",
+  "pause": "Pausa",
+  "stop": "Deter",
+  "zoomIn": "Achegar",
+  "zoomOut": "Afastar",
+  "stretch": "Cambiar o espazado",
+  "layout": "Cambiar o deseño",
+  "downloadMidi": "Descargar MIDI",
+  "print": "Imprimir / Gardar PDF",
+  "loading": "Cargando",
+  "sheetMusic": "Partitura"
+}

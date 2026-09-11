@@ -1,0 +1,13 @@
+{
+  "play": "Afspelen",
+  "pause": "Pauze",
+  "stop": "Stoppen",
+  "zoomIn": "Inzoomen",
+  "zoomOut": "Uitzoomen",
+  "stretch": "Afstand wisselen",
+  "layout": "Indeling wisselen",
+  "downloadMidi": "MIDI downloaden",
+  "print": "Afdrukken / PDF opslaan",
+  "loading": "Laden",
+  "sheetMusic": "Bladmuziek"
+}

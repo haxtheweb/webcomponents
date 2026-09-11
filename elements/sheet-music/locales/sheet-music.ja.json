@@ -1,0 +1,13 @@
+{
+  "play": "再生",
+  "pause": "一時停止",
+  "stop": "停止",
+  "zoomIn": "拡大",
+  "zoomOut": "縮小",
+  "stretch": "間隔の切り替え",
+  "layout": "レイアウトの切り替え",
+  "downloadMidi": "MIDIをダウンロード",
+  "print": "印刷 / PDFとして保存",
+  "loading": "読み込み中",
+  "sheetMusic": "楽譜"
+}

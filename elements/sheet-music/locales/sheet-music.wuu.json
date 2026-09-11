@@ -1,0 +1,13 @@
+{
+  "play": "播放",
+  "pause": "暂停",
+  "stop": "停止",
+  "zoomIn": "放大",
+  "zoomOut": "缩小",
+  "stretch": "切换间距",
+  "layout": "切换布局",
+  "downloadMidi": "下载 MIDI",
+  "print": "打印 / 保存 PDF",
+  "loading": "加载中",
+  "sheetMusic": "乐谱"
+}

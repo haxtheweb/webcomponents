@@ -1,0 +1,13 @@
+{
+  "play": "Tamba",
+  "pause": "Yimisa",
+  "stop": "Misa",
+  "zoomIn": "Kudza",
+  "zoomOut": "Deredza",
+  "stretch": "Chinja nzvimbo",
+  "layout": "Chinja marongero",
+  "downloadMidi": "Kurodha MIDI",
+  "print": "Dhirinta / Chengeta PDF",
+  "loading": "Kurodwa",
+  "sheetMusic": "Notsi dzemimhanzi"
+}

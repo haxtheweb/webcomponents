@@ -1,0 +1,13 @@
+{
+  "play": "Play",
+  "pause": "Pause",
+  "stop": "Stop",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "stretch": "Toggle spacing",
+  "layout": "Toggle layout",
+  "downloadMidi": "Download MIDI",
+  "print": "Print / Save PDF",
+  "loading": "Loading",
+  "sheetMusic": "Sheet music"
+}

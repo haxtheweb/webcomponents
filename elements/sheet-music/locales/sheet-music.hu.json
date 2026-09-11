@@ -1,0 +1,13 @@
+{
+  "play": "Lejátszás",
+  "pause": "Szünet",
+  "stop": "Leállítás",
+  "zoomIn": "Nagyítás",
+  "zoomOut": "Kicsinyítés",
+  "stretch": "Térköz váltása",
+  "layout": "Elrendezés váltása",
+  "downloadMidi": "MIDI letöltése",
+  "print": "Nyomtatás / PDF mentése",
+  "loading": "Betöltés",
+  "sheetMusic": "Kotta"
+}

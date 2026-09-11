@@ -1,0 +1,13 @@
+{
+  "play": "Wiedergeben",
+  "pause": "Pause",
+  "stop": "Stopp",
+  "zoomIn": "Vergrößern",
+  "zoomOut": "Verkleinern",
+  "stretch": "Abstand umschalten",
+  "layout": "Layout umschalten",
+  "downloadMidi": "MIDI herunterladen",
+  "print": "Drucken / PDF speichern",
+  "loading": "Wird geladen",
+  "sheetMusic": "Notenblatt"
+}

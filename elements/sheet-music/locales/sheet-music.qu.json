@@ -1,0 +1,13 @@
+{
+  "play": "Qallariy",
+  "pause": "Sayariy",
+  "stop": "Sayachiy",
+  "zoomIn": "Hatunyachiy",
+  "zoomOut": "Uchuyachiy",
+  "stretch": "Karukuyta hukchanay",
+  "layout": "Kamayta hukchanay",
+  "downloadMidi": "MIDI uraykachay",
+  "print": "Limt'ay / PDF waqaychay",
+  "loading": "Chargin",
+  "sheetMusic": "Taki qillqa"
+}

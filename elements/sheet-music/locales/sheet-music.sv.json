@@ -1,0 +1,13 @@
+{
+  "play": "Spela",
+  "pause": "Pausa",
+  "stop": "Stoppa",
+  "zoomIn": "Zooma in",
+  "zoomOut": "Zooma ut",
+  "stretch": "Växla mellanrum",
+  "layout": "Växla layout",
+  "downloadMidi": "Ladda ner MIDI",
+  "print": "Skriv ut / Spara PDF",
+  "loading": "Laddar",
+  "sheetMusic": "Partitur"
+}

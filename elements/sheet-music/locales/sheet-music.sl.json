@@ -1,0 +1,13 @@
+{
+  "play": "Predvajaj",
+  "pause": "Premor",
+  "stop": "Ustavi",
+  "zoomIn": "Povečaj",
+  "zoomOut": "Zmanjšaj",
+  "stretch": "Preklopi razmik",
+  "layout": "Preklopi postavitev",
+  "downloadMidi": "Prenesi MIDI",
+  "print": "Natisni / Shrani PDF",
+  "loading": "Nalaganje",
+  "sheetMusic": "Partitura"
+}

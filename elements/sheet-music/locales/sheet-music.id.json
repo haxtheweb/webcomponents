@@ -1,0 +1,13 @@
+{
+  "play": "Putar",
+  "pause": "Jeda",
+  "stop": "Henti",
+  "zoomIn": "Perbesar",
+  "zoomOut": "Perkecil",
+  "stretch": "Ubah spasi",
+  "layout": "Ubah tata letak",
+  "downloadMidi": "Unduh MIDI",
+  "print": "Cetak / Simpan PDF",
+  "loading": "Memuat",
+  "sheetMusic": "Partitur"
+}

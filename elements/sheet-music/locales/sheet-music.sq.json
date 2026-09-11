@@ -1,0 +1,13 @@
+{
+  "play": "Luaj",
+  "pause": "Pauzë",
+  "stop": "Ndalo",
+  "zoomIn": "Zmadho",
+  "zoomOut": "Zvogëlo",
+  "stretch": "Ndrysho hapësirën",
+  "layout": "Ndrysho paraqitjen",
+  "downloadMidi": "Shkarko MIDI",
+  "print": "Printo / Ruaj PDF",
+  "loading": "Po ngarkohet",
+  "sheetMusic": "Partiturë"
+}

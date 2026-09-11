@@ -1,0 +1,13 @@
+{
+  "play": "Oýnatmak",
+  "pause": "Pauza",
+  "stop": "Toxtatmak",
+  "zoomIn": "Ulaltmak",
+  "zoomOut": "Kiçeltmek",
+  "stretch": "Aralygy üýtgetmek",
+  "layout": "Ýerleşdirişi üýtgetmek",
+  "downloadMidi": "MIDI göçüp almak",
+  "print": "Çap etmek / PDF saklamak",
+  "loading": "Ýüklenýär",
+  "sheetMusic": "Notalar"
+}

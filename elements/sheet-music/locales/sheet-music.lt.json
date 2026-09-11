@@ -1,0 +1,13 @@
+{
+  "play": "Groti",
+  "pause": "Pristabdyti",
+  "stop": "Stabdyti",
+  "zoomIn": "Priartinti",
+  "zoomOut": "Atitolinti",
+  "stretch": "Perjungti tarpus",
+  "layout": "Perjungti išdėstymą",
+  "downloadMidi": "Atsisiųsti MIDI",
+  "print": "Spausdinti / Įrašyti PDF",
+  "loading": "Kraunama",
+  "sheetMusic": "Natos"
+}

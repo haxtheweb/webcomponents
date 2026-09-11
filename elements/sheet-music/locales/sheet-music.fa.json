@@ -1,0 +1,13 @@
+{
+  "play": "پخش",
+  "pause": "مکث",
+  "stop": "توقف",
+  "zoomIn": "بزرگ‌نمایی",
+  "zoomOut": "کوچک‌نمایی",
+  "stretch": "تغییر فاصله",
+  "layout": "تغییر چیدمان",
+  "downloadMidi": "دانلود MIDI",
+  "print": "چاپ / ذخیره PDF",
+  "loading": "در حال بارگذاری",
+  "sheetMusic": "نت موسیقی"
+}

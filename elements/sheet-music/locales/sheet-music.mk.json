@@ -1,0 +1,13 @@
+{
+  "play": "Пушти",
+  "pause": "Пауза",
+  "stop": "Стоп",
+  "zoomIn": "Зум кон",
+  "zoomOut": "Зум од",
+  "stretch": "Смени растојание",
+  "layout": "Смени распоред",
+  "downloadMidi": "Превземи MIDI",
+  "print": "Печати / Зачувај PDF",
+  "loading": "Вчитување",
+  "sheetMusic": "Ноти"
+}

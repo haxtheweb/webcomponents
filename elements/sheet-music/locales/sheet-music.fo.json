@@ -1,0 +1,13 @@
+{
+  "play": "Spæl",
+  "pause": "Pausera",
+  "stop": "Stoppa",
+  "zoomIn": "Stækka",
+  "zoomOut": "Minka",
+  "stretch": "Skift frástøðu",
+  "layout": "Skift uppseting",
+  "downloadMidi": "Niðurlasta MIDI",
+  "print": "Prenta / Goyma PDF",
+  "loading": "Lesur inn",
+  "sheetMusic": "Notur"
+}

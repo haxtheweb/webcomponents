@@ -1,0 +1,13 @@
+{
+  "play": "Riproduce",
+  "pause": "Pausa",
+  "stop": "Ferma",
+  "zoomIn": "Ingrandà",
+  "zoomOut": "Riduce",
+  "stretch": "Cambià spaziatura",
+  "layout": "Cambià dispusizione",
+  "downloadMidi": "Scaricà MIDI",
+  "print": "Stampà / Salvà PDF",
+  "loading": "Caricamentu",
+  "sheetMusic": "Partitura"
+}

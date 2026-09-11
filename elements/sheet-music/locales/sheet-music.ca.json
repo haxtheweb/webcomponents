@@ -1,0 +1,13 @@
+{
+  "play": "Reprodueix",
+  "pause": "Pausa",
+  "stop": "Atura",
+  "zoomIn": "Amplia",
+  "zoomOut": "Redueix",
+  "stretch": "Commuta l'espaiat",
+  "layout": "Commuta la disposició",
+  "downloadMidi": "Baixa MIDI",
+  "print": "Imprimeix / Desa PDF",
+  "loading": "S'està carregant",
+  "sheetMusic": "Partitura"
+}

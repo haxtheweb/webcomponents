@@ -1,0 +1,98 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": true,
+  "canEditSource": true,
+  "hideDefaultSettings": false,
+  "designSystem": {
+    "primary": true,
+    "card": false,
+    "text": false,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Sheet music",
+    "description": "Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.",
+    "icon": "hax:music",
+    "color": "purple",
+    "tags": ["Media", "Music", "Instructional"],
+    "handles": [
+      {
+        "type": "media",
+        "source": "source"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "slotWrapper": "template",
+        "slotAttributes": {
+          "preserve-content": "preserve-content"
+        },
+        "title": "AlphaTex notation",
+        "description": "Inline alphaTex markup for the sheet music. Edit directly to author notation; it is stored in a template so spacing is preserved.",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "source",
+        "title": "Score file",
+        "description": "Upload or link to a MusicXML (.xml/.musicxml/.mxl) or Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) file. Overrides inline alphaTex when set.",
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "validationType": "url",
+        "required": false
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio playback",
+        "description": "On by default - listen to the sheet music played via the built-in synthesizer. Turn off for viewer-only (no audio) mode.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Show display options",
+        "description": "Show zoom, stretch, and layout buttons on the player bar.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "showExport",
+        "title": "Show export buttons",
+        "description": "Show download MIDI and print/PDF buttons on the player bar.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "element-visible",
+      "data-hax-active",
+      "edit-mode",
+      "show-display-options",
+      "show-export"
+    ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": "Lets educators author and embed playable sheet music and guitar tabs in HAX pages, supporting open MusicXML for sharing and alphaTex for inline authoring."
+  },
+  "demoSchema": [
+    {
+      "tag": "sheet-music",
+      "properties": {
+        "audio": true
+      },
+      "content": "<template preserve-content=\"preserve-content\">\\title \"C Major Scale\" . :4 0.5 2.5 3.5 0.4 | 2.4 3.4 0.3 2.3</template>"
+    }
+  ]
+}

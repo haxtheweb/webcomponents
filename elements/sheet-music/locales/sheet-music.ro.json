@@ -1,0 +1,13 @@
+{
+  "play": "Redă",
+  "pause": "Pauză",
+  "stop": "Oprește",
+  "zoomIn": "Mărește",
+  "zoomOut": "Micșorează",
+  "stretch": "Comută spațierea",
+  "layout": "Comută aspectul",
+  "downloadMidi": "Descarcă MIDI",
+  "print": "Tipărește / Salvează PDF",
+  "loading": "Se încarcă",
+  "sheetMusic": "Partitură"
+}

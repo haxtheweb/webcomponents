@@ -1,0 +1,13 @@
+{
+  "play": "Lire",
+  "pause": "Pause",
+  "stop": "Arrêter",
+  "zoomIn": "Agrandir",
+  "zoomOut": "Réduire",
+  "stretch": "Basculer l'espacement",
+  "layout": "Basculer la mise en page",
+  "downloadMidi": "Télécharger MIDI",
+  "print": "Imprimer / Enregistrer PDF",
+  "loading": "Chargement",
+  "sheetMusic": "Partitions"
+}

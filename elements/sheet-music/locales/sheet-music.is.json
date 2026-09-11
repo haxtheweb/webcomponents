@@ -1,0 +1,13 @@
+{
+  "play": "Spila",
+  "pause": "Hlé",
+  "stop": "Stöðva",
+  "zoomIn": "Renna að",
+  "zoomOut": "Renna frá",
+  "stretch": "Víxla millibili",
+  "layout": "Víxla framsetningu",
+  "downloadMidi": "Sækja MIDI",
+  "print": "Prenta / Vista PDF",
+  "loading": "Hleður",
+  "sheetMusic": "Nótur"
+}

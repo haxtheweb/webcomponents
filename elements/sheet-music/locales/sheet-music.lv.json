@@ -1,0 +1,13 @@
+{
+  "play": "Atskaņot",
+  "pause": "Pauzēt",
+  "stop": "Apturēt",
+  "zoomIn": "Pietuvināt",
+  "zoomOut": "Attālināt",
+  "stretch": "Pārslēgt atstarpes",
+  "layout": "Pārslēgt izkārtojumu",
+  "downloadMidi": "Lejupielādēt MIDI",
+  "print": "Drukāt / Saglabāt PDF",
+  "loading": "Ielādē",
+  "sheetMusic": "Notis"
+}

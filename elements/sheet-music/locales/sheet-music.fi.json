@@ -1,0 +1,13 @@
+{
+  "play": "Toista",
+  "pause": "Tauko",
+  "stop": "Pysäytä",
+  "zoomIn": "Lähennä",
+  "zoomOut": "Loitonna",
+  "stretch": "Vaihda välit",
+  "layout": "Vaihda asettelu",
+  "downloadMidi": "Lataa MIDI",
+  "print": "Tulosta / Tallenna PDF",
+  "loading": "Ladataan",
+  "sheetMusic": "Nuotit"
+}
