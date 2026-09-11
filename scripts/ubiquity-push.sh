@@ -21,6 +21,11 @@ yarn run ubiquity
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/replace-tag/demo/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/product-card/demo/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/hax-cloud/demo/wc-registry.json
+# normalize the graph artifact into the same demo roots so local demos match
+# the CMS backends (gulpfile also writes these; keep in sync)
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/elements/replace-tag/demo/wc-registry-graph.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/elements/product-card/demo/wc-registry-graph.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/elements/hax-cloud/demo/wc-registry-graph.json
 
 ## STEP 1.5 AGENT SKILLS DISCOVERY (.well-known/agent-skills)
 # praw is the canonical source for HAX agent skills. Build the index, then snapshot
@@ -42,6 +47,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/hax11ty/app/build
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/hax11ty/app/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/hax11ty/app/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/hax11ty/app/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/hax11ty/app/wc-registry-graph.json
 
 # haxcms-php
 # normalize build build.js build-haxcms.js wc-registry.json and .version
@@ -51,6 +57,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/haxcms-php/build
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-php/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-php/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxcms-php/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/haxcms-php/wc-registry-graph.json
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxcms-php/.version
 
 # haxcms-nodejs
@@ -61,6 +68,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/haxcms-nodejs/src/public/build
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxcms-nodejs/src/public/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-nodejs/src/public/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxcms-nodejs/src/public/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/haxcms-nodejs/src/public/wc-registry-graph.json
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxcms-nodejs/src/.version
 
 ## build and build-haxcms live in site which gets boilerplate stamped
@@ -72,6 +80,7 @@ cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxcms-nodejs/src/boile
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/haxsite/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/haxsite/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/haxsite/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/haxsite/wc-registry-graph.json
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/haxsite/.version
 
 # haxiam
@@ -89,6 +98,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/psucdn/cdn/build
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/psucdn/cdn/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/psucdn/cdn/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/psucdn/cdn/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/psucdn/cdn/wc-registry-graph.json
 
 # we also have a haxcms path in case these would ever diverge; they haven't and probably won't
 rm -rf ~/haxtheweb/psucdn/haxcms/build
@@ -97,6 +107,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/haxtheweb/psucdn/haxcms/build
 cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/psucdn/haxcms/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/psucdn/haxcms/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/psucdn/haxcms/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/psucdn/haxcms/wc-registry-graph.json
 
 # waxam mirror
 rm -rf ~/Documents/git/waxam/cdn/build
@@ -105,6 +116,7 @@ cp -R ~/haxtheweb/webcomponents/build ~/Documents/git/waxam/cdn/build
 cp ~/haxtheweb/webcomponents/build.js ~/Documents/git/waxam/cdn/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/Documents/git/waxam/cdn/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/Documents/git/waxam/cdn/wc-registry.json
+cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/Documents/git/waxam/cdn/wc-registry-graph.json
 
 # elmsln
 # normalize build but need to copy in the legacy assets that we stopped supporting in core

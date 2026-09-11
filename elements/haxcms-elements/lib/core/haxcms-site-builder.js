@@ -1322,7 +1322,16 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // derive the graph URL from the registry file URL (site root) rather
         // than the module basePath, since wc-registry-graph.json lives next
         // to wc-registry.json, not inside build/es6/node_modules/
-        const registryFile = globalThis.WCAutoloadRegistryFile || "";
+        // wc-autoload.js rewraps WCAutoloadRegistryFile into an array after
+        // the initial string assignment in build.js, so coerce to a single
+        // string here before deriving the graph URL; otherwise Array.indexOf
+        // misses the substring (falling back to the wrong node_modules path)
+        // and Array.replace would throw.
+        let registryFile = globalThis.WCAutoloadRegistryFile || "";
+        if (Array.isArray(registryFile)) {
+          registryFile = registryFile.length ? registryFile[0] : "";
+        }
+        registryFile = String(registryFile);
         let graphUrl = "";
         if (registryFile && registryFile.indexOf("wc-registry.json") !== -1) {
           graphUrl = registryFile.replace(
