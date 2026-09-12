@@ -1,0 +1,14 @@
+{
+  "previousSlide": "الشريحة السابقة",
+  "nextSlide": "الشريحة التالية",
+  "viewAllSlides": "عرض كل الشرائح",
+  "viewOneSlide": "عرض شريحة واحدة في كل مرة",
+  "presentFullScreen": "العرض بملء الشاشة",
+  "exitFullScreen": "إنهاء ملء الشاشة",
+  "copyLinkToSlide": "نسخ رابط هذه الشريحة",
+  "linkCopied": "تم نسخ الرابط",
+  "speakerNotes": "ملاحظات المتحدث",
+  "loadingPresentation": "جارٍ تحميل العرض التقديمي",
+  "presentationUnavailable": "العرض التقديمي غير متوفر",
+  "slide": "شريحة"
+}

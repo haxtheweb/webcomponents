@@ -1,0 +1,50 @@
+{
+  "name": "@haxtheweb/slide-deck",
+  "version": "0.0.0",
+  "description": "Present an imported PowerPoint deck slide by slide, with speaker notes",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "type": "module",
+  "main": "slide-deck.js",
+  "module": "slide-deck.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
+  "dependencies": {
+    "lit": "3.3.3",
+    "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/i18n-manager": "^26.0.0",
+    "@aiden0z/pptx-renderer": "^1.2.4",
+    "@haxtheweb/simple-icon": "^26.0.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@haxtheweb/deduping-fix": "^26.0.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.1.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json"
+}

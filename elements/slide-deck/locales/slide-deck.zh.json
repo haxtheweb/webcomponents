@@ -1,0 +1,14 @@
+{
+  "previousSlide": "上一张幻灯片",
+  "nextSlide": "下一张幻灯片",
+  "viewAllSlides": "查看所有幻灯片",
+  "viewOneSlide": "逐张查看",
+  "presentFullScreen": "全屏演示",
+  "exitFullScreen": "退出全屏",
+  "copyLinkToSlide": "复制此幻灯片的链接",
+  "linkCopied": "链接已复制",
+  "speakerNotes": "演讲者备注",
+  "loadingPresentation": "正在加载演示文稿",
+  "presentationUnavailable": "演示文稿不可用",
+  "slide": "幻灯片"
+}

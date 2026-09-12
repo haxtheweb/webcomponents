@@ -1,0 +1,30 @@
+{
+  "title": "Demo deck",
+  "source": "demo-deck.pptx",
+  "pptx": null,
+  "thumbnail": null,
+  "renderTier": "client",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Presenting a deck in HAX",
+      "html": "<h1>Presenting a deck in HAX</h1><p>Imported from PowerPoint, shown in context.</p>",
+      "image": null,
+      "notes": "<p>Open on why a deck belongs on the page rather than as a download.</p>"
+    },
+    {
+      "number": 2,
+      "title": "Text is the substance",
+      "html": "<h1>Text is the substance</h1><p>Slide text and speaker notes come from the manifest, so the deck is readable, searchable and navigable on its own.</p>",
+      "image": null,
+      "notes": "<p>This is what screen readers and site search actually read.</p>"
+    },
+    {
+      "number": 3,
+      "title": "Slides are the enhancement",
+      "html": "<h1>Slides are the enhancement</h1><p>When a manifest names a .pptx the real slides are painted over this text, once the deck is scrolled into view.</p>",
+      "image": null,
+      "notes": "<p>This demo manifest has no pptx, so the text layer stays visible.</p>"
+    }
+  ]
+}

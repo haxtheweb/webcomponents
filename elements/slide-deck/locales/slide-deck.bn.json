@@ -1,0 +1,14 @@
+{
+  "previousSlide": "পূর্ববর্তী স্লাইড",
+  "nextSlide": "পরবর্তী স্লাইড",
+  "viewAllSlides": "সব স্লাইড দেখুন",
+  "viewOneSlide": "একবারে একটি স্লাইড দেখুন",
+  "presentFullScreen": "পূর্ণ স্ক্রিনে উপস্থাপন করুন",
+  "exitFullScreen": "পূর্ণ স্ক্রিন থেকে বেরিয়ে আসুন",
+  "copyLinkToSlide": "এই স্লাইডের লিঙ্ক কপি করুন",
+  "linkCopied": "লিঙ্ক কপি হয়েছে",
+  "speakerNotes": "বক্তার নোট",
+  "loadingPresentation": "উপস্থাপনা লোড হচ্ছে",
+  "presentationUnavailable": "উপস্থাপনা উপলব্ধ নেই",
+  "slide": "স্লাইড"
+}
