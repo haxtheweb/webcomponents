@@ -1,0 +1,14 @@
+{
+  "previousSlide": "Предыдущий слайд",
+  "nextSlide": "Следующий слайд",
+  "viewAllSlides": "Показать все слайды",
+  "viewOneSlide": "Показывать по одному слайду",
+  "presentFullScreen": "Полноэкранный режим",
+  "exitFullScreen": "Выйти из полноэкранного режима",
+  "copyLinkToSlide": "Копировать ссылку на слайд",
+  "linkCopied": "Ссылка скопирована",
+  "speakerNotes": "Заметки докладчика",
+  "loadingPresentation": "Загрузка презентации",
+  "presentationUnavailable": "Презентация недоступна",
+  "slide": "Слайд"
+}
