@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
@@ -365,6 +366,9 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         .notes {
           font-size: var(--ddd-font-size-4xs);
         }
+        .notes p {
+          white-space: pre-line;
+        }
         .message {
           padding: var(--ddd-spacing-3);
         }
@@ -426,17 +430,22 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           >
             <div>
               <strong>${this.t.slide} ${slide.number}</strong>
-              ${unsafeHTML(slide.html)}
+              ${unsafeHTML(sanitizeHTMLString(slide.html))}
             </div>
-            ${slide.notes
-              ? html`<div class="notes">
-                  <strong>${this.t.speakerNotes}</strong>
-                  ${unsafeHTML(slide.notes)}
-                </div>`
-              : nothing}
+            ${this.renderNotes(slide)}
           </button>`,
       )}
     </div>`;
+  }
+
+  /** Manifest notes are plain text; render them as text, never as HTML. */
+  renderNotes(slide) {
+    return slide.notes
+      ? html`<div class="notes">
+          <strong>${this.t.speakerNotes}</strong>
+          <p>${slide.notes}</p>
+        </div>`
+      : nothing;
   }
 
   render() {
@@ -459,7 +468,8 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         : html`<div id="stage" aria-hidden="true"></div>
             <div class="text">
               <h3>${current.title}</h3>
-              ${unsafeHTML(current.html)}
+              ${unsafeHTML(sanitizeHTMLString(current.html))}
+              ${this.renderNotes(current)}
             </div>`}
       <div aria-live="polite" class="message">
         ${this._message || `${this.t.slide} ${this.slide}: ${current.title}`}
