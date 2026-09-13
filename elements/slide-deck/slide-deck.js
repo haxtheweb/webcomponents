@@ -77,7 +77,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       presenting: { type: Boolean, reflect: true },
       deck: { type: Object },
       status: { type: String, reflect: true },
-      rendered: { type: Boolean },
+      rendered: { type: Boolean, reflect: true },
     };
   }
 
@@ -94,10 +94,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       this._observer.disconnect();
       this._observer = null;
     }
-    if (this._renderer) {
-      this._renderer.dispose();
-      this._renderer = null;
-    }
+    this._releaseRenderer();
     super.disconnectedCallback();
   }
 
@@ -133,6 +130,10 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
 
   /** Fetch the manifest, then honour any slide named in the URL. */
   async loadDeck() {
+    const load = {};
+    this._load = load;
+    this._releaseRenderer();
+    this.deck = null;
     this.status = "loading";
     this.rendered = false;
     try {
@@ -143,14 +144,22 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       if (!response.ok) {
         throw new Error(`deck manifest ${response.status}`);
       }
-      this.deck = await response.json();
+      const deck = await response.json();
+      // a newer source was set while this one was loading
+      if (load !== this._load) {
+        return;
+      }
+      this.deck = deck;
       this.status = "ready";
+      // the previous deck's slide may be past the end of this one
+      this.goTo(this.slide);
       this._readHash();
       this._watchForViewport();
     } catch (error) {
-      this.deck = null;
-      this.status = "error";
-      console.error(`slide-deck: ${error.message}`);
+      if (load === this._load) {
+        this.status = "error";
+        console.error(`slide-deck: ${error.message}`);
+      }
     }
   }
 
@@ -167,6 +176,17 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       }
     });
     this._observer.observe(this);
+  }
+
+  /** Drop the renderer, disposing it once any load in flight settles. */
+  _releaseRenderer() {
+    if (this._renderer) {
+      this._renderer.then(
+        (renderer) => renderer.dispose(),
+        () => {},
+      );
+      this._renderer = null;
+    }
   }
 
   /**
@@ -186,18 +206,30 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     if (!stage) {
       return;
     }
+    const { slide } = this;
     try {
       if (!this._renderer) {
-        const { DeckRenderer } = await import("./lib/slide-deck-renderer.js");
-        this._renderer = await DeckRenderer.load(
-          new URL(this.deck.pptx, globalThis.document.baseURI).href,
-        );
-        this.style.setProperty(
-          "--slide-deck-aspect-ratio",
-          `${this._renderer.aspectRatio}`,
+        const pptx = new URL(this.deck.pptx, globalThis.document.baseURI).href;
+        // shared by every paint until it settles, so the deck loads once
+        this._renderer = import("./lib/slide-deck-renderer.js").then(
+          ({ DeckRenderer }) => DeckRenderer.load(pptx),
         );
       }
-      await this._renderer.render(stage, this.slide - 1);
+      const pending = this._renderer;
+      const renderer = await pending;
+      // newer navigation, a mode change or a new source has taken over
+      if (
+        pending !== this._renderer ||
+        slide !== this.slide ||
+        !stage.isConnected
+      ) {
+        return;
+      }
+      this.style.setProperty(
+        "--slide-deck-aspect-ratio",
+        `${renderer.aspectRatio}`,
+      );
+      await renderer.render(stage, slide - 1);
       this.rendered = true;
     } catch (error) {
       this.rendered = false;
