@@ -125,7 +125,9 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
 
   /** Prefix for the location hash, so two decks on a page cannot collide. */
   get hashPrefix() {
-    return this.deckId || (this.deck && this.deck.title) || "slide";
+    return encodeURIComponent(
+      this.deckId || (this.deck && this.deck.title) || "slide",
+    );
   }
 
   /** Fetch the manifest, then honour any slide named in the URL. */
@@ -282,20 +284,22 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _readHash() {
-    const match = new RegExp(`^#${this.hashPrefix}-slide-(\\d+)$`).exec(
-      globalThis.location.hash,
-    );
-    if (match) {
-      this.goTo(Number(match[1]));
+    const prefix = `#${this.hashPrefix}-slide-`;
+    const { hash } = globalThis.location;
+    const number = hash.slice(prefix.length);
+    if (hash.startsWith(prefix) && /^\d+$/.test(number)) {
+      this.goTo(Number(number));
     }
   }
 
   _syncHash() {
-    const hash = `#${this.hashPrefix}-slide-${this.slide}`;
-    if (globalThis.location.hash === hash) {
+    const url = new URL(globalThis.location.href);
+    url.hash = `${this.hashPrefix}-slide-${this.slide}`;
+    if (url.href === globalThis.location.href) {
       return;
     }
-    globalThis.history.replaceState(null, "", hash);
+    // a bare "#hash" would resolve against the HAX <base>, not this page
+    globalThis.history.replaceState(null, "", url.href);
   }
 
   _announce(message) {
