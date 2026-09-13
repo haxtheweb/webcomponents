@@ -65,7 +65,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      /** URL of the deck.json manifest, relative to the page or absolute. */
+      /** URL of the deck.json manifest, relative to the site or absolute. */
       source: { type: String },
       /** Disambiguates deep links when a page holds more than one deck. */
       deckId: { type: String, attribute: "deck-id" },
@@ -135,14 +135,14 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     this.status = "loading";
     this.rendered = false;
     try {
-      const manifestUrl = new URL(this.source, globalThis.location.href);
-      const response = await fetch(manifestUrl.href);
+      // import paths are site relative, so resolve against the HAX <base>
+      const response = await fetch(
+        new URL(this.source, globalThis.document.baseURI).href,
+      );
       if (!response.ok) {
         throw new Error(`deck manifest ${response.status}`);
       }
       this.deck = await response.json();
-      // media inside the manifest is stored beside it, not beside the page
-      this._base = manifestUrl;
       this.status = "ready";
       this._readHash();
       this._watchForViewport();
@@ -189,7 +189,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       if (!this._renderer) {
         const { DeckRenderer } = await import("./lib/slide-deck-renderer.js");
         this._renderer = await DeckRenderer.load(
-          new URL(this.deck.pptx, this._base).href,
+          new URL(this.deck.pptx, globalThis.document.baseURI).href,
         );
         this.style.setProperty(
           "--slide-deck-aspect-ratio",
@@ -281,18 +281,6 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       event.preventDefault();
       keys[event.key]();
     }
-  }
-
-  /** Rewrite manifest relative media paths so they resolve beside deck.json. */
-  _resolveMedia(markup) {
-    if (!markup || !this._base) {
-      return markup;
-    }
-    return markup.replace(
-      /(src|href)="(?!https?:|data:|\/)([^"]+)"/g,
-      (whole, attribute, value) =>
-        `${attribute}="${new URL(value, this._base).href}"`,
-    );
   }
 
   static get styles() {
@@ -438,7 +426,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           >
             <div>
               <strong>${this.t.slide} ${slide.number}</strong>
-              ${unsafeHTML(this._resolveMedia(slide.html))}
+              ${unsafeHTML(slide.html)}
             </div>
             ${slide.notes
               ? html`<div class="notes">
@@ -471,7 +459,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         : html`<div id="stage" aria-hidden="true"></div>
             <div class="text">
               <h3>${current.title}</h3>
-              ${unsafeHTML(this._resolveMedia(current.html))}
+              ${unsafeHTML(current.html)}
             </div>`}
       <div aria-live="polite" class="message">
         ${this._message || `${this.t.slide} ${this.slide}: ${current.title}`}

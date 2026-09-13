@@ -34,7 +34,7 @@ Content is layered, so a deck degrades rather than breaks:
 
 | property | attribute | description                                                    |
 | -------- | --------- | -------------------------------------------------------------- |
-| `source` | `source`  | URL of `deck.json`, relative to the page or absolute           |
+| `source` | `source`  | URL of `deck.json`, relative to the site or absolute           |
 | `deckId` | `deck-id` | Distinguishes slide links when a page holds more than one deck |
 | `slide`  | `slide`   | Currently displayed slide, 1 based                             |
 | `mode`   | `mode`    | `slide` for one at a time, `grid` for every slide plus notes   |
