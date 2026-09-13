@@ -47,7 +47,10 @@ export class DeckRenderer {
     // blob URLs for embedded media are reused across slides
     this.mediaUrlCache = new Map();
     this.chartInstances = new Set();
-    this.handles = new Map();
+    this.handle = null;
+    this.target = null;
+    // the stage follows the host's width, including in full screen
+    this.resizeObserver = new ResizeObserver(() => this.fit());
   }
 
   get slideCount() {
@@ -70,34 +73,44 @@ export class DeckRenderer {
     if (!slide) {
       return;
     }
-    this.dispose(index);
+    // only one slide is ever on stage, so release the previous one first
+    this.clear();
     this.api.materializeSlideNodes(this.presentation, slide);
     // pdfjs is intentionally not configured: it is only used for EMF embedded
     // PDF fallbacks and wiring it would mean fetching a library at runtime.
-    const handle = this.api.renderSlide(this.presentation, slide, {
+    this.handle = this.api.renderSlide(this.presentation, slide, {
       mediaUrlCache: this.mediaUrlCache,
       chartInstances: this.chartInstances,
     });
-    this.handles.set(index, handle);
-    target.replaceChildren(handle.element);
-    handle.element.style.transformOrigin = "top left";
-    handle.element.style.transform = `scale(${target.clientWidth / this.presentation.width})`;
-    await handle.ready;
+    this.target = target;
+    target.replaceChildren(this.handle.element);
+    this.handle.element.style.transformOrigin = "top left";
+    this.fit();
+    this.resizeObserver.observe(target);
+    await this.handle.ready;
   }
 
-  /** Release a single slide, or every slide when no index is given. */
-  dispose(index) {
-    if (index === undefined) {
-      this.handles.forEach((handle) => handle.dispose());
-      this.handles.clear();
-      this.mediaUrlCache.forEach((url) => URL.revokeObjectURL(url));
-      this.mediaUrlCache.clear();
-      return;
+  /** Scale the painted slide to the current width of its stage. */
+  fit() {
+    if (this.handle && this.target) {
+      this.handle.element.style.transform = `scale(${this.target.clientWidth / this.presentation.width})`;
     }
-    const handle = this.handles.get(index);
-    if (handle) {
-      handle.dispose();
-      this.handles.delete(index);
+  }
+
+  /** Release the painted slide and stop following its stage. */
+  clear() {
+    this.resizeObserver.disconnect();
+    if (this.handle) {
+      this.handle.dispose();
+      this.handle = null;
     }
+    this.target = null;
+  }
+
+  /** Release everything, including media shared across slides. */
+  dispose() {
+    this.clear();
+    this.mediaUrlCache.forEach((url) => URL.revokeObjectURL(url));
+    this.mediaUrlCache.clear();
   }
 }
