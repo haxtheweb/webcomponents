@@ -44,6 +44,8 @@
         "description": "URL for the animated GIF.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "noCamera": true,
         "icon": "link",
         "validationType": "url",
         "required": true
@@ -70,6 +72,9 @@
         "description": "URL for a still image version of the GIF.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "noCamera": true,
+        "fileActions": true,
         "icon": "link",
         "validationType": "url",
         "required": true

@@ -1297,7 +1297,7 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   _msg(m, err) {
     if (store && typeof store.toast === "function") {
-      store.toast(m, 3000, { hat: err ? "fire" : "construction" });
+      store.toast(m, 3000, { hat: "construction", fire: err });
       return;
     }
     if (HAXStore && typeof HAXStore.toast === "function")

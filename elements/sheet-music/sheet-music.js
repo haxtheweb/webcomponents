@@ -25,9 +25,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
  * only applies to light DOM. That container is slotted into a shadow-DOM
  * viewport frame. Dark mode is handled purely via CSS light-dark() and
  * prefers-color-scheme (no JS detection). Notation text (alphaTex) lives in a
- * light-DOM <template preserve-content> which survives replace-tag swaps. A
- * code-sample-style inline edit mode lets authors edit the alphaTex directly
- * in the page via <code-editor>.
+ * light-DOM <template preserve-content> which survives replace-tag swaps.
  *
  * The control bar provides play/pause/stop, a visual playback-progress bar,
  * display options (zoom in/out, stretch, layout), and export actions
@@ -47,7 +45,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this.audio = true;
     this.showDisplayOptions = true;
     this.showExport = true;
-    this.editMode = false;
     this._haxstate = false;
     this.dataHaxActive = "";
     this.api = null;
@@ -97,7 +94,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       },
       // Show export buttons (download MIDI, print, export audio)
       showExport: { type: Boolean, reflect: true, attribute: "show-export" },
-      editMode: { type: Boolean, reflect: true, attribute: "edit-mode" },
       _haxstate: { type: Boolean },
       dataHaxActive: {
         type: String,
@@ -221,17 +217,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           --simple-tooltip-text-color: var(--ddd-theme-default-white);
           font-size: var(--ddd-font-size-xs);
         }
-        /* inline edit mode swap (mirrors code-sample) */
-        code-editor {
-          display: none;
-        }
-        :host([edit-mode]) code-editor {
-          display: block;
-          --monaco-element-iframe-height: var(
-            --sheet-music-editor-height,
-            480px
-          );
-        }
         :host([edit-mode]) .at-viewport,
         :host([edit-mode]) .at-controls {
           display: none;
@@ -242,9 +227,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
 
   // Lit render the HTML.
   render() {
-    return html`${this._haxstate
-        ? html`<code-editor language="plaintext"></code-editor>`
-        : ``}
+    return html`
       <div class="at-viewport" id="viewport">
         <slot></slot>
       </div>
@@ -362,6 +345,12 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this._injectCursorStyles();
     this._readTex();
     this._observeContent();
+    // elementVisible may already be true (IntersectionObserver fired) before
+    // firstUpdated created _surfaceWrap, in which case the earlier
+    // _initAlphaTab call bailed early. Retry now that the surface exists.
+    if (this.elementVisible && !this.api) {
+      this._initAlphaTab();
+    }
   }
 
   /**
@@ -498,9 +487,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       ) {
         this._rebuildAlphaTab();
       }
-      if (propName === "editMode") {
-        this._editModeChanged(this.editMode);
-      }
     });
   }
 
@@ -516,14 +502,20 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     }
     try {
       const module = await import("./lib/alphatab/alphaTab.min.mjs");
-      if (this.api) {
+      // The dynamic import above is awaited, so the element may have been
+      // disconnected (or HAX pre-processed it into content) while we waited.
+      // Either path tears _surfaceWrap down to null, and AlphaTabApi reads
+      // rootElement.classList in its constructor — re-validate before
+      // constructing or we throw "Cannot read properties of null".
+      if (this.api || !this._surfaceWrap || !this.isConnected) {
         return;
       }
       const AlphaTabApi =
         module.AlphaTabApi ||
         (module.default && module.default.AlphaTabApi) ||
         module.default;
-      const viewport = this.shadowRoot.querySelector("#viewport");
+      const viewport =
+        this.shadowRoot && this.shadowRoot.querySelector("#viewport");
       const settings = {
         core: {
           engine: "svg",
@@ -536,7 +528,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
             "./lib/alphatab/soundfont/sonivox.sf2",
             import.meta.url,
           ).href,
-          scrollElement: viewport,
+          scrollElement: viewport || undefined,
           enableCursor: true,
           enableAnimatedBeatCursor: true,
           enableElementHighlighting: true,
@@ -671,76 +663,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     }
   }
 
-  // ---- edit mode ----
-
-  /**
-   * Handle inline edit mode entering/leaving (mirrors code-sample). On entry
-   * the inline <code-editor> is wired for live alphaTex sync so the preview
-   * updates and resizes as the author types; on exit the wiring is removed and
-   * the final value is saved back into the light-DOM <template>.
-   */
-  _editModeChanged(value) {
-    if (value) {
-      if (this._surfaceWrap) {
-        this._surfaceWrap.style.display = "none";
-      }
-      import("@haxtheweb/code-editor/code-editor.js").then(() => {
-        const editor = this.shadowRoot.querySelector("code-editor");
-        if (editor) {
-          editor.innerHTML = this._tex;
-          this._wireLiveEditorSync();
-        }
-      });
-    } else {
-      this._unwireLiveEditorSync();
-      if (this._surfaceWrap) {
-        this._surfaceWrap.style.display = "";
-      }
-      const editor = this.shadowRoot.querySelector("code-editor");
-      if (editor && editor.getValueAsNode) {
-        const val = editor.getValueAsNode().innerHTML || "";
-        this.innerHTML =
-          '<template preserve-content="preserve-content">' + val + "</template>";
-        this._readTex();
-        if (
-          this.api &&
-          !this.source &&
-          !this._haxstate &&
-          !this.dataHaxActive
-        ) {
-          this.api.tex(this._tex);
-        }
-      }
-    }
-  }
-
-  /**
-   * Attach the live alphaTex sync listener to the inline <code-editor> so the
-   * notation preview updates (and resizes) as the author types, not only on
-   * save/exit. Idempotent so repeated entry paths do not double-bind.
-   */
-  _wireLiveEditorSync() {
-    const editor =
-      this.shadowRoot && this.shadowRoot.querySelector("code-editor");
-    if (editor && !editor._sheetMusicLiveWired) {
-      editor.addEventListener("value-changed", this._onEditorValueChanged);
-      editor._sheetMusicLiveWired = true;
-    }
-  }
-
-  /**
-   * Remove the live alphaTex sync listener and any pending debounced sync.
-   */
-  _unwireLiveEditorSync() {
-    const editor =
-      this.shadowRoot && this.shadowRoot.querySelector("code-editor");
-    if (editor) {
-      editor.removeEventListener("value-changed", this._onEditorValueChanged);
-      delete editor._sheetMusicLiveWired;
-    }
-    clearTimeout(this._liveSyncTimer);
-  }
-
   /**
    * Debounced handler for the inline editor's value-changed event. Pushes the
    * live alphaTex into alphaTab and triggers a re-render so the preview both
@@ -851,45 +773,11 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   haxactiveElementChanged(element, value) {
     if (value) {
       this._haxstate = true;
-      this.editMode = value;
     }
   }
 
   haxeditModeChanged(value) {
-    if (value) {
-      // entering HAX inline edit - wire live preview sync (idempotent; the
-      // code-editor may still be importing, in which case _editModeChanged
-      // will wire it once the import resolves)
-      this._wireLiveEditorSync();
-    } else if (this.shadowRoot) {
-      this._unwireLiveEditorSync();
-      const editor = this.shadowRoot.querySelector("code-editor");
-      if (editor && editor.getValueAsNode) {
-        const val = editor.getValueAsNode().innerHTML || "";
-        this.innerHTML =
-          '<template preserve-content="preserve-content">' + val + "</template>";
-        this._readTex();
-        if (this.api && !this.source) {
-          this.api.tex(this._tex);
-        }
-      }
-    }
     this._haxstate = value;
-  }
-
-  haxinlineContextMenu(ceMenu) {
-    ceMenu.ceButtons = [
-      {
-        icon: "lrn:edit",
-        callback: "haxToggleEdit",
-        label: "Toggle edit mode",
-      },
-    ];
-  }
-
-  haxToggleEdit(e) {
-    this.editMode = !this.editMode;
-    return true;
   }
 
   haxpreProcessNodeToContent(node) {
@@ -900,7 +788,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       this._playing = false;
     }
     this._haxstate = false;
-    this.editMode = false;
     if (this._surfaceWrap && this._surfaceWrap.parentNode) {
       this._surfaceWrap.parentNode.removeChild(this._surfaceWrap);
       this._surfaceWrap = null;

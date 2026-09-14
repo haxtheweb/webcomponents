@@ -1364,7 +1364,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           .placeholder="${this.placeholder || ""}"
           ?readonly="${this.readonly}"
           ?required="${this.required}"
-          rows="1"
+          rows="4"
           tabindex="0"
           part="textarea"
         >
