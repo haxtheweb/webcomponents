@@ -163,6 +163,29 @@ class ImageCompareSlider extends I18NMixin(
       }
     });
   }
+  /**
+   * #3050: a file backing the top or bottom image was modified in place.
+   * Refresh the live preview by cache-busting the slotted shadow <img> srcs
+   * directly so the persisted `topSrc` / `bottomSrc` properties (and saved
+   * content) stay clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (
+      !store._mediaSrcMatches(this.topSrc, path) &&
+      !store._mediaSrcMatches(this.bottomSrc, path)
+    ) {
+      return;
+    }
+    store._pokeMatchingImgs(this.shadowRoot, path);
+  }
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;

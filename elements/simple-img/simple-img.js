@@ -51,6 +51,29 @@ export class SimpleImg extends HTMLElement {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
+  /**
+   * #3050: a file backing this image was modified in place. The displayed
+   * <img> lives in the LIGHT DOM and its src is the computed `srcconverted`
+   * URL (not `this.src`), so cache-bust it directly — the persisted `src`
+   * attribute (and saved content) stays clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.src, path)) return;
+    const img = this.querySelector("img");
+    if (!img) return;
+    const cur = img.getAttribute("src") || img.src || "";
+    const base = String(cur).split("?")[0];
+    const ts = Date.now();
+    img.src = base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+  }
 
   // notice these changing
   static get observedAttributes() {

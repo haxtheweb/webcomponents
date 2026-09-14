@@ -252,6 +252,24 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   /**
+   * #3050: a file backing this image was modified in place (rotate / compress /
+   * scale / transform). Refresh the live preview by cache-busting the shadow
+   * <img> src directly so the persisted `image` property (and saved content)
+   * stays clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.image, path)) return;
+    store._pokeMatchingImgs(this.shadowRoot, path);
+  }
+  /**
    * haxProperties integration via file reference
    */
   static get haxProperties() {

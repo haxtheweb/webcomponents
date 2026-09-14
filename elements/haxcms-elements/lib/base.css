@@ -70,7 +70,7 @@ simple-modal[opened] {
 }
 
 super-daemon {
-  --simple-modal-z-index: 100000001;
+  --simple-modal-z-index: 100000002;
   --super-daemon-width: 30vw;
 }
 

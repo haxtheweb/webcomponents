@@ -78,6 +78,31 @@ class FullWidthImage extends LitElement {
     </div>`;
   }
 
+  /**
+   * #3050: a file backing this background image was modified in place. Refresh
+   * the live preview by cache-busting the #image background-image style
+   * directly so the persisted `source` property (and saved content) stays
+   * clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.source, path)) return;
+    const el =
+      this.shadowRoot && this.shadowRoot.querySelector("#image");
+    if (!el) return;
+    const base = String(this.source).split("?")[0];
+    const ts = Date.now();
+    const busted =
+      base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+    el.style.backgroundImage = `url("${busted}")`;
+  }
   // haxProperty definition
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)

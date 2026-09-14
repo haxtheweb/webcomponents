@@ -38,5 +38,7 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install
+      - name: Validate component gallery build
+        run: yarn build-gallery
       - name: Rebuild Elements README
         run: cd elements && for dir in */; do head -4 $dir/README.md; done > README.md

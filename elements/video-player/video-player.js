@@ -262,6 +262,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Poster image",
             description: "Poster image URL.",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noScreenRecord: true,
             validationType: "url",
@@ -1120,7 +1121,21 @@ class VideoPlayer extends IntersectionObserverMixin(
     return {
       postProcessNodeToContent: "haxpostProcessNodeToContent",
       inlineContextMenu: "haxinlineContextMenu",
+      mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+  /**
+   * #3050: a file backing the poster image was modified in place. Refresh the
+   * live preview by cache-busting the poster <img> inside the nested
+   * a11y-media-player shadow tree directly, so the persisted `thumbnailSrc`
+   * property (and saved content) stays clean.
+   */
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.thumbnailSrc, path)) return;
+    store._pokeMatchingImgs(this.shadowRoot, path);
   }
 
   /**

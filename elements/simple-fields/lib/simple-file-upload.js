@@ -467,139 +467,162 @@ class SimpleFileUpload extends DDD {
   }
 
   /**
-   * Start uploading all files in the queue.
+   * Start uploading all pending files in the queue, ONE AT A TIME.
+   * #3050: sequential uploads prevent server-call flooding when a user drops
+   * many files at once and keep per-file progress perceptible. Each file's
+   * full XHR lifecycle (load / error / abort) is awaited before the next file
+   * starts, for every consumer of <simple-file-upload>.
    */
-  uploadFiles() {
-    for (let i = 0; i < this.files.length; i++) {
-      const file = this.files[i];
-      const canUpload =
-        !file.complete && !file.abort && !file.error && !file.xhr;
-      if (canUpload) {
-        this._uploadFile(file, i);
-      }
+  async uploadFiles() {
+    // Snapshot the pending files so removals mid-loop (a successful upload
+    // splices itself out of this.files) don't drift the iteration index.
+    const pending = this.files.filter(
+      (f) => !f.complete && !f.abort && !f.error && !f.xhr,
+    );
+    for (let i = 0; i < pending.length; i++) {
+      await this._uploadFile(pending[i]);
     }
   }
 
-  _uploadFile(file, index) {
-    if (file.xhr) {
-      return;
-    }
-    const xhr = new XMLHttpRequest();
-    file.xhr = xhr;
-    file.status = "Preparing";
-    this.requestUpdate();
-
-    const formData = new FormData();
-    formData.append(this.formDataName || "file", file._file);
-
-    const beforeEvent = new CustomEvent("upload-before", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        file: file._file,
-        formData: formData,
-        xhr: xhr,
-      },
-    });
-    this.dispatchEvent(beforeEvent);
-
-    if (beforeEvent.defaultPrevented) {
-      file.xhr = null;
-      file.status = "Pending";
-      this.requestUpdate();
-      return;
-    }
-
-    if (!this.target || !this.method) {
-      file.xhr = null;
-      file.status = "Pending";
-      this.requestUpdate();
-      return;
-    }
-
-    file.status = "Uploading";
-    this.requestUpdate();
-    xhr.open(this.method, this.target, true);
-    if (this.withCredentials) {
-      xhr.withCredentials = true;
-    }
-    if (this.headers && typeof this.headers === "object") {
-      const keys = Object.keys(this.headers);
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        xhr.setRequestHeader(key, this.headers[key]);
+  /**
+   * Upload a single queued file via XHR. Returns a Promise that resolves once
+   * the XHR reaches a terminal state (load / error / abort) or is skipped
+   * (already uploading / cancelled before send / no target), so callers can
+   * await the full lifecycle before starting the next file (#3050).
+   */
+  _uploadFile(file) {
+    return new Promise((resolve) => {
+      if (file.xhr) {
+        resolve(false);
+        return;
       }
-    }
+      const xhr = new XMLHttpRequest();
+      file.xhr = xhr;
+      file.status = "Preparing";
+      this.requestUpdate();
 
-    xhr.upload.addEventListener("progress", (e) => {
-      if (e.lengthComputable) {
-        file.progress = Math.round((e.loaded / e.total) * 100);
+      const formData = new FormData();
+      formData.append(this.formDataName || "file", file._file);
+
+      const beforeEvent = new CustomEvent("upload-before", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          file: file._file,
+          formData: formData,
+          xhr: xhr,
+        },
+      });
+      this.dispatchEvent(beforeEvent);
+
+      if (beforeEvent.defaultPrevented) {
+        file.xhr = null;
+        file.status = "Pending";
         this.requestUpdate();
+        resolve(false);
+        return;
       }
-    });
 
-    xhr.addEventListener("load", () => {
-      file.progress = 100;
-      file.complete = true;
-      file.status = xhr.status === 200 ? "Complete" : `Error: ${xhr.status}`;
-      if (xhr.status !== 200) {
-        file.error = `Upload failed: ${xhr.status}`;
+      if (!this.target || !this.method) {
+        file.xhr = null;
+        file.status = "Pending";
+        this.requestUpdate();
+        resolve(false);
+        return;
       }
-      this.dispatchEvent(
-        new CustomEvent("upload-response", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            file: file._file,
-            xhr: xhr,
-          },
-        }),
-      );
+
+      file.status = "Uploading";
       this.requestUpdate();
-      if (xhr.status === 200) {
-        setTimeout(() => {
-          this._removeFile(index);
-        }, 0);
+      xhr.open(this.method, this.target, true);
+      if (this.withCredentials) {
+        xhr.withCredentials = true;
       }
-    });
+      if (this.headers && typeof this.headers === "object") {
+        const keys = Object.keys(this.headers);
+        for (let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          xhr.setRequestHeader(key, this.headers[key]);
+        }
+      }
 
-    xhr.addEventListener("error", () => {
-      file.error = "Network error";
-      file.status = "Error";
-      this.dispatchEvent(
-        new CustomEvent("upload-response", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            file: file._file,
-            xhr: xhr,
-          },
-        }),
-      );
-      this.requestUpdate();
-    });
+      xhr.upload.addEventListener("progress", (e) => {
+        if (e.lengthComputable) {
+          file.progress = Math.round((e.loaded / e.total) * 100);
+          this.requestUpdate();
+        }
+      });
 
-    xhr.addEventListener("abort", () => {
-      file.abort = true;
-      file.status = "Aborted";
-      this.dispatchEvent(
-        new CustomEvent("upload-response", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            file: file._file,
-            xhr: xhr,
-          },
-        }),
-      );
-      this.requestUpdate();
-    });
+      xhr.addEventListener("load", () => {
+        file.progress = 100;
+        file.complete = true;
+        file.status = xhr.status === 200 ? "Complete" : `Error: ${xhr.status}`;
+        if (xhr.status !== 200) {
+          file.error = `Upload failed: ${xhr.status}`;
+        }
+        this.dispatchEvent(
+          new CustomEvent("upload-response", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              file: file._file,
+              xhr: xhr,
+            },
+          }),
+        );
+        this.requestUpdate();
+        if (xhr.status === 200) {
+          // Remove by reference so the index stays correct regardless of
+          // other removals shifting this.files underneath us.
+          setTimeout(() => {
+            const idx = this.files.indexOf(file);
+            if (idx !== -1) {
+              this._removeFile(idx);
+            }
+          }, 0);
+        }
+        resolve(xhr.status === 200);
+      });
 
-    xhr.send(formData);
+      xhr.addEventListener("error", () => {
+        file.error = "Network error";
+        file.status = "Error";
+        this.dispatchEvent(
+          new CustomEvent("upload-response", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              file: file._file,
+              xhr: xhr,
+            },
+          }),
+        );
+        this.requestUpdate();
+        resolve(false);
+      });
+
+      xhr.addEventListener("abort", () => {
+        file.abort = true;
+        file.status = "Aborted";
+        this.dispatchEvent(
+          new CustomEvent("upload-response", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              file: file._file,
+              xhr: xhr,
+            },
+          }),
+        );
+        this.requestUpdate();
+        resolve(false);
+      });
+
+      xhr.send(formData);
+    });
   }
 
   _abortFile(index) {

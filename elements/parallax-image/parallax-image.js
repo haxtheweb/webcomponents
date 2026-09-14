@@ -138,6 +138,28 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
+  /**
+   * #3050: a file backing this background image was modified in place. Refresh
+   * the live preview by cache-busting the `--parallax-image-background` CSS
+   * variable directly so the persisted `imageBg` property (and saved content)
+   * stays clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.imageBg, path)) return;
+    const base = String(this.imageBg).split("?")[0];
+    const ts = Date.now();
+    const busted =
+      base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+    this.style.setProperty("--parallax-image-background", `url(${busted})`);
+  }
   static get haxProperties() {
     return {
       canScale: true,
@@ -166,6 +188,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             title: "Image",
             description: "image to be involved in the background",
             inputMethod: "haxupload",
+            fileActions: true,
             noVoiceRecord: true,
             noCamera: true,
             noScreenRecord: true,

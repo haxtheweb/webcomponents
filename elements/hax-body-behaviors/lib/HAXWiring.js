@@ -195,7 +195,8 @@
  *   preProcessInsertContent : "haxpreProcessInsertContent", // input (node) where node is item about to be inserted into the content
  *   // @see @haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js
  *   siteToSkeleton : "haxsiteToSkeleton", // input (details) where details is { uuidMap, direction }; element rewrites its own site-item UUID references so skeleton structure + content stay in sync
- * }
+ *   // @see @haxtheweb/media-image/media-image.js
+ *   mediaSourceUpdated : "haxmediaSourceUpdated", // input (path, store) where path is the clean URL / relative path of a file just modified in place (rotate / compress / scale / transform / replace) and store is the HAXStore instance. The element checks whether its own image-bearing property references path (store._mediaSrcMatches helps) and, if so, refreshes its live preview WITHOUT writing a cache-busting query into the persisted source property (poke an internal shadow <img> via store._pokeMatchingImgs, recompute a derived background-image, etc.). HAXStore.refreshMediaSource(path) walks the active page and fires this hook on every implementing element, cache-busting raw <img> primitives in place.
  *
  * The callback if defined is handed the element / item to act against
  * // Support being an editing interface element for HAX

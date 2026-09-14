@@ -864,6 +864,9 @@ function generateHTML(components) {
       
       // Load selected demo in iframe
       demoFrame.src = currentDemoPath;
+
+      // Reflect the current selection in the URL for shareable deep links.
+      updateUrlForCurrentDemo();
     }
     
     // Search functionality
@@ -900,6 +903,7 @@ function generateHTML(components) {
         }
         currentDemoPath = demoSelector.value || currentComponent.demoPath;
         demoFrame.src = currentDemoPath;
+        updateUrlForCurrentDemo();
       });
     }
     
@@ -982,8 +986,76 @@ function generateHTML(components) {
       return html;
     }
     
+    // Deep-link routing helpers (?element=<slug>&demo=<name>)
+    function getQueryParam(name) {
+      return new URLSearchParams(globalThis.location.search).get(name);
+    }
+
+    function updateUrlForCurrentDemo() {
+      if (!currentComponent) {
+        return;
+      }
+      const params = new URLSearchParams();
+      params.set('element', currentComponent.name);
+      if (currentDemoPath && currentDemoPath !== currentComponent.demoPath) {
+        let demoName = null;
+        if (currentComponent.additionalDemos && currentComponent.additionalDemos.length > 0) {
+          for (let i = 0; i < currentComponent.additionalDemos.length; i++) {
+            if (currentComponent.additionalDemos[i].path === currentDemoPath) {
+              demoName = currentComponent.additionalDemos[i].name;
+              break;
+            }
+          }
+        }
+        if (demoName) {
+          params.set('demo', demoName);
+        }
+      }
+      const search = params.toString();
+      globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));
+    }
+
+    function applyRouteFromUrl() {
+      const slug = getQueryParam('element');
+      if (!slug) {
+        return;
+      }
+      let component = null;
+      for (let i = 0; i < COMPONENTS.length; i++) {
+        if (COMPONENTS[i].name === slug) {
+          component = COMPONENTS[i];
+          break;
+        }
+      }
+      if (!component) {
+        return;
+      }
+      selectComponent(component);
+      const demoName = getQueryParam('demo');
+      if (demoName && demoName !== 'index') {
+        let match = null;
+        if (component.additionalDemos && component.additionalDemos.length > 0) {
+          for (let j = 0; j < component.additionalDemos.length; j++) {
+            if (component.additionalDemos[j].name === demoName) {
+              match = component.additionalDemos[j];
+              break;
+            }
+          }
+        }
+        if (match) {
+          currentDemoPath = match.path;
+          if (demoSelector && demoSelector.options.length > 0) {
+            demoSelector.value = match.path;
+          }
+          demoFrame.src = currentDemoPath;
+          updateUrlForCurrentDemo();
+        }
+      }
+    }
+
     // Initialize
     renderComponentList();
+    applyRouteFromUrl();
   </script>
 </body>
 </html>`;

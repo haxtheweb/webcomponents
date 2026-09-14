@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Sheet music",
     "description": "Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.",
-    "icon": "hax:music",
+    "icon": "image:music-note",
     "color": "purple",
     "tags": ["Media", "Music", "Instructional"],
     "handles": [

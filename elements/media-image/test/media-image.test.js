@@ -192,6 +192,49 @@ describe("media-image test", () => {
       expect(caption).to.exist;
     });
   });
+
+  describe("#3050 mediaSourceUpdated haxHook", () => {
+    it("declares the mediaSourceUpdated hook", () => {
+      const hooks = element.haxHooks();
+      expect(hooks.mediaSourceUpdated).to.equal("haxmediaSourceUpdated");
+    });
+
+    it("pokes its shadow tree when its source references the changed path", async () => {
+      const testElement = await fixture(
+        html`<media-image source="files/photo.jpg"></media-image>`,
+      );
+      await testElement.updateComplete;
+      let poked = null;
+      const fakeStore = {
+        _mediaSrcMatches: (src, path) =>
+          String(src || "").indexOf(path) !== -1,
+        _pokeMatchingImgs: (root, path) => {
+          poked = { root, path };
+        },
+      };
+      testElement.haxmediaSourceUpdated("files/photo.jpg", fakeStore);
+      expect(poked).to.not.equal(null);
+      expect(poked.root).to.equal(testElement.shadowRoot);
+      expect(poked.path).to.equal("files/photo.jpg");
+    });
+
+    it("does nothing when its source does not reference the changed path", async () => {
+      const testElement = await fixture(
+        html`<media-image source="files/photo.jpg"></media-image>`,
+      );
+      await testElement.updateComplete;
+      let poked = false;
+      const fakeStore = {
+        _mediaSrcMatches: (src, path) =>
+          String(src || "").indexOf(path) !== -1,
+        _pokeMatchingImgs: () => {
+          poked = true;
+        },
+      };
+      testElement.haxmediaSourceUpdated("files/other.jpg", fakeStore);
+      expect(poked).to.equal(false);
+    });
+  });
 });
 
 /*

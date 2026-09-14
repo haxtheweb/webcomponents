@@ -59,6 +59,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this._loadProgress = 0;
     this._playProgress = 0;
     this._timeText = "00:00 / 00:00";
+    this._liveSyncTimer = null;
+    this._onEditorValueChanged = this._onEditorValueChanged.bind(this);
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -363,6 +365,17 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   }
 
   /**
+   * HTMLElement life cycle - register the capturing drop handler that prevents
+   * any external element from being dragged/dropped into sheet-music's slot.
+   * The slot is only for the alphaTex <template>; the hover highlight driven
+   * by hax-body is intentionally left intact per the issue's request.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("drop", this._onDrop, true);
+  }
+
+  /**
    * Inject CSS for alphaTab's playback cursor / highlight classes into
    * document.head (scoped to our surface so it does not affect other alphaTab
    * instances). DDD color tokens are available on :root so we can use them.
@@ -661,7 +674,10 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   // ---- edit mode ----
 
   /**
-   * Handle inline edit mode entering/leaving (mirrors code-sample).
+   * Handle inline edit mode entering/leaving (mirrors code-sample). On entry
+   * the inline <code-editor> is wired for live alphaTex sync so the preview
+   * updates and resizes as the author types; on exit the wiring is removed and
+   * the final value is saved back into the light-DOM <template>.
    */
   _editModeChanged(value) {
     if (value) {
@@ -672,9 +688,11 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         const editor = this.shadowRoot.querySelector("code-editor");
         if (editor) {
           editor.innerHTML = this._tex;
+          this._wireLiveEditorSync();
         }
       });
     } else {
+      this._unwireLiveEditorSync();
       if (this._surfaceWrap) {
         this._surfaceWrap.style.display = "";
       }
@@ -694,6 +712,57 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         }
       }
     }
+  }
+
+  /**
+   * Attach the live alphaTex sync listener to the inline <code-editor> so the
+   * notation preview updates (and resizes) as the author types, not only on
+   * save/exit. Idempotent so repeated entry paths do not double-bind.
+   */
+  _wireLiveEditorSync() {
+    const editor =
+      this.shadowRoot && this.shadowRoot.querySelector("code-editor");
+    if (editor && !editor._sheetMusicLiveWired) {
+      editor.addEventListener("value-changed", this._onEditorValueChanged);
+      editor._sheetMusicLiveWired = true;
+    }
+  }
+
+  /**
+   * Remove the live alphaTex sync listener and any pending debounced sync.
+   */
+  _unwireLiveEditorSync() {
+    const editor =
+      this.shadowRoot && this.shadowRoot.querySelector("code-editor");
+    if (editor) {
+      editor.removeEventListener("value-changed", this._onEditorValueChanged);
+      delete editor._sheetMusicLiveWired;
+    }
+    clearTimeout(this._liveSyncTimer);
+  }
+
+  /**
+   * Debounced handler for the inline editor's value-changed event. Pushes the
+   * live alphaTex into alphaTab and triggers a re-render so the preview both
+   * updates and resizes in real time (instead of staying shrunk until save).
+   */
+  _onEditorValueChanged(e) {
+    clearTimeout(this._liveSyncTimer);
+    this._liveSyncTimer = setTimeout(() => {
+      let liveTex = "";
+      if (e && e.detail) {
+        liveTex =
+          typeof e.detail === "string" ? e.detail : e.detail.value || "";
+      }
+      liveTex = (liveTex || "").trim();
+      if (!liveTex || liveTex === this._tex) {
+        return;
+      }
+      if (this.api && !this.source) {
+        this.api.tex(liveTex);
+        this.api.render();
+      }
+    }, 200);
   }
 
   /**
@@ -723,9 +792,34 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   }
 
   /**
+   * Reject all drop attempts into sheet-music. Its slotted area is only for
+   * the alphaTex <template> and must never accept dragged-in elements. Called
+   * in the capturing phase so hax-body's own drop handler never completes the
+   * insertion, while the dragenter/hover highlight remains unaffected.
+   */
+  _onDrop(e) {
+    let store = null;
+    if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
+      try {
+        store = globalThis.HaxStore.requestAvailability();
+      } catch (err) {
+        store = null;
+      }
+    }
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    if (store) {
+      store.__dragTarget = null;
+    }
+  }
+
+  /**
    * HTMLElement life cycle - tear down alphaTab + observers + light-DOM surface.
    */
   disconnectedCallback() {
+    this.removeEventListener("drop", this._onDrop, true);
+    clearTimeout(this._liveSyncTimer);
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;
@@ -762,7 +856,13 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   }
 
   haxeditModeChanged(value) {
-    if (!value && this.shadowRoot) {
+    if (value) {
+      // entering HAX inline edit - wire live preview sync (idempotent; the
+      // code-editor may still be importing, in which case _editModeChanged
+      // will wire it once the import resolves)
+      this._wireLiveEditorSync();
+    } else if (this.shadowRoot) {
+      this._unwireLiveEditorSync();
       const editor = this.shadowRoot.querySelector("code-editor");
       if (editor && editor.getValueAsNode) {
         const val = editor.getValueAsNode().innerHTML || "";

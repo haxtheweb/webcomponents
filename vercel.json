@@ -1,4 +1,6 @@
 {
+  "buildCommand": "yarn install && yarn build-gallery",
+  "outputDirectory": ".",
   "functions": {
     "api/*.js": {
       "memory": 3008,

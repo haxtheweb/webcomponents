@@ -35,6 +35,7 @@
         "title": "Top image",
         "description": "Top image to swipe over the bottom image.",
         "inputMethod": "haxupload",
+        "fileActions": true,
         "noVoiceRecord": true,
         "validationType": "url",
         "required": true
@@ -51,6 +52,7 @@
         "title": "Bottom image",
         "description": "Bottom image shown under the top image.",
         "inputMethod": "haxupload",
+        "fileActions": true,
         "noVoiceRecord": true,
         "validationType": "url",
         "required": true

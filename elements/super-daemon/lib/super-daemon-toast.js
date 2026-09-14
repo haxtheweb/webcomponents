@@ -49,7 +49,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
       super.styles,
       css`
         :host {
-          --simple-toast-z-index: 100000002;
+          --simple-toast-z-index: 100000003;
         }
         :host([opened]) {
           display: flex;

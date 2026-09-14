@@ -127,6 +127,24 @@ class A11yFigure extends A11yDetails {
     `;
   }
 
+  /**
+   * #3050: a file backing this image was modified in place (rotate / compress /
+   * scale / transform). Refresh the live preview by cache-busting the shadow
+   * <img> src directly so the persisted `imgSrc` property (and saved content)
+   * stays clean.
+   */
+  haxHooks() {
+    return {
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    };
+  }
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.imgSrc, path)) return;
+    store._pokeMatchingImgs(this.shadowRoot, path);
+  }
   // haxProperty definition
   static get haxProperties() {
     return {

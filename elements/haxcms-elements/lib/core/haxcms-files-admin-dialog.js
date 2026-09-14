@@ -1102,11 +1102,17 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   /**
    * Runs `opFn` sequentially against each row in `rows`, aggregating
-   * success/failure counts and surfacing a single summary toast rather
-   * than one per file. Used by all bulk (multi-row) actions.
+   * success/failure counts. For multi-row batches a live "Processing N of M"
+   * toast updates as each file is processed (the toast just presents the
+   * text; the counting lives here per #3050). When opts.refreshMedia is true,
+   * each successful image op also fires HAXStore.refreshMediaSource so every
+   * place in the active page currently displaying that file re-fetches the
+   * fresh bytes without a page reload.
    */
-  async _runBulkOp(rows, opFn, summaryVerb) {
+  async _runBulkOp(rows, opFn, summaryVerb, opts = {}) {
     if (!rows || rows.length === 0) return;
+    const refreshMedia = !!(opts && opts.refreshMedia);
+    const multi = rows.length > 1;
     this.busy = true;
     this.bulkBusy = true;
     this.errorMessage = "";
@@ -1116,9 +1122,22 @@ class HAXCMSFilesAdminDialog extends DDD {
     try {
       for (let idx = 0; idx < rows.length; idx++) {
         const row = rows[idx];
+        if (multi) {
+          this._msg(`Processing ${idx + 1} of ${rows.length}\u2026`);
+        }
         const result = await opFn(row, idx);
         if (result && result.ok) {
           okCount++;
+          if (
+            refreshMedia &&
+            this._isImg(row) &&
+            HAXStore &&
+            typeof HAXStore.refreshMediaSource === "function"
+          ) {
+            HAXStore.refreshMediaSource(
+              row.publicUrl || row.fullUrl || row.path || "",
+            );
+          }
         } else {
           failCount++;
           if (result && result.message) lastError = result.message;
@@ -1163,6 +1182,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           skipRefresh: true,
         }),
       `Scaled to ${normalizedSize}`,
+      { refreshMedia: true },
     );
   }
   async _onBulkRotate(rows) {
@@ -1176,6 +1196,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       (row) =>
         this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
       "Rotated",
+      { refreshMedia: true },
     );
   }
   async _onBulkTransform(rows, op) {
@@ -1196,10 +1217,11 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
     }
     await this._runBulkOp(
-      applicable,
+      rows,
       (row) =>
         this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
       "Transformed",
+      { refreshMedia: true },
     );
   }
   async _onBulkCompress(rows, level) {
@@ -1220,6 +1242,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           skipRefresh: true,
         }),
       `Compressed (${normalizedLevel})`,
+      { refreshMedia: true },
     );
   }
   async _onBulkDuplicate(rows) {

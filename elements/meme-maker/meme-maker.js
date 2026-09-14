@@ -150,7 +150,21 @@ class MemeMaker extends LitElement {
     return {
       progressiveEnhancement: "haxprogressiveEnhancement",
       gizmoRegistration: "haxgizmoRegistration",
+      mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+  /**
+   * #3050: a file backing this image was modified in place (rotate / compress /
+   * scale / transform). Refresh the live preview by cache-busting the shadow
+   * <img> src directly so the persisted `imageUrl` property (and saved
+   * content) stays clean.
+   */
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (!store._mediaSrcMatches(this.imageUrl, path)) return;
+    store._pokeMatchingImgs(this.shadowRoot, path);
   }
   /**
    * Supply translations for the UI elements of HAX in meme-maker

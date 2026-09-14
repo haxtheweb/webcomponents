@@ -1,0 +1,96 @@
+name: gallery-deeplinks
+
+# When a Vercel Preview deployment succeeds, post a single PR comment with deep
+# links into the freshly built component-gallery.html for each element the PR
+# touches. Routing lives in the gallery itself via the ?element=<slug> query
+# param (see scripts/build-component-gallery.js and COMPONENT-GALLERY.md).
+#
+# This replaces the legacy demo-deeplinks workflow, which linked at individual
+# demo/index.html pages on a non-functional Netlify URL. Triggering on
+# deployment_status (instead of pull_request) gives us the real per-PR Vercel
+# preview URL via deployment_status.target_url and runs in the base-branch
+# context, so the default GITHUB_TOKEN can comment on fork PRs too.
+on:
+  deployment_status:
+permissions:
+  pull-requests: write
+  contents: read
+  deployments: read
+jobs:
+  post-gallery-deeplinks:
+    name: Post gallery deep links for changed elements
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deployment commit
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - name: Resolve PR, changed elements, and post comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.deployment.sha }}
+          PREVIEW_URL: ${{ github.event.deployment_status.target_url }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${PREVIEW_URL}" ]]; then
+            echo "No target_url on deployment status; skipping."
+            exit 0
+          fi
+          # Strip a trailing slash so generated links are clean.
+          PREVIEW_URL="${PREVIEW_URL%/}"
+
+          # Find the open PR whose head commit matches this deployment.
+          PR_NUMBER=$(gh api "repos/${REPO}/commits/${SHA}/pulls" \
+            --paginate --jq '[.[] | select(.state == "open")][0].number' 2>/dev/null || true)
+          if [[ -z "${PR_NUMBER}" ]]; then
+            echo "No open PR found for SHA ${SHA}; skipping."
+            exit 0
+          fi
+
+          # Collect unique element slugs changed by the PR.
+          mapfile -t changed < <(gh api "repos/${REPO}/pulls/${PR_NUMBER}/files" \
+            --paginate --jq '.[].path')
+
+          declare -A seen=()
+          affected=()
+          for path in "${changed[@]}"; do
+            case "$path" in
+              elements/*/*)
+                slug="${path#elements/}"
+                slug="${slug%%/*}"
+                if [[ -z "${seen[$slug]+_}" && -f "elements/$slug/demo/index.html" ]]; then
+                  seen[$slug]=1
+                  affected+=("$slug")
+                fi
+                ;;
+            esac
+          done
+
+          if [[ ${#affected[@]} -eq 0 ]]; then
+            echo "No affected elements with demos for PR ${PR_NUMBER}; skipping."
+            exit 0
+          fi
+
+          {
+            echo '## 🧱 Component gallery deep links'
+            echo ''
+            echo "Vercel preview for this PR: ${PREVIEW_URL}"
+            echo ''
+            echo 'Open each changed element directly in the built component gallery:'
+            echo ''
+            for slug in $(printf '%s\n' "${affected[@]}" | sort -u); do
+              echo "- [\`$slug\`](${PREVIEW_URL}/component-gallery.html?element=$slug)"
+            done
+            echo ''
+            echo '---'
+            echo ''
+            echo '**Review notes:**'
+            echo '- Demos that load components through the magic-script / `wc-registry.json` from the CDN render the **published** version, **not** this PR'"'"'s local source.'
+            echo '- Demos that import relatively (e.g. `./src/...`) reflect this PR'"'"'s local source.'
+            echo '- The gallery is regenerated on every Vercel preview deploy via `yarn build-gallery`.'
+          } > comment.md
+
+          gh pr comment "${PR_NUMBER}" --body-file comment.md

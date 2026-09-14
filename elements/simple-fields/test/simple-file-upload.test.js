@@ -145,4 +145,44 @@ describe("simple-file-upload", () => {
     expect(element.files[0].complete).to.equal(false);
     expect(element.files[0].xhr).to.equal(null);
   });
+
+  it("#3050 _uploadFile returns a Promise that resolves on a terminal state", async () => {
+    const file = new File(["x"], "promise.png", { type: "image/png" });
+    element.addFile(file);
+    // no target => _uploadFile resolves immediately with false
+    element.target = "";
+    const p = element._uploadFile(element.files[0]);
+    expect(p).to.be.an.instanceof(Promise);
+    const result = await p;
+    expect(result).to.equal(false);
+  });
+
+  it("#3050 uploadFiles() processes files sequentially, one lifecycle at a time", async () => {
+    const started = [];
+    let resolveCurrent = null;
+    // stub _uploadFile to resolve on demand so we can observe ordering
+    element._uploadFile = (file) => {
+      started.push(file.name);
+      return new Promise((resolve) => {
+        resolveCurrent = () => resolve(true);
+      });
+    };
+    element.addFile(new File(["a"], "a.png", { type: "image/png" }));
+    element.addFile(new File(["b"], "b.png", { type: "image/png" }));
+    element.addFile(new File(["c"], "c.png", { type: "image/png" }));
+    const done = element.uploadFiles();
+    await Promise.resolve();
+    // only the first file has started; b + c wait for a's full lifecycle
+    expect(started).to.deep.equal(["a.png"]);
+    resolveCurrent();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(started).to.deep.equal(["a.png", "b.png"]);
+    resolveCurrent();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(started).to.deep.equal(["a.png", "b.png", "c.png"]);
+    resolveCurrent();
+    await done;
+  });
 });

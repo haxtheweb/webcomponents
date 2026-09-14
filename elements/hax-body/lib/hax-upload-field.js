@@ -1267,33 +1267,15 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     // value-changed → tray writes new source → element re-renders with the
     // new URL (fresh, no cache issue). No shadow-DOM poke needed.
     if (prevClean !== clean) return;
-    // In-place ops (compress / scale / sepia / b&w / rotate): path unchanged,
-    // so this.value doesn't change and no re-render fires. Poke every <img>
-    // in the active node's shadow DOM tree with a cache-busted src so the
-    // browser re-fetches the fresh bytes. The ?t= stays on the shadow DOM
-    // img only — light DOM serialization reads the clean source property.
-    const node = HAXStore && HAXStore.activeNode ? HAXStore.activeNode : null;
-    if (!node || !node.shadowRoot) return;
-    const ts = Date.now();
-    const join = clean.indexOf("?") === -1 ? "?" : "&";
-    const busted = clean + join + "t=" + ts;
-    this._pokeShadowImgs(node.shadowRoot, busted);
-  }
-  /**
-   * Recursively set src on every <img> in a shadow root tree, piercing
-   * nested shadow roots (e.g. media-image → media-image-image → <img>).
-   */
-  _pokeShadowImgs(root, src) {
-    if (!root || typeof root.querySelectorAll !== "function") return;
-    const imgs = root.querySelectorAll("img");
-    for (let i = 0; i < imgs.length; i++) {
-      imgs[i].src = src;
-    }
-    const all = root.querySelectorAll("*");
-    for (let i = 0; i < all.length; i++) {
-      if (all[i] && all[i].shadowRoot) {
-        this._pokeShadowImgs(all[i].shadowRoot, src);
-      }
+    // #3050: In-place ops (compress / scale / sepia / b&w / rotate): path
+    // unchanged, so this.value doesn't change and no re-render fires. Refresh
+    // EVERY place in the active page referencing this file — the active node's
+    // shadow <img> AND any other element / raw <img> implementing the
+    // mediaSourceUpdated haxHook — so the browser re-fetches the fresh bytes.
+    // The cache-busting ?t= stays on the DOM img / shadow img only; light DOM
+    // serialization reads the clean source property, so saved content is clean.
+    if (HAXStore && typeof HAXStore.refreshMediaSource === "function") {
+      HAXStore.refreshMediaSource(clean);
     }
   }
   /**

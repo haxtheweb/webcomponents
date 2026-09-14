@@ -16,6 +16,7 @@
         "title": "Source",
         "description": "Image source URL.",
         "inputMethod": "haxupload",
+        "fileActions": true,
         "noVoiceRecord": true,
         "validationType": "url"
       },

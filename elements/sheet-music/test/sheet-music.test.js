@@ -91,4 +91,58 @@ describe("SheetMusic test", () => {
   it("passes the a11y shadow-dom audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("defaults edit mode to off so the player shows by default", async () => {
+    expect(element.editMode).to.be.false;
+    expect(element.hasAttribute("edit-mode")).to.be.false;
+  });
+
+  it("uses the image:music-note icon in its haxProperties schema", async () => {
+    const res = await fetch(element.constructor.haxProperties);
+    const json = await res.json();
+    expect(json.gizmo.icon).to.equal("image:music-note");
+  });
+
+  it("prevents drag-and-drop into its slotted area and clears the drag target", async () => {
+    const store = { __dragTarget: { tagName: "VIDEO-PLAYER" } };
+    globalThis.HaxStore = {
+      requestAvailability() {
+        return store;
+      },
+    };
+    const evt = new Event("drop", {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+    });
+    element.dispatchEvent(evt);
+    expect(evt.defaultPrevented).to.be.true;
+    expect(store.__dragTarget).to.be.null;
+    delete globalThis.HaxStore;
+  });
+
+  it("live-updates the alphaTab preview and re-renders on editor value changes", async () => {
+    let lastTex = null;
+    let renderCalls = 0;
+    element.api = {
+      tex: (t) => {
+        lastTex = t;
+      },
+      render: () => {
+        renderCalls++;
+      },
+      destroy: () => {},
+    };
+    element.source = "";
+    element._tex = '\\title "Old" . :4 0.5';
+    element._onEditorValueChanged(
+      new CustomEvent("value-changed", {
+        detail: { value: '\\title "Live" . :4 1.1 2.1' },
+      }),
+    );
+    // wait past the 200ms debounce window
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(lastTex).to.equal('\\title "Live" . :4 1.1 2.1');
+    expect(renderCalls).to.be.greaterThan(0);
+  });
 });

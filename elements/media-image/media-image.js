@@ -243,7 +243,26 @@ class MediaImage extends DDD {
     return {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
+      mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+  /**
+   * #3050: a file backing this image was modified in place (rotate / compress /
+   * scale / transform). Refresh the live preview by cache-busting the inner
+   * shadow <img> src directly — the ?t= stays in shadow DOM so the persisted
+   * `source` / `thumbnail` properties (and saved content) stay clean.
+   */
+  haxmediaSourceUpdated(path, store) {
+    if (!path || !store || typeof store._mediaSrcMatches !== "function") {
+      return;
+    }
+    if (
+      !store._mediaSrcMatches(this.source, path) &&
+      !store._mediaSrcMatches(this.thumbnail, path)
+    ) {
+      return;
+    }
+    store._pokeMatchingImgs(this.shadowRoot, path);
   }
   _handleClick(event) {
     if (this._haxState || this.disableZoom) {

@@ -79,6 +79,104 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return false;
   }
   /**
+   * #3050: Strip fragment / query / cache-bust suffixes from a media path so
+   * a post-op source still aligns with the clean path persisted in content.
+   */
+  _cleanMediaPath(path) {
+    return String(path || "").split("#")[0].split("?")[0];
+  }
+  /**
+   * #3050: True when an element's current image src references `cleanPath`.
+   * Matches on the full clean path OR the basename so both relative
+   * (files/foo.jpg) and absolute same-origin URLs resolve to the same file.
+   */
+  _mediaSrcMatches(src, cleanPath) {
+    const s = this._cleanMediaPath(src);
+    if (!s || !cleanPath) return false;
+    if (s === cleanPath) return true;
+    if (s.indexOf(cleanPath) !== -1 || cleanPath.indexOf(s) !== -1) return true;
+    const sBase = s.split("/").pop();
+    const pBase = cleanPath.split("/").pop();
+    if (sBase && pBase && sBase === pBase) return true;
+    return false;
+  }
+  /**
+   * #3050: Cache-bust every <img> in a shadow/light tree whose src references
+   * `cleanPath`, piercing nested shadow roots. The ?t=<ts> lives only on the
+   * DOM img attribute, never on serialized source properties, so saved content
+   * stays clean. Reused by refreshMediaSource and by element haxHooks that
+   * need to refresh their own internal <img>s.
+   */
+  _pokeMatchingImgs(root, cleanPath) {
+    if (!root || typeof root.querySelectorAll !== "function" || !cleanPath) {
+      return;
+    }
+    const ts = Date.now();
+    const imgs = root.querySelectorAll("img");
+    for (let i = 0; i < imgs.length; i++) {
+      const cur = imgs[i].getAttribute("src") || imgs[i].src || "";
+      const base = String(cur).split("?")[0];
+      if (this._mediaSrcMatches(base, cleanPath)) {
+        imgs[i].src =
+          base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+      }
+    }
+    const all = root.querySelectorAll("*");
+    for (let i = 0; i < all.length; i++) {
+      if (all[i] && all[i].shadowRoot) {
+        this._pokeMatchingImgs(all[i].shadowRoot, cleanPath);
+      }
+    }
+  }
+  /**
+   * #3050: After a file op (rotate / compress / scale / transform / replace)
+   * on `path`, refresh every place in the active page currently displaying
+   * that file so the transformed bytes show live without a page reload.
+   *
+   * - Raw <img> in the page whose src references `path` are cache-busted in
+   *   place.
+   * - Custom elements implementing the `mediaSourceUpdated` haxHook are handed
+   *   `(path, this)` and own their element-specific refresh (poke an internal
+   *   shadow <img> via store._pokeMatchingImgs, recompute a background-image,
+   *   etc.) without polluting persisted properties.
+   * - Custom elements WITHOUT the hook but with a shadow root are walked for
+   *   raw <img> matches so legacy/internal images still refresh.
+   *
+   * Authored content is light-DOM children of <hax-body> slotted into
+   * <slot id="body">, so walking activeHaxBody reaches every page element.
+   *
+   * @param {string} path - clean URL / relative path of the file that changed
+   */
+  async refreshMediaSource(path) {
+    if (!path || !this.activeHaxBody) return;
+    const cleanPath = this._cleanMediaPath(path);
+    if (!cleanPath) return;
+    const all = this.activeHaxBody.querySelectorAll("*");
+    for (let i = 0; i < all.length; i++) {
+      const el = all[i];
+      if (!el) continue;
+      if (el.tagName === "IMG") {
+        const cur = el.getAttribute("src") || el.src || "";
+        if (this._mediaSrcMatches(cur, cleanPath)) {
+          const base = String(cur).split("?")[0];
+          const ts = Date.now();
+          el.src =
+            base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+        }
+        continue;
+      }
+      if (this.testHook(el, "mediaSourceUpdated")) {
+        // pass the store so the hook can reuse _mediaSrcMatches /
+        // _pokeMatchingImgs without each element re-implementing them
+        this.runHook(el, "mediaSourceUpdated", [cleanPath, this]);
+        continue;
+      }
+      if (el.shadowRoot) {
+        this._pokeMatchingImgs(el.shadowRoot, cleanPath);
+      }
+    }
+  }
+  /**
    * Selection normalizer
    */
   getSelection() {

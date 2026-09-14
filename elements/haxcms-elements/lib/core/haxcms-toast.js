@@ -24,7 +24,7 @@ export class HAXCMSToast extends RPGCharacterToast {
           );
           --simple-toast-bottom: auto;
           --simple-toast-slide-offset-y: calc(var(--ddd-spacing-8, 32px) * -1);
-          --simple-toast-z-index: 100000001;
+          --simple-toast-z-index: 100000004;
           top: var(--simple-toast-top);
           right: var(--simple-toast-right);
           left: auto;
