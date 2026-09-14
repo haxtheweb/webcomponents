@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { PolarisFlexTheme } from "./polaris-flex-theme";
+import { PolarisFlexTheme } from "./polaris-flex-theme.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 
 /**

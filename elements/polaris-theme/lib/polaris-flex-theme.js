@@ -810,6 +810,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
           <div class="header-top-menu">
+            <site-region name="header"></site-region>
             <site-modal
               @site-modal-click="${this.siteModalClick}"
               .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -830,7 +831,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
           <div class="nav-section">
             <div class="header-branding">
               <div class="header-branding-left">
-                <site-region name="header"></site-region>
                 ${this.renderBrandMark()}
               </div>
               ${this.HAXCMSMobileMenuButton("left")}
