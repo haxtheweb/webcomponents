@@ -10,6 +10,17 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 /**
+ * Named shadow-DOM slot the alphaTab surface wrapper is assigned to. Using a
+ * named slot (instead of the default "") keeps HAX's tray slot-rewrite from
+ * wiping the surface: hax-tray calls wipeSlot(activeNode, "") on every
+ * keystroke to replace the alphaTex <template>, and wipeSlot removes every
+ * child whose .slot === "". Assigning the surface to a named slot excludes it
+ * from that wipe so alphaTab keeps a live, attached render target while
+ * authoring. haxpreProcessNodeToContent still strips the surface before save.
+ */
+const SURFACE_SLOT = "sheet-music-surface";
+
+/**
  * `sheet-music`
  * `Renders and plays sheet music, guitar tabs, and score notation via alphaTab.`
  *
@@ -230,6 +241,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     return html`
       <div class="at-viewport" id="viewport">
         <slot></slot>
+        <slot name="${SURFACE_SLOT}"></slot>
       </div>
       <div class="at-controls">
         <simple-icon-button-lite
@@ -340,6 +352,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     }
     this._surfaceWrap = globalThis.document.createElement("div");
     this._surfaceWrap.setAttribute("data-sheet-music-surface", "surface");
+    this._surfaceWrap.setAttribute("slot", SURFACE_SLOT);
     this._surfaceWrap.classList.add("at-surface-wrap");
     this.appendChild(this._surfaceWrap);
     this._injectCursorStyles();
@@ -531,6 +544,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     if (!this._surfaceWrap) {
       this._surfaceWrap = globalThis.document.createElement("div");
       this._surfaceWrap.setAttribute("data-sheet-music-surface", "surface");
+      this._surfaceWrap.setAttribute("slot", SURFACE_SLOT);
       this._surfaceWrap.classList.add("at-surface-wrap");
       this.appendChild(this._surfaceWrap);
     }
