@@ -5266,12 +5266,32 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             if (t1.index != t2.index) {
               HAXStore.activeApp = toJS(HAXStore.appList[values.index]);
             }
+            // Synchronously reset the app-search broker to this app so that
+            // requestEndPoint is populated from the app connection data
+            // before we query. Without this, loadAppData reads a stale or
+            // empty requestEndPoint when Merlin search runs outside HAX
+            // edit mode (for example, from the admin dashboard before the
+            // editor has loaded the app wiring), producing a request of
+            // just ?filename=gif instead of the full x/api/v1 path.
+            // hax-app-search only mirrors HAXStore.activeApp into its own
+            // activeApp (which triggers _resetAppSearch) while editMode is
+            // on, so we bypass that gate here for the Merlin search path.
+            if (
+              HAXStore.appSearch &&
+              typeof HAXStore.appSearch._resetAppSearch === "function"
+            ) {
+              HAXStore.appSearch._resetAppSearch(values.detail);
+            }
             let queryParam = Object.keys(
               values.detail.connection.operations.browse.search,
             )[0];
             let searchDataMap = {};
             searchDataMap[queryParam] = input;
             HAXStore.appSearch.updateSearchValues(searchDataMap);
+            // _resetAppSearch scheduled an auto-fire loadAppData via the
+            // updated() debounce; clear it so we do not double-fetch since
+            // we call loadAppData directly below.
+            clearTimeout(HAXStore.appSearch.__debounce);
             let data = await HAXStore.appSearch.loadAppData();
             let results = [];
             await data.forEach(async (item) => {
