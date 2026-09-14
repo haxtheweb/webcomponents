@@ -47,6 +47,7 @@
     "gallery": "yarn run build-gallery && npx @web/dev-server --open component-gallery.html --root-dir .",
     "gallery:dev": "node scripts/gallery-dev-server.js",
     "build-gallery": "node scripts/build-component-gallery.js",
+    "prepare-vercel": "node scripts/prepare-vercel-deploy.js",
     "storybook": "echo 'Storybook has been replaced with the component gallery. Use: yarn gallery' && exit 1",
     "build-storybook": "echo 'Storybook has been replaced with the component gallery. Use: yarn build-gallery' && exit 1",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",

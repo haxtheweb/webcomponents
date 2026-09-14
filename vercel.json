@@ -1,5 +1,5 @@
 {
-  "buildCommand": "yarn install && yarn build-gallery",
+  "buildCommand": "yarn install && yarn build-gallery && node scripts/prepare-vercel-deploy.js",
   "outputDirectory": ".",
   "functions": {
     "api/*.js": {

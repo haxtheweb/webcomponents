@@ -765,7 +765,6 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     return {
       activeElementChanged: "haxactiveElementChanged",
       editModeChanged: "haxeditModeChanged",
-      inlineContextMenu: "haxinlineContextMenu",
       preProcessNodeToContent: "haxpreProcessNodeToContent",
     };
   }
