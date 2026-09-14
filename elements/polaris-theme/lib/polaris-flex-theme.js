@@ -183,6 +183,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
           margin-right: auto;
         }
 
+        article > site-region {
+          display: block;
+        }
+
         site-breadcrumb {
           padding: var(--ddd-spacing-12) 0 0;
         }
@@ -233,9 +237,16 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .header-branding {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           max-width: 1080px;
           margin: 0 auto;
           padding: var(--ddd-spacing-7) var(--polaris-standard-padding);
+        }
+
+        .header-branding-left {
+          display: flex;
+          align-items: center;
+          column-gap: var(--ddd-spacing-4);
         }
 
         #mark {
@@ -812,14 +823,17 @@ class PolarisFlexTheme extends LTIResizingMixin(
             >
               <site-search></site-search>
             </site-modal>
-            <site-region name="header"></site-region>
             <div class="header-links">
               <slot name="header"> ${this.renderHeaderSlot()} </slot>
             </div>
           </div>
           <div class="nav-section">
             <div class="header-branding">
-              ${this.renderBrandMark()} ${this.HAXCMSMobileMenuButton("left")}
+              <div class="header-branding-left">
+                <site-region name="header"></site-region>
+                ${this.renderBrandMark()}
+              </div>
+              ${this.HAXCMSMobileMenuButton("left")}
             </div>
 
             ${this.HAXCMSFlexMenu()}
@@ -831,6 +845,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
         ${this.renderSideBar()}
         <main id="main" tabindex="-1">
           <article id="contentcontainer">
+            <site-region name="contentTop"></site-region>
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-tags
               part="page-tags"
@@ -841,6 +856,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
                 <slot></slot>
               </section>
             </div>
+            <site-region name="contentBottom"></site-region>
           </article>
         </main>
       </div>

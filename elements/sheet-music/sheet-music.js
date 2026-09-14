@@ -217,7 +217,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           --simple-tooltip-text-color: var(--ddd-theme-default-white);
           font-size: var(--ddd-font-size-xs);
         }
-        :host([edit-mode]) .at-viewport,
+        /* notation preview stays visible in HAX edit mode for live authoring */
         :host([edit-mode]) .at-controls {
           display: none;
         }
@@ -440,14 +440,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       }
       let prev = this._tex;
       this._readTex();
-      if (
-        this._tex !== prev &&
-        this.api &&
-        !this.source &&
-        !this._haxstate &&
-        !this.dataHaxActive
-      ) {
-        this.api.tex(this._tex);
+      if (this._tex !== prev && !this.source) {
+        this._scheduleTexSync();
       }
     });
     this._observer.observe(this, {
@@ -456,6 +450,36 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       subtree: true,
       characterData: true,
     });
+  }
+
+  /**
+   * Debounce pushing the current alphaTex into alphaTab so rapid edits (like
+   * keystrokes in the HAX code-editor) do not thrash the renderer. Re-validates
+   * api and source inside the timer because the element may be torn down while
+   * the timer is pending. Fires in HAX edit mode so authors get a live preview;
+   * parse failures from incomplete tex are swallowed mid-keystroke.
+   */
+  _scheduleTexSync() {
+    clearTimeout(this._texSyncTimer);
+    this._texSyncTimer = setTimeout(() => {
+      this._texSyncTimer = null;
+      if (this.source) {
+        return;
+      }
+      if (!this.api) {
+        // alphaTab was torn down (e.g. after a HAX save pre-process) or has
+        // not yet initialized. Recreate the surface and (re)init; _initAlphaTab
+        // applies the current this._tex once the engine is ready.
+        this._ensureAlphaTab();
+        return;
+      }
+      try {
+        this.api.tex(this._tex);
+        this.api.render();
+      } catch (e) {
+        // ignore parse failures from incomplete alphaTex mid-keystroke
+      }
+    }, 200);
   }
 
   /**
@@ -469,14 +493,13 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       if (propName === "elementVisible" && this.elementVisible && !this.api) {
         this._initAlphaTab();
       }
-      if (
-        propName === "source" &&
-        this.api &&
-        this.source &&
-        !this._haxstate &&
-        !this.dataHaxActive
-      ) {
-        this.api.load(this.source);
+      if (propName === "source" && this.source) {
+        if (this.api) {
+          this.api.load(this.source);
+        } else {
+          // (re)initialize alphaTab with the newly uploaded score file.
+          this._ensureAlphaTab();
+        }
       }
       if (
         propName === "audio" &&
@@ -488,6 +511,30 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         this._rebuildAlphaTab();
       }
     });
+  }
+
+  /**
+   * Ensure alphaTab is initialized and rendering into a light-DOM surface.
+   * Safety net for when an edit arrives but this.api is null — either alphaTab
+   * never finished initializing or haxpreProcessNodeToContent tore it down
+   * during a save. Recreates _surfaceWrap if it was removed, then kicks
+   * _initAlphaTab (which applies the current this._tex / this.source on
+   * success). Safe to call repeatedly; _initAlphaTab self-guards.
+   */
+  _ensureAlphaTab() {
+    if (this.api) {
+      return;
+    }
+    if (!this.isConnected || !this.elementVisible) {
+      return;
+    }
+    if (!this._surfaceWrap) {
+      this._surfaceWrap = globalThis.document.createElement("div");
+      this._surfaceWrap.setAttribute("data-sheet-music-surface", "surface");
+      this._surfaceWrap.classList.add("at-surface-wrap");
+      this.appendChild(this._surfaceWrap);
+    }
+    this._initAlphaTab();
   }
 
   /**
@@ -742,6 +789,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   disconnectedCallback() {
     this.removeEventListener("drop", this._onDrop, true);
     clearTimeout(this._liveSyncTimer);
+    clearTimeout(this._texSyncTimer);
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;
@@ -780,6 +828,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   }
 
   haxpreProcessNodeToContent(node) {
+    clearTimeout(this._texSyncTimer);
     if (this.api) {
       this.api.destroy();
       this.api = null;

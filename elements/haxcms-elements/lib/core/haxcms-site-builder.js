@@ -1307,18 +1307,35 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       };
     const run = () => {
       try {
-        // module basePath is used both for the graph URL fallback and for
-        // building modulepreload hrefs below, so resolve it up front.
-        const loader =
-          globalThis.WCAutoload &&
-          globalThis.WCAutoload.requestAvailability
-            ? globalThis.WCAutoload.requestAvailability()
-            : null;
+        // This warmup only makes sense when wc-autoload / dynamic-import-
+        // registry (the "magic script" tag autoloader) is actually driving
+        // the editor's lazy load -- the tag graph (wc-registry-graph.json)
+        // and basePath resolution it depends on are both products of that
+        // mechanism. Sites/backends that don't load wc-autoload (e.g. a
+        // bundler or import-map based setup that imports the editor
+        // directly) have no equivalent path convention to warm against, so
+        // guessing one (e.g. a hardcoded "./build/es6/node_modules/") would
+        // just risk emitting bogus preloads/404s for those setups. No-op
+        // when wc-autoload isn't present rather than fabricate a basePath.
+        if (!globalThis.WCAutoload || !globalThis.WCAutoload.requestAvailability) {
+          return;
+        }
+        const loader = globalThis.WCAutoload.requestAvailability();
+        // basePath here already resolves to the full module base (e.g.
+        // ".../build/es6/node_modules/"), matching what
+        // DynamicImportRegistry.getPathToTag()/loadDefinition() prepend to
+        // registry-relative paths. Do NOT re-append "build/es6/node_modules/"
+        // when building hrefs below -- that previously produced doubled
+        // "build/es6/node_modules/build/es6/node_modules/" 404s for
+        // logged-in users.
         const basePath =
           (loader && loader.registry && loader.registry.basePath) ||
           globalThis.WCAutoloadBasePath ||
           globalThis.WCGlobalBasePath ||
-          "./";
+          null;
+        if (!basePath) {
+          return;
+        }
         // derive the graph URL from the registry file URL (site root) rather
         // than the module basePath, since wc-registry-graph.json lives next
         // to wc-registry.json, not inside build/es6/node_modules/
@@ -1397,7 +1414,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               if (!p) {
                 continue;
               }
-              const href = basePath + "build/es6/node_modules/" + p;
+              const href = basePath + p;
               if (existing.has(href)) {
                 continue;
               }
