@@ -38,6 +38,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     this.deck = null;
     this.status = "idle";
     this.rendered = false;
+    this.downloadable = true;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -53,6 +54,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       loadingPresentation: "Loading presentation",
       presentationUnavailable: "Presentation unavailable",
       slide: "Slide",
+      downloadPresentation: "Download presentation",
     };
     this.registerLocalization({
       context: this,
@@ -78,6 +80,8 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       deck: { type: Object },
       status: { type: String, reflect: true },
       rendered: { type: Boolean, reflect: true },
+      /** Show a download button for the original .pptx in the player controls. */
+      downloadable: { type: Boolean, reflect: true },
     };
   }
 
@@ -275,6 +279,43 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
+  /**
+   * Download the original .pptx referenced by the manifest. Resolves the
+   * manifest's `pptx` path against the document base URI and triggers a
+   * download via a temporary anchor with a `download` attribute.
+   */
+  downloadPptx() {
+    if (!this.deck || !this.deck.pptx) return;
+    let href;
+    try {
+      href = new URL(this.deck.pptx, globalThis.document.baseURI).href;
+    } catch (error) {
+      console.error(`slide-deck: ${error.message}`);
+      return;
+    }
+    // derive a filename from the deck source or title, falling back to
+    // original.pptx so the download attribute always has a value
+    let filename = "original.pptx";
+    const base =
+      (this.deck.source && String(this.deck.source)) ||
+      (this.deck.title && String(this.deck.title)) ||
+      "";
+    if (base) {
+      const withoutExt = base.replace(/\.pptx$/i, "").replace(/\.json$/i, "");
+      const tail = withoutExt.split("/").pop();
+      if (tail) {
+        filename = tail + ".pptx";
+      }
+    }
+    const a = globalThis.document.createElement("a");
+    a.href = href;
+    a.download = filename;
+    a.style.display = "none";
+    globalThis.document.body.appendChild(a);
+    a.click();
+    globalThis.document.body.removeChild(a);
+  }
+
   _onFullscreenChange() {
     this.presenting = globalThis.document.fullscreenElement === this;
   }
@@ -364,7 +405,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           clip-path: inset(50%);
           white-space: nowrap;
           border: none;
-          padding: 0;
+          padding: var(--ddd-spacing-0);
         }
         .bar {
           display: flex;
@@ -453,6 +494,13 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           : this.t.presentFullScreen}"
         @click="${this.togglePresenting}"
       ></simple-icon-button-lite>
+      ${this.downloadable && this.deck && this.deck.pptx
+        ? html`<simple-icon-button-lite
+            icon="icons:file-download"
+            label="${this.t.downloadPresentation}"
+            @click="${this.downloadPptx}"
+          ></simple-icon-button-lite>`
+        : nothing}
     </div>`;
   }
 
