@@ -159,7 +159,10 @@ class PolarisStoryCard extends LitElement {
               role="img"
               aria-hidden="${this.link ? "true" : "false"}"
               aria-label="${this.label || this.pillar || "Story image"}"
-              style="background-image: url(${this.image}); background-size: ${this.backgroundSize}; background-attachment: ${this.backgroundAttachment};"
+              style="background-image: url(${this
+                .image}); background-size: ${this
+                .backgroundSize}; background-attachment: ${this
+                .backgroundAttachment};"
             ></div>`
           : ``}
         <span class="pillar${this.pillar ? `` : ` pillar-hidden`}"

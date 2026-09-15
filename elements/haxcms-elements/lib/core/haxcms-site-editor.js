@@ -320,11 +320,9 @@ class HAXCMSSiteEditor extends LitElement {
       this._merlinCreated = false;
       this.__autoEditDisposer();
       this.__autoEditDisposer = null;
-      store.toast(
-        `Created ${node.title || "page"} — open it to edit`,
-        4000,
-        { hat: "random" },
-      );
+      store.toast(`Created ${node.title || "page"} — open it to edit`, 4000, {
+        hat: "random",
+      });
     }, 10000);
   }
   /**
@@ -337,9 +335,7 @@ class HAXCMSSiteEditor extends LitElement {
     if (typeof content !== "string" || content === "") {
       return null;
     }
-    const match = content.match(
-      /<page-break[^>]*?\sitem-id=["']([^"']+)["']/i,
-    );
+    const match = content.match(/<page-break[^>]*?\sitem-id=["']([^"']+)["']/i);
     return match ? String(match[1]) : null;
   }
 
@@ -1929,7 +1925,11 @@ class HAXCMSSiteEditor extends LitElement {
         const updatedItem = responseItems.find(
           (item) => item && item.id === activeItem.id,
         );
-        if (updatedItem && updatedItem.slug && updatedItem.slug !== activeItem.slug) {
+        if (
+          updatedItem &&
+          updatedItem.slug &&
+          updatedItem.slug !== activeItem.slug
+        ) {
           const newSlug = updatedItem.slug;
           globalThis.history.replaceState({}, null, newSlug);
           globalThis.dispatchEvent(new PopStateEvent("popstate"));
@@ -2006,8 +2006,7 @@ class HAXCMSSiteEditor extends LitElement {
     // changed the active page's slug. Without this, the URL bar keeps the stale
     // slug and the next navigation/reload hits page-not-found.
     const activeItem = store.activeItem;
-    const activeId =
-      activeItem && activeItem.id ? activeItem.id : null;
+    const activeId = activeItem && activeItem.id ? activeItem.id : null;
     const previousActiveSlug =
       activeItem && typeof activeItem.slug === "string"
         ? activeItem.slug
@@ -2618,11 +2617,9 @@ class HAXCMSSiteEditor extends LitElement {
         const changes = response.data.changes;
         store.playSound("success");
         if (changes.length > 0) {
-          store.toast(
-            `Normalized ${changes.length} page slugs`,
-            4000,
-            { hat: "random" },
-          );
+          store.toast(`Normalized ${changes.length} page slugs`, 4000, {
+            hat: "random",
+          });
         } else {
           store.toast("Slug normalization completed.", 3000, {
             hat: "random",

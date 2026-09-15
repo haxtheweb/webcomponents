@@ -179,7 +179,13 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
         <tbody>
           <tr>
             <td>
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="800">
+              <table
+                role="presentation"
+                border="0"
+                cellpadding="0"
+                cellspacing="0"
+                width="800"
+              >
                 <tbody>
                   <tr>
                     <td bgcolor="white">
@@ -223,7 +229,11 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
                           <tr>
                             <td width="25"></td>
                             <td>
-                              <main id="contentcontainer" role="main" tabindex="-1">
+                              <main
+                                id="contentcontainer"
+                                role="main"
+                                tabindex="-1"
+                              >
                                 <site-active-title
                                   dynamic-methodology="ancestor"
                                 ></site-active-title>

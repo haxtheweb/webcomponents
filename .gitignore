@@ -14,7 +14,7 @@ yarn-error.log
 .cache
 .yarn
 test/index.html
-component-gallery.html
+/index.html
 elements/video-player/demo/samples/ad/
 elements/haxcms-elements/demo/files/
 # No end-/ because node_modules is a symlink

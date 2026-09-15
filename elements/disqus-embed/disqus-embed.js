@@ -172,7 +172,9 @@ class DisqusBroker extends LitElement {
   createEmbedScript(target, name) {
     // security: validate shortName before interpolating into the Disqus host (prevents host injection)
     if (!name || !/^[a-zA-Z0-9_-]+$/.test(name)) {
-      console.warn("disqus-embed: invalid shortName, refusing to load embed script");
+      console.warn(
+        "disqus-embed: invalid shortName, refusing to load embed script",
+      );
       return;
     }
     this.renderTarget = target;

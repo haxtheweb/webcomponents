@@ -399,7 +399,8 @@ describe("clean-one edit-mode inert behavior", () => {
   beforeEach(() => {
     originalOnError = globalThis.onerror;
     globalThis.onerror = (msg, url, line, col, err) => {
-      const text = typeof msg === "string" ? msg : err && err.message ? err.message : "";
+      const text =
+        typeof msg === "string" ? msg : err && err.message ? err.message : "";
       if (text.includes("requestAvailability")) {
         return true;
       }
@@ -422,7 +423,9 @@ describe("clean-one edit-mode inert behavior", () => {
     expect(searchBox.hasAttribute("inert")).to.be.false;
     expect(btnContainer.getAttribute("aria-disabled")).to.equal("false");
     expect(searchBox.getAttribute("aria-disabled")).to.equal("false");
-    expect(btnContainer.getAttribute("part")).to.not.include("edit-mode-active");
+    expect(btnContainer.getAttribute("part")).to.not.include(
+      "edit-mode-active",
+    );
     expect(searchBox.getAttribute("part")).to.not.include("edit-mode-active");
   });
 

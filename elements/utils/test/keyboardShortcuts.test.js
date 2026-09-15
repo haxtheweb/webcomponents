@@ -163,11 +163,26 @@ describe("KeyboardShortcutManager", () => {
       mgr = new KeyboardShortcutManager();
       // Mimic HAXStore's default markdown registrations (tag collisions:
       // ---, ***, ___ all -> hr; -, *, + all -> ul)
-      mgr.register({ id: "md-h3", type: "markdown", trigger: "###", tag: "h3" });
+      mgr.register({
+        id: "md-h3",
+        type: "markdown",
+        trigger: "###",
+        tag: "h3",
+      });
       mgr.register({ id: "md-ul1", type: "markdown", trigger: "-", tag: "ul" });
       mgr.register({ id: "md-ul2", type: "markdown", trigger: "*", tag: "ul" });
-      mgr.register({ id: "md-hr1", type: "markdown", trigger: "---", tag: "hr" });
-      mgr.register({ id: "md-hr2", type: "markdown", trigger: "***", tag: "hr" });
+      mgr.register({
+        id: "md-hr1",
+        type: "markdown",
+        trigger: "---",
+        tag: "hr",
+      });
+      mgr.register({
+        id: "md-hr2",
+        type: "markdown",
+        trigger: "***",
+        tag: "hr",
+      });
     });
 
     it("resolves the first registered markdown shortcut for a tag", async () => {

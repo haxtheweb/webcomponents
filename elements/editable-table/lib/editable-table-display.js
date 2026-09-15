@@ -11,9 +11,7 @@ import {
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import {
-  DDDVariables
-} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 /**
  * `editable-table-display`

@@ -785,7 +785,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // Only apply the platform preference on a first-ever visit (no stored
     // choice) so we never clobber an explicit light/dark override.
     if (localStorageGet("app-hax-darkMode", null) === null) {
-      store.darkMode = globalThis.matchMedia("(prefers-color-scheme: dark)").matches;
+      store.darkMode = globalThis.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
     }
     // change is if platform / browser preference changes while using
     globalThis
@@ -1317,7 +1319,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // guessing one (e.g. a hardcoded "./build/es6/node_modules/") would
         // just risk emitting bogus preloads/404s for those setups. No-op
         // when wc-autoload isn't present rather than fabricate a basePath.
-        if (!globalThis.WCAutoload || !globalThis.WCAutoload.requestAvailability) {
+        if (
+          !globalThis.WCAutoload ||
+          !globalThis.WCAutoload.requestAvailability
+        ) {
           return;
         }
         const loader = globalThis.WCAutoload.requestAvailability();
@@ -1401,14 +1406,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               return;
             }
             const existing = new Set();
-            head
-              .querySelectorAll('link[rel="modulepreload"]')
-              .forEach((l) => {
-                const href = l.getAttribute("href");
-                if (href) {
-                  existing.add(href);
-                }
-              });
+            head.querySelectorAll('link[rel="modulepreload"]').forEach((l) => {
+              const href = l.getAttribute("href");
+              if (href) {
+                existing.add(href);
+              }
+            });
             for (let i = 0; i < ordered.length; i++) {
               const p = graph.paths[ordered[i]];
               if (!p) {

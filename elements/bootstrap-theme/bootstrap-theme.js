@@ -579,7 +579,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
       "dist/css/bootstrap.min.css",
     );
     this._themeElements = [];
-    if (typeof this.colorTheme === typeof undefined || this.colorTheme === null) {
+    if (
+      typeof this.colorTheme === typeof undefined ||
+      this.colorTheme === null
+    ) {
       this.colorTheme = 0;
     }
     this.searchTerm = "";
@@ -601,7 +604,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           store.manifest && store.manifest.title ? store.manifest.title : null,
         );
         const _mobx_val_2 = toJS(
-          store.manifest && store.manifest.metadata && store.manifest.metadata.author
+          store.manifest &&
+            store.manifest.metadata &&
+            store.manifest.metadata.author
             ? store.manifest.metadata.author.image
             : null,
         );
@@ -794,7 +799,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadBootstrap() {
     globalThis.ESGlobalBridge.requestAvailability().load(
       "bootstrap",
-      this._resolveVendorAssetPath("bootstrap", "dist/js/bootstrap.bundle.min.js"),
+      this._resolveVendorAssetPath(
+        "bootstrap",
+        "dist/js/bootstrap.bundle.min.js",
+      ),
     );
     globalThis.addEventListener(
       `es-bridge-bootstrap-loaded`,

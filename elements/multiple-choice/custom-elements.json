@@ -655,6 +655,48 @@
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "gradingFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "attribute": "grading-format",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasLearningObjective",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "attribute": "has-learning-objective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "forCourse",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "attribute": "for-course",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             }
           ],
           "superclass": {
@@ -757,6 +799,42 @@
               },
               "description": "Related Resource ID",
               "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "grading-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "fieldName": "gradingFormat",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "has-learning-objective",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "fieldName": "hasLearningObjective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "for-course",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "fieldName": "forCourse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1309,6 +1387,36 @@
               },
               "description": "Related Resource ID",
               "attribute": "related-resource"
+            },
+            {
+              "kind": "field",
+              "name": "gradingFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "attribute": "grading-format"
+            },
+            {
+              "kind": "field",
+              "name": "hasLearningObjective",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "attribute": "has-learning-objective"
+            },
+            {
+              "kind": "field",
+              "name": "forCourse",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "attribute": "for-course"
             }
           ],
           "events": [
@@ -1391,6 +1499,30 @@
               },
               "description": "Related Resource ID",
               "fieldName": "relatedResource"
+            },
+            {
+              "name": "grading-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "fieldName": "gradingFormat"
+            },
+            {
+              "name": "has-learning-objective",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "fieldName": "hasLearningObjective"
+            },
+            {
+              "name": "for-course",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "fieldName": "forCourse"
             },
             {
               "name": "question",
@@ -2202,6 +2334,48 @@
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "gradingFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "attribute": "grading-format",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasLearningObjective",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "attribute": "has-learning-objective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "forCourse",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "attribute": "for-course",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             }
           ],
           "attributes": [
@@ -2306,6 +2480,42 @@
               },
               "description": "Related Resource ID",
               "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "grading-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "fieldName": "gradingFormat",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "has-learning-objective",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "fieldName": "hasLearningObjective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "for-course",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "fieldName": "forCourse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3083,6 +3293,48 @@
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "gradingFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "attribute": "grading-format",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasLearningObjective",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "attribute": "has-learning-objective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "forCourse",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "attribute": "for-course",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             }
           ],
           "attributes": [
@@ -3187,6 +3439,42 @@
               },
               "description": "Related Resource ID",
               "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "grading-format",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: grading format for this assessment",
+              "fieldName": "gradingFormat",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "has-learning-objective",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: learning objective associated with this assessment",
+              "fieldName": "hasLearningObjective",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "for-course",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema: course this assessment is for",
+              "fieldName": "forCourse",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

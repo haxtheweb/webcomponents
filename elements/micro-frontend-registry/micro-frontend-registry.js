@@ -25,7 +25,7 @@ export class MicroFrontend {
         ? (this[key] = values[key] || {})
         : key === "security"
           ? (this[key] = values[key] || [])
-        : (this[key] = values[key] || null),
+          : (this[key] = values[key] || null),
     );
   }
 }
@@ -128,10 +128,10 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           if (globalThis.MicroFrontendRegistryConfig.base) {
             base = globalThis.MicroFrontendRegistryConfig.base;
           }
-      // in nodejs backend context, unmigrated /api/ endpoints still need cloud fallback
-      else if (globalThis.HAXCMSContext === "nodejs") {
-        base = "https://open-apis.hax.cloud";
-      }
+          // in nodejs backend context, unmigrated /api/ endpoints still need cloud fallback
+          else if (globalThis.HAXCMSContext === "nodejs") {
+            base = "https://open-apis.hax.cloud";
+          }
           // keep local based on if we're local, otherwise we need to leverage deployed address
           else if (
             globalThis.location.origin.startsWith("http://127.0.0.1") ||
@@ -232,7 +232,10 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     ) {
       if (this.has(name)) {
         const item = this.get(name);
-        const endpointData = this._resolveEndpointTemplate(item.endpoint, params);
+        const endpointData = this._resolveEndpointTemplate(
+          item.endpoint,
+          params,
+        );
         // default post, but this is not cacheable
         let method = "POST";
         // support definition requiring a certain method

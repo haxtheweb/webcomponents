@@ -541,11 +541,14 @@ export class QuestionElement extends SchemaBehaviors(
           --simple-fields-line-height: var(--ddd-font-size-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
-                    --simple-fields-color: light-dark(
+          --simple-fields-color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
           --simple-fields-fieldset-background-color: transparent;
@@ -681,7 +684,11 @@ export class QuestionElement extends SchemaBehaviors(
           padding-left: 8px;
         }
         dl .incorrect {
-          border-left: 4px dotted light-dark(var(--ddd-theme-default-wonderPurple), var(--ddd-theme-default-athertonViolet));
+          border-left: 4px dotted
+            light-dark(
+              var(--ddd-theme-default-wonderPurple),
+              var(--ddd-theme-default-athertonViolet)
+            );
           padding-left: 8px;
         }
         .tag-option.correct {
@@ -690,7 +697,11 @@ export class QuestionElement extends SchemaBehaviors(
         }
 
         .tag-option.incorrect {
-          outline: 3px dotted light-dark(var(--ddd-theme-default-wonderPurple), var(--ddd-theme-default-athertonViolet));
+          outline: 3px dotted
+            light-dark(
+              var(--ddd-theme-default-wonderPurple),
+              var(--ddd-theme-default-athertonViolet)
+            );
           outline-offset: -3px;
         }
         /** edit mode, hax, etc */
@@ -832,92 +843,99 @@ export class QuestionElement extends SchemaBehaviors(
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
       ${this.gradingFormat
-        ? html`<meta property="oer:gradingFormat" content="${this.gradingFormat}" />`
+        ? html`<meta
+            property="oer:gradingFormat"
+            content="${this.gradingFormat}"
+          />`
         : nothing}
       ${this.hasLearningObjective
-        ? html`<meta property="oer:hasLearningObjective" content="${this.hasLearningObjective}" />`
+        ? html`<meta
+            property="oer:hasLearningObjective"
+            content="${this.hasLearningObjective}"
+          />`
         : nothing}
       ${this.forCourse
         ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
         : nothing}
       <confetti-container id="confetti">
-            <details open>
-              <summary id="question">
-                <simple-icon-lite
-                  class="details-icon"
-                  icon="hax:head-question"
-                ></simple-icon-lite
-                >Question
-              </summary>
+        <details open>
+          <summary id="question">
+            <simple-icon-lite
+              class="details-icon"
+              icon="hax:head-question"
+            ></simple-icon-lite
+            >Question
+          </summary>
           <div class="container">
-                <h3 property="oer:name">${this.question}</h3>
-                ${this.renderInteraction()}
-                ${!this.hideButtons ? this.renderButtons() : nothing}
-              </div>
-            </details>
-            <details
-              tabindex="${!this.showAnswer ? "-1" : ""}"
-              ?disabled="${!this.showAnswer && !this.edit}"
-              ?open="${this.showAnswer}"
+            <h3 property="oer:name">${this.question}</h3>
+            ${this.renderInteraction()}
+            ${!this.hideButtons ? this.renderButtons() : nothing}
+          </div>
+        </details>
+        <details
+          tabindex="${!this.showAnswer ? "-1" : ""}"
+          ?disabled="${!this.showAnswer && !this.edit}"
+          ?open="${this.showAnswer}"
+        >
+          <summary id="feedback">
+            <simple-icon-lite
+              class="details-icon"
+              icon="icons:feedback"
+              aria-hidden="true"
+            ></simple-icon-lite
+            >Feedback
+            <span class="sr-only" aria-live="polite" aria-atomic="true"
+              >${this.showAnswer
+                ? this.isCorrect()
+                  ? this.correctText
+                  : this.incorrectText
+                : ""}</span
             >
-              <summary id="feedback">
-                <simple-icon-lite
-                  class="details-icon"
-                  icon="icons:feedback"
-                  aria-hidden="true"
-                ></simple-icon-lite
-                >Feedback
-                <span class="sr-only" aria-live="polite" aria-atomic="true">${this
-                  .showAnswer
-                  ? this.isCorrect()
-                    ? this.correctText
-                    : this.incorrectText
-                  : ""}</span>
-              </summary>
-              <div class="container">
-                <details id="legend">
-                  <summary>
-                    <simple-icon-lite
-                      class="details-icon"
-                      icon="hax:map-legend"
-                    ></simple-icon-lite
-                    >Legend
-                  </summary>
-                  <div class="container">${this.renderLegend()}</div>
-                </details>
-                ${this.renderFeedback()}
-              </div>
-            </details>
-            ${this.querySelector &&
-            this.querySelector('[slot="content"]') &&
-            !this.edit
-              ? html` <details ?open="${!this.showAnswer}" id="related">
-                  <summary>
-                    <simple-icon-lite
-                      class="details-icon"
-                      icon="lrn:content"
-                    ></simple-icon-lite
-                    >Related content
-                  </summary>
-                  <div class="container">
-                    <slot name="content"></slot>
-                  </div>
-                </details>`
-              : nothing}
-            <details
-              ?open="${this.querySelector &&
-              !this.querySelector('[slot="content"]')}"
-              id="directions"
-            >
+          </summary>
+          <div class="container">
+            <details id="legend">
               <summary>
                 <simple-icon-lite
                   class="details-icon"
-                  icon="maps:directions"
+                  icon="hax:map-legend"
                 ></simple-icon-lite
-                >Directions
+                >Legend
               </summary>
-              <div class="container">${this.renderDirections()}</div>
+              <div class="container">${this.renderLegend()}</div>
             </details>
+            ${this.renderFeedback()}
+          </div>
+        </details>
+        ${this.querySelector &&
+        this.querySelector('[slot="content"]') &&
+        !this.edit
+          ? html` <details ?open="${!this.showAnswer}" id="related">
+              <summary>
+                <simple-icon-lite
+                  class="details-icon"
+                  icon="lrn:content"
+                ></simple-icon-lite
+                >Related content
+              </summary>
+              <div class="container">
+                <slot name="content"></slot>
+              </div>
+            </details>`
+          : nothing}
+        <details
+          ?open="${this.querySelector &&
+          !this.querySelector('[slot="content"]')}"
+          id="directions"
+        >
+          <summary>
+            <simple-icon-lite
+              class="details-icon"
+              icon="maps:directions"
+            ></simple-icon-lite
+            >Directions
+          </summary>
+          <div class="container">${this.renderDirections()}</div>
+        </details>
       </confetti-container>
     `;
   }

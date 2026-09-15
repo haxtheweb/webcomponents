@@ -238,8 +238,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
 
   // Lit render the HTML.
   render() {
-    return html`
-      <div class="at-viewport" id="viewport">
+    return html` <div class="at-viewport" id="viewport">
         <slot></slot>
         <slot name="${SURFACE_SLOT}"></slot>
       </div>
@@ -261,7 +260,9 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           ?disabled="${!this._playerReady}"
           @click="${this._stop}"
         ></simple-icon-button-lite>
-        <simple-tooltip for="sm-stop" position="top">${this.t.stop}</simple-tooltip>
+        <simple-tooltip for="sm-stop" position="top"
+          >${this.t.stop}</simple-tooltip
+        >
         ${!this._playerReady
           ? html`<span class="at-load-text"
               >${this.t.loading} ${this._loadProgress}%</span
@@ -445,8 +446,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         let target = mutations[i].target;
         if (
           this._surfaceWrap &&
-          (target === this._surfaceWrap ||
-            this._surfaceWrap.contains(target))
+          (target === this._surfaceWrap || this._surfaceWrap.contains(target))
         ) {
           return;
         }
@@ -627,9 +627,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         this._timeText =
           this._formatTime(e.currentTime) + " / " + this._formatTime(e.endTime);
         if (e.endTime > 0) {
-          this._playProgress = Math.round(
-            (e.currentTime / e.endTime) * 100,
-          );
+          this._playProgress = Math.round((e.currentTime / e.endTime) * 100);
         }
       }
     });

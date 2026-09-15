@@ -1,13 +1,11 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../resume-theme.js";
 
 describe("ResumeTheme test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <resume-theme
-        title="title"
-      ></resume-theme>
+      <resume-theme title="title"></resume-theme>
     `);
   });
 

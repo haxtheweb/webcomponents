@@ -643,7 +643,7 @@ class OERSchema {
         coursePrerequisites: {
           label: "coursePrerequisites",
           comment:
-            "Requirements for taking the Course. May be completion of another Course or a textual description like \"permission of instructor\". Requirements may be a pre-requisite competency, referenced using AlignmentObject.",
+            'Requirements for taking the Course. May be completion of another Course or a textual description like "permission of instructor". Requirements may be a pre-requisite competency, referenced using AlignmentObject.',
           range: [
             "Course",
             "LearningObjective",
@@ -842,7 +842,8 @@ class OERSchema {
         },
         rubricType: {
           label: "rubricType",
-          comment: "The rubric style (analytic, holistic, single point, checklist).",
+          comment:
+            "The rubric style (analytic, holistic, single point, checklist).",
           range: ["Text"],
           domain: ["Rubric"],
         },
@@ -860,7 +861,8 @@ class OERSchema {
         },
         levelOrdinal: {
           label: "levelOrdinal",
-          comment: "Ordering value for the level (higher means higher performance).",
+          comment:
+            "Ordering value for the level (higher means higher performance).",
           range: ["Integer"],
           domain: ["RubricLevel"],
         },
@@ -872,7 +874,8 @@ class OERSchema {
         },
         pointsRequired: {
           label: "pointsRequired",
-          comment: "Whether points must be assigned for each level in this scale.",
+          comment:
+            "Whether points must be assigned for each level in this scale.",
           range: ["Boolean"],
           domain: ["RubricScale"],
         },

@@ -28,10 +28,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
                   ? store.manifest.metadata.site.name
                   : null;
               if (siteName) {
-                localStorageSet(
-                  `HAXCMSlastRoute-${siteName}`,
-                  _mobx_val_0,
-                );
+                localStorageSet(`HAXCMSlastRoute-${siteName}`, _mobx_val_0);
               }
             }
           });
@@ -54,19 +51,14 @@ const HAXCMSRememberRoute = function (SuperClass) {
           store &&
           store.location &&
           store.location.pathname &&
-          localStorageGet(
-            `HAXCMSlastRoute-${siteName}`,
-          ) &&
-          localStorageGet(
-            `HAXCMSlastRoute-${siteName}`,
-          ) != toJS(store.location.pathname)
+          localStorageGet(`HAXCMSlastRoute-${siteName}`) &&
+          localStorageGet(`HAXCMSlastRoute-${siteName}`) !=
+            toJS(store.location.pathname)
         ) {
           let btn = globalThis.document.createElement("a");
           btn.setAttribute(
             "href",
-            localStorageGet(
-              `HAXCMSlastRoute-${siteName}`,
-            ),
+            localStorageGet(`HAXCMSlastRoute-${siteName}`),
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
           btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;

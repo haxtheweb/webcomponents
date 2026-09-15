@@ -8,12 +8,13 @@ import { autorun } from "mobx";
 function getLtiTargetOrigin() {
   try {
     const cmsStore =
-      globalThis.HAXCMS && globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance &&
       globalThis.HAXCMS.instance.store;
     const settings = cmsStore && cmsStore.appSettings;
     if (settings && settings.ltiOrigin) {
-      if (settings.ltiOrigin === '*') {
-        return '*';
+      if (settings.ltiOrigin === "*") {
+        return "*";
       }
       return new URL(settings.ltiOrigin).origin;
     }
@@ -21,7 +22,9 @@ function getLtiTargetOrigin() {
       return new URL(globalThis.document.referrer).origin;
     }
   } catch (e) {}
-  return globalThis.location && globalThis.location.origin ? globalThis.location.origin : '*';
+  return globalThis.location && globalThis.location.origin
+    ? globalThis.location.origin
+    : "*";
 }
 
 export const LTIResizingMixin = function (SuperClass) {
@@ -40,7 +43,10 @@ export const LTIResizingMixin = function (SuperClass) {
       autorun(() => {
         // on content change, meaning it loaded, fire a resize statement
         if (store.activeItemContent || store.appReady) {
-          parent.postMessage('{"subject":"lti.scrollToTop"}', getLtiTargetOrigin());
+          parent.postMessage(
+            '{"subject":"lti.scrollToTop"}',
+            getLtiTargetOrigin(),
+          );
           setTimeout(() => {
             let height = globalThis.document.body.scrollHeight;
             // scroll target is the content container
@@ -55,7 +61,10 @@ export const LTIResizingMixin = function (SuperClass) {
               '{"subject":"lti.frameResize", "height":' + height + " }",
               getLtiTargetOrigin(),
             );
-            parent.postMessage('{"subject":"lti.scrollToTop"}', getLtiTargetOrigin());
+            parent.postMessage(
+              '{"subject":"lti.scrollToTop"}',
+              getLtiTargetOrigin(),
+            );
           }, 100);
           // give content a chance to self resize if loading nested materials
           setTimeout(() => {
@@ -72,7 +81,10 @@ export const LTIResizingMixin = function (SuperClass) {
               '{"subject":"lti.frameResize", "height":' + height + " }",
               getLtiTargetOrigin(),
             );
-            parent.postMessage('{"subject":"lti.scrollToTop"}', getLtiTargetOrigin());
+            parent.postMessage(
+              '{"subject":"lti.scrollToTop"}',
+              getLtiTargetOrigin(),
+            );
           }, 1000);
         }
       });

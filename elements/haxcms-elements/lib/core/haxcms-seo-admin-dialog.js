@@ -237,7 +237,10 @@ class HAXCMSSEOAdminDialog extends DDD {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
           --simple-fields-fieldset-background-color: transparent;
@@ -352,7 +355,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             required: false,
             fileActions: true,
             noVoiceRecord: true,
-            noScreenRecord: true
+            noScreenRecord: true,
           },
           {
             property: "manifest-metadata-site-domain",
@@ -856,10 +859,7 @@ class HAXCMSSEOAdminDialog extends DDD {
             : ``}
         </div>
         <div class="actions">
-          <button
-            class="action"
-            @click="${this._normalizeSlugsTap}"
-          >
+          <button class="action" @click="${this._normalizeSlugsTap}">
             Normalize slugs
           </button>
           <button

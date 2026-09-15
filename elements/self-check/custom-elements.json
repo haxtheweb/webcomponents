@@ -24,6 +24,19 @@
             },
             {
               "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the shadow\n<img> src directly so the persisted `image` property (and saved content)\nstays clean."
+            },
+            {
+              "kind": "method",
               "name": "haxactiveElementChanged",
               "parameters": [
                 {
@@ -132,6 +145,28 @@
             },
             {
               "kind": "field",
+              "name": "hasLearningObjective",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learning objective reference emitted as oer:hasLearningObjective.",
+              "default": "\"\"",
+              "attribute": "has-learning-objective"
+            },
+            {
+              "kind": "field",
+              "name": "assessing",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Activity reference emitted as oer:assessing.",
+              "default": "\"\"",
+              "attribute": "assessing"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -229,6 +264,24 @@
               "description": "Theme color for header background.",
               "default": "\"primary\"",
               "fieldName": "accentColor"
+            },
+            {
+              "name": "has-learning-objective",
+              "type": {
+                "text": "string"
+              },
+              "description": "Learning objective reference emitted as oer:hasLearningObjective.",
+              "default": "\"\"",
+              "fieldName": "hasLearningObjective"
+            },
+            {
+              "name": "assessing",
+              "type": {
+                "text": "string"
+              },
+              "description": "Activity reference emitted as oer:assessing.",
+              "default": "\"\"",
+              "fieldName": "assessing"
             }
           ],
           "mixins": [

@@ -371,4 +371,3 @@ export function internalGetShadowSelection(root) {
     range,
   };
 }
-

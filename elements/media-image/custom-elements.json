@@ -17,7 +17,29 @@
             },
             {
               "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the inner\nshadow <img> src directly — the ?t= stays in shadow DOM so the persisted\n`source` / `thumbnail` properties (and saved content) stay clean."
+            },
+            {
+              "kind": "method",
               "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleImageKeydown",
               "parameters": [
                 {
                   "name": "event"
@@ -113,7 +135,8 @@
               },
               "description": "Image source.",
               "default": "\"\"",
-              "attribute": "source"
+              "attribute": "source",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -179,7 +202,8 @@
               },
               "description": "Image alt.",
               "default": "\"\"",
-              "attribute": "alt"
+              "attribute": "alt",
+              "reflects": true
             },
             {
               "kind": "field",

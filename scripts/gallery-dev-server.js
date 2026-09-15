@@ -60,7 +60,7 @@ function buildGallery() {
 function startDevServer() {
   console.log('🚀 Starting @web/dev-server...');
   
-  devServer = spawn('npx', ['@web/dev-server', '--open', 'component-gallery.html', '--root-dir', '.', '--port', '3333'], {
+  devServer = spawn('npx', ['@web/dev-server', '--open', 'index.html', '--root-dir', '.', '--port', '3333'], {
     stdio: 'inherit',
     detached: false
   });
@@ -154,7 +154,7 @@ async function main() {
     startDevServer();
     
     console.log('\n🎉 Gallery development server is running!');
-    console.log('📄 Gallery: http://localhost:3333/component-gallery.html');
+    console.log('📄 Gallery: http://localhost:3333/index.html');
     console.log('🔄 Auto-rebuilding on file changes...');
     console.log('⏹️  Press Ctrl+C to stop');
     

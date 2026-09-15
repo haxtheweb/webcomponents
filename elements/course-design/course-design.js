@@ -29,21 +29,32 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
 
   // Template return function
   render() {
-    return html`
-      ${this.courseIdentifier
-        ? html`<meta property="oer:courseIdentifier" content="${this.courseIdentifier}" />`
+    return html` ${this.courseIdentifier
+        ? html`<meta
+            property="oer:courseIdentifier"
+            content="${this.courseIdentifier}"
+          />`
         : ``}
       ${this.primaryInstructor
-        ? html`<meta property="oer:primaryInstructor" content="${this.primaryInstructor}" />`
+        ? html`<meta
+            property="oer:primaryInstructor"
+            content="${this.primaryInstructor}"
+          />`
         : ``}
       ${this.termOffered
-        ? html`<meta property="oer:termOffered" content="${this.termOffered}" />`
+        ? html`<meta
+            property="oer:termOffered"
+            content="${this.termOffered}"
+          />`
         : ``}
       ${this.syllabus
         ? html`<meta property="oer:syllabus" content="${this.syllabus}" />`
         : ``}
       ${this.deliveryFormat
-        ? html`<meta property="oer:deliveryFormat" content="${this.deliveryFormat}" />`
+        ? html`<meta
+            property="oer:deliveryFormat"
+            content="${this.deliveryFormat}"
+          />`
         : ``}
       <slot></slot>`;
   }
@@ -92,8 +103,7 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
           {
             property: "primaryInstructor",
             title: "Primary Instructor",
-            description:
-              "OER Schema: the primary instructor for the course.",
+            description: "OER Schema: the primary instructor for the course.",
             inputMethod: "textfield",
           },
           {

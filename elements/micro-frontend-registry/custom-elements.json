@@ -18,6 +18,44 @@
           "members": [
             {
               "kind": "method",
+              "name": "setAuthProvider",
+              "parameters": [
+                {
+                  "name": "provider",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resolveEndpointTemplate",
+              "parameters": [
+                {
+                  "name": "endpoint",
+                  "default": "\"\""
+                },
+                {
+                  "name": "params",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resolveSecurityHeaders",
+              "parameters": [
+                {
+                  "name": "item",
+                  "default": "null"
+                },
+                {
+                  "name": "context",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "add",
               "parameters": [
                 {
@@ -211,6 +249,14 @@
               "kind": "field",
               "name": "MicroFrontend",
               "default": "MicroFrontend"
+            },
+            {
+              "kind": "field",
+              "name": "authProvider",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             }
           ],
           "parameters": [
@@ -236,6 +282,56 @@
           "members": [
             {
               "kind": "method",
+              "name": "setAuthProvider",
+              "parameters": [
+                {
+                  "name": "provider",
+                  "default": "null"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resolveEndpointTemplate",
+              "parameters": [
+                {
+                  "name": "endpoint",
+                  "default": "\"\""
+                },
+                {
+                  "name": "params",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resolveSecurityHeaders",
+              "parameters": [
+                {
+                  "name": "item",
+                  "default": "null"
+                },
+                {
+                  "name": "context",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "add",
               "parameters": [
                 {
@@ -461,6 +557,18 @@
               "kind": "field",
               "name": "MicroFrontend",
               "default": "MicroFrontend",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "authProvider",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
               "inheritedFrom": {
                 "name": "MicroFrontendRegCapabilities",
                 "module": "micro-frontend-registry.js"
@@ -481,6 +589,56 @@
             },
             {
               "kind": "method",
+              "name": "setAuthProvider",
+              "parameters": [
+                {
+                  "name": "provider",
+                  "default": "null"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resolveEndpointTemplate",
+              "parameters": [
+                {
+                  "name": "endpoint",
+                  "default": "\"\""
+                },
+                {
+                  "name": "params",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resolveSecurityHeaders",
+              "parameters": [
+                {
+                  "name": "item",
+                  "default": "null"
+                },
+                {
+                  "name": "context",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "add",
               "parameters": [
                 {
@@ -706,6 +864,18 @@
               "kind": "field",
               "name": "MicroFrontend",
               "default": "MicroFrontend",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "authProvider",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
               "inheritedFrom": {
                 "name": "MicroFrontendRegCapabilities",
                 "module": "micro-frontend-registry.js"

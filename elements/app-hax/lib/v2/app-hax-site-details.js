@@ -301,7 +301,10 @@ export class AppHaxSiteDetails extends SimpleColors {
               a.click();
               globalThis.document.body.removeChild(a);
             } else {
-              console.error("downloadSite response missing data.link:", response);
+              console.error(
+                "downloadSite response missing data.link:",
+                response,
+              );
             }
           } else {
             store.refreshSiteListing();

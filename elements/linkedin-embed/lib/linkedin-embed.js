@@ -75,7 +75,8 @@ class LinkedinEmbed extends DDD {
           background-color: transparent;
         }
         @container (max-width: 500px) {
-          .badge-shell {}
+          .badge-shell {
+          }
         }
       `,
     ];
@@ -169,7 +170,10 @@ class LinkedinEmbed extends DDD {
     if (!value || typeof value !== "string") {
       return "btopro";
     }
-    return value.replace("https://www.linkedin.com/in/", "").replaceAll("/", "").trim();
+    return value
+      .replace("https://www.linkedin.com/in/", "")
+      .replaceAll("/", "")
+      .trim();
   }
 
   __watchPreferredTheme() {
@@ -185,7 +189,10 @@ class LinkedinEmbed extends DDD {
       this.requestUpdate();
     };
     if (this.__darkModeMediaQuery.addEventListener) {
-      this.__darkModeMediaQuery.addEventListener("change", this.__darkModeHandler);
+      this.__darkModeMediaQuery.addEventListener(
+        "change",
+        this.__darkModeHandler,
+      );
     } else if (this.__darkModeMediaQuery.addListener) {
       this.__darkModeMediaQuery.addListener(this.__darkModeHandler);
     }
@@ -255,7 +262,9 @@ class LinkedinEmbed extends DDD {
         ? globalThis.location.hostname
         : "";
     const isCNDomain = /linkedin(-ei)?\.cn$/.test(hostName);
-    return isCNDomain ? "https://badges.linkedin.cn/" : "https://badges.linkedin.com/";
+    return isCNDomain
+      ? "https://badges.linkedin.cn/"
+      : "https://badges.linkedin.com/";
   }
 
   __requestBadgeMarkup() {
@@ -329,7 +338,9 @@ class LinkedinEmbed extends DDD {
       if (iframe.contentWindow && iframe.contentWindow.document) {
         const iframeBody = iframe.contentWindow.document.body;
         if (iframeBody) {
-          const height = iframeBody.scrollHeight ? iframeBody.scrollHeight : 300;
+          const height = iframeBody.scrollHeight
+            ? iframeBody.scrollHeight
+            : 300;
           const width = iframeBody.scrollWidth ? iframeBody.scrollWidth : 330;
           iframe.setAttribute("height", `${height}`);
           iframe.setAttribute("width", `${width}`);
@@ -362,7 +373,10 @@ class LinkedinEmbed extends DDD {
         data-theme="${this._effectiveTheme}"
       >
         <div class="badge-host">
-          <a class="badge-base__link LI-simple-link" href="${this._profileHref}">
+          <a
+            class="badge-base__link LI-simple-link"
+            href="${this._profileHref}"
+          >
             View ${this.vanityname} on LinkedIn
           </a>
         </div>

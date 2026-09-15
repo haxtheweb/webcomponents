@@ -209,7 +209,11 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           </div>
         </div>
         <div class="message_wrap">
-          <h3 class="main_message ${this.url ? "mt-2" : "mt-5"}" id="title" property="oer:mainContent">
+          <h3
+            class="main_message ${this.url ? "mt-2" : "mt-5"}"
+            id="title"
+            property="oer:mainContent"
+          >
             ${this.title}
           </h3>
           <div class="secondary_message">

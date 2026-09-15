@@ -669,7 +669,9 @@ export const renderRecordBody = (record, maxLength = 240) => {
   }
   if (recordBodyIsHtml(record)) {
     // security (F3/JS-XSS-001): sanitize record body HTML before unsafeHTML sink
-    return html`<div class="record-html">${unsafeHTML(sanitizeHTMLString(body))}</div>`;
+    return html`<div class="record-html">
+      ${unsafeHTML(sanitizeHTMLString(body))}
+    </div>`;
   }
   return html`<p>${shortValue(body, maxLength)}</p>`;
 };

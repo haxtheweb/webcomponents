@@ -39,6 +39,14 @@
               "default": "null",
               "attribute": "is-interface-hidden",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -192,6 +200,14 @@
               "default": "null",
               "attribute": "is-interface-hidden",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -331,6 +347,14 @@
               "default": "null",
               "attribute": "is-interface-hidden",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -474,6 +498,14 @@
               "default": "null",
               "attribute": "is-full-view",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -641,6 +673,14 @@
               },
               "default": "null",
               "attribute": "username"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -777,6 +817,14 @@
               "default": "null",
               "attribute": "has-editor-ui",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -973,6 +1021,14 @@
                 "text": "array"
               },
               "attribute": "suggestedPrompts"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [
@@ -1138,6 +1194,14 @@
                 "text": "null"
               },
               "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             }
           ],
           "attributes": [

@@ -61,7 +61,10 @@ class CleanTwo extends LTIResizingMixin(
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           display: block;
           color-scheme: light dark;
-          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
+          color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-accent-6)
+          );
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -344,7 +347,10 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
-          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
+          color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-accent-6)
+          );
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),
             var(--ddd-accent-6)
@@ -409,9 +415,9 @@ class CleanTwo extends LTIResizingMixin(
           width: 36px;
         }
         .content-wrapper {
-          width: -moz-available;          
-          width: -webkit-fill-available;  
-          width: stretch;   
+          width: -moz-available;
+          width: -webkit-fill-available;
+          width: stretch;
           max-width: 100%;
           margin: 0;
           display: flex;
@@ -663,12 +669,18 @@ class CleanTwo extends LTIResizingMixin(
         }
         site-breadcrumb {
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
-          color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
+          color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-accent-6)
+          );
           --site-breadcrumb-color: light-dark(
             var(--ddd-theme-default-link),
             var(--ddd-theme-default-linkLight)
           );
-          --site-breadcrumb-last-color: light-dark(var(--ddd-theme-default-black), var(--ddd-accent-6));
+          --site-breadcrumb-last-color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-accent-6)
+          );
         }
         .search-modal-btn {
           margin-top: 16px;

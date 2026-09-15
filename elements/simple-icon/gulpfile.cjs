@@ -66,4 +66,4 @@ SimpleIconsetStore.registerManifest(${exportName});`
   }
   done();
 });
-gulp.task("default", gulp.series("analyze", "iconset"));
+gulp.task("default", gulp.series("iconset"));

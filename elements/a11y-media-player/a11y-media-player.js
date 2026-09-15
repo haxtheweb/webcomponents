@@ -106,7 +106,9 @@ import "./lib/a11y-media-youtube.js";
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
-class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD))) {
+class A11yMediaPlayer extends SchemaBehaviors(
+  I18NMixin(FullscreenBehaviors(DDD)),
+) {
   //styles function
   static get styles() {
     return [
@@ -3000,12 +3002,13 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
     // render, which makes Lit fire `updated` for `sources` even when the
     // actual sources have not changed. Without this guard we would call
     // media.load() on every render and constantly reset playback.
-    const desiredSrcs = (this.sources && Array.isArray(this.sources))
-      ? this.sources.map((s) => s.src || "")
-      : [];
-    const currentSrcs = Array.from(
-      media.querySelectorAll("source"),
-    ).map((s) => s.getAttribute("src") || "");
+    const desiredSrcs =
+      this.sources && Array.isArray(this.sources)
+        ? this.sources.map((s) => s.src || "")
+        : [];
+    const currentSrcs = Array.from(media.querySelectorAll("source")).map(
+      (s) => s.getAttribute("src") || "",
+    );
 
     const same =
       desiredSrcs.length === currentSrcs.length &&
@@ -3020,7 +3023,9 @@ class A11yMediaPlayer extends SchemaBehaviors(I18NMixin(FullscreenBehaviors(DDD)
     if (this.sources && Array.isArray(this.sources)) {
       this.sources.forEach((source) => {
         let node = globalThis.document.createElement("source");
-        Object.keys(source).forEach((key) => node.setAttribute(key, source[key]));
+        Object.keys(source).forEach((key) =>
+          node.setAttribute(key, source[key]),
+        );
         media.appendChild(node);
       });
     }

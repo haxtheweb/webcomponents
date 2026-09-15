@@ -140,7 +140,12 @@ class CollectionsThemeBanner extends LitElement {
       </div>
       <div class="branding">
         <div class="logo">
-          <img src="${this.logo}" alt="${this.sitename}" decoding="async" fetchpriority="low" />
+          <img
+            src="${this.logo}"
+            alt="${this.sitename}"
+            decoding="async"
+            fetchpriority="low"
+          />
         </div>
         <div class="company">
           <h2>${this.sitename}</h2>

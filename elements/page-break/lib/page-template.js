@@ -40,7 +40,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           border-color: var(--ddd-theme-default-coalyGray);
         }
 
-
         :host([data-hax-ray])
           .template-content
           ::slotted(*.hax-hovered)::before {
@@ -163,7 +162,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
       </div>
     `;
   }
-
 }
 
 globalThis.customElements.define(PageTemplate.tag, PageTemplate);

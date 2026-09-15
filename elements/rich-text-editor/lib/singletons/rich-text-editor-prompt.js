@@ -35,7 +35,9 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           /* Keep the field surface flush with the popover and align the
              simple-fields spacing to DDD tokens so the row-layout
              hover/focus affordance reads edge-to-edge (issue #2996). */
-          --simple-fields-background-color: var(--simple-popover-background-color);
+          --simple-fields-background-color: var(
+            --simple-popover-background-color
+          );
           --simple-fields-margin: var(--ddd-spacing-1);
           --simple-fields-margin-small: var(--ddd-spacing-1);
           --simple-fields-field-margin: var(--ddd-spacing-2);
@@ -54,10 +56,11 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
             var(--ddd-theme-default-limestoneLight),
             #3a3a3a
           );
-          --simple-fields-input-border: 1px solid light-dark(
-            var(--ddd-theme-default-black),
-            var(--ddd-theme-default-limestoneGray)
-          );
+          --simple-fields-input-border: 1px solid
+            light-dark(
+              var(--ddd-theme-default-black),
+              var(--ddd-theme-default-limestoneGray)
+            );
           z-index: 2;
         }
         #prompt[hidden] {

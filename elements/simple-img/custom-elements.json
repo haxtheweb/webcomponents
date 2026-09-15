@@ -26,6 +26,23 @@
             },
             {
               "kind": "method",
+              "name": "haxHooks",
+              "description": "#3050: a file backing this image was modified in place. The displayed\n<img> lives in the LIGHT DOM and its src is the computed `srcconverted`\nURL (not `this.src`), so cache-bust it directly — the persisted `src`\nattribute (and saved content) stays clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "updateconvertedurl"
             },
             {

@@ -1,6 +1,7 @@
 {
   "type": "module",
   "name": "vercel-api-webcomponents",
+  "license": "Apache-2.0",
   "engines": {
     "node": "24.x"
   },

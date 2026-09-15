@@ -82,14 +82,14 @@
             },
             {
               "kind": "field",
+              "name": "processing",
+              "description": "Reflected `processing` flag (much like a `loading` attribute) that is\ntrue while the element is actively replacing its light DOM innards in\nresponse to a mathtext change. Used internally as a re-entrancy guard\nand reflected so HAX / CSS can observe the busy state."
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "refresh",
-              "description": "forces a refresh to prevent dom reattachment issue"
             },
             {
               "kind": "field",

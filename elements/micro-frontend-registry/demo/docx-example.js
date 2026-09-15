@@ -127,7 +127,6 @@ export class DocxExample extends LitElement {
     this.shadowRoot.querySelector("#response").value = JSON.stringify(data);
   }
 
-
   render() {
     return html`
       ${this.ascii ? this.asciiImgRender() : ``}

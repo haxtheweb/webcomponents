@@ -152,9 +152,12 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           gap: var(--ddd-spacing-1);
         }
         .info-action-btn {
-          --simple-icon-button-background-color: var(--ddd-theme-default-skyBlue);
+          --simple-icon-button-background-color: var(
+            --ddd-theme-default-skyBlue
+          );
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          --simple-icon-button-padding: var(--ddd-spacing-1)
+            var(--ddd-spacing-2);
           --simple-icon-width: var(--ddd-icon-4xs);
           --simple-icon-height: var(--ddd-icon-4xs);
           --simple-icon-color: var(--ddd-theme-default-white);
@@ -258,8 +261,12 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     const details =
       app.details && typeof app.details === "object" ? app.details : null;
     if (details) {
-      const author = String(details.author || "").trim().toLowerCase();
-      const title = String(details.title || "").trim().toLowerCase();
+      const author = String(details.author || "")
+        .trim()
+        .toLowerCase();
+      const title = String(details.title || "")
+        .trim()
+        .toLowerCase();
       if (author === "haxcms" || title === "local files") {
         return true;
       }
@@ -696,11 +703,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     const hasUuid = !!f.uuid;
     return html`
       <div class="file-actions-wrap">
-        <a11y-collapse
-          class="file-info-collapse"
-          heading-button
-          accordion
-        >
+        <a11y-collapse class="file-info-collapse" heading-button accordion>
           <span slot="heading">${this.t.imageInfo}</span>
           <dl class="file-info-grid">
             <dt>${this.t.created}</dt>
@@ -819,8 +822,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     // to the client-side fallback (dims only, no uuid -> no actions).
     const isLocal = this._isLocalFileValue(norm);
     // Race guard: only the latest hydration call wins.
-    const token = (this.__hydrateToken =
-      (this.__hydrateToken || 0) + 1);
+    const token = (this.__hydrateToken = (this.__hydrateToken || 0) + 1);
     const ready = isLocal
       ? await this._waitForSiteOp("@site/listFiles")
       : false;
@@ -838,12 +840,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           this,
         );
         if (token !== this.__hydrateToken) return;
-        if (
-          d &&
-          d.status === 200 &&
-          d.data &&
-          Array.isArray(d.data.files)
-        ) {
+        if (d && d.status === 200 && d.data && Array.isArray(d.data.files)) {
           const rec = d.data.files.find(
             (r) =>
               r &&
@@ -986,7 +983,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    */
   _captureUploadedFileForRecs(response, item) {
     const fileObj =
-      response && response.data && response.data.file ? response.data.file : null;
+      response && response.data && response.data.file
+        ? response.data.file
+        : null;
     if (fileObj && this._isImageMime(fileObj.type)) {
       this.__lastUploadedFile = {
         uuid: fileObj.uuid || "",
@@ -994,8 +993,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         height: fileObj.height || 0,
         size: fileObj.size || 0,
         type: fileObj.type || "",
-        dateCreated:
-          fileObj.dateCreated || Math.floor(Date.now() / 1000),
+        dateCreated: fileObj.dateCreated || Math.floor(Date.now() / 1000),
         source: fileObj.url || (item && item.url) || "",
         fullUrl: fileObj.fullUrl || "",
       };
@@ -1069,7 +1067,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     const f = this.__lastUploadedFile;
     if (f && this._isImageMime(f.type)) {
       if (f.size && f.size > COMPRESS_RECOMMEND_SIZE) {
-        recs.push({ kind: "compress", level: "medium", label: this.t.compressImage });
+        recs.push({
+          kind: "compress",
+          level: "medium",
+          label: this.t.compressImage,
+        });
       }
       if (f.width && f.height) {
         const longest = Math.max(f.width, f.height);
@@ -1106,7 +1108,10 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       try {
         const img = new Image();
         img.onload = function () {
-          resolve({ width: img.naturalWidth || 0, height: img.naturalHeight || 0 });
+          resolve({
+            width: img.naturalWidth || 0,
+            height: img.naturalHeight || 0,
+          });
         };
         img.onerror = function () {
           resolve({ width: 0, height: 0 });
@@ -1147,7 +1152,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   _onInlineFileAction(e) {
     if (this.__fileActionsBusy) return;
     const action = e && e.detail ? e.detail.action : "";
-    const value = e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
+    const value =
+      e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
     if (!action) return;
     const f = this.__lastUploadedFile;
     if (!f || !f.uuid) {

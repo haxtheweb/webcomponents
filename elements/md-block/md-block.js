@@ -138,9 +138,7 @@ class MdBlock extends DDD {
           if (response.ok) {
             const text = await response.text();
             // security: sanitize remote markdown HTML before unsafeHTML (prevents stored XSS)
-            this._parsedMarkdown = sanitizeHTMLString(
-              await marked.parse(text),
-            );
+            this._parsedMarkdown = sanitizeHTMLString(await marked.parse(text));
           }
         } catch (e) {
           // fail silently, leave empty

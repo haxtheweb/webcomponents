@@ -154,7 +154,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         for="input"
       >
         ${this.filtered.length > 0 && this.opened
-            ? html` <ul
+          ? html` <ul
               part="list"
               id="list"
               role="listbox"
@@ -185,7 +185,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
                     : ``}`,
               )}
             </ul>`
-          : html`<div class="no-results" part="no-result" role="status">No results</div>`}
+          : html`<div class="no-results" part="no-result" role="status">
+              No results
+            </div>`}
       </simple-popover>
     `;
   }

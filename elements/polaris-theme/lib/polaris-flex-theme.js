@@ -101,7 +101,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --video-player-disabled-color: var(--ddd-theme-default-disabled);
         }
 
-      :host([edit-mode]) {
+        :host([edit-mode]) {
           margin: var(
             --hax-tray-element-align-margin,
             0 0 0
@@ -118,7 +118,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0;
           }
         }
-        
+
         :host([is-safari]) {
           background-color: var(--ddd-accent-6);
           color: black;
@@ -830,9 +830,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           </div>
           <div class="nav-section">
             <div class="header-branding">
-              <div class="header-branding-left">
-                ${this.renderBrandMark()}
-              </div>
+              <div class="header-branding-left">${this.renderBrandMark()}</div>
               ${this.HAXCMSMobileMenuButton("left")}
             </div>
 

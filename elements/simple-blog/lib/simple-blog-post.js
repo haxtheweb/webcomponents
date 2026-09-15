@@ -267,8 +267,7 @@ class SimpleBlogPost extends SimpleColors {
         }
         const image = this.shadowRoot.querySelector("#image");
         if (image) {
-          image.style.transform =
-            "translate3d(0px, " + top / 3 + "px, 0px)";
+          image.style.transform = "translate3d(0px, " + top / 3 + "px, 0px)";
           image.style.opacity = 1 - Math.max(top / 700, 0);
         }
       }

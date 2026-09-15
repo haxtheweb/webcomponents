@@ -121,9 +121,11 @@ class A11yCollapse extends DDD {
             border-color: var(--a11y-collapse-border-color);
             max-height: 0;
             transition:
-              visibility var(--a11y-collapse-transition-duration, 0.6s) ease-in-out,
+              visibility var(--a11y-collapse-transition-duration, 0.6s)
+                ease-in-out,
               opacity var(--a11y-collapse-transition-duration, 0.6s) ease-in-out,
-              max-height var(--a11y-collapse-transition-duration, 0.6s) ease-in-out;
+              max-height var(--a11y-collapse-transition-duration, 0.6s)
+                ease-in-out;
             overflow-y: hidden;
             opacity: 1;
             visibility: visible;

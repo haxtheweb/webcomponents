@@ -20,7 +20,7 @@ import "@haxtheweb/a11y-tabs/a11y-tabs.js";
 import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
-import "@github/time-elements";
+import "@github/relative-time-element";
 import { autorun, toJS } from "mobx";
 import { get, set } from "idb-keyval";
 import { XLSXFileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/lib/xlsx-file-system-broker.js";
@@ -194,7 +194,9 @@ class GradeBookLite extends UIRenderPieces(
       }, 50);
     });
     if (this.shadowRoot.querySelector("#studentgrid")) {
-      this.__resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
+      this.__resizeObserver.observe(
+        this.shadowRoot.querySelector("#studentgrid"),
+      );
     }
     // see if we have a previous file reference
     setTimeout(async () => {

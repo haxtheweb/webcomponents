@@ -191,50 +191,61 @@ export class MfHtmlExample extends LitElement {
         });
     }
     if (this.shadowRoot.querySelector("#haxcms")) {
-      this.shadowRoot.querySelector("#haxcms").addEventListener("click", async () => {
-        const base = this.shadowRoot.querySelector("#haxcmsbase").value || "";
-        const magic = this.shadowRoot.querySelector("#haxcmsmagic").value || "";
-        const ancestor = this.shadowRoot.querySelector("#haxcmsparentid").value || "";
-        const url = new URL("./x/api/v1/site/export/html", base);
-        if (magic) {
-          url.searchParams.set("magic", magic);
-        }
-        if (ancestor) {
-          url.searchParams.set("filter.ancestor", ancestor);
-        }
-        try {
-          const response = await fetch(url.toString(), { credentials: "include" });
-          if (response.ok) {
-            const html = await response.text();
-            this.shadowRoot.querySelector("#haxcmssite").innerHTML = html;
-          } else {
-            console.error("Failed to load site HTML:", response.status);
+      this.shadowRoot
+        .querySelector("#haxcms")
+        .addEventListener("click", async () => {
+          const base = this.shadowRoot.querySelector("#haxcmsbase").value || "";
+          const magic =
+            this.shadowRoot.querySelector("#haxcmsmagic").value || "";
+          const ancestor =
+            this.shadowRoot.querySelector("#haxcmsparentid").value || "";
+          const url = new URL("./x/api/v1/site/export/html", base);
+          if (magic) {
+            url.searchParams.set("magic", magic);
           }
-        } catch (error) {
-          console.error("Site HTML load error:", error);
-        }
-      });
+          if (ancestor) {
+            url.searchParams.set("filter.ancestor", ancestor);
+          }
+          try {
+            const response = await fetch(url.toString(), {
+              credentials: "include",
+            });
+            if (response.ok) {
+              const html = await response.text();
+              this.shadowRoot.querySelector("#haxcmssite").innerHTML = html;
+            } else {
+              console.error("Failed to load site HTML:", response.status);
+            }
+          } catch (error) {
+            console.error("Site HTML load error:", error);
+          }
+        });
     }
     if (this.shadowRoot.querySelector("#epub")) {
-      this.shadowRoot.querySelector("#epub").addEventListener("click", async () => {
-        const base = this.shadowRoot.querySelector("#haxcmsbase").value || "";
-        const ancestor = this.shadowRoot.querySelector("#haxcmsparentid").value || "";
-        const url = new URL("./x/api/v1/site/export/epub", base);
-        if (ancestor) {
-          url.searchParams.set("filter.ancestor", ancestor);
-        }
-        try {
-          const response = await fetch(url.toString(), { credentials: "include" });
-          if (response.ok) {
-            const blob = await response.blob();
-            console.log("EPUB blob size:", blob.size);
-          } else {
-            console.error("Failed to load EPUB:", response.status);
+      this.shadowRoot
+        .querySelector("#epub")
+        .addEventListener("click", async () => {
+          const base = this.shadowRoot.querySelector("#haxcmsbase").value || "";
+          const ancestor =
+            this.shadowRoot.querySelector("#haxcmsparentid").value || "";
+          const url = new URL("./x/api/v1/site/export/epub", base);
+          if (ancestor) {
+            url.searchParams.set("filter.ancestor", ancestor);
           }
-        } catch (error) {
-          console.error("Site EPUB load error:", error);
-        }
-      });
+          try {
+            const response = await fetch(url.toString(), {
+              credentials: "include",
+            });
+            if (response.ok) {
+              const blob = await response.blob();
+              console.log("EPUB blob size:", blob.size);
+            } else {
+              console.error("Failed to load EPUB:", response.status);
+            }
+          } catch (error) {
+            console.error("Site EPUB load error:", error);
+          }
+        });
     }
     if (this.shadowRoot.querySelector("#searchbtn")) {
       this.shadowRoot

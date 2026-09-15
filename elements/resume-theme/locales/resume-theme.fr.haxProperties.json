@@ -1,16 +1,16 @@
 {
-    "settings": {
-        "configure": [
-            {
-                "title": "Titre"
-            }
-        ]
-    },
-    "demoSchema": [
-        {
-            "properties": {
-              "title": "Valeur personnalisée"
-            }
-        }
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre"
+      }
     ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "title": "Valeur personnalisée"
+      }
+    }
+  ]
 }

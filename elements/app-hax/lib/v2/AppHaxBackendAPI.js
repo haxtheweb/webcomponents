@@ -303,8 +303,7 @@ export class AppHaxBackendAPI extends LitElement {
     // require that signal in addition to the static alias existing.
     if (alias.requiresAppSettingsFlag) {
       return !!(
-        this.appSettings &&
-        this.appSettings[alias.requiresAppSettingsFlag]
+        this.appSettings && this.appSettings[alias.requiresAppSettingsFlag]
       );
     }
     return true;
@@ -435,10 +434,7 @@ export class AppHaxBackendAPI extends LitElement {
         typeof response.message === "string"
           ? response.message
           : "";
-      if (
-        denialMessage &&
-        HARD_DENIAL_MESSAGES.indexOf(denialMessage) !== -1
-      ) {
+      if (denialMessage && HARD_DENIAL_MESSAGES.indexOf(denialMessage) !== -1) {
         // Hard denial: surface the error, leave the session intact.
         this._clearRetryCount(retryKey);
         return true;

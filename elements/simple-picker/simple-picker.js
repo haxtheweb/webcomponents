@@ -467,11 +467,11 @@ const SimplePickerBehaviors = function (SuperClass) {
           role="listbox"
           aria-activedescendant="${this.__activeDesc}"
           aria-labelledby="${this.ariaLabelledby ||
-            (this.label && this.label.trim() !== ""
-              ? "listLabel"
-              : undefined)}"
+          (this.label && this.label.trim() !== "" ? "listLabel" : undefined)}"
           ?disabled="${this.disabled || !this.__options}"
-          aria-disabled="${this.disabled || !this.__options ? "true" : undefined}"
+          aria-disabled="${this.disabled || !this.__options
+            ? "true"
+            : undefined}"
           part="input"
           tabindex="0"
           @click="${this._handleListboxClick}"

@@ -42,6 +42,10 @@
             },
             {
               "kind": "method",
+              "name": "__handleResizeFallback"
+            },
+            {
+              "kind": "method",
               "name": "deleteResponiveElementEvent",
               "parameters": [
                 {
@@ -61,6 +65,10 @@
                 "text": "array"
               },
               "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "__resizeFallbackHandler"
             }
           ],
           "superclass": {

@@ -156,8 +156,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     if (!store._mediaSrcMatches(this.imageBg, path)) return;
     const base = String(this.imageBg).split("?")[0];
     const ts = Date.now();
-    const busted =
-      base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+    const busted = base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
     this.style.setProperty("--parallax-image-background", `url(${busted})`);
   }
   static get haxProperties() {

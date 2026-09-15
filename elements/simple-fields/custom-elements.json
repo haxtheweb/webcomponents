@@ -23617,7 +23617,7 @@
             {
               "kind": "method",
               "name": "uploadFiles",
-              "description": "Start uploading all files in the queue."
+              "description": "Start uploading all pending files in the queue, ONE AT A TIME.\n#3050: sequential uploads prevent server-call flooding when a user drops\nmany files at once and keep per-file progress perceptible. Each file's\nfull XHR lifecycle (load / error / abort) is awaited before the next file\nstarts, for every consumer of <simple-file-upload>."
             },
             {
               "kind": "method",
@@ -23625,11 +23625,9 @@
               "parameters": [
                 {
                   "name": "file"
-                },
-                {
-                  "name": "index"
                 }
-              ]
+              ],
+              "description": "Upload a single queued file via XHR. Returns a Promise that resolves once\nthe XHR reaches a terminal state (load / error / abort) or is skipped\n(already uploading / cancelled before send / no target), so callers can\nawait the full lifecycle before starting the next file (#3050)."
             },
             {
               "kind": "method",

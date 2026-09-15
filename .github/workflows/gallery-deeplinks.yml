@@ -1,7 +1,7 @@
 name: gallery-deeplinks
 
 # When a Vercel Preview deployment succeeds, post a single PR comment with deep
-# links into the freshly built component-gallery.html for each element the PR
+# links into the freshly built gallery (index.html) for each element the PR
 # touches. Routing lives in the gallery itself via the ?element=<slug> query
 # param (see scripts/build-component-gallery.js and COMPONENT-GALLERY.md).
 #
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout deployment commit
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.deployment.sha }}
 
@@ -82,7 +82,7 @@ jobs:
             echo 'Open each changed element directly in the built component gallery:'
             echo ''
             for slug in $(printf '%s\n' "${affected[@]}" | sort -u); do
-              echo "- [\`$slug\`](${PREVIEW_URL}/component-gallery.html?element=$slug)"
+              echo "- [\`$slug\`](${PREVIEW_URL}/?element=$slug)"
             done
             echo ''
             echo '---'
@@ -90,7 +90,7 @@ jobs:
             echo '**Review notes:**'
             echo '- Demos that load components through the magic-script / `wc-registry.json` from the CDN render the **published** version, **not** this PR'"'"'s local source.'
             echo '- Demos that import relatively (e.g. `./src/...`) reflect this PR'"'"'s local source.'
-            echo '- The gallery is regenerated on every Vercel preview deploy via `yarn build-gallery`.'
+            echo '- The gallery is regenerated on every Vercel preview deploy via `yarn build-gallery` and served at the preview'"'"'s root URL.'
           } > comment.md
 
           gh pr comment "${PR_NUMBER}" --body-file comment.md

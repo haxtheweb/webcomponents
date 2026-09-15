@@ -29,6 +29,23 @@
             },
             {
               "kind": "method",
+              "name": "haxHooks",
+              "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the shadow\n<img> src directly so the persisted `srcWithoutAnimation` property (and saved\ncontent) stays clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "generateStill",
               "parameters": [
                 {

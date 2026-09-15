@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/core": "7.29.7",
-    "@github/time-elements": "3.1.4",
     "@haxtheweb/a11y-collapse": "^26.8.0",
     "@haxtheweb/a11y-tabs": "^26.8.0",
     "@haxtheweb/absolute-position-behavior": "^26.8.0",

@@ -162,10 +162,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
             var(--ddd-theme-default-white, #ffffff),
             var(--ddd-theme-default-potentialMidnight, #000321)
           );
-          border: 1px solid light-dark(
-            var(--ddd-theme-default-limestoneLight, #dadce0),
-            var(--ddd-theme-default-slateGray, #314d64)
-          );
+          border: 1px solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #dadce0),
+              var(--ddd-theme-default-slateGray, #314d64)
+            );
           border-radius: 5px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           -webkit-font-smoothing: antialiased;
@@ -226,10 +227,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid light-dark(
-            var(--ddd-theme-default-limestoneLight, #e6ecf1),
-            var(--ddd-theme-default-slateGray, #314d64)
-          );
+          border-top: 2px solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e6ecf1),
+              var(--ddd-theme-default-slateGray, #314d64)
+            );
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -256,10 +258,11 @@ class TrainingTheme extends HAXCMSOperationButtons(
             --haxcms-color,
             var(--ddd-theme-default-wonderPurple)
           );
-          border: 1px solid light-dark(
-            var(--ddd-theme-default-limestoneLight, #e6ecf1),
-            var(--ddd-theme-default-slateGray, #314d64)
-          );
+          border: 1px solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e6ecf1),
+              var(--ddd-theme-default-slateGray, #314d64)
+            );
           margin: 0;
           display: block;
           padding: 0;

@@ -115,4 +115,6 @@ export const BootstrapDesignSystemDataAttributes = css`
   }
 `;
 
-export const BootstrapDesignSystemStyles = [BootstrapDesignSystemDataAttributes];
+export const BootstrapDesignSystemStyles = [
+  BootstrapDesignSystemDataAttributes,
+];

@@ -18,6 +18,23 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "#3050: a file backing the top or bottom image was modified in place.\nRefresh the live preview by cache-busting the slotted shadow <img> srcs\ndirectly so the persisted `topSrc` / `bottomSrc` properties (and saved\ncontent) stay clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,

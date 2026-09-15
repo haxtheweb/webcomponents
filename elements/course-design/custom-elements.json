@@ -13,10 +13,114 @@
           "members": [
             {
               "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "description": "Convention we use",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "courseIdentifier",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "course-identifier"
+            },
+            {
+              "kind": "field",
+              "name": "primaryInstructor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "primary-instructor"
+            },
+            {
+              "kind": "field",
+              "name": "termOffered",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "term-offered"
+            },
+            {
+              "kind": "field",
+              "name": "syllabus",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "syllabus"
+            },
+            {
+              "kind": "field",
+              "name": "deliveryFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "delivery-format"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "course-identifier",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "courseIdentifier"
+            },
+            {
+              "name": "primary-instructor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "primaryInstructor"
+            },
+            {
+              "name": "term-offered",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "termOffered"
+            },
+            {
+              "name": "syllabus",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "syllabus"
+            },
+            {
+              "name": "delivery-format",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "deliveryFormat"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             }
           ],
           "superclass": {
@@ -263,12 +367,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "lib/course-intro-footer.js",
-      "declarations": [],
-      "exports": []
     },
     {
       "kind": "javascript-module",

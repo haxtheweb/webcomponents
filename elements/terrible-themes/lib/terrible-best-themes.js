@@ -146,11 +146,25 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
   render() {
     return html`
       <a class="skip-link" href="#contentcontainer">Skip to content</a>
-      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <table
+        role="presentation"
+        width="100%"
+        border="0"
+        cellspacing="0"
+        cellpadding="0"
+      >
         <tbody>
           <tr valign="top">
             <td style="background-image:url('${skater}')">
-              <img src="${skater}" width="68" height="72" border="0" alt="" loading="lazy" decoding="async" />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
             </td>
             <td align="center">
               <main id="contentcontainer" tabindex="-1">
@@ -161,7 +175,15 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
               </main>
             </td>
             <td style="background-image:url('${skater}')">
-              <img src="${skater}" width="68" height="72" border="0" alt="" loading="lazy" decoding="async" />
+              <img
+                src="${skater}"
+                width="68"
+                height="72"
+                border="0"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
             </td>
           </tr>
           <tr>

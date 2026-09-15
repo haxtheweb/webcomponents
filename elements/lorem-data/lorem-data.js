@@ -73,7 +73,9 @@ class LoremData extends LoremDataBehaviors(LitElement) {
         (key) => html`
           <p>
             <label>
-              <a href="${this.saveDataUrl(this.schemas[key], key)}" download="${key}"
+              <a
+                href="${this.saveDataUrl(this.schemas[key], key)}"
+                download="${key}"
                 >${key}:
               </a>
               <br />

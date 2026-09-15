@@ -1604,13 +1604,15 @@ export function normalizeClipboardHTML(html) {
   });
 
   // Convert Google Docs font-weight spans to <strong>
-  fragment.querySelectorAll('span[style*="font-weight:700"]').forEach((span) => {
-    const strong = globalThis.document.createElement("strong");
-    while (span.firstChild) {
-      strong.appendChild(span.firstChild);
-    }
-    span.parentNode.replaceChild(strong, span);
-  });
+  fragment
+    .querySelectorAll('span[style*="font-weight:700"]')
+    .forEach((span) => {
+      const strong = globalThis.document.createElement("strong");
+      while (span.firstChild) {
+        strong.appendChild(span.firstChild);
+      }
+      span.parentNode.replaceChild(strong, span);
+    });
 
   // Unwrap Google Docs <p> inside <li> (GDocs wraps each list item in a paragraph)
   fragment.querySelectorAll("li > p").forEach((p) => {

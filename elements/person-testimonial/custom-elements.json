@@ -98,6 +98,12 @@
               "fieldName": "position"
             }
           ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"

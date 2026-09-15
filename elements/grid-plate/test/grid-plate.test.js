@@ -88,12 +88,7 @@ describe("GridPlate test", () => {
   });
 
   it("stacks at xs breakpoint when responsive behavior is disabled", () => {
-    const widths = element._getColumnWidths(
-      "xs",
-      "1-1",
-      element.layouts,
-      true,
-    );
+    const widths = element._getColumnWidths("xs", "1-1", element.layouts, true);
 
     expect(widths).to.deep.equal(["100%", "100%"]);
   });

@@ -398,7 +398,16 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         :host([droppable]) {
           outline-offset: calc(-1 * var(--ddd-spacing-1));
-          outline: var(--ddd-drop-zone-outline-width) solid color-mix(in srgb, var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7)) 15%, transparent);
+          outline: var(--ddd-drop-zone-outline-width) solid
+            color-mix(
+              in srgb,
+              var(
+                  --ddd-drop-zone-outline-color,
+                  var(--ddd-theme-default-skyBlue, #009dc7)
+                )
+                15%,
+              transparent
+            );
         }
         :host([droppable]),
         :host([droppable]) .voice,
@@ -406,26 +415,65 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-fields-placeholder-font-weight: bold;
           --simple-fields-placeholder-opacity: 0.8;
           --simple-fields-placeholder-color: var(--ddd-theme-default-coalyGray);
-          background-color: color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 5%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(
+                --ddd-drop-zone-background-color,
+                var(--ddd-theme-default-skyBlue, #009dc7)
+              )
+              5%,
+            transparent
+          );
         }
         :host([droppable][dragover]) {
-          outline: var(--ddd-drop-zone-outline-width) dashed color-mix(in srgb, var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7)) 30%, transparent);
+          outline: var(--ddd-drop-zone-outline-width) dashed
+            color-mix(
+              in srgb,
+              var(
+                  --ddd-drop-zone-outline-color,
+                  var(--ddd-theme-default-skyBlue, #009dc7)
+                )
+                30%,
+              transparent
+            );
         }
         :host([droppable][dragover]),
         :host([droppable][dragover]) .voice,
         :host([droppable][dragover]) simple-fields-field {
-          background-color: color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 10%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(
+                --ddd-drop-zone-background-color,
+                var(--ddd-theme-default-skyBlue, #009dc7)
+              )
+              10%,
+            transparent
+          );
         }
         :host(.window-file-drag) {
           outline-offset: calc(-1 * var(--ddd-spacing-1));
-          outline: var(--ddd-drop-zone-outline-width) solid var(--ddd-drop-zone-outline-color, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline: var(--ddd-drop-zone-outline-width) solid
+            var(
+              --ddd-drop-zone-outline-color,
+              var(--ddd-theme-default-skyBlue, #009dc7)
+            );
           border-radius: var(--ddd-drop-zone-radius, 0);
-          transition: outline 0.15s ease-in-out, background-color 0.15s ease-in-out;
+          transition:
+            outline 0.15s ease-in-out,
+            background-color 0.15s ease-in-out;
         }
         :host(.window-file-drag),
         :host(.window-file-drag) .voice,
         :host(.window-file-drag) simple-fields-field {
-          background-color: color-mix(in srgb, var(--ddd-drop-zone-background-color, var(--ddd-theme-default-skyBlue, #009dc7)) 35%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(
+                --ddd-drop-zone-background-color,
+                var(--ddd-theme-default-skyBlue, #009dc7)
+              )
+              35%,
+            transparent
+          );
         }
         :host([disabled]) {
           pointer-events: none;

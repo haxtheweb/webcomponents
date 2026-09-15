@@ -232,7 +232,7 @@ export class PageBreak extends IntersectionObserverMixin(
       linkUrl: { type: String, attribute: "link-url" },
       linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
-      hidden: { type: Boolean, reflect: true, },
+      hidden: { type: Boolean, reflect: true },
       isLoggedIn: { type: Boolean, reflect: true, attribute: "is-logged-in" },
     };
   }
@@ -334,12 +334,11 @@ export class PageBreak extends IntersectionObserverMixin(
     this.remoteHeadingobserver.disconnect();
     // Clean up store observers
     for (var i in this.__disposer) {
-      if (typeof this.__disposer[i] === 'function') {
+      if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
-      }
-      else if (
+      } else if (
         this.__disposer[i] &&
-        typeof this.__disposer[i].dispose === 'function'
+        typeof this.__disposer[i].dispose === "function"
       ) {
         this.__disposer[i].dispose();
       }
@@ -354,7 +353,10 @@ export class PageBreak extends IntersectionObserverMixin(
     this.target = newTarget;
     // Validate that target is a valid DOM Node before observing
     if (!this.target || !(this.target instanceof Node)) {
-      console.warn('page-break: setupTargetData called with invalid target', this.target);
+      console.warn(
+        "page-break: setupTargetData called with invalid target",
+        this.target,
+      );
       return;
     }
     // add a backdoor for hax to have a hook into this
@@ -406,9 +408,14 @@ export class PageBreak extends IntersectionObserverMixin(
       // Auto-update author when content-related properties change
       // This indicates the page has been modified
       if (
-      ["title", "description", "tags", "published", "locked", "overridePathauto"].includes(
-          propName,
-        ) &&
+        [
+          "title",
+          "description",
+          "tags",
+          "published",
+          "locked",
+          "overridePathauto",
+        ].includes(propName) &&
         oldValue !== undefined
       ) {
         const currentUser = this.getCurrentUser();
@@ -745,7 +752,8 @@ export class PageBreak extends IntersectionObserverMixin(
           cursor: pointer;
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
-          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border-top: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
         }
@@ -792,7 +800,9 @@ export class PageBreak extends IntersectionObserverMixin(
         : "";
     const pagePath = pageAnchorId ? `#${pageAnchorId}` : this.slug;
     return html`
-      <a .href="${pagePath}" .name="${pageAnchorId}" class="sr-only">${this.title}</a>
+      <a .href="${pagePath}" .name="${pageAnchorId}" class="sr-only"
+        >${this.title}</a
+      >
       <div class="text">
         <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
           .selectToEditPageDetails}
@@ -904,7 +914,7 @@ export class PageBreak extends IntersectionObserverMixin(
               <simple-toolbar-button
                 class="menu-item-delete"
                 icon="icons:delete"
-                label="${this.t.delete || 'Delete'}"
+                label="${this.t.delete || "Delete"}"
                 show-text-label
                 @click="${this._deletePage}"
                 ?disabled="${this.locked}"
@@ -943,7 +953,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to edit.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }
@@ -951,7 +963,6 @@ export class PageBreak extends IntersectionObserverMixin(
     if (menu) menu.close();
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
   }
-
 
   _cancelEdit(e) {
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);
@@ -962,7 +973,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to edit.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }
@@ -987,7 +1000,7 @@ export class PageBreak extends IntersectionObserverMixin(
     // Trigger the edit-title program
     // The program will automatically show the current title from the store
     SuperDaemonInstance.waveWand([
-      "",  // Empty input - let program show current title
+      "", // Empty input - let program show current title
       "/",
       {},
       "edit-title",
@@ -1000,7 +1013,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to edit.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }
@@ -1030,7 +1045,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to edit.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }
@@ -1049,7 +1066,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to edit.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }
@@ -1059,7 +1078,8 @@ export class PageBreak extends IntersectionObserverMixin(
     const item = toJS(store.activeItem);
     if (!item || !item.id) return;
 
-    const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
     // Ensure Merlin / SuperDaemon is in a clean state before launching the
     // edit-tags program. In practice this helps avoid any lingering program
     // context from a previous run interfering with subsequent tag edits.
@@ -1142,7 +1162,11 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to change publish status.", 3000, { hat: "error" });
+      store.toast(
+        "This page is locked. Unlock it first to change publish status.",
+        3000,
+        { hat: "error" },
+      );
       store.playSound("error");
       return;
     }
@@ -1177,7 +1201,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast("This page is locked. Unlock it first to delete.", 3000, { hat: "error" });
+      store.toast("This page is locked. Unlock it first to delete.", 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }

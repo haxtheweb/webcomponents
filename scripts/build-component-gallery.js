@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ELEMENTS_DIR = './elements';
-const OUTPUT_FILE = './component-gallery.html';
+const OUTPUT_FILE = './index.html';
 const WC_REGISTRY_FILE = './wc-registry.json';
 
 // Function to extract HAX demo schema from component files

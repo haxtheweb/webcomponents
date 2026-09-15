@@ -20,9 +20,9 @@ describe("SheetMusic test", () => {
   beforeEach(async () => {
     element = await fixture(html`
       <sheet-music>
-        <template preserve-content="preserve-content">\\title "Test"
-.
-:4 0.5 2.5</template>
+        <template preserve-content="preserve-content"
+          >\\title "Test" . :4 0.5 2.5</template
+        >
       </sheet-music>
     `);
   });
@@ -50,9 +50,9 @@ describe("SheetMusic test", () => {
     // alphaTab injects its CSS into document.head so its container must live in
     // light DOM (not the shadow root) for the font/surface styles to apply.
     expect(element._surfaceWrap).to.exist;
-    expect(element._surfaceWrap.getAttribute("data-sheet-music-surface")).to.equal(
-      "surface",
-    );
+    expect(
+      element._surfaceWrap.getAttribute("data-sheet-music-surface"),
+    ).to.equal("surface");
     expect(element.contains(element._surfaceWrap)).to.be.true;
   });
 

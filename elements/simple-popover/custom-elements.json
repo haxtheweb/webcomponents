@@ -52,6 +52,11 @@
                 "text": "boolean"
               },
               "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "__popoverResizeObserver",
+              "default": "new ResizeObserver(() => { if (!this.hidden) { this.updatePosition(); } })"
             }
           ],
           "superclass": {

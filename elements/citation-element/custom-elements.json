@@ -105,6 +105,17 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema class for the cited work (default oer:ReferencedMaterial).\nAuthors can override via the HAX editor to use a more specific OER class.",
+              "default": "\"oer:ReferencedMaterial\"",
+              "attribute": "typeof"
+            },
+            {
+              "kind": "field",
               "name": "title",
               "privacy": "public",
               "type": {
@@ -249,6 +260,15 @@
               },
               "description": "License short hand. Options cc0,",
               "fieldName": "license"
+            },
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema class for the cited work (default oer:ReferencedMaterial).\nAuthors can override via the HAX editor to use a more specific OER class.",
+              "default": "\"oer:ReferencedMaterial\"",
+              "fieldName": "typeof"
             }
           ],
           "mixins": [

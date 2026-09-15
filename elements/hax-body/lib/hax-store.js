@@ -83,7 +83,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * a post-op source still aligns with the clean path persisted in content.
    */
   _cleanMediaPath(path) {
-    return String(path || "").split("#")[0].split("?")[0];
+    return String(path || "")
+      .split("#")[0]
+      .split("?")[0];
   }
   /**
    * #3050: True when an element's current image src references `cleanPath`.
@@ -117,8 +119,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       const cur = imgs[i].getAttribute("src") || imgs[i].src || "";
       const base = String(cur).split("?")[0];
       if (this._mediaSrcMatches(base, cleanPath)) {
-        imgs[i].src =
-          base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+        imgs[i].src = base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
       }
     }
     const all = root.querySelectorAll("*");
@@ -160,8 +161,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (this._mediaSrcMatches(cur, cleanPath)) {
           const base = String(cur).split("?")[0];
           const ts = Date.now();
-          el.src =
-            base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
+          el.src = base + (base.indexOf("?") === -1 ? "?" : "&") + "t=" + ts;
         }
         continue;
       }
@@ -3038,9 +3038,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         placeholder: "Search for an emoji",
         program: async (input, values) => {
           if (!globalThis.SimplePickerEmojis) {
-            await import(
-              "@haxtheweb/simple-picker/lib/SimplePickerEmojis.js",
-            );
+            await import("@haxtheweb/simple-picker/lib/SimplePickerEmojis.js");
           }
           let results = [];
           let txt = globalThis.document.createElement("textarea");
@@ -3348,7 +3346,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // that module populates the globalThis entry as a side effect.
           if (!globalThis.SimplePickerSymbols) {
             await import(
-              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js",
+              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js"
             );
           }
           // resolve a readable name for an entity, falling back to a
@@ -3364,9 +3362,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           let txt = globalThis.document.createElement("textarea");
           let capped = false;
           const q = input.toLowerCase();
-          for (let category of Object.keys(
-            globalThis.SimplePickerSymbols,
-          )) {
+          for (let category of Object.keys(globalThis.SimplePickerSymbols)) {
             for (let symbol of globalThis.SimplePickerSymbols[category]) {
               txt.innerHTML = symbol.value;
               const name = nameFor(symbol.value);
@@ -3980,12 +3976,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _handleRteInlineProgram(e) {
     const detail = e.detail;
-    if (
-      !detail ||
-      !detail.range ||
-      !detail.target ||
-      !detail.machineName
-    ) {
+    if (!detail || !detail.range || !detail.target || !detail.machineName) {
       return;
     }
     // Position Merlin at the contenteditable block containing the cursor
@@ -4014,9 +4005,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       SuperDaemonInstance.inlineTextInsert &&
       SuperDaemonInstance.activeRange
     ) {
-      const editable = this.__editableForRange(
-        SuperDaemonInstance.activeRange,
-      );
+      const editable = this.__editableForRange(SuperDaemonInstance.activeRange);
       if (editable && editable.focus) {
         editable.focus();
       } else if (this.activeNode && this.activeNode.focus) {
@@ -4057,9 +4046,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       SuperDaemonInstance.activeRange &&
       SuperDaemonInstance.activeSelection
     ) {
-      const editable = this.__editableForRange(
-        SuperDaemonInstance.activeRange,
-      );
+      const editable = this.__editableForRange(SuperDaemonInstance.activeRange);
       if (editable && editable.focus) {
         editable.focus();
       }
@@ -4828,9 +4815,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               // blockquote + code are un-hidden so their block insert
               // options surface in edit-mode Merlin results (matching the
               // ``` and > markdown triggers).
-              hidden: ["h1", "h2", "h3", "h4", "ul", "blockquote", "code"].includes(
-                tag,
-              )
+              hidden: [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "ul",
+                "blockquote",
+                "code",
+              ].includes(tag)
                 ? false
                 : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
@@ -6105,8 +6098,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           // shortcut (e.g. a primitive like h3/ul), surface that trigger so
           // its insert option still shows the matching markdown chip.
           if (!insertShortcutId) {
-            const md =
-              KeyboardShortcutManagerInstance.getMarkdownByTag(gizmo.tag);
+            const md = KeyboardShortcutManagerInstance.getMarkdownByTag(
+              gizmo.tag,
+            );
             if (md) {
               insertShortcutId = md.id;
             }

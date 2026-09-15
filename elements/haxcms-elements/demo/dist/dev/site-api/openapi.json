@@ -90,9 +90,7 @@
       "get": {
         "operationId": "getSiteApiDiscovery",
         "summary": "Get API capabilities and discovery links",
-        "tags": [
-          "discovery"
-        ]
+        "tags": ["discovery"]
       }
     },
     "/x/api/openapi": {
@@ -104,45 +102,35 @@
             "$ref": "#/components/parameters/Format"
           }
         ],
-        "tags": [
-          "discovery"
-        ]
+        "tags": ["discovery"]
       }
     },
     "/x/api/openapi.json": {
       "get": {
         "operationId": "getSiteOpenApiJson",
         "summary": "Get OpenAPI document in JSON",
-        "tags": [
-          "discovery"
-        ]
+        "tags": ["discovery"]
       }
     },
     "/x/api/openapi.yaml": {
       "get": {
         "operationId": "getSiteOpenApiYaml",
         "summary": "Get OpenAPI document in YAML",
-        "tags": [
-          "discovery"
-        ]
+        "tags": ["discovery"]
       }
     },
     "/.well-known/api-catalog": {
       "get": {
         "operationId": "getApiCatalog",
         "summary": "Get API catalog linkset",
-        "tags": [
-          "discovery"
-        ]
+        "tags": ["discovery"]
       }
     },
     "/x/api/v1/site": {
       "get": {
         "operationId": "getSiteSummary",
         "summary": "Get site-level metadata and counts",
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       },
       "patch": {
         "operationId": "updateSiteSummary",
@@ -153,9 +141,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/updateAlternativeFormats": {
@@ -168,9 +154,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/appearance": {
@@ -183,9 +167,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/platform": {
@@ -198,9 +180,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/blocks": {
@@ -213,9 +193,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/editor": {
@@ -228,9 +206,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/seo": {
@@ -243,9 +219,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/outline": {
@@ -258,9 +232,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/site/normalize-slugs": {
@@ -273,9 +245,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/items/{idOrSlug}/export/{format}": {
@@ -290,18 +260,14 @@
             "$ref": "#/components/parameters/ItemExportFormat"
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/entities": {
       "get": {
         "operationId": "listEntityDescriptors",
         "summary": "List entity descriptors for the site API",
-        "tags": [
-          "entities"
-        ]
+        "tags": ["entities"]
       }
     },
     "/x/api/v1/schemas": {
@@ -316,9 +282,7 @@
             "$ref": "#/components/parameters/FilterWebcomponentName"
           }
         ],
-        "tags": [
-          "schemas"
-        ]
+        "tags": ["schemas"]
       }
     },
     "/x/api/v1/items": {
@@ -368,9 +332,7 @@
           }
         ],
         "security": [],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       },
       "post": {
         "operationId": "createItem",
@@ -381,9 +343,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/site/export/{format}": {
@@ -407,9 +367,7 @@
             "description": "CDN URL for HTML document wrapping mode (only used with html format)"
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       },
       "post": {
         "operationId": "createSiteExport",
@@ -425,9 +383,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "site"
-        ]
+        "tags": ["site"]
       }
     },
     "/x/api/v1/items/{idOrSlug}": {
@@ -450,9 +406,7 @@
           }
         ],
         "security": [],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       },
       "patch": {
         "operationId": "updateItem",
@@ -468,9 +422,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       },
       "delete": {
         "operationId": "deleteItem",
@@ -486,9 +438,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/items/{idOrSlug}/revisions": {
@@ -512,9 +462,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}": {
@@ -535,9 +483,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/items/{idOrSlug}/revisions/{revisionId}/restore": {
@@ -558,9 +504,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "items"
-        ]
+        "tags": ["items"]
       }
     },
     "/x/api/v1/content": {
@@ -610,9 +554,7 @@
           }
         ],
         "security": [],
-        "tags": [
-          "content"
-        ]
+        "tags": ["content"]
       },
       "patch": {
         "operationId": "replaceContent",
@@ -623,9 +565,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "content"
-        ]
+        "tags": ["content"]
       }
     },
     "/x/api/v1/content/{idOrSlug}": {
@@ -648,9 +588,7 @@
           }
         ],
         "security": [],
-        "tags": [
-          "content"
-        ]
+        "tags": ["content"]
       },
       "patch": {
         "operationId": "updateContentByIdOrSlug",
@@ -666,9 +604,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "content"
-        ]
+        "tags": ["content"]
       }
     },
     "/x/api/v1/files": {
@@ -713,9 +649,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "files"
-        ]
+        "tags": ["files"]
       },
       "post": {
         "operationId": "createFile",
@@ -726,9 +660,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "files"
-        ]
+        "tags": ["files"]
       }
     },
     "/x/api/v1/files/{fileUuid}": {
@@ -752,9 +684,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "files"
-        ]
+        "tags": ["files"]
       },
       "patch": {
         "operationId": "updateFileByUuid",
@@ -771,9 +701,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "files"
-        ]
+        "tags": ["files"]
       },
       "delete": {
         "operationId": "deleteFileByUuid",
@@ -789,9 +717,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "files"
-        ]
+        "tags": ["files"]
       }
     },
     "/x/api/v1/tags": {
@@ -818,9 +744,7 @@
             "$ref": "#/components/parameters/Include"
           }
         ],
-        "tags": [
-          "tags"
-        ]
+        "tags": ["tags"]
       }
     },
     "/x/api/v1/search": {
@@ -867,9 +791,7 @@
           }
         ],
         "security": [],
-        "tags": [
-          "search"
-        ]
+        "tags": ["search"]
       }
     },
     "/x/api/v1/custom-elements": {
@@ -896,9 +818,7 @@
             "$ref": "#/components/parameters/Include"
           }
         ],
-        "tags": [
-          "custom-elements"
-        ]
+        "tags": ["custom-elements"]
       }
     },
     "/x/api/v1/custom-elements/{webcomponentName}": {
@@ -916,9 +836,7 @@
             "$ref": "#/components/parameters/Include"
           }
         ],
-        "tags": [
-          "custom-elements"
-        ]
+        "tags": ["custom-elements"]
       }
     },
     "/x/api/v1/blocks": {
@@ -945,9 +863,7 @@
             "$ref": "#/components/parameters/Include"
           }
         ],
-        "tags": [
-          "blocks"
-        ]
+        "tags": ["blocks"]
       }
     },
     "/x/api/v1/blocks/{webcomponentName}": {
@@ -965,9 +881,7 @@
             "$ref": "#/components/parameters/Include"
           }
         ],
-        "tags": [
-          "blocks"
-        ]
+        "tags": ["blocks"]
       }
     },
     "/x/api/v1/regions": {
@@ -988,9 +902,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "regions"
-        ]
+        "tags": ["regions"]
       }
     },
     "/x/api/v1/regions/{regionName}": {
@@ -1014,9 +926,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "regions"
-        ]
+        "tags": ["regions"]
       }
     },
     "/x/api/v1/themes": {
@@ -1040,9 +950,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "themes"
-        ]
+        "tags": ["themes"]
       }
     },
     "/x/api/v1/themes/active": {
@@ -1054,9 +962,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "themes"
-        ]
+        "tags": ["themes"]
       }
     },
     "/x/api/v1/themes/{themeName}": {
@@ -1074,9 +980,7 @@
             "$ref": "#/components/parameters/IncludeDisabled"
           }
         ],
-        "tags": [
-          "themes"
-        ]
+        "tags": ["themes"]
       }
     },
     "/x/api/v1/reports": {
@@ -1089,9 +993,7 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "reports"
-        ]
+        "tags": ["reports"]
       }
     },
     "/x/api/v1/reports/{report}": {
@@ -1121,18 +1023,14 @@
             "siteTokenHeader": []
           }
         ],
-        "tags": [
-          "reports"
-        ]
+        "tags": ["reports"]
       }
     },
     "/x/api/v1/analytics": {
       "get": {
         "operationId": "getAnalyticsCapabilities",
         "summary": "Get analytics capability metadata",
-        "tags": [
-          "analytics"
-        ]
+        "tags": ["analytics"]
       }
     },
     "/x/api/v1/views": {
@@ -1153,9 +1051,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "views"
-        ]
+        "tags": ["views"]
       }
     },
     "/x/api/v1/views/{viewId}": {
@@ -1170,9 +1066,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "views"
-        ]
+        "tags": ["views"]
       }
     },
     "/x/api/v1/views/{viewId}/results": {
@@ -1223,9 +1117,7 @@
             "$ref": "#/components/parameters/Format"
           }
         ],
-        "tags": [
-          "views"
-        ]
+        "tags": ["views"]
       }
     },
     "/x/api/v1/displays": {
@@ -1246,9 +1138,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "views"
-        ]
+        "tags": ["views"]
       }
     },
     "/x/api/v1/displays/{viewId}/results": {
@@ -1299,9 +1189,7 @@
             "$ref": "#/components/parameters/Format"
           }
         ],
-        "tags": [
-          "views"
-        ]
+        "tags": ["views"]
       }
     },
     "/x/api/v1/blocks/{webcomponentName}/usage": {
@@ -1346,9 +1234,7 @@
             "$ref": "#/components/parameters/Fields"
           }
         ],
-        "tags": [
-          "blocks"
-        ]
+        "tags": ["blocks"]
       }
     }
   },
@@ -1387,15 +1273,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "enum": [
-            "zip",
-            "markdown",
-            "pdf",
-            "docx",
-            "epub",
-            "html",
-            "skeleton"
-          ]
+          "enum": ["zip", "markdown", "pdf", "docx", "epub", "html", "skeleton"]
         }
       },
       "ItemExportFormat": {
@@ -1404,16 +1282,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "enum": [
-            "pdf",
-            "docx",
-            "html",
-            "md",
-            "json",
-            "yaml",
-            "xml",
-            "epub"
-          ]
+          "enum": ["pdf", "docx", "html", "md", "json", "yaml", "xml", "epub"]
         }
       },
       "WebcomponentName": {
@@ -1654,13 +1523,7 @@
         "required": false,
         "schema": {
           "type": "string",
-          "enum": [
-            "json",
-            "md",
-            "yaml",
-            "xml",
-            "html"
-          ]
+          "enum": ["json", "md", "yaml", "xml", "html"]
         }
       },
       "Mode": {
@@ -1669,10 +1532,7 @@
         "required": false,
         "schema": {
           "type": "string",
-          "enum": [
-            "bundle",
-            "concat"
-          ],
+          "enum": ["bundle", "concat"],
           "default": "bundle"
         }
       }

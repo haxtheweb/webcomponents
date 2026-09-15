@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@github/time-elements": "3.1.4",
     "@haxtheweb/anchor-behaviors": "^26.8.0",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",

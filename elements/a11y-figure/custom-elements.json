@@ -12,6 +12,23 @@
           "name": "A11yFigure",
           "members": [
             {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the shadow\n<img> src directly so the persisted `imgSrc` property (and saved content)\nstays clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,

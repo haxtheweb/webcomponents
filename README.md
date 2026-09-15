@@ -162,7 +162,7 @@ To build the component gallery for deployment
 yarn run build-gallery
 ```
 
-This generates the component gallery as a single HTML file: `component-gallery.html`.
+This generates the component gallery as a single HTML file: `index.html`, so it's served automatically at the root of any static host (e.g. a Vercel preview deployment).
 
 ### Component Gallery Features
 

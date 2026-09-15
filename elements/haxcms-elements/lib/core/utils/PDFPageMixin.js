@@ -72,7 +72,8 @@ export const PDFPageMixin = function (SuperClass) {
       this.__pdfLoading = true;
       try {
         const activeItem = toJS(store.activeItem);
-        const itemId = activeItem && activeItem.id ? `${activeItem.id}`.trim() : "";
+        const itemId =
+          activeItem && activeItem.id ? `${activeItem.id}`.trim() : "";
         if (!itemId) {
           throw new Error("No active page for PDF export");
         }

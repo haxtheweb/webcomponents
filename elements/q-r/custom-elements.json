@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+          "description": "`q-r`\n`wrapper for a qr code.`",
           "name": "QR",
           "members": [
             {

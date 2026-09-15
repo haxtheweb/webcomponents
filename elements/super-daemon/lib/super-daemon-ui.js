@@ -411,11 +411,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           }, 600);
         }
       }
-      if (
-        propName == "items" &&
-        this.shadowRoot &&
-        !this.mini
-      ) {
+      if (propName == "items" && this.shadowRoot && !this.mini) {
         // lit-virtualizer can fail to stamp rows the first time it mounts
         // right after the loading/no-results branch unmounts it (it does not
         // re-measure its viewport until a layout/scroll event). That is why
@@ -569,7 +565,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         const virtualizer = this.shadowRoot.querySelector("lit-virtualizer");
         if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
           virtualizer.scrollToIndex(index, "center");
-        } else if (rows[index] && typeof rows[index].scrollIntoView === "function") {
+        } else if (
+          rows[index] &&
+          typeof rows[index].scrollIntoView === "function"
+        ) {
           rows[index].scrollIntoView({ block: "nearest" });
         }
       }
@@ -621,7 +620,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
             this.shadowRoot.querySelector("super-daemon-row")
           ) {
-            if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
+            if (
+              virtualizer &&
+              typeof virtualizer.scrollToIndex === "function"
+            ) {
               virtualizer.scrollToIndex(this.filtered.length - 1, "center");
             }
             requestAnimationFrame(() => {
@@ -648,7 +650,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row[active]") ===
             this.shadowRoot.querySelector("super-daemon-row:last-of-type")
           ) {
-            if (virtualizer && typeof virtualizer.scrollToIndex === "function") {
+            if (
+              virtualizer &&
+              typeof virtualizer.scrollToIndex === "function"
+            ) {
               virtualizer.scrollToIndex(0, "center");
             }
             requestAnimationFrame(() => {
@@ -987,8 +992,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                   aria-label="${this.t.results || "Results"}"
                   scroller
                   .items=${this.filtered}
-                  .renderItem=${(item, i) =>
-                    this._renderResultRow(item, i)}
+                  .renderItem=${(item, i) => this._renderResultRow(item, i)}
                 ></lit-virtualizer>
               `
           : this.loading
@@ -996,12 +1000,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                 ${this.t.loadingResults || "Loading results"}..
               </div>`
             : html`<div class="no-results">
-                ${this.programName &&
-                (this.programSearch || "").trim() === ""
-                  ? this.t.typeToSeeResults ||
-                    "Type something to see results"
-                  : this.t.noResultsForThisTerm ||
-                    "No results for this term"}
+                ${this.programName && (this.programSearch || "").trim() === ""
+                  ? this.t.typeToSeeResults || "Type something to see results"
+                  : this.t.noResultsForThisTerm || "No results for this term"}
                 <div class="slotted"><slot></slot></div>
               </div> `}
         <div class="results-stats">

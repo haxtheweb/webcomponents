@@ -113,9 +113,7 @@ globalThis.MediaBehaviors.Video = {
         input.indexOf("mediaspace.kaltura.com") != -1 &&
         input.indexOf("/media/t/") != -1
       ) {
-        let match = input.match(
-          /^https?:\/\/([^\/]+)\/media\/t\/([^\/?#]+)/i,
-        );
+        let match = input.match(/^https?:\/\/([^\/]+)\/media\/t\/([^\/?#]+)/i);
         if (match) {
           return (
             "https://" +

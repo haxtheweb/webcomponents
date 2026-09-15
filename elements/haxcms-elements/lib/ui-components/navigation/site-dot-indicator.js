@@ -81,11 +81,13 @@ class SiteDotIndicator extends LitElement {
   }
   // render function
   render() {
-    return html` <ol
-      id="list"
-      ?inert="${this.editMode}"
-      aria-disabled="${this.editMode ? `true` : `false`}"
-    ></ol> `;
+    return html`
+      <ol
+        id="list"
+        ?inert="${this.editMode}"
+        aria-disabled="${this.editMode ? `true` : `false`}"
+      ></ol>
+    `;
   }
   /**
    * Props

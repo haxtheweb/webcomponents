@@ -32,7 +32,7 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
- * 
+ *
  * Working palettes:
  * - 0 (Default)
  * - 3 (Offbrand Nittany Blue)
@@ -80,28 +80,53 @@ class PolarisInventTheme extends LTIResizingMixin(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
-          --polaris-footer-secondary-bg-color: var(
-            --ddd-palette-color-3
-          );
+          --polaris-footer-secondary-bg-color: var(--ddd-palette-color-3);
           --polaris-footer-primary-bg-color: var(--ddd-palette-color-4);
 
           background-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
-          
+
           color: light-dark(black, var(--ddd-palette-light));
 
-          --video-player-color: var(--ddd-palette-text-color-3, var(--ddd-theme-default-white));
-          --video-player-caption-color: var(--ddd-palette-text-color-7, var(--ddd-theme-default-white));
-          --video-player-disabled-color: var(--ddd-palette-text-color-3, var(--ddd-theme-default-disabled));
+          --video-player-color: var(
+            --ddd-palette-text-color-3,
+            var(--ddd-theme-default-white)
+          );
+          --video-player-caption-color: var(
+            --ddd-palette-text-color-7,
+            var(--ddd-theme-default-white)
+          );
+          --video-player-disabled-color: var(
+            --ddd-palette-text-color-3,
+            var(--ddd-theme-default-disabled)
+          );
 
-          --video-player-bg-color: var(--ddd-palette-color-3, var(--ddd-theme-default-nittanyNavy));
-          --video-player-border-color: var(--ddd-palette-color-1, var(--ddd-theme-default-limestoneLight));
-          --video-player-hover-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
-          --video-player-hover-bg-color: var(--ddd-palette-color-4, var(--ddd-theme-default-beaver80));
-          --video-player-accent-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
-          --video-player-faded-accent-color: var(--ddd-palette-color-4, var(--ddd-theme-default-beaver80));
+          --video-player-bg-color: var(
+            --ddd-palette-color-3,
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --video-player-border-color: var(
+            --ddd-palette-color-1,
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --video-player-hover-color: var(
+            --ddd-palette-color-7,
+            var(--ddd-theme-default-inventOrange)
+          );
+          --video-player-hover-bg-color: var(
+            --ddd-palette-color-4,
+            var(--ddd-theme-default-beaver80)
+          );
+          --video-player-accent-color: var(
+            --ddd-palette-color-7,
+            var(--ddd-theme-default-inventOrange)
+          );
+          --video-player-faded-accent-color: var(
+            --ddd-palette-color-4,
+            var(--ddd-theme-default-beaver80)
+          );
         }
 
         :host([is-safari]) {
@@ -134,7 +159,10 @@ class PolarisInventTheme extends LTIResizingMixin(
           right: 0px;
           bottom: 0px;
           z-index: 10000;
-          --scroll-button-background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
+          --scroll-button-background-color: var(
+            --ddd-palette-color-7,
+            var(--ddd-theme-default-inventOrange)
+          );
           --simple-icon-width: 32px;
           --simple-icon-height: 32px;
           --simple-icon-button-border-radius: none;
@@ -194,7 +222,10 @@ class PolarisInventTheme extends LTIResizingMixin(
           );
 
           --map-menu-item-button-active-color: white;
-          --map-menu-item-button-active-background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
+          --map-menu-item-button-active-background-color: var(
+            --ddd-palette-color-7,
+            var(--ddd-theme-default-inventOrange)
+          );
           --map-menu-overflow: visible;
           --site-menu-container-background-color: var(--ddd-palette-color-6);
           --map-menu-item-a-active-color: var(--ddd-palette-text-color-1);
@@ -241,11 +272,17 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--ddd-palette-text-color-6);
+          --site-menu-button-button-hover-color: var(
+            --ddd-palette-text-color-6
+          );
           --site-menu-button-icon-fill-color: white;
           color: white;
-          background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
-          border: 1px solid var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
+          background-color: var(
+            --ddd-palette-color-7,
+            var(--ddd-theme-default-inventOrange)
+          );
+          border: 1px solid
+            var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
           margin: 8px;
           display: block;
           padding: 0;
@@ -392,10 +429,11 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
 
         .footer-secondary a {
-          border-bottom: 1px solid var(
-            --ddd-palette-text-color-3,
-            var(--ddd-theme-default-limestoneGray)
-          );
+          border-bottom: 1px solid
+            var(
+              --ddd-palette-text-color-3,
+              var(--ddd-theme-default-limestoneGray)
+            );
           color: var(
             --ddd-palette-text-color-3,
             var(--ddd-theme-default-limestoneGray)

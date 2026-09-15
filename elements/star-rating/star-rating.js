@@ -199,7 +199,7 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
             data-value="${Number(count + 1)}"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
-          >${this.rubricScaleMode
+            >${this.rubricScaleMode
               ? html`<meta
                     property="oer:levelOrdinal"
                     content="${count + 1}"
@@ -220,7 +220,7 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
             class="star"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
-          >${this.rubricScaleMode
+            >${this.rubricScaleMode
               ? html`<meta
                     property="oer:levelOrdinal"
                     content="${count + 1}"

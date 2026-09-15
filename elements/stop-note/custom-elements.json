@@ -179,6 +179,10 @@
           ],
           "mixins": [
             {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
               "name": "I18NMixin",
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             },

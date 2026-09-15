@@ -63,6 +63,16 @@
             },
             {
               "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
               "name": "term",
               "privacy": "public",
               "type": {
@@ -79,6 +89,14 @@
                 "text": "string"
               },
               "fieldName": "term"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "description"
             }
           ],
           "mixins": [

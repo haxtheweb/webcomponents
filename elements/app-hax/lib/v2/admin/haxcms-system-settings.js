@@ -893,7 +893,10 @@ class HAXCMSSystemSettings extends DDD {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
           --simple-fields-fieldset-background-color: transparent;
@@ -3631,13 +3634,14 @@ class HAXCMSSystemSettings extends DDD {
     }
     return html`<span class="status-links">
       ${links.map(
-        (link) => html`<a
-          class="status-link"
-          href="${link.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-          >${link.label}</a
-        >`,
+        (link) =>
+          html`<a
+            class="status-link"
+            href="${link.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            >${link.label}</a
+          >`,
       )}
     </span>`;
   }
@@ -3711,9 +3715,7 @@ class HAXCMSSystemSettings extends DDD {
                           <tr class="status-row ${row.tone}">
                             <td colspan="3" class="status-description">
                               ${row.description
-                                ? this._renderStatusDescription(
-                                    row.description,
-                                  )
+                                ? this._renderStatusDescription(row.description)
                                 : ""}
                               ${row.description &&
                               Array.isArray(row.links) &&

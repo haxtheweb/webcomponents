@@ -316,7 +316,9 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
                 @focus="${this._setScroll}"
               >
                 <div class="event-overview">
-                <div class="heading"><h2 property="oer:name">${event.heading}</h2></div>
+                  <div class="heading">
+                    <h2 property="oer:name">${event.heading}</h2>
+                  </div>
                   <div class="media-outer">
                     ${!event.imagesrc || event.imagesrc === ""
                       ? ``
@@ -332,7 +334,9 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
                         `}
                   </div>
                 </div>
-                <div class="details" property="oer:description">${event.details}</div>
+                <div class="details" property="oer:description">
+                  ${event.details}
+                </div>
               </section>
             `,
           )}

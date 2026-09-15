@@ -463,7 +463,10 @@ class HaxorSlevin extends HAXCMSThemeParts(
               >
             `,
           )}
-          <nav class="social-float hide-small ${this.stateClass}" aria-label="Social links">
+          <nav
+            class="social-float hide-small ${this.stateClass}"
+            aria-label="Social links"
+          >
             <ul>
               <li>
                 <social-share-link

@@ -49,7 +49,10 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     }, 0);
   }
   render() {
-    return html`<meta property="oer:description" content="${this.description}" /><button property="oer:name">${this.term}</button>`;
+    return html`<meta
+        property="oer:description"
+        content="${this.description}"
+      /><button property="oer:name">${this.term}</button>`;
   }
 
   static get tag() {

@@ -72,10 +72,9 @@ class DynamicImportRegistry extends HTMLElement {
           globalThis.dispatchEvent
         ) {
           globalThis.dispatchEvent(
-            new CustomEvent(
-              "dynamic-import-registry--new-registration",
-              { detail: { tag: item.tag, path: item.path } },
-            ),
+            new CustomEvent("dynamic-import-registry--new-registration", {
+              detail: { tag: item.tag, path: item.path },
+            }),
           );
         }
       }

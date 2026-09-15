@@ -47,7 +47,7 @@
     "test": "lerna run test --concurrency=1",
     "build": "lerna run build && yarn run build-gallery",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
-    "gallery": "yarn run build-gallery && npx @web/dev-server --open component-gallery.html --root-dir .",
+    "gallery": "yarn run build-gallery && npx @web/dev-server --open index.html --root-dir .",
     "gallery:dev": "node scripts/gallery-dev-server.js",
     "build-gallery": "node scripts/build-component-gallery.js",
     "prepare-vercel": "node scripts/prepare-vercel-deploy.js",

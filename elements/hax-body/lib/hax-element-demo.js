@@ -33,10 +33,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           flex-direction: column;
           overflow: hidden;
           width: 300px;
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -58,10 +55,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         .info {
           padding: var(--ddd-spacing-2);
           border-top: var(--ddd-border-xs) solid
-            light-dark(
-              var(--ddd-accent-6),
-            var(--ddd-primary-4)
-            );
+            light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -76,10 +70,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-4xs);
           margin-bottom: var(--ddd-spacing-1);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         .title simple-icon {
           --simple-icon-height: var(--ddd-spacing-4);
@@ -89,10 +80,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         .description {
           font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-120);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;

@@ -1,1 +1,68 @@
-globalThis.process={env:{NODE_ENV:"production"}};var l="./";globalThis.WCGlobalCDNPath&&(l=globalThis.WCGlobalCDNPath),globalThis.__appCDN&&(l=globalThis.__appCDN);var e="wc-registry.json";globalThis.WCGlobalRegistryFileName&&(e=globalThis.WCGlobalRegistryFileName),globalThis.WCAutoloadRegistryFile=l+e;var o="build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js",a=globalThis.document.currentScript||globalThis.document.getElementsByTagName("script")[0];if("noModule"in HTMLScriptElement.prototype){var i=globalThis.document.createElement("script");i.src=l+o,i.type="module",i.onerror=l=>{!function fallbackChecks(l){var e=globalThis.__appCDN;if(!globalThis.__appCDNBlockFallback){var i=globalThis.document.createElement("script");i.type="module",i.onerror=l=>{fallbackChecks(l)},"./"===e?(globalThis.__appCDN="https://cdn.hax.cloud/cdn/",globalThis.WCAutoloadRegistryFile=globalThis.WCAutoloadRegistryFile.replace(e,globalThis.__appCDN),i.src=globalThis.__appCDN+o,a.parentNode.insertBefore(i,a),console.warn(e+" failed to respond, falling back to alternative: "+globalThis.__appCDN)):"https://cdn.hax.cloud/cdn/"===e?(globalThis.__appCDN="https://cdn.webcomponents.psu.edu/cdn/",globalThis.WCAutoloadRegistryFile=globalThis.WCAutoloadRegistryFile.replace(e,globalThis.__appCDN),i.src=globalThis.__appCDN+o,a.parentNode.insertBefore(i,a),console.warn(e+" failed to respond, falling back to alternative: "+globalThis.__appCDN)):(globalThis.__appCDN="./",globalThis.WCAutoloadRegistryFile=globalThis.WCAutoloadRegistryFile.replace(e,globalThis.__appCDN),console.error("Local delivery failed and all alternative CDNs failed to load. You might be offline, in a secure environment or doing testing intentionally to generate this *shrug*"))}}()},a.parentNode.insertBefore(i,a)}else console.error("ES modules not supported by this browser.");
+globalThis.process = { env: { NODE_ENV: "production" } };
+var l = "./";
+globalThis.WCGlobalCDNPath && (l = globalThis.WCGlobalCDNPath),
+  globalThis.__appCDN && (l = globalThis.__appCDN);
+var e = "wc-registry.json";
+globalThis.WCGlobalRegistryFileName &&
+  (e = globalThis.WCGlobalRegistryFileName),
+  (globalThis.WCAutoloadRegistryFile = l + e);
+var o = "build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js",
+  a =
+    globalThis.document.currentScript ||
+    globalThis.document.getElementsByTagName("script")[0];
+if ("noModule" in HTMLScriptElement.prototype) {
+  var i = globalThis.document.createElement("script");
+  (i.src = l + o),
+    (i.type = "module"),
+    (i.onerror = (l) => {
+      !(function fallbackChecks(l) {
+        var e = globalThis.__appCDN;
+        if (!globalThis.__appCDNBlockFallback) {
+          var i = globalThis.document.createElement("script");
+          (i.type = "module"),
+            (i.onerror = (l) => {
+              fallbackChecks(l);
+            }),
+            "./" === e
+              ? ((globalThis.__appCDN = "https://cdn.hax.cloud/cdn/"),
+                (globalThis.WCAutoloadRegistryFile =
+                  globalThis.WCAutoloadRegistryFile.replace(
+                    e,
+                    globalThis.__appCDN,
+                  )),
+                (i.src = globalThis.__appCDN + o),
+                a.parentNode.insertBefore(i, a),
+                console.warn(
+                  e +
+                    " failed to respond, falling back to alternative: " +
+                    globalThis.__appCDN,
+                ))
+              : "https://cdn.hax.cloud/cdn/" === e
+                ? ((globalThis.__appCDN =
+                    "https://cdn.webcomponents.psu.edu/cdn/"),
+                  (globalThis.WCAutoloadRegistryFile =
+                    globalThis.WCAutoloadRegistryFile.replace(
+                      e,
+                      globalThis.__appCDN,
+                    )),
+                  (i.src = globalThis.__appCDN + o),
+                  a.parentNode.insertBefore(i, a),
+                  console.warn(
+                    e +
+                      " failed to respond, falling back to alternative: " +
+                      globalThis.__appCDN,
+                  ))
+                : ((globalThis.__appCDN = "./"),
+                  (globalThis.WCAutoloadRegistryFile =
+                    globalThis.WCAutoloadRegistryFile.replace(
+                      e,
+                      globalThis.__appCDN,
+                    )),
+                  console.error(
+                    "Local delivery failed and all alternative CDNs failed to load. You might be offline, in a secure environment or doing testing intentionally to generate this *shrug*",
+                  ));
+        }
+      })();
+    }),
+    a.parentNode.insertBefore(i, a);
+} else console.error("ES modules not supported by this browser.");

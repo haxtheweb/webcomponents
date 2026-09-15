@@ -261,10 +261,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .installer-header {
-          background: light-dark(
-            var(--ddd-primary-2),
-            var(--ddd-primary-3)
-          );
+          background: light-dark(var(--ddd-primary-2), var(--ddd-primary-3));
           color: var(--ddd-accent-6);
           padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
           display: flex;
@@ -289,10 +286,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           padding: var(--ddd-spacing-4) var(--ddd-spacing-6);
           display: inline-flex;
           justify-content: space-between;
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-4)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-4));
           border-bottom: var(--ddd-border-xs);
           gap: var(--ddd-spacing-2);
         }
@@ -311,14 +305,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           justify-content: center;
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-6xs);
-          background: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border: 2px solid
             light-dark(var(--ddd-primary-5), var(--ddd-accent-6));
           z-index: 1;
@@ -328,10 +316,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .step-label {
           margin: 0 var(--ddd-spacing-3);
           text-align: center;
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           opacity: var(--ddd-opacity-60);
         }
 
@@ -399,19 +384,13 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
           font-family: var(--ddd-font-secondary);
-          color: light-dark(
-            var(--ddd-primary-2),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-6));
         }
 
         .step-content p.description {
           margin: 0 0 var(--ddd-spacing-6) 0;
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           opacity: var(--ddd-opacity-80);
           line-height: var(--ddd-lh-150);
         }
@@ -425,10 +404,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
           margin-bottom: var(--ddd-spacing-2);
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
         }
 
         .field-group input,
@@ -440,18 +416,9 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-primary);
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
-          border-color: light-dark(
-            var(--ddd-primary-5),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
+          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-6));
         }
 
         .field-group input:focus,
@@ -464,10 +431,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .field-group .help-text {
           margin-top: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-6xs);
-          color: light-dark(
-            var(--ddd-primary-5),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-5), var(--ddd-accent-6));
           opacity: var(--ddd-opacity-80);
           line-height: var(--ddd-lh-140);
         }
@@ -498,22 +462,13 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .btn-secondary {
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           border: var(--ddd-border-xs);
         }
 
         .btn-secondary:hover {
-          background: light-dark(
-            var(--ddd-accent-1),
-            var(--ddd-primary-4)
-          );
+          background: light-dark(var(--ddd-accent-1), var(--ddd-primary-4));
         }
 
         .btn-row {
@@ -532,10 +487,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
           margin: 0 0 var(--ddd-spacing-3) 0;
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
@@ -565,14 +517,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           text-align: left;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           font-weight: var(--ddd-font-weight-bold);
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           border-bottom: var(--ddd-border-xs);
         }
 
@@ -581,10 +527,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-6xs);
           border-bottom: var(--ddd-border-xs);
           vertical-align: top;
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
 
         .req-table tr:last-child td {
@@ -604,11 +547,17 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .status-error {
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
         }
 
         .status-warning {
-          color: light-dark(var(--ddd-primary-23), var(--ddd-theme-default-warningLight));
+          color: light-dark(
+            var(--ddd-primary-23),
+            var(--ddd-theme-default-warningLight)
+          );
         }
 
         .status-ok {
@@ -621,10 +570,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .cmd-block {
           margin: var(--ddd-spacing-2) 0 0 0;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-primary-2)
-          );
+          background: light-dark(var(--ddd-primary-3), var(--ddd-primary-2));
           color: var(--ddd-accent-6);
           border-radius: var(--ddd-radius-xs);
           font-family: var(--ddd-font-navigation);
@@ -672,14 +618,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           cursor: pointer;
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-4xs);
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           list-style: none;
         }
 
@@ -692,10 +632,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .credentials-box {
-          background: light-dark(
-            var(--ddd-accent-9),
-            var(--ddd-primary-5)
-          );
+          background: light-dark(var(--ddd-accent-9), var(--ddd-primary-5));
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-6);
           margin-bottom: var(--ddd-spacing-6);
@@ -722,20 +659,14 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .credential-label {
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           flex-shrink: 0;
         }
 
         .credential-value {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-primary-2),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-6));
           flex: 1;
           word-break: break-all;
           text-align: right;
@@ -746,10 +677,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           border: none;
           cursor: pointer;
           padding: var(--ddd-spacing-1);
-          color: light-dark(
-            var(--ddd-primary-8),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
           flex-shrink: 0;
         }
 
@@ -759,7 +687,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .copy-btn.copied simple-icon-lite {
-          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+          color: light-dark(
+            var(--ddd-primary-25),
+            var(--ddd-theme-default-successLight)
+          );
         }
 
         .important-banner {
@@ -768,8 +699,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-primary-23)
           );
           color: light-dark(
-            var(--ddd-primary-23)
-            var(--ddd-theme-default-warningLight)
+            var(--ddd-primary-23) var(--ddd-theme-default-warningLight)
           );
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-4);
@@ -786,8 +716,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
           color: light-dark(
-            var(--ddd-primary-23)
-            var(--ddd-theme-default-warningLight)
+            var(--ddd-primary-23) var(--ddd-theme-default-warningLight)
           );
           flex-shrink: 0;
         }
@@ -797,10 +726,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-infoLight),
             var(--ddd-primary-24)
           );
-          color: light-dark(
-            var(--ddd-primary-24)
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-24) var(--ddd-accent-6));
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-4);
           margin-bottom: var(--ddd-spacing-6);
@@ -818,10 +744,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .permission-banner-head simple-icon-lite {
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
-          color: light-dark(
-            var(--ddd-primary-24)
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-24) var(--ddd-accent-6));
         }
 
         .permission-banner-hint {
@@ -843,10 +766,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
           margin: 0 0 var(--ddd-spacing-3) 0;
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
         }
 
         .community-links {
@@ -862,14 +782,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-8),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
           text-decoration: none;
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -879,10 +793,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .community-link:hover {
-          background: light-dark(
-            var(--ddd-accent-9),
-            var(--ddd-primary-4)
-          );
+          background: light-dark(var(--ddd-accent-9), var(--ddd-primary-4));
           box-shadow: var(--ddd-boxShadow-sm);
         }
 
@@ -930,21 +841,24 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         .error-box simple-icon-lite {
           --simple-icon-width: var(--ddd-icon-lg);
           --simple-icon-height: var(--ddd-icon-lg);
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
           margin-bottom: var(--ddd-spacing-4);
         }
 
         .error-box h2 {
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
           margin-bottom: var(--ddd-spacing-3);
         }
 
         .error-box p {
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           margin-bottom: var(--ddd-spacing-6);
           line-height: var(--ddd-lh-150);
         }
@@ -963,10 +877,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
 
         .loading-overlay p {
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           margin-top: var(--ddd-spacing-4);
         }
 
@@ -998,10 +909,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
 
         .help-footer {
           padding: var(--ddd-spacing-4) var(--ddd-spacing-8);
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-4)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-4));
           border-top: var(--ddd-border-xs);
         }
 
@@ -1009,10 +917,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           opacity: var(--ddd-opacity-70);
           margin-bottom: var(--ddd-spacing-2);
         }
@@ -1029,14 +934,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-5)
-          );
-          color: light-dark(
-            var(--ddd-primary-8),
-            var(--ddd-accent-6)
-          );
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-5));
+          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
           text-decoration: none;
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -1046,10 +945,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .help-footer-link:hover {
-          background: light-dark(
-            var(--ddd-accent-9),
-            var(--ddd-primary-4)
-          );
+          background: light-dark(var(--ddd-accent-9), var(--ddd-primary-4));
           box-shadow: var(--ddd-boxShadow-sm);
         }
 
@@ -1073,36 +969,43 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           flex: 1;
           height: 6px;
           border-radius: var(--ddd-radius-xs);
-          background: light-dark(
-            var(--ddd-primary-5),
-            var(--ddd-primary-4)
-          );
-          transition: background var(--ddd-duration-normal) var(--ddd-timing-ease);
+          background: light-dark(var(--ddd-primary-5), var(--ddd-primary-4));
+          transition: background var(--ddd-duration-normal)
+            var(--ddd-timing-ease);
         }
 
         .strength-1 {
-          background: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          background: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
         }
 
         .strength-2 {
-          background: light-dark(var(--ddd-primary-23), var(--ddd-theme-default-warningLight));
+          background: light-dark(
+            var(--ddd-primary-23),
+            var(--ddd-theme-default-warningLight)
+          );
         }
 
         .strength-3 {
-          background: light-dark(var(--ddd-primary-24), var(--ddd-theme-default-infoLight));
+          background: light-dark(
+            var(--ddd-primary-24),
+            var(--ddd-theme-default-infoLight)
+          );
         }
 
         .strength-4 {
-          background: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+          background: light-dark(
+            var(--ddd-primary-25),
+            var(--ddd-theme-default-successLight)
+          );
         }
 
         .strength-label {
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           flex-shrink: 0;
         }
 
@@ -1122,38 +1025,44 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .confirm-feedback.match {
-          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+          color: light-dark(
+            var(--ddd-primary-25),
+            var(--ddd-theme-default-successLight)
+          );
         }
 
         .confirm-feedback.match simple-icon-lite {
-          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+          color: light-dark(
+            var(--ddd-primary-25),
+            var(--ddd-theme-default-successLight)
+          );
         }
 
         .confirm-feedback.mismatch {
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
         }
 
         .confirm-feedback.mismatch simple-icon-lite {
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
         }
 
         .password-criteria {
           margin-top: var(--ddd-spacing-3);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
           border-radius: var(--ddd-radius-sm);
         }
 
         .password-criteria-title {
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-primary-3),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
           margin-bottom: var(--ddd-spacing-2);
         }
 
@@ -1171,10 +1080,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           align-items: center;
           gap: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-6xs);
-          color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
 
         .criteria-item simple-icon-lite {
@@ -1184,11 +1090,17 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .criteria-item.met simple-icon-lite {
-          color: light-dark(var(--ddd-primary-25), var(--ddd-theme-default-successLight));
+          color: light-dark(
+            var(--ddd-primary-25),
+            var(--ddd-theme-default-successLight)
+          );
         }
 
         .criteria-item.unmet simple-icon-lite {
-          color: light-dark(var(--ddd-primary-22), var(--ddd-theme-default-errorLight));
+          color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-theme-default-errorLight)
+          );
         }
 
         .btn:disabled {
@@ -1204,10 +1116,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
 
         .btn-secondary:disabled,
         .btn-secondary:disabled:hover {
-          background: light-dark(
-            var(--ddd-accent-2),
-            var(--ddd-primary-5)
-          );
+          background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
           box-shadow: none;
         }
 
@@ -1721,17 +1630,21 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       <div class="installer-card">
         ${this._confettiBurst ? this.renderConfetti() : ""}
         <div class="installer-header">
-          <img src="${new URL('./lib/hax.png', import.meta.url).href}" alt="HAXcms World Traveler mascot" class="installer-logo" />
+          <img
+            src="${new URL("./lib/hax.png", import.meta.url).href}"
+            alt="HAXcms World Traveler mascot"
+            class="installer-logo"
+          />
           <span class="installer-name">${this.t.haxcmsInstaller}</span>
         </div>
         <div class="step-content">
-        ${this.renderStepIndicator()}
+          ${this.renderStepIndicator()}
           <div class="step-container">
-          ${this.loading
-            ? this.renderLoading()
-            : this.error
-              ? this.renderError()
-              : this.renderStepContent()}
+            ${this.loading
+              ? this.renderLoading()
+              : this.error
+                ? this.renderError()
+                : this.renderStepContent()}
           </div>
         </div>
         ${this.renderHelpFooter()}
@@ -1756,7 +1669,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           (i) => html`
             <span
               class="confetti-bit"
-              style="left:${(i * 4.1) % 100}%;background:${colors[i % colors.length]};animation-delay:${(i % 6) * 0.12}s;animation-duration:${2.4 + (i % 5) * 0.3}s;"
+              style="left:${(i * 4.1) % 100}%;background:${colors[
+                i % colors.length
+              ]};animation-delay:${(i % 6) * 0.12}s;animation-duration:${2.4 +
+              (i % 5) * 0.3}s;"
             ></span>
           `,
         )}
@@ -1802,7 +1718,9 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <simple-icon-lite icon="mdi-social:github-circle"></simple-icon-lite>
+            <simple-icon-lite
+              icon="mdi-social:github-circle"
+            ></simple-icon-lite>
             ${this.t.githubRepository}
           </a>
         </div>
@@ -1829,10 +1747,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           // Completed steps (and the active step that is not step 4) are
           // clickable to go back, e.g. to pick a different language.
           const canGoBack =
-            !this.loading &&
-            s.num < this.step &&
-            this.step !== 4 &&
-            s.num < 4;
+            !this.loading && s.num < this.step && this.step !== 4 && s.num < 4;
           const inner = html`
             <span class="step-num">
               ${s.num < this.step ? html`✓` : s.num}
@@ -1922,7 +1837,9 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
                     ${this._preparePermissionHint}
                   </p>`
                 : ""}
-              <pre class="cmd-block permission-cmd">${this._preparePermissionCommand}</pre>
+              <pre class="cmd-block permission-cmd">
+${this._preparePermissionCommand}</pre
+              >
             </div>
           `
         : ""}
@@ -1965,19 +1882,14 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         ? html`
             <div class="req-section">
               <details class="req-details">
-                <summary>
-                  ${this.t.passedChecks} (${allPassed.length})
-                </summary>
+                <summary>${this.t.passedChecks} (${allPassed.length})</summary>
                 ${this.renderReqTable(allPassed, false)}
               </details>
             </div>
           `
         : ""}
       <div class="btn-row">
-        <button
-          class="btn btn-secondary"
-          @click="${() => this._goToStep(1)}"
-        >
+        <button class="btn btn-secondary" @click="${() => this._goToStep(1)}">
           <simple-icon-lite
             icon="icons:arrow-back"
             style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
@@ -2049,7 +1961,9 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
                 ${showCommand
                   ? html`<td>
                       ${row.suggestedCommand
-                        ? html`<code><pre class="cmd-block">${row.suggestedCommand}</pre></code>`
+                        ? html`<code>
+                            <pre class="cmd-block">${row.suggestedCommand}</pre>
+                          </code>`
                         : ""}
                     </td>`
                   : ""}
@@ -2083,9 +1997,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
             <div class="server-error-banner" role="alert">
               <simple-icon-lite icon="icons:error"></simple-icon-lite>
               <ul>
-                ${this._serverErrors.map(
-                  (msg) => html`<li>${msg}</li>`,
-                )}
+                ${this._serverErrors.map((msg) => html`<li>${msg}</li>`)}
               </ul>
             </div>
           `
@@ -2130,7 +2042,9 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           role="group"
           aria-label="${this.t.passwordRequirements}"
         >
-          <div class="password-criteria-title">${this.t.passwordRequirements}</div>
+          <div class="password-criteria-title">
+            ${this.t.passwordRequirements}
+          </div>
           <ul class="criteria-list">
             ${criteriaItems.map(
               (item) => html`
@@ -2156,9 +2070,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         />
         ${this._confirmPasswordInput !== ""
           ? html`
-              <div
-                class="confirm-feedback ${confirmed ? "match" : "mismatch"}"
-              >
+              <div class="confirm-feedback ${confirmed ? "match" : "mismatch"}">
                 <simple-icon-lite
                   icon="${confirmed ? "icons:check" : "icons:close"}"
                 ></simple-icon-lite>
@@ -2170,10 +2082,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           : ""}
       </div>
       <div class="btn-row">
-        <button
-          class="btn btn-secondary"
-          @click="${() => this._goToStep(2)}"
-        >
+        <button class="btn btn-secondary" @click="${() => this._goToStep(2)}">
           <simple-icon-lite
             icon="icons:arrow-back"
             style="--simple-icon-width: var(--ddd-icon-4xs); --simple-icon-height: var(--ddd-icon-4xs);"
@@ -2192,8 +2101,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   renderStep4() {
-    const creds =
-      (this.stateData && this.stateData.credentials) || {};
+    const creds = (this.stateData && this.stateData.credentials) || {};
     const username = creds.username || this._usernameInput || "admin";
     const password = creds.password || "";
     const passwordWasGenerated = !!creds.passwordWasGenerated;
@@ -2209,9 +2117,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           <span class="credential-label">${this.t.username}</span>
           <span class="credential-value">${username}</span>
           <button
-            class="copy-btn ${this._copiedField === "username"
-              ? "copied"
-              : ""}"
+            class="copy-btn ${this._copiedField === "username" ? "copied" : ""}"
             @click="${() => this._copyToClipboard(username, "username")}"
             title="${this.t.copy}"
           >
@@ -2226,9 +2132,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           <span class="credential-label">
             ${this.t.password}
             ${passwordWasGenerated
-              ? html`<span class="generated-tag"
-                  >${this.t.autoGenerated}</span
-                >`
+              ? html`<span class="generated-tag">${this.t.autoGenerated}</span>`
               : ""}
           </span>
           <span class="credential-value"
@@ -2248,9 +2152,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
             ></simple-icon-lite>
           </button>
           <button
-            class="copy-btn ${this._copiedField === "password"
-              ? "copied"
-              : ""}"
+            class="copy-btn ${this._copiedField === "password" ? "copied" : ""}"
             @click="${() => this._copyToClipboard(password, "password")}"
             title="${this.t.copy}"
           >

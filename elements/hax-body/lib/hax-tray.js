@@ -245,7 +245,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         :host {
           --simple-fields-detail-font-family: var(--hax-ui-font-family);
           --simple-fields-font-family: var(--hax-ui-font-family);
-          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           --simple-fields-input-border: 1px solid black;
           z-index: var(--hax-ui-focus-z-index - 1);
           top: 0;

@@ -5955,6 +5955,10 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_syncFocusableState"
+            },
+            {
               "kind": "field",
               "name": "observer",
               "description": "mutation observer for a11y-details",

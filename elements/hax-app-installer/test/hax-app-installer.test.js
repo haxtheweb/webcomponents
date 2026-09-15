@@ -20,9 +20,7 @@ describe("HaxAppInstaller test", () => {
       });
     };
     element = await fixture(
-      html`<hax-app-installer
-        api-endpoint="mock://test"
-      ></hax-app-installer>`,
+      html`<hax-app-installer api-endpoint="mock://test"></hax-app-installer>`,
     );
     // Allow firstUpdated + fetchState to settle
     await element.updateComplete;

@@ -169,7 +169,10 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
     return html`
       <div class="oer-rubric-schema" hidden>
         ${this.rubricType
-          ? html`<meta property="oer:rubricType" content="${this.rubricType}" />`
+          ? html`<meta
+              property="oer:rubricType"
+              content="${this.rubricType}"
+            />`
           : nothing}
         ${headerRow.length
           ? html`

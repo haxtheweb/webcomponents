@@ -178,9 +178,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
         "fit-bottom",
       );
     } else {
-      throw new Error(
-        `Failed to export site as Markdown: ${response.status}`,
-      );
+      throw new Error(`Failed to export site as Markdown: ${response.status}`);
     }
   } catch (error) {
     console.error("Site Markdown export error:", error);

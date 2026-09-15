@@ -13,8 +13,14 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       super();
       this.hideUserStylesMenu = true;
       this.fontSize = localStorageGet("haxcms-bootstrap-userPref-fontSize", 1);
-      this.fontFamily = localStorageGet("haxcms-bootstrap-userPref-fontFamily", 0);
-      this.colorTheme = localStorageGet("haxcms-bootstrap-userPref-colorTheme", 0);
+      this.fontFamily = localStorageGet(
+        "haxcms-bootstrap-userPref-fontFamily",
+        0,
+      );
+      this.colorTheme = localStorageGet(
+        "haxcms-bootstrap-userPref-colorTheme",
+        0,
+      );
       this._bootstrapPath = this._resolveBootstrapStylesheetPath();
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
       autorun(() => {
@@ -510,10 +516,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         return;
       }
       this.colorTheme = parseInt(target.getAttribute("data-theme"), 10);
-      localStorageSet(
-        "haxcms-bootstrap-userPref-colorTheme",
-        this.colorTheme,
-      );
+      localStorageSet("haxcms-bootstrap-userPref-colorTheme", this.colorTheme);
     }
   };
 };

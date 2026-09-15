@@ -25,6 +25,23 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the shadow\n<img> src directly so the persisted `imageSrc` property (and saved\ncontent) stays clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "accentBackground",
               "privacy": "public",
@@ -94,6 +111,17 @@
               "description": "\"Optional\": source for an image on card",
               "default": "null",
               "attribute": "image-src"
+            },
+            {
+              "kind": "field",
+              "name": "imageAlt",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": alt text for the image on card. Leave empty if the image\nis purely decorative; otherwise describe the image for screen readers.",
+              "default": "null",
+              "attribute": "image-alt"
             },
             {
               "kind": "field",
@@ -224,6 +252,15 @@
               "description": "\"Optional\": source for an image on card",
               "default": "null",
               "fieldName": "imageSrc"
+            },
+            {
+              "name": "image-alt",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": alt text for the image on card. Leave empty if the image\nis purely decorative; otherwise describe the image for screen readers.",
+              "default": "null",
+              "fieldName": "imageAlt"
             },
             {
               "name": "image-valign",

@@ -247,7 +247,8 @@ export const UIRenderPieces = function (SuperClass) {
                   ${this.database.assignments[this.activeAssignment].name}
                 </h3>
                 ${this.t.dueDate}:
-                <local-time
+                <relative-time
+                  threshold="PT0S"
                   .datetime="${this.database.assignments[this.activeAssignment]
                     ._ISODueDate}"
                   month="short"
@@ -257,7 +258,7 @@ export const UIRenderPieces = function (SuperClass) {
                   minute="numeric"
                   time-zone-name="short"
                 >
-                </local-time>
+                </relative-time>
               `
             : nothing}
         </simple-popover>`;

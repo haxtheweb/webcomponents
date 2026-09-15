@@ -291,10 +291,7 @@ class LrnMath extends HTMLElement {
         // tag inside the tag. If the incoming value contains our own tag,
         // it is not valid LaTeX — rebuild mathtext from the real textContent
         // and let the re-triggered callback run the normal clean path.
-        if (
-          newValue &&
-          newValue.indexOf("<lrn-math") !== -1
-        ) {
+        if (newValue && newValue.indexOf("<lrn-math") !== -1) {
           const real = (this.textContent || "").trim();
           // bypass the setter to avoid a redundant change event pair; the
           // setAttribute here re-triggers attributeChangedCallback with the

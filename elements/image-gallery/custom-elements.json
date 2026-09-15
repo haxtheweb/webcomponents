@@ -153,6 +153,16 @@
             },
             {
               "kind": "method",
+              "name": "_propagateHaxEditState",
+              "description": "Push the effective HAX edit state down to each image child, awaiting\ncustom element upgrade so the child's haxeditModeChanged hook is\npresent before we call it. Also re-applies the hax-body editable /\nselection machinery (data-hax-ray, drag/drop handlers) to each child\nso they are immediately clickable + selectable in the editor without\nfirst clicking away and back.\n\nWhy this is needed: hax-body runs __rehydrateLayoutDescendants when the\ngallery becomes the active node, but that calls\n__applyNodeEditableStateWhenReady which awaits customElement upgrade +\na rAF. When gallery edit mode is toggled immediately after selection,\nthe image children are often not upgraded yet so the state never lands\nand nothing re-triggers it. Re-applying here, after awaiting upgrade,\nguarantees the children are interactive at the moment the user enters\ngallery edit mode. Idempotent; safe to run repeatedly."
+            },
+            {
+              "kind": "method",
+              "name": "_resolveHaxEditState",
+              "description": "Resolve the effective HAX edit state to propagate to children. Falls\nback to the global HaxStore / activeHaxBody editMode so we propagate\ntrue whenever the editor is active, even if this gallery's _haxState\nhas not yet been set (e.g. nested inside a grid-plate)."
+            },
+            {
+              "kind": "method",
               "name": "haxpreProcessNodeToContent",
               "parameters": [
                 {
@@ -257,6 +267,14 @@
               },
               "default": "false",
               "attribute": "_haxState"
+            },
+            {
+              "kind": "field",
+              "name": "_newImageElement",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",

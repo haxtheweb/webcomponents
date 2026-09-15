@@ -132,7 +132,9 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
               <summary id="summary" property="oer:name">${this.term}</summary>
             </div>
             <simple-modal-template title="${this.term ? this.term : ""}">
-              <p slot="content" property="oer:description">${this.information}</p>
+              <p slot="content" property="oer:description">
+                ${this.information}
+              </p>
               ${this.links && this.links.length > 0 && this.links.map
                 ? html` <ul slot="content">
                     ${this.links.map(

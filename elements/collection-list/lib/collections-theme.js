@@ -433,7 +433,11 @@ class CollectionsTheme extends HAXCMSOperationButtons(
             "metadata.theme.variables.image",
             "assets/banner.jpg",
           );
-          this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
+          this.logo = varGet(
+            manifest,
+            "metadata.site.logo",
+            "assets/banner.jpg",
+          );
         });
       }),
     );

@@ -113,7 +113,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
               )
             )
           );
-          color: var(--learn-two-theme-header-color, var(--ddd-theme-default-white));
+          color: var(
+            --learn-two-theme-header-color,
+            var(--ddd-theme-default-white)
+          );
           text-align: center;
           padding: 0 0 16px;
         }
@@ -171,10 +174,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
 
         site-print-button {
-          color: var(
-            --site-print-button-color,
-            var(--ddd-theme-default-white)
-          );
+          color: var(--site-print-button-color, var(--ddd-theme-default-white));
           margin: var(--ddd-spacing-1);
         }
         site-modal {
@@ -217,7 +217,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           height: 100vh;
           overflow-y: auto;
           transition: 0.3s linear all;
-          box-shadow: var(--learn-two-theme-drawer-box-shadow, var(--ddd-boxShadow-sm));
+          box-shadow: var(
+            --learn-two-theme-drawer-box-shadow,
+            var(--ddd-boxShadow-sm)
+          );
           background-color: var(
             --learn-two-theme-menu-color,
             light-dark(
@@ -227,7 +230,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           );
           z-index: 1000;
         }
-
 
         #menubutton,
         #menubutton2 {
@@ -239,7 +241,6 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           border: 1px solid var(--learn-two-theme-menu-toggle-border-color);
           border-radius: var(--ddd-radius-sm);
         }
-
 
         site-menu-button:not([disabled]):hover,
         site-menu-button:not([disabled]):active,
@@ -271,12 +272,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           right: 0;
         }
 
-
         site-menu-button[type="next"] {
           right: 0;
           left: unset;
         }
-
 
         site-title {
           position: relative;
@@ -358,9 +357,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           z-index: 1;
           --site-menu-button-icon-width: var(--ddd-icon-xl);
           --site-menu-button-icon-height: var(--ddd-icon-xl);
-          --site-menu-button-icon-fill-color: var(--ddd-theme-default-coalyGray);
+          --site-menu-button-icon-fill-color: var(
+            --ddd-theme-default-coalyGray
+          );
         }
-
 
         site-title {
           padding: var(--ddd-spacing-4);
@@ -500,71 +500,78 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   render() {
     return html`
       <div class="layout">
-         <a class="skip-link" href="#contentcontainer">Skip to content</a>
-         <simple-icon-button-lite
-           id="menubutton"
-           icon="menu"
-           @click="${this.toggleDrawer}"
-           title="Toggle site menu"
-           aria-expanded="${this.opened}"
-           aria-controls="drawer"
-         ></simple-icon-button-lite>
-           <div class="drawer ${this.opened ? 'opened' : ''}" id="drawer">
-           <simple-icon-button-lite
-             id="menubutton2"
-             icon="menu"
-             @click="${this.toggleDrawer}"
-             title="Toggle site menu"
-             aria-expanded="${this.opened}"
-             aria-controls="drawer"
-           ></simple-icon-button-lite>
-           <header class="header-wrapper">
-             <div class="header">
-               <site-title ?disabled="${this.editMode}" part="site-title"></site-title>
-               <site-modal
-                 @site-modal-click="${this.siteModalClick}"
-                 ?disabled="${this.editMode}"
-                 icon="icons:search"
-                 title="Search site"
-                 button-label="Search"
-                 part="search-btn"
-               >
-                 <site-search></site-search>
-               </site-modal>
-               <site-print-button
-               ?disabled="${this.editMode}"
-               position="top"
-               part="print-btn"
-             ></site-print-button>
-             <site-rss-button
-               ?disabled="${this.editMode}"
-               type="atom"
-               part="rss-btn"
-             ></site-rss-button>
-             <site-rss-button
-               ?disabled="${this.editMode}"
-               type="rss"
-               part="rss-btn"
-             ></site-rss-button>
-             </div>
-           </header>
-           <nav aria-label="Site navigation">
-             <site-menu part="site-menu"></site-menu>
-           </nav>
-         </div>
-         <div class="scrim ${this.opened ? 'opened' : ''}" role="presentation" @click="${this._closeDrawer}"></div>
-         <main>
-           <site-menu-button type="prev"></site-menu-button>
-           <article id="contentcontainer">
-             <site-git-corner part="git-corner-btn"></site-git-corner>
-             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-             <site-active-title part="page-title"></site-active-title>
-             <section id="slot">
-               <slot></slot>
-             </section>
-           </article>
-           <site-menu-button type="next" position="left"></site-menu-button>
-         </main>
+        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <simple-icon-button-lite
+          id="menubutton"
+          icon="menu"
+          @click="${this.toggleDrawer}"
+          title="Toggle site menu"
+          aria-expanded="${this.opened}"
+          aria-controls="drawer"
+        ></simple-icon-button-lite>
+        <div class="drawer ${this.opened ? "opened" : ""}" id="drawer">
+          <simple-icon-button-lite
+            id="menubutton2"
+            icon="menu"
+            @click="${this.toggleDrawer}"
+            title="Toggle site menu"
+            aria-expanded="${this.opened}"
+            aria-controls="drawer"
+          ></simple-icon-button-lite>
+          <header class="header-wrapper">
+            <div class="header">
+              <site-title
+                ?disabled="${this.editMode}"
+                part="site-title"
+              ></site-title>
+              <site-modal
+                @site-modal-click="${this.siteModalClick}"
+                ?disabled="${this.editMode}"
+                icon="icons:search"
+                title="Search site"
+                button-label="Search"
+                part="search-btn"
+              >
+                <site-search></site-search>
+              </site-modal>
+              <site-print-button
+                ?disabled="${this.editMode}"
+                position="top"
+                part="print-btn"
+              ></site-print-button>
+              <site-rss-button
+                ?disabled="${this.editMode}"
+                type="atom"
+                part="rss-btn"
+              ></site-rss-button>
+              <site-rss-button
+                ?disabled="${this.editMode}"
+                type="rss"
+                part="rss-btn"
+              ></site-rss-button>
+            </div>
+          </header>
+          <nav aria-label="Site navigation">
+            <site-menu part="site-menu"></site-menu>
+          </nav>
+        </div>
+        <div
+          class="scrim ${this.opened ? "opened" : ""}"
+          role="presentation"
+          @click="${this._closeDrawer}"
+        ></div>
+        <main>
+          <site-menu-button type="prev"></site-menu-button>
+          <article id="contentcontainer">
+            <site-git-corner part="git-corner-btn"></site-git-corner>
+            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+            <site-active-title part="page-title"></site-active-title>
+            <section id="slot">
+              <slot></slot>
+            </section>
+          </article>
+          <site-menu-button type="next" position="left"></site-menu-button>
+        </main>
       </div>
     `;
   }

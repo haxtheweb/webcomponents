@@ -79,10 +79,10 @@ class VideoPlayer extends IntersectionObserverMixin(
             var(--simple-colors-default-theme-accent-8, #444444)
           );
 
-        --a11y-media-disabled-color: var(
-          --video-player-disabled-color,
-          var(--simple-colors-default-theme-accent-5, #bbbbbb)
-        );
+          --a11y-media-disabled-color: var(
+            --video-player-disabled-color,
+            var(--simple-colors-default-theme-accent-5, #bbbbbb)
+          );
         }
         /* Kaltura MediaSpace secure embed: force a responsive iframe so the
            share URL paste renders at a sensible, consistent size. A cross-origin
@@ -99,97 +99,97 @@ class VideoPlayer extends IntersectionObserverMixin(
   // render function
   render() {
     return html` <meta property="oer:name" content="${this.mediaTitle}" />
-    <meta property="oer:uri" content="${this.source}" />
-    ${this.audioDescriptionSource && this.audioDescriptionEnabled
-      ? html`
-          <audio
-            id="audio-description"
-            .src="${this.audioDescriptionSource}"
-            crossorigin="${this.crossorigin || "anonymous"}"
-            style="display: none;"
-          ></audio>
-        `
-      : ``}
-    ${this.elementVisible
-      ? html`${!this.isA11yMedia
-          ? html` <div
-                class="responsive-video-container"
-                .lang="${this.lang || "en"}"
-              >
-                ${this.sandboxed
-                  ? html``
-                  : html` <webview
-                      resource="${this.schemaResourceID}-video"
-                      .src="${(this.sourceData &&
-                        this.sourceData[0] &&
-                        this.sourceData[0].src) ||
-                      undefined}"
-                      .width="${this.width || undefined}"
-                      .height="${this.height || undefined}"
-                      frameborder="0"
-                    >
-                    </webview>`}
-                ${!(!this.sandboxed && this.iframed)
-                  ? html``
-                  : html`
-                      <iframe
-                        loading="lazy"
+      <meta property="oer:uri" content="${this.source}" />
+      ${this.audioDescriptionSource && this.audioDescriptionEnabled
+        ? html`
+            <audio
+              id="audio-description"
+              .src="${this.audioDescriptionSource}"
+              crossorigin="${this.crossorigin || "anonymous"}"
+              style="display: none;"
+            ></audio>
+          `
+        : ``}
+      ${this.elementVisible
+        ? html`${!this.isA11yMedia
+            ? html` <div
+                  class="responsive-video-container"
+                  .lang="${this.lang || "en"}"
+                >
+                  ${this.sandboxed
+                    ? html``
+                    : html` <webview
                         resource="${this.schemaResourceID}-video"
-                        title="${this.mediaTitle || "Embedded video player"}"
                         .src="${(this.sourceData &&
                           this.sourceData[0] &&
                           this.sourceData[0].src) ||
                         undefined}"
-                        width="${this.width}"
-                        height="${this.height}"
+                        .width="${this.width || undefined}"
+                        .height="${this.height || undefined}"
                         frameborder="0"
-                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                      ></iframe>
-                    `}
-              </div>
-              <div id="videocaption" class="video-caption">
-                ${this.mediaTitle} 
-                <span class="media-type print-only"
-                  >(${this.t.embeddedMedia})</span
+                      >
+                      </webview>`}
+                  ${!(!this.sandboxed && this.iframed)
+                    ? html``
+                    : html`
+                        <iframe
+                          loading="lazy"
+                          resource="${this.schemaResourceID}-video"
+                          title="${this.mediaTitle || "Embedded video player"}"
+                          .src="${(this.sourceData &&
+                            this.sourceData[0] &&
+                            this.sourceData[0].src) ||
+                          undefined}"
+                          width="${this.width}"
+                          height="${this.height}"
+                          frameborder="0"
+                          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                        ></iframe>
+                      `}
+                </div>
+                <div id="videocaption" class="video-caption">
+                  ${this.mediaTitle}
+                  <span class="media-type print-only"
+                    >(${this.t.embeddedMedia})</span
+                  >
+                  <slot name="caption"></slot>
+                </div>
+                <slot hidden></slot>`
+            : html` <a11y-media-player
+                  accent-color="${this.accentColor}"
+                  ?audio-only="${this.audioOnly}"
+                  ?dark="${this.dark}"
+                  ?dark-transcript="${this.darkTranscript}"
+                  ?disable-interactive="${this.disableInteractive}"
+                  ?hide-timestamps="${this.hideTimestamps}"
+                  ?hide-transcript="${this.hideTranscript}"
+                  ?hide-youtube-link="${this.hideYoutubeLink}"
+                  id="${this.playerId}"
+                  @play="${this.playEvent}"
+                  @restart="${this.restartEvent}"
+                  @pause="${this.pauseEvent}"
+                  @audio-description-toggle="${this
+                    ._handleAudioDescriptionToggle}"
+                  lang="${this.lang || "en"}"
+                  ?learning-mode="${this.learningMode}"
+                  ?linkable="${this.linkable}"
+                  preload="metadata"
+                  media-title="${this.mediaTitle || ""}"
+                  .sources=${this.sourceProperties}
+                  ?stand-alone="${this.standAlone}"
+                  sticky-corner="${this.stickyCorner || "none"}"
+                  thumbnail-src="${this.thumbnailSrc}"
+                  .tracks=${this.trackProperties}
+                  .crossorigin=${this.crossorigin || "anonymous"}
+                  .width=${this.width}
+                  .height=${this.height}
+                  youtube-id="${this.youtubeId}"
+                  audio-description-source="${this.audioDescriptionSource}"
+                  ?audio-description-enabled="${this.audioDescriptionEnabled}"
                 >
-                <slot name="caption"></slot>
-              </div>
-              <slot hidden></slot>`
-          : html` <a11y-media-player
-                accent-color="${this.accentColor}"
-                ?audio-only="${this.audioOnly}"
-                ?dark="${this.dark}"
-                ?dark-transcript="${this.darkTranscript}"
-                ?disable-interactive="${this.disableInteractive}"
-                ?hide-timestamps="${this.hideTimestamps}"
-                ?hide-transcript="${this.hideTranscript}"
-                ?hide-youtube-link="${this.hideYoutubeLink}"
-                id="${this.playerId}"
-                @play="${this.playEvent}"
-                @restart="${this.restartEvent}"
-                @pause="${this.pauseEvent}"
-                @audio-description-toggle="${this
-                  ._handleAudioDescriptionToggle}"
-                lang="${this.lang || "en"}"
-                ?learning-mode="${this.learningMode}"
-                ?linkable="${this.linkable}"
-                preload="metadata"
-                media-title="${this.mediaTitle || ""}"
-                .sources=${this.sourceProperties}
-                ?stand-alone="${this.standAlone}"
-                sticky-corner="${this.stickyCorner || "none"}"
-                thumbnail-src="${this.thumbnailSrc}"
-                .tracks=${this.trackProperties}
-                .crossorigin=${this.crossorigin || "anonymous"}
-                .width=${this.width}
-                .height=${this.height}
-                youtube-id="${this.youtubeId}"
-                audio-description-source="${this.audioDescriptionSource}"
-                ?audio-description-enabled="${this.audioDescriptionEnabled}"
-              >
-              </a11y-media-player
-              ><slot hidden></slot>`}`
-      : ``}`;
+                </a11y-media-player
+                ><slot hidden></slot>`}`
+        : ``}`;
   }
 
   // haxProperty definition
@@ -1369,9 +1369,7 @@ class VideoPlayer extends IntersectionObserverMixin(
    */
   __getMediaPlayer() {
     if (!this.__mediaPlayerEl && this.shadowRoot) {
-      this.__mediaPlayerEl = this.shadowRoot.querySelector(
-        "a11y-media-player",
-      );
+      this.__mediaPlayerEl = this.shadowRoot.querySelector("a11y-media-player");
     }
     return this.__mediaPlayerEl;
   }

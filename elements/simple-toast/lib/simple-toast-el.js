@@ -165,7 +165,11 @@ class SimpleToastEl extends DDD {
           setTimeout(() => {
             this.style.animation = this._getAnimation();
           }, 0);
-          if (!this.alwaysvisible && !this.awaitingMerlinInput && this.duration > 0) {
+          if (
+            !this.alwaysvisible &&
+            !this.awaitingMerlinInput &&
+            this.duration > 0
+          ) {
             this.__dismissTimer = setTimeout(() => {
               this.__dismissTimer = null;
               this.hide();

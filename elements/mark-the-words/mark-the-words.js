@@ -90,7 +90,10 @@ export class MarkTheWords extends QuestionElement {
         button:focus,
         button:hover {
           outline: 1px solid
-             light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-coalyGray)
+            );
         }
 
         button {
@@ -120,7 +123,10 @@ export class MarkTheWords extends QuestionElement {
           display: inline-block;
           font-family: var(--ddd-font-navigation);
           border-radius: var(--ddd-radius-md);
-          background-color:  light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           margin: 0;
           cursor: pointer;
           user-select: none;

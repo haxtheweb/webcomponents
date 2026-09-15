@@ -594,6 +594,10 @@
             },
             {
               "kind": "method",
+              "name": "_updateMediaSource"
+            },
+            {
+              "kind": "method",
               "name": "_getTrack",
               "parameters": [
                 {
@@ -844,6 +848,32 @@
                 }
               ],
               "description": "handles the seek function when a transcript cue is activated"
+            },
+            {
+              "kind": "method",
+              "name": "_handleCueKeydown",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "keydown event",
+                  "type": {
+                    "text": "event"
+                  }
+                },
+                {
+                  "name": "cue",
+                  "description": "cue to seek to",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "handles keyboard activation of a transcript cue\n(custom element with role=\"button\" does not activate on Enter/Space automatically)"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaEnded",
+              "description": "handles media ending: stop and reset to the start so the UI doesn't hang\nnear the end with __playing stuck true. Native HTML5 fires `ended`; the\nYouTube bridge dispatches a matching `ended` for YT state 0. When looping\nis enabled, restart playback instead (HTML5 loops natively and never\nreaches this branch; for YouTube this provides single-video looping)."
             },
             {
               "kind": "method",
@@ -2297,6 +2327,10 @@
           ],
           "mixins": [
             {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
               "name": "I18NMixin",
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             },
@@ -3474,6 +3508,11 @@
             },
             {
               "kind": "method",
+              "name": "_handleEnded",
+              "description": "Fires when YouTube playback ends (YT state 0)"
+            },
+            {
+              "kind": "method",
               "name": "_autoMetadata",
               "description": "loads metadata by playing a small clip on mute and stopping"
             },
@@ -3672,6 +3711,12 @@
             },
             {
               "name": "timeupdate",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "ended",
               "type": {
                 "text": "CustomEvent"
               }

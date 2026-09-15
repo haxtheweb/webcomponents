@@ -1,16 +1,16 @@
 {
-    "settings": {
-        "configure": [
-            {
-                "title": "عنوان"
-            }
-        ]
-    },
-    "demoSchema": [
-        {
-            "properties": {
-              "title": "قيمة مخصصة"
-            }
-        }
+  "settings": {
+    "configure": [
+      {
+        "title": "عنوان"
+      }
     ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "title": "قيمة مخصصة"
+      }
+    }
+  ]
 }

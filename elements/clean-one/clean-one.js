@@ -44,20 +44,19 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
  * 4 = Boring Blue Gray
  * 5 = Monotone (default)
  */
-class CleanOne extends 
-  LTIResizingMixin(
-    PrintBranchMixin(
-      PDFPageMixin(
-        QRCodeMixin(
-          HAXCMSThemeParts(
-            HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
-            ),
+class CleanOne extends LTIResizingMixin(
+  PrintBranchMixin(
+    PDFPageMixin(
+      QRCodeMixin(
+        HAXCMSThemeParts(
+          HAXCMSMobileMenuMixin(
+            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
           ),
         ),
       ),
     ),
-  ) {
+  ),
+) {
   //styles function
   static get styles() {
     return [
@@ -493,8 +492,10 @@ class CleanOne extends
           }
           footer nav site-menu-button:hover,
           footer nav site-menu-button:focus-within,
-          footer nav:hover, footer nav:focus-within,
-          footer:hover, footer:focus-within {
+          footer nav:hover,
+          footer nav:focus-within,
+          footer:hover,
+          footer:focus-within {
             opacity: 1;
           }
           footer site-menu-button.navigation {
@@ -766,7 +767,7 @@ class CleanOne extends
                           part="print-btn"
                         ></site-print-button>
                       `}
-              ${this.PDFPageButton("bottom")}
+                  ${this.PDFPageButton("bottom")}
                 </div>
                 <div class="pull-right">
                   ${this.QRCodeButton()}

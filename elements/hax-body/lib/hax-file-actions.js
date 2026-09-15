@@ -135,10 +135,18 @@ class HAXFileActions extends DDD {
           },
         );
       } else {
-        items.push({group: "Operations", value: "insert:standalone", text: "Insert Image" });
+        items.push({
+          group: "Operations",
+          value: "insert:standalone",
+          text: "Insert Image",
+        });
       }
       items.push(
-        { group: "Operations", value: "duplicate:duplicate", text: "Duplicate" },
+        {
+          group: "Operations",
+          value: "duplicate:duplicate",
+          text: "Duplicate",
+        },
         { group: "Operations", value: "rename:rename", text: "Rename" },
         { group: "Operations", value: "delete:delete", text: "Delete" },
       );
@@ -229,9 +237,7 @@ class HAXFileActions extends DDD {
         ${this._isFieldMode
           ? ""
           : html`<span class="count"
-              >${this.selectedCount} file${this.selectedCount === 1
-                ? ""
-                : "s"}
+              >${this.selectedCount} file${this.selectedCount === 1 ? "" : "s"}
               selected</span
             >`}
         <simple-fields-field

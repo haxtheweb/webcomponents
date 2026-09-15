@@ -302,6 +302,15 @@
             },
             {
               "kind": "field",
+              "name": "schemaMap",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "schemaMap"
+            },
+            {
+              "kind": "field",
               "name": "manifest",
               "privacy": "public",
               "type": {
@@ -344,6 +353,13 @@
             }
           ],
           "attributes": [
+            {
+              "name": "schemaMap",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "schemaMap"
+            },
             {
               "name": "disabled",
               "type": {
@@ -448,6 +464,12 @@
               "description": "Show active indicator animation",
               "default": "false",
               "fieldName": "activeIndicator"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             }
           ],
           "superclass": {

@@ -251,6 +251,498 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/simple-clipboard-copy-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-clipboard-copy-button`\n`A simple-icon-button-lite variant that copies `data-cp` to the clipboard`",
+          "name": "SimpleClipboardCopyButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make lookup easier.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonLite",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchCopyEvent",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "detail"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toast",
+              "parameters": [
+                {
+                  "name": "message"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getCopyValue"
+            },
+            {
+              "kind": "method",
+              "name": "_writeClipboard",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_legacyWriteClipboard",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_copyOnClick"
+            },
+            {
+              "kind": "field",
+              "name": "dataCp",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "data-cp"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"content-copy\"",
+              "attribute": "icon",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Copy to clipboard\"",
+              "attribute": "label",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "successMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "success-message"
+            },
+            {
+              "kind": "field",
+              "name": "errorMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "error-message"
+            },
+            {
+              "kind": "field",
+              "name": "__copyClickHandler"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabelledby",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "aria-labelledby",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "controls",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "form",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fieldName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "field-name",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "privacy": "public",
+              "attribute": "type",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonLite",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "autofocus",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggles",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "toggles",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "toggled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "name",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-cp",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "dataCp"
+            },
+            {
+              "name": "success-message",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "successMessage"
+            },
+            {
+              "name": "error-message",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "errorMessage"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "autofocus",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "aria-labelledby",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "ariaLabelledby",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "controls",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "field-name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "fieldName",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "form",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "icon",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "type",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "toggles",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "toggles",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "toggled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "toggled",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "SimpleIconButtonLite",
+            "module": "/lib/simple-icon-button-lite.js"
+          },
+          "tagName": "simple-clipboard-copy-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleClipboardCopyButton",
+            "module": "lib/simple-clipboard-copy-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleClipboardCopyButton",
+          "declaration": {
+            "name": "SimpleClipboardCopyButton",
+            "module": "lib/simple-clipboard-copy-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/simple-icon-button-lite.js",
       "declarations": [
         {
@@ -1804,7 +2296,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "Singleton to manage iconsets",
           "name": "SimpleIconset",
           "members": [
             {

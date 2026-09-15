@@ -199,6 +199,19 @@
             },
             {
               "kind": "method",
+              "name": "haxmediaSourceUpdated",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "#3050: a file backing the poster image was modified in place. Refresh the\nlive preview by cache-busting the poster <img> inside the nested\na11y-media-player shadow tree directly, so the persisted `thumbnailSrc`\nproperty (and saved content) stays clean."
+            },
+            {
+              "kind": "method",
               "name": "haxinlineContextMenu",
               "parameters": [
                 {
@@ -262,6 +275,11 @@
             {
               "kind": "method",
               "name": "restartEvent"
+            },
+            {
+              "kind": "method",
+              "name": "__getMediaPlayer",
+              "description": "Lazily caches the inner a11y-media-player so hot paths (currentTime,\npause/play/seek) don't re-query the shadow root on every call. The child\nonly exists once elementVisible + isA11yMedia render it, so we query on\ndemand and invalidate on disconnect."
             },
             {
               "kind": "method",
@@ -336,7 +354,8 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "attribute": "sourceType"
+              "attribute": "source-type",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -661,7 +680,7 @@
           ],
           "attributes": [
             {
-              "name": "sourceType",
+              "name": "source-type",
               "type": {
                 "text": "string"
               },
@@ -975,6 +994,15 @@
             {
               "kind": "method",
               "name": "clickHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
               "parameters": [
                 {
                   "name": "e"

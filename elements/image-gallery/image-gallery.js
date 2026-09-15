@@ -414,7 +414,9 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="grid-item ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
+              class="grid-item ${image.element === this._newImageElement
+                ? "new-image"
+                : ""} ${image.uploading ? "uploading" : ""}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -440,7 +442,9 @@ export class ImageGallery extends I18NMixin(DDD) {
         ${this.images.map(
           (image, index) => html`
             <button
-              class="masonry-item ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
+              class="masonry-item ${image.element === this._newImageElement
+                ? "new-image"
+                : ""} ${image.uploading ? "uploading" : ""}"
               aria-label="${this.t.openImage}: ${image.alt || ""}"
               title="${this.t.openImage}: ${image.alt || ""}"
               @click="${(e) => this._handleImageClick(e, image, index)}"
@@ -501,7 +505,9 @@ export class ImageGallery extends I18NMixin(DDD) {
               <button
                 class="gallery-thumbnail ${index === this.activeIndex
                   ? "active"
-                  : ""} ${image.element === this._newImageElement ? 'new-image' : ''} ${image.uploading ? 'uploading' : ''}"
+                  : ""} ${image.element === this._newImageElement
+                  ? "new-image"
+                  : ""} ${image.uploading ? "uploading" : ""}"
                 role="tab"
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
                 aria-label="${image.alt || ""}"
@@ -642,7 +648,7 @@ export class ImageGallery extends I18NMixin(DDD) {
       e.dataTransfer.files.length > 0
     ) {
       const haxBody = store && store.activeHaxBody;
-      if (haxBody && typeof haxBody.dropEvent === 'function') {
+      if (haxBody && typeof haxBody.dropEvent === "function") {
         haxBody.dropEvent(e);
       }
       this._updateImages();

@@ -59,7 +59,11 @@ function deriveSystemApiBasePath(appSettings = {}) {
     // base path for truly relative paths; if the original value already starts
     // with '/' it is an absolute server-root path and must not be prefixed.
     const isRelative = rawSystemApiBasePath.charAt(0) !== "/";
-    if (basePath !== "" && isRelative && fromSettings.indexOf(basePath + "/") !== 0) {
+    if (
+      basePath !== "" &&
+      isRelative &&
+      fromSettings.indexOf(basePath + "/") !== 0
+    ) {
       fromSettings = basePath + fromSettings;
     }
     return fromSettings;

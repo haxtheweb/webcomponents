@@ -109,12 +109,12 @@ function rewriteNodeModulesPaths(filePath) {
 }
 
 // --- Process the generated gallery HTML ---
-var galleryFile = './component-gallery.html';
+var galleryFile = './index.html';
 if (fs.existsSync(galleryFile)) {
   injectImportMap(galleryFile);
-  console.log('Gallery: injected import map into component-gallery.html');
+  console.log('Gallery: injected import map into index.html');
 } else {
-  console.warn('Warning: component-gallery.html not found — run yarn build-gallery first');
+  console.warn('Warning: index.html not found — run yarn build-gallery first');
 }
 
 // --- Process all demo HTML files ---

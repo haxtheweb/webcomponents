@@ -327,12 +327,14 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
           ?hidden="${!this.elementVisible || !this.imageSrc}"
         >
           ${this.imageSrc
-            ? html` <img
-                src="${this.imageSrc}"
-                alt="${this.imageAlt || ""}"
-                class="image"
-                part="image"
-              /> `
+            ? html`
+                <img
+                  src="${this.imageSrc}"
+                  alt="${this.imageAlt || ""}"
+                  class="image"
+                  part="image"
+                />
+              `
             : ""}
           <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>

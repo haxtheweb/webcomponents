@@ -343,7 +343,7 @@ describe("Utils test", () => {
     });
 
     afterEach(() => {
-      Object.defineProperty(globalThis.navigator, 'clipboard', {
+      Object.defineProperty(globalThis.navigator, "clipboard", {
         value: originalClipboard,
         configurable: true,
         writable: true,
@@ -355,7 +355,7 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      Object.defineProperty(globalThis.navigator, 'clipboard', {
+      Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
         configurable: true,
         writable: true,
@@ -381,7 +381,7 @@ describe("Utils test", () => {
         writeText: async (text) =>
           Promise.reject(new Error("Permission denied")),
       };
-      Object.defineProperty(globalThis.navigator, 'clipboard', {
+      Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
         configurable: true,
         writable: true,
@@ -404,7 +404,7 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      Object.defineProperty(globalThis.navigator, 'clipboard', {
+      Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
         configurable: true,
         writable: true,
@@ -427,7 +427,7 @@ describe("Utils test", () => {
       const mockClipboard = {
         writeText: async (text) => Promise.resolve(),
       };
-      Object.defineProperty(globalThis.navigator, 'clipboard', {
+      Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
         configurable: true,
         writable: true,
@@ -526,7 +526,7 @@ describe("Utils test", () => {
   describe("DOM Utilities", () => {
     it("lightChildrenToShadowRootSelector finds elements in light DOM", async () => {
       const container = document.createElement("div");
-      container.attachShadow({ mode: 'open' });
+      container.attachShadow({ mode: "open" });
       const target = document.createElement("div");
       target.className = "test-class";
       container.shadowRoot.appendChild(target);
@@ -813,29 +813,34 @@ describe("Utils test", () => {
   describe("Clipboard Normalization", () => {
     describe("Notion inputs", () => {
       it("preserves links wrapped in Notion spans", async () => {
-        const input = '<span>Some text with a </span><span><a href="https://example.com">link</a></span><span> and more</span>';
+        const input =
+          '<span>Some text with a </span><span><a href="https://example.com">link</a></span><span> and more</span>';
         const result = normalizeClipboardHTML(input);
 
         expect(result).to.include('<a href="https://example.com">link</a>');
-        expect(result).to.not.include('<span>');
+        expect(result).to.not.include("<span>");
       });
 
       it("handles Notion nested spans with links", async () => {
-        const input = '<span><span><a href="https://notion.so">Notion link</a></span></span>';
+        const input =
+          '<span><span><a href="https://notion.so">Notion link</a></span></span>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('<a href="https://notion.so">Notion link</a>');
-        expect(result).to.not.include('<span>');
+        expect(result).to.include(
+          '<a href="https://notion.so">Notion link</a>',
+        );
+        expect(result).to.not.include("<span>");
       });
 
       it("handles plain text mixed with linked text from Notion", async () => {
-        const input = '<span>Before </span><span><a href="https://hax.psu.edu">HAX</a></span><span> after</span>';
+        const input =
+          '<span>Before </span><span><a href="https://hax.psu.edu">HAX</a></span><span> after</span>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('Before ');
+        expect(result).to.include("Before ");
         expect(result).to.include('<a href="https://hax.psu.edu">HAX</a>');
-        expect(result).to.include(' after');
-        expect(result).to.not.include('<span>');
+        expect(result).to.include(" after");
+        expect(result).to.not.include("<span>");
       });
     });
 
@@ -844,43 +849,44 @@ describe("Utils test", () => {
         const input = '<b style="font-weight:700">Real bold</b><b>Not bold</b>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('<strong>Real bold</strong>');
-        expect(result).to.include('Not bold');
-        expect(result).to.not.include('<b>');
+        expect(result).to.include("<strong>Real bold</strong>");
+        expect(result).to.include("Not bold");
+        expect(result).to.not.include("<b>");
       });
 
       it("converts GDocs font-weight spans to strong", async () => {
         const input = '<span style="font-weight:700">Bold span</span>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('<strong>Bold span</strong>');
-        expect(result).to.not.include('<span');
+        expect(result).to.include("<strong>Bold span</strong>");
+        expect(result).to.not.include("<span");
       });
 
       it("unwraps paragraphs inside list items from GDocs", async () => {
-        const input = '<ul><li><p style="margin:0">Item 1</p></li><li><p>Item 2</p></li></ul>';
+        const input =
+          '<ul><li><p style="margin:0">Item 1</p></li><li><p>Item 2</p></li></ul>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('<li>Item 1</li>');
-        expect(result).to.include('<li>Item 2</li>');
-        expect(result).to.not.include('<p');
+        expect(result).to.include("<li>Item 1</li>");
+        expect(result).to.include("<li>Item 2</li>");
+        expect(result).to.not.include("<p");
       });
 
-      it("removes GDocs role=\"text\" attributes", async () => {
+      it('removes GDocs role="text" attributes', async () => {
         const input = '<span role="text">Some text</span>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('Some text');
-        expect(result).to.not.include('role=');
+        expect(result).to.include("Some text");
+        expect(result).to.not.include("role=");
       });
 
       it("removes GDocs generated class names", async () => {
         const input = '<p class="c0 c1">Text</p><span class="c2">More</span>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('Text');
-        expect(result).to.include('More');
-        expect(result).to.not.include('class=');
+        expect(result).to.include("Text");
+        expect(result).to.include("More");
+        expect(result).to.not.include("class=");
       });
 
       it("preserves non-GDocs class names", async () => {
@@ -893,7 +899,7 @@ describe("Utils test", () => {
 
     describe("Edge cases", () => {
       it("returns empty string for empty input", async () => {
-        expect(normalizeClipboardHTML('')).to.equal('');
+        expect(normalizeClipboardHTML("")).to.equal("");
       });
 
       it("returns null/undefined as-is", async () => {
@@ -902,72 +908,76 @@ describe("Utils test", () => {
       });
 
       it("handles deeply nested spans", async () => {
-        const input = '<span><span><span>Deep</span></span></span>';
+        const input = "<span><span><span>Deep</span></span></span>";
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('Deep');
-        expect(result).to.not.include('<span>');
+        expect(result).to.include("Deep");
+        expect(result).to.not.include("<span>");
       });
 
       it("handles mixed content with links and bold", async () => {
-        const input = '<span><a href="https://example.com">link</a></span><b style="font-weight:700">bold</b>';
+        const input =
+          '<span><a href="https://example.com">link</a></span><b style="font-weight:700">bold</b>';
         const result = normalizeClipboardHTML(input);
 
         expect(result).to.include('<a href="https://example.com">link</a>');
-        expect(result).to.include('<strong>bold</strong>');
-        expect(result).to.not.include('<span>');
+        expect(result).to.include("<strong>bold</strong>");
+        expect(result).to.not.include("<span>");
       });
 
-    it("handles complex GDocs list with bold and links", async () => {
-        const input = '<ul><li><p class="c0"><b style="font-weight:700">Bold</b> and <a href="https://example.com">link</a></p></li></ul>';
+      it("handles complex GDocs list with bold and links", async () => {
+        const input =
+          '<ul><li><p class="c0"><b style="font-weight:700">Bold</b> and <a href="https://example.com">link</a></p></li></ul>';
         const result = normalizeClipboardHTML(input);
 
-        expect(result).to.include('<strong>Bold</strong>');
+        expect(result).to.include("<strong>Bold</strong>");
         expect(result).to.include('<a href="https://example.com">link</a>');
-        expect(result).to.include('<li>');
-        expect(result).to.not.include('<p');
-        expect(result).to.not.include('<b>');
+        expect(result).to.include("<li>");
+        expect(result).to.not.include("<p");
+        expect(result).to.not.include("<b>");
       });
     });
 
     describe("Google AI internal attributes", () => {
       it("stripMSWord removes specific Google AI internal attributes", async () => {
-        const { stripMSWord } = await import('../utils.js');
-        const input = '<p jsaction="" jscontroller="zYmgkd#vvzi1e" jsuid="S3xTyd_h" jsname="abc" jsslot="def" jsan="ghi" jsdata="jkl">Text</p>';
+        const { stripMSWord } = await import("../utils.js");
+        const input =
+          '<p jsaction="" jscontroller="zYmgkd#vvzi1e" jsuid="S3xTyd_h" jsname="abc" jsslot="def" jsan="ghi" jsdata="jkl">Text</p>';
         const result = stripMSWord(input);
-        expect(result).to.include('<p>Text</p>');
-        expect(result).to.not.include('jsaction');
-        expect(result).to.not.include('jscontroller');
-        expect(result).to.not.include('jsuid');
-        expect(result).to.not.include('jsname');
-        expect(result).to.not.include('jsslot');
-        expect(result).to.not.include('jsan');
-        expect(result).to.not.include('jsdata');
+        expect(result).to.include("<p>Text</p>");
+        expect(result).to.not.include("jsaction");
+        expect(result).to.not.include("jscontroller");
+        expect(result).to.not.include("jsuid");
+        expect(result).to.not.include("jsname");
+        expect(result).to.not.include("jsslot");
+        expect(result).to.not.include("jsan");
+        expect(result).to.not.include("jsdata");
       });
 
       it("normalizeClipboardHTML removes specific Google AI internal attributes", async () => {
-        const input = '<p jsaction="abc" jscontroller="x" jsuid="y" jsname="z" jsslot="w" jsan="q" jsdata="r">Text</p>';
+        const input =
+          '<p jsaction="abc" jscontroller="x" jsuid="y" jsname="z" jsslot="w" jsan="q" jsdata="r">Text</p>';
         const result = normalizeClipboardHTML(input);
-        expect(result).to.include('<p>Text</p>');
-        expect(result).to.not.include('jsaction');
-        expect(result).to.not.include('jscontroller');
-        expect(result).to.not.include('jsuid');
-        expect(result).to.not.include('jsname');
-        expect(result).to.not.include('jsslot');
-        expect(result).to.not.include('jsan');
-        expect(result).to.not.include('jsdata');
+        expect(result).to.include("<p>Text</p>");
+        expect(result).to.not.include("jsaction");
+        expect(result).to.not.include("jscontroller");
+        expect(result).to.not.include("jsuid");
+        expect(result).to.not.include("jsname");
+        expect(result).to.not.include("jsslot");
+        expect(result).to.not.include("jsan");
+        expect(result).to.not.include("jsdata");
       });
     });
 
     describe("stripMSWord integration", () => {
       it("stripMSWord handles <p> with attributes inside <li>", async () => {
         // Test the regex improvement directly by checking stripMSWord output
-        const { stripMSWord } = await import('../utils.js');
+        const { stripMSWord } = await import("../utils.js");
         const input = '<li><p style="margin:0">Item</p></li>';
         const result = stripMSWord(input);
 
-        expect(result).to.include('<li>Item</li>');
-        expect(result).to.not.include('<p');
+        expect(result).to.include("<li>Item</li>");
+        expect(result).to.not.include("<p");
       });
     });
 
@@ -977,48 +987,56 @@ describe("Utils test", () => {
       // (no font-weight) and often an extra <span>. Mirrors the pipeline order
       // in HAXStore._onPaste: normalizeClipboardHTML THEN stripMSWord.
       it("unwraps <p><b>...</b></p> and <p><span><b>...</b></span></p> wrappers", async () => {
-        const { stripMSWord } = await import('../utils.js');
+        const { stripMSWord } = await import("../utils.js");
         const input = [
-          '<p><b></b></p>',
-          '<p><span>Earlier in the class, we discussed fine arts.</span></p>',
-          '<p><span><b>Graphic designers are trying to solve a problem.</b></span></p>',
-          '<p><b>In each of these examples, you have an audience in mind.</b></p>',
-        ].join('');
+          "<p><b></b></p>",
+          "<p><span>Earlier in the class, we discussed fine arts.</span></p>",
+          "<p><span><b>Graphic designers are trying to solve a problem.</b></span></p>",
+          "<p><b>In each of these examples, you have an audience in mind.</b></p>",
+        ].join("");
         const result = stripMSWord(normalizeClipboardHTML(input));
 
-        expect(result).to.not.include('<b>');
-        expect(result).to.not.include('</b>');
-        expect(result).to.not.include('<span');
+        expect(result).to.not.include("<b>");
+        expect(result).to.not.include("</b>");
+        expect(result).to.not.include("<span");
         // Regression guard: without normalizeClipboardHTML, stripMSWord would
         // promote these fake-bold <b> tags to <strong>, bolding everything.
-        expect(result).to.not.include('<strong>Graphic designers');
-        expect(result).to.not.include('<strong>In each of these examples');
-        expect(result).to.include('<p>Graphic designers are trying to solve a problem.</p>');
-        expect(result).to.include('<p>In each of these examples, you have an audience in mind.</p>');
-        expect(result).to.include('<p>Earlier in the class, we discussed fine arts.</p>');
+        expect(result).to.not.include("<strong>Graphic designers");
+        expect(result).to.not.include("<strong>In each of these examples");
+        expect(result).to.include(
+          "<p>Graphic designers are trying to solve a problem.</p>",
+        );
+        expect(result).to.include(
+          "<p>In each of these examples, you have an audience in mind.</p>",
+        );
+        expect(result).to.include(
+          "<p>Earlier in the class, we discussed fine arts.</p>",
+        );
       });
 
-      it('preserves real Google Docs bold (font-weight:700) as <strong>', async () => {
-        const { stripMSWord } = await import('../utils.js');
-        const input = '<p><b style="font-weight:700">Actually bold</b> and <b>not bold</b></p>';
+      it("preserves real Google Docs bold (font-weight:700) as <strong>", async () => {
+        const { stripMSWord } = await import("../utils.js");
+        const input =
+          '<p><b style="font-weight:700">Actually bold</b> and <b>not bold</b></p>';
         const result = stripMSWord(normalizeClipboardHTML(input));
 
-        expect(result).to.include('<strong>Actually bold</strong>');
-        expect(result).to.include('not bold');
-        expect(result).to.not.include('<b>');
+        expect(result).to.include("<strong>Actually bold</strong>");
+        expect(result).to.include("not bold");
+        expect(result).to.not.include("<b>");
       });
     });
 
     describe("normalizeTypography", () => {
       it("converts curly double quotes to straight quotes", async () => {
-        const input = '<p>He said \u201Chello\u201D and \u201Cgoodbye\u201D</p>';
+        const input =
+          "<p>He said \u201Chello\u201D and \u201Cgoodbye\u201D</p>";
         expect(normalizeTypography(input)).to.equal(
           '<p>He said "hello" and "goodbye"</p>',
         );
       });
 
       it("converts curly single quotes and apostrophes to straight quotes", async () => {
-        const input = '<p>It\u2019s \u2018quoted\u2019</p>';
+        const input = "<p>It\u2019s \u2018quoted\u2019</p>";
         expect(normalizeTypography(input)).to.equal("<p>It's 'quoted'</p>");
       });
 
@@ -1028,9 +1046,7 @@ describe("Utils test", () => {
         const result = normalizeTypography(
           "\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F",
         );
-        expect(result).to.equal(
-          "'" + "'" + "'" + "'" + '"' + '"' + '"' + '"',
-        );
+        expect(result).to.equal("'" + "'" + "'" + "'" + '"' + '"' + '"' + '"');
       });
 
       it("leaves attribute values intact so HTML parsing is not broken", async () => {
@@ -1042,9 +1058,9 @@ describe("Utils test", () => {
 
       it("normalizes quotes across nested elements", async () => {
         const input =
-          '<ul><li>\u201Citem one\u201D</li><li>it\u2019s \u2018two\u2019</li></ul>';
+          "<ul><li>\u201Citem one\u201D</li><li>it\u2019s \u2018two\u2019</li></ul>";
         expect(normalizeTypography(input)).to.equal(
-          '<ul><li>"item one"</li><li>it\'s \'two\'</li></ul>',
+          "<ul><li>\"item one\"</li><li>it's 'two'</li></ul>",
         );
       });
 

@@ -125,10 +125,7 @@ class OutlinePlayer extends SchemaBehaviors(
           padding: 0 16px 16px 16px;
           flex: none;
           transition: 0.6s opacity ease-in-out;
-          background-color: light-dark(
-            #ffffff,
-            var(--ddd-primary-4)
-          );
+          background-color: light-dark(#ffffff, var(--ddd-primary-4));
           color: inherit;
           border-radius: 4px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -360,11 +357,7 @@ class OutlinePlayer extends SchemaBehaviors(
     this._narrowMQ.addEventListener("change", this._narrowHandler);
     this._narrowChanged(this._narrowMQ);
     this._escHandler = (e) => {
-      if (
-        e.key === "Escape" &&
-        this.opened &&
-        this.narrow
-      ) {
+      if (e.key === "Escape" && this.opened && this.narrow) {
         this._closeDrawer();
       }
     };
@@ -400,11 +393,19 @@ class OutlinePlayer extends SchemaBehaviors(
       <site-git-corner part="git-corner-btn"></site-git-corner>
       <div class="layout">
         <nav aria-label="Site navigation" typeof="oer:TableOfContents">
-          <div class="drawer ${this.opened ? 'opened' : ''} ${this.closed ? 'closed' : ''}" id="drawer">
+          <div
+            class="drawer ${this.opened ? "opened" : ""} ${this.closed
+              ? "closed"
+              : ""}"
+            id="drawer"
+          >
             <site-menu></site-menu>
           </div>
         </nav>
-        <div class="scrim ${this.opened ? 'opened' : ''}" @click="${this._closeDrawer}"></div>
+        <div
+          class="scrim ${this.opened ? "opened" : ""}"
+          @click="${this._closeDrawer}"
+        ></div>
         <div id="content">
           <header>
             <div class="nav-btns">

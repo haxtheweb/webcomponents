@@ -861,6 +861,15 @@
                 "text": "object"
               },
               "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", }"
+            },
+            {
+              "kind": "field",
+              "name": "schemaMap",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "schemaMap"
             }
           ],
           "events": [
@@ -878,6 +887,13 @@
             }
           ],
           "attributes": [
+            {
+              "name": "schemaMap",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "schemaMap"
+            },
             {
               "name": "haxGizmos",
               "type": {
@@ -1015,6 +1031,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
             {
               "name": "I18NMixin",
               "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"

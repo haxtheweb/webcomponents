@@ -300,11 +300,7 @@ class SiteSkeletonGenerator {
           const details = { uuidMap, direction: "site-to-skeleton" };
           targets[i][targets[i].haxHooks()["siteToSkeleton"]](details);
         } catch (e) {
-          console.warn(
-            "siteToSkeleton hook failed for",
-            targets[i].tagName,
-            e,
-          );
+          console.warn("siteToSkeleton hook failed for", targets[i].tagName, e);
         }
       }
       return container.innerHTML;
@@ -550,7 +546,6 @@ class SiteSkeletonGenerator {
 
     return files;
   }
-
 }
 
 export default SiteSkeletonGenerator;

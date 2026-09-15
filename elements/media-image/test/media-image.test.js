@@ -206,8 +206,7 @@ describe("media-image test", () => {
       await testElement.updateComplete;
       let poked = null;
       const fakeStore = {
-        _mediaSrcMatches: (src, path) =>
-          String(src || "").indexOf(path) !== -1,
+        _mediaSrcMatches: (src, path) => String(src || "").indexOf(path) !== -1,
         _pokeMatchingImgs: (root, path) => {
           poked = { root, path };
         },
@@ -225,8 +224,7 @@ describe("media-image test", () => {
       await testElement.updateComplete;
       let poked = false;
       const fakeStore = {
-        _mediaSrcMatches: (src, path) =>
-          String(src || "").indexOf(path) !== -1,
+        _mediaSrcMatches: (src, path) => String(src || "").indexOf(path) !== -1,
         _pokeMatchingImgs: () => {
           poked = true;
         },

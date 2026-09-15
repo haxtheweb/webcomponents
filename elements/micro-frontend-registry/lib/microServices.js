@@ -167,7 +167,6 @@ export function enableCoreServices() {
     },
   });
 
-
   // docxToPdf
   MicroFrontendRegistry.add({
     endpoint: "/system/api/v1/actions/docx-to-pdf",
@@ -400,7 +399,8 @@ export function enableHAXcmsServices() {
     description: "Load entire HAXcms site via URL as HTML",
     params: {
       magic: "optional CDN URL to wrap HTML in full document",
-      "filter.ancestor": "optional: ancestor to print from as opposed to entire site",
+      "filter.ancestor":
+        "optional: ancestor to print from as opposed to entire site",
     },
   });
   // pageCache
@@ -472,7 +472,8 @@ export function enableHAXcmsServices() {
     title: "HAXcms Full Site EPUB",
     description: "generate .epub of entire HAXcms site via URL",
     params: {
-      "filter.ancestor": "optional: ancestor to print from as opposed to entire site",
+      "filter.ancestor":
+        "optional: ancestor to print from as opposed to entire site",
     },
   });
 }

@@ -13,16 +13,16 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "./lib/h5p-resizer.js";
 /**
-  * `h5p-element`
-  * @element h5p-element
-  * `h5p wrapper for loading and presenting .h5p files`
-  *
-  * @microcopy - language worth noting:
-  *  - h5p is it's own eco system, we're just trying to wrap it a bit
-  *
-  * @lit-element
-  * @demo demo/index.html
-  */
+ * `h5p-element`
+ * @element h5p-element
+ * `h5p wrapper for loading and presenting .h5p files`
+ *
+ * @microcopy - language worth noting:
+ *  - h5p is it's own eco system, we're just trying to wrap it a bit
+ *
+ * @lit-element
+ * @demo demo/index.html
+ */
 class H5PElement extends LitElement {
   //styles function
   static get styles() {

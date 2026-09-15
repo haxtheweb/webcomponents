@@ -336,7 +336,13 @@ class TerribleThemes extends HAXCMSRememberRoute(
                     </td>
                     <td align="right" width="100">
                       <p class="loginState">
-                        <a class="loginState" aria-disabled="true" role="link" tabindex="-1">Log in</a>
+                        <a
+                          class="loginState"
+                          aria-disabled="true"
+                          role="link"
+                          tabindex="-1"
+                          >Log in</a
+                        >
                       </p>
                     </td>
                   </tr>
@@ -385,11 +391,22 @@ class TerribleThemes extends HAXCMSRememberRoute(
           <tr>
             <!-- Main body of text -->
             <td>
-              <table role="presentation" border="0" cellspacing="0" cellpadding="5" width="100%">
+              <table
+                role="presentation"
+                border="0"
+                cellspacing="0"
+                cellpadding="5"
+                width="100%"
+              >
                 <tbody>
                   <tr>
                     <td>
-                      <table role="presentation" border="0" cellspacing="0" cellpadding="0">
+                      <table
+                        role="presentation"
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                      >
                         <tbody>
                           <tr valign="top">
                             <td>
@@ -403,7 +420,11 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                 <tbody>
                                   <tr>
                                     <td id="contentcontainer" tabindex="-1">
-                                      <section id="slot" role="main" aria-label="Page content">
+                                      <section
+                                        id="slot"
+                                        role="main"
+                                        aria-label="Page content"
+                                      >
                                         <site-active-title></site-active-title>
                                         <slot></slot>
                                       </section>

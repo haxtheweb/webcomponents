@@ -81,11 +81,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       css`
         body {
           background-color: #2a2a2a;
-          color: #D2D2D2;
+          color: #d2d2d2;
         }
         body.dark-mode {
           background-color: #000000;
-          color: #D2D2D2;
+          color: #d2d2d2;
         }
       `,
     ];
@@ -210,7 +210,13 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     return html`
       <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <div align="center">
-        <table role="presentation" width="800" border="0" cellpadding="0" cellspacing="0">
+        <table
+          role="presentation"
+          width="800"
+          border="0"
+          cellpadding="0"
+          cellspacing="0"
+        >
           <tbody>
             <tr>
               <td width="800" colspan="5" align="center">
@@ -274,7 +280,13 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                       import.meta.url,
                     ).href}/../movies.jpg)"
                   ></site-active-title>
-                  <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
+                  <table
+                    role="presentation"
+                    border="1"
+                    cellpadding="0"
+                    cellspacing="0"
+                    width="100%"
+                  >
                     <tbody>
                       <tr>
                         <td>

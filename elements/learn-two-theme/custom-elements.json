@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`Learn theme`",
+          "description": "",
           "name": "LearnTwoTheme",
           "members": [
             {
@@ -30,7 +30,7 @@
             },
             {
               "kind": "method",
-              "name": "__openedChanged",
+              "name": "toggleDrawer",
               "parameters": [
                 {
                   "name": "e"
@@ -39,7 +39,7 @@
             },
             {
               "kind": "method",
-              "name": "toggleDrawer",
+              "name": "_closeDrawer",
               "parameters": [
                 {
                   "name": "e"

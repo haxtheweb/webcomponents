@@ -331,6 +331,14 @@
               "default": "false",
               "attribute": "opened",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__dismissTimer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             }
           ],
           "events": [

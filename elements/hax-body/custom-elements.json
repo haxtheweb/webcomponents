@@ -148,6 +148,11 @@
             },
             {
               "kind": "method",
+              "name": "_isFocusOutsideEditingContext",
+              "description": "Determine if keyboard focus is currently outside the editable hax-body\ncontext (e.g. in the hax-tray settings form, a modal, or the document\nbody). Shared by keydown/keyup handlers so shortcuts scoped to body\nediting never fire while the user is interacting with tray form fields."
+            },
+            {
+              "kind": "method",
               "name": "_onKeyUp",
               "parameters": [
                 {
@@ -163,6 +168,34 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "__maybeTriggerInlineShortcut",
+              "description": "Inline-token trigger: when the cursor sits in a text block and the text\nimmediately before the cursor ends with a registered `:: `/`::: ` token\n(plus trailing space), strip the token and open the matching inline\nMerlin program at the cursor. Tokens are read from the shortcut registry\non SuperDaemonInstance.allItems (markdown-type shortcut descriptors)."
+            },
+            {
+              "kind": "method",
+              "name": "__fireInlineShortcut",
+              "parameters": [
+                {
+                  "name": "spec"
+                }
+              ],
+              "description": "Re-validate state and fire an inline shortcut: strip the token at the\ncursor and open the matching inline Merlin program. Re-reads the range\nso it works whether called directly or from a debounced timer."
+            },
+            {
+              "kind": "method",
+              "name": "__findTextNodeAtOffset",
+              "parameters": [
+                {
+                  "name": "block"
+                },
+                {
+                  "name": "charOffset"
+                }
+              ],
+              "description": "Given a block element and a character offset within that block's\ntextContent, find the text node and local offset at that position.\nUsed by __maybeTriggerInlineShortcut to strip an inline token even\nwhen the caret sits at an element boundary (range.startContainer is\nan Element rather than a Text node)."
             },
             {
               "kind": "method",
@@ -183,7 +216,18 @@
                   "name": "node"
                 }
               ],
-              "description": "Test if a text block is effectively empty in a way that should\nallow :empty styles and markdown shortcuts to work."
+              "description": "Test if a text block is effectively empty in a way that should\nallow :empty styles and markdown shortcuts to work.\nAlso syncs the transient data-hax-empty attribute so CSS can target\nelements with only a BR placeholder."
+            },
+            {
+              "kind": "method",
+              "name": "__syncDataHaxEmpty",
+              "parameters": [
+                {
+                  "name": "node",
+                  "default": "this.activeNode"
+                }
+              ],
+              "description": "Sync data-hax-empty attribute on the active node based on content."
             },
             {
               "kind": "method",
@@ -365,6 +409,21 @@
               "name": "primitiveTextBlocks",
               "description": "Whole workflow of replacing something in place contextually.\nThis can fire for things like events needing this workflow to\ninvoke whether it's a \"convert\" event or a \"replace placeholder\" event",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__isTextPrimitiveTag",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Test if the given node is one of the \"text primitive\" tags that a\nuser could reasonably start typing directly into (as opposed to a\nmedia / grid / other non-text element that needs a click-to-convert\naffordance placed after it)."
+            },
+            {
+              "kind": "method",
+              "name": "__ensureTrailingTextAffordance",
+              "description": "Ensure that when the last valid child of the body is not a text\nprimitive (eg an image, video, grid-plate, or other non-text\nelement), we append a blank `<p data-hax-auto>` after it so the\nuser has an obvious way to keep typing / adding text content.\nIf left empty, this paragraph is stripped from saved output via\nthe `data-hax-auto` marker (see haxToContent); if the user types\ninto it, it's treated as normal saved paragraph content."
             },
             {
               "kind": "method",
@@ -1858,6 +1917,16 @@
             },
             {
               "kind": "field",
+              "name": "requestParams",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "requestParams"
+            },
+            {
+              "kind": "field",
               "name": "appSearch",
               "default": "this"
             },
@@ -1899,15 +1968,6 @@
                 "text": "string"
               },
               "attribute": "requestEndPoint"
-            },
-            {
-              "kind": "field",
-              "name": "requestParams",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "attribute": "requestParams"
             }
           ],
           "attributes": [
@@ -2001,6 +2061,7 @@
               "type": {
                 "text": "object"
               },
+              "default": "{}",
               "fieldName": "requestParams"
             },
             {
@@ -3693,6 +3754,225 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/hax-file-actions.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "SCALE_PRESETS",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ xs: { width: 200, height: 150, label: \"200\\u00d7150\" }, sm: { width: 320, height: 240, label: \"320\\u00d7240\" }, md: { width: 400, height: 300, label: \"400\\u00d7300\" }, lg: { width: 800, height: 600, label: \"800\\u00d7600\" }, xl: { width: 1200, height: 900, label: \"1200\\u00d7900\" }, }"
+        },
+        {
+          "kind": "variable",
+          "name": "COMPRESS_PRESETS",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ light: { quality: 90, label: \"Light (90)\" }, medium: { quality: 70, label: \"Medium (70)\" }, heavy: { quality: 50, label: \"Heavy (50)\" }, maximum: { quality: 30, label: \"Maximum (30)\" }, }"
+        },
+        {
+          "kind": "class",
+          "description": "`hax-file-actions`\nA file-action bar that consolidates all operations (transform, compress,\nscale, rotate, duplicate, rename, insert into page, delete) into one\nhierarchical `<select>` (group headers are non-selectable, leaves are\nthe actual actions), so the control takes minimal horizontal space and\ncan be reused wherever a \"operate on a file selection\" bar is needed.\n\nTwo presentation modes (issue #3028):\n- `mode=\"bulk\"` (default): full action set including Operations\n  (insert/duplicate/rename/delete), used by the haxcms file-admin dialog\n  to act on a set of selected files.\n- `mode=\"field\"`: transformations only (Transform/Compress/Scale), used\n  inline under a single haxupload schema field so destructive / insert\n  operations are never offered in a single-field context.\n\nSCALE_PRESETS / COMPRESS_PRESETS are exported so callers (e.g.\nhax-upload-field's post-upload recommendation logic) share this single\nsource of truth instead of duplicating the preset table.",
+          "name": "HAXFileActions",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_isFieldMode",
+              "description": "In \"field\" mode the Operations group (insert/duplicate/rename/delete)\nis omitted entirely; only image transformations remain. \"bulk\" keeps\nthe full set for the file-admin dialog.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "actionItems",
+              "description": "Builds the full hierarchical option list for the single bulk-action\nselect. Options with a shared `group` render as an `<optgroup>` in\n`simple-fields-field`'s select template; options without a `group`\nrender as flat top-level `<option>`s. Values are encoded as\n`\"action:value\"` so `_onAction` can split on the first `:` to\nrecover the action name and its parameter.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchAction",
+              "parameters": [
+                {
+                  "name": "action"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resetField",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "selectedCount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "selected-count"
+            },
+            {
+              "kind": "field",
+              "name": "imageCount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "image-count"
+            },
+            {
+              "kind": "field",
+              "name": "canScale",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "can-scale",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "busy",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "busy",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Presentation mode.\n- \"bulk\" (default): full action set including Operations\n  (insert/duplicate/rename/delete) for the file-admin dialog.\n- \"field\": transformations only (Transform/Compress/Scale),\n  used inline under a single haxupload schema field so the\n  destructive / insert operations are never offered in a\n  single-field context. See issue #3028.",
+              "default": "\"bulk\"",
+              "attribute": "mode",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "hax-file-action",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "selected-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "selectedCount"
+            },
+            {
+              "name": "image-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "imageCount"
+            },
+            {
+              "name": "can-scale",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "canScale"
+            },
+            {
+              "name": "busy",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "busy"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "Presentation mode.\n- \"bulk\" (default): full action set including Operations\n  (insert/duplicate/rename/delete) for the file-admin dialog.\n- \"field\": transformations only (Transform/Compress/Scale),\n  used inline under a single haxupload schema field so the\n  destructive / insert operations are never offered in a\n  single-field context. See issue #3028.",
+              "default": "\"bulk\"",
+              "fieldName": "mode"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HAXFileActions",
+            "module": "lib/hax-file-actions.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAXFileActions",
+          "declaration": {
+            "name": "HAXFileActions",
+            "module": "lib/hax-file-actions.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SCALE_PRESETS",
+          "declaration": {
+            "name": "SCALE_PRESETS",
+            "module": "lib/hax-file-actions.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPRESS_PRESETS",
+          "declaration": {
+            "name": "COMPRESS_PRESETS",
+            "module": "lib/hax-file-actions.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/hax-gizmo-browser.js",
       "declarations": [
         {
@@ -3712,6 +3992,26 @@
                   "name": "gizmo"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_gizmoSearchIndex",
+              "parameters": [
+                {
+                  "name": "gizmo"
+                }
+              ],
+              "description": "Build a searchable index string for a gizmo, matching the same\nfields used when indexing the main items list."
+            },
+            {
+              "kind": "method",
+              "name": "_filterAuxList",
+              "parameters": [
+                {
+                  "name": "list"
+                }
+              ],
+              "description": "Filter an auxiliary gizmo list (recent / popular) using the same\nfilter query applied to the main block list."
             },
             {
               "kind": "field",
@@ -3741,6 +4041,15 @@
             {
               "kind": "method",
               "name": "inputfilterChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_inputKeydown",
               "parameters": [
                 {
                   "name": "e"
@@ -3874,7 +4183,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ filterContentTypes: \"Filter Content Types\", recent: \"Recent\", popular: \"Popular\", }"
+              "default": "{ filterContentTypes: \"Filter Blocks\", recent: \"Recent\", popular: \"Popular\", }"
             },
             {
               "kind": "field",
@@ -5460,6 +5769,56 @@
             },
             {
               "kind": "method",
+              "name": "_cleanMediaPath",
+              "parameters": [
+                {
+                  "name": "path"
+                }
+              ],
+              "description": "#3050: Strip fragment / query / cache-bust suffixes from a media path so\na post-op source still aligns with the clean path persisted in content."
+            },
+            {
+              "kind": "method",
+              "name": "_mediaSrcMatches",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "cleanPath"
+                }
+              ],
+              "description": "#3050: True when an element's current image src references `cleanPath`.\nMatches on the full clean path OR the basename so both relative\n(files/foo.jpg) and absolute same-origin URLs resolve to the same file."
+            },
+            {
+              "kind": "method",
+              "name": "_pokeMatchingImgs",
+              "parameters": [
+                {
+                  "name": "root"
+                },
+                {
+                  "name": "cleanPath"
+                }
+              ],
+              "description": "#3050: Cache-bust every <img> in a shadow/light tree whose src references\n`cleanPath`, piercing nested shadow roots. The ?t=<ts> lives only on the\nDOM img attribute, never on serialized source properties, so saved content\nstays clean. Reused by refreshMediaSource and by element haxHooks that\nneed to refresh their own internal <img>s."
+            },
+            {
+              "kind": "method",
+              "name": "refreshMediaSource",
+              "parameters": [
+                {
+                  "name": "path",
+                  "description": "clean URL / relative path of the file that changed",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "#3050: After a file op (rotate / compress / scale / transform / replace)\non `path`, refresh every place in the active page currently displaying\nthat file so the transformed bytes show live without a page reload.\n\n- Raw <img> in the page whose src references `path` are cache-busted in\n  place.\n- Custom elements implementing the `mediaSourceUpdated` haxHook are handed\n  `(path, this)` and own their element-specific refresh (poke an internal\n  shadow <img> via store._pokeMatchingImgs, recompute a background-image,\n  etc.) without polluting persisted properties.\n- Custom elements WITHOUT the hook but with a shadow root are walked for\n  raw <img> matches so legacy/internal images still refresh.\n\nAuthored content is light-DOM children of <hax-body> slotted into\n<slot id=\"body\">, so walking activeHaxBody reaches every page element."
+            },
+            {
+              "kind": "method",
               "name": "getSelection",
               "description": "Selection normalizer"
             },
@@ -5954,16 +6313,6 @@
             },
             {
               "kind": "method",
-              "name": "_haxConsentTap",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "This only sends if they consented to storage of data locally"
-            },
-            {
-              "kind": "method",
               "name": "_calculateActiveGizmo",
               "parameters": [
                 {
@@ -6154,6 +6503,36 @@
                   "name": "limit"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_openInlineProgramAtCursor",
+              "parameters": [
+                {
+                  "name": "{\n    machineName,\n    name,\n    placeholder,\n    range,\n    selection,\n    activeBlock,\n    token = null,\n  }"
+                }
+              ],
+              "description": "Open an inline Merlin program at the cursor. Used by the `:: `/`::: `\ninline-token trigger in hax-body (which strips the token first) and by\nthe rich-text-editor emoji/symbol toolbar buttons (no strip). `range`\nshould be collapsed at the insertion point; `token` is the string to\nrestore on cancel (e.g. \":: \"), or null for the toolbar-button path.\nCaptures the range/selection/activeNode onto SuperDaemonInstance and\nsets `inlineTextInsert` so `_insertTextResult` inserts at the cursor\ninstead of end-of-node."
+            },
+            {
+              "kind": "method",
+              "name": "__editableForRange",
+              "parameters": [
+                {
+                  "name": "range"
+                }
+              ],
+              "description": "Find the innermost contenteditable element containing the given range's\nstart point. Used by _insertTextResult (inline-token / RTE-button paths)\nto focus the correct editable before restoring the selection and\ninserting, and by the RTE toolbar handler to position Merlin at the\nactive element instead of the rich-text-editor wrapper."
+            },
+            {
+              "kind": "method",
+              "name": "_handleRteInlineProgram",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle a rich-text-editor toolbar button (emoji/symbol) requesting an\ninline Merlin program at the RTE cursor. rich-text-editor cannot import\nHAXStore (hax-body depends on rich-text-editor), so it dispatches a\nbubbling event; this handler routes it through the shared\n_openInlineProgramAtCursor helper with no token (button path = no strip)."
             },
             {
               "kind": "method",
@@ -6506,6 +6885,12 @@
             },
             {
               "kind": "field",
+              "name": "keyboardShortcuts",
+              "description": "Legacy markdown shortcut map derived from the shared registry.\nReturns the { trigger: { tag, content } } shape HAXStore historically\nheld so existing readers (About dialog, hax-body fallback) keep working\nwithout knowing about the registry. The registry remains the single\nsource of truth; mutating this object does not write back.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "activeGizmo",
               "readonly": true
             },
@@ -6604,23 +6989,11 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", \"hax-consent-tap\": \"_haxConsentTap\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", }"
+              "default": "{ \"hax-super-daemon-insert-tag\": \"_superDaemonInsert\", \"hax-register-properties\": \"_haxStoreRegisterProperties\", onbeforeunload: \"_onBeforeUnload\", paste: \"_onPaste\", command: \"_onCommand\", \"hax-register-app\": \"_haxStoreRegisterApp\", \"hax-register-stax\": \"_haxStoreRegisterStax\", \"hax-register-core-piece\": \"_haxStorePieceRegistrationManager\", \"hax-register-body\": \"_haxStoreRegisterBody\", \"hax-insert-content\": \"_haxStoreInsertContent\", \"hax-insert-content-array\": \"_haxStoreInsertMultiple\", \"hax-refresh-tray-form\": \"refreshActiveNodeForm\", \"rich-text-editor-prompt-open\": \"_richTextEditorPromptOpen\", \"rich-text-editor-prompt-confirm\": \"_richTextEditorPromptConfirm\", \"rich-text-editor-open-inline-program\": \"_handleRteInlineProgram\", }"
             },
             {
               "kind": "field",
               "name": "onbeforeunload"
-            },
-            {
-              "kind": "field",
-              "name": "skipHAXConfirmation",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "skipHAXConfirmation",
-              "default": "false",
-              "attribute": "skip-hax-confirmation",
-              "reflects": true
             },
             {
               "kind": "field",
@@ -6898,19 +7271,11 @@
             },
             {
               "kind": "field",
-              "name": "keyboardShortcuts",
-              "type": {
-                "text": "object"
-              },
-              "default": "{ \"#\": { tag: \"h2\", content: \"\" }, \"##\": { tag: \"h3\", content: \"\" }, \"###\": { tag: \"h4\", content: \"\" }, \"####\": { tag: \"h5\", content: \"\" }, \"#####\": { tag: \"h6\", content: \"\" }, \"######\": { tag: \"h6\", content: \"\" }, \"1.\": { tag: \"ol\", content: \"<li></li>\" }, \"-\": { tag: \"ul\", content: \"<li></li>\" }, \"*\": { tag: \"ul\", content: \"<li></li>\" }, \"+\": { tag: \"ul\", content: \"<li></li>\" }, \"---\": { tag: \"hr\" }, \"***\": { tag: \"hr\" }, ___: { tag: \"hr\" }, \"```\": { tag: \"code\", content: \"\" }, \">\": { tag: \"blockquote\", content: \"\" }, }"
-            },
-            {
-              "kind": "field",
               "name": "__primsBuilder",
               "type": {
                 "text": "object"
               },
-              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", description: \"Create a numbered list.\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", description: \"Create a bulleted list.\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", description: \"Top-level section heading.\", icon: \"hax:h1\", }, h2: { title: \"Heading\", description: \"Second-level section heading.\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"heading\", \"header\"], }, h3: { title: \"Heading\", description: \"Third-level section heading.\", icon: \"hax:h3\", }, h4: { title: \"Heading\", description: \"Fourth-level section heading.\", icon: \"hax:h4\", }, h5: { title: \"Heading\", description: \"Fifth-level section heading.\", icon: \"hax:h5\", }, h6: { title: \"Heading\", description: \"Sixth-level section heading.\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", description: \"Underline inline text.\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", description: \"Display quoted text as a block quote.\", icon: \"editor:format-quote\", }, code: { title: \"Code\", description: \"Display inline code.\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", description: \"Preserve whitespace in preformatted text.\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
+              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", description: \"Create a numbered list.\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", description: \"Create a bulleted list.\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", description: \"Top-level section heading.\", icon: \"hax:h1\", }, h2: { title: \"Heading\", description: \"Second-level section heading.\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"heading\", \"header\"], }, h3: { title: \"Heading\", description: \"Third-level section heading.\", icon: \"hax:h3\", }, h4: { title: \"Heading\", description: \"Fourth-level section heading.\", icon: \"hax:h4\", }, h5: { title: \"Heading\", description: \"Fifth-level section heading.\", icon: \"hax:h5\", }, h6: { title: \"Heading\", description: \"Sixth-level section heading.\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", description: \"Underline inline text.\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", description: \"Display quoted text as a block quote.\", icon: \"editor:format-quote\", }, code: { title: \"Code\", description: \"Display code.\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", description: \"Preserve whitespace in preformatted text.\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
             },
             {
               "kind": "field",
@@ -7007,15 +7372,6 @@
             }
           ],
           "attributes": [
-            {
-              "name": "skip-hax-confirmation",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "skipHAXConfirmation",
-              "default": "false",
-              "fieldName": "skipHAXConfirmation"
-            },
             {
               "name": "storageData",
               "type": {
@@ -9798,6 +10154,29 @@
             },
             {
               "kind": "method",
+              "name": "_isLocalHaxcmsStore",
+              "parameters": [
+                {
+                  "name": "app"
+                }
+              ],
+              "description": "Detect the local HAXcms site file store. Both the nodejs and PHP backends\nbuild this connection via siteConnectionJSON with details.author\n\"HAXCMS\" / details.title \"Local files\" and an add.endPoint of\nx/api/v1/files. External app-store providers (YouTube, Unsplash, etc.)\nonly expose browse operations, so they never reach the upload path; any\ncustom provider with its own add operation is treated as external.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_resolveUploadNodeId",
+              "description": "Resolve the active node id for v1 file uploads. Prefers the dedicated\nconnectionRewrites.uploadNodeId set by haxcms-site-editor, falling back\nto parsing nodeId out of the legacy appendUploadEndPoint string.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_fileAboutToUpload",
               "parameters": [
                 {
@@ -9875,6 +10254,297 @@
             },
             {
               "kind": "field",
+              "name": "fields",
+              "description": "#3028: append the inline image-action collapse after the inherited\nupload markup. SimpleFieldsUpload.render() renders `${this.fields}` inside\na <fieldset>, so extending the fields getter is the single injection point.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_fileActionsTemplate",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_maybeHydrateFromValue",
+              "description": "If the field has a value that we haven't yet hydrated from, resolve the\nfile record (uuid/size/mimetype/dateCreated) via",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_hydrateFromFileValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_readDimsIntoCache",
+              "parameters": [
+                {
+                  "name": "f"
+                },
+                {
+                  "name": "token"
+                }
+              ],
+              "description": "Read pixel dimensions from the cached file's fullUrl (or source) and merge\nthem back if the hydration token is still current (no newer value won).",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_normalizeSource",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "Strip a cache-busting ?t=<ts> query so a post-op source still matches the\ncached file's clean relative path.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_mimeFromUrl",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_filesPathFromValue",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "Extract the leading \"files/...\" portion of a value so an absolute\nsame-origin URL (e.g. https://host/sites/x/files/a.jpg) still resolves to\nits file record via the relative-path listFiles filter. Returns the input\nunchanged when no files/ segment is present.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isLocalFileValue",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "True when the value references a local site file: a relative path, or a\nsame-origin absolute URL containing a files/ segment. Remote (cross-origin)\nURLs return false so we skip the listFiles UUID lookup for them.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_captureUploadedFileForRecs",
+              "parameters": [
+                {
+                  "name": "response"
+                },
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Capture an uploaded image's metadata from the v1 createFile response so\nthe inline UI can operate on it via",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_refreshUploadedFileFromResponse",
+              "parameters": [
+                {
+                  "name": "d"
+                }
+              ],
+              "description": "After a successful",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_recomputeRecs",
+              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as chips; the full transform/compress/scale list lives in the\nembedded <hax-file-actions mode=\"field\"> bar.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_isImageMime",
+              "parameters": [
+                {
+                  "name": "mime"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_closestScalePreset",
+              "parameters": [
+                {
+                  "name": "longest"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_readImageDimsFromUrl",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_runFileRec",
+              "parameters": [
+                {
+                  "name": "rec"
+                }
+              ],
+              "description": "Run a recommendation chip. Compress/scale go through",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onInlineFileAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle a transform/compress/scale/rotate choice from the inline\n<hax-file-actions mode=\"field\"> bar. Maps the {action, value} event to\nthe",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_callFileOp",
+              "parameters": [
+                {
+                  "name": "params"
+                },
+                {
+                  "name": "label"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_waitForSiteOp",
+              "parameters": [
+                {
+                  "name": "operationName"
+                },
+                {
+                  "name": "timeoutMs",
+                  "default": "5000"
+                }
+              ],
+              "description": "Poll until the",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_reloadSourceCacheBust",
+              "description": "After an in-place file op, force the live preview to re-render the\ntransformed image WITHOUT writing the cache-busting ?t= query into the\nsaved content.\n\nthis.value is what the hax-tray persists into page content, so it must\nstay clean (no ?t=). For in-place ops the clean path is unchanged, so\nsetting this.value is a no-op and no value-changed fires — the preview\nwould keep showing the stale HTTP-cached bytes. The browser's HTTP cache\nfor the clean URL can't be invalidated from JS, so the only way to force\na re-fetch is to change the URL.\n\nSolution: poke the <img> elements living in the active node's SHADOW DOM\ndirectly with a cache-busted src (?t=<ts>) and leave it there (no revert).\nShadow DOM <img> srcs are NOT serialized into saved page content — HAX\nserializes the light DOM, which carries the clean `source` property —\nso ?t= never reaches saved content. When the op changed the path (e.g.\nconvert-jpg), setting this.value to the new clean path fires value-changed\nand the element re-renders with the new URL (fresh, no cache issue), so no\npoke is needed.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fmtBytes",
+              "parameters": [
+                {
+                  "name": "bytes"
+                }
+              ],
+              "description": "Format bytes for the Image Info panel (e.g. 312 KB, 1.4 MB).",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fmtDate",
+              "parameters": [
+                {
+                  "name": "seconds"
+                }
+              ],
+              "description": "Format the dateCreated (seconds since epoch, matching the backend\nFileRecord dateCreated) for the Image Info panel.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "showSources",
               "privacy": "public",
               "type": {
@@ -9902,11 +10572,79 @@
             },
             {
               "kind": "field",
+              "name": "fileActions",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "#3028: opt-in flag on a haxupload/fileupload schema field. When true,\nthe field surfaces an Image Info panel (size / dimensions / mimetype)\nwith actionable compress/resize icons plus a collapsed Image Actions\narea offering in-place transform/compress/scale run via",
+              "default": "false",
+              "attribute": "file-actions",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__fileRecs",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__lastUploadedFile",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__fileActionsBusy",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__fileActionsError",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", }",
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", }",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -9925,6 +10663,19 @@
               },
               "default": "true",
               "fieldName": "showSources",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "name": "file-actions",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "#3028: opt-in flag on a haxupload/fileupload schema field. When true,\nthe field surfaces an Image Info panel (size / dimensions / mimetype)\nwith actionable compress/resize icons plus a collapsed Image Actions\narea offering in-place transform/compress/scale run via",
+              "default": "false",
+              "fieldName": "fileActions",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -10284,7 +11035,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
+              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", }"
             },
             {
               "kind": "field",
@@ -10762,7 +11513,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --hax-ui-font-family: var(--ddd-font-navigation); --hax-ui-font-size-xs: 10px; --hax-ui-font-size-sm: 12px; --hax-ui-font-size: 14px; --hax-ui-font-size-lg: 16px; --hax-ui-font-size-xl: 20px; } `, ]"
+          "default": "[ css` body { --hax-ui-font-family: var(--ddd-font-navigation); --hax-ui-font-size-xs: 12px; --hax-ui-font-size-sm: 14px; --hax-ui-font-size: 16px; --hax-ui-font-size-lg: 18px; --hax-ui-font-size-xl: 24px; } `, ]"
         },
         {
           "kind": "variable",
@@ -10770,7 +11521,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --hax-tray-width: 350px; --hax-tray-menubar-min-width: 44px; --hax-tray-menubar-min-height: 34px; --hax-ui-spacing-xs: 4px; --hax-ui-border-radius: 2px; --hax-ui-spacing-sm: calc(1 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing: calc(2 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing-lg: calc(3 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing-xl: calc(4 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-focus-z-index: 1001; --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --a11y-menu-button-focus-z-index: var(--hax-ui-focus-z-index); } `, ]"
+          "default": "[ css` body { --hax-tray-width: 350px; --hax-tray-menubar-min-width: 44px; --hax-tray-menubar-min-height: 34px; --hax-ui-spacing-xs: 4px; --hax-ui-border-radius: 4px; --hax-ui-spacing-sm: calc(1 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing: calc(2 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing-lg: calc(3 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-spacing-xl: calc(4 * var(--hax-ui-spacing-xs, 4px)); --hax-ui-focus-z-index: 1001; --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --a11y-menu-button-focus-z-index: var(--hax-ui-focus-z-index); } `, ]"
         },
         {
           "kind": "variable",
@@ -10786,7 +11537,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --simple-tooltip-background: var(--hax-ui-color); --simple-tooltip-text-color: var(--hax-ui-background-color); --simple-tooltip-opacity: 1; --simple-tooltip-delay-in: 0; --simple-tooltip-duration-in: 300ms; --simple-tooltip-duration-out: 0; --simple-tooltip-border-radius: 2px; --simple-tooltip-font-size: var(--hax-ui-font-size-sm); } `, ]"
+          "default": "[ css` body { --simple-tooltip-background: var(--hax-ui-color); --simple-tooltip-text-color: var(--hax-ui-background-color); --simple-tooltip-opacity: 1; --simple-tooltip-delay-in: 0; --simple-tooltip-duration-in: 300ms; --simple-tooltip-duration-out: 0; --simple-tooltip-border-radius: 2px; --simple-tooltip-font-size: var(--hax-ui-font-size-xs); } `, ]"
         },
         {
           "kind": "variable",
@@ -10802,7 +11553,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-border-color: var(--hax-ui-color); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } simple-modal[mode=\"hax-ui\"]::part(titlebar), simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-modal[mode=\"hax-ui\"]::part(close), simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-modal[mode=\"hax-ui\"]:focus-within::part(close), simple-modal[mode=\"hax-ui\"]:hover::part(close), simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-modal[mode=\"hax-ui\"]::part(title), simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom), simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { padding: var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(buttons), simple-popover-manager[mode=\"hax\"]:part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } #hax-cancel-no, #hax-cancel-yes { flex: 1 1 auto; } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: 0.5; border: 1px solid var(--hax-ui-border-color); } `, ]"
+          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } simple-modal[mode=\"hax-ui\"]::part(titlebar), simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-modal[mode=\"hax-ui\"]::part(close), simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-modal[mode=\"hax-ui\"]:focus-within::part(close), simple-modal[mode=\"hax-ui\"]:hover::part(close), simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-modal[mode=\"hax-ui\"]::part(title), simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom), simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { padding: var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(buttons), simple-popover-manager[mode=\"hax\"]:part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } #hax-cancel-no, #hax-cancel-yes { flex: 1 1 auto; } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: 0.5; border: 1px solid var(--hax-ui-border-color); } `, ]"
         },
         {
           "kind": "variable",
@@ -10852,7 +11603,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` #tray-detail { font-family: var(--hax-ui-font-family); --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl); --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg); --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size); --hax-tray-detail-heading-text-transform: capitalize; --hax-tray-detail-heading-font-weight: normal; } #tray-detail h5, #tray-detail h6 { text-transform: var(--hax-tray-detail-heading-text-transform); font-weight: var(--hax-tray-detail-heading-font-weight); margin: var(--hax-ui-spacing) 0 var(--hax-ui-spacing-xs); color: var(--hax-ui-color-faded); } #tray-detail h4 { text-transform: var(--hax-tray-detail-heading-text-transform); color: white; font-size: var(--hax-tray-detail-title-font-size); font-weight: bold; font-family: var(--hax-ui-font-family); overflow: hidden; word-break: break-all; text-overflow: ellipsis; margin: 0 -8px; padding: var(--ddd-spacing-3); padding-top: var(--ddd-spacing-4); width: 100%; display: flex; align-items: center; justify-content: space-between; position: sticky; height: 36px; top: 0; z-index: 3; } #tray-detail h5 { font-size: var(--hax-tray-detail-topic-font-size); } #tray-detail h6 { font-size: var(--hax-tray-detail-subtopic-font-size); } `, ]"
+          "default": "[ css` #tray-detail { font-family: var(--hax-ui-font-family); --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl); --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg); --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size); --hax-tray-detail-heading-text-transform: capitalize; --hax-tray-detail-heading-font-weight: normal; } #tray-detail h5, #tray-detail h6 { text-transform: var(--hax-tray-detail-heading-text-transform); font-weight: var(--hax-tray-detail-heading-font-weight); margin: var(--hax-ui-spacing) 0 var(--hax-ui-spacing-xs); color: var(--hax-ui-color-faded); } #tray-detail h4 { text-transform: var(--hax-tray-detail-heading-text-transform); color: white; font-size: var(--hax-tray-detail-title-font-size); font-weight: bold; font-family: var(--hax-ui-font-family); overflow: hidden; word-break: break-all; text-overflow: ellipsis; margin: 0; padding: var(--ddd-spacing-2); width: stretch; display: flex; align-items: center; justify-content: space-between; position: sticky; height: 32px; top: 0; z-index: 3; } #tray-detail h5 { font-size: var(--hax-tray-detail-topic-font-size); } #tray-detail h6 { font-size: var(--hax-tray-detail-subtopic-font-size); } `, ]"
         },
         {
           "kind": "variable",
@@ -11045,6 +11796,21 @@
             },
             {
               "kind": "method",
+              "name": "_isLocalHaxcmsStore",
+              "parameters": [
+                {
+                  "name": "app"
+                }
+              ],
+              "description": "Detect the local HAXcms site file store. Both the nodejs and PHP backends\nbuild this connection via siteConnectionJSON with details.author\n\"HAXCMS\" / details.title \"Local files\" and an add.endPoint of\nx/api/v1/files. External app-store providers (YouTube, Unsplash, etc.)\nonly expose browse operations, so they never reach the upload path; any\ncustom provider with its own add operation is treated as external."
+            },
+            {
+              "kind": "method",
+              "name": "_resolveUploadNodeId",
+              "description": "Resolve the active node id for v1 file uploads. Prefers the dedicated\nconnectionRewrites.uploadNodeId set by haxcms-site-editor, falling back\nto parsing nodeId out of the legacy appendUploadEndPoint string."
+            },
+            {
+              "kind": "method",
               "name": "_fileAboutToUpload",
               "parameters": [
                 {
@@ -11108,6 +11874,209 @@
             },
             {
               "kind": "field",
+              "name": "fields",
+              "description": "#3028: append the inline image-action collapse after the inherited\nupload markup. SimpleFieldsUpload.render() renders `${this.fields}` inside\na <fieldset>, so extending the fields getter is the single injection point.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_fileActionsTemplate",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_maybeHydrateFromValue",
+              "description": "If the field has a value that we haven't yet hydrated from, resolve the\nfile record (uuid/size/mimetype/dateCreated) via"
+            },
+            {
+              "kind": "method",
+              "name": "_hydrateFromFileValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_readDimsIntoCache",
+              "parameters": [
+                {
+                  "name": "f"
+                },
+                {
+                  "name": "token"
+                }
+              ],
+              "description": "Read pixel dimensions from the cached file's fullUrl (or source) and merge\nthem back if the hydration token is still current (no newer value won)."
+            },
+            {
+              "kind": "method",
+              "name": "_normalizeSource",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "Strip a cache-busting ?t=<ts> query so a post-op source still matches the\ncached file's clean relative path."
+            },
+            {
+              "kind": "method",
+              "name": "_mimeFromUrl",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_filesPathFromValue",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "Extract the leading \"files/...\" portion of a value so an absolute\nsame-origin URL (e.g. https://host/sites/x/files/a.jpg) still resolves to\nits file record via the relative-path listFiles filter. Returns the input\nunchanged when no files/ segment is present."
+            },
+            {
+              "kind": "method",
+              "name": "_isLocalFileValue",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "True when the value references a local site file: a relative path, or a\nsame-origin absolute URL containing a files/ segment. Remote (cross-origin)\nURLs return false so we skip the listFiles UUID lookup for them."
+            },
+            {
+              "kind": "method",
+              "name": "_captureUploadedFileForRecs",
+              "parameters": [
+                {
+                  "name": "response"
+                },
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Capture an uploaded image's metadata from the v1 createFile response so\nthe inline UI can operate on it via"
+            },
+            {
+              "kind": "method",
+              "name": "_refreshUploadedFileFromResponse",
+              "parameters": [
+                {
+                  "name": "d"
+                }
+              ],
+              "description": "After a successful"
+            },
+            {
+              "kind": "method",
+              "name": "_recomputeRecs",
+              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as chips; the full transform/compress/scale list lives in the\nembedded <hax-file-actions mode=\"field\"> bar."
+            },
+            {
+              "kind": "method",
+              "name": "_isImageMime",
+              "parameters": [
+                {
+                  "name": "mime"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_closestScalePreset",
+              "parameters": [
+                {
+                  "name": "longest"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_readImageDimsFromUrl",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_runFileRec",
+              "parameters": [
+                {
+                  "name": "rec"
+                }
+              ],
+              "description": "Run a recommendation chip. Compress/scale go through"
+            },
+            {
+              "kind": "method",
+              "name": "_onInlineFileAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle a transform/compress/scale/rotate choice from the inline\n<hax-file-actions mode=\"field\"> bar. Maps the {action, value} event to\nthe"
+            },
+            {
+              "kind": "method",
+              "name": "_callFileOp",
+              "parameters": [
+                {
+                  "name": "params"
+                },
+                {
+                  "name": "label"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_waitForSiteOp",
+              "parameters": [
+                {
+                  "name": "operationName"
+                },
+                {
+                  "name": "timeoutMs",
+                  "default": "5000"
+                }
+              ],
+              "description": "Poll until the"
+            },
+            {
+              "kind": "method",
+              "name": "_reloadSourceCacheBust",
+              "description": "After an in-place file op, force the live preview to re-render the\ntransformed image WITHOUT writing the cache-busting ?t= query into the\nsaved content.\n\nthis.value is what the hax-tray persists into page content, so it must\nstay clean (no ?t=). For in-place ops the clean path is unchanged, so\nsetting this.value is a no-op and no value-changed fires — the preview\nwould keep showing the stale HTTP-cached bytes. The browser's HTTP cache\nfor the clean URL can't be invalidated from JS, so the only way to force\na re-fetch is to change the URL.\n\nSolution: poke the <img> elements living in the active node's SHADOW DOM\ndirectly with a cache-busted src (?t=<ts>) and leave it there (no revert).\nShadow DOM <img> srcs are NOT serialized into saved page content — HAX\nserializes the light DOM, which carries the clean `source` property —\nso ?t= never reaches saved content. When the op changed the path (e.g.\nconvert-jpg), setting this.value to the new clean path fires value-changed\nand the element re-renders with the new URL (fresh, no cache issue), so no\npoke is needed."
+            },
+            {
+              "kind": "method",
+              "name": "_fmtBytes",
+              "parameters": [
+                {
+                  "name": "bytes"
+                }
+              ],
+              "description": "Format bytes for the Image Info panel (e.g. 312 KB, 1.4 MB)."
+            },
+            {
+              "kind": "method",
+              "name": "_fmtDate",
+              "parameters": [
+                {
+                  "name": "seconds"
+                }
+              ],
+              "description": "Format the dateCreated (seconds since epoch, matching the backend\nFileRecord dateCreated) for the Image Info panel."
+            },
+            {
+              "kind": "field",
               "name": "showSources",
               "privacy": "public",
               "type": {
@@ -11143,11 +12112,59 @@
             },
             {
               "kind": "field",
+              "name": "fileActions",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "#3028: opt-in flag on a haxupload/fileupload schema field. When true,\nthe field surfaces an Image Info panel (size / dimensions / mimetype)\nwith actionable compress/resize icons plus a collapsed Image Actions\narea offering in-place transform/compress/scale run via",
+              "default": "false",
+              "attribute": "file-actions",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__fileRecs",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "__lastUploadedFile",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__fileActionsBusy",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__fileActionsError",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", }"
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", }"
             }
           ],
           "attributes": [
@@ -11158,6 +12175,15 @@
               },
               "default": "true",
               "fieldName": "showSources"
+            },
+            {
+              "name": "file-actions",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "#3028: opt-in flag on a haxupload/fileupload schema field. When true,\nthe field surfaces an Image Info panel (size / dimensions / mimetype)\nwith actionable compress/resize icons plus a collapsed Image Actions\narea offering in-place transform/compress/scale run via",
+              "default": "false",
+              "fieldName": "fileActions"
             }
           ],
           "mixins": [
@@ -11286,7 +12312,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", }"
+              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", copiedToClipboard: \"Copied to clipboard\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", }"
             },
             {
               "kind": "field",
@@ -11370,6 +12396,204 @@
           "declaration": {
             "name": "HaxViewSource",
             "module": "lib/hax-view-source.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-fields-srcset.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-fields-srcset`\nedits the standard `srcset` attribute as a repeatable list of\n{ url, descriptor } rows while exposing a single string value\n(eg. `clock-small.jpg 480w, clock-medium.jpg 800w`).\n\nThe value stays a string at both load and save time so the HAX tray\nwrites it back with `setAttribute(\"srcset\", ...)` and never trips the\narray/object property branch that would corrupt a native img.srcset.\n\nEach row's URL is a `hax-upload-field` limited to file-system search\n(Merlin \"Select media\") and upload; camera / voice / screen recording\nare disabled. The descriptor is a free-form text field (eg. 480w or 2x).",
+          "name": "SimpleFieldsSrcset",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_updateField",
+              "description": "container base tries to read a slotted field; we render our own\nfields in shadow DOM so there is nothing to read."
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "focus the first row's upload field (used when the tray focuses us).\nWe do NOT steal focus on internal clicks -- see firstUpdated where the\ninherited host click->focus listener is removed."
+            },
+            {
+              "kind": "method",
+              "name": "_rowTemplate",
+              "parameters": [
+                {
+                  "name": "row"
+                },
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_parseSrcset",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "parse a srcset string into [{ url, descriptor }] rows"
+            },
+            {
+              "kind": "method",
+              "name": "_serializeSrcset",
+              "parameters": [
+                {
+                  "name": "rows"
+                }
+              ],
+              "description": "serialize rows back to a srcset string"
+            },
+            {
+              "kind": "method",
+              "name": "_rowsEqual",
+              "parameters": [
+                {
+                  "name": "a"
+                },
+                {
+                  "name": "b"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addRow"
+            },
+            {
+              "kind": "method",
+              "name": "_removeRow",
+              "parameters": [
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_moveRow",
+              "parameters": [
+                {
+                  "name": "i"
+                },
+                {
+                  "name": "dir"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_rowUrlChanged",
+              "parameters": [
+                {
+                  "name": "i"
+                },
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "handle URL changes from the embedded hax-upload-field.\nhax-upload-field dispatches value-changed with detail.value (string).\nIgnore echoes of the value we just pushed in to avoid render loops."
+            },
+            {
+              "kind": "method",
+              "name": "_rowInput",
+              "parameters": [
+                {
+                  "name": "i"
+                },
+                {
+                  "name": "field"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fireValueChanged",
+              "description": "fires when value changes"
+            },
+            {
+              "kind": "field",
+              "name": "__rows",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "internal rows parsed from value",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the srcset attribute as a single string",
+              "attribute": "value"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "the srcset attribute as a single string",
+              "fieldName": "value"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleFieldsContainerBehaviors",
+              "package": "@haxtheweb/simple-fields/lib/simple-fields-container.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-fields-srcset",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleFieldsSrcset",
+            "module": "lib/simple-fields-srcset.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleFieldsSrcset",
+          "declaration": {
+            "name": "SimpleFieldsSrcset",
+            "module": "lib/simple-fields-srcset.js"
           }
         }
       ]

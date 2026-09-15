@@ -23,7 +23,7 @@ yarn build-gallery
 ```
 
 ### Production / Preview
-The gallery is regenerated on every Vercel preview deployment via the `buildCommand` in `vercel.json` (`yarn install && yarn build-gallery`), so each PR preview at `*.vercel.app` includes a fresh `component-gallery.html` reflecting that branch's components.
+The gallery is regenerated on every Vercel preview deployment via the `buildCommand` in `vercel.json` (`yarn install && yarn build-gallery`), so each PR preview at `*.vercel.app` includes a fresh `index.html` reflecting that branch's components — it's served automatically at the preview's root URL.
 
 For a local production build that includes the gallery:
 ```bash
@@ -39,11 +39,11 @@ The gallery supports URL query params so you can link directly to a specific com
 
 When a component is selected from the sidebar, the address bar is updated via `history.replaceState` so the current view is always shareable. CI uses this convention to post per-element review links on PRs.
 
-Example: `https://<preview>.vercel.app/component-gallery.html?element=video-player`
+Example: `https://<preview>.vercel.app/?element=video-player`
 
 ## Automated Preview Builds (Vercel)
 
-Every push and PR triggers a Vercel preview deployment. `vercel.json` sets `buildCommand` to `yarn install && yarn build-gallery`, so each preview includes a freshly generated, routable `component-gallery.html`. Reviewers can view the gallery for a PR without pulling the branch locally.
+Every push and PR triggers a Vercel preview deployment. `vercel.json` sets `buildCommand` to `yarn install && yarn build-gallery`, so each preview includes a freshly generated, routable `index.html` served automatically at the preview's root URL. Reviewers can view the gallery for a PR without pulling the branch locally.
 
 The `gallery-deeplinks` GitHub workflow watches for successful Vercel Preview deployments and posts a PR comment with `?element=<slug>` deep links for each element the PR touches, replacing the legacy `demo-deeplinks` workflow.
 
@@ -72,7 +72,7 @@ The gallery uses your DDD design system variables:
 webcomponents/
 ├── scripts/
 │   └── build-component-gallery.js    # Gallery generator script
-├── component-gallery.html            # Generated gallery (gitignored; regenerated per deploy, not committed)
+├── index.html                        # Generated gallery (gitignored; regenerated per deploy, not committed)
 └── elements/
     └── [component-name]/
         ├── package.json              # Component metadata
@@ -114,7 +114,7 @@ The gallery inherits styling from your DDD design system. To customize:
 
 ## Deployment
 
-For HAX webcomponents, the gallery is automatically built and deployed on every Vercel preview/production deployment (see [Automated Preview Builds (Vercel)](#automated-preview-builds-vercel)). The generated `component-gallery.html` file is completely self-contained and can also be:
+For HAX webcomponents, the gallery is automatically built and deployed on every Vercel preview/production deployment (see [Automated Preview Builds (Vercel)](#automated-preview-builds-vercel)). Since it builds to `index.html`, it is served automatically at the deployment's root URL. The generated file is completely self-contained and can also be:
 
 - Served statically from any web server
 - Deployed to GitHub Pages, Netlify, Vercel, etc.

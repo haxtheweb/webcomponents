@@ -110,10 +110,6 @@
           ],
           "mixins": [
             {
-              "name": "DDDSuper",
-              "package": "@haxtheweb/d-d-d/d-d-d.js"
-            },
-            {
               "name": "LTIResizingMixin",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js"
             },

@@ -3985,9 +3985,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
     if (createPageOption && createPageOption.shortcut) {
       createPageOption.shortcutLabel =
-        SuperDaemonInstance._resolveShortcutLabel(
-          createPageOption.shortcut,
-        );
+        SuperDaemonInstance._resolveShortcutLabel(createPageOption.shortcut);
     }
     SuperDaemonInstance.defineOption({
       title: "Show getting started tasks",
@@ -4362,7 +4360,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // user can edit them in place when launched from Merlin search.
         initialValue: (values) => {
           const activeItem = toJS(store.activeItem);
-          return (activeItem && activeItem.metadata && activeItem.metadata.tags) || "";
+          return (
+            (activeItem && activeItem.metadata && activeItem.metadata.tags) ||
+            ""
+          );
         },
         program: async (input, values) => {
           const { createEditTagsProgram } = await import(
@@ -4563,13 +4564,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: "View keyboard shortcuts",
         context: ["CMS"],
         program: async (input) => {
-          const shortcuts =
-            KeyboardShortcutManagerInstance.getForDisplay();
+          const shortcuts = KeyboardShortcutManagerInstance.getForDisplay();
           const results = [];
 
           shortcuts.forEach((shortcut) => {
             // Filter by search input against the description and label
-            const haystack = `${shortcut.description || ""} ${shortcut.label || ""}`.toLowerCase();
+            const haystack =
+              `${shortcut.description || ""} ${shortcut.label || ""}`.toLowerCase();
             if (input === "" || haystack.includes(input.toLowerCase())) {
               results.push({
                 title: `${shortcut.description} • ${shortcut.label}`,
@@ -4630,11 +4631,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // Markdown triggers only apply in edit mode; insert the block. Skip
         // tagless markdown entries (e.g. inline-token programs like :::)
         // since they open a Merlin program rather than insert a block.
-        if (
-          this.editMode &&
-          HAXStore.activeHaxBody &&
-          descriptor.tag
-        ) {
+        if (this.editMode && HAXStore.activeHaxBody && descriptor.tag) {
           HAXStore.activeHaxBody.haxInsert(
             descriptor.tag,
             descriptor.content || "",
@@ -4644,7 +4641,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return;
       }
       // Binding shortcut: run its callback when the condition passes.
-      if (descriptor.callback && descriptor.condition && descriptor.condition()) {
+      if (
+        descriptor.callback &&
+        descriptor.condition &&
+        descriptor.condition()
+      ) {
         const syntheticEvent = new KeyboardEvent("keydown", {
           key: descriptor.key,
           ctrlKey: descriptor.ctrl,

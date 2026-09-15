@@ -1193,8 +1193,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
     await this._runBulkOp(
       scalable,
-      (row) =>
-        this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
+      (row) => this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
       "Rotated",
       { refreshMedia: true },
     );
@@ -1218,8 +1217,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     }
     await this._runBulkOp(
       rows,
-      (row) =>
-        this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
+      (row) => this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
       "Transformed",
       { refreshMedia: true },
     );
@@ -1284,9 +1282,7 @@ class HAXCMSFilesAdminDialog extends DDD {
   }
   async _onBulkDelete(rows) {
     const label =
-      rows.length === 1
-        ? rows[0].path
-        : `${rows.length} selected files`;
+      rows.length === 1 ? rows[0].path : `${rows.length} selected files`;
     if (!globalThis.confirm(`Delete ${label}? This cannot be undone.`)) return;
     await this._runBulkOp(
       rows,
@@ -1420,17 +1416,19 @@ class HAXCMSFilesAdminDialog extends DDD {
                   .value="${this.filterExtension}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterExtensionChanged}"
-                  @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
+                  @keydown="${(e) =>
+                    this._onFilterKeydown(e, "filterExtension")}"
                 >
                 </simple-fields-field>
                 <simple-fields-field
                   label="Name contains"
                   type="text"
-                  placeholder="filename\u2026"
+                  placeholder="filename…"
                   .value="${this.filterNameContains}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterNameContainsChanged}"
-                  @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
+                  @keydown="${(e) =>
+                    this._onFilterKeydown(e, "filterNameContains")}"
                 >
                 </simple-fields-field>
                 <simple-fields-field
@@ -1472,7 +1470,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                 ? this.errorMessage
                 : ``}
           </div>
-          
+
           ${this.selectedRows.size > 0
             ? html`
                 <hax-file-actions
@@ -1488,15 +1486,15 @@ class HAXCMSFilesAdminDialog extends DDD {
                 </hax-file-actions>
               `
             : ""}
-                          <simple-pager
-          mode="full"
-          limit="${this.pageLimit}"
-          offset="${this.pageOffset}"
-          total="${this.pageTotal}"
-          count="${this.rows.length}"
-          label="Files pagination"
-          @page-changed="${this._onPageChanged}"
-        ></simple-pager>
+          <simple-pager
+            mode="full"
+            limit="${this.pageLimit}"
+            offset="${this.pageOffset}"
+            total="${this.pageTotal}"
+            count="${this.rows.length}"
+            label="Files pagination"
+            @page-changed="${this._onPageChanged}"
+          ></simple-pager>
         </div>
         <div class="tw">
           ${this.rows.length === 0 && !this.loading

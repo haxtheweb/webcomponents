@@ -180,6 +180,28 @@
             },
             {
               "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "value of the editor after the fact",
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "editorValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "contents of the editor",
+              "default": "\"\"",
+              "attribute": "editor-value"
+            },
+            {
+              "kind": "field",
               "name": "showCodePen",
               "privacy": "public",
               "type": {
@@ -314,26 +336,6 @@
             },
             {
               "kind": "field",
-              "name": "editorValue",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "contents of the editor",
-              "attribute": "editor-value"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "value of the editor after the fact",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
               "name": "mode",
               "privacy": "public",
               "type": {
@@ -422,6 +424,7 @@
                 "text": "string"
               },
               "description": "contents of the editor",
+              "default": "\"\"",
               "fieldName": "editorValue"
             },
             {
@@ -430,6 +433,7 @@
                 "text": "string"
               },
               "description": "value of the editor after the fact",
+              "default": "\"\"",
               "fieldName": "value"
             },
             {

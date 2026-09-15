@@ -16,7 +16,9 @@ class CourseIntroLessonPlans extends DDD {
     this.items = [];
     autorun(() => {
       const routerManifest = store.routerManifest;
-      const _mobx_val_0 = routerManifest ? toJS(routerManifest.items) : undefined;
+      const _mobx_val_0 = routerManifest
+        ? toJS(routerManifest.items)
+        : undefined;
       Promise.resolve().then(() => {
         if (routerManifest && routerManifest.items) {
           this._itemsChanged(_mobx_val_0);

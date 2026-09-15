@@ -99,7 +99,9 @@ export class TrainingTop extends LitElement {
             class="time-remaining"
             tabindex="0"
             role="timer"
-            aria-label="${this.time === "" ? "Estimated time remaining: 40 minutes" : ""}"
+            aria-label="${this.time === ""
+              ? "Estimated time remaining: 40 minutes"
+              : ""}"
             data-title="Estimated time remaining: 40 minutes"
           >
             ${this.time}

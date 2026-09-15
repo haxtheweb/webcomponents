@@ -603,8 +603,10 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);
-          transition: background-color 0.3s ease-in-out,
-            border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+          transition:
+            background-color 0.3s ease-in-out,
+            border-color 0.3s ease-in-out,
+            color 0.3s ease-in-out;
         }
 
         #copybtn:hover,

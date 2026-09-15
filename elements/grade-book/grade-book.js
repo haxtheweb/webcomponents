@@ -24,7 +24,7 @@ import "@haxtheweb/grid-plate/grid-plate.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import "./lib/letter-grade.js";
 import "./lib/letter-grade-picker.js";
-import "@github/time-elements";
+import "@github/relative-time-element";
 import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
 import { GradeBookStore } from "./lib/grade-book-store.js";
 import "./lib/grade-book-pop-up.js";
@@ -38,7 +38,9 @@ import { XLSXFileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/lib
  * @demo demo/index.html Grade book
  * @element grade-book
  */
-class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors))) {
+class GradeBook extends UIRenderPieces(
+  I18NMixin(SchemaBehaviors(SimpleColors)),
+) {
   constructor() {
     super();
     this.__disposer = [];
@@ -189,7 +191,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors)))
           pixels + "px";
       }, 50);
     });
-    this.__resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
+    this.__resizeObserver.observe(
+      this.shadowRoot.querySelector("#studentgrid"),
+    );
     // see if we have a previous file reference
     setTimeout(async () => {
       this.prevLocalFileReference = await get("grade-book-prev-file");
@@ -2166,7 +2170,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors)))
       canScale: false,
       gizmo: {
         title: "Grade Book",
-        description: "A headless gradebook that supports multiple backends with rubrics.",
+        description:
+          "A headless gradebook that supports multiple backends with rubrics.",
         icon: "icons:assignment",
         color: "green",
         tags: ["Instructional", "gradebook", "grading", "assessment", "rubric"],
@@ -2180,7 +2185,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SchemaBehaviors(SimpleColors)))
           {
             property: "source",
             title: "Source",
-            description: "Data source type (googledocs, url, json, filesystem).",
+            description:
+              "Data source type (googledocs, url, json, filesystem).",
             inputMethod: "select",
             options: {
               googledocs: "Google Docs",

@@ -118,6 +118,16 @@
             },
             {
               "kind": "method",
+              "name": "_resolveShortcutLabel",
+              "parameters": [
+                {
+                  "name": "shortcut"
+                }
+              ],
+              "description": "Resolve a `shortcut` value on a defineOption into a display label via\nthe shared KeyboardShortcutManager registry. Accepts a registry id\nstring or an inline descriptor object. Returns \"\" when no label resolves\nso the UI can treat absent/empty labels uniformly."
+            },
+            {
+              "kind": "method",
               "name": "updateSearchInputViaVoice",
               "parameters": [
                 {
@@ -1180,6 +1190,26 @@
             },
             {
               "kind": "field",
+              "name": "shortcut",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "shortcut"
+            },
+            {
+              "kind": "field",
+              "name": "externalLink",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "external-link"
+            },
+            {
+              "kind": "field",
               "name": "more",
               "privacy": "public",
               "type": {
@@ -1348,6 +1378,22 @@
               },
               "default": "null",
               "fieldName": "eventName"
+            },
+            {
+              "name": "shortcut",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "shortcut"
+            },
+            {
+              "name": "external-link",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "externalLink"
             },
             {
               "name": "value",
@@ -2278,6 +2324,19 @@
             },
             {
               "kind": "method",
+              "name": "_renderResultRow",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "i"
+                }
+              ],
+              "description": "Shared row template for mini (plain list) and full (lit-virtualizer)."
+            },
+            {
+              "kind": "method",
               "name": "setupProgram",
               "parameters": [
                 {
@@ -2472,7 +2531,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, voiceSearch: \"Voice search\", results: \"Results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", }"
+              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", }"
             },
             {
               "kind": "field",

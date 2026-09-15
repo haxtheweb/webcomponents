@@ -46,7 +46,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+              "description": "Schema Map for the element, used to generate a valid prefix on the fly",
               "default": "{ prefix: { oer: \"http://oerschema.org/\", schema: \"http://schema.org/\", dc: \"http://purl.org/dc/terms/\", foaf: \"http://xmlns.com/foaf/0.1/\", cc: \"http://creativecommons.org/ns#\", bib: \"http://bib.schema.org\", }, }",
               "attribute": "schemaMap"
             }
@@ -57,7 +57,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+              "description": "Schema Map for the element, used to generate a valid prefix on the fly",
               "default": "{ prefix: { oer: \"http://oerschema.org/\", schema: \"http://schema.org/\", dc: \"http://purl.org/dc/terms/\", foaf: \"http://xmlns.com/foaf/0.1/\", cc: \"http://creativecommons.org/ns#\", bib: \"http://bib.schema.org\", }, }",
               "fieldName": "schemaMap"
             }

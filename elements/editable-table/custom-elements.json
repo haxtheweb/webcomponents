@@ -12,6 +12,11 @@
           "name": "EditableTable",
           "members": [
             {
+              "kind": "method",
+              "name": "renderRubricSchema",
+              "description": "Emit OER Schema Rubric metadata when rubricMode is enabled.\nThe host <editable-table> element receives typeof=\"oer:Rubric\" via\nsetAttribute in firstUpdated/updated. This hidden block emits the\nrubricType property, a RubricScale with hasLevel children for each\nperformance-level column, a RubricCriterion for each body row, and a\nRubricLevel (levelOrdinal/levelPoints) for each criterion/level cell."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -123,6 +128,29 @@
             },
             {
               "kind": "field",
+              "name": "rubricMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opt-in: interpret this table as an OER Schema Rubric so that\nRubric/RubricScale/RubricCriterion/RubricLevel metadata is emitted.",
+              "default": "false",
+              "attribute": "rubric-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rubricType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Rubric style (analytic, holistic, single-point, checklist) emitted\nas oer:rubricType when rubricMode is true.",
+              "default": "\"\"",
+              "attribute": "rubric-type"
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true,
@@ -170,6 +198,18 @@
             {
               "kind": "field",
               "name": "hideCondensed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "editBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideCopyable",
               "type": {
                 "text": "boolean"
               },
@@ -341,6 +381,20 @@
                   }
                 }
               ],
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "copy",
+              "description": "copies table CSV data to clipboard",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -686,6 +740,18 @@
             },
             {
               "kind": "field",
+              "name": "copyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "downloadable",
               "type": {
                 "text": "boolean"
@@ -785,6 +851,16 @@
               }
             },
             {
+              "name": "csv-copied",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
               "name": "table-printed",
               "type": {
                 "text": "CustomEvent"
@@ -805,12 +881,34 @@
               "description": "Is table in edit-mode? Default is false (display mode).",
               "default": "false",
               "fieldName": "editMode"
+            },
+            {
+              "name": "rubric-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opt-in: interpret this table as an OER Schema Rubric so that\nRubric/RubricScale/RubricCriterion/RubricLevel metadata is emitted.",
+              "default": "false",
+              "fieldName": "rubricMode"
+            },
+            {
+              "name": "rubric-type",
+              "type": {
+                "text": "string"
+              },
+              "description": "Rubric style (analytic, holistic, single-point, checklist) emitted\nas oer:rubricType when rubricMode is true.",
+              "default": "\"\"",
+              "fieldName": "rubricType"
             }
           ],
           "mixins": [
             {
               "name": "editBehaviors",
               "module": "/lib/editable-table-behaviors.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             }
           ],
           "superclass": {
@@ -885,7 +983,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ /** * text editor config */ config: { type: Array, }, /** * Hide borders table styles menu option */ hideBordered: { type: Boolean, attribute: \"hide-bordered\", }, /** * Hide condensed table styles menu option */ hideCondensed: { type: Boolean, attribute: \"hide-condensed\", }, /** * Hide downloadable menu option */ hideDownloadable: { type: Boolean, attribute: \"hide-downloadable\", }, /** * Hide filtering option. */ hideFilter: { type: Boolean, attribute: \"hide-filter\", }, /** * Hide numeric styling option. */ hideNumericStyles: { type: Boolean, attribute: \"hide-numeric-styles\", }, /** * Hide printable menu option */ hidePrintable: { type: Boolean, attribute: \"hide-printable\", }, /** * Hide responsive table styles menu option */ hideResponsive: { type: Boolean, attribute: \"hide-responsive\", }, /** * Hide sorting option. */ hideSort: { type: Boolean, attribute: \"hide-sort\", }, /** * Hide striped table styles menu option */ hideStriped: { type: Boolean, attribute: \"hide-striped\", }, }",
+          "default": "{ /** * text editor config */ config: { type: Array, }, /** * Hide borders table styles menu option */ hideBordered: { type: Boolean, attribute: \"hide-bordered\", }, /** * Hide condensed table styles menu option */ hideCondensed: { type: Boolean, attribute: \"hide-condensed\", }, /** * Hide downloadable menu option */ hideDownloadable: { type: Boolean, attribute: \"hide-downloadable\", }, /** * Hide copyable menu option */ hideCopyable: { type: Boolean, attribute: \"hide-copyable\", }, /** * Hide filtering option. */ hideFilter: { type: Boolean, attribute: \"hide-filter\", }, /** * Hide numeric styling option. */ hideNumericStyles: { type: Boolean, attribute: \"hide-numeric-styles\", }, /** * Hide printable menu option */ hidePrintable: { type: Boolean, attribute: \"hide-printable\", }, /** * Hide responsive table styles menu option */ hideResponsive: { type: Boolean, attribute: \"hide-responsive\", }, /** * Hide sorting option. */ hideSort: { type: Boolean, attribute: \"hide-sort\", }, /** * Hide striped table styles menu option */ hideStriped: { type: Boolean, attribute: \"hide-striped\", }, }",
           "description": "List of display-only properties"
         },
         {
@@ -894,7 +992,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ /** * Allow table to be downloaded as CSV */ downloadable: { attribute: \"downloadable\", type: Boolean, reflect: true, }, /** * Enable filtering by cell value. */ filter: { attribute: \"filter\", type: Boolean, reflect: true, }, /** * Allow table to be printed */ printable: { attribute: \"printable\", type: Boolean, reflect: true, }, /** * Enable sorting by column header. */ sort: { attribute: \"sort\", type: Boolean, reflect: true, }, }",
+          "default": "{ /** * Allow table to be downloaded as CSV */ downloadable: { attribute: \"downloadable\", type: Boolean, reflect: true, }, /** * Allow table to be copied as CSV. */ copyable: { attribute: \"copyable\", type: Boolean, reflect: true, }, /** * Enable filtering by cell value. */ filter: { attribute: \"filter\", type: Boolean, reflect: true, }, /** * Allow table to be printed */ printable: { attribute: \"printable\", type: Boolean, reflect: true, }, /** * Enable sorting by column header. */ sort: { attribute: \"sort\", type: Boolean, reflect: true, }, }",
           "description": "List of data manipulation properties"
         },
         {
@@ -972,6 +1070,16 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "copy",
+              "description": "copies table CSV data to clipboard",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
             },
             {
               "kind": "method",
@@ -1257,6 +1365,14 @@
             },
             {
               "kind": "field",
+              "name": "copyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "downloadable",
               "type": {
                 "text": "boolean"
@@ -1316,6 +1432,12 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when transcript is printed"
+            },
+            {
+              "name": "csv-copied",
+              "type": {
+                "text": "CustomEvent"
+              }
             },
             {
               "name": "table-printed",
@@ -1381,6 +1503,14 @@
             {
               "kind": "field",
               "name": "hideCondensed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "hideCopyable",
               "type": {
                 "text": "boolean"
               },
@@ -1525,6 +1655,20 @@
                   }
                 }
               ],
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "copy",
+              "description": "copies table CSV data to clipboard",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -1870,6 +2014,18 @@
             },
             {
               "kind": "field",
+              "name": "copyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "downloadable",
               "type": {
                 "text": "boolean"
@@ -1968,6 +2124,16 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when transcript is printed",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "name": "csv-copied",
+              "type": {
+                "text": "CustomEvent"
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -2587,6 +2753,20 @@
             },
             {
               "kind": "method",
+              "name": "copy",
+              "description": "copies table CSV data to clipboard",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "print",
               "description": "prints the active transcript",
               "parameters": [
@@ -2926,6 +3106,18 @@
             },
             {
               "kind": "field",
+              "name": "copyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "downloadable",
               "type": {
                 "text": "boolean"
@@ -3019,6 +3211,16 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when transcript is printed",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "name": "csv-copied",
+              "type": {
+                "text": "CustomEvent"
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -3224,6 +3426,11 @@
             {
               "kind": "field",
               "name": "downloadButton",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "copyButton",
               "readonly": true
             },
             {
@@ -3686,6 +3893,18 @@
             },
             {
               "kind": "field",
+              "name": "hideCopyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "editBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "hideDownloadable",
               "type": {
                 "text": "boolean"
@@ -3855,6 +4074,20 @@
                   }
                 }
               ],
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "copy",
+              "description": "copies table CSV data to clipboard",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -4177,6 +4410,18 @@
             },
             {
               "kind": "field",
+              "name": "copyable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "downloadable",
               "type": {
                 "text": "boolean"
@@ -4320,6 +4565,16 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when transcript is printed",
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "name": "csv-copied",
+              "type": {
+                "text": "CustomEvent"
+              },
               "inheritedFrom": {
                 "name": "displayBehaviors",
                 "module": "lib/editable-table-behaviors.js"

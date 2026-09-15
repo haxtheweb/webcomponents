@@ -1639,6 +1639,15 @@
               "description": "allows link or button to get focus"
             },
             {
+              "kind": "method",
+              "name": "_handleDisabledClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "slot",
               "privacy": "public",
@@ -1898,6 +1907,19 @@
               "kind": "method",
               "name": "focus",
               "description": "allows link or button to get focus",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleDisabledClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
               "inheritedFrom": {
                 "name": "A11yMenuButtonItemBehaviors",
                 "module": "lib/a11y-menu-button-item.js"

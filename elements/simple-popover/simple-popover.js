@@ -79,10 +79,17 @@ class SimplePopover extends AbsolutePositionBehavior {
           border-radius: var(--simple-popover-border-radius, 4px);
           border: var(
             --simple-popover-border,
-            1px solid var(--simple-popover-border-color, light-dark(black, white))
+            1px solid
+              var(--simple-popover-border-color, light-dark(black, white))
           );
-          color: var(--simple-popover-color, var(--simple-popover-border-color, light-dark(black, white)));
-          background-color: var(--simple-popover-background-color, light-dark(white, black));
+          color: var(
+            --simple-popover-color,
+            var(--simple-popover-border-color, light-dark(black, white))
+          );
+          background-color: var(
+            --simple-popover-background-color,
+            light-dark(white, black)
+          );
           padding: var(--simple-popover-padding, 10px);
           box-shadow: var(
             --simple-popover-box-shadow,
@@ -107,8 +114,12 @@ class SimplePopover extends AbsolutePositionBehavior {
           position: absolute;
           width: 10px;
           height: 10px;
-          background-color: var(--simple-popover-background-color, light-dark(white, black));
-          border: 1px solid var(--simple-popover-border-color, light-dark(black, white));
+          background-color: var(
+            --simple-popover-background-color,
+            light-dark(white, black)
+          );
+          border: 1px solid
+            var(--simple-popover-border-color, light-dark(black, white));
           transform: rotate(45deg);
           top: 15px;
           left: 5px;

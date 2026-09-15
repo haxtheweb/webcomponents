@@ -1,5 +1,21 @@
 {
   "name": "@haxtheweb/hax-iconset",
+  "wcfactory": {
+    "className": "HaxIconset",
+    "customElementClass": "HTMLElement",
+    "elementName": "hax-iconset",
+    "useHAX": false,
+    "useSass": false,
+    "iconset": {
+      "exportName": "HaxIconsetManifest",
+      "manifestFilename": "hax-iconset-manifest",
+      "manifestPath": "./lib",
+      "svgsPath": "./lib/svgs"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
   "version": "26.8.0",
   "description": "HAX-specific icons",
   "repository": {

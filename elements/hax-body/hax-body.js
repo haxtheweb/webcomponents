@@ -624,10 +624,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
            applies position:absolute drop-zone styling */
         :host([edit-mode][hax-mover])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before,
+          ::slotted(
+            [contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
         :host([edit-mode][hax-mover])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray][data-hax-empty]:not([data-instructional-action]))::before {
+          ::slotted(
+            [contenteditable][data-hax-ray][data-hax-empty]:not(
+                [data-instructional-action]
+              )
+          )::before {
           position: relative;
           top: 0;
           height: auto;
@@ -1507,7 +1515,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // Fallback: if commonAncestorContainer is the list itself, try startContainer
                 if (!currentLi && rangeEnter.startContainer) {
                   let startContainer = rangeEnter.startContainer;
-                  if (startContainer && startContainer.nodeType === Node.TEXT_NODE) {
+                  if (
+                    startContainer &&
+                    startContainer.nodeType === Node.TEXT_NODE
+                  ) {
                     startContainer = startContainer.parentElement;
                   }
                   if (startContainer && startContainer.closest) {
@@ -1517,7 +1528,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // Fallback: try endContainer
                 if (!currentLi && rangeEnter.endContainer) {
                   let endContainer = rangeEnter.endContainer;
-                  if (endContainer && endContainer.nodeType === Node.TEXT_NODE) {
+                  if (
+                    endContainer &&
+                    endContainer.nodeType === Node.TEXT_NODE
+                  ) {
                     endContainer = endContainer.parentElement;
                   }
                   if (endContainer && endContainer.closest) {
@@ -1552,8 +1566,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   }
                   if (
                     targetList &&
-                    (targetList.tagName === "UL" ||
-                      targetList.tagName === "OL")
+                    (targetList.tagName === "UL" || targetList.tagName === "OL")
                   ) {
                     // Remove the empty <li> from the nested list
                     currentLi.remove();
@@ -1625,7 +1638,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
 
               // Handle definition list (DL/DT/DD) keyboard behavior
-              if (!handledEnter && this.activeNode && this.activeNode.tagName === "DT") {
+              if (
+                !handledEnter &&
+                this.activeNode &&
+                this.activeNode.tagName === "DT"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
@@ -1653,7 +1670,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   HAXStore._positionCursorInNode(dd, 0);
                   this.scrollHere(dd, keyboardInsertScroll);
                 }
-              } else if (!handledEnter && this.activeNode && this.activeNode.tagName === "DD") {
+              } else if (
+                !handledEnter &&
+                this.activeNode &&
+                this.activeNode.tagName === "DD"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
@@ -1678,7 +1699,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 dt.focus();
                 // Position cursor at start of DT
                 HAXStore._positionCursorInNode(dt, 0);
-              this.scrollHere(dt, keyboardInsertScroll);
+                this.scrollHere(dt, keyboardInsertScroll);
               }
               setTimeout(() => {
                 this.__syncDataHaxEmpty(this.activeNode);
@@ -1831,9 +1852,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   }
                 }
                 // Fallback: if commonAncestorContainer is the list itself, try startContainer
-                if (slashTarget && (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")) {
+                if (
+                  slashTarget &&
+                  (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
+                ) {
                   let startContainer = rng ? rng.startContainer : null;
-                  if (startContainer && startContainer.nodeType === Node.TEXT_NODE) {
+                  if (
+                    startContainer &&
+                    startContainer.nodeType === Node.TEXT_NODE
+                  ) {
                     startContainer = startContainer.parentElement;
                   }
                   if (startContainer && startContainer.closest) {
@@ -1844,9 +1871,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   }
                 }
                 // Fallback: try endContainer
-                if (slashTarget && (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")) {
+                if (
+                  slashTarget &&
+                  (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
+                ) {
                   let endContainer = rng ? rng.endContainer : null;
-                  if (endContainer && endContainer.nodeType === Node.TEXT_NODE) {
+                  if (
+                    endContainer &&
+                    endContainer.nodeType === Node.TEXT_NODE
+                  ) {
                     endContainer = endContainer.parentElement;
                   }
                   if (endContainer && endContainer.closest) {
@@ -1971,11 +2004,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       SuperDaemonInstance.__inlineShortcutSuppressNext = false;
       return;
     }
-    if (
-      !this.editMode ||
-      !this.activeNode ||
-      SuperDaemonInstance.opened
-    ) {
+    if (!this.editMode || !this.activeNode || SuperDaemonInstance.opened) {
       return;
     }
     // operate in any text element (p, h1-h6, li, blockquote, pre, etc.)
@@ -2057,11 +2086,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * so it works whether called directly or from a debounced timer.
    */
   __fireInlineShortcut(spec) {
-    if (
-      !this.editMode ||
-      !this.activeNode ||
-      SuperDaemonInstance.opened
-    ) {
+    if (!this.editMode || !this.activeNode || SuperDaemonInstance.opened) {
       return;
     }
     if (
@@ -2930,7 +2955,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           active.parentNode.insertBefore(newNode, active.nextElementSibling);
         }
       } else {
-        if (active.parentNode && active.parentNode !== this && active.parentNode.nextElementSibling) {
+        if (
+          active.parentNode &&
+          active.parentNode !== this &&
+          active.parentNode.nextElementSibling
+        ) {
           active.parentNode.nextElementSibling.parentNode.insertBefore(
             newNode,
             active.parentNode.nextElementSibling,
@@ -5240,7 +5269,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // placeholders for BR-only blocks continue to render correctly
       const targets = new Set();
       mutations.forEach((mutation) => {
-        if (mutation.type === "childList" && mutation.target && mutation.target.tagName) {
+        if (
+          mutation.type === "childList" &&
+          mutation.target &&
+          mutation.target.tagName
+        ) {
           targets.add(mutation.target);
         }
         for (const node of [...mutation.addedNodes, ...mutation.removedNodes]) {
@@ -5864,7 +5897,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // skeleton placeholder directly into the gallery rather than a generic P
           let galleryParent = null;
           if (local) {
-            galleryParent = local.closest ? local.closest("image-gallery") : null;
+            galleryParent = local.closest
+              ? local.closest("image-gallery")
+              : null;
             if (!galleryParent) {
               let root = local.getRootNode();
               while (root && root.host) {
@@ -5877,7 +5912,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
           }
           if (!galleryParent) {
-            galleryParent = eventPath.find((el) => el.tagName === "IMAGE-GALLERY");
+            galleryParent = eventPath.find(
+              (el) => el.tagName === "IMAGE-GALLERY",
+            );
           }
           let tmp;
           if (galleryParent) {
@@ -5890,7 +5927,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // can inject a skeleton placeholder directly into the playlist
             let playlistParent = null;
             if (local) {
-              playlistParent = local.closest ? local.closest("media-playlist") : null;
+              playlistParent = local.closest
+                ? local.closest("media-playlist")
+                : null;
               if (!playlistParent) {
                 let root = local.getRootNode();
                 while (root && root.host) {
@@ -5903,14 +5942,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
             }
             if (!playlistParent) {
-              playlistParent = eventPath.find((el) => el.tagName === "MEDIA-PLAYLIST");
+              playlistParent = eventPath.find(
+                (el) => el.tagName === "MEDIA-PLAYLIST",
+              );
             }
-            if (!playlistParent && local && (local.tagName === "VIDEO-PLAYER" || local.tagName === "AUDIO-PLAYER")) {
+            if (
+              !playlistParent &&
+              local &&
+              (local.tagName === "VIDEO-PLAYER" ||
+                local.tagName === "AUDIO-PLAYER")
+            ) {
               playlistParent = local;
             }
             if (!playlistParent) {
               const mediaPlayer = eventPath.find(
-                (el) => el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
+                (el) =>
+                  el.tagName === "VIDEO-PLAYER" ||
+                  el.tagName === "AUDIO-PLAYER",
               );
               if (mediaPlayer) {
                 playlistParent = mediaPlayer;
@@ -5934,66 +5982,76 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               tmp.setAttribute("media-title", firstFile ? firstFile.name : "");
               if (playlistParent.tagName === "MEDIA-PLAYLIST") {
                 playlistParent.appendChild(tmp);
-              } else if (playlistParent.tagName === "VIDEO-PLAYER" || playlistParent.tagName === "AUDIO-PLAYER") {
+              } else if (
+                playlistParent.tagName === "VIDEO-PLAYER" ||
+                playlistParent.tagName === "AUDIO-PLAYER"
+              ) {
                 // Wrap the existing player and the new placeholder in a media-playlist
-                const playlist = globalThis.document.createElement("media-playlist");
+                const playlist =
+                  globalThis.document.createElement("media-playlist");
                 const existingClone = playlistParent.cloneNode(true);
                 playlist.appendChild(existingClone);
                 playlist.appendChild(tmp);
-                playlistParent.parentNode.insertBefore(playlist, playlistParent);
+                playlistParent.parentNode.insertBefore(
+                  playlist,
+                  playlistParent,
+                );
                 playlistParent.remove();
               }
             } else {
               // inject a placeholder P tag which we will then immediately replace
               tmp = globalThis.document.createElement("p");
-            // Always do placement logic to insert the placeholder next to the target
-            if (
-              (local &&
-                ((local.tagName && local.tagName !== "HAX-BODY") ||
-                  !local.getAttribute("data-hax-layout"))) ||
-              this.__isLayout(eventPath[0])
-            ) {
-              if (local.getAttribute("slot")) {
-                tmp.setAttribute("slot", local.getAttribute("slot"));
-              } else if (eventPath[0].classList.contains("column")) {
-                tmp.setAttribute(
-                  "slot",
-                  eventPath[0].getAttribute("id").replace("col", "col-"),
-                );
-              } else {
-                tmp.removeAttribute("slot");
-              }
-              if (this.__addAbove !== false) {
-                local.parentNode.insertBefore(tmp, local);
-              } else {
-                if (local.nextElementSibling) {
-                  local.parentNode.insertBefore(tmp, local.nextElementSibling);
+              // Always do placement logic to insert the placeholder next to the target
+              if (
+                (local &&
+                  ((local.tagName && local.tagName !== "HAX-BODY") ||
+                    !local.getAttribute("data-hax-layout"))) ||
+                this.__isLayout(eventPath[0])
+              ) {
+                if (local.getAttribute("slot")) {
+                  tmp.setAttribute("slot", local.getAttribute("slot"));
+                } else if (eventPath[0].classList.contains("column")) {
+                  tmp.setAttribute(
+                    "slot",
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
+                  );
                 } else {
-                  local.parentNode.appendChild(tmp);
+                  tmp.removeAttribute("slot");
+                }
+                if (this.__addAbove !== false) {
+                  local.parentNode.insertBefore(tmp, local);
+                } else {
+                  if (local.nextElementSibling) {
+                    local.parentNode.insertBefore(
+                      tmp,
+                      local.nextElementSibling,
+                    );
+                  } else {
+                    local.parentNode.appendChild(tmp);
+                  }
+                }
+              } else {
+                if (eventPath[0].classList.contains("column")) {
+                  tmp.setAttribute(
+                    "slot",
+                    eventPath[0].getAttribute("id").replace("col", "col-"),
+                  );
+                }
+                // account for drop target of main body yet still having a slot attr
+                else if (
+                  local &&
+                  local.tagName === "HAX-BODY" &&
+                  tmp.getAttribute("slot")
+                ) {
+                  tmp.removeAttribute("slot");
+                }
+                if (local) {
+                  local.appendChild(tmp);
+                } else {
+                  this.appendChild(tmp);
                 }
               }
-            } else {
-              if (eventPath[0].classList.contains("column")) {
-                tmp.setAttribute(
-                  "slot",
-                  eventPath[0].getAttribute("id").replace("col", "col-"),
-                );
-              }
-              // account for drop target of main body yet still having a slot attr
-              else if (
-                local &&
-                local.tagName === "HAX-BODY" &&
-                tmp.getAttribute("slot")
-              ) {
-                tmp.removeAttribute("slot");
-              }
-              if (local) {
-                local.appendChild(tmp);
-              } else {
-                this.appendChild(tmp);
-              }
             }
-          }
           }
           // Check if an image is being dropped on a media player for thumbnail assignment
           if (

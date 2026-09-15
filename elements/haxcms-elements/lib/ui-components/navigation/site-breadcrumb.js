@@ -164,7 +164,9 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
       ? html`
           <ol
             class="breadcrumb"
-            part="${this.editMode ? `breadcrumb edit-mode-active` : `breadcrumb`}"
+            part="${this.editMode
+              ? `breadcrumb edit-mode-active`
+              : `breadcrumb`}"
             aria-disabled="${this.editMode ? `true` : `false`}"
             itemscope
             itemtype="https://schema.org/BreadcrumbList"

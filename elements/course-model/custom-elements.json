@@ -107,6 +107,16 @@
             },
             {
               "kind": "field",
+              "name": "poster",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "poster"
+            },
+            {
+              "kind": "field",
               "name": "alt",
               "privacy": "public",
               "type": {
@@ -146,6 +156,20 @@
                 "text": "string"
               },
               "fieldName": "alt"
+            },
+            {
+              "name": "poster",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "poster"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             }
           ],
           "superclass": {

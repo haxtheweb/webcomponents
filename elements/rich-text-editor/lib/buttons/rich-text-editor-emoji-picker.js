@@ -76,8 +76,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorButtonBehaviors(
   _openInlineProgram(machineName, name, placeholder) {
     const range = this.range;
     const target =
-      this.target ||
-      (this.__highlight && this.__highlight.parentNode);
+      this.target || (this.__highlight && this.__highlight.parentNode);
     if (!range || !target) {
       return;
     }

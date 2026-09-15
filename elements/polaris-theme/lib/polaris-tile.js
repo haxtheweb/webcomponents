@@ -128,10 +128,7 @@ export class PolarisTile extends LitElement {
           #ffffff,
           var(--ddd-theme-default-coalyGray, #262626)
         );
-        color: light-dark(
-          rgb(0, 30, 68),
-          var(--ddd-theme-default-white, #fff)
-        );
+        color: light-dark(rgb(0, 30, 68), var(--ddd-theme-default-white, #fff));
       }
 
       :host([type="3"]) .tile {
@@ -185,16 +182,18 @@ export class PolarisTile extends LitElement {
                 title="${this.line1
                   ? this.line1
                   : "Additional details about this fact"}"
-              ><svg
+                ><svg
                   viewBox="0 0 24 24"
                   width="24"
                   height="24"
                   aria-hidden="true"
                   focusable="false"
-                ><path
+                >
+                  <path
                     fill="currentColor"
                     d="M14 3v2h3.59l-9.3 9.3 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"
-                  ></path></svg></a>`
+                  ></path></svg
+              ></a>`
             : ``}
         </div>
       </div>

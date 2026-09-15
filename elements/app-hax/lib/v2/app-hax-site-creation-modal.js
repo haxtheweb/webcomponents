@@ -1073,7 +1073,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       if (!matchedSite && createResponse && createResponse.slug) {
         const createSlug = createResponse.slug.replace("index.html", "");
         matchedSite = results.data.items.find(
-          (item) => item && item.slug && (item.slug === createSlug || item.slug === createResponse.slug),
+          (item) =>
+            item &&
+            item.slug &&
+            (item.slug === createSlug || item.slug === createResponse.slug),
         );
       }
 

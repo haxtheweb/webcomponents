@@ -437,7 +437,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-          --simple-fields-input-background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
+          --simple-fields-input-background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           --simple-fields-input-border: 1px solid black;
           --simple-fields-background-color: transparent;
           --simple-fields-fieldset-background-color: transparent;
@@ -1484,11 +1487,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
       }
       const usedOn = usages.map((usage) => {
-        const pageTitle = usage && usage.pageTitle
-          ? usage.pageTitle
-          : (usage && usage.itemId
-            ? this._itemTitleById(usage.itemId)
-            : "");
+        const pageTitle =
+          usage && usage.pageTitle
+            ? usage.pageTitle
+            : usage && usage.itemId
+              ? this._itemTitleById(usage.itemId)
+              : "";
         const link = usage && usage.link ? usage.link : "";
         const text = pageTitle || (usage && usage.linkTitle) || this.t.onPage;
         return { text: text, link: link };
@@ -1561,9 +1565,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     const mediaData =
       data && Array.isArray(data.mediaData) ? data.mediaData : [];
     mediaData.forEach((item) => {
-      const pageTitle = item && item.pageTitle
-        ? item.pageTitle
-        : (item && item.itemId ? this._itemTitleById(item.itemId) : "");
+      const pageTitle =
+        item && item.pageTitle
+          ? item.pageTitle
+          : item && item.itemId
+            ? this._itemTitleById(item.itemId)
+            : "";
       rows.push([
         this._toCellValue(item.name),
         this._toCellValue(item.title),
@@ -1680,7 +1687,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       const text = this._toCellValue(cell.text);
       const link = cell.link ? cell.link : "";
       if (link) {
-        return html`<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+        return html`<a href="${link}" target="_blank" rel="noopener noreferrer"
+          >${text}</a
+        >`;
       }
       return html`${text}`;
     }

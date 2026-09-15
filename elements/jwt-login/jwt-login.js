@@ -87,7 +87,12 @@ class JwtLogin extends LitElement {
   // is preserved as a non-persistent bootstrap input (see firstUpdated).
   _jwtChanged(newValue, oldValue) {
     let actualValue = newValue;
-    if (newValue && typeof newValue === 'object' && newValue.jwt && typeof newValue.jwt === 'string') {
+    if (
+      newValue &&
+      typeof newValue === "object" &&
+      newValue.jwt &&
+      typeof newValue.jwt === "string"
+    ) {
       actualValue = newValue.jwt;
     }
     if (
@@ -96,7 +101,9 @@ class JwtLogin extends LitElement {
     ) {
       // Phase 3: clear any stale localStorage key from a previous version so
       // users are migrated away from persisted access tokens.
-      try { localStorage.removeItem(this.key); } catch (e) {}
+      try {
+        localStorage.removeItem(this.key);
+      } catch (e) {}
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,
@@ -154,11 +161,9 @@ class JwtLogin extends LitElement {
       this._onVisibilityChange.bind(this),
       { signal: this.windowControllers.signal },
     );
-    globalThis.addEventListener(
-      "focus",
-      this._onVisibilityChange.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    globalThis.addEventListener("focus", this._onVisibilityChange.bind(this), {
+      signal: this.windowControllers.signal,
+    });
   }
 
   disconnectedCallback() {
@@ -178,7 +183,9 @@ class JwtLogin extends LitElement {
     // bootstrap) or from connectionTest + the HttpOnly refresh cookie. Clear
     // any stale localStorage key from a previous version.
     Promise.resolve().then(() => {
-      try { localStorage.removeItem(this.key); } catch (e) {}
+      try {
+        localStorage.removeItem(this.key);
+      } catch (e) {}
     });
   }
 
@@ -240,7 +247,12 @@ class JwtLogin extends LitElement {
         if (response.ok) {
           return response.json();
         } else {
-          this._handleResponseError(response, { ctx, element, proactive, redirect });
+          this._handleResponseError(response, {
+            ctx,
+            element,
+            proactive,
+            redirect,
+          });
           return null;
         }
       })
@@ -251,14 +263,23 @@ class JwtLogin extends LitElement {
         try {
           const token = jwtData;
           let actualJwt = token;
-          if (token.jwt && typeof token.jwt === 'string') {
+          if (token.jwt && typeof token.jwt === "string") {
             actualJwt = token.jwt;
-          } else if (token.data && token.data.jwt && typeof token.data.jwt === 'string') {
+          } else if (
+            token.data &&
+            token.data.jwt &&
+            typeof token.data.jwt === "string"
+          ) {
             actualJwt = token.data.jwt;
-          } else if (typeof token === 'string') {
+          } else if (typeof token === "string") {
             actualJwt = token;
           }
-          this._handleResponseSuccess(actualJwt, { ctx, element, proactive, redirect });
+          this._handleResponseSuccess(actualJwt, {
+            ctx,
+            element,
+            proactive,
+            redirect,
+          });
         } catch (e) {
           console.warn(e);
         }
@@ -303,7 +324,11 @@ class JwtLogin extends LitElement {
   }
 
   _invokeRefreshCallback(element, jwt) {
-    if (!element || !element.obj || typeof element.obj[element.callback] !== 'function') {
+    if (
+      !element ||
+      !element.obj ||
+      typeof element.obj[element.callback] !== "function"
+    ) {
       return;
     }
     try {
@@ -435,10 +460,14 @@ class JwtLogin extends LitElement {
         // security: validate scheme before navigation (JS-URL-001)
         globalThis.location.href = this.safeRedirect(this.logoutUrl);
       } else {
-        this.generateRequest(this.logoutUrl, {}, {
-          context: "logout",
-          redirect: redirect,
-        });
+        this.generateRequest(
+          this.logoutUrl,
+          {},
+          {
+            context: "logout",
+            redirect: redirect,
+          },
+        );
       }
     } else if (redirect && this.redirectUrl) {
       setTimeout(() => {

@@ -193,7 +193,10 @@ class Store {
     this.connectionValidated = false;
     this.soundStatus = getDefaultSoundStatus();
     this.darkMode = !localStorageGet("app-hax-darkMode")
-      ? !!(globalThis.matchMedia && globalThis.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? !!(
+          globalThis.matchMedia &&
+          globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+        )
       : localStorageGet("app-hax-darkMode");
     this.responsiveSize = "";
     this.showAllThemes = false;
