@@ -1,0 +1,63 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Slide deck",
+    "description": "Present an imported PowerPoint deck slide by slide, with speaker notes.",
+    "icon": "icons:slideshow",
+    "color": "purple",
+    "tags": ["Media", "presentation", "slides", "powerpoint", "pptx"],
+    "handles": [
+      {
+        "type": "presentation",
+        "source": "source"
+      }
+    ],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Deck manifest",
+        "description": "deck.json written by the PPTX import, for example files/decks/my-talk/deck.json",
+        "inputMethod": "haxupload",
+        "icon": "icons:slideshow",
+        "required": true
+      },
+      {
+        "property": "deckId",
+        "title": "Deck id",
+        "description": "Only needed when a page holds more than one deck, so slide links stay distinct",
+        "inputMethod": "textfield",
+        "icon": "icons:link"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["deck", "status", "rendered"]
+  },
+  "demoSchema": [
+    {
+      "tag": "slide-deck",
+      "properties": {
+        "source": "files/decks/my-talk/deck.json"
+      },
+      "content": ""
+    }
+  ]
+}

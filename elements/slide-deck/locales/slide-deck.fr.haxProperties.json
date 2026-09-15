@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Manifeste du diaporama"
+      },
+      {
+        "title": "Identifiant du diaporama"
+      }
+    ]
+  }
+}

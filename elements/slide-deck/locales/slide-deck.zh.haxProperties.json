@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "演示文稿清单"
+      },
+      {
+        "title": "演示文稿 ID"
+      }
+    ]
+  }
+}

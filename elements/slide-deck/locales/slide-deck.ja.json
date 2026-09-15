@@ -1,0 +1,14 @@
+{
+  "previousSlide": "前のスライド",
+  "nextSlide": "次のスライド",
+  "viewAllSlides": "すべてのスライドを表示",
+  "viewOneSlide": "1 枚ずつ表示",
+  "presentFullScreen": "全画面で発表",
+  "exitFullScreen": "全画面を終了",
+  "copyLinkToSlide": "このスライドのリンクをコピー",
+  "linkCopied": "リンクをコピーしました",
+  "speakerNotes": "発表者ノート",
+  "loadingPresentation": "プレゼンテーションを読み込み中",
+  "presentationUnavailable": "プレゼンテーションを利用できません",
+  "slide": "スライド"
+}

@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "デッキマニフェスト"
+      },
+      {
+        "title": "デッキ ID"
+      }
+    ]
+  }
+}

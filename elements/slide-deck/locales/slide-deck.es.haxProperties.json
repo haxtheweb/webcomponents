@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Manifiesto de la presentación"
+      },
+      {
+        "title": "Id de la presentación"
+      }
+    ]
+  }
+}

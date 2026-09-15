@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SlideDeck: slide-deck Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../slide-deck.js';
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic slide-deck demo</h3>
+      <p>
+        This manifest carries no <code>pptx</code>, so the text layer stays on
+        screen. Point <code>source</code> at a deck.json written by the PPTX
+        import to see the real slides painted over it.
+      </p>
+      <slide-deck source="./deck.json" deck-id="demo"></slide-deck>
+    </div>
+  </body>
+</html>
