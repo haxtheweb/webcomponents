@@ -4,8 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
   <title>replace-tag documentation</title>
+  <script type="module" src="../../d-d-d/d-d-d.js"></script>
+  <style>
+    body {
+      color: light-dark(
+        var(--ddd-theme-default-coalyGray, #1a1a1a),
+        var(--ddd-theme-default-white, #fff)
+      );
+      background: light-dark(
+        var(--ddd-theme-default-white, #fff),
+        var(--ddd-theme-default-coalyGray, #111)
+      );
+    }
+  </style>
 </head>
 <body>
+  <d-d-d></d-d-d>
   <ul>
     <li><a href="./magicDeviceMethod.html">Traditional Magic Device method (Magic prototype 2.0, ultra fast, no polyfill, replace-tag drives whole thing once detected)</a></li>
     <li><a href="./magicDeviceMethod.html">Magic Device method (Magic script 2.0, build script, replace-tag does heavy lift)</a></li>

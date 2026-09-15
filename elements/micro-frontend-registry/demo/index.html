@@ -9,15 +9,17 @@
     <script type="module">
       import "./mf-htmlmd-example.js";
       import "./docx-example.js";
+      import "@haxtheweb/d-d-d/d-d-d.js";
     </script>
     <style>
       .wrap {
         display: flex;
-        border: 2px solid black;
+        border: 2px solid light-dark(black, white);
       }
     </style>
   </head>
   <body>
+    <d-d-d></d-d-d>
     <div class="vertical-section-container centered">
       <h3>Basic micro-frontend-registry demo</h3>
       <p>This is illustrating 2 services working together off of the vercel version of this monorepo.

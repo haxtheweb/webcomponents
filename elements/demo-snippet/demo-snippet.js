@@ -85,6 +85,10 @@ class DemoSnippet extends DDDSuper(LitElement) {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-potentialMidnight)
           );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
           margin: 0;
           padding: var(--ddd-spacing-5);
         }

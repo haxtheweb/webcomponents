@@ -69,8 +69,12 @@ class CodeSample extends I18NMixin(LitElement) {
         }
         td.hljs-ln-numbers {
           text-align: right;
-          color: #ccc;
-          border-right: 1px solid #999;
+          color: var(
+            --code-sample-line-number-color,
+            light-dark(#767676, #ccc)
+          );
+          border-right: 1px solid
+            var(--code-sample-line-number-border-color, light-dark(#999, #666));
           vertical-align: top;
           padding-left: 8px;
           padding-right: 4px;
@@ -86,7 +90,10 @@ class CodeSample extends I18NMixin(LitElement) {
           transition: background-color 0.3s ease-in-out;
         }
         tr:hover {
-          background-color: var(--code-sample-line-hover-color, #3297fd11);
+          background-color: var(
+            --code-sample-line-hover-color,
+            light-dark(#3297fd11, #3297fd33)
+          );
         }
         tr:hover .hljs-ln-n {
           font-weight: bold;
@@ -100,7 +107,7 @@ class CodeSample extends I18NMixin(LitElement) {
         .line-highlighted {
           background-color: var(
             --code-sample-line-highlighted-color,
-            #3297fd22
+            light-dark(#3297fd22, #3297fd55)
           );
         }
 
@@ -118,8 +125,14 @@ class CodeSample extends I18NMixin(LitElement) {
         }
 
         button {
-          background: var(--code-sample-copy-button-bg-color, white);
-          color: var(--code-sample-copy-button-color, black);
+          background: var(
+            --code-sample-copy-button-bg-color,
+            light-dark(white, #333)
+          );
+          color: var(
+            --code-sample-copy-button-color,
+            light-dark(black, white)
+          );
           border: none;
           cursor: pointer;
           display: block;

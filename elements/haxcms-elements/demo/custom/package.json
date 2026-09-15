@@ -19,5 +19,29 @@
     "@web/rollup-plugin-import-meta-assets": "2.3.0",
     "rollup-plugin-esbuild": "6.1.1",
     "@rollup/plugin-babel": "6.0.4"
+  },
+  "overrides": {
+    "@custom-elements-manifest/analyzer": {
+      "chokidar": {
+        "anymatch": {
+          "picomatch": "^2.3.2"
+        },
+        "readdirp": {
+          "picomatch": "^2.3.2"
+        }
+      },
+      "globby": {
+        "fast-glob": {
+          "micromatch": {
+            "picomatch": "^2.3.2"
+          }
+        }
+      }
+    },
+    "@rollup/pluginutils": {
+      "picomatch": "^4.0.4"
+    },
+    "browserslist": "^4.28.7",
+    "@babel/core": "^7.29.6"
   }
 }

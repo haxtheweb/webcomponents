@@ -8,18 +8,28 @@
   <title>stop-note demo</title>
   <style>
     tr th {
-          background-color: var(--ddd-theme-default-pughBlue);
+          background-color: light-dark(
+            var(--ddd-theme-default-pughBlue),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
           padding: 10px 50px;
           border-top: none;
         }
         tr td {
           padding: 10px 50px;
-          background-color: var(--ddd-theme-default-skyMaxlight);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           border-left: 1px solid var(--ddd-theme-default-limestoneLight);
           border-top: 1px solid var(--ddd-theme-default-limestoneLight);
         }
         tr:nth-child(odd) {
-          background-color: var(--ddd-theme-default-skyMaxLight);
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-slateMaxLight)
+          );
         }
         table {
           border-collapse: collapse;

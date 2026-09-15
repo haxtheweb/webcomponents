@@ -14,6 +14,7 @@
     </script>
     <script type="module">
       import "@haxtheweb/wc-autoload/wc-autoload.js";
+      import "@haxtheweb/d-d-d/d-d-d.js";
       globalThis.addEventListener('haxcms-ready', function(e) {
         // give the web components a second to build
         setTimeout(async () => {
@@ -44,6 +45,7 @@
     </style>
   </head>
   <body>
+    <d-d-d></d-d-d>
     <outline-designer></outline-designer>
     <haxcms-site-builder file="https://haxtheweb.org/site.json"></haxcms-site-builder>
     <!-- Reverse engineer of build.js based on what's needed to test locally -->

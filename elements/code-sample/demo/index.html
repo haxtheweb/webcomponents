@@ -9,15 +9,17 @@
     <script type="module" src="../code-sample.js"></script>
     <script type="module" src="./demo.js"></script>
     <script type="module" src="code-sample-theme.js"></script>
+    <script type="module" src="../../d-d-d/d-d-d.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400">
     <link rel="stylesheet" href="css/demo.css">
     <style>
       code-sample + code-sample { margin-top: 20px; }
-      .navy-bg { --code-sample-background: #000D25; }
-      .white-bg { --code-sample-background: #eeeef1; }
+      .navy-bg { --code-sample-background: light-dark(#000D25, #000D25); }
+      .white-bg { --code-sample-background: light-dark(#eeeef1, #333); }
     </style>
   </head>
   <body>
+    <d-d-d></d-d-d>
     <code>
     <pre>
       <!DOCTYPE html> 

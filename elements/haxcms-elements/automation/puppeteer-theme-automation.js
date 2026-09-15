@@ -248,7 +248,7 @@ async function setupNonEditingView(page) {
   try {
     // Wait 3 seconds for the page to fully load
     console.log("    → Waiting 3 seconds for page to fully load...");
-    await page.waitForTimeout(3000);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     // Remove the haxcms-site-editor-ui element from the DOM
     const removed = await page.evaluate(() => {
@@ -274,7 +274,7 @@ async function setupNonEditingView(page) {
     }
 
     // Wait a moment for any visual changes to take effect
-    await page.waitForTimeout(1000);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("    ✓ Non-editing view configured");
     return true;
   } catch (error) {
@@ -315,7 +315,7 @@ async function captureThemeScreenshot(page, themeElement) {
     console.log(
       `    → Waiting ${CONFIG.themeLoadDelay}ms for theme rendering...`,
     );
-    await page.waitForTimeout(CONFIG.themeLoadDelay);
+    await new Promise((resolve) => setTimeout(resolve, CONFIG.themeLoadDelay));
 
     // Ensure we're using the desktop viewport for both screenshots
     await page.setViewport(CONFIG.viewport);
@@ -527,7 +527,7 @@ async function runThemeAutomation() {
 
       // Small delay between themes
       if (i < themes.length - 1) {
-        await page.waitForTimeout(1000);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
     }
 

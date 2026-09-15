@@ -32,6 +32,10 @@ class SimpleIconsetDemo extends LitElement {
             0 3px 1px -2px rgba(0, 0, 0, 0.2);
           margin-bottom: 40px;
           padding: 20px 40px;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
 
         ul {
@@ -53,42 +57,6 @@ class SimpleIconsetDemo extends LitElement {
 
         .iconset:not(:first-of-type) {
           border-top: 1px solid #ddd;
-        }
-
-        .iconset:nth-of-type(9n + 1) {
-          color: #444444;
-        }
-
-        .iconset:nth-of-type(9n + 2) {
-          color: #be3300;
-        }
-
-        .iconset:nth-of-type(9n + 3) {
-          color: #0000b5;
-        }
-
-        .iconset:nth-of-type(9n + 4) {
-          color: #750075;
-        }
-
-        .iconset:nth-of-type(9n + 5) {
-          color: #aa5d00;
-        }
-
-        .iconset:nth-of-type(9n + 6) {
-          color: #db0a5b;
-        }
-
-        .iconset:nth-of-type(9n + 7) {
-          color: #005500;
-        }
-
-        .iconset:nth-of-type(9n + 8) {
-          color: #cf000f;
-        }
-
-        .iconset:nth-of-type(9n) {
-          color: #005f8b;
         }
       `,
     ];
