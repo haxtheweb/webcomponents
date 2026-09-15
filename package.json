@@ -4,6 +4,9 @@
   "description": "HAXTheWeb web component library",
   "orgNpm": "@haxtheweb",
   "monorepo": "webcomponents",
+  "engines": {
+    "node": "24.x"
+  },
   "wcfactory": {
     "askSASS": false,
     "askProps": false,

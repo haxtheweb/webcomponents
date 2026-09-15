@@ -1,6 +1,9 @@
 {
   "type": "module",
   "name": "vercel-api-webcomponents",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "postinstall": "./node_modules/.bin/patch-package"
   },
