@@ -919,6 +919,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         source.indexOf(".htm") != -1
       ) {
         return "html";
+      } else if (source.indexOf(".pptx") != -1) {
+        // .pptx must be checked BEFORE the .ppt substring so it returns
+        // "pptx" instead of falling through to "document" via .ppt.
+        return "pptx";
       } else if (
         source.indexOf(".txt") != -1 ||
         source.indexOf(".doc") != -1 ||
@@ -2978,6 +2982,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "text",
       "gif",
       "inline",
+      "pptx",
       "*",
     ];
   }
@@ -3481,6 +3486,26 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
       context: "community",
+    });
+    // Embed slide deck: inserts a <slide-deck> and opens the upload flow
+    // pre-scoped to .pptx via the source field's uploadRequirements. The
+    // user drops a .pptx, the uploadTransform runs convert-pptx-deck, and
+    // the field value is set to the resulting deck.json path.
+    SuperDaemonInstance.defineOption({
+      title: "Embed slide deck",
+      description:
+        "Upload a PowerPoint and embed it as an interactive slide deck",
+      icon: "icons:slideshow",
+      tags: ["Media", "presentation", "slides", "powerpoint", "pptx"],
+      inline: true,
+      value: {
+        value: "slide-deck",
+        eventName: "insert-tag",
+        demoSchema: true,
+      },
+      context: "HAX",
+      eventName: "hax-super-daemon-insert-tag",
+      path: "HAX/insert/media/slide-deck",
     });
     // container for HTML primitives to have hooks declared on their behalf
     this.primativeHooks = {};

@@ -18,7 +18,7 @@
     "tags": ["Media", "presentation", "slides", "powerpoint", "pptx"],
     "handles": [
       {
-        "type": "presentation",
+        "type": "pptx",
         "source": "source"
       }
     ],
@@ -31,10 +31,17 @@
       {
         "property": "source",
         "title": "Deck manifest",
-        "description": "deck.json written by the PPTX import, for example files/decks/my-talk/deck.json",
+        "description": "Drop a .pptx file and it is converted to a slide deck automatically. The field is set to the resulting deck.json path.",
         "inputMethod": "haxupload",
         "icon": "icons:slideshow",
-        "required": true
+        "required": true,
+        "uploadRequirements": {
+          "extensions": [".pptx"]
+        },
+        "uploadTransform": {
+          "operation": "convert-pptx-deck",
+          "valueMapping": "data.deckPath"
+        }
       },
       {
         "property": "deckId",
@@ -44,7 +51,15 @@
         "icon": "icons:link"
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Allow download",
+        "description": "Show a download button for the original PowerPoint file in the player controls",
+        "inputMethod": "boolean",
+        "icon": "icons:file-download"
+      }
+    ],
     "developer": []
   },
   "saveOptions": {

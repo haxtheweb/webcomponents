@@ -66,6 +66,12 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       noFileUuid: "File reference unavailable; re-upload to enable actions.",
       fileOpsUnavailable: "File operations are not available for this site.",
       fileOpFailed: "File operation failed.",
+      fileExtensionNotAllowed:
+        "This field only accepts the following file types:",
+      fileTypeNotAllowed:
+        "This field only accepts the following media types:",
+      transformFailed:
+        "Post-upload transform failed; the original file was kept.",
     };
     this.registerLocalization({
       context: this,
@@ -110,10 +116,29 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         attribute: "file-actions",
         reflect: true,
       },
+      /**
+       * Optional schema field property. When declared on a haxupload /
+       * fileupload field, the selected file is validated BEFORE upload.
+       * `extensions` is an array like [".pptx"] matched against the file
+       * name; `types` is an array of gizmo-type vocabulary strings (e.g.
+       * ["image"], ["pptx"]) matched via HAXStore.guessGizmoType. A file
+       * that does not match is blocked with a toast.
+       */
+      uploadRequirements: { type: Object, attribute: false },
+      /**
+       * Optional schema field property. When declared, after the normal
+       * upload (POST /x/api/v1/files) returns {data:{file:{uuid,path}}},
+       * the field calls @site/updateFileByUuid with {fileUuid, operation}
+       * and maps the response via `valueMapping` (a dot-path like
+       * "data.deckPath") to set the field value. If the operation fails,
+       * an error toast is shown and the field keeps the uploaded file path.
+       */
+      uploadTransform: { type: Object, attribute: false },
       __fileRecs: { type: Array, attribute: false },
       __lastUploadedFile: { type: Object, attribute: false },
       __fileActionsBusy: { type: Boolean, attribute: false },
       __fileActionsError: { type: String, attribute: false },
+      __transformBusy: { type: Boolean, attribute: false },
     };
   }
   static get styles() {
@@ -311,6 +336,21 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       this.shadowRoot.querySelector("#fileupload").files = [];
       return;
     }
+    // uploadRequirements: validate the selected file BEFORE upload. When
+    // the schema field declares extensions and/or types, a file that does
+    // not match is blocked with a toast so the user re-selects.
+    if (this.uploadRequirements && !this._passesUploadRequirements(e)) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.__allowUpload = false;
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#fileupload")
+      ) {
+        this.shadowRoot.querySelector("#fileupload").files = [];
+      }
+      return;
+    }
     if (this._canUpload()) {
       // cancel the event so we can jump in
       e.preventDefault();
@@ -365,6 +405,58 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         e.detail.formData.append("nodeId", String(localNodeId));
       }
     }
+  }
+  /**
+   * Validate the selected file against uploadRequirements (extensions
+   * and/or types). Returns true when the file passes or no requirements
+   * are declared, false when it should be blocked. Toasts the reason.
+   */
+  _passesUploadRequirements(e) {
+    const req = this.uploadRequirements;
+    if (!req) return true;
+    const fileName =
+      e && e.detail && e.detail.file && e.detail.file.name
+        ? String(e.detail.file.name)
+        : "";
+    const fileType =
+      e && e.detail && e.detail.file && e.detail.file.type
+        ? String(e.detail.file.type)
+        : "";
+    // extensions: check file name suffix (case-insensitive)
+    if (
+      req.extensions &&
+      Array.isArray(req.extensions) &&
+      req.extensions.length > 0
+    ) {
+      const lower = fileName.toLowerCase();
+      const matched = req.extensions.some(function (ext) {
+        const e2 =
+          typeof ext === "string" ? ext.toLowerCase() : String(ext || "").toLowerCase();
+        return e2 && lower.indexOf(e2) === lower.length - e2.length;
+      });
+      if (!matched) {
+        HAXStore.toast(
+          `${this.t.fileExtensionNotAllowed} ${req.extensions.join(", ")}`,
+          5000,
+        );
+        return false;
+      }
+    }
+    // types: check gizmo type via guessGizmoType
+    if (req.types && Array.isArray(req.types) && req.types.length > 0) {
+      const guessed = HAXStore.guessGizmoType({
+        source: fileName,
+        type: fileType,
+      });
+      if (!req.types.includes(guessed)) {
+        HAXStore.toast(
+          `${this.t.fileTypeNotAllowed} ${req.types.join(", ")}`,
+          5000,
+        );
+        return false;
+      }
+    }
+    return true;
   }
   /**
    * Event for an app being selected from a picker
@@ -626,6 +718,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         if (this.fileActions) {
           this._captureUploadedFileForRecs(response, item);
         }
+        // uploadTransform: after the normal upload completes, run a
+        // post-upload file operation (@site/updateFileByUuid) and map the
+        // result into the field value. This is a generic mechanism — the
+        // schema field declares the operation and valueMapping. If the op
+        // fails, the field keeps the uploaded file path (graceful
+        // degradation) and an error toast is shown.
+        if (
+          this.uploadTransform &&
+          this.uploadTransform.operation &&
+          response &&
+          response.data &&
+          response.data.file &&
+          response.data.file.uuid
+        ) {
+          this._runUploadTransform(response, item);
+        }
       } catch (e) {
         console.warn("Error parsing response", e);
       }
@@ -633,6 +741,72 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         // clear the file upload field because it went through so no reason to keep it
         this.shadowRoot.querySelector("#fileupload").files = [];
       }
+    }
+  }
+  /**
+   * Run the post-upload transform declared by `uploadTransform`. Calls
+   * @site/updateFileByUuid with {fileUuid, operation}, then maps the
+   * response via `valueMapping` (a dot-path like "data.deckPath") and
+   * sets the field value. On failure, toasts an error and leaves the
+   * field at the uploaded file path.
+   */
+  async _runUploadTransform(response, item) {
+    const transform = this.uploadTransform;
+    if (!transform || !transform.operation) return;
+    const fileUuid =
+      response &&
+      response.data &&
+      response.data.file &&
+      response.data.file.uuid
+        ? response.data.file.uuid
+        : "";
+    if (!fileUuid) return;
+    this.__transformBusy = true;
+    try {
+      const ready = await this._waitForSiteOp("@site/updateFileByUuid");
+      if (
+        !ready ||
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.call !== "function"
+      ) {
+        HAXStore.toast(this.t.transformFailed, 4000);
+        return;
+      }
+      const d = await MicroFrontendRegistry.call(
+        "@site/updateFileByUuid",
+        { fileUuid: fileUuid, operation: transform.operation },
+        null,
+        this,
+      );
+      const status = d && d.status ? d.status : 0;
+      if (status !== 200) {
+        HAXStore.toast(this.t.transformFailed, 4000);
+        return;
+      }
+      // map the response via valueMapping (dot-path)
+      let mappedValue = "";
+      if (transform.valueMapping) {
+        mappedValue = this._resolveObjectPath(transform.valueMapping, d);
+      }
+      if (typeof mappedValue === "string" && mappedValue) {
+        if (this.shadowRoot && this.shadowRoot.querySelector("#url")) {
+          this.shadowRoot.querySelector("#url").value = mappedValue;
+        }
+        this.value = mappedValue;
+        // notify value-changed so the hax-tray persists the new source
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: { value: mappedValue },
+          }),
+        );
+      }
+    } catch (err) {
+      HAXStore.toast(this.t.transformFailed, 4000);
+    } finally {
+      this.__transformBusy = false;
     }
   }
   // add button for merlin
