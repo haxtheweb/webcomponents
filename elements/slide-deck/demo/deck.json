@@ -1,7 +1,7 @@
 {
   "title": "Demo deck",
   "source": "demo-deck.pptx",
-  "pptx": null,
+  "pptx": "demo-deck.pptx",
   "thumbnail": null,
   "renderTier": "client",
   "slides": [
@@ -24,7 +24,7 @@
       "title": "Slides are the enhancement",
       "html": "<h1>Slides are the enhancement</h1><p>When a manifest names a .pptx the real slides are painted over this text, once the deck is scrolled into view.</p>",
       "image": null,
-      "notes": "This demo manifest has no pptx, so the text layer stays visible."
+      "notes": "Scroll this deck into view and the real slides paint over this text; if the renderer cannot run, the text layer stands on its own."
     }
   ]
 }

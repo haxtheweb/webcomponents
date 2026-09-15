@@ -13,9 +13,10 @@
     <div class="vertical-section-container centered">
       <h3>Basic slide-deck demo</h3>
       <p>
-        This manifest carries no <code>pptx</code>, so the text layer stays on
-        screen. Point <code>source</code> at a deck.json written by the PPTX
-        import to see the real slides painted over it.
+        This manifest names a <code>pptx</code>, so the original slides are
+        painted over the text layer once the deck scrolls into view. The text
+        and speaker notes always render underneath, so the deck stays readable,
+        searchable and navigable even if the renderer cannot run.
       </p>
       <slide-deck source="./deck.json" deck-id="demo"></slide-deck>
     </div>
