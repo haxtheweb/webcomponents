@@ -6,8 +6,7 @@ import { LitElement } from "lit";
 /**
  * `simple-filter`
  * `a super class element to provide filtering capabilities`
-
- * @demo demo/index.html
+ *
  * @element simple-filter
  */
 export const SimpleFilterMixin = function (SuperClass) {
