@@ -4,7 +4,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import { DDD } from "@haxtheweb/d-d-d";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `inline-audio`

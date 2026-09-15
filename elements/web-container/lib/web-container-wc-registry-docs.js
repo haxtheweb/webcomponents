@@ -1,6 +1,6 @@
 import { html } from "lit";
 import "./web-container-doc-player.js";
-import { DDD } from "@haxtheweb/d-d-d";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 export class WebContainerWCRegistryDocs extends DDD {
   static get tag() {
