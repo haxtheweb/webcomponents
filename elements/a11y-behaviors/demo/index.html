@@ -3,25 +3,104 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>A11YBehaviors: a11y-behaviors Demo</title>
-    
+    <title>A11yBehaviors: a11y-behaviors Documentation</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../a11y-behaviors.js';
+      import '@haxtheweb/d-d-d/d-d-d.js';
     </script>
-    
+    <style>
+      body {
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        margin: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4);
+        line-height: var(--ddd-lh-150);
+      }
+      h1 {
+        font-size: var(--ddd-font-size-l);
+        margin-bottom: var(--ddd-spacing-6);
+      }
+      h2 {
+        font-size: var(--ddd-font-size-m);
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
+      }
+      p {
+        margin-bottom: var(--ddd-spacing-4);
+      }
+      pre {
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-sm);
+        padding: var(--ddd-spacing-4);
+        overflow-x: auto;
+      }
+      code {
+        font-family: monospace;
+      }
+    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic a11y-behaviors demo</h3>
-      <demo-snippet>
-        <template>
-          <a11y-behaviors>
-            This is a11y-behaviors
-          </a11y-behaviors>
-        </template>
-      </demo-snippet>
-    </div>
+    <h1>a11y-behaviors</h1>
+    <p>
+      <code>A11yBehaviors</code> is a mixin (not a custom element) that adds
+      accessible text-contrast helpers to a LitElement class. It exposes
+      <code>getTextContrastColor(bgColor)</code>, which returns
+      <code>#ffffff</code> or <code>#000000</code> based on the luma of a
+      supplied hex background color, and
+      <code>computeTextPropContrast(textProp, bgProp)</code>, which reads a
+      background-color property off the host and writes an accessible text
+      color to another property.
+    </p>
+    <p>
+      Because this is a mixin function, there is no real
+      <code>&lt;a11y-behaviors&gt;</code> element to instantiate. Instead, it
+      is applied to another class via function composition, as shown below.
+    </p>
+    <h2>Usage example</h2>
+    <pre><code>import { LitElement, html, css } from "lit";
+import { A11yBehaviors } from "@haxtheweb/a11y-behaviors/a11y-behaviors.js";
+
+class MyAccessibleCard extends A11yBehaviors(LitElement) {
+  static get properties() {
+    return {
+      backgroundColor: { type: String },
+      textColor: { type: String },
+    };
+  }
+
+  constructor() {
+    super();
+    this.backgroundColor = "#003366";
+    this.textColor = "#000000";
+    // computes an accessible textColor based on backgroundColor
+    this.computeTextPropContrast("textColor", "backgroundColor");
+  }
+
+  render() {
+    return html`
+      &lt;div
+        style="background-color: ${this.backgroundColor}; color: ${this.textColor};"
+      &gt;
+        Content with automatically computed contrast
+      &lt;/div&gt;
+    `;
+  }
+}
+customElements.define("my-accessible-card", MyAccessibleCard);
+</code></pre>
+    <p>
+      See <code>a11y-behaviors/test/a11y-behaviors.test.js</code> for the
+      canonical usage of the mixin's methods.
+    </p>
   </body>
 </html>

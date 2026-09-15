@@ -6,34 +6,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for glossy-portfolio-theme">
-
-  <style>
-    :root, html, body {
-      margin: var(--ddd-spacing-0);
-      padding: var(--ddd-spacing-0);
-    }
-    #demo {
-      margin: var(--ddd-spacing-2);
-    }
-    glossy-portfolio-theme {
-      margin: var(--ddd-spacing-2);
-      border: var(--ddd-border-md);
-      border-radius: var(--ddd-radius-lg);
-    }
-    glossy-portfolio-theme:hover {
-      box-shadow: var(--ddd-boxShadow-sm);
-    }
-    #example {
-      --glossy-portfolio-theme-font-size: var(--ddd-font-size-l);
-      background-color: var(--ddd-accent-2);
-      color: var(--ddd-primary-17);
-    }
-  </style>
   <title>glossy-portfolio-theme</title>
 </head>
 
 <body>
-  <glossy-portfolio-theme></glossy-portfolio-theme>
-  <script type="module" src="./glossy-portfolio-theme.js"></script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./glossy-portfolio-theme.js";
+  </script>
 </body>
 </html>

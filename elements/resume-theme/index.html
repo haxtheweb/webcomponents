@@ -33,27 +33,18 @@
 </head>
 
 <body>
-  <div id="demo">
-    <h1>resume-theme</h1>
-    <p>Resume theme for HAXcms. Demonstrating the sidebar layout with avatar, name, and contact info.</p>
-    <h2>Default</h2>
-    <resume-theme style="height: 400px; overflow: auto; display: block;">
-      <div slot="content">
-        <h2>About Me</h2>
-        <p>Passionate technologist focused on making the web accessible to everyone.</p>
-        <h2>Work Experience</h2>
-        <h3>Senior Developer</h3>
-        <p>Leading development of innovative web solutions.</p>
-        <h2>Skills</h2>
-        <ul>
-          <li>Web Components</li>
-          <li>JavaScript</li>
-          <li>Accessibility</li>
-        </ul>
-      </div>
-    </resume-theme>
-  </div>
-  <script type="module" src="./resume-theme.js"></script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./resume-theme.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

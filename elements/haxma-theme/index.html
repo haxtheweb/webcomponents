@@ -6,60 +6,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for haxma-theme">
-
-  <style>
-    :root, html, body {
-      margin: var(--ddd-spacing-0);
-      padding: var(--ddd-spacing-0);
-    }
-    #demo {
-      margin: var(--ddd-spacing-2);
-    }
-    haxma-theme {
-      margin: var(--ddd-spacing-2);
-      border: var(--ddd-border-md);
-      border-radius: var(--ddd-radius-lg);
-    }
-    haxma-theme:hover {
-      box-shadow: var(--ddd-boxShadow-sm);
-    }
-    #example {
-      --haxma-theme-font-size: var(--ddd-font-size-l);
-      background-color: var(--ddd-accent-2);
-      color: var(--ddd-primary-17);
-    }
-  </style>
   <title>haxma-theme</title>
 </head>
 
 <body>
-  <div id="demo">
-    <h1>HAXma Theme</h1>
-    <p>A HAXcms theme inspired by Figma documentation design featuring clean typography, modern navigation, and responsive layout.</p>
-    
-    <h2>Demo</h2>
-    <haxma-theme>
-      <div>
-        <h1>Getting Started</h1>
-        <p>Welcome to HAXma, a modern documentation theme for HAXcms. This theme provides a clean, professional layout perfect for technical documentation, user guides, and educational content.</p>
-        
-        <h2>Features</h2>
-        <ul>
-          <li>Fixed header with site navigation</li>
-          <li>Responsive mobile navigation</li>
-          <li>Integrated search functionality</li>
-          <li>Breadcrumb navigation</li>
-          <li>Table of contents sidebar</li>
-          <li>Previous/Next page navigation</li>
-          <li>Modern typography and spacing</li>
-        </ul>
-        
-        <h2>Design Philosophy</h2>
-        <p>HAXma follows modern documentation design patterns inspired by tools like Figma, prioritizing readability, navigation efficiency, and visual hierarchy.</p>
-      </div>
-    </haxma-theme>
-  </div>
-  <script type="module" src="./haxma-theme.js"></script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./haxma-theme.js";
+  </script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>

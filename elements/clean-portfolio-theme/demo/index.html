@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>Clean portfolio theme: clean-portfolio-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../clean-portfolio-theme.js';
     </script>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic clean-portfolio-theme demo</h3>
-      <demo-snippet>
-        <template>
-          <clean-portfolio-theme>
-            This is clean-portfolio-theme
-          </clean-portfolio-theme>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>

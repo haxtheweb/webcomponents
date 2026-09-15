@@ -32,8 +32,18 @@
 </head>
 <body>
   <div class="demo-wrap">
-    <link-card-theme></link-card-theme>
+    <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
   </div>
-  <script type="module" src="./link-card-theme.js"></script>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./link-card-theme.js";
+  </script>
 </body>
 </html>

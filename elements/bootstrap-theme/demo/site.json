@@ -1,0 +1,148 @@
+{
+  "id": "b3b8d3d0-9a1a-4b6c-9a2c-bootstrapthem0",
+  "title": "Bootstrap Theme Demo",
+  "author": "",
+  "description": "Demonstration site for bootstrap-theme, a HAXcms theme built on Bootstrap styling conventions.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "bootstrap-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "bootstrap-theme",
+      "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
+      "name": "bootstrap-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#0d6efd",
+        "cssVariable": "--simple-colors-default-theme-blue-7",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-1a2b3c4d-0001-4a1a-9a1a-bootstraphome",
+      "indent": 0,
+      "location": "pages/item-1a2b3c4d-0001-4a1a-9a1a-bootstraphome/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "Welcome to the bootstrap-theme demo site. This page demonstrates the theme's header, navigation, and main content area rendering through HAXcms.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-1a2b3c4d-0002-4a1a-9a1a-bootstrapabout",
+      "indent": 0,
+      "location": "pages/item-1a2b3c4d-0002-4a1a-9a1a-bootstrapabout/index.html",
+      "slug": "about",
+      "order": 1,
+      "parent": null,
+      "title": "About This Theme",
+      "description": "bootstrap-theme wraps HAXcms content in familiar Bootstrap layout conventions, including a responsive navigation menu, card-based article content, and light/dark/palenight color modes.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-1a2b3c4d-0003-4a1a-9a1a-bootstrapfeatures",
+      "indent": 1,
+      "location": "pages/item-1a2b3c4d-0003-4a1a-9a1a-bootstrapfeatures/index.html",
+      "slug": "about/features",
+      "order": 0,
+      "parent": "item-1a2b3c4d-0002-4a1a-9a1a-bootstrapabout",
+      "title": "Features",
+      "description": "Highlights of what bootstrap-theme provides: responsive mobile menu, search, breadcrumbs, and print support.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-1a2b3c4d-0004-4a1a-9a1a-bootstrapcontact",
+      "indent": 0,
+      "location": "pages/item-1a2b3c4d-0004-4a1a-9a1a-bootstrapcontact/index.html",
+      "slug": "contact",
+      "order": 2,
+      "parent": null,
+      "title": "Contact",
+      "description": "Reach out with questions about using bootstrap-theme in your own HAXcms site.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

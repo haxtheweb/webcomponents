@@ -1,27 +1,25 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="Description" content="Demonstration for training-theme">
     <title>TrainingTheme: training-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../training-theme.js';
     </script>
-    
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic training-theme demo</h3>
-      <demo-snippet>
-        <template>
-          <training-theme>
-            This is training-theme
-          </training-theme>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>

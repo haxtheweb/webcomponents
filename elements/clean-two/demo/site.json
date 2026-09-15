@@ -1,0 +1,148 @@
+{
+  "id": "d5b5e5f0-9c1c-4d6e-9c2e-cleantwothem0",
+  "title": "Clean Two Theme Demo",
+  "author": "",
+  "description": "Demonstration site for clean-two, a clean general-purpose HAXcms theme.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "clean-two",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "clean-two",
+      "path": "@haxtheweb/clean-two/clean-two.js",
+      "name": "clean-two",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#00668c",
+        "cssVariable": "--simple-colors-default-theme-blue-8",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-3c4d5e6f-0001-4c3c-9c3c-cleantwohome0",
+      "indent": 0,
+      "location": "pages/item-3c4d5e6f-0001-4c3c-9c3c-cleantwohome0/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "Welcome to the clean-two demo site. This page demonstrates the theme's header, navigation, and main content rendering through HAXcms.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c4d5e6f-0002-4c3c-9c3c-cleantwoabout0",
+      "indent": 0,
+      "location": "pages/item-3c4d5e6f-0002-4c3c-9c3c-cleantwoabout0/index.html",
+      "slug": "about",
+      "order": 1,
+      "parent": null,
+      "title": "About This Theme",
+      "description": "clean-two is a simple, general-purpose theme designed for straightforward content sites with minimal visual noise.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c4d5e6f-0003-4c3c-9c3c-cleantwonav0",
+      "indent": 1,
+      "location": "pages/item-3c4d5e6f-0003-4c3c-9c3c-cleantwonav0/index.html",
+      "slug": "about/navigation",
+      "order": 0,
+      "parent": "item-3c4d5e6f-0002-4c3c-9c3c-cleantwoabout0",
+      "title": "Navigation Structure",
+      "description": "This nested page demonstrates how clean-two renders multi-level site navigation.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c4d5e6f-0004-4c3c-9c3c-cleantwocontact0",
+      "indent": 0,
+      "location": "pages/item-3c4d5e6f-0004-4c3c-9c3c-cleantwocontact0/index.html",
+      "slug": "contact",
+      "order": 2,
+      "parent": null,
+      "title": "Contact",
+      "description": "Reach out with questions about using clean-two in your own HAXcms site.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

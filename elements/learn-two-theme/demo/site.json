@@ -1,0 +1,165 @@
+{
+  "id": "d4e5f6a7-8b9c-4d4e-9f5a-learntwothemed",
+  "title": "Learn2 Theme Demo",
+  "author": "",
+  "description": "Demonstration course site built with learn-two-theme, showcasing a clean instructional layout with menu-driven navigation.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "learn-two-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "learn-two-theme",
+      "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
+      "name": "learn-two-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#292929",
+        "cssVariable": "--simple-colors-default-theme-grey-12",
+        "icon": "hax:hax2022"
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-8c9d0e1f-0001-4c8c-9c8c-learntwocourse",
+      "indent": 0,
+      "location": "pages/item-8c9d0e1f-0001-4c8c-9c8c-learntwocourse/index.html",
+      "slug": "course-overview",
+      "order": 0,
+      "parent": null,
+      "title": "Course Overview",
+      "description": "An overview of what this course covers, who it's for, and how it's organized.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8c9d0e1f-0002-4c8c-9c8c-learntwomodule",
+      "indent": 0,
+      "location": "pages/item-8c9d0e1f-0002-4c8c-9c8c-learntwomodule/index.html",
+      "slug": "module-1-introduction",
+      "order": 1,
+      "parent": null,
+      "title": "Module 1: Introduction",
+      "description": "The first module, introducing key terminology and concepts used throughout the course.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8c9d0e1f-0003-4c8c-9c8c-learntwolesson1",
+      "indent": 1,
+      "location": "pages/item-8c9d0e1f-0003-4c8c-9c8c-learntwolesson1/index.html",
+      "slug": "module-1-introduction/lesson-1-1",
+      "order": 0,
+      "parent": "item-8c9d0e1f-0002-4c8c-9c8c-learntwomodule",
+      "title": "Lesson 1.1: Key Concepts",
+      "description": "A closer look at the foundational concepts introduced in Module 1.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8c9d0e1f-0004-4c8c-9c8c-learntwomodule2",
+      "indent": 0,
+      "location": "pages/item-8c9d0e1f-0004-4c8c-9c8c-learntwomodule2/index.html",
+      "slug": "module-2-applied-practice",
+      "order": 2,
+      "parent": null,
+      "title": "Module 2: Applied Practice",
+      "description": "Hands-on exercises to reinforce the concepts covered in Module 1.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8c9d0e1f-0005-4c8c-9c8c-learntwosummary",
+      "indent": 0,
+      "location": "pages/item-8c9d0e1f-0005-4c8c-9c8c-learntwosummary/index.html",
+      "slug": "course-summary",
+      "order": 3,
+      "parent": null,
+      "title": "Course Summary",
+      "description": "A recap of what was learned and pointers to further resources.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

@@ -14,7 +14,17 @@
 </head>
 
 <body>
-  <clean-portfolio-theme></clean-portfolio-theme>
-  <script type="module" src="./clean-portfolio-theme.js"></script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./clean-portfolio-theme.js";
+  </script>
 </body>
 </html>

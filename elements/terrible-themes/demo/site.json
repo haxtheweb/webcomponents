@@ -1,0 +1,108 @@
+{
+  "id": "a2e6f3d1-6b3a-4f2e-9c3d-2f7b9a1c4e5f",
+  "title": "Room 407",
+  "author": "",
+  "description": "A gloriously terrible website, on purpose.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "terrible-themes",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "terrible-themes",
+      "path": "@haxtheweb/terrible-themes/terrible-themes.js",
+      "name": "terrible-themes",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-1c2d3e4f-0001-4a5b-8c6d-7e8f9a0b1c2d",
+      "indent": 0,
+      "location": "pages/item-1c2d3e4f-0001-4a5b-8c6d-7e8f9a0b1c2d/index.html",
+      "slug": "welcome",
+      "order": 0,
+      "parent": null,
+      "title": "Welcome",
+      "description": "Welcome to Room 407, a 90s inspired website built to be gloriously terrible on purpose.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-1c2d3e4f-0002-4a5b-8c6d-7e8f9a0b1c2d",
+      "indent": 0,
+      "location": "pages/item-1c2d3e4f-0002-4a5b-8c6d-7e8f9a0b1c2d/index.html",
+      "slug": "guestbook",
+      "order": 1,
+      "parent": null,
+      "title": "Guestbook",
+      "description": "Sign the guestbook, just like the good old days of the web.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-1c2d3e4f-0003-4a5b-8c6d-7e8f9a0b1c2d",
+      "indent": 0,
+      "location": "pages/item-1c2d3e4f-0003-4a5b-8c6d-7e8f9a0b1c2d/index.html",
+      "slug": "links",
+      "order": 2,
+      "parent": null,
+      "title": "Cool Links",
+      "description": "A hand curated list of links because that's how the internet used to work.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "status": ""
+      }
+    }
+  ]
+}

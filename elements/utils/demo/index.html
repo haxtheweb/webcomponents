@@ -3,11 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>Demo Snippet: demo-snippet Demo</title>
+    <title>Utils: utils Documentation</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
     <script type="module">
-      import '@haxtheweb/demo-snippet/demo-snippet.js';
       import '@haxtheweb/d-d-d/d-d-d.js';
     </script>
     <style>
@@ -25,131 +23,84 @@
         padding: var(--ddd-spacing-4);
         line-height: var(--ddd-lh-150);
       }
-      
       h1 {
         font-size: var(--ddd-font-size-l);
         margin-bottom: var(--ddd-spacing-6);
       }
-      
       h2 {
         font-size: var(--ddd-font-size-m);
         margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
       }
-      
       p {
         margin-bottom: var(--ddd-spacing-4);
       }
-      
-      .dark-mode-toggle {
-        position: fixed;
-        top: var(--ddd-spacing-4);
-        right: var(--ddd-spacing-4);
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-        background: var(--ddd-theme-default-skyBlue);
-        color: white;
-        border: none;
+      pre {
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        border: var(--ddd-border-sm);
         border-radius: var(--ddd-radius-sm);
-        cursor: pointer;
-        font-family: var(--ddd-font-primary);
+        padding: var(--ddd-spacing-4);
+        overflow-x: auto;
+      }
+      code {
+        font-family: monospace;
       }
     </style>
   </head>
   <body>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-    
-    <h1>Demo Snippet Examples</h1>
-    <p>This page demonstrates the new Lit-based demo-snippet element with dark mode compatibility.</p>
+    <h1>utils</h1>
+    <p>
+      <code>@haxtheweb/utils</code> is a plain JavaScript utility library, not
+      a web component or mixin. It re-exports a collection of small,
+      dependency-light helper functions (from <code>lib/*.js</code>) used
+      throughout the HAX ecosystem for clipboard access, URL sanitization,
+      ID generation, markdown detection/conversion, object path traversal,
+      selection/range handling, and more. Below are usage examples for a few
+      representative exports.
+    </p>
+    <h2>copyToClipboard</h2>
+    <p>
+      Copies a string to the clipboard and dispatches a toast notification
+      event on success or failure.
+    </p>
+    <pre><code>import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 
-    <h2>Basic HTML Element Demo</h2>
-    <p>A simple native HTML input element:</p>
-    <demo-snippet>
-      <template>
-        <input type="date" value="2023-12-25">
-        <input type="color" value="#1e407c">
-        <input type="range" min="0" max="100" value="50">
-      </template>
-    </demo-snippet>
+async function shareLink(url) {
+  await copyToClipboard(url, "Link copied to clipboard");
+}
+</code></pre>
+    <h2>sanitizeEmbeddableURL</h2>
+    <p>
+      Validates and sanitizes a URL before it is used as an iframe/embed
+      source, rejecting unsafe protocols. Used internally by
+      <code>media-behaviors</code> when normalizing video embed sources.
+    </p>
+    <pre><code>import { sanitizeEmbeddableURL } from "@haxtheweb/utils/utils.js";
 
-    <h2>Multiple Elements Demo</h2>
-    <p>Multiple elements in a single demo:</p>
-    <demo-snippet>
-      <template>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <button>Click me</button>
-          <label>
-            <input type="checkbox" checked> Enable notifications
-          </label>
-          <select>
-            <option>Option 1</option>
-            <option selected>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-      </template>
-    </demo-snippet>
+const safeSrc = sanitizeEmbeddableURL(userSuppliedURL, "");
+// safeSrc is "" if the input was unsafe/invalid, otherwise a safe URL string
+if (safeSrc !== "") {
+  iframeEl.setAttribute("src", safeSrc);
+}
+</code></pre>
+    <h2>generateResourceID</h2>
+    <p>
+      Generates a unique resource identifier string, used by
+      <code>schema-behaviors</code> to assign a stable
+      <code>resource</code> attribute to elements participating in RDFa
+      schema markup.
+    </p>
+    <pre><code>import { generateResourceID } from "@haxtheweb/utils/utils.js";
 
-    <h2>Styled Content Demo</h2>
-    <p>Demo with custom styling:</p>
-    <demo-snippet>
-      <template>
-        <div style="
-          background: linear-gradient(45deg, #1e407c, #96bee6);
-          color: white;
-          padding: 20px;
-          border-radius: 8px;
-          text-align: center;
-          font-family: Arial, sans-serif;
-        ">
-          <h3 style="margin: 0 0 10px 0;">Beautiful Card</h3>
-          <p style="margin: 0;">This is a demo of styled content with gradients and custom CSS.</p>
-        </div>
-      </template>
-    </demo-snippet>
-
-    <h2>Form Elements Demo</h2>
-    <p>Various form elements:</p>
-    <demo-snippet>
-      <template>
-        <form style="display: grid; gap: 12px; max-width: 300px;">
-          <label>
-            Name:
-            <input type="text" placeholder="Enter your name" style="width: 100%; margin-top: 4px;">
-          </label>
-          
-          <label>
-            Email:
-            <input type="email" placeholder="your@email.com" style="width: 100%; margin-top: 4px;">
-          </label>
-          
-          <label>
-            Message:
-            <textarea placeholder="Your message here..." rows="3" style="width: 100%; margin-top: 4px;"></textarea>
-          </label>
-          
-          <button type="submit" style="background: #1e407c; color: white; padding: 8px 16px; border: none; border-radius: 4px;">
-            Send Message
-          </button>
-        </form>
-      </template>
-    </demo-snippet>
-
-    <script>
-      function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        
-        // Update the button text
-        const button = document.querySelector('.dark-mode-toggle');
-        if (document.body.classList.contains('dark-mode')) {
-          button.textContent = '☀️ Toggle Light Mode';
-        } else {
-          button.textContent = '🌙 Toggle Dark Mode';
-        }
-      }
-
-      // Listen for demo-snippet dom-ready events
-      document.addEventListener('dom-ready', (e) => {
-        console.log('Demo snippet ready:', e.detail);
-      });
-    </script>
+const resourceId = generateResourceID(); // e.g. "#3f9a1c2b-...-..."
+element.setAttribute("resource", resourceId);
+</code></pre>
+    <p>
+      See <code>utils/lib/clipboard.js</code>, <code>utils/lib/url.js</code>,
+      and <code>utils/lib/ids.js</code> for the full implementations, and
+      <code>utils/utils.js</code> for the complete list of exports.
+    </p>
   </body>
 </html>

@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="Description" content="Demonstration for terrible-themes">
     <title>TerribleThemes: terrible-themes Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script>
@@ -13,22 +15,11 @@
       };
     </script>
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../terrible-themes.js';
     </script>
-    
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic terrible-themes demo</h3>
-      <demo-snippet>
-        <template>
-          <terrible-themes>
-            This is terrible-themes
-          </terrible-themes>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>

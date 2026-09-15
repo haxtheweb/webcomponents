@@ -1,0 +1,127 @@
+{
+  "id": "b3f7e4d2-7c4b-4f3f-9d4e-3f8c0b2d5f6a",
+  "title": "New Employee Training",
+  "author": "",
+  "description": "A short training course demonstrating the training-theme layout.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "training-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "training-theme",
+      "path": "@haxtheweb/training-theme/training-theme.js",
+      "name": "training-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "training"
+    }
+  },
+  "items": [
+    {
+      "id": "item-2d3e4f5a-0001-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0001-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "welcome",
+      "order": 0,
+      "parent": null,
+      "title": "Welcome to Training",
+      "description": "An overview of this training course and what you will learn.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0002-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0002-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "module-1-safety",
+      "order": 1,
+      "parent": null,
+      "title": "Module 1: Safety Basics",
+      "description": "Learn the fundamentals of workplace safety before moving on.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0003-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0003-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "module-2-systems",
+      "order": 2,
+      "parent": null,
+      "title": "Module 2: Systems Overview",
+      "description": "A walkthrough of the systems you will use in your new role.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0004-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0004-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "completion",
+      "order": 3,
+      "parent": null,
+      "title": "Course Completion",
+      "description": "Congratulations! A summary of next steps after finishing this training.",
+      "metadata": {
+        "created": 1736889003,
+        "updated": 1736889003,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "status": ""
+      }
+    }
+  ]
+}

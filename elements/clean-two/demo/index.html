@@ -5,27 +5,19 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>CleanTwo: clean-two Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../clean-two.js';
     </script>
-    
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic clean-two demo</h3>
-      <demo-snippet>
-        <template>
-          <clean-two>
-            <h2>Some content</h2>
-            <p>Some content</p>
-            <h3>Some content</h3>
-            <p>Some content</p>
-          </clean-two>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>

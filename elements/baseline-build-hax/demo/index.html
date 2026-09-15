@@ -4,26 +4,59 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>BaselineBuildHax: baseline-build-hax Demo</title>
-    
-    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
-    <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../baseline-build-hax.js';
-    </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic baseline-build-hax demo</h3>
-      <demo-snippet>
-        <template>
-          <baseline-build-hax>
-            This is baseline-build-hax
-          </baseline-build-hax>
-        </template>
-      </demo-snippet>
+      <h3>About baseline-build-hax</h3>
+      <p>
+        <code>baseline-build-hax</code> is not a visual web component and does not
+        define a custom element of its own. It is a HAX build/app-configuration
+        aggregator: a single JavaScript entry point that imports and registers a
+        curated baseline set of elements needed to run a HAX authoring app
+        (editor toolbar, tray, app picker, and a starter library of
+        HAX-capable content elements).
+      </p>
+      <p>
+        Importing <code>baseline-build-hax.js</code> in an app bundles together
+        the following elements:
+      </p>
+      <ul>
+        <li>wysiwyg-hax</li>
+        <li>cms-hax</li>
+        <li>hax-body</li>
+        <li>hax-store</li>
+        <li>hax-autoloader</li>
+        <li>hax-tray</li>
+        <li>hax-app-picker</li>
+        <li>hax-app</li>
+        <li>hax-toolbar</li>
+        <li>a11y-gif-player</li>
+        <li>citation-element</li>
+        <li>image-compare-slider</li>
+        <li>license-element</li>
+        <li>lrn-math</li>
+        <li>lrn-table</li>
+        <li>lrn-vocab</li>
+        <li>oer-schema</li>
+        <li>media-behaviors</li>
+        <li>media-image</li>
+        <li>meme-maker</li>
+        <li>multiple-choice</li>
+        <li>person-testimonial</li>
+        <li>place-holder</li>
+        <li>q-r</li>
+        <li>self-check</li>
+        <li>stop-note</li>
+        <li>video-player</li>
+        <li>wikipedia-query</li>
+        <li>grid-plate</li>
+      </ul>
+      <p>
+        Because this package has no markup or styling surface of its own,
+        there is nothing to render in a live demo here. To see these elements
+        in action, visit each element's own demo page, or use a HAX authoring
+        app that imports <code>baseline-build-hax.js</code> directly.
+      </p>
     </div>
   </body>
 </html>

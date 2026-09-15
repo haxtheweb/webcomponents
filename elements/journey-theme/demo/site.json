@@ -1,0 +1,165 @@
+{
+  "id": "c3d4e5f6-7a8b-4c3d-9e4f-journeythemedm",
+  "title": "Journey Theme Demo",
+  "author": "",
+  "description": "Demonstration learning-path site built with journey-theme, guiding a learner sequentially through a short course structure.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "journey-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "journey-theme",
+      "path": "@haxtheweb/journey-theme/journey-theme.js",
+      "name": "journey-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme--7",
+        "icon": "hax:hax2022"
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-7b8c9d0e-0001-4b7b-9b7b-journeystart00",
+      "indent": 0,
+      "location": "pages/item-7b8c9d0e-0001-4b7b-9b7b-journeystart00/index.html",
+      "slug": "start-your-journey",
+      "order": 0,
+      "parent": null,
+      "title": "Start Your Journey",
+      "description": "Welcome to this guided learning path. This introduction sets expectations for what you'll learn and how the journey is structured.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7b8c9d0e-0002-4b7b-9b7b-journeystep100",
+      "indent": 0,
+      "location": "pages/item-7b8c9d0e-0002-4b7b-9b7b-journeystep100/index.html",
+      "slug": "step-one-foundations",
+      "order": 1,
+      "parent": null,
+      "title": "Step One: Foundations",
+      "description": "Build the foundational knowledge required before moving further along the path.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7b8c9d0e-0003-4b7b-9b7b-journeystep200",
+      "indent": 0,
+      "location": "pages/item-7b8c9d0e-0003-4b7b-9b7b-journeystep200/index.html",
+      "slug": "step-two-practice",
+      "order": 2,
+      "parent": null,
+      "title": "Step Two: Practice",
+      "description": "Apply what you learned in Step One with hands-on practice exercises.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7b8c9d0e-0004-4b7b-9b7b-journeycheckin",
+      "indent": 1,
+      "location": "pages/item-7b8c9d0e-0004-4b7b-9b7b-journeycheckin/index.html",
+      "slug": "step-two-practice/self-check",
+      "order": 0,
+      "parent": "item-7b8c9d0e-0003-4b7b-9b7b-journeystep200",
+      "title": "Self Check",
+      "description": "A short self check to confirm understanding before continuing the journey.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7b8c9d0e-0005-4b7b-9b7b-journeydestina",
+      "indent": 0,
+      "location": "pages/item-7b8c9d0e-0005-4b7b-9b7b-journeydestina/index.html",
+      "slug": "journeys-end",
+      "order": 3,
+      "parent": null,
+      "title": "Journey's End",
+      "description": "A wrap-up of what was covered along the way, plus next steps for continued learning.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

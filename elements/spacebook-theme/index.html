@@ -33,12 +33,17 @@
 </head>
 
 <body>
-  <div id="demo">
-    <h1>spacebook-theme</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-    <h2>Default</h2>
-    <spacebook-theme></spacebook-theme>
-  </div>
-  <script type="module" src="./spacebook-theme.js"></script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script type="module">
+    import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+    import "./spacebook-theme.js";
+  </script>
 </body>
 </html>

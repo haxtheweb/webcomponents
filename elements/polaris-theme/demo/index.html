@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>PolarisTheme: polaris-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+      import "../polaris-theme.js";
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../lib/polaris-story-card.js';
       import '../lib/polaris-mark.js';
@@ -28,6 +36,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;500&family=Roboto:wght@400;500;700;900&display=swap" />
   </head>
   <body>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
     <div class="vertical-section-container centered">
       <h3>Basic polaris-mark</h3>
       <demo-snippet>

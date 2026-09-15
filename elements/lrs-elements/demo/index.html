@@ -7,22 +7,35 @@
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
     <script type="module">
-      
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../lrs-elements.js';
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrs-elements demo</h3>
+      <p>
+        Click the button below. <code>lrs-emitter</code> dispatches a bubbling
+        <code>lrs-emitter</code> event on click, which the surrounding
+        <code>lrs-bridge</code> listens for and would forward, as a learning
+        record statement, to its configured <code>endpoint</code>. Open the
+        browser devtools console to see the event fire and the statement
+        payload that would be sent.
+      </p>
       <demo-snippet>
         <template>
-          <lrs-elements>
-            This is lrs-elements
-          </lrs-elements>
+          <lrs-bridge endpoint="https://example.com/lrs-endpoint">
+            <lrs-emitter verb="clicked" object="demo-button" event="click">
+              Click me to emit a statement
+            </lrs-emitter>
+          </lrs-bridge>
         </template>
       </demo-snippet>
     </div>
+    <script type="module">
+      globalThis.addEventListener("lrs-emitter", (e) => {
+        console.log("lrs-emitter event fired:", e.detail);
+      });
+    </script>
   </body>
 </html>

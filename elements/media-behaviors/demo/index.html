@@ -3,25 +3,114 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>MediaBehaviors: media-behaviors Demo</title>
-    
+    <title>MediaBehaviorsVideo: media-behaviors Documentation</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../media-behaviors.js';
+      import '@haxtheweb/d-d-d/d-d-d.js';
     </script>
-    
+    <style>
+      body {
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        margin: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4);
+        line-height: var(--ddd-lh-150);
+      }
+      h1 {
+        font-size: var(--ddd-font-size-l);
+        margin-bottom: var(--ddd-spacing-6);
+      }
+      h2 {
+        font-size: var(--ddd-font-size-m);
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
+      }
+      p {
+        margin-bottom: var(--ddd-spacing-4);
+      }
+      pre {
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-sm);
+        padding: var(--ddd-spacing-4);
+        overflow-x: auto;
+      }
+      code {
+        font-family: monospace;
+      }
+    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic media-behaviors demo</h3>
-      <demo-snippet>
-        <template>
-          <media-behaviors>
-            This is media-behaviors
-          </media-behaviors>
-        </template>
-      </demo-snippet>
-    </div>
+    <h1>media-behaviors</h1>
+    <p>
+      This package exports <code>MediaBehaviorsVideo</code>, a mixin (not a
+      custom element) that adds helpers for resolving and normalizing video
+      sources from multiple providers (YouTube, Vimeo, Twitch, Sketchfab,
+      Kaltura MediaSpace, and local file references). It exposes
+      <code>getVideoType(source)</code> to identify the provider,
+      <code>cleanVideoSource(input, type)</code> to rewrite copy-pasted share
+      URLs into clean, cookie-free embed URLs, and
+      <code>_sourceIsIframe(source)</code> to determine whether the source
+      should render in an <code>&lt;iframe&gt;</code> or a local
+      <code>&lt;video&gt;</code> tag. The module also attaches an equivalent,
+      globally accessible copy at <code>globalThis.MediaBehaviors.Video</code>
+      for non-mixin consumption.
+    </p>
+    <p>
+      Because <code>MediaBehaviorsVideo</code> is a mixin function, there is
+      no real <code>&lt;media-behaviors&gt;</code> element to instantiate. It
+      is applied to another class via function composition, as demonstrated
+      by the real consumer <code>video-player</code>.
+    </p>
+    <h2>Usage example (adapted from video-player.js)</h2>
+    <pre><code>import { LitElement, html } from "lit";
+import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.js";
+import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+
+class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(LitElement)) {
+  static get tag() {
+    return "video-player";
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+      source: { type: String },
+    };
+  }
+
+  set source(value) {
+    // normalize a pasted share URL into a clean embed URL
+    const type = this.getVideoType(value);
+    this._source = this.cleanVideoSource(value, type);
+  }
+
+  get source() {
+    return this._source;
+  }
+
+  render() {
+    return html`
+      ${this._sourceIsIframe(this.source)
+        ? html`&lt;iframe src="${this.source}"&gt;&lt;/iframe&gt;`
+        : html`&lt;video src="${this.source}"&gt;&lt;/video&gt;`}
+    `;
+  }
+}
+customElements.define(VideoPlayer.tag, VideoPlayer);
+</code></pre>
+    <p>
+      See <code>video-player/video-player.js</code> for the full real-world
+      implementation.
+    </p>
   </body>
 </html>

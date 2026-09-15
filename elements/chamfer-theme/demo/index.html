@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>ChamferTheme: chamfer-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../chamfer-theme.js';
     </script>
   </head>
   <body>
-    <chamfer-theme>
-      <p>This is sample page content rendered inside the Chamfer theme's content slot.</p>
-    </chamfer-theme>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>
