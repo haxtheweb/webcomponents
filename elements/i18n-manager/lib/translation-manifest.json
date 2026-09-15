@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 230,
-    "elementsWithTranslations": 42,
-    "translationFilesFound": 1513,
+    "elementsScanned": 231,
+    "elementsWithTranslations": 43,
+    "translationFilesFound": 1531,
     "languagesSupported": [
       "af",
       "am",
@@ -1414,6 +1414,44 @@
       "pt",
       "ru",
       "zh"
+    ],
+    "slide-deck.ar": [
+      "haxProperties"
+    ],
+    "slide-deck": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "slide-deck.bn": [
+      "haxProperties"
+    ],
+    "slide-deck.es": [
+      "haxProperties"
+    ],
+    "slide-deck.fr": [
+      "haxProperties"
+    ],
+    "slide-deck.hi": [
+      "haxProperties"
+    ],
+    "slide-deck.ja": [
+      "haxProperties"
+    ],
+    "slide-deck.pt": [
+      "haxProperties"
+    ],
+    "slide-deck.ru": [
+      "haxProperties"
+    ],
+    "slide-deck.zh": [
+      "haxProperties"
     ],
     "sorting-question": [
       "es",
