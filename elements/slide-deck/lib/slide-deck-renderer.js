@@ -26,7 +26,7 @@ export class DeckRenderer {
       materializeSlideNodes,
       renderSlide,
       RECOMMENDED_ZIP_LIMITS,
-    } = await import("@aiden0z/pptx-renderer/browser");
+    } = await import("./pptx-rendered.js");
     const response = await fetch(pptxUrl);
     if (!response.ok) {
       throw new Error(`unable to fetch ${pptxUrl} (${response.status})`);
