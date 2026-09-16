@@ -77,6 +77,7 @@ class I18NManager extends LitElement {
    * Life cycle
    */
   connectedCallback() {
+    super.connectedCallback();
     this.__ready = true;
     globalThis.addEventListener(
       "i18n-manager-register-element",
@@ -138,6 +139,7 @@ class I18NManager extends LitElement {
       } catch (e) {}
       this._docObserver = null;
     }
+    super.disconnectedCallback();
   }
   /**
    * Browser level languagechange event

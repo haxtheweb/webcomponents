@@ -192,23 +192,40 @@ class AbsolutePositionStateManager extends LitElement {
    * @return {object} target element for positioning
    */
   findTarget(el) {
-    let selector = "#" + el.for,
+    let selector = typeof el.for === "string" ? "#" + el.for : null,
       target = el.target,
       ancestor = el;
 
     while (
       !!el.for &&
+      !!selector &&
       !target &&
       !!ancestor &&
       !!ancestor.parentNode &&
       ancestor !== document
     ) {
       ancestor = ancestor.parentNode;
-      target = ancestor ? ancestor.querySelector(selector) : undefined;
+      target = ancestor ? this._safeQuerySelector(ancestor, selector) : undefined;
       if (ancestor.nodeType === 11) ancestor = ancestor.host;
-      target = !target && ancestor ? ancestor.querySelector(selector) : target;
+      target =
+        !target && ancestor
+          ? this._safeQuerySelector(ancestor, selector)
+          : target;
     }
     return target;
+  }
+
+  /**
+   * Safely query for a selector, returning undefined instead of throwing
+   * when `for` produces an invalid CSS selector (e.g. non-string values
+   * or characters that are illegal in an id selector).
+   */
+  _safeQuerySelector(node, selector) {
+    try {
+      return node.querySelector(selector);
+    } catch (e) {
+      return undefined;
+    }
   }
 
   /**

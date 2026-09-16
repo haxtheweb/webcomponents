@@ -344,7 +344,6 @@ export class UserScaffold extends HTMLElement {
       this.interactionInterval = null;
     }
     this.windowControllers.abort();
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(UserScaffold.tag, UserScaffold);

@@ -314,15 +314,79 @@ class EditableTableDisplay extends displayBehaviors(
 
   get sortedTbody() {
     if (this.sortMode !== "none" && this.sortMode !== false) {
-      let temp = this.tbody.map((row) => [row[this.sortColumn], ...row]);
-      if (this.sortMode === "asc") {
-        temp.sort();
-      } else {
+      let temp = this.tbody.map((row) => [
+        this._sortValue(row[this.sortColumn]),
+        ...row,
+      ]);
+      temp.sort((a, b) => this._compareSortValues(a[0], b[0]));
+      if (this.sortMode === "desc") {
         temp.reverse();
       }
       return temp.map((row) => row.slice(1, row.length));
     }
     return this.tbody;
+  }
+
+  /**
+   * Resolves the value used to sort a cell. Cells may embed an explicit
+   * `data-sort-value` attribute (e.g.
+   * `<span data-sort-value="1700000000000">6 days ago</span>` or
+   * `<span data-sort-value="2097152">2 MB</span>`) so that human-readable,
+   * formatted text (relative dates, byte sizes, currency, etc.) sorts by its
+   * underlying numeric value instead of alphabetically. Falls back to
+   * existing numeric-cell detection, then to a case-insensitive string value.
+   * @param {string} cell cell contents (may contain HTML)
+   * @returns {number|string} value to compare when sorting
+   */
+  _sortValue(cell) {
+    if (cell === undefined || cell === null) return "";
+    let str = String(cell);
+    let explicit = this._explicitSortValue(str);
+    if (explicit !== undefined) return explicit;
+    if (this._isNumericCell(str)) {
+      return parseFloat(str.trim().replace(/\$/g, "").replace(/,/g, ""));
+    }
+    return str.trim().toLowerCase();
+  }
+
+  /**
+   * Looks for a `data-sort-value` attribute on the cell's markup and returns
+   * its parsed value (numeric when possible), or `undefined` when no
+   * explicit sort value is present.
+   * @param {string} str cell contents as a string, possibly with HTML
+   * @returns {number|string|undefined} explicit sort value, if any
+   */
+  _explicitSortValue(str) {
+    if (!str || str.indexOf("data-sort-value") === -1) return undefined;
+    let fragment = this.getHTML(str),
+      el =
+        fragment && fragment.querySelector
+          ? fragment.querySelector("[data-sort-value]")
+          : null;
+    if (!el) return undefined;
+    let raw = el.getAttribute("data-sort-value");
+    if (raw === null || raw.trim() === "") return undefined;
+    return !isNaN(raw.trim())
+      ? parseFloat(raw.trim())
+      : raw.trim().toLowerCase();
+  }
+
+  /**
+   * Compares two resolved sort values, numerically when both are numbers,
+   * otherwise as case-insensitive, numeric-aware strings.
+   * @param {number|string} a first value
+   * @param {number|string} b second value
+   * @returns {number} negative, zero, or positive per standard compare semantics
+   */
+  _compareSortValues(a, b) {
+    let aIsNum = typeof a === "number" && !isNaN(a),
+      bIsNum = typeof b === "number" && !isNaN(b);
+    if (aIsNum && bIsNum) return a - b;
+    if (aIsNum !== bIsNum) return aIsNum ? -1 : 1;
+    return String(a).localeCompare(String(b), undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
   }
 
   /**

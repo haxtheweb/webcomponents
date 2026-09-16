@@ -316,6 +316,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
         this.contenteditable = "true";
         this.__focused = true;
       }
+      // ensure the host element actually receives browser focus (it is
+      // tabindex=0), not just internal editing state, so that
+      // document.activeElement reflects this element as expected.
+      if (super.focus) super.focus();
       this.dispatchEvent(
         new CustomEvent("focus", {
           bubbles: true,

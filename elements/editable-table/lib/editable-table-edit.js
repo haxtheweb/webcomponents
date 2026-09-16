@@ -507,6 +507,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
             autofocus
             @blur="${this._captionChanged}"
             id="caption"
+            aria-label="Caption"
             label="Caption"
             placeholder="Name your table by adding a caption here."
             rawhtml="${this.caption}"
@@ -612,6 +613,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
         disable-mouseover
         toolbar="editable-table-toolbar"
         id="cell-${rowIndex}-${colIndex}"
+        aria-label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
         label="${`Cell ${this._getLabel(colIndex, false)}${rowIndex}`}"
         rawhtml="${contents}"
         type="rich-text-editor-toolbar-mini"

@@ -87,7 +87,7 @@ beforeEach(() => {
   }
 });
 
-aftereEach(() => {
+afterEach(() => {
   // Clean up mocks
   delete globalThis.Chartist;
   delete globalThis.fetch;

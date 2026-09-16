@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  * `meme-maker`
@@ -83,7 +84,7 @@ class MemeMaker extends LitElement {
           loading="lazy"
           src="${this.imageUrl}"
           alt="${this.alt || ""}"
-          aria-describedby="${this.describedBy || ""}"
+          aria-describedby="${ifDefined(this.describedBy)}"
           ?crossorigin="${this.crossorigin}"
         />
         <figcaption class="top-text">${this.topText}</figcaption>

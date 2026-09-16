@@ -1,7 +1,6 @@
 import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
 import { sendKeys } from "@web/test-runner-commands";
 import sinon from "sinon";
-import "../code-editor.js";
 
 // Mock monaco-element dependency
 class MockMonacoElement extends HTMLElement {
@@ -54,16 +53,24 @@ class MockCodePenButton extends HTMLElement {
 describe("code-editor test", () => {
   let element, sandbox;
 
-  beforeEach(async () => {
-    sandbox = sinon.createSandbox();
-
-    // Register mock elements
+  // Register mock elements BEFORE code-editor.js is imported. code-editor.js
+  // statically imports the real monaco-element.js, which claims the
+  // "monaco-element" custom element tag the moment it is evaluated (static ES
+  // imports run before this file's own top-level code). Defining the mocks
+  // first and only then dynamically importing code-editor.js ensures the
+  // mocks win the registration race.
+  before(async () => {
     if (!globalThis.customElements.get("monaco-element")) {
       globalThis.customElements.define("monaco-element", MockMonacoElement);
     }
     if (!globalThis.customElements.get("code-pen-button")) {
       globalThis.customElements.define("code-pen-button", MockCodePenButton);
     }
+    await import("../code-editor.js");
+  });
+
+  beforeEach(async () => {
+    sandbox = sinon.createSandbox();
 
     // Mock global matchMedia
     globalThis.matchMedia = sandbox.stub().returns({
@@ -124,6 +131,11 @@ describe("code-editor test", () => {
     });
 
     it("passes a11y audit with different themes", async () => {
+      // The label uses `transition: all 0.6s ease-in-out`, so its color animates
+      // between themes while the host background snaps instantly. axe
+      // color-contrast can't meaningfully audit an animating color, so disable
+      // the transition to evaluate each theme's settled colors.
+      element.shadowRoot.querySelector("label").style.transition = "none";
       const themes = ["vs", "vs-dark", "auto"];
       for (const theme of themes) {
         element.theme = theme;
@@ -586,6 +598,7 @@ describe("code-editor test", () => {
 
       const monaco = element.shadowRoot.querySelector("monaco-element");
       monaco.value = "editor change";
+      await element.updateComplete;
 
       expect(spy.called).to.be.true;
     });
@@ -688,18 +701,24 @@ describe("code-editor test", () => {
     });
 
     it("initializes with correct default values", () => {
-      expect(element.codePenData).to.be.null;
-      expect(element.haxUIElement).to.be.true;
-      expect(element.showCodePen).to.be.false;
-      expect(element.readOnly).to.be.false;
-      expect(element.theme).to.equal("vs-dark");
-      expect(element.language).to.equal("javascript");
-      expect(element.fontSize).to.equal(16);
-      expect(element.wordWrap).to.be.false;
-      expect(element.tabSize).to.equal(2);
-      expect(element.autofocus).to.be.false;
-      expect(element.hideLineNumbers).to.be.false;
-      expect(element.focused).to.be.false;
+      // Verify constructor defaults on a freshly created element that has not
+      // been connected or updated. The shared `element` from beforeEach has
+      // title/font-size set and has already run an update cycle, so derived
+      // state like codePenData and the reflected font-size are no longer at
+      // their constructor defaults.
+      const fresh = globalThis.document.createElement("code-editor");
+      expect(fresh.codePenData).to.be.null;
+      expect(fresh.haxUIElement).to.be.true;
+      expect(fresh.showCodePen).to.be.false;
+      expect(fresh.readOnly).to.be.false;
+      expect(fresh.theme).to.equal("vs-dark");
+      expect(fresh.language).to.equal("javascript");
+      expect(fresh.fontSize).to.equal(16);
+      expect(fresh.wordWrap).to.be.false;
+      expect(fresh.tabSize).to.equal(2);
+      expect(fresh.autofocus).to.be.false;
+      expect(fresh.hideLineNumbers).to.be.false;
+      expect(fresh.focused).to.be.false;
     });
   });
 

@@ -38,7 +38,9 @@ describe("absolute-position-behavior test", () => {
     it("should have default slot with correct content", () => {
       const slot = element.shadowRoot.querySelector("slot");
       expect(slot).to.exist;
-      const assignedNodes = slot.assignedNodes({ flatten: true });
+      const assignedNodes = slot
+        .assignedNodes({ flatten: true })
+        .filter((node) => node.nodeType === Node.ELEMENT_NODE);
       expect(assignedNodes.length).to.be.greaterThan(0);
       expect(assignedNodes[0].textContent).to.equal("Positioned content");
     });

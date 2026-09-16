@@ -184,7 +184,7 @@ class A11yDetails extends LitElement {
         >
           <span class="open-text">${this.openText}</span>
           <span class="close-text">${this.closeText}</span>
-          <slot name="summary" class="${this.summaryClasses}"></slot>
+          <slot name="summary" class="${this.summaryClasses}">Details</slot>
         </summary>
         <div id="details-inner"><slot name="details"></slot></div>
       </details>

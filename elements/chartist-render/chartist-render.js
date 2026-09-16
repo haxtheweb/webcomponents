@@ -1261,12 +1261,12 @@ const ChartistRenderSuper = function (SuperClass) {
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       globalThis.ESGlobalBridge.requestAvailability();
-      this._loadScripts(
-        "chartistLib",
-        "lib/chartist/dist/chartist.min.js",
-        this._chartistLoaded,
-      );
-      this._updateData();
+    this._loadScripts(
+      "chartistLib",
+      "lib/chartist/dist/chartist.min.js",
+      this._chartistLoaded,
+    );
+    this._updateData();
       this.observer.observe(this, {
         attributes: false,
         childList: true,
@@ -1286,8 +1286,8 @@ const ChartistRenderSuper = function (SuperClass) {
           detail: this,
         }),
       );
-      if (typeof Chartist === "object") this._chartistLoaded.bind(this);
-    }
+    if (typeof Chartist === "object") this._chartistLoaded.bind(this);
+  }
 
     /**
      * Store the tag name to make it easier to obtain directly.

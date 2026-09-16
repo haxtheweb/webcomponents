@@ -224,17 +224,24 @@ describe("code-sample template usage and highlighting", () => {
     ];
 
     for (const lang of languages) {
-      const el = await fixture(html`
-        <code-sample type="${lang.type}">
-          <template preserve-content="preserve-content">
-            ${lang.code}
-          </template>
-        </code-sample>
-      `);
+      // lit-html forbids expressions inside <template>, so build the fixture
+      // from a plain HTML string (parsed by the browser, not lit) where the
+      // interpolation is just JS string building.
+      const el = await fixture(
+        `<code-sample type="${lang.type}"><template preserve-content="preserve-content">${lang.code}</template></code-sample>`,
+      );
 
       expect(el.type).to.equal(lang.type);
       const template = el.querySelector("template");
-      expect(template.innerHTML).to.include(lang.code);
+      // innerHTML HTML-serializes text (e.g. '>' => '&gt;'), while tags like
+      // <div> round-trip as real elements. Unescape the common entities so we
+      // can compare against the original code string regardless of type.
+      const serialized = template.innerHTML
+        .replace(/&gt;/g, ">")
+        .replace(/&lt;/g, "<")
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, "&");
+      expect(serialized).to.include(lang.code);
     }
   });
 
@@ -247,13 +254,10 @@ describe("code-sample template usage and highlighting", () => {
 const result = fibonacci(10);
 console.log(result);`;
 
-    const el = await fixture(html`
-      <code-sample type="javascript">
-        <template preserve-content="preserve-content">
-          ${complexCode}
-        </template>
-      </code-sample>
-    `);
+    // lit-html forbids expressions inside <template>; use a plain HTML string.
+    const el = await fixture(
+      `<code-sample type="javascript"><template preserve-content="preserve-content">${complexCode}</template></code-sample>`,
+    );
 
     const template = el.querySelector("template");
     expect(template.innerHTML).to.include("fibonacci");
@@ -264,13 +268,10 @@ console.log(result);`;
     const codeWithSpecialChars = `const html = "<div class='test'>Hello & welcome!</div>";
 const regex = /\d+/g;`;
 
-    const el = await fixture(html`
-      <code-sample type="javascript">
-        <template preserve-content="preserve-content">
-          ${codeWithSpecialChars}
-        </template>
-      </code-sample>
-    `);
+    // lit-html forbids expressions inside <template>; use a plain HTML string.
+    const el = await fixture(
+      `<code-sample type="javascript"><template preserve-content="preserve-content">${codeWithSpecialChars}</template></code-sample>`,
+    );
 
     const template = el.querySelector("template");
     expect(template.innerHTML).to.include("&");
@@ -564,7 +565,8 @@ describe("code-sample error handling", () => {
     }
 
     await el.updateComplete;
-    expect(el.type).to.equal("javascript");
+    // loop runs i=0..9; last iteration i=9 is odd, so type ends as "html"
+    expect(el.type).to.equal("html");
     expect(el.copyClipboardButton).to.be.false;
     expect(el.highlightStart).to.equal(10);
   });
@@ -573,13 +575,10 @@ describe("code-sample error handling", () => {
     const specialContent = `const html = "<div>&nbsp;\"test\"</div>";
 const regex = /[<>&"']/g;`;
 
-    const el = await fixture(html`
-      <code-sample type="javascript">
-        <template preserve-content="preserve-content">
-          ${specialContent}
-        </template>
-      </code-sample>
-    `);
+    // lit-html forbids expressions inside <template>; use a plain HTML string.
+    const el = await fixture(
+      `<code-sample type="javascript"><template preserve-content="preserve-content">${specialContent}</template></code-sample>`,
+    );
 
     expect(el).to.exist;
     const template = el.querySelector("template");

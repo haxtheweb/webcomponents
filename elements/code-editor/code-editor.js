@@ -134,6 +134,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.autofocus = false;
     this.hideLineNumbers = false;
     this.focused = false;
+    this.ready = false;
     // helps in local testing and some edge cases of CDNs
     if (globalThis.WCGlobalBasePath) {
       this.libPath = globalThis.WCGlobalBasePath;
@@ -208,8 +209,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   get placeholder() {
     let content = `${this.editorValue || this.innerHTML}`;
     return content
-      .replace(/\s*<\/?template.*>\s*/gm, "")
-      .replace(/\s*<\/?iframe>\s*/gm, "");
+      .replace(/\s*<\/?template[^>]*>\s*/g, "")
+      .replace(/\s*<\/?iframe[^>]*>\s*/g, "");
   }
 
   static get tag() {
@@ -329,6 +330,16 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     };
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Compute derived codePenData before render so the code-pen-button .data
+    // binding is correct in the same render pass (avoids a trailing re-render).
+    if (changedProperties.has("title") || changedProperties.has("value")) {
+      this.codePenData = this._computeCodePenData(this.title, this.value);
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -375,9 +386,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             },
           }),
         );
-      }
-      if (["title", "value"].includes(propName)) {
-        this.codePenData = this._computeCodePenData(this.title, this.value);
       }
     });
   }

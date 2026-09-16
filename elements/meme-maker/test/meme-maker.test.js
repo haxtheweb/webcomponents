@@ -217,9 +217,9 @@ describe("meme-maker test", () => {
       const el = await fixture(
         html`<meme-maker image-url="test.jpg" alt="test"></meme-maker>`,
       );
-      const html = el.haxprogressiveEnhancement();
-      expect(html).to.include("<img");
-      expect(html).to.include("test.jpg");
+      const result = el.haxprogressiveEnhancement();
+      expect(result).to.include("<img");
+      expect(result).to.include("test.jpg");
     });
 
     it("registers i18n element on gizmoRegistration", async () => {
@@ -228,8 +228,9 @@ describe("meme-maker test", () => {
         if (e.type === "i18n-manager-register-element") {
           eventFired = true;
           expect(e.detail.namespace).to.equal("meme-maker.haxProperties");
-          expect(e.detail.locales).to.include("es");
-          expect(e.detail.locales).to.include("fr");
+          // The component intentionally omits `locales` (the manifest handles
+          // them automatically) and supplies `localesPath` instead.
+          expect(e.detail.localesPath).to.include("locales");
         }
       };
 
@@ -246,7 +247,9 @@ describe("meme-maker test", () => {
     it("handles missing image gracefully", async () => {
       const el = await fixture(html`<meme-maker></meme-maker>`);
       const img = el.shadowRoot.querySelector("img");
-      expect(img.src).to.equal("");
+      // img.src resolves an absent/empty src against the page base URL, so
+      // check the attribute itself instead.
+      expect(img.getAttribute("src") || "").to.equal("");
       expect(() => el.updateComplete).to.not.throw;
     });
 
@@ -337,7 +340,9 @@ describe("meme-maker test", () => {
       const figure = element.shadowRoot.querySelector("figure");
       const style = getComputedStyle(figure);
 
-      expect(style.width).to.equal("100%");
+      // getComputedStyle().width is resolved to pixels, so verify the figure
+      // spans the full host width (width: 100%) by comparing to the host.
+      expect(style.width).to.equal(getComputedStyle(element).width);
       expect(style.position).to.equal("relative");
     });
   });

@@ -43,7 +43,7 @@ beforeEach(() => {
   globalThis.document.head.appendChild(mockBase);
 });
 
-aftereEach(() => {
+afterEach(() => {
   // Clean up global chat agent store
   if (globalThis.ChatAgentStore && globalThis.ChatAgentStore.instance) {
     if (globalThis.ChatAgentStore.instance.parentNode) {

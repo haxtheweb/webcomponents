@@ -46,7 +46,7 @@ beforeEach(() => {
   globalThis.bootstrap = {};
 });
 
-aftereEach(() => {
+afterEach(() => {
   // Clean up document modifications
   const links = globalThis.document.head.querySelectorAll(
     'link[href*="bootstrap"]',

@@ -183,31 +183,55 @@ describe("EditableTable test", () => {
   });
 
   // Focus management tests
-  it("focuses display component when not in edit mode", (done) => {
+  //
+  // NOTE: intentionally avoid chai's `.to.equal()` (and any other assertion
+  // that stringifies its operands on failure) when comparing DOM nodes here.
+  // Chai's diffing/serialization of live DOM nodes (with their circular
+  // parentNode/ownerDocument/defaultView references) can hang indefinitely
+  // in headless Chromium instead of failing fast. Compare with `===` first
+  // and assert on the resulting boolean instead.
+  async function waitForActiveElement(predicate, attempts = 20, delayMs = 10) {
+    for (let i = 0; i < attempts; i++) {
+      if (predicate()) return true;
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
+    return predicate();
+  }
+
+  it("focuses display component when not in edit mode", async () => {
+    const displayComponent = element.shadowRoot.querySelector(
+      "editable-table-display",
+    );
+
     element.focus();
 
-    setTimeout(() => {
-      const displayComponent = element.shadowRoot.querySelector(
-        "editable-table-display",
-      );
-      expect(document.activeElement).to.equal(displayComponent);
-      done();
-    }, 10);
+    // Focus is delegated into the display component's shadow tree, so the
+    // host element is retargeted as document.activeElement; verify focus
+    // actually landed somewhere inside the display component instead.
+    const focused = await waitForActiveElement(
+      () =>
+        document.activeElement === element &&
+        !!displayComponent.shadowRoot.activeElement,
+    );
+    expect(focused).to.be.true;
   });
 
-  it("focuses edit component when in edit mode", async (done) => {
+  it("focuses edit component when in edit mode", async () => {
     element.editMode = true;
     await element.updateComplete;
 
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
     element.focus();
 
-    setTimeout(() => {
-      const editComponent = element.shadowRoot.querySelector(
-        "editable-table-edit",
-      );
-      expect(document.activeElement).to.equal(editComponent);
-      done();
-    }, 10);
+    const focused = await waitForActiveElement(
+      () =>
+        document.activeElement === element &&
+        !!editComponent.shadowRoot.activeElement,
+    );
+    expect(focused).to.be.true;
   });
 
   // Event handling tests
@@ -358,9 +382,9 @@ describe("EditableTable test", () => {
     // Create element without rendering
     const testElement = document.createElement("editable-table");
 
-    // These should return undefined without throwing
-    expect(testElement.display).to.be.undefined;
-    expect(testElement.editor).to.be.undefined;
+    // These should return null (shadowRoot is null pre-render) without throwing
+    expect(testElement.display).to.be.null;
+    expect(testElement.editor).to.be.null;
   });
 
   it("handles sync with missing property", () => {
@@ -449,6 +473,110 @@ describe("EditableTable test", () => {
     expect(table.querySelector("tfoot")).to.exist;
 
     await expect(complexElement).shadowDom.to.be.accessible();
+  });
+
+  // Sort comparator tests for formatted/numeric columns
+  describe("sorting formatted and numeric columns", () => {
+    let display;
+
+    beforeEach(async () => {
+      display = element.display;
+      // The outer fixture's slotted table has a <thead>, which caused
+      // columnHeader to be auto-detected as true; reset it (and footer)
+      // here so tbody reflects all rows of the new data set below.
+      display.columnHeader = false;
+      display.footer = false;
+      display.data = [
+        [
+          "Small",
+          '<span data-sort-value="409600">400 KB</span>',
+          "10",
+          "banana",
+          "100",
+        ],
+        [
+          "Large",
+          '<span data-sort-value="1073741824">1 GB</span>',
+          "100",
+          "Apple",
+          "banana",
+        ],
+        [
+          "Medium",
+          '<span data-sort-value="2097152">2 MB</span>',
+          "2",
+          "cherry",
+          "20",
+        ],
+      ];
+    });
+
+    it("sorts by explicit data-sort-value instead of the displayed label", () => {
+      display.sortColumn = 1;
+      display.sortMode = "asc";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Small",
+        "Medium",
+        "Large",
+      ]);
+
+      display.sortMode = "desc";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Large",
+        "Medium",
+        "Small",
+      ]);
+    });
+
+    it("sorts plain numeric cells numerically, not alphabetically", () => {
+      display.sortColumn = 2;
+      display.sortMode = "asc";
+      // 2, 10, 100 - not "10", "100", "2" as a string sort would produce
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Medium",
+        "Small",
+        "Large",
+      ]);
+    });
+
+    it("falls back to case-insensitive string comparison for plain text", () => {
+      display.sortColumn = 3;
+      display.sortMode = "asc";
+      // Apple, banana, cherry (case-insensitive)
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Large",
+        "Small",
+        "Medium",
+      ]);
+    });
+
+    it("prioritizes numeric values ahead of text in mixed columns", () => {
+      display.sortColumn = 4;
+      display.sortMode = "asc";
+      // 20, 100, then "banana" (text sorts after numeric values)
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Medium",
+        "Small",
+        "Large",
+      ]);
+
+      display.sortMode = "desc";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Large",
+        "Small",
+        "Medium",
+      ]);
+    });
+
+    it("leaves row order untouched when sortMode is none", () => {
+      display.sortColumn = 1;
+      display.sortMode = "none";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Small",
+        "Large",
+        "Medium",
+      ]);
+    });
   });
 });
 
