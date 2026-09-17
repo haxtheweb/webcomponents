@@ -55,10 +55,6 @@ describe("place-holder test", () => {
     it("should calculate default text correctly", () => {
       expect(defaultElement.calcText).to.equal("Placeholder for text");
     });
-
-    it("should have default accent color", () => {
-      expect(defaultElement.accentColor).to.equal("indigo");
-    });
   });
 
   describe("Property Updates", () => {
@@ -66,7 +62,7 @@ describe("place-holder test", () => {
       element.type = "video";
       await element.updateComplete;
 
-      expect(element.accentColor).to.equal("red");
+      // values that DO still vary remain correct, and that the host
       expect(element.iconFromType).to.equal("notification:ondemand-video");
       expect(element.calcText).to.equal("Placeholder for video");
     });
@@ -88,14 +84,16 @@ describe("place-holder test", () => {
   });
 
   describe("Type-based Calculations", () => {
+    // the test from asserting specific colors to asserting the icon glyph and
+    // computed text remain correct, and that nothing resurrects an
     const typeConfigs = [
-      { type: "document", color: "green", icon: "editor:insert-drive-file" },
-      { type: "audio", color: "purple", icon: "av:music-video" },
-      { type: "video", color: "red", icon: "notification:ondemand-video" },
-      { type: "image", color: "orange", icon: "image:crop-original" },
-      { type: "math", color: "light-blue", icon: "editor:functions" },
-      { type: "text", color: "indigo", icon: "editor:format-align-left" },
-      { type: "unknown", color: "indigo", icon: "editor:format-align-left" },
+      { type: "document", icon: "editor:insert-drive-file" },
+      { type: "audio", icon: "av:music-video" },
+      { type: "video", icon: "notification:ondemand-video" },
+      { type: "image", icon: "image:crop-original" },
+      { type: "math", icon: "editor:functions" },
+      { type: "text", icon: "editor:format-align-left" },
+      { type: "unknown", icon: "editor:format-align-left" },
     ];
 
     typeConfigs.forEach((config) => {
@@ -103,7 +101,6 @@ describe("place-holder test", () => {
         element.type = config.type;
         await element.updateComplete;
 
-        expect(element.accentColor).to.equal(config.color);
         expect(element.iconFromType).to.equal(config.icon);
 
         if (element.text === "") {
@@ -207,7 +204,6 @@ describe("place-holder test", () => {
 
       const icon = element.shadowRoot.querySelector("simple-icon");
       expect(icon.getAttribute("icon")).to.equal("notification:ondemand-video");
-      expect(icon.getAttribute("accent-color")).to.equal("red");
     });
 
     it("should render text content correctly", async () => {
@@ -228,25 +224,6 @@ describe("place-holder test", () => {
       expect(directionsEl.textContent).to.equal("Custom directions");
     });
   });
-
-  describe("SimpleColors Integration", () => {
-    it("should apply accent color changes", async () => {
-      element.accentColor = "blue";
-      await element.updateComplete;
-
-      const icon = element.shadowRoot.querySelector("simple-icon");
-      expect(icon.getAttribute("accent-color")).to.equal("blue");
-    });
-
-    it("should handle dark mode", async () => {
-      element.dark = true;
-      await element.updateComplete;
-
-      const icon = element.shadowRoot.querySelector("simple-icon");
-      expect(icon.hasAttribute("dark")).to.be.true;
-    });
-  });
-
   describe("Complex Configurations", () => {
     it("should handle multiple property updates simultaneously", async () => {
       element.type = "image";
@@ -257,7 +234,8 @@ describe("place-holder test", () => {
       await element.updateComplete;
       await element.updateComplete;
 
-      expect(element.accentColor).to.equal("orange");
+      // here are: dragOver wins for icon + calcText, and directions is
+      // user-supplied.
       expect(element.iconFromType).to.equal("icons:file-upload"); // dragOver overrides type icon
       expect(element.calcText).to.equal("Drop file to upload"); // dragOver overrides text
 
@@ -305,7 +283,7 @@ describe("place-holder test", () => {
 
       // Should end up with the last type
       expect(element.type).to.equal("text");
-      expect(element.accentColor).to.equal("indigo");
+
     });
 
     it("should handle empty and null values gracefully", async () => {
@@ -327,8 +305,8 @@ describe("place-holder test", () => {
       element.type = undefined;
       await element.updateComplete;
 
-      // Should fall back to defaults or handle gracefully
-      expect(element.accentColor).to.equal("indigo"); // default for unknown type
+      // Should fall back to defaults or handle gracefully. Per-type color
+      // mapping is gone; iconByType still falls back to the default glyph.
       expect(element.iconFromType).to.equal("editor:format-align-left");
     });
 
@@ -352,8 +330,6 @@ describe("place-holder test", () => {
       // Convert styles to string to check for custom properties
       const styleString = styles.toString();
       expect(styleString).to.include("--place-holder-drag-over-border");
-      expect(styleString).to.include("--simple-colors-default-theme-accent-12");
-      expect(styleString).to.include("--simple-colors-default-theme-accent-1");
     });
 
     it("should apply drag-over styling when attribute is present", async () => {
@@ -425,7 +401,6 @@ describe("place-holder test", () => {
 
       expect(dynamicElement.type).to.equal("video");
       expect(dynamicElement.text).to.equal("Dynamic element");
-      expect(dynamicElement.accentColor).to.equal("red");
 
       document.body.removeChild(container);
     });
@@ -440,15 +415,16 @@ describe("place-holder test", () => {
       element.text = "First element";
       await element.updateComplete;
 
-      // Second element should be unaffected
+      // the icon picks stayed correct per type so the type-to-icon
+      // independence still works correctly when both elements change.
       expect(element2.type).to.equal("image");
       expect(element2.text).to.equal("Second element");
-      expect(element2.accentColor).to.equal("orange");
+      expect(element2.iconFromType).to.equal("image:crop-original");
 
       // First element should have new values
       expect(element.type).to.equal("document");
       expect(element.text).to.equal("First element");
-      expect(element.accentColor).to.equal("green");
+      expect(element.iconFromType).to.equal("editor:insert-drive-file");
     });
   });
 });
