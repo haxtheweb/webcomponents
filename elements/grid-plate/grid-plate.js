@@ -664,6 +664,7 @@ class GridPlate extends LitElement {
     disableResponsive,
   ) {
     if (layouts) {
+      const validSizes = ["xs", "sm", "md", "lg", "xl"];
       let newl = layouts[layout],
         //how old layout names map to the new ones
         oldLayouts = {
@@ -675,9 +676,14 @@ class GridPlate extends LitElement {
           "3/3/3/3": "1-1-1-1",
         },
         size =
-          disableResponsive !== false && responsiveSize !== "xs"
+          disableResponsive !== false &&
+          validSizes.includes(responsiveSize) &&
+          responsiveSize !== "xs"
             ? "xl"
             : responsiveSize;
+      if (!validSizes.includes(size)) {
+        size = "md";
+      }
       let oldl = oldLayouts[layout];
       if (newl !== undefined && newl[size] !== undefined) {
         //return the layout
