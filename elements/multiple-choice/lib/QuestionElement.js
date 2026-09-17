@@ -13,14 +13,18 @@ import "@haxtheweb/grid-plate/grid-plate.js";
 export class QuestionElement extends SchemaBehaviors(
   I18NMixin(DDDSuper(LitElement)),
 ) {
+  // delegatesFocus must be declared as a static getter so the shadow root is
+  // actually created with it — assigning in the constructor is too late.
+  static get shadowRootOptions() {
+    return {
+      ...super.shadowRootOptions,
+      delegatesFocus: true,
+    };
+  }
   constructor() {
     super();
     // default method of storing guess data
     this.guessDataValue = "display";
-    this.shadowRootOptions = {
-      ...LitElement.shadowRootOptions,
-      delegatesFocus: true,
-    };
     this.maxAttempts = 0; // 0 implies unlimited
     this.attempts = 0;
     this.showAnswer = false;
@@ -877,7 +881,7 @@ export class QuestionElement extends SchemaBehaviors(
           ?disabled="${!this.showAnswer && !this.edit}"
           ?open="${this.showAnswer}"
         >
-          <summary id="feedback">
+          <summary id="feedback" tabindex="0">
             <simple-icon-lite
               class="details-icon"
               icon="icons:feedback"
