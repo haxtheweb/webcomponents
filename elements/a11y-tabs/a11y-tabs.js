@@ -375,7 +375,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     return html` <ul id="tabs" role="tablist" part="tablist">
         ${this.tabs.map(
           (tab, i) => html`
-            <li part="tablist-item">${this._tabButton(tab, i)}</li>
+            <li part="tablist-item" role="none">
+              ${this._tabButton(tab, i)}
+            </li>
           `,
         )}
       </ul>
