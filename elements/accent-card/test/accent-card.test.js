@@ -519,11 +519,25 @@ describe("accent-card test", () => {
         </accent-card>
       `);
 
-      // Initially elementVisible should be true (IntersectionObserverMixin)
-      expect(testElement.elementVisible).to.be.true;
-
+      // IntersectionObserverMixin defaults elementVisible to false and only
+      // flips it after a real IntersectionObserver callback fires. The
+      // fixture-based test environment never fires that callback, so
+      // elementVisible stays false here, and the image wrapper renders with
+      // the hidden attribute. Simulate the IO callback to validate the
+      // visible path; then assert the hidden-when-false behavior directly.
       const imageWrapper = testElement.shadowRoot.querySelector(".image-outer");
-      expect(imageWrapper.hasAttribute("hidden")).to.be.false;
+      expect(testElement.elementVisible).to.be.false;
+      expect(imageWrapper.hasAttribute("hidden")).to.be.true;
+
+      testElement.handleIntersectionCallback([
+        { intersectionRatio: 1 },
+      ]);
+      await testElement.updateComplete;
+
+      expect(testElement.elementVisible).to.be.true;
+      const visibleWrapper =
+        testElement.shadowRoot.querySelector(".image-outer");
+      expect(visibleWrapper.hasAttribute("hidden")).to.be.false;
 
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -680,6 +694,7 @@ describe("accent-card test", () => {
     });
 
     it("should maintain accessibility with HAX demo schema", async () => {
+      const { unsafeHTML } = await import("lit/directives/unsafe-html.js");
       const demoSchema = element.constructor.haxProperties.demoSchema[0];
       const haxTestElement = await fixture(html`
         <accent-card
@@ -688,7 +703,7 @@ describe("accent-card test", () => {
           ?horizontal="${demoSchema.properties.horizontal}"
           image-src="${demoSchema.properties.imageSrc}"
         >
-          ${html([demoSchema.content])}
+          ${unsafeHTML(demoSchema.content)}
         </accent-card>
       `);
       await haxTestElement.updateComplete;

@@ -115,10 +115,13 @@ describe("d-d-d design system integration", () => {
   it("registers DDD design system with DesignSystemManager", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
 
-    // Check if DesignSystemManager is available and DDD system is registered
+    // DesignSystemManager is a global singleton wrapper; the active
+    // <design-system> element (which holds .systems and .active) lives on
+    // .instance via requestAvailability().
+    const manager = globalThis.DesignSystemManager.instance;
     expect(globalThis.DesignSystemManager).to.exist;
-    expect(globalThis.DesignSystemManager.systems).to.exist;
-    expect(globalThis.DesignSystemManager.systems.ddd).to.exist;
+    expect(manager).to.exist;
+    expect(manager.systems.ddd).to.exist;
   });
 
   it("has DDDSuper mixin functionality", async () => {
@@ -152,7 +155,7 @@ describe("d-d-d design system integration", () => {
   it("sets DesignSystemManager active to ddd", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
 
-    expect(globalThis.DesignSystemManager.active).to.equal("ddd");
+    expect(globalThis.DesignSystemManager.instance.active).to.equal("ddd");
   });
 });
 
@@ -164,6 +167,10 @@ describe("DDDSuper mixin functionality", () => {
         super();
       }
     }
+    // HTMLElement subclasses must be registered as custom elements before
+    // they can be constructed via new(), otherwise Chromium throws
+    // "Failed to construct 'HTMLElement': Illegal constructor".
+    customElements.define("test-ddd-super-element", TestElement);
 
     const testEl = new TestElement();
     expect(testEl.isSafari).to.be.a("boolean");
@@ -179,11 +186,12 @@ describe("DDDSuper mixin functionality", () => {
 
   it("properly initializes DesignSystemManager", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
+    const manager = globalThis.DesignSystemManager.instance;
 
     expect(globalThis.DesignSystemManager).to.exist;
-    expect(globalThis.DesignSystemManager.systems.ddd).to.exist;
-    expect(globalThis.DesignSystemManager.systems.ddd.name).to.equal("ddd");
-    expect(globalThis.DesignSystemManager.systems.ddd.hax).to.be.true;
+    expect(manager.systems.ddd).to.exist;
+    expect(manager.systems.ddd.name).to.equal("ddd");
+    expect(manager.systems.ddd.hax).to.be.true;
   });
 });
 
@@ -199,6 +207,7 @@ describe("DDDPulseEffectSuper mixin functionality", () => {
         return super.properties || {};
       }
     }
+    customElements.define("test-ddd-pulse-element", TestPulseElement);
 
     const testEl = new TestPulseElement();
     expect(testEl.dataPulse).to.be.null;
@@ -212,6 +221,7 @@ describe("DDDPulseEffectSuper mixin functionality", () => {
         super();
       }
     }
+    customElements.define("test-ddd-pulse-changes-element", TestPulseElement);
 
     const testEl = new TestPulseElement();
 
@@ -335,9 +345,10 @@ describe("d-d-d error handling", () => {
   it("maintains DesignSystemManager state across multiple instances", async () => {
     const el1 = await fixture(html`<d-d-d></d-d-d>`);
     const el2 = await fixture(html`<d-d-d accent-color="red"></d-d-d>`);
+    const manager = globalThis.DesignSystemManager.instance;
 
-    expect(globalThis.DesignSystemManager.active).to.equal("ddd");
-    expect(globalThis.DesignSystemManager.systems.ddd).to.exist;
+    expect(manager.active).to.equal("ddd");
+    expect(manager.systems.ddd).to.exist;
 
     // Both elements should work correctly
     expect(el1).to.exist;
@@ -378,7 +389,7 @@ describe("d-d-d error handling", () => {
     for (const el of elements) {
       expect(el).to.exist;
       expect(el.accentColor).to.equal("blue");
-      expect(globalThis.DesignSystemManager.active).to.equal("ddd");
+      expect(globalThis.DesignSystemManager.instance.active).to.equal("ddd");
     }
   });
 });

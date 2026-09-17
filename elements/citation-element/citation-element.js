@@ -202,6 +202,13 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         attribute: "license-link",
       },
       /**
+       * License image URL, calculated when a known license is applied.
+       */
+      licenseImage: {
+        type: String,
+        attribute: "license-image",
+      },
+      /**
        * License short hand. Options cc0,
        */
       license: {
@@ -213,6 +220,15 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
        */
       typeof: {
         type: String,
+      },
+      /**
+       * Related resource id used to bind the citation to a sibling or parent.
+       * Calculated by `_scopeChanged`; declared here so reactive updates and
+       * `updated()` react to it via Lit.
+       */
+      relatedResource: {
+        type: String,
+        attribute: "related-resource",
       },
     };
   }

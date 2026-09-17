@@ -354,7 +354,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             <slot name="content"></slot>
           </div>
           <div class="footer">
-            ${this.link
+            ${this.link && this.link.trim()
               ? html`
                   <a
                     href="${this.link}"
@@ -364,6 +364,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
                     <slot name="footer"></slot>
                     <simple-icon-button-lite
                       icon="${this.icon}"
+                      label="${this.link}"
                       style="${this.iconSize
                         ? `--simple-icon-height: var(--ddd-icon-${this.iconSize}); --simple-icon-width: var(--ddd-icon-${this.iconSize});`
                         : `--simple-icon-height: var(--ddd-icon-xxs); --simple-icon-width: var(--ddd-icon-xxs);`}"
@@ -548,7 +549,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             imageSrc: "https://placehold.co/500x300",
           },
           content:
-            '<h3 slot="heading">Accent Card</h3><h5 slot="subheading">A card with optional accent stylings.</h5><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
+            '<h3 slot="heading">Accent Card</h3><h4 slot="subheading">A card with optional accent stylings.</h4><div slot="content"><p>This card is highly customizable to contain any content you\'d like</p></div>',
         },
       ],
       saveOptions: {

@@ -27,6 +27,24 @@ class MdBlock extends DDD {
         :host([hidden]) {
           display: none;
         }
+
+        /* anchors rendered from markdown must be visually distinguishable
+           from surrounding text without relying on color alone (a11y). */
+        ::slotted(a),
+        a {
+          color: var(
+            --md-block-link-color,
+            var(--ddd-theme-default-link, #0000ee)
+          );
+          text-decoration: underline;
+          text-underline-offset: 0.15em;
+        }
+
+        /* tables and code blocks inherit sensible defaults as well */
+        pre,
+        code {
+          font-family: var(--ddd-font-primary, monospace);
+        }
       `,
     ];
   }

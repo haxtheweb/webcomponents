@@ -465,9 +465,10 @@ const SimplePickerBehaviors = function (SuperClass) {
         <div
           id="listbox"
           role="listbox"
-          aria-activedescendant="${this.__activeDesc}"
+          aria-activedescendant="${this.expanded ? this.__activeDesc : undefined}"
           aria-labelledby="${this.ariaLabelledby ||
           (this.label && this.label.trim() !== "" ? "listLabel" : undefined)}"
+          aria-label="${this._computeListboxAriaLabel()}"
           ?disabled="${this.disabled || !this.__options}"
           aria-disabled="${this.disabled || !this.__options
             ? "true"
@@ -709,6 +710,7 @@ const SimplePickerBehaviors = function (SuperClass) {
       this.disabled = false;
       this.expanded = false;
       this.hideOptionLabels = false;
+      this.hideNullOption = false;
       this.hideSample = false;
       this.label = null;
       this.__ready = false;
@@ -721,20 +723,6 @@ const SimplePickerBehaviors = function (SuperClass) {
       this.addEventListener("blur", function (e) {
         this.expanded = false;
       });
-      // map our imported properties json to real props on the element
-      // @notice static getter of properties is built via tooling
-      // to edit modify src/test-lit-properties.json
-      let obj = SimplePicker.properties;
-      for (let p in obj) {
-        if (obj.hasOwnProperty(p)) {
-          if (this.hasAttribute(p)) {
-            this[p] = this.getAttribute(p);
-          } else {
-            if (p.reflect) this.setAttribute(p, obj[p].value);
-            this[p] = obj[p].value;
-          }
-        }
-      }
     }
     get hideNull() {
       return !this.allowNull || this.hideNullOption;
@@ -1024,6 +1012,23 @@ const SimplePickerBehaviors = function (SuperClass) {
           detail: this,
         }),
       );
+    }
+
+    /**
+     * Returns the fallback aria-label applied to the listbox when neither a
+     * consumer-supplied `aria-labelledby` nor a `label` property provide an
+     * accessible name. Returns `undefined` (which suppresses the attribute)
+     * when a label source already exists, so existing setups are unchanged.
+     *
+     * Subclasses should override this to provide a domain-appropriate string
+     * (for example `simple-icon-picker` returns "Select an icon").
+     *
+     * @returns {string | undefined}
+     */
+    _computeListboxAriaLabel() {
+      if (this.ariaLabelledby) return undefined;
+      if (this.label && this.label.trim() !== "") return undefined;
+      return "Select";
     }
 
     /**

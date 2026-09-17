@@ -292,6 +292,12 @@ class A11yCollapse extends DDD {
     this.icon = "icons:expand-more";
     this.label = "expand";
     this.tooltip = "expand";
+    // remember the user-provided collapsed-state labels so they can be
+    // restored after expanding. _fireToggleEvents mutates label/tooltip to
+    // reflect the current state, which would otherwise clobber custom values.
+    this.__collapsedLabel = "expand";
+    this.__collapsedTooltip = "expand";
+    this.__hasExpandedOnce = false;
   }
   /**
    * haxProperties integration via file reference
@@ -409,9 +415,15 @@ class A11yCollapse extends DDD {
           detail: this,
         }),
       );
+      // save the current collapsed-state labels before overwriting so they
+      // can be restored when the element is collapsed again.
+      this.__collapsedLabel = this.label;
+      this.__collapsedTooltip = this.tooltip;
+      this.__hasExpandedOnce = true;
       Promise.resolve().then(() => {
-        this.label = "collapse";
-        this.tooltip = "collapse";
+        // use custom expanded labels when provided, otherwise default.
+        this.label = this.labelExpanded || "collapse";
+        this.tooltip = this.tooltipExpanded || "collapse";
       });
     } else {
       /**
@@ -428,8 +440,13 @@ class A11yCollapse extends DDD {
         }),
       );
       Promise.resolve().then(() => {
-        this.label = "expand";
-        this.tooltip = "expand";
+        // restore the user-provided collapsed labels once the element has
+        // expanded at least once. before that, keep whatever the author set
+        // so custom attributes are not clobbered on first render.
+        if (this.__hasExpandedOnce) {
+          this.label = this.__collapsedLabel || "expand";
+          this.tooltip = this.__collapsedTooltip || "expand";
+        }
       });
     }
   }

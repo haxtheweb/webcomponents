@@ -853,13 +853,14 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     /**
      * handles when menu loses focus
      *
-     * @param {event} event
+     * @param {event} [event] optional FocusEvent; guards against missing
+     *   arg when called outside the browser's blur pipeline (tests).
      * @memberof A11yMenuButton
      */
     _handleBlur(event) {
       this.focused = false;
       // Check if focus is moving to another part of the menu
-      const relatedTarget = event.relatedTarget;
+      const relatedTarget = event && event.relatedTarget;
       if (relatedTarget) {
         // Don't close if focus is moving to a menu item or staying within menu
         const isMovingToMenuItem = this.menuItems.some(

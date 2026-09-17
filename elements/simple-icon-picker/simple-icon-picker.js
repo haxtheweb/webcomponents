@@ -132,6 +132,16 @@ class SimpleIconPicker extends SimplePicker {
     this.optionsPerRow = 6;
   }
   /**
+   * Override the base-class listbox aria-label fallback so the picker has
+   * an accessible name that describes the kind of value being selected.
+   */
+  _computeListboxAriaLabel() {
+    if (this.ariaLabelledby) return undefined;
+    if (this.label && this.label.trim() !== "") return undefined;
+    return "Select an icon";
+  }
+
+  /**
    * LitElement life cycle - property changed callback
    */
   updated(changedProperties) {

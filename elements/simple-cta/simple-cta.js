@@ -182,6 +182,7 @@ class SimpleCta extends DDDPulseEffectSuper(
     return html` <a
       href="${this.link ? this.link : "#"}"
       role="button"
+      aria-label="${this._computeAriaLabel()}"
       part="simple-cta-link"
       @click="${this._clickCard}"
     >
@@ -197,6 +198,30 @@ class SimpleCta extends DDDPulseEffectSuper(
           : ``}</span
       >
     </a>`;
+  }
+
+  /**
+   * Compute an accessible name for the rendered anchor.
+   *
+   * Priority: explicit `label` property, then the host element's `title`
+   * attribute (the most common fallback consumers already supply), then the
+   * target URL so the link is at least self-describing. An empty `link="#"`
+   * placeholder falls through to a generic call-to-action string.
+   *
+   * @returns {string | undefined}
+   */
+  _computeAriaLabel() {
+    if (this.label && String(this.label).trim() !== "") {
+      return String(this.label).trim();
+    }
+    const hostTitle = this.getAttribute("title");
+    if (hostTitle && hostTitle.trim() !== "") {
+      return hostTitle.trim();
+    }
+    if (this.link && this.link !== "#") {
+      return this.link;
+    }
+    return "Call to action";
   }
 
   // haxProperty definition
