@@ -800,10 +800,15 @@ class SimpleFieldsUpload extends I18NMixin(
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
-    this.voice.remove();
-    setTimeout(() => {
-      this.voice = null;
-    }, 0);
+    // voice may not exist yet (recorder was never instantiated, e.g. in
+    // unit tests where this handler is dispatched directly); only tear it
+    // down if it's actually attached.
+    if (this.voice) {
+      this.voice.remove();
+      setTimeout(() => {
+        this.voice = null;
+      }, 0);
+    }
   }
   /**
    * We got a new screen recording
@@ -815,10 +820,12 @@ class SimpleFieldsUpload extends I18NMixin(
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
-    this.screenRecorder.remove();
-    setTimeout(() => {
-      this.screenRecorder = null;
-    }, 0);
+    if (this.screenRecorder) {
+      this.screenRecorder.remove();
+      setTimeout(() => {
+        this.screenRecorder = null;
+      }, 0);
+    }
   }
   /**
    * Invoke the camera to set itself up

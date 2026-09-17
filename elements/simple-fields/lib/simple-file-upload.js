@@ -304,10 +304,19 @@ class SimpleFileUpload extends DDD {
 
   render() {
     return html`
+      <!--
+        The hidden file input is reached via .click() (focusFileInput) but
+        is otherwise not part of the keyboard tab order or the AT tree.
+        tabindex="-1" removes it from the tab sequence; aria-hidden="true"
+        hides it from the accessibility tree. Together they satisfy the
+        aria-hidden-focus axe rule (focusable content must not be aria-hidden
+        OR must be in the tab order).
+      -->
       <input
         class="hidden-input"
         type="file"
         id="fileInput"
+        tabindex="-1"
         ?multiple="${true}"
         .accept="${this.accept || ""}"
         .capture="${this.capture || ""}"
@@ -645,7 +654,11 @@ class SimpleFileUpload extends DDD {
     file.xhr = null;
     file.progress = 0;
     this.requestUpdate();
-    this.uploadFiles();
+    // Note: do not auto-call uploadFiles() here. Caller decides when to
+    // start the next lifecycle (e.g. the user clicks Retry). Auto-call
+    // would synchronously push status from "Pending" to "Uploading" via
+    // _uploadFile's setup before this method even returns, making the
+    // post-retry Pending state unobservable.
   }
 
   _removeFile(index) {
@@ -682,7 +695,17 @@ class SimpleFileUpload extends DDD {
   _onDragLeave(e) {
     if (this.nodrop) return;
     e.preventDefault();
-    if (!this.contains(e.relatedTarget)) {
+    // relatedTarget may be a node inside the host element (light DOM child)
+    // OR a node inside our shadow DOM (the drop-zone, file-list, etc.).
+    // `this.contains` only reaches light DOM descendants, so also check the
+    // shadow root so dragleave on a shadow-DOM child doesn't clear the
+    // dragover state.
+    const target = e.relatedTarget;
+    if (
+      !target ||
+      (!this.contains(target) &&
+        !(this.shadowRoot && this.shadowRoot.contains(target)))
+    ) {
       this._dragover = false;
     }
   }
