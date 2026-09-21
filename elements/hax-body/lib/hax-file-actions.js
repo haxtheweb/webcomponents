@@ -3,11 +3,11 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 
 const SCALE_PRESETS = {
-  xs: { width: 200, height: 150, label: "200\u00d7150" },
-  sm: { width: 320, height: 240, label: "320\u00d7240" },
-  md: { width: 400, height: 300, label: "400\u00d7300" },
-  lg: { width: 800, height: 600, label: "800\u00d7600" },
-  xl: { width: 1200, height: 900, label: "1200\u00d7900" },
+  xs: { width: 150, height: 150, label: "150px" },
+  sm: { width: 480, height: 480, label: "480px" },
+  md: { width: 800, height: 800, label: "800px" },
+  lg: { width: 1200, height: 1200, label: "1200px" },
+  xl: { width: 1920, height: 1920, label: "1920px" },
 };
 
 const COMPRESS_PRESETS = {

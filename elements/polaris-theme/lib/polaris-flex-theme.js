@@ -198,21 +198,24 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         .header-top-menu {
           font-family: var(--ddd-font-navigation);
-
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
           column-gap: var(--ddd-spacing-5);
-
           color: white;
           margin-left: auto;
           margin-right: auto;
           padding-left: var(--polaris-standard-padding);
           padding-right: var(--polaris-standard-padding);
           padding-top: var(--ddd-spacing-2);
+          padding-bottom: var(--ddd-spacing-2);
           text-transform: uppercase;
           font-size: var(--ddd-spacing-4);
+          align-items: center;
+        }
 
-          padding-bottom: var(--ddd-spacing-2);
+        .header-top-menu site-region[name="header"] polaris-mark {
+          height: 55px;
+          width: 340px;
         }
 
         .header-links,
@@ -317,17 +320,19 @@ class PolarisFlexTheme extends LTIResizingMixin(
           background-color: var(--ddd-theme-default-nittanyNavy);
           color: white;
           clear: both;
+          padding: var(--ddd-spacing-4) 0;
+        }
 
-          padding: var(--ddd-spacing-10) 0;
+        .footer-secondary a,
+        .footer-secondary a:any-link,
+        .footer-secondary a:-webkit-any-link {
+          color: white;
         }
 
         .footer-secondary .wrap {
           display: flex;
-          justify-content: space-between;
-
-          max-width: 1092px;
-          margin: 0 auto;
-          padding: 0 var(--polaris-standard-padding);
+          justify-content: flex-end;
+          padding: 0 16px;
         }
 
         .footer-secondary-slot {
@@ -343,6 +348,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         .footer-secondary-slot ul ul {
           padding-left: 0;
+          font-size: 14px;
           line-height: 18px;
           row-gap: var(--ddd-spacing-2);
         }
@@ -391,8 +397,35 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         .footer-primary {
           color: var(--polaris-nav-color);
-          line-height: 22px;
-          padding: var(--ddd-spacing-5) 0;
+          padding: var(--ddd-spacing-4) 0;
+        }
+
+        .footer-primary .flex-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+
+        .footer-primary ul {
+          list-style-type: none;
+          flex-wrap: wrap;
+          display: flex;
+          padding: 0;
+          margin: 0;
+          gap: 20px;
+          flex-direction: row;
+        }
+
+        .footer-primary ul li {
+          font-size: 14px;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-medium);
+        }
+
+        .footer-primary a {
+          font-size: 14px;
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-regular);
         }
 
         .footer-primary-slot {
@@ -619,31 +652,23 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
           }
         }
-        :host([responsive-size="sm"]:not([menu-open])),
-        :host([responsive-size="xs"]:not([menu-open])) {
-          site-menu {
-            display: none;
-          }
+
+        :host([responsive-size="sm"]:not([menu-open])) site-menu,
+        :host([responsive-size="xs"]:not([menu-open])) site-menu {
+          display: none;
+        }
+        :host([responsive-size="sm"]) .footer-primary .flex-wrapper,
+        :host([responsive-size="xs"]) .footer-primary .flex-wrapper {
+          flex-direction: column;
         }
 
-        :host([responsive-size="xl"]) main {
-          width: calc(var(--menu-size) + 70%);
-          margin: 0 auto;
+        :host([responsive-size="sm"]) .footer-primary ul,
+        :host([responsive-size="xs"]) .footer-primary ul {
+          gap: 0;
+          flex-direction: column;
         }
-        :host([responsive-size="lg"]) main {
-          width: calc(var(--menu-size) + 70%);
-          margin: 0 auto;
-        }
-        :host([responsive-size="md"]) main {
-          width: calc(var(--menu-size) + 65%);
-          margin: 0 auto;
-        }
-        :host([responsive-size="sm"]) main {
-          width: calc(var(--menu-size) + 40%);
-          margin: 0 auto;
-        }
-        :host([responsive-size="xs"]) main {
-          width: calc(var(--menu-size) + 20%);
+
+        main {
           margin: 0 auto;
         }
 
@@ -679,10 +704,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
         }
 
         .footer-secondary p {
-          margin: 0 0 24px;
+          font-size: 14px;
+          margin: 0;
           padding: 0;
-          font-size: 16px;
-          line-height: 26px;
         }
         .footer-logo img {
           width: 110px;
@@ -761,22 +785,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
       this.shadowRoot.querySelector("#main");
   }
 
-  renderBrandMark() {
-    return html`
-      <div id="mark">
-        <a href="${this.imageLink}">
-          <img
-            src="${this.image}"
-            alt="${this.imageAlt}"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          />
-        </a>
-      </div>
-    `;
-  }
-
   renderHeaderSlot() {
     return html` <p class="site-title" itemprop="headline">
       <site-title
@@ -811,29 +819,29 @@ class PolarisFlexTheme extends LTIResizingMixin(
         <div class="wrap">
           <div class="header-top-menu">
             <site-region name="header"></site-region>
-            <site-modal
-              @site-modal-click="${this.siteModalClick}"
-              .part="${this.editMode ? `edit-mode-active` : ``}"
-              ?disabled="${this.editMode}"
-              icon="icons:search"
-              title="Search site"
-              class="search-modal-btn"
-              button-label="Search"
-              part="search-btn"
-              position="left"
-            >
+            <div>
+              <site-modal
+                @site-modal-click="${this.siteModalClick}"
+                .part="${this.editMode ? `edit-mode-active` : ``}"
+                ?disabled="${this.editMode}"
+                icon="icons:search"
+                title="Search site"
+                class="search-modal-btn"
+                button-label="Search"
+                part="search-btn"
+                position="left"
+              >
               <site-search></site-search>
-            </site-modal>
-            <div class="header-links">
-              <slot name="header"> ${this.renderHeaderSlot()} </slot>
+              </site-modal>
+              <div class="header-links">
+                <slot name="header"> ${this.renderHeaderSlot()} </slot>
+              </div>
             </div>
           </div>
           <div class="nav-section">
             <div class="header-branding">
-              <div class="header-branding-left">${this.renderBrandMark()}</div>
-              ${this.HAXCMSMobileMenuButton("left")}
+            ${["xs", "sm"].includes(this.responsiveSize) ? this.HAXCMSMobileMenuButton("left") : ``}
             </div>
-
             ${this.HAXCMSFlexMenu()}
           </div>
           <site-active-media-banner></site-active-media-banner>
@@ -864,16 +872,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <section class="footer-secondary">
-          <site-region name="footerSecondary"></site-region>
           <div class="wrap">
-            <div class="footer-secondary-contact">
-              ${this.renderBrandMark()} ${this.renderFooterContactInformation()}
-            </div>
-            <div class="footer-secondary-media">
-              <slot name="footer-secondary" class="footer-secondary-slot">
-                ${this.renderFooterSecondarySlot()}
-              </slot>
-            </div>
+            <site-region name="footerSecondary"></site-region>
           </div>
         </section>
         <section class="footer-primary">

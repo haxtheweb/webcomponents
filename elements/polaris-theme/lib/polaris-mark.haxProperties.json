@@ -44,6 +44,7 @@
         "inputMethod": "select",
         "options": {
           "default": "Default",
+          "light": "Light",
           "dark": "Dark"
         }
       }

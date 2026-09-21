@@ -86,7 +86,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           margin: var(--map-menu-parent-margin);
           display: inline-flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-start;
         }
 
         :host([is-flex]) map-menu-builder map-menu-item,

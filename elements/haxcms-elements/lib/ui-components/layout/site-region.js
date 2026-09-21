@@ -72,6 +72,13 @@ class SiteRegion extends LitElement {
                       `site-region-wrapper-${this.name}`,
                     );
                     this.appendChild(div);
+                    // <site-region> lives inside the host theme's shadow root, so
+                    // content we just inserted is never seen by wc-autoload's
+                    // document-level MutationObserver (it does not cross shadow
+                    // boundaries) nor by its initial :not(:defined) sweep. Without
+                    // this, elements dropped into a region (e.g. polaris-mark)
+                    // never get their definitions loaded / hydrated.
+                    this._hydrateRegionContent(div);
                   })
                   .catch((err) => {
                     console.error("region data not found");
@@ -82,6 +89,43 @@ class SiteRegion extends LitElement {
         }
       }
     });
+  }
+
+  /**
+   * Sweep a freshly-inserted subtree for undefined custom elements and hand
+   * them off to the existing autoload registries so they hydrate even though
+   * they live outside the reach of document-level mutation observers.
+   */
+  _hydrateRegionContent(container) {
+    if (!container) {
+      return;
+    }
+    const elements = [];
+    if (
+      container.tagName &&
+      container.tagName.includes("-") &&
+      !globalThis.customElements.get(container.tagName.toLowerCase())
+    ) {
+      elements.push(container);
+    }
+    container.querySelectorAll(":not(:defined)").forEach((el) => {
+      if (el.tagName) {
+        elements.push(el);
+      }
+    });
+    if (elements.length === 0) {
+      return;
+    }
+    if (globalThis.WCAutoload && globalThis.WCAutoload.requestAvailability) {
+      const loader = globalThis.WCAutoload.requestAvailability();
+      elements.forEach((el) => loader.processNewElement(el));
+    } else if (
+      globalThis.DynamicImportRegistry &&
+      globalThis.DynamicImportRegistry.requestAvailability
+    ) {
+      const registry = globalThis.DynamicImportRegistry.requestAvailability();
+      elements.forEach((el) => registry.loadDefinition(el.tagName));
+    }
   }
 
   render() {
