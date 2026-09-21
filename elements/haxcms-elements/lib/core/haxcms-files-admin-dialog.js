@@ -24,6 +24,8 @@ const FILE_TYPE_FILTER_ITEMS = [
 
 const COMPRESS_LEVELS = ["light", "medium", "heavy", "maximum"];
 
+const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
+
 const SCALE_PRESETS = {
   xs: { width: 200, height: 150, label: "200\u00d7150" },
   sm: { width: 320, height: 240, label: "320\u00d7240" },
@@ -624,7 +626,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         ? e.detail.value.trim()
         : "";
     const parsed = parseInt(raw, 10);
-    const next = [10, 25, 50, 75].includes(parsed) ? parsed : 25;
+    const next = PAGE_SIZE_OPTIONS.includes(parsed) ? parsed : 25;
     if (next === this.pageLimit) return;
     this.pageLimit = next;
     this.pageOffset = 0;
@@ -1435,15 +1437,10 @@ class HAXCMSFilesAdminDialog extends DDD {
                   label="Per page"
                   type="select"
                   .value="${String(this.pageLimit)}"
-                  .itemsList="${[
-                    { value: "10", text: "10" },
-                    { value: "25", text: "25" },
-                    { value: "50", text: "50" },
-                    { value: "75", text: "75" },
-                    { value: "100", text: "100" },
-                    { value: "250", text: "250" },
-                    { value: "500", text: "500" },
-                  ]}"
+                  .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
+                    value: String(size),
+                    text: String(size),
+                  }))}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onPageSizeChanged}"
                 >
