@@ -604,6 +604,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-xs);
           font-weight: bold;
+          color: var(--a11y-media-transcript-color, var(--simple-colors-default-theme-grey-7, #666666));
+          background-color: var(--a11y-media-transcript-bg-color, var(--simple-colors-default-theme-grey-1, #ffffff));
         }
 
         .media-type {

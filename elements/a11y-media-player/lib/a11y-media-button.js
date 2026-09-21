@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
@@ -181,8 +182,8 @@ class A11yMediaButton extends LitElement {
       <button
         id="button"
         aria-label="${this.label}"
+        aria-describedby="${ifDefined(this.description)}"
         aria-pressed="${this.toggle ? "true" : undefined}"
-        aria-controls="${this.controls || undefined}"
         tabindex="0"
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
