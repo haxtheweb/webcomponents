@@ -198,6 +198,17 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         .header-top-menu site-region[name="header"] polaris-mark {
           height: 55px;
           width: 340px;
+          text-transform: none;
+        }
+        :host([responsive-size="sm"]) .header-top-menu site-region[name="header"] polaris-mark {
+          --polaris-mark-stroke-line-display: none;
+          --polaris-mark-name3-display: none;
+        }
+        :host([responsive-size="xs"]) .header-top-menu site-region[name="header"] polaris-mark {
+          --polaris-mark-stroke-line-display: none;
+          --polaris-mark-name1-display: none;
+          --polaris-mark-name2-display: none;
+          --polaris-mark-name3-display: none;
         }
 
         .header-links,

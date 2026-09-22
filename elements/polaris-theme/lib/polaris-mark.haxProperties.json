@@ -29,6 +29,18 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "name2",
+        "title": "College name 2",
+        "description": "Second name rendered below the first college name.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "name3",
+        "title": "College name 3",
+        "description": "Third name rendered below the second college name.",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "url",
         "title": "Link",
         "description": "Destination URL when the mark is clicked.",
@@ -47,6 +59,12 @@
           "light": "Light",
           "dark": "Dark"
         }
+      },
+      {
+        "property": "vert",
+        "title": "Vertical layout",
+        "description": "Display the third name below the second name with a horizontal line.",
+        "inputMethod": "boolean"
       }
     ],
     "advanced": []

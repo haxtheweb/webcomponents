@@ -5,14 +5,24 @@ class PolarisMark extends LitElement {
     return {
       type: { type: String },
       name: { type: String },
+      name2: { type: String },
+      name3: { type: String },
       url: { type: String },
+      vert: { type: Boolean },
+      _haxstate: {
+        type: Boolean,
+      },
     };
   }
   constructor() {
     super();
     this.type = "default";
-    this.name = "";
+    this.name = null;
+    this.name2 = null;
+    this.name3 = null;
     this.url = "https://psu.edu/";
+    this.vert = false;
+    this._haxstate = false;
   }
   /**
    * LitElement constructable styles enhancement
@@ -27,21 +37,63 @@ class PolarisMark extends LitElement {
           outline: 2px solid currentColor;
           outline-offset: 2px;
         }
-
-        @media screen and (min-width: 320px) {
-          svg #college-name {
-            font-size: var(--ddd-font-size-m, 32px);
-            font-weight: var(--ddd-font-weight-light, 300);
-          }
+        svg #name-line1 {
+          display: var(--polaris-mark-name1-display, block);
+          font-size: var(--ddd-font-size-s, 24px);
+          font-weight: var(--ddd-font-weight-light, 300);
         }
-
-        @media screen and (min-width: 920px) {
-          svg #college-name {
-            font-size: var(--ddd-font-size-s, 24px);
-          }
+        svg #name-line2 {
+          display: var(--polaris-mark-name2-display, block);
+          font-size: var(--ddd-font-size-s, 24px);
+          font-weight: var(--ddd-font-weight-light, 300);
+        }
+        svg #name-line3 {
+          display: var(--polaris-mark-name3-display, block);
+          font-size: var(--ddd-font-size-s, 24px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        svg #stroke-line {
+          display: var(--polaris-mark-stroke-line-display, block);
         }
       `,
     ];
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickPrevent(e) {
+    if (this._haxstate) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
   }
 
   render() {
@@ -52,6 +104,7 @@ class PolarisMark extends LitElement {
           target="_blank"
           rel="noopener"
           aria-label="${this.name || "Penn State"} — visit psu.edu"
+          @click="${this._clickPrevent}"
         >
           ${this.renderSource(this.type)}
         </a>
@@ -69,9 +122,9 @@ class PolarisMark extends LitElement {
   }
 
   renderDark() {
-    return html`
+    return svg`
       <div id="svg">
-        <svg viewBox="0 0 550 89">
+        <svg viewBox="0 0 600 180">
           <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
@@ -103,9 +156,20 @@ class PolarisMark extends LitElement {
             class="abbe09ff-d9b5-4fdb-805a-9f82ce1b20d2"
             d="M96.11,22.18H93.75V18.7h11c5.76,0,8.77,3,8.77,7.33,0,5.11-4,7.33-8.77,7.33h-3.63v5.72h2.35v3.48H93.75V39.08h2.36Zm8.09,7.7c2.48,0,4.11-1.43,4.11-3.85,0-2.2-1.42-3.85-4.18-3.85h-3v7.7Zm15.36,4.84c.14,2.83,2.32,4.57,5.66,4.57a13.28,13.28,0,0,0,5.52-1.13v3.69A16.28,16.28,0,0,1,124.16,43c-6.88,0-9.78-4.3-9.78-9.24,0-5.55,3.37-9.41,9-9.41,6.13,0,8.62,4.64,8.62,10.4Zm7.23-3.27c0-2.46-1.4-3.85-3.62-3.85s-3.44,1.43-3.64,3.85Zm124.9,3.27c.14,2.83,2.32,4.57,5.66,4.57a13.28,13.28,0,0,0,5.52-1.13v3.69A16.32,16.32,0,0,1,256.29,43c-6.88,0-9.78-4.3-9.78-9.24,0-5.55,3.37-9.41,9-9.41,6.14,0,8.63,4.64,8.63,10.4Zm7.23-3.27c0-2.46-1.4-3.85-3.62-3.85s-3.44,1.43-3.64,3.85ZM136.39,28.21h-2.32V24.73h6.55l.13,2.34h.07a6.24,6.24,0,0,1,5.48-2.75c4.52,0,6.9,3.19,6.9,7.11v7.65h2v3.48h-8.76V39.08h2V32.26c0-2.49-1.38-3.85-3.65-3.85-2,0-3.62,1.15-3.62,3.85v6.82h2.05v3.48h-8.76V39.08h1.94Zm23.25,0h-2.32V24.73h6.54l.14,2.34h.06a6.24,6.24,0,0,1,5.48-2.75c4.53,0,6.9,3.19,6.9,7.11v7.65h2.05v3.48h-8.77V39.08h1.95V32.26c0-2.49-1.38-3.85-3.65-3.85-2,0-3.61,1.15-3.61,3.85v6.82h2v3.48h-8.76V39.08h1.95Zm76.08-7.29h4.77v3.81h4.77v3.48h-4.77v7.94c0,2.39.84,3.14,2.81,3.14a13.06,13.06,0,0,0,2.13-.27V42.4a15.33,15.33,0,0,1-3.93.57c-3.51,0-5.78-1.89-5.78-5V28.21H233.3V24.73h2.42Zm-32.16,0h4.77v3.81h4.77v3.48h-4.77v7.94c0,2.39.84,3.14,2.81,3.14a13.06,13.06,0,0,0,2.13-.27V42.4a15.33,15.33,0,0,1-3.93.57c-3.51,0-5.78-1.89-5.78-5V28.21h-2.42V24.73h2.42Zm22.66,10.29c0-2.46-1.2-3.41-3.61-3.41a8.69,8.69,0,0,0-3,.51V30.7h-3.87V26.16a15,15,0,0,1,6.76-1.84c5,0,8.17,2,8.17,7v7.74h1.84v3.48h-5.77l-.14-2.43h-.07c-.36.5-1.66,2.84-5.68,2.84s-6-2.39-6-5.18c0-3.39,2.6-5.73,9.14-5.73h2.14ZM224.82,35c-3.88,0-5.11.82-5.11,2.36,0,1,.75,2.14,2.62,2.14s3.82-1.49,3.82-4.5ZM194,22.35a10.29,10.29,0,0,0-3-.58c-2.78,0-3.89,1.5-3.89,2.83,0,1.74,1.3,2.55,2.78,2.92l2.37.62c3.34.89,7,2.3,7,7.25,0,4.53-2.91,7.58-9.36,7.58a23.75,23.75,0,0,1-8.13-1.33V35.33H186v3.08a18,18,0,0,0,4.26.67c2.53,0,3.76-1,3.76-2.86,0-1.49-.85-2.57-3.89-3.39l-2-.56c-4.66-1.26-6.25-3.51-6.25-7.19s2.53-6.79,8.94-6.79a21.13,21.13,0,0,1,7.45,1.26v5.69H194Z"
           />
-          <text fill="#000000" x="94" y="70" id="college-name">
+          <text fill="#000000" x="94" y="70" id="name-line1">
             ${this.name}
           </text>
+          ${this.name2 ? svg`<text fill="#000000" x="94" y="100" id="name-line2">
+            ${this.name2}
+          </text>` : ""}
+          ${this.name3 ? (this.vert ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
+          <text fill="#000000" x="94" y="160" id="name-line3">
+            ${this.name3}
+          </text>` : svg`
+          <line x1="320" y1="0" x2="320" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
+          <text fill="#000000" x="340" y="40" id="name-line3">
+            ${this.name3}
+          </text> `) : ""}
         </svg>
       </div>
     `;
@@ -114,7 +178,7 @@ class PolarisMark extends LitElement {
   renderDefault(type = "default") {
     return svg`
       <div id="svg">
-        <svg viewBox="0 0 550 89">
+        <svg viewBox="0 0 600 180">
           <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
@@ -146,9 +210,20 @@ class PolarisMark extends LitElement {
             style="fill:${this.type == "default" ? "#1e407c" : "#ffffff"} !important"
             d="M96.11,22.18H93.75V18.7h11c5.76,0,8.77,3,8.77,7.33,0,5.11-4,7.33-8.77,7.33h-3.63v5.72h2.35v3.48H93.75V39.08h2.36Zm8.09,7.7c2.48,0,4.11-1.43,4.11-3.85,0-2.2-1.42-3.85-4.18-3.85h-3v7.7Zm15.36,4.84c.14,2.83,2.32,4.57,5.66,4.57a13.28,13.28,0,0,0,5.52-1.13v3.69A16.28,16.28,0,0,1,124.16,43c-6.88,0-9.78-4.3-9.78-9.24,0-5.55,3.37-9.41,9-9.41,6.13,0,8.62,4.64,8.62,10.4Zm7.23-3.27c0-2.46-1.4-3.85-3.62-3.85s-3.44,1.43-3.64,3.85Zm124.9,3.27c.14,2.83,2.32,4.57,5.66,4.57a13.28,13.28,0,0,0,5.52-1.13v3.69A16.32,16.32,0,0,1,256.29,43c-6.88,0-9.78-4.3-9.78-9.24,0-5.55,3.37-9.41,9-9.41,6.14,0,8.63,4.64,8.63,10.4Zm7.23-3.27c0-2.46-1.4-3.85-3.62-3.85s-3.44,1.43-3.64,3.85ZM136.39,28.21h-2.32V24.73h6.55l.13,2.34h.07a6.24,6.24,0,0,1,5.48-2.75c4.52,0,6.9,3.19,6.9,7.11v7.65h2v3.48h-8.76V39.08h2V32.26c0-2.49-1.38-3.85-3.65-3.85-2,0-3.62,1.15-3.62,3.85v6.82h2.05v3.48h-8.76V39.08h1.94Zm23.25,0h-2.32V24.73h6.54l.14,2.34h.06a6.24,6.24,0,0,1,5.48-2.75c4.53,0,6.9,3.19,6.9,7.11v7.65h2.05v3.48h-8.77V39.08h1.95V32.26c0-2.49-1.38-3.85-3.65-3.85-2,0-3.61,1.15-3.61,3.85v6.82h2v3.48h-8.76V39.08h1.95Zm76.08-7.29h4.77v3.81h4.77v3.48h-4.77v7.94c0,2.39.84,3.14,2.81,3.14a13.06,13.06,0,0,0,2.13-.27V42.4a15.33,15.33,0,0,1-3.93.57c-3.51,0-5.78-1.89-5.78-5V28.21H233.3V24.73h2.42Zm-32.16,0h4.77v3.81h4.77v3.48h-4.77v7.94c0,2.39.84,3.14,2.81,3.14a13.06,13.06,0,0,0,2.13-.27V42.4a15.33,15.33,0,0,1-3.93.57c-3.51,0-5.78-1.89-5.78-5V28.21h-2.42V24.73h2.42Zm22.66,10.29c0-2.46-1.2-3.41-3.61-3.41a8.69,8.69,0,0,0-3,.51V30.7h-3.87V26.16a15,15,0,0,1,6.76-1.84c5,0,8.17,2,8.17,7v7.74h1.84v3.48h-5.77l-.14-2.43h-.07c-.36.5-1.66,2.84-5.68,2.84s-6-2.39-6-5.18c0-3.39,2.6-5.73,9.14-5.73h2.14ZM224.82,35c-3.88,0-5.11.82-5.11,2.36,0,1,.75,2.14,2.62,2.14s3.82-1.49,3.82-4.5ZM194,22.35a10.29,10.29,0,0,0-3-.58c-2.78,0-3.89,1.5-3.89,2.83,0,1.74,1.3,2.55,2.78,2.92l2.37.62c3.34.89,7,2.3,7,7.25,0,4.53-2.91,7.58-9.36,7.58a23.75,23.75,0,0,1-8.13-1.33V35.33H186v3.08a18,18,0,0,0,4.26.67c2.53,0,3.76-1,3.76-2.86,0-1.49-.85-2.57-3.89-3.39l-2-.56c-4.66-1.26-6.25-3.51-6.25-7.19s2.53-6.79,8.94-6.79a21.13,21.13,0,0,1,7.45,1.26v5.69H194Z"
           />
-          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="70" id="college-name">
+          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="70" id="name-line1">
             ${this.name}
           </text>
+          ${this.name2 ? svg`<text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="100" id="name-line2">
+            ${this.name2}
+          </text>` : ""}
+          ${this.name3 ? (this.vert ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
+          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="160" id="name-line3">
+            ${this.name3}
+          </text>` : svg`
+          <line x1="320" y1="0" x2="320" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
+          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="340" y="40" id="name-line3">
+            ${this.name3}
+          </text> `) : ""}
         </svg>
       </div>
     `;
