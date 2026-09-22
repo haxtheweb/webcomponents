@@ -177,7 +177,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
       ${
         this.mediaType === "image"
           ? html` <div class="media-banner">
-              <img crossorigin="anonymous" src=${this.mediaSource} />
+              <img crossorigin="anonymous" src="${this.mediaSource}" alt="" />
               ${this.fileExt === "gif"
                 ? html` <div class="content">
                     <div class="page-title">

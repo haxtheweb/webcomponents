@@ -66,7 +66,7 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
         id="btn"
         @click="${this.fireEvent}"
         .icon="${this.icon}"
-        .title="${this.buttonLabel}"
+        label="${this.buttonLabel}"
       ></simple-icon-button-lite>
       <simple-tooltip for="btn" position="${this.position}">
         ${this.buttonLabel}

@@ -136,7 +136,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           color: red;
         }
         :host([hide-in-menu]) {
-          display: none;
+          display: none !important;
         }
         :host(:not([icon=""])) button {
           padding-left: 0;

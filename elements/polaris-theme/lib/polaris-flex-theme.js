@@ -3,16 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
+import { autorun, toJS } from "mobx";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
-import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
-import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
@@ -21,11 +18,6 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
-import { autorun, toJS } from "mobx";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
-import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
-
 /**
  * @title Polaris Flex
  * `Polaris theme based on modern flex design system`
@@ -40,21 +32,11 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * @demo demo/index.html
  * @element polaris-flex-theme
  */
-class PolarisFlexTheme extends LTIResizingMixin(
-  HAXCMSOperationButtons(
-    HAXCMSRememberRoute(
-      PDFPageMixin(
-        PrintBranchMixin(
-          QRCodeMixin(
-            HAXCMSThemeParts(
-              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
-            ),
-          ),
-        ),
-      ),
-    ),
+class PolarisFlexTheme extends HAXCMSOperationButtons(
+  HAXCMSThemeParts(
+    HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
   ),
-) {
+  ) {
   //styles function
   static get styles() {
     return [
@@ -958,33 +940,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
     super();
     // helps with user preference on side of screen for the tray
     this.haxTrayAlignment = localStorageGet("hax-tray-elementAlign");
-    // forcibly set things about the RPG toast for this design
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-display",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-mid-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-right-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-left-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-mid-padding",
-      0,
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-height",
-      "96px",
-    );
-    HAXCMSToastInstance.style.backgroundColor =
-      "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(
       "hax-store-app-store-loaded",

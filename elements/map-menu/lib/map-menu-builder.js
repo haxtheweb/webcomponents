@@ -34,7 +34,8 @@ class MapMenuBuilder extends LitElement {
           ${this.items
             ? this.items.map(
                 (item) => html`
-                  ${item.children.length > 0
+                  ${item.children.length > 0 &&
+                    this.hasVisibleChildren(item)
                     ? html`
                         <map-menu-submenu
                           itemtitle="${item.title}"
@@ -83,8 +84,10 @@ class MapMenuBuilder extends LitElement {
                           selected="${this.selected}"
                           ?published="${this.getPublishedStatus(item)}"
                           ?hide-in-menu="${this.hideInMenuStatus(item)}"
-                          ?locked="${item.metadata.locked}"
-                          status="${item.metadata.status}"
+                          ?locked="${item.metadata && item.metadata.locked}"
+                          status="${item.metadata && item.metadata.status
+                            ? item.metadata.status
+                            : ""}"
                         ></map-menu-item>
                       `}
                 `,
@@ -100,6 +103,20 @@ class MapMenuBuilder extends LitElement {
       return true;
     }
     return false;
+  }
+  /**
+   * Whether an item has at least one direct child that is not hidden from
+   * the menu. When this is false the builder renders the item as a leaf
+   * (map-menu-item) instead of a collapsible submenu, so we never show an
+   * expand arrow that opens to nothing. Recursion handles deeper levels:
+   * a child that itself has no visible children also renders as a leaf, so
+   * empty collapses are pruned at every depth.
+   */
+  hasVisibleChildren(item) {
+    if (!item.children || item.children.length === 0) {
+      return false;
+    }
+    return item.children.some((child) => !this.hideInMenuStatus(child));
   }
 
   getPublishedStatus(item) {

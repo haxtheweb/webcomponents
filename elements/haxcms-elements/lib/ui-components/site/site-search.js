@@ -61,7 +61,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         .result:focus {
           background-color: light-dark(
             var(--ddd-primary-2),
-            var(--ddd-primary-10)
+            var(--ddd-primary-3)
           );
           color: light-dark(
             var(--ddd-accent-6, #fff),

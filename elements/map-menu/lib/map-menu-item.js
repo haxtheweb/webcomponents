@@ -29,7 +29,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
         }
 
         :host([hide-in-menu]) {
-          display: none;
+          display: none !important;
         }
 
         .title {

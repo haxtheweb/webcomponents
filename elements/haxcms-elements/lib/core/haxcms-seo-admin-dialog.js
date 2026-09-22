@@ -403,8 +403,8 @@ class HAXCMSSEOAdminDialog extends DDD {
           },
           {
             property: "manifest-metadata-site-settings-publishPagesOn",
-            title: "Show unpublished pages",
-            description: "Whether unpublished pages should be visible",
+            title: "Hide unpublished pages",
+            description: "Check the box to hide unpublished pages",
             inputMethod: "boolean",
             required: false,
           },

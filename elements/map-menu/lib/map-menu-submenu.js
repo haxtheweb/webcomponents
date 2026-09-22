@@ -17,7 +17,7 @@ class MapMenuSubmenu extends LitElement {
           display: block;
         }
         :host([hide-in-menu]) {
-          display: none;
+          display: none !important;
         }
         #container {
           margin: 0 0 -2px 0;
