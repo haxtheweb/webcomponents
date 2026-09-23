@@ -2138,6 +2138,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     path: "PDF embedded in a frame element",
                   });
                 }
+                if (values.type === "pptx") {
+                  // surface this as the top option since it's the most
+                  // common desire when uploading a pptx via Merlin
+                  results.unshift({
+                    title: `Embed slide deck in page`,
+                    icon: "image:slideshow",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, "insert-file", "pptx"],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "PowerPoint converted to a slide-deck element",
+                  });
+                }
                 break;
               case "png":
               case "jpeg":
