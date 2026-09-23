@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Slide deck",
     "description": "Present an imported PowerPoint deck slide by slide, with speaker notes.",
-    "icon": "icons:slideshow",
+    "icon": "image:slideshow",
     "color": "purple",
     "tags": ["Media", "presentation", "slides", "powerpoint", "pptx"],
     "handles": [
@@ -33,7 +33,7 @@
         "title": "Deck manifest",
         "description": "Drop a .pptx file and it is converted to a slide deck automatically. The field is set to the resulting deck.json path.",
         "inputMethod": "haxupload",
-        "icon": "icons:slideshow",
+        "icon": "image:slideshow",
         "required": true,
         "uploadRequirements": {
           "extensions": [".pptx"]

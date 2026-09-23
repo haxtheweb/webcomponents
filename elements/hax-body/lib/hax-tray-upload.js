@@ -21,6 +21,12 @@ class HaxTrayUpload extends HaxUploadField {
     this.__mediaBatchTotal = 0;
     this.__mediaBatch = [];
     this.__mediaBatchPlaceHolder = null;
+    // #3066: image-batch state — only fire the auto-gallery path when the user
+    // drops 2+ image files at once. A single replacement image should replace
+    // the existing image in place, not be wrapped into a <image-gallery>.
+    this.__imageBatchTotal = 0;
+    this.__imageBatch = [];
+    this.__imageBatchPlaceHolder = null;
     this.__winEvents = this.__winEvents || {};
     this.__winEvents = {
       ...this.__winEvents,
@@ -127,6 +133,77 @@ class HaxTrayUpload extends HaxUploadField {
             this.__mediaBatchTotal = 0;
             this.__mediaBatch = [];
             this.__mediaBatchPlaceHolder = null;
+            this.option = "fileupload";
+            return;
+          }
+          this.option = "fileupload";
+          return;
+        }
+      }
+
+      // #3066: Handle batch image uploads into a <image-gallery>. Only triggered
+      // when the user dropped 2+ image files together; a single drop falls
+      // through to in-place replace via insertLogicFromValues.
+      if (this.__imageBatchTotal > 0) {
+        const file = e.detail.file;
+        const isImage =
+          file &&
+          ((file.type && file.type.startsWith("image/")) ||
+            /\.(jpe?g|png|gif|webp|bmp|avif)$/i.test(file.name));
+        if (isImage) {
+          this.__imageBatch.push({
+            url: this.shadowRoot.querySelector("#url").value,
+            name: file.name,
+            type: file.type,
+          });
+          if (this.__imageBatch.length >= this.__imageBatchTotal) {
+            const gallery =
+              globalThis.document.createElement("image-gallery");
+            // Clone properties from any pre-existing media-image already inside
+            // the page so the new gallery is visually consistent with the page
+            // being authored.
+            let templateImage = null;
+            if (this.__imageBatchPlaceHolder && this.__imageBatchPlaceHolder.parentNode) {
+              templateImage = this.__imageBatchPlaceHolder.parentNode.querySelector
+                ? this.__imageBatchPlaceHolder.parentNode.querySelector("media-image")
+                : null;
+            }
+            this.__imageBatch.forEach((item) => {
+              const img = globalThis.document.createElement("media-image");
+              img.source = item.url;
+              img.alt = "";
+              if (templateImage) {
+                ["card", "box", "round", "size", "offset"].forEach((prop) => {
+                  if (
+                    templateImage[prop] !== undefined &&
+                    templateImage[prop] !== null
+                  ) {
+                    img[prop] = templateImage[prop];
+                  }
+                });
+              }
+              gallery.appendChild(img);
+            });
+            if (HAXStore.activeHaxBody && this.__imageBatchPlaceHolder) {
+              HAXStore.activeHaxBody.haxReplaceNode(
+                this.__imageBatchPlaceHolder,
+                gallery,
+              );
+            }
+            HAXStore.activePlaceHolder = null;
+            HAXStore.activeNode = gallery;
+            globalThis.dispatchEvent(
+              new CustomEvent("hax-drop-focus-event", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: gallery,
+              }),
+            );
+            HAXStore.toast("Image gallery created successfully!");
+            this.__imageBatchTotal = 0;
+            this.__imageBatch = [];
+            this.__imageBatchPlaceHolder = null;
             this.option = "fileupload";
             return;
           }
@@ -250,6 +327,28 @@ class HaxTrayUpload extends HaxUploadField {
       this.__mediaBatchTotal = 0;
       this.__mediaBatch = [];
       this.__mediaBatchPlaceHolder = null;
+    }
+    // #3066: Check for multiple image files to batch into an <image-gallery>.
+    // A single replacement image falls through to in-place replace in
+    // HAXStore.insertLogicFromValues — no auto-gallery created.
+    const imageFiles = files.filter((f) => {
+      const type = f.type || "";
+      const name = f.name || "";
+      // exclude svg so vector illustrations don't accidentally batch into
+      // a raster gallery.
+      return (
+        (type.startsWith("image/") && type !== "image/svg+xml") ||
+        /\.(jpe?g|png|gif|webp|bmp|avif)$/i.test(name)
+      );
+    });
+    if (imageFiles.length >= 2) {
+      this.__imageBatchTotal = imageFiles.length;
+      this.__imageBatch = [];
+      this.__imageBatchPlaceHolder = HAXStore.activePlaceHolder;
+    } else {
+      this.__imageBatchTotal = 0;
+      this.__imageBatch = [];
+      this.__imageBatchPlaceHolder = null;
     }
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints

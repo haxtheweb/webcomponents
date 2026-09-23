@@ -341,20 +341,22 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         return true;
       }
 
-      // Check if dropping on an image - auto-create image-gallery if enabled
-      // Use activePlaceHolder if it is an image, otherwise fallback to activeNode
+      // #3066: unchanged for multi-file drop (handled upstream in
+      // hax-tray-upload via the __imageBatchTotal gallery-construction
+      // path). For the single-file-drop-onto-image case we're now in,
+      // default to in-place replace rather than auto-wrapping into an
+      // <image-gallery>. Use activePlaceHolder when it resolves as an
+      // image (including <place-holder type="image">), otherwise fall
+      // back to activeNode, then call _replaceImageInPlace which
+      // preserves the existing image's slot, alt, and treatment props.
       let imageTarget = this._isImageElement(this.activePlaceHolder)
         ? this.activePlaceHolder
         : this._isImageElement(this.activeNode)
           ? this.activeNode
           : null;
       if (imageTarget) {
-        const imageGallerySchema = this.haxSchemaFromTag("image-gallery");
-        if (imageGallerySchema && imageGallerySchema.gizmo) {
-          this._createImageGallery(imageTarget, values.source);
-          return true;
-        }
-        // If image-gallery is not allowed, fall through to normal image insertion
+        this._replaceImageInPlace(imageTarget, values);
+        return true;
       }
 
       // Check if dropping into or onto a play-list - auto-add to that gallery
@@ -527,6 +529,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return true;
     }
 
+    // #3066: a <place-holder type="image"> stands in for an image, so it
+    // counts as an image element for the purpose of in-place replace.
+    if (tagName === "place-holder") {
+      const placeholderType = (element.getAttribute("type") || "")
+        .toLowerCase();
+      if (placeholderType === "image") {
+        return true;
+      }
+    }
+
     // Check schema metadata for image tag
     const schema = this.haxSchemaFromTag(tagName);
     if (schema && schema.gizmo && schema.gizmo.tags) {
@@ -537,6 +549,91 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
 
     return false;
+  }
+
+  /**
+   * #3066: Replace an image (or image place-holder) in place with a new
+   * source. No gallery wrap. Preserves the original element's slot, alt,
+   * card/box/round/size/offset, etc. If `imageTarget` is a <place-holder>,
+   * the placeholder is replaced by a fresh <media-image> carrying the
+   * placeholder's slot. The temporary <p> placeholder created in
+   * hax-body dropEvent is removed if still attached.
+   */
+  _replaceImageInPlace(imageTarget, newValues) {
+    if (!imageTarget) {
+      return;
+    }
+    const newSource = newValues && newValues.source;
+    const tagName = imageTarget.tagName
+      ? imageTarget.tagName.toLowerCase()
+      : "";
+
+    let replacement = null;
+    if (tagName === "place-holder") {
+      // The drop landed on the placeholder itself; promote it to a
+      // fresh <media-image> at the placeholder's slot.
+      replacement = globalThis.document.createElement("media-image");
+      replacement.alt = "";
+      const slotAttr = imageTarget.getAttribute("slot");
+      if (slotAttr) {
+        replacement.setAttribute("slot", slotAttr);
+      }
+    } else {
+      // in-place source update on an existing image element. Don't
+      // touch unrelated props so the user's chosen treatment (card,
+      // offset, alt, ...) carries through the replace.
+      replacement = imageTarget;
+    }
+
+    // Set source via BOTH the property setter (for upgraded LitElement
+    // instances) and the attribute (for un-upgraded elements in tests / HAX
+    // authoring where the registry may not have upgraded the node yet).
+    if (newSource) {
+      replacement.source = newSource;
+      try {
+        replacement.setAttribute("source", newSource);
+      } catch (e) {}
+    }
+    if (
+      typeof newValues.alt === "string" &&
+      newValues.alt !== "" &&
+      ("alt" in replacement || tagName !== "place-holder")
+    ) {
+      replacement.alt = newValues.alt;
+      try {
+        replacement.setAttribute("alt", newValues.alt);
+      } catch (e) {}
+    }
+
+    if (tagName === "place-holder") {
+      // Replace in the light DOM via haxReplaceNode so undo, mutation
+      // tracking, and integration with hax-body are unaffected.
+      if (this.activeHaxBody && imageTarget.parentNode) {
+        this.activeHaxBody.haxReplaceNode(imageTarget, replacement);
+      } else if (imageTarget.parentNode) {
+        imageTarget.parentNode.insertBefore(replacement, imageTarget);
+        imageTarget.remove();
+      }
+    }
+
+    // Remove any temporary <p> placeholder injected by hax-body dropEvent()
+    // for positioning. Be defensive: it may have already been removed or
+    // never created (e.g. when the drop was directly on the placeholder).
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder !== replacement &&
+        this.activePlaceHolder.tagName &&
+        this.activePlaceHolder.tagName.toLowerCase() === "p" &&
+        this.activePlaceHolder.parentNode
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+
+    this.activePlaceHolder = null;
+    this.activeNode = replacement;
+    this.toast("Image replaced");
   }
 
   /**
@@ -3495,7 +3592,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       title: "Embed slide deck",
       description:
         "Upload a PowerPoint and embed it as an interactive slide deck",
-      icon: "icons:slideshow",
+      icon: "image:slideshow",
       tags: ["Media", "presentation", "slides", "powerpoint", "pptx"],
       inline: true,
       value: {

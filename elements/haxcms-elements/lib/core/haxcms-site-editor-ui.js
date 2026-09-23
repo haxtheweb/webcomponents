@@ -2749,7 +2749,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           UserScaffoldInstance.active &&
           UserScaffoldInstance.memory.isLoggedIn &&
           SuperDaemonInstance.programName === null &&
-          usAction.type === "drag"
+          usAction.type === "drag" &&
+          usData.architype === "file"
         ) {
           this.activeDrag = true;
           this.activeType = usData.value || usData.architype;

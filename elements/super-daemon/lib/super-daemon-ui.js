@@ -74,7 +74,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           UserScaffoldInstance.active &&
           UserScaffoldInstance.memory.isLoggedIn &&
           sdi.programName === null &&
-          usAction.type === "drag"
+          usAction.type === "drag" &&
+          usData.architype === "file"
         ) {
           this.activeDrag = true;
           this.activeType = usData.value || usData.architype;
