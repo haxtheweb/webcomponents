@@ -10,6 +10,12 @@ export class BlockQuote extends DDD {
       citation: { type: String },
       image: { type: String },
       alt: { type: String },
+      dataTextAlign: {
+        type: String,
+        attribute: "data-text-align",
+        reflect: true,
+      },
+      noBorder: { type: Boolean, attribute: "no-border", reflect: true },
     };
   }
 
@@ -22,6 +28,8 @@ export class BlockQuote extends DDD {
     this.citation = "";
     this.image = "";
     this.alt = "";
+    this.dataTextAlign = "center";
+    this.noBorder = false;
   }
 
   render() {
@@ -93,6 +101,62 @@ export class BlockQuote extends DDD {
           container-type: inline-size;
         }
 
+        :host([data-accent]) {
+          --ddd-component-block-quote-border-color: var(
+            --ddd-theme-accent,
+            var(--ddd-theme-default-limestoneGray)
+          );
+        }
+
+        :host([data-primary]) {
+          --ddd-component-block-quote-border-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-limestoneGray)
+          );
+        }
+
+        :host([data-text-align="left"]) #wrap {
+          text-align: left;
+        }
+        :host([data-text-align="center"]) #wrap {
+          text-align: center;
+        }
+        :host([data-text-align="right"]) #wrap {
+          text-align: right;
+        }
+        :host([data-text-align="justify"]) #wrap {
+          text-align: justify;
+        }
+
+        :host([data-border-radius="xs"]) #wrap {
+          border-radius: var(--ddd-radius-xs);
+        }
+        :host([data-border-radius="sm"]) #wrap {
+          border-radius: var(--ddd-radius-sm);
+        }
+        :host([data-border-radius="md"]) #wrap {
+          border-radius: var(--ddd-radius-md);
+        }
+        :host([data-border-radius="lg"]) #wrap {
+          border-radius: var(--ddd-radius-lg);
+        }
+        :host([data-border-radius="xl"]) #wrap {
+          border-radius: var(--ddd-radius-xl);
+        }
+
+        :host([data-box-shadow="sm"]) {
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        :host([data-box-shadow="md"]) {
+          box-shadow: var(--ddd-boxShadow-md);
+        }
+        :host([data-box-shadow="lg"]) {
+          box-shadow: var(--ddd-boxShadow-lg);
+        }
+        :host([data-box-shadow="xl"]) {
+          box-shadow: var(--ddd-boxShadow-xl);
+        }
+
         #wrap {
           display: flex;
           border-left: var(--ddd-border-lg);
@@ -101,7 +165,29 @@ export class BlockQuote extends DDD {
             var(--ddd-component-block-quote-border-color-default)
           );
           padding: var(--ddd-spacing-6);
-          text-align: center;
+        }
+
+        :host(:not([data-border])) #wrap {
+          border-width: var(
+            --ddd-theme-border-size,
+            var(--ddd-border-size-lg)
+          );
+        }
+        :host([data-border="xs"]) #wrap,
+        :host([data-border="sm"]) #wrap,
+        :host([data-border="md"]) #wrap,
+        :host([data-border="lg"]) #wrap {
+          border-width: var(--ddd-theme-border-size);
+        }
+        :host([no-border]) #wrap {
+          border-left: none;
+        }
+        :host([data-padding]) #wrap {
+          padding: inherit;
+        }
+        :host([data-margin="center"]) {
+          margin-left: auto;
+          margin-right: auto;
         }
 
         #inner_wrap {

@@ -236,7 +236,7 @@
       <activity-box data-primary="2" data-accent="1" icon="settings">
         Drag &amp; drop - drag the icons to the matching descriptions.
       </activity-box>
-      <h3>block-quote</h3>
+      <h3>block-quote: default (center aligned)</h3>
       <demo-snippet>
         <template>
           <block-quote
@@ -247,6 +247,138 @@
               I was sitting in a chair in the patent office at Bern, when all of
               a sudden a thought occurred to me: ‘If a person falls freely, he
               will not feel his own weight.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: text alignment (data-text-align)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-text-align="left" citation="Left aligned">
+            <span slot="quote">
+              The quote body is aligned to the left edge of the container.
+            </span>
+          </block-quote>
+          <block-quote data-text-align="center" citation="Center aligned">
+            <span slot="quote">
+              The quote body is centered within the container (the default).
+            </span>
+          </block-quote>
+          <block-quote data-text-align="right" citation="Right aligned">
+            <span slot="quote">
+              The quote body is aligned to the right edge of the container.
+            </span>
+          </block-quote>
+          <block-quote data-text-align="justify" citation="Justified">
+            <span slot="quote">
+              The quote body is justified so that each line stretches to fill
+              the full width of the container, producing clean edges on both
+              the left and the right side of the paragraph.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: no border (no-border)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote no-border citation="No accent border">
+            <span slot="quote">
+              The left accent border is removed entirely with the no-border
+              escape hatch.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: border thickness (data-border)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-border="xs" citation="Border xs">
+            <span slot="quote">Extra small border thickness.</span>
+          </block-quote>
+          <block-quote data-border="sm" citation="Border sm">
+            <span slot="quote">Small border thickness.</span>
+          </block-quote>
+          <block-quote data-border="md" citation="Border md">
+            <span slot="quote">Medium border thickness.</span>
+          </block-quote>
+          <block-quote data-border="lg" citation="Border lg">
+            <span slot="quote">Large border thickness.</span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: border radius (data-border-radius)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-border-radius="xs" citation="Radius xs">
+            <span slot="quote">Rounded corners (xs).</span>
+          </block-quote>
+          <block-quote data-border-radius="md" citation="Radius md">
+            <span slot="quote">Rounder corners (md).</span>
+          </block-quote>
+          <block-quote data-border-radius="xl" citation="Radius xl">
+            <span slot="quote">Roundest corners (xl).</span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: box shadow (data-box-shadow)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-box-shadow="sm" citation="Shadow sm">
+            <span slot="quote">Subtle drop shadow (sm).</span>
+          </block-quote>
+          <block-quote data-box-shadow="md" citation="Shadow md">
+            <span slot="quote">Medium drop shadow (md).</span>
+          </block-quote>
+          <block-quote data-box-shadow="lg" citation="Shadow lg">
+            <span slot="quote">Large drop shadow (lg).</span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: accent / primary color (data-accent, data-primary)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-accent="1" citation="Accent border">
+            <span slot="quote">
+              The accent color drives the border color of the quote.
+            </span>
+          </block-quote>
+          <block-quote data-primary="2" citation="Primary border">
+            <span slot="quote">
+              The primary color drives the border color of the quote.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: spacing (data-padding, data-margin)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote data-padding="m" citation="Padding m">
+            <span slot="quote">
+              DDD padding is applied and the inner padding is inherited.
+            </span>
+          </block-quote>
+          <block-quote data-margin="center" citation="Margin center">
+            <span slot="quote">
+              DDD margin centers the quote within its container.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <h3>block-quote: combined (card look)</h3>
+      <demo-snippet>
+        <template>
+          <block-quote
+            data-primary="1"
+            data-accent="0"
+            data-border="sm"
+            data-border-radius="md"
+            data-box-shadow="sm"
+            data-text-align="left"
+            citation="Combined DDD options"
+          >
+            <span slot="quote">
+              Text alignment, border thickness, radius, shadow, and color can
+              all be combined to produce a card-like treatment of the quote.
             </span>
           </block-quote>
         </template>

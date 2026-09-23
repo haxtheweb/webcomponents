@@ -4,7 +4,13 @@
   "canScale": false,
   "canEditSource": true,
   "hideDefaultSettings": false,
-  "designSystem": false,
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": false,
+    "designTreatment": false
+  },
   "gizmo": {
     "title": "Block quote",
     "description": "Styled quote block.",
