@@ -1,20 +1,23 @@
 export const MtzFileDownloadBehaviors = function (SuperClass) {
   return class extends SuperClass {
+    constructor() {
+      super();
+      // Lit ignores Polymer-style value() defaults, so the MIME type map
+      // must be established in the constructor
+      this.fileTypes = {
+        CSV: "text/csv",
+        JSON: "text/json",
+        PDF: "application/pdf",
+        TXT: "text/plain",
+        HTML: "text/html",
+      };
+    }
     static get properties() {
       if (super.properties) {
         return Object.assign(
           {
             fileTypes: {
               type: Object,
-              value() {
-                return {
-                  CSV: "text/csv",
-                  JSON: "text/json",
-                  PDF: "application/pdf",
-                  TXT: "text/plain",
-                  HTML: "text/html",
-                };
-              },
             },
           },
           super.properties,
@@ -23,15 +26,6 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
         return {
           fileTypes: {
             type: Object,
-            value() {
-              return {
-                CSV: "text/csv",
-                JSON: "text/json",
-                PDF: "application/pdf",
-                TXT: "text/plain",
-                HTML: "text/html",
-              };
-            },
           },
         };
       }

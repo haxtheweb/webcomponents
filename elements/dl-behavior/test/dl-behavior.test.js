@@ -133,18 +133,20 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
     element.appendChild = () => {};
     element.removeChild = () => {};
 
-    element.downloadFromData("test,data,csv", "CSV", "testfile");
+    try {
+      element.downloadFromData("test,data,csv", "CSV", "testfile");
 
-    expect(blobOptions.type).to.equal("text/csv");
-    expect(blobData[0]).to.include("test,data,csv");
-    expect(mockLink.download).to.equal("testfile.csv");
-
-    // Restore original functions
-    globalThis.Blob = originalBlob;
-    if (originalCreateObjectURL) {
-      globalThis.URL.createObjectURL = originalCreateObjectURL;
+      expect(blobOptions.type).to.equal("text/csv");
+      expect(blobData[0]).to.include("test,data,csv");
+      expect(mockLink.download).to.equal("testfile.csv");
+    } finally {
+      // Restore original functions so later fixtures are not polluted
+      globalThis.Blob = originalBlob;
+      if (originalCreateObjectURL) {
+        globalThis.URL.createObjectURL = originalCreateObjectURL;
+      }
+      globalThis.document.createElement = originalCreateElement;
     }
-    globalThis.document.createElement = originalCreateElement;
   });
 
   // Edge cases and error handling
@@ -172,6 +174,8 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
       return { size: 0, type: options.type };
     };
 
+    const originalCreateObjectURL =
+      globalThis.URL && globalThis.URL.createObjectURL;
     globalThis.URL = globalThis.URL || {};
     globalThis.URL.createObjectURL = () => "blob:mock-url";
 
@@ -187,19 +191,27 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
     element.appendChild = () => {};
     element.removeChild = () => {};
 
-    element.downloadFromData("", "TXT", "empty");
-    expect(blobCreated).to.be.true;
-
-    // Restore
-    globalThis.Blob = originalBlob;
-    globalThis.document.createElement = originalCreateElement;
+    try {
+      element.downloadFromData("", "TXT", "empty");
+      expect(blobCreated).to.be.true;
+    } finally {
+      // Restore so later fixtures are not polluted
+      globalThis.Blob = originalBlob;
+      if (originalCreateObjectURL) {
+        globalThis.URL.createObjectURL = originalCreateObjectURL;
+      }
+      globalThis.document.createElement = originalCreateElement;
+    }
   });
 
   it("handles special characters in filenames", async () => {
     // Setup mocks
+    const originalBlob = globalThis.Blob;
     globalThis.Blob = function () {
       return { size: 0, type: "text/plain" };
     };
+    const originalCreateObjectURL =
+      globalThis.URL && globalThis.URL.createObjectURL;
     globalThis.URL = globalThis.URL || {};
     globalThis.URL.createObjectURL = () => "blob:mock-url";
 
@@ -210,19 +222,36 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
       click: () => {},
     };
 
+    const originalCreateElement = globalThis.document.createElement;
     globalThis.document.createElement = () => mockLink;
     element.appendChild = () => {};
     element.removeChild = () => {};
 
-    element.downloadFromData("test data", "TXT", "file with spaces & symbols");
-    expect(mockLink.download).to.equal("file with spaces & symbols.txt");
+    try {
+      element.downloadFromData(
+        "test data",
+        "TXT",
+        "file with spaces & symbols",
+      );
+      expect(mockLink.download).to.equal("file with spaces & symbols.txt");
+    } finally {
+      // Restore so later fixtures are not polluted
+      globalThis.Blob = originalBlob;
+      if (originalCreateObjectURL) {
+        globalThis.URL.createObjectURL = originalCreateObjectURL;
+      }
+      globalThis.document.createElement = originalCreateElement;
+    }
   });
 
   it("uses default filename when name not provided", async () => {
     // Setup mocks
+    const originalBlob = globalThis.Blob;
     globalThis.Blob = function () {
       return { size: 0, type: "text/plain" };
     };
+    const originalCreateObjectURL =
+      globalThis.URL && globalThis.URL.createObjectURL;
     globalThis.URL = globalThis.URL || {};
     globalThis.URL.createObjectURL = () => "blob:mock-url";
 
@@ -233,42 +262,54 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
       click: () => {},
     };
 
+    const originalCreateElement = globalThis.document.createElement;
     globalThis.document.createElement = () => mockLink;
     element.appendChild = () => {};
     element.removeChild = () => {};
 
-    element.downloadFromData("test data", "TXT");
-    expect(mockLink.download).to.equal("download.txt");
+    try {
+      element.downloadFromData("test data", "TXT");
+      expect(mockLink.download).to.equal("download.txt");
+    } finally {
+      // Restore so later fixtures are not polluted
+      globalThis.Blob = originalBlob;
+      if (originalCreateObjectURL) {
+        globalThis.URL.createObjectURL = originalCreateObjectURL;
+      }
+      globalThis.document.createElement = originalCreateElement;
+    }
   });
 
   // IE/Legacy browser support tests
   it("handles IE msSaveOrOpenBlob when available", async () => {
-    // Mock navigator.msSaveOrOpenBlob
-    const originalNavigator = globalThis.navigator;
+    // window.navigator is getter-only so add the IE-specific feature
+    // detect property to the real navigator object instead of replacing it
     let msSaveOrOpenBlobCalled = false;
     let savedBlob = null;
     let savedFilename = "";
 
-    globalThis.navigator = {
-      msSaveOrOpenBlob: (blob, filename) => {
-        msSaveOrOpenBlobCalled = true;
-        savedBlob = blob;
-        savedFilename = filename;
-      },
+    globalThis.navigator.msSaveOrOpenBlob = (blob, filename) => {
+      msSaveOrOpenBlobCalled = true;
+      savedBlob = blob;
+      savedFilename = filename;
     };
 
+    const originalBlob = globalThis.Blob;
     globalThis.Blob = function (data, options) {
       return { data, options, size: data[0].length };
     };
 
-    element.downloadFromData("test data", "TXT", "test");
+    try {
+      element.downloadFromData("test data", "TXT", "test");
 
-    expect(msSaveOrOpenBlobCalled).to.be.true;
-    expect(savedFilename).to.equal("test.txt");
-    expect(savedBlob).to.exist;
-
-    // Restore
-    globalThis.navigator = originalNavigator;
+      expect(msSaveOrOpenBlobCalled).to.be.true;
+      expect(savedFilename).to.equal("test.txt");
+      expect(savedBlob).to.exist;
+    } finally {
+      // Restore
+      delete globalThis.navigator.msSaveOrOpenBlob;
+      globalThis.Blob = originalBlob;
+    }
   });
 
   // Accessibility tests
