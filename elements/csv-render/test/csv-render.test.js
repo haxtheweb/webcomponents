@@ -16,7 +16,7 @@ const mockCSVData = {
   headersOnly: "Name,Age,City",
   singleRow: "Name,Age,City\nJohn,25,New York",
   specialChars:
-    'Name,Age,Notes\nJohn,25,"Special chars: <>&\'\\""\nJane,30,Normal',
+    'Name,Age,Notes\nJohn,25,"Special chars: <>&\'"""\nJane,30,Normal',
 };
 
 // Mock hexagon-loader dependency
@@ -139,7 +139,9 @@ describe("csv-render test", () => {
       await expect(el).shadowDom.to.be.accessible();
     });
 
-    it("passes a11y audit with different accent colors", async () => {
+    it("passes a11y audit with different accent colors", async function () {
+      // 4 fixtures x 500ms debounce + audit exceeds the default 2s timeout
+      this.timeout(10000);
       const colors = ["red", "green", "purple", "orange"];
 
       for (const color of colors) {
@@ -387,6 +389,8 @@ describe("csv-render test", () => {
       const el = await fixture(html`
         <csv-render data-source="debounce.csv"></csv-render>
       `);
+      // ignore the call made while loading the shared beforeEach fixture
+      fetchStub.resetHistory();
 
       // Rapidly change data source
       el.dataSource = "test1.csv";
@@ -407,6 +411,9 @@ describe("csv-render test", () => {
     });
 
     it("only loads data when element is visible", async () => {
+      // ignore the call made while loading the shared beforeEach fixture
+      fetchStub.resetHistory();
+
       const el = await fixture(html`
         <csv-render data-source="invisible.csv"></csv-render>
       `);
@@ -527,7 +534,7 @@ describe("csv-render test", () => {
   describe("Intersection Observer Integration", () => {
     it("uses IntersectionObserverMixin", () => {
       expect(element.elementVisible).to.be.a("boolean");
-      expect(typeof element.intersectionCallback).to.equal("function");
+      expect(typeof element.handleIntersectionCallback).to.equal("function");
     });
 
     it("loads data when becoming visible", async () => {
@@ -593,6 +600,9 @@ describe("csv-render test", () => {
     });
 
     it("handles missing data source gracefully", async () => {
+      // ignore the call made while loading the shared beforeEach fixture
+      fetchStub.resetHistory();
+
       const el = await fixture(html` <csv-render></csv-render> `);
 
       el.elementVisible = true;
@@ -661,7 +671,8 @@ describe("csv-render test", () => {
         resolvePromise = resolve;
       });
 
-      fetchStub.returns({
+      // must resolve a Promise; loadCSVData chains .then() off of fetch()
+      fetchStub.resolves({
         ok: true,
         text: () => loadingPromise,
       });
@@ -722,7 +733,7 @@ describe("csv-render test", () => {
       await waitUntil(() => !el.loading);
 
       const headers = el.shadowRoot.querySelectorAll("th");
-      expect(headers.map((h) => h.textContent)).to.deep.equal([
+      expect(Array.from(headers).map((h) => h.textContent)).to.deep.equal([
         "Date",
         "Product",
         "Sales",

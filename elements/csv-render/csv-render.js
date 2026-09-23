@@ -146,6 +146,17 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
     });
   }
   /**
+   * HTMLElement life cycle - disconnected
+   */
+  disconnectedCallback() {
+    // clear any pending debounced data loading so we do not fetch
+    // (or leak timers) after the element is removed from the DOM
+    clearTimeout(this.__debouce);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
+  /**
    * LitElement render
    */
   render() {

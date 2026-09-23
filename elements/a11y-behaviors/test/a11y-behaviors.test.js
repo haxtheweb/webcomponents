@@ -107,9 +107,9 @@ describe("A11yBehaviors mixin test", () => {
     });
 
     it("should handle specific accessibility-critical color combinations", () => {
-      // Test colors around the luma threshold (141)
-      // Colors that should trigger white text
-      expect(element.getTextContrastColor("#808080")).to.equal("#ffffff");
+      // Test colors around the WCAG contrast crossover point
+      // White on #808080 is only 3.95:1 so black text (5.32:1) must win
+      expect(element.getTextContrastColor("#808080")).to.equal("#000000");
 
       // Colors that should trigger black text
       expect(element.getTextContrastColor("#c0c0c0")).to.equal("#000000");
@@ -164,7 +164,8 @@ describe("A11yBehaviors mixin test", () => {
       // Test with hash
       element.backgroundColor = "#ff0000";
       element.computeTextPropContrast("textColor", "backgroundColor");
-      expect(element.textColor).to.equal("#ffffff"); // Red background should get white text
+      // White on red is only 3.99:1 so black text (5.25:1) must win
+      expect(element.textColor).to.equal("#000000");
 
       await element.updateComplete;
       await expect(element).shadowDom.to.be.accessible();
