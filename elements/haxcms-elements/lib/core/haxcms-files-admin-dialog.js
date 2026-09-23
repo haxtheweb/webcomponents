@@ -1507,6 +1507,8 @@ class HAXCMSFilesAdminDialog extends DDD {
                     sort
                     striped
                     scroll
+                    sort-column="5"
+                    sort-mode="desc"
                   >
                     <table>
                       <thead>
@@ -1594,9 +1596,15 @@ class HAXCMSFilesAdminDialog extends DDD {
                                   r.updated || r.dateCreated,
                                 )}"
                               >
-                                ${this._fmtRelativeDate(
-                                  r.updated || r.dateCreated,
-                                )}
+                                <span
+                                  data-sort-value="${this._dateMs(
+                                    r.updated || r.dateCreated,
+                                  )}"
+                                >
+                                  ${this._fmtRelativeDate(
+                                    r.updated || r.dateCreated,
+                                  )}
+                                </span>
                               </td>
                             </tr>
                           `,

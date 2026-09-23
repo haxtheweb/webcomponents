@@ -8,6 +8,10 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 
+// Match the items-per-page choices used by haxcms-files-admin-dialog so the
+// content admin's pagination feels consistent with the files admin.
+const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
+
 class HAXCMSContentAdminDialog extends DDD {
   static get tag() {
     return "haxcms-content-admin-dialog";
@@ -54,7 +58,7 @@ class HAXCMSContentAdminDialog extends DDD {
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
     this.__replaceResponseHandler = this._onReplaceResults.bind(this);
-    this.__searchDebounceTimer = null;
+    this.__triggerUpdateHandler = this.__handleTriggerUpdate.bind(this);
   }
 
   static get styles() {
@@ -205,6 +209,17 @@ class HAXCMSContentAdminDialog extends DDD {
       "haxcms-content-dashboard-replace-results",
       this.__replaceResponseHandler,
     );
+    // haxcms-site-editor-ui dispatches this globally after outline / manifest
+    // saves and after the platform settings/manifest detail patches land.
+    // The store.manifest autorun picks up the data change, but the slotted
+    // <editable-table-display> needs an explicit requestUpdate so the table
+    // body re-imports the freshly rendered HTML — mirrors the same hook
+    // haxcms-files-admin-dialog uses (_requestTableUpdate) to refresh after
+    // an operation so users see the latest rows without re-opening the modal.
+    globalThis.addEventListener(
+      "haxcms-trigger-update",
+      this.__triggerUpdateHandler,
+    );
   }
 
   disconnectedCallback() {
@@ -219,6 +234,10 @@ class HAXCMSContentAdminDialog extends DDD {
     globalThis.removeEventListener(
       "haxcms-content-dashboard-replace-results",
       this.__replaceResponseHandler,
+    );
+    globalThis.removeEventListener(
+      "haxcms-trigger-update",
+      this.__triggerUpdateHandler,
     );
     for (var i in this.__disposer) {
       const disposer = this.__disposer[i];
@@ -473,23 +492,25 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   _onSearchLimit(e) {
-    const value = parseInt(e.detail.value);
-    if (isNaN(value)) {
-      this.searchLimit = 25;
+    const raw =
+      e && e.detail && typeof e.detail.value === "string"
+        ? e.detail.value.trim()
+        : "";
+    const value = parseInt(raw, 10);
+    const next = !Number.isNaN(value) && PAGE_SIZE_OPTIONS.includes(value)
+      ? value
+      : 25;
+    if (next === this.searchLimit && next === this.pageLimit) {
       this._debounceSearchRequest();
       return;
     }
-    if (value < 1) {
-      this.searchLimit = 1;
-      this._debounceSearchRequest();
-      return;
-    }
-    if (value > 200) {
-      this.searchLimit = 200;
-      this._debounceSearchRequest();
-      return;
-    }
-    this.searchLimit = value;
+    // Search cap and table page size share the same dropdown so the visible
+    // page count matches the server-side fetch cap; whichever callsite
+    // (search results vs. simple-pager) the user is looking at when they
+    // change the dropdown gets the same value.
+    this.searchLimit = next;
+    this.pageLimit = next;
+    this.pageOffset = 0;
     this._debounceSearchRequest();
   }
 
@@ -580,6 +601,46 @@ class HAXCMSContentAdminDialog extends DDD {
       { hat: "construction" },
     );
     this._applySearch();
+    // Refresh now that the backend updated page content; the store.manifest
+    // autorun rebuilds `this.rows`, so the slotted editable-table-display
+    // just needs requestUpdate() to re-import the freshly slotted HTML.
+    this._refreshTable();
+  }
+
+  /**
+   * Forces the slotted <editable-table-display> to re-import its slotted
+   * <table> child. Mirrors haxcms-files-admin-dialog._requestTableUpdate().
+   * The store.manifest autorun already rebuilds `this.rows` after most
+   * operations; this hook only nudges the display element so the rendered
+   * tbody reflects the freshly slotted HTML without waiting for the
+   * MutationObserver to fire. Deferred via microtask + RAF so the Lit
+   * template pass that produced the new slots completes first.
+   */
+  _refreshTable() {
+    if (!this.shadowRoot) return;
+    const tableDisplay = this.shadowRoot.querySelector("editable-table-display");
+    if (
+      tableDisplay &&
+      typeof tableDisplay.requestUpdate === "function" &&
+      typeof tableDisplay.loadSlottedTable === "function"
+    ) {
+      Promise.resolve().then(() => {
+        requestAnimationFrame(() => {
+          tableDisplay.loadSlottedTable();
+          tableDisplay.requestUpdate();
+        });
+      });
+    }
+  }
+
+  __handleTriggerUpdate() {
+    if (!this.shadowRoot) return;
+    // Aligns with haxcms-files-admin which calls _requestTableUpdate after
+    // an operation lands so the user sees fresh data without re-opening
+    // the modal. The autorun on store.manifest has already rebuilt
+    // `this.rows` by the time haxcms-trigger-update fires, so this just
+    // asks the slotted table to re-import and request a re-render.
+    this._refreshTable();
   }
 
   _searchMatchCount() {
@@ -867,11 +928,13 @@ class HAXCMSContentAdminDialog extends DDD {
                       @value-changed="${this._onSearchCaseSensitive}"
                     ></simple-fields-field>
                     <simple-fields-field
-                      type="number"
-                      label="Limit"
-                      min="1"
-                      max="200"
+                      type="select"
+                      label="Per page"
                       .value="${String(this.searchLimit)}"
+                      .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
+                        value: String(size),
+                        text: String(size),
+                      }))}"
                       @value-changed="${this._onSearchLimit}"
                     ></simple-fields-field>
                     ${this.operationMode === "replace"
@@ -916,6 +979,8 @@ class HAXCMSContentAdminDialog extends DDD {
                     sort
                     striped
                     scroll
+                    sort-column="2"
+                    sort-mode="desc"
                     @click="${this._handleTableActionClick}"
                   >
                     <table>
@@ -935,7 +1000,7 @@ class HAXCMSContentAdminDialog extends DDD {
                             <tr>
                               <td><a href="${row.slug}">${row.title}</a></td>
                               <td>${row.statusLabel}</td>
-                              <td>${row.updatedLabel}</td>
+                              <td><span data-sort-value="${row.updated}">${row.updatedLabel}</span></td>
                               <td>
                                 ${row.parentSlug
                                   ? html`<a href="${row.parentSlug}"
