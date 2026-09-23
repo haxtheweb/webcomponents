@@ -70,15 +70,13 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": []
+    "unsetAttributes": ["_haxstate"]
   },
   "demoSchema": [
     {
       "tag": "polaris-mark",
       "properties": {
-        "name": "Invent Penn State",
-        "url": "https://invent.psu.edu/",
-        "type": "default"
+        "url": "https://psu.edu/"
       },
       "content": ""
     }

@@ -44,7 +44,12 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          overflow-x: hidden;
+          /* Guard against horizontal page scroll from wide content without
+             establishing a scroll container on :host (clip, unlike hidden,
+             does not force the other axis to auto). The sticky nav is a
+             position: fixed mirror, which is viewport-anchored and immune
+             to ancestor overflow regardless. */
+          overflow-x: clip;
           /* Page actions pencil sits under the sticky flex nav; push it down */
           --page-break-menu-button-top: var(--ddd-spacing-2);
           --polaris-content-bg-color: light-dark(
@@ -182,7 +187,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           font-family: var(--ddd-font-navigation);
           display: flex;
           justify-content: space-between;
-          column-gap: var(--ddd-spacing-5);
+          column-gap: var(--ddd-spacing-2);
           color: white;
           margin-left: auto;
           margin-right: auto;
@@ -236,7 +241,11 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           align-items: center;
           max-width: 1080px;
           margin: 0 auto;
-          padding: var(--ddd-spacing-7) var(--polaris-standard-padding);
+          padding: var(--ddd-spacing-4) var(--polaris-standard-padding);
+        }
+
+        .sticky-nav-mirror.stuck .header-branding {
+          padding: var(--ddd-spacing-2) var(--polaris-standard-padding);
         }
 
         .header-branding-left {
@@ -260,6 +269,50 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         .nav-section {
           width: 100%;
           background-color: var(--polaris-nav-bg-color);
+        }
+
+        /* Fixed mirror of .nav-section. The in-flow #primary-nav stays in
+           <header> in normal flow so the top of the page reads
+           top-menu -> nav -> hero, exactly as before. This fixed copy is
+           hidden until you scroll past the in-flow nav (toggled via
+           __navStuck / IntersectionObserver in firstUpdated).
+
+           position: fixed (not sticky) is deliberate: HAXCMS applies
+           overflow: hidden to :host when the mobile menu opens, which turns
+           :host into a scroll container and snaps a position: sticky nav back
+           to the top of the document. That is why the mobile menu used to open
+           at the very top instead of where you were reading. A fixed element
+           is anchored to the viewport (no transformed ancestor here) and is
+           immune to that overflow change, so the mirror -- and the menu opened
+           from it -- stays put at the top of the viewport. */
+        .sticky-nav-mirror {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 10;
+          background-color: var(--polaris-nav-bg-color);
+          visibility: hidden;
+          pointer-events: none;
+          opacity: 0;
+        }
+        .sticky-nav-mirror.stuck {
+          visibility: visible;
+          pointer-events: auto;
+          opacity: 1;
+        }
+        /* Sit below the fixed ~56px admin bar when logged in (see
+           haxcms-site-builder / clean-two for the 56px convention). */
+        :host([is-logged-in]) .sticky-nav-mirror {
+          top: 64px;
+        }
+        .sticky-nav-mirror #haxcmsmobilemenubutton-mirror {
+          display: inline;
+          padding: 0px;
+          margin: 2px 6px 0 6px;
+          color: var(--polaris-nav-color);
+          --simple-icon-height: 30px;
+          --simple-icon-width: 30px;
         }
 
         site-menu {
@@ -595,7 +648,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           .header-branding {
             display: flex;
             justify-content: space-between;
-            padding: var(--ddd-spacing-2) var(--polaris-xs-padding);
+            padding: var(--ddd-spacing-4) var(--polaris-xs-padding);
           }
           #mark {
             margin: 15px 0;
@@ -747,11 +800,6 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         :host([menu-open]) {
           --menu-size: 0px;
         }
-        :host([menu-open]) .left-col {
-          margin-left: 0px;
-          position: sticky;
-          margin-top: 8px;
-        }
 
         .search-modal-btn {
           --simple-icon-height: 24px;
@@ -776,6 +824,23 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     // hook up the scroll target
     this.shadowRoot.querySelector("scroll-button").target =
       this.shadowRoot.querySelector("#main");
+
+    // Reveal the fixed .sticky-nav-mirror once the in-flow header has
+    // scrolled above the viewport top. rootMargin collapses the IO root to a
+    // zero-height line at top:0 so the callback fires exactly as the nav's
+    // top edge crosses the viewport top, giving a seamless stick illusion.
+    const primaryNav = this.shadowRoot.querySelector("header");
+    if (primaryNav) {
+      this.__navIO = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          this.__navStuck =
+            !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        },
+        { rootMargin: "0px 0px -100% 0px", threshold: 0 },
+      );
+      this.__navIO.observe(primaryNav);
+    }
   }
 
   renderHeaderSlot() {
@@ -802,6 +867,71 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
 
   renderFooterPrimarySlot() {
     return html``;
+  }
+
+  /**
+   * Fixed mirror of the in-flow #primary-nav. Invisible until __navStuck
+   * (set by the IntersectionObserver in firstUpdated) and suppressed in edit
+   * mode (where :host gets a tray margin that a fixed bar would fight). Uses
+   * unique ids so it can't collide with the in-flow nav's
+   * #haxcmsmobilemenubutton / #haxcmsmobilemenunav / #sitemenu.
+   */
+  renderStickyNavMirror() {
+    return html`
+      <div
+        class="nav-section sticky-nav-mirror${this.__navStuck &&
+        !this.editMode
+          ? ` stuck`
+          : ``}"
+      >
+        <div class="header-branding">
+          ${this.renderMirrorMobileButton()}
+        </div>
+        <nav
+          id="haxcmsmobilemenunav-mirror"
+          role="navigation"
+          aria-label="Site navigation"
+          aria-labelledby="sitemenu-mirror"
+          itemscope
+          itemtype="http://schema.org/SiteNavigationElement"
+        >
+          <replace-tag
+            with="site-menu"
+            part="site-menu-mirror"
+            id="sitemenu-mirror"
+            max-depth="3"
+            ?is-flex="${this.isFlex}"
+            ?is-horizontal="${this.isHorizontal}"
+            import-method="view"
+          ></replace-tag>
+        </nav>
+      </div>
+    `;
+  }
+
+  /**
+   * Hamburger button for the sticky mirror (mobile only). Mirrors
+   * HAXCMSMobileMenuButton but with a unique id so the tooltip for-binding
+   * and the mixin #haxcmsmobilemenunav tabindex logic stay scoped to the
+   * in-flow nav.
+   */
+  renderMirrorMobileButton() {
+    if (!["xs", "sm"].includes(this.responsiveSize)) {
+      return html``;
+    }
+    return html`
+      <simple-icon-button-lite
+        class="btn"
+        icon="${this.menuOpen ? "hax:menu-open" : "icons:menu"}"
+        label="${this.menuOpen ? this.t.closeMenu : this.t.openMenu}"
+        id="haxcmsmobilemenubutton-mirror"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+        @click="${this.__HAXCMSMobileMenuClickToggle}"
+      ></simple-icon-button-lite>
+      <simple-tooltip for="haxcmsmobilemenubutton-mirror" position="right">
+        ${this.menuOpen ? this.t.closeMenu : this.t.openMenu}
+      </simple-tooltip>
+    `;
   }
   // render function
   render() {
@@ -831,15 +961,16 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
               </div>
             </div>
           </div>
-          <div class="nav-section">
+          <div class="nav-section" id="primary-nav" aria-hidden="${this.__navStuck ? "true" : "false"}">
             <div class="header-branding">
-            ${["xs", "sm"].includes(this.responsiveSize) ? this.HAXCMSMobileMenuButton("left") : ``}
+            ${["xs", "sm"].includes(this.responsiveSize) ? this.HAXCMSMobileMenuButton("right") : ``}
             </div>
             ${this.HAXCMSFlexMenu()}
           </div>
           <site-active-media-banner></site-active-media-banner>
         </div>
       </header>
+      ${this.renderStickyNavMirror()}
       <div class="content site-inner">
         ${this.renderSideBar()}
         <main id="main" tabindex="-1">
@@ -913,6 +1044,9 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       pageTimestamp: {
         type: Number,
       },
+      __navStuck: {
+        type: Boolean,
+      },
     };
   }
 
@@ -969,11 +1103,20 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     this.imageAlt = "";
     this.image = "";
     this.imageLink = "";
+    // sticky-nav mirror is hidden until the IntersectionObserver fires; give it
+    // a deterministic falsy default so the template never reads as undefined
+    this.__navStuck = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     this.__disposer.push(
       autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.themeData.variables);
+        // guard themeData: the store may not have a manifest yet at construction
+        // time, in which case themeData is undefined and reading .variables would
+        // throw synchronously inside the autorun (the Promise guard below only
+        // protects the deferred body, not the toJS call itself)
+        const _mobx_val_0 = toJS(
+          store.themeData && store.themeData.variables,
+        );
         Promise.resolve().then(() => {
           if (store.themeData && store.themeData.variables) {
             const vars = _mobx_val_0;
@@ -1014,6 +1157,19 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         });
       }),
     );
+  }
+
+  /**
+   * Clean up the sticky-nav IntersectionObserver when the theme is removed.
+   */
+  disconnectedCallback() {
+    if (this.__navIO) {
+      this.__navIO.disconnect();
+      this.__navIO = null;
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 
   /**
