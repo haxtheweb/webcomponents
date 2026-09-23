@@ -3584,26 +3584,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "HAX/community/contribute",
       context: "community",
     });
-    // Embed slide deck: inserts a <slide-deck> and opens the upload flow
-    // pre-scoped to .pptx via the source field's uploadRequirements. The
-    // user drops a .pptx, the uploadTransform runs convert-pptx-deck, and
-    // the field value is set to the resulting deck.json path.
-    SuperDaemonInstance.defineOption({
-      title: "Embed slide deck",
-      description:
-        "Upload a PowerPoint and embed it as an interactive slide deck",
-      icon: "image:slideshow",
-      tags: ["Media", "presentation", "slides", "powerpoint", "pptx"],
-      inline: true,
-      value: {
-        value: "slide-deck",
-        eventName: "insert-tag",
-        demoSchema: true,
-      },
-      context: "HAX",
-      eventName: "hax-super-daemon-insert-tag",
-      path: "HAX/insert/media/slide-deck",
-    });
     // container for HTML primitives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
