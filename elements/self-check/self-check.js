@@ -442,7 +442,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
             <slot name="question"></slot>
             <div class="check_button">
               <simple-icon-button-lite
-                controls="answer_wrap"
                 label="${this.t.revealAnswer}"
                 id="checkBtn"
                 class="check-btn"
