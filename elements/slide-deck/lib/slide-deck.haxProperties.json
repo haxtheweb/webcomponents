@@ -19,6 +19,7 @@
     "handles": [
       {
         "type": "pptx",
+        "type_exclusive": true,
         "source": "source"
       }
     ],

@@ -578,6 +578,81 @@ describe("EditableTable test", () => {
       ]);
     });
   });
+
+  // Regression test for haxtheweb/issues#3059: admin content/files tables
+  // rendered relative time strings (e.g. "5 minutes ago", "2 hours ago")
+  // as the Updated column. Without an explicit data-sort-value, the table
+  // falls back to a lexicographic comparison that puts "1 day ago" and
+  // "1 hour ago" ahead of "5 minutes ago" and even ranks "10 months ago"
+  // before "2 days ago" because the unit names are intermixed. Wrapping
+  // the label in <span data-sort-value="<ms>">...</span> — the same hook
+  // used by formatted bytes — lets the underlying timestamp drive the
+  // sort order regardless of which unit the human-readable string uses.
+  describe("sorting relative-time columns (issues/3059)", () => {
+    let display;
+
+    const minutes = (n) => Math.floor(Date.now() / 1000) - n * 60;
+    const hours = (n) => Math.floor(Date.now() / 1000) - n * 60 * 60;
+    const days = (n) => Math.floor(Date.now() / 1000) - n * 60 * 60 * 24;
+    const months = (n) => Math.floor(Date.now() / 1000) - n * 60 * 60 * 24 * 30;
+
+    beforeEach(async () => {
+      display = element.display;
+      display.columnHeader = false;
+      display.footer = false;
+      // Rows in intentionally-misordered input: the first two rows would
+      // sort lexicographically before the older ones ("5 minutes ago" <
+      // "1 hour ago"), and "10 months ago" would land between "2 hours
+      // ago" and "5 days ago" because "10" beats "5" as a string even
+      // though it represents a much older timestamp.
+      display.data = [
+        [
+          "Recent minutes",
+          `<span data-sort-value="${minutes(5)}">5 minutes ago</span>`,
+        ],
+        [
+          "Older hours",
+          `<span data-sort-value="${hours(2)}">2 hours ago</span>`,
+        ],
+        [
+          "Far past",
+          `<span data-sort-value="${months(10)}">10 months ago</span>`,
+        ],
+        [
+          "Recent days",
+          `<span data-sort-value="${days(5)}">5 days ago</span>`,
+        ],
+        [
+          "Last hour",
+          `<span data-sort-value="${minutes(45)}">45 minutes ago</span>`,
+        ],
+      ];
+    });
+
+    it("sorts ascending: oldest first", () => {
+      display.sortColumn = 1;
+      display.sortMode = "asc";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Far past",
+        "Recent days",
+        "Older hours",
+        "Last hour",
+        "Recent minutes",
+      ]);
+    });
+
+    it("sorts descending: newest first", () => {
+      display.sortColumn = 1;
+      display.sortMode = "desc";
+      expect(display.sortedTbody.map((row) => row[0])).to.deep.equal([
+        "Recent minutes",
+        "Last hour",
+        "Older hours",
+        "Recent days",
+        "Far past",
+      ]);
+    });
+  });
 });
 
 /*

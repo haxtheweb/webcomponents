@@ -37,6 +37,7 @@ import {
   I18NManagerStore,
 } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/media-behaviors/media-behaviors.js";
 import "@haxtheweb/editable-table/editable-table.js";
@@ -463,6 +464,123 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
       return false;
     }
+  }
+  /**
+   * Generic post-upload hook orchestrator for the tray upload / drag-drop
+   * path. Resolves the candidate gizmo for the uploaded file's type and, if
+   * that gizmo implements the `processFileUpload` haxHook, runs it. The hook
+   * returns a transform spec { fileUuid, operation, valueMapping, fallbackType? }
+   * which this method executes via @site/updateFileByUuid, mapping the response
+   * into the #url field so the subsequent insertLogicFromValues inserts the
+   * transformed source (e.g. a deck.json manifest instead of a raw .pptx).
+   * This keeps the platform type-agnostic: an element opts into post-upload
+   * conversion by implementing the hook, not by the platform hard-coding its
+   * file type. On success activePlaceHolderOperationType is set to the
+   * resolved type so the specialized gizmo is selected with the transformed
+   * source; on failure it is set to the hook's fallbackType (if any) so the
+   * file degrades gracefully (e.g. a plain link) instead of a broken
+   * specialized element. If no hook / no candidate, #url is untouched and
+   * insertLogicFromValues proceeds normally.
+   * @param {Event} e upload-response event (e.detail.xhr.response is JSON)
+   * @param {Element} context the upload field (has #url in its shadowRoot)
+   */
+  async applyFileUploadTransform(e, context) {
+    if (!e || !e.detail || !e.detail.xhr || !context) return;
+    let response = null;
+    try {
+      response = JSON.parse(e.detail.xhr.response);
+    } catch (err) {
+      return;
+    }
+    const urlEl =
+      context.shadowRoot && context.shadowRoot.querySelector("#url");
+    if (!urlEl) return;
+    const source = urlEl.value;
+    const values = { source: source, title: source };
+    let type =
+      this.activePlaceHolderOperationType || this.guessGizmoType(values);
+    if (type === "*" || !type) return;
+    let haxElements = this.guessGizmo(type, values, false, true);
+    if (!haxElements || !haxElements.length) return;
+    const candidate = haxElements.find(
+      (el) => el && typeof el.tag !== typeof undefined,
+    );
+    if (!candidate || !candidate.tag) return;
+    if (!globalThis.customElements.get(candidate.tag)) return;
+    const proto = globalThis.document.createElement(candidate.tag);
+    if (!this.testHook(proto, "processFileUpload")) return;
+    const transform = await this.runHook(proto, "processFileUpload", [
+      values,
+      response,
+      this,
+    ]);
+    if (!transform || !transform.fileUuid || !transform.operation) {
+      return;
+    }
+    const ready = await this._waitForSiteOp("@site/updateFileByUuid");
+    if (
+      !ready ||
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function"
+    ) {
+      return;
+    }
+    let useTransformed = false;
+    try {
+      const d = await MicroFrontendRegistry.call(
+        "@site/updateFileByUuid",
+        { fileUuid: transform.fileUuid, operation: transform.operation },
+        null,
+        this,
+      );
+      const status = d && d.status ? d.status : 0;
+      if (status === 200) {
+        let mapped = "";
+        if (transform.valueMapping) {
+          mapped = transform.valueMapping
+            .split(".")
+            .reduce(function (prev, curr) {
+              return prev ? prev[curr] : null;
+            }, d);
+        }
+        if (typeof mapped === "string" && mapped) {
+          urlEl.value = mapped;
+          useTransformed = true;
+        }
+      }
+    } catch (err) {
+      // transform threw; leave #url at raw uploaded path
+    }
+    if (useTransformed) {
+      // keep the specialized gizmo selection w/ the transformed source
+      this.activePlaceHolderOperationType = type;
+    } else if (transform.fallbackType) {
+      // degrade to the element's declared fallback (e.g. a plain link)
+      this.activePlaceHolderOperationType = transform.fallbackType;
+      this.toast(
+        "Post-upload transform failed; inserted a file link.",
+        4000,
+      );
+    }
+  }
+  /**
+   * Poll until a @site/* micro-frontend operation is registered. The store
+   * owns this so applyFileUploadTransform (and any future generic op runner)
+   * does not depend on HaxUploadField._waitForSiteOp.
+   */
+  async _waitForSiteOp(operationName, timeoutMs = 5000) {
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+      if (
+        MicroFrontendRegistry &&
+        typeof MicroFrontendRegistry.has === "function" &&
+        MicroFrontendRegistry.has(operationName)
+      ) {
+        return true;
+      }
+      await new Promise((r) => setTimeout(r, 60));
+    }
+    return false;
   }
   /**
    * write to the store and communicate to all pieces

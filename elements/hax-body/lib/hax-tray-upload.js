@@ -61,7 +61,7 @@ class HaxTrayUpload extends HaxUploadField {
    * Respond to successful file upload, now inject url into url field and
    * do a gizmo guess from there!
    */
-  _fileUploadResponse(e) {
+  async _fileUploadResponse(e) {
     super._fileUploadResponse(e);
     // if we don't have a URL we shouldn't do asset configuration
     // the super class if successful will have set the #url field to a parsed value
@@ -280,6 +280,14 @@ class HaxTrayUpload extends HaxUploadField {
         }
       }
 
+      // Generic post-upload hook: let the candidate gizmo for this file
+      // type run a processFileUpload haxHook to transform the uploaded file
+      // (e.g. slide-deck converting a .pptx into a deck.json manifest) before
+      // insertLogicFromValues resolves the element to insert. The platform
+      // stays type-agnostic; an element opts in by implementing the hook. On
+      // failure or no hook, #url keeps the raw path and the file is inserted
+      // normally.
+      await HAXStore.applyFileUploadTransform(e, this);
       this.newAssetConfigure();
       // ensures that if we have selfie / audio it closes those widgets
       this.option = "fileupload";

@@ -561,6 +561,44 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     </div>`;
   }
 
+  haxHooks() {
+    return {
+      processFileUpload: "haxprocessFileUpload",
+    };
+  }
+  /**
+   * @see haxHook: processFileUpload — invoked by HAXStore.applyFileUploadTransform
+   * from the generic tray upload / drag-drop path (Merlin "Embed slide deck" or
+   * dragging a .pptx onto the page). slide-deck declares the convert-pptx-deck
+   * transform here so the platform never hard-codes pptx support. Returns false
+   * for non-.pptx sources (the platform inserts them normally). Mirrors the
+   * per-field uploadTransform in slide-deck.haxProperties.json so a deck
+   * behaves identically whether created via slide-deck's own source field or
+   * via Merlin / drag-drop. On transform failure the store falls back to
+   * fallbackType "link" so the user gets a working file link instead of a
+   * broken deck pointing at the raw .pptx.
+   * @param {object} values {source, title} (source is the raw uploaded path)
+   * @param {object} response parsed upload response (response.data.file.uuid)
+   * @returns {object|false} { fileUuid, operation, valueMapping, fallbackType }
+   */
+  haxprocessFileUpload(values, response) {
+    if (!values || typeof values.source !== "string") return false;
+    if (!/\.pptx$/i.test(values.source)) return false;
+    const fileUuid =
+      response &&
+      response.data &&
+      response.data.file &&
+      response.data.file.uuid
+        ? response.data.file.uuid
+        : "";
+    if (!fileUuid) return false;
+    return {
+      fileUuid: fileUuid,
+      operation: "convert-pptx-deck",
+      valueMapping: "data.deckPath",
+      fallbackType: "link",
+    };
+  }
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
