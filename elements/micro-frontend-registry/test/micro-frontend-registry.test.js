@@ -1,5 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../micro-frontend-registry.js";
+import { MicroFrontendRegistry } from "../micro-frontend-registry.js";
+import { enableServices } from "../lib/microServices.js";
 
 describe("elementName test", () => {
   let element;
@@ -48,5 +50,41 @@ describe("elementName test", () => {
       // Error states should be accessible to screen readers
       expect(element.tagName.toLowerCase()).to.equal("micro-frontend-registry");
     });
+  });
+});
+
+// The site importers are on-prem haxcms-nodejs routes reached through the
+// @system/ namespace, so the dashboard can only offer an importer that is
+// registered here. haxtheweb/issues#2912 shipped the OpenStax converter and
+// its /system/api/v1/site/import/openstax route.
+describe("HAXcms site import services", () => {
+  before(() => {
+    enableServices(["haxcms"]);
+  });
+
+  const importers = [
+    ["@system/openstaxToSite", "/system/api/v1/site/import/openstax"],
+    ["@system/gitbookToSite", "/system/api/v1/site/import/gitbook"],
+    ["@system/notionToSite", "/system/api/v1/site/import/notion"],
+    ["@system/ploneToSite", "/system/api/v1/site/import/plone"],
+    ["@system/pressbooksToSite", "/system/api/v1/site/import/pressbooks"],
+    ["@system/haxcmsToSite", "/system/api/v1/site/import/haxcms"],
+    ["@system/wordpressToSite", "/system/api/v1/site/import/wordpress"],
+    ["@system/drupalBookToSite", "/system/api/v1/site/import/drupal-book"],
+    ["@system/elmslnToSite", "/system/api/v1/site/import/elmsln"],
+    ["@system/htmlToSite", "/system/api/v1/site/import/html"],
+  ];
+
+  importers.forEach(([name, endpoint]) => {
+    it(`registers ${name} on its on-prem endpoint`, () => {
+      expect(MicroFrontendRegistry.has(name)).to.equal(true);
+      expect(MicroFrontendRegistry.get(name).endpoint).to.equal(endpoint);
+    });
+  });
+
+  it("asks the OpenStax importer for a repoUrl, as the chooser sends", () => {
+    const openstax = MicroFrontendRegistry.get("@system/openstaxToSite");
+    expect(openstax.params).to.have.property("repoUrl");
+    expect(openstax.title).to.equal("OpenStax to Site");
   });
 });
