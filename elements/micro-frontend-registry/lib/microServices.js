@@ -377,6 +377,16 @@ export function enableHAXcmsServices() {
         "Optional: true to allow HTML fallback tree derivation when endpoint tree data is unavailable",
     },
   });
+  // openstaxToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/system/api/v1/site/import/openstax",
+    name: "@system/openstaxToSite",
+    title: "OpenStax to Site",
+    description: "Convert an OpenStax textbook to Site schema",
+    params: {
+      repoUrl: "Location of the OpenStax book",
+    },
+  });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",

@@ -1587,6 +1587,20 @@ export class AppHaxUseCaseFilter extends LitElement {
         useCaseTag: ["Import", "Plone"],
         demoLink: "#",
       },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "openstax",
+        callback: "@system/openstaxToSite",
+        prompt: "URL for the OpenStax book",
+        param: "repoUrl",
+        useCaseTitle: "OpenStax",
+        useCaseImage: "",
+        useCaseDescription: "Import an OpenStax textbook into a new HAX site",
+        useCaseIcon: [{ icon: "book", tooltip: "OpenStax import" }],
+        useCaseTag: ["Import", "OpenStax"],
+        demoLink: "#",
+      },
     ];
   }
 
