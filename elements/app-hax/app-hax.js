@@ -137,9 +137,15 @@ What did you want merlin to do?
 `;
     } else {
       var title = `[${type}] User report from HAX daemon`;
+      // userAgentData/deviceMemory/hardwareConcurrency are Chromium-only and
+      // undefined in other browsers, so guard them before use
+      const osName =
+        navigator.userAgentData && navigator.userAgentData.platform
+          ? navigator.userAgentData.platform
+          : "Unknown";
       body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
-OS: ${navigator.userAgentData.platform} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+OS: ${osName} - ${navigator.deviceMemory || "?"}GB RAM - ${navigator.hardwareConcurrency || "?"} cores
 Screen: ${globalThis.screen.width}x${globalThis.screen.height}
 Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
@@ -161,9 +167,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
     }
     globalThis.open(
-      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(
-        body,
-      )}`,
+      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${encodeURIComponent(
+        title,
+      )}&body=${encodeURIComponent(body)}`,
       "_blank",
     );
   }
@@ -2246,7 +2252,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     const displayUserName =
       this.userName && this.userName.trim() !== "" ? this.userName : "User";
     return html`<app-hax-router></app-hax-router>
-      <header>
+      <!-- plain div: app-hax-top-bar provides the banner landmark itself, a
+           wrapping <header> would nest/duplicate banner landmarks (axe:
+           landmark-banner-is-top-level, landmark-no-duplicate-banner) -->
+      <div>
         <app-hax-top-bar>
           <div slot="left" class="left-group">
             <slot
@@ -2285,7 +2294,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 hat="${this.userMenuOpen ? "edit" : "none"}"
                 aria-label="User menu for ${displayUserName}"
                 aria-expanded="${this.userMenuOpen}"
-                aria-haspopup="menu"
                 ?walking="${this.rpgWalk}"
                 @click="${this.toggleMenu}"
                 @mouseover="${this.rpgStartWalk}"
@@ -2339,7 +2347,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             </app-hax-user-menu>
           </div>
         </app-hax-top-bar>
-      </header>
+      </div>
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
           <section class="content">

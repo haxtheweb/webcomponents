@@ -186,13 +186,11 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="entireComponent">
-        <div
-          class="menuToggle"
-          part="menuToggle"
-          aria-expanded="${this.isOpen}"
-          aria-haspopup="menu"
-          aria-controls="user-menu-dropdown"
-        >
+        <!-- no ARIA here: this div is a presentational wrapper. The slotted
+             menuButton (app-hax-user-menu-toggle) is the real disclosure
+             control and carries aria-expanded itself; aria-expanded/haspopup
+             on a role-less div is invalid (axe: aria-allowed-attr) -->
+        <div class="menuToggle" part="menuToggle">
           <slot name="menuButton"
             ><simple-icon-lite
               icon="${this.icon}"
@@ -201,10 +199,12 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           ></slot>
         </div>
 
+        <!-- disclosure panel (not role=menu): it contains labeled groups of
+             mixed controls (toggle switches, links, buttons) which are not
+             valid menuitem children (axe: aria-required-children) -->
         <div
           id="user-menu-dropdown"
           class="user-menu ${this.isOpen ? "open" : ""}"
-          role="menu"
           ?inert="${!this.isOpen}"
         >
           <div class="pre-menu" role="group" aria-label="Menu Controls">

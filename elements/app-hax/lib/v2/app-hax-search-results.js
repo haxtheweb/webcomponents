@@ -504,13 +504,16 @@ export class AppHaxSearchResults extends SimpleColors {
                     </app-hax-site-bar>
                   </li>`,
               )
-            : html`<li id="noResult" role="status" aria-live="polite">
-                No
-                results${this.searchTerm !== ""
-                  ? html`<strong>"${this.searchTerm}"</strong>`
-                  : ", Create a new site!"}
-              </li>`}
+            : ``}
         </ul>
+        ${itemsToRender.length === 0
+          ? html`<div id="noResult" role="status" aria-live="polite">
+              No
+              results${this.searchTerm !== ""
+                ? html`<strong>"${this.searchTerm}"</strong>`
+                : ", Create a new site!"}
+            </div>`
+          : ``}
         <simple-tooltip for="scroll-right-btn" position="top"
           >Next</simple-tooltip
         >

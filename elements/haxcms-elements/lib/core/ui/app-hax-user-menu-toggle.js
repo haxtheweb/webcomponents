@@ -17,7 +17,6 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
     this.walking = false;
     this.ariaLabel = "";
     this.ariaExpanded = "false";
-    this.ariaHaspopup = "menu";
     this.title = "";
   }
 
@@ -30,7 +29,6 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
       walking: { type: Boolean, reflect: true },
       ariaLabel: { type: String, attribute: "aria-label" },
       ariaExpanded: { type: String, attribute: "aria-expanded" },
-      ariaHaspopup: { type: String, attribute: "aria-haspopup" },
       title: { type: String },
     };
   }
@@ -109,17 +107,18 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
         part="menu-toggle"
         aria-label="${this.ariaLabel}"
         aria-expanded="${this.ariaExpanded}"
-        aria-haspopup="${this.ariaHaspopup}"
         title="${this.title}"
       >
+        <!-- decorative: the button itself carries the accessible name, so
+             role=img with empty alt here would be an unnamed image
+             (axe: role-img-alt) -->
         <rpg-character
           seed="${this.seed}"
           width="${this.width}"
           height="${this.height}"
           hat="${this.hat}"
           ?walking="${this.walking}"
-          role="img"
-          alt=""
+          aria-hidden="true"
         ></rpg-character>
         <slot></slot>
       </button>

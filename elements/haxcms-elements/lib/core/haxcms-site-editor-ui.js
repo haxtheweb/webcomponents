@@ -3162,7 +3162,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 ?walking="${this.rpgWalk}"
                 aria-label="User menu for ${this.userName}"
                 aria-expanded="${this.userMenuOpen}"
-                aria-haspopup="menu"
                 @mouseover="${this.rpgStartWalk}"
                 @focusin="${this.rpgStartWalk}"
                 @mouseout="${this.rpgStopWalk}"
