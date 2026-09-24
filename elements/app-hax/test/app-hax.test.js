@@ -1,6 +1,17 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { store } from "../lib/v2/AppHaxStore.js";
-import "../app-hax.js";
+import { safeNavigateHref } from "@haxtheweb/utils/utils.js";
+
+// web-test-runner.config.mjs injects a demo-mode globalThis.appSettings
+// (fake jwt + demo endpoints) into every test page. app-hax's backend
+// singleton treats the fake jwt as a real session, fails validation against
+// the (absent) demo backend, and its auth-loop guard reloads the page
+// mid-run, which aborts the whole suite. Clear it BEFORE the app-hax module
+// graph (AppHaxStore + AppHaxBackendAPI singleton) initializes, so the app
+// boots with no session and no endpoints to call.
+globalThis.appSettings = {};
+
+const { store } = await import("../lib/v2/AppHaxStore.js");
+await import("../app-hax.js");
 
 describe("app-hax test", () => {
   let element;
@@ -291,8 +302,17 @@ describe("app-hax test", () => {
   });
 
   describe("Authentication functionality", () => {
+    beforeEach(() => {
+      // _jwtLoggedIn / _tokenRefreshFailed schedule reset(true) on a 100ms
+      // timer, and the global jwt-login-logout they dispatch makes jwt-login
+      // fire jwt-logged-in(false), which schedules reset(true) as well.
+      // reset(true) reloads the page and aborts the run, so neutralize it on
+      // this per-test, throwaway element instance. Deliberately not restored:
+      // pending timers must never reach the real reset.
+      element.reset = () => {};
+    });
+
     it("should handle JWT login events", () => {
-      let eventFired = false;
       element.__logoutUserAction = true;
 
       const mockEvent = {
@@ -306,63 +326,56 @@ describe("app-hax test", () => {
 
     it("should dispatch logout event", () => {
       let logoutEventFired = false;
-      element.addEventListener("jwt-login-logout", () => {
+      const handler = () => {
         logoutEventFired = true;
-      });
-
+      };
+      // logout() dispatches on globalThis, not on the element
+      globalThis.addEventListener("jwt-login-logout", handler);
       element.logout();
+      globalThis.removeEventListener("jwt-login-logout", handler);
       expect(logoutEventFired).to.be.true;
     });
 
     it("should handle token refresh failures", () => {
       let refreshFailureHandled = false;
-      element.addEventListener("jwt-login-logout", () => {
+      const handler = () => {
         refreshFailureHandled = true;
-      });
-
+      };
+      // _tokenRefreshFailed dispatches on globalThis, not on the element
+      globalThis.addEventListener("jwt-login-logout", handler);
       element._tokenRefreshFailed({});
+      globalThis.removeEventListener("jwt-login-logout", handler);
       expect(refreshFailureHandled).to.be.true;
     });
   });
 
   describe("Navigation and routing", () => {
-    let originalLocation;
+    let originalOpen;
 
     beforeEach(() => {
-      originalLocation = globalThis.location;
+      originalOpen = globalThis.open;
     });
 
     afterEach(() => {
-      globalThis.location = originalLocation;
+      globalThis.open = originalOpen;
     });
 
-    it("should navigate to specified location", () => {
-      let capturedLocation = null;
-      Object.defineProperty(globalThis, "location", {
-        get: () => ({ href: "https://test.local/" }),
-        set: (value) => {
-          capturedLocation = value;
-        },
-        configurable: true,
-      });
-
-      element.goToLocation("https://example.com");
-      // safeNavigateHref normalizes to a fully-resolved http(s) href
-      expect(capturedLocation).to.equal("https://example.com/");
+    it("normalizes navigation hrefs to fully-resolved http(s) URLs", () => {
+      // goToLocation delegates to safeNavigateHref before assigning to
+      // globalThis.location (which is unforgeable and can't be redefined)
+      expect(safeNavigateHref("https://example.com")).to.equal(
+        "https://example.com/",
+      );
     });
 
-    it("should neutralize javascript: scheme navigation (F7/JS-URL-001)", () => {
-      let capturedLocation = null;
-      Object.defineProperty(globalThis, "location", {
-        get: () => ({ href: "https://test.local/" }),
-        set: (value) => {
-          capturedLocation = value;
-        },
-        configurable: true,
-      });
+    it("neutralizes javascript: scheme navigation (F7/JS-URL-001)", () => {
+      expect(safeNavigateHref("javascript:alert(1)")).to.equal("/");
+    });
 
-      element.goToLocation("javascript:alert(1)");
-      expect(capturedLocation).to.equal("/");
+    it("neutralizes data: scheme navigation (F7/JS-URL-001)", () => {
+      expect(safeNavigateHref("data:text/html;base64,PHNjcmlwdD4=")).to.equal(
+        "/",
+      );
     });
 
     it("should open external links", () => {
