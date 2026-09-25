@@ -129,7 +129,10 @@ describe("GitCorner test", () => {
     await element.updateComplete;
 
     const link = element.shadowRoot.querySelector("a");
-    expect(link.href).to.equal("");
+    // link.href is the IDL property, which the browser resolves to an
+    // absolute URL against the document base, so it never reads back as "".
+    // The raw attribute reflects the empty source value directly.
+    expect(link.getAttribute("href")).to.equal("");
   });
 
   it("handles special characters in alt text", async () => {

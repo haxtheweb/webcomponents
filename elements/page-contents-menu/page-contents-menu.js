@@ -464,6 +464,16 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
   updateMenu() {
     const validTags = this.hierarchyTags;
     let items = [];
+    // contentContainer may not be wired up yet (e.g. before the theme sets
+    // store.themeElement, or in isolated test fixtures). With no container to
+    // scan there is nothing to build a menu from, so mark empty and bail
+    // instead of crashing on a null dereference. scrollFinished already
+    // applies the same guard below.
+    if (!this.contentContainer) {
+      this.isEmpty = true;
+      this.items = [...items];
+      return;
+    }
     // loop over the new nodes
     for (var i = 0; i < this.contentContainer.childNodes.length; i++) {
       // verify this tag is a valid one

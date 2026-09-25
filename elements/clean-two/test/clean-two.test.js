@@ -146,9 +146,12 @@ describe("clean-two property validation", () => {
   it("validates inherited properties from theme mixins", async () => {
     const el = await fixture(html`<clean-two></clean-two>`);
 
-    // Test that HAXCMSLitElementTheme properties exist
-    expect(el.hasOwnProperty("editMode")).to.be.true;
-    expect(el.hasOwnProperty("responsiveSize")).to.be.true;
+    // editMode and responsiveSize are inherited via the theme mixin chain,
+    // so they live on the prototype, not as own properties. hasOwnProperty
+    // only checks own properties; use the `in` operator to verify they are
+    // present and accessible on the instance.
+    expect("editMode" in el).to.be.true;
+    expect("responsiveSize" in el).to.be.true;
     expect(el.HAXCMSThemeSettings).to.exist;
     expect(typeof el.HAXCMSThemeSettings).to.equal("object");
   });
@@ -336,6 +339,11 @@ describe("clean-two mobile responsiveness", () => {
 
   it("keeps opened mobile menu layered with a solid background", async () => {
     const el = await fixture(html`<clean-two menu-open></clean-two>`);
+    // HAXCMSMobileMenuMixin auto-closes the menu when responsiveSize
+    // transitions to xs/sm on initial mobile render, so re-open it to
+    // exercise the menu-open styling under test.
+    el.menuOpen = true;
+    await el.updateComplete;
     const cssText = el.constructor.styles
       .map((style) => style.cssText || "")
       .join("\n");
@@ -464,7 +472,10 @@ describe("clean-two layout and structure", () => {
     const dateTime = el.shadowRoot.querySelector("simple-datetime");
     expect(dateTime).to.exist;
     expect(dateTime.hasAttribute("unix")).to.be.true;
-    expect(parseInt(dateTime.getAttribute("timestamp"))).to.equal(timestamp);
+    // clean-two binds timestamp via a Lit property binding (.timestamp=) and
+    // simple-datetime does not reflect it to an attribute, so read the
+    // property rather than the attribute.
+    expect(dateTime.timestamp).to.equal(timestamp);
   });
 });
 

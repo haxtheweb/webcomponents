@@ -7,6 +7,8 @@ export const HaxIconsetManifest = [
   {
     name: "courseicons",
     icons: [
+      "astro001",
+      "astro011",
       "astro1",
       "astro11",
       "astro120",
@@ -21,6 +23,10 @@ export const HaxIconsetManifest = [
       "biol141",
       "biol155",
       "biol177",
+      "bisc001",
+      "bisc002",
+      "bisc003",
+      "bisc004",
       "bisci001",
       "bisci002",
       "bisci003",

@@ -108,14 +108,14 @@ class SiteRecentContentBlock extends LitElement {
     return html`
       <aside>
         <div class="header">
-          <h3>${title}</h3>
+          <h3>${this.title}</h3>
         </div>
         <site-query
           @result-changed="${this.__resultChanged}"
-          sort="${sort}"
-          conditions="${conditions}"
-          limit="${limit}"
-          start-index="${startIndex}"
+          .sort=${this.sort}
+          .conditions=${this.conditions}
+          limit="${this.limit}"
+          start-index="${this.startIndex}"
         >
         </site-query>
         ${this.__items.map(

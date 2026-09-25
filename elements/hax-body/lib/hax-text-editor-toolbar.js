@@ -845,7 +845,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.__ready = true;
     let elements = HAXStore.elementList || {},
       keys = Object.keys(elements);
-    keys.forEach((key) => this._setInlineElement(key, elemets[key]));
+    keys.forEach((key) => this._setInlineElement(key, elements[key]));
   }
   /**
    * if an an element is inline,

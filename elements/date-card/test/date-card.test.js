@@ -137,7 +137,9 @@ describe("date-card rendering and display", () => {
     const monthEl = el.shadowRoot.querySelector(".month");
     const dateEl = el.shadowRoot.querySelector(".dateNumber");
 
-    expect(monthEl.textContent.trim()).to.equal("SEPTEMBER");
+    // textContent returns the source text; the uppercase appearance is
+    // applied via CSS text-transform on .month, which does not mutate the DOM.
+    expect(monthEl.textContent.trim()).to.equal("September");
     expect(dateEl.textContent).to.include("5");
     expect(dateEl.textContent).to.include("th"); // 5th
   });
@@ -149,7 +151,8 @@ describe("date-card rendering and display", () => {
 
     const dayEl = el.shadowRoot.querySelector(".dayName");
     expect(dayEl).to.exist;
-    expect(dayEl.textContent.trim()).to.equal("SATURDAY");
+    // uppercase appearance is via CSS text-transform, not DOM text.
+    expect(dayEl.textContent.trim()).to.equal("Saturday");
   });
 
   it("renders details section when title is provided", async () => {
@@ -219,7 +222,9 @@ describe("date-card ordinal number functionality", () => {
 
     expect(el.nth(null)).to.equal("");
     expect(el.nth(undefined)).to.equal("");
-    expect(el.nth(0)).to.equal("th");
+    // 0 is falsy, so the !d guard returns "" (no suffix); 0 is not a valid
+    // calendar date, so this matches the no-date-provided branch.
+    expect(el.nth(0)).to.equal("");
   });
 });
 

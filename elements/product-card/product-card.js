@@ -86,9 +86,14 @@ class ProductCard extends SimpleColors {
         <div slot="content"><slot></slot></div>
         <div slot="footer">
           <a11y-collapse-group>
-            <a11y-collapse ?disabled="${this.disabled}" accordion>
+            <a11y-collapse
+              ?disabled="${this.disabled}"
+              heading-button
+              heading="Details"
+              accordion
+            >
               <div slot="heading">
-                <slot name="details-collapse-header"></slot>
+                <slot name="details-collapse-header">Details</slot>
               </div>
               <div slot="content">
                 <slot name="details-collapse-content"></slot>
@@ -96,12 +101,14 @@ class ProductCard extends SimpleColors {
             </a11y-collapse>
             <a11y-collapse
               ?disabled="${this.disabled || !this.hasDemo}"
+              heading-button
+              heading="Demo"
               accordion
               @expand="${this.__demoCollapseStatusChange}"
               @collapse="${this.__demoCollapseStatusChange}"
             >
               <div slot="heading">
-                <slot name="demo-collapse-header"></slot>
+                <slot name="demo-collapse-header">Demo</slot>
               </div>
               <div slot="content">
                 <slot name="demo-collapse-content"></slot>

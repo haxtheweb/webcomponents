@@ -145,9 +145,9 @@ describe("a11y-collapse test", () => {
         });
 
         it("should accept string values and maintain accessibility", async () => {
-          testElement.icon = "icons:keyboard-arrow-down";
+          testElement.icon = "icons:expand-less";
           await testElement.updateComplete;
-          expect(testElement.icon).to.equal("icons:keyboard-arrow-down");
+          expect(testElement.icon).to.equal("icons:expand-less");
           await expect(testElement).shadowDom.to.be.accessible();
 
           testElement.icon = "";
@@ -795,17 +795,20 @@ describe("a11y-collapse test", () => {
         "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
 
+      // icon is excluded from the unusual-value loop because it is a plain
+      // string on a11y-collapse that gets forwarded to simple-icon-lite for
+      // SVG resolution. Invalid icon names trigger simple-iconset's fallback
+      // path lookup, producing 404s that are simple-icon's behavior, not
+      // a11y-collapse's. icon is tested separately above with valid values.
       for (const value of unusualValues) {
         testElement.label = value;
         testElement.tooltip = value;
         testElement.heading = value;
-        testElement.icon = value;
         await testElement.updateComplete;
 
         expect(testElement.label).to.equal(value);
         expect(testElement.tooltip).to.equal(value);
         expect(testElement.heading).to.equal(value);
-        expect(testElement.icon).to.equal(value);
 
         // Most should maintain accessibility, but skip dangerous content and
         // whitespace-only values, which leave the button/tooltip without an

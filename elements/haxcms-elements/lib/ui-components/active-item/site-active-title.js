@@ -59,19 +59,23 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           flex: 1;
         }
       </style>
-      <h1>
-        <div class="title-wrapper">
-          ${this.icon
-            ? html`
-                <simple-icon-lite
-                  class="site-active-title-icon"
-                  icon="${this.icon}"
-                ></simple-icon-lite>
-              `
-            : ``}
-          ${this.__title}
-        </div>
-      </h1>
+      ${this.__title
+        ? html`
+            <h1>
+              <div class="title-wrapper">
+                ${this.icon
+                  ? html`
+                      <simple-icon-lite
+                        class="site-active-title-icon"
+                        icon="${this.icon}"
+                      ></simple-icon-lite>
+                    `
+                  : ``}
+                ${this.__title}
+              </div>
+            </h1>
+          `
+        : ``}
     `;
   }
   /**

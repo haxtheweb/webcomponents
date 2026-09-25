@@ -1,5 +1,6 @@
 import { fixture, expect, html, assert } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "../collection-list.js";
 
 // Basic functionality and accessibility tests
@@ -334,8 +335,11 @@ describe("collection-list desktop responsiveness", () => {
       (_, i) => `<div>Item ${i + 1}</div>`,
     ).join("");
 
+    // unsafeHTML is the supported way to inject a trusted HTML string into a
+    // lit template; calling html([string]) as a function is rejected by
+    // lit-html because the strings array lacks a `raw` field (XSS guard).
     const el = await fixture(html`
-      <collection-list responsive-size="xl"> ${html([items])} </collection-list>
+      <collection-list responsive-size="xl"> ${unsafeHTML(items)} </collection-list>
     `);
 
     expect(el).to.exist;
@@ -429,7 +433,7 @@ describe("collection-list error handling", () => {
     ).join("");
 
     const el = await fixture(html`
-      <collection-list> ${html([manyItems])} </collection-list>
+      <collection-list> ${unsafeHTML(manyItems)} </collection-list>
     `);
 
     expect(el).to.exist;

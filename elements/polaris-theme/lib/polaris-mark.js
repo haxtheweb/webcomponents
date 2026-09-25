@@ -12,6 +12,9 @@ class PolarisMark extends LitElement {
       _haxstate: {
         type: Boolean,
       },
+      svgwidth: { type: Number },
+      svgheight: { type: Number },
+      linex: { type: Number },
     };
   }
   constructor() {
@@ -23,6 +26,9 @@ class PolarisMark extends LitElement {
     this.url = "https://psu.edu/";
     this.vert = false;
     this._haxstate = false;
+    this.svgwidth = 600;
+    this.svgheight = 180;
+    this.linex = 320;
   }
   /**
    * LitElement constructable styles enhancement
@@ -124,7 +130,7 @@ class PolarisMark extends LitElement {
   renderDark() {
     return svg`
       <div id="svg">
-        <svg viewBox="0 0 600 180">
+        <svg viewBox="0 0 ${this.svgwidth} ${this.svgheight}" xmlns="http://www.w3.org/2000/svg">
           <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
@@ -166,7 +172,7 @@ class PolarisMark extends LitElement {
           <text fill="#000000" x="94" y="160" id="name-line3">
             ${this.name3}
           </text>` : svg`
-          <line x1="320" y1="0" x2="320" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
+          <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
           <text fill="#000000" x="340" y="40" id="name-line3">
             ${this.name3}
           </text> `) : ""}
@@ -178,7 +184,7 @@ class PolarisMark extends LitElement {
   renderDefault(type = "default") {
     return svg`
       <div id="svg">
-        <svg viewBox="0 0 600 180">
+        <svg viewBox="0 0 ${this.svgwidth} ${this.svgheight}" xmlns="http://www.w3.org/2000/svg">
           <title>${this.name || "Penn State"}</title>
           <defs>
             <style>
@@ -220,7 +226,7 @@ class PolarisMark extends LitElement {
           <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="160" id="name-line3">
             ${this.name3}
           </text>` : svg`
-          <line x1="320" y1="0" x2="320" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
+          <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
           <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="340" y="40" id="name-line3">
             ${this.name3}
           </text> `) : ""}
