@@ -57,6 +57,13 @@ describe("HaxmaTheme test", () => {
   });
 
   it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
+    // skip-link is ignored because axe-core resolves skip-link hrefs via
+    // document.getElementById(), which cannot pierce shadow DOM. The
+    // #contentcontainer target exists and is focusable (tabindex="-1") in
+    // the shadow DOM, but axe cannot find it. This is an axe limitation,
+    // not a code defect.
+    await expect(element).shadowDom.to.be.accessible({
+      ignoredRules: ["skip-link"],
+    });
   });
 });
