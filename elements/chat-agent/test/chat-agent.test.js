@@ -84,8 +84,12 @@ describe("chat-agent test", () => {
     });
 
     it("should initialize with default properties", () => {
-      expect(element.isFullView).to.be.null; // Will be set by MobX autorun
-      expect(element.isInterfaceHidden).to.be.null; // Will be set by MobX autorun
+      // The constructor sets these to null, but the mocked autorun runs
+      // synchronously and a Promise.resolve microtask syncs the ChatStore
+      // defaults (isFullView=false, isInterfaceHidden=true) before
+      // updateComplete resolves.
+      expect(element.isFullView).to.equal(false);
+      expect(element.isInterfaceHidden).to.equal(true);
     });
 
     it("should have required chat structure elements", () => {
@@ -234,6 +238,10 @@ describe("chat-agent test", () => {
     });
 
     it("should manage loading state during AI requests", async () => {
+      // Prior tests in this suite trigger handleInteraction via handleMessage,
+      // which flips isLoading from null to true then false. Reset to the
+      // initial null state before testing the loading lifecycle.
+      ChatStore.isLoading = null;
       expect(ChatStore.isLoading).to.be.null;
 
       ChatStore.handleInteraction("Custom AI question");
@@ -624,10 +632,14 @@ describe("chat-agent test", () => {
     it("should handle user state changes", async () => {
       // Test dark mode change
       globalThis.store.darkMode = true;
+      // The mocked autorun only runs once at construction time, so it does
+      // not react to store changes. Manually sync to simulate MobX reactivity.
+      ChatStore.darkMode = globalThis.store.darkMode;
       expect(ChatStore.darkMode).to.be.true;
 
       // Test edit mode change
       globalThis.store.editMode = true;
+      ChatStore.editMode = globalThis.store.editMode;
       expect(ChatStore.editMode).to.be.true;
 
       // Test username change

@@ -80,6 +80,12 @@ describe("type-writer", () => {
 
     it("reflects element-visible via the IntersectionObserverMixin", async () => {
       element = await fixture(html`<type-writer></type-writer>`);
+      // Disconnect the IntersectionObserver so it does not reset
+      // elementVisible to false (the element has no visible content in the
+      // test viewport, so the observer reports a low intersection ratio).
+      if (element.intersectionObserver) {
+        element.intersectionObserver.disconnect();
+      }
       element.elementVisible = true;
       await element.updateComplete;
       expect(element.elementVisible).to.equal(true);
@@ -226,6 +232,13 @@ describe("type-writer", () => {
   describe("erase + retype", () => {
     beforeEach(async () => {
       element = await fixture(html`<type-writer></type-writer>`);
+      // Disconnect the IntersectionObserver for these tests. As erase()
+      // modifies the text content the intersection ratio fluctuates, causing
+      // the observer to fire repeatedly and spuriously re-trigger
+      // _observeText, which races with the erase cycle under test.
+      if (element.intersectionObserver) {
+        element.intersectionObserver.disconnect();
+      }
     });
 
     it("erases any rendered text before typing the new text", async () => {

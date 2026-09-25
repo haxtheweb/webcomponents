@@ -266,7 +266,6 @@ class RelativeHeading extends RelativeHeadingLite {
       ? html``
       : html`
           <simple-icon-button-lite
-            controls="relative-heading-toast"
             .aria-describedby="${this.id}"
             .icon="${this.linkIcon}"
             .title="${this.linkLabel}"
