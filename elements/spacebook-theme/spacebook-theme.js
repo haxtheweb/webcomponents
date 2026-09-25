@@ -153,6 +153,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       :host {
         display: block;
         min-height: 100vh;
+        color-scheme: light;
         background-color: var(--spacebook-theme-bg-white);
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.5;
@@ -172,6 +173,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       }
       
       :host([dark-mode]) {
+        color-scheme: dark;
         background-color: var(--spacebook-theme-bg-gray-900);
       }
       
