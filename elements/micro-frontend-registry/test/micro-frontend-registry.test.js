@@ -56,7 +56,9 @@ describe("elementName test", () => {
 // The site importers are on-prem haxcms-nodejs routes reached through the
 // @system/ namespace, so the dashboard can only offer an importer that is
 // registered here. haxtheweb/issues#2912 shipped the OpenStax converter and
-// its /system/api/v1/site/import/openstax route.
+// its /system/api/v1/site/import/openstax route. haxtheweb/issues#2923
+// adds the VitePress converter and its /system/api/v1/site/import/vitepress
+// route the same way.
 describe("HAXcms site import services", () => {
   before(() => {
     enableServices(["haxcms"]);
@@ -64,6 +66,7 @@ describe("HAXcms site import services", () => {
 
   const importers = [
     ["@system/openstaxToSite", "/system/api/v1/site/import/openstax"],
+    ["@system/vitepressToSite", "/system/api/v1/site/import/vitepress"],
     ["@system/gitbookToSite", "/system/api/v1/site/import/gitbook"],
     ["@system/notionToSite", "/system/api/v1/site/import/notion"],
     ["@system/ploneToSite", "/system/api/v1/site/import/plone"],
@@ -86,5 +89,11 @@ describe("HAXcms site import services", () => {
     const openstax = MicroFrontendRegistry.get("@system/openstaxToSite");
     expect(openstax.params).to.have.property("repoUrl");
     expect(openstax.title).to.equal("OpenStax to Site");
+  });
+
+  it("asks the VitePress importer for a repoUrl, as the chooser sends", () => {
+    const vitepress = MicroFrontendRegistry.get("@system/vitepressToSite");
+    expect(vitepress.params).to.have.property("repoUrl");
+    expect(vitepress.title).to.equal("VitePress to Site");
   });
 });

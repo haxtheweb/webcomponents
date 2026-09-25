@@ -1601,6 +1601,22 @@ export class AppHaxUseCaseFilter extends LitElement {
         useCaseTag: ["Import", "OpenStax"],
         demoLink: "#",
       },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "vitepress",
+        callback: "@system/vitepressToSite",
+        prompt: "URL for the VitePress git repo",
+        param: "repoUrl",
+        useCaseTitle: "VitePress",
+        useCaseImage: "",
+        useCaseDescription: "Import a VitePress docs repo into a new HAX site",
+        useCaseIcon: [
+          { icon: "mdi-social:github-circle", tooltip: "Git-based import" },
+        ],
+        useCaseTag: ["Import", "VitePress"],
+        demoLink: "#",
+      },
     ];
   }
 
