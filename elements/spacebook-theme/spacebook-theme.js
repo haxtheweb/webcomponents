@@ -154,7 +154,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         display: block;
         min-height: 100vh;
         color-scheme: light;
-        background-color: var(--spacebook-theme-bg-white);
+        background-color: var(--spacebook-theme-bg-white, #ffffff);
+        color: var(--spacebook-theme-text-gray-900, #111827);
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.5;
       }
@@ -233,14 +234,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         display: flex;
         align-items: center;
         text-decoration: none;
-        color: var(--spacebook-theme-text-gray-800);
+        color: var(--spacebook-theme-text-gray-800, #1f2937);
         font-weight: 700;
         min-width: 0;
         overflow: hidden;
       }
       
       .site-title-link:hover {
-        color: var(--spacebook-theme-text-gray-800);
+        color: var(--spacebook-theme-text-gray-800, #1f2937);
       }
       
 :host([dark-mode]) .site-title-link {
@@ -253,13 +254,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color: var(--spacebook-theme-text-gray-800, #1f2937);
       }
       
       .site-subtitle {
         display: block;
         margin-top: 0.25rem;
         font-size: 0.875rem;
-        color: var(--spacebook-theme-text-gray-500);
+        color: var(--spacebook-theme-text-gray-500, #6b7280);
         font-weight: 400;
         white-space: nowrap;
         overflow: hidden;
@@ -625,7 +627,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       
       .article-content {
         align-self: center;
-        color: var(--spacebook-theme-text-gray-800);
+        color: var(--spacebook-theme-text-gray-800, #1f2937);
         content-visibility: auto;
         contain-intrinsic-size: auto 1000px;
       }

@@ -956,10 +956,13 @@ class Store {
    * gets current/max page number using index counter and items length
    */
   get pageCounter() {
-    return {
-      current: this.activeManifestIndexCounter,
-      total: this.manifest.items.length,
-    };
+    if (this.manifest && this.manifest.items) {
+      return {
+        current: this.activeManifestIndexCounter,
+        total: this.manifest.items.length,
+      };
+    }
+    return { current: 0, total: 0 };
   }
   /**
    * gets and previous siblings of activeItem

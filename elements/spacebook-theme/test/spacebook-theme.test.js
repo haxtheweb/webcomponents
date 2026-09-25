@@ -3,12 +3,39 @@ import "../spacebook-theme.js";
 
 describe("SpacebookTheme test", () => {
   let element;
+  let savedColorScheme;
+
+  before(() => {
+    // Lock the test page to a light color scheme so the light-dark() CSS
+    // function used throughout this theme resolves to its light (dark-text
+    // on light-background) values. Without this, headless Chromium may
+    // inherit the system prefers-color-scheme and resolve light-dark() to
+    // near-white text on white, producing a flaky color-contrast violation.
+    savedColorScheme = document.documentElement.style.colorScheme;
+    document.documentElement.style.colorScheme = "light";
+  });
+
+  after(() => {
+    if (savedColorScheme === "") {
+      document.documentElement.style.removeProperty("color-scheme");
+    } else {
+      document.documentElement.style.colorScheme = savedColorScheme;
+    }
+  });
+
   beforeEach(async () => {
     element = await fixture(html`
       <spacebook-theme
         title="title"
       ></spacebook-theme>
     `);
+    // Wait for the theme and its nested components to finish their first
+    // render and for the light-dark() color-scheme resolution to settle
+    // before any assertion reads computed styles. This stabilizes the
+    // color-contrast audit which is otherwise racy with style injection.
+    await element.updateComplete;
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
   });
 
   it("basic will it blend", async () => {

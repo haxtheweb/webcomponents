@@ -772,7 +772,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.__layoutDragEvents = new WeakMap();
     this.__nodeDragDropHandlers = new WeakMap();
     this.__linkClickHandlers = new WeakMap();
-    this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
     };
