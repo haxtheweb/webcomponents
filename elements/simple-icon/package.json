@@ -46,7 +46,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",
     "flag-icons": "6.6.4",
     "lit": "3.3.3"

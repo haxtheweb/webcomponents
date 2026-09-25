@@ -6,7 +6,6 @@ import { html, svg, css, LitElement } from "lit";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
 import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
-import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 
 /**
  * `simple-iconset-demo`
@@ -138,7 +137,7 @@ class SimpleIconsetDemo extends LitElement {
   _getIconsets() {
     let imports =
         this.imports.length < 1
-          ? [SimpleIconIconsetsManifest, HaxIconsetManifest]
+          ? [SimpleIconIconsetsManifest]
           : this.imports,
       iconsets = imports.flat(),
       excludeSets = (this.exclude || "").split(" "),
