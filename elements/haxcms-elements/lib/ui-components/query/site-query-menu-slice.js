@@ -131,7 +131,7 @@ class SiteQueryMenuSlice extends LitElement {
     _routerManifest,
     noDynamicLevel,
   ) {
-    if (_routerManifest) {
+    if (_routerManifest && _routerManifest.items) {
       return store.computeItems(
         start,
         end,

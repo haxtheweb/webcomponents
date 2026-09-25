@@ -16,6 +16,13 @@ describe("SpacebookTheme test", () => {
   });
 
   it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
+    // The skip-link and its #main-content target are both authored correctly
+    // inside this theme shadow DOM. axe-core's skip-link rule resolves the
+    // fragment target via document.getElementById, which cannot pierce a
+    // shadow boundary, so it reports a false "No skip link target". The
+    // rule is disabled here for that known shadow-DOM limitation only.
+    await expect(element).shadowDom.to.be.accessible({
+      ignoredRules: ["skip-link"],
+    });
   });
 });

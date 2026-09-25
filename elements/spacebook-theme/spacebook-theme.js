@@ -864,7 +864,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     
     return html`
       <div class="app-container">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <a class="skip-link" href="#main-content">Skip to content</a>
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
@@ -949,7 +949,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         </nav>
         
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="main-content" id="main-content" tabindex="-1">
           <div class="content-wrapper">
             <div class="content-container">
               <div class="content-inner">
@@ -975,7 +975,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                     <!-- Page Content -->
                     <div class="article-content">
                       <!-- Required HAXcms content container -->
-                      <div id="contentcontainer">
+                      <div id="contentcontainer" tabindex="-1">
                         <div id="slot">
                           <slot></slot>
                         </div>

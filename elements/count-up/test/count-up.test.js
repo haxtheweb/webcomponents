@@ -293,7 +293,16 @@ describe("count-up animation functionality", () => {
       html`<count-up start="0" end="100" duration="0.1"></count-up>`,
     );
 
-    expect(el.elementVisible).to.be.undefined;
+    // Disconnect the IntersectionObserver so it does not reset
+    // elementVisible to false (the element has no visible content in the
+    // test viewport, so the observer reports a low intersection ratio).
+    if (el.intersectionObserver) {
+      el.intersectionObserver.disconnect();
+    }
+
+    // IntersectionObserverMixin sets elementVisible to false in the
+    // constructor, so it is false (not undefined) before the observer fires.
+    expect(el.elementVisible).to.equal(false);
 
     el.elementVisible = true;
     await el.updateComplete;
@@ -304,29 +313,38 @@ describe("count-up animation functionality", () => {
 
 // HAX integration tests
 describe("count-up HAX integration", () => {
-  it("has proper haxProperties configuration", async () => {
+  // haxProperties returns a URL string (file reference pattern), not an
+  // inline object. Fetch and parse the JSON to inspect the schema.
+  let haxProps;
+  before(async () => {
     const el = await fixture(html`<count-up></count-up>`);
-    const haxProps = el.constructor.haxProperties;
+    const url = el.constructor.haxProperties;
+    expect(url).to.be.a("string");
+    expect(url).to.include(".haxProperties.json");
+    const response = await fetch(url);
+    haxProps = await response.json();
+  });
 
+  it("has proper haxProperties configuration", async () => {
     expect(haxProps).to.exist;
     expect(haxProps.canScale).to.be.true;
     expect(haxProps.canEditSource).to.be.true;
-    expect(haxProps.gizmo.title).to.equal("Count up");
-    expect(haxProps.gizmo.icon).to.equal("icons:android");
+    expect(haxProps.gizmo.title).to.equal("Count Up");
+    expect(haxProps.gizmo.icon).to.equal("icons:trending-up");
   });
 
   it("has proper settings configuration", async () => {
-    const el = await fixture(html`<count-up></count-up>`);
-    const haxProps = el.constructor.haxProperties;
-    const settings = haxProps.settings.configure;
+    const configure = haxProps.settings.configure;
+    const advanced = haxProps.settings.advanced;
 
-    expect(settings).to.be.an("array");
-    expect(settings.length).to.be.greaterThan(0);
+    expect(configure).to.be.an("array");
+    expect(configure.length).to.be.greaterThan(0);
 
-    const startConfig = settings.find((s) => s.property === "start");
-    const endConfig = settings.find((s) => s.property === "end");
-    const durationConfig = settings.find((s) => s.property === "duration");
-    const noeasingConfig = settings.find((s) => s.property === "noeasing");
+    const startConfig = configure.find((s) => s.property === "start");
+    const endConfig = configure.find((s) => s.property === "end");
+    const durationConfig = configure.find((s) => s.property === "duration");
+    // noeasing is in the advanced settings, not configure
+    const noeasingConfig = advanced.find((s) => s.property === "noeasing");
 
     expect(startConfig).to.exist;
     expect(endConfig).to.exist;

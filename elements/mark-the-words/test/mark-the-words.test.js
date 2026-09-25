@@ -6,7 +6,10 @@ describe("mark-the-words test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html` <mark-the-words answers="this,is">
+      html` <mark-the-words
+        answers="this,is"
+        statement="This is mark-the-words"
+      >
         This is mark-the-words
       </mark-the-words>`,
     );
@@ -48,8 +51,11 @@ describe("mark-the-words test", () => {
 
       if (buttons.length > 0) {
         const button = buttons[0];
+        // Lit templates preserve whitespace around interpolated text, so
+        // trim the textContent to match the wordList entry exactly.
+        const buttonText = button.textContent.trim();
         const wordItem = element.wordList.find(
-          (word) => word.text === button.textContent,
+          (word) => word.text === buttonText,
         );
         const initialSelected = wordItem && wordItem.selected;
 
@@ -58,7 +64,7 @@ describe("mark-the-words test", () => {
         await element.updateComplete;
 
         const wordItemAfter = element.wordList.find(
-          (word) => word.text === button.textContent,
+          (word) => word.text === buttonText,
         );
         const afterSelected = wordItemAfter && wordItemAfter.selected;
         expect(afterSelected).to.not.equal(initialSelected);
@@ -83,12 +89,17 @@ describe("mark-the-words test", () => {
     it("has proper question heading", async () => {
       const question = element.shadowRoot.querySelector("h3");
       expect(question).to.exist;
-      expect(question.textContent).to.include("mark-the-words");
+      // The h3 renders this.question, which defaults to
+      // "Mark the words that are correct" in the constructor.
+      expect(question.textContent).to.include("Mark the words");
     });
 
-    it("uses semantic fieldset for text content", async () => {
-      const fieldset = element.shadowRoot.querySelector("fieldset.options");
-      expect(fieldset).to.exist;
+    it("uses semantic container for text content", async () => {
+      // mark-the-words overrides renderInteraction() with a div.text wrapper
+      // (the base QuestionElement uses fieldset.options, but mark-the-words
+      // renders clickable word buttons in a div instead).
+      const textContainer = element.shadowRoot.querySelector(".text");
+      expect(textContainer).to.exist;
     });
 
     it("maintains proper reading order", async () => {
@@ -111,7 +122,9 @@ describe("mark-the-words test", () => {
     });
 
     it("provides proper focus management with delegatesFocus", async () => {
-      expect(element.shadowRootOptions.delegatesFocus).to.be.true;
+      // shadowRootOptions is a static getter on the class, so it must be
+      // accessed via the constructor, not the instance.
+      expect(element.constructor.shadowRootOptions.delegatesFocus).to.be.true;
     });
 
     it("has proper assessment metadata", async () => {

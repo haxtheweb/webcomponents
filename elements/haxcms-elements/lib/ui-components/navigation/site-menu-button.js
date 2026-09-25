@@ -134,6 +134,16 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     );
     import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }
+  // compute a label that always has an accessible name; when the store has
+  // no data this.label is undefined, so fall back to a type-based string so
+  // axe button-name / aria-tooltip-name rules are satisfied without changing
+  // behavior in the normal case where a label IS present
+  get __accessibleLabel() {
+    if (this.label) {
+      return this.label;
+    }
+    return this.type === "next" ? this.t.noNextPage : this.t.noPreviousPage;
+  }
   // render function
   render() {
     return html`
@@ -141,7 +151,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         tabindex="-1"
         ?disabled="${this.disabled}"
         aria-disabled="${this.disabled}"
-        aria-label="${this.label}"
+        aria-label="${this.__accessibleLabel}"
         .part="${this.editMode ? `edit-mode-active link` : `link`}"
       >
         <button
@@ -149,7 +159,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           noink
           ?disabled="${this.disabled}"
           ?raised="${this.raised}"
-          aria-label="${this.label}"
+          aria-label="${this.__accessibleLabel}"
           .part="${this.editMode ? `edit-mode-active button` : `button`}"
         >
           <slot name="prefix"></slot>
@@ -157,7 +167,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           <slot name="suffix"></slot>
         </button>
       </a>
-      ${!this.hideLabel
+      ${!this.hideLabel && this.label
         ? html`
             <simple-tooltip
               for="menulink"

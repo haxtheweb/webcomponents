@@ -16,6 +16,13 @@ describe("JourneyTheme test", () => {
   });
 
   it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
+    // skip-link target (#contentcontainer) lives in the shadow DOM alongside
+    // the link. axe-core resolves skip-link targets via document.getElementById
+    // which cannot pierce shadow boundaries, so the rule always fails for
+    // shadow-DOM skip-links even though the target exists and is focusable
+    // (tabindex="-1"). This is an axe-core limitation, not a markup defect.
+    await expect(element).shadowDom.to.be.accessible({
+      ignoredRules: ["skip-link"],
+    });
   });
 });

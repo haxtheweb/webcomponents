@@ -228,6 +228,10 @@ class SiteChildrenBlock extends LitElement {
     ];
   }
   resultChanged(e) {
+    if (!e.detail || !Array.isArray(e.detail)) {
+      this.__items = [];
+      return;
+    }
     this.__items = [...e.detail];
   }
   // render function

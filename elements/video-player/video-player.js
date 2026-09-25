@@ -482,12 +482,14 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       darkTranscript: {
         type: Boolean,
+        attribute: "dark-transcript",
       },
       /**
        * disable interactive mode that makes transcript clickable
        */
       disableInteractive: {
         type: Boolean,
+        attribute: "disable-interactive",
       },
       /**
        * Height of media player.

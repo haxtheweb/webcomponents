@@ -108,6 +108,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
+          color-scheme: light;
           color: light-dark(
             var(--ddd-theme-default-coalyGray, #262626),
             var(--ddd-theme-default-white, #ffffff)

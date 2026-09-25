@@ -156,38 +156,6 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
     }
     this.setAttribute("typeof", "oer:Course");
   }
-  /**
-   * LitElement life cycle - property changed
-   */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
-    });
-  }
 }
 globalThis.customElements.define(CourseDesign.tag, CourseDesign);
 export { CourseDesign };
