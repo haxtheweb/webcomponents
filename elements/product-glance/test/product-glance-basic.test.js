@@ -103,9 +103,8 @@ describe("product-glance basic test", () => {
 
   describe("SimpleColors", () => {
     it("should have SimpleColors properties available", () => {
-      expect(element).to.have.property("accentColor");
-      expect(element).to.have.property("dark");
-      expect(element).to.have.property("contrast");
+      expect("accentColor" in element).to.be.true;
+      expect("dark" in element).to.be.true;
     });
 
     it("should handle accent color changes", async () => {

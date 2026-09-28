@@ -54,10 +54,9 @@ describe("MatchingQuestion test", () => {
     it("has proper focus management for matching pairs", async () => {
       await element.updateComplete;
 
-      // Should support proper focus management
-      expect(
-        element.shadowRootOptions && element.shadowRootOptions.delegatesFocus,
-      ).to.be.true;
+      // shadowRootOptions must be declared via static getter so the shadow
+      // root is actually created with it; read it from the constructor.
+      expect(element.constructor.shadowRootOptions.delegatesFocus).to.be.true;
     });
 
     it("provides clear instructions for screen readers", async () => {
@@ -389,6 +388,12 @@ describe("MatchingQuestion test", () => {
   });
 
   it("applies correct/incorrect styling when showing answers", async () => {
+    // set answers first (and let cleanAnswerData settle) since assigning
+    // answers resets matchAnswers as a side effect
+    element.answers = [
+      { label: "Target", correct: true, order: 0, target: true },
+    ];
+    await element.updateComplete;
     element.matchAnswers = [
       { label: "Correct", correct: true, order: 0, guess: 0 },
       { label: "Incorrect", correct: false, order: 1, guess: 0 },
@@ -655,11 +660,12 @@ describe("MatchingQuestion test", () => {
   // Directions rendering test
   it("renders custom directions for matching questions", async () => {
     const directions = element.renderDirections();
-    const directionsString = directions.strings[0];
+    const directionsString = directions.strings.join("");
 
     expect(directionsString).to.include("Select all that apply");
     expect(directionsString).to.include("press");
-    expect(directionsString).to.include("feedback indicating correctness");
+    expect(directionsString).to.include("feedback indicating");
+    expect(directionsString).to.include("correctness");
   });
 
   // HAX integration tests
@@ -682,8 +688,8 @@ describe("MatchingQuestion test", () => {
 
     const targetCell = element.shadowRoot.querySelector(".target");
     expect(targetCell).to.exist;
-    // When matchTarget is true, targets become drop zones
-    expect(targetCell.hasAttribute("id")).to.be.false; // This checks the conditional rendering
+    // When matchTarget is true, targets become drop zones with an id
+    expect(targetCell.hasAttribute("id")).to.be.true;
   });
 
   // Edge cases and error handling
@@ -691,7 +697,7 @@ describe("MatchingQuestion test", () => {
     element.answers = [];
     await element.updateComplete;
 
-    expect(() => element.isCorrect()).to.not.throw;
+    expect(() => element.isCorrect()).to.not.throw();
     expect(element.isCorrect()).to.be.true; // No answers means technically correct
   });
 
@@ -725,7 +731,7 @@ describe("MatchingQuestion test", () => {
       },
     };
 
-    expect(() => element.handleDrag(mockEvent)).to.not.throw;
+    expect(() => element.handleDrag(mockEvent)).to.not.throw();
     expect(element.dragging).to.be.true;
   });
 
@@ -738,7 +744,7 @@ describe("MatchingQuestion test", () => {
       target: { getAttribute: () => null, tagName: "DIV" },
     };
 
-    expect(() => element.handleDrop(mockEvent)).to.not.throw;
+    expect(() => element.handleDrop(mockEvent)).to.not.throw();
     expect(element.dragging).to.be.false;
   });
 
@@ -747,6 +753,8 @@ describe("MatchingQuestion test", () => {
     const originalAnswers = [{ label: "Original", correct: true }];
     element.answers = originalAnswers;
     await element.updateComplete;
+    // let the answer lock (released via setTimeout) clear before reassigning
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     const newAnswers = [
       { label: "Target", correct: true },
@@ -788,6 +796,9 @@ describe("MatchingQuestion test", () => {
       { label: "Fox", correct: true, order: 2 },
       { label: "PaPaPower", correct: false, order: 3 },
     ];
+    await element.updateComplete;
+    // answers are normalized in updated(), which schedules a follow-up render;
+    // await a second cycle so the DOM reflects the processed answers
     await element.updateComplete;
 
     // Should have processed into targets and matches

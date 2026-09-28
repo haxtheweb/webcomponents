@@ -117,7 +117,7 @@ class A11yFigure extends A11yDetails {
             close-text="${this.closeText}"
             ?hidden="${!this.__hasDetail}"
           >
-            <div slot="summary"><slot name="summary"></slot></div>
+            <div slot="summary"><slot name="summary">Details</slot></div>
             <div slot="details"><slot name="details"></slot></div>
             <slot name="figdetails"></slot>
           </a11y-details>
@@ -315,9 +315,7 @@ class A11yFigure extends A11yDetails {
       image.slot = "image";
       this.appendChild(image);
     }
-    this.__hasDetail =
-      !!this.querySelector("summary") ||
-      !!this.querySelector("*[slot=summary]");
+    this.__hasDetail = this.hasDetailContent;
     if (figcaption) {
       this._copyAndFilter(figcaption.cloneNode(true), [
         "figcaption",
@@ -339,12 +337,29 @@ class A11yFigure extends A11yDetails {
     this._copyToSlot(nodenames[i], clone);
   }
   /**
+   * whether or not slotted content exists to progressively disclose
+   *
+   * @readonly
+   * @returns {boolean}
+   * @memberof A11yFigure
+   */
+  get hasDetailContent() {
+    return (
+      !!this.querySelector("summary") ||
+      !!this.querySelector("*[slot=summary]") ||
+      !!this.querySelector("*[slot=details]")
+    );
+  }
+  /**
    * watches the element's slots for a <details/> element
    *
    * @param {object} mutationsList
    * @memberof A11yDetails
    */
   _watchChildren(mutationsList) {
+    // summary / details content can be slotted in or removed at any time,
+    // so recompute whether the nested a11y-details should be displayed
+    this.__hasDetail = this.hasDetailContent;
     if (this._hasMutations(mutationsList)) {
       this._updateElement();
       this.figureObserver.observe(this.querySelector("* > figure"), {

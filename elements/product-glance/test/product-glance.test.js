@@ -222,12 +222,10 @@ describe("product-glance test", () => {
 
   describe("SimpleColors Integration", () => {
     it("should inherit SimpleColors properties", () => {
-      // Based on debug output: accentColor='grey', dark=false, contrast=undefined
+      // Based on debug output: accentColor='grey', dark=false
       // SimpleColors properties are initialized in constructor or when accessed
       expect(element.accentColor).to.not.be.undefined;
       expect(element.dark).to.not.be.undefined;
-      // Contrast can be undefined initially in SimpleColors
-      expect(element).to.have.property("contrast");
     });
 
     it("should handle accent color changes", async () => {

@@ -600,6 +600,8 @@ export class QuestionElement extends SchemaBehaviors(
         }
         details[open] > summary {
           border: var(--ddd-border-sm);
+        }
+        summary {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
@@ -871,7 +873,9 @@ export class QuestionElement extends SchemaBehaviors(
             >Question
           </summary>
           <div class="container">
-            <h3 property="oer:name">${this.question}</h3>
+            <h3 property="oer:name" ?hidden="${!this.question}">
+              ${this.question}
+            </h3>
             ${this.renderInteraction()}
             ${!this.hideButtons ? this.renderButtons() : nothing}
           </div>
@@ -1198,6 +1202,20 @@ export class QuestionElement extends SchemaBehaviors(
   // convert the input to data
   processInput(index, inputs, answers) {
     let input = inputs[index];
+    // guard against missing input (e.g. index out of range)
+    if (!input) {
+      return { ...this.answerPrototype(), order: parseInt(index) };
+    }
+    // support passing pre-computed answer-like data objects directly,
+    // in addition to real light dom <input> elements
+    if (typeof input.getAttribute !== "function") {
+      return {
+        ...this.answerPrototype(),
+        ...input,
+        order: parseInt(index),
+        correct: !!input.correct,
+      };
+    }
     return {
       order: parseInt(index), // stores the original order this was in for things that leverage this piece of data
       label: input.value,

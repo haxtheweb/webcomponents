@@ -3539,6 +3539,7 @@ class DDDocs extends DDD {
       <h1 class="fs-m my-2">Select an option to render</h1>
       <select
         class="mb-5"
+        aria-label="Select an option to render"
         @change="${(e) => {
           this.option = e.target.value;
           this.shadowRoot.querySelector("select").value = this.option;

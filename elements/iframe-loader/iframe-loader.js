@@ -99,6 +99,11 @@ export class IframeLoader extends LitElement {
       if (this.querySelector("iframe")) {
         this.__iframe = this.querySelector("iframe");
         this.source = this._safeSource(this.__iframe.getAttribute("src"));
+        // ensure our own height/width mirror the supplied iframe so that
+        // the updated() height/width sync below doesn't clobber it with
+        // our stale defaults
+        this.height = this.__iframe.getAttribute("height") || this.height;
+        this.width = this.__iframe.getAttribute("width") || this.width;
         // Listen for new
         this.__iframe.addEventListener(
           "load",
@@ -198,6 +203,15 @@ export class IframeLoader extends LitElement {
         );
       }
       this.appendChild(this.__iframe);
+    } else {
+      // a caller supplied its own <iframe> child (e.g. via a slotted,
+      // template-bound light DOM node). By this point any Lit-bound
+      // attributes on that child (height/width/src) have been committed,
+      // so mirror them onto our own properties. Otherwise our own stale
+      // defaults (set before the caller's attributes were committed) would
+      // overwrite the caller's real values in updated() below.
+      this.height = this.__iframe.getAttribute("height") || this.height;
+      this.width = this.__iframe.getAttribute("width") || this.width;
     }
     if (
       globalThis.HaxStore &&

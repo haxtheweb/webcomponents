@@ -19,6 +19,16 @@ class FillInTheBlanks extends MarkTheWords {
     return "fill-in-the-blanks";
   }
 
+  static get properties() {
+    return {
+      ...super.properties,
+      // reflect locally (not in shared base classes) so authored
+      // values serialize back to the DOM for this element
+      question: { type: String, reflect: true },
+      statement: { type: String, reflect: true },
+    };
+  }
+
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
@@ -47,6 +57,19 @@ class FillInTheBlanks extends MarkTheWords {
           width: 140px;
           min-height: unset;
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        }
+        /* keep a label available to screen readers without breaking
+           the inline sentence layout of the blanks */
+        simple-fields-field::part(label) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
         }
       `,
     ];
@@ -132,35 +155,35 @@ class FillInTheBlanks extends MarkTheWords {
     this.answers = [];
     this.wordList = [];
     const wordList = statement.trim().split(/\s+/g);
-    const answerList = wordList.filter(
-      (word) => word.startsWith("[") && word.endsWith("]"),
-    );
-    for (var i in answerList) {
-      let answer = {
-        text: answerList[i],
-        userGuessCorrect: false,
-        correct: true, // always is true on this prop bc of mark the words, we use userGuess to eval correctness
-      };
-      let word = answerList[i].replace("[", "").replace("]", "");
-      // implies we have synonyms
-      if (word.split("~").length > 1) {
-        answer.answer = word.split("~");
-      }
-      // implies we have multiple options, 1st option is the correct answer
-      else {
-        // support single answer
-        if (word.split("|").length > 1) {
-          answer.answer = word.split("|")[0];
-          answer.possible = word.split("|");
-          // shuffle happens in place
-          this.shuffleArray(answer.possible);
-        } else {
-          answer.answer = word;
-        }
-      }
-      this.answers.push(answer);
-    }
     for (var i in wordList) {
+      // a blank is a token with a closing bracket; punctuation may trail
+      // the bracket and malformed input may lack the opening bracket
+      const blank = wordList[i].match(/^\[?([^\[\]]*)\]/);
+      if (blank) {
+        let answer = {
+          text: `[${blank[1]}]`,
+          userGuessCorrect: false,
+          correct: true, // always is true on this prop bc of mark the words, we use userGuess to eval correctness
+        };
+        let word = blank[1];
+        // implies we have synonyms
+        if (word.split("~").length > 1) {
+          answer.answer = word.split("~");
+        }
+        // implies we have multiple options, 1st option is the correct answer
+        else {
+          // support single answer
+          if (word.split("|").length > 1) {
+            answer.answer = word.split("|")[0];
+            answer.possible = word.split("|");
+            // shuffle happens in place
+            this.shuffleArray(answer.possible);
+          } else {
+            answer.answer = word;
+          }
+        }
+        this.answers.push(answer);
+      }
       this.wordList.push({
         text: wordList[i],
       });
@@ -194,7 +217,7 @@ class FillInTheBlanks extends MarkTheWords {
       <div class="text">
         ${this.wordList.map(
           (word) => html`
-            ${word.text.startsWith("[") && word.text.endsWith("]")
+            ${word.text.match(/^\[?[^\[\]]*\]/)
               ? this.renderFillInBlankField(word)
               : html`${word.text} `}
           `,
@@ -215,7 +238,15 @@ class FillInTheBlanks extends MarkTheWords {
   }
 
   renderFillInBlankField(word) {
-    const index = this.answers.findIndex((answer) => word.text === answer.text);
+    const blank = word.text.match(/^\[?([^\[\]]*)\](.*)$/);
+    const index = this.answers.findIndex(
+      (answer) => blank && answer.text === `[${blank[1]}]`,
+    );
+    if (index < 0) {
+      return html`${word.text} `;
+    }
+    // punctuation that trailed the closing bracket renders after the field
+    const trailing = blank[2] ? html`${blank[2]}` : html``;
     if (this.answers[index].possible) {
       let selectItems = [
         {
@@ -231,6 +262,7 @@ class FillInTheBlanks extends MarkTheWords {
       ];
       return html`<simple-fields-field
         data-answer-index="${index}"
+        label="Blank ${index + 1}"
         @value-changed="${this.refreshEvent}"
         type="select"
         .itemsList="${selectItems}"
@@ -240,10 +272,12 @@ class FillInTheBlanks extends MarkTheWords {
             ? "correct"
             : "incorrect"
           : ""}"
-      ></simple-fields-field>`;
+      ></simple-fields-field
+        >${trailing}`;
     } else {
       return html` <simple-fields-field
-        type="textfield"
+        type="text"
+        label="Blank ${index + 1}"
         @value-changed="${this.refreshEvent}"
         data-answer-index="${index}"
         ?disabled="${this.showAnswer}"
@@ -252,7 +286,8 @@ class FillInTheBlanks extends MarkTheWords {
             ? "correct"
             : "incorrect"
           : ""}"
-      ></simple-fields-field>`;
+      ></simple-fields-field
+        >${trailing}`;
     }
   }
 

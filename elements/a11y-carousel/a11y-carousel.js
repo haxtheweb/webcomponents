@@ -224,7 +224,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
   get prev() {
     return this.itemData && this.itemData[this.selectedIndex - 1]
       ? this.itemData[this.selectedIndex - 1].id
-      : this.first;
+      : this.last;
   }
 
   /**
@@ -248,7 +248,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
   get next() {
     return this.itemData && this.itemData[this.selectedIndex + 1]
       ? this.itemData[this.selectedIndex + 1].id
-      : this.last;
+      : this.first;
   }
 
   firstUpdated(changedProperties) {

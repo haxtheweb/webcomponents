@@ -93,6 +93,9 @@ export class WebContainerEl extends DDDSuper(LitElement) {
 
   /** @param {string} content*/
   async writeFile(filename, content) {
+    if (!this.webcontainerInstance) {
+      return;
+    }
     // forces it to be at root of the active directory in the container
     await this.webcontainerInstance.fs.writeFile(`/${filename}`, content);
   }
@@ -620,7 +623,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
           <code-editor part="code-editor" @value-changed="${this.editorValueChanged}"></code-editor>
         </div>` : ``}
       <div class="preview" part="preview">
-        ${!this.hideWindow ? html`<div class="status" part="status">${this.status}</div><iframe part="iframe" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
+        ${!this.hideWindow ? html`<div class="status" part="status">${this.status}</div><iframe part="iframe" title="Web container preview" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
     <div class="terminal" part="terminal"></div>`;

@@ -105,13 +105,13 @@ describe("HaxAppInstaller test", () => {
   });
 
   it("has this.t defaults with expected keys", () => {
-    expect(element.t.step1_title).to.equal("Choose language");
-    expect(element.t.step2_needsConfig).to.equal(
+    expect(element.t.chooseLanguage).to.equal("Choose language");
+    expect(element.t.requirementsNeedingConfiguration).to.equal(
       "Requirements needing configuration",
     );
-    expect(element.t.step3_username).to.equal("Admin username");
-    expect(element.t.step4_startHax).to.equal("Start with HAX");
-    expect(element.t.error_retry).to.equal("Retry");
+    expect(element.t.adminUsername).to.equal("Admin username");
+    expect(element.t.startHaxcms).to.equal("Start HAXcms");
+    expect(element.t.retry).to.equal("Retry");
   });
 
   it("renders error state when error is set", async () => {

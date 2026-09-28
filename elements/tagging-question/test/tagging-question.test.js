@@ -420,11 +420,12 @@ describe("TaggingQuestion test", () => {
   // Directions rendering test
   it("renders custom directions for tagging questions", async () => {
     const directions = element.renderDirections();
-    const directionsString = directions.strings[0];
+    const directionsString = directions.strings.join("");
 
     expect(directionsString).to.include("Select all that apply");
     expect(directionsString).to.include("press");
-    expect(directionsString).to.include("feedback indicating correctness");
+    expect(directionsString).to.include("feedback indicating");
+    expect(directionsString).to.include("correctness");
   });
 
   // Feedback rendering tests
@@ -468,7 +469,8 @@ describe("TaggingQuestion test", () => {
     await element.updateComplete;
 
     const feedback = element.renderFeedback();
-    expect(feedback.strings.join("")).to.include("Great job!");
+    // correctText is rendered via ${} interpolation so it lands in values
+    expect(feedback.values).to.include("Great job!");
   });
 
   it("shows incorrect feedback text when incorrect", async () => {
@@ -479,7 +481,8 @@ describe("TaggingQuestion test", () => {
     await element.updateComplete;
 
     const feedback = element.renderFeedback();
-    expect(feedback.strings.join("")).to.include("Try again!");
+    // incorrectText is rendered via ${} interpolation so it lands in values
+    expect(feedback.values).to.include("Try again!");
   });
 
   // Reset functionality tests
@@ -601,7 +604,7 @@ describe("TaggingQuestion test", () => {
     element.answers = [];
     await element.updateComplete;
 
-    expect(() => element.isCorrect()).to.not.throw;
+    expect(() => element.isCorrect()).to.not.throw();
     expect(element.isCorrect()).to.be.true; // No answers means technically correct
   });
 
@@ -611,7 +614,7 @@ describe("TaggingQuestion test", () => {
       { label: "Tag2", correct: true },
     ];
 
-    expect(() => element.isCorrect()).to.not.throw;
+    expect(() => element.isCorrect()).to.not.throw();
   });
 
   it("handles duplicate tag labels", async () => {
@@ -637,7 +640,7 @@ describe("TaggingQuestion test", () => {
       },
     };
 
-    expect(() => element.handleDrag(mockEvent)).to.not.throw;
+    expect(() => element.handleDrag(mockEvent)).to.not.throw();
     expect(element.dragging).to.be.true;
   });
 
@@ -650,7 +653,7 @@ describe("TaggingQuestion test", () => {
 
     element.answers = [{ label: "Real Tag", correct: true }];
 
-    expect(() => element.handleDrop(mockEvent)).to.not.throw;
+    expect(() => element.handleDrop(mockEvent)).to.not.throw();
   });
 
   // Performance and state management tests

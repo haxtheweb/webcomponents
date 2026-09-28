@@ -317,7 +317,6 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           margin: 0 var(--ddd-spacing-3);
           text-align: center;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          opacity: var(--ddd-opacity-60);
         }
 
         .step-done .step-num {
@@ -452,12 +451,12 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .btn-primary {
-          background: var(--ddd-primary-8);
+          background: var(--ddd-primary-2);
           color: var(--ddd-accent-6);
         }
 
         .btn-primary:hover {
-          background: var(--ddd-primary-2);
+          background: var(--ddd-primary-8);
           box-shadow: var(--ddd-boxShadow-sm);
         }
 
@@ -783,7 +782,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-sm);
           background: light-dark(var(--ddd-accent-2), var(--ddd-primary-5));
-          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-6));
           text-decoration: none;
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -935,7 +934,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border-radius: var(--ddd-radius-sm);
           background: light-dark(var(--ddd-accent-6), var(--ddd-primary-5));
-          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-6));
           text-decoration: none;
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -955,7 +954,18 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .reveal-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: var(--ddd-spacing-1);
+          color: light-dark(var(--ddd-primary-8), var(--ddd-accent-6));
+          flex-shrink: 0;
           margin-right: var(--ddd-spacing-1);
+        }
+
+        .reveal-btn simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
         }
 
         .strength-meter {
@@ -2139,7 +2149,7 @@ ${this._preparePermissionCommand}</pre
             >${this._passwordRevealed ? password : "••••••••••••"}</span
           >
           <button
-            class="copy-btn reveal-btn"
+            class="reveal-btn"
             @click="${this._togglePasswordReveal}"
             title="${this._passwordRevealed ? this.t.hide : this.t.show}"
             aria-label="${this._passwordRevealed ? this.t.hide : this.t.show}"
@@ -2191,7 +2201,7 @@ ${this._preparePermissionCommand}</pre
   renderLoading() {
     return html`
       <div class="loading-overlay">
-        <simple-icon-lite icon="icons:loop"></simple-icon-lite>
+        <simple-icon-lite icon="icons:cached"></simple-icon-lite>
         <p>${this.t.loading}</p>
       </div>
     `;

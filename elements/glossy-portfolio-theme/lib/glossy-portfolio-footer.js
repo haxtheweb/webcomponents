@@ -34,7 +34,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
           let LList = new licenseList();
-          if (this.manifest.license && LList[this.manifest.license]) {
+          if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
             this.licenseName = LList[this.manifest.license].name;
             this.licenseLink = LList[this.manifest.license].link;
             this.licenseImage = LList[this.manifest.license].image;
@@ -140,11 +140,13 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
   <div class="wrapper">
       <p class="item"> Last updated: ${this.lastUpdated} </p>
       <p class="center">© ${this.copyrightYear}   </p>
+    ${this.licenseLink ? html`
     <div class="license item"> 
       <a href="${this.licenseLink}" target="_blank">
         <img src="${this.licenseImage}" alt="${this.licenseName}" />
       </a>
     </div>
+    ` : html``}
   </div>
 </footer>
 

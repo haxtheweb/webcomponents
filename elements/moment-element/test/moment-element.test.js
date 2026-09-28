@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../moment-element.js";
 
@@ -32,6 +32,9 @@ describe("moment-element test", () => {
       const testElement = await fixture(html`
         <moment-element datetime="${now}"></moment-element>
       `);
+      // the moment library loads asynchronously, so wait for it before
+      // asserting on the rendered, computed output
+      await waitUntil(() => testElement.libraryLoaded);
       await testElement.updateComplete;
 
       // Should render text content that is meaningful

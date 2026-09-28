@@ -406,7 +406,7 @@ describe("a11y-carousel test", () => {
 
       // Simulate selection change
       const changeEvent = new CustomEvent("select-carousel-item", {
-        detail: { value: "nav-fig-2" },
+        detail: { controls: "nav-fig-2" },
       });
       navElement.dispatchEvent(changeEvent);
       await navElement.updateComplete;
