@@ -499,6 +499,27 @@ describe("FillInTheBlanks test", () => {
     expect(element.answers[0].answer).to.equal("different");
   });
 
+  // Regression: slotted feedback children must not wipe statement-derived
+  // answers (base QuestionElement scans light dom for <input> answers on
+  // first paint and would reset answers to [])
+  it("renders fields with attribute statement and slotted feedback children", async () => {
+    const wrapper = document.createElement("div");
+    document.body.appendChild(wrapper);
+    wrapper.innerHTML = `<fill-in-the-blanks statement="People tend to put [milk~milky] on their cereal though it's not always the case. Some people do not eat a [traditional] breakfast because they are [weird|funny|young] .">
+      <div slot="feedbackIncorrect"><p>Try again</p></div>
+      <div slot="feedbackCorrect"><p>Correct</p></div>
+      <div slot="hint">Think about breakfast.</div>
+    </fill-in-the-blanks>`;
+    const element = wrapper.querySelector("fill-in-the-blanks");
+    await element.updateComplete;
+
+    expect(element.answers).to.have.length(3);
+    expect(
+      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+    ).to.equal(3);
+    wrapper.remove();
+  });
+
   // Integration test using HAX demo schema
   it("works with HAX demoSchema example", async () => {
     element.question = "Complete this sentence";

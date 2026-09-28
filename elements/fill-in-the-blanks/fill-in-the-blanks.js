@@ -201,17 +201,34 @@ class FillInTheBlanks extends MarkTheWords {
     this.isMarkTheWords = false;
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    super.willUpdate(changedProperties);
     // THIS NEEDS TO NOT REACT TO ANSWERS AS ANSWERS ARE BUILT FROM STATEMENTS
-    if (
-      this.shadowRoot &&
-      this.statement &&
-      changedProperties.has("statement")
-    ) {
+    // build the wordList/answers before rendering so the blank fields are
+    // part of the same update pass as the statement change (avoids a second
+    // render pass where fields briefly do not exist)
+    if (this.statement && changedProperties.has("statement")) {
       this.rebuildWordList(this.statement);
     }
   }
+
+  /**
+   * Answers here are derived from the statement via rebuildWordList, not
+   * authored like multiple choice options. Skip the base class normalization
+   * which injects multiple choice keys and force resets showAnswer every
+   * time answers change.
+   */
+  cleanAnswerData(answers) {
+    return answers;
+  }
+
+  /**
+   * The base class reads answers from slot-less <input> children on first
+   * paint. This element never authors answers that way (they come from the
+   * statement) and its light dom children are feedback/hint/evidence slots,
+   * so the base scan would wipe the generated answers to an empty array.
+   */
+  loadLightDomData() {}
 
   renderInteraction() {
     return html`<div class="text-wrap">
@@ -262,32 +279,32 @@ class FillInTheBlanks extends MarkTheWords {
         }),
       ];
       return html`<simple-fields-field
-        data-answer-index="${index}"
-        label="Blank ${index + 1}"
-        @value-changed="${this.refreshEvent}"
-        type="select"
-        .itemsList="${selectItems}"
-        ?disabled="${this.showAnswer}"
-        class="tag-option ${this.showAnswer
-          ? this.answers[index].userGuessCorrect
-            ? "correct"
-            : "incorrect"
-          : ""}"
-      ></simple-fields-field
+          data-answer-index="${index}"
+          label="Blank ${index + 1}"
+          @value-changed="${this.refreshEvent}"
+          type="select"
+          .itemsList="${selectItems}"
+          ?disabled="${this.showAnswer}"
+          class="tag-option ${this.showAnswer
+            ? this.answers[index].userGuessCorrect
+              ? "correct"
+              : "incorrect"
+            : ""}"
+        ></simple-fields-field
         >${trailing}`;
     } else {
       return html` <simple-fields-field
-        type="text"
-        label="Blank ${index + 1}"
-        @value-changed="${this.refreshEvent}"
-        data-answer-index="${index}"
-        ?disabled="${this.showAnswer}"
-        class="tag-option ${this.showAnswer
-          ? this.answers[index].userGuessCorrect
-            ? "correct"
-            : "incorrect"
-          : ""}"
-      ></simple-fields-field
+          type="text"
+          label="Blank ${index + 1}"
+          @value-changed="${this.refreshEvent}"
+          data-answer-index="${index}"
+          ?disabled="${this.showAnswer}"
+          class="tag-option ${this.showAnswer
+            ? this.answers[index].userGuessCorrect
+              ? "correct"
+              : "incorrect"
+            : ""}"
+        ></simple-fields-field
         >${trailing}`;
     }
   }
