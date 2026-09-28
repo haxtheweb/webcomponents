@@ -48,7 +48,8 @@ class FillInTheBlanks extends MarkTheWords {
           margin-bottom: 0;
           vertical-align: middle;
         }
-        simple-fields-field[type="textfield"] {
+        simple-fields-field[type="textfield"],
+        simple-fields-field[type="text"] {
           width: 140px;
           min-height: unset;
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
