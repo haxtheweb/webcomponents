@@ -230,10 +230,14 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       },
     };
   }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() triggered Lit's
+    // change-in-update warning because it scheduled a new update after the
+    // previous one completed.
     // if type or router changes and we are the next button, it means prev isn't shown
     // make us pulse
     if (
@@ -246,7 +250,70 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         this.dataPulse = null;
       }
     }
+    // icon/position/direction derive from type
+    if (changedProperties.has("type")) {
+      if (this.type === "prev") {
+        if (!this.icon) {
+          this.icon = "icons:chevron-left";
+        }
+        if (!this.position) {
+          this.position = "right";
+        }
+      } else if (this.type === "next") {
+        if (!this.icon) {
+          this.icon = "icons:chevron-right";
+        }
+        if (!this.position) {
+          this.position = "left";
+        }
+      } else {
+        this.icon = "";
+        this.direction = "";
+      }
+    }
+    // link/label derive from type/activeRouterManifestIndex/routerManifest
+    if (
+      (changedProperties.has("type") ||
+        changedProperties.has("activeRouterManifestIndex") ||
+        changedProperties.has("routerManifest")) &&
+      this.routerManifest
+    ) {
+      this.link = this.pageLink(
+        this.type,
+        this.activeRouterManifestIndex,
+        this.routerManifest.items,
+      );
+      this.label = this.pageLinkLabel(
+        this.type,
+        this.activeRouterManifestIndex,
+        this.routerManifest.items,
+      );
+    }
+    // disabled derives from type/activeRouterManifestIndex/routerManifest/editMode/link
+    if (
+      (changedProperties.has("type") ||
+        changedProperties.has("activeRouterManifestIndex") ||
+        changedProperties.has("routerManifest") ||
+        changedProperties.has("editMode") ||
+        changedProperties.has("link")) &&
+      this.routerManifest
+    ) {
+      this.disabled = this.pageLinkStatus(
+        this.type,
+        this.activeRouterManifestIndex,
+        this.routerManifest.items,
+        this.editMode,
+        this.link,
+      );
+    }
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
+      // type changed -> re-broadcast the super-daemon option (icon/position
+      // are derived in willUpdate above)
       if (propName == "type") {
         this._typeChanged(this[propName], oldValue);
       }
@@ -262,41 +329,6 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           }),
         );
       }
-      if (
-        ["type", "activeRouterManifestIndex", "routerManifest"].includes(
-          propName,
-        ) &&
-        this.routerManifest
-      ) {
-        this.link = this.pageLink(
-          this.type,
-          this.activeRouterManifestIndex,
-          this.routerManifest.items,
-        );
-        this.label = this.pageLinkLabel(
-          this.type,
-          this.activeRouterManifestIndex,
-          this.routerManifest.items,
-        );
-      }
-      if (
-        [
-          "type",
-          "activeRouterManifestIndex",
-          "routerManifest",
-          "editMode",
-          "link",
-        ].includes(propName) &&
-        this.routerManifest
-      ) {
-        this.disabled = this.pageLinkStatus(
-          this.type,
-          this.activeRouterManifestIndex,
-          this.routerManifest.items,
-          this.editMode,
-          this.link,
-        );
-      }
     });
   }
   _linkChanged(newValue) {
@@ -307,26 +339,8 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     }
   }
   _typeChanged(newValue) {
-    if (newValue === "prev") {
-      if (!this.icon) {
-        this.icon = "icons:chevron-left";
-      }
-      if (!this.position) {
-        this.position = "right";
-      }
-    } else if (newValue === "next") {
-      if (!this.icon) {
-        this.icon = "icons:chevron-right";
-      }
-      if (!this.position) {
-        this.position = "left";
-      }
-    }
-    // @todo add support for up and down as far as children and parent relationships
-    else {
-      this.icon = "";
-      this.direction = "";
-    }
+    // icon/position/direction are derived in willUpdate; this only
+    // re-broadcasts the super-daemon navigation option for the new type.
     this.dispatchEvent(
       new CustomEvent("super-daemon-define-option", {
         bubbles: true,

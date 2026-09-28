@@ -63,7 +63,10 @@ class H5pWrappedElement extends LitElement {
     this.__disposer();
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this._observer = new MutationObserver(() => {
       const iframe = this.querySelector("iframe");
       if (iframe && typeof iframe.src !== "undefined") {

@@ -375,7 +375,10 @@ class ChatInput extends DDD {
   /**
    * @description - LitElement first update /
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (ChatStore.promptCharacterLimit > 0) {
       this.shadowRoot
         .querySelector("#user-input")

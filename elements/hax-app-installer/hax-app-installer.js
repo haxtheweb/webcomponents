@@ -1239,7 +1239,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
     ];
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.fetchState();
   }
 

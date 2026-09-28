@@ -771,13 +771,25 @@ const SimplePickerBehaviors = function (SuperClass) {
         `,
       )}`;
     }
+    willUpdate(changedProperties) {
+      if (super.willUpdate) {
+        super.willUpdate(changedProperties);
+      }
+      // Derive reactive state in willUpdate so it batches into the current
+      // update cycle. _valueChanged/_optionsChanged set reactive properties
+      // (__options, __activeDesc, __selectedOption, __ready, and possibly
+      // value); calling them from updated() scheduled a redundant second
+      // update (Lit change-in-update warning).
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "value") this._valueChanged(oldValue);
+        if (propName === "options") this._optionsChanged(oldValue);
+      });
+    }
     updated(changedProperties) {
       if (super.updated) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "value") this._valueChanged(oldValue);
-        if (propName === "options") this._optionsChanged(oldValue);
         if (propName === "expanded" && this.shadowRoot && this.expanded) {
           // delay to allow virtualizer to calculate how many
           setTimeout(() => {

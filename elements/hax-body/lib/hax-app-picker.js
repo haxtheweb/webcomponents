@@ -99,7 +99,10 @@ class HaxAppPicker extends LitElement {
   /**
    * Attached to the DOM, now fire that we exist.
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {

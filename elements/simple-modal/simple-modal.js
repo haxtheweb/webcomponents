@@ -525,7 +525,10 @@ class SimpleModal extends LitElement {
   /**
    * LitElement
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     import("web-dialog/index.js").then((e) => {
       setTimeout(() => {
         this.shadowRoot

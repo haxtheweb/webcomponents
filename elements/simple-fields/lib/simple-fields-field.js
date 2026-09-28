@@ -809,6 +809,20 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       this.hovered = false;
       this.wrap = false;
     }
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Ensure a unique id exists before render so label[for], name, and the
+      // input id all match on the first paint. Generating it in updated()
+      // scheduled a redundant second update (and flashed empty ids).
+      if (!this.id) {
+        this.id = this._generateUUID();
+      }
+      // Normalize the field type before render so the correct element
+      // (input/select/textarea/fieldset) is stamped immediately. Running
+      // this normalization inside _updateField() during updated() caused a
+      // change-in-update when the type was corrected.
+      this.type = this._getValidType(this.type);
+    }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) super.firstUpdated(changedProperties);
       // normalize state for interaction with checkbox / radio buttons

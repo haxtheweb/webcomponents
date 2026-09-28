@@ -1207,12 +1207,17 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.playing = e.detail.__playing;
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      // hack to account for poor state management prior to and then source type switches on the fly
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive sourceType (and force a media re-mount via elementVisible) in
+    // willUpdate so it batches into the current update cycle. Setting these
+    // reactive properties in updated()/firstUpdated() scheduled a redundant
+    // second update (Lit change-in-update warning).
+    if (changedProperties.has("source")) {
+      const oldValue = changedProperties.get("source");
       if (
-        propName === "source" &&
         this.sourceType &&
         typeof oldValue !== typeof undefined &&
         this.sourceData &&
@@ -1231,7 +1236,32 @@ class VideoPlayer extends IntersectionObserverMixin(
           }
         }
       }
-
+    }
+    // set source type based on available data (initial + when sourceData changes)
+    if (changedProperties.has("sourceData")) {
+      if (
+        this.sourceData &&
+        this.sourceData.length > 0 &&
+        this.sourceData[0] !== undefined &&
+        typeof this.sourceData[0].src !== typeof undefined
+      ) {
+        this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
+          this.sourceData[0].src,
+        );
+      }
+    }
+    // load audio description preference when the source / ads source arrive
+    if (
+      (changedProperties.has("audioDescriptionSource") ||
+        changedProperties.has("source")) &&
+      this.audioDescriptionSource
+    ) {
+      this._loadAudioDescriptionPreference();
+    }
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
       // Setup audio description sync when enabled changes
       if (
         propName === "audioDescriptionEnabled" &&
@@ -1322,23 +1352,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         );
       }
     });
-
-    // set source type based on available data
-    if (
-      this.sourceData &&
-      this.sourceData.length > 0 &&
-      this.sourceData[0] !== undefined &&
-      typeof this.sourceData[0].src !== typeof undefined
-    ) {
-      this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
-        this.sourceData[0].src,
-      );
-    }
-
-    // setup audio description if source is present
-    if (this.audioDescriptionSource) {
-      this._loadAudioDescriptionPreference();
-    }
   }
   /**
    * mapping down into the shadowRoot element bc these are common things to want to know

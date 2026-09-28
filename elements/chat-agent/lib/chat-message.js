@@ -214,7 +214,10 @@ class ChatMessage extends DDD {
     `;
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.pickHat();
   }
 

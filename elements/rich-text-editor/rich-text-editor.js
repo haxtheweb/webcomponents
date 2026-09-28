@@ -288,8 +288,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
       );
     }
 
-    firstUpdated() {
-      if (super.firstUpdated) super.firstUpdated();
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
       if (this.isEmpty && !!this.rawhtml) {
         this.innerHTML = this.rawhtml.trim();
       } else if (this.isEmpty) {

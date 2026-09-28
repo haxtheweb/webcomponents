@@ -5060,21 +5060,41 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     globalThis.URL.revokeObjectURL(link.href);
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive reactive display state in willUpdate so it batches into the
+    // current update cycle. Setting rpgHat / __editIcon / __editText in
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). _editModeChanged (called from updated) still sets __editIcon
+    // but that becomes a no-op since willUpdate already set it.
+    if (
+      changedProperties.has("userMenuOpen") &&
+      changedProperties.get("userMenuOpen") !== undefined
+    ) {
+      this.rpgHat = this.userMenuOpen ? "edit" : "none";
+    }
+    if (changedProperties.has("editMode")) {
+      if (this.editMode) {
+        this.rpgHat = "construction";
+        this.__editIcon = "icons:save";
+      } else {
+        this.rpgHat = "none";
+        this.__editIcon = "icons:create";
+      }
+      // Update edit button label when mode changes
+      this._updateEditButtonLabel();
+    }
+    if (changedProperties.has("responsiveSize")) {
+      this._updateEditButtonLabel();
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "userMenuOpen" && oldValue !== undefined) {
-        if (this.userMenuOpen) {
-          this.rpgHat = "edit";
-        } else {
-          this.rpgHat = "none";
-        }
-      }
-      if (propName === "responsiveSize") {
-        this._updateEditButtonLabel();
-      }
       if (propName == "editMode") {
         // Capture the user's scroll position BEFORE _editModeChanged writes
         // store.editMode. That store write triggers the theme + hax-body
@@ -5089,17 +5109,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ? globalThis.scrollY
               : globalThis.pageYOffset;
         }
-        if (this.editMode) {
-          this.rpgHat = "construction";
-        } else {
-          this.rpgHat = "none";
-        }
-        // Update edit button label when mode changes
-        this._updateEditButtonLabel();
         if (oldValue !== undefined) {
           SuperDaemonInstance.close();
         }
-        // observer
+        // observer (side effects: store.editMode, tray, daemon contexts;
+        // __editIcon set inside is a no-op since willUpdate already set it)
         this._editModeChanged(this[propName], oldValue);
         // notify
         this.dispatchEvent(

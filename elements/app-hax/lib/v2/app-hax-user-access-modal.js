@@ -504,8 +504,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
   /**
    * Focus input when modal opens
    */
-  firstUpdated() {
-    super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // Set site title from store if available
     if (store.activeSite && store.activeSite.title) {
       this.siteTitle = store.activeSite.title;

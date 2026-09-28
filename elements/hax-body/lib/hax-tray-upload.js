@@ -40,13 +40,14 @@ class HaxTrayUpload extends HaxUploadField {
       });
     });
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "t") {
-        this.label = this.t.uploadMedia;
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive label from the i18n t object in willUpdate so it batches into
+    // the current update cycle. Setting label in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("t")) {
+      this.label = this.t.uploadMedia;
+    }
   }
   _editModeChanged(editMode) {
     if (

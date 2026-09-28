@@ -722,6 +722,13 @@ class CleanOne extends LTIResizingMixin(
         "long",
       );
     }
+    if (
+      changedProperties.has("topItems") ||
+      changedProperties.has("items") ||
+      changedProperties.has("activeLayout")
+    ) {
+      requestAnimationFrame(() => this._syncViewportLayout());
+    }
   }
 
   // render function
@@ -1032,24 +1039,6 @@ class CleanOne extends LTIResizingMixin(
   /**
    * Previous page to hook into when prev is hit
    */
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    if (changedProperties.has("dataPalette")) {
-      UserScaffoldInstance.writeMemory(
-        "HAXCMSSitePalette",
-        this.dataPalette,
-        "long",
-      );
-    }
-    if (
-      changedProperties.has("topItems") ||
-      changedProperties.has("items") ||
-      changedProperties.has("activeLayout")
-    ) {
-      requestAnimationFrame(() => this._syncViewportLayout());
-    }
-  }
 
   prevPage(e) {
     super.prevPage(e);

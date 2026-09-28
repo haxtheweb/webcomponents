@@ -242,13 +242,33 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   }
 
   /**
+   * LitElement life cycle - willUpdate: derive reactive state before render
+   * so it batches into the current update cycle. Setting __collapseIcon /
+   * __collapseAria in updated() scheduled a redundant second update
+   * (Lit change-in-update warning).
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    if (
+      changedProperties.has("opened") &&
+      changedProperties.get("opened") !== undefined
+    ) {
+      if (this.opened) {
+        this.__collapseIcon = "icons:expand-more";
+        this.__collapseAria = "collapse menu";
+      } else {
+        this.__collapseIcon = "icons:chevron-right";
+        this.__collapseAria = "expand menu";
+      }
+    }
+  }
+  /**
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "opened" && oldValue !== undefined) {
-        this._openedChanged(this[propName], oldValue);
-      }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
       }

@@ -429,6 +429,19 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     super.disconnectedCallback();
   }
   // LitElement life cycle
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive hexColor from color in willUpdate so it batches into the
+    // current update cycle. Setting hexColor in updated() (via
+    // _colorChanged) scheduled a redundant second update (Lit
+    // change-in-update warning).
+    if (changedProperties.has("color") && this.color) {
+      this.hexColor = this._getHexColor(this.color);
+    }
+  }
+  // LitElement life cycle
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -476,9 +489,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             }
           }
         }, 0);
-      }
-      if (propName == "color") {
-        this._colorChanged(this[propName], oldValue);
       }
       if (propName == "responsiveSize") {
         this._syncResponsiveStoreState();

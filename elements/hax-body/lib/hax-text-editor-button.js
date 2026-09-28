@@ -55,11 +55,22 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     if (super.firstUpdated) super.firstUpdated(changedProperties);
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "element" && this.element) this.updateElement();
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive element-driven state in willUpdate so it batches into the
+    // current update cycle. updateElement() sets reactive properties
+    // (fields, tagsList, icon, label, value); calling it from updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    // Guard on __highlight (the range object) because updateElement() ->
+    // getValue() -> targetedNode reads it, and it is only established around
+    // first render; the initial setup is handled by firstUpdated below.
+    if (
+      changedProperties.has("element") &&
+      this.element &&
+      this.__highlight
+    ) {
+      this.updateElement();
+    }
   }
 
   /**

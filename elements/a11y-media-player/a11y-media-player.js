@@ -2437,15 +2437,29 @@ class A11yMediaPlayer extends SchemaBehaviors(
   /**
    * @param {map} changedProperties the properties that have changed
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() scheduled a redundant second
+    // update (Lit change-in-update warning). The captions handlers stay in
+    // updated() because they depend on this.loadedTracks (assigned in
+    // firstUpdated); running them pre-render would throw on the first update.
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "learningMode" && typeof oldValue !== "undefined") {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
+      if (propName === "id" && this.id === null)
+        this.id = "a11y-media-player" + Date.now();
+    });
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
       let change = (params) => params.includes(propName),
         mediaChange = (param) =>
           change(["__loadedTracks", "youtubeId", "media", param]),
@@ -2461,9 +2475,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
       if (change(["source", "sources"])) {
         this._updateMediaSource();
       }
-
-      if (propName === "id" && this.id === null)
-        this.id = "a11y-media-player" + Date.now();
 
       if (change(["media", "muted"])) this._handleMuteChanged();
       if (change(["media", "volume"])) this.setVolume(this.volume);

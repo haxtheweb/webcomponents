@@ -430,18 +430,20 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         item.expanded = false;
       });
   }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "filtered") {
-        this.requestUpdate();
-      }
-      if (propName == "items" && this[propName] && this[propName].length > 0) {
-        this.categories = [...this.updateCategories(this.items)];
-      }
-    });
+    // Derive categories from items in willUpdate so it batches into the
+    // current update cycle. Setting categories in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("items") &&
+      this.items &&
+      this.items.length > 0
+    ) {
+      this.categories = [...this.updateCategories(this.items)];
+    }
   }
   ucfirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);

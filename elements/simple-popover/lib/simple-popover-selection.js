@@ -214,7 +214,10 @@ class SimplePopoverSelection extends LitElement {
       },
     };
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this._addActivationListeners();
   }
   disconnectedCallback() {

@@ -1672,12 +1672,14 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 
-  firstUpdated() {
-    super.firstUpdated();
-    // Skeleton and site results are loaded via autorun watching appReady + isLoggedIn
-  }
-
-  updated(changedProperties) {
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Recompute filtered items/sites in willUpdate so the new arrays are
+    // part of this update cycle. applyFilters() sets the reactive
+    // filteredItems/filteredSites properties, so calling it from updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
     if (
       changedProperties.has("searchQuery") ||
       changedProperties.has("activeFilters") ||
@@ -1685,9 +1687,13 @@ export class AppHaxUseCaseFilter extends LitElement {
     ) {
       this.applyFilters();
     }
+  }
 
+  updated(changedProperties) {
     // If a URL param like `?use-case=course-template` is present, try to
     // auto-open the corresponding template once the items are loaded.
+    // This is async (awaits updateComplete) so it does not set reactive
+    // properties synchronously inside the update cycle.
     if (changedProperties.has("items")) {
       this._maybeAutoOpenUseCaseFromUrl();
     }

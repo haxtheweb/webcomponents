@@ -236,12 +236,14 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           type: Boolean,
           reflect: true,
         },
-        /**
-         * Field element
-         */
-        field: {
-          type: Object,
-        },
+        // NOTE: `field` is intentionally NOT a reactive property. It is a
+        // cache of the stamped <input>/<select>/<textarea>/<fieldset> assigned
+        // in _updateField() (called from firstUpdated/updated, which needs the
+        // shadow DOM). render() never reads `this.field`, so making it a plain
+        // instance property avoids Lit's change-in-update warning (setting a
+        // reactive prop post-render) AND skips a wasted re-render. This fixes
+        // the warning for every simple-fields descendant (simple-fields-field,
+        // simple-fields-url-combo, hax-tray-upload, simple-colors-picker, ...).
         /**
          * Unique id
          */

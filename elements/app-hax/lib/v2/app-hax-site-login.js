@@ -33,8 +33,10 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
     };
   }
 
-  firstUpdated() {
-    super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     setTimeout(() => {
       this.shadowRoot.querySelector("input").focus();
     }, 0);

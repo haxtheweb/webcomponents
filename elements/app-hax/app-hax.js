@@ -1508,6 +1508,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ];
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Compute hasHeaderPre from light-DOM slotted content before the first
+    // render so the header does not flash the default logo when pre content
+    // exists. Light-DOM children are available in willUpdate, and setting
+    // the reactive property here keeps it in the update cycle. Doing this
+    // in firstUpdated scheduled a redundant second update (change-in-update).
+    if (!this.hasUpdated) {
+      this.hasHeaderPre = !!this.querySelector('[slot="app-header-pre"]');
+    }
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -1638,7 +1652,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         );
       }
     });
-    this._syncHeaderPreSlot();
     this._applyInitialAdminRoutePath();
   }
 

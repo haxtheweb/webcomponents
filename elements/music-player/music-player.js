@@ -99,7 +99,10 @@ class MusicPlayer extends LitElement {
   /**
    * LitElement life cycle - 1st updated
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
     setTimeout(() => {
       import("./lib/html-midi-player.js").then((module) => {

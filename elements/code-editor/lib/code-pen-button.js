@@ -39,9 +39,9 @@ class CodePenButton extends LitElement {
   static get tag() {
     return "code-pen-button";
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
     if (super.firstUpdated) {
-      super.firstUpdated();
+      super.firstUpdated(changedProperties);
     }
     this.setAttribute("title", this.checkItOut);
   }

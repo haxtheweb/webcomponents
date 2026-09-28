@@ -381,6 +381,34 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         this.multiMatch,
       );
     }
+    // Derive loading + selection state in willUpdate so they are part of
+    // this update cycle. Setting these reactive properties in updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("filtered") &&
+      typeof changedProperties.get("filtered") !== "undefined"
+    ) {
+      if (this.filtered.length > 0) {
+        this.loading = false;
+      }
+      // Reset selection state so screen readers + keyboard nav start fresh
+      this._selectedIndex = -1;
+      this._activeDescendant = "";
+    }
+    if (changedProperties.has("opened") && this.opened) {
+      this.activeType = null;
+      this.activeDrag = false;
+    }
+    // Program result items do not carry an `index` field (they have `title`),
+    // so filtering them against `where="index"` made simple-filter warn
+    // "unable to find a property in 'index'" for every item AND could false-
+    // match the stringified "undefined". Switch `where` to `title` in program
+    // mode and back to `index` for the main daemon search (whose items DO
+    // carry a built `index`). Driven in willUpdate so the filter recompute
+    // (keyed off `where`) batches with the programName/items change.
+    if (changedProperties.has("programName")) {
+      this.where = this.programName ? "title" : "index";
+    }
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -388,12 +416,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "filtered" && typeof oldValue !== "undefined") {
-        if (this.filtered.length > 0) {
-          this.loading = false;
-        }
-        // Announce results count for screen readers and reset selection
+        // Announce results count for screen readers
         this._announceResults();
-        this._updateActiveDescendant(-1); // Reset selection
+        // Reset the active-descendant DOM state. The selection index
+        // properties are reset in willUpdate to avoid a change-in-update.
+        this._applyActiveDescendantDom(-1);
 
         const sdi = globalThis.SuperDaemonManager.requestAvailability();
         if (sdi.santaMode || this.listeningForInput) {
@@ -429,8 +456,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       }
       if (propName == "opened" && this.shadowRoot) {
         if (this.opened) {
-          this.activeType = null;
-          this.activeDrag = false;
           this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
@@ -553,6 +578,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // Trigger re-render to update aria-selected attributes in the template
     this.requestUpdate();
 
+    this._applyActiveDescendantDom(index);
+  }
+
+  /**
+   * Apply active-descendant DOM state (row.active flags + scrolling) after
+   * render. Split out from _updateActiveDescendant so updated() can reset
+   * the DOM without setting reactive properties inside the update cycle.
+   */
+  _applyActiveDescendantDom(index) {
     // Use requestAnimationFrame to ensure DOM is updated before setting active state
     requestAnimationFrame(() => {
       // Update active property on all options after re-render

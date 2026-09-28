@@ -126,7 +126,10 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     };
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     const lectureAnchors = this.querySelectorAll("[data-lecture-slide]");
     console.log(lectureAnchors);
     const anchorsArray = Array.from(lectureAnchors);

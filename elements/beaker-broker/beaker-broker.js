@@ -60,7 +60,10 @@ class BeakerBroker extends LitElement {
   /**
    * LitElement ready
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (typeof DatArchive === typeof undefined) {
       console.warn(
         "Beaker is not available from this site loading methodology",

@@ -984,8 +984,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       super.disconnectedCallback();
     }
 
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Generate a unique id in willUpdate (no DOM needed) so it batches into
+      // the current update cycle. Setting reactive `id` in firstUpdated
+      // scheduled a redundant second update (Lit change-in-update warning).
+      if (!this.id) {
+        this.id = this._generateUUID();
+      }
+    }
     firstUpdated(changedProperties) {
-      if (!this.id) this.id = this._generateUUID();
       super.firstUpdated(changedProperties);
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);

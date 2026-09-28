@@ -520,6 +520,31 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         break;
     }
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() scheduled a redundant second
+    // update (Lit change-in-update warning).
+    if (changedProperties.has("activeNode")) {
+      this.isLocked = this._isNodeLocked(this.activeNode);
+    }
+    if (
+      changedProperties.has("activeNode") ||
+      changedProperties.has("activeEditingElement")
+    ) {
+      this.activeSchema = HAXStore.activeSchema();
+      this.editElementProperty =
+        this.activeSchema && this.activeSchema.editElement
+          ? this.activeSchema.editElement
+          : false;
+      this.editElementToggled =
+        this.activeNode &&
+        this.editElementProperty &&
+        !!this.activeNode[this.editElementProperty];
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -527,20 +552,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "onScreen" && this.onScreen) {
         this._resetCEMenu();
-      }
-      if (propName === "activeNode") {
-        this.isLocked = this._isNodeLocked(this.activeNode);
-      }
-      if (propName === "activeNode" || propName === "activeEditingElement") {
-        this.activeSchema = HAXStore.activeSchema();
-        this.editElementProperty =
-          this.activeSchema && this.activeSchema.editElement
-            ? this.activeSchema.editElement
-            : false;
-        this.editElementToggled =
-          this.activeNode &&
-          this.editElementProperty &&
-          !!this.activeNode[this.editElementProperty];
       }
     });
   }

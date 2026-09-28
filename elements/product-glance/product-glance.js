@@ -79,8 +79,11 @@ export class ProductGlance extends SimpleColors {
   constructor() {
     super();
   }
-  updated() {
-    if (this.icon) {
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("icon") && this.icon) {
       import("@haxtheweb/simple-icon/simple-icon.js");
     }
   }

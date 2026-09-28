@@ -177,8 +177,10 @@ class RichTextEditorSource extends LitElement {
     }
   }
 
-  firstUpdated() {
-    if (super.firstUpdated) super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.toggle();
   }
 

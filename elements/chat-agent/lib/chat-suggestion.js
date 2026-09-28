@@ -189,7 +189,10 @@ class ChatSuggestion extends DDD {
   /**
    * @description LitElement first update / sets suggestion icon
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     let simpleIcon = this.shadowRoot.querySelector("simple-icon-lite");
     switch (this.promptType) {
       case "suggestion":
@@ -223,7 +226,10 @@ class ChatSuggestion extends DDD {
   /**
    * @description LitElement updated / sets disabled state
    */
-  updated() {
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     if (this.disabled) {
       this.shadowRoot
         .querySelector(".chat-suggestion-wrapper")

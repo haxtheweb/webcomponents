@@ -1344,6 +1344,66 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     }
   }
   /**
+   * LitElement willUpdate — derive reactive state before render so it
+   * batches into the current update cycle. Setting activeTagName,
+   * trayDetail, trayIcon, and trayLabel in updated() scheduled redundant
+   * second updates (Lit change-in-update warning).
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // active Gizmo changed -> activeTagName + trayDetail
+    if (
+      changedProperties.has("activeGizmo") &&
+      this.trayDetail !== "view-source"
+    ) {
+      const oldValue = changedProperties.get("activeGizmo");
+      if (this.activeGizmo) {
+        this.activeTagName = this.activeGizmo.title;
+        if (
+          !oldValue ||
+          ![
+            "content-map",
+            "content-edit",
+            "content-add",
+          ].includes(this.trayDetail)
+        ) {
+          this.trayDetail = "content-edit";
+        }
+      } else {
+        // force a gizmo change (which then implies adding to the page)
+        // to select the edit tab if we just added something into the page
+        // from our two content adding panes
+        if (!["content-add", "content-map"].includes(this.trayDetail)) {
+          this.trayDetail = "content-add";
+        }
+      }
+    }
+    // trayDetail -> trayIcon + trayLabel (pure mapping)
+    if (changedProperties.has("trayDetail")) {
+      const v = this.trayDetail;
+      if (v == "content-add") {
+        this.trayIcon = "hax:add-brick";
+        this.trayLabel = this.t.blocks;
+      } else if (v == "content-map") {
+        this.trayIcon = "editor:format-line-spacing";
+        this.trayLabel = this.t.structure;
+      } else if (v == "view-source") {
+        this.trayIcon = "hax:html-code";
+        this.trayLabel = this.t.htmlSource;
+      } else if (v == "content-edit") {
+        this.trayIcon = "image:tune";
+        this.trayLabel = null;
+      } else if (!v || v == "") {
+        this.trayIcon = "image:tune";
+      } else {
+        this.trayIcon = "image:tune";
+        this.trayLabel = null;
+      }
+    }
+  }
+  /**
    * LitElement properties changed
    */
   async updated(changedProperties) {
@@ -1363,34 +1423,14 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             this.offsetMargin;
         }, 0);
       }
-      // change tray detail
+      // change tray detail (DOM + edge-case handling only; trayIcon /
+      // trayLabel derivation lives in willUpdate)
       if (propName == "trayDetail") {
-        this._updateTrayDetail(this[propName]);
+        this._applyTrayDetailDom(this[propName]);
       }
       // collaped menu state change
       if (propName == "collapsed" && this[propName]) {
         this._editModeChanged(this.editMode);
-      }
-      // active Gizmo changed
-      if (propName == "activeGizmo" && this.trayDetail !== "view-source") {
-        if (this.activeGizmo) {
-          this.activeTagName = this.activeGizmo.title;
-          if (
-            !oldValue ||
-            !["content-map", "content-edit", "content-add"].includes(
-              this.trayDetail,
-            )
-          ) {
-            this.trayDetail = "content-edit";
-          }
-        } else {
-          // force a gizmo change (which then implies adding to the page)
-          // to select the edit tab if we just added something into the page
-          // from our two content adding panes
-          if (!["content-add", "content-map"].includes(this.trayDetail)) {
-            this.trayDetail = "content-add";
-          }
-        }
       }
       // active node changed
       if (propName == "activeNode") {
@@ -1766,6 +1806,22 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
   _updateTrayDetail(newValue) {
+    // trayIcon / trayLabel derivation lives in willUpdate; this wrapper is
+    // kept for the i18n updateCallback path (invoked outside the update
+    // cycle when translations load, where requestUpdate is safe). It
+    // performs the DOM/edge-case work and then forces a re-render so the
+    // newly loaded t.* strings repaint.
+    this._applyTrayDetailDom(newValue);
+    this.requestUpdate();
+  }
+  /**
+   * DOM + edge-case work for a trayDetail change. Safe to call from
+   * updated() because it does NOT set trayIcon/trayLabel (those are
+   * derived in willUpdate) and does NOT call requestUpdate. The only
+   * reactive sets here are the rare content-edit-with-no-active-node and
+   * empty-trayDetail normalizations, which are edge cases.
+   */
+  _applyTrayDetailDom(newValue) {
     if (
       newValue &&
       this.shadowRoot &&
@@ -1778,12 +1834,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       this.shadowRoot.querySelector(".detail").style.height = "";
     }
     if (newValue == "content-add") {
-      this.trayIcon = "hax:add-brick";
-      this.trayLabel = this.t.blocks;
       this._refreshAddData();
     } else if (newValue == "content-map") {
-      this.trayIcon = "editor:format-line-spacing";
-      this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
     } else if (
       newValue == "content-edit" &&
@@ -1812,23 +1864,11 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           this.collapsed = true;
         }
       } else {
-        this.trayIcon = "hax:add-brick";
         this.trayDetail = "content-add";
       }
     } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
-      this.trayIcon = "image:tune";
-    } else if (newValue == "content-edit") {
-      this.trayIcon = "image:tune";
-      this.trayLabel = null;
-    } else if (newValue == "view-source") {
-      this.trayIcon = "hax:html-code";
-      this.trayLabel = this.t.htmlSource;
-    } else {
-      this.trayIcon = "image:tune";
-      this.trayLabel = null;
     }
-    this.requestUpdate();
   }
 
   // this helper ensures that objcets are not deeply nested, while avoiding smashing together array based data

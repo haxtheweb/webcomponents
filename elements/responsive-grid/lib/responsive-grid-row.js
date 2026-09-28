@@ -231,7 +231,10 @@ class ResponsiveGridRow extends LitElement {
   /**
    * LitElement ready
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.dispatchEvent(
       new CustomEvent("responsive-element", {
         bubbles: true,

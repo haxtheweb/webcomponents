@@ -334,8 +334,10 @@ class SimpleRangeInput extends SimpleColors {
   _valueChanged(e) {
     this.value = e.target.value;
   }
-  firstUpdated() {
-    super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // helps ensure a flood of initial stampping input does not occur
     // this is because of a vanilla element + event monitoring to set initials
     setTimeout(() => {
