@@ -40,16 +40,16 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
     `;
   }
 
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive alt from goal, and self-correct invalid goals, in willUpdate
+    // so reactive sets batch into the current update cycle. Setting these
+    // in updated() scheduled a redundant second update (Lit change-in-update
+    // warning).
     if (changedProperties.has('goal')) {
-      // if an invalid goal is supplied, force it to be 1
       if (this.goal >= 1 && this.goal <= 17) {
-        this.alt = `Goal ${this.goal}: ${unSDGGoalData[this.goal - 1].name}`; 
-      }
-      else {
+        this.alt = `Goal ${this.goal}: ${unSDGGoalData[this.goal - 1].name}`;
+      } else {
         this.goal = 1;
       }
     }

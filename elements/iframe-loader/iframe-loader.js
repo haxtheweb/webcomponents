@@ -235,7 +235,26 @@ export class IframeLoader extends LitElement {
     this.__observer.disconnect();
   }
   /**
-   * LitElement lifecycle
+   * LitElement lifecycle — derive reactive state before render
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Sanitize source and derive isPDF in willUpdate so reactive sets batch
+    // into the current update cycle. Setting source/isPDF in updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("source")) {
+      const safeSource = this._safeSource(this.source);
+      if (safeSource !== this.source) {
+        this.source = safeSource;
+      }
+      this.isPDF = false;
+      if (safeSource && safeSource.endsWith(".pdf")) {
+        this.isPDF = true;
+      }
+    }
+  }
+  /**
+   * LitElement lifecycle — DOM side-effects post render
    */
   updated(changedProperties) {
     if (super.updated) {
@@ -254,16 +273,6 @@ export class IframeLoader extends LitElement {
           }
         } else if (propName === "source") {
           const safeSource = this._safeSource(this.source);
-          if (safeSource !== this.source) {
-            this.source = safeSource;
-            return;
-          }
-          this.isPDF = false;
-          // test if source is a PDF
-          if (safeSource && safeSource.endsWith(".pdf")) {
-            this.isPDF = true;
-          }
-
           if (this.__iframe) {
             if (this.isPDF) {
               this.__iframe.removeAttribute("sandbox");

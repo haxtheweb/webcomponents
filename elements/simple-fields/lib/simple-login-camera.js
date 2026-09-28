@@ -26,10 +26,10 @@ class SimpleLoginCamera extends HTMLElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           context: this,
-          namespace: "simple-login",
+          namespace: "simple-fields",
           localesPath:
-            new URL("../locales/simple-login.es.json", import.meta.url).href +
-            "/../",
+            new URL("../locales/simple-fields.es.json", import.meta.url)
+              .href + "/../",
           updateCallback: "render",
         },
       }),

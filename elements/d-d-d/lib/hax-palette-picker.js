@@ -229,10 +229,13 @@ class HaxPalettePicker extends DDD {
       .slice(2, 10)}`;
   }
 
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive selectedKey/value from the option list in willUpdate so
+    // reactive sets batch into the current update cycle. _syncValueToOption
+    // sets this.selectedKey and potentially this.value; calling it from
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning).
     if (
       changedProperties.has("value") ||
       changedProperties.has("options") ||

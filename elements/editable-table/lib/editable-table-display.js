@@ -267,20 +267,28 @@ class EditableTableDisplay extends displayBehaviors(
     });
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "data")
-        this.disabled =
-          !this.data || this.data.length < 1 || this.data[0].length < 1;
-      if (
-        ["disabled", "hidden"].includes(propName) &&
-        !this.hidden &&
-        !this.disabled
-      ) {
-        this.toggleFilter();
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive disabled from data, and reset filter state when the table
+    // becomes visible/enabled, in willUpdate so reactive sets batch into
+    // the current update cycle. Setting these in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("data")) {
+      this.disabled =
+        !this.data || this.data.length < 1 || this.data[0].length < 1;
+    }
+    if (
+      (changedProperties.has("disabled") ||
+        changedProperties.has("hidden")) &&
+      !this.hidden &&
+      !this.disabled
+    ) {
+      // Mirror toggleFilter()'s no-argument reset path (the same branch
+      // updated() used) without calling the event-handler method itself.
+      this.filtered = false;
+      this.filterText = undefined;
+      this.filterColumn = undefined;
+    }
   }
   connectedCallback() {
     super.connectedCallback();

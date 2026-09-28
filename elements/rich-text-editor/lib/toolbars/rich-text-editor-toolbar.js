@@ -871,18 +871,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         registered: {
           type: Boolean,
         },
+        // NOTE: `selectedNode` and `selectionAncestors` are intentionally
+        // NOT reactive. They are set in _updateButtonRanges() (called from
+        // updated() when `range` changes) and only propagated imperatively to
+        // child buttons/breadcrumbs — render() never reads them. Keeping them
+        // as plain instance properties avoids Lit's change-in-update warning.
         /**
-         * currently selected node
+         * Tracks inline widgets that require selection data
          */
-        selectedNode: {
-          type: Object,
-        },
-        /**
-         * array of ancestors of currently selected node
-         */
-        selectionAncestors: {
-          type: Array,
-        },
+        // clickableElements moved to non-reactive below (see note).
         /**
          * when to make toolbar visible:
          * "always" to keep it visible,
@@ -897,10 +894,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * Tracks inline widgets that require selection data
          */
-        clickableElements: {
-          name: "clickableElements",
-          type: Object,
-        },
+        // NOTE: `clickableElements` is intentionally NOT a reactive
+        // property. It is mutated by registerButton/deregisterButton and
+        // re-assigned (`= {}`) by clearToolbar() (called from updateToolbar
+        // in updated() when `config` changes). render() never reads it — it
+        // is only consulted in event-handler methods. Keeping it as a plain
+        // instance property avoids Lit's change-in-update warning.
 
         /**
          * contains cancelled edits

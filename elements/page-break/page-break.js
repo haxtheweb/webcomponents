@@ -626,10 +626,6 @@ export class PageBreak extends IntersectionObserverMixin(
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           position: relative;
           opacity: 0.9;
-          transition:
-            opacity 0.2s ease-in-out,
-            border-color 0.2s ease-in-out,
-            background-color 0.2s ease-in-out;
         }
         /* Increase bottom margin when link URL is present to prevent clipping */
         :host([data-hax-ray][link-url]) {
@@ -692,7 +688,6 @@ export class PageBreak extends IntersectionObserverMixin(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-limestoneLight)
           );
-          transition: all 0.3s ease-in-out;
         }
         .link-url:hover {
           background-color: light-dark(
@@ -785,12 +780,6 @@ export class PageBreak extends IntersectionObserverMixin(
         simple-toolbar-button.menu-item-delete:hover {
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          :host([data-hax-ray]),
-          .link-url {
-            transition: none !important;
-          }
         }
         @media (max-width: 600px) {
           #pageactionsbtn {

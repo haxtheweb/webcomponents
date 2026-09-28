@@ -339,6 +339,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (changedProperties.has("title") || changedProperties.has("value")) {
       this.codePenData = this._computeCodePenData(this.title, this.value);
     }
+    // Legacy: pass down mode to language. Derive in willUpdate so the
+    // reactive `language` set batches into the current update cycle.
+    // Setting it in updated() (via _modeChanged) scheduled a redundant
+    // second update (Lit change-in-update warning).
+    if (changedProperties.has("mode")) {
+      this.language = this.mode;
+    }
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -347,9 +354,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editorValue") {
         this._editorValueChanged(this[propName]);
-      }
-      if (propName == "mode") {
-        this._modeChanged(this[propName], oldValue);
       }
       if (propName === "showCodePen") {
         // notify

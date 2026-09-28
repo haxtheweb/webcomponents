@@ -106,6 +106,37 @@ class SiteQuery extends LitElement {
     this.limit = 0;
     this.startIndex = 0;
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive result from query inputs in willUpdate so the reactive set
+    // batches into the current update cycle. Setting result in updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("entity") ||
+      changedProperties.has("conditions") ||
+      changedProperties.has("sort") ||
+      changedProperties.has("routerManifest") ||
+      changedProperties.has("activeId") ||
+      changedProperties.has("limit") ||
+      changedProperties.has("startIndex") ||
+      changedProperties.has("random") ||
+      changedProperties.has("forceRebuild")
+    ) {
+      this.result = [
+        ...this._computeResult(
+          this.entity,
+          this.conditions,
+          this.sort,
+          this.routerManifest,
+          this.activeId,
+          this.limit,
+          this.startIndex,
+          this.random,
+          this.forceRebuild,
+        ),
+      ];
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       let notifiedProps = ["result", "conditions", "sort", "forceRebuild"];
@@ -121,33 +152,6 @@ class SiteQuery extends LitElement {
             },
           }),
         );
-      }
-      if (
-        [
-          "entity",
-          "conditions",
-          "sort",
-          "routerManifest",
-          "activeId",
-          "limit",
-          "startIndex",
-          "random",
-          "forceRebuild",
-        ].includes(propName)
-      ) {
-        this.result = [
-          ...this._computeResult(
-            this.entity,
-            this.conditions,
-            this.sort,
-            this.routerManifest,
-            this.activeId,
-            this.limit,
-            this.startIndex,
-            this.random,
-            this.forceRebuild,
-          ),
-        ];
       }
     });
   }

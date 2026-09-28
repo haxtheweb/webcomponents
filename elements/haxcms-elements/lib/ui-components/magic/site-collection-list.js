@@ -96,6 +96,51 @@ export class SiteCollectionList extends CollectionList {
     };
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive conditions + sortObj from filter props in willUpdate so reactive
+    // sets batch into the current update cycle. Setting them in updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("parent") ||
+      changedProperties.has("tags") ||
+      changedProperties.has("pageType") ||
+      changedProperties.has("published") ||
+      changedProperties.has("hideInMenu") ||
+      changedProperties.has("relatedItems")
+    ) {
+      let conditions = {};
+      if (this.parent !== "") {
+        conditions.parent = this.parent;
+      }
+      if (this.tags !== "" && this.tags !== null) {
+        conditions["metadata.tags"] = {
+          value: this.tags.split(","),
+          operator: "includes",
+        };
+      }
+      if (this.pageType !== "" && this.pageType !== null) {
+        conditions["metadata.pageType"] = this.pageType;
+      }
+      if (this.published !== "null") {
+        conditions["metadata.published"] =
+          this.published === "true" ? true : false;
+      }
+      if (this.hideInMenu != "null") {
+        conditions["metadata.hideInMenu"] =
+          this.hideInMenu === "true" ? true : false;
+      }
+      if (this.relatedItems != "" && this.relatedItems !== null) {
+        conditions["metadata.relatedItems"] = this.relatedItems;
+      }
+      this.conditions = { ...conditions };
+    }
+    if (changedProperties.has("sort")) {
+      let sortObj = {};
+      sortObj[this.sort] = "ASC";
+      this.sortObj = { ...sortObj };
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -109,48 +154,6 @@ export class SiteCollectionList extends CollectionList {
             },
           }),
         );
-      }
-      if (
-        this.shadowRoot &&
-        [
-          "parent",
-          "tags",
-          "pageType",
-          "published",
-          "hideInMenu",
-          "relatedItems",
-        ].includes(propName)
-      ) {
-        let conditions = {};
-        if (this.parent !== "") {
-          conditions.parent = this.parent;
-        }
-        if (this.tags !== "" && this.tags !== null) {
-          conditions["metadata.tags"] = {
-            value: this.tags.split(","),
-            operator: "includes",
-          };
-        }
-        if (this.pageType !== "" && this.pageType !== null) {
-          conditions["metadata.pageType"] = this.pageType;
-        }
-        if (this.published !== "null") {
-          conditions["metadata.published"] =
-            this.published === "true" ? true : false;
-        }
-        if (this.hideInMenu != "null") {
-          conditions["metadata.hideInMenu"] =
-            this.hideInMenu === "true" ? true : false;
-        }
-        if (this.relatedItems != "" && this.relatedItems !== null) {
-          conditions["metadata.relatedItems"] = this.relatedItems;
-        }
-        this.conditions = { ...conditions };
-      }
-      if (this.shadowRoot && propName === "sort") {
-        let sortObj = {};
-        sortObj[this[propName]] = "ASC";
-        this.sortObj = { ...sortObj };
       }
       // convert to editable list
       if (propName === "breakSmartCollection" && this.breakSmartCollection) {

@@ -31,13 +31,6 @@ class SimpleLogin extends SimpleColors {
         #loginform {
           width: var(--login-form-width, 450px);
           height: var(--login-form-height, auto);
-          --simple-camera-snap-color: var(--login-form-color, #36bed4);
-          --simple-camera-snap-error: var(--login-form-error, red);
-          --simple-camera-snap-background: var(--login-form-background, white);
-          --simple-camera-snap-border-radius: var(
-            --login-form-image-bnorder-radius,
-            100%
-          );
           box-shadow:
             0 12px 16px 1px rgba(0, 0, 0, 0.14),
             0 4px 22px 3px rgba(0, 0, 0, 0.12),
@@ -84,10 +77,6 @@ class SimpleLogin extends SimpleColors {
 
         simple-progress {
           width: 100%;
-        }
-
-        ::slotted(simple-login-avatar) {
-          margin: 0 auto;
         }
 
         #errormsg {

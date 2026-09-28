@@ -235,7 +235,19 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         attribute: "is-logged-in",
       },
       /**
-       * DOM node that wraps the slot
+       * DOM node that wraps the slot. MUST stay reactive: themes can
+       * reassign this mid-lifecycle when their template moves where hax-body
+       * is injected (e.g. simple-blog re-points it at the inner
+       * simple-blog-post's #contentcontainer when navigating from the
+       * listing to a post). The updated() branch below re-runs
+       * _contentContainerChanged (disconnect old wiring + reconnect to the
+       * new container) on every change, which is the whole point.
+       *
+       * The one-time firstUpdated assignment below does trip Lit's
+       * change-in-update warning (it sets a reactive prop post-render), but
+       * that warning is a justified false positive here: the lookup needs the
+       * stamped shadow DOM so it can't move to willUpdate, and the second
+       * update it schedules IS the desired side effect (the connect wiring).
        */
       contentContainer: {
         type: Object,
@@ -520,6 +532,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             detail: this[propName],
           }),
         );
+        // re-wire the editor to the new container (or disconnect when it
+        // becomes null). This is what tracks hax-body relocation / theme
+        // template changes mid-lifecycle (e.g. simple-blog post navigation).
         this._contentContainerChanged(this[propName], oldValue);
       }
       if (propName == "isLoggedIn") {

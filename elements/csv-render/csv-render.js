@@ -121,6 +121,24 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
     this.tableData = "";
   }
   /**
+   * LitElement life cycle - property about to change; set state needed
+   * for the upcoming render here so it's folded into the current update
+   * instead of scheduling a brand new one (see https://lit.dev/msg/change-in-update)
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    if (
+      (changedProperties.has("dataSource") ||
+        changedProperties.has("elementVisible")) &&
+      this.dataSource &&
+      this.elementVisible
+    ) {
+      this.loading = true;
+    }
+  }
+  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
@@ -138,7 +156,6 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         this.elementVisible
       ) {
         clearTimeout(this.__debouce);
-        this.loading = true;
         this.__debouce = setTimeout(() => {
           this.loadCSVData();
         }, 500);

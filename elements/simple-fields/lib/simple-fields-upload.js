@@ -751,16 +751,19 @@ class SimpleFieldsUpload extends I18NMixin(
   /**
    * LitElement
    */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Default to URL if we have a value, else fileupload. Driven in
+    // willUpdate so the reactive `option` set batches into the current
+    // update cycle instead of scheduling a redundant second update (Lit
+    // change-in-update warning when set in firstUpdated).
+    if (!this.hasUpdated) {
+      this.option = this.value ? "url" : "fileupload";
+    }
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
-    }
-    // test on load for if we have a media device
-    // default to URL if we have a value of any kind
-    if (this.value) {
-      this.option = "url";
-    } else {
-      this.option = "fileupload";
     }
     globalThis.ResponsiveUtility.requestAvailability();
 
@@ -832,7 +835,7 @@ class SimpleFieldsUpload extends I18NMixin(
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      import("@haxtheweb/simple-login/lib/simple-camera-snap.js").then(() => {
+      import("./simple-camera-snap.js").then(() => {
         this.camera = globalThis.document.createElement("simple-camera-snap");
         this.camera.autoplay = true;
         this.camera.addEventListener(

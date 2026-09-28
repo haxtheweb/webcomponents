@@ -11,12 +11,15 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
     super();
     this.autoAccentColor = false;
   }
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    // updates to the value or autoAccentColor should trigger a color change
-    // but we MUST have values in both
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive accentColor from value/autoAccentColor in willUpdate so it
+    // batches into the current update cycle. Setting accentColor in
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). The style.setProperty calls inside calculateAccentColor
+    // are DOM side-effects that are safe pre-render (they set CSS custom
+    // properties on this, which don't need shadowRoot).
     if (
-      this.shadowRoot &&
       (changedProperties.has("autoAccentColor") ||
         changedProperties.has("value")) &&
       this.value &&

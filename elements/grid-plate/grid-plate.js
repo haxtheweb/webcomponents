@@ -355,6 +355,28 @@ class GridPlate extends LitElement {
   static get tag() {
     return "grid-plate";
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive __columnWidths from layout/responsiveSize/layouts/disableResponsive
+    // in willUpdate so the reactive set batches into the current update cycle.
+    // Setting it in firstUpdated scheduled a redundant second update (Lit
+    // change-in-update warning). The updated() setTimeout re-derive stays
+    // there because it debounces rapid layout/responsive changes.
+    if (
+      !this.hasUpdated ||
+      changedProperties.has("responsiveSize") ||
+      changedProperties.has("layout") ||
+      changedProperties.has("layouts") ||
+      changedProperties.has("disableResponsive")
+    ) {
+      this.__columnWidths = this._getColumnWidths(
+        this.responsiveSize,
+        this.layout,
+        this.layouts,
+        this.disableResponsive,
+      );
+    }
+  }
   /**
    * life cycle
    */
@@ -376,12 +398,6 @@ class GridPlate extends LitElement {
           xl: this.breakpointXl,
         },
       }),
-    );
-    this.__columnWidths = this._getColumnWidths(
-      this.responsiveSize,
-      this.layout,
-      this.layouts,
-      this.disableResponsive,
     );
   }
   /**

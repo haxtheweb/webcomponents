@@ -2,6 +2,12 @@ import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
 import { sendKeys } from "@web/test-runner-commands";
 import sinon from "sinon";
 import "../csv-render.js";
+// csv-render dynamically imports these when it becomes visible; import them
+// statically here too so the real elements are ready by the time the tests
+// query for them (ES module caching means this is a no-op, not a double
+// registration, when csv-render's own dynamic import resolves).
+import "@haxtheweb/hexagon-loader/hexagon-loader.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 // Mock CSV data for testing
 const mockCSVData = {
@@ -19,29 +25,6 @@ const mockCSVData = {
     'Name,Age,Notes\nJohn,25,"Special chars: <>&\'"""\nJane,30,Normal',
 };
 
-// Mock hexagon-loader dependency
-class MockHexagonLoader extends HTMLElement {
-  static get properties() {
-    return {
-      loading: { type: Boolean },
-      accentColor: { type: String, attribute: "accent-color" },
-      itemCount: { type: String, attribute: "item-count" },
-      size: { type: String },
-    };
-  }
-}
-
-// Mock simple-tooltip dependency
-class MockSimpleTooltip extends HTMLElement {
-  static get properties() {
-    return {
-      for: { type: String },
-      offset: { type: String },
-      position: { type: String },
-    };
-  }
-}
-
 describe("csv-render test", () => {
   let element, sandbox, fetchStub;
 
@@ -54,14 +37,6 @@ describe("csv-render test", () => {
       ok: true,
       text: () => Promise.resolve(mockCSVData.simple),
     });
-
-    // Register mock elements
-    if (!globalThis.customElements.get("hexagon-loader")) {
-      globalThis.customElements.define("hexagon-loader", MockHexagonLoader);
-    }
-    if (!globalThis.customElements.get("simple-tooltip")) {
-      globalThis.customElements.define("simple-tooltip", MockSimpleTooltip);
-    }
 
     element = await fixture(html`
       <csv-render

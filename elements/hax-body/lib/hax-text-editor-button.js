@@ -50,25 +50,19 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     return firstMatch.length === 1 ? firstMatch[0] : this.__highlight;
   }
 
-  firstUpdated(changedProperties) {
-    this.updateElement();
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-  }
-
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
     // Derive element-driven state in willUpdate so it batches into the
     // current update cycle. updateElement() sets reactive properties
-    // (fields, tagsList, icon, label, value); calling it from updated()
-    // scheduled a redundant second update (Lit change-in-update warning).
-    // Guard on __highlight (the range object) because updateElement() ->
-    // getValue() -> targetedNode reads it, and it is only established around
-    // first render; the initial setup is handled by firstUpdated below.
-    if (
-      changedProperties.has("element") &&
-      this.element &&
-      this.__highlight
-    ) {
+    // (fields, tagsList, icon, label, value); calling it from firstUpdated/
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). __highlight is established in the constructor
+    // (RichTextEditorRangeBehaviors), so the guard passes even on the first
+    // update — covering both the initial setup (element set before upgrade)
+    // and subsequent element changes. Run on the first update regardless of
+    // whether `element` is in changedProperties, matching the old
+    // firstUpdated unconditional call.
+    if (this.__highlight && (!this.hasUpdated || changedProperties.has("element"))) {
       this.updateElement();
     }
   }
