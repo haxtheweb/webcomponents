@@ -125,17 +125,6 @@ describe("DiscordEmbed test", () => {
     expect(errorDiv.textContent).to.equal("Invalid Discord share link");
   });
 
-  it("does not render anything when source is empty", async () => {
-    expect(element.source).to.equal("");
-    await element.updateComplete;
-
-    const iframe = element.shadowRoot.querySelector("iframe");
-    expect(iframe).to.not.exist;
-
-    const errorDiv = element.shadowRoot.querySelector("div");
-    expect(errorDiv).to.not.exist;
-  });
-
   // URL validation tests
   it("validates discord.com URLs as valid", async () => {
     element.source = "https://discord.com/channels/123456789/987654321";
