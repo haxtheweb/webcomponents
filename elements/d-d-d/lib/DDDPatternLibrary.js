@@ -86,9 +86,6 @@ export const HAX_CAPABILITY = {
   "progress-donut": true,
   // Phase 2: HAX-capable (verified external JSON or inline)
   "audio-player": true,
-  "lrndesign-bar": true,
-  "lrndesign-line": true,
-  "lrndesign-pie": true,
   "q-r": true,
   "date-card": true,
   "post-card": true,
@@ -919,22 +916,6 @@ const ORGANISMS = [
       '  <figure><media-image source="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-11.jpeg" alt="Slide 3"></media-image></figure>\n' +
       "</a11y-carousel>",
     hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
-  },
-  {
-    id: "org-chart",
-    level: "organism",
-    title: "Chart (bar)",
-    description:
-      "lrndesign-bar chart from a CSV data source with heading and description slots. lrndesign-bar is HAX-capable. Line and pie variants use lrndesign-line / lrndesign-pie.",
-    components: ["lrndesign-bar"],
-    tokens: ["data-primary", "data-accent"],
-    darkMode: "supported",
-    html:
-      '<lrndesign-bar accent-color="blue" data-source="files/enrollment.csv" data-primary="2">\n' +
-      '  <h3 slot="heading">Enrollment growth</h3>\n' +
-      '  <p slot="desc">Enrollment doubled from 2019 to 2024.</p>\n' +
-      "</lrndesign-bar>",
-    hax: { publish: "demoSchemaOverride", targetTag: "lrndesign-bar" },
   },
   {
     id: "org-stats-grid",

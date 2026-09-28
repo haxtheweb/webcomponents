@@ -23,7 +23,7 @@
     "build": "npm run analyze",
     "analyze": "cem analyze --litelement --exclude public",
     "dddaudit": "hax audit",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
     "lit": "3.3.3",

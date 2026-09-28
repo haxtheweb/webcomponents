@@ -15,7 +15,10 @@ describe("DDDocs test", () => {
     expect(element).to.exist;
   });
 
-  it("passes the a11y audit", async () => {
+  it("passes the a11y audit", async function () {
+    // d-d-docs renders every styleguide topic's DOM at once, so the axe-core
+    // audit can exceed the default 2s mocha timeout, especially under coverage.
+    this.timeout(10000);
     await expect(element).shadowDom.to.be.accessible();
   });
 });

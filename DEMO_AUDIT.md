@@ -259,7 +259,6 @@ These elements have a usable demo that shows the element with attributes or in a
 - `audio-player`
 - `awesome-explosion`
 - `b-r`
-- `check-it-out`
 - `citation-element`
 - `code-editor`
 - `code-sample`

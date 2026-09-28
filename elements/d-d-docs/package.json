@@ -25,8 +25,8 @@
     "build": "npm run analyze",
     "analyze": "cem analyze --litelement --exclude public",
     "release": "npm run build && commit-and-tag-version && git push --follow-tags origin main && npm publish",
-    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
-    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve --config=../../web-test-runner.config.mjs",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch --config=../../web-test-runner.config.mjs"
   },
   "dependencies": {
     "@babel/core": "7.29.7",
