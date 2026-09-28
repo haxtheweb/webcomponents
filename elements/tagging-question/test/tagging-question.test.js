@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import "../tagging-question.js";
+import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import { TaggingQuestion } from "../tagging-question.js";
 
 describe("TaggingQuestion test", () => {
   let element;
@@ -468,9 +469,12 @@ describe("TaggingQuestion test", () => {
     element.correctText = "Great job!";
     await element.updateComplete;
 
-    const feedback = element.renderFeedback();
-    // correctText is rendered via ${} interpolation so it lands in values
-    expect(feedback.values).to.include("Great job!");
+    // check the actual rendered DOM output rather than lit-html's internal
+    // TemplateResult.values, which can hold non-cloneable event handler
+    // functions and break the test runner's reporting when assertions fail
+    const feedbackText = element.shadowRoot.querySelector("p.feedback");
+    expect(feedbackText).to.exist;
+    expect(feedbackText.textContent).to.include("Great job!");
   });
 
   it("shows incorrect feedback text when incorrect", async () => {
@@ -480,9 +484,12 @@ describe("TaggingQuestion test", () => {
     element.incorrectText = "Try again!";
     await element.updateComplete;
 
-    const feedback = element.renderFeedback();
-    // incorrectText is rendered via ${} interpolation so it lands in values
-    expect(feedback.values).to.include("Try again!");
+    // check the actual rendered DOM output rather than lit-html's internal
+    // TemplateResult.values, which can hold non-cloneable event handler
+    // functions and break the test runner's reporting when assertions fail
+    const feedbackText = element.shadowRoot.querySelector("p.feedback");
+    expect(feedbackText).to.exist;
+    expect(feedbackText.textContent).to.include("Try again!");
   });
 
   // Reset functionality tests
