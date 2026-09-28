@@ -119,6 +119,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
     this.table = [];
     this.tableHeadings = [];
     this.tableData = "";
+    this.debounceDelay = 500;
   }
   /**
    * LitElement life cycle - property about to change; set state needed
@@ -158,7 +159,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         clearTimeout(this.__debouce);
         this.__debouce = setTimeout(() => {
           this.loadCSVData();
-        }, 500);
+        }, this.debounceDelay);
       }
     });
   }
@@ -244,6 +245,14 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
       },
       loading: {
         type: Boolean,
+      },
+      /**
+       * Delay in ms before a data-source/visibility change triggers a load.
+       * Exposed primarily so tests can shrink it; production default is 500.
+       */
+      debounceDelay: {
+        type: Number,
+        attribute: "debounce-delay",
       },
       /**
        * Caption for the table to improve accessibility and readability.

@@ -311,22 +311,41 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
       },
     };
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive icon from status, reverse-lookup status from icon, and mirror
+    // url to remoteLinkURL in willUpdate so reactive sets batch into the
+    // current update cycle. Setting them in updated()/firstUpdated scheduled
+    // a redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("status") &&
+      this.status &&
+      StopNoteIconList[this.status]
+    ) {
+      this.icon = StopNoteIconList[this.status];
+    }
+    // reverse-lookup: if no status but icon supplied (legacy), derive status
+    if (
+      !this.hasUpdated &&
+      this.status === null &&
+      this.icon
+    ) {
+      Object.keys(StopNoteIconList).map((value) => {
+        if (StopNoteIconList[value] === this.icon) {
+          this.status = value;
+        }
+      });
+    }
+    // mirror url -> remoteLinkURL (remoteLinkURL is reactive via
+    // remoteLinkBehavior mixin)
+    if (changedProperties.has("url")) {
+      this.remoteLinkURL = this.url;
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "url") {
-        this.remoteLinkURL = this[propName];
-      }
-      if (
-        propName == "status" &&
-        this[propName] &&
-        StopNoteIconList[this[propName]]
-      ) {
-        this.icon = StopNoteIconList[this[propName]];
-      }
-    });
   }
   /**
    * life cycle
@@ -336,15 +355,6 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
     this.setAttribute("typeof", "oer:LearningComponent");
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
     this._syncSlottedLinkColor();
-    // if we have no status BUT icon was supplied; this is to support legacy implementations
-    // where the icon was the thing dictating the status
-    if (this.status === null && this.icon) {
-      Object.keys(StopNoteIconList).map((value) => {
-        if (StopNoteIconList[value] === this.icon) {
-          this.status = value;
-        }
-      });
-    }
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

@@ -556,6 +556,24 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     }
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Rebuild mediaItems on first update and when exiting edit mode,
+    // in willUpdate so the reactive mediaItems/activeIndex sets batch
+    // into the current update cycle. Setting them in firstUpdated/
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). Light-DOM children are current by willUpdate time.
+    if (!this.hasUpdated) {
+      this._updateMediaItems();
+    }
+    if (
+      changedProperties.has("edit") &&
+      this.edit === false &&
+      changedProperties.get("edit") === true
+    ) {
+      this._updateMediaItems();
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -565,11 +583,8 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         if (this.edit) {
           // entering edit mode - light dom children become visible
         } else if (oldValue === true) {
-          // exiting edit mode - light dom children may have changed during
-          // edit, so rebuild the mediaItems array before rendering
-          this._updateMediaItems();
-          // pause all light dom children so they don't keep playing in the
-          // hidden slot container
+          // exiting edit mode - pause all light dom children so they
+          // don't keep playing in the hidden slot container
           this.mediaItems.forEach((item) => {
             try {
               if (
@@ -613,7 +628,6 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       super.firstUpdated(changedProperties);
     }
     this.setAttribute("typeof", "oer:LearningComponent");
-    this._updateMediaItems();
     const playerArea = this.shadowRoot.querySelector(".player-area");
     const playlist = this.shadowRoot.querySelector(".playlist");
     if (

@@ -2499,9 +2499,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
       if (change(["media", "volume"])) this.setVolume(this.volume);
       if (change(["media", "autoplay"]) && this.autoplay) this.play();
 
-      /* updates captions */
-      if (propName === "__captionsOption") this._captionsOptionChanged();
-      if (change(["cc", "captionsTrack"])) this._captionsChanged();
+      // NOTE: captions handlers (_captionsChanged / _captionsOptionChanged)
+      // now run in willUpdate above so their reactive sets (__captionsOption,
+      // cc, captionsTrack) batch into the current update cycle. Do NOT call
+      // them here — doing so would re-set those reactive props post-render
+      // and schedule a redundant second update (Lit change-in-update warning).
 
       /* updates layout */
       if (flexChange) this._setAttribute("flex-layout", this.flexLayout);

@@ -120,18 +120,24 @@ class PlaceHolder extends DDD {
   /**
    * LitElement properties changed
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive iconFromType + calcText in willUpdate so reactive sets batch
+    // into the current update cycle. Setting them in updated() scheduled
+    // a redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("type") ||
+      changedProperties.has("dragOver")
+    ) {
+      this.iconFromType = this._getIconFromType(this.type, this.dragOver);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (["type", "dragOver"].includes(propName)) {
-        this.iconFromType = this._getIconFromType(this.type, this.dragOver);
-      }
-      if (["text", "type", "dragOver"].includes(propName)) {
-        this.calcText = this._getCalcText(this.text, this.type, this.dragOver);
-      }
-    });
+    if (
+      changedProperties.has("text") ||
+      changedProperties.has("type") ||
+      changedProperties.has("dragOver")
+    ) {
+      this.calcText = this._getCalcText(this.text, this.type, this.dragOver);
+    }
   }
 
   /**

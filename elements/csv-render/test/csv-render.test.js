@@ -44,6 +44,7 @@ describe("csv-render test", () => {
         summary="Test CSV data table"
         caption="Test Table"
         accent-color="blue"
+        debounce-delay="0"
       ></csv-render>
     `);
 
@@ -75,6 +76,7 @@ describe("csv-render test", () => {
           data-source="complex.csv"
           summary="Complex CSV with quoted values"
           caption="Complex Data Table"
+          debounce-delay="0"
         ></csv-render>
       `);
 
@@ -90,6 +92,7 @@ describe("csv-render test", () => {
         <csv-render
           data-source="test.csv"
           summary="Table without caption"
+          debounce-delay="0"
         ></csv-render>
       `);
 
@@ -114,9 +117,7 @@ describe("csv-render test", () => {
       await expect(el).shadowDom.to.be.accessible();
     });
 
-    it("passes a11y audit with different accent colors", async function () {
-      // 4 fixtures x 500ms debounce + audit exceeds the default 2s timeout
-      this.timeout(10000);
+    it("passes a11y audit with different accent colors", async () => {
       const colors = ["red", "green", "purple", "orange"];
 
       for (const color of colors) {
@@ -125,6 +126,7 @@ describe("csv-render test", () => {
             data-source="test.csv"
             accent-color="${color}"
             summary="Colored table"
+            debounce-delay="0"
           ></csv-render>
         `);
 
@@ -317,7 +319,7 @@ describe("csv-render test", () => {
       });
 
       const el = await fixture(html`
-        <csv-render data-source="remote.csv"></csv-render>
+        <csv-render data-source="remote.csv" debounce-delay="0"></csv-render>
       `);
 
       el.elementVisible = true;
@@ -362,7 +364,10 @@ describe("csv-render test", () => {
 
     it("debounces data loading", async () => {
       const el = await fixture(html`
-        <csv-render data-source="debounce.csv"></csv-render>
+        <csv-render
+          data-source="debounce.csv"
+          debounce-delay="20"
+        ></csv-render>
       `);
       // ignore the call made while loading the shared beforeEach fixture
       fetchStub.resetHistory();
@@ -379,7 +384,7 @@ describe("csv-render test", () => {
       await el.updateComplete;
 
       // Should debounce and only make one call after timeout
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      await waitUntil(() => fetchStub.called);
 
       expect(fetchStub.callCount).to.equal(1);
       expect(fetchStub.lastCall.args[0]).to.equal("test3.csv");
@@ -390,7 +395,10 @@ describe("csv-render test", () => {
       fetchStub.resetHistory();
 
       const el = await fixture(html`
-        <csv-render data-source="invisible.csv"></csv-render>
+        <csv-render
+          data-source="invisible.csv"
+          debounce-delay="0"
+        ></csv-render>
       `);
 
       // Element not visible, should not load
@@ -402,7 +410,7 @@ describe("csv-render test", () => {
       // Make visible, should load
       el.elementVisible = true;
       await el.updateComplete;
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      await waitUntil(() => fetchStub.called);
 
       expect(fetchStub.called).to.be.true;
     });
@@ -447,7 +455,7 @@ describe("csv-render test", () => {
 
     it("renders table without caption when not provided", async () => {
       const el = await fixture(html`
-        <csv-render data-source="test.csv"></csv-render>
+        <csv-render data-source="test.csv" debounce-delay="0"></csv-render>
       `);
 
       el.elementVisible = true;
@@ -514,21 +522,24 @@ describe("csv-render test", () => {
 
     it("loads data when becoming visible", async () => {
       const el = await fixture(html`
-        <csv-render data-source="visibility.csv"></csv-render>
+        <csv-render
+          data-source="visibility.csv"
+          debounce-delay="0"
+        ></csv-render>
       `);
 
       // Simulate becoming visible
       el.elementVisible = true;
       await el.updateComplete;
 
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      await waitUntil(() => fetchStub.called);
 
       expect(fetchStub.called).to.be.true;
     });
 
     it("imports dependencies when visible", async () => {
       const el = await fixture(html`
-        <csv-render data-source="deps.csv"></csv-render>
+        <csv-render data-source="deps.csv" debounce-delay="0"></csv-render>
       `);
 
       // Mock dynamic import
@@ -556,7 +567,7 @@ describe("csv-render test", () => {
       });
 
       const el = await fixture(html`
-        <csv-render data-source="large.csv"></csv-render>
+        <csv-render data-source="large.csv" debounce-delay="0"></csv-render>
       `);
 
       el.elementVisible = true;
@@ -700,6 +711,7 @@ describe("csv-render test", () => {
           caption="Sales Report"
           summary="Monthly sales data showing product performance"
           accent-color="green"
+          debounce-delay="0"
         ></csv-render>
       `);
 
@@ -737,6 +749,7 @@ describe("csv-render test", () => {
           data-source="form-responses.csv"
           caption="Form Responses"
           summary="User feedback from satisfaction survey"
+          debounce-delay="0"
         ></csv-render>
       `);
 
@@ -756,6 +769,7 @@ describe("csv-render test", () => {
             caption="Key Metrics"
             summary="Dashboard showing key performance indicators"
             accent-color="purple"
+            debounce-delay="0"
           ></csv-render>
         </div>
       `);

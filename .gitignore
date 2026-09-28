@@ -28,3 +28,4 @@ elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/s
 .env
 .continue/config.yaml
 .continue/*.local.yaml
+elements/*/coverage/

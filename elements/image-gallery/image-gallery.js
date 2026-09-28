@@ -692,6 +692,24 @@ export class ImageGallery extends I18NMixin(DDD) {
     }
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Rebuild images array on first update and when exiting edit mode,
+    // in willUpdate so the reactive images/activeIndex sets batch into
+    // the current update cycle. Setting them in firstUpdated/updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    // Light-DOM children are current by willUpdate time.
+    if (!this.hasUpdated) {
+      this._updateImages();
+    }
+    if (
+      changedProperties.has("edit") &&
+      this.edit === false &&
+      changedProperties.get("edit") === true
+    ) {
+      this._updateImages();
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -699,16 +717,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "edit") {
         if (this.edit) {
-          // Entering gallery edit mode: push the current HAX edit state
-          // (_haxState) down to each image child so they are immediately
-          // selectable / content-editable without first clicking away and
-          // back. Children may have upgraded after the global
-          // editModeChanged hook ran, or that hook never reached us when
-          // nested inside a grid-plate, so we re-propagate now that the
-          // edit-wrapper slot is visible and the children are upgraded.
           this._propagateHaxEditState();
-        } else if (oldValue === true) {
-          this._updateImages();
         }
       }
     });
@@ -718,7 +727,6 @@ export class ImageGallery extends I18NMixin(DDD) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this._updateImages();
   }
 
   /**
