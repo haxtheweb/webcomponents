@@ -124,13 +124,12 @@ describe('rich-text-editor-toolbar', () => {
     ).to.equal(false)
   })
 
-  it('BUG: __toolbar property config uses the window toolbar BarProp', () => {
-    // BUG (rich-text-editor-range-behaviors.js:26): `name: toolbar` references
-    // the unqualified identifier `toolbar` which resolves to the browser
-    // global window.toolbar (a BarProp object) instead of the string "toolbar"
+  it('__toolbar property config uses the string name', () => {
+    // fixed (issue #3077 bug 8): `name: "toolbar"` is quoted so it no longer
+    // resolves to the browser global window.toolbar (a BarProp object)
     const props = Object.getPrototypeOf(toolbar).constructor.properties
-    expect(typeof props.__toolbar.name).to.equal('object')
-    expect(typeof globalThis.toolbar).to.equal('object')
+    expect(props.__toolbar.name).to.equal('toolbar')
+    expect(props.__toolbar.type).to.equal(Object)
   })
 
   it('setTarget enables editing and updates the target', async () => {
@@ -218,18 +217,21 @@ describe('rich-text-editor-toolbar', () => {
     expect(toolbar.__canceledEdits).to.equal('')
   })
 
-  it('BUG: cancelEdits references an undefined editor variable', async () => {
-    // BUG (rich-text-editor-toolbar.js:1348-1351): cancelEdits calls
-    // this.target(editor, false) with an undefined `editor` identifier, so
-    // it always throws a ReferenceError
-    toolbar.target = editor
+  it('cancelEdits reverts the target and unwires it', async () => {
+    // fixed (issue #3077 bug 3): cancelEdits no longer references an
+    // undefined `editor` identifier; it reverts and unwires the target
+    toolbar.setTarget(editor)
+    toolbar.setCanceledEdits('<p id="first">hello world</p>')
+    editor.innerHTML = '<p>edited</p>'
     let threw = null
     try {
       toolbar.cancelEdits()
     } catch (e) {
       threw = e
     }
-    expect(threw instanceof ReferenceError).to.equal(true)
+    expect(threw === null).to.equal(true)
+    expect(editor.innerHTML).to.equal('<p id="first">hello world</p>')
+    expect(toolbar.target === undefined).to.equal(true)
   })
 
   it('cancel and close dispatch events', async () => {
@@ -302,23 +304,40 @@ describe('rich-text-editor-toolbar', () => {
   })
 
   it('getRange reads the selection of a plain target', async () => {
-    // NOTE (BUG): for targets with a shadow root, such as rich-text-editor
-    // itself, getRange resolves root to target.shadowRoot which has no
-    // getSelection method, so it always returns undefined and the toolbar
-    // loses every selectionchange (verified in range-behaviors tests)
     const target = await makeTarget()
     expect(toolbar.getRange() === undefined).to.equal(true)
     toolbar.target = target
     const range = selectContents(target)
     expect(toolbar.getRange() === range).to.equal(true)
-    // BUG note: getSelection uses a comma operator `return window,
-    // getSelection()` which happens to work because unqualified getSelection
-    // resolves to the global; it returns a live Selection object
+    // getSelection uses the global document selection (no comma operator)
     const sel = toolbar.getSelection()
     expect(typeof sel.removeAllRanges).to.equal('function')
     expect(sel.rangeCount > 0).to.equal(true)
     toolbar.target = undefined
     target.remove()
+  })
+
+  it('getRange reads selections from a shadow-rooted target', async () => {
+    // fixed (issue #3077 bug 2): document selection with a composed-path
+    // scope check replaces target.shadowRoot (which has no getSelection), so
+    // selection tracking works for LitElement targets like the editor itself
+    toolbar.setTarget(editor)
+    const range = selectContents(editor)
+    const found = toolbar.getRange()
+    expect(found === undefined).to.equal(false)
+    expect(found.toString()).to.equal(range.toString())
+    expect(found.startContainer === range.startContainer).to.equal(true)
+    // a selection outside the target does not count as the toolbar range
+    const outside = await makeTarget('<p>outside</p>')
+    const outsideRange = globalThis.document.createRange()
+    outsideRange.selectNodeContents(outside.querySelector('p'))
+    const sel = globalThis.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(outsideRange)
+    expect(toolbar.getRange() === undefined).to.equal(true)
+    sel.removeAllRanges()
+    outside.remove()
+    toolbar.unsetTarget(editor)
   })
 
   it('updateRange seeds the target range', async () => {
@@ -395,11 +414,9 @@ describe('rich-text-editor-toolbar', () => {
     expect(toolbar.clickableElements['img'] === undefined).to.equal(true)
   })
 
-  it('BUG: _handleTargetKeypress writes into the toolbar innerHTML', async () => {
-    // BUG (rich-text-editor-toolbar.js:1732-1742): _handleTargetKeypress sets
-    // this.innerHTML (the toolbar, not the target) and then calls
-    // range.selectNodeContents without a range guard, which throws when no
-    // selection exists
+  it('_handleTargetKeypress writes the first key into the target', async () => {
+    // fixed (issue #3077 bug 5): the first keypress on an empty target
+    // writes into the target (never the toolbar) and guards the range
     const emptyEditor = await makeEditor('')
     toolbar.setTarget(emptyEditor)
     globalThis.getSelection().removeAllRanges()
@@ -409,36 +426,54 @@ describe('rich-text-editor-toolbar', () => {
     } catch (e) {
       threw = e
     }
-    // evidence 1: the key was written into the toolbar, not the editor
-    expect(toolbar.innerHTML).to.equal('z')
-    // evidence 2: it crashes on the undefined range
-    expect(threw instanceof TypeError).to.equal(true)
-    toolbar.innerHTML = ''
+    expect(threw === null).to.equal(true)
+    // the key was written into the target, not the toolbar
+    expect(emptyEditor.innerHTML).to.equal('z')
+    // the toolbar keeps rendering its own buttons (the old test compared
+    // raw innerHTML, but the rendered toolbar is never an empty string)
+    expect(toolbar.shadowRoot.querySelector('#buttons') === null).to.equal(
+      false,
+    )
     toolbar.unsetTarget(emptyEditor)
     emptyEditor.remove()
     // non-empty target: guard exits without writing
     toolbar.setTarget(editor)
     toolbar._handleTargetKeypress({ key: 'z' })
-    expect(toolbar.innerHTML).to.equal('')
+    expect(editor.innerHTML).to.equal('<p id="first">hello world</p>')
   })
 
-  it('BUG: _handleTargetMutation crashes on attribute mutations', async () => {
-    // BUG (rich-text-editor-toolbar.js:1743-1760): the attribute-mutation
-    // branch references an undefined `target` identifier (and a misspelled
-    // conteneditable), so any attribute mutation observer callback throws
-    toolbar.target = editor
+  it('_handleTargetMutation handles attribute mutations safely', async () => {
+    // fixed (issue #3077 bug 6): the attribute-mutation branch reads the
+    // mutation record target and the correctly spelled contenteditable, so
+    // it no longer throws a ReferenceError
+    toolbar.setTarget(editor)
     let threw = null
     try {
-      toolbar._handleTargetMutation([{ type: 'attributes' }])
+      toolbar._handleTargetMutation([
+        { type: 'attributes', target: editor },
+      ])
     } catch (e) {
       threw = e
     }
-    expect(threw instanceof ReferenceError).to.equal(true)
+    expect(threw === null).to.equal(true)
+    // a hidden contenteditable target steps out of editing mode
+    let hid = null
+    try {
+      editor.setAttribute('hidden', '')
+      toolbar._handleTargetMutation([
+        { type: 'attributes', target: editor },
+      ])
+    } catch (e) {
+      hid = e
+    }
+    expect(hid === null).to.equal(true)
+    expect(editor.hasAttribute('contenteditable')).to.equal(false)
+    editor.removeAttribute('hidden')
     // childList mutations only refresh the selection
     toolbar._handleTargetMutation([{ type: 'childList' }])
     toolbar._handleTargetMutation([])
     expect(true).to.equal(true)
-    toolbar.target = undefined
+    toolbar.unsetTarget(editor)
   })
 
   it('_handleTargetSelection stores the current range', async () => {
@@ -561,11 +596,10 @@ describe('rich-text-editor-toolbar', () => {
     target.remove()
   })
 
-  it('BUG: _addHighlight wraps even when the target is not editable', async () => {
-    // BUG (rich-text-editor-toolbar.js:1793-1799): the guard
-    // !this.target.getAttribute('contenteditable') == 'true' evaluates the
-    // negation before the comparison so the early return never fires and the
-    // highlight is applied even without an editable target
+  it('_addHighlight returns early when the target is not editable', async () => {
+    // fixed (issue #3077 bug 28): the precedence bug
+    // !this.target.getAttribute('contenteditable') == 'true' never fired the
+    // early return, so the highlight wrapped ranges in non-editable targets
     const target = await makeTarget()
     toolbar.target = target
     target.removeAttribute('contenteditable')
@@ -573,9 +607,8 @@ describe('rich-text-editor-toolbar', () => {
     toolbar.range = range
     const highlight = globalThis.RichTextEditorHighlight.instance
     toolbar._addHighlight()
-    expect(highlight.hidden).to.equal(false)
-    expect(highlight.innerHTML).to.equal('hello world')
-    toolbar._removeHighlight()
+    expect(highlight.hidden).to.equal(true)
+    expect(highlight.innerHTML).to.equal('')
     toolbar.target = undefined
     target.remove()
   })
@@ -600,18 +633,23 @@ describe('rich-text-editor-toolbar', () => {
     expect(toolbar.parentNode === globalThis.document.body).to.equal(true)
   })
 
-  it('BUG: insertNew is unusable because createElement reports an error', async () => {
-    // BUG (rich-text-editor.js:275 + toolbar.js:1543): the rich-text-editor
-    // constructor calls this.setAttribute('tabindex', 0) which violates the
-    // custom element constructor contract. document.createElement reports
-    // an uncaught NotSupportedError (verified during test development), so
-    // insertNew can never wrap a target. The call cannot be made here without
-    // failing the whole test run, so we assert the observable editor state
-    // instead: the editor is not wrapped by a rich-text-editor parent.
+  it('insertNew wraps a target in a new rich-text-editor', async () => {
+    // fixed (issue #3077 bug 1): tabindex moved from the constructor into
+    // connectedCallback, so document.createElement no longer reports a
+    // NotSupportedError and insertNew can wrap a target
+    const host = globalThis.document.createElement('div')
+    host.appendChild(editor)
+    globalThis.document.body.appendChild(host)
+    toolbar.insertNew(editor)
     expect(
       editor.parentNode.tagName === 'RICH-TEXT-EDITOR',
-    ).to.equal(false)
+    ).to.equal(true)
+    expect(
+      editor.parentNode.getAttribute('tabindex'),
+    ).to.equal('0')
     expect(editor.querySelector('p') === null).to.equal(false)
+    editor.parentNode.remove()
+    host.remove()
   })
 
   it('targetEmpty and targetHTML reflect the target', async () => {
@@ -625,12 +663,14 @@ describe('rich-text-editor-toolbar', () => {
   })
 
   it('htmlMatchesTarget compares whitespace-free html', async () => {
+    // fixed (issue #3077 bug 26): returns a boolean instead of a
+    // localeCompare number (where 0 meant a match)
     toolbar.target = editor
-    expect(toolbar.htmlMatchesTarget('<p id="first">hello world</p>')).to.equal(
-      0,
-    )
     expect(
-      toolbar.htmlMatchesTarget('<p id="first">other</p>') === 0,
+      toolbar.htmlMatchesTarget('<p id="first">hello world</p>'),
+    ).to.equal(true)
+    expect(
+      toolbar.htmlMatchesTarget('<p id="first">other</p>'),
     ).to.equal(false)
     toolbar.target = undefined
   })
@@ -651,11 +691,11 @@ describe('rich-text-editor-toolbar', () => {
   })
 
   it('sanitizeHTML strips body wrappers', () => {
-    // NOTE (BUG): the stripping regex /<\?body(.*\n)*\>/i never matches a real
-    // <body> tag, so sanitizeHTML returns the wrapped html including the tags
+    // fixed (issue #3077 bug 27): the regex matches <body> tags (not the
+    // literal "<?body") and the replace call passes an empty replacement
     const result = toolbar.sanitizeHTML('<body><p>inside</p></body>')
-    expect(result.includes('<p>inside</p>')).to.equal(true)
-    expect(result.includes('<body>')).to.equal(true)
+    expect(result).to.equal('<p>inside</p>')
+    expect(result.includes('<body>')).to.equal(false)
     expect(toolbar.sanitizeHTML('<p>outside</p>')).to.equal('<p>outside</p>')
   })
 
@@ -712,14 +752,13 @@ describe('rich-text-editor-toolbar', () => {
     expect(toolbar.__promptOpen).to.equal(false)
   })
 
-  it('BUG: updated calls a nonexistent _editorChange method', async () => {
-    // BUG (rich-text-editor-toolbar.js:1015): updated() calls
-    // this._editorChange() but the method is named _editorChanged(), so the
-    // branch would throw a TypeError if `editor` were ever a reactive
-    // property change. It is currently unreachable because editor is not
-    // reactive, so we assert the missing method directly.
-    expect(typeof toolbar._editorChange).to.equal('undefined')
-    expect(typeof toolbar._editorChanged).to.equal('function')
+  it('updated calls the correctly named _editorChanged method', async () => {
+    // fixed (issue #3077 bug 4): updated() calls _editorChanged(), the actual
+    // method name, instead of the nonexistent _editorChange()
+    const events = []
+    toolbar.addEventListener('editor-change', (e) => events.push(true))
+    toolbar.updated(new Map([['editor', undefined]]))
+    expect(events.length).to.equal(1)
   })
 
   it('registers and unregisters itself in the global toolbar list', async () => {

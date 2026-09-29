@@ -171,6 +171,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
 
   connectedCallback() {
     super.connectedCallback();
+    // recreate the AbortControllers when a previous disconnectedCallback
+    // aborted them. addEventListener with an aborted signal silently never
+    // registers the listener, so reconnecting without recreating them left
+    // every globalThis listener below dead after a disconnect/reconnect.
+    if (this.windowControllers.signal.aborted) {
+      this.windowControllers = new AbortController();
+    }
+    if (this.windowControllers2.signal.aborted) {
+      this.windowControllers2 = new AbortController();
+    }
     globalThis.addEventListener("keydown", this.keyHandler.bind(this), {
       signal: this.windowControllers.signal,
     });
@@ -407,7 +417,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         new MouseEvent("click", {
           bubbles: true,
           cancelable: true,
-          view: window,
+          view: globalThis,
         }),
       );
     }
@@ -632,12 +642,25 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           );
           z-index: var(--simple-modal-z-index, 10000) !important;
           padding: 0;
-          color: var(--simple-colors-default-theme-grey-12, black);
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--ddd-theme-default-black)
+          );
         }
         web-dialog::part(dialog) {
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
-          border: 1px solid var(--simple-modal-border-color, #222);
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --simple-colors-default-theme-grey-1,
+            var(--ddd-theme-default-white)
+          );
+          border: 1px solid
+            var(
+              --simple-modal-border-color,
+              var(--ddd-theme-default-coalyGray)
+            );
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
           z-index: var(--simple-modal-z-index, 10000);
@@ -690,7 +713,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: var(--super-daemon-width, 300px);
           width: var(--super-daemon-width, 300px);
-          color: var(--simple-colors-default-theme-grey-12, black);
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--ddd-theme-default-black)
+          );
         }
         absolute-position-behavior super-daemon-ui[mini][wand] {
           margin: -18px 0 0 0;
@@ -701,12 +727,24 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           margin: calc(-1 * var(--ddd-spacing-16)) 0 0
             calc(-1 * var(--ddd-spacing-2));
           padding: var(--ddd-spacing-1) 0 0 0;
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --simple-colors-default-theme-grey-1,
+            var(--ddd-theme-default-white)
+          );
         }
         super-daemon-ui {
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --simple-colors-default-theme-grey-1,
+            var(--ddd-theme-default-white)
+          );
         }
 
         /* Responsive adjustments for wand mode expansion */
@@ -739,6 +777,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
    * Close the modal and do some clean up
    */
   close(e = {}) {
+    // Re-entry guard: our own teardown fans back into this method twice --
+    // web-dialog's native close event (fired by the ?open binding flip
+    // below) and our global super-daemon-close listener both re-enter
+    // close() after opened has already flipped false. Both arrive with
+    // opened false, while a genuine web-dialog close (backdrop click or
+    // Escape inside the dialog) arrives while opened is still true. Skip
+    // the pure re-entries so the global super-daemon-close event is
+    // dispatched exactly once per user-visible close instead of twice.
+    if (
+      e &&
+      (e.type === "close" || e.type === "super-daemon-close") &&
+      !this.opened
+    ) {
+      return;
+    }
     // If an inline-token trigger (:: / :::) was cancelled WITHOUT a
     // selection, restore the stripped token at the strip point before
     // clearing state. _insertTextResult clears inlineTextInsert after a
@@ -794,6 +847,11 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (ui) {
       ui.like = "";
       ui.programSearch = "";
+      // reset the child command context in the same tick so a pending
+      // super-daemon-command-context-changed dispatch out of
+      // super-daemon-ui.updated() (scheduled before this close ran) cannot
+      // land after the reset above and overwrite it with a stale child value
+      ui.commandContext = "*";
       const search =
         ui.shadowRoot && ui.shadowRoot.querySelector("super-daemon-search");
       if (search) {
@@ -837,7 +895,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       }
     }
     const event = new MouseEvent("click", {
-      view: window,
+      view: globalThis,
       bubbles: true,
       cancelable: true,
     });
@@ -1402,9 +1460,14 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.mini
     ) {
       requestAnimationFrame(() => {
-        const rect = this.activeNode.getBoundingClientRect();
-        this.shadowRoot.querySelector("absolute-position-behavior").style.left =
-          rect.left + rect.width + "px";
+        // activeNode can be cleared (e.g. by close()) between this frame
+        // being scheduled and it firing; re-check before dereferencing
+        if (this.activeNode) {
+          const rect = this.activeNode.getBoundingClientRect();
+          this.shadowRoot.querySelector(
+            "absolute-position-behavior",
+          ).style.left = rect.left + rect.width + "px";
+        }
       });
     }
     if (changedProperties.has("commandContext")) {

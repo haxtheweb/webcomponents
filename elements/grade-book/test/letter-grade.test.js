@@ -106,6 +106,30 @@ describe("letter-grade", () => {
     expect(rangeText).to.equal("85% - 92%");
   });
 
+  it("render is safe when the scale shrinks beneath a stale letter index (was BUG: unguarded range read)", async () => {
+    // regression: letter-grade keeps its _letterIndex across gradeScale
+    // changes; when the scale shrinks underneath the element the stale
+    // index used to make render read .lowRange off undefined and throw
+    const el = await fixture(
+      html`<letter-grade score="90" total="100" show-scale></letter-grade>`,
+    );
+    await flush();
+    expect(el.letter).to.equal("B");
+    expect(el.shadowRoot.querySelector(".range")).to.exist;
+    // an empty scale skips the recalc so the index goes stale
+    el.gradeScale = [];
+    await el.updateComplete;
+    let threw = false;
+    try {
+      el.render();
+    } catch (e) {
+      threw = true;
+    }
+    expect(threw).to.equal(false);
+    // the range block is skipped entirely without a matching scale entry
+    expect(el.shadowRoot.querySelector(".range")).to.equal(null);
+  });
+
   it("renders a tooltip when mini is set with a label", async () => {
     const el = await fixture(
       html`<letter-grade

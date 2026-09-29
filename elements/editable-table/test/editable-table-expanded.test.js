@@ -132,14 +132,17 @@ describe('editable-table behaviors', () => {
   })
 
   describe('getTableCSV', () => {
-    it('quotes text cells, strips commas from numeric cells and blanks', () => {
+    it('quotes text cells and blanks, emits numeric cells bare', () => {
       element.data = [
         ['Name', 'Count'],
         ['Food', '5'],
         ['Empty', ''],
+        ['Total', '1,000'],
       ]
+      // comma-containing cells are non-numeric by definition, so they
+      // must stay quoted rather than being stripped into invalid CSV
       expect(element.getTableCSV()).to.equal(
-        '"Name","Count"\n"Food",5\n"Empty","-"',
+        '"Name","Count"\n"Food",5\n"Empty","-"\n"Total","1,000"',
       )
     })
 
@@ -230,15 +233,12 @@ describe('editable-table behaviors', () => {
       expect(detail).to.exist
       expect(detail.data).to.equal(element.getTableCSV())
       expect(detail.table === element).to.be.true
-      expect(detail.filename).to.equal('TableasCSV')
+      // a non-empty caption is kept in the download filename (the ternary
+      // used to drop the caption exactly when it was non-empty)
+      expect(detail.filename).to.equal('IsitasandwichCSV')
     })
 
-    // BUG (recorded, not patched): download()'s title ternary is inverted —
-    // when downloadable and the caption is non-empty the caption is DROPPED
-    // (title 'Table as CSV'), and with an empty caption the fallback yields
-    // the generic filename 'CSV', so the file downloads as 'CSV.csv' with
-    // no identifying name.
-    it('BUG: empty caption produces a generic CSV filename', () => {
+    it('falls back to the generic TableasCSV filename for an empty caption', () => {
       let detail = null
       element.addEventListener('csv-downloaded', (e) => {
         detail = e.detail
@@ -246,7 +246,7 @@ describe('editable-table behaviors', () => {
       element.downloadable = true
       element.caption = ''
       element.download()
-      expect(detail.filename).to.equal('CSV')
+      expect(detail.filename).to.equal('TableasCSV')
     })
   })
 
@@ -592,11 +592,14 @@ describe('editable-table HAX hooks', () => {
     expect(element.querySelector('table')).to.exist
   })
 
-  it('sync copies properties from the editor', async () => {
+  it('sync copies known properties from the editor and rejects arbitrary ones', async () => {
     const editor = element.editor
-    editor.testSyncProp = 'synced'
+    editor.caption = 'Synced via editor'
+    element.sync('caption')
+    expect(element.caption).to.equal('Synced via editor')
+    editor.testSyncProp = 'nope'
     element.sync('testSyncProp')
-    expect(element.testSyncProp).to.equal('synced')
+    expect(element.testSyncProp).to.equal(undefined)
   })
 
   it('handles cell-changed events with a HaxStore stub', async () => {
@@ -695,13 +698,42 @@ describe('editable-table-display', () => {
     expect(Array.isArray(changeDetail)).to.be.true
   })
 
-  it('toggleFilter sets, resets and switches filter state', async () => {
-    const display = await fixture(
-      html`<editable-table-display .data=${SAMPLE_DATA}></editable-table-display>`,
-    )
-    await display.updateComplete
-    // no-arg call resets
-    display.filterColumn = 1
+    it('derives disabled only from real data transitions (issue #3077 regression)', async () => {
+      const display = await fixture(
+        html`<editable-table-display .data=${SAMPLE_DATA}></editable-table-display>`,
+      )
+      await display.updateComplete
+      expect(display.disabled).to.be.false
+      // a real transition to empty data disables the table
+      display.data = []
+      await display.updateComplete
+      expect(display.disabled).to.be.true
+      // real data re-enables it
+      display.data = SAMPLE_DATA
+      await display.updateComplete
+      expect(display.disabled).to.be.false
+    })
+
+    it('does not self-disable from the initial empty-data placeholder (issue #3077 regression)', async () => {
+      const el = await fixture(html`<editable-table></editable-table>`)
+      await sleep(80)
+      await el.updateComplete
+      // The constructor's empty data placeholder must not disable the
+      // display before first paint: doing so flipped the host through
+      // display:none and back when real data landed, feeding a resize
+      // cycle into responsive-utility's ResizeObserver that aborted test
+      // runs with a window ResizeObserver loop error.
+      expect(el.display.disabled).to.be.false
+      expect(el.display.hasAttribute('disabled')).to.be.false
+    })
+
+    it('toggleFilter sets, resets and switches filter state', async () => {
+      const display = await fixture(
+        html`<editable-table-display .data=${SAMPLE_DATA}></editable-table-display>`,
+      )
+      await display.updateComplete
+      // no-arg call resets
+      display.filterColumn = 1
     display.filtered = true
     display.toggleFilter()
     expect(display.filtered).to.be.false
@@ -829,21 +861,25 @@ describe('editable-table-display', () => {
     expect(display.selected).to.equal(2)
   })
 
-  it('BUG: _updateCols throws because the #column picker no longer exists', async () => {
+  it('_updateCols reads the rendered column picker and flags hidden cells', async () => {
     const display = await fixture(
       html`<editable-table-display .data=${SAMPLE_DATA}></editable-table-display>`,
     )
     await display.updateComplete
-    // BUG (recorded, not patched): _updateCols queries '#column' but the
-    // render template now builds '#simple-picker-<index>' ids, so the
-    // selector returns null and .value throws a TypeError.
+    // reads the class="column" picker rendered inside #table; must not
+    // throw now that the old #column id no longer exists
     let threw = false
     try {
       display._updateCols()
     } catch (e) {
       threw = true
     }
-    expect(threw).to.be.true
+    expect(threw).to.be.false
+    const table = display.shadowRoot.querySelector('#table')
+    // selected column is 1: only column 2 cells are flagged xs-hidden
+    expect(table.querySelector('[cell-index="2"][xs-hidden]')).to.exist
+    expect(table.querySelector('[cell-index="1"][xs-hidden]')).to.not.exist
+    expect(table.querySelector('[cell-index="0"][xs-hidden]')).to.not.exist
   })
 })
 
@@ -878,13 +914,13 @@ describe('editable-table-edit', () => {
     await editor.updateComplete
     expect(editor.shadowRoot.querySelector('.downloadable-icon')).to.exist
     expect(editor.shadowRoot.querySelector('.copyable-icon')).to.exist
-    // BUG (recorded, not patched): the printable icon uses a misspelled
-    // `calss` attribute so the .printable-icon class never applies.
-    expect(editor.shadowRoot.querySelector('.printable-icon')).to.not.exist
+    // the printable icon applies the correctly spelled class (it used to
+    // be misspelled as calss so .printable-icon never matched)
     const printableIcon = editor.shadowRoot.querySelector(
-      'simple-icon-lite[calss="printable-icon"]',
+      'simple-icon-lite.printable-icon',
     )
     expect(printableIcon).to.exist
+    expect(printableIcon.hasAttribute('calss')).to.be.false
   })
 
   it('hides display and data groups via hide* flags', async () => {
@@ -1047,18 +1083,23 @@ describe('editable-table-edit', () => {
     expect(detail.colNum).to.equal(0)
   })
 
-  it('BUG: _onCellValueChange throws for out-of-range cells', async () => {
+  it('ignores out-of-range cell changes instead of throwing', async () => {
     const editor = element.editor
-    // BUG (recorded, not patched): when the cell editor does not exist
-    // (out-of-range row/col) the undefined value flows into changeCell,
-    // which does not bounds-check and throws a TypeError.
+    const before = editor.data
     let threw = false
     try {
+      // the cell editor does not exist (out-of-range row/col); the
+      // undefined value flows into changeCell, which bounds-checks
+      // and leaves the data untouched
       editor._onCellValueChange({}, 9, 9)
+      editor.changeCell(99, 99, 'nope')
+      editor.changeCell(-1, 0, 'nope')
+      editor.changeCell(0, 99, 'nope')
     } catch (e) {
       threw = true
     }
-    expect(threw).to.be.true
+    expect(threw).to.be.false
+    expect(editor.data === before).to.be.true
   })
 
   it('updates the caption from the rendered caption editor', async () => {
@@ -1144,10 +1185,9 @@ describe('editable-table-editor-rowcol', () => {
     rowcol.row = true
     await rowcol.updateComplete
     expect(rowcol.type).to.equal('Row')
-    // BUG (recorded, not patched): `controls` is only recomputed when the
-    // `index` property changes, so toggling `row` leaves the stale
-    // column-oriented controls id behind.
-    expect(rowcol.controls).to.equal('cell-2-0')
+    // toggling row recomputes controls to the row's first-column cell
+    // (it used to keep the stale column-oriented controls id)
+    expect(rowcol.controls).to.equal('cell-0-2')
     expect(rowcol.label).to.equal(3)
     expect(rowcol.position).to.equal('right')
   })

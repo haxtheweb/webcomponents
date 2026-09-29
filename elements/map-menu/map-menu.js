@@ -146,7 +146,13 @@ class MapMenu extends SchemaBehaviors(LitElement) {
 
           margin: var(--map-menu-layer-2-vertical-margin, 2px 0px);
           padding: var(--map-menu-layer-2-vertical-padding, 28px 0px 40px);
-          background-color: var(--map-menu-layer-2-background-color, white);
+          background-color: var(
+            --map-menu-layer-2-background-color,
+            light-dark(
+              var(--ddd-theme-default-white, white),
+              var(--ddd-theme-default-black, black)
+            )
+          );
         }
 
         :host([is-flex][is-horizontal])
@@ -168,7 +174,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
         map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-submenu {
           border-left: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
 
@@ -178,12 +187,15 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           margin: 0;
           padding: 0;
 
-          color: var(--map-menu-layer-2-font-color, #262626);
+          color: var(
+            --map-menu-layer-2-font-color,
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
           --map-menu-header-button-padding: 10px 20px;
           --map-menu-header-title-margin: 0;
           --map-menu-item-a-active-color: var(
             --map-menu-layer-2-active-color,
-            #262626
+            var(--ddd-theme-default-coalyGray, #262626)
           );
           --map-menu-text-transform: var(
             --map-menu-layer-2-text-transform,
@@ -205,10 +217,13 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           flex-direction: row;
           flex-wrap: nowrap;
 
-          color: var(--map-menu-layer-2-font-color, #001e44);
+          color: var(
+            --map-menu-layer-2-font-color,
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          );
           --map-menu-item-a-active-color: var(
             --map-menu-layer-2-active-color,
-            #262626
+            var(--ddd-theme-default-coalyGray, #262626)
           );
           --map-menu-text-transform: var(
             --map-menu-layer-2-text-transform,
@@ -303,7 +318,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
         map-menu-builder map-menu-builder map-menu-builder map-menu-item,
         map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
           border-left: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
 
@@ -342,7 +360,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           );
           --map-menu-item-a-active-background-color: var(
             --map-menu-layer-3-active-background-color,
-            #f2f2f4
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4)
           );
         }
 
@@ -379,7 +397,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           map-menu-builder
           map-menu-submenu {
           border-left: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
         :host([is-flex])
@@ -412,7 +433,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           map-menu-builder
           map-menu-submenu {
           border-left: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
         :host([is-flex])

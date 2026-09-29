@@ -130,8 +130,13 @@ class SimpleIconsetDemo extends LitElement {
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldVlaue, propName) => {
-      if (propName == "imports") this._getIconsets();
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        propName == "imports" ||
+        propName == "exclude" ||
+        propName == "include"
+      )
+        this._getIconsets();
     });
   }
   _getIconsets() {
@@ -143,11 +148,13 @@ class SimpleIconsetDemo extends LitElement {
       excludeSets = (this.exclude || "").split(" "),
       includeSets = (this.include || "").split(" ");
 
+    // filter against the iconset NAME, not the iconset object; comparing
+    // objects against the split name strings never matched anything
     this.iconsets = iconsets.filter(
       (iconset) =>
         !!iconset &&
-        !excludeSets.includes(iconset) &&
-        (!this.include || includeSets.includes(iconset)),
+        !excludeSets.includes(iconset.name) &&
+        (!this.include || includeSets.includes(iconset.name)),
     );
   }
 }

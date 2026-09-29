@@ -202,30 +202,52 @@ describe('simple-iconset-demo', () => {
     await expect(el).shadowDom.to.be.accessible()
   })
 
-  // BUG: _getIconsets filters iconset OBJECTS against name STRINGS, so the
-  // exclude attribute never filters anything. The assertion below documents
-  // the broken behavior; flip it when the filter compares iconset.name.
-  // See lib/simple-iconset-demo.js around line 146-152.
-  it('BUG: exclude attribute does not filter iconsets', async () => {
+  // fixed: _getIconsets filters iconset NAMES, so the exclude attribute
+  // removes the named iconset
+  it('exclude attribute filters out the named iconsets', async () => {
     const el = await fixture(
       html`<simple-iconset-demo exclude="av"></simple-iconset-demo>`,
     )
     const names = el.iconsets.map((iconset) => iconset.name)
-    expect(names.includes('av')).to.be.true
-    expect(el.iconsets.length).to.equal(13)
+    expect(names.includes('av')).to.be.false
+    expect(el.iconsets.length).to.equal(12)
   })
 
-  // BUG: includeSets.includes(iconset) is always false for objects, so any
-  // include attribute filters out EVERY iconset and the demo renders the
-  // placeholder forever. Flip when the filter compares iconset.name.
-  it('BUG: include attribute filters out all iconsets', async () => {
+  // fixed: includeSets now matches iconset names, so an include attribute
+  // keeps exactly the named iconsets instead of filtering out everything
+  it('include attribute filters to only the named iconsets', async () => {
     const el = await fixture(
       html`<simple-iconset-demo include="av"></simple-iconset-demo>`,
     )
     await el.updateComplete
     await el.updateComplete
+    expect(el.iconsets.length).to.equal(1)
+    expect(el.iconsets[0].name).to.equal('av')
+    const strong = el.shadowRoot.querySelector('p strong')
+    expect(strong.textContent).to.equal('av')
+    expect(el.shadowRoot.textContent.includes('Looking for iconsets...')).to.be
+      .false
+  })
+
+  it('re-filters when exclude and include change after render', async () => {
+    const el = await fixture(
+      html`<simple-iconset-demo></simple-iconset-demo>`,
+    )
+    expect(el.iconsets.length).to.equal(13)
+    el.exclude = 'av icons'
+    await el.updateComplete
+    await el.updateComplete
+    expect(el.iconsets.length).to.equal(11)
+    el.include = 'av'
+    await el.updateComplete
+    await el.updateComplete
     expect(el.iconsets.length).to.equal(0)
     expect(el.shadowRoot.textContent.includes('Looking for iconsets...')).to.be
       .true
+    el.include = 'maps'
+    await el.updateComplete
+    await el.updateComplete
+    expect(el.iconsets.length).to.equal(1)
+    expect(el.iconsets[0].name).to.equal('maps')
   })
 })

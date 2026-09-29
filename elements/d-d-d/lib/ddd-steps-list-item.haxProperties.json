@@ -30,9 +30,10 @@
   },
   "demoSchema": [
     {
-      "tag": "ddd-steps-list",
+      "tag": "ddd-steps-list-item",
       "properties": {
-        "title": "Step "
+        "step": 1,
+        "title": "Step 1 title"
       },
       "content": "<p>Step 1 description</p>"
     }

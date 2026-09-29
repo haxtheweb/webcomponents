@@ -95,11 +95,41 @@ describe("grade-book-pop-up", () => {
       .equal(null);
   });
 
-  it("render() throws when the store database has no assignments (BUG: unguarded store access)", async () => {
-    // BUG grade-book-pop-up.js:103 renderStudentSubmission dereferences
-    // GradeBookStore.database.assignments[activeAssignment]._ISODueDate with
-    // no guard, so any render against an empty store (no assignments loaded)
-    // throws a TypeError instead of showing a graceful empty state
+  it("changeActive respects the roster and assignment bounds", async () => {
+    const el = await fixture(html`<grade-book-pop-up></grade-book-pop-up>`);
+    await flush();
+    // next / prev are no-ops at either end of each list
+    GradeBookStore.activeStudent = 1;
+    el.querySelector('button[value="next-Student"]').click();
+    expect(GradeBookStore.activeStudent).to.equal(1);
+    GradeBookStore.activeStudent = 0;
+    el.querySelector('button[value="prev-Student"]').click();
+    expect(GradeBookStore.activeStudent).to.equal(0);
+    GradeBookStore.activeAssignment = 1;
+    el.querySelector('button[value="next-Assignment"]').click();
+    expect(GradeBookStore.activeAssignment).to.equal(1);
+    GradeBookStore.activeAssignment = 0;
+    el.querySelector('button[value="prev-Assignment"]').click();
+    expect(GradeBookStore.activeAssignment).to.equal(0);
+    // an empty store leaves every button a no-op
+    GradeBookStore.database = {
+      tags: { categories: [], data: [] },
+      roster: [],
+      assignments: [],
+    };
+    el.querySelector('button[value="next-Student"]').click();
+    el.querySelector('button[value="next-Assignment"]').click();
+    expect(GradeBookStore.activeStudent).to.equal(0);
+    expect(GradeBookStore.activeAssignment).to.equal(0);
+    // restore a valid store database SYNCHRONOUSLY so any straggler render
+    // queued by the empty-store swap finds safe data when it runs
+    GradeBookStore.database = makeDatabase();
+  });
+  it("render() is safe when the store database has no assignments (was BUG: unguarded store access)", async () => {
+    // regression: renderStudentSubmission used to dereference
+    // GradeBookStore.database.assignments[activeAssignment]._ISODueDate
+    // with no guard, so any render against an empty store (no assignments
+    // loaded) threw a TypeError instead of showing the heading alone
     const empty = { tags: { categories: [], data: [] } };
     GradeBookStore.database = empty;
     const el = globalThis.document.createElement("grade-book-pop-up");
@@ -109,7 +139,7 @@ describe("grade-book-pop-up", () => {
     } catch (e) {
       threw = true;
     }
-    expect(threw).to.equal(true);
+    expect(threw).to.equal(false);
     // restore a valid store database SYNCHRONOUSLY: the empty-store change
     // above queued an autorun-driven update on this (disconnected) element
     // and that scheduled render must find a safe database when it runs

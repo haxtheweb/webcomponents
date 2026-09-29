@@ -160,6 +160,24 @@ describe('map-menu-header', () => {
     expect(any).to.equal(0)
   })
 
+  it('does not auto-open when id and selected are both empty', async () => {
+    const el = await fixture(
+      html`<map-menu-header itemtitle="Empty" url="/empty"></map-menu-header>`,
+    )
+    const events = []
+    el.addEventListener('toggle-header', () => events.push('toggle-header'))
+    el.addEventListener('active-item', () => events.push('active-item'))
+    // empty id + empty selected must not count as a match (they used to,
+    // which auto-opened submenus via toggle-header on first paint)
+    el.selected = ''
+    el.id = 'x'
+    await el.updateComplete
+    el.id = ''
+    await el.updateComplete
+    await new Promise((r) => setTimeout(r, 20))
+    expect(events.length).to.equal(0)
+  })
+
   it('toggles on click and enter key once listeners bind', async () => {
     const el = await fixture(
       html`<map-menu-header itemtitle="Tap" url="/tap"></map-menu-header>`,

@@ -57,7 +57,11 @@ class ShortAnswerQuestion extends QuestionElement {
         property="oer:answer"
         name="0"
         @keydown="${(e) => {
-          e.key === "Enter" ? this.checkAnswer(e) : null;
+          // only check once an answer exists; Enter in the empty textarea
+          // would otherwise evaluate a null answer and throw
+          if (e.key === "Enter" && this.shortanswer) {
+            this.checkAnswer(e);
+          }
         }}"
         @value-changed="${this.valueUpdate}"
         .value="${this.shortanswer}"
@@ -88,10 +92,16 @@ class ShortAnswerQuestion extends QuestionElement {
    * Return if the current answers are correct
    */
   isCorrect() {
+    // a null / empty / non-string answer can never be correct, and must not throw
+    if (!this.shortanswer || typeof this.shortanswer !== "string") {
+      return false;
+    }
     for (var i in this.displayedAnswers) {
       if (
+        this.displayedAnswers[i] &&
+        this.displayedAnswers[i].label &&
         this.displayedAnswers[i].label.toLowerCase() ==
-        this.shortanswer.toLowerCase()
+          this.shortanswer.toLowerCase()
       ) {
         return true;
       }

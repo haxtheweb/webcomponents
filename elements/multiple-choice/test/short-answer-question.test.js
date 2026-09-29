@@ -103,22 +103,56 @@ describe("short-answer-question", () => {
     expect(el.inactiveCase()).to.equal("another duck");
   });
 
-  it("isCorrect() throws when shortanswer is null and answers exist (BUG: unguarded toLowerCase)", () => {
-    // BUG short-answer-question.js:91-95 isCorrect() calls
+  it("isCorrect() is safe and false when shortanswer is null (was BUG: unguarded toLowerCase)", () => {
+    // regression: short-answer-question.js:91-95 isCorrect() used to call
     // this.shortanswer.toLowerCase() without a null guard, so evaluating
-    // correctness with an empty answer throws a TypeError. This is user
-    // reachable: pressing Enter in the empty textarea fires checkAnswer
-    // (the renderInteraction keydown handler has no guard) which calls
-    // isCorrect before anything has been typed
+    // correctness with an empty answer threw a TypeError. This was user
+    // reachable: pressing Enter in the empty textarea fired checkAnswer
+    // (the renderInteraction keydown handler had no guard) which called
+    // isCorrect before anything had been typed
     const el = globalThis.document.createElement("short-answer-question");
     el.displayedAnswers = [{ label: "Huey", correct: true }];
     el.shortanswer = null;
-    let threw = false;
-    try {
-      el.isCorrect();
-    } catch (e) {
-      threw = true;
-    }
-    expect(threw).to.equal(true);
+    expect(el.isCorrect()).to.equal(false);
+    el.shortanswer = "";
+    expect(el.isCorrect()).to.equal(false);
+  });
+  it("Enter in the empty textarea does not fire the answer check (was BUG: unguarded keydown)", async () => {
+    // regression: the renderInteraction keydown handler fired checkAnswer
+    // on Enter regardless of whether an answer existed
+    const el = await fixture(
+      html`<short-answer-question question="Name a duck">
+        <input correct value="Huey" />
+        <input value="Mickey" />
+      </short-answer-question>`,
+    );
+    await el.updateComplete;
+    const field = el.shadowRoot.querySelector('simple-fields-field[name="0"]');
+    expect(field).to.exist;
+    let fired = 0;
+    el.checkAnswer = () => {
+      fired++;
+    };
+    field.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    await el.updateComplete;
+    expect(fired).to.equal(0);
+    expect(el.showAnswer).to.equal(false);
+    // once an answer exists Enter checks it again
+    el.shortanswer = "Huey";
+    field.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    await el.updateComplete;
+    expect(fired).to.equal(1);
   });
 });

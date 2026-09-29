@@ -85,17 +85,20 @@ class ImgLoader extends LitElement {
       this.__imageLoader.onload = () => {
         this.loading = false;
         this.loaded = true;
+        this.error = false;
         if (this.__imageLoader) this.__imageLoader.remove();
       };
       this.__imageLoader.onerror = () => {
         this.loading = false;
         this.loaded = false;
+        this.error = true;
         if (this.__imageLoader) this.__imageLoader.remove();
       };
       this.__imageLoader.src = this.src;
     }
     this.loading = !!this.src;
     this.loaded = false;
+    this.error = false;
   }
 }
 globalThis.customElements.define(ImgLoader.tag, ImgLoader);

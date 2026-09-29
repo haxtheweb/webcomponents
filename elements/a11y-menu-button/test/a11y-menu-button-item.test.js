@@ -47,6 +47,31 @@ describe('a11y-menu-button-item', () => {
     expect(blank.shadowRoot.querySelector('a[role="menuitem"]')).to.equal(null)
   })
 
+  // lit 3.3.3 commits bound undefined in attribute position as an empty
+  // string, which previously rendered invalid aria-disabled="" and
+  // tabindex="" on enabled links; the attributes now only render when
+  // there is a value (enabled links keep their natural tab order)
+  it('omits aria-disabled and tabindex on enabled links', async () => {
+    const el = await fixture(
+      html`<a11y-menu-button-item href="/enabled">Enabled</a11y-menu-button-item>`,
+    )
+    await el.updateComplete
+    const link = el.shadowRoot.querySelector('a[role="menuitem"]')
+    expect(link === null).to.equal(false)
+    expect(link.getAttribute('aria-disabled')).to.equal(null)
+    expect(link.getAttribute('tabindex')).to.equal(null)
+  })
+
+  it('omits aria-controls on buttons when controls is not supplied', async () => {
+    const el = await fixture(
+      html`<a11y-menu-button-item>Plain</a11y-menu-button-item>`,
+    )
+    await el.updateComplete
+    const button = el.shadowRoot.querySelector('button[role="menuitem"]')
+    expect(button === null).to.equal(false)
+    expect(button.getAttribute('aria-controls')).to.equal(null)
+  })
+
   it('prevents clicks on disabled links only', async () => {
     const el = await fixture(
       html`<a11y-menu-button-item href="/x" disabled
@@ -106,12 +131,10 @@ describe('a11y-menu-button-item', () => {
     expect(el.hasAttribute('hidden')).to.equal(true)
   })
 
-  // BUG: lib/a11y-menu-button-item.js:223-237 — disconnectedCallback
-  // dispatches remove-a11y-menu-button-item AFTER the element is already
-  // detached, so the event can never bubble up to the parent; only the
-  // add event from connectedCallback is ever observed by an ancestor.
-  // Documents current behavior for the fix swarm.
-  it('announces itself when added to the dom but not when removed', async () => {
+  // fixed: disconnectedCallback dispatches remove-a11y-menu-button-item
+  // from the parent captured while the item was still attached, so an
+  // ancestor listener observes both the add and the remove events.
+  it('announces itself when added to and removed from the dom', async () => {
     const events = []
     const listener = (e) => events.push({ type: e.type, detail: e.detail })
     const host = globalThis.document.createElement('div')
@@ -124,31 +147,13 @@ describe('a11y-menu-button-item', () => {
     await new Promise((r) => setTimeout(r, 20))
     item.remove()
     await new Promise((r) => setTimeout(r, 20))
-    // only the add event arrives; the remove event dies with the detached node
-    expect(events.length).to.equal(1)
+    // both events arrive; the remove event is dispatched from the
+    // captured parent because the detached item can no longer bubble
+    expect(events.length).to.equal(2)
     expect(events[0].type).to.equal('add-a11y-menu-button-item')
     expect(events[0].detail === item).to.equal(true)
-    // a manually delivered remove event does reach the menu (see the
-    // behaviors test for what the handler then does with it)
-    const stillConnected = globalThis.document.createElement(
-      'a11y-menu-button-item',
-    )
-    host.appendChild(stillConnected)
-    let manual = null
-    stillConnected.addEventListener(
-      'remove-a11y-menu-button-item',
-      (e) => {
-        manual = e.detail
-      },
-    )
-    stillConnected.dispatchEvent(
-      new CustomEvent('remove-a11y-menu-button-item', {
-        bubbles: true,
-        composed: true,
-        detail: stillConnected,
-      }),
-    )
-    expect(manual === stillConnected).to.equal(true)
+    expect(events[1].type).to.equal('remove-a11y-menu-button-item')
+    expect(events[1].detail === item).to.equal(true)
     host.remove()
   })
 })

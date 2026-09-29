@@ -261,29 +261,27 @@ describe('license-element behavior', () => {
     expect(more.textContent.trim()).to.equal('in our FAQ')
   })
 
-  it('omits the more-permissions block without has-more', async () => {
-    const el = await fixture(html`
-      <license-element more-link="https://example.com/more"></license-element>
-    `)
+  // hasMore is derived from moreLink, so omission only happens without a
+  // more-link (the old assertion documented the broken hasMode typo)
+  it('omits the more-permissions block without more-link', async () => {
+    const el = await fixture(html`<license-element></license-element>`)
     expect(
       el.shadowRoot.textContent.includes('Permissions beyond the scope'),
     ).to.be.false
   })
 
-  // BUG: updated() assigns this.hasMode (a typo for hasMore) when moreLink
-  // changes, so the more-permissions block never appears from a more-link
-  // change alone. license-element.js line 271. Flip the assertions once the
-  // typo is fixed (hasMode -> hasMore).
-  it('BUG: setting more-link computes hasMode, not hasMore', async () => {
+  // fixed: the hasMode typo is corrected to hasMore (derived in willUpdate),
+  // so a more-link change alone computes hasMore and renders the block
+  it('setting more-link alone computes hasMore and renders the block', async () => {
     const el = await fixture(html`
       <license-element more-link="https://example.com/more"></license-element>
     `)
-    expect(el.hasMode).to.be.true
-    // hasMore is never assigned (the typo writes hasMode instead)
-    expect(el.hasMore).to.equal(undefined)
+    expect(el.hasMore).to.be.true
     expect(
       el.shadowRoot.textContent.includes('Permissions beyond the scope'),
-    ).to.be.false
+    ).to.be.true
+    const more = el.shadowRoot.querySelector('a[rel="cc:morePermissions"]')
+    expect(more.getAttribute('href')).to.equal('https://example.com/more')
   })
 
   it('hides the element in footnote display mode', async () => {

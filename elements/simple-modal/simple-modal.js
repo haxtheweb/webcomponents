@@ -531,12 +531,28 @@ class SimpleModal extends LitElement {
     }
     import("web-dialog/index.js").then((e) => {
       setTimeout(() => {
-        this.shadowRoot
-          .querySelector("web-dialog")
-          .shadowRoot.querySelector("#backdrop").style.backgroundColor =
-          "var(--simple-modal-backdrop-background, var(--ddd-theme-default-potential70))";
+        this._styleBackdrop();
       }, 0);
     });
+  }
+  /**
+   * Applies the backdrop background color. web-dialog may not have upgraded
+   * (and built its shadow root) when the dynamic import resolves, so every
+   * step of the chain is guarded before it is dereferenced.
+   */
+  _styleBackdrop() {
+    const dialog =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("web-dialog")
+        : null;
+    const backdrop =
+      dialog && dialog.shadowRoot && dialog.shadowRoot.querySelector
+        ? dialog.shadowRoot.querySelector("#backdrop")
+        : null;
+    if (backdrop) {
+      backdrop.style.backgroundColor =
+        "var(--simple-modal-backdrop-background, var(--ddd-theme-default-potential70))";
+    }
   }
 
   updated(changedProperties) {

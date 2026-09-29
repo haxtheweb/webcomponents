@@ -606,6 +606,15 @@ gulp.task("hax-elements-discovery", async () => {
   }
 });
 
+gulp.task("hax-elements-demo-page", async () => {
+  try {
+    execSync('node scripts/hax-elements-demo-page.js', { stdio: 'inherit' });
+    console.log('✅ HAX elements demo page generated successfully');
+  } catch (error) {
+    console.error('❌ HAX elements demo page generation failed:', error.message);
+  }
+});
+
 gulp.task("theme-screenshots", async () => {
   try {
     execSync('node elements/haxcms-elements/automation/puppeteer-theme-automation.js', { stdio: 'inherit' });

@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SimpleIconButtonBehaviors } from "./simple-icon-button-lite.js";
 import "./simple-icons.js";
@@ -29,18 +29,18 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
     return html`
       <button
         ?autofocus="${this.autofocus}"
-        aria-labelledby="${this.ariaLabelledby}"
+        aria-labelledby="${this.ariaLabelledby || nothing}"
         aria-pressed="${this.toggles
           ? this.toggled
             ? "true"
             : "false"
-          : undefined}"
-        aria-controls="${this.controls || undefined}"
+          : nothing}"
+        aria-controls="${this.controls || nothing}"
         part="button"
         ?disabled="${this.disabled}"
         form="${this.form}"
         label="${this.label}"
-        aria-label="${this.label}"
+        aria-label="${this.label || this.icon || nothing}"
         name="${this.fieldName}"
         .type="${this.type}"
         value="${this.value}"

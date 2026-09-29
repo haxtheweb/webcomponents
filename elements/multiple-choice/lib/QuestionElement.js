@@ -114,10 +114,17 @@ export class QuestionElement extends SchemaBehaviors(
     else if (this[this.guessDataValue]) {
       return this[this.guessDataValue];
     }
+    // the alternate storage key can be unset (no guess recorded yet);
+    // fall back to an empty list so guess counts stay numeric
+    return [];
   }
   // count of all guesses
   guessCount() {
     return this.getGuess().length;
+  }
+  // see if the interaction is out of attempts (0 implies unlimited)
+  attemptsExhausted() {
+    return this.maxAttempts > 0 && this.attempts >= this.maxAttempts;
   }
 
   checkedEvent(e) {
@@ -187,6 +194,11 @@ export class QuestionElement extends SchemaBehaviors(
    * that they want to see how they did.
    */
   checkAnswer(e) {
+    // respect the max attempts limit; once the attempts are spent the
+    // interaction no longer accepts checks (0 implies unlimited)
+    if (this.attemptsExhausted()) {
+      return;
+    }
     const reduceMotion =
       globalThis.matchMedia &&
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1002,7 +1014,8 @@ export class QuestionElement extends SchemaBehaviors(
           id="check"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
-          this.showAnswer}"
+          this.showAnswer ||
+          this.attemptsExhausted()}"
           @click="${this.checkAnswer}"
           label="${this.t.checkAnswer}"
         >

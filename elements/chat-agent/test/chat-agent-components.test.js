@@ -3,6 +3,10 @@ import '../chat-agent.js'
 import { ChatStore } from '../lib/chat-agent-store.js'
 import { MicroFrontendRegistry } from '@haxtheweb/micro-frontend-registry/micro-frontend-registry.js'
 
+// captured at import time, before any beforeEach resets it, so the store
+// constructor defaults can be regression tested
+const initialPromptCharacterLimit = ChatStore.promptCharacterLimit
+
 // Behavioral coverage for the chat-agent sub-components and store flows:
 // button interactions, input keyboard navigation, control bar actions with
 // confirm/alert stubs, developer panel, message hats/suggestions, suggestion
@@ -47,6 +51,31 @@ describe('chat-agent sub-components', () => {
       el.keyPress(new KeyboardEvent('keypress', { key: 'a', cancelable: true }))
       const wrapper = el.shadowRoot.querySelector('.chat-button-wrapper')
       expect(wrapper.classList.contains('active-mimic')).to.equal(false)
+    })
+
+    it('a real keydown on the wrapper activates via Enter only', async () => {
+      // regression (a11y follow-up): the deprecated @keypress binding was
+      // migrated to @keydown; only Enter activates the button
+      const el = await fixture(html`<chat-button></chat-button>`)
+      await aTimeout(0)
+      const wrapper = el.shadowRoot.querySelector('.chat-button-wrapper')
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'a',
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      expect(ChatStore.isInterfaceHidden).to.equal(true)
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter',
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      expect(ChatStore.isInterfaceHidden).to.equal(false)
+      ChatStore.isInterfaceHidden = true
     })
 
     it('handleChatButton toggles interface visibility in the store', async () => {
@@ -146,15 +175,16 @@ describe('chat-agent sub-components', () => {
       expect(el.previousMessagesIndex).to.equal(5)
     })
 
-    it('BUG: down navigation crashes at the newest message edge', async () => {
-      // BUG (documented for the fix swarm): lib/chat-input.js
-      // displayPreviousMessages('down') (~lines 343-363) evaluates
+    it('down navigation clears cleanly at the newest message edge', async () => {
+      // Regression (was a documented swarm bug): lib/chat-input.js
+      // displayPreviousMessages('down') evaluated
       // this.chatLog[this.previousMessagesIndex].author BEFORE the
       // previousMessagesIndex < messageIndex bounds check. Pressing down
-      // when previousMessagesIndex is messageIndex-1 increments to
-      // messageIndex and reads chatLog[messageIndex], which is undefined
+      // when previousMessagesIndex was messageIndex-1 incremented to
+      // messageIndex and read chatLog[messageIndex], which is undefined
       // (messageIndex equals chatLog.length), throwing a TypeError that
-      // breaks the prompt-history navigation. Asserting current behavior.
+      // broke the prompt-history navigation. The bounds check now runs
+      // first, so down at the newest message clears the input cleanly.
       const el = await fixture(html`<chat-input></chat-input>`)
       el.chatLog = [
         { author: 'merlin', message: 'm1' },
@@ -165,7 +195,9 @@ describe('chat-agent sub-components', () => {
       ]
       el.messageIndex = 5
       el.previousMessagesIndex = 4
-      expect(() => el.displayPreviousMessages('down')).to.throw()
+      expect(() => el.displayPreviousMessages('down')).to.not.throw()
+      expect(el.shadowRoot.querySelector('#user-input').value).to.equal('')
+      expect(el.previousMessagesIndex).to.equal(5)
     })
 
     it('displayPreviousMessages walks up through user messages', async () => {
@@ -555,14 +587,47 @@ describe('chat-agent sub-components', () => {
       }
     })
 
-    it('removes tabindex when disabled', async () => {
+    it('exposes disabled state and removes tabindex when disabled', async () => {
+      // regression (a11y follow-up): disabled suggestions relied on
+      // tabindex removal + CSS only; aria-disabled now communicates the
+      // state and the wrapper declares its button role
       const el = await fixture(
         html`<chat-suggestion suggestion="S"></chat-suggestion>`,
       )
+      const wrapper = el.shadowRoot.querySelector('.chat-suggestion-wrapper')
+      expect(wrapper.getAttribute('role')).to.equal('button')
+      expect(wrapper.getAttribute('aria-disabled')).to.equal('false')
       el.disabled = true
       await el.updateComplete
-      const wrapper = el.shadowRoot.querySelector('.chat-suggestion-wrapper')
       expect(wrapper.getAttribute('tabindex')).to.equal(null)
+      expect(wrapper.getAttribute('aria-disabled')).to.equal('true')
+    })
+
+    it('activates from the keyboard on Enter and Space only', async () => {
+      // regression (a11y follow-up): the deprecated @keypress binding fired
+      // handleSuggestion for any printable key while focused; the @keydown
+      // binding only activates on Enter / Space
+      const el = await fixture(
+        html`<chat-suggestion suggestion="Who are you?"></chat-suggestion>`,
+      )
+      const wrapper = el.shadowRoot.querySelector('.chat-suggestion-wrapper')
+      const before = ChatStore.chatLog.length
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'a',
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      expect(ChatStore.chatLog.length).to.equal(before)
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter',
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+      expect(ChatStore.chatLog.length).to.be.greaterThan(before)
     })
 
     it('handleSuggestion sends the prompt when enabled', async () => {
@@ -700,15 +765,13 @@ describe('chat-agent sub-components', () => {
       MicroFrontendRegistry.call = origCall
     })
 
-    it('BUG: non-200 responses still surface answers with no status guard', async () => {
-      // BUG (documented for the fix swarm): chat-agent-store.js
-      // handleInteraction (~line 384-394) only guards the status==200
-      // branch; a non-200 response with data present still calls
-      // handleMessage with d.data.answers (no error messaging path), and a
-      // non-200 response with data null throws an unhandled TypeError inside
-      // the .then (observed in the pre-existing test with status 500 +
-      // data null). Asserting current behavior: the answer text is written
-      // to the log even though the request failed.
+    it('non-200 responses take the error path with network suggestions', async () => {
+      // Regression (was a documented swarm bug): chat-agent-store.js
+      // handleInteraction only guarded the status==200 branch, so a non-200
+      // response with data present still called handleMessage with
+      // d.data.answers, writing the failed answer text into the log as a
+      // normal merlin message with no error messaging. The status guard now
+      // routes non-200 responses to the shared error path.
       const origCall = MicroFrontendRegistry.call
       MicroFrontendRegistry.call = () =>
         Promise.resolve({ status: 500, data: { answers: 'Partial answer' } })
@@ -717,8 +780,31 @@ describe('chat-agent sub-components', () => {
       expect(ChatStore.isLoading).to.equal(false)
       const last = ChatStore.chatLog[ChatStore.chatLog.length - 1]
       expect(last.author).to.equal('merlin')
-      expect(last.message).to.equal('Partial answer')
+      expect(last.message).to.contain('having trouble connecting')
+      const texts = ChatStore.currentSuggestions.map((s) => s.suggestion)
+      expect(texts).to.include("Why can't you connect?")
       MicroFrontendRegistry.call = origCall
+    })
+
+    it('a 200 response with a null data payload takes the error path too', async () => {
+      // companion regression for the crash case: a 200 response with data
+      // null used to throw a TypeError on d.data.answers inside the .then
+      const origCall = MicroFrontendRegistry.call
+      MicroFrontendRegistry.call = () =>
+        Promise.resolve({ status: 200, data: null })
+      ChatStore.handleInteraction('Null data question?')
+      await aTimeout(20)
+      expect(ChatStore.isLoading).to.equal(false)
+      const last = ChatStore.chatLog[ChatStore.chatLog.length - 1]
+      expect(last.message).to.contain('having trouble connecting')
+      MicroFrontendRegistry.call = origCall
+    })
+
+    it('initializes promptCharacterLimit to a real number', () => {
+      // Regression (was a documented swarm bug): the store constructor had
+      // a no-op "this.promptCharacterLimit;" statement so the value stayed
+      // undefined; 0 disables the limit (no maxlength enforced)
+      expect(initialPromptCharacterLimit).to.equal(0)
     })
 
     it('handleInteraction catches request rejections with network suggestions', async () => {

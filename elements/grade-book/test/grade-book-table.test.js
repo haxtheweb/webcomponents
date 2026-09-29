@@ -11,9 +11,8 @@ describe("grade-book-table", () => {
   });
 
   it("reflects edit-mode as an attribute", async () => {
-    // the element cannot be fixtured bare (its render throws without t and
-    // database, see the BUG test below) so inject the render deps and
-    // connect it manually for the reflection lifecycle
+    // inject explicit render deps (instead of relying on the constructor
+    // defaults) and connect it manually for the reflection lifecycle
     const el = globalThis.document.createElement("grade-book-table");
     el.t = { letterGrade: "L", highRange: "H", lowRange: "Lo" };
     el.database = { gradeScale: [] };
@@ -28,8 +27,9 @@ describe("grade-book-table", () => {
   });
 
   it("renders the grade scale table when t and database are provided", async () => {
-    // GradeBookTable has no i18n mixin and no store/database wiring of its
-    // own, so provide the two render dependencies from the test side
+    // GradeBookTable has no i18n mixin and no store wiring of its own (the
+    // constructor defaults only keep a bare render safe), so provide richer
+    // t and database values from the test side
     const el = globalThis.document.createElement("grade-book-table");
     el.t = {
       letterGrade: "Letter grade",
@@ -54,11 +54,13 @@ describe("grade-book-table", () => {
     el.remove();
   });
 
-  it("render() throws without injected t and database (BUG: undefined render deps)", async () => {
-    // BUG grade-book-table.js:40-44 render() reads this.t.letterGrade and
-    // this.database.gradeScale but the element defines neither a t object
-    // (no I18NMixin) nor a database property (no GradeBookStore wiring), so
-    // a plain <grade-book-table> in the DOM always throws on first render
+  it("render() is safe without injected t and database (was BUG: undefined render deps)", async () => {
+    // regression: grade-book-table.js:40-44 render() used to read
+    // this.t.letterGrade and this.database.gradeScale but the element
+    // defined neither a t object (no I18NMixin) nor a database (no
+    // GradeBookStore wiring), so a plain <grade-book-table> in the DOM
+    // always threw on first render; constructor defaults plus a render
+    // guard keep a bare render safe now
     const el = globalThis.document.createElement("grade-book-table");
     let threw = false;
     try {
@@ -66,6 +68,14 @@ describe("grade-book-table", () => {
     } catch (e) {
       threw = true;
     }
-    expect(threw).to.equal(true);
+    expect(threw).to.equal(false);
+    // a bare fixture renders the empty header row without crashing
+    const el2 = await fixture(html`<grade-book-table></grade-book-table>`);
+    await flush(60);
+    expect(el2.shadowRoot.querySelector("editable-table")).to.exist;
+    expect(el2.shadowRoot.querySelectorAll("table tbody tr").length).to.equal(
+      1,
+    );
+    expect(el2.shadowRoot.innerHTML.includes("Letter grade")).to.equal(true);
   });
 });

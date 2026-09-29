@@ -43,7 +43,6 @@
   "dependencies": {
     "@haxtheweb/hax-body": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",
-    "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/json-outline-schema": "^26.8.0",
     "@haxtheweb/simple-fields": "^26.8.0",

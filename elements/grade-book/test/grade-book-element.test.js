@@ -397,6 +397,31 @@ describe("grade-book element", () => {
       table.dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
       expect(table.style.height).to.equal("");
     });
+    it("renders the surname column from the roster surname field (was BUG: copy-paste)", async () => {
+      // regression: the fname and surname columns both rendered s.student;
+      // the surname column now renders the roster surname field
+      const el = await loadJsonBook();
+      el.database.roster[0].surname = "Alvarez";
+      // direct nested mutation needs an explicit repaint
+      el.requestUpdate();
+      await el.updateComplete;
+      const cols = el.shadowRoot
+        .querySelector("#studentgrid tbody tr .user-right")
+        .querySelectorAll("div");
+      // fname column falls back to the student name; surname shows surname
+      expect(cols[0].textContent.trim()).to.equal("Alice");
+      expect(cols[1].textContent.trim()).to.equal("Alvarez");
+    });
+    it("labels each grade cell button with student and assignment (a11y regression)", async () => {
+      // regression: the cell aria-label used to read assignement (typo)
+      const el = await loadJsonBook();
+      const button = el.shadowRoot.querySelector(
+        "#studentgrid tbody td[data-student='0'][data-assignment='0'] button",
+      );
+      expect(button.getAttribute("aria-label")).to.equal(
+        "Alice's assignment Assignment 1",
+      );
+    });
     it("maintainScrollPosition runs without error once a data-active cell exists", async () => {
       const el = await loadJsonBook();
       el.maintainScrollPosition();
@@ -691,6 +716,26 @@ describe("grade-book element", () => {
       expect(el.ready).to.equal(false);
       expect(el.loading).to.equal(true);
     });
+    it("url source import leaves the store intact on a non-ok response (was BUG: undefined json write)", async () => {
+      // regression: a non-ok fetch used to resolve json to undefined and
+      // write it into GradeBookStore.database, silently corrupting the
+      // whole store (every autorun / render downstream then throws)
+      const el = await fixture(html`<grade-book></grade-book>`);
+      const before = GradeBookStore.database;
+      globalThis.fetch = () =>
+        Promise.resolve({
+          ok: false,
+          status: 404,
+          json: () => Promise.resolve({}),
+        });
+      el.source = "url";
+      el.sourceData = "https://example.com/nope.json";
+      await flush();
+      // the store was NOT overwritten with undefined
+      expect(GradeBookStore.database).to.equal(before);
+      expect(el.ready).to.equal(false);
+      expect(el.loading).to.equal(true);
+    });
     it("loadFromSource googledocs branch reads the url input", async () => {
       const el = await loadJsonBook();
       el.sourceData = null;
@@ -809,6 +854,18 @@ describe("grade-book element", () => {
       expect(jsPdfCalls.saved.length).to.equal(1);
       expect(jsPdfCalls.saved[0].indexOf("Alice--a1--")).to.equal(0);
       expect(jsPdfCalls.saved[0].endsWith(".pdf")).to.equal(true);
+      // regression: the filename month used to be the 0-indexed getMonth()
+      // value, so January saved as 0 and September as 8
+      const now = new Date();
+      const expectedPrefix =
+        "Alice--a1--" +
+        now.getFullYear() +
+        "-" +
+        (now.getMonth() + 1) +
+        "-" +
+        now.getDate() +
+        "__";
+      expect(jsPdfCalls.saved[0].indexOf(expectedPrefix)).to.equal(0);
     });
   });
 

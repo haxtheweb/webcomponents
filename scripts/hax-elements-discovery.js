@@ -153,11 +153,49 @@ function isValidCustomElementName(name) {
 }
 
 /**
+ * Tags that must never be registered as HAX-capable elements even though
+ * their sources contain haxProperties or setHaxProperties calls. These are
+ * HAX editor internals, HAXCMS system internals, developer tooling, branding,
+ * and the lrndesign chart family; none are authorable page blocks. (hax-store
+ * is the editor's global state store; its entry previously picked up the
+ * first primitive title found in its source, which is why it was registered
+ * as "Basic Image".)
+ */
+const EXCLUDED_ELEMENT_TAGS = new Set([
+  // HAX editor internals, only exist inside the editing interface
+  'hax-app-installer',
+  'hax-autoloader',
+  'hax-body',
+  'hax-context-item',
+  'hax-context-item-textop',
+  'hax-element-list-selector',
+  'hax-store',
+  // HAXCMS system internals, not authorable content
+  'haxcms-site-disqus',
+  'haxcms-site-editor-ui',
+  // developer tooling, not page content
+  'web-container',
+  'web-container-doc-player',
+  // chart family intentionally kept out of the registry
+  'lrndesign-bar',
+  'lrndesign-chart',
+  'lrndesign-line',
+  'lrndesign-pie',
+  // branding element, not authorable content
+  'hax-logo',
+]);
+
+/**
  * Check if element should be skipped
  */
 function shouldSkipElement(elementName, filePath) {
   // Skip if no element name or doesn't look like a custom element
   if (!elementName || !isValidCustomElementName(elementName)) {
+    return true;
+  }
+
+  // Never register internal or non-authorable elements
+  if (EXCLUDED_ELEMENT_TAGS.has(elementName)) {
     return true;
   }
   

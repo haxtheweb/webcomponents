@@ -230,6 +230,11 @@ describe('code-sample content handling', () => {
       await el.updateComplete
       const themeDiv = el.shadowRoot.querySelector('#theme')
       expect(themeDiv.innerHTML.includes('<style')).to.be.true
+      // re-theming through render keeps exactly one active style element;
+      // the old clear-loop compared a bare NodeList with > 0 (always
+      // false, dead code) and making it live would have ejected lit part
+      // markers and crashed every re-theme
+      expect(themeDiv.querySelectorAll('style').length).to.equal(1)
     }
   })
 })

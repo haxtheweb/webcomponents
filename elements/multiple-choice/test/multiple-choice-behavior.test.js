@@ -179,6 +179,20 @@ describe("multiple-choice behavior", () => {
       el.guessDataValue = "quizName";
       expect(el.getGuess()).to.equal("default");
     });
+    it("getGuess falls back to an empty list when the storage key is unset (was BUG: undefined guess)", async () => {
+      // regression: an unset storage key used to make getGuess return
+      // undefined, so guessCount() read .length off undefined and threw
+      const el = await ready();
+      el.guessDataValue = "shortanswer";
+      el.shortanswer = null;
+      expect(el.getGuess()).to.eql([]);
+      expect(el.guessCount()).to.equal(0);
+      expect(el.inactiveCase()).to.equal(false);
+      // a stored value still flows through untouched
+      el.shortanswer = "ducks";
+      expect(el.getGuess()).to.equal("ducks");
+      expect(el.guessCount()).to.equal(5);
+    });
     it("checkedEvent records the guess on the displayed answer", async () => {
       const el = await ready();
       el.checkedEvent({ target: { name: 1 }, detail: { value: true } });
@@ -236,6 +250,66 @@ describe("multiple-choice behavior", () => {
       const frozen = el._computeDisplayedAnswers([...data], true);
       expect(frozen.map((x) => x.label).join("")).to.equal("abc");
       el._haxstate = false;
+    });
+  });
+
+  describe("max attempts enforcement", () => {
+    it("maxAttempts 0 means unlimited attempts", async () => {
+      const el = await ready();
+      expect(el.maxAttempts).to.equal(0);
+      expect(el.attemptsExhausted()).to.equal(false);
+      el.attempts = 7;
+      expect(el.attemptsExhausted()).to.equal(false);
+    });
+    it("checkAnswer is a no-op once attempts reach maxAttempts", async () => {
+      const el = await ready();
+      el.maxAttempts = 1;
+      el.displayedAnswers = el.displayedAnswers.map((a) => ({
+        ...a,
+        userGuess: a.correct === true,
+      }));
+      el.checkAnswerCallback();
+      await el.updateComplete;
+      await flush();
+      expect(el.attempts).to.equal(1);
+      expect(el.showAnswer).to.equal(true);
+      expect(toasts.length).to.equal(1);
+      // the single allowed attempt is spent: a follow up check is blocked
+      el.showAnswer = false;
+      el.checkAnswer();
+      await el.updateComplete;
+      await flush();
+      expect(el.attempts).to.equal(1);
+      expect(el.showAnswer).to.equal(false);
+      expect(toasts.length).to.equal(1);
+    });
+    it("the check button stays disabled once attempts are exhausted", async () => {
+      const el = await ready();
+      el.maxAttempts = 1;
+      el.displayedAnswers = el.displayedAnswers.map((a) => ({
+        ...a,
+        userGuess: a.correct === true,
+      }));
+      await el.updateComplete;
+      expect(
+        el.shadowRoot.querySelector("#check").hasAttribute("disabled"),
+      ).to.equal(false);
+      el.checkAnswerCallback();
+      await el.updateComplete;
+      await flush();
+      el.resetAnswer();
+      await el.updateComplete;
+      await flush();
+      // re-select answers so the button would normally re-enable...
+      el.displayedAnswers = el.displayedAnswers.map((a) => ({
+        ...a,
+        userGuess: a.correct === true,
+      }));
+      await el.updateComplete;
+      // ...but the one allowed attempt was already spent
+      expect(
+        el.shadowRoot.querySelector("#check").hasAttribute("disabled"),
+      ).to.equal(true);
     });
   });
 

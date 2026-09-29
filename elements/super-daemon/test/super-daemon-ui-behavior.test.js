@@ -129,9 +129,13 @@ describe('super-daemon-ui behavior', () => {
     expect(el._activeDescendant).to.equal('option-1')
     await new Promise((resolve) => requestAnimationFrame(resolve))
     await aTimeout(0)
-    const rows = el.shadowRoot.querySelectorAll('super-daemon-row')
+    const rows = el.shadowRoot.querySelectorAll("super-daemon-row")
     expect(rows[0].active).to.equal(false)
     expect(rows[1].active).to.equal(true)
+    // the host (role=option) carries the dynamic aria-selected value so it
+    // stays aligned with the keyboard selection for assistive tech
+    expect(rows[0].getAttribute('aria-selected')).to.equal('false')
+    expect(rows[1].getAttribute('aria-selected')).to.equal('true')
     el._updateActiveDescendant(-1)
     expect(el._activeDescendant).to.equal('')
   })

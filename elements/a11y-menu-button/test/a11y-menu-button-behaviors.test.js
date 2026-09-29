@@ -350,63 +350,57 @@ describe('a11y-menu-button behaviors', () => {
     await el.updateComplete
     expect(el.menuItems.length).to.equal(4)
     expect(el.menuItems[3].textContent).to.equal('Delta')
-    // removing from the dom leaves the stale item in the list
+    // removing from the dom notifies the menu and drops the item
     extra.remove()
     await el.updateComplete
-    expect(el.menuItems.length).to.equal(4)
+    expect(el.menuItems.length).to.equal(3)
     expect(
       el.menuItems.filter((i) => i === extra).length,
-    ).to.equal(1)
+    ).to.equal(0)
   })
 
-  // BUG (two defects in the item removal flow):
-  // (a) lib/a11y-menu-button-item.js:223-237 — disconnectedCallback
-  //     dispatches remove-a11y-menu-button-item AFTER the element is
-  //     already detached, so the event never bubbles to the menu; removal
-  //     notifications are dead code (verified: only the add event arrives).
-  // (b) a11y-menu-button.js:606-609 — even when the event is delivered
-  //     (simulated below), _handleRemoveItem calls this.addItem(event.detail)
-  //     instead of this.removeItem, so it would RE-ADD the removed item.
-  // Documents current behavior for the fix swarm.
-  it('re-adds removed items instead of removing them', async () => {
+  // fixed removal flow: the item dispatches remove-a11y-menu-button-item
+  // from its captured parent while detaching, the menu handles it through
+  // _handleRemoveItem -> removeItem, and the per-item listeners that
+  // addItem registered are removed (they are cached, not re-bound).
+  it('removes detached items and unregisters their menu listeners', async () => {
     const extra = globalThis.document.createElement('a11y-menu-button-item')
     extra.textContent = 'Delta'
     el.appendChild(extra)
     await el.updateComplete
-    const before = el.menuItems.length
-    // simulate the event the detached item can no longer deliver itself
-    extra.dispatchEvent(
-      new CustomEvent('remove-a11y-menu-button-item', {
-        bubbles: true,
-        composed: true,
-        detail: extra,
-      }),
-    )
-    // the handler re-adds the removed item instead of removing it
-    expect(el.menuItems.length).to.equal(before + 1)
+    expect(el.menuItems.length).to.equal(4)
+    let clicks = 0
+    el.addEventListener('item-click', () => {
+      clicks += 1
+    })
+    // while attached the item's listeners are live
+    extra.click()
+    expect(clicks).to.equal(1)
+    // detaching notifies the menu and removes the item
+    extra.remove()
+    await el.updateComplete
+    expect(el.menuItems.length).to.equal(3)
     expect(
       el.menuItems.filter((i) => i === extra).length,
-    ).to.equal(2)
+    ).to.equal(0)
+    // the cached listeners were actually removed: no more item-click events
+    extra.click()
+    expect(clicks).to.equal(1)
   })
 
-  // BUG: a11y-menu-button.js:279-280 — the menu ul wires @mousover and
-  // @mousout (misspelled event names, so real mouseover/mouseout events
-  // never fire them) and the handlers write to this.hover, an undeclared
-  // property, instead of the hovered property used by close(). Documents
-  // the misspelling for the fix swarm.
-  it('only the misspelled mousover event is wired on the menu list', async () => {
+  // fixed: the menu ul wires the correctly spelled mouseover/mouseout
+  // events and the handlers write to hovered, the declared property that
+  // close() consults
+  it('mouseover and mouseout toggle hovered on the menu list', async () => {
     el.open()
     await el.updateComplete
     const list = el.shadowRoot.querySelector('#menu')
-    list.dispatchEvent(new Event('mousover'))
-    expect(el.hover).to.equal(true)
-    // hovered, the property close() actually consults, stays untouched
-    expect(el.hovered).to.equal(undefined)
-    list.dispatchEvent(new Event('mousout'))
-    expect(el.hover).to.equal(false)
-    // the correctly spelled event never reaches the handler
     list.dispatchEvent(new Event('mouseover'))
-    expect(el.hover).to.equal(false)
+    expect(el.hovered).to.equal(true)
+    list.dispatchEvent(new Event('mouseout'))
+    expect(el.hovered).to.equal(false)
+    // the misspelled events are no longer wired at all
+    expect(el.hover).to.equal(undefined)
     el.close(true)
   })
 

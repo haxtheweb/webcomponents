@@ -34,8 +34,11 @@ export const editableTableStyles = [
       font-size: var(--editable-table-font-size, unset);
       font-family: var(--editable-table-font-family, inherit);
       font-weight: var(--editable-table-medium-weight, 300);
-      color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
+      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
+      background-color: var(
+        --editable-table-bg-color,
+        var(--ddd-theme-default-white, #fff)
+      );
     }
     :host([hidden]) {
       display: none;
@@ -56,9 +59,12 @@ export const editableTableStyles = [
       border-collapse: collapse;
       border-width: var(--editable-table-border-width, 1px);
       border-style: var(--editable-table-border-style, solid);
-      border-color: var(--editable-table-border-color, #999);
+      border-color: var(
+        --editable-table-border-color,
+        var(--ddd-theme-default-coalyGray, #999)
+      );
       font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, #222);
+      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
       background-color: var(
         --editable-table-bg-color,
         var(--ddd-theme-default-white, #fff)
@@ -68,7 +74,7 @@ export const editableTableStyles = [
     .td,
     .th-or-td .icon-container {
       font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, #222);
+      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
       background-color: var(
         --editable-table-bg-color,
         var(--ddd-theme-default-white, #fff)
@@ -82,11 +88,11 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-caption-color,
-        var(--editable-table-color, #222)
+        var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
       );
       background-color: var(
         --editable-table-caption-bg-color,
-        var(--editable-table-bg-color, #fff)
+        var(--editable-table-bg-color, var(--ddd-theme-default-white, #fff))
       );
       width: 100%;
     }
@@ -158,7 +164,10 @@ export const editableTableStyles = [
     }
     .tfoot-tr .th,
     .tfoot-tr .td {
-      border-top: 2px solid var(--editable-table-color, #222);
+      border-top: 2px solid var(
+        --editable-table-color,
+        var(--ddd-theme-default-coalyGray, #222)
+      );
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-heading-color,
@@ -177,8 +186,14 @@ export const editableTableStyles = [
     }
     *[numeric-styles] .tfoot-tr .th-or-td[negative],
     *[numeric-styles] .td[negative] .cell {
-      color: var(--editable-table-negative-color, red);
-      --editable-table-cell-color: var(--editable-table-negative-color, red);
+      color: var(
+        --editable-table-negative-color,
+        var(--simple-colors-default-theme-red-10, red)
+      );
+      --editable-table-cell-color: var(
+        --editable-table-negative-color,
+        var(--simple-colors-default-theme-red-10, red)
+      );
     }
     editable-table-display ::slotted(table) {
       display: none;
@@ -652,9 +667,9 @@ export const displayBehaviors = function (SuperClass) {
     download() {
       let a = globalThis.document.createElement("a"),
         title =
-          this.downloadable && this.caption.trim() != ""
-            ? `Table as CSV`
-            : `${this.caption} CSV`,
+          this.downloadable && this.caption && this.caption.trim() != ""
+            ? `${this.caption} CSV`
+            : `Table as CSV`,
         filename = title.replace(/[^\w\d]/g, ""),
         data = this.getTableCSV();
       a.setAttribute(
@@ -812,8 +827,12 @@ export const displayBehaviors = function (SuperClass) {
           return row
             .map((cell) => {
               cell = this._replaceBlankCell(cell);
+              // numeric cells are emitted bare (no quoting); any cell that
+              // contains a comma is by definition non-numeric per
+              // _isNumericCell, so it flows through the quoted branch and
+              // the old comma-strip on this branch was unreachable
               return this._isNumericCell(cell)
-                ? cell.replace(/,/g, "")
+                ? cell
                 : `\"${cell.replace(/"/g, '""')}\"`;
             })
             .join(",");

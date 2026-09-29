@@ -264,13 +264,12 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     if (changedProperties.has("license")) {
       this._licenseUpdated(this.license);
     }
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "moreLink") {
-        this.hasMode = this._computeHasMore(this.moreLink);
-      }
-    });
+    // Derive hasMore from moreLink in the same cycle; the old updated()
+    // wrote this.hasMode (a typo) so the more-permissions block never
+    // rendered from a more-link change
+    if (changedProperties.has("moreLink")) {
+      this.hasMore = this._computeHasMore(this.moreLink);
+    }
   }
   static get haxProperties() {
     return {

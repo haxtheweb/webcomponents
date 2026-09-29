@@ -54,7 +54,7 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
             ? html`
                 <img
                   src="${this.student.photo}"
-                  alt="${this.t.photoOf} ${this.student.prefName}"
+                  alt="${this.t.profileImageFor} ${this.student.prefName}"
                 />
               `
             : html`

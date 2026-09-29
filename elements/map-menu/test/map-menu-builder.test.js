@@ -189,6 +189,34 @@ describe('map-menu-builder', () => {
     ).to.equal(true)
   })
 
+  it('drives published state onto submenus as a property', async () => {
+    const el = await fixture(
+      html`<map-menu-builder
+        .items=${[
+          {
+            id: 'unpub',
+            title: 'Unpublished Parent',
+            slug: '/unpub',
+            metadata: { published: false },
+            children: [
+              { id: 'k1', title: 'Kid One', slug: '/kid-one', children: [] },
+            ],
+          },
+        ]}
+      ></map-menu-builder>`,
+    )
+    await el.updateComplete
+    const submenu = el.querySelector('map-menu-submenu')
+    // property binding, not attribute: an ?published boolean attribute
+    // binding could only add the attribute and never carried the false
+    // state, so unpublished submenus never rendered unpublished state
+    expect(submenu.published).to.equal(false)
+    expect(submenu.hasAttribute('published')).to.equal(false)
+    const header = submenu.shadowRoot.querySelector('map-menu-header')
+    expect(header.published).to.equal(false)
+    expect(header.shadowRoot.querySelector('#unpublished')).to.exist
+  })
+
   it('passes edit controls and selection down the tree', async () => {
     const el = await fixture(
       html`<map-menu-builder

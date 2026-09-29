@@ -20,10 +20,16 @@
   "main": "chamfer-theme.js",
   "module": "chamfer-theme.js",
   "scripts": {
+    "start": "yarn run dev",
     "build": "npm run analyze",
     "analyze": "cem analyze --litelement --exclude public",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "dddaudit": "hax audit",
-    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch"
   },
   "dependencies": {
     "lit": "3.3.3",

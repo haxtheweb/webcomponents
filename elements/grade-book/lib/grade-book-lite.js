@@ -50,8 +50,23 @@ class GradeBookLite extends UIRenderPieces(
     this.__resizeObserver = null;
     this.__xlsxFileSystemDataHandler = null;
     this.__pdfLoading = false;
-    this.__hashLoading = false;
     enableServices(["core"]);
+    // on-prem PDF support: @core/htmlToPdf is not part of the core
+    // microservice bundle, so register it against the same-origin system
+    // endpoint (never an external API address) so the PDF button works in
+    // the shipped default state
+    if (!MicroFrontendRegistry.has("@core/htmlToPdf")) {
+      MicroFrontendRegistry.add({
+        name: "@core/htmlToPdf",
+        endpoint: "/system/api/v1/actions/html-to-pdf",
+        title: "HTML to PDF",
+        description: "Convert HTML string to PDF",
+        params: {
+          base: "base URL to resolve relative links in the content against",
+          html: "HTML to convert to PDF",
+        },
+      });
+    }
     this.where = "term";
     this.hasFilePicker = false;
     this.source = "googledocs";
@@ -79,8 +94,6 @@ class GradeBookLite extends UIRenderPieces(
     this.loading = false;
     // translatable text
     this.t = {
-      generateHashLink: "Generate hash link",
-      generatingPleaseWait: "Generating, please wait...",
       downloadingPdfPleaseWait: "Downloading PDF, please wait...",
       downloadPdf: "Download PDF",
       csvURL: "CSV URL",
@@ -365,10 +378,19 @@ class GradeBookLite extends UIRenderPieces(
                   if (response.ok) {
                     return response.json();
                   }
+                  // a non-ok response has no database to parse; warn and
+                  // leave the store untouched instead of writing undefined
+                  // into it and corrupting every autorun downstream
+                  console.warn(
+                    `grade-book-lite URL source request failed: ${response.status}`,
+                  );
+                  return null;
                 })
                 .then((json) => {
-                  GradeBookStore.database = json;
-                  this.importStateCleanup();
+                  if (json) {
+                    GradeBookStore.database = json;
+                    this.importStateCleanup();
+                  }
                 })
                 .catch((error) => {
                   console.warn(error);
@@ -526,7 +548,6 @@ class GradeBookLite extends UIRenderPieces(
       ...super.properties,
       displayMode: { type: Number },
       __pdfLoading: { type: Boolean },
-      __hashLoading: { type: Boolean },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       ready: { type: Boolean, reflect: true },
@@ -1040,6 +1061,10 @@ class GradeBookLite extends UIRenderPieces(
       }
     }
   }
+  // PDF page button for the student report view. The hash link button that
+  // used to render next to it was removed: it called the external crypto
+  // microservice and opened the hardcoded external feedback viewer, neither
+  // of which can be reached from on-premises deployments.
   PDFPageButton(position = "auto") {
     return html`
       ${MicroFrontendRegistry.has("@core/htmlToPdf")
@@ -1060,22 +1085,6 @@ class GradeBookLite extends UIRenderPieces(
             </simple-tooltip>
           </div>`
         : ``}
-      <div class="hash-page-btn">
-        <simple-icon-button-lite
-          part="hash-page-btn"
-          class="btn"
-          icon="${this.__hashLoading ? `hax:loading` : `link`}"
-          id="hash-page-btn"
-          @click="${this.createHashLink}"
-          icon-position="top"
-        >
-        </simple-icon-button-lite>
-        <simple-tooltip for="pdf-page-btn" position="${position}">
-          ${this.__hashLoading
-            ? this.t.generatingPleaseWait
-            : this.t.generateHashLink}
-        </simple-tooltip>
-      </div>
     `;
   }
   /**
@@ -1098,7 +1107,9 @@ class GradeBookLite extends UIRenderPieces(
       base: base,
       html: htmlContent,
     });
-    if (response.status == 200 && response.data) {
+    // an unregistered service or a failed request leaves no usable
+    // response; degrade gracefully instead of reading properties off null
+    if (response && response.status == 200 && response.data) {
       const link = globalThis.document.createElement("a");
       // click link to download file
       // @todo this downloads but claims to be corrupt.
@@ -1115,29 +1126,9 @@ class GradeBookLite extends UIRenderPieces(
     }
     this.__pdfLoading = false;
   }
-  /**
-   * Download PDF, via microservice
-   */
-  async createHashLink(e) {
-    this.__hashLoading = true;
-    // active dom, but remove the Lit comments from response
-    let htmlContent = this.shadowRoot
-      .querySelector("#studentreport")
-      .innerHTML.replace(/<\!--.*?-->/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
-    const response = await MicroFrontendRegistry.call("@core/crypto", {
-      op: "hash",
-      data: htmlContent,
-    });
-    if (response.status == 200 && response.data) {
-      globalThis.open(
-        `https://secure-feedback.vercel.app/?message=${response.data}`,
-        "_blank",
-      );
-    }
-    this.__hashLoading = false;
-  }
+  // createHashLink was removed: it called the external crypto microservice
+  // and opened the hardcoded external secure-feedback viewer, neither of
+  // which can be reached from on-premises deployments
   // open extra window and then render content
   openWindow(e) {
     if (this.__openWindow && !this.__openWindow.closed) {

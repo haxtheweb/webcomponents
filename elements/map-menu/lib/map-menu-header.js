@@ -133,7 +133,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          color: red;
+          color: var(--simple-colors-default-theme-red-10, red);
         }
         :host([hide-in-menu]) {
           display: none !important;
@@ -160,7 +160,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           --haxcms-page-operations-ops-height: 16px;
           --haxcms-page-operations-ops-width: 16px;
           margin: 4px;
-          color: var(--map-menu-item-a-active-color, black);
+          color: var(
+            --map-menu-item-a-active-color,
+            var(--ddd-theme-default-black, black)
+          );
         }
       `,
     ];
@@ -360,7 +363,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     }
   }
   __selectedChanged(selected, id) {
-    if (selected === id) {
+    // guard empties: an unset id and an unset selected are both empty
+    // strings on first paint and must not count as a match (they used to,
+    // which auto-opened the submenu via toggle-header)
+    if (selected && id && selected === id) {
       if (!this.parentNode.expanded) {
         this.dispatchEvent(
           new CustomEvent("toggle-header", {

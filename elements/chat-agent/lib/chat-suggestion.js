@@ -79,7 +79,7 @@ class ChatSuggestion extends DDD {
         }
 
         .circle-wrapper {
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           border-radius: var(--ddd-radius-circle);
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-1) var(--ddd-spacing-0);
@@ -151,8 +151,10 @@ class ChatSuggestion extends DDD {
       <div
         class="chat-suggestion-wrapper"
         @click=${this.handleSuggestion}
-        @keypress=${this.handleSuggestion}
+        @keydown=${this.handleSuggestionKeydown}
         tabindex="0"
+        role="button"
+        aria-disabled="${this.disabled ? "true" : "false"}"
         aria-label='Send suggestion "${this.suggestion}" to Merlin'
       >
         <div class="suggestion-icon">
@@ -165,6 +167,18 @@ class ChatSuggestion extends DDD {
         </div>
       </div>
     `;
+  }
+
+  /**
+   * @description Keyboard activation for the suggestion button (Enter / Space).
+   * Replaces the deprecated @keypress binding, which fired for any printable
+   * key while the suggestion had focus, not just activation keys.
+   */
+  handleSuggestionKeydown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this.handleSuggestion();
+    }
   }
 
   /**

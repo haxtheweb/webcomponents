@@ -38,22 +38,25 @@ class EditableTableDisplay extends displayBehaviors(
           display: none !important;
         }
         [part="caption"] simple-toolbar-button {
-          --simple-toolbar-button-bg: var(--editable-table-bg-color, #fff);
+          --simple-toolbar-button-bg: var(
+            --editable-table-bg-color,
+            var(--ddd-theme-default-white, #fff)
+          );
           --simple-toolbar-button-toggled-bg: var(
             --editable-table-stripe-bg-color,
-            #f0f0f0
+            var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
           );
           --simple-toolbar-button-hover-bg: var(
             --editable-table-bg-color,
-            #fff
+            var(--ddd-theme-default-white, #fff)
           );
           --simple-toolbar-button-border-color: var(
             --editable-table-border-color,
-            #999
+            var(--ddd-theme-default-coalyGray, #999)
           );
           --simple-toolbar-button-toggled-border-color: var(
             --editable-table-color,
-            #222
+            var(--ddd-theme-default-coalyGray, #222)
           );
           --simple-toolbar-button-hover-border-color: unset;
         }
@@ -273,9 +276,29 @@ class EditableTableDisplay extends displayBehaviors(
     // becomes visible/enabled, in willUpdate so reactive sets batch into
     // the current update cycle. Setting these in updated() scheduled a
     // redundant second update (Lit change-in-update warning).
+    //
+    // Only derive disabled from REAL data transitions. Deriving it from
+    // the initial empty-data placeholder (the constructor's data = [])
+    // disables the table before first paint; when real data then lands and
+    // re-enables it, the host flips through display:none (0x0) and back,
+    // feeding a resize cycle into responsive-utility's ResizeObserver and
+    // the [responsive-size] CSS reflow. With many tables on a page that
+    // exhausts the browser resize loop budget and raises a window
+    // "ResizeObserver loop completed with undelivered notifications"
+    // error (issue #3077). A table that never receives data simply stays
+    // enabled and renders its empty markup instead of self-hiding.
     if (changedProperties.has("data")) {
-      this.disabled =
-        !this.data || this.data.length < 1 || this.data[0].length < 1;
+      let old = changedProperties.get("data"),
+        wasReal = !!(old && old.length > 0 && old[0] && old[0].length > 0),
+        isReal = !!(
+          this.data &&
+          this.data.length > 0 &&
+          this.data[0] &&
+          this.data[0].length > 0
+        );
+      if (wasReal || isReal) {
+        this.disabled = !isReal;
+      }
     }
     if (
       (changedProperties.has("disabled") ||
@@ -580,9 +603,14 @@ class EditableTableDisplay extends displayBehaviors(
   /**
    * update responsive columns menu
    */
-  _updateCols(index) {
-    let selected = this.shadowRoot.querySelector("#column").value,
-      cols = this.shadowRoot.querySelector("#table").querySelectorAll("th,td");
+  _updateCols() {
+    // the column picker is rendered as class="column" inside #table
+    // (id="simple-picker-<index>"), not as id="column"
+    let table = this.shadowRoot ? this.shadowRoot.querySelector("#table") : null,
+      picker = table ? table.querySelector(".column") : null;
+    if (!table || !picker) return;
+    let selected = picker.value,
+      cols = table.querySelectorAll("th,td");
     if (cols.length > 0) {
       for (let i = 0; i < cols.length; i++) {
         let col = cols[i];

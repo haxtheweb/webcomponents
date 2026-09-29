@@ -27,13 +27,23 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
   // weirdest way to do this award goes to...
   changeActive(e) {
     const tmp = e.target.value.split("-");
-    switch (tmp[0]) {
-      case "prev":
-        GradeBookStore[`active${tmp[1]}`]--;
-        break;
-      case "next":
-        GradeBookStore[`active${tmp[1]}`]++;
-        break;
+    if (tmp[0] !== "prev" && tmp[0] !== "next") {
+      return;
+    }
+    // bounds check against the underlying roster / assignments list so
+    // the active indexes can never walk off either end of the data
+    const list =
+      tmp[1] === "Student"
+        ? GradeBookStore.database && GradeBookStore.database.roster
+        : GradeBookStore.database && GradeBookStore.database.assignments;
+    if (!list || list.length === 0) {
+      return;
+    }
+    const key = `active${tmp[1]}`;
+    if (tmp[0] === "prev" && GradeBookStore[key] > 0) {
+      GradeBookStore[key]--;
+    } else if (tmp[0] === "next" && GradeBookStore[key] < list.length - 1) {
+      GradeBookStore[key]++;
     }
   }
   render() {
@@ -97,13 +107,19 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
     `;
   }
   renderStudentSubmission(data) {
+    // the active assignment may not exist (empty or partial store data),
+    // so the submitted / due date area has to be guarded
+    const activeAssignmentData =
+      GradeBookStore.database &&
+      GradeBookStore.database.assignments &&
+      GradeBookStore.database.assignments[GradeBookStore.activeAssignment];
     let pre = html`<h3>${this.t.studentSubmission}</h3>
-      ${this.t.submitted}
-      <relative-time
-        .datetime="${GradeBookStore.database.assignments[
-          GradeBookStore.activeAssignment
-        ]._ISODueDate}"
-      ></relative-time> `;
+      ${activeAssignmentData && activeAssignmentData._ISODueDate
+        ? html`${this.t.submitted}
+            <relative-time
+              .datetime="${activeAssignmentData._ISODueDate}"
+            ></relative-time> `
+        : ``}`;
     // test if this smells like a URL
     if (validURL(data)) {
       return html`${pre}<a

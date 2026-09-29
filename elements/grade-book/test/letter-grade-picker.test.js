@@ -128,6 +128,46 @@ describe("letter-grade-picker", () => {
     expect(el.value).to.equal("F");
   });
 
+  it("clickScore resolves inner clicks to the owning button (was BUG: unguarded find)", async () => {
+    // regression: a click landing on the inner letter-grade element used
+    // to read the letter straight off the event target with no button
+    // resolution, and an unmatched letter crashed on the undefined find
+    const el = await fixture(
+      html`<letter-grade-picker possible="100"></letter-grade-picker>`,
+    );
+    await flush();
+    // the inner letter-grade element still resolves the parent button
+    const inner = el.shadowRoot.querySelector("button#btn0 letter-grade");
+    expect(inner).to.exist;
+    el.clickScore({ target: inner });
+    await flush();
+    expect(el.value).to.equal("A");
+    expect(el.score).to.equal(100);
+    // a target that resolves to no button leaves the value and score alone
+    el.clickScore({ target: globalThis.document.createElement("div") });
+    await flush();
+    expect(el.value).to.equal("A");
+    expect(el.score).to.equal(100);
+  });
+  it("clickScore and scoreUpdated are safe for values outside the scale (was BUG: unguarded find)", async () => {
+    const el = await fixture(
+      html`<letter-grade-picker possible="100"></letter-grade-picker>`,
+    );
+    await flush();
+    el.score = 50;
+    // a letter that matches no scale entry can not derive a score
+    const fakeButton = globalThis.document.createElement("button");
+    fakeButton.setAttribute("letter", "Z");
+    el.clickScore({ target: fakeButton });
+    await flush();
+    expect(el.value).to.equal("Z");
+    expect(el.score).to.equal(50);
+    // a score above every range can not map back onto a letter
+    el.scoreUpdated({ detail: { value: 105 } });
+    await flush();
+    expect(el.value).to.equal("Z");
+    expect(el.score).to.equal(50);
+  });
   it("updates the score when the value changes and vice versa", async () => {
     const el = await fixture(
       html`<letter-grade-picker possible="100"></letter-grade-picker>`,

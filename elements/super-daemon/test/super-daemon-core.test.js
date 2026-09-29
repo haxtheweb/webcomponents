@@ -577,14 +577,49 @@ describe('SuperDaemon core behavior', () => {
     await aTimeout(20)
     globalThis.removeEventListener('super-daemon-close', h)
     expect(element.opened).to.equal(false)
-    // BUG (documented for the fix swarm): every user-visible close dispatches
-    // super-daemon-close TWICE. close() dispatches it directly AND the
-    // ?open binding flip makes web-dialog fire its native close event whose
-    // @close binding re-enters close() with e.type "close", which passes the
-    // re-dispatch guard (it only excludes "super-daemon-close"/"close" from
-    // the toast-hide dispatch, not from the close dispatch). Asserting the
-    // current behavior so the fix swarm can flip this to 0.
+    // fixed (was a documented swarm bug): the re-entry from web-dialog's
+    // native close event (fired by the ?open binding flip) no longer
+    // re-dispatches super-daemon-close. The only counted event is the one
+    // this test dispatched itself.
     expect(closeEvents).to.equal(1)
+  })
+
+  it('a user close dispatches super-daemon-close exactly once', async () => {
+    // Regression (was a documented swarm bug): close() dispatched the global
+    // super-daemon-close event TWICE for every user-visible close -- once
+    // directly from close() and once via web-dialog's native close event
+    // re-entering close() through the @close binding after the ?open flip.
+    // close() now guards the re-entry so exactly one dispatch fires.
+    element.opened = true
+    await element.updateComplete
+    let closeEvents = 0
+    const h = () => closeEvents++
+    globalThis.addEventListener('super-daemon-close', h)
+    element.close(new MouseEvent('click'))
+    await aTimeout(20)
+    globalThis.removeEventListener('super-daemon-close', h)
+    expect(element.opened).to.equal(false)
+    expect(closeEvents).to.equal(1)
+  })
+
+  it('close neutralizes a pending child commandContext update', async () => {
+    // Regression (was a documented swarm bug): a
+    // super-daemon-command-context-changed dispatch scheduled out of
+    // super-daemon-ui.updated() before close() ran could land AFTER close()
+    // reset commandContext to '*' and overwrite the reset with the stale
+    // child value. close() now resets the child context in the same tick so
+    // the pending dispatch cannot win the race.
+    element.opened = true
+    await element.updateComplete
+    const ui = element.shadowRoot.querySelector('super-daemon-ui')
+    // route through the child the way a user context keypress does so a
+    // child-side update + dispatch is pending when close runs
+    ui.commandContext = '/'
+    element.close()
+    await element.updateComplete
+    await aTimeout(20)
+    expect(element.commandContext).to.equal('*')
+    expect(ui.commandContext).to.equal('*')
   })
 
   it('close restores a stripped inline token when cancelled without selection', async () => {
@@ -1012,13 +1047,14 @@ describe('SuperDaemon core behavior', () => {
     expect(a.tagName.toLowerCase()).to.equal('super-daemon')
   })
 
-  it('BUG: global event listeners die after disconnect/reconnect', async () => {
-    // BUG (documented for the fix swarm): super-daemon.js disconnectedCallback
-    // aborts windowControllers but connectedCallback never recreates the
-    // AbortController, so after an element is disconnected and reconnected all
-    // of its globalThis listeners (define-option, element-method, close, etc.)
-    // are silently dead because addEventListener with an aborted signal is a
-    // no-op. Reconnection should rebuild the controllers.
+  it('global event listeners survive disconnect/reconnect', async () => {
+    // Regression (was a documented swarm bug): super-daemon.js
+    // disconnectedCallback aborts windowControllers but connectedCallback
+    // never recreated the AbortController, so after an element was
+    // disconnected and reconnected all of its globalThis listeners
+    // (define-option, element-method, close, etc.) were silently dead because
+    // addEventListener with an aborted signal is a no-op. Reconnection now
+    // rebuilds the controllers.
     const el = await fixture(html`<super-daemon></super-daemon>`)
     const parent = el.parentElement
     el.remove()
@@ -1031,6 +1067,6 @@ describe('SuperDaemon core behavior', () => {
     )
     expect(
       el.allItems.filter((i) => i.title === 'Reconnect option').length,
-    ).to.equal(0)
+    ).to.equal(1)
   })
 })

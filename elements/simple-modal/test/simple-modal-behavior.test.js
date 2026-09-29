@@ -329,4 +329,37 @@ describe('simple-modal behavior', () => {
     await settleDialog(el, 30)
     expect(el.opened).to.be.false
   })
+
+  // regression for the unguarded firstUpdated chain: when web-dialog has
+  // not upgraded when the dynamic import resolves, the old code threw
+  // "Cannot read properties of null" dereferencing its missing shadowRoot
+  it('backdrop styling tolerates a not-yet-upgraded web-dialog', async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`)
+    const root = el.shadowRoot
+    const original = root.querySelector
+    try {
+      // dialog present but not upgraded (no shadow root yet)
+      root.querySelector = (selector) =>
+        selector === 'web-dialog'
+          ? { shadowRoot: null }
+          : original.call(root, selector)
+      el._styleBackdrop()
+      // dialog missing entirely
+      root.querySelector = (selector) =>
+        selector === 'web-dialog' ? null : original.call(root, selector)
+      el._styleBackdrop()
+    } finally {
+      root.querySelector = original
+    }
+  })
+
+  it('styles the web-dialog backdrop through firstUpdated', async () => {
+    const el = await fixture(html`<simple-modal></simple-modal>`)
+    await settleDialog(el)
+    const wd = el.shadowRoot.querySelector('#dialog')
+    const backdrop = wd.shadowRoot.querySelector('#backdrop')
+    expect(backdrop.style.backgroundColor).to.equal(
+      'var(--simple-modal-backdrop-background, var(--ddd-theme-default-potential70))',
+    )
+  })
 })

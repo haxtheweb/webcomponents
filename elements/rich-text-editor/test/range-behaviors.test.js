@@ -64,15 +64,16 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
     expect(toolbar.commandIsToggled).to.equal(false)
   })
 
-  it('BUG: toggledCommandsForRange always returns an empty array', async () => {
-    // BUG (rich-text-editor-range-behaviors.js:320-324): the filter callback
-    // calls commandToggledForRange but never returns it, so every command is
-    // filtered out and the toggled command list is always empty
+  it('toggledCommandsForRange lists the toggled commands', async () => {
+    // fixed (issue #3077 bug 9): the filter callback returns
+    // commandToggledForRange instead of dropping every command
     toolbar.setTarget(editor)
     const range = selectContents(editor)
     toolbar.range = range
     globalThis.document.execCommand('bold')
-    expect(toolbar.toggledCommandsForRange(range)).to.deep.equal([])
+    const toggled = toolbar.toggledCommandsForRange(range)
+    expect(toggled.includes('bold')).to.equal(true)
+    expect(toggled.includes('italic')).to.equal(false)
   })
 
   it('range utilities inspect range boundaries', async () => {
@@ -166,16 +167,16 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
     expect(toolbar.rangeOrMatchingAncestor('h1') === null).to.equal(true)
   })
 
-  it('BUG: rangeBreadcrumbs never returns actual ancestors', async () => {
-    // BUG (rich-text-editor-range-behaviors.js:373-384): getParentNode is
-    // defined but never invoked, so only the { nodeName: false } sentinel is
-    // returned and breadcrumbs from this helper are always empty
+  it('rangeBreadcrumbs returns the ancestor chain and a sentinel', async () => {
+    // fixed (issue #3077 bug 68): getParentNode is invoked from the range's
+    // parent node, so the ancestor chain is followed up to the target
     toolbar.setTarget(editor)
     const range = selectContents(editor)
     toolbar.range = range
     const crumbs = toolbar.rangeBreadcrumbs(range)
-    expect(crumbs.length).to.equal(1)
+    expect(crumbs.length).to.equal(2)
     expect(crumbs[0].nodeName).to.equal(false)
+    expect(crumbs[1] === editor.querySelector('p')).to.equal(true)
   })
 
   it('selectNode and selectNodeContents set the selection and fire range-changed', async () => {
@@ -264,12 +265,12 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
   it('outdentHTML strips body wrappers and shared indents', () => {
     // no body wrapper: passthrough with whitespace cleanup
     expect(toolbar.outdentHTML('\n\n  <p>plain</p>\n\n')).to.equal('<p>plain</p>')
-    // body wrapper gets matched (but BUG: the tags are not stripped, see below)
+    // body wrapper gets matched and the tags are stripped (fixed, issue
+    // #3077 bug 27: the old replace regex matched a literal "<?body" and
+    // passed no replacement argument, so nothing was stripped)
     const wrapped = toolbar.outdentHTML('<body><p>wrapped</p></body>')
-    // BUG (rich-text-editor-toolbar.js:1584): the replace regex is
-    // /<\?body(.*\n)*\>/i which matches a literal "<?body" so the <body>
-    // tags are never removed from sanitized html
-    expect(wrapped.includes('<body>')).to.equal(true)
+    expect(wrapped.includes('<body>')).to.equal(false)
+    expect(wrapped.includes('<p>wrapped</p>')).to.equal(true)
     // shared leading indent is removed from following lines
     const indented = toolbar.outdentHTML('    <p>a</p>\n    <p>b</p>')
     expect(indented.includes('    ')).to.equal(false)
@@ -317,21 +318,23 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
     toolbar.unsetTarget(editor)
   })
 
-  it('BUG: _handleCommand cancel crashes because target has no revert', async () => {
-    // BUG (rich-text-editor-range-behaviors.js:679-681): the cancel command
-    // calls target.revert() but rich-text-editor has no revert method, so
-    // clicking a cancel/close button with a target wired throws a TypeError
+  it('_handleCommand cancel reverts the target and closes the toolbar', async () => {
+    // fixed (issue #3077 bug 10): the cancel command delegates to
+    // toolbar.cancelEdits instead of the nonexistent target.revert()
     toolbar.setTarget(editor)
     const range = selectContents(editor)
     toolbar.range = range
+    toolbar.setCanceledEdits('<p id="first">hello world</p>')
+    editor.innerHTML = '<p>edited</p>'
     let threw = null
     try {
       toolbar._handleCommand('cancel', null, range)
     } catch (e) {
       threw = e
     }
-    expect(threw instanceof TypeError).to.equal(true)
-    toolbar.unsetTarget(editor)
+    expect(threw === null).to.equal(true)
+    expect(editor.innerHTML).to.equal('<p id="first">hello world</p>')
+    expect(toolbar.target === undefined).to.equal(true)
   })
 
   it('_handleCommand close closes the toolbar', async () => {

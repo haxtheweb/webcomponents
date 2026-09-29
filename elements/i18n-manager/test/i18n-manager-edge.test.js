@@ -117,17 +117,37 @@ describe('i18n-manager edge cases', () => {
         throw new Error('observer unavailable')
       }
     }
-    // BUG: document.createElement('i18n-manager') throws NotSupportedError
-    // ("The result must not have attributes") because the constructor writes
-    // the lang/dir attributes through their setters. Construct directly and
-    // flip this note once the constructor stops setting attributes.
-    const el = new I18NManager()
+    const el = document.createElement('i18n-manager')
     document.body.appendChild(el)
     globalThis.MutationObserver = origMO
     console.warn = origWarn
     expect(el.__ready).to.be.true
     expect(el._docObserver).to.equal(undefined)
     expect(warned).to.be.true
+    el.remove()
+  })
+
+  // regression for issue 3077: the constructor used to write the lang/dir
+  // attributes through their setters, so document.createElement after the
+  // element was defined threw NotSupportedError (the result must not have
+  // attributes). The writes are deferred to connectedCallback now.
+  it('dynamically creates an i18n-manager after define without throwing', () => {
+    let el = null
+    let threw = false
+    try {
+      el = document.createElement('i18n-manager')
+    } catch (e) {
+      threw = true
+    }
+    expect(threw).to.equal(false)
+    expect(el instanceof I18NManager).to.equal(true)
+    // attributes are deferred until the element connects
+    expect(el.hasAttribute('lang')).to.equal(false)
+    expect(el.hasAttribute('dir')).to.equal(false)
+    document.body.appendChild(el)
+    expect(el.hasAttribute('lang')).to.equal(true)
+    expect(el.hasAttribute('dir')).to.equal(true)
+    expect(el.__ready).to.equal(true)
     el.remove()
   })
 

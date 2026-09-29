@@ -4,12 +4,18 @@ import { ChatStore } from "../lib/chat-agent-store.js";
 
 // Mock dependencies
 beforeEach(() => {
-  // Mock HAXcms store
-  globalThis.store = {
-    darkMode: false,
-    editMode: false,
-    userData: {
-      userName: "testuser",
+  // Mock HAXcms store (chat-agent resolves it lazily off globalThis.HAXCMS
+  // instead of importing haxcms-elements, which would create a dependency
+  // cycle since haxcms-elements loads chat-agent via site-ai-chat)
+  globalThis.HAXCMS = {
+    instance: {
+      store: {
+        darkMode: false,
+        editMode: false,
+        userData: {
+          userName: "testuser",
+        },
+      },
     },
   };
 
@@ -59,6 +65,9 @@ afterEach(() => {
   if (base) {
     base.remove();
   }
+
+  // Clean up HAXcms store mock
+  delete globalThis.HAXCMS;
 });
 
 describe("chat-agent test", () => {
@@ -631,19 +640,19 @@ describe("chat-agent test", () => {
 
     it("should handle user state changes", async () => {
       // Test dark mode change
-      globalThis.store.darkMode = true;
+      globalThis.HAXCMS.instance.store.darkMode = true;
       // The mocked autorun only runs once at construction time, so it does
       // not react to store changes. Manually sync to simulate MobX reactivity.
-      ChatStore.darkMode = globalThis.store.darkMode;
+      ChatStore.darkMode = globalThis.HAXCMS.instance.store.darkMode;
       expect(ChatStore.darkMode).to.be.true;
 
       // Test edit mode change
-      globalThis.store.editMode = true;
-      ChatStore.editMode = globalThis.store.editMode;
+      globalThis.HAXCMS.instance.store.editMode = true;
+      ChatStore.editMode = globalThis.HAXCMS.instance.store.editMode;
       expect(ChatStore.editMode).to.be.true;
 
       // Test username change
-      globalThis.store.userData.userName = "newuser";
+      globalThis.HAXCMS.instance.store.userData.userName = "newuser";
       // Note: This would require reinitializing ChatStore in real usage
     });
   });

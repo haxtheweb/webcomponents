@@ -58,16 +58,14 @@ describe('simple-icon-button-lite', () => {
     expect(btn.getAttribute('aria-controls')).to.equal('target-id')
   })
 
-  // BUG/a11y: lit renders `${this.controls || undefined}` as an EMPTY
-  // string attribute (lit 3.3.3 maps undefined to ''), so the button gets
-  // aria-controls="" even when controls is not supplied. An empty idref is
-  // invalid ARIA; flip this when the render removes the attribute instead.
-  it('BUG: renders an empty aria-controls when not supplied', async () => {
+  // fixed: the render binds `nothing` for unused features, which removes
+  // the attribute entirely (lit 3.3.3 commits plain undefined as '')
+  it('omits aria-controls when not supplied', async () => {
     const el = await fixture(
       html`<simple-icon-button-lite></simple-icon-button-lite>`,
     )
     const btn = el.shadowRoot.querySelector('button')
-    expect(btn.getAttribute('aria-controls')).to.equal('')
+    expect(btn.getAttribute('aria-controls')).to.equal(null)
   })
 
   it('maps aria-labelledby to the button', async () => {
@@ -136,15 +134,37 @@ describe('simple-icon-button-lite', () => {
     expect(btn.getAttribute('aria-pressed')).to.equal('false')
   })
 
-  // BUG/a11y: when toggles is false the render binds undefined, which lit
-  // 3.3.3 commits as aria-pressed="" — an invalid value (allowed: false /
-  // mixed / true). Flip when the attribute is removed for non-toggles.
-  it('BUG: renders an empty aria-pressed when not a toggle button', async () => {
+  // fixed: the render binds `nothing` when toggles is not used, which
+  // removes the attribute instead of committing an invalid empty value
+  it('omits aria-pressed when not a toggle button', async () => {
     const el = await fixture(
       html`<simple-icon-button-lite toggled></simple-icon-button-lite>`,
     )
     const btn = el.shadowRoot.querySelector('button')
-    expect(btn.getAttribute('aria-pressed')).to.equal('')
+    expect(btn.getAttribute('aria-pressed')).to.equal(null)
+  })
+
+  // a11y follow-up: buttons without a label used to render an empty
+  // aria-labelledby/aria-label and get no accessible name at all; the
+  // attributes only render when there is a value and the icon name is
+  // used as the accessible-name fallback
+  it('gives unlabeled buttons an accessible name from the icon', async () => {
+    const el = await fixture(
+      html`<simple-icon-button-lite icon="icons:home"></simple-icon-button-lite>`,
+    )
+    const btn = el.shadowRoot.querySelector('button')
+    expect(btn.getAttribute('aria-label')).to.equal('icons:home')
+    // empty idrefs are no longer rendered either
+    expect(btn.getAttribute('aria-labelledby')).to.equal(null)
+    await expect(el).shadowDom.to.be.accessible()
+  })
+
+  it('omits aria-label when there is nothing to name the button', async () => {
+    const el = await fixture(
+      html`<simple-icon-button-lite></simple-icon-button-lite>`,
+    )
+    const btn = el.shadowRoot.querySelector('button')
+    expect(btn.getAttribute('aria-label')).to.equal(null)
   })
 
   it('reflects toggles and toggled to host attributes', async () => {
@@ -165,16 +185,14 @@ describe('simple-icon-button-lite', () => {
     expect(icon.getAttribute('part')).to.equal('icon')
   })
 
-  // BUG: the render binds `?no-colorize="${this.noColorize}"` but
-  // SimpleIconButtonBehaviors never declares a noColorize property, so the
-  // no-colorize attribute on the host is silently ignored and never reaches
-  // the nested icon. Flip when noColorize is declared on the behaviors class.
-  it('BUG: no-colorize on the host is ignored', async () => {
+  // fixed: SimpleIconButtonBehaviors declares noColorize, so the host
+  // no-colorize attribute reaches the nested icon
+  it('no-colorize on the host reaches the nested icon', async () => {
     const el = await fixture(
       html`<simple-icon-button-lite icon="icons:home" no-colorize></simple-icon-button-lite>`,
     )
     const icon = el.shadowRoot.querySelector('simple-icon-lite')
-    expect(icon.hasAttribute('no-colorize')).to.be.false
+    expect(icon.hasAttribute('no-colorize')).to.be.true
   })
 
   it('reflects icon to the host attribute', async () => {
@@ -268,14 +286,22 @@ describe('simple-icon-button', () => {
     expect(icon.hasAttribute('dark')).to.be.true
   })
 
-  // BUG: same missing noColorize declaration as the lite variant; the
-  // `?no-colorize` binding on the nested simple-icon is always false.
-  it('BUG: no-colorize on the host is ignored', async () => {
+  // fixed: the inherited noColorize declaration reaches the nested icon
+  it('no-colorize on the host reaches the nested icon', async () => {
     const el = await fixture(
       html`<simple-icon-button icon="icons:home" label="Home" no-colorize></simple-icon-button>`,
     )
     const icon = el.shadowRoot.querySelector('button simple-icon')
-    expect(icon.hasAttribute('no-colorize')).to.be.false
+    expect(icon.hasAttribute('no-colorize')).to.be.true
+  })
+
+  it('gives unlabeled full buttons an accessible name from the icon', async () => {
+    const el = await fixture(
+      html`<simple-icon-button icon="icons:home"></simple-icon-button>`,
+    )
+    const btn = el.shadowRoot.querySelector('button')
+    expect(btn.getAttribute('aria-label')).to.equal('icons:home')
+    await expect(el).shadowDom.to.be.accessible()
   })
 
   it('reflects contrast to the host attribute', async () => {

@@ -9,13 +9,11 @@ const settled = async (el) => {
 }
 
 describe('rpg-character demo listener removal', () => {
-  // BUG: when demo flips to false, updated() calls removeEventListener with
-  // a NEW anonymous arrow function (rpg-character.js lines 322-327), which
-  // never matches the listener that was registered while demo was true.
-  // The click-to-randomize listener therefore stays active forever, and the
-  // arrow body at line 326 is unreachable dead code. Store the handler
-  // reference to fix; flip the last assertion once removal works.
-  it('BUG: clicking still randomizes the seed after demo is disabled', async () => {
+  // fixed: updated() adds and removes the SAME stored handler reference,
+  // so flipping demo to false actually removes the click-to-randomize
+  // listener (the old removal passed a fresh anonymous arrow that never
+  // matched, leaving the listener active forever)
+  it('stops randomizing on click after demo is disabled', async () => {
     const el = await fixture(
       html`<rpg-character seed="btopro" demo></rpg-character>`,
     )
@@ -30,7 +28,7 @@ describe('rpg-character demo listener removal', () => {
     const second = el.seed
     el.shadowRoot.querySelector('.wrapper').click()
     await settled(el)
-    // listener was NOT removed: seed still changes
-    expect(el.seed === second).to.be.false
+    // listener was removed: the seed no longer changes
+    expect(el.seed).to.equal(second)
   })
 })

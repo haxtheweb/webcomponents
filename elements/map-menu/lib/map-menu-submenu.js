@@ -52,7 +52,10 @@ class MapMenuSubmenu extends LitElement {
           content: "";
           position: relative;
           border-bottom: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
         }
         a11y-collapse::before {
           transition: 0.3s ease-in-out all;
@@ -64,7 +67,10 @@ class MapMenuSubmenu extends LitElement {
           content: "";
           position: absolute;
           border-bottom: 2px solid
-            var(--map-menu-item-a-active-background-color, black);
+            var(
+              --map-menu-item-a-active-background-color,
+              var(--ddd-theme-default-black, black)
+            );
         }
 
         :host([is-nested]) a11y-collapse::before,
@@ -74,8 +80,14 @@ class MapMenuSubmenu extends LitElement {
 
         :host([active]) a11y-collapse::part(icon),
         :host([hovered]) a11y-collapse::part(icon) {
-          color: var(--map-menu-item-icon-active-color, black);
-          background-color: var(--map-menu-container-background-color, white);
+          color: var(
+            --map-menu-item-icon-active-color,
+            var(--ddd-theme-default-black, black)
+          );
+          background-color: var(
+            --map-menu-container-background-color,
+            var(--ddd-theme-default-white, white)
+          );
         }
 
         a11y-collapse::part(icon) {
@@ -92,8 +104,14 @@ class MapMenuSubmenu extends LitElement {
         :host(:hover) a11y-collapse::part(icon) {
           visibility: visible;
           opacity: 1;
-          color: var(--map-menu-item-icon-active-color, black);
-          background-color: var(--map-menu-container-background-color, white);
+          color: var(
+            --map-menu-item-icon-active-color,
+            var(--ddd-theme-default-black, black)
+          );
+          background-color: var(
+            --map-menu-container-background-color,
+            var(--ddd-theme-default-white, white)
+          );
         }
         :host([is-flex][is-nested]) a11y-collapse::part(icon) {
           display: none;
@@ -195,7 +213,7 @@ class MapMenuSubmenu extends LitElement {
           icon="${this.icon}"
           icon-label="${this.iconLabel}"
           slot="heading"
-          ?published="${this.published}"
+          .published="${this.published}"
           ?hide-in-menu="${this.hideInMenu}"
           ?locked="${this.locked}"
           status="${this.status}"

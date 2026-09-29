@@ -70,12 +70,11 @@ describe("grade-book-student-block", () => {
     expect(el.shadowRoot.querySelectorAll("li").length).to.equal(0);
   });
 
-  it("renders an alt missing its prefix because t.photoOf is never defined (BUG)", async () => {
-    // BUG grade-book-student-block.js:57 the img alt is built from
-    // this.t.photoOf but that key does not exist in the element's t object
-    // (profileImageFor is the defined-but-unused key). Lit drops undefined
-    // interpolations so the alt renders as just " Alice" with a leading
-    // space and no descriptive prefix
+  it("renders a descriptive alt from the profileImageFor key (was BUG: undefined t.photoOf)", async () => {
+    // regression: the img alt used to be built from this.t.photoOf which
+    // never existed in the element's t object (profileImageFor is the
+    // correct, localized key), so the alt rendered as just " Alice" with
+    // a leading space and no descriptive prefix
     const student = fullStudent();
     const el = await fixture(
       html`<grade-book-student-block
@@ -84,7 +83,6 @@ describe("grade-book-student-block", () => {
     );
     await flush();
     const alt = el.shadowRoot.querySelector("img").getAttribute("alt");
-    expect(alt.trim()).to.equal("Alice");
-    expect(alt.indexOf("Profile")).to.equal(-1);
+    expect(alt).to.equal("Profile image for Alice");
   });
 });

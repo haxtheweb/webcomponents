@@ -245,7 +245,9 @@ class A11yTab extends LitElement {
     this.total = 1;
     this.tabindex = 0;
     this.flag = "";
-    this.addEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
+    // store the listener reference so disconnectedCallback can remove
+    // the exact function that connectedCallback registered
+    this._onTabFlag = (e) => this._handleFlag(e);
   }
 
   /**
@@ -269,13 +271,14 @@ class A11yTab extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.addEventListener("a11y-tab-flag", this._onTabFlag);
     this._labelChanged();
     this.observer.observe(this, { childList: true });
   }
 
   disconnectedCallback() {
     this.observer.disconnect();
-    this.removeEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
+    this.removeEventListener("a11y-tab-flag", this._onTabFlag);
     this._fireTabChanged();
     super.disconnectedCallback();
   }

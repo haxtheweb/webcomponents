@@ -1,7 +1,6 @@
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-fields/lib/simple-tag.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
@@ -71,8 +70,14 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         :host {
           display: block;
           margin: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          color: var(--simple-colors-default-theme-accent-12, black);
-          background-color: var(--simple-colors-default-theme-accent-1, white);
+          color: var(
+            --simple-colors-default-theme-accent-12,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            var(--ddd-theme-default-white)
+          );
         }
         :host([striped]) {
           background-color: var(
@@ -100,7 +105,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
             );
           color: var(
             --simple-colors-default-theme-accent-12,
-            var(--simple-colors-default-theme-grey-1, black)
+            var(
+              --simple-colors-default-theme-grey-1,
+              var(--ddd-theme-default-black)
+            )
           );
         }
         :host([active][dark]) {
@@ -114,7 +122,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           );
           color: var(
             --simple-colors-dark-theme-accent-1,
-            var(--simple-colors-dark-theme-grey-12, white)
+            var(
+              --simple-colors-dark-theme-grey-12,
+              var(--ddd-theme-default-white)
+            )
           );
         }
         :host([mini]) {
@@ -127,8 +138,14 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           padding: var(--ddd-spacing-2);
           width: 100%;
           border-radius: 0;
-          color: var(--simple-colors-default-theme-accent-12, black);
-          background-color: var(--simple-colors-default-theme-accent-1, white);
+          color: var(
+            --simple-colors-default-theme-accent-12,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            var(--ddd-theme-default-white)
+          );
           border: none;
           align-items: center;
           justify-content: space-between;
@@ -178,21 +195,9 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           width: 100%;
           margin-left: var(--ddd-spacing-3);
         }
-        .tags {
-          line-height: var(--ddd-spacing-8);
-          height: var(--ddd-spacing-16);
-          text-align: left;
-          overflow: hidden;
-        }
-        /* Tags are hidden in mini mode (compact) and in the modal/larger
-           view (kept clean so the shortcut chip and label dominate the row).
-           Net: tags never render in Merlin rows. */
-        :host([mini]) .tags {
-          display: none;
-        }
-        :host(:not([mini])) .tags {
-          display: none;
-        }
+        /* Tags never render in Merlin rows: the .tags markup was removed
+           as dead DOM (it was display: none in every mode). The tags
+           property stays on the element API for programmatic consumers. */
         .shortcut {
           display: inline-flex;
           align-items: center;
@@ -288,9 +293,6 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
             flex: 1 1 auto;
             min-width: 0;
           }
-          :host(:not([mini])) .tags {
-            margin-left: auto;
-          }
           :host(:not([mini])) .more {
             margin-left: var(--ddd-spacing-2);
           }
@@ -366,10 +368,12 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   }
   render() {
     return html`
+      <!-- aria-selected lives on the host (role=option, set dynamically by
+           super-daemon-ui); hardcoding it on the inner button as false
+           conflicted with the host value for assistive tech -->
       <button
         part="button"
         tabindex="-1"
-        aria-selected="false"
         @click="${this.clickEvent}"
         @keydown="${this.keyEvent}"
         @mouseover="${this._focusIn}"
@@ -393,16 +397,6 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           : ``}
         <div class="label-wrap" part="label-wrap">
           <div class="action" part="action">${this.title}</div>
-        </div>
-        <div class="tags" part="tags">
-          ${this.tags.map(
-            (tag, i) =>
-              html` <simple-tag
-                accent-color="${this.pickColor(i)}"
-                value="${tag}"
-                part="tag tag-${i}"
-              ></simple-tag>`,
-          )}
         </div>
         ${this.shortcut
           ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"

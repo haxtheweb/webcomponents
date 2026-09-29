@@ -219,20 +219,17 @@ describe('a11y-tabs interactions', () => {
     expect(tooltips[0].textContent.includes('One')).to.be.true
   })
 
-  // BUG: updated() line 628 checks for the property name "iconsBreakpoint"
-  // but the declared property is iconBreakpoint, so an iconBreakpoint change
-  // alone never re-syncs the icons-only attribute (the getter agrees but the
-  // host attribute is stale). Flip when the typo is fixed.
-  it('BUG: iconBreakpoint changes do not sync the icons-only attribute', async () => {
+  // fixed: updated() matches the declared iconBreakpoint property name, so
+  // an iconBreakpoint change alone re-syncs the icons-only host attribute
+  it('iconBreakpoint changes sync the icons-only attribute', async () => {
     const el = await threeTabs()
     await register(el)
     expect(el.hasAttribute('icons-only')).to.be.false
     el.iconBreakpoint = 5000
     await el.updateComplete
-    // the getter already says icons-only, but the attribute was not synced
     expect(el.iconsOnly).to.be.true
-    expect(el.hasAttribute('icons-only')).to.be.false
-    // a responsiveWidth change does trigger the sync
+    expect(el.hasAttribute('icons-only')).to.be.true
+    // a responsiveWidth change also keeps the attribute in sync
     el.responsiveWidth = 400
     await el.updateComplete
     expect(el.hasAttribute('icons-only')).to.be.true
@@ -250,34 +247,47 @@ describe('a11y-tab flag handling', () => {
     expect(tab.flagIcon).to.equal('icons:warning')
   })
 
-  // BUG: the constructor registers the a11y-tab-flag listener with
-  // (e) => this.handleFlag(e) but the method is named _handleFlag, so
-  // this.handleFlag is undefined and the listener always throws
-  // (TypeError: this.handleFlag is not a function). Also the matching
-  // removeEventListener in disconnectedCallback passes a NEW anonymous
-  // function, so it could never remove the listener anyway. Flip when the
-  // handler name matches and the listener reference is stored.
-  it('BUG: the a11y-tab-flag listener calls the misspelled handleFlag', async () => {
+  // fixed: the a11y-tab-flag listener now routes to the real _handleFlag
+  // method through a stored reference, so dispatching the event applies the
+  // flag instead of throwing TypeError
+  it('the a11y-tab-flag listener applies the flag through _handleFlag', async () => {
     const tab = await fixture(
       html`<a11y-tab id="flag-bug" label="Bug">X</a11y-tab>`,
     )
     expect(typeof tab._handleFlag).to.equal('function')
-    expect(typeof tab.handleFlag).to.equal('undefined')
-    // stub the misspelled name to prove which method the listener invokes
-    let calledWith = null
-    tab.handleFlag = (e) => {
-      calledWith = e.detail
-    }
     tab.dispatchEvent(
       new CustomEvent('a11y-tab-flag', {
         detail: { flag: 'alert', flagIcon: 'icons:warning' },
         bubbles: true,
       }),
     )
-    delete tab.handleFlag
-    expect(calledWith !== null).to.be.true
-    // the real _handleFlag never ran: the flag was not applied
+    expect(tab.flag).to.equal('alert')
+    expect(tab.flagIcon).to.equal('icons:warning')
+  })
+
+  it('removes the a11y-tab-flag listener on disconnect and restores it on reconnect', async () => {
+    const tab = await fixture(
+      html`<a11y-tab id="flag-listener" label="Listener">X</a11y-tab>`,
+    )
+    const parent = tab.parentNode
+    tab.remove()
+    // detached: the stored reference was actually removed
+    tab.dispatchEvent(
+      new CustomEvent('a11y-tab-flag', {
+        detail: { flag: 'alert', flagIcon: 'icons:warning' },
+        bubbles: true,
+      }),
+    )
     expect(tab.flag).to.equal('')
     expect(tab.flagIcon).to.equal(undefined)
+    parent.appendChild(tab)
+    // reconnected: the listener is registered again
+    tab.dispatchEvent(
+      new CustomEvent('a11y-tab-flag', {
+        detail: { flag: 'alert', flagIcon: 'icons:warning' },
+        bubbles: true,
+      }),
+    )
+    expect(tab.flag).to.equal('alert')
   })
 })

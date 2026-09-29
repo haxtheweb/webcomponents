@@ -52,7 +52,10 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
           border: none;
           background-color: var(
             --editable-table-rowcol-hover-bg-color,
-            var(--editable-table-stripe-bg-color, #f0f0f0)
+            var(
+              --editable-table-stripe-bg-color,
+              var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+            )
           );
         }
       `,
@@ -91,7 +94,9 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "index") {
+      // controls must also recompute when row toggles, not just when index
+      // changes, or a row/column menu keeps the stale opposite-axis id
+      if (propName === "index" || propName === "row") {
         this.controls = this.row
           ? `cell-0-${this.index}`
           : `cell-${this.index}-0`;

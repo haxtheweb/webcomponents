@@ -44,9 +44,6 @@ class I18NManager extends LitElement {
     this.translationManifest = null;
     this.manifestLoaded = false;
     this.manifestLoading = false;
-    // set initially based on document
-    this.lang = this.documentLang;
-    this.dir = this.documentDir;
   }
   /**
    * Set document language from these common sources
@@ -79,6 +76,17 @@ class I18NManager extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.__ready = true;
+    // set initially based on document; writing attributes through the
+    // lang/dir setters during construction is illegal for custom elements
+    // (document.createElement throws NotSupportedError because the result
+    // must not have attributes), so defer the writes until we connect and
+    // only when the attribute has not been supplied already
+    if (!this.getAttribute("lang")) {
+      this.lang = this.documentLang;
+    }
+    if (!this.getAttribute("dir")) {
+      this.dir = this.documentDir;
+    }
     globalThis.addEventListener(
       "i18n-manager-register-element",
       this.registerLocalizationEvent.bind(this),

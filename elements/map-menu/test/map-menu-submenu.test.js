@@ -67,15 +67,12 @@ describe('map-menu-submenu', () => {
     expect(header.getAttribute('status')).to.equal('modified')
     expect(header.hasAttribute('edit-controls')).to.equal(true)
     expect(header.hasAttribute('is-flex')).to.equal(true)
-    // BUG: lib/map-menu-header.js:224 — published defaults to true in the
-    // constructor (with reflect: true) while map-menu-submenu drives it with
-    // a boolean ATTRIBUTE binding (?published), which can only ADD the
-    // attribute (true) and never resets the property to false. The header
-    // then reflects its constructor default back onto the DOM, so even with
-    // the submenu's published property set to false the header still
-    // renders as published. Documents current behavior for the fix swarm.
-    expect(header.hasAttribute('published')).to.equal(true)
-    expect(header.published).to.equal(true)
+    // published flows to the header as a property binding, so an
+    // unpublished submenu renders its header in the unpublished state (the
+    // old ?published attribute binding could only add the attribute and
+    // never reset the header's constructor-true default)
+    expect(header.hasAttribute('published')).to.equal(false)
+    expect(header.published).to.equal(false)
     expect(el.published).to.equal(false)
     expect(header.hasAttribute('hide-in-menu')).to.equal(true)
     expect(header.hasAttribute('locked')).to.equal(true)

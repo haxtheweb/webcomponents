@@ -155,14 +155,17 @@ describe("super-daemon-row behavior", () => {
     expect(el.pickColor(1)).to.equal("orange");
   });
 
-  it("renders icon, image, text character, and tags", async () => {
+  it("renders icon, image, and text character with no dead tags DOM", async () => {
+    // regression (a11y follow-up): the .tags markup was removed as dead DOM
+    // (it was display: none in every mode), so simple-tag chips never
+    // render; the tags property stays on the element API for consumers
     const el = await fixture(
       html`<super-daemon-row
         title="T"
         icon="save"
         image="x.png"
         text-character="🎁"
-        .tags="${['a', 'b']}"
+        .tags="${["a", "b"]}"
       ></super-daemon-row>`,
     );
     expect(el.shadowRoot.querySelector(".result-icon")).to.exist;
@@ -170,7 +173,20 @@ describe("super-daemon-row behavior", () => {
     expect(
       el.shadowRoot.querySelector(".result-textCharacter").textContent,
     ).to.equal("🎁");
-    expect(el.shadowRoot.querySelectorAll("simple-tag").length).to.equal(2);
+    expect(el.shadowRoot.querySelectorAll("simple-tag").length).to.equal(0);
+    expect(el.shadowRoot.querySelector(".tags")).to.be.null;
+  });
+
+  it("does not hardcode aria-selected on the inner button", async () => {
+    // regression (a11y follow-up): the inner button hardcoded
+    // aria-selected="false" while the host wrapper (role=option) carried the
+    // dynamic value set by super-daemon-ui, conflicting for assistive tech;
+    // the host is the single source of truth now
+    const el = await fixture(
+      html`<super-daemon-row title="Aria"></super-daemon-row>`,
+    );
+    const btn = el.shadowRoot.querySelector("button");
+    expect(btn.getAttribute("aria-selected")).to.equal(null);
   });
 
   it("renders the external link icon and more details toggle", async () => {

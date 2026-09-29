@@ -77,7 +77,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             border-top: var(--a11y-menu-button-border-top, unset);
             border-right: var(--a11y-menu-button-border-right, unset);
             border-bottom: var(--a11y-menu-button-border-bottom, unset);
-            border: var(--a11y-menu-button-border, 1px solid #ddd);
+            border: var(
+              --a11y-menu-button-border,
+              1px solid light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-limestoneMaxLight)
+              )
+            );
             box-shadow: var(--a11y-menu-button-box-shadow, unset);
             transition: all 0.3s ease-in-out;
           }
@@ -109,7 +115,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             );
             border: var(
               --a11y-menu-button-focus-border,
-              var(--a11y-menu-button-border, 1px solid #ddd)
+              var(
+                --a11y-menu-button-border,
+                1px solid light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneMaxLight)
+                )
+              )
             );
             box-shadow: var(
               --a11y-menu-button-box-shadow,
@@ -121,7 +133,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             height: var(--a11y-menu-button-list-height, unset);
             border: var(
               --a11y-menu-button-list-border,
-              var(--a11y-menu-button-border, 1px solid #ddd)
+              var(
+                --a11y-menu-button-border,
+                1px solid light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneMaxLight)
+                )
+              )
             );
             background-color: var(
               --a11y-menu-button-bg-color,
@@ -240,6 +258,9 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       // use capture so we still see events even if inner controls
       // stopPropagation on the bubble phase
       this._docListenerAdded = false;
+      // cache the bound per-item listeners keyed by item so removeItem
+      // removes the exact functions addItem registered
+      this._itemListeners = new WeakMap();
       [...this.children]
         .filter((n) => n.slot === "menuitem")
         .forEach((item) => this.addItem(item));
@@ -276,8 +297,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             role="menu"
             aria-labelledby="menubutton"
             ?hidden="${!this.expanded}"
-            @mousover="${(e) => (this.hover = true)}"
-            @mousout="${(e) => (this.hover = false)}"
+            @mouseover="${(e) => (this.hovered = true)}"
+            @mouseout="${(e) => (this.hovered = false)}"
             part="menu"
           >
             ${this.listItemTemplate}
@@ -567,9 +588,14 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     addItem(item) {
       let listeners = this.itemListeners;
       this.menuItems = this.menuItems || [];
-      Object.keys(listeners).forEach((evt) =>
-        item.addEventListener(evt, listeners[evt].bind(this)),
-      );
+      // bind once and cache the references so removeItem can remove
+      // the exact functions registered here
+      let bound = {};
+      Object.keys(listeners).forEach((evt) => {
+        bound[evt] = listeners[evt].bind(this);
+        item.addEventListener(evt, bound[evt]);
+      });
+      this._itemListeners.set(item, bound);
       this.menuItems.push(item);
     }
     /**
@@ -578,12 +604,18 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {ibject} item menu item element
      */
     removeItem(item) {
-      let listeners = this.itemListeners;
+      let bound =
+        this._itemListeners && this._itemListeners.get
+          ? this._itemListeners.get(item)
+          : null;
       if (this.menuItems)
         this.menuItems = [...this.menuItems.filter((i) => item !== i)];
-      Object.keys(listeners).forEach((evt) =>
-        item.removeEventListener(evt, listeners[evt].bind(this)),
-      );
+      if (bound) {
+        Object.keys(bound).forEach((evt) =>
+          item.removeEventListener(evt, bound[evt]),
+        );
+        this._itemListeners.delete(item);
+      }
     }
     /**
      * when a new menu item is added to slot,
@@ -604,8 +636,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleRemoveItem(event) {
-      event.stopPropagation();
-      if (event.detail) this.addItem(event.detail);
+      if (event.stopPropagation) event.stopPropagation();
+      if (event.detail) this.removeItem(event.detail);
     }
     /**
      * when menu item is clicked,
@@ -803,10 +835,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
 
         case this.keyCode.UP:
           // Up arrow opens menu and focuses last item
-          if (this.popupMenu && !this.expanded) {
-            this.focusOn(this.lastItem);
-            flag = true;
-          } else if (!this.expanded) {
+          if (!this.expanded) {
             this.focusOn(this.lastItem);
             flag = true;
           }
@@ -926,7 +955,7 @@ Custom property | Description | Default
 --a11y-menu-button-color | default text color | black
 --a11y-menu-button-box-shadow | menu button box-shadow | unset
 --a11y-menu-button-border-radius | menu button border-radius | 0
---a11y-menu-button-border | default border | 1px solid #ddd
+--a11y-menu-button-border | default border | 1px solid `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-limestoneMaxLight`)
 --a11y-menu-button-border-left | overrides default left-border | unset
 --a11y-menu-button-border-top | overrides default top-border | unset
 --a11y-menu-button-border-right | overrides default right-border | unset

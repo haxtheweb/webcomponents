@@ -122,7 +122,9 @@ class LetterGrade extends LitElement {
               (${this.score}/${this.total} ${this.pointsSystem})
             </div>`
           : ``}
-        ${this.showScale && this._letterIndex !== null
+        ${this.showScale &&
+        this._letterIndex !== null &&
+        this.gradeScale[this._letterIndex]
           ? html`<div class="range">
               ${this.gradeScale[this._letterIndex].lowRange}% -
               ${this.gradeScale[this._letterIndex].highRange}%

@@ -237,6 +237,7 @@ describe('img-loader', () => {
     const loaded = await poll(() => loader.loaded === true)
     expect(loaded).to.be.true
     expect(loader.loading).to.be.false
+    expect(loader.error).to.be.false
     expect(events).to.deep.equal([
       ['loading-changed', true],
       ['loading-changed', false],
@@ -251,6 +252,8 @@ describe('img-loader', () => {
     const failed = await poll(() => loader.loading === false)
     expect(failed).to.be.true
     expect(loader.loaded).to.be.false
+    // the error flag is wired on failure (it used to never be set)
+    expect(loader.error).to.be.true
   })
 
   it('replaces the pending image when src changes', async () => {
@@ -258,10 +261,13 @@ describe('img-loader', () => {
       html`<img-loader src="/definitely-missing.png"></img-loader>`,
     )
     await poll(() => loader.loading === false)
+    expect(loader.error).to.be.true
     loader.src = DATA_URL
     const reloaded = await poll(() => loader.loaded === true)
     expect(reloaded).to.be.true
     expect(loader.loading).to.be.false
+    // a successful retry clears the error flag
+    expect(loader.error).to.be.false
   })
 
   it('clears loading state when src is removed', async () => {
@@ -355,23 +361,22 @@ describe('img-pan-zoom viewer lifecycle', () => {
     ])
   })
 
-  // BUG (recorded, not patched): the rotate handler is registered to fire a
-  // "rotate" event but dispatches a copy-pasted "pan" event instead, so
-  // consumers can never listen for rotation changes.
-  it('BUG: the rotate handler dispatches a pan event', async () => {
+  it('the rotate handler dispatches a rotate event', async () => {
     const el = await fixture(
       html`<img-pan-zoom src="${DATA_URL}"></img-pan-zoom>`,
     )
     await poll(() => el.init === true, 150)
-    let rotateSeen = false
+    let rotateMarker = null
     const panValues = []
-    el.addEventListener('rotate', () => {
-      rotateSeen = true
+    el.addEventListener('rotate', (e) => {
+      rotateMarker = e.detail.value.marker
     })
     el.addEventListener('pan', (e) => panValues.push(e.detail.value.marker))
     el.viewer.handlers.rotate({ marker: 'rotate-evt' })
-    expect(rotateSeen).to.be.false
-    expect(panValues).to.deep.equal(['rotate-evt'])
+    // rotation events reach rotate listeners (they used to be dispatched
+    // as a copy-pasted pan event so they were unreachable)
+    expect(rotateMarker).to.equal('rotate-evt')
+    expect(panValues).to.deep.equal([])
   })
 
   it('re-adds the image when loaded flips again after init', async () => {
@@ -560,11 +565,7 @@ describe('img-pan-zoom viewer lifecycle', () => {
     expect(warnings[0].includes('init boom')).to.be.true
   })
 
-  // BUG (recorded, not patched): real OpenSeadragon only creates
-  // viewer.navigator when showNavigator is on (this element defaults it to
-  // false), so toggling navigatorToggled against a default viewer throws a
-  // TypeError reading navigator.element.style in updated().
-  it('BUG: navigatorToggled throws when the viewer has no navigator', async () => {
+  it('navigatorToggled is a safe no-op when the viewer has no navigator', async () => {
     const el = await fixture(
       html`<img-pan-zoom src="one.png"></img-pan-zoom>`,
     )
@@ -578,10 +579,14 @@ describe('img-pan-zoom viewer lifecycle', () => {
     try {
       el.navigatorToggled = true
       await el.updateComplete
+      el.navigatorToggled = false
+      await el.updateComplete
     } catch (e) {
       threw = true
     }
-    expect(threw).to.be.true
+    // real OpenSeadragon only builds the navigator with showNavigator on,
+    // so toggling without one must not dereference it (it used to throw)
+    expect(threw).to.be.false
   })
 
   it('disconnecting aborts listeners without throwing', async () => {

@@ -22,7 +22,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-font-family` | font-family | unset
 `--a11y-tabs-font-size` | font-size | unset
-`--a11y-tabs-border-color` | border | #ddd
+`--a11y-tabs-border-color` | border | `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-limestoneMaxLight`)
 `--a11y-tabs-color` | text color | #222
 `--a11y-tabs-focus-color` | text color when focused | #000
 `--a11y-tabs-margin` |  | 16px 0
@@ -227,11 +227,23 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         @media screen {
           :host([vertical]) {
             border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
-            border: 1px solid var(--a11y-tabs-border-color, #ddd);
+            border: 1px solid var(
+              --a11y-tabs-border-color,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-limestoneMaxLight)
+              )
+            );
           }
 
           #content {
-            border: 1px solid var(--a11y-tabs-border-color, #ddd);
+            border: 1px solid var(
+              --a11y-tabs-border-color,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-limestoneMaxLight)
+              )
+            );
             padding: var(--a11y-tabs-content-padding, 16px);
             background-color: var(--a11y-tabs-content-background);
           }
@@ -625,7 +637,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           this.removeAttribute("vertical");
         }
       }
-      if (["iconsBreakpoint", "responsiveWidth", "__tabs"].includes(propName)) {
+      if (["iconBreakpoint", "responsiveWidth", "__tabs"].includes(propName)) {
         if (this.iconsOnly) {
           this.setAttribute("icons-only", true);
         } else {

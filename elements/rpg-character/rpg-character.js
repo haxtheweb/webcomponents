@@ -72,6 +72,11 @@ class RpgCharacter extends SimpleColors {
     this.hatColor = 0;
     this.demo = false;
     this.fire = false;
+    // stored so updated() removes the exact reference it added while demo
+    // was enabled (a fresh anonymous arrow could never be removed)
+    this._demoClickHandler = (e) => {
+      this.seed = Math.random().toString(36).substring(2, 12);
+    };
     if (globalThis.matchMedia) {
       this.reduceMotion = globalThis.matchMedia(
         "(prefers-reduced-motion: reduce)",
@@ -280,8 +285,11 @@ class RpgCharacter extends SimpleColors {
       <style>
         #cardcircle {
           fill: var(
-            --simple-colors-default-theme-${this.accentColor}-8,
-            var(--simple-colors-default-theme-accent-8, yellow)
+            --ddd-theme-accent,
+            var(
+              --simple-colors-default-theme-${this.accentColor}-8,
+              var(--simple-colors-default-theme-accent-8, yellow)
+            )
           );
         }
         div {
@@ -313,18 +321,11 @@ class RpgCharacter extends SimpleColors {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "demo") {
-        if (this[propName]) {
-          this.shadowRoot
-            .querySelector(".wrapper")
-            .addEventListener("click", (e) => {
-              this.seed = Math.random().toString(36).substring(2, 12);
-            });
-        } else {
-          this.shadowRoot
-            .querySelector(".wrapper")
-            .removeEventListener("click", (e) => {
-              e.target.seed = Math.random().toString(36).substring(2, 12);
-            });
+        const wrapper = this.shadowRoot.querySelector(".wrapper");
+        if (wrapper && this[propName]) {
+          wrapper.addEventListener("click", this._demoClickHandler);
+        } else if (wrapper) {
+          wrapper.removeEventListener("click", this._demoClickHandler);
         }
       }
       if (

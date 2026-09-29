@@ -27,19 +27,9 @@ describe("grade-book-lite element", () => {
     GradeBookStore.gradeScale = JSON.parse(JSON.stringify(gradeScale));
     GradeBookStore.activeStudent = 0;
     GradeBookStore.activeAssignment = 0;
-    // BUG note: @core/htmlToPdf is NOT part of the core microservice bundle
-    // (enableServices(["core"]) never registers it), so PDFPageButton never
-    // renders its PDF button in production and downloadPDFviaMicro crashes
-    // on the null call() response. Register it here so the PDF paths can be
-    // exercised at all; see the dedicated BUG test below.
-    if (!MicroFrontendRegistry.has("@core/htmlToPdf")) {
-      MicroFrontendRegistry.add({
-        name: "@core/htmlToPdf",
-        endpoint: "/system/api/v1/actions/html-to-pdf",
-        title: "HTML to PDF",
-        params: { html: "HTML to convert to PDF" },
-      });
-    }
+    // the grade-book-lite element itself registers @core/htmlToPdf (it is
+    // not part of the core microservice bundle) against a same-origin
+    // system endpoint, so no test-side registration is needed
     originalFetch = globalThis.fetch;
     originalOpen = globalThis.open;
     openUrls = [];
@@ -163,11 +153,17 @@ describe("grade-book-lite element", () => {
     expect(collapses[0].expanded).to.equal(false);
   });
 
-  it("renders the pdf and hash link buttons", async () => {
+  it("registers the on-prem htmlToPdf service and renders the pdf button", async () => {
     const el = await loadJsonLite();
+    // the element registers @core/htmlToPdf itself against a same-origin
+    // system endpoint; no open-apis.hax.cloud address is involved
     expect(MicroFrontendRegistry.has("@core/htmlToPdf")).to.equal(true);
+    const item = MicroFrontendRegistry.get("@core/htmlToPdf");
+    expect(item.endpoint.indexOf("open-apis.hax.cloud")).to.equal(-1);
     expect(el.shadowRoot.querySelector("#pdf-page-btn")).to.exist;
-    expect(el.shadowRoot.querySelector("#hash-page-btn")).to.exist;
+    // the hash link button was removed: its crypto microservice and the
+    // feedback viewer it opened are external, off-prem addresses
+    expect(el.shadowRoot.querySelector("#hash-page-btn")).to.equal(null);
   });
 
   it("downloadPDFviaMicro calls the htmlToPdf microservice and resets the loading flag", async () => {
@@ -185,30 +181,21 @@ describe("grade-book-lite element", () => {
     expect(el.__pdfLoading).to.equal(false);
   });
 
-  it("createHashLink calls the crypto microservice and opens the feedback url", async () => {
+  it("the hash link feature is removed for on-prem compliance", async () => {
     const el = await loadJsonLite();
-    globalThis.fetch = (url, options) => {
-      fetchUrls.push(String(url));
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ status: 200, data: "deadbeef" }),
-      });
-    };
-    await el.createHashLink();
-    expect(fetchUrls.length).to.equal(1);
-    // @core/crypto is registered against the aes256 security endpoint
-    expect(fetchUrls[0].indexOf("aes256")).to.not.equal(-1);
-    expect(openUrls.length).to.equal(1);
-    expect(openUrls[0].indexOf("secure-feedback.vercel.app")).to.not.equal(-1);
-    expect(el.__hashLoading).to.equal(false);
+    // createHashLink used to call the open-apis-registered crypto
+    // microservice and open the hardcoded external secure-feedback viewer;
+    // both are external addresses so the feature was removed entirely
+    expect(typeof el.createHashLink).to.equal("undefined");
+    expect(el.shadowRoot.querySelector("#hash-page-btn")).to.equal(null);
+    expect(el.__hashLoading).to.equal(undefined);
+    expect(el.shadowRoot.innerHTML.includes("vercel")).to.equal(false);
   });
 
-  it("downloadPDFviaMicro crashes when the service is not registered (BUG: unguarded null call)", async () => {
-    // BUG grade-book-lite.js:1101 downloadPDFviaMicro does not guard the
+  it("downloadPDFviaMicro degrades gracefully when the service is not registered (was BUG: unguarded null call)", async () => {
+    // regression: downloadPDFviaMicro used to read response.status off the
     // null that MicroFrontendRegistry.call returns for an unregistered
-    // service. @core/htmlToPdf is NOT in the core bundle, so calling the
-    // method in the shipped default state reads response.status off null
-    // and throws a TypeError
+    // service, throwing a TypeError and leaving __pdfLoading stuck on true
     const el = await loadJsonLite();
     globalThis.fetch = (url, options) => {
       fetchUrls.push(String(url));
@@ -217,7 +204,6 @@ describe("grade-book-lite element", () => {
         json: () => Promise.resolve({ status: 200, data: "JVBERi0xLjQK" }),
       });
     };
-    const bare = {};
     const savedList = MicroFrontendRegistry.list.slice();
     MicroFrontendRegistry.list = MicroFrontendRegistry.list.filter(
       (item) => item.name !== "@core/htmlToPdf",
@@ -229,9 +215,8 @@ describe("grade-book-lite element", () => {
       threw = true;
     }
     MicroFrontendRegistry.list = savedList;
-    bare.neverUsed = true;
-    expect(threw).to.equal(true);
-    expect(el.__pdfLoading).to.equal(true);
+    expect(threw).to.equal(false);
+    expect(el.__pdfLoading).to.equal(false);
   });
 
   it("changeAssignment prev/next respect assignment bounds", async () => {

@@ -114,7 +114,7 @@ class ChatInput extends DDD {
 
         button {
           align-items: center;
-          background-color: #2b2a33;
+          background-color: var(--ddd-primary-4);
           border-radius: var(--ddd-radius-sm);
           color: var(--ddd-theme-default-white);
           cursor: pointer;
@@ -125,7 +125,7 @@ class ChatInput extends DDD {
 
         button:hover,
         button:focus-visible {
-          background-color: #52525e;
+          background-color: var(--ddd-primary-6);
         }
 
         .send-button {
@@ -343,9 +343,16 @@ class ChatInput extends DDD {
       case "down":
         if (this.previousMessagesIndex < this.messageIndex) {
           this.previousMessagesIndex++;
+          // bounds check FIRST: evaluating chatLog[previousMessagesIndex].author
+          // before confirming previousMessagesIndex < messageIndex read one
+          // past the end of the log (chatLog[messageIndex] is undefined since
+          // messageIndex equals chatLog.length), throwing a TypeError when
+          // pressing down at the newest message. The entry guard also covers a
+          // momentarily out-of-sync chatLog while the mobx autoruns settle.
           while (
-            this.chatLog[this.previousMessagesIndex].author !== this.userName &&
-            this.previousMessagesIndex < this.messageIndex
+            this.previousMessagesIndex < this.messageIndex &&
+            this.chatLog[this.previousMessagesIndex] &&
+            this.chatLog[this.previousMessagesIndex].author !== this.userName
           ) {
             this.previousMessagesIndex++;
             if (this.previousMessagesIndex >= this.messageIndex) {
