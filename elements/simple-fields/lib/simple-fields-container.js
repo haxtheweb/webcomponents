@@ -550,6 +550,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           "search",
         ].includes(this.type) ||
         (this.field &&
+          this.field.tagName &&
           this.field.tagName.toLowerCase() === "simple-colors-picker")
       );
     }

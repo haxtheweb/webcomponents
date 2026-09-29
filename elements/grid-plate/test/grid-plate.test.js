@@ -204,6 +204,348 @@ describe("GridPlate test", () => {
   });
 });
 
+describe("GridPlate drag and drop handlers", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <grid-plate layout="1-1" data-hax-ray="test">
+        <p slot="col-1">First column content</p>
+        <p slot="col-2">Second column content</p>
+      </grid-plate>
+    `);
+    await element.updateComplete;
+  });
+
+  it("_dragEnter adds active class to target when dataHaxRay is set", () => {
+    const col = element.shadowRoot.querySelector("#col1");
+    element._dragEnter({ target: col });
+    expect(col.classList.contains("active")).to.be.true;
+  });
+
+  it("_dragEnter does nothing when dataHaxRay is not set", async () => {
+    const el = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await el.updateComplete;
+    const col = el.shadowRoot.querySelector("#col1");
+    el._dragEnter({ target: col });
+    expect(col.classList.contains("active")).to.be.false;
+  });
+
+  it("_dragleave removes active class from target when dataHaxRay is set", () => {
+    const col = element.shadowRoot.querySelector("#col1");
+    col.classList.add("active");
+    element._dragleave({ target: col });
+    expect(col.classList.contains("active")).to.be.false;
+  });
+
+  it("_dragleave does nothing when dataHaxRay is not set", async () => {
+    const el = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await el.updateComplete;
+    const col = el.shadowRoot.querySelector("#col1");
+    col.classList.add("active");
+    el._dragleave({ target: col });
+    expect(col.classList.contains("active")).to.be.true;
+  });
+
+  it("_drop removes active classes from light DOM when dataHaxRay is set", () => {
+    const slotted = element.querySelector('[slot="col-1"]');
+    slotted.classList.add("active");
+    element._drop({});
+    expect(slotted.classList.contains("active")).to.be.false;
+  });
+
+  it("_drop removes active classes from shadow DOM when dataHaxRay is set", () => {
+    const col = element.shadowRoot.querySelector("#col1");
+    col.classList.add("active");
+    element._drop({});
+    expect(col.classList.contains("active")).to.be.false;
+  });
+
+  it("_drop does nothing when dataHaxRay is not set", async () => {
+    const el = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1" class="active">content</p>
+      </grid-plate>
+    `);
+    await el.updateComplete;
+    el._drop({});
+    // active class should still be there since dataHaxRay is not set
+    expect(el.querySelector('[slot="col-1"]').classList.contains("active")).to.be.true;
+  });
+});
+
+describe("GridPlate _getColumns and haxactiveElementChanged", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await element.updateComplete;
+  });
+
+  it("_getColumns returns length of column widths array", () => {
+    const widths = ["50%", "50%"];
+    expect(element._getColumns(widths)).to.equal(2);
+  });
+
+  it("_getColumns returns 3 for three-column layout", () => {
+    const widths = ["33.33%", "33.33%", "33.33%"];
+    expect(element._getColumns(widths)).to.equal(3);
+  });
+
+  it("haxactiveElementChanged does not throw", () => {
+    expect(() => element.haxactiveElementChanged(null, false)).to.not.throw();
+  });
+});
+
+describe("GridPlate updated lifecycle branches", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await element.updateComplete;
+  });
+
+  it("sets --grid-plate-item-margin when itemMargin is not 16", async () => {
+    element.itemMargin = 24;
+    await element.updateComplete;
+    const val = element.style.getPropertyValue("--grid-plate-item-margin");
+    expect(val).to.equal("24px");
+  });
+
+  it("removes --grid-plate-item-margin when itemMargin is 16", async () => {
+    element.itemMargin = 24;
+    await element.updateComplete;
+    element.itemMargin = 16;
+    await element.updateComplete;
+    const val = element.style.getPropertyValue("--grid-plate-item-margin");
+    expect(val).to.equal("");
+  });
+
+  it("sets --grid-plate-item-padding when itemPadding is not 16", async () => {
+    element.itemPadding = 32;
+    await element.updateComplete;
+    const val = element.style.getPropertyValue("--grid-plate-item-padding");
+    expect(val).to.equal("32px");
+  });
+
+  it("removes --grid-plate-item-padding when itemPadding is 16", async () => {
+    element.itemPadding = 32;
+    await element.updateComplete;
+    element.itemPadding = 16;
+    await element.updateComplete;
+    const val = element.style.getPropertyValue("--grid-plate-item-padding");
+    expect(val).to.equal("");
+  });
+
+  it("dispatches disable-responsive-changed event when disableResponsive changes", async () => {
+    let eventDetail = null;
+    element.addEventListener("disable-responsive-changed", (e) => {
+      eventDetail = e.detail;
+    });
+    element.disableResponsive = true;
+    await element.updateComplete;
+    expect(eventDetail).to.be.true;
+  });
+
+  it("does not set margin property when itemMargin is falsy", async () => {
+    element.itemMargin = 0;
+    await element.updateComplete;
+    // 0 is falsy, so it should remove the property
+    const val = element.style.getPropertyValue("--grid-plate-item-margin");
+    expect(val).to.equal("");
+  });
+});
+
+describe("GridPlate _getColumnWidths edge cases", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await element.updateComplete;
+  });
+
+  it("returns undefined when layouts is falsy", () => {
+    const widths = element._getColumnWidths("md", "1-1", null, false);
+    expect(widths).to.be.undefined;
+  });
+
+  it("falls back to old layout mapping for 12", () => {
+    const widths = element._getColumnWidths("md", 12, element.layouts, false);
+    expect(widths).to.exist;
+    // 12 maps to "1" which is full width
+    expect(widths[0]).to.equal("100%");
+  });
+
+  it("falls back to old layout mapping for 8/4", () => {
+    const widths = element._getColumnWidths("md", "8/4", element.layouts, false);
+    expect(widths).to.exist;
+    // 8/4 maps to "2-1" which is 66.66/33.33
+    expect(widths.length).to.equal(2);
+  });
+
+  it("falls back to old layout mapping for 6/6", () => {
+    const widths = element._getColumnWidths("md", "6/6", element.layouts, false);
+    expect(widths).to.exist;
+    expect(widths[0]).to.equal("50%");
+  });
+
+  it("falls back to old layout mapping for 4/8", () => {
+    const widths = element._getColumnWidths("md", "4/8", element.layouts, false);
+    expect(widths).to.exist;
+    expect(widths.length).to.equal(2);
+  });
+
+  it("falls back to old layout mapping for 4/4/4", () => {
+    const widths = element._getColumnWidths(
+      "md",
+      "4/4/4",
+      element.layouts,
+      false,
+    );
+    expect(widths).to.exist;
+    expect(widths.length).to.equal(3);
+  });
+
+  it("falls back to old layout mapping for 3/3/3/3", () => {
+    const widths = element._getColumnWidths(
+      "md",
+      "3/3/3/3",
+      element.layouts,
+      false,
+    );
+    expect(widths).to.exist;
+    expect(widths.length).to.equal(4);
+  });
+
+  it("falls back to 1-1 layout for unknown layout name", () => {
+    const widths = element._getColumnWidths(
+      "md",
+      "unknown-layout",
+      element.layouts,
+      false,
+    );
+    expect(widths).to.exist;
+    expect(widths[0]).to.equal("50%");
+  });
+
+  it("uses xl size when disableResponsive is not false and size is not xs", () => {
+    const widths = element._getColumnWidths("sm", "1-1", element.layouts, true);
+    // disableResponsive=true and size=sm (not xs), so size becomes xl
+    const xlWidths = element.layouts["1-1"].xl;
+    expect(widths).to.deep.equal(xlWidths);
+  });
+
+  it("keeps xs size when disableResponsive and size is xs", () => {
+    const widths = element._getColumnWidths("xs", "1-1", element.layouts, true);
+    // disableResponsive=true but size is xs, so it stays xs
+    const xsWidths = element.layouts["1-1"].xs;
+    expect(widths).to.deep.equal(xsWidths);
+  });
+
+  it("falls back to md when size is invalid", () => {
+    const widths = element._getColumnWidths(
+      "huge",
+      "1-1",
+      element.layouts,
+      false,
+    );
+    const mdWidths = element.layouts["1-1"].md;
+    expect(widths).to.deep.equal(mdWidths);
+  });
+});
+
+describe("GridPlate _getColumnWidth edge cases", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <grid-plate layout="1-1">
+        <p slot="col-1">content</p>
+      </grid-plate>
+    `);
+    await element.updateComplete;
+  });
+
+  it("returns min-height unset when __columnWidths is undefined", () => {
+    const width = element._getColumnWidth(0, undefined);
+    expect(width).to.equal("min-height: unset");
+  });
+
+  it("returns min-height unset when column index is out of bounds", () => {
+    const width = element._getColumnWidth(10, ["50%", "50%"]);
+    expect(width).to.equal("min-height: unset");
+  });
+
+  it("returns width for valid column index", () => {
+    const width = element._getColumnWidth(1, ["50%", "50%"]);
+    expect(width).to.equal("width:50%");
+  });
+});
+
+describe("GridPlate layout options", () => {
+  it("GridPlateLayoutOptions creates correct options mapping", async () => {
+    const el = await fixture(html`<grid-plate></grid-plate>`);
+    await el.updateComplete;
+    // Verify that haxProperties uses the options
+    const haxProps = el.constructor.haxProperties;
+    const configureSettings = haxProps.settings.configure;
+    const layoutSetting = configureSettings.find(
+      (s) => s.property === "layout",
+    );
+    expect(layoutSetting).to.exist;
+    expect(layoutSetting.options).to.exist;
+    expect(layoutSetting.options["1"]).to.exist;
+    expect(layoutSetting.options["1-1"]).to.exist;
+  });
+
+  it("supports all documented layout names", async () => {
+    const el = await fixture(html`<grid-plate></grid-plate>`);
+    await el.updateComplete;
+    const layoutNames = [
+      "1",
+      "1-1",
+      "2-1",
+      "1-2",
+      "3-1",
+      "1-3",
+      "1-1-1",
+      "2-1-1",
+      "1-2-1",
+      "1-1-2",
+      "1-1-1-1",
+    ];
+    for (const name of layoutNames) {
+      expect(el.layouts[name]).to.exist;
+      expect(el.layouts[name].columnLayout).to.exist;
+      expect(el.layouts[name].xs).to.exist;
+      expect(el.layouts[name].sm).to.exist;
+      expect(el.layouts[name].md).to.exist;
+      expect(el.layouts[name].lg).to.exist;
+      expect(el.layouts[name].xl).to.exist;
+    }
+  });
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("grid-plate passes accessibility test", async () => {

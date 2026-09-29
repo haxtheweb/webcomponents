@@ -23,7 +23,7 @@ class FutureTerminalText extends SimpleColorsSuper(FutureTerminalTextLite) {
         span {
           color: var(
             --future-terminal-text-color,
-            var(--simple-colors-default-theme-accent-8, inherit)
+            var(--simple-colors-default-theme-accent-9, inherit)
           );
         }
       `,

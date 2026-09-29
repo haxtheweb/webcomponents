@@ -161,17 +161,15 @@ describe('simple-fields-url-combo-item', () => {
     expect(el.iconName).to.equal('icons:mail')
   })
 
-  it('iconName for tel returns html icon due to pageTypes including empty string (BUG)', async () => {
-    // BUG: tel: URLs have no file extension, fileExtension returns '',
-    // pageTypes includes '' so isPage=true, which is checked before isPhone.
-    // iconName returns icons:language instead of communication:phone.
-    // The check order should have isPhone before isPage, or pageTypes
-    // should not include ''.
+  it('iconName for tel returns phone icon even though pageTypes includes empty string', async () => {
+    // tel: URLs have no file extension, so fileExtension returns '' and
+    // pageTypes includes '' making isPage=true too, but isPhone is now
+    // checked before isPage/isLocal so the phone icon wins.
     el.value = 'tel:+1234567890'
     await el.updateComplete
     expect(el.isPhone).to.equal(true)
     expect(el.isPage).to.equal(true)
-    expect(el.iconName).to.equal('icons:language')
+    expect(el.iconName).to.equal('communication:phone')
   })
 
   it('iconName returns file extension icon for known types', async () => {
@@ -180,14 +178,13 @@ describe('simple-fields-url-combo-item', () => {
     expect(el.iconName).to.equal('hax:file-pdf')
   })
 
-  it('iconName returns undefined for unknown extension (BUG)', async () => {
-    // BUG: iconTypes[fileExtension] returns undefined for unknown extensions
-    // like 'xyz'. The fallback to iconTypes['file'] only triggers when
-    // fileExtension is empty, not when it's unknown. Should fall back to
-    // the 'file' icon for any unrecognized extension.
+  it('iconName falls back to file icon for unknown extension', async () => {
+    // iconTypes[fileExtension] returns undefined for unknown extensions
+    // like 'xyz', so iconName should fall back to iconTypes['file']
+    // instead of returning undefined.
     el.value = 'https://example.com/file.xyz'
     await el.updateComplete
-    expect(el.iconName).to.equal(undefined)
+    expect(el.iconName).to.equal(el.iconTypes['file'])
   })
 
   it('iconTemplate renders a simple-icon-lite', () => {

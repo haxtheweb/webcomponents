@@ -57,7 +57,8 @@ describe("ESGlobalBridge test", () => {
     const testLocation = "data:text/javascript,console.log('test loaded');";
     
     bridge.load(testName, testLocation).then((result) => {
-      expect(result).to.be.true;
+      // the promise resolves with the location that was loaded
+      expect(result).to.equal(testLocation);
       expect(bridge.imports[testName]).to.be.true;
       done();
     }).catch(done);
@@ -173,29 +174,22 @@ describe("ESGlobalBridge test", () => {
   });
 
   // State management tests
-  it("manages import state correctly during lifecycle", (done) => {
+  it("manages import state correctly during lifecycle", async () => {
     const testName = "state-test";
     const testLocation = "data:text/javascript,console.log('state test');";
     
     // Initially should not be imported
     expect(bridge.imports[testName]).to.be.undefined;
     
-    bridge.load(testName, testLocation).then((result) => {
-      expect(result).to.be.true;
-      expect(bridge.imports[testName]).to.be.true;
-      done();
-    }).catch(done);
+    // kick off the load; the location is recorded synchronously,
+    // before the script even loads
+    const loadPromise = bridge.load(testName, testLocation);
+    expect(bridge.imports[testName]).to.equal(testLocation);
     
-    // Check intermediate state
-    setTimeout(() => {
-      expect(bridge.imports[testName]).to.equal(testLocation);
-      
-      // Simulate successful load
-      const script = document.querySelector(`script[data-name="${testName}"]`);
-      if (script && script.onload) {
-        script.onload();
-      }
-    }, 10);
+    const result = await loadPromise;
+    // resolves with the location, then flips the import to loaded
+    expect(result).to.equal(testLocation);
+    expect(bridge.imports[testName]).to.be.true;
   });
 
   it("cleans up failed imports correctly", (done) => {
@@ -337,5 +331,80 @@ describe("ESGlobalBridge A11y tests", () => {
     expect(testElement.querySelector('[role="main"]')).to.exist;
     
     document.body.removeChild(testElement);
+  });
+});
+
+describe("ESGlobalBridge additional behavior", () => {
+  let bridge;
+
+  beforeEach(() => {
+    bridge = new ESGlobalBridge();
+  });
+
+  afterEach(() => {
+    const scripts = document.querySelectorAll('script[data-name]');
+    scripts.forEach(script => script.remove());
+  });
+
+  it("import alias actually loads a script and records it by name", async () => {
+    const testName = "alias-load-test";
+    const testLocation = "data:text/javascript,console.log('alias load');";
+    const result = await bridge.import(testName, testLocation);
+    expect(result).to.equal(testLocation);
+    expect(bridge.imports[testName]).to.be.true;
+    const script = document.querySelector(`script[data-name="${testName}"]`);
+    expect(script).to.exist;
+  });
+
+  it("dispatches the loaded event with name and location detail", async () => {
+    const testName = "alias-event-test";
+    const testLocation = "data:text/javascript,console.log('alias event');";
+    const fired = new Promise((resolve) => {
+      document.addEventListener(`es-bridge-${testName}-loaded`, resolve, {
+        once: true,
+      });
+    });
+    await bridge.import(testName, testLocation);
+    // the event is dispatched a beat after the script resolves
+    const event = await fired;
+    expect(event.detail).to.deep.equal({
+      name: testName,
+      location: testLocation,
+    });
+  });
+
+  it("allows retrying a load after a failure", async () => {
+    const testName = "retry-test";
+    const failPromise = bridge.load(
+      testName,
+      "https://nonexistent.invalid/retry-fail.js",
+    );
+    // make sure the failure path runs even if the network error is slow
+    setTimeout(() => {
+      const script = document.querySelector(`script[data-name="${testName}"]`);
+      if (script && script.onerror) {
+        script.onerror();
+      }
+    }, 10);
+    await failPromise.catch((error) => {
+      expect(error.message).to.include("Failed to load");
+    });
+    expect(bridge.imports[testName]).to.be.false;
+    // a failed import does not block a new attempt with a good location
+    const goodLocation = "data:text/javascript,console.log('retry ok');";
+    const result = await bridge.load(testName, goodLocation);
+    expect(result).to.equal(goodLocation);
+    expect(bridge.imports[testName]).to.be.true;
+  });
+
+  it("shares state between import and load on the same instance", async () => {
+    const testName = "shared-state-test";
+    const testLocation = "data:text/javascript,console.log('shared state');";
+    const first = await bridge.import(testName, testLocation);
+    const second = await bridge.load(testName, testLocation);
+    // first call resolves with the location, second short-circuits with true
+    expect(first).to.equal(testLocation);
+    expect(second).to.be.true;
+    expect(bridge.imports[testName]).to.be.true;
   });
 });

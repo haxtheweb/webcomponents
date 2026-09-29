@@ -40,7 +40,10 @@ export class IframeLoader extends LitElement {
       :host([disabled]) #container {
         z-index: 1;
         opacity: 0.2;
-        background-color: white;
+        background-color: var(
+          --iframe-loader-disabled-background,
+          var(--ddd-theme-default-white)
+        );
         transition: 0.3s linear all;
       }
       :host([disabled]) #container:hover {
@@ -63,18 +66,19 @@ export class IframeLoader extends LitElement {
   constructor() {
     super();
     this.isPDF = false;
-    this.invalidSource = false;
     this.disabled = false;
     this.loading = true;
     this.height = 500;
     this.width = "100%";
     this.__iframe = null;
+    // cache the bound callback once so listeners can actually be removed
+    this.__iframeLoadingCallback = this.iframeLoadingCallback.bind(this);
     // if we have an initial iframe, go for it
     if (this.querySelector("iframe")) {
       this.__iframe = this.querySelector("iframe");
       this.__iframe.addEventListener(
         "load",
-        this.iframeLoadingCallback.bind(this),
+        this.__iframeLoadingCallback,
       );
       // ensure source matches iframe source
       if (this.__iframe.getAttribute("src")) {
@@ -107,7 +111,7 @@ export class IframeLoader extends LitElement {
         // Listen for new
         this.__iframe.addEventListener(
           "load",
-          this.iframeLoadingCallback.bind(this),
+          this.__iframeLoadingCallback,
         );
         this.__mutationObserver.observe(this.__iframe, {
           attributes: true,
@@ -127,8 +131,11 @@ export class IframeLoader extends LitElement {
     clearTimeout(this.__debounce);
     this.__debounce = setTimeout(() => {
       this.loading = false;
-      if (e && e.path && e.path[0] && e.path[0].height) {
-        this.height = e.path[0].height;
+      // e.path is a non-standard Chromium-ism that is undefined in other
+      // browsers; composedPath is the standard way to resolve the target
+      let path = e && e.composedPath ? e.composedPath() : [];
+      if (path && path[0] && path[0].height) {
+        this.height = path[0].height;
       }
     }, 500);
   }
@@ -185,6 +192,11 @@ export class IframeLoader extends LitElement {
       this.__iframe = globalThis.document.createElement("iframe");
       this.__iframe.setAttribute("width", this.width);
       this.__iframe.setAttribute("height", this.height);
+      // frames must have a title for WCAG 2.4.1 (axe frame-title)
+      this.__iframe.setAttribute("title", this.title || "Embedded content");
+      // created frames need the load listener as well or loading never
+      // clears and the slotted content stays hidden forever
+      this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
       this.__mutationObserver.observe(this.__iframe, {
         attributes: true,
       });
@@ -229,7 +241,7 @@ export class IframeLoader extends LitElement {
     if (this.__iframe) {
       this.__iframe.removeEventListener(
         "load",
-        this.iframeLoadingCallback.bind(this),
+        this.__iframeLoadingCallback,
       );
     }
     this.__observer.disconnect();
@@ -261,8 +273,18 @@ export class IframeLoader extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (!this.invalidSource) {
-        if (propName === "isPDF" && this.__iframe) {
+      if (propName === "isPDF" && this.__iframe) {
+        if (this.isPDF) {
+          this.__iframe.removeAttribute("sandbox");
+        } else {
+          this.__iframe.setAttribute(
+            "sandbox",
+            "allow-scripts allow-same-origin",
+          );
+        }
+      } else if (propName === "source") {
+        const safeSource = this._safeSource(this.source);
+        if (this.__iframe) {
           if (this.isPDF) {
             this.__iframe.removeAttribute("sandbox");
           } else {
@@ -271,48 +293,47 @@ export class IframeLoader extends LitElement {
               "allow-scripts allow-same-origin",
             );
           }
-        } else if (propName === "source") {
-          const safeSource = this._safeSource(this.source);
-          if (this.__iframe) {
-            if (this.isPDF) {
-              this.__iframe.removeAttribute("sandbox");
-            } else {
-              this.__iframe.setAttribute(
-                "sandbox",
-                "allow-scripts allow-same-origin",
-              );
-            }
-            if (safeSource) {
-              this.__iframe.setAttribute("src", safeSource);
-            } else {
-              this.__iframe.removeAttribute("src");
-            }
+          if (safeSource) {
+            this.__iframe.setAttribute("src", safeSource);
           } else {
-            this.__iframe = globalThis.document.createElement("iframe");
-            this.__iframe.setAttribute("width", this.width);
-            this.__iframe.setAttribute("height", this.height);
-            this.__mutationObserver.observe(this.__iframe, {
-              attributes: true,
-            });
-            if (this.isPDF) {
-              this.__iframe.removeAttribute("sandbox");
-            } else {
-              this.__iframe.setAttribute(
-                "sandbox",
-                "allow-scripts allow-same-origin",
-              );
-            }
-            if (safeSource) {
-              this.__iframe.setAttribute("src", safeSource);
-            } else {
-              this.__iframe.removeAttribute("src");
-            }
-            this.appendChild(this.__iframe);
+            this.__iframe.removeAttribute("src");
           }
-        } else if (["height", "width"].includes(propName)) {
-          if (this.__iframe) {
-            this.__iframe.setAttribute(propName, this[propName]);
+        } else {
+          this.__iframe = globalThis.document.createElement("iframe");
+          this.__iframe.setAttribute("width", this.width);
+          this.__iframe.setAttribute("height", this.height);
+          // frames must have a title for WCAG 2.4.1 (axe frame-title)
+          this.__iframe.setAttribute(
+            "title",
+            this.title || "Embedded content",
+          );
+          // created frames need the load listener as well or loading never
+          // clears and the slotted content stays hidden forever
+          this.__iframe.addEventListener(
+            "load",
+            this.__iframeLoadingCallback,
+          );
+          this.__mutationObserver.observe(this.__iframe, {
+            attributes: true,
+          });
+          if (this.isPDF) {
+            this.__iframe.removeAttribute("sandbox");
+          } else {
+            this.__iframe.setAttribute(
+              "sandbox",
+              "allow-scripts allow-same-origin",
+            );
           }
+          if (safeSource) {
+            this.__iframe.setAttribute("src", safeSource);
+          } else {
+            this.__iframe.removeAttribute("src");
+          }
+          this.appendChild(this.__iframe);
+        }
+      } else if (["height", "width"].includes(propName)) {
+        if (this.__iframe) {
+          this.__iframe.setAttribute(propName, this[propName]);
         }
       }
     });

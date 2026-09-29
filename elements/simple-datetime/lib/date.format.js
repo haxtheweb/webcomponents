@@ -109,7 +109,7 @@
       var year = this.getFullYear();
       var nextMonth = this.getMonth() + 1;
       if (nextMonth === 12) {
-        year = year++;
+        year = year + 1;
         nextMonth = 0;
       }
       return new Date(year, nextMonth, 0).getDate();
@@ -177,18 +177,20 @@
       return Intl.DateTimeFormat().resolvedOptions().timeZone;
     },
     I: function () {
-      var DST = null;
+      // compare the smallest and largest monthly offsets of the year; a
+      // timezone without any variation never observes DST (PHP returns 0)
+      var min = null;
+      var max = null;
       for (var i = 0; i < 12; ++i) {
-        var d = new Date(this.getFullYear(), i, 1);
-        var offset = d.getTimezoneOffset();
-
-        if (DST === null) DST = offset;
-        else if (offset < DST) {
-          DST = offset;
-          break;
-        } else if (offset > DST) break;
+        var offset = new Date(this.getFullYear(), i, 1).getTimezoneOffset();
+        if (min === null || offset < min) min = offset;
+        if (max === null || offset > max) max = offset;
       }
-      return (this.getTimezoneOffset() === DST) | 0;
+      if (min === max) {
+        return 0;
+      }
+      // daylight time is the smaller offset of the two
+      return (this.getTimezoneOffset() === min) | 0;
     },
     O: function () {
       var O = this.getTimezoneOffset();

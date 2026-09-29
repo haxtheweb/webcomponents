@@ -34,6 +34,7 @@ class Hal9000 extends LitElement {
         name: "respondsTo",
         type: String,
         attribute: "responds-to",
+        reflect: true,
       },
       /**
        * Debug mode for annyang
@@ -98,6 +99,8 @@ class Hal9000 extends LitElement {
   constructor() {
     super();
     this.toast = false;
+    this.auto = false;
+    this.enabled = false;
     this.windowControllers = new AbortController();
     this.commands = {};
     this.respondsTo = "(merlin)";
@@ -264,7 +267,8 @@ class Hal9000 extends LitElement {
         commands[i] = this.commands[i];
       }
     }
-    if (commands.length > 0) {
+    // commands is an object keyed by phrase, so check its keys
+    if (Object.keys(commands).length > 0) {
       this.commands = { ...commands };
     }
   }
@@ -306,19 +310,27 @@ class Hal9000 extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "commands" && typeof oldValue !== typeof undefined) {
+      // only react to changes away from a defined previous value so the
+      // constructor defaults never clobber attribute-set initial values
+      if (
+        propName == "commands" &&
+        typeof oldValue !== typeof undefined
+      ) {
         this._commandsChanged(this[propName]);
       }
-      if (propName == "respondsTo") {
+      if (
+        propName == "respondsTo" &&
+        typeof oldValue !== typeof undefined
+      ) {
         this._respondsToChanged(this[propName], oldValue);
       }
-      if (propName == "debug") {
+      if (propName == "debug" && typeof oldValue !== typeof undefined) {
         this._debugChanged(this[propName], oldValue);
       }
-      if (propName == "auto") {
+      if (propName == "auto" && typeof oldValue !== typeof undefined) {
         this._autoChanged(this[propName], oldValue);
       }
-      if (propName == "enabled") {
+      if (propName == "enabled" && typeof oldValue !== typeof undefined) {
         this._enabledChanged(this[propName], oldValue);
       }
     });

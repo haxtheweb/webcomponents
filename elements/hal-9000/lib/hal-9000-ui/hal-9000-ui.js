@@ -10,8 +10,8 @@ export class Hal9000UI extends SimpleColors {
           width: 50px;
           height: 50px;
           position: fixed;
-          top: 20px;
-          right: 20px;
+          top: var(--ddd-spacing-5);
+          right: var(--ddd-spacing-5);
           left: auto;
           border-radius: 5px;
         }
@@ -29,8 +29,8 @@ export class Hal9000UI extends SimpleColors {
           justify-content: center;
           overflow: hidden;
           position: fixed;
-          left: 20px;
-          bottom: 20px;
+          left: var(--ddd-spacing-5);
+          bottom: var(--ddd-spacing-5);
           z-index: 100000002;
           background-color: var(--ddd-theme-default-coalyGray);
           border-radius: 15px;
@@ -54,6 +54,12 @@ export class Hal9000UI extends SimpleColors {
           to {
             transform: scale(2.5, 2.5);
             opacity: 0;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .circle {
+            animation: none;
           }
         }
       `,

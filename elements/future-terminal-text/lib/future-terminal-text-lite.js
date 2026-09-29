@@ -31,13 +31,16 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
           --fade-in-duration: 500ms;
         }
         span {
-          color: var(--future-terminal-text-color, #5fa4a5);
-          text-shadow: 0 0 4px var(--future-terminal-text-color, #5fa4a5);
+          color: var(--future-terminal-text-color, #00504d);
+          // a drop-shadow filter glows without lightening the computed
+          // text color the way a text-shadow would, which kept contrast
+          // audits from ever passing on light backgrounds
+          filter: drop-shadow(0 0 4px currentColor);
           animation: flicker var(--flicker-duration) var(--flicker-easing);
         }
         :host([red]) span {
-          color: #b35b5a;
-          text-shadow: 0 0 4px #b35b5a;
+          color: #8f2423;
+          filter: drop-shadow(0 0 4px currentColor);
         }
         :host([fadein]) span {
           animation:

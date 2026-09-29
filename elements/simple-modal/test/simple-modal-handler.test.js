@@ -43,6 +43,13 @@ describe('SimpleModalHandler mixin', () => {
     expect(element.getAttribute('tabindex')).to.equal('0')
   })
 
+  it('respects an author-provided tabindex instead of clobbering it', async () => {
+    const el = await fixture(
+      html`<test-handler-el tabindex="-1"></test-handler-el>`,
+    )
+    expect(el.getAttribute('tabindex')).to.equal('-1')
+  })
+
   it('registers SimpleModal singleton after constructor setTimeout', async () => {
     await aTimeout(10)
     expect(globalThis.SimpleModal).to.exist

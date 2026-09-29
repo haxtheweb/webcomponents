@@ -24,14 +24,17 @@ class A11yCollapseGroup extends LitElement {
       css`
         :host {
           display: block;
-          margin: var(--a11y-collapse-group-margin, 15px 0);
-          --a11y-collapse-margin: 15px;
+          margin: var(
+            --a11y-collapse-group-margin,
+            var(--ddd-spacing-4) 0
+          );
+          --a11y-collapse-margin: var(--ddd-spacing-4);
         }
         :host([hidden]) {
           display: none;
         }
         #heading {
-          font-weight: bold;
+          font-weight: var(--ddd-font-weight-bold);
         }
         .wrapper {
           border-radius: 0;
@@ -50,6 +53,12 @@ class A11yCollapseGroup extends LitElement {
     this.globalOptions = {};
     this.radio = false;
     this.__items = [];
+    // items dispatch a11y-collapse-detached after they are already removed
+    // from the DOM, so that event can never bubble here; watch for removed
+    // children instead so stale references never linger in __items
+    this.__itemObserver = new MutationObserver((mutations) =>
+      this._handleChildListMutations(mutations),
+    );
     this.addEventListener("a11y-collapse-attached", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -86,7 +95,6 @@ class A11yCollapseGroup extends LitElement {
       globalOptions: {
         type: Object,
         attribute: "global-options",
-        reflect: true,
       },
       /**
        * Acts like a radio button. (Items can only be expanded one at a time.)
@@ -114,6 +122,30 @@ class A11yCollapseGroup extends LitElement {
     return this.__items;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.__itemObserver.observe(this, { childList: true });
+  }
+
+  disconnectedCallback() {
+    this.__itemObserver.disconnect();
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Watches for items removed from the light DOM so __items stays accurate
+   * even though the items' own detached event can never reach the group.
+   */
+  _handleChildListMutations(mutations) {
+    mutations.forEach((mutation) => {
+      mutation.removedNodes.forEach((node) => {
+        if (node instanceof A11yCollapse) {
+          this._detachItem(node);
+        }
+      });
+    });
+  }
+
   /**
    * Adds a11y-collapse item to __items array.
    * @param {object} item an a11y-collapse item
@@ -136,7 +168,7 @@ class A11yCollapseGroup extends LitElement {
   }
   _updateItem(item, propName, oldValue = undefined) {
     if (propName === "globalOptions" || propName === "__items") {
-      if (this.globalOptions != {})
+      if (Object.keys(this.globalOptions).length > 0)
         for (let key in this.globalOptions) {
           if (this.globalOptions.hasOwnProperty(key)) {
             item[key] = this.globalOptions[key];
@@ -144,9 +176,13 @@ class A11yCollapseGroup extends LitElement {
         }
     } else if (propName === "radio" && this.radio) {
       item.expanded = false;
-    } else {
-      if (this[propName] !== null || typeof this[propName] !== typeof undefined)
-        item[propName] = this[propName];
+    } else if (
+      this[propName] !== null &&
+      typeof this[propName] !== "undefined"
+    ) {
+      // only copy properties the group actually defines so the group never
+      // wipes an item's own defaults (labels, heading-button mode, expanded)
+      item[propName] = this[propName];
     }
   }
 

@@ -172,8 +172,10 @@ describe('passthrough methods', () => {
       )
     })
 
-    it('throws TypeError for input without -theme- (same as shared-styles)', () => {
-      expect(() => el.getColorInfo('red')).to.throw(TypeError)
+    it('falls back to default info for input without -theme-', () => {
+      expect(el.getColorInfo('red')).to.deep.equal(
+        SimpleColorsSharedStylesGlobal.getColorInfo('red'),
+      )
     })
   })
 
@@ -184,12 +186,12 @@ describe('passthrough methods', () => {
       expect(el.makeVariable()).to.include('--simple-colors')
     })
 
-    // NOTE: the passthrough has a bug where (color = "grey") in the call
-    // args is an assignment, not a default. So it always passes "grey",1,
-    // "default" regardless of caller args. See completion message.
-    it('always returns the default variable regardless of args (bug)', () => {
+    it('passes caller arguments through to the shared styles global', () => {
       expect(el.makeVariable('red', 5, 'fixed')).to.equal(
-        '--simple-colors-default-theme-grey-1',
+        '--simple-colors-fixed-theme-red-5',
+      )
+      expect(el.makeVariable('deep-purple', 12, 'fixed')).to.equal(
+        '--simple-colors-fixed-theme-deep-purple-12',
       )
     })
 
@@ -234,35 +236,39 @@ describe('passthrough methods', () => {
     it('returns an array of shade numbers', () => {
       const result = el.getContrastingShades(true, 'red', 6, 'grey')
       expect(result).to.be.an('array')
-      expect(result).to.deep.equal([1, 2, 3])
+      // greyColor.aaLarge shade 6 (index 5) = { min: 10, max: 12 }
+      expect(result).to.deep.equal([10, 11, 12])
     })
 
-    it('throws for out-of-range shade 12 (same as shared-styles)', () => {
-      expect(() =>
-        el.getContrastingShades(true, 'grey', 12, 'grey'),
-      ).to.throw(TypeError)
+    it('handles the darkest shade 12 (same as shared-styles)', () => {
+      expect(el.getContrastingShades(true, 'grey', 12, 'grey')).to.deep.equal([
+        1, 2, 3, 4, 5, 6,
+      ])
     })
   })
 
   // -- isContrastCompliant -------------------------------------------------
   describe('isContrastCompliant', () => {
-    it('returns false when contrastShade below range.min (short-circuit)', () => {
+    it('returns false when contrastShade below range.min', () => {
       expect(el.isContrastCompliant(true, 'grey', 1, 'grey', 1)).to.equal(false)
     })
 
-    it('throws ReferenceError when contrastShade >= range.min (ontrastShade typo)', () => {
-      expect(() =>
-        el.isContrastCompliant(true, 'grey', 1, 'grey', 7),
-      ).to.throw(ReferenceError)
+    it('returns true when contrastShade is inside the range', () => {
+      expect(el.isContrastCompliant(true, 'grey', 1, 'grey', 7)).to.equal(true)
+    })
+
+    it('returns false when contrastShade is above range.max', () => {
+      // greyColor.aaLarge shade 7 (index 6) = {min:1, max:3}
+      expect(el.isContrastCompliant(true, 'grey', 7, 'grey', 7)).to.equal(false)
     })
   })
 
   // -- invertShade ---------------------------------------------------------
   describe('invertShade', () => {
-    // NOTE: SimpleColorsSharedStylesGlobal has no invertShade method,
-    // so the passthrough throws TypeError. See completion message.
-    it('throws TypeError because SimpleColorsSharedStylesGlobal.invertShade is undefined', () => {
-      expect(() => el.invertShade(1)).to.throw(TypeError)
+    it('delegates to SimpleColorsSharedStylesGlobal.invertShade', () => {
+      expect(el.invertShade(1)).to.equal(12)
+      expect(el.invertShade(5)).to.equal(8)
+      expect(el.invertShade('12')).to.equal(1)
     })
   })
 })

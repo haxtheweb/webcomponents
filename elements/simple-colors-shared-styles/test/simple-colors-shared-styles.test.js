@@ -141,7 +141,8 @@ describe('getColorInfo', () => {
       '--simple-colors-fixed-theme-red-3',
     )
     expect(info.shade).to.equal('3')
-    expect(info.theme).to.equal('--fixed')
+    expect(info.theme).to.equal('fixed')
+    expect(info.color).to.equal('red')
   })
 
   it('parses a default-theme grey variable', () => {
@@ -149,7 +150,7 @@ describe('getColorInfo', () => {
       '--simple-colors-default-theme-grey-1',
     )
     expect(info.shade).to.equal('1')
-    expect(info.theme).to.equal('--default')
+    expect(info.theme).to.equal('default')
   })
 
   it('parses a variable without the leading -- prefix (theme has no --)', () => {
@@ -177,16 +178,31 @@ describe('getColorInfo', () => {
     expect(info.shade).to.equal('1')
   })
 
-  it('throws TypeError for input without -theme- (temp1[1] is undefined)', () => {
-    expect(() =>
-      SimpleColorsSharedStylesGlobal.getColorInfo('red'),
-    ).to.throw(TypeError)
+  it('round-trips makeVariable output', () => {
+    const variable = SimpleColorsSharedStylesGlobal.makeVariable(
+      'deep-purple',
+      7,
+      'fixed',
+    )
+    expect(SimpleColorsSharedStylesGlobal.getColorInfo(variable)).to.deep.equal(
+      { theme: 'fixed', color: 'deep-purple', shade: '7' },
+    )
   })
 
-  it('throws TypeError for empty string input', () => {
-    expect(() =>
-      SimpleColorsSharedStylesGlobal.getColorInfo(''),
-    ).to.throw(TypeError)
+  it('falls back to default info for input without -theme-', () => {
+    expect(SimpleColorsSharedStylesGlobal.getColorInfo('red')).to.deep.equal({
+      theme: 'default',
+      color: 'grey',
+      shade: '1',
+    })
+  })
+
+  it('falls back to default info for empty string input', () => {
+    expect(SimpleColorsSharedStylesGlobal.getColorInfo('')).to.deep.equal({
+      theme: 'default',
+      color: 'grey',
+      shade: '1',
+    })
   })
 })
 
@@ -224,8 +240,8 @@ describe('getContrastingShades', () => {
         7,
         'blue',
       )
-    // colorColor.aaLarge index 7 = { min: 1, max: 3 }
-    expect(shades).to.deep.equal([1, 2, 3])
+    // colorColor.aaLarge shade 7 (index 6) = { min: 1, max: 2 }
+    expect(shades).to.deep.equal([1, 2])
   })
 
   it('uses greyColor table when one color is grey', () => {
@@ -236,8 +252,8 @@ describe('getContrastingShades', () => {
         6,
         'grey',
       )
-    // greyColor.aaLarge index 6 = { min: 1, max: 3 }
-    expect(shades).to.deep.equal([1, 2, 3])
+    // greyColor.aaLarge shade 6 (index 5) = { min: 10, max: 12 }
+    expect(shades).to.deep.equal([10, 11, 12])
   })
 
   it('large vs small text give different results for colorColor shade 1', () => {
@@ -260,15 +276,15 @@ describe('getContrastingShades', () => {
     expect(small).to.deep.equal([8, 9, 10, 11, 12])
   })
 
-  it('handles shade 0 (index 0)', () => {
-    const shades =
+  it('throws for invalid shade 0 (shades run 1-12)', () => {
+    expect(() =>
       SimpleColorsSharedStylesGlobal.getContrastingShades(
         true,
         'grey',
         0,
         'grey',
-      )
-    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12])
+      ),
+    ).to.throw(TypeError)
   })
 
   it('handles string shade values ("3")', () => {
@@ -282,15 +298,16 @@ describe('getContrastingShades', () => {
     expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12])
   })
 
-  it('throws for out-of-range shade 12 (index 12 is undefined)', () => {
-    expect(() =>
+  it('handles the darkest shade 12 (index 11)', () => {
+    const shades =
       SimpleColorsSharedStylesGlobal.getContrastingShades(
         true,
         'grey',
         12,
         'grey',
-      ),
-    ).to.throw(TypeError)
+      )
+    // greyColor.aaLarge shade 12 (index 11) = { min: 1, max: 6 }
+    expect(shades).to.deep.equal([1, 2, 3, 4, 5, 6])
   })
 })
 
@@ -346,12 +363,11 @@ describe('getContrastingColors', () => {
 })
 
 // ---------------------------------------------------------------------------
-// isContrastCompliant (has a typo bug: "ontrastShade" instead of
-// "contrastShade" — see completion message)
+// isContrastCompliant
 // ---------------------------------------------------------------------------
 describe('isContrastCompliant', () => {
-  it('returns false when contrastShade is below range.min (short-circuit)', () => {
-    // greyColor.aaLarge index 2 = {min:7, max:12}, shade 1 < 7 -> false
+  it('returns false when contrastShade is below range.min', () => {
+    // greyColor.aaLarge shade 1 (index 0) = {min:7, max:12}, shade 1 < 7 -> false
     const result =
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
@@ -363,35 +379,44 @@ describe('isContrastCompliant', () => {
     expect(result).to.equal(false)
   })
 
-  it('throws ReferenceError when contrastShade >= range.min (hits ontrastShade typo)', () => {
-    // greyColor.aaLarge index 2 = {min:7, max:12}, shade 7 >= 7 -> evaluates ontrastShade
-    expect(() =>
+  it('returns true when contrastShade is inside the range', () => {
+    // greyColor.aaLarge shade 1 (index 0) = {min:7, max:12}
+    const result =
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
         'grey',
         1,
         'grey',
         7,
-      ),
-    ).to.throw(ReferenceError)
+      )
+    expect(result).to.equal(true)
   })
 
-  it('returns false for colorColor path below min', () => {
-    // colorColor.aaLarge index 2 = {min:8, max:12}, shade 1 < 8 -> false
+  it('returns false when contrastShade is above range.max', () => {
+    // greyColor.aa shade 7 (index 6) = {min:1, max:2}, shade 3 > 2 -> false
     const result =
+      SimpleColorsSharedStylesGlobal.isContrastCompliant(
+        false,
+        'grey',
+        7,
+        'grey',
+        3,
+      )
+    expect(result).to.equal(false)
+  })
+
+  it('checks the colorColor table when neither color is grey', () => {
+    // colorColor.aaLarge shade 1 (index 0) = {min:7, max:12}
+    expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
         'red',
         1,
         'blue',
         1,
-      )
-    expect(result).to.equal(false)
-  })
-
-  it('throws ReferenceError for colorColor path at or above min', () => {
-    // colorColor.aaLarge index 2 = {min:8, max:12}, shade 8 >= 8 -> evaluates ontrastShade
-    expect(() =>
+      ),
+    ).to.equal(false)
+    expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
         'red',
@@ -399,25 +424,21 @@ describe('isContrastCompliant', () => {
         'blue',
         8,
       ),
-    ).to.throw(ReferenceError)
+    ).to.equal(true)
   })
 
-  it('returns false for small text (isLarge=false) below min', () => {
-    // greyColor.aa index 2 = {min:7, max:12}, shade 1 < 7 -> false
-    const result =
+  it('checks the small text (aa) table', () => {
+    // greyColor.aa shade 1 (index 0) = {min:7, max:12}
+    expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         false,
         'grey',
         1,
         'grey',
         1,
-      )
-    expect(result).to.equal(false)
-  })
-
-  it('throws ReferenceError for small text (isLarge=false) at or above min', () => {
-    // greyColor.aa index 2 = {min:7, max:12}, shade 7 >= 7 -> evaluates ontrastShade
-    expect(() =>
+      ),
+    ).to.equal(false)
+    expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         false,
         'grey',
@@ -425,7 +446,7 @@ describe('isContrastCompliant', () => {
         'grey',
         7,
       ),
-    ).to.throw(ReferenceError)
+    ).to.equal(true)
   })
 })
 
@@ -457,6 +478,14 @@ describe('shadeToIndex', () => {
 
   it('parses string shade', () => {
     expect(SimpleColorsSharedStylesGlobal.shadeToIndex('12')).to.equal(11)
+  })
+})
+
+describe('invertShade', () => {
+  it('inverts a shade across the 12-step scale', () => {
+    expect(SimpleColorsSharedStylesGlobal.invertShade(1)).to.equal(12)
+    expect(SimpleColorsSharedStylesGlobal.invertShade(5)).to.equal(8)
+    expect(SimpleColorsSharedStylesGlobal.invertShade('12')).to.equal(1)
   })
 })
 

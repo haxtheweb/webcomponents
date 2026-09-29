@@ -67,7 +67,9 @@ class LoadingIndicator extends LitElement {
     this.loading = false;
   }
   render() {
-    return this.loading ? html`<div class="progress-line"></div>` : nothing;
+    return this.loading
+      ? html`<div class="progress-line" role="status"></div>`
+      : nothing;
   }
   static get tag() {
     return "loading-indicator";

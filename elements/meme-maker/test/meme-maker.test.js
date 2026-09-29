@@ -296,12 +296,16 @@ describe("meme-maker test", () => {
       await expect(element).shadowDom.to.be.accessible();
     });
 
-    it("has proper semantic structure with figure and figcaption", async () => {
+    it("has proper semantic structure with one figure and one figcaption", async () => {
       const figure = element.shadowRoot.querySelector("figure");
       const figcaptions = element.shadowRoot.querySelectorAll("figcaption");
 
       expect(figure).to.exist;
-      expect(figcaptions).to.have.length(2);
+      // one figcaption per figure; both meme texts live inside the single caption
+      expect(figcaptions).to.have.length(1);
+      const caption = figcaptions[0];
+      expect(caption.querySelector(".top-text")).to.exist;
+      expect(caption.querySelector(".bottom-text")).to.exist;
     });
 
     it("image has alt attribute when provided", async () => {

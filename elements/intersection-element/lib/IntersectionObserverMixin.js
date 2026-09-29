@@ -55,6 +55,11 @@ const IntersectionObserverMixin = function (SuperClass) {
       }
       // setup the intersection observer, only if we are not visible
       if (!this.elementVisible) {
+        // disconnect any previous observer first so repeated connections (as
+        // happen when an element is moved around the DOM) never leak observers
+        if (this.intersectionObserver) {
+          this.intersectionObserver.disconnect();
+        }
         this.intersectionObserver = new IntersectionObserver(
           this.handleIntersectionCallback.bind(this),
           {
@@ -87,7 +92,9 @@ const IntersectionObserverMixin = function (SuperClass) {
      */
     handleIntersectionCallback(entries) {
       for (let entry of entries) {
-        let ratio = Number(entry.intersectionRatio).toFixed(2);
+        // compare the raw ratio numerically; rounding it first (the way
+        // toFixed would) can push a below-limit ratio up past the limit
+        let ratio = Number(entry.intersectionRatio);
         // ensure ratio is higher than our limit before trigger visibility
         if (ratio >= this.IOVisibleLimit) {
           this.elementVisible = true;

@@ -1787,7 +1787,9 @@ class HAXCMSSiteStore extends HTMLElement {
       if (
         store.location &&
         store.location.route &&
-        store.location.route.component
+        store.location.route.component &&
+        store.manifest &&
+        store.manifest.items
       ) {
         // get the id from the router
         const id = store.location.route.name;

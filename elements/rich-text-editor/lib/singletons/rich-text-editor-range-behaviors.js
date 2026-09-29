@@ -244,7 +244,11 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
 
     getRange() {
       let sel = this.getSelection();
-      return this.__toolbar ? this.__toolbar.getRange() : sel.getRangeAt(0);
+      return this.__toolbar
+        ? this.__toolbar.getRange()
+        : sel && sel.rangeCount > 0
+          ? sel.getRangeAt(0)
+          : undefined;
     }
 
     getSelection() {

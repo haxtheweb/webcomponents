@@ -59,16 +59,25 @@ class ScrollButton extends LitElement {
         simple-icon-button-lite {
           background-color: var(
             --scroll-button-background-color,
-            rgba(0, 0, 0, 0.6)
+            color-mix(in srgb, var(--ddd-theme-default-black) 60%, transparent)
           );
-          color: var(--scroll-button-color, white);
+          color: var(
+            --scroll-button-color,
+            var(--ddd-theme-default-white)
+          );
         }
 
         simple-icon-button-lite:hover,
         simple-icon-button-lite:active,
         simple-icon-button-lite:focus {
-          color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
-          background-color: var(--scroll-button-color, white);
+          color: var(
+            --scroll-button-background-color,
+            var(--ddd-theme-default-black)
+          );
+          background-color: var(
+            --scroll-button-color,
+            var(--ddd-theme-default-white)
+          );
         }
         /*
          * scroll-button is used across every HAXCMS theme (clean-one,

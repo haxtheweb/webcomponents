@@ -24,12 +24,12 @@ class JosRender extends LitElement {
         }
         .children {
           display: block;
-          margin: 16px auto;
+          margin: var(--ddd-spacing-4) auto;
         }
         .children ::slotted(*) {
           display: inline-flex;
-          margin: var(--jos-render-margin, 8px);
-          padding: var(--jos-render-padding, 8px);
+          margin: var(--jos-render-margin, var(--ddd-spacing-2));
+          padding: var(--jos-render-padding, var(--ddd-spacing-2));
         }
       `,
     ];

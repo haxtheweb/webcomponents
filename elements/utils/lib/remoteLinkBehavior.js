@@ -46,9 +46,7 @@ export const remoteLinkBehavior = function (SuperClass) {
      */
     remoteLinkURLisExternalLink(url) {
       if (url.indexOf("http") != 0) return false;
-      var loc = location.href,
-        path = location.pathname,
-        root = loc.substring(0, loc.indexOf(path));
+      var root = globalThis.location.origin;
       return url.indexOf(root) != 0;
     }
   };

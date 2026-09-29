@@ -179,7 +179,6 @@ class A11yCollapse extends DDD {
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"
-        aria-live="polite"
       >
         <div id="content-inner">
           ${this.expanded
@@ -472,20 +471,12 @@ class A11yCollapse extends DDD {
         aria-expanded="${this.expanded ? "true" : "false"}"
         ?disabled="${this.disabled}"
       >
-        <div
-          id="heading"
-          part="heading-id"
-          .label="${this._getExpanded(
-            this.label,
-            this.labelExpanded,
-            this.expanded,
-          )}"
-        >
-          <div id="text">
+        <span id="heading" part="heading-id">
+          <span id="text">
             ${this.heading
-              ? html`<p part="heading">${this.heading}</p>`
+              ? html`<span part="heading">${this.heading}</span>`
               : ``}<slot name="heading"></slot>
-          </div>
+          </span>
           <simple-icon-lite
             id="expand"
             part="icon"
@@ -498,7 +489,7 @@ class A11yCollapse extends DDD {
             aria-hidden="true"
           >
           </simple-icon-lite>
-        </div>
+        </span>
       </button>
       <simple-tooltip for="heading"
         >${this._getExpanded(

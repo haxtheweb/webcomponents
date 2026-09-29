@@ -934,3 +934,349 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe('a11y-collapse tooltip interaction', () => {
+  let collapseEl;
+  let tooltip;
+  let tipDiv;
+  let iconButton;
+
+  beforeEach(async () => {
+    collapseEl = await fixture(html`
+      <a11y-collapse
+        heading="Tooltip Test"
+        tooltip="Click to expand"
+        tooltip-expanded="Click to collapse"
+      >
+        <div>Content for tooltip testing</div>
+      </a11y-collapse>
+    `);
+    await collapseEl.updateComplete;
+    tooltip = collapseEl.shadowRoot.querySelector('simple-tooltip');
+    iconButton = collapseEl.shadowRoot.querySelector(
+      'simple-icon-button-lite',
+    );
+    tipDiv = tooltip.shadowRoot.querySelector('#tooltip');
+  });
+
+  it('renders a tooltip anchored to the expand button', () => {
+    expect(tooltip).to.exist;
+    expect(tooltip.for).to.equal('expand');
+    expect(tooltip.textContent.trim()).to.equal('Click to expand');
+  });
+
+  it('shows the tooltip when the expand button is hovered', async () => {
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+    iconButton.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(tooltip._showing).to.be.true;
+    expect(tipDiv.classList.contains('hidden')).to.be.false;
+    expect(tipDiv.classList.contains('fade-in-animation')).to.be.true;
+  });
+
+  it('hides the tooltip instantly when unhovered during the entry animation', async () => {
+    iconButton.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(tooltip._showing).to.be.true;
+    iconButton.dispatchEvent(new MouseEvent('mouseleave'));
+    expect(tooltip._showing).to.be.false;
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+    expect(tipDiv.classList.contains('fade-in-animation')).to.be.false;
+  });
+
+  it('plays the exit animation when unhovered after the entry animation finished', async () => {
+    iconButton.dispatchEvent(new MouseEvent('mouseenter'));
+    // complete the entry animation the way the browser would
+    tipDiv.dispatchEvent(new Event('animationend'));
+    expect(tooltip._animationPlaying).to.be.false;
+    iconButton.dispatchEvent(new MouseEvent('mouseleave'));
+    expect(tooltip._showing).to.be.false;
+    expect(tipDiv.classList.contains('fade-out-animation')).to.be.true;
+    // allow the animation timers to settle before checking the final state
+    await new Promise((resolve) => setTimeout(resolve, 650));
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+  });
+
+  it('shows the tooltip on focus and hides it on blur', async () => {
+    iconButton.dispatchEvent(new FocusEvent('focus'));
+    expect(tooltip._showing).to.be.true;
+    iconButton.dispatchEvent(new FocusEvent('blur'));
+    expect(tooltip._showing).to.be.false;
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+  });
+
+  it('hides the tooltip when the collapse is clicked', async () => {
+    iconButton.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(tooltip._showing).to.be.true;
+    iconButton.click();
+    await collapseEl.updateComplete;
+    expect(collapseEl.expanded).to.be.true;
+    expect(tooltip._showing).to.be.false;
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+  });
+
+  it('ignores a mouseenter on the tooltip host while hidden', async () => {
+    tooltip.dispatchEvent(new MouseEvent('mouseenter'));
+    // _showing is not initialized until the first show, so it stays falsy
+    expect(tooltip._showing).to.not.be.true;
+    expect(tipDiv.classList.contains('hidden')).to.be.true;
+  });
+
+  it('does not show a tooltip that has no text', async () => {
+    const emptyEl = await fixture(html`
+      <a11y-collapse tooltip="">
+        <div>Content without a tooltip</div>
+      </a11y-collapse>
+    `);
+    await emptyEl.updateComplete;
+    const emptyTooltip = emptyEl.shadowRoot.querySelector('simple-tooltip');
+    expect(emptyTooltip.textContent.trim()).to.equal('');
+    emptyTooltip._target.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(emptyTooltip._showing).to.not.be.true;
+  });
+
+  it('updates the tooltip text when the expanded state changes', async () => {
+    expect(tooltip.textContent.trim()).to.equal('Click to expand');
+    collapseEl.toggle(true);
+    await collapseEl.updateComplete;
+    expect(tooltip.textContent.trim()).to.equal('Click to collapse');
+    collapseEl.toggle(false);
+    // the collapsed-state labels are restored in a microtask after the
+    // toggle, so give the element time to re-render before reading the text
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    await collapseEl.updateComplete;
+    expect(tooltip.textContent.trim()).to.equal('Click to expand');
+  });
+
+  it('shows the tooltip when the heading is hovered in heading-button mode', async () => {
+    const headingModeEl = await fixture(html`
+      <a11y-collapse
+        heading-button
+        heading="Hover Heading"
+        tooltip="Heading tooltip"
+      >
+        <div>Content for heading tooltip testing</div>
+      </a11y-collapse>
+    `);
+    await headingModeEl.updateComplete;
+    const headingTooltip =
+      headingModeEl.shadowRoot.querySelector('simple-tooltip');
+    expect(headingTooltip.for).to.equal('heading');
+    const headingDiv = headingModeEl.shadowRoot.querySelector('#heading');
+    expect(headingTooltip._target).to.equal(headingDiv);
+    headingDiv.dispatchEvent(new MouseEvent('mouseenter'));
+    expect(headingTooltip._showing).to.be.true;
+  });
+});
+
+describe('a11y-collapse heading-button interaction', () => {
+  it('toggles the content when the whole heading button is clicked', async () => {
+    const headingButtonEl = await fixture(html`
+      <a11y-collapse heading-button heading="Clickable Heading">
+        <div>Hidden content</div>
+      </a11y-collapse>
+    `);
+    await headingButtonEl.updateComplete;
+    const button = headingButtonEl.shadowRoot.querySelector('button');
+    expect(button.getAttribute('aria-expanded')).to.equal('false');
+    expect(
+      headingButtonEl.shadowRoot.querySelector('#content').getAttribute('aria-hidden'),
+    ).to.equal('true');
+    button.click();
+    await headingButtonEl.updateComplete;
+    expect(headingButtonEl.expanded).to.be.true;
+    expect(button.getAttribute('aria-expanded')).to.equal('true');
+    expect(
+      headingButtonEl.shadowRoot.querySelector('#content').getAttribute('aria-hidden'),
+    ).to.equal('false');
+    button.click();
+    await headingButtonEl.updateComplete;
+    expect(headingButtonEl.expanded).to.be.false;
+    expect(button.getAttribute('aria-expanded')).to.equal('false');
+  });
+
+  it('renders the heading text inside the heading button', async () => {
+    const headingButtonEl = await fixture(html`
+      <a11y-collapse heading-button heading="Rendered Heading">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await headingButtonEl.updateComplete;
+    const heading = headingButtonEl.shadowRoot.querySelector(
+      'button span[part="heading"]',
+    );
+    expect(heading).to.exist;
+    expect(heading.textContent.trim()).to.equal('Rendered Heading');
+  });
+
+  it('reflects disabled onto the heading button', async () => {
+    const headingButtonEl = await fixture(html`
+      <a11y-collapse heading-button heading="Disabled Heading" disabled>
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await headingButtonEl.updateComplete;
+    expect(
+      headingButtonEl.shadowRoot.querySelector('button').hasAttribute('disabled'),
+    ).to.be.true;
+  });
+
+  it('reflects disabled onto the icon button in icon mode', async () => {
+    const iconModeEl = await fixture(html`
+      <a11y-collapse disabled>
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await iconModeEl.updateComplete;
+    expect(
+      iconModeEl.shadowRoot.querySelector('simple-icon-button-lite').disabled,
+    ).to.be.true;
+  });
+
+  it('rotates the expand icon when collapsed without an expanded icon', async () => {
+    const rotatedEl = await fixture(html`
+      <a11y-collapse heading-button heading="Icon Rotation">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await rotatedEl.updateComplete;
+    let icon = rotatedEl.shadowRoot.querySelector('#expand');
+    expect(icon.classList.contains('rotated')).to.be.true;
+    rotatedEl.toggle(true);
+    await rotatedEl.updateComplete;
+    icon = rotatedEl.shadowRoot.querySelector('#expand');
+    expect(icon.classList.contains('rotated')).to.be.false;
+  });
+
+  it('does not rotate the icon when an expanded icon is provided', async () => {
+    const expandedIconEl = await fixture(html`
+      <a11y-collapse
+        heading-button
+        heading="Icon Rotation Two"
+        icon-expanded="icons:expand-less"
+      >
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await expandedIconEl.updateComplete;
+    const icon = expandedIconEl.shadowRoot.querySelector('#expand');
+    expect(icon.classList.contains('rotated')).to.be.false;
+  });
+});
+
+describe('a11y-collapse icon resolution', () => {
+  it('resolves the default icon to an image source', async () => {
+    const defaultIconEl = await fixture(html`
+      <a11y-collapse heading-button heading="Default Icon">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await defaultIconEl.updateComplete;
+    // icon src lookup is deferred to a microtask after the update
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    const icon = defaultIconEl.shadowRoot.querySelector(
+      'simple-icon-lite#expand',
+    );
+    expect(icon.src).to.be.a('string');
+    expect(icon.src).to.include('expand-more');
+  });
+
+  it('clears the icon source when the icon cannot be resolved', async () => {
+    const unknownIconEl = await fixture(html`
+      <a11y-collapse heading-button heading="Unknown Icon">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await unknownIconEl.updateComplete;
+    unknownIconEl.icon = 'bogus-iconset:missing-icon';
+    await unknownIconEl.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    const icon = unknownIconEl.shadowRoot.querySelector(
+      'simple-icon-lite#expand',
+    );
+    expect(icon.src).to.equal(null);
+  });
+
+  it('falls back to the default icon when the icon is emptied', async () => {
+    const emptyIconEl = await fixture(html`
+      <a11y-collapse heading-button heading="Empty Icon" icon="icons:expand-less">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await emptyIconEl.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    const icon = emptyIconEl.shadowRoot.querySelector('simple-icon-lite#expand');
+    expect(icon.src).to.include('expand-less');
+    emptyIconEl.icon = '';
+    await emptyIconEl.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    // the renderer falls back to icons:expand-more when icon is empty
+    expect(icon.getAttribute('icon')).to.equal('icons:expand-more');
+    expect(icon.src).to.include('expand-more');
+  });
+});
+
+describe('a11y-collapse inherited color utilities', () => {
+  let colorsEl;
+
+  beforeEach(async () => {
+    colorsEl = await fixture(html`
+      <a11y-collapse heading="Color Utilities">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await colorsEl.updateComplete;
+  });
+
+  it('parses the shade from a CSS variable name', () => {
+    const info = colorsEl.getColorInfo('--simple-colors-default-theme-red-3');
+    expect(info).to.be.an('object');
+    expect(info.shade).to.equal('3');
+  });
+
+  it('falls back to default info for a name without a theme', () => {
+    expect(colorsEl.getColorInfo('red')).to.deep.equal({
+      theme: 'default',
+      color: 'grey',
+      shade: '1',
+    });
+  });
+
+  it('builds the default CSS variable name', () => {
+    expect(colorsEl.makeVariable()).to.equal(
+      '--simple-colors-default-theme-grey-1',
+    );
+    // the passthrough also forwards caller arguments correctly
+    expect(colorsEl.makeVariable('red', 3, 'fixed')).to.equal(
+      '--simple-colors-fixed-theme-red-3',
+    );
+  });
+
+  it('lists WCAG AA contrasting shades for a grey', () => {
+    expect(colorsEl.getContrastingShades(false, 'grey', '3', 'grey')).to.deep.equal(
+      [7, 8, 9, 10, 11, 12],
+    );
+  });
+
+  it('lists WCAG AA contrasting colors for a grey', () => {
+    const result = colorsEl.getContrastingColors('grey', '3', false);
+    expect(Object.keys(result).length).to.equal(
+      Object.keys(colorsEl.colors).length,
+    );
+    expect(result.grey).to.deep.equal([7, 8, 9, 10, 11, 12]);
+  });
+});
+
+describe('a11y-collapse deprecated accordion API', () => {
+  it('keeps the deprecated _makeAccordionButton alias callable', async () => {
+    const deprecatedEl = await fixture(html`
+      <a11y-collapse heading="Deprecated Alias">
+        <div>Content</div>
+      </a11y-collapse>
+    `);
+    await deprecatedEl.updateComplete;
+    expect(typeof deprecatedEl._makeAccordionButton).to.equal('function');
+    deprecatedEl._makeAccordionButton();
+    // the deprecated alias does not mutate the rendered DOM
+    expect(deprecatedEl.shadowRoot.querySelector('simple-icon-button-lite')).to
+      .exist;
+  });
+});

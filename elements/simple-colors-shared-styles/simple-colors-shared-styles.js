@@ -938,10 +938,13 @@ class SimpleColorsSharedStyles extends LitElement {
     let temp1 = colorName
         .replace(/(simple-colors-)?(-text)?(-border)?/g, "")
         .split("-theme-"),
-      theme = temp1.length > 0 ? temp1[0] : "default",
-      temp2 = temp1.length > 0 ? temp1[1].split("-") : temp1[0].split("-"),
+      theme =
+        temp1.length > 1 ? temp1[0].replace(/^[.-]+/, "") : "default",
+      temp2 = (temp1.length > 1 ? temp1[1] : temp1[0]).split("-"),
       color =
-        temp2.length > 1 ? temp2.slice(1, temp2.length - 1).join("-") : "grey",
+        temp2.length > 1
+          ? temp2.slice(0, temp2.length - 1).join("-")
+          : "grey",
       shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
     return {
       theme: theme,
@@ -977,7 +980,7 @@ class SimpleColorsSharedStyles extends LitElement {
           ? "greyColor"
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
-      index = parseInt(colorShade),
+      index = this.shadeToIndex(colorShade),
       range = this.contrasts[hasGrey][aa][index];
     return Array(range.max - range.min + 1)
       .fill()
@@ -1028,9 +1031,9 @@ class SimpleColorsSharedStyles extends LitElement {
           ? "greyColor"
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
-      index = parseInt(colorShade) + 1,
+      index = this.shadeToIndex(colorShade),
       range = this.contrasts[hasGrey][aa][index];
-    return contrastShade >= range.min && ontrastShade >= range.max;
+    return contrastShade >= range.min && contrastShade <= range.max;
   }
 
   /**
@@ -1051,6 +1054,16 @@ class SimpleColorsSharedStyles extends LitElement {
    */
   shadeToIndex(shade) {
     return parseInt(shade) - 1;
+  }
+
+  /**
+   * gets the inverse of a shade across the 12-step color scale
+   *
+   * @param {string} the shade
+   * @param {number} the inverted shade
+   */
+  invertShade(shade) {
+    return 13 - parseInt(shade);
   }
 }
 globalThis.customElements.define(

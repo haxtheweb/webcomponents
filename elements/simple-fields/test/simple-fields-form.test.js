@@ -227,10 +227,13 @@ describe('simple-fields-form', () => {
     expect(el.value).to.deep.equal({ name: 'test' })
   })
 
-  it('defaultSchemaConversion getter does not throw', () => {
-    // SimpleFields.defaultSchemaConversion may be undefined;
-    // the getter just passes it through without error
-    expect(() => el.defaultSchemaConversion).to.not.throw()
+  it('defaultSchemaConversion getter returns the SimpleFields default conversion object', () => {
+    const conversion = el.defaultSchemaConversion
+    expect(conversion).to.exist
+    expect(conversion).to.have.property('defaultSettings')
+    expect(conversion.defaultSettings.element).to.equal('simple-fields-field')
+    expect(conversion).to.have.property('type')
+    expect(conversion.type).to.have.property('object')
   })
 
   it('rebuildForm calls rebuidForm on #sf', async () => {

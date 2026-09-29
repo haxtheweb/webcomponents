@@ -9,7 +9,10 @@ export const SimpleModalHandler = function (SuperClass) {
   return class extends SuperClass {
     connectedCallback() {
       super.connectedCallback();
-      this.setAttribute("tabindex", "0");
+      // respect an author-provided tabindex instead of clobbering it
+      if (!this.hasAttribute("tabindex")) {
+        this.setAttribute("tabindex", "0");
+      }
     }
     constructor() {
       super();

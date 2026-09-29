@@ -162,7 +162,7 @@ class RetroCard extends SimpleColors {
   render() {
     return html` ${!this.nosource
       ? html`
-   <a tabindex="-1" class="link ${this.color}" href="${this.url}" @click="${
+   <a tabindex="-1" class="link" href="${this.url}" @click="${
      this._clickCard
    }">
      ${
@@ -171,13 +171,13 @@ class RetroCard extends SimpleColors {
              class="img"
              loading="lazy"
              src="${this.__source}"
-             alt=""
+             alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
            />`
          : ``
      }
      <div class="title" part="title"><slot name="title"></slot>${
        this.title
-     }</slot></div>
+     }</div>
      <div class="subtitle" part="subtitle"><slot name="subtitle">${
        this.subtitle
      }</slot></div>
@@ -198,15 +198,20 @@ class RetroCard extends SimpleColors {
  </a>
  `
       : html`
- <div class="link ${this.color}">
+ <div class="link">
    ${
      this.__source
-       ? html`<img class="img" loading="lazy" src="${this.__source}" alt="" />`
+       ? html`<img
+           class="img"
+           loading="lazy"
+           src="${this.__source}"
+           alt="${[this.title, this.subtitle].filter(Boolean).join(" ")}"
+         />`
        : ``
    }
    <div class="title" part="title"><slot name="title"></slot>${
      this.title
-   }</slot></div>
+   }</div>
    <div class="subtitle" part="subtitle"><slot name="subtitle">${
      this.subtitle
    }</slot></div>
@@ -231,6 +236,9 @@ class RetroCard extends SimpleColors {
   static get haxProperties() {
     return {
       canScale: false,
+      // intentional retro aesthetic (SimpleColors accents + hardcoded retro
+      // palette), not a DDD-based element
+      designSystem: false,
 
       canEditSource: true,
       gizmo: {
@@ -320,7 +328,7 @@ class RetroCard extends SimpleColors {
       },
       demoSchema: [
         {
-          tag: "video-player",
+          tag: "retro-card",
           properties: {
             title: "HAX Camp",
             subtitle: "btopro dreaming reality",
@@ -419,7 +427,7 @@ class RetroCard extends SimpleColors {
     // between CSS, JS and keyboard actions this way
     if (!this.nosource) {
       this.setAttribute("tabindex", 0);
-      this.addEventListener("keypress", this._keyPress.bind(this));
+      this.addEventListener("keydown", this._keyPress.bind(this));
       this.addEventListener("focusin", this._hoverStateOn.bind(this));
       this.addEventListener("focusout", this._hoverStateOff.bind(this));
     }

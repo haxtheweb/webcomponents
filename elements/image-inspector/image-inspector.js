@@ -120,12 +120,7 @@ class ImageInspector extends LitElement {
             icon="image:flip"
             @click="${this.mirrorImage}"
           ></simple-icon-button-lite>
-          <a
-            href="${this.src}"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabindex="-1"
-          >
+          <a href="${this.src}" target="_blank" rel="noopener noreferrer">
             <simple-icon-button-lite
               label="Open in new window"
               icon="launch"
@@ -195,10 +190,11 @@ class ImageInspector extends LitElement {
    * Flip the image.
    */
   mirrorImage() {
-    if (this.__img.style.transform === "scaleX(1)") {
-      this.__img.style.transform = "scaleX(-1)";
-    } else {
+    // toggle from the current state so the first click mirrors immediately
+    if (this.__img.style.transform === "scaleX(-1)") {
       this.__img.style.transform = "scaleX(1)";
+    } else {
+      this.__img.style.transform = "scaleX(-1)";
     }
   }
 

@@ -8,8 +8,8 @@ import { SimpleIconsetStore } from '../lib/simple-iconset.js'
 
 // Test subclass that forces the SVG render path (no Safari polyfill).
 // SimpleIconBehaviors uses useSafariPolyfill to switch between an <svg>
-// and a <div id="svg-polyfill"> mask. Chromium's UA contains "Safari"
-// so the default getter returns true in tests; this subclass forces false.
+// and a <div id="svg-polyfill"> mask. The default getter excludes
+// Chromium-based browsers, so this subclass forces each path explicitly.
 class TestSVGIcon extends SimpleIconBehaviors(LitElement) {
   static get tag() {
     return 'test-svg-icon-lite'

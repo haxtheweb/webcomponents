@@ -547,3 +547,31 @@ describe("IntersectionObserverMixin test", () => {
     expect(element.intersectionObserver).to.exist; // Should have new observer
   });
 });
+
+describe('IntersectionObserverMixin property inheritance', () => {
+  it('preserves base class properties and adds elementVisible', () => {
+    class BaseWithProps extends LitElement {
+      static get properties() {
+        return { baseProp: { type: String } };
+      }
+    }
+    class ChildWithProps extends IntersectionObserverMixin(BaseWithProps) {}
+
+    const props = ChildWithProps.properties;
+    expect(props.baseProp).to.exist;
+    expect(props.baseProp.type).to.equal(String);
+    expect(props.elementVisible).to.exist;
+    expect(props.elementVisible.type).to.equal(Boolean);
+    expect(props.elementVisible.attribute).to.equal('element-visible');
+    expect(props.elementVisible.reflect).to.be.true;
+  });
+
+  it('works when the base class defines no properties', () => {
+    class BareBase {}
+    class TestBare extends IntersectionObserverMixin(BareBase) {}
+
+    const props = TestBare.properties;
+    expect(props.elementVisible).to.exist;
+    expect(Object.keys(props)).to.include('elementVisible');
+  });
+});

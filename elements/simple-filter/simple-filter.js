@@ -24,7 +24,6 @@ export const SimpleFilterMixin = function (SuperClass) {
     resetList(list = []) {
       this.items = [...list];
       this.where = "title";
-      this.value = "";
       this.like = "";
     }
     static get properties() {
@@ -121,6 +120,7 @@ export const SimpleFilterMixin = function (SuperClass) {
     filter() {
       //This forces filter function to do its job :-)
       this.where = "";
+      this.like = "";
     }
     // helper function to escape special characters when regex is the comparison tool but input is user string
     escapeRegExp(text) {
