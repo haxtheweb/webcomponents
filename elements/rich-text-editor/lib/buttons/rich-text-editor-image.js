@@ -97,7 +97,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       ? ""
       : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
           !width ? "" : ` width="${width}"`
-        }${!height ? "" : ` width="${height}"`}>`;
+        }${!height ? "" : ` height="${height}"`}>`;
   }
 
   /**

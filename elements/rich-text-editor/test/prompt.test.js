@@ -193,12 +193,21 @@ describe('rich-text-editor-prompt', () => {
     expect(prompt.__retainFocusIn).to.equal(true)
     prompt.dispatchEvent(new Event('focusout'))
     expect(prompt.__retainFocusIn).to.equal(false)
-    // NOTE (BUG): rich-text-editor-prompt.js:257 passes the RESULT of
-    // this._handleChange(e) to setTimeout instead of a function, so the
-    // change handler runs immediately rather than after 300ms.
-    prompt.__opened = false
+    // fixed (issue #3077, bug 29): the change listener defers
+    // _handleChange through an arrow function instead of invoking it
+    // immediately, so the cancel check runs at 300ms + 500ms
+    // first drain any cancel-check timers still pending from earlier
+    // tests (they no-op while the prompt is closed)
+    await sleep(900)
+    prompt.__opened = true
+    prompt.__focused = false
+    prompt.__hovered = false
     prompt.__highlight.dispatchEvent(new Event('change'))
+    // at 600ms the deferred cancel has not fired yet (the old code invoked
+    // _handleChange(e) immediately and canceled at 500ms)
     await sleep(600)
+    expect(prompt.__opened).to.equal(true)
+    await sleep(400)
     expect(prompt.__opened).to.equal(false)
   })
 

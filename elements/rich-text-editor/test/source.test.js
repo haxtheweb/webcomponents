@@ -64,19 +64,24 @@ describe('rich-text-editor-source singleton', () => {
     el.__target = editor
     el.__needsUpdate = false
     el._handleSourceChange({ detail: { value: '<p>changed</p>' } })
-    // htmlMatchesTarget returns 0 when identical, non-zero when different;
-    // the changed value differs so an update is scheduled
+    // htmlMatchesTarget returns a boolean (true when identical, false when
+    // different; fixed, issue #3077 bug 26), so the changed value differs and
+    // an update is scheduled
     await sleep(350)
     expect(editor.innerHTML).to.equal('<p>changed</p>')
     expect(el.__needsUpdate).to.equal(false)
     // falsy value: __needsUpdate goes true and the update clears the target
-    // NOTE (BUG, not triggered here): passing detail: undefined crashes the
-    // scheduled update at rich-text-editor-source.js:247 because the guard at
-    // line 241 handles a missing detail but `e.detail.value` in the update
-    // callback does not
     el._handleSourceChange({ detail: { value: '' } })
     await sleep(350)
     expect(editor.innerHTML).to.equal('')
+    // a missing detail no longer crashes the scheduled update (fixed, issue
+    // #3077 bug 67): the update falls back to the current code editor value
+    el.__codeEditorValue = '<p>fallback</p>'
+    el._handleSourceChange({})
+    await sleep(350)
+    expect(el.__needsUpdate).to.equal(false)
+    expect(el.innerHTML).to.equal('<p>fallback</p>')
+    expect(editor.innerHTML).to.equal('<p>fallback</p>')
     el.__toolbar = undefined
     el.__target = undefined
     editor.remove()

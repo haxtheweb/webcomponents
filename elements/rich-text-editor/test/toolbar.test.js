@@ -561,7 +561,7 @@ describe('rich-text-editor-toolbar', () => {
       readText: async () => 'pasted-here',
     })
     // a plain contenteditable target keeps toolbar.range alive across the
-    // async clipboard read (see the getRange BUG note above)
+    // async clipboard read
     const target = await makeTarget()
     toolbar.setTarget(target)
     const range = selectContents(target)
@@ -580,8 +580,7 @@ describe('rich-text-editor-toolbar', () => {
   })
 
   it('_addHighlight wraps the range while editing', async () => {
-    // a plain target so getRange can resolve the selection (see the getRange
-    // BUG note above)
+    // a plain target so getRange resolves the selection simply
     const target = await makeTarget()
     toolbar.setTarget(target)
     const range = selectContents(target)

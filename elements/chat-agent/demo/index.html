@@ -1,32 +1,119 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>ChatAgent: chat-agent Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-    
     <script>
-    globalThis.process = globalThis.process || {
-      env: {
-        NODE_ENV: "production"
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: 'production'
+        }
       }
-    };
-    window.MicroFrontendRegistryConfig = window.MicroFrontendRegistryConfig || {};
-    window.MicroFrontendRegistryConfig.base = "https://open-apis.hax.cloud";
     </script>
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../chat-agent.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../chat-agent.js'
+      import { ChatStore } from '../lib/chat-agent-store.js'
+
+      // open the interface right away so the sample conversation is visible
+      ChatStore.isInterfaceHidden = false
+
+      // once the widget boots (Merlin writes an offline intro message), script
+      // a fully offline sample exchange with one of the built-in tutorial
+      // prompts so that this demo never makes a network request
+      globalThis.addEventListener('load', () => {
+        ChatStore.handleMessage(
+          ChatStore.userName,
+          'What can you do for me?'
+        )
+      })
     </script>
-    
     <style>
-      body {
-        background-color: rgb(203, 196, 196);
+      .sample-course-page {
+        background-color: var(--ddd-theme-default-white);
+        border: var(--ddd-border-xs);
+        border-radius: var(--ddd-radius-sm);
+        color: var(--ddd-theme-default-coalyGray);
+        font-family: var(--ddd-font-primary);
+        padding: var(--ddd-spacing-5);
+      }
+
+      .sample-course-page h3 {
+        font-size: var(--ddd-theme-h3-font-size);
+        font-weight: var(--ddd-font-weight-bold);
+        margin: 0 0 var(--ddd-spacing-3);
+      }
+
+      .sample-course-page h4 {
+        font-size: var(--ddd-theme-h4-font-size);
+        font-weight: var(--ddd-font-weight-bold);
+        margin: var(--ddd-spacing-4) 0 var(--ddd-spacing-2);
+      }
+
+      .sample-course-page p {
+        font-size: var(--ddd-font-size-3xs);
+        line-height: var(--ddd-lh-150);
+        margin: 0 0 var(--ddd-spacing-2);
+      }
+
+      .sample-course-page ul {
+        margin: 0 0 var(--ddd-spacing-2);
+        padding-left: var(--ddd-spacing-6);
       }
     </style>
   </head>
   <body>
+    <div class="vertical-section-container centered">
+      <h1>ChatAgent: chat-agent demo</h1>
+      <p>
+        chat-agent is a floating chat widget built from a chat-button,
+        chat-interface, chat-control-bar, chat-input, chat-message, and
+        chat-suggestion team. It is a fixed-position widget, so it floats over
+        the lower-right corner of the page instead of rendering inline. This
+        demo is fully static: the greeting and the scripted sample exchange
+        below are handled offline by the element itself.
+      </p>
+      <h2>chat-agent over sample page content</h2>
+      <demo-snippet>
+        <template>
+          <article class="sample-course-page">
+            <h3>PHYS 211: General Physics: Mechanics and Thermal Physics</h3>
+            <p>
+              Welcome to week 4. This week we connect Newton's laws of motion
+              to the everyday forces around us, from friction on a snowy hill
+              to the tension in a tow rope.
+            </p>
+            <h4>Learning objectives</h4>
+            <ul>
+              <li>Identify the forces acting on an object on an incline.</li>
+              <li>Apply Newton's second law along each axis of a ramp.</li>
+              <li>Explain how friction changes as a sled accelerates downhill.</li>
+            </ul>
+            <h4>Reading</h4>
+            <p>
+              Review the chapter on forces and equilibrium, then work through
+              the sample problems before Friday's recitation.
+            </p>
+          </article>
+          <chat-agent></chat-agent>
+        </template>
+      </demo-snippet>
+      <h2>Offline prompts to try</h2>
+      <p>
+        The suggested prompts below are answered entirely offline, so you can
+        exercise the full conversation flow without any network activity:
+      </p>
+      <ul>
+        <li>Who are you?</li>
+        <li>What can you do for me?</li>
+        <li>How do I use you?</li>
+      </ul>
+      <p>
+        Use the chat control bar to download the chat log, reset the
+        conversation, or toggle the full view mode with the expand button.
+      </p>
+    </div>
   </body>
 </html>

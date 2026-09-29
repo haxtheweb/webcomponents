@@ -169,15 +169,16 @@ describe('HAXWiring class', () => {
     expect(propsObj.settings.configure[0].title).to.equal('title')
   })
 
-  // BUG: lib/HAXWiring.js:343-346 — when fetch resolves without a usable
-  // response, props becomes `false` and the very next `props.api` write
-  // throws (Cannot create property on boolean) in strict mode modules.
-  // Documents the crash for the fix swarm; flip once guarded.
-  it('setHaxProperties throws when the fetched response has no json', async () => {
+  // fixed (issue #3077, bug 14): a fetch that resolves without usable
+  // json returns early instead of falling through to the props.api
+  // write, which threw (Cannot create property on boolean) in strict
+  // mode modules
+  it('setHaxProperties returns early when the fetched response has no json', async () => {
     globalThis.fetch = async () => false
     let error = null
+    let result = 'unset'
     try {
-      await wiring.setHaxProperties(
+      result = await wiring.setHaxProperties(
         'https://example.com/broken.json',
         'some-tag',
         globalThis.document,
@@ -186,7 +187,8 @@ describe('HAXWiring class', () => {
     } catch (e) {
       error = e
     }
-    expect(error instanceof TypeError).to.equal(true)
+    expect(error === null).to.equal(true)
+    expect(result).to.equal(false)
   })
 
   it('setHaxProperties warns when the api version is unknown', async () => {
@@ -415,13 +417,12 @@ describe('HAXWiring class', () => {
       expect(JSON.stringify(setting.slotAttributes)).to.equal('{}')
     })
 
-    // BUG: lib/HAXWiring.js:627-633 — slot-only settings never receive a
-    // title: the fallback reads setting.property which is undefined when
-    // only a slot was supplied. Documents current behavior for the fix
-    // swarm; flip this once title falls back to slot.
-    it('slot-only settings do not receive a title', () => {
+    // fixed (issue #3077, bug 37): slot-only settings receive a title
+    // from the slot name (the old fallback read setting.property which
+    // is undefined when only a slot was supplied)
+    it('slot-only settings receive a title from the slot', () => {
       const setting = wiring.validateSetting({ slot: 'content' })
-      expect(setting.title).to.equal(undefined)
+      expect(setting.title).to.equal('content')
     })
   })
 

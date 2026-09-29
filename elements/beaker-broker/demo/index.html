@@ -4,21 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>BeakerBroker: beaker-broker Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../beaker-broker.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../beaker-broker.js'
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic beaker-broker demo</h3>
+      <h1>beaker-broker demo</h1>
+      <p>
+        beaker-broker brokers reads and writes to a Beaker browser DAT archive.
+        Outside the Beaker browser the global DatArchive API is unavailable, so
+        the broker logs a warning and stays a plain container; inside Beaker it
+        turns the dat-url attribute into an archive object and exposes read
+        and write methods against it.
+      </p>
+      <h2>Basic usage</h2>
       <demo-snippet>
         <template>
           <beaker-broker>
-            This is beaker-broker
+            Site content and controls to broker through the DAT archive.
+          </beaker-broker>
+        </template>
+      </demo-snippet>
+      <h2>Pointing the broker at a dat-url</h2>
+      <p>
+        The dat-url attribute tells the broker which archive to load. The value
+        below is a sample address; in Beaker it resolves to a real archive.
+      </p>
+      <demo-snippet>
+        <template>
+          <beaker-broker
+            dat-url="dat://f0d3f9bd6b1f2c7b1a9f9b8e9d6c5a4b3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c"
+          >
+            Archive-bound content for the site published at this dat address.
           </beaker-broker>
         </template>
       </demo-snippet>

@@ -110,7 +110,7 @@ class CollectionRow extends DDD {
         }
 
         .icon {
-          background-color: rgb(255, 255, 255);
+          background-color: var(--ddd-theme-default-white, #ffffff);
           border-radius: var(--ddd-radius-circle);
           position: relative;
           bottom: var(--ddd-spacing-8);
@@ -137,7 +137,7 @@ class CollectionRow extends DDD {
         }
 
         .image {
-          background-color: white;
+          background-color: var(--ddd-theme-default-white, #ffffff);
           background-repeat: no-repeat;
           background-size: cover;
           background-position: right center;

@@ -145,12 +145,11 @@ describe('rich-text-editor-prompt-button', () => {
     expect(events.length).to.equal(1)
   })
 
-  it('BUG: confirm writes the literal string false into the target', async () => {
-    // BUG (rich-text-editor-prompt-button.js:245-248 +
-    // rich-text-editor-prompt-button.js:190-200): updateSelection calls
-    // setInnerHTML(this.getPropValue('innerHTML')) and getPropValue returns
-    // literal false when the value is missing, so targetedNode.innerHTML is
-    // assigned the string "false" and wipes the selection content
+  it('confirm without innerHTML leaves the target content intact', async () => {
+    // fixed (issue #3077, bug 30): getPropValue returns literal false when
+    // the value lacks innerHTML, and setInnerHTML no longer assigns that
+    // false into the targeted node (which wiped the selection content with
+    // the string "false")
     const span = globalThis.document.createElement('span')
     span.textContent = 'content'
     editor.querySelector('p').appendChild(span)
@@ -161,30 +160,25 @@ describe('rich-text-editor-prompt-button', () => {
     button.addEventListener('rich-text-editor-prompt-confirm', (e) =>
       events.push(true),
     )
-    // value without innerHTML triggers the false assignment
+    // value without innerHTML previously triggered the false assignment
     button.value = {}
     button.confirm({})
     expect(events.length).to.equal(1)
-    // setToggled: toggled is !value which is false when a value exists
-    expect(button.toggled).to.equal(false)
-    // confirm() runs synchronously through close(), so the literal false
-    // value written into the highlight has already been unwrapped into the
-    // document body as a text node: that stray node is the bug evidence
+    // setToggled: toggled tracks value presence ({} exists)
+    expect(button.toggled).to.equal(true)
+    // the literal false value is never written anywhere
     let falseSeen = false
     ;[...globalThis.document.body.childNodes].forEach((node) => {
       if (node.nodeType === 3 && node.textContent === 'false') {
         falseSeen = true
       }
     })
-    expect(falseSeen).to.equal(true)
-    // clean up the destroyed content and the stray false text node
+    expect(falseSeen).to.equal(false)
+    // the selection content survives untouched
+    expect(span.textContent).to.equal('content')
+    // clean up
     editor.querySelector('p').remove()
     globalThis.RichTextEditorHighlight.instance.emptyContents()
-    ;[...globalThis.document.body.childNodes].forEach((node) => {
-      if (node.nodeType === 3 && node.textContent === 'false') {
-        node.remove()
-      }
-    })
   })
 
   it('confirm with a real value updates the targeted node', async () => {
@@ -202,20 +196,24 @@ describe('rich-text-editor-prompt-button', () => {
     globalThis.RichTextEditorHighlight.instance.emptyContents()
   })
 
-  it('setToggled inverts value presence', () => {
+  it('setToggled tracks value presence', () => {
+    // fixed (issue #3077, bug 30): toggled follows value presence like the
+    // image button sibling instead of inverting it
     button.value = { innerHTML: 'x' }
     button.setToggled()
-    expect(button.toggled).to.equal(false)
+    expect(button.toggled).to.equal(true)
     button.value = false
     button.setToggled()
-    expect(button.toggled).to.equal(true)
+    expect(button.toggled).to.equal(false)
   })
 
   it('_rangeChanged refreshes value and toggled state', () => {
     button._rangeChanged()
     expect(typeof button.value).to.equal('object')
     expect(typeof button.value.innerHTML).to.equal('string')
-    expect(button.toggled).to.equal(false)
+    // a value object is present, so toggled is true (fixed, issue #3077
+    // bug 30: setToggled no longer inverts value presence)
+    expect(button.toggled).to.equal(true)
   })
 
   it('_handleClick opens the prompt for the current range', async () => {
@@ -319,8 +317,9 @@ describe('rich-text-editor-link', () => {
     expect(fieldProps.includes('innerHTML')).to.equal(true)
     expect(link.value.target).to.equal('_blank')
     expect(link.value.href === null).to.equal(true)
-    // NOTE (BUG): toggles is set to the string "true" instead of the boolean
-    expect(link.toggles).to.equal('true')
+    // fixed (issue #3077, bug 32): toggles is the boolean true, not the
+    // string "true"
+    expect(link.toggles).to.equal(true)
   })
 
   it('allowTarget adds and removes the target field', async () => {
@@ -439,10 +438,10 @@ describe('rich-text-editor-image', () => {
     expect(image.isToggled).to.equal(false)
   })
 
-  it('BUG: promptCommandVal emits height as a second width attribute', () => {
-    // BUG (rich-text-editor-image.js:96-101): the height interpolation emits
-    // width="${height}" so the generated tag has two width attributes and no
-    // height attribute
+  it('promptCommandVal emits a real height attribute', () => {
+    // fixed (issue #3077, bug 31): the height interpolation previously
+    // emitted width="${height}" so the generated tag had two width
+    // attributes and no height attribute
     image.value = {
       src: 'test.jpg',
       alt: 'alt text',
@@ -453,8 +452,8 @@ describe('rich-text-editor-image', () => {
     expect(htmlOut.startsWith('<img src="test.jpg"')).to.equal(true)
     expect(htmlOut.includes(' alt="alt text"')).to.equal(true)
     expect(htmlOut.includes(' width="100"')).to.equal(true)
-    expect(htmlOut.includes(' height="50"')).to.equal(false)
-    expect((htmlOut.match(/width=/g) || []).length).to.equal(2)
+    expect(htmlOut.includes(' height="50"')).to.equal(true)
+    expect((htmlOut.match(/width=/g) || []).length).to.equal(1)
     // missing src renders an empty insert
     expect(image.promptCommandVal === '').to.equal(false)
     image.value = { alt: 'no src' }

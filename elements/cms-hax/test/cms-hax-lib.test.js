@@ -165,18 +165,17 @@ describe('CMSBase', () => {
     expect(env.fetches[0].includes('api/thing?q=v')).to.equal(true)
   })
 
-  // BUG: lib/cms-base.js:126-129 — a non-ok response never resets
-  // this.loading (nor does a thrown fetch in the catch below), so the
-  // element is stuck in loading state forever. Documents current
-  // behavior for the fix swarm.
-  it('_doRequest leaves loading stuck on a failed response', async () => {
+  // fixed (issue #3077, bug 38): a non-ok response (and a thrown fetch
+  // in the catch below) now release this.loading instead of leaving the
+  // element stuck in loading state forever
+  it('_doRequest releases loading on a failed response', async () => {
     globalThis.fetch = async () => ({ ok: false })
     const el = await fixture(html`<test-cms-base></test-cms-base>`)
     el._buildBodyData = () => ({ q: 'v' })
     el._endPoint = 'https://x.example/api'
     await el._doRequest()
     await new Promise((r) => setTimeout(r, 650))
-    expect(el.loading).to.equal(true)
+    expect(el.loading).to.equal(false)
     expect(el.querySelector('p')).to.equal(null)
   })
 
@@ -194,7 +193,9 @@ describe('CMSBase', () => {
       threw = true
     }
     expect(threw).to.equal(false)
-    expect(el.loading).to.equal(true)
+    // the catch also releases the loading state (fixed, issue #3077,
+    // bug 38)
+    expect(el.loading).to.equal(false)
   })
 
   it('_handleResponse replaces light dom content with the response', async () => {
@@ -394,13 +395,12 @@ describe('cms-entity', () => {
     expect(url.searchParams.get('id')).to.equal('42')
   })
 
-  // BUG: lib/cms-entity.js:120-124 — the haxProperties configure entry
-  // targets property "entityID" but the class declares "entityId", so the
-  // HAX settings form edits a property that does not exist. Documents
-  // the mismatch for the fix swarm.
-  it('hax wiring references a mismatched entityID property', () => {
+  // fixed (issue #3077, bug 39): the haxProperties configure entry
+  // targets entityId, the property the class actually declares, so the
+  // HAX settings form edits a real property
+  it('hax wiring references the declared entityId property', () => {
     expect(CMSEntity.haxProperties.settings.configure[1].property).to.equal(
-      'entityID',
+      'entityId',
     )
     expect('entityId' in CMSEntity.properties).to.equal(true)
     expect('entityID' in CMSEntity.properties).to.equal(false)
@@ -474,29 +474,10 @@ describe('cms-token', () => {
     expect(el._resolveEndPoint()).to.equal('https://token-global.example')
   })
 
-  // BUG: lib/cms-token.js:90 — wipeSlot is used but never imported, so the
-  // reference resolves against the global scope and throws ReferenceError
-  // (silently swallowed by _doRequest's catch). Every successful token fetch
-  // therefore drops its content and leaves the element stuck loading.
-  // Documents current behavior for the fix swarm.
-  it('token responses are dropped because wipeSlot is not imported', async () => {
-    const el = await fixture(
-      html`<cms-token
-        token="site:name"
-        .tokenEndPoint=${'https://cms.example/token'}
-      ></cms-token>`,
-    )
-    await new Promise((r) => setTimeout(r, 30))
-    expect(el.querySelector('p')).to.equal(null)
-    expect(el.loading).to.equal(true)
-    el.remove()
-  })
-
-  it('injects token content, wires the edit link click and refreshes on visibility when wipeSlot is supplied', async () => {
-    // supply the missing helper globally so the rest of the handler runs;
-    // this proves the remaining wiring works once the import exists
-    let wiped = 0
-    globalThis.wipeSlot = () => { wiped += 1 }
+  // fixed (issue #3077, bug 11): wipeSlot is imported, so token responses
+  // inject their content instead of the ReferenceError being silently
+  // swallowed by _doRequest's catch
+  it('token responses inject their content', async () => {
     const el = await fixture(
       html`<cms-token
         token="site:name"
@@ -506,10 +487,27 @@ describe('cms-token', () => {
     await new Promise((r) => setTimeout(r, 30))
     expect(el.querySelector('p').textContent).to.equal('token-injected')
     expect(el.loading).to.equal(false)
-    expect(wiped).to.equal(1)
+    el.remove()
+  })
+
+  it('injects token content, wires the edit link click and refreshes on visibility', async () => {
+    // the imported wipeSlot (issue #3077, bug 11) runs the full handler;
+    // no global stub is needed anymore (the module binding wins)
+    const el = await fixture(
+      html`<cms-token
+        token="site:name"
+        .tokenEndPoint=${'https://cms.example/token'}
+      ></cms-token>`,
+    )
+    await new Promise((r) => setTimeout(r, 30))
+    expect(el.querySelector('p').textContent).to.equal('token-injected')
+    expect(el.loading).to.equal(false)
     expect(env.link.getAttribute('href')).to.equal('https://edit.example')
     expect(env.link.innerHTML).to.equal('Edit token')
     expect(env.wcCalls).to.equal(1)
+    // the response data is retained for the edit-link schema (issue
+    // #3077, bug 40)
+    expect(el.tokenData.editEndpoint).to.equal('https://edit.example')
     // clicking the edit link arms a refresh on next visibility change
     env.link.dispatchEvent(new Event('click'))
     expect(el._clickInvoked).to.equal(true)
@@ -522,7 +520,6 @@ describe('cms-token', () => {
     await new Promise((r) => setTimeout(r, 30))
     expect(env.fetches.length).to.equal(2)
     el.remove()
-    delete globalThis.wipeSlot
   })
 
   it('updated requests when the token changes', async () => {
@@ -534,12 +531,14 @@ describe('cms-token', () => {
     expect(calls).to.equal(1)
   })
 
-  // BUG: lib/cms-token.js:181-187 — postProcessgetHaxJSONSchema reads
-  // this.tokenData but nothing ever declares or assigns tokenData in the
-  // class, so the branch is dead code and the edit link is always empty.
-  // Documents the default-path behavior for the fix swarm.
-  it('postProcess schema always uses empty href because tokenData is never set', async () => {
+  // fixed (issue #3077, bug 40): tokenData is declared (never defaulted to
+  // null) and assigned in _handleResponse, so the branch only opens with
+  // real response data; an unfetched token still yields the empty default
+  it('postProcess schema uses tokenData from the response when present', async () => {
     const el = await fixture(html`<cms-token></cms-token>`)
+    // unfetched: tokenData stays undefined so the default empty edit
+    // link applies (do NOT default it to null — that would throw)
+    expect(el.tokenData).to.equal(undefined)
     const schema = el.postProcessgetHaxJSONSchema({ properties: {} })
     expect(schema.properties.__editThis.component.properties.href).to.equal('')
     expect(schema.properties.__editThis.component.slot).to.equal('Edit')

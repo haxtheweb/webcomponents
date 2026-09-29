@@ -1197,7 +1197,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     /**
      * whether a range is fully inside the target, crossing shadow DOM
-     * boundaries via composedPath (issue #3077, bug 2)
+     * boundaries via shadow-root hosts (issue #3077, bug 2)
      *
      * @param {object} range
      * @param {object} target
@@ -1208,8 +1208,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       var container = range.commonAncestorContainer;
       if (!container || !container.nodeType) return false;
       if (target.contains(container)) return true;
-      if (typeof container.composedPath === "function") {
-        return container.composedPath().includes(target);
+      // walk up the composed tree, crossing shadow-root boundaries via
+      // host, until we run out of ancestors (nodes have no composedPath,
+      // so the old fallback never fired)
+      var node = container;
+      while (node) {
+        if (node === target) return true;
+        node = node.nodeType === 11 && node.host ? node.host : node.parentNode;
       }
       return false;
     }

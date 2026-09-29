@@ -1,13 +1,95 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
+  <base href="/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-  <title>terrible-themes documentation</title>
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for terrible-themes, including the Terrible 407, hockey, blog, productionz, and resume variants">
+  <title>terrible-themes</title>
+  <style>
+    :root,
+    html,
+    body {
+      margin: var(--ddd-spacing-0);
+      padding: var(--ddd-spacing-0);
+    }
+    body {
+      font-family: var(--ddd-font-navigation);
+      background-color: var(--ddd-theme-default-shrineWhite);
+      color: var(--ddd-theme-default-coalyGray);
+    }
+    .theme-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ddd-spacing-2);
+      align-items: center;
+      justify-content: center;
+      padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+      background-color: var(--ddd-accent-4);
+      border-bottom: var(--ddd-border-md);
+    }
+    .theme-switch button {
+      font-family: var(--ddd-font-navigation);
+      font-size: var(--ddd-font-size-xs);
+      font-weight: var(--ddd-font-weight-bold);
+      color: var(--ddd-theme-default-coalyGray);
+      background-color: var(--ddd-theme-default-shrineWhite);
+      border: var(--ddd-border-md);
+      border-radius: var(--ddd-radius-lg);
+      padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+      cursor: pointer;
+    }
+    .theme-switch button[aria-pressed='true'] {
+      background-color: var(--ddd-theme-default-coalyGray);
+      color: var(--ddd-theme-default-shrineWhite);
+    }
+    .theme-switch button:focus-visible {
+      outline: var(--ddd-border-sm) solid var(--ddd-theme-default-coalyGray);
+      outline-offset: var(--ddd-spacing-1);
+    }
+  </style>
 </head>
+
 <body>
-  <script>globalThis.location.href = 'demo/index.html';</script>
+  <section class="theme-switch" aria-label="Terrible theme variants">
+    <button type="button" aria-pressed="true" data-file="demo/site.json">Terrible 407</button>
+    <button type="button" aria-pressed="false" data-file="demo/site-best.json">Terrible hockey</button>
+    <button type="button" aria-pressed="false" data-file="demo/site-outlet.json">Terrible Blog</button>
+    <button type="button" aria-pressed="false" data-file="demo/site-productionz.json">Terrible Productionz</button>
+    <button type="button" aria-pressed="false" data-file="demo/site-resume.json">Terrible Resume</button>
+  </section>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: 'production'
+      }
+    }
+    var switcher = globalThis.document.querySelector('.theme-switch')
+    var buttons = switcher.querySelectorAll('button')
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function (e) {
+        var button = e.currentTarget
+        var file = button.getAttribute('data-file')
+        var site = globalThis.document.getElementById('site')
+        if (site.getAttribute('file') === file) {
+          return
+        }
+        site.setAttribute('file', file)
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].setAttribute('aria-pressed', buttons[j] === button ? 'true' : 'false')
+        }
+      })
+    }
+  </script>
+  <script type="module">
+    import '@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js'
+    import './terrible-themes.js'
+    import './lib/terrible-best-themes.js'
+    import './lib/terrible-outlet-themes.js'
+    import './lib/terrible-productionz-themes.js'
+    import './lib/terrible-resume-themes.js'
+  </script>
 </body>
 </html>

@@ -1319,9 +1319,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
               <simple-search
                 id="simplesearch"
                 controls="transcript"
-                next-button-icon="keyboard-arrow-down"
+                next-button-icon="hardware:keyboard-arrow-down"
                 next-button-label="${this.t.nextResultLabel}"
-                prev-button-icon="keyboard-arrow-up"
+                prev-button-icon="hardware:keyboard-arrow-up"
                 prev-button-label="${this.t.prevResultLabel}"
                 search-input-icon="search"
                 search-input-label="${this.t.searchLabel}"

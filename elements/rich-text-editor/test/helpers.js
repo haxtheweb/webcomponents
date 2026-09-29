@@ -6,11 +6,9 @@ import '../lib/toolbars/rich-text-editor-toolbar-full.js'
 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-// NOTE: elements are created through fixture (template + clone) rather than
-// document.createElement because the rich-text-editor constructor calls
-// this.setAttribute('tabindex', 0), which violates the custom element
-// constructor contract and makes document.createElement throw
-// NotSupportedError (see the insertNew BUG test in toolbar.test.js).
+// rich-text-editor sets tabindex in connectedCallback (fixed, issue #3077
+// bug 1), so createElement is safe, but fixture keeps parity with the rest
+// of the suite's element construction
 export async function makeEditor(content) {
   const el = await fixture(html`<rich-text-editor></rich-text-editor>`)
   // an explicit empty string must stay empty (|| would fall back)
@@ -20,8 +18,8 @@ export async function makeEditor(content) {
 }
 
 // a plain contenteditable div target: unlike rich-text-editor it has no
-// shadow root, so the toolbar's getRange() can resolve document selections
-// (see the getRange BUG note in toolbar.test.js)
+// shadow root, which keeps range scoping simple in tests that do not need
+// the editor's light-DOM/slotted selection paths
 export async function makeTarget(content) {
   const el = globalThis.document.createElement('div')
   el.setAttribute('contenteditable', 'true')

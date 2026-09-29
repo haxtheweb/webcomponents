@@ -86,6 +86,8 @@ class CMSEntity extends CMSBase {
     return {
       canScale: true,
       canEditSource: true,
+      // backend content injector: no DDD design system implications
+      designSystem: false,
       gizmo: {
         title: "CMS Entity",
         description: "CMS entity rendered on the backend",
@@ -117,7 +119,9 @@ class CMSEntity extends CMSBase {
             icon: "editor:title",
           },
           {
-            property: "entityID",
+            // entityId (not entityID): the class declares entityId, so the
+            // settings form must edit the real property (issue #3077, bug 39)
+            property: "entityId",
             title: "ID",
             description: "id from our CMS",
             inputMethod: "textfield",

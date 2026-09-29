@@ -581,18 +581,6 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
     this.updateTimeline();
   }
   /**
-   * events container element
-   *
-   * @readonly
-   * @memberof LrndesignTimeline
-   */
-  get eventsElement() {
-    return this.shadowRoot && this.shadowRoot.querySelector("#events")
-      ? this.shadowRoot.querySelector("#events")
-      : false;
-  }
-
-  /**
    * ensures that events list is an Array
    *
    * @readonly
@@ -642,62 +630,36 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
     }
   }
   updateTimeline() {
-    let sections = globalThis.document.querySelectorAll("section") || [];
-    if (
-      this.eventsList.length < 1 &&
-      sections.length > 0 &&
-      this.eventsElement
-    ) {
-      this.eventsElement.innerHTML = "";
-      sections.forEach((section) => {
-        let clone = section.cloneNode(true),
-          div = globalThis.document.createElement("div"),
-          overview = div.cloneNode(),
-          details = div.cloneNode(),
-          heading = div.cloneNode(),
-          media = clone.querySelector(".media")
-            ? clone.querySelector(".media")
-            : undefined,
-          cloneHeading = clone.querySelector("h1,h2,h3,h4,h5,h6")
-            ? clone.querySelector("h1,h2,h3,h4,h5,h6")
-            : undefined;
-
-        //get heading
-        overview.classList.add("event-overview");
-        if (cloneHeading) {
-          let inner = globalThis.document.createElement("h2");
-          heading.appendChild(inner);
-          heading.classList.add("heading");
-          inner.innerHTML = cloneHeading.innerHTML;
-          cloneHeading.remove();
-        }
-        overview.appendChild(heading);
-
-        //get media
-        if (media) {
-          let outer = div.cloneNode(),
-            inner = div.cloneNode();
-          outer.appendChild(inner);
-          div.appendChild(outer);
-          inner.appendChild(media.cloneNode(true));
-          media.remove();
-          clone.setAttribute("has-media", true);
-        }
-        div.classList.add("media-outer");
-        overview.appendChild(div);
-
-        //get details
-        Object.keys(clone.children || []).forEach((child) =>
-          details.append(clone.children[child]),
-        );
-        details.classList.add("details");
-
-        //add to events
-        clone.classList.add("event");
-        clone.appendChild(overview);
-        clone.appendChild(details);
-        this.eventsElement.appendChild(clone);
+    if (this.eventsList.length < 1) {
+      // Legacy progressive enhancement: no events data was supplied, so
+      // derive events from our own light DOM section children (heading,
+      // body text, and an optional image) and hand them to Lit through
+      // the events property. Never write into the shadow DOM directly:
+      // wiping the events container or appending nodes behind Lit's back
+      // ejects its ChildPart markers, which throws on every later render.
+      const events = [];
+      this.querySelectorAll(":scope > section").forEach((section) => {
+        const heading = section.querySelector("h1,h2,h3,h4,h5,h6");
+        const media = section.querySelector("img");
+        const details = [];
+        section.childNodes.forEach((node) => {
+          if (node !== heading && node !== media) {
+            const text = (node.textContent || "").trim();
+            if (text) {
+              details.push(text);
+            }
+          }
+        });
+        events.push({
+          heading: heading ? heading.textContent.trim() : "",
+          details: details.join(" "),
+          imagesrc: (media && media.getAttribute("src")) || "",
+          imagealt: (media && media.getAttribute("alt")) || "",
+        });
       });
+      if (events.length > 0) {
+        this.events = events;
+      }
     }
     this._checkScroll();
   }

@@ -124,34 +124,33 @@ describe('HaxLayoutBehaviors', () => {
     expect(el._getSlotOrder(item)).to.equal(2)
   })
 
-  // BUG: lib/HAXLayouts.js:347 — canMoveSlot reads `this.this._getSlotOrder`
-  // which is undefined, so every call throws a TypeError. Documents the
-  // current behavior for the fix swarm; flip this once the typo is fixed.
-  it('canMoveSlot currently throws due to a this.this typo', async () => {
+  // fixed (issue #3077, bug 12): the this.this typo and the order[1]
+  // arithmetic are corrected, so canMoveSlot reports whether a move
+  // stays inside the ordered container range
+  it('canMoveSlot reports whether a move stays in range', async () => {
     const el = await fixture(html`<test-layout-el></test-layout-el>`)
     const item = globalThis.document.createElement('div')
     item.setAttribute('slot', 'col-1')
-    let error = null
-    try {
-      el.canMoveSlot(item, true)
-    } catch (e) {
-      error = e
-    }
-    expect(error instanceof TypeError).to.equal(true)
+    // col-1 is the first container: cannot move left, can move right
+    expect(el.canMoveSlot(item, true)).to.equal(false)
+    expect(el.canMoveSlot(item, false)).to.equal(true)
+    const item2 = globalThis.document.createElement('div')
+    item2.setAttribute('slot', 'col-2')
+    // col-2 is the last container: can move left, cannot move right
+    expect(el.canMoveSlot(item2, true)).to.equal(true)
+    expect(el.canMoveSlot(item2, false)).to.equal(false)
   })
 
-  // BUG: lib/HAXLayouts.js:366 — moveSlot has the same `this.this` typo.
-  it('moveSlot currently throws due to a this.this typo', async () => {
+  // fixed (issue #3077, bug 12): moveSlot moves an item into the
+  // destination container's slot
+  it('moveSlot moves an item into the destination slot', async () => {
     const el = await fixture(html`<test-layout-el></test-layout-el>`)
     const item = globalThis.document.createElement('div')
     item.setAttribute('slot', 'col-1')
-    let error = null
-    try {
-      el.moveSlot(item, true)
-    } catch (e) {
-      error = e
-    }
-    expect(error instanceof TypeError).to.equal(true)
+    el.moveSlot(item, false)
+    expect(item.getAttribute('slot')).to.equal('col-2')
+    el.moveSlot(item, true)
+    expect(item.getAttribute('slot')).to.equal('col-1')
   })
 
   it('activates events and observer via data-hax-ray and cleans up on removal', async () => {
@@ -231,11 +230,10 @@ describe('HaxLayoutBehaviors', () => {
     expect(slot.parentNode.classList.contains('has-nodes')).to.equal(false)
   })
 
-  // BUG: lib/HAXLayouts.js:395-401 — __sortChildren builds its children
-  // list with a reduce that never accumulates (it returns acc and ignores
-  // the element), so children is always [] and no sorting ever happens.
-  // Documents current behavior for the fix swarm.
-  it('__sortChildren never reorders because its reduce never accumulates', async () => {
+  // fixed (issue #3077, bug 13): the reduce accumulates and the
+  // comparator is an arrow function, so children are reordered by
+  // slot order (col-1 before col-2)
+  it('__sortChildren reorders children by slot order', async () => {
     const el = await fixture(html`<test-layout-el></test-layout-el>`)
     const a = globalThis.document.createElement('div')
     a.setAttribute('slot', 'col-2')
@@ -244,8 +242,8 @@ describe('HaxLayoutBehaviors', () => {
     el.appendChild(a)
     el.appendChild(b)
     await el.__sortChildren()
-    expect(el.children[0].getAttribute('slot')).to.equal('col-2')
-    expect(el.children[1].getAttribute('slot')).to.equal('col-1')
+    expect(el.children[0].getAttribute('slot')).to.equal('col-1')
+    expect(el.children[1].getAttribute('slot')).to.equal('col-2')
   })
 
   it('recalculates column widths and resizes when layout inputs change', async () => {

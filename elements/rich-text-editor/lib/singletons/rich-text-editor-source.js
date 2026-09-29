@@ -238,15 +238,25 @@ class RichTextEditorSource extends LitElement {
    */
   _handleSourceChange(e) {
     if (!!this.__toolbar && !!this.__target && !this.__needsUpdate) {
+      // htmlMatchesTarget returns a boolean (true = match, fixed in issue
+      // #3077, bug 26), so an update is needed when it does NOT match
       this.__needsUpdate =
         !!e.detail && !!e.detail.value
-          ? this.__toolbar.htmlMatchesTarget(`${e.detail.value}`)
+          ? !this.__toolbar.htmlMatchesTarget(`${e.detail.value}`)
           : true;
       let update = () => {
         this.__needsUpdate = false;
-        this.__codeEditorValue = e.detail.value;
-        this.innerHTML = e.detail.value;
-        this.__target.innerHTML = e.detail.value;
+        // e.detail can be missing when the guard above defaulted to
+        // __needsUpdate = true; fall back to the current value so the
+        // scheduled update never crashes on a missing detail (issue
+        // #3077, bug 67)
+        let value =
+          e.detail && e.detail.value !== undefined
+            ? e.detail.value
+            : this.__codeEditorValue || "";
+        this.__codeEditorValue = value;
+        this.innerHTML = value;
+        this.__target.innerHTML = value;
       };
       if (this.__needsUpdate) setTimeout(update.bind(this), 300);
     }

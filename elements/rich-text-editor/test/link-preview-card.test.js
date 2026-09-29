@@ -130,16 +130,17 @@ describe('link-preview-card', () => {
     const el = await fixture(html`<link-preview-card></link-preview-card>`)
     el.href = 'https://psu.edu'
     await sleep(50)
-    // BUG (link-preview-card.js:193): `this.link = data.data["og:url"] ||
-    // data.data["url"] || link` references an undefined `link` identifier, so
-    // the link assignment throws a ReferenceError and the catch branch resets
-    // the card to no-preview state
-    expect(el.title).to.equal('No preview available')
-    expect(el.description).to.equal('')
+    // fixed (issue #3077, bug 33): the success path no longer reads an
+    // undefined link identifier, so defaults flow from the success path
+    // instead of the catch resetting the card to no-preview state
+    expect(el.title).to.equal('No title available')
+    expect(el.description).to.equal('No description available')
+    expect(el.link).to.equal('https://psu.edu')
+    expect(el.themeColor).to.equal('var(--ddd-primary-2)')
     restore()
   })
 
-  it('BUG: fetchData catch block crashes on the rejected call path', async () => {
+  it('fetchData catch resets the card on the rejected call path', async () => {
     const reg = registry()
     const previousCall = reg.call
     reg.call = async () => {
@@ -148,16 +149,15 @@ describe('link-preview-card', () => {
     const el = await fixture(html`<link-preview-card></link-preview-card>`)
     el.href = 'https://psu.edu'
     await sleep(50)
-    // the catch sets the fallback title and description before crashing
     expect(el.title).to.equal('No preview available')
     expect(el.description).to.equal('')
-    // BUG (link-preview-card.js:203): the catch block assigns
-    // this.link = link with an undefined `link` identifier, which throws a
-    // ReferenceError inside the catch and aborts the remaining cleanup, so
-    // the image and themeColor are never reset and the loading state only
-    // clears through the finally block
+    // fixed (issue #3077, bug 33): the catch no longer crashes on an
+    // undefined link identifier, so the full cleanup runs and the link
+    // falls back to the requested url
+    expect(el.link).to.equal('https://psu.edu')
+    expect(el.image).to.equal('')
+    expect(el.themeColor).to.equal('var(--ddd-primary-2)')
     expect(el.loadingState).to.equal(false)
-    expect(el.themeColor).to.equal('')
     delete reg.call
     reg.call = previousCall
   })

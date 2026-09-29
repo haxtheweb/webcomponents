@@ -62,12 +62,11 @@ describe('HAXElement mixin', () => {
     ).to.equal(0)
   })
 
-  // BUG: lib/HAXWiring.js:276-329 + 961-963 — the slow-path hax-store-ready
-  // listener delegates to the wiring instance's arrow function whose `this`
-  // is the wiring (which has no tagName), so mixin-based elements never
-  // re-fire their registration once the store becomes ready. Documents
-  // current behavior for the fix swarm.
-  it('does not re-register on hax-store-ready after the slow path', async () => {
+  // fixed (issue #3077, bug 36): the slow-path hax-store-ready handler
+  // dispatches registration from the ELEMENT (the wiring instance has no
+  // tagName of its own), so mixin-based elements re-fire their
+  // registration once the store becomes ready
+  it('re-registers on hax-store-ready after the slow path', async () => {
     const el = await fixture(html`<test-hax-element></test-hax-element>`)
     const captured = []
     el.addEventListener('hax-register-properties', (e) => captured.push(e.detail))
@@ -77,7 +76,9 @@ describe('HAXElement mixin', () => {
       new CustomEvent('hax-store-ready', { detail: { ready: true } }),
     )
     await new Promise((r) => setTimeout(r, 50))
-    expect(captured.length).to.equal(0)
+    expect(captured.length).to.equal(1)
+    expect(captured[0].tag).to.equal('test-hax-element')
+    expect(captured[0].properties.settings).to.not.equal(undefined)
   })
 
   it('setHaxProperties fast path registers when the store is ready', async () => {
@@ -108,21 +109,22 @@ describe('HAXElement mixin', () => {
     expect(el.windowControllers.signal.aborted).to.equal(true)
   })
 
-  // BUG: lib/HAXWiring.js:956 — HAXElement.setup passes (tag = "") and
-  // (context = this) into the wiring call, discarding caller-supplied tag
-  // and context entirely. Documents current behavior for the fix swarm.
-  it('setup discards caller supplied tag and context', async () => {
+  // fixed (issue #3077, bug 35): HAXElement.setup passes the
+  // caller-supplied tag and context through to the wiring instead of
+  // discarding them
+  it('setup passes caller supplied tag and context through', async () => {
     const el = await fixture(html`<test-hax-element></test-hax-element>`)
     const seen = []
     el.HAXWiring.setup = (props, tag, context) => {
       seen.push({ props, tag, context })
       return 'delegated'
     }
-    const result = el.setup({ p: 1 }, 'forced-tag', { label: 'context' })
+    const callerContext = { label: 'context' }
+    const result = el.setup({ p: 1 }, 'forced-tag', callerContext)
     expect(result).to.equal('delegated')
     expect(seen.length).to.equal(1)
-    expect(seen[0].tag).to.equal('')
-    expect(seen[0].context === el).to.equal(true)
+    expect(seen[0].tag).to.equal('forced-tag')
+    expect(seen[0].context === callerContext).to.equal(true)
     expect(seen[0].props.p).to.equal(1)
   })
 

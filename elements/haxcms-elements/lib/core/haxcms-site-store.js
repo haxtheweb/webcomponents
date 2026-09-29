@@ -712,8 +712,10 @@ class Store {
         varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
         const filterHiddenParentsRecursive = (item) => {
-          // if the item is unpublished then remove it.
-          if (item.metadata.published === false) {
+          // if the item is unpublished then remove it. an item without a
+          // metadata object is not explicitly unpublished, so guard before
+          // reading it (issue #3077, bug 43)
+          if (item.metadata && item.metadata.published === false) {
             return false;
           }
           // if the item has parents, recursively see if any parent is not published

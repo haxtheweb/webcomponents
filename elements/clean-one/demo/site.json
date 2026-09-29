@@ -1,0 +1,169 @@
+{
+  "id": "c1e4a5b6-7d8e-4f9a-8b0c-cleanonetheme0",
+  "title": "Open Education Course",
+  "author": "",
+  "description": "Demonstration course site for clean-one, the foundational HAXcms course theme, showing a typical course overview, unit, lesson, and resources structure.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "clean-one",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "clean-one",
+      "path": "@haxtheweb/clean-one/clean-one.js",
+      "name": "clean-one",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#3f51b5",
+        "cssVariable": "--simple-colors-default-theme-indigo-7",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-5e6f7a8b-0001-4e5e-9e5e-cleanonehome0",
+      "indent": 0,
+      "location": "pages/item-5e6f7a8b-0001-4e5e-9e5e-cleanonehome0/index.html",
+      "slug": "course-overview",
+      "order": 0,
+      "parent": null,
+      "title": "Course Overview",
+      "description": "Welcome to the course. This page demonstrates how clean-one renders a course overview with the theme's navigation outline and main content area.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5e6f7a8b-0002-4e5e-9e5e-cleanoneunit10",
+      "indent": 0,
+      "location": "pages/item-5e6f7a8b-0002-4e5e-9e5e-cleanoneunit10/index.html",
+      "slug": "unit-1",
+      "order": 1,
+      "parent": null,
+      "title": "Unit 1: Foundations",
+      "description": "The first unit of the course, introducing open education fundamentals and how the unit-level page presents objectives.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5e6f7a8b-0003-4e5e-9e5e-cleanoneless10",
+      "indent": 1,
+      "location": "pages/item-5e6f7a8b-0003-4e5e-9e5e-cleanoneless10/index.html",
+      "slug": "unit-1/lesson-1",
+      "order": 0,
+      "parent": "item-5e6f7a8b-0002-4e5e-9e5e-cleanoneunit10",
+      "title": "Lesson 1: What is OER?",
+      "description": "A lesson page nested under Unit 1, demonstrating the nested outline structure clean-one presents in its menu.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5e6f7a8b-0004-4e5e-9e5e-cleanoneresrc0",
+      "indent": 0,
+      "location": "pages/item-5e6f7a8b-0004-4e5e-9e5e-cleanoneresrc0/index.html",
+      "slug": "resources",
+      "order": 2,
+      "parent": null,
+      "title": "Course Resources",
+      "description": "A curated reading and reference list for the course, showing how clean-one styles lists and links in page content.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5e6f7a8b-0005-4e5e-9e5e-cleanoneabout0",
+      "indent": 0,
+      "location": "pages/item-5e6f7a8b-0005-4e5e-9e5e-cleanoneabout0/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About This Course",
+      "description": "Background on the course and the clean-one theme powering it, including how the outline maps to the menu.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

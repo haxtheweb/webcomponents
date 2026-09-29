@@ -4,15 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>VoiceRecorder: voice-recorder Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../voice-recorder.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../voice-recorder.js'
     </script>
-    
     <style>
       .vmsg-button {
         border: var(--ddd-border-sm, 1px solid #ccc);
@@ -33,10 +29,27 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic voice-recorder demo</h3>
+      <h1>voice-recorder demo</h1>
+      <p>
+        voice-recorder is a LAME bridge built on vmsg: press the button,
+        grant microphone access, speak, then stop to receive the encoded
+        recording. When the recording finishes the element dispatches a
+        voice-recorder-recording-blob event carrying the audio blob.
+      </p>
+      <h2>Basic usage</h2>
       <demo-snippet>
         <template>
           <voice-recorder></voice-recorder>
+        </template>
+      </demo-snippet>
+      <h2>Custom button label</h2>
+      <p>
+        The label property sets the text of the record button, so the control
+        can be phrased for the context it is used in.
+      </p>
+      <demo-snippet>
+        <template>
+          <voice-recorder label="Record audio feedback"></voice-recorder>
         </template>
       </demo-snippet>
     </div>

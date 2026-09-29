@@ -133,6 +133,8 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
     return html`
       <simple-popover
         id="prompt"
+        role="dialog"
+        aria-modal="false"
         ?auto="${!this.hidden || !this.__highlight.hidden}"
         for="${this.__highlight ? this.__highlight.id : ""}"
         ?hidden="${this.hidden || this.__highlight.hidden}"
@@ -253,8 +255,10 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
+    // defer the change handler instead of invoking it immediately
+    // (issue #3077, bug 29)
     this.__highlight.addEventListener("change", (e) =>
-      setTimeout(this._handleChange(e), 300),
+      setTimeout(() => this._handleChange(e), 300),
     );
     this.addEventListener("mousedown", (e) => (this.__retainFocus = true));
     this.addEventListener("mouseup", (e) => (this.__retainFocus = false));

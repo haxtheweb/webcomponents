@@ -77,7 +77,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.label = "Link";
     this.toggledCommand = "unlink";
     this.toggledLabel = "Edit link";
-    this.toggles = "true";
+    // boolean, not the string "true" (issue #3077, bug 32)
+    this.toggles = true;
     this.tagsList = "a";
     this.value = {
       ...super.value,

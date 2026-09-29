@@ -1,13 +1,26 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
+  <base href="/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-  <title>learn-two-theme documentation</title>
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Demonstration for learn-two-theme">
+  <title>learn-two-theme</title>
 </head>
+
 <body>
-  <script>globalThis.location.href = 'demo/index.html';</script>
+  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <script>
+    globalThis.process = globalThis.process || {
+      env: {
+        NODE_ENV: 'production'
+      }
+    }
+  </script>
+  <script type="module">
+    import '@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js'
+    import './learn-two-theme.js'
+  </script>
 </body>
 </html>

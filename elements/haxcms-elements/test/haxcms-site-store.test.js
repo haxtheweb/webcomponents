@@ -213,6 +213,21 @@ describe("haxcms-site-store computed state", () => {
       const parent = rm.items.find((i) => i.id === "page-1");
       expect(parent.children.map((c) => c.id)).to.deep.equal(["page-1-1"]);
     });
+
+    it("does not crash when a manifest item has no metadata object", () => {
+      // fixed (issue #3077, bug 43): filterHiddenParentsRecursive
+      // assumed item.metadata exists, so any manifest item without a
+      // metadata object crashed the routerManifest computed with an
+      // uncaught TypeError while the publish-pages filter runs logged out
+      store.jwt = null;
+      delete store.manifest.items[1].metadata;
+      const rm = store.routerManifest;
+      // the metadata-less item is kept: it is not explicitly unpublished
+      expect(rm.items.length).to.equal(3);
+      expect(
+        rm.items.find((i) => i.id === "page-2").metadata,
+      ).to.equal(undefined);
+    });
   });
 
   describe("slug + route helpers", () => {

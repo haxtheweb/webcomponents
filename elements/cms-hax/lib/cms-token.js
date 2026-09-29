@@ -1,4 +1,8 @@
 import { CMSBase } from "./cms-base.js";
+// wipeSlot is used by _handleResponse but was never imported, so every
+// successful token fetch threw a silent ReferenceError inside _doRequest
+// (issue #3077, bug 11)
+import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
 /**
  * `cms-token`
  * Render and process a shortcode / token from a content management system.
@@ -45,6 +49,14 @@ class CMSToken extends CMSBase {
       tokenSuffix: {
         type: String,
       },
+      // response data retained for the edit-link schema (attribute
+      // token-data matches saveOptions.unsetAttributes — issue #3077,
+      // bug 40); intentionally NOT defaulted so an unfetched token stays
+      // undefined and the postProcess branch stays closed
+      tokenData: {
+        type: Object,
+        attribute: "token-data",
+      },
       _clickInvoked: {
         type: Boolean,
       },
@@ -79,6 +91,9 @@ class CMSToken extends CMSBase {
    */
   _handleResponse(data) {
     if (data && typeof data.content !== typeof undefined) {
+      // retain the response so the edit link schema can read the
+      // editEndpoint/editText/schema (issue #3077, bug 40)
+      this.tokenData = data;
       this._updateEditLink(data);
       if (
         data.editEndpoint &&
@@ -135,6 +150,8 @@ class CMSToken extends CMSBase {
     return {
       canScale: true,
       canEditSource: true,
+      // backend content injector: no DDD design system implications
+      designSystem: false,
       gizmo: {
         title: "CMS Token",
         description: "CMS token rendered on the backend",

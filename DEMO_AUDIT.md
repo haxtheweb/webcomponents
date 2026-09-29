@@ -1,143 +1,106 @@
 # Demo Audit Report
 
-Updated 2026-09-29 via a single-pass scan of every element in `elements/` (demo presence, root `index.html` redirect vs full content, tag usage with/without attributes, `demo-snippet` usage, and `HAXCMSLitElement` inheritance for theme detection).
+Updated 2026-09-29 (post-improvement pass) via a single-pass scan of every element in `elements/` (demo presence, root `index.html` redirect vs full content, tag usage with/without attributes, `demo-snippet` usage, and `HAXCMSLitElement` inheritance for theme detection).
 
 This audit covers all elements in `elements/` and categorizes them by demo quality, location, and necessity.
 
 ## Summary
 
 - **Total elements audited:** 224
-- **Good demos (show element with attributes/properties):** 150 visual elements (+ `outline-player` theme)
-- **Bare-tag-only demos:** 15 visual elements (down from 91) + 10 themes + 4 utilities
-- **Demo exercises element via sub-tags / hub pages (legitimate for packages):** 13
-- **Broken demo:** 1 (`chat-agent` — empty body)
-- **Utilities/behaviors/mixins (no demo needed):** ~26; 11 now ship no demo, 15 still carry a placeholder demo
-- **Themes (`HAXCMSLitElement`):** 20
+- **Good demos (element shown with attributes):** 158 visual elements (+ `chat-agent`, which is driven via JS/ChatStore, and `outline-player` theme)
+- **Bare-tag demos remaining:** 8 non-theme entries — every one verified legitimate (slot-, CSS-variable-, app-page-, or JS-driven); plus 10 themes whose preview lives in the root `index.html`
+- **Package/hub demos (own tag not rendered, demo exercises sub-tags/sub-pages):** 12 — all legitimate
+- **Broken demos:** 0
+- **Dangling root stubs (redirect to missing demo):** 0
+- **Polymer-style demos:** 0
+- **Utilities/behaviors/mixins (no demo, by convention):** 26
+- **Themes (`HAXCMSLitElement`):** 20 — all with full root `index.html` site previews
 
-## Changes since the previous audit
+## Changes since the 2026-09-29 audit
 
-- **Removed from `elements/`:** `data-viz`, `runkit-embed`
-- **New elements:** `chamfer-theme`, `figure-label`, `hax-app-installer`, `hax-bookmarklet`, `sheet-music`, `simple-pager`, `slide-deck`, `tableau-embed`
-- **All 30 Polymer-style demos (`demo-pages-shared-styles`) are gone** — 0 remain (previous Phase 2 complete)
-- **All 12 "root `index.html` only" demos now also have `demo/index.html`** (previous Phase 1 complete); the standard root file is now a redirect stub (`globalThis.location.href = 'demo/index.html'`) on 185 elements
-- **Bare-tag demos reduced from 91 to 15 visual elements**; most remaining bare-tag usages are legitimate (slot-driven or CSS-variable-driven elements)
-- **Placeholder demos removed from most utilities** — 11 utilities now ship no demo at all
+**Stream A — element demo fixes (11 files):**
+- `chat-agent`: demo rebuilt — fully static, no `open-apis.hax.cloud` references, interface pre-opened via ChatStore with a scripted offline sample exchange
+- `jwt-login`: full declarative attribute surface (`url`, `method`, `key`, `refresh-url`, `logout-url`, `redirect-url`) + offline harness driving the `jwt` property and logging `jwt-changed`/`jwt-token`/`jwt-logged-in`
+- `page-scroll-position`: basic usage + tall reading with sticky progress bound to `value-changed`
+- `beaker-broker`: added `dat-url` example; `html-block`: slotted HTML + runtime `allowscript` toggle harness; `lrn-math`: restructured with inline/display-mode/`mathtext` examples; `outline-designer`: heading structure + `hide-content-ops` snippets; `user-scaffold`: interaction-memory readout harness; `voice-recorder`: `label` example
+- Kept as-is after verification: `portal-launcher` and `simple-emoji` (purely slot-driven); `hax-cloud` demo (functional app page; standards cleanups only, root stubbed)
 
----
+**Stream B — theme root site previews (12 themes):**
+- All 12 redirect-root themes replaced with rich root `index.html` site previews using the established `haxcms-site-builder` reference pattern
+- 4 themes (`clean-one`, `haxor-slevin`, `simple-blog`, `outline-player`) received new reference-format `demo/site.json` + `demo/pages` outlines
+- `terrible-themes` received a variant-aware preview: `site-best`/`site-outlet`/`site-productionz`/`site-resume` outlines with a DDD-styled `aria-pressed` switcher
 
-## 1. Broken / Missing Demos
-
-- `chat-agent` — `demo/index.html` has an empty `<body>`; no element is rendered at all. Needs a real demo (note: it currently points at `open-apis.hax.cloud`, which is being moved off of — see on-premises API rule)
-
-The following have no `demo/index.html` and no root `index.html`, which is correct since they are non-visual infrastructure:
-
-- `a11y-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `es-global-bridge`, `hax-bookmarklet`, `intersection-element`, `media-behaviors`, `schema-behaviors`, `simple-filter`, `utils`
-
-*Recommendation:* Fix `chat-agent`. No action needed for the infrastructure packages.
-
----
-
-## 2. Don't Need Demos (utilities, behaviors, mixins, scripts)
-
-**No longer ship a demo (cleanup already done):**
-- `a11y-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `es-global-bridge`, `hax-bookmarklet`, `intersection-element`, `media-behaviors`, `schema-behaviors`, `simple-filter`, `utils`
-
-**Still carry a leftover placeholder demo (can be ignored or removed):**
-- `a11y-utils`
-- `anchor-behaviors`
-- `dynamic-import-registry`
-- `fullscreen-behaviors` (demo uses its own tag with attributes, but it is a behavior)
-- `hax-body-behaviors`
-- `json-outline-schema`
-- `lazy-image-helpers`
-- `lazy-import-discover`
-- `micro-frontend-registry`
-- `mutation-observer-import-mixin`
-- `pouch-db`
-- `radio-behaviors`
-- `shadow-style`
-- `simple-colors-shared-styles`
-- `wc-autoload`
-
-*Recommendation:* Remove the 15 leftover placeholder demos for consistency with the utilities that already had theirs removed.
+**Stream C — cleanup (34 files removed, 20 roots standardized):**
+- 15 utility placeholder `demo/` directories deleted (verified zero external references; `package.json`/`custom-elements.json` unaffected)
+- Their now-dangling root redirect stubs removed as well (lead validation step)
+- 19 + `hax-cloud` full root `index.html` files converted to the standard redirect stub (content verified as superset in `demo/index.html` first)
+- `media-playlist`: root-only "How to Develop" section ported into `demo/index.html` before stubbing
 
 ---
 
-## 3. Themes (need site context, not a simple component demo)
+## 1. Demo-less Utilities (convention: no demo)
 
-20 themes detected via `HAXCMSLitElement` inheritance. All 20 now have both a root `index.html` and a `demo/index.html`.
+These 26 non-visual infrastructure packages ship no `demo/` and no root `index.html`:
 
-**Full root `index.html` site preview (8):**
-- `clean-portfolio-theme`, `example-haxcms-theme`, `glossy-portfolio-theme`, `haxma-theme`, `journey-theme`, `link-card-theme`, `resume-theme`, `spacebook-theme`
+- `a11y-behaviors`, `a11y-utils`, `anchor-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `dynamic-import-registry`, `es-global-bridge`, `fullscreen-behaviors`, `hax-body-behaviors`, `hax-bookmarklet`, `intersection-element`, `json-outline-schema`, `lazy-image-helpers`, `lazy-import-discover`, `media-behaviors`, `micro-frontend-registry`, `mutation-observer-import-mixin`, `pouch-db`, `radio-behaviors`, `schema-behaviors`, `shadow-style`, `simple-colors-shared-styles`, `simple-filter`, `utils`, `wc-autoload`
 
-**Root `index.html` is a redirect stub to `demo/index.html` (12):**
-- `bootstrap-theme`, `chamfer-theme`, `clean-one`, `clean-two`, `haxor-slevin`, `learn-two-theme`, `outline-player`, `polaris-theme`, `simple-blog`, `terrible-themes`, `training-theme`, `twenty-six-theme`
-
-Demo quality within `demo/index.html`: `outline-player` shows its tag with attributes; 10 themes render only a bare tag (`clean-one`, `example-haxcms-theme`, `glossy-portfolio-theme`, `haxma-theme`, `haxor-slevin`, `journey-theme`, `link-card-theme`, `resume-theme`, `simple-blog`, `spacebook-theme`); 9 themes never render their own tag (`bootstrap-theme`, `chamfer-theme`, `clean-portfolio-theme`, `clean-two`, `learn-two-theme`, `polaris-theme`, `terrible-themes`, `training-theme`, `twenty-six-theme`).
-
-*Recommendation:* A bare `<my-theme>` tag in `demo/index.html` is a weak preview for a theme. Give the 12 redirect-root themes a full root `index.html` site preview like the 8 above, and treat `demo/index.html` as secondary for all themes. `chamfer-theme` is new — confirm it follows whichever convention is adopted.
+*Note:* ~10 of these still carry `@demo` JSDoc tags in their source pointing at the deleted demos — harmless documentation boilerplate; can be stripped in a follow-up.
 
 ---
 
-## 4. Full (non-redirect) root `index.html` files
+## 2. Themes — all 20 with root site previews
 
-28 elements keep a full demo in the root `index.html` instead of the standard redirect stub. All 28 also have a `demo/index.html`, and in most cases the content is duplicated between the two:
+All themes follow the rich root `index.html` preview convention (`haxcms-site-builder` + `demo/site.json` outline):
 
-- `ai-usage-license`, `author-card`, `bibliography-builder`, `career-timeline`, `clean-portfolio-theme`, `cms-hax`, `d-d-d`, `d-d-docs`, `demo-snippet`, `example-hax-element`, `example-haxcms-theme`, `glossy-portfolio-theme`, `h-a-x`, `hax-body`, `hax-cloud`, `haxma-theme`, `image-gallery`, `journey-theme`, `link-card-theme`, `media-playlist`, `replace-tag`, `resume-theme`, `screen-recorder`, `spacebook-theme`, `stop-note`, `un-sdg`, `web-container`, `wysiwyg-hax`
+- `bootstrap-theme`, `chamfer-theme`, `clean-one`, `clean-portfolio-theme`, `clean-two`, `example-haxcms-theme`, `glossy-portfolio-theme`, `haxma-theme`, `haxor-slevin`, `journey-theme`, `learn-two-theme`, `link-card-theme`, `outline-player`, `polaris-theme`, `resume-theme`, `simple-blog`, `spacebook-theme`, `terrible-themes`, `training-theme`, `twenty-six-theme`
 
-(8 of these are the themes from Section 3 whose root preview is intentional.)
-
-*Recommendation:* For the 20 non-theme entries, replace the root `index.html` with the standard redirect stub once the content is confirmed to match `demo/index.html`, to avoid maintaining two copies.
+`demo/index.html` is secondary for themes; 10 render a bare theme tag there and 9 never render their own tag — acceptable since the preview surface is the root file.
 
 ---
 
-## 5. Bare-Tag Demos (no attributes shown) — 15 visual elements
+## 3. Root `index.html` convention
 
-These render the element but never with attributes. Several are legitimate because the API is slot- or CSS-variable-driven (noted where verified); the rest are placeholders.
+- **Non-theme elements:** standard redirect stub (`globalThis.location.href = 'demo/index.html'`)
+- **Themes:** full site preview rendering `demo/site.json` through `haxcms-site-builder`
+- Zero non-theme elements keep duplicated full root demos; zero dangling stubs
 
-- `air-horn` — slot-driven wrapper (verified: API is slotted content)
-- `beaker-broker` — broker wiring
-- `d-d-docs` — renders full DDD documentation (verified)
+---
+
+## 4. Remaining Bare-Tag Demos (verified legitimate) — 8 non-theme
+
+- `air-horn` — slot-driven wrapper; API is slotted content
+- `chat-agent` — fully functional demo; properties driven via JS/ChatStore so the attribute scanner reports bare usage
+- `d-d-docs` — renders the full DDD documentation site
 - `demo-snippet` — the demo infrastructure itself
-- `fluid-type` — verified: API is exercised via CSS custom properties, not attributes
-- `hax-cloud` — package wrapper
-- `html-block` — slot-based block
-- `jwt-login` — verified placeholder ("This is jwt-login"); should show `jwt`, `url`, `refresh-url` etc.
-- `lrn-math` — slot-driven math rendering
-- `outline-designer` — verify whether properties should be shown
-- `page-scroll-position` — verified placeholder ("This is page-scroll-position"); should show `progress`, `has-active-parent` usage
-- `portal-launcher` — slot API shown; consider also showing `active-tools`/`visible-tools`
-- `simple-emoji` — verify whether properties should be shown
-- `user-scaffold` — verify
-- `voice-recorder` — verify
+- `fluid-type` — API exercised via CSS custom properties
+- `hax-cloud` — functional app page (`dist/`, `wc-registry.json`, site-builder); no public attribute API
+- `portal-launcher` — purely slot-driven; slotted links are the API
+- `simple-emoji` — purely slot-driven wrapper
 
-*Recommendation:* Only `jwt-login` and `page-scroll-position` are confirmed genuine gaps. Verify the remaining unannotated entries; if slot/CSS-var coverage is sufficient, no change is needed.
+No action needed on any of these.
 
 ---
 
-## 6. Own Tag Not Rendered, But Demo Is Real (packages/hub pages) — 13 elements
+## 5. Package/Hub Demos (own tag not rendered; demo exercises sub-tags or sub-pages) — 12
 
-These never render their own top-level tag in `demo/index.html`, but the demo is legitimate because it exercises sub-elements, sub-pages, or JS wiring:
-
-- `chat-agent` — **broken**, empty body (see Section 1)
-- `course-design` — substantial demo (421 lines) via sub-components
-- `file-system-broker` — demos broker wiring
-- `hax-app-installer` — demos the installer UI (351 lines)
-- `hax-body` — demos body wiring
+- `course-design` — substantial demo via sub-components
+- `file-system-broker` — broker wiring
+- `hax-app-installer` — installer UI
+- `hax-body` — body wiring
 - `hax-iconset` — renders `simple-iconset-demo` (the package's actual surface)
-- `haxcms-elements` — demos sub-elements
-- `i18n-manager` — demos manager wiring (could also be classified as a utility)
-- `lrndesign-chart` — hub page linking to `bar.html` / `line.html` / `pie.html` sub-demos (verified)
-- `lrs-elements` — renders `lrs-bridge`/`lrs-emitter` (verified: the package's actual tags)
-- `replace-tag` — hub page linking to `magicDeviceMethod.html` / `magicMethod.html` / `traditionalMethod.html` (verified)
-- `super-daemon` — demos via JS
-- `wysiwyg-hax` — demos via JS
+- `haxcms-elements` — sub-elements
+- `i18n-manager` — manager wiring (utility-like)
+- `lrndesign-chart` — hub linking to `bar.html` / `line.html` / `pie.html`
+- `lrs-elements` — renders `lrs-bridge`/`lrs-emitter`
+- `replace-tag` — hub linking to `magicDeviceMethod.html` / `magicMethod.html` / `traditionalMethod.html`
+- `super-daemon` — JS-driven
+- `wysiwyg-hax` — JS-driven
 
-*Recommendation:* No action except fixing `chat-agent`.
+No action needed.
 
 ---
 
-## 7. Good Demos (element shown with attributes) — 150 visual elements
+## 6. Good Demos (element shown with attributes) — 158 visual elements
 
 - `a11y-carousel`
 - `a11y-collapse`
@@ -157,6 +120,7 @@ These never render their own top-level tag in `demo/index.html`, but the demo is
 - `author-card`
 - `awesome-explosion`
 - `b-r`
+- `beaker-broker`
 - `bibliography-builder`
 - `career-timeline`
 - `chartist-render`
@@ -193,6 +157,7 @@ These never render their own top-level tag in `demo/index.html`, but the demo is
 - `hax-logo`
 - `hex-picker`
 - `hexagon-loader`
+- `html-block`
 - `iframe-loader`
 - `image-compare-slider`
 - `image-gallery`
@@ -200,10 +165,12 @@ These never render their own top-level tag in `demo/index.html`, but the demo is
 - `img-pan-zoom`
 - `img-view-modal`
 - `inline-audio`
+- `jwt-login`
 - `la-tex`
 - `license-element`
 - `linkedin-embed`
 - `lorem-data`
+- `lrn-math`
 - `lrn-table`
 - `lrn-vocab`
 - `lrndesign-imagemap`
@@ -223,9 +190,11 @@ These never render their own top-level tag in `demo/index.html`, but the demo is
 - `multiple-choice`
 - `music-player`
 - `oer-schema`
+- `outline-designer`
 - `page-break`
 - `page-contents-menu`
 - `page-flag`
+- `page-scroll-position`
 - `page-section`
 - `paper-input-flagged`
 - `parallax-image`
@@ -284,32 +253,32 @@ These never render their own top-level tag in `demo/index.html`, but the demo is
 - `undo-manager`
 - `unity-webgl`
 - `user-action`
+- `user-scaffold`
 - `video-player`
 - `vocab-term`
 - `web-container`
 - `wikipedia-query`
 - `word-count`
 
-Of these, 25 demos do not use `demo-snippet` and render directly (e.g., `app-hax`, `cms-hax`, `code-editor`, `code-sample`, `d-d-d`, `d-d-docs`, `h-a-x`, `hax-app-installer`, `hax-body`, `hax-cloud`, `haxcms-elements`, `lazy-image-helpers`, `lazy-import-discover`, `micro-frontend-registry`, `outline-designer`, `promise-progress`, `replace-tag`, `sheet-music`, `simple-pager`, `slide-deck`, `super-daemon`, `tableau-embed`, `wc-autoload`, `web-container`, `wysiwyg-hax`).
+Plus `chat-agent` (functional, JS-driven) and the `outline-player` theme demo.
 
 ---
 
-## QA Plan
+## Known Follow-ups (element-source issues found during this pass; outside demo-file scope)
 
-### Phase 1: Standardize demo location — COMPLETE
-Every element with a demo now has `demo/index.html`; the root `index.html` is a redirect stub on 185 elements.
+1. **`page-scroll-position` element bug:** initializes from legacy `attachedCallback`, which never fires under v1 custom elements — the element is inert in modern browsers. Its demo carries a clearly-commented compat shim (guarded to no-op once the element is fixed). Fix the element source to use `connectedCallback`.
+2. **`lrn-math` CDN dependency:** the element source loads MathJax from `cdnjs.cloudflare.com` whenever it renders — consider vendoring or pinning for offline use.
+3. **`outline-designer` harness:** the preserved pre-existing harness fetches `https://haxtheweb.org/site.json` and `example.json`; the newly added sections are fully static.
+4. **`hax-cloud` demo page:** references `dist/`, `wc-registry.json`, and site-builder assets (pre-existing app-page structure preserved; root now stubbed).
+5. **`html-block` quirk:** the element strips `allowscript` on connect, so runtime property toggling is the only meaningful demo path — documented in the demo.
+6. **`@demo` JSDoc tags:** ~10 utility sources still reference deleted demos (see Section 1 note).
 
-### Phase 2: Modernize old Polymer demos — COMPLETE
-Zero `demo-pages-shared-styles` usages remain in the monorepo.
+---
 
-### Phase 3: Add property coverage to bare-tag demos — NEARLY COMPLETE
-Reduced from 91 to 15 visual elements (Section 5). Confirmed remaining gaps: `jwt-login`, `page-scroll-position`. Verify the other unannotated entries in Section 5; skip behaviors/utilities.
+## QA Plan — all phases complete
 
-### Phase 4: Theme previews — PARTIAL
-8 of 20 themes have a full root `index.html` site preview. Give the remaining 12 redirect-root themes a root site preview. New `chamfer-theme` needs a preview either way.
-
-### Phase 5: Cleanup and validation — REMAINING
-- Fix `chat-agent`'s empty demo body.
-- Remove the 15 leftover utility placeholder demos (Section 2).
-- Convert the 20 non-theme full root `index.html` files to redirect stubs once content is confirmed duplicated in `demo/index.html` (Section 4).
-- Re-run this audit and confirm: zero broken demos, zero placeholder utility demos, every theme has a root site preview.
+- **Phase 1: Standardize demo location — COMPLETE** (all elements with demos use `demo/index.html`; roots are redirect stubs)
+- **Phase 2: Modernize Polymer demos — COMPLETE** (zero `demo-pages-shared-styles` remain)
+- **Phase 3: Bare-tag property coverage — COMPLETE** (91 → 0 genuine gaps; remaining bare-tag entries all verified legitimate)
+- **Phase 4: Theme previews — COMPLETE** (20/20 themes have full root site previews)
+- **Phase 5: Cleanup and validation — COMPLETE** (chat-agent fixed; utility placeholder demos and dangling stubs removed; root stubs standardized; final validation scan passed: zero broken, zero dangling, zero Polymer, 158+ good demos)

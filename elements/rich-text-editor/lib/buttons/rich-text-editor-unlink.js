@@ -47,12 +47,11 @@ class RichTextEditorUnlink extends RichTextEditorButtonBehaviors(LitElement) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "range")
-        if (this.commandIsToggled) {
-          this.setAttribute("disabeld", "disabled");
-        } else {
-          this.removeAttribute("disabeld");
-        }
+      // enable only when the selection is inside a link (the old code
+      // wrote a misspelled disabeld attribute and inverted the state:
+      // disabled when a link existed, enabled when it did not — issue
+      // #3077, bug 71)
+      if (propName === "range") this.disabled = !this.commandIsToggled;
     });
   }
 }

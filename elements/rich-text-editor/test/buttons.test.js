@@ -159,6 +159,13 @@ describe('rich-text-editor-button', () => {
     button.range = undefined
     expect(button._getSelectedHtml() === undefined).to.equal(true)
     expect(button._getSelectionType() === undefined).to.equal(true)
+    // with the live document selection still inside the target, the
+    // rangeOrMatchingAncestor fallback resolves it through the toolbar's
+    // getRange (fixed, issue #3077 bug 2: getRange now reads document
+    // selections for shadow-rooted targets instead of always losing them)
+    expect(button._getSelectedTag()).to.equal('p')
+    // with no range and no live selection, the tag reads false
+    globalThis.getSelection().removeAllRanges()
     expect(button._getSelectedTag()).to.equal(false)
   })
 
@@ -191,19 +198,21 @@ describe('rich-text-editor-unlink', () => {
     expect(el.tagsList).to.equal('a')
   })
 
-  it('BUG: updated writes a misspelled disabeld attribute', async () => {
-    // BUG (rich-text-editor-unlink.js:47-57): updated() sets and removes the
-    // attribute "disabeld" (a misspelling of disabled) when the range
-    // changes, so the button state is never conveyed through the real
-    // disabled attribute
+  it('updated enables the unlink button only inside a link', async () => {
+    // fixed (issue #3077, bug 71): updated writes the real disabled
+    // property and enables the button only when the selection is inside a
+    // link. The old code wrote a misspelled disabeld attribute and inverted
+    // the state: disabled when a link existed, enabled when it did not
     const el = await fixture(
       html`<rich-text-editor-unlink></rich-text-editor-unlink>`,
     )
-    // untoggled state: the misspelled attribute is removed
+    // untoggled state (no link): the button is disabled — you cannot
+    // unlink what is not linked. Reflection lands on the next commit.
     el.updated(new Map([['range', undefined]]))
+    await sleep(0)
     expect(el.hasAttribute('disabeld')).to.equal(false)
-    expect(el.hasAttribute('disabled')).to.equal(false)
-    // toggled state: the misspelled attribute is written instead of disabled
+    expect(el.hasAttribute('disabled')).to.equal(true)
+    // toggled state (inside a link): the button is enabled
     Object.defineProperty(el, 'commandIsToggled', {
       get() {
         return true
@@ -211,11 +220,12 @@ describe('rich-text-editor-unlink', () => {
       configurable: true,
     })
     el.updated(new Map([['range', undefined]]))
-    expect(el.hasAttribute('disabeld')).to.equal(true)
+    await sleep(0)
     expect(el.hasAttribute('disabled')).to.equal(false)
     delete el.commandIsToggled
     el.updated(new Map([['range', undefined]]))
-    expect(el.hasAttribute('disabeld')).to.equal(false)
+    await sleep(0)
+    expect(el.hasAttribute('disabled')).to.equal(true)
   })
 })
 
