@@ -173,24 +173,25 @@ describe("product-card test", () => {
 
       const collapses = element.shadowRoot.querySelectorAll("a11y-collapse");
       expect(collapses[0].hasAttribute("disabled")).to.be.true; // Details collapse
-      // Demo collapse: depends on both disabled AND hasDemo - when hasDemo is undefined, it becomes enabled
-      // This shows that Lit evaluates !undefined as true, but disabled || !undefined might not work as expected
+      // Demo collapse: ?disabled="${this.disabled || !this.hasDemo}" — the
+      // card is disabled, so the demo collapse is disabled as well
+      expect(collapses[1].hasAttribute("disabled")).to.be.true; // Demo collapse
     });
   });
 
   describe("Demo Functionality", () => {
-    it("should evaluate demo collapse expression correctly when hasDemo is false", async () => {
+    it("should disable demo collapse when there is no demo", async () => {
       element.hasDemo = false;
       element.disabled = false;
       await element.updateComplete;
 
-      // The expression evaluates correctly but Lit doesn't set the DOM attribute
+      // ?disabled="${this.disabled || !this.hasDemo}" — with no demo to
+      // expand, the demo collapse is disabled even when the card is enabled
       expect(element.disabled || !element.hasDemo).to.be.true;
 
       const collapses = element.shadowRoot.querySelectorAll("a11y-collapse");
       const demoCollapse = collapses[1]; // Second collapse is for demo
-      // Note: This is the actual behavior - DOM attribute doesn't match the expression
-      expect(demoCollapse.hasAttribute("disabled")).to.be.false;
+      expect(demoCollapse.hasAttribute("disabled")).to.be.true;
     });
 
     it("should enable demo collapse when hasDemo is true", async () => {
@@ -205,24 +206,22 @@ describe("product-card test", () => {
       expect(demoCollapse.hasAttribute("disabled")).to.be.false;
     });
 
-    it("should understand actual behavior of disabled and hasDemo combination", async () => {
-      // Test the exact failing case - the boolean expression evaluates correctly
-      // but the DOM attribute is not set, indicating a Lit binding issue
+    it("should disable demo collapse when the card is disabled even with a demo", async () => {
       element.hasDemo = true;
       element.disabled = true;
       await element.updateComplete;
 
-      // The JavaScript expression works correctly
+      // ?disabled="${this.disabled || !this.hasDemo}" — a disabled card
+      // disables the demo collapse even though a demo exists
       expect(element.disabled || !element.hasDemo).to.be.true;
 
       const collapses = element.shadowRoot.querySelectorAll("a11y-collapse");
-      const demoCollapse = collapses[1];
+      const demoCollapse = collapses[1]; // Second collapse is for demo
 
-      // However, the DOM attribute is not set (actual behavior observed)
-      expect(demoCollapse.hasAttribute("disabled")).to.be.false;
+      expect(demoCollapse.hasAttribute("disabled")).to.be.true;
     });
 
-    it("should understand disabled state behavior when disabled and hasDemo is undefined", async () => {
+    it("should disable demo collapse when disabled and hasDemo is undefined", async () => {
       element.hasDemo = undefined; // default state
       element.disabled = true;
       await element.updateComplete;
@@ -232,8 +231,7 @@ describe("product-card test", () => {
 
       const collapses = element.shadowRoot.querySelectorAll("a11y-collapse");
       const demoCollapse = collapses[1]; // Second collapse is for demo
-      // But the DOM attribute doesn't get set due to Lit's boolean binding behavior
-      expect(demoCollapse.hasAttribute("disabled")).to.be.false;
+      expect(demoCollapse.hasAttribute("disabled")).to.be.true;
     });
   });
 
@@ -423,7 +421,8 @@ describe("product-card test", () => {
       expect(accentCard.getAttribute("accent-color")).to.equal("grey");
       expect(accentCard.hasAttribute("flat")).to.be.true;
       expect(collapses[0].hasAttribute("disabled")).to.be.true; // Details collapse
-      expect(collapses[1].hasAttribute("disabled")).to.be.false; // Demo collapse - matches actual behavior
+      // Demo collapse: disabled via this.disabled || !this.hasDemo
+      expect(collapses[1].hasAttribute("disabled")).to.be.true; // Demo collapse
     });
   });
 

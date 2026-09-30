@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../merit-badge.js";
+import { MeritBadge } from "../merit-badge.js";
 
 describe("elementName test", () => {
   let element;
@@ -171,3 +172,83 @@ describe("elementName test", () => {
     });
   });
 });
+
+describe('merit-badge element', () => {
+  it('registers the custom element and static tag', () => {
+    expect(globalThis.customElements.get('merit-badge')).to.exist
+    expect(MeritBadge.tag).to.equal('merit-badge')
+  })
+
+  it('shows the locked badge by default', async () => {
+    const el = await fixture(html`<merit-badge></merit-badge>`)
+    await el.updateComplete
+    expect(el.badgeUnlocked).to.be.false
+    expect(el.shadowRoot.querySelector('locked-badge')).to.exist
+    expect(el.shadowRoot.querySelector('badge-sticker')).to.not.exist
+    const button = el.shadowRoot.querySelector('.unlockButton')
+    expect(button.textContent.trim()).to.equal('Unlock?')
+  })
+
+  it('applies the oer:LearningObjective typeof and emits the oer:skill meta', async () => {
+    const el = await fixture(
+      html`<merit-badge skill="Resilience"></merit-badge>`,
+    )
+    await el.updateComplete
+    expect(el.getAttribute('typeof')).to.equal('oer:LearningObjective')
+    expect(
+      el.shadowRoot
+        .querySelector('meta[property="oer:skill"]')
+        .getAttribute('content'),
+    ).to.equal('Resilience')
+  })
+
+  it('unlocks into a badge sticker and back through the button', async () => {
+    // properties map to lowercased attribute names (badgetitle etc), not kebab-case
+    const el = await fixture(html`
+      <merit-badge
+        badgeTitle="Trailblazer"
+        badgeImage="badge.png"
+        badgeDetails="Earned for blazing trails"
+        hyperLink="https://example.com/verify"
+        badgeSkills="leadership,navigation"
+        badgeColor="#2b6cb0"
+      ></merit-badge>
+    `)
+    await el.updateComplete
+    const button = el.shadowRoot.querySelector('.unlockButton')
+    button.click()
+    await el.updateComplete
+    expect(el.badgeUnlocked).to.be.true
+    expect(el.shadowRoot.querySelector('locked-badge')).to.not.exist
+    const sticker = el.shadowRoot.querySelector('badge-sticker')
+    expect(sticker).to.exist
+    expect(sticker.getAttribute('badgeTitle')).to.equal('Trailblazer')
+    expect(sticker.getAttribute('badgeImage')).to.equal('badge.png')
+    expect(sticker.getAttribute('badgeDetails')).to.equal(
+      'Earned for blazing trails',
+    )
+    expect(sticker.getAttribute('hyperLink')).to.equal(
+      'https://example.com/verify',
+    )
+    expect(sticker.getAttribute('badgeSkills')).to.equal(
+      'leadership,navigation',
+    )
+    expect(sticker.getAttribute('badgeColor')).to.equal('#2b6cb0')
+    expect(button.textContent.trim()).to.equal('Unlocked')
+    button.click()
+    await el.updateComplete
+    expect(el.badgeUnlocked).to.be.false
+    expect(el.shadowRoot.querySelector('locked-badge')).to.exist
+  })
+
+  it('exposes haxProperties with badge settings', () => {
+    const props = MeritBadge.haxProperties
+    expect(props.canScale).to.be.true
+    expect(props.gizmo.title).to.equal('Merit Badge')
+    expect(props.gizmo.icon).to.equal('icons:verified')
+    expect(props.settings.configure.length).to.equal(6)
+    expect(props.settings.configure[5].property).to.equal('skill')
+    expect(props.settings.configure[5].inputMethod).to.equal('textfield')
+    expect(props.settings.advanced.length).to.equal(0)
+  })
+})

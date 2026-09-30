@@ -816,3 +816,141 @@ describe("MatchingQuestion test", () => {
     expect(matches.length).to.be.greaterThan(0);
   });
 });
+
+describe("MatchingQuestion gap coverage", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`<matching-question></matching-question>`);
+    await element.updateComplete;
+  });
+
+  it("closes the select target dialog via the close button", async () => {
+    element.answers = [{ label: "Target", correct: true, order: 0 }];
+    await element.updateComplete;
+    const dialog = element.shadowRoot.querySelector("#selecttarget");
+    dialog.showModal();
+    expect(dialog.open).to.be.true;
+    const closeBtn = dialog.querySelector("simple-icon-button-lite");
+    closeBtn.click();
+    expect(dialog.open).to.be.false;
+  });
+
+  it("renders matched options inside the target cell in matchTarget mode", async () => {
+    element.answers = [{ label: "Target 1", correct: true, order: 0 }];
+    await element.updateComplete;
+    // let the answer lock (released via setTimeout) clear
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    element.matchTarget = true;
+    element.matchAnswers = [
+      { label: "Match 1", order: 1, guess: 0, matchOption: true },
+    ];
+    await element.updateComplete;
+    const targetCell = element.shadowRoot.querySelector("#target-0");
+    expect(targetCell).to.exist;
+    const placed = targetCell.querySelector(".tag-option");
+    expect(placed).to.exist;
+    expect(placed.getAttribute("data-label")).to.equal("Match 1");
+  });
+
+  it("removes drag-enter styling from nodes on drop", async () => {
+    element.answers = [{ label: "Item", order: 0 }];
+    element.displayedAnswers = [];
+    element.matchAnswers = [];
+    const removedClasses = [];
+    element.shadowRoot.querySelectorAll = () => [
+      {
+        classList: {
+          remove: function (c) {
+            removedClasses.push(c);
+          },
+        },
+      },
+    ];
+    const mockEvent = {
+      preventDefault: () => {},
+      dataTransfer: { getData: () => "Item" },
+      target: { getAttribute: () => "match-1", tagName: "DIV" },
+    };
+    element.handleDrop(mockEvent);
+    expect(removedClasses).to.include("drag-enter");
+    expect(element.matchAnswers).to.have.length(1);
+  });
+
+  it("resolves a drop onto a button to its parent container", async () => {
+    element.answers = [{ label: "Item", order: 0 }];
+    element.displayedAnswers = [{ label: "Item", order: 0 }];
+    element.matchAnswers = [];
+    element.shadowRoot.querySelectorAll = () => [];
+    const parentNode = { getAttribute: () => "match-1" };
+    const mockEvent = {
+      preventDefault: () => {},
+      dataTransfer: { getData: () => "Item" },
+      target: {
+        tagName: "BUTTON",
+        getAttribute: () => null,
+        parentNode: parentNode,
+      },
+    };
+    element.handleDrop(mockEvent);
+    expect(element.matchAnswers).to.have.length(1);
+    expect(element.matchAnswers[0].guess).to.equal(1);
+    expect(element.displayedAnswers).to.have.length(0);
+  });
+
+  it("replaces an existing placement when dropped back on possible", async () => {
+    element.answers = [{ label: "Item", order: 0 }];
+    element.displayedAnswers = [
+      { label: "Item", order: 0, matchOption: true },
+    ];
+    element.matchAnswers = [];
+    element.shadowRoot.querySelectorAll = () => [];
+    const mockEvent = {
+      preventDefault: () => {},
+      dataTransfer: { getData: () => "Item" },
+      target: { getAttribute: () => "possible-container", tagName: "DIV" },
+    };
+    element.handleDrop(mockEvent);
+    expect(element.displayedAnswers).to.have.length(1);
+    expect(element.displayedAnswers[0].label).to.equal("Item");
+    expect(element.displayedAnswers[0].guess).to.equal(null);
+  });
+
+  it("replaces an existing match when re-dropped on a match cell", async () => {
+    element.answers = [{ label: "Item", order: 0 }];
+    element.displayedAnswers = [];
+    element.matchAnswers = [{ label: "Item", order: 0, guess: 2 }];
+    element.shadowRoot.querySelectorAll = () => [];
+    const mockEvent = {
+      preventDefault: () => {},
+      dataTransfer: { getData: () => "Item" },
+      target: { getAttribute: () => "match-1", tagName: "DIV" },
+    };
+    element.handleDrop(mockEvent);
+    expect(element.matchAnswers).to.have.length(1);
+    expect(element.matchAnswers[0].guess).to.equal(1);
+  });
+
+  it("preselects the current guess when opening the tag dialog", async () => {
+    const mockDialog = {
+      showModal: function () {
+        this.isOpen = true;
+      },
+    };
+    const mockSelect = { selectedIndex: 0 };
+    element.shadowRoot.querySelector = (selector) => {
+      if (selector === "dialog") return mockDialog;
+      if (selector === "dialog select") return mockSelect;
+      return null;
+    };
+    element.shadowRoot.querySelectorAll = (selector) => {
+      if (selector === "dialog option") return [{ value: "0" }, { value: "2" }];
+      return [];
+    };
+    const testOption = { label: "Test", order: 1, guess: 2 };
+    element.handleTagClick(testOption);
+    expect(element.__activeOption.label).to.equal("Test");
+    expect(String(mockSelect.selectedIndex)).to.equal("1");
+    expect(mockDialog.isOpen).to.be.true;
+  });
+});

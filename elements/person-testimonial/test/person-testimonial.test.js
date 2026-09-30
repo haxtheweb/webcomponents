@@ -1,73 +1,126 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html } from '@open-wc/testing'
+import '../person-testimonial.js'
+import { PersonTestimonial } from '../person-testimonial.js'
 
-import "../person-testimonial.js";
+describe('person-testimonial test', () => {
+  let element
 
-describe("person-testimonial test", () => {
-  let element;
   beforeEach(async () => {
     element = await fixture(html`
       <person-testimonial title="test-title"></person-testimonial>
-    `);
-  });
+    `)
+  })
 
-  it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
-  });
-});
+  it('passes the a11y audit', async () => {
+    await expect(element).shadowDom.to.be.accessible()
+  })
 
-/*
-describe("A11y/chai axe tests", () => {
-  it("person-testimonial passes accessibility test", async () => {
-    const el = await fixture(html` <person-testimonial></person-testimonial> `);
-    await expect(el).to.be.accessible();
-  });
-  it("person-testimonial passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<person-testimonial
-        aria-labelledby="person-testimonial"
-      ></person-testimonial>`
-    );
-    await assert.isNotAccessible(el);
-  });
-});
+  it('has the correct tag name', () => {
+    expect(element.tagName.toLowerCase()).to.equal('person-testimonial')
+    expect(PersonTestimonial.tag).to.equal('person-testimonial')
+  })
 
-/*
-// Custom properties test
-describe("Custom Property Test", () => {
-  it("person-testimonial can instantiate a element with custom properties", async () => {
-    const el = await fixture(html`<person-testimonial .foo=${'bar'}></person-testimonial>`);
-    expect(el.foo).to.equal('bar');
+  it('marks itself as OER schema SupportingMaterial', () => {
+    // firstUpdated stamps the OER schema class on the host
+    expect(element.getAttribute('typeof')).to.equal('oer:SupportingMaterial')
+  })
+
+  it('has undefined defaults for its data properties', () => {
+    expect(element.image).to.equal(undefined)
+    expect(element.name).to.equal(undefined)
+    expect(element.position).to.equal(undefined)
+    expect(element.describedBy).to.equal(undefined)
+  })
+
+  it('renders the quote scaffolding without an image', () => {
+    expect(element.shadowRoot.querySelector('.card')).to.exist
+    expect(element.shadowRoot.querySelector('.image')).to.not.exist
+    expect(element.shadowRoot.querySelector('.arrow_right')).to.exist
+    expect(element.shadowRoot.querySelector('.wrap')).to.exist
+    expect(element.shadowRoot.querySelector('.testimonial')).to.exist
+    expect(element.shadowRoot.querySelector('slot')).to.exist
+    expect(element.shadowRoot.querySelector('#quotestart')).to.exist
+    expect(element.shadowRoot.querySelector('#quoteend')).to.exist
+  })
+
+  it('renders the name and position with OER schema markup', async () => {
+    element.name = 'Jane Doe'
+    element.position = 'Chief Learner'
+    await element.updateComplete
+    const name = element.shadowRoot.querySelector('.name')
+    expect(name.getAttribute('property')).to.equal('oer:name')
+    expect(name.textContent).to.equal('Jane Doe')
+    const position = element.shadowRoot.querySelector('.position')
+    expect(position.textContent).to.equal('Chief Learner')
+  })
+
+  it('renders slotted testimonial content into the quote slot', async () => {
+    const el = await fixture(html`
+      <person-testimonial name="Jane Doe">
+        This company rocks!
+      </person-testimonial>
+    `)
+    expect(el.textContent.trim()).to.equal('This company rocks!')
+    const slot = el.shadowRoot.querySelector('slot')
+    expect(slot.getAttribute('property')).to.equal('oer:description')
+  })
+
+  describe('image rendering', () => {
+    it('renders the image with OER schema markup when provided', async () => {
+      // data URI so no real network request is ever made
+      const src = 'data:image/gif;base64,R0lGODlhAQABAAAAADs='
+      const el = await fixture(html`
+        <person-testimonial
+          name="Jane Doe"
+          image="${src}"
+          described-by="testimonial-source"
+        ></person-testimonial>
+      `)
+      const img = el.shadowRoot.querySelector('.image img')
+      expect(img).to.exist
+      expect(img.getAttribute('property')).to.equal('oer:image')
+      expect(img.getAttribute('src')).to.equal(src)
+      expect(img.getAttribute('loading')).to.equal('lazy')
+      expect(img.getAttribute('alt')).to.equal('Jane Doe')
+      expect(img.getAttribute('aria-describedby')).to.equal(
+        'testimonial-source',
+      )
+    })
+
+    it('falls back to an empty alt when no name is given', async () => {
+      const el = await fixture(html`
+        <person-testimonial
+          image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+        ></person-testimonial>
+      `)
+      const img = el.shadowRoot.querySelector('.image img')
+      expect(img.getAttribute('alt')).to.equal('')
+    })
+
+    it('removes the image when the property is cleared', async () => {
+      const el = await fixture(html`
+        <person-testimonial
+          name="Jane Doe"
+          image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+        ></person-testimonial>
+      `)
+      expect(el.shadowRoot.querySelector('.image img')).to.exist
+      // an empty string is falsy so the image block is removed entirely
+      el.image = ''
+      await el.updateComplete
+      expect(el.shadowRoot.querySelector('.image')).to.not.exist
+      el.image = undefined
+      await el.updateComplete
+      expect(el.shadowRoot.querySelector('.image')).to.not.exist
+    })
+  })
+
+  describe('HAX integration', () => {
+    it('exposes haxProperties as a lib file URL', () => {
+      const url = PersonTestimonial.haxProperties
+      expect(typeof url).to.equal('string')
+      expect(url.endsWith('lib/person-testimonial.haxProperties.json')).to.be
+        .true
+    })
   })
 })
-*/
-
-/*
-// Test if element is mobile responsive
-describe('Test Mobile Responsiveness', () => {
-    before(async () => {z   
-      await setViewport({width: 375, height: 750});
-    })
-    it('sizes down to 360px', async () => {
-      const el = await fixture(html`<person-testimonial ></person-testimonial>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('360px');
-    })
-}) */
-
-/*
-// Test if element sizes up for desktop behavior
-describe('Test Desktop Responsiveness', () => {
-    before(async () => {
-      await setViewport({width: 1000, height: 1000});
-    })
-    it('sizes up to 410px', async () => {
-      const el = await fixture(html`<person-testimonial></person-testimonial>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('410px');
-    })
-    it('hides mobile menu', async () => {
-      const el await fixture(html`<person-testimonial></person-testimonial>`);
-      const hidden = el.getAttribute('hidden');
-      expect(hidden).to.equal(true);
-    })
-}) */

@@ -184,9 +184,11 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "state") {
-        this.stopped = this._calculateStopped(this.state);
-        this.playing = this._calculatePlaying(this.state);
-        this.paused = this._calculatePaused(this.state);
+        // the _calculate* methods set the flags (and fire events) themselves;
+        // assigning their undefined return values here clobbered the flags
+        this._calculateStopped(this.state);
+        this._calculatePlaying(this.state);
+        this._calculatePaused(this.state);
       }
     });
   }

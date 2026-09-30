@@ -38,6 +38,10 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Test all elements
+        run: yarn test:all
       - name: Validate component gallery build
         run: yarn build-gallery
       - name: Rebuild Elements README

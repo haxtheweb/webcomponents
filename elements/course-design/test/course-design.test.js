@@ -177,3 +177,44 @@ describe("course-design test", () => {
     });
   });
 });
+
+describe('course-design OER schema metadata', () => {
+  it('applies the oer:Course typeof on first update', async () => {
+    const el = await fixture(html`<course-design></course-design>`);
+    expect(el.getAttribute('typeof')).to.equal('oer:Course');
+  });
+
+  it('renders oer meta properties for course metadata', async () => {
+    const el = await fixture(html`
+      <course-design
+        course-identifier="MATH-100"
+        primary-instructor="Dr. Ada Lovelace"
+        term-offered="Fall 2026"
+        syllabus="files/syllabus.pdf"
+        delivery-format="online"
+      ></course-design>
+    `);
+    await el.updateComplete;
+    const metas = el.shadowRoot.querySelectorAll('meta[property^="oer:"]');
+    expect(metas.length).to.equal(5);
+    const meta = (name) =>
+      el.shadowRoot.querySelector(`meta[property="oer:${name}"]`);
+    expect(meta('courseIdentifier').getAttribute('content')).to.equal(
+      'MATH-100',
+    );
+    expect(meta('primaryInstructor').getAttribute('content')).to.equal(
+      'Dr. Ada Lovelace',
+    );
+    expect(meta('termOffered').getAttribute('content')).to.equal('Fall 2026');
+    expect(meta('syllabus').getAttribute('content')).to.equal(
+      'files/syllabus.pdf',
+    );
+    expect(meta('deliveryFormat').getAttribute('content')).to.equal('online');
+  });
+
+  it('renders no oer metas by default', async () => {
+    const el = await fixture(html`<course-design></course-design>`);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelectorAll('meta').length).to.equal(0);
+  });
+});

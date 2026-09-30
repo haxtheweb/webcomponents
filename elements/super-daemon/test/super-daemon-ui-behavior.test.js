@@ -124,6 +124,13 @@ describe('super-daemon-ui behavior', () => {
       { title: 'B', index: 'b', value: {}, eventName: 'e' },
     ]
     await el.updateComplete
+    // SimpleFilterMixin re-arms its 250ms debounce when items change; that
+    // late recompute swaps in a new filtered array, which resets the
+    // selection state and clears the row active flags. Let it settle before
+    // driving selection so this test is not a race between the reset and
+    // the frame that applies the selected row state.
+    await aTimeout(300)
+    await el.updateComplete
     el._updateActiveDescendant(1)
     expect(el._selectedIndex).to.equal(1)
     expect(el._activeDescendant).to.equal('option-1')

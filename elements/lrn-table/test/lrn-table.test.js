@@ -1,69 +1,62 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html } from '@open-wc/testing'
 
-import "../lrn-table.js";
+import { LrnTable } from '../lrn-table.js'
 
-describe("lrn-table test", () => {
-  let element;
+describe('lrn-table test', () => {
+  let element
   beforeEach(async () => {
-    element = await fixture(html` <lrn-table title="test-title"></lrn-table> `);
-  });
+    element = await fixture(
+      html` <lrn-table title="test-title"></lrn-table> `,
+    )
+  })
 
-  it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
-  });
-});
+  it('passes the a11y audit', async () => {
+    await expect(element).shadowDom.to.be.accessible()
+  })
 
-/*
-describe("A11y/chai axe tests", () => {
-  it("lrn-table passes accessibility test", async () => {
-    const el = await fixture(html` <lrn-table></lrn-table> `);
-    await expect(el).to.be.accessible();
-  });
-  it("lrn-table passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<lrn-table aria-labelledby="lrn-table"></lrn-table>`
-    );
-    await assert.isNotAccessible(el);
-  });
-});
+  it('registers the lrn-table tag', async () => {
+    expect(LrnTable.tag).to.equal('lrn-table')
+    expect(globalThis.customElements.get('lrn-table')).to.exist
+  })
 
-/*
-// Custom properties test
-describe("Custom Property Test", () => {
-  it("lrn-table can instantiate a element with custom properties", async () => {
-    const el = await fixture(html`<lrn-table .foo=${'bar'}></lrn-table>`);
-    expect(el.foo).to.equal('bar');
+  it('references an external haxProperties schema file', async () => {
+    const url = LrnTable.haxProperties
+    expect(typeof url).to.equal('string')
+    expect(url).to.contain('lrn-table.haxProperties.json')
+  })
+
+  it('emits oer:SupportingMaterial microdata with the title as oer:name', async () => {
+    const wrapper = element.shadowRoot.querySelector(
+      'div[typeof="oer:SupportingMaterial"]',
+    )
+    expect(wrapper).to.exist
+    const name = element.shadowRoot.querySelector('[property="oer:name"]')
+    expect(name.textContent).to.equal('test-title')
+    const description = element.shadowRoot.querySelector(
+      '[property="oer:description"]',
+    )
+    expect(description).to.exist
+  })
+
+  it('hides the oer:name title from visual presentation', async () => {
+    const name = element.shadowRoot.querySelector('.hidden-title')
+    expect(name.getAttribute('property')).to.equal('oer:name')
+    expect(name.getAttribute('class')).to.equal('hidden-title')
+  })
+
+  it('passes csvFile, title and description into csv-render', async () => {
+    element.csvFile = 'table.csv'
+    element.description = 'A table of data'
+    await element.updateComplete
+    const csv = element.shadowRoot.querySelector('csv-render')
+    expect(csv.getAttribute('data-source')).to.equal('table.csv')
+    expect(csv.getAttribute('caption')).to.equal('test-title')
+    expect(csv.getAttribute('summary')).to.equal('A table of data')
+  })
+
+  it('defaults csvFile and description to empty', async () => {
+    const csv = element.shadowRoot.querySelector('csv-render')
+    expect(csv.getAttribute('data-source')).to.equal('')
+    expect(csv.getAttribute('summary')).to.equal('')
   })
 })
-*/
-
-/*
-// Test if element is mobile responsive
-describe('Test Mobile Responsiveness', () => {
-    before(async () => {z   
-      await setViewport({width: 375, height: 750});
-    })
-    it('sizes down to 360px', async () => {
-      const el = await fixture(html`<lrn-table ></lrn-table>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('360px');
-    })
-}) */
-
-/*
-// Test if element sizes up for desktop behavior
-describe('Test Desktop Responsiveness', () => {
-    before(async () => {
-      await setViewport({width: 1000, height: 1000});
-    })
-    it('sizes up to 410px', async () => {
-      const el = await fixture(html`<lrn-table></lrn-table>`);
-      const width = getComputedStyle(el).width;
-      expect(width).to.equal('410px');
-    })
-    it('hides mobile menu', async () => {
-      const el await fixture(html`<lrn-table></lrn-table>`);
-      const hidden = el.getAttribute('hidden');
-      expect(hidden).to.equal(true);
-    })
-}) */

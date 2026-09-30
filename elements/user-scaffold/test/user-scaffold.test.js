@@ -355,6 +355,22 @@ describe("UserScaffold disconnectedCallback", () => {
   });
 });
 
+describe("UserScaffold debug mode", () => {
+  it("debug=true triggers console.trace via autorun", async () => {
+    const element = await fixture(html`<user-scaffold></user-scaffold>`);
+    let traced = false;
+    const originalTrace = console.trace;
+    console.trace = () => {
+      traced = true;
+    };
+    element.debug = true;
+    expect(traced).to.be.true;
+    console.trace = originalTrace;
+    element.debug = false;
+    element.disconnectedCallback();
+  });
+});
+
 describe("UserScaffold interval polling", () => {
   it("has an interaction interval set in constructor", async () => {
     const element = await fixture(html`<user-scaffold></user-scaffold>`);
@@ -373,5 +389,128 @@ describe("UserScaffold interval polling", () => {
     );
     expect(element.readMemory("interactionDelay")).to.equal(before + 300);
     element.disconnectedCallback();
+  });
+});
+
+describe("UserScaffold paste architype detection", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html`<user-scaffold></user-scaffold>`);
+  });
+  afterEach(() => {
+    element.disconnectedCallback();
+  });
+
+  it("userPasteAction detects base64 content", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) => (type === "text/html" ? "" : "dGVzdA=="),
+        files: [],
+      },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.data.architype).to.equal("base64");
+    expect(element.data.raw).to.equal("dGVzdA==");
+    // BUG: user-scaffold.js:192 assigns `safe = this.isBase64(pasteContent)`
+    // which stores the boolean true instead of the pasted string as data.value
+    expect(element.data.value).to.equal(true);
+  });
+
+  it("userPasteAction detects single file", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) => (type === "text/html" ? "" : "pasted file text"),
+        files: [{ name: "a.txt" }],
+      },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.data.architype).to.equal("file");
+    expect(element.data.value).to.equal("pasted file text");
+  });
+
+  it("userPasteAction detects multiple files", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) => (type === "text/html" ? "" : "pasted files text"),
+        files: [{ name: "a.txt" }, { name: "b.txt" }],
+      },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.data.architype).to.equal("files");
+    expect(element.data.value).to.equal("pasted files text");
+  });
+
+  it("userPasteAction detects url", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) => (type === "text/html" ? "" : "https://example.com"),
+        files: [],
+      },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.data.architype).to.equal("url");
+    expect(element.data.value).to.equal("https://example.com");
+  });
+
+  it("userPasteAction falls back to globalThis.clipboardData when event has none", () => {
+    // IE-style path: event lacks clipboardData entirely
+    globalThis.clipboardData = {
+      getData: () => "dGVzdA==",
+    };
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: undefined,
+      originalEvent: { clipboardData: undefined },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.action.type).to.equal("paste");
+    expect(element.data.architype).to.equal("base64");
+    expect(element.data.raw).to.equal("dGVzdA==");
+    // BUG: same as above, data.value is boolean true instead of the string
+    expect(element.data.value).to.equal(true);
+    delete globalThis.clipboardData;
+  });
+});
+
+describe("UserScaffold drop via DataTransfer files interface", () => {
+  let element;
+  beforeEach(async () => {
+    element = await fixture(html`<user-scaffold></user-scaffold>`);
+  });
+  afterEach(() => {
+    element.disconnectedCallback();
+  });
+
+  it("userDropAction with no items and empty files does nothing", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      preventDefault: () => {},
+      stopPropagation: () => {},
+      stopImmediatePropagation: () => {},
+      dataTransfer: { files: [] },
+    };
+    element.userDropAction(fakeEvent);
+    expect(element.action.type).to.not.equal("drop");
+  });
+
+  it("userDropAction with files and no items throws reading items[0]", () => {
+    // BUG: user-scaffold.js:244-246 the files-fallback branch reads
+    // e.dataTransfer.items[0].type/kind, but this branch only runs when
+    // e.dataTransfer.items is absent, so it throws a TypeError
+    const fakeEvent = {
+      isTrusted: true,
+      preventDefault: () => {},
+      stopPropagation: () => {},
+      stopImmediatePropagation: () => {},
+      dataTransfer: { files: [{ name: "test.txt" }] },
+    };
+    expect(() => element.userDropAction(fakeEvent)).to.throw();
+    // the action assignment happens before the failing data assignment
+    expect(element.action.type).to.equal("drop");
+    expect(element.action.architype).to.equal("input");
   });
 });

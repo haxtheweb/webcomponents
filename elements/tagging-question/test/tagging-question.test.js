@@ -786,3 +786,65 @@ describe("TaggingQuestion test", () => {
     expect(possibleContainer).to.exist;
   });
 });
+
+describe("TaggingQuestion gap coverage", () => {
+  it("renders correct feedback and evidence slots when correct", async () => {
+    const el = await fixture(html`
+      <tagging-question>
+        <div slot="feedbackCorrect">Nice work</div>
+        <div slot="evidence">Because reasons</div>
+      </tagging-question>
+    `);
+    await el.updateComplete;
+    el.answers = [
+      { label: "A", correct: true },
+      { label: "B", correct: false },
+    ];
+    await el.updateComplete;
+    // let the answer lock (released via setTimeout) clear
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    el.selectedAnswers = [{ label: "A", correct: true }];
+    el.showAnswer = true;
+    await el.updateComplete;
+
+    expect(el.isCorrect()).to.be.true;
+    expect(
+      el.shadowRoot.querySelector('slot[name="feedbackCorrect"]'),
+    ).to.exist;
+    expect(el.shadowRoot.querySelector('slot[name="evidence"]')).to.exist;
+    const evidenceHeading = Array.from(
+      el.shadowRoot.querySelectorAll("h4"),
+    ).find((h) => h.textContent.trim() === "Evidence");
+    expect(evidenceHeading).to.exist;
+  });
+
+  it("renders incorrect feedback and hint slots when incorrect", async () => {
+    const el = await fixture(html`
+      <tagging-question>
+        <div slot="feedbackIncorrect">Not quite</div>
+        <div slot="hint">Think harder</div>
+      </tagging-question>
+    `);
+    await el.updateComplete;
+    el.answers = [
+      { label: "A", correct: true },
+      { label: "B", correct: false },
+    ];
+    await el.updateComplete;
+    // let the answer lock (released via setTimeout) clear
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    el.selectedAnswers = [{ label: "B", correct: false }];
+    el.showAnswer = true;
+    await el.updateComplete;
+
+    expect(el.isCorrect()).to.be.false;
+    expect(
+      el.shadowRoot.querySelector('slot[name="feedbackIncorrect"]'),
+    ).to.exist;
+    expect(el.shadowRoot.querySelector('slot[name="hint"]')).to.exist;
+    const hintHeading = Array.from(el.shadowRoot.querySelectorAll("h4")).find(
+      (h) => h.textContent.trim() === "Need a hint?",
+    );
+    expect(hintHeading).to.exist;
+  });
+});

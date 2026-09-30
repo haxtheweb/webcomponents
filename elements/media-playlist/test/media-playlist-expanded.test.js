@@ -464,6 +464,12 @@ describe('media-playlist HAX integration', () => {
     // activeIndex has never changed, so no auto-attach timer is pending and
     // the manual calls below are the only ones in flight
     const player = element.shadowRoot.querySelector('#player')
+    // video-player gates its a11y-media-player behind elementVisible
+    // (IntersectionObserverMixin) and the real IO callback never delivers in
+    // a backgrounded / throttled test tab. Simulate the callback the same way
+    // the accent-card tests do so the player internals actually render.
+    player.handleIntersectionCallback([{ intersectionRatio: 1 }])
+    await player.updateComplete
     const a11yPlayer = player.shadowRoot.querySelector('a11y-media-player')
     expect(a11yPlayer).to.exist
     const fakeMedia = globalThis.document.createElement('video')

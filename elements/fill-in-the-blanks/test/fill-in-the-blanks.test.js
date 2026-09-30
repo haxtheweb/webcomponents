@@ -545,3 +545,54 @@ describe("FillInTheBlanks test", () => {
     expect(allFields).to.have.length(3);
   });
 });
+
+describe("FillInTheBlanks gap coverage", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(html`<fill-in-the-blanks></fill-in-the-blanks>`);
+    await element.updateComplete;
+  });
+
+  it("applies correct/incorrect classes to select blanks when showing answers", async () => {
+    element.statement = "Choose [red|blue|green].";
+    await element.updateComplete;
+
+    element.answers[0].userGuessCorrect = true;
+    element.showAnswer = true;
+    await element.updateComplete;
+
+    let selectField = element.shadowRoot.querySelector(
+      'simple-fields-field[type="select"]',
+    );
+    expect(selectField.classList.contains("correct")).to.be.true;
+
+    element.answers[0].userGuessCorrect = false;
+    element.requestUpdate();
+    await element.updateComplete;
+
+    selectField = element.shadowRoot.querySelector(
+      'simple-fields-field[type="select"]',
+    );
+    expect(selectField.classList.contains("incorrect")).to.be.true;
+  });
+
+  it("renders a blank as plain text when no matching answer exists", async () => {
+    element.statement = "The [cat] sat.";
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+    ).to.equal(1);
+
+    // simulate a data mismatch: wordList still has the blank token but
+    // the answers array no longer carries a matching record
+    element.answers = [];
+    await element.updateComplete;
+
+    expect(
+      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+    ).to.equal(0);
+    const text = element.shadowRoot.querySelector(".text");
+    expect(text.textContent).to.include("[cat]");
+  });
+});
