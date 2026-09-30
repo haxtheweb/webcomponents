@@ -978,7 +978,7 @@ Custom property | Description | Default
 --a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border
 --a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset
  *
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element a11y-menu-button
  */
 class A11yMenuButton extends A11yMenuButtonBehaviors(LitElement) {}

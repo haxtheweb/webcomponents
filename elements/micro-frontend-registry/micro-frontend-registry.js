@@ -435,8 +435,6 @@ export class MicroFrontendRegistryNodeJS extends MicroFrontendRegCapabilities(
 /**
  * `micro-frontend-registry`
  * `A singleton for registration and managing access to leverage microservices for web components`
- *
- * @demo demo/index.html
  * @element micro-frontend-registry
  */
 class MicroFrontendRegistryEl extends MicroFrontendRegCapabilities(

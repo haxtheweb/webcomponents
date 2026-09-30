@@ -14,7 +14,7 @@ Custom property | Description | Default
 `--lorem-data-FontSize` | default font-size | 14px
  *
  * @element lorem-data
- * @demo ./demo/index.html demo
+ * @demo demo/index.html demo
  */
 
 class LoremData extends LoremDataBehaviors(LitElement) {

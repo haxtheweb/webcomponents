@@ -132,7 +132,7 @@ Note (issue #2996): the row layout and the inline-description-vs-(i)-info-icon b
  ``` 
   * @element simple-fields
   * @extends simple-fields-lite
-  * @demo ./demo/index.html
+  * @demo demo/index.html
   * @demo ./demo/schema.html Schema
   * @demo ./demo/conditional.html Conditional Logic
   * @demo ./demo/subschema.html Subschemas

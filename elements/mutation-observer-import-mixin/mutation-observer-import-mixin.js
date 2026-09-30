@@ -6,7 +6,6 @@ import { MutationObserverImportMixin } from "./lib/MutationObserverImportMixin.j
 /**
  * `mutation-observer-import-mixin`
  * `a SuperClass mixin that dynamically imports undefined custom element definitions`
- * @demo demo/index.html
  * @element mutation-observer-import-mixin
  */
 class MutationObserverImportElement extends MutationObserverImportMixin(

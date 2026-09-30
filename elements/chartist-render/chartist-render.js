@@ -1732,7 +1732,7 @@ const ChartistRenderSuper = function (SuperClass) {
 /**
   * @element chartist-render
   * @extends SchemaBehaviors
-  * @demo ./demo/index.html 
+  * @demo demo/index.html 
   * @demo ./demo/csv.html CSV Loading
   * 
   * `chartist-render`

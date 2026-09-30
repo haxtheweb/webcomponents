@@ -58,7 +58,7 @@ import "./lib/simple-picker-option.js";
   `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
  *
  * @class SimplePickerBehaviors
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 const SimplePickerBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -1161,7 +1161,7 @@ const SimplePickerBehaviors = function (SuperClass) {
  *
  * `simple-picker`
  * a simple picker for options, icons, etc.
- * @demo ./demo/index.html
+ * @demo demo/index.html
  *
  * @class SimplePicker
  * @element simple-picker

@@ -11,7 +11,7 @@ import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
  * @group simple-fields
  * @class SimpleFieldsCombo
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
- * @demo ./demo/index.html Demo
+ * @demo demo/index.html Demo
  */
 class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   static get tag() {

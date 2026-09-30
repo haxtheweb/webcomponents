@@ -11,7 +11,7 @@ import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js
  * Uses simple-picker to create an icon picker
  *
 
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class SimpleSymbolPicker extends SimplePickerBehaviors(LitElement) {
   //styles function

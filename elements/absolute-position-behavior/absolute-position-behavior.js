@@ -241,7 +241,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
 /**
  * `absolute-position-behavior`
  * abstracts absolute positioning behavior to be resusable in other elements
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element absolute-position-behavior
  */
 class AbsolutePositionBehavior extends AbsolutePositionBehaviorClass(

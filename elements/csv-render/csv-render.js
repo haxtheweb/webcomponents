@@ -16,7 +16,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
  * @microcopy - language worth noting:
  *  - CSV is comma separated values
  *
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element csv-render
  */
 class CsvRender extends IntersectionObserverMixin(SimpleColors) {

@@ -280,7 +280,7 @@ Custom property | Description | Default
 --a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset
 --a11y-menu-button-item-focus-border | button or link border when focused | unset
  *
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element a11y-menu-button-item
  * @extends A11yMenuButtonItemBehaviors
  */

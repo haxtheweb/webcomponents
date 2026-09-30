@@ -7,11 +7,6 @@
  * @element lazy-import-discover
  * `Break peoples' brains on simplifying webcomponent integrations`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @demo demo/index.html
  */
 class LazyImportDiscover extends HTMLElement {
   /**

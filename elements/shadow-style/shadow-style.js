@@ -6,8 +6,6 @@
 /**
  * `shadow-style`
  * `write css that is for piercing shadow roots and applying CSS automatically`
- *
- * @demo demo/index.html
  * @element shadow-style
  */
 class ShadowStyle extends HTMLElement {

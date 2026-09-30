@@ -23,7 +23,7 @@ import { AbsolutePositionBehavior } from "@haxtheweb/absolute-position-behavior/
  `--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
   *
   * @element simple-popover
-  * @demo ./demo/index.html
+  * @demo demo/index.html
   * @demo ./demo/tour.html Tour
   */
 class SimplePopover extends AbsolutePositionBehavior {

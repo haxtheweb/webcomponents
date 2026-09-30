@@ -190,11 +190,6 @@ globalThis.addEventListener(
 /**
  * `wc-registry`
  * `optionally build the registry from the innerHTML of an element`
- *
- * @demo demo/index.html Baseline example
- * @demo demo/elmsln.html ELMS:LN integration
- * @demo demo/cantvas.html Cantvas integration example (token)
- * @demo demo/multiple-registries.html Multiple registries
  * @element wc-registry
  */
 class WcRegistry extends HTMLElement {
@@ -232,7 +227,6 @@ globalThis.customElements.define(WcRegistry.tag, WcRegistry);
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
- * @demo demo/index.html
  * @element wc-autoload
  */
 class WcAutoload extends HTMLElement {

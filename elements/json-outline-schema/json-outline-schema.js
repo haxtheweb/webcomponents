@@ -25,8 +25,6 @@ globalThis.JSONOutlineSchema.requestAvailability = () => {
 /**
  * `json-outline-schema`
  * `JS based state management helper for the json outline schema spec`
- * @demo demo/index.html Demo
- * @demo demo/listing.html Listing
  * @element json-outline-schema
  */
 class JsonOutlineSchema extends HTMLElement {

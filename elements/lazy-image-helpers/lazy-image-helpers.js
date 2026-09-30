@@ -130,7 +130,6 @@ export const lazyImageLoader = function (SuperClass) {
  * `helpers for building lazy loading images`
  *
  * @microcopy - language worth noting:
- * @demo demo/index.html
  * @element lazy-image-helpers
  */
 class lazyImage extends LoadingHelper(lazyImageLoader(LitElement)) {

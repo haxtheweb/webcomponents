@@ -21,7 +21,7 @@ Custom property | Description | Default
  * @element rich-text-editor-source
  * @lit-html
  * @lit-element
- * @demo ./demo/index.html demo
+ * @demo demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration

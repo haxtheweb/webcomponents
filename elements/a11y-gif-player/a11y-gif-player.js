@@ -31,7 +31,7 @@ Custom property | Description | Default
 `--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff
 `--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element a11y-gif-player
  */
 class A11yGifPlayer extends I18NMixin(

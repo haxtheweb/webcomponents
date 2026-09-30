@@ -28,7 +28,7 @@ Custom property | Description | Default
  * @extends LitElement
  * @extends SimpleColors
  * @extends SchemaBehaviors
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @element self-check
  * 
  */

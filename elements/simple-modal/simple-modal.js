@@ -68,7 +68,7 @@ const SimpleModalCssVars = [
  --simple-modal-max-width | max-width of modal | unset
  --simple-modal-max-height | max-height of modal | unset
   * 
-  * @demo ./demo/index.html demo
+  * @demo demo/index.html demo
   * @demo ./demo/css.html styling simple-modal via CSS
   * @demo ./demo/details.html styling simple-modal via event details
   * @demo ./demo/template.html using simple-modal-template

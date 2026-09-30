@@ -8,6 +8,10 @@
   },
   "type": "module",
   "main": "deduping-fix.js",
+  "scripts": {
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
   "author": {
     "name": "haxtheweb",
     "url": "https://hax.psu.edu/"

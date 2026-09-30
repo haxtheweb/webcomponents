@@ -10,7 +10,7 @@ import { LitElement, html, css } from "lit";
  *
  *
 
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class SimpleSearchContent extends LitElement {
   static get tag() {

@@ -120,9 +120,13 @@ describe("awesome-explosion test", () => {
       await element.updateComplete;
       expect(element.state).to.equal("play");
       expect(element.playing).to.be.true;
+      // playing is set during updated(), so the aria-pressed flip lands on
+      // the follow-up render pass rather than the first one
+      await element.updateComplete;
       const img = element.shadowRoot.querySelector("#image");
       expect(img.getAttribute("aria-pressed")).to.equal("true");
       element.click();
+      await element.updateComplete;
       await element.updateComplete;
       expect(element.state).to.equal("stop");
       expect(element.stopped).to.be.true;

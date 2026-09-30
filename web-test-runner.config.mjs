@@ -1,3 +1,19 @@
+import path from 'node:path';
+
+// When tests are launched from an element directory (cd elements/<name> &&
+// yarn test), scope coverage collection to that element's own sources.
+// Workspace symlinks pull sibling elements' files (d-d-d, simple-icon, ...)
+// into the browser session, and because those resolve to real paths inside
+// the monorepo root they land in the coverage report with tiny
+// partial-execution percentages that dilute the element's own number.
+// When launched from the monorepo root (yarn test:all), keep collecting
+// everything so the aggregate stays a true whole-project number.
+const cwd = process.cwd();
+const relativeToRoot = path.relative(path.resolve(cwd, '../../'), cwd);
+const isElementDir =
+  relativeToRoot.split(path.sep).length === 2 &&
+  relativeToRoot.split(path.sep)[0] === 'elements';
+
 export default {
     concurrency: 10,
     nodeResolve: true,
@@ -10,6 +26,8 @@ export default {
     // them. Exclude these from coverage collection entirely to silence
     // the noise; this doesn't affect coverage of an element's own source.
     coverageConfig: {
+      // only collect the element's own files when testing a single element
+      ...(isElementDir ? { include: [`${cwd}/**`] } : {}),
       exclude: ['**/__wds-outside-root__/**', '**/node_modules/**'],
     },
     testRunnerHtml: testFramework =>

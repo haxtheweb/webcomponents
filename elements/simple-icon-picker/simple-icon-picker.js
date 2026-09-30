@@ -14,7 +14,7 @@ import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js
  * @element simple-icon-picker
  * @customElement
  *
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
   //styles function

@@ -15,7 +15,7 @@ import "./rich-text-editor-breadcrumbs.js";
  * @lit-html
  * @lit-element
  * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
+ * @demo demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
  */
 class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(

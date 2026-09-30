@@ -13,7 +13,7 @@ import "./simple-fields-url-combo-item.js";
  * @group simple-fields
  * @class SimpleFieldsUrlCombo
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
- * @demo ./demo/index.html Demo
+ * @demo demo/index.html Demo
  */
 class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
   static get tag() {

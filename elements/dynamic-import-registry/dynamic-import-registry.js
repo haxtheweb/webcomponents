@@ -24,7 +24,6 @@ globalThis.DynamicImportRegistry.requestAvailability = () => {
 /**
  * `dynamic-import-registry`
  * `maintain manage the registration and usage of dynamic imports`
- * @demo demo/index.html
  * @element dynamic-import-registry
  */
 class DynamicImportRegistry extends HTMLElement {

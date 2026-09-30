@@ -1236,7 +1236,7 @@ const SimpleColorsSuper = function (SuperClass) {
  See demo of "all of the colors" (`demo/colors.html`) for styling.
   *
  
-  * @demo ./demo/index.html demo
+  * @demo demo/index.html demo
   * @demo ./demo/how.html getting started
   * @demo ./demo/colors.html all of the colors
   * @demo ./demo/picker.html simple-colors-picker

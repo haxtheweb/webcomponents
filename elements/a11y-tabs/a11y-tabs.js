@@ -79,7 +79,7 @@ Custom property | Description | Default
  * @customElement
  * @extends LitElement
  * @extends ResponsiveUtilityBehaviors
- * @demo ./demo/index.html
+ * @demo demo/index.html
  * @demo ./demo/vertical.html Always Vertical
  * @demo ./demo/breakpoints.html Breakpoints
  * @demo ./demo/sticky.html Sticky Tabs

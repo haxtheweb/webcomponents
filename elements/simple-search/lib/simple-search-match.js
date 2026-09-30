@@ -26,7 +26,7 @@ Custom property | Description | Default
 `--simple-search-match-padding` | padding for matched conten | 0.16px 4px
  *
 
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class SimpleSearchMatch extends LitElement {
   static get tag() {

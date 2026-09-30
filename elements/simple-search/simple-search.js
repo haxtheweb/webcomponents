@@ -35,7 +35,7 @@ import "./lib/simple-search-match.js";
  `--simple-search-margin` | search input's margin | unset
   *
  
-  * @demo ./demo/index.html
+  * @demo demo/index.html
   * @demo ./demo/selector.html Searching by CSS selectors
   *
   */

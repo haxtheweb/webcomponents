@@ -5,10 +5,6 @@
  * `simple-colors-shared-styles`
  * @element simple-colors-shared-styles
  * a shared set of styles for `simple-colors`
- *
- *
-
- * @demo ./demo/index.html
  */
 import { LitElement, html, css } from "lit";
 

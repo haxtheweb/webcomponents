@@ -12,7 +12,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
  * Uses simple-picker to create an icon picker
  *
 
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class SimpleEmojiPicker extends IntersectionObserverMixin(
   SimplePickerBehaviors(LitElement),

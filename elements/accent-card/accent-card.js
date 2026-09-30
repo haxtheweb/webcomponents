@@ -14,7 +14,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  *
  * @extends SimpleColors
 
- * @demo ./demo/index.html demo
+ * @demo demo/index.html demo
  * @demo ./demo/colors.html colors
  * @demo ./demo/orientation.html card orientation
  * @demo ./demo/borders.html borders and shadow
