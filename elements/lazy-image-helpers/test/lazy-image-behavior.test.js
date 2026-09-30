@@ -94,18 +94,16 @@ describe('lazy-image', () => {
     expect(element.imageLoaded).to.equal(true)
   })
 
-  it('never completes from the img error event', async () => {
+  it('completes loading from the img error event', async () => {
     element.imageLoaded = false
     await element.updateComplete
     const img = element.shadowRoot.querySelector('img[loading="lazy"]')
-    // BUG: lazy-image-helpers.js:73-75 attaches an error listener that only
-    // binds the completion function without calling it, so a failed image
-    // never flips imageLoaded and the svg loader never clears. Exposed by
-    // 'never completes from the img error event'.
+    // the error listener calls the completion hook so a failed image
+    // clears the loader instead of spinning it forever
     img.dispatchEvent(new Event('error'))
     await aTimeout(50)
-    expect(element.imageLoaded).to.equal(false)
-    expect(element.shadowRoot.querySelector('svg')).to.exist
+    expect(element.imageLoaded).to.equal(true)
+    expect(element.shadowRoot.querySelector('svg')).to.not.exist
   })
 
   it('reflects src and alt bindings', async () => {

@@ -183,6 +183,17 @@ const EXCLUDED_ELEMENT_TAGS = new Set([
   'lrndesign-pie',
   // branding element, not authorable content
   'hax-logo',
+  // themes that should not be authorable
+  "glossy-portfolio-about",
+  "glossy-portfolio-breadcrumb",
+  "glossy-portfolio-card",
+  "glossy-portfolio-footer",
+  "glossy-portfolio-grid",
+  "glossy-portfolio-header",
+  "glossy-portfolio-home",
+  "glossy-portfolio-theme",
+  "site-available-themes",
+  "resume-theme",
 ]);
 
 /**

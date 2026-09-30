@@ -89,6 +89,16 @@ const EXCLUDED_TAGS = new Set([
   'lrndesign-chart',
   'lrndesign-line',
   'lrndesign-pie',
+  "glossy-portfolio-about",
+  "glossy-portfolio-breadcrumb",
+  "glossy-portfolio-card",
+  "glossy-portfolio-footer",
+  "glossy-portfolio-grid",
+  "glossy-portfolio-header",
+  "glossy-portfolio-home",
+  "glossy-portfolio-theme",
+  "site-available-themes",
+  "resume-theme",
 ])
 
 /**

@@ -68,12 +68,16 @@ export const lazyImageLoader = function (SuperClass) {
       if (img) {
         if (img.complete) {
           this._lazyImageLoadComplete();
-        } else {
-          img.addEventListener("load", this._lazyImageLoadComplete.bind(this));
-          img.addEventListener("error", () => {
-            this._lazyImageLoadComplete.bind(this);
-          });
         }
+        // always wire the load event too: cached and data url images can
+        // report complete before firstUpdated runs, yet a late (or
+        // re-dispatched) load event must still complete the image instead
+        // of depending on which side of that race won
+        img.addEventListener("load", this._lazyImageLoadComplete.bind(this));
+        // a failed image still completes so the loader never spins forever
+        img.addEventListener("error", () => {
+          this._lazyImageLoadComplete();
+        });
       }
     }
     static get styles() {
