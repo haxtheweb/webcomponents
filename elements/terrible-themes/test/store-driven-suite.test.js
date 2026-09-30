@@ -14,6 +14,24 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms))
 const savedManifest = store.manifest
 const savedActiveId = store.activeId
 
+// block every googleapis font stylesheet for the whole session: the
+// productionz theme's firstUpdated injects a remote Caveat font link and
+// the d-d-d design system registers Roboto fonts, neither of which should
+// ever be fetched from the network in tests
+const savedAppendChild = globalThis.document.head.appendChild
+const blockedFontLinks = []
+globalThis.document.head.appendChild = (el) => {
+  if (
+    el &&
+    el.tagName === 'LINK' &&
+    (el.getAttribute('href') || '').includes('fonts.googleapis.com')
+  ) {
+    blockedFontLinks.push(el.getAttribute('href'))
+    return el
+  }
+  return savedAppendChild.call(globalThis.document.head, el)
+}
+
 store.manifest = {
   title: 'Terrible Site',
   author: 'Fallback Author',
@@ -60,6 +78,7 @@ store.manifest = {
 after(() => {
   store.manifest = savedManifest
   store.activeId = savedActiveId
+  globalThis.document.head.appendChild = savedAppendChild
 })
 
 describe('terrible-themes main theme', () => {
@@ -204,30 +223,6 @@ describe('terrible-outlet-themes', () => {
 })
 
 describe('terrible-productionz-themes', () => {
-  let restoreAppend
-  beforeEach(() => {
-    // the theme's firstUpdated injects a googleapis Caveat font stylesheet;
-    // drop just that link so no remote font is ever fetched in the session
-    const saved = globalThis.document.head.appendChild
-    globalThis.document.head.appendChild = (el) => {
-      if (
-        el &&
-        el.tagName === 'LINK' &&
-        typeof el.href === 'string' &&
-        el.href.includes('fonts.googleapis.com')
-      ) {
-        return el
-      }
-      return saved.call(globalThis.document.head, el)
-    }
-    restoreAppend = () => {
-      globalThis.document.head.appendChild = saved
-    }
-  })
-  afterEach(() => {
-    restoreAppend()
-  })
-
   it('renders the productionz layout with author and posted metadata', async () => {
     store.activeId = 'home'
     const element = await fixture(
@@ -263,13 +258,15 @@ describe('terrible-productionz-themes', () => {
       ),
     ).to.equal(true)
     // the remote Caveat font link never lands in the document head
-    const fontHrefs = []
-    globalThis.document.head.querySelectorAll('link').forEach((l) => {
-      if ((l.getAttribute('href') || '').includes('fonts.googleapis.com')) {
-        fontHrefs.push(l.getAttribute('href'))
-      }
-    })
-    expect(fontHrefs.join('|')).to.equal('')
+    expect(
+      globalThis.document.head.querySelector('link[href*="Caveat"]') ===
+        null,
+    ).to.equal(true)
+    expect(
+      blockedFontLinks.some((href) =>
+        (href || '').includes('family=Caveat'),
+      ),
+    ).to.equal(true)
   })
 
   it('falls back through manifest author sources', async () => {

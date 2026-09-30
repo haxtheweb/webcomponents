@@ -124,30 +124,34 @@ describe('page-flag', () => {
     const el = root.querySelector('page-flag')
     const comments = el.querySelectorAll('page-flag-comment')
     expect(el.hasAttribute('opened')).to.equal(false)
-    globalThis.console.log('DIAG activeUser:', pageFlagManager.activeUser)
-    globalThis.console.log('DIAG _haxState:', el._haxState)
-    globalThis.console.log('DIAG pre-click readOnly:', comments[0].readOnly)
     el.shadowRoot.querySelector('button.arrow').click()
-    globalThis.console.log('DIAG post-click readOnly:', comments[0].readOnly)
-    globalThis.console.log('DIAG post-click canEdit:', comments[0].canEdit)
-    globalThis.console.log('DIAG post-click seed:', comments[0].seed)
     // wait out the chained update cycles from opened + dark + comments
     await el.updateComplete
     await wait(30)
-    globalThis.console.log('DIAG post-wait readOnly:', comments[0].readOnly)
     expect(el.opened).to.equal(true)
     expect(el.hasAttribute('opened')).to.equal(true)
     expect(el.dark).to.equal(true)
     expect(el.shadowRoot.querySelector('absolute-position-behavior').hasAttribute('hidden')).to.equal(false)
-    expect(comments[0].readOnly).to.equal(false)
+    // outside hax edit mode comments stay read only, rights follow the author
+    expect(comments[0].readOnly).to.equal(true)
     expect(comments[0].canEdit).to.equal(true)
     expect(comments[1].canEdit).to.equal(false)
+    // inside hax edit mode comments become writable
+    el.haxeditModeChanged(true)
     el.shadowRoot.querySelector('button.arrow').click()
     await el.updateComplete
     await wait(30)
     expect(el.opened).to.equal(false)
     expect(el.dark).to.equal(false)
-    expect(el.shadowRoot.querySelector('absolute-position-behavior').hasAttribute('hidden')).to.equal(true)
+    expect(comments[0].readOnly).to.equal(false)
+    // leaving hax edit mode and reopening returns to read only
+    el.haxeditModeChanged(false)
+    el.shadowRoot.querySelector('button.arrow').click()
+    await el.updateComplete
+    await wait(30)
+    expect(el.opened).to.equal(true)
+    expect(el.dark).to.equal(true)
+    expect(comments[0].readOnly).to.equal(true)
   })
 
   it('edits, replies and deletes comments through composed events', async () => {
