@@ -387,6 +387,16 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the OpenStax book",
     },
   });
+  // vitepressToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/system/api/v1/site/import/vitepress",
+    name: "@system/vitepressToSite",
+    title: "VitePress to Site",
+    description: "Convert a VitePress documentation repo to Site schema",
+    params: {
+      repoUrl: "Location of the VitePress git repo",
+    },
+  });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",
