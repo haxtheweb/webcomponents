@@ -20,7 +20,12 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       css`
         :host {
           display: inline;
-          --lrn-vocab-border: 1px dashed #ccc;
+          color-scheme: light dark;
+          --lrn-vocab-border: 1px dashed
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            );
         }
         button {
           text-transform: none;
@@ -30,13 +35,23 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
           top: 0px;
           border-radius: 0;
           border-bottom: var(--lrn-vocab-border);
-          background: #f5f5f5;
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           font-size: 1.1em;
           padding: 2px;
         }
         button:hover {
-          background: #bbdefb;
-          border-bottom: 1px dashed #2196f3;
+          background: light-dark(
+            var(--ddd-theme-default-pughBlue),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-bottom: 1px dashed
+            light-dark(
+              var(--ddd-theme-default-skyBlue),
+              var(--ddd-theme-default-skyLight)
+            );
         }
       `,
     ];
