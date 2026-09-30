@@ -36,9 +36,7 @@ describe('date-title', () => {
     expect(dateRing.textContent.replace(/\s/g, '')).to.equal('2026-09-30')
   })
 
-  // BUG: updated() appends a fresh pair of rings on every property change
-  // without clearing the container, so circular text stacks up on each update.
-  it('BUG accumulates duplicate rings when properties change', async () => {
+  it('replaces the rings when properties change', async () => {
     const el = await fixture(
       html`<date-title title="BADGE" date="2026-09-30"></date-title>`,
     )
@@ -47,7 +45,10 @@ describe('date-title', () => {
     expect(container.children.length).to.equal(2)
     el.title = 'SECOND'
     await el.updateComplete
-    expect(container.children.length).to.equal(4)
-    expect(container.querySelectorAll('div.circTxt1').length).to.equal(2)
+    expect(container.children.length).to.equal(2)
+    expect(container.querySelectorAll('div.circTxt1').length).to.equal(1)
+    expect(
+      container.querySelector('div.circTxt1').textContent.replace(/\s/g, ''),
+    ).to.equal('SECOND')
   })
 })

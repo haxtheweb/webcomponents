@@ -89,13 +89,13 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
       <div class="container">
         ${this.badgeUnlocked
           ? html`<badge-sticker
-              badgeImage="${this.badgeImage}"
-              badgeTitle="${this.badgeTitle}"
-              badgeDetails="${this.badgeDetails}"
-              hyperLink="${this.hyperLink}"
-              badgeSkills=${this.badgeSkills}
-              badgeUnlocked="false"
-              badgeColor="${this.badgeColor}"
+              badge-image="${this.badgeImage}"
+              badge-title="${this.badgeTitle}"
+              badge-details="${this.badgeDetails}"
+              hyper-link="${this.hyperLink}"
+              badge-skills="${this.badgeSkills}"
+              badge-unlocked="false"
+              badge-color="${this.badgeColor}"
             >
             </badge-sticker>`
           : html`<locked-badge></locked-badge>`}
@@ -175,10 +175,6 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
         advanced: [],
       },
     };
-  }
-
-  unlockButtonClicked() {
-    this.badgeUnlocked = !this.badgeUnlocked;
   }
 
   unlockButtonClicked() {

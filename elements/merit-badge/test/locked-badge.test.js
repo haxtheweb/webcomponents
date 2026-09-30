@@ -18,7 +18,8 @@ describe('locked-badge', () => {
     expect(el.shadowRoot.querySelector('.badge')).to.exist
     const img = el.shadowRoot.querySelector('img.badgepic')
     expect(img).to.exist
-    expect(img.getAttribute('alt')).to.equal('image')
+    // the placeholder carries a descriptive alt, not a generic one
+    expect(img.getAttribute('alt')).to.equal('Locked badge')
     await expect(el).shadowDom.to.be.accessible()
   })
 })

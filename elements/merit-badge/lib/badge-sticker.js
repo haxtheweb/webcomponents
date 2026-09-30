@@ -56,7 +56,10 @@ class BadgeSticker extends SimpleColors {
     height: 200px;
     border-radius: 50%
     padding: 20px;
-    background: var(--badge-color, var(--simple-colors-default-theme));
+    background: var(
+      --badge-color,
+      var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue, #1e407c))
+    );
     font-size: 21px;
     font-weight: bold;
     line-height: 1.3em;
@@ -97,17 +100,26 @@ class BadgeSticker extends SimpleColors {
     position: absolute;
     top: 32%;
     left: 12%;
+    height: var(--ddd-icon-3xs, 20px);
+    width: var(--ddd-icon-3xs, 20px);
   }
   .detailsicon {
     position: absolute;
     top: 32%;
     left: 82%;
+    height: var(--ddd-icon-3xs, 20px);
+    width: var(--ddd-icon-3xs, 20px);
   }
   .button {
     position: absolute;
     top: 33%;
     left: 82%;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
   }
   .button i {
     margin-right: 8px;
@@ -136,15 +148,15 @@ class BadgeSticker extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
-      badgeDate: { type: String },
-      badgeImage: { type: String },
-      badgeTitle: { type: String },
-      badgeDetails: { type: String },
-      hyperLink: { type: String },
-      badgeSkills: { type: String },
-      skillsOpened: { type: Boolean },
-      detailsOpened: { type: Boolean },
-      badgeColor: { type: String },
+      badgeDate: { type: String, attribute: "badge-date" },
+      badgeImage: { type: String, attribute: "badge-image" },
+      badgeTitle: { type: String, attribute: "badge-title" },
+      badgeDetails: { type: String, attribute: "badge-details" },
+      hyperLink: { type: String, attribute: "hyper-link" },
+      badgeSkills: { type: String, attribute: "badge-skills" },
+      skillsOpened: { type: Boolean, attribute: "skills-opened" },
+      detailsOpened: { type: Boolean, attribute: "details-opened" },
+      badgeColor: { type: String, attribute: "badge-color" },
     };
   }
   /**
@@ -159,34 +171,41 @@ class BadgeSticker extends SimpleColors {
           date="${this.badgeDate}"
         ></date-title>
 
-        <img class="badgepic" src="${this.badgeImage}" alt="image" />
+        <img class="badgepic" src="${this.badgeImage}" alt="${this.badgeTitle}" />
 
         <div class="details">
-          <div class="button" @click="${this.skillClick}">
-            <i class="fas fa-info-circle"></i>
-            <img
+          <button
+            class="button"
+            @click="${this.skillClick}"
+            aria-expanded="${this.skillsOpened}"
+            aria-controls="skills-popover"
+          >
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <simple-icon-lite
               class="detailsicon"
-              src="https://www.iconpacks.net/icons/1/free-information-icon-348-thumb.png"
-              alt="linkicons"
-              height="20px"
-              width="20px"
-            />
-          </div>
+              icon="icons:info"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
         </div>
         <div class="verificationlink">
-          <a href="${this.hyperLink}" target="_blank">
-            <img
+          <a
+            href="${this.hyperLink}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Verify this badge"
+          >
+            <simple-icon-lite
               class="linkicon"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Chain_link_icon_slanted.png/800px-Chain_link_icon_slanted.png"
-              alt="detailsicons"
-              height="20px"
-              width="20px"
-            />
+              icon="icons:link"
+              aria-hidden="true"
+            ></simple-icon-lite>
           </a>
         </div>
       </div>
       <absolute-position-behavior
         class="popover"
+        id="skills-popover"
         justify
         position="bottom"
         allow-overlap

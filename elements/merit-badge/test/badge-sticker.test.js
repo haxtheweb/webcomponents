@@ -26,15 +26,15 @@ describe('badge-sticker', () => {
   })
 
   it('renders the badge, circular title, image, and verification link', async () => {
-    // properties map to lowercased attribute names (badgetitle etc), not kebab-case
+    // properties map to kebab-case attribute names (badge-title etc)
     const el = await fixture(html`
       <badge-sticker
-        badgeTitle="Trailblazer"
-        badgeImage="badge.png"
-        badgeDetails="Earned for blazing trails"
-        hyperLink="https://example.com/verify"
-        badgeSkills="leadership,navigation"
-        badgeColor="#2b6cb0"
+        badge-title="Trailblazer"
+        badge-image="badge.png"
+        badge-details="Earned for blazing trails"
+        hyper-link="https://example.com/verify"
+        badge-skills="leadership,navigation"
+        badge-color="#2b6cb0"
       ></badge-sticker>
     `)
     await el.updateComplete
@@ -47,18 +47,20 @@ describe('badge-sticker', () => {
     expect(dateTitle.getAttribute('date')).to.equal(
       new Date().toLocaleDateString(),
     )
-    expect(
-      el.shadowRoot.querySelector('img.badgepic').getAttribute('src'),
-    ).to.equal('badge.png')
+    const img = el.shadowRoot.querySelector('img.badgepic')
+    expect(img.getAttribute('src')).to.equal('badge.png')
+    // the badge image alt reflects the badge title
+    expect(img.getAttribute('alt')).to.equal('Trailblazer')
     const link = el.shadowRoot.querySelector('.verificationlink a')
     expect(link.getAttribute('href')).to.equal('https://example.com/verify')
     expect(link.getAttribute('target')).to.equal('_blank')
+    expect(link.getAttribute('aria-label')).to.equal('Verify this badge')
   })
 
   it('tracks the badge node and splits skills on first update', async () => {
     const el = await fixture(
       html`<badge-sticker
-        badgeSkills="leadership,navigation,first aid"
+        badge-skills="leadership,navigation,first aid"
       ></badge-sticker>`,
     )
     await el.updateComplete
@@ -75,8 +77,8 @@ describe('badge-sticker', () => {
   it('toggles the skills popover through the details button', async () => {
     const el = await fixture(
       html`<badge-sticker
-        badgeDetails="Earned for blazing trails"
-        badgeSkills="leadership"
+        badge-details="Earned for blazing trails"
+        badge-skills="leadership"
       ></badge-sticker>`,
     )
     await el.updateComplete
@@ -94,5 +96,26 @@ describe('badge-sticker', () => {
     el.shadowRoot.querySelector('.button').click()
     await el.updateComplete
     expect(popover.hasAttribute('hidden')).to.be.true
+  })
+
+  it('exposes a keyboard-operable details button with expanded state', async () => {
+    const el = await fixture(
+      html`<badge-sticker
+        badge-details="Earned for blazing trails"
+        badge-skills="leadership"
+      ></badge-sticker>`,
+    )
+    await el.updateComplete
+    const button = el.shadowRoot.querySelector('button.button')
+    expect(button).to.exist
+    // the button discloses the popover through aria-expanded/aria-controls
+    expect(button.getAttribute('aria-expanded')).to.equal('false')
+    expect(button.getAttribute('aria-controls')).to.equal('skills-popover')
+    // the button itself is keyboard-focusable
+    button.focus()
+    expect(el.shadowRoot.activeElement === button).to.be.true
+    button.click()
+    await el.updateComplete
+    expect(button.getAttribute('aria-expanded')).to.equal('true')
   })
 })

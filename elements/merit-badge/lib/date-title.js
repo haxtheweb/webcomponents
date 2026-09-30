@@ -76,6 +76,10 @@ class DateTitle extends LitElement {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // clear any previously rendered rings so updates do not stack up
+    this.shadowRoot.querySelectorAll(".circTxt1, .circTxt2").forEach((el) => {
+      el.remove();
+    });
     this.generateCircularText(
       "circTxt1",
       this.title,

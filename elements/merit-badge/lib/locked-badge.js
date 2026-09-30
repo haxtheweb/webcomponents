@@ -46,7 +46,7 @@ class LockedBadge extends LitElement {
         <img
           class="badgepic"
           src="https://cdn-icons-png.flaticon.com/512/61/61457.png"
-          alt="image"
+          alt="Locked badge"
         />
       </div>
     `;

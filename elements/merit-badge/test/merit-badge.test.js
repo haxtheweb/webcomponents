@@ -222,18 +222,19 @@ describe('merit-badge element', () => {
     expect(el.shadowRoot.querySelector('locked-badge')).to.not.exist
     const sticker = el.shadowRoot.querySelector('badge-sticker')
     expect(sticker).to.exist
-    expect(sticker.getAttribute('badgeTitle')).to.equal('Trailblazer')
-    expect(sticker.getAttribute('badgeImage')).to.equal('badge.png')
-    expect(sticker.getAttribute('badgeDetails')).to.equal(
+    // the child serializes with kebab-case attribute names
+    expect(sticker.getAttribute('badge-title')).to.equal('Trailblazer')
+    expect(sticker.getAttribute('badge-image')).to.equal('badge.png')
+    expect(sticker.getAttribute('badge-details')).to.equal(
       'Earned for blazing trails',
     )
-    expect(sticker.getAttribute('hyperLink')).to.equal(
+    expect(sticker.getAttribute('hyper-link')).to.equal(
       'https://example.com/verify',
     )
-    expect(sticker.getAttribute('badgeSkills')).to.equal(
+    expect(sticker.getAttribute('badge-skills')).to.equal(
       'leadership,navigation',
     )
-    expect(sticker.getAttribute('badgeColor')).to.equal('#2b6cb0')
+    expect(sticker.getAttribute('badge-color')).to.equal('#2b6cb0')
     expect(button.textContent.trim()).to.equal('Unlocked')
     button.click()
     await el.updateComplete
