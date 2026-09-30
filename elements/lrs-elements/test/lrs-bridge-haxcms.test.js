@@ -53,8 +53,8 @@ describe('lrs-bridge-haxcms test', () => {
 
     it('records a viewed statement for the location', async () => {
       const { el, recordSpy } = makeElement()
-      // NOTE: trimSlash uses (^\/|\/$) WITHOUT the global flag, so it only
-      // strips a single leading OR trailing slash, never both ends
+      // fixed (lib/lrs-bridge-haxcms.js): trimSlash uses the g flag, so it
+      // strips slashes from BOTH the leading and trailing ends
       el._locationChanged({
         baseUrl: 'https://example.com',
         pathname: '/course/page/',
@@ -62,8 +62,8 @@ describe('lrs-bridge-haxcms test', () => {
       expect(recordSpy.called).to.be.true
       const detail = recordSpy.firstCall.args[0]
       expect(detail.verb.id).to.equal('viewed')
-      // the trailing slash on the pathname survives the trim
-      expect(detail.object.id).to.equal('https://example.com/course/page/')
+      // both the leading and the trailing slash on the pathname are trimmed
+      expect(detail.object.id).to.equal('https://example.com/course/page')
       // let the constructor autorun microtask fire against the stub
       await wait(10)
     })

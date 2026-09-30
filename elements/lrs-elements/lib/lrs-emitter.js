@@ -64,6 +64,14 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
     this.event = "click";
     this.object = "";
   }
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    if (this.event == "click") {
+      this.addEventListener("click", this._clickEventHandler);
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -76,10 +84,15 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
       ) {
         this._viewEventHandler();
       }
-      if (this.event == "click") {
-        this.addEventListener("click", this._clickEventHandler.bind(this));
-      }
     });
+    // keep exactly one click listener in sync with the event mode; adding
+    // the same function reference twice is a no-op in the DOM, so repeated
+    // updates can never stack duplicate listeners (one statement per click)
+    if (this.event == "click") {
+      this.addEventListener("click", this._clickEventHandler);
+    } else {
+      this.removeEventListener("click", this._clickEventHandler);
+    }
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -118,7 +131,12 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
   /**
    * life cycle, element is removed from the DOM
    */
-  //disconnectedCallback() {}
+  disconnectedCallback() {
+    this.removeEventListener("click", this._clickEventHandler);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
 }
 globalThis.customElements.define(LrsEmitter.tag, LrsEmitter);
 export { LrsEmitter };

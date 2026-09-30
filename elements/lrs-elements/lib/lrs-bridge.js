@@ -33,14 +33,25 @@ class LrsBridge extends LitElement {
     return "lrs-bridge";
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // the bridge is only enabled to record statements once it has actually
+    // been configured with an endpoint to send them to
+    this._enableProperties = !!this.endpoint;
+  }
+
   _lrsEmitterHander(e) {
-    if (this._enableProperties) {
-      this.recordStatement(e);
+    if (this._enableProperties && e.detail) {
+      // read the detail fields explicitly; passing the raw CustomEvent into
+      // recordStatement would drop verb/object since those live on the
+      // event prototype as getters, not own enumerable properties
+      this.recordStatement(e.detail);
     }
   }
 
   recordStatement(options) {
-    console.log("options:", options);
     const query = {
       method: "POST",
       cors: "no-cors",
@@ -86,6 +97,9 @@ class LrsBridge extends LitElement {
     if (!currentName) {
       const newName = this.makeGUID();
       localStorageSet("lrs-name", newName);
+      // return the freshly generated name so the very first statement
+      // records a real actor instead of the stale empty value
+      return newName;
     }
     return currentName;
   }

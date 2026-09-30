@@ -62,12 +62,11 @@ describe('lrs-emitter test', () => {
     expect(received[0].object).to.equal('/page')
   })
 
-  it('adds duplicate click listeners on updates', async () => {
-    // BUG (lib/lrs-emitter.js:79-81): updated() calls addEventListener for
-    // the click handler on EVERY property change without ever removing the
-    // previous one, so each update stacks another listener and a single
-    // click dispatches duplicate lrs-emitter statements. A single click
-    // should produce exactly ONE statement, but it produces several.
+  it('dispatches exactly one statement per click after updates', async () => {
+    // fixed (lib/lrs-emitter.js): the click listener is added with a stable
+    // function reference (DOM-deduped) instead of a fresh bind on every
+    // property change, so repeated updates never stack duplicate listeners
+    // and a single click produces exactly ONE statement
     const received = []
     element.addEventListener('lrs-emitter', (e) => {
       received.push(e.detail)
@@ -79,11 +78,30 @@ describe('lrs-emitter test', () => {
     await element.updateComplete
     element.click()
     await wait(50)
-    expect(received.length).to.be.greaterThan(1)
-    for (const detail of received) {
-      expect(detail.verb).to.equal('mastered')
-      expect(detail.object).to.equal('/page')
-    }
+    expect(received.length).to.equal(1)
+    expect(received[0].verb).to.equal('mastered')
+    expect(received[0].object).to.equal('/page')
+  })
+
+  it('cleans up the click listener on disconnect and restores it on reconnect', async () => {
+    const received = []
+    element.addEventListener('lrs-emitter', (e) => {
+      received.push(e.detail)
+    })
+    element.remove()
+    await wait(50)
+    element.click()
+    await wait(50)
+    // no listener survives the disconnect
+    expect(received.length).to.equal(0)
+    // reconnecting restores exactly one listener
+    document.body.appendChild(element)
+    await element.updateComplete
+    element.click()
+    await wait(50)
+    expect(received.length).to.equal(1)
+    expect(received[0].verb).to.equal('viewed')
+    expect(received[0].object).to.equal('/page')
   })
 
   it('does not dispatch on click in view mode', async () => {

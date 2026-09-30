@@ -3,6 +3,8 @@ import sinon from 'sinon'
 import { localStorageSet } from '@haxtheweb/utils/utils.js'
 import '../lib/lrs-bridge.js'
 import { LrsBridge } from '../lib/lrs-bridge.js'
+// the end-to-end case below nests a real lrs-emitter inside the bridge
+import '../lib/lrs-emitter.js'
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -76,22 +78,18 @@ describe('lrs-bridge test', () => {
         .throw
     })
 
-    it('first-run actor name is empty even though a GUID was stored', async () => {
-      // BUG (lib/lrs-bridge.js:84-91): when no name is stored, getUserName
-      // generates and SAVES a new GUID but returns the stale empty
-      // currentName instead of newName, so the first statement is recorded
-      // with an empty actor name.
+    it('returns the freshly generated GUID actor on the very first call', async () => {
+      // fixed (lib/lrs-bridge.js getUserName): when no name is stored, the
+      // generated GUID is both saved AND returned, so the very first
+      // statement records a real actor instead of an empty one
       const firstActor = element.getUserName()
-      expect(firstActor).to.equal('')
-      // the utils setter JSON-wraps the value, so read it back via the
-      // storage to confirm a 36 char GUID was actually persisted
+      expect(firstActor).to.match(/^[0-9a-f-]{36}$/)
+      // the utils setter JSON-wraps the value, so the raw storage entry is
+      // the quoted 36 char GUID
       const stored = globalThis.localStorage.getItem('lrs-name')
-      expect(typeof stored).to.equal('string')
-      expect(stored.length).to.equal(38)
-      expect(stored.charAt(0)).to.equal('"')
-      // the next call does return the now-stored GUID
-      expect(element.getUserName()).to.equal(JSON.parse(stored))
-      expect(element.getUserName().length).to.equal(36)
+      expect(stored).to.equal(JSON.stringify(firstActor))
+      // every later call returns the same stored GUID
+      expect(element.getUserName()).to.equal(firstActor)
     })
   })
 
@@ -101,10 +99,10 @@ describe('lrs-bridge test', () => {
       expect(element.getUserName()).to.equal('Alice')
     })
 
-    it('stores a GUID when no name exists', () => {
+    it('generates and stores a GUID when no name exists', () => {
       const name = element.getUserName()
-      // documented BUG: the fresh GUID is stored but not returned (see above)
-      expect(name).to.equal('')
+      // fixed: the fresh GUID is returned immediately (and persisted)
+      expect(name).to.match(/^[0-9a-f-]{36}$/)
       expect(globalThis.localStorage.getItem('lrs-name')).to.not.equal(null)
     })
   })
@@ -123,7 +121,7 @@ describe('lrs-bridge test', () => {
   })
 
   describe('lrs-emitter event handling', () => {
-    it('does not record statements while _enableProperties is unset', async () => {
+    it('records statements from lrs-emitter events once configured', async () => {
       const recordSpy = sandbox.spy(element, 'recordStatement')
       element.dispatchEvent(
         new CustomEvent('lrs-emitter', {
@@ -132,34 +130,66 @@ describe('lrs-bridge test', () => {
         }),
       )
       await wait(50)
-      // BUG (lib/lrs-bridge.js:37): the handler only records when
-      // this._enableProperties is truthy, but nothing in this class (or
-      // the subclass) ever sets that flag, so lrs-emitter events are
-      // always ignored by the bridge.
+      // fixed (lib/lrs-bridge.js): the bridge enables recording once it is
+      // actually configured with an endpoint, so lrs-emitter events are
+      // forwarded to the learning record store instead of always ignored
+      expect(recordSpy.called).to.be.true
+      expect(fetchStub.calledOnce).to.be.true
+    })
+
+    it('ignores lrs-emitter events while no endpoint is configured', async () => {
+      const el = await fixture(html`<lrs-bridge></lrs-bridge>`)
+      const recordSpy = sandbox.spy(el, 'recordStatement')
+      el.dispatchEvent(
+        new CustomEvent('lrs-emitter', {
+          bubbles: true,
+          detail: { verb: { id: 'viewed' } },
+        }),
+      )
+      await wait(50)
       expect(recordSpy.called).to.be.false
       expect(fetchStub.called).to.be.false
     })
 
-    it('records statements when _enableProperties is set', async () => {
-      element._enableProperties = true
+    it('records the verb and object detail from the event', async () => {
       element.dispatchEvent(
         new CustomEvent('lrs-emitter', {
           bubbles: true,
-          detail: { verb: { id: 'experienced' } },
+          detail: { verb: { id: 'experienced' }, object: { id: '/course' } },
         }),
       )
       await wait(50)
       expect(fetchStub.calledOnce).to.be.true
-      // the handler passes the raw event object into recordStatement (not
-      // e.detail). CustomEvent fields like detail/type live on the prototype
-      // as getters, so Object.assign drops them entirely and the recorded
-      // statement data only carries the actor (the verb is lost).
+      // fixed (lib/lrs-bridge.js): the handler passes the event DETAIL into
+      // recordStatement instead of the raw CustomEvent, so verb and object
+      // survive into the recorded statement data (the raw event's detail
+      // getter was invisible to Object.assign and the verb was lost)
       const body = JSON.parse(fetchStub.firstCall.args[1].body)
       const keys = Object.keys(body.variables.data.data)
-      // the meaningful part: actor is present, the verb detail is lost
       expect(keys).to.include('actor')
-      expect(keys).to.not.include('verb')
-      expect(keys).to.not.include('detail')
+      expect(keys).to.include('verb')
+      expect(keys).to.include('object')
+      expect(body.variables.data.data.verb.id).to.equal('experienced')
+      expect(body.variables.data.data.object.id).to.equal('/course')
+    })
+
+    it('records statements end to end from a nested lrs-emitter click', async () => {
+      const el = await fixture(html`
+        <lrs-bridge endpoint="https://lrs.example.com/graphql">
+          <lrs-emitter verb="clicked" object="demo-button"></lrs-emitter>
+        </lrs-bridge>
+      `)
+      await el.updateComplete
+      const emitter = el.querySelector('lrs-emitter')
+      await emitter.updateComplete
+      emitter.click()
+      await wait(50)
+      expect(fetchStub.calledOnce).to.be.true
+      const body = JSON.parse(fetchStub.firstCall.args[1].body)
+      expect(body.variables.data.data.verb).to.equal('clicked')
+      expect(body.variables.data.data.object).to.equal('demo-button')
+      // the very first statement already carries the generated GUID actor
+      expect(body.variables.data.data.actor.name).to.match(/^[0-9a-f-]{36}$/)
     })
   })
 })
