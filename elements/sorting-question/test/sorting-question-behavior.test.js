@@ -301,11 +301,10 @@ describe("sorting-question behavior", () => {
     expect(el.numberCorrect).to.equal(3);
   });
 
-  it("BUG(sorting-question.js:51-53): maxAttempts is never enforced because checkAnswerCallback skips the base attempts bookkeeping", async () => {
-    // the override only sets showAnswer = true and never calls the base
-    // QuestionElement.checkAnswerCallback, so this.attempts++ never runs;
-    // attemptsExhausted() therefore always reports false and a second check
-    // is still allowed even after the single allowed attempt was spent
+  it("FIXED(sorting-question.js:51-53): maxAttempts is enforced because checkAnswerCallback counts the attempt", async () => {
+    // the override mirrors the base QuestionElement attempts bookkeeping,
+    // so attemptsExhausted() reports true once the attempts are spent and
+    // a second check is blocked after the single allowed attempt
     const el = await ready();
     el.maxAttempts = 1;
     // the real view-transition wrapper is nondeterministic in the test
@@ -317,13 +316,14 @@ describe("sorting-question behavior", () => {
       await el.updateComplete;
       await flush(150);
       expect(el.showAnswer).to.equal(true);
-      expect(el.attempts).to.equal(0);
+      expect(el.attempts).to.equal(1);
       el.showAnswer = false;
+      await el.updateComplete;
       el.checkAnswer();
       await el.updateComplete;
       await flush(150);
-      expect(el.attempts).to.equal(0);
-      expect(el.showAnswer).to.equal(true);
+      expect(el.attempts).to.equal(1);
+      expect(el.showAnswer).to.equal(false);
     } finally {
       if (original === undefined) {
         delete globalThis.document.startViewTransition;

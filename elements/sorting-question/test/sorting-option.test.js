@@ -249,28 +249,37 @@ describe("sorting-option (lib/sorting-option.js)", () => {
     expect(active.tagName).to.equal("BUTTON");
   });
 
-  it("BUG(sorting-option.js:163): moving an option down loses keyboard focus", async () => {
-    // the downArrow branch focuses the simple-icon-button-lite HOST (a no-op
-    // without delegatesFocus) while the upArrow branch focuses the inner
-    // button (lib/sorting-option.js:171-174); after a down move the keyboard
-    // user is dropped on <body>
+  it("FIXED(sorting-option.js:163): moving an option down keeps keyboard focus", async () => {
+    // the downArrow branch now focuses the inner button of the moved
+    // option's arrow control, matching the upArrow branch
+    // (lib/sorting-option.js:171-174); after a down move the keyboard user
+    // stays on the board instead of being dropped on <body>
     const board = await buildBoard();
     const parent = board.parent;
     const options = board.options;
-    // normalize focus so leftovers from earlier fixtures do not mask it
-    const current = globalThis.document.activeElement;
-    if (current && typeof current.blur === "function") {
-      current.blur();
-    }
-    expect(globalThis.document.activeElement.tagName === "BODY").to.equal(
-      true,
-    );
     options[0].arrowSortCallback(fakeTarget("downArrow"));
     await flush();
     expect(labels(parent).join("|")).to.equal("Beta|Alpha|Gamma");
-    expect(globalThis.document.activeElement.tagName === "BODY").to.equal(
-      true,
+    // focus lands on the inner arrow button; walk the shadow chain because
+    // document.activeElement stops at the first shadow host
+    let active = globalThis.document.activeElement;
+    expect(active.tagName).to.equal("SORTING-OPTION");
+    active = active.shadowRoot.activeElement;
+    expect(active.getAttribute("id")).to.equal("downArrow");
+    active = active.shadowRoot.activeElement;
+    expect(active.tagName).to.equal("BUTTON");
+  });
+
+  it("creates its shadow root with delegatesFocus", async () => {
+    // the delegatesFocus option must be set through the static
+    // shadowRootOptions getter; assigning it in the constructor is too late
+    // for Lit to see when it attaches the shadow root
+    const el = await fixture(
+      html`<sorting-option>Step</sorting-option>`,
     );
+    expect(SortingOption.shadowRootOptions.delegatesFocus).to.equal(true);
+    expect(SortingOption.shadowRootOptions.mode).to.equal("open");
+    expect(el.shadowRoot.delegatesFocus).to.equal(true);
   });
 
   it("arrowSortCallback is a no-op while disabled", async () => {

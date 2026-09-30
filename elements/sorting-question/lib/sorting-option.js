@@ -9,6 +9,15 @@ export class SortingOption extends DDDSuper(LitElement) {
     return "sorting-option";
   }
 
+  // delegatesFocus must be declared as a static getter so the shadow root is
+  // actually created with it — assigning it in the constructor is too late.
+  static get shadowRootOptions() {
+    return {
+      ...super.shadowRootOptions,
+      delegatesFocus: true,
+    };
+  }
+
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
@@ -37,10 +46,6 @@ export class SortingOption extends DDDSuper(LitElement) {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.shadowRootOptions = {
-      ...LitElement.shadowRootOptions,
-      delegatesFocus: true,
-    };
     this.dragging = false;
     this.disabled = false;
     this.addEventListener("mousedown", this.getCurrentPosition);
@@ -160,7 +165,13 @@ export class SortingOption extends DDDSuper(LitElement) {
           this.nextElementSibling.tagName === "SORTING-OPTION"
         ) {
           let ref = parent.insertBefore(this.nextElementSibling, this);
-          ref.shadowRoot.querySelector("#downArrow").focus();
+          // focus the inner button of the moved option's arrow control,
+          // matching the upArrow branch below; the arrow host itself has
+          // no delegatesFocus so focusing it drops keyboard focus
+          ref.shadowRoot
+            .querySelector("#downArrow")
+            .shadowRoot.querySelector("button")
+            .focus();
         }
       } else {
         if (

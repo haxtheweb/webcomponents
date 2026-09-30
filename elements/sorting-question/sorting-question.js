@@ -50,6 +50,11 @@ export class SortingQuestion extends QuestionElement {
 
   checkAnswerCallback() {
     this.showAnswer = true;
+    // mirror the base QuestionElement attempts bookkeeping so that
+    // maxAttempts is enforced; the full base callback is not invoked because
+    // this element drives its own toast / feedback flow off showAnswer in
+    // updated() and the base would fire a second, conflicting toast
+    this.attempts++;
   }
   resetAnswer() {
     if (this.getOptions("incorrect")) {
