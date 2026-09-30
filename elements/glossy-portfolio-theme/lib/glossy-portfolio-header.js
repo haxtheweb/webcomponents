@@ -539,14 +539,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     const img = event.target;
     img.style.visibility = 'hidden';
   }
-  
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(GlossyPortfolioHeader.tag, GlossyPortfolioHeader);

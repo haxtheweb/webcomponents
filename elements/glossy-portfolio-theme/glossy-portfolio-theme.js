@@ -352,22 +352,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     </div>  
 `;
   }
-
-
-
-
-  
-
-  //changes currentview to project page when card is clicked
-
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(GlossyPortfolioTheme.tag, GlossyPortfolioTheme);

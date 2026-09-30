@@ -161,16 +161,6 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
 
 `;
   }
-
-
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(GlossyPortfolioHome.tag, GlossyPortfolioHome);

@@ -612,11 +612,6 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </div>
     `;
   }
-
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(ResumeTheme.tag, ResumeTheme);

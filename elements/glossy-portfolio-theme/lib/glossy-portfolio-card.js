@@ -21,7 +21,6 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    // this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
     this.thumbnail ="https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg",
     this.slug = "https://google.com";
   }
@@ -194,14 +193,6 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
       <use id="Shape 2 copy 3" href="#img1" transform="matrix(2.556,0,0,2.556,.716,2)"/>
     </svg>
     `
-  }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
   }
 }
 
