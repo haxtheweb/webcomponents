@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -60,11 +61,19 @@ class SimpleSearch extends LitElement {
           margin-right: 4px;
           padding: var(--simple-search-padding, unset);
           margin: var(--simple-search-margin, unset);
-          color: var(--simple-search-input-text-color, #000);
-          --simple-fields-color: var(--simple-search-input-text-color, #000);
+          /* dark-mode-critical colors keep the legacy light value but fall
+             back to DDD tokens in dark mode so text stays visible */
+          color: var(
+            --simple-search-input-text-color,
+            light-dark(#000, var(--ddd-theme-default-white))
+          );
+          --simple-fields-color: var(
+            --simple-search-input-text-color,
+            light-dark(#000, var(--ddd-theme-default-white))
+          );
           --simple-fields-container-color: var(
             --simple-search-input-placeholder-color,
-            #222
+            light-dark(#222, var(--ddd-theme-default-limestoneGray))
           );
           --simple-fields-background-color: var(
             --simple-fields-input-background-color,
@@ -72,7 +81,7 @@ class SimpleSearch extends LitElement {
           );
           --simple-icon-color: var(
             --simple-search-input-placeholder-color,
-            #222
+            light-dark(#222, var(--ddd-theme-default-limestoneGray))
           );
         }
 
@@ -150,7 +159,7 @@ class SimpleSearch extends LitElement {
         <button
           id="prev"
           aria-label="${this.prevButtonLabel}"
-          aria-controls="${this.controls || undefined}"
+          aria-controls="${ifDefined(this.controls)}"
           ?disabled="${this.__hidePrev}"
           @click="${this._navigateResults}"
         >
@@ -160,7 +169,7 @@ class SimpleSearch extends LitElement {
         <button
           id="next"
           aria-label="${this.nextButtonLabel}"
-          aria-controls="${this.controls || undefined}"
+          aria-controls="${ifDefined(this.controls)}"
           ?disabled="${this.__hideNext}"
           @click="${this._navigateResults}"
         >
@@ -337,9 +346,10 @@ class SimpleSearch extends LitElement {
    */
   _handleChange(e) {
     let selector = this.selector ? ` ${this.selector}` : ``,
+      // an empty list when controls is unset keeps the search event flowing
       selections = this.controls
         ? this.getRootNode().querySelectorAll(`#${this.controls}${selector}`)
-        : null;
+        : [];
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
@@ -359,8 +369,10 @@ class SimpleSearch extends LitElement {
   }
 
   _searchSelection(selection) {
+    // part of a _handleChange sweep: false keeps the running total and
+    // match numbers accumulating across every selected element
     if (selection && selection.innerHTML)
-      selection.innerHTML = this.findMatches(selection.innerHTML);
+      selection.innerHTML = this.findMatches(selection.innerHTML, false);
   }
 
   /**
@@ -416,6 +428,11 @@ class SimpleSearch extends LitElement {
     return !count || count === 0 || pointer + inc <= 0 || pointer + inc > count;
   }
 
+  _escapeRegExp(term) {
+    // escape regex metacharacters so search terms always match literally
+    return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
   /**
    * gets the tab-index of cues based on whether or not interactive cues are disabled
    *
@@ -425,8 +442,9 @@ class SimpleSearch extends LitElement {
     let find = this.shadowRoot.querySelector("#input").value,
       temp = new Array();
     if (find !== undefined && find !== null) {
-      temp = find.split(/[\"\']/gm);
-      for (let i = 0; i < temp.length; i++) {
+      temp = find.split(/[\"']/gm);
+      // iterate backwards so splicing empty terms never skips the next entry
+      for (let i = temp.length - 1; i >= 0; i--) {
         temp[i] = temp[i].trim();
         if (temp[i] === "") temp.splice(i, 1);
       }
@@ -482,14 +500,25 @@ class SimpleSearch extends LitElement {
    * ]```
    *
    * @param {array} an array of search terms
+   * @param {boolean} resetCount whether to reset the running resultCount
+   *   before matching (default true; the _handleChange sweep passes false)
    * @returns {array} an array of search results
    */
-  findMatches(results) {
+  findMatches(results, resetCount = true) {
+    // a standalone findMatches call is a fresh search, so reset the running
+    // total; the _handleChange sweep passes false so counts and match
+    // numbers keep accumulating across every selected element
+    if (resetCount) {
+      this.resultCount = 0;
+    }
     this.resultPointer = 0;
     results = results.replace(/<\/?simple-search-match[^>]*>/g, "");
     this.searchTerms.forEach((term) => {
       let modifier = this.caseSensitive ? "gm" : "gim",
-        regex = new RegExp("\\b(" + term + ")\\b", modifier),
+        regex = new RegExp(
+          "\\b(" + this._escapeRegExp(term) + ")\\b",
+          modifier,
+        ),
         replacer = (match) => {
           this.resultCount++;
           return `<simple-search-match tabindex="0" match-number="${this.resultCount}">${match}</simple-search-match>`;

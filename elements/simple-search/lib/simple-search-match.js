@@ -60,6 +60,12 @@ class SimpleSearchMatch extends LitElement {
           border-radius: var(--simple-search-match-border-radius, 0.16px);
           font-weight: var(--simple-search-match-font-weight, bold);
         }
+
+        /* keyboard focus affordance for navigable matches (DDD focus tokens) */
+        :host(:focus-visible) {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
       `,
     ];
   }

@@ -54,11 +54,11 @@ describe('simple-search defaults and rendering', () => {
     expect(nav).to.exist
     expect(prev.getAttribute('aria-label')).to.equal('previous result')
     expect(next.getAttribute('aria-label')).to.equal('next result')
-    // NOTE (bug): the controls-fallback commits an empty aria-controls
-    // attribute, so the button:not([aria-controls]) hide rule never matches
-    // and the nav buttons are displayed even without a controls target
-    expect(prev.getAttribute('aria-controls')).to.equal('')
-    expect(next.getAttribute('aria-controls')).to.equal('')
+    // fixed: aria-controls is truly absent when controls is unset (the old
+    // undefined fallback committed an empty attribute), so the
+    // button:not([aria-controls]) rule can match again
+    expect(prev.getAttribute('aria-controls') === null).to.be.true
+    expect(next.getAttribute('aria-controls') === null).to.be.true
     expect(prev.disabled).to.be.true
     expect(next.disabled).to.be.true
   })
@@ -200,6 +200,27 @@ describe('simple-search findMatches', () => {
     expect(results).to.include('>cat</simple-search-match>')
     expect(results).to.include('>hat</simple-search-match>')
   })
+
+  it('escapes regex metacharacters in search terms', () => {
+    // fixed: findMatches used to interpolate raw terms into the RegExp so
+    // metacharacters acted as pattern syntax instead of literal text
+    element.searchTerms = ['a.b']
+    const results = element.findMatches('aXb a.b')
+    // the escaped period is literal, so only a.b wraps
+    expect(element.resultCount).to.equal(1)
+    expect(results).to.include('>a.b</simple-search-match>')
+    expect(results).to.not.include('>aXb</simple-search-match>')
+  })
+
+  it('resets resultCount on each standalone findMatches call', () => {
+    // fixed: resultCount used to accumulate across findMatches calls with
+    // only _handleChange resetting it
+    element.searchTerms = ['the']
+    element.findMatches('The cat and the hat')
+    expect(element.resultCount).to.equal(2)
+    element.findMatches('the hat')
+    expect(element.resultCount).to.equal(1)
+  })
 })
 
 describe('simple-search _getSearchText', () => {
@@ -237,13 +258,14 @@ describe('simple-search _getSearchText', () => {
     expect(element.searchTerms).to.deep.equal([])
   })
 
-  it('leaks an empty term for consecutive quote pairs (BUG)', async () => {
-    // BUG: simple-search.js:429-432 removes empty terms with splice inside
-    // a forward for loop, so the element after each removal is skipped and
-    // consecutive quote pairs leak an empty search term
+  it('drops empty terms from consecutive quote pairs', async () => {
+    // fixed: simple-search.js:429-432 removed empty terms with splice inside
+    // a forward for loop, so the entry after each removal was skipped and
+    // consecutive quote pairs leaked an empty search term; iterating
+    // backwards removes every empty term
     element.shadowRoot.querySelector('#input').value = 'a""""b'
     await tick()
-    expect(element.searchTerms).to.deep.equal(['a', '', 'b'])
+    expect(element.searchTerms).to.deep.equal(['a', 'b'])
   })
 })
 
@@ -317,7 +339,30 @@ describe('simple-search _handleChange integration', () => {
     )
   })
 
-  it('crashes when no controls target is set (BUG)', async () => {
+  it('accumulates matches and unique match numbers across multiple selections', async () => {
+    const scoped = globalThis.document.createElement('div')
+    scoped.id = 'search-multi-target'
+    scoped.innerHTML = '<p>the hat</p><p>the cat</p>'
+    globalThis.document.body.appendChild(scoped)
+    cleanup.push(scoped)
+    const el = await fixture(
+      html`<simple-search
+        controls="search-multi-target"
+        selector="p"
+      ></simple-search>`,
+    )
+    el.shadowRoot.querySelector('#input').value = 'the'
+    await tick()
+    // one findMatches pass per selection must keep one running total and
+    // globally unique match numbers for goto-result targeting
+    expect(el.resultCount).to.equal(2)
+    const matches = scoped.querySelectorAll('simple-search-match')
+    expect(matches.length).to.equal(2)
+    expect(matches[0].getAttribute('match-number')).to.equal('1')
+    expect(matches[1].getAttribute('match-number')).to.equal('2')
+  })
+
+  it('handles a search without a controls target', async () => {
     const el = await fixture(html`<simple-search></simple-search>`)
     const events = []
     const onSearch = () => {
@@ -325,13 +370,32 @@ describe('simple-search _handleChange integration', () => {
     }
     el.addEventListener('simple-search', onSearch)
     try {
-      // BUG: simple-search.js:340-346 — selections is null when controls is
-      // unset, so selections.forEach throws a TypeError and the
-      // simple-search event never dispatches. This also crashes the real
-      // value-changed event path (verified: setting #input.value on a
-      // controls-less element throws from SimpleFieldsField._fireValueChanged)
-      expect(() => el._handleChange({})).to.throw()
-      expect(events.length).to.equal(0)
+      // fixed: simple-search.js:340-346 — selections defaults to an empty
+      // list when controls is unset, so _handleChange no longer throws and
+      // the simple-search event dispatches
+      el._handleChange({})
+      expect(events.length).to.equal(1)
+      expect(el.resultCount).to.equal(0)
+      expect(el.resultPointer).to.equal(0)
+    } finally {
+      el.removeEventListener('simple-search', onSearch)
+    }
+  })
+
+  it('handles the real value-changed path without a controls target', async () => {
+    // fixed: the real typing path (SimpleFieldsField value-changed ->
+    // _handleChange) no longer throws on controls-less elements
+    const el = await fixture(html`<simple-search></simple-search>`)
+    const events = []
+    const onSearch = () => {
+      events.push('fired')
+    }
+    el.addEventListener('simple-search', onSearch)
+    try {
+      el.shadowRoot.querySelector('#input').value = 'the'
+      await waitFor(() => events.length >= 1)
+      expect(el.searchTerms).to.deep.equal(['the'])
+      expect(el.resultCount).to.equal(0)
     } finally {
       el.removeEventListener('simple-search', onSearch)
     }
