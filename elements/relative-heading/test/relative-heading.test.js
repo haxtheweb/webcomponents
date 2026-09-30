@@ -93,12 +93,10 @@ describe('relative-heading hierarchy', () => {
     expect(el.querySelector('h3').textContent).to.equal('Rebased')
   })
 
-  it('clamps an invalid default-level to zero instead of 1-6', async () => {
-    // BUG (relative-heading-lite.js:146): the clamp expression is
-    // Math.min(0, Math.max(this.defaultLevel, 6)) which can only ever
-    // produce 0 or negative values, so an out-of-range default-level
-    // like 7 collapses the heading to level 0 and renders an invalid
-    // <h0> element. It should be Math.min(6, Math.max(level, 1)).
+  it('clamps an out-of-range default-level back into 1-6', async () => {
+    // the clamp expression is Math.min(6, Math.max(level, 1)), so an
+    // out-of-range default-level like 7 collapses to level 6 and
+    // renders a valid heading instead of an invalid <h0>
     const el = await fixture(
       html` <relative-heading id="rh-bad1" default-level="7">
         <h1>Broken</h1>
@@ -106,8 +104,24 @@ describe('relative-heading hierarchy', () => {
     )
     await el.updateComplete
     await el.updateComplete
-    expect(el.getAttribute('level')).to.equal('0')
-    expect(el.querySelector('h0')).to.exist
+    expect(el.getAttribute('default-level')).to.equal('6')
+    expect(el.getAttribute('level')).to.equal('6')
+    expect(el.querySelector('h6')).to.exist
+    expect(el.querySelector('h6').textContent).to.equal('Broken')
+    expect(el.querySelector('h0') === null).to.be.true
+  })
+
+  it('clamps an empty default-level up to 1', async () => {
+    const el = await fixture(
+      html` <relative-heading default-level="0">
+        <h3>Zero</h3>
+      </relative-heading>`,
+    )
+    await el.updateComplete
+    await el.updateComplete
+    expect(el.getAttribute('default-level')).to.equal('1')
+    expect(el.getAttribute('level')).to.equal('1')
+    expect(el.querySelector('h1').textContent).to.equal('Zero')
   })
 
   it('relevels a subtree when reparented', async () => {

@@ -143,7 +143,7 @@ class RelativeHeadingLite extends LitElement {
           this.defaultLevel < 1 ||
           this.defaultLevel > 6
         )
-          this.defaultLevel = Math.min(0, Math.max(this.defaultLevel, 6));
+          this.defaultLevel = Math.min(6, Math.max(this.defaultLevel, 1));
         this.manager.updateDefaultLevel(this, oldValue);
       }
       if (propName === "id") {
@@ -171,7 +171,7 @@ class RelativeHeadingLite extends LitElement {
    * unwraps tags on slotted content
    */
   updateContents() {
-    if (!this.querySelector(`h${this.__level}`) || this.children > 0) {
+    if (!this.querySelector(`h${this.__level}`)) {
       this.innerHTML = `<h${this.__level}>${
         this.children && this.children[0]
           ? this.children[0].innerHTML

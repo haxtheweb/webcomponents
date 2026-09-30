@@ -27,6 +27,7 @@ class RelativeHeading extends RelativeHeadingLite {
           flex-wrap: var(--relative-heading-wrap, wrap);
           align-items: var(--relative-heading-align, center);
           justify-content: flex-start;
+          color-scheme: light dark;
         }
 
         :host([hidden]) {
@@ -54,7 +55,10 @@ class RelativeHeading extends RelativeHeadingLite {
         }
 
         simple-icon-button-lite {
-          color: var(--relative-heading-button-color, #666);
+          color: var(
+            --relative-heading-button-color,
+            light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateLight))
+          );
           background: var(--relative-heading-button-bg);
           border: var(--relative-heading-button-border);
           outline: var(--relative-heading-button-outline);
@@ -74,7 +78,10 @@ class RelativeHeading extends RelativeHeadingLite {
         simple-icon-button-lite:focus-within,
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover {
-          color: var(--relative-heading-button-focus-color, #000);
+          color: var(
+            --relative-heading-button-focus-color,
+            light-dark(var(--ddd-theme-default-black), var(--ddd-theme-default-white))
+          );
           background: var(--relative-heading-button-focus-bg);
           border: var(--relative-heading-button-focus-border);
           outline: var(--relative-heading-button-focus-outline);
