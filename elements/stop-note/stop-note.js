@@ -205,7 +205,11 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
       <div class="container">
         <div class="svg_wrap">
           <div class="svg">
-            <simple-icon icon="${this.icon}" no-colorize></simple-icon>
+            <simple-icon
+              icon="${this.icon}"
+              no-colorize
+              aria-hidden="true"
+            ></simple-icon>
           </div>
         </div>
         <div class="message_wrap">

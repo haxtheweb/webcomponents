@@ -28,6 +28,13 @@ describe("stop-note test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("hides the decorative status icon from assistive technology", async () => {
+    // the status icon is decorative; the title and message carry the meaning
+    const icon = element.shadowRoot.querySelector(".svg simple-icon");
+    expect(icon).to.exist;
+    expect(icon.getAttribute("aria-hidden")).to.equal("true");
+  });
 });
 
 describe("stop-note gap coverage", () => {
