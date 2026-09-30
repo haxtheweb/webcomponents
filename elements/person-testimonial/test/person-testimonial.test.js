@@ -87,14 +87,40 @@ describe('person-testimonial test', () => {
       )
     })
 
-    it('falls back to an empty alt when no name is given', async () => {
+    it('falls back to a meaningful alt when no name is given', async () => {
       const el = await fixture(html`
         <person-testimonial
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
         ></person-testimonial>
       `)
       const img = el.shadowRoot.querySelector('.image img')
-      expect(img.getAttribute('alt')).to.equal('')
+      // a11y fix: the image is informative (the testimonial's author), so
+      // an empty decorative alt is wrong; fall back to a real description
+      expect(img.getAttribute('alt')).to.equal('Person giving this testimonial')
+    })
+
+    it('uses the position as the alt when no name is given', async () => {
+      const el = await fixture(html`
+        <person-testimonial
+          image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+          position="Chief Learner"
+        ></person-testimonial>
+      `)
+      const img = el.shadowRoot.querySelector('.image img')
+      expect(img.getAttribute('alt')).to.equal('Chief Learner')
+    })
+
+    it('omits aria-describedby when described-by is unset', async () => {
+      // a11y fix: an empty aria-describedby attribute is invalid; only
+      // render it when a described-by value is actually set
+      const el = await fixture(html`
+        <person-testimonial
+          name="Jane Doe"
+          image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+        ></person-testimonial>
+      `)
+      const img = el.shadowRoot.querySelector('.image img')
+      expect(img.hasAttribute('aria-describedby')).to.be.false
     })
 
     it('removes the image when the property is cleared', async () => {
@@ -112,6 +138,25 @@ describe('person-testimonial test', () => {
       el.image = undefined
       await el.updateComplete
       expect(el.shadowRoot.querySelector('.image')).to.not.exist
+    })
+  })
+
+  describe('editable outline styles', () => {
+    it('applies the hax-body editable outline variable when HAX activates', () => {
+      // fixed (person-testimonial.js): the editable outline var was
+      // misspelled with three dashes so it never matched the real
+      // --hax-body-editable-outline variable and the fallback always won;
+      // a custom outline supplied by HAX now actually applies
+      element.setAttribute('data-hax-ray', 'block')
+      element.setAttribute('data-hax-active', 'true')
+      element.style.setProperty(
+        '--hax-body-editable-outline',
+        '4px solid rgb(10, 20, 30)',
+      )
+      const quote = element.shadowRoot.querySelector('.testimonial')
+      const computed = getComputedStyle(quote)
+      expect(computed.outlineWidth).to.equal('4px')
+      expect(computed.outlineColor).to.equal('rgb(10, 20, 30)')
     })
   })
 

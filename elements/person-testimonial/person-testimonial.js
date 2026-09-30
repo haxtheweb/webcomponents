@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
@@ -92,7 +93,7 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
 
         :host([data-hax-ray][data-hax-active]) [data-layout-slotname] {
           outline: var(
-            ---hax-body-editable-outline,
+            --hax-body-editable-outline,
             1px solid var(--hax-ui-disabled-color, #ddd)
           );
           outline-style: dotted;
@@ -157,8 +158,8 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
                 property="oer:image"
                 src="${this.image}"
                 loading="lazy"
-                alt="${this.name ? this.name : ""}"
-                aria-describedby="${this.describedBy}"
+                alt="${this.name || this.position || 'Person giving this testimonial'}"
+                aria-describedby="${ifDefined(this.describedBy)}"
               />
             </div>`
           : ``}
