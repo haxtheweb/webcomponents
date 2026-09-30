@@ -129,8 +129,10 @@ describe("CountUp library (lib/countup.js)", () => {
     const cu = new CountUp(div, 10, { duration: 0.2, useEasing: false });
     let callbacks = 0;
     cu.start(() => callbacks++);
-    expect(await waitFor(() => div.innerHTML === "10")).to.equal(true);
-    expect(callbacks).to.equal(1);
+    // number formatting can round to the end value a frame early, so wait
+    // for the callback itself — it fires the same tick as the final print
+    expect(await waitFor(() => callbacks === 1)).to.equal(true);
+    expect(div.innerHTML).to.equal("10");
   });
 
   it("uses smart easing for large jumps and still lands exactly", async () => {
@@ -143,8 +145,9 @@ describe("CountUp library (lib/countup.js)", () => {
     expect(cu.finalEndVal).to.equal(5000);
     expect(cu.endVal).to.equal(5000 - 333);
     expect(cu.useEasing).to.equal(false);
-    expect(await waitFor(() => div.innerHTML === "5,000")).to.equal(true);
-    expect(callbacks).to.equal(1);
+    // same rationale: wait for the callback, then assert the landed value
+    expect(await waitFor(() => callbacks === 1)).to.equal(true);
+    expect(div.innerHTML).to.equal("5,000");
   });
 
   it("counts down when the start is above the end", async () => {
