@@ -57,7 +57,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       profileUrl: { type: String, attribute: "profile-url" },
       socialLink: { type: String, attribute: "social-link" },
       socialHandle: { type: String, attribute: "social-handle" },
-      dark: { type: Boolean },
+      dark: { type: Boolean, reflect: true },
       accentColor: { type: String, attribute: "accent-color", reflect: true },
       primaryColor: { type: String, attribute: "primary-color", reflect: true },
     };
@@ -94,13 +94,14 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         --author-card-link-hover-color: var(--ddd-theme-default-linkHoverLight);
       }
 
-      /* Primary color for main border */
-      :host([data-primary]) {
+      /* Primary color for main border; matches the reflected
+         primary-color attribute (not the DDD-wide data-primary hook) */
+      :host([primary-color]) {
         --author-card-border: var(--ddd-theme-primary);
       }
       
-      /* Accent color variations */
-      :host([data-accent]) {
+      /* Accent color variations; matches the reflected accent-color attribute */
+      :host([accent-color]) {
         --author-card-accent-border: var(--ddd-theme-accent);
       }
 
@@ -114,7 +115,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       /* Accent color styling */
-      :host([data-accent]) .author {
+      :host([accent-color]) .author {
         border-left: var(--ddd-border-lg);
         border-left-color: var(--ddd-theme-accent);
       }
@@ -202,29 +203,39 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
+  // Render the (optionally profile-link-wrapped) image as ONE template
+  // so the anchor actually wraps the image
+  _renderImage() {
+    if (!this.image) {
+      return '';
+    }
+    const img = html`
+      <img 
+        class="image" 
+        src="${this.image}" 
+        alt="${this.name}"
+        loading="lazy"
+      />
+    `;
+    return this.profileUrl
+      ? html`<a href="${this.profileUrl}" class="profile-link">${img}</a>`
+      : img;
+  }
+
   // Lit render the HTML
   render() {
     return html`
       <div class="author">
         <div class="inner">
           <div class="left">
-            ${this.profileUrl ? html`<a href="${this.profileUrl}" class="profile-link">` : ''}
-              ${this.image ? html`
-                <img 
-                  class="image" 
-                  src="${this.image}" 
-                  alt="${this.name}"
-                  loading="lazy"
-                />
-              ` : ''}
-            ${this.profileUrl ? html`</a>` : ''}
+            ${this._renderImage()}
           </div>
           <div class="right">
-            ${this.name ? html`
-              ${this.profileUrl ? html`<a href="${this.profileUrl}" class="profile-link">` : ''}
-                <p class="name">${this.name}</p>
-              ${this.profileUrl ? html`</a>` : ''}
-            ` : ''}
+            ${this.name
+              ? this.profileUrl
+                ? html`<a href="${this.profileUrl}" class="profile-link"><p class="name">${this.name}</p></a>`
+                : html`<p class="name">${this.name}</p>`
+              : ''}
             
             ${this.title ? html`
               <p class="job-title">${this.title}</p>

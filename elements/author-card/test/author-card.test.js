@@ -57,6 +57,17 @@ describe('AuthorCard test', () => {
     expect(element.getAttribute('primary-color')).to.equal('purple')
   })
 
+  it('reflects dark to an attribute so the dark override applies', async () => {
+    // fixed (author-card.js): dark lacked reflect, so setting .dark never
+    // matched the :host([dark]) styling hooks
+    element.dark = true
+    await element.updateComplete
+    expect(element.hasAttribute('dark')).to.be.true
+    element.dark = false
+    await element.updateComplete
+    expect(element.hasAttribute('dark')).to.be.false
+  })
+
   describe('rendering', () => {
     it('renders only the card shell and job title when unconfigured', () => {
       // boolean comparisons instead of DOM nodes in expect().to.equal so a
@@ -114,7 +125,7 @@ describe('AuthorCard test', () => {
       expect(img.getAttribute('loading')).to.equal('lazy')
     })
 
-    it('renders the profile link anchors when a url is given', async () => {
+    it('wraps the image and name inside the profile link anchors', async () => {
       const el = await fixture(html`
         <author-card
           name="Jane Doe"
@@ -128,17 +139,23 @@ describe('AuthorCard test', () => {
       const nameLink = el.shadowRoot.querySelector('.right a.profile-link')
       expect(nameLink !== null).to.be.true
       expect(nameLink.getAttribute('href')).to.equal('https://example.com/jane')
-      // BUG (author-card.js:211,220,224,226): the profile link "wrapping" is
-      // built from separate open-tag / close-tag template fragments, which
-      // Lit renders as SIBLINGS, so the anchors stay empty and the image and
-      // name are never actually inside them. Documented by asserting the
-      // current sibling structure:
-      expect(imgLink.children.length).to.equal(0)
-      expect(nameLink.children.length).to.equal(0)
-      expect(imgLink.nextElementSibling === el.shadowRoot.querySelector('img.image')).to.be.true
-      const name = el.shadowRoot.querySelector('.name')
-      expect(name !== null).to.be.true
-      expect(name.textContent).to.equal('Jane Doe')
+      // fixed (author-card.js): each profile link is now built as ONE
+      // template that wraps its content, so the image and the name are
+      // actually inside their anchors (the old open-tag/close-tag
+      // fragments rendered as empty sibling anchors)
+      const wrappedImg = imgLink.querySelector('img.image')
+      expect(wrappedImg !== null).to.be.true
+      expect(wrappedImg.getAttribute('src')).to.equal(testImage)
+      expect(wrappedImg.getAttribute('alt')).to.equal('Jane Doe')
+      const wrappedName = nameLink.querySelector('.name')
+      expect(wrappedName !== null).to.be.true
+      expect(wrappedName.textContent).to.equal('Jane Doe')
+      expect(imgLink.children.length).to.equal(1)
+      expect(nameLink.children.length).to.equal(1)
+      // axe link-name: the image anchor is named by the wrapped img alt
+      // text and the name anchor by its text content
+      expect(wrappedImg.getAttribute('alt').length > 0).to.be.true
+      expect(nameLink.textContent.trim().length > 0).to.be.true
     })
 
     it('does not render profile anchors without a url', async () => {
@@ -205,14 +222,15 @@ describe('AuthorCard test', () => {
     })
 
     it('passes the a11y audit fully configured', async () => {
-      // profile-url omitted: see BUG note above, the profile anchors render
-      // empty and would fail an axe link-name check
+      // fixed: the profile anchors now wrap real content, so a fully
+      // configured card (profile-url included) passes the axe link-name check
       const el = await fixture(html`
         <author-card
           name="Jane Doe"
           title="Learning Designer"
           description="Makes excellent things."
           image=${testImage}
+          profile-url="https://example.com/jane"
           social-link="https://social.example.com/jane"
           social-handle="@jane"
         ></author-card>
@@ -232,6 +250,21 @@ describe('AuthorCard test', () => {
       expect(cssText).to.include('light-dark(')
       expect(cssText).to.include('--ddd-theme-default-coalyGray')
       expect(cssText).to.include(':host([dark])')
+    })
+
+    it('matches the reflected accent-color and primary-color attribute hooks', () => {
+      // fixed (author-card.js): the color hooks previously selected
+      // :host([data-primary]) / :host([data-accent]), which never match the
+      // reflected primary-color / accent-color attributes, so the hooks were
+      // dead; the selectors now match the reflected attribute names
+      const cssText = element.constructor.styles
+        .map((style) => style.cssText)
+        .join(' ')
+      expect(cssText).to.include(':host([primary-color])')
+      expect(cssText).to.include(':host([accent-color])')
+      expect(cssText).to.include(':host([accent-color]) .author')
+      expect(cssText).to.not.include(':host([data-primary])')
+      expect(cssText).to.not.include(':host([data-accent])')
     })
   })
 
