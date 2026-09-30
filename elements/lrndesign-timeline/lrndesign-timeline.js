@@ -33,7 +33,10 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             #444
           );
           --lrndesign-timeline-color-print: #000;
-          --lrndesign-timeline-background: #f4f4f4;
+          --lrndesign-timeline-background: var(
+            --ddd-theme-default-limestoneMaxLight,
+            #f4f4f4
+          );
           --lrndesign-timeline-background-print: #fff;
           --lrndesign-timeline-border: var(
             --simple-colors-default-theme-grey-5,
@@ -64,7 +67,10 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
         }
 
         :host([dark]) {
-          --lrndesign-timeline-background: #1b1b1b;
+          --lrndesign-timeline-background: var(
+            --ddd-theme-default-coalyGray,
+            #1b1b1b
+          );
         }
 
         :host([hidden]) {
@@ -507,21 +513,21 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
         reflect: true,
         attribute: "timeline-size",
         value: "xs",
-        /**
-         * title of timeline
-         */
-        timelineTitle: {
-          type: String,
-          reflect: true,
-          attribute: "timeline-title",
-        },
-        /**
-         * @depeacated: title of timeline
-         */
-        title: {
-          type: String,
-          attribute: "title",
-        },
+      },
+      /**
+       * title of timeline
+       */
+      timelineTitle: {
+        type: String,
+        reflect: true,
+        attribute: "timeline-title",
+      },
+      /**
+       * @depeacated: title of timeline
+       */
+      title: {
+        type: String,
+        attribute: "title",
       },
     };
   }
@@ -575,7 +581,8 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "timelineTitle" && this.title && !this.timelineTitle)
+      // migrate the deprecated title into timelineTitle
+      if (propName === "title" && this.title && !this.timelineTitle)
         this.timelineTitle = this.title;
     });
     this.updateTimeline();
@@ -598,8 +605,11 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
    * @returns {object}
    */
   get observer() {
-    let callback = () => this.updateTimeline();
-    return new MutationObserver(callback);
+    if (!this.__observer) {
+      let callback = () => this.updateTimeline();
+      this.__observer = new MutationObserver(callback);
+    }
+    return this.__observer;
   }
   _setScroll(e) {
     var el = normalizeEventPath(e)[0];
@@ -623,8 +633,11 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
           bottom = event.offsetTop + event.offsetHeight;
         if (target > top && target < bottom) {
           event.setAttribute("selected", true);
+          // expose the current event to assistive technology
+          event.setAttribute("aria-current", "true");
         } else {
           event.removeAttribute("selected");
+          event.removeAttribute("aria-current");
         }
       });
     }

@@ -21,11 +21,11 @@ describe('lrndesign-timeline test', () => {
   })
 
   it('passes the a11y audit', async () => {
-    // timeline-title is not a reactive property (see the BUG note below), so
-    // the h1 must be populated through the field plus a manual update
-    element.timelineTitle = 'Charter days'
-    element.requestUpdate()
-    await element.updateComplete
+    // timeline-title is a reactive property, so the fixture attribute
+    // populates the h1 without any imperative update
+    expect(element.shadowRoot.querySelector('#title').textContent).to.equal(
+      'Charter days',
+    )
     await expect(element).shadowDom.to.be.accessible()
   })
 
@@ -39,16 +39,15 @@ describe('lrndesign-timeline test', () => {
   })
 
   it('renders the timeline title as the only h1', async () => {
-    // BUG (lrndesign-timeline.js:505-525): timelineTitle and title are nested
-    // inside the timelineSize property descriptor, so the timeline-title
-    // attribute never maps to the timelineTitle field and the h1 stays empty
-    // until the field is set imperatively and an update is requested.
-    expect(element.shadowRoot.querySelector('#title').textContent).to.equal('')
-    element.timelineTitle = 'Charter days'
-    element.requestUpdate()
-    await element.updateComplete
+    // the timelineTitle and title descriptors are flattened out of the old
+    // timelineSize descriptor, so the timeline-title attribute registers as
+    // a reactive property and populates the h1 without any manual update
     const h1 = element.shadowRoot.querySelector('#title')
     expect(h1.textContent).to.equal('Charter days')
+    element.timelineTitle = 'Later days'
+    await element.updateComplete
+    expect(h1.textContent).to.equal('Later days')
+    expect(element.getAttribute('timeline-title')).to.equal('Later days')
     expect(element.shadowRoot.querySelectorAll('h1').length).to.equal(1)
   })
 
@@ -179,21 +178,22 @@ describe('lrndesign-timeline events rendering', () => {
     expect(el.shadowRoot.querySelector('#title').textContent).to.equal('')
   })
 
-  it('does not migrate the deprecated title attribute', async () => {
-    // BUG (lrndesign-timeline.js:505-525): the timelineTitle and title property
-    // descriptors are nested INSIDE the timelineSize descriptor, so Lit never
-    // registers them as reactive properties. That makes the updated() hook at
-    // line 578 (title -> timelineTitle migration) dead code: setting the
-    // deprecated title never populates the rendered h1, and setting
-    // timelineTitle only renders when something else triggers an update.
+  it('migrates the deprecated title attribute into timelineTitle', async () => {
+    // the flattened title property registers as reactive, which makes the
+    // updated() hook (title -> timelineTitle migration) live code: setting
+    // the deprecated title populates the rendered h1 when timeline-title is
+    // unset, and an explicit timeline-title always wins over the legacy one
     const el = await fixture(
       html` <lrndesign-timeline></lrndesign-timeline> `,
     )
     el.title = 'Legacy title'
+    // the migration runs in updated(), which schedules a second render
     await el.updateComplete
-    expect(el.shadowRoot.querySelector('#title').textContent).to.equal('')
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('#title').textContent).to.equal(
+      'Legacy title',
+    )
     el.timelineTitle = 'Fresh title'
-    el.requestUpdate()
     await el.updateComplete
     expect(el.shadowRoot.querySelector('#title').textContent).to.equal(
       'Fresh title',
@@ -224,12 +224,17 @@ describe('lrndesign-timeline scrolling', () => {
     el._checkScroll()
     // target = events[0].offsetTop + 50 + scrollTop = 50
     expect(sections[0].getAttribute('selected')).to.equal('true')
+    // the current event is exposed to assistive technology as well
+    expect(sections[0].getAttribute('aria-current')).to.equal('true')
     expect(sections[1].hasAttribute('selected')).to.be.false
+    expect(sections[1].hasAttribute('aria-current')).to.be.false
     // scroll down 100px: target = 150 lands on the second event
     Object.defineProperty(events, 'scrollTop', { value: 100, configurable: true })
     el._checkScroll()
     expect(sections[0].hasAttribute('selected')).to.be.false
+    expect(sections[0].hasAttribute('aria-current')).to.be.false
     expect(sections[1].getAttribute('selected')).to.equal('true')
+    expect(sections[1].getAttribute('aria-current')).to.equal('true')
   })
 
   it('rechecks scroll when the events container scrolls', async () => {
@@ -271,20 +276,18 @@ describe('lrndesign-timeline scrolling', () => {
     expect(scrollArgs.top).to.equal(42)
   })
 
-  it('creates a new observer instance on every access', async () => {
-    // BUG (lrndesign-timeline.js:600-603): the observer getter returns a NEW
-    // MutationObserver on each access, so firstUpdated() observes with one
-    // instance while disconnectedCallback() disconnects a different, fresh
-    // instance. The actually-observing instance is never disconnected
-    // (an instance leak). The getter should cache a single observer.
+  it('caches a single observer instance', async () => {
+    // the observer getter caches a single MutationObserver, so
+    // firstUpdated() observes with the same instance that
+    // disconnectedCallback() disconnects (no leaked live observer)
     const el = await fixture(
       html` <lrndesign-timeline timeline-title="Observer">
         <p>content</p>
       </lrndesign-timeline>`,
     )
-    expect(el.observer === el.observer).to.be.false
+    expect(el.observer === el.observer).to.be.true
     expect(typeof el.observer.observe).to.equal('function')
-    // disconnecting uses yet another instance and must not throw
+    // disconnecting the cached (live) instance must not throw
     el.remove()
     expect(globalThis.document.body.contains(el)).to.be.false
   })
