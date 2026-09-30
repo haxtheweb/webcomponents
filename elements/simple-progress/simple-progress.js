@@ -139,7 +139,9 @@ class SimpleProgress extends HTMLElement {
     this.template.innerHTML = this.html;
 
     if (globalThis.ShadyCSS) {
-      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
+      // tag is a static getter, so read it off the class; instances see
+      // undefined through this.tag and ShadyCSS would key the template wrong
+      globalThis.ShadyCSS.prepareTemplate(this.template, SimpleProgress.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }

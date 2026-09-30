@@ -79,9 +79,9 @@ describe("simple-progress behavior", () => {
       expect(styles.length).to.equal(1);
       const prepared = calls.filter((call) => call[0] === "prepareTemplate");
       expect(prepared.length).to.be.above(0);
-      // BUG(simple-progress.js:142): render() passes this.tag but tag is only
-      // a static getter, so ShadyCSS.prepareTemplate always receives undefined
-      expect(prepared[prepared.length - 1][1]).to.equal(undefined);
+      // FIXED(simple-progress.js:142): render() passes the static tag so
+      // ShadyCSS.prepareTemplate receives the real element name
+      expect(prepared[prepared.length - 1][1]).to.equal("simple-progress");
       el.render();
       const preparedAfter = calls.filter(
         (call) => call[0] === "prepareTemplate",
