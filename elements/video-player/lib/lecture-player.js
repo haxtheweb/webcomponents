@@ -56,38 +56,24 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         new URL("../locales/video-player.es.json", import.meta.url).href +
         "/../",
     });
-    console.log(globalThis.location.hash);
     if (globalThis.location.hash) {
       var id = globalThis.location.hash.split("--")[0];
       var timestamp =
         globalThis.location.hash.split("--")[1] ||
         this.associatedNodes["slide-1"];
-      console.log(id, timestamp);
       setTimeout(() => {
         this.showModal();
-        console.log("show modal");
         let activeSlide = null;
         let associatedNodesValues = Object.values(this.associatedNodes);
-        console.log(associatedNodesValues.length);
         for (let i = 0; i < associatedNodesValues.length; i++) {
           let currentTimestamp = associatedNodesValues[i];
-          console.log(currentTimestamp);
           let nextTimestamp =
             i <= associatedNodesValues.length - 1
               ? associatedNodesValues[i + 1]
               : Infinity;
 
           if (timestamp >= currentTimestamp && timestamp < nextTimestamp) {
-            console.log(
-              "found current slide" +
-                currentTimestamp +
-                " " +
-                nextTimestamp +
-                " " +
-                timestamp,
-            );
             activeSlide = Object.keys(this.associatedNodes)[i];
-            console.log(activeSlide);
             setTimeout(() => {
               this.activeIndex = activeSlide;
             }, 3000);
@@ -97,7 +83,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
             i == associatedNodesValues.length - 1 &&
             this.activeIndex === null
           ) {
-            console.log("last slide");
             this.activeIndex = Object.keys(this.associatedNodes)[0];
             break;
           }
@@ -108,7 +93,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     globalThis.addEventListener("hashChange", () => {
       var [id, timestamp] = globalThis.location.hash.split("--");
       if (id === "#lecture-player-video" && !timestamp) {
-        console.log("no timestamp");
         this.showModal();
         setTimeout(() => {
           this.activeIndex = "slide-1";
@@ -131,7 +115,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     const lectureAnchors = this.querySelectorAll("[data-lecture-slide]");
-    console.log(lectureAnchors);
     const anchorsArray = Array.from(lectureAnchors);
     anchorsArray.sort((a, b) => {
       const timeA = parseInt(a.getAttribute("data-value"), 10);
@@ -141,7 +124,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     anchorsArray.forEach((anchor, index) => {
       anchor.id = `slide-${index + 1}`;
       this.associatedNodes[anchor.id] = anchor.getAttribute("data-value");
-      console.log(anchor.id, anchor.getAttribute("data-value"));
       anchor.addEventListener("click", () => {
         this.activeIndex = anchor.id;
       });
@@ -164,8 +146,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         if (!document.querySelector("video-player").playing) {
           this.play;
         }
-        console.log("activeIndex changed to:", this.activeIndex);
-        console.log(document.querySelector("#" + this.activeIndex));
         this.seek(this.associatedNodes[this.activeIndex]);
         this.updateJumbotron();
         this.updatePlaylist();
@@ -175,12 +155,10 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   setJumbotronAttributes() {
-    console.log("setJumbotronAttributes");
     this.querySelectorAll("[data-lecture-slide]").forEach((anchor) => {
       let header = this.querySelector(
         `#${anchor.getAttribute("data-associatedID")}`,
       );
-      console.log(header);
       anchor.setAttribute("data-lecture-heading", header.textContent);
       anchor.setAttribute(
         "data-lecture-content",
@@ -198,13 +176,10 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   getNextSiblingHTML(element) {
-    console.log(element);
     let siblingHTML = "";
     let nextSibling = element.nextSibling;
-    console.log(nextSibling.nextSibling);
     let stopIDs = [];
     Object.keys(this.associatedNodes).forEach((key) => {
-      console.log(key);
       stopIDs.push(key);
       stopIDs.push(
         this.querySelector(`#${key}`).getAttribute("data-associatedID"),
@@ -218,7 +193,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
             `[data-associatedID="${element.id}"]`,
           ).id,
     );
-    console.log(stopIDs);
     while (nextSibling) {
       if (
         nextSibling &&
@@ -226,10 +200,8 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         nextSibling.id &&
         stopIDs.includes(nextSibling.id)
       ) {
-        console.log("broke chain at " + nextSibling.id);
         break;
       }
-      console.log(nextSibling);
       siblingHTML += nextSibling.outerHTML || "";
       nextSibling = nextSibling.nextSibling;
     }
@@ -238,7 +210,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   addPrevNextListeners() {
-    console.log("addPrevNextListeners");
     const prevSlideBtn = globalThis.document.querySelector("#prevSlideBtn");
     const nextSlideBtn = globalThis.document.querySelector("#nextSlideBtn");
     prevSlideBtn.addEventListener("click", () => {
@@ -254,10 +225,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       const anchorsWithId = globalThis.document.querySelectorAll(
         "[data-lecture-slide][id]",
       ).length;
-      console.log(anchorsWithId);
-      console.log(this.activeIndex.split("-")[1]);
-      console.log(parseInt(this.activeIndex.split("-")[1]) + 1);
-      console.log(parseInt(this.activeIndex.split("-")[1]) + 1 < anchorsWithId);
       const nextSlide =
         this.activeIndex.split("-")[1] < anchorsWithId
           ? parseInt(this.activeIndex.split("-")[1]) + 1
@@ -271,15 +238,11 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   updateJumbotron() {
-    console.log("updateJumbotron");
     const jumbotron = globalThis.document.querySelector(".jumbotron");
-    console.log(jumbotron);
     jumbotron ? (jumbotron.innerHTML = "") : "";
-    console.log(this.activeIndex);
     const activeAnchor = globalThis.document.querySelector(
       `#${this.activeIndex}`,
     );
-    console.log(activeAnchor);
     if (activeAnchor) {
       const jumbotronHeading = globalThis.document.createElement("h2");
       jumbotronHeading.id = "jumbotron-heading";
@@ -297,7 +260,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   updatePlaylist() {
-    console.log("updatePlaylist");
     const valueList = globalThis.document.querySelector(".valueList");
     if (!valueList) {
       console.error("ValueList element not found");
@@ -306,7 +268,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     valueList.innerHTML = ""; // Clear previous buttons
 
     Object.keys(this.associatedNodes).forEach((key) => {
-      console.log(key, this.associatedNodes[key]);
       const timestamp = this.associatedNodes[key];
       const slideAnchor = globalThis.document.querySelector(`#${key}`);
       const valueBtn = globalThis.document.createElement("button");
@@ -337,17 +298,14 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   seek(timestamp) {
-    console.log("seek to timestamp: ", timestamp);
     if (this.open) {
       setTimeout(() => {
         globalThis.document
           .querySelector("#lecture-player-video")
           .seek(timestamp);
         globalThis.document.querySelector("#lecture-player-video").play();
-        console.log(timestamp);
       }, 3000);
     } else {
-      console.log("seeking to video player");
       this.querySelector("video-player").play();
       this.querySelector("video-player").seek(timestamp);
     }
@@ -363,7 +321,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   checkDisabledButtons() {
-    console.log("checkDisabledButtons");
     const prevSlideBtn = globalThis.document.querySelector("#prevSlideBtn");
     const activeIndex = parseInt(this.activeIndex.split("-")[1]);
     if (activeIndex === 1) {
@@ -382,7 +339,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   endVideo() {
-    console.log("endVideo");
     globalThis.document.querySelector("#lecture-player-video").pause();
     globalThis.document
       .querySelector("#nextSlideBtn")
@@ -404,7 +360,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
 
   showModal() {
     let videoSectionColumns = "1fr 1fr";
-    console.log("showModal");
     let c = globalThis.document.createElement("div");
     c.classList.add("modal-content");
     c.innerHTML = `

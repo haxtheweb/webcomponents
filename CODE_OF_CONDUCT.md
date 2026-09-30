@@ -1,60 +1,78 @@
 # HAXTheWeb Code of Conduct
 
-## Our pledge
+## Our Pledge
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project as awesome as we possibly can.
-It is the policy of HAXTheWeb to maintain an environment free of harassment and free of discrimination against any person because of age, race, color, ancestry, national origin, religion,
-creed, service in the uniformed services (as defined in state and federal law), veteran status, sex, sexual orientation,
-marital or family status, pregnancy, pregnancy-related conditions, physical or mental disability, gender, perceived gender,
-gender identity, genetic information or political ideas.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
 
-Discriminatory conduct and harassment, as well as sexual misconduct and harassment or relationship violence, violates the dignity of individuals, impedes the realization of HAXTheWeb’s mission, and will not be tolerated in our community.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
-## Our standards
+## Our Standards
 
-How you will keep our community awesome:
+Examples of behavior that contributes to a positive environment for our community include:
 
-* Showing empathy to everyone
-* Being respectful of differing viewpoints and experiences
-* Accepting constructive criticism
-* Acting in the best interests of the community
+* Demonstrating empathy and kindness toward other people
+* Being respectful of differing opinions, viewpoints, and experiences
+* Giving and gracefully accepting constructive feedback
+* Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
+* Focusing on what is best not just for us as individuals, but for the overall community
 
-Behaviors our community will not tolerate:
+Examples of unacceptable behavior include:
 
-* Harassment - public or private
-* Unwelcome sexual attention or advances
-* Trolling - derogatory interactions and personal or political attacks
-* Doxing - publishing others' private information without permission
-* Any conduct reasonably considered inappropriate in professional settings
+* The use of sexualized language or imagery, and sexual attention or advances of any kind
+* Trolling, insulting or derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information, such as a physical or email address, without their explicit permission
+* Other conduct which could reasonably be considered inappropriate in a professional setting
 
-## Our responsibilities
+## Enforcement Responsibilities
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected
-to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
-Project maintainers have the right to remove or modify comments, commits, code, documentation,
-issues, and other contributions that are not aligned to this Code of Conduct.
+Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
 
 ## Scope
 
-This Code of Conduct applies both within project spaces and in spaces where an individual is 
-representing the project or its community. Examples of representing a project or community include using 
-an official project e-mail address, posting via an official social media account, or acting as an official 
-representative at an event. Representation of a project may be further defined and clarified 
-by project maintainers.
-
-The HAXcms Code of Conduct applies to anyone involved in the project, including project maintainers.
+This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
 
 ## Enforcement
 
-Instances of behavior which violates the HAXcms Code of Conduct may be reported by contacting 
-project leadership at hax@psu.edu. The project leadership will review and investigate all complaints, and will 
-respond in a way that it deems appropriate. The project leadership is obligated to maintain 
-confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies 
-may be posted separately.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at hax@psu.edu. All complaints will be reviewed and investigated promptly and fairly.
 
-The HAXcms Code of Conduct was originally produced in the United States of America and operates based on US legal norms
-which presumes innocence until guilt is proven.
+All community leaders are obligated to respect the privacy and security of the reporter of any incident. The community leaders are the HAX maintainer team — see GOVERNANCE.md for who currently holds those roles.
 
-## CoC attribution
-The HAXcms Code of Conduct has been forked from the Contributor Covenant, version 1.4, available at http://contributor-covenant.org/version/1/4
+## Enforcement Guidelines
+
+1. **Correction**
+
+   **Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
+
+   **Consequence**: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+
+2. **Warning**
+
+   **Community Impact**: A violation through a single incident or series of actions.
+
+   **Consequence**: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+
+3. **Temporary Ban**
+
+   **Community Impact**: A serious violation of community standards, including sustained inappropriate behavior.
+
+   **Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
+
+4. **Permanent Ban**
+
+   **Community Impact**: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
+
+   **Consequence**: A permanent ban from any sort of public interaction within the community.
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 2.1, available at https://www.contributor-covenant.org/version/2/1/code_of_conduct.html.
+
+Community impacts and enforcement guidelines were inspired by [Mozilla's code of conduct enforcement ladder][Mozilla CoC].
+
+For answers to common questions about this code of conduct, see the FAQ at https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.
+
+[homepage]: https://www.contributor-covenant.org
+[Mozilla CoC]: https://github.com/mozilla/diversity

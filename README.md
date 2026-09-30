@@ -18,6 +18,13 @@ Web components that can work in just about anything, are very small (Vanila or L
 
 New to the HAX ecosystem? **[Start here](https://github.com/haxtheweb/issues/blob/master/CONTRIBUTING.md)** — the single onboarding guide covers prerequisites, cloning the core repos, installing, and running each project locally.
 
+## Who this is for
+
+- **Web component developers** — build and maintain the 250+ LitElement components, themes, and the DDD design system.
+- **Site builders and course designers** — the accessible, standards-based building blocks every HAX site and course page is authored from.
+- **Campus IT and adopters** — published packages under the `@haxtheweb` npm org, usable in any stack.
+- **Accessibility contributors** — the component library is the front line of WCAG alignment for the whole HAX ecosystem.
+
 ## Getting Started
 
 ### Quick install: Dev Containers (as a core dev, forks preferrable)
