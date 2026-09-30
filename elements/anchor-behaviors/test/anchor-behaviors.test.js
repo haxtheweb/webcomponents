@@ -166,16 +166,17 @@ describe('AnchorBehaviors.getTarget', () => {
     expect(target === el).to.be.true
   })
 
-  it('clobbers globalThis.onload with the getParams return value (BUG)', () => {
+  it('assigns the getParams function reference to globalThis.onload', () => {
     const el = makeElement({ id: 'onload-el' })
     globalThis.location.hash = '#onload-el'
     globalThis.onload = () => {}
     const target = globalThis.AnchorBehaviors.getTarget(null)
     expect(target === el).to.be.true
-    // BUG: anchor-behaviors.js:57 assigns `globalThis.onload = getParams()`
-    // which stores the function's undefined return value instead of the
-    // function reference itself, clobbering any pre-existing onload handler
-    // (undefined coerces to null for the nullable EventHandler IDL attribute)
-    expect(globalThis.onload).to.equal(null)
+    // fixed: anchor-behaviors.js:57 now assigns `globalThis.onload = getParams`
+    // (the function reference) instead of `getParams()`, whose undefined
+    // return value coerced to null and clobbered the handler slot; deferred
+    // hash params now actually parse on load
+    expect(typeof globalThis.onload).to.equal('function')
+    globalThis.onload = null
   })
 })

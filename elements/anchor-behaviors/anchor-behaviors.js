@@ -54,7 +54,10 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
       if (globalThis.document.readyState === "complete") {
         getParams();
       }
-      globalThis.onload = getParams();
+      // assign the function reference, not its (undefined) return value,
+      // so deferred hash params still parse on load instead of the
+      // WebIDL null coercion clobbering the handler slot
+      globalThis.onload = getParams;
     }
     /** search for all combos of id and resource id */
     globalThis.AnchorBehaviors.target =
