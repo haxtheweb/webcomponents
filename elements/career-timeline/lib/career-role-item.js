@@ -130,6 +130,8 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
       if (propName === "startDate" && oldValue !== undefined) {
         const normalizedStartDate = this._normalizeDate(this.startDate);
 
+        // When people hit "clear" from the HAX editor, default back to current day
+        // Otherwise, the empty value returns all the way back to the start of Unix time!
         if (!normalizedStartDate) {
           this.startDate = new Date().toISOString();
           return;
@@ -139,9 +141,6 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
           this.startDate = normalizedStartDate;
           return;
         }
-        // When people hit "clear" from the HAX editor, default back to current day
-        // Otherwise, the empty value returns all the way back to the start of Unix time!
-        if(!this.startDate) this.startDate = new Date().toISOString();
 
         this.dispatchEvent(new CustomEvent('start-date-changed', {
           bubbles: true,
@@ -163,8 +162,6 @@ export class CareerRoleItem extends DDDSuper(LitElement) {
           this.endDate = normalizedEndDate;
           return;
         }
-
-        if(!this.endDate) this.endDate = new Date().toISOString();
       };
     });
   }
