@@ -22,7 +22,11 @@ export class LrnH5p extends LitElement {
     if (this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, index) => {
         if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
-          el.remove();
+          // strip only the script markup so surrounding text is preserved
+          el.textContent = el.textContent.replace(
+            /<script>[\s\S]*?(<\/script>|$)/g,
+            "",
+          );
         }
       });
     }

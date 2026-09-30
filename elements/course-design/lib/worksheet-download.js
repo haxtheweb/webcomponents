@@ -114,11 +114,8 @@ export class WorksheetDownload extends LitElement {
 
         a {
           text-decoration: none;
-          color: #0c7cd5;
+          color: var(--ddd-theme-default-link, #005fa9);
           display: block;
-        }
-
-        button {
           text-transform: none;
           border: solid 2px #dcdcdc;
           width: 100%;
@@ -127,12 +124,12 @@ export class WorksheetDownload extends LitElement {
           text-align: center;
         }
 
-        button:active,
-        button:focus,
-        button:hover {
+        a:active,
+        a:focus,
+        a:hover {
           cursor: pointer;
-          background-color: #0c7cd5;
-          color: #fff;
+          background-color: var(--ddd-theme-default-link, #005fa9);
+          color: var(--ddd-theme-default-white, #fff);
         }
 
         simple-icon {
@@ -145,17 +142,17 @@ export class WorksheetDownload extends LitElement {
     return html`
       <div id="button_wrap">
         <a
-          tabindex="-1"
           href="${this.link}"
           target="_blank"
           download
           rel="noopener noreferrer"
           @click="${this._clickLink}"
         >
-          <button>
-            <simple-icon-lite icon="icons:file-download"></simple-icon-lite
-            >${this.title}
-          </button>
+          <simple-icon-lite
+            icon="icons:file-download"
+            aria-hidden="true"
+          ></simple-icon-lite
+          >${this.title}
         </a>
       </div>
     `;

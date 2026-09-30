@@ -39,7 +39,7 @@ describe('lrn-h5p', () => {
     expect(el.textContent).to.include('Interactive content')
   })
 
-  it('removes text nodes containing script tags at construction', async () => {
+  it('strips script markup from text nodes while preserving text', async () => {
     const el = await fixture(
       html`<lrn-h5p
         ><span>before&lt;script&gt;alert(1)&lt;/script&gt;after</span></lrn-h5p
@@ -47,7 +47,7 @@ describe('lrn-h5p', () => {
     )
     const span = el.querySelector('span')
     expect(span).to.exist
-    expect(span.textContent).to.equal('')
+    expect(span.textContent).to.equal('beforeafter')
   })
 
   it('exposes an edit link for h5p embeds while in edit mode', async () => {

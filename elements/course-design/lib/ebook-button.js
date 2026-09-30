@@ -83,19 +83,23 @@ export class EbookButton extends LitElement {
       css`
         :host {
           display: inline-block;
-          --link-color: #aeaeae;
+          --link-color: var(--ddd-theme-default-link, #005fa9);
         }
 
-        button {
+        #book {
           min-height: 48px;
           text-transform: none;
           padding: 10px 25px 10px 0;
         }
 
-        button:active,
-        button:focus,
-        button:hover {
-          outline: 2px solid black;
+        #book:active,
+        #book:focus,
+        #book:hover {
+          outline: var(
+            --ddd-focus-ring,
+            2px solid var(--ddd-theme-default-link, #005fa9)
+          );
+          outline-offset: var(--ddd-focus-offset, 2px);
           cursor: pointer;
         }
 
@@ -158,17 +162,19 @@ export class EbookButton extends LitElement {
   }
   render() {
     return html`
-      <div id="button wrapper">
+      <div id="button-wrapper">
         <a
+          id="book"
           href="${this.link}"
           target="_blank"
           rel="noopener noreferrer"
           @click="${this._clickLink}"
         >
-          <button id="book">
-            <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
-            <div class="title">${this.title}</div>
-          </button>
+          <simple-icon-lite
+            icon="${this.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <div class="title">${this.title}</div>
         </a>
       </div>
     `;

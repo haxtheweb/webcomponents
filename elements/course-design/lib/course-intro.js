@@ -19,7 +19,7 @@ export class CourseIntro extends LitElement {
         .course-intro-footer {
           display: flex;
           justify-content: space-between;
-          background: #000;
+          background: var(--ddd-theme-default-black, #000);
           padding: var(--ddd-spacing-6);
           min-height: 300px;
           align-items: center;

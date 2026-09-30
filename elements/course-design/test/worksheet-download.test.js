@@ -31,12 +31,15 @@ describe('worksheet-download', () => {
     expect(link.getAttribute('target')).to.equal('_blank')
     expect(link.hasAttribute('download')).to.be.true
     expect(link.getAttribute('rel')).to.equal('noopener noreferrer')
-    expect(link.getAttribute('tabindex')).to.equal('-1')
-    const button = el.shadowRoot.querySelector('button')
-    expect(button.textContent).to.include('Worksheet 1')
+    // the link itself is the keyboard-focusable control (no nested button,
+    // no tabindex=-1 hiding it from the tab order)
+    expect(link.hasAttribute('tabindex')).to.be.false
+    expect(el.shadowRoot.querySelector('button') === null).to.be.true
+    expect(link.textContent).to.include('Worksheet 1')
     expect(
       el.shadowRoot.querySelector('simple-icon-lite').getAttribute('icon'),
     ).to.equal('icons:file-download')
+    await expect(el).shadowDom.to.be.accessible()
   })
 
   it('exposes haxProperties with an upload-driven link setting', () => {

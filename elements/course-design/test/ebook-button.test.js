@@ -31,11 +31,13 @@ describe('ebook-button', () => {
     expect(link.getAttribute('href')).to.equal('https://example.com/ebook')
     expect(link.getAttribute('target')).to.equal('_blank')
     expect(link.getAttribute('rel')).to.equal('noopener noreferrer')
-    const button = el.shadowRoot.querySelector('#book')
-    expect(button.textContent).to.include('Access Ebook')
+    // the anchor is the only interactive control (no button nested in the a)
+    expect(el.shadowRoot.querySelector('button') === null).to.be.true
+    expect(link.textContent).to.include('Access Ebook')
     expect(
       el.shadowRoot.querySelector('simple-icon-lite').getAttribute('icon'),
     ).to.equal('icons:book')
+    await expect(el).shadowDom.to.be.accessible()
   })
 
   it('updates the icon on property change', async () => {
