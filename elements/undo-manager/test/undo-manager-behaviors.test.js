@@ -199,13 +199,15 @@ describe('UndoManagerCommand', () => {
     expect(el.undoStackIgnore).to.be.true
   })
 
-  it('undo throws when the element has no undo stack (BUG)', () => {
-    // BUG: undo-manager.js:313 dereferences this.el.undoStack.commands
-    // without a null guard, so a null undo stack throws a TypeError before
-    // the oldValue fallback can run
+  it('undo falls back to the captured old value without an undo stack', () => {
+    // fixed: undo-manager.js:313 used to dereference this.el.undoStack.commands
+    // without a null guard, so a null undo stack threw a TypeError before
+    // the oldValue fallback could run
     const el = { undoStack: null, undoStackInitialValue: 'initial' }
     const cmd = new UndoManagerCommand(el, 'old-value', 'new')
-    expect(() => cmd.undo()).to.throw()
+    cmd.undo()
+    expect(el.innerHTML).to.equal('old-value')
+    expect(el.undoStackIgnore).to.be.true
   })
 })
 
@@ -355,17 +357,22 @@ describe('UndoManagerBehaviors mixin', () => {
 })
 
 describe('undo-manager attribute deserialization', () => {
-  it('firstUpdated clobbers can-undo and can-redo attribute values (BUG)', async () => {
-    // BUG: undo-manager.js:164-169 — canUndo/canRedo deserialize from the
-    // can-undo/can-redo attributes during upgrade, but firstUpdated's initial
-    // undoStack.changed() call immediately overwrites both from the empty
-    // stack (position -1), so the attribute values never survive
+  it('preserves can-undo and can-redo attribute values through firstUpdated', async () => {
+    // fixed: undo-manager.js:164-169 — firstUpdated no longer fires an
+    // initial undoStack.changed() call, so canUndo/canRedo deserialized from
+    // the can-undo/can-redo attributes survive the first update
     const el = await fixture(
       html`<undo-manager can-undo can-redo></undo-manager>`,
     )
     expect(el.hasAttribute('can-undo')).to.be.true
     expect(el.hasAttribute('can-redo')).to.be.true
-    expect(el.canUndo).to.be.false
-    expect(el.canRedo).to.be.false
+    expect(el.canUndo).to.be.true
+    expect(el.canRedo).to.be.true
+    // reflect: true keeps the attributes in sync as the values change
+    el.canUndo = false
+    el.canRedo = false
+    await el.updateComplete
+    expect(el.hasAttribute('can-undo')).to.be.false
+    expect(el.hasAttribute('can-redo')).to.be.false
   })
 })

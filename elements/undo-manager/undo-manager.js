@@ -27,6 +27,7 @@ const UndoManagerBehaviors = function (SuperClass) {
         canUndo: {
           type: Boolean,
           attribute: "can-undo",
+          reflect: true,
         },
         /**
          * If we can currently redo based on stack position
@@ -34,6 +35,7 @@ const UndoManagerBehaviors = function (SuperClass) {
         canRedo: {
           type: Boolean,
           attribute: "can-redo",
+          reflect: true,
         },
         /**
          * Properties for the mutation observer
@@ -60,11 +62,11 @@ const UndoManagerBehaviors = function (SuperClass) {
      */
     constructor() {
       super();
-      // Initialize canUndo/canRedo to false so firstUpdated's
-      // undoStack.changed() callback setting them to false is a no-op
-      // (undefined -> false would otherwise schedule a redundant update and
-      // trip Lit's change-in-update warning for every undo-manager consumer,
-      // e.g. hax-body).
+      // Initialize canUndo/canRedo to false so consumers always see booleans
+      // and the values reflect as attributes; firstUpdated no longer fires
+      // an initial changed() call, which would clobber attribute-deserialized
+      // can-undo/can-redo values with the empty-stack state (and schedule a
+      // redundant update during the update cycle).
       this.canUndo = false;
       this.canRedo = false;
       this.__StackDebounce;
@@ -165,8 +167,10 @@ const UndoManagerBehaviors = function (SuperClass) {
         this.canRedo = this.undoStack.canRedo();
         this.canUndo = this.undoStack.canUndo();
       };
-      // execute once just to get these values
-      this.undoStack.changed();
+      // NOTE: no initial changed() call here — it would overwrite
+      // attribute-deserialized can-undo/can-redo values with the
+      // empty-stack state (both false); the properties already start
+      // false in the constructor for the no-attribute case
     }
     /**
      * updated / notice property changes
@@ -310,6 +314,7 @@ class UndoManagerCommand {
     this.el.undoStackIgnore = true;
     // execute the change in value from what it was to what it is now
     if (
+      this.el.undoStack &&
       this.el.undoStack.commands &&
       this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
     ) {
@@ -318,6 +323,7 @@ class UndoManagerCommand {
           this.el.undoStack.undoStackPosition - 1
         ].newValue;
     } else if (
+      this.el.undoStack &&
       this.el.undoStack.commands &&
       this.el.undoStack.undoStackPosition === 0
     ) {
