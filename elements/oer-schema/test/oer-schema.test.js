@@ -84,8 +84,8 @@ describe('oer-schema element', () => {
     const typeofSetting = configure.find((s) => s.property === 'typeof')
     expect(typeofSetting.options['oer:Course']).to.equal('Course')
     expect(typeofSetting.options['oer:Task']).to.equal('Task')
-    // the root default typeof value is not offered, see lib test BUG notes
-    expect(typeofSetting.options['oer:Resource']).to.be.undefined
+    // the root default typeof value is offered as the base type
+    expect(typeofSetting.options['oer:Resource']).to.equal('Resource')
     // rubric and material types come from the additional types list
     expect(typeofSetting.options['oer:Rubric']).to.equal('Rubric')
     expect(typeofSetting.options['oer:RubricLevel']).to.equal('RubricLevel')

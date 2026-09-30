@@ -38,15 +38,11 @@ describe('OERSchema library', () => {
     expect(schema.types['oer:ReferencedMaterial']).to.equal('ReferencedMaterial')
   })
 
-  // BUG: the root Resource class is excluded from the types map because
-  // its own subClassOf lists only schema.org/creativecommons URIs (no
-  // literal 'Resource' entry), so the element's default typeof value
-  // (Resource) cannot be selected in the HAX typeof dropdown.
-  it('BUG omits the root Resource class from selectable types', () => {
+  it('includes the root Resource class in selectable types', () => {
     const schema = new OERSchema()
     expect(schema.latestSchema.classes.Resource).to.exist
     expect(schema.latestSchema.classes.Resource.label).to.equal('Resource')
-    expect(schema.types['oer:Resource']).to.be.undefined
+    expect(schema.types['oer:Resource']).to.equal('Resource')
   })
 
   it('excludes types outside the instructional hierarchy', () => {

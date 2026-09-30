@@ -886,8 +886,10 @@ class OERSchema {
     this.types = {};
     // structural classes whose subClassOf chain does not include
     // Resource/LearningComponent/InstructionalPattern but which authors
-    // should still be able to select as a typeof wrapper
+    // should still be able to select as a typeof wrapper, plus the root
+    // Resource class itself (its own subClassOf only lists external URIs)
     const additionalTypes = [
+      "Resource",
       "TableOfContents",
       "TableOfContentsEntry",
       "Rubric",
