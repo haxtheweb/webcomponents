@@ -1,20 +1,21 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../a11y-carousel.js";
+import "../lib/a11y-carousel-button.js";
 describe("a11y-carousel test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
       <a11y-carousel id="demo1" no-prev-next>
         <figure id="figure-1">
-          <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200" />
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 400 X 200" />
           <figcaption>Item 1</figcaption>
         </figure>
         <figure id="figure-2">
-          <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100" />
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 300 X 100" />
           <figcaption>Item 2</figcaption>
         </figure>
         <figure id="figure-3">
-          <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300" />
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 400 X 300" />
           <figcaption>Item 3</figcaption>
         </figure>
       </a11y-carousel>
@@ -36,11 +37,11 @@ describe("a11y-carousel test", () => {
         <a11y-carousel>
           <div slot="above">Above content</div>
           <figure id="img-figure" slot="img">
-            <img src="//placekitten.com/200/200" alt="Slotted Image" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Slotted Image" />
             <figcaption>Slotted Image</figcaption>
           </figure>
           <figure id="default-figure">
-            <img src="//placekitten.com/300/200" alt="Default Image" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Default Image" />
             <figcaption>Default Image</figcaption>
           </figure>
           <div slot="below">Below content</div>
@@ -84,7 +85,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="only-figure">
-            <img src="//placekitten.com/200/200" alt="Only Image" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Only Image" />
             <figcaption>Only Image</figcaption>
           </figure>
         </a11y-carousel>
@@ -105,11 +106,11 @@ describe("a11y-carousel test", () => {
       testElement = await fixture(html`
         <a11y-carousel>
           <figure id="test-figure-1">
-            <img src="//placekitten.com/200/200" alt="Test Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
             <figcaption>Test Image 1</figcaption>
           </figure>
           <figure id="test-figure-2">
-            <img src="//placekitten.com/300/200" alt="Test Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 2" />
             <figcaption>Test Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -328,7 +329,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-prev-next>
           <figure id="test-figure-1">
-            <img src="//placekitten.com/200/200" alt="Test Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
             <figcaption>Test Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -341,7 +342,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-buttons>
           <figure id="test-figure-1">
-            <img src="//placekitten.com/200/200" alt="Test Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
             <figcaption>Test Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -358,15 +359,15 @@ describe("a11y-carousel test", () => {
       navElement = await fixture(html`
         <a11y-carousel>
           <figure id="nav-fig-1">
-            <img src="//placekitten.com/200/200" alt="Navigation Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 1" />
             <figcaption>Navigation Image 1</figcaption>
           </figure>
           <figure id="nav-fig-2">
-            <img src="//placekitten.com/300/200" alt="Navigation Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 2" />
             <figcaption>Navigation Image 2</figcaption>
           </figure>
           <figure id="nav-fig-3">
-            <img src="//placekitten.com/250/200" alt="Navigation Image 3" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 3" />
             <figcaption>Navigation Image 3</figcaption>
           </figure>
         </a11y-carousel>
@@ -439,11 +440,11 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="bg-fig-1">
-            <img src="//placekitten.com/200/200" alt="Background Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Background Image 1" />
             <figcaption>Background Image 1</figcaption>
           </figure>
           <figure id="bg-fig-2">
-            <img src="//placekitten.com/300/200" alt="Background Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Background Image 2" />
             <figcaption>Background Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -481,11 +482,11 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-prev-next no-buttons>
           <figure id="fig-1">
-            <img src="//placekitten.com/200/200" alt="Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="//placekitten.com/300/200" alt="Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -498,11 +499,11 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="fig-1">
-            <img src="//placekitten.com/200/200" alt="Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="//placekitten.com/300/200" alt="Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -520,11 +521,11 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="fig-1">
-            <img src="//placekitten.com/200/200" alt="Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="//placekitten.com/300/200" alt="Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -547,11 +548,11 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="event-fig-1">
-            <img src="//placekitten.com/200/200" alt="Event Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Event Image 1" />
             <figcaption>Event Image 1</figcaption>
           </figure>
           <figure id="event-fig-2">
-            <img src="//placekitten.com/300/200" alt="Event Image 2" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Event Image 2" />
             <figcaption>Event Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -578,7 +579,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="lifecycle-fig-1">
-            <img src="//placekitten.com/200/200" alt="Lifecycle Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Lifecycle Image 1" />
             <figcaption>Lifecycle Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -598,7 +599,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="edge-fig-1">
-            <img src="//placekitten.com/200/200" alt="Edge Image 1" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Edge Image 1" />
             <figcaption>Edge Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -633,7 +634,7 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="single-fig">
-            <img src="//placekitten.com/200/200" alt="Single Image" />
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Single Image" />
             <figcaption>Single Image</figcaption>
           </figure>
         </a11y-carousel>
@@ -663,6 +664,201 @@ describe("a11y-carousel test", () => {
       expect(testElement.last).to.be.undefined;
 
       await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("a11y-carousel-button behavior", () => {
+    it("fires select-carousel-item on click with itself as detail", async () => {
+      const button = await fixture(
+        html`<a11y-carousel-button controls="item-1"></a11y-carousel-button>`,
+      );
+      await button.updateComplete;
+      const fired = [];
+      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true, cancelable: true }),
+      );
+      expect(fired.length).to.equal(1);
+      expect(fired[0] === button).to.be.true;
+      // a click also invokes preventDefault since the event is cancelable
+    });
+
+    it("fires select-carousel-item on Enter, Space and Spacebar keys", async () => {
+      const button = await fixture(
+        html`<a11y-carousel-button controls="item-1"></a11y-carousel-button>`,
+      );
+      await button.updateComplete;
+      const fired = [];
+      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "Enter",
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      button.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: " ",
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      button.dispatchEvent(new KeyboardEvent("keydown", { key: "Spacebar" }));
+      expect(fired.length).to.equal(3);
+      // other keys never select
+      button.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" }));
+      expect(fired.length).to.equal(3);
+    });
+
+    it("ignores clicks and keys while disabled", async () => {
+      const button = await fixture(
+        html`<a11y-carousel-button controls="item-1"></a11y-carousel-button>`,
+      );
+      await button.updateComplete;
+      const fired = [];
+      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      // an active button is disabled for further selection
+      button.active = true;
+      await button.updateComplete;
+      expect(button.disabled).to.equal(true);
+      expect(button.getAttribute("aria-disabled")).to.equal("true");
+      expect(button.getAttribute("tabindex")).to.equal("-1");
+      button.dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+      expect(fired.length).to.equal(0);
+      // clearing controls also disables the button
+      button.active = false;
+      button.controls = "";
+      await button.updateComplete;
+      expect(button.disabled).to.equal(true);
+      expect(button.getAttribute("aria-disabled")).to.equal("true");
+      // a healthy button is focusable and not aria-disabled
+      button.controls = "item-2";
+      await button.updateComplete;
+      expect(button.disabled).to.equal(false);
+      expect(button.getAttribute("aria-disabled")).to.equal("false");
+      expect(button.getAttribute("tabindex")).to.equal("0");
+    });
+
+    it("cleans up its listeners when disconnected", async () => {
+      const button = await fixture(
+        html`<a11y-carousel-button controls="item-1"></a11y-carousel-button>`,
+      );
+      await button.updateComplete;
+      button.remove();
+      const fired = [];
+      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
+      expect(fired.length).to.equal(0);
+    });
+  });
+
+  describe("prev/next button labels", () => {
+    it("BUG: the previous button announces the next label", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="label-fig-1">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Label Image 1"
+            />
+            <figcaption>Label Image 1</figcaption>
+          </figure>
+          <figure id="label-fig-2">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Label Image 2"
+            />
+            <figcaption>Label Image 2</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      const prevButton = testElement.shadowRoot.querySelector(
+        'a11y-carousel-button[button-type="prev"]',
+      );
+      expect(prevButton).to.exist;
+      // the title correctly says previous...
+      expect(prevButton.getAttribute("title")).to.equal("previous");
+      // BUG a11y-carousel.js:121 renders ${this.nextLabel} in the previous
+      // button's screen-reader-only span, so assistive tech announces
+      // "next" for the previous control (should be ${this.prevLabel}).
+      expect(prevButton.querySelector(".sr-only").textContent).to.equal(
+        "next",
+      );
+    });
+  });
+
+  describe("light-DOM carousel buttons sync with selection", () => {
+    it("updates controls and active state for every button type", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="sync-fig-1">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Sync Image 1"
+            />
+            <figcaption>Sync Image 1</figcaption>
+          </figure>
+          <figure id="sync-fig-2">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Sync Image 2"
+            />
+            <figcaption>Sync Image 2</figcaption>
+          </figure>
+          <figure id="sync-fig-3">
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Sync Image 3"
+            />
+            <figcaption>Sync Image 3</figcaption>
+          </figure>
+          <a11y-carousel-button slot="above" button-type="first">
+            First
+          </a11y-carousel-button>
+          <a11y-carousel-button slot="above" button-type="prev">
+            Previous
+          </a11y-carousel-button>
+          <a11y-carousel-button slot="below" button-type="next">
+            Next
+          </a11y-carousel-button>
+          <a11y-carousel-button slot="below" button-type="last">
+            Last
+          </a11y-carousel-button>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+
+      const byType = (type) =>
+        testElement.querySelector(`a11y-carousel-button[button-type="${type}"]`);
+      // first figure is selected by default
+      expect(byType("first").controls).to.equal("sync-fig-1");
+      expect(byType("prev").controls).to.equal("sync-fig-3");
+      expect(byType("next").controls).to.equal("sync-fig-2");
+      expect(byType("last").controls).to.equal("sync-fig-3");
+      // the button controlling the current selection becomes active
+      expect(byType("first").active).to.equal(true);
+      expect(byType("next").active).to.equal(false);
+
+      // selecting the last figure flips the synced controls
+      testElement.dispatchEvent(
+        new CustomEvent("select-carousel-item", {
+          bubbles: true,
+          composed: true,
+          detail: { controls: "sync-fig-3" },
+        }),
+      );
+      await testElement.updateComplete;
+      expect(byType("first").controls).to.equal("sync-fig-1");
+      expect(byType("prev").controls).to.equal("sync-fig-2");
+      expect(byType("next").controls).to.equal("sync-fig-1");
+      expect(byType("last").active).to.equal(true);
+      expect(byType("first").active).to.equal(false);
     });
   });
 });

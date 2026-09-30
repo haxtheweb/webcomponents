@@ -517,4 +517,165 @@ describe("a11y-details test", () => {
       await expect(haxTestElement).shadowDom.to.be.accessible();
     });
   });
+
+  describe("native details element watching", () => {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    it("syncs slots when a native details element is added", async () => {
+      const testElement = await fixture(html`
+        <a11y-details></a11y-details>
+      `);
+      await testElement.updateComplete;
+      const native = globalThis.document.createElement("details");
+      native.innerHTML =
+        "<summary>Dynamic summary</summary><p>Dynamic content</p>";
+      testElement.appendChild(native);
+      await sleep(60);
+      await testElement.updateComplete;
+      // the mutation observer copied the native summary/details into slots
+      const summarySlot = testElement.querySelector('[slot="summary"]');
+      expect(summarySlot).to.exist;
+      expect(summarySlot.textContent.indexOf("Dynamic summary")).to.be.above(
+        -1,
+      );
+      const detailsSlot = testElement.querySelector('[slot="details"]');
+      expect(detailsSlot).to.exist;
+      expect(detailsSlot.textContent.indexOf("Dynamic content")).to.be.above(
+        -1,
+      );
+      // the detailsObserver getter produced a real observer for the light DOM
+      expect(testElement.detailsObserver).to.exist;
+      expect(testElement.detailsObserver).to.be.instanceOf(
+        globalThis.MutationObserver,
+      );
+    });
+
+    it("disconnects the details observer when the details element is removed", async () => {
+      const testElement = await fixture(html`
+        <a11y-details></a11y-details>
+      `);
+      await testElement.updateComplete;
+      const native = globalThis.document.createElement("details");
+      native.innerHTML = "<summary>Temp</summary><p>Temp content</p>";
+      testElement.appendChild(native);
+      await sleep(60);
+      expect(testElement.querySelector('* > details')).to.exist;
+      native.remove();
+      await sleep(60);
+      // the removedNodes branch disconnected the details observer
+      expect(testElement.querySelector('* > details')).to.not.exist;
+    });
+  });
+
+  describe("legacy click and keyboard fallbacks", () => {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    let testElement;
+    let fakeDetails;
+    let opened;
+    beforeEach(async () => {
+      testElement = await fixture(html`
+        <a11y-details>
+          <span slot="summary">Legacy summary</span>
+          <div slot="details">Legacy details</div>
+        </a11y-details>
+      `);
+      await testElement.updateComplete;
+      // a details element without an open property, like very old browsers:
+      // the click/keyup handlers fall back to toggling manually
+      opened = false;
+      fakeDetails = {
+        open: undefined,
+        hasAttribute: (name) => name === "open" && opened,
+        setAttribute: () => {
+          opened = true;
+        },
+        removeAttribute: () => {
+          opened = false;
+        },
+      };
+      Object.defineProperty(testElement, "details", {
+        get: () => fakeDetails,
+        configurable: true,
+      });
+    });
+
+    afterEach(() => {
+      delete testElement.details;
+    });
+
+    it("clicking the summary toggles open on legacy details", async () => {
+      const summary = testElement.shadowRoot.querySelector("summary");
+      const events = [];
+      summary.addEventListener("click", (e) => events.push(e.type));
+      summary.dispatchEvent(
+        new MouseEvent("click", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(opened).to.equal(true);
+      summary.dispatchEvent(
+        new MouseEvent("click", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(opened).to.equal(false);
+      expect(events).to.deep.equal(["click", "click"]);
+    });
+
+    it("Enter and Space keyups toggle open on legacy details", async () => {
+      const summary = testElement.shadowRoot.querySelector("summary");
+      summary.dispatchEvent(
+        new KeyboardEvent("keyup", {
+          key: "Enter",
+          keyCode: 13,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(opened).to.equal(true);
+      summary.dispatchEvent(
+        new KeyboardEvent("keyup", {
+          key: "Enter",
+          keyCode: 13,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(opened).to.equal(false);
+    });
+
+    it("Space keyup toggles open even on a modern details element", async () => {
+      // restore the real details element: only the keyCode 32 clause applies
+      delete testElement.details;
+      const summary = testElement.shadowRoot.querySelector("summary");
+      const details = testElement.shadowRoot.querySelector("details");
+      expect(details.open).to.equal(false);
+      summary.dispatchEvent(
+        new KeyboardEvent("keyup", {
+          key: " ",
+          keyCode: 32,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(details.open).to.equal(true);
+      summary.dispatchEvent(
+        new KeyboardEvent("keyup", {
+          key: " ",
+          keyCode: 32,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+      expect(details.open).to.equal(false);
+    });
+  });
 });
