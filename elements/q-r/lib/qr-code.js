@@ -99,6 +99,7 @@ class QRCodeElement extends HTMLElement {
     try {
       let img = globalThis.document.createElement("img");
       img.src = globalThis.QRCode.generatePNG(this.data, this.getOptions());
+      img.alt = "QR code for " + this.data;
       this.clear();
       this.shadowRoot.appendChild(img);
     } catch (e) {

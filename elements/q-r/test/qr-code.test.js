@@ -95,6 +95,9 @@ describe('qr-code element', () => {
     const img = el.shadowRoot.querySelector('img')
     expect(img).to.exist
     expect(img.getAttribute('src').startsWith('data:image/png')).to.be.true
+    expect(img.getAttribute('alt')).to.equal(
+      'QR code for https://haxtheweb.org',
+    )
   })
 
   it('generates an HTML table for the html format', async () => {

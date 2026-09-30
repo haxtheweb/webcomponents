@@ -933,6 +933,10 @@
       options = options || {};
       var ver = options.version || -1;
       var ecclevel = ECCLEVELS[(options.ecclevel || "L").toUpperCase()];
+      // an unknown letter resolves to undefined, which slips past the
+      // numeric range guard below and surfaces later as a misleading
+      // "too large data" error, so reject it up front
+      if (ecclevel === undefined) throw "invalid ECC level";
       var mode = options.mode ? MODES[options.mode.toLowerCase()] : -1;
       var mask = "mask" in options ? options.mask : -1;
 
@@ -975,7 +979,7 @@
         throw "invalid version";
       }
 
-      if (mask != -1 && (mask < 0 || mask > 8)) throw "invalid mask";
+      if (mask != -1 && (mask < 0 || mask > 7)) throw "invalid mask";
 
       return generate(data, ver, mode, ecclevel, mask);
     },
@@ -984,7 +988,7 @@
       options = options || {};
       var matrix = QRCode["generate"](data, options);
       var modsize = Math.max(options.modulesize || 5, 0.5);
-      var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
+      var margin = Math.max(options.margin != null ? options.margin : 4, 0.0);
 
       var e = globalThis.document.createElement("div");
       var n = matrix.length;
@@ -1018,7 +1022,7 @@
       var matrix = QRCode["generate"](data, options);
       var n = matrix.length;
       var modsize = Math.max(options.modulesize || 5, 0.5);
-      var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
+      var margin = Math.max(options.margin != null ? options.margin : 4, 0.0);
       var size = modsize * (n + 2 * margin);
 
       var common =
@@ -1059,7 +1063,7 @@
       options = options || {};
       var matrix = QRCode["generate"](data, options);
       var modsize = Math.max(options.modulesize || 5, 0.5);
-      var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
+      var margin = Math.max(options.margin != null ? options.margin : 4, 0.0);
       var n = matrix.length;
       var size = modsize * (n + 2 * margin);
 

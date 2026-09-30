@@ -138,30 +138,24 @@ describe('qr.js library', () => {
     expect(msg).to.equal('invalid mask')
   })
 
-  // BUG: mask 8 passes the `mask < 0 || mask > 8` validation even though
-  // MASKFUNCS only defines masks 0-7, so generation crashes with a TypeError
-  // instead of the friendly 'invalid mask' error.
-  it('BUG mask 8 passes validation but crashes during generation', () => {
-    let threw = null
+  it('rejects masks above the valid range', () => {
+    let msg = ''
     try {
       QRCode.generate('test', { mask: 8 })
     } catch (e) {
-      threw = e
+      msg = e
     }
-    expect(threw).to.be.instanceOf(TypeError)
+    expect(msg).to.equal('invalid mask')
   })
 
-  // BUG: an unknown ecclevel letter resolves to undefined, which passes the
-  // `ecclevel < 0 || ecclevel > 3` guard and later surfaces as a confusing
-  // 'too large data' error instead of 'invalid ECC level'.
-  it('BUG invalid ECC level letters are not rejected cleanly', () => {
+  it('rejects invalid ECC level letters', () => {
     let msg = ''
     try {
       QRCode.generate('01234567', { ecclevel: 'X' })
     } catch (e) {
       msg = e
     }
-    expect(msg).to.equal('too large data')
+    expect(msg).to.equal('invalid ECC level')
   })
 
   it('rejects data too large for any version', () => {
@@ -181,11 +175,10 @@ describe('qr.js library', () => {
     expect(e.innerHTML).to.include('border:2px solid #fff')
   })
 
-  // BUG: generateHTML/generateSVG/generatePNG treat only null (not undefined)
-  // as "use the default margin", so calling without options yields NaN sizes.
-  it('BUG omitted margin option produces NaN sizing in HTML output', () => {
+  it('defaults the margin when the option is omitted', () => {
     const e = QRCode.generateHTML('01234567')
-    expect(e.innerHTML.includes('border:NaNpx')).to.be.true
+    // default modulesize 5 x default margin 4 modules
+    expect(e.innerHTML.includes('border:20px solid #fff')).to.be.true
   })
 
   it('generates an SVG element with sizing', () => {
