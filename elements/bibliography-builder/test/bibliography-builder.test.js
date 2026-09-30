@@ -121,6 +121,25 @@ describe('BibliographyBuilder test', () => {
       expect(element._modalContent === first).to.be.true
     })
 
+    it('labels the export dropdown for screen readers', async () => {
+      // a11y fix: the export format select had no label, so screen readers
+      // announced it without an accessible name
+      element._showExportModal({ target: null })
+      const select = element._modalContent.querySelector('#export-dropdown')
+      expect(select.getAttribute('aria-label')).to.equal(
+        'Export citation format',
+      )
+    })
+
+    it('styles modal borders with DDD tokens instead of hardcoded black', async () => {
+      // DDD dark-mode fix: hardcoded black borders were invisible on dark
+      // mode modal backgrounds; the export modal now uses DDD border tokens
+      element._showExportModal({ target: null })
+      const style = element._modalContent.querySelector('style')
+      expect(style.textContent).to.include('var(--ddd-border-xs)')
+      expect(style.textContent).to.not.include('black')
+    })
+
     it('renders each citation entry from citationArr', async () => {
       // modal content must exist before citationArr changes re-render it
       element._showExportModal({ target: null })

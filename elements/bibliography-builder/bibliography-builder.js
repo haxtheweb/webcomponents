@@ -143,14 +143,14 @@ export class BibliographyBuilder extends SchemaBehaviors(
         .citation-list {
           max-height: 40vh;
           overflow-y: auto;
-          border: black solid 1px;
+          border: var(--ddd-border-xs);
           padding: 8px;
           margin: 8px;
         }
         .control-bar {
-          --simple-icon-button-border: 1px black solid;
+          --simple-icon-button-border: var(--ddd-border-xs);
           --simple-icon-button-border-radius: 4px;
-          --simple-icon-button-focus-border: 2px black solid;
+          --simple-icon-button-focus-border: var(--ddd-border-sm);
           --simple-icon-button-padding: 6px;
           --simple-icon-height: 32px;
           --simple-icon-width: 32px;
@@ -180,7 +180,11 @@ export class BibliographyBuilder extends SchemaBehaviors(
           >Copy</simple-icon-button-lite>
         </div>
         <div class="export-drop">
-          <select id="export-dropdown" @change=${this._exportHandler}>
+          <select
+            id="export-dropdown"
+            aria-label="Export citation format"
+            @change=${this._exportHandler}
+          >
             <option value="Export">Export</option>
             <option value="APA">APA</option>
             <option value="BibTeX">BibTeX</option>

@@ -53,6 +53,8 @@ export class BibliographyItem extends SchemaBehaviors(
       url: { type: String },
       parentVer: { type: Number, attribute: "parent-ver" },
       childVer: { type: Number, attribute: "child-ver" },
+      volume: { type: String, attribute: "volume" },
+      issue: { type: String, attribute: "issue" },
       startPage: { type: String, attribute: 'start-page' },
       endPage: { type: String, attribute: 'end-page' }
     };
@@ -184,9 +186,29 @@ export class BibliographyItem extends SchemaBehaviors(
     }
   };
 
+  /**
+  * Parse a date value for formatting. ISO date-only strings (e.g.
+  * 2020-03-07) are parsed as UTC midnight by the platform, which shifts
+  * back a day in timezones behind UTC when read back with local methods,
+  * so build them as local calendar dates instead.
+  */
+  _parseDate(value){
+    if (typeof value === "string") {
+      const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value.trim());
+      if (dateOnly) {
+        return new Date(
+          Number(dateOnly[1]),
+          Number(dateOnly[2]) - 1,
+          Number(dateOnly[3])
+        );
+      }
+    }
+    return new Date(value);
+  }
+
   _formatDate(){
-    const pubDateObj = new Date(this.publicationDate);
-    const accessDateObj = new Date(this.accessDate);
+    const pubDateObj = this._parseDate(this.publicationDate);
+    const accessDateObj = this._parseDate(this.accessDate);
 
     return {
       // The same between APA and BibTeX
@@ -331,12 +353,12 @@ export class BibliographyItem extends SchemaBehaviors(
     ceMenu.ceButtons = [
       {
         icon: "communication:call-made",
-        callback: "_addCitationAbove",
+        callback: "_addItemAbove",
         label: "Add citation above",
       },
       {
         icon: "communication:call-received",
-        callback: "_addCitationBelow",
+        callback: "_addItemBelow",
         label: "Add citation below",
       }
     ];

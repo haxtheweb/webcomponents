@@ -178,16 +178,33 @@ describe('BibliographyItem test', () => {
       expect(element._formatDate().getFullPubDate()).to.equal('(2020, March 7)')
     })
 
-    // BUG (lib/bibliography-item.js:188-189): publicationDate and
-    // accessDate are parsed with new Date() and then read with local-time
-    // methods (getDate/toLocaleString), so ISO-formatted dates like
-    // '2020-03-07' are parsed as UTC midnight and shift back a day in
-    // timezones behind UTC: this renders '(2020, March 6)' instead of
-    // '(2020, March 7)' in the test browser.
+    // fixed (lib/bibliography-item.js): publicationDate and accessDate are
+    // parsed via _parseDate, so ISO date-only strings like '2020-03-07'
+    // no longer parse as UTC midnight and shift back a day in timezones
+    // behind UTC; see the ISO parsing tests below.
 
     it('returns (n.d.) for an invalid full publication date', () => {
       element.publicationDate = 'not-a-date'
       expect(element._formatDate().getFullPubDate()).to.equal('(n.d.)')
+    })
+
+    it('parses ISO date-only publication dates as local calendar dates', () => {
+      // fixed (lib/bibliography-item.js): ISO date-only strings are parsed
+      // as local calendar dates instead of UTC midnight, so they no longer
+      // shift back a day in timezones behind UTC
+      element.publicationDate = '2020-03-07'
+      expect(element._formatDate().getFullPubDate()).to.equal('(2020, March 7)')
+      expect(element._formatDate().getPubYear()).to.equal(2020)
+    })
+
+    it('parses ISO date-only access dates as local calendar dates', () => {
+      element.accessDate = '2020-03-07'
+      expect(element._formatDate().getFullAccessDate('APA')).to.equal(
+        'Retrieved March 7, 2020, from',
+      )
+      expect(element._formatDate().getFullAccessDate('BibTeX')).to.equal(
+        '2020-03-07',
+      )
     })
 
     it('formats an APA access date', () => {
@@ -450,14 +467,23 @@ describe('BibliographyItem test', () => {
       expect(ceMenu.ceButtons[0].label).to.equal('Add citation above')
       expect(ceMenu.ceButtons[1].icon).to.equal('communication:call-received')
       expect(ceMenu.ceButtons[1].label).to.equal('Add citation below')
-      // BUG (lib/bibliography-item.js:334,339): the callbacks reference
-      // "_addCitationAbove" / "_addCitationBelow" but the methods are
-      // actually named _addItemAbove / _addItemBelow, so the HAX inline
-      // context menu buttons can never fire them.
-      expect(typeof element['_addCitationAbove']).to.equal('undefined')
-      expect(typeof element['_addCitationBelow']).to.equal('undefined')
+      // fixed (lib/bibliography-item.js): the callbacks now reference the
+      // real _addItemAbove / _addItemBelow methods, so the HAX inline
+      // context menu buttons actually fire them
+      expect(ceMenu.ceButtons[0].callback).to.equal('_addItemAbove')
+      expect(ceMenu.ceButtons[1].callback).to.equal('_addItemBelow')
       expect(typeof element['_addItemAbove']).to.equal('function')
       expect(typeof element['_addItemBelow']).to.equal('function')
+    })
+
+    it('declares volume and issue as reactive properties', () => {
+      // fixed (lib/bibliography-item.js): volume and issue were used by the
+      // journal BibTeX export and the journal hax form config but were
+      // never declared as reactive properties, so the journal form fields
+      // never bound reactively
+      const props = BibliographyItem.properties
+      expect(props.volume.type).to.equal(String)
+      expect(props.issue.type).to.equal(String)
     })
 
     it('extends the active element form for book citations', async () => {
