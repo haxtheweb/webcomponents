@@ -189,7 +189,6 @@ export class UserScaffold extends HTMLElement {
       // look for base64 like copy and paste of an image from clipboard
       if (this.isBase64(pasteContent)) {
         architype = "base64";
-        safe = this.isBase64(pasteContent);
       } else if (e.clipboardData.files.length > 0) {
         architype = "file";
         if (e.clipboardData.files.length > 1) {
@@ -233,6 +232,8 @@ export class UserScaffold extends HTMLElement {
         });
       } else {
         // Use DataTransfer interface to access the file(s)
+        // this branch only runs when e.dataTransfer.items is absent,
+        // so describe the drop from the file itself
         [...e.dataTransfer.files].forEach((file, i) => {
           this.action = {
             type: "drop",
@@ -241,9 +242,9 @@ export class UserScaffold extends HTMLElement {
           this.data = {
             event: e,
             file: file,
-            raw: e.dataTransfer.items[0].type,
-            value: e.dataTransfer.items[0].type,
-            architype: e.dataTransfer.items[0].kind,
+            raw: file.type,
+            value: file.type,
+            architype: "file",
           };
         });
       }

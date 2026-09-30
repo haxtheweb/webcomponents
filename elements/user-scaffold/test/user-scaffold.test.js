@@ -412,9 +412,9 @@ describe("UserScaffold paste architype detection", () => {
     element.userPasteAction(fakeEvent);
     expect(element.data.architype).to.equal("base64");
     expect(element.data.raw).to.equal("dGVzdA==");
-    // BUG: user-scaffold.js:192 assigns `safe = this.isBase64(pasteContent)`
-    // which stores the boolean true instead of the pasted string as data.value
-    expect(element.data.value).to.equal(true);
+    // fixed: data.value stores the pasted string (safe) instead of the
+    // isBase64 boolean result
+    expect(element.data.value).to.equal("dGVzdA==");
   });
 
   it("userPasteAction detects single file", () => {
@@ -470,8 +470,8 @@ describe("UserScaffold paste architype detection", () => {
     expect(element.action.type).to.equal("paste");
     expect(element.data.architype).to.equal("base64");
     expect(element.data.raw).to.equal("dGVzdA==");
-    // BUG: same as above, data.value is boolean true instead of the string
-    expect(element.data.value).to.equal(true);
+    // fixed: data.value is the pasted string, not the isBase64 boolean
+    expect(element.data.value).to.equal("dGVzdA==");
     delete globalThis.clipboardData;
   });
 });
@@ -497,20 +497,26 @@ describe("UserScaffold drop via DataTransfer files interface", () => {
     expect(element.action.type).to.not.equal("drop");
   });
 
-  it("userDropAction with files and no items throws reading items[0]", () => {
-    // BUG: user-scaffold.js:244-246 the files-fallback branch reads
+  it("userDropAction with files and no items records the file without throwing", () => {
+    // fixed: user-scaffold.js:244-246 the files-fallback branch used to read
     // e.dataTransfer.items[0].type/kind, but this branch only runs when
-    // e.dataTransfer.items is absent, so it throws a TypeError
+    // e.dataTransfer.items is absent, so it threw a TypeError; it now
+    // describes the drop from the file itself
     const fakeEvent = {
       isTrusted: true,
       preventDefault: () => {},
       stopPropagation: () => {},
       stopImmediatePropagation: () => {},
-      dataTransfer: { files: [{ name: "test.txt" }] },
+      dataTransfer: {
+        files: [{ name: "test.txt", type: "text/plain" }],
+      },
     };
-    expect(() => element.userDropAction(fakeEvent)).to.throw();
-    // the action assignment happens before the failing data assignment
+    element.userDropAction(fakeEvent);
     expect(element.action.type).to.equal("drop");
     expect(element.action.architype).to.equal("input");
+    expect(element.data.file.name).to.equal("test.txt");
+    expect(element.data.raw).to.equal("text/plain");
+    expect(element.data.value).to.equal("text/plain");
+    expect(element.data.architype).to.equal("file");
   });
 });
