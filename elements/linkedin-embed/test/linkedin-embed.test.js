@@ -6,6 +6,53 @@ const scriptsMatching = (marker) =>
     s.src.includes(marker),
   );
 
+// network stub: badge requests aimed at linkedin's real CDN are redirected to
+// a local 404 so no external request ever leaves the test run
+const origSetAttribute = Element.prototype.setAttribute;
+Element.prototype.setAttribute = function (name, value) {
+  if (
+    this.tagName === "SCRIPT" &&
+    String(name).toLowerCase() === "src" &&
+    String(value).startsWith("http")
+  ) {
+    return origSetAttribute.call(
+      this,
+      "src",
+      "/elements/linkedin-embed/test/does-not-exist.js",
+    );
+  }
+  return origSetAttribute.call(this, name, value);
+};
+after(() => {
+  Element.prototype.setAttribute = origSetAttribute;
+});
+
+// the element assigns script.src through the property setter, so the src
+// descriptor on HTMLScriptElement is patched the same way as well
+const scriptSrcDescriptor = Object.getOwnPropertyDescriptor(
+  HTMLScriptElement.prototype,
+  "src",
+);
+Object.defineProperty(HTMLScriptElement.prototype, "src", {
+  ...scriptSrcDescriptor,
+  set(value) {
+    if (String(value).startsWith("http")) {
+      return scriptSrcDescriptor.set.call(
+        this,
+        "/elements/linkedin-embed/test/does-not-exist.js",
+      );
+    }
+    return scriptSrcDescriptor.set.call(this, value);
+  },
+});
+after(() => {
+  Object.defineProperty(
+    HTMLScriptElement.prototype,
+    "src",
+    scriptSrcDescriptor,
+  );
+});
+
 describe("linkedin-embed test", () => {
   let element;
   beforeEach(async () => {
@@ -306,5 +353,78 @@ describe("linkedin-embed test", () => {
     it("passes the a11y audit", async () => {
       await expect(element).shadowDom.to.be.accessible();
     });
+  });
+
+  describe("Legacy fallbacks and guards", () => {
+    it('skips theme watching when matchMedia is unavailable', () => {
+      const original = globalThis.matchMedia
+      globalThis.matchMedia = undefined
+      const el = document.createElement('linkedin-embed')
+      el.__watchPreferredTheme()
+      expect(el.__darkModeMediaQuery).to.equal(null)
+      globalThis.matchMedia = original
+    })
+
+    it('uses the legacy addListener and removeListener APIs', () => {
+      const original = globalThis.matchMedia
+      const added = []
+      const fakeQuery = {
+        matches: true,
+        addListener(fn) {
+          added.push(fn)
+        },
+        removeListener(fn) {
+          const index = added.indexOf(fn)
+          if (index > -1) {
+            added.splice(index, 1)
+          }
+        },
+      }
+      globalThis.matchMedia = () => fakeQuery
+      const el = document.createElement('linkedin-embed')
+      el.__watchPreferredTheme()
+      expect(added.length).to.equal(1)
+      expect(el._prefersDark).to.be.true
+      el.disconnectedCallback()
+      expect(added.length).to.equal(0)
+      globalThis.matchMedia = original
+    })
+
+    it('does not attach a second resize observer', () => {
+      const before = element.__resizeObserver
+      element.__watchContainer()
+      expect(element.__resizeObserver).to.equal(before)
+    })
+
+    it('returns early from badge requests before the badge host renders', () => {
+      // simulate the pre-render window: renderRoot exists but has no badge host
+      const pending = element.__lastRequestUid
+      const root = element.renderRoot
+      root.querySelector = () => null
+      element.__requestBadgeMarkup()
+      delete root.querySelector
+      expect(element.__lastRequestUid).to.equal(pending)
+      expect(scriptsMatching('badges.linkedin').length).to.equal(0)
+    })
+
+    it('renders the badge when the callback delivers matching html', async () => {
+      element.__buildBadgeUrl = (uid) =>
+        `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`
+      element.__requestBadgeMarkup()
+      const uid = element.__lastRequestUid
+      const manager = element.__ensureCallbackManager()
+      const handler = manager.handlers[uid]
+      expect(handler).to.be.a('function')
+      handler('<b>badge</b>', uid)
+      expect(element.__lastRequestUid).to.equal(null)
+      const badgeHost = element.renderRoot.querySelector('.badge-host')
+      const iframe = badgeHost.querySelector('iframe')
+      expect(iframe).to.exist
+      expect(iframe.srcdoc).to.include('<b>badge</b>')
+      // a callback for a different uid is ignored
+      handler('<i>other</i>', uid + 1)
+      expect(element.__lastRequestUid).to.equal(null)
+      expect(badgeHost.querySelectorAll('iframe').length).to.equal(1)
+    })
   });
 });
