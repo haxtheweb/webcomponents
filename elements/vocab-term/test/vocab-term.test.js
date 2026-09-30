@@ -35,8 +35,13 @@ describe('vocab-term modal mode (default)', () => {
     const el = await fixture(
       html` <vocab-term term="breaching">A whale thing</vocab-term> `,
     )
+    // modal mode wraps the summary in a valid details element
+    // (a bare summary outside details is invalid HTML semantics)
+    const details = el.shadowRoot.querySelector('details')
+    expect(details).to.exist
     const summary = el.shadowRoot.querySelector('summary#summary')
     expect(summary).to.exist
+    expect(summary.parentElement === details).to.be.true
     expect(summary.getAttribute('property')).to.equal('oer:name')
     expect(summary.textContent).to.equal('breaching')
     expect(summary.getAttribute('part')).to.not.exist
@@ -192,13 +197,18 @@ describe('vocab-term popover mode', () => {
     const plain = await fixture(
       html` <vocab-term term="t" information="i"></vocab-term> `,
     )
-    expect(plain.shadowRoot.querySelector('details')).to.not.exist
+    // modal mode already renders a details wrapper around the summary;
+    // entering popover mode swaps it for the popover details element
+    expect(plain.shadowRoot.querySelector('details')).to.exist
+    expect(plain.shadowRoot.querySelector('details > summary#summary')).to
+      .exist
     plain.popoverMode = true
     await plain.updateComplete
     await plain.updateComplete
     expect(plain.detailsOpen).to.be.false
     expect(plain.shadowRoot.querySelector('details')).to.exist
     expect(plain.details).to.exist
+    expect(plain.details.querySelector('simple-popover')).to.exist
   })
 
   it('toggles the details open state through clicks', async () => {

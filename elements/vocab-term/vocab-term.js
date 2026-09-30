@@ -105,6 +105,7 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
       css`
         :host {
           display: inline-flex;
+          color-scheme: light dark;
         }
         simple-modal-template {
           --simple-modal-resize: both;
@@ -115,8 +116,15 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
         }
         summary {
           list-style: none;
-          border-bottom: var(--vocab-term-border-bottom, 1px dashed gray);
-          color: var(--vocab-term-color, black);
+          border-bottom: var(
+            --vocab-term-border-bottom,
+            1px dashed
+              light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateLight))
+          );
+          color: var(
+            --vocab-term-color,
+            light-dark(var(--ddd-theme-default-black), var(--ddd-theme-default-white))
+          );
         }
       `,
     ];
@@ -128,9 +136,9 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     return html` ${!this.popoverMode
       ? html`
           <div>
-            <div part="term">
+            <details part="term" ?hidden="${!this.term}">
               <summary id="summary" property="oer:name">${this.term}</summary>
-            </div>
+            </details>
             <simple-modal-template title="${this.term ? this.term : ""}">
               <p slot="content" property="oer:description">
                 ${this.information}
