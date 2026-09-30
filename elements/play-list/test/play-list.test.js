@@ -927,4 +927,157 @@ describe("play-list test", () => {
       expect(carouselItems).to.have.length(100);
     });
   });
+
+  describe("Slide Title Resolution", () => {
+    it("should fall back to a slide number without an item", () => {
+      expect(element._getSlideTitle(null, 3)).to.equal("Slide 4");
+    });
+
+    it("should prefer alt, then title, then media-title", () => {
+      expect(
+        element._getSlideTitle(
+          { properties: { alt: "Alt text", title: "Title text" } },
+          0,
+        ),
+      ).to.equal("Alt text");
+      expect(
+        element._getSlideTitle({ properties: { title: "Title text" } }, 0),
+      ).to.equal("Title text");
+      expect(
+        element._getSlideTitle(
+          { properties: { "media-title": "Media title" } },
+          0,
+        ),
+      ).to.equal("Media title");
+    });
+
+    it("should strip tags from content and truncate long text", () => {
+      expect(element._getSlideTitle({ content: "<p>Some words</p>" }, 0)).to
+        .equal("Some words");
+      const long = new Array(20).fill("word").join(" ");
+      const result = element._getSlideTitle({ content: long }, 0);
+      expect(result.length).to.equal(63);
+      expect(result.endsWith("...")).to.be.true;
+    });
+
+    it("should fall back to a slide number when content has no text", () => {
+      expect(element._getSlideTitle({ content: '<img src="x">' }, 4)).to.equal(
+        "Slide 5",
+      );
+    });
+  });
+
+  describe("Keyboard Navigation (vertical)", () => {
+    it("should navigate up with ArrowUp in vertical orientation", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.orientation = "vertical";
+      element.slide = 1;
+      await element.updateComplete;
+
+      const carousel = element.shadowRoot.querySelector(".carousel");
+      carousel.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "ArrowUp",
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+      await element.updateComplete;
+      expect(element.slide).to.equal(0);
+    });
+  });
+
+  describe("Touch Gestures", () => {
+    it("should navigate with horizontal swipes and ignore small drags", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+        { tag: "div", properties: {}, content: "Item 3" },
+      ];
+      element.orientation = "horizontal";
+      await element.updateComplete;
+
+      // move and end are ignored before a touch starts
+      element._handleTouchMove({ touches: [{ clientX: 120, clientY: 10 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(0);
+
+      // swipe left (deltaX > threshold) goes to the next slide
+      element._handleTouchStart({ touches: [{ clientX: 100, clientY: 10 }] });
+      element._handleTouchMove({ touches: [{ clientX: 20, clientY: 10 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(1);
+
+      // swipe right (deltaX < -threshold) goes to the previous slide
+      element._handleTouchStart({ touches: [{ clientX: 100, clientY: 10 }] });
+      element._handleTouchMove({ touches: [{ clientX: 190, clientY: 10 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(0);
+
+      // a drag under the threshold stays put
+      element._handleTouchStart({ touches: [{ clientX: 100, clientY: 10 }] });
+      element._handleTouchMove({ touches: [{ clientX: 130, clientY: 10 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(0);
+    });
+
+    it("should navigate with vertical swipes", async () => {
+      element.items = [
+        { tag: "div", properties: {}, content: "Item 1" },
+        { tag: "div", properties: {}, content: "Item 2" },
+      ];
+      element.orientation = "vertical";
+      await element.updateComplete;
+
+      // swipe up (deltaY > threshold) goes to the next slide
+      element._handleTouchStart({ touches: [{ clientX: 10, clientY: 100 }] });
+      element._handleTouchMove({ touches: [{ clientX: 10, clientY: 20 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(1);
+
+      // swipe down (deltaY < -threshold) goes to the previous slide
+      element._handleTouchStart({ touches: [{ clientX: 10, clientY: 100 }] });
+      element._handleTouchMove({ touches: [{ clientX: 10, clientY: 190 }] });
+      element._handleTouchEnd({});
+      expect(element.slide).to.equal(0);
+    });
+  });
+
+  describe("haxBreakOutPlaylist edge branches", () => {
+    it("should return false when detached from the document", () => {
+      const detached = document.createElement("play-list");
+      expect(detached.haxBreakOutPlaylist()).to.equal(false);
+    });
+
+    it("should return false with nothing to break out", () => {
+      expect(element.haxBreakOutPlaylist()).to.equal(false);
+    });
+
+    it("should handle a template wrapper child", async () => {
+      const wrapper = await fixture(
+        html`<div><play-list></play-list></div>`,
+      );
+      const playlist = wrapper.querySelector("play-list");
+      const template = document.createElement("template");
+      const first = document.createElement("p");
+      first.textContent = "Template item 1";
+      template.appendChild(first);
+      playlist.appendChild(template);
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      // NOTE play-list.js:602 (same unwrap at :57) - programmatic
+      // appendChild keeps template children in .children, so the unwrap
+      // sees them here. Templates parsed from HTML keep their children in
+      // template.content instead, so the mirror finds zero items for
+      // parsed template wrappers.
+      expect(template.children.length).to.equal(1);
+      const result = playlist.haxBreakOutPlaylist();
+      expect(result).to.equal(true);
+      expect(wrapper.querySelector("play-list")).to.not.exist;
+      expect(wrapper.querySelectorAll("p")).to.have.length(1);
+    });
+  });
 });

@@ -1,4 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { LitElement } from "lit";
+import { DocumentationPlayer } from "../documentation-player.js";
 import "../documentation-player.js";
 
 describe("DocumentationPlayer test", () => {
@@ -334,5 +336,42 @@ describe("DocumentationPlayer with complex content", () => {
 
   it("maintains accessibility with complex content", async () => {
     await expect(element).shadowDom.to.be.accessible();
+  });
+});
+
+describe("documentation-player cheap gap coverage", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(
+      html`<documentation-player label="Gap Test"></documentation-player>`,
+    );
+    await element.updateComplete;
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  });
+
+  it("includes base class styles when present", () => {
+    // Lines 49-51 support subclasses whose base class defines styles;
+    // LitElement itself has none, so supply one temporarily to exercise
+    // the merge and restore it immediately after.
+    const injected = [globalThis.document.createElement("style")];
+    LitElement.styles = injected;
+    try {
+      const styles = DocumentationPlayer.styles;
+      expect(styles.length).to.equal(2);
+      expect(styles[0]).to.equal(injected);
+    } finally {
+      delete LitElement.styles;
+    }
+  });
+
+  it("renders the HAX inject button markup", () => {
+    const result = element.renderHAXInjectButton();
+    const markup = result.strings.join("");
+    expect(markup).to.include("simple-icon-button-lite");
+    expect(markup).to.include('icon="settings"');
+    // BUG documentation-player.js:122 - copy typo: the button reads
+    // "Insert into your side" but should read "Insert into your site".
+    expect(markup).to.include("Insert into your side");
   });
 });

@@ -292,6 +292,40 @@ describe("type-writer", () => {
         element._cancel = null;
       }
     });
+
+    it("clears a pending _cancel timeout when text changes mid-erase", async () => {
+      element.text = "abc";
+      element.speed = 1;
+      element.eraseSpeed = 300; // slow erase so we can re-trigger mid-cycle
+      await element.updateComplete;
+      element._observeText(element.text, 0, true);
+      await oneEvent(element, "type-writer-end");
+      expect(element.shadowRoot.querySelector("#text").textContent).to.equal(
+        "abc",
+      );
+
+      // start an erase cycle and wait until one tick has run
+      element.text = "def";
+      await element.updateComplete;
+      element._observeText(element.text, 0, true);
+      await new Promise((r) => setTimeout(r, 20));
+      expect(element.typing).to.equal(true);
+      expect(element._cancel).to.exist;
+
+      // re-trigger while typing with a pending timeout: _observeText must
+      // clear the pending _cancel itself before restarting the erase cycle
+      element.text = "zz";
+      element.eraseSpeed = 1; // let the restarted cycle finish quickly
+      await element.updateComplete;
+      element._observeText(element.text, 0, true);
+
+      // the restarted cycle erases the remainder and types the new text
+      await oneEvent(element, "type-writer-end");
+      expect(element.shadowRoot.querySelector("#text").textContent).to.equal(
+        "zz",
+      );
+      expect(element.typing).to.equal(false);
+    });
   });
 
   /* ============================================================
