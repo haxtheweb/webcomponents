@@ -286,11 +286,12 @@ describe("mark-the-words behavior", () => {
     expect(button.classList.contains("selected")).to.be.false;
   });
 
-  it("treats duplicate correct answer entries as unmeetable", async () => {
-    // BUG documentation: rebuildWordList/isCorrect double count when the same
-    // correct word is authored twice. Selecting the single matching word sets
+  it("treats duplicate correct answer entries as a single correct answer", async () => {
+    // regression: isCorrect() used to double count when the same correct
+    // word is authored twice. Selecting the single matching word set
     // numberCorrect=2 (one per duplicate) while numberGuessed=1, so the
-    // numberCorrect !== numberGuessed guard marks a correct pick incorrect.
+    // numberCorrect !== numberGuessed guard marked a correct pick incorrect.
+    // isCorrect() now dedupes correct answer labels before counting.
     const el = await fixture(duplicateAnswersFixture());
     await el.updateComplete;
     expect(el.displayedAnswers).to.have.length(2);
@@ -298,9 +299,18 @@ describe("mark-the-words behavior", () => {
     wordButton(el, "Apples").click();
     await el.updateComplete;
 
-    expect(el.isCorrect()).to.be.false;
-    expect(el.numberCorrect).to.equal(2);
+    expect(el.isCorrect()).to.be.true;
+    expect(el.numberCorrect).to.equal(1);
     expect(el.numberGuessed).to.equal(1);
+  });
+
+  it("ignores clicks that match no word in the list", async () => {
+    // latent guard: a click target matching no wordList entry must not
+    // throw when toggling selection (unreachable via rendered buttons)
+    expect(() =>
+      element.selectWord({ target: { innerText: "NotInTheList" } }),
+    ).to.not.throw();
+    expect(element.wordList.filter((word) => word.selected).length).to.equal(0);
   });
 
   it("exposes haxProperties via file reference", async () => {

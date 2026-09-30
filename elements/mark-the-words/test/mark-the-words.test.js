@@ -83,6 +83,21 @@ describe("mark-the-words test", () => {
         expect(button.classList.contains("selected")).to.be.true;
       }
     });
+
+    it("exposes selected state to assistive technology via aria-pressed", async () => {
+      await element.updateComplete;
+      const buttons = element.shadowRoot.querySelectorAll("button.tag-option");
+
+      if (buttons.length > 0) {
+        const button = buttons[0];
+        expect(button.getAttribute("aria-pressed")).to.equal("false");
+
+        button.click();
+        await element.updateComplete;
+
+        expect(button.getAttribute("aria-pressed")).to.equal("true");
+      }
+    });
   });
 
   describe("Accessibility - Content Structure", () => {

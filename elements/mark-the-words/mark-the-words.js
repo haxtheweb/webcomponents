@@ -85,7 +85,7 @@ export class MarkTheWords extends QuestionElement {
         button.selected,
         button.selected:focus,
         button.selected:hover {
-          outline: 4px solid orange;
+          outline: 4px solid var(--ddd-theme-default-inventOrange);
         }
         button:focus,
         button:hover {
@@ -140,7 +140,10 @@ export class MarkTheWords extends QuestionElement {
 
         :host(:not([show-answer])) .tag-option:hover,
         :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--simple-colors-default-theme-grey-3);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
         }
       `,
     ];
@@ -148,6 +151,10 @@ export class MarkTheWords extends QuestionElement {
 
   selectWord(e) {
     let i = this.wordList.findIndex((word) => e.target.innerText === word.text);
+    // latent guard: a click target matching no word must not throw
+    if (i === -1) {
+      return;
+    }
     this.wordList[i].selected = !this.wordList[i].selected;
     this.requestUpdate();
   }
@@ -156,18 +163,24 @@ export class MarkTheWords extends QuestionElement {
     this.numberGuessed = 0;
     this.numberCorrect = 0;
     let gotRight = true;
+    // dedupe correct answers so authoring the same word twice only counts once
+    let uniqueCorrectAnswers = [];
+    for (var j in this.displayedAnswers) {
+      if (this.displayedAnswers[j].correct) {
+        let label = this.displayedAnswers[j].label.toLowerCase();
+        if (!uniqueCorrectAnswers.includes(label)) {
+          uniqueCorrectAnswers.push(label);
+        }
+      }
+    }
 
     for (var i in this.wordList) {
-      for (var j in this.displayedAnswers) {
-        if (
-          this.wordList[i].selected &&
-          this.displayedAnswers[j].correct &&
-          this.displayedAnswers[j].label.toLowerCase() ===
-            this.wordList[i].text.toLowerCase()
-        ) {
-          this.wordList[i].correct = true;
-          this.numberCorrect++;
-        }
+      if (
+        this.wordList[i].selected &&
+        uniqueCorrectAnswers.includes(this.wordList[i].text.toLowerCase())
+      ) {
+        this.wordList[i].correct = true;
+        this.numberCorrect++;
       }
       // we selected something
       if (this.wordList[i].selected) {
@@ -181,10 +194,7 @@ export class MarkTheWords extends QuestionElement {
     if (gotRight && this.numberCorrect !== this.numberGuessed) {
       gotRight = false;
     }
-    if (
-      this.numberCorrect !==
-      this.displayedAnswers.filter((answer) => answer.correct).length
-    ) {
+    if (this.numberCorrect !== uniqueCorrectAnswers.length) {
       gotRight = false;
     }
     return gotRight;
@@ -213,6 +223,7 @@ export class MarkTheWords extends QuestionElement {
           (word) => html`
             <button
               ?disabled="${this.showAnswer}"
+              aria-pressed="${word.selected ? "true" : "false"}"
               class="tag-option ${word.selected ? "selected" : ""} ${this
                 .showAnswer && word.selected
                 ? word.correct
