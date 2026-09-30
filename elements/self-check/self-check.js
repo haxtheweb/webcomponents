@@ -617,7 +617,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       container.setAttribute("contenteditable", true);
     } else {
       container.removeAttribute("contenteditable");
-      this.title = container.innerText;
+      // read the DOM text, not the rendered text; .heading is styled
+      // text-transform:uppercase so innerText would return the uppercased
+      // rendering and lose the authored casing on the HAX round-trip
+      this.title = container.textContent.trim();
     }
     return false;
   }
@@ -632,8 +635,13 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     await this.updateComplete;
     const nextFocusId = this.correct ? "closeBtn" : "checkBtn";
     const nextFocusTarget = this.shadowRoot.querySelector(`#${nextFocusId}`);
-    if (nextFocusTarget) {
-      nextFocusTarget.focus();
+    // focus the inner button; the simple-icon-button-lite host has no
+    // delegatesFocus so focusing the host directly would be a no-op
+    const nextFocusButton = nextFocusTarget
+      ? nextFocusTarget.shadowRoot.querySelector("button")
+      : null;
+    if (nextFocusButton) {
+      nextFocusButton.focus();
     }
   }
   /**

@@ -132,12 +132,11 @@ describe("self-check behavior", () => {
     expect(el.correct).to.equal(false);
   });
 
-  it("BUG(self-check.js:633-637): focus does not follow the revealed answer panel", async () => {
-    // openAnswer calls .focus() on the simple-icon-button-lite HOST, but the
-    // host is not focusable and no class in the chain enables delegatesFocus,
-    // so the call is a no-op. When the question panel becomes inert the
-    // focused button loses focus and keyboard/screen reader users are dropped
-    // on <body> despite the code comment promising otherwise.
+  it("FIXED(self-check.js:633-637): focus follows the revealed answer panel", async () => {
+    // openAnswer focuses the inner button of the newly revealed panel's
+    // control, so when the question panel becomes inert the keyboard / screen
+    // reader user is moved into the answer panel instead of being dropped on
+    // <body> as the code comment promises
     const el = await fixture(
       html`<self-check><span slot="question">Q</span>A</self-check>`,
     );
@@ -146,9 +145,13 @@ describe("self-check behavior", () => {
     await el.updateComplete;
     await flush(150);
     expect(el.correct).to.equal(true);
-    // walk inward: if focus had landed, activeElement would be self-check
-    const active = globalThis.document.activeElement;
-    expect(active.tagName === "BODY").to.equal(true);
+    // walk inward: document.activeElement stops at the self-check host
+    let active = globalThis.document.activeElement;
+    expect(active.tagName).to.equal("SELF-CHECK");
+    active = active.shadowRoot.activeElement;
+    expect(active.getAttribute("id")).to.equal("closeBtn");
+    active = active.shadowRoot.activeElement;
+    expect(active.tagName).to.equal("BUTTON");
   });
 
   it("renders the more information link when set", async () => {
@@ -201,10 +204,10 @@ describe("self-check behavior", () => {
     expect(title.getAttribute("contenteditable")).to.equal("true");
     el.haxactiveElementChanged(el, false);
     expect(title.hasAttribute("contenteditable")).to.equal(false);
-    // BUG(self-check.js:620): the title resyncs from innerText, which returns
-    // the RENDERED heading text; .heading is styled text-transform:uppercase
-    // so the authored casing is lost on the HAX round-trip
-    expect(el.title).to.equal("EDIT ME");
+    // FIXED(self-check.js:620): the title resyncs from textContent, so the
+    // authored casing survives the HAX round-trip even though .heading
+    // renders text-transform:uppercase
+    expect(el.title).to.equal("Edit me");
   });
 
   it("haxmediaSourceUpdated guards and pokes matching images", async () => {
