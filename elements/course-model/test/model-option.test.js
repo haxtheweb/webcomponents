@@ -27,12 +27,17 @@ describe('model-option', () => {
       </model-option>
     `)
     await el.updateComplete
-    expect(el.shadowRoot.querySelector('a')).to.exist
+    const a = el.shadowRoot.querySelector('a')
+    expect(a).to.exist
+    // the card is a keyboard-focusable, button-operable selection control
+    expect(a.getAttribute('role')).to.equal('button')
+    expect(a.getAttribute('tabindex')).to.equal('0')
     expect(el.shadowRoot.querySelector('#accent-color')).to.exist
     expect(
       el.shadowRoot.querySelector('#title h2').textContent,
     ).to.equal('Astronaut Suit')
     expect(el.textContent).to.include('Explore the suit.')
+    await expect(el).shadowDom.to.be.accessible()
   })
 
   it('dispatches a composed model-select event on click', async () => {
@@ -67,5 +72,43 @@ describe('model-option', () => {
     expect(parent.src).to.equal('rocket.gltf')
     expect(parent.title).to.equal('Rocket Model')
     expect(parent.visible).to.equal('model')
+  })
+
+  it('activates the selection card from the keyboard', async () => {
+    const el = await fixture(
+      html`<model-option title="Moon Model" src="moon.gltf"></model-option>`,
+    )
+    await el.updateComplete
+    const a = el.shadowRoot.querySelector('a')
+    // the card itself is keyboard-focusable
+    a.focus()
+    expect(el.shadowRoot.activeElement === a).to.be.true
+    let count = 0
+    el.addEventListener('model-select', () => {
+      count += 1
+    })
+    // Enter and Space activate the card like a button; other keys do not
+    a.dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true,
+      }),
+    )
+    a.dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true,
+      }),
+    )
+    a.dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true,
+      }),
+    )
+    expect(count).to.equal(2)
   })
 })

@@ -26,7 +26,9 @@ class ModelOption extends LitElement {
 
         a {
           text-decoration: none;
-          color: #fff;
+          color: var(--ddd-theme-default-white, #fff);
+          display: block;
+          background: var(--ddd-theme-default-coalyGray, #262626);
         }
 
         h2 {
@@ -63,7 +65,12 @@ class ModelOption extends LitElement {
 
   render() {
     return html`
-      <a @click="${this._handleClick}">
+      <a
+        role="button"
+        tabindex="0"
+        @click="${this._handleClick}"
+        @keydown="${this._handleKeydown}"
+      >
         <div class="button">
           <div id="option-wrap">
             <div id="accent-color"></div>
@@ -87,6 +94,16 @@ class ModelOption extends LitElement {
       composed: true,
     });
     this.dispatchEvent(modelSelect);
+  }
+
+  /**
+   * Activates the selection card from the keyboard like a button.
+   */
+  _handleKeydown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      this._handleClick(e);
+    }
   }
 
   static get tag() {
