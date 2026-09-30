@@ -26,15 +26,32 @@ const FullscreenBehaviors = function (SuperClass) {
       super();
       this.fullscreen = false;
       this.fullscreenEnabled = globalThis.document.fullscreenEnabled;
-      globalThis.document.onfullscreenchange =
-        this._handleFullscreenChange.bind(this);
+      this.__documentFullscreenChange = this._handleFullscreenChange.bind(
+        this,
+      );
       this.onfullscreenchange = this._handleFullscreenChange;
+    }
+
+    connectedCallback() {
+      // addEventListener instead of overwriting the shared
+      // document.onfullscreenchange handler slot so pre-existing
+      // document-level handlers are never clobbered and multiple
+      // instances can each track fullscreen state independently
+      globalThis.document.addEventListener(
+        "fullscreenchange",
+        this.__documentFullscreenChange,
+      );
+      super.connectedCallback();
     }
 
     /**
      * life cycle, element is removed from the DOM
      */
     disconnectedCallback() {
+      globalThis.document.removeEventListener(
+        "fullscreenchange",
+        this.__documentFullscreenChange,
+      );
       super.disconnectedCallback();
     }
 
@@ -58,12 +75,17 @@ const FullscreenBehaviors = function (SuperClass) {
     toggleFullscreen(
       mode = globalThis.document.fullscreenElement !== this.fullscreenTarget,
     ) {
-      if (
-        !mode ||
-        (document.fullscreenElement && globalThis.document.exitFullscreen)
-      )
-        globalThis.document.exitFullscreen();
-      if (mode) this.fullscreenTarget.requestFullscreen();
+      if (!mode) {
+        // exit; safe to request even when we are not the fullscreen element
+        if (globalThis.document.exitFullscreen)
+          globalThis.document.exitFullscreen();
+      } else if (
+        globalThis.document.fullscreenElement !== this.fullscreenTarget
+      ) {
+        // only request when we are not already the fullscreen element so
+        // an already-fullscreen target does not race exit against request
+        this.fullscreenTarget.requestFullscreen();
+      }
     }
   };
 };

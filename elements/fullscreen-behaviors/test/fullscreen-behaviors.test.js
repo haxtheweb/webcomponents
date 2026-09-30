@@ -67,17 +67,44 @@ describe('fullscreen-behaviors core behavior', () => {
     }
   });
 
-  it('constructor overwrites any existing document handler (BUG)', async () => {
+  it('preserves existing document-level fullscreen handlers', async () => {
     const sentinel = () => {};
     globalThis.document.onfullscreenchange = sentinel;
     const el = await fixture(
       html`<fullscreen-behaviors></fullscreen-behaviors>`,
     );
-    // BUG: fullscreen-behaviors.js:29 assigns document.onfullscreenchange
-    // unconditionally, clobbering any pre-existing document-level handler;
-    // multiple instances also fight over the single document handler slot
-    expect(globalThis.document.onfullscreenchange === sentinel).to.be.false;
+    // fixed: the document-level handler is wired with addEventListener so
+    // the document.onfullscreenchange handler slot is never clobbered
+    expect(globalThis.document.onfullscreenchange === sentinel).to.be.true;
     globalThis.document.onfullscreenchange = null;
+  });
+
+  it('multiple instances independently track document fullscreen state', async () => {
+    const el1 = await fixture(
+      html`<fullscreen-behaviors></fullscreen-behaviors>`,
+    );
+    const el2 = await fixture(
+      html`<fullscreen-behaviors></fullscreen-behaviors>`,
+    );
+    el2.fullscreen = true;
+    await el2.updateComplete;
+    Object.defineProperty(globalThis.document, 'fullscreenElement', {
+      get: () => el1,
+      configurable: true,
+    });
+    try {
+      globalThis.document.dispatchEvent(new Event('fullscreenchange'));
+      await el1.updateComplete;
+      await el2.updateComplete;
+      // both listeners fired: el1 is the fullscreen element, while el2's own
+      // listener flipped it back off since it is not the fullscreen element
+      expect(el1.fullscreen).to.be.true;
+      expect(el2.fullscreen).to.be.false;
+      expect(el1.hasAttribute('fullscreen')).to.be.true;
+      expect(el2.hasAttribute('fullscreen')).to.be.false;
+    } finally {
+      delete globalThis.document.fullscreenElement;
+    }
   });
 });
 
@@ -136,17 +163,18 @@ describe('fullscreen-behaviors toggleFullscreen', () => {
     expect(requested).to.equal(1);
   });
 
-  it('both exits and requests when already fullscreen with mode true', () => {
+  it('is a no-op when already fullscreen with mode true', () => {
     Object.defineProperty(globalThis.document, 'fullscreenElement', {
       get: () => element,
       configurable: true,
     });
-    // NOTE (bug): with mode true while already fullscreen both
-    // exitFullscreen() and requestFullscreen() fire; in a real browser the
-    // exit transition is async so the immediate request races it
+    // fixed: mode true while already fullscreen no longer fires BOTH
+    // exitFullscreen() and requestFullscreen() (the async exit used to
+    // race the immediate request); we are already in the requested state
+    // so nothing happens
     element.toggleFullscreen(true);
-    expect(exited).to.equal(1);
-    expect(requested).to.equal(1);
+    expect(exited).to.equal(0);
+    expect(requested).to.equal(0);
   });
 });
 
