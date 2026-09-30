@@ -85,6 +85,13 @@ export class FlashCardSet extends SimpleColors {
   }
 
   renderTags() {
+    // clear prior data and rendered cards so reactive updates rebuild the
+    // set instead of doubling questions and appending duplicate cards
+    this.questions.length = 0;
+    const content = this.shadowRoot.querySelector("#content");
+    if (content) {
+      content.innerHTML = "";
+    }
     this.getData();
     for (let i = 0; i < this.questions.length; i += this.cardLength) {
       this.formatEl(

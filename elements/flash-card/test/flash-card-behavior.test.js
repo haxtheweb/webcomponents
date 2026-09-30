@@ -462,12 +462,13 @@ describe("flash-card-set behavior", () => {
     expect(element.currentQuestion).to.equal(1);
   });
 
-  it("duplicates cards when questions data is reassigned", async () => {
-    // BUG documentation: updated() calls renderTags() on every update and
-    // renderTags() calls getData() again without clearing this.questions,
-    // so any reactive update (e.g. a new questions array from HAX) re-reads
-    // the slot, doubles the questions data, and appends cards for every
-    // group of 4 without clearing #content first.
+  it("rebuilds without duplicating when questions data is reassigned", async () => {
+    // regression: updated() calls renderTags() on every update and
+    // renderTags() used to call getData() again without clearing
+    // this.questions, so any reactive update (e.g. a new questions array
+    // from HAX) re-read the slot, doubled the questions data, and appended
+    // cards for every group of 4 without clearing #content first.
+    // renderTags() now clears both before re-reading.
     const before = element.shadowRoot.querySelectorAll("#content flash-card")
       .length;
     expect(before).to.equal(2);
@@ -478,10 +479,10 @@ describe("flash-card-set behavior", () => {
 
     const after = element.shadowRoot.querySelectorAll("#content flash-card")
       .length;
-    // data doubled to 16 entries, rendered as 4 groups, on top of the
-    // original 2 cards that were never removed
-    expect(element.questions.length).to.equal(16);
-    expect(after).to.equal(6);
+    // data re-read from the slot stays at 8 entries and the content area is
+    // rebuilt with the same 2 cards rather than accumulating duplicates
+    expect(element.questions.length).to.equal(8);
+    expect(after).to.equal(2);
   });
 
   it("exposes haxProperties via file reference", () => {
