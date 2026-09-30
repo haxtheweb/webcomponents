@@ -28,7 +28,13 @@ export default {
     coverageConfig: {
       // only collect the element's own files when testing a single element
       ...(isElementDir ? { include: [`${cwd}/**`] } : {}),
-      exclude: ['**/__wds-outside-root__/**', '**/node_modules/**'],
+      // vendored third-party builds under lib/*/dist are upstream code, not
+      // the element's own source, so leave them out of the coverage numbers
+      exclude: [
+        '**/__wds-outside-root__/**',
+        '**/node_modules/**',
+        '**/lib/*/dist/**',
+      ],
     },
     testRunnerHtml: testFramework =>
       `<!DOCTYPE html>

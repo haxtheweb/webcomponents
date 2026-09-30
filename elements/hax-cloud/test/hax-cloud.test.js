@@ -1,6 +1,11 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../hax-cloud.js";
 
+// suppress the constructor's Google Fonts <link> so this suite never issues
+// a real network request; the font-link branch is covered in
+// hax-cloud-behavior.test.js with head.appendChild stubbed instead
+globalThis.__haxLogoFontLoaded = true;
+
 describe("elementName test", () => {
   let element;
   beforeEach(async () => {
