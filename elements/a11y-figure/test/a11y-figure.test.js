@@ -398,6 +398,116 @@ describe("a11y-figure test", () => {
     });
   });
 
+  describe("Figure migration", () => {
+    const DATA_URL =
+      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    async function poll(predicate, attempts = 100, delayMs = 20) {
+      for (let i = 0; i < attempts; i++) {
+        if (predicate()) return true;
+        await sleep(delayMs);
+      }
+      return predicate();
+    }
+
+    it("migrates a slotted figure into the image, caption and details slots", async () => {
+      const el = await fixture(html`<a11y-figure></a11y-figure>`);
+      await el.updateComplete;
+      // build a raw figure with an image, a caption and a details block;
+      // the details is what arms the migration through _watchChildren
+      const figure = document.createElement("figure");
+      const img = document.createElement("img");
+      img.setAttribute("src", DATA_URL);
+      img.setAttribute("alt", "Migrated alt");
+      const figcaption = document.createElement("figcaption");
+      figcaption.textContent = "Migrated caption ";
+      figure.appendChild(img);
+      figure.appendChild(figcaption);
+      el.appendChild(figure);
+      // let the observer record the figure add, then append the details on
+      // its own: _hasMutations only arms the migration for an added DETAILS
+      await sleep(20);
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = "Migrated summary";
+      details.appendChild(summary);
+      details.appendChild(document.createTextNode("Migrated details text"));
+      figcaption.appendChild(details);
+      // the image is moved into the image slot
+      const migrated = await poll(() => img.getAttribute("slot") === "image");
+      expect(migrated).to.be.true;
+      expect(img.getAttribute("alt")).to.equal("Migrated alt");
+      // the raw summary in light DOM flags progressive disclosure available
+      expect(el.__hasDetail).to.be.true;
+      // the summary and details content get copied into named slots
+      const summarySlot = el.querySelector('[slot="summary"]');
+      expect(summarySlot).to.exist;
+      expect(summarySlot.textContent).to.include("Migrated summary");
+      const detailsSlot = el.querySelector('[slot="details"]');
+      expect(detailsSlot).to.exist;
+      expect(detailsSlot.textContent).to.include("Migrated details text");
+      // the caption content lands in the figcaption slot
+      const captionSlot = el.querySelector('[slot="figcaption"]');
+      expect(captionSlot).to.exist;
+      expect(captionSlot.textContent).to.include("Migrated caption");
+      // the nested a11y-details renders because there is detail content
+      const nested = el.shadowRoot.querySelector("a11y-details");
+      expect(nested).to.exist;
+      expect(nested.hasAttribute("hidden")).to.be.false;
+    });
+
+    it("hasDetailContent tracks summary and detail slots", async () => {
+      const el = await fixture(html`<a11y-figure></a11y-figure>`);
+      await el.updateComplete;
+      expect(el.hasDetailContent).to.be.false;
+      const summary = document.createElement("div");
+      summary.setAttribute("slot", "summary");
+      summary.textContent = "Slot summary";
+      el.appendChild(summary);
+      // the mutation observer recomputes __hasDetail
+      const flagged = await poll(() => el.__hasDetail === true);
+      expect(flagged).to.be.true;
+      expect(el.hasDetailContent).to.be.true;
+    });
+  });
+
+  describe("HAX media source updates", () => {
+    it("haxHooks maps mediaSourceUpdated", async () => {
+      const el = await fixture(html`<a11y-figure></a11y-figure>`);
+      expect(el.haxHooks()).to.deep.equal({
+        mediaSourceUpdated: "haxmediaSourceUpdated",
+      });
+    });
+
+    it("haxmediaSourceUpdated ignores bad input", async () => {
+      const el = await fixture(html`<a11y-figure></a11y-figure>`);
+      expect(el.haxmediaSourceUpdated(null, null)).to.equal(undefined);
+      expect(el.haxmediaSourceUpdated("x.png", null)).to.equal(undefined);
+      expect(el.haxmediaSourceUpdated("x.png", {})).to.equal(undefined);
+    });
+
+    it("haxmediaSourceUpdated pokes matching imgs on the store", async () => {
+      const el = await fixture(
+        html`<a11y-figure
+          img-src="https://placehold.co/200x100"
+          img-alt="Placeholder image"
+        ></a11y-figure>`,
+      );
+      await el.updateComplete;
+      const pokes = [];
+      const store = {
+        _mediaSrcMatches: (src, path) => src === path,
+        _pokeMatchingImgs: (root, path) =>
+          pokes.push([path, root === el.shadowRoot]),
+      };
+      el.haxmediaSourceUpdated("https://placehold.co/200x100", store);
+      expect(pokes).to.deep.equal([["https://placehold.co/200x100", true]]);
+      // non-matching paths leave the store untouched
+      el.haxmediaSourceUpdated("other.png", store);
+      expect(pokes.length).to.equal(1);
+    });
+  });
+
   describe("HAX Properties and Integration", () => {
     it("should have haxProperties defined", () => {
       expect(element.constructor.haxProperties).to.exist;

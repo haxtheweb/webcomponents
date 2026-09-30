@@ -15,6 +15,75 @@ describe("full-width-image test", () => {
   });
 });
 
+describe("full-width-image behavior", () => {
+  it("wires the source into the background and reflects attributes", async () => {
+    const el = await fixture(
+      html`<full-width-image
+        source="photo.png"
+        caption="A caption"
+      ></full-width-image>`,
+    );
+    await el.updateComplete;
+    expect(el.source).to.equal("photo.png");
+    expect(el.getAttribute("source")).to.equal("photo.png");
+    expect(el.caption).to.equal("A caption");
+    expect(el.getAttribute("caption")).to.equal("A caption");
+    const image = el.shadowRoot.querySelector("#image");
+    expect(image.style.backgroundImage).to.include("photo.png");
+    expect(
+      el.shadowRoot.querySelector(".caption").textContent.trim(),
+    ).to.equal("A caption");
+    // changing the source rewires the background
+    el.source = "other.png";
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("#image").style.backgroundImage).to
+      .include("other.png");
+  });
+
+  it("haxHooks maps mediaSourceUpdated", async () => {
+    const el = await fixture(
+      html`<full-width-image source="photo.png"></full-width-image>`,
+    );
+    expect(el.haxHooks()).to.deep.equal({
+      mediaSourceUpdated: "haxmediaSourceUpdated",
+    });
+  });
+
+  it("haxmediaSourceUpdated ignores bad input", async () => {
+    const el = await fixture(
+      html`<full-width-image source="photo.png"></full-width-image>`,
+    );
+    expect(el.haxmediaSourceUpdated(null, null)).to.equal(undefined);
+    expect(el.haxmediaSourceUpdated("x.png", null)).to.equal(undefined);
+    expect(el.haxmediaSourceUpdated("x.png", {})).to.equal(undefined);
+  });
+
+  it("haxmediaSourceUpdated cache-busts the background on match", async () => {
+    const el = await fixture(
+      html`<full-width-image source="photo.png"></full-width-image>`,
+    );
+    await el.updateComplete;
+    const image = el.shadowRoot.querySelector("#image");
+    const store = {
+      _mediaSrcMatches: (src, path) => src === path,
+    };
+    el.haxmediaSourceUpdated("photo.png", store);
+    expect(image.style.backgroundImage).to.include("?t=");
+    // non-matching paths leave the background untouched
+    const busted = image.style.backgroundImage;
+    el.haxmediaSourceUpdated("other.png", store);
+    expect(image.style.backgroundImage).to.equal(busted);
+  });
+
+  it("haxProperties points at the external schema file", () => {
+    const Ctor = globalThis.customElements.get("full-width-image");
+    expect(Ctor.haxProperties).to.be.a("string");
+    expect(
+      Ctor.haxProperties.endsWith("lib/full-width-image.haxProperties.json"),
+    ).to.be.true;
+  });
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("full-width-image passes accessibility test", async () => {
