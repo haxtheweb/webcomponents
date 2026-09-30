@@ -67,20 +67,30 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     };
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "alignments") this._setOptions();
-      if (propName === "range") {
-        this._detectRTL();
-        this._setRangeValue();
-        // Disable picker if no valid block element is selected
-        this.disabled = !this.rangeOrMatchingAncestor();
-      }
-      if (propName === "_isRTL" && this._isRTL !== oldValue) {
-        this._updateAlignments();
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() scheduled a redundant second
+    // update (Lit change-in-update warning). The DOM reads below
+    // (getComputedStyle, #button.querySelector) operate on existing DOM from
+    // a prior render, which is safe in willUpdate for post-first updates.
+    if (changedProperties.has("alignments")) {
+      this._setOptions();
+    }
+    if (changedProperties.has("range")) {
+      this._detectRTL();
+      this._setRangeValue();
+      // Disable picker if no valid block element is selected
+      this.disabled = !this.rangeOrMatchingAncestor();
+    }
+    if (
+      changedProperties.has("_isRTL") &&
+      this._isRTL !== changedProperties.get("_isRTL")
+    ) {
+      this._updateAlignments();
+    }
   }
 
   /**

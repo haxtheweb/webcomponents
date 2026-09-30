@@ -4,24 +4,223 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>JwtLogin: jwt-login Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../jwt-login.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../jwt-login.js'
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic jwt-login demo</h3>
+      <h1>jwt-login demo</h1>
+      <p>
+        jwt-login is a headless element that requests, stores, refreshes, and
+        clears a JSON web token for a site. It renders no interface of its own;
+        instead it manages the jwt property and dispatches jwt-token,
+        jwt-logged-in, and jwt-changed events that other elements can react to.
+        Both snippets below are fully offline: no request fires unless the
+        auto flag is combined with a url, or a login, logout, or refresh event
+        is dispatched against a configured url.
+      </p>
+      <h2>Declarative wiring</h2>
+      <p>
+        This snippet shows the full attribute surface. The url, refresh-url,
+        logout-url, and redirect-url values are only contacted when a matching
+        login, refresh, or logout action runs, so nothing loads here.
+      </p>
       <demo-snippet>
         <template>
-          <jwt-login>
-            This is jwt-login
-          </jwt-login>
+          <jwt-login
+            url="/login/jwt"
+            method="POST"
+            key="jwt"
+            refresh-url="/login/jwt/refresh"
+            logout-url="/login/jwt/logout"
+            redirect-url="/dashboard"
+          ></jwt-login>
+        </template>
+      </demo-snippet>
+      <h2>Token state and events</h2>
+      <p>
+        The harness below drives the jwt property directly and logs every
+        event the element dispatches, so you can watch the token state and
+        events without a backend.
+      </p>
+      <demo-snippet>
+        <template>
+          <jwt-login-demo></jwt-login-demo>
         </template>
       </demo-snippet>
     </div>
+    <script type="module">
+      import { LitElement, html, css } from 'lit'
+      import '../jwt-login.js'
+      import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
+
+      const SAMPLE_JWT = 'demo-access-token-no-network'
+
+      class JwtLoginDemo extends LitElement {
+        static get tag() {
+          return 'jwt-login-demo'
+        }
+
+        static get properties() {
+          return {
+            jwt: { type: String },
+            logEntries: { type: Array }
+          }
+        }
+
+        constructor() {
+          super()
+          this.jwt = null
+          this.logEntries = []
+        }
+
+        static get styles() {
+          return css`
+            :host {
+              display: block;
+              font-family: var(--ddd-font-primary);
+            }
+
+            .panel {
+              background-color: var(--ddd-theme-default-white);
+              border: var(--ddd-border-xs);
+              border-radius: var(--ddd-radius-sm);
+              color: var(--ddd-theme-default-coalyGray);
+              padding: var(--ddd-spacing-4);
+            }
+
+            .status {
+              font-size: var(--ddd-font-size-3xs);
+              margin: 0 0 var(--ddd-spacing-3);
+            }
+
+            .status code {
+              background-color: var(--ddd-theme-default-limestoneLight);
+              border-radius: var(--ddd-radius-xs);
+              padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+            }
+
+            .controls {
+              align-items: center;
+              display: flex;
+              flex-wrap: wrap;
+              gap: var(--ddd-spacing-3);
+              margin-bottom: var(--ddd-spacing-3);
+            }
+
+            .controls simple-icon-button-lite {
+              --simple-icon-button-border: var(--ddd-border-xs);
+              --simple-icon-height: var(--ddd-icon-3xs);
+              --simple-icon-width: var(--ddd-icon-3xs);
+              color: var(--ddd-theme-default-beaverBlue);
+              font-size: var(--ddd-font-size-5xs);
+              gap: var(--ddd-spacing-1);
+            }
+
+            .log {
+              font-size: var(--ddd-font-size-6xs);
+              list-style: none;
+              margin: 0;
+              max-height: var(--ddd-spacing-25);
+              overflow-y: auto;
+              padding: 0;
+            }
+
+            .log li {
+              border-bottom: var(--ddd-border-xs);
+              padding: var(--ddd-spacing-1) 0;
+            }
+          `
+        }
+
+        render() {
+          return html`
+            <jwt-login
+              key="jwt"
+              refresh-url="/login/jwt/refresh"
+              redirect-url="/dashboard"
+              .jwt="${this.jwt}"
+              @jwt-changed="${this.handleJwtChanged}"
+              @jwt-token="${this.handleJwtToken}"
+              @jwt-logged-in="${this.handleJwtLoggedIn}"
+            ></jwt-login>
+            <div class="panel">
+              <p class="status">
+                ${this.jwt
+                  ? html`Logged in with token
+                      <code>${this.shortToken()}</code>`
+                  : html`Logged out, no token in memory`}
+              </p>
+              <div class="controls">
+                <simple-icon-button-lite
+                  icon="icons:fingerprint"
+                  label="Set a sample token"
+                  @click="${this.setSampleJwt}"
+                >
+                  Set a sample token
+                </simple-icon-button-lite>
+                <simple-icon-button-lite
+                  icon="icons:exit-to-app"
+                  label="Clear the token"
+                  @click="${this.clearJwt}"
+                >
+                  Clear the token
+                </simple-icon-button-lite>
+              </div>
+              <ul class="log" aria-live="polite" aria-label="jwt-login event log">
+                ${this.logEntries.map(
+                  (entry) => html`<li>${entry}</li>`,
+                )}
+              </ul>
+            </div>
+          `
+        }
+
+        shortToken() {
+          if (this.jwt && this.jwt.length > 20) {
+            return `${this.jwt.slice(0, 20)}...`
+          }
+          return this.jwt
+        }
+
+        addLogEntry(text) {
+          const stamp = new Date().toLocaleTimeString()
+          this.logEntries = [...this.logEntries, `${stamp} ${text}`].slice(-8)
+        }
+
+        setSampleJwt() {
+          this.jwt = SAMPLE_JWT
+        }
+
+        clearJwt() {
+          this.jwt = ''
+        }
+
+        handleJwtChanged(e) {
+          this.addLogEntry(
+            e.detail.value
+              ? 'jwt-changed: token set'
+              : 'jwt-changed: token cleared',
+          )
+        }
+
+        handleJwtToken() {
+          this.addLogEntry('jwt-token: token received')
+        }
+
+        handleJwtLoggedIn(e) {
+          this.addLogEntry(
+            e.detail
+              ? 'jwt-logged-in: logged in'
+              : 'jwt-logged-in: logged out',
+          )
+        }
+      }
+
+      customElements.define(JwtLoginDemo.tag, JwtLoginDemo)
+    </script>
   </body>
 </html>

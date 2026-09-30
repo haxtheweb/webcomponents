@@ -12,105 +12,21 @@
       
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../simple-login.js';
-      import '../lib/simple-login-avatar.js';
-      import '../lib/simple-login-camera.js';
-      import '../lib/simple-camera-snap.js';
     </script>
     <style>
-      simple-login-avatar {
-        --simple-login-avatar-color:green;
-      }
       simple-login {
         margin-bottom: 55px;
-      }
-      simple-camera-snap {
-        --simple-camera-snap-color: black;
       }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic simple-login demo with icon</h3>
+      <h3>Basic simple-login demo</h3>
       <demo-snippet>
         <template>
-          <simple-login title="Demo Login">
-            <simple-login-avatar></simple-login-avatar>
-          </simple-login>
+          <simple-login title="Demo Login"></simple-login>
         </template>
       </demo-snippet>
     </div>
-    <h3>Basic simple-login-camera demo</h3>
-    <demo-snippet>
-      <template>
-        <simple-login-camera record id="logincamera" autoplay style="width:200px;"></simple-login-camera>
-        <simple-login-camera id="logincamera" autoplay style="--simple-login-camera-aspect:1.777777777777;"></simple-login-camera>
-      </template>
-    </demo-snippet>
-    <h3>Basic simple-login-camera demo</h3>
-    <demo-snippet>
-      <template>
-        <simple-camera-snap id="logincamera" autoplay style="width:200px;"></simple-camera-snap>
-        <simple-camera-snap id="logincamera" autoplay style="width:200px;--simple-login-camera-aspect:1.777777777777;--simple-camera-snap-border-radius:3px;"></simple-camera-snap>
-      </template>
-    </demo-snippet>
-  </div>
-    <div class="vertical-section-container centered">
-      <h3>Webcam simple-login demo</h3>
-      <demo-snippet>
-        <template>
-          <simple-login>
-            <simple-login-avatar style="width:200px;">
-              <div id="selfie"></div>
-              <simple-login-camera id="logincamera" autoplay></simple-login-camera>
-            </simple-login-avatar>
-            <button id="snap" raised slot="buttons">Snap photo</button>
-            <button id="newsnap" raised slot="buttons">Clear photo</button>
-          </simple-login>
-          <script>
-            document.getElementById('snap').addEventListener('click', async function (e) {
-              console.log(document.getElementById('logincamera'));
-              const camera = document.getElementById('logincamera');
-              let img = await camera.takeASnap().then(camera.renderImage);
-              camera.removeAttribute('autoplay');
-              const selfie = document.getElementById('selfie');
-              selfie.innerHTML = '';
-              selfie.appendChild(img);
-              selfie.classList.add('has-snap');
-            });
-            document.getElementById('newsnap').addEventListener('click', function (e) {
-              const camera = document.getElementById('logincamera');
-              camera.setAttribute('autoplay', 'autoplay');
-              const selfie = document.getElementById('selfie');
-              selfie.innerHTML = '';
-              selfie.classList.remove('has-snap');
-            });
-          </script>
-        </template>
-      </demo-snippet>
-    </div>
-    <div class="vertical-section-container centered">
-      <h3>uhh.... wtf...</h3>
-      <demo-snippet>
-        <template>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-          <simple-camera-snap></simple-camera-snap>
-        </template>
-      </demo-snippet>
   </body>
 </html>

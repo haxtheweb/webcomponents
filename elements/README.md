@@ -98,10 +98,6 @@ Render
 
 Agent
 > chatbot agent style chat widget
-# &lt;check-it-out&gt;
-
-It
-> View codepen or stackblitz demos
 # &lt;citation-element&gt;
 
 Element

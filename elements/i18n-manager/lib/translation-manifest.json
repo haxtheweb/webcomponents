@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 231,
-    "elementsWithTranslations": 43,
-    "translationFilesFound": 1531,
+    "elementsScanned": 228,
+    "elementsWithTranslations": 42,
+    "translationFilesFound": 1530,
     "languagesSupported": [
       "af",
       "am",
@@ -1400,9 +1400,6 @@
       "yo",
       "zh",
       "zu"
-    ],
-    "simple-login": [
-      "es"
     ],
     "simple-pager": [
       "ar",

@@ -53,7 +53,7 @@ class MapMenuBuilder extends LitElement {
                           ?is-flex="${this.isFlex}"
                           ?is-nested="${this.depthCount > 1}"
                           ?is-horizontal="${this.isHorizontal}"
-                          ?published="${this.getPublishedStatus(item)}"
+                          .published="${this.getPublishedStatus(item)}"
                           ?hide-in-menu="${this.hideInMenuStatus(item)}"
                         >
                           <map-menu-builder
@@ -82,7 +82,7 @@ class MapMenuBuilder extends LitElement {
                             ? item.metadata.pageType
                             : ""}"
                           selected="${this.selected}"
-                          ?published="${this.getPublishedStatus(item)}"
+                          .published="${this.getPublishedStatus(item)}"
                           ?hide-in-menu="${this.hideInMenuStatus(item)}"
                           ?locked="${item.metadata && item.metadata.locked}"
                           status="${item.metadata && item.metadata.status

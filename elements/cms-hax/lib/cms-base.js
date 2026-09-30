@@ -126,9 +126,15 @@ export class CMSBase extends LitElement {
       if (response.ok) {
         const data = await response.json();
         this._handleResponse(data);
+      } else {
+        // a non-ok response must release the loading state (issue #3077,
+        // bug 38)
+        this.loading = false;
       }
     } catch (e) {
-      // fail silently
+      // fail silently, but never stay stuck in loading state (issue
+      // #3077, bug 38)
+      this.loading = false;
     }
   }
 

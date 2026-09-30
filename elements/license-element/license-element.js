@@ -255,15 +255,21 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     this.source = null;
     this.moreLabel = "on the licensing details page";
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "license") {
-        this._licenseUpdated(this[propName]);
-      }
-      if (propName == "moreLink") {
-        this.hasMode = this._computeHasMore(this.moreLink);
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive licenseName/licenseLink/licenseImage from license in willUpdate
+    // so reactive sets batch into the current update cycle. Setting them in
+    // updated() (via _licenseUpdated) scheduled a redundant second update
+    // (Lit change-in-update warning).
+    if (changedProperties.has("license")) {
+      this._licenseUpdated(this.license);
+    }
+    // Derive hasMore from moreLink in the same cycle; the old updated()
+    // wrote this.hasMode (a typo) so the more-permissions block never
+    // rendered from a more-link change
+    if (changedProperties.has("moreLink")) {
+      this.hasMore = this._computeHasMore(this.moreLink);
+    }
   }
   static get haxProperties() {
     return {

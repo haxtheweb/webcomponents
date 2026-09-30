@@ -816,6 +816,12 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   }
 
   render() {
+    if (!this.manifest || !this.manifest.metadata) {
+      return html`
+      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <div id="contentcontainer" tabindex="-1"><div id="slot"></div></div>
+      `;
+    }
     return html`
     <a class="skip-link" href="#contentcontainer">Skip to content</a>
     <header>
@@ -962,7 +968,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
             : ``
         }
         <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot">${
+        <div id="contentcontainer" tabindex="-1"><div id="slot">${
           this.location && this.location.route.name !== "home"
             ? html`<slot></slot>
                 <site-collection-list

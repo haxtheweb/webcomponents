@@ -1,27 +1,166 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>UserScaffold: user-scaffold Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../user-scaffold.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../user-scaffold.js'
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic user-scaffold demo</h3>
+      <h1>user-scaffold demo</h1>
+      <p>
+        user-scaffold is a headless singleton that quietly builds short and
+        long term memory of user interactions. It listens for trusted clicks,
+        drags, and drops, tracks how long it has been since the last
+        interaction, and exposes readMemory, writeMemory, and deleteMemory
+        methods plus a computed memory object that other elements can react
+        to. It renders no interface of its own, and importing the module is
+        enough to put the singleton on the page.
+      </p>
+      <h2>Basic usage</h2>
       <demo-snippet>
         <template>
-          <user-scaffold>
-            This is user-scaffold
-          </user-scaffold>
+          <user-scaffold></user-scaffold>
+        </template>
+      </demo-snippet>
+      <h2>Live interaction memory</h2>
+      <p>
+        The readout below observes the singleton's memory state. Click
+        anywhere on this page and the interaction count and last action
+        update through the element's own memory tracking.
+      </p>
+      <demo-snippet>
+        <template>
+          <user-scaffold-demo></user-scaffold-demo>
         </template>
       </demo-snippet>
     </div>
+    <script type="module">
+      import { LitElement, html, css } from 'lit'
+      import { autorun } from 'mobx'
+      import { UserScaffoldInstance } from '../user-scaffold.js'
+      import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
+
+      class UserScaffoldDemo extends LitElement {
+        static get tag() {
+          return 'user-scaffold-demo'
+        }
+
+        static get properties() {
+          return {
+            interactionCount: { type: Number },
+            interactionDelay: { type: Number },
+            actionType: { type: String },
+          }
+        }
+
+        constructor() {
+          super()
+          this.interactionCount = 0
+          this.interactionDelay = 0
+          this.actionType = 'none yet'
+          this.__disposer = null
+        }
+
+        static get styles() {
+          return css`
+            :host {
+              display: block;
+              font-family: var(--ddd-font-primary);
+            }
+
+            .panel {
+              background-color: var(--ddd-theme-default-white);
+              border: var(--ddd-border-xs);
+              border-radius: var(--ddd-radius-sm);
+              color: var(--ddd-theme-default-coalyGray);
+              padding: var(--ddd-spacing-4);
+            }
+
+            dl {
+              display: grid;
+              font-size: var(--ddd-font-size-4xs);
+              gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+              grid-template-columns: auto 1fr;
+              margin: 0 0 var(--ddd-spacing-3);
+            }
+
+            dt {
+              font-weight: var(--ddd-font-weight-bold);
+            }
+
+            dd {
+              margin: 0;
+            }
+
+            .controls simple-icon-button-lite {
+              --simple-icon-height: var(--ddd-icon-3xs);
+              --simple-icon-width: var(--ddd-icon-3xs);
+              color: var(--ddd-theme-default-beaverBlue);
+              font-size: var(--ddd-font-size-5xs);
+              gap: var(--ddd-spacing-1);
+            }
+          `
+        }
+
+        connectedCallback() {
+          super.connectedCallback()
+          // observe the singleton's memory the same way consuming elements do
+          this.__disposer = autorun(() => {
+            const memory = UserScaffoldInstance.memory
+            this.interactionCount = memory.interactionCount || 0
+            this.interactionDelay = memory.interactionDelay || 0
+            this.actionType =
+              UserScaffoldInstance.action && UserScaffoldInstance.action.type
+                ? UserScaffoldInstance.action.type
+                : 'none yet'
+          })
+        }
+
+        disconnectedCallback() {
+          if (this.__disposer) {
+            this.__disposer()
+            this.__disposer = null
+          }
+          super.disconnectedCallback()
+        }
+
+        render() {
+          return html`
+            <div class="panel">
+              <dl>
+                <dt>Interaction count</dt>
+                <dd>${this.interactionCount}</dd>
+                <dt>Time since last interaction</dt>
+                <dd>${this.interactionDelay}ms</dd>
+                <dt>Last action</dt>
+                <dd>${this.actionType}</dd>
+              </dl>
+              <div class="controls">
+                <simple-icon-button-lite
+                  icon="icons:delete"
+                  label="Reset short term memory"
+                  @click="${this.resetMemory}"
+                >
+                  Reset short term memory
+                </simple-icon-button-lite>
+              </div>
+            </div>
+          `
+        }
+
+        resetMemory() {
+          UserScaffoldInstance.deleteMemory('interactionCount')
+          UserScaffoldInstance.deleteMemory('interactionDelay')
+        }
+      }
+
+      customElements.define(UserScaffoldDemo.tag, UserScaffoldDemo)
+    </script>
   </body>
 </html>

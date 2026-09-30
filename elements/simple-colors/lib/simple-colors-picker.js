@@ -85,18 +85,24 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
     this.options = this._getOptions(this.colors, this.shades, this.dark);
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive options/hideOptionLabels in willUpdate so reactive sets batch
+    // into the current update cycle. Setting them in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (
+      changedProperties.has("colors") ||
+      changedProperties.has("shades") ||
+      changedProperties.has("dark")
+    ) {
+      this.options = this._getOptions(this.colors, this.shades, this.dark);
+    }
+    if (changedProperties.has("shades")) {
+      this.hideOptionLabels = this.shades;
+    }
+  }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "colors")
-        this.options = this._getOptions(this.colors, this.shades, this.dark);
-      if (propName === "shades") {
-        this.options = this._getOptions(this.colors, this.shades, this.dark);
-        this.hideOptionLabels = this.shades;
-      }
-      if (propName === "dark")
-        this.options = this._getOptions(this.colors, this.shades, this.dark);
-    });
     if (this.__ready !== undefined) this._fireChangeEvent();
   }
 

@@ -397,32 +397,18 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     }
   }
   /**
-   * life cycle updated
+   * life cycle willUpdate — handle theme/manifest derivation + notify events
+   * before render so reactive sets (themeLoaded) batch into the current
+   * update cycle instead of scheduling a redundant second update (Lit
+   * change-in-update warning). These handlers have NO dependency on
+   * __ready (themeData/themeName arrive via autorun after firstUpdated),
+   * so they are safe to run pre-render.
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
-    // track these so we can debounce if multiple values updated at once
-    let loadOutline = false;
-    let loadPage = false;
     changedProperties.forEach((oldValue, propName) => {
-      if (
-        ["outlineLocation", "activeItemLocation"].includes(propName) &&
-        this[propName] != ""
-      ) {
-        loadPage = true;
-      }
-      if (
-        ["outlineLocation", "file"].includes(propName) &&
-        this[propName] != ""
-      ) {
-        loadOutline = true;
-      }
-      if (propName == "_timeStamp" && this[propName]) {
-        loadOutline = true;
-        loadPage = true;
-      }
       if (propName == "themeData") {
         this._themeChanged(this[propName], oldValue);
       } else if (propName == "themeName") {
@@ -448,6 +434,41 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           }),
         );
         this._manifestChanged(this[propName], oldValue);
+      }
+    });
+  }
+  /**
+   * life cycle updated — load triggers MUST live here (not willUpdate)
+   * because they are gated on this.__ready, which is set in firstUpdated.
+   * Lit runs willUpdate BEFORE firstUpdated, so a first-cycle load decision
+   * in willUpdate sees __ready === false and skips — permanently missing
+   * the initial site.json fetch when outlineLocation/file arrive in the
+   * first update batch (the ~1-in-3 blank-screen regression). updated()
+   * runs AFTER firstUpdated, so __ready is reliably true here.
+   */
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // track these so we can debounce if multiple values updated at once
+    let loadOutline = false;
+    let loadPage = false;
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        ["outlineLocation", "activeItemLocation"].includes(propName) &&
+        this[propName] != ""
+      ) {
+        loadPage = true;
+      }
+      if (
+        ["outlineLocation", "file"].includes(propName) &&
+        this[propName] != ""
+      ) {
+        loadOutline = true;
+      }
+      if (propName == "_timeStamp" && this[propName]) {
+        loadOutline = true;
+        loadPage = true;
       }
     });
     if (loadOutline && this.__ready) {

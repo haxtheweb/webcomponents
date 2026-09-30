@@ -435,10 +435,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           </div>
         </div>
         <div id="question_wrap">
-          <div
-            class="question"
-            aria-hidden="${this.correct ? "true" : "false"}"
-          >
+          <div class="question" ?inert="${this.correct}">
             <slot name="question"></slot>
             <div class="check_button">
               <simple-icon-button-lite
@@ -453,11 +450,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
               </simple-tooltip>
             </div>
           </div>
-          <div
-            id="answer_wrap"
-            aria-hidden="${this.correct ? "false" : "true"}"
-            aria-live="polite"
-          >
+          <div id="answer_wrap" ?inert="${!this.correct}" aria-live="polite">
             <div class="answer">
               <user-action track="visibility">
                 <slot></slot>
@@ -631,8 +624,17 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   /**
    * Property for toggling "checkbtn".
    */
-  openAnswer(e) {
+  async openAnswer(e) {
     this.correct = !this.correct;
+    // move focus into the panel that just became visible/interactive so
+    // keyboard/screen reader users aren't dropped to <body> when the
+    // previously-focused button becomes inert
+    await this.updateComplete;
+    const nextFocusId = this.correct ? "closeBtn" : "checkBtn";
+    const nextFocusTarget = this.shadowRoot.querySelector(`#${nextFocusId}`);
+    if (nextFocusTarget) {
+      nextFocusTarget.focus();
+    }
   }
   /**
    * haxProperties integration via file reference

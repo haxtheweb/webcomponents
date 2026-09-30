@@ -79,7 +79,10 @@ class BootstrapSearch extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 

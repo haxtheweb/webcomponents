@@ -179,10 +179,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         .playlist {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          overflow-y: auto;
           max-height: var(--playlist-max-height, 100%);
-          padding: var(--ddd-spacing-2);
           background: var(--ddd-theme-default-coalyGray);
         }
 
@@ -192,6 +189,20 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
           color: var(--ddd-theme-default-white);
           padding: var(--ddd-spacing-2);
           margin: var(--ddd-spacing-0);
+        }
+
+        .playlist-items {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+          overflow-y: auto;
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-2);
+          list-style: none;
+        }
+
+        .playlist-items li {
+          display: contents;
         }
 
         .playlist-item {
@@ -345,42 +356,41 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
                 `
             : html``}
         </div>
-        <div
-          class="playlist"
-          role="list"
-          aria-label="${this.t.playlist}"
-        >
+        <div class="playlist">
           <h3 class="playlist-header">${this.t.playlist}</h3>
-          ${this.mediaItems.map(
-            (item, index) => html`
-              <button
-                class="playlist-item ${index === this.activeIndex
-                  ? "active"
-                  : ""}"
-                role="listitem"
-                @click="${() => this._setActiveIndex(index)}"
-                aria-current="${index === this.activeIndex ? "true" : "false"}"
-                aria-label="${this.t.play} ${item.title}, ${item.duration}"
-                data-index="${index}"
-              >
-                <span class="playlist-number">${index + 1}</span>
-                ${item.thumbnailSrc
-                  ? html`
-                      <img
-                        class="playlist-thumbnail"
-                        src="${item.thumbnailSrc}"
-                        alt=""
-                        loading="lazy"
-                      />
-                    `
-                  : html` <div class="playlist-thumbnail"></div> `}
-                <div class="playlist-info">
-                  <span class="playlist-title">${item.title}</span>
-                  <span class="playlist-duration">${item.duration}</span>
-                </div>
-              </button>
-            `,
-          )}
+          <ol class="playlist-items" aria-label="${this.t.playlist}">
+            ${this.mediaItems.map(
+              (item, index) => html`
+                <li>
+                  <button
+                    class="playlist-item ${index === this.activeIndex
+                      ? "active"
+                      : ""}"
+                    @click="${() => this._setActiveIndex(index)}"
+                    aria-current="${index === this.activeIndex ? "true" : "false"}"
+                    aria-label="${this.t.play} ${item.title}, ${item.duration}"
+                    data-index="${index}"
+                  >
+                    <span class="playlist-number">${index + 1}</span>
+                    ${item.thumbnailSrc
+                      ? html`
+                        <img
+                          class="playlist-thumbnail"
+                          src="${item.thumbnailSrc}"
+                          alt=""
+                          loading="lazy"
+                        />
+                      `
+                    : html` <div class="playlist-thumbnail"></div> `}
+                    <div class="playlist-info">
+                      <span class="playlist-title">${item.title}</span>
+                      <span class="playlist-duration">${item.duration}</span>
+                    </div>
+                  </button>
+                </li>
+              `,
+            )}
+          </ol>
         </div>
       </div>
       <div class="slot-hidden"><slot></slot></div>
@@ -546,6 +556,24 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     }
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Rebuild mediaItems on first update and when exiting edit mode,
+    // in willUpdate so the reactive mediaItems/activeIndex sets batch
+    // into the current update cycle. Setting them in firstUpdated/
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). Light-DOM children are current by willUpdate time.
+    if (!this.hasUpdated) {
+      this._updateMediaItems();
+    }
+    if (
+      changedProperties.has("edit") &&
+      this.edit === false &&
+      changedProperties.get("edit") === true
+    ) {
+      this._updateMediaItems();
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -555,11 +583,8 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         if (this.edit) {
           // entering edit mode - light dom children become visible
         } else if (oldValue === true) {
-          // exiting edit mode - light dom children may have changed during
-          // edit, so rebuild the mediaItems array before rendering
-          this._updateMediaItems();
-          // pause all light dom children so they don't keep playing in the
-          // hidden slot container
+          // exiting edit mode - pause all light dom children so they
+          // don't keep playing in the hidden slot container
           this.mediaItems.forEach((item) => {
             try {
               if (
@@ -603,7 +628,6 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       super.firstUpdated(changedProperties);
     }
     this.setAttribute("typeof", "oer:LearningComponent");
-    this._updateMediaItems();
     const playerArea = this.shadowRoot.querySelector(".player-area");
     const playlist = this.shadowRoot.querySelector(".playlist");
     if (

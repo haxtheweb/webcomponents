@@ -69,7 +69,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         .merlin {
           --simple-icon-height: 100px;
           --simple-icon-width: 100px;
-          background-color: var(--simple-colors-default-theme-accent-1, white);
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            var(--ddd-theme-default-white)
+          );
           display: block;
           height: 150px;
           width: 100px;
@@ -82,7 +85,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           width: 100px;
           margin: 6px 0px 0px;
           padding: 16px;
-          background-color: var(--simple-colors-default-theme-accent-2, white);
+          background-color: var(
+            --simple-colors-default-theme-accent-2,
+            var(--ddd-theme-default-white)
+          );
           color: var(--simple-colors-default-theme-purple-6, purple);
           vertical-align: middle;
           display: inline-flex;
@@ -99,7 +105,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           width: var(--simple-toast-width, auto);
           color: var(
             --simple-toast-color,
-            var(--simple-colors-default-theme-accent-12, black)
+            var(
+              --simple-colors-default-theme-accent-12,
+              var(--ddd-theme-default-black)
+            )
           );
           background-color: transparent;
           top: var(--simple-toast-top);
@@ -120,22 +129,26 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         }
         .mid {
           line-height: 142px;
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           background-repeat: repeat-x;
           background-image: url("${unsafeCSS(SpeechBubbleMiddle)}");
         }
         .leftedge {
           background-image: url("${unsafeCSS(SpeechBubbleL)}");
           width: 24px;
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           transform: scaleX(-1);
         }
         .rightedge {
           background-image: url("${unsafeCSS(SpeechBubbleR)}");
           width: 42px;
-          background-color: white;
+          background-color: var(--ddd-theme-default-white);
           transform: scaleX(-1.1);
         }
+        /* the bubble line art is baked into white-bg / black-line SVG assets,
+           so dark mode flips the whole bubble with invert() rather than
+           swapping background tokens; the SVG lines cannot be recolored
+           from CSS and a dark SVG asset set does not exist yet */
         :host([dark-mode]) .mid,
         :host([dark-mode]) .leftedge,
         :host([dark-mode]) .rightedge {

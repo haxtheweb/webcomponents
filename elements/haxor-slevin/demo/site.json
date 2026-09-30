@@ -1,0 +1,148 @@
+{
+  "id": "7a8b9c0d-1e2f-4a3b-8c4d-haxorslevin00",
+  "title": "The Haxor Journal",
+  "author": "",
+  "description": "Demonstration blog site for haxor-slevin, the HAXcms blog theme, showing a home page with a post listing, full posts, and an about page.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "haxor-slevin",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "haxor-slevin",
+      "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
+      "name": "haxor-slevin",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#00f961",
+        "cssVariable": "--simple-colors-default-theme-green-7",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-6f7a8b9c-0001-4f6f-9f6f-haxorslevinhome",
+      "indent": 0,
+      "location": "pages/item-6f7a8b9c-0001-4f6f-9f6f-haxorslevinhome/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "The blog home page. haxor-slevin presents the home page with the site title, a query of recent posts, and paging through older entries.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6f7a8b9c-0002-4f6f-9f6f-haxorslevinpos1",
+      "indent": 0,
+      "location": "pages/item-6f7a8b9c-0002-4f6f-9f6f-haxorslevinpos1/index.html",
+      "slug": "posts/shipping-without-a-build-step",
+      "order": 1,
+      "parent": null,
+      "title": "Shipping Web Components Without a Build Step",
+      "description": "A post on why the haxor-slevin blog ships as plain HTML, CSS, and JavaScript with no compilation required.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6f7a8b9c-0003-4f6f-9f6f-haxorslevinpos2",
+      "indent": 0,
+      "location": "pages/item-6f7a8b9c-0003-4f6f-9f6f-haxorslevinpos2/index.html",
+      "slug": "posts/notes-on-the-open-web",
+      "order": 2,
+      "parent": null,
+      "title": "Notes on the Open Web",
+      "description": "A post collecting thoughts on platform longevity, accessibility, and why standards outlive frameworks.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6f7a8b9c-0004-4f6f-9f6f-haxorslevinabou",
+      "indent": 0,
+      "location": "pages/item-6f7a8b9c-0004-4f6f-9f6f-haxorslevinabou/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About",
+      "description": "Who writes this blog and what the haxor-slevin theme brings to a personal site.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

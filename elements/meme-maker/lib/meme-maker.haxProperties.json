@@ -2,6 +2,7 @@
   "canScale": true,
 
   "canEditSource": true,
+  "designSystem": false,
   "gizmo": {
     "title": "Meme",
     "description": "Make a meme out of an image.",

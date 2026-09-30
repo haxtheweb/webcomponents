@@ -392,6 +392,74 @@ export class PageBreak extends IntersectionObserverMixin(
     }
     return null;
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() triggered Lit's
+    // change-in-update warning because it scheduled a new update after the
+    // previous one completed.
+    // Auto-update author when content-related properties change
+    if (
+      changedProperties.has("title") ||
+      changedProperties.has("description") ||
+      changedProperties.has("tags") ||
+      changedProperties.has("published") ||
+      changedProperties.has("locked") ||
+      changedProperties.has("overridePathauto")
+    ) {
+      let contentChanged = false;
+      [
+        "title",
+        "description",
+        "tags",
+        "published",
+        "locked",
+        "overridePathauto",
+      ].forEach((prop) => {
+        if (
+          changedProperties.has(prop) &&
+          changedProperties.get(prop) !== undefined
+        ) {
+          contentChanged = true;
+        }
+      });
+      if (contentChanged) {
+        const currentUser = this.getCurrentUser();
+        if (currentUser && currentUser !== this.author) {
+          this.author = currentUser;
+        }
+      }
+    }
+    // @todo noderefs will have a nested object
+    // we need to build a non-nested object for the schema
+    // which we use to build a string based `thing,stuff,whatever` value
+    // this then is computed from noderefs changes HOWEVER noderefs changes
+    // is not saved while this is.
+    if (changedProperties.has("noderefs")) {
+      let str = [];
+      for (let i = 0; i < this.noderefs.length; i++) {
+        str.push(this.noderefs[i].node);
+      }
+      this.relatedItems = str.join(",");
+    }
+    if (
+      changedProperties.has("schemaResourceID") &&
+      this.itemId == null &&
+      changedProperties.get("schemaResourceID") !== undefined
+    ) {
+      this.itemId = this.schemaResourceID.replace("#", "item-");
+    }
+    // breakType drives the icon used in the render
+    if (changedProperties.has("breakType")) {
+      if (this.breakType === "node") {
+        this.iconType = "editor:format-page-break";
+      } else {
+        this.iconType = "hax:page-details";
+      }
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -404,43 +472,6 @@ export class PageBreak extends IntersectionObserverMixin(
         !this._editingUILoaded
       ) {
         this._ensureEditingUI();
-      }
-      // Auto-update author when content-related properties change
-      // This indicates the page has been modified
-      if (
-        [
-          "title",
-          "description",
-          "tags",
-          "published",
-          "locked",
-          "overridePathauto",
-        ].includes(propName) &&
-        oldValue !== undefined
-      ) {
-        const currentUser = this.getCurrentUser();
-        if (currentUser && currentUser !== this.author) {
-          this.author = currentUser;
-        }
-      }
-      // @todo noderefs will have a nested object
-      // we need to build a non-nested object for the schema
-      // which we use to build a string based `thing,stuff,whatever` value
-      // this then is computed from noderefs changes HOWEVER noderefs changes
-      // is not saved while this is.
-      if (propName === "noderefs") {
-        let str = [];
-        for (let i = 0; i < this.noderefs.length; i++) {
-          str.push(this.noderefs[i].node);
-        }
-        this.relatedItems = str.join(",");
-      }
-      if (
-        propName === "schemaResourceID" &&
-        this.itemId == null &&
-        oldValue !== undefined
-      ) {
-        this.itemId = this.schemaResourceID.replace("#", "item-");
       }
       // replicate locked aross elements between here and next page break
       if (this.locked && propName === "locked") {
@@ -570,13 +601,6 @@ export class PageBreak extends IntersectionObserverMixin(
       }
       // allow for haxcms page style association to allow users to edit the
       // current page's details
-      if (propName === "breakType") {
-        if (this[propName] === "node") {
-          this.iconType = "editor:format-page-break";
-        } else {
-          this.iconType = "hax:page-details";
-        }
-      }
     });
   }
   static get styles() {
@@ -602,10 +626,6 @@ export class PageBreak extends IntersectionObserverMixin(
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           position: relative;
           opacity: 0.9;
-          transition:
-            opacity 0.2s ease-in-out,
-            border-color 0.2s ease-in-out,
-            background-color 0.2s ease-in-out;
         }
         /* Increase bottom margin when link URL is present to prevent clipping */
         :host([data-hax-ray][link-url]) {
@@ -668,7 +688,6 @@ export class PageBreak extends IntersectionObserverMixin(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-limestoneLight)
           );
-          transition: all 0.3s ease-in-out;
         }
         .link-url:hover {
           background-color: light-dark(
@@ -761,12 +780,6 @@ export class PageBreak extends IntersectionObserverMixin(
         simple-toolbar-button.menu-item-delete:hover {
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          :host([data-hax-ray]),
-          .link-url {
-            transition: none !important;
-          }
         }
         @media (max-width: 600px) {
           #pageactionsbtn {

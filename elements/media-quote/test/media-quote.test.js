@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import "../media-quote.js";
+import { MediaQuote } from "../media-quote.js";
 
 describe("MediaQuote test", () => {
   let element;
@@ -236,9 +236,8 @@ describe("MediaQuote test", () => {
     await element.updateComplete;
 
     const img = element.shadowRoot.querySelector("img");
-    expect(img).to.exist;
-    expect(img.src).to.equal("");
-    expect(img.alt).to.equal("No image");
+    // no src means no img is rendered
+    expect(img).to.not.exist;
   });
 
   it("updates image when src changes", async () => {
@@ -527,8 +526,8 @@ describe("MediaQuote test", () => {
     expect(() => element.render()).to.not.throw;
 
     const img = element.shadowRoot.querySelector("img");
-    expect(img.src).to.equal("");
-    expect(img.alt).to.equal("");
+    // no src means no img is rendered
+    expect(img).to.not.exist;
   });
 
   it("handles long text content", async () => {
@@ -552,6 +551,7 @@ describe("MediaQuote test", () => {
     element.quote = 'Quote with "special" characters & symbols < > /';
     element.author = "Author's Name with apostrophe";
     element.alt = 'Alt text with "quotes" and & symbols';
+    element.src = "test-image.jpg";
     await element.updateComplete;
 
     const quoteSlot = element.shadowRoot.querySelector('slot[name="quote"]');

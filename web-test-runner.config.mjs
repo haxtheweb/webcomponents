@@ -3,6 +3,15 @@ export default {
     nodeResolve: true,
     // in a monorepo you need to set set the root dir to resolve modules
     rootDir: '../../',
+    // @web/test-runner-coverage-v8 doesn't know how to resolve the
+    // /__wds-outside-root__/{depth}/... virtual path prefix used for
+    // monorepo packages living outside of an element's own directory,
+    // so it throws harmless ENOENT errors trying to read coverage for
+    // them. Exclude these from coverage collection entirely to silence
+    // the noise; this doesn't affect coverage of an element's own source.
+    coverageConfig: {
+      exclude: ['**/__wds-outside-root__/**', '**/node_modules/**'],
+    },
     testRunnerHtml: testFramework =>
       `<!DOCTYPE html>
       <html lang="en">

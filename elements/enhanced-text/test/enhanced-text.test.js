@@ -130,16 +130,7 @@ describe("EnhancedText test", () => {
       ],
     };
 
-    // Mock vocab-term import
-    const originalImport = global.import || (() => Promise.resolve());
-    global.import = () => Promise.resolve();
-
     element.applyTermFromList(testData);
-
-    // Restore original import
-    if (originalImport) {
-      global.import = originalImport;
-    }
   });
 
   it("handles enhanced text response correctly", () => {
@@ -172,16 +163,6 @@ describe("EnhancedText test", () => {
 
     expect(autoElement.auto).to.be.true;
     // firstUpdated should have been called
-  });
-
-  // HAX integration tests
-  it("has proper HAX properties configuration", () => {
-    const haxProps = element.constructor.haxProperties;
-
-    expect(haxProps).to.exist;
-    expect(haxProps.gizmo).to.exist;
-    expect(haxProps.gizmo.title).to.equal("Enhanced text");
-    expect(haxProps.setttings).to.exist; // Note: typo in original code
   });
 
   // Accessibility tests

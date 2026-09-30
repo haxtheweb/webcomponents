@@ -115,6 +115,24 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
   /**
    * LitElement properties updated
    */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive _title from search/title in willUpdate so the reactive set
+    // batches into the current update cycle. Setting it in updated()
+    // scheduled a redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("search")) {
+      if (this.title) {
+        this._title = this.title;
+      } else {
+        this._title = this.search.replace("_", " ") + " Wikipedia article";
+      }
+    }
+    if (changedProperties.has("title")) {
+      if (this.title) {
+        this._title = this.title;
+      }
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // element is visible, now we can search
@@ -134,18 +152,6 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
         this._debounce = setTimeout(() => {
           this.updateArticle(this.search, this.headers, this.language);
         }, 10);
-      }
-      if (propName == "search") {
-        if (this.title) {
-          this._title = this.title;
-        } else {
-          this._title = this[propName].replace("_", " ") + " Wikipedia article";
-        }
-      }
-      if (propName == "title") {
-        if (this.title) {
-          this._title = this.title;
-        }
       }
     });
   }

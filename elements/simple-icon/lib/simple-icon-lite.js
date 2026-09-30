@@ -122,9 +122,16 @@ export const SimpleIconBehaviors = function (SuperClass) {
       return "ltr";
     }
     get useSafariPolyfill() {
+      // Chromium, Edge and other Chromium-based browsers also advertise
+      // "Safari" in their user agent, so exclude them and only give the
+      // mask-based polyfill to actual Safari
+      let ua = globalThis.navigator && globalThis.navigator.userAgent;
       return (
-        globalThis.navigator &&
-        globalThis.navigator.userAgent.indexOf("Safari") > -1
+        ua &&
+        ua.indexOf("Safari") > -1 &&
+        ua.indexOf("Chrome") === -1 &&
+        ua.indexOf("Chromium") === -1 &&
+        ua.indexOf("Edg") === -1
       );
     }
     get safariMask() {

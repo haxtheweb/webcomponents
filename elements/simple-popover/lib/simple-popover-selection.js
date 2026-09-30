@@ -152,11 +152,26 @@ class SimplePopoverSelection extends LitElement {
   managerReset() {
     this.opened = false;
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Handle opened change in willUpdate so the setPopover call (which sets
+    // reactive props on the manager singleton) doesn't trigger a cross-element
+    // change-in-update warning from within updated(). The openedChanged DOM
+    // work (rendering content into the manager popover) is safe pre-render
+    // since it operates on the manager's light DOM, not this element's
+    // shadow DOM.
+    if (
+      changedProperties.has("opened") &&
+      this.shadowRoot &&
+      changedProperties.get("opened") !== undefined
+    ) {
+      this.openedChanged(this.opened);
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened" && this.shadowRoot) {
         if (oldValue !== undefined) {
-          this.openedChanged(this[propName]);
           this.dispatchEvent(
             new CustomEvent(`${propName}-changed`, {
               detail: this,
@@ -214,7 +229,10 @@ class SimplePopoverSelection extends LitElement {
       },
     };
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this._addActivationListeners();
   }
   disconnectedCallback() {

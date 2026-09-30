@@ -23,7 +23,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           type: Object,
         },
         __toolbar: {
-          name: toolbar,
+          name: "toolbar",
           type: Object,
         },
         __highlight: {
@@ -244,7 +244,11 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
 
     getRange() {
       let sel = this.getSelection();
-      return this.__toolbar ? this.__toolbar.getRange() : sel.getRangeAt(0);
+      return this.__toolbar
+        ? this.__toolbar.getRange()
+        : sel && sel.rangeCount > 0
+          ? sel.getRangeAt(0)
+          : undefined;
     }
 
     getSelection() {
@@ -295,7 +299,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     ) {
       let query =
           !!range && !!command
-            ? globalThis.document.queryCommandState(this.command)
+            ? globalThis.document.queryCommandState(command)
             : false,
         /* workaround because queryCommandState("underline") returns true on links */
         block =
@@ -314,9 +318,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {array}
      */
     toggledCommandsForRange(range = this.range || this.getRange()) {
-      return this.validCommands.filter((command) => {
-        this.commandToggledForRange(range, command);
-      });
+      return this.validCommands.filter((command) =>
+        this.commandToggledForRange(range, command),
+      );
     }
     /**
      * selects command element that contains range.
@@ -372,7 +376,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           nodes.push(node);
           if (node.parentNode && node.parentNode !== this.target)
             getParentNode(node.parentNode);
-        };
+        },
+        start = this.rangeNodeOrParentNode(range);
+      if (!!start && start !== this.target) getParentNode(start);
       nodes.push({
         nodeName: false,
       });
@@ -534,7 +540,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           sel.removeAllRanges();
           sel.addRange(range);
         } else {
-          if (!range.isCollapsed) range.collapse();
+          if (!range.collapsed) range.collapse();
         }
         //this._rangeChanged(range);
       }
@@ -673,7 +679,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           this.pasteFromClipboard();
         }
       } else if (command === "cancel") {
-        if (target) target.revert();
+        // rich-text-editor has no revert method: reverting canceled edits
+        // is the toolbar's job (issue #3077, bug 10)
+        toolbar.cancelEdits(target);
         toolbar.close(target);
       } else if (command === "close") {
         toolbar.close(target);

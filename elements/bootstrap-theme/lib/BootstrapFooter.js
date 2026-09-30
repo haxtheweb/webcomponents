@@ -161,11 +161,19 @@ class BootstrapFooter extends LitElement {
           ) {
             this._activeItem = storeActiveItemIndex;
             this._routerManifest = storeRouterManifest;
-            if (storeRouterManifest.items[storeActiveItemIndex - 1]) {
+            if (
+              storeRouterManifest &&
+              storeRouterManifest.items &&
+              storeRouterManifest.items[storeActiveItemIndex - 1]
+            ) {
               this._backwardItem =
                 storeRouterManifest.items[storeActiveItemIndex - 1];
             }
-            if (storeRouterManifest.items[storeActiveItemIndex + 1]) {
+            if (
+              storeRouterManifest &&
+              storeRouterManifest.items &&
+              storeRouterManifest.items[storeActiveItemIndex + 1]
+            ) {
               this._forwardItem =
                 storeRouterManifest.items[storeActiveItemIndex + 1];
             }
@@ -214,7 +222,10 @@ class BootstrapFooter extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 

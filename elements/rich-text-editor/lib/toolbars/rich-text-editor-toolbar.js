@@ -871,18 +871,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         registered: {
           type: Boolean,
         },
+        // NOTE: `selectedNode` and `selectionAncestors` are intentionally
+        // NOT reactive. They are set in _updateButtonRanges() (called from
+        // updated() when `range` changes) and only propagated imperatively to
+        // child buttons/breadcrumbs — render() never reads them. Keeping them
+        // as plain instance properties avoids Lit's change-in-update warning.
         /**
-         * currently selected node
+         * Tracks inline widgets that require selection data
          */
-        selectedNode: {
-          type: Object,
-        },
-        /**
-         * array of ancestors of currently selected node
-         */
-        selectionAncestors: {
-          type: Array,
-        },
+        // clickableElements moved to non-reactive below (see note).
         /**
          * when to make toolbar visible:
          * "always" to keep it visible,
@@ -897,10 +894,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * Tracks inline widgets that require selection data
          */
-        clickableElements: {
-          name: "clickableElements",
-          type: Object,
-        },
+        // NOTE: `clickableElements` is intentionally NOT a reactive
+        // property. It is mutated by registerButton/deregisterButton and
+        // re-assigned (`= {}`) by clearToolbar() (called from updateToolbar
+        // in updated() when `config` changes). render() never reads it — it
+        // is only consulted in event-handler methods. Keeping it as a plain
+        // instance property avoids Lit's change-in-update warning.
 
         /**
          * contains cancelled edits
@@ -984,8 +983,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       super.disconnectedCallback();
     }
 
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Generate a unique id in willUpdate (no DOM needed) so it batches into
+      // the current update cycle. Setting reactive `id` in firstUpdated
+      // scheduled a redundant second update (Lit change-in-update warning).
+      if (!this.id) {
+        this.id = this._generateUUID();
+      }
+    }
     firstUpdated(changedProperties) {
-      if (!this.id) this.id = this._generateUUID();
       super.firstUpdated(changedProperties);
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);
@@ -1005,7 +1012,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChanged(this.range, oldValue);
         if (propName === "config") this.updateToolbar();
-        if (propName === "editor") this._editorChange();
+        if (propName === "editor") this._editorChanged();
         if (["editor", "show", "range"].includes(propName))
           this.hidden = this.disconnected;
         if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
@@ -1048,13 +1055,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     /**
-     * mutation observer
+     * mutation observer (a single cached instance, so observe() and
+     * disconnect() always act on the same observer — issue #3077, bug 7)
      *
-     * @readonly
      * @memberof RichTextEditor
      */
     get observer() {
-      return new MutationObserver(this._handleTargetMutation.bind(this));
+      if (!this.__observer) {
+        this.__observer = new MutationObserver(
+          this._handleTargetMutation.bind(this),
+        );
+      }
+      return this.__observer;
     }
 
     /**
@@ -1159,12 +1171,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           }
         }
       }
+      // use the document selection with a composed-range scope check:
+      // target.shadowRoot has no getSelection, so shadow-rooted targets
+      // (LitElement, incl. rich-text-editor itself) always lost the range
+      // here (issue #3077, bug 2)
       try {
-        var root = this.target.shadowRoot || this.target.getRootNode();
-        if (root && root.getSelection) {
-          var sel = root.getSelection();
-          if (sel && sel.rangeCount > 0) {
-            this.range = sel.getRangeAt(0);
+        var sel = globalThis.document.getSelection
+          ? globalThis.document.getSelection()
+          : globalThis.getSelection();
+        if (sel && sel.rangeCount > 0) {
+          var candidate = sel.getRangeAt(0);
+          if (candidate && this.rangeInTarget(candidate, this.target)) {
+            this.range = candidate;
             return this.range;
           }
         }
@@ -1175,7 +1193,30 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return this.range;
     }
     getSelection() {
-      return window, getSelection();
+      return globalThis.getSelection();
+    }
+    /**
+     * whether a range is fully inside the target, crossing shadow DOM
+     * boundaries via shadow-root hosts (issue #3077, bug 2)
+     *
+     * @param {object} range
+     * @param {object} target
+     * @returns {boolean}
+     */
+    rangeInTarget(range, target) {
+      if (!range || !target) return false;
+      var container = range.commonAncestorContainer;
+      if (!container || !container.nodeType) return false;
+      if (target.contains(container)) return true;
+      // walk up the composed tree, crossing shadow-root boundaries via
+      // host, until we run out of ancestors (nodes have no composedPath,
+      // so the old fallback never fired)
+      var node = container;
+      while (node) {
+        if (node === target) return true;
+        node = node.nodeType === 11 && node.host ? node.host : node.parentNode;
+      }
+      return false;
     }
     /**
      * maintains consistent range info across toolbar and target
@@ -1340,7 +1381,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     cancelEdits(target = this.target) {
       this.revertTarget(target);
-      this.target(editor, false);
+      this.unsetTarget(target);
     }
 
     get enabledTargetHandlers() {
@@ -1552,7 +1593,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           characterData: false,
         });
       } else {
-        if (this.observer) this.observer.disconnect;
+        if (this.__observer) this.observer.disconnect();
       }
     }
     /**
@@ -1572,9 +1613,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {string} filtered html as string
      */
     sanitizeHTML(html = "") {
-      let regex = "<body(.*\n)*>(.*\n)*</body>";
+      // detect a full <body>...</body> wrapper (the old detection used
+      // literal dots so it never matched single-line html, and the strip
+      // pattern matched a literal "<?body" with no replacement argument,
+      // inserting the string "undefined" — issue #3077, bug 27)
+      let regex = /<body[^>]*>[\s\S]*<\/body>/i;
       if (html.match(regex) && html.match(regex).length > 0)
-        html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+        html = html
+          .match(regex)[0]
+          .replace(/<body[^>]*>/i, "")
+          .replace(/<\/body>/i, "");
       return html;
     }
     /**
@@ -1689,7 +1737,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         cleanTarget = this.targetHTML
           ? this.targetHTML.replace(/\s+/gm, "")
           : undefined;
-      return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
+      // boolean (the old return leaked a localeCompare number where 0
+      // meant a match — issue #3077, bug 26)
+      return !!cleanHTML && !!cleanTarget && cleanTarget === cleanHTML;
     }
 
     _handleTargetClick(target, e) {
@@ -1723,27 +1773,35 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetKeypress(e) {
-      if (this.targetEmpty() && e.key) {
-        this.innerHTML = e.key
-          .replace(">", "&gt;")
-          .replace("<", "&lt;")
-          .replace("&", "&amp;");
+      if (this.targetEmpty() && e.key && this.target) {
+        // write the first key into the TARGET, never into the toolbar
+        // itself (issue #3077, bug 5)
+        this.target.innerHTML = e.key
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
         this.range = this.getRange();
-        this.range.selectNodeContents(this);
-        this.range.collapse();
+        if (this.range) {
+          this.range.selectNodeContents(this.target);
+          this.range.collapse();
+        }
       }
     }
     _handleTargetMutation(mutations = []) {
       this._handleTargetSelection();
       (mutations || []).forEach((mutation) => {
         if (mutation.type == "attributes") {
-          if ((target.disabled || target.hidden) && target.conteneditable) {
+          // use the mutation record's actual target and the correctly
+          // spelled contenteditable (issue #3077, bug 6)
+          let target = mutation.target || this.target;
+          if (!target) return;
+          if ((target.disabled || target.hidden) && target.contenteditable) {
             this.disableEditing(target);
             target.tabindex = -1;
           } else if (
             !target.disabled &&
             !target.hidden &&
-            target.conteneditable
+            target.contenteditable
           ) {
             this.enableEditing(target);
             target.tabindex = 0;
@@ -1786,7 +1844,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.range = this.getRange();
       if (
         !this.target ||
-        !this.target.getAttribute("contenteditable") == "true"
+        this.target.getAttribute("contenteditable") != "true"
       )
         return;
       this.__highlight.wrap(this.range || this.getRange());

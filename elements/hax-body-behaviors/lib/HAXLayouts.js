@@ -36,7 +36,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           :host([data-hax-ray])
             ::slotted([contenteditable][data-hax-ray]:empty)::before {
             content: attr(data-hax-ray);
-            opacity: 0.2;
+            /* raised from 0.2: the near-invisible placeholder text was a
+               contrast risk (issue #3083 follow-up) */
+            opacity: 0.6;
             transition: 0.3s all ease-in-out;
           }
           :host([data-hax-ray]) ::slotted(*:hover) {
@@ -343,8 +345,11 @@ export const HaxLayoutBehaviors = function (SuperClass) {
      * @returns {boolean} if the item can move a set number of slots
      */
     canMoveSlot(item, before) {
+      // _getSlotOrder returns a NUMBER (the old order[1] + dir arithmetic
+      // was leftover from the pre-abstraction grid plate — issue #3077,
+      // bug 12)
       let dir = before ? -1 : 1,
-        order = this.this._getSlotOrder(item),
+        order = this._getSlotOrder(item),
         containers = [
           ...this.shadowRoot.querySelectorAll("[data-layout-order]"),
         ]
@@ -352,7 +357,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             parseInt(container.getAttribute("data-layout-order") || -1),
           )
           .sort((a, b) => a - b),
-        dest = order[1] + dir;
+        dest = order + dir;
       return dest >= containers[0] && dest <= containers[containers.length - 1];
     }
     /**
@@ -363,10 +368,12 @@ export const HaxLayoutBehaviors = function (SuperClass) {
      */
     moveSlot(item, before) {
       let dir = before ? -1 : 1,
-        order = this.this._getSlotOrder(item),
-        dest = order[1] + dir,
+        order = this._getSlotOrder(item),
+        dest = order + dir,
+        // quote the attribute value: an unquoted number is not a valid
+        // CSS identifier, so the selector threw for every numeric order
         container = this.shadowRoot.querySelector(
-          `[data-layout-order=${dest}]`,
+          `[data-layout-order="${dest}"]`,
         ),
         slot = container.getAttribute("data-layout-slotname");
       item.setAttribute("slot", slot);
@@ -391,21 +398,23 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     async __sortChildren() {
       this.__sorting = true;
       try {
-        // select all direct children w/ a slot attribute and convert to an Array
+        // select all direct children w/ a slot attribute and convert to an
+        // Array (the old reduce never accumulated so no sorting ever ran —
+        // issue #3077, bug 13)
         let children = Array.prototype.reduce.call(
           this.querySelectorAll("[slot]"),
           function (acc, e) {
+            acc.push(e);
             return acc;
           },
           [],
         );
-        // sort the children by slot id being low to high
-        children = children.sort(function (a, b) {
-          if (this._getSlotOrder(a) < this._getSlotOrder(b)) {
-            return -1;
-          }
-          return 1;
-        });
+        // sort the children by slot order low to high (arrow function so
+        // `this` resolves: a plain function in a strict-mode module has
+        // no `this` for the comparator — issue #3077, bug 13)
+        children = children.sort(
+          (a, b) => this._getSlotOrder(a) - this._getSlotOrder(b),
+        );
         // loop through and append these back into the grid plate.
         // which will put them in the right order
         await children.forEach((el) => {

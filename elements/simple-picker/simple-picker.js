@@ -771,13 +771,25 @@ const SimplePickerBehaviors = function (SuperClass) {
         `,
       )}`;
     }
+    willUpdate(changedProperties) {
+      if (super.willUpdate) {
+        super.willUpdate(changedProperties);
+      }
+      // Derive reactive state in willUpdate so it batches into the current
+      // update cycle. _valueChanged/_optionsChanged set reactive properties
+      // (__options, __activeDesc, __selectedOption, __ready, and possibly
+      // value); calling them from updated() scheduled a redundant second
+      // update (Lit change-in-update warning).
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "value") this._valueChanged(oldValue);
+        if (propName === "options") this._optionsChanged(oldValue);
+      });
+    }
     updated(changedProperties) {
       if (super.updated) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "value") this._valueChanged(oldValue);
-        if (propName === "options") this._optionsChanged(oldValue);
         if (propName === "expanded" && this.shadowRoot && this.expanded) {
           // delay to allow virtualizer to calculate how many
           setTimeout(() => {
@@ -887,9 +899,11 @@ const SimplePickerBehaviors = function (SuperClass) {
       let target = this.shadowRoot.querySelector(`#option-${rownum}-${colnum}`),
         active = this.shadowRoot.querySelector("#" + this.__activeDesc);
       if (target !== null) {
-        target.tabindex = 0; //allow item to be focusable.
+        // tabIndex is the standard property; lowercase tabindex is an
+        // expando that never touches focusability
+        target.tabIndex = 0; //allow item to be focusable.
         target.focus();
-        active.tabindex = -1; //prevent tabbing between options.
+        active.tabIndex = -1; //prevent tabbing between options.
       }
     }
 
@@ -1039,6 +1053,10 @@ const SimplePickerBehaviors = function (SuperClass) {
      */
     _optionsChanged(oldValue) {
       this.__ready = (this.options || []).length > 0;
+      // drop the stale selection so a matching-value early return in
+      // _setSelectedOption can never skip rebuilding __options against the
+      // new grid (e.g. allowNull flipped at runtime while value is null)
+      this.__selectedOption = null;
       if (this.__ready) this._setSelectedOption();
     }
 
@@ -1053,7 +1071,7 @@ const SimplePickerBehaviors = function (SuperClass) {
         !this.allowNull &&
         (this.options || []).length > 0 &&
         this.options[0].length > 0
-          ? this.options[0][0].value
+          ? this.options[0][0]
           : null;
       if (this.options && this.options.length > 0) {
         this.__options =
@@ -1125,8 +1143,8 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @returns {void}
      */
     setOptions(options) {
-      this.set("options", [[]]);
-      this.set("options", options);
+      this.options = [[]];
+      this.options = options;
     }
     /**
      * life cycle, element is removed from DOM

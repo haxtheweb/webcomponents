@@ -2,7 +2,7 @@
  * Copyright 2024
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
@@ -40,17 +40,21 @@ class MediaQuote extends DDD {
 
     // Logic
     this._isCaptionOpen = false; // not set by user
+    this.hasAuthor = false;
+    this.hasAuthorDetail = false;
+    this.hasCaption = false;
     if (this.querySelector) {
-      this.hasAuthor =
-        this.querySelector('[slot="author"]') &&
-        this.querySelector('[slot="author"]').textContent.trim().length > 0;
-      this.hasAuthorDetail =
-        this.querySelector('[slot="author-detail"]') &&
-        this.querySelector('[slot="author-detail"]').textContent.trim().length >
-          0;
-      this.hasCaption =
-        this.querySelector('[slot="caption"]') &&
-        this.querySelector('[slot="caption"]').textContent.trim().length > 0;
+      const author = this.querySelector('[slot="author"]');
+      const authorDetail = this.querySelector('[slot="author-detail"]');
+      const caption = this.querySelector('[slot="caption"]');
+      // coerce to booleans so consumers get false (not null) when the slot
+      // is absent; these flags are combined with the matching properties at
+      // render time so either authoring path displays the content
+      this.hasAuthor = !!(author && author.textContent.trim().length > 0);
+      this.hasAuthorDetail = !!(
+        authorDetail && authorDetail.textContent.trim().length > 0
+      );
+      this.hasCaption = !!(caption && caption.textContent.trim().length > 0);
     }
   }
 
@@ -244,10 +248,10 @@ class MediaQuote extends DDD {
           <figure>
             <div class="top-content">
               <div class="text-overlay"> 
-                <p class="quote">
+                <div class="quote">
                   <div class="content"><slot name="quote">${this.quote}</slot></div>
                     ${
-                      this.hasAuthor
+                      this.hasAuthor || this.author
                         ? html`
                             <div class="citation">
                               <div class="author">
@@ -267,12 +271,14 @@ class MediaQuote extends DDD {
                           `
                         : ""
                     }
-                </p>  
+                </div>  
               </div>
-              <img src="${this.src}" alt="${this.alt}">
+              ${this.src
+                ? html`<img src="${this.src}" alt="${this.alt}">`
+                : nothing}
             </div>
             ${
-              this.hasCaption
+              this.hasCaption || this.caption
                 ? html`
                     <div class="caption">
                       <details>
@@ -302,6 +308,7 @@ class MediaQuote extends DDD {
       hasFilter: {
         type: Boolean,
         attribute: "filter",
+        reflect: true,
       },
       quote: {
         type: String,
@@ -312,6 +319,7 @@ class MediaQuote extends DDD {
       authorDetail: {
         type: String,
         attribute: "author-detail",
+        reflect: true,
       },
       caption: {
         type: String,

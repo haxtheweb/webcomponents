@@ -23,8 +23,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
 
-    this.filtersList = [],
+    this.filtersList = [];
     this.filteredData = [];
+    this.data = [];
     this.activeFilter = '';
     this.__disposer = this.__disposer || [];
 

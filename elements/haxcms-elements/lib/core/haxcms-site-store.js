@@ -712,8 +712,10 @@ class Store {
         varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
         const filterHiddenParentsRecursive = (item) => {
-          // if the item is unpublished then remove it.
-          if (item.metadata.published === false) {
+          // if the item is unpublished then remove it. an item without a
+          // metadata object is not explicitly unpublished, so guard before
+          // reading it (issue #3077, bug 43)
+          if (item.metadata && item.metadata.published === false) {
             return false;
           }
           // if the item has parents, recursively see if any parent is not published
@@ -956,10 +958,13 @@ class Store {
    * gets current/max page number using index counter and items length
    */
   get pageCounter() {
-    return {
-      current: this.activeManifestIndexCounter,
-      total: this.manifest.items.length,
-    };
+    if (this.manifest && this.manifest.items) {
+      return {
+        current: this.activeManifestIndexCounter,
+        total: this.manifest.items.length,
+      };
+    }
+    return { current: 0, total: 0 };
   }
   /**
    * gets and previous siblings of activeItem
@@ -1784,7 +1789,9 @@ class HAXCMSSiteStore extends HTMLElement {
       if (
         store.location &&
         store.location.route &&
-        store.location.route.component
+        store.location.route.component &&
+        store.manifest &&
+        store.manifest.items
       ) {
         // get the id from the router
         const id = store.location.route.name;

@@ -454,7 +454,14 @@ class ImgPanZoom extends LitElement {
           }),
         );
       }
-      if (propName == "navigatorToggled" && this.viewer)
+      // real OpenSeadragon only builds viewer.navigator when showNavigator
+      // is on (this element defaults it to false), so guard the dereference
+      if (
+        propName == "navigatorToggled" &&
+        this.viewer &&
+        this.viewer.navigator &&
+        this.viewer.navigator.element
+      )
         this.viewer.navigator.element.style.display = this.navigatorToggled
           ? "inline-block"
           : "none";
@@ -612,7 +619,7 @@ class ImgPanZoom extends LitElement {
        */
       this.viewer.addHandler("rotate", (e) =>
         this.dispatchEvent(
-          new CustomEvent("pan", {
+          new CustomEvent("rotate", {
             detail: {
               value: e,
             },

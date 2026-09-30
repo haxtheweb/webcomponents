@@ -1319,9 +1319,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
               <simple-search
                 id="simplesearch"
                 controls="transcript"
-                next-button-icon="keyboard-arrow-down"
+                next-button-icon="hardware:keyboard-arrow-down"
                 next-button-label="${this.t.nextResultLabel}"
-                prev-button-icon="keyboard-arrow-up"
+                prev-button-icon="hardware:keyboard-arrow-up"
                 prev-button-label="${this.t.prevResultLabel}"
                 search-input-icon="search"
                 search-input-label="${this.t.searchLabel}"
@@ -2437,15 +2437,48 @@ class A11yMediaPlayer extends SchemaBehaviors(
   /**
    * @param {map} changedProperties the properties that have changed
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in updated() scheduled a redundant second
+    // update (Lit change-in-update warning). The captions handlers stay in
+    // updated() because they depend on this.loadedTracks (assigned in
+    // firstUpdated); running them pre-render would throw on the first update.
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "learningMode" && typeof oldValue !== "undefined") {
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
+    // Captions handlers: move to willUpdate so __captionsOption / cc /
+    // captionsTrack reactive sets batch into the current update cycle.
+    // Guard on this.loadedTracks (assigned in firstUpdated) — these props
+    // don't change on the first update (they're set by user interaction),
+    // so the guard is inherently satisfied on every update that reaches
+    // here. Setting them in updated() scheduled a redundant second update
+    // (Lit change-in-update warning).
+    if (
+      changedProperties.has("__captionsOption") &&
+      this.loadedTracks
+    ) {
+      this._captionsOptionChanged();
+    }
+    if (
+      (changedProperties.has("cc") || changedProperties.has("captionsTrack")) &&
+      this.loadedTracks
+    ) {
+      this._captionsChanged();
+    }
+    if (propName === "id" && this.id === null)
+        this.id = "a11y-media-player" + Date.now();
+    });
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
       let change = (params) => params.includes(propName),
         mediaChange = (param) =>
           change(["__loadedTracks", "youtubeId", "media", param]),
@@ -2462,16 +2495,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this._updateMediaSource();
       }
 
-      if (propName === "id" && this.id === null)
-        this.id = "a11y-media-player" + Date.now();
-
       if (change(["media", "muted"])) this._handleMuteChanged();
       if (change(["media", "volume"])) this.setVolume(this.volume);
       if (change(["media", "autoplay"]) && this.autoplay) this.play();
 
-      /* updates captions */
-      if (propName === "__captionsOption") this._captionsOptionChanged();
-      if (change(["cc", "captionsTrack"])) this._captionsChanged();
+      // NOTE: captions handlers (_captionsChanged / _captionsOptionChanged)
+      // now run in willUpdate above so their reactive sets (__captionsOption,
+      // cc, captionsTrack) batch into the current update cycle. Do NOT call
+      // them here — doing so would re-set those reactive props post-render
+      // and schedule a redundant second update (Lit change-in-update warning).
 
       /* updates layout */
       if (flexChange) this._setAttribute("flex-layout", this.flexLayout);

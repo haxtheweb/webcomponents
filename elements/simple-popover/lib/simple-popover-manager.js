@@ -4,7 +4,13 @@ import "../simple-popover.js";
 class SimplePopoverManager extends LitElement {
   constructor() {
     super();
-    this.popover = null;
+    // Cache of the stamped <simple-popover>. Named `popoverEl` (not
+    // `popover`) because HTMLElement now has a native `popover` IDL property
+    // (Popover API); assigning an element to `this.popover` would hit the
+    // native setter and warn "Found a 'popover' attribute with an invalid
+    // value." This is a plain non-reactive cache (render() does not
+    // reference it), so it stays out of static properties entirely.
+    this.popoverEl = null;
     this.opened = false;
     this.context = null;
     this.orientation = "tb";
@@ -121,9 +127,6 @@ class SimplePopoverManager extends LitElement {
       orientation: {
         type: String,
       },
-      popover: {
-        type: Object,
-      },
     };
   }
   updated(changedProperties) {
@@ -134,8 +137,12 @@ class SimplePopoverManager extends LitElement {
       if (["opened", "position", "orientation"].includes(propName)) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          if (this.shadowRoot && this.popover && this.popover.updatePosition) {
-            this.popover.updatePosition();
+          if (
+            this.shadowRoot &&
+            this.popoverEl &&
+            this.popoverEl.updatePosition
+          ) {
+            this.popoverEl.updatePosition();
           }
         }, 0);
       }
@@ -153,12 +160,16 @@ class SimplePopoverManager extends LitElement {
     if (this.__ignore) {
       this.__ignore = false;
       setTimeout(() => {
-        if (this.shadowRoot && this.popover && this.popover.updatePosition) {
-          this.popover.updatePosition();
+        if (
+          this.shadowRoot &&
+          this.popoverEl &&
+          this.popoverEl.updatePosition
+        ) {
+          this.popoverEl.updatePosition();
         }
       }, 100);
     } else {
-      if (el !== this.popover.target) {
+      if (el !== this.popoverEl.target) {
         // helps manage state if multiple things leveraging this
         // yet having their own internal opened status
         if (
@@ -171,8 +182,8 @@ class SimplePopoverManager extends LitElement {
         }
         this.context = context;
         this.setAttribute("mode", mode || "");
-        this.popover.target = null;
-        this.popover.target = el;
+        this.popoverEl.target = null;
+        this.popoverEl.target = el;
       }
       let position;
       let menu = el.getBoundingClientRect();
@@ -201,8 +212,11 @@ class SimplePopoverManager extends LitElement {
       }
     }
   }
-  firstUpdated() {
-    this.popover = this.shadowRoot.querySelector("simple-popover");
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.popoverEl = this.shadowRoot.querySelector("simple-popover");
   }
 }
 globalThis.customElements.define(

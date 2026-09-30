@@ -44,7 +44,9 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
     this.activeId = null;
     autorun(() => {
       const _mobx_val_0 = toJS(store.activeId);
-      const _mobx_val_1 = toJS(store.manifest.items);
+      const _mobx_val_1 = toJS(
+        store.manifest && store.manifest.items ? store.manifest.items : [],
+      );
       Promise.resolve().then(() => {
         this.activeId = _mobx_val_0;
         this._items = _mobx_val_1;
@@ -124,7 +126,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
         <site-active-title></site-active-title>
         <article>
           <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-          <div id="contentcontainer">
+          <div id="contentcontainer" tabindex="-1">
             <div id="slot"><slot></slot></div>
           </div>
         </article>

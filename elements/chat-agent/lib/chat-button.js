@@ -158,7 +158,7 @@ class ChatButton extends DDD {
       <div
         class="chat-button-wrapper"
         @click=${this.handleChatButton}
-        @keypress=${this.keyPress}
+        @keydown=${this.keyPress}
         tabindex="0"
         aria-label="${this.isInterfaceHidden
           ? "Open Interface"

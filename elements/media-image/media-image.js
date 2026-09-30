@@ -13,7 +13,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element media-image
  */
-class MediaImage extends DDD {
+class MediaImage extends SchemaBehaviors(DDD) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -101,7 +101,6 @@ class MediaImage extends DDD {
         }
 
         media-image-caption {
-          max-height: var(--ddd-icon-4xl);
           border: var(--ddd-border-sm);
           border-color: var(
             --ddd-component-figure-label-title,
@@ -140,6 +139,46 @@ class MediaImage extends DDD {
     this.box = false;
     this.offset = "none";
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive reactive display state in willUpdate so it batches into the
+    // current update cycle. Setting these in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("caption")) {
+      this._computeHasCaption(this.caption);
+    }
+    if (changedProperties.has("link") && this.link) {
+      this.disableZoom = true;
+    }
+    if (
+      (changedProperties.has("thumbnail") ||
+        changedProperties.has("source")) &&
+      this.thumbnail &&
+      !this.source
+    ) {
+      this.disableZoom = true;
+    }
+    if (
+      changedProperties.has("figureLabelTitle") ||
+      changedProperties.has("figureLabelDescription")
+    ) {
+      this.__figureLabel = this._hasFigureLabel(
+        this.figureLabelTitle,
+        this.figureLabelDescription,
+      );
+    }
+    if (
+      changedProperties.has("figureLabelTitle") ||
+      changedProperties.has("caption")
+    ) {
+      this.modalTitle = this.figureLabelTitle
+        ? this.figureLabelTitle
+        : this.caption;
+      this.modalTitle += this.figureLabelDescription
+        ? " - " + this.figureLabelDescription
+        : "";
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -147,35 +186,6 @@ class MediaImage extends DDD {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "asMd" && this[propName]) {
         import("@haxtheweb/md-block/md-block.js");
-      }
-      if (propName == "caption") {
-        this._computeHasCaption(this[propName]);
-      }
-      // if we have a link, we disable zoom automatically
-      if (propName === "link" && this.link) {
-        this.disableZoom = true;
-      }
-      // if we only have thumbnail and no source, disable zoom to avoid blurry modal
-      if (
-        (propName === "thumbnail" || propName === "source") &&
-        this.thumbnail &&
-        !this.source
-      ) {
-        this.disableZoom = true;
-      }
-      if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
-        this.__figureLabel = this._hasFigureLabel(
-          this.figureLabelTitle,
-          this.figureLabelDescription,
-        );
-      }
-      if (["figureLabelTitle", "caption"].includes(propName)) {
-        this.modalTitle = this.figureLabelTitle
-          ? this.figureLabelTitle
-          : this.caption;
-        this.modalTitle += this.figureLabelDescription
-          ? " - " + this.figureLabelDescription
-          : "";
       }
     });
   }
@@ -225,8 +235,8 @@ class MediaImage extends DDD {
       </media-image-citation>
       ${this._hasCaption
         ? html`
-            <media-image-caption tabindex="0">
-              <slot name="caption"
+            <media-image-caption>
+              <slot name="caption">
                 >${this.caption && this.asMd
                   ? html`<md-block
                       style="--ddd-spacing-6:0px;"
@@ -301,6 +311,12 @@ class MediaImage extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Resource ID for microdata, generated through SchemaBehaviors.
+       */
+      schemaResourceID: {
+        type: String,
+      },
       link: {
         type: String,
       },
@@ -776,7 +792,6 @@ class MediaImageCaption extends DDD {
       css`
         :host {
           display: block;
-          overflow: auto;
           margin-top: var(--ddd-spacing-1);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-regular);

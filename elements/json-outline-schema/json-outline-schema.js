@@ -71,7 +71,9 @@ class JsonOutlineSchema extends HTMLElement {
       this.render();
     }
     this.__ready = false;
-    this.file = null;
+    // values written before we are ready are held here and applied once
+    // connected so constructor defaults and early writes are not discarded
+    this.__pending = {};
     this.id = this.generateUUID();
     this.title = "New site";
     this.author = "";
@@ -104,6 +106,14 @@ class JsonOutlineSchema extends HTMLElement {
     });
     this.dispatchEvent(evt);
     this.__ready = true;
+    // apply any values written before we were ready, including the
+    // constructor defaults that were held back by the gated setters
+    if (this.__pending) {
+      Object.keys(this.__pending).forEach((prop) => {
+        this[prop] = this.__pending[prop];
+      });
+      this.__pending = {};
+    }
   }
 
   _copyAttribute(name, to) {
@@ -199,7 +209,7 @@ class JsonOutlineSchema extends HTMLElement {
     for (var key in this.items) {
       if (this.items[key].id == id) {
         let tmp = this.items[key];
-        delete this.items[key];
+        this.items.splice(key, 1);
         return tmp;
       }
     }
@@ -329,6 +339,10 @@ class JsonOutlineSchema extends HTMLElement {
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
+    // an external attribute write replaces any pending value for it
+    if (this.__pending) {
+      delete this.__pending[attr];
+    }
     if (this.debug) {
       this.render();
       this._triggerDebugPaint(this.debug);
@@ -340,6 +354,8 @@ class JsonOutlineSchema extends HTMLElement {
   set file(newValue) {
     if (this.__ready) {
       this.setAttribute("file", newValue);
+    } else {
+      this.__pending.file = newValue;
     }
   }
   get id() {
@@ -348,6 +364,8 @@ class JsonOutlineSchema extends HTMLElement {
   set id(newValue) {
     if (this.__ready) {
       this.setAttribute("id", newValue);
+    } else {
+      this.__pending.id = newValue;
     }
   }
   get title() {
@@ -356,6 +374,8 @@ class JsonOutlineSchema extends HTMLElement {
   set title(newValue) {
     if (this.__ready) {
       this.setAttribute("title", newValue);
+    } else {
+      this.__pending.title = newValue;
     }
   }
   get author() {
@@ -364,6 +384,8 @@ class JsonOutlineSchema extends HTMLElement {
   set author(newValue) {
     if (this.__ready) {
       this.setAttribute("author", newValue);
+    } else {
+      this.__pending.author = newValue;
     }
   }
   get description() {
@@ -372,6 +394,8 @@ class JsonOutlineSchema extends HTMLElement {
   set description(newValue) {
     if (this.__ready) {
       this.setAttribute("description", newValue);
+    } else {
+      this.__pending.description = newValue;
     }
   }
   get license() {
@@ -380,6 +404,8 @@ class JsonOutlineSchema extends HTMLElement {
   set license(newValue) {
     if (this.__ready) {
       this.setAttribute("license", newValue);
+    } else {
+      this.__pending.license = newValue;
     }
   }
   get debug() {
@@ -484,6 +510,7 @@ class JsonOutlineSchema extends HTMLElement {
               type: "number",
             },
           };
+          break;
         case "metadata":
         case "items":
           props.type = "array";
@@ -642,17 +669,12 @@ class JsonOutlineSchema extends HTMLElement {
       // only work on things if they are valid HTML nodes
       if (typeof clone.firstChild.tagName !== typeof undefined) {
         const child = clone.firstChild;
-        // walk deeper as this element has a child element
-        if (
-          child.firstChild !== null &&
-          typeof child.firstChild.tagName !== typeof undefined
-        ) {
-          // usually this will happen but it's possible to have a corrupted
-          // structure in HTML where there are lots of ULs with no immediate children
-          // in this case we defer to whoever the parent of this item was
-          // This means on a recall that the visual issue would be corrected
-          // but it also means the data will technically transform the HTML structure
-          // which for our purposes, is a good thing.
+        // a list sitting at this level is a container for more items;
+        // when it follows an item (as itemsToNodes generates) the items
+        // inside belong to that item, otherwise we defer to whoever the
+        // parent of this level was, which corrects corrupted structures
+        // of ULs with no immediate children
+        if (child.tagName === "UL" || child.tagName === "OL") {
           let parentPassdown = parent;
           // ensure this is set
           if (typeof item.id !== typeof undefined) {
@@ -682,11 +704,21 @@ class JsonOutlineSchema extends HTMLElement {
           item.indent = indent;
           item.order = order;
           order = order + 1;
-          // @todo mayyyyyy work but if nested structures may not for text
-          // @todo need to look for a textNode that has the element content
-          item.title = child.innerText;
+          // the title is the item's own text; clone the child and strip
+          // any nested lists so child titles are not folded into it
+          let titleClone = child.cloneNode(true);
+          titleClone.querySelectorAll("ul, ol").forEach((n) => n.remove());
+          item.title = titleClone.innerText;
           item.parent = parent;
           items.push(item);
+          // walk nested lists regardless of a leading text node so that
+          // normal li title + nested ul markup keeps its hierarchy and
+          // children are stamped with their real containing item
+          child.querySelectorAll("ul, ol").forEach((list) => {
+            items = items.concat(
+              this.getChildOutline(list, 0, indent + 1, item.id),
+            );
+          });
         }
       }
       clone.removeChild(clone.firstChild);

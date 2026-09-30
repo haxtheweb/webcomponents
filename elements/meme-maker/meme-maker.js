@@ -36,6 +36,16 @@ class MemeMaker extends LitElement {
           width: 100%;
           height: auto;
         }
+        figcaption {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          pointer-events: none;
+        }
         .top-text,
         .bottom-text {
           position: absolute;
@@ -87,8 +97,10 @@ class MemeMaker extends LitElement {
           aria-describedby="${ifDefined(this.describedBy)}"
           ?crossorigin="${this.crossorigin}"
         />
-        <figcaption class="top-text">${this.topText}</figcaption>
-        <figcaption class="bottom-text">${this.bottomText}</figcaption>
+        <figcaption class="meme-caption">
+          <div class="top-text">${this.topText}</div>
+          <div class="bottom-text">${this.bottomText}</div>
+        </figcaption>
       </figure>
     `;
   }

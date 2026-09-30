@@ -24,7 +24,7 @@
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
     "lit": "3.3.3",

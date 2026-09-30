@@ -28,6 +28,7 @@ class CodePenButton extends LitElement {
           width="40"
           height="40"
           value="Open code pen in a new window"
+          alt="${this.checkItOut}"
           class="codepen-mover-button"
           part="button"
         />
@@ -38,7 +39,10 @@ class CodePenButton extends LitElement {
   static get tag() {
     return "code-pen-button";
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.setAttribute("title", this.checkItOut);
   }
   constructor() {
@@ -49,6 +53,9 @@ class CodePenButton extends LitElement {
     this.dataString = "";
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "data" && this[propName] && this.dataString == "") {
         this.dataString = this._getDataString(this[propName]);

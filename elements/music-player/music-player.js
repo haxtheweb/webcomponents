@@ -43,6 +43,12 @@ class MusicPlayer extends LitElement {
           width: var(--music-player-midi-player-width, unset);
           margin: var(--music-player-midi-player-margin, 4px);
         }
+        midi-player::part(time) {
+          /* the bundled midi-player dims this label to 0.5 opacity while its
+             controls are frozen (still initializing), which drops the text
+             below WCAG contrast requirements; keep it fully opaque */
+          opacity: 1 !important;
+        }
         :host([no-visual]) midi-visualizer {
           display: none;
         }
@@ -93,7 +99,10 @@ class MusicPlayer extends LitElement {
   /**
    * LitElement life cycle - 1st updated
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
     setTimeout(() => {
       import("./lib/html-midi-player.js").then((module) => {

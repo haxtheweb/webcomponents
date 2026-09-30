@@ -158,8 +158,11 @@ class SiteActiveTags extends I18NMixin(LitElement) {
         if (this.editMode) {
           // micro-task so slotted children are inhjected correctly
           setTimeout(() => {
+            if (!globalThis.HaxStore) {
+              return;
+            }
             const haxStore = globalThis.HaxStore.requestAvailability();
-            if (!haxStore.activeHaxBody) {
+            if (!haxStore || !haxStore.activeHaxBody) {
               return;
             }
             this.activateController = new AbortController();
@@ -199,8 +202,12 @@ class SiteActiveTags extends I18NMixin(LitElement) {
           }, 0);
         } else {
           this.noFallback = false;
-          this.activateController.abort();
-          this._inProgressPageBreak.disconnect();
+          if (this.activateController) {
+            this.activateController.abort();
+          }
+          if (this._inProgressPageBreak) {
+            this._inProgressPageBreak.disconnect();
+          }
         }
       }
     });

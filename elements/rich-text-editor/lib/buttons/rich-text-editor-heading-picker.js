@@ -52,11 +52,16 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     return "hide";
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "blocks") this._setOptions();
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Rebuild options when `blocks` changes. _setOptions() sets reactive
+    // `tagsList` + `options`; doing this in willUpdate batches those sets
+    // into the current update cycle instead of scheduling a redundant second
+    // update (Lit change-in-update warning). The initial build is handled by
+    // RichTextEditorPickerBehaviors.willUpdate on the first update.
+    if (changedProperties.has("blocks")) {
+      this._setOptions();
+    }
   }
 
   /**

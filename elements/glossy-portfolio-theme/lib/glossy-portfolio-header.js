@@ -37,6 +37,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "Title";
     this.homeLink = "";
+    this.topItems = [];
     this.__disposer = this.__disposer || [];
     this.isOverflow = false;
     this.isOpen = false;
@@ -311,8 +312,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       >
 
         <div class="logo-hamburger desktop">
-          <a class="logo-link desktop" href="${this.homeLink}" @focus=${this.fullOpacity}>
-            <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" />
+          <a class="logo-link desktop" href="${this.homeLink}" aria-label="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" @focus=${this.fullOpacity}>
+            <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a>
         </div>
         <nav aria-label="Site">
@@ -331,8 +332,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
-          <a class="logo-link mobile" href="${this.homeLink}" @click="${this.closeHamburger}">
-            <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" />
+          <a class="logo-link mobile" href="${this.homeLink}" aria-label="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" @click="${this.closeHamburger}">
+            <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a> 
 
           <!-- hamburger/close button -->

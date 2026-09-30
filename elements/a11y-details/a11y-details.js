@@ -313,8 +313,10 @@ class A11yDetails extends LitElement {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
   }
-  firstUpdated() {
-    if (super.firstUpdated) super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this._updateElement();
     this.observer.observe(this, { childList: true, subtree: true });
   }

@@ -236,12 +236,14 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           type: Boolean,
           reflect: true,
         },
-        /**
-         * Field element
-         */
-        field: {
-          type: Object,
-        },
+        // NOTE: `field` is intentionally NOT a reactive property. It is a
+        // cache of the stamped <input>/<select>/<textarea>/<fieldset> assigned
+        // in _updateField() (called from firstUpdated/updated, which needs the
+        // shadow DOM). render() never reads `this.field`, so making it a plain
+        // instance property avoids Lit's change-in-update warning (setting a
+        // reactive prop post-render) AND skips a wasted re-render. This fixes
+        // the warning for every simple-fields descendant (simple-fields-field,
+        // simple-fields-url-combo, hax-tray-upload, simple-colors-picker, ...).
         /**
          * Unique id
          */
@@ -435,6 +437,38 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      *
      * @memberof SimpleFieldsContainer
      */
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Derive reactive props from the slotted field (light DOM) in
+      // willUpdate so they batch into the current update cycle. Light-DOM
+      // children are available pre-render. Setting these in
+      // firstUpdated/updated (via _updateField) scheduled a redundant second
+      // update (Lit change-in-update warning). The DOM side-effects of
+      // _updateField (setAttribute, addEventListener) stay in
+      // firstUpdated/updated since they need the slotted element to exist.
+      const slottedField =
+        this.querySelector && this.querySelector("[slot=field]")
+          ? this.querySelector("[slot=field]")
+          : undefined;
+      // id derives from fieldId (no DOM dependency)
+      if (
+        (changedProperties.has("fieldId") ||
+          changedProperties.has("id") ||
+          !this.hasUpdated) &&
+        !this.id
+      ) {
+        this.id = `${this.fieldId || ""}-wrapper`;
+      }
+      if (slottedField) {
+        let tag = slottedField.tagName.toLowerCase(),
+          type = slottedField.getAttribute("type") || "text";
+        this.type = this._getValidType(tag === "input" ? type : tag);
+        this.required = slottedField.required;
+        this.disabled = slottedField.disabled;
+        this.readonly = slottedField.readonly;
+        if (this.type === "select") this.multiple = slottedField.multiple;
+      }
+    }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) super.firstUpdated(changedProperties);
       this._updateField();
@@ -516,6 +550,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           "search",
         ].includes(this.type) ||
         (this.field &&
+          this.field.tagName &&
           this.field.tagName.toLowerCase() === "simple-colors-picker")
       );
     }

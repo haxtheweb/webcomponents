@@ -337,7 +337,17 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
   }
 
   sync(property) {
-    if (this.editor && property) this[property] = this.editor[property];
+    // Only sync known reactive table properties: composed change events can
+    // carry arbitrary detail, and blindly writing this[detail] would let any
+    // bubbling event inject arbitrary properties onto the host.
+    if (
+      this.editor &&
+      property &&
+      this.constructor.properties &&
+      property in this.constructor.properties
+    ) {
+      this[property] = this.editor[property];
+    }
   }
 
   async _handleCellChanged(e) {

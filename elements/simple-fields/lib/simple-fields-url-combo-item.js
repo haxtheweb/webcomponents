@@ -278,15 +278,17 @@ class SimpleFieldsUrlComboItem extends LitElement {
       ? this.icon
       : this.isAnchor
         ? this.iconTypes["anchor"]
-        : this.isLocal && this.isPage
-          ? this.iconTypes["page"]
-          : this.isPage
-            ? this.iconTypes["html"]
-            : this.isEmail
-              ? this.iconTypes["email"]
-              : this.isPhone
-                ? this.iconTypes["tel"]
-                : !!this.fileExtension && this.fileExtension !== ""
+        : this.isEmail
+          ? this.iconTypes["email"]
+          : this.isPhone
+            ? this.iconTypes["tel"]
+            : this.isLocal && this.isPage
+              ? this.iconTypes["page"]
+              : this.isPage
+                ? this.iconTypes["html"]
+                : !!this.fileExtension &&
+                    this.fileExtension !== "" &&
+                    this.iconTypes[this.fileExtension]
                   ? this.iconTypes[this.fileExtension]
                   : this.iconTypes["file"];
   }

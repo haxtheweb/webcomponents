@@ -72,6 +72,11 @@ class RpgCharacter extends SimpleColors {
     this.hatColor = 0;
     this.demo = false;
     this.fire = false;
+    // stored so updated() removes the exact reference it added while demo
+    // was enabled (a fresh anonymous arrow could never be removed)
+    this._demoClickHandler = (e) => {
+      this.seed = Math.random().toString(36).substring(2, 12);
+    };
     if (globalThis.matchMedia) {
       this.reduceMotion = globalThis.matchMedia(
         "(prefers-reduced-motion: reduce)",
@@ -155,12 +160,75 @@ class RpgCharacter extends SimpleColors {
       `,
     ];
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Generate a random seed once if the author didn't supply one. Doing
+    // this in willUpdate lets the trait derivation below run in the same
+    // update cycle instead of scheduling a redundant second update.
+    if (this.seed === null && !this.__seedGenerated) {
+      this.__seedGenerated = true;
+      this.seed = Math.random().toString(36).substring(2, 12);
+    }
+    // fire mode speeds up (or restores) the walking animation speed
+    if (changedProperties.has("fire")) {
+      this.speed = this.fire ? 100 : defaultSpeed;
+    }
+    // Derive the character's traits from the seed inside the update cycle.
+    // Setting these reactive properties in updated() triggered Lit's
+    // change-in-update warning because it scheduled a new update after the
+    // current one completed.
+    if (changedProperties.has("seed") && this.seed) {
+      // use the seed to generate a random number
+      let seed = 54;
+      for (let i = 0; i < this.seed.length; i++) {
+        // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
+        if (i < 64) {
+          seed *= this.seed.charCodeAt(i);
+        }
+      }
+      const funKeys = {
+        zpg: "7501517984378880262144",
+        edtechjoker: "712215550",
+        btopro: "7122155501",
+      };
+      // ensure huge numbers don't bust JS max
+      seed = BigInt(seed).toString();
+      if (Object.keys(funKeys).includes(this.seed)) {
+        seed = funKeys[this.seed];
+      }
+      // support a literal seed value which is numerical selection of each of these in order
+      if (this.literalseed) {
+        seed = BigInt(this.seed).toString();
+      }
+      Object.keys(charBuilder).forEach((trait, key) => {
+        if (seed[key] !== undefined) {
+          if (trait === "leg") {
+            this[trait] =
+              charBuilder[trait][
+                Math.floor(
+                  Math.random() * Object.keys(charBuilder[trait]).length,
+                )
+              ];
+          }
+          // base needs to be even 50/50 split
+          else if (trait === "base") {
+            this[trait] = seed[key] >= 5 ? 1 : 0;
+          } else if (trait === "face") {
+            this[trait] = seed[key] > 5 ? 1 : seed[key];
+          } else {
+            this[trait] = seed[key];
+          }
+        } else {
+          this[trait] = 0;
+        }
+      });
+    }
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
-    }
-    if (this.seed === null) {
-      this.seed = Math.random().toString(36).substring(2, 12);
     }
   }
   /**
@@ -217,8 +285,11 @@ class RpgCharacter extends SimpleColors {
       <style>
         #cardcircle {
           fill: var(
-            --simple-colors-default-theme-${this.accentColor}-8,
-            var(--simple-colors-default-theme-accent-8, yellow)
+            --ddd-theme-accent,
+            var(
+              --simple-colors-default-theme-${this.accentColor}-8,
+              var(--simple-colors-default-theme-accent-8, yellow)
+            )
           );
         }
         div {
@@ -249,22 +320,12 @@ class RpgCharacter extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "fire") {
-        this.speed = this[propName] ? 100 : defaultSpeed;
-      }
       if (propName === "demo") {
-        if (this[propName]) {
-          this.shadowRoot
-            .querySelector(".wrapper")
-            .addEventListener("click", (e) => {
-              this.seed = Math.random().toString(36).substring(2, 12);
-            });
-        } else {
-          this.shadowRoot
-            .querySelector(".wrapper")
-            .removeEventListener("click", (e) => {
-              e.target.seed = Math.random().toString(36).substring(2, 12);
-            });
+        const wrapper = this.shadowRoot.querySelector(".wrapper");
+        if (wrapper && this[propName]) {
+          wrapper.addEventListener("click", this._demoClickHandler);
+        } else if (wrapper) {
+          wrapper.removeEventListener("click", this._demoClickHandler);
         }
       }
       if (
@@ -286,52 +347,6 @@ class RpgCharacter extends SimpleColors {
               break;
           }
         }, this.speed);
-      }
-      if (propName === "seed" && this[propName]) {
-        // use the seed to generate a random number
-        let seed = 54;
-        for (let i = 0; i < this.seed.length; i++) {
-          // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
-          if (i < 64) {
-            seed *= this.seed.charCodeAt(i);
-          }
-        }
-        const funKeys = {
-          zpg: "7501517984378880262144",
-          edtechjoker: "712215550",
-          btopro: "7122155501",
-        };
-        // ensure huge numbers don't bust JS max
-        seed = BigInt(seed).toString();
-        if (Object.keys(funKeys).includes(this[propName])) {
-          seed = funKeys[this[propName]];
-        }
-        // support a literal seed value which is numerical selection of each of these in order
-        if (this.literalseed) {
-          seed = BigInt(this.seed).toString();
-        }
-        Object.keys(charBuilder).forEach((trait, key) => {
-          if (seed[key] !== undefined) {
-            if (trait === "leg") {
-              this[trait] =
-                charBuilder[trait][
-                  Math.floor(
-                    Math.random() * Object.keys(charBuilder[trait]).length,
-                  )
-                ];
-            }
-            // base needs to be even 50/50 split
-            else if (trait === "base") {
-              this[trait] = seed[key] >= 5 ? 1 : 0;
-            } else if (trait === "face") {
-              this[trait] = seed[key] > 5 ? 1 : seed[key];
-            } else {
-              this[trait] = seed[key];
-            }
-          } else {
-            this[trait] = 0;
-          }
-        });
       }
     });
   }

@@ -34,7 +34,7 @@ class JSONOutlineSchemaItem {
     //    if (file_exists(basePath + this.location)) {
     //      return file_get_contents(basePath + this.location);
     //    }
-    return FALSE;
+    return false;
   }
   /**
    * Load data from the location specified
@@ -43,7 +43,7 @@ class JSONOutlineSchemaItem {
     //    if (file_exists(basePath + this.location)) {
     //      return file_put_contents(basePath + this.location, body);
     //    }
-    return FALSE;
+    return false;
   }
   /**
    * Generate a UUID

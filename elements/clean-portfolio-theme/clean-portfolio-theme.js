@@ -100,6 +100,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.categoryTags = [];
     this.allTags = [];
     this.items = [];
+    this.topItems = [];
     this.__disposer = this.__disposer || [];
     this.__boundViewportSync = this._syncViewportLayout.bind(this);
 
@@ -265,7 +266,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       Promise.resolve().then(() => {
         this.manifest = _mobx_val_0;
         let LList = new licenseList();
-        if (this.manifest.license && LList[this.manifest.license]) {
+        if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
           this.licenseName = LList[this.manifest.license].name;
           this.licenseLink = LList[this.manifest.license].link;
           this.licenseImage = LList[this.manifest.license].image;
@@ -1385,7 +1386,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       <a class="skip-link" href="#contentcontainer">Skip to content</a>
       <header>
         <div class="header-inner">
-          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
+          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" aria-label="${this.siteTitle || 'Site home'}" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
           <nav aria-label="Main navigation">
             ${this.topItems.map(
                 (item) => html`
@@ -1526,7 +1527,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <div> 
           <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
           <div>Site generated: ${this.lastUpdated}</div>
-          <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
+          <div>Copyright: ${this.copyrightYear} ${store.manifest && store.manifest.author ? store.manifest.author : ""}</div>
           <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">View Content by Tag</a></div>
         </div>
         <div

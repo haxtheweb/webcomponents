@@ -47,8 +47,8 @@ export const UIRenderPieces = function (SuperClass) {
           }
           #activestudentbtn img,
           #activestudentbtn simple-icon-lite {
-            --simple-icon-width: 32px;
-            --simple-icon-height: 32px;
+            --simple-icon-width: var(--ddd-icon-xs, 32px);
+            --simple-icon-height: var(--ddd-icon-xs, 32px);
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -65,7 +65,9 @@ export const UIRenderPieces = function (SuperClass) {
           id="activestudentbtn"
           ?disabled="${!this.ready}"
         >
-          ${this.database.roster[this.activeStudent] &&
+          ${this.database &&
+          this.database.roster &&
+          this.database.roster[this.activeStudent] &&
           this.database.roster[this.activeStudent].photo
             ? html`<img
                 src="${this.database.roster[this.activeStudent].photo}"
@@ -80,7 +82,9 @@ export const UIRenderPieces = function (SuperClass) {
           auto
         >
           <div>
-            ${this.database.roster[this.activeStudent]
+            ${this.database &&
+            this.database.roster &&
+            this.database.roster[this.activeStudent]
               ? html` <grade-book-student-block
                   .student="${this.database.roster[this.activeStudent]}"
                 ></grade-book-student-block>`

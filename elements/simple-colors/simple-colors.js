@@ -1161,11 +1161,7 @@ const SimpleColorsSuper = function (SuperClass) {
      * @returns {string} the CSS Variable
      */
     makeVariable(color = "grey", shade = 1, theme = "default") {
-      return SimpleColorsSharedStylesGlobal.makeVariable(
-        (color = "grey"),
-        (shade = 1),
-        (theme = "default"),
-      );
+      return SimpleColorsSharedStylesGlobal.makeVariable(color, shade, theme);
     }
 
     /**

@@ -95,15 +95,19 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
               /></a>
             `
           : ``}
-        <span class="license-tag"
-          ><a
-            class="license-link"
-            target="_blank"
-            href="${this.licenseLink}"
-            rel="noopener noreferrer"
-            >${this.licenseTag}</a
-          ></span
-        >
+        ${this.licenseTag
+          ? html`
+              <span class="license-tag"
+                ><a
+                  class="license-link"
+                  target="_blank"
+                  href="${this.licenseLink}"
+                  rel="noopener noreferrer"
+                  >${this.licenseTag}</a
+                ></span
+              >
+            `
+          : ``}
         ${this.licenseName
           ? html`<span> &mdash; ${this.licenseName}</span>`
           : ``}

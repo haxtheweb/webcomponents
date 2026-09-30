@@ -214,7 +214,9 @@ class SimpleIconPicker extends SimplePicker {
         let prefix = icon,
           iconname = icon,
           include = true;
-        (prefix = prefix.replace(/:.*/, "")), iconname.replace("icons:", "");
+        prefix = prefix.replace(/:.*/, "");
+        // strip the icons: prefix so exclusion matches prefix-less names too
+        iconname = iconname.replace("icons:", "");
         if (
           exclude &&
           (exclude.includes(icon) || exclude.includes(`icons:${iconname}`))

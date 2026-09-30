@@ -64,7 +64,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           margin: 0;
           color: var(
             --editable-table-caption-color,
-            var(--editable-table-color, #222)
+            var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
           );
         }
         table *[data-expanded="true"] {
@@ -93,22 +93,25 @@ class EditableTableEdit extends editBehaviors(DDD) {
         }
         simple-toolbar {
           width: 100%;
-          --simple-toolbar-button-bg: var(--editable-table-bg-color, #fff);
+          --simple-toolbar-button-bg: var(
+            --editable-table-bg-color,
+            var(--ddd-theme-default-white, #fff)
+          );
           --simple-toolbar-button-toggled-bg: var(
             --editable-table-stripe-bg-color,
-            #f0f0f0
+            var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
           );
           --simple-toolbar-button-hover-bg: var(
             --editable-table-bg-color,
-            #fff
+            var(--ddd-theme-default-white, #fff)
           );
           --simple-toolbar-button-border-color: var(
             --editable-table-border-color,
-            #999
+            var(--ddd-theme-default-coalyGray, #999)
           );
           --simple-toolbar-button-toggled-border-color: var(
             --editable-table-color,
-            #222
+            var(--ddd-theme-default-coalyGray, #222)
           );
           --simple-toolbar-button-hover-border-color: unset;
         }
@@ -122,7 +125,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
           transition: all 2s;
           color: var(
             --editable-table-caption-color,
-            var(--editable-table-color, #222)
+            var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
           );
         }
         .group:not([hidden]) {
@@ -154,7 +157,10 @@ class EditableTableEdit extends editBehaviors(DDD) {
           padding: 0;
           border-width: var(--editable-table-border-width, 1px);
           border-style: var(--editable-table-border-style, solid);
-          border-color: var(--editable-table-border-color, #999);
+          border-color: var(
+            --editable-table-border-color,
+            var(--ddd-theme-default-coalyGray, #999)
+          );
         }
         td {
           margin: 0;
@@ -530,7 +536,7 @@ class EditableTableEdit extends editBehaviors(DDD) {
               ? ""
               : html`
                   <simple-icon-lite
-                    calss="printable-icon"
+                    class="printable-icon"
                     icon="print"
                     aria-hidden="true"
                   >
@@ -932,6 +938,16 @@ class EditableTableEdit extends editBehaviors(DDD) {
   }
 
   changeCell(row, col, val) {
+    // bounds check: an out-of-range cell (e.g. a stale blur handler firing
+    // after its row/column was removed) has nothing to change
+    if (
+      !this.data ||
+      !this.data[row] ||
+      col < 0 ||
+      col >= this.data[row].length
+    ) {
+      return;
+    }
     let temp = this.data.slice();
     temp[row][col] = val;
     this.data = [];

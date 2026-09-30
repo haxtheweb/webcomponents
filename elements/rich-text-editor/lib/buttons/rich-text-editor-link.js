@@ -77,7 +77,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.label = "Link";
     this.toggledCommand = "unlink";
     this.toggledLabel = "Edit link";
-    this.toggles = "true";
+    // boolean, not the string "true" (issue #3077, bug 32)
+    this.toggles = true;
     this.tagsList = "a";
     this.value = {
       ...super.value,
@@ -101,29 +102,30 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     ];
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "allowTarget") {
-        this.fields = !this.allowTarget
-          ? [...this.defaultFields]
-          : [
-              ...this.defaultFields,
-              {
-                property: "target",
-                title: "Target",
-                description: "Where to open the link.",
-                inputMethod: "select",
-                options: {
-                  "": "Same window",
-                  _blank: "New window - _blank",
-                  _top: "Top window - _top",
-                  _parent: "Parent window - _parent",
-                },
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive fields from allowTarget in willUpdate so it batches into the
+    // current update cycle. Setting fields in updated() scheduled a
+    // redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("allowTarget")) {
+      this.fields = !this.allowTarget
+        ? [...this.defaultFields]
+        : [
+            ...this.defaultFields,
+            {
+              property: "target",
+              title: "Target",
+              description: "Where to open the link.",
+              inputMethod: "select",
+              options: {
+                "": "Same window",
+                _blank: "New window - _blank",
+                _top: "Top window - _top",
+                _parent: "Parent window - _parent",
               },
-            ];
-      }
-    });
+            },
+          ];
+    }
   }
 
   /**

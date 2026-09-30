@@ -1,4 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "../a11y-figure.js";
 
 describe("a11y-figure test", () => {
@@ -430,7 +431,7 @@ describe("a11y-figure test", () => {
           close-text="${demoSchema.properties.closeText}"
           style="${demoSchema.properties.style}"
         >
-          ${html([demoSchema.content])}
+          ${unsafeHTML(demoSchema.content)}
         </a11y-figure>
       `);
       await haxTestElement.updateComplete;

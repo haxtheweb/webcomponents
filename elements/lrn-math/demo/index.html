@@ -4,26 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrnMath: lrn-math Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../lrn-math.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../lrn-math.js'
     </script>
-    
   </head>
   <body>
-    <div class="vertical-section-container">
-      <h3>Basic lrn-math demo</h3>
+    <div class="vertical-section-container centered">
+      <h1>lrn-math demo</h1>
+      <p>
+        lrn-math renders LaTeX in place using MathJax, which the element loads
+        from its CDN when the first equation connects. Math written directly in
+        the tag renders inline by default; set mode to display for block
+        rendering, or drive the equation through the mathtext attribute, which
+        is also how the HAX editor keeps the source text in sync.
+      </p>
+      <h2>Basic inline math</h2>
       <demo-snippet>
         <template>
-          <lrn-math>e^{x^2}</lrn-math>
+          <p>
+            The Gaussian integral
+            <lrn-math>\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}</lrn-math>
+            has no elementary antiderivative, yet the definite value is exact.
+          </p>
         </template>
       </demo-snippet>
-      <h3>Inline lrn-math demo</h3>
+      <h2>Display math with mode</h2>
       <demo-snippet>
         <template>
-          <lrn-math>int_0^{20} e^{x^2} dx</lrn-math>
+          <lrn-math mode="display">
+            \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
+          </lrn-math>
+        </template>
+      </demo-snippet>
+      <h2>Math from the mathtext attribute</h2>
+      <p>
+        Setting mathtext alone is enough to typeset the equation, which is the
+        path HAX takes when editing the source text.
+      </p>
+      <demo-snippet>
+        <template>
+          <lrn-math mathtext="c = \sqrt{a^2 + b^2}"></lrn-math>
         </template>
       </demo-snippet>
     </div>

@@ -147,7 +147,10 @@ export function createSWC(swc) {
     /**
      * LitElement shadow dom ready
      */
-    firstUpdated() {
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
       if (swc.events && swc.events.shadow) {
         for (let target in swc.events.shadow) {
           for (let eName in swc.events.shadow[target]) {

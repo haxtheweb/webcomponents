@@ -6,7 +6,6 @@ import { html, svg, css, LitElement } from "lit";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
 import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
-import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 
 /**
  * `simple-iconset-demo`
@@ -131,24 +130,31 @@ class SimpleIconsetDemo extends LitElement {
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldVlaue, propName) => {
-      if (propName == "imports") this._getIconsets();
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        propName == "imports" ||
+        propName == "exclude" ||
+        propName == "include"
+      )
+        this._getIconsets();
     });
   }
   _getIconsets() {
     let imports =
         this.imports.length < 1
-          ? [SimpleIconIconsetsManifest, HaxIconsetManifest]
+          ? [SimpleIconIconsetsManifest]
           : this.imports,
       iconsets = imports.flat(),
       excludeSets = (this.exclude || "").split(" "),
       includeSets = (this.include || "").split(" ");
 
+    // filter against the iconset NAME, not the iconset object; comparing
+    // objects against the split name strings never matched anything
     this.iconsets = iconsets.filter(
       (iconset) =>
         !!iconset &&
-        !excludeSets.includes(iconset) &&
-        (!this.include || includeSets.includes(iconset)),
+        !excludeSets.includes(iconset.name) &&
+        (!this.include || includeSets.includes(iconset.name)),
     );
   }
 }

@@ -15,6 +15,101 @@ describe("simple-datetime test", () => {
   });
 });
 
+describe('simple-datetime behavior', () => {
+  /**
+   * Lit schedules a second update because updated() sets this.date,
+   * so settle across a couple of cycles before asserting rendered output
+   */
+  async function settle(el) {
+    await el.updateComplete
+    await new Promise((resolve) => setTimeout(resolve, 0))
+    await el.updateComplete
+  }
+
+  it('renders a time element bound to the computed date', async () => {
+    const el = await fixture(
+      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`,
+    )
+    await settle(el)
+    const expected = new Date(445939200 * 1000).format('M jS, Y')
+    expect(el.date).to.equal(expected)
+    const time = el.shadowRoot.querySelector('time')
+    expect(time).to.exist
+    expect(time.getAttribute('datetime')).to.equal(expected)
+    expect(time.textContent.trim()).to.equal(expected)
+  })
+
+  it('treats the timestamp as milliseconds when unix is not set', async () => {
+    const el = await fixture(
+      html`<simple-datetime timestamp="1704067200000"></simple-datetime>`,
+    )
+    await settle(el)
+    expect(el.unix).to.equal(false)
+    expect(el.date).to.equal(new Date(1704067200000).format('M jS, Y'))
+  })
+
+  it('has the documented defaults', async () => {
+    const el = await fixture(html`<simple-datetime></simple-datetime>`)
+    await settle(el)
+    expect(el.format).to.equal('M jS, Y')
+    expect(el.unix).to.equal(false)
+    // without a timestamp there is nothing to format so it stays empty
+    const time = el.shadowRoot.querySelector('time')
+    expect(time).to.exist
+    expect(el.date).to.equal(undefined)
+    expect(time.getAttribute('datetime')).to.equal('')
+    expect(time.textContent.trim()).to.equal('')
+  })
+
+  it('recomputes the date when format changes', async () => {
+    const el = await fixture(
+      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`,
+    )
+    await settle(el)
+    el.format = 'Y-m-d'
+    await settle(el)
+    expect(el.date).to.equal(new Date(445939200 * 1000).format('Y-m-d'))
+    expect(el.shadowRoot.querySelector('time').textContent.trim()).to.equal(
+      el.date,
+    )
+  })
+
+  it('recomputes the date when unix is toggled', async () => {
+    const el = await fixture(
+      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`,
+    )
+    await settle(el)
+    el.unix = false
+    await settle(el)
+    // without unix, 445939200 is read as milliseconds
+    expect(el.date).to.equal(new Date(445939200).format('M jS, Y'))
+  })
+
+  it('recomputes the date when timestamp changes', async () => {
+    const el = await fixture(
+      html`<simple-datetime unix="" timestamp="445939200"></simple-datetime>`,
+    )
+    await settle(el)
+    el.timestamp = 1704067200
+    await settle(el)
+    expect(el.date).to.equal(new Date(1704067200 * 1000).format('M jS, Y'))
+  })
+
+  it('formatDate multiplies unix timestamps by 1000', () => {
+    const el = document.createElement('simple-datetime')
+    // epoch renders in local time, so compare with a locally computed year
+    expect(el.formatDate(0, 'Y', true)).to.equal(
+      String(new Date(0).getFullYear()),
+    )
+    expect(el.formatDate(0, 'Y', false)).to.equal(
+      String(new Date(0).getFullYear()),
+    )
+    // U is timezone independent: 2s as unix -> 2000ms as javascript
+    expect(el.formatDate(2, 'U', true)).to.equal('2')
+    expect(el.formatDate(2000, 'U', false)).to.equal('2')
+  })
+})
+
 /*
 describe("A11y/chai axe tests", () => {
   it("simple-datetime passes accessibility test", async () => {

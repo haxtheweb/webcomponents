@@ -362,10 +362,19 @@ class GradeBook extends UIRenderPieces(
                   if (response.ok) {
                     return response.json();
                   }
+                  // a non-ok response has no database to parse; warn and
+                  // leave the store untouched instead of writing undefined
+                  // into it and corrupting every autorun downstream
+                  console.warn(
+                    `grade-book URL source request failed: ${response.status}`,
+                  );
+                  return null;
                 })
                 .then((json) => {
-                  GradeBookStore.database = json;
-                  this.importStateCleanup();
+                  if (json) {
+                    GradeBookStore.database = json;
+                    this.importStateCleanup();
+                  }
                 })
                 .catch((error) => {
                   console.warn(error);
@@ -1327,7 +1336,7 @@ class GradeBook extends UIRenderPieces(
         15,
       );
       const cd = new Date();
-      const dateTime = `${cd.getFullYear()}-${cd.getMonth()}-${cd.getDate()}__${cd.getHours()}-${cd.getMinutes()}-${cd.getSeconds()}`;
+      const dateTime = `${cd.getFullYear()}-${cd.getMonth() + 1}-${cd.getDate()}__${cd.getHours()}-${cd.getMinutes()}-${cd.getSeconds()}`;
       const fname = `${this.database.roster[this.activeStudent].student}--${
         this.database.assignments[this.activeAssignment].shortName
       }--${dateTime}.pdf`;
@@ -1613,7 +1622,7 @@ class GradeBook extends UIRenderPieces(
                               ? html`<div>${s.student}</div>`
                               : nothing}
                             ${this.settings.surname
-                              ? html`<div>${s.student}</div>`
+                              ? html`<div>${s.surname}</div>`
                               : nothing}
                             ${this.settings.email
                               ? html`<div>
@@ -1636,7 +1645,7 @@ class GradeBook extends UIRenderPieces(
                             this.activeAssignment === h}"
                           >
                             <button
-                              aria-label="${s.student}'s assignement ${a.name}"
+                              aria-label="${s.student}'s assignment ${a.name}"
                               data-student="${i}"
                               data-assignment="${h}"
                             >
@@ -1786,17 +1795,21 @@ class GradeBook extends UIRenderPieces(
                           maxlength="10"
                           @value-changed="${this.totalScoreChangedEvent}"
                         ></simple-fields-field>
-                        /
-                        ${this.database.assignments[this.activeAssignment]
-                          .points}
-                        pts
-                        <letter-grade
-                          style="margin:-8px 0 0 16px;"
-                          total="${this.database.assignments[
-                            this.activeAssignment
-                          ].points}"
-                          score="${this.totalScore}"
-                        ></letter-grade>
+                        ${this.database.assignments &&
+                        this.database.assignments[this.activeAssignment]
+                          ? html`/
+                              ${this.database.assignments[
+                                this.activeAssignment
+                              ].points}
+                              pts
+                              <letter-grade
+                                style="margin:-8px 0 0 16px;"
+                                total="${this.database.assignments[
+                                  this.activeAssignment
+                                ].points}"
+                                score="${this.totalScore}"
+                              ></letter-grade>`
+                          : nothing}
                       </div>
                     </div>
                   </div>

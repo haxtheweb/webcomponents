@@ -77,13 +77,22 @@ function deriveSystemApiBasePath(appSettings = {}) {
   const fromConnectionSettings = cleanString(
     appSettings.connectionSettings || "",
   );
-  if (fromConnectionSettings !== "") {
+  // Only derive a system API base from connectionSettings when it actually
+  // points at the real `<base>/session/connection-settings` endpoint. Demo /
+  // fixture contexts set connectionSettings to a static JSON file (e.g.
+  // `dist/dev/connectionSettings.json`) that does NOT match the suffix;
+  // falling through here would produce a bogus base path and a 404 on
+  // `<that path>/openapi.json`, so return "" and let the registry no-op.
+  if (
+    fromConnectionSettings !== "" &&
+    /\/session\/connection-settings$/.test(fromConnectionSettings)
+  ) {
     return normalizePath(
       fromConnectionSettings.replace(/\/session\/connection-settings$/, ""),
     );
   }
   const fromLoginPath = cleanString(appSettings.login || "");
-  if (fromLoginPath !== "") {
+  if (fromLoginPath !== "" && /\/session\/login$/.test(fromLoginPath)) {
     return normalizePath(fromLoginPath.replace(/\/session\/login$/, ""));
   }
   return "";

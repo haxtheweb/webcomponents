@@ -79,6 +79,8 @@ class CMSBlock extends CMSBase {
     return {
       canScale: true,
       canEditSource: true,
+      // backend content injector: no DDD design system implications
+      designSystem: false,
       gizmo: {
         title: "CMS Block",
         description: "CMS block rendered on the backend",

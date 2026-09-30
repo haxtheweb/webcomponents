@@ -1,6 +1,11 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../hax-body-behaviors.js";
+import { HAXWiring, HAXElement } from "../hax-body-behaviors.js";
+import {
+  HAXWiring as LibHAXWiring,
+  HAXElement as LibHAXElement,
+} from "../lib/HAXWiring.js";
 
 describe("hax-body-behaviors test", () => {
   let element;
@@ -12,6 +17,23 @@ describe("hax-body-behaviors test", () => {
 
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
+  });
+});
+
+describe("hax-body-behaviors barrel exports", () => {
+  it("re-exports HAXWiring and HAXElement from lib/HAXWiring.js", () => {
+    expect(HAXWiring === LibHAXWiring).to.equal(true);
+    expect(HAXElement === LibHAXElement).to.equal(true);
+  });
+
+  it("seeds a global HAXWiring and legacy behaviors on import", () => {
+    expect(globalThis.HAXWiring instanceof HAXWiring).to.equal(true);
+    expect(
+      typeof globalThis.HAXBehaviors.PropertiesBehaviors.setHaxProperties,
+    ).to.equal("function");
+    expect(
+      typeof globalThis.HAXBehaviors.PropertiesBehaviors.getHaxJSONSchema,
+    ).to.equal("function");
   });
 });
 

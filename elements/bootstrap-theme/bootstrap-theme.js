@@ -66,7 +66,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
       css`
         /* var declaration and default styles */
         :host {
-          color-scheme: light dark;
+          color-scheme: light;
           --bootstrap-theme-link-color: #007bff;
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
           --bootstrap-theme-light-color: var(
@@ -164,6 +164,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
+          color: #364149;
           display: flex;
           align-items: center;
           height: 48px;
@@ -453,7 +454,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
             color: var(--bootstrap-theme-dark-color);
           }
           :host([color-theme="0"]) .site,
-          :host([color-theme="0"]) .menu-outline {
+          :host([color-theme="0"]) .menu-outline,
+          :host([color-theme="0"]) .site-title {
             background-color: var(--bootstrap-theme-dark-background-color);
           }
         }
@@ -628,7 +630,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         <div
           class="menu-outline"
           role="navigation"
-          aria-label="Site navigation"
+          aria-label="Site menu"
         >
           <div class="site-title" part="site-title">
             ${this.__siteImage
@@ -729,8 +731,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
   }
 
   _generateBootstrapLink() {
-    if (this._bootstrapLink) {
-      globalThis.document.head.removeChild(this._bootstrapLink);
+    if (this._bootstrapLink && this._bootstrapLink.parentNode) {
+      this._bootstrapLink.parentNode.removeChild(this._bootstrapLink);
     }
     let link = globalThis.document.createElement("link");
     link.setAttribute("rel", "stylesheet");
@@ -743,8 +745,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    if (this._bootstrapLink) {
-      globalThis.document.head.removeChild(this._bootstrapLink);
+    if (this._bootstrapLink && this._bootstrapLink.parentNode) {
+      this._bootstrapLink.parentNode.removeChild(this._bootstrapLink);
     }
     for (var i in this.__disposer) {
       const disposer = this.__disposer[i];

@@ -9,26 +9,26 @@ class PolarisMark extends LitElement {
       name3: { type: String },
       url: { type: String },
       vert: { type: Boolean },
-      _haxstate: {
-        type: Boolean,
-      },
+      _haxstate: { type: Boolean },
       svgwidth: { type: Number },
       svgheight: { type: Number },
       linex: { type: Number },
+      name3x: { type: Number },
     };
   }
   constructor() {
     super();
+    this._haxstate = false;
     this.type = "default";
     this.name = null;
     this.name2 = null;
     this.name3 = null;
     this.url = "https://psu.edu/";
     this.vert = false;
-    this._haxstate = false;
     this.svgwidth = 600;
     this.svgheight = 180;
     this.linex = 320;
+    this.name3x = 340;
   }
   /**
    * LitElement constructable styles enhancement
@@ -173,7 +173,7 @@ class PolarisMark extends LitElement {
             ${this.name3}
           </text>` : svg`
           <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
-          <text fill="#000000" x="340" y="40" id="name-line3">
+          <text fill="#000000" x="${this.name3x}" y="40" id="name-line3">
             ${this.name3}
           </text> `) : ""}
         </svg>
@@ -227,7 +227,7 @@ class PolarisMark extends LitElement {
             ${this.name3}
           </text>` : svg`
           <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
-          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="340" y="40" id="name-line3">
+          <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="${this.name3x}" y="40" id="name-line3">
             ${this.name3}
           </text> `) : ""}
         </svg>

@@ -51,7 +51,7 @@ class CollectionItem extends DDD {
           --collection-row-accent-color: var(
             --simple-colors-default-theme-accent-10
           );
-          min-width: 240px;
+          min-width: calc(var(--ddd-spacing-30) * 2);
         }
         a.link,
         a.link:-webkit-any-link {
@@ -64,7 +64,7 @@ class CollectionItem extends DDD {
           transition:
             0.3s ease-in-out opacity,
             0.3s ease-in-out filter;
-          height: 300px;
+          height: calc(var(--ddd-spacing-30) * 2.5);
           box-shadow: var(--ddd-boxShadow-sm);
           overflow: hidden;
         }
@@ -103,11 +103,11 @@ class CollectionItem extends DDD {
         simple-tags {
           margin-bottom: calc(-1 * var(--ddd-spacing-11));
           padding: var(--ddd-spacing-0);
-          width: 240px;
+          width: calc(var(--ddd-spacing-30) * 2);
           z-index: 1;
           display: block;
           overflow: hidden;
-          height: 44px;
+          height: var(--ddd-spacing-11);
           position: relative;
         }
 
@@ -118,7 +118,7 @@ class CollectionItem extends DDD {
           z-index: 1;
           display: block;
           overflow: hidden;
-          height: 44px;
+          height: var(--ddd-spacing-11);
           position: relative;
         }
 
@@ -159,7 +159,7 @@ class CollectionItem extends DDD {
         }
 
         .icon {
-          background-color: rgb(255, 255, 255);
+          background-color: var(--ddd-theme-default-white, #ffffff);
           border-radius: var(--ddd-radius-circle);
           position: relative;
           bottom: var(--ddd-spacing-8);
@@ -184,12 +184,12 @@ class CollectionItem extends DDD {
         }
 
         .image {
-          background-color: white;
+          background-color: var(--ddd-theme-default-white, #ffffff);
           background-repeat: no-repeat;
           background-size: cover;
           background-position: right center;
           width: 100%;
-          height: 160px;
+          height: calc(var(--ddd-spacing-20) * 2);
           opacity: 0.9;
           transition:
             0.3s ease-in-out opacity,

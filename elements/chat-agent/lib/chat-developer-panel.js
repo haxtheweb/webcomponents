@@ -94,7 +94,7 @@ class ChatDeveloperPanel extends DDD {
         button,
         select {
           align-items: center;
-          background-color: #2b2a33;
+          background-color: var(--ddd-primary-4);
           border-radius: var(--ddd-radius-sm);
           color: var(--ddd-theme-default-white);
           cursor: pointer;
@@ -114,7 +114,7 @@ class ChatDeveloperPanel extends DDD {
 
         button:hover,
         button:focus-visible {
-          background-color: #52525e;
+          background-color: var(--ddd-primary-6);
         }
 
         button > simple-icon-lite {
@@ -263,7 +263,10 @@ class ChatDeveloperPanel extends DDD {
    * @description LitElement firstUpdated / Sets selected properties of engine and context selection
    * @param {object} changedProperties - changed properties
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     const ENGINE_OPTIONS = this.shadowRoot.querySelectorAll(
       "#engine-selection option",
     );

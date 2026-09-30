@@ -256,9 +256,19 @@ export class HAXWiring {
       if (typeof this.tagName !== typeof undefined) {
         tag = this.tagName.toLowerCase();
       }
+      // drop any listener from a previous setup call so repeated setup
+      // does not leak hax-store-ready listeners (issue #3077, bug 73)
+      if (this.__haxStoreReadyHandler) {
+        globalThis.removeEventListener(
+          "hax-store-ready",
+          this.__haxStoreReadyHandler,
+        );
+        this.__haxStoreReadyHandler = null;
+      }
+      this.__haxStoreReadyHandler = this._haxStoreReady.bind(this);
       globalThis.addEventListener(
         "hax-store-ready",
-        this._haxStoreReady.bind(this),
+        this.__haxStoreReadyHandler,
       );
       if (
         typeof globalThis.HaxStore !== typeof undefined &&
@@ -344,6 +354,12 @@ export class HAXWiring {
           if (response && response.json) return response.json();
           return false;
         });
+      }
+      // a fetch that resolved without usable json must not fall through
+      // to the defaults below: writing props.api on false throws in
+      // strict mode modules (issue #3077, bug 14)
+      if (!props || typeof props !== "object") {
+        return props;
       }
       // these are a core piece of hax capabilities
       // set them in the event this got called without anything
@@ -623,12 +639,15 @@ export class HAXWiring {
       ) {
         return false;
       }
-      // ensure there's a title
+      // ensure there's a title (attribute wins over property, then
+      // slot-only settings fall back to the slot name — issue #3077, bug 37)
       if (typeof setting.title === typeof undefined) {
-        if (typeof setting.attribute === typeof undefined) {
-          setting.title = setting.property;
-        } else {
+        if (typeof setting.attribute !== typeof undefined) {
           setting.title = setting.attribute;
+        } else if (typeof setting.property !== typeof undefined) {
+          setting.title = setting.property;
+        } else if (typeof setting.slot !== typeof undefined) {
+          setting.title = setting.slot;
         }
       }
       // ensure there's at least an empty description
@@ -921,6 +940,15 @@ export const HAXElement = function (SuperClass) {
       if (tag == "" && typeof this.tagName !== typeof undefined) {
         tag = this.tagName.toLowerCase();
       }
+      // drop any listener from a previous call so repeated slow-path
+      // setup does not leak hax-store-ready listeners (issue #3077, bug 73)
+      if (this.__haxStoreReadyHandler) {
+        globalThis.removeEventListener(
+          "hax-store-ready",
+          this.__haxStoreReadyHandler,
+        );
+        this.__haxStoreReadyHandler = null;
+      }
       if (
         globalThis.HaxStore &&
         globalThis.HaxStore.instance != null &&
@@ -929,13 +957,24 @@ export const HAXElement = function (SuperClass) {
         return this.HAXWiring.setHaxProperties(props, tag, context, true);
       } else {
         // slow load environment, set listener and hold off of processing
+        this.__haxStoreReadyHandler = this._haxStoreReady.bind(this);
         globalThis.addEventListener(
           "hax-store-ready",
-          this._haxStoreReady.bind(this),
+          this.__haxStoreReadyHandler,
           { signal: this.windowControllers.signal },
         );
 
-        return this.HAXWiring.setHaxProperties(props, tag, context, false);
+        let result = this.HAXWiring.setHaxProperties(
+          props,
+          tag,
+          context,
+          false,
+        );
+        // remember the (now-defaulted) props on the element so the
+        // slow-path hax-store-ready handler dispatches the element's own
+        // schema instead of nothing (issue #3077, bug 36)
+        this.haxProperties = props;
+        return result;
       }
     }
     /**
@@ -953,12 +992,42 @@ export const HAXElement = function (SuperClass) {
      * properties in order to be able to bubble up the properties for a tag.
      */
     setup(props, tag = "", context = this) {
-      return this.HAXWiring.setup(props, (tag = ""), (context = this));
+      // pass the caller-supplied tag and context through instead of
+      // discarding them (issue #3077, bug 35)
+      return this.HAXWiring.setup(props, tag, context);
     }
     /**
      * Private function to fire off props when ready
      */
     _haxStoreReady(e) {
+      // dispatch registration from the ELEMENT: the wiring instance has no
+      // tagName of its own, so delegating blindly meant slow-path elements
+      // never re-registered once the store became ready (issue #3077, bug 36)
+      if (
+        e.detail &&
+        typeof this.tagName !== typeof undefined &&
+        typeof this.haxProperties !== typeof undefined
+      ) {
+        let tag = this.tagName.toLowerCase();
+        if (
+          !globalThis.HaxStore ||
+          !globalThis.HaxStore.instance ||
+          typeof globalThis.HaxStore.instance.elementList[tag] ===
+            typeof undefined
+        ) {
+          this.dispatchEvent(
+            new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              composed: true,
+              cancelable: true,
+              detail: {
+                tag: tag,
+                properties: this.haxProperties,
+              },
+            }),
+          );
+        }
+      }
       return this.HAXWiring._haxStoreReady(e);
     }
     /**
@@ -1037,10 +1106,17 @@ globalThis.HAXBehaviors.PropertiesBehaviors = {
     if (tag == "" && typeof this.tagName !== typeof undefined) {
       tag = this.tagName.toLowerCase();
     }
-    globalThis.addEventListener(
-      "hax-store-ready",
-      this._haxStoreReady.bind(this),
-    );
+    // drop any listener from a previous call so repeated slow-path
+    // setup does not leak hax-store-ready listeners (issue #3077, bug 73)
+    if (this.__haxStoreReadyHandler) {
+      globalThis.removeEventListener(
+        "hax-store-ready",
+        this.__haxStoreReadyHandler,
+      );
+      this.__haxStoreReadyHandler = null;
+    }
+    this.__haxStoreReadyHandler = this._haxStoreReady.bind(this);
+    globalThis.addEventListener("hax-store-ready", this.__haxStoreReadyHandler);
     if (
       typeof globalThis.HaxStore !== typeof undefined &&
       globalThis.HaxStore.instance != null &&
@@ -1055,6 +1131,34 @@ globalThis.HAXBehaviors.PropertiesBehaviors = {
    * Private function to fire off props when ready
    */
   _haxStoreReady: function (e) {
+    // dispatch registration from the element itself: the global wiring
+    // instance has no tagName, so delegating never registered anything
+    // (issue #3077, bug 36)
+    if (
+      e.detail &&
+      typeof this.tagName !== typeof undefined &&
+      typeof this.haxProperties !== typeof undefined
+    ) {
+      let tag = this.tagName.toLowerCase();
+      if (
+        !globalThis.HaxStore ||
+        !globalThis.HaxStore.instance ||
+        typeof globalThis.HaxStore.instance.elementList[tag] ===
+          typeof undefined
+      ) {
+        this.dispatchEvent(
+          new CustomEvent("hax-register-properties", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              tag: tag,
+              properties: this.haxProperties,
+            },
+          }),
+        );
+      }
+    }
     return globalThis.HAXWiring._haxStoreReady(e);
   },
   /**

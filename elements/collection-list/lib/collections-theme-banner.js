@@ -46,7 +46,8 @@ class CollectionsThemeBanner extends LitElement {
         }
 
         .image-text {
-          background: rgba(0, 0, 0, 0.8);
+          /* DDD navy panel (the .company precedent) instead of a raw rgba */
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
           backdrop-filter: blur(2px);
           width: calc(150px + (355 - 28) * ((100vw - 300px) / (1600 - 300)));
           margin: 0 5vw;
@@ -54,8 +55,13 @@ class CollectionsThemeBanner extends LitElement {
         }
 
         .image-text h1 {
-          font-size: calc(23px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
-          color: #ffffff;
+          /* fluid type clamped inside the DDD type scale */
+          font-size: clamp(
+            var(--ddd-font-size-xs),
+            calc(23px + (72 - 28) * ((100vw - 300px) / (1600 - 300))),
+            var(--ddd-font-size-4xl)
+          );
+          color: var(--ddd-theme-default-white, #ffffff);
           font-weight: 400;
           line-height: 1.1;
           margin: 0;
@@ -69,7 +75,7 @@ class CollectionsThemeBanner extends LitElement {
           background-color: var(--header-bg-color);
           border-top: solid;
           border-top-width: 4px;
-          border-top-color: #ffffff;
+          border-top-color: var(--ddd-theme-default-white, #ffffff);
         }
 
         .logo {
@@ -78,11 +84,11 @@ class CollectionsThemeBanner extends LitElement {
         }
 
         .logo img {
-          width: 300px;
+          width: calc(var(--ddd-spacing-30) * 2.5);
           border: solid;
-          height: 300px;
+          height: calc(var(--ddd-spacing-30) * 2.5);
           border-width: 4px;
-          border-color: #ffffff;
+          border-color: var(--ddd-theme-default-white, #ffffff);
           border-radius: 50%;
           background-color: var(--header-bg-color);
           margin: -64px 0px 0px 64px;
@@ -121,7 +127,12 @@ class CollectionsThemeBanner extends LitElement {
         }
 
         .company h2 {
-          font-size: calc(18px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));
+          /* fluid type clamped inside the DDD type scale */
+          font-size: clamp(
+            var(--ddd-font-size-5xs),
+            calc(18px + (72 - 28) * ((100vw - 300px) / (1600 - 300))),
+            var(--ddd-font-size-4xl)
+          );
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-white, #ffffff);
           margin: 4px 0 4px 0;
@@ -135,7 +146,7 @@ class CollectionsThemeBanner extends LitElement {
     return html`
       <div class="wrap" style="background-image:url('${this.image}')">
         <div class="image-text">
-          <h1>${this.pagetitle}</h1>
+          ${this.pagetitle ? html`<h1>${this.pagetitle}</h1>` : ``}
         </div>
       </div>
       <div class="branding">
@@ -148,7 +159,7 @@ class CollectionsThemeBanner extends LitElement {
           />
         </div>
         <div class="company">
-          <h2>${this.sitename}</h2>
+          ${this.sitename ? html`<h2>${this.sitename}</h2>` : ``}
         </div>
       </div>
     `;

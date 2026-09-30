@@ -72,7 +72,10 @@ class DateTitle extends LitElement {
     return html`<div class="container"></div>`;
   }
 
-  updated() {
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     this.generateCircularText(
       "circTxt1",
       this.title,

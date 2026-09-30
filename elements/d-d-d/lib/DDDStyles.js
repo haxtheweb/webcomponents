@@ -1997,6 +1997,10 @@ export const DDDReset = css`
         var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
       )
     );
+    background-color: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
     cursor: pointer;
     text-wrap: wrap;
     align-items: center;

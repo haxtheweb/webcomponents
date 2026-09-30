@@ -1,6 +1,19 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../aframe-player.js";
 
+// Prevent aframe.min.js from loading from the CDN in the test environment.
+// connectedCallback calls ESGlobalBridge.load(...) which injects a <script>
+// tag for https://aframe.io/releases/0.9.2/aframe.min.js. That script
+// initializes WebGL and throws cross-origin errors in the headless browser,
+// which mocha catches as "Script error. (:0:0)" and fails whatever test is
+// running when the async script lands. The tests below only verify rendering,
+// properties, and a11y — a-scene/a-sky/a-marker-camera render as unknown
+// custom elements with correct attributes without A-Frame loaded.
+before(() => {
+  const bridge = globalThis.ESGlobalBridge.requestAvailability();
+  bridge.load = () => Promise.resolve();
+});
+
 describe("aframe-player test", () => {
   let element;
   beforeEach(async () => {

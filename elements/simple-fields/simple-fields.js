@@ -263,8 +263,25 @@ class SimpleFields extends SimpleFieldsLite {
    * @memberof SimpleFields
    */
   get schemaConversion() {
+    if (this.elementizer) return this.elementizer;
+    let conversion = this.constructor.defaultSchemaConversion;
+    conversion.type.object.format.tabs.defaultSettings.properties.disableResponsive =
+      this.disableResponsive;
+    return conversion;
+  }
+  /**
+   * gets default JSON schema to form element conversion object,
+   * used as a fallback when no `elementizer` is set, and exposed
+   * statically so it can be extended/overridden (e.g. by
+   * simple-fields-form's `defaultSchemaConversion` getter)
+   *
+   * @readonly
+   * @static
+   * @memberof SimpleFields
+   */
+  static get defaultSchemaConversion() {
     return (
-      this.elementizer || {
+      {
         defaultSettings: {
           element: "simple-fields-field",
           errorProperty: "errorMessage",
@@ -456,7 +473,7 @@ class SimpleFields extends SimpleFieldsLite {
                     layoutBreakpoint: "layoutBreakpoint",
                     iconBreakpoint: "iconBreakpoint",
                     sticky: "sticky",
-                    disableResponsive: this.disableResponsive,
+                    disableResponsive: false,
                   },
                 },
               },

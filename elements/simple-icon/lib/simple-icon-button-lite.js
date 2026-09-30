@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, LitElement } from "lit";
+import { html, css, LitElement, nothing } from "lit";
 import "./simple-icons.js";
 import "./simple-icon-lite.js";
 
@@ -23,6 +23,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       this.type = "";
       this.value = "";
       this.icon = "";
+      this.noColorize = false;
     }
 
     static get styles() {
@@ -117,18 +118,18 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       return html`
         <button
           ?autofocus="${this.autofocus}"
-          aria-labelledby="${this.ariaLabelledby}"
+          aria-labelledby="${this.ariaLabelledby || nothing}"
           aria-pressed="${this.toggles
             ? this.toggled
               ? "true"
               : "false"
-            : undefined}"
-          aria-controls="${this.controls || undefined}"
+            : nothing}"
+          aria-controls="${this.controls || nothing}"
           part="button"
           ?disabled="${this.disabled}"
           form="${this.form}"
           label="${this.label}"
-          aria-label="${this.label}"
+          aria-label="${this.label || this.icon || nothing}"
           name="${this.fieldName}"
           .type="${this.type}"
           value="${this.value}"
@@ -170,6 +171,14 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         icon: {
           type: String,
           reflect: true,
+        },
+        /**
+         * whether to disable the contrast-based colorization of the
+         * nested icon (passes through as the no-colorize attribute)
+         */
+        noColorize: {
+          type: Boolean,
+          attribute: "no-colorize",
         },
         label: {
           type: String,

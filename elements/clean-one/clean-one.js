@@ -722,6 +722,13 @@ class CleanOne extends LTIResizingMixin(
         "long",
       );
     }
+    if (
+      changedProperties.has("topItems") ||
+      changedProperties.has("items") ||
+      changedProperties.has("activeLayout")
+    ) {
+      requestAnimationFrame(() => this._syncViewportLayout());
+    }
   }
 
   // render function
@@ -908,12 +915,21 @@ class CleanOne extends LTIResizingMixin(
        "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
      );
     this.__disposer = this.__disposer ? this.__disposer : [];
+    // skip the first (synchronous, construction-time) autorun firing so we
+    // don't clobber a searchTerm value that may be set immediately after
+    // construction (e.g. via a property binding); only clear the search box
+    // on subsequent, real page navigations.
+    let __isInitialManifestIndexRun = true;
     this.__disposer.push(
       autorun((reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;
-          this.searchTerm = "";
+          if (__isInitialManifestIndexRun) {
+            __isInitialManifestIndexRun = false;
+          } else {
+            this.searchTerm = "";
+          }
         });
       }),
     );
@@ -1032,24 +1048,6 @@ class CleanOne extends LTIResizingMixin(
   /**
    * Previous page to hook into when prev is hit
    */
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    if (changedProperties.has("dataPalette")) {
-      UserScaffoldInstance.writeMemory(
-        "HAXCMSSitePalette",
-        this.dataPalette,
-        "long",
-      );
-    }
-    if (
-      changedProperties.has("topItems") ||
-      changedProperties.has("items") ||
-      changedProperties.has("activeLayout")
-    ) {
-      requestAnimationFrame(() => this._syncViewportLayout());
-    }
-  }
 
   prevPage(e) {
     super.prevPage(e);

@@ -272,8 +272,15 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.__focused = false;
       this.__hovered = false;
       this.editing = false;
-      this.setAttribute("tabindex", 0);
       this.addEventListener("click", this._handleClick);
+    }
+    connectedCallback() {
+      super.connectedCallback();
+      // tabindex must be set in connectedCallback, not the constructor:
+      // setting attributes in a custom element constructor violates the
+      // constructor contract and makes document.createElement throw a
+      // NotSupportedError (issue #3077, bug 1)
+      if (!this.hasAttribute("tabindex")) this.setAttribute("tabindex", 0);
     }
     get editable() {
       return !!this.contenteditable && this.contenteditable !== "false";
@@ -288,8 +295,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
       );
     }
 
-    firstUpdated() {
-      if (super.firstUpdated) super.firstUpdated();
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
       if (this.isEmpty && !!this.rawhtml) {
         this.innerHTML = this.rawhtml.trim();
       } else if (this.isEmpty) {

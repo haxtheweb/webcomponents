@@ -524,7 +524,9 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
                     : "R"}
                 </div>`}
           </div>
-          <h1 class="name" part="name">${this.authorName}</h1>
+          ${this.authorName
+            ? html`<h1 class="name" part="name">${this.authorName}</h1>`
+            : ``}
           <p class="subtitle" part="subtitle">${this.siteDescription}</p>
 
           <div class="contact-ring" part="contact-ring">

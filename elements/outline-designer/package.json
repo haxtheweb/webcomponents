@@ -33,7 +33,7 @@
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "author": {
     "name": "haxtheweb",
@@ -43,7 +43,6 @@
   "dependencies": {
     "@haxtheweb/hax-body": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",
-    "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/json-outline-schema": "^26.8.0",
     "@haxtheweb/simple-fields": "^26.8.0",

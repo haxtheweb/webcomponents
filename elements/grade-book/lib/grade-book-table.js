@@ -8,10 +8,19 @@ class GradeBookTable extends LitElement {
   constructor() {
     super();
     this.editMode = false;
+    // translatable text defaults so a bare element renders safely
+    this.t = {
+      letterGrade: "Letter grade",
+      highRange: "High range",
+      lowRange: "Low range",
+    };
+    // no store wiring of its own; default to an empty scale until data lands
+    this.database = { gradeScale: [] };
   }
   static get properties() {
     return {
       editMode: { type: Boolean, attribute: "edit-mode", reflect: true },
+      database: { type: Object },
     };
   }
   static get styles() {
@@ -41,15 +50,17 @@ class GradeBookTable extends LitElement {
               <td>${this.t.highRange}</td>
               <td>${this.t.lowRange}</td>
             </tr>
-            ${this.database.gradeScale.map(
-              (scale) => html`
-                <tr>
-                  <td>${scale.letter}</td>
-                  <td>${scale.highRange}</td>
-                  <td>${scale.lowRange}</td>
-                </tr>
-              `,
-            )}
+            ${this.database && this.database.gradeScale
+              ? this.database.gradeScale.map(
+                  (scale) => html`
+                    <tr>
+                      <td>${scale.letter}</td>
+                      <td>${scale.highRange}</td>
+                      <td>${scale.lowRange}</td>
+                    </tr>
+                  `,
+                )
+              : ``}
           </tbody>
         </table>
       </editable-table>

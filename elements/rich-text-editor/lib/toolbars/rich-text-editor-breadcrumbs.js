@@ -100,6 +100,11 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
               <button
                 class="${!!ancestor.selectAll ? "" : "selectnode"}"
                 controls="${this.controls}"
+                aria-current="${
+                  i + 1 >= (this.selectionAncestors || []).length
+                    ? "true"
+                    : "false"
+                }"
                 @click="${(e) => this._handleClick(ancestor)}"
                 tabindex="0"
               >
@@ -119,29 +124,45 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
       css`
         :host {
           display: block;
-          background-color: var(--rich-text-editor-bg, #ffffff);
-          color: var(--rich-text-editor-button-color #444);
-          border: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-color, #ddd);
-          padding: 3px 10px;
+          background-color: var(
+            --ddd-theme-default-white,
+            var(--rich-text-editor-bg, #ffffff)
+          );
+          color: var(
+            --ddd-theme-default-black,
+            var(--rich-text-editor-button-color, #444)
+          );
+          border: var(
+            --ddd-border-xs,
+            var(--rich-text-editor-border-width, 1px) solid
+              var(--ddd-theme-default-limestoneLight, #ddd)
+          );
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
         }
         :host([sticky]) {
           position: sticky;
           bottom: 0;
-        }
-        .selectednode {
-          background-color: var(--rich-text-editor-button-bg, #ffffff);
         }
         button {
           display: inline-block;
           text-align: center;
           min-width: 25px;
           margin: 0;
-          padding: 2px 5px;
+          padding: var(--ddd-spacing-1);
         }
-        .selectNode {
+        /* the innermost ancestor (last breadcrumb) contains the current
+           selection, so it gets the current-node treatment */
+        button[aria-current="true"] {
+          background-color: var(
+            --ddd-theme-default-white,
+            var(--rich-text-editor-button-bg, #ffffff)
+          );
+          border-radius: var(--ddd-radius-xs);
+        }
+        .selectnode {
           font-family: monospace;
         }
-      `,
+      `,
     ];
   }
 }

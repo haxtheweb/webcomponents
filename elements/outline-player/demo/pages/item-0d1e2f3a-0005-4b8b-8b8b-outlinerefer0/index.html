@@ -1,0 +1,13 @@
+
+<h2>Outline Reference</h2>
+<p>The site outline is a single JSON file that describes every page on the site. Navigation, routing, and page loading all derive from it.</p>
+<h3>Item Fields</h3>
+<ul>
+  <li><strong>id</strong> - a unique identifier for the page.</li>
+  <li><strong>title</strong> - the page title, shown in navigation and at the top of the page.</li>
+  <li><strong>slug</strong> - the address of the page, used for routing.</li>
+  <li><strong>location</strong> - the path to the HTML file that holds the page content.</li>
+  <li><strong>parent</strong> - the id of the section the page nests under, or null for top-level pages.</li>
+  <li><strong>order</strong> - the position of the page among its siblings.</li>
+</ul>
+<p>Change the outline and the whole site follows, which is what makes the outline the single source of truth for a HAXcms site.</p>

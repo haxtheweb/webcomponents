@@ -148,9 +148,19 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         background-color: var(--haxma-bg);
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
         line-height: 1.6;
+        color-scheme: light;
+        --haxma-primary: #5551FF;
+        --haxma-primary-hover: #4942E6;
+        --haxma-text: #545454;
+        --haxma-text-dark: #000000;
+        --haxma-bg: #FFFFFF;
+        --haxma-border: #E5E7EB;
+        --haxma-border-light: #F3F4F6;
+        --haxma-nav-height: 72px;
       }
       
       :host([dark-mode]) {
+        color-scheme: dark;
         background-color: #1a1a1a;
         --haxma-primary: #8B88FF;
         --haxma-primary-hover: #A5A2FF;
@@ -583,7 +593,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         font-size: 0.875rem;
       }
       
-      .footer-section h4 {
+      .footer-section h3 {
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--haxma-text-dark);
@@ -798,7 +808,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             <!-- Article Content -->
             <div class="article-content">
               <!-- Required HAXcms content container -->
-              <div id="contentcontainer">
+              <div id="contentcontainer" tabindex="-1">
                 <div id="slot">
                   <slot></slot>
                 </div>
@@ -865,7 +875,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
             
             <!-- Generated Site Links -->
             <div class="footer-section">
-              <h4>Site Navigation</h4>
+              <h3>Site Navigation</h3>
               <div class="footer-page-grid">
                 ${this._items.map((item) => html`
                   <a href="${item.slug}" class="footer-page-link">

@@ -128,6 +128,7 @@ class DynamicImportRegistry extends HTMLElement {
                 },
               }),
             );
+            return module;
           },
         );
       } catch (e) {

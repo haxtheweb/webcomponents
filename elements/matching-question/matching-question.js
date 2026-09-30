@@ -164,6 +164,10 @@ class MatchingQuestion extends QuestionElement {
     this.matchAnswers = [];
     // allow for requiring the user to place the targets in the right place as well
     this.matchTarget = false;
+    this.t = {
+      ...this.t,
+      matchRegion: "Matching interface",
+    };
   }
 
   processInput(index, inputs, priorData) {
@@ -206,6 +210,10 @@ class MatchingQuestion extends QuestionElement {
     // implies previous index is the matching target
     if (answer.correct === false) {
       answer.matchOption = true;
+      // default to false so callers can distinguish "no target found" from unset
+      if (answer.match === undefined) {
+        answer.match = false;
+      }
       // look back until we find a target
       for (let i = index; i >= 0; i--) {
         if (!answer.match && answers[i] && answers[i].target === true) {
@@ -253,7 +261,7 @@ class MatchingQuestion extends QuestionElement {
     // this implies we left correct answers off the table
     // we don't show correctness though when not in matchAnswers tho
     for (var i = 0; i < this.displayedAnswers.length; i++) {
-      if (this.displayedAnswers[i].match) {
+      if (this.displayedAnswers[i].match !== false) {
         gotRight = false;
       }
     }
@@ -280,7 +288,11 @@ class MatchingQuestion extends QuestionElement {
             )}
         </select>
       </dialog>
-      <div class="option-container">
+      <div
+        class="option-container"
+        role="region"
+        aria-label="${this.t.matchRegion}"
+      >
         <table class="top">
           <thead>
             <th>Target</th>
@@ -461,9 +473,12 @@ class MatchingQuestion extends QuestionElement {
   }
 
   focusActive(tagOption) {
-    this.shadowRoot
-      .querySelector(`button[data-label="${tagOption.label}"]`)
-      .focus();
+    const target = this.shadowRoot.querySelector(
+      `button[data-label="${tagOption.label}"]`,
+    );
+    if (target) {
+      target.focus();
+    }
   }
   // support clicking the tag to invoke a menu to make the change
   handleTagClick(tagOption) {

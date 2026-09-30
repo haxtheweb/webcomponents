@@ -2,10 +2,26 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { autorun, configure, makeObservable, observable, toJS } from "mobx";
+/**
+ * Resolve the HAXcms site store off globalThis when running inside a
+ * HAXcms site. Resolved lazily because importing haxcms-site-store.js
+ * directly creates a circular package dependency (haxcms-elements loads
+ * chat-agent at runtime via site-ai-chat).
+ * @returns {Object|null} the HAXcms site store, or null when not present
+ */
+const getHAXcmsStore = () => {
+  if (
+    globalThis.HAXCMS &&
+    globalThis.HAXCMS.instance &&
+    globalThis.HAXCMS.instance.store
+  ) {
+    return globalThis.HAXCMS.instance.store;
+  }
+  return null;
+};
 configure({ enforceActions: false });
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
@@ -28,19 +44,22 @@ MicroFrontendRegistry.add({
  */
 class ChatAgentStore {
   constructor() {
+    const siteStore = getHAXcmsStore();
+    const siteUser =
+      siteStore && siteStore.userData ? siteStore.userData.userName : undefined;
     this.buttonIcon = "hax:wizard-hat";
     this.buttonLabel = "Merlin-AI";
     this.chatLog = [];
     this.context = "phys211";
     this.currentSuggestions = [];
     this.darkMode = null;
-    store.darkMode !== undefined
-      ? (this.darkMode = store.darkMode)
+    siteStore && siteStore.darkMode !== undefined
+      ? (this.darkMode = siteStore.darkMode)
       : (this.darkMode = false);
     this.dataCollectionEnabled = true;
     this.developerModeEnabled = false; // ! this will enable developer mode for the entire chat system
-    store.editMode !== undefined
-      ? (this.editMode = store.editMode)
+    siteStore && siteStore.editMode !== undefined
+      ? (this.editMode = siteStore.editMode)
       : (this.editMode = false);
     this.engine = "alfred";
     this.isFullView = false;
@@ -49,12 +68,13 @@ class ChatAgentStore {
     this.merlinIndex = 0;
     this.merlinTypeWriterSpeed = 2;
     this.messageIndex = 0;
-    this.promptCharacterLimit;
+    // 0 disables the prompt character limit (no maxlength enforced)
+    this.promptCharacterLimit = 0;
     this.promptPlaceholder = "Enter your prompt here...";
     this.userIndex = 0;
     this.userTypeWriterSpeed = 0;
-    store.userData.userName !== undefined
-      ? (this.userName = store.userData.userName)
+    siteUser !== undefined
+      ? (this.userName = siteUser)
       : (this.userName = "guest");
 
     this.date = new Date();
@@ -79,13 +99,14 @@ class ChatAgentStore {
     });
 
     autorun(() => {
+      const siteStore = getHAXcmsStore();
       const _mobx_val_0 = toJS(this.buttonIcon);
       const _mobx_val_1 = toJS(this.chatLog);
       const _mobx_val_2 = toJS(this.context);
-      const _mobx_val_3 = toJS(store.darkMode);
+      const _mobx_val_3 = toJS(siteStore ? siteStore.darkMode : undefined);
       const _mobx_val_4 = toJS(this.dataCollectionEnabled);
       const _mobx_val_5 = toJS(this.developerModeEnabled);
-      const _mobx_val_6 = toJS(store.editMode);
+      const _mobx_val_6 = toJS(siteStore ? siteStore.editMode : undefined);
       const _mobx_val_7 = toJS(this.engine);
       const _mobx_val_8 = toJS(this.isFullView);
       const _mobx_val_9 = toJS(this.isInterfaceHidden);
@@ -383,14 +404,24 @@ class ChatAgentStore {
 
         MicroFrontendRegistry.call("@system/aiChat", params)
           .then((d) => {
-            if (d.status == 200) {
+            if (d.status == 200 && d.data) {
               this.answers = [d.data.answers];
               this.question = d.data.question;
               this.currentSuggestions = []; // TODO add support for AI based suggestions
+              this.isLoading = false;
+              this.handleMessage("merlin", d.data.answers);
+            } else {
+              // status guard: a non-200 response (or a missing data payload)
+              // must take the shared error path in the catch below instead of
+              // writing a failed/partial answer into the chat log as a normal
+              // merlin message or throwing a TypeError on d.data.answers
+              // when data is null
+              throw new Error(
+                `aiChat request failed or returned no usable data (status ${
+                  d && d.status
+                })`,
+              );
             }
-
-            this.isLoading = false;
-            this.handleMessage("merlin", d.data.answers);
           })
           .catch((error) => {
             this.isLoading = false;
@@ -471,9 +502,12 @@ globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
 // is rendered through the same modal
 globalThis.ChatAgentStore.requestAvailability = () => {
   if (!globalThis.ChatAgentStore.instance) {
-    globalThis.ChatAgentStore.instance =
-      document.createElement("chat-agent-store");
-    document.body.appendChild(globalThis.ChatAgentStore.instance);
+    // ChatAgentStore is a plain store class, not a custom element, so the
+    // singleton is the ChatStore instance itself. Creating a DOM element
+    // here previously produced an unregistered <chat-agent-store> node (a
+    // dead singleton that also raced chat-agent.js's own
+    // requestAvailability definition on this same global object).
+    globalThis.ChatAgentStore.instance = ChatStore;
   }
   return globalThis.ChatAgentStore.instance;
 };

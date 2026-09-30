@@ -131,8 +131,10 @@ class DemoSnippet extends DDDSuper(LitElement) {
     this._observer = null;
   }
 
-  firstUpdated() {
-    super.firstUpdated();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // Set up slot change observer after first render
     this.updateComplete.then(() => {
       this._updateMarkdown();

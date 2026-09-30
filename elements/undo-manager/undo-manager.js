@@ -60,6 +60,13 @@ const UndoManagerBehaviors = function (SuperClass) {
      */
     constructor() {
       super();
+      // Initialize canUndo/canRedo to false so firstUpdated's
+      // undoStack.changed() callback setting them to false is a no-op
+      // (undefined -> false would otherwise schedule a redundant update and
+      // trip Lit's change-in-update warning for every undo-manager consumer,
+      // e.g. hax-body).
+      this.canUndo = false;
+      this.canRedo = false;
       this.__StackDebounce;
       this.undoStackLimit = 20;
       this.undoStackTimer = 300;

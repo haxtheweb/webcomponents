@@ -135,7 +135,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
             ${this.image
               ? html`<img
                   src="${this.image}"
-                  alt=""
+                  alt="${this.title}"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="low"
@@ -190,19 +190,23 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
           this.image = data.data["og:url"] + this.image;
         }
       }
-      this.link = data.data["og:url"] || data.data["url"] || link;
+      // use the requested url as the link fallback (the old code read an
+      // undefined link identifier in both paths, so every fetch without
+      // og:url fell into the catch and the catch aborted its own cleanup —
+      // issue #3077, bug 33)
+      this.link = data.data["og:url"] || data.data["url"] || src;
       this.themeColor =
         (data.data &&
           data.data["theme-color"] &&
           data.data["theme-color"].trim()) ||
-        this.getThemeColor(link);
+        this.getThemeColor(this.link);
     } catch (error) {
       console.error("Error fetching data:", error);
       this.title = "No preview available";
       this.description = "";
-      this.link = link;
+      this.link = src;
       this.image = "";
-      this.themeColor = this.getThemeColor();
+      this.themeColor = this.getThemeColor(src);
     } finally {
       this.loadingState = false;
     }

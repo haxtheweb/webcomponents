@@ -165,7 +165,7 @@ describe("FlashCard test", () => {
   // Style and layout tests
   it("has correct card styling", () => {
     const styles = element.constructor.styles.toString();
-    expect(styles).to.include("border-radius: 20px");
+    expect(styles).to.include("border-radius: var(--ddd-radius-sm)");
     expect(styles).to.include("min-width: 320px");
     expect(styles).to.include("min-height: 155px");
     expect(styles).to.include("box-shadow");

@@ -169,10 +169,14 @@ class BootstrapBreadcrumb extends LitElement {
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.manifest.items[0]);
+        const _mobx_val_0 = toJS(
+          store.manifest && store.manifest.items
+            ? store.manifest.items[0]
+            : null,
+        );
         const _mobx_val_1 = toJS(store.activeItem);
         Promise.resolve().then(() => {
-          let manifestHomeItem = _mobx_val_0;
+          let manifestHomeItem = _mobx_val_0 || {};
           let storeActiveItem = _mobx_val_1;
           // check if home item has changed, if it has set new home item
           if (this.homeItem !== manifestHomeItem) {
@@ -258,6 +262,9 @@ class BootstrapBreadcrumb extends LitElement {
 
   // gets parents item by the items id
   getParentById(parentId) {
+    if (!store.manifest || !store.manifest.items) {
+      return null;
+    }
     let elementPos = store.manifest.items
       .map((item) => {
         return toJS(item.id);
@@ -270,6 +277,9 @@ class BootstrapBreadcrumb extends LitElement {
   // recursive function that keeps adding parents to items array
   addParentToItems(item) {
     let parentItem = this.getParentById(item.parent);
+    if (!parentItem) {
+      return;
+    }
     this.items.unshift(parentItem);
     if (parentItem.parent) {
       this.addParentToItems(parentItem);

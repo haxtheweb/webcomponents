@@ -202,20 +202,34 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     return "input";
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive reactive state in willUpdate so it batches into the current
+    // update cycle. Setting these in firstUpdated/updated() scheduled
+    // redundant second updates (Lit change-in-update warning).
+    if (!this.hasUpdated) {
+      this.filter = !!this.value ? this.value : "";
+      this.filterOptions(this.filter, this.option);
+    }
+    if (changedProperties.has("autocomplete")) {
+      this.autocompleteChanged();
+    }
+    if (
+      changedProperties.has("itemsList") ||
+      changedProperties.has("options")
+    ) {
+      this.filterOptions(this.filter, this.option);
+    }
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.filter = !!this.value ? this.value : "";
-    this.filterOptions(this.filter, this.option);
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "autocomplete") this.autocompleteChanged();
       if (propName === "value" && this.value !== oldValue)
         this.fieldValueChanged();
-      if (propName === "itemsList" || propName === "options")
-        this.filterOptions(this.filter, this.option);
     });
   }
 

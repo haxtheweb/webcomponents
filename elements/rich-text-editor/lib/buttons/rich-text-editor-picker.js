@@ -163,9 +163,20 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
       this.value = null;
     }
 
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Build the picker options on the first update (in willUpdate, before
+      // render) so the reactive `options` set inside _setOptions() batches
+      // into the current cycle. Calling _setOptions() from firstUpdated set a
+      // reactive prop post-render and scheduled a redundant second update
+      // (Lit change-in-update warning). Subclasses override _setOptions()
+      // (heading-picker, alignment-picker) and their overrides run here too.
+      if (!this.hasUpdated) {
+        this._setOptions();
+      }
+    }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
-      this._setOptions();
     }
 
     /**

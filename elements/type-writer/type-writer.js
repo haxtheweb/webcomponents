@@ -172,9 +172,9 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
       speed: {
         type: Number,
       },
-      elementVisible: {
-        type: Boolean,
-      },
+      // elementVisible is provided by IntersectionObserverMixin with
+      // reflect: true and attribute: "element-visible". Redeclaring it here
+      // without those options would clobber the mixin's reflection config.
       eraseSpeed: {
         type: Number,
         attribute: "erase-speed",

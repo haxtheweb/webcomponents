@@ -19,7 +19,7 @@
         // give the web components a second to build
         setTimeout(async () => {
           // use this for items from a HAXcms site
-          //document.querySelector('outline-designer').items = window.HAXCMS.instance.store.getManifestItems(true);
+          //document.querySelector('outline-designer').items = globalThis.HAXCMS.instance.store.getManifestItems(true);
 
           // get items from example import
           await fetch(import.meta.url + '/../example.json').then((resp) => (resp.ok) ? resp.json() : []).then((data) => {document.querySelector('outline-designer').items = data;});
@@ -46,20 +46,48 @@
   </head>
   <body>
     <d-d-d></d-d-d>
+    <h1>outline-designer demo</h1>
+    <p>
+      The first example below is the full HAXcms harness, which loads the
+      example outline from example.json once the site context is ready. The
+      two snippets after it use a static outline so the hide-content-ops
+      attribute can be compared without any context at all.
+    </p>
+    <h2>Full HAXcms harness</h2>
     <outline-designer></outline-designer>
     <haxcms-site-builder file="https://haxtheweb.org/site.json"></haxcms-site-builder>
+    <h2>Static outline with content operations</h2>
+    <p>
+      With the default settings, expanding a page reveals its content area and
+      the operations for adding content to the top of the page.
+    </p>
+    <demo-snippet>
+      <template>
+        <outline-designer-demo></outline-designer-demo>
+      </template>
+    </demo-snippet>
+    <h2>Static outline with hide-content-ops</h2>
+    <p>
+      Setting hide-content-ops keeps the designer a pure page outline: content
+      areas and content operations stay hidden even when a page is expanded.
+    </p>
+    <demo-snippet>
+      <template>
+        <outline-designer-demo hide-content-ops></outline-designer-demo>
+      </template>
+    </demo-snippet>
     <!-- Reverse engineer of build.js based on what's needed to test locally -->
     <script>
-      window.__appCDN="./node_modules/";window.__appForceUpgrade=false;
-      window.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
-      window.WCAutoloadBasePath = "/node_modules/";
+      globalThis.__appCDN="./node_modules/";globalThis.__appForceUpgrade=false;
+      globalThis.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
+      globalThis.WCAutoloadBasePath = "/node_modules/";
       globalThis.WCGlobalBasePath = "/node_modules/";
       // set this in order to simulate the published form of the site
-      //window.HAXCMSContext="published";
+      //globalThis.HAXCMSContext="published";
       // set the below to simulate running a demo / end points to load data
       // this will let you simulate more operations without having a backend
-      window.HAXCMSContext="demo";
-      window.appSettings = {
+      globalThis.HAXCMSContext="demo";
+      globalThis.appSettings = {
         "createNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/createNodePath.json",
         "saveOutlinePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
         "saveManifestPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveManifestPath.json",
@@ -88,6 +116,98 @@
           }
         }
       };
+    </script>
+    <script type="module">
+      import { LitElement, html } from 'lit'
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../outline-designer.js'
+
+      const SAMPLE_ITEMS = [
+        {
+          id: 'item-1',
+          indent: 0,
+          location: '',
+          slug: 'unit-1-pitch',
+          order: 0,
+          parent: null,
+          title: 'Unit 1: Pitch and Major Scales',
+          description: '',
+          metadata: {},
+          contents:
+            '<h2>Unit 1</h2><p>How pitches are named and organized on the staff.</p>',
+        },
+        {
+          id: 'item-2',
+          indent: 1,
+          location: '',
+          slug: 'major-scales',
+          order: 0,
+          parent: 'item-1',
+          title: 'Major scales',
+          description: '',
+          metadata: {},
+          contents: '<p>Building a major scale from a given tonic.</p>',
+        },
+        {
+          id: 'item-3',
+          indent: 1,
+          location: '',
+          slug: 'key-signatures',
+          order: 1,
+          parent: 'item-1',
+          title: 'Key signatures',
+          description: '',
+          metadata: {},
+          contents: '<p>Reading sharps and flats at the start of a staff.</p>',
+        },
+        {
+          id: 'item-4',
+          indent: 0,
+          location: '',
+          slug: 'unit-2-intervals',
+          order: 1,
+          parent: null,
+          title: 'Unit 2: Intervals',
+          description: '',
+          metadata: {},
+          contents:
+            '<h2>Unit 2</h2><p>Measuring the distance between two pitches.</p>',
+        },
+      ]
+
+      class OutlineDesignerDemo extends LitElement {
+        static get tag() {
+          return 'outline-designer-demo'
+        }
+
+        static get properties() {
+          return {
+            items: { type: Array },
+            hideContentOps: {
+              type: Boolean,
+              attribute: 'hide-content-ops',
+              reflect: true,
+            },
+          }
+        }
+
+        constructor() {
+          super()
+          this.hideContentOps = false
+          this.items = SAMPLE_ITEMS
+        }
+
+        render() {
+          return html`
+            <outline-designer
+              .items="${this.items}"
+              ?hide-content-ops="${this.hideContentOps}"
+            ></outline-designer>
+          `
+        }
+      }
+
+      customElements.define(OutlineDesignerDemo.tag, OutlineDesignerDemo)
     </script>
   </body>
 </html>

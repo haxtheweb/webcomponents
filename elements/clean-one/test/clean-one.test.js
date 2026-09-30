@@ -97,9 +97,12 @@ describe("clean-one property validation", () => {
     el.searchTerm = "string value";
     expect(typeof el.searchTerm).to.equal("string");
 
-    // Test inherited properties exist
-    expect(el.hasOwnProperty("editMode")).to.be.true;
-    expect(el.hasOwnProperty("responsiveSize")).to.be.true;
+    // editMode and responsiveSize are inherited via the theme mixin chain,
+    // so they live on the prototype, not as own properties. hasOwnProperty
+    // only checks own properties; use the `in` operator to verify they are
+    // present and accessible on the instance.
+    expect("editMode" in el).to.be.true;
+    expect("responsiveSize" in el).to.be.true;
   });
 });
 
@@ -260,8 +263,8 @@ describe("clean-one menu functionality", () => {
   it("handles menu open/close states", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
 
-    // Initially menu should be closed
-    expect(el.hasAttribute("menu-open")).to.be.false;
+    // Menu defaults to open on desktop viewports (see HAXCMSMobileMenuMixin)
+    expect(el.hasAttribute("menu-open")).to.be.true;
 
     // Test menu button exists
     const menuButton = el.shadowRoot.querySelector("site-menu-button");
@@ -368,7 +371,7 @@ describe("clean-one error handling", () => {
     el.searchTerm = "!@#$%^&*()[]{}\"'";
     await el.updateComplete;
 
-    expect(el.searchTerm).to.equal("!@#$%^&*()[]{}\"\\'");
+    expect(el.searchTerm).to.equal("!@#$%^&*()[]{}\"'");
   });
 
   it("handles rapid property changes", async () => {

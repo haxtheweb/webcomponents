@@ -43,10 +43,13 @@
     },
     "demoSchema": [
         {
-            "tag": "web-container",
+            "tag": "web-container-doc-player",
             "properties": {
+                "element": "simple-wc",
+                "project": "@haxtheweb/simple-wc",
+                "version": "latest"
             },
-            "content": "<template>npm install @haxtheweb/create</template>"
+            "content": ""
         }
     ]
 }

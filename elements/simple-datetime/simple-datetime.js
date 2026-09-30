@@ -75,7 +75,14 @@ class SimpleDatetime extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (["timestamp", "format", "unix"].includes(propName)) {
-        this.date = this.formatDate(this.timestamp, this.format, this.unix);
+        // without a timestamp there is nothing to format yet
+        if (this.timestamp !== undefined && this.timestamp !== null) {
+          this.date = this.formatDate(
+            this.timestamp,
+            this.format,
+            this.unix,
+          );
+        }
       }
     });
   }

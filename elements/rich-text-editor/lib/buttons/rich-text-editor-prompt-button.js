@@ -99,6 +99,12 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get promptCommand() {
+      // NOTE (issue #3077, bug 32): this condition is deliberately the
+      // inverse of operationCommand. It is only consulted from
+      // updateSelection(), which runs after confirm() has re-derived
+      // toggled from the CONFIRMED value. For the link button (the only
+      // prompt button that sets toggledCommand) that means: value has an
+      // href (toggled) -> createLink, href cleared (not toggled) -> unlink.
       return this.toggledCommand && !this.toggled
         ? this.toggledCommand
         : this.command;
@@ -230,14 +236,19 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @param {string} html
      */
     setInnerHTML(html) {
-      if (this.setsInnerHTML) this.targetedNode.innerHTML = html;
+      // only assign real html: getPropValue returns literal false when
+      // the value lacks the innerHTML property, and assigning it wrote
+      // the string "false" into the targeted node (issue #3077, bug 30)
+      if (this.setsInnerHTML && !!html) this.targetedNode.innerHTML = html;
     }
     /**
      * updates toggled based on values passed from prompt
      * (can be overriden for custom toggled state)
      */
     setToggled() {
-      this.toggled = !this.value;
+      // track value presence like the image button sibling instead of
+      // inverting it (issue #3077, bug 30)
+      this.toggled = !!this.value;
     }
     /**
      * updates selection based on values passed from prompt

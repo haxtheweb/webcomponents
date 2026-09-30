@@ -240,18 +240,23 @@ describe("EditableTable test", () => {
       "editable-table-edit",
     );
 
-    const syncEvent = new CustomEvent("change", {
-      detail: "testProperty",
-    });
-
-    // Mock the editor property
-    editComponent.testProperty = "testValue";
-
-    editComponent.dispatchEvent(syncEvent);
+    // known reactive table properties sync from the editor
+    editComponent.caption = "Synced caption";
+    editComponent.dispatchEvent(
+      new CustomEvent("change", { detail: "caption" }),
+    );
     await element.updateComplete;
 
-    // The sync method should have been called
-    expect(element.testProperty).to.equal("testValue");
+    // The sync method should have copied the known property
+    expect(element.caption).to.equal("Synced caption");
+
+    // Arbitrary detail-named properties must NOT be copied onto the host
+    editComponent.testProperty = "testValue";
+    editComponent.dispatchEvent(
+      new CustomEvent("change", { detail: "testProperty" }),
+    );
+    await element.updateComplete;
+    expect(element.testProperty).to.equal(undefined);
   });
 
   it("dispatches toggle-edit-mode event", (done) => {

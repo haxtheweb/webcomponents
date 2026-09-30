@@ -123,14 +123,23 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
   /**
    * LitElement properties changed
    */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive relatedResource from scope, and licenseName/licenseLink/
+    // licenseImage from license, in willUpdate so reactive sets batch
+    // into the current update cycle. Setting them in updated() scheduled
+    // a redundant second update (Lit change-in-update warning). The DOM
+    // side-effects of _scopeChanged (setAttribute on siblings/parents)
+    // are safe pre-render since the element is connected by willUpdate.
+    if (changedProperties.has("scope")) {
+      this._scopeChanged(this.scope);
+    }
+    if (changedProperties.has("license")) {
+      this._licenseUpdated(this.license);
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "scope") {
-        this._scopeChanged(this[propName]);
-      }
-      if (propName == "license") {
-        this._licenseUpdated(this[propName]);
-      }
       if (["relatedResource", "licenseLink"].includes(propName)) {
         this._aboutLink = this._generateAboutLink(
           this.relatedResource,

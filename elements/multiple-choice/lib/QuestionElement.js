@@ -114,10 +114,17 @@ export class QuestionElement extends SchemaBehaviors(
     else if (this[this.guessDataValue]) {
       return this[this.guessDataValue];
     }
+    // the alternate storage key can be unset (no guess recorded yet);
+    // fall back to an empty list so guess counts stay numeric
+    return [];
   }
   // count of all guesses
   guessCount() {
     return this.getGuess().length;
+  }
+  // see if the interaction is out of attempts (0 implies unlimited)
+  attemptsExhausted() {
+    return this.maxAttempts > 0 && this.attempts >= this.maxAttempts;
   }
 
   checkedEvent(e) {
@@ -187,6 +194,11 @@ export class QuestionElement extends SchemaBehaviors(
    * that they want to see how they did.
    */
   checkAnswer(e) {
+    // respect the max attempts limit; once the attempts are spent the
+    // interaction no longer accepts checks (0 implies unlimited)
+    if (this.attemptsExhausted()) {
+      return;
+    }
     const reduceMotion =
       globalThis.matchMedia &&
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -600,6 +612,8 @@ export class QuestionElement extends SchemaBehaviors(
         }
         details[open] > summary {
           border: var(--ddd-border-sm);
+        }
+        summary {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
@@ -871,7 +885,9 @@ export class QuestionElement extends SchemaBehaviors(
             >Question
           </summary>
           <div class="container">
-            <h3 property="oer:name">${this.question}</h3>
+            <h3 property="oer:name" ?hidden="${!this.question}">
+              ${this.question}
+            </h3>
             ${this.renderInteraction()}
             ${!this.hideButtons ? this.renderButtons() : nothing}
           </div>
@@ -998,7 +1014,8 @@ export class QuestionElement extends SchemaBehaviors(
           id="check"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
-          this.showAnswer}"
+          this.showAnswer ||
+          this.attemptsExhausted()}"
           @click="${this.checkAnswer}"
           label="${this.t.checkAnswer}"
         >
@@ -1198,6 +1215,20 @@ export class QuestionElement extends SchemaBehaviors(
   // convert the input to data
   processInput(index, inputs, answers) {
     let input = inputs[index];
+    // guard against missing input (e.g. index out of range)
+    if (!input) {
+      return { ...this.answerPrototype(), order: parseInt(index) };
+    }
+    // support passing pre-computed answer-like data objects directly,
+    // in addition to real light dom <input> elements
+    if (typeof input.getAttribute !== "function") {
+      return {
+        ...this.answerPrototype(),
+        ...input,
+        order: parseInt(index),
+        correct: !!input.correct,
+      };
+    }
     return {
       order: parseInt(index), // stores the original order this was in for things that leverage this piece of data
       label: input.value,

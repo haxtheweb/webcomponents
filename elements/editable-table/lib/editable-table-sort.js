@@ -103,21 +103,29 @@ class EditableTableSort extends SimpleToolbarButtonBehaviors(DDD) {
     this.describedby = "cell";
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "columnIndex") {
-        this.toggled = this.columnIndex === this.sortColumn;
-      }
-      if (propName == "sortMode" || propName == "columnIndex") {
-        this.icon =
-          this.sortMode == "asc"
-            ? "arrow-drop-up"
-            : this.sortMode == "desc"
-              ? "arrow-drop-down"
-              : "editable-table:sortable";
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive toggled + icon from columnIndex/sortMode/sortColumn in
+    // willUpdate so reactive sets batch into the current update cycle.
+    // Setting them in updated() scheduled a redundant second update (Lit
+    // change-in-update warning).
+    if (
+      changedProperties.has("columnIndex") ||
+      changedProperties.has("sortColumn")
+    ) {
+      this.toggled = this.columnIndex === this.sortColumn;
+    }
+    if (
+      changedProperties.has("sortMode") ||
+      changedProperties.has("columnIndex")
+    ) {
+      this.icon =
+        this.sortMode == "asc"
+          ? "arrow-drop-up"
+          : this.sortMode == "desc"
+            ? "arrow-drop-down"
+            : "editable-table:sortable";
+    }
   }
 
   /**

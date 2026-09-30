@@ -4,6 +4,8 @@
  */
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS
@@ -20,8 +22,34 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
   static get tag() {
     return "haxcms-dev-theme";
   }
+  static get properties() {
+    return {
+      ...super.properties,
+      manifest: { type: Object },
+      items: { type: Array },
+    };
+  }
   constructor() {
     super();
+    this.manifest = {};
+    this.items = [];
+    // keep manifest / items in sync globally, same pattern used by other themes
+    this.__disposer.push(
+      autorun((reaction) => {
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0 || {};
+        });
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        const _mobx_val_0 = toJS(store.routerManifest);
+        Promise.resolve().then(() => {
+          this.items = (_mobx_val_0 && _mobx_val_0.items) || [];
+        });
+      }),
+    );
     import("@haxtheweb/simple-icon/simple-icon.js");
     import("@haxtheweb/simple-icon/lib/simple-icons.js");
     import("@haxtheweb/simple-tooltip/simple-tooltip.js");
@@ -168,18 +196,26 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
         <site-rss-button type="rss"></site-rss-button>
       </div>
       <div class="manifest">
-        <h2>title: ${manifest.title}</h2>
-        <div>description: ${manifest.description}</div>
+        <h2>title: ${this.manifest.title}</h2>
+        <div>description: ${this.manifest.description}</div>
         <div>
           icon:
           <simple-icon
-            icon="${manifest.metadata.theme.variables.icon}"
+            icon="${this.manifest.metadata &&
+            this.manifest.metadata.theme &&
+            this.manifest.metadata.theme.variables
+              ? this.manifest.metadata.theme.variables.icon
+              : ""}"
           ></simple-icon>
         </div>
         <div>
           image:
           <img
-            src="${manifest.metadata.theme.variables.image}"
+            src="${this.manifest.metadata &&
+            this.manifest.metadata.theme &&
+            this.manifest.metadata.theme.variables
+              ? this.manifest.metadata.theme.variables.image
+              : ""}"
             height="200px"
             width="200px"
           />
@@ -202,7 +238,7 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
                 <div>description: ${item.description}</div>
                 <div>slug: ${item.slug}</div>
                 <div>location: ${item.location}</div>
-                <div>changed: ${item.metadata.updated}</div>
+                <div>changed: ${item.metadata ? item.metadata.updated : ""}</div>
               </div>
               <div class="card-actions">
                 <a tabindex="-1" href$="${item.slug}"

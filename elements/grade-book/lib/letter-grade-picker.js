@@ -142,13 +142,22 @@ class LetterGradePicker extends LitElement {
   }
 
   clickScore(e) {
-    this.value = e.target.getAttribute("letter");
+    // clicks can land on the inner letter-grade element; resolve the button
+    // that owns the letter attribute before reading it
+    let button = e.target && e.target.closest ? e.target.closest("button") : null;
+    if (button) {
+      this.value = button.getAttribute("letter");
+    }
     // Value on event can influence score
     const scaleItem = toJS(
       GradeBookStore.gradeScale.find((item) => {
         return this.value === item.letter;
       }),
     );
+    // a letter that matches no scale entry can not derive a score
+    if (!scaleItem) {
+      return;
+    }
     // forces it to be 2 decimal max
     this.score =
       Math.round((scaleItem.highRange / 100) * this.possible * 100) / 100;
@@ -162,7 +171,10 @@ class LetterGradePicker extends LitElement {
         return item.highRange >= newScore && newScore >= item.lowRange;
       }),
     );
-    this.value = scaleItem.letter;
+    // a score outside every range can not map back onto a letter
+    if (scaleItem) {
+      this.value = scaleItem.letter;
+    }
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

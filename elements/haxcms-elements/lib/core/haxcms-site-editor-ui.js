@@ -5060,21 +5060,49 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     globalThis.URL.revokeObjectURL(link.href);
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive reactive display state in willUpdate so it batches into the
+    // current update cycle. Setting rpgHat / __editIcon / __editText in
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). _editModeChanged (called from updated) still sets __editIcon
+    // but that becomes a no-op since willUpdate already set it.
+    if (
+      changedProperties.has("userMenuOpen") &&
+      changedProperties.get("userMenuOpen") !== undefined
+    ) {
+      this.rpgHat = this.userMenuOpen ? "edit" : "none";
+    }
+    if (changedProperties.has("editMode")) {
+      if (this.editMode) {
+        this.rpgHat = "construction";
+        this.__editIcon = "icons:save";
+      } else {
+        this.rpgHat = "none";
+        this.__editIcon = "icons:create";
+      }
+      // Update edit button label when mode changes
+      this._updateEditButtonLabel();
+    }
+    if (changedProperties.has("responsiveSize")) {
+      this._updateEditButtonLabel();
+    }
+    // Recompute __editText when the i18n t object loads/changes so the edit
+    // button label reflects the active locale. Without this, __editText stays
+    // stale (the initial English default) until the next editMode/responsiveSize
+    // change, and _editModeChanged (in updated) re-setting __editText here
+    // would schedule a redundant second update (Lit change-in-update warning).
+    if (changedProperties.has("t")) {
+      this._updateEditButtonLabel();
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "userMenuOpen" && oldValue !== undefined) {
-        if (this.userMenuOpen) {
-          this.rpgHat = "edit";
-        } else {
-          this.rpgHat = "none";
-        }
-      }
-      if (propName === "responsiveSize") {
-        this._updateEditButtonLabel();
-      }
       if (propName == "editMode") {
         // Capture the user's scroll position BEFORE _editModeChanged writes
         // store.editMode. That store write triggers the theme + hax-body
@@ -5089,17 +5117,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ? globalThis.scrollY
               : globalThis.pageYOffset;
         }
-        if (this.editMode) {
-          this.rpgHat = "construction";
-        } else {
-          this.rpgHat = "none";
-        }
-        // Update edit button label when mode changes
-        this._updateEditButtonLabel();
         if (oldValue !== undefined) {
           SuperDaemonInstance.close();
         }
-        // observer
+        // observer (side effects: store.editMode, tray, daemon contexts;
+        // __editIcon set inside is a no-op since willUpdate already set it)
         this._editModeChanged(this[propName], oldValue);
         // notify
         this.dispatchEvent(
@@ -8258,6 +8280,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * Edit state has changed.
    */
   _editModeChanged(newValue, oldValue) {
+    // NOTE: __editIcon and __editText are derived in willUpdate (on editMode
+    // / t / responsiveSize changes) so they batch into the current update
+    // cycle. Do NOT re-set them here — doing so in updated() scheduled a
+    // redundant second update (Lit change-in-update warning). This method
+    // now only handles the store / daemon / tray side-effects.
     if (newValue) {
       // store a content copy of original state as text, waiting for a paint / full setup
       setTimeout(async () => {
@@ -8265,7 +8292,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this._originalContent = await HAXStore.activeHaxBody.haxToContent();
         }
       }, 100);
-      this.__editIcon = "icons:save";
       SuperDaemonInstance.appendContext("HAX");
       SuperDaemonInstance.removeContext("CMS");
       // remove fine-grained CMS contexts that platformConfig doesn't disable
@@ -8273,7 +8299,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         SuperDaemonInstance.removeContext(item),
       );
     } else {
-      this.__editIcon = "icons:create";
       SuperDaemonInstance.appendContext("CMS");
       // Add fine-grained CMS contexts that platformConfig doesn't disable
       this.platformContexts.cms.forEach((item) =>
@@ -8281,7 +8306,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       SuperDaemonInstance.removeContext("HAX");
     }
-    this._updateEditButtonLabel();
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;
       // force tray status to be the opposite of the editMode

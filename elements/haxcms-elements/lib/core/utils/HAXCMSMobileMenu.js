@@ -173,44 +173,63 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         </nav>
       `;
     }
-    /**
-     * Notice small size and if menu is open, close it
-     */
-    updated(changedProperties) {
-      if (super.updated) {
-        super.updated(changedProperties);
-      }
-      changedProperties.forEach((oldValue, propName) => {
-        // these cases only fire if the user has not changed the state themselves
-        // when the menuOpen setting is placed in local storage we no longer
-        // abide by these things
-        if (propName == "responsiveSize" && this[propName]) {
-          switch (this[propName]) {
-            case "sm":
-              this.isHorizontal = false;
-              // auto close for small layouts
-              if (this.menuOpen && oldValue != "xs") {
-                this.__HAXCMSMobileMenuToggle();
-              }
-              break;
-            case "xs":
-              this.isHorizontal = false;
-              // auto close for small layouts
-              if (this.menuOpen && oldValue != "sm") {
-                this.__HAXCMSMobileMenuToggle();
-              }
-              break;
-            default: {
-              this.isHorizontal = true;
-              // auto open for larger layouts
-              if (!this.menuOpen) {
-                this.__HAXCMSMobileMenuToggle();
-              }
-            }
-          }
-        }
-      });
+  /**
+   * Notice small size and if menu is open, close it. isHorizontal + menuOpen
+   * are derived in willUpdate so they batch into the current update cycle;
+   * setting them in updated() (via __HAXCMSMobileMenuToggle) scheduled a
+   * redundant second update (Lit change-in-update warning).
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
+    if (changedProperties.has("responsiveSize") && this.responsiveSize) {
+      const oldValue = changedProperties.get("responsiveSize");
+      switch (this.responsiveSize) {
+        case "sm":
+          this.isHorizontal = false;
+          // auto close for small layouts
+          if (this.menuOpen && oldValue != "xs") {
+            this.menuOpen = false;
+          }
+          break;
+        case "xs":
+          this.isHorizontal = false;
+          // auto close for small layouts
+          if (this.menuOpen && oldValue != "sm") {
+            this.menuOpen = false;
+          }
+          break;
+        default:
+          this.isHorizontal = true;
+          // auto open for larger layouts
+          if (!this.menuOpen) {
+            this.menuOpen = true;
+          }
+      }
+    }
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // Apply tabindex DOM state when menuOpen changes. menuOpen is set in
+    // willUpdate (responsiveSize) or via __HAXCMSMobileMenuToggle (click /
+    // autorun); either way this mirrors the nav tabindex side-effect that
+    // __HAXCMSMobileMenuToggle used to do inline.
+    if (changedProperties.has("menuOpen")) {
+      const nav =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#haxcmsmobilemenunav");
+      if (nav) {
+        if (this.menuOpen) {
+          nav.removeAttribute("tabindex");
+        } else {
+          nav.setAttribute("tabindex", "-1");
+        }
+      }
+    }
+  }
     static get properties() {
       let props = {};
       if (super.properties) {

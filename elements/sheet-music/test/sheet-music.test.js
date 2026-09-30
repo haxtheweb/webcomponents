@@ -93,8 +93,7 @@ describe("SheetMusic test", () => {
   });
 
   it("defaults edit mode to off so the player shows by default", async () => {
-    expect(element.editMode).to.be.false;
-    expect(element.hasAttribute("edit-mode")).to.be.false;
+    expect(element._haxstate).to.be.false;
   });
 
   it("uses the image:music-note icon in its haxProperties schema", async () => {

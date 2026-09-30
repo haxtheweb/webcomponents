@@ -24,7 +24,6 @@ export const SimpleFilterMixin = function (SuperClass) {
     resetList(list = []) {
       this.items = [...list];
       this.where = "title";
-      this.value = "";
       this.like = "";
     }
     static get properties() {
@@ -121,6 +120,7 @@ export const SimpleFilterMixin = function (SuperClass) {
     filter() {
       //This forces filter function to do its job :-)
       this.where = "";
+      this.like = "";
     }
     // helper function to escape special characters when regex is the comparison tool but input is user string
     escapeRegExp(text) {
@@ -177,7 +177,16 @@ export const SimpleFilterMixin = function (SuperClass) {
             //Decompose where incase it is represented in . notation for complex objects
             var decomposed = this._decomposeWhere(where, item);
             //Check if the items specified are defined
-            if (typeof decomposed == "undefined" && where != "") {
+            // Only warn when an actual filter is being applied (like !== "").
+            // With an empty `like` the regex matches everything regardless of
+            // `decomposed`, so a missing property is irrelevant and the
+            // per-item warning is pure noise (e.g. program-result lists where
+            // items lack the `where` field but no filtering is happening).
+            if (
+              typeof decomposed == "undefined" &&
+              where != "" &&
+              like !== ""
+            ) {
               //Do what I know best
               console.warn(
                 "simple-filter was unable to find a property in '" +

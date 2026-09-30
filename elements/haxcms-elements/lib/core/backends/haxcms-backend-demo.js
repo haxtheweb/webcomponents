@@ -46,17 +46,26 @@ class HAXCMSBackendDemo extends LitElement {
   }
   async _syncSiteApiRegistry() {
     const appSettings = store.appSettings || {};
+    // The demo context has no @system/* backend (it serves static JSON
+    // fixtures under dist/dev/), so do NOT force a systemApiBasePath. Only
+    // bootstrap the system API registry when appSettings explicitly provides
+    // a systemApiBasePath or systemOpenApiPath; otherwise let
+    // configureAppHAXSystemApiRegistry no-op cleanly so we avoid a 404 on
+    // /system/api/v1/openapi.json (and the inconsistent HAX load that the
+    // failing fetch caused during local testing).
     const systemAppSettings = Object.assign({}, appSettings);
-    if (!systemAppSettings.systemApiBasePath) {
-      systemAppSettings.systemApiBasePath = "/system/api/v1";
-    }
-    try {
-      const { configureAppHAXSystemApiRegistry } = await import(
-        "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js"
-      );
-      await configureAppHAXSystemApiRegistry(systemAppSettings, this.jwt);
-    } catch (e) {
-      console.warn("System API registry not available in site context", e);
+    if (
+      systemAppSettings.systemApiBasePath ||
+      systemAppSettings.systemOpenApiPath
+    ) {
+      try {
+        const { configureAppHAXSystemApiRegistry } = await import(
+          "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js"
+        );
+        await configureAppHAXSystemApiRegistry(systemAppSettings, this.jwt);
+      } catch (e) {
+        console.warn("System API registry not available in site context", e);
+      }
     }
     configureHAXCMSSiteApiRegistry(appSettings, this.jwt);
     // In demo mode, register @site/* operations against static JSON fixtures

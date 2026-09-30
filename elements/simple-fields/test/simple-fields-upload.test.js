@@ -119,13 +119,16 @@ describe("simple-fields-upload integration with simple-file-upload", () => {
   });
 
   it("initializes option to 'url' when value is set", async () => {
-    element.value = "https://example.com/image.jpg";
-    await element.updateComplete;
-    // firstUpdated sets option based on value, but we already constructed it
-    // so we can manually verify the logic by resetting
-    element.option = "";
-    element.firstUpdated();
-    expect(element.option).to.equal("url");
+    // option defaulting runs in willUpdate on first render only, so verify
+    // it against a freshly constructed element with a value already set
+    const withValue = await fixture(html`
+      <simple-fields-upload
+        label="Upload test"
+        value="https://example.com/image.jpg"
+      ></simple-fields-upload>
+    `);
+    await withValue.updateComplete;
+    expect(withValue.option).to.equal("url");
   });
 
   it("renders the sources toolbar buttons", async () => {

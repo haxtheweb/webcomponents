@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 
 const A11yMenuButtonItemBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -75,7 +75,10 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
             color: var(--a11y-menu-button-item-focus-color, currentColor);
             background-color: var(
               --a11y-menu-button-item-focus-bg-color,
-              #e0e0ff
+              light-dark(
+                var(--ddd-theme-default-skyMaxLight),
+                var(--ddd-theme-default-nittanyNavy)
+              )
             );
             border-left: var(--a11y-menu-button-item-focus-border-left, unset);
             border-right: var(
@@ -153,8 +156,8 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
         <a
           role="menuitem"
           href="${this.href}"
-          aria-disabled="${this.disabled ? "true" : undefined}"
-          tabindex="${this.disabled ? -1 : undefined}"
+          aria-disabled="${this.disabled ? "true" : nothing}"
+          tabindex="${this.disabled ? -1 : nothing}"
           @click="${this._handleDisabledClick}"
           part="button"
         >
@@ -172,7 +175,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
         <li role="none">
           <button
             role="menuitem"
-            aria-controls="${this.controls || undefined}"
+            aria-controls="${this.controls || nothing}"
             ?disabled="${this.disabled}"
             part="button"
           >
@@ -207,6 +210,10 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
     }
     connectedCallback() {
       super.connectedCallback();
+      // capture the parent while we are still attached; once
+      // disconnectedCallback runs this element is detached and an
+      // event dispatched from it can no longer bubble to anyone
+      this.__parent = this.parentNode;
       /**
        * Fires when menu item is added to dom
        * @event add-a11y-menu-button-item
@@ -221,19 +228,25 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
       );
     }
     disconnectedCallback() {
-      super.disconnectedCallback();
+      // notify the menu BEFORE teardown; dispatch from the parent
+      // captured while we were attached (usually the menu itself)
+      // so the remove event actually reaches the menu's listener
       /**
        * Fires when menu item is removed from dom
        * @event remove-a11y-menu-button-item
        */
-      this.dispatchEvent(
-        new CustomEvent("remove-a11y-menu-button-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        }),
-      );
+      if (this.__parent && this.__parent.dispatchEvent) {
+        this.__parent.dispatchEvent(
+          new CustomEvent("remove-a11y-menu-button-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this,
+          }),
+        );
+        this.__parent = null;
+      }
+      super.disconnectedCallback();
     }
   };
 };
@@ -260,7 +273,7 @@ Custom property | Description | Default
 --a11y-menu-button-item-border-bottom | overrides button or link bottom border | none
 --a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none
 --a11y-menu-button-item-focus-color | button or link text color when focused | black
---a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff
+--a11y-menu-button-item-focus-bg-color | button or link background color when focused | `--ddd-theme-default-skyMaxLight` (dark: `--ddd-theme-default-nittanyNavy`)
 --a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset
 --a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)
 --a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset

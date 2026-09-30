@@ -89,6 +89,11 @@ class CodeSample extends I18NMixin(LitElement) {
         tr {
           transition: background-color 0.3s ease-in-out;
         }
+        @media (prefers-reduced-motion: reduce) {
+          tr {
+            transition: none;
+          }
+        }
         tr:hover {
           background-color: var(
             --code-sample-line-hover-color,
@@ -602,12 +607,17 @@ if ($MrTheCheat) {
   }
   _themeChanged(theme) {
     if (theme) {
-      while (this.shadowRoot.querySelector("#theme").childNodes > 0) {
-        this.shadowRoot
-          .querySelector("#theme")
-          .removeChild(this.shadowRoot.querySelector("#theme").firstChild);
+      let themeEl = this.shadowRoot
+        ? this.shadowRoot.querySelector("#theme")
+        : null;
+      if (themeEl) {
+        // The old clear-loop compared a bare NodeList with > 0 (always
+        // false), so it was dead code that predates render-based theming.
+        // It cannot be made live: lit render manages this container as a
+        // ChildPart, and clearing it directly ejects the part marker nodes
+        // and crashes re-theming, so container management stays with render.
+        render(theme, themeEl);
       }
-      render(theme, this.shadowRoot.querySelector("#theme"));
     }
   }
   _updateContent() {

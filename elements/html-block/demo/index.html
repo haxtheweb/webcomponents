@@ -4,26 +4,158 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>HtmlBlock: html-block Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
-
     <script type="module">
-      
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../html-block.js';
+      import '@haxtheweb/demo-snippet/demo-snippet.js'
+      import '../html-block.js'
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic html-block demo</h3>
+      <h1>html-block demo</h1>
+      <p>
+        html-block is a plain HTML container that gives any slotted markup HAX
+        schema wiring, so pasted or imported HTML can be authored in the HAX
+        editor. By default its content is sanitized on render: inline event
+        handlers are stripped and script tags are escaped into plain text.
+        Setting allowscript after the element is on the page restores the raw
+        markup instead.
+      </p>
+      <h2>Basic usage with slotted HTML</h2>
       <demo-snippet>
         <template>
           <html-block>
-            This is html-block
+            <p>
+              Welcome to <strong>HAX</strong>, the headless authoring
+              experience for building fast, accessible sites.
+            </p>
+            <ul>
+              <li>Author content in the open with web components</li>
+              <li>Publish anywhere, no lock-in</li>
+              <li>Keep accessibility automatic</li>
+            </ul>
+            <p>
+              Read more at the
+              <a href="https://haxtheweb.org/">HAX documentation site</a>.
+            </p>
           </html-block>
         </template>
       </demo-snippet>
+      <h2>Sanitized by default, raw with allowscript</h2>
+      <p>
+        The sample below carries an inline click handler and a script tag.
+        While sanitization is active the click does nothing and the script tag
+        renders as escaped text. The harness toggles allowscript at runtime,
+        which is also how it is meant to be used, since the element resets the
+        flag whenever it connects to the page.
+      </p>
+      <demo-snippet>
+        <template>
+          <html-block-demo></html-block-demo>
+        </template>
+      </demo-snippet>
     </div>
+    <script type="module">
+      import { LitElement, html, css } from 'lit'
+      import '../html-block.js'
+      import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
+
+      class HtmlBlockDemo extends LitElement {
+        static get tag() {
+          return 'html-block-demo'
+        }
+
+        static get properties() {
+          return {
+            allowscript: { type: Boolean }
+          }
+        }
+
+        constructor() {
+          super()
+          this.allowscript = false
+        }
+
+        static get styles() {
+          return css`
+            :host {
+              display: block;
+              font-family: var(--ddd-font-primary);
+            }
+
+            .controls {
+              align-items: center;
+              display: flex;
+              flex-wrap: wrap;
+              gap: var(--ddd-spacing-3);
+              margin-top: var(--ddd-spacing-3);
+            }
+
+            .controls simple-icon-button-lite {
+              --simple-icon-height: var(--ddd-icon-3xs);
+              --simple-icon-width: var(--ddd-icon-3xs);
+              color: var(--ddd-theme-default-beaverBlue);
+              font-size: var(--ddd-font-size-5xs);
+              gap: var(--ddd-spacing-1);
+            }
+
+            .status {
+              color: var(--ddd-theme-default-coalyGray);
+              font-size: var(--ddd-font-size-4xs);
+              margin: 0;
+            }
+
+            .status.off {
+              color: var(--ddd-theme-default-success);
+            }
+
+            .status.on {
+              color: var(--ddd-theme-default-error);
+            }
+          `
+        }
+
+        render() {
+          return html`
+            <html-block .allowscript="${this.allowscript}">
+              <p>
+                This markup carries an inline click handler and a script tag,
+                so the sanitizer has something to strip.
+              </p>
+              <button onclick="this.textContent = 'inline handler ran'">
+                Click me
+              </button>
+              <script>
+                console.log(
+                  'restored as raw markup while allowscript is on',
+                )
+              <\/script>
+            </html-block>
+            <div class="controls">
+              <simple-icon-button-lite
+                icon="icons:code"
+                label="Toggle allowscript"
+                @click="${this.toggleAllowscript}"
+              >
+                Toggle allowscript
+              </simple-icon-button-lite>
+              <p class="status ${this.allowscript ? 'on' : 'off'}">
+                ${this.allowscript
+                  ? html`allowscript is on, raw markup is restored: the button
+                      handler works and the script tag is real markup.`
+                  : html`allowscript is off, content is sanitized: the button
+                      click does nothing and the script tag is escaped text.`}
+              </p>
+            </div>
+          `
+        }
+
+        toggleAllowscript() {
+          this.allowscript = !this.allowscript
+        }
+      }
+
+      customElements.define(HtmlBlockDemo.tag, HtmlBlockDemo)
+    </script>
   </body>
 </html>

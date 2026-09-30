@@ -322,7 +322,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
-          aria-label="Text settings"
+          label="Text settings"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"

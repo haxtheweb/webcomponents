@@ -59,7 +59,7 @@ function injectFallbackLink(root, path) {
 
 /**
  * Adopt the shared Bootstrap stylesheet into a host element's shadow root.
- * Call from firstUpdated(). Safe to call multiple times across components;
+ * Call from firstUpdated. Safe to call multiple times across components;
  * the sheet is built once per path and reused.
  */
 export function adoptBootstrapStylesheet(host, path) {

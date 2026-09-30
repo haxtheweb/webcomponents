@@ -1,5 +1,0 @@
-{
-  "focus-trap": "@a11y/focus-trap/focus-trap.js",
-  "local-time": "time-elements/dist/time-elements.js",
-  "grid-plate": "@haxtheweb/grid-plate/grid-plate.js"
-}
