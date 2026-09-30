@@ -144,16 +144,19 @@ describe("promise-progress-lite behavior", () => {
     expect(valueEvents.includes(100)).to.equal(true);
   });
 
-  it("BUG(lib/promise-progress-lite.js:124,128): process() reports 100% and completion even when every item rejects", async () => {
-    // resolve() and reject() are referenced inside the per-item handlers but
-    // never defined anywhere; the resulting ReferenceError is silently
-    // swallowed by Promise.allSettled, so failures are indistinguishable from
-    // successes by the time the finished event fires.
+  it("FIXED(lib/promise-progress-lite.js:124,128): an all-rejecting list no longer reports 100% completion", async () => {
+    // per-item results now flow through the thenable chain into the settled
+    // outcomes; a failed item no longer looks like a success by the time the
+    // finished event fires, so the bar never claims 100% / finished
     const el = await fixture(
       html`<promise-progress-lite></promise-progress-lite>`,
     );
     let finished = 0;
-    el.addEventListener("promise-progress-finished", () => finished++);
+    let finishedDetail = null;
+    el.addEventListener("promise-progress-finished", (e) => {
+      finished++;
+      finishedDetail = e.detail.value;
+    });
     el.list = [
       () => Promise.reject(new Error("boom 0")),
       () => Promise.reject(new Error("boom 1")),
@@ -161,14 +164,34 @@ describe("promise-progress-lite behavior", () => {
     await el.updateComplete;
     await el.process();
     await flush(150);
-    expect(el.value).to.equal(100);
-    expect(el.loadingBar.textContent).to.equal("Loading Finished");
+    expect(el.value).to.equal(0);
+    expect(el.loadingBar.textContent).to.equal("");
     expect(finished).to.equal(1);
+    expect(finishedDetail).to.equal(false);
   });
 
-  it("BUG(lib/promise-progress-lite.js:124): the success handler throws ReferenceError because resolve is not defined", async () => {
+  it("FIXED(lib/promise-progress-lite.js:124,128): a partially failing list keeps its partial count and reports failure", async () => {
+    const el = await fixture(
+      html`<promise-progress-lite></promise-progress-lite>`,
+    );
+    let finishedDetail = null;
+    el.addEventListener("promise-progress-finished", (e) => {
+      finishedDetail = e.detail.value;
+    });
+    el.list = [() => Promise.resolve("ok"), () => Promise.reject(new Error("boom"))];
+    await el.updateComplete;
+    await el.process();
+    await flush(150);
+    // only the resolved item counts; no forced 100% / "Loading Finished"
+    expect(el.value).to.equal(50);
+    expect(el.loadingBar.textContent).to.equal("Loading 50 of 100");
+    expect(finishedDetail).to.equal(false);
+  });
+
+  it("FIXED(lib/promise-progress-lite.js:124): the success handler no longer throws and the result flows through", async () => {
     // drive process() with a thenable whose .then we control so we can
-    // observe the ReferenceError thrown by the undefined resolve() call
+    // observe that the per-item success handler runs cleanly and the
+    // resolved value flows all the way to the finished event
     const el = await fixture(
       html`<promise-progress-lite></promise-progress-lite>`,
     );
@@ -188,8 +211,9 @@ describe("promise-progress-lite behavior", () => {
     await el.updateComplete;
     await el.process();
     await flush(150);
-    expect(captured.length).to.equal(1);
-    expect(captured[0]).to.include("resolve is not defined");
+    expect(captured.length).to.equal(0);
+    expect(el.value).to.equal(100);
+    expect(el.loadingBar.textContent).to.equal("Loading Finished");
   });
 
   it("passes the a11y audit", async () => {

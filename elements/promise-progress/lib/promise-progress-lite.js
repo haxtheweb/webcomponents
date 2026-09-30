@@ -116,26 +116,31 @@ export class PromiseProgressLite extends LitElement {
     if (this.canLoad) {
       var count = 0;
       const promises = await list.map(async (item) => {
-        return await item()
-          .then((res) => {
-            count = count + 1;
-            this.value = Math.round((count / this.list.length) * 100);
-            this.loadingBar.textContent = `Loading ${this.value} of ${this.max}`;
-            resolve(res);
-          })
-          .catch((err) => {
-            // an error occured
-            reject(err);
-          });
+        // chain each result through the thenable so per-item outcomes
+        // flow into the settled results below instead of being discarded
+        return await item().then((res) => {
+          count = count + 1;
+          this.value = Math.round((count / this.list.length) * 100);
+          this.loadingBar.textContent = `Loading ${this.value} of ${this.max}`;
+          return res;
+        });
       });
-      await Promise.allSettled(promises).then(() => {
-        this.loadingBar.textContent = `Loading Finished`;
-        this.value = this.max;
+      await Promise.allSettled(promises).then((outcomes) => {
+        // only claim 100% / "Loading Finished" when every item actually
+        // resolved; otherwise the partial count stays visible so failures
+        // are distinguishable from successes when the finished event fires
+        const fulfilled = outcomes.filter(
+          (outcome) => outcome.status === "fulfilled",
+        ).length;
+        if (fulfilled === outcomes.length) {
+          this.loadingBar.textContent = `Loading Finished`;
+          this.value = this.max;
+        }
         setTimeout(() => {
           this.dispatchEvent(
             new CustomEvent("promise-progress-finished", {
               detail: {
-                value: true,
+                value: fulfilled === outcomes.length,
               },
             }),
           );
