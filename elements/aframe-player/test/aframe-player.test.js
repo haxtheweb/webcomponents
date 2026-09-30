@@ -555,7 +555,7 @@ describe("aframe-player test", () => {
       );
     });
 
-    it("should clean up window controllers on disconnect", () => {
+    it("should clean up window controllers on disconnect", async () => {
       const testElement = new element.constructor();
       const abortSpy = (testElement.windowControllers.abort = () => {});
 
@@ -564,6 +564,34 @@ describe("aframe-player test", () => {
 
       // Verify abort was called (basic check)
       expect(testElement.windowControllers).to.exist;
+    });
+  });
+
+  describe("A-Frame loaded lifecycle", () => {
+    it("should apply the model and position once aframe reports loaded", async () => {
+      const testElement = await fixture(html`
+        <aframe-player
+          source="https://example.com/model.gltf"
+        ></aframe-player>
+      `);
+      await testElement.updateComplete;
+      // aframe never loads for real in tests (CDN stubbed above), so the
+      // scene's A-Frame API surface is stubbed to exercise the handler
+      const scene = testElement.querySelector("#scene");
+      let fullScreenStylesRemoved = 0;
+      scene.removeFullScreenStyles = () => {
+        fullScreenStylesRemoved++;
+      };
+      testElement.position = { x: "1", y: "2", z: "3" };
+      await testElement.updateComplete;
+      testElement._aframeLoaded();
+      expect(fullScreenStylesRemoved).to.equal(1);
+      expect(testElement.__entity).to.exist;
+      expect(testElement.__entity.getAttribute("gltf-model")).to.equal(
+        "url(https://example.com/model.gltf)",
+      );
+      expect(testElement.__entity.getAttribute("position")).to.exist;
+      expect(scene.contains(testElement.__entity)).to.be.true;
     });
   });
 });
