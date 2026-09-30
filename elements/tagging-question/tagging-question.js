@@ -150,6 +150,7 @@ class TaggingQuestion extends QuestionElement {
           (answer) => html`
             <button
               ?disabled="${this.disabled || this.showAnswer}"
+              aria-pressed="true"
               class="tag-option ${this.showAnswer
                 ? answer.correct
                   ? "correct"
@@ -174,6 +175,7 @@ class TaggingQuestion extends QuestionElement {
           (tagOption) => html`
             <button
               ?disabled="${this.disabled || this.showAnswer}"
+              aria-pressed="false"
               class="tag-option"
               draggable="${this.showAnswer ? "false" : "true"}"
               @dragstart="${this.handleDrag}"

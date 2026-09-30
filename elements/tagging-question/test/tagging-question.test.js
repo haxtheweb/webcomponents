@@ -56,6 +56,22 @@ describe("TaggingQuestion test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 
+  it("exposes tag selection state via aria-pressed", async () => {
+    // selection state must reach screen readers, not just CSS classes
+    element.displayedAnswers = [{ label: "Available Tag", correct: true }];
+    element.selectedAnswers = [{ label: "Selected Tag", correct: true }];
+    await element.updateComplete;
+
+    const selectedTag = element.shadowRoot.querySelector(
+      "#user-choice-container .tag-option",
+    );
+    const availableTag = element.shadowRoot.querySelector(
+      "#possible-container .tag-option",
+    );
+    expect(selectedTag.getAttribute("aria-pressed")).to.equal("true");
+    expect(availableTag.getAttribute("aria-pressed")).to.equal("false");
+  });
+
   // Property validation and reflection tests
   it("reflects dragging property to attribute", async () => {
     element.dragging = true;
