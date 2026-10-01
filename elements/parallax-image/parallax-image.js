@@ -46,18 +46,18 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         .title {
           background: var(--parallax-title-background);
           display: block;
-          padding: 20px 15px;
+          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-4, 15px);
           text-align: center;
           width: 40%;
           color: var(--parallax-title-font);
-          font-size: 32px;
+          font-size: var(--ddd-font-size-m, 32px);
           position: absolute;
-          margin-top: 120px;
+          margin-top: var(--ddd-spacing-30, 120px);
         }
 
         @media screen and (max-width: 900px) {
           .title {
-            font-size: 16px;
+            font-size: var(--ddd-font-size-4xs, 16px);
           }
         }
       `,
