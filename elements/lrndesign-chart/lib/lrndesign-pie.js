@@ -248,7 +248,9 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
     this.startAngle = 0;
     this.chartPadding = 5;
     this.donut = false;
-    this.total = undefined;
+    // chartist treats 0 as falsy and computes the sum internally, so 0 is a
+    // safe default that keeps Math.max(sum, total) numeric for consumers
+    this.total = 0;
     this.donutSolid = false;
     this.donutWidth = 20;
     this.showLabel = true;

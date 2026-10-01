@@ -212,7 +212,11 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
     return {
       ...super.options,
       ...this.lineBarOptions,
+      // spread the inherited lineBarOptions.axisX so showGrid, position,
+      // showLabel and labelOffset survive; only override the bar-specific
+      // onlyInteger and scaleMinSpace settings
       axisX: {
+        ...this.lineBarOptions.axisX,
         onlyInteger: this.axisXOnlyInteger,
         scaleMinSpace: this.axisXScaleMinSpace,
       },

@@ -85,6 +85,10 @@ describe('lrndesign-chart mixin', () => {
     )[0]
     expect(scale.options['ct-square']).to.exist
     expect(scale.options['ct-golden-section']).to.exist
+    // the double-octave label carries no stray backtick
+    expect(scale.options['ct-double-octave']).to.equal(
+      'ct-double-octave  (1:4)',
+    )
     const advanced = hax.settings.advanced.map((setting) => setting.property)
     expect(advanced).to.include('reverseData')
   })
@@ -204,13 +208,14 @@ describe('lrndesign-bar', () => {
     expect(options.stackMode).to.equal(true)
     expect(options.axisX.onlyInteger).to.equal(false)
     expect(options.axisX.scaleMinSpace).to.equal(30)
-    // BUG: lib/lrndesign-bar.js:215 replaces the inherited
-    // lineBarOptions.axisX wholesale with { onlyInteger, scaleMinSpace },
-    // so bar charts silently drop axisX.showGrid/position/showLabel/
-    // labelOffset even though axisXShowGrid defaults to true and
-    // axisXPosition defaults to 'end'. LrndesignLine does not clobber it.
-    expect(options.axisX.showGrid).to.be.undefined
-    expect(options.axisX.position).to.be.undefined
+    // the inherited lineBarOptions.axisX survives; only the bar-specific
+    // onlyInteger and scaleMinSpace settings override it
+    expect(options.axisX.showGrid).to.equal(true)
+    expect(options.axisX.position).to.equal('end')
+    expect(options.axisX.showLabel).to.equal(true)
+    expect(options.axisX.labelOffset.x).to.equal(0)
+    expect(options.axisX.labelOffset.y).to.equal(0)
+    expect(options.axisX.labelOffset.offset).to.equal(30)
     expect(options.axisY.showGrid).to.equal(true)
     expect(options.axisY.position).to.equal('start')
     expect(options.showGridBackground).to.equal(false)
@@ -415,7 +420,9 @@ describe('lrndesign-pie', () => {
     expect(element.labelPosition).to.equal('inside')
     expect(element.labelDirection).to.equal('neutral')
     expect(element.ignoreEmptyValues).to.equal(false)
-    expect(element.total).to.be.undefined
+    // chartist treats 0 as falsy and computes the sum internally, so 0 is
+    // the safe default that keeps donut-style totals numeric
+    expect(element.total).to.equal(0)
   })
 
   it('renders a pie chart once chartist is bridged in', async () => {
