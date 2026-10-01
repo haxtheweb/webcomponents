@@ -268,6 +268,11 @@ class LinkedinEmbed extends DDD {
   }
 
   __requestBadgeMarkup() {
+    // renderRoot does not exist until the first render commits, so requests
+    // that arrive before that point have no badge host to build against yet
+    if (!this.renderRoot) {
+      return;
+    }
     const badgeHost = this.renderRoot.querySelector(".badge-host");
     if (!badgeHost || !globalThis.document || !globalThis.document.body) {
       return;

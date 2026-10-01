@@ -407,6 +407,15 @@ describe("linkedin-embed test", () => {
       expect(scriptsMatching('badges.linkedin').length).to.equal(0)
     })
 
+    it('returns early from badge requests before the render root exists', () => {
+      // a detached element has no renderRoot until its first render commits;
+      // requesting a badge that early must not throw or hit the network
+      const el = document.createElement('linkedin-embed')
+      el.__requestBadgeMarkup()
+      expect(el.__lastRequestUid).to.equal(null)
+      expect(scriptsMatching('badges.linkedin').length).to.equal(0)
+    })
+
     it('renders the badge when the callback delivers matching html', async () => {
       element.__buildBadgeUrl = (uid) =>
         `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`
