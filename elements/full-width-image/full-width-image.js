@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `full-width-image`
  * `full width image that flows beyond boundaries`
@@ -37,18 +39,26 @@ class FullWidthImage extends LitElement {
           text-align: center;
         }
 
+        /* the caption overlay is dismissible (and re-showable) via the
+           toggle instead of hiding on hover, so it is dismissible,
+           hoverable and persistent per WCAG 1.4.13 */
+        #captionToggle {
+          position: absolute;
+          top: var(--ddd-spacing-2, 8px);
+          right: var(--ddd-spacing-2, 8px);
+          z-index: 2;
+          color: #fff;
+          --simple-icon-button-background-color: rgba(0, 0, 0, 0.6);
+        }
+
         .wrapper {
           opacity: 1;
           background-color: rgba(0, 0, 0, 0.6);
-          padding: 100px;
-          height: 100px;
+          padding: var(--ddd-spacing-25, 100px);
+          height: var(--ddd-spacing-25, 100px);
           transition: 0.3s all ease-in-out;
         }
 
-        .wrapper:hover {
-          opacity: 0;
-          background-color: transparent;
-        }
         @media (prefers-reduced-motion: reduce) {
           .wrapper {
             transition: none;
@@ -56,9 +66,9 @@ class FullWidthImage extends LitElement {
         }
 
         .caption {
-          padding: 35px 0;
+          padding: var(--ddd-spacing-9, 35px) 0;
           font-size: var(--full-width-image-font-size, 25px);
-          line-height: 40px;
+          line-height: var(--ddd-spacing-10, 40px);
           color: #fff;
           font-style: italic;
         }
@@ -69,13 +79,29 @@ class FullWidthImage extends LitElement {
   // render function
   render() {
     return html` <div id="image">
-      <div class="wrapper">
+      <simple-icon-button-lite
+        id="captionToggle"
+        icon="${this.captionHidden ? "icons:visibility" : "icons:visibility-off"}"
+        toggles
+        ?toggled="${this.captionHidden}"
+        label="toggle caption"
+        @click="${this._toggleCaption}"
+      ></simple-icon-button-lite>
+      <div class="wrapper" id="captionWrapper" ?hidden="${this.captionHidden}">
         <div class="caption">
           ${this.caption}
           <slot></slot>
         </div>
       </div>
     </div>`;
+  }
+
+  /**
+   * toggles the caption overlay; the caption stays visible and hoverable
+   * until it is explicitly dismissed (WCAG 1.4.13)
+   */
+  _toggleCaption() {
+    this.captionHidden = !this.captionHidden;
   }
 
   /**
@@ -106,6 +132,11 @@ class FullWidthImage extends LitElement {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
+  constructor() {
+    super();
+    this.captionHidden = false;
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -115,6 +146,14 @@ class FullWidthImage extends LitElement {
       },
       caption: {
         type: String,
+        reflect: true,
+      },
+      /**
+       * whether the caption overlay has been dismissed
+       */
+      captionHidden: {
+        type: Boolean,
+        attribute: "caption-hidden",
         reflect: true,
       },
     };

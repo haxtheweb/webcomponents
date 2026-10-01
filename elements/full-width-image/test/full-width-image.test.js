@@ -40,6 +40,38 @@ describe("full-width-image behavior", () => {
       .include("other.png");
   });
 
+  it("dismisses and restores the caption via the toggle button", async () => {
+    const el = await fixture(
+      html`<full-width-image
+        source="photo.png"
+        caption="A caption"
+      ></full-width-image>`,
+    );
+    await el.updateComplete;
+    const wrapper = el.shadowRoot.querySelector("#captionWrapper");
+    const toggle = el.shadowRoot.querySelector("#captionToggle");
+    // the caption overlay is visible and hoverable by default
+    expect(wrapper.hasAttribute("hidden")).to.be.false;
+    expect(toggle.hasAttribute("toggled")).to.be.false;
+    // clicking the toggle dismisses the caption instead of hover hiding it
+    toggle.click();
+    await el.updateComplete;
+    expect(el.captionHidden).to.be.true;
+    expect(el.hasAttribute("caption-hidden")).to.be.true;
+    expect(wrapper.hasAttribute("hidden")).to.be.true;
+    expect(toggle.hasAttribute("toggled")).to.be.true;
+    // clicking again restores the caption
+    toggle.click();
+    await el.updateComplete;
+    expect(el.captionHidden).to.be.false;
+    expect(wrapper.hasAttribute("hidden")).to.be.false;
+    expect(toggle.hasAttribute("toggled")).to.be.false;
+    // hovering the wrapper no longer hides the caption (WCAG 1.4.13)
+    wrapper.dispatchEvent(new MouseEvent("mouseenter"));
+    await el.updateComplete;
+    expect(wrapper.hasAttribute("hidden")).to.be.false;
+  });
+
   it("haxHooks maps mediaSourceUpdated", async () => {
     const el = await fixture(
       html`<full-width-image source="photo.png"></full-width-image>`,
