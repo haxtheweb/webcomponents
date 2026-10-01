@@ -1,0 +1,30 @@
+{
+  "title": "No pptx deck",
+  "source": null,
+  "pptx": null,
+  "thumbnail": null,
+  "renderTier": "client",
+  "slides": [
+    {
+      "number": 1,
+      "title": "One",
+      "html": "<h1>One</h1><p>First slide.</p>",
+      "image": null,
+      "notes": "note one"
+    },
+    {
+      "number": 2,
+      "title": "Two",
+      "html": "<h1>Two</h1><p>Second slide.</p>",
+      "image": null,
+      "notes": null
+    },
+    {
+      "number": 3,
+      "title": "Three",
+      "html": "<h1>Three</h1><p>Third slide.</p>",
+      "image": null,
+      "notes": "note three"
+    }
+  ]
+}
