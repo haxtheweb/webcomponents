@@ -151,8 +151,13 @@ class InlineAudio extends I18NMixin(DDD) {
     if (this.__audio.ended) {
       this.audioController(false);
     }
-    const progress = (this.__audio.currentTime / this.__audio.duration) * 100;
-    this.shadowRoot.querySelector(".progress").style.width = `${progress}%`;
+    // an unknown duration (0, NaN or Infinity for live streams) has no
+    // meaningful progress, so skip the width write entirely
+    const duration = this.__audio.duration;
+    if (Number.isFinite(duration) && duration > 0) {
+      const progress = (this.__audio.currentTime / duration) * 100;
+      this.shadowRoot.querySelector(".progress").style.width = `${progress}%`;
+    }
     if (!this.__audio.paused) {
       requestAnimationFrame(() => this.handleProgress());
     }

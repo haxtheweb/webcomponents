@@ -256,15 +256,28 @@ describe('inline-audio behavior', () => {
     })
 
     it('writes no usable width when duration is unknown', () => {
-      // BUG inline-audio.js:154 - currentTime / duration with an unknown
-      // duration (0, or Infinity for live streams) produces NaN% / Infinity%,
-      // which the CSSOM drops leaving no inline width. Harmless visually but
-      // the progress bar silently does nothing for live sources.
+      // an unknown duration (0, NaN or Infinity for live streams) has no
+      // meaningful progress, so handleProgress skips the width write
+      // entirely instead of computing NaN% / Infinity% widths
       audio.currentTime = 0
       audio.duration = 0
       audio.paused = true
       el.handleProgress()
       expect(el.shadowRoot.querySelector('.progress').style.width).to.equal('')
+      // NaN and Infinity durations (live streams) are unknown too
+      audio.duration = NaN
+      el.handleProgress()
+      expect(el.shadowRoot.querySelector('.progress').style.width).to.equal('')
+      audio.duration = Infinity
+      el.handleProgress()
+      expect(el.shadowRoot.querySelector('.progress').style.width).to.equal('')
+      // a finite duration still writes the width
+      audio.currentTime = 25
+      audio.duration = 100
+      el.handleProgress()
+      expect(el.shadowRoot.querySelector('.progress').style.width).to.equal(
+        '25%',
+      )
     })
   })
 
