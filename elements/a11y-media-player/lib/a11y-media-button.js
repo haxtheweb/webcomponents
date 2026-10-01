@@ -23,6 +23,13 @@ class A11yMediaButton extends LitElement {
       dark: {
         type: Boolean,
       },
+      /*
+       * id of element that describes the button (aria-describedby)
+       */
+      description: {
+        attribute: "description",
+        type: String,
+      },
       /**
        * is button action to send as an event
        */

@@ -438,7 +438,7 @@ class A11yMediaYoutube extends LitElement {
    * @returns {float} seconds
    */
   _getSeconds(time = 0) {
-    let units = time
+    let units = String(time)
         .replace(/[hm]{1,2}&?/g, ":0")
         .replace(/[s]{1,2}$/g, "")
         .split(/:/),

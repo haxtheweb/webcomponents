@@ -195,6 +195,7 @@ describe("a11y-media-player boolean and string properties", () => {
     el.playbackRate = 2;
     el.volume = 50;
     el.youtubeId = "abc123";
+    el.manifest = "https://example.com/manifest.mpd";
     await el.updateComplete;
     await sleep(100);
     expect(el.height).to.equal("200px");
@@ -206,6 +207,9 @@ describe("a11y-media-player boolean and string properties", () => {
     expect(el.playbackRate).to.equal(2);
     expect(el.volume).to.equal(50);
     expect(el.isYoutube).to.equal(true);
+    // the manifest property is declared again (a malformed comment used to
+    // comment it out of the properties object)
+    expect(el.manifest).to.equal("https://example.com/manifest.mpd");
     // height drives the css custom property through updated()
     expect(el.style.getPropertyValue("--a11y-media-player-height")).to.equal(
       "200px",
@@ -443,9 +447,8 @@ describe("a11y-media-player calculated getters", () => {
     expect(video._getSeconds("1h2m3s")).to.equal(3723);
     expect(video._getSeconds("01:02:03.5")).to.equal(3723.5);
     expect(video._getSeconds("0s")).to.equal(0);
-    // BUG a11y-media-player.js:3795 defaults time to the number 0 but then
-    // calls time.replace(...) on it, so a no-argument call throws a TypeError.
-    expect(() => video._getSeconds()).to.throw(TypeError);
+    // a no-argument call returns 0 instead of throwing on the number default
+    expect(video._getSeconds()).to.equal(0);
   });
 });
 
@@ -524,22 +527,23 @@ describe("a11y-media-player render branches", () => {
     await el.updateComplete;
   });
 
-  it("updated() syncs media attributes from the element", async () => {
+  it("updated() syncs media attributes onto the media element", async () => {
     const media = el.querySelector("video");
     el.muted = true;
     await el.updateComplete;
     expect(media.muted).to.equal(true);
     el.loop = true;
     await el.updateComplete;
-    // NOTE: _setAttribute targets the host element; its media argument is
-    // silently ignored (a11y-media-player.js:2528-2535)
-    expect(el.getAttribute("loop")).to.equal("true");
+    // _setAttribute targets the media element passed at the call site
+    expect(media.getAttribute("loop")).to.equal("true");
+    expect(el.hasAttribute("loop")).to.be.false;
     el.mediaLang = "de";
     await el.updateComplete;
-    expect(el.getAttribute("lang")).to.equal("de");
+    expect(media.getAttribute("lang")).to.equal("de");
+    expect(el.hasAttribute("lang")).to.be.false;
     el.playbackRate = 1.5;
     await el.updateComplete;
-    expect(el.getAttribute("playbackRate")).to.equal("1.5");
+    expect(media.getAttribute("playbackRate")).to.equal("1.5");
   });
 
   it("autoplay starts playback through the youtube stub", async () => {

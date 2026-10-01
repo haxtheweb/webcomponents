@@ -31,29 +31,30 @@ import "./lib/a11y-media-youtube.js";
  
  #### Basic Styling
  
- Custom property | Description | Default
- ----------------|-------------|----------
- `--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`
- `--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`
- `--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`
- `--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`
- `--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`
- `--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`
- `--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`
- `--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`
- `--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`
- `--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`
- `--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`
- `--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`
- `--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`
- `--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`
- `--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`
- `--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`
- `--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`
- `--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`
- `--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
- `--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
- `--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-color` | default text color | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`
+`--a11y-media-bg-color` | default background color | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`
+`--a11y-media-border-color` | default border color | `light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)`
+`--a11y-media-hover-color` | text color when hovering | `light-dark(--ddd-theme-default-black, --ddd-theme-default-white)`
+`--a11y-media-hover-bg-color` | background color when hovering | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`
+`--a11y-media-accent-color` | accent color | `light-dark(--simple-colors-default-theme-accent-9, --simple-colors-dark-theme-accent-9)`
+`--a11y-media-faded-accent-color` | accent color when faded | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`
+`--a11y-media-disabled-color` | color for disabled items | `light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-coalyGray)`
+`--a11y-media-transcript-color` | default text color of transcript | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`
+`--a11y-media-transcript-bg-color` | default background color of transcript | `light-dark(--ddd-theme-default-white, --ddd-theme-default-potentialMidnight)`
+`--a11y-media-transcript-accent-color` | default accent color of transcript | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`
+`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `light-dark(--simple-colors-default-theme-accent-10, --simple-colors-dark-theme-accent-10)`
+`--a11y-media-transcript-cue-color` | text color of transcript cue | `--ddd-theme-default-black`
+`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--ddd-theme-default-white`
+`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--ddd-theme-default-black`
+`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--ddd-theme-default-white`
+`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--ddd-theme-default-black`
+`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--ddd-theme-default-limestoneMaxLight`
+`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--ddd-theme-default-white`
+`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search  | `--ddd-theme-default-black`
+`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search  | `--ddd-theme-default-black`
+`--a11y-media-caption-color` | caption text color on the accent | `light-dark(--ddd-theme-default-white, --ddd-theme-default-black)`
  
  #### Controls
  Custom property | Description | Default 
@@ -121,42 +122,56 @@ class A11yMediaPlayer extends SchemaBehaviors(
           font-family: var(--ddd-font-navigation);
           --a11y-media-controls-font-family: var(--ddd-font-navigation);
           --a11y-media-player-height: unset;
-          --a11y-media-color: var(
-            --simple-colors-default-theme-grey-11,
-            #111111
+          --a11y-media-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
-          --a11y-media-bg-color: var(
-            --simple-colors-default-theme-grey-2,
-            #eeeeee
+          --a11y-media-bg-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
           );
-          --a11y-media-border-color: var(
-            --simple-colors-default-theme-grey-3,
-            #dddddd
+          --a11y-media-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
           );
-          --a11y-media-hover-color: var(
-            --simple-colors-default-theme-grey-12,
-            #000000
+          --a11y-media-hover-color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-white)
           );
-          --a11y-media-hover-bg-color: var(
-            --simple-colors-default-theme-grey-2,
-            #eeeeee
+          --a11y-media-hover-bg-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
           );
-          --a11y-media-accent-color: var(
-            --simple-colors-default-theme-accent-9,
-            #333333
+          /* accents stay on the SimpleColors hue ramp (the accent-color
+             feature); light-dark adapts the scheme and DDD tokens back it up */
+          --a11y-media-accent-color: light-dark(
+            var(
+              --simple-colors-default-theme-accent-9,
+              var(--ddd-theme-default-black)
+            ),
+            var(
+              --simple-colors-dark-theme-accent-9,
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
-          --a11y-media-faded-accent-color: var(
-            --simple-colors-default-theme-accent-8,
-            #444444
+          --a11y-media-faded-accent-color: light-dark(
+            var(
+              --simple-colors-default-theme-accent-8,
+              var(--ddd-theme-default-coalyGray)
+            ),
+            var(
+              --simple-colors-dark-theme-accent-8,
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
-          --a11y-media-disabled-color: var(
-            --simple-colors-default-theme-grey-5,
-            #bbbbbb
+          --a11y-media-disabled-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-coalyGray)
           );
           border: 1px solid
             var(
               --a11y-media-border-color,
-              var(--simple-colors-default-theme-grey-3)
+              var(--ddd-theme-default-limestoneLight)
             );
 
           --a11y-media-settings-menu-color: var(--a11y-media-color);
@@ -191,104 +206,107 @@ class A11yMediaPlayer extends SchemaBehaviors(
           --simple-toast-color: var(--a11y-media-color);
           --simple-toast-background-color: var(--a11y-media-bg-color);
 
-          --a11y-media-transcript-color: var(
-            --simple-colors-default-theme-grey-7,
-            #666666
+          --a11y-media-transcript-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
-          --a11y-media-transcript-bg-color: var(
-            --simple-colors-default-theme-grey-1,
-            #ffffff
+          --a11y-media-transcript-bg-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
           );
-          --a11y-media-transcript-accent-color: var(
-            --simple-colors-default-theme-accent-8,
-            #444444
+          --a11y-media-transcript-accent-color: light-dark(
+            var(
+              --simple-colors-default-theme-accent-8,
+              var(--ddd-theme-default-coalyGray)
+            ),
+            var(
+              --simple-colors-dark-theme-accent-8,
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
-          --a11y-media-transcript-faded-accent-color: var(
-            --simple-colors-default-theme-accent-10,
-            #222222
+          --a11y-media-transcript-faded-accent-color: light-dark(
+            var(
+              --simple-colors-default-theme-accent-10,
+              var(--ddd-theme-default-black)
+            ),
+            var(
+              --simple-colors-dark-theme-accent-10,
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
-          --a11y-media-transcript-cue-color: var(
-            --simple-colors-fixed-theme-grey-12,
-            #000000
-          );
-          --a11y-media-transcript-cue-bg-color: var(
-            --simple-colors-fixed-theme-grey-1,
-            #ffffff
-          );
+          /* cue colors stay readable regardless of theme until the
+             dark-transcript attribute swaps them below */
+          --a11y-media-transcript-cue-color: var(--ddd-theme-default-black);
+          --a11y-media-transcript-cue-bg-color: var(--ddd-theme-default-white);
           --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-fixed-theme-grey-12,
-            #000000
+            --ddd-theme-default-black
           );
           --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-fixed-theme-accent-1,
-            #ffffff
+            --ddd-theme-default-white
           );
           --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-fixed-theme-grey-12,
-            #000000
+            --ddd-theme-default-black
           );
           --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-fixed-theme-grey-2,
-            #eeeeee
+            --ddd-theme-default-limestoneMaxLight
           );
-          --a11y-media-transcript-match-color: var(
-            --simple-colors-fixed-theme-grey-1,
-            #ffffff
-          );
-          --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-fixed-theme-accent-10,
-            #222222
-          );
+          --a11y-media-transcript-match-color: var(--ddd-theme-default-white);
+          --a11y-media-transcript-match-bg-color: var(--ddd-theme-default-black);
           --a11y-media-transcript-match-border-color: var(
-            --simple-colors-fixed-theme-accent-12,
-            #000000
+            --ddd-theme-default-black
+          );
+          /* caption text sits on the accent color, so it flips against it */
+          --a11y-media-caption-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-black)
           );
         }
 
         :host([dark]) {
-          border: 1px solid var(--simple-colors-default-theme-grey-1, #000000);
+          border: 1px solid var(--ddd-theme-default-coalyGray);
+          /* the host palette no longer reads SimpleColors grey variables,
+             so the dark attribute re-declares it with DDD dark tokens */
+          --a11y-media-color: var(--ddd-theme-default-white);
+          --a11y-media-bg-color: var(--ddd-theme-default-potentialMidnight);
+          --a11y-media-border-color: var(--ddd-theme-default-coalyGray);
+          --a11y-media-hover-color: var(--ddd-theme-default-white);
+          --a11y-media-hover-bg-color: var(
+            --ddd-theme-default-potentialMidnight
+          );
+          --a11y-media-disabled-color: var(--ddd-theme-default-coalyGray);
+          --a11y-media-caption-color: var(--ddd-theme-default-black);
+          --a11y-media-transcript-color: var(--ddd-theme-default-white);
+          --a11y-media-transcript-bg-color: var(
+            --ddd-theme-default-potentialMidnight
+          );
         }
 
         :host([dark-transcript]) {
           --a11y-media-transcript-bg-color: var(
-            --simple-colors-dark-theme-grey-1,
-            #000000
+            --ddd-theme-default-potentialMidnight
           );
-          --a11y-media-transcript-cue-color: var(
-            --simple-colors-dark-theme-grey-12,
-            #ffffff
-          );
+          --a11y-media-transcript-cue-color: var(--ddd-theme-default-white);
           --a11y-media-transcript-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-1,
-            #000000
+            --ddd-theme-default-potentialMidnight
           );
           --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-dark-theme-accent-10,
-            #dddddd
+            --ddd-theme-default-limestoneLight
           );
           --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-1,
-            #000000
+            --ddd-theme-default-potentialMidnight
           );
-          --a11y-media-transcript-match-color: var(
-            --simple-colors-dark-theme-grey-1,
-            #000000
-          );
+          --a11y-media-transcript-match-color: var(--ddd-theme-default-black);
           --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-dark-theme-accent-10,
-            #dddddd
+            --ddd-theme-default-limestoneLight
           );
           --a11y-media-transcript-match-border-color: var(
-            --simple-colors-dark-theme-accent-12,
-            #ffffff
+            --ddd-theme-default-white
           );
           --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-dark-theme-grey-12,
-            #ffffff
+            --ddd-theme-default-white
           );
           --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-2,
-            #111111
+            --ddd-theme-default-coalyGray
           );
         }
 
@@ -479,7 +497,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           border: 1px solid
             var(
               --a11y-media-border-color,
-              var(--simple-colors-default-theme-grey-3)
+              var(--ddd-theme-default-limestoneLight)
             );
           max-height: 200px;
           overflow-y: scroll;
@@ -604,8 +622,14 @@ class A11yMediaPlayer extends SchemaBehaviors(
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-xs);
           font-weight: bold;
-          color: var(--a11y-media-transcript-color, var(--simple-colors-default-theme-grey-7, #666666));
-          background-color: var(--a11y-media-transcript-bg-color, var(--simple-colors-default-theme-grey-1, #ffffff));
+          color: var(
+            --a11y-media-transcript-color,
+            var(--ddd-theme-default-coalyGray)
+          );
+          background-color: var(
+            --a11y-media-transcript-bg-color,
+            var(--ddd-theme-default-white)
+          );
         }
 
         .media-type {
@@ -879,13 +903,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           }
 
           .media-caption {
-            color: var(
-              --a11y-media-caption-color,
-              light-dark(
-                var(--simple-colors-default-theme-grey-12),
-                var(--simple-colors-default-theme-grey-1)
-              )
-            );
+            color: var(--a11y-media-caption-color);
             background-color: var(--a11y-media-accent-color);
           }
 
@@ -980,7 +998,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
                     playback-rate="${this.playbackRate}"
                     @timeupdate="${this._handleTimeUpdate}"
                     @ended="${this._handleMediaEnded}"
-                    ?hidden=${!this.isYoutube}
                   >
                   </a11y-media-youtube>
                 `
@@ -1389,7 +1406,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                           lang="${cue.track.language}"
                           role="button"
                           start="${this._getHHMMSS(
-                            cue.endTime,
+                            cue.startTime,
                             this.media.duration,
                           )}"
                           tabindex="${this.disableInteractive ||
@@ -1601,15 +1618,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
         type: Boolean,
       },
       /**
-    * Dash.js manifest source?
-    * /
-   "manifest": {
-     "attribute": "manifest",
-     "type": String
-   },
-   /**
-    * the language of the media (if different from user interface language)
-    */
+       * Dash.js manifest source?
+       */
+      manifest: {
+        attribute: "manifest",
+        type: String,
+      },
+      /**
+       * the language of the media (if different from user interface language)
+       */
       mediaLang: {
         attribute: "media-lang",
         type: String,
@@ -1943,7 +1960,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
     globalThis.addEventListener("click", this._settingsClickHandler, true);
     this.querySelectorAll("video,audio").forEach((html5) => {
       html5.addEventListener("loadedmetadata", (e) => {
-        this.__preloadedDuration = html5.duration;
+        // only keep a real duration; sourceless media reports NaN
+        if (isFinite(html5.duration) && html5.duration > 0) {
+          this.__preloadedDuration = html5.duration;
+        }
       });
     });
   }
@@ -2426,11 +2446,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
       : false;
   }
 
-  _setAttribute(attr, val) {
+  _setAttribute(attr, val, media) {
+    media = media || this;
     if (!val) {
-      this.removeAttribute(attr);
+      media.removeAttribute(attr);
     } else {
-      this.setAttribute(attr, val);
+      media.setAttribute(attr, val);
     }
   }
 
@@ -2527,7 +2548,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         if (mediaChange("cc"))
           this._setAttribute("cc", this.cc, this.__loadedTracks);
         if (mediaChange("isYoutube") && this.__loadedTracks)
-          this.__loadedTracks.hidden === this.isYoutube;
+          this.__loadedTracks.hidden = this.isYoutube;
         if (mediaChange("mediaLang"))
           this._setAttribute("lang", this.mediaLang, media);
         if (mediaChange("loop")) this._setAttribute("loop", this.loop, media);
@@ -2952,7 +2973,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       crossorigin = media ? media.getAttribute("crossorigin") : undefined,
       primary = null,
       sourceVideo =
-        this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
+        this.source && this.source.match(/webm|ogv|mov|mp4$/),
       sourcesVideo =
         (this.sources || []).filter((source) =>
           `${source.type || ""}${source.kind || ""}`.match(
@@ -2975,7 +2996,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             : false,
         yt = iframeSrc
           ? iframeSrc.match(/youtube(-\w*)*.com/) ||
-            iframeSrc.src.match(/youtu.be/)
+            iframeSrc.match(/youtu\.be/)
           : false;
       if (yt && iframeSrc) {
         this.youtubeId = iframeSrc.replace(/.*\//g, "");
@@ -3073,12 +3094,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _getTrack(track) {
     if (!track) {
-      let defaultTracks = this.loadedTracks.textTracks.filter(
-        (track) => track.default === true,
-      );
-      return defaultTracks
-        ? defaultTracks[0].track
-        : this.loadedTracks.textTracks[0].track;
+      // TextTrackList has no Array methods, so convert it first; real
+      // TextTracks have no .track property (wrappers do), so only unwrap
+      // when present
+      let tracks = Array.from(this.loadedTracks.textTracks),
+        defaultTracks = tracks.filter((track) => track.default === true),
+        selected = defaultTracks.length > 0 ? defaultTracks[0] : tracks[0];
+      return selected && selected.track ? selected.track : selected;
     }
     return track;
   }
@@ -3119,7 +3141,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
   setVolume(value = 70) {
     this.volume = Math.max(0, Math.min(value, 100));
     if (this.media) {
-      this.media.volume = value / 100;
+      // this.volume is already clamped to 0-100; writing the raw value
+      // would throw an IndexSizeError on real media elements
+      this.media.volume = this.volume / 100;
     }
     /**
      * Fires when video volume changes
@@ -3376,7 +3400,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           return (
             d.label === media.textTracks[key].label &&
             d.kind === media.textTracks[key].kind &&
-            d.srclang === media.textTracks[key].scrlang
+            d.srclang === media.textTracks[key].language
           );
         }) || 0;
     this.captionsTrack = media.textTracks[defaultTrack];
@@ -3793,7 +3817,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @returns {float} seconds
    */
   _getSeconds(time = 0) {
-    let units = time
+    let units = String(time)
         .replace(/[hm]{1,2}&?/g, ":0")
         .replace(/[s]{1,2}$/g, "")
         .split(/:/),

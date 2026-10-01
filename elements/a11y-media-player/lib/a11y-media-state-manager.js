@@ -166,12 +166,11 @@ class A11yMediaStateManager extends LitElement {
       { signal: this.windowControllers.signal },
     );
 
-    // listen for a player toggling fullscreen mode
-    globalThis.addEventListener(
-      "fullscreen-toggle",
-      this._handleFullscreen.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    // listen for a player toggling fullscreen mode; the wrapper unwraps
+    // e.detail so _handleFullscreen receives the player, not the raw event
+    globalThis.addEventListener("fullscreen-toggle", this.__fullscreenManager, {
+      signal: this.windowControllers.signal,
+    });
 
     // listen for a players added to the page
     globalThis.addEventListener("a11y-player", this.__playerLoader.bind(this), {

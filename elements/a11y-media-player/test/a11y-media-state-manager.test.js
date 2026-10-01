@@ -163,10 +163,8 @@ describe("a11y-media-state-manager global listeners", () => {
       }),
     );
     expect(manager.activePlayer === player).to.be.true;
-    // BUG lib/a11y-media-state-manager.js:170 registers this._handleFullscreen
-    // directly instead of the __fullscreenManager wrapper that unwraps
-    // e.detail, so the raw event (not the player) is inspected and the
-    // fullscreen player is never promoted by fullscreen-toggle events.
+    // the fullscreen-toggle listener unwraps e.detail (via the
+    // __fullscreenManager wrapper), so a fullscreen player is promoted
     const other = makePlayer({ fullscreen: true });
     globalThis.dispatchEvent(
       new CustomEvent("fullscreen-toggle", {
@@ -175,7 +173,7 @@ describe("a11y-media-state-manager global listeners", () => {
         composed: true,
       }),
     );
-    expect(manager.activePlayer === player).to.be.true;
+    expect(manager.activePlayer === other).to.be.true;
   });
 
   it("stops listening once disconnected", () => {

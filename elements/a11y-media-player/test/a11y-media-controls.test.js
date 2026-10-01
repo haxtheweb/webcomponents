@@ -45,6 +45,16 @@ describe("a11y-media-button", () => {
     expect(button.getAttribute("aria-label")).to.equal("Pause");
   });
 
+  it("exposes aria-describedby from the description property", async () => {
+    const button = el.shadowRoot.querySelector("#button");
+    expect(button.hasAttribute("aria-describedby")).to.be.false;
+    el.description = "play-button-hint";
+    await el.updateComplete;
+    expect(button.getAttribute("aria-describedby")).to.equal(
+      "play-button-hint",
+    );
+  });
+
   it("renders a tooltip only when labelled", async () => {
     expect(el.shadowRoot.querySelector("simple-tooltip")).to.exist;
     el.label = "";

@@ -77,9 +77,8 @@ describe("a11y-media-player transcript system", () => {
     expect(el.shadowRoot.querySelector("#loading")).to.not.exist;
     expect(el.transcriptCues.length).to.equal(2);
     expect(cues[0].getAttribute("lang")).to.equal("en");
-    // BUG a11y-media-player.js:1391 binds the cue start timestamp to
-    // cue.endTime instead of cue.startTime, so both columns show the end time.
-    expect(cues[0].getAttribute("start")).to.equal("00:05");
+    // the start column shows the cue start time; end shows its end time
+    expect(cues[0].getAttribute("start")).to.equal("00:01");
     expect(cues[0].getAttribute("end")).to.equal("00:05");
     expect(cues[0].textContent.trim()).to.equal("Hello world");
   });

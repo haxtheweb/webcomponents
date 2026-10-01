@@ -362,9 +362,8 @@ describe("a11y-media-youtube playback controls", () => {
     expect(el._getSeconds("30s")).to.equal(30);
     expect(el._getSeconds("1h2m3s")).to.equal(3723);
     expect(el._getSeconds("01:02:03.5")).to.equal(3723.5);
-    // BUG lib/a11y-media-youtube.js:440 defaults time to the number 0 but
-    // then calls time.replace(...) on it, so a no-argument call throws.
-    expect(() => el._getSeconds()).to.throw(TypeError);
+    // a no-argument call returns 0 instead of throwing on the number default
+    expect(el._getSeconds()).to.equal(0);
   });
 
   it("renders a slot for the injected iframe", () => {

@@ -9,6 +9,21 @@ installOfflineYouTubeStubs();
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
+ * A light fake for __loadedTracks: a plain object with textTracks plus the
+ * attribute API updated() writes onto the media element via _setAttribute.
+ */
+const fakeLoadedTracks = (tracks) => ({
+  textTracks: tracks,
+  attributes: {},
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
+  },
+  removeAttribute(name) {
+    delete this.attributes[name];
+  },
+});
+
+/**
  * A light fake media element used to drive seek() through the seekable and
  * the throwing-currentTime branches without any real media decoding.
  */
@@ -22,6 +37,15 @@ class FakeMedia {
     this.playbackRateCalls = [];
     this.currentTimeCalls = [];
     this.throws = opts && opts.throws;
+    this.attributes = {};
+  }
+  // updated() writes player attributes onto the media element through
+  // _setAttribute, so the fake models that element API as well
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
+  }
+  removeAttribute(name) {
+    delete this.attributes[name];
   }
   seek(time) {
     this.seeked = this.seeked || [];
@@ -205,10 +229,16 @@ describe("a11y-media-player playback methods", () => {
     await yt.updateComplete;
     expect(yt.volume).to.equal(30);
     expect(yt.youtube.__yt.volumeVal).to.equal(30);
-    // BUG a11y-media-player.js:3122 sets media.volume = value / 100 from the
-    // RAW value instead of the clamped this.volume, so out-of-range values
-    // throw an IndexSizeError on real media elements
-    expect(() => el.setVolume(150)).to.throw();
+    // the media element receives the clamped value too, so out-of-range
+    // values never throw an IndexSizeError on real media elements
+    el.setVolume(150);
+    await el.updateComplete;
+    expect(el.volume).to.equal(100);
+    expect(media.volume).to.equal(1);
+    el.setVolume(-5);
+    await el.updateComplete;
+    expect(el.volume).to.equal(0);
+    expect(media.volume).to.equal(0);
   });
 
   it("setPlaybackRate() defaults null to 1 and syncs media", async () => {
@@ -454,13 +484,23 @@ describe("a11y-media-player seek handlers and slider", () => {
       getTarget: (target) => target,
       params: { t: "10s" },
     };
-    // called directly: dispatching a real loadedmetadata event would also
-    // fire the constructor listener that resets __preloadedDuration to the
-    // sourceless video's NaN duration, collapsing the seek range to 0
+    // called directly for determinism; the constructor's loadedmetadata
+    // listener now guards NaN durations, so dispatching the real event is
+    // safe as well (covered below)
     el._handleMediaLoaded();
     await el.updateComplete;
     expect(el.__currentTime).to.equal(10);
     globalThis.AnchorBehaviors = original;
+  });
+
+  it("a sourceless video's loadedmetadata does not clobber a known duration", async () => {
+    // a sourceless video reports NaN for duration; the guard keeps it from
+    // overwriting a real __preloadedDuration
+    el.__preloadedDuration = 100;
+    media.dispatchEvent(new Event("loadedmetadata"));
+    await el.updateComplete;
+    expect(el.__preloadedDuration).to.equal(100);
+    expect(el.duration).to.equal(100);
   });
 
   it("_handleSearchAdded stores the search element", () => {
@@ -554,7 +594,7 @@ describe("a11y-media-player track selection", () => {
   });
 
   it("selectCaptionByKey picks a track and enables cc", async () => {
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     el.selectCaptionByKey(0);
     await el.updateComplete;
@@ -572,7 +612,7 @@ describe("a11y-media-player track selection", () => {
   });
 
   it("selectCaptionByKeyEvent forwards the detail value", async () => {
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     el.selectCaptionByKeyEvent({ detail: { value: "1" } });
     await el.updateComplete;
@@ -581,7 +621,7 @@ describe("a11y-media-player track selection", () => {
 
   it("toggleCC toggles and fires cc-toggle on the window", async () => {
     // captions state only holds with loaded tracks to show
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     const fired = [];
     const handler = (e) => fired.push(e.type);
@@ -597,7 +637,7 @@ describe("a11y-media-player track selection", () => {
   });
 
   it("selectTranscriptByKey picks a track and toggles hideTranscript", async () => {
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     el.selectTranscriptByKey(0);
     await el.updateComplete;
@@ -609,7 +649,7 @@ describe("a11y-media-player track selection", () => {
   });
 
   it("selectTranscriptByKeyEvent only acts when player and settings are ready", async () => {
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     el.__playerReady = true;
     el.__settingsOpen = true;
@@ -633,26 +673,44 @@ describe("a11y-media-player track selection", () => {
   it("selectTranscript without a track resolves the default track on array textTracks", async () => {
     // with a plain array of track-like objects the default track is found
     const spanish = { label: "Spanish", language: "es", default: true, track: fakeTracks[1] };
-    el.__loadedTracks = { textTracks: [fakeTracks[0], spanish] };
+    el.__loadedTracks = fakeLoadedTracks([fakeTracks[0], spanish]);
     await el.updateComplete;
     el.selectTranscript();
     await el.updateComplete;
     expect(el.transcriptTrack === fakeTracks[1]).to.be.true;
   });
 
-  it("BUG: _getTrack crashes on a real TextTrackList (no Array.filter)", async () => {
-    // BUG a11y-media-player.js:3076 calls this.loadedTracks.textTracks.filter(...)
-    // but TextTrackList has no Array methods (filter/forEach), so selecting the
-    // default track on a real <video>/<audio> throws a TypeError.
+  it("_getTrack resolves safely on a real TextTrackList", () => {
+    // TextTrackList has no Array methods (filter/forEach), so _getTrack
+    // converts it before filtering; an empty list resolves undefined
     const media = el.querySelector("video");
     expect(media.textTracks.filter).to.equal(undefined);
-    expect(() => el._getTrack()).to.throw(TypeError);
+    expect(() => el._getTrack()).to.not.throw();
+    expect(el._getTrack()).to.equal(undefined);
+  });
+
+  it("selects the default track by srclang through the TextTrack language", async () => {
+    // srcl-less track elements still register TextTracks, so the default
+    // track is matched through TextTrack.language (not .srclang)
+    const player = await fixture(html`
+      <a11y-media-player>
+        <video>
+          <track kind="subtitles" srclang="en" label="English" />
+          <track kind="subtitles" srclang="es" label="Spanish" default />
+        </video>
+      </a11y-media-player>
+    `);
+    await player.updateComplete;
+    await sleep(50);
+    expect(player.captionsTrack).to.exist;
+    expect(player.captionsTrack.language).to.equal("es");
+    expect(player.captionsTrack.label).to.equal("Spanish");
   });
 
   it("toggleTranscript shows the transcript and auto-selects track 0", async () => {
     el.hideTranscript = true;
     await el.updateComplete;
-    el.__loadedTracks = { textTracks: fakeTracks };
+    el.__loadedTracks = fakeLoadedTracks(fakeTracks);
     await el.updateComplete;
     const fired = [];
     el.addEventListener("transcript-toggle", (e) => fired.push(e.type));
@@ -910,15 +968,50 @@ describe("a11y-media-player sources and iframe detection", () => {
     el.pause();
   });
 
-  it("BUG: a non-youtube iframe crashes getloadedTracks", () => {
-    // BUG a11y-media-player.js:2978 reads iframeSrc.src on a *string*
-    // (iframeSrc.src.match(/youtu.be/)) instead of iframeSrc.match(...),
-    // so any non-YouTube iframe child throws a TypeError while scanning.
+  it("a non-youtube iframe is scanned without crashing getloadedTracks", () => {
+    // iframeSrc is a string, so the youtu.be check matches against the string
+    // itself; a non-YouTube iframe is simply left alone
     const frame = globalThis.document.createElement("iframe");
     frame.setAttribute("src", "other.example/page");
     el.appendChild(frame);
-    expect(() => el.getloadedTracks()).to.throw(TypeError);
+    expect(() => el.getloadedTracks()).to.not.throw();
+    expect(el.youtubeId).to.equal(null);
+    expect(el.querySelector("iframe")).to.exist;
     frame.remove();
+  });
+
+  it("adopting youtube media hides the html5 media element", async () => {
+    const media = el.querySelector("video");
+    expect(media.hidden).to.equal(false);
+    el.youtubeId = "abc123";
+    await el.updateComplete;
+    await sleep(100);
+    expect(media.hidden).to.equal(true);
+    el.youtubeId = null;
+    await el.updateComplete;
+    expect(media.hidden).to.equal(false);
+  });
+
+  it("creates a video element for a single mp4 source without media children", async () => {
+    const player = await fixture(
+      html`<a11y-media-player source="data:video/mp4"></a11y-media-player>`,
+    );
+    await player.updateComplete;
+    await sleep(50);
+    // a video extension on the single source creates a video element
+    expect(player.querySelector("video")).to.exist;
+    expect(player.audioOnly).to.equal(false);
+  });
+
+  it("creates an audio element when the single source is not video", async () => {
+    const player = await fixture(
+      html`<a11y-media-player source="data:audio/mp3"></a11y-media-player>`,
+    );
+    await player.updateComplete;
+    await sleep(50);
+    expect(player.querySelector("audio")).to.exist;
+    expect(player.audioOnly).to.equal(true);
+    expect(player.querySelector("video")).to.not.exist;
   });
 
   it("disconnecting the player cleans up timers and listeners", async () => {
