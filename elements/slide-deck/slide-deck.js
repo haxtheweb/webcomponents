@@ -268,6 +268,18 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
+  /**
+   * Whether presenting is possible at all. The Fullscreen API can be
+   * missing or blocked (e.g. a sandboxed iframe), and a present button
+   * that silently no-ops is a trap for keyboard users, so the control
+   * renders disabled instead.
+   */
+  get fullscreenAvailable() {
+    return Boolean(
+      this.requestFullscreen && globalThis.document.fullscreenEnabled,
+    );
+  }
+
   async copyLink() {
     const url = new URL(globalThis.location.href);
     url.hash = `${this.hashPrefix}-slide-${this.slide}`;
@@ -485,6 +497,8 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         label="${this.mode === "grid"
           ? this.t.viewOneSlide
           : this.t.viewAllSlides}"
+        toggles
+        ?toggled="${this.mode === "grid"}"
         @click="${this.toggleMode}"
       ></simple-icon-button-lite>
       <simple-icon-button-lite
@@ -492,6 +506,9 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         label="${this.presenting
           ? this.t.exitFullScreen
           : this.t.presentFullScreen}"
+        toggles
+        ?toggled="${this.presenting}"
+        ?disabled="${!this.fullscreenAvailable}"
         @click="${this.togglePresenting}"
       ></simple-icon-button-lite>
       ${this.downloadable && this.deck && this.deck.pptx
@@ -540,10 +557,12 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       return html`<p class="message">${this.t.presentationUnavailable}</p>`;
     }
     const current = this.currentSlide;
+    // the region is a tab stop only in slide mode; in grid mode the cards
+    // are the focus targets and a focusable region would double-stop Tab
     return html`<div
       role="region"
       aria-label="${this.deck.title || this.t.slide}"
-      tabindex="0"
+      tabindex="${this.mode === "slide" ? "0" : nothing}"
       @keydown="${this._onKeyDown}"
     >
       ${this.renderToolbar()}

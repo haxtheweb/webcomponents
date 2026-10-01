@@ -541,6 +541,75 @@ describe('slide-deck behavior', () => {
     }
   })
 
+  it('conveys toggle state with aria-pressed and gates the present control', async () => {
+    const element = await deckFixture(NO_PPTX_MANIFEST, 'aria')
+    const buttonByIcon = (icon) =>
+      Array.from(
+        element.shadowRoot.querySelectorAll('.bar simple-icon-button-lite'),
+      ).find((button) => button.icon === icon)
+    const innerButton = (lite) => lite.shadowRoot.querySelector('button')
+    // the grid toggle reports its state to assistive technology
+    const modeButton = buttonByIcon('icons:apps')
+    expect(modeButton.hasAttribute('toggles')).to.be.true
+    expect(innerButton(modeButton).getAttribute('aria-pressed')).to.equal(
+      'false',
+    )
+    element.toggleMode()
+    await element.updateComplete
+    expect(
+      innerButton(buttonByIcon('icons:view-carousel')).getAttribute(
+        'aria-pressed',
+      ),
+    ).to.equal('true')
+    // the region is a tab stop only in slide mode, so the grid cards do
+    // not double-stop Tab
+    const region = element.shadowRoot.querySelector('div[role="region"]')
+    expect(region.hasAttribute('tabindex')).to.be.false
+    element.showSlide(1)
+    await element.updateComplete
+    expect(region.getAttribute('tabindex')).to.equal('0')
+    // the present toggle reports pressed while presenting
+    stubFullscreenElement(element)
+    try {
+      element.dispatchEvent(new Event('fullscreenchange'))
+      await element.updateComplete
+      expect(
+        innerButton(buttonByIcon('icons:fullscreen-exit')).getAttribute(
+          'aria-pressed',
+        ),
+      ).to.equal('true')
+      stubFullscreenElement(null)
+      element.dispatchEvent(new Event('fullscreenchange'))
+      await element.updateComplete
+    } finally {
+      delete globalThis.document.fullscreenElement
+    }
+    const presentButton = buttonByIcon('icons:fullscreen')
+    expect(presentButton.hasAttribute('toggles')).to.be.true
+    expect(innerButton(presentButton).getAttribute('aria-pressed')).to.equal(
+      'false',
+    )
+    // when the Fullscreen API is blocked the control disables instead of
+    // silently no-op'ing for keyboard users
+    const stubFullscreenEnabled = (value) =>
+      Object.defineProperty(globalThis.document, 'fullscreenEnabled', {
+        get: () => value,
+        configurable: true,
+      })
+    try {
+      stubFullscreenEnabled(false)
+      element.requestUpdate()
+      await element.updateComplete
+      expect(innerButton(presentButton).disabled).to.be.true
+      stubFullscreenEnabled(true)
+      element.requestUpdate()
+      await element.updateComplete
+      expect(innerButton(presentButton).disabled).to.be.false
+    } finally {
+      delete globalThis.document.fullscreenEnabled
+    }
+  })
+
   it('copies a deep link to the current slide and announces it', async () => {
     const element = await deckFixture(NO_PPTX_MANIFEST, 'link')
     const written = []
