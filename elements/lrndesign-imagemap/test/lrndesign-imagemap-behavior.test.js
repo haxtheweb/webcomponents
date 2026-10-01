@@ -26,15 +26,13 @@ const getStoredAttr = (el, name) => {
   return null
 }
 
-// NOTE: this suite deliberately avoids an unlabeled (heading-slot branch)
-// fixture. lrndesign-imagemap dynamically imports relative-heading at
-// construct time; once upgraded, relative-heading's updateContents() rewrites
-// its own innerHTML and ejects this element's Lit ChildPart markers when the
-// no-label slot branch renders, throwing unhandled "ChildPart has no
-// parentNode" errors that destabilize the whole test session. That
-// interaction is a bug in the element (dynamically imported relative-heading
-// performing innerHTML surgery inside a Lit template), not test flakiness to
-// paper over, so the slot branch is left uncovered here rather than exercised.
+// NOTE: the unlabeled (heading-slot branch) fixture is covered by the
+// 'heading-slot branch' describe below. relative-heading used to rewrite
+// its own innerHTML in updateContents(), which ejected this element's Lit
+// ChildPart markers when the no-label slot branch rendered and threw
+// unhandled "ChildPart has no parentNode" errors; updateContents() now
+// replaces only the heading node (and leaves slotted content alone), so
+// the slot branch is safe to exercise.
 describe('lrndesign-imagemap', () => {
   let element
   beforeEach(async () => {
@@ -69,22 +67,17 @@ describe('lrndesign-imagemap', () => {
     const svg = element.querySelector('svg')
     expect(svg).to.exist
     expect(svg.getAttribute('slot')).to.equal('svg')
-    // BUG: lrndesign-imagemap.js:176-177 uses setAttribute with camelCase
-    // names (aria-labelledBy / aria-describedBy). The DOM preserves that
-    // casing, so the valid all-lowercase aria-labelledby / aria-describedby
-    // never exist; getAttribute lowercases its query and therefore can never
-    // even read the stored camelCase names; and an axe audit flags them as
-    // invalid ARIA attributes. Exposed by 'loads the svg from its source and
-    // slots it'.
-    expect(svg.getAttribute('aria-labelledby')).to.not.exist
-    expect(svg.getAttribute('aria-describedby')).to.not.exist
-    // the mis-cased attributes still carry the generated info node ids
-    expect(getStoredAttr(svg, 'aria-labelledBy')).to.equal(
+    // the svg is labelled by its title and desc info nodes through the
+    // valid all-lowercase aria-labelledby / aria-describedby attributes
+    expect(svg.getAttribute('aria-labelledby')).to.equal(
       svg.querySelector('title').getAttribute('id'),
     )
-    expect(getStoredAttr(svg, 'aria-describedBy')).to.equal(
+    expect(svg.getAttribute('aria-describedby')).to.equal(
       svg.querySelector('desc').getAttribute('id'),
     )
+    // the old camelCase setAttribute names no longer exist in the DOM
+    expect(getStoredAttr(svg, 'aria-labelledBy')).to.equal(null)
+    expect(getStoredAttr(svg, 'aria-describedBy')).to.equal(null)
   })
 
   it('scrapes hotspot details from hotspot children', async () => {
@@ -97,9 +90,12 @@ describe('lrndesign-imagemap', () => {
     // unspecified positions fall back to bottom
     expect(second.position).to.equal('bottom')
     expect(first.print).to.be.instanceOf(LrndesignImagemapHotspot)
-    // the interactive svg shapes are turned into buttons
+    // the interactive svg shapes are turned into named buttons that control
+    // the figure; aria-label comes from the hotspot's own label
     expect(first.hotspot.getAttribute('role')).to.equal('button')
-    expect(first.hotspot.getAttribute('controls')).to.equal('figure')
+    expect(first.hotspot.getAttribute('aria-label')).to.equal('Spot A')
+    expect(first.hotspot.getAttribute('aria-controls')).to.equal('figure')
+    expect(getStoredAttr(first.hotspot, 'controls')).to.equal(null)
     expect(first.hotspot.classList.contains('hotspot')).to.equal(true)
     // details are cloned into slottable divs
     expect(first.details.getAttribute('slot')).to.equal('details')
@@ -155,14 +151,13 @@ describe('lrndesign-imagemap', () => {
     ).to.equal(false)
   })
 
-  it('closeHotspot resets selection', async () => {
+  it('closeHotspot resets selection without throwing', async () => {
     element.openHotspot(element.hotspotDetails[0])
     await element.updateComplete
-    // BUG: lrndesign-imagemap.js:266 calls this.__activeHotspot.focus() but
-    // __activeHotspot is a plain hotspot detail object, not a DOM node, so
-    // closeHotspot always throws after resetting the selection. Exposed by
-    // 'closeHotspot resets selection'.
-    expect(() => element.closeHotspot()).to.throw(TypeError)
+    // closeHotspot focuses the hotspot's svg shape instead of the plain
+    // hotspot detail object and tolerates no active hotspot
+    element.closeHotspot()
+    element.closeHotspot()
     expect(
       element.hotspotDetails[0].hotspot.classList.contains('selected'),
     ).to.equal(false)
@@ -187,7 +182,25 @@ describe('lrndesign-imagemap', () => {
     expect(bareSvg.querySelector('title')).to.exist
     expect(bareSvg.querySelector('title').getAttribute('id')).to.equal(titleId)
     const descId = element._getInfoNode(bareSvg, 'desc')
+    expect(bareSvg.querySelector('desc')).to.exist
     expect(bareSvg.querySelector('desc').getAttribute('id')).to.equal(descId)
+  })
+
+  it('seeds missing info nodes from the heading and desc', async () => {
+    const bareSvg = globalThis.document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'svg',
+    )
+    element._getInfoNode(bareSvg, 'title')
+    // the shadow heading supplies the new title's seeded content; svg
+    // elements escape assigned markup, so assert on the seeded text
+    expect(bareSvg.querySelector('title').textContent).to.include(
+      'Test map',
+    )
+    element._getInfoNode(bareSvg, 'desc')
+    // the shadow desc supplies the new desc's seeded markup; unlike an
+    // html title (rcdata), a desc parses its markup into child elements
+    expect(bareSvg.querySelector('desc').innerHTML).to.include('slot')
   })
 
   it('gets or generates element ids', async () => {
@@ -230,17 +243,16 @@ describe('lrndesign-imagemap-hotspot', () => {
     expect(
       hotspot.shadowRoot.querySelector('figure.hotspot-print'),
     ).to.exist
-    // BUG: the render outputs <h2>Spot A</h2> inside relative-heading, but
-    // once the dynamically imported relative-heading upgrades, its
-    // updateContents() rewrites that light DOM to <h1>Spot A</h1> (level 1
-    // before the manager resolves parent="heading"), so the printed
-    // subheading lands as a top-level h1 and the level flips depending on
-    // upgrade timing. Assert on whichever heading survives. Exposed by
-    // 'renders a print-ready figure with heading and slots'.
+    // the print sub-heading carries default-level=2 so it stays an h2 even
+    // when the parent "heading" has not registered yet (e.g. standalone
+    // usage), instead of flipping to a top-level h1 on upgrade timing
     const heading = hotspot.shadowRoot.querySelector(
-      'figure.hotspot-print relative-heading h1, figure.hotspot-print relative-heading h2',
+      'figure.hotspot-print relative-heading h2',
     )
     expect(heading).to.exist
+    expect(hotspot.shadowRoot.querySelector(
+      'figure.hotspot-print relative-heading h1',
+    )).to.not.exist
     expect(heading.textContent).to.equal('Spot A')
     expect(hotspot.shadowRoot.querySelector('#desc slot')).to.exist
     expect(
@@ -252,16 +264,11 @@ describe('lrndesign-imagemap-hotspot', () => {
     hotspot.loadSvg(svgText, ['spot-a', 'spot-b'])
     const svg = hotspot.querySelector('svg')
     expect(svg).to.exist
-    // BUG: lrndesign-imagemap-hotspot.js:86-87 uses setAttribute with
-    // camelCase names (aria-labelledBy / aria-describedBy); the DOM
-    // preserves that casing so the valid all-lowercase aria-labelledby /
-    // aria-describedby never exist, getAttribute can never read the stored
-    // names, and an axe audit flags them as invalid. Exposed by 'loads a
-    // printable svg and marks its hotspots'.
-    expect(getStoredAttr(svg, 'aria-labelledBy')).to.equal('sub-heading')
-    expect(getStoredAttr(svg, 'aria-describedBy')).to.equal(
-      'sub-heading desc',
-    )
+    // the print svg is labeled directly from the hotspot's own label since
+    // shadow-root IDREFs cannot reach it from light DOM
+    expect(svg.getAttribute('aria-label')).to.equal('Spot A')
+    expect(getStoredAttr(svg, 'aria-labelledBy')).to.equal(null)
+    expect(getStoredAttr(svg, 'aria-describedBy')).to.equal(null)
     expect(
       svg.querySelector('#spot-a').classList.contains('hotspot'),
     ).to.equal(true)
@@ -272,18 +279,57 @@ describe('lrndesign-imagemap-hotspot', () => {
     expect(
       svg.querySelector('#spot-b').classList.contains('selected'),
     ).to.equal(false)
-    // BUG: lrndesign-imagemap-hotspot.js:85 assigns the ENTIRE svg text to
-    // the slot attribute (slot.slot = svg) instead of a slot name, so the
-    // printed svg never actually lands in the hotspot's svg slot. Exposed
-    // by 'loads a printable svg and marks its hotspots'.
-    expect(svg.getAttribute('slot')).to.equal(svgText)
+    // the printed svg lands in the hotspot's own svg slot by name
+    expect(svg.getAttribute('slot')).to.equal('svg')
   })
 
-  it('setParentHeading targets a heading that does not exist', async () => {
-    // BUG: lrndesign-imagemap-hotspot.js:101 looks for #heading but the
-    // render function outputs relative-heading id="sub-heading", so this
-    // public method always throws a TypeError. Exposed by
-    // 'setParentHeading targets a heading that does not exist'.
-    expect(() => hotspot.setParentHeading('heading-x')).to.throw(TypeError)
+  it('setParentHeading updates the printed sub-heading parent', async () => {
+    // the selector matches the rendered relative-heading id="sub-heading"
+    // so the public method actually resolves and updates its parent
+    hotspot.setParentHeading('heading-x')
+    const heading = hotspot.shadowRoot.querySelector('#sub-heading')
+    expect(heading.parent).to.equal('heading-x')
+    // the parent property reflects its attribute on the next update
+    await heading.updateComplete
+    expect(heading.getAttribute('parent')).to.equal('heading-x')
+  })
+})
+
+describe('lrndesign-imagemap heading-slot branch', () => {
+  // regression for the ChildPart crash: with no label, the heading renders
+  // a slot inside relative-heading; relative-heading's updateContents used
+  // to rewrite its own innerHTML wholesale, ejecting the imagemap's Lit
+  // ChildPart markers, so re-renders (and branch switches) threw unhandled
+  // 'ChildPart has no parentNode' errors that hung the whole test session
+  it('renders a slotted heading and survives re-renders', async () => {
+    const element = await fixture(html`
+      <lrndesign-imagemap src="${svgDataUri}">
+        <h2 slot="heading">Slotted map heading</h2>
+        <div slot="desc"><p>Slotted map description.</p></div>
+        <lrndesign-imagemap-hotspot hotspot-id="spot-a" label="Spot A">
+          First hotspot details.
+        </lrndesign-imagemap-hotspot>
+      </lrndesign-imagemap>
+    `)
+    await aTimeout(300)
+    const heading = element.shadowRoot.querySelector('#heading')
+    expect(heading).to.exist
+    // the slotted heading content renders through the heading slot and the
+    // slot itself is left in place by updateContents
+    const headingSlot = heading.querySelector('slot[name="heading"]')
+    expect(headingSlot).to.exist
+    expect(headingSlot.assignedElements()[0].textContent).to.equal(
+      'Slotted map heading',
+    )
+    // re-renders (opening a hotspot) keep working across the upgrade
+    element.openHotspot(element.hotspotDetails[0])
+    await element.updateComplete
+    expect(element.__activeHotspot.id).to.equal('spot-a')
+    const popover = element.shadowRoot.querySelector('simple-popover')
+    expect(popover.querySelector('h2').textContent).to.equal('Spot A')
+    // switching the label branch re-commits the same child part safely
+    element.label = 'Now labeled'
+    await element.updateComplete
+    expect(heading.querySelector('h1').textContent).to.equal('Now labeled')
   })
 })

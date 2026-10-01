@@ -30,7 +30,12 @@ class LrndesignImagemapHotspot extends LitElement {
     return html`
       <figure class="hotspot-print">
         <figcaption>
-          <relative-heading disable-link id="sub-heading" parent="heading">
+          <relative-heading
+            disable-link
+            id="sub-heading"
+            parent="heading"
+            default-level="2"
+          >
             <h2>${this.label}</h2>
           </relative-heading>
           <div id="desc"><slot></slot></div>
@@ -82,9 +87,11 @@ class LrndesignImagemapHotspot extends LitElement {
     let div = globalThis.document.createElement("div");
     div.innerHTML = svg;
     let slot = div.children[0];
-    slot.slot = svg;
-    slot.setAttribute("aria-labelledBy", "sub-heading");
-    slot.setAttribute("aria-describedBy", "sub-heading desc");
+    slot.slot = "svg";
+    // the print svg sits in light DOM while these labels live in the
+    // shadow root, so a cross-boundary IDREF would never resolve; label
+    // the svg directly from the hotspot's own label instead
+    if (this.label) slot.setAttribute("aria-label", this.label);
     (hotspots || []).forEach((hotspot) => {
       let svgHotspot = slot.querySelector(`#${hotspot}`);
       svgHotspot.classList.add("hotspot");
@@ -98,7 +105,7 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   setParentHeading(parent) {
-    this.shadowRoot.querySelector("#heading").parent = parent;
+    this.shadowRoot.querySelector("#sub-heading").parent = parent;
   }
 }
 globalThis.customElements.define(

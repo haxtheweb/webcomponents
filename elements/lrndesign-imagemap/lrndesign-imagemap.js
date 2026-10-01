@@ -142,12 +142,6 @@ class LrndesignImagemap extends LitElement {
 
   firstUpdated(changeProperties) {
     if (super.firstUpdated) super.firstUpdated(changeProperties);
-    console.log(
-      this.querySelector("[slot=src]")
-        ? this.querySelector("[slot=src]")
-        : this.src,
-    );
-
     this._fetchSvg(
       this.querySelector("[slot=src]")
         ? this.querySelector("[slot=src]")
@@ -172,9 +166,8 @@ class LrndesignImagemap extends LitElement {
 
     svg.slot = "svg";
     this.prepend(svg);
-    console.log(this.childNodes);
-    svg.setAttribute("aria-labelledBy", this._getInfoNode(svg, "title"));
-    svg.setAttribute("aria-describedBy", this._getInfoNode(svg));
+    svg.setAttribute("aria-labelledby", this._getInfoNode(svg, "title"));
+    svg.setAttribute("aria-describedby", this._getInfoNode(svg));
     this.hotspotDetails = [];
     // this is scrape the printable hotspots for info
     this.querySelectorAll("lrndesign-imagemap-hotspot").forEach((hotspot) => {
@@ -189,7 +182,8 @@ class LrndesignImagemap extends LitElement {
       // Turning main svg interactive hotspots into buttons
       obj.hotspot.classList.add("hotspot");
       obj.hotspot.setAttribute("role", "button");
-      obj.hotspot.setAttribute("controls", "figure");
+      obj.hotspot.setAttribute("aria-label", obj.label);
+      obj.hotspot.setAttribute("aria-controls", "figure");
       obj.hotspot.addEventListener("click", (e) => this.openHotspot(obj));
 
       //Copy hotspot details from printable hotspots
@@ -223,7 +217,7 @@ class LrndesignImagemap extends LitElement {
       node = globalThis.document.createElement(nodeName);
       svg.prepend(node);
       if (query && query.innerHTML != "") {
-        node.innerHTML == query.html;
+        node.innerHTML = query.innerHTML;
       }
     }
     return this._getId(node);
@@ -262,8 +256,14 @@ class LrndesignImagemap extends LitElement {
    * Closes a hotspot.
    */
   closeHotspot() {
+    let hotspot =
+      this.__activeHotspot && this.__activeHotspot.hotspot
+        ? this.__activeHotspot.hotspot
+        : undefined;
     this.resetHotspots();
-    this.__activeHotspot.focus();
+    // restore focus to the hotspot's svg shape, guarding against a missing
+    // or plain-object active hotspot instead of calling focus on it
+    if (hotspot && typeof hotspot.focus === "function") hotspot.focus();
   }
   /**
    * Closes dialog and deselects all hotspots.
