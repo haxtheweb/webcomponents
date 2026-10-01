@@ -117,13 +117,87 @@ describe('music-player behavioral coverage', () => {
     expect(await waitForWiring(el)).to.be.true
   })
 
-  it('still wires the visualizer after the element is disconnected', async () => {
-    // BUG: music-player.js:107-114 - the setTimeout dynamic import is never
-    // cancelled on disconnect, so a detached element still loads the
-    // vendored bundle and wires its player to the visualizer.
+  it('does not wire the visualizer once disconnected', async () => {
+    // FIXED: music-player.js firstUpdated stores the deferred import timer
+    // and disconnectedCallback cancels it, and the wiring callback refuses
+    // to run on a detached element, so a removed element never wires its
+    // player to the visualizer.
     const el = await fixture(html`<music-player></music-player>`)
     await el.updateComplete
     el.remove()
-    expect(await waitForWiring(el)).to.be.true
+    expect(await waitForWiring(el)).to.be.false
+  })
+
+  it('announces playback state through a visually hidden live region', async () => {
+    const el = await fixture(html`<music-player></music-player>`)
+    await el.updateComplete
+    const player = el.shadowRoot.querySelector('midi-player')
+    const liveStatus = el.shadowRoot.querySelector('.screen-reader-text')
+    expect(liveStatus).to.exist
+    expect(liveStatus.getAttribute('aria-live')).to.equal('polite')
+    // the vendored time labels stay aria-hidden; playback state announces
+    // here instead
+    expect(
+      player.shadowRoot.querySelector('.current-time').getAttribute(
+        'aria-hidden',
+      ),
+    ).to.equal('true')
+    player.dispatchEvent(new CustomEvent('start'))
+    expect(liveStatus.textContent).to.equal('Playback started')
+    player.dispatchEvent(
+      new CustomEvent('stop', { detail: { finished: true } }),
+    )
+    expect(liveStatus.textContent).to.equal('Playback finished')
+    player.dispatchEvent(new CustomEvent('stop'))
+    expect(liveStatus.textContent).to.equal('Playback stopped')
+    // the region is visually hidden from sighted users
+    expect(globalThis.getComputedStyle(liveStatus).position).to.equal(
+      'absolute',
+    )
+    expect(globalThis.getComputedStyle(liveStatus).width).to.equal('1px')
+    expect(globalThis.getComputedStyle(liveStatus).height).to.equal('1px')
+  })
+
+  it('derives the midi-player margin from the DDD spacing token', async () => {
+    const el = await fixture(html`<music-player></music-player>`)
+    await el.updateComplete
+    const player = el.shadowRoot.querySelector('midi-player')
+    // token fallback when no DDD spacing variables are defined
+    expect(globalThis.getComputedStyle(player).margin).to.equal('4px')
+    // the DDD spacing token feeds the margin when it is defined
+    el.style.setProperty('--ddd-spacing-1', '9px')
+    expect(globalThis.getComputedStyle(player).margin).to.equal('9px')
+    // the component override still wins over the DDD token
+    el.style.setProperty('--music-player-midi-player-margin', '12px')
+    expect(globalThis.getComputedStyle(player).margin).to.equal('12px')
+  })
+
+  it('follows DDD dark mode on the vendored control panel', async () => {
+    const el = await fixture(html`<music-player></music-player>`)
+    await el.updateComplete
+    const player = el.shadowRoot.querySelector('midi-player')
+    const panel = player.shadowRoot.querySelector('.controls')
+    const currentTime = player.shadowRoot.querySelector('.current-time')
+    const originalScheme =
+      globalThis.document.documentElement.style.colorScheme
+    try {
+      // light mode resolves the DDD light surface and text tokens
+      expect(globalThis.getComputedStyle(panel).backgroundColor).to.equal(
+        'rgb(242, 242, 244)',
+      )
+      expect(globalThis.getComputedStyle(currentTime).color).to.equal(
+        'rgb(38, 38, 38)',
+      )
+      // DDD dark mode is driven through the color-scheme mechanism
+      globalThis.document.documentElement.style.colorScheme = 'dark'
+      expect(globalThis.getComputedStyle(panel).backgroundColor).to.equal(
+        'rgb(38, 38, 38)',
+      )
+      expect(globalThis.getComputedStyle(currentTime).color).to.equal(
+        'rgb(242, 242, 244)',
+      )
+    } finally {
+      globalThis.document.documentElement.style.colorScheme = originalScheme
+    }
   })
 })
