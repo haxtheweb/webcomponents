@@ -386,19 +386,26 @@ class GridPlate extends LitElement {
       this.ready = true;
     }, 100);
     this.resize();
-    globalThis.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: this,
-          attribute: "responsive-size",
-          relativeToParent: false,
-          sm: this.breakpointSm,
-          md: this.breakpointMd,
-          lg: this.breakpointLg,
-          xl: this.breakpointXl,
-        },
-      }),
-    );
+    // defer registration a microtask because ResponsiveUtility synchronously
+    // sets the responsive-size attribute (mapped to the reactive
+    // responsiveSize property) when an element registers, which would
+    // schedule a second update from inside firstUpdated (Lit
+    // change-in-update warning); the microtask still runs before paint
+    queueMicrotask(() => {
+      globalThis.dispatchEvent(
+        new CustomEvent("responsive-element", {
+          detail: {
+            element: this,
+            attribute: "responsive-size",
+            relativeToParent: false,
+            sm: this.breakpointSm,
+            md: this.breakpointMd,
+            lg: this.breakpointLg,
+            xl: this.breakpointXl,
+          },
+        }),
+      );
+    });
   }
   /**
    * Wire to HAX
