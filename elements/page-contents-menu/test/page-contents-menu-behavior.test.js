@@ -306,7 +306,7 @@ describe('page-contents-menu scroll interactions', () => {
     expect(el.items[0].active).to.equal('')
   })
 
-  it('logs and skips items that can not be resolved', async () => {
+  it('skips items that can not be resolved without logging', async () => {
     const root = await fixture(contentHTML)
     const el = root.querySelector('page-contents-menu')
     await wait(150)
@@ -315,7 +315,7 @@ describe('page-contents-menu scroll interactions', () => {
     console.log = (...args) => {
       logs.push(args.join(' '))
     }
-    // invalid selector ids blow up inside the try / catch guards
+    // ids that are not valid selectors resolve to null instead of throwing
     el.items = [
       { id: '##bad', title: 'Bad', active: '', item: {} },
       { id: '##worse', title: 'Worse', active: '', item: {} },
@@ -323,9 +323,49 @@ describe('page-contents-menu scroll interactions', () => {
     el.scrollFinished()
     console.log = origLog
     await el.updateComplete
-    // two lookups fail in the loop and the first item lookup fails again
-    expect(logs.length).to.equal(3)
+    // nothing matched in the container so nothing logs or activates
+    expect(logs.length).to.equal(0)
     expect(el.items[0].active).to.equal('')
+  })
+
+  it('resolves headings whose ids are not valid css selectors', async () => {
+    const root = await fixture(html`
+      <div>
+        <page-contents-menu relationship="parent"></page-contents-menu>
+        <h1>Real heading</h1>
+        <h2 id="##bad">Markdown style id</h2>
+        <h2 id="##worse">Another markdown style id</h2>
+      </div>
+    `)
+    const el = root.querySelector('page-contents-menu')
+    await wait(150)
+    expect(el.items.length).to.equal(3)
+    expect(el.items[1].id).to.equal('##bad')
+    // scroll tracking stays silent on ids like ##bad instead of logging
+    // querySelector syntax errors
+    const logs = []
+    const origLog = console.log
+    console.log = (...args) => {
+      logs.push(args.join(' '))
+    }
+    el.items.forEach((item) => {
+      item.item.getBoundingClientRect = () => ({ top: 9999 })
+    })
+    el.items[1].item.getBoundingClientRect = () => ({ top: 50 })
+    el.items[2].item.getBoundingClientRect = () => ({ top: 1000 })
+    el.scrollFinished()
+    console.log = origLog
+    await el.updateComplete
+    expect(logs.length).to.equal(0)
+    // the escaped lookup finds the heading so it can be marked active
+    expect(el.items[1].active).to.equal('active')
+    // clicking the link jumps to the heading without blowing up
+    const calls = []
+    el.items[1].item.scrollIntoView = (...args) => {
+      calls.push(args)
+    }
+    el.shadowRoot.querySelector('a[data-index="1"]').click()
+    expect(calls.length).to.equal(1)
   })
 
   it('debounces scroll events into a scroll finished pass', async () => {

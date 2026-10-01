@@ -254,8 +254,12 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       e.stopPropagation();
       e.stopImmediatePropagation();
       let objItem;
+      // escape the id so authored values like ##bad stay valid selectors
       objItem = this.contentContainer.querySelector(
-        "#" + this.items[parseInt(target.getAttribute("data-index"))].id,
+        "#" +
+          CSS.escape(
+            this.items[parseInt(target.getAttribute("data-index"))].id,
+          ),
       );
       const isSafari = globalThis.safari !== undefined;
       if (isSafari) {
@@ -554,7 +558,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
         ) {
           try {
             let objItem = this.contentContainer.querySelector(
-              "#" + this.items[i].id,
+              "#" + CSS.escape(this.items[i].id),
             );
             if (objItem) {
               let itemTop = objItem.getBoundingClientRect().top - 100;
@@ -567,7 +571,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
               ) {
                 itemBottom =
                   this.contentContainer
-                    .querySelector("#" + this.items[i + 1].id)
+                    .querySelector("#" + CSS.escape(this.items[i + 1].id))
                     .getBoundingClientRect().top - 100;
               } else {
                 itemBottom = browserViewport;
@@ -600,7 +604,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       ) {
         try {
           let objItem = this.contentContainer.querySelector(
-            "#" + this.items[0].id,
+            "#" + CSS.escape(this.items[0].id),
           );
           if (objItem) {
             // if we are ABOVE the 1st item, assume top; otherwise it's end

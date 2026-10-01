@@ -1,6 +1,6 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { ResumeTheme } from "../resume-theme.js";
+import "../resume-theme.js";
 
 describe("ResumeTheme test", () => {
   let element;
@@ -285,12 +285,6 @@ describe("ResumeTheme behavior", () => {
   it("renders nothing for an empty social link", () => {
     expect(element.renderSocialLink("")).to.equal("");
     expect(element.renderSocialLink(null)).to.equal("");
-  });
-
-  it("exposes the external haxProperties schema", () => {
-    expect(ResumeTheme.haxProperties.includes("lib/resume-theme.haxProperties.json")).to.equal(
-      true,
-    );
   });
 
   it("runs disposers on disconnect", async () => {

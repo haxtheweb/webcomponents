@@ -489,7 +489,9 @@ describe('simple-fields-container', () => {
 
   it('validate sets error for required field with no value', () => {
     el.required = true
-    el.field = { querySelector() { return null }, value: '' }
+    // updated() syncs aria-invalid onto the field when error changes,
+    // so the mock needs setAttribute (like the other field mocks below)
+    el.field = { querySelector() { return null }, value: '', setAttribute() {} }
     el.error = false
     // requiredError getter checks !this._getFieldValue() && this.required
     // _getFieldValue for text type returns this.field.value which is '' (falsy)
@@ -500,7 +502,7 @@ describe('simple-fields-container', () => {
 
   it('validate uses requiredMessage when provided', () => {
     el.required = true
-    el.field = { querySelector() { return null }, value: '' }
+    el.field = { querySelector() { return null }, value: '', setAttribute() {} }
     el.error = false
     el.requiredMessage = 'Custom required'
     el.validate()
@@ -515,7 +517,7 @@ describe('simple-fields-container', () => {
 
   it('validate returns false when error is set', () => {
     el.error = true
-    el.field = { querySelector() { return null } }
+    el.field = { querySelector() { return null }, setAttribute() {} }
     expect(el.validate()).to.equal(false)
   })
 

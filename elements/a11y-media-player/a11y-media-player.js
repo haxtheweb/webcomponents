@@ -282,6 +282,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         }
 
         :host([dark-transcript]) {
+          --a11y-media-transcript-color: var(--ddd-theme-default-white);
           --a11y-media-transcript-bg-color: var(
             --ddd-theme-default-potentialMidnight
           );

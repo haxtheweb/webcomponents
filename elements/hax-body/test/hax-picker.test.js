@@ -120,6 +120,23 @@ describe('hax-picker', () => {
   })
 
   describe('_selected', () => {
+    // hax-store listens for hax-insert-content at the window level (via its
+    // __winEvents wiring) and processes the real dispatch from _selected.
+    // No hax-body is registered in this harness so the store's replace path
+    // would throw an unhandled rejection. Stub the singleton the same way
+    // hax-store.test.js does; these tests only verify the picker's dispatch.
+    let originalActiveHaxBody
+    beforeEach(() => {
+      originalActiveHaxBody = HAXStore.activeHaxBody
+      HAXStore.activeHaxBody = {
+        haxInsert() {},
+        haxReplaceNode() {},
+      }
+    })
+    afterEach(() => {
+      HAXStore.activeHaxBody = originalActiveHaxBody
+    })
+
     it('dispatches hax-insert-content for gizmo type', async () => {
       el.pickerType = 'gizmo'
       el._elements = [{ tag: 'test-tag' }]
