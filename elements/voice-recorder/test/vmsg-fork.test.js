@@ -263,6 +263,10 @@ describe('vmsg-fork Form', () => {
     // the loading dots are cleared once the UI is ready to interact with
     expect(target.querySelectorAll('.vmsg-progress-dot')).to.have.lengthOf(0)
     expect(form.timer.textContent).to.equal('00:00')
+    // the elapsed-time counter is explicitly non-live so its 300ms
+    // updates stay silent for assistive technology
+    expect(form.timer.getAttribute('role')).to.equal('timer')
+    expect(form.timer.getAttribute('aria-live')).to.equal('off')
     const row = target.querySelector('.vmsg-record-row')
     expect(row.children).to.have.lengthOf(4)
     expect(form.recordBtn.innerHTML).to.equal('Record')
@@ -373,8 +377,13 @@ describe('vmsg-fork Form', () => {
     const error = target.querySelector('.vmsg-error')
     expect(error).to.exist
     expect(error.textContent).to.equal('Error: no microphone')
+    // the error is announced to assistive technology
+    expect(error.getAttribute('role')).to.equal('alert')
     expect(form.renderArea.querySelector('.vmsg-error')).to.exist
     expect(resolvers.calls.resolved).to.have.lengthOf(0)
+    // the caller promise settles instead of hanging forever
+    expect(resolvers.calls.rejected).to.have.lengthOf(1)
+    expect(resolvers.calls.rejected[0].message).to.equal('no microphone')
   })
 
   it('drawInit replaces an existing popup', async () => {
@@ -431,6 +440,30 @@ describe('vmsg-fork record', () => {
       error = err
     })
     expect(error.message).to.equal('No record made')
+    target.remove()
+  })
+
+  it('rejects and unlocks when the microphone is unavailable', async () => {
+    const target = document.createElement('div')
+    document.body.appendChild(target)
+    rejectGetUserMedia('no microphone')
+    const quiet = silenceConsoleError()
+    let error = null
+    await record({}, target).catch((err) => {
+      error = err
+    })
+    quiet.restore()
+    expect(error.message).to.equal('no microphone')
+    expect(target.querySelector('.vmsg-error')).to.exist
+    // the module level lock resets after the failure, so a later
+    // record() opens again instead of throwing already-opened
+    const quietRetry = silenceConsoleError()
+    let retryError = null
+    await record({}, target).catch((err) => {
+      retryError = err
+    })
+    quietRetry.restore()
+    expect(retryError.message).to.equal('no microphone')
     target.remove()
   })
 

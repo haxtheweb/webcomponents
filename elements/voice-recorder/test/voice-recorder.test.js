@@ -3,9 +3,10 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../voice-recorder.js";
 import {
   installFakeMediaEnvironment,
+  rejectGetUserMedia,
   resetFakeWorkerBehavior,
   settle,
-  swallowUnhandledRejections,
+  silenceConsoleError,
   waitForEvent,
 } from "./vmsg-fakes.js";
 
@@ -147,7 +148,6 @@ describe('voice-recorder recording state machine', () => {
 
   it('toggleRecording starts the recorder from the activate button', async () => {
     const el = await fixture(html`<voice-recorder></voice-recorder>`)
-    const swallow = swallowUnhandledRejections()
     const ready = waitForEvent(el, 'vmsg-ready')
     el.shadowRoot.querySelector('simple-icon-button-lite').click()
     expect(el.recording).to.be.true
@@ -156,10 +156,32 @@ describe('voice-recorder recording state machine', () => {
     // cancel without a take: record() rejects because no blob was made
     el.querySelector('.vmsg-save-button').click()
     await settle()
-    // BUG: voice-recorder.js recorder() has no rejection handler, so a
-    // cancelled recording leaves this.recording stuck on true and the
-    // activate button stays hidden; recovery requires a reload.
-    expect(el.recording).to.be.true
-    swallow.restore()
+    // the rejection handler resets the recording state and clears the
+    // cancelled form so the activate button comes back without a reload
+    expect(el.recording).to.be.false
+    await el.updateComplete
+    expect(el.querySelector('.vmsg-popup')).to.not.exist
+    expect(el.shadowRoot.querySelector('simple-icon-button-lite')).to.exist
+  })
+
+  it('recovers when the microphone is denied', async () => {
+    const quiet = silenceConsoleError()
+    rejectGetUserMedia('no microphone')
+    const el = await fixture(html`<voice-recorder></voice-recorder>`)
+    el.recording = true
+    await el.updateComplete
+    await settle(50)
+    quiet.restore()
+    // the fork draws an alerting error and now settles the record()
+    // promise, so the wrapper resets instead of leaving recording stuck
+    const error = el.querySelector('.vmsg-error')
+    expect(error).to.exist
+    expect(error.getAttribute('role')).to.equal('alert')
+    expect(error.textContent).to.equal('Error: no microphone')
+    expect(el.recording).to.be.false
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('simple-icon-button-lite')).to.exist
+    // the error message stays visible so the user knows why it failed
+    expect(el.querySelector('.vmsg-error')).to.exist
   })
 })

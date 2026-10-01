@@ -398,6 +398,10 @@ export class Form {
 
     const timer = (this.timer = globalThis.document.createElement("div"));
     timer.className = "vmsg-timer";
+    // a role of timer carries an implicit live value of off; the counter
+    // updates every 300ms and must not spam assistive technology
+    timer.setAttribute("role", "timer");
+    timer.setAttribute("aria-live", "off");
     timer.style.cssText = `
       padding: var(--ddd-spacing-1, 4px);
       font-family: var(--ddd-font-navigation, sans-serif);
@@ -551,8 +555,12 @@ export class Form {
     this.clearAll();
     const error = globalThis.document.createElement("div");
     error.className = "vmsg-error";
+    error.setAttribute("role", "alert");
     error.textContent = err.toString();
     this.renderArea.appendChild(error);
+    // settle the caller promise so wrappers can reset their state; this
+    // path previously never settled, leaving callers stuck recording
+    if (this.reject) this.reject(err);
   }
 
   clearAll() {

@@ -91,20 +91,31 @@ class VoiceRecorder extends LitElement {
         wasmURL: new URL("./lib/vmsg.wasm", import.meta.url).href,
       },
       this,
-    ).then((blob) => {
-      this.dispatchEvent(
-        new CustomEvent("voice-recorder-recording-blob", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {
-            value: blob,
-          },
-        }),
-      );
-      this.recording = false;
-      this.innerHTML = "";
-    });
+    )
+      .then((blob) => {
+        this.dispatchEvent(
+          new CustomEvent("voice-recorder-recording-blob", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              value: blob,
+            },
+          }),
+        );
+        this.recording = false;
+        this.innerHTML = "";
+      })
+      .catch(() => {
+        // cancelling the form (no take) or a failed init rejects the
+        // record() promise; reset the state so the activate button comes
+        // back without a reload. keep any fork-drawn error message visible
+        // so users know why the session failed; it clears on the next take.
+        this.recording = false;
+        if (!this.querySelector(".vmsg-error")) {
+          this.innerHTML = "";
+        }
+      });
   }
 }
 globalThis.customElements.define(VoiceRecorder.tag, VoiceRecorder);
