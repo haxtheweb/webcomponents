@@ -80,11 +80,11 @@ class a11yCompareImage extends SimpleColors {
           outline: 1px solid
             var(
               --simple-range-input-bg,
-              var(--simple-colors-default-theme-accent-2, grey)
+              var(--ddd-theme-default-accent, grey)
             );
           background-color: var(
             --simple-range-input-color,
-            var(--simple-colors-default-theme-accent-8, grey)
+            var(--ddd-theme-default-limestoneGray, grey)
           );
           padding-top: var(--simple-range-input-pin-height, 20px);
         }
@@ -139,7 +139,7 @@ class a11yCompareImage extends SimpleColors {
         <div id="description"><slot name="description"></slot></div>
       </figcaption>
       <div id="container" style="background-image: url(${this.__lower})">
-        <div>
+        <div id="wipe">
           <div id="placeholder">
             <slot id="bottom" name="bottom"></slot>
           </div>
@@ -234,7 +234,10 @@ class a11yCompareImage extends SimpleColors {
    * updates the slider
    */
   _slide() {
-    let container = this.shadowRoot.querySelector("#container");
+    // the wipe geometry custom properties live on #wipe, whose style
+    // attribute is never re-committed by the template, so they survive the
+    // style attribute re-commit that #container gets on every __lower change
+    let wipe = this.shadowRoot.querySelector("#wipe");
     let input = this.shadowRoot.querySelector("#input");
     let layers = this.querySelectorAll("[slot=top],[slot=bottom]");
     if (input) {
@@ -268,18 +271,18 @@ class a11yCompareImage extends SimpleColors {
         : "";
     this.__lower = layers[active] ? layers[active].src : "";
     // Adding Fake markers behind the slider.
-    if (total - 1 != this.__markers.length) {
+    if (total != this.__markers.length) {
       this._updateMarkers(total);
     }
-    if (container && this.opacity === false) {
-      container.style.setProperty(
+    if (wipe && this.opacity === false) {
+      wipe.style.setProperty(
         "--a11y-compare-image-width",
         this.position + "%",
       );
-      container.style.setProperty("--a11y-compare-image-opacity", 1);
-    } else if (container) {
-      container.style.setProperty("--a11y-compare-image-width", "100%");
-      container.style.setProperty(
+      wipe.style.setProperty("--a11y-compare-image-opacity", 1);
+    } else if (wipe) {
+      wipe.style.setProperty("--a11y-compare-image-width", "100%");
+      wipe.style.setProperty(
         "--a11y-compare-image-opacity",
         this.position / 100,
       );

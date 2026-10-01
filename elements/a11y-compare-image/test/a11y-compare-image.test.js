@@ -72,6 +72,7 @@ describe('a11y-compare-image sliding', () => {
     )
     await el.updateComplete
     const container = el.shadowRoot.querySelector('#container')
+    const wipe = el.shadowRoot.querySelector('#wipe')
     const input = el.shadowRoot.querySelector('#input')
     // firstUpdated slides to the default position
     expect(el.__upper).to.equal(TOP)
@@ -80,25 +81,21 @@ describe('a11y-compare-image sliding', () => {
     // the slider position marker on #input survives re-renders
     expect(input.style.getPropertyValue('--a11y-compare-image-position')).to
       .equal('50%')
-    // two layers: total - 1 == 0 == __markers.length, so the marker guard
-    // skips _updateMarkers entirely and no markers are rendered (the only
-    // boundary would be 100%, which renders hidden anyway)
-    expect(el.__markers).to.deep.equal([])
-    expect(el.shadowRoot.querySelectorAll('.marker').length).to.equal(0)
+    // two layers: one transition, so the single boundary marker at 100%
+    // renders (hidden, since the 100% boundary sits at the far edge)
+    expect(el.__markers).to.deep.equal([100])
+    const markers = el.shadowRoot.querySelectorAll('.marker')
+    expect(markers.length).to.equal(1)
+    expect(markers[0].hasAttribute('hidden')).to.be.true
     // the container shows the lower layer as its background
     expect(container.style.backgroundImage).to.include('t=bottom')
-    // BUG: _slide imperatively sets --a11y-compare-image-width and
-    // --a11y-compare-image-opacity on #container, but the template's
-    // style="background-image: url(...__lower)" binding re-commits the
-    // container's style attribute whenever __lower changes, wiping the
-    // imperative custom properties on EVERY layer transition (including
-    // this first one), so the wipe width falls back to the css default
-    expect(
-      container.style.getPropertyValue('--a11y-compare-image-width'),
-    ).to.equal('')
-    expect(
-      container.style.getPropertyValue('--a11y-compare-image-opacity'),
-    ).to.equal('')
+    // the wipe geometry custom properties live on #wipe, which the template
+    // never re-commits, so they persist from the very first slide (the
+    // re-committed style attribute on #container used to wipe them)
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
+      .equal('50%')
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
+      .equal('1')
   })
 
   it('sets the wipe width on slides that keep the same layers', async () => {
@@ -109,17 +106,14 @@ describe('a11y-compare-image sliding', () => {
       </a11y-compare-image>`,
     )
     await el.updateComplete
-    const container = el.shadowRoot.querySelector('#container')
-    // a slide within the same section keeps __lower unchanged, so the
-    // imperative custom properties are not wiped by the style re-commit
+    const wipe = el.shadowRoot.querySelector('#wipe')
+    // a slide within the same section keeps __lower unchanged
     el.position = 25
     await el.updateComplete
-    expect(
-      container.style.getPropertyValue('--a11y-compare-image-width'),
-    ).to.equal('25%')
-    expect(
-      container.style.getPropertyValue('--a11y-compare-image-opacity'),
-    ).to.equal('1')
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
+      .equal('25%')
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
+      .equal('1')
   })
 
   it('fades the top layer in opacity mode', async () => {
@@ -130,14 +124,13 @@ describe('a11y-compare-image sliding', () => {
       </a11y-compare-image>`,
     )
     await el.updateComplete
-    const container = el.shadowRoot.querySelector('#container')
-    // a same-section slide keeps the layers, so the imperative styles stick
+    const wipe = el.shadowRoot.querySelector('#wipe')
     el.position = 60
     await el.updateComplete
     // opacity mode keeps the top layer full width and fades it instead
-    expect(container.style.getPropertyValue('--a11y-compare-image-width')).to
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
       .equal('100%')
-    expect(container.style.getPropertyValue('--a11y-compare-image-opacity')).to
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
       .equal('0.6')
   })
 
@@ -162,6 +155,13 @@ describe('a11y-compare-image sliding', () => {
     expect(el.activeLayer).to.equal(2)
     expect(el.__upper).to.equal(TOP)
     expect(el.__lower).to.equal(MID)
+    // the wipe geometry persists through the layer transition (__lower
+    // changed BOTTOM -> MID, which used to wipe the custom properties)
+    const wipe = el.shadowRoot.querySelector('#wipe')
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
+      .equal('75%')
+    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
+      .equal('1')
     // position 100 collapses to the final layer on top
     el.position = 100
     await el.updateComplete
@@ -194,7 +194,7 @@ describe('a11y-compare-image sliding', () => {
     expect(el.position).to.equal(25)
     expect(
       el.shadowRoot
-        .querySelector('#container')
+        .querySelector('#wipe')
         .style.getPropertyValue('--a11y-compare-image-width'),
     ).to.equal('25%')
     expect(el.shadowRoot.querySelector('#slider').getAttribute('value')).to
