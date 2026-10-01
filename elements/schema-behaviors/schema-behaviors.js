@@ -37,11 +37,14 @@ export const SchemaBehaviors = function (SuperClass) {
       };
     }
     /**
-     * LitElement support
+     * LitElement support; react in willUpdate so consumers that declare
+     * schemaResourceID reactively (e.g. media-image) batch the set into the
+     * current update cycle instead of scheduling a second one (Lit
+     * change-in-update warning)
      */
-    updated(changedProperties) {
-      if (super.updated) {
-        super.updated(changedProperties);
+    willUpdate(changedProperties) {
+      if (super.willUpdate) {
+        super.willUpdate(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
         if (propName == "schemaMap") {

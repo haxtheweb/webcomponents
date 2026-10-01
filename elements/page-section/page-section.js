@@ -380,8 +380,13 @@ class PageSection extends DDD {
     this.bg = "var(--ddd-theme-default-limestoneLight)";
   }
 
-  updated(changedProperties) {
-    // presets force certain design consistency
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // presets force certain design consistency; derive the reactive bg and
+    // image state in willUpdate so it batches into the current update cycle
+    // instead of scheduling a second one (Lit change-in-update warning)
     if (changedProperties.has("preset") && this.preset) {
       switch (this.preset) {
         case "antihero":
@@ -417,6 +422,9 @@ class PageSection extends DDD {
           break;
       }
     }
+  }
+
+  updated(changedProperties) {
     // support for setting ID via an anchor prop which can be used in some designs
     if (
       changedProperties.has("anchor") &&
