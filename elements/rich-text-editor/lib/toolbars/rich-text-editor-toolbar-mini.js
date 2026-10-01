@@ -41,12 +41,12 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
     this.sticky = false;
     this.config = this.miniConfig;
   }
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      //disable sticky for mini
-      if (propName === "sticky" && this.sticky) this.sticky = false;
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    //disable sticky for mini; reset it in willUpdate so it batches into the
+    //current update cycle instead of scheduling a redundant second update
+    //(Lit change-in-update warning)
+    if (changedProperties.has("sticky") && this.sticky) this.sticky = false;
   }
 }
 export { RichTextEditorToolbarMini };
