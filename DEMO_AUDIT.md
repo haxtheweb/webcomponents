@@ -21,7 +21,6 @@ This audit covers all elements in `elements/` and categorizes them by demo quali
 **Stream A — element demo fixes (11 files):**
 - `chat-agent`: demo rebuilt — fully static, no `open-apis.hax.cloud` references, interface pre-opened via ChatStore with a scripted offline sample exchange
 - `jwt-login`: full declarative attribute surface (`url`, `method`, `key`, `refresh-url`, `logout-url`, `redirect-url`) + offline harness driving the `jwt` property and logging `jwt-changed`/`jwt-token`/`jwt-logged-in`
-- `page-scroll-position`: basic usage + tall reading with sticky progress bound to `value-changed`
 - `beaker-broker`: added `dat-url` example; `html-block`: slotted HTML + runtime `allowscript` toggle harness; `lrn-math`: restructured with inline/display-mode/`mathtext` examples; `outline-designer`: heading structure + `hide-content-ops` snippets; `user-scaffold`: interaction-memory readout harness; `voice-recorder`: `label` example
 - Kept as-is after verification: `portal-launcher` and `simple-emoji` (purely slot-driven); `hax-cloud` demo (functional app page; standards cleanups only, root stubbed)
 
@@ -194,7 +193,6 @@ No action needed.
 - `page-break`
 - `page-contents-menu`
 - `page-flag`
-- `page-scroll-position`
 - `page-section`
 - `paper-input-flagged`
 - `parallax-image`
@@ -266,12 +264,11 @@ Plus `chat-agent` (functional, JS-driven) and the `outline-player` theme demo.
 
 ## Known Follow-ups (element-source issues found during this pass; outside demo-file scope)
 
-1. **`page-scroll-position` element bug:** initializes from legacy `attachedCallback`, which never fires under v1 custom elements — the element is inert in modern browsers. Its demo carries a clearly-commented compat shim (guarded to no-op once the element is fixed). Fix the element source to use `connectedCallback`.
-2. **`lrn-math` CDN dependency:** the element source loads MathJax from `cdnjs.cloudflare.com` whenever it renders — consider vendoring or pinning for offline use.
-3. **`outline-designer` harness:** the preserved pre-existing harness fetches `https://haxtheweb.org/site.json` and `example.json`; the newly added sections are fully static.
-4. **`hax-cloud` demo page:** references `dist/`, `wc-registry.json`, and site-builder assets (pre-existing app-page structure preserved; root now stubbed).
-5. **`html-block` quirk:** the element strips `allowscript` on connect, so runtime property toggling is the only meaningful demo path — documented in the demo.
-6. **`@demo` JSDoc tags:** ~10 utility sources still reference deleted demos (see Section 1 note).
+1. **`lrn-math` CDN dependency:** the element source loads MathJax from `cdnjs.cloudflare.com` whenever it renders — consider vendoring or pinning for offline use.
+2. **`outline-designer` harness:** the preserved pre-existing harness fetches `https://haxtheweb.org/site.json` and `example.json`; the newly added sections are fully static.
+3. **`hax-cloud` demo page:** references `dist/`, `wc-registry.json`, and site-builder assets (pre-existing app-page structure preserved; root now stubbed).
+4. **`html-block` quirk:** the element strips `allowscript` on connect, so runtime property toggling is the only meaningful demo path — documented in the demo.
+5. **`@demo` JSDoc tags:** ~10 utility sources still reference deleted demos (see Section 1 note).
 
 ---
 

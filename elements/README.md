@@ -499,10 +499,6 @@ Contents
 
 Flag
 > visual flag for notes about a piece of content
-# &lt;page-scroll-position&gt;
-
-Scroll
-> Automated conversion of page-scroll-position/
 # &lt;page-section&gt;
 
 Section
