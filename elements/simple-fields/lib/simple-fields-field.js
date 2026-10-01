@@ -1352,7 +1352,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
     get slottedFieldObserver() {}
 
     /**
-     * template for `textarea` in shadow DOM
+     * template for `textarea` in shadow DOM. Value binds via the .value
+     * property because Lit cannot patch expressions inside textarea child
+     * content (dev-mode warns; the value never rendered through the old
+     * child expression).
      *
      * @readonly
      * @returns {object}
@@ -1381,9 +1384,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           rows="4"
           tabindex="0"
           part="textarea"
-        >
-  ${this.value || ""}</textarea
-        >
+          .value="${this.value || ""}"
+        ></textarea>
       `;
     }
     /**

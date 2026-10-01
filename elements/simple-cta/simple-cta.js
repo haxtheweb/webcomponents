@@ -410,6 +410,21 @@ class SimpleCta extends DDDPulseEffectSuper(
     return false;
   }
   /**
+   * LitElement life cycle - property changed. Mirror link to remoteLinkURL
+   * (remoteLinkURL is reactive via the remoteLinkBehavior mixin) in
+   * willUpdate so the set batches into the current update cycle. Setting it
+   * in updated() scheduled a redundant second update (Lit change-in-update
+   * warning).
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    if (changedProperties.has("link")) {
+      this.remoteLinkURL = this.link;
+    }
+  }
+  /**
    * LitElement ready
    */
   firstUpdated(changedProperties) {
@@ -425,11 +440,6 @@ class SimpleCta extends DDDPulseEffectSuper(
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "link") {
-        this.remoteLinkURL = this[propName];
-      }
-    });
   }
 }
 globalThis.customElements.define(SimpleCta.tag, SimpleCta);
