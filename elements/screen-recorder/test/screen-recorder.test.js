@@ -60,6 +60,10 @@ describe('screen-recorder defaults and toggles', () => {
     checkboxes[1].dispatchEvent(new Event('change'))
     expect(el.includeSystemAudio).to.be.true
     expect(el.includeMicrophoneAudio).to.be.true
+    // the options group is a real heading without skipped levels
+    const heading = el.shadowRoot.querySelector('.audio-options h2')
+    expect(heading).to.exist
+    expect(heading.textContent).to.equal('Audio Options')
   })
 
   it('exposes haxProperties from the lib folder', () => {
@@ -104,6 +108,10 @@ describe('screen-recorder capture flow', () => {
     expect(el.recorder.stream.getAudioTracks()).to.have.lengthOf(1)
     expect(el.recorder.state).to.equal('recording')
     expect(el.recording).to.be.true
+    // the polite live region reports the state change to screen readers
+    const statusRegion = el.shadowRoot.querySelector('.sr-only')
+    expect(statusRegion.getAttribute('aria-live')).to.equal('polite')
+    expect(statusRegion.textContent.trim()).to.equal('Recording started')
     // the UI reflects the active recording
     expect(startBtn.className).to.contain('hidden')
     expect(stopBtn.className).to.not.contain('hidden')
@@ -145,6 +153,7 @@ describe('screen-recorder capture flow', () => {
       .to.be.true
     expect(startBtn.className).to.not.contain('hidden')
     expect(stopBtn.className).to.contain('hidden')
+    expect(statusRegion.textContent.trim()).to.equal('Recording stopped')
   })
 
   it('records without the microphone when it is not requested', async () => {
@@ -216,7 +225,7 @@ describe('screen-recorder capture flow', () => {
     await settle()
   })
 
-  it('alerts and stays idle when the display capture is refused', async () => {
+  it('renders an inline error and stays idle when the display capture is refused', async () => {
     env.behavior.displayStreamError = 'user cancelled the picker'
     const quiet = silenceConsole()
     const el = await fixture(html`<screen-recorder></screen-recorder>`)
@@ -227,8 +236,15 @@ describe('screen-recorder capture flow', () => {
     await settle()
     quiet.restore()
     expect(quiet.errors).to.have.lengthOf(1)
-    expect(env.behavior.alertCalls).to.have.lengthOf(1)
-    expect(env.behavior.alertCalls[0]).to.equal(
+    // the blocking alert() call is gone; the error renders into an
+    // alerting region in the shadow UI instead
+    expect(env.behavior.alertCalls).to.have.lengthOf(0)
+    await el.updateComplete
+    const errorRegion = el.shadowRoot.querySelector('.error-region')
+    expect(errorRegion).to.exist
+    expect(errorRegion.className).to.not.contain('hidden')
+    expect(errorRegion.getAttribute('role')).to.equal('alert')
+    expect(errorRegion.textContent.trim()).to.equal(
       'Error starting screen recording: user cancelled the picker',
     )
     expect(el.recording).to.be.false
@@ -246,7 +262,7 @@ describe('screen-recorder capture flow', () => {
     expect(el.recording).to.be.false
   })
 
-  it('crashes the stop handler when no data chunks arrived', async () => {
+  it('produces an empty recording when no data chunks arrived', async () => {
     const el = await fixture(html`<screen-recorder></screen-recorder>`)
     el.chunks = []
     let caught = null
@@ -255,10 +271,12 @@ describe('screen-recorder capture flow', () => {
     } catch (err) {
       caught = err
     }
-    // BUG: screen-recorder.js:333 reads this.chunks[0].type without a guard,
-    // so a recorder that stops before any dataavailable event throws a
-    // TypeError instead of producing an empty recording.
-    expect(caught).to.be.instanceOf(TypeError)
+    // a recorder that stops before any dataavailable event no longer
+    // throws; it produces an empty webm recording instead
+    expect(caught).to.equal(null)
+    expect(el.completeBlob).to.be.instanceOf(Blob)
+    expect(el.completeBlob.type).to.equal('video/webm')
+    expect(el.chunks).to.deep.equal([])
   })
 
   it('cleans up streams and blob URLs on disconnect', async () => {

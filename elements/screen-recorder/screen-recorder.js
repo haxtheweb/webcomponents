@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -25,6 +26,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     this.recording = false;
     this.videoSrc = "";
     this.downloadUrl = "";
+    this.errorMessage = "";
     this.completeBlob = null;
     this.recorder = null;
     this.chunks = [];
@@ -41,6 +43,8 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       downloadVideo: "Download Video",
       systemAudio: "Include System Audio",
       microphoneAudio: "Include Microphone",
+      recordingStarted: "Recording started",
+      recordingStopped: "Recording stopped",
     };
     this.registerLocalization({
       context: this,
@@ -57,6 +61,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       recording: { type: Boolean },
       videoSrc: { type: String },
       downloadUrl: { type: String },
+      errorMessage: { type: String, attribute: "error-message" },
       includeSystemAudio: { type: Boolean },
       includeMicrophoneAudio: { type: Boolean },
     };
@@ -64,7 +69,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
+    return [super.styles, DDDExtra,
     css`
       :host {
         display: block;
@@ -120,13 +125,23 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       .download-link simple-icon-button-lite:hover {
         background-color: var(--ddd-theme-default-original87Pink, #ff6b9d) !important;
       }
+      .error-region {
+        margin: var(--ddd-spacing-2) 0;
+        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+        border-radius: var(--ddd-radius-sm, 4px);
+        background-color: var(--ddd-theme-default-error, #d32f2f);
+        color: white;
+        font-family: var(--ddd-font-navigation, sans-serif);
+        font-size: var(--ddd-font-size-3xs, 11px);
+        text-align: center;
+      }
       .hidden {
         display: none !important;
       }
       .audio-options {
         text-align: center;
       }
-      .audio-options h4 {
+      .audio-options h2 {
         margin: 0 0 var(--ddd-spacing-1) 0;
         font-size: var(--ddd-font-size-3xs);
         color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
@@ -163,8 +178,15 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           ></video>
         </div>
         
+        <div
+          class="error-region ${this.errorMessage ? '' : 'hidden'}"
+          role="alert"
+        >
+          ${this.errorMessage}
+        </div>
+        
         <div class="audio-options ${this.recording ? 'hidden' : ''}">
-          <h4>Audio Options</h4>
+          <h2>Audio Options</h2>
           <div class="checkbox-container">
             <label>
               <input 
@@ -215,6 +237,11 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           </a>
         </div>
         
+        <div class="sr-only" aria-live="polite">
+          ${this.recording
+            ? this.t.recordingStarted
+            : this.t.recordingStopped}
+        </div>
         <slot></slot>
       </div>
     `;
@@ -297,7 +324,8 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       
     } catch (error) {
       console.error('Error starting screen recording:', error);
-      alert('Error starting screen recording: ' + error.message);
+      this.errorMessage =
+        'Error starting screen recording: ' + error.message;
     }
   }
 
@@ -330,7 +358,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
    */
   _onRecordingStop() {
     this.completeBlob = new Blob(this.chunks, {
-      type: this.chunks[0].type
+      type: this.chunks.length > 0 ? this.chunks[0].type : 'video/webm',
     });
     
     this.videoSrc = URL.createObjectURL(this.completeBlob);
