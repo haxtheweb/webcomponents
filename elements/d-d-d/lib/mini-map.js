@@ -18,6 +18,11 @@ export class MiniMap extends DDD {
     this.lineList = [];
     this.activeNode = null;
     this.availableNodes = [];
+    // modal buttons keep their listeners because simple-modal receives the
+    // original nodes (clone: false); bind once so `this` is the MiniMap
+    this.saveNode = this.saveNode.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.deleteNode = this.deleteNode.bind(this);
   }
 
   static get styles() {
@@ -31,12 +36,36 @@ export class MiniMap extends DDD {
         }
         .grid {
           display: grid;
-          gap: 64px;
-          margin: 16px;
+          gap: var(--ddd-spacing-16, 64px);
+          margin: var(--ddd-spacing-4, 16px);
         }
         .cell {
+          appearance: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin: auto;
           aspect-ratio: 1 / 1;
+          padding: 0;
+          border: var(--ddd-border-xs, 1px solid #ccc);
+          border-radius: var(--ddd-radius-xs, 4px);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          cursor: pointer;
+        }
+        .cell:hover,
+        .cell:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .cell[data-line] {
+          background-color: var(--ddd-theme-default-original87Pink);
         }
         .node {
           position: relative;
@@ -44,13 +73,13 @@ export class MiniMap extends DDD {
           align-content: center;
           text-align: center;
           margin: auto;
-          padding: 8px;
-          border: 1px solid #ccc;
+          padding: var(--ddd-spacing-2, 8px);
+          border: var(--ddd-border-xs, 1px solid #ccc);
           text-decoration: none;
-          height: calc(100% - 20px);
-          width: calc(100% - 20px);
-          border-radius: 100%;
-          --ddd-theme-accent: lightblue;
+          height: calc(100% - var(--ddd-spacing-5, 20px));
+          width: calc(100% - var(--ddd-spacing-5, 20px));
+          border-radius: var(--ddd-radius-circle, 100%);
+          --ddd-theme-accent: var(--ddd-theme-default-skyLight, lightblue);
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
@@ -66,122 +95,124 @@ export class MiniMap extends DDD {
   renderCell(index) {
     const node = this.nodeList.find((node) => node.id === index);
     return html`
-      <div class="cell" id="cell-${index}" @click="${this._handleCellClick}">
+      <button
+        class="cell"
+        id="cell-${index}"
+        ?data-line="${this.lineList.includes(index)}"
+        @click="${this._handleCellClick}"
+      >
         ${node
-          ? html`<a
+          ? html`<span
               class="node node-${node.type}"
-              href="#"
               data-type="${node.type}"
               id="node-${index}"
-              @click="${(e) => {
-                e.preventDefault();
-                this.showModal(index);
-              }}"
-              >${node.name}</a
+              >${node.name}</span
             >`
           : index}
-      </div>
+      </button>
     `;
   }
 
   _handleCellClick(e) {
-    console.log(e.target.id);
-    const id = e.target.id.split("-")[1];
-    this.showModal(id);
+    // currentTarget is the cell even when an inner element is clicked;
+    // fall back to target so tests can send simplified events
+    const cell = e.currentTarget || e.target;
+    const id = cell.id.split("-")[1];
+    this.showModal(id, cell);
   }
 
-  showModal(id) {
-    const c = globalThis.document.createElement("div");
-    c.classList.add("modal-form");
-    const nodeExists = this.nodeList ? this.nodeList.includes(id) : false;
-    const type = nodeExists ? nodeExists.type : "topic";
-    const name = nodeExists ? nodeExists.name : "";
-    const url = nodeExists ? nodeExists.url : "";
-    const active = nodeExists ? nodeExists.isActive : false;
+  showModal(id, invokedBy) {
+    const node = this.nodeList.find((node) => node.id === Number(id));
+    const type = node ? node.type : "topic";
+    const name = node ? node.name : "";
+    const url = node ? node.url : "";
+    const active = node ? node.isActive : false;
 
-    c.innerHTML = `
+    const content = globalThis.document.createElement("div");
+    content.classList.add("modal-form");
+    content.innerHTML = `
     <style>
-      simple-modal{
+      simple-modal {
         --simple-modal-width: 30%;
         font-family: var(--ddd-font-primary, sans-serif);
       }
-      .modal-form{
+      .modal-form {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        padding: 16px;
+        gap: var(--ddd-spacing-4, 16px);
+        padding: var(--ddd-spacing-4, 16px);
         margin: auto;
         align-items: center;
         justify-content: center;
       }
-      label{
+      .modal-form label {
         display: inline-block;
-        gap: 8px;
+        gap: var(--ddd-spacing-2, 8px);
       }
-      input, select{
-        padding: 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
+      .modal-form input,
+      .modal-form select {
+        padding: var(--ddd-spacing-2, 8px);
+        border-radius: var(--ddd-radius-xs, 4px);
+        border: var(--ddd-border-xs, 1px solid #ccc);
       }
-      button{
+      .modal-buttons button {
         display: inline-block;
-        padding: 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background-color: #ccc;
+        padding: var(--ddd-spacing-2, 8px);
+        border-radius: var(--ddd-radius-xs, 4px);
+        border: var(--ddd-border-xs, 1px solid #ccc);
+        background-color: var(--ddd-theme-default-limestoneLight, #ccc);
         width: fit-content;
       }
     </style>
-      <h2>Node ${id}</h2>
-      <span id="node-input-id" hidden>${id}</span>
-      <label>Type: 
-        <select id="node-input-type">
-          <option value="topic" ${type === "topic" ? "selected" : ""}>Topic</option>
-          <option value="subsection" ${type === "subsection" ? "selected" : ""}>Subsection</option>
-        </select>
-      </label>
-      <label>Name: <input type="text" id="node-input-name" placeholder="Enter Name" value="${name}"></label>
-      <label>URL: <input type="url" id="node-input-url" placeholder="Enter URL" value="${url}"></label>
-      <div>
-        <label>Active Node? <input type="checkbox" id="node-input-active" ${active ? "checked" : ""}></label>
-      </div>
+    <span id="node-input-id" hidden></span>
+    <label>Type:
+      <select id="node-input-type">
+        <option value="topic">Topic</option>
+        <option value="subsection">Subsection</option>
+      </select>
+    </label>
+    <label>Name: <input type="text" id="node-input-name" placeholder="Enter Name"></label>
+    <label>URL: <input type="url" id="node-input-url" placeholder="Enter URL"></label>
+    <div>
+      <label>Active Node? <input type="checkbox" id="node-input-active"></label>
+    </div>
     `;
+    // populate the form from node data instead of interpolating it into HTML
+    content.querySelector("#node-input-id").textContent = id;
+    content.querySelector("#node-input-type").value = type || "topic";
+    content.querySelector("#node-input-name").value = name || "";
+    content.querySelector("#node-input-url").value = url || "";
+    content.querySelector("#node-input-active").checked = !!active;
+    this.__modalForm = content;
 
+    const buttons = globalThis.document.createElement("div");
+    buttons.classList.add("modal-buttons");
     const saveButton = globalThis.document.createElement("button");
     saveButton.id = "nodeSaveBtn";
     saveButton.textContent = "Save";
     saveButton.addEventListener("click", this.saveNode);
-
     const cancelButton = globalThis.document.createElement("button");
     cancelButton.id = "nodeCancelBtn";
     cancelButton.textContent = "Cancel";
     cancelButton.addEventListener("click", this.closeModal);
-
     const deleteButton = globalThis.document.createElement("button");
     deleteButton.id = "nodeDeleteBtn";
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", this.deleteNode);
-
-    c.appendChild(saveButton);
-    c.appendChild(cancelButton);
-    c.appendChild(deleteButton);
+    buttons.append(saveButton, cancelButton, deleteButton);
 
     const evnt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: true,
+      composed: true,
       detail: {
-        elements: { content: c },
-        invokedBy: saveButton, // Pass the saveButton as the element that invoked the modal
-        clone: true, // This will clone the content into the modal
-        onShow: () => this.addModalListeners(), // Add the event listeners when the modal is shown
+        title: "Node " + id,
+        elements: { content, buttons },
+        invokedBy: invokedBy || saveButton,
+        clone: false,
       },
     });
-    dispatchEvent(evnt);
-
-    globalThis.document.addEventListener("simple-modal-opened", (e) => {
-      console.log("Modal opened", e);
-      this.addModalListeners();
-    });
+    globalThis.dispatchEvent(evnt);
   }
 
   closeModal() {
@@ -189,86 +220,65 @@ export class MiniMap extends DDD {
       bubbles: true,
       cancelable: true,
     });
-    dispatchEvent(evnt);
+    globalThis.dispatchEvent(evnt);
   }
 
-  addModalListeners() {
-    document
-      .querySelector("#nodeSaveBtn")
-      .addEventListener("click", this.saveNode);
-    document
-      .querySelector("#nodeCancelBtn")
-      .addEventListener("click", this.closeModal);
+  saveNode() {
+    const form = this.__modalForm;
+    if (!form) {
+      return;
+    }
+    const id = Number(form.querySelector("#node-input-id").textContent);
+    const type = form.querySelector("#node-input-type").value;
+    const name = form.querySelector("#node-input-name").value;
+    const url = form.querySelector("#node-input-url").value;
+    const isActive = form.querySelector("#node-input-active").checked;
+    const existing = this.nodeList.find((node) => node.id === id);
+    if (existing) {
+      this.nodeList = this.nodeList.map((node) =>
+        node.id === id ? { ...node, type, name, url, isActive } : node,
+      );
+    } else {
+      this.addNode(id, type, name, url, isActive);
+    }
+    this.closeModal();
+  }
+
+  deleteNode() {
+    const form = this.__modalForm;
+    if (!form) {
+      return;
+    }
+    const id = Number(form.querySelector("#node-input-id").textContent);
+    this.removeNode(id);
+    this.closeModal();
   }
 
   renderCanvas() {}
 
-  saveNode() {
-    const type = globalThis.document.querySelector("#node-input-type").value;
-    const name = globalThis.document.querySelector("#node-input-name").value;
-    const url = globalThis.document.querySelector("#node-input-url").value;
-    const id = globalThis.document.querySelector("#node-input-id").innerText;
-    console.log(id, type, name, url);
-    this.nodeList = this.nodeList ? this.nodeList : [];
-    if (this.nodeList.length != 0 && this.nodeList.includes(id)) {
-      document
-        .querySelector("mini-map")
-        .shadowRoot.querySelector("#node-" + id)
-        .setAttribute("type", type);
-      document
-        .querySelector("mini-map")
-        .shadowRoot.querySelector("#node-" + id)
-        .setAttribute("name", name);
-      document
-        .querySelector("mini-map")
-        .shadowRoot.querySelector("#node-" + id)
-        .setAttribute("url", url);
-    } else {
-      globalThis.document.querySelector("mini-map").nodeList.push(id);
-      globalThis.document
-        .querySelector("mini-map")
-        .addNode(id, type, name, url);
-    }
-    globalThis.document.querySelector("mini-map").closeModal();
+  addNode(id, type, name, url, isActive = false) {
+    // immutable update so Lit re-renders the cells that contain this node
+    this.nodeList = [
+      ...this.nodeList,
+      { id: Number(id), type, name, url, isActive },
+    ];
   }
 
-  async addNode(id, type, name, url) {
-    const miniMap = globalThis.document.querySelector("mini-map").shadowRoot;
-    const cell = miniMap.querySelector(`#cell-${id}`);
-    const node = globalThis.document.createElement("a");
-    node.classList.add("node");
-    node.classList.add(`node-${type}`);
-    node.setAttribute("href", "#");
-    node.setAttribute("data-type", type);
-    node.setAttribute("id", `node-${id}`);
-    node.innerText = name;
-    cell.innerHTML = "";
-    await cell.appendChild(node);
-
-    miniMap.querySelector(`#node-${id}`).addEventListener("click", (e) => {
-      e.preventDefault();
-      this.showModal(id);
-    });
+  removeNode(id) {
+    this.nodeList = this.nodeList.filter((node) => node.id !== id);
   }
-
-  removeNode() {}
 
   removeAllNodes() {
-    this.nodeList = [...this.nodeList];
-    this.nodeList.length = 0;
-    this.shadowRoot.querySelectorAll(".cell").forEach((cell) => cell.remove());
-    this.shadowRoot.querySelector("#gridTarget").innerHTML = Array.from(
-      { length: this.gridSize * this.gridSize },
-      (_, index) => this.renderCell(index),
-    );
+    this.nodeList = [];
   }
 
-  addLine(id, type, name, url) {
-    this.nodeList.push(id);
-    this.shadowRoot.querySelector(`#cell-${id}`).style.backgroundColor = "red";
+  addLine(id) {
+    this.lineList = [...this.lineList, Number(id)];
   }
 
-  removeLine() {}
+  removeLine(id) {
+    this.lineList = this.lineList.filter((line) => line !== Number(id));
+  }
 
   render() {
     return html`

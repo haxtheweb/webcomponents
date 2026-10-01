@@ -644,11 +644,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     return html`
       <div class="site ">
         <a class="skip-link" href="#contentcontainer">Skip to content</a>
-        <div
-          class="menu-outline"
-          role="navigation"
-          aria-label="Site menu"
-        >
+        <div class="menu-outline" role="navigation" aria-label="Site menu">
           <div class="site-title" part="site-title">
             ${this.__siteImage
               ? html`<img
@@ -731,13 +727,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
     `;
   }
 
-  searchChanged(evt) {
+  /**
+   * Await the lazy site-search import before applying the term so callers
+   * (and tests) can await this handler directly; the old fire-and-forget
+   * .then() raced cold module loading with any fixed sleep after it.
+   */
+  async searchChanged(evt) {
     if (evt.detail.searchText) {
-      import(
+      await import(
         "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-      ).then(() => {
-        this.searchTerm = evt.detail.searchText;
-      });
+      );
+      this.searchTerm = evt.detail.searchText;
     } else {
       this.searchTerm = "";
     }

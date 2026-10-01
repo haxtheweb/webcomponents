@@ -10,8 +10,7 @@ import "../bootstrap-theme.js";
 // below evaluates a deterministic light rendering. The OS-dark surface
 // regressions themselves are covered by the media-dark block in
 // bootstrap-theme.js re-theming .card/.main-content.
-const savedColorScheme =
-  globalThis.document.documentElement.style.colorScheme;
+const savedColorScheme = globalThis.document.documentElement.style.colorScheme;
 globalThis.document.documentElement.style.colorScheme = "light";
 const savedStoreDarkMode = store.darkMode;
 store.darkMode = false;
@@ -327,10 +326,11 @@ describe("bootstrap-theme test", () => {
         },
       };
 
-      element.searchChanged(mockEvent);
-      // searchChanged dynamically imports site-search.js then sets
-      // searchTerm inside a .then(). Wait for the microtask to resolve.
-      await new Promise((r) => setTimeout(r, 50));
+      // searchChanged awaits the dynamic import of site-search.js before
+      // setting searchTerm, so awaiting the returned promise is deterministic
+      // however long the (possibly cold) module graph takes to load. The old
+      // fixed 50ms sleep raced first-load module fetching and flaked.
+      await element.searchChanged(mockEvent);
       await element.updateComplete;
 
       expect(element.searchTerm).to.equal("test search query");
@@ -689,9 +689,8 @@ describe("bootstrap-theme test", () => {
       element.colorTheme = "1";
       await element.updateComplete;
 
-      // Open search (searchChanged does a dynamic import; wait for it)
-      element.searchChanged({ detail: { searchText: "test search" } });
-      await new Promise((r) => setTimeout(r, 50));
+      // Open search; searchChanged awaits the dynamic import itself
+      await element.searchChanged({ detail: { searchText: "test search" } });
       await element.updateComplete;
 
       expect(element.searchTerm).to.equal("test search");

@@ -513,13 +513,26 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
   /**
    * LitElement life cycle - properties changed callback
    */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive whileLoading/dataSource from search in willUpdate so they batch
+    // into the current update cycle. Setting them in updated() (via
+    // _searchChanged) scheduled a redundant second update (Lit
+    // change-in-update warning).
+    if (changedProperties.has("search") && this.search) {
+      this._searchChanged(this.search, changedProperties.get("search"));
+    }
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // #lunr wiring stays in updated() because it needs the stamped
+      // shadow DOM, which willUpdate can't rely on before first render.
       if (propName == "search" && this[propName]) {
-        this._searchChanged(this[propName], oldValue);
         this.shadowRoot.querySelector("#lunr").search = this[propName];
       }
       if (propName == "dataSource" && this[propName]) {

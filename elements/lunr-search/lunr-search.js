@@ -125,6 +125,45 @@ class LunrSearch extends LitElement {
       }, 0);
     }
   }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // Derive __auto/index/results in willUpdate so they batch into the
+    // current update cycle. Setting them in updated() scheduled a redundant
+    // second update (Lit change-in-update warning). index is derived before
+    // results so a data change computes results against the fresh index in
+    // this same cycle instead of a follow-up update.
+    // only request data when we actually have a data source
+    if (changedProperties.has("dataSource") && this.dataSource) {
+      this.__auto = true;
+    }
+    if (
+      ["data", "fields", "noStopWords", "__lunrLoaded"].some((prop) =>
+        changedProperties.has(prop),
+      )
+    ) {
+      this.index = this._createIndex(
+        this.data,
+        this.fields,
+        this.noStopWords,
+        this.__lunrLoaded,
+      );
+    }
+    if (
+      ["data", "search", "index", "minScore", "limit"].some((prop) =>
+        changedProperties.has(prop),
+      )
+    ) {
+      this.results = this.searched(
+        this.data,
+        this.search,
+        this.index,
+        this.minScore,
+        this.limit,
+      );
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (
@@ -157,29 +196,6 @@ class LunrSearch extends LitElement {
               value: this[propName],
             },
           }),
-        );
-      }
-      // only request data when we actually have a data source
-      if (propName == "dataSource" && this[propName]) {
-        this.__auto = true;
-      }
-      if (["data", "search", "index", "minScore", "limit"].includes(propName)) {
-        this.results = this.searched(
-          this.data,
-          this.search,
-          this.index,
-          this.minScore,
-          this.limit,
-        );
-      }
-      if (
-        ["data", "fields", "noStopWords", "__lunrLoaded"].includes(propName)
-      ) {
-        this.index = this._createIndex(
-          this.data,
-          this.fields,
-          this.noStopWords,
-          this.__lunrLoaded,
         );
       }
     });
