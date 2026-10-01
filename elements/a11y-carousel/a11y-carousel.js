@@ -73,7 +73,10 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
           a11y-carousel-button.prevnext:focus simple-icon-lite,
           a11y-carousel-button.prevnext:hover simple-icon-lite {
             opacity: 1;
-            color: var(--a11y-carousel-button-background-color, black);
+            color: var(
+              --a11y-carousel-button-background-color,
+              var(--ddd-theme-default-black, black)
+            );
           }
           a11y-carousel-button[button-type="prev"] {
             left: 0;
@@ -85,18 +88,28 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             align-items: flex-end;
           }
           a11y-carousel-button.button {
-            flex: 0 0 var(--a11y-carousel-button-width, 40px);
+            flex: 0 0 var(
+              --a11y-carousel-button-width,
+              var(--ddd-spacing-10, 40px)
+            );
             height: var(--a11y-carousel-button-height, 10px);
             margin: var(--a11y-carousel-button-margin, 5px);
-            padding: var(--a11y-carousel-button-padding, 0px);
+            padding: var(
+              --a11y-carousel-button-padding,
+              var(--ddd-spacing-0, 0px)
+            );
             background-color: var(
               --a11y-carousel-button-background-color,
-              black
+              var(--ddd-theme-default-black, black)
             );
-            border: var(--a11y-carousel-button-border, 1px solid black);
+            border: var(
+              --a11y-carousel-button-border,
+              var(--ddd-border-size-xs, 1px) solid
+                var(--ddd-theme-default-black, black)
+            );
             border-radius: var(
               --a11y-carousel-button-border-radius,
-              1px solid black
+              var(--ddd-radius-xs, 4px)
             );
           }
         }
@@ -104,6 +117,10 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     ];
   }
   render() {
+    // an empty or unset label would leave the control without an accessible
+    // name, so fall back to the built-in default labels
+    let prevLabel = this.prevLabel || "previous",
+      nextLabel = this.nextLabel || "next";
     return html`
       <div><slot name="above"></slot></div>
       <div id="inner">
@@ -116,18 +133,18 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 class="prevnext"
                 button-type="prev"
                 controls="${this.prev}"
-                title="${this.prevLabel}"
+                title="${prevLabel}"
               >
-                <span class="sr-only">${this.nextLabel}</span>
+                <span class="sr-only">${prevLabel}</span>
                 <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
               </a11y-carousel-button>
               <a11y-carousel-button
                 class="prevnext"
                 button-type="next"
                 controls="${this.next}"
-                title="${this.nextLabel}"
+                title="${nextLabel}"
               >
-                <span class="sr-only">${this.nextLabel}</span>
+                <span class="sr-only">${nextLabel}</span>
                 <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
               </a11y-carousel-button>
             `}

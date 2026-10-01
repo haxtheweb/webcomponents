@@ -130,28 +130,30 @@ describe("a11y-carousel test", () => {
         expect(testElement.nextLabel).to.equal("Next Item");
         await expect(testElement).shadowDom.to.be.accessible();
 
-        // Note: Empty string labels can cause accessibility issues
+        // empty string labels fall back to the default so the button stays
+        // named and accessible
         testElement.nextLabel = "";
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal("");
-        // Skip accessibility test for empty labels as they cause violations
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should accept non-string values but maintain type in JavaScript", async () => {
         testElement.nextLabel = 123;
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(123);
-        // Skip accessibility test for numeric values - they render as strings but may not be ideal
+        await expect(testElement).shadowDom.to.be.accessible();
 
         testElement.nextLabel = true;
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(true);
-        // Skip accessibility test for boolean values
+        await expect(testElement).shadowDom.to.be.accessible();
 
+        // null labels fall back to the default so the button stays named
         testElement.nextLabel = null;
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(null);
-        // Skip accessibility test for null values as they cause empty title violations
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should have correct default value", () => {
@@ -758,7 +760,7 @@ describe("a11y-carousel test", () => {
   });
 
   describe("prev/next button labels", () => {
-    it("BUG: the previous button announces the next label", async () => {
+    it("the previous button announces the previous label", async () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="label-fig-1">
@@ -784,11 +786,10 @@ describe("a11y-carousel test", () => {
       expect(prevButton).to.exist;
       // the title correctly says previous...
       expect(prevButton.getAttribute("title")).to.equal("previous");
-      // BUG a11y-carousel.js:121 renders ${this.nextLabel} in the previous
-      // button's screen-reader-only span, so assistive tech announces
-      // "next" for the previous control (should be ${this.prevLabel}).
+      // the previous button's screen-reader-only span announces prevLabel,
+      // matching its title, so assistive tech says previous for the control
       expect(prevButton.querySelector(".sr-only").textContent).to.equal(
-        "next",
+        "previous",
       );
     });
   });
