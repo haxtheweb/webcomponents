@@ -269,8 +269,13 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
   }
 
   firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this._handleSelectionChange();
+    // defer selection setup so that the reactive selection and itemData
+    // updates land outside of this update cycle instead of scheduling a
+    // second update from within it
+    queueMicrotask(() => {
+      if (super.firstUpdated) super.firstUpdated(changedProperties);
+      this._handleSelectionChange();
+    });
   }
   /**
    * gets image css for selected image

@@ -283,21 +283,35 @@ class A11yTab extends LitElement {
     super.disconnectedCallback();
   }
   /**
+   * derives the id, label, and aria-labelledby state so that it batches
+   * into the current update instead of scheduling a second update
+   * @memberof A11yTab
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    if (
+      (changedProperties.has("id") || changedProperties.has("order")) &&
+      !this.id
+    )
+      this.id = `tab-${this.order}`;
+    if (
+      (changedProperties.has("label") || changedProperties.has("order")) &&
+      !this.label
+    )
+      this._labelChanged();
+    if (changedProperties.has("id"))
+      this.ariaLabelledby = `${this.id}-button`;
+  }
+
+  /**
    * @fires a11y-tab-changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["id", "order"].includes(propName) && !this.id)
-        this.id = `tab-${this.order}`;
-      if (["label", "order"].includes(propName) && !this.label)
-        this._labelChanged();
       if (propName === "flag") this._fireTabChanged();
       if (propName === "flagIcon") this._fireTabChanged();
       if (propName === "icon") this._fireTabChanged();
-      if (propName === "id") {
-        this.ariaLabelledby = `${this.id}-button`;
-        this._fireTabChanged();
-      }
+      if (propName === "id") this._fireTabChanged();
       if (propName === "label") this._fireTabChanged();
       if (propName === "disabled" && this.disabled) this._fireTabChanged();
     });
