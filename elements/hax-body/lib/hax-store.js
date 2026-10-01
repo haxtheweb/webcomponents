@@ -5931,10 +5931,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         // never allow read only things to recorded as they
         // are run-time creation 99% of the time
         // this is very polymer specific but it allows readOnly and computed props
+        // Lit's `state: true` marks internal reactive state, never an attribute
         // also __ is a popular convention for private values so let's skip them
         if (
           !tmpProps[j].readOnly &&
           !tmpProps[j].computed &&
+          !tmpProps[j].state &&
           value !== tmpProps[j].value &&
           !nodeName.startsWith("__")
         ) {

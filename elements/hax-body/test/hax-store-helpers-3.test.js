@@ -1,6 +1,7 @@
 import { expect } from '@open-wc/testing'
 
 import { HAXStore } from '../lib/hax-store.js'
+import { LitElement } from 'lit'
 
 describe('hax-store methods round 3', () => {
   describe('_openInlineProgramAtCursor', () => {
@@ -362,6 +363,33 @@ describe('hax-store methods round 3', () => {
       p.innerHTML = 'hello&nbsp;world'
       const content = await HAXStore.nodeToContent(p)
       expect(content).to.not.contain('&nbsp;')
+    })
+
+    it('skips Lit state properties', async () => {
+      class HaxStateDemo extends LitElement {
+        static get properties() {
+          return {
+            label: { type: String },
+            _open: { state: true },
+            _rows: { state: true },
+          }
+        }
+      }
+      if (!globalThis.customElements.get('hax-state-demo')) {
+        globalThis.customElements.define('hax-state-demo', HaxStateDemo)
+      }
+      HAXStore.validTagList = [...HAXStore.validTagList, 'hax-state-demo']
+      const el = globalThis.document.createElement('hax-state-demo')
+      el.label = 'Hello'
+      el._open = true
+      el._rows = [{ id: 1 }]
+      globalThis.document.body.appendChild(el)
+      await el.updateComplete
+      const content = await HAXStore.nodeToContent(el)
+      el.remove()
+      expect(content).to.contain('label="Hello"')
+      expect(content).to.not.contain('_open')
+      expect(content).to.not.contain('_rows')
     })
   })
 
