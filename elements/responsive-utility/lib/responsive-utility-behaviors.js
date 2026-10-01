@@ -89,23 +89,30 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       if (!this.disableResponsive) {
-        globalThis.ResponsiveUtility.requestAvailability();
-        this.dispatchEvent(
-          new CustomEvent("responsive-element", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              attribute: "responsive-size",
-              custom: "responsive-width",
-              element: this,
-              sm: this.sm,
-              md: this.md,
-              lg: this.lg,
-              xl: this.xl,
-            },
-          }),
-        );
+        // Defer registering with the responsive utility until after the
+        // update cycle: its handler synchronously sets the responsive-size
+        // attribute, which maps to the declared responsiveSize property, so
+        // registering during firstUpdated scheduled a redundant second
+        // update (Lit change-in-update warning).
+        queueMicrotask(() => {
+          globalThis.ResponsiveUtility.requestAvailability();
+          this.dispatchEvent(
+            new CustomEvent("responsive-element", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                attribute: "responsive-size",
+                custom: "responsive-width",
+                element: this,
+                sm: this.sm,
+                md: this.md,
+                lg: this.lg,
+                xl: this.xl,
+              },
+            }),
+          );
+        });
       }
     }
     /**
