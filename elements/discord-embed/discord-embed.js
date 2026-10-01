@@ -17,7 +17,7 @@ class DiscordEmbed extends LitElement {
   constructor() {
     super();
     this.source = "";
-    this.height = 500;
+    this.height = "500";
     this.width = "100%";
   }
   static get styles() {
@@ -61,6 +61,7 @@ class DiscordEmbed extends LitElement {
           <iframe-loader>
             <iframe
               src="${this.source}"
+              title="Discord chat embed"
               height="${this.height}"
               width="${this.width}"
             ></iframe>

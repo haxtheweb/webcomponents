@@ -17,7 +17,7 @@ describe("DiscordEmbed test", () => {
 
   it("has correct default property values", async () => {
     expect(element.source).to.equal("");
-    expect(element.height).to.equal(500);
+    expect(element.height).to.equal("500");
     expect(element.width).to.equal("100%");
   });
 
@@ -111,6 +111,8 @@ describe("DiscordEmbed test", () => {
     const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
     expect(iframe.getAttribute("src")).to.equal(element.source);
+    // the iframe announces itself to assistive technology
+    expect(iframe.getAttribute("title")).to.equal("Discord chat embed");
   });
 
   it("does not render iframe when source is invalid", async () => {
