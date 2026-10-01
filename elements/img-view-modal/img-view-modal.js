@@ -103,8 +103,6 @@ class ImgViewModal extends LitElement {
             this._getCssVar("--simple-modal-titlebar-height") || "40px",
           "--simple-modal-titlebar-line-height":
             this._getCssVar("--simple-modal-titlebar-line-height") || "40px",
-          "--simple-modal-titlebar-height":
-            this._getCssVar("--simple-modal-titlebar-height") || "40px",
           "--simple-modal-titlebar-padding":
             this._getCssVar("--simple-modal-titlebar-padding") ||
             "0px 5px 0px 15px",
@@ -123,7 +121,7 @@ class ImgViewModal extends LitElement {
         },
         imgStyles = {
           "--img-view-viewer-backgroundColor":
-            this._getCssVar("i--mg-view-viewer-backgroundColor") || "white",
+            this._getCssVar("--img-view-viewer-backgroundColor") || "white",
           "--img-view-viewer-height":
             "calc(var(--simple-modal-height) - var(--simple-modal-titlebar-height))",
           "--img-view-viewer-color":
@@ -164,13 +162,16 @@ class ImgViewModal extends LitElement {
           elements: {
             content: img,
           },
+          // merge the dynamic modal styles with the hardcoded layout intent
+          // so neither silently overwrites the other (duped styles key)
           styles: {
-            "--simple-modal-width": "80vw",
+            ...modalStyles,
+            "--simple-modal-width":
+              modalStyles["--simple-modal-width"] || "80vw",
             "--simple-modal-max-width": "80vw",
             "--simple-modal-z-index": "100000000",
             "--simple-modal-min-height": "80vh",
           },
-          styles: modalStyles,
           invokedBy: this,
           clone: false,
         },

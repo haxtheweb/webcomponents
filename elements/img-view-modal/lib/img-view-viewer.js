@@ -98,7 +98,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         #top,
         #bottom {
           margin: 0;
-          flex: 1 0 46px;
+          flex: 1 0 52px;
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         #top > *,
@@ -274,13 +274,13 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   }
   get toolbarsHeight() {
     let height = 0,
-      toolbars = this.customToolbars || this.toolbars;
+      toolbars = this.customToolbars || this.toolbars || this.defaultToolbars;
     if (toolbars.top) height += 52;
     if (toolbars.bottom) height += 52;
     return height;
   }
   getToolbars(topOrBottom = "bottom") {
-    let toolbars = this.customToolbars || this.toolbars,
+    let toolbars = this.customToolbars || this.toolbars || this.defaultToolbars,
       toolbar =
         toolbars && toolbars[topOrBottom] ? toolbars[topOrBottom] : false,
       div = toolbar ? this._item(toolbar, topOrBottom === "top") : "";
@@ -614,7 +614,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return this.figures || [];
   }
   get noSources() {
-    this.pages.length === 0;
+    return this.pages.length === 0;
   }
   get prevDisabled() {
     return this.page <= 0;

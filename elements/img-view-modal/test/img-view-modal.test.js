@@ -16,9 +16,9 @@ describe("img-view-modal test", () => {
 });
 
 describe("img-view-modal modalOpen", () => {
-  // a toolbars object is required: modalOpen copies it onto the created
-  // img-view-viewer, whose render otherwise dereferences an unset toolbars
-  // (see the BUG note in test/img-view-viewer.test.js)
+  // a toolbars object is optional: it is copied onto the created
+  // img-view-viewer when present, and an unconfigured viewer falls back to
+  // its own default bottom toolbar (see test/img-view-viewer.test.js)
   const TOOLBARS = {
     bottom: { id: "bottom", type: "toolbar-group", contents: [] },
   };
@@ -75,22 +75,47 @@ describe("img-view-modal modalOpen", () => {
     expect(detail.styles["--simple-modal-titlebar-height"].trim()).to.equal(
       "40px",
     );
+    // the merged styles object keeps both the dynamic modal styles and the
+    // hardcoded layout intent (the duplicated styles key used to silently
+    // overwrite the width/max-width/z-index/min-height block)
+    expect(detail.styles["--simple-modal-max-width"]).to.equal("80vw");
+    expect(detail.styles["--simple-modal-z-index"]).to.equal("100000000");
+    expect(detail.styles["--simple-modal-min-height"]).to.equal("80vh");
+    expect(detail.styles["--simple-modal-width"].trim()).to.equal("80vw");
   });
 
-  it("falls back to white for the viewer background color (css var typo)", async () => {
+  it("passes the host background color through to the viewer", async () => {
     element.style.setProperty("--img-view-modal-backgroundColor", "purple");
     const shown = [];
     element.addEventListener("simple-modal-show", (e) => shown.push(e.detail));
     element.click();
     const viewer = shown[0].elements.content;
     viewer.windowControllers.abort();
-    // BUG: modalOpen reads the css var "i--mg-view-viewer-backgroundColor"
-    // (a typo for --img-view-viewer-backgroundColor), so the host's
-    // --img-view-modal-backgroundColor can never reach the viewer; every
-    // viewer falls back to the hardcoded "white"
+    // modalOpen reads --img-view-viewer-backgroundColor, which the host chain
+    // resolves from --img-view-modal-backgroundColor, so the host's purple
+    // reaches the viewer instead of the hardcoded white fallback
     expect(
       viewer.style.getPropertyValue("--img-view-viewer-backgroundColor").trim(),
-    ).to.equal("white");
+    ).to.equal("purple");
+  });
+
+  it("opens a viewer with the default toolbar when none are configured", async () => {
+    const el = await fixture(
+      html` <img-view-modal
+        title="test-title"
+        .figures=${[{ src: "figure.png" }]}
+      ></img-view-modal>`,
+    );
+    const shown = [];
+    el.addEventListener("simple-modal-show", (e) => shown.push(e.detail));
+    el.click();
+    expect(shown.length).to.equal(1);
+    const viewer = shown[0].elements.content;
+    viewer.windowControllers.abort();
+    // no toolbars object is copied onto the created viewer; it falls back to
+    // the default bottom toolbar instead of failing to render
+    expect(viewer.toolbars).to.equal(undefined);
+    expect(viewer.toolbarsHeight).to.equal(52);
   });
 
   it("does not open the modal when disabled", async () => {

@@ -111,14 +111,13 @@ before(async () => {
 })
 
 describe('img-view-viewer rendering', () => {
-  it('BUG: toolbarsHeight throws when no toolbars are configured', () => {
+  it('falls back to the default toolbar when none are configured', () => {
     // detached element so no render is involved; exercise the getter directly
     const el = globalThis.document.createElement('img-view-viewer')
-    // BUG: get toolbarsHeight reads toolbars.top without guarding for
-    // toolbars being unset, so the viewer throws
-    // "TypeError: Cannot read properties of undefined (reading 'top')"
-    // and cannot render at all unless a toolbars object is provided
-    expect(() => el.toolbarsHeight).to.throw('top')
+    // unconfigured viewers fall back to the standard default bottom toolbar,
+    // so toolbarsHeight no longer dereferences an unset toolbars object and
+    // reserves the bottom toolbar height instead
+    expect(el.toolbarsHeight).to.equal(52)
     // remove the global es-bridge listener the constructor registered so the
     // detached element cannot receive the delayed loaded event and blow up
     // in _initOpenSeadragon without a shadow root
@@ -373,7 +372,7 @@ describe('img-view-viewer toolbars', () => {
       .to.be.false
   })
 
-  it('BUG: the infobutton never hides even with no figures', async () => {
+  it('hides the infobutton when there are no figures', async () => {
     const el = await fixture(
       html`<img-view-viewer
         .toolbars=${{
@@ -386,12 +385,12 @@ describe('img-view-viewer toolbars', () => {
       ></img-view-viewer>`,
     )
     await el.updateComplete
-    // BUG: the noSources getter computes pages.length === 0 but forgets to
-    // return it, so it always yields undefined and the infobutton's
-    // hiddenProp can never hide the button, even with zero figures
+    // the noSources getter reports pages.length === 0, so the infobutton's
+    // hiddenProp hides the button when there are no figures
     expect(el.pages.length).to.equal(0)
+    expect(el.noSources).to.be.true
     expect(el.shadowRoot.querySelector('#infobutton').hasAttribute('hidden')).to
-      .be.false
+      .be.true
   })
 
   it('prefers customToolbars over toolbars when rendering', async () => {
@@ -601,12 +600,11 @@ describe('img-view-viewer getters and helpers', () => {
     expect(el.navXofY.type).to.equal('misc-item')
   })
 
-  it('noSources never reports true (missing return statement)', () => {
+  it('noSources reports whether any figures exist', () => {
     el.figures = []
-    // BUG: the getter computes the boolean but never returns it
-    expect(el.noSources).to.be.undefined
+    expect(el.noSources).to.be.true
     el.figures = [{ src: 'a.png' }]
-    expect(el.noSources).to.be.undefined
+    expect(el.noSources).to.be.false
   })
 
   it('button helpers compute disabled, hidden and class', () => {
