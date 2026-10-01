@@ -1,6 +1,6 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
-import "../md-block.js";
+import { MdBlock } from "../md-block.js";
 
 // `lit-html` preserves the exact whitespace inside template literals, so any
 // indentation in our <md-block> fixture bodies becomes leading whitespace
@@ -240,6 +240,78 @@ describe("md-block test", () => {
       }
 
       testElement.remove();
+    });
+  });
+
+  describe("HAX integration", () => {
+    it("exposes the haxProperties schema for the HAX editor", () => {
+      const props = MdBlock.haxProperties;
+      expect(props.canScale).to.equal(false);
+      expect(props.canEditSource).to.equal(true);
+      expect(props.gizmo.title).to.equal("Markdown");
+      expect(props.gizmo.description).to.contain("markdown");
+      expect(props.gizmo.tags).to.contain("markdown");
+      expect(props.gizmo.meta.author).to.equal("HAXTheWeb");
+      expect(props.settings.configure[0].property).to.equal("markdown");
+      expect(props.settings.configure[0].inputMethod).to.equal("textarea");
+      expect(props.settings.configure[1].property).to.equal("source");
+      expect(props.settings.advanced.length).to.equal(0);
+      expect(props.demoSchema[0].tag).to.equal("md-block");
+      expect(props.demoSchema[0].properties.markdown).to.contain("bulleted");
+    });
+  });
+
+  describe("source loading", () => {
+    const origFetch = globalThis.fetch;
+    const aTimeout = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    afterEach(() => {
+      globalThis.fetch = origFetch;
+    });
+
+    it("loads, sanitizes and renders remote markdown from source", async () => {
+      let requestedUrl = null;
+      globalThis.fetch = (url) => {
+        requestedUrl = url;
+        return Promise.resolve({
+          ok: true,
+          text: () => Promise.resolve("**from source**"),
+        });
+      };
+      const el = globalThis.document.createElement("md-block");
+      el.source = "fake.md";
+      globalThis.document.body.appendChild(el);
+      await el.updateComplete;
+      await waitUntil(
+        () => el._parsedMarkdown && el._parsedMarkdown.length > 0,
+        "source markdown was never parsed",
+        3000,
+      );
+      expect(requestedUrl).to.equal("fake.md");
+      expect(el._parsedMarkdown).to.contain("<strong>from source</strong>");
+      el.remove();
+    });
+
+    it("leaves the block empty when the source response is not ok", async () => {
+      globalThis.fetch = () => Promise.resolve({ ok: false });
+      const el = globalThis.document.createElement("md-block");
+      el.source = "missing.md";
+      globalThis.document.body.appendChild(el);
+      await el.updateComplete;
+      await aTimeout(50);
+      expect(el._parsedMarkdown).to.equal("");
+      el.remove();
+    });
+
+    it("fails silently when fetching the source throws", async () => {
+      globalThis.fetch = () => Promise.reject(new Error("network down"));
+      const el = globalThis.document.createElement("md-block");
+      el.source = "unreachable.md";
+      globalThis.document.body.appendChild(el);
+      await el.updateComplete;
+      await aTimeout(50);
+      expect(el._parsedMarkdown).to.equal("");
+      el.remove();
     });
   });
 });

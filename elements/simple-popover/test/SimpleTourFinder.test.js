@@ -58,6 +58,24 @@ class TestTourFinderBroken extends SimpleTourFinder(LitElement) {
 }
 globalThis.customElements.define('test-tour-finder-broken', TestTourFinderBroken)
 
+// a base class with no firstUpdated on its prototype at all, so the
+// connectedCallback branch of the mixin runs discoverSimpleTourStops
+// BUG (lib/SimpleTourFinder.js:29): the mixin's disconnectedCallback calls
+// super.disconnectedCallback() unguarded, unlike connectedCallback which
+// guards with if (super.connectedCallback). Applying the mixin to a base
+// class without disconnectedCallback (e.g. HTMLElement) throws on removal.
+// This test class overrides it as a no-op so it can be removed from the DOM.
+class TestPlainFinder extends SimpleTourFinder(globalThis.HTMLElement) {
+  constructor() {
+    super()
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.innerHTML =
+      '<div data-simple-tour-stop><span data-stop-title>Plain Title</span><div data-stop-content>Plain Content</div></div>'
+  }
+  disconnectedCallback() {}
+}
+globalThis.customElements.define('test-plain-finder', TestPlainFinder)
+
 describe('SimpleTourFinder mixin', () => {
   let origStacks, origTourInfo, origActive, origStop
 
@@ -207,5 +225,20 @@ describe('SimpleTourFinder mixin', () => {
     expect(stops).to.exist
     expect(stops.length).to.equal(1)
     expect(stops[0].title).to.equal('Attr Title')
+  })
+
+  it('connectedCallback discovers stops when super has no firstUpdated', async () => {
+    // HTMLElement has no firstUpdated on its prototype, so connectedCallback
+    // is the path that triggers discoverSimpleTourStops for this element
+    const el = globalThis.document.createElement('test-plain-finder')
+    globalThis.document.body.appendChild(el)
+    await aTimeout(10)
+    expect(SimpleTourManager.stacks['default']).to.exist
+    expect(SimpleTourManager.stacks['default'].length).to.equal(1)
+    expect(SimpleTourManager.stacks['default'][0].title).to.equal('Plain Title')
+    expect(SimpleTourManager.stacks['default'][0].description).to.equal(
+      'Plain Content',
+    )
+    globalThis.document.body.removeChild(el)
   })
 })

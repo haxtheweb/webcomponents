@@ -1,6 +1,10 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { LitElement } from "lit";
 
 import "../mutation-observer-import-mixin.js";
+import { MutationObserverImportElement } from "../mutation-observer-import-mixin.js";
+// direct lib import per the invisible-lib rule
+import { MutationObserverImportMixin } from "../lib/MutationObserverImportMixin.js";
 
 describe("mutation-observer-import-mixin test", () => {
   let element;
@@ -49,6 +53,149 @@ describe("mutation-observer-import-mixin test", () => {
       // Dynamic changes should maintain accessibility
       await expect(element).shadowDom.to.be.accessible();
     });
+  });
+});
+
+// A host that mixes the lib mixin over LitElement so the
+// super.connectedCallback / super.disconnectedCallback pass-through branches
+// run against a base class that actually defines those callbacks.
+class MoimLitHost extends MutationObserverImportMixin(LitElement) {
+  static get tag() {
+    return "moim-lit-host";
+  }
+  render() {
+    return html`<div>moim lit host</div>`;
+  }
+}
+globalThis.customElements.define(MoimLitHost.tag, MoimLitHost);
+
+// Captures registry.loadDefinition calls so tests can observe which tag
+// names the mixin pushed through the DynamicImportRegistry without letting
+// any real dynamic import happen (unregistered tags are a no-op upstream).
+function spyLoadDefinition() {
+  const registry = globalThis.DynamicImportRegistry.requestAvailability();
+  const original = registry.loadDefinition;
+  const calls = [];
+  registry.loadDefinition = (tag) => {
+    calls.push(tag);
+    return original.call(registry, tag);
+  };
+  return {
+    calls: calls,
+    restore: () => {
+      registry.loadDefinition = original;
+    },
+  };
+}
+
+describe("mutation-observer-import (the registered tag) behavior", () => {
+  let spy;
+
+  beforeEach(() => {
+    spy = spyLoadDefinition();
+  });
+
+  afterEach(() => {
+    spy.restore();
+  });
+
+  it("registers under the mutation-observer-import tag", () => {
+    expect(globalThis.customElements.get("mutation-observer-import")).to.exist;
+    expect(MutationObserverImportElement.tag).to.equal(
+      "mutation-observer-import",
+    );
+  });
+
+  it("creates the shared dynamic import registry on construction", () => {
+    const registry = globalThis.DynamicImportRegistry.requestAvailability();
+    expect(registry).to.exist;
+    expect(registry.tagName.toLowerCase()).to.equal("dynamic-import-registry");
+  });
+
+  it("processes existing children once connected", async () => {
+    const el = await fixture(
+      html`<mutation-observer-import>
+        <span>one</span><span>two</span>
+      </mutation-observer-import>`,
+    );
+    expect(spy.calls).to.include("SPAN");
+    expect(spy.calls.filter((t) => t === "SPAN").length).to.equal(2);
+    expect(el._mutationObserver).to.exist;
+  });
+
+  it("feeds elements added after connection to the registry via the observer", async () => {
+    const el = await fixture(
+      html`<mutation-observer-import></mutation-observer-import>`,
+    );
+    spy.calls.length = 0;
+    el.appendChild(globalThis.document.createElement("div"));
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    expect(spy.calls).to.include("DIV");
+  });
+
+  it("ignores added text nodes because they have no tag name", async () => {
+    const el = await fixture(
+      html`<mutation-observer-import></mutation-observer-import>`,
+    );
+    spy.calls.length = 0;
+    el.appendChild(globalThis.document.createTextNode("just text"));
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    expect(spy.calls.length).to.equal(0);
+  });
+
+  it("stops forwarding mutations once disconnected", async () => {
+    const el = await fixture(
+      html`<mutation-observer-import></mutation-observer-import>`,
+    );
+    expect(el._mutationObserver).to.exist;
+    spy.calls.length = 0;
+    el.remove();
+    el.appendChild(globalThis.document.createElement("aside"));
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    expect(spy.calls.length).to.equal(0);
+  });
+
+  it("exposes processElementList and processNewElement as registry-driven helpers", () => {
+    const el = globalThis.document.createElement("mutation-observer-import");
+    spy.calls.length = 0;
+    el.processElementList([
+      globalThis.document.createElement("section"),
+      globalThis.document.createElement("article"),
+    ]);
+    expect(spy.calls).to.include("SECTION");
+    expect(spy.calls).to.include("ARTICLE");
+    spy.calls.length = 0;
+    el.processNewElement(globalThis.document.createElement("nav"));
+    expect(spy.calls).to.include("NAV");
+  });
+});
+
+describe("MutationObserverImportMixin lib over LitElement", () => {
+  let spy;
+
+  beforeEach(() => {
+    spy = spyLoadDefinition();
+  });
+
+  afterEach(() => {
+    spy.restore();
+  });
+
+  it("calls through to super lifecycle callbacks on connect and disconnect", async () => {
+    const el = await fixture(html`<moim-lit-host></moim-lit-host>`);
+    await el.updateComplete;
+    // LitElement super callbacks ran (render happened) and the observer is live
+    expect(el._mutationObserver).to.exist;
+    expect(el.shadowRoot.querySelector("div")).to.exist;
+    spy.calls.length = 0;
+    el.appendChild(globalThis.document.createElement("p"));
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    expect(spy.calls).to.include("P");
+    el.remove();
+    spy.calls.length = 0;
+    el.appendChild(globalThis.document.createElement("span"));
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    expect(spy.calls.length).to.equal(0);
   });
 });
 

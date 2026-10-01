@@ -326,6 +326,52 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
   });
 });
 
+// Cover the super.properties merge branch of the mixin static getter:
+// when the base class defines its own static properties, the mixin must
+// Object.assign fileTypes on top of them instead of returning only its own.
+class TestBaseWithProps extends LitElement {
+  static get properties() {
+    return {
+      baseProp: { type: String },
+    };
+  }
+}
+
+class TestDownloadElementWithBase extends MtzFileDownloadBehaviors(
+  TestBaseWithProps,
+) {
+  static get tag() {
+    return "test-download-element-with-base";
+  }
+
+  render() {
+    return html`<div>Download behavior over a base with properties</div>`;
+  }
+}
+customElements.define(TestDownloadElementWithBase.tag, TestDownloadElementWithBase);
+
+describe("MtzFileDownloadBehaviors static properties merge", () => {
+  it("merges fileTypes with super.properties when the base class defines them", () => {
+    const props = TestDownloadElementWithBase.properties;
+    expect(props).to.exist;
+    expect(props).to.have.property("fileTypes");
+    expect(props.fileTypes.type).to.equal(Object);
+    expect(props).to.have.property("baseProp");
+    expect(props.baseProp.type).to.equal(String);
+  });
+
+  it("keeps both the mixin defaults and the base class defaults at runtime", async () => {
+    const el = await fixture(
+      html`<test-download-element-with-base></test-download-element-with-base>`,
+    );
+    await el.updateComplete;
+    expect(el.fileTypes).to.exist;
+    expect(el.fileTypes.CSV).to.equal("text/csv");
+    expect(el.fileTypes.PDF).to.equal("application/pdf");
+    expect(el.downloadFromData).to.be.a("function");
+  });
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("dl-behavior passes accessibility test", async () => {

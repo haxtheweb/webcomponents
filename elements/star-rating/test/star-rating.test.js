@@ -1,6 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../star-rating.js";
+import { StarRating } from "../star-rating.js";
 
 describe("star-rating test", () => {
   let element;
@@ -13,6 +14,208 @@ describe("star-rating test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+});
+
+describe('star-rating behavior', () => {
+  it('exposes haxProperties for the HAX editor', () => {
+    const props = StarRating.haxProperties
+    expect(props).to.exist
+    expect(props.canScale).to.equal(true)
+    expect(props.gizmo.title).to.equal('Star Rating')
+    expect(props.gizmo.icon).to.equal('icons:star')
+    expect(props.gizmo.handles).to.deep.equal([])
+    const configure = props.settings.configure.map((s) => s.property)
+    expect(configure).to.deep.equal([
+      'score',
+      'possible',
+      'numStars',
+      'interactive',
+      'rubricScaleMode',
+    ])
+  })
+
+  it('has expected defaults and renders the score readout', async () => {
+    const el = await fixture(html`<star-rating></star-rating>`)
+    expect(el.numStars).to.equal(5)
+    expect(el.score).to.equal(10)
+    expect(el.possible).to.equal(100)
+    expect(el._calPercent).to.equal(0.1)
+    expect(el.dark).to.equal(true)
+    expect(el.contrast).to.equal(0)
+    expect(el.accentColor).to.equal('yellow')
+    expect(el.rubricScaleMode).to.equal(false)
+    expect(el.shadowRoot.querySelector('.rating').textContent.trim()).to.equal(
+      '0.1 (10/100)',
+    )
+  })
+
+  it('renders half and border stars for a partial score', async () => {
+    const el = await fixture(html`<star-rating></star-rating>`)
+    const icons = [...el.shadowRoot.querySelectorAll('simple-icon')]
+    expect(icons.length).to.equal(5)
+    expect(icons.map((i) => i.getAttribute('icon'))).to.deep.equal([
+      'star-half',
+      'star-border',
+      'star-border',
+      'star-border',
+      'star-border',
+    ])
+    expect(icons[0].getAttribute('accent-color')).to.equal('yellow')
+  })
+
+  it('renders full stars for a perfect score', async () => {
+    const el = await fixture(
+      html`<star-rating score="100" possible="100"></star-rating>`,
+    )
+    await el.updateComplete
+    const icons = [...el.shadowRoot.querySelectorAll('simple-icon')]
+    expect(icons.map((i) => i.getAttribute('icon'))).to.deep.equal([
+      'star',
+      'star',
+      'star',
+      'star',
+      'star',
+    ])
+  })
+
+  it('renders full, half and border stars for a mid score', async () => {
+    const el = await fixture(
+      html`<star-rating score="30" possible="100"></star-rating>`,
+    )
+    await el.updateComplete
+    const icons = [...el.shadowRoot.querySelectorAll('simple-icon')]
+    expect(icons.map((i) => i.getAttribute('icon'))).to.deep.equal([
+      'star',
+      'star-half',
+      'star-border',
+      'star-border',
+      'star-border',
+    ])
+  })
+
+  it('renders nothing but the readout when numStars is zero', async () => {
+    const el = await fixture(html`<star-rating num-stars="0"></star-rating>`)
+    await el.updateComplete
+    expect(el.shadowRoot.querySelectorAll('simple-icon').length).to.equal(0)
+    expect(el.shadowRoot.querySelector('.rating').textContent.trim()).to.equal(
+      '0.1 (10/100)',
+    )
+  })
+
+  it('recalculates the percentage when score or possible change', async () => {
+    const el = await fixture(html`<star-rating></star-rating>`)
+    el.score = 50
+    // _calPercent is set inside updated() so the readout re-renders after a
+    // second chained update
+    await el.updateComplete
+    await el.updateComplete
+    expect(el._calPercent).to.equal(0.5)
+    expect(el.shadowRoot.querySelector('.rating').textContent.trim()).to.equal(
+      '0.5 (50/100)',
+    )
+    el.possible = 200
+    await el.updateComplete
+    await el.updateComplete
+    expect(el._calPercent).to.equal(0.25)
+  })
+
+  it('substitutes possible 1 when possible is set to 0', async () => {
+    const el = await fixture(
+      html`<star-rating score="10" possible="0"></star-rating>`,
+    )
+    await el.updateComplete
+    await el.updateComplete
+    expect(el.possible).to.equal(1)
+    expect(el._calPercent).to.equal(10)
+    expect(el.shadowRoot.querySelector('.rating').textContent.trim()).to.equal(
+      '10 (10/1)',
+    )
+  })
+
+  it('renders interactive star buttons that fire star-rating-click', async () => {
+    const el = await fixture(html`<star-rating interactive></star-rating>`)
+    await el.updateComplete
+    expect(el.hasAttribute('interactive')).to.equal(true)
+    const buttons = [...el.shadowRoot.querySelectorAll('simple-icon-button')]
+    expect(buttons.length).to.equal(5)
+    expect(buttons.map((b) => b.getAttribute('data-value'))).to.deep.equal([
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+    ])
+    expect(buttons[0].getAttribute('icon')).to.equal('star-half')
+    let clickEvent = null
+    el.addEventListener('star-rating-click', (e) => {
+      clickEvent = e
+    })
+    buttons[2].click()
+    expect(clickEvent).to.exist
+    expect(clickEvent.detail.value).to.equal('3')
+    expect(clickEvent.bubbles).to.equal(true)
+    expect(clickEvent.cancelable).to.equal(true)
+  })
+
+  it('renders OER schema metadata in rubric scale mode', async () => {
+    const el = await fixture(
+      html`<star-rating
+        rubric-scale-mode
+        score="100"
+        possible="100"
+      ></star-rating>`,
+    )
+    await el.updateComplete
+    expect(el.rubricScaleMode).to.equal(true)
+    const wrapper = el.shadowRoot.querySelector('.wrapper')
+    expect(wrapper.getAttribute('typeof')).to.equal('oer:RubricScale')
+    const icons = [...el.shadowRoot.querySelectorAll('simple-icon')]
+    expect(icons.length).to.equal(5)
+    icons.forEach((icon, i) => {
+      expect(icon.getAttribute('typeof')).to.equal('oer:RubricLevel')
+      expect(icon.getAttribute('property')).to.equal('oer:hasLevel')
+      const ordinal = icon.querySelector('meta[property="oer:levelOrdinal"]')
+      const points = icon.querySelector('meta[property="oer:levelPoints"]')
+      expect(ordinal.getAttribute('content')).to.equal(String(i + 1))
+      expect(points.getAttribute('content')).to.equal(String((i + 1) * 20))
+    })
+    expect(el._rubricLevelPoints(1)).to.equal(20)
+    expect(el._rubricLevelPoints(5)).to.equal(100)
+  })
+
+  it('renders OER schema metadata on interactive buttons in rubric scale mode', async () => {
+    const el = await fixture(
+      html`<star-rating
+        rubric-scale-mode
+        interactive
+        score="100"
+        possible="100"
+      ></star-rating>`,
+    )
+    await el.updateComplete
+    const buttons = [...el.shadowRoot.querySelectorAll('simple-icon-button')]
+    expect(buttons.length).to.equal(5)
+    buttons.forEach((button, i) => {
+      expect(button.getAttribute('typeof')).to.equal('oer:RubricLevel')
+      expect(button.getAttribute('property')).to.equal('oer:hasLevel')
+      const ordinal = button.querySelector('meta[property="oer:levelOrdinal"]')
+      const points = button.querySelector('meta[property="oer:levelPoints"]')
+      expect(ordinal.getAttribute('content')).to.equal(String(i + 1))
+      expect(points.getAttribute('content')).to.equal(String((i + 1) * 20))
+    })
+  })
+
+  it('returns zero rubric points when numStars is zero', async () => {
+    const el = await fixture(html`<star-rating num-stars="0"></star-rating>`)
+    await el.updateComplete
+    expect(el._rubricLevelPoints(1)).to.equal(0)
+  })
+
+  it('passes the a11y audit while interactive', async () => {
+    const el = await fixture(html`<star-rating interactive></star-rating>`)
+    await el.updateComplete
+    await expect(el).shadowDom.to.be.accessible()
+  })
 });
 
 /*

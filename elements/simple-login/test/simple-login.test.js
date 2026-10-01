@@ -15,6 +15,164 @@ describe("simple-login test", () => {
   });
 });
 
+describe('simple-login behavior', () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+  async function validLoginFixture() {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    await sleep(10)
+    el.shadowRoot.querySelector('#userinput').value = 'testuser'
+    el.shadowRoot.querySelector('#passinput').value = 'testpass'
+    await el.updateComplete
+    return el
+  }
+
+  it('renders the title and subtitle when supplied', async () => {
+    const el = await fixture(
+      html`<simple-login
+        title="Sign in"
+        subtitle="Use your credentials"
+      ></simple-login>`,
+    )
+    expect(el.shadowRoot.querySelector('h1').textContent).to.equal('Sign in')
+    expect(el.shadowRoot.querySelector('h2').textContent).to.equal(
+      'Use your credentials',
+    )
+  })
+
+  it('shows the error message text', async () => {
+    const el = await fixture(
+      html`<simple-login .errorMsg=${'Invalid username'}></simple-login>`,
+    )
+    expect(el.shadowRoot.querySelector('#errormsg').textContent).to.equal(
+      'Invalid username',
+    )
+  })
+
+  it('uses the default labels and button text', async () => {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    expect(el.shadowRoot.querySelector('#userinput').getAttribute('label')).to
+      .equal('User name')
+    expect(el.shadowRoot.querySelector('#passinput').getAttribute('label')).to
+      .equal('Password')
+    expect(el.shadowRoot.querySelector('#loginbtn').textContent.trim()).to
+      .equal('Login')
+  })
+
+  it('supports custom labels, error messages and button text', async () => {
+    const el = await fixture(
+      html`<simple-login
+        user-input-label="Email"
+        .userInputErrMsg=${'Email required'}
+        password-input-label="Passphrase"
+        .passwordInputErrMsg=${'Passphrase required'}
+        login-btn-text="Sign in"
+      ></simple-login>`,
+    )
+    expect(el.shadowRoot.querySelector('#userinput').getAttribute('label')).to
+      .equal('Email')
+    expect(
+      el.shadowRoot.querySelector('#userinput').getAttribute('error-message'),
+    ).to.equal('Email required')
+    expect(el.shadowRoot.querySelector('#passinput').getAttribute('label')).to
+      .equal('Passphrase')
+    expect(el.shadowRoot.querySelector('#loginbtn').textContent.trim()).to
+      .equal('Sign in')
+  })
+
+  it('disables the fields and button while loading', async () => {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    expect(el.shadowRoot.querySelector('#loginbtn').hasAttribute('disabled')).to
+      .equal(false)
+    el.loading = true
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('#loginbtn').hasAttribute('disabled')).to
+      .equal(true)
+    expect(el.shadowRoot.querySelector('#userinput').hasAttribute('disabled')).to
+      .equal(true)
+    expect(el.shadowRoot.querySelector('#passinput').hasAttribute('disabled')).to
+      .equal(true)
+    expect(
+      el.shadowRoot.querySelector('simple-progress').hasAttribute('disabled'),
+    ).to.equal(false)
+  })
+
+  it('notifies username and password changes', async () => {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    let userEvent = null
+    let passEvent = null
+    el.addEventListener('username-changed', (e) => {
+      userEvent = e.detail.value
+    })
+    el.addEventListener('password-changed', (e) => {
+      passEvent = e.detail.value
+    })
+    el._usernameChanged({ detail: { value: 'admin' } })
+    await el.updateComplete
+    expect(el.username).to.equal('admin')
+    expect(userEvent).to.equal('admin')
+    el._passwordChanged({ detail: { value: 'secret' } })
+    await el.updateComplete
+    expect(el.password).to.equal('secret')
+    expect(passEvent).to.equal('secret')
+  })
+
+  it('does not fire simple-login-login when the fields are empty', async () => {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    let fired = false
+    el.addEventListener('simple-login-login', () => {
+      fired = true
+    })
+    el.shadowRoot.querySelector('#loginbtn').click()
+    await el.updateComplete
+    expect(fired).to.equal(false)
+  })
+
+  it('fires simple-login-login with the field values when valid', async () => {
+    const el = await validLoginFixture()
+    let loginEvent = null
+    el.addEventListener('simple-login-login', (e) => {
+      loginEvent = e
+    })
+    el.shadowRoot.querySelector('#loginbtn').click()
+    await el.updateComplete
+    expect(loginEvent).to.exist
+    expect(loginEvent.detail.u).to.equal('testuser')
+    expect(loginEvent.detail.p).to.equal('testpass')
+    expect(loginEvent.bubbles).to.equal(true)
+    expect(loginEvent.composed).to.equal(true)
+    expect(loginEvent.cancelable).to.equal(true)
+  })
+
+  it('logs in when Enter is pressed inside the form', async () => {
+    const el = await validLoginFixture()
+    let loginEvent = null
+    el.addEventListener('simple-login-login', (e) => {
+      loginEvent = e
+    })
+    const enter = new KeyboardEvent('keypress', { bubbles: true })
+    Object.defineProperty(enter, 'keyCode', { get: () => 13 })
+    el.shadowRoot.querySelector('#loginform').dispatchEvent(enter)
+    await el.updateComplete
+    expect(loginEvent).to.exist
+    expect(loginEvent.detail.u).to.equal('testuser')
+    expect(loginEvent.detail.p).to.equal('testpass')
+  })
+
+  it('ignores keypresses other than Enter', async () => {
+    const el = await validLoginFixture()
+    let fired = false
+    el.addEventListener('simple-login-login', () => {
+      fired = true
+    })
+    const other = new KeyboardEvent('keypress', { bubbles: true })
+    Object.defineProperty(other, 'keyCode', { get: () => 65 })
+    el.shadowRoot.querySelector('#loginform').dispatchEvent(other)
+    await el.updateComplete
+    expect(fired).to.equal(false)
+  })
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("simple-login passes accessibility test", async () => {

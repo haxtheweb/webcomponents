@@ -259,6 +259,30 @@ describe('SimplePopoverSelection', () => {
     await aTimeout(10)
   })
 
+  it('focuses the option marked data-simple-popover-selection-active after open', async () => {
+    element = await fixture(html`
+      <simple-popover-selection>
+        <button slot="button">Btn</button>
+        <div slot="options">
+          <button>Option A</button>
+          <button data-simple-popover-selection-active>Option B</button>
+        </div>
+      </simple-popover-selection>
+    `)
+    await aTimeout(10)
+    element.openedChanged(true)
+    await aTimeout(10)
+    // the cloned option carrying the active marker should receive focus
+    expect(globalThis.document.activeElement.tagName).to.equal('BUTTON')
+    expect(
+      globalThis.document.activeElement.hasAttribute(
+        'data-simple-popover-selection-active',
+      ),
+    ).to.be.true
+    element.opened = false
+    await aTimeout(10)
+  })
+
   it('disconnectedCallback removes activation and popover item listeners', async () => {
     element = await fixture(
       html`<simple-popover-selection><button slot="button">B</button></simple-popover-selection>`,

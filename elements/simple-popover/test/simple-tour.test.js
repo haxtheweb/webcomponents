@@ -350,6 +350,46 @@ describe('SimpleTour and TourStop', () => {
       globalThis.document.body.removeChild(target)
     })
 
+    it('live mode reads the title from a referenced attribute when present', async () => {
+      const target = globalThis.document.createElement('div')
+      target.setAttribute('data-stop-title', 'data-my-title')
+      target.setAttribute('data-my-title', 'Live Attr Title')
+      target.innerHTML = '<div data-stop-content>Live Attr Body</div>'
+      globalThis.document.body.appendChild(target)
+      tour.registerNewTour({ key: 'tour1', name: 'Tour 1' })
+      tour.createTourStop('tour1', target, 'default', 'default', 'live')
+      tour.startTour('tour1')
+      await aTimeout(50)
+      // the tour renders its content into the popover manager singleton
+      const popover = globalThis.SimplePopoverManager.requestAvailability()
+      const h2 = popover.querySelector('h2.subheading span')
+      expect(h2).to.exist
+      expect(h2.textContent).to.equal('Live Attr Title')
+      globalThis.document.body.removeChild(target)
+    })
+
+    it('restores a pre-existing part attribute after the active element delay', async () => {
+      const target = globalThis.document.createElement('div')
+      globalThis.document.body.appendChild(target)
+      tour.registerNewTour({ key: 'tour1', name: 'Tour 1' })
+      tour.createTourStop('tour1', target, 'Step 1', '<p>Description 1</p>')
+      tour.createTourStop('tour1', target, 'Step 2', '<p>Description 2</p>')
+      tour.startTour('tour1')
+      // let the active + stop double render and its timeouts settle
+      await aTimeout(600)
+      // give the target a pre-existing part value, then move to another stop
+      // so a single render captures and restores it deterministically
+      target.setAttribute('part', 'my-part')
+      tour.stop = 1
+      await aTimeout(50)
+      // while the stop is active the tour overrides the part attribute
+      expect(target.getAttribute('part')).to.equal('simple-tour-active')
+      // after activeElementDelay the original part value is restored
+      await aTimeout(550)
+      expect(target.getAttribute('part')).to.equal('my-part')
+      globalThis.document.body.removeChild(target)
+    })
+
     it('tourButtons renders heading and nav with prev/next buttons', async () => {
       const target = globalThis.document.createElement('div')
       globalThis.document.body.appendChild(target)

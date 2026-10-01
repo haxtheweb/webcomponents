@@ -212,6 +212,82 @@ describe("pouch-db test", () => {
     });
   });
 
+  // BUG (test quality, pre-existing): several assertions above use
+  // `expect(() => fn).to.not.throw` WITHOUT calling .throw(), so the
+  // functions under test are never invoked and those tests assert
+  // nothing (the switch branches below were never executed as a result).
+  // Also BUG (pouch-db.js:73): userEngagmentFunction dereferences
+  // eventData.activityDisplay without guarding e.detail, so a
+  // user-engagement event with missing detail throws a TypeError
+  // (masked by the vacuous assertions above).
+  // These tests invoke the methods directly with real assertions.
+  describe("Query Request Branches (direct invocation)", () => {
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+
+    it("executes the single-quiz query branch and dispatches show-data", async () => {
+      await wait(150)
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(
+          () => reject(new Error("pouch-db-show-data never dispatched")),
+          5000,
+        )
+        globalThis.addEventListener(
+          "pouch-db-show-data",
+          (event) => {
+            clearTimeout(timer)
+            expect(event.detail.labels).to.exist
+            resolve()
+          },
+          { once: true },
+        )
+        element.getDataFunction({
+          detail: { queryRequest: "single-quiz", objectName: "Quiz1" },
+          target: { tagName: "TEST-ELEMENT" },
+        })
+      })
+    })
+
+    it("executes the future-query branch without throwing", async () => {
+      await wait(150)
+      expect(() =>
+        element.getDataFunction({
+          detail: {
+            queryRequest: "future-query",
+            activityDisplay: "completed",
+            objectName: "Advanced Quiz",
+            resultSuccess: true,
+            resultCompletion: true,
+          },
+          target: { tagName: "TEST-ELEMENT" },
+        }),
+      ).to.not.throw()
+    })
+
+    it("executes the default switch branch for unknown query requests", async () => {
+      await wait(150)
+      expect(() =>
+        element.getDataFunction({
+          detail: { queryRequest: "unknown-query" },
+          target: { tagName: "TEST-ELEMENT" },
+        }),
+      ).to.not.throw()
+    })
+
+    it("executes the default switch branch of userEngagmentFunction for non multiple-choice sources", async () => {
+      await wait(150)
+      expect(() =>
+        element.userEngagmentFunction({
+          detail: {
+            activityDisplay: "answered",
+            objectName: "Test Quiz",
+            resultSuccess: true,
+          },
+          target: { tagName: "UNKNOWN-ELEMENT" },
+        }),
+      ).to.not.throw()
+    })
+  });
+
   describe("Event Dispatching", () => {
     it("should dispatch pouch-db-show-data event", (done) => {
       const mockQueryData = {
