@@ -1058,11 +1058,37 @@ const ChartistRenderSuper = function (SuperClass) {
       ];
     }
 
+    /**
+     * gets the accessible label for the chart, falling back to slotted
+     * heading text and then a generic label so a bare chart is never
+     * rendered as role="img" with an empty accessible name
+     * @readonly
+     */
+    get __chartLabel() {
+      if (this.chartTitle) return this.chartTitle;
+      let slot = this.renderRoot
+        ? this.renderRoot.querySelector('slot[name="heading"]')
+        : null;
+      let nodes = slot ? slot.assignedElements({ flatten: true }) : [];
+      let label = nodes
+        .map((node) => node.textContent)
+        .join(" ")
+        .trim();
+      return label || `${this.type} chart`;
+    }
+
+    /**
+     * re-evaluates the aria-label fallback when heading content is slotted
+     */
+    __headingSlotChange() {
+      this.requestUpdate();
+    }
+
     // render function
     render() {
       return html` <div id="${this.__chartId}-title" class="title">
           ${this.chartTitle}
-          <slot name="heading"></slot>
+          <slot name="heading" @slotchange="${this.__headingSlotChange}"></slot>
         </div>
         <div id="${this.__chartId}-desc" class="desc">
           ${this.chartDesc}
@@ -1072,7 +1098,7 @@ const ChartistRenderSuper = function (SuperClass) {
           id="chart"
           chart="${this.__chartId}"
           role="img"
-          aria-label="${this.chartTitle}"
+          aria-label="${this.__chartLabel}"
           aria-describedby="${this.__chartId}-table ${this.__chartId}-desc"
           class="ct-chart ${this.scale}"
         ></div>

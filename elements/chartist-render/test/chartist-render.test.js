@@ -172,6 +172,28 @@ describe("chartist-render test", () => {
       await waitForGlobal(chartistLoaded, "Chartist");
     });
 
+    it("falls back to a generic aria-label when no title is set", async () => {
+      const chart = element.shadowRoot.querySelector("#chart");
+      expect(chart.getAttribute("role")).to.equal("img");
+      // a bare chart is named after its type so role="img" never carries
+      // an empty accessible name
+      expect(chart.getAttribute("aria-label")).to.equal("bar chart");
+    });
+
+    it("falls back to slotted heading text for the aria-label", async () => {
+      const el = await fixture(html`
+        <chartist-render type="pie">
+          <h2 slot="heading">Quarterly slices</h2>
+        </chartist-render>
+      `);
+      await el.updateComplete;
+      await aTimeout(100);
+      const chart = el.shadowRoot.querySelector("#chart");
+      expect(chart.getAttribute("aria-label")).to.equal(
+        "Quarterly slices",
+      );
+    });
+
     it("renders a line chart", async () => {
       element.type = "line";
       element.chartData = { labels: ["a", "b"], series: [[1, 2]] };
