@@ -44,7 +44,7 @@ describe('demo-snippet slot projection with template', () => {
     expect(el._markdown).to.contain('type="date"')
   })
 
-  it('stamps template content into the demo section', async () => {
+  it('stamps template content into light DOM projected through the demo section', async () => {
     const el = await fixture(html`
       <demo-snippet>
         <template>
@@ -54,9 +54,16 @@ describe('demo-snippet slot projection with template', () => {
     `)
     await el.updateComplete
     await new Promise((resolve) => setTimeout(resolve, 100))
-    const stamped = el.shadowRoot.querySelector('.demo .stamped')
+    // stamped content lives in light DOM so document scripts can reach it
+    const stamped = el.querySelector('.stamped')
     expect(stamped).to.exist
     expect(stamped.textContent).to.contain('Stamped Content')
+    // projected through the content slot into the .demo section
+    const slot = el.shadowRoot.querySelector('.demo slot')
+    const assigned = slot.assignedNodes({ flatten: true })
+    expect(assigned.includes(stamped)).to.equal(true)
+    // stamped exactly once even though slotchange and firstUpdated both fire
+    expect(el.querySelectorAll('.stamped').length).to.equal(1)
   })
 
   it('dispatches dom-ready event after updating markdown', async () => {

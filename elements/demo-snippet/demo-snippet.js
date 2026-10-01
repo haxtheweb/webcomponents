@@ -129,6 +129,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
     super();
     this._markdown = "";
     this._observer = null;
+    this._stampedNodes = [];
   }
 
   firstUpdated(changedProperties) {
@@ -189,20 +190,29 @@ class DemoSnippet extends DDDSuper(LitElement) {
     // Boolean properties are displayed as checked="", so remove the ="" bit
     snippet = snippet.replace(/=""/g, "");
 
+    // Only stamp when the snippet actually changed; slotchange and
+    // firstUpdated can both trigger on initial load which would duplicate
+    // the demo content and run template scripts twice
+    const isNewSnippet = snippet !== this._markdown;
     this._markdown = snippet;
 
-    // Stamp the template content into the demo section
-    if (!template.hasAttribute("is")) {
+    // Stamp the template content into light DOM. The content slot projects
+    // it into the demo section for the same visual result while keeping the
+    // stamped nodes reachable via document.getElementById and
+    // document.querySelector like a normal page so scripts inside the
+    // template can wire up the demo content on append
+    if (!template.hasAttribute("is") && isNewSnippet) {
       // Create a document fragment from the template content
       const fragment = document.importNode(template.content, true);
 
-      // Clear any existing demo content and append new content
-      const demoSection = this.shadowRoot.querySelector(".demo slot");
-      if (demoSection) {
-        // Insert the template content after the slot
-        const parent = demoSection.parentNode;
-        parent.appendChild(fragment);
+      // Clear any previously stamped demo content to avoid duplicates
+      if (this._stampedNodes) {
+        this._stampedNodes.forEach((node) => node.remove());
       }
+      this._stampedNodes = Array.from(fragment.childNodes);
+
+      // Append into light DOM so the demo renders through the content slot
+      this.appendChild(fragment);
     }
 
     // Dispatch dom-ready event
