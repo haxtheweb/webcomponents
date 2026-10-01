@@ -577,7 +577,8 @@ describe('slide-deck behavior', () => {
     })
     try {
       await element.copyLink()
-      expect(element._message === null).to.be.true
+      // nothing is announced; the live region falls back to the slide title
+      expect(!element._message).to.be.true
     } finally {
       delete globalThis.navigator.clipboard
     }
