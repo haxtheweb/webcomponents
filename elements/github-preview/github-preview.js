@@ -286,6 +286,9 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   static get haxProperties() {
     return {
       canScale: false,
+      // element ships its own styling (github language colors) and does not
+      // consume DDD design tokens
+      designSystem: false,
 
       canEditSource: true,
       gizmo: {
@@ -644,7 +647,9 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      // only make the fetch after we get everything setup
+      // only make the fetch after we get everything setup; gate on repo and
+      // org actually being set so an unconfigured element never fires a
+      // request for .../repos/undefined/undefined on mount
       if (
         [
           "repo",
@@ -656,7 +661,9 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           "readMe",
           "extended",
         ].includes(propName) &&
-        this[propName]
+        this[propName] &&
+        this.repo &&
+        this.org
       ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
@@ -676,11 +683,16 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       if (this.extended && propName === "extended") {
         import("./lib/wc-markdown.js");
       }
-      // if visible and extended get wc-markdown element for re-rendering
+      // if visible and extended get wc-markdown element for re-rendering;
+      // also re-lookup once the fetched data settles because the intersection
+      // observer can flip elementVisible before the debounced fetch resolves,
+      // which renders the not-found branch and leaves no wc-markdown to find
       if (
         this.elementVisible &&
         this.extended &&
-        propName === "elementVisible"
+        (propName === "elementVisible" ||
+          propName === "__assetAvailable" ||
+          propName === "__readmeText")
       ) {
         this.wcmarkdown = this.shadowRoot.querySelector(
           "div > div.readme-container > wc-markdown",

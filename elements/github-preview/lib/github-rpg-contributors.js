@@ -105,7 +105,14 @@ export class GithubRpgContributors extends DDDSuper(LitElement) {
       fetch(url)
         .then((d) => (d.ok ? d.json() : {}))
         .then((data) => {
-          if (data) this.contributors = [...data];
+          // only an array is a valid contributors list; non-array payloads
+          // (GitHub rate-limit or error objects) fall back to an empty list
+          this.contributors = Array.isArray(data) ? [...data] : [];
+        })
+        .catch((error) => {
+          // the surrounding try/catch cannot see a rejected fetch chain,
+          // so handle it here to avoid an unhandled rejection
+          console.error("error", error);
         });
     } catch (error) {
       console.error("error", error);

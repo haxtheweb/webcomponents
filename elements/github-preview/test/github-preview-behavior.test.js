@@ -113,13 +113,12 @@ describe('github-preview', () => {
     const element = await fixture(html`<github-preview></github-preview>`)
     await element.updateComplete
     await aTimeout(50)
-    // BUG: github-preview.js:645-674 includes constructor-initialized
-    // properties (headers, branch, rawUrl, apiUrl, readMe) in the list that
-    // triggers the debounced fetch, so even a completely unconfigured
-    // element fires a request to .../repos/undefined/undefined on every
-    // mount; it only stays in the not-found state when that response is
-    // not ok. Exposed by 'renders the not-found state without repo and org'.
-    expect(fetchedUrls).to.include(
+    // the fetch trigger is gated on repo and org actually being set, so an
+    // unconfigured element fires no request at all (no
+    // .../repos/undefined/undefined on mount) and stays in the not-found
+    // state via firstUpdated
+    expect(fetchedUrls).to.be.empty
+    expect(fetchedUrls).to.not.include(
       'https://api.github.com/repos/undefined/undefined',
     )
     expect(element.__assetAvailable).to.equal(false)
@@ -183,19 +182,9 @@ describe('github-preview', () => {
     await aTimeout(100)
     expect(fetchedUrls).to.include(readmeRawUrl)
     expect(element.__readmeText).to.equal('# Readme heading')
-    // BUG: github-preview.js:680-688 only looks up the wc-markdown instance
-    // when elementVisible itself changes, and the intersection observer
-    // typically flips elementVisible before the debounced fetch resolves,
-    // so the lookup runs against the not-found branch and wcmarkdown stays
-    // null (observed in an earlier run of this suite). Toggling
-    // elementVisible after the data settles is the only reliable way the
-    // lookup ever fires. Exposed by 'fetches the readme and renders the
-    // extended card'.
-    element.elementVisible = false
-    await element.updateComplete
-    element.elementVisible = true
-    await element.updateComplete
-    await aTimeout(50)
+    // elementVisible typically flips before the debounced fetch resolves,
+    // so the wc-markdown lookup has to re-run once the fetched data settles
+    // for wcmarkdown to ever be found without toggling elementVisible
     expect(element.wcmarkdown).to.exist
     const container = element.shadowRoot.querySelector('div.container')
     expect(container).to.exist
@@ -288,13 +277,7 @@ describe('github-preview', () => {
     element.elementVisible = true
     await element.updateComplete
     await aTimeout(100)
-    // see the wcmarkdown lookup race bug note above: flip elementVisible
-    // after the data settles so the lookup fires
-    element.elementVisible = false
-    await element.updateComplete
-    element.elementVisible = true
-    await element.updateComplete
-    await aTimeout(50)
+    expect(element.wcmarkdown).to.exist
     const before = element.wcmarkdown.value
     stubFetch((url) => {
       if (url === repoApiUrl) return repoResponse()
@@ -559,8 +542,9 @@ describe('github-rpg-contributors', () => {
   })
 
   it('tolerates an empty contributors payload', async () => {
-    // a non-array payload (GitHub error/rate-limit objects) keeps the list
-    // empty from the outside, but see the BUG note below
+    // a non-array payload (GitHub error/rate-limit objects) is not a valid
+    // contributors list, so the element falls back to an empty list instead
+    // of throwing a TypeError ('data is not iterable') in the fetch chain
     stubFetch(() => jsonResponse({ message: 'API rate limit exceeded' }))
     const element = await fixture(html`
       <github-rpg-contributors
@@ -569,15 +553,24 @@ describe('github-rpg-contributors', () => {
       ></github-rpg-contributors>
     `)
     await aTimeout(100)
-    // BUG: github-rpg-contributors.js:108 spreads the json payload
-    // ([...data]) without checking it is an array, so any non-array
-    // response (e.g. a rate-limit error object) throws an unhandled
-    // TypeError ('data is not iterable') in the fetch chain; the rendered
-    // list just stays empty. Exposed by 'tolerates an empty contributors
-    // payload' (the TypeError appears in the browser logs of this run).
+    expect(element.contributors).to.deep.equal([])
     expect(element.shadowRoot.querySelectorAll('.contributor').length).to.equal(
       0,
     )
+  })
+
+  it('keeps the list empty when the contributors fetch rejects', async () => {
+    // a rejected fetch chain is handled by a catch in fetchContributors so
+    // it never surfaces as an unhandled rejection
+    stubFetch(() => Promise.reject(new Error('offline')))
+    const element = await fixture(html`
+      <github-rpg-contributors
+        org="haxtheweb"
+        repo="webcomponents"
+      ></github-rpg-contributors>
+    `)
+    await aTimeout(100)
+    expect(element.contributors).to.deep.equal([])
   })
 
   it('renders an empty state before data arrives', async () => {
