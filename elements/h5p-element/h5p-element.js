@@ -182,7 +182,7 @@ class H5PElement extends LitElement {
       export: (displayOptions.export = false),
     });
     const container = this.querySelector(
-      '[data-content-id="wrapper-' + this.contentId + '"',
+      '[data-content-id="wrapper-' + this.contentId + '"]',
     );
     if (!container) {
       return false;

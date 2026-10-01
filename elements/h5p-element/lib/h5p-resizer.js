@@ -125,7 +125,7 @@
           if (data === undefined) {
             data = {};
           }
-          data.scrollHeight = height
+          data.scrollHeight = data.height
           data.action = action;
           data.context = 'h5p';
           event.source.postMessage(data, event.origin);

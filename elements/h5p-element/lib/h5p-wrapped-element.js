@@ -17,6 +17,7 @@ class H5pWrappedElement extends LitElement {
     return css`
       :host {
         display: block;
+        color-scheme: light dark;
       }
       :host [part="container"] {
         display: block;
@@ -36,8 +37,8 @@ class H5pWrappedElement extends LitElement {
         justify-content: flex-end;
       }
       :host [part="source-link"] a {
-        background: black;
-        color: white;
+        background: light-dark(black, white);
+        color: light-dark(white, black);
         padding: 1em;
       }
       :host [part="anchor"] {
@@ -78,13 +79,17 @@ class H5pWrappedElement extends LitElement {
   }
   render() {
     return html`
-      <div part="container" class="${this.__editMode ? "editing" : "editing"}">
+      <div part="container" class="${this.__editMode ? "editing" : ""}">
         ${this.__editMode
           ? html`
               <slot></slot>
               <div part="edit-screen">
                 <div part="source-link">
-                  <a part="anchor" href="${this.__editLink}" target="_blank"
+                  <a
+                    part="anchor"
+                    href="${this.__editLink}"
+                    target="_blank"
+                    rel="noopener"
                     >Edit H5P Source</a
                   >
                 </div>

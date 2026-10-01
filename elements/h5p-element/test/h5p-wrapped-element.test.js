@@ -12,9 +12,8 @@ describe('h5p-wrapped-element', () => {
     await el.updateComplete
     expect(el.shadowRoot.querySelector('iframe-loader')).to.exist
     expect(el.shadowRoot.querySelector('[part="edit-screen"]')).to.not.exist
-    // BUG: the container class ternary always yields "editing" regardless of
-    // the edit mode, so the editing min-height applies in view mode too
-    expect(el.shadowRoot.querySelector('[part="container"]').className).to.equal('editing')
+    // the editing class (and its min-height) only applies in edit mode
+    expect(el.shadowRoot.querySelector('[part="container"]').className).to.equal('')
   })
 
   it('passes the a11y audit', async () => {
@@ -48,10 +47,12 @@ describe('h5p-wrapped-element', () => {
     expect(el.__editMode).to.be.true
     expect(el.shadowRoot.querySelector('[part="edit-screen"]')).to.exist
     expect(el.__editLink).to.include('/456/edit')
+    expect(el.shadowRoot.querySelector('[part="container"]').className).to.equal('editing')
     const link = el.shadowRoot.querySelector('[part="source-link"] a')
     expect(link).to.exist
     expect(link.getAttribute('href')).to.include('/456/edit')
     expect(link.getAttribute('target')).to.equal('_blank')
+    expect(link.getAttribute('rel')).to.equal('noopener')
     iframe.remove()
     store.editMode = previous
     await aTimeout(150)

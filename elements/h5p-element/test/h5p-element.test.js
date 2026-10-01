@@ -230,18 +230,6 @@ describe("h5p-element with a source", () => {
   });
 
   it("auto sets up content once the bridge import is ready", async () => {
-    const container = globalThis.document.createElement("div");
-    const queries = [];
-    // BUG: the container query in setupH5P is missing its closing bracket so
-    // the real querySelector always throws; a stub stands in for the container
-    // lookup so the auto-setup path can be exercised at all
-    H5PElement.prototype.querySelector = function (selector) {
-      if (this.source && String(selector).includes("data-content-id")) {
-        queries.push(selector);
-        return container;
-      }
-      return HTMLElement.prototype.querySelector.call(this, selector);
-    };
     const previous = bridge.imports["h5p-standalone"];
     bridge.imports["h5p-standalone"] = true;
     let el;
@@ -253,10 +241,15 @@ describe("h5p-element with a source", () => {
       );
       await new Promise((resolve) => setTimeout(resolve, 50));
     } finally {
-      delete H5PElement.prototype.querySelector;
       bridge.imports["h5p-standalone"] = previous;
     }
-    expect(queries.length).to.be.greaterThan(0);
+    // the real container selector resolves the rendered light dom container
+    const container = el.querySelector(".h5p-container");
+    expect(container).to.exist;
+    expect(
+      container.getAttribute("data-content-id") ===
+        "wrapper-" + el.contentId,
+    ).to.be.true;
     expect(playerCalls.length).to.be.greaterThan(0);
     expect(playerCalls[playerCalls.length - 1].container === container).to.be
       .true;

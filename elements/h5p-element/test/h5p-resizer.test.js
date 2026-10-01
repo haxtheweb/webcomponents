@@ -81,9 +81,8 @@ describe('h5p-resizer', () => {
   })
 
   it('handles legacy entity iframe resize messages', () => {
-    // BUG: the respond callback wired into this legacy path (h5p-resizer.js
-    // data.scrollHeight = height) references an undefined `height` variable,
-    // so it would throw a ReferenceError if it were ever invoked
+    // the resize action applies the legacy height directly; its respond
+    // callback mirrors the payload height so it stays defined if invoked
     dispatch({ subject: 'entityIframe.resize', height: 321 }, iframe.contentWindow)
     expect(iframe.style.height).to.equal('321px')
   })
