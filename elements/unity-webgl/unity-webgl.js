@@ -50,7 +50,7 @@ class UnityWebgl extends HTMLElement {
         background: ${this.background};
       }
     </style>
-    <canvas style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>`;
+    <canvas role="img" aria-label="Unity WebGL player" style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>`;
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -72,7 +72,7 @@ class UnityWebgl extends HTMLElement {
     this.template.innerHTML = this.html;
 
     if (globalThis.ShadyCSS) {
-      globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
+      globalThis.ShadyCSS.prepareTemplate(this.template, this.constructor.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
     var script = globalThis.document.createElement("script");
@@ -165,102 +165,12 @@ class UnityWebgl extends HTMLElement {
     return this.getAttribute("background");
   }
 
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Unity Player",
-        description: "Unity WebGL player.",
-        icon: "av:games",
-        color: "purple",
-        tags: ["3D", "game", "unity", "media"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "target",
-            title: "Target",
-            description: "Path to the game build.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "compression",
-            title: "Compression method",
-            description: "Compression file extension for game assets.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "streamingurl",
-            title: "Streaming URL",
-            description: "Streaming assets URL.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "companyname",
-            title: "Company Name",
-            description: "Company name.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "productname",
-            title: "Product Name",
-            description: "Game title.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "productversion",
-            title: "Product Version",
-            description: "Release version.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "width",
-            title: "Canvas Width",
-            description: "Canvas CSS width (for example px or em).",
-            inputMethod: "textfield",
-          },
-          {
-            property: "height",
-            title: "Canvas Height",
-            description: "Canvas CSS height (for example px or em).",
-            inputMethod: "textfield",
-          },
-          {
-            property: "background",
-            title: "Canvas Background",
-            description: "Canvas CSS background.",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: [],
-      },
-      demoSchema: [
-        {
-          tag: "unity-webgl",
-          content: "",
-          properties: {
-            target: "/elements/unity-webgl/demo/example/build web",
-            compression: "unityweb",
-            streamingurl: "StreamingAssets",
-            companyname: "DefaultCompany",
-            productname: "test webgl",
-            productversion: "0.1",
-            width: "460px",
-            height: "400px",
-            background: "#231F20",
-          },
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 globalThis.customElements.define(UnityWebgl.tag, UnityWebgl);

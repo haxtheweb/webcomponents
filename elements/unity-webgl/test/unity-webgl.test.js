@@ -42,15 +42,10 @@ describe('unity-webgl', () => {
     expect(globalThis.customElements.get('unity-webgl')).to.exist
   })
 
-  it('exposes a full haxProperties configuration', () => {
-    const props = UnityWebgl.haxProperties
-    expect(props.canScale).to.be.false
-    expect(props.canEditSource).to.be.true
-    expect(props.gizmo.title).to.equal('Unity Player')
-    expect(props.gizmo.tags).to.include('unity')
-    expect(props.settings.configure.length).to.equal(9)
-    expect(props.demoSchema[0].tag).to.equal('unity-webgl')
-    expect(props.demoSchema[0].properties.compression).to.equal('unityweb')
+  it('exposes haxProperties from its lib schema file', () => {
+    const url = UnityWebgl.haxProperties
+    expect(typeof url).to.equal('string')
+    expect(url.endsWith('lib/unity-webgl.haxProperties.json')).to.be.true
   })
 
   it('renders its canvas and boot script into the shadow root', async () => {
@@ -73,6 +68,9 @@ describe('unity-webgl', () => {
     expect(canvas.getAttribute('style')).to.include('width: 460px')
     expect(canvas.getAttribute('style')).to.include('height: 400px')
     expect(canvas.getAttribute('style')).to.include('background: #231F20')
+    // the canvas announces itself to assistive technology
+    expect(canvas.getAttribute('role')).to.equal('img')
+    expect(canvas.getAttribute('aria-label')).to.equal('Unity WebGL player')
     const script = el.shadowRoot.querySelector('script')
     expect(script).to.exist
     expect(capturedScriptSrcs.includes('demo-build.loader.js')).to.be.true
@@ -235,9 +233,9 @@ describe('unity-webgl', () => {
     }
     expect(styled.length).to.be.greaterThan(0)
     expect(prepared.length).to.be.greaterThan(0)
-    // BUG: render() passes this.tag to prepareTemplate, but tag is a static
-    // getter so instances read undefined here instead of "unity-webgl"
-    expect(prepared[0]).to.equal(undefined)
+    // render() prepares the template with the element tag so ShadyCSS scopes
+    // the styles to unity-webgl instances
+    expect(prepared[0]).to.equal('unity-webgl')
   })
 
   it('passes the a11y audit', async () => {
