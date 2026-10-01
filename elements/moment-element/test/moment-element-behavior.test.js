@@ -28,19 +28,31 @@ describe('moment-element behavior', () => {
     expect(element.libraryLoaded).to.equal(true)
   })
 
-  it('starts with constructor defaults and renders nothing yet', async () => {
+  it('starts with constructor defaults then learns the loaded library', async () => {
     const element = await fixture(html`<moment-element></moment-element>`)
     expect(element.datetime instanceof Date).to.be.true
     expect(element.inputFormat).to.equal('')
     expect(element.outputFormat).to.equal('')
     expect(element.from).to.equal('')
     expect(element.to).to.equal('')
-    // libraryLoaded is not initialized in the constructor: it stays undefined
-    // until the bridge event arrives
-    expect(element.libraryLoaded).to.equal(undefined)
-    expect(element.output).to.equal(undefined)
-    expect(element.shadowRoot.textContent.trim()).to.equal('')
     expect(typeof element.windowControllers.abort).to.equal('function')
+    // the library already loaded earlier in this session, so this element
+    // deterministically learns that from the bridge resolution: it flips
+    // libraryLoaded, computes an output and renders it
+    await waitUntil(
+      () => element.libraryLoaded === true,
+      'libraryLoaded never flipped',
+      5000,
+    )
+    await waitUntil(
+      () => element.output !== undefined && element.output !== '',
+      'output never computed',
+      5000,
+    )
+    await element.updateComplete
+    const time = element.shadowRoot.querySelector('time')
+    expect(time === null).to.be.false
+    expect(time.hasAttribute('datetime')).to.be.true
   })
 
   it('computes an output once the library-loaded event arrives', async () => {
@@ -51,6 +63,16 @@ describe('moment-element behavior', () => {
         output-format="YYYY"
       ></moment-element>
     `)
+    // the library already loaded in this session, so let the bridge
+    // resolution land first, then force the element back to the
+    // not-yet-loaded state so only the bridge event can drive the pipeline
+    await waitUntil(
+      () => element.libraryLoaded === true,
+      'libraryLoaded never flipped',
+      5000,
+    )
+    element.libraryLoaded = false
+    await element.updateComplete
     expect(element.output).to.equal(undefined)
     bridgeLoaded()
     await waitUntil(() => element.output === '2020', 'output never computed')
@@ -178,32 +200,47 @@ describe('moment-element behavior', () => {
 
   it('stops reacting to the bridge event once disconnected', async () => {
     const element = await fixture(html`<moment-element></moment-element>`)
+    // let the bridge resolution land first so it cannot race this test
+    await waitUntil(
+      () => element.libraryLoaded === true,
+      'libraryLoaded never flipped',
+      5000,
+    )
     element.remove()
+    // simulate the not-yet-loaded state: disconnecting aborted the bridge
+    // event listener, so the event can no longer flip libraryLoaded
+    element.libraryLoaded = false
     bridgeLoaded()
     await tick(50)
-    expect(element.libraryLoaded).to.equal(undefined)
-    expect(element.output).to.equal(undefined)
+    expect(element.libraryLoaded).to.equal(false)
   })
 
-  // BUG: moment-element.js:49-57 — the constructor asks the es-global-bridge
-  // singleton to load moment, but once that singleton has already imported it
-  // (any element created after the first), ESGlobalBridge.load resolves
-  // WITHOUT re-dispatching es-bridge-moment-loaded. Late elements therefore
-  // never set libraryLoaded (it is not even initialized to false), never
-  // compute an output and render nothing.
-  it('documents: a later element never learns the library already loaded', async () => {
+  // FIXED: moment-element.js — the constructor now initializes libraryLoaded
+  // to false and chains the bridge load resolution, so elements created after
+  // the first also learn the library already loaded (the bridge resolves with
+  // true instead of re-dispatching the event) and render their output.
+  it('a later element learns the library already loaded and renders', async () => {
+    // noon UTC keeps the year stable in any timezone
     const element = await fixture(html`
       <moment-element
-        datetime="2020-01-01T00:00:00Z"
+        datetime="2020-01-01T12:00:00Z"
         output-format="YYYY"
       ></moment-element>
     `)
-    await tick(400)
     // the library really is loaded in this session...
     expect(typeof globalThis.moment === 'function').to.be.true
-    // ...but this element never hears about it and renders nothing
-    expect(element.libraryLoaded).to.equal(undefined)
-    expect(element.output).to.equal(undefined)
-    expect(element.shadowRoot.textContent.trim()).to.equal('')
+    // ...and this element hears about it through the bridge resolution,
+    // computes its output and renders it in machine-readable markup
+    await waitUntil(
+      () => element.libraryLoaded === true,
+      'libraryLoaded never flipped',
+      5000,
+    )
+    await waitUntil(() => element.output === '2020', 'output never computed', 5000)
+    await element.updateComplete
+    expect(element.shadowRoot.textContent.includes('2020')).to.be.true
+    const time = element.shadowRoot.querySelector('time')
+    expect(time === null).to.be.false
+    expect(time.getAttribute('datetime')).to.equal('2020-01-01T12:00:00.000Z')
   })
 })

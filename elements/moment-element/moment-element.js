@@ -6,7 +6,18 @@ import "@haxtheweb/es-global-bridge/es-global-bridge.js";
  */
 class MomentElement extends LitElement {
   render() {
-    return html` ${this.output} `;
+    // wrap the computed output in machine-readable time markup; the
+    // datetime attribute is only emitted when the parse is valid
+    if (this.libraryLoaded && this.output) {
+      const parsed = this.inputFormat
+        ? moment(this.datetime, this.inputFormat)
+        : moment(this.datetime);
+      if (parsed.isValid()) {
+        const machineReadable = parsed.toISOString();
+        return html`<time datetime="${machineReadable}">${this.output}</time>`;
+      }
+    }
+    return html``;
   }
   static get tag() {
     return "moment-element";
@@ -46,6 +57,9 @@ class MomentElement extends LitElement {
     this.outputFormat = "";
     this.from = "";
     this.to = "";
+    // defined initial state: nothing is rendered until the library loads
+    this.output = "";
+    this.libraryLoaded = false;
     const location = new URL("./lib/moment/moment.min.js", import.meta.url)
       .href;
     globalThis.addEventListener(
@@ -53,8 +67,16 @@ class MomentElement extends LitElement {
       this._momentLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-
-    globalThis.ESGlobalBridge.requestAvailability().load("moment", location);
+    // once the bridge singleton has imported the library it resolves load()
+    // with true WITHOUT re-dispatching the event, so late instances have to
+    // learn the ready state from the resolution value itself
+    globalThis.ESGlobalBridge.requestAvailability()
+      .load("moment", location)
+      .then((loaded) => {
+        if (loaded === true) {
+          this._momentLoaded();
+        }
+      });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

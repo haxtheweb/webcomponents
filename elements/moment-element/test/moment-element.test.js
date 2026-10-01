@@ -19,12 +19,24 @@ describe("moment-element test", () => {
       const testElement = await fixture(html`
         <moment-element datetime="2020-01-01T12:00:00Z"></moment-element>
       `);
+      await waitUntil(
+        () => testElement.libraryLoaded === true,
+        "library never loaded",
+        10000,
+      );
+      await waitUntil(
+        () => testElement.output !== undefined && testElement.output !== "",
+        "output never computed",
+        5000,
+      );
       await testElement.updateComplete;
 
       const time = testElement.shadowRoot.querySelector("time");
-      if (time) {
-        expect(time.hasAttribute("datetime")).to.be.true;
-      }
+      expect(time === null).to.be.false;
+      expect(time.hasAttribute("datetime")).to.be.true;
+      expect(time.getAttribute("datetime")).to.equal(
+        "2020-01-01T12:00:00.000Z",
+      );
     });
 
     it("provides accessible relative time text", async () => {
@@ -60,8 +72,17 @@ describe("moment-element test", () => {
       const testElement = await fixture(html`
         <moment-element datetime="invalid-date"></moment-element>
       `);
+      await waitUntil(
+        () => testElement.libraryLoaded === true,
+        "library never loaded",
+        10000,
+      );
       await testElement.updateComplete;
 
+      // an invalid parse renders nothing: no machine-readable time markup
+      const time = testElement.shadowRoot.querySelector("time");
+      expect(time === null).to.be.true;
+      expect(testElement.shadowRoot.textContent.trim()).to.equal("");
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
