@@ -48,6 +48,22 @@ class SimpleToolbarButtonGroup extends RadioBehaviors(LitElement) {
     this.selectItem(this.selection);
     this._updateItemData();
   }
+  firstUpdated(changedProperties) {
+    // RadioBehaviors.firstUpdated picks a default item synchronously, and
+    // selectItem() sets the reactive `selection` and `itemData` properties
+    // from inside the hook, scheduling a redundant second update (Lit
+    // change-in-update warning). Buttons are appended to the group after it
+    // connects, so defer the pick until after this update cycle completes.
+    queueMicrotask(() => super.firstUpdated(changedProperties));
+  }
+  updated(changedProperties) {
+    // RadioBehaviors.updated re-selects the item when `selection` changes;
+    // selectItem()/_updateItemData() again set the reactive `selection` and
+    // `itemData` properties from inside the hook (Lit change-in-update
+    // warning), so defer it until after this update cycle completes.
+    if (changedProperties.has("selection"))
+      queueMicrotask(() => super.updated(changedProperties));
+  }
   render() {
     return html`<slot></slot>`;
   }

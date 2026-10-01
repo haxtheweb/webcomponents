@@ -916,9 +916,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           attribute: "paste-disabled",
           reflect: true,
         },
-        __prompt: {
-          type: Object,
-        },
+        // NOTE: `__prompt` is intentionally NOT a reactive property. It
+        // stores the RichTextEditorPrompt singleton element assigned in
+        // firstUpdated(); render() never reads it and all of its uses are
+        // imperative (the event listeners added in firstUpdated and command
+        // dispatch in subclasses). Keeping it as a plain instance field
+        // avoids setting a reactive property inside firstUpdated, which
+        // scheduled a redundant second update (Lit change-in-update warning).
         /**
          * whether prompt is open
          */
@@ -991,6 +995,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!this.id) {
         this.id = this._generateUUID();
       }
+      // Rebuild buttons when config changes in willUpdate (mirroring the
+      // base toolbar's call) so the reactive registry updates inside
+      // updateToolbar() batch into the current update cycle. Calling it from
+      // updated() scheduled a redundant second update (Lit change-in-update
+      // warning).
+      if (changedProperties.has("config")) this.updateToolbar();
+      // Visibility is derived from editor/show/range, so compute it in
+      // willUpdate where it batches into the current update cycle. Setting
+      // reactive `hidden` in updated() scheduled a redundant second update
+      // (Lit change-in-update warning).
+      if (
+        changedProperties.has("editor") ||
+        changedProperties.has("show") ||
+        changedProperties.has("range")
+      ) {
+        this.hidden = this.disconnected;
+      }
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
@@ -1011,10 +1032,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChanged(this.range, oldValue);
-        if (propName === "config") this.updateToolbar();
         if (propName === "editor") this._editorChanged();
-        if (["editor", "show", "range"].includes(propName))
-          this.hidden = this.disconnected;
         if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
           this.breadcrumbs.sticky = this.sticky;
       });
