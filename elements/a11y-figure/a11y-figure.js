@@ -235,7 +235,10 @@ class A11yFigure extends A11yDetails {
         {
           tag: "a11y-figure",
           properties: {
-            imgSrc: "https://placehold.co/500x300",
+            // inline data-URL SVG placeholder (500x300) so the demo never
+            // attempts an external request
+            imgSrc:
+              "data:image/svg+xml,%3Csvg%20xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'300'%3E%3Crect%20width%3D'500'%20height%3D'300'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E",
             imgAlt: "",
             openText: "Show Description",
             closeText: "Hide Description",

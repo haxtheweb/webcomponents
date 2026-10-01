@@ -2,12 +2,31 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "../a11y-figure.js";
 
+// inline data-URL SVG placeholders keep the fixtures external-request-free
+// (the original fixtures pointed at placehold.co) while preserving their
+// dimensions and intent
+function placeholderDataUrl(width, height) {
+  const svg =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+    width +
+    "' height='" +
+    height +
+    "'><rect width='" +
+    width +
+    "' height='" +
+    height +
+    "' fill='#dddddd'/></svg>";
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+const PLACEHOLDER_400x300 = placeholderDataUrl(400, 300);
+const PLACEHOLDER_200x100 = placeholderDataUrl(200, 100);
+
 describe("a11y-figure test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
       <a11y-figure
-        img-src="https://placehold.co/400x300"
+        img-src="${PLACEHOLDER_400x300}"
         img-alt="Placeholder image"
       >
         <p slot="figcaption">Figure caption text</p>
@@ -81,9 +100,9 @@ describe("a11y-figure test", () => {
 
     describe("imgSrc property", () => {
       it("should accept valid URL values and maintain accessibility", async () => {
-        testElement.imgSrc = "https://placehold.co/400x300";
+        testElement.imgSrc = PLACEHOLDER_400x300;
         await testElement.updateComplete;
-        expect(testElement.imgSrc).to.equal("https://placehold.co/400x300");
+        expect(testElement.imgSrc).to.equal(PLACEHOLDER_400x300);
         await expect(testElement).shadowDom.to.be.accessible();
 
         testElement.imgSrc =
@@ -233,11 +252,11 @@ describe("a11y-figure test", () => {
   describe("Attribute to property mapping", () => {
     it("should set imgSrc property from img-src attribute", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100">
+        <a11y-figure img-src="${PLACEHOLDER_200x100}">
           <p slot="figcaption">Test Figure</p>
         </a11y-figure>
       `);
-      expect(testElement.imgSrc).to.equal("https://placehold.co/200x100");
+      expect(testElement.imgSrc).to.equal(PLACEHOLDER_200x100);
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -256,7 +275,7 @@ describe("a11y-figure test", () => {
     it("should remain accessible with image and alt text", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
         >
           <p slot="figcaption">Simple figure</p>
@@ -269,7 +288,7 @@ describe("a11y-figure test", () => {
     it("should remain accessible with custom open and close text", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
           open-text="Show Description"
           close-text="Hide Description"
@@ -286,7 +305,7 @@ describe("a11y-figure test", () => {
     it("should remain accessible with only image and no details", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
         >
           <p slot="figcaption">Figure without details</p>
@@ -301,7 +320,7 @@ describe("a11y-figure test", () => {
         <a11y-figure>
           <img
             slot="image"
-            src="https://placehold.co/200x100"
+            src="${PLACEHOLDER_200x100}"
             alt="Slotted placeholder"
           />
           <p slot="figcaption">Figure with slotted image</p>
@@ -328,7 +347,7 @@ describe("a11y-figure test", () => {
     it("should maintain accessibility when interacting with the nested a11y-details", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
           open-text="Show"
           close-text="Hide"
@@ -365,7 +384,7 @@ describe("a11y-figure test", () => {
     it("should remain accessible with empty figcaption", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
         >
           <p slot="figcaption"></p>
@@ -378,7 +397,7 @@ describe("a11y-figure test", () => {
     it("should remain accessible with no figcaption", async () => {
       const testElement = await fixture(html`
         <a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
         >
         </a11y-figure>
@@ -389,7 +408,7 @@ describe("a11y-figure test", () => {
 
     it("should remain accessible with missing alt text but still provide a placeholder", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100">
+        <a11y-figure img-src="${PLACEHOLDER_200x100}">
           <p slot="figcaption">Figure with missing alt text</p>
         </a11y-figure>
       `);
@@ -489,7 +508,7 @@ describe("a11y-figure test", () => {
     it("haxmediaSourceUpdated pokes matching imgs on the store", async () => {
       const el = await fixture(
         html`<a11y-figure
-          img-src="https://placehold.co/200x100"
+          img-src="${PLACEHOLDER_200x100}"
           img-alt="Placeholder image"
         ></a11y-figure>`,
       );
@@ -500,8 +519,8 @@ describe("a11y-figure test", () => {
         _pokeMatchingImgs: (root, path) =>
           pokes.push([path, root === el.shadowRoot]),
       };
-      el.haxmediaSourceUpdated("https://placehold.co/200x100", store);
-      expect(pokes).to.deep.equal([["https://placehold.co/200x100", true]]);
+      el.haxmediaSourceUpdated(PLACEHOLDER_200x100, store);
+      expect(pokes).to.deep.equal([[PLACEHOLDER_200x100, true]]);
       // non-matching paths leave the store untouched
       el.haxmediaSourceUpdated("other.png", store);
       expect(pokes.length).to.equal(1);
