@@ -60,6 +60,8 @@ class A11yGifPlayer extends I18NMixin(
       css`
         :host {
           display: block;
+          /* let light-dark() resolve against the user color scheme */
+          color-scheme: light dark;
         }
         :host([hidden]) {
           display: none;
@@ -90,7 +92,13 @@ class A11yGifPlayer extends I18NMixin(
           bottom: 0;
           right: 0;
           background-size: contain;
-          background-color: var(--a11y-gif-player-button-bg, #cccccc);
+          background-color: var(
+            --a11y-gif-player-button-bg,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #cccccc),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
         }
         button:active,
         button:focus,
@@ -120,12 +128,30 @@ class A11yGifPlayer extends I18NMixin(
           opacity: var(--a11y-gif-player-button-focus-opacity, 0.7);
         }
         polygon {
-          fill: var(--a11y-gif-player-button-color, #000000);
-          stroke: var(--a11y-gif-player-arrow-border-color, #ffffff);
+          fill: var(
+            --a11y-gif-player-button-color,
+            light-dark(
+              var(--ddd-theme-default-black, #000000),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
+          stroke: var(
+            --a11y-gif-player-arrow-border-color,
+            light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-black, #000000)
+            )
+          );
           stroke-width: var(--a11y-gif-player-arrow-border-width, 15px);
         }
         text {
-          fill: var(--a11y-gif-player-button-text-color, #ffffff);
+          fill: var(
+            --a11y-gif-player-button-text-color,
+            light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-black, #000000)
+            )
+          );
         }
         #longdesc {
           position: absolute;
