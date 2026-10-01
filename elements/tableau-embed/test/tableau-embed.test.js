@@ -62,6 +62,9 @@ describe("TableauEmbed loading", () => {
     const msg = el.shadowRoot.querySelector(".loading-msg");
     expect(msg).to.exist;
     expect(msg.textContent.trim()).to.equal("Unable to load Tableau.");
+    // loading and failure states announce as a live region
+    expect(msg.getAttribute("role")).to.equal("status");
+    expect(msg.getAttribute("aria-live")).to.equal("polite");
     el.remove();
     globalThis.customElements.get = current;
   });
@@ -101,6 +104,7 @@ describe("TableauEmbed rendering", () => {
     await el.updateComplete;
     const viz = el.shadowRoot.querySelector("tableau-viz");
     expect(viz).to.exist;
+    expect(viz.getAttribute("aria-label")).to.equal("Tableau visualization");
     expect(viz.getAttribute("src")).to.equal("https://example.com/views/sheet");
     expect(viz.getAttribute("width")).to.equal("50%");
     expect(viz.getAttribute("height")).to.equal("400px");

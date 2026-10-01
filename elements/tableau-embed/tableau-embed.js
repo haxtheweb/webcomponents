@@ -121,7 +121,7 @@ export class TableauEmbed extends LitElement {
   render() {
     if (!this.loaded) {
       return html`
-        <div class="loading-msg">
+        <div class="loading-msg" role="status" aria-live="polite">
           ${this.loading ? "Loading Tableau..." : "Unable to load Tableau."}
         </div>
       `;
@@ -134,6 +134,7 @@ export class TableauEmbed extends LitElement {
         toolbar="${this.toolbar}"
         ?hide-tabs="${this.hideTabs}"
         device="${this.device}"
+        aria-label="Tableau visualization"
       ></tableau-viz>
     `;
   }
