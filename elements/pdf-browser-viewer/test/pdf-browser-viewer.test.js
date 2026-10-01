@@ -13,6 +13,11 @@ describe("pdf-browser-viewer test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("exposes haxProperties from the lib folder", () => {
+    const url = customElements.get("pdf-browser-viewer").haxProperties;
+    expect(url).to.contain("lib/pdf-browser-viewer.haxProperties.json");
+  });
 });
 
 describe("pdf-browser-viewer rendering", () => {
@@ -41,11 +46,9 @@ describe("pdf-browser-viewer rendering", () => {
   });
 
   it("renders the card variant with a download button", async () => {
-    // BUG: pdf-browser-viewer.js:70 binds heading but no `heading` property
-    // is declared, and downloadLabel/notSupportedMessage declare no dashed
-    // `attribute` names, so authoring <pdf-browser-viewer heading="X"
-    // download-label="Y" not-supported-message="Z"> silently does nothing
-    // under Lit. Setting the properties directly is the only working path.
+    // properties can still be set directly on the element; dashed
+    // attribute authoring (heading/download-label/not-supported-message)
+    // is proven by the dedicated regression test below
     const el = await fixture(
       html`<pdf-browser-viewer card file="report.pdf"></pdf-browser-viewer>`,
     );
@@ -60,6 +63,35 @@ describe("pdf-browser-viewer rendering", () => {
     expect(object.getAttribute("data")).to.equal("report.pdf");
     const button = el.shadowRoot.querySelector(".card-actions button");
     expect(button.textContent.trim()).to.equal("Save it");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("maps dashed attributes onto the element properties", async () => {
+    const el = await fixture(
+      html`<pdf-browser-viewer
+        card
+        file="attr-card.pdf"
+        heading="Annual report"
+        download-label="Save it"
+        not-supported-message="No PDF here"
+        not-supported-link-message="grab the file instead"
+      ></pdf-browser-viewer>`,
+    );
+    await el.updateComplete;
+    expect(el.heading).to.equal("Annual report");
+    expect(el.downloadLabel).to.equal("Save it");
+    expect(el.notSupportedMessage).to.equal("No PDF here");
+    expect(el.notSupportedLinkMessage).to.equal("grab the file instead");
+    // the heading renders as a real heading element inside the card
+    const heading = el.shadowRoot.querySelector(".card-heading");
+    expect(heading).to.exist;
+    expect(heading.textContent).to.equal("Annual report");
+    const button = el.shadowRoot.querySelector(".card-actions button");
+    expect(button.textContent.trim()).to.equal("Save it");
+    const paragraph = el.shadowRoot.querySelector("object p");
+    expect(paragraph.textContent).to.contain("No PDF here");
+    const link = el.shadowRoot.querySelector("object a");
+    expect(link.textContent).to.equal("grab the file instead");
     await expect(el).shadowDom.to.be.accessible();
   });
 

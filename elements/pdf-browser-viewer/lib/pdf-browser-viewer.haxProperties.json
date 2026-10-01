@@ -1,0 +1,94 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "designSystem": false,
+  "canScale": true,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "PDF Browser Viewer",
+    "description": "Embed a PDF file inline with an optional card layout and download button.",
+    "icon": "image:picture-as-pdf",
+    "color": "blue",
+    "tags": ["Media", "pdf", "document", "file", "viewer"],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "Location of the PDF file.",
+        "inputMethod": "textfield",
+        "icon": "link",
+        "required": true,
+        "validationType": "url"
+      },
+      {
+        "property": "heading",
+        "title": "Heading",
+        "description": "Card heading text.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "card",
+        "title": "Card layout",
+        "description": "Display the PDF in a card with a download button.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Download label",
+        "description": "Label for the download button.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Not supported message",
+        "description": "Message when the browser cannot display PDF files.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Not supported link message",
+        "description": "Link text when the browser cannot display PDF files.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "width",
+        "title": "Width",
+        "description": "Width of the PDF viewer.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "description": "Height of the PDF viewer.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "pdf-browser-viewer",
+      "content": "",
+      "properties": {
+        "file": "sample.pdf",
+        "card": true,
+        "heading": "Sample PDF",
+        "downloadLabel": "Download"
+      }
+    }
+  ]
+}

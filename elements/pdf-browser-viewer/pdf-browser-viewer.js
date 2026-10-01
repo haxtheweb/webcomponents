@@ -1,5 +1,4 @@
 import { html, css, LitElement } from "lit";
-import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
 @license
@@ -41,7 +40,9 @@ Card example:
 ```html
     <pdf-browser-viewer
         file="[[pdfUrl]]"
-        card elevation="3"
+        card
+        heading="Quarterly Report"
+        elevation="3"
         download-label="Baixar">
     </pdf-browser-viewer>
 ```
@@ -60,6 +61,10 @@ class PdfBrowserViewer extends LitElement {
       div.card {
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
       }
+      .card-heading {
+        margin: 0 0 8px;
+        font-size: 1.2em;
+      }
     `;
   }
 
@@ -67,7 +72,10 @@ class PdfBrowserViewer extends LitElement {
     return html`
       ${this.card
         ? html`
-            <div heading="${this.heading}" elevation="${this.elevation}">
+            <div class="card" elevation="${this.elevation}">
+              ${this.heading
+                ? html`<h2 class="card-heading">${this.heading}</h2>`
+                : html``}
               <div class="card-content">
                 <object
                   data="${this.file}"
@@ -122,12 +130,14 @@ class PdfBrowserViewer extends LitElement {
        */
       notSupportedMessage: {
         type: String,
+        attribute: "not-supported-message",
       },
       /**
        * The PDF link message when browser doesn't support pdf object
        */
       notSupportedLinkMessage: {
         type: String,
+        attribute: "not-supported-link-message",
       },
       /**
        * The height of the PDF viewer.
@@ -148,10 +158,17 @@ class PdfBrowserViewer extends LitElement {
         type: Boolean,
       },
       /**
+       * The heading for the card variant.
+       */
+      heading: {
+        type: String,
+      },
+      /**
        * Download button label.
        */
       downloadLabel: {
         type: String,
+        attribute: "download-label",
       },
       /**
        * The z-depth of the card, from 0-5.
@@ -185,6 +202,13 @@ class PdfBrowserViewer extends LitElement {
    */
   _download() {
     globalThis.location = this.file;
+  }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 globalThis.customElements.define(PdfBrowserViewer.tag, PdfBrowserViewer);
