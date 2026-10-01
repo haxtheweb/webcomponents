@@ -111,7 +111,8 @@ describe("spotify-embed rendering", () => {
     expect(src).to.include("utm_source=generator");
     expect(iframe.getAttribute("height")).to.equal("152");
     expect(iframe.getAttribute("width")).to.equal("100%");
-    expect(iframe.getAttribute("title")).to.equal("Spotify Song Embed");
+    // the iframe title reflects the embedded item type
+    expect(iframe.getAttribute("title")).to.equal("Spotify Album Embed");
     expect(blockedSrcs.includes(src)).to.be.true;
   });
 
@@ -127,6 +128,7 @@ describe("spotify-embed rendering", () => {
     expect(src).to.include("https://open.spotify.com/embed/track/4uLU6hMCjMG");
     expect(src).to.not.include("theme=");
     expect(iframe.getAttribute("height")).to.equal("352");
+    expect(iframe.getAttribute("title")).to.equal("Spotify Track Embed");
   });
 });
 

@@ -66,7 +66,7 @@ class SpotifyEmbed extends LitElement {
             .playlistid}?utm_source=generator${this.theme
             ? `&theme=${this.theme}`
             : ""}"
-          title="Spotify Song Embed"
+          title="${this._embedTitle}"
           height="${this.size == "normal" ? "352" : "152"}"
           style="border-radius:12px"
           width="100%"
@@ -85,6 +85,19 @@ class SpotifyEmbed extends LitElement {
    */
   static get tag() {
     return "spotify-embed";
+  }
+  /**
+   * Describes the embedded item so the iframe title matches its type
+   */
+  get _embedTitle() {
+    const labels = {
+      track: "Track",
+      album: "Album",
+      playlist: "Playlist",
+      artist: "Artist",
+    };
+    const label = labels[this.type];
+    return label ? `Spotify ${label} Embed` : "Spotify Embed";
   }
   /**
    * LitElement life cycle - property changed
