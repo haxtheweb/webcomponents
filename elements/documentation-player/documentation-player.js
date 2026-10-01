@@ -119,7 +119,7 @@ class DocumentationPlayer extends LitElement {
     // and we lose our events along the way.
     return html`
       <simple-icon-button-lite icon="settings" @click="${this._injectHAX}"
-        >Insert into your side</simple-icon-button-lite
+        >Insert into your site</simple-icon-button-lite
       >
     `;
   }

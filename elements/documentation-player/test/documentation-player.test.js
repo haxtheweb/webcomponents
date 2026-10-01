@@ -370,8 +370,7 @@ describe("documentation-player cheap gap coverage", () => {
     const markup = result.strings.join("");
     expect(markup).to.include("simple-icon-button-lite");
     expect(markup).to.include('icon="settings"');
-    // BUG documentation-player.js:122 - copy typo: the button reads
-    // "Insert into your side" but should read "Insert into your site".
-    expect(markup).to.include("Insert into your side");
+    expect(markup).to.include("Insert into your site");
+    expect(markup).to.not.include("Insert into your side");
   });
 });
