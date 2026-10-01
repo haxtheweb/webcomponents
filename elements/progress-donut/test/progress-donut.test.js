@@ -5,10 +5,9 @@ import "../progress-donut.js";
 describe("progress-donut test", () => {
   let element;
   beforeEach(async () => {
-    // BUG: a bare progress-donut renders #chart as role="img" with an
-    // empty aria-label (the label comes only from the inherited chartTitle
-    // of chartist-render.js:1075), so it always fails axe's role-img-alt
-    // rule. Supplying chart-title here keeps the a11y assertion intact.
+    // a bare progress-donut falls back to a generic aria-label at the
+    // chartist-render layer (see the bare a11y coverage at the bottom of
+    // this file); chart-title here exercises the explicit title path
     element = await fixture(
       html`<progress-donut
         animation="500"
@@ -80,27 +79,24 @@ describe("progress-donut data model", () => {
     const el = await fixture(html`<progress-donut></progress-donut>`);
     el.complete = [2, 3, 5];
     await el.updateComplete;
-    // BUG: lrndesign-pie.js:251 defaults total to undefined, so
-    // Math.max(sum, undefined) makes donutTotal NaN whenever no total
-    // attribute is authored, which then poisons animation durations
-    expect(el.donutTotal).to.be.NaN;
+    // total defaults to 0, so the sum of the completed values wins
+    expect(el.donutTotal).to.equal(10);
   });
 
-  it("crashes the total getter when complete is empty", async () => {
-    const el = await fixture(
-      html`<progress-donut total="10"></progress-donut>`,
-    );
+  it("totals to zero when complete is empty", async () => {
+    const el = await fixture(html`<progress-donut></progress-donut>`);
     el.complete = [];
     await el.updateComplete;
-    let caught = null;
-    try {
-      el.donutTotal;
-    } catch (err) {
-      caught = err;
-    }
-    // BUG: progress-donut.js:270 reduces with no initial value, so an
-    // empty complete list makes the donutTotal getter throw TypeError
-    expect(caught).to.be.instanceOf(TypeError);
+    // the reduce carries an initial value, so an empty complete list with
+    // no authored total yields 0 instead of throwing
+    expect(el.donutTotal).to.equal(0);
+    // an authored total still wins over an empty complete list
+    const withTotal = await fixture(
+      html`<progress-donut total="10"></progress-donut>`,
+    );
+    withTotal.complete = [];
+    await withTotal.updateComplete;
+    expect(withTotal.donutTotal).to.equal(10);
   });
 
   it("feeds labels and values into chart data on complete changes", async () => {
@@ -131,14 +127,25 @@ describe("progress-donut data model", () => {
     const totalSetting = hax.settings.configure.find(
       (setting) => setting.property === "total",
     );
-    // BUG: progress-donut.js:111 declares inputMethod "arrnumberay" for
-    // the total setting, a typo that yields an invalid HAX field type
-    expect(totalSetting.inputMethod).to.equal("arrnumberay");
+    // total is a number input, matching LrndesignPie's own total setting
+    expect(totalSetting.inputMethod).to.equal("number");
   });
 
   it("removes the draw listener on disconnect", async () => {
     const el = await fixture(html`<progress-donut></progress-donut>`);
     el.disconnectedCallback();
+  });
+
+  it("wires the HAX title and desc through to the chart", async () => {
+    const el = await fixture(html`<progress-donut></progress-donut>`);
+    el.title = "Course progress";
+    el.desc = "How much of the course is complete.";
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.chartTitle).to.equal("Course progress");
+    expect(el.chartDesc).to.equal("How much of the course is complete.");
+    const chart = el.shadowRoot.querySelector("#chart");
+    expect(chart.getAttribute("aria-label")).to.equal("Course progress");
   });
 });
 
@@ -328,19 +335,23 @@ describe("progress-donut animation and center content", () => {
   });
 });
 
-/*
 describe("A11y/chai axe tests", () => {
-  it("progress-donut passes accessibility test", async () => {
+  it("a bare progress-donut passes the accessibility test", async () => {
+    // a bare donut has no chart-title; the chartist-render layer falls
+    // back to a generic aria-label so role="img" is always named
     const el = await fixture(html` <progress-donut></progress-donut> `);
     await expect(el).to.be.accessible();
   });
-  it("progress-donut passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<progress-donut aria-labelledby="progress-donut"></progress-donut>`
-    );
-    await assert.isNotAccessible(el);
-  });
 });
+
+/*
+it("progress-donut passes accessibility negation", async () => {
+  const el = await fixture(
+    html`<progress-donut aria-labelledby="progress-donut"></progress-donut>`
+  );
+  await assert.isNotAccessible(el);
+});
+*/
 
 /*
 // Custom properties test

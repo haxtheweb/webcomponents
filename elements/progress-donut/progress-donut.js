@@ -108,7 +108,7 @@ class ProgressDonut extends LrndesignPie {
             property: "total",
             title: "Total",
             description: "Total when all items are complete.",
-            inputMethod: "arrnumberay",
+            inputMethod: "number",
           },
           {
             property: "startAngle",
@@ -153,6 +153,12 @@ class ProgressDonut extends LrndesignPie {
         type: String,
       },
       /**
+       * Title of the donut, wired through to the inherited chartTitle.
+       */
+      title: {
+        type: String,
+      },
+      /**
        * Source of image in the center of the object.
        */
       imageSrc: {
@@ -178,6 +184,7 @@ class ProgressDonut extends LrndesignPie {
     this.animationDelay = 0;
     this.complete = [];
     this.desc = "";
+    this.title = "";
     this.imageSrc = "";
     this.imageAlt = "";
     this.donut = false;
@@ -267,7 +274,7 @@ class ProgressDonut extends LrndesignPie {
   }
   get donutTotal() {
     return Math.max(
-      this.donutData.reduce((sum, val) => sum + val),
+      this.donutData.reduce((sum, val) => sum + val, 0),
       this.total,
     );
   }
@@ -278,6 +285,12 @@ class ProgressDonut extends LrndesignPie {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "complete" && this.complete !== oldValue)
         this.data = [this.donutLabels, this.donutData];
+      // wire the HAX title/desc settings through to the inherited
+      // chartTitle/chartDesc so they actually label the chart
+      if (propName === "title" && this.title !== oldValue)
+        this.chartTitle = this.title;
+      if (propName === "desc" && this.desc !== oldValue)
+        this.chartDesc = this.desc;
     });
     super.updated(changedProperties);
   }
