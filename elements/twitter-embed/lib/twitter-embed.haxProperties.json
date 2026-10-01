@@ -2,6 +2,7 @@
   "canScale": false,
 
   "canEditSource": true,
+  "designSystem": false,
   "gizmo": {
     "title": "Twitter (X) embed",
     "description": "Embed a tweet from X in context.",

@@ -181,6 +181,15 @@ describe('twitter-embed properties', () => {
     expect(element.tweetId).to.equal('42')
   })
 
+  it('respects an authored lang attribute over the document chain', async () => {
+    const el = await fixture(html`<twitter-embed lang="es"></twitter-embed>`)
+    await el.updateComplete
+    expect(el.lang).to.equal('es')
+    const iframe = el.shadowRoot.querySelector('iframe')
+    const src = iframe.getAttribute('data-blocked-src')
+    expect(src).to.include('lang=es')
+  })
+
   it('derives a tweet id from an x.com url', async () => {
     element.tweet = 'https://x.com/btopro/status/77'
     await element.updateComplete

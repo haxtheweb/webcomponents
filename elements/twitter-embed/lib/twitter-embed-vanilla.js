@@ -17,6 +17,7 @@ class TwitterEmbedVanilla extends HTMLElement {
     super();
     if (globalThis.document && globalThis.document.body) {
       this.lang =
+        this.getAttribute("lang") ||
         globalThis.document.body.getAttribute("xml:lang") ||
         globalThis.document.body.getAttribute("lang") ||
         globalThis.document.documentElement.getAttribute("xml:lang") ||

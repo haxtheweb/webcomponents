@@ -82,16 +82,15 @@ describe('twitter-embed-vanilla', () => {
         data-width="300px"
         data-theme="dark"
         no-popups
+        lang="es"
       ></twitter-embed-vanilla>`,
     )
     const markup = el.html
     expect(markup).to.include('<iframe')
     expect(markup).to.include('data-tweet-id="42"')
     expect(markup).to.include('id=42')
-    // BUG: a lang attribute authored in markup gets clobbered by the
-    // constructor, which always resolves lang from the document (en) first,
-    // so the rendered embed ignores lang="es" set at creation time
-    expect(markup).to.include('lang=en')
+    // a lang attribute authored on the element wins over the document chain
+    expect(markup).to.include('lang=es')
     expect(markup).to.include('width=300px')
     expect(markup).to.include('theme=dark')
     expect(markup).to.include('sandbox="allow-same-origin allow-scripts "')

@@ -18,6 +18,7 @@ class TwitterEmbed extends LitElement {
   constructor() {
     super();
     this.lang =
+      this.getAttribute("lang") ||
       globalThis.document.body.getAttribute("xml:lang") ||
       globalThis.document.body.getAttribute("lang") ||
       globalThis.document.documentElement.getAttribute("xml:lang") ||
