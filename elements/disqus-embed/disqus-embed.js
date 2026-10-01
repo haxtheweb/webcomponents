@@ -51,10 +51,11 @@ class DisqusEmbed extends LitElement {
         :host {
           display: block;
           min-height: 64px;
-          background-color: white;
-          color: black;
+          color-scheme: light dark;
+          background-color: light-dark(white, black);
+          color: light-dark(black, white);
           border-radius: 16px;
-          border: 2px solid black;
+          border: 2px solid light-dark(black, white);
           padding: 24px;
         }
       `,
@@ -64,7 +65,7 @@ class DisqusEmbed extends LitElement {
    * LitElement render callback
    */
   render() {
-    return html`<slot>${this.loadingText}</slot>`;
+    return html`<slot role="status" aria-live="polite">${this.loadingText}</slot>`;
   }
 
   updated(changedProperties) {

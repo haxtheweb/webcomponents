@@ -54,8 +54,12 @@ describe("disqus-embed", () => {
     const el = await fixture(
       html`<disqus-embed loading-text="Hold on..."></disqus-embed>`,
     );
-    expect(el.shadowRoot.querySelector("slot")).to.exist;
+    const slot = el.shadowRoot.querySelector("slot");
+    expect(slot).to.exist;
     expect(el.shadowRoot.innerHTML).to.include("Hold on...");
+    // the loading fallback announces itself as a live region
+    expect(slot.getAttribute("role")).to.equal("status");
+    expect(slot.getAttribute("aria-live")).to.equal("polite");
     if (el._timeout) clearTimeout(el._timeout);
   });
 
