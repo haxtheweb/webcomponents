@@ -32,12 +32,15 @@ export class PolarisCta extends LitElement {
         :host {
           display: block;
           margin-left: 32px;
-          --polaris-cta-psu-white: #ffffff;
-          --polaris-cta-psu-blue: #1e407c;
-          --polaris-cta-psu-darkblue: #001e44;
-          --polaris-cta-psu-lightblue: #96bee6;
-          --polaris-cta-psu-gray: #e4e5e7;
-          --polaris-cta-psu-black: #000000;
+          /* PSU palette remapped onto DDD tokens (exact matches, original
+             hex kept as the fallback). psu-darkgray has no clean DDD
+             mapping so it stays raw. */
+          --polaris-cta-psu-white: var(--ddd-theme-default-white, #ffffff);
+          --polaris-cta-psu-blue: var(--ddd-theme-default-beaverBlue, #1e407c);
+          --polaris-cta-psu-darkblue: var(--ddd-theme-default-nittanyNavy, #001e44);
+          --polaris-cta-psu-lightblue: var(--ddd-theme-default-pughBlue, #96bee6);
+          --polaris-cta-psu-gray: var(--ddd-theme-default-limestoneLight, #e4e5e7);
+          --polaris-cta-psu-black: var(--ddd-theme-default-black, #000000);
           --polaris-cta-psu-darkgray: #4f627c;
           --polaris-cta-border-width: 2px;
           --polaris-cta-border-radius: 4px;

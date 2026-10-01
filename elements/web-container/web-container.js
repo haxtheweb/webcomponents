@@ -69,12 +69,18 @@ export class WebContainerEl extends DDDSuper(LitElement) {
   }
 
   async startShell(terminal) {
-    const shellProcess = await this.webcontainerInstance.spawn("jsh", {
-      terminal: {
-        cols: terminal.cols,
-        rows: terminal.rows,
+    // @webcontainer/api spawn is (command, args[], options) so the
+    // terminal sizing must ride in the options object, not the args array
+    const shellProcess = await this.webcontainerInstance.spawn(
+      "jsh",
+      [],
+      {
+        terminal: {
+          cols: terminal.cols,
+          rows: terminal.rows,
+        },
       },
-    });
+    );
     shellProcess.output.pipeTo(
       new WritableStream({
         write(data) {
@@ -178,11 +184,39 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     }
   }
 
+  disconnectedCallback() {
+    // teardown per instance: remove the global resize listener, dispose
+    // the terminal pieces and kill the shell process so nothing leaks
+    // for the page lifetime
+    if (this.__onResize) {
+      globalThis.removeEventListener("resize", this.__onResize);
+      this.__onResize = null;
+    }
+    if (this.__shellProcess && typeof this.__shellProcess.kill === "function") {
+      this.__shellProcess.kill();
+      this.__shellProcess = null;
+    }
+    if (this.__fitAddon && typeof this.__fitAddon.dispose === "function") {
+      this.__fitAddon.dispose();
+      this.__fitAddon = null;
+    }
+    if (this.__terminal && typeof this.__terminal.dispose === "function") {
+      this.__terminal.dispose();
+      this.__terminal = null;
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
+
   async setupWebContainers() {
     const fitAddon = new FitAddon();
     const terminal = new Terminal({
       convertEol: true,
     });
+    // keep instance refs so disconnectedCallback can tear everything down
+    this.__fitAddon = fitAddon;
+    this.__terminal = terminal;
     terminal.loadAddon(fitAddon);
     terminal.open(this.shadowRoot.querySelector('.terminal'));
   
@@ -192,6 +226,7 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     this.webcontainerInstance = await globalThis.WebContainerManager.requestAvailability();
     await this.webcontainerInstance.mount(this.files);
     const shellProcess = await this.startShell(terminal);
+    this.__shellProcess = shellProcess;
     if (this.commands.length > 0) {
       this.status = "Running commands";
       await this.runCommands(this.commands);
@@ -219,13 +254,20 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       this.status = "";
     });
   
-    globalThis.addEventListener("resize", () => {
+    // bail if the element was removed from the dom while booting so a
+    // disconnected instance never registers a page-lifetime resize
+    // listener it has no way to remove again
+    if (!this.isConnected) {
+      return;
+    }
+    this.__onResize = () => {
       fitAddon.fit();
       shellProcess.resize({
         cols: terminal.cols,
         rows: terminal.rows,
       });
-    });
+    };
+    globalThis.addEventListener("resize", this.__onResize);
   }
 
   async runCommands(commands) {
@@ -344,8 +386,8 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       }
       .files button {
         opacity: .9;
-        background-color: #333333;
-        color: white;
+        background-color: var(--ddd-theme-default-coalyGray, #333333);
+        color: var(--ddd-theme-default-white, #ffffff);
         font-size: var(--ddd-font-size-4xs);
         padding: 4px 16px;
       }
@@ -353,9 +395,9 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       .files button:focus {
         opacity: 1;
       }
-      .files button[active] {
+      .files button[aria-pressed="true"] {
         opacity: 1;
-        background-color: black;
+        background-color: var(--ddd-theme-default-black, #000000);
         border-color: var(--ddd-primary-1);
       }
       code-editor {
@@ -618,12 +660,12 @@ export class WebContainerEl extends DDDSuper(LitElement) {
       ${!this.hideEditor ? html`
         <div class="editor" part="editor">
           <div class="files" part="files">
-            ${this.filesShown.map(file => html`<button @click="${this.updateFile}" data-fname="${file.file}" ?active="${file.file === this.fname}">${file.label}</button>`)}
+            ${this.filesShown.map(file => html`<button @click="${this.updateFile}" data-fname="${file.file}" aria-pressed="${file.file === this.fname ? 'true' : 'false'}">${file.label}</button>`)}
           </div>
           <code-editor part="code-editor" @value-changed="${this.editorValueChanged}"></code-editor>
         </div>` : ``}
       <div class="preview" part="preview">
-        ${!this.hideWindow ? html`<div class="status" part="status">${this.status}</div><iframe part="iframe" title="Web container preview" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
+        ${!this.hideWindow ? html`<div class="status" part="status" role="status" aria-live="polite">${this.status}</div><iframe part="iframe" title="Web container preview" src="${new URL('./lib/loading.html', import.meta.url).href}"></iframe>`: ``}
       </div>
     </div>
     <div class="terminal" part="terminal"></div>`;

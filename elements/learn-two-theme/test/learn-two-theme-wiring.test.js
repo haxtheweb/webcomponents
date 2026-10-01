@@ -55,9 +55,10 @@ describe('learn-two-theme basic rendering', () => {
   it('renders with correct default properties', async () => {
     const el = await fixture(html`<learn-two-theme></learn-two-theme>`)
     await el.updateComplete
-    // opened is never initialized in the constructor, so it starts
-    // undefined rather than false (see the aria-expanded BUG below)
-    expect(el.opened).to.not.be.true
+    // opened is initialized to false in the constructor (round 8 fix; it
+    // previously started undefined and rendered an invalid empty
+    // aria-expanded value on the first paint)
+    expect(el.opened).to.be.false
     expect(el.hasAttribute('opened')).to.be.false
     expect(el.HAXCMSThemeSettings.autoScroll).to.be.true
   })
@@ -90,22 +91,24 @@ describe('learn-two-theme basic rendering', () => {
     expect(sr.querySelector('#slot slot')).to.exist
   })
 
-  // BUG(learn-two-theme.js:509,518): aria-expanded="${this.opened}" renders
-  // aria-expanded="" (an invalid ARIA state value) on the initial render
-  // because `opened` is never initialized to false in the constructor; the
-  // attribute only becomes valid ("true"/"false") after the first toggle.
-  it('exposes the menu toggles with aria wiring (initial value BUG)', async () => {
+  // BUG(learn-two-theme.js:509,518) RESOLVED (round 8):
+  // aria-expanded="${this.opened}" used to render aria-expanded="" (an
+  // invalid ARIA state value) on the initial render because `opened` was
+  // never initialized in the constructor; the constructor now initializes
+  // opened to false, so the attribute is a valid state ("false") from the
+  // very first render.
+  it('exposes the menu toggles with valid aria wiring from the initial render', async () => {
     const el = await fixture(html`<learn-two-theme></learn-two-theme>`)
     await el.updateComplete
     const sr = el.shadowRoot
     for (const id of ['menubutton', 'menubutton2']) {
       const btn = sr.querySelector('#' + id)
       expect(btn.getAttribute('title')).to.equal('Toggle site menu')
-      // documents the current broken initial value; see BUG comment above
-      expect(btn.getAttribute('aria-expanded')).to.equal('')
+      // the initial value is now a valid state instead of an empty string
+      expect(btn.getAttribute('aria-expanded')).to.equal('false')
       expect(btn.getAttribute('aria-controls')).to.equal('drawer')
     }
-    // after one full toggle cycle the attribute becomes valid
+    // after one full toggle cycle the attribute still tracks the state
     el.toggleDrawer()
     await el.updateComplete
     expect(

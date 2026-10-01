@@ -152,6 +152,8 @@ class ElmslnLoading extends SimpleColors {
         accent-color="${this.accentColor}"
         contrast="${this.contrast}"
         ?dark="${this.dark}"
+        role="status"
+        aria-label="Loading"
       ></simple-icon>
     `;
   }

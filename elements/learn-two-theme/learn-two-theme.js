@@ -447,6 +447,9 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   constructor() {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
+    // initialize the drawer state so aria-expanded renders a valid state
+    // ("false") on the very first render instead of an empty attribute
+    this.opened = false;
     // prettier-ignore
     import(
         "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"

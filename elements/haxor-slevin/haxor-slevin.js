@@ -394,7 +394,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
                     : this.image}"
                   image-alt="${post.title}"
                 >
-                  <div slot="heading"><h3>${post.title}</h3></div>
+                  <div slot="heading"><h2>${post.title}</h2></div>
                   <p slot="content">
                     <date-chip
                       unix
@@ -449,7 +449,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
                     : this.image}"
                   image-alt="${post.title}"
                 >
-                  <div slot="heading"><h3>${post.title}</h3></div>
+                  <div slot="heading"><h2>${post.title}</h2></div>
                   <div slot="subheading">
                     <simple-datetime
                       unix

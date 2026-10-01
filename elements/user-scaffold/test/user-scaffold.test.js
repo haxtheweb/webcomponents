@@ -42,6 +42,18 @@ describe("UserScaffold memory operations", () => {
     expect(element.readMemory("testKey")).to.equal("testValue");
   });
 
+  it("readMemory returns falsy stored values instead of null", () => {
+    // fixed (issue #3089, bug 26): readMemory used a falsy check so a
+    // stored 0 (e.g. a HAXCMSSitePalette value of 0) read back as null
+    // and could never be restored across page loads
+    element.writeMemory("palette", 0);
+    expect(element.readMemory("palette")).to.equal(0);
+    element.writeMemory("emptyText", "");
+    expect(element.readMemory("emptyText")).to.equal("");
+    element.writeMemory("falseFlag", false);
+    expect(element.readMemory("falseFlag")).to.equal(false);
+  });
+
   it("increments short-term memory", () => {
     element.writeMemory("counter", 5);
     element.incrementWriteMemory("counter", 3);
@@ -125,9 +137,8 @@ describe("UserScaffold user action handlers", () => {
     element.userMouseAction(fakeEvent);
     expect(element.action.type).to.equal("click");
     expect(element.action.architype).to.equal("input");
-    // BUG: readMemory returns null for 0 because `if (this.memory[key])` is falsy for 0
-    // writeMemory stores 0, but readMemory treats it as missing
-    expect(element.readMemory("interactionDelay")).to.be.null;
+    // fixed: readMemory uses a key-presence check, so a stored 0 reads back as 0
+    expect(element.readMemory("interactionDelay")).to.equal(0);
     expect(element.readMemory("interactionCount")).to.equal(1);
   });
 
@@ -163,8 +174,8 @@ describe("UserScaffold user action handlers", () => {
     expect(element.data.value).to.equal("a");
     expect(element.data.raw).to.equal("a");
     expect(element.data.architype).to.equal("text");
-    // BUG: readMemory returns null for 0 because `if (this.memory[key])` is falsy for 0
-    expect(element.readMemory("interactionDelay")).to.be.null;
+    // fixed: readMemory uses a key-presence check, so a stored 0 reads back as 0
+    expect(element.readMemory("interactionDelay")).to.equal(0);
   });
 
   it("userKeyDownAction ignores synthetic events", () => {

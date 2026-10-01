@@ -58,7 +58,9 @@ class TrainingTheme extends HAXCMSOperationButtons(
       });
     });
     autorun(() => {
-      const _mobx_val_0 = toJS(store.manifest.items);
+      const _mobx_val_0 = toJS(
+        store.manifest && store.manifest.items ? store.manifest.items : [],
+      );
       Promise.resolve().then(() => {
         this.items = _mobx_val_0;
       });
@@ -108,7 +110,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
       css`
         :host {
           display: block;
-          color-scheme: light;
           color: light-dark(
             var(--ddd-theme-default-coalyGray, #262626),
             var(--ddd-theme-default-white, #ffffff)

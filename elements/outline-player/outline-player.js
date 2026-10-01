@@ -557,6 +557,17 @@ class OutlinePlayer extends SchemaBehaviors(
       super.firstUpdated(changedProperties);
     }
     this._syncMenuToggleA11y();
+    // simple-icon-button-lite upgrades and renders its inner <button> on
+    // its own async update cycle after the host's first update, so the sync
+    // above can be a silent no-op; run it again once the toggle settles so
+    // the inner button is labeled on first render
+    const toggle =
+      this.shadowRoot && this.shadowRoot.querySelector(".menu-toggle");
+    if (toggle && toggle.updateComplete) {
+      toggle.updateComplete.then(() => {
+        this._syncMenuToggleA11y();
+      });
+    }
 
     this.__disposer.push(
       autorun((reaction) => {

@@ -115,7 +115,10 @@ export class PageFlagComment extends LitElement {
           </div>
         </div>
         <div class="comment__body">
-          <simple-fields-field type="textarea"></simple-fields-field>
+          <simple-fields-field
+            type="textarea"
+            label="Comment"
+          ></simple-fields-field>
           <slot></slot>
         </div>
         <div class="comment__footer">
@@ -164,7 +167,6 @@ export class PageFlagComment extends LitElement {
             this.innerHTML;
           setTimeout(() => {
             this.shadowRoot.querySelector("simple-fields-field").focus();
-            this.shadowRoot.querySelector("simple-fields-field").select();
           }, 0);
         } else {
           this.innerHTML = this.shadowRoot.querySelector(
@@ -212,7 +214,10 @@ export class PageFlagComment extends LitElement {
           margin-left: 32px;
         }
         .comment {
-          background-color: #fff;
+          background-color: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
           border-radius: 5px;
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           padding: 10px;
@@ -233,7 +238,11 @@ export class PageFlagComment extends LitElement {
           height: 40px;
           border-radius: 50%;
           overflow: hidden;
-          border: 2px solid black;
+          border: 2px solid
+            light-dark(
+              var(--ddd-theme-default-black, #000000),
+              var(--ddd-theme-default-white, #fff)
+            );
           margin-right: 8px;
         }
         .comment__header__info {
@@ -241,12 +250,15 @@ export class PageFlagComment extends LitElement {
           flex-direction: column;
         }
         .comment__header__info__name {
-          font-weight: bold;
-          font-size: 14px;
+          font-weight: var(--ddd-font-weight-bold, bold);
+          font-size: var(--ddd-font-size-5xs, 14px);
         }
         .comment__header__info__date {
-          font-size: 12px;
-          color: #999;
+          font-size: var(--ddd-font-size-6xs, 12px);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-slateLight, #ccdae6)
+          );
         }
         .comment__body {
           margin-bottom: 10px;
@@ -261,8 +273,11 @@ export class PageFlagComment extends LitElement {
         .comment__footer__actions__button {
           background-color: transparent;
           border: none;
-          color: #999;
-          font-size: 12px;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-slateLight, #ccdae6)
+          );
+          font-size: var(--ddd-font-size-6xs, 12px);
           cursor: pointer;
           margin-left: 10px;
         }

@@ -722,13 +722,6 @@ class CleanOne extends LTIResizingMixin(
         "long",
       );
     }
-    if (
-      changedProperties.has("topItems") ||
-      changedProperties.has("items") ||
-      changedProperties.has("activeLayout")
-    ) {
-      requestAnimationFrame(() => this._syncViewportLayout());
-    }
   }
 
   // render function
@@ -1044,19 +1037,6 @@ class CleanOne extends LTIResizingMixin(
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
 }
 globalThis.customElements.define(CleanOne.tag, CleanOne);

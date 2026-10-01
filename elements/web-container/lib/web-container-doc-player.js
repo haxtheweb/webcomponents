@@ -247,7 +247,11 @@ export default ({
           if (response && response.json) return response.json();
           return false;
         });
-        el = haxElementToNode(schema.demoSchema[0]);
+        // guard against non-json / empty schema responses before building
+        // the demo so a bad fetch falls back to the created element
+        if (schema && schema.demoSchema && schema.demoSchema[0]) {
+          el = haxElementToNode(schema.demoSchema[0]);
+        }
       }
     }
     if (asText) {
@@ -272,7 +276,12 @@ export default ({
       html: await this.getExample(this.element),
       head: `<script>globalThis.WCGlobalCDNPath="https://cdn.hax.cloud/cdn/";</script><script src="https://cdn.hax.cloud/cdn/build.js"></script>`,
     });
-    this.shadowRoot.querySelector('code-pen-button').setAttribute('data-string', data);
+    // only act when a code-pen-button is actually present in the shadow
+    // root; render() never supplies one itself so the host page must
+    const codePenButton = this.shadowRoot.querySelector('code-pen-button');
+    if (codePenButton) {
+      codePenButton.setAttribute('data-string', data);
+    }
   }
 
     /**

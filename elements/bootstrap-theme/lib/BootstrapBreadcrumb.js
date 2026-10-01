@@ -2,7 +2,7 @@
  * Copyright 2021 collinkleest
  * @license MIT, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -230,7 +230,7 @@ class BootstrapBreadcrumb extends LitElement {
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="${item.title}"
-                  ${isLast ? 'aria-current="page"' : ""}
+                  aria-current="${isLast ? "page" : nothing}"
                 >
                   ${isLast
                     ? html`<span>${item.title}</span>`

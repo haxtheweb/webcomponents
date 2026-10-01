@@ -50,9 +50,9 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
         display: block;
         /* line-height: 2rem; */
         margin: 0;
-        --project-title-font-size: 28px;
-        --project-header-font-size: 64px;
-        --body-font-size: 20px;
+        --project-title-font-size: var(--ddd-font-size-ms, 28px);
+        --project-header-font-size: var(--ddd-font-size-3xl, 64px);
+        --body-font-size: var(--ddd-font-size-xxs, 20px);
         font-size: var(--body-font-size);
         background-color: var(--bg-color);
 
@@ -97,11 +97,11 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
         object-fit: cover;
       }
       h1{
-        font-size: 40px;
+        font-size: var(--ddd-font-size-l, 40px);
         margin-bottom: 15px;
       }
       p{
-        font-size: 20px;
+        font-size: var(--ddd-font-size-xxs, 20px);
         letter-spacing: 0.6px;
         color: #FFFFFF;
         opacity: 0.8;
@@ -146,7 +146,7 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
         margin-bottom: 15px;
         }
         p{
-          font-size: 16px;
+          font-size: var(--ddd-font-size-4xs, 16px);
           letter-spacing: 0.6px;
           color: #FFFFFF;
           opacity: 0.8;
@@ -179,7 +179,11 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <div class="hero">
   <div class="image">
-    <img src="../lib/components/headshot.webp" alt="Portrait of Mortiz">
+    <img
+      src="${new URL("./headshot.webp", import.meta.url).href}"
+      alt="Portrait of Mortiz"
+      @error=${this.handleImageError}
+    />
   </div>
   <div class="text">  
     <div class="header">
@@ -190,19 +194,19 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
     </div>
     <div class="links">
       <div class="socials">
-        <a href="https://google.com" class="social-link" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/" class="social-link" target="_blank" rel="noopener noreferrer">
           LinkedIn
         </a>        
-        <a href="https://google.com" class="social-link" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/" class="social-link" target="_blank" rel="noopener noreferrer">
           Github
         </a>        
-        <a href="https://google.com" class="social-link" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/" class="social-link" target="_blank" rel="noopener noreferrer">
          Instagram
         </a>        
-        <a href="https://google.com" class="social-link" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/" class="social-link" target="_blank" rel="noopener noreferrer">
          Facebook
         </a>        
-        <a href="https://google.com" class="social-link" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:mortiz.doe@gmail.com" class="social-link">
           mortiz.doe@gmail.com
         </a>        
 
@@ -217,6 +221,12 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
  
 
 `;
+  }
+
+  // hide the portrait if it fails to load, matching the header and card
+  handleImageError(event) {
+    const img = event.target;
+    img.style.visibility = "hidden";
   }
 }
 

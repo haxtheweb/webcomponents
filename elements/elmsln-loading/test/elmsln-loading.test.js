@@ -86,5 +86,11 @@ describe("elmsln-loading test", () => {
     it("passes the a11y audit", async () => {
       await expect(element).shadowDom.to.be.accessible();
     });
+
+    it("announces the loading state with role=status and an aria-label", async () => {
+      const icon = element.shadowRoot.querySelector("simple-icon");
+      expect(icon.getAttribute("role")).to.equal("status");
+      expect(icon.getAttribute("aria-label")).to.equal("Loading");
+    });
   });
 });

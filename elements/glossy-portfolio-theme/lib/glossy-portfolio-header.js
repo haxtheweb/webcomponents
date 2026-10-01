@@ -13,20 +13,6 @@ import { autorun, toJS } from "mobx";
  * @demo index.html
  * @element glossy-portfolio-header
  */
-function getPostLogo(item) {
-  // Check if item has a logo, otherwise use the image from metadata
-  if (item && item.metadata && item.metadata.image) {
-    return item.metadata.image;
-  }
-  const manifest = store.manifest;
-  if (manifest && manifest.metadata && manifest.metadata.theme && manifest.metadata.theme.variables && manifest.metadata.theme.variables.image) {
-    return toJS(manifest.metadata.theme.variables.image);
-  }
-  if (manifest && manifest.metadata && manifest.metadata.site && manifest.metadata.site.logo) {
-    return toJS(manifest.metadata.site.logo);
-  }
-  return "";
-}
 export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
@@ -64,15 +50,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         const _mobx_val_0 = toJS(store.homeLink);
         Promise.resolve().then(() => {
           this.homeLink = _mobx_val_0;
-        });
-      }),
-    );
-    //get logo
-    this.__disposer.push(
-      autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.logo);
-        Promise.resolve().then(() => {
-          this.logo = _mobx_val_0;
         });
       }),
     );
@@ -454,6 +431,15 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     }
     globalThis.removeEventListener("scroll", this.__onScroll);
     globalThis.removeEventListener("keydown", this.__onKeydown);
+    // dispose the store reactions so a detached header stops reacting
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

@@ -631,16 +631,6 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       });
       this.__disposer = [];
     }
-    if (this.__darkModeMediaQuery) {
-      if (this.__darkModeMediaQuery.removeEventListener) {
-        this.__darkModeMediaQuery.removeEventListener(
-          "change",
-          this.__onColorSchemeChange,
-        );
-      } else if (this.__darkModeMediaQuery.removeListener) {
-        this.__darkModeMediaQuery.removeListener(this.__onColorSchemeChange);
-      }
-    }
     super.disconnectedCallback();
   }
 }

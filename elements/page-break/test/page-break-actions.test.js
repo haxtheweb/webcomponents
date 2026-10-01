@@ -528,23 +528,24 @@ describe('page-break hax hooks', () => {
     expect(dropped.locked).to.equal(true)
   })
 
-  it('crashes building the form lists without a loaded manifest', async () => {
+  it('skips building the form lists without a loaded manifest', async () => {
     const el = await fixture(html`<page-break title="No manifest"></page-break>`)
     const props = {
       settings: { advanced: [{ property: 'parent' }], developer: [] },
     }
-    // BUG(page-break.js:1305-1307): globalThis.HAXCMS is always defined once
-    // the site store is imported, so the guard never fails and
-    // store.getManifestItems throws on a null manifest before any list is
-    // built. Asserting the current (crashing) behavior so a fix flips this.
+    // page-break.js guards the manifest items directly (importing the site
+    // store always defines globalThis.HAXCMS so the old guard never failed)
+    // so a missing manifest skips list building instead of crashing the
+    // tray form on the store's null manifest.
     let threw = null
     try {
       el.haxsetupActiveElementForm(props)
     } catch (e) {
       threw = e.message
     }
-    expect(threw === null).to.equal(false)
-    expect(threw.includes('items')).to.equal(true)
+    expect(threw).to.equal(null)
+    // no manifest means no parent select gets wired up
+    expect(props.settings.advanced[0].inputMethod === undefined).to.equal(true)
   })
 
   it('builds parent and theme select lists for the active element form', async () => {

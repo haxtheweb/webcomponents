@@ -36,8 +36,8 @@ export class PageBreakManagerEl extends HTMLElement {
             targetNode = this.target.querySelector(
               `page-break[path="${targetNode.parent}"]`,
             );
-          }
-          {
+          } else {
+            // no grandparent break to outdent into
             targetNode = null;
           }
         }
@@ -217,64 +217,21 @@ export class PageBreakManagerEl extends HTMLElement {
             }
             newH.innerHTML = el.innerHTML;
             el.parentNode.replaceChild(newH, el);
-            element.target = newH;
+            // route the reassignment through setupTargetData so the
+            // page-break heading observer tracks the replacement instead
+            // of watching the detached original heading
+            if (element.setupTargetData) {
+              element.setupTargetData(newH);
+            } else {
+              element.target = newH;
+            }
           });
         });
-        // update the depth values based on building a "tree"
-        if (
-          this.target &&
-          this.target.children &&
-          this.target.children.length > 0
-        ) {
-          // wipe inner
-          var parents = [];
-          // loop children
-          const kids = this.target.querySelectorAll("page-break");
-          for (let i = 0; i < kids.length; i++) {
-            let el = kids[i];
-            // see if our parent is the active parent
-            if (parents.length > 0) {
-              if (el.parent && parents.indexOf(el.parent) !== -1) {
-                while (parents.indexOf(el.parent) !== -1) {
-                  parents.shift();
-                }
-              }
-              // missing parent in the hierarchy
-              else if (el.parent && parents.indexOf(el.parent) === -1) {
-                // do nothing; something messed up so let's act like it
-                // didn't happen and just render as we have been
-              } else {
-                // no parent, shift all the way down to nothing
-                while (parents.length > 0) {
-                  parents.shift();
-                }
-              }
-              let depth = 0;
-              if (
-                i !== 0 &&
-                el.parent &&
-                this.target.querySelector(`page-break[path="${el.parent}"]`)
-              ) {
-                depth =
-                  this.target.querySelector(`page-break[path="${el.parent}"]`)
-                    .depth + 1;
-              }
-              // set back into the element how deep it is; weird I know but the element doesn't
-              // know this, the tree builder would though
-              el.depth = depth;
-              // see if WE have children
-              if (
-                i != kids.length &&
-                kids[i + 1] &&
-                kids[i + 1].parent === el.path
-              ) {
-                if (el.parent) {
-                  parents.unshift(el.parent);
-                }
-              }
-            }
-          }
-        }
+        // depth recalculation intentionally stays with each page-break
+        // element: its updated() flow rewrites heading levels whenever
+        // depth changes. The manager-side depth tree walk that used to live
+        // here could never execute (its parents stack started empty and
+        // was only ever refilled from within itself) so it was removed.
         this.__lock = false;
       }, 10);
     }

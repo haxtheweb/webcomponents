@@ -120,9 +120,15 @@ class PageFlag extends SimpleColors {
           min-width: 280px;
         }
         absolute-position-behavior div {
-          color: black;
-          background-color: white;
-          font-size: 12px;
+          color: light-dark(
+            var(--ddd-theme-default-black, #000000),
+            var(--ddd-theme-default-white, #fff)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
+          font-size: var(--ddd-font-size-6xs, 12px);
           width: 300px;
           margin-left: 160px;
           padding-top: 8px;

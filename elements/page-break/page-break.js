@@ -781,11 +781,6 @@ export class PageBreak extends IntersectionObserverMixin(
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
         }
-        @media (max-width: 600px) {
-          #pageactionsbtn {
-            display: none;
-          }
-        }
       `,
     ];
   }
@@ -1302,7 +1297,10 @@ export class PageBreak extends IntersectionObserverMixin(
    * with values to do so
    */
   haxsetupActiveElementForm(props) {
-    if (globalThis.HAXCMS) {
+    // Guard the manifest items directly. Importing the site store always
+    // defines globalThis.HAXCMS so that check could never fail, and
+    // getManifestItems throws on a null manifest when no site is loaded.
+    if (globalThis.HAXCMS && store.manifest && store.manifest.items) {
       const itemManifest =
         globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
       // default to null parent as the whole site

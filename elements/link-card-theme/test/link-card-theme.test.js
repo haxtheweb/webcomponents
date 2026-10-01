@@ -392,22 +392,11 @@ describe('LinkCardTheme behavior', () => {
     el.remove()
     expect(Array.isArray(el.__disposer)).to.equal(true)
     expect(el.__disposer.length).to.equal(0)
-    // OBSERVATION: disconnectedCallback guards on this.__darkModeMediaQuery
-    // but nothing in this class ever sets it (nor __onColorSchemeChange) —
-    // likely a copy-over from another theme's dark-mode watcher. Supply the
-    // field the way a subclass would so the cleanup branch is exercised.
-    let removed = false
-    const el2 = await fixture(html` <link-card-theme></link-card-theme> `)
-    el2.__darkModeMediaQuery = {
-      removedType: '',
-      removeEventListener(type, cb) {
-        this.removedType = type
-        removed = true
-      },
-    }
-    el2.remove()
-    expect(removed).to.equal(true)
-    expect(el2.__darkModeMediaQuery.removedType).to.equal('change')
+    // the dead dark-mode watcher cleanup branch was removed (nothing in
+    // this class ever set __darkModeMediaQuery / __onColorSchemeChange);
+    // disconnect stays a no-op beyond running the disposers
+    expect(el.__darkModeMediaQuery === undefined).to.equal(true)
+    expect(el.__onColorSchemeChange === undefined).to.equal(true)
   })
 
   it('passes the a11y audit', async () => {

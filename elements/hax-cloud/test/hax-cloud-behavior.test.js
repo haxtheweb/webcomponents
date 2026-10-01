@@ -85,6 +85,10 @@ describe('hax-cloud behavior', () => {
     const h1 = element.querySelector('h1.name-wrapper')
     expect(h1).to.exist
     expect(h1.getAttribute('title')).to.equal('Welcome to HAX.cloud')
+    // the heading content is an aria-hidden [dot] plus icons, so the
+    // accessible name comes from aria-label mirroring the title attribute
+    // (round 8 a11y fix)
+    expect(h1.getAttribute('aria-label')).to.equal('Welcome to HAX.cloud')
 
     const icons = element.querySelectorAll('.name-wrapper simple-icon')
     expect(icons.length).to.equal(2)
@@ -167,12 +171,11 @@ describe('hax-cloud behavior', () => {
     globalThis.document.body.appendChild(siteBuilder)
     globalThis.document.body.appendChild(backend)
     try {
+      // the for..of loop awaits every record, so findLocalHaxCopy resolving
+      // now guarantees the scan and the manifest assignment completed
+      // (round 8 fix for the previously unawaited forEach(async ...) race,
+      // BUG hax-cloud.js:186; assertions run with no settling sleep)
       await element.findLocalHaxCopy()
-      // BUG (hax-cloud.js:186): the forEach(async ...) callbacks are never
-      // awaited, so findLocalHaxCopy resolves before the directory scan is
-      // guaranteed to finish (latent race with real FS latency; only the
-      // settled end-state is asserted here).
-      await new Promise((r) => setTimeout(r, 50))
       expect(element.fileRoot).to.equal('/site-root')
       expect(element.fileObjects).to.equal(records)
       expect(siteBuilder.manifest.title).to.equal('My local site')
@@ -252,6 +255,19 @@ describe('hax-cloud behavior', () => {
       siteBuilder.remove()
       backend.remove()
     }
+  })
+
+  it('manifest-changed without builder/userfs elements in the DOM does not throw', async () => {
+    element = await fixture(html`<hax-cloud></hax-cloud>`)
+    // round 8 null guards (BUG hax-cloud.js:228-233): previously the
+    // unguarded querySelector results threw a TypeError inside the event
+    // listener on a page without the haxcms-backend-userfs /
+    // haxcms-site-builder elements
+    globalThis.dispatchEvent(new CustomEvent('manifest-changed'))
+    expect(globalThis.appSettings.login).to.equal('dist/dev/login.json')
+    // the element still rests after the tick
+    await new Promise((r) => setTimeout(r, 10))
+    expect(element.isConnected).to.equal(false)
   })
 
   it('disconnectedCallback aborts the manifest-changed listener', async () => {

@@ -177,7 +177,7 @@ describe('HaxorSlevin theme', () => {
     expect(firstCard.getAttribute('image-src')).to.equal('post1.jpg')
     expect(firstCard.getAttribute('image-alt')).to.equal('Post One')
     expect(
-      firstCard.querySelector('div[slot="heading"] h3').textContent,
+      firstCard.querySelector('div[slot="heading"] h2').textContent,
     ).to.equal('Post One')
     const chip = firstCard.querySelector('date-chip')
     expect(chip === null).to.equal(false)
@@ -193,15 +193,17 @@ describe('HaxorSlevin theme', () => {
     const secondCard = second.querySelector('accent-card')
     expect(secondCard.getAttribute('image-src')).to.equal('assets/banner.jpg')
     expect(secondCard.getAttribute('image-alt')).to.equal('Post Two')
-    // BUG (a11y / heading-order): post cards render h3 headings directly
-    // below the h1 home title with no h2 level in between, so axe flags
-    // heading-order as soon as posts render. Documented here for the
-    // round-8 bug sweep; the fix belongs in the theme markup (use h2 in
-    // the accent-card heading slot or restructure the outline).
+    // heading-order fix: post cards render h2 headings in the accent-card
+    // heading slot so the outline descends h1 (home title) -> h2 (posts)
+    // without skipping a level, and follow-up posts keep the same h2 level
+    // under the site-active-title h1 in the content view
     expect(root.querySelector('h1.home-title') === null).to.equal(false)
     expect(
-      root.querySelector('a.article-link div[slot="heading"] h3') === null,
+      root.querySelector('a.article-link div[slot="heading"] h2') === null,
     ).to.equal(false)
+    expect(
+      root.querySelector('a.article-link div[slot="heading"] h3') === null,
+    ).to.equal(true)
   })
 
   it('renders follow-up posts from the query result', async () => {
@@ -456,9 +458,9 @@ describe('HaxorSlevin theme', () => {
   })
 
   it('passes the a11y audit', async () => {
-    // audit the empty (no posts) state: rendering post cards introduces
-    // the h3-under-h1 heading-order violation documented above, and the
-    // post rendering paths are already behaviorally asserted
+    // audit the empty (no posts) state: the post rendering paths are
+    // already behaviorally asserted (including the h2 heading-order fix
+    // above) and the site-* pieces have no active item in this state
     store.manifest = { title: 'Haxor Blog', items: [] }
     await tick()
     await element.updateComplete

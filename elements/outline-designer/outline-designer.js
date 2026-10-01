@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, css, html } from "lit";
+import { LitElement, css, html, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
@@ -1150,7 +1150,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           activeItemContentNode.getAttribute("data-content-parent-id"),
       );
       // should have contents but verify
-      if (item.contents) {
+      // a stale preview node can point at an item that is no longer in the
+      // tree, so guard the find result before reading contents off it
+      if (item && item.contents) {
         let div = globalThis.document.createElement("div");
         div.innerHTML = item.contents;
         // walk up to the index in question
@@ -1233,6 +1235,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       }
     });
     this.selectedPages = [];
+    // a preview of deleted content cannot linger into the next render
+    this.resetPopOver();
     this.__syncUIAndDataModel();
   }
 
@@ -1302,7 +1306,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ? this.isCollapsed(item.id)
             ? "false"
             : "true"
-          : "undefined"}"
+          : nothing}"
         aria-level="${item.indent + 1}"
         aria-setsize="${this.items.filter((i) => i.parent === item.parent)
           .length}"
@@ -1592,7 +1596,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         ) {
           node = haxElementToNode(schema.demoSchema[0]);
         } else {
-          node = globalThis.document.createElement(tag);
+          // fall back to the clicked gizmo tag
+          node = globalThis.document.createElement(e.target.value);
         }
         this.items[index].contents = node.outerHTML + item.contents;
         this.resetPopOver();
@@ -1784,13 +1789,22 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 let h;
                 if (action === "in" && hlevel > 1) {
                   h = globalThis.document.createElement(`h${hlevel - 1}`);
-                  h.innerText = node.innerText;
                 } else if (action === "out" && hlevel < 6) {
                   h = globalThis.document.createElement(`h${hlevel + 1}`);
-                  h.innerText = node.innerText;
                 } else {
                   // blocked operation
                   h = node;
+                }
+                if (h !== node) {
+                  // carry the existing attributes (ids, anchor links) onto the
+                  // rebuilt heading so a level change does not drop them
+                  for (let i = 0; i < node.attributes.length; i++) {
+                    h.setAttribute(
+                      node.attributes[i].name,
+                      node.attributes[i].value,
+                    );
+                  }
+                  h.innerText = node.innerText;
                 }
                 content += h.outerHTML;
                 break;
@@ -2000,16 +2014,20 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (e.key === "Enter") {
       e.target.classList.remove("shown");
       e.target.previousElementSibling.classList.add("shown");
+      // capture the text BEFORE removing the attribute; Chromium rolls
+      // the focused editing host back to its pre-edit text once the
+      // contenteditable attribute comes off the element
+      let title = e.target.innerText;
       e.target.removeAttribute("contenteditable");
       let itemId = e.target
         .closest("[data-item-id]")
         .getAttribute("data-item-id");
       for (let index = 0; index < this.items.length; index++) {
-        if (this.items[index].id === itemId && e.target.innerText != "") {
+        if (this.items[index].id === itemId && title != "") {
           if (!this.items[index].new) {
             this.items[index].modified = true;
           }
-          this.items[index].title = e.target.innerText;
+          this.items[index].title = title;
         }
       }
       this.requestUpdate();
@@ -2249,9 +2267,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   focusNextItem(currentIndex) {
     const visibleItems = this.items.filter(
-      (item, index) =>
-        (this.getItemParentsCollapsed(item) === "" && !this.hideDelete) ||
-        !item.delete,
+      (item) =>
+        this.getItemParentsCollapsed(item) === "" &&
+        (!this.hideDelete || !item.delete),
     );
     const currentVisibleIndex = visibleItems.findIndex(
       (item) => item.id === this.items[currentIndex].id,
@@ -2265,9 +2283,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   focusPreviousItem(currentIndex) {
     const visibleItems = this.items.filter(
-      (item, index) =>
-        (this.getItemParentsCollapsed(item) === "" && !this.hideDelete) ||
-        !item.delete,
+      (item) =>
+        this.getItemParentsCollapsed(item) === "" &&
+        (!this.hideDelete || !item.delete),
     );
     const currentVisibleIndex = visibleItems.findIndex(
       (item) => item.id === this.items[currentIndex].id,
@@ -2836,18 +2854,24 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       await eventData.items.map(async (item, index) => {
         if (parentId && item.parent == null) {
           // helps in supporting multiple imports at a time
-          count++;
+          // capture this import position BEFORE awaiting anything; the
+          // shared counter finishes all of its increments by the time any
+          // of the async callbacks resume, so reading it after the await
+          // hands every import the same final order
+          const itemOrder = ++count;
           let parentItem = await store.findItemAsObject(parentId);
           switch (targetSelector) {
             case "below":
               eventData.items[index].parent = parentItem.parent;
-              eventData.items[index].order = parseInt(parentItem.order) + count;
+              eventData.items[index].order =
+                parseInt(parentItem.order) + itemOrder;
               break;
             case "above":
               eventData.items[index].parent = parentItem.parent;
               // @todo this is currently the reverse order desired if
               // multiple top level children existed on the import
-              eventData.items[index].order = parseInt(parentItem.order) - count;
+              eventData.items[index].order =
+                parseInt(parentItem.order) - itemOrder;
               break;
             case "children":
               eventData.items[index].parent = parentId;

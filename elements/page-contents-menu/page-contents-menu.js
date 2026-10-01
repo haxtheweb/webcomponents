@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
@@ -290,7 +290,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
             role="link"
             title="${item.title}"
             property="oer:title"
-            aria-current="${isActive ? "true" : undefined}"
+            aria-current="${isActive ? "true" : nothing}"
             @click="${this.scrollToObject}"
             @keydown="${this.keyScroll}"
             data-index="${index}"
@@ -310,7 +310,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           href="${item.link}"
           title="${item.title}"
           property="oer:title"
-          aria-current="${isActive ? "true" : undefined}"
+          aria-current="${isActive ? "true" : nothing}"
           @click="${this.scrollToObject}"
           @keydown="${this.keyScroll}"
           data-index="${index}"

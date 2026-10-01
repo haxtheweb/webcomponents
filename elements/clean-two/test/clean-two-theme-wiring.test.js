@@ -74,21 +74,14 @@ describe('clean-two search result wiring', () => {
     expect(el.searchTerm).to.equal('')
   })
 
-  it('sets searchTerm from the event path target value (module loads)', async () => {
+  // BUG(clean-two.js:731) RESOLVED (round 8): searchChanged was defined
+  // but never bound in the theme's templates (search flows through
+  // siteModalClick and the site-search modal instead), so it was unreachable
+  // except by direct invocation; the dead handler and its normalizeEventPath
+  // import were removed.
+  it('no longer defines the unreachable searchChanged handler', async () => {
     const el = await fixture(html`<clean-two></clean-two>`)
-    // searchChanged reads the first entry of the normalized event path as
-    // the input source (a bare CustomEvent has an empty path, so hand it a
-    // path-shaped object directly)
-    el.searchChanged({ composedPath: () => [{ value: 'web components' }] })
-    const settled = await waitFor(() => el.searchTerm === 'web components')
-    expect(settled).to.be.true
-  })
-
-  it('clears searchTerm when the path target value is empty', async () => {
-    const el = await fixture(html`<clean-two></clean-two>`)
-    el.searchTerm = 'leftover'
-    el.searchChanged({ composedPath: () => [{ value: '' }] })
-    expect(el.searchTerm).to.equal('')
+    expect(typeof el.searchChanged).to.equal('undefined')
   })
 
   it('keeps content hidden while a search term is active', async () => {

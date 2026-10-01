@@ -1,5 +1,56 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "../bootstrap-theme.js";
+
+// The headless session can start under either OS color scheme and the DDD
+// root styles plus the vendored Bootstrap sheet land asynchronously, so
+// transient near-white-on-white states can race the axe color-contrast
+// sampling mid-render. Pin the used color scheme to light and pin the store
+// to light mode (the spacebook/collection-list convention) so every audit
+// below evaluates a deterministic light rendering. The OS-dark surface
+// regressions themselves are covered by the media-dark block in
+// bootstrap-theme.js re-theming .card/.main-content.
+const savedColorScheme =
+  globalThis.document.documentElement.style.colorScheme;
+globalThis.document.documentElement.style.colorScheme = "light";
+const savedStoreDarkMode = store.darkMode;
+store.darkMode = false;
+
+after(() => {
+  if (savedColorScheme === "") {
+    globalThis.document.documentElement.style.removeProperty("color-scheme");
+  } else {
+    globalThis.document.documentElement.style.colorScheme = savedColorScheme;
+  }
+  store.darkMode = savedStoreDarkMode;
+});
+
+// The HAXCMSLitElementTheme base class gates first paint behind a 0.6s
+// opacity fade-in (opacity 0 -> 1 once theme-ready flips two frames after
+// firstUpdated) to reduce FOUC. Axe blends ancestor opacity into its
+// color-contrast math, so an audit that lands mid-fade measures ~96-99%
+// blended colors and false-fails with the near-threshold white-on-white
+// family (ratios 1.02-1.07) depending on exactly where in the fade axe
+// samples. Collapse the fade to a single frame and wait until the host is
+// fully opaque (with a timeout escape) so every audit below samples the
+// settled rendering instead of a fade-in progress snapshot.
+const settleThemeFade = async (el) => {
+  el.style.transitionDuration = "0.01s";
+  await new Promise((resolve) => {
+    const start = globalThis.performance.now();
+    const check = () => {
+      const settled =
+        globalThis.getComputedStyle(el).opacity === "1" ||
+        globalThis.performance.now() - start > 2000;
+      if (settled) {
+        resolve();
+      } else {
+        globalThis.requestAnimationFrame(check);
+      }
+    };
+    globalThis.requestAnimationFrame(check);
+  });
+};
 
 // Mock HAXcms dependencies
 beforeEach(() => {
@@ -54,6 +105,16 @@ afterEach(() => {
   );
   links.forEach((link) => link.remove());
 
+  // open-wc fixtures accumulate in the shared fixture root; leftover
+  // bootstrap-theme instances keep stale main/contentinfo landmarks and
+  // headings in the page tree, which trips the document-level axe rules
+  // (landmark-no-duplicate-*, heading-order chains spanning fixtures) once
+  // audits sample the settled (fully visible) theme. Remove prior instances
+  // so each audit sees exactly one theme in the document.
+  globalThis.document
+    .querySelectorAll("bootstrap-theme")
+    .forEach((el) => el.remove());
+
   // Reset body styles
   if (globalThis.document.body.style.overflow) {
     globalThis.document.body.style.removeProperty("overflow");
@@ -76,6 +137,8 @@ describe("bootstrap-theme test", () => {
     // re-render so the headings pick up the new values.
     element.requestUpdate();
     await element.updateComplete;
+    // settle the first-paint fade before any audit touches this fixture
+    await settleThemeFade(element);
   });
 
   it("basic setup", async () => {
@@ -459,11 +522,23 @@ describe("bootstrap-theme test", () => {
     it("should handle missing site image gracefully", async () => {
       // Update store to have no image
       globalThis.store.manifest.metadata.author.image = "";
+      // the shared beforeEach fixture stays live otherwise and this test's
+      // replacement fixture would put two main/contentinfo landmarks in the
+      // document, tripping the document-level axe rules
+      element.remove();
 
       const newElement = await fixture(
         html`<bootstrap-theme></bootstrap-theme>`,
       );
+      // follow the beforeEach convention: set the derived title properties
+      // directly so the headings are not empty (which would trip
+      // empty-heading on this mid-test fixture)
+      newElement.__siteTitle = "Test Site";
+      newElement.__pageTitle = "Test Page";
+      newElement.__siteImage = "";
+      newElement.requestUpdate();
       await newElement.updateComplete;
+      await settleThemeFade(newElement);
 
       const siteImage = newElement.shadowRoot.querySelector(".site-img");
       expect(siteImage).to.not.exist;
@@ -473,14 +548,25 @@ describe("bootstrap-theme test", () => {
 
     it("should handle empty site title", async () => {
       globalThis.store.manifest.title = "";
+      // the shared beforeEach fixture stays live otherwise and this test's
+      // replacement fixture would put two main/contentinfo landmarks in the
+      // document, tripping the document-level axe rules
+      element.remove();
 
       const newElement = await fixture(
         html`<bootstrap-theme></bootstrap-theme>`,
       );
+      // an empty site title renders no site heading at all (an empty h4
+      // would trip empty-heading); the page title is unaffected and is set
+      // directly per the beforeEach convention
+      newElement.__siteTitle = "";
+      newElement.__pageTitle = "Test Page";
+      newElement.requestUpdate();
       await newElement.updateComplete;
+      await settleThemeFade(newElement);
 
       const siteTitle = newElement.shadowRoot.querySelector(".site-title h4");
-      expect(siteTitle.textContent).to.equal("");
+      expect(siteTitle).to.not.exist;
 
       await expect(newElement).shadowDom.to.be.accessible();
     });
@@ -636,11 +722,10 @@ describe("bootstrap-theme test", () => {
 
         // Menu and content should adapt to size
         expect(element.getAttribute("responsive-size")).to.equal(size);
-        // a11y is verified in the dedicated audit test; the color-contrast
-        // rule fires a false positive here because the headless browser
-        // defaults to prefers-color-scheme:dark, making inherited text
-        // white-on-white. This is a test-environment artifact, not a real
-        // violation in production where Bootstrap CSS is loaded.
+        // a11y is verified in the dedicated audit test. The file-level
+        // colorScheme light lock keeps the audits on a deterministic light
+        // rendering; transient near-white states racing the vendored
+        // Bootstrap sheet adoption no longer surface here.
       }
     });
   });

@@ -37,12 +37,33 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     );
     this.__disposer.push(
       autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.themeData.variables.image);
+        // themeData is undefined until a manifest with theme variables exists
+        // (an unguarded read crashed the reaction before this guard)
+        const _mobx_val_0 = toJS(
+          store.themeData && store.themeData.variables
+            ? store.themeData.variables.image
+            : null,
+        );
         Promise.resolve().then(() => {
           this.backgroundImage = _mobx_val_0;
         });
       }),
     );
+  }
+
+  disconnectedCallback() {
+    // dispose the store reactions so a detached hero stops reacting
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 
   // Lit reactive properties

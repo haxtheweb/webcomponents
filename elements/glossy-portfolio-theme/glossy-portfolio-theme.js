@@ -101,7 +101,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --page-padding: 0 25px;
         --link-color: #6cddff;
         --link-color-hover: #9ae7ff;
-        --main-font-size: 18px;
+        --main-font-size: var(--ddd-font-size-3xs, 18px);
         --mobile-page-padding: 0 15px;
         --text-color: var(--ddd-theme-default-white); /* Default text color */
         --footer-height: 76px;   
@@ -328,7 +328,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   
   render() {
     
-    const activeTitle = (this.activeItem && this.activeItem.title) || "Default Title"; // Use explicit null check and a fallback value
     return html`
     <!-- temporary margin-top  -->
     <a class="skip-link" href="#contentcontainer">Skip to content</a>
@@ -351,6 +350,22 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
     </div>  
 `;
+  }
+
+  disconnectedCallback() {
+    // dispose the store reaction (and any inherited ones) so a detached
+    // theme stops reacting to the site store
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 }
 

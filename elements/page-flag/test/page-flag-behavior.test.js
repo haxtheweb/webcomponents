@@ -269,7 +269,7 @@ describe('page-flag', () => {
     expect(el.isConnected).to.equal(false)
   })
 
-  it('passes the closed a11y audit and documents the opened contrast deficit', async () => {
+  it('passes the closed a11y audit and the opened date token pairing', async () => {
     const root = await fixture(html`
       <div>
         <page-flag>
@@ -282,16 +282,16 @@ describe('page-flag', () => {
     el.shadowRoot.querySelector('button.arrow').click()
     await el.updateComplete
     await wait(30)
-    // BUG(page-flag-comment.js:247-249): once the popup opens, the comment
-    // date renders #999999 on white at 12px, measuring 2.84:1 against the
-    // 4.5:1 WCAG AA minimum (axe color-contrast, serious, on the datetime).
-    // Asserting the current non-compliant pairing so a token fix flips
-    // this assertion. The color is inherited by the datetime host.
+    // once the popup opens, the comment date lands on a DDD token pairing:
+    // slateGray on the white card at 12px measures 8.84:1, above the 4.5:1
+    // WCAG AA minimum that the previous #999999 pairing (2.84:1, axe
+    // color-contrast serious) missed. The color is inherited by the
+    // datetime host.
     const datetime = el
       .querySelector('page-flag-comment')
       .shadowRoot.querySelector('simple-datetime')
     const cs = globalThis.getComputedStyle(datetime)
-    expect(cs.color).to.equal('rgb(153, 153, 153)')
+    expect(cs.color).to.equal('rgb(49, 77, 100)')
     expect(cs.fontSize).to.equal('12px')
   })
 })
@@ -408,28 +408,26 @@ describe('page-flag-comment', () => {
     const field = el.shadowRoot.querySelector('simple-fields-field')
     expect(field === null).to.equal(false)
     expect(field.value.trim()).to.equal('A seeded note')
+    // the textarea carries a real label so it is announced to assistive tech
+    expect(field.label).to.equal('Comment')
+    const textarea = field.shadowRoot.querySelector('textarea')
+    expect(textarea.getAttribute('aria-label')).to.equal('Comment')
   })
 
-  it('focuses and selects the textarea when entering edit mode', async () => {
+  it('focuses the textarea when entering edit mode', async () => {
     const el = await fixture(
       html`<page-flag-comment>A seeded note</page-flag-comment>`,
     )
     await el.updateComplete
     const field = el.shadowRoot.querySelector('simple-fields-field')
     const focused = []
-    const selected = []
     field.focus = () => {
       focused.push(true)
-    }
-    // simple-fields-field has no select method, patch it for the flow test
-    field.select = () => {
-      selected.push(true)
     }
     el.editMode = true
     await el.updateComplete
     await wait(50)
     expect(focused.length).to.equal(1)
-    expect(selected.length).to.equal(1)
     // leaving edit mode writes the textarea back into the light dom
     field.value = 'An edited note'
     el.editMode = false

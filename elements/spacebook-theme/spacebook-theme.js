@@ -101,25 +101,28 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          /* DDD token mapping (exact #ffffff match). Other gray-scale vars kept as Tailwind
-             neutrals — DDD grays are tinted and would shift the palette (see agent report). */
+          /* Round 8 DDD gray remap: the Tailwind neutral scale now resolves
+             through DDD tokens (limestone family, SimpleColors neutral ramp
+             and coalyGray) with the original Tailwind hex kept as the
+             fallback when the design system vars are not loaded. The
+             mapping preserves the light-to-dark order of the scale. */
           --spacebook-theme-bg-white: var(--ddd-theme-default-white);
-          --spacebook-theme-bg-gray-50: #f9fafb;
-          --spacebook-theme-bg-gray-100: #f3f4f6;
-          --spacebook-theme-bg-gray-200: #e5e7eb;
-          --spacebook-theme-bg-gray-800: #1f2937;
-          --spacebook-theme-bg-gray-900: #111827;
-          --spacebook-theme-text-gray-300: #d1d5db;
-          --spacebook-theme-text-gray-400: #9ca3af;
-          --spacebook-theme-text-gray-500: #6b7280;
-          --spacebook-theme-text-gray-600: #4b5563;
-          --spacebook-theme-text-gray-700: #374151;
-          --spacebook-theme-text-gray-800: #1f2937;
-          --spacebook-theme-text-gray-900: #111827;
-          --spacebook-theme-border-gray-100: #f3f4f6;
-          --spacebook-theme-border-gray-200: #e5e7eb;
-          --spacebook-theme-border-gray-700: #4b5563;
-          --spacebook-theme-border-gray-800: #1f2937;
+          --spacebook-theme-bg-gray-50: var(--ddd-theme-default-white, #f9fafb);
+          --spacebook-theme-bg-gray-100: var(--ddd-theme-default-limestoneMaxLight, #f3f4f6);
+          --spacebook-theme-bg-gray-200: var(--ddd-theme-default-limestoneLight, #e5e7eb);
+          --spacebook-theme-bg-gray-800: var(--ddd-theme-default-coalyGray, #1f2937);
+          --spacebook-theme-bg-gray-900: var(--simple-colors-default-theme-grey-2, #111827);
+          --spacebook-theme-text-gray-300: var(--simple-colors-default-theme-grey-10, #d1d5db);
+          --spacebook-theme-text-gray-400: var(--ddd-theme-default-limestoneGray, #9ca3af);
+          --spacebook-theme-text-gray-500: var(--simple-colors-default-theme-grey-6, #6b7280);
+          --spacebook-theme-text-gray-600: var(--simple-colors-default-theme-grey-5, #4b5563);
+          --spacebook-theme-text-gray-700: var(--simple-colors-default-theme-grey-4, #374151);
+          --spacebook-theme-text-gray-800: var(--ddd-theme-default-coalyGray, #1f2937);
+          --spacebook-theme-text-gray-900: var(--simple-colors-default-theme-grey-2, #111827);
+          --spacebook-theme-border-gray-100: var(--ddd-theme-default-limestoneMaxLight, #f3f4f6);
+          --spacebook-theme-border-gray-200: var(--ddd-theme-default-limestoneLight, #e5e7eb);
+          --spacebook-theme-border-gray-700: var(--simple-colors-default-theme-grey-5, #4b5563);
+          --spacebook-theme-border-gray-800: var(--ddd-theme-default-coalyGray, #1f2937);
           --page-break-menu-button-right: auto;
         }
         

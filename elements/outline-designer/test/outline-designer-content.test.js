@@ -164,11 +164,10 @@ describe('outline-designer content operations', () => {
     const heading = contentLi(element, 'p1', 0)
     element.modifyContentAction(fakeEventFrom(heading), page, 'in')
     await settle(element)
-    // NOTE: the level change rebuilds the heading element from its text
-    // only, so any attributes on the original heading (like the id) are
-    // dropped in the process (see the data-loss note in the report)
+    // the level change rebuilds the heading element while carrying the
+    // existing attributes (like the id) onto the rebuilt heading
     expect(element.items.find((i) => i.id === 'p1').contents).to.include(
-      '<h1>Heading one</h1>',
+      '<h1 id="first">Heading one</h1>',
     )
     // back out to h2 and further out to h3
     const h1 = contentLi(element, 'p1', 0)
@@ -178,7 +177,7 @@ describe('outline-designer content operations', () => {
     element.modifyContentAction(fakeEventFrom(h2), page, 'out')
     await settle(element)
     expect(element.items.find((i) => i.id === 'p1').contents).to.include(
-      '<h3>Heading one</h3>',
+      '<h3 id="first">Heading one</h3>',
     )
   })
 
@@ -284,17 +283,15 @@ describe('outline-designer content operations', () => {
     )
   })
 
-  it('BUG renderActiveContentItem crashes on a stale preview target', () => {
-    // outline-designer.js:1153 reads item.contents off the result of
-    // items.find() without a guard. A preview node whose parent item is
-    // gone (bulk delete never calls resetPopOver, so a stale activePreview
-    // can survive into the next render) makes the whole render() throw a
-    // TypeError instead of skipping the popover content.
+  it('skips a stale preview target without crashing', () => {
+    // a preview node whose parent item is gone (bulk delete now resets
+    // the preview state, but the popover render must also tolerate a
+    // stale target) skips the popover content instead of throwing a
+    // TypeError out of render()
     const ghost = globalThis.document.createElement('div')
     ghost.setAttribute('data-content-parent-id', 'does-not-exist')
-    expect(() => element.renderActiveContentItem(ghost, 0)).to.throw(
-      TypeError,
-      "Cannot read properties of undefined (reading 'contents')",
+    expect(element.renderActiveContentItem(ghost, 0) === undefined).to.equal(
+      true,
     )
   })
 
@@ -327,12 +324,9 @@ describe('outline-designer content operations', () => {
     expect(p1.contents).to.include('Heading one')
   })
 
-  it('BUG prependNodeToContent crashes on schemas without demoSchema', async () => {
-    // outline-designer.js:1595 fallback branch references an undefined
-    // `tag` variable instead of the clicked gizmo tag (e.target.value).
-    // Any HAX schema without demoSchema[0] hits this ReferenceError, so
-    // adding content from such a gizmo throws and the page contents are
-    // never updated.
+  it('prepends a fallback element for gizmos without demoSchema', async () => {
+    // schemas without demoSchema[0] fall back to creating the clicked
+    // gizmo tag instead of crashing on an undefined variable
     HAXStore.haxSchemaFromTag = () => ({
       gizmo: { icon: 'av:av', title: 'Video', tag: 'video-player' },
     })
@@ -347,13 +341,13 @@ describe('outline-designer content operations', () => {
     )
     const opButton = opRow.querySelector('.operation')
     opButton.value = 'video-player'
-    const contentsBefore = element.items.find((i) => i.id === 'p1').contents
-    expect(() =>
-      element.prependNodeToContent(fakeEventFrom(opButton)),
-    ).to.throw(ReferenceError, 'tag is not defined')
-    expect(element.items.find((i) => i.id === 'p1').contents).to.equal(
-      contentsBefore,
+    element.prependNodeToContent(fakeEventFrom(opButton))
+    await settle(element)
+    const p1 = element.items.find((i) => i.id === 'p1')
+    expect(p1.contents.startsWith('<video-player></video-player>')).to.equal(
+      true,
     )
+    expect(p1.contents).to.include('Heading one')
   })
 
   it('skips content actions on locked pages', async () => {
@@ -668,22 +662,18 @@ describe('outline-designer store tools', () => {
     // import below the target page
     element.shadowRoot.querySelector('#targetselector').value = 'below'
     const belowData = await element.getData()
-    // BUG: getData (outline-designer.js:2836-2857) increments count inside
-    // an async map callback but reads it AFTER `await store
-    // .findItemAsObject()`, so by the time each order is computed the shared
-    // counter has already finished all of its increments. Every imported
-    // top-level item gets the same sibling order (parent.order + total
-    // count) instead of sequential orders, so multi-item imports collapse
-    // into one sibling slot. The assertions document the current values:
-    // they should become 6 / 7 / 8 once the count is captured per item.
-    expect(belowData.items.find((i) => i.id === 'p1').order).to.equal(8)
-    expect(belowData.items.find((i) => i.id === 'p2').order).to.equal(8)
+    // each import captures its own position before the await, so the
+    // imports land at sequential sibling orders below the target page
+    expect(belowData.items.find((i) => i.id === 'p1').order).to.equal(6)
+    expect(belowData.items.find((i) => i.id === 'p2').order).to.equal(7)
     expect(belowData.items.find((i) => i.id === 'p3').order).to.equal(8)
     // import above the target page
     element.shadowRoot.querySelector('#targetselector').value = 'above'
     const aboveData = await element.getData()
-    expect(aboveData.items.find((i) => i.id === 'p1').order).to.equal(2)
-    expect(aboveData.items.find((i) => i.id === 'p2').order).to.equal(2)
+    // the above branch mirrors the same sequential positions (first
+    // import closest to the target page)
+    expect(aboveData.items.find((i) => i.id === 'p1').order).to.equal(4)
+    expect(aboveData.items.find((i) => i.id === 'p2').order).to.equal(3)
     expect(aboveData.items.find((i) => i.id === 'p3').order).to.equal(2)
   })
 })

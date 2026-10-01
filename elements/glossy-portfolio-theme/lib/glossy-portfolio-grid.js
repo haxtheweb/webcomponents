@@ -48,7 +48,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
             if (children && children.length > 0) { //display children if available
               this.data = [...children];
               this.title = (this.activeItem && this.activeItem.title) || ""; // Use explicit null check and a fallback value
-            } else if(this.activeItem.metadata.relatedItems) { //display related items if available
+            } else if(this.activeItem.metadata && this.activeItem.metadata.relatedItems) { //display related items if available (items may carry no metadata at all)
 
               this.title = "Related Content";
               let relatedItem = store.findItem(activeItem.metadata.relatedItems);
@@ -249,14 +249,18 @@ ${this.data.length > 0 ?   html`
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
 
-      // Reset filters and filteredData when data changes (when changing pages)
+      // Reset filters and filteredData when data changes (when changing pages).
+      // The all button only exists while a grid is rendered, so guard for a
+      // navigation that lands on a page with no children, related items, or
+      // siblings (an empty grid renders no filter buttons at all).
       if(this.filtersList.length > 0){
         this.activeFilter = "all";
         let all = this.renderRoot.querySelector('[name="all"]');
-        all.classList.add('active'); //set active filter to "all"
+        if (all) {
+          all.classList.add('active'); //set active filter to "all"
+        }
       }
 
-      
       if(this.data && this.data.length > 0){  
         // if there is data, set filteredData to data and populate filtersList
         this.filteredData = this.data; 
@@ -270,10 +274,29 @@ ${this.data.length > 0 ?   html`
             }
           }
         });
+      } else {
+        // an empty grid keeps no stale filters or filtered cards
+        this.filteredData = [];
+        this.filtersList = [];
       }
       
     }
 
+  }
+
+  disconnectedCallback() {
+    // dispose the store reaction so a detached grid stops reacting
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
 
   //called when a filter is clicked

@@ -13,10 +13,11 @@ const makeFakeContainer = () => {
     mounts: [],
     serverReadyHandlers: {},
     files: {},
-    spawn: async (command, args) => {
+    spawn: async (command, args, options) => {
       const process = {
         command: command,
         args: args,
+        options: options,
         output: { pipeTo: async () => {} },
         input: {
           getWriter: () => ({ write: (data) => fake.writes.push(data) }),
@@ -133,7 +134,11 @@ describe('web-container', () => {
     expect(fake.mounts[0]).to.equal(el.files)
     expect(fake.spawns.length).to.equal(3)
     expect(fake.spawns[0].command).to.equal('jsh')
-    expect(fake.spawns[0].args.terminal.cols).to.exist
+    // spawn signature fix: args is a real array and terminal sizing rides
+    // in the options object, not the args parameter
+    expect(Array.isArray(fake.spawns[0].args)).to.equal(true)
+    expect(fake.spawns[0].options.terminal.cols).to.exist
+    expect(fake.spawns[0].options.terminal.rows).to.exist
     expect(fake.spawns[1].command).to.equal('npm')
     expect(fake.spawns[1].args[0]).to.equal('install')
     expect(fake.spawns[2].command).to.equal('npm')
@@ -294,12 +299,14 @@ describe('web-container', () => {
     const buttons = el.shadowRoot.querySelectorAll('.files button')
     expect(buttons.length).to.equal(2)
     expect(buttons[0].getAttribute('data-fname')).to.equal('index.js')
-    expect(buttons[0].hasAttribute('active')).to.equal(true)
-    expect(buttons[1].hasAttribute('active')).to.equal(false)
+    // the selected file button announces its state through aria-pressed
+    // (a11y follow-up) instead of the custom active attribute
+    expect(buttons[0].getAttribute('aria-pressed')).to.equal('true')
+    expect(buttons[1].getAttribute('aria-pressed')).to.equal('false')
     buttons[1].click()
     await new Promise((r) => setTimeout(r, 50))
     expect(el.fname).to.equal('package.json')
-    expect(buttons[1].hasAttribute('active')).to.equal(true)
+    expect(buttons[1].getAttribute('aria-pressed')).to.equal('true')
     const editor = el.shadowRoot.querySelector('code-editor')
     expect(editor.innerHTML.indexOf('{ "name": "pkg" }') !== -1).to.equal(true)
     expect(editor.language).to.equal('json')
@@ -329,6 +336,46 @@ describe('web-container', () => {
     el.refreshIframe()
     expect(iframe.getAttribute('src')).to.equal('http://127.0.0.1:4173/')
     expect(originalSrc.indexOf('loading.html') !== -1).to.equal(true)
+  })
+
+  it('tears down the resize listener, terminal pieces and shell on disconnect', async () => {
+    const { el } = await fixtureWith(
+      html`<web-container title="title"></web-container>`,
+    )
+    expect(typeof el.__onResize).to.equal('function')
+    const shellProcess = el.__shellProcess
+    const terminal = el.__terminal
+    const fitAddon = el.__fitAddon
+    let resizeCalls = 0
+    let killed = false
+    let terminalDisposed = false
+    let fitDisposed = false
+    shellProcess.resize = () => {
+      resizeCalls++
+    }
+    shellProcess.kill = () => {
+      killed = true
+    }
+    terminal.dispose = () => {
+      terminalDisposed = true
+    }
+    fitAddon.dispose = () => {
+      fitDisposed = true
+    }
+    // the global resize listener is live before disconnect
+    globalThis.dispatchEvent(new Event('resize'))
+    await new Promise((r) => setTimeout(r, 50))
+    expect(resizeCalls).to.equal(1)
+    // disconnect removes the listener and disposes / kills the pieces
+    el.disconnectedCallback()
+    globalThis.dispatchEvent(new Event('resize'))
+    await new Promise((r) => setTimeout(r, 50))
+    expect(resizeCalls).to.equal(1)
+    expect(killed).to.equal(true)
+    expect(terminalDisposed).to.equal(true)
+    expect(fitDisposed).to.equal(true)
+    expect(el.__onResize).to.equal(null)
+    el.connectedCallback()
   })
 
   it('sets the code editor contents and language', async () => {
@@ -440,6 +487,9 @@ describe('web-container-doc-player', () => {
     expect(data.indexOf("'") === -1).to.equal(true)
     expect(data.indexOf('&quot;') !== -1).to.equal(true)
     expect(data.indexOf('&apos;') !== -1).to.equal(true)
+    // bug 8: codePenData no longer throws when no code-pen-button exists
+    // (render() never renders one; the host page supplies it)
+    await el.codePenData()
     // codePenData looks up a code-pen-button in the shadow root; the player
     // never renders one itself, so inject one with the right tag name
     const fakeButton = globalThis.document.createElement(
@@ -494,6 +544,7 @@ describe('web-container-doc-player', () => {
       if (tag === 'schema-el') {
         return {
           haxProperties: () => 'https://example.com/schema-el.haxProperties.json',
+          outerHTML: '<schema-el></schema-el>',
         }
       }
       return origCreate.call(globalThis.document, tag, opts)
@@ -509,6 +560,18 @@ describe('web-container-doc-player', () => {
       // asText true serializes the built node
       const outer = await el.getExample('schema-el')
       expect(outer.indexOf('<my-el') !== -1).to.equal(true)
+      // bug 9: non-json responses and empty demoSchemas fall back to the
+      // created element instead of throwing on the schema.demoSchema deref
+      globalThis.fetch = async () => ({})
+      expect(await el.getExample('schema-el')).to.equal(
+        '<schema-el></schema-el>',
+      )
+      globalThis.fetch = async () => ({
+        json: async () => ({ demoSchema: [] }),
+      })
+      expect(await el.getExample('schema-el')).to.equal(
+        '<schema-el></schema-el>',
+      )
     } finally {
       globalThis.document.createElement = origCreate
       globalThis.fetch = originalFetchInDocPlayer
@@ -640,6 +703,7 @@ describe('web-container-wc-registry-docs', () => {
     globalThis.fetch = async (url) => {
       urls.push(url)
       return {
+        ok: true,
         json: async () => ({
           'git-corner': '@haxtheweb/git-corner/git-corner.js',
           'hax-bookmarklet': '@haxtheweb/hax-bookmarklet/hax-bookmarklet.js',
@@ -695,5 +759,37 @@ describe('web-container-wc-registry-docs', () => {
     select.value = ''
     await el.selectChange()
     expect(el.shadowRoot.querySelector('web-container-doc-player')).to.exist
+  })
+
+  it('reports a failed registry load instead of rejecting', async () => {
+    // bug 37: a non-ok response must not reject unhandled; the user gets
+    // feedback through the text surface and options stay at the default
+    globalThis.fetch = async () => {
+      return { ok: false, json: async () => { throw new Error('nope') } }
+    }
+    const el = await fixture(
+      html`<web-container-wc-registry-docs></web-container-wc-registry-docs>`,
+    )
+    await new Promise((r) => setTimeout(r, 100))
+    await el.updateComplete
+    expect(el.text).to.equal('Unable to load the registry file.')
+    expect(el.options['']).to.equal('')
+    expect(el.shadowRoot.querySelector('p').textContent).to.equal(
+      'Unable to load the registry file.',
+    )
+  })
+
+  it('catches a rejected registry fetch', async () => {
+    // bug 37: a network-level rejection is caught the same way
+    globalThis.fetch = async () => {
+      throw new Error('network down')
+    }
+    const el = await fixture(
+      html`<web-container-wc-registry-docs></web-container-wc-registry-docs>`,
+    )
+    await new Promise((r) => setTimeout(r, 100))
+    await el.updateComplete
+    expect(el.text).to.equal('Unable to load the registry file.')
+    expect(el.options['']).to.equal('')
   })
 })

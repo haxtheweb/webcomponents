@@ -77,13 +77,30 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "editMode") {
-        if (this[propName]) {
-          this.setAttribute("part", "edit-mode-active");
-        } else {
-          this.removeAttribute("part");
-        }
+        this._editModePartChanged(this[propName]);
       }
     });
+  }
+  /**
+   * Manage only the edit-mode-active part that this component owns.
+   * Themes may declare their own parts on this element (e.g. outline-player
+   * applies part="print-btn"), so never add or remove parts we do not own.
+   */
+  _editModePartChanged(editMode) {
+    const attr = this.getAttribute("part");
+    const parts = attr ? attr.split(" ").filter(Boolean) : [];
+    const hasEditModePart = parts.includes("edit-mode-active");
+    if (editMode && !hasEditModePart) {
+      parts.push("edit-mode-active");
+      this.setAttribute("part", parts.join(" "));
+    } else if (!editMode && hasEditModePart) {
+      const remaining = parts.filter((part) => part !== "edit-mode-active");
+      if (remaining.length > 0) {
+        this.setAttribute("part", remaining.join(" "));
+      } else {
+        this.removeAttribute("part");
+      }
+    }
   }
   /**
    * Props

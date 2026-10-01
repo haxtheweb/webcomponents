@@ -166,8 +166,17 @@ describe("haxcms-site-store computed state", () => {
     it("findItem returns an item by id and undefined for misses", () => {
       expect(store.findItem("page-2").title).to.equal("Page Two");
       // Array#find returns undefined for a no-match when a manifest is present;
-      // the null branch only fires when there is no manifest or no id
+      // the null branch only fires when there is no manifest, no items or no id
       expect(store.findItem("nope")).to.be.undefined;
+    });
+
+    it("findItem returns null instead of throwing when the manifest has no items array", () => {
+      // fixed (issue #3089, bug 11): findItem guarded on manifest + id but not
+      // manifest.items, so a truthy manifest without items threw TypeError
+      // reading find
+      store.manifest = { id: "x", title: "X", metadata: {} };
+      expect(() => store.findItem("page-1")).to.not.throw();
+      expect(store.findItem("page-1")).to.equal(null);
     });
 
     it("activeItem resolves from activeId", () => {
@@ -378,6 +387,21 @@ describe("haxcms-site-store computed getters extended", () => {
       expect(store.regionData).to.exist;
       expect(store.regionData.header).to.equal(null);
       expect(store.regionData.footerPrimary).to.equal(null);
+    });
+
+    it("returns fallback regions when the manifest is null", () => {
+      // fixed (issue #3089, bug 12): regionData used to return undefined for
+      // a falsy manifest, so site-region reads of header/footerPrimary/etc
+      // crashed with cannot read properties of undefined
+      store.manifest = null;
+      expect(store.regionData).to.exist;
+      expect(store.regionData.header).to.equal(null);
+      expect(store.regionData.sidebarFirst).to.equal(null);
+      expect(store.regionData.sidebarSecond).to.equal(null);
+      expect(store.regionData.contentTop).to.equal(null);
+      expect(store.regionData.contentBottom).to.equal(null);
+      expect(store.regionData.footerPrimary).to.equal(null);
+      expect(store.regionData.footerSecondary).to.equal(null);
     });
   });
 

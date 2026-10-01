@@ -491,7 +491,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
         site-tags-route::part(listing-grid) {
           display: grid;
-          gap: 24px;
+          gap: var(--ddd-spacing-6, 24px);
           width: 100%;
           view-transition-name: tags-listing-grid;
           grid-template-columns: repeat(4, 1fr);
@@ -1073,7 +1073,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .listing-grid {
         display: grid;
-        gap: 24px;
+        gap: var(--ddd-spacing-6, 24px);
         width: 100%;
         view-transition-name: listing-grid;
         grid-template-columns: repeat(4, 1fr);
@@ -1141,7 +1141,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin: 0 auto;
         padding: 0 22px;
         display: flex;
-        gap: 24px;
+        gap: var(--ddd-spacing-6, 24px);
         flex-direction: row;
         align-items: center;
         view-transition-name: pagination;

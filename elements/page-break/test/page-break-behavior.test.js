@@ -55,13 +55,10 @@ describe('page-break lifecycle and target wiring', () => {
     const pb = root.querySelector('page-break')
     expect(pb.title).to.equal('Section title')
     expect(pb.target.tagName).to.equal('H2')
-    // let the manager registration recalculation settle first
+    // let the manager registration recalculation settle first; the
+    // recalculation routes the replacement heading through setupTargetData
+    // so the mutation observer tracks it without a manual re-attach
     await wait(150)
-    // BUG(page-break-manager.js:220): the recalculation replaces the heading
-    // and reassigns element.target directly instead of via setupTargetData,
-    // so the mutation observer keeps watching the detached original heading.
-    // Re-attach the observer the same way the depth / hax-state flows do.
-    pb.setupTargetData(pb.target)
     // heading edits flow back into the title through the observer
     pb.target.innerText = 'Edited title'
     await wait(50)

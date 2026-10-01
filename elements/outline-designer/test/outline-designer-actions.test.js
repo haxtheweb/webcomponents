@@ -112,6 +112,10 @@ describe('outline-designer item operations', () => {
     expect(pageLi(element, 'p1').hasAttribute('data-has-children')).to.equal(
       true,
     )
+    // childless items omit the attribute instead of rendering a literal
+    expect(pageLi(element, 'p2').hasAttribute('aria-expanded')).to.equal(
+      false,
+    )
   })
 
   it('reports children, collapse and lock state', () => {
@@ -188,7 +192,7 @@ describe('outline-designer item operations', () => {
     ).to.equal(true)
   })
 
-  it('BUG monitorTitle commits the pre-edit title on Enter renames', async () => {
+  it('monitorTitle commits the typed title on Enter renames', async () => {
     const label = pageLi(element, 'p1').querySelector('.label.shown')
     element.editTitle({ target: label })
     const labelEdit = pageLi(element, 'p1').querySelector('.label-edit')
@@ -205,20 +209,20 @@ describe('outline-designer item operations', () => {
     expect(labelEdit.textContent).to.equal('Renamed Page')
     element.monitorTitle({ key: 'Enter', target: labelEdit })
     await settle(element)
-    // BUG: monitorTitle (outline-designer.js:2003) removes the
-    // contenteditable attribute BEFORE reading e.target.innerText on line
-    // 2008. Chromium rolls the editing host back to its pre-edit text when
-    // contenteditable is removed from the focused element, so the committed
-    // title is always the ORIGINAL title and the rename silently fails.
-    // The assertions below document the current broken behavior: they
-    // should become 'Renamed Page' / true once the read happens before the
-    // removeAttribute call.
+    // monitorTitle reads the inner text BEFORE removing the
+    // contenteditable attribute; Chromium rolls the focused editing host
+    // back to its pre-edit text once the attribute comes off the element,
+    // so reading after the removal committed the ORIGINAL title instead
     expect(element.items.find((i) => i.id === 'p1').title).to.equal(
-      'Page One',
+      'Renamed Page',
     )
-    // the pre-edit text is non-empty, so the modified flag still flips
-    // even though the committed title is the stale one
     expect(element.items.find((i) => i.id === 'p1').modified).to.equal(true)
+    // the visible label reflects the committed rename
+    expect(
+      pageLi(element, 'p1').querySelector('.label.shown').textContent.trim(),
+    ).to.equal('Renamed Page')
+    // the editing host itself still rolls back to the pre-edit text once
+    // the attribute is removed, but the title was captured first
     expect(labelEdit.textContent).to.equal('Page One')
     expect(labelEdit.hasAttribute('contenteditable')).to.equal(false)
   })
@@ -494,12 +498,35 @@ describe('outline-designer item operations', () => {
   })
 
   it('deletes the selected pages in bulk', async () => {
+    // open a content preview so the bulk delete has popover state to clear
+    pageLi(element, 'p1')
+      .querySelector('.content-toggle-btn')
+      .click()
+    await settle(element)
+    const previewNode = element.shadowRoot.querySelector(
+      '[data-content-parent-id="p1"][data-node-index="1"]',
+    )
+    element.setActivePreview({
+      target: previewNode,
+      preventDefault() {},
+      stopPropagation() {},
+      stopImmediatePropagation() {},
+    })
+    expect(element.activePreview === previewNode).to.equal(true)
     element.handleItemClick({
       ctrlKey: true,
       target: pageLi(element, 'p1'),
     })
     element.deleteSelected()
     await settle(element)
+    // the preview state cannot survive the bulk delete
+    expect(element.activePreview).to.equal(null)
+    expect(element.activePreviewIndex).to.equal(-1)
+    expect(
+      element.shadowRoot
+        .querySelector('simple-popover')
+        .hasAttribute('hidden'),
+    ).to.equal(true)
     expect(element.items.find((i) => i.id === 'p1').delete).to.equal(true)
     expect(element.items.find((i) => i.id === 'c2').delete).to.equal(true)
     // selection is consumed by the bulk delete
@@ -555,6 +582,31 @@ describe('outline-designer item operations', () => {
     keydown(p1, 'ArrowRight')
     await settle(element)
     expect(element.isCollapsed('p1')).to.equal(false)
+  })
+
+  it('focus traversal skips unrendered rows while deleted items are hidden', async () => {
+    // collapse p1 (c1 / c2 leave the DOM) and hide the deleted p2
+    pageLi(element, 'p1')
+      .querySelector('.collapse-btn')
+      .click()
+    await settle(element)
+    element.itemOp(element.items.findIndex((i) => i.id === 'p2'), 'delete')
+    await settle(element)
+    element.toggleDelete()
+    await settle(element)
+    // rendered rows are p1 and p3 only
+    expect(pageLi(element, 'c1') === null).to.equal(true)
+    expect(pageLi(element, 'p2').hasAttribute('hidden')).to.equal(true)
+    // next / previous focus moves only target rendered rows
+    element.focusItem('p1')
+    element.focusNextItem(element.items.findIndex((i) => i.id === 'p1'))
+    expect(element.shadowRoot.activeElement === pageLi(element, 'p3')).to.equal(
+      true,
+    )
+    element.focusPreviousItem(element.items.findIndex((i) => i.id === 'p3'))
+    expect(element.shadowRoot.activeElement === pageLi(element, 'p1')).to.equal(
+      true,
+    )
   })
 
   it('deletes and duplicates from the tree keyboard shortcuts', async () => {

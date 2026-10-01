@@ -3540,14 +3540,19 @@ class DDDocs extends DDD {
       <select
         class="mb-5"
         aria-label="Select an option to render"
+        .value="${this.option}"
         @change="${(e) => {
           this.option = e.target.value;
-          this.shadowRoot.querySelector("select").value = this.option;
         }}"
       >
-        <option value="*">Full styleguide</option>
+        <option value="*" ?selected="${this.option === "*"}">Full styleguide</option>
         ${this.options.map(
-          (option) => html`<option value="${option}">${option}</option>`,
+          (option) =>
+            html`<option
+              value="${option}"
+              ?selected="${this.option === option}"
+              >${option}</option
+            >`,
         )}
       </select>
     `;

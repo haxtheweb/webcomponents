@@ -148,12 +148,11 @@ describe('bootstrap-breadcrumb store-driven trail', () => {
     const last = lis[lis.length - 1]
     expect(last.classList.contains('active')).to.equal(true)
     expect(last.querySelector('span').textContent).to.equal('Child page')
-    // BUG(bootstrap-theme/lib/BootstrapBreadcrumb.js:233): the
-    // ${isLast ? 'aria-current="page"' : ''} string interpolation in
-    // attribute-name position renders nothing in Lit 3, so the current crumb
-    // never announces itself to assistive tech. Flip this assertion when the
-    // source is fixed.
-    expect(last.getAttribute('aria-current') === null).to.equal(true)
+    // the current crumb announces itself via a conditional attribute binding
+    // (the nothing sentinel removes the attribute from the earlier crumbs so
+    // only the current crumb is announced as current)
+    expect(last.getAttribute('aria-current')).to.equal('page')
+    expect(lis[1].hasAttribute('aria-current')).to.equal(false)
     const parentLink = lis[2].querySelector('a')
     expect(parentLink.getAttribute('aria-label')).to.equal(
       'Navigate to Parent page',
@@ -242,11 +241,9 @@ describe('bootstrap-footer store-driven pagination', () => {
     expect(footer._backwardItem.id).to.equal('parent-page')
   })
 
-  // BUG(bootstrap-theme/lib/BootstrapFooter.js:164-179): _backwardItem and
-  // _forwardItem are only ever assigned when the neighbor exists and are
-  // never cleared otherwise, so navigating to a boundary page on a live
-  // footer keeps the previous page's neighbor link rendered.
-  it('keeps a stale backward link when moving to the first page', async () => {
+  // boundary navigation clears the neighbor that no longer exists so a
+  // live footer never keeps the previous page's neighbor link rendered
+  it('clears the backward link when moving to the first page', async () => {
     store.activeId = 'parent-page'
     const footer = await makeFooter()
     await wait(80)
@@ -254,16 +251,19 @@ describe('bootstrap-footer store-driven pagination', () => {
     await wait(80)
     footer.requestUpdate()
     await footer.updateComplete
-    expect(footer._backwardItem.id).to.equal('home')
+    expect(footer._backwardItem === null).to.equal(true)
     expect(footer.shadowRoot.querySelector('a.backward') === null).to.equal(
-      false,
+      true,
     )
-    // the forward link also stays stale after moving to the last page
+    // the forward link also clears after moving to the last page
     store.activeId = 'child-page'
     await wait(80)
     footer.requestUpdate()
     await footer.updateComplete
-    expect(footer._forwardItem.id).to.equal('parent-page')
+    expect(footer._forwardItem === null).to.equal(true)
+    expect(footer.shadowRoot.querySelector('a.forward') === null).to.equal(
+      true,
+    )
   })
 })
 
@@ -604,13 +604,10 @@ describe('BootstrapStyleGuideAuthoring registration', () => {
     ).to.equal(false)
   })
 
-  // BUG(bootstrap-theme/lib/BootstrapStyleGuideAuthoring.js:296): with no
-  // payload.manager the code passes the globalThis.DesignSystemManager
-  // HOLDER object into applyBootstrapAuthoring, so isBootstrapActiveSystem
-  // sees neither .active nor .activeSystem on it and every bootstrap section
-  // is skipped. The holder's singleton (via requestAvailability()) does have
-  // active === 'bootstrap'. Documenting current behavior below.
-  it('no-manager fallback skips sections (holder passed, not singleton)', () => {
+  // with no payload.manager the fallback resolves the DesignSystemManager
+  // holder's singleton (requestAvailability), whose active system is
+  // bootstrap, so the bootstrap sections are injected
+  it('no-manager fallback resolves the singleton and injects sections', () => {
     const st = makeStore({})
     install(st)
     registerBootstrapStyleGuideAuthoring({})
@@ -618,7 +615,7 @@ describe('BootstrapStyleGuideAuthoring registration', () => {
     expect(
       out.settings.configure.find((s) => s.property === 'bootstrap-styles') ===
         undefined,
-    ).to.equal(true)
+    ).to.equal(false)
   })
 
   it('null props pass straight through the wrapper', () => {

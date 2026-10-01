@@ -124,8 +124,8 @@ describe('page-contents-menu rendering', () => {
     expect(links[0].getAttribute('aria-current')).to.equal('true')
     expect(links[0].className.includes('active')).to.equal(true)
     expect(links[0].className.includes('indent-2')).to.equal(true)
-    // inactive items never claim to be the current one
-    expect(links[1].getAttribute('aria-current') === 'true').to.equal(false)
+    // inactive items drop the aria-current attribute entirely
+    expect(links[1].hasAttribute('aria-current')).to.equal(false)
     expect(links[1].className.includes('indent-4')).to.equal(true)
     // meta content prefers id but falls back to link
     const metas = el.shadowRoot.querySelectorAll(

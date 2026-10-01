@@ -223,46 +223,41 @@ describe('clean-one print button fallback', () => {
   })
 })
 
-// BUG(clean-one.js:1052-1060): prevPage()/nextPage() call
-// super.prevPage(e) / super.nextPage(e), but no class in the CleanOne mixin
-// chain defines either method, so every invocation throws a TypeError. The
-// hooks appear vestigial (no superclass or wiring ever calls them); clean-two
-// models prevPage/nextPage as label strings instead.
-describe('clean-one prev/next hooks (BUG: vestigial super calls)', () => {
-  it('throws TypeError when prevPage is invoked', async () => {
+// BUG(clean-one.js:1052-1060) RESOLVED (round 8): prevPage()/nextPage()
+// called super.prevPage(e) / super.nextPage(e), but no class in the CleanOne
+// mixin chain defines either method, so every invocation threw a TypeError.
+// The vestigial hooks were removed (clean-two models prevPage/nextPage as
+// label strings instead).
+describe('clean-one prev/next hooks (vestigial super calls removed)', () => {
+  it('no longer defines prevPage/nextPage methods on the theme', async () => {
     const el = await fixture(html`<clean-one></clean-one>`)
-    expect(() => el.prevPage(new Event('click'))).to.throw(TypeError)
-  })
-
-  it('throws TypeError when nextPage is invoked', async () => {
-    const el = await fixture(html`<clean-one></clean-one>`)
-    expect(() => el.nextPage(new Event('click'))).to.throw(TypeError)
+    expect(typeof el.prevPage).to.equal('undefined')
+    expect(typeof el.nextPage).to.equal('undefined')
   })
 })
 
-// BUG(clean-one.js:730): updated() schedules requestAnimationFrame(() =>
-// this._syncViewportLayout()) when topItems/items/activeLayout change, but
-// _syncViewportLayout is defined nowhere in the CleanOne mixin chain (it is a
-// clean-portfolio-theme method, which also declares those three properties).
-// None of topItems/items/activeLayout are declared as properties on clean-one,
-// so the branch cannot fire from a normal property binding either, and a
-// forced firing would throw inside the animation frame.
-describe('clean-one viewport sync branch (BUG: missing method)', () => {
+// BUG(clean-one.js:730) RESOLVED (round 8): updated() scheduled
+// requestAnimationFrame(() => this._syncViewportLayout()) when
+// topItems/items/activeLayout changed, but _syncViewportLayout is defined
+// nowhere in the CleanOne mixin chain (it is a clean-portfolio-theme method,
+// which also declares those three properties). None of
+// topItems/items/activeLayout are declared as properties on clean-one, so the
+// branch was unreachable via normal bindings and a forced firing would throw
+// inside the animation frame. The unreachable scheduling was removed.
+describe('clean-one viewport sync branch (unreachable scheduling removed)', () => {
   it('does not define _syncViewportLayout anywhere in the chain', async () => {
     const el = await fixture(html`<clean-one></clean-one>`)
     expect(typeof el._syncViewportLayout).to.equal('undefined')
   })
 
-  it('schedules the sync callback when updated sees an items change', async () => {
+  it('does not schedule a sync callback when updated sees an items change', async () => {
     const el = await fixture(html`<clean-one></clean-one>`)
     let synced = false
-    // instance-level stub so the scheduled frame does not throw (the real
-    // method is missing; see BUG above)
     el._syncViewportLayout = () => {
       synced = true
     }
     el.updated(new Map([['items', [{ id: 'item-1' }]]]))
     await new Promise((resolve) => requestAnimationFrame(() => resolve()))
-    expect(synced).to.be.true
+    expect(synced).to.be.false
   })
 })

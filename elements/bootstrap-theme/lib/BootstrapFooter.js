@@ -92,6 +92,22 @@ class BootstrapFooter extends LitElement {
           box-shadow: inset 0 2px 4px 0
             rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
         }
+
+        /* OS dark mode with the default light theme inherits white text from
+           the theme host, so the light footer container and its button text
+           have to re-theme the same way the color-theme 1 treatment does */
+        @media (prefers-color-scheme: dark) {
+          :host([color-theme="0"]) .container {
+            background-color: var(
+              --bootstrap-theme-dark-secondary-background-color
+            );
+          }
+
+          :host([color-theme="0"]) .btn {
+            color: var(--bootstrap-theme-dark-color);
+            border-color: #adb5bd;
+          }
+        }
         /* palenight theme */
         :host([color-theme="2"]) {
           --simple-icon-color: var(--bootstrap-theme-palenight-color);
@@ -156,10 +172,10 @@ class BootstrapFooter extends LitElement {
           let storeActiveItemIndex = _mobx_val_0;
           let storeRouterManifest = _mobx_val_1;
           if (
-            this._activeItem !== storeActiveItemIndex ||
+            this._activeItemIndex !== storeActiveItemIndex ||
             this._routerManifest !== storeRouterManifest
           ) {
-            this._activeItem = storeActiveItemIndex;
+            this._activeItemIndex = storeActiveItemIndex;
             this._routerManifest = storeRouterManifest;
             if (
               storeRouterManifest &&
@@ -168,6 +184,8 @@ class BootstrapFooter extends LitElement {
             ) {
               this._backwardItem =
                 storeRouterManifest.items[storeActiveItemIndex - 1];
+            } else {
+              this._backwardItem = null;
             }
             if (
               storeRouterManifest &&
@@ -176,6 +194,8 @@ class BootstrapFooter extends LitElement {
             ) {
               this._forwardItem =
                 storeRouterManifest.items[storeActiveItemIndex + 1];
+            } else {
+              this._forwardItem = null;
             }
           }
         });

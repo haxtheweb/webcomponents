@@ -293,7 +293,16 @@ function applyBootstrapAuthoring(HAXStore, manager) {
 }
 
 export function registerBootstrapStyleGuideAuthoring(payload = {}) {
-  const manager = payload.manager || globalThis.DesignSystemManager;
+  let manager = payload.manager;
+  if (
+    !manager &&
+    globalThis.DesignSystemManager &&
+    typeof globalThis.DesignSystemManager.requestAvailability === "function"
+  ) {
+    // resolve the holder's singleton instance so isBootstrapActiveSystem
+    // sees the active design system instead of the bare holder object
+    manager = globalThis.DesignSystemManager.requestAvailability();
+  }
   if (
     globalThis.HaxStore &&
     typeof globalThis.HaxStore.requestAvailability === "function"

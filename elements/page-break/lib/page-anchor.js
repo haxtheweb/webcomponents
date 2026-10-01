@@ -96,12 +96,15 @@ export class PageAnchor extends DDDSuper(LitElement) {
   // load field from entity id, or target based on who is closer to match
   getMatchFromFields(id, target, field = "accentColor") {
     const entityData = toJS(store.entityData);
+    // entityData exposes the color / icon keys; accentColor maps to the
+    // color key so the token branch resolves with real store data
+    const key = field == "accentColor" ? "color" : field;
     // support entity defining the field to use, which color is a possible option asked for
-    if (entityData[id] && entityData[id][field]) {
+    if (entityData[id] && entityData[id][key]) {
       if (field == "accentColor") {
-        return `--simple-colors-default-theme-${entityData[id][field]}-3`;
+        return `--simple-colors-default-theme-${entityData[id][key]}-3`;
       } else {
-        return entityData[id][field];
+        return entityData[id][key];
       }
     }
     // defer to the entity resource but fallback to the target itself
@@ -132,10 +135,22 @@ export class PageAnchor extends DDDSuper(LitElement) {
     try {
       icon = this.getMatchFromFields(this.entityId, this.target, "icon");
     } catch (e) {}
-    return html`<mark @click="${this.clickHandler}">
+    return html`<mark
+      tabindex="0"
+      role="link"
+      @click="${this.clickHandler}"
+      @keydown="${this.keyHandler}"
+    >
       ${icon ? html`<simple-icon-lite icon="${icon}"></simple-icon-lite>` : ``}
       <slot></slot>
     </mark>`;
+  }
+  // activate the jump link from the keyboard as well as the pointer
+  keyHandler(e) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+      e.preventDefault();
+      this.clickHandler(e);
+    }
   }
   static get tag() {
     return "page-anchor";
@@ -172,42 +187,47 @@ export class PageAnchor extends DDDSuper(LitElement) {
         value: null,
       },
     ];
-    HAXStore.activeHaxBody
-      .querySelectorAll("[id],[resource]")
-      .forEach((node) => {
-        // test for a happy label
-        if (
-          !["PAGE-BREAK", "PAGE-ANCHOR", "RICH-TEXT-EDITOR-HIGHLIGHT"].includes(
-            node.tagName,
-          )
-        ) {
-          let schema = HAXStore.haxSchemaFromTag(node.tagName);
-          let label = node.gizmo ? node.gizmo.title : "";
-          let selector = node.tagName.toLowerCase();
+    if (HAXStore.activeHaxBody) {
+      HAXStore.activeHaxBody
+        .querySelectorAll("[id],[resource]")
+        .forEach((node) => {
+          // test for a happy label
           if (
-            schema.gizmo &&
-            schema.gizmo.metadata &&
-            schema.gizmo.metadata.anchorLabel
+            ![
+              "PAGE-BREAK",
+              "PAGE-ANCHOR",
+              "RICH-TEXT-EDITOR-HIGHLIGHT",
+            ].includes(node.tagName)
           ) {
-            label = node[schema.gizmo.metadata.anchorLabel];
-          } else {
-            if (node.innerText != "") {
-              label = node.innerText;
+            let schema = HAXStore.haxSchemaFromTag(node.tagName);
+            let label = node.gizmo ? node.gizmo.title : "";
+            let selector = node.tagName.toLowerCase();
+            if (
+              schema &&
+              schema.gizmo &&
+              schema.gizmo.metadata &&
+              schema.gizmo.metadata.anchorLabel
+            ) {
+              label = node[schema.gizmo.metadata.anchorLabel];
+            } else {
+              if (node.innerText != "") {
+                label = node.innerText;
+              }
+              if (node.getAttribute("id")) {
+                label += ` (${node.getAttribute("id")})`;
+                selector = `#${node.getAttribute("id")}`;
+              } else if (node.getAttribute("resource")) {
+                label += ` (${node.getAttribute("resource")})`;
+                selector = `[resource="${node.getAttribute("resource")}"]`;
+              }
             }
-            if (node.getAttribute("id")) {
-              label += ` (${node.getAttribute("id")})`;
-              selector = `#${node.getAttribute("id")}`;
-            } else if (node.getAttribute("resource")) {
-              label += ` (${node.getAttribute("resource")})`;
-              selector = `[resource="${node.getAttribute("resource")}"]`;
-            }
+            relatedDomNode.push({
+              text: label,
+              value: selector,
+            });
           }
-          relatedDomNode.push({
-            text: label,
-            value: selector,
-          });
-        }
-      });
+        });
+    }
 
     const entityData = toJS(store.entityData);
     // default to null parent as the whole site

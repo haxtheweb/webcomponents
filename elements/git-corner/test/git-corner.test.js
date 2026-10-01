@@ -123,6 +123,25 @@ describe("GitCorner test", () => {
     expect(link.rel).to.include("noopener");
   });
 
+  it("hides the decorative SVG and keeps the link named when alt is unset", async () => {
+    const svg = element.shadowRoot.querySelector("svg");
+    // the octocat graphic is decorative; the link carries the accessible name
+    expect(svg.getAttribute("aria-hidden")).to.equal("true");
+    const link = element.shadowRoot.querySelector("a");
+    // with alt set, the label mirrors it
+    element.alt = "Our project repository";
+    await element.updateComplete;
+    expect(link.getAttribute("aria-label")).to.equal(
+      "Our project repository",
+    );
+    // with alt unset, the fallback keeps the link labelled
+    element.alt = null;
+    await element.updateComplete;
+    expect(link.getAttribute("aria-label")).to.equal(
+      "View source on GitHub",
+    );
+  });
+
   // Edge cases
   it("handles empty source gracefully", async () => {
     element.source = "";

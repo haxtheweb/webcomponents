@@ -309,25 +309,25 @@ class Store {
    * regionData is pulled out of theme info
    */
   get regionData() {
+    // fallback juuuuust to be safe... this is also what we hand back when
+    // there is no manifest yet, so consumers (site-region) always get a
+    // region object to read keys from instead of undefined
+    var regionData = {
+      header: null,
+      sidebarFirst: null,
+      sidebarSecond: null,
+      contentTop: null,
+      contentBottom: null,
+      footerPrimary: null,
+      footerSecondary: null,
+    };
     if (this.manifest) {
-      var regionData = {};
       // this is required so better be...
       if (varExists(this.manifest, "metadata.theme.regions")) {
         regionData = this.manifest.metadata.theme.regions;
-      } else {
-        // fallback juuuuust to be safe...
-        regionData = {
-          header: null,
-          sidebarFirst: null,
-          sidebarSecond: null,
-          contentTop: null,
-          contentBottom: null,
-          footerPrimary: null,
-          footerSecondary: null,
-        };
       }
-      return regionData;
     }
+    return regionData;
   }
   /**
    * Get a unique slug name / path based on existing slug, page data and if we are to automatically generate
@@ -1082,7 +1082,9 @@ class Store {
    * shortcut to find an item in the manifest based on id
    */
   findItem(id) {
-    if (this.manifest && id) {
+    // guard items as well; a manifest can be present before its items
+    // array is hydrated, and reading find on a missing array throws
+    if (this.manifest && this.manifest.items && id) {
       return this.manifest.items.find((item) => {
         if (item.id !== id) {
           return false;

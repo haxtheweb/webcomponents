@@ -221,6 +221,11 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             color: var(--bootstrap-theme-dark-color) !important;
           }
 
+          :host([color-theme="1"])
+            .btn-group .btn {
+            color: white;
+          }
+
           :host([color-theme="1"]) simple-popover {
             --simple-popover-color: white;
             --simple-popover-background-color: var(
@@ -244,6 +249,10 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           }
 
           /* palenight theme */
+          :host([color-theme="2"])
+            .btn-group .btn {
+            color: white;
+          }
           :host([color-theme="2"]) {
             --haxcms-user-styles-color-theme-color-color: var(
               --simple-colors-default-theme-light-blue-1,

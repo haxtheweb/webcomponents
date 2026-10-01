@@ -458,6 +458,23 @@ class BootstrapTheme extends HAXCMSThemeParts(
           :host([color-theme="0"]) .site-title {
             background-color: var(--bootstrap-theme-dark-background-color);
           }
+          /* the site title text keeps its hardcoded light-mode gray otherwise
+             and loses all contrast on the darkened title surface */
+          :host([color-theme="0"]) .site-title {
+            color: var(--bootstrap-theme-dark-color);
+          }
+          /* re-theme the content surfaces so the white text set above never
+             lands on the untouched white Bootstrap card in OS dark mode */
+          :host([color-theme="0"]) .card,
+          :host([color-theme="0"]) .main-content {
+            background-color: var(
+              --bootstrap-theme-dark-secondary-background-color
+            );
+            color: var(--bootstrap-theme-dark-color);
+          }
+          :host([color-theme="0"]) .main-section {
+            color: var(--bootstrap-theme-dark-color);
+          }
         }
 
         /* Palenight Theme */
@@ -640,7 +657,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   alt="${this.__siteTitle} site logo"
                 />`
               : ``}
-            <h4>${this.__siteTitle}</h4>
+            ${this.__siteTitle ? html`<h4>${this.__siteTitle}</h4>` : ``}
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>

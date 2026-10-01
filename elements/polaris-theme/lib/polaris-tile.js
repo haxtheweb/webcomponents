@@ -80,7 +80,7 @@ export class PolarisTile extends LitElement {
         max-width: 100%;
         font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
         font-size: 32px;
-        color: white;
+        color: var(--ddd-theme-default-white, #fff);
         box-shadow: rgba(0, 3, 33, 0.1) 0px 8px 16px 0px;
         position: relative;
       }
@@ -121,7 +121,10 @@ export class PolarisTile extends LitElement {
 
       :host([type]) .tile,
       :host([type="1"]) .tile {
-        background-color: rgb(30, 64, 124);
+        background-color: light-dark(
+          var(--ddd-theme-default-beaverBlue, #1e407c),
+          var(--ddd-theme-default-nittanyNavy, #001e44)
+        );
       }
       :host([type="2"]) .tile {
         background-color: light-dark(
@@ -132,21 +135,35 @@ export class PolarisTile extends LitElement {
       }
 
       :host([type="3"]) .tile {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: var(--ddd-theme-default-potential0, rgba(0, 0, 0, 0));
         background-image: linear-gradient(
-          rgb(30, 64, 124) 0%,
-          rgb(0, 30, 68) 65%,
-          rgb(0, 30, 68) 100%
+          light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          ) 0%,
+          light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          ) 65%,
+          light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          ) 100%
         );
       }
 
       :host([type="4"]) .tile {
-        background-color: rgb(0, 30, 68);
+        background-color: light-dark(
+          var(--ddd-theme-default-nittanyNavy, #001e44),
+          var(--ddd-theme-default-potentialMidnight, #000321)
+        );
       }
 
       :host([type="5"]) .tile {
         background-blend-mode: multiply;
-        background-color: rgba(0, 3, 33, 0.5);
+        /* exact DDD match for the potential midnight 50 percent overlay;
+           kept the same in both schemes since it darkens the tile image */
+        background-color: var(--ddd-theme-default-potential50, rgba(0, 3, 33, 0.5));
         background-position: 50% 50%;
         background-size: cover;
       }

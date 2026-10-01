@@ -38,6 +38,12 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
             this.licenseName = LList[this.manifest.license].name;
             this.licenseLink = LList[this.manifest.license].link;
             this.licenseImage = LList[this.manifest.license].image;
+          } else {
+            // reset so an unknown or missing license never keeps a stale
+            // previously resolved license rendered on the footer
+            this.licenseName = "";
+            this.licenseLink = "";
+            this.licenseImage = "";
           }
         });
       }),
@@ -68,7 +74,24 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     
 
  
+
   }
+
+  disconnectedCallback() {
+    // dispose the store reactions so a detached footer stops reacting
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
+
   
   // Lit reactive properties
   static get properties() {

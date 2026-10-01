@@ -21,8 +21,10 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    this.thumbnail ="https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg",
-    this.slug = "https://google.com";
+    // the grid always supplies a thumbnail and a slug; keep the defaults
+    // empty so a bare card never reaches for a remote image or a remote url
+    this.thumbnail = "";
+    this.slug = "";
   }
 
 

@@ -33,7 +33,10 @@ export class TrainingTop extends LitElement {
       }
 
       site-title {
-        color: black;
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-white, #ffffff)
+        );
         --site-title-link-h1-display: inline-block;
         --site-title-link-display: flex;
         --site-title-link-text-decoration: none;
@@ -47,11 +50,17 @@ export class TrainingTop extends LitElement {
       }
 
       #codelab-title {
-        background: #fff;
+        background: light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-potentialMidnight, #000321)
+        );
         box-shadow:
           0 1px 2px 0 rgba(60, 64, 67, 0.3),
           0 2px 6px 2px rgba(60, 64, 67, 0.15);
-        color: #3c4043;
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-white, #ffffff)
+        );
         display: flex;
         grid-area: title;
         align-items: center;
@@ -97,11 +106,10 @@ export class TrainingTop extends LitElement {
         <div class="codelab-time-container">
           <div
             class="time-remaining"
-            tabindex="0"
             role="timer"
             aria-label="${this.time === ""
               ? "Estimated time remaining: 40 minutes"
-              : ""}"
+              : "Estimated time remaining: " + this.time}"
             data-title="Estimated time remaining: 40 minutes"
           >
             ${this.time}

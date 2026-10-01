@@ -119,8 +119,14 @@ describe('training-top', () => {
     expect(top.shadowRoot.querySelector('site-title')).to.exist
     const timer = top.shadowRoot.querySelector('.time-remaining')
     expect(timer.getAttribute('role')).to.equal('timer')
-    expect(timer.getAttribute('tabindex')).to.equal('0')
+    // the timer is a passive status region rather than an interactive
+    // control, so it no longer carries tabindex="0" (round 8 a11y fix)
+    expect(timer.hasAttribute('tabindex')).to.be.false
     expect(timer.textContent.trim()).to.equal('5 min')
+    // the label now describes the bare time value instead of rendering empty
+    expect(timer.getAttribute('aria-label')).to.equal(
+      'Estimated time remaining: 5 min',
+    )
   })
 
   it('labels the timer with an estimate when no time is set', async () => {
@@ -172,16 +178,18 @@ describe('training-theme store wiring', () => {
   })
 })
 
-// BUG(training-theme.js:60-65): the constructor autorun reads
-// store.manifest.items without a null guard. With a null manifest (before
-// CMS boot / after teardown) the reaction throws
+// BUG(training-theme.js:60-65) RESOLVED (round 8): the constructor autorun
+// read store.manifest.items without a null guard. With a null manifest
+// (before CMS boot / after teardown) the reaction threw
 // "TypeError: Cannot read properties of null (reading 'items')", which mobx
-// catches, logs, and then disposes the reaction — so the theme permanently
-// stops mirroring items. Evidence: the baseline coverage run logs exactly
-// this mobx reaction failure twice. The guard should be
-// store.manifest && store.manifest.items.
-describe('training-theme manifest guard (BUG: unguarded null manifest)', () => {
-  it('constructor autorun throws on a null manifest', async () => {
+// caught, logged, and then disposed the reaction — so the theme permanently
+// stopped mirroring items (evidence: the baseline coverage run logged this
+// mobx reaction failure twice). The autorun now guards
+// store.manifest && store.manifest.items (defaulting to an empty array), so
+// the reaction survives null manifests and keeps mirroring a manifest that
+// arrives later.
+describe('training-theme manifest guard (null manifest handled)', () => {
+  it('constructor autorun survives a null manifest and keeps mirroring', async () => {
     const originalManifest = store.manifest
     const originalActiveId = store.activeId
     store.manifest = null
@@ -197,9 +205,19 @@ describe('training-theme manifest guard (BUG: unguarded null manifest)', () => {
       const sawItemsTypeError = errors.some((entry) => {
         return entry.includes("reading 'items'")
       })
-      // documents the current broken behavior; see BUG comment above
-      expect(sawItemsTypeError).to.be.true
+      // documents the fixed behavior; the guard keeps the reaction alive
+      expect(sawItemsTypeError).to.be.false
       expect(el.items.length).to.equal(0)
+      // the reaction is no longer disposed: a manifest appearing later is
+      // still mirrored into items (previously the disposed reaction never
+      // fired again)
+      store.manifest = {
+        title: 'Late manifest',
+        items: [{ id: 'late-1', title: 'Late', slug: 'late' }],
+      }
+      const mirrored = await waitFor(() => el.items.length === 1)
+      expect(mirrored).to.be.true
+      expect(el.items[0].title).to.equal('Late')
     } finally {
       console.error = originalError
       store.manifest = originalManifest

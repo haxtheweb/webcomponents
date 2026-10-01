@@ -314,8 +314,10 @@ export class UserScaffold extends HTMLElement {
     }
   }
   // read memory state
+  // presence check instead of a falsy check so stored values of 0 (e.g.
+  // a palette index of 0) read back as 0 instead of null
   readMemory(key) {
-    if (this.memory[key]) {
+    if (key in this.memory) {
       return toJS(this.memory[key]);
     }
     return null;

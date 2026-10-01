@@ -90,14 +90,17 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
+          /* DDD migration: exact / near-exact token remaps. The haxma-primary
+             pair and haxma-text stay raw because DDD has no indigo-family
+             token and no near-exact neutral step for #545454. */
           --haxma-primary: #5551FF;
           --haxma-primary-hover: #4942E6;
           --haxma-text: #545454;
-          --haxma-text-dark: #000000;
-          --haxma-bg: #FFFFFF;
-          --haxma-border: #E5E7EB;
-          --haxma-border-light: #F3F4F6;
-          --haxma-nav-height: 72px;
+          --haxma-text-dark: var(--ddd-theme-default-black, #000000);
+          --haxma-bg: var(--ddd-theme-default-white, #FFFFFF);
+          --haxma-border: var(--ddd-theme-default-limestoneLight, #E5E7EB);
+          --haxma-border-light: var(--ddd-theme-default-limestoneMaxLight, #F3F4F6);
+          --haxma-nav-height: var(--ddd-spacing-18, 72px);
         }
         
         body {
@@ -110,28 +113,28 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         }
         
         body.dark-mode {
-          background-color: #1a1a1a;
-          color: #e5e5e5;
+          background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+          color: var(--simple-colors-default-theme-grey-11, #e5e5e5);
           --haxma-primary: #8B88FF;
           --haxma-primary-hover: #A5A2FF;
-          --haxma-bg: #1a1a1a;
-          --haxma-text: #e5e5e5;
-          --haxma-text-dark: #ffffff;
-          --haxma-border: #404040;
-          --haxma-border-light: #2a2a2a;
+          --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+          --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+          --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
+          --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
+          --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
         }
         
         @media (prefers-color-scheme: dark) {
           body:not(.light-mode) {
-            background-color: #1a1a1a;
-            color: #e5e5e5;
+            background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+            color: var(--simple-colors-default-theme-grey-11, #e5e5e5);
             --haxma-primary: #8B88FF;
             --haxma-primary-hover: #A5A2FF;
-            --haxma-bg: #1a1a1a;
-            --haxma-text: #e5e5e5;
-            --haxma-text-dark: #ffffff;
-            --haxma-border: #404040;
-            --haxma-border-light: #2a2a2a;
+            --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+            --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+            --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
+            --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
+            --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
           }
         }
       `,
@@ -152,23 +155,23 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         --haxma-primary: #5551FF;
         --haxma-primary-hover: #4942E6;
         --haxma-text: #545454;
-        --haxma-text-dark: #000000;
-        --haxma-bg: #FFFFFF;
-        --haxma-border: #E5E7EB;
-        --haxma-border-light: #F3F4F6;
-        --haxma-nav-height: 72px;
+        --haxma-text-dark: var(--ddd-theme-default-black, #000000);
+        --haxma-bg: var(--ddd-theme-default-white, #FFFFFF);
+        --haxma-border: var(--ddd-theme-default-limestoneLight, #E5E7EB);
+        --haxma-border-light: var(--ddd-theme-default-limestoneMaxLight, #F3F4F6);
+        --haxma-nav-height: var(--ddd-spacing-18, 72px);
       }
       
       :host([dark-mode]) {
         color-scheme: dark;
-        background-color: #1a1a1a;
+        background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
         --haxma-primary: #8B88FF;
         --haxma-primary-hover: #A5A2FF;
-        --haxma-bg: #1a1a1a;
-        --haxma-text: #e5e5e5;
-        --haxma-text-dark: #ffffff;
-        --haxma-border: #404040;
-        --haxma-border-light: #2a2a2a;
+        --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+        --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+        --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
+        --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
+        --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
       }
       
       .app-container {
@@ -201,7 +204,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        padding: 0 1rem;
+        padding: 0 var(--ddd-spacing-4);
         max-width: 1400px;
         margin: 0 auto;
         min-width: 0;
@@ -209,7 +212,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       @media (min-width: 768px) {
         .header-nav {
-          padding: 0 2rem;
+          padding: 0 var(--ddd-spacing-8);
         }
       }
       
@@ -245,7 +248,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .nav-menu {
         display: none;
         align-items: center;
-        gap: 2rem;
+        gap: var(--ddd-spacing-8);
       }
       
       @media (min-width: 768px) {
@@ -267,14 +270,14 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .header-controls {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: var(--ddd-spacing-4);
       }
       
       .search-button {
         --site-modal-button-background-color: var(--haxma-border-light);
         --site-modal-button-border: 1px solid var(--haxma-border);
         --site-modal-button-border-radius: 0.5rem;
-        --site-modal-button-padding: 0.5rem 1rem;
+        --site-modal-button-padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         --site-modal-button-font-size: 0.875rem;
         --site-modal-button-color: var(--haxma-text);
       }
@@ -285,7 +288,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       .mobile-menu-btn {
         display: block;
-        padding: 0.5rem;
+        padding: var(--ddd-spacing-2);
         background: transparent;
         border: none;
         cursor: pointer;
@@ -345,7 +348,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         transition: left 0.3s ease;
         overflow-y: auto;
         z-index: 45;
-        padding: 1rem;
+        padding: var(--ddd-spacing-4);
       }
       
       :host([is-logged-in]) .mobile-nav {
@@ -366,12 +369,12 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .mobile-close-btn {
         display: block;
         margin-left: auto;
-        padding: 0.5rem;
+        padding: var(--ddd-spacing-2);
         background: transparent;
         border: none;
         cursor: pointer;
         color: var(--haxma-text);
-        margin-bottom: 1rem;
+        margin-bottom: var(--ddd-spacing-4);
       }
       
       /* Main content layout */
@@ -391,20 +394,20 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .content-area {
         flex: 1;
         max-width: 1000px;
-        padding: 1rem;
+        padding: var(--ddd-spacing-4);
         overflow-x: hidden;
         min-width: 0;
       }
       
       @media (min-width: 768px) {
         .content-area {
-          padding: 2rem;
+          padding: var(--ddd-spacing-8);
         }
       }
       
       .sidebar-toc {
         width: 280px;
-        padding: 2rem 1rem;
+        padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
         border-left: 1px solid var(--haxma-border);
         background-color: var(--haxma-bg);
         display: none;
@@ -422,10 +425,10 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--haxma-text);
-        margin-bottom: 1rem;
+        margin-bottom: var(--ddd-spacing-4);
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: var(--ddd-spacing-2);
       }
 
       site-menu {
@@ -453,7 +456,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       /* Breadcrumbs */
       .breadcrumb-area {
-        margin-bottom: 1rem;
+        margin-bottom: var(--ddd-spacing-4);
       }
       
       site-breadcrumb {
@@ -465,21 +468,21 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       /* Article header */
       .article-header {
-        margin-bottom: 2rem;
+        margin-bottom: var(--ddd-spacing-8);
       }
       
       .article-header h1 {
         color: var(--haxma-text-dark);
         font-size: 2.5rem;
         font-weight: 700;
-        margin: 1rem 0;
+        margin: var(--ddd-spacing-4) 0;
         line-height: 1.2;
       }
       
       @media (max-width: 768px) {
         .article-header h1 {
           font-size: 2rem;
-          margin: 0.5rem 0;
+          margin: var(--ddd-spacing-2) 0;
         }
       }
       
@@ -494,17 +497,17 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .article-content h3,
       .article-content h4 {
         color: var(--haxma-text-dark);
-        margin: 2rem 0 1rem 0;
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
       }
       
       /* Page navigation */
       .page-navigation {
         display: flex;
         justify-content: space-between;
-        margin-top: 3rem;
-        padding-top: 2rem;
+        margin-top: var(--ddd-spacing-12);
+        padding-top: var(--ddd-spacing-8);
         border-top: 1px solid var(--haxma-border);
-        gap: 1rem;
+        gap: var(--ddd-spacing-4);
       }
       
       .nav-item {
@@ -514,7 +517,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       .nav-link {
         display: block;
-        padding: 1rem;
+        padding: var(--ddd-spacing-4);
         text-decoration: none;
         color: var(--haxma-text);
         border: 1px solid var(--haxma-border);
@@ -531,7 +534,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         font-size: 0.875rem;
         color: var(--haxma-primary);
         font-weight: 600;
-        margin-bottom: 0.25rem;
+        margin-bottom: var(--ddd-spacing-1);
       }
       
       .nav-title {
@@ -543,7 +546,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .site-footer {
         background-color: var(--haxma-bg);
         border-top: 1px solid var(--haxma-border);
-        padding: 2rem 1rem;
+        padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
         margin-top: auto;
         overflow-x: hidden;
         z-index: 10;
@@ -551,7 +554,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       @media (min-width: 768px) {
         .site-footer {
-          padding: 3rem 2rem;
+          padding: var(--ddd-spacing-12) var(--ddd-spacing-8);
         }
       }
       
@@ -560,19 +563,19 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1rem;
+        gap: var(--ddd-spacing-8);
+        padding: 0 var(--ddd-spacing-4);
       }
       
       @media (min-width: 768px) {
         .footer-content {
           grid-template-columns: 1fr 3fr;
-          padding: 0 2rem;
+          padding: 0 var(--ddd-spacing-8);
         }
       }
       
       .footer-brand {
-        margin-bottom: 2rem;
+        margin-bottom: var(--ddd-spacing-8);
       }
       
       @media (min-width: 768px) {
@@ -585,7 +588,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         font-size: 1.5rem;
         font-weight: 700;
         color: var(--haxma-text-dark);
-        margin-bottom: 0.5rem;
+        margin-bottom: var(--ddd-spacing-2);
       }
       
       .brand-description {
@@ -597,7 +600,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--haxma-text-dark);
-        margin-bottom: 1rem;
+        margin-bottom: var(--ddd-spacing-4);
       }
       
       .footer-links {
@@ -607,7 +610,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       }
       
       .footer-links li {
-        margin-bottom: 0.5rem;
+        margin-bottom: var(--ddd-spacing-2);
       }
       
       .footer-links a {
@@ -624,7 +627,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       .footer-page-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
+        gap: var(--ddd-spacing-2);
         word-break: break-word;
       }
       
@@ -651,7 +654,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         text-decoration: none;
         font-size: 0.875rem;
         transition: color 0.2s;
-        padding: 0.25rem 0;
+        padding: var(--ddd-spacing-1) 0;
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;

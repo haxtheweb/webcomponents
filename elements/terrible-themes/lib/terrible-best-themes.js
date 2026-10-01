@@ -127,9 +127,15 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           max-width: 100%;
         }
         @media (max-width: 600px) {
-          :host table tbody tr td:first-child,
-          :host table tbody tr td:last-child {
-            display: none;
+          /* stack the layout columns instead of hiding the outer cells so no
+             cell content can ever be lost on phones; the table is role
+             presentation layout only so block restacking is safe */
+          :host table tbody tr {
+            display: block;
+          }
+          :host table tbody tr td {
+            display: block;
+            width: 100%;
           }
         }
         @media (prefers-color-scheme: dark) {

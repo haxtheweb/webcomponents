@@ -57,7 +57,10 @@ class HaxCloud extends DDD {
     return html`
       <style>
         simple-icon-button-lite {
-          border: 2px solid black;
+          border: 2px solid light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #ffffff)
+          );
           border-radius: 0;
           display: inline-flex;
           padding: 16px;
@@ -72,8 +75,8 @@ class HaxCloud extends DDD {
         simple-icon-button-lite:focus,
         simple-icon-button-lite:hover,
         simple-icon-button-lite:focus-within {
-          background-color: #3333ff;
-          color: white;
+          background-color: var(--ddd-theme-default-link, #3333ff);
+          color: var(--ddd-theme-default-white, #ffffff);
         }
         hax-cloud ol,
         hax-cloud ul {
@@ -97,7 +100,10 @@ class HaxCloud extends DDD {
           justify-content: center;
         }
         .step {
-          border: 2px solid black;
+          border: 2px solid light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #ffffff)
+          );
           padding: 16px;
           font-size: 32px;
           display: inline-block;
@@ -126,7 +132,11 @@ class HaxCloud extends DDD {
         }
       </style>
       <main>
-        <h1 class="name-wrapper" title="Welcome to HAX.cloud">
+        <h1
+          class="name-wrapper"
+          title="Welcome to HAX.cloud"
+          aria-label="Welcome to HAX.cloud"
+        >
           <simple-icon
             icon="hax:hax2022"
             class="name-icon"
@@ -183,18 +193,24 @@ class HaxCloud extends DDD {
     const broker = FileSystemBrokerSingleton;
     // this allows confirmation that all file objects in this directory are open for read and write
     this.fileObjects = await broker.openDir(true, { mode: "readwrite" });
-    await this.fileObjects.forEach(async (fileRecord) => {
+    // for..of so each async record is awaited before we resolve; awaiting a
+    // forEach(async ...) would return before the directory scan completed
+    for (const fileRecord of this.fileObjects) {
       if (fileRecord.kind === "file" && fileRecord.name === "site.json") {
         let file = await fileRecord.handle.getFile();
         let manifest = JSON.parse(await file.text());
         this.fileRoot = fileRecord.folder;
         console.log(manifest);
         if (manifest && manifest.items.length > 0) {
-          globalThis.document.querySelector("haxcms-site-builder").manifest =
-            manifest;
+          const siteBuilder = globalThis.document.querySelector(
+            "haxcms-site-builder",
+          );
+          if (siteBuilder) {
+            siteBuilder.manifest = manifest;
+          }
         }
       }
-    });
+    }
   }
 
   loadLocalHax() {
@@ -225,12 +241,18 @@ class HaxCloud extends DDD {
     // inject the file object / directory root into the user file system backend handler
     // this way we can intercept failed page requests and redirect them to the local file system
     // and keep all logic inside the userfs handler and remove this element
-    globalThis.document.querySelector("haxcms-backend-userfs").fileObjects =
-      this.fileObjects;
-    globalThis.document.querySelector("haxcms-backend-userfs").fileRoot =
-      this.fileRoot;
+    const backend = globalThis.document.querySelector("haxcms-backend-userfs");
+    if (backend) {
+      backend.fileObjects = this.fileObjects;
+      backend.fileRoot = this.fileRoot;
+    }
     // show the hidden site tag
-    globalThis.document.querySelector("haxcms-site-builder").style.display = "";
+    const siteBuilder = globalThis.document.querySelector(
+      "haxcms-site-builder",
+    );
+    if (siteBuilder) {
+      siteBuilder.style.display = "";
+    }
     // you may rest now my friend
     setTimeout(() => {
       this.remove();

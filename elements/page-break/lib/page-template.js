@@ -59,7 +59,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           position: absolute;
           top: calc(-1 * var(--ddd-spacing-2));
           left: var(--ddd-spacing-2);
-          background-color: var(--ddd-theme-default-skyBlue);
+          background-color: var(--ddd-theme-default-beaverBlue);
           color: var(--ddd-theme-default-white);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-xs);

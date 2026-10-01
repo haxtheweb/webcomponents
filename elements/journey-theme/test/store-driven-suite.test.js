@@ -253,13 +253,14 @@ describe('journey-theme store-driven rendering', () => {
     await element.updateComplete
     expect(element.dataPalette).to.equal(0)
     expect(element.getAttribute('data-palette')).to.equal('0')
-    // BUG(user-scaffold readMemory + journey-theme.js:53): readMemory uses a
-    // falsy check on the memory value, so palette value 0 reads back as null
-    // and the theme constructor then falls back to 11 -- palette 0 can never
-    // be restored on the next page load. Documenting current behavior.
-    expect(
-      UserScaffoldInstance.readMemory('HAXCMSSitePalette') === null,
-    ).to.equal(true)
+    // user-scaffold readMemory keeps palette value 0 (it used to read back
+    // as null on a falsy check, so the theme constructor fell back to 11 and
+    // palette 0 could never be restored on the next page load)
+    expect(UserScaffoldInstance.readMemory('HAXCMSSitePalette')).to.equal(0)
+    // a fresh theme restores the persisted palette 0 end to end
+    const restored = await fixture(html`<journey-theme></journey-theme>`)
+    await restored.updateComplete
+    expect(restored.dataPalette).to.equal(0)
   })
 
   it('renders custom tag route items with images', async () => {
@@ -348,10 +349,13 @@ describe('journey-menu', () => {
     expect(menu.hasAttribute('open')).to.equal(false)
   })
 
-  it('Escape closes the open nav', async () => {
+  it('Escape closes the open nav and refocuses a visible element', async () => {
     menu.toggleOpen()
     await menu.updateComplete
     const nav = menu.shadowRoot.querySelector('nav#journeymenu-nav')
+    // focus starts inside the nav so the Escape refocus is observable
+    const firstLink = nav.querySelector('ul li a')
+    firstLink.focus()
     nav.dispatchEvent(
       new KeyboardEvent('keydown', {
         key: 'Escape',
@@ -361,6 +365,9 @@ describe('journey-menu', () => {
     )
     await menu.updateComplete
     expect(menu.open).to.equal(false)
+    // on desktop the toggle is display none (focus() on it is a no-op), so
+    // Escape returns focus to the first navigation link instead
+    expect(menu.shadowRoot.activeElement === firstLink).to.equal(true)
     // Escape on a closed nav is a no-op
     nav.dispatchEvent(
       new KeyboardEvent('keydown', {

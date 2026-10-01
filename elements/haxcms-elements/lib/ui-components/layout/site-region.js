@@ -22,7 +22,7 @@ class SiteRegion extends LitElement {
         const _mobx_val_0 = toJS(store.regionData);
         Promise.resolve().then(() => {
           const data = _mobx_val_0;
-          if (this.name && data[this.name]) {
+          if (this.name && data && data[this.name]) {
             this.contentItemIds = data[this.name];
           }
         });
@@ -35,7 +35,7 @@ class SiteRegion extends LitElement {
       if (this.shadowRoot) {
         if (propName === "name" && this[propName]) {
           const data = toJS(store.regionData);
-          if (data[this.name]) {
+          if (data && data[this.name]) {
             this.contentItemIds = data[this.name];
           }
         }

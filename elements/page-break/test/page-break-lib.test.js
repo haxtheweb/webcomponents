@@ -88,10 +88,11 @@ describe('page-anchor', () => {
     expect(el.getMatchFromFields('e1', '', 'color')).to.equal('blue')
     // missing entity falls through to node matching, which finds nothing here
     expect(el.getMatchFromFields('missing', '', 'icon')).to.equal(null)
-    // BUG(page-anchor.js:100-103): entityData exposes color / icon keys but
-    // the default accentColor field never matches an entity, so the
-    // --simple-colors token branch is unreachable with real store data.
-    expect(el.getMatchFromFields('e1', '', 'accentColor')).to.equal(null)
+    // accentColor maps to the entity color key so the token branch resolves
+    // against real store data
+    expect(el.getMatchFromFields('e1', '', 'accentColor')).to.equal(
+      '--simple-colors-default-theme-blue-3',
+    )
   })
 
   it('falls back to the node schema gizmo color when the entity lacks a field', async () => {
@@ -133,6 +134,41 @@ describe('page-anchor', () => {
     expect(result).to.equal(false)
     expect(prevented).to.equal(true)
     expect(stoppedImmediate).to.equal(true)
+  })
+
+  it('activates the jump link from Enter and Space keys', async () => {
+    const host = globalThis.document.createElement('div')
+    host.className = 'haxcms-theme-element'
+    const target = globalThis.document.createElement('div')
+    const scrolled = []
+    target.scrollIntoView = () => {
+      scrolled.push(true)
+    }
+    host.appendChild(target)
+    globalThis.document.body.appendChild(host)
+    const el = await fixture(html`<page-anchor target="div"></page-anchor>`)
+    const prevented = []
+    el.keyHandler({
+      key: 'Enter',
+      preventDefault: () => {
+        prevented.push('Enter')
+      },
+    })
+    el.keyHandler({
+      key: ' ',
+      preventDefault: () => {
+        prevented.push(' ')
+      },
+    })
+    // other keys do not activate the jump link
+    el.keyHandler({ key: 'Tab', preventDefault: () => {} })
+    expect(scrolled.length).to.equal(2)
+    expect(prevented).to.deep.equal(['Enter', ' '])
+    // the mark is keyboard reachable and announces as a link
+    const mark = el.shadowRoot.querySelector('mark')
+    expect(mark.getAttribute('tabindex')).to.equal('0')
+    expect(mark.getAttribute('role')).to.equal('link')
+    host.remove()
   })
 
   it('scrolls a matching node into view and plays it when no value is set', async () => {
@@ -412,10 +448,10 @@ describe('page-break-manager', () => {
     expect(pageBreakManager.getParent(pbB, 'indent') === pbA).to.equal(true)
     // breaks without a parent resolve to null
     expect(pageBreakManager.getParent(pbA)).to.equal(null)
-    // BUG(page-break-manager.js:40-42): the outdent branch unconditionally
-    // resets targetNode to null in a bare block, so outdent always misses the
-    // grandparent break it just resolved. Asserted actual (broken) behavior.
-    expect(pageBreakManager.getParent(pbC, 'outdent')).to.equal(null)
+    // outdent resolves the grandparent break it walks up to; without a
+    // grandparent there is nothing to outdent into so the result stays null
+    expect(pageBreakManager.getParent(pbC, 'outdent') === pbA).to.equal(true)
+    expect(pageBreakManager.getParent(pbB, 'outdent') === null).to.equal(true)
     // no manager target means no parent resolution at all
     const savedTarget = pageBreakManager.target
     pageBreakManager.target = null
@@ -676,7 +712,7 @@ describe('page-template', () => {
     await expect(el).shadowDom.to.be.accessible()
   })
 
-  it('renders the label with a documented contrast deficit', async () => {
+  it('renders the label with a compliant contrast pairing', async () => {
     const el = await fixture(
       html`<page-template name="Hero">Slot content</page-template>`,
     )
@@ -684,11 +720,10 @@ describe('page-template', () => {
     const label = el.shadowRoot.querySelector('.template-label')
     expect(label === null).to.equal(false)
     const cs = globalThis.getComputedStyle(label)
-    // BUG(page-template.js:62-63): white text on the skyBlue token measures
-    // 3.08:1, below the 4.5:1 WCAG AA minimum (axe color-contrast fails on
-    // the named label). Asserting the current non-compliant pairing so a fix
-    // to the token usage flips this assertion.
-    expect(cs.backgroundColor).to.equal('rgb(0, 156, 222)')
+    // white text on the beaverBlue token measures 10.09:1, above the 4.5:1
+    // WCAG AA minimum that the previous skyBlue pairing (3.08:1) missed
+    // (axe color-contrast)
+    expect(cs.backgroundColor).to.equal('rgb(30, 64, 124)')
     expect(cs.color).to.equal('rgb(255, 255, 255)')
   })
 })

@@ -115,6 +115,14 @@ store.manifest = {
       location: 'pc.html',
       metadata: { image: 'assets/pc.png' },
     },
+    {
+      id: 'home-child',
+      title: 'Home Child',
+      slug: 'home-child',
+      order: 0,
+      parent: 'home',
+      location: 'hc.html',
+    },
   ],
 }
 
@@ -239,6 +247,9 @@ describe('glossy-portfolio-home hero', () => {
     expect(home.siteDescription).to.equal(
       'A portfolio showcasing my work and projects.',
     )
+    // the themeData read is guarded: a manifest without theme variables falls
+    // back to the store default hero image instead of crashing the reaction
+    expect(home.backgroundImage).to.equal('assets/banner.jpg')
     store.manifest = saved
     await wait(80)
   })
@@ -301,13 +312,13 @@ describe('glossy-portfolio-card', () => {
     expect(img.style.visibility).to.equal('hidden')
   })
 
-  it('constructor defaults are set without rendering', () => {
+  it('constructor defaults are safe and empty', () => {
     const card = new GlossyPortfolioCard()
     expect(card.title).to.equal('Title')
-    // NOTE: the default thumbnail is a REMOTE freepik URL and the default slug
-    // is google.com; construct without rendering so no remote fetch happens
-    expect(card.thumbnail.includes('img.freepik.com')).to.equal(true)
-    expect(card.slug).to.equal('https://google.com')
+    // the defaults carry no remote image or remote url; the grid always
+    // supplies a real thumbnail and slug when cards render
+    expect(card.thumbnail).to.equal('')
+    expect(card.slug).to.equal('')
   })
 })
 
@@ -591,6 +602,43 @@ describe('glossy-portfolio-grid store-driven data', () => {
     expect(grid.data.length).to.equal(1)
     expect(grid.data[0].id).to.equal('project-a')
   })
+
+  it('survives an active item without metadata at all', async () => {
+    // home-child carries no metadata object whatsoever; the related-items
+    // branch has to guard the missing metadata before reading it
+    store.activeId = 'home-child'
+    const grid = await makeGrid()
+    await wait(80)
+    await grid.updateComplete
+    expect(grid.data.length).to.equal(0)
+    // the guarded related-items read falls through to the sibling branch,
+    // which titles the grid even though this only child has no siblings
+    expect(grid.title).to.equal('Related Content')
+    expect(grid.filtersList.join(',')).to.equal('')
+    expect(grid.shadowRoot.querySelector('.container-background') === null).to.equal(
+      true,
+    )
+  })
+
+  it('navigating from a filtered page to an empty grid does not throw', async () => {
+    // start on a page whose children carry tag filters, then navigate to a
+    // page with no children, related items, or siblings: the grid empties
+    // out and no longer renders the all button the reset path toggled
+    store.activeId = 'projects'
+    const grid = await makeGrid()
+    await wait(80)
+    await grid.updateComplete
+    expect(grid.filtersList.length > 0).to.equal(true)
+    store.activeId = 'home-child'
+    await wait(80)
+    await grid.updateComplete
+    expect(grid.data.length).to.equal(0)
+    expect(grid.activeFilter).to.equal('all')
+    expect(grid.filtersList.join(',')).to.equal('')
+    expect(
+      grid.shadowRoot.querySelector('.container-background') === null,
+    ).to.equal(true)
+  })
 })
 
 describe('glossy-portfolio-footer', () => {
@@ -646,10 +694,15 @@ describe('glossy-portfolio-footer', () => {
     expect(block.querySelector('img').getAttribute('alt')).to.equal(
       'Attribution Share a like',
     )
-    // an unknown license leaves the previously resolved license in place
+    // an unknown license resets the previously resolved license so no stale
+    // license block keeps rendering on the footer
     store.manifest.license = 'not-a-license'
     await wait(80)
-    expect(footer.licenseName).to.equal('Attribution Share a like')
+    expect(footer.licenseName).to.equal('')
+    expect(footer.licenseLink).to.equal('')
+    footer.requestUpdate()
+    await footer.updateComplete
+    expect(footer.shadowRoot.querySelector('.license') === null).to.equal(true)
     // reset so later fixtures never render a remote license image
     store.manifest.license = undefined
     await wait(80)
@@ -668,22 +721,17 @@ describe('glossy-portfolio haxProperties wiring', () => {
     GlossyPortfolioHome,
   ]
 
-  it('every element points its haxProperties at lib/<tag>.haxProperties.json', () => {
+  // the haxProperties getters were removed from every glossy element: they
+  // pointed at lib/<tag>.haxProperties.json files that were never on disk
+  // (the only schema in the package is the unused
+  // lib/graphic-portfolio.haxProperties.json), so every getter URL 404ed and
+  // no element could load its HAX property schema. No element in this
+  // package declares its own haxProperties wiring anymore.
+  it('no element declares its own haxProperties getter anymore', () => {
     for (const cls of classes) {
-      expect(cls.haxProperties.includes(`${cls.tag}.haxProperties.json`)).to.equal(
-        true,
-      )
-    }
-  })
-
-  // BUG(glossy-portfolio-theme + all lib elements): the haxProperties getters
-  // resolve lib/<tag>.haxProperties.json but the only schema on disk is
-  // lib/graphic-portfolio.haxProperties.json, so every URL 404s and no
-  // element in this package can load its HAX property schema.
-  it('haxProperties schema files are missing for every element', async () => {
-    for (const cls of classes) {
-      const res = await fetch(cls.haxProperties)
-      expect(`${cls.tag}: ${res.ok}`).to.equal(`${cls.tag}: false`)
+      expect(
+        Object.getOwnPropertyDescriptor(cls, 'haxProperties') === undefined,
+      ).to.equal(true)
     }
   })
 })

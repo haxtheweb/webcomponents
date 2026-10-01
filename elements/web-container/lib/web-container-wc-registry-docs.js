@@ -39,10 +39,33 @@ export class WebContainerWCRegistryDocs extends DDD {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('file') && this.file) {     
-      fetch(this.file).then(d => d.json()).then(data => {
-        this.options = Object.fromEntries(Object.entries(data).filter(([key, value]) => value.includes('@haxtheweb/') && !key.startsWith('hax')));
-      });
+    if (changedProperties.has('file') && this.file) {
+      fetch(this.file)
+        .then((res) => {
+          if (res && res.ok) {
+            return res.json();
+          }
+          return false;
+        })
+        .then((data) => {
+          if (data) {
+            this.options = Object.fromEntries(
+              Object.entries(data).filter(
+                ([key, value]) =>
+                  value.includes('@haxtheweb/') && !key.startsWith('hax'),
+              ),
+            );
+          } else {
+            // surface the failed registry load to the user instead of
+            // failing silently
+            this.text = 'Unable to load the registry file.';
+          }
+        })
+        .catch(() => {
+          // network failures and bad json must not reject unhandled; give
+          // the user feedback through the same text surface
+          this.text = 'Unable to load the registry file.';
+        });
     }
   }
 

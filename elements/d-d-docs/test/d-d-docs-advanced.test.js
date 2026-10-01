@@ -62,14 +62,12 @@ describe('d-d-docs wiring', function () {
         (el) => el.tagName === 'DETAILS',
       ).length,
     ).to.equal(0)
-    // BUG: the change handler (d-d-docs.js:3543-3546) writes the selected
-    // value back into the select synchronously, but the re-render it
-    // triggers re-stamps the option list, which resets the select to the
-    // first option. The control keeps showing "Full styleguide" while a
-    // single topic is on screen, so the UI never reflects the selection.
-    // This documents the current value; it should read 'Spacing' once the
-    // value is bound reactively instead of written once during the event.
-    expect(element.shadowRoot.querySelector('select').value).to.equal('*')
+    // the select value is bound reactively, so the re-render keeps the
+    // control on the selected topic instead of snapping back to the
+    // first option ("Full styleguide")
+    expect(element.shadowRoot.querySelector('select').value).to.equal(
+      'Spacing',
+    )
   })
 
   it('syncs palette picker value changes into the preview', async () => {

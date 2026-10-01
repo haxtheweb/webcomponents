@@ -107,11 +107,14 @@ class PolarisStoryCard extends LitElement {
           font-family: "Roboto", Arial, Helvetica, sans-serif;
           color: var(--ddd-theme-default-white, #fff);
           border: 3px solid var(--ddd-theme-default-white, #fff);
+          /* no clean DDD token for a 58 percent black overlay; DDD alpha
+             tokens are potential midnight navy, which would shift it */
           background-color: rgba(0, 0, 0, 0.58);
           width: 195px;
           max-width: calc(100% - 3rem);
           left: 1.5rem;
-          font-size: 1.5rem !important;
+          /* exact DDD match (24px); line-height 30px has no DDD step */
+          font-size: var(--ddd-font-size-s, 1.5rem) !important;
           line-height: 1.875rem !important;
         }
 

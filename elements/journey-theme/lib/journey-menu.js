@@ -29,8 +29,19 @@ export class JourneyMenu extends LitElement {
     if (e.key === "Escape" && this.open) {
       this.closeNav();
       const toggle = this.shadowRoot.querySelector(".menu-toggle");
-      if (toggle) {
+      // the toggle is display none on desktop, so focus() on it is a no-op
+      // there; return focus to the first navigation link instead so Escape
+      // always lands the user on a focusable element
+      if (
+        toggle &&
+        globalThis.getComputedStyle(toggle).display !== "none"
+      ) {
         toggle.focus();
+      } else {
+        const firstLink = this.shadowRoot.querySelector("nav ul li a");
+        if (firstLink) {
+          firstLink.focus();
+        }
       }
     }
   }
