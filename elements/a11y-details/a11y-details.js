@@ -12,9 +12,9 @@ import { LitElement, html, css } from "lit";
  ----------------|-------------|----------
  --a11y-details-summary-fontSize | font-size | 0.8em
  --a11y-details-summary-color | text color | #000
- --a11y-details-summary-backgroundColor | background-color | #fff
- --a11y-details-summary-borderColor | border-color | #000
- --a11y-details-summary-borderWidth | border-width | 1px
+--a11y-details-summary-backgroundColor | background-color | #fff
+--a11y-details-summary-borderColor | border-color | #ddd
+--a11y-details-summary-borderWidth | border-width | 1px
  --a11y-details-summary-borderStyle | border-style | solid
  --a11y-details-summary-borderRadius | border-radius | 3px
  --a11y-details-summary-padding | padding | 0.5em
@@ -34,9 +34,9 @@ import { LitElement, html, css } from "lit";
  ----------------|-------------|----------
  --a11y-details-fontSize | font-size  | 0.8em
  --a11y-details-color | text color | #000
- --a11y-details-backgroundColor | background-color | rgba(255,255,255,1)
- --a11y-details-borderColor | border-color | #000
- --a11y-details-borderWidth | border-width | 1px
+--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)
+--a11y-details-borderColor | border-color | #999
+--a11y-details-borderWidth | border-width | 1px
  --a11y-details-borderStyle | border-style | solid
  --a11y-details-borderRadius | border-radius | 3px
  --a11y-details-padding | padding | 0.5em
@@ -74,9 +74,18 @@ class A11yDetails extends LitElement {
           align-items: center;
           justify-content: space-between;
           font-size: var(--a11y-details-summary-fontSize, 0.8em);
-          color: var(--a11y-details-summary-color, #000);
-          background-color: var(--a11y-details-summary-backgroundColor, #fff);
-          border-color: var(--a11y-details-summary-borderColor, #ddd);
+          color: var(
+            --a11y-details-summary-color,
+            var(--ddd-theme-default-black, #000000)
+          );
+          background-color: var(
+            --a11y-details-summary-backgroundColor,
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          border-color: var(
+            --a11y-details-summary-borderColor,
+            var(--ddd-theme-default-limestoneLight, #ddd)
+          );
           border-width: var(--a11y-details-summary-borderWidth, 1px);
           border-style: var(--a11y-details-summary-borderStyle, solid);
           border-radius: var(--a11y-details-summary-borderRadius, 3px);
@@ -84,7 +93,10 @@ class A11yDetails extends LitElement {
         }
 
         summary:focus {
-          outline: var(--a11y-details-summary-focus-outline, 1px solid #006688);
+          outline: var(
+            --a11y-details-summary-focus-outline,
+            1px solid var(--ddd-theme-default-info, #006688)
+          );
           color: var(
             --a11y-details-summary-focus-color,
             var(--a11y-details-summary-color, #000)
@@ -95,7 +107,10 @@ class A11yDetails extends LitElement {
           );
           border-color: var(
             --a11y-details-summary-focus-borderColor,
-            var(--a11y-details-borderColor, #999)
+            var(
+              --a11y-details-borderColor,
+              var(--ddd-theme-default-limestoneGray, #999999)
+            )
           );
           border-width: var(
             --a11y-details-summary-focus-borderWidth,
@@ -119,12 +134,18 @@ class A11yDetails extends LitElement {
           overflow-y: auto;
           padding: 0;
           font-size: var(--a11y-details-fontSize, 0.8em);
-          color: var(--a11y-details-color, #000);
+          color: var(
+            --a11y-details-color,
+            var(--ddd-theme-default-black, #000000)
+          );
           background-color: var(
             --a11y-details-backgroundColor,
-            rgba(255, 255, 255, 1)
+            var(--ddd-theme-default-white, rgba(255, 255, 255, 1))
           );
-          border-color: var(--a11y-details-borderColor, #999);
+          border-color: var(
+            --a11y-details-borderColor,
+            var(--ddd-theme-default-limestoneGray, #999999)
+          );
           border-width: var(--a11y-details-borderWidth, 1px);
           border-style: var(--a11y-details-borderStyle, solid);
           border-radius: var(--a11y-details-borderRadius, 3px);
