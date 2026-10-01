@@ -15,7 +15,7 @@ const isElementDir =
   relativeToRoot.split(path.sep)[0] === 'elements';
 
 export default {
-    concurrency: 10,
+    concurrency: 5,
     nodeResolve: true,
     // in a monorepo you need to set set the root dir to resolve modules
     rootDir: '../../',
