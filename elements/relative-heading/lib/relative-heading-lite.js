@@ -95,7 +95,10 @@ class RelativeHeadingLite extends LitElement {
           this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, ""),
         )
       : 1;
-    this.defaultLevel = 1;
+    // honor a default-level attribute authored before this element was
+    // upgraded since attributeChangedCallback does not replay it, which
+    // matters for elements that import this one dynamically
+    this.defaultLevel = parseInt(this.getAttribute("default-level")) || 1;
   }
 
   /**
@@ -171,13 +174,26 @@ class RelativeHeadingLite extends LitElement {
    * unwraps tags on slotted content
    */
   updateContents() {
-    if (!this.querySelector(`h${this.__level}`)) {
-      this.innerHTML = `<h${this.__level}>${
-        this.children && this.children[0]
-          ? this.children[0].innerHTML
-          : this.textContent
-      }</h${this.__level}>`;
+    let tag = `h${this.__level}`;
+    if (this.querySelector(tag)) return;
+    let first = this.children && this.children[0] ? this.children[0] : null;
+    if (first && first.tagName !== "SLOT") {
+      // replace only the first child node, moving its child nodes instead
+      // of rewriting innerHTML, so that any host framework's DOM markers
+      // (e.g. lit ChildParts) around or inside it survive and stay connected
+      let heading = globalThis.document.createElement(tag);
+      while (first.firstChild) heading.appendChild(first.firstChild);
+      this.replaceChild(heading, first);
+    } else if (!first) {
+      // wrap loose content in the heading by moving the nodes rather than
+      // rewriting innerHTML so nothing is ejected from the DOM
+      let heading = globalThis.document.createElement(tag);
+      while (this.firstChild) heading.appendChild(this.firstChild);
+      this.appendChild(heading);
     }
+    // a slotted first child is left alone: the assigned nodes supply their
+    // own heading markup, and rewriting around the slot would eject the
+    // slotting element's framework markers
   }
 
   /**
