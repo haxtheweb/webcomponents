@@ -155,9 +155,14 @@ class XLSXFileSystemBroker extends FileSystemBroker {
     worker.onmessage = (e) => {
       switch (e.data.t) {
         case "ready":
+          // the vendored xlsxworker handshakes before it can process a
+          // read; keep the worker alive until the data or error reply lands
           break;
         case "e":
           console.error(e.data.d);
+          // the vendored xlsxworker replies once per postMessage, so the
+          // round trip is over; release the worker instead of leaking it
+          worker.terminate();
           break;
         case this.XW.msg:
           globalThis.dispatchEvent(
@@ -177,6 +182,9 @@ class XLSXFileSystemBroker extends FileSystemBroker {
               },
             }),
           );
+          // the vendored xlsxworker replies once per postMessage, so the
+          // round trip is over; release the worker instead of leaking it
+          worker.terminate();
           break;
       }
     };

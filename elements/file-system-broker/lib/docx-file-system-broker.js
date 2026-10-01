@@ -19,6 +19,9 @@ class DOCXFileSystemBroker extends FileSystemBroker {
     this.libPath =
       new URL("./docx-file-system-broker.js", import.meta.url).href + "/../";
     this.libPath += "mammoth/";
+    // fileToHTML reads that arrive before mammoth finishes loading are
+    // queued here and flushed the moment the reader is ready
+    this.docxReadQueue = [];
     ESGlobalBridgeStore.load(
       "mammoth",
       this.libPath + "mammoth.browser.min.js",
@@ -34,7 +37,25 @@ class DOCXFileSystemBroker extends FileSystemBroker {
             detail: this,
           }),
         );
+        // process any reads that were queued while we were not ready
+        this.__flushDocxReadQueue();
       }
+    });
+  }
+
+  /**
+   * Run a queued conversion through mammoth now that it is loaded
+   */
+  __flushDocxReadQueue() {
+    const queue = this.docxReadQueue;
+    this.docxReadQueue = [];
+    queue.forEach((queued) => {
+      this.docx
+        .convertToHtml({ arrayBuffer: queued.arrayBuffer })
+        .then((data) => {
+          return this.__toHTML(data, queued.name);
+        })
+        .done();
     });
   }
 
@@ -81,12 +102,21 @@ class DOCXFileSystemBroker extends FileSystemBroker {
   fileToHTML(input, name = "filepicked") {
     var reader = new FileReader();
     reader.onload = async (arrayBuffer) => {
-      await this.docx
-        .convertToHtml({ arrayBuffer: arrayBuffer.target.result })
-        .then((data) => {
-          return this.__toHTML(data, name);
-        })
-        .done();
+      if (this.docx) {
+        await this.docx
+          .convertToHtml({ arrayBuffer: arrayBuffer.target.result })
+          .then((data) => {
+            return this.__toHTML(data, name);
+          })
+          .done();
+      } else {
+        // mammoth is still loading; queue the read so it converts once the
+        // docx-reader-ready resolution path flushes the queue
+        this.docxReadQueue.push({
+          arrayBuffer: arrayBuffer.target.result,
+          name: name,
+        });
+      }
     };
     reader.readAsBinaryString(input);
   }

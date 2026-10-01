@@ -347,10 +347,10 @@ describe('XLSXFileSystemBroker', () => {
         expect(detail.operation).to.equal('read')
         expect(detail.data).to.deep.equal({ alpha: [['h'], ['r']] })
         expect(harness.constructedWith[0]).to.equal(element.XW.worker)
-        // BUG: xlsx-file-system-broker.js:153-184 - the Worker instance is
-        // never terminate()d after the message round trip, leaking one
-        // worker per processed file.
-        expect(harness.terminated.length).to.equal(0)
+        // FIXED: xlsx-file-system-broker.js __executeWorker terminates the
+        // worker once the vendored xlsxworker replies with the data
+        // message, so each processed file releases its worker.
+        expect(harness.terminated.length).to.equal(1)
       } finally {
         harness.restore()
       }
@@ -397,6 +397,9 @@ describe('XLSXFileSystemBroker', () => {
         await new Promise((resolve) => setTimeout(resolve, 10))
         expect(errors).to.deep.equal(['worker exploded'])
         expect(dispatched).to.equal(0)
+        // the error reply also completes the vendored worker round trip,
+        // so the worker is released on failure as well
+        expect(harness.terminated.length).to.equal(1)
       } finally {
         globalThis.removeEventListener('xlsx-file-system-data', listener)
         console.error = originalError
@@ -421,6 +424,9 @@ describe('XLSXFileSystemBroker', () => {
         await new Promise((resolve) => setTimeout(resolve, 10))
         expect(dispatched).to.equal(0)
         expect(errors.length).to.equal(0)
+        // the ready handshake is not the reply to our data postMessage, so
+        // the worker stays alive waiting for the data or error message
+        expect(harness.terminated.length).to.equal(0)
       } finally {
         globalThis.removeEventListener('xlsx-file-system-data', listener)
         console.error = originalError

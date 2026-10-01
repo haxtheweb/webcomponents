@@ -214,10 +214,62 @@ describe('DOCXFileSystemBroker', () => {
       expect(detail.name).to.equal('filepicked')
       expect(detail.value).to.equal('<em>ok</em>')
     })
-  })
 
-  // NOTE: fileToHTML has no guard for this.docx being undefined before the
-  // mammoth script finishes loading; the async onload rejection is silently
-  // dropped, so that failure path cannot be asserted without failing the
-  // whole browser session on an unhandled rejection. Reported, not asserted.
+    it('queues a premature read and converts it once mammoth loads', async () => {
+      // FIXED: docx-file-system-broker.js fileToHTML guards this.docx in the
+      // onload handler; reads that arrive before mammoth finishes loading
+      // are queued on the element and flushed by the constructor resolution
+      // path right after docx-reader-ready fires, so the file converts with
+      // no unhandled rejection.
+      const originalLoad = ESGlobalBridgeStore.load
+      let resolveLoad
+      const loadPromise = new Promise((resolve) => {
+        resolveLoad = resolve
+      })
+      ESGlobalBridgeStore.load = () => loadPromise
+      const savedMammoth = globalThis.mammoth
+      delete globalThis.mammoth
+      let el = null
+      try {
+        el = document.createElement('docx-file-system-broker')
+        document.body.appendChild(el)
+        const convertInputs = []
+        el.fileToHTML(new File(['premature-bytes'], 'early.docx'), 'early-doc')
+        // mammoth is still loading, so the read queues instead of converting
+        await new Promise((resolve) => setTimeout(resolve, 50))
+        expect(el.docx).to.be.undefined
+        expect(el.docxReadQueue).to.deep.equal([
+          { arrayBuffer: 'premature-bytes', name: 'early-doc' },
+        ])
+        const detail = new Promise((resolve) => {
+          globalThis.addEventListener(
+            'docx-file-system-data',
+            (e) => resolve(e.detail),
+            { once: true },
+          )
+          globalThis.mammoth = makeFakeMammoth(convertInputs, '<p>late</p>')
+          resolveLoad(true)
+        })
+        const resolved = await detail
+        expect(resolved).to.deep.equal({
+          name: 'early-doc',
+          value: '<p>late</p>',
+        })
+        expect(el.docx === globalThis.mammoth).to.be.true
+        expect(convertInputs.length).to.equal(1)
+        expect(convertInputs[0].arrayBuffer).to.equal('premature-bytes')
+        expect(el.docxReadQueue).to.deep.equal([])
+      } finally {
+        ESGlobalBridgeStore.load = originalLoad
+        if (el) {
+          el.remove()
+        }
+        if (savedMammoth === undefined) {
+          delete globalThis.mammoth
+        } else {
+          globalThis.mammoth = savedMammoth
+        }
+      }
+    })
+  })
 })

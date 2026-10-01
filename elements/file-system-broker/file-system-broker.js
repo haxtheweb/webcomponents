@@ -273,12 +273,16 @@ class FileSystemBroker extends HTMLElement {
       console.warn(e);
     }
     this.files = [];
-    this.files = await this.__readDir(
-      this.dirHandler,
-      recursive,
-      this.dirHandler.name || "",
-      this.dirHandler,
-    );
+    // only read when a handle exists; a rejected picker with no prior
+    // handle resolves with an empty list instead of crashing on null
+    if (this.dirHandler) {
+      this.files = await this.__readDir(
+        this.dirHandler,
+        recursive,
+        this.dirHandler.name || "",
+        this.dirHandler,
+      );
+    }
     return this.files;
   }
   async readFileInDir(fileName, options = {}) {

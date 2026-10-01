@@ -482,11 +482,11 @@ describe('FileSystemBroker behavioral coverage', () => {
       }
     })
 
-    it('rejects with a TypeError when the picker denies and no handle exists', async () => {
-      // BUG: file-system-broker.js:270-282 - after catching the picker
-      // rejection openDir still calls __readDir on the stale (null)
-      // dirHandler, so the caller gets a raw TypeError instead of the
-      // already-caught picker error.
+    it('returns an empty list when the picker rejects and no handle exists', async () => {
+      // FIXED: file-system-broker.js openDir no longer calls __readDir on
+      // the stale (null) dirHandler after catching a picker rejection; it
+      // warns once and resolves with an empty file list instead of throwing
+      // a raw TypeError.
       const warnings = []
       const originalWarn = console.warn
       console.warn = (...args) => {
@@ -495,14 +495,11 @@ describe('FileSystemBroker behavioral coverage', () => {
       try {
         globalThis.showDirectoryPicker = () =>
           Promise.reject(new Error('picker denied'))
-        let error = null
-        try {
-          await element.openDir()
-        } catch (e) {
-          error = e
-        }
-        expect(error instanceof TypeError).to.be.true
+        const files = await element.openDir()
+        expect(files).to.deep.equal([])
+        expect(element.files).to.deep.equal([])
         expect(warnings.length).to.equal(1)
+        expect(warnings[0][0].message).to.equal('picker denied')
       } finally {
         console.warn = originalWarn
       }
