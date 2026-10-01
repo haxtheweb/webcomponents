@@ -1,4 +1,4 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { fixture, expect, html, waitUntil } from '@open-wc/testing'
 import { LitElement, css } from 'lit'
 import { LaTex } from '../la-tex.js'
 import { ESGlobalBridgeStore } from '@haxtheweb/es-global-bridge/es-global-bridge.js'
@@ -7,9 +7,16 @@ const tick = (ms = 20) => new Promise((resolve) => setTimeout(resolve, ms))
 
 function stubBridgeImport() {
   const originalImport = ESGlobalBridgeStore.import
-  ESGlobalBridgeStore.import = () => Promise.resolve()
-  return () => {
-    ESGlobalBridgeStore.import = originalImport
+  let calls = 0
+  ESGlobalBridgeStore.import = () => {
+    calls += 1
+    return Promise.resolve()
+  }
+  return {
+    calls: () => calls,
+    restore: () => {
+      ESGlobalBridgeStore.import = originalImport
+    },
   }
 }
 
@@ -31,6 +38,19 @@ function stubLatexGlobal(value) {
 }
 
 describe('la-tex behavior', () => {
+  let bridge
+
+  beforeEach(() => {
+    // never let the real vendored bundle load in this file: executing it
+    // assigns the globalThis.LaTeX2HTML5 UMD global and then self-initializes
+    // from its own script.onload, which throws on content it cannot parse
+    bridge = stubBridgeImport()
+  })
+
+  afterEach(() => {
+    bridge.restore()
+  })
+
   it('starts not hydrated with no captured text', async () => {
     const element = await fixture(html`<la-tex></la-tex>`)
     expect(element.hydrated).to.equal(false)
@@ -56,7 +76,6 @@ describe('la-tex behavior', () => {
 
   it('initializes LaTeX2HTML5 once the bridge import settles', async () => {
     let initCalls = 0
-    const restoreImport = stubBridgeImport()
     const restoreGlobal = stubLatexGlobal({
       init() {
         initCalls += 1
@@ -67,13 +86,11 @@ describe('la-tex behavior', () => {
       await tick()
       expect(initCalls).to.equal(1)
     } finally {
-      restoreImport()
       restoreGlobal()
     }
   })
 
   it('does not initialize anything when the global is missing', async () => {
-    const restoreImport = stubBridgeImport()
     const restoreGlobal = stubLatexGlobal(undefined)
     try {
       const element = await fixture(html`<la-tex>y = x^2</la-tex>`)
@@ -81,7 +98,6 @@ describe('la-tex behavior', () => {
       expect('LaTeX2HTML5' in globalThis).to.be.false
       expect(element.hydrated).to.equal(false)
     } finally {
-      restoreImport()
       restoreGlobal()
     }
   })
@@ -121,7 +137,6 @@ describe('la-tex behavior', () => {
 
   it('rehydrates after edit mode toggles', async () => {
     let initCalls = 0
-    const restoreImport = stubBridgeImport()
     const restoreGlobal = stubLatexGlobal({
       init() {
         initCalls += 1
@@ -130,18 +145,23 @@ describe('la-tex behavior', () => {
     try {
       const element = await fixture(html`<la-tex></la-tex>`)
       element.initialText = 'e^{i\\pi}'
-      // let the constructor's own deferred hydration settle first
-      await tick()
+      // the constructor hydrates once on its own
+      await waitUntil(() => initCalls >= 1, 'constructor never hydrated', 2000)
       initCalls = 0
+      const importsBefore = bridge.calls()
       element.innerHTML = '<p>hydrated markup</p>'
       element.hydrated = true
       element.haxeditModeChanged(false)
       expect(element.innerHTML).to.equal('e^{i\\pi}')
       expect(element.hydrated).to.equal(false)
-      await tick()
-      expect(initCalls).to.equal(1)
+      // toggling edit mode re-requests the bridge import and re-initializes
+      await waitUntil(
+        () => bridge.calls() > importsBefore,
+        'bridge import never re-requested',
+        2000,
+      )
+      await waitUntil(() => initCalls >= 1, 'never re-initialized', 2000)
     } finally {
-      restoreImport()
       restoreGlobal()
     }
   })
