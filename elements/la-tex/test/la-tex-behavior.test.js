@@ -102,6 +102,36 @@ describe('la-tex behavior', () => {
     }
   })
 
+  it('logs instead of crashing when LaTeX2HTML5.init throws', async () => {
+    const errors = []
+    const originalError = console.error
+    console.error = (...args) => {
+      errors.push(args)
+    }
+    const restoreGlobal = stubLatexGlobal({
+      init() {
+        throw new TypeError('parsed.forEach is not a function')
+      },
+    })
+    try {
+      await fixture(html`<la-tex>y = x^2</la-tex>`)
+      await tick()
+      // the parse failure inside the vendored bundle was caught and logged
+      const hit = errors.find((args) =>
+        String(args[0]).includes('la-tex failed to hydrate'),
+      )
+      expect(hit === undefined).to.be.false
+      expect(String(hit[1])).to.include('parsed.forEach is not a function')
+      // and the session stayed alive for the next element
+      const survivor = await fixture(html`<la-tex>x</la-tex>`)
+      await tick()
+      expect(survivor.hydrated).to.equal(false)
+    } finally {
+      console.error = originalError
+      restoreGlobal()
+    }
+  })
+
   it('declares its hax hooks', async () => {
     const element = await fixture(html`<la-tex>q</la-tex>`)
     expect(element.haxHooks()).to.deep.equal({
