@@ -91,25 +91,25 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
     return this.row ? "Row" : "Column";
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      // controls must also recompute when row toggles, not just when index
-      // changes, or a row/column menu keeps the stale opposite-axis id
-      if (propName === "index" || propName === "row") {
-        this.controls = this.row
-          ? `cell-0-${this.index}`
-          : `cell-${this.index}-0`;
-      }
-      if (propName === "index" || propName === "row") {
-        this.label = this.row
-          ? this._getLabel(this.index, true)
-          : this._getLabel(this.index, false);
-      }
-      if (propName === "row") {
-        this.position = this.row ? "right" : "bottom";
-      }
-    });
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    // Derive controls, label, and position from index/row in willUpdate so
+    // the reactive sets batch into the current update cycle; setting them in
+    // updated() scheduled a redundant second update (Lit change-in-update
+    // warning). controls must also recompute when row toggles, not just
+    // when index changes, or a row/column menu keeps the stale
+    // opposite-axis id.
+    if (changedProperties.has("index") || changedProperties.has("row")) {
+      this.controls = this.row
+        ? `cell-0-${this.index}`
+        : `cell-${this.index}-0`;
+      this.label = this.row
+        ? this._getLabel(this.index, true)
+        : this._getLabel(this.index, false);
+    }
+    if (changedProperties.has("row")) {
+      this.position = this.row ? "right" : "bottom";
+    }
   }
 
   get listItemTemplate() {
