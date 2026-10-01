@@ -277,6 +277,15 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
       this._handleSelectionChange();
     });
   }
+  updated(changedProperties) {
+    // RadioBehaviors.updated re-runs selectItem() when `selection` changes;
+    // _updateItemData() then assigns the reactive `itemData` array from
+    // inside the hook, scheduling a redundant second update (Lit
+    // change-in-update warning). Defer it until after this update cycle
+    // completes so the sets land in a normal follow-up update.
+    if (changedProperties.has("selection"))
+      queueMicrotask(() => super.updated(changedProperties));
+  }
   /**
    * gets image css for selected image
    *

@@ -492,10 +492,16 @@ describe('lib/remoteLinkBehavior', () => {
     expect(el).to.exist
   })
 
-  it('adds remoteLinkTarget and remoteLinkURL properties', () => {
+  it('adds the remoteLinkURL property and keeps remoteLinkTarget a plain field', () => {
     const Mixed = makeClass()
-    expect(Mixed.properties.remoteLinkTarget).to.exist
     expect(Mixed.properties.remoteLinkURL).to.exist
+    // remoteLinkTarget holds a DOM node assigned in firstUpdated, so it is
+    // intentionally NOT a reactive property (Lit change-in-update warning)
+    expect(Mixed.properties.remoteLinkTarget).to.be.undefined
+    const el = new Mixed()
+    expect(el.remoteLinkTarget).to.be.undefined
+    el.remoteLinkTarget = document.createElement('a')
+    expect(el.remoteLinkTarget).to.be.an.instanceOf(HTMLAnchorElement)
   })
 
   it('preserves super properties', () => {
@@ -506,7 +512,7 @@ describe('lib/remoteLinkBehavior', () => {
     }
     const Mixed = makeClass(Base)
     expect(Mixed.properties.custom).to.exist
-    expect(Mixed.properties.remoteLinkTarget).to.exist
+    expect(Mixed.properties.remoteLinkURL).to.exist
   })
 
   it('_remoteLinkURLTarget sets target=_blank for external links', () => {
