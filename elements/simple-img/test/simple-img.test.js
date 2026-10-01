@@ -5,10 +5,11 @@ import "../simple-img.js";
 // simple-img converts its src through the @core/imgManipulate microservice
 // and then loads the returned URL with new Image(); stub the registry so
 // tests never leave the browser session.
-// NOTE: document.createElement("simple-img") can NEVER be used here: the
-// constructor sets attributes on itself during construction, which violates
-// the custom element constructor rules, so createElement always throws
-// NotSupportedError ("The result must not have attributes").
+// NOTE: the light DOM adoption and default attributes used to run in the
+// constructor, which set attributes during construction and made
+// document.createElement("simple-img") throw NotSupportedError. The
+// adoption and defaults now run in connectedCallback, so createElement is
+// safe and the element upgrades on connect.
 const DATA_URL =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
@@ -46,6 +47,23 @@ describe("elementName test", () => {
 
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
+  });
+
+  it("document.createElement does not throw and upgrades on connect", async () => {
+    let created;
+    expect(() => {
+      created = globalThis.document.createElement("simple-img");
+    }).to.not.throw();
+    globalThis.document.body.appendChild(created);
+    const upgraded = await poll(() => created.getAttribute("width") === "300");
+    expect(upgraded).to.be.true;
+    expect(created.getAttribute("height")).to.equal("200");
+    expect(created.getAttribute("quality")).to.equal("80");
+    expect(created.getAttribute("loading")).to.equal("lazy");
+    expect(created.getAttribute("alt")).to.equal("");
+    expect(created.style.display).to.equal("inline-block");
+    expect(created.style.width).to.equal("300px");
+    globalThis.document.body.removeChild(created);
   });
 });
 

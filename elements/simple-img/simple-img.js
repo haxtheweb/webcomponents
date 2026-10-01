@@ -13,8 +13,31 @@ export class SimpleImg extends HTMLElement {
     // simple-image
     // simple image conversion work
     this.rendering = false;
+    // guard so the light DOM adoption below runs exactly once on first
+    // connect; custom element constructors must not set attributes, so all
+    // self-mutation (attribute defaults, wrapper styles and light DOM wipe)
+    // is deferred to connectedCallback
+    this.__lightDomAdopted = false;
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    if (!this.__lightDomAdopted) {
+      this.__lightDomAdopted = true;
+      this.__adoptLightDomImage();
+    }
+    this.updateconvertedurl();
+  }
+
+  /**
+   * adopts a pre-upgrade light DOM image (an <img> child or one inside a
+   * <template>) and applies the documented default attributes/styles
+   */
+  __adoptLightDomImage() {
     // progressive enhancement, tho less performant
-    var img = this.querySelector("img");
+    let img = this.querySelector("img");
     if (!img) {
       // performance minded prog enhancement
       if (
@@ -23,18 +46,24 @@ export class SimpleImg extends HTMLElement {
         this.querySelector("template").content.children[0].tagName === "IMG"
       ) {
         img = this.querySelector("template").content.children[0];
-      } else {
-        img = {};
       }
     }
-    // defaults, using img pulled in or default
-    this.alt = img.alt || this.alt || "";
-    this.src = img.src || this.src || "";
-    this.loading = img.loading || this.loading || "lazy";
-    this.decoding = img.decoding || this.decoding || "async";
-    this.fetchpriority = img.fetchpriority || this.fetchpriority || "high";
-    this.width = parseInt(img.width || this.width || 300);
-    this.height = parseInt(img.height || this.height || 200);
+    // defaults, using img pulled in or default; img stays null when there is
+    // no light DOM image to adopt, so every read below is guarded
+    this.alt = (img && img.alt) || this.alt || "";
+    this.src = (img && img.src) || this.src || "";
+    this.loading = (img && img.loading) || this.loading || "lazy";
+    this.decoding = (img && img.decoding) || this.decoding || "async";
+    this.fetchpriority =
+      (img && img.fetchpriority) || this.fetchpriority || "high";
+    // read the width/height ATTRIBUTES (not the IDL properties, which
+    // report natural/rendered sizes for images without them)
+    this.width = parseInt(
+      (img && img.getAttribute("width")) || this.width || 300,
+    );
+    this.height = parseInt(
+      (img && img.getAttribute("height")) || this.height || 200,
+    );
     // defaults on the wrapper element
     this.style.display = "inline-block";
     this.style.width = this.width + "px";
@@ -151,12 +180,6 @@ export class SimpleImg extends HTMLElement {
     }
   }
 
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-    this.updateconvertedurl();
-  }
   // render a given src as it will be calculated
   render(src) {
     this.innerHTML = null;

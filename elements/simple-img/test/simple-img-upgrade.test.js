@@ -98,4 +98,53 @@ describe("simple-img progressive enhancement on upgrade", () => {
     // no src, nothing renders
     expect(el.querySelector("img")).to.equal(null);
   });
+
+  it("reads attributes, not natural sizes, from a loaded light DOM image", async () => {
+    // a loaded 1x1 gif without dimension attributes: the img.width/height IDL
+    // properties report the natural 1x1 size while the attributes are
+    // absent, so the documented 300x200 defaults must still apply
+    const el = globalThis.document.createElement("simple-img");
+    const img = globalThis.document.createElement("img");
+    img.src = DATA_URL;
+    img.alt = "Loaded";
+    el.appendChild(img);
+    await img.decode().catch(() => {});
+    expect(img.naturalWidth).to.equal(1);
+    globalThis.document.body.appendChild(el);
+    const adopted = await poll(() => el.getAttribute("width") !== null);
+    expect(adopted).to.be.true;
+    expect(el.getAttribute("width")).to.equal("300");
+    expect(el.getAttribute("height")).to.equal("200");
+    expect(el.getAttribute("alt")).to.equal("Loaded");
+    expect(el.src).to.equal(DATA_URL);
+  });
+
+  it("adopts a broken light DOM image and renders the original src fallback", async () => {
+    // the adopted image never loads and the converted URL 404s; the element
+    // still adopts the attribute dimensions and the onerror path renders the
+    // original src
+    const original = MicroFrontendRegistry.url;
+    MicroFrontendRegistry.url = () => "/definitely-missing-converted.png";
+    try {
+      const el = upgradedElement(
+        '<simple-img><img src="/definitely-missing-original.png" alt="Broken" width="50" height="40"></simple-img>',
+      );
+      // attribute dimensions survive even though the image never loads
+      const adopted = await poll(() => el.getAttribute("width") === "50");
+      expect(adopted).to.be.true;
+      expect(el.getAttribute("height")).to.equal("40");
+      expect(el.getAttribute("alt")).to.equal("Broken");
+      expect(el.src.endsWith("/definitely-missing-original.png")).to.be.true;
+      // conversion fails, so the fallback renders the original (broken) src
+      const rendered = await poll(() => el.querySelector("img") !== null);
+      expect(rendered).to.be.true;
+      const img = el.querySelector("img");
+      expect(img.getAttribute("src").endsWith("/definitely-missing-original.png"))
+        .to.be.true;
+      expect(img.getAttribute("width")).to.equal("50");
+      expect(img.getAttribute("height")).to.equal("40");
+    } finally {
+      MicroFrontendRegistry.url = original;
+    }
+  });
 });
