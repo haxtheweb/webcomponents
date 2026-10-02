@@ -394,6 +394,14 @@ describe("event-badge test", () => {
       const styles = getComputedStyle(element);
       expect(styles.display).to.equal("inline-flex");
     });
+
+    it("should pin color-scheme to light for the fixed palette", () => {
+      // follow-up (haxtheweb/issues#3102): the badge had no color-scheme
+      // handling; its retro palette is intentionally fixed-light, so the
+      // host pins color-scheme: light so UA dark-mode adjustments leave it alone
+      const styles = getComputedStyle(element);
+      expect(styles.colorScheme).to.equal("light");
+    });
   });
 
   describe("Edge Cases and Error Handling", () => {
