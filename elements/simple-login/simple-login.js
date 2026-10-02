@@ -267,8 +267,8 @@ class SimpleLogin extends SimpleColors {
    */
   _keyPressLogin(e) {
     if (e.key === "Enter") {
+      e.preventDefault();
       this._login();
-      return false;
     }
   }
   _passwordChanged(e) {
