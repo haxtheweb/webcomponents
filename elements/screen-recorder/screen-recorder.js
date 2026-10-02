@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -68,8 +67,9 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   // Lit scoped styles
+  // the sr-only helper class ships in DDDReset through the DDDSuper chain
   static get styles() {
-    return [super.styles, DDDExtra,
+    return [super.styles,
     css`
       :host {
         display: block;
