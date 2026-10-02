@@ -15,7 +15,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     return [
       css`
         :host {
-          margin: 15px 0;
+          margin: var(--ddd-spacing-4, 15px) 0;
           --a11y-carousel-background-image: none;
         }
         ::slotted(figure) {
@@ -93,7 +93,10 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
               var(--ddd-spacing-10, 40px)
             );
             height: var(--a11y-carousel-button-height, 10px);
-            margin: var(--a11y-carousel-button-margin, 5px);
+            margin: var(
+              --a11y-carousel-button-margin,
+              var(--ddd-spacing-1, 5px)
+            );
             padding: var(
               --a11y-carousel-button-padding,
               var(--ddd-spacing-0, 0px)

@@ -14,8 +14,8 @@ class a11yCarouselButton extends LitElement {
           display: inline;
           background-color: transparent;
           border: 1px solid black;
-          padding: 2px 5px;
-          margin: 15px 2px;
+          padding: 2px var(--ddd-spacing-1, 5px);
+          margin: var(--ddd-spacing-4, 15px) 2px;
           text-align: center;
         }
         :host([hidden]) {
