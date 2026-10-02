@@ -349,7 +349,12 @@ describe('lorem-data generators (element)', () => {
     expect(el.randomPlaceImg('16/9', 'sepia')).to.equal(
       '//placeimg.com/16/9/any/sepia',
     )
-    expect(el.randomPlaceImg('16/9', '')).to.equal('//placeimg.com/16/9/any')
+    // an empty filter is falsy so it falls through to the weighted random
+    // choice (same contract as randomPicsum); assert the url shape instead
+    // of one weighted outcome so this is not a ~29% coin flip per run
+    expect(el.randomPlaceImg('16/9', '')).to.match(
+      /^\/\/placeimg\.com\/16\/9\/any(\/greyscale|\/sepia)?$/,
+    )
     expect(el.randomPlaceImg('16/9')).to.match(
       /^\/\/placeimg\.com\/16\/9\/any(\/greyscale|\/sepia)?$/,
     )
