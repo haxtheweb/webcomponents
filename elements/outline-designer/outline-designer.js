@@ -1414,7 +1414,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         <span
           class="label-edit"
           @blur="${this.blurTitle}"
-          @keypress="${this.monitorTitle}"
           @keydown="${this.monitorEsc}"
         ></span>
         <simple-context-menu
@@ -1653,11 +1652,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               @dblclick="${this.editTitle}"
               >${label}</span
             >
-            <span
-              class="label-edit"
-              @keypress="${this.monitorHeading}"
-              @keydown="${this.monitorEsc}"
-            ></span>
+            <span class="label-edit" @keydown="${this.monitorEsc}"></span>
           `
         : html`<span class="label shown">${label}</span>`}
       <div class="content-operations">
@@ -2075,7 +2070,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       e.target.previousElementSibling.classList.add("shown");
       e.target.innerText = e.target.previousElementSibling.innerText;
     } else if (e.key === "Enter") {
+      // Enter commits the edit through the row's own monitor, folded
+      // in here since lit allows only one binding per event name
+      e.preventDefault();
       this._blurBlock = true;
+      if (e.target.closest("[data-item-id]")) {
+        this.monitorTitle(e);
+      } else if (e.target.closest("[data-content-parent-id]")) {
+        this.monitorHeading(e);
+      }
     }
   }
   blurTitle(e) {

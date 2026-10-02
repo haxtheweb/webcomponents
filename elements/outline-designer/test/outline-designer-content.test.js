@@ -251,6 +251,32 @@ describe('outline-designer content operations', () => {
     )
   })
 
+  it('renames a heading through the merged keydown Enter path', async () => {
+    const heading = contentLi(element, 'p1', 0)
+    const label = heading.querySelector('.label.shown')
+    element.editTitle({ target: label })
+    const labelEdit = heading.querySelector('.label-edit')
+    // write via textContent (uncommitted innerText edits are discarded
+    // when the contenteditable attribute is removed)
+    labelEdit.textContent = 'Renamed heading'
+    // a real keydown Enter now commits through the merged path in
+    // monitorEsc (lit allows one binding per event name)
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true,
+    })
+    labelEdit.dispatchEvent(event)
+    expect(event.defaultPrevented).to.equal(true)
+    await settle(element)
+    expect(element.items.find((i) => i.id === 'p1').contents).to.include(
+      'Renamed heading',
+    )
+    expect(element.items.find((i) => i.id === 'p1').contents).to.not.include(
+      'Heading one',
+    )
+  })
+
   it('previews a content node in the popover and resets it', async () => {
     const para = contentLi(element, 'p1', 1)
     element.setActivePreview(fakeEventFrom(para))
