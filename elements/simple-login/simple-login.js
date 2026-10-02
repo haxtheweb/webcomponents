@@ -244,17 +244,16 @@ class SimpleLogin extends SimpleColors {
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#loginform")
-        .addEventListener("keypress", this._keyPressLogin.bind(this));
+        .addEventListener("keydown", this._keydownLogin.bind(this));
     }, 0);
   }
   /**
    * Key pressed for the login
    */
-  _keyPressLogin(e) {
-    if (e.keyCode == 13) {
+  _keydownLogin(e) {
+    if (e.key === "Enter") {
       //Enter
       this._login();
-      return false;
     }
   }
   _passwordChanged(e) {

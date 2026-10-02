@@ -61,14 +61,14 @@ describe('media-image shared toolchain', () => {
       expect(image.modalTitle).to.equal('Figure 3')
     })
 
-    it('ignores non Enter keys in _keyPress', async () => {
+    it('ignores non Enter keys in _keydown', async () => {
       const el = await fixture(
         html`<media-image source="files/photo.jpg"></media-image>`,
       )
       await el.updateComplete
       const image = el.shadowRoot.querySelector('media-image-image')
-      expect(() => image._keyPress({ key: 'Escape' })).to.not.throw
-      expect(() => image._keyPress({ key: ' ' })).to.not.throw
+      expect(() => image._keydown({ key: 'Escape' })).to.not.throw
+      expect(() => image._keydown({ key: ' ' })).to.not.throw
     })
   })
 
