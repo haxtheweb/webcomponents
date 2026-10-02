@@ -414,15 +414,15 @@ describe('rich-text-editor-toolbar', () => {
     expect(toolbar.clickableElements['img'] === undefined).to.equal(true)
   })
 
-  it('_handleTargetKeypress writes the first key into the target', async () => {
-    // fixed (issue #3077 bug 5): the first keypress on an empty target
+  it('_handleTargetFirstKey writes the first key into the target', async () => {
+    // fixed (issue #3077 bug 5): the first key on an empty target
     // writes into the target (never the toolbar) and guards the range
     const emptyEditor = await makeEditor('')
     toolbar.setTarget(emptyEditor)
     globalThis.getSelection().removeAllRanges()
     let threw = null
     try {
-      toolbar._handleTargetKeypress({ key: 'z' })
+      toolbar._handleTargetFirstKey({ key: 'z' })
     } catch (e) {
       threw = e
     }
@@ -438,7 +438,7 @@ describe('rich-text-editor-toolbar', () => {
     emptyEditor.remove()
     // non-empty target: guard exits without writing
     toolbar.setTarget(editor)
-    toolbar._handleTargetKeypress({ key: 'z' })
+    toolbar._handleTargetFirstKey({ key: 'z' })
     expect(editor.innerHTML).to.equal('<p id="first">hello world</p>')
   })
 
@@ -684,7 +684,7 @@ describe('rich-text-editor-toolbar', () => {
   it('enabledTargetHandlers lists the editing listeners', () => {
     const handlers = toolbar.enabledTargetHandlers
     expect(Object.keys(handlers).sort()).to.deep.equal(
-      ['keydown', 'keypress', 'mousedown', 'mouseup'].sort(),
+      ['keydown', 'mousedown', 'mouseup'].sort(),
     )
     expect(typeof handlers.keydown).to.equal('function')
   })

@@ -355,7 +355,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      */
     _handleKeydown(e) {}
     /**
-     * handles keypress
+     * handles keydown
      *
      * @param {event} e event
      */
@@ -532,7 +532,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?disabled="${this.disabled}"
               aria-controls="${this.controls || undefined}"
               @click="${this._handleClick}"
-              @keypress="${this._handleKeys}"
               @keydown="${this._handleKeydown}"
               @blur="${this._handleBlur}"
               @focus="${this._handleFocus}"
@@ -559,7 +558,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
                 @click="${this._handleClick}"
-                @keypress="${this._handleKeys}"
+                @keydown="${this._handleKeys}"
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
@@ -582,7 +581,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
                 @click="${this._handleClick}"
-                @keypress="${this._handleKeys}"
+                @keydown="${this._handleKeys}"
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
