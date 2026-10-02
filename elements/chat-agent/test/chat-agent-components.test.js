@@ -36,7 +36,7 @@ describe('chat-agent sub-components', () => {
       await aTimeout(0)
       await el.updateComplete
       expect(el.isInterfaceHidden).to.equal(true)
-      el.keyPress(new KeyboardEvent('keypress', { key: 'Enter', cancelable: true }))
+      el.keyPress(new KeyboardEvent('keydown', { key: 'Enter', cancelable: true }))
       const wrapper = el.shadowRoot.querySelector('.chat-button-wrapper')
       expect(wrapper.classList.contains('active-mimic')).to.equal(true)
       expect(ChatStore.isInterfaceHidden).to.equal(false)
@@ -48,7 +48,7 @@ describe('chat-agent sub-components', () => {
     it('keyPress ignores non-Enter keys', async () => {
       const el = await fixture(html`<chat-button></chat-button>`)
       await aTimeout(0)
-      el.keyPress(new KeyboardEvent('keypress', { key: 'a', cancelable: true }))
+      el.keyPress(new KeyboardEvent('keydown', { key: 'a', cancelable: true }))
       const wrapper = el.shadowRoot.querySelector('.chat-button-wrapper')
       expect(wrapper.classList.contains('active-mimic')).to.equal(false)
     })
@@ -628,6 +628,45 @@ describe('chat-agent sub-components', () => {
         }),
       )
       expect(ChatStore.chatLog.length).to.be.greaterThan(before)
+    })
+
+    it('keydown Enter on a wrapper disables siblings via the parent message', async () => {
+      // regression: chat-message bound the deprecated @keypress straight to
+      // disableSuggestions; the @keydown replacement gates on Enter / Space so
+      // only a real activation disables the sibling suggestions
+      ChatStore.currentSuggestions = [
+        { suggestion: 'One', type: 'hax' },
+        { suggestion: 'Two', type: 'help' },
+      ]
+      const el = await fixture(html`<chat-message message="m"></chat-message>`)
+      const suggestions = el.shadowRoot.querySelectorAll('chat-suggestion')
+      const wrapper = suggestions[0].shadowRoot.querySelector(
+        '.chat-suggestion-wrapper',
+      )
+      // a keydown that only moves focus does not disable anything
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Tab',
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      )
+      expect(suggestions[0].hasAttribute('disabled')).to.equal(false)
+      expect(suggestions[1].hasAttribute('disabled')).to.equal(false)
+      // Enter disables every sibling and marks the chosen prompt
+      wrapper.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter',
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      )
+      expect(suggestions[0].hasAttribute('disabled')).to.equal(true)
+      expect(suggestions[1].hasAttribute('disabled')).to.equal(true)
+      expect(suggestions[0].hasAttribute('chosen-prompt')).to.equal(true)
+      expect(suggestions[1].hasAttribute('chosen-prompt')).to.equal(false)
     })
 
     it('handleSuggestion sends the prompt when enabled', async () => {

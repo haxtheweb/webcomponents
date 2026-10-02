@@ -21,7 +21,7 @@
         "inputMethod": "select",
         "options": {
           "visibility": "Can see this",
-          "keypress": "Press a key here",
+          "keydown": "Press a key here",
           "click": "Click this",
           "hover": "Hover over this"
         },

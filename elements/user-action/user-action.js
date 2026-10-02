@@ -66,8 +66,13 @@ class UserAction extends HTMLElement {
         this.observer.observe(this);
         break;
       default:
-        this.__trackedEventName = track;
-        this.addEventListener(track, this.__boundUserActionEvent);
+        // legacy track="keypress" attaches keydown (keypress is deprecated);
+        // this.track is unchanged so the fired event still reports keypress
+        this.__trackedEventName = track === "keypress" ? "keydown" : track;
+        this.addEventListener(
+          this.__trackedEventName,
+          this.__boundUserActionEvent,
+        );
         break;
     }
   }

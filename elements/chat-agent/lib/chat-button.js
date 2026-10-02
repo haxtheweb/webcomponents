@@ -94,7 +94,7 @@ class ChatButton extends DDD {
           transform: translateY(-2px);
         }
 
-        .chat-button-wrapper:active, .chat-button-wrapper.active-mimic /* :active does not work with keypress by default */ {
+        .chat-button-wrapper:active, .chat-button-wrapper.active-mimic /* :active does not work with keyboard activation by default */ {
           box-shadow: 0 1px rgba(0, 3, 33, 0.4);
           transform: translateY(3px);
         }
