@@ -60,6 +60,7 @@ class HaxStaxBrowser extends LitElement {
         }
         a11y-collapse::part(heading) {
           margin: var(--ddd-spacing-2) 0;
+          display: block;
         }
       `,
     ];
