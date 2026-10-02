@@ -767,8 +767,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     this.config = this.updateToolbarElements();
     this.__prompt.haxUIElement = true;
     this.__prompt.classList.add("ignore-activation");
-    this.addEventListener("keypress", this.trapKeys.bind(this));
-    this.__prompt.addEventListener("keypress", this.trapKeys.bind(this));
+    this.addEventListener("keydown", this.trapKeys.bind(this));
+    this.__prompt.addEventListener("keydown", this.trapKeys.bind(this));
     this.__prompt.addEventListener("paste", this._handlePaste.bind(this));
   }
   /**
