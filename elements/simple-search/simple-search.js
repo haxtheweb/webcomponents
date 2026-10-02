@@ -22,15 +22,15 @@ import "./lib/simple-search-match.js";
  
  Custom property | Description | Default
  ----------------|-------------|----------
- `--simple-search-button-color` | text color for button | #111
- `--simple-search-button-bg-color` | background-color for button | #eee
- `--simple-search-button-border-color` | border-color for button | #ccc
- `--simple-search-button-disabled-color` | background-color for disabled seach button | #999
- `--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
- `--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
- `--simple-search-button-hover-color` | text color for button when hovered or focused | #000
- `--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
- `--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
+ `--simple-search-button-color` | text color for button | light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)
+ `--simple-search-button-bg-color` | background-color for button | light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)
+ `--simple-search-button-border-color` | border-color for button | light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-slateGray)
+ `--simple-search-button-disabled-color` | text color for disabled seach button | light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-slateLight)
+ `--simple-search-button-disabled-bg-color` | background-color for disabled seach button | light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)
+ `--simple-search-button-disabled-border-color` | border-color for disabled seach button | light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-slateGray)
+ `--simple-search-button-hover-color` | text color for button when hovered or focused | light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)
+ `--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | light-dark(--ddd-theme-default-white, --ddd-theme-default-slateGray)
+ `--simple-search-button-hover-border-color` | border-color for button when hovered or focused | light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-slateGray)
  `--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
  `--simple-search-container-padding` | search input's padding | unset
  `--simple-search-margin` | search input's margin | unset
@@ -89,32 +89,90 @@ class SimpleSearch extends LitElement {
           margin: 8px;
         }
 
+        /* dark-mode-critical chip colors migrate as one unit to DDD tokens
+           so the chip keeps its light-scheme contrast and flips in dark mode */
         button {
           margin: 8px 0 8px;
           border-style: solid;
           border-width: 1px;
-          border-color: var(--simple-search-button-border-color, #ccc);
-          color: var(--simple-search-button-color, #111);
-          background-color: var(--simple-search-button-bg-color, #eee);
-          border-color: var(--simple-search-button-border-color, #ccc);
+          border-color: var(
+            --simple-search-button-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+          color: var(
+            --simple-search-button-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
+          );
+          background-color: var(
+            --simple-search-button-bg-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-coalyGray)
+            )
+          );
         }
 
         button:not([disabled]):focus,
         button:not([disabled]):hover {
           cursor: pointer;
-          color: var(--simple-search-button-hover-color, #000);
-          background-color: var(--simple-search-button-hover-bg-color, #fff);
-          border-color: var(--simple-search-button-hover-border-color, #ddd);
+          color: var(
+            --simple-search-button-hover-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
+          );
+          background-color: var(
+            --simple-search-button-hover-bg-color,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+          border-color: var(
+            --simple-search-button-hover-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
         }
 
         button[disabled] {
           cursor: not-allowed;
-          color: var(--simple-search-button-disabled-color, #999);
-          background-color: var(--simple-search-button-disabled-bg-color, #eee);
-          border-color: var(--simple-search-button-disabled-border-color, #ccc);
+          color: var(
+            --simple-search-button-disabled-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            )
+          );
+          background-color: var(
+            --simple-search-button-disabled-bg-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-coalyGray)
+            )
+          );
+          border-color: var(
+            --simple-search-button-disabled-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
         }
 
-        button:not([aria-controls]) {
+        /* nav buttons hide when there is no controls wiring; scoped to
+           #searchnav so it out-specifies the #searchnav button rule that
+           kept the old unscoped hide rule dead */
+        #searchnav button:not([aria-controls]) {
           display: none;
         }
 
