@@ -1,0 +1,47 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": true,
+  "canScale": true,
+
+  "canEditSource": false,
+  "contentEditable": false,
+  "designSystem": false,
+  "gizmo": {
+    "title": "Image map",
+    "description": "An accessible image map with interactive hotspots.",
+    "icon": "image:image",
+    "color": "blue",
+    "tags": ["Images", "image", "map", "hotspot", "accessibility"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label for the image map.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Hotspot details",
+        "description": "The interactive hotspots on the image map.",
+        "inputMethod": "array",
+        "itemLabel": "label"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "lrndesign-imagemap",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}
