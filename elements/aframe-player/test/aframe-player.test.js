@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import "../aframe-player.js";
+import { AframePlayer } from "../aframe-player.js";
 
 // Prevent aframe.min.js from loading from the CDN in the test environment.
 // connectedCallback calls ESGlobalBridge.load(...) which injects a <script>
@@ -476,14 +476,21 @@ describe("aframe-player test", () => {
   });
 
   describe("HAX Properties and Integration", () => {
+    let haxProps;
+    before(async () => {
+      // the getter now returns a URL string pointing at the external schema
+      // file next to the element, so fetch and parse it once up front
+      const response = await fetch(AframePlayer.haxProperties);
+      expect(response.status).to.equal(200);
+      haxProps = await response.json();
+    });
+
     it("should have haxProperties defined", () => {
-      expect(element.constructor.haxProperties).to.exist;
-      expect(element.constructor.haxProperties.gizmo).to.exist;
-      expect(element.constructor.haxProperties.settings).to.exist;
+      expect(AframePlayer.haxProperties).to.exist;
+      expect(AframePlayer.haxProperties).to.include("haxProperties.json");
     });
 
     it("should have proper HAX gizmo configuration", () => {
-      const haxProps = element.constructor.haxProperties;
       expect(haxProps.gizmo.title).to.equal("3D player");
       expect(haxProps.gizmo.description).to.contain("3D file");
       expect(haxProps.gizmo.icon).to.equal("av:play-circle-filled");
@@ -493,7 +500,6 @@ describe("aframe-player test", () => {
     });
 
     it("should have proper HAX settings configuration", () => {
-      const haxProps = element.constructor.haxProperties;
       const configItems = haxProps.settings.configure;
 
       // Verify source property is required
@@ -520,7 +526,6 @@ describe("aframe-player test", () => {
     });
 
     it("should handle 3D file types correctly", () => {
-      const haxProps = element.constructor.haxProperties;
       const handles = haxProps.gizmo.handles;
 
       const fileHandle = handles.find((handle) => handle.type === "3d");

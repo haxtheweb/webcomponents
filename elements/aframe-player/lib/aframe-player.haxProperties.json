@@ -1,0 +1,79 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "designSystem": false,
+  "gizmo": {
+    "title": "3D player",
+    "description": "A 3D file / augmented reality player.",
+    "icon": "av:play-circle-filled",
+    "color": "amber",
+    "tags": [
+      "3D",
+      "augmented reality",
+      "AR",
+      "VR",
+      "video",
+      "aframe",
+      "webxr",
+      "webvr"
+    ],
+    "handles": [
+      {
+        "type": "3d",
+        "source": "source"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "The URL for this AR file.",
+        "inputMethod": "textfield",
+        "type": "bar",
+        "icon": "link",
+        "required": true
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X position of the element in AR.",
+        "inputMethod": "textfield",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y position of the element in AR.",
+        "inputMethod": "textfield",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z position of the element in AR.",
+        "inputMethod": "textfield",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      },
+      {
+        "property": "skyColor",
+        "title": "Sky color",
+        "description": "Select the color of the sky in the scene.",
+        "inputMethod": "colorpicker",
+        "type": "bar",
+        "icon": "editor:format-color-fill"
+      }
+    ],
+    "advanced": []
+  }
+}
