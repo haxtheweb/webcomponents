@@ -85,18 +85,20 @@ describe('hex-picker hex utilities', () => {
     expect(rgb9.b).to.equal(48)
     expect(rgb9.o).to.equal(64)
   })
-  it('converts shorthand hex with duplicated F (BUG: should repeat digit)', () => {
-    // BUG: shorthand parsing appends 'F' rather than repeating each digit,
-    // so '#f00' parses to r=255, g=15, b=15 instead of r=255, g=0, b=0
+  it('converts shorthand hex by repeating each digit', () => {
+    // FIXED (haxtheweb/issues#3102 #14): shorthand parsing now repeats each
+    // digit, so '#f00' parses to r=255, g=0, b=0 (previously appended 'F',
+    // yielding g=15, b=15). NOTE: 4-length shorthand still reports alpha 0 —
+    // pre-existing behavior intentionally left as-is by the fix.
     const rgb4 = el._hexToRgb('#f00')
     expect(rgb4.r).to.equal(255)
-    expect(rgb4.g).to.equal(15)
-    expect(rgb4.b).to.equal(15)
+    expect(rgb4.g).to.equal(0)
+    expect(rgb4.b).to.equal(0)
     expect(rgb4.o).to.equal(0)
     const rgb5 = el._hexToRgb('#f00f')
     expect(rgb5.r).to.equal(255)
-    expect(rgb5.g).to.equal(15)
-    expect(rgb5.b).to.equal(15)
+    expect(rgb5.g).to.equal(0)
+    expect(rgb5.b).to.equal(0)
     expect(rgb5.o).to.equal(255)
   })
   it('falls back to zeros for unexpected hex lengths', () => {
@@ -190,11 +192,12 @@ describe('hex-picker slider behavior', () => {
     const e = await listener
     expect(el._rValue).to.equal(255)
     expect(el.shadowRoot.querySelector('#R_out').value).to.equal('255')
-    // BUG: _fieldSetChange never assigns this.value, so the element value and
-    // reflected value attribute stay stale after slider changes even though
-    // the visible text input shows the computed hex
-    expect(e.detail.value).to.equal('#000000FF')
-    expect(el.value).to.equal('#000000FF')
+    // FIXED (haxtheweb/issues#3102 #15): _fieldSetChange now assigns
+    // this.value, so the value-changed detail and the reflected value
+    // attribute stay fresh after slider changes
+    expect(e.detail.value).to.equal('#ff0000ff')
+    expect(el.value).to.equal('#ff0000ff')
+    expect(el.getAttribute('value')).to.equal('#ff0000ff')
     // toString(16) yields lowercase so computed hex is lowercase unlike the
     // uppercase constructor default
     expect(el.shadowRoot.querySelector('input.text-input').value).to.equal('#ff0000ff')
