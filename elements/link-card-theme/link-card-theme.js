@@ -622,17 +622,6 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     `;
   }
 
-  disconnectedCallback() {
-    if (this.__disposer) {
-      this.__disposer.forEach((disposer) => {
-        if (typeof disposer === "function") {
-          disposer();
-        }
-      });
-      this.__disposer = [];
-    }
-    super.disconnectedCallback();
-  }
 }
 
 globalThis.customElements.define(LinkCardTheme.tag, LinkCardTheme);
