@@ -199,9 +199,7 @@ class HAXElementCardList extends LitElement {
                                 ${this._haxElementToNode(demoItem)}
                               </div>
                               <code-sample copy-clipboard-button>
-                                <template>
-                                  ${this._haxElementToNode(demoItem)}
-                                </template>
+                                <template></template>
                               </code-sample>
                             `,
                           )}
@@ -304,9 +302,38 @@ class HAXElementCardList extends LitElement {
     }
   }
   /**
+   * Fill the code-sample demo templates after render. lit-html forbids
+   * expressions inside <template> elements ('Expressions are not
+   * supported inside template elements'), and code-sample consumes its
+   * light-DOM <template> child as the snippet source, so the demo markup
+   * is injected into the templates imperatively here instead.
+   */
+  __updateDemoTemplates() {
+    if (!this.showCardList || !this.shadowRoot) return;
+    const cards = this.shadowRoot.querySelectorAll("product-card");
+    const list = this.productList;
+    for (let i = 0; i < cards.length; i++) {
+      const item = list[i];
+      if (!item || !item.showDemo || !item.schema || !item.schema.demoSchema) {
+        continue;
+      }
+      const templates = cards[i].querySelectorAll("code-sample > template");
+      item.schema.demoSchema.forEach((demoItem, j) => {
+        const template = templates[j];
+        if (template && template.innerHTML === "") {
+          const node = this._haxElementToNode(demoItem);
+          if (node && node.outerHTML) {
+            template.innerHTML = node.outerHTML;
+          }
+        }
+      });
+    }
+  }
+  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    this.__updateDemoTemplates();
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "list")
         this.dispatchEvent(

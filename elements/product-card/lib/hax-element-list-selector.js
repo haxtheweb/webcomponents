@@ -381,6 +381,11 @@ class HaxElementListSelector extends LitElement {
     value.haxcore = value.haxcore || {
       templates: {},
       providers: {},
+      // search and integrations keys keep the autoloader lookup and the
+      // integrations loop below from crashing when the form submitted
+      // without any haxcore value
+      search: {},
+      integrations: {},
     };
     let appstore = {
       providers: {
