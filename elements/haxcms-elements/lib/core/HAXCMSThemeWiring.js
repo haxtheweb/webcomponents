@@ -181,6 +181,13 @@ const HAXCMSTheme = function (SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
+      // re-establish the wiring instance's watchdog autorun in case this
+      // is a reconnect after a disconnect disposed it; fresh themes already
+      // established it from the wiring constructor and the guard prevents
+      // a double-push
+      if (this.HAXCMSThemeWiring && this.HAXCMSThemeWiring.establishDisposers) {
+        this.HAXCMSThemeWiring.establishDisposers();
+      }
       // edge case, we just swapped theme faster then content loaded... lol
       setTimeout(() => {
         if (this.childNodes.length === 0) {
@@ -206,6 +213,17 @@ const HAXCMSTheme = function (SuperClass) {
           const _mobx_val_0 = toJS(store.editMode);
           Promise.resolve().then(() => {
             this.editMode = _mobx_val_0;
+          });
+        }),
+      );
+      // keep trayStatus in sync globally; pushed on every connect because
+      // the constructor-time autorun pushed by HAXCMSLitElementTheme is
+      // disposed on the first disconnect and never re-established
+      this.__disposer.push(
+        autorun((reaction) => {
+          const _mobx_val_0 = toJS(store.trayStatus);
+          Promise.resolve().then(() => {
+            this.trayStatus = _mobx_val_0;
           });
         }),
       );
@@ -298,6 +316,11 @@ const HAXCMSTheme = function (SuperClass) {
       delete this.contentContainer;
       // clean up state
       this.disposeDisposers();
+      // clean up the wiring instance's own watchdog autorun so a removed
+      // theme stops reacting to the store entirely
+      if (this.HAXCMSThemeWiring && this.HAXCMSThemeWiring.disposeDisposers) {
+        this.HAXCMSThemeWiring.disposeDisposers();
+      }
       super.disconnectedCallback();
     }
     /**
@@ -332,6 +355,20 @@ class HAXCMSThemeWiring {
       }
     }
     this.__disposer = this.__disposer ? this.__disposer : [];
+    this.__watchdogEstablished = false;
+    this.establishDisposers();
+  }
+  /**
+   * Establish the watchdog autorun that re-invokes connect once a backend,
+   * a login state, and a theme content container all materialize. Guarded
+   * so repeated calls (a theme reconnecting after a disconnect) never
+   * double-push the autorun.
+   */
+  establishDisposers() {
+    if (this.__watchdogEstablished) {
+      return;
+    }
+    this.__watchdogEstablished = true;
     this.__disposer.push(
       autorun((reaction) => {
         // we have a backend and we have a jwt, but didnt at onee point...
@@ -348,6 +385,26 @@ class HAXCMSThemeWiring {
         }
       }),
     );
+  }
+  /**
+   * Dispose every autorun established by this wiring instance. Mirrors the
+   * theme mixin's disposeDisposers so a removed theme's wiring watchdog
+   * stops reacting to the store instead of living on as a zombie autorun.
+   */
+  disposeDisposers() {
+    if (!this.__disposer) {
+      return;
+    }
+    for (var i in this.__disposer) {
+      const disposer = this.__disposer[i];
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    }
+    this.__disposer = [];
+    this.__watchdogEstablished = false;
   }
   /**
    * connect the theme and see if we have an authoring experience to inject correctly

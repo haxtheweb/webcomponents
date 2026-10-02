@@ -42,7 +42,9 @@ describe("HAXCMSLitElementTheme base wiring", () => {
     };
     store.editMode = false;
     store.trayStatus = "";
-    element = await fixture(html`<test-haxcms-lit-theme></test-haxcms-lit-theme>`);
+    element = await fixture(
+      html`<test-haxcms-lit-theme></test-haxcms-lit-theme>`,
+    );
   });
 
   afterEach(() => {
@@ -89,6 +91,26 @@ describe("HAXCMSLitElementTheme base wiring", () => {
     await flush(element);
     expect(element.trayStatus).to.equal("collapsed");
     expect(element.getAttribute("tray-status")).to.equal("collapsed");
+  });
+
+  it("re-establishes trayStatus sync after a disconnect and reconnect", async () => {
+    // constructor-time autoruns are disposed on the first disconnect and
+    // never re-created; the HAXCMSTheme mixin's connectedCallback re-pushes
+    // activeItemContent / editMode and (issue 3106) trayStatus so a
+    // reconnected theme keeps syncing trayStatus
+    const parent = element.parentNode;
+    element.remove();
+    await flush(element);
+    expect(element.__disposer.length).to.equal(0);
+    parent.appendChild(element);
+    await flush(element);
+    expect(element.__disposer.length).to.be.at.least(1);
+    store.trayStatus = "opened";
+    await flush(element);
+    expect(element.trayStatus).to.equal("opened");
+    expect(element.getAttribute("tray-status")).to.equal("opened");
+    store.trayStatus = "";
+    await flush(element);
   });
 
   it("flips themeReady on after first paint and reflects theme-ready", async () => {
