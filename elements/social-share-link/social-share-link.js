@@ -135,7 +135,7 @@ class SocialShareLink extends LitElement {
   render() {
     return html` <a
       href="${this.__href}"
-      aria-disabled="${!this.__href}"
+      aria-disabled="${this.disabled || !this.__href}"
       class="${this.mode}"
       rel="noopener noreferrer"
       target="_blank"
