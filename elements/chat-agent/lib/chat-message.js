@@ -188,7 +188,7 @@ class ChatMessage extends DDD {
                 suggestion="${suggestedPrompt.suggestion}"
                 prompt-type="${suggestedPrompt.type}"
                 @click=${this.disableSuggestions}
-                @keypress=${this.disableSuggestions}
+                @keydown=${this._handleSuggestionKeydown}
               ></chat-suggestion>
             `,
           )}
@@ -286,6 +286,19 @@ class ChatMessage extends DDD {
       if (!existingChosenPrompt) {
         e.currentTarget.setAttribute("chosen-prompt", "");
       }
+    }
+  }
+
+  /**
+   * @description Keyboard activation for a suggestion from the message side.
+   * Gates on Enter / Space, mirroring chat-suggestion's own activation keys,
+   * so a keydown that only moves focus (e.g. Tab) cannot disable the
+   * suggestions without an activation.
+   * @param {KeyboardEvent} e - keydown
+   */
+  _handleSuggestionKeydown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      this.disableSuggestions(e);
     }
   }
 
