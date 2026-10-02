@@ -1,343 +1,426 @@
-import { fixture, expect, html } from '@open-wc/testing'
-import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
-import '../terrible-themes.js'
+import { fixture, expect, html } from "@open-wc/testing";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "../terrible-themes.js";
 // direct lib imports so istanbul sees every lib theme (invisible-lib rule);
 // none of these modules are imported anywhere else
-import '../lib/terrible-best-themes.js'
-import '../lib/terrible-outlet-themes.js'
-import '../lib/terrible-productionz-themes.js'
-import '../lib/terrible-resume-themes.js'
+import "../lib/terrible-best-themes.js";
+import "../lib/terrible-outlet-themes.js";
+import "../lib/terrible-productionz-themes.js";
+import "../lib/terrible-resume-themes.js";
 
-const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // file level store fixture + restore (stub/restore singleton pattern)
-const savedManifest = store.manifest
-const savedActiveId = store.activeId
+const savedManifest = store.manifest;
+const savedActiveId = store.activeId;
 
 // block every googleapis font stylesheet for the whole session: the
 // productionz theme's firstUpdated injects a remote Caveat font link and
 // the d-d-d design system registers Roboto fonts, neither of which should
 // ever be fetched from the network in tests
-const savedAppendChild = globalThis.document.head.appendChild
-const blockedFontLinks = []
+const savedAppendChild = globalThis.document.head.appendChild;
+const blockedFontLinks = [];
 globalThis.document.head.appendChild = (el) => {
   if (
     el &&
-    el.tagName === 'LINK' &&
-    (el.getAttribute('href') || '').includes('fonts.googleapis.com')
+    el.tagName === "LINK" &&
+    (el.getAttribute("href") || "").includes("fonts.googleapis.com")
   ) {
-    blockedFontLinks.push(el.getAttribute('href'))
-    return el
+    blockedFontLinks.push(el.getAttribute("href"));
+    return el;
   }
-  return savedAppendChild.call(globalThis.document.head, el)
-}
+  return savedAppendChild.call(globalThis.document.head, el);
+};
 
 store.manifest = {
-  title: 'Terrible Site',
-  author: 'Fallback Author',
+  title: "Terrible Site",
+  author: "Fallback Author",
   metadata: {
-    author: { name: 'Terrible Author' },
+    author: { name: "Terrible Author" },
     site: {
-      name: 'Terrible',
-      logo: 'assets/logo.png',
+      name: "Terrible",
+      logo: "assets/logo.png",
       created: 1600000000,
       updated: 1717000000,
     },
   },
   items: [
     {
-      id: 'home',
-      title: 'Home',
-      slug: 'home',
+      id: "home",
+      title: "Home",
+      slug: "home",
       order: 0,
       parent: null,
-      location: 'index.html',
+      location: "index.html",
       metadata: { created: 1600000000 },
     },
     {
-      id: 'news',
-      title: 'News',
-      slug: 'news',
+      id: "news",
+      title: "News",
+      slug: "news",
       order: 1,
       parent: null,
-      location: 'news.html',
+      location: "news.html",
       metadata: {},
     },
     {
-      id: 'kid',
-      title: 'Kid',
-      slug: 'kid',
+      id: "kid",
+      title: "Kid",
+      slug: "kid",
       order: 0,
-      parent: 'home',
-      location: 'kid.html',
+      parent: "home",
+      location: "kid.html",
       metadata: {},
     },
   ],
-}
+};
 
 after(() => {
-  store.manifest = savedManifest
-  store.activeId = savedActiveId
-  globalThis.document.head.appendChild = savedAppendChild
-})
+  store.manifest = savedManifest;
+  store.activeId = savedActiveId;
+  globalThis.document.head.appendChild = savedAppendChild;
+});
 
-describe('terrible-themes main theme', () => {
-  let element
+describe("terrible-themes main theme", () => {
+  let element;
   beforeEach(async () => {
-    store.activeId = 'home'
-    element = await fixture(html`<terrible-themes></terrible-themes>`)
-    await element.updateComplete
-    await wait(80)
-  })
+    store.activeId = "home";
+    element = await fixture(html`<terrible-themes></terrible-themes>`);
+    await element.updateComplete;
+    await wait(80);
+  });
 
-  it('renders the legacy table layout with landmarks', () => {
+  it("renders the legacy table layout with landmarks", () => {
     expect(
-      element.shadowRoot.querySelector('a.skip-link').getAttribute('href'),
-    ).to.equal('#contentcontainer')
+      element.shadowRoot.querySelector("a.skip-link").getAttribute("href"),
+    ).to.equal("#contentcontainer");
     expect(
       element.shadowRoot.querySelector('section#slot[role="main"]') === null,
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
-      element.shadowRoot.querySelector('section#slot').getAttribute(
-        'aria-label',
-      ),
-    ).to.equal('Page content')
+      element.shadowRoot
+        .querySelector("section#slot")
+        .getAttribute("aria-label"),
+    ).to.equal("Page content");
     expect(
       element.shadowRoot.querySelector('td#contentcontainer[tabindex="-1"]') ===
         null,
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
       element.shadowRoot.querySelector('site-top-menu[indicator="arrow"]') ===
         null,
-    ).to.equal(false)
-    expect(element.shadowRoot.querySelector('site-footer') === null).to.equal(
+    ).to.equal(false);
+    expect(element.shadowRoot.querySelector("site-footer") === null).to.equal(
       false,
-    )
-    expect(element.shadowRoot.querySelector('site-active-title') === null).to.equal(
-      false,
-    )
+    );
+    expect(
+      element.shadowRoot.querySelector("site-active-title") === null,
+    ).to.equal(false);
     // the fake login link is disabled for keyboard and AT
-    const login = element.shadowRoot.querySelector('a.loginState')
-    expect(login.getAttribute('aria-disabled')).to.equal('true')
-    expect(login.getAttribute('tabindex')).to.equal('-1')
-  })
+    const login = element.shadowRoot.querySelector("a.loginState");
+    expect(login.getAttribute("aria-disabled")).to.equal("true");
+    expect(login.getAttribute("tabindex")).to.equal("-1");
+  });
 
-  it('tracks the active manifest index from the store', async () => {
-    expect(element.activeManifestIndex).to.equal(0)
-    store.activeId = 'news'
-    await wait(80)
-    expect(element.activeManifestIndex).to.equal(1)
-  })
+  it("tracks the active manifest index from the store", async () => {
+    expect(element.activeManifestIndex).to.equal(0);
+    store.activeId = "news";
+    await wait(80);
+    expect(element.activeManifestIndex).to.equal(1);
+  });
 
-  it('updates prev and next page labels from menu buttons', async () => {
+  it("updates prev and next page labels from menu buttons", async () => {
     // a middle page has neighbors on both sides
-    store.activeId = 'news'
-    await wait(80)
-    await element.updateComplete
-    expect(element.prevPage).to.equal('Home')
-    expect(element.nextPage).to.equal('Kid')
-    element.requestUpdate()
-    await element.updateComplete
+    store.activeId = "news";
+    await wait(80);
+    await element.updateComplete;
+    expect(element.prevPage).to.equal("Home");
+    expect(element.nextPage).to.equal("Kid");
+    element.requestUpdate();
+    await element.updateComplete;
     const prevBottom = element.shadowRoot.querySelector(
       'aside site-menu-button[type="prev"] .bottom',
-    )
-    expect(prevBottom.textContent.trim()).to.equal('Home')
+    );
+    expect(prevBottom.textContent.trim()).to.equal("Home");
     const nextBottom = element.shadowRoot.querySelector(
       'aside site-menu-button[type="next"] .bottom',
-    )
-    expect(nextBottom.textContent.trim()).to.equal('Kid')
+    );
+    expect(nextBottom.textContent.trim()).to.equal("Kid");
     expect(
-      element.shadowRoot.querySelector('aside[aria-label="Page navigation"]') ===
-        null,
-    ).to.equal(false)
+      element.shadowRoot.querySelector(
+        'aside[aria-label="Page navigation"]',
+      ) === null,
+    ).to.equal(false);
     // the handlers can also be driven directly
-    element.__prevPageLabelChanged({ detail: { value: 'Previous page' } })
-    expect(element.prevPage).to.equal('Previous page')
-    element.__nextPageLabelChanged({ detail: { value: 'Next page' } })
-    expect(element.nextPage).to.equal('Next page')
-  })
-})
+    element.__prevPageLabelChanged({ detail: { value: "Previous page" } });
+    expect(element.prevPage).to.equal("Previous page");
+    element.__nextPageLabelChanged({ detail: { value: "Next page" } });
+    expect(element.nextPage).to.equal("Next page");
+  });
+});
 
-describe('terrible-best-themes', () => {
-  it('renders the skater table layout', async () => {
-    store.activeId = 'home'
+describe("terrible-best-themes", () => {
+  it("renders the skater table layout", async () => {
+    store.activeId = "home";
     const element = await fixture(
       html`<terrible-best-themes></terrible-best-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
+    );
+    await element.updateComplete;
+    await wait(80);
     expect(
-      element.shadowRoot.querySelector('a.skip-link').getAttribute('href'),
-    ).to.equal('#contentcontainer')
-    const img = element.shadowRoot.querySelector('img')
-    expect(img.getAttribute('src').includes('SKATER.gif')).to.equal(true)
-    expect(img.getAttribute('alt')).to.equal('')
+      element.shadowRoot.querySelector("a.skip-link").getAttribute("href"),
+    ).to.equal("#contentcontainer");
+    const img = element.shadowRoot.querySelector("img");
+    expect(img.getAttribute("src").includes("SKATER.gif")).to.equal(true);
+    expect(img.getAttribute("alt")).to.equal("");
     expect(
-      element.shadowRoot.querySelector('main#contentcontainer') === null,
-    ).to.equal(false)
-    expect(element.shadowRoot.querySelector('site-menu') === null).to.equal(
+      element.shadowRoot.querySelector("main#contentcontainer") === null,
+    ).to.equal(false);
+    expect(element.shadowRoot.querySelector("site-menu") === null).to.equal(
       false,
-    )
+    );
     expect(
-      element.shadowRoot.querySelectorAll('site-menu-button.navigation').length,
-    ).to.equal(2)
-    expect(element.shadowRoot.querySelector('scroll-button') === null).to.equal(
+      element.shadowRoot.querySelectorAll("site-menu-button.navigation").length,
+    ).to.equal(2);
+    expect(element.shadowRoot.querySelector("scroll-button") === null).to.equal(
       false,
-    )
+    );
     // store wiring for the active index
-    store.activeId = 'news'
-    await wait(80)
-    expect(element.activeManifestIndex).to.equal(1)
-  })
-})
+    store.activeId = "news";
+    await wait(80);
+    expect(element.activeManifestIndex).to.equal(1);
+  });
+});
 
-describe('terrible-outlet-themes', () => {
-  it('renders the classic sidebar layout', async () => {
-    store.activeId = 'home'
+describe("terrible-outlet-themes", () => {
+  it("renders the classic sidebar layout", async () => {
+    store.activeId = "home";
     const element = await fixture(
       html`<terrible-outlet-themes></terrible-outlet-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
+    );
+    await element.updateComplete;
+    await wait(80);
     expect(
-      element.shadowRoot.querySelector('a.skip-link').getAttribute('href'),
-    ).to.equal('#contentcontainer')
-    expect(element.shadowRoot.querySelector('site-title') === null).to.equal(
+      element.shadowRoot.querySelector("a.skip-link").getAttribute("href"),
+    ).to.equal("#contentcontainer");
+    expect(element.shadowRoot.querySelector("site-title") === null).to.equal(
       false,
-    )
-    expect(element.shadowRoot.querySelector('site-menu') === null).to.equal(
+    );
+    expect(element.shadowRoot.querySelector("site-menu") === null).to.equal(
       false,
-    )
-    expect(element.shadowRoot.querySelector('site-footer') === null).to.equal(
+    );
+    expect(element.shadowRoot.querySelector("site-footer") === null).to.equal(
       false,
-    )
+    );
     expect(
-      element.shadowRoot.querySelector('main#contentcontainer') === null,
-    ).to.equal(false)
+      element.shadowRoot.querySelector("main#contentcontainer") === null,
+    ).to.equal(false);
     expect(
-      element.shadowRoot.querySelector('section#slot slot') === null,
-    ).to.equal(false)
-    const scroll = element.shadowRoot.querySelector('scroll-button')
-    expect(scroll.getAttribute('label')).to.equal('Back to top')
-  })
-})
+      element.shadowRoot.querySelector("section#slot slot") === null,
+    ).to.equal(false);
+    const scroll = element.shadowRoot.querySelector("scroll-button");
+    expect(scroll.getAttribute("label")).to.equal("Back to top");
+  });
+});
 
-describe('terrible-productionz-themes', () => {
-  it('renders the productionz layout with author and posted metadata', async () => {
-    store.activeId = 'home'
+describe("terrible-productionz-themes", () => {
+  it("renders the productionz layout with author and posted metadata", async () => {
+    store.activeId = "home";
     const element = await fixture(
       html`<terrible-productionz-themes></terrible-productionz-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
-    await element.updateComplete
-    expect(element.author).to.equal('Terrible Author')
+    );
+    await element.updateComplete;
+    await wait(80);
+    await element.updateComplete;
+    expect(element.author).to.equal("Terrible Author");
     expect(
-      element.shadowRoot.querySelector('a.skip-link').getAttribute('href'),
-    ).to.equal('#contentcontainer')
+      element.shadowRoot.querySelector("a.skip-link").getAttribute("href"),
+    ).to.equal("#contentcontainer");
     expect(
       element.shadowRoot.querySelector('main#contentcontainer[role="main"]') ===
         null,
-    ).to.equal(false)
+    ).to.equal(false);
     // posted date comes from the active item metadata
     expect(
-      element.shadowRoot.querySelector('p.posted simple-datetime') === null,
-    ).to.equal(false)
-    expect(element.shadowRoot.querySelector('site-menu') === null).to.equal(
+      element.shadowRoot.querySelector("p.posted simple-datetime") === null,
+    ).to.equal(false);
+    expect(element.shadowRoot.querySelector("site-menu") === null).to.equal(
       false,
-    )
+    );
     const acidLink = element.shadowRoot.querySelector(
       'a[href="http://www.acidscorpio.com/"]',
-    )
-    expect(acidLink.getAttribute('rel')).to.equal('noopener')
-    expect(acidLink.getAttribute('target')).to.equal('_blank')
+    );
+    expect(acidLink.getAttribute("rel")).to.equal("noopener");
+    expect(acidLink.getAttribute("target")).to.equal("_blank");
     // the page body gets the tiled background image
     expect(
       globalThis.document.body.style.backgroundImage.includes(
-        'productionzbg.jpg',
+        "productionzbg.jpg",
       ),
-    ).to.equal(true)
+    ).to.equal(true);
     // the remote Caveat font link never lands in the document head
     expect(
-      globalThis.document.head.querySelector('link[href*="Caveat"]') ===
-        null,
-    ).to.equal(true)
+      globalThis.document.head.querySelector('link[href*="Caveat"]') === null,
+    ).to.equal(true);
     expect(
-      blockedFontLinks.some((href) =>
-        (href || '').includes('family=Caveat'),
-      ),
-    ).to.equal(true)
-  })
+      blockedFontLinks.some((href) => (href || "").includes("family=Caveat")),
+    ).to.equal(true);
+  });
 
-  it('falls back through manifest author sources', async () => {
-    store.activeId = 'home'
+  it("falls back through manifest author sources", async () => {
+    store.activeId = "home";
     const element = await fixture(
       html`<terrible-productionz-themes></terrible-productionz-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
-    expect(element.author).to.equal('Terrible Author')
+    );
+    await element.updateComplete;
+    await wait(80);
+    expect(element.author).to.equal("Terrible Author");
     // without a metadata author the flat manifest author is used
-    delete store.manifest.metadata.author
-    await wait(80)
-    expect(element.author).to.equal('Fallback Author')
+    delete store.manifest.metadata.author;
+    await wait(80);
+    expect(element.author).to.equal("Fallback Author");
     // without any author at all the legacy handle is used
-    delete store.manifest.author
-    await wait(80)
-    expect(element.author).to.equal('Ac|d-$CoRpI()')
-    store.manifest.metadata.author = { name: 'Terrible Author' }
-    store.manifest.author = 'Fallback Author'
-    await wait(80)
-  })
+    delete store.manifest.author;
+    await wait(80);
+    expect(element.author).to.equal("Ac|d-$CoRpI()");
+    store.manifest.metadata.author = { name: "Terrible Author" };
+    store.manifest.author = "Fallback Author";
+    await wait(80);
+  });
 
-  it('hides the posted date without item metadata', async () => {
-    store.activeId = 'news'
+  it("hides the posted date without item metadata", async () => {
+    store.activeId = "news";
     const element = await fixture(
       html`<terrible-productionz-themes></terrible-productionz-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
-    await element.updateComplete
-    expect(element.activeItem.title).to.equal('News')
+    );
+    await element.updateComplete;
+    await wait(80);
+    await element.updateComplete;
+    expect(element.activeItem.title).to.equal("News");
     expect(
-      element.shadowRoot.querySelector('p.posted simple-datetime') === null,
-    ).to.equal(true)
-  })
-})
+      element.shadowRoot.querySelector("p.posted simple-datetime") === null,
+    ).to.equal(true);
+  });
+});
 
-describe('terrible-resume-themes', () => {
-  it('renders the resume layout with ancestor wiring', async () => {
-    store.activeId = 'home'
+describe("terrible-resume-themes", () => {
+  it("renders the resume layout with ancestor wiring", async () => {
+    store.activeId = "home";
     const element = await fixture(
       html`<terrible-resume-themes></terrible-resume-themes>`,
-    )
-    await element.updateComplete
-    await wait(80)
+    );
+    await element.updateComplete;
+    await wait(80);
     expect(
-      element.shadowRoot.querySelector('a.skip-link').getAttribute('href'),
-    ).to.equal('#contentcontainer')
-    const topMenu = element.shadowRoot.querySelector('site-top-menu')
-    expect(topMenu.getAttribute('indicator')).to.equal('arrow')
+      element.shadowRoot.querySelector("a.skip-link").getAttribute("href"),
+    ).to.equal("#contentcontainer");
+    const topMenu = element.shadowRoot.querySelector("site-top-menu");
+    expect(topMenu.getAttribute("indicator")).to.equal("arrow");
     expect(
       topMenu.querySelector('site-title[slot="prefix"]') === null,
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
       element.shadowRoot
-        .querySelector('site-active-title')
-        .getAttribute('dynamic-methodology'),
-    ).to.equal('ancestor')
+        .querySelector("site-active-title")
+        .getAttribute("dynamic-methodology"),
+    ).to.equal("ancestor");
     expect(
       element.shadowRoot.querySelector('aside[aria-label="Sub-pages"]') ===
         null,
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
       element.shadowRoot
-        .querySelector('site-children-block')
-        .getAttribute('dynamic-methodology'),
-    ).to.equal('ancestor')
+        .querySelector("site-children-block")
+        .getAttribute("dynamic-methodology"),
+    ).to.equal("ancestor");
     expect(
       element.shadowRoot.querySelector('main#contentcontainer[role="main"]') ===
         null,
-    ).to.equal(false)
-  })
-})
+    ).to.equal(false);
+  });
+});
+
+// Issue 3106: every terrible theme constructor used to reassign
+// this.__disposer = [] right after super(), orphaning the constructor-time
+// autoruns pushed by the class chain (3 from HAXCMSLitElementTheme +
+// 2 from HAXCMSThemeParts + 1 from HAXCMSRememberRoute) so removal never
+// disposed them (zombie autoruns on every removed theme, one per swap).
+describe("constructor-time autorun disposal (issue 3106)", () => {
+  // static templates only: lit does not support bindings in tag names
+  const themes = [
+    // 6 chain autoruns plus each theme's own constructor pushes
+    {
+      tag: "terrible-themes",
+      expected: 7,
+      template: html`<terrible-themes></terrible-themes>`,
+    },
+    {
+      tag: "terrible-best-themes",
+      expected: 7,
+      template: html`<terrible-best-themes></terrible-best-themes>`,
+    },
+    {
+      tag: "terrible-resume-themes",
+      expected: 7,
+      template: html`<terrible-resume-themes></terrible-resume-themes>`,
+    },
+    {
+      tag: "terrible-outlet-themes",
+      expected: 7,
+      template: html`<terrible-outlet-themes></terrible-outlet-themes>`,
+    },
+    {
+      tag: "terrible-productionz-themes",
+      expected: 9,
+      template: html`<terrible-productionz-themes></terrible-productionz-themes>`,
+    },
+  ];
+
+  it("retains every constructor-time autorun in __disposer", () => {
+    themes.forEach(({ tag, expected }) => {
+      const detached = globalThis.document.createElement(tag);
+      expect(Array.isArray(detached.__disposer)).to.equal(true);
+      expect(detached.__disposer.length).to.equal(expected);
+      // dispose here so these never-connected elements do not leak live
+      // reactions (including their wiring watchdog) into the suite
+      detached.__disposer.forEach((disposer) => {
+        if (typeof disposer === "function") {
+          disposer();
+        } else if (disposer && typeof disposer.dispose === "function") {
+          disposer.dispose();
+        }
+      });
+      detached.__disposer = [];
+      if (
+        detached.HAXCMSThemeWiring &&
+        detached.HAXCMSThemeWiring.disposeDisposers
+      ) {
+        detached.HAXCMSThemeWiring.disposeDisposers();
+      }
+    });
+  });
+
+  it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
+    const savedEditMode = store.editMode;
+    try {
+      for (const { tag, expected, template } of themes) {
+        const el = await fixture(template);
+        expect(el.__disposer.length).to.be.at.least(expected);
+        el.remove();
+        expect(el.__disposer.length).to.equal(0);
+        // the wiring instance's watchdog autorun is disposed too
+        expect(el.HAXCMSThemeWiring.__disposer.length).to.equal(0);
+        // no zombie reaction: flipping the store no longer reaches the
+        // removed element
+        const before = el.editMode;
+        store.editMode = !before;
+        await wait(80);
+        expect(el.editMode).to.equal(before);
+        store.editMode = before;
+        await wait(80);
+      }
+    } finally {
+      store.editMode = savedEditMode;
+    }
+  });
+});
