@@ -378,15 +378,11 @@ class HaxElementListSelector extends LitElement {
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
-    value.haxcore = value.haxcore || {
-      templates: {},
-      providers: {},
-      // search and integrations keys keep the autoloader lookup and the
-      // integrations loop below from crashing when the form submitted
-      // without any haxcore value
-      search: {},
-      integrations: {},
-    };
+    value.haxcore = value.haxcore || {};
+    value.haxcore.templates = value.haxcore.templates || {};
+    value.haxcore.providers = value.haxcore.providers || {};
+    value.haxcore.search = value.haxcore.search || {};
+    value.haxcore.integrations = value.haxcore.integrations || {};
     let appstore = {
       providers: {
         cdn: value.haxcore.providers["haxcore-providers-cdn"],
