@@ -166,6 +166,27 @@ describe('AnchorBehaviors.getTarget', () => {
     expect(target === el).to.be.true
   })
 
+  it('returns null instead of throwing when called before document load', () => {
+    // simulate an early caller: params not yet parsed, document not yet
+    // complete; before the guard this threw at the params.id lookups
+    Object.defineProperty(globalThis.document, 'readyState', {
+      value: 'loading',
+      configurable: true,
+    })
+    globalThis.onload = null
+    let target
+    expect(() => {
+      target = globalThis.AnchorBehaviors.getTarget(null)
+    }).to.not.throw()
+    expect(target).to.be.null
+    expect(globalThis.AnchorBehaviors.params).to.deep.equal({})
+    // deferred parsing still owns the load handler
+    expect(typeof globalThis.onload).to.equal('function')
+    // restore the real readyState getter and handler
+    delete globalThis.document.readyState
+    globalThis.onload = null
+  })
+
   it('assigns the getParams function reference to globalThis.onload', () => {
     const el = makeElement({ id: 'onload-el' })
     globalThis.location.hash = '#onload-el'
