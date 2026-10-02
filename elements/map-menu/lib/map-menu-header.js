@@ -240,7 +240,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     });
     setTimeout(() => {
       this.addEventListener("click", this.__tap.bind(this));
-      this.addEventListener("keypress", this.__keypress.bind(this));
+      this.addEventListener("keydown", this.__keydown.bind(this));
     }, 0);
   }
 
@@ -393,9 +393,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     this.__toggleEventHandler(e);
   }
 
-  __keypress(e) {
+  __keydown(e) {
     // send to toggle event
-    if (e.code === "Enter") {
+    if (e.key === "Enter") {
       this.__toggleEventHandler(e);
     }
   }

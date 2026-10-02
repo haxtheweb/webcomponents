@@ -1712,10 +1712,10 @@ class GradeBook extends UIRenderPieces(
                                       })
                                       .map(
                                         (term) =>
+                                          // @todo add support for keyboard based assignment of tag to criteria
                                           html`<simple-tag
                                             draggable="true"
                                             tabindex="0"
-                                            @keypress="${this.keyDown}"
                                             @dragstart="${this.setDragTransfer}"
                                             accent-color="${this.pickColor(i)}"
                                             value="${term.term}"
@@ -2142,11 +2142,6 @@ class GradeBook extends UIRenderPieces(
     this.activeGrading[e.detail.getAttribute("data-criteria")][e.detail.label] =
       e.detail.tagList;
     this.requestUpdate();
-  }
-  // @todo add support for keyboard based assignment of tag to criteria
-  keyDown(e) {
-    if (e.key === "Enter") {
-    }
   }
   // get color based on index in the object "colors" from SimpleColors
   // this allows us to use an index in a common way and obtain a color

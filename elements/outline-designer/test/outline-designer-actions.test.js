@@ -227,6 +227,36 @@ describe('outline-designer item operations', () => {
     expect(labelEdit.hasAttribute('contenteditable')).to.equal(false)
   })
 
+  it('commits the typed title through the merged keydown Enter path', async () => {
+    const label = pageLi(element, 'p1').querySelector('.label.shown')
+    element.editTitle({ target: label })
+    const labelEdit = pageLi(element, 'p1').querySelector('.label-edit')
+    // type a new title through the browser editing pipeline (a real user
+    // typing lands in the same uncommitted edit state)
+    const range = globalThis.document.createRange()
+    range.selectNodeContents(labelEdit)
+    const selection = element.shadowRoot.getSelection()
+    selection.removeAllRanges()
+    selection.addRange(range)
+    globalThis.document.execCommand('insertText', false, 'Renamed Page')
+    expect(labelEdit.textContent).to.equal('Renamed Page')
+    // a real keydown Enter now commits through the merged path in
+    // monitorEsc (lit allows one binding per event name)
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true,
+    })
+    labelEdit.dispatchEvent(event)
+    expect(event.defaultPrevented).to.equal(true)
+    await settle(element)
+    expect(element.items.find((i) => i.id === 'p1').title).to.equal(
+      'Renamed Page',
+    )
+    expect(element.items.find((i) => i.id === 'p1').modified).to.equal(true)
+    expect(labelEdit.hasAttribute('contenteditable')).to.equal(false)
+  })
+
   it('restores the original title when editing is cancelled', async () => {
     const label = pageLi(element, 'p1').querySelector('.label.shown')
     element.editTitle({ target: label })

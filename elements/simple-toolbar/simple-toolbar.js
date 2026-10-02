@@ -350,7 +350,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           signal: this.windowControllers.signal,
         });
       }
-      this.addEventListener("keypress", this._handleShortcutKeys);
+      this.addEventListener("keydown", this._handleShortcutKeys);
     }
     /**
      * Called every time the element is removed from the DOM. Useful for
@@ -360,7 +360,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (this.collapsed) {
         this.windowControllers.abort();
       }
-      this.removeEventListener("keypress", this._handleShortcutKeys);
+      this.removeEventListener("keydown", this._handleShortcutKeys);
       super.disconnectedCallback();
     }
     firstUpdated(changedProperties) {

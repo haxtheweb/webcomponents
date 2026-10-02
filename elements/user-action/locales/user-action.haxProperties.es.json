@@ -10,7 +10,7 @@
         "description": "Acción del usuario que hace que este evento se dispare",
         "options": {
           "visibility": "Puede ver esto",
-          "keypress": "Presiona una tecla aquí",
+          "keydown": "Presiona una tecla aquí",
           "click": "Hace clic en esto",
           "hover": "Pase el cursor sobre esto"
         }

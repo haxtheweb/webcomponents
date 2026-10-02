@@ -1,5 +1,6 @@
 import { fixture, expect, html } from '@open-wc/testing'
 
+import '../simple-toolbar.js'
 import '../lib/simple-button-grid.js'
 import '../lib/simple-toolbar-menu.js'
 import '../lib/simple-toolbar-menu-item.js'
@@ -518,5 +519,45 @@ describe('simple-toolbar-more-button toggle', () => {
     })
     el.toggle()
     expect(fired).to.equal(true)
+  })
+})
+
+describe('simple-toolbar more button shortcut', () => {
+  it('fires the more-button shortcut from a real keydown', async () => {
+    const el = await fixture(html`<simple-toolbar></simple-toolbar>`)
+    await el.updateComplete
+    // a non-empty config reruns updateToolbar, which registers the more
+    // button under its default ctrl+shift+; shortcut
+    el.config = [
+      {
+        type: 'simple-toolbar-button',
+        label: 'Add',
+        icon: 'add',
+      },
+    ]
+    await el.updateComplete
+    let shortcutFired = false
+    let toggleFired = false
+    el.addEventListener('shortcut-key-pressed', () => {
+      shortcutFired = true
+    })
+    el.addEventListener('toggle', () => {
+      toggleFired = true
+    })
+    // only keydown fires for ctrl/meta chords, so the toolbar shortcut
+    // engine can only work through its keydown listener
+    el.dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: ';',
+        ctrlKey: true,
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+      }),
+    )
+    expect(shortcutFired).to.equal(true)
+    expect(toggleFired).to.equal(true)
+    expect(el.collapsed).to.equal(false)
   })
 })

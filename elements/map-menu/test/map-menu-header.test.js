@@ -182,7 +182,7 @@ describe('map-menu-header', () => {
     const el = await fixture(
       html`<map-menu-header itemtitle="Tap" url="/tap"></map-menu-header>`,
     )
-    // click/keypress listeners bind on a timeout
+    // click/keydown listeners bind on a timeout
     await new Promise((r) => setTimeout(r, 20))
     const toggles = []
     el.addEventListener('toggle-header', () => toggles.push(1))
@@ -194,9 +194,9 @@ describe('map-menu-header', () => {
     expect(toggles.length).to.equal(1)
     // enter triggers the same path, other keys do not
     el.parentNode.expanded = false
-    el.dispatchEvent(new KeyboardEvent('keypress', { code: 'Enter' }))
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))
     expect(toggles.length).to.equal(2)
-    el.dispatchEvent(new KeyboardEvent('keypress', { code: 'Space' }))
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }))
     expect(toggles.length).to.equal(2)
   })
 

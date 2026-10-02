@@ -654,11 +654,6 @@ describe("grade-book element", () => {
       expect(typeof el.pickColor(0)).to.equal("string");
       expect(typeof el.pickColor(500)).to.equal("string");
     });
-    it("keyDown runs without error", async () => {
-      const el = await loadJsonBook();
-      el.keyDown({ key: "Enter" });
-      expect(true).to.equal(true);
-    });
   });
 
   describe("source selection UI", () => {

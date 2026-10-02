@@ -110,13 +110,31 @@ describe('user-action behaviors', () => {
     const events = []
     const handler = (e) => events.push(e)
     globalThis.document.addEventListener('user-engagement', handler)
-    el.setAttribute('track', 'keypress')
-    expect(el.track).to.equal('keypress')
+    el.setAttribute('track', 'keydown')
+    expect(el.track).to.equal('keydown')
     // the click listener was removed
     el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     expect(events.length).to.equal(0)
-    // the keypress listener is active
-    el.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true }))
+    // the keydown listener is active
+    el.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true }))
+    expect(events.length).to.equal(1)
+    expect(events[0].detail.eventType).to.equal('keydown')
+    globalThis.document.removeEventListener('user-engagement', handler)
+  })
+
+  it('legacy track="keypress" attaches a keydown listener', async () => {
+    const el = await fixture(html`<user-action track="keypress"></user-action>`)
+    // the authored track value is kept for reporting and validity
+    expect(el.track).to.equal('keypress')
+    expect(el.__trackedEventName).to.equal('keydown')
+    const events = []
+    const handler = (e) => events.push(e)
+    globalThis.document.addEventListener('user-engagement', handler)
+    // the deprecated keypress event is no longer listened for
+    el.dispatchEvent(new KeyboardEvent('keypress', { key: 'a', bubbles: true }))
+    expect(events.length).to.equal(0)
+    // keydown fires the engagement event and reports the authored eventType
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: 'a', bubbles: true }))
     expect(events.length).to.equal(1)
     expect(events[0].detail.eventType).to.equal('keypress')
     globalThis.document.removeEventListener('user-engagement', handler)
@@ -186,8 +204,8 @@ describe('user-action behaviors', () => {
     expect(el.eventname).to.equal('engagement-3')
     globalThis.document.removeEventListener('engagement-2', handler)
     globalThis.document.addEventListener('engagement-3', handler)
-    el.setAttribute('track', 'keypress')
-    el.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true }))
+    el.setAttribute('track', 'keydown')
+    el.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true }))
     expect(events.length).to.equal(2)
     expect(events[1].type).to.equal('engagement-3')
     globalThis.document.removeEventListener('engagement-3', handler)
