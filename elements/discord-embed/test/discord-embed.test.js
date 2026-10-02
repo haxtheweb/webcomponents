@@ -1,12 +1,41 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import "../discord-embed.js";
+import sinon from "sinon";
+
+// HARD REQUIREMENT: no test in this file may trigger a real load of
+// e.widgetbot.io. Stub IntersectionObserver at module level, before the
+// element import below, with an observer that never reports an
+// intersection. Every fixture then keeps its iframe at data-src only, so
+// no iframe ever carries a real src during the run.
+class NeverIntersectingObserver {
+  constructor(callback) {
+    this.callback = callback;
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+globalThis.IntersectionObserver = NeverIntersectingObserver;
 
 describe("DiscordEmbed test", () => {
-  let element;
+  let element, sandbox;
+
+  // Import the element after the IntersectionObserver stub is in place so
+  // every instance in this file defers its iframe source.
+  before(async () => {
+    await import("../discord-embed.js");
+  });
 
   beforeEach(async () => {
+    sandbox = sinon.createSandbox();
     element = await fixture(html`<discord-embed></discord-embed>`);
     await element.updateComplete;
+  });
+
+  afterEach(() => {
+    sandbox.restore();
   });
 
   // Basic functionality tests
@@ -110,9 +139,42 @@ describe("DiscordEmbed test", () => {
 
     const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
-    expect(iframe.getAttribute("src")).to.equal(element.source);
+    // the deferred source rides on data-src until promotion
+    expect(iframe.getAttribute("data-src")).to.equal(element.source);
     // the iframe announces itself to assistive technology
     expect(iframe.getAttribute("title")).to.equal("Discord chat embed");
+  });
+
+  // Deferred source promotion tests
+  it("defers the iframe source until the embed intersects the viewport", async () => {
+    element.source = "https://e.widgetbot.io/channels/123456789/987654321";
+    await element.updateComplete;
+
+    const iframe = element.shadowRoot.querySelector("iframe");
+    // the observer is armed but has yet to report an intersection
+    expect(element.__io).to.exist;
+    expect(iframe.getAttribute("data-src")).to.equal(element.source);
+    expect(iframe.getAttribute("src")).to.not.exist;
+  });
+
+  it("promotes data-src to src once, without a real load", async () => {
+    element.source = "https://e.widgetbot.io/channels/123456789/987654321";
+    await element.updateComplete;
+
+    const iframe = element.shadowRoot.querySelector("iframe");
+    // stub setAttribute so promotion is recorded but the real src write
+    // (and its network load) never happens
+    const setAttributeStub = sandbox.stub(iframe, "setAttribute");
+
+    // invoke the promotion seam directly
+    element.__promoteDeferredSource();
+
+    expect(setAttributeStub.calledOnce).to.be.true;
+    expect(setAttributeStub.calledWith("src", element.source)).to.be.true;
+
+    // a second promotion must not re-set src
+    element.__promoteDeferredSource();
+    expect(setAttributeStub.calledOnce).to.be.true;
   });
 
   it("does not render iframe when source is invalid", async () => {
