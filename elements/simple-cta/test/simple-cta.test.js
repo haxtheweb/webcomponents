@@ -213,6 +213,71 @@ describe('simple-cta hax integration', () => {
   })
 })
 
+describe('simple-cta disabled behavior', () => {
+  // FIXED (haxtheweb/issues#3102 #36): the disabled property was
+  // declared/reflected but had no effect on the rendered anchor or click
+  // handling (dead API). The anchor now carries aria-disabled and
+  // _clickCard blocks activation while disabled.
+  it('exposes aria-disabled on the anchor when disabled is set', async () => {
+    const el = await fixture(
+      html`<simple-cta label="Go" link="#section" disabled></simple-cta>`,
+    )
+    expect(el.disabled).to.equal(true)
+    expect(el.hasAttribute('disabled')).to.be.true
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]')
+    expect(a.getAttribute('aria-disabled')).to.equal('true')
+  })
+
+  it('renders aria-disabled false when enabled', async () => {
+    const el = await fixture(
+      html`<simple-cta label="Go" link="#section"></simple-cta>`,
+    )
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]')
+    expect(a.getAttribute('aria-disabled')).to.equal('false')
+  })
+
+  it('blocks the click when disabled', async () => {
+    const el = await fixture(
+      html`<simple-cta label="Go" link="#section" disabled></simple-cta>`,
+    )
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]')
+    let laterListenerCalled = false
+    a.addEventListener('click', () => {
+      laterListenerCalled = true
+    })
+    const blocked = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    })
+    a.dispatchEvent(blocked)
+    expect(blocked.defaultPrevented).to.be.true
+    expect(laterListenerCalled).to.be.false
+  })
+
+  it('re-enables clicks when disabled toggles back off', async () => {
+    const el = await fixture(
+      html`<simple-cta label="Go" link="#section" disabled></simple-cta>`,
+    )
+    el.disabled = false
+    await el.updateComplete
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]')
+    expect(a.getAttribute('aria-disabled')).to.equal('false')
+    const normal = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    })
+    a.dispatchEvent(normal)
+    expect(normal.defaultPrevented).to.be.false
+  })
+
+  it('passes the a11y audit when disabled', async () => {
+    const el = await fixture(
+      html`<simple-cta label="Go" link="#section" disabled></simple-cta>`,
+    )
+    await expect(el).shadowDom.to.be.accessible()
+  })
+})
+
 describe('simple-cta progressive enhancement', () => {
   it('lifts the href and text from a light-DOM anchor on upgrade', async () => {
     const name = 'simple-cta-progressive-test'

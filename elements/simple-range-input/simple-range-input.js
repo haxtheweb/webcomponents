@@ -104,6 +104,8 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]:focus {
           outline: none;
         }
+        /* focus ring fallback pairs a dark ring with a light one via
+           light-dark() so focus stays visible under a dark color scheme */
         input[type="range"]:focus::-webkit-slider-thumb {
           border: 2px solid
             var(
@@ -111,7 +113,10 @@ class SimpleRangeInput extends SimpleColors {
               var(--simple-colors-default-theme-accent-8, grey)
             );
           box-shadow: 0 0 0 2px
-            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+            var(
+              --simple-range-input-focus-ring-color,
+              light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.4))
+            );
         }
         input[type="range"]:focus::-moz-range-thumb {
           border: 2px solid
@@ -120,7 +125,10 @@ class SimpleRangeInput extends SimpleColors {
               var(--simple-colors-default-theme-accent-8, grey)
             );
           box-shadow: 0 0 0 2px
-            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+            var(
+              --simple-range-input-focus-ring-color,
+              light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.4))
+            );
         }
         input[type="range"]:focus::-ms-thumb {
           border: 2px solid
@@ -129,7 +137,10 @@ class SimpleRangeInput extends SimpleColors {
               var(--simple-colors-default-theme-accent-8, grey)
             );
           box-shadow: 0 0 0 2px
-            var(--simple-range-input-focus-ring-color, rgba(0, 0, 0, 0.3));
+            var(
+              --simple-range-input-focus-ring-color,
+              light-dark(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.4))
+            );
         }
         input[type="range"]::-webkit-slider-runnable-track {
           width: 100%;
@@ -329,10 +340,13 @@ class SimpleRangeInput extends SimpleColors {
       /><label id="label">${this.label}</label>`;
   }
   _inputChanged(e) {
-    this.immediateValue = e.target.value;
+    // convert the string from the input event so the Number-typed
+    // immediateValue property holds an actual number
+    this.immediateValue = parseFloat(e.target.value);
   }
   _valueChanged(e) {
-    this.value = e.target.value;
+    // convert here too so value stays a Number
+    this.value = parseFloat(e.target.value);
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

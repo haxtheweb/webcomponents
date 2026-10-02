@@ -10,7 +10,6 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
-import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -605,8 +604,21 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   static get styles() {
     return [
-      DDDExtra,
       css`
+        /* helper class for accessibility of screen reader only content;
+           inlined (page-break is not DDD-based) so no styles-package
+           import is needed for this single selector; the same rule
+           ships in DDDReset for DDDSuper-based elements */
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
         :host {
           display: block;
           position: relative;

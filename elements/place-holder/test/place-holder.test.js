@@ -265,6 +265,20 @@ describe("place-holder test", () => {
       await expect(element).shadowDom.to.be.accessible();
     });
 
+    it("should announce drag-over state changes via an aria-live region", async () => {
+      // a11y follow-up (haxtheweb/issues#3102): the drag-over state was
+      // visual-only; the .text div is now a polite live region so the
+      // calcText change ("Drop file to upload") is announced on drag-over
+      const textEl = element.shadowRoot.querySelector(".text");
+      expect(textEl.getAttribute("aria-live")).to.equal("polite");
+      element.dragOver = true;
+      await element.updateComplete;
+      expect(textEl.textContent).to.equal("Drop file to upload");
+      element.dragOver = false;
+      await element.updateComplete;
+      expect(textEl.textContent).to.equal("Placeholder for audio");
+    });
+
     it("should be accessible with custom text", async () => {
       element.text = "Custom accessible text";
       await element.updateComplete;

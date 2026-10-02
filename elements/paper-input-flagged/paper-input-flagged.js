@@ -36,21 +36,33 @@ class PaperInputFlagged extends LitElement {
           --simple-tooltip-delay-in: 100;
           font-size: 11px;
         }
+        /* DDD functional tokens replace the legacy paper-* palette;
+           light-dark() pairs the dark functional hues with their Light
+           variants so the status icon stays legible in dark mode */
         #icon {
-          color: var(--paper-grey-400);
+          color: var(--ddd-theme-default-limestoneGray, #a2aaad);
           background-color: transparent;
         }
         :host([status="info"]) #icon {
-          color: var(--paper-green-400);
+          color: light-dark(
+            var(--ddd-theme-default-success, #1e4620),
+            var(--ddd-theme-default-successLight, #edf7ed)
+          );
         }
         :host([status="notice"]) #icon {
-          color: var(--paper-grey-400);
+          color: var(--ddd-theme-default-limestoneGray, #a2aaad);
         }
         :host([status="warning"]) #icon {
-          color: var(--paper-yellow-700);
+          color: light-dark(
+            var(--ddd-theme-default-warning, #663c00),
+            var(--ddd-theme-default-warningLight, #fff4e5)
+          );
         }
         :host([status="error"]) #icon {
-          color: var(--paper-red-900);
+          color: light-dark(
+            var(--ddd-theme-default-error, #5f2120),
+            var(--ddd-theme-default-errorLight, #fdeded)
+          );
         }
         .element-invisible {
           position: absolute !important;
@@ -64,6 +76,7 @@ class PaperInputFlagged extends LitElement {
   constructor() {
     super();
     this.disabled = false;
+    this.charCounter = false;
     this.label = "";
     this.value = "";
     this.inputSuccess = {
@@ -170,6 +183,13 @@ class PaperInputFlagged extends LitElement {
       },
       disabled: {
         type: Boolean,
+      },
+      /**
+       * Forward the character counter flag to the underlying field
+       */
+      charCounter: {
+        type: Boolean,
+        attribute: "char-counter",
       },
       /**
        * Icon based on status

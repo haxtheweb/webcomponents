@@ -129,29 +129,42 @@ describe('hax-element-card-list rendering', () => {
     expect(details.textContent.includes('test fixture only')).to.equal(true)
   })
 
-  // BUG: hax-element-card-list.js:201-205 renders ${...} expressions inside
-  // a <template> element, which lit forbids; any card with showDemo=true and
-  // a demoSchema throws during render so the demo view can never display.
-  // Asserted here as a failing-render contract instead of patching source.
-  it('BUG: rendering a shown demo throws the lit template expression error', async () => {
-    const list = makeList()
-    list[0].showDemo = true
-    let caught = null
-    try {
-      const el = await fixture(html`
-        <hax-element-card-list
-          showCardList
-          .list=${list}
-          .value=${{}}
-          .filteredTags=${['inline-hax-element', 'other-element']}
-        ></hax-element-card-list>
-      `)
-      await el.updateComplete
-    } catch (e) {
-      caught = e
-    }
-    expect(caught).to.not.equal(null)
-    expect(String(caught.message)).to.include('template')
+  // fix (#10): the demo view used to render ${...} expressions inside a
+  // <template> element, which lit forbids ('Expressions are not supported
+  // inside template elements'), so expanding a card's demo re-rendered
+  // into a throw and the demo view could never display. The demo markup
+  // is now injected into the code-sample template imperatively in
+  // updated(). Driven through the real UX flow (collapse expand flips
+  // showDemo) because a11y-collapse's initial collapse event resets a
+  // pre-set showDemo before the first update completes.
+  it('renders the demo view on expand and fills the code-sample template', async () => {
+    const el = await fixture(html`
+      <hax-element-card-list
+        showCardList
+        .list=${makeList()}
+        .value=${{ 'inline-hax-element': 'test/fixtures/inline-hax-element.js' }}
+        .filteredTags=${['inline-hax-element', 'other-element']}
+      ></hax-element-card-list>
+    `)
+    await el.updateComplete
+    el.toggleShowDemo({ detail: { expanded: true } }, 0)
+    // the re-render completes instead of rejecting on the template error
+    await el.updateComplete
+    const card = el.shadowRoot.querySelectorAll('product-card')[0]
+    const demoButton = card.querySelector(
+      'div[slot="demo-collapse-content"] button',
+    )
+    expect(demoButton).to.not.equal(null)
+    expect(demoButton.getAttribute('data-tag')).to.equal('p')
+    // live demo node rendered in the .demo div
+    const demoDiv = card.querySelector('div.demo')
+    expect(demoDiv.querySelector('p')).to.not.equal(null)
+    expect(demoDiv.textContent).to.include('fixture demo content')
+    // code-sample's light-DOM template received the demo markup via the
+    // imperative updated() injection
+    const template = card.querySelector('code-sample > template')
+    expect(template).to.not.equal(null)
+    expect(template.innerHTML).to.include('<p>fixture demo content</p>')
   })
 })
 
@@ -214,18 +227,19 @@ describe('hax-element-card-list behavior', () => {
     expect('a-tag' in el.value).to.equal(false)
   })
 
-  it('toggleShowDemo flips the list state; rendering the demo throws (BUG)', async () => {
+  it('toggleShowDemo flips the list state and re-renders the demo view', async () => {
     el.toggleShowDemo({ detail: { expanded: true } }, 0)
     expect(el.list[0].showDemo).to.equal(true)
-    // BUG (see render test above): the re-render throws on the template
-    // expression so the update promise rejects instead of completing
-    let caught = null
-    try {
-      await el.updateComplete
-    } catch (e) {
-      caught = e
-    }
-    expect(caught).to.not.equal(null)
+    // fix (#10): the re-render now completes instead of rejecting on the
+    // lit template-expression error, and the demo view appears
+    await el.updateComplete
+    const card = el.shadowRoot.querySelectorAll('product-card')[0]
+    expect(
+      card.querySelector('div[slot="demo-collapse-content"] button'),
+    ).to.not.equal(null)
+    const template = card.querySelector('code-sample > template')
+    expect(template).to.not.equal(null)
+    expect(template.innerHTML).to.include('fixture demo content')
   })
 
   it('_viewDemo opens the simple modal with the demo node', async () => {

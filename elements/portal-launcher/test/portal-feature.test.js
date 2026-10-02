@@ -102,6 +102,12 @@ describe('portal-launcher portal feature detection', () => {
     expect(fakePortals[0].className.includes('portal-reveal')).to.equal(true)
     expect(created.includes('style')).to.equal(true)
     expect(created.includes('portal')).to.equal(true)
+    // fix (#35): appendChild(style, portal) passed portal as the ignored
+    // second argument, so the created <portal> never landed in the DOM and
+    // the progressive enhancement could never display; both nodes must now
+    // actually be appended to document.body
+    expect(globalThis.document.body.contains(fakeStyle)).to.equal(true)
+    expect(globalThis.document.body.contains(fakePortals[0])).to.equal(true)
     // restore the stubbed environment; delete the property when it was
     // originally absent so 'HTMLPortalElement' in globalThis stays false
     globalThis.document.createElement = originalCreate
@@ -111,6 +117,7 @@ describe('portal-launcher portal feature detection', () => {
       delete globalThis.HTMLPortalElement
     }
     fakePortals.forEach((p) => p.remove())
+    fakeStyle.remove()
   })
 
   it('portal branch requires an href on the resolved target', async () => {

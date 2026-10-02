@@ -140,23 +140,35 @@ describe('lorem-data element', () => {
     }
   })
 
-  it('BUG: filterQuery throws because records.filter gets an element', async () => {
+  it('filterQuery applies the filter callback to each record', async () => {
     const el = await fixture(html`<lorem-data></lorem-data>`)
-    // BUG (lorem-data.js:148-149): records.filter(record, fn) passes the
-    // first array ELEMENT as the callback instead of
-    // (record, index) => filter(record, index); any call throws.
-    expect(() => el.filterQuery([1, 2, 3], () => true)).to.throw()
+    // records.filter now receives a real (record, index) callback
+    // (haxtheweb/issues#3102)
+    expect(
+      el.filterQuery([1, 2, 3], (record) => record > 1),
+    ).to.deep.equal([2, 3])
+    expect(
+      el.filterQuery([1, 2, 3], (record, index) => index === 0),
+    ).to.deep.equal([1])
   })
 
-  it('BUG: randomIcon(true) never returns a valid icon', async () => {
+  it('randomIcon(true) returns a valid icon or an empty string', async () => {
     const el = await fixture(html`<lorem-data></lorem-data>`)
-    // BUG (lorem-data.js:339 + lib/lorem-data-behaviors.js:233):
-    // this.randomOption([...random, ""]) spreads the icon STRING into
-    // characters, so includeNull returns a random character or "" and
-    // never a real icon name.
+    // includeNull now picks between the icon name and "" as array
+    // options (haxtheweb/issues#3102) - never a stray single character
+    let sawIcon = false
+    let sawEmpty = false
     for (let i = 0; i < 30; i++) {
-      expect(el.randomIcon(true).length).to.be.at.most(1)
+      const icon = el.randomIcon(true)
+      expect(icon === '' || el.icons.includes(icon)).to.equal(true)
+      if (icon === '') {
+        sawEmpty = true
+      } else {
+        sawIcon = true
+      }
     }
+    expect(sawIcon).to.equal(true)
+    expect(sawEmpty).to.equal(true)
     // without includeNull real icon names come back
     expect(el.icons).to.include(el.randomIcon(false))
   })
@@ -361,17 +373,18 @@ describe('lorem-data generators (element)', () => {
   })
 
   it('randomPicsum builds picsum urls with params', () => {
-    // note the trailing slash before the query string
+    // well-formed url: no stray trailing slash before the query
+    // (haxtheweb/issues#3102)
     expect(el.randomPicsum('16/9', true, 2, 5)).to.equal(
-      'https://picsum.photos/id/5/16/9/?greyscale&blur=2',
+      'https://picsum.photos/id/5/16/9?greyscale&blur=2',
     )
     // greyscale false falls through to a weighted 3:1 random choice
     expect(el.randomPicsum('16/9', false, 0, 3)).to.match(
-      /^https:\/\/picsum\.photos\/id\/3\/16\/9\/(\?greyscale)?$/,
+      /^https:\/\/picsum\.photos\/id\/3\/16\/9(\?greyscale)?$/,
     )
-    // no id leaves an empty segment producing a double slash
+    // no id no longer leaves an empty segment / double slash
     expect(el.randomPicsum('16/9', false, 0)).to.match(
-      /^https:\/\/picsum\.photos\/\/16\/9\/(\?greyscale)?$/,
+      /^https:\/\/picsum\.photos\/16\/9(\?greyscale)?$/,
     )
   })
 
@@ -410,7 +423,7 @@ describe('lorem-data generators (element)', () => {
     )
     expect(el.randomImage('16/9', false)).to.contain('//placeimg.com/16/9/')
     expect(el.randomImage('16/9', true, 'any', 3)).to.equal(
-      'https://picsum.photos/id/3/16/9/?greyscale',
+      'https://picsum.photos/id/3/16/9?greyscale',
     )
     expect(el.randomImage('16/9', false, 'dog', 4)).to.equal(
       'https://loremflickr.com/16/9/dog?random=4',
@@ -459,10 +472,9 @@ describe('lorem-data generators (element)', () => {
     }
     // no type at all yields undefined
     expect(el.randomType({})).to.equal(undefined)
-    // BUG (lorem-data.js:583 + lib/lorem-data-behaviors.js:423): neither
-    // randomType has a schema = {} default, so calling it with no
-    // argument throws instead of returning undefined
-    expect(() => el.randomType()).to.throw()
+    // the schema = {} default (haxtheweb/issues#3102) makes a
+    // no-argument call return undefined instead of throwing
+    expect(el.randomType()).to.equal(undefined)
   })
 })
 
@@ -531,11 +543,11 @@ describe('lorem-data behaviors lib (direct instance)', () => {
     expect(lib.randomOption([])).to.equal(undefined)
     expect(lib.randomWeightedOption([{ value: 'x', weight: 2 }])).to.equal('x')
     expect(lib.randomPicsum('16/9', true, 2, 5)).to.equal(
-      'https://picsum.photos/id/5/16/9/?greyscale&blur=2',
+      'https://picsum.photos/id/5/16/9?greyscale&blur=2',
     )
     // greyscale unset falls to a weighted random choice
     expect(lib.randomPicsum('16/9', false, 0, 3)).to.match(
-      /^https:\/\/picsum\.photos\/id\/3\/16\/9(\/\?greyscale|\/)$/,
+      /^https:\/\/picsum\.photos\/id\/3\/16\/9(\?greyscale)?$/,
     )
     // every date unit branch
     expect(lib.randomDate(1000, 'milliseconds', 2, 2)).to.equal(1002)
@@ -607,7 +619,8 @@ describe('lorem-data behaviors lib (direct instance)', () => {
     expect(lib.words).to.include(lib.randomType({ type: 'word' }))
     expect(lib.words).to.include(lib.randomType({ type: 'bogus' }))
     expect(lib.randomType({})).to.equal(undefined)
-    // the lib version also throws with no argument (see element BUG note)
-    expect(() => lib.randomType()).to.throw()
+    // the lib schema = {} default (haxtheweb/issues#3102) also makes a
+    // no-argument call safe
+    expect(lib.randomType()).to.equal(undefined)
   })
 })

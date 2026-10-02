@@ -162,6 +162,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      // inlined sr-only helper (the same rule ships in DDDReset) so the
+      // undo status region stays visually hidden without a styles-package
+      // import for this single selector
+      css`
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
+      `,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
@@ -1096,6 +1111,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           </hax-text-editor-toolbar>
         </div>
       </absolute-position-behavior>
+      <!-- undo/redo capability transitions reach screen readers (WCAG 4.1.3);
+           the announcement state comes from the UndoManagerBehaviors mixin so
+           mixin consumers self-announce without a nested undo-manager element -->
+      <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>
     `;
   }
   calcClasses(activeNode) {

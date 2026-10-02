@@ -85,10 +85,10 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         :host {
           display: block;
           font-size: 12px;
-          font-weight: normal;
+          font-weight: var(--ddd-font-weight-regular, normal);
           --star-rating-padding-left: 12px;
           --star-rating-margin: 0;
-          --star-rating-size: 24px;
+          --star-rating-size: var(--ddd-icon-xxs, 24px);
         }
         .wrapper {
           display: inline-flex;
@@ -96,7 +96,7 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         .stars {
           background-color: var(
             --star-rating-background-color,
-            var(--simple-colors-default-theme-grey-9)
+            var(--ddd-theme-default-coalyGray, #222222)
           );
         }
         simple-icon,
@@ -159,7 +159,11 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         class="wrapper"
         typeof="${this.rubricScaleMode ? "oer:RubricScale" : nothing}"
       >
-        <div class="stars">
+        <div
+          class="stars"
+          role="${this.interactive ? "group" : nothing}"
+          aria-label="${this.interactive ? "Star rating" : nothing}"
+        >
           ${this.renderStar(this.numStars, this.interactive)}
         </div>
         <div class="rating">
@@ -197,6 +201,12 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
             contrast="${this.contrast}"
             class="star"
             data-value="${Number(count + 1)}"
+            label="Rate ${count + 1} of ${amount}"
+            aria-label="Rate ${count + 1} of ${amount}"
+            aria-current="${count + 1 ===
+            Math.round(amount * this._calPercent)
+              ? "true"
+              : nothing}"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
             >${this.rubricScaleMode

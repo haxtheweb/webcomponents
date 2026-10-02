@@ -44,9 +44,18 @@ describe('simple-login behavior', () => {
     const el = await fixture(
       html`<simple-login .errorMsg=${'Invalid username'}></simple-login>`,
     )
-    expect(el.shadowRoot.querySelector('#errormsg').textContent).to.equal(
+    expect(el.shadowRoot.querySelector('#errormsg').textContent.trim()).to.equal(
       'Invalid username',
     )
+  })
+
+  // FIXED (haxtheweb/issues#3102 a11y follow-up): #errormsg had no
+  // aria-live/role so error text changes were never announced
+  it('marks the error message as an assertive live region', async () => {
+    const el = await fixture(html`<simple-login></simple-login>`)
+    const err = el.shadowRoot.querySelector('#errormsg')
+    expect(err.getAttribute('role')).to.equal('alert')
+    expect(err.getAttribute('aria-live')).to.equal('assertive')
   })
 
   it('uses the default labels and button text', async () => {
@@ -144,13 +153,18 @@ describe('simple-login behavior', () => {
     expect(loginEvent.cancelable).to.equal(true)
   })
 
+  // FIXED (haxtheweb/issues#3102 a11y follow-up): Enter handling moved off
+  // the deprecated keypress event to keydown with e.key === 'Enter'
   it('logs in when Enter is pressed inside the form', async () => {
     const el = await validLoginFixture()
     let loginEvent = null
     el.addEventListener('simple-login-login', (e) => {
       loginEvent = e
     })
-    const enter = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })
+    const enter = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+    })
     el.shadowRoot.querySelector('#loginform').dispatchEvent(enter)
     await el.updateComplete
     expect(loginEvent).to.exist
@@ -164,7 +178,10 @@ describe('simple-login behavior', () => {
     el.addEventListener('simple-login-login', () => {
       fired = true
     })
-    const other = new KeyboardEvent('keydown', { key: 'a', bubbles: true })
+    const other = new KeyboardEvent('keydown', {
+      key: 'a',
+      bubbles: true,
+    })
     el.shadowRoot.querySelector('#loginform').dispatchEvent(other)
     await el.updateComplete
     expect(fired).to.equal(false)

@@ -203,24 +203,23 @@ describe("shadow-style processShadowText behavior", () => {
     );
   });
 
-  // BUG shadow-style.js:76-79 - when the same tag+shadow selector appears in
-  // multiple blocks, the later css text is appended with no separator,
-  // producing invalid CSS like "color: redcolor: blue". Asserted here to
-  // document current behavior; the fix is to join with a space or newline.
-  it("BUG: duplicate tag+selector blocks concatenate without a separator", async () => {
+  // FIXED (issue #3102 bug 40): duplicate tag+selector blocks are joined
+  // with a newline so the generated css stays valid (was the invalid
+  // concatenation "color: redcolor: blue").
+  it("joins duplicate tag+selector blocks with a newline", async () => {
     const el = await fixture(html`<shadow-style></shadow-style>`);
     await el.processShadowText(
       "s-s-target-el::shadow(.dup) {color: red} s-s-target-el::shadow(.dup) {color: blue}",
     );
-    expect(el.cssMap["s-s-target-el"][".dup"]).to.equal("color: redcolor: blue");
+    expect(el.cssMap["s-s-target-el"][".dup"]).to.equal(
+      "color: red\ncolor: blue",
+    );
   });
 
-  // BUG shadow-style.js:60-64 - a selector without a ::shadow part makes
-  // tmp[1] undefined, so tmp[1].replace throws a TypeError that rejects the
-  // (un-awaited) processShadowText promise from the constructor. Asserted
-  // here via a direct awaited call so the rejection is handled; the fix is
-  // to guard tmp[1] before calling replace.
-  it("BUG: selectors without ::shadow reject with a TypeError", async () => {
+  // FIXED (issue #3102 bug 9): plain css rules (no ::shadow part) are
+  // skipped during parsing, so tmp[1] can never be undefined and the
+  // un-awaited constructor promise can never reject with a TypeError.
+  it("skips plain selectors without ::shadow instead of rejecting", async () => {
     const el = await fixture(html`<shadow-style></shadow-style>`);
     let caught = null;
     try {
@@ -228,17 +227,15 @@ describe("shadow-style processShadowText behavior", () => {
     } catch (e) {
       caught = e;
     }
-    expect(caught).to.be.instanceOf(globalThis.TypeError);
+    expect(caught).to.equal(null);
+    // the plain rule was skipped entirely, not tolerated into the map
+    expect(el.cssMap).to.deep.equal({});
   });
 
-  // BUG shadow-style.js:82-85 - every referenced tag must be defined before
-  // ANY injection happens (Promise.all over whenDefined), so a single
-  // unknown tag silently blocks the entire batch of rules. Asserted here to
-  // document current behavior; the fix is per-tag error isolation.
-  it("BUG: one never-defined tag blocks the whole injection batch", async () => {
+  // FIXED (issue #3102 bug 41): injection is now waited per tag, so one
+  // never-defined tag no longer blocks the rest of the batch.
+  it("one never-defined tag no longer blocks the injection batch", async () => {
     const el = await fixture(html`<shadow-style></shadow-style>`);
-    // not awaited: the promise never settles because never-defined-el is
-    // not registered anywhere
     el.processShadowText(
       "s-s-target-el::shadow(.blocked) {color: purple} never-defined-el::shadow(.x) {margin: 2px}",
     );
@@ -247,7 +244,37 @@ describe("shadow-style processShadowText behavior", () => {
     const styles = [...target.shadowRoot.querySelectorAll("style")];
     expect(
       styles.some((s) => s.innerHTML.includes(".blocked {color: purple}")),
-    ).to.equal(false);
+    ).to.equal(true);
+    // the never-defined tag is mapped but never injected anywhere
+    expect(el.cssMap["never-defined-el"][".x"]).to.equal("margin: 2px");
+  });
+
+  // FIXED (issue #3102 bug 41): an INVALID custom element name rejects
+  // whenDefined; the tag is skipped with a warning and the valid tag in
+  // the same batch still gets injected.
+  it("skips and warns for an invalid custom element name", async () => {
+    const el = await fixture(html`<shadow-style></shadow-style>`);
+    const originalWarn = console.warn;
+    const warns = [];
+    console.warn = (...args) => {
+      warns.push(args.join(" "));
+    };
+    try {
+      el.processShadowText(
+        "NoDash::shadow(.bad) {color: red} s-s-target-el::shadow(.okname) {color: teal}",
+      );
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    } finally {
+      console.warn = originalWarn;
+    }
+    expect(
+      warns.some((w) => w.includes("NoDash") && w.includes("skipping")),
+    ).to.equal(true);
+    const target = globalThis.document.querySelector("s-s-target-el");
+    const styles = [...target.shadowRoot.querySelectorAll("style")];
+    expect(
+      styles.some((s) => s.innerHTML.includes(".okname {color: teal}")),
+    ).to.equal(true);
   });
 });
 

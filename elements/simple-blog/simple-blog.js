@@ -170,7 +170,10 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   }
   constructor() {
     super();
-    this.__disposer = [];
+    // do NOT reassign this.__disposer here: HAXCMSLitElementTheme's
+    // constructor already created it and pushed its constructor-time
+    // autoruns (editMode/trayStatus/activeItemContent) into it; a fresh
+    // array would orphan them so disconnectedCallback never disposes them
     this.selectedPage = 0;
     setTimeout(() => {
       import("@haxtheweb/simple-blog/lib/simple-blog-header.js");

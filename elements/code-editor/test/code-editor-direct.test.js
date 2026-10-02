@@ -8,29 +8,10 @@ import '../code-editor.js'
 
 const aTimeout = (ms) => new Promise((r) => setTimeout(r, ms))
 
-// NOTE: enabling showCodePen triggers a dynamic import of code-pen-button,
-// whose template hardcodes a remote https:// S3 image source. Rewrite any
-// https src attribute to an inline data URL for the duration of this file
-// so no real network request can happen.
-const origSetAttribute = Element.prototype.setAttribute
-
+// FIXED (issue #3102 bug 20): code-pen-button's template now ships an
+// inline data-URI SVG instead of the former hardcoded remote S3 image,
+// so this file needs no setAttribute interception to stay hermetic.
 describe('code-editor with real dependencies', () => {
-  before(() => {
-    Element.prototype.setAttribute = function (name, value) {
-      if (
-        name === 'src' &&
-        typeof value === 'string' &&
-        value.startsWith('https://')
-      ) {
-        return origSetAttribute.call(this, name, 'data:,')
-      }
-      return origSetAttribute.call(this, name, value)
-    }
-  })
-  after(() => {
-    Element.prototype.setAttribute = origSetAttribute
-  })
-
   it('renders the real monaco-element wrapper', async () => {
     const el = await fixture(html`<code-editor title="Direct"></code-editor>`)
     await el.updateComplete
@@ -52,14 +33,16 @@ describe('code-editor with real dependencies', () => {
     await el.updateComplete
     expect(notified).to.exist
     expect(notified.detail.value).to.equal(true)
-    // give the dynamic import and any element upgrade a moment while the
-    // remote image src is still rewritten to a data URL
+    // give the dynamic import and any element upgrade a moment
     await aTimeout(300)
     const container = el.shadowRoot.querySelector('.code-pen-container')
     expect(container).to.exist
     expect(container.querySelector('span').textContent).to.contain(
       'Check it out on code pen',
     )
+    // the button image is the inline data URI, never a remote URL
+    const img = container.querySelector('code-pen-button')
+    expect(img).to.exist
   })
 
   it('supports the legacy mode api through _modeChanged', async () => {
@@ -76,10 +59,10 @@ describe('code-editor with real dependencies', () => {
       html`<code-editor editor-value="let direct = true"></code-editor>`,
     )
     await el.updateComplete
-    // code-editor registers its monaco-element-ready listener on a
-    // setTimeout(0) that fires shortly AFTER the fixture resolves; give
-    // that registration time to land before dispatching
-    await aTimeout(150)
+    // FIXED (issue #3102 bug 19): the monaco-element-ready listener is
+    // registered synchronously in the constructor, so an event dispatched
+    // immediately after fixture resolution (previously inside the ~10-15ms
+    // setTimeout(0) registration window) is no longer dropped
     const monaco = el.shadowRoot.querySelector('#codeeditor')
     monaco.dispatchEvent(
       new CustomEvent('monaco-element-ready', { bubbles: true, composed: true }),
@@ -92,8 +75,7 @@ describe('code-editor with real dependencies', () => {
   it('resyncs the editor when slotted content mutates after ready', async () => {
     const el = await fixture(html`<code-editor title="Mutation"></code-editor>`)
     await el.updateComplete
-    // wait out the constructor's delayed monaco-element-ready registration
-    await aTimeout(150)
+    // listener registration is synchronous in the constructor now
     const monaco = el.shadowRoot.querySelector('#codeeditor')
     monaco.dispatchEvent(
       new CustomEvent('monaco-element-ready', { bubbles: true, composed: true }),

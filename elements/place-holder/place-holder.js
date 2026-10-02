@@ -35,7 +35,10 @@ class PlaceHolder extends DDD {
           text-align: center;
           padding: var(--ddd-spacing-4);
           color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           border-radius: var(--ddd-radius-xs);
         }
         simple-icon {
@@ -49,13 +52,19 @@ class PlaceHolder extends DDD {
           font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-medium);
           margin-bottom: var(--ddd-spacing-2);
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
         }
         .directions {
           line-height: var(--ddd-lh-120);
           font-size: var(--ddd-font-size-s);
           font-style: italic;
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
         }
       `,
     ];
@@ -67,7 +76,7 @@ class PlaceHolder extends DDD {
     return html`
       <div class="wrapper">
         <simple-icon icon="${this.iconFromType}"></simple-icon>
-        <div class="text">${this.calcText}</div>
+        <div class="text" aria-live="polite">${this.calcText}</div>
         <div class="directions">${this.directions}</div>
       </div>
     `;
@@ -174,23 +183,17 @@ class PlaceHolder extends DDD {
       switch (type) {
         case "document":
           return "editor:insert-drive-file";
-          break;
         case "audio":
           return "av:music-video";
-          break;
         case "video":
           return "notification:ondemand-video";
-          break;
         case "image":
           return "image:crop-original";
-          break;
         case "math":
           return "editor:functions";
-          break;
         case "text":
         default:
           return "editor:format-align-left";
-          break;
       }
     } else {
       // we are dragging, ignore icon

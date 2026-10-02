@@ -165,6 +165,12 @@ class SimpleBlogOverview extends SimpleColors {
         type: String,
       },
       /**
+       * Short description / excerpt of the post rendered in the listing
+       */
+      description: {
+        type: String,
+      },
+      /**
        * Body of text
        */
       body: {

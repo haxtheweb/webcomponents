@@ -1292,6 +1292,20 @@ export const DDDDataAttributes = [
 
 /* Tag based application */
 export const DDDReset = css`
+  /* helper class for accessibility of screen reader only content;
+     lives here so every DDDSuper-based element ships it through
+     super.styles without a separate styles-package import */
+  .sr-only {
+    position: absolute;
+    left: -10000px;
+    inset-inline-start: -10000px;
+    inset-inline-end: initial;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   h1,
   h2,
   h3,
@@ -2442,21 +2456,6 @@ export const DDDBreadcrumb = css`
     pointer-events: auto;
   }
 `;
-/* Extra things */
-export const DDDExtra = css`
-  /* helper class for accessibility of screen reader only content */
-  .sr-only {
-    position: absolute;
-    left: -10000px;
-    inset-inline-start: -10000px;
-    inset-inline-end: initial;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-`;
-
 export const DDDPulseEffect = css`
   /* Apply primary color as pulse effect using CSS variable */
   :host([data-primary="0"]) {
@@ -2995,7 +2994,6 @@ export const DDDAllStyles = [
   ...DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,
-  DDDExtra,
   DDDLetterSpacing,
   DDDBoxShadow,
   DDDBorderRadius,

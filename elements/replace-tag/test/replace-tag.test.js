@@ -10,8 +10,21 @@ describe("replace-tag test", () => {
     );
   });
 
-  it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
+  it("passes the a11y audit", async function () {
+    this.timeout(10000);
+    // replace-tag swaps itself out for the `with` element (word-count)
+    // once the registry loads that definition, REMOVING the original node
+    // from the page. Auditing the original node races its own removal
+    // (axe: "No elements found for include in page Context"), so wait for
+    // the swap to land (bounded) and audit whichever element is in page.
+    let replacement = globalThis.document.querySelector("word-count");
+    const deadline = Date.now() + 8000;
+    while (Date.now() < deadline && !replacement && element.isConnected) {
+      await new Promise((resolve) => setTimeout(resolve, 25));
+      replacement = globalThis.document.querySelector("word-count");
+    }
+    const target = replacement || element;
+    await expect(target).shadowDom.to.be.accessible();
   });
 });
 

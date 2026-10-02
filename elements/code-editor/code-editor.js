@@ -29,15 +29,15 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
           width: calc(100% - 2px);
-          background-color: #1e1e1e;
-          color: #c6c6c6;
+          background-color: var(--code-editor-bg-color, #1e1e1e);
+          color: var(--code-editor-text-color, #c6c6c6);
           border: var(--code-editor-code-border);
           border-radius: var(--code-editor-code-border-radius);
           border: 1px solid var(--code-editor-label-color, #ddd);
         }
         :host([theme-colors="vs-dark"]) {
-          background-color: #1e1e1e;
-          color: #c6c6c6;
+          background-color: var(--code-editor-bg-color, #1e1e1e);
+          color: var(--code-editor-text-color, #c6c6c6);
           border: 1px solid var(--code-editor-label-color, #000);
         }
         :host([theme-colors="vs"]) {
@@ -143,12 +143,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         new URL("./code-editor.js", import.meta.url).href + "/../../../";
     }
     this.libPath += "monaco-editor/min/vs";
-    setTimeout(() => {
-      this.addEventListener(
-        "monaco-element-ready",
-        this.editorReady.bind(this),
-      );
-    }, 0);
+    // register synchronously so monaco-element-ready events dispatched
+    // during the first update window are never dropped (issue #3102 bug 19);
+    // the event is composed and bubbles up from the shadow child
+    this.addEventListener(
+      "monaco-element-ready",
+      this.editorReady.bind(this),
+    );
   }
   /**
    * LitElement render

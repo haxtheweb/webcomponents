@@ -14,6 +14,24 @@ describe('simple-autocomplete test', () => {
   it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible()
   })
+
+  // FIXED (haxtheweb/issues#3102 a11y): the closed-list audit above passes
+  // trivially; opening the list exercises the role=listbox options
+  // (nested-interactive fix: role=option moved onto the button, li is
+  // presentational) and the simple-popover alertdialog accessible name
+  // wired from this element via aria-label
+  it('passes the a11y audit with the option list open', async () => {
+    const el = await fixture(
+      html`<simple-autocomplete .items=${FRUITS}></simple-autocomplete>`,
+    )
+    await sleep(300)
+    el.setValue('grape')
+    await el.updateComplete
+    await sleep(300)
+    expect(el.opened).to.equal(true)
+    expect(el.shadowRoot.querySelector('ul button')).to.exist
+    await expect(el).shadowDom.to.be.accessible()
+  })
 })
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -303,7 +321,7 @@ describe('simple-autocomplete selection and keyboard support', () => {
     expect(el.opened).to.equal(false)
   })
 
-  it('BUG: hide-input leaves $input undefined for resetFocusOnInput', async () => {
+  it('selects a rendered option in hide-input mode without throwing', async () => {
     const el = await fixture(
       html`<simple-autocomplete hide-input .items=${FRUITS}></simple-autocomplete>`,
     )
@@ -313,14 +331,28 @@ describe('simple-autocomplete selection and keyboard support', () => {
     await sleep(300)
     expect(el.opened).to.equal(true)
     expect(el.shadowRoot.querySelector('ul button')).to.exist
-    // BUG simple-autocomplete.js:380 - resetFocusOnInput dereferences
-    // this.$input.endOffset unconditionally. With hide-input (and no
+    // FIXED (haxtheweb/issues#3102 #1): resetFocusOnInput dereferenced
+    // this.$input.endOffset unconditionally; with hide-input (and no
     // selection-position) $input is never assigned, so selecting any of
-    // the rendered options throws "Cannot read properties of undefined
-    // (reading 'endOffset')" from itemSelect before focus cleanup runs.
-    // Reproduced during coverage runs; asserted here as the precondition
-    // rather than triggered so the suite stays green unpatched.
+    // the rendered options threw "Cannot read properties of undefined
+    // (reading 'endOffset')" from itemSelect. The $input guard (same
+    // pattern as getSelection) makes selection safe.
     expect(el.$input).to.equal(undefined)
+    expect(() => el.resetFocusOnInput()).to.not.throw()
+    expect(el.opened).to.equal(false)
+    // the full click flow now completes as well
+    el.setValue('grape')
+    await el.updateComplete
+    await sleep(300)
+    let selected = null
+    el.addEventListener('item-selected', (e) => {
+      selected = e.detail.value
+    })
+    el.shadowRoot.querySelector('ul button').click()
+    await el.updateComplete
+    expect(selected).to.equal('grape')
+    expect(el.value).to.equal('grape')
+    expect(el.opened).to.equal(false)
   })
 
   it('moves focus to the first option on ArrowDown from the input', async () => {
@@ -467,7 +499,7 @@ describe('simple-autocomplete selection and keyboard support', () => {
     expect(el.shadowRoot.activeElement.getAttribute('id')).to.equal('input')
   })
 
-  it('BUG: an empty input area leaves resetFocusOnInput without a text node', async () => {
+  it('closes the menu on Escape in the list with an empty input area', async () => {
     const el = await fixture(
       html`<simple-autocomplete .items=${FRUITS}></simple-autocomplete>`,
     )
@@ -475,15 +507,30 @@ describe('simple-autocomplete selection and keyboard support', () => {
     el.setValue('')
     await el.updateComplete
     await sleep(300)
-    // BUG simple-autocomplete.js:387 - resetFocusOnInput calls setEnd on
+    // FIXED (haxtheweb/issues#3102 #2): resetFocusOnInput called setEnd on
     // this.$input.childNodes[0], which is undefined while the input area
-    // has no text. Escaping the list with an empty input throws "Failed to
-    // execute 'setEnd' on 'Range': parameter 1 is not of type 'Node" after
-    // the menu already closed. Reproduced during coverage runs; asserted
-    // here as the precondition rather than triggered so the suite stays
-    // green unpatched.
+    // has no text; Escaping the list with an empty input threw "Failed to
+    // execute 'setEnd' on 'Range': parameter 1 is not of type 'Node". The
+    // childNodes.length guard skips caret placement while still closing
+    // and refocusing the input.
     expect(el.$input.childNodes.length).to.equal(0)
     expect(el.opened).to.equal(true)
+    const button = el.shadowRoot.querySelector('ul button')
+    button.focus()
+    const evt = new KeyboardEvent('keydown', {
+      key: 'Escape',
+      bubbles: true,
+      cancelable: true,
+    })
+    button.dispatchEvent(evt)
+    expect(evt.defaultPrevented).to.equal(true)
+    expect(el.opened).to.equal(false)
+    expect(el.shadowRoot.activeElement.getAttribute('id')).to.equal('input')
+    // direct invocation no longer throws with an empty input area either
+    el.opened = true
+    await el.updateComplete
+    expect(() => el.resetFocusOnInput()).to.not.throw()
+    expect(el.opened).to.equal(false)
   })
 
   it('ignores other keys pressed in the list', async () => {
@@ -681,9 +728,10 @@ describe('simple-autocomplete popover and item processing', () => {
     )
     await el.updateComplete
     expect(fresh[0].title).to.equal('Apple apple')
-    // NOTE: the icon slot maps to a literal false, which is joined into the
-    // title string; assert the current behavior while flagging the quirk
-    expect(fresh[1].title).to.equal('Cat cat false')
+    // FIXED (haxtheweb/issues#3102 #56): the icon key is filtered out
+    // before join instead of mapping to a literal false, so icons no
+    // longer pollute the searchable title text ('Cat cat false' before)
+    expect(fresh[1].title).to.equal('Cat cat')
   })
 })
 

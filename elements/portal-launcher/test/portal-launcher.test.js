@@ -25,9 +25,12 @@ function createSpy() {
 describe("portal-launcher test", () => {
   let element;
   beforeEach(async () => {
+    // scaffold safety: hash hrefs keep any real link.click() invocation
+    // on-page; external hrefs triggered navigation attempts that could
+    // destroy the whole session's V8 coverage collection
     element = await fixture(html`
       <portal-launcher title="test-title">
-        <a href="https://example.com">Test Link</a>
+        <a href="#test-link">Test Link</a>
       </portal-launcher>
     `);
   });
@@ -61,7 +64,7 @@ describe("portal-launcher test", () => {
     it("should find and bind click events to anchor tags", () => {
       const links = element.querySelectorAll("a");
       expect(links.length).to.equal(1);
-      expect(links[0].href).to.equal("https://example.com/");
+      expect(links[0].getAttribute("href")).to.equal("#test-link");
     });
 
     it("should handle elements with no links gracefully", async () => {
@@ -131,7 +134,7 @@ describe("portal-launcher test", () => {
       // The click event handler is bound during construction
       // We can verify the link exists and has the event listener bound
       expect(link).to.exist;
-      expect(link.href).to.equal("https://example.com/");
+      expect(link.getAttribute("href")).to.equal("#test-link");
 
       // Test that click doesn't throw an error when called
       expect(() => link.click()).to.not.throw;
@@ -171,7 +174,7 @@ describe("portal-launcher test", () => {
 
     it("should check for portal support", () => {
       // Test that portal feature detection doesn't throw
-      const hasPortalSupport = "HTMLPortalElement" in window;
+      const hasPortalSupport = "HTMLPortalElement" in globalThis;
       expect(typeof hasPortalSupport).to.equal("boolean");
     });
   });

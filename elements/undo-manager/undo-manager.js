@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 /**
  * `undo-manager`
  * `an undo history manager element`
@@ -258,11 +257,25 @@ class UndoManager extends UndoManagerBehaviors(LitElement) {
     return "undo-manager";
   }
   /**
-   * sr-only utility from the DDD design system keeps the status region
-   * visually hidden while staying available to assistive tech
+   * inlined sr-only helper (the same rule ships in DDDReset) so the
+   * status region stays visually hidden without a styles-package
+   * import for this single selector
    */
   static get styles() {
-    return [DDDExtra];
+    return [
+      css`
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
+      `,
+    ];
   }
   /**
    * LitElement render

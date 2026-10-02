@@ -13,19 +13,28 @@ describe('word-count behaviors', () => {
   it('counts words from slotted text content and reflects words-text attribute', async () => {
     const el = await fixture(html`<word-count>Hello world</word-count>`)
     await new Promise((resolve) => setTimeout(resolve, 50))
-    // BUG (word-count.js:112): split(/\s+/g).length - 1 is off by one.
-    // Two slotted words report 1. Assertion documents current behavior.
+    // two slotted words report 2 (haxtheweb/issues#3102)
+    expect(el.words).to.equal(2)
+    expect(el.getAttribute('words-text')).to.equal('Word count: 2')
+  })
+
+  it('reports one for a single word', async () => {
+    const el = await fixture(html`<word-count>one</word-count>`)
+    await new Promise((resolve) => setTimeout(resolve, 50))
+    // a single word now reports 1 (haxtheweb/issues#3102)
     expect(el.words).to.equal(1)
     expect(el.getAttribute('words-text')).to.equal('Word count: 1')
   })
 
-  it('reports zero for a single word (BUG: off-by-one arithmetic)', async () => {
-    const el = await fixture(html`<word-count>one</word-count>`)
+  it('ignores leading and trailing whitespace when counting', async () => {
+    const el = await fixture(html`<word-count>
+      one two three
+    </word-count>`)
     await new Promise((resolve) => setTimeout(resolve, 50))
-    // BUG (word-count.js:112): a single word has split length 1,
-    // so 1 - 1 reports 0 words.
-    expect(el.words).to.equal(0)
-    expect(el.getAttribute('words-text')).to.equal('Word count: 0')
+    // whitespace from pretty-printed markup no longer inflates the
+    // count (haxtheweb/issues#3102)
+    expect(el.words).to.equal(3)
+    expect(el.getAttribute('words-text')).to.equal('Word count: 3')
   })
 
   it('sets words to 0 when there is no text content', async () => {
@@ -40,9 +49,9 @@ describe('word-count behaviors', () => {
     await new Promise((resolve) => setTimeout(resolve, 50))
     el.textContent = 'a b c'
     await new Promise((resolve) => setTimeout(resolve, 50))
-    // 3 words -> split length 3 -> 3 - 1 = 2 (BUG off-by-one documented above)
-    expect(el.words).to.equal(2)
-    expect(el.getAttribute('words-text')).to.equal('Word count: 2')
+    // 3 plain words report 3 (haxtheweb/issues#3102)
+    expect(el.words).to.equal(3)
+    expect(el.getAttribute('words-text')).to.equal('Word count: 3')
   })
 
   it('re-counts on characterData mutation inside a child node', async () => {
@@ -52,28 +61,25 @@ describe('word-count behaviors', () => {
     await new Promise((resolve) => setTimeout(resolve, 50))
     el.querySelector('span').textContent = 'a b c d'
     await new Promise((resolve) => setTimeout(resolve, 50))
-    // 4 words -> split length 4 -> 3
-    expect(el.words).to.equal(3)
+    // 4 plain words report 4 (haxtheweb/issues#3102)
+    expect(el.words).to.equal(4)
   })
 
-  it('BUG: words-prefix attribute is clobbered back to the default on first update', async () => {
+  it('preserves a parse-time words-prefix attribute through the first update', async () => {
     const el = await fixture(
       html`<word-count words-prefix="Words">one two</word-count>`,
     )
     await new Promise((resolve) => setTimeout(resolve, 100))
-    // BUG (word-count.js:84-95): update() processes the constructor-set t
-    // (wordsPrefix 'Word count') on the first pass, overwriting the value
-    // mapped from the words-prefix attribute before it ever renders.
-    // The demo's words-prefix="Do not translate me" suffers the same clobber.
-    // Assertions document current behavior.
-    expect(el.wordsPrefix).to.equal('Word count')
-    expect(el.getAttribute('words-text')).to.equal('Word count: 1')
-    // setting the property after connection does apply
-    el.wordsPrefix = 'Words'
+    // the constructor-default first pass (oldValue undefined) no longer
+    // clobbers the attribute-mapped wordsPrefix (haxtheweb/issues#3102)
+    expect(el.wordsPrefix).to.equal('Words')
+    expect(el.getAttribute('words-text')).to.equal('Words: 2')
+    // setting the property after connection still applies
+    el.wordsPrefix = 'Total'
     await el.updateComplete
     await el.updateComplete
-    expect(el.t.wordsPrefix).to.equal('Words')
-    expect(el.getAttribute('words-text')).to.equal('Words: 1')
+    expect(el.t.wordsPrefix).to.equal('Total')
+    expect(el.getAttribute('words-text')).to.equal('Total: 2')
   })
 
   it('syncs wordsPrefix from the t object when t changes', async () => {
@@ -86,7 +92,7 @@ describe('word-count behaviors', () => {
     await el.updateComplete
     expect(el.wordsPrefix).to.equal('Contador de palabras')
     expect(el.getAttribute('words-text')).to.equal(
-      'Contador de palabras: 1',
+      'Contador de palabras: 2',
     )
   })
 
@@ -96,7 +102,7 @@ describe('word-count behaviors', () => {
     el.wordsPrefix = 'Total'
     await el.updateComplete
     expect(el.t.wordsPrefix).to.equal('Total')
-    expect(el.getAttribute('words-text')).to.equal('Total: 1')
+    expect(el.getAttribute('words-text')).to.equal('Total: 2')
   })
 
   it('stops counting once disconnected (observer teardown)', async () => {
@@ -105,12 +111,12 @@ describe('word-count behaviors', () => {
     globalThis.document.body.appendChild(container)
     const el = container.querySelector('word-count')
     await new Promise((resolve) => setTimeout(resolve, 50))
-    expect(el.words).to.equal(0)
+    expect(el.words).to.equal(1)
     container.removeChild(el)
     el.textContent = 'a b c d e f'
     await new Promise((resolve) => setTimeout(resolve, 50))
     // observer was disconnected, so the count does not move
-    expect(el.words).to.equal(0)
+    expect(el.words).to.equal(1)
   })
 
   it('is accessible with slotted content', async () => {
@@ -120,6 +126,6 @@ describe('word-count behaviors', () => {
     // screen-reader mirror of the count is rendered in shadow DOM
     const sr = el.shadowRoot.querySelector('.screen-reader-text')
     expect(sr).to.exist
-    expect(sr.textContent.trim()).to.equal('Word count: 1')
+    expect(sr.textContent.trim()).to.equal('Word count: 2')
   })
 })

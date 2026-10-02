@@ -73,9 +73,19 @@ describe('user-action behaviors', () => {
     const events = []
     const handler = (e) => events.push(e)
     globalThis.document.addEventListener('xapi-click', handler)
-    el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    const evt = new MouseEvent('click', { bubbles: true })
+    el.dispatchEvent(evt)
     expect(events.length).to.equal(1)
     expect(events[0].detail.eventType).to.equal('click')
+    // issues#3102 #25 FIXED: DOM-event tracking now fires the same
+    // { detail: <payload>, eventType } shape visibility tracking uses,
+    // carrying the raw event as the payload
+    expect(events[0].detail.detail instanceof globalThis.MouseEvent).to.equal(
+      true,
+    )
+    // issues#3102 #53 FIXED: the incoming event is no longer mutated with
+    // an eventType property
+    expect(evt.eventType).to.equal(undefined)
     globalThis.document.removeEventListener('xapi-click', handler)
   })
 
@@ -148,6 +158,12 @@ describe('user-action behaviors', () => {
     const el = await fixture(
       html`<user-action track="bogus"></user-action>`,
     )
+    // issues#3102 #53 FIXED: _setTracking validates the track string before
+    // installing listeners, so the typo is caught at install time (the warn
+    // already fired) and no listener/observer is armed
+    expect(el.__trackedEventName).to.equal(null)
+    expect(el.observer).to.equal(null)
+    expect(warnSpy.calledWith('bogus was not valid')).to.equal(true)
     const events = []
     const handler = (e) => events.push(e)
     globalThis.document.addEventListener('user-engagement', handler)
@@ -155,6 +171,18 @@ describe('user-action behaviors', () => {
     expect(events.length).to.equal(0)
     expect(warnSpy.calledWith('bogus was not valid')).to.equal(true)
     globalThis.document.removeEventListener('user-engagement', handler)
+    warnSpy.restore()
+  })
+
+  it('userActionEvent warns on direct invocation with an invalid track', async () => {
+    const warnSpy = sinon.spy(console, 'warn')
+    const el = await fixture(html`<user-action></user-action>`)
+    // issues#3102 #53: listeners are no longer installed for invalid track
+    // strings, but the fire-time guard still warns if userActionEvent is
+    // invoked directly with an invalid track set on the instance
+    el.track = 'bogus'
+    el.userActionEvent({ detail: 'x' })
+    expect(warnSpy.calledWith('bogus was not valid')).to.equal(true)
     warnSpy.restore()
   })
 
@@ -183,23 +211,25 @@ describe('user-action behaviors', () => {
     globalThis.document.removeEventListener('engagement-3', handler)
   })
 
-  it('BUG: boolean demo attribute is falsy; demo="true" is required', async () => {
+  it('boolean demo attribute activates demo output', async () => {
     const el = await fixture(
       html`<user-action track="click" demo></user-action>`,
     )
     el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-    // BUG (user-action.js:88-94 + UserActionBroker.js:26): the demo getter
-    // returns the raw attribute value; a boolean demo attribute is the
-    // empty string, which is falsy, so demo output never renders.
-    expect(el.demo).to.equal('')
-    expect(el.querySelector('pre')).to.equal(null)
-    // an explicit non-empty value does activate demo output
-    el.setAttribute('demo', 'true')
-    el.setAttribute('every', 'true')
-    el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    // issues#3102 #24 FIXED: the demo getter uses hasAttribute, so a bare
+    // boolean demo attribute (value "") activates demo output.
+    expect(el.demo).to.equal(true)
     const pre = el.querySelector('pre')
     expect(pre).to.exist
     expect(pre.textContent).to.contain('"eventType": "click"')
+    // an explicit non-empty value still activates demo output too
+    el.setAttribute('demo', 'true')
+    el.setAttribute('every', 'true')
+    el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    expect(el.querySelector('pre')).to.exist
+    expect(el.querySelector('pre').textContent).to.contain(
+      '"eventType": "click"',
+    )
   })
 
   it('exposes the every and demo setters', async () => {
@@ -209,7 +239,12 @@ describe('user-action behaviors', () => {
     expect(el.every).to.equal('true')
     el.demo = true
     expect(el.getAttribute('demo')).to.equal('true')
-    expect(el.demo).to.equal('true')
+    // issues#3102 #24: the demo getter is boolean (hasAttribute) now
+    expect(el.demo).to.equal(true)
+    // the demo setter is symmetric: a falsy value removes the attribute
+    el.demo = false
+    expect(el.hasAttribute('demo')).to.equal(false)
+    expect(el.demo).to.equal(false)
   })
 
   it('haxProperties points at the lib schema file', () => {
@@ -290,6 +325,9 @@ describe('user-action behaviors', () => {
     expect(events.length).to.equal(1)
     expect(events[0].detail.detail).to.equal('hello')
     expect(events[0].detail.eventType).to.equal('hover')
+    // issues#3102 #53 FIXED: the caller's details object is copied into a
+    // normalized detail, not mutated with eventType
+    expect(details.eventType).to.equal(undefined)
     expect(events[0].bubbles).to.equal(true)
     expect(events[0].composed).to.equal(true)
     expect(events[0].cancelable).to.equal(true)

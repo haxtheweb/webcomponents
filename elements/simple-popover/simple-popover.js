@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { AbsolutePositionBehavior } from "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 /**
   * `simple-popover`
@@ -27,6 +28,29 @@ import { AbsolutePositionBehavior } from "@haxtheweb/absolute-position-behavior/
   * @demo ./demo/tour.html Tour
   */
 class SimplePopover extends AbsolutePositionBehavior {
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * Accessible name for the popover's role=alertdialog content div.
+       * Consumers wire this by setting aria-label on the simple-popover
+       * host (the host title attribute is used as a fallback). A name set
+       * only on the host never reaches shadow DOM nodes, so the value is
+       * forwarded to the inner #content div to satisfy the axe
+       * aria-dialog-name rule for every popover consumer.
+       */
+      title: {
+        type: String,
+        reflect: true,
+      },
+      ariaLabel: {
+        type: String,
+        reflect: true,
+        attribute: "aria-label",
+      }
+    };
+  }
+
   //styles function
   static get styles() {
     return [
@@ -146,7 +170,12 @@ class SimplePopover extends AbsolutePositionBehavior {
   // render function
   render() {
     return html` <div>
-      <div id="content" role="alertdialog" part="simple-popover-content">
+      <div
+        id="content"
+        role="alertdialog"
+        aria-label=${ifDefined(this.ariaLabel || this.title || undefined)}
+        part="simple-popover-content"
+      >
         <slot></slot>
       </div>
       <div id="pointer-outer">

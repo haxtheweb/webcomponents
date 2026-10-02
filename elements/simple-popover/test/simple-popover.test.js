@@ -13,10 +13,15 @@ describe('simple-popover test', () => {
     `)
   })
 
-  // NOTE: a11y audit removed — #content div has role="alertdialog" but no
-  // aria-label/aria-labelledby; the host title attr does not provide an
-  // accessible name for the alertdialog. This is a genuine a11y issue to
-  // report, not a test failure to suppress.
+  // FIXED (haxtheweb/issues#3102): #content role="alertdialog" now receives
+  // an accessible name — the host aria-label (declared ariaLabel property) is
+  // forwarded to the inner div, falling back to the host title attribute, so
+  // the axe aria-dialog-name rule passes for every popover consumer.
+  it('passes the a11y audit via the title fallback accessible name', async () => {
+    const content = element.shadowRoot.querySelector('#content')
+    expect(content.getAttribute('aria-label')).to.equal('test-title')
+    await expect(element).shadowDom.to.be.accessible()
+  })
 
   it('instantiates as a SimplePopover element', () => {
     expect(element).to.exist
@@ -163,6 +168,37 @@ describe('simple-popover test', () => {
     element.parentNode.removeChild(element)
     // Just verify disconnect was called without throwing
     expect(true).to.be.true
+  })
+})
+
+describe('simple-popover accessible name forwarding', () => {
+  it('forwards the host aria-label to the alertdialog content div', async () => {
+    const el = await fixture(html`
+      <simple-popover aria-label="Search suggestions"></simple-popover>
+    `)
+    const content = el.shadowRoot.querySelector('#content')
+    expect(content.getAttribute('aria-label')).to.equal('Search suggestions')
+    await expect(el).shadowDom.to.be.accessible()
+  })
+  it('reflects the ariaLabel property to the host attribute', async () => {
+    const el = await fixture(html`<simple-popover></simple-popover>`)
+    el.ariaLabel = 'Dynamic label'
+    await el.updateComplete
+    expect(el.getAttribute('aria-label')).to.equal('Dynamic label')
+    const content = el.shadowRoot.querySelector('#content')
+    expect(content.getAttribute('aria-label')).to.equal('Dynamic label')
+  })
+  it('prefers aria-label over the title fallback', async () => {
+    const el = await fixture(html`
+      <simple-popover title="Host title" aria-label="Dialog name"></simple-popover>
+    `)
+    const content = el.shadowRoot.querySelector('#content')
+    expect(content.getAttribute('aria-label')).to.equal('Dialog name')
+  })
+  it('renders no aria-label on content when neither aria-label nor title is set', async () => {
+    const el = await fixture(html`<simple-popover></simple-popover>`)
+    const content = el.shadowRoot.querySelector('#content')
+    expect(content.getAttribute('aria-label')).to.equal(null)
   })
 })
 

@@ -1,4 +1,4 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 class ProductBanner extends SimpleColors {
   static get properties() {
@@ -137,7 +137,8 @@ class ProductBanner extends SimpleColors {
       <div id="banner_wrap">
         <div
           class="image_wrap"
-          alt="${this.alt}"
+          role="${this.alt ? "img" : nothing}"
+          aria-label="${this.alt ? this.alt : nothing}"
           style="background-image:url('${this.image}')"
         >
           <div class="image"></div>

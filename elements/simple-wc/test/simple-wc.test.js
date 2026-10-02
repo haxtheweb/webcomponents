@@ -7,22 +7,33 @@ import { createSWC } from "../simple-wc.js";
 // below drive every factory branch with a comprehensive config and a
 // minimal config.
 //
-// NOTE: the factory stores property type names as capitalized STRINGS
-// ("String"), not constructors, so type assertions must compare strings.
-// A failing chai assertion whose expected value is a constructor function
-// (e.g. .to.equal(String)) wedges the web-test-runner session for this
-// package: the runner serializes the failed assertion's expected/actual
-// values and never recovers from recursing the constructor's property
-// graph, so the whole run reports "0 passed, 0 failed" until the session
-// timeout. Keep expected values to plain serializable data here.
+// FIXED (issue #3102 bug 37): the factory now stores real Lit type
+// CONSTRUCTORS (String/Number/Boolean/Array/Object) instead of capitalized
+// strings.
+// CRITICAL harness rule: a failing chai assertion whose expected value is a
+// constructor function (e.g. .to.equal(String)) wedges the web-test-runner
+// session for this package: the runner serializes the failed assertion's
+// expected/actual values and never recovers from recursing the
+// constructor's property graph, so the whole run reports "0 passed, 0
+// failed" until the session timeout. Type assertions therefore use the
+// `expect(type === String).to.equal(true)` style, never a constructor as
+// the expected value.
 
 const observed = { single: [], multi: [], plain: [], win: [], shadowBtn: [] };
 
 const swcComprehensive = {
   name: "swc-comp-el",
   html: (self, html) =>
-    html`<button id="btn">go</button><div id="out">${self.myProp}</div>`,
-  css: (self, css) => css`:host { display: block; } #out { border: 1px solid black; }`,
+    html`<button id="btn">go</button>
+      <div id="out">${self.myProp}</div>`,
+  css: (self, css) => css`
+    :host {
+      display: block;
+    }
+    #out {
+      border: 1px solid black;
+    }
+  `,
   callbacks: {
     onMyProp(newVal, oldVal) {
       observed.single.push([newVal, oldVal]);
@@ -67,7 +78,11 @@ const compProps = SwcComp.properties;
 const swcMinimal = {
   name: "swc-min-el",
   html: (self, html) => html`<div>minimal</div>`,
-  css: (self, css) => css`:host { display: inline; }`,
+  css: (self, css) => css`
+    :host {
+      display: inline;
+    }
+  `,
   callbacks: {},
   data: { values: {} },
   // deps are resolved as ../../<dep> relative to simple-wc.js, i.e. against
@@ -96,12 +111,33 @@ describe("createSWC factory registration and properties", () => {
     expect(SwcMin.tag).to.equal("swc-min-el");
   });
 
-  it("maps value types to capitalized type-name strings and camelCase keys to dashed attributes", () => {
-    expect(compProps.myProp.type).to.equal("String");
+  it("maps value types to Lit constructor functions and camelCase keys to dashed attributes", () => {
+    // FIXED (issue #3102 bug 37): constructors, not capitalized strings.
+    // Compared via === so a constructor never becomes chai's expected
+    // value (a failing .to.equal(String) wedges the whole WTR session)
+    expect(compProps.myProp.type === String).to.equal(true);
     expect(compProps.myProp.attribute).to.equal("my-prop");
-    expect(compProps.count.type).to.equal("Number");
-    expect(compProps.flag.type).to.equal("Boolean");
+    expect(compProps.count.type === Number).to.equal(true);
+    expect(compProps.flag.type === Boolean).to.equal(true);
     expect(compProps.plain.attribute).to.equal(undefined);
+  });
+
+  it("maps object and array default values to Object and Array constructors", () => {
+    const SwcObj = createSWC({
+      name: "swc-obj-el",
+      html: (self, html) => html`<div>obj</div>`,
+      css: (self, css) => css`
+        :host {
+          display: block;
+        }
+      `,
+      callbacks: {},
+      data: { values: { objVal: {}, arrVal: [] } },
+      deps: [],
+    });
+    const props = SwcObj.properties;
+    expect(props.objVal.type === Object).to.equal(true);
+    expect(props.arrVal.type === Array).to.equal(true);
   });
 
   it("applies reflect only to listed keys", () => {
@@ -224,13 +260,11 @@ describe("createSWC generated element behavior", () => {
     expect(observed.shadowBtn[0]).to.equal(element);
   });
 
-  // BUG simple-wc.js:140-144 - __applyWinEvents calls
-  // swc.callbacks[name].bind(this) separately for add and remove, so
-  // removeEventListener receives a brand new function reference and can
-  // never remove the listener that was added. Window handlers keep firing
-  // after the element disconnects. Asserted here to document the leak; the
-  // fix is to cache the bound listener on the instance and remove that.
-  it("BUG: window event listeners keep firing after disconnect", async () => {
+  // FIXED (issue #3102 bug 38): __applyWinEvents caches the bound handlers
+  // on the instance (__winEventHandlers), so removeEventListener now
+  // receives the identical function reference that was added and window
+  // listeners no longer fire after the element disconnects.
+  it("removes window event listeners on disconnect", async () => {
     const el = await fixture(html`<swc-comp-el></swc-comp-el>`);
     await el.updateComplete;
     const firedFor = () => observed.win.filter((w) => w === el).length;
@@ -239,7 +273,8 @@ describe("createSWC generated element behavior", () => {
     expect(firedFor()).to.equal(1);
     el.remove();
     globalThis.dispatchEvent(new Event("click"));
-    expect(firedFor()).to.equal(2);
+    // the listener was removed with the cached bound fn: no second firing
+    expect(firedFor()).to.equal(1);
   });
 
   it("returns an empty haxProperties object", () => {

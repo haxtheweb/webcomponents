@@ -183,6 +183,7 @@ class SimpleCta extends DDDPulseEffectSuper(
       href="${this.link ? this.link : "#"}"
       role="button"
       aria-label="${this._computeAriaLabel()}"
+      aria-disabled="${this.disabled}"
       part="simple-cta-link"
       @click="${this._clickCard}"
     >
@@ -390,10 +391,12 @@ class SimpleCta extends DDDPulseEffectSuper(
     this.editMode = val;
   }
   /**
-   * special support for HAX since the whole card is selectable
+   * special support for HAX since the whole card is selectable; also honor
+   * the declared/reflected disabled property so a disabled CTA cannot be
+   * activated (haxtheweb/issues#3102 #36)
    */
   _clickCard(e) {
-    if (this.editMode) {
+    if (this.editMode || this.disabled) {
       // do not do default
       e.preventDefault();
       e.stopPropagation();

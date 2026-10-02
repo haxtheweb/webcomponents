@@ -149,6 +149,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         part="popover"
         auto
         part="simple-popover"
+        aria-label="${this.inputLabel} suggestions"
         ?hidden="${!this.opened || this.filtered.length === 0}"
         position="bottom"
         for="input"
@@ -163,25 +164,32 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
               ${this.filtered.map(
                 (item, i) =>
                   html`${i < this.itemLimit
-                    ? html`<li
-                        role="option"
-                        part="list-item"
-                        value="${item.value}"
-                        data-index="${i}"
-                      >
-                        <button
-                          part="button"
+                    ? html`<!-- role=option lives on the button so the
+                          listbox option itself is the focusable widget
+                          (avoids nesting an interactive button inside an
+                          interactive option); options are focused
+                          programmatically per the ARIA combobox pattern -->
+                        <li
+                          role="presentation"
+                          part="list-item"
                           value="${item.value}"
                           data-index="${i}"
-                          @click="${this.itemSelect}"
                         >
-                          ${item.icon
-                            ? html`<simple-icon-lite
-                                icon="${item.icon}"
-                              ></simple-icon-lite>`
-                            : ``}${item.label}
-                        </button>
-                      </li>`
+                          <button
+                            part="button"
+                            role="option"
+                            tabindex="-1"
+                            value="${item.value}"
+                            data-index="${i}"
+                            @click="${this.itemSelect}"
+                          >
+                            ${item.icon
+                              ? html`<simple-icon-lite
+                                  icon="${item.icon}"
+                                ></simple-icon-lite>`
+                              : ``}${item.label}
+                          </button>
+                        </li>`
                     : ``}`,
               )}
             </ul>`
@@ -376,10 +384,16 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     this.opened = false;
     // trap to ensure we don't open the popover when we mean to close it
     this._ignoreFocusOpen = true;
-    // focus the input, can't on a range though
-    if (typeof this.$input.endOffset === "undefined") {
+    // focus the input, can't on a range though; guard $input the same way
+    // getSelection does since hide-input mode never assigns it
+    if (this.$input && typeof this.$input.endOffset === "undefined") {
       this.$input.focus();
-      if (this.$input.getAttribute("contenteditable") != null) {
+      // guard childNodes so an empty input area (no text node) does not
+      // throw when setEnd is called
+      if (
+        this.$input.getAttribute("contenteditable") != null &&
+        this.$input.childNodes.length > 0
+      ) {
         // generate a fake range at the end of the input so that we can place
         // the cursor where the user expects (end of the input area)
         var range = globalThis.document.createRange();
@@ -476,7 +490,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
             this.$input = this.getRange();
             // special support for native inputs
             if (
-              ["TEXTAREA", "INPUT"].includes(document.activeElement.tagName)
+              ["TEXTAREA", "INPUT"].includes(
+                globalThis.document.activeElement.tagName,
+              )
             ) {
               this.$input = globalThis.document.activeElement;
             }
@@ -493,10 +509,11 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           // oh... your going to enjoy this one..
           // convert ALL objcet keys into a searchable string called title
           if (!this.items[i].title) {
+            // skip icon since it is visual; filtering the key out entirely
+            // keeps the join from polluting searchable text with 'false'
             this.items[i].title = Object.keys(this.items[i])
-              .map((key) => {
-                return key !== "icon" ? this.items[i][key] : false; // skip icon since it is visual
-              })
+              .filter((key) => key !== "icon")
+              .map((key) => this.items[i][key])
               .join(" ");
           }
           // if we have an icon, inject icon loading imports

@@ -17,9 +17,13 @@ import { LitElement, html, css } from "lit";
  * @element beaker-broker
  */
 class BeakerBroker extends LitElement {
-  // render function
-  render() {
-    return html` <style>
+  /**
+   * LitElement constructable styles enhancement (the inline <style> that
+   * used to live in the template was moved here; issue #3102 DDD note)
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -27,8 +31,12 @@ class BeakerBroker extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
-      <slot></slot>`;
+      `,
+    ];
+  }
+  // render function
+  render() {
+    return html`<slot></slot>`;
   }
 
   // haxProperty definition
@@ -78,6 +86,20 @@ class BeakerBroker extends LitElement {
     this.datUrl = globalThis.location.host;
   }
   /**
+   * LitElement pre-update: build the archive synchronously before render
+   * so the reactive assignment batches into the current update cycle
+   * instead of scheduling a redundant second update from updated()
+   * (issue #3102 bug 39)
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    if (changedProperties.has("datUrl")) {
+      this._datUrlChanged(this.datUrl);
+    }
+  }
+  /**
    * LitElement properties changed
    */
   updated(changedProperties) {
@@ -93,7 +115,6 @@ class BeakerBroker extends LitElement {
         );
       }
       if (propName == "datUrl") {
-        this._datUrlChanged(this[propName]);
         // notify
         this.dispatchEvent(
           new CustomEvent("dat-url-changed", {
@@ -108,7 +129,7 @@ class BeakerBroker extends LitElement {
   /**
    * notice dat address has changed, build the object for it
    */
-  async _datUrlChanged(newValue) {
+  _datUrlChanged(newValue) {
     if (typeof DatArchive !== typeof undefined && newValue) {
       // load current site, set to archive
       this.archive = new DatArchive(newValue);
