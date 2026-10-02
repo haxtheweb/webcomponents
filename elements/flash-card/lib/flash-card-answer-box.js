@@ -1,6 +1,5 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -144,7 +143,12 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         height: 45px;
         border-radius: var(--ddd-radius-md);
         border: var(--ddd-border-sm);
-        border-color: var(--simple-colors-default-theme-accent-5);
+        /* SimpleColors accent vars never resolved in this scope; defined
+           DDD token pairs keep the border and focus glow scheme-safe */
+        border-color: light-dark(
+          var(--ddd-theme-default-slateLight),
+          var(--ddd-theme-default-slateGray)
+        );
         background-color: light-dark(
           var(--ddd-theme-default-white),
           var(--ddd-theme-default-coalyGray)
@@ -153,8 +157,15 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         margin: var(--ddd-spacing-4) auto;
       }
       .answer-section:focus-within {
-        border-color: var(--simple-colors-default-theme-accent-6);
-        box-shadow: 0 0 10px var(--simple-colors-default-theme-accent-6);
+        border-color: light-dark(
+          var(--ddd-theme-default-skyBlue),
+          var(--ddd-theme-default-linkLight)
+        );
+        box-shadow: 0 0 10px
+          light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-linkLight)
+          );
       }
       input {
         border: none;
@@ -212,7 +223,10 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       button#check:active {
         cursor: pointer;
         box-shadow: var(--ddd-boxShadow-sm);
-        border-color: black;
+        border-color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
         opacity: 0.9;
       }
       .retry simple-icon-button-lite {
@@ -238,9 +252,11 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
           var(--ddd-theme-default-wonderPurple),
           var(--ddd-theme-default-linkLight)
         );
+        /* accent1/accent8 were undefined token names; the defined accent
+           palette tokens preserve the intended subtle hover tint */
         background-color: light-dark(
-          var(--ddd-theme-default-accent1),
-          var(--ddd-theme-default-accent8)
+          var(--ddd-accent-1),
+          var(--ddd-accent-8)
         );
       }
       button:hover {
