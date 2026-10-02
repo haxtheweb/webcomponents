@@ -215,8 +215,16 @@ class GradeBook extends UIRenderPieces(
     let response = [];
     for (var i in this.database.submissions) {
       let row = this.database.submissions[i];
-      // look for student, need a match before we render anything
-      if (row.student === this.database.roster[activeStudent].student) {
+      // look for student, need a match before we render anything;
+      // the roster / the active student's roster row can be missing
+      // entirely while sheet data is still streaming in (mid-pipeline
+      // loads and failed sheet fetches), so resolve the row before
+      // reading it (see the activeSubmission guard in the store)
+      if (
+        this.database.roster &&
+        this.database.roster[activeStudent] &&
+        row.student === this.database.roster[activeStudent].student
+      ) {
         for (var j in row) {
           if (j !== "student") {
             let a = this.getAssignmentByShortName(j);

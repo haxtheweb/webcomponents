@@ -305,7 +305,28 @@ const RadioBehaviors = function (SuperClass) {
      * updates items list and rerenders as needed;
      */
     _updateItemData() {
-      this.itemData = this._getDataFromItems();
+      let data = this._getDataFromItems();
+      // only assign when the data actually changed: selectItem() runs from
+      // updated() after every selection change, so self-setting a fresh
+      // (but identical) array here scheduled a redundant update cycle each
+      // time, doubling renders under load
+      let changed = !this.itemData || this.itemData.length !== data.length;
+      if (!changed) {
+        changed = data.some((item, i) => {
+          let oldItem = this.itemData[i];
+          return (
+            !oldItem ||
+            oldItem.id !== item.id ||
+            oldItem.index !== item.index ||
+            oldItem.node !== item.node ||
+            oldItem.innerHTML !== item.innerHTML ||
+            oldItem.selected !== item.selected
+          );
+        });
+      }
+      if (changed) {
+        this.itemData = data;
+      }
       if (this.render) this.render();
     }
   };
