@@ -21,17 +21,17 @@ class ModelInfo extends LitElement {
         }
 
         h2 {
-          margin-bottom: 10px;
+          margin-bottom: var(--ddd-spacing-2);
         }
 
         @media screen and (min-width: 320px) {
           h2 {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
         }
   
         @media screen and (min-width: 920px) {
           h2 {
-            font-size: 36px;
+            font-size: var(--ddd-font-size-ml);
           }
         }
 
@@ -42,7 +42,7 @@ class ModelInfo extends LitElement {
         }
 
         #accent-color {
-          background-color: #e2801e;
+          background-color: var(--ddd-theme-default-inventOrange);
           width: 80px;
           height: 5px;
         }
@@ -51,7 +51,7 @@ class ModelInfo extends LitElement {
           .text {
             width: 100%;
             border-right: none;
-            border-bottom: solid 5px #e2801e;
+            border-bottom: solid 5px var(--ddd-theme-default-inventOrange);
             padding: 0;
         }
   
@@ -59,32 +59,32 @@ class ModelInfo extends LitElement {
           .text {
              width: 50%;
              border-bottom: none;
-             border-right: solid 5px #e2801e;
-             padding-right: 25px;
+             border-right: solid 5px var(--ddd-theme-default-inventOrange);
+             padding-right: var(--ddd-spacing-6);
           }
         }
 
         @media screen and (min-width: 320px) {
           .text {
-            font-size: 18px;
+            font-size: var(--ddd-font-size-3xs);
         }
   
         @media screen and (min-width: 920px) {
           .text {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
           }
         }
 
         @media screen and (min-width: 320px) {
           .images {
             width: 100%;
-            margin: 25px 0 0 0;
+            margin: var(--ddd-spacing-6) 0 0 0;
         }
   
         @media screen and (min-width: 920px) {
           .images {
             width: 50%;
-            margin: 25px 0 0 25px;
+            margin: var(--ddd-spacing-6) 0 0 var(--ddd-spacing-6);
           }
         }
       `,

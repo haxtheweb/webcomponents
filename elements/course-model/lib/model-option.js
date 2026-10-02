@@ -32,26 +32,27 @@ class ModelOption extends LitElement {
         }
 
         h2 {
-          margin-bottom: 10px;
+          margin-bottom: var(--ddd-spacing-2);
         }
 
         @media screen and (min-width: 320px) {
           h2 {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
         }
   
         @media screen and (min-width: 920px) {
           h2 {
-            font-size: 36px;
+            font-size: var(--ddd-font-size-ml);
           }
         }
 
         #option-wrap {
-          padding: 15px 25px 15px;
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-6)
+            var(--ddd-spacing-4);
         }
 
         #accent-color {
-          background-color: #e2801e;
+          background-color: var(--ddd-theme-default-inventOrange);
           width: 80px;
           height: 5px;
         }
