@@ -75,10 +75,11 @@ describe('simple-range-input behavior', () => {
     input.dispatchEvent(new InputEvent('input'))
     await el.updateComplete
     await el.updateComplete
-    // NOTE: _inputChanged assigns e.target.value directly so the string is
-    // kept even though the properties are typed as Number
-    expect(el.immediateValue).to.equal('42')
-    expect(el.value).to.equal('42')
+    // FIXED (haxtheweb/issues#3102 #46): _inputChanged converts
+    // e.target.value via parseFloat so the Number-typed properties hold
+    // numbers instead of the raw event strings
+    expect(el.immediateValue).to.equal(42)
+    expect(el.value).to.equal(42)
   })
 
   it('updates value from changed events', async () => {
@@ -87,8 +88,9 @@ describe('simple-range-input behavior', () => {
     input.value = '37'
     input.dispatchEvent(new CustomEvent('changed'))
     await el.updateComplete
-    // NOTE: _valueChanged also keeps the raw string from e.target.value
-    expect(el.value).to.equal('37')
+    // FIXED (haxtheweb/issues#3102 #46): _valueChanged converts the raw
+    // string from e.target.value as well
+    expect(el.value).to.equal(37)
   })
 
   it('marks dragging on mousedown and commits on mouseup', async () => {
