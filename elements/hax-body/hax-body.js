@@ -19,6 +19,7 @@ import {
   normalizeEventPath,
 } from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
+import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -162,6 +163,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      // sr-only utility from the DDD design system keeps the undo status
+      // region visually hidden while staying available to assistive tech
+      DDDExtra,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
@@ -1096,6 +1100,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           </hax-text-editor-toolbar>
         </div>
       </absolute-position-behavior>
+      <!-- undo/redo capability transitions reach screen readers (WCAG 4.1.3);
+           the announcement state comes from the UndoManagerBehaviors mixin so
+           mixin consumers self-announce without a nested undo-manager element -->
+      <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>
     `;
   }
   calcClasses(activeNode) {
