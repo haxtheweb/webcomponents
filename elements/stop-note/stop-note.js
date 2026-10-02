@@ -38,7 +38,10 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
       css`
         :host {
           display: block;
-          color: black;
+          /* the raw black never flipped with the scheme; the --text-color
+            token chain below is the real source of truth so inheritors stay
+            scheme-safe too */
+          color: var(--text-color);
           width: auto;
           --text-color: var(
             --ddd-component-stop-note-text-color,
