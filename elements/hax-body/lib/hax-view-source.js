@@ -260,6 +260,13 @@ class HaxViewSource extends I18NMixin(LitElement) {
     var content = body;
     // if you want full HTML headers or not
     if (full) {
+      // derive the CDN base from the generating page when it defines one,
+      // falling back to the PSU CDN, and normalize a trailing slash
+      let cdnBase =
+        globalThis.WCGlobalCDNPath || "https://cdn.webcomponents.psu.edu/cdn/";
+      if (!cdnBase.endsWith("/")) {
+        cdnBase += "/";
+      }
       content = `
         <!DOCTYPE html>
         <html lang="en">
@@ -270,7 +277,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
               content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
             />
             <title>hax-body demo</title>
-            <script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
+            <script>globalThis.WCGlobalCDNPath="${cdnBase}"; </script> <script src="${cdnBase}build.js"></script> 
             <style>
               body {
                 padding: 32px;
