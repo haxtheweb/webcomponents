@@ -45,19 +45,25 @@ class ShadowStyle extends HTMLElement {
   static get tag() {
     return "shadow-style";
   }
-  // async to ensure we await the Promises all resolving
+  // async to keep the historical call signature; injection now happens
+  // per tag so one bad tag can never block the batch (issue #3102 bug 41)
   async processShadowText(text) {
     // selector to help match our css
     let regex = new RegExp("(.*?)([^{])s*{s*([^}]*?)}", "gim");
     let result;
-    // storage for all promises so that we can wait till they all resolve
-    let promises = [];
     // run through each selector we found
     while ((result = regex.exec(text))) {
       // clean up while space and work on the high level selector for the tag to inject into
       let selector = result[1].trim().replace(/\s\s+/g, " ");
       // target our made up shadow selector
       let tmp = selector.split("::shadow");
+      // validate the selector shape (issue #3102 bug 9): the regex matches
+      // ANY css rule, so plain rules without a ::shadow part must be
+      // SKIPPED rather than dereferencing an undefined tmp[1] (which used
+      // to reject the un-awaited constructor promise with a TypeError)
+      if (tmp.length < 2) {
+        continue;
+      }
       // this is the tag to be injecting into
       let ceTagName = tmp[0];
       // clean up the () around it
@@ -73,44 +79,64 @@ class ShadowStyle extends HTMLElement {
           .trim()
           .replace(/\s\s+/g, " ");
       } else {
-        this.cssMap[ceTagName][shadowSelector] += result[3]
-          .trim()
-          .replace(/\s\s+/g, " ");
+        // join duplicate tag+selector blocks with a newline so the
+        // generated css stays valid (issue #3102 bug 40)
+        this.cssMap[ceTagName][shadowSelector] +=
+          "\n" + result[3].trim().replace(/\s\s+/g, " ");
       }
-      // we now have to wait till this definition is populated in the registry
-      // so wait for this so that the definition comes in when it feels like it
-      promises.push(customElements.whenDefined(ceTagName));
     }
-    // below here won't run until all those elements we care about can be injected into successfully
-    await Promise.all(promises);
-    // delay a microtask just to be safe
-    setTimeout(() => {
-      // run through the map built ahead of time
-      for (var tagName in this.cssMap) {
-        // walk the tag name and query anything in the root document above our implementation
-        // this SHOULD then work within shadows of shadows :)
-        this.getRootNode()
-          .querySelectorAll(tagName)
-          .forEach((el) => {
-            // sanity check for shadow or just append into the tag itself
-            // which is of limited use but at least do... something
-            let appendTo = el;
-            if (el.shadowRoot) {
-              appendTo = el.shadowRoot;
-            }
-            // make a style tag that is empty
-            let style = globalThis.document.createElement("style");
-            style.innerHTML = "";
-            // apply any / all selectors found to this element
-            for (let shadowSelector in this.cssMap[tagName]) {
-              // append the selector
-              style.innerHTML += `${shadowSelector} {${this.cssMap[tagName][shadowSelector]}}`;
-            }
-            // append it to the shadowRoot of the node in question
-            appendTo.appendChild(style);
-          });
-      }
-    }, 0);
+    // wait per tag so that the definition comes in when it feels like it:
+    // an invalid name rejects whenDefined (skip and warn) and a valid but
+    // never-defined tag simply never injects its own rules; neither blocks
+    // the other tags anymore (issue #3102 bug 41)
+    for (let ceTagName in this.cssMap) {
+      this.__injectWhenDefined(ceTagName);
+    }
+  }
+  /**
+   * wait for a single tag to be defined, then inject only its rules
+   */
+  __injectWhenDefined(ceTagName) {
+    customElements
+      .whenDefined(ceTagName)
+      .then(() => {
+        // delay a microtask just to be safe
+        setTimeout(() => {
+          this.__injectTag(ceTagName);
+        }, 0);
+      })
+      .catch(() => {
+        console.warn(
+          `shadow-style: skipping "${ceTagName}" because it is not a valid custom element name`,
+        );
+      });
+  }
+  /**
+   * inject the mapped css for one tag into every instance in this root
+   */
+  __injectTag(tagName) {
+    // walk the tag name and query anything in the root document above our implementation
+    // this SHOULD then work within shadows of shadows :)
+    this.getRootNode()
+      .querySelectorAll(tagName)
+      .forEach((el) => {
+        // sanity check for shadow or just append into the tag itself
+        // which is of limited use but at least do... something
+        let appendTo = el;
+        if (el.shadowRoot) {
+          appendTo = el.shadowRoot;
+        }
+        // make a style tag that is empty
+        let style = globalThis.document.createElement("style");
+        style.innerHTML = "";
+        // apply any / all selectors found to this element
+        for (let shadowSelector in this.cssMap[tagName]) {
+          // append the selector
+          style.innerHTML += `${shadowSelector} {${this.cssMap[tagName][shadowSelector]}}`;
+        }
+        // append it to the shadowRoot of the node in question
+        appendTo.appendChild(style);
+      });
   }
 }
 globalThis.customElements.define(ShadowStyle.tag, ShadowStyle);
