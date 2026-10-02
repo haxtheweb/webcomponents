@@ -81,11 +81,12 @@ export class LrnH5p extends LitElement {
           top: 0;
           transform: translateY(-100%);
           transition: transform 0.3s ease-in-out;
-          background: #2196f3;
-          color: white;
+          /* material blue chip migrates to the DDD link tokens */
+          background: var(--ddd-theme-default-link);
+          color: var(--ddd-theme-default-white);
           text-decoration: none;
           text-transform: uppercase;
-          padding: 0.5em 1em;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         }
         #container:focus #edit,
         #container:hover #edit {
