@@ -64,12 +64,20 @@ export function createSWC(swc) {
     static get properties() {
       let props = {};
       for (let key in swc.data.values) {
-        // set type
+        // Lit expects constructor functions for attribute/type coercion;
+        // map the runtime typeof strings to them (issue #3102 bug 37)
+        let valueType = typeof swc.data.values[key];
+        let ctor = String;
+        if (valueType === "number") {
+          ctor = Number;
+        } else if (valueType === "boolean") {
+          ctor = Boolean;
+        } else if (valueType === "object") {
+          ctor = Array.isArray(swc.data.values[key]) ? Array : Object;
+        }
         props[key] = {
-          type: typeof swc.data.values[key],
+          type: ctor,
         };
-        props[key].type =
-          props[key].type.charAt(0).toUpperCase() + props[key].type.slice(1);
         // convert camel to attr name IF it doesn't match
         let attr = camelCaseToDash(key);
         if (attr !== key) {
@@ -136,10 +144,21 @@ export function createSWC(swc) {
      */
     __applyWinEvents(status) {
       if (swc.events && swc.events.window) {
+        // cache the bound handlers on the instance so removeEventListener
+        // receives the identical function reference that was added;
+        // binding fresh per call made removal never match and window
+        // listeners leaked after disconnect (issue #3102 bug 38)
+        if (!this.__winEventHandlers) {
+          this.__winEventHandlers = {};
+          for (let eName in swc.events.window) {
+            this.__winEventHandlers[eName] =
+              swc.callbacks[swc.events.window[eName]].bind(this);
+          }
+        }
         for (let eName in swc.events.window) {
-          window[`${status ? "add" : "remove"}EventListener`](
+          globalThis[`${status ? "add" : "remove"}EventListener`](
             eName,
-            swc.callbacks[swc.events.window[eName]].bind(this),
+            this.__winEventHandlers[eName],
           );
         }
       }
