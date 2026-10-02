@@ -46,12 +46,51 @@ class AirHorn extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
 
+    // cache the bound handlers once so disconnectedCallback can remove
+    // them (previously a fresh .bind was created inside a setTimeout,
+    // leaving no storable reference and no cleanup path at all)
+    this.__playSoundBound = this._playSound.bind(this);
+    this.__keyDownBound = this._keyDown.bind(this);
+
     if (!delayRender) {
       this.render();
     }
-    setTimeout(() => {
-      this.addEventListener("click", this._playSound.bind(this));
-    }, 0);
+  }
+
+  /**
+   * HTMLElement life cycle - inserted into the DOM
+   */
+  connectedCallback() {
+    // expose the clickable host as a keyboard-operable button
+    if (!this.hasAttribute("role")) {
+      this.setAttribute("role", "button");
+    }
+    if (!this.hasAttribute("tabindex")) {
+      this.setAttribute("tabindex", "0");
+    }
+    if (!this.hasAttribute("aria-label")) {
+      this.setAttribute("aria-label", "Play air horn");
+    }
+    this.addEventListener("click", this.__playSoundBound);
+    this.addEventListener("keydown", this.__keyDownBound);
+  }
+
+  /**
+   * HTMLElement life cycle - removed from the DOM
+   */
+  disconnectedCallback() {
+    this.removeEventListener("click", this.__playSoundBound);
+    this.removeEventListener("keydown", this.__keyDownBound);
+  }
+
+  /**
+   * Enter and Space activate the horn like a native button would.
+   */
+  _keyDown(e) {
+    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+      e.preventDefault();
+      this.click();
+    }
   }
 
   /**

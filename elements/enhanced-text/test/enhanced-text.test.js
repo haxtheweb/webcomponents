@@ -139,7 +139,7 @@ describe("EnhancedText test", () => {
       data: "<p>Enhanced <bold>text</bold> content</p>",
     };
 
-    element.enahncedTextResponse(mockData);
+    element.enhancedTextResponse(mockData);
 
     expect(element.innerHTML).to.include("Enhanced");
     expect(element.innerHTML).to.include("bold");
@@ -149,7 +149,7 @@ describe("EnhancedText test", () => {
     const invalidData = { status: false };
     const originalHTML = element.innerHTML;
 
-    element.enahncedTextResponse(invalidData);
+    element.enhancedTextResponse(invalidData);
 
     // HTML should remain unchanged
     expect(element.innerHTML).to.equal(originalHTML);

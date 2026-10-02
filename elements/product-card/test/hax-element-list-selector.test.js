@@ -206,6 +206,31 @@ describe('hax-element-list-selector', () => {
     )
   })
 
+  // fix (#11): the getAppstoreValues fallback object used to carry only
+  // templates/providers keys, so a form submitting without a haxcore value
+  // crashed at value.haxcore.search['haxcore-search-autoloader'] instead of
+  // degrading; the fallback now carries search and integrations too
+  it('getAppstoreValues degrades gracefully when the form has no haxcore value', () => {
+    const form = el.shadowRoot.querySelector('#form')
+    const realSubmit = form.submit
+    form.submit = () => ({})
+    let values = null
+    let caught = null
+    try {
+      values = el.getAppstoreValues()
+    } catch (e) {
+      caught = e
+    }
+    form.submit = realSubmit
+    expect(caught).to.equal(null)
+    expect(values.apps).to.deep.equal({})
+    expect(values.autoloader).to.equal(undefined)
+    expect(values.stax).to.equal(undefined)
+    expect(values.providers.cdn).to.equal(undefined)
+    expect(values.providers.other).to.equal(undefined)
+    expect(values.providers.pk).to.equal(undefined)
+  })
+
   it('warns and skips registry entries whose module fails to import', async function () {
     this.timeout(8000)
     // point the endpoint at a registry with a broken entry; the failing

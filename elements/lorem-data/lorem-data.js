@@ -146,7 +146,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
   }
 
   filterQuery(records, filter) {
-    return records.filter(record, (index) => filter(record, index));
+    return records.filter((record, index) => filter(record, index));
   }
   /**
    * gets date x days from start date
@@ -336,7 +336,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    */
   randomIcon(includeNull = false) {
     let random = this.randomOption(this.icons);
-    return includeNull ? this.randomOption([...random, ""]) : random;
+    return includeNull ? this.randomOption([random, ""]) : random;
   }
   /**
    * generates URL for random image from placeimg.com
@@ -382,7 +382,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
         : [];
     if (blur > 0) params.push(`blur=${blur}`);
     aspect = aspect || this.randomAspect();
-    return `https://picsum.photos/${id > -1 ? `id/${id}` : ``}/${aspect}/${
+    return `https://picsum.photos/${id > -1 ? `id/${id}/` : ``}${aspect}${
       params.length == 0 ? "" : `?${params.join("&")}`
     }`;
   }
@@ -580,7 +580,7 @@ class LoremData extends LoremDataBehaviors(LitElement) {
    * @returns
    * @memberof LoremData
    */
-  randomType(schema) {
+  randomType(schema = {}) {
     let val;
     if (schema.type)
       switch (schema.type) {

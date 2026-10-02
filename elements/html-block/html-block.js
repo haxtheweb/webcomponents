@@ -81,27 +81,45 @@ class HtmlBlock extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    // default we block all script unless the user says to do so
-    // @todo ensure HAX actually respects this down the road, right now it sanitizes it
-    this.allowscript = false;
-    this.__ignoreChange = false;
     this.style.display = "block";
-    // ensure we keep applying sanitization as needed while monitoring the tree
-    this.__observer = new MutationObserver(this.render.bind(this));
-    this.__observer.observe(this, {
-      attributes: true,
-      characterData: true,
-      childList: true,
-      subtree: true,
-    });
+    // issues#3102 #26: read the author's allowscript intent BEFORE anything
+    // else touches it and only force-sanitize when the attribute is absent.
+    // Previously this set this.allowscript = false unconditionally, which
+    // stripped a parse-time allowscript attribute and force-sanitized the
+    // content regardless of author intent.
+    if (this.allowscript == null && this.innerHTML !== "") {
+      // issues#3102 #3 (security): sanitize any light DOM already present at
+      // connect time and capture __rawHTML for it. Previously
+      // connectedCallback only armed the MutationObserver, so pre-existing
+      // markup kept live event-handler attributes (onclick= etc.) and script
+      // nodes survived connection.
+      this.__sanitizeHTML();
+    }
+    if (!this.__observer) {
+      // issues#3102 #27: any sanitize pass above ran BEFORE the observer was
+      // armed, so its write is never delivered back to us; clear the one-shot
+      // ignore flag here (after sanitizing, before arming) so it cannot
+      // swallow the next real mutation. Previously __ignoreChange was reset
+      // AFTER the sanitize pass armed it, which let the observer deliver our
+      // own write and run a second sanitize pass that stored already-escaped
+      // content in __rawHTML.
+      this.__ignoreChange = false;
+      // ensure we keep applying sanitization as needed while monitoring the tree
+      this.__observer = new MutationObserver(this.render.bind(this));
+      this.__observer.observe(this, {
+        attributes: true,
+        characterData: true,
+        childList: true,
+        subtree: true,
+      });
+    }
   }
   render() {
     if (!this.__ignoreChange) {
-      if (
-        this.allowscript == null ||
-        !this.allowscript ||
-        typeof this.allowscript === typeof undefined
-      ) {
+      // issues#3102 #26: the attribute is boolean-ish; presence (even a bare
+      // allowscript="") means the author allows script. Sanitize only when
+      // the attribute is absent.
+      if (this.allowscript == null) {
         this.__sanitizeHTML();
       }
     } else {
@@ -125,11 +143,10 @@ class HtmlBlock extends HTMLElement {
   // disconnectedCallback() {}
   attributeChangedCallback(attr, oldValue, newValue) {
     if (attr === "allowscript") {
-      if (
-        newValue == null ||
-        !newValue ||
-        typeof newValue === typeof undefined
-      ) {
+      // issues#3102 #26: a bare allowscript attribute parses to the empty
+      // string, which is the author saying "allow script"; only removal
+      // (newValue == null) triggers sanitization.
+      if (newValue == null) {
         // we should sanitize innerHTML but create a holding pen for the rawHTML first
         this.__sanitizeHTML();
       } else {
@@ -146,7 +163,18 @@ class HtmlBlock extends HTMLElement {
     // sanitizer before writing back to innerHTML; preserve the raw value in
     // __rawHTML so toggling allowscript back on restores it (attributeChangedCallback).
     const rawHTML = this.innerHTML;
-    this.__rawHTML = rawHTML;
+    // issues#3102 #27: capture raw once per content write, but skip the
+    // recapture when innerHTML is already the escaped form of the stored pen.
+    // A double sanitize pass (upgrade / attribute-reaction ordering) would
+    // otherwise store escaped content in the pen and restoring allowscript
+    // would give back escaped text instead of the author's original HTML.
+    // Later, legitimate content writes still recapture the pen normally.
+    if (
+      this.__rawHTML == null ||
+      rawHTML !== sanitizeHTMLString(this.__rawHTML)
+    ) {
+      this.__rawHTML = rawHTML;
+    }
     // break the MutationObserver feedback loop: render() checks __ignoreChange
     // and resets it to false, preventing re-sanitization of our own write.
     this.__ignoreChange = true;

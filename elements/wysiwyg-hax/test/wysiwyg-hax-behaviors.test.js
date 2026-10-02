@@ -96,18 +96,12 @@ describe('wysiwyg-hax behaviors', () => {
     expect(cms.hasAttribute('open-default')).to.equal(true)
     // sync-body reflects on the host too
     expect(el.hasAttribute('sync-body')).to.equal(true)
-    // BUG (wysiwyg-hax.js:38): .end-point=${...} binds a hyphenated
-    // property called "end-point" which does not exist on cms-hax
-    // (the real property is endPoint), so the save endpoint NEVER
-    // reaches the editor: cms.endPoint stays null while the value
-    // lands on the bogus cms["end-point"] own property.
+    // FIXED (issue #3102 bugs 12/13): render now binds .endPoint= and
+    // .allowedTags= so the save endpoint and tag allow-lists reach the
+    // real camelCase properties declared by cms-hax
     expect(el.endPoint).to.equal('/api/save')
-    expect(cms.endPoint).to.equal(null)
-    expect(cms['end-point']).to.equal('/api/save')
-    // BUG (wysiwyg-hax.js:41): same pattern for .allowed-tags — the
-    // real property is allowedTags, so tag allow-lists never arrive
-    expect(cms['allowed-tags']).to.deep.equal(['p', 'div'])
-    expect(cms.allowedTags).to.equal(undefined)
+    expect(cms.endPoint).to.equal('/api/save')
+    expect(cms.allowedTags).to.deep.equal(['p', 'div'])
   })
 
   it('updates bodyValue from the hax-save-body-value event', async () => {
@@ -186,7 +180,7 @@ describe('wysiwyg-hax behaviors', () => {
     }
   })
 
-  it('BUG: disconnect does not remove the save button click listener', async () => {
+  it('disconnect removes the save button click listener', async () => {
     const container = globalThis.document.createElement('div')
     container.innerHTML = '<wysiwyg-hax></wysiwyg-hax>'
     globalThis.document.body.appendChild(container)
@@ -201,13 +195,13 @@ describe('wysiwyg-hax behaviors', () => {
       await el.updateComplete
       HAXStore.skipExitTrap = false
       container.remove()
-      // BUG (wysiwyg-hax.js:216-219): removeEventListener is called with
-      // a fresh .bind(this) function, which never matches the listener
-      // registered in updated(), so the click handler leaks after
-      // disconnect. Detected via HAXStore because the detached element's
-      // hax-save event can no longer bubble to the document.
+      // FIXED (issue #3102 bug 58): the bound handler is cached on the
+      // instance (__saveClickedBound), so disconnectedCallback's
+      // removeEventListener now matches the listener registered in
+      // updated() and the click handler no longer leaks; clicking the
+      // detached button must not touch HAXStore anymore.
       btn.click()
-      expect(HAXStore.skipExitTrap).to.equal(true)
+      expect(HAXStore.skipExitTrap).to.equal(false)
     } finally {
       el.removeEventListener('hax-save', saveHandler, true)
       HAXStore.skipExitTrap = originalSkipExitTrap

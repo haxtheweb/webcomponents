@@ -26,7 +26,9 @@ export const SimpleTourFinder = function (SuperClass) {
     disconnectedCallback() {
       // @todo make sure we remove the items from the tour if the
       // element they are related to gets removed from the page
-      super.disconnectedCallback();
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
     }
     /**
      * LitElement ready life cycle

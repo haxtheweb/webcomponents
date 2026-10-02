@@ -44,14 +44,6 @@
             },
             {
               "kind": "field",
-              "name": "__disposer",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
               "name": "selectedPage",
               "privacy": "public",
               "type": {
@@ -550,6 +542,16 @@
             },
             {
               "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Short description / excerpt of the post rendered in the listing",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
               "name": "body",
               "privacy": "public",
               "type": {
@@ -595,6 +597,14 @@
               },
               "description": "Title",
               "fieldName": "title"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "description": "Short description / excerpt of the post rendered in the listing",
+              "fieldName": "description"
             },
             {
               "name": "body",

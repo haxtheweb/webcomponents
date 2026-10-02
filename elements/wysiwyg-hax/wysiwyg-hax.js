@@ -35,10 +35,10 @@ class WysiwygHax extends LitElement {
         hide-message=""
         redirect-location="${this.redirectLocation}"
         update-page-data="${this.updatePageData}"
-        .end-point="${this.endPoint}"
+        .endPoint="${this.endPoint}"
         app-store-connection="${this.appStoreConnection}"
         offset-margin="${this.offsetMargin}"
-        .allowed-tags="${this.allowedTags}"
+        .allowedTags="${this.allowedTags}"
         ?open-default="${this.openDefault}"
         ?sync-body="${this.syncBody}"
         ?hide-panel-ops="${this.hidePanelOps}"
@@ -59,6 +59,9 @@ class WysiwygHax extends LitElement {
     if (template) {
       this.__importContent = template.cloneNode(true);
     }
+    // cache the bound save handler so add/removeEventListener reference
+    // the same function and removal actually matches (issue #3102 bug 58)
+    this.__saveClickedBound = this.__saveClicked.bind(this);
     this.openDefault = false;
     this.elementAlign = "left";
     this.fieldId = "textarea-input-field";
@@ -73,7 +76,7 @@ class WysiwygHax extends LitElement {
       if (propName == "saveButtonSelector" && this[propName].tagName) {
         this.saveButtonSelector.addEventListener(
           "click",
-          this.__saveClicked.bind(this),
+          this.__saveClickedBound,
         );
       }
     });
@@ -215,7 +218,7 @@ class WysiwygHax extends LitElement {
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",
-        this.__saveClicked.bind(this),
+        this.__saveClickedBound,
       );
     }
     super.disconnectedCallback();

@@ -64,23 +64,23 @@ describe('lunr-search behaviors', () => {
     expect(el.results[0].Title).to.equal('Beta gadget')
   })
 
-  it('BUG: the no-stop-word fallback index never matches stop-word queries', async () => {
+  it('the no-stop-word fallback index matches stop-word queries', async () => {
     const el = await fixture(html`<lunr-search></lunr-search>`)
     await waitFor(() => el.__lunrLoaded === true)
     el.data = DATA
     el.fields = ['Title', 'description']
     await waitFor(() => el.index !== undefined && el.index !== null)
-    // 'the' is stripped from the query by the primary index's stop word
-    // filter, so the fallback index (stopWordFilter removed) is created
+    // 'the' is stripped from the primary index's DOCUMENTS by the stop
+    // word filter, so the fallback index is created; pipeline.remove(
+    // lunr.stopWordFilter) now runs BEFORE add() (haxtheweb/issues#3102)
+    // so the fallback documents keep 'the' and the query matches
     el.search = 'the'
-    await waitFor(() => el.indexNoStopWords !== undefined && el.indexNoStopWords !== null)
-    await settle(200)
-    // BUG (lunr-search.js:291-293 / 344-346): pipeline.remove(
-    // lunr.stopWordFilter) runs AFTER this.add() inside the index
-    // builder, so documents were already indexed with 'the' filtered
-    // out; queries keep 'the' but the index never contains it, so the
-    // fallback can never match and results stay empty.
-    expect(el.results).to.deep.equal([])
+    await waitFor(() => (el.results || []).length > 0)
+    expect(
+      el.indexNoStopWords !== undefined && el.indexNoStopWords !== null,
+    ).to.equal(true)
+    expect(el.results.length).to.equal(1)
+    expect(el.results[0].Title).to.equal('Beta gadget')
   })
 
   it('applies minScore to filter out low-scoring matches', async () => {
@@ -121,7 +121,7 @@ describe('lunr-search behaviors', () => {
     expect(el.results.length).to.equal(1)
   })
 
-  it('returns an empty array for a non-matching search and undefined for empty', async () => {
+  it('returns an empty array for non-matching and empty-string searches', async () => {
     const el = await fixture(html`<lunr-search></lunr-search>`)
     await waitFor(() => el.__lunrLoaded === true)
     el.data = DATA
@@ -131,14 +131,15 @@ describe('lunr-search behaviors', () => {
     el.search = 'zzzqqq'
     await waitFor(() => Array.isArray(el.results))
     expect(el.results).to.deep.equal([])
-    // an empty string is falsy, so searched() bails and results is
-    // left as undefined rather than an empty array
+    // an explicit empty-string search now reports [] rather than
+    // undefined (haxtheweb/issues#3102); null/undefined search still
+    // returns undefined (see the guard clause test below)
     el.search = ''
     await settle(150)
-    expect(el.results).to.equal(undefined)
+    expect(el.results).to.deep.equal([])
   })
 
-  it('BUG: string ids never match when fields exclude id', async () => {
+  it('matches string ids when fields exclude id', async () => {
     const el = await fixture(html`<lunr-search></lunr-search>`)
     await waitFor(() => el.__lunrLoaded === true)
     // demo/lunrSearchIndex.json-style data with string ids
@@ -150,12 +151,12 @@ describe('lunr-search behaviors', () => {
     await waitFor(() => el.index !== undefined && el.index !== null)
     el.search = 'alpha'
     await waitFor(() => (el.results || []).length === 1)
-    // BUG (lunr-search.js:274 + 234): _createIndex indexes items under a
-    // positional numeric id (id: 0) when "id" is not in fields, but
-    // searched() matches refs against the data's own id values
-    // (j.id == searched[i].ref), so 'welcome' == 0 never matches and the
-    // matched slot is pushed as undefined.
-    expect(el.results[0]).to.equal(undefined)
+    // _createIndex now indexes items under the data's own id when
+    // present (haxtheweb/issues#3102), so searched() ref matching
+    // resolves the item instead of pushing undefined
+    expect(el.results.length).to.equal(1)
+    expect(el.results[0].id).to.equal('welcome')
+    expect(el.results[0].Title).to.equal('Alpha widget')
   })
 
   it('searched() guard clauses return undefined without data or search', async () => {
@@ -205,7 +206,7 @@ describe('lunr-search behaviors', () => {
     expect(typeof autoNoStop).to.equal('object')
   })
 
-  it('renders demo results as headings and paragraphs', async () => {
+  it('renders demo results as an aria-live list with titles and descriptions', async () => {
     const el = await fixture(html`<lunr-search demo></lunr-search>`)
     await waitFor(() => el.__lunrLoaded === true)
     // render() reads item.title / item.description directly, so the
@@ -220,12 +221,24 @@ describe('lunr-search behaviors', () => {
     el.search = 'widget'
     await waitFor(() => (el.results || []).length > 0)
     await el.updateComplete
-    const h2 = el.shadowRoot.querySelector('h2')
-    expect(h2).to.exist
-    expect(h2.textContent.trim()).to.equal('Alpha widget')
-    const p = el.shadowRoot.querySelector('p')
+    // list semantics + aria-live for result updates, no more
+    // h2-per-result breaking the heading hierarchy
+    // (haxtheweb/issues#3102 a11y follow-up)
+    const live = el.shadowRoot.querySelector('div.results')
+    expect(live).to.exist
+    expect(live.getAttribute('aria-live')).to.equal('polite')
+    const list = el.shadowRoot.querySelector('ul')
+    expect(list).to.exist
+    expect(list.getAttribute('aria-label')).to.equal('Search results')
+    const items = el.shadowRoot.querySelectorAll('li')
+    expect(items.length).to.equal(1)
+    const title = items[0].querySelector('.result-title')
+    expect(title).to.exist
+    expect(title.textContent.trim()).to.equal('Alpha widget')
+    const p = items[0].querySelector('p')
     expect(p).to.exist
     expect(p.textContent.trim()).to.contain('first item about widgets')
+    expect(el.shadowRoot.querySelector('h2')).to.equal(null)
     // demo reflects to an attribute
     expect(el.hasAttribute('demo')).to.equal(true)
   })
@@ -239,7 +252,8 @@ describe('lunr-search behaviors', () => {
     el.search = 'widget'
     await waitFor(() => (el.results || []).length > 0)
     await el.updateComplete
-    expect(el.shadowRoot.querySelector('h2')).to.equal(null)
+    expect(el.shadowRoot.querySelector('ul')).to.equal(null)
+    expect(el.shadowRoot.querySelector('div.results')).to.equal(null)
   })
 
   it('fetches the dataSource and dispatches change notifications', async () => {
@@ -350,21 +364,28 @@ describe('lunr-search behaviors', () => {
     el.removeEventListener('no-stop-words-changed', handler)
   })
 
-  it('passes the a11y audit after results render', async () => {
+  it('passes the a11y audit after results render, including a title-less item', async () => {
     const el = await fixture(html`<lunr-search demo></lunr-search>`)
     await waitFor(() => el.__lunrLoaded === true)
     const data = [
       { id: 0, title: 'Alpha widget', description: 'first item about widgets' },
+      // item without a title: render() guards item.title so no empty
+      // heading/title renders (haxtheweb/issues#3102 empty-heading fix)
+      { id: 1, description: 'second item matches widgets but has no title' },
     ]
     el.data = data
     el.fields = ['title', 'description']
     await waitFor(() => el.index !== undefined && el.index !== null)
     el.search = 'widget'
-    await waitFor(() => (el.results || []).length > 0)
+    await waitFor(() => (el.results || []).length === 2)
     await el.updateComplete
-    // NOTE: result items without a title property render EMPTY h2
-    // headings (empty-heading axe violation) — render() assumes
-    // item.title/item.description exist on every result
+    const items = el.shadowRoot.querySelectorAll('li')
+    expect(items.length).to.equal(2)
+    const titleless = [...items].find(
+      (li) => li.querySelector('.result-title') === null,
+    )
+    expect(titleless !== undefined).to.equal(true)
+    expect(titleless.textContent).to.contain('no title')
     await expect(el).shadowDom.to.be.accessible()
   })
 })

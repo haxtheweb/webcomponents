@@ -60,10 +60,16 @@ class SimpleLogin extends SimpleColors {
           display: var(--login-btn-display, inline-flex);
         }
 
+        /* DDD functional tokens replace the legacy SimpleColors accent
+           shades; light-dark() pairs keep the disabled button legible in
+           dark mode */
         #loginbtn[disabled] {
           background-color: var(
             --login-btn-disabled-background-color,
-            var(--simple-colors-default-theme-accent-12, #000000)
+            light-dark(
+              var(--ddd-theme-default-disabled, #f4f4f4),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
           );
         }
 
@@ -81,7 +87,13 @@ class SimpleLogin extends SimpleColors {
 
         #errormsg {
           margin-top: 16px;
-          color: var(--login-error-label-color, var(--error-color));
+          color: var(
+            --login-error-label-color,
+            light-dark(
+              var(--ddd-theme-default-error, #5f2120),
+              var(--ddd-theme-default-errorLight, #fdeded)
+            )
+          );
         }
       `,
     ];
@@ -94,7 +106,9 @@ class SimpleLogin extends SimpleColors {
       <div id="loginformcontent">
         ${this.title ? html`<h1>${this.title}</h1>` : ``}
         ${this.subtitle ? html`<h2>${this.subtitle}</h2>` : ``}
-        <div id="errormsg">${this.errorMsg}</div>
+        <div id="errormsg" role="alert" aria-live="assertive">
+          ${this.errorMsg}
+        </div>
         <slot></slot>
         <simple-fields-field
           id="userinput"
@@ -242,19 +256,19 @@ class SimpleLogin extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
     setTimeout(() => {
+      // keydown replaces the deprecated keypress event
       this.shadowRoot
         .querySelector("#loginform")
-        .addEventListener("keypress", this._keyPressLogin.bind(this));
+        .addEventListener("keydown", this._keyPressLogin.bind(this));
     }, 0);
   }
   /**
    * Key pressed for the login
    */
   _keyPressLogin(e) {
-    if (e.keyCode == 13) {
-      //Enter
+    if (e.key === "Enter") {
+      e.preventDefault();
       this._login();
-      return false;
     }
   }
   _passwordChanged(e) {

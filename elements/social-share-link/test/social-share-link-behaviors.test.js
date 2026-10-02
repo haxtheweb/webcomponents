@@ -20,10 +20,12 @@ describe('social-share-link behaviors', () => {
     expect(a).to.exist
     expect(a.getAttribute('target')).to.equal('_blank')
     expect(a.getAttribute('rel')).to.equal('noopener noreferrer')
-    // BUG (social-share-link.js:278): with no message/url the literal
-    // string 'null' is concatenated into the tweet text query param.
-    // encodeURI of "text= null" -> "text=%20null".
-    expect(el.__href).to.equal('http://twitter.com/intent/tweet?text=%20null')
+    // issues#3102 #23 FIXED: with no message/url the Twitter intent href
+    // is empty instead of concatenating the literal string 'null' into the
+    // query, and the link is disabled on the host (#21)
+    expect(el.__href).to.equal('')
+    expect(el.hasAttribute('disabled')).to.equal(true)
+    expect(el.disabled).to.equal(true)
   })
 
   it('builds a Facebook share href from the url', async () => {
@@ -44,18 +46,20 @@ describe('social-share-link behaviors', () => {
     expect(el.__icon).to.equal('mdi-social:facebook')
   })
 
-  it('BUG: Facebook without a url yields href "false" and never disables', async () => {
+  it('Facebook without a url disables the host instead of href "false"', async () => {
     const el = await fixture(
       html`<social-share-link type="Facebook"></social-share-link>`,
     )
     await el.updateComplete
-    // BUG (social-share-link.js:254-258 + 283): url null makes _getHref
-    // return false, but encodeURI(false) coerces to the string "false",
-    // so __href is truthy and the ?disabled binding in render() is
-    // never true. The disabled link styling can never apply.
-    expect(el.__href).to.equal('false')
+    // issues#3102 #21 FIXED: url is truthiness-guarded before encodeURI (no
+    // more encodeURI(false) coercing to the truthy string "false"), and
+    // disabled is reflected onto the HOST so the :host([disabled]) a
+    // styling is finally reachable (the old ?disabled binding landed on
+    // the inner <a>, which no CSS selector targeted).
+    expect(el.__href).to.equal('')
+    expect(el.hasAttribute('disabled')).to.equal(true)
     const a = el.shadowRoot.querySelector('a')
-    expect(a.hasAttribute('disabled')).to.equal(false)
+    expect(a.getAttribute('aria-disabled')).to.equal('true')
   })
 
   it('builds a LinkedIn share href from the url', async () => {
@@ -76,9 +80,9 @@ describe('social-share-link behaviors', () => {
       html`<social-share-link type="LinkedIn"></social-share-link>`,
     )
     await el.updateComplete
-    // NOTE (social-share-link.js:261-265): the "link !== null" ternary is
-    // always true (link is a string), so the ": false" fallback is dead.
-    // Missing url degrades to the bare share endpoint instead.
+    // issues#3102 #54 FIXED: the dead "link !== null" ternaries are gone;
+    // a missing url still degrades to the bare share endpoint (behavior
+    // preserved, now via an explicit truthiness guard).
     expect(el.__href).to.equal(
       'https://www.linkedin.com/shareArticle?mini=true',
     )
@@ -107,11 +111,11 @@ describe('social-share-link behaviors', () => {
       ></social-share-link>`,
     )
     await el.updateComplete
-    // NOTE (social-share-link.js:267-275): same dead ": false" ternary
-    // pattern as LinkedIn. Also image defaults to "" (not null), so the
-    // !== null check always appends an empty "&media=" param.
+    // issues#3102 #23/#54 FIXED: message/image default to "" (NOT null)
+    // and are truthiness-guarded now, so empty "&description=" / "&media="
+    // params are no longer appended.
     expect(el.__href).to.equal(
-      'http://pinterest.com/pin/create/button/?description=Pin%20It!&media=',
+      'http://pinterest.com/pin/create/button/?description=Pin%20It!',
     )
   })
 
@@ -129,18 +133,56 @@ describe('social-share-link behaviors', () => {
     )
   })
 
-  it('BUG: an unknown type yields the string "undefined" as href', async () => {
+  it('an unknown type yields an empty href instead of "undefined"', async () => {
     // direct method call (no connect) so the icon resolver never
     // requests an iconset svg for the unknown type
     const el = globalThis.document.createElement('social-share-link')
-    // BUG (social-share-link.js:251-283): _getHref has no default case;
-    // an unrecognized type leaves link undefined and encodeURI(undefined)
-    // produces the string "undefined" as a navigable href.
-    expect(el._getHref('', '', 'Myspace', 'https://x.com')).to.equal(
-      'undefined',
+    // issues#3102 #23 FIXED: _getHref now has a default case; an
+    // unrecognized type returns "" (which disables the link) instead of
+    // encodeURI(undefined) producing the navigable string "undefined".
+    expect(el._getHref('', '', 'Myspace', 'https://x.com')).to.equal('')
+    // issues#3102 #23: Twitter guards each param individually; a missing
+    // message/url never concatenates the literal string "null"
+    expect(el._getHref('', 'hello', 'Twitter', null)).to.equal(
+      'http://twitter.com/intent/tweet?text=hello',
     )
+    expect(el._getHref('', '', 'Twitter', 'https://x.com')).to.equal(
+      'http://twitter.com/intent/tweet?text=https://x.com',
+    )
+    expect(el._getHref('', '', 'Twitter', null)).to.equal('')
+    // issues#3102 #23/#54: Pinterest with no usable params yields an empty
+    // (disabled) link rather than a bare "?" endpoint
+    expect(el._getHref('', '', 'Pinterest', null)).to.equal('')
     expect(el._getLinkText(null, 'Myspace')).to.equal('Share via Myspace')
     expect(el._getIcon('Myspace')).to.equal('mdi-social:myspace')
+  })
+
+  it('prevents navigation while disabled and allows clicks when enabled', async () => {
+    const el = await fixture(
+      html`<social-share-link type="Facebook"></social-share-link>`,
+    )
+    await el.updateComplete
+    expect(el.hasAttribute('disabled')).to.equal(true)
+    // issues#3102 #21: the @click handler prevents the empty href from
+    // navigating while disabled (safe to dispatch here: the handler calls
+    // preventDefault, so no activation/navigation happens)
+    const a = el.shadowRoot.querySelector('a')
+    const blocked = new MouseEvent('click', {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    })
+    a.dispatchEvent(blocked)
+    expect(blocked.defaultPrevented).to.equal(true)
+    // with something to share the handler does not block; invoke directly
+    // because dispatching an unprevented synthetic click on a real href
+    // would attempt a navigation in the test runner
+    el.url = 'http://zombo.com'
+    await el.updateComplete
+    expect(el.hasAttribute('disabled')).to.equal(false)
+    const allowed = new MouseEvent('click', { cancelable: true })
+    el._clickShare(allowed)
+    expect(allowed.defaultPrevented).to.equal(false)
   })
 
   it('honors custom link text over the default', async () => {
@@ -202,7 +244,7 @@ describe('social-share-link behaviors', () => {
     expect(icon.hasAttribute('hidden')).to.equal(true)
   })
 
-  it('BUG: default (no mode) hides the icon though docs say icon+text', async () => {
+  it('default (no mode) shows both the icon and text', async () => {
     const el = await fixture(
       html`<social-share-link
         type="Twitter"
@@ -212,13 +254,13 @@ describe('social-share-link behaviors', () => {
       ></social-share-link>`,
     )
     await el.updateComplete
-    // BUG (social-share-link.js:237-239): __showIcon is only true when
-    // mode == "icon-only"; the documented default (mode unset -> icon and
-    // text both displayed) renders with the icon hidden instead. The demo
-    // relies on the default showing both.
-    expect(el.__showIcon).to.equal(false)
+    // issues#3102 #22 FIXED: __showIcon is true for any mode except
+    // "text-only", so the documented default (mode unset -> icon AND text
+    // both displayed) actually renders the icon now. The demo relies on
+    // the default showing both.
+    expect(el.__showIcon).to.equal(true)
     const icon = el.shadowRoot.querySelector('simple-icon-lite')
-    expect(icon.hasAttribute('hidden')).to.equal(true)
+    expect(icon.hasAttribute('hidden')).to.equal(false)
   })
 
   it('recomputes the href when url changes after connection', async () => {
@@ -226,12 +268,34 @@ describe('social-share-link behaviors', () => {
       html`<social-share-link type="Facebook"></social-share-link>`,
     )
     await el.updateComplete
-    expect(el.__href).to.equal('false')
+    expect(el.__href).to.equal('')
+    expect(el.hasAttribute('disabled')).to.equal(true)
     el.url = 'http://zombo.com'
     await el.updateComplete
     expect(el.__href).to.equal(
       'https://www.facebook.com/sharer/sharer.php?u=http://zombo.com',
     )
+    // issues#3102 #21: the host disabled reflection clears once there is
+    // something to share
+    expect(el.hasAttribute('disabled')).to.equal(false)
+  })
+
+  it('declares the dark property and forwards it to the icon', async () => {
+    const el = await fixture(
+      html`<social-share-link
+        dark
+        type="Twitter"
+        url="https://x.com"
+      ></social-share-link>`,
+    )
+    await el.updateComplete
+    // issues#3102 DDD FIXED: dark was NOT a declared property, which made
+    // the ?dark=${this.dark} render binding dead; it is declared (and
+    // reflected) now, so the element can respond to dark mode and forward
+    // it to the icon
+    expect(el.dark).to.equal(true)
+    const icon = el.shadowRoot.querySelector('simple-icon-lite')
+    expect(icon.hasAttribute('dark')).to.equal(true)
   })
 
   it('recomputes icon and link text when type changes after connection', async () => {

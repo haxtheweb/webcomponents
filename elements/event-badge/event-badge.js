@@ -58,6 +58,9 @@ class EventBadge extends SimpleColors {
       css`
         :host {
           display: inline-flex;
+          /* the badge's retro palette is intentionally fixed-light;
+             pin color-scheme so UA dark-mode adjustments leave it alone */
+          color-scheme: light;
         }
         :host([sepia]) {
           filter: sepia(1);

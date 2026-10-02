@@ -278,12 +278,44 @@ describe('simple-autocomplete-text-trigger key monitoring', () => {
     await sleep(10)
     expect(el._triggerStart).to.equal(null)
     expect(el._triggerEnd).to.equal(null)
-    // BUG lib/simple-autocomplete-text-trigger.js:189-196 - the setValue
-    // timeout scheduled by the _triggerStart != _triggerEnd branch before the
-    // Space branch clears the trigger state still fires afterwards and calls
-    // setValue with the now-nulled trigger offsets, re-opening the menu with
-    // an empty filter that matches every item right after Space closed it
-    expect(el.$autocomplete.opened).to.equal(true)
+    // FIXED (haxtheweb/issues#3102 #34): the Space branch now cancels the
+    // pending setValue timeout scheduled by the _triggerStart != _triggerEnd
+    // branch (and the callback itself guards the trigger offsets), so the
+    // menu stays closed and the value is not reset to '' right after Space
+    // closed it
+    expect(el.$autocomplete.opened).to.equal(false)
+    expect(el.$autocomplete.value).to.equal('b')
+    document.body.removeChild(target)
+  })
+
+  it('skips the deferred setValue when the trigger offsets are cleared', async () => {
+    const target = document.createElement('input')
+    target.value = '@b'
+    document.body.appendChild(target)
+    target.focus()
+    target.setSelectionRange(1, 1)
+    const el = await fixture(
+      html`<simple-autocomplete-text-trigger
+        .triggers=${{ '@': FRUITS }}
+        .target=${target}
+      ></simple-autocomplete-text-trigger>`,
+    )
+    globalThis.dispatchEvent(
+      new KeyboardEvent('keyup', { key: '@', bubbles: true }),
+    )
+    await sleep(10)
+    target.setSelectionRange(2, 2)
+    globalThis.dispatchEvent(
+      new KeyboardEvent('keyup', { key: 'b', bubbles: true }),
+    )
+    // clear the trigger state before the deferred setValue fires; the
+    // guarded callback must skip setValue('') which would otherwise
+    // re-open the menu with an empty filter matching every item
+    el._triggerStart = null
+    el._triggerEnd = null
+    el.$autocomplete.opened = false
+    await sleep(10)
+    expect(el.$autocomplete.opened).to.equal(false)
     expect(el.$autocomplete.value).to.equal('')
     document.body.removeChild(target)
   })

@@ -259,9 +259,10 @@ class SimpleBlogPost extends SimpleColors {
     requestAnimationFrame(() => {
       this._scrollTicking = false;
       if (this.hasImage) {
+        // explicit 0 fallback: pageYOffset is falsy at scroll position 0
+        // and document has no scrollTop, which used to compute NaN here
         let top =
-          (globalThis.pageYOffset || globalThis.document.scrollTop) -
-          (globalThis.document.clientTop || 0);
+          (globalThis.pageYOffset || 0) - (globalThis.document.clientTop || 0);
         if (top < 0 || top > 1500) {
           return;
         }

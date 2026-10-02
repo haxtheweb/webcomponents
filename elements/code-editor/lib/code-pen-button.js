@@ -22,9 +22,12 @@ class CodePenButton extends LitElement {
     return html`
       <form action="${this.endPoint}" method="post" target="_blank">
         <input type="hidden" name="data" value="${this.dataString}" />
+        <!-- on-prem: inline data-URI arrow replaces the former hardcoded
+             remote S3 asset so rendering never performs a network request
+             (issue #3102 bug 20) -->
         <input
           type="image"
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cp-arrow-right.svg"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath fill='%23ffffff' d='M24 8l-2.8 2.8L30.4 20H6v2h24.4l-9.2 9.2L24 34l14-14z'/%3E%3C/svg%3E"
           width="40"
           height="40"
           value="Open code pen in a new window"

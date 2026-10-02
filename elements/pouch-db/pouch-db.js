@@ -64,6 +64,12 @@ class PouchDb extends HTMLElement {
   }
 
   userEngagmentFunction(e) {
+    // guard (issue #3102 bug 6): a user-engagement event can arrive
+    // without detail (or without a usable target); ignore it instead of
+    // throwing a TypeError when eventData is dereferenced below
+    if (!e || !e.detail || !e.target) {
+      return;
+    }
     var eventData = e.detail;
     var whatEvent = e.target.tagName;
 
@@ -89,9 +95,6 @@ class PouchDb extends HTMLElement {
       default:
         break;
     }
-
-    var remoteCouch = false;
-    ///var remoteCouch = 'http://35.164.8.64:3000/todos';
 
     //these need to be updated to pull from global
     var userEmail = "mailto:dave@gmail.com";
@@ -148,12 +151,6 @@ class PouchDb extends HTMLElement {
       }
     });
 
-    if (remoteCouch) {
-      var opts = { live: true };
-      this.db.replicate.to(remoteCouch, opts, syncError);
-      this.db.replicate.from(remoteCouch, opts, syncError);
-    }
-
     //display for testing only - move to own elements
     this.db.allDocs(
       { include_docs: true, descending: true },
@@ -165,6 +162,11 @@ class PouchDb extends HTMLElement {
   }
 
   getDataFunction(e) {
+    // same guard family as userEngagmentFunction (issue #3102 bug 6):
+    // ignore events missing detail or target instead of throwing
+    if (!e || !e.detail || !e.target) {
+      return;
+    }
     var eventData = e.detail;
     var whatEvent = e.target.tagName;
     switch (eventData.queryRequest) {
@@ -186,9 +188,6 @@ class PouchDb extends HTMLElement {
         var dbType = "xapistatements";
         break;
     }
-
-    var remoteCouch = false;
-    ///var remoteCouch = 'http://35.164.8.64:3000/todos';
 
     //ADD SINGLE-QUIZ QUERY
 

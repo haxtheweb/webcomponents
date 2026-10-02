@@ -93,9 +93,14 @@ describe('product-banner', () => {
     expect(
       el.shadowRoot.querySelector('.image_wrap').getAttribute('style'),
     ).to.include(DATA_IMAGE)
-    expect(el.shadowRoot.querySelector('.image_wrap').getAttribute('alt')).to.equal(
-      'Banner image',
-    )
+    // a11y: the CSS background image is exposed to AT through role/aria-label
+    // on the div (alt on a div was a no-op; the decorative logo img keeps
+    // alt="")
+    const imageWrap = el.shadowRoot.querySelector('.image_wrap')
+    expect(imageWrap.getAttribute('role')).to.equal('img')
+    expect(imageWrap.getAttribute('aria-label')).to.equal('Banner image')
+    expect(imageWrap.getAttribute('alt')).to.equal(null)
+    expect(logoImg.getAttribute('alt')).to.equal('')
   })
 
   it('omits the text blocks when unset', async () => {
@@ -104,6 +109,10 @@ describe('product-banner', () => {
     expect(el.shadowRoot.querySelector('.image-text')).to.equal(null)
     expect(el.shadowRoot.querySelector('.company_name')).to.equal(null)
     expect(el.shadowRoot.querySelector('.logo')).to.equal(null)
+    // decorative default: with no alt the wrap carries no role/aria-label
+    const imageWrap = el.shadowRoot.querySelector('.image_wrap')
+    expect(imageWrap.getAttribute('role')).to.equal(null)
+    expect(imageWrap.getAttribute('aria-label')).to.equal(null)
   })
 
   it('defines the element with defaults', () => {

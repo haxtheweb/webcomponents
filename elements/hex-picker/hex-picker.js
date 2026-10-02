@@ -103,7 +103,11 @@ class HexPicker extends LitElement {
 
         .color-square {
           background-color: #000000ff;
-          border: 1px dotted black;
+          border: 1px dotted
+            light-dark(
+              var(--ddd-theme-default-coalyGray, black),
+              var(--ddd-theme-default-limestoneGray, white)
+            );
           width: var(--color-picker-square-width, 15px);
           height: var(--color-picker-square-height, 15px);
           margin-left: -35px;
@@ -132,7 +136,11 @@ class HexPicker extends LitElement {
           width: var(--color-picker-width);
           height: var(--color-picker-lg-block-height, 100px);
           background-color: #000000ff;
-          border: 1px dotted black;
+          border: 1px dotted
+            light-dark(
+              var(--ddd-theme-default-coalyGray, black),
+              var(--ddd-theme-default-limestoneGray, white)
+            );
           border-radius: 2px;
         }
       `,
@@ -242,17 +250,17 @@ class HexPicker extends LitElement {
   _hexToRgb(hex) {
     if (hex.length === 4) {
       return {
-        r: parseInt(hex[1] + "F", 16),
-        g: parseInt(hex[2] + "F", 16),
-        b: parseInt(hex[3] + "F", 16),
+        r: parseInt(hex[1] + hex[1], 16),
+        g: parseInt(hex[2] + hex[2], 16),
+        b: parseInt(hex[3] + hex[3], 16),
         o: 0,
       };
     } else if (hex.length === 5) {
       return {
-        r: parseInt(hex[1] + "F", 16),
-        g: parseInt(hex[2] + "F", 16),
-        b: parseInt(hex[3] + "F", 16),
-        o: parseInt(hex[4] + "F", 16),
+        r: parseInt(hex[1] + hex[1], 16),
+        g: parseInt(hex[2] + hex[2], 16),
+        b: parseInt(hex[3] + hex[3], 16),
+        o: parseInt(hex[4] + hex[4], 16),
       };
     } else if (hex.length === 7) {
       return {
@@ -297,6 +305,9 @@ class HexPicker extends LitElement {
     }
 
     let computedHex = this._computeHex();
+    // keep the reactive value property (and its reflected attribute) fresh
+    // so value-changed consumers read the computed hex via detail.value
+    this.value = computedHex;
     colorSquare.style.backgroundColor = computedHex;
     inputLabel.value = computedHex;
     if (this.largeDisplay) {

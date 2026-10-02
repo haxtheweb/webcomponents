@@ -157,6 +157,50 @@ describe('star-rating behavior', () => {
     expect(clickEvent.cancelable).to.equal(true)
   })
 
+  it('gives interactive stars value-bearing labels and group semantics', async () => {
+    const el = await fixture(
+      html`<star-rating interactive score="60" possible="100"></star-rating>`,
+    )
+    await el.updateComplete
+    // _calPercent settles in updated() on a chained second update
+    await el.updateComplete
+    // role=group (not radiogroup): radiogroup would require role=radio
+    // children, and role=radio on the simple-icon-button host trips axe
+    // nested-interactive because its internal native button stays
+    // focusable; group + labeled buttons + aria-current is the axe-clean
+    // equivalent until simple-icon-button exposes role pass-through
+    const stars = el.shadowRoot.querySelector('.stars')
+    expect(stars.getAttribute('role')).to.equal('group')
+    expect(stars.getAttribute('aria-label')).to.equal('Star rating')
+    const buttons = [...el.shadowRoot.querySelectorAll('simple-icon-button')]
+    expect(buttons.length).to.equal(5)
+    // value-bearing labels replace the generic icon-derived 'star' names
+    expect(buttons.map((b) => b.getAttribute('label'))).to.deep.equal([
+      'Rate 1 of 5',
+      'Rate 2 of 5',
+      'Rate 3 of 5',
+      'Rate 4 of 5',
+      'Rate 5 of 5',
+    ])
+    buttons.forEach((b) => {
+      expect(b.getAttribute('aria-label')).to.equal(b.getAttribute('label'))
+    })
+    // score 60/100 -> 3 of 5 stars carries aria-current
+    expect(buttons.map((b) => b.getAttribute('aria-current'))).to.deep.equal([
+      null,
+      null,
+      'true',
+      null,
+      null,
+    ])
+    // display mode keeps no group semantics
+    const display = await fixture(html`<star-rating></star-rating>`)
+    await display.updateComplete
+    const displayStars = display.shadowRoot.querySelector('.stars')
+    expect(displayStars.getAttribute('role')).to.equal(null)
+    expect(displayStars.getAttribute('aria-label')).to.equal(null)
+  })
+
   it('renders OER schema metadata in rubric scale mode', async () => {
     const el = await fixture(
       html`<star-rating

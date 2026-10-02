@@ -197,8 +197,9 @@ globalThis.ResponsiveUtility.setSize = (detail, width = 0) => {
     size = "xl";
   }
   width = Math.round(width);
-  if (!el.getAttribute(custom) || width !== el.getAttribute(custom))
-    el.setAttribute(custom, width);
-  if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
-    el.setAttribute(attr, size);
+  // only write an attribute on a real change: the old loose comparison of
+  // the rounded number against the attribute string was always unequal, so
+  // every resize re-set both attributes and re-fired attribute changes
+  if (el.getAttribute(custom) !== `${width}`) el.setAttribute(custom, width);
+  if (el.getAttribute(attr) !== size) el.setAttribute(attr, size);
 };

@@ -7,7 +7,12 @@ import '../haxor-slevin.js'
 // (see hax-body/test/hax-store.test.js and collection-list tests); no
 // real sites or networks are loaded.
 
-describe('HaxorSlevin theme', () => {
+describe('HaxorSlevin theme', function () {
+  // the suite fixtures a full site theme per test with deliberate 1000ms+
+  // settle timers (firstUpdated dynamic imports, deferred pageAllowed,
+  // anchor targeting); the mocha 2s default times the a11y audit out
+  // under load, so give the suite real headroom
+  this.timeout(10000)
   let element
   let savedManifest
   let savedActiveId

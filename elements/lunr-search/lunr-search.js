@@ -23,20 +23,41 @@ class LunrSearch extends LitElement {
         :host([hidden]) {
           display: none;
         }
+        .result-title {
+          font-weight: var(--ddd-font-weight-bold, bold);
+        }
       `,
     ];
   }
 
   // render function
   render() {
-    return html` ${this.demo && this.results
-        ? html`${this.results.map(
-            (item) =>
-              html`<h2>${item.title}</h2>
-                <p>${item.description}</p>`,
-          )}`
+    // demo results render as a list with aria-live for result updates;
+    // no heading-per-result (heading hierarchy) and missing titles are
+    // guarded so no empty headings render (haxtheweb/issues#3102)
+    return html`
+      ${this.demo
+        ? html`<div class="results" aria-live="polite">
+            ${this.results && this.results.length > 0
+              ? html`<ul aria-label="Search results">
+                  ${this.results.map(
+                    (item) => html`<li>
+                      ${item && item.title
+                        ? html`<span class="result-title"
+                            >${item.title}</span
+                          >`
+                        : ``}
+                      ${item && item.description
+                        ? html`<p>${item.description}</p>`
+                        : ``}
+                    </li>`,
+                  )}
+                </ul>`
+              : ``}
+          </div>`
         : ``}
-      <slot></slot>`;
+      <slot></slot>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -238,6 +259,12 @@ class LunrSearch extends LitElement {
      @return {Array} The filtered data.
     */
   searched(data, search, index, minScore, limit) {
+    // an explicit empty-string search has no results but must report
+    // [] rather than undefined; null/undefined search still falls
+    // through to the guard below (haxtheweb/issues#3102)
+    if (data && index && "" + search === "") {
+      return [];
+    }
     if (data && index && search) {
       var results = [];
       if ("" + search !== "") {
@@ -279,6 +306,12 @@ class LunrSearch extends LitElement {
       if (Array.isArray(data) && data.length > 0) {
         if (Array.isArray(fields) && fields.length > 0) {
           return lunr(function () {
+            // remove the stop word filter BEFORE add() so documents are
+            // indexed with stop words intact, matching the queries that
+            // keep them (haxtheweb/issues#3102)
+            if (noStopWords) {
+              this.pipeline.remove(lunr.stopWordFilter);
+            }
             for (var i = 0; i < fields.length; i++) {
               if (fields[i].charAt(0) === fields[i].charAt(0).toUpperCase()) {
                 this.field(fields[i], { boost: 10 });
@@ -287,7 +320,15 @@ class LunrSearch extends LitElement {
               }
             }
             for (var i = 0; i < data.length; i++) {
-              var toIndex = { id: i };
+              // index under the data's own id when present so
+              // searched() matches refs against j.id
+              // (haxtheweb/issues#3102)
+              var toIndex = {
+                id:
+                  data[i].id !== undefined && data[i].id !== null
+                    ? data[i].id
+                    : i,
+              };
               for (var f = 0; f < fields.length; f++) {
                 if (
                   data[i].hasOwnProperty(fields[f]) &&
@@ -304,9 +345,6 @@ class LunrSearch extends LitElement {
               }
               this.add(toIndex);
             }
-            if (noStopWords) {
-              this.pipeline.remove(lunr.stopWordFilter);
-            }
           });
         } else {
           // find fields
@@ -314,6 +352,11 @@ class LunrSearch extends LitElement {
           var fields = [];
           var ddup = {};
           return lunr(function () {
+            // remove the stop word filter BEFORE add() (see explicit
+            // fields branch, haxtheweb/issues#3102)
+            if (noStopWords) {
+              this.pipeline.remove(lunr.stopWordFilter);
+            }
             for (
               var indexOfData = 0;
               indexOfData < data.length;
@@ -356,9 +399,6 @@ class LunrSearch extends LitElement {
                 }
               }
               this.add(toIndex);
-            }
-            if (noStopWords) {
-              this.pipeline.remove(lunr.stopWordFilter);
             }
           });
         }

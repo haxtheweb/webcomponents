@@ -24,17 +24,20 @@ export class UserActionBroker {
    * Fire the action for the user engagement broker.
    */
   fire(eventName, eventType, details, context, demo = false) {
-    details.eventType = eventType;
+    // issues#3102 #53: copy the details into a fresh, normalized object
+    // instead of mutating the incoming event/object (eventType used to be
+    // written directly onto the caller's DOM event).
+    const normalized = Object.assign({}, details, { eventType: eventType });
     context.dispatchEvent(
       new CustomEvent(eventName, {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: details,
+        detail: normalized,
       }),
     );
     if (demo) {
-      context.innerHTML = `<pre>${JSON.stringify(details, null, 2)}</pre>`;
+      context.innerHTML = `<pre>${JSON.stringify(normalized, null, 2)}</pre>`;
     }
   }
 }

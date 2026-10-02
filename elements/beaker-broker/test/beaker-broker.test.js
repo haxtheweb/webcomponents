@@ -73,14 +73,17 @@ describe('beaker-broker', () => {
     expect(el.datUrl).to.equal(globalThis.location.host)
   })
 
-  it('renders a slot with a block display host style', async () => {
+  it('renders a slot and applies host styles via constructable stylesheets', async () => {
     const el = await fixture(html`<beaker-broker></beaker-broker>`)
     await el.updateComplete
     expect(el.shadowRoot.querySelector('slot')).to.exist
-    const style = el.shadowRoot.querySelector('style')
-    expect(style).to.exist
-    expect(style.textContent).to.include(':host')
-    expect(style.textContent).to.include('display: block')
+    // FIXED (issue #3102 DDD note): the inline <style> moved out of the
+    // template into static constructable styles
+    expect(el.shadowRoot.querySelector('style')).to.equal(null)
+    expect(el.shadowRoot.adoptedStyleSheets.length).to.be.greaterThan(0)
+    const cssText = el.constructor.styles[0].cssText
+    expect(cssText).to.include(':host')
+    expect(cssText).to.include('display: block')
   })
 
   it('warns in firstUpdated when DatArchive is unavailable', async () => {
@@ -121,15 +124,11 @@ describe('beaker-broker', () => {
     }
   })
 
-  // BUG beaker-broker.js:114 - when DatArchive exists, _datUrlChanged
-  // assigns the reactive `archive` property from inside updated(), which
-  // schedules another update while the current update is completing. Lit
-  // flags this with the change-in-update dev warning (observed in a test
-  // run; lit dedupes that warning, so it is not asserted directly) and it
-  // burns an extra render pass on every datUrl change. The double update is
-  // asserted deterministically below; the fix is to move the assignment to
-  // willUpdate or make the archive field non-reactive.
-  it('BUG: creating the archive inside updated() schedules a second reactive update', async () => {
+  // FIXED (issue #3102 bug 39): the archive is now built in willUpdate,
+  // which is synchronous before render, so the reactive assignment batches
+  // into the SAME update pass as the datUrl change. The former redundant
+  // second update (and its Lit change-in-update warning) is gone.
+  it('builds the archive within a single update pass when datUrl changes', async () => {
     globalThis.DatArchive = FakeDatArchive
     const el = await fixture(html`<beaker-broker></beaker-broker>`)
     await el.updateComplete
@@ -142,11 +141,12 @@ describe('beaker-broker', () => {
     el.datUrl = 'dat://double-update'
     await el.updateComplete
     await el.updateComplete
-    // first pass reacts to datUrl; the archive assignment made during that
-    // same updated() pass forces a second, redundant update pass
-    expect(updateKeys.length).to.be.greaterThan(1)
+    // one pass only, carrying BOTH the datUrl change and the archive that
+    // willUpdate assigned during that same cycle
+    expect(updateKeys.length).to.equal(1)
     expect(updateKeys[0]).to.include('datUrl')
-    expect(updateKeys.find((keys) => keys.includes('archive'))).to.exist
+    expect(updateKeys[0]).to.include('archive')
+    expect(el.archive.url).to.equal('dat://double-update')
   })
 
   it('builds a DatArchive instance when datUrl changes and DatArchive exists', async () => {

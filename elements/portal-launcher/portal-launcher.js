@@ -64,7 +64,7 @@ class PortalLauncher extends HTMLElement {
 
     if (target && target.getAttribute("href") != null) {
       // progressive enhancement, if this class exists, can the link click
-      if ("HTMLPortalElement" in window) {
+      if ("HTMLPortalElement" in globalThis) {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
@@ -117,7 +117,11 @@ class PortalLauncher extends HTMLElement {
             portal.activate();
           }
         });
-        globalThis.document.body.appendChild(style, portal);
+        // append both nodes: appendChild ignores extra arguments, so
+        // passing portal as a second argument left the created <portal>
+        // detached and the progressive enhancement could never display
+        globalThis.document.body.appendChild(style);
+        globalThis.document.body.appendChild(portal);
         // Waiting for the page to load.
         // using setTimeout is a suboptimal way and it's best to fade-in
         // when receiving a load complete message from the portal via postMessage

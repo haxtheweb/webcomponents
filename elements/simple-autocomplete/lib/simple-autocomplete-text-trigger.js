@@ -188,15 +188,28 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
     // update value in the autocomplete to match our target value the +1 ensures we don't pick up the trigger
     if (this._triggerStart != this._triggerEnd) {
       this.$autocomplete.opened = true;
-      // delay so the range can be set
-      setTimeout(() => {
-        this.$autocomplete.setValue(
-          this.getTargetValue().substring(this._triggerStart, this._triggerEnd),
-        );
+      // delay so the range can be set; store the handle so the Space branch
+      // below can cancel a still-pending setValue call
+      this._setValueTimeout = setTimeout(() => {
+        // guard the offsets in case the Space branch nulled them between
+        // scheduling and firing; substring(null, null) yields '' which would
+        // re-open the menu and match every item right after Space closed it
+        if (this._triggerStart != null && this._triggerEnd != null) {
+          this.$autocomplete.setValue(
+            this.getTargetValue().substring(
+              this._triggerStart,
+              this._triggerEnd,
+            ),
+          );
+        }
       }, 1);
     }
     // if we just got a space, it's time to cut the value
     if (e.code === "Space") {
+      if (this._setValueTimeout) {
+        clearTimeout(this._setValueTimeout);
+        this._setValueTimeout = null;
+      }
       this._triggerStart = null;
       this._triggerEnd = null;
       this.$autocomplete.opened = false;

@@ -115,11 +115,17 @@ export class SimplePager extends I18NMixin(DDD) {
           cursor: pointer;
           line-height: 1;
         }
-        .page-btn:hover,
+        .page-btn:hover {
+          border-color: var(--ddd-theme-default-navy);
+          color: var(--ddd-theme-default-navy);
+        }
+        /* a border-color change alone is a borderline focus indicator;
+           restore the canonical DDD focus ring for keyboard focus */
         .page-btn:focus-visible {
           border-color: var(--ddd-theme-default-navy);
           color: var(--ddd-theme-default-navy);
-          outline: none;
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
         .page-btn[aria-current="page"] {
           background: light-dark(

@@ -31,7 +31,9 @@ class UserAction extends HTMLElement {
     this.track = "visibility";
     this.eventname = "user-engagement";
     this.every = false;
-    this.demo = false;
+    // issues#3102 #24: demo is attribute-derived (hasAttribute getter with a
+    // symmetric setter), so there is no constructor default: assigning false
+    // here would remove a parse-time demo attribute during element upgrade.
     this.visiblelimit = 0.5;
     this.observer = null;
     this.__boundIntersectionHandler =
@@ -50,6 +52,12 @@ class UserAction extends HTMLElement {
   _setTracking(track) {
     this._clearTracking();
     if (!track) {
+      return;
+    }
+    if (!UABroker.valid(track)) {
+      // issues#3102 #53: validate track strings BEFORE installing listeners
+      // so typos are caught at install time instead of only at fire time.
+      console.warn(track + " was not valid");
       return;
     }
     switch (track) {
@@ -86,11 +94,16 @@ class UserAction extends HTMLElement {
   }
 
   get demo() {
-    return this.getAttribute("demo");
+    // issues#3102 #24: use hasAttribute so a bare boolean demo attribute
+    // activates demo output; getAttribute returns "" for a bare attribute,
+    // which is falsy, so only demo="true" ever worked before.
+    return this.hasAttribute("demo");
   }
   set demo(val) {
     if (val) {
       this.setAttribute("demo", val);
+    } else {
+      this.removeAttribute("demo");
     }
   }
   /**
@@ -139,7 +152,16 @@ class UserAction extends HTMLElement {
       (!this.fired || this.every) &&
       UABroker.valid(this.track)
     ) {
-      UABroker.fire(this.eventname, this.track, e, this, this.demo);
+      // issues#3102 #25: normalize the detail to ONE shape across tracking
+      // modes. Visibility events pass { detail: "visible" } while DOM-event
+      // tracking used to pass the raw event object itself as the detail;
+      // wrap raw events so both fire detail as
+      // { detail: <payload>, eventType: <track> }.
+      let details = e;
+      if (e instanceof globalThis.Event) {
+        details = { detail: e };
+      }
+      UABroker.fire(this.eventname, this.track, details, this, this.demo);
       this.fired = true;
     } else if (!UABroker.valid(this.track)) {
       console.warn(this.track + " was not valid");
