@@ -34,6 +34,12 @@ export default {
         '**/__wds-outside-root__/**',
         '**/node_modules/**',
         '**/lib/*/dist/**',
+        // lib/vmsg-fork.js (voice-recorder) is a vendored fork whose
+        // inlineWorker body is stringified into a Blob Worker, so its
+        // statements are unreachable to coverage instrumentation by
+        // construction (159 of them); it is upstream-style code, not the
+        // element's own source (haxtheweb/issues#3101)
+        '**/lib/vmsg-fork.js',
       ],
     },
     testRunnerHtml: testFramework =>
