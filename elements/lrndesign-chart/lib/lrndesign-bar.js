@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { LrndesignChart } from "../lrndesign-chart.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `lrndesign-bar`
@@ -12,12 +12,12 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  *
  * @element lrndesign-bar
  * @extends LrndesignChart
- * @extends SimpleColors
+ * @extends DDD
  * @see ../lrndesign-chart.js
  * @demo ./demo/bar.html
  *
  */
-class LrndesignBar extends LrndesignChart(SimpleColors) {
+class LrndesignBar extends LrndesignChart(DDD) {
   constructor() {
     super();
     this.setProperties();

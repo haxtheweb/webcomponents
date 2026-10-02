@@ -4,14 +4,19 @@
  */
 import { LitElement, html, css } from "lit";
 import { ChartistRenderSuper } from "@haxtheweb/chartist-render/chartist-render.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
  *
+ * Neutral surfaces (background, text, grid, inside labels) use DDD tokens.
+ * The chartist series palettes keep referencing SimpleColors shade
+ * variables because DDD has no per-hue shade ramps; compose this mixin
+ * onto DDD (or another SimpleColors-styled base) so those variables
+ * resolve in both light and dark themes.
+ *
  * @extends ChartistRenderSuper
  * @see @haxtheweb/chartist-render/chartist-render.js
- * @see @haxtheweb/simple-colors/simple-colors.js
+ * @see @haxtheweb/d-d-d/d-d-d.js
  */
 const LrndesignChart = function (SuperClass) {
   return class extends ChartistRenderSuper(SuperClass) {
@@ -19,11 +24,14 @@ const LrndesignChart = function (SuperClass) {
     static get styles() {
       return [
         super.styles,
-        ...SimpleColors.styles,
         css`
+          /* neutral surfaces use DDD tokens; the chartist series palettes
+             keep SimpleColors shade ramps because DDD has no per-hue
+             shades, and they flip in dark mode through the SimpleColors
+             blocks that ship with the DDD base class */
           :host {
-            background-color: var(--simple-colors-default-theme-grey-1);
-            color: var(--simple-colors-default-theme-grey-12);
+            background-color: var(--ddd-theme-default-white);
+            color: var(--ddd-theme-default-coalyGray);
             --chartist-color-1: var(--simple-colors-default-theme-red-9);
             --chartist-color-2: var(--simple-colors-default-theme-blue-10);
             --chartist-color-3: var(--simple-colors-default-theme-yellow-9);
@@ -45,6 +53,8 @@ const LrndesignChart = function (SuperClass) {
 
           :host([dark]) {
             --chartist-padding: 10px;
+            background-color: var(--ddd-theme-default-black);
+            color: var(--ddd-theme-default-white);
           }
 
           :host([accent-color="red"]) {
@@ -474,18 +484,24 @@ const LrndesignChart = function (SuperClass) {
           #chart,
           ::slotted(table) {
             font-family: sans-serif;
-            --chartist-grid-color: var(--simple-colors-default-theme-grey-6);
-            --chartist-bg-color: var(--simple-colors-default-theme-grey-1);
-            --chartist-text-color: var(--simple-colors-default-theme-grey-12);
+            --chartist-grid-color: var(--ddd-theme-default-limestoneGray);
+            --chartist-bg-color: var(--ddd-theme-default-white);
+            --chartist-text-color: var(--ddd-theme-default-coalyGray);
           }
 
           :host([label-position="inside"]) .ct-label {
-            --chartist-text-color: var(--simple-colors-default-theme-grey-1);
+            --chartist-text-color: var(--ddd-theme-default-white);
           }
 
+          :host([dark]) #chart,
           :host([dark]) ::slotted(table) {
-            --chartist-text-color: var(--simple-colors-default-theme-grey-12);
-            --chartist-grid-color: var(--simple-colors-default-theme-grey-6);
+            --chartist-grid-color: var(--ddd-theme-default-limestoneGray);
+            --chartist-bg-color: var(--ddd-theme-default-black);
+            --chartist-text-color: var(--ddd-theme-default-white);
+          }
+
+          :host([dark][label-position="inside"]) .ct-label {
+            --chartist-text-color: var(--ddd-theme-default-black);
           }
         `,
       ];

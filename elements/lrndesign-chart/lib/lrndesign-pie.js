@@ -4,19 +4,19 @@
  */
 import { LitElement, html, css } from "lit";
 import { LrndesignChart } from "../lrndesign-chart.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `lrndesign-pie`
  * a pie chart
  *
  * @element lrndesign-pie
  * @extends LrndesignChart
- * @extends SimpleColors
+ * @extends DDD
  * @see ../lrndesign-chart.js
  * @demo ./demo/pie.html
  *
  */
-class LrndesignPie extends LrndesignChart(SimpleColors) {
+class LrndesignPie extends LrndesignChart(DDD) {
   constructor() {
     super();
     this.setProperties();
