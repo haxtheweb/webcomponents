@@ -82,6 +82,35 @@ describe('hexagon-loader behavior', () => {
     expect(el.getAttribute('size')).to.equal('large')
     expect(el.getAttribute('color')).to.equal('green')
   })
+  it('builds items in willUpdate without a redundant second update cycle', async () => {
+    // FIXED (haxtheweb/issues#3102 #55): items were built inside updated(),
+    // which scheduled one extra update cycle per itemCount change (including
+    // first render). Now built in willUpdate (place-holder.js precedent), so
+    // a single cycle renders the new hexagons.
+    const el = await fixture(html`<hexagon-loader item-count="3"></hexagon-loader>`)
+    let renderCount = 0
+    const originalRender = el.render
+    el.render = function () {
+      renderCount += 1
+      return originalRender.call(this)
+    }
+    el.itemCount = 5
+    await el.updateComplete
+    await el.updateComplete
+    expect(renderCount).to.equal(1)
+    expect(el.items.length).to.equal(5)
+    expect(el.shadowRoot.querySelectorAll('hex-a-gon').length).to.equal(5)
+  })
+  it('exposes role=status and aria-busy on the host for assistive technology', async () => {
+    // a11y follow-up (haxtheweb/issues#3102): the decorative loader had no
+    // aria-busy/role=status on the host
+    const el = await fixture(html`<hexagon-loader loading></hexagon-loader>`)
+    expect(el.getAttribute('role')).to.equal('status')
+    expect(el.getAttribute('aria-busy')).to.equal('true')
+    el.loading = false
+    await elementUpdated(el)
+    expect(el.getAttribute('aria-busy')).to.equal('false')
+  })
   it('rebuilds items and sets loader height when item-count changes', async () => {
     const el = await fixture(html`<hexagon-loader item-count="3"></hexagon-loader>`)
     expect(el.itemCount).to.equal(3)

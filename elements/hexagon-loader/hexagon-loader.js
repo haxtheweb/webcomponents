@@ -583,34 +583,63 @@ class HexagonLoader extends LitElement {
     this.items = [];
   }
   /**
+   * HTMLElement life cycle - inserted into the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    // decorative loader: expose busy state as a polite live region so
+    // assistive technology can tell when content is loading
+    if (!this.hasAttribute("role")) {
+      this.setAttribute("role", "status");
+    }
+  }
+  /**
+   * LitElement life cycle - before properties change
+   */
+  willUpdate(changedProperties) {
+    // Build the items array and loader height in willUpdate so the reactive
+    // items assignment batches into the current update cycle (same pattern
+    // as place-holder.js). Building items in updated() scheduled a redundant
+    // second update cycle on every itemCount change, including first render.
+    if (changedProperties.has("itemCount")) {
+      let items = [];
+      for (let i = 0; i < this.itemCount; i++) {
+        items.push("");
+      }
+      this.items = items;
+      let ctr = -4,
+        increment = 255 / 7,
+        height = 0,
+        order = 0,
+        rownum = 0,
+        offset = 0;
+      [4, 5, 6, 7, 6, 5, 4].forEach((row, i) => {
+        ctr += row;
+        if (this.itemCount >= ctr) {
+          height = increment * (i + 1);
+          order = this.itemCount - ctr;
+          rownum = i + 1;
+        }
+      });
+      offset = rownum > 3 ? 4 : rownum > 2 ? 3 : rownum > 1 ? 2 : 1;
+      this.style.setProperty("--hexagon-loader-height", `${height}px`);
+    }
+    // mirror the loading state onto aria-busy for the status region
+    if (changedProperties.has("loading")) {
+      if (this.loading) {
+        this.setAttribute("aria-busy", "true");
+      } else {
+        this.setAttribute("aria-busy", "false");
+      }
+    }
+  }
+  /**
    * LitElement life cycle - properties changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "color") {
         this._colorChanged(this[propName], oldValue);
-      }
-      if (propName == "itemCount") {
-        this.items = [];
-        for (let i = 0; i < this[propName]; i++) {
-          this.items.push("");
-        }
-        let ctr = -4,
-          increment = 255 / 7,
-          height = 0,
-          order = 0,
-          rownum = 0,
-          offset = 0;
-        [4, 5, 6, 7, 6, 5, 4].forEach((row, i) => {
-          ctr += row;
-          if (this.itemCount >= ctr) {
-            height = increment * (i + 1);
-            order = this.itemCount - ctr;
-            rownum = i + 1;
-          }
-        });
-        offset = rownum > 3 ? 4 : rownum > 2 ? 3 : rownum > 1 ? 2 : 1;
-        this.style.setProperty("--hexagon-loader-height", `${height}px`);
       }
     });
   }
