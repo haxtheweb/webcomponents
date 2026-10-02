@@ -390,6 +390,15 @@
               }
             },
             {
+              "kind": "method",
+              "name": "focus",
+              "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "properties",
               "static": true,
@@ -500,6 +509,21 @@
             },
             {
               "kind": "field",
+              "name": "noColorize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "attribute": "no-colorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autofocus",
               "privacy": "public",
               "type": {
@@ -534,6 +558,48 @@
               },
               "attribute": "toggled",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonRole",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "attribute": "button-role",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "attribute": "aria-checked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonTabindex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "attribute": "button-tabindex",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -657,6 +723,19 @@
               }
             },
             {
+              "name": "no-colorize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "fieldName": "noColorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
               "name": "label",
               "type": {
                 "text": "string"
@@ -713,6 +792,42 @@
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
               }
+            },
+            {
+              "name": "button-role",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "fieldName": "buttonRole",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "aria-checked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "fieldName": "ariaChecked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "button-tabindex",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "fieldName": "buttonTabindex",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
             }
           ],
           "superclass": {
@@ -755,6 +870,11 @@
               "name": "styles",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)"
             },
             {
               "kind": "field",
@@ -856,6 +976,17 @@
             },
             {
               "kind": "field",
+              "name": "noColorize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "attribute": "no-colorize"
+            },
+            {
+              "kind": "field",
               "name": "autofocus",
               "privacy": "public",
               "type": {
@@ -882,6 +1013,36 @@
               },
               "attribute": "toggled",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "buttonRole",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "attribute": "button-role"
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "attribute": "aria-checked"
+            },
+            {
+              "kind": "field",
+              "name": "buttonTabindex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "attribute": "button-tabindex"
             }
           ],
           "attributes": [
@@ -941,6 +1102,15 @@
               "fieldName": "icon"
             },
             {
+              "name": "no-colorize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "fieldName": "noColorize"
+            },
+            {
               "name": "label",
               "type": {
                 "text": "string"
@@ -977,6 +1147,30 @@
                 "text": "boolean"
               },
               "fieldName": "toggled"
+            },
+            {
+              "name": "button-role",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "fieldName": "buttonRole"
+            },
+            {
+              "name": "aria-checked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "fieldName": "ariaChecked"
+            },
+            {
+              "name": "button-tabindex",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "fieldName": "buttonTabindex"
             }
           ],
           "parameters": [
@@ -1016,6 +1210,15 @@
               "name": "styles",
               "static": true,
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1147,6 +1350,21 @@
             },
             {
               "kind": "field",
+              "name": "noColorize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "attribute": "no-colorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autofocus",
               "privacy": "public",
               "type": {
@@ -1181,6 +1399,48 @@
               },
               "attribute": "toggled",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonRole",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "attribute": "button-role",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "attribute": "aria-checked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonTabindex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "attribute": "button-tabindex",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1284,6 +1544,19 @@
               }
             },
             {
+              "name": "no-colorize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "fieldName": "noColorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
               "name": "label",
               "type": {
                 "text": "string"
@@ -1336,6 +1609,42 @@
                 "text": "boolean"
               },
               "fieldName": "toggled",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "button-role",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "fieldName": "buttonRole",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "aria-checked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "fieldName": "ariaChecked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "button-tabindex",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "fieldName": "buttonTabindex",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1418,6 +1727,15 @@
               "name": "styles",
               "static": true,
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1563,6 +1881,21 @@
             },
             {
               "kind": "field",
+              "name": "noColorize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "attribute": "no-colorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "autofocus",
               "privacy": "public",
               "type": {
@@ -1597,6 +1930,48 @@
               },
               "attribute": "toggled",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonRole",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "attribute": "button-role",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "attribute": "aria-checked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonTabindex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "attribute": "button-tabindex",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1696,6 +2071,19 @@
               }
             },
             {
+              "name": "no-colorize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to disable the contrast-based colorization of the\nnested icon (passes through as the no-colorize attribute)",
+              "default": "false",
+              "fieldName": "noColorize",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
               "name": "label",
               "type": {
                 "text": "string"
@@ -1748,6 +2136,42 @@
                 "text": "boolean"
               },
               "fieldName": "toggled",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "button-role",
+              "type": {
+                "text": "string"
+              },
+              "description": "role forwarded to the internal native button so consumers can\nput widget semantics (e.g. role=\"radio\") on the real interactive\nelement while this host stays a semantic-free wrapper, which\nkeeps axe nested-interactive clean (haxtheweb/issues#3107)",
+              "fieldName": "buttonRole",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "aria-checked",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "aria-checked state forwarded to the internal native button; it\nonly renders when defined so plain button usages are\nunaffected (haxtheweb/issues#3107)",
+              "fieldName": "ariaChecked",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "name": "button-tabindex",
+              "type": {
+                "text": "number"
+              },
+              "description": "tabindex forwarded to the internal native button; it only\nrenders when defined so roving-tabindex widgets can manage\ntheir tab stops through the real button (haxtheweb/issues#3107)",
+              "fieldName": "buttonTabindex",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"

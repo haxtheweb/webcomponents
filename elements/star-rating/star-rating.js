@@ -137,6 +137,12 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         attribute: "rubric-scale-mode",
         reflect: true,
       },
+      /**
+       * 1-based index of the star that currently holds the roving tab
+       * stop of the APG radiogroup; unset follows the checked star
+       * (haxtheweb/issues#3107)
+       */
+      _rovingStar: { type: Number },
     };
   }
 
@@ -161,8 +167,10 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
       >
         <div
           class="stars"
-          role="${this.interactive ? "group" : nothing}"
+          role="${this.interactive ? "radiogroup" : nothing}"
           aria-label="${this.interactive ? "Star rating" : nothing}"
+          @keydown="${this._starsKeydown}"
+          @focusin="${this._starsFocusin}"
         >
           ${this.renderStar(this.numStars, this.interactive)}
         </div>
@@ -171,6 +179,98 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
         </div>
       </div>
     `;
+  }
+  /**
+   * 1-based index of the star that matches the current rating (0 when the
+   * rating rounds to no star); the aria-checked radio of the radiogroup
+   * (haxtheweb/issues#3107)
+   */
+  get _checkedStar() {
+    return Math.round(this.numStars * this._calPercent);
+  }
+  /**
+   * 1-based index of the star that holds the roving tab stop: the focused
+   * star, else the checked star, else the first star
+   * (haxtheweb/issues#3107)
+   */
+  get _tabStopStar() {
+    if (this._rovingStar) {
+      return this._rovingStar;
+    }
+    return this._checkedStar > 0 ? this._checkedStar : 1;
+  }
+  /**
+   * the interactive star hosts, in order
+   */
+  __starButtons() {
+    return this.shadowRoot
+      ? [...this.shadowRoot.querySelectorAll("simple-icon-button.star")]
+      : [];
+  }
+  /**
+   * the roving tab stop follows whichever star holds focus so the tab
+   * order matches where the user is interacting (clicks focus the inner
+   * button, so pointer selection keeps its tab stop too)
+   * (haxtheweb/issues#3107)
+   */
+  _starsFocusin(e) {
+    if (!this.interactive) {
+      return;
+    }
+    const idx = this.__starButtons().indexOf(e.target);
+    if (idx > -1) {
+      this._rovingStar = idx + 1;
+    }
+  }
+  /**
+   * APG rating radiogroup keys (haxtheweb/issues#3107): ArrowRight/
+   * ArrowUp and ArrowLeft/ArrowDown move focus to the next/previous star
+   * with wraparound AND select it; Home/End move focus to the first/last
+   * star without selecting.
+   */
+  _starsKeydown(e) {
+    if (!this.interactive) {
+      return;
+    }
+    const stars = this.__starButtons();
+    if (
+      stars.length === 0 ||
+      ![
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowLeft",
+        "ArrowDown",
+        "Home",
+        "End",
+      ].includes(e.key)
+    ) {
+      return;
+    }
+    e.preventDefault();
+    // star-rating's own shadowRoot.activeElement is the focused star
+    // (document.activeElement would retarget to this host instead)
+    const current = Math.max(0, stars.indexOf(this.shadowRoot.activeElement));
+    let next;
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowUp":
+        next = (current + 1) % stars.length;
+        break;
+      case "ArrowLeft":
+      case "ArrowDown":
+        next = (current - 1 + stars.length) % stars.length;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = stars.length - 1;
+        break;
+    }
+    stars[next].focus();
+    if (e.key !== "Home" && e.key !== "End") {
+      this._selectStar(next + 1);
+    }
   }
 
   renderStar(amount, interactive) {
@@ -192,6 +292,13 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
       }
       // interactive so it's a button
       if (interactive) {
+        const value = count + 1;
+        // haxtheweb/issues#3107: true APG radiogroup semantics. The role
+        // lands on simple-icon-button's internal native button via the
+        // role pass-through so the star hosts stay semantic-free wrappers
+        // (axe nested-interactive stays clean); label supplies the inner
+        // button's accessible name, aria-checked marks the rating's star,
+        // and the roving tab stop rides the inner button's tabindex
         content.push(
           html`<simple-icon-button
             @click="${this.interactiveEvent}"
@@ -200,22 +307,20 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
             ?dark="${this.dark}"
             contrast="${this.contrast}"
             class="star"
-            data-value="${Number(count + 1)}"
-            label="Rate ${count + 1} of ${amount}"
-            aria-label="Rate ${count + 1} of ${amount}"
-            aria-current="${count + 1 ===
-            Math.round(amount * this._calPercent)
-              ? "true"
-              : nothing}"
+            data-value="${value}"
+            label="Rate ${value} of ${amount}"
+            .buttonRole="${"radio"}"
+            .ariaChecked="${value === this._checkedStar}"
+            .buttonTabindex="${value === this._tabStopStar ? 0 : -1}"
             typeof="${this.rubricScaleMode ? "oer:RubricLevel" : nothing}"
             property="${this.rubricScaleMode ? "oer:hasLevel" : nothing}"
             >${this.rubricScaleMode
               ? html`<meta
                     property="oer:levelOrdinal"
-                    content="${count + 1}"
+                    content="${value}"
                   /><meta
                     property="oer:levelPoints"
-                    content="${this._rubricLevelPoints(count + 1)}"
+                    content="${this._rubricLevelPoints(value)}"
                   />`
               : nothing}</simple-icon-button
           >`,
@@ -247,16 +352,23 @@ class StarRating extends SchemaBehaviors(SimpleColors) {
     return content;
   }
 
-  interactiveEvent(e) {
+  /**
+   * dispatches the value selection; shared by pointer clicks and the
+   * APG arrow-key selects (haxtheweb/issues#3107)
+   */
+  _selectStar(value) {
     this.dispatchEvent(
       new CustomEvent("star-rating-click", {
         bubbles: true,
         cancelable: true,
         detail: {
-          value: e.target.getAttribute("data-value"),
+          value: String(value),
         },
       }),
     );
+  }
+  interactiveEvent(e) {
+    this._selectStar(e.target.getAttribute("data-value"));
   }
   /**
    * Calculate the points assigned to a given rubric level (1-indexed)

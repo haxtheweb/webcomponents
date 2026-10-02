@@ -36,6 +36,16 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
             : "false"
           : nothing}"
         aria-controls="${this.controls || nothing}"
+        role="${this.buttonRole || nothing}"
+        aria-checked="${this.ariaChecked === undefined
+          ? nothing
+          : this.ariaChecked
+            ? "true"
+            : "false"}"
+        tabindex="${this.buttonTabindex === undefined ||
+        this.buttonTabindex === null
+          ? nothing
+          : this.buttonTabindex}"
         part="button"
         ?disabled="${this.disabled}"
         form="${this.form}"

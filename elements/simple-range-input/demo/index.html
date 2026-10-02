@@ -18,6 +18,8 @@
       <h3>Basic simple-range-input demo</h3>
       <demo-snippet>
         <template>
+          <!-- #3107: the bare default now resolves the DDD token fallbacks
+             (the DDD base class registers the design system) -->
           <simple-range-input id="test"></simple-range-input>
           <simple-range-input accent-color="blue"style="--simple-range-input-track-height:15px"></simple-range-input>
           <simple-range-input accent-color="orange" dark style="--simple-range-input-pin-height:10px;--simple-range-input-track-height:2px"></simple-range-input>

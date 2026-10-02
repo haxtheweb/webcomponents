@@ -13,6 +13,20 @@ describe("social-share-link test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  // haxtheweb/issues#3107: button-style rendering with the DDD base class
+  it("passes the a11y audit in button style", async () => {
+    const el = await fixture(html`
+      <social-share-link
+        button-style
+        type="Twitter"
+        message="hello"
+        url="https://x.com"
+      ></social-share-link>
+    `);
+    await el.updateComplete;
+    await expect(el).shadowDom.to.be.accessible();
+  });
 });
 
 /*

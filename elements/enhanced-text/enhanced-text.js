@@ -51,7 +51,17 @@ class EnhancedText extends LitElement {
   // apply terms from whatever came back
   applyTermFromList(data) {
     if (data && data.status && data.data && data.data.length) {
-      import("@haxtheweb/vocab-term/vocab-term.js");
+      // haxtheweb/issues#3107: the dynamic vocab-term import used to be
+      // fire-and-forget, so a module-graph failure (the round-10 swarm saw
+      // an unhandled rejection for a bare-lit ifDefined import in this
+      // graph) leaked as console noise; a failed load now degrades to the
+      // un-wrapped text instead of an unhandled promise rejection
+      import("@haxtheweb/vocab-term/vocab-term.js").catch((e) => {
+        console.warn(
+          "vocab-term failed to load; skipping glossary enhancement",
+          e,
+        );
+      });
       // loop through and apply terms that were found w/ the vocab-term element
       // get all text nodes internally
       let textNodes = [...this.childNodes] // has childNodes inside, including text ones
@@ -272,7 +282,8 @@ class EnhancedText extends LitElement {
             box-shadow:
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
-              2.5em 0em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              2.5em 0em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
@@ -284,7 +295,8 @@ class EnhancedText extends LitElement {
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
-              1.75em 1.75em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              1.75em 1.75em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
@@ -296,7 +308,8 @@ class EnhancedText extends LitElement {
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
-              0em 2.5em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              0em 2.5em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
@@ -332,7 +345,8 @@ class EnhancedText extends LitElement {
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em -1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color));
+              -1.8em -1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color));
           }
         }
         @keyframes load5 {
@@ -363,7 +377,8 @@ class EnhancedText extends LitElement {
             box-shadow:
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7),
-              2.5em 0em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              2.5em 0em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
@@ -375,7 +390,8 @@ class EnhancedText extends LitElement {
               0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.7),
-              1.75em 1.75em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              1.75em 1.75em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
@@ -387,7 +403,8 @@ class EnhancedText extends LitElement {
               1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
               2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
               1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
-              0em 2.5em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color)),
+              0em 2.5em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color)),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
@@ -423,7 +440,8 @@ class EnhancedText extends LitElement {
               0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
               -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
               -2.6em 0em 0 0em rgba(255, 255, 255, 0.7),
-              -1.8em -1.8em 0 0em var(--enhanced-text-color, var(--enhanced-text-loader-color));
+              -1.8em -1.8em 0 0em
+                var(--enhanced-text-color, var(--enhanced-text-loader-color));
           }
         }
       `,

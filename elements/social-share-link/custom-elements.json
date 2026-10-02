@@ -12,6 +12,16 @@
           "name": "SocialShareLink",
           "members": [
             {
+              "kind": "method",
+              "name": "_clickShare",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "issues#3102 #21: a disabled share link (nothing to share) must not\nnavigate; the disabled attribute itself lands on the host via the\nreflected disabled property so :host([disabled]) styling applies."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -113,6 +123,30 @@
               "description": "display link as a button",
               "default": "false",
               "attribute": "button-style",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "render in dark mode; forwarded to the icon. issues#3102 DDD:\nthis was undeclared, which made the ?dark render binding dead\nand left the element unable to respond to dark mode.",
+              "default": "false",
+              "attribute": "dark",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "true when there is nothing to share (no usable href). Reflected\nonto the host so the :host([disabled]) styling is reachable\n(issues#3102 #21).",
+              "default": "false",
+              "attribute": "disabled",
               "reflects": true
             },
             {
@@ -232,6 +266,24 @@
               "fieldName": "buttonStyle"
             },
             {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "render in dark mode; forwarded to the icon. issues#3102 DDD:\nthis was undeclared, which made the ?dark render binding dead\nand left the element unable to respond to dark mode.",
+              "default": "false",
+              "fieldName": "dark"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "true when there is nothing to share (no usable href). Reflected\nonto the host so the :host([disabled]) styling is reachable\n(issues#3102 #21).",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
               "name": "image",
               "type": {
                 "text": "string"
@@ -318,8 +370,8 @@
             }
           ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           },
           "tagName": "social-share-link",
           "customElement": true

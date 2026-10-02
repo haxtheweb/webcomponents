@@ -113,6 +113,20 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       ];
     }
 
+    /**
+     * Delegates focus to the internal native button so consumers (e.g.
+     * roving-tabindex widgets) can move focus without reaching into this
+     * element's shadow root (haxtheweb/issues#3107)
+     */
+    focus() {
+      const button = this.shadowRoot && this.shadowRoot.querySelector("button");
+      if (button) {
+        button.focus();
+      } else if (super.focus) {
+        super.focus();
+      }
+    }
+
     // render function
     render() {
       return html`
@@ -125,6 +139,16 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
               : "false"
             : nothing}"
           aria-controls="${this.controls || nothing}"
+          role="${this.buttonRole || nothing}"
+          aria-checked="${this.ariaChecked === undefined
+            ? nothing
+            : this.ariaChecked
+              ? "true"
+              : "false"}"
+          tabindex="${this.buttonTabindex === undefined ||
+          this.buttonTabindex === null
+            ? nothing
+            : this.buttonTabindex}"
           part="button"
           ?disabled="${this.disabled}"
           form="${this.form}"
@@ -197,6 +221,34 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         toggled: {
           type: Boolean,
           reflect: true,
+        },
+        /**
+         * role forwarded to the internal native button so consumers can
+         * put widget semantics (e.g. role="radio") on the real interactive
+         * element while this host stays a semantic-free wrapper, which
+         * keeps axe nested-interactive clean (haxtheweb/issues#3107)
+         */
+        buttonRole: {
+          attribute: "button-role",
+          type: String,
+        },
+        /**
+         * aria-checked state forwarded to the internal native button; it
+         * only renders when defined so plain button usages are
+         * unaffected (haxtheweb/issues#3107)
+         */
+        ariaChecked: {
+          attribute: "aria-checked",
+          type: Boolean,
+        },
+        /**
+         * tabindex forwarded to the internal native button; it only
+         * renders when defined so roving-tabindex widgets can manage
+         * their tab stops through the real button (haxtheweb/issues#3107)
+         */
+        buttonTabindex: {
+          attribute: "button-tabindex",
+          type: Number,
         },
       };
     }

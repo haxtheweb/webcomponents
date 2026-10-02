@@ -27,16 +27,12 @@ class HaxCloud extends DDD {
     this.windowControllers = new AbortController();
     this.fileRoot = "";
     this.fileObjects = [];
-    if (!globalThis.__haxLogoFontLoaded) {
-      let link = globalThis.document.createElement("link");
-      link.setAttribute(
-        "href",
-        "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
-      );
-      link.setAttribute("rel", "stylesheet");
-      globalThis.document.head.appendChild(link);
-      globalThis.__haxLogoFontLoaded = true;
-    }
+    // on-prem (haxtheweb/issues#3107, refs the #3102 network flag): the
+    // constructor no longer injects the remote fonts.googleapis.com
+    // "Press Start 2P" stylesheet, so first instantiation never hits the
+    // network. No hax-cloud style ever referenced the font (the injection
+    // was dead code inherited from hax-logo), so nothing changes visually;
+    // the DDD design system still registers its own fonts separately.
     globalThis.addEventListener(
       "manifest-changed",
       this.loadLocalHax.bind(this),
@@ -57,10 +53,11 @@ class HaxCloud extends DDD {
     return html`
       <style>
         simple-icon-button-lite {
-          border: 2px solid light-dark(
-            var(--ddd-theme-default-coalyGray, #262626),
-            var(--ddd-theme-default-white, #ffffff)
-          );
+          border: 2px solid
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            );
           border-radius: 0;
           display: inline-flex;
           padding: 16px;
@@ -100,10 +97,11 @@ class HaxCloud extends DDD {
           justify-content: center;
         }
         .step {
-          border: 2px solid light-dark(
-            var(--ddd-theme-default-coalyGray, #262626),
-            var(--ddd-theme-default-white, #ffffff)
-          );
+          border: 2px solid
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            );
           padding: 16px;
           font-size: 32px;
           display: inline-block;
