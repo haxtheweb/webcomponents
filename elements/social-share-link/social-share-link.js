@@ -157,7 +157,7 @@ class SocialShareLink extends LitElement {
    * reflected disabled property so :host([disabled]) styling applies.
    */
   _clickShare(e) {
-    if (!this.__href) {
+    if (this.disabled || !this.__href) {
       e.preventDefault();
       e.stopPropagation();
     }
