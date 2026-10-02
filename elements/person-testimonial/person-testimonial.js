@@ -13,14 +13,30 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
     return [
       super.styles,
       css`
+        /* greys migrate to DDD light-dark pairs; the accentColor-driven
+           accent shade keeps SimpleColors (DDD lacks that shade mechanism)
+           with a DDD primary fallback */
         :host {
           display: block;
-          --person-testimonial-font-family: sans-serif;
-          --person-testimonial-bg: var(--simple-colors-default-theme-grey-1);
-          --person-testimonial-color: var(
-            --simple-colors-default-theme-accent-7
+          --person-testimonial-font-family: var(--ddd-font-primary);
+          --person-testimonial-bg: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
           );
-          --person-testimonial-text: var(--simple-colors-default-theme-grey-12);
+          --person-testimonial-color: var(
+            --simple-colors-default-theme-accent-7,
+            var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue))
+          );
+          --person-testimonial-text: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+
+        /* the dark attribute drives color-scheme so the light-dark() pairs
+           track it alongside the SimpleColors accent flip */
+        :host([dark]) {
+          color-scheme: dark;
         }
 
         div.card {
@@ -28,7 +44,7 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
           background-color: var(--person-testimonial-bg);
           color: var(--person-testimonial-text);
           font-family: var(--person-testimonial-font-family);
-          box-shadow: 0 2px 2px rgba(59, 43, 91, 0.7);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
 
         .image img {
@@ -40,36 +56,36 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
           max-width: 200px;
         }
         .image {
-          padding-right: 5px;
+          padding-right: var(--ddd-spacing-1);
           background-color: var(--person-testimonial-color);
         }
 
         svg {
           fill: var(--person-testimonial-color);
-          height: 24px;
-          width: 24px;
+          height: var(--ddd-icon-xxs);
+          width: var(--ddd-icon-xxs);
         }
 
         .wrap {
-          margin: 15px;
+          margin: var(--ddd-spacing-4);
         }
 
         .testimonial {
-          line-height: 24px;
-          font-size: 16px;
+          line-height: var(--ddd-lh-140);
+          font-size: var(--ddd-font-size-4xs);
           font-style: italic;
         }
 
         .name {
-          font-size: 21px;
+          font-size: var(--ddd-font-size-xs);
           text-transform: uppercase;
-          font-weight: bold;
-          margin-top: 20px;
+          font-weight: var(--ddd-font-weight-bold);
+          margin-top: var(--ddd-spacing-5);
         }
 
         .position {
-          font-size: 14px;
-          margin-top: 5px;
+          font-size: var(--ddd-font-size-5xs);
+          margin-top: var(--ddd-spacing-1);
         }
 
         .arrow_right {
@@ -126,9 +142,9 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
             height: 200px;
           }
           .image {
-            margin-top: 25px;
+            margin-top: var(--ddd-spacing-6);
             border-radius: 50%;
-            padding: 5px;
+            padding: var(--ddd-spacing-1);
             margin-left: auto;
             margin-right: auto;
           }
