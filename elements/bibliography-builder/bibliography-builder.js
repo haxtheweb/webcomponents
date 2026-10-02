@@ -72,7 +72,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
         border: var(--ddd-border-md);
       }
       h3 {
-        margin-top: 16px;
+        margin-top: var(--ddd-spacing-4);
       }
       h3 span {
         font-size: var(--ddd-font-size-s);
@@ -144,26 +144,26 @@ export class BibliographyBuilder extends SchemaBehaviors(
           max-height: 40vh;
           overflow-y: auto;
           border: var(--ddd-border-xs);
-          padding: 8px;
-          margin: 8px;
+          padding: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-2);
         }
         .control-bar {
           --simple-icon-button-border: var(--ddd-border-xs);
-          --simple-icon-button-border-radius: 4px;
+          --simple-icon-button-border-radius: var(--ddd-radius-xs);
           --simple-icon-button-focus-border: var(--ddd-border-sm);
-          --simple-icon-button-padding: 6px;
-          --simple-icon-height: 32px;
-          --simple-icon-width: 32px;
+          --simple-icon-button-padding: var(--ddd-spacing-2);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
           display: flex;
           justify-content: space-between;
-          margin-top: 16px;
+          margin-top: var(--ddd-spacing-4);
         }
         simple-icon-button-lite {
           align-self: center;
           width: fit-content;
         }
         simple-icon-button-lite::part(button) {
-          font-size: 20px;
+          font-size: var(--ddd-font-size-xxs);
         }
       </style>
       <div class="citation-list">
