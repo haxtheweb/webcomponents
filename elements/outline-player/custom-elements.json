@@ -90,14 +90,6 @@
             },
             {
               "kind": "field",
-              "name": "__disposer",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
               "name": "closed",
               "privacy": "public",
               "type": {
