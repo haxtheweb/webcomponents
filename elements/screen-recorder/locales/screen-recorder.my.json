@@ -1,0 +1,9 @@
+{
+  "startRecording": "ရိုက်ကူးမှု စတင်ရန်",
+  "stopRecording": "ရိုက်ကူးမှု ရပ်တန့်ရန်",
+  "downloadVideo": "ဗီဒီယို ဆွဲချရန်",
+  "systemAudio": "စနစ်အသံ ထည့်သွင်းရန်",
+  "microphoneAudio": "မိုက်ခရိုဖုန်း ထည့်သွင်းရန်",
+  "recordingStarted": "ရိုက်ကူးမှု စတင်ပါသည်",
+  "recordingStopped": "ရိုက်ကူးမှု ရပ်တန့်ပါသည်"
+}

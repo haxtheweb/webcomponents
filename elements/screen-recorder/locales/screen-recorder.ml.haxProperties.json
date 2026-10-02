@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ശീർഷകം"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ഇഷ്ടാനുസൃത മൂല്യം"
+            }
+        }
+    ]
+}

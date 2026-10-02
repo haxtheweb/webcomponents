@@ -1,0 +1,9 @@
+{
+  "startRecording": "Жазууну баштоо",
+  "stopRecording": "Жазууну токтотуу",
+  "downloadVideo": "Видеону жүктөө",
+  "systemAudio": "Системалык үндү кошуу",
+  "microphoneAudio": "Микрофонду кошуу",
+  "recordingStarted": "Жазуу башталды",
+  "recordingStopped": "Жазуу токтотулду"
+}

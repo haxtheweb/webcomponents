@@ -1,0 +1,9 @@
+{
+  "startRecording": "Rozpocznij nagrywanie",
+  "stopRecording": "Zatrzymaj nagrywanie",
+  "downloadVideo": "Pobierz wideo",
+  "systemAudio": "Dołącz dźwięk systemowy",
+  "microphoneAudio": "Dołącz mikrofon",
+  "recordingStarted": "Nagrywanie rozpoczęte",
+  "recordingStopped": "Nagrywanie zatrzymane"
+}

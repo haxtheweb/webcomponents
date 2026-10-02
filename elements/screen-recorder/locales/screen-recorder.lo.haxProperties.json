@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ຫົວຂໍ້"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ຄ່າທີ່ກຳນົດເອງ"
+            }
+        }
+    ]
+}

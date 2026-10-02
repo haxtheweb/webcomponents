@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "سرخی"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "کسٹم قدر"
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "Opname starten",
+  "stopRecording": "Opname stoppen",
+  "downloadVideo": "Video downloaden",
+  "systemAudio": "Systeemgeluid meenemen",
+  "microphoneAudio": "Microfoon meenemen",
+  "recordingStarted": "Opname gestart",
+  "recordingStopped": "Opname gestopt"
+}

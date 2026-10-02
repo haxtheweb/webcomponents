@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "Mutu"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "Mtengo wokonda"
+            }
+        }
+    ]
+}

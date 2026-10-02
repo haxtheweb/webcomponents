@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "Isi okwu"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "Uru pụrụ iche"
+            }
+        }
+    ]
+}

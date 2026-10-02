@@ -1,0 +1,9 @@
+{
+  "startRecording": "பதிவைத் தொடங்கு",
+  "stopRecording": "பதிவை நிறுத்து",
+  "downloadVideo": "வீடியோவைப் பதிவிறக்கு",
+  "systemAudio": "அமைப்பு ஒலியைச் சேர்க்கவும்",
+  "microphoneAudio": "ஒலிவாங்கியைச் சேர்க்கவும்",
+  "recordingStarted": "பதிவு தொடங்கியது",
+  "recordingStopped": "பதிவு நிறுத்தப்பட்டது"
+}

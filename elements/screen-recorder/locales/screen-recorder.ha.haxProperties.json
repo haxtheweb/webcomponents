@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "Take"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "Darajar da aka tsara"
+            }
+        }
+    ]
+}

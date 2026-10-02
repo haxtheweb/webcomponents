@@ -2,7 +2,7 @@
   "_meta": {
     "elementsScanned": 227,
     "elementsWithTranslations": 42,
-    "translationFilesFound": 1530,
+    "translationFilesFound": 1708,
     "languagesSupported": [
       "af",
       "am",
@@ -1107,9 +1107,6 @@
       "ja",
       "zh_CN"
     ],
-    "resume-theme.ar": [
-      "haxProperties"
-    ],
     "resume-theme": [
       "ar",
       "bn",
@@ -1121,66 +1118,415 @@
       "ru",
       "zh"
     ],
-    "resume-theme.bn": [
+    "screen-recorder.af": [
       "haxProperties"
     ],
-    "resume-theme.es": [
-      "haxProperties"
+    "screen-recorder": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "resume-theme.fr": [
-      "haxProperties"
-    ],
-    "resume-theme.hi": [
-      "haxProperties"
-    ],
-    "resume-theme.ja": [
-      "haxProperties"
-    ],
-    "resume-theme.pt": [
-      "haxProperties"
-    ],
-    "resume-theme.ru": [
-      "haxProperties"
-    ],
-    "resume-theme.zh": [
+    "screen-recorder.am": [
       "haxProperties"
     ],
     "screen-recorder.ar": [
       "haxProperties"
     ],
-    "screen-recorder": [
-      "ar",
-      "bn",
-      "es",
-      "fr",
-      "hi",
-      "ja",
-      "pt",
-      "ru",
-      "zh"
+    "screen-recorder.az": [
+      "haxProperties"
+    ],
+    "screen-recorder.be": [
+      "haxProperties"
+    ],
+    "screen-recorder.bg": [
+      "haxProperties"
     ],
     "screen-recorder.bn": [
+      "haxProperties"
+    ],
+    "screen-recorder.bs": [
+      "haxProperties"
+    ],
+    "screen-recorder.ca": [
+      "haxProperties"
+    ],
+    "screen-recorder.co": [
+      "haxProperties"
+    ],
+    "screen-recorder.cs": [
+      "haxProperties"
+    ],
+    "screen-recorder.cy": [
+      "haxProperties"
+    ],
+    "screen-recorder.da": [
+      "haxProperties"
+    ],
+    "screen-recorder.de": [
+      "haxProperties"
+    ],
+    "screen-recorder.el": [
+      "haxProperties"
+    ],
+    "screen-recorder.eo": [
       "haxProperties"
     ],
     "screen-recorder.es": [
       "haxProperties"
     ],
+    "screen-recorder.et": [
+      "haxProperties"
+    ],
+    "screen-recorder.eu": [
+      "haxProperties"
+    ],
+    "screen-recorder.fa": [
+      "haxProperties"
+    ],
+    "screen-recorder.fi": [
+      "haxProperties"
+    ],
+    "screen-recorder.fo": [
+      "haxProperties"
+    ],
     "screen-recorder.fr": [
+      "haxProperties"
+    ],
+    "screen-recorder.fy": [
+      "haxProperties"
+    ],
+    "screen-recorder.ga": [
+      "haxProperties"
+    ],
+    "screen-recorder.gl": [
+      "haxProperties"
+    ],
+    "screen-recorder.gn": [
+      "haxProperties"
+    ],
+    "screen-recorder.gu": [
+      "haxProperties"
+    ],
+    "screen-recorder.ha": [
+      "haxProperties"
+    ],
+    "screen-recorder.haw": [
+      "haxProperties"
+    ],
+    "screen-recorder.he": [
       "haxProperties"
     ],
     "screen-recorder.hi": [
       "haxProperties"
     ],
+    "screen-recorder.hr": [
+      "haxProperties"
+    ],
+    "screen-recorder.hu": [
+      "haxProperties"
+    ],
+    "screen-recorder.hy": [
+      "haxProperties"
+    ],
+    "screen-recorder.id": [
+      "haxProperties"
+    ],
+    "screen-recorder.ig": [
+      "haxProperties"
+    ],
+    "screen-recorder.is": [
+      "haxProperties"
+    ],
+    "screen-recorder.it": [
+      "haxProperties"
+    ],
     "screen-recorder.ja": [
+      "haxProperties"
+    ],
+    "screen-recorder.jv": [
+      "haxProperties"
+    ],
+    "screen-recorder.ka": [
+      "haxProperties"
+    ],
+    "screen-recorder.kk": [
+      "haxProperties"
+    ],
+    "screen-recorder.km": [
+      "haxProperties"
+    ],
+    "screen-recorder.kn": [
+      "haxProperties"
+    ],
+    "screen-recorder.ko": [
+      "haxProperties"
+    ],
+    "screen-recorder.ku": [
+      "haxProperties"
+    ],
+    "screen-recorder.ky": [
+      "haxProperties"
+    ],
+    "screen-recorder.lb": [
+      "haxProperties"
+    ],
+    "screen-recorder.lo": [
+      "haxProperties"
+    ],
+    "screen-recorder.lt": [
+      "haxProperties"
+    ],
+    "screen-recorder.lv": [
+      "haxProperties"
+    ],
+    "screen-recorder.mi": [
+      "haxProperties"
+    ],
+    "screen-recorder.mk": [
+      "haxProperties"
+    ],
+    "screen-recorder.ml": [
+      "haxProperties"
+    ],
+    "screen-recorder.mn": [
+      "haxProperties"
+    ],
+    "screen-recorder.mr": [
+      "haxProperties"
+    ],
+    "screen-recorder.ms": [
+      "haxProperties"
+    ],
+    "screen-recorder.mt": [
+      "haxProperties"
+    ],
+    "screen-recorder.my": [
+      "haxProperties"
+    ],
+    "screen-recorder.nb": [
+      "haxProperties"
+    ],
+    "screen-recorder.ne": [
+      "haxProperties"
+    ],
+    "screen-recorder.nl": [
+      "haxProperties"
+    ],
+    "screen-recorder.no": [
+      "haxProperties"
+    ],
+    "screen-recorder.ny": [
+      "haxProperties"
+    ],
+    "screen-recorder.om": [
+      "haxProperties"
+    ],
+    "screen-recorder.pa": [
+      "haxProperties"
+    ],
+    "screen-recorder.pl": [
+      "haxProperties"
+    ],
+    "screen-recorder.pnb": [
+      "haxProperties"
+    ],
+    "screen-recorder.ps": [
       "haxProperties"
     ],
     "screen-recorder.pt": [
       "haxProperties"
     ],
+    "screen-recorder.qu": [
+      "haxProperties"
+    ],
+    "screen-recorder.ro": [
+      "haxProperties"
+    ],
     "screen-recorder.ru": [
       "haxProperties"
     ],
+    "screen-recorder.sd": [
+      "haxProperties"
+    ],
+    "screen-recorder.si": [
+      "haxProperties"
+    ],
+    "screen-recorder.sk": [
+      "haxProperties"
+    ],
+    "screen-recorder.sl": [
+      "haxProperties"
+    ],
+    "screen-recorder.sn": [
+      "haxProperties"
+    ],
+    "screen-recorder.so": [
+      "haxProperties"
+    ],
+    "screen-recorder.sq": [
+      "haxProperties"
+    ],
+    "screen-recorder.sr": [
+      "haxProperties"
+    ],
+    "screen-recorder.sv": [
+      "haxProperties"
+    ],
+    "screen-recorder.sw": [
+      "haxProperties"
+    ],
+    "screen-recorder.ta": [
+      "haxProperties"
+    ],
+    "screen-recorder.te": [
+      "haxProperties"
+    ],
+    "screen-recorder.tg": [
+      "haxProperties"
+    ],
+    "screen-recorder.th": [
+      "haxProperties"
+    ],
+    "screen-recorder.tk": [
+      "haxProperties"
+    ],
+    "screen-recorder.tl": [
+      "haxProperties"
+    ],
+    "screen-recorder.tr": [
+      "haxProperties"
+    ],
+    "screen-recorder.tt": [
+      "haxProperties"
+    ],
+    "screen-recorder.uk": [
+      "haxProperties"
+    ],
+    "screen-recorder.ur": [
+      "haxProperties"
+    ],
+    "screen-recorder.uz": [
+      "haxProperties"
+    ],
+    "screen-recorder.vi": [
+      "haxProperties"
+    ],
+    "screen-recorder.wuu": [
+      "haxProperties"
+    ],
+    "screen-recorder.xh": [
+      "haxProperties"
+    ],
+    "screen-recorder.yi": [
+      "haxProperties"
+    ],
+    "screen-recorder.yo": [
+      "haxProperties"
+    ],
     "screen-recorder.zh": [
+      "haxProperties"
+    ],
+    "screen-recorder.zu": [
       "haxProperties"
     ],
     "scroll-button": [

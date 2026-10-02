@@ -45,6 +45,14 @@ class DisqusEmbed extends LitElement {
     };
   }
 
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
+
   static get styles() {
     return [
       css`

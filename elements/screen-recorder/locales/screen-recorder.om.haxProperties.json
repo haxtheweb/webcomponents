@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "Mata duree"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "Gatii addaa"
+            }
+        }
+    ]
+}

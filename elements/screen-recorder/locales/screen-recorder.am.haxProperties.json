@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ርዕስ"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ብጁ እሴት"
+            }
+        }
+    ]
+}

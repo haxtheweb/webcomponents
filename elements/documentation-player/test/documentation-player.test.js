@@ -98,6 +98,47 @@ describe("DocumentationPlayer test", () => {
     expect(codePenDataString).to.include("cdn.webcomponents.psu.edu");
   });
 
+  it("derives the CodePen head base from globalThis.WCGlobalCDNPath", async () => {
+    const originalValue = globalThis.WCGlobalCDNPath;
+    // unescape the data string back into the object it was built from
+    const parseCodePenData = (label) =>
+      JSON.parse(
+        element
+          .codePenData(label)
+          .replace(/&quot;/g, '"')
+          .replace(/&apos;/g, "'"),
+      );
+    try {
+      // a base that already carries a trailing slash is used as-is
+      globalThis.WCGlobalCDNPath = "https://onprem.example.com/cdn/";
+      let parsed = parseCodePenData("Derivation Test");
+      expect(parsed.head).to.include(
+        'globalThis.WCGlobalCDNPath="https://onprem.example.com/cdn/"',
+      );
+      expect(parsed.head).to.include(
+        'src="https://onprem.example.com/cdn/build.js"',
+      );
+      expect(parsed.head).to.not.include("cdn.webcomponents.psu.edu");
+
+      // a base without a trailing slash gets one appended
+      globalThis.WCGlobalCDNPath = "https://onprem.example.com/cdn";
+      parsed = parseCodePenData("Derivation Test");
+      expect(parsed.head).to.include(
+        'globalThis.WCGlobalCDNPath="https://onprem.example.com/cdn/"',
+      );
+      expect(parsed.head).to.include(
+        'src="https://onprem.example.com/cdn/build.js"',
+      );
+    } finally {
+      // restore so every other test sees the PSU fallback
+      if (originalValue === undefined) {
+        delete globalThis.WCGlobalCDNPath;
+      } else {
+        globalThis.WCGlobalCDNPath = originalValue;
+      }
+    }
+  });
+
   it("includes innerHTML in CodePen data", async () => {
     const codePenDataString = element.codePenData("Test Component");
     expect(codePenDataString).to.include("test-content");

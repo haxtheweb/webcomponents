@@ -1,7 +1,7 @@
 import { fixture, expect, html, aTimeout } from '@open-wc/testing'
 
 import { LrndesignChart } from '../lrndesign-chart.js'
-import { SimpleColors } from '@haxtheweb/simple-colors/simple-colors.js'
+import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
 // lib elements must be imported directly so their own files count in coverage
 import { LrndesignBar } from '../lib/lrndesign-bar.js'
 import { LrndesignLine } from '../lib/lrndesign-line.js'
@@ -49,11 +49,21 @@ const slottedTable = html`
 `
 
 describe('lrndesign-chart mixin', () => {
-  const ChartBase = LrndesignChart(SimpleColors)
+  const ChartBase = LrndesignChart(DDD)
 
   it('composes a class extending the given super class', async () => {
     expect(ChartBase).to.be.a('function')
     expect(ChartBase.tag).to.equal('lrndesign-chart')
+    // neutral surfaces migrated to DDD tokens while the chartist series
+    // palettes keep SimpleColors shade ramps (DDD has no per-hue shades)
+    const styles = ChartBase.styles
+      .flat(Infinity)
+      .map((style) => style.cssText)
+      .join('')
+    expect(styles).to.include('var(--ddd-theme-default-white)')
+    expect(styles).to.include('var(--ddd-theme-default-black)')
+    expect(styles).to.include('var(--ddd-theme-default-coalyGray)')
+    expect(styles).to.include('var(--simple-colors-default-theme-red-9)')
   })
 
   it('exposes base properties for data binding', async () => {

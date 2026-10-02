@@ -14,10 +14,11 @@ import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 Custom property | Description | Default
 ----------------|-------------|----------
 `--img-view-viewer-height` | viewer height | 500px
-`--img-view-viewer-backgroundColor` | background color | white
-`--img-view-viewer-color` | text color | black
-`--img-view-viewer-borderColor` | border color | #ddd
-`--img-view-viewer-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee
+`--img-view-viewer-backgroundColor` | background color | light-dark(--ddd-theme-default-white, --ddd-theme-default-potentialMidnight)
+`--img-view-viewer-color` | text color | light-dark(--ddd-theme-default-black, --ddd-theme-default-white)
+`--img-view-viewer-borderColor` | border color | light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)
+`--img-view-viewer-toggled-backgroundColor` | background color of toggled buttons and kbd commands | light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-slateGray)
+`--img-view-viewer-focus-borderColor` | focus, hover outline and loading spinner color | light-dark(--ddd-theme-default-info, --ddd-theme-default-infoLight)
  *
  * @demo demo/viewer.html
  * @element img-view-viewer
@@ -33,7 +34,13 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         :host {
           display: block;
           height: var(--img-view-viewer-height, 500px);
-          --hexagon-color: var(--img-view-viewer-focus-borderColor, blue);
+          --hexagon-color: var(
+            --img-view-viewer-focus-borderColor,
+            light-dark(
+              var(--ddd-theme-default-info, blue),
+              var(--ddd-theme-default-infoLight, #e5f6fd)
+            )
+          );
         }
         :host([hidden]),
         *[hidden] {
@@ -50,7 +57,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           position: relative;
           height: calc(var(--img-view-viewer-height, 500px) - 104px);
           width: auto;
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          border: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         #loader {
           display: none;
@@ -79,8 +93,20 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           align-items: stretch;
           justify-content: space-between;
           height: 100%;
-          background-color: var(--img-view-viewer-backgroundColor, white);
-          color: var(--img-view-viewer-color, black);
+          background-color: var(
+            --img-view-viewer-backgroundColor,
+            light-dark(
+              var(--ddd-theme-default-white, white),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+          );
+          color: var(
+            --img-view-viewer-color,
+            light-dark(
+              var(--ddd-theme-default-black, black),
+              var(--ddd-theme-default-white, white)
+            )
+          );
         }
         #container > * {
           flex: 1 1 auto;
@@ -99,7 +125,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         #bottom {
           margin: 0;
           flex: 1 0 52px;
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          border: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         #top > *,
         #bottom > * {
@@ -107,7 +140,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         }
         #top > *:not(:first-child),
         #bottom > *:not(:first-child) {
-          border-left: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          border-left: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         button {
           border: none;
@@ -133,14 +173,24 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         button[aria-pressed="true"] {
           --img-view-viewer-backgroundColor: var(
             --img-view-viewer-toggled-backgroundColor,
-            #eee
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight, #eee),
+              var(--ddd-theme-default-slateGray, #314d64)
+            )
           );
         }
 
         button:focus,
         button:hover,
         #viewer:focus-within {
-          outline: 1px solid var(--img-view-viewer-focus-borderColor, blue);
+          outline: 1px solid
+            var(
+              --img-view-viewer-focus-borderColor,
+              light-dark(
+                var(--ddd-theme-default-info, blue),
+                var(--ddd-theme-default-infoLight, #e5f6fd)
+              )
+            );
           z-index: 2;
         }
         simple-tooltip:not(:defined) {
@@ -156,8 +206,21 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           bottom: 0;
           right: 0;
           padding: 5px;
-          background-color: var(--img-view-viewer-backgroundColor, white);
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          background-color: var(
+            --img-view-viewer-backgroundColor,
+            light-dark(
+              var(--ddd-theme-default-white, white),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+          );
+          border: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         table {
           border-collapse: collapse;
@@ -166,7 +229,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         td {
           padding: 2px 5px;
           line-height: 140%;
-          border-top: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          border-top: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         th {
           font-weight: normal;
@@ -177,12 +247,32 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           padding: 1px 3px;
           font-family: sans-serif;
           font-size: 80%;
-          background: var(--img-view-viewer-toggled-backgroundColor, #eee);
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          background: var(
+            --img-view-viewer-toggled-backgroundColor,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight, #eee),
+              var(--ddd-theme-default-slateGray, #314d64)
+            )
+          );
+          border: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
         input[type="number"] {
           max-width: 4em;
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+          border: 1px solid
+            var(
+              --img-view-viewer-borderColor,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #ddd),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            );
         }
       `,
     ];

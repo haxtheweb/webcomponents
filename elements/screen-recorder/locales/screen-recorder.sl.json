@@ -1,0 +1,9 @@
+{
+  "startRecording": "Začni snemanje",
+  "stopRecording": "Ustavi snemanje",
+  "downloadVideo": "Prenesi video",
+  "systemAudio": "Vključi sistemski zvok",
+  "microphoneAudio": "Vključi mikrofon",
+  "recordingStarted": "Snemanje se je začelo",
+  "recordingStopped": "Snemanje je bilo ustavljeno"
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "Aloita tallennus",
+  "stopRecording": "Lopeta tallennus",
+  "downloadVideo": "Lataa video",
+  "systemAudio": "Sisällytä järjestelmän ääni",
+  "microphoneAudio": "Sisällytä mikrofoni",
+  "recordingStarted": "Tallennus aloitettu",
+  "recordingStopped": "Tallennus lopetettu"
+}

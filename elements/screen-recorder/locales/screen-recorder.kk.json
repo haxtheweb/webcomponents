@@ -1,0 +1,9 @@
+{
+  "startRecording": "Жазбаны бастау",
+  "stopRecording": "Жазбаны тоқтату",
+  "downloadVideo": "Видеоны жүктеу",
+  "systemAudio": "Жүйелік дыбысты қосу",
+  "microphoneAudio": "Микрофонды қосу",
+  "recordingStarted": "Жазба басталды",
+  "recordingStopped": "Жазба тоқтатылды"
+}

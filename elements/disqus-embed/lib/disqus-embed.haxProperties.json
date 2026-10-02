@@ -1,0 +1,74 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": true,
+  "canScale": true,
+
+  "canEditSource": false,
+  "contentEditable": false,
+  "designSystem": false,
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Embed Disqus comments on a page.",
+    "icon": "hax:disqus",
+    "color": "purple",
+    "tags": ["Other", "disqus", "comments", "embed", "social"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Short name",
+        "description": "The site short name, which drives the Disqus script host.",
+        "inputMethod": "textfield",
+        "icon": "hax:disqus",
+        "required": true
+      },
+      {
+        "property": "pageURL",
+        "title": "Page URL",
+        "description": "The URL of the page the comment thread is attached to.",
+        "inputMethod": "textfield",
+        "icon": "link",
+        "validationType": "url"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Page identifier",
+        "description": "The unique identifier for the page comment thread.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "pageTitle",
+        "title": "Page title",
+        "description": "The title of the page the comment thread is attached to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "loadingText",
+        "title": "Loading text",
+        "description": "Text announced while the comments are loading.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "lang",
+        "title": "Language",
+        "description": "Language code for the Disqus interface, e.g. en.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "disqus-embed",
+      "content": "",
+      "properties": {}
+    }
+  ]
+}

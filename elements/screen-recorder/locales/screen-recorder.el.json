@@ -1,0 +1,9 @@
+{
+  "startRecording": "Εκκίνηση εγγραφής",
+  "stopRecording": "Διακοπή εγγραφής",
+  "downloadVideo": "Λήψη βίντεο",
+  "systemAudio": "Συμπερίληψη ήχου συστήματος",
+  "microphoneAudio": "Συμπερίληψη μικροφώνου",
+  "recordingStarted": "Η εγγραφή ξεκίνησε",
+  "recordingStopped": "Η εγγραφή διακόπηκε"
+}

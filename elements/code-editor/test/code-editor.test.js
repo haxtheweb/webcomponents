@@ -477,6 +477,47 @@ describe("code-editor test", () => {
       expect(element.codePenData.head).to.include("WCGlobalCDNPath");
     });
 
+    it("derives the CodePen head base from globalThis.WCGlobalCDNPath", async () => {
+      const originalValue = globalThis.WCGlobalCDNPath;
+      try {
+        // a base that already carries a trailing slash is used as-is
+        globalThis.WCGlobalCDNPath = "https://onprem.example.com/cdn/";
+        element.title = "Derivation Slash";
+        element.value = "<div>On-prem CDN</div>";
+        await element.updateComplete;
+
+        expect(element.codePenData.head).to.include(
+          'globalThis.WCGlobalCDNPath="https://onprem.example.com/cdn/"',
+        );
+        expect(element.codePenData.head).to.include(
+          'src="https://onprem.example.com/cdn/build.js"',
+        );
+        expect(element.codePenData.head).to.not.include(
+          "cdn.webcomponents.psu.edu",
+        );
+
+        // a base without a trailing slash gets one appended
+        globalThis.WCGlobalCDNPath = "https://onprem.example.com/cdn";
+        element.title = "Derivation No Slash";
+        element.value = "<div>On-prem CDN without slash</div>";
+        await element.updateComplete;
+
+        expect(element.codePenData.head).to.include(
+          'globalThis.WCGlobalCDNPath="https://onprem.example.com/cdn/"',
+        );
+        expect(element.codePenData.head).to.include(
+          'src="https://onprem.example.com/cdn/build.js"',
+        );
+      } finally {
+        // restore so every other test sees the PSU fallback
+        if (originalValue === undefined) {
+          delete globalThis.WCGlobalCDNPath;
+        } else {
+          globalThis.WCGlobalCDNPath = originalValue;
+        }
+      }
+    });
+
     it("dispatches show-code-pen-changed event", async () => {
       const spy = sandbox.spy();
       element.addEventListener("show-code-pen-changed", spy);

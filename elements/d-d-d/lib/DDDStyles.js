@@ -823,6 +823,16 @@ export const DDDVariables = css`
     --ddd-focus-ring: 2px solid var(--ddd-theme-default-link); /* Focus ring style */
     --ddd-focus-offset: 2px; /* Focus ring offset distance */
 
+    /* ===========================================
+       TEXT FIELD HEIGHTS
+       Standard heights for single-line inputs and selects;
+       use as minimums for multi-line textareas
+       Usage: height: var(--ddd-textfield-height-md);
+       =========================================== */
+    --ddd-textfield-height-sm: 40px; /* compact - clears the WCAG 2.5.8 AA 24px minimum */
+    --ddd-textfield-height-md: 48px; /* default - 48px tap target, clears the WCAG 2.5.5 AAA 44px minimum */
+    --ddd-textfield-height-lg: 56px; /* large - Material standard field height */
+
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)

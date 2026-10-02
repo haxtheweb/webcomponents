@@ -64,10 +64,17 @@ class DocumentationPlayer extends LitElement {
   }
 
   codePenData(label) {
+    // derive the CDN base from the generating page when it defines one,
+    // falling back to the PSU CDN, and normalize a trailing slash
+    let cdnBase =
+      globalThis.WCGlobalCDNPath || "https://cdn.webcomponents.psu.edu/cdn/";
+    if (!cdnBase.endsWith("/")) {
+      cdnBase += "/";
+    }
     return this._getDataString({
       title: label,
       html: this.innerHTML.trim(),
-      head: `<script>globalThis.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
+      head: `<script>globalThis.WCGlobalCDNPath="${cdnBase}";</script><script src="${cdnBase}build.js"></script>`,
     });
   }
 

@@ -1,0 +1,9 @@
+{
+  "startRecording": "Alusta salvestust",
+  "stopRecording": "Peata salvestus",
+  "downloadVideo": "Laadi video alla",
+  "systemAudio": "Kaasa süsteemi heli",
+  "microphoneAudio": "Kaasa mikrofon",
+  "recordingStarted": "Salvestus alustatud",
+  "recordingStopped": "Salvestus peatatud"
+}

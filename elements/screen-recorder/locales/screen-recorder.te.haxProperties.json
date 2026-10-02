@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "శీర్షిక"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "అనుకూల విలువ"
+            }
+        }
+    ]
+}

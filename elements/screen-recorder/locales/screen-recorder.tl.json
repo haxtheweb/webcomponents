@@ -1,0 +1,9 @@
+{
+  "startRecording": "Simulan ang Pag-record",
+  "stopRecording": "Ihinto ang Pag-record",
+  "downloadVideo": "I-download ang Video",
+  "systemAudio": "Isama ang Audio ng System",
+  "microphoneAudio": "Isama ang Mikropono",
+  "recordingStarted": "Nagsimula ang pag-record",
+  "recordingStopped": "Nahinto ang pag-record"
+}

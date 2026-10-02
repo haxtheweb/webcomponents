@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ชื่อเรื่อง"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ค่าที่กำหนดเอง"
+            }
+        }
+    ]
+}

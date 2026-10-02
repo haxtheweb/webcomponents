@@ -1,3 +1,9 @@
 {
-    "title": "शीर्षक"
+  "startRecording": "रिकॉर्डिंग शुरू करें",
+  "stopRecording": "रिकॉर्डिंग रोकें",
+  "downloadVideo": "वीडियो डाउनलोड करें",
+  "systemAudio": "सिस्टम ऑडियो शामिल करें",
+  "microphoneAudio": "माइक्रोफ़ोन शामिल करें",
+  "recordingStarted": "रिकॉर्डिंग शुरू हुई",
+  "recordingStopped": "रिकॉर्डिंग रोक दी गई"
 }

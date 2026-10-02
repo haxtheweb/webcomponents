@@ -1,0 +1,9 @@
+{
+  "startRecording": "Սկսել ձայնագրությունը",
+  "stopRecording": "Կանգնեցնել ձայնագրությունը",
+  "downloadVideo": "Ներբեռնել տեսանյութը",
+  "systemAudio": "Ներառել համակարգի ձայնը",
+  "microphoneAudio": "Ներառել խոսափողը",
+  "recordingStarted": "Ձայնագրությունը սկսվեց",
+  "recordingStopped": "Ձայնագրությունը կանգնեցվեց"
+}

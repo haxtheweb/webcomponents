@@ -1,0 +1,9 @@
+{
+  "startRecording": "ჩანაწერის დაწყება",
+  "stopRecording": "ჩანაწერის შეწყვეტა",
+  "downloadVideo": "ვიდეოს ჩამოტვირთვა",
+  "systemAudio": "სისტემის ხმის ჩართვა",
+  "microphoneAudio": "მიკროფონის ჩართვა",
+  "recordingStarted": "ჩანაწერი დაიწყო",
+  "recordingStopped": "ჩანაწერი შეწყდა"
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "شروع ضبط",
+  "stopRecording": "توقف ضبط",
+  "downloadVideo": "دانلود ویدیو",
+  "systemAudio": "شامل صدای سیستم",
+  "microphoneAudio": "شامل میکروفون",
+  "recordingStarted": "ضبط شروع شد",
+  "recordingStopped": "ضبط متوقف شد"
+}

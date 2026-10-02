@@ -478,6 +478,82 @@ describe('lorem-data generators (element)', () => {
   })
 })
 
+describe('lorem-data dedupe (haxtheweb/issues#3105)', () => {
+  let el
+  beforeEach(async () => {
+    el = await fixture(html`<lorem-data></lorem-data>`)
+  })
+
+  it('no longer shadows the lib generators', () => {
+    // the element prototype keeps only its own surface; the shadowed
+    // random*, date and text helpers now resolve through the lib mixin
+    const own = Object.getOwnPropertyNames(Object.getPrototypeOf(el))
+    expect(own).to.not.include('randomParagraph')
+    expect(own).to.not.include('randomSentence')
+    expect(own).to.not.include('randomType')
+    expect(own).to.not.include('addDays')
+    expect(own).to.not.include('titleCase')
+    // element-specific members stay on the element itself
+    expect(own).to.include('saveAll')
+    expect(own).to.include('getJson')
+    expect(own).to.include('filterQuery')
+    expect(own).to.include('render')
+  })
+
+  it('surfaces the lib-only generators through the mixin', () => {
+    expect(typeof el.randomPhrase).to.equal('function')
+    expect(typeof el.randomPassage).to.equal('function')
+    expect(typeof el.camelToKebab).to.equal('function')
+    expect(el.camelToKebab('fooBar')).to.equal('foo-bar')
+    expect(el.kebabToCamel('foo-bar')).to.equal('fooBar')
+    expect(el.randomPhrase(1, 1, false, false)).to.match(/^[a-z]/)
+  })
+
+  it('keeps the element wordMax default of 15 after the merge', () => {
+    // the old lib randomParagraph default (10) capped default sentences
+    // below the element historical effective max of 15 words per sentence
+    let sawOverTen = false
+    for (let i = 0; i < 60; i++) {
+      const count = el.randomParagraph(1, 1).split(' ').length
+      expect(count).to.be.at.least(3)
+      expect(count).to.be.at.most(15)
+      if (count > 10) sawOverTen = true
+    }
+    expect(sawOverTen).to.equal(true)
+    // the lib standalone keeps the same alignment
+    const lib = new LoremDataBehaviorsDirect()
+    let libSawOverTen = false
+    for (let i = 0; i < 60; i++) {
+      const count = lib.randomParagraph(1, 1).split(' ').length
+      expect(count).to.be.at.most(15)
+      if (count > 10) libSawOverTen = true
+    }
+    expect(libSawOverTen).to.equal(true)
+  })
+
+  it('survives aspect-less image schemas for profile topics', () => {
+    // the element shadowed copy crashed splitting an undefined aspect in
+    // randomProfileImage; the lib default-parameter path does not
+    expect(el.randomImage(undefined, false, 'man')).to.contain(
+      'https://randomuser.me/api/portraits/',
+    )
+    const d = el.randomType({ type: 'imageData', topic: 'woman' })
+    expect(d.src).to.contain('https://randomuser.me/api/portraits/')
+    // aspect-less image schemas fall back to a random aspect
+    expect(el.randomType({ type: 'image' })).to.match(
+      /^\/\/placeimg\.com\/\d+\/\d+\//,
+    )
+  })
+
+  it('sizes textareas from the DDD textfield-height token', async () => {
+    el.schemas = SCHEMAS
+    await el.updateComplete
+    const ta = el.shadowRoot.querySelector('textarea')
+    // DDD is not loaded in this context so the 200px fallback applies
+    expect(getComputedStyle(ta).minHeight).to.equal('200px')
+  })
+})
+
 describe('lorem-data behaviors lib (direct instance)', () => {
   let lib
   beforeEach(() => {

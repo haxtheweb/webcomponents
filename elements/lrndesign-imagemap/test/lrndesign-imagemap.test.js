@@ -1,6 +1,24 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { LrndesignImagemap } from "../lrndesign-imagemap.js";
 
-import "../lrndesign-imagemap.js";
+describe("lrndesign-imagemap HAX properties", () => {
+  it("has proper HAX properties configuration", () => {
+    expect(LrndesignImagemap.haxProperties).to.exist;
+    expect(LrndesignImagemap.haxProperties).to.include("haxProperties.json");
+  });
+
+  it("serves a parseable haxProperties document from that URL", async () => {
+    const response = await fetch(LrndesignImagemap.haxProperties);
+    expect(response.status).to.equal(200);
+    const schema = await response.json();
+    expect(schema.gizmo.title).to.equal("Image map");
+    const configure = schema.settings.configure;
+    expect(configure.find((item) => item.property === "label")).to.exist;
+    expect(
+      configure.find((item) => item.property === "hotspotDetails"),
+    ).to.exist;
+  });
+});
 /*
 describe("lrndesign-imagemap test", () => {
   let element;

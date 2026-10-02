@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/simple-colors/simple-colors.js";
 import { LrndesignPie } from "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js";
 /**
  * `progress-donut`
@@ -14,7 +13,6 @@ import { LrndesignPie } from "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js";
  * @see @haxtheweb/lrndesign-chart/lib/lrndesign-pie.js
  * @see @haxtheweb/lrndesign-chart/lrndesign-chart.js
  * @see @haxtheweb/chartist-render/chartist-render.js
- * @see @haxtheweb/simple-colors/simple-colors.js
  *
  * @demo demo/index.html
  */
@@ -32,7 +30,7 @@ class ProgressDonut extends LrndesignPie {
         }
 
         .ct-center-ellipse {
-          fill: var(--chartist-bg-color, #fff);
+          fill: var(--chartist-bg-color, var(--ddd-theme-default-white));
         }
       `,
     ];

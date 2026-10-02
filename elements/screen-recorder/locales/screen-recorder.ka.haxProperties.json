@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "სათაური"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "მორგებული მნიშვნელობა"
+            }
+        }
+    ]
+}

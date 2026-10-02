@@ -1,0 +1,9 @@
+{
+  "startRecording": "Spustiť nahrávanie",
+  "stopRecording": "Zastaviť nahrávanie",
+  "downloadVideo": "Stiahnuť video",
+  "systemAudio": "Zahrnúť systémový zvuk",
+  "microphoneAudio": "Zahrnúť mikrofón",
+  "recordingStarted": "Nahrávanie spustené",
+  "recordingStopped": "Nahrávanie zastavené"
+}

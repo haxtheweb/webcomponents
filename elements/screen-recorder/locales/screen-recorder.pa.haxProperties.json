@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ਸਿਰਲੇਖ"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ਕਸਟਮ ਮੁੱਲ"
+            }
+        }
+    ]
+}

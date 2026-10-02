@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ಶೀರ್ಷಿಕೆ"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "ಕಸ್ಟಮ್ ಮೌಲ್ಯ"
+            }
+        }
+    ]
+}

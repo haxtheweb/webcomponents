@@ -1,3 +1,9 @@
 {
-    "title": "заголовок"
+  "startRecording": "Начать запись",
+  "stopRecording": "Остановить запись",
+  "downloadVideo": "Скачать видео",
+  "systemAudio": "Включить системный звук",
+  "microphoneAudio": "Включить микрофон",
+  "recordingStarted": "Запись начата",
+  "recordingStopped": "Запись остановлена"
 }

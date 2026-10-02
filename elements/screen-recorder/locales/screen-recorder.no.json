@@ -1,0 +1,9 @@
+{
+  "startRecording": "Start opptak",
+  "stopRecording": "Stopp opptak",
+  "downloadVideo": "Last ned video",
+  "systemAudio": "Inkluder systemlyd",
+  "microphoneAudio": "Inkluder mikrofon",
+  "recordingStarted": "Opptak startet",
+  "recordingStopped": "Opptak stoppet"
+}
