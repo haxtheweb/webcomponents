@@ -23,14 +23,14 @@ export const SimpleModalHandler = function (SuperClass) {
             "click",
             this.__SimpleModalHandlerClick.bind(this),
           );
-          this.addEventListener("keypress", this._keyPress.bind(this));
+          this.addEventListener("keydown", this._keydown.bind(this));
         }
       }, 0);
     }
     /**
      * A11y because we are delegating keyboard function to hit the link when enter pressed
      */
-    _keyPress(e) {
+    _keydown(e) {
       switch (e.key) {
         case "Enter":
           // simulate click to go to whatever link / action it has

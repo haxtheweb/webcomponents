@@ -93,25 +93,25 @@ describe('SimpleModalHandler mixin', () => {
     expect(captured.detail.elements.content).to.equal(null)
   })
 
-  it('_keyPress fires click on Enter', async () => {
+  it('_keydown fires click on Enter', async () => {
     await aTimeout(10)
     let clickFired = false
     element.addEventListener('click', () => {
       clickFired = true
     })
-    element._keyPress({ key: 'Enter' })
+    element._keydown({ key: 'Enter' })
     expect(clickFired).to.be.true
   })
 
-  it('_keyPress does nothing on non-Enter keys', async () => {
+  it('_keydown does nothing on non-Enter keys', async () => {
     await aTimeout(10)
     let clickFired = false
     element.addEventListener('click', () => {
       clickFired = true
     })
-    element._keyPress({ key: 'Escape' })
-    element._keyPress({ key: ' ' })
-    element._keyPress({ key: 'Tab' })
+    element._keydown({ key: 'Escape' })
+    element._keydown({ key: ' ' })
+    element._keydown({ key: 'Tab' })
     expect(clickFired).to.be.false
   })
 

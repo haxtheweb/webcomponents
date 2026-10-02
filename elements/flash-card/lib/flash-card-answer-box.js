@@ -392,7 +392,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
           aria-describedby="status-message"
           aria-invalid="${this.status === "incorrect"}"
           @input="${this.inputChanged}"
-          @keypress="${(e) =>
+          @keydown="${(e) =>
             e.key === "Enter" ? this.checkUserAnswer() : ""}"
           .value="${this.userAnswer}"
         />

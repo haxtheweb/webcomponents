@@ -150,8 +150,7 @@ describe('simple-login behavior', () => {
     el.addEventListener('simple-login-login', (e) => {
       loginEvent = e
     })
-    const enter = new KeyboardEvent('keypress', { bubbles: true })
-    Object.defineProperty(enter, 'keyCode', { get: () => 13 })
+    const enter = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })
     el.shadowRoot.querySelector('#loginform').dispatchEvent(enter)
     await el.updateComplete
     expect(loginEvent).to.exist
@@ -159,14 +158,13 @@ describe('simple-login behavior', () => {
     expect(loginEvent.detail.p).to.equal('testpass')
   })
 
-  it('ignores keypresses other than Enter', async () => {
+  it('ignores keys other than Enter', async () => {
     const el = await validLoginFixture()
     let fired = false
     el.addEventListener('simple-login-login', () => {
       fired = true
     })
-    const other = new KeyboardEvent('keypress', { bubbles: true })
-    Object.defineProperty(other, 'keyCode', { get: () => 65 })
+    const other = new KeyboardEvent('keydown', { key: 'a', bubbles: true })
     el.shadowRoot.querySelector('#loginform').dispatchEvent(other)
     await el.updateComplete
     expect(fired).to.equal(false)

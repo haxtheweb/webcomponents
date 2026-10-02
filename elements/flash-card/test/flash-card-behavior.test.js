@@ -186,7 +186,7 @@ describe("flash-card answer flow behavior", () => {
     await answerBox.updateComplete;
 
     input.dispatchEvent(
-      new KeyboardEvent("keypress", { key: "Enter", bubbles: true }),
+      new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
     );
     await answerBox.updateComplete;
 
