@@ -39,11 +39,15 @@ class SimplePopover extends AbsolutePositionBehavior {
        * forwarded to the inner #content div to satisfy the axe
        * aria-dialog-name rule for every popover consumer.
        */
+      title: {
+        type: String,
+        reflect: true,
+      },
       ariaLabel: {
         type: String,
         reflect: true,
         attribute: "aria-label",
-      },
+      }
     };
   }
 
