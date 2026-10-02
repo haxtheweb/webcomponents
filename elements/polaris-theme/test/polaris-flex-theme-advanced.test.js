@@ -271,11 +271,24 @@ describe('polaris-flex-theme store wiring', () => {
       delete globalThis.history.replaceState
     })
 
+    // siteModalClick defers all of its work to a dynamic import, so the
+    // handler lands on the module load schedule rather than ours; poll for
+    // the focus side effect instead of racing a fixed flush window, which
+    // flakes when the full suite loads the machine down
+    const waitForLazySearch = async () => {
+      const deadline = Date.now() + 5000
+      while (input.focused < 1 && Date.now() < deadline) {
+        await new Promise((resolve) => setTimeout(resolve, 25))
+      }
+      // drain the trailing setTimeout(0) select once the handler has run
+      await flushAsync()
+    }
+
     it('routes to the internal search route and focuses the field', async () => {
       store.getInternalRoute = () => 'displays/other'
       store.currentRouterLocation = { search: '' }
       element.siteModalClick({})
-      await flushAsync()
+      await waitForLazySearch()
       expect(replaceStateCalls.length).to.equal(1)
       expect(replaceStateCalls[0][2]).to.equal('x/displays/search')
       expect(input.focused).to.equal(1)
@@ -287,7 +300,7 @@ describe('polaris-flex-theme store wiring', () => {
       store.getInternalRoute = () => 'displays/search'
       store.currentRouterLocation = { search: '?search=flex' }
       element.siteModalClick({})
-      await flushAsync()
+      await waitForLazySearch()
       expect(replaceStateCalls.length).to.equal(0)
       expect(input.focused).to.equal(1)
       expect(input.value).to.equal('flex')
