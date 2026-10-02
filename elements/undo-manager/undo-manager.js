@@ -2,7 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
+import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 /**
  * `undo-manager`
  * `an undo history manager element`
@@ -38,6 +39,15 @@ const UndoManagerBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
+         * Assistive-tech status message for undo/redo capability
+         * transitions; rendered by the visually-hidden polite live
+         * region in the undo-manager element (WCAG 4.1.3)
+         */
+        __undoAnnouncement: {
+          type: String,
+          attribute: false,
+        },
+        /**
          * Properties for the mutation observer
          */
         undoStackObserverProps: {
@@ -69,6 +79,7 @@ const UndoManagerBehaviors = function (SuperClass) {
       // redundant update during the update cycle).
       this.canUndo = false;
       this.canRedo = false;
+      this.__undoAnnouncement = "";
       this.__StackDebounce;
       this.undoStackLimit = 20;
       this.undoStackTimer = 300;
@@ -164,8 +175,27 @@ const UndoManagerBehaviors = function (SuperClass) {
       this.undoStack.commands = [];
       // simple hook into being notified of changes to the object
       this.undoStack.changed = (e) => {
+        const prevCanUndo = this.canUndo,
+          prevCanRedo = this.canRedo;
         this.canRedo = this.undoStack.canRedo();
         this.canUndo = this.undoStack.canUndo();
+        // announce capability transitions so state changes reach screen
+        // readers; the undo-manager element renders these in its
+        // visually-hidden polite live region (WCAG 4.1.3)
+        const transitions = [];
+        if (this.canUndo !== prevCanUndo) {
+          transitions.push(
+            this.canUndo ? "Undo available" : "No more undo steps",
+          );
+        }
+        if (this.canRedo !== prevCanRedo) {
+          transitions.push(
+            this.canRedo ? "Redo available" : "No more redo steps",
+          );
+        }
+        if (transitions.length > 0) {
+          this.__undoAnnouncement = transitions.join(". ") + ".";
+        }
       };
       // NOTE: no initial changed() call here — it would overwrite
       // attribute-deserialized can-undo/can-redo values with the
@@ -228,10 +258,18 @@ class UndoManager extends UndoManagerBehaviors(LitElement) {
     return "undo-manager";
   }
   /**
+   * sr-only utility from the DDD design system keeps the status region
+   * visually hidden while staying available to assistive tech
+   */
+  static get styles() {
+    return [DDDExtra];
+  }
+  /**
    * LitElement render
    */
   render() {
-    return html`<slot></slot>`;
+    return html`<slot></slot>
+      <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>`;
   }
 }
 globalThis.customElements.define("undo-manager", UndoManager);
