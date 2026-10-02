@@ -1404,8 +1404,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     get enabledTargetHandlers() {
       return {
-        keydown: this._removeHighlight.bind(this),
-        keypress: this._handleTargetKeypress.bind(this),
+        keydown: (e) => {
+          this._removeHighlight();
+          this._handleTargetFirstKey(e);
+        },
         mousedown: this._removeHighlight.bind(this),
         mouseup: this._addHighlight.bind(this),
       };
@@ -1790,7 +1792,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (!this.__promptOpen && !target.disabled) this.setTarget(target);
     }
 
-    _handleTargetKeypress(e) {
+    _handleTargetFirstKey(e) {
       if (this.targetEmpty() && e.key && this.target) {
         // write the first key into the TARGET, never into the toolbar
         // itself (issue #3077, bug 5)
