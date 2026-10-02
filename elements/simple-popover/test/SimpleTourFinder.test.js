@@ -60,11 +60,12 @@ globalThis.customElements.define('test-tour-finder-broken', TestTourFinderBroken
 
 // a base class with no firstUpdated on its prototype at all, so the
 // connectedCallback branch of the mixin runs discoverSimpleTourStops
-// BUG (lib/SimpleTourFinder.js:29): the mixin's disconnectedCallback calls
-// super.disconnectedCallback() unguarded, unlike connectedCallback which
-// guards with if (super.connectedCallback). Applying the mixin to a base
-// class without disconnectedCallback (e.g. HTMLElement) throws on removal.
-// This test class overrides it as a no-op so it can be removed from the DOM.
+// FIXED (haxtheweb/issues#3102, lib/SimpleTourFinder.js:29): the mixin's
+// disconnectedCallback now guards super.disconnectedCallback() the same way
+// connectedCallback guards super.connectedCallback(), so applying the mixin
+// to a base class without the method (e.g. HTMLElement) no longer throws on
+// removal. The former no-op disconnectedCallback override is gone so the
+// mixin's own callback is exercised on removal below.
 class TestPlainFinder extends SimpleTourFinder(globalThis.HTMLElement) {
   constructor() {
     super()
@@ -72,7 +73,6 @@ class TestPlainFinder extends SimpleTourFinder(globalThis.HTMLElement) {
     this.shadowRoot.innerHTML =
       '<div data-simple-tour-stop><span data-stop-title>Plain Title</span><div data-stop-content>Plain Content</div></div>'
   }
-  disconnectedCallback() {}
 }
 globalThis.customElements.define('test-plain-finder', TestPlainFinder)
 
@@ -240,5 +240,20 @@ describe('SimpleTourFinder mixin', () => {
       'Plain Content',
     )
     globalThis.document.body.removeChild(el)
+  })
+
+  it('does not throw on removal when the base class has no disconnectedCallback', async () => {
+    // evidence for fix #7: with the guard in place, removing a mixin-applied
+    // element whose base (HTMLElement) lacks disconnectedCallback is safe
+    const el = globalThis.document.createElement('test-plain-finder')
+    globalThis.document.body.appendChild(el)
+    await aTimeout(10)
+    let threw = false
+    try {
+      globalThis.document.body.removeChild(el)
+    } catch (e) {
+      threw = true
+    }
+    expect(threw).to.equal(false)
   })
 })
