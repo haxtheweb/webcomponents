@@ -484,15 +484,21 @@ describe("csv-render test", () => {
   });
 
   describe("Styling and Theme Integration", () => {
-    it("applies SimpleColors theme correctly", () => {
-      expect(element).to.be.an.instanceof(element.constructor.__proto__);
-      // Inherits from SimpleColors, so should have accent color support
+    it("applies DDD theme correctly", () => {
+      // CsvRender composes IntersectionObserverMixin onto the DDD base
+      // class, which wires the DDD design system while keeping the
+      // SimpleColors accent tints available for theming
+      expect(element.isSafari).to.be.a("boolean");
+      expect(element.accentColor).to.be.a("string");
     });
 
     it("uses CSS custom properties for theming", () => {
       const styles = element.constructor.styles[1].cssText;
+      // accent tints keep SimpleColors shade variables (DDD has no per-hue
+      // shades) while the neutral surfaces use DDD tokens
       expect(styles).to.include("--simple-colors-default-theme-accent");
-      expect(styles).to.include("--simple-colors-default-theme-grey");
+      expect(styles).to.include("--ddd-theme-default-white");
+      expect(styles).to.include("--ddd-theme-default-black");
     });
 
     it("handles different accent colors in styling", async () => {

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -19,7 +19,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
  * @demo demo/index.html
  * @element csv-render
  */
-class CsvRender extends IntersectionObserverMixin(SimpleColors) {
+class CsvRender extends IntersectionObserverMixin(DDD) {
   /**
    * LitElement style construction
    */
@@ -27,6 +27,10 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
     return [
       super.styles,
       css`
+        /* neutral surfaces (table background, header text) use DDD tokens;
+           accent tints and borders keep SimpleColors shade variables because
+           DDD has no per-hue shades, and they flip in dark mode through the
+           SimpleColors blocks that ship with the DDD base class */
         :host {
           display: block;
         }
@@ -36,7 +40,10 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
           border-collapse: collapse;
           white-space: nowrap;
           font-size: 16px;
-          background-color: var(--simple-colors-default-theme-grey-1);
+          background-color: var(--ddd-theme-default-white);
+        }
+        :host([dark]) .table {
+          background-color: var(--ddd-theme-default-black);
         }
         .table thead {
           padding-bottom: 0.16px;
@@ -87,10 +94,13 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
           font-weight: bold;
           line-height: 24px;
           letter-spacing: 0;
-          color: rgba(0, 0, 0, 0.54);
+          color: var(--ddd-theme-default-coalyGray);
           height: 48px;
           padding-bottom: 8px;
           box-sizing: border-box;
+        }
+        :host([dark]) .table th {
+          color: var(--ddd-theme-default-white);
         }
         #loading {
           position: absolute;
