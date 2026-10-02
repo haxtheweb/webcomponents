@@ -5,6 +5,7 @@ window.process = window.process || {
   },
 };
 import { fixture, expect, html } from "@open-wc/testing";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 import "../outline-player.js";
 /*
@@ -74,3 +75,47 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+// Issue 3106: outline-player's constructor used to reassign
+// this.__disposer = [] right after super(), orphaning the three
+// constructor-time autoruns pushed by HAXCMSLitElementTheme
+// (editMode/trayStatus/activeItemContent) so removal never disposed them
+// (zombie autoruns on every removed theme).
+describe("outline-player autorun disposal (issue 3106)", () => {
+  it("retains the constructor-time autoruns in __disposer", () => {
+    const detached = globalThis.document.createElement("outline-player");
+    expect(Array.isArray(detached.__disposer)).to.equal(true);
+    expect(detached.__disposer.length).to.equal(3);
+    // dispose here so this never-connected element does not leak live
+    // reactions (including its wiring watchdog) into the suite
+    detached.__disposer.forEach((disposer) => {
+      if (typeof disposer === "function") {
+        disposer();
+      } else if (disposer && typeof disposer.dispose === "function") {
+        disposer.dispose();
+      }
+    });
+    detached.__disposer = [];
+    if (
+      detached.HAXCMSThemeWiring &&
+      detached.HAXCMSThemeWiring.disposeDisposers
+    ) {
+      detached.HAXCMSThemeWiring.disposeDisposers();
+    }
+  });
+
+  it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
+    const el = await fixture(html`<outline-player></outline-player>`);
+    await el.updateComplete;
+    expect(el.__disposer.length).to.be.at.least(3);
+    el.remove();
+    expect(el.__disposer.length).to.equal(0);
+    expect(el.HAXCMSThemeWiring.__disposer.length).to.equal(0);
+    const savedEditMode = store.editMode;
+    const before = el.editMode;
+    store.editMode = !before;
+    await new Promise((resolve) => setTimeout(resolve, 80));
+    expect(el.editMode).to.equal(before);
+    store.editMode = savedEditMode;
+  });
+});

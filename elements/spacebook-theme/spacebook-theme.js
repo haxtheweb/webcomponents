@@ -1044,17 +1044,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     globalThis.addEventListener("keydown", this.__onKeydown);
   }
 
-  // Cleanup method to dispose of MobX reactions
   disconnectedCallback() {
     globalThis.removeEventListener("keydown", this.__onKeydown);
-    if (this.__disposer) {
-      this.__disposer.forEach((disposer) => {
-        if (typeof disposer === 'function') {
-          disposer();
-        }
-      });
-      this.__disposer = [];
-    }
     super.disconnectedCallback();
   }
 }

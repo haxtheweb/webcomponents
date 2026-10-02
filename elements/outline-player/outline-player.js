@@ -313,7 +313,10 @@ class OutlinePlayer extends SchemaBehaviors(
 
   constructor() {
     super();
-    this.__disposer = [];
+    // do NOT reassign this.__disposer here: HAXCMSLitElementTheme's
+    // constructor already created it and pushed its constructor-time
+    // autoruns (editMode/trayStatus/activeItemContent) into it; a fresh
+    // array would orphan them so disconnectedCallback never disposes them
     this.closed = false;
     this.opened = true;
     // prettier-ignore

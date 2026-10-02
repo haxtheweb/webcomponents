@@ -74,3 +74,26 @@ describe("SpacebookTheme test", () => {
     });
   });
 });
+
+// Issue 3106: the redundant manual dispose loop in disconnectedCallback
+// was removed (the shared HAXCMSTheme mixin already disposes everything,
+// plus the wiring instance's watchdog); these tests pin that contract.
+// The keydown listener removal the override carried is kept.
+describe("SpacebookTheme autorun disposal (issue 3106)", () => {
+  it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
+    const el = await fixture(html`<spacebook-theme></spacebook-theme>`);
+    await el.updateComplete;
+    // 3 HAXCMSLitElementTheme + 2 HAXCMSThemeParts + 4 own constructor
+    // autoruns, plus the connect-time autoruns from the mixin
+    expect(el.__disposer.length).to.be.at.least(9);
+    el.remove();
+    expect(el.__disposer.length).to.equal(0);
+    expect(el.HAXCMSThemeWiring.__disposer.length).to.equal(0);
+    const savedEditMode = store.editMode;
+    const before = el.editMode;
+    store.editMode = !before;
+    await new Promise((resolve) => setTimeout(resolve, 80));
+    expect(el.editMode).to.equal(before);
+    store.editMode = savedEditMode;
+  });
+});

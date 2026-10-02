@@ -974,18 +974,6 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.nextPage = e.detail && e.detail.value ? e.detail.value : "";
   }
 
-  disconnectedCallback() {
-    for (var i in this.__disposer) {
-      const disposer = this.__disposer[i];
-      if (typeof disposer === "function") {
-        disposer();
-      } else if (disposer && typeof disposer.dispose === "function") {
-        disposer.dispose();
-      }
-    }
-    this.__disposer = [];
-    super.disconnectedCallback();
-  }
 }
 
 globalThis.customElements.define(TwentySixTheme.tag, TwentySixTheme);

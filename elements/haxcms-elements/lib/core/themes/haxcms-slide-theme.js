@@ -21,7 +21,10 @@ class HAXCMSSlideTheme extends DDDSuper(
 ) {
   constructor() {
     super();
-    this.__disposer = [];
+    // do NOT reassign this.__disposer here: HAXCMSLitElementTheme's
+    // constructor already created it and pushed its constructor-time
+    // autoruns (editMode/trayStatus/activeItemContent) into it; a fresh
+    // array would orphan them so disconnectedCallback never disposes them
     setTimeout(() => {
       // prettier-ignore
       import(
@@ -257,21 +260,6 @@ class HAXCMSSlideTheme extends DDDSuper(
         );
       }),
     );
-  }
-  /**
-   * Disconnect the wiring for the theme and clean up state
-   */
-  disconnectedCallback() {
-    // clean up state
-    for (var i in this.__disposer) {
-      const disposer = this.__disposer[i];
-      if (typeof disposer === "function") {
-        disposer();
-      } else if (disposer && typeof disposer.dispose === "function") {
-        disposer.dispose();
-      }
-    }
-    super.disconnectedCallback();
   }
 }
 globalThis.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);

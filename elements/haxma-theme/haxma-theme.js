@@ -893,18 +893,6 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
     `;
   }
 
-  // Cleanup method to dispose of MobX reactions
-  disconnectedCallback() {
-    if (this.__disposer) {
-      this.__disposer.forEach((disposer) => {
-        if (typeof disposer === 'function') {
-          disposer();
-        }
-      });
-      this.__disposer = [];
-    }
-    super.disconnectedCallback();
-  }
 }
 
 globalThis.customElements.define(HaxmaTheme.tag, HaxmaTheme);

@@ -35,8 +35,10 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
-
-    this.__disposer = [];
+    // do NOT reassign this.__disposer here: the constructor chain
+    // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
+    // already pushed its constructor-time autoruns into it; a fresh array
+    // would orphan them so disconnectedCallback never disposes them
     this.__disposer.push(
       autorun((reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);

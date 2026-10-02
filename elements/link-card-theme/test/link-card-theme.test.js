@@ -392,6 +392,9 @@ describe('LinkCardTheme behavior', () => {
     el.remove()
     expect(Array.isArray(el.__disposer)).to.equal(true)
     expect(el.__disposer.length).to.equal(0)
+    // issue 3106: the wiring instance's watchdog autorun is disposed too
+    // (previously it was never disposed for any theme)
+    expect(el.HAXCMSThemeWiring.__disposer.length).to.equal(0)
     // the dead dark-mode watcher cleanup branch was removed (nothing in
     // this class ever set __darkModeMediaQuery / __onColorSchemeChange);
     // disconnect stays a no-op beyond running the disposers
