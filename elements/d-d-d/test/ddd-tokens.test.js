@@ -368,6 +368,15 @@ describe('DDDStyles CSS exports', () => {
     // DDDSuper-based element gets it through super.styles
     expect(DDDReset.cssText).to.include('.sr-only')
   })
+
+  it('DDDVariables ships the textfield height tokens (haxtheweb/issues#3105)', () => {
+    // sm clears the WCAG 2.5.8 AA 24px target minimum, md is the
+    // 48px tap-target default clearing the AAA 44px minimum, and
+    // lg is the Material standard field height
+    expect(DDDVariables.cssText).to.include('--ddd-textfield-height-sm: 40px')
+    expect(DDDVariables.cssText).to.include('--ddd-textfield-height-md: 48px')
+    expect(DDDVariables.cssText).to.include('--ddd-textfield-height-lg: 56px')
+  })
 })
 
 describe('DDDBorders CSS utility classes', () => {

@@ -365,7 +365,10 @@ export const LoremDataBehaviors = function (SuperClass) {
       }.jpg`;
     }
 
-    randomParagraph(min = 3, max = 7, wordMinPerSent = 3, wordMaxPerSent = 10) {
+    // wordMaxPerSent aligns to 15 to match randomSentence's own max default
+    // and the element's historical effective behavior (haxtheweb/issues#3105);
+    // randomPassage below follows the same alignment
+    randomParagraph(min = 3, max = 7, wordMinPerSent = 3, wordMaxPerSent = 15) {
       let paragraph = [];
       for (let i = this.randomNumber(min, max); i > 0; i--) {
         paragraph.push(this.randomSentence(wordMinPerSent, wordMaxPerSent));
@@ -379,7 +382,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       sentMinPerPara = 2,
       sentMaxPerPara = 5,
       wordMinPerSent = 3,
-      wordMaxPerSent = 10,
+      wordMaxPerSent = 15,
     ) {
       let passage = [];
       for (let i = this.randomNumber(min, max); i > 0; i--) {
@@ -451,8 +454,11 @@ export const LoremDataBehaviors = function (SuperClass) {
             val = this.randomIcon(schema.includeNull);
             break;
           case "image":
+            // fall back to a random aspect when the schema omits one so
+            // a missing or falsy aspect cannot leak into the image urls
+            // (haxtheweb/issues#3105)
             val = this.randomImage(
-              schema.aspect,
+              schema.aspect || this.randomAspect(),
               schema.greyscale,
               schema.topic,
               schema.multiple,
