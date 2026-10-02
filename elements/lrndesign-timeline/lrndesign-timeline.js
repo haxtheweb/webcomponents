@@ -23,42 +23,51 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
     return [
       super.styles,
       css`
+        /* the palette migrates to DDD tokens as one unit; scheme-sensitive
+           values flip via color-scheme, which the dark attribute rule and
+           the prefers-color-scheme wiring below both drive. SimpleColors
+           stays only for the accentColor-driven accent shades */
         :host {
           font-size: 14px;
           font-weight: 100;
           line-height: 160%;
           display: block;
-          --lrndesign-timeline-color: var(
-            --simple-colors-default-theme-grey-8,
-            #444
+          --lrndesign-timeline-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
           --lrndesign-timeline-color-print: #000;
-          --lrndesign-timeline-background: var(
-            --ddd-theme-default-limestoneMaxLight,
-            #f4f4f4
+          --lrndesign-timeline-background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
           );
           --lrndesign-timeline-background-print: #fff;
-          --lrndesign-timeline-border: var(
-            --simple-colors-default-theme-grey-5,
-            #bbb
+          --lrndesign-timeline-border: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
           );
-          --lrndesign-timeline-border-print: var(
-            --simple-colors-fixed-theme-grey-5,
-            #bbb
+          --lrndesign-timeline-border-print: #bbb;
+          /* the selected details invert against the background in both
+             schemes so the selection stays a visible accent */
+          --lrndesign-timeline-accent: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
-          --lrndesign-timeline-accent: #000;
-          --lrndesign-timeline-accent-background: #fff;
+          --lrndesign-timeline-accent-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
           --lrndesign-timeline-accent-border: var(
             --simple-colors-default-theme-accent-8,
-            #444
+            var(--ddd-theme-default-slateGray)
           );
           --lrndesign-timeline-header: var(
             --simple-colors-default-theme-accent-1,
-            #fff
+            var(--ddd-theme-default-white)
           );
           --lrndesign-timeline-header-accent: var(
             --simple-colors-default-theme-accent-8,
-            #444
+            var(--ddd-theme-default-slateGray)
           );
           --lrndesign-timeline-accent-print: var(
             --simple-colors-fixed-theme-accent-8,
@@ -66,11 +75,10 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
           );
         }
 
+        /* the dark attribute drives color-scheme so the light-dark() token
+           pairs above flip with it and with the system scheme */
         :host([dark]) {
-          --lrndesign-timeline-background: var(
-            --ddd-theme-default-coalyGray,
-            #1b1b1b
-          );
+          color-scheme: dark;
         }
 
         :host([hidden]) {
@@ -128,15 +136,14 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
           max-height: 260px;
         }
         @media screen {
+          /* the xs-size background previously read an undefined var (missing
+             the -timeline- segment), resolving transparent instead of the
+             intended timeline background; light-dark() flips it now */
           #timeline {
             color: var(--lrndesign-timeline-color);
-            background-color: var(--lrndesign-accent-background);
+            background-color: var(--lrndesign-timeline-background);
             border: 1px solid var(--lrndesign-timeline-border);
             border-left: 3px solid var(--lrndesign-timeline-accent-border);
-          }
-
-          :host([dark]) #timeline {
-            background-color: var(--lrndesign-timeline-background);
           }
 
           h2 {
@@ -547,6 +554,30 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   /**
    * life cycle
    */
+  connectedCallback() {
+    if (super.connectedCallback) super.connectedCallback();
+    // prefers-color-scheme support coordinated with the DDD palette: follow
+    // the system scheme unless the content author set dark explicitly; the
+    // dark property drives color-scheme so the light-dark() token pairs and
+    // the SimpleColors accent shades stay in sync
+    if (globalThis.matchMedia) {
+      this.__schemeQuery = globalThis.matchMedia("(prefers-color-scheme: dark)");
+      this.__schemeLocked = this.hasAttribute("dark");
+      if (!this.__schemeLocked) {
+        this.dark = this.__schemeQuery.matches;
+      }
+      this.__schemeListener = (e) => {
+        if (!this.__schemeLocked) {
+          this.dark = e.matches;
+        }
+      };
+      this.__schemeQuery.addEventListener("change", this.__schemeListener);
+    }
+  }
+
+  /**
+   * life cycle
+   */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.setAttribute("typeof", "oer:LearningComponent");
@@ -575,6 +606,13 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   }
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (
+      this.__schemeQuery &&
+      this.__schemeListener &&
+      this.__schemeQuery.removeEventListener
+    ) {
+      this.__schemeQuery.removeEventListener("change", this.__schemeListener);
+    }
     if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
