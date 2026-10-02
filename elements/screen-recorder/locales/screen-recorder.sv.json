@@ -1,0 +1,9 @@
+{
+  "startRecording": "Starta inspelning",
+  "stopRecording": "Stoppa inspelning",
+  "downloadVideo": "Ladda ner video",
+  "systemAudio": "Inkludera systemljud",
+  "microphoneAudio": "Inkludera mikrofon",
+  "recordingStarted": "Inspelning startad",
+  "recordingStopped": "Inspelning stoppad"
+}

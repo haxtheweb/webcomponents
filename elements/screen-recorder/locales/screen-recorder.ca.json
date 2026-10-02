@@ -1,0 +1,9 @@
+{
+  "startRecording": "Inicia l'enregistrament",
+  "stopRecording": "Atura l'enregistrament",
+  "downloadVideo": "Baixa el vídeo",
+  "systemAudio": "Inclou l'àudio del sistema",
+  "microphoneAudio": "Inclou el micròfon",
+  "recordingStarted": "S'ha iniciat l'enregistrament",
+  "recordingStopped": "S'ha aturat l'enregistrament"
+}

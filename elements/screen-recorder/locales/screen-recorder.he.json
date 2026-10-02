@@ -1,0 +1,9 @@
+{
+  "startRecording": "התחל הקלטה",
+  "stopRecording": "עצור הקלטה",
+  "downloadVideo": "הורד וידאו",
+  "systemAudio": "כלול שמע מערכת",
+  "microphoneAudio": "כלול מיקרופון",
+  "recordingStarted": "ההקלטה החלה",
+  "recordingStopped": "ההקלטה נעצרה"
+}

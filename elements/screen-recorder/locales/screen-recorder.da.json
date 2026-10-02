@@ -1,0 +1,9 @@
+{
+  "startRecording": "Start optagelse",
+  "stopRecording": "Stop optagelse",
+  "downloadVideo": "Download video",
+  "systemAudio": "Medtag systemlyd",
+  "microphoneAudio": "Medtag mikrofon",
+  "recordingStarted": "Optagelse startet",
+  "recordingStopped": "Optagelse stoppet"
+}

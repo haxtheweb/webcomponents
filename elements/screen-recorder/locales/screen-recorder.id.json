@@ -1,0 +1,9 @@
+{
+  "startRecording": "Mulai Merekam",
+  "stopRecording": "Hentikan Perekaman",
+  "downloadVideo": "Unduh Video",
+  "systemAudio": "Sertakan Audio Sistem",
+  "microphoneAudio": "Sertakan Mikrofon",
+  "recordingStarted": "Perekaman dimulai",
+  "recordingStopped": "Perekaman dihentikan"
+}

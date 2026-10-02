@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ခေါင်းစဉ်"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "စိတ်ကြိုက်တန်ဖိုး"
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "开始录像",
+  "stopRecording": "停止录像",
+  "downloadVideo": "下载视频",
+  "systemAudio": "包括系统声音",
+  "microphoneAudio": "包括麦克风",
+  "recordingStarted": "录像开始了",
+  "recordingStopped": "录像停止了"
+}

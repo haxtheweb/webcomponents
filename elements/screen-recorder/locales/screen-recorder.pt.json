@@ -1,3 +1,9 @@
 {
-    "title": "título"
+  "startRecording": "Iniciar Gravação",
+  "stopRecording": "Parar Gravação",
+  "downloadVideo": "Baixar Vídeo",
+  "systemAudio": "Incluir Áudio do Sistema",
+  "microphoneAudio": "Incluir Microfone",
+  "recordingStarted": "Gravação iniciada",
+  "recordingStopped": "Gravação interrompida"
 }

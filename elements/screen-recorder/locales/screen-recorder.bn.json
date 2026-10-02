@@ -1,3 +1,9 @@
 {
-    "title": "শিরোনাম"
+  "startRecording": "রেকর্ডিং শুরু করুন",
+  "stopRecording": "রেকর্ডিং বন্ধ করুন",
+  "downloadVideo": "ভিডিও ডাউনলোড করুন",
+  "systemAudio": "সিস্টেম অডিও অন্তর্ভুক্ত করুন",
+  "microphoneAudio": "মাইক্রোফোন অন্তর্ভুক্ত করুন",
+  "recordingStarted": "রেকর্ডিং শুরু হয়েছে",
+  "recordingStopped": "রেকর্ডিং বন্ধ হয়েছে"
 }

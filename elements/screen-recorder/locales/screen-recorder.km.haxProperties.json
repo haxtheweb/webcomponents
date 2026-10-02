@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ចំណងជើង"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "តម្លៃផ្ទាល់ខ្លួន"
+            }
+        }
+    ]
+}

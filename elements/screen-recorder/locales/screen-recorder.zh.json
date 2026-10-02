@@ -1,3 +1,9 @@
 {
-    "title": "标题"
+  "startRecording": "开始录制",
+  "stopRecording": "停止录制",
+  "downloadVideo": "下载视频",
+  "systemAudio": "包含系统声音",
+  "microphoneAudio": "包含麦克风",
+  "recordingStarted": "录制已开始",
+  "recordingStopped": "录制已停止"
 }

@@ -1,3 +1,9 @@
 {
-    "title": "タイトル"
+  "startRecording": "録画を開始",
+  "stopRecording": "録画を停止",
+  "downloadVideo": "動画をダウンロード",
+  "systemAudio": "システム音声を含める",
+  "microphoneAudio": "マイクを含める",
+  "recordingStarted": "録画を開始しました",
+  "recordingStopped": "録画を停止しました"
 }

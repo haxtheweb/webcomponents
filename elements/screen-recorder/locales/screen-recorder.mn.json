@@ -1,0 +1,9 @@
+{
+  "startRecording": "Бичлэг эхлүүлэх",
+  "stopRecording": "Бичлэгийг зогсоох",
+  "downloadVideo": "Видео татаж авах",
+  "systemAudio": "Системийн дууг оруулах",
+  "microphoneAudio": "Микрофоныг оруулах",
+  "recordingStarted": "Бичлэг эхэлсэн",
+  "recordingStopped": "Бичлэг зогссон"
+}

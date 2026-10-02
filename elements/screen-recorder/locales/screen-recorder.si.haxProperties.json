@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "ශීර්ෂය"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "අභිරුචි අගය"
+            }
+        }
+    ]
+}

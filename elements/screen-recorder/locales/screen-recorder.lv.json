@@ -1,0 +1,9 @@
+{
+  "startRecording": "Sākt ierakstīšanu",
+  "stopRecording": "Apturēt ierakstīšanu",
+  "downloadVideo": "Lejupielādēt video",
+  "systemAudio": "Iekļaut sistēmas skaņu",
+  "microphoneAudio": "Iekļaut mikrofonu",
+  "recordingStarted": "Ierakstīšana sākta",
+  "recordingStopped": "Ierakstīšana apturēta"
+}

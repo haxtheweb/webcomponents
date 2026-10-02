@@ -1,3 +1,9 @@
 {
-    "title": "عنوان"
+  "startRecording": "بدء التسجيل",
+  "stopRecording": "إيقاف التسجيل",
+  "downloadVideo": "تنزيل الفيديو",
+  "systemAudio": "تضمين صوت النظام",
+  "microphoneAudio": "تضمين الميكروفون",
+  "recordingStarted": "بدأ التسجيل",
+  "recordingStopped": "تم إيقاف التسجيل"
 }

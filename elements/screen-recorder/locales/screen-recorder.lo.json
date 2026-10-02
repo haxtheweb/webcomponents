@@ -1,0 +1,9 @@
+{
+  "startRecording": "ເລີ່ມການບັນທຶກ",
+  "stopRecording": "ຢຸດການບັນທຶກ",
+  "downloadVideo": "ດາວໂຫລດວິດີໂອ",
+  "systemAudio": "ລວມສຽງລະບົບ",
+  "microphoneAudio": "ລວມໄມໂຄຣໂຟນ",
+  "recordingStarted": "ເລີ່ມການບັນທຶກແລ້ວ",
+  "recordingStopped": "ຢຸດການບັນທຶກແລ້ວ"
+}

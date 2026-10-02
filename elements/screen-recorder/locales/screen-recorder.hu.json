@@ -1,0 +1,9 @@
+{
+  "startRecording": "Felvétel indítása",
+  "stopRecording": "Felvétel leállítása",
+  "downloadVideo": "Videó letöltése",
+  "systemAudio": "Rendszerhang bevonása",
+  "microphoneAudio": "Mikrofon bevonása",
+  "recordingStarted": "A felvétel elindult",
+  "recordingStopped": "A felvétel leállt"
+}

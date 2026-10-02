@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "தலைப்பு"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "தனிப்பயன் மதிப்பு"
+            }
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "טיטל"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "באַזונדערער ווערט"
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "Pradėti įrašymą",
+  "stopRecording": "Stabdyti įrašymą",
+  "downloadVideo": "Atsisiųsti vaizdo įrašą",
+  "systemAudio": "Įtraukti sistemos garsą",
+  "microphoneAudio": "Įtraukti mikrofoną",
+  "recordingStarted": "Įrašymas pradėtas",
+  "recordingStopped": "Įrašymas sustabdytas"
+}

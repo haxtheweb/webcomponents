@@ -1,0 +1,9 @@
+{
+  "startRecording": "റെക്കോർഡിംഗ് ആരംഭിക്കുക",
+  "stopRecording": "റെക്കോർഡിംഗ് നിർത്തുക",
+  "downloadVideo": "വീഡിയോ ഡൗൺലോഡ് ചെയ്യുക",
+  "systemAudio": "സിസ്റ്റം ഓഡിയോ ഉൾപ്പെടുത്തുക",
+  "microphoneAudio": "മൈക്രോഫോൺ ഉൾപ്പെടുത്തുക",
+  "recordingStarted": "റെക്കോർഡിംഗ് ആരംഭിച്ചു",
+  "recordingStopped": "റെക്കോർഡിംഗ് നിർത്തി"
+}

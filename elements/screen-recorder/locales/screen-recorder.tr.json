@@ -1,0 +1,9 @@
+{
+  "startRecording": "Kaydı Başlat",
+  "stopRecording": "Kaydı Durdur",
+  "downloadVideo": "Videoyu İndir",
+  "systemAudio": "Sistem Sesini Dahil Et",
+  "microphoneAudio": "Mikrofonu Dahil Et",
+  "recordingStarted": "Kayıt başladı",
+  "recordingStopped": "Kayıt durduruldu"
+}

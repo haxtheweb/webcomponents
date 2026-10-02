@@ -1,0 +1,9 @@
+{
+  "startRecording": "Start Recording",
+  "stopRecording": "Stop Recording",
+  "downloadVideo": "Download Video",
+  "systemAudio": "Include System Audio",
+  "microphoneAudio": "Include Microphone",
+  "recordingStarted": "Recording started",
+  "recordingStopped": "Recording stopped"
+}

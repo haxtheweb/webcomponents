@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "शीर्षक"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "सानुकूल मूल्य"
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "startRecording": "Începe înregistrarea",
+  "stopRecording": "Oprește înregistrarea",
+  "downloadVideo": "Descarcă videoclipul",
+  "systemAudio": "Include sunetul sistemului",
+  "microphoneAudio": "Include microfonul",
+  "recordingStarted": "Înregistrarea a început",
+  "recordingStopped": "Înregistrarea s-a oprit"
+}

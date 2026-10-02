@@ -1,0 +1,9 @@
+{
+  "startRecording": "ቀረጽ መጀመር",
+  "stopRecording": "ቀረጽ ማቆም",
+  "downloadVideo": "ቪዲዮ አውርድ",
+  "systemAudio": "የስርዓት ድምፅ አካትት",
+  "microphoneAudio": "ማይክሮፎን አካትት",
+  "recordingStarted": "ቀረጽ ተጀመረ",
+  "recordingStopped": "ቀረጽ ቆመ"
+}

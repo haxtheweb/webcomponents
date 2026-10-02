@@ -1,0 +1,9 @@
+{
+  "startRecording": "Язманы башлау",
+  "stopRecording": "Язманы туктату",
+  "downloadVideo": "Видеоны йөкләү",
+  "systemAudio": "Система тавышын кертү",
+  "microphoneAudio": "Микрофонны кертү",
+  "recordingStarted": "Язма башланды",
+  "recordingStopped": "Язма туктатылды"
+}

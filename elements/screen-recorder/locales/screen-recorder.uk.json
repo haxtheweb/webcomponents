@@ -1,0 +1,9 @@
+{
+  "startRecording": "Почати запис",
+  "stopRecording": "Зупинити запис",
+  "downloadVideo": "Завантажити відео",
+  "systemAudio": "Включити системний звук",
+  "microphoneAudio": "Включити мікрофон",
+  "recordingStarted": "Запис почато",
+  "recordingStopped": "Запис зупинено"
+}
