@@ -45,13 +45,24 @@ class MdBlock extends DDD {
         code {
           font-family: var(--ddd-font-primary, monospace);
         }
+
+        /* user-visible fallback when a remote source fails to load */
+        .source-error {
+          color: var(--ddd-theme-default-error, #b1040e);
+          font-size: var(--ddd-font-size-xs, 0.8rem);
+        }
       `,
     ];
   }
 
   // render function
   render() {
-    return html`<div>${unsafeHTML(this._parsedMarkdown)}</div>`;
+    return html`<div>${unsafeHTML(this._parsedMarkdown)}</div>
+      ${this._loadError
+        ? html`<div class="source-error" role="status" aria-live="polite">
+            ${this._loadError}
+          </div>`
+        : ``}`;
   }
 
   // haxProperty definition
@@ -127,6 +138,10 @@ class MdBlock extends DDD {
         type: String,
         state: true,
       },
+      _loadError: {
+        type: String,
+        state: true,
+      },
     };
   }
   constructor() {
@@ -134,6 +149,7 @@ class MdBlock extends DDD {
     this.markdown = "";
     this.source = "";
     this._parsedMarkdown = "";
+    this._loadError = "";
     if (this.innerHTML) {
       this.markdown = this.innerHTML.trim();
       this.innerHTML = null;
@@ -157,9 +173,19 @@ class MdBlock extends DDD {
             const text = await response.text();
             // security: sanitize remote markdown HTML before unsafeHTML (prevents stored XSS)
             this._parsedMarkdown = sanitizeHTMLString(await marked.parse(text));
+            this._loadError = "";
+          } else {
+            // user-visible fallback for a bad HTTP response (issue #3102 bug 57)
+            this._loadError =
+              "Unable to load markdown source" +
+              (response.status
+                ? " (HTTP " + response.status + ")"
+                : " (HTTP error)");
           }
         } catch (e) {
-          // fail silently, leave empty
+          // differentiate a network throw from a bad response so assistive
+          // tech and users get an accurate, announced message
+          this._loadError = "Unable to load markdown source (network error)";
         }
       } else if (this.markdown) {
         // security: sanitize markdown HTML before unsafeHTML (prevents stored XSS)

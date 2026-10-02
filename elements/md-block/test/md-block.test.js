@@ -292,25 +292,83 @@ describe("md-block test", () => {
       el.remove();
     });
 
-    it("leaves the block empty when the source response is not ok", async () => {
-      globalThis.fetch = () => Promise.resolve({ ok: false });
+    // FIXED (issue #3102 bug 57): fetch failures are no longer silent; a
+    // user-visible aria-live fallback renders and differentiates a bad
+    // HTTP response from a network throw
+    it("shows an announced HTTP-error fallback when the source response is not ok", async () => {
+      globalThis.fetch = () => Promise.resolve({ ok: false, status: 404 });
       const el = globalThis.document.createElement("md-block");
       el.source = "missing.md";
       globalThis.document.body.appendChild(el);
       await el.updateComplete;
-      await aTimeout(50);
+      await waitUntil(
+        () => el._loadError && el._loadError.length > 0,
+        "load error was never surfaced",
+        3000,
+      );
+      await el.updateComplete;
       expect(el._parsedMarkdown).to.equal("");
+      expect(el._loadError).to.equal(
+        "Unable to load markdown source (HTTP 404)",
+      );
+      const status = el.shadowRoot.querySelector('.source-error[role="status"]');
+      expect(status).to.exist;
+      expect(status.getAttribute("aria-live")).to.equal("polite");
+      expect(status.textContent).to.contain("HTTP 404");
       el.remove();
     });
 
-    it("fails silently when fetching the source throws", async () => {
+    it("shows an announced network-error fallback when fetching the source throws", async () => {
       globalThis.fetch = () => Promise.reject(new Error("network down"));
       const el = globalThis.document.createElement("md-block");
       el.source = "unreachable.md";
       globalThis.document.body.appendChild(el);
       await el.updateComplete;
-      await aTimeout(50);
+      await waitUntil(
+        () => el._loadError && el._loadError.length > 0,
+        "load error was never surfaced",
+        3000,
+      );
+      await el.updateComplete;
       expect(el._parsedMarkdown).to.equal("");
+      // differentiated messaging vs the HTTP-error branch
+      expect(el._loadError).to.equal(
+        "Unable to load markdown source (network error)",
+      );
+      const status = el.shadowRoot.querySelector('.source-error[role="status"]');
+      expect(status).to.exist;
+      expect(status.getAttribute("aria-live")).to.equal("polite");
+      expect(status.textContent).to.contain("network error");
+      el.remove();
+    });
+
+    it("clears the fallback and renders content when a retried source succeeds", async () => {
+      globalThis.fetch = () => Promise.reject(new Error("network down"));
+      const el = globalThis.document.createElement("md-block");
+      el.source = "flaky.md";
+      globalThis.document.body.appendChild(el);
+      await el.updateComplete;
+      await waitUntil(
+        () => el._loadError && el._loadError.length > 0,
+        "load error was never surfaced",
+        3000,
+      );
+      globalThis.fetch = () =>
+        Promise.resolve({
+          ok: true,
+          text: () => Promise.resolve("**recovered**"),
+        });
+      el.source = "flaky.md?retry=1";
+      await el.updateComplete;
+      await waitUntil(
+        () => el._parsedMarkdown && el._parsedMarkdown.length > 0,
+        "retried source markdown was never parsed",
+        3000,
+      );
+      await el.updateComplete;
+      expect(el._loadError).to.equal("");
+      expect(el.shadowRoot.querySelector(".source-error")).to.equal(null);
+      expect(el._parsedMarkdown).to.contain("<strong>recovered</strong>");
       el.remove();
     });
   });
