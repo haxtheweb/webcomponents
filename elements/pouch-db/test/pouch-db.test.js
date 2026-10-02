@@ -7,6 +7,13 @@ describe("pouch-db test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html` <pouch-db title="test-title"></pouch-db> `);
+    // the constructor dynamically imports pouchdb before this.db exists;
+    // wait for it so the (now real) direct invocations below never race
+    // database initialization
+    await new Promise((resolve) => {
+      const check = () => (element.db ? resolve() : setTimeout(check, 5));
+      check();
+    });
   });
 
   describe("Component Structure", () => {
@@ -103,7 +110,9 @@ describe("pouch-db test", () => {
         target: { tagName: "MULTIPLE-CHOICE" },
       };
 
-      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw;
+      // FIXED (test-suite bug): invoked for real (was `.to.not.throw`
+      // without parens, so the function was never called)
+      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle pouch-db-get-data events", () => {
@@ -114,7 +123,7 @@ describe("pouch-db test", () => {
         target: { tagName: "TEST-ELEMENT" },
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
   });
 
@@ -157,7 +166,7 @@ describe("pouch-db test", () => {
         target: { tagName: "UNKNOWN-ELEMENT" },
       };
 
-      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw;
+      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw();
     });
   });
 
@@ -170,7 +179,7 @@ describe("pouch-db test", () => {
         target: { tagName: "TEST-ELEMENT" },
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle single-quiz query request", () => {
@@ -182,7 +191,7 @@ describe("pouch-db test", () => {
         target: { tagName: "TEST-ELEMENT" },
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle future-query request", () => {
@@ -197,7 +206,7 @@ describe("pouch-db test", () => {
         target: { tagName: "TEST-ELEMENT" },
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle unknown query request", () => {
@@ -208,19 +217,17 @@ describe("pouch-db test", () => {
         target: { tagName: "TEST-ELEMENT" },
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
   });
 
-  // BUG (test quality, pre-existing): several assertions above use
-  // `expect(() => fn).to.not.throw` WITHOUT calling .throw(), so the
-  // functions under test are never invoked and those tests assert
-  // nothing (the switch branches below were never executed as a result).
-  // Also BUG (pouch-db.js:73): userEngagmentFunction dereferences
-  // eventData.activityDisplay without guarding e.detail, so a
-  // user-engagement event with missing detail throws a TypeError
-  // (masked by the vacuous assertions above).
-  // These tests invoke the methods directly with real assertions.
+  // FIXED (issue #3102 test-suite bugs + bug 6): the assertions above now
+  // invoke .throw() for real (they were written without parens, so the
+  // functions under test were never called and the switch branches never
+  // executed). userEngagmentFunction and getDataFunction now also guard
+  // e.detail/e.target, so events missing detail no longer throw a
+  // TypeError. These tests invoke the methods directly with real
+  // assertions.
   describe("Query Request Branches (direct invocation)", () => {
     const wait = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -357,7 +364,9 @@ describe("pouch-db test", () => {
         target: { tagName: "MULTIPLE-CHOICE" },
       };
 
-      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw;
+      // FIXED (issue #3102 bug 6): really invoked; the new e.detail guard
+      // makes the previously-throwing dereference unreachable
+      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle events with null target", () => {
@@ -366,7 +375,8 @@ describe("pouch-db test", () => {
         target: null,
       };
 
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      // really invoked; the new e.target guard prevents the TypeError
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
 
     it("should handle malformed event data gracefully", () => {
@@ -378,8 +388,8 @@ describe("pouch-db test", () => {
         target: { tagName: "INVALID-ELEMENT" },
       };
 
-      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw;
-      expect(() => element.getDataFunction(mockEvent)).to.not.throw;
+      expect(() => element.userEngagmentFunction(mockEvent)).to.not.throw();
+      expect(() => element.getDataFunction(mockEvent)).to.not.throw();
     });
   });
 
