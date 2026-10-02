@@ -79,6 +79,10 @@ class HaxLogo extends HTMLElement {
 }
 
 .wrap {
+  font-family: var(
+    --hax-logo-font-family,
+    "Press Start 2P", "Courier New", monospace
+  );
   font-size: var(--hax-logo-font-size);
   letter-spacing: var(--hax-logo-letter-spacing);
   text-align: center;
@@ -98,7 +102,7 @@ class HaxLogo extends HTMLElement {
   letter-spacing: -2px;
 }
         </style>
-<span class="wrap"><span class="left">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><slot></slot><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></bt></span><span class="innerslot"><slot name="post"></slot></span><span class="right">&gt;</span></span>`;
+<span class="wrap"><span class="left" aria-hidden="true">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><slot></slot><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></span><span class="innerslot"><slot name="post"></slot></span><span class="right" aria-hidden="true">&gt;</span></span>`;
   }
 
   // haxProperty definition
@@ -118,20 +122,12 @@ class HaxLogo extends HTMLElement {
    */
   constructor() {
     super();
-    if (
-      !globalThis.__haxLogoFontLoaded &&
-      globalThis.document &&
-      globalThis.document.head
-    ) {
-      let link = globalThis.document.createElement("link");
-      link.setAttribute(
-        "href",
-        "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap",
-      );
-      link.setAttribute("rel", "stylesheet");
-      globalThis.document.head.appendChild(link);
-      globalThis.__haxLogoFontLoaded = true;
-    }
+    // on-prem (issue #3102 network flag): the constructor no longer
+    // injects the remote fonts.googleapis.com "Press Start 2P" stylesheet,
+    // so first instantiation never hits the network. The brand font is
+    // declared on .wrap instead: a locally/self-hosted "Press Start 2P"
+    // is used when the page provides it, otherwise a system monospace
+    // stack renders the logo (overridable via --hax-logo-font-family).
     // set tag for later use
     this.tag = HaxLogo.tag;
     this.template = globalThis.document.createElement("template");
