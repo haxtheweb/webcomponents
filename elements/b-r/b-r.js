@@ -18,10 +18,24 @@ class BR extends LitElement {
     this.amount = 0;
   }
   /**
+   * HTMLElement
+   */
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    // a11y (issue #3102 follow-up): the element is a purely decorative
+    // stack of breaks for vertical spacing, so hide it from assistive
+    // tech to avoid blank-line announcements
+    this.setAttribute("aria-hidden", "true");
+  }
+  /**
    * LitElement render callback
    */
   render() {
-    return html`${this.renderBR(this.amount)}</div>`;
+    // FIXED (issue #3102 bug 50): the stray </div> closing tag (no
+    // matching opening tag; the parser dropped it) was removed
+    return html`${this.renderBR(this.amount)}`;
   }
 
   static get properties() {

@@ -56,13 +56,24 @@ describe('b-r', () => {
     expect(content.length).to.equal(Math.ceil(globalThis.innerHeight / 21))
   })
 
-  // BUG b-r.js:24 - the render template ends with a stray `</div>` closing
-  // tag that has no matching opening tag. The HTML parser drops it, so no div
-  // ever reaches the shadow root; asserted here to document current behavior.
-  it('renders no stray div from the malformed trailing closing tag', async () => {
+  // FIXED (issue #3102 bug 50): the stray `</div>` closing tag was removed
+  // from the render template; the shadow root still holds no div and only
+  // the intended breaks.
+  it('renders only the break stack with no stray div in the template', async () => {
     const el = await fixture(html`<b-r amount="1"></b-r>`)
     await el.updateComplete
     expect(el.shadowRoot.querySelectorAll('div').length).to.equal(0)
     expect(el.shadowRoot.querySelectorAll('br').length).to.equal(1)
+    // the raw template no longer contains the malformed closing tag
+    const rendered = el.render()
+    expect(rendered.strings.join('')).to.not.contain('</div>')
+  })
+
+  it('marks itself aria-hidden as a purely decorative spacer', async () => {
+    const el = await fixture(html`<b-r amount="2"></b-r>`)
+    await el.updateComplete
+    // a11y follow-up: the br-stack is decorative spacing, so the host is
+    // hidden from assistive tech to avoid blank-line announcements
+    expect(el.getAttribute('aria-hidden')).to.equal('true')
   })
 })
