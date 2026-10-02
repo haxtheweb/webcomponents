@@ -19,7 +19,6 @@ import {
   normalizeEventPath,
 } from "@haxtheweb/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
-import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -163,9 +162,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
-      // sr-only utility from the DDD design system keeps the undo status
-      // region visually hidden while staying available to assistive tech
-      DDDExtra,
+      // inlined sr-only helper (the same rule ships in DDDReset) so the
+      // undo status region stays visually hidden without a styles-package
+      // import for this single selector
+      css`
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
+      `,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
