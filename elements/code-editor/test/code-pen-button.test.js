@@ -1,13 +1,11 @@
 import { expect, html } from '@open-wc/testing'
 import { CodePenButton } from '../lib/code-pen-button.js'
 
-// NOTE: this element renders an input[type=image] whose src is a HARDCODED
-// remote https:// S3 asset baked into the static template (static template
-// attributes are cloned, not set via setAttribute, so they cannot be
-// intercepted that way). To keep this suite off the real network, the real
-// template is never committed to any document: lifecycle hooks are invoked
-// directly and the real render() is evaluated for its TemplateResult only,
-// while any scheduled detached update renders through a stub.
+// FIXED (issue #3102 bug 20): the input[type=image] src is now an inline
+// data-URI SVG baked into the static template (previously a hardcoded
+// remote https:// S3 asset that fired a real network request on every
+// render). Lifecycle hooks are still invoked directly and render() is
+// evaluated for its TemplateResult so the suite stays fully hermetic.
 
 describe('code-pen-button', () => {
   it('registers the code-pen-button custom element', () => {
@@ -37,13 +35,17 @@ describe('code-pen-button', () => {
     expect(staticText).to.contain('type="hidden"')
     expect(staticText).to.contain('type="image"')
     expect(staticText).to.contain('part="button"')
+    // on-prem (issue #3102 bug 20): the image asset is an inline data URI
+    // and no remote S3 URL remains anywhere in the template
+    expect(staticText).to.contain('src="data:image/svg+xml')
+    expect(staticText).to.not.contain('s3-us-west-2')
+    expect(staticText).to.not.contain('https://')
   })
 
   it('derives dataString from the data object in updated', () => {
     const el = globalThis.document.createElement('code-pen-button')
-    // detached elements never perform their first update, so this cannot
-    // stamp the template (whose static input[type=image] points at a remote
-    // asset); updated is invoked directly instead
+    // detached elements never perform their first update, so updated is
+    // invoked directly instead of waiting on an update cycle
     el.data = { title: 'My Pen', html: '<p>hello</p>' }
     el.updated(new Map([['data', {}]]))
     expect(el.dataString).to.contain('My Pen')

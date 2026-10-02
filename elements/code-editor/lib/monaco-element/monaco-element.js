@@ -489,11 +489,7 @@ class MonacoElement extends LitElement {
     const head = this.document.head;
     const style = this.document.createElement("style");
     style.type = "text/css";
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(this.document.createTextNode(css));
-    }
+    style.appendChild(this.document.createTextNode(css));
     head.appendChild(style);
   }
 }
