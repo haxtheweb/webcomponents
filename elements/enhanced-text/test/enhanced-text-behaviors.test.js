@@ -45,9 +45,10 @@ describe('enhanced-text behaviors', () => {
     el.applyTermFromList({ status: true, data: [] })
     expect(el.querySelector('vocab-term')).to.equal(null)
     expect(el.textContent.trim()).to.equal('plain text')
-    // BUG (enhanced-text.js:52-53): applyTermFromList has no null guard,
-    // so a null payload throws instead of being ignored
-    expect(() => el.applyTermFromList(null)).to.throw()
+    // null payload is ignored by the applyTermFromList null guard
+    // (haxtheweb/issues#3102)
+    expect(() => el.applyTermFromList(null)).to.not.throw()
+    expect(el.querySelector('vocab-term')).to.equal(null)
   })
 
   it('appends definition links inside the vocab-term', async () => {
@@ -210,7 +211,7 @@ describe('enhanced-text behaviors', () => {
     const el = await fixture(
       html`<enhanced-text>Some body text</enhanced-text>`,
     )
-    el.enahncedTextResponse({
+    el.enhancedTextResponse({
       status: true,
       data: '<p>Enhanced <b>text</b></p>',
     })
