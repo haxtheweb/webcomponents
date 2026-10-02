@@ -50,25 +50,25 @@ class BadgeSticker extends SimpleColors {
     display: block;
   }
   .badge {
-    color: white;
-    margin: 20px;
+    color: var(--ddd-theme-default-white);
+    margin: var(--ddd-spacing-5);
     width: 200px;
     height: 200px;
     border-radius: 50%
-    padding: 20px;
+    padding: var(--ddd-spacing-5);
     background: var(
       --badge-color,
       var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue, #1e407c))
     );
-    font-size: 21px;
+    font-size: var(--ddd-font-size-xs);
     font-weight: bold;
     line-height: 1.3em;
-    border: 2px dashed #fff;
+    border: var(--ddd-border-size-sm) dashed var(--ddd-theme-default-white);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--badge-color, var(--simple-colors-default-theme)), 3px 1.5px 9px 6px var(--simple-colors-default-theme-grey-9);
+    box-shadow: 0 0 0 4px var(--badge-color, var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue))), var(--ddd-boxShadow-md);
     font-weight: normal;
     position: relative;    
-    font-family: "Monaco";
+    font-family: var(--ddd-font-navigation);
   }
 
   .badgeImage {
@@ -81,7 +81,7 @@ class BadgeSticker extends SimpleColors {
   }
 
   .date-title {
-    color: white;
+    color: var(--ddd-theme-default-white);
     position: absolute;
     top: -24%;
     left: 50%;
@@ -124,23 +124,33 @@ class BadgeSticker extends SimpleColors {
   .button i {
     margin-right: 8px;
   }
+  /* popover colors migrate to scheme-safe DDD pairs; duplicated
+     box-shadow and border-radius declarations collapse onto tokens */
   .popover {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
-    padding: 10px;
-    background-color: lightgray;
-    border: 1px solid black;
-    border-radius: 4px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    color: black;
+    padding: var(--ddd-spacing-2);
+    background-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-coalyGray)
+    );
+    border: var(--ddd-border-size-xs) solid
+      light-dark(
+        var(--ddd-theme-default-coalyGray),
+        var(--ddd-theme-default-white)
+      );
+    border-radius: var(--ddd-radius-lg);
+    box-shadow: var(--ddd-boxShadow-xl);
+    color: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-theme-default-white)
+    );
     text-shadow: none;
-    font-size: 15px;
-    font-family: "Monaco";
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-    border-radius: 15px;
+    font-size: var(--ddd-font-size-5xs);
+    font-family: var(--ddd-font-navigation);
   }
 `,
     ];

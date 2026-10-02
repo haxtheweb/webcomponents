@@ -18,17 +18,19 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
   }
   static get properties() {
     return {
-      badgeDate: { type: String },
-      badgeImage: { type: String },
-      badgeTitle: { type: String },
-      badgeDetails: { type: String },
-      hyperLink: { type: String },
-      badgeSkills: { type: String },
-      skillsOpened: { type: Boolean },
-      detailsOpened: { type: Boolean },
-      badgeUnlocked: { type: Boolean },
-      badgeColor: { type: String },
-      skill: { type: String },
+      // kebab-case attribute names, aligned with badge-sticker and the
+      // serialized attribute contract from the #3086 fix
+      badgeDate: { type: String, attribute: "badge-date" },
+      badgeImage: { type: String, attribute: "badge-image" },
+      badgeTitle: { type: String, attribute: "badge-title" },
+      badgeDetails: { type: String, attribute: "badge-details" },
+      hyperLink: { type: String, attribute: "hyper-link" },
+      badgeSkills: { type: String, attribute: "badge-skills" },
+      skillsOpened: { type: Boolean, attribute: "skills-opened" },
+      detailsOpened: { type: Boolean, attribute: "details-opened" },
+      badgeUnlocked: { type: Boolean, attribute: "badge-unlocked" },
+      badgeColor: { type: String, attribute: "badge-color" },
+      skill: { type: String, attribute: "skill" },
     };
   }
 
@@ -42,36 +44,46 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
           width: 250px;
           justify-content: center;
           align-items: center;
-          color: white;
+          color: var(--ddd-theme-default-white);
         }
 
         .badges {
           order: 1;
-          color: white;
+          color: var(--ddd-theme-default-white);
         }
 
+        /* blue-8 never resolved in this scope (no SimpleColors base), so
+           the button rendered transparent; the DDD primary token restores
+           a visible, scheme-safe background */
         .unlockButton {
-          margin-top: 50px;
+          margin-top: var(--ddd-spacing-12);
           order: 2;
           width: 175px;
-          background-color: var(--simple-colors-default-theme-blue-8);
-          font-family: "Monaco";
+          background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+          font-family: var(--ddd-font-navigation);
           display: inline-block;
           outline: 0;
           border: none;
           cursor: pointer;
-          line-height: 1.2rem;
-          font-weight: 900;
-          padding: 8px 14px 9px;
-          font-size: 15px;
-          border-radius: 4px;
-          color: #fff;
-          height: 36px;
+          line-height: var(--ddd-lh-120);
+          font-weight: var(--ddd-font-weight-black);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3)
+            var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-5xs);
+          border-radius: var(--ddd-radius-xs);
+          color: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+          );
+          height: var(--ddd-spacing-9);
           transition: all 75ms ease-in-out;
           :hover {
-            box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+            box-shadow: var(--ddd-boxShadow-sm);
           }
-          margin-left: 100px;
+          margin-left: var(--ddd-spacing-25);
         }
       `,
     ];

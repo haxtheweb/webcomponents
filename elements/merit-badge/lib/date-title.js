@@ -15,14 +15,14 @@ class DateTitle extends LitElement {
   static get styles() {
     return css`
       .container {
-        color: white;
+        color: var(--ddd-theme-default-white);
         width: 300px;
         height: 300px;
         margin: 0 auto;
       }
       div.circTxt1,
       div.circTxt2 {
-        color: white;
+        color: var(--ddd-theme-default-white);
         border-radius: 50%;
         display: inline-block;
         position: absolute;
@@ -32,15 +32,14 @@ class DateTitle extends LitElement {
         transform-origin: 50% 50%;
       }
       div.circTxt1 p {
-        color: white;
         font-size: 2em;
         margin: 0;
-        color: white;
+        color: var(--ddd-theme-default-white);
       }
       div.circTxt2 p {
         font-size: 0.8em;
         margin: 0;
-        color: white;
+        color: var(--ddd-theme-default-white);
       }
       @keyframes moveAround {
         0% {
@@ -80,13 +79,15 @@ class DateTitle extends LitElement {
     this.shadowRoot.querySelectorAll(".circTxt1, .circTxt2").forEach((el) => {
       el.remove();
     });
+    // the circular text sits on the page background (outside the badge
+    // circle), so a light-dark() pair keeps it readable on both schemes
     this.generateCircularText(
       "circTxt1",
       this.title,
       90,
       -170,
       -100,
-      "font-size: 20px; color: black;",
+      "font-size: var(--ddd-font-size-xxs); color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));",
       "transform: scaleY(-1) scaleX(-1); position:absolute",
     );
     this.generateCircularText(
@@ -95,7 +96,7 @@ class DateTitle extends LitElement {
       90,
       90,
       -40,
-      "font-size: 20px; color: black;",
+      "font-size: var(--ddd-font-size-xxs); color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));",
       "",
     );
   }

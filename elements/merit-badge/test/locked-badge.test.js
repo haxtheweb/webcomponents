@@ -12,14 +12,15 @@ describe('locked-badge', () => {
     expect(LockedBadge.tag).to.equal('locked-badge')
   })
 
-  it('renders a locked placeholder badge image', async () => {
+  it('renders a locked placeholder badge icon', async () => {
     const el = await fixture(html`<locked-badge></locked-badge>`)
     await el.updateComplete
     expect(el.shadowRoot.querySelector('.badge')).to.exist
-    const img = el.shadowRoot.querySelector('img.badgepic')
-    expect(img).to.exist
-    // the placeholder carries a descriptive alt, not a generic one
-    expect(img.getAttribute('alt')).to.equal('Locked badge')
+    const icon = el.shadowRoot.querySelector('simple-icon-lite.badgepic')
+    expect(icon).to.exist
+    expect(icon.getAttribute('icon')).to.equal('icons:lock')
+    // the placeholder carries a descriptive label, not a generic one
+    expect(icon.getAttribute('aria-label')).to.equal('Locked badge')
     await expect(el).shadowDom.to.be.accessible()
   })
 })
