@@ -454,9 +454,24 @@ describe('TwentySixTheme behavior', () => {
 
   it('runs disposers on disconnect', async () => {
     const el = await fixture(html` <twenty-six-theme></twenty-six-theme> `)
+    // 3 HAXCMSLitElementTheme + 2 HAXCMSThemeParts + 5 own constructor
+    // autoruns, plus the connect-time autoruns from the mixin; the manual
+    // dispose loop this override used to carry was removed because the
+    // shared HAXCMSTheme mixin already disposes everything
+    expect(el.__disposer.length).to.be.at.least(10)
     el.remove()
     expect(Array.isArray(el.__disposer)).to.equal(true)
     expect(el.__disposer.length).to.equal(0)
+    // issue 3106: the wiring instance's watchdog autorun is disposed too
+    expect(el.HAXCMSThemeWiring.__disposer.length).to.equal(0)
+    // no zombie reaction: flipping the store no longer reaches the
+    // removed element
+    const savedEditMode = store.editMode
+    const before = el.editMode
+    store.editMode = !before
+    await tick(80)
+    expect(el.editMode).to.equal(before)
+    store.editMode = savedEditMode
   })
 
   it('passes the a11y audit', async () => {
