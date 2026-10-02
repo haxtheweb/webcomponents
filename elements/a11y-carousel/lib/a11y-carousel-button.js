@@ -90,11 +90,16 @@ class a11yCarouselButton extends LitElement {
     if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (["controls", "active"].includes(propName))
         this.disabled = !this.controls || this.active;
+    });
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
       if (["controls", "active", "disabled"].includes(propName)) {
         this.setAttribute("aria-disabled", this.disabled ? "true" : "false");
         this.setAttribute("tabindex", this.disabled ? "-1" : "0");

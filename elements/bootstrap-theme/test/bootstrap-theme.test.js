@@ -326,52 +326,6 @@ describe("bootstrap-theme test", () => {
         },
       };
 
-      // TEMP DEBUG: trace every searchTerm write on this element
-      const proto = Object.getPrototypeOf(element);
-      const desc = Object.getOwnPropertyDescriptor(proto, "searchTerm");
-      if (desc) {
-        Object.defineProperty(element, "searchTerm", {
-          configurable: true,
-          get() {
-            return desc.get.call(element);
-          },
-          set(v) {
-            console.error(
-              "[DBG-SEARCHTERM] set ->",
-              JSON.stringify(v),
-              "stack:",
-              new Error().stack.split("\n").slice(1, 7).join(" <- "),
-            );
-            desc.set.call(element, v);
-          },
-        });
-      } else {
-        console.error("[DBG-SEARCHTERM] no prototype descriptor found");
-      }
-      const origSearchChanged = element.searchChanged;
-      element.searchChanged = async (evt) => {
-        console.error(
-          "[DBG-SEARCHTERM] searchChanged entered with",
-          JSON.stringify(evt && evt.detail),
-        );
-        try {
-          await origSearchChanged.call(element, evt);
-        } catch (err) {
-          console.error(
-            "[DBG-SEARCHTERM] searchChanged threw:",
-            err && err.message,
-          );
-          throw err;
-        }
-        console.error("[DBG-SEARCHTERM] searchChanged resolved");
-      };
-      const origItemSelected = element.searchItemSelected;
-      element.searchItemSelected = (e) => {
-        console.error("[DBG-SEARCHTERM] searchItemSelected called");
-        return origItemSelected.call(element, e);
-      };
-      // END TEMP DEBUG
-
       // searchChanged awaits the dynamic import of site-search.js before
       // setting searchTerm, so awaiting the returned promise is deterministic
       // however long the (possibly cold) module graph takes to load. The old
@@ -379,23 +333,11 @@ describe("bootstrap-theme test", () => {
       await element.searchChanged(mockEvent);
       await element.updateComplete;
 
-      console.error(
-        "[DBG-SEARCHTERM] asserting searchTerm =",
-        JSON.stringify(element.searchTerm),
-      );
       expect(element.searchTerm).to.equal("test search query");
 
       // Content container is hidden via inline style, not the hidden attr
       const contentContainer =
         element.shadowRoot.querySelector("#contentcontainer");
-      console.error(
-        "[DBG-SEARCHTERM] second assert: contentContainer.style.display =",
-        JSON.stringify(
-          contentContainer && contentContainer.style.display,
-        ),
-        "searchTerm =",
-        JSON.stringify(element.searchTerm),
-      );
       expect(contentContainer.style.display).to.include("none");
     });
 

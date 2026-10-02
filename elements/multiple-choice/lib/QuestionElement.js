@@ -854,7 +854,12 @@ export class QuestionElement extends SchemaBehaviors(
     this.setAttribute("typeof", "oer:Assessment");
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
-    this.loadLightDomData();
+    // defer a microtask so the reactive answers set inside loadLightDomData
+    // does not schedule a second update from within firstUpdated
+    // (Lit change-in-update warning) while keeping post-createElement timing
+    queueMicrotask(() => {
+      this.loadLightDomData();
+    });
   }
 
   render() {

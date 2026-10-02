@@ -623,13 +623,22 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   }
 
   /**
-   * handle updates
+   * handle updates that must batch into the current update,
+   * eg. generating an id and selecting the active tab
    */
-  updated(changedProperties) {
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id") this._idChanged(this.id, oldValue);
       if (propName === "activeTab" && this.activeTab !== oldValue)
         this._activeTabChanged(this.activeTab, oldValue);
+    });
+  }
+  /**
+   * handle updates
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
       if (propName === "responsiveWidth") {
         if (this.vertical) {
           this.setAttribute("vertical", true);

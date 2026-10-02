@@ -581,15 +581,27 @@ export const displayBehaviors = function (SuperClass) {
       this.fetchData();
     }
 
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Derive reactive table state in willUpdate so these sets batch into
+      // the current update cycle; setting them in updated() scheduled a
+      // redundant second update (Lit change-in-update warning).
+      if (changedProperties.has("csvData")) this._loadExternalData();
+      if (changedProperties.has("data"))
+        this._dataChanged(this.data, changedProperties.get("data"));
+      // striped and columnStriped are mutually exclusive
+      if (changedProperties.has("striped") && this.striped)
+        this.columnStriped = false;
+      if (changedProperties.has("columnStriped") && this.columnStriped)
+        this.striped = false;
+    }
+
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
+        // fetchData only starts an async fetch, so it is safe here; the
+        // derivatively-set reactive properties are handled in willUpdate.
         if (propName === "dataCsv" && this[propName]) this.fetchData();
-        if (propName === "csvData") this._loadExternalData();
-        if (propName === "striped" && this.striped) this.columnStriped = false;
-        if (propName === "columnStriped" && this.columnStriped)
-          this.striped = false;
-        if (propName == "data") this._dataChanged(this.data, oldValue);
       });
     }
     /**

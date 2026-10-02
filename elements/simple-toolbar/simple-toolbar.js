@@ -373,10 +373,19 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.addEventListener("keydown", this._handleKeydown);
       if (super.firstUpdated) super.firstUpdated(changedProperties);
     }
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // Rebuild the toolbar in willUpdate (no rendered layout is needed) so
+      // that the reactive registry updates inside updateToolbar()
+      // (`__buttons`, `shortcutKeys`, and the register/deregister-button
+      // events fired synchronously while rebuilding) batch into the current
+      // update cycle instead of scheduling a redundant second update (Lit
+      // change-in-update warning).
+      if (changedProperties.has("config")) this.updateToolbar();
+    }
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "config") this.updateToolbar();
         if (propName === "collapsed") {
           if (this.collapsed) {
             this.resizeToolbar();
@@ -491,7 +500,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           item.setAttribute("collapse-hide", true);
         }
       });
-      this.collapseDisabled = !!shown;
+      // Defer the reactive assignment so that calling resizeToolbar() from
+      // updated() does not schedule a redundant second update (Lit
+      // change-in-update warning); the measured value still applies as soon
+      // as the current update cycle completes.
+      queueMicrotask(() => (this.collapseDisabled = !!shown));
       if (!this.currentItem) this.setCurrentItem(this.firstItem);
     }
     /**

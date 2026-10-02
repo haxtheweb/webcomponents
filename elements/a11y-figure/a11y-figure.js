@@ -283,6 +283,17 @@ class A11yFigure extends A11yDetails {
   }
 
   /**
+   * recomputes whether slotted detail content exists so that the reactive
+   * __hasDetail value batches into the current update instead of
+   * scheduling a second update
+   * @memberof A11yFigure
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    this.__hasDetail = this.hasDetailContent;
+  }
+
+  /**
    * mutation observer for a11y-details
    * @readonly
    * @returns {object}
@@ -318,7 +329,6 @@ class A11yFigure extends A11yDetails {
       image.slot = "image";
       this.appendChild(image);
     }
-    this.__hasDetail = this.hasDetailContent;
     if (figcaption) {
       this._copyAndFilter(figcaption.cloneNode(true), [
         "figcaption",

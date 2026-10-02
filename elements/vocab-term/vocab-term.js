@@ -64,6 +64,21 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     if (this.querySelector(`[slot="information"]`)) {
       this.information = this.querySelector(`[slot="information"]`).textContent;
     }
+    // progressive enhancement support; scan light DOM in the constructor so
+    // the reactive term / links assignments batch into the first update
+    // instead of scheduling a second one (Lit change-in-update warning)
+    if (!this.term && this.innerHTML) {
+      this.term = this.innerHTML;
+    }
+    if (this.querySelector(".links a")) {
+      this.querySelectorAll(".links a").forEach((el) => {
+        this.links.push({
+          title: el.textContent,
+          href: el.getAttribute("href"),
+        });
+      });
+    }
+    this.links = [...this.links];
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -264,9 +279,6 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this.setAttribute("typeof", "oer:LearningComponent");
-    if (!this.term && this.innerHTML) {
-      this.term = this.innerHTML;
-    }
     if (this.popoverMode === false) {
       const summaryEl = this.shadowRoot.querySelector("summary");
       this.shadowRoot
@@ -279,16 +291,6 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     } else {
       this.details = this.shadowRoot.querySelector(`details`);
     }
-    // ensure this gets noticed
-    if (this.querySelector(".links a")) {
-      this.querySelectorAll(".links a").forEach((el) => {
-        this.links.push({
-          title: el.textContent,
-          href: el.getAttribute("href"),
-        });
-      });
-    }
-    this.links = [...this.links];
   }
 
   /**
@@ -305,6 +307,18 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     }
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // derive detailsOpen in willUpdate so the reactive set batches into
+    // the current update cycle (Lit change-in-update warning); listener
+    // wiring and the shadow DOM details query stay in updated() below
+    if (changedProperties.has("popoverMode") && this.popoverMode) {
+      this.detailsOpen = false;
+    }
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -312,7 +326,6 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "popoverMode") {
         if (this[propName]) {
-          this.detailsOpen = false;
           if (this.shadowRoot) {
             this.details = this.shadowRoot.querySelector(`details`);
           }

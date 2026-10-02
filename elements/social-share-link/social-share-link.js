@@ -218,7 +218,13 @@ class SocialShareLink extends LitElement {
     this.url = null;
   }
 
-  updated(changedProperties) {
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // derive the internal __icon / __linkText / __href / __showIcon state in
+    // willUpdate so the reactive sets batch into the current update cycle
+    // instead of scheduling a second one (Lit change-in-update warning)
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
         this.__icon = this._getIcon(this.type);

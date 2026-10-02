@@ -244,10 +244,16 @@ describe("linkedin-embed test", () => {
 
   describe("Badge requests", () => {
     it("requests badge markup and tracks the pending uid", async () => {
+      // every fixture auto-requests a badge script on first render (updated()
+      // sees the initial vanityname change) and each script is only removed
+      // once its async 404 fires. Under load that cleanup can lag into this
+      // test, so snapshot the live count and assert this request adds exactly
+      // one script instead of assuming the body is already clean.
+      const before = scriptsMatching("does-not-exist.js").length;
       element.__buildBadgeUrl = (uid) =>
         `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`;
       element.__requestBadgeMarkup();
-      expect(scriptsMatching("does-not-exist.js").length).to.equal(1);
+      expect(scriptsMatching("does-not-exist.js").length).to.equal(before + 1);
       expect(element.__lastRequestUid).to.be.a("number");
       const manager = element.__ensureCallbackManager();
       expect(manager.handlers[element.__lastRequestUid]).to.be.a("function");

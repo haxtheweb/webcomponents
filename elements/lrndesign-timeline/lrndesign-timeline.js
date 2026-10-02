@@ -564,7 +564,10 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
       }),
     );
 
-    this.updateTimeline();
+    // defer the light DOM progressive enhancement scan so any reactive
+    // events assignment happens outside the update cycle (Lit warns about
+    // changes while another update is pending)
+    queueMicrotask(() => this.updateTimeline());
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -578,14 +581,23 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   /**
    * handle updates
    */
-  updated(changedProperties) {
-    super.updated(changedProperties);
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
-      // migrate the deprecated title into timelineTitle
+      // migrate the deprecated title into timelineTitle; willUpdate so the
+      // reactive set batches into the current update cycle instead of
+      // scheduling a second one (Lit change-in-update warning)
       if (propName === "title" && this.title && !this.timelineTitle)
         this.timelineTitle = this.title;
     });
-    this.updateTimeline();
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // deferred so a reactive events assignment (light DOM progressive
+    // enhancement scan) never lands inside the update cycle
+    queueMicrotask(() => this.updateTimeline());
   }
   /**
    * ensures that events list is an Array
