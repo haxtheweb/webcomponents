@@ -3,7 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+// haxtheweb/issues#3107: full SimpleColors -> DDD migration. DDD extends
+// SimpleColorsSuper, so the accent-color / dark / contrast theming and
+// its --simple-colors-default-theme-accent-* palette vars all keep
+// working, while the DDDSuper constructor registers the DDD design
+// system (globally injecting the --ddd-* variables the terminal
+// fallbacks below now lean on)
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `simple-range-input`
  * `simple styling on a range input`
@@ -11,7 +17,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @element simple-range-input
  */
-class SimpleRangeInput extends SimpleColors {
+class SimpleRangeInput extends DDD {
   /**
    * object life cycle
    */
@@ -95,6 +101,11 @@ class SimpleRangeInput extends SimpleColors {
         :host([disabled]) {
           pointer-events: none;
         }
+        /* haxtheweb/issues#3107: the dark attribute drives color-scheme so
+           the light-dark() pairs in the track / thumb fallbacks track it */
+        :host([dark]) {
+          color-scheme: dark;
+        }
         input[type="range"] {
           -webkit-appearance: none;
           margin: 0;
@@ -110,7 +121,13 @@ class SimpleRangeInput extends SimpleColors {
           border: 2px solid
             var(
               --simple-range-input-focus-border-color,
-              var(--simple-colors-default-theme-accent-8, grey)
+              var(
+                --simple-colors-default-theme-accent-8,
+                light-dark(
+                  var(--ddd-theme-default-coalyGray),
+                  var(--ddd-theme-default-white)
+                )
+              )
             );
           box-shadow: 0 0 0 2px
             var(
@@ -122,7 +139,13 @@ class SimpleRangeInput extends SimpleColors {
           border: 2px solid
             var(
               --simple-range-input-focus-border-color,
-              var(--simple-colors-default-theme-accent-8, grey)
+              var(
+                --simple-colors-default-theme-accent-8,
+                light-dark(
+                  var(--ddd-theme-default-coalyGray),
+                  var(--ddd-theme-default-white)
+                )
+              )
             );
           box-shadow: 0 0 0 2px
             var(
@@ -134,7 +157,13 @@ class SimpleRangeInput extends SimpleColors {
           border: 2px solid
             var(
               --simple-range-input-focus-border-color,
-              var(--simple-colors-default-theme-accent-8, grey)
+              var(
+                --simple-colors-default-theme-accent-8,
+                light-dark(
+                  var(--ddd-theme-default-coalyGray),
+                  var(--ddd-theme-default-white)
+                )
+              )
             );
           box-shadow: 0 0 0 2px
             var(
@@ -153,7 +182,13 @@ class SimpleRangeInput extends SimpleColors {
           );
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
           border-radius: var(--simple-range-input-track-border-radius, 2px);
           border: var(--simple-range-input-border, 0px solid #000000);
@@ -173,7 +208,13 @@ class SimpleRangeInput extends SimpleColors {
           border-radius: var(--simple-range-input-border-radius, 50%);
           background: var(
             --simple-range-input-color,
-            var(--simple-colors-default-theme-accent-8, grey)
+            var(
+              --simple-colors-default-theme-accent-8,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              )
+            )
           );
           cursor: pointer;
           margin: calc(
@@ -191,7 +232,13 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]:focus::-webkit-slider-runnable-track {
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
         }
         input[type="range"]::-moz-range-track {
@@ -205,7 +252,13 @@ class SimpleRangeInput extends SimpleColors {
           );
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
           border-radius: var(--simple-range-input-track-border-radius, 2px);
           border: var(--simple-range-input-border, 0px solid #000000);
@@ -225,7 +278,13 @@ class SimpleRangeInput extends SimpleColors {
           border-radius: var(--simple-range-input-border-radius, 50%);
           background: var(
             --simple-range-input-color,
-            var(--simple-colors-default-theme-accent-8, grey)
+            var(
+              --simple-colors-default-theme-accent-8,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              )
+            )
           );
           cursor: pointer;
           margin: calc(
@@ -251,7 +310,13 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]::-ms-fill-lower {
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
           border: var(--simple-range-input-border, 0px solid #000000);
           border-radius: var(--simple-range-input-track-border-radius, 2px);
@@ -264,7 +329,13 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]::-ms-fill-upper {
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
           border: var(--simple-range-input-border, 0px solid #000000);
           border-radius: var(--simple-range-input-track-border-radius, 2px);
@@ -289,7 +360,13 @@ class SimpleRangeInput extends SimpleColors {
           border-radius: var(--simple-range-input-border-radius, 50%);
           background: var(
             --simple-range-input-color,
-            var(--simple-colors-default-theme-accent-8, grey)
+            var(
+              --simple-colors-default-theme-accent-8,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              )
+            )
           );
           cursor: pointer;
           margin: calc(
@@ -306,13 +383,25 @@ class SimpleRangeInput extends SimpleColors {
         input[type="range"]:focus::-ms-fill-lower {
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
         }
         input[type="range"]:focus::-ms-fill-upper {
           background: var(
             --simple-range-input-bg,
-            var(--simple-colors-default-theme-accent-2, black)
+            var(
+              --simple-colors-default-theme-accent-2,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-coalyGray)
+              )
+            )
           );
         }
         #label {
