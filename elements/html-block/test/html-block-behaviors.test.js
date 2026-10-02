@@ -44,7 +44,7 @@ describe('html-block behaviors', () => {
     expect(el.__observer).to.be.instanceOf(MutationObserver)
   })
 
-  it('BUG: content present at connect time is never sanitized', async () => {
+  it('sanitizes content present at connect time', async () => {
     const el = await fixture(
       html`<html-block>
         <script>
@@ -54,15 +54,15 @@ describe('html-block behaviors', () => {
       </html-block>`,
     )
     await settle()
-    // BUG (html-block.js:83-97): connectedCallback only arms a
-    // MutationObserver; sanitize runs exclusively from later mutations.
-    // Pre-existing light DOM is never passed through sanitizeHTMLString,
-    // so a live onclick handler survives connection (the script tag is
-    // inert via innerHTML semantics, but event-handler attributes are
-    // an active vector once clicked). __rawHTML is never even captured.
-    expect(el.querySelector('script')).to.exist
-    expect(el.querySelector('p').getAttribute('onclick')).to.equal('evil()')
-    expect(el.__rawHTML).to.equal(undefined)
+    // issues#3102 #3 (security) FIXED: connectedCallback now sanitizes the
+    // existing light DOM and captures __rawHTML for it, so pre-existing
+    // event-handler attributes and script nodes never survive connection.
+    expect(el.querySelector('script')).to.equal(null)
+    expect(el.innerHTML).to.contain('&lt;script&gt;')
+    expect(el.querySelector('p').getAttribute('onclick')).to.equal(null)
+    expect(el.querySelector('p').textContent).to.equal('hi')
+    expect(typeof el.__rawHTML).to.equal('string')
+    expect(el.__rawHTML).to.contain('onclick="evil()"')
   })
 
   it('sanitizes content written after connection', async () => {
@@ -93,7 +93,7 @@ describe('html-block behaviors', () => {
     expect(el.querySelector('p').textContent).to.equal('added')
   })
 
-  it('BUG: allowscript at parse time never survives connect', async () => {
+  it('parse-time allowscript survives connect and skips sanitization', async () => {
     const el = await fixture(
       html`<html-block allowscript>
         <script>
@@ -102,17 +102,14 @@ describe('html-block behaviors', () => {
       </html-block>`,
     )
     await settle()
-    // BUG (html-block.js:83-86): connectedCallback unconditionally sets
-    // this.allowscript = false, removing the author-supplied attribute,
-    // so parse-time allowscript content is sanitized no matter what.
-    expect(el.getAttribute('allowscript')).to.equal(null)
-    expect(el.querySelector('script')).to.equal(null)
-    expect(el.innerHTML).to.contain('&lt;script&gt;')
-    // the raw value was captured by the sanitize pass; NOTE: depending on
-    // upgrade/attribute reaction ordering the captured pen can already
-    // hold the escaped form (double-sanitize), so only check it is set
-    expect(typeof el.__rawHTML).to.equal('string')
-    expect(el.__rawHTML).to.contain('script')
+    // issues#3102 #26 FIXED: connectedCallback reads the allowscript
+    // attribute first and only force-sanitizes when it is absent; a bare
+    // (empty-string) attribute is the author's intent to allow script and
+    // now survives connect with the content untouched.
+    expect(el.hasAttribute('allowscript')).to.equal(true)
+    expect(el.allowscript).to.equal('')
+    expect(el.querySelector('script')).to.exist
+    expect(el.__rawHTML).to.equal(undefined)
   })
 
   it('restores raw HTML when allowscript is toggled on and off', async () => {
@@ -130,6 +127,26 @@ describe('html-block behaviors', () => {
     await settle()
     expect(el.querySelector('script')).to.equal(null)
     expect(el.innerHTML).to.contain('&lt;script&gt;')
+  })
+
+  it('keeps the original raw pen across repeated sanitize passes', async () => {
+    const el = await fixture(html`<html-block></html-block>`)
+    await settle()
+    el.innerHTML = '<p onclick="evil()">keep</p>'
+    await settle()
+    expect(el.__rawHTML).to.equal('<p onclick="evil()">keep</p>')
+    // issues#3102 #27 FIXED: extra sanitize passes (upgrade /
+    // attribute-reaction ordering) skip the recapture when innerHTML is
+    // already the escaped form of the stored pen, so the pen can never end
+    // up holding escaped content.
+    el.render()
+    el.render()
+    expect(el.__rawHTML).to.equal('<p onclick="evil()">keep</p>')
+    // toggling allowscript on restores the author's original HTML, not
+    // escaped text
+    el.setAttribute('allowscript', 'allowscript')
+    await settle()
+    expect(el.querySelector('p').getAttribute('onclick')).to.equal('evil()')
   })
 
   it('skips sanitization for mutations while allowscript is on', async () => {
