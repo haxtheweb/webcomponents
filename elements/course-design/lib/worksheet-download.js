@@ -117,10 +117,11 @@ export class WorksheetDownload extends LitElement {
           color: var(--ddd-theme-default-link, #005fa9);
           display: block;
           text-transform: none;
-          border: solid 2px #dcdcdc;
+          /* hardcoded #dcdcdc border migrates to the DDD border token */
+          border: var(--ddd-border-sm);
           width: 100%;
           margin: 0 auto 0;
-          min-height: 48px;
+          min-height: var(--ddd-spacing-12);
           text-align: center;
         }
 
@@ -133,7 +134,7 @@ export class WorksheetDownload extends LitElement {
         }
 
         simple-icon {
-          margin-right: 5px;
+          margin-right: var(--ddd-spacing-1);
         }
       `,
     ];

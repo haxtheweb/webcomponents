@@ -2,6 +2,10 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../merit-badge.js";
 import { MeritBadge } from "../merit-badge.js";
 
+// tiny inline 1x1 gif so the badge image fixture resolves without any
+// network or 404 noise on the local WTR dev server
+const DATA_URI = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+
 describe("elementName test", () => {
   let element;
   beforeEach(async () => {
@@ -203,15 +207,16 @@ describe('merit-badge element', () => {
   })
 
   it('unlocks into a badge sticker and back through the button', async () => {
-    // properties map to lowercased attribute names (badgetitle etc), not kebab-case
+    // properties map to kebab-case attribute names, aligned with
+    // badge-sticker and the serialized attribute contract
     const el = await fixture(html`
       <merit-badge
-        badgeTitle="Trailblazer"
-        badgeImage="badge.png"
-        badgeDetails="Earned for blazing trails"
-        hyperLink="https://example.com/verify"
-        badgeSkills="leadership,navigation"
-        badgeColor="#2b6cb0"
+        badge-title="Trailblazer"
+        badge-image="${DATA_URI}"
+        badge-details="Earned for blazing trails"
+        hyper-link="https://example.com/verify"
+        badge-skills="leadership,navigation"
+        badge-color="#2b6cb0"
       ></merit-badge>
     `)
     await el.updateComplete
@@ -224,7 +229,7 @@ describe('merit-badge element', () => {
     expect(sticker).to.exist
     // the child serializes with kebab-case attribute names
     expect(sticker.getAttribute('badge-title')).to.equal('Trailblazer')
-    expect(sticker.getAttribute('badge-image')).to.equal('badge.png')
+    expect(sticker.getAttribute('badge-image')).to.equal(DATA_URI)
     expect(sticker.getAttribute('badge-details')).to.equal(
       'Earned for blazing trails',
     )

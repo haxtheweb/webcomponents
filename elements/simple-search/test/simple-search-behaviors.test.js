@@ -56,7 +56,7 @@ describe('simple-search defaults and rendering', () => {
     expect(next.getAttribute('aria-label')).to.equal('next result')
     // fixed: aria-controls is truly absent when controls is unset (the old
     // undefined fallback committed an empty attribute), so the
-    // button:not([aria-controls]) rule can match again
+    // #searchnav button:not([aria-controls]) hide rule can match again
     expect(prev.getAttribute('aria-controls') === null).to.be.true
     expect(next.getAttribute('aria-controls') === null).to.be.true
     expect(prev.disabled).to.be.true

@@ -18,11 +18,12 @@
     <demo-snippet>
       <template>
 <style>
+  /* the native progress element follows the CSS accent-color property */
   promise-progress-lite {
     accent-color: red;
   }
 </style>
-<promise-progress-lite id="progress2" accent-color="red" show-count></promise-progress-lite>
+<promise-progress-lite id="progress2" show-count></promise-progress-lite>
 <button id="b2">Click to load stuff</button>
 <script type="module" async defer>
   let ary = [

@@ -84,25 +84,40 @@ class TaggingQuestion extends QuestionElement {
           cursor: unset;
         }
 
+        /* hover affordance on a defined token pair; the previous rule
+           silently no-oped on an undefined token name */
         :host(:not([show-answer])) .tag-option:hover,
         :host(:not([show-answer])) .tag-option:focus {
-          background-color: var(--ddd-theme-default-disable);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
         }
 
+        /* drag feedback stays visible on both schemes */
         :host([dragging]) #user-choice-container {
           border-style: dashed;
-          border-color: gray;
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
         }
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
-          border-color: black;
+          border-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           background-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
         }
         :host([drag-enter][dragging]) #possible-container {
-          border-color: black;
+          border-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           border-style: dashed;
           background-color: light-dark(
             var(--ddd-theme-default-limestoneLight),

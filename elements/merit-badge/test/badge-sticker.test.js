@@ -3,6 +3,11 @@ import { fixture, expect, html } from '@open-wc/testing'
 import '../lib/badge-sticker.js'
 import { BadgeSticker } from '../lib/badge-sticker.js'
 
+// tiny inline 1x1 gif so the badge image fixture resolves without any
+// network or 404 noise on the local WTR dev server
+const DATA_URI =
+  'data:image/gif;base64,R0lGODlhAQABAAAAACw='
+
 describe('badge-sticker', () => {
   it('registers the custom element', () => {
     expect(globalThis.customElements.get('badge-sticker')).to.exist
@@ -30,7 +35,7 @@ describe('badge-sticker', () => {
     const el = await fixture(html`
       <badge-sticker
         badge-title="Trailblazer"
-        badge-image="badge.png"
+        badge-image="${DATA_URI}"
         badge-details="Earned for blazing trails"
         hyper-link="https://example.com/verify"
         badge-skills="leadership,navigation"
@@ -48,7 +53,7 @@ describe('badge-sticker', () => {
       new Date().toLocaleDateString(),
     )
     const img = el.shadowRoot.querySelector('img.badgepic')
-    expect(img.getAttribute('src')).to.equal('badge.png')
+    expect(img.getAttribute('src')).to.equal(DATA_URI)
     // the badge image alt reflects the badge title
     expect(img.getAttribute('alt')).to.equal('Trailblazer')
     const link = el.shadowRoot.querySelector('.verificationlink a')

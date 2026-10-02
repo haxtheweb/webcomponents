@@ -214,19 +214,19 @@ class CourseModel extends SchemaBehaviors(LitElement) {
         }
 
         h1 {
-          color: #fff;
+          color: var(--ddd-theme-default-white);
           margin: 0;
         }
 
         @media screen and (min-width: 320px) {
           h1 {
-            font-size: 16px;
+            font-size: var(--ddd-font-size-4xs);
           }
         }
 
         @media screen and (min-width: 920px) {
           h1 {
-            font-size: 24px;
+            font-size: var(--ddd-font-size-s);
           }
         }
 
@@ -234,9 +234,10 @@ class CourseModel extends SchemaBehaviors(LitElement) {
           position: relative;
         }
 
+        /* the potential-family tokens are DDD deep overlays */
         #info-wrap {
-          background: rgba(0, 0, 0, 0.8);
-          color: #ffffff;
+          background: var(--ddd-theme-default-potential75);
+          color: var(--ddd-theme-default-white);
           position: absolute;
           z-index: 1;
           overflow-y: scroll;
@@ -260,13 +261,16 @@ class CourseModel extends SchemaBehaviors(LitElement) {
         }
 
         .slotted-text {
-          padding: 25px;
+          padding: var(--ddd-spacing-6);
         }
 
         model-viewer {
           --progress-bar-height: 0px;
           width: 100%;
-          background-color: #eee;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
 
         @media screen and (min-width: 320px) {
@@ -284,7 +288,7 @@ class CourseModel extends SchemaBehaviors(LitElement) {
         #toolbar-wrap {
           display: inline-flex;
           align-items: center;
-          background-color: #363533;
+          background-color: var(--ddd-theme-default-coalyGray);
           width: 100%;
         }
 
@@ -319,22 +323,23 @@ class CourseModel extends SchemaBehaviors(LitElement) {
           }
         }
 
+        /* the accent orange migrates to the DDD inventOrange token */
         .tool-button:hover {
-          background-color: #e2801e;
+          background-color: var(--ddd-theme-default-inventOrange);
         }
 
         .tool-button:focus {
-          background-color: #e2801e;
+          background-color: var(--ddd-theme-default-inventOrange);
         }
 
         .tool-button:active {
-          background-color: #e2801e;
+          background-color: var(--ddd-theme-default-inventOrange);
         }
 
         @media screen and (min-width: 320px) {
           svg {
-            height: 20px;
-            width: 20px;
+            height: var(--ddd-icon-3xs);
+            width: var(--ddd-icon-3xs);
           }
         }
 
@@ -347,11 +352,11 @@ class CourseModel extends SchemaBehaviors(LitElement) {
 
         #title {
           flex-grow: 1;
-          background-color: dimgray;
+          background-color: var(--ddd-theme-default-slateGray);
           height: inherit;
           display: flex;
           align-items: center;
-          padding: 0 0 0 15px;
+          padding: 0 0 0 var(--ddd-spacing-4);
         }
 
         @media screen and (min-width: 320px) {

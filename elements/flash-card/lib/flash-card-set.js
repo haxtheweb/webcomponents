@@ -1,11 +1,11 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "../flash-card.js";
 
-export class FlashCardSet extends SimpleColors {
+export class FlashCardSet extends DDD {
   static get tag() {
     return "flash-card-set";
   }

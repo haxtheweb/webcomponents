@@ -58,6 +58,12 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
       // so deferred hash params still parse on load instead of the
       // WebIDL null coercion clobbering the handler slot
       globalThis.onload = getParams;
+      // when parsing was deferred, default the params object so early
+      // callers run an empty search instead of throwing at the params
+      // lookups below; the deferred parse still overwrites this on load
+      if (!globalThis.AnchorBehaviors.params) {
+        globalThis.AnchorBehaviors.params = {};
+      }
     }
     /** search for all combos of id and resource id */
     globalThis.AnchorBehaviors.target =

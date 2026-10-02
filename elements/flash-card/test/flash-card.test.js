@@ -1,12 +1,16 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../flash-card.js";
 
+// tiny inline 1x1 gif so image fixtures resolve without any network or
+// 404 noise on the local WTR dev server (the package ships no image assets)
+const DATA_URI = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+
 describe("FlashCard test", () => {
   let element;
 
   beforeEach(async () => {
     element = await fixture(html`
-      <flash-card img-source="test-image.jpg" img-keyword="test">
+      <flash-card img-source="${DATA_URI}" img-keyword="test">
         <div slot="front">Front content</div>
         <div slot="back">Back content</div>
       </flash-card>
@@ -30,23 +34,25 @@ describe("FlashCard test", () => {
 
   // Property validation tests
   it("sets image properties correctly", async () => {
-    expect(element.imgSource).to.equal("test-image.jpg");
+    expect(element.imgSource).to.equal(DATA_URI);
     expect(element.imgKeyword).to.equal("test");
 
-    element.imgSource = "new-image.png";
+    element.imgSource = "data:image/png;base64,iVBORw0KGgo=";
     element.imgKeyword = "new-keyword";
     await element.updateComplete;
 
-    expect(element.imgSource).to.equal("new-image.png");
+    expect(element.imgSource).to.equal("data:image/png;base64,iVBORw0KGgo=");
     expect(element.imgKeyword).to.equal("new-keyword");
   });
 
   it("reflects img-source to attribute", async () => {
-    expect(element.getAttribute("img-source")).to.equal("test-image.jpg");
+    expect(element.getAttribute("img-source")).to.equal(DATA_URI);
 
-    element.imgSource = "reflected-image.jpg";
+    element.imgSource = "data:image/png;base64,iVBORw0KGgo=";
     await element.updateComplete;
-    expect(element.getAttribute("img-source")).to.equal("reflected-image.jpg");
+    expect(element.getAttribute("img-source")).to.equal(
+      "data:image/png;base64,iVBORw0KGgo=",
+    );
   });
 
   it("reflects status to attribute", async () => {
@@ -72,7 +78,7 @@ describe("FlashCard test", () => {
       "flash-card-image-prompt",
     );
     expect(imagePrompt).to.exist;
-    expect(imagePrompt.getAttribute("img-src")).to.equal("test-image.jpg");
+    expect(imagePrompt.getAttribute("img-src")).to.equal(DATA_URI);
     expect(imagePrompt.getAttribute("img-keyword")).to.equal("test");
   });
 
@@ -147,7 +153,7 @@ describe("FlashCard test", () => {
 
   it("passes the a11y audit with different content", async () => {
     const accessibleElement = await fixture(html`
-      <flash-card img-source="accessible-image.jpg" img-keyword="accessible">
+      <flash-card img-source="${DATA_URI}" img-keyword="accessible">
         <div slot="front">
           <h3>Question</h3>
           <p>What is the capital of France?</p>
@@ -205,14 +211,16 @@ describe("FlashCard test", () => {
 
   // Dynamic content tests
   it("updates image prompt when properties change", async () => {
-    element.imgSource = "updated-image.jpg";
+    element.imgSource = "data:image/png;base64,iVBORw0KGgo=";
     element.imgKeyword = "updated";
     await element.updateComplete;
 
     const imagePrompt = element.shadowRoot.querySelector(
       "flash-card-image-prompt",
     );
-    expect(imagePrompt.getAttribute("img-src")).to.equal("updated-image.jpg");
+    expect(imagePrompt.getAttribute("img-src")).to.equal(
+      "data:image/png;base64,iVBORw0KGgo=",
+    );
     expect(imagePrompt.getAttribute("img-keyword")).to.equal("updated");
   });
 
@@ -238,9 +246,17 @@ describe("FlashCard test", () => {
   // Rapid property change tests
   it("handles rapid property changes", async () => {
     const changes = [
-      { imgSource: "image1.jpg", imgKeyword: "keyword1", status: "pending" },
-      { imgSource: "image2.jpg", imgKeyword: "keyword2", status: "correct" },
-      { imgSource: "image3.jpg", imgKeyword: "keyword3", status: "incorrect" },
+      { imgSource: DATA_URI, imgKeyword: "keyword1", status: "pending" },
+      {
+        imgSource: "data:image/png;base64,iVBORw0KGgo=",
+        imgKeyword: "keyword2",
+        status: "correct",
+      },
+      {
+        imgSource: "data:image/png;base64,iVBORw0KGgoAAA=",
+        imgKeyword: "keyword3",
+        status: "incorrect",
+      },
     ];
 
     for (const change of changes) {
@@ -248,7 +264,7 @@ describe("FlashCard test", () => {
       await element.updateComplete;
     }
 
-    expect(element.imgSource).to.equal("image3.jpg");
+    expect(element.imgSource).to.equal("data:image/png;base64,iVBORw0KGgoAAA=");
     expect(element.imgKeyword).to.equal("keyword3");
     expect(element.status).to.equal("incorrect");
   });

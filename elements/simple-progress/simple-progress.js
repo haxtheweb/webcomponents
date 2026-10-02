@@ -31,7 +31,12 @@ class SimpleProgress extends HTMLElement {
     }
 
     #primaryProgress {
-      background: var(--simple-progress-color, #37A0CE);
+      /* the legacy own-palette fallback migrates to the DDD skyBlue token
+         (with the old value as a safety net); dark-mode-safe as-is */
+      background: var(
+        --simple-progress-color,
+        var(--ddd-theme-default-skyBlue, #37A0CE)
+      );
       position:  absolute;
       top: 0;
       right: 0;

@@ -87,9 +87,10 @@ export class EbookButton extends LitElement {
         }
 
         #book {
-          min-height: 48px;
+          min-height: var(--ddd-spacing-12);
           text-transform: none;
-          padding: 10px 25px 10px 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-6)
+            var(--ddd-spacing-2) 0;
         }
 
         #book:active,
@@ -104,14 +105,15 @@ export class EbookButton extends LitElement {
         }
 
         simple-icon-lite {
-          height: 55px;
-          width: 55px;
-          margin-right: 5px;
+          /* DDD icon sizing variables size the icon and its svg */
+          --simple-icon-height: var(--ddd-icon-lg);
+          --simple-icon-width: var(--ddd-icon-lg);
+          margin-right: var(--ddd-spacing-1);
         }
 
         .title {
-          font-size: 16px;
-          font-weight: bold;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
           display: inline-flex;
         }
         a,

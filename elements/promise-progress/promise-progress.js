@@ -2,9 +2,8 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "lit";
+import { html, css } from "lit";
 import { PromiseProgressLite } from "./lib/promise-progress-lite.js";
-import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 /**
  * `promise-progress`
  * `An element to display the progress visually of forfilling an array of JS Promise objects`
@@ -13,12 +12,30 @@ import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/wc-preload.html WC-Preloader
  * @element promise-progress
  */
-export class PromiseProgress extends SimpleColorsSuper(PromiseProgressLite) {
+export class PromiseProgress extends PromiseProgressLite {
   constructor() {
     super();
   }
   static get tag() {
     return "promise-progress";
+  }
+  /**
+   * The native progress element follows the CSS accent-color property.
+   * The DDD primary token feeds the default; light DOM CSS (or the
+   * data-primary attribute with DDD styles in scope) can still override.
+   */
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        :host {
+          accent-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+        }
+      `,
+    ];
   }
   /**
    * LitElement render callback

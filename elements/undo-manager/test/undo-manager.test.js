@@ -13,6 +13,27 @@ describe("undo-manager test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("renders a visually-hidden polite live region for state changes", async () => {
+    const region = element.shadowRoot.querySelector("[aria-live='polite']");
+    expect(region).to.exist;
+    expect(region.className.trim()).to.equal("sr-only");
+  });
+
+  it("announces undo availability as the stack changes", async () => {
+    // first stack entry flips canUndo from false to true
+    element.undoStack.execute({ execute: () => {}, undo: () => {}, redo: () => {} });
+    await element.updateComplete;
+    expect(element.canUndo).to.be.true;
+    expect(element.__undoAnnouncement).to.equal("Undo available.");
+    // undoing empties the stack and opens a redo step, announcing both
+    element.undoStack.undo();
+    await element.updateComplete;
+    expect(element.canRedo).to.be.true;
+    expect(element.__undoAnnouncement).to.equal(
+      "No more undo steps. Redo available.",
+    );
+  });
 });
 
 /*

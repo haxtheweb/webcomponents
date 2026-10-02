@@ -32,7 +32,6 @@ import {
   DDDFontWeight,
   DDDFontClasses,
   DDDBreadcrumb,
-  DDDExtra,
 } from '../lib/DDDStyles.js'
 import { DDDBorders } from '../lib/DDDBorders.js'
 import { DDDFontSizing } from '../lib/DDDFontSizing.js'
@@ -362,7 +361,12 @@ describe('DDDStyles CSS exports', () => {
     expect(DDDFontWeight.cssText).to.exist
     expect(DDDFontClasses.cssText).to.exist
     expect(DDDBreadcrumb.cssText).to.exist
-    expect(DDDExtra.cssText).to.exist
+  })
+
+  it('DDDReset ships the sr-only screen-reader helper class', () => {
+    // DDDExtra was removed; the rule folded into DDDReset so every
+    // DDDSuper-based element gets it through super.styles
+    expect(DDDReset.cssText).to.include('.sr-only')
   })
 })
 

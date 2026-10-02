@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 class LockedBadge extends LitElement {
   static get tag() {
@@ -7,47 +9,60 @@ class LockedBadge extends LitElement {
   static get styles() {
     return [
       css`
-.badge
-  {
-    width: 200px;
-    height: 200px;
-    background: grey;
-    border-radius: 50%
-    padding: 20px;
-    margin: 20px;
-    background: grey;
-    color: black;
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 1.3em;
-    border: 2px dashed black;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px grey, 3px 2px 7px 5px rgba(10, 10, 0, 0.5);
-    text-shadow: -1px -1px grey;
-    font-weight: normal;
-    position: relative;    
-  }
+        .badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 200px;
+          height: 200px;
+          border-radius: var(--ddd-radius-circle);
+          padding: var(--ddd-spacing-5);
+          margin: var(--ddd-spacing-5);
+          /* greys migrate to a DDD light-dark pair so the placeholder
+             stays scheme-safe */
+          background: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-size: var(--ddd-font-size-xs);
+          line-height: var(--ddd-lh-140);
+          border: var(--ddd-border-size-sm) dashed
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            );
+          box-shadow: 0 0 0 4px
+              light-dark(
+                var(--ddd-theme-default-limestoneGray),
+                var(--ddd-theme-default-slateGray)
+              ),
+            var(--ddd-boxShadow-md);
+          position: relative;
+        }
 
-  .badgepic
-  {
-    max-width: 70px;
-    max-height: 70px;
-    align-content: center;
-    padding-left: 65px;
-    padding-top: 58px;
-  }
-`,
+        .badgepic {
+          --simple-icon-height: var(--ddd-icon-2xl);
+          --simple-icon-width: var(--ddd-icon-2xl);
+        }
+      `,
     ];
   }
 
   render() {
     return html`
       <div class="badge">
-        <img
+        <!-- local icon instead of the remote flaticon asset so nothing
+             loads off-premises -->
+        <simple-icon-lite
           class="badgepic"
-          src="https://cdn-icons-png.flaticon.com/512/61/61457.png"
-          alt="Locked badge"
-        />
+          icon="icons:lock"
+          role="img"
+          aria-label="Locked badge"
+        ></simple-icon-lite>
       </div>
     `;
   }
