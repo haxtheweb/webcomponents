@@ -2,7 +2,12 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
+// haxtheweb/issues#3107: extends DDD so the DDDSuper constructor registers
+// the DDD design system, which globally injects the --ddd-* variables;
+// the round-10 mechanical token swaps below now resolve on pages that
+// never otherwise load DDD instead of degrading to inherit
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -13,10 +18,11 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * @demo demo/index.html
  * @element social-share-link
  */
-class SocialShareLink extends LitElement {
+class SocialShareLink extends DDD {
   //styles function
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: inline;
@@ -24,6 +30,12 @@ class SocialShareLink extends LitElement {
 
         :host([hidden]) {
           display: none;
+        }
+
+        /* haxtheweb/issues#3107: the dark attribute drives color-scheme so
+           the light-dark() pairs below track it alongside the icon flip */
+        :host([dark]) {
+          color-scheme: dark;
         }
 
         a {
@@ -48,14 +60,20 @@ class SocialShareLink extends LitElement {
         /* issues#3102 DDD: mechanical swaps of the hardcoded #ddd/#666/
            #0066ff/#0044ee and white keywords to DDD design tokens.
            The :host([disabled]) selectors are now reachable because
-           disabled is reflected onto the host (issues#3102 #21). */
+           disabled is reflected onto the host (issues#3102 #21).
+           haxtheweb/issues#3107: the token fallbacks pair a light and a
+           dark DDD value via light-dark() so the disabled / button colors
+           stay compliant under the dark color scheme too */
         :host([disabled]) a,
         :host([disabled]) a:focus,
         :host([disabled]) a:hover,
         :host([disabled]) a:visited {
           color: var(
             --social-share-disabled-link-color,
-            var(--ddd-theme-default-limestoneGray)
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            )
           );
         }
 
@@ -68,7 +86,10 @@ class SocialShareLink extends LitElement {
           );
           background-color: var(
             --social-share-button-bg,
-            var(--ddd-theme-default-link)
+            light-dark(
+              var(--ddd-theme-default-link),
+              var(--ddd-theme-default-nittanyNavy)
+            )
           );
           text-decoration: none;
           transition: all 0.6s ease-in-out;
@@ -89,7 +110,10 @@ class SocialShareLink extends LitElement {
           );
           background-color: var(
             --social-share-button-hover-bg,
-            var(--ddd-theme-default-nittanyNavy)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-link)
+            )
           );
         }
 
@@ -99,11 +123,17 @@ class SocialShareLink extends LitElement {
         :host([button-style][disabled]) a:visited {
           color: var(
             --social-share-disabled-button-color,
-            var(--ddd-theme-default-limestoneGray)
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            )
           );
           background-color: var(
             --social-share-disabled-button-bg,
-            var(--ddd-theme-default-coalyGray)
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-slateGray)
+            )
           );
         }
 
