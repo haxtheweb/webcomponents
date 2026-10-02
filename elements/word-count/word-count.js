@@ -24,14 +24,26 @@ class WordCount extends I18NMixin(LitElement) {
           font-size: var(--word-count-font-size, 10px);
           transition: var(--word-count-transition, 0.3s font-size, color ease);
           line-height: var(--word-count-line-height, 16px);
-          color: var(--word-count-color, #888888);
+          color: var(
+            --word-count-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray, #888888),
+              var(--ddd-theme-default-limestoneLight, #888888)
+            )
+          );
         }
         :host(:hover):after,
         :host(:focus):after,
         :host(:active):after {
           font-size: var(--word-count-font-size-hover, 12px);
           font-weight: var(--word-count-font-weight-hover, bold);
-          color: var(--word-count-color-hover, #000000);
+          color: var(
+            --word-count-color-hover,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #000000),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
         }
         .screen-reader-text {
           border: 0;
@@ -84,13 +96,18 @@ class WordCount extends I18NMixin(LitElement) {
   update(changedProperties) {
     super.update(changedProperties);
     if (changedProperties.has("t")) {
-      this.wordsPrefix = this.t.wordsPrefix;
+      // skip the constructor-default first pass (oldValue undefined) so
+      // a parse-time words-prefix attribute survives the first update;
+      // later i18n-driven t changes still sync to wordsPrefix
+      // (haxtheweb/issues#3102)
+      if (changedProperties.get("t") !== undefined) {
+        this.wordsPrefix = this.t.wordsPrefix;
+      }
     }
     if (changedProperties.has("wordsPrefix")) {
       this.t = {
         wordsPrefix: this.wordsPrefix,
       };
-      [];
       this.setAttribute("words-text", `${this.wordsPrefix}: ${this.words}`);
     }
     if (changedProperties.has("words")) {
@@ -108,11 +125,12 @@ class WordCount extends I18NMixin(LitElement) {
    * Update words based on data in the slot.
    */
   _updateWords(mutations) {
-    if (this.textContent !== "") {
-      this.words = parseInt(this.textContent.split(/\s+/g).length - 1);
-    } else {
-      this.words = 0;
-    }
+    // trim + filter empty tokens so N plain words report N regardless
+    // of leading/trailing whitespace (haxtheweb/issues#3102)
+    this.words = this.textContent
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word !== "").length;
   }
 }
 globalThis.customElements.define(WordCount.tag, WordCount);
