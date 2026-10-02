@@ -230,7 +230,7 @@ export const LoremDataBehaviors = function (SuperClass) {
      */
     randomIcon(includeNull = false) {
       let random = this.randomOption(this.icons);
-      return includeNull ? this.randomOption([...random, ""]) : random;
+      return includeNull ? this.randomOption([random, ""]) : random;
     }
 
     /**
@@ -332,7 +332,7 @@ export const LoremDataBehaviors = function (SuperClass) {
           ? ["greyscale"]
           : [];
       if (blur > 0) params.push(`blur=${blur}`);
-      return `https://picsum.photos/${id > -1 ? `id/${id}` : ``}/${aspect}/${
+      return `https://picsum.photos/${id > -1 ? `id/${id}/` : ``}${aspect}${
         params.length == 0 ? "" : `?${params.join("&")}`
       }`;
     }
@@ -420,7 +420,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       if (sentence[0]) sentence[0] = this.titleCase(sentence[0]);
       return `${sentence.join(" ")}${punctuation}`;
     }
-    randomType(schema) {
+    randomType(schema = {}) {
       let val;
       if (schema.type)
         switch (schema.type) {
