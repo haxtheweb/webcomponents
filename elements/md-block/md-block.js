@@ -175,7 +175,7 @@ class MdBlock extends DDD {
             this._parsedMarkdown = sanitizeHTMLString(await marked.parse(text));
             this._loadError = "";
           } else {
-            // user-visible fallback for a bad HTTP response (issue #3102 bug 57)
+            this._parsedMarkdown = "";
             this._loadError =
               "Unable to load markdown source" +
               (response.status
