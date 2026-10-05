@@ -1,13 +1,37 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  forceThemeReveal,
+  lockLightColorScheme,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 import "../resume-theme.js";
 
-describe("ResumeTheme test", () => {
+// audits of a fully rendered theme can legitimately exceed mocha's 2000ms
+// default under test:all load; give the suite real headroom
+describe("ResumeTheme test", function () {
+  this.timeout(10000);
   let element;
+  let restoreColorScheme;
+
+  before(() => {
+    // Lock the light-dark() CSS color scheme so this theme's styles
+    // resolve deterministically regardless of the host OS/browser's
+    // prefers-color-scheme (see HAXCMSThemeA11yTestHelpers.js).
+    restoreColorScheme = lockLightColorScheme();
+  });
+
+  after(() => {
+    restoreColorScheme();
+  });
+
   beforeEach(async () => {
     element = await fixture(html`
       <resume-theme title="title"></resume-theme>
     `);
+    await element.updateComplete;
+    // deterministically reveal the theme so the audit never races the
+    // rAF-gated opacity fade (see HAXCMSThemeA11yTestHelpers.js)
+    await forceThemeReveal(element);
   });
 
   it("basic will it blend", async () => {
@@ -26,25 +50,20 @@ describe("ResumeTheme behavior", () => {
   let element;
   let savedManifest;
   let savedActiveId;
-  let savedColorScheme;
+  let restoreColorScheme;
   const tick = (ms) => new Promise((r) => setTimeout(r, ms || 60));
 
   before(() => {
     savedManifest = store.manifest;
     savedActiveId = store.activeId;
-    // lock light scheme for the a11y audits (see spacebook-theme tests)
-    savedColorScheme = document.documentElement.style.colorScheme;
-    document.documentElement.style.colorScheme = "light";
+    // lock light scheme for the a11y audits (see HAXCMSThemeA11yTestHelpers.js)
+    restoreColorScheme = lockLightColorScheme();
   });
 
   after(() => {
     store.manifest = savedManifest;
     store.activeId = savedActiveId;
-    if (savedColorScheme === "") {
-      document.documentElement.style.removeProperty("color-scheme");
-    } else {
-      document.documentElement.style.colorScheme = savedColorScheme;
-    }
+    restoreColorScheme();
   });
 
   afterEach(() => {
@@ -55,6 +74,9 @@ describe("ResumeTheme behavior", () => {
   beforeEach(async () => {
     element = await fixture(html` <resume-theme></resume-theme> `);
     await element.updateComplete;
+    // deterministically reveal the theme so the audit never races the
+    // rAF-gated opacity fade (see HAXCMSThemeA11yTestHelpers.js)
+    await forceThemeReveal(element);
   });
 
   it("seeds constructor defaults", () => {
@@ -80,14 +102,14 @@ describe("ResumeTheme behavior", () => {
       "#contentcontainer",
     );
     const sidebar = root.querySelector("aside.sidebar[part='sidebar']");
-    expect(sidebar.getAttribute("aria-label")).to.equal(
-      "Contact information",
-    );
+    expect(sidebar.getAttribute("aria-label")).to.equal("Contact information");
     expect(
       root.querySelector("div.avatar-wrapper[part='avatar-wrapper']") === null,
     ).to.equal(false);
     // no author image → initials placeholder, 'R' without a name
-    const placeholder = root.querySelector("div.avatar-placeholder[part='avatar']");
+    const placeholder = root.querySelector(
+      "div.avatar-placeholder[part='avatar']",
+    );
     expect(placeholder.getAttribute("aria-label")).to.equal("");
     expect(placeholder.textContent.trim()).to.equal("R");
     // no name → no h1
@@ -95,12 +117,12 @@ describe("ResumeTheme behavior", () => {
     expect(root.querySelector("p.subtitle").textContent).to.equal("");
     // no contact data → no contact items
     expect(root.querySelectorAll("div.contact-item").length).to.equal(0);
-    expect(root.querySelector("main.main-content[role='main']") === null).to.equal(
-      false,
-    );
-    expect(root.querySelector("#contentcontainer #slot slot") === null).to.equal(
-      false,
-    );
+    expect(
+      root.querySelector("main.main-content[role='main']") === null,
+    ).to.equal(false);
+    expect(
+      root.querySelector("#contentcontainer #slot slot") === null,
+    ).to.equal(false);
   });
 
   it("reads site and author data from the manifest", async () => {
@@ -158,9 +180,8 @@ describe("ResumeTheme behavior", () => {
         .textContent,
     ).to.equal("+1-814-863-0000");
     expect(
-      root.querySelector(
-        "div.contact-item span[part='contact-text']",
-      ).textContent,
+      root.querySelector("div.contact-item span[part='contact-text']")
+        .textContent,
     ).to.equal("State College, PA");
     const siteLink = root.querySelector(
       "div.contact-item a[href='https://jane.example.com']",
@@ -180,9 +201,12 @@ describe("ResumeTheme behavior", () => {
     expect(socialLink.textContent).to.equal("LinkedIn");
     expect(socialLink.getAttribute("target")).to.equal("_blank");
     expect(
-      root.querySelector(
-        "div.contact-item a[href='https://www.linkedin.com/in/jane']",
-      ).parentNode.parentNode.querySelector("simple-icon-lite").getAttribute("icon"),
+      root
+        .querySelector(
+          "div.contact-item a[href='https://www.linkedin.com/in/jane']",
+        )
+        .parentNode.parentNode.querySelector("simple-icon-lite")
+        .getAttribute("icon"),
     ).to.equal("mdi-social:linkedin");
     const socialLink2 = root.querySelector(
       "div.contact-item a[href='https://github.com/jane']",
@@ -201,8 +225,9 @@ describe("ResumeTheme behavior", () => {
     element.authorName = "Soloproject";
     await element.updateComplete;
     expect(
-      element.shadowRoot.querySelector("div.avatar-placeholder").textContent
-        .trim(),
+      element.shadowRoot
+        .querySelector("div.avatar-placeholder")
+        .textContent.trim(),
     ).to.equal("S");
   });
 
@@ -252,9 +277,9 @@ describe("ResumeTheme behavior", () => {
 
   it("maps social urls to labels", () => {
     expect(element.socialLinkLabel("")).to.equal("Link");
-    expect(element.socialLinkLabel("https://www.linkedin.com/in/jane")).to.equal(
-      "LinkedIn",
-    );
+    expect(
+      element.socialLinkLabel("https://www.linkedin.com/in/jane"),
+    ).to.equal("LinkedIn");
     expect(element.socialLinkLabel("https://github.com/jane")).to.equal(
       "GitHub",
     );
@@ -321,9 +346,9 @@ describe("ResumeTheme behavior", () => {
     // stylesheet state) are the known racy light-dark()/axe resolution
     // documented in the spacebook-theme and collection-list suites.
     const sidebar = element.shadowRoot.querySelector("aside.sidebar");
-    expect(getComputedStyle(sidebar).backgroundColor.includes("rgb(0, 30, 68")).to.equal(
-      true,
-    );
+    expect(
+      getComputedStyle(sidebar).backgroundColor.includes("rgb(0, 30, 68"),
+    ).to.equal(true);
     await expect(element).shadowDom.to.be.accessible({
       ignoredRules: ["color-contrast"],
     });

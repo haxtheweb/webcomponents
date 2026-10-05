@@ -7,6 +7,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "@haxtheweb/replace-tag/replace-tag.js";
 import "../lib/polaris-flex-theme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { forceThemeReveal } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 
 const LS_KEY = "hax-mobile-menu-menuOpen";
 
@@ -88,13 +89,10 @@ describe("polaris-flex-theme", () => {
     store.activeId = null;
     store.editMode = false;
     store.trayStatus = "";
-    element = await fixture(
-      html`<polaris-flex-theme></polaris-flex-theme>`,
-    );
+    element = await fixture(html`<polaris-flex-theme></polaris-flex-theme>`);
     // reveal the host so computed-style reads reflect a painted state;
     // the HAXCMSLitElementTheme suite covers the real rAF theme-ready gate
-    element.themeReady = true;
-    await element.updateComplete;
+    await forceThemeReveal(element);
   });
 
   afterEach(() => {
@@ -135,7 +133,11 @@ describe("polaris-flex-theme", () => {
     const mirror = element.shadowRoot.querySelector(".sticky-nav-mirror");
     expect(header.contains(primary)).to.equal(true);
     // hero banner stays in normal flow inside the header
-    expect(header.contains(element.shadowRoot.querySelector("site-active-media-banner"))).to.equal(true);
+    expect(
+      header.contains(
+        element.shadowRoot.querySelector("site-active-media-banner"),
+      ),
+    ).to.equal(true);
     // the fixed mirror is a sibling, not nested in the header
     expect(header.contains(mirror)).to.equal(false);
   });
@@ -214,7 +216,8 @@ describe("polaris-flex-theme", () => {
       );
       expect(mirrorBtn).to.exist;
       // also confirm the in-flow nav got its own hamburger on xs
-      expect(element.shadowRoot.querySelector("#haxcmsmobilemenubutton")).to.exist;
+      expect(element.shadowRoot.querySelector("#haxcmsmobilemenubutton")).to
+        .exist;
 
       mirrorBtn.click();
       expect(element.menuOpen).to.equal(true);
