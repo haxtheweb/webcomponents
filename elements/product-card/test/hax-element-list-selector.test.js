@@ -247,7 +247,9 @@ describe('hax-element-list-selector', () => {
     globalThis.console.warn = (e) => warnings.push(e)
     el.wcRegistryEndpoint = 'http://localhost:8000/broken-registry.json'
     await el.updateComplete
-    await until(() => el.haxData.length === 1)
+    // wait for both the successful import and the failed one to settle;
+    // waiting on haxData alone races ahead of the broken import's rejection
+    await until(() => el.haxData.length === 1 && warnings.length === 1)
     expect(warnings.length).to.equal(1)
     expect(warnings[0] instanceof TypeError || warnings[0]).to.exist
     globalThis.fetch = stub
