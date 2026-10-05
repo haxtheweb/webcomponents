@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 globalThis.appSettings = {}
 
@@ -584,5 +584,169 @@ describe('AppHaxSiteDetails pure logic', () => {
       await el.confirmOperation()
       expect(toastMsg).to.include('failed')
     })
+  })
+})
+
+describe('AppHaxSiteDetails render', () => {
+  it('renders detail ops, dates, pages, and the slug from the site URL', async () => {
+    const el = await fixture(
+      html`<app-hax-site-details
+        site-id="test-site"
+        .details=${{
+          created: 1600000000,
+          updated: 1700000000,
+          pages: 7,
+          url: 'https://example.com/sites/my-site',
+        }}
+      ></app-hax-site-details>`,
+    )
+    await el.updateComplete
+    const slug = el.shadowRoot.querySelector('#slug')
+    expect(slug).to.exist
+    expect(slug.textContent).to.equal('my-site')
+    expect(slug.getAttribute('href')).to.equal('https://example.com/sites/my-site')
+    expect(el.shadowRoot.querySelectorAll('.info-icon').length).to.equal(3)
+  })
+
+  it('falls back to a generic slug when the URL has no sites segment', async () => {
+    const el = await fixture(
+      html`<app-hax-site-details
+        .details=${{
+          created: 1600000000,
+          updated: 1700000000,
+          pages: 3,
+          url: 'https://example.com/other/path',
+        }}
+      ></app-hax-site-details>`,
+    )
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('#slug').textContent).to.equal('site')
+  })
+})
+
+describe('AppHaxSiteDetails siteOperation with DIV target', () => {
+  it('resolves button attributes through the parent when the target is a DIV', () => {
+    const el = new AppHaxSiteDetails()
+    store.manifest = {
+      items: [{ id: 'test-site', metadata: { site: { name: 'Test Site' } } }],
+    }
+    store.appEl = { playSound: () => {} }
+    const outer = document.createElement('div')
+    outer.setAttribute('data-site-operation', 'copySite')
+    outer.setAttribute('data-site-operation-name', 'Copy')
+    outer.setAttribute('data-site', 'test-site')
+    const inner = document.createElement('div')
+    outer.appendChild(inner)
+    el.siteOperation({ target: inner })
+    expect(store.activeSiteOp).to.equal('copySite')
+    expect(store.activeSiteId).to.equal('test-site')
+    const modals = document.body.querySelectorAll('app-hax-confirmation-modal')
+    const modal = modals[modals.length - 1]
+    expect(modal).to.exist
+    expect(modal.title).to.equal('Copy Test Site?')
+    store.appEl = null
+  })
+})
+
+describe('AppHaxSiteDetails confirmOperation callbacks', () => {
+  let el
+  beforeEach(() => {
+    el = new AppHaxSiteDetails()
+    store.manifest = {
+      items: [{ id: 'test-site', metadata: { site: { name: 'Test Site' } } }],
+    }
+    store.setProcessingVisual = () => {}
+    store.clearProcessingVisual = () => {}
+    store.refreshSiteListing = () => {}
+    store.toast = () => {}
+    store.activeSiteId = 'test-site'
+    store.AppHaxAPI = {
+      makeCall: async (op, data, useCallback, callback) => {
+        if (typeof callback === 'function') {
+          callback()
+        }
+        return { status: 200 }
+      },
+      lastResponse: {},
+    }
+  })
+
+  it('opens the download link when downloadSite succeeds', async () => {
+    store.activeSiteOp = 'downloadSite'
+    store.AppHaxAPI.lastResponse = {
+      downloadSite: {
+        status: 200,
+        data: { link: '/downloads/site.zip', name: 'site.zip' },
+      },
+    }
+    let toastMsg = null
+    store.toast = (msg) => { toastMsg = msg }
+    // stub anchor clicks so the test frame never navigates
+    const originalClick = HTMLElement.prototype.click
+    HTMLElement.prototype.click = function () {}
+    try {
+      await el.confirmOperation()
+    } finally {
+      HTMLElement.prototype.click = originalClick
+    }
+    expect(toastMsg).to.include('successful')
+  })
+
+  it('logs an error when downloadSite reports a failure status', async () => {
+    store.activeSiteOp = 'downloadSite'
+    store.AppHaxAPI.lastResponse = {
+      downloadSite: { status: 500, message: 'boom' },
+    }
+    let errored = false
+    const originalError = console.error
+    console.error = () => { errored = true }
+    try {
+      await el.confirmOperation()
+    } finally {
+      console.error = originalError
+    }
+    expect(errored).to.be.true
+  })
+
+  it('logs an error when the downloadSite response has no data.link', async () => {
+    store.activeSiteOp = 'downloadSite'
+    store.AppHaxAPI.lastResponse = {
+      downloadSite: { status: 200 },
+    }
+    let errored = false
+    const originalError = console.error
+    console.error = () => { errored = true }
+    try {
+      await el.confirmOperation()
+    } finally {
+      console.error = originalError
+    }
+    expect(errored).to.be.true
+  })
+
+  it('refreshes the site listing for non-download operations', async () => {
+    store.activeSiteOp = 'copySite'
+    let refreshed = false
+    store.refreshSiteListing = () => { refreshed = true }
+    await el.confirmOperation()
+    expect(refreshed).to.be.true
+  })
+
+  it('falls back to a generic failure toast when the op response has no message', async () => {
+    store.activeSiteOp = 'copySite'
+    store.AppHaxAPI.lastResponse = { copySite: { status: 500 } }
+    let toastMsg = null
+    store.toast = (msg) => { toastMsg = msg }
+    await el.confirmOperation()
+    expect(toastMsg).to.include('failed')
+  })
+
+  it('treats a missing op response as a success', async () => {
+    store.activeSiteOp = 'copySite'
+    store.AppHaxAPI.lastResponse = {}
+    let toastMsg = null
+    store.toast = (msg) => { toastMsg = msg }
+    await el.confirmOperation()
+    expect(toastMsg).to.include('successful')
   })
 })

@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 globalThis.appSettings = {}
 
@@ -496,5 +496,160 @@ describe('AppHaxUserAccessModal pure logic', () => {
       const result = await el._addUserAccess('testuser')
       expect(result.data.siteName).to.equal('fallback-name')
     })
+  })
+})
+
+describe('AppHaxSearchResults render', () => {
+  const displayItems = [
+    {
+      id: 'site-1',
+      title: 'Site One',
+      slug: '/sites/site-one',
+      author: 'Author One',
+      description: 'First site',
+      metadata: {
+        site: { created: 1600000000, updated: 1700000000 },
+        pageCount: 4,
+        theme: {
+          element: 'my-theme',
+          variables: { cssVariable: '--simple-colors-default-theme-blue-7' },
+        },
+      },
+    },
+    {
+      id: 'site-2',
+      title: 'Site Two',
+      slug: '/sites/site-two',
+      author: 'Author Two',
+      description: 'Second site',
+      metadata: {
+        site: { created: 1500000000, updated: 1650000000 },
+        pageCount: 2,
+      },
+    },
+  ]
+
+  afterEach(() => {
+    store.themesData = {}
+    store.appEl = null
+  })
+
+  it('renders site cards for display items with theme thumbnails', async () => {
+    store.themesData = {
+      'my-theme': {
+        thumbnail: '@haxtheweb/my-theme/lib/thumb.png',
+        name: 'My Theme',
+      },
+    }
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = displayItems
+    el.sortOption = 'az'
+    await el.updateComplete
+    expect(el.shadowRoot.querySelectorAll('app-hax-site-bar').length).to.equal(2)
+    // @haxtheweb/ package thumbnails resolve to a URL for the package path
+    const resolved = el.getThemeImage(displayItems[0])
+    expect(resolved).to.include('my-theme/lib/thumb.png')
+    // cards present means no-results block is absent
+    expect(el.shadowRoot.querySelector('#noResult')).to.not.exist
+  })
+
+  it('renders no-results messaging with the search term', async () => {
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = []
+    el.searchTerm = 'kittens'
+    await el.updateComplete
+    const noResult = el.shadowRoot.querySelector('#noResult')
+    expect(noResult).to.exist
+    expect(noResult.textContent).to.include('kittens')
+  })
+
+  it('renders no-results prompting a new site without a search term', async () => {
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = []
+    el.searchTerm = ''
+    await el.updateComplete
+    const noResult = el.shadowRoot.querySelector('#noResult')
+    expect(noResult).to.exist
+    expect(noResult.textContent).to.include('Create a new site')
+  })
+
+  it('evaluates isAtStart / isAtEnd against the rendered results element', async () => {
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = displayItems
+    await el.updateComplete
+    expect(el.isAtStart).to.be.true
+    expect(el.isAtEnd).to.be.a('boolean')
+  })
+
+  it('scrolls the results list on demand', async () => {
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = displayItems
+    await el.updateComplete
+    const results = el.shadowRoot.querySelector('#results')
+    expect(results).to.exist
+    // at the start, snapping fully back to 0
+    el.scrollLeft()
+    // shadow a scroll position so the far branch runs too
+    Object.defineProperty(results, 'scrollLeft', {
+      value: 500,
+      configurable: true,
+    })
+    el.scrollLeft()
+    el.scrollRight()
+    el.goToPage(2)
+    expect(el.currentIndex).to.equal(2)
+    delete results.scrollLeft
+  })
+
+  it('toggles tabindex on site details through openedChanged', async () => {
+    const el = await fixture(html`<app-hax-search-results></app-hax-search-results>`)
+    el.displayItems = displayItems
+    await el.updateComplete
+    store.appEl = { playSound: () => {} }
+    const details = el.shadowRoot.querySelector('app-hax-site-details')
+    expect(details).to.exist
+    el.openedChanged({ detail: { value: false } })
+    expect(details.getAttribute('tabindex')).to.equal('-1')
+    el.openedChanged({ detail: { value: true } })
+    expect(details.hasAttribute('tabindex')).to.be.false
+  })
+})
+
+describe('AppHaxUserAccessModal render', () => {
+  afterEach(() => {
+    document.body.style.overflow = ''
+  })
+
+  it('renders all modal states and focuses the input after connecting', async () => {
+    const el = await fixture(html`<app-hax-user-access-modal></app-hax-user-access-modal>`)
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('input')).to.exist
+    expect(document.body.style.overflow).to.equal('hidden')
+    // empty username shows the placeholder character block
+    expect(el.shadowRoot.querySelector('.empty-character')).to.exist
+    // populated states render their branches
+    el.username = 'btopol'
+    el.siteTitle = 'My Site'
+    el.error = 'User not found or unauthorized'
+    el.loading = true
+    await el.updateComplete
+    expect(el.shadowRoot.querySelector('rpg-character')).to.exist
+    expect(el.shadowRoot.querySelector('.site-title').textContent).to.equal('My Site')
+    expect(el.shadowRoot.querySelector('.error')).to.exist
+    expect(el.shadowRoot.querySelector('.loading')).to.exist
+    // firstUpdated focus timeout fires without issue
+    await new Promise((r) => setTimeout(r, 150))
+  })
+
+  it('sets siteTitle from the active site on first render', async () => {
+    const savedActiveSiteId = store.activeSiteId
+    const savedManifest = store.manifest
+    store.activeSiteId = 'site-9'
+    store.manifest = { items: [{ id: 'site-9', title: 'Active Site Title' }] }
+    const el = await fixture(html`<app-hax-user-access-modal></app-hax-user-access-modal>`)
+    await el.updateComplete
+    expect(el.siteTitle).to.equal('Active Site Title')
+    store.activeSiteId = savedActiveSiteId
+    store.manifest = savedManifest
   })
 })

@@ -453,3 +453,53 @@ describe('app-hax-site-login', () => {
     expect(slot).to.exist
   })
 })
+
+describe('app-hax-confirmation-modal rendered', () => {
+  afterEach(() => {
+    document.body.style.overflow = ''
+  })
+
+  it('opens and closes the underlying simple-modal when rendered', async () => {
+    const el = await fixture(
+      html`<app-hax-confirmation-modal
+        title="Sure?"
+        message="Really do this?"
+      ></app-hax-confirmation-modal>`,
+    )
+    await el.updateComplete
+    const modal = el.shadowRoot.querySelector('simple-modal')
+    expect(modal).to.exist
+    el.openModal()
+    expect(el.open).to.be.true
+    expect(modal.opened).to.be.true
+    el.closeModal()
+    expect(el._cancelClicked).to.be.true
+    expect(modal.opened).to.be.false
+  })
+
+  it('confirmModal closes the simple-modal, plays sound, and fires the action', async () => {
+    const el = await fixture(
+      html`<app-hax-confirmation-modal
+        title="Sure?"
+        message="Really do this?"
+      ></app-hax-confirmation-modal>`,
+    )
+    await el.updateComplete
+    let soundPlayed = null
+    store.appEl = {
+      playSound: (s) => {
+        soundPlayed = s
+      },
+    }
+    let actionCalled = false
+    el.confirmAction = () => {
+      actionCalled = true
+    }
+    el.confirmModal()
+    const modal = el.shadowRoot.querySelector('simple-modal')
+    expect(modal.opened).to.be.false
+    expect(soundPlayed).to.equal('success')
+    expect(actionCalled).to.be.true
+    store.appEl = null
+  })
+})
