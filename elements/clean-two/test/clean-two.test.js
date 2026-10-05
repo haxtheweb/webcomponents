@@ -10,7 +10,12 @@ import { setViewport } from "@web/test-runner-commands";
 import "../clean-two.js";
 
 // Basic functionality and accessibility tests
-describe("clean-two basic functionality", () => {
+describe("clean-two basic functionality", function () {
+  // axe.run() can exceed mocha's 2000ms default under test:all concurrency;
+  // a timed-out a11y test leaves axe still running, which then throws
+  // "Axe is already running" on the next accessible() call in this file
+  // (see audio-player/test/audio-player.test.js for the same pattern).
+  this.timeout(10000);
   let element;
   beforeEach(async () => {
     element = await fixture(html` <clean-two></clean-two> `);
@@ -34,7 +39,9 @@ describe("clean-two basic functionality", () => {
 });
 
 // Comprehensive A11y tests
-describe("clean-two accessibility tests", () => {
+describe("clean-two accessibility tests", function () {
+  // see rationale in "clean-two basic functionality" above
+  this.timeout(10000);
   it("passes accessibility test with default configuration", async () => {
     const el = await fixture(html` <clean-two></clean-two> `);
     await expect(el).to.be.accessible();
@@ -158,7 +165,9 @@ describe("clean-two property validation", () => {
 });
 
 // Slot usage and content tests
-describe("clean-two slot usage", () => {
+describe("clean-two slot usage", function () {
+  // see rationale in "clean-two basic functionality" above
+  this.timeout(10000);
   it("renders default slot content correctly", async () => {
     const testContent = "<p>Test content in slot</p>";
     const el = await fixture(html`<clean-two>${testContent}</clean-two>`);
@@ -309,7 +318,9 @@ describe("clean-two navigation functionality", () => {
 });
 
 // Mobile responsiveness tests
-describe("clean-two mobile responsiveness", () => {
+describe("clean-two mobile responsiveness", function () {
+  // see rationale in "clean-two basic functionality" above
+  this.timeout(10000);
   beforeEach(async () => {
     await setViewport({ width: 375, height: 750 });
   });
@@ -480,7 +491,9 @@ describe("clean-two layout and structure", () => {
 });
 
 // Error handling and edge cases
-describe("clean-two error handling", () => {
+describe("clean-two error handling", function () {
+  // see rationale in "clean-two basic functionality" above
+  this.timeout(10000);
   it("handles missing or invalid content gracefully", async () => {
     const el = await fixture(html`<clean-two></clean-two>`);
 

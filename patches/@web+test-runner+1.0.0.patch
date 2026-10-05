@@ -1,0 +1,19 @@
+diff --git a/node_modules/@web/test-runner/dist/startTestRunner.js b/node_modules/@web/test-runner/dist/startTestRunner.js
+index 1234567..89abcde 100644
+--- a/node_modules/@web/test-runner/dist/startTestRunner.js
++++ b/node_modules/@web/test-runner/dist/startTestRunner.js
+@@ -37,7 +37,13 @@ async function startTestRunner(options = {}) {
+         }
+         runner.on('stopped', passed => {
+             if (autoExitProcess) {
+-                process.exit(passed ? 0 : 1);
++                // Use process.exitCode instead of process.exit() so Node drains
++                // any still-buffered stdout/stderr writes (e.g. when output is
++                // piped/redirected to a file) before the process actually exits.
++                // process.exit() can terminate before async I/O to a non-TTY
++                // stdout completes, truncating the final test-file results,
++                // the "Finished running tests..." summary, and coverage output.
++                process.exitCode = passed ? 0 : 1;
+             }
+         });
+         await runner.start();
