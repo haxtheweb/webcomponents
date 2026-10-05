@@ -42,7 +42,9 @@ export const HaxUiColors = [
       --hax-ui-background-color-secondary: #e8e8e8;
       --hax-ui-background-color-faded: #b0b8bb;
 
-      --hax-ui-color-accent: var(--ddd-theme-default-skyBlue, #009dc7);
+      /* beaverBlue keeps 4.5:1 contrast both as white-text background and
+         as text on white (skyBlue failed at 3.08:1) */
+      --hax-ui-color-accent: var(--ddd-theme-default-beaverBlue, #1e407c);
       --hax-ui-color-accent-secondary: #007999;
       --hax-ui-background-color-accent: #e5f6fd;
 
@@ -56,12 +58,13 @@ export const HaxUiColors = [
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
-      --hax-ui-disabled-color: #666;
 
       --hax-ui-background-color: #111;
       --hax-ui-background-color-secondary: #111;
       --hax-ui-background-color-faded: #222;
 
+      /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */
+      --hax-ui-color-accent: #00c9ff;
       --hax-ui-color-accent-secondary: #00c9ff;
       --hax-ui-background-color-accent: #000;
 
@@ -82,6 +85,8 @@ export const HaxUiColors = [
         --hax-ui-background-color-secondary: #111;
         --hax-ui-background-color-faded: #222;
 
+        /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */
+        --hax-ui-color-accent: #00c9ff;
         --hax-ui-color-accent-secondary: #00c9ff;
         --hax-ui-background-color-accent: #000;
 

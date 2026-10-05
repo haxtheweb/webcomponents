@@ -524,6 +524,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return this.radio
         ? html` <button
               id="button"
+              aria-label="${this.currentLabel || undefined}"
               aria-checked="${this.isToggled ? "true" : "false"}"
               aria-describedby="${!!this.describedby && this.describedby !== ""
                 ? this.describedby
@@ -549,6 +550,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         : this.toggles
           ? html` <button
                 id="button"
+                aria-label="${this.currentLabel || undefined}"
                 aria-pressed="${this.isToggled ? "true" : "false"}"
                 aria-describedby="${!!this.describedby &&
                 this.describedby !== ""
@@ -573,6 +575,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ${this.tooltipTemplate}`
           : html` <button
                 id="button"
+                aria-label="${this.currentLabel || undefined}"
                 aria-describedby="${!!this.describedby &&
                 this.describedby !== ""
                   ? this.describedby

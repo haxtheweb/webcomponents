@@ -63,6 +63,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
       return this.radio
         ? html` <button
               id="button"
+              aria-label="${this.currentLabel || undefined}"
               aria-checked="${this.isToggled ? "true" : "false"}"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
@@ -80,6 +81,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
         : this.toggles
           ? html` <button
                 id="button"
+                aria-label="${this.currentLabel || undefined}"
                 aria-pressed="${this.isToggled ? "true" : "false"}"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
@@ -95,6 +97,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               ${this.tooltipTemplate}`
           : html` <button
                 id="button"
+                aria-label="${this.currentLabel || undefined}"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
                 ?controls="${this.controls}"

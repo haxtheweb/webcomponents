@@ -113,7 +113,11 @@ function resolveOpenApiRef(ref = "", openapi = {}) {
 
 function normalizeParameter(parameter = {}, openapi = {}) {
   let working = parameter;
+  let referenceName = "";
   if (working && typeof working.$ref === "string") {
+    // capture the pointer name before resolution swaps working for the
+    // resolved parameter object, which no longer carries $ref
+    referenceName = refNameFromPointer(working.$ref);
     const resolved = resolveOpenApiRef(working.$ref, openapi);
     if (!resolved) {
       return null;
@@ -144,10 +148,7 @@ function normalizeParameter(parameter = {}, openapi = {}) {
     defaultValue,
     minimum: typeof schema.minimum === "number" ? Number(schema.minimum) : null,
     maximum: typeof schema.maximum === "number" ? Number(schema.maximum) : null,
-    referenceName:
-      working.$ref && typeof working.$ref === "string"
-        ? refNameFromPointer(working.$ref)
-        : "",
+    referenceName,
   };
 }
 

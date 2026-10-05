@@ -298,11 +298,10 @@ describe("haxcms-views-spec-utility", () => {
       // $ref resolved param keeps the resolved name/values; enum first value is default
       const refResolved = item.queryParamMap.refResolved;
       expect(refResolved.required).to.equal(true);
-      // NOTE (suspected source bug, reported to lead): referenceName reads
-      // working.$ref AFTER the $ref has been resolved onto working, so it is
-      // always '' for successfully resolved refs — the original pointer
-      // (refParam) is lost. Pinning actual behavior rather than intent.
-      expect(refResolved.referenceName).to.equal("");
+      // referenceName keeps the original pointer name from before the $ref
+      // was resolved (fixed: it previously read $ref after resolution,
+      // always losing the name)
+      expect(refResolved.referenceName).to.equal("refParam");
       expect(refResolved.enumValues).to.deep.equal(["1", "2"]);
       expect(refResolved.defaultValue).to.equal("1");
     });
