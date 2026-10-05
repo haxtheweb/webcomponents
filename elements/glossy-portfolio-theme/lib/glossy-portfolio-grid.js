@@ -267,7 +267,7 @@ ${this.data.length > 0 ?   html`
         this.filtersList = [];
         
         this.data.forEach((d) => {
-          if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
+          if (d.metadata && d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
             const firstTag = d.metadata.tags.split(",")[0];
             if (!this.filtersList.includes(firstTag)) { //check for duplicate
               this.filtersList.push(firstTag);
@@ -335,7 +335,7 @@ ${this.data.length > 0 ?   html`
     } else{
       this.filteredData = [];
       this.filteredData = this.data.filter((item) => 
-        item.metadata.tags && item.metadata.tags.includes(this.activeFilter)
+        item.metadata && item.metadata.tags && item.metadata.tags.includes(this.activeFilter)
       );
     
     }

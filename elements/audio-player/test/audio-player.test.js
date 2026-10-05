@@ -1,7 +1,14 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../audio-player.js";
 
-describe("audio-player test", () => {
+describe("audio-player test", function () {
+  // this suite runs dozens of sequential a11y audits (boolean/crossorigin/
+  // color property sweeps), each awaiting its own axe.run(); under test:all
+  // concurrency this reliably exceeds mocha's 2000ms default, and a timed-out
+  // test moves on to the next one while axe is still running, which then
+  // throws "Axe is already running" on the next shadowDom.to.be.accessible()
+  // call. Give the suite real headroom (see training-theme/haxor-slevin).
+  this.timeout(10000);
   let element;
   beforeEach(async () => {
     element = await fixture(html`
