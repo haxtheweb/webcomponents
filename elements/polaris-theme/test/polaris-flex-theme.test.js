@@ -208,6 +208,15 @@ describe("polaris-flex-theme", () => {
     });
 
     it("toggles the mobile menu from the mirror hamburger on xs", async () => {
+      // detach ResponsiveUtility's ResizeObserver for this element so our
+      // explicit responsiveSize write below does not race its own resize
+      // notification (see the same guard in
+      // polaris-flex-theme-advanced.test.js's mirror hamburger test)
+      const details = globalThis.ResponsiveUtility.instance.details;
+      const detail = details.find((d) => d && d.element === element);
+      if (detail && detail.observer) {
+        detail.observer.disconnect();
+      }
       element.menuOpen = false;
       element.responsiveSize = "xs";
       await element.updateComplete;
