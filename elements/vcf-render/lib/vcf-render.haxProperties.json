@@ -1,0 +1,81 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Contacts",
+    "description": "Show the people in a contact file as person cards, quotes, a table or a list.",
+    "icon": "social:person",
+    "color": "green",
+    "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"],
+    "handles": [
+      {
+        "type": "vcf",
+        "type_exclusive": true,
+        "source": "dataSource"
+      }
+    ],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Contact file",
+        "description": "Upload or choose a .vcf contact file. Its cards are read in the browser.",
+        "inputMethod": "haxupload",
+        "icon": "social:person",
+        "required": true,
+        "uploadRequirements": {
+          "extensions": [".vcf"]
+        }
+      },
+      {
+        "property": "displayAs",
+        "title": "Display as",
+        "description": "How to present what the file contains.",
+        "inputMethod": "select",
+        "icon": "icons:view-module",
+        "options": {
+          "cards": "Person cards",
+          "quotes": "Quotes",
+          "table": "Table",
+          "list": "List"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Heading",
+        "description": "Shown above the contacts, and as the table caption.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["status"]
+  },
+  "demoSchema": [
+    {
+      "tag": "vcf-render",
+      "properties": {
+        "contactData": "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Doe;John;;;\r\nFN:John Doe\r\nORG:Example Corp\r\nTITLE:Director of Teaching and Learning\r\nTEL;TYPE=WORK,VOICE:(111) 555-1212\r\nEMAIL;TYPE=PREF,INTERNET:john.doe@example.com\r\nADR;TYPE=WORK:;;42 Plantation St.;Baytown;LA;30314;United States of America\r\nURL:https://hax.psu.edu/\r\nNOTE:Supports faculty adopting open courseware.\r\nEND:VCARD",
+        "displayAs": "cards"
+      },
+      "content": ""
+    }
+  ]
+}

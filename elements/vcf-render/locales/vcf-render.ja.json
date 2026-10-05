@@ -1,0 +1,11 @@
+{
+  "name": "名前",
+  "position": "役職",
+  "organization": "組織",
+  "email": "メール",
+  "phone": "電話",
+  "address": "住所",
+  "loadingContacts": "連絡先を読み込んでいます",
+  "contactsUnavailable": "連絡先を利用できません",
+  "noContacts": "このファイルに連絡先はありません"
+}

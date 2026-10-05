@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Archivo de contactos"
+      },
+      {
+        "title": "Mostrar como"
+      },
+      {
+        "title": "Encabezado"
+      }
+    ]
+  }
+}

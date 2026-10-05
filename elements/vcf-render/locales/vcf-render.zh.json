@@ -1,0 +1,11 @@
+{
+  "name": "姓名",
+  "position": "职位",
+  "organization": "组织",
+  "email": "电子邮件",
+  "phone": "电话",
+  "address": "地址",
+  "loadingContacts": "正在加载联系人",
+  "contactsUnavailable": "联系人不可用",
+  "noContacts": "此文件中没有联系人"
+}
