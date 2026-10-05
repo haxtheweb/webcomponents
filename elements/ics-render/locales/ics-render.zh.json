@@ -1,0 +1,11 @@
+{
+  "event": "活动",
+  "when": "时间",
+  "where": "地点",
+  "details": "详情",
+  "allDay": "全天",
+  "repeats": "重复",
+  "loadingCalendar": "正在加载日历",
+  "calendarUnavailable": "日历不可用",
+  "noEvents": "此日历中没有活动"
+}

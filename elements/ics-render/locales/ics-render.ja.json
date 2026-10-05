@@ -1,0 +1,11 @@
+{
+  "event": "イベント",
+  "when": "日時",
+  "where": "場所",
+  "details": "詳細",
+  "allDay": "終日",
+  "repeats": "繰り返し",
+  "loadingCalendar": "カレンダーを読み込んでいます",
+  "calendarUnavailable": "カレンダーを利用できません",
+  "noEvents": "このカレンダーにイベントはありません"
+}

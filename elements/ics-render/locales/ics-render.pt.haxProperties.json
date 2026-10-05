@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Arquivo de calendário"
+      },
+      {
+        "title": "Exibir como"
+      },
+      {
+        "title": "Título"
+      }
+    ]
+  }
+}
