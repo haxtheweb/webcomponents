@@ -883,7 +883,7 @@ class HAXCMSBackendUserfs extends LitElement {
     // @todo need to ensure we have a local file folder selected via hax-cloud
     // @todo read in the appstore.json file from the repo itself
     let appstore = await fetch(
-      new URL("../../../../hax-cloud/lib/appstore.json", import.meta.url).href,
+      new URL("../../../../h-a-x/lib/appstore.json", import.meta.url).href,
     ).then((response) => {
       return response.json();
     });

@@ -10,7 +10,6 @@ yarn run ubiquity
 # (gulpfile generates these, but ensure they stay in sync for demos)
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/replace-tag/demo/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/product-card/demo/wc-registry.json
-cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/webcomponents/elements/hax-cloud/demo/wc-registry.json
 
 ## STEP 1.5 AGENT SKILLS DISCOVERY (.well-known/agent-skills)
 # praw is the canonical source for HAX agent skills. Build the index, then snapshot

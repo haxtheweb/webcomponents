@@ -40,6 +40,7 @@ class VoiceRecorder extends LitElement {
         ? html`
             <simple-icon-button-lite
               icon="av:mic"
+              label="${this.label}"
               @click="${this.toggleRecording}"
               >${this.label}</simple-icon-button-lite
             >

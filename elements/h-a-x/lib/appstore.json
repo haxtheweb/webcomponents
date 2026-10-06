@@ -4,22 +4,12 @@
     {
       "details": {
         "title": "Youtube",
-        "icon": "mdi-social:youtube",
+        "icon": "av:play-arrow",
         "color": "red",
         "author": "Google, Youtube LLC",
         "description": "The most popular online video sharing and remix site.",
         "status": "available",
-        "tags": ["video"],
-        "tos": [
-          {
-            "title": "YouTube Terms of Service",
-            "link": "https://www.youtube.com/t/terms"
-          },
-          {
-            "title": "Google Privacy Policy",
-            "link": "https://policies.google.com/privacy"
-          }
-        ]
+        "tags": ["video", "crowdsourced"]
       },
       "connection": {
         "protocol": "https",
@@ -80,7 +70,7 @@
         "author": "Vimeo Inc.",
         "description": "A high quality video sharing community.",
         "status": "available",
-        "tags": ["video"]
+        "tags": ["video", "crowdsourced"]
       },
       "connection": {
         "protocol": "https",
@@ -144,7 +134,7 @@
         "description": "The original photo sharing platform on the web.",
         "status": "available",
         "rating": "0",
-        "tags": ["images"]
+        "tags": ["images", "creative commons", "crowdsourced"]
       },
       "connection": {
         "protocol": "https",
@@ -173,21 +163,38 @@
                 "title": "Safe results",
                 "type": "string",
                 "value": "1",
-                "component": {
-                  "name": "select",
-                  "valueProperty": "value",
-                  "slot": "<option value='1'>Safe</option><option value='2'>Moderate</option><option value='3'>Restricted</option>"
-                }
+                "format": "select",
+                "slot": [
+                  { "value": "1", "text": "Safe" },
+                  { "value": "2", "text": "Moderate" },
+                  { "value": "3", "text": "Restricted" }
+                ]
               },
               "license": {
                 "title": "License type",
                 "type": "string",
                 "value": "",
-                "component": {
-                  "name": "select",
-                  "valueProperty": "value",
-                  "slot": "<option value=''>Any</option><option value='0'>All Rights Reserved</option><option value='4'>Attribution License</option><option value='6'>Attribution-NoDerivs License</option><option value='3'>Attribution-NonCommercial-NoDerivs License</option><option value='2'>Attribution-NonCommercial License</option><option value='1'>Attribution-NonCommercial-ShareAlike License</option><option value='5'>Attribution-ShareAlike License</option><option value='7'>No known copyright restrictions</option><option value='8'>United States Government Work</option><option value='9'>Public Domain Dedication (CC0)</option><option value='10'>Public Domain Mark</option>"
-                }
+                "format": "select",
+                "slot": [
+                  { "value": "", "text": "Any" },
+                  { "value": "0", "text": "All Rights Reserved" },
+                  { "value": "4", "text": "Attribution License" },
+                  { "value": "6", "text": "Attribution-NoDerivs License" },
+                  {
+                    "value": "3",
+                    "text": "Attribution-NonCommercial-NoDerivs License"
+                  },
+                  { "value": "2", "text": "Attribution-NonCommercial License" },
+                  {
+                    "value": "1",
+                    "text": "Attribution-NonCommercial-ShareAlike License"
+                  },
+                  { "value": "5", "text": "Attribution-ShareAlike License" },
+                  { "value": "7", "text": "No known copyright restrictions" },
+                  { "value": "8", "text": "United States Government Work" },
+                  { "value": "9", "text": "Public Domain Dedication (CC0)" },
+                  { "value": "10", "text": "Public Domain Mark" }
+                ]
               }
             },
             "data": {
@@ -225,7 +232,7 @@
         "author": "US Government",
         "description": "The cozmos through one simple API.",
         "status": "available",
-        "tags": ["images"]
+        "tags": ["images", "government", "space"]
       },
       "connection": {
         "protocol": "https",
@@ -280,7 +287,7 @@
         "author": "Giphy",
         "description": "Crowd sourced memes via animated gifs.",
         "status": "available",
-        "tags": ["images"]
+        "tags": ["gif", "crowdsourced", "meme"]
       },
       "connection": {
         "protocol": "https",
@@ -308,18 +315,53 @@
               "rating": {
                 "title": "Rating",
                 "type": "string",
-                "component": {
-                  "name": "select",
-                  "slot": "<option value='Y'>Y</option><option value='G'>G</option><option value='PG'>PG</option><option value='PG-13'>PG-13</option><option value='R'>R</option>"
-                }
+                "format": "select",
+                "slot": [
+                  { "value": "Y", "text": "Y" },
+                  { "value": "G", "text": "G" },
+                  { "value": "PG", "text": "PG" },
+                  { "value": "PG-13", "text": "PG-13" },
+                  { "value": "R", "text": "R" }
+                ]
               },
               "lang": {
                 "title": "Language",
                 "type": "string",
-                "component": {
-                  "name": "select",
-                  "slot": "<option value='en'>en</option><option value='es'>es</option><option value='pt'>pt</option><option value='id'>id</option><option value='fr'>fr</option><option value='ar'>ar</option><option value='tr'>tr</option><option value='th'>th</option><option value='vi'>vi</option><option value='de'>de</option><option value='it'>it</option><option value='ja'>ja</option><option value='zh-CN'>zh-CN</option><option value='zh-TW'>zh-TW</option><option value='ru'>ru</option><option value='ko'>ko</option><option value='pl'>pl</option><option value='nl'>nl</option><option value='ro'>ro</option><option value='hu'>hu</option><option value='sv'>sv</option><option value='cs'>cs</option><option value='hi'>hi</option><option value='bn'>bn</option><option value='da'>da</option><option value='fa'>fa</option><option value='tl'>tl</option><option value='fi'>fi</option><option value='iw'>iw</option><option value='ms'>ms</option><option value='no'>no</option><option value='uk'>uk</option>"
-                }
+                "format": "select",
+                "slot": [
+                  { "value": "en", "text": "en" },
+                  { "value": "es", "text": "es" },
+                  { "value": "pt", "text": "pt" },
+                  { "value": "id", "text": "id" },
+                  { "value": "fr", "text": "fr" },
+                  { "value": "ar", "text": "ar" },
+                  { "value": "tr", "text": "tr" },
+                  { "value": "th", "text": "th" },
+                  { "value": "vi", "text": "vi" },
+                  { "value": "de", "text": "de" },
+                  { "value": "it", "text": "it" },
+                  { "value": "ja", "text": "ja" },
+                  { "value": "zh-CN", "text": "zh-CN" },
+                  { "value": "zh-TW", "text": "zh-TW" },
+                  { "value": "ru", "text": "ru" },
+                  { "value": "ko", "text": "ko" },
+                  { "value": "pl", "text": "pl" },
+                  { "value": "nl", "text": "nl" },
+                  { "value": "ro", "text": "ro" },
+                  { "value": "hu", "text": "hu" },
+                  { "value": "sv", "text": "sv" },
+                  { "value": "cs", "text": "cs" },
+                  { "value": "hi", "text": "hi" },
+                  { "value": "bn", "text": "bn" },
+                  { "value": "da", "text": "da" },
+                  { "value": "fa", "text": "fa" },
+                  { "value": "tl", "text": "tl" },
+                  { "value": "fi", "text": "fi" },
+                  { "value": "iw", "text": "iw" },
+                  { "value": "ms", "text": "ms" },
+                  { "value": "no", "text": "no" },
+                  { "value": "uk", "text": "uk" }
+                ]
               }
             },
             "data": {
@@ -358,7 +400,7 @@
         "description": "3D sharing community.",
         "status": "available",
         "rating": "0",
-        "tags": ["3D models"]
+        "tags": ["3D", "creative commons", "crowdsourced"]
       },
       "connection": {
         "protocol": "https",
@@ -387,11 +429,23 @@
                 "title": "License type",
                 "type": "string",
                 "value": "",
-                "component": {
-                  "name": "select",
-                  "valueProperty": "value",
-                  "slot": "<option value=''>Any</option><option value='by'>Attribution</option><option value='by-sa'>Attribution ShareAlike</option><option value='by-nd'>Attribution NoDerivatives</option><option value='by-nc'>Attribution-NonCommercial</option><option value='by-nc-sa'>Attribution NonCommercial ShareAlike</option><option value='by-nc-nd'>Attribution NonCommercial NoDerivatives</option><option value='cc0'>Public Domain Dedication (CC0)</option>"
-                }
+                "format": "select",
+                "slot": [
+                  { "value": "", "text": "Any" },
+                  { "value": "by", "text": "Attribution" },
+                  { "value": "by-sa", "text": "Attribution ShareAlike" },
+                  { "value": "by-nd", "text": "Attribution NoDerivatives" },
+                  { "value": "by-nc", "text": "Attribution-NonCommercial" },
+                  {
+                    "value": "by-nc-sa",
+                    "text": "Attribution NonCommercial ShareAlike"
+                  },
+                  {
+                    "value": "by-nc-nd",
+                    "text": "Attribution NonCommercial NoDerivatives"
+                  },
+                  { "value": "cc0", "text": "Public Domain Dedication (CC0)" }
+                ]
               }
             },
             "resultMap": {
@@ -421,7 +475,7 @@
         "author": "Unsplash",
         "description": "Crowd sourced, open photos",
         "status": "available",
-        "tags": ["images"]
+        "tags": ["images", "crowdsourced", "cc"]
       },
       "connection": {
         "protocol": "https",
@@ -469,138 +523,6 @@
           }
         }
       }
-    },
-    {
-      "details": {
-        "title": "Wikipedia",
-        "icon": "account-balance",
-        "color": "grey",
-        "author": "Wikimedia",
-        "description": "Encyclopedia of the world.",
-        "status": "available",
-        "tags": ["encyclopedia"]
-      },
-      "connection": {
-        "protocol": "https",
-        "url": "en.wikipedia.org",
-        "data": {
-          "action": "query",
-          "list": "search",
-          "format": "json",
-          "origin": "*"
-        },
-        "operations": {
-          "browse": {
-            "method": "GET",
-            "endPoint": "w/api.php",
-            "pagination": {
-              "style": "offset",
-              "props": {
-                "offset": "sroffset"
-              }
-            },
-            "search": {
-              "srsearch": {
-                "title": "Search",
-                "type": "string"
-              }
-            },
-            "data": {},
-            "resultMap": {
-              "image": "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
-              "defaultGizmoType": "wikipedia",
-              "items": "query.search",
-              "preview": {
-                "title": "title",
-                "details": "snippet",
-                "id": "title"
-              },
-              "gizmo": {
-                "_url_source": "https://en.wikipedia.org/wiki/<%= id %>",
-                "id": "title",
-                "title": "title",
-                "caption": "snippet",
-                "description": "snippet"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "details": {
-        "title": "Local files",
-        "icon": "perm-media",
-        "color": "light-blue",
-        "author": "HAXCMS",
-        "description": "HAXCMS integration for HAX",
-        "tags": ["Uploads"]
-      },
-      "connection": {
-        "protocol": "http",
-        "url": "haxcms.ddev.local/",
-        "operations": {
-          "browse": {
-            "method": "GET",
-            "endPoint": "system/listFiles",
-            "pagination": {
-              "style": "link",
-              "props": {
-                "first": "page.first",
-                "next": "page.next",
-                "previous": "page.previous",
-                "last": "page.last"
-              }
-            },
-            "search": {
-              "q": {
-                "title": "Search",
-                "type": "string"
-              }
-            },
-            "data": {
-              "__HAXAPPENDUPLOADENDPOINT__": true
-            },
-            "resultMap": {
-              "defaultGizmoType": "image",
-              "items": "list",
-              "preview": {
-                "title": "name",
-                "details": "mime",
-                "image": "url",
-                "id": "uuid"
-              },
-              "gizmo": {
-                "source": "url",
-                "id": "uuid",
-                "title": "name",
-                "type": "type"
-              }
-            }
-          },
-          "add": {
-            "method": "POST",
-            "endPoint": "system/saveFile",
-            "acceptsGizmoTypes": [
-              "image",
-              "video",
-              "audio",
-              "pdf",
-              "svg",
-              "document",
-              "csv"
-            ],
-            "resultMap": {
-              "item": "data.file",
-              "defaultGizmoType": "image",
-              "gizmo": {
-                "source": "url",
-                "id": "uuid"
-              }
-            }
-          }
-        }
-      }
     }
   ],
   "stax": [
@@ -627,47 +549,36 @@
     }
   ],
   "autoloader": {
-    "spotify-embed": "@haxtheweb/spotify-embed/spotify-embed.js",
-    "media-image": "@haxtheweb/media-image/media-image.js",
-    "simple-icon": "@haxtheweb/simple-icon/simple-icon.js",
-    "inline-audio": "@haxtheweb/inline-audio/inline-audio.js",
-    "audio-player": "@haxtheweb/audio-player/audio-player.js",
-    "moar-sarcasm": "@haxtheweb/moar-sarcasm/moar-sarcasm.js",
-    "learning-component": "@haxtheweb/course-design/lib/learning-component.js",
-    "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
-    "simple-tags": "@haxtheweb/simple-fields/lib/simple-tags.js",
-    "flash-card": "@haxtheweb/flash-card/flash-card.js",
-    "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
-    "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
-    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js",
-    "twitter-embed": "@haxtheweb/twitter-embed/twitter-embed.js",
-    "self-check": "@haxtheweb/self-check/self-check.js",
-    "course-model": "@haxtheweb/course-model/course-model.js",
-    "stop-note": "@haxtheweb/stop-note/stop-note.js",
-    "video-player": "@haxtheweb/video-player/video-player.js",
-    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
-    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
-    "a11y-collapse": "@haxtheweb/a11y-collapse/a11y-collapse.js",
+    "page-break": "@haxtheweb/page-break/page-break.js",
     "accent-card": "@haxtheweb/accent-card/accent-card.js",
     "a11y-gif-player": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
     "code-sample": "@haxtheweb/code-sample/code-sample.js",
-    "ebook-button": "@haxtheweb/course-design/lib/ebook-button.js",
-    "worksheet-download": "@haxtheweb/course-design/lib/worksheet-download.js",
     "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
     "license-element": "@haxtheweb/license-element/license-element.js",
     "lrn-math": "@haxtheweb/lrn-math/lrn-math.js",
-    "vocab-term": "@haxtheweb/vocab-term/vocab-term.js",
+    "lrn-vocab": "@haxtheweb/lrn-vocab/lrn-vocab.js",
+    "media-image": "@haxtheweb/media-image/media-image.js",
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js",
     "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",
     "grid-plate": "@haxtheweb/grid-plate/grid-plate.js",
-    "lrndesign-timeline": "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js",
+    "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
+    "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
+    "short-answer-question": "@haxtheweb/multiple-choice/lib/short-answer-question.js",
+    "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
+    "tagging-question": "@haxtheweb/tagging-question/tagging-question.js",
+    "matching-question": "@haxtheweb/matching-question/matching-question.js",
+    "mark-the-words": "@haxtheweb/mark-the-words/mark-the-words.js",
+    "page-anchor": "@haxtheweb/page-break/lib/page-anchor.js",
+    "fill-in-the-blanks": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
     "person-testimonial": "@haxtheweb/person-testimonial/person-testimonial.js",
     "place-holder": "@haxtheweb/place-holder/place-holder.js",
     "q-r": "@haxtheweb/q-r/q-r.js",
+    "self-check": "@haxtheweb/self-check/self-check.js",
+    "stop-note": "@haxtheweb/stop-note/stop-note.js",
+    "video-player": "@haxtheweb/video-player/video-player.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
     "date-card": "@haxtheweb/date-card/date-card.js",
-    "h5p-element": "@haxtheweb/h5p-element/h5p-element.js",
-    "md-block": "@haxtheweb/md-block/md-block.js",
-    "page-break": "@haxtheweb/page-break/page-break.js",
-    "rpg-character": "@haxtheweb/rpg-character/rpg-character.js"
+    "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
+    "tableau-embed": "@haxtheweb/tableau-embed/tableau-embed.js"
   }
 }
