@@ -82,4 +82,22 @@ describe('moar-sarcasm behavior', () => {
     const el = await fixture(html`<moar-sarcasm>accessibility rules</moar-sarcasm>`)
     await expect(el).to.be.accessible()
   })
+  it('syncs the light DOM when say is set directly via setAttribute (HAX tray path)', async () => {
+    const el = await fixture(html`<moar-sarcasm>dfg</moar-sarcasm>`)
+    // simulate the HAX settings tray writing the attribute directly instead
+    // of going through the say property setter
+    el.setAttribute('say', 'dfg fgddfg dfg dfgdfg dfg')
+    expect(el.innerText).to.equal('dfg fgddfg dfg dfgdfg dfg')
+    expect(el.getAttribute('say')).to.equal('dfg fgddfg dfg dfgdfg dfg')
+  })
+  it('preserves a saved say value across reconnect instead of resetting from stale light DOM', async () => {
+    const container = globalThis.document.createElement('div')
+    container.innerHTML = '<moar-sarcasm say="dfg fgddfg dfg dfgdfg dfg">dfg</moar-sarcasm>'
+    globalThis.document.body.appendChild(container)
+    const el = container.querySelector('moar-sarcasm')
+    await new Promise((resolve) => setTimeout(resolve, 0))
+    expect(el.say).to.equal('dfg fgddfg dfg dfgdfg dfg')
+    expect(el.innerText).to.equal('dfg fgddfg dfg dfgdfg dfg')
+    container.remove()
+  })
 })
