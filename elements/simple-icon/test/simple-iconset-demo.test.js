@@ -83,7 +83,11 @@ describe('simple-icons registration', () => {
   })
 })
 
-describe('simple-iconset-demo', () => {
+describe('simple-iconset-demo', function () {
+  // axe.run() can exceed mocha's 2000ms default under test:all concurrency
+  // (see clean-two/test/clean-two.test.js and
+  // audio-player/test/audio-player.test.js for the same pattern)
+  this.timeout(10000)
   it('has the correct tag name', () => {
     expect(SimpleIconsetDemo.tag).to.equal('simple-iconset-demo')
   })
