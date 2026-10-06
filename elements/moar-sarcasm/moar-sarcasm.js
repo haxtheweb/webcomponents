@@ -87,8 +87,18 @@ class MoarSarcasm extends HTMLElement {
     if (globalThis.ShadyCSS) {
       globalThis.ShadyCSS.styleElement(this);
     }
-    this.a11y = "the following is sarcastic:";
-    this.say = this.innerText;
+    if (!this.hasAttribute("a11y")) {
+      this.a11y = "the following is sarcastic:";
+    }
+    // only derive say from the light DOM when it hasn't already been
+    // established (e.g. restored from previously saved markup). Otherwise
+    // reconnecting (such as on page load) would clobber a saved say value
+    // with whatever stale text still lives in the light DOM.
+    if (!this.hasAttribute("say")) {
+      this.say = this.innerText;
+    } else {
+      this.processText(this.getAttribute("say"));
+    }
   }
   /**
    * Render / rerender the shadowRoot
@@ -155,6 +165,23 @@ class MoarSarcasm extends HTMLElement {
       switch (attr) {
         case "say":
           this.processText(newValue);
+          // Keep the light DOM (slotted content) in sync with say so that
+          // serializing this element (eg on HAX save) reflects the actual
+          // value. say can be changed either through the say setter (which
+          // already keeps innerText in sync) or directly via setAttribute
+          // (eg the HAX settings tray writes attributes directly for
+          // properties that aren't own-properties), which otherwise would
+          // leave the light DOM stale.
+          if (newValue !== this.innerText) {
+            this.observer.disconnect();
+            this.innerText = newValue;
+            this.observer.observe(this, {
+              characterData: true,
+              attributes: false,
+              childList: true,
+              subtree: true,
+            });
+          }
           break;
         case "a11y":
           this.render();
