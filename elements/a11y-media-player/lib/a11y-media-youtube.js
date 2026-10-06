@@ -617,6 +617,17 @@ class A11yMediaYoutube extends LitElement {
           "aria-label",
           `YouTube video player: ${mediaTitle}`,
         );
+        // YouTube's embed player requires the origin referrer that strict
+        // page Referrer-Policy defaults strip, and cross-origin isolated
+        // pages (COEP+COOP, e.g. `hax serve` dev mode) block YouTube's
+        // report-only-COEP frame unless it opts into credentialless loading
+        ytIframe.setAttribute(
+          "referrerpolicy",
+          "strict-origin-when-cross-origin",
+        );
+        if (globalThis.crossOriginIsolated === true) {
+          ytIframe.setAttribute("credentialless", "");
+        }
       }
       this.appendChild(ytIframe);
       div.remove();

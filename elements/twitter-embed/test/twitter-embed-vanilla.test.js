@@ -94,6 +94,12 @@ describe('twitter-embed-vanilla', () => {
     expect(markup).to.include('width=300px')
     expect(markup).to.include('theme=dark')
     expect(markup).to.include('sandbox="allow-same-origin allow-scripts "')
+    // embed policy: the referrer is always sent, credentialless only on
+    // cross-origin isolated pages (this test env is not isolated)
+    expect(markup).to.include(
+      'referrerpolicy="strict-origin-when-cross-origin"',
+    )
+    expect(markup).to.not.include('credentialless')
   })
 
   it('toggles popups through the no-popups attribute states', async () => {

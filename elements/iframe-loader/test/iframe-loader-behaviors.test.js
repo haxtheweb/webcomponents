@@ -452,21 +452,106 @@ describe('url sanitization helpers used by iframe-loader', () => {
       'https://example.com',
     )
   })
-  it('only embeds http and https sources', () => {
-    const fallback = 'https://fallback.example.com'
-    expect(sanitizeEmbeddableURL('')).to.equal('')
-    expect(sanitizeEmbeddableURL('ftp://files.example.com/x.pdf', fallback)).to.equal(
+  it("only embeds http and https sources", () => {
+    const fallback = "https://fallback.example.com";
+    expect(sanitizeEmbeddableURL("")).to.equal("");
+    expect(sanitizeEmbeddableURL("ftp://files.example.com/x.pdf", fallback)).to.equal(
       fallback,
-    )
-    expect(sanitizeEmbeddableURL('javascript:alert(1)', fallback)).to.equal(
+    );
+    expect(sanitizeEmbeddableURL("javascript:alert(1)", fallback)).to.equal(
       fallback,
-    )
-    expect(sanitizeEmbeddableURL('https://example.com', fallback)).to.equal(
-      'https://example.com',
-    )
-    expect(sanitizeEmbeddableURL('//example.com/path', fallback)).to.equal(
-      '//example.com/path',
-    )
-    expect(sanitizeEmbeddableURL('http://', fallback)).to.equal(fallback)
-  })
-})
+    );
+    expect(sanitizeEmbeddableURL("https://example.com", fallback)).to.equal(
+      "https://example.com",
+    );
+    expect(sanitizeEmbeddableURL("//example.com/path", fallback)).to.equal(
+      "//example.com/path",
+    );
+    expect(sanitizeEmbeddableURL("http://", fallback)).to.equal(fallback);
+  });
+});
+
+describe("iframe-loader embed policy", () => {
+  // issue #3112: the referrer policy is applied to every managed iframe;
+  // credentialless is added only when the page itself is cross-origin
+  // isolated (COEP+COOP, e.g. `hax serve` dev mode) and the source is
+  // cross-origin, because same-origin frames pass COEP checks and keep
+  // their credentials
+  const withCrossOriginIsolated = async (value, run) => {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "crossOriginIsolated",
+    );
+    Object.defineProperty(globalThis, "crossOriginIsolated", {
+      value: value,
+      configurable: true,
+      writable: true,
+    });
+    try {
+      await run();
+    } finally {
+      if (descriptor) {
+        Object.defineProperty(globalThis, "crossOriginIsolated", descriptor);
+      } else {
+        delete globalThis.crossOriginIsolated;
+      }
+    }
+  };
+
+  it("applies the referrer policy without credentialless by default", async () => {
+    const el = await fixture(
+      html`<iframe-loader source="https://btopro.com"></iframe-loader>`,
+    );
+    await elementUpdated(el);
+    const frame = el.querySelector("iframe");
+    expect(frame.getAttribute("referrerpolicy")).to.equal(
+      "strict-origin-when-cross-origin",
+    );
+    expect(frame.hasAttribute("credentialless")).to.equal(false);
+  });
+
+  it("marks cross-origin embeds credentialless on isolated pages", async () => {
+    await withCrossOriginIsolated(true, async () => {
+      const el = globalThis.document.createElement("iframe-loader");
+      el.source = "https://btopro.com";
+      globalThis.document.body.appendChild(el);
+      await elementUpdated(el);
+      const frame = el.querySelector("iframe");
+      expect(frame.getAttribute("referrerpolicy")).to.equal(
+        "strict-origin-when-cross-origin",
+      );
+      expect(frame.hasAttribute("credentialless")).to.equal(true);
+      el.remove();
+    });
+  });
+
+  it("leaves same-origin embeds alone on isolated pages", async () => {
+    await withCrossOriginIsolated(true, async () => {
+      const el = globalThis.document.createElement("iframe-loader");
+      el.source = "/files/index.html";
+      globalThis.document.body.appendChild(el);
+      await elementUpdated(el);
+      const frame = el.querySelector("iframe");
+      expect(frame.getAttribute("referrerpolicy")).to.equal(
+        "strict-origin-when-cross-origin",
+      );
+      expect(frame.hasAttribute("credentialless")).to.equal(false);
+      el.remove();
+    });
+  });
+
+  it("drops credentialless when the source becomes same-origin", async () => {
+    await withCrossOriginIsolated(true, async () => {
+      const el = globalThis.document.createElement("iframe-loader");
+      el.source = "https://btopro.com";
+      globalThis.document.body.appendChild(el);
+      await elementUpdated(el);
+      const frame = el.querySelector("iframe");
+      expect(frame.hasAttribute("credentialless")).to.equal(true);
+      el.source = "/files/index.html";
+      await elementUpdated(el);
+      expect(frame.hasAttribute("credentialless")).to.equal(false);
+      el.remove();
+    });
+  });
+});

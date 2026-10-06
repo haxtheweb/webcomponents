@@ -144,6 +144,8 @@ class VideoPlayer extends IntersectionObserverMixin(
                           height="${this.height}"
                           frameborder="0"
                           allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                          referrerpolicy="strict-origin-when-cross-origin"
+                          ?credentialless="${this.__embedCredentialless}"
                         ></iframe>
                       `}
                 </div>
@@ -846,6 +848,32 @@ class VideoPlayer extends IntersectionObserverMixin(
       return true;
     }
     return false;
+  }
+
+  /**
+   * Whether the raw-iframe path needs the `credentialless` attribute:
+   * only on cross-origin isolated pages (COEP+COOP, e.g. `hax serve` dev
+   * mode) and only for cross-origin sources, since same-origin frames pass
+   * COEP checks automatically and keep their credentials.
+   * @readonly
+   * @returns {Boolean}
+   */
+  get __embedCredentialless() {
+    if (globalThis.crossOriginIsolated !== true) {
+      return false;
+    }
+    const src = this.sourceData && this.sourceData[0] && this.sourceData[0].src;
+    if (!src) {
+      return false;
+    }
+    try {
+      return (
+        new URL(src, globalThis.location.href).origin !==
+        globalThis.location.origin
+      );
+    } catch (e) {
+      return false;
+    }
   }
 
   /**

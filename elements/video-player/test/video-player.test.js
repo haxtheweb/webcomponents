@@ -602,3 +602,77 @@ describe("video-player querySelectorAll SSR stub", () => {
     expect(result).to.deep.equal([]);
   });
 });
+
+describe("video-player raw iframe embed policy", () => {
+  // issue #3112: the raw iframe path renders third-party embeds which need
+  // the origin referrer, and cross-origin isolated pages (COEP+COOP, e.g.
+  // `hax serve` dev mode) block cross-origin embed frames unless they opt
+  // into credentialless loading; same-origin embeds pass COEP automatically
+  let el;
+  beforeEach(async () => {
+    el = await fixture(html`<video-player></video-player>`);
+  });
+
+  const embedFrame = () =>
+    el.shadowRoot.querySelector(".responsive-video-container iframe");
+  const withCrossOriginIsolated = async (run) => {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "crossOriginIsolated",
+    );
+    Object.defineProperty(globalThis, "crossOriginIsolated", {
+      value: true,
+      configurable: true,
+      writable: true,
+    });
+    try {
+      await run();
+    } finally {
+      if (descriptor) {
+        Object.defineProperty(globalThis, "crossOriginIsolated", descriptor);
+      } else {
+        delete globalThis.crossOriginIsolated;
+      }
+    }
+  };
+  const renderEmbed = async (sourceType, src) => {
+    el.elementVisible = true;
+    el.sourceType = sourceType;
+    el.sources = [{ src: src }];
+    await el.updateComplete;
+  };
+
+  it("sends the referrer third-party embed players require", async () => {
+    await renderEmbed("vimeo", "https://vimeo.com/123");
+    const frame = embedFrame();
+    expect(frame).to.exist;
+    expect(frame.getAttribute("referrerpolicy")).to.equal(
+      "strict-origin-when-cross-origin",
+    );
+    expect(frame.hasAttribute("credentialless")).to.equal(false);
+  });
+
+  it("marks cross-origin embeds credentialless on isolated pages", async () => {
+    await withCrossOriginIsolated(async () => {
+      await renderEmbed("vimeo", "https://vimeo.com/123");
+      const frame = embedFrame();
+      expect(frame).to.exist;
+      expect(frame.getAttribute("referrerpolicy")).to.equal(
+        "strict-origin-when-cross-origin",
+      );
+      expect(frame.hasAttribute("credentialless")).to.equal(true);
+    });
+  });
+
+  it("leaves same-origin embeds alone even when isolated", async () => {
+    await withCrossOriginIsolated(async () => {
+      await renderEmbed("external", "/files/embedded-video-page");
+      const frame = embedFrame();
+      expect(frame).to.exist;
+      expect(frame.getAttribute("referrerpolicy")).to.equal(
+        "strict-origin-when-cross-origin",
+      );
+      expect(frame.hasAttribute("credentialless")).to.equal(false);
+    });
+  });
+});

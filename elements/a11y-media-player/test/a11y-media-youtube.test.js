@@ -162,6 +162,56 @@ describe("a11y-media-youtube lifecycle", () => {
     );
   });
 
+  it("_preloadVideo applies the embed referrer policy to the iframe", async () => {
+    const el = await fixture(html`<a11y-media-youtube></a11y-media-youtube>`);
+    await el.updateComplete;
+    el.mediaTitle = "My Video";
+    el.videoId = "abc123";
+    await el.updateComplete;
+    await sleep(60);
+    const frame = el.querySelector("iframe");
+    expect(frame).to.exist;
+    // the referrer YouTube's embed player now requires is always sent;
+    // this test env is not cross-origin isolated so no credentialless
+    expect(frame.getAttribute("referrerpolicy")).to.equal(
+      "strict-origin-when-cross-origin",
+    );
+    expect(frame.hasAttribute("credentialless")).to.equal(false);
+  });
+
+  it("_preloadVideo marks the iframe credentialless when cross-origin isolated", async () => {
+    // simulate the COEP/COOP cross-origin isolated page that `hax serve`
+    // dev mode produces
+    const descriptor = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "crossOriginIsolated",
+    );
+    Object.defineProperty(globalThis, "crossOriginIsolated", {
+      value: true,
+      configurable: true,
+      writable: true,
+    });
+    try {
+      const el = await fixture(
+        html`<a11y-media-youtube video-id="abc123"></a11y-media-youtube>`,
+      );
+      await el.updateComplete;
+      await sleep(60);
+      const frame = el.querySelector("iframe");
+      expect(frame).to.exist;
+      expect(frame.getAttribute("referrerpolicy")).to.equal(
+        "strict-origin-when-cross-origin",
+      );
+      expect(frame.hasAttribute("credentialless")).to.equal(true);
+    } finally {
+      if (descriptor) {
+        Object.defineProperty(globalThis, "crossOriginIsolated", descriptor);
+      } else {
+        delete globalThis.crossOriginIsolated;
+      }
+    }
+  });
+
   it("disconnecting removes timers and destroys the player", async () => {
     const el = await fixture(
       html`<a11y-media-youtube video-id="abc123"></a11y-media-youtube>`,

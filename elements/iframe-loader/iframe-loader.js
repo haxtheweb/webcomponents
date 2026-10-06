@@ -6,6 +6,44 @@ export class IframeLoader extends LitElement {
   _safeSource(source) {
     return sanitizeEmbeddableURL(source, null);
   }
+  /**
+   * Whether a source URL targets another origin than the current page.
+   */
+  _isCrossOriginSource(source) {
+    if (!source) {
+      return false;
+    }
+    try {
+      return (
+        new URL(source, globalThis.location.href).origin !==
+        globalThis.location.origin
+      );
+    } catch (e) {
+      return false;
+    }
+  }
+  /**
+   * Applies the embed policy to a managed iframe: embeds like YouTube
+   * require the origin referrer that strict page Referrer-Policy defaults
+   * strip, and cross-origin isolated pages (COEP+COOP, e.g. `hax serve`
+   * dev mode) block cross-origin frames that don't opt into credentialless
+   * loading. Same-origin frames pass COEP checks automatically and keep
+   * their credentials, so those are left alone.
+   */
+  _applyEmbedPolicy(frame, source) {
+    if (!frame) {
+      return;
+    }
+    frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    if (
+      globalThis.crossOriginIsolated === true &&
+      this._isCrossOriginSource(source)
+    ) {
+      frame.setAttribute("credentialless", "");
+    } else {
+      frame.removeAttribute("credentialless");
+    }
+  }
   static get tag() {
     return "iframe-loader";
   }
@@ -214,6 +252,7 @@ export class IframeLoader extends LitElement {
           "allow-scripts allow-same-origin",
         );
       }
+      this._applyEmbedPolicy(this.__iframe, safeSource);
       this.appendChild(this.__iframe);
     } else {
       // a caller supplied its own <iframe> child (e.g. via a slotted,
@@ -298,6 +337,7 @@ export class IframeLoader extends LitElement {
           } else {
             this.__iframe.removeAttribute("src");
           }
+          this._applyEmbedPolicy(this.__iframe, safeSource);
         } else {
           this.__iframe = globalThis.document.createElement("iframe");
           this.__iframe.setAttribute("width", this.width);
@@ -329,6 +369,7 @@ export class IframeLoader extends LitElement {
           } else {
             this.__iframe.removeAttribute("src");
           }
+          this._applyEmbedPolicy(this.__iframe, safeSource);
           this.appendChild(this.__iframe);
         }
       } else if (["height", "width"].includes(propName)) {

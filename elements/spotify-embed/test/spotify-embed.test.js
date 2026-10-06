@@ -113,6 +113,12 @@ describe("spotify-embed rendering", () => {
     expect(iframe.getAttribute("width")).to.equal("100%");
     // the iframe title reflects the embedded item type
     expect(iframe.getAttribute("title")).to.equal("Spotify Album Embed");
+    // embed policy: the referrer is always sent, credentialless only on
+    // cross-origin isolated pages (this test env is not isolated)
+    expect(iframe.getAttribute("referrerpolicy")).to.equal(
+      "strict-origin-when-cross-origin",
+    );
+    expect(iframe.hasAttribute("credentialless")).to.be.false;
     expect(blockedSrcs.includes(src)).to.be.true;
   });
 

@@ -73,6 +73,8 @@ class SpotifyEmbed extends LitElement {
           part="iframe"
           frameborder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          ?credentialless="${globalThis.crossOriginIsolated === true}"
           loading="lazy"
           decoding="async"
           fetchpriority="low"

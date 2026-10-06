@@ -135,6 +135,12 @@ class TwitterEmbedVanilla extends HTMLElement {
    * my own convention, easy to remember
    */
   get html() {
+    // cross-origin isolated pages (COEP+COOP, e.g. `hax serve` dev mode)
+    // block third-party embed frames that don't opt into credentialless
+    // loading; twitter's embed is always cross-origin so this is a fixed
+    // origin check
+    const credentialless =
+      globalThis.crossOriginIsolated === true ? " credentialless" : "";
     return `
     <div
       class="twitter-tweet twitter-tweet-rendered"
@@ -145,7 +151,8 @@ class TwitterEmbedVanilla extends HTMLElement {
         frameborder="0"
         loading="lazy"
         allowtransparency="true"
-        allow="autoplay; encrypted-media; fullscreen"
+        allow="autoplay; encrypted-media; fullscreen"${credentialless}
+        referrerpolicy="strict-origin-when-cross-origin"
         style="position: static; visibility: visible; width: ${this.dataWidth}; height: 498px; display: block; flex-grow: 1;"
         title="Twitter Tweet"
         src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this.tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
