@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 226,
-    "elementsWithTranslations": 42,
-    "translationFilesFound": 1708,
+    "elementsScanned": 228,
+    "elementsWithTranslations": 44,
+    "translationFilesFound": 1744,
     "languagesSupported": [
       "af",
       "am",
@@ -909,6 +909,44 @@
       "yo",
       "zh",
       "zu"
+    ],
+    "ics-render.ar": [
+      "haxProperties"
+    ],
+    "ics-render": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "ics-render.bn": [
+      "haxProperties"
+    ],
+    "ics-render.es": [
+      "haxProperties"
+    ],
+    "ics-render.fr": [
+      "haxProperties"
+    ],
+    "ics-render.hi": [
+      "haxProperties"
+    ],
+    "ics-render.ja": [
+      "haxProperties"
+    ],
+    "ics-render.pt": [
+      "haxProperties"
+    ],
+    "ics-render.ru": [
+      "haxProperties"
+    ],
+    "ics-render.zh": [
+      "haxProperties"
     ],
     "image-compare-slider": [
       "es"
@@ -2054,6 +2092,44 @@
     ],
     "user-action.haxProperties": [
       "es"
+    ],
+    "vcf-render.ar": [
+      "haxProperties"
+    ],
+    "vcf-render": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "vcf-render.bn": [
+      "haxProperties"
+    ],
+    "vcf-render.es": [
+      "haxProperties"
+    ],
+    "vcf-render.fr": [
+      "haxProperties"
+    ],
+    "vcf-render.hi": [
+      "haxProperties"
+    ],
+    "vcf-render.ja": [
+      "haxProperties"
+    ],
+    "vcf-render.pt": [
+      "haxProperties"
+    ],
+    "vcf-render.ru": [
+      "haxProperties"
+    ],
+    "vcf-render.zh": [
+      "haxProperties"
     ],
     "video-player": [
       "af",
