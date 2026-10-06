@@ -1,0 +1,11 @@
+{
+  "name": "নাম",
+  "position": "পদ",
+  "organization": "প্রতিষ্ঠান",
+  "email": "ইমেল",
+  "phone": "ফোন",
+  "address": "ঠিকানা",
+  "loadingContacts": "পরিচিতি লোড হচ্ছে",
+  "contactsUnavailable": "পরিচিতি উপলব্ধ নয়",
+  "noContacts": "এই ফাইলে কোনো পরিচিতি নেই"
+}

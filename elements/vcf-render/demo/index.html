@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>VcfRender: vcf-render Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../vcf-render.js';
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0 auto;
+        max-width: 1100px;
+        padding: 16px;
+      }
+      h3 {
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>vcf-render</h1>
+      <p>The same two contacts in every display mode. The first card embeds another card in an AGENT property, which stays part of that contact instead of becoming a third entry.</p>
+      <h3>Person cards</h3>
+      <vcf-render display-as="cards"></vcf-render>
+
+      <h3>Quotes</h3>
+      <vcf-render display-as="quotes"></vcf-render>
+
+      <h3>Table</h3>
+      <vcf-render display-as="table"></vcf-render>
+
+      <h3>List</h3>
+      <vcf-render display-as="list"></vcf-render>
+
+      <h3>From a file, through data-source</h3>
+      <vcf-render data-source="./sample.vcf" debounce-delay="0"></vcf-render>
+    </div>
+    <script type="module">
+      // the modes above read the file contents inline so the demo works with
+      // no server and no network; the last one fetches sample.vcf instead
+      const response = await fetch('./sample.vcf');
+      const text = await response.text();
+      globalThis.document
+        .querySelectorAll('vcf-render:not([data-source])')
+        .forEach((element) => {
+          element.contactData = text;
+        });
+    </script>
+  </body>
+</html>

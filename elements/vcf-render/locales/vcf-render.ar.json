@@ -1,0 +1,11 @@
+{
+  "name": "الاسم",
+  "position": "المنصب",
+  "organization": "المؤسسة",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "address": "العنوان",
+  "loadingContacts": "جارٍ تحميل جهات الاتصال",
+  "contactsUnavailable": "جهات الاتصال غير متاحة",
+  "noContacts": "لا توجد جهات اتصال في هذا الملف"
+}

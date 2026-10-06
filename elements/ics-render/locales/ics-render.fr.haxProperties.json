@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Fichier de calendrier"
+      },
+      {
+        "title": "Affichage"
+      },
+      {
+        "title": "Titre"
+      }
+    ]
+  }
+}

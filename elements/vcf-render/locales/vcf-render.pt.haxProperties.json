@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "title": "Arquivo de contatos"
+      },
+      {
+        "title": "Exibir como"
+      },
+      {
+        "title": "Título"
+      }
+    ]
+  }
+}

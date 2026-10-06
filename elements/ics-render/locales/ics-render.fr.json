@@ -1,0 +1,11 @@
+{
+  "event": "Événement",
+  "when": "Quand",
+  "where": "Où",
+  "details": "Détails",
+  "allDay": "Toute la journée",
+  "repeats": "Récurrent",
+  "loadingCalendar": "Chargement du calendrier",
+  "calendarUnavailable": "Calendrier indisponible",
+  "noEvents": "Aucun événement dans ce calendrier"
+}

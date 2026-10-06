@@ -1,0 +1,81 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Calendar",
+    "description": "Show the events in a calendar file as date cards, a timeline, a table or a list.",
+    "icon": "icons:date-range",
+    "color": "light-blue",
+    "tags": ["Content", "calendar", "events", "ics", "schedule", "dates"],
+    "handles": [
+      {
+        "type": "ics",
+        "type_exclusive": true,
+        "source": "dataSource"
+      }
+    ],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Calendar file",
+        "description": "Upload or choose an .ics calendar file. Its events are read in the browser.",
+        "inputMethod": "haxupload",
+        "icon": "icons:date-range",
+        "required": true,
+        "uploadRequirements": {
+          "extensions": [".ics"]
+        }
+      },
+      {
+        "property": "displayAs",
+        "title": "Display as",
+        "description": "How to present what the file contains.",
+        "inputMethod": "select",
+        "icon": "icons:view-module",
+        "options": {
+          "cards": "Date cards",
+          "timeline": "Timeline",
+          "table": "Table",
+          "list": "List"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Heading",
+        "description": "Shown above the events, and as the table caption. Defaults to the calendar's own name.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["status", "calendar-name"]
+  },
+  "demoSchema": [
+    {
+      "tag": "ics-render",
+      "properties": {
+        "calendarData": "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//HAX//ics-render demo//EN\r\nX-WR-CALNAME:Project schedule\r\nBEGIN:VEVENT\r\nUID:kickoff@example.com\r\nDTSTART:20261015T180000Z\r\nDTEND:20261015T190000Z\r\nSUMMARY:Project Kickoff Meeting\r\nDESCRIPTION:Initial alignment meeting with the project team.\r\nLOCATION:Conference Room A\r\nEND:VEVENT\r\nBEGIN:VEVENT\r\nUID:review@example.com\r\nDTSTART:20261029T150000Z\r\nDTEND:20261029T160000Z\r\nSUMMARY:Design Review\r\nLOCATION:Zoom\r\nEND:VEVENT\r\nEND:VCALENDAR",
+        "displayAs": "cards"
+      },
+      "content": ""
+    }
+  ]
+}

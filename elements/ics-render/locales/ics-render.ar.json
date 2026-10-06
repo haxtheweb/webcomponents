@@ -1,0 +1,11 @@
+{
+  "event": "الحدث",
+  "when": "الوقت",
+  "where": "المكان",
+  "details": "التفاصيل",
+  "allDay": "طوال اليوم",
+  "repeats": "يتكرر",
+  "loadingCalendar": "جارٍ تحميل التقويم",
+  "calendarUnavailable": "التقويم غير متاح",
+  "noEvents": "لا توجد أحداث في هذا التقويم"
+}
