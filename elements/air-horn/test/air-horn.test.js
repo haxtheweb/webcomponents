@@ -98,7 +98,9 @@ describe('air-horn', () => {
       const el = await fixture(html`<air-horn>honk</air-horn>`)
       expect(el.getAttribute('role')).to.equal('button')
       expect(el.getAttribute('tabindex')).to.equal('0')
-      expect(el.getAttribute('aria-label')).to.equal('Play air horn')
+      // the accessible name must include the visible slotted text
+      // (label-content-name-mismatch)
+      expect(el.getAttribute('aria-label')).to.equal('Play air horn: honk')
       el.dispatchEvent(
         new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, composed: true }),
       )

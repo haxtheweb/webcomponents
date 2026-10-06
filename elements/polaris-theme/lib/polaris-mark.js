@@ -109,7 +109,7 @@ class PolarisMark extends LitElement {
           href="${this.url}"
           target="_blank"
           rel="noopener"
-          aria-label="${this.name || "Penn State"} — visit psu.edu"
+          aria-label="${[this.name, this.name2, this.name3].filter(Boolean).join(" ") || "Penn State"} — visit psu.edu"
           @click="${this._clickPrevent}"
         >
           ${this.renderSource(this.type)}

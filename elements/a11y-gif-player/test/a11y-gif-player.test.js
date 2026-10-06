@@ -54,9 +54,11 @@ describe('a11y-gif-player rendering', () => {
     expect(gif.getAttribute('alt')).to.equal('An animated gif')
     expect(gif.getAttribute('aria-describedby').trim()).to.equal('longdesc')
     const button = el.shadowRoot.querySelector('#button')
-    // the en locale ships the label lowercased; match it case-insensitively
+    // the en locale ships the label lowercased; match it case-insensitively.
+    // "GIF" is appended since it's rendered as visible text inside the button's
+    // svg icon, and the accessible name must include all visible text.
     expect(button.getAttribute('aria-label').toLowerCase()).to.equal(
-      'toggle animation',
+      'toggle animation gif',
     )
     expect(button.getAttribute('aria-pressed')).to.equal('false')
     expect(button.hasAttribute('disabled')).to.be.false

@@ -195,7 +195,7 @@ class A11yGifPlayer extends I18NMixin(
 
             <button
               id="button"
-              aria-label="${this.t.toggleAnimation}"
+              aria-label="${this.t.toggleAnimation} GIF"
               aria-controls="gif"
               aria-pressed="${this.__playing ? "true" : "false"}"
               @click="${this.toggle}"

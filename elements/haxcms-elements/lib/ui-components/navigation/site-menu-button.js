@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -107,6 +108,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       noNextPage: "No next page",
     };
     this.hideLabel = false;
+    this.__slottedText = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
       autorun((reaction) => {
@@ -139,10 +141,48 @@ class SiteMenuButton extends HAXCMSI18NMixin(
   // axe button-name / aria-tooltip-name rules are satisfied without changing
   // behavior in the normal case where a label IS present
   get __accessibleLabel() {
+    // when the theme slots visible text into prefix/suffix, the accessible
+    // name must come from that content; an explicit aria-label here would
+    // have to duplicate the slotted text or risk a label-content-name-mismatch
+    // (the visible text is not required to be part of the label), so omit it
+    // and let the content name the element. Return undefined so ifDefined in
+    // render() removes the attribute entirely (an empty aria-label would
+    // wrongly override the content name).
+    if (this.__slottedText) {
+      return undefined;
+    }
     if (this.label) {
       return this.label;
     }
     return this.type === "next" ? this.t.noNextPage : this.t.noPreviousPage;
+  }
+  // recompute the text slotted into prefix/suffix; slotchange only fires when
+  // the assigned node list changes, so a MutationObserver also watches for
+  // text mutated in place inside already-assigned nodes (e.g. a theme updating
+  // its slotted page-title binding)
+  __syncSlottedText() {
+    let text = "";
+    if (this.renderRoot) {
+      this.renderRoot.querySelectorAll("slot").forEach((slot) => {
+        slot.assignedNodes({ flatten: true }).forEach((node) => {
+          if (node.textContent) {
+            text += " " + node.textContent;
+          }
+        });
+      });
+    }
+    this.__slottedText = text.replace(/\s+/g, " ").trim();
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__slotObserver = new MutationObserver(
+      this.__syncSlottedText.bind(this),
+    );
+    this.__slotObserver.observe(this, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
   }
   // render function
   render() {
@@ -151,7 +191,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         tabindex="-1"
         ?disabled="${this.disabled}"
         aria-disabled="${this.disabled}"
-        aria-label="${this.__accessibleLabel}"
+        aria-label="${ifDefined(this.__accessibleLabel)}"
         .part="${this.editMode ? `edit-mode-active link` : `link`}"
       >
         <button
@@ -159,12 +199,18 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           noink
           ?disabled="${this.disabled}"
           ?raised="${this.raised}"
-          aria-label="${this.__accessibleLabel}"
+          aria-label="${ifDefined(this.__accessibleLabel)}"
           .part="${this.editMode ? `edit-mode-active button` : `button`}"
         >
-          <slot name="prefix"></slot>
+          <slot
+            name="prefix"
+            @slotchange="${this.__syncSlottedText}"
+          ></slot>
           <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
-          <slot name="suffix"></slot>
+          <slot
+            name="suffix"
+            @slotchange="${this.__syncSlottedText}"
+          ></slot>
         </button>
       </a>
       ${!this.hideLabel && this.label
@@ -218,6 +264,13 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       hideLabel: {
         type: Boolean,
         attribute: "hide-label",
+      },
+      /**
+       * text currently slotted into prefix/suffix, tracked so the accessible
+       * name can defer to the visible content (see __accessibleLabel)
+       */
+      __slottedText: {
+        state: true,
       },
       icon: {
         type: String,
@@ -428,6 +481,10 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     }
   }
   disconnectedCallback() {
+    if (this.__slotObserver) {
+      this.__slotObserver.disconnect();
+      this.__slotObserver = null;
+    }
     for (var i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {

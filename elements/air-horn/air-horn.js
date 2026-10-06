@@ -68,11 +68,14 @@ class AirHorn extends HTMLElement {
     if (!this.hasAttribute("tabindex")) {
       this.setAttribute("tabindex", "0");
     }
-    if (!this.hasAttribute("aria-label")) {
-      this.setAttribute("aria-label", "Play air horn");
-    }
+    this.__explicitAriaLabel = this.hasAttribute("aria-label");
+    this._updateAriaLabel();
     this.addEventListener("click", this.__playSoundBound);
     this.addEventListener("keydown", this.__keyDownBound);
+    this.__slotChangeBound = this._updateAriaLabel.bind(this);
+    this.shadowRoot
+      .querySelector("slot")
+      .addEventListener("slotchange", this.__slotChangeBound);
   }
 
   /**
@@ -81,6 +84,25 @@ class AirHorn extends HTMLElement {
   disconnectedCallback() {
     this.removeEventListener("click", this.__playSoundBound);
     this.removeEventListener("keydown", this.__keyDownBound);
+    const slot = this.shadowRoot.querySelector("slot");
+    if (slot && this.__slotChangeBound) {
+      slot.removeEventListener("slotchange", this.__slotChangeBound);
+    }
+  }
+
+  /**
+   * Keep the accessible name in sync with the visible slotted text so the
+   * two never mismatch (label-content-name-mismatch).
+   */
+  _updateAriaLabel() {
+    if (this.__explicitAriaLabel) {
+      return;
+    }
+    const text = this.textContent.trim();
+    this.setAttribute(
+      "aria-label",
+      text ? `Play air horn: ${text}` : "Play air horn",
+    );
   }
 
   /**

@@ -212,6 +212,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         <div class="controls">
           <simple-icon-button-lite
             icon="av:fiber-smart-record"
+            label="${this.t.startRecording}"
             class="${this.recording ? 'hidden' : ''}"
             @click="${this._startRecording}"
           >
@@ -220,6 +221,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           
           <simple-icon-button-lite
             icon="av:stop"
+            label="${this.t.stopRecording}"
             class="${this.recording ? '' : 'hidden'}"
             @click="${this._stopRecording}"
           >
@@ -231,7 +233,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
             href="${this.downloadUrl}"
             download="screen-recording-${Date.now()}.webm"
           >
-            <simple-icon-button-lite icon="icons:file-download">
+            <simple-icon-button-lite icon="icons:file-download" label="${this.t.downloadVideo}">
               ${this.t.downloadVideo}
             </simple-icon-button-lite>
           </a>

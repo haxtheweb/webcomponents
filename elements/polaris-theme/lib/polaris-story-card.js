@@ -180,7 +180,7 @@ class PolarisStoryCard extends LitElement {
       ? html`<a
           class="link"
           href="${this.link}"
-          aria-label="${this.label || this.pillar || "Story card"}"
+          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") || "Story card"}"
           @click="${this._clickLink}"
           >${card}</a
         >`
