@@ -92,7 +92,13 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         :root {
           /* DDD migration: exact / near-exact token remaps. The haxma-primary
              pair and haxma-text stay raw because DDD has no indigo-family
-             token and no near-exact neutral step for #545454. */
+             token and no near-exact neutral step for #545454. Dark-mode
+             neutrals are also raw hex: DDD has no dark-specific neutral
+             ramp, and these must NOT be sourced from simple-colors grey
+             tokens, which are a fixed light ramp that never inverts for
+             this theme and previously left dark mode resolving to
+             near-light backgrounds with near-black text. */
+          color-scheme: light dark;
           --haxma-primary: #5551FF;
           --haxma-primary-hover: #4942E6;
           --haxma-text: #545454;
@@ -113,28 +119,28 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         }
         
         body.dark-mode {
-          background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
-          color: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+          background-color: #1A1A1A;
+          color: #E5E5E5;
           --haxma-primary: #8B88FF;
           --haxma-primary-hover: #A5A2FF;
-          --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
-          --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+          --haxma-bg: #1A1A1A;
+          --haxma-text: #E5E5E5;
           --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
-          --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
-          --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
+          --haxma-border: #404040;
+          --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
         }
         
         @media (prefers-color-scheme: dark) {
           body:not(.light-mode) {
-            background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
-            color: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+            background-color: #1A1A1A;
+            color: #E5E5E5;
             --haxma-primary: #8B88FF;
             --haxma-primary-hover: #A5A2FF;
-            --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
-            --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+            --haxma-bg: #1A1A1A;
+            --haxma-text: #E5E5E5;
             --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
-            --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
-            --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
+            --haxma-border: #404040;
+            --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
           }
         }
       `,
@@ -164,14 +170,14 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
       
       :host([dark-mode]) {
         color-scheme: dark;
-        background-color: var(--simple-colors-default-theme-grey-2, #1a1a1a);
+        background-color: #1A1A1A;
         --haxma-primary: #8B88FF;
         --haxma-primary-hover: #A5A2FF;
-        --haxma-bg: var(--simple-colors-default-theme-grey-2, #1a1a1a);
-        --haxma-text: var(--simple-colors-default-theme-grey-11, #e5e5e5);
+        --haxma-bg: #1A1A1A;
+        --haxma-text: #E5E5E5;
         --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
-        --haxma-border: var(--simple-colors-default-theme-grey-5, #404040);
-        --haxma-border-light: var(--ddd-theme-default-coalyGray, #2a2a2a);
+        --haxma-border: #404040;
+        --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
       }
       
       .app-container {
