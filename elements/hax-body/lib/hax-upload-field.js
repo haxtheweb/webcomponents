@@ -68,8 +68,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       fileOpFailed: "File operation failed.",
       fileExtensionNotAllowed:
         "This field only accepts the following file types:",
-      fileTypeNotAllowed:
-        "This field only accepts the following media types:",
+      fileTypeNotAllowed: "This field only accepts the following media types:",
       transformFailed:
         "Post-upload transform failed; the original file was kept.",
     };
@@ -343,10 +342,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       e.preventDefault();
       e.stopPropagation();
       this.__allowUpload = false;
-      if (
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("#fileupload")
-      ) {
+      if (this.shadowRoot && this.shadowRoot.querySelector("#fileupload")) {
         this.shadowRoot.querySelector("#fileupload").files = [];
       }
       return;
@@ -431,7 +427,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       const lower = fileName.toLowerCase();
       const matched = req.extensions.some(function (ext) {
         const e2 =
-          typeof ext === "string" ? ext.toLowerCase() : String(ext || "").toLowerCase();
+          typeof ext === "string"
+            ? ext.toLowerCase()
+            : String(ext || "").toLowerCase();
         return e2 && lower.indexOf(e2) === lower.length - e2.length;
       });
       if (!matched) {
@@ -754,10 +752,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     const transform = this.uploadTransform;
     if (!transform || !transform.operation) return;
     const fileUuid =
-      response &&
-      response.data &&
-      response.data.file &&
-      response.data.file.uuid
+      response && response.data && response.data.file && response.data.file.uuid
         ? response.data.file.uuid
         : "";
     if (!fileUuid) return;
@@ -816,7 +811,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         label="${this.t.selectMedia}.."
         icon="hax:multimedia"
         @click="${this._clickMediaButton}"
-        controls="fieldset"
         part="merlin"
         ?hidden="${!this.showSources}"
       >

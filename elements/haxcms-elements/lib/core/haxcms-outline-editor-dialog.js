@@ -208,9 +208,16 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     );
     this.__disposer.push(
       autorun(() => {
-        const _mobx_val_0 = toJS(store.manifest.items);
+        // guard: the manifest may not be loaded yet (null / no items), and
+        // reading .items off it crashes the reaction before the first load
+        const _mobx_val_0 =
+          store.manifest && Array.isArray(store.manifest.items)
+            ? toJS(store.manifest.items)
+            : null;
         Promise.resolve().then(() => {
-          this.manifestItems = [..._mobx_val_0];
+          if (_mobx_val_0) {
+            this.manifestItems = [..._mobx_val_0];
+          }
           this.updateComplete.then(() => {
             // force UI sync after render completes so data and UI stay aligned
             if (this.shadowRoot) {

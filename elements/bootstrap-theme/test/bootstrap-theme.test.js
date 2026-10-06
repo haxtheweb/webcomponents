@@ -1,55 +1,24 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  settleThemeFade,
+  lockLightThemeEnvironment,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 import "../bootstrap-theme.js";
 
 // The headless session can start under either OS color scheme and the DDD
 // root styles plus the vendored Bootstrap sheet land asynchronously, so
 // transient near-white-on-white states can race the axe color-contrast
 // sampling mid-render. Pin the used color scheme to light and pin the store
-// to light mode (the spacebook/collection-list convention) so every audit
-// below evaluates a deterministic light rendering. The OS-dark surface
+// to light mode (see HAXCMSThemeA11yTestHelpers.js) so every audit below
+// evaluates a deterministic light rendering. The OS-dark surface
 // regressions themselves are covered by the media-dark block in
 // bootstrap-theme.js re-theming .card/.main-content.
-const savedColorScheme = globalThis.document.documentElement.style.colorScheme;
-globalThis.document.documentElement.style.colorScheme = "light";
-const savedStoreDarkMode = store.darkMode;
-store.darkMode = false;
+const restoreThemeEnvironment = lockLightThemeEnvironment(store);
 
 after(() => {
-  if (savedColorScheme === "") {
-    globalThis.document.documentElement.style.removeProperty("color-scheme");
-  } else {
-    globalThis.document.documentElement.style.colorScheme = savedColorScheme;
-  }
-  store.darkMode = savedStoreDarkMode;
+  restoreThemeEnvironment();
 });
-
-// The HAXCMSLitElementTheme base class gates first paint behind a 0.6s
-// opacity fade-in (opacity 0 -> 1 once theme-ready flips two frames after
-// firstUpdated) to reduce FOUC. Axe blends ancestor opacity into its
-// color-contrast math, so an audit that lands mid-fade measures ~96-99%
-// blended colors and false-fails with the near-threshold white-on-white
-// family (ratios 1.02-1.07) depending on exactly where in the fade axe
-// samples. Collapse the fade to a single frame and wait until the host is
-// fully opaque (with a timeout escape) so every audit below samples the
-// settled rendering instead of a fade-in progress snapshot.
-const settleThemeFade = async (el) => {
-  el.style.transitionDuration = "0.01s";
-  await new Promise((resolve) => {
-    const start = globalThis.performance.now();
-    const check = () => {
-      const settled =
-        globalThis.getComputedStyle(el).opacity === "1" ||
-        globalThis.performance.now() - start > 2000;
-      if (settled) {
-        resolve();
-      } else {
-        globalThis.requestAnimationFrame(check);
-      }
-    };
-    globalThis.requestAnimationFrame(check);
-  });
-};
 
 // Mock HAXcms dependencies
 beforeEach(() => {
@@ -137,6 +106,7 @@ describe("bootstrap-theme test", () => {
     element.requestUpdate();
     await element.updateComplete;
     // settle the first-paint fade before any audit touches this fixture
+    // (see HAXCMSThemeA11yTestHelpers.js for why this is needed)
     await settleThemeFade(element);
   });
 

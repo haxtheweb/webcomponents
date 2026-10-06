@@ -31,7 +31,13 @@ export class ESGlobalBridge {
           this.imports[name] = location;
           script.onload = () => {
             resolve(this.imports[name]);
-            this.imports[name] = true;
+            // a slow real network failure for a prior attempt at this same
+            // name can fire its onerror after a newer load already started
+            // (or finished); only flip state if this attempt is still the
+            // one on record, so a stale callback can't clobber a newer one
+            if (this.imports[name] === location) {
+              this.imports[name] = true;
+            }
             // delay firing the event just to be safe
             setTimeout(() => {
               const evt = new CustomEvent(`es-bridge-${name}-loaded`, {
@@ -51,8 +57,11 @@ export class ESGlobalBridge {
                 `Failed to load ${name} script with location ${location}.`
               )
             );
-            delete this.imports[name];
-            this.imports[name] = false;
+            // see note in onload above: don't clobber a newer attempt's state
+            if (this.imports[name] === location) {
+              delete this.imports[name];
+              this.imports[name] = false;
+            }
           };
           globalThis.document.documentElement.appendChild(script);
         });

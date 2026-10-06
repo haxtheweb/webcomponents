@@ -354,6 +354,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         }
 
         @media (prefers-reduced-motion: reduce) {
+          /* include :host so the initial FOUC reveal fade above also
+             collapses to an instant reveal for reduced-motion users (the
+             wildcard only reaches shadow content, the host fade was missed) */
+          :host,
           *,
           *::before,
           *::after {
@@ -430,11 +434,31 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     // painted this theme's first render before revealing it; this is what
     // distinguishes theme-ready from firstUpdated firing (which happens
     // before paint is guaranteed to have settled)
+    let revealed = false;
+    const revealTheme = (instant) => {
+      if (revealed) {
+        return;
+      }
+      revealed = true;
+      if (instant) {
+        // the rAF never fired, so this page is not being rendered (a
+        // background tab, or a headless test session sharing a browser).
+        // CSS transitions cannot run without frames, so revealing through
+        // the fade here would strand this theme at partial opacity on
+        // visible content. Reveal instantly instead; the rAF path below
+        // wins on any page that actually renders and never hits this.
+        this.style.setProperty("transition", "none");
+      }
+      this.themeReady = true;
+    };
     globalThis.requestAnimationFrame(() => {
-      globalThis.requestAnimationFrame(() => {
-        this.themeReady = true;
-      });
+      globalThis.requestAnimationFrame(() => revealTheme(false));
     });
+    // safety net for starved frames: fall back to a wall-clock timer so the
+    // reveal always happens. 500ms keeps the reveal behind the first paint
+    // on any realistic frame rate (two frames at 4fps) while bounding the
+    // delay for pages that are not rendering at all.
+    globalThis.setTimeout(() => revealTheme(true), 500);
   }
   disconnectedCallback() {
     this.__removeHeadingListeners();

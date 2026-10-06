@@ -1,32 +1,68 @@
 import { fixture, expect, html } from "@open-wc/testing";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  forceThemeReveal,
+  lockLightColorScheme,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 
 import "../learn-two-theme.js";
-/*
-describe("learn-two-theme test", () => {
+
+// audits of a fully rendered theme can legitimately exceed mocha's 2000ms
+// default under test:all load; give the suite real headroom. Previously
+// this a11y audit was disabled wholesale (see git history) to work around
+// the rAF-gated opacity fade race documented in
+// HAXCMSThemeA11yTestHelpers.js; it is re-enabled here using the shared
+// harness instead of being left disabled.
+describe("learn-two-theme test", function () {
+  this.timeout(10000);
   let element;
+  let restoreColorScheme;
+  let savedManifest;
+  let savedActiveId;
+
+  before(() => {
+    restoreColorScheme = lockLightColorScheme();
+    savedManifest = store.manifest;
+    savedActiveId = store.activeId;
+    // site-title (rendered inside the theme) reads store.siteTitle, which
+    // derives from store.manifest.title; without a seeded manifest it
+    // renders an empty <h1>, tripping axe's empty-heading rule.
+    store.manifest = {
+      id: "learn-two-test",
+      title: "Learn Two Test Site",
+      metadata: { platform: {}, theme: { variables: {} } },
+      items: [
+        {
+          id: "p1",
+          title: "Page One",
+          slug: "page-one",
+          location: "pages/page-one/index.html",
+          order: 1,
+          parent: null,
+          indent: 0,
+          metadata: { published: true, locked: false, status: "" },
+        },
+      ],
+    };
+    store.activeId = null;
+  });
+
+  after(() => {
+    restoreColorScheme();
+    store.manifest = savedManifest;
+    store.activeId = savedActiveId;
+  });
+
   beforeEach(async () => {
-    element = await fixture(
-      html` <learn-two-theme title="test-title"></learn-two-theme> `
-    );
+    element = await fixture(html`
+      <learn-two-theme title="test-title"></learn-two-theme>
+    `);
+    await element.updateComplete;
+    await forceThemeReveal(element);
   });
 
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
-  });
-});
-
-describe("A11y/chai axe tests", () => {
-  it("learn-two-theme passes accessibility test", async () => {
-    const el = await fixture(html` <learn-two-theme></learn-two-theme> `);
-    await expect(el).to.be.accessible();
-  });
-  it("learn-two-theme passes accessibility negation", async () => {
-    const el = await fixture(
-      html`<learn-two-theme
-        aria-labelledby="learn-two-theme"
-      ></learn-two-theme>`
-    );
-    await assert.isNotAccessible(el);
   });
 });
 

@@ -270,6 +270,19 @@ function extendsThemeClass(content, knownThemeClasses) {
 }
 
 /**
+ * Check whether a name is a structurally valid custom element tag name
+ * (lowercase, hyphenated, e.g. "my-element"). Themes are always real,
+ * registered custom elements, so anything that isn't a valid custom
+ * element name (e.g. a bare class/file name like "HAXCMSThemeWiring")
+ * cannot actually be a theme and should be ignored, even if the file
+ * otherwise looks like it references theme base classes (for example
+ * via a comment mentioning "HAXCMSLitElementTheme").
+ */
+function isValidCustomElementName(name) {
+  return /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/.test(name);
+}
+
+/**
  * Check if a theme should be skipped based on exclusion rules
  */
 function shouldSkipTheme(elementName, filePath) {
@@ -295,6 +308,14 @@ function shouldSkipTheme(elementName, filePath) {
   
   // Exclude test files - any file with '.test' in the name
   if (filePath.includes('.test') || elementName.includes('.test')) {
+    return true;
+  }
+
+  // Exclude anything that isn't a valid custom element tag name. A real
+  // theme is always a registered custom element (e.g. "clean-two"); things
+  // like mixin/wiring classes (e.g. "HAXCMSThemeWiring") get picked up by
+  // the naive content matching above but aren't actual themes.
+  if (!isValidCustomElementName(elementName)) {
     return true;
   }
   

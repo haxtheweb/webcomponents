@@ -401,7 +401,6 @@ class SimpleFieldsUpload extends I18NMixin(
         label="${this.t.upload}.."
         icon="icons:file-upload"
         @click="${this._handleBrowse}"
-        controls="fieldset"
         part="browse"
       >
       </simple-toolbar-button>
@@ -412,7 +411,6 @@ class SimpleFieldsUpload extends I18NMixin(
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleCameraOption}"
-        controls="fieldset"
         part="take-photo"
         ?hidden="${!navigator.mediaDevices || this.noCamera}"
       >
@@ -424,7 +422,6 @@ class SimpleFieldsUpload extends I18NMixin(
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleAudioOption}"
-        controls="fieldset"
         part="record-audio"
         ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
       >
@@ -436,7 +433,6 @@ class SimpleFieldsUpload extends I18NMixin(
         @mousedown="${(e) => e.preventDefault()}"
         @focus="${(e) => e.preventDefault()}"
         @click="${this._handleScreenOption}"
-        controls="fieldset"
         part="record-screen"
         ?hidden="${!navigator.mediaDevices || this.noScreenRecord}"
       >
@@ -512,7 +508,6 @@ class SimpleFieldsUpload extends I18NMixin(
             @mousedown="${(e) => e.preventDefault()}"
             @focus="${(e) => e.preventDefault()}"
             @click="${this._handleCancel}"
-            controls="fieldset"
             slot="drop-label"
             part="cancel-media"
             ?hidden="${this.option !== "selfie" &&

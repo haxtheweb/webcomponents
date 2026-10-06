@@ -516,7 +516,11 @@ describe('page-break rendering', () => {
     expect(byLabel('Unlock').getAttribute('icon')).to.equal('icons:lock')
   })
 
-  it('passes a11y audits in default and logged in modes', async () => {
+  it('passes a11y audits in default and logged in modes', async function () {
+    // two sequential axe.run() calls reliably exceed mocha's 2000ms default
+    // under test:all concurrency (see audio-player/test/audio-player.test.js
+    // for the same pattern), so give this test real headroom.
+    this.timeout(10000)
     const el = await fixture(html`<page-break title="A11y"></page-break>`)
     await expect(el).shadowDom.to.be.accessible()
     const el2 = await fixture(

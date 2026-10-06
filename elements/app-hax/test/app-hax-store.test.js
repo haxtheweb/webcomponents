@@ -439,6 +439,19 @@ describe('AppHaxStore', () => {
       await store.loadThemesData(true)
       expect(Object.keys(store.themesData).length).to.equal(0)
     })
+    it('skips null or non-object theme entries', async () => {
+      store.themesData = {}
+      store.AppHaxAPI = {
+        makeCall: async () => ({
+          data: [null, 'not-an-object', { machineName: 'valid', element: 'v' }],
+        }),
+        supportsCall: () => true,
+      }
+      await store.loadThemesData(true)
+      expect(store.themesData['v']).to.exist
+      expect(store.themesData['valid']).to.exist
+      expect(Object.keys(store.themesData).length).to.equal(2)
+    })
     it('falls back to {} when response data is empty array', async () => {
       store.themesData = {}
       store.AppHaxAPI = {

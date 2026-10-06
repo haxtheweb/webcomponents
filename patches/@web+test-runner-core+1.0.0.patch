@@ -1,0 +1,17 @@
+diff --git a/node_modules/@web/test-runner-core/dist/coverage/getTestCoverage.js b/node_modules/@web/test-runner-core/dist/coverage/getTestCoverage.js
+--- a/node_modules/@web/test-runner-core/dist/coverage/getTestCoverage.js
++++ b/node_modules/@web/test-runner-core/dist/coverage/getTestCoverage.js
+@@ -114,9 +114,10 @@
+         .map(s => s.testCoverage)
+         .filter(c => c);
+     // istanbul mutates the coverage objects, which pollutes coverage in watch mode
+-    // cloning prevents this. JSON stringify -> parse is faster than a fancy library
+-    // because we're only working with objects and arrays
+-    coverages = JSON.parse(JSON.stringify(coverages));
++    // cloning prevents this. structuredClone avoids serializing through an
++    // intermediate string, which can exceed V8's max string length (and throw
++    // "RangeError: Invalid string length") on large monorepos with many test files.
++    coverages = structuredClone(coverages);
+     addingMissingCoverageItems(coverages);
+     for (const coverage of coverages) {
+         coverageMap.merge(coverage);

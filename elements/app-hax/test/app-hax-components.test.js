@@ -9,6 +9,7 @@ await import('../lib/v2/app-hax-scroll-button.js')
 await import('../lib/v2/app-hax-use-case.js')
 await import('../lib/v2/app-hax-simple-hat-progress.js')
 await import('../lib/v2/app-hax-darkmode-toggle.js')
+const { store } = await import('../lib/v2/AppHaxStore.js')
 
 describe('app-hax-filter-tag', () => {
   it('renders label text', async () => {
@@ -400,5 +401,115 @@ describe('app-hax-darkmode-toggle', () => {
     expect(el._updateToggleState).to.be.a('function')
     // Should not throw on disconnect
     expect(() => el.disconnectedCallback()).to.not.throw()
+  })
+
+  it('disables the toggle when the platform prefers dark mode', () => {
+    const el = document.createElement('app-hax-darkmode-toggle')
+    Object.defineProperty(el.darkModeMediaQuery, 'matches', {
+      value: true,
+      configurable: true,
+    })
+    el._updateToggleState()
+    expect(el.disabled).to.be.true
+  })
+
+  it('syncs a checked change into the store on updated', () => {
+    const el = document.createElement('app-hax-darkmode-toggle')
+    const savedDarkMode = store.darkMode
+    el.checked = true
+    el.updated(new Map([['checked', false]]))
+    expect(store.darkMode).to.be.true
+    el.updated(new Map([['checked', undefined]]))
+    store.darkMode = savedDarkMode
+  })
+})
+
+describe('app-hax-scroll-button dark mode and app context', () => {
+  it('updates isDarkMode when the body dark-mode class changes', async () => {
+    const el = await fixture(html`<app-hax-scroll-button label="Dark"></app-hax-scroll-button>`)
+    await el.updateComplete
+    document.body.classList.add('dark-mode')
+    await new Promise((r) => setTimeout(r, 50))
+    expect(el.isDarkMode).to.be.true
+    document.body.classList.remove('dark-mode')
+    await new Promise((r) => setTimeout(r, 50))
+    expect(el.isDarkMode).to.be.false
+  })
+
+  it('scrolls to a target resolved through the app-hax use-case filter context', async () => {
+    const el = await fixture(
+      html`<app-hax-scroll-button label="Jump" .targetId=${'ucf-target'}></app-hax-scroll-button>`,
+    )
+    await el.updateComplete
+    let scrolledInto = null
+    const fakeTarget = {
+      scrollIntoView: (opts) => {
+        scrolledInto = opts
+      },
+    }
+    const fakeFilter = {
+      shadowRoot: {
+        getElementById: (id) => (id === 'ucf-target' ? fakeTarget : null),
+      },
+    }
+    const fakeAppHax = {
+      shadowRoot: {
+        querySelector: (sel) =>
+          sel === 'app-hax-use-case-filter' ? fakeFilter : null,
+      },
+    }
+    el.closest = () => fakeAppHax
+    el.scrollToTarget()
+    expect(scrolledInto).to.exist
+    expect(scrolledInto.block).to.equal('start')
+    // announcement is written then cleared after the timeout
+    const announcement = el.shadowRoot.querySelector('#scroll-announcement')
+    expect(announcement.textContent).to.include('Jump')
+    await new Promise((r) => setTimeout(r, 1100))
+    expect(announcement.textContent).to.equal('')
+  })
+})
+
+describe('app-hax-router', () => {
+  it('builds routes from manifest items on construction', async () => {
+    await import('../lib/v2/AppHaxRouter.js')
+    const savedManifest = store.manifest
+    const savedRoutes = store.routes
+    const savedAPI = store.AppHaxAPI
+    store.manifest = { items: [{ id: 'site-1', slug: '/base/site-1' }] }
+    store.AppHaxAPI = { basePath: '/base' }
+    document.createElement('app-hax-router')
+    // the constructor autoruns run their work on a microtask
+    await new Promise((r) => setTimeout(r, 0))
+    const route = store.routes.find((r) => r.name === 'site-1')
+    expect(route).to.exist
+    expect(route.path).to.equal('/site-1')
+    expect(route.component).to.equal('fake-site-1-e')
+    store.manifest = savedManifest
+    store.AppHaxAPI = savedAPI
+    store.routes = savedRoutes
+  })
+})
+
+describe('app-hax-toast', () => {
+  it('hides the global toast on a haxcms-toast-hide event', async () => {
+    const { AppHaxToastInstance } = await import('../lib/v2/app-hax-toast.js')
+    const el = AppHaxToastInstance
+    expect(el).to.exist
+    let hidden = false
+    const orig = el.hide
+    el.hide = () => {
+      hidden = true
+    }
+    globalThis.dispatchEvent(new CustomEvent('haxcms-toast-hide'))
+    el.hide = orig
+    expect(hidden).to.be.true
+  })
+
+  it('aborts window controllers when removed from the document', async () => {
+    await import('../lib/v2/app-hax-toast.js')
+    const el = document.createElement('app-hax-toast')
+    document.body.appendChild(el)
+    expect(() => el.remove()).to.not.throw()
   })
 })

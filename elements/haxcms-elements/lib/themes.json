@@ -170,20 +170,6 @@
     "terrible": false,
     "supportedPalettes": null
   },
-  "HAXCMSThemeWiring": {
-    "element": "HAXCMSThemeWiring",
-    "path": "@haxtheweb/haxcms-elements/lib/HAXCMSThemeWiring.js",
-    "name": "HAXCMSTheme",
-    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-HAXCMSThemeWiring-thumb.jpg",
-    "description": "Start with a blank site using the HAXCMSTheme",
-    "category": [
-      "Website"
-    ],
-    "hidden": false,
-    "priority": 0,
-    "terrible": false,
-    "supportedPalettes": null
-  },
   "haxma-theme": {
     "element": "haxma-theme",
     "path": "@haxtheweb/haxma-theme/haxma-theme.js",

@@ -1,5 +1,9 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  forceThemeReveal,
+  lockLightColorScheme,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 import "../haxor-slevin.js";
 
 // Round 8 coverage (#3079): behavioral suite for the haxor-slevin blog
@@ -33,7 +37,7 @@ describe("HaxorSlevin theme", function () {
   let savedDarkMode;
   let savedLocation;
   let savedPageAllowed;
-  let savedColorScheme;
+  let restoreColorScheme;
   const tick = (ms) => new Promise((r) => setTimeout(r, ms || 60));
 
   before(() => {
@@ -43,9 +47,8 @@ describe("HaxorSlevin theme", function () {
     savedDarkMode = store.darkMode;
     savedLocation = store.location;
     savedPageAllowed = store.pageAllowed;
-    // lock light scheme for the a11y audit (see spacebook-theme tests)
-    savedColorScheme = document.documentElement.style.colorScheme;
-    document.documentElement.style.colorScheme = "light";
+    // lock light scheme for the a11y audit (see HAXCMSThemeA11yTestHelpers.js)
+    restoreColorScheme = lockLightColorScheme();
     store.darkMode = false;
     store.editMode = false;
     // keep a truthy manifest with an items array so regionData is never
@@ -64,11 +67,7 @@ describe("HaxorSlevin theme", function () {
     store.darkMode = savedDarkMode;
     store.location = savedLocation;
     store.pageAllowed = savedPageAllowed;
-    if (savedColorScheme === "") {
-      document.documentElement.style.removeProperty("color-scheme");
-    } else {
-      document.documentElement.style.colorScheme = savedColorScheme;
-    }
+    restoreColorScheme();
   });
 
   afterEach(() => {
@@ -515,6 +514,9 @@ describe("HaxorSlevin theme", function () {
     await element.updateComplete;
     // give the firstUpdated dynamic imports time to resolve
     await tick(1200);
+    // deterministically reveal the theme so the audit never races the
+    // rAF-gated opacity fade (see HAXCMSThemeA11yTestHelpers.js)
+    await forceThemeReveal(element);
     await expect(element).shadowDom.to.be.accessible({
       // skip-link targets live inside the shadow root (axe cannot resolve
       // them across the boundary); color-contrast is racy in headless
