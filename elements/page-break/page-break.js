@@ -263,6 +263,11 @@ export class PageBreak extends IntersectionObserverMixin(
         // to make sure there wasn't some timing in rendering before
         // we accidentally inject an element
         setTimeout(() => {
+          // the element may have been disconnected before this deferred
+          // callback ran; bail out rather than touching a null parentNode
+          if (!this.isConnected || !this.parentNode) {
+            return;
+          }
           if (this.target === null) {
             if (
               this.nextElementSibling &&
@@ -282,6 +287,9 @@ export class PageBreak extends IntersectionObserverMixin(
               this.parentNode.insertBefore(newH, this.nextElementSibling);
               // account for HAX which might mess w/ the tag on insert
               setTimeout(() => {
+                if (!this.isConnected) {
+                  return;
+                }
                 this.setupTargetData(this.nextElementSibling);
               }, 100);
             }
