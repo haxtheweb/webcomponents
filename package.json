@@ -178,6 +178,8 @@
     "phin": "3.7.1",
     "polymer-cli": "1.9.11",
     "polymer-build": "3.1.4",
+    "wct-local": "2.1.5",
+    "launchpad": "0.7.0",
     "postcss": "^8.5.19",
     "tmp": "^0.2.7",
     "axios": "^1.20.0",
