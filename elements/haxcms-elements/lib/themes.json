@@ -464,7 +464,7 @@
     "category": [
       "Website"
     ],
-    "hidden": true,
+    "hidden": false,
     "priority": 0,
     "terrible": false,
     "supportedPalettes": null
