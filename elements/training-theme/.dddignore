@@ -7,6 +7,7 @@
 \test
 /dist
 /build
+/coverage
 /public # ignored by program regardless of presence in .dddignore
 /node_modules # ignored by program regardless of presence in .dddignore
 

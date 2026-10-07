@@ -365,16 +365,14 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the WordPress site",
     },
   });
-  // drupalBookToSite
+  // drupalToSite
   MicroFrontendRegistry.add({
-    endpoint: "/system/api/v1/site/import/drupal-book",
-    name: "@system/drupalBookToSite",
-    title: "Drupal Book to Site",
-    description: "Convert Drupal book content to Site schema",
+    endpoint: "/system/api/v1/site/import/drupal",
+    name: "@system/drupalToSite",
+    title: "Drupal to Site",
+    description: "Convert a Drupal site (JSON:API) to Site schema",
     params: {
       repoUrl: "Location of the Drupal site",
-      allowHtmlFallback:
-        "Optional: true to allow HTML fallback tree derivation when endpoint tree data is unavailable",
     },
   });
   // openstaxToSite

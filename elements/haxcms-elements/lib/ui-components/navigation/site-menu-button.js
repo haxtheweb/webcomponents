@@ -83,10 +83,10 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           transition: 0.3s color ease;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
-          color: light-dark(
-            var(--site-menu-button-icon-fill-color, black),
+          color: var(--site-menu-button-icon-fill-color, light-dark(
+            black,
             var(--ddd-theme-default-linkLight)
-          );
+          ));
         }
       `,
     ];

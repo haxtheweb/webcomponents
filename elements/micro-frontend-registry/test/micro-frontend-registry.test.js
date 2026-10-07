@@ -81,7 +81,7 @@ describe("HAXcms site import services", () => {
     ["@system/pressbooksToSite", "/system/api/v1/site/import/pressbooks"],
     ["@system/haxcmsToSite", "/system/api/v1/site/import/haxcms"],
     ["@system/wordpressToSite", "/system/api/v1/site/import/wordpress"],
-    ["@system/drupalBookToSite", "/system/api/v1/site/import/drupal-book"],
+    ["@system/drupalToSite", "/system/api/v1/site/import/drupal"],
     ["@system/elmslnToSite", "/system/api/v1/site/import/elmsln"],
     ["@system/htmlToSite", "/system/api/v1/site/import/html"],
   ];
