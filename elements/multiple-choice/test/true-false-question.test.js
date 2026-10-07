@@ -41,6 +41,21 @@ describe("true-false-question", () => {
     );
   });
 
+  it("reads data-correct inputs from light dom (data-correct migration)", async () => {
+    const el = await fixture(html`
+      <true-false-question question="Ducks can fly?">
+        <input data-correct="true" value="True" />
+        <input value="False" />
+      </true-false-question>
+    `);
+    await el.updateComplete;
+    await flush();
+    expect(el.answers.length).to.equal(2);
+    expect(el.answers[0].label).to.equal("True");
+    expect(el.answers[0].correct).to.equal(true);
+    expect(el.answers[1].correct).to.equal(false);
+  });
+
   it("_tfanswer true marks the first answer correct", async () => {
     const el = await fixture(tfFixture());
     await el.updateComplete;

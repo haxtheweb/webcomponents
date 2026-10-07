@@ -100,7 +100,7 @@
   "demoSchema": [
     {
       "tag": "matching-question",
-      "content": "<input correct value=\"Cow\"/><input value=\"Moo\"/><input correct value=\"Fox\"/><input value=\"PaPaPower\"/>",
+      "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
       "properties": {
         "question": "What does the animal say?",
         "data-accent": "2"

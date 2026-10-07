@@ -101,7 +101,7 @@
   "demoSchema": [
     {
       "tag": "tagging-question",
-      "content": "<input correct value=\"DingDingDing\"/><input correct value=\"PaPaPower\"/><input value=\"Moo\"/>",
+      "content": "<input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>",
       "properties": {
         "question": "What does the fox say?",
         "data-accent": "2"

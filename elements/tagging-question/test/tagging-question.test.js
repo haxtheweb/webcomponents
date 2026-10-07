@@ -863,4 +863,23 @@ describe("TaggingQuestion gap coverage", () => {
     );
     expect(hintHeading).to.exist;
   });
+
+  it("reads data-correct and legacy correct inputs from light dom", async () => {
+    const el = await fixture(html`
+      <tagging-question question="Pick the ducks">
+        <input correct value="Duey" />
+        <input data-correct="true" value="Daffy" />
+        <input value="Moo" />
+      </tagging-question>
+    `);
+    await el.updateComplete;
+    // let loadLightDomData (microtask) and the answer lock settle
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    expect(el.answers.length).to.equal(3);
+    expect(el.answers[0].label).to.equal("Duey");
+    expect(el.answers[0].correct).to.equal(true);
+    expect(el.answers[1].label).to.equal("Daffy");
+    expect(el.answers[1].correct).to.equal(true);
+    expect(el.answers[2].correct).to.equal(false);
+  });
 });

@@ -801,7 +801,11 @@ export class QuestionElement extends SchemaBehaviors(
           answer.setAttribute("type", "checkbox");
           answer.value = node.answers[i].label;
           if (node.answers[i].correct) {
-            answer.setAttribute("correct", "correct");
+            // canonical serialization; data-* attributes survive storage
+            // sanitizers by default. The legacy bare correct attribute stays
+            // readable via inputIsCorrect for existing content but is no
+            // longer written (#3113)
+            answer.setAttribute("data-correct", "true");
           }
           if (node.answers[i].image) {
             answer.setAttribute("data-image", node.answers[i].image);
@@ -989,7 +993,7 @@ export class QuestionElement extends SchemaBehaviors(
               answer.userGuess &&
               !answer.correct
                 ? "true"
-                : undefined}"
+                : "false"}"
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
@@ -1217,6 +1221,17 @@ export class QuestionElement extends SchemaBehaviors(
       unselectedFeedback: null,
     };
   }
+  // read the correct flag off a light dom input; data-correct is the
+  // canonical form (any value other than "false" counts as correct) while
+  // the legacy bare `correct` attribute remains supported so existing
+  // content keeps working (#3113)
+  inputIsCorrect(input) {
+    const dataCorrect = input.getAttribute("data-correct");
+    if (dataCorrect !== null) {
+      return dataCorrect.toLowerCase() !== "false";
+    }
+    return input.getAttribute("correct") !== null;
+  }
   // convert the input to data
   processInput(index, inputs, answers) {
     let input = inputs[index];
@@ -1237,7 +1252,7 @@ export class QuestionElement extends SchemaBehaviors(
     return {
       order: parseInt(index), // stores the original order this was in for things that leverage this piece of data
       label: input.value,
-      correct: input.getAttribute("correct") == null ? false : true,
+      correct: this.inputIsCorrect(input),
       image: input.getAttribute("data-image") || null, // support for image prop in questions that want it
       alt: input.getAttribute("data-image-alt") || "", // support for image alt w/ prop question, "" for default to ignore
       selectedFeedback: input.getAttribute("data-selected") || null,

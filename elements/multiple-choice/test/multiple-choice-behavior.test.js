@@ -163,6 +163,58 @@ describe("multiple-choice behavior", () => {
     });
   });
 
+  describe("correct attribute reading (data-correct migration)", () => {
+    // #3113: data-correct is the canonical serialization; the legacy bare
+    // `correct` attribute remains readable so existing content keeps working
+    const buildInput = (attributes) => {
+      const input = globalThis.document.createElement("input");
+      input.value = "Answer";
+      Object.keys(attributes).forEach((name) => {
+        input.setAttribute(name, attributes[name]);
+      });
+      return input;
+    };
+    it("reads the legacy bare correct attribute", async () => {
+      const el = await ready();
+      const input = buildInput({ correct: "" });
+      expect(el.processInput(0, [input], []).correct).to.equal(true);
+    });
+    it("reads data-correct as the canonical form", async () => {
+      const el = await ready();
+      const input = buildInput({ "data-correct": "true" });
+      expect(el.processInput(0, [input], []).correct).to.equal(true);
+    });
+    it("treats a bare data-correct attribute as correct", async () => {
+      const el = await ready();
+      const input = buildInput({ "data-correct": "" });
+      expect(el.processInput(0, [input], []).correct).to.equal(true);
+    });
+    it("data-correct wins over a conflicting legacy attribute", async () => {
+      const el = await ready();
+      const input = buildInput({ correct: "", "data-correct": "false" });
+      expect(el.processInput(0, [input], []).correct).to.equal(false);
+    });
+    it("no correct flag of any kind reads false", async () => {
+      const el = await ready();
+      const input = buildInput({});
+      expect(el.processInput(0, [input], []).correct).to.equal(false);
+    });
+    it("ingests data-correct inputs from a light dom fixture", async () => {
+      const el = await fixture(html`
+        <multiple-choice question="Which way is up?">
+          <input data-correct="true" value="North" />
+          <input value="South" />
+        </multiple-choice>
+      `);
+      await el.updateComplete;
+      await flush(20);
+      expect(el.answers.length).to.equal(2);
+      expect(el.answers[0].label).to.equal("North");
+      expect(el.answers[0].correct).to.equal(true);
+      expect(el.answers[1].correct).to.equal(false);
+    });
+  });
+
   describe("answer state", () => {
     it("getGuess tracks displayed guesses and alternates on guessDataValue", async () => {
       const el = await ready();
@@ -680,8 +732,11 @@ describe("multiple-choice behavior", () => {
       const inputs = Array.from(el.querySelectorAll("input:not([slot])"));
       expect(inputs.length).to.equal(5);
       expect(inputs[0].value).to.equal("Huey");
-      expect(inputs[0].hasAttribute("correct")).to.equal(true);
-      expect(inputs[4].hasAttribute("correct")).to.equal(false);
+      // canonical serialization only; the legacy correct attribute stays
+      // readable for existing content but is no longer written (#3113)
+      expect(inputs[0].getAttribute("data-correct")).to.equal("true");
+      expect(inputs[0].hasAttribute("correct")).to.equal(false);
+      expect(inputs[4].hasAttribute("data-correct")).to.equal(false);
       // run again to exercise the input wiping branch
       await el.haxpreProcessNodeToContent(el);
       expect(Array.from(el.querySelectorAll("input:not([slot])")).length).to
@@ -702,6 +757,7 @@ describe("multiple-choice behavior", () => {
       await el.updateComplete;
       await el.haxpreProcessNodeToContent(el);
       const input = el.querySelector("input:not([slot])");
+      expect(input.getAttribute("data-correct")).to.equal("true");
       expect(input.getAttribute("data-image")).to.equal(
         "https://example.com/v.png",
       );

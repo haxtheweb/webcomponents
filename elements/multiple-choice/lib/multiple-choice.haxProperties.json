@@ -138,7 +138,7 @@
         "singleOption": true,
         "randomize": true
       },
-      "content": "<input type=\"checkbox\" value=\"Answer 1\" correct>\n<input type=\"checkbox\" value=\"Another potential answer\">"
+      "content": "<input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n<input type=\"checkbox\" value=\"Another potential answer\">"
     }
   ]
 }

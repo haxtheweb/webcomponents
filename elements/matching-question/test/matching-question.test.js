@@ -233,6 +233,27 @@ describe("MatchingQuestion test", () => {
     expect(processed.match).to.equal(0);
   });
 
+  it("reads data-correct and legacy correct inputs from light dom", async () => {
+    const el = await fixture(html`
+      <matching-question question="Match the sounds">
+        <input correct value="Cow" />
+        <input value="Moo" />
+        <input data-correct="true" value="Fox" />
+      </matching-question>
+    `);
+    await el.updateComplete;
+    // let loadLightDomData (microtask) and the answer lock settle
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    expect(el.answers.length).to.equal(3);
+    expect(el.answers[0].label).to.equal("Cow");
+    expect(el.answers[0].correct).to.equal(true);
+    expect(el.answers[0].target).to.equal(true);
+    expect(el.answers[1].correct).to.equal(false);
+    expect(el.answers[1].matchOption).to.equal(true);
+    expect(el.answers[2].label).to.equal("Fox");
+    expect(el.answers[2].correct).to.equal(true);
+  });
+
   it("cleans answer data correctly", async () => {
     const rawAnswers = [
       { label: "Target", correct: true },

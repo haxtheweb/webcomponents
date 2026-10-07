@@ -129,7 +129,7 @@
         "question": "Select all of the contractions",
         "statement": "I have not been to the farm-house, however; it'll be fun to attend!"
       },
-      "content": "<input correct value=\"it'll\" />"
+      "content": "<input data-correct=\"true\" value=\"it'll\" />"
     }
   ]
 }

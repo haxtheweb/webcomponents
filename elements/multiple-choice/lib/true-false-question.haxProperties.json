@@ -73,7 +73,7 @@
       "properties": {
         "question": "HAX is game changing."
       },
-      "content": "<input type=\"checkbox\" value=\"True\" correct>\n<input type=\"checkbox\" value=\"False\">"
+      "content": "<input type=\"checkbox\" value=\"True\" data-correct=\"true\">\n<input type=\"checkbox\" value=\"False\">"
     }
   ]
 }
