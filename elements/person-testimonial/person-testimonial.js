@@ -1,6 +1,6 @@
 import { html, css } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 /**
  * `person-testimonial`
@@ -8,14 +8,15 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */
-class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
+class PersonTestimonial extends SchemaBehaviors(DDD) {
   static get styles() {
     return [
       super.styles,
       css`
-        /* greys migrate to DDD light-dark pairs; the accentColor-driven
-           accent shade keeps SimpleColors (DDD lacks that shade mechanism)
-           with a DDD primary fallback */
+        /* DDD driven colors: light-dark() pairs flip with the site
+           color-scheme (no legacy dark attribute of our own) and the accent
+           is DDD primary, with the HAX brand blue as the fallback when no
+           primary is set */
         :host {
           display: block;
           --person-testimonial-font-family: var(--ddd-font-primary);
@@ -24,19 +25,13 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
             var(--ddd-theme-default-coalyGray)
           );
           --person-testimonial-color: var(
-            --simple-colors-default-theme-accent-7,
-            var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue))
+            --ddd-theme-primary,
+            var(--ddd-theme-default-beaverBlue)
           );
           --person-testimonial-text: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-        }
-
-        /* the dark attribute drives color-scheme so the light-dark() pairs
-           track it alongside the SimpleColors accent flip */
-        :host([dark]) {
-          color-scheme: dark;
         }
 
         div.card {
@@ -47,17 +42,18 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
           box-shadow: var(--ddd-boxShadow-sm);
         }
 
+        /* fixed square + object-fit keeps the person at an appropriate size
+           instead of scrunching the photo to the card height */
+        .image {
+          flex: 0 0 auto;
+          padding-right: var(--ddd-spacing-1);
+          background-color: var(--person-testimonial-color);
+        }
         .image img {
           display: block;
           width: 150px;
-          height: 100%;
-        }
-        .image img {
-          max-width: 200px;
-        }
-        .image {
-          padding-right: var(--ddd-spacing-1);
-          background-color: var(--person-testimonial-color);
+          height: 150px;
+          object-fit: cover;
         }
 
         svg {
@@ -140,6 +136,7 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
             border-radius: 50%;
             width: 200px;
             height: 200px;
+            object-fit: cover;
           }
           .image {
             margin-top: var(--ddd-spacing-6);
@@ -182,11 +179,11 @@ class PersonTestimonial extends SchemaBehaviors(SimpleColors) {
         <div class="arrow_right"></div>
         <div class="wrap">
           <div class="testimonial" data-layout-slotname="Quote">
-            <svg id="quotestart">
+            <svg id="quotestart" aria-hidden="true">
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
             <slot property="oer:description"></slot>
-            <svg id="quoteend">
+            <svg id="quoteend" aria-hidden="true">
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
           </div>

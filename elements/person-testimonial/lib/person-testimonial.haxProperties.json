@@ -3,6 +3,9 @@
   "canScale": false,
 
   "canEditSource": true,
+  "designSystem": {
+    "primary": true
+  },
   "gizmo": {
     "title": "Image Blockquote",
     "description": "Stylized quote with an optional image.",
@@ -38,22 +41,10 @@
         "title": "Image",
         "description": "Add an image to the testimonial.",
         "inputMethod": "haxupload",
+        "fileActions": true,
         "noVoiceRecord": true,
+        "noScreenRecord": true,
         "icon": "editor:insert-photo"
-      },
-      {
-        "property": "accentColor",
-        "title": "Accent color",
-        "description": "Select the accent color to use.",
-        "inputMethod": "colorpicker",
-        "icon": "editor:format-color-fill"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use a dark theme.",
-        "inputMethod": "boolean",
-        "icon": "invert-colors"
       },
       {
         "property": "name",
@@ -80,12 +71,13 @@
     ],
     "advanced": []
   },
+  "saveOptions": {
+    "unsetAttributes": ["accent-color", "dark"]
+  },
   "demoSchema": [
     {
       "tag": "person-testimonial",
       "properties": {
-        "accentColor": "blue",
-        "dark": true,
         "position": "Coffee drinker",
         "name": "bto-pro",
         "image": "https://github.com/btopro.png"

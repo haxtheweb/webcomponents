@@ -139,6 +139,21 @@ describe('person-testimonial test', () => {
       await el.updateComplete
       expect(el.shadowRoot.querySelector('.image')).to.not.exist
     })
+
+    it('renders the image as a square with object-fit so it never scrunches', async () => {
+      const el = await fixture(html`
+        <person-testimonial
+          name="Jane Doe"
+          image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+        ></person-testimonial>
+      `)
+      const img = el.shadowRoot.querySelector('.image img')
+      const computed = getComputedStyle(img)
+      // object-fit crops instead of distorting and the box stays square at
+      // every breakpoint (the media queries only change which square)
+      expect(computed.objectFit).to.equal('cover')
+      expect(computed.width).to.equal(computed.height)
+    })
   })
 
   describe('editable outline styles', () => {
@@ -160,12 +175,76 @@ describe('person-testimonial test', () => {
     })
   })
 
+  describe('accessibility', () => {
+    it('hides the decorative quote-mark graphics from assistive tech', () => {
+      expect(
+        element.shadowRoot
+          .querySelector('#quotestart')
+          .getAttribute('aria-hidden'),
+      ).to.equal('true')
+      expect(
+        element.shadowRoot
+          .querySelector('#quoteend')
+          .getAttribute('aria-hidden'),
+      ).to.equal('true')
+    })
+  })
+
   describe('HAX integration', () => {
+    let schema
+
+    before(async () => {
+      schema = await fetch(PersonTestimonial.haxProperties).then((res) =>
+        res.json(),
+      )
+    })
+
     it('exposes haxProperties as a lib file URL', () => {
       const url = PersonTestimonial.haxProperties
       expect(typeof url).to.equal('string')
       expect(url.endsWith('lib/person-testimonial.haxProperties.json')).to.be
         .true
+    })
+
+    it('defines the image source as an image field with file actions', () => {
+      const imageField = schema.settings.configure.find(
+        (p) => p.property === 'image',
+      )
+      expect(imageField.inputMethod).to.equal('haxupload')
+      // fileActions opts the field into the in-context quick image
+      // operations (info panel, compress / resize / transform)
+      expect(imageField.fileActions).to.be.true
+    })
+
+    it('replaces the dead accentColor with the DDD primary design system', () => {
+      expect(schema.designSystem.primary).to.be.true
+      expect(JSON.stringify(schema).includes('accentColor')).to.be.false
+      // the legacy attribute is garbage collected on save
+      expect(schema.saveOptions.unsetAttributes).to.include('accent-color')
+    })
+
+    it('drops the legacy dark attribute in favor of DDD light-dark', () => {
+      // no editor control for dark: the site color-scheme drives light-dark()
+      const props = [...schema.settings.configure, ...schema.settings.advanced]
+      expect(props.some((p) => p.property === 'dark')).to.be.false
+      expect(JSON.stringify(schema.demoSchema).includes('dark')).to.be.false
+      // the legacy attribute is garbage collected on save
+      expect(schema.saveOptions.unsetAttributes).to.include('dark')
+    })
+
+    it('no longer styles a legacy dark attribute of its own', async () => {
+      const withAttr = await fixture(
+        html`<person-testimonial dark></person-testimonial>`,
+      )
+      const withoutAttr = await fixture(html`<person-testimonial />`)
+      await withAttr.updateComplete
+      await withoutAttr.updateComplete
+      // the legacy dark attribute is inert: color-scheme is inherited from
+      // the page (DDD sets it), so both elements resolve the same value and
+      // the attribute can never force dark on its own
+      const a = getComputedStyle(withAttr).colorScheme
+      expect(a).to.equal(getComputedStyle(withoutAttr).colorScheme)
+      expect(a).to.not.equal('dark')
     })
   })
 })
