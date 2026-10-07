@@ -24,8 +24,8 @@ import "./lib/training-button.js";
 
 /**
  * @title Training
- * `theme for training content in HAXcms`
- * @haxcms-theme-hidden true
+ * `theme for training content`
+ * @description A theme for creating training content in HAXcms
  * @demo demo/index.html
  * @element training-theme
  */
