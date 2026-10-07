@@ -664,7 +664,7 @@ const ORGANISMS = [
       "person-testimonial with image / name / position and a slotted quote.",
     components: ["person-testimonial"],
     tokens: ["data-primary", "data-accent"],
-    darkMode: "todo",
+    darkMode: "supported",
     html:
       '<person-testimonial image="https://raw.githubusercontent.com/haxtheweb/art/main/world-traveler/funny-traveler-08.png" name="Jamie Rivera" position="Instructional Designer">\n' +
       "  HAX let me ship a course site in an afternoon.\n" +
