@@ -298,7 +298,6 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
                 position="${[contact.position, contact.org]
                   .filter(Boolean)
                   .join(", ")}"
-                accent-color="${this.accentColor}"
                 >${this.quoteText(contact)}</person-testimonial
               >
             </div>
