@@ -362,10 +362,10 @@ END:VCALENDAR" display-as="cards"></ics-render>
 <lrndesign-timeline events="[{&quot;heading&quot;:&quot;1855 - Charter&quot;,&quot;details&quot;:&quot;Charter now in effect signed by Governor Pollock, February 22; first Board of Trustees president, Judge Frederick Watts of Carlisle. Site in Centre County selected from nine offered throughout state; 200 acres donated by James Irvin with $10,000 pledge from citizens of Centre and Huntingdon counties.&quot;,&quot;imagealt&quot;:&quot;Propfile illustration of, James Pollock, Governor of Pennsylvania 1855-1858.&quot;,&quot;imagesrc&quot;:&quot;https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg&quot;},{&quot;heading&quot;:&quot;1856 - Construction of Old Main&quot;,&quot;details&quot;:&quot;Construction of Old Main (the &amp;quot;College Building&amp;quot;) begun; supervised by William G. Waring, who was appointed superintendent to open the school and plan farm, orchards and nursery.&quot;,&quot;imagealt&quot;:&quot;Black and white photo original Old Main in an empty field.&quot;,&quot;imagesrc&quot;:&quot;https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg&quot;},{&quot;heading&quot;:&quot;1874 - The Pennsylvania State College &quot;,&quot;details&quot;:&quot;School renamed The Pennsylvania State College. &quot;},{&quot;heading&quot;:&quot;1953 - The Pennsylvania State University&quot;,&quot;details&quot;:&quot;The Pennsylvania State University became official name.&quot;}]"></lrndesign-timeline>
 
 <h2 id="element-mark-the-words"><code>&lt;mark-the-words&gt;</code> Mark The Words</h2>
-<mark-the-words question="Select all of the contractions" statement="I have not been to the farm-house, however; it'll be fun to attend!"><input correct value="it'll" /></mark-the-words>
+<mark-the-words question="Select all of the contractions" statement="I have not been to the farm-house, however; it'll be fun to attend!"><input data-correct="true" value="it'll" /></mark-the-words>
 
 <h2 id="element-matching-question"><code>&lt;matching-question&gt;</code> Matching Question</h2>
-<matching-question question="What does the animal say?" data-accent="2"><input correct value="Cow"/><input value="Moo"/><input correct value="Fox"/><input value="PaPaPower"/></matching-question>
+<matching-question question="What does the animal say?" data-accent="2"><input data-correct="true" value="Cow"/><input value="Moo"/><input data-correct="true" value="Fox"/><input value="PaPaPower"/></matching-question>
 
 <h2 id="element-md-block"><code>&lt;md-block&gt;</code> Markdown</h2>
 <md-block markdown="- The first bulleted item in a long list.."></md-block>
@@ -396,7 +396,7 @@ END:VCALENDAR" display-as="cards"></ics-render>
 <moar-sarcasm say="I am so cool">I am so cool</moar-sarcasm>
 
 <h2 id="element-multiple-choice"><code>&lt;multiple-choice&gt;</code> Multiple Choice</h2>
-<multiple-choice question="Which is correct?" single-option randomize><input type="checkbox" value="Answer 1" correct>
+<multiple-choice question="Which is correct?" single-option randomize><input type="checkbox" value="Answer 1" data-correct="true">
 <input type="checkbox" value="Another potential answer"></multiple-choice>
 
 <h2 id="element-music-player"><code>&lt;music-player&gt;</code> Music Player</h2>
@@ -508,7 +508,7 @@ END:VCALENDAR" display-as="cards"></ics-render>
 <sheet-music audio><template preserve-content="preserve-content">\title "C Major Scale" . :4 0.5 2.5 3.5 0.4 | 2.4 3.4 0.3 2.3</template></sheet-music>
 
 <h2 id="element-short-answer-question"><code>&lt;short-answer-question&gt;</code> Short Answer Question</h2>
-<short-answer-question question="Which direction on a compass rose is always pointing up?"><input type="checkbox" value="North" correct></short-answer-question>
+<short-answer-question question="Which direction on a compass rose is always pointing up?"><input type="checkbox" value="North" data-correct="true"></short-answer-question>
 
 <h2 id="element-simple-cta"><code>&lt;simple-cta&gt;</code> Call to action</h2>
 <simple-cta label="Click to learn more" link="https://haxtheweb.org/"></simple-cta>
@@ -582,13 +582,13 @@ END:VCALENDAR" display-as="cards"></ics-render>
 <tableau-embed src="https://public.tableau.com/views/Superstore_embedded_800x800/Overview" height="800px" width="100%" toolbar="bottom" hide-tabs device="desktop"></tableau-embed>
 
 <h2 id="element-tagging-question"><code>&lt;tagging-question&gt;</code> Tagging Question</h2>
-<tagging-question question="What does the fox say?" data-accent="2"><input correct value="DingDingDing"/><input correct value="PaPaPower"/><input value="Moo"/></tagging-question>
+<tagging-question question="What does the fox say?" data-accent="2"><input data-correct="true" value="DingDingDing"/><input data-correct="true" value="PaPaPower"/><input value="Moo"/></tagging-question>
 
 <h2 id="element-time"><code>&lt;time&gt;</code> Time</h2>
 <p>HAX work started <time datetime="2016">in 2016</time>.</p>
 
 <h2 id="element-true-false-question"><code>&lt;true-false-question&gt;</code> True False Question</h2>
-<true-false-question question="HAX is game changing."><input type="checkbox" value="True" correct>
+<true-false-question question="HAX is game changing."><input type="checkbox" value="True" data-correct="true">
 <input type="checkbox" value="False"></true-false-question>
 
 <h2 id="element-twitter-embed"><code>&lt;twitter-embed&gt;</code> Twitter Embed</h2>

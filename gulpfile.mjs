@@ -539,7 +539,6 @@ gulp.task("wc-autoloader", async () => {
     fs.writeFileSync("./elements/haxcms-elements/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
     fs.writeFileSync("./elements/replace-tag/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
     fs.writeFileSync("./elements/product-card/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
-    fs.writeFileSync("./elements/hax-cloud/demo/wc-registry-graph.json", graphJson, {encoding:'utf8',flag:'w'});
     // write entries to file
     fs.writeFileSync(
       "./wc-registry.json",
@@ -567,12 +566,6 @@ gulp.task("wc-autoloader", async () => {
     // write entries to demo for local work
     fs.writeFileSync(
       "./elements/product-card/demo/wc-registry.json",
-      JSON.stringify(elements),
-      {encoding:'utf8',flag:'w'}
-    );
-    // write entries to demo for local work
-    fs.writeFileSync(
-      "./elements/hax-cloud/demo/wc-registry.json",
       JSON.stringify(elements),
       {encoding:'utf8',flag:'w'}
     );

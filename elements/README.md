@@ -273,14 +273,6 @@ Headless Authoring eXperience or HAX for short, is a new way of authoring conten
 # &lt;hax-body-behaviors&gt;
 
 Body
-> Wire any element up to HAX
-# &lt;hax-bookmarklet&gt;
-
-Bookmarklet
-> HAX as a bookmarklet script
-# &lt;hax-cloud&gt;
-
-Cloud
 > Turn any website into authorware with one tag and a computer
 # &lt;haxcms-elements&gt;
 
