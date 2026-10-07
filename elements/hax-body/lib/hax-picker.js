@@ -270,7 +270,10 @@ class HaxPicker extends LitElement {
     this.selectionList = [...tmp];
     // try to focus on option 0
     setTimeout(() => {
-      this.shadowRoot.querySelector("#picker-item-0").focus();
+      const firstOption = this.shadowRoot
+        ? this.shadowRoot.querySelector("#picker-item-0")
+        : null;
+      if (firstOption) firstOption.focus();
     }, 50);
   }
   _handleFilters(e) {
