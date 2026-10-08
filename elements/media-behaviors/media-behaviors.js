@@ -114,7 +114,7 @@ globalThis.MediaBehaviors.Video = {
       }
       // copy and paste a Kaltura MediaSpace share URL into the secure embed
       // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
-      // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/54679342/st/0
+      // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/56368382/st/0
       else if (
         input.indexOf("mediaspace.kaltura.com") != -1 &&
         input.indexOf("/media/t/") != -1
@@ -126,7 +126,7 @@ globalThis.MediaBehaviors.Video = {
             match[1] +
             "/embed/secure/iframe/entryId/" +
             match[2] +
-            "/uiConfId/54679342/st/0"
+            "/uiConfId/56368382/st/0"
           );
         }
       }
