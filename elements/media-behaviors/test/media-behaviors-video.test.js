@@ -37,7 +37,7 @@ describe('MediaBehaviors.Video global helpers', () => {
       ).to.equal('kaltura')
       expect(
         Video.getVideoType(
-          'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc/uiConfId/54679342/st/0',
+          'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc/uiConfId/56368382/st/0',
         ),
       ).to.equal('kaltura')
     })
@@ -213,7 +213,7 @@ describe('MediaBehaviors.Video global helpers', () => {
           'kaltura',
         ),
       ).to.equal(
-        'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc123/uiConfId/54679342/st/0',
+        'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc123/uiConfId/56368382/st/0',
       )
     })
     it('passes kaltura urls without a media id through', () => {
@@ -398,7 +398,7 @@ describe('MediaBehaviorsVideo mixin', () => {
           'kaltura',
         ),
       ).to.equal(
-        'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc123/uiConfId/54679342/st/0',
+        'https://demo.mediaspace.kaltura.com/embed/secure/iframe/entryId/abc123/uiConfId/56368382/st/0',
       )
     })
     it('passes kaltura urls without a media id through', () => {
