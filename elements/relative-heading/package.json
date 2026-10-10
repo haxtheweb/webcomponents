@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of relative-heading",
+  "description": "Heading whose level is set relative to its parent heading",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

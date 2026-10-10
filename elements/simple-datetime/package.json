@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of simple-datetime/",
+  "description": "Formats a unix timestamp or date string for display",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

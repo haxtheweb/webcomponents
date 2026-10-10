@@ -20,7 +20,7 @@
     ]
   },
   "version": "26.8.0",
-  "description": "Automated conversion of lrndesign-chart/",
+  "description": "Accessible charts rendered from CSV data",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

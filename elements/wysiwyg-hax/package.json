@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of wysiwyg-hax fork",
+  "description": "Integrates HAX as the editor inside a page's form field",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

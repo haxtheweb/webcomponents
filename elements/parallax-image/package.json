@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of parallax-image/",
+  "description": "Image with a parallax scrolling effect and title overlay",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

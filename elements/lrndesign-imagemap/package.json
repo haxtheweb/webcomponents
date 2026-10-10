@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of lrndesign-imagemap/",
+  "description": "Accessible image map with linked hotspots and descriptions",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

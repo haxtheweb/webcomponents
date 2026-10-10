@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of img-pan-zoom",
+  "description": "Image viewer with pan and zoom, including Deep Zoom image support",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

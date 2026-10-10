@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of self-check/",
+  "description": "Self check question card that reveals an answer on demand",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

@@ -13,7 +13,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of media-behaviors/",
+  "description": "Helpers for resolving video sources such as YouTube, Vimeo and Twitch",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"
