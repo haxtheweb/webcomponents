@@ -2,7 +2,21 @@
 <html lang="en">
 
 <head>
-  <base href="/">
+  <script>
+    // anchor the HAXcms router + relative paths to this element's folder so
+    // the preview works from the monorepo root (dev server, Vercel) and when
+    // the element folder itself is the web root
+    (() => {
+      const loc = globalThis.location;
+      if (loc.pathname.endsWith("/index.html")) {
+        globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+      }
+      const m = loc.pathname.match(/^(.*\/elements\/[^/]+\/)/);
+      const base = globalThis.document.createElement("base");
+      base.href = m ? m[1] : "/";
+      globalThis.document.head.appendChild(base);
+    })();
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for terrible-themes, including the Terrible 407, hockey, blog, productionz, and resume variants">
@@ -53,13 +67,13 @@
 
 <body>
   <section class="theme-switch" aria-label="Terrible theme variants">
-    <button type="button" aria-pressed="true" data-file="demo/site.json">Terrible 407</button>
-    <button type="button" aria-pressed="false" data-file="demo/site-best.json">Terrible hockey</button>
-    <button type="button" aria-pressed="false" data-file="demo/site-outlet.json">Terrible Blog</button>
-    <button type="button" aria-pressed="false" data-file="demo/site-productionz.json">Terrible Productionz</button>
-    <button type="button" aria-pressed="false" data-file="demo/site-resume.json">Terrible Resume</button>
+    <button type="button" aria-pressed="true" data-file="site.json">Terrible 407</button>
+    <button type="button" aria-pressed="false" data-file="site-best.json">Terrible hockey</button>
+    <button type="button" aria-pressed="false" data-file="site-outlet.json">Terrible Blog</button>
+    <button type="button" aria-pressed="false" data-file="site-productionz.json">Terrible Productionz</button>
+    <button type="button" aria-pressed="false" data-file="site-resume.json">Terrible Resume</button>
   </section>
-  <haxcms-site-builder id="site" file="demo/site.json"></haxcms-site-builder>
+  <haxcms-site-builder id="site" outline-location="demo/" file="site.json"></haxcms-site-builder>
   <script>
     globalThis.process = globalThis.process || {
       env: {

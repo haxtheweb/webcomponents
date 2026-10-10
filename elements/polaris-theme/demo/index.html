@@ -2,6 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script>
+      // anchor the HAXcms router + relative paths to this demo folder so the
+      // site renders whether served from the element or the monorepo root
+      (() => {
+        const loc = globalThis.location;
+        if (loc.pathname.endsWith("/index.html")) {
+          globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+        }
+        const i = loc.pathname.lastIndexOf("/demo/");
+        const base = globalThis.document.createElement("base");
+        base.href = i === -1 ? "./" : loc.pathname.slice(0, i + 6);
+        globalThis.document.head.appendChild(base);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>PolarisTheme: polaris-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
