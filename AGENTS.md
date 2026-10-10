@@ -1,5 +1,11 @@
 # AGENTS.md
 
+> **Agents start here (webcomponents monorepo)**
+> - Read `llms.txt` in this folder, then the `hax-webcomponent-dev` skill: <https://github.com/haxtheweb/create/blob/main/src/skills/hax-webcomponent-dev/SKILL.md>.
+> - Before writing a new element, search the existing ones: `hax wc --search <words>` or `elements-catalog.json` (tag, title, description, package, import path, HAX type, tags). Prefer composing existing elements.
+> - Create new elements only with `hax webcomponent <name> --y --no-i` (the global `hax`, never `npx hax`), and run `hax audit` in the element folder before you finish.
+> - Never run the ubiquity script and never run a build at the top of this monorepo.
+
 This file provides comprehensive instructions for AI coding agents working within the HAX ecosystem. HAX (Headless Authoring eXperience) is a comprehensive web development ecosystem that enables rapid creation of accessible, performant web components and static sites. Follow these guidelines to set up, develop, test, and contribute effectively to HAX projects.
 
 ## HAX Ecosystem Overview
