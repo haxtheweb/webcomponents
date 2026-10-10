@@ -116,6 +116,20 @@ for (const file of files) {
   }
 }
 
+// The design system artifact declares its own role tokens (--ddd-scheme-*) from
+// its tokens.json, so its previews may use them.
+const ARTIFACT_TOKENS = path.join(ROOT, "elements", "d-d-d", "design-system", "source", "tokens.json");
+if (fs.existsSync(ARTIFACT_TOKENS)) {
+  const t = JSON.parse(fs.readFileSync(ARTIFACT_TOKENS, "utf8"));
+  for (const family of Object.values(t)) {
+    if (family && Array.isArray(family.tokens)) {
+      for (const tok of family.tokens) {
+        if (tok.name.startsWith("ddd-scheme-")) declared.add(`--${tok.name}`);
+      }
+    }
+  }
+}
+
 function isDeclared(token) {
   if (declared.has(token)) return true;
   if (HOOK_PREFIXES.some((prefix) => token.startsWith(prefix))) return true;

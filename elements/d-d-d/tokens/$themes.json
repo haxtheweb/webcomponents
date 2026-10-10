@@ -1,0 +1,18 @@
+[
+  {
+    "id": "light",
+    "name": "Light",
+    "selectedTokenSets": {
+      "ddd.tokens": "enabled",
+      "ddd.dark.tokens": "disabled"
+    }
+  },
+  {
+    "id": "dark",
+    "name": "Dark",
+    "selectedTokenSets": {
+      "ddd.tokens": "enabled",
+      "ddd.dark.tokens": "enabled"
+    }
+  }
+]

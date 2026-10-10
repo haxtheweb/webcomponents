@@ -1,0 +1,16 @@
+/* DDD previews: base page styling and singleton suppression.
+   Some elements (chat-agent, super-daemon) create a page-level singleton when
+   imported; previews hide the chat agent unless they opt in with
+   <body class="show-chat-agent">. */
+body:not(.show-chat-agent) > chat-agent { display: none !important; }
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+body {
+  margin: 0;
+  padding: var(--ddd-spacing-4);
+  font-family: var(--ddd-font-primary);
+  font-size: 16px;
+  line-height: var(--ddd-lh-150);
+  color: var(--ddd-scheme-ink);
+  background: var(--ddd-scheme-surface);
+}
