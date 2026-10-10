@@ -90,7 +90,8 @@ export const DDDSuper = function (SuperClass) {
     constructor() {
       super();
       this.isSafari = globalThis.safari !== undefined;
-      if (!DesignSystemManager.systems.ddd) {
+      // DesignSystemManager is undefined without a document.body (e.g. Lit SSR)
+      if (DesignSystemManager && !DesignSystemManager.systems.ddd) {
         DesignSystemManager.addDesignSystem({
           name: "ddd",
           styles: DDDAllStyles,
