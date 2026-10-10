@@ -81,7 +81,7 @@ export class SiteView extends DDD {
           padding: var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-4xs);
           color: var(--ddd-theme-default-original87Pink);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-original87Pink);
           border-radius: var(--ddd-radius-sm);
           background: light-dark(

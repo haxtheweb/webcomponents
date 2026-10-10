@@ -15,6 +15,10 @@
  * Override hooks (`--ddd-component-*`, `--ddd-card-*`, `--ddd-button-*`) are
  * set by consumers, so they are never flagged.
  *
+ * It also fails on `var(--ddd-border-xs) solid <colour>`: --ddd-border-xs…lg
+ * already include width, style and colour, so that declaration is invalid
+ * and draws no border. Use --ddd-border-size-* in front of a style.
+ *
  * Existing violations live in scripts/ddd-token-lint.baseline.json so CI only
  * fails on new ones. Fix a violation, then run with --update-baseline to drop
  * it from the baseline.
@@ -92,6 +96,11 @@ const TEMPLATE_DECL_RE = new RegExp(
   "g",
 );
 const USE_RE = new RegExp(`var\\(\\s*(${NAME})`, "g");
+// --ddd-border-xs…lg are full shorthands (width solid colour). Following one
+// with a style or colour ("var(--ddd-border-xs) solid navy") makes the whole
+// declaration invalid, so no border renders. Use --ddd-border-size-* there.
+const SHORTHAND_RE = /var\(\s*(--ddd-border-(?:xs|sm|md|lg))\s*\)\s+(?=(?:solid|dashed|dotted|double|groove|ridge|inset|outset|none)\b|var\(|light-dark\(|#[0-9a-fA-F]|rgba?\(|transparent\b|currentColor\b|black\b|white\b)/g;
+const shorthand = []; // { token, file, line }
 
 const files = [];
 for (const dir of SCAN_DIRS) {
@@ -112,6 +121,10 @@ for (const file of files) {
   while ((m = QUOTED_DECL_RE.exec(text))) declared.add(m[1]);
   TEMPLATE_DECL_RE.lastIndex = 0;
   while ((m = TEMPLATE_DECL_RE.exec(text))) declaredPrefixes.add(m[1]);
+  SHORTHAND_RE.lastIndex = 0;
+  while ((m = SHORTHAND_RE.exec(text))) {
+    shorthand.push({ token: m[1], file: rel, line: text.slice(0, m.index).split("\n").length });
+  }
   USE_RE.lastIndex = 0;
   while ((m = USE_RE.exec(text))) {
     const token = m[1];
@@ -193,6 +206,7 @@ if (asJson) {
         uses: uses.length,
         unknown: fresh,
         stale,
+        borderShorthand: shorthand,
       },
       null,
       2,
@@ -213,4 +227,14 @@ if (asJson) {
   );
 }
 
-process.exit(!showAll && fresh.length ? 1 : 0);
+if (!asJson && shorthand.length) {
+  console.log("");
+  for (const u of shorthand) {
+    console.log(
+      `${u.file}:${u.line}  ${u.token} is a full border shorthand; use ${u.token.replace("--ddd-border-", "--ddd-border-size-")} before a style or colour`,
+    );
+  }
+  console.log(`ddd-token-lint: ${shorthand.length} broken border shorthand(s)`);
+}
+
+process.exit((!showAll && fresh.length) || shorthand.length ? 1 : 0);

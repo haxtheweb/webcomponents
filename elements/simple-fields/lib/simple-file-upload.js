@@ -69,7 +69,7 @@ class SimpleFileUpload extends DDD {
           justify-content: space-between;
           padding: var(--ddd-spacing-1, 4px) 0;
           gap: var(--ddd-spacing-2, 8px);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray, #ccc),
               var(--ddd-primary-5, #444)
@@ -126,12 +126,12 @@ class SimpleFileUpload extends DDD {
           border-radius: var(--ddd-radius-xs, 2px);
         }
         .file-actions button:focus-visible {
-          outline: var(--ddd-border-xs) solid
+          outline: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-skyBlue, #009dc7);
           outline-offset: 0;
         }
         .drop-zone {
-          border: var(--ddd-border-sm) dashed
+          border: var(--ddd-border-size-sm) dashed
             light-dark(
               var(--ddd-theme-default-limestoneGray, #ccc),
               var(--ddd-primary-5, #444)

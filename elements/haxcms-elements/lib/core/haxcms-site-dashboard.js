@@ -106,7 +106,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
               var(--ddd-theme-default-white),
               var(--ddd-theme-default-coalyGray)
             );
-            border-top: var(--ddd-border-xs) solid
+            border-top: var(--ddd-border-size-xs) solid
               light-dark(
                 var(--ddd-theme-default-limestoneGray),
                 var(--ddd-primary-5)
