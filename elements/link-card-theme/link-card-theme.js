@@ -161,7 +161,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           object-position: center;
           border-radius: var(--ddd-radius-circle);
           border: var(--ddd-border-sm) solid var(--link-card-outline);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         .profile-image-fallback {
           width: var(--ddd-spacing-30);
@@ -205,7 +205,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           justify-content: center;
           min-height: 48px;
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          border-radius: var(--ddd-radius-pill);
+          border-radius: var(--ddd-radius-rounded);
           border: var(--ddd-border-sm) solid var(--link-card-outline);
           font-size: var(--ddd-font-size-s);
           font-family: var(--ddd-font-navigation, sans-serif);
@@ -213,7 +213,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           text-decoration: none;
           color: var(--link-card-button-text);
           background-color: var(--link-card-button-bg);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           transition:
             transform 0.2s ease,
             background-color 0.2s ease;
@@ -259,7 +259,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           text-decoration: none;
           color: var(--link-card-button-text);
           background-color: var(--link-card-button-bg);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           transition: background-color 0.2s ease;
         }
         .social-link:hover,

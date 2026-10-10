@@ -69,7 +69,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         }
 
         web-dialog {
-          --dialog-width: var(--ddd-spacing-32, 480px);
+          --dialog-width: 480px;
           --dialog-max-width: 80vw;
           --dialog-max-height: 80vh;
           --dialog-border-radius: var(--ddd-radius-md, 8px);

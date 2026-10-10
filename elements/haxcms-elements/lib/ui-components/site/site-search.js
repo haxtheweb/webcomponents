@@ -53,7 +53,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
               var(--ddd-theme-default-limestoneGray, rgba(0, 0, 0, 0.1)),
               rgba(255, 255, 255, 0.2)
             );
-          transition: all var(--ddd-duration-rapid) var(--ddd-theme-easing);
+          transition: all var(--ddd-duration-fast) var(--ddd-timing-ease);
           text-decoration: none;
         }
 

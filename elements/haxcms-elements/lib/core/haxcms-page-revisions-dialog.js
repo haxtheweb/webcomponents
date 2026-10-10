@@ -72,7 +72,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           overflow: hidden;
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-charcoalGray)
+            var(--ddd-theme-default-coalyGray)
           );
         }
         .panel-header {

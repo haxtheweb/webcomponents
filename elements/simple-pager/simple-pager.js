@@ -94,7 +94,7 @@ export class SimplePager extends I18NMixin(DDD) {
           --simple-icon-button-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
@@ -116,14 +116,14 @@ export class SimplePager extends I18NMixin(DDD) {
           line-height: 1;
         }
         .page-btn:hover {
-          border-color: var(--ddd-theme-default-navy);
-          color: var(--ddd-theme-default-navy);
+          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
         }
         /* a border-color change alone is a borderline focus indicator;
            restore the canonical DDD focus ring for keyboard focus */
         .page-btn:focus-visible {
-          border-color: var(--ddd-theme-default-navy);
-          color: var(--ddd-theme-default-navy);
+          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
@@ -132,8 +132,8 @@ export class SimplePager extends I18NMixin(DDD) {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-slateGray)
           );
-          color: var(--ddd-theme-default-navy);
-          border-color: var(--ddd-theme-default-navy);
+          color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           font-weight: var(--ddd-font-weight-bold);
         }
         .ellipsis {

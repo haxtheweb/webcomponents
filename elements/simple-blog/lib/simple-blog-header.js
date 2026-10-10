@@ -21,7 +21,7 @@ class SimpleBlogHeader extends SimpleColors {
           color-scheme: light dark;
           font-family: var(--ddd-font-primary);
           color: light-dark(
-            var(--ddd-theme-default-text, #333),
+            var(--ddd-theme-default-coalyGray, #262626),
             var(--ddd-accent-6, #f5f5f5)
           );
         }
@@ -82,7 +82,7 @@ class SimpleBlogHeader extends SimpleColors {
           line-height: 1.1;
           word-break: break-word;
           color: light-dark(
-            var(--ddd-theme-default-text, #333),
+            var(--ddd-theme-default-coalyGray, #262626),
             var(--ddd-accent-6, #f5f5f5)
           );
         }
@@ -92,7 +92,7 @@ class SimpleBlogHeader extends SimpleColors {
           font-size: var(--ddd-font-size-xs);
           line-height: 1.5;
           color: light-dark(
-            var(--ddd-theme-default-muted, #666),
+            var(--simple-colors-fixed-theme-grey-7, #666666),
             var(--ddd-accent-6, #e0e0e0)
           );
           text-align: center;

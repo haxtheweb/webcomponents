@@ -48,6 +48,13 @@ const BASELINE = path.join(__dirname, "ddd-token-lint.baseline.json");
 // Override hooks: components read these so authors can restyle one element.
 // They are meant to be set by consumers, so nothing in the repo declares them.
 const HOOK_PREFIXES = ["--ddd-component-", "--ddd-card-", "--ddd-button-"];
+// Single override hooks DDD reads with a fallback (DDDStyles.js, learning-component).
+const HOOK_TOKENS = new Set([
+  "--ddd-theme-font-color",
+  "--ddd-theme-code-color",
+  "--ddd-theme-code-background-color",
+  "--ddd-app-color-icons",
+]);
 
 const args = new Set(process.argv.slice(2));
 const asJson = args.has("--json");
@@ -133,6 +140,7 @@ if (fs.existsSync(ARTIFACT_TOKENS)) {
 function isDeclared(token) {
   if (declared.has(token)) return true;
   if (HOOK_PREFIXES.some((prefix) => token.startsWith(prefix))) return true;
+  if (HOOK_TOKENS.has(token)) return true;
   for (const prefix of declaredPrefixes) {
     if (token.startsWith(prefix)) return true;
   }

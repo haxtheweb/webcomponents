@@ -185,7 +185,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
           background-color: var(--twenty-six-page-bg);
           color: var(--twenty-six-page-text);
-          font-family: var(--ddd-font-body);
+          font-family: var(--ddd-font-primary);
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
         }
 

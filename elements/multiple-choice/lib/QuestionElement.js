@@ -682,7 +682,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .feedback {
           margin: var(--ddd-spacing-2) 0;
-          font-size: var(--ddd-font-size-sm);
+          font-size: var(--ddd-font-size-3xs);
           font-weight: bold;
           text-align: center;
         }

@@ -623,7 +623,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           line-height: 1.2;
           padding: 0 4px;
           color: light-dark(
-            var(--ddd-theme-default-originalBlack),
+            var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
         }

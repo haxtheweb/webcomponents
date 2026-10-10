@@ -28,4 +28,4 @@ No HAX settings are declared; these are its public reactive properties.
 
 ## DDD usage
 
-Its source references 18 distinct design-system variables. By family: theme (16), spacing (9), font (6), border (3), radius (2), icon (2). Most used: `--ddd-theme-default-navy`, `--ddd-spacing-1`, `--ddd-border-xs`, `--ddd-font-size-4xs`, `--ddd-theme-default-slateGray`, `--ddd-font-navigation`.
+Its source references 18 distinct design-system variables. By family: theme (16), spacing (9), font (6), border (3), radius (2), icon (2). Most used: `--ddd-theme-default-nittanyNavy`, `--ddd-spacing-1`, `--ddd-border-xs`, `--ddd-font-size-4xs`, `--ddd-theme-default-slateGray`, `--ddd-font-navigation`.

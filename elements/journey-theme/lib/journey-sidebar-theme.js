@@ -85,7 +85,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
           margin: var(--ddd-spacing-0);
           background-color: light-dark(var(--journey-theme-bg-light), var(--journey-theme-bg-dark));
           color: light-dark(var(--journey-theme-text-light), var(--journey-theme-text-dark));
-          transition: background-color var(--ddd-duration-rapid, 0.3s) ease, color var(--ddd-duration-rapid, 0.3s) ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease, color var(--ddd-duration-normal, 0.3s) ease;
         }
         
         body.dark-mode {

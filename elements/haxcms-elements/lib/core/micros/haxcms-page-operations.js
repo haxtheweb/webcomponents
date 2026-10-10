@@ -21,7 +21,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         }
         simple-icon-button-lite.ops {
           --simple-icon-button-border-width: 1px;
-          --simple-icon-button-border-color: var(--ddd-border-1, #e0e0e0);
+          --simple-icon-button-border-color: var(--ddd-theme-default-limestoneLight, #e4e5e7);
           --simple-icon-height: var(
             --haxcms-page-operations-ops-icon-size,
             var(--ddd-icon-4xs, 14px)
