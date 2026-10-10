@@ -268,7 +268,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         .site-description {
           margin: var(--ddd-spacing-3) 0 var(--ddd-spacing-8);
           color: inherit;
-          font-size: var(--ddd-font-size-2xs);
+          font-size: var(--ddd-font-size-xxs);
           line-height: 1.45;
           max-width: 32ch;
         }

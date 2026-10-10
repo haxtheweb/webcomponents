@@ -516,8 +516,8 @@ export const DDDVariables = css`
     --ddd-font-size-6xs: 12px;
     --ddd-font-size-5xs: 14px;
     --ddd-font-size-4xs: 16px;
-    --ddd-font-size-3xs: 18px; /* body default */
-    --ddd-font-size-xxs: 20px; /* h6 */
+    --ddd-font-size-3xs: 18px;
+    --ddd-font-size-xxs: 20px; /* h6; body default via --ddd-theme-body-font-size */
     --ddd-font-size-xs: 22px; /* h5 */
     --ddd-font-size-s: 24px; /* h4 */
     --ddd-font-size-ms: 28px; /* h3 */
