@@ -896,7 +896,7 @@
     {
       "tag": "cms-block",
       "title": "CMS Block",
-      "description": "Render and process a block from a content management system.",
+      "description": "",
       "package": "@haxtheweb/cms-hax",
       "import": "@haxtheweb/cms-hax/lib/cms-block.js",
       "type": "element",
@@ -906,7 +906,7 @@
     {
       "tag": "cms-entity",
       "title": "CMS Entity",
-      "description": "Render and process a entity from a content management system.",
+      "description": "",
       "package": "@haxtheweb/cms-hax",
       "import": "@haxtheweb/cms-hax/lib/cms-entity.js",
       "type": "element",
@@ -926,7 +926,7 @@
     {
       "tag": "cms-token",
       "title": "CMS Token",
-      "description": "Render and process a shortcode / token from a content management system. - cms - Content management system, while written against Drupal should be abstract enough to work with just about anything. - token - a snippet / shortcode of logic to unpack and turn into something more complex. Usually of...",
+      "description": "Render and process a shortcode / token from a content management system.",
       "package": "@haxtheweb/cms-hax",
       "import": "@haxtheweb/cms-hax/lib/cms-token.js",
       "type": "element",
@@ -936,7 +936,7 @@
     {
       "tag": "cms-views",
       "title": "CMS View",
-      "description": "Render and process a views from a content management system.",
+      "description": "",
       "package": "@haxtheweb/cms-hax",
       "import": "@haxtheweb/cms-hax/lib/cms-views.js",
       "type": "element",
@@ -1447,7 +1447,7 @@
     {
       "tag": "elmsln-loading",
       "title": "",
-      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else. - elmsln - an open source NGDLE to save education",
+      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else.",
       "package": "@haxtheweb/elmsln-loading",
       "import": "@haxtheweb/elmsln-loading/elmsln-loading.js",
       "type": "element",
@@ -1496,7 +1496,7 @@
     {
       "tag": "example-haxcms-theme",
       "title": "example-haxcms-theme",
-      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component - HAXcms - A headless content management system - HAXCMSLitElementTheme - A class that provides correct baseline wiring to build a new theme that HAX can use -...",
+      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component",
       "package": "@haxtheweb/example-haxcms-theme",
       "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
       "type": "element",
@@ -1828,7 +1828,7 @@
     {
       "tag": "h5p-element",
       "title": "H5p Element",
-      "description": "h5p wrapper for loading and presenting .h5p files - h5p is it's own eco system, we're just trying to wrap it a bit",
+      "description": "h5p wrapper for loading and presenting .h5p files",
       "package": "@haxtheweb/h5p-element",
       "import": "@haxtheweb/h5p-element/h5p-element.js",
       "type": "element",
@@ -3011,7 +3011,7 @@
     {
       "tag": "lazy-import-discover",
       "title": "",
-      "description": "Break peoples' brains on simplifying webcomponent integrations",
+      "description": "",
       "package": "@haxtheweb/lazy-import-discover",
       "import": "@haxtheweb/lazy-import-discover/lazy-import-discover.js",
       "type": "element",
@@ -3227,7 +3227,7 @@
     {
       "tag": "lrndesign-imagemap",
       "title": "Lrndesign Imagemap",
-      "description": "creates an accessible image map",
+      "description": "An accessible image map with interactive hotspots.",
       "package": "@haxtheweb/lrndesign-imagemap",
       "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
       "type": "element",
@@ -3774,7 +3774,7 @@
     {
       "tag": "paper-input-flagged",
       "title": "",
-      "description": "A LRN element - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.",
+      "description": "A LRN element",
       "package": "@haxtheweb/paper-input-flagged",
       "import": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
       "type": "element",
@@ -4095,7 +4095,7 @@
     {
       "tag": "progress-donut",
       "title": "Progress Donut",
-      "description": "shows progress in as a rounded shape w/ hollow middle",
+      "description": "",
       "package": "@haxtheweb/progress-donut",
       "import": "@haxtheweb/progress-donut/progress-donut.js",
       "type": "element",
