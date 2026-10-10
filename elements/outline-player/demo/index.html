@@ -2,42 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <script>
+      // anchor the HAXcms router + relative paths to this demo folder so the
+      // site renders whether served from the element or the monorepo root
+      (() => {
+        const loc = globalThis.location;
+        if (loc.pathname.endsWith("/index.html")) {
+          globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+        }
+        const i = loc.pathname.lastIndexOf("/demo/");
+        const base = globalThis.document.createElement("base");
+        base.href = i === -1 ? "./" : loc.pathname.slice(0, i + 6);
+        globalThis.document.head.appendChild(base);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>OutlinePlayer: outline-player Demo</title>
-    
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../outline-player.js';
     </script>
-    
-    <style>
-      body,
-      html {
-        padding: 0;
-        margin: 0;
-      }
-    
-      header,
-      footer {
-        height: 100px;
-        background: lightgray;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic outline-player demo</h3>
-      <demo-snippet>
-        <template>
-          <header>Example Header</header>
-          <outline-player auto fill-remaining selected="item-85527fdd-e7aa-4179-8aab-6ecc255236a1"></outline-player>
-          <footer> Example Footer </footer>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>

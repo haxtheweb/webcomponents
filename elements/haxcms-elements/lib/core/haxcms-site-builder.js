@@ -1280,7 +1280,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // create the 'theme' as a new element
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
-      if (typeof this.__imported[theme.element] !== typeof undefined) {
+      if (
+        typeof this.__imported[theme.element] !== typeof undefined ||
+        globalThis.customElements.get(theme.element)
+      ) {
+        // already registered (ex: a demo or page that imported the theme
+        // itself), so there is nothing to import; reveal the slot
+        this.__imported[theme.element] = theme.element;
         this.themeLoaded = true;
       } else {
         // global will handle this
@@ -1298,6 +1304,15 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;
+            }).catch((err) => {
+              // the path did not resolve from here (ex: monorepo demos served
+              // from the repo root). Rather than leaving the slot hidden
+              // forever, reveal the theme once something else defines it.
+              console.warn(`haxcms-site-builder: could not import theme ${theme.element} from ${newValue.path}`, err);
+              globalThis.customElements.whenDefined(theme.element).then(() => {
+                this.__imported[theme.element] = theme.element;
+                this.themeLoaded = true;
+              });
             });
           } catch (err) {
             // error in the event this is a double registration

@@ -2,24 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <script>
+      // anchor the HAXcms router + relative paths to this demo folder so the
+      // site renders whether served from the element or the monorepo root
+      (() => {
+        const loc = globalThis.location;
+        if (loc.pathname.endsWith("/index.html")) {
+          globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+        }
+        const i = loc.pathname.lastIndexOf("/demo/");
+        const base = globalThis.document.createElement("base");
+        base.href = i === -1 ? "./" : loc.pathname.slice(0, i + 6);
+        globalThis.document.head.appendChild(base);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>Journey theme: journey-theme Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
-      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../journey-theme.js';
     </script>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic journey-theme demo</h3>
-      <demo-snippet>
-        <template>
-          <journey-theme>
-            This is journey-theme
-          </journey-theme>
-        </template>
-      </demo-snippet>
-    </div>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   </body>
 </html>
