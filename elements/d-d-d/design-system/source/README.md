@@ -111,6 +111,6 @@ Every element in the webcomponents monorepo that extends DDD has a card here, re
 - The PRAW guidance says headlines are set in Roboto Slab. The reset sets `h1`–`h6` in `--ddd-font-primary` (Roboto). This system follows the code.
 - The comment on `--ddd-font-size-3xs` says "body default" (18px). The applied body size is `--ddd-theme-body-font-size` = `xxs` (20px).
 - PRAW notes mention `--ddd-inset-*`, `--ddd-gap-*`, `--ddd-text-*` and `--ddd-duration-instant/rapid`. None of these exist in `DDDStyles.js`, so do not use them.
-- SimpleColors' JavaScript colour table disagrees with its CSS for two shades: `cyan-1` (#ddf8ff in JS, #ccf3fd in CSS) and `teal-1` (#d9fff0 vs #d4ffee). Dark mode uses the JS values for cyan-12 and teal-12. Tokens here follow the CSS that renders.
+- SimpleColors `cyan-1` is `#ddf8ff` and `teal-1` is `#d9fff0` everywhere (CSS, the JS colour table and dark mode). An earlier CSS value, `#ccf3fd` for cyan-1, put the cyan-12-on-cyan-1 pairing used by learning-component and page-flag at 4.24:1, below AA; `#ddf8ff` gives 4.52:1.
 - Palette `wisdom-walk-green` text-color-4 fails contrast, as its own source notes.
 - The source's own "logical gaps" are still open: heading colour pairings, when to use a chevron with links, gradient rotation, and the "//" after headers. They are tracked as recipe-only atoms in the pattern library.

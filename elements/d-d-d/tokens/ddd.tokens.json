@@ -3679,7 +3679,7 @@
       "cyan": {
         "1": {
           "$type": "color",
-          "$value": "#ccf3fd",
+          "$value": "#ddf8ff",
           "$extensions": {
             "org.haxtheweb.ddd": {
               "cssVar": "--simple-colors-fixed-theme-cyan-1"
@@ -3789,7 +3789,7 @@
       "teal": {
         "1": {
           "$type": "color",
-          "$value": "#d4ffee",
+          "$value": "#d9fff0",
           "$extensions": {
             "org.haxtheweb.ddd": {
               "cssVar": "--simple-colors-fixed-theme-teal-1"
