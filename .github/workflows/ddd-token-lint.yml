@@ -13,7 +13,7 @@ permissions:
   contents: read
 jobs:
   ddd-token-lint:
-    name: Unknown DDD tokens
+    name: DDD tokens
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,3 +24,5 @@ jobs:
           node-version: 24
       - name: Lint DDD token references
         run: node scripts/ddd-token-lint.js
+      - name: DTCG token export is up to date
+        run: node elements/d-d-d/design-system/build-tokens.js --check

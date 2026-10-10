@@ -45,6 +45,7 @@
     "format:js": "prettier --write **/*.{js,json}",
     "format:css": "stylelint --fix **/*.css",
     "lint:ddd-tokens": "node scripts/ddd-token-lint.js",
+    "tokens:ddd": "node elements/d-d-d/design-system/build-tokens.js",
     "test": "lerna run test --concurrency=1",
     "test:all": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
     "build": "lerna run build && yarn run build-gallery",
