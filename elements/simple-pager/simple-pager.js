@@ -91,9 +91,9 @@ export class SimplePager extends I18NMixin(DDD) {
         }
         .ib {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+          --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
             light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
@@ -104,7 +104,7 @@ export class SimplePager extends I18NMixin(DDD) {
           min-width: var(--ddd-spacing-7);
           height: var(--ddd-spacing-7);
           box-sizing: border-box;
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           background: transparent;

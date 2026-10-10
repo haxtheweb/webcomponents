@@ -48,7 +48,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           margin: var(--ddd-spacing-2) 0;
           font-weight: var(--ddd-font-weight-regular);
           border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs)
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray, rgba(0, 0, 0, 0.1)),
               rgba(255, 255, 255, 0.2)
@@ -68,7 +68,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
             var(--ddd-accent-6, #fff)
           );
           text-decoration: none;
-          outline: var(--ddd-border-sm)
+          outline: var(--ddd-border-size-sm) solid
             light-dark(var(--ddd-primary-4), var(--ddd-accent-4));
           transform: translateY(-1px);
           box-shadow: var(--ddd-boxShadow-sm);

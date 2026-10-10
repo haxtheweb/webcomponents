@@ -293,7 +293,7 @@ class HAXCMSAboutDialogUI extends DDD {
         }
 
         .section-title:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }

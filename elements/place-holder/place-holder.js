@@ -28,7 +28,7 @@ class PlaceHolder extends DDD {
         :host([drag-over]) {
           border: var(
             --place-holder-drag-over-border,
-            var(--ddd-border-lg) dashed var(--ddd-theme-default-info)
+            var(--ddd-border-size-lg) dashed var(--ddd-theme-default-info)
           );
         }
         .wrapper {

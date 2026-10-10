@@ -695,7 +695,7 @@ export class PageBreak extends IntersectionObserverMixin(
           );
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-theme-default-slateGray)
@@ -791,7 +791,7 @@ export class PageBreak extends IntersectionObserverMixin(
           cursor: pointer;
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
-          border-top: var(--ddd-border-sm) solid
+          border-top: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);

@@ -205,7 +205,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-medium);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-rounded, 999px);
           background: var(--ddd-theme-default-white);

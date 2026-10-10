@@ -98,7 +98,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
             --super-daemon-row-hover,
             var(--simple-colors-default-theme-accent-3, rgba(0, 100, 200, 0.15))
           );
-          outline: var(--ddd-border-sm) solid
+          outline: var(--ddd-border-size-sm) solid
             var(
               --super-daemon-row-outline,
               var(--simple-colors-default-theme-accent-8, #0066cc)
@@ -210,7 +210,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           line-height: 1;
           white-space: nowrap;
           border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneMaxLight);
           color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-limestoneGray);

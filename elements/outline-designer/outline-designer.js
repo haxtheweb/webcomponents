@@ -157,7 +157,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-fields-accent-color: var(--ddd-theme-default-skyBlue);
         }
         .import-field simple-fields-field:focus-within {
-          outline: var(--ddd-border-xs) solid
+          outline: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
         }
@@ -528,9 +528,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-button-padding: var(--ddd-spacing-1);
           --simple-icon-button-border-radius: var(--ddd-radius-xs);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+          --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
             light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
           --simple-icon-button-background-color: light-dark(
             var(--ddd-accent-6),
@@ -583,7 +583,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-width: 16px;
         }
         .actions-menu simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-sm) solid
+          border-top: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
