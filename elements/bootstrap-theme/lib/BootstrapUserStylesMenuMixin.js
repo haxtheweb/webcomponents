@@ -103,7 +103,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           }
           :host([font-family="1"]) {
             --bootstrap-theme-user-font-family: var(
-              --ddd-font-monospace,
+              --bootstrap-theme-font-monospace,
               "Courier New",
               Courier,
               monospace

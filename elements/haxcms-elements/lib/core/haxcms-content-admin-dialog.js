@@ -97,7 +97,7 @@ class HAXCMSContentAdminDialog extends DDD {
           padding-right: var(--ddd-spacing-1);
         }
         .filters {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
@@ -122,8 +122,8 @@ class HAXCMSContentAdminDialog extends DDD {
           min-width: 180px;
         }
         simple-icon-button-lite.replace-btn {
-          --simple-icon-button-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
@@ -144,7 +144,7 @@ class HAXCMSContentAdminDialog extends DDD {
           min-width: 760px;
         }
         simple-icon-button-lite.row-action {
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);

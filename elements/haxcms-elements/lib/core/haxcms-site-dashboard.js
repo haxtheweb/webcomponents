@@ -69,7 +69,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           margin: var(--ddd-spacing-2);
           color: white;
           background-color: var(--ddd-theme-default-skyBlue);
-          border: 2px solid var(--ddd-theme-default-navy);
+          border: 2px solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation);
           cursor: pointer;
@@ -106,7 +106,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
               var(--ddd-theme-default-white),
               var(--ddd-theme-default-coalyGray)
             );
-            border-top: var(--ddd-border-xs) solid
+            border-top: var(--ddd-border-size-xs) solid
               light-dark(
                 var(--ddd-theme-default-limestoneGray),
                 var(--ddd-primary-5)

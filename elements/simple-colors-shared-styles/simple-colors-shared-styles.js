@@ -697,7 +697,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#001b36",
       ],
       cyan: [
-        "#ddf8ff",
+        "#ccf3fd",
         "#9beaff",
         "#77e2ff",
         "#33d4ff",
@@ -711,7 +711,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#001a20",
       ],
       teal: [
-        "#d9fff0",
+        "#d4ffee",
         "#98ffd7",
         "#79ffcb",
         "#56ffbd",

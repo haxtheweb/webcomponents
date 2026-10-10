@@ -131,7 +131,7 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
           width: var(--ddd-spacing-8);
           margin: var(--ddd-spacing-0);
           padding: 0;
-          font-size: var(--ddd-font-size-sm);
+          font-size: var(--ddd-font-size-3xs);
           cursor: pointer;
         }
 

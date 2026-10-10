@@ -27,7 +27,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
           margin: auto;
           max-width: 600px;
           font-family: var(--ddd-font-secondary);
-          font-weight: var(--ddd-font-secondary-light);
+          font-weight: var(--ddd-font-weight-light);
           font-size: var(--ddd-font-size-4xs);
           color: light-dark(
             var(--media-image-color, black),

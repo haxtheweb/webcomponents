@@ -79,7 +79,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         --author-card-border: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateGray));
         --author-card-job-title-color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-slateLight));
         --author-card-link-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
-        --author-card-link-hover-color: light-dark(var(--ddd-theme-default-linkHover), var(--ddd-theme-default-linkHoverLight));
+        --author-card-link-hover-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-white));
         --author-card-border-radius: var(--ddd-radius-sm);
         --author-card-image-size: 64px;
       }
@@ -91,7 +91,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         --author-card-border: var(--ddd-theme-default-slateGray);
         --author-card-job-title-color: var(--ddd-theme-default-slateLight);
         --author-card-link-color: var(--ddd-theme-default-linkLight);
-        --author-card-link-hover-color: var(--ddd-theme-default-linkHoverLight);
+        --author-card-link-hover-color: var(--ddd-theme-default-white);
       }
 
       /* Primary color for main border; matches the reflected
@@ -151,13 +151,13 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .job-title {
-        font-size: var(--ddd-font-size-sm);
+        font-size: var(--ddd-font-size-3xs);
         color: var(--author-card-job-title-color);
         margin: 0 0 var(--ddd-spacing-2);
       }
 
       .bio {
-        font-size: var(--ddd-font-size-sm);
+        font-size: var(--ddd-font-size-3xs);
         line-height: var(--ddd-lh-150);
         margin: 0 0 var(--ddd-spacing-2);
       }
@@ -165,7 +165,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       a.link {
         display: inline-flex;
         align-items: center;
-        font-size: var(--ddd-font-size-sm);
+        font-size: var(--ddd-font-size-3xs);
         text-decoration: none;
         color: var(--author-card-link-color);
         transition: color 0.3s ease-in-out;

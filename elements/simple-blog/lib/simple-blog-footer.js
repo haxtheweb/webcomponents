@@ -27,7 +27,7 @@ class SimpleBlogFooter extends SimpleColors {
           overflow: hidden;
           opacity: 1;
           transition: 0.3s opacity linear;
-          font-family: var(--ddd-font-body);
+          font-family: inherit;
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }
         :host([edit-mode]) {

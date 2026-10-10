@@ -1,0 +1,148 @@
+{
+  "id": "9c0d1e2f-3a4b-4b5c-9c6d-simpleblogdemo0",
+  "title": "Simple Blog Demo",
+  "author": "",
+  "description": "Demonstration blog site for simple-blog, showing a home page with the blog header and post listing, two full posts, and an about page.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "simple-blog",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "simple-blog",
+      "path": "@haxtheweb/simple-blog/simple-blog.js",
+      "name": "simple-blog",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#666666",
+        "cssVariable": "--simple-colors-default-theme-grey-6",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-8b9c0d1e-0001-4a7a-9a7a-simplebloghome0",
+      "indent": 0,
+      "location": "pages/item-8b9c0d1e-0001-4a7a-9a7a-simplebloghome0/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "The blog home page. simple-blog presents the home page with the blog header and a listing of recent posts.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8b9c0d1e-0002-4a7a-9a7a-simpleblogpost1",
+      "indent": 0,
+      "location": "pages/item-8b9c0d1e-0002-4a7a-9a7a-simpleblogpost1/index.html",
+      "slug": "hello-world",
+      "order": 1,
+      "parent": null,
+      "title": "Hello, World",
+      "description": "The first post on the demonstration blog, showing how simple-blog renders a full article page.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8b9c0d1e-0003-4a7a-9a7a-simpleblogpost2",
+      "indent": 0,
+      "location": "pages/item-8b9c0d1e-0003-4a7a-9a7a-simpleblogpost2/index.html",
+      "slug": "why-i-blog-with-plain-html",
+      "order": 2,
+      "parent": null,
+      "title": "Why I Blog with Plain HTML",
+      "description": "A second post giving the listing more than one entry and showing simple-blog article styling.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-8b9c0d1e-0004-4a7a-9a7a-simpleblogabout",
+      "indent": 0,
+      "location": "pages/item-8b9c0d1e-0004-4a7a-9a7a-simpleblogabout/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About",
+      "description": "What this demonstration blog is for and what the simple-blog theme provides.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

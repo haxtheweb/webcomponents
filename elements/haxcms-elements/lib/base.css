@@ -89,7 +89,7 @@ simple-modal .hax-modal-actions {
   align-items: center;
   gap: var(--ddd-spacing-3);
   padding-top: var(--ddd-spacing-3);
-  border-top: var(--ddd-border-xs) solid
+  border-top: var(--ddd-border-size-xs) solid
     light-dark(
       var(--ddd-theme-default-limestoneGray),
       var(--ddd-accent-5)
@@ -103,7 +103,7 @@ simple-modal button.hax-modal-btn {
   margin: 0;
   color: var(--ddd-theme-default-white);
   background-color: var(--ddd-theme-default-skyBlue);
-  border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
+  border: var(--ddd-border-size-xs) solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
   border-radius: var(--ddd-radius-sm);
   font-family: var(--ddd-font-navigation, sans-serif);
   cursor: pointer;

@@ -1,0 +1,184 @@
+{
+  "id": "b3f7e4d2-7c4b-4f3f-9d4e-3f8c0b2d5f6a",
+  "title": "Teaching Online",
+  "author": "",
+  "description": "A reflective companion for teaching online.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "Example Teaching Center",
+      "email": "teaching@example.edu",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "training-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "training-theme",
+      "path": "@haxtheweb/training-theme/training-theme.js",
+      "name": "training-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "training"
+    }
+  },
+  "items": [
+    {
+      "id": "item-2d3e4f5a-0001-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0001-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "reaching-students",
+      "order": 0,
+      "parent": null,
+      "title": "Reaching students",
+      "description": "Are your students hearing from you?",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0002-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0002-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "learning-together",
+      "order": 1,
+      "parent": null,
+      "title": "Learning together",
+      "description": "Are your students learning from each other?",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0003-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0003-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "active-learning",
+      "order": 2,
+      "parent": null,
+      "title": "Active learning",
+      "description": "Are students doing science, or just watching it?",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0004-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0004-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "feedback-that-teaches",
+      "order": 3,
+      "parent": null,
+      "title": "Feedback that teaches",
+      "description": "Does your feedback do anything?",
+      "metadata": {
+        "created": 1736889003,
+        "updated": 1736889003,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0005-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0005-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "time-and-pacing",
+      "order": 4,
+      "parent": null,
+      "title": "Time and pacing",
+      "description": "Do students know how long this will take?",
+      "metadata": {
+        "created": 1736889004,
+        "updated": 1736889004,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0006-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0006-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "high-expectations",
+      "order": 5,
+      "parent": null,
+      "title": "High expectations",
+      "description": "Do your students know what excellent looks like?",
+      "metadata": {
+        "created": 1736889005,
+        "updated": 1736889005,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2d3e4f5a-0007-4b6c-9d7e-8f0a1b2c3d4e",
+      "indent": 0,
+      "location": "pages/item-2d3e4f5a-0007-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+      "slug": "reaching-everyone",
+      "order": 6,
+      "parent": null,
+      "title": "Reaching everyone",
+      "description": "Who might your course be leaving out?",
+      "metadata": {
+        "created": 1736889006,
+        "updated": 1736889006,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "status": ""
+      }
+    }
+  ]
+}

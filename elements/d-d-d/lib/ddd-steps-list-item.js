@@ -37,8 +37,17 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
       super.styles,
       css`
         :host {
+          /* default primary when no data-primary is set: Beaver blue in light,
+             Pugh blue in dark so the line and title stay readable on dark surfaces */
+          --ddd-steps-list-item-primary: var(
+            --ddd-theme-primary,
+            light-dark(
+              var(--ddd-theme-default-beaverBlue, #1e407c),
+              var(--ddd-theme-default-pughBlue, #96bee6)
+            )
+          );
           display: flex;
-          border-left: 2px dashed var(--ddd-theme-primary, #1e407c);
+          border-left: 2px dashed var(--ddd-steps-list-item-primary);
           padding-left: 36px;
         }
 
@@ -46,10 +55,18 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
           width: var(--ddd-icon-sm);
           height: var(--ddd-icon-sm);
           border-radius: 50%;
-          background-color: var(--ddd-theme-primary, #1e407c);
+          background-color: var(--ddd-steps-list-item-primary);
+          /* data-primary always sets bgContrast or lowContrast-override; without it
+             the number is white on Beaver blue, or coaly gray on Pugh blue in dark */
           color: var(
             --lowContrast-override,
-            var(--ddd-theme-default-white, #ffffff)
+            var(
+              --ddd-theme-bgContrast,
+              light-dark(
+                var(--ddd-theme-default-white, #ffffff),
+                var(--ddd-theme-default-coalyGray, #262626)
+              )
+            )
           );
           display: flex;
           align-items: center;
@@ -73,7 +90,10 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
 
         h3 {
           margin: 4px 0 0 0;
-          color: var(--lowContrast-override, var(--ddd-theme-primary, #1e407c));
+          color: var(
+            --lowContrast-override,
+            var(--ddd-steps-list-item-primary)
+          );
         }
 
         :host(:last-of-type) {

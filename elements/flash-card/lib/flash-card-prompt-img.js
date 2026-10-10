@@ -41,7 +41,7 @@ export class FlashCardPromptImg extends DDD {
         display: flex;
         background-color: light-dark(
           var(--ddd-theme-default-accent),
-          var(--ddd-theme-default-accent8)
+          var(--ddd-theme-default-beaverBlue)
         );
         border-radius: 19px 19px 0 0;
         height: 265px;

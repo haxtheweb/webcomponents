@@ -173,8 +173,8 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           --simple-icon-color: currentColor;
         }
         .dashboard-action.primary simple-icon-lite {
-          --simple-icon-width: var(--ddd-icon-l, 56px);
-          --simple-icon-height: var(--ddd-icon-l, 56px);
+          --simple-icon-width: var(--ddd-icon-lg, 56px);
+          --simple-icon-height: var(--ddd-icon-lg, 56px);
         }
         .dashboard-action.advanced simple-icon-lite {
           --simple-icon-width: var(--ddd-icon-xs, 44px);

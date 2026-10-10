@@ -261,8 +261,8 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
           cursor: not-allowed;
         }
         .preview-button simple-icon-lite {
-          --simple-icon-width: var(--ddd-icon-5xs);
-          --simple-icon-height: var(--ddd-icon-5xs);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
         }
 
         /* Table View */
@@ -293,7 +293,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
         }
 
         .theme-table tr.current {
-          background: var(--ddd-theme-default-skyMaxlight);
+          background: var(--ddd-theme-default-skyMaxLight);
         }
 
         .table-thumbnail {

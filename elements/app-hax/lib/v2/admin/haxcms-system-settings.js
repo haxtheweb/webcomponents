@@ -210,7 +210,7 @@ class HAXCMSSystemSettings extends DDD {
         .launcher {
           width: 100%;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-coalyGray),
               var(--ddd-theme-default-white)
@@ -264,8 +264,8 @@ class HAXCMSSystemSettings extends DDD {
         }
         .launcher simple-icon-lite {
           --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-l, 56px);
-          --simple-icon-height: var(--ddd-icon-l, 56px);
+          --simple-icon-width: var(--ddd-icon-lg, 56px);
+          --simple-icon-height: var(--ddd-icon-lg, 56px);
         }
         .launcher .label {
           font-size: var(--ddd-font-size-xs);
@@ -280,7 +280,7 @@ class HAXCMSSystemSettings extends DDD {
         .coming-soon-chip {
           margin-top: var(--ddd-spacing-1);
           border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-keystoneYellow);
           color: light-dark(
             var(--ddd-theme-default-potentialMidnight),
@@ -296,7 +296,7 @@ class HAXCMSSystemSettings extends DDD {
           display: flex;
           align-items: flex-start;
           gap: var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -330,7 +330,7 @@ class HAXCMSSystemSettings extends DDD {
           opacity: 0.92;
         }
         .section {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -383,7 +383,7 @@ class HAXCMSSystemSettings extends DDD {
         .empty-state {
           margin: 0;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) dashed
+          border: var(--ddd-border-size-xs) dashed
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -394,7 +394,7 @@ class HAXCMSSystemSettings extends DDD {
         }
         .style-guide-disabled {
           border-radius: var(--ddd-radius-md);
-          border: var(--ddd-border-sm) dashed
+          border: var(--ddd-border-size-sm) dashed
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-theme-default-slateGray)
@@ -421,7 +421,7 @@ class HAXCMSSystemSettings extends DDD {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -439,7 +439,7 @@ class HAXCMSSystemSettings extends DDD {
           gap: var(--ddd-spacing-4);
         }
         .code-editor-wrapper {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -462,7 +462,7 @@ class HAXCMSSystemSettings extends DDD {
         }
         .status-summary {
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -490,7 +490,7 @@ class HAXCMSSystemSettings extends DDD {
         .status-table-wrap {
           overflow-x: auto;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -506,7 +506,7 @@ class HAXCMSSystemSettings extends DDD {
           min-width: 720px;
         }
         table.system-status-report td {
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -526,7 +526,7 @@ class HAXCMSSystemSettings extends DDD {
           height: var(--ddd-icon-4xs, 16px);
           border-radius: 50%;
           display: inline-flex;
-          border: var(--ddd-border-xs) solid currentColor;
+          border: var(--ddd-border-size-xs) solid currentColor;
         }
         .status-title {
           width: 32%;
@@ -583,7 +583,7 @@ class HAXCMSSystemSettings extends DDD {
         .status-message {
           margin: 0;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -606,7 +606,7 @@ class HAXCMSSystemSettings extends DDD {
         .settings-option-table-wrap {
           overflow-x: auto;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -627,7 +627,7 @@ class HAXCMSSystemSettings extends DDD {
           text-align: left;
           vertical-align: top;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -663,7 +663,7 @@ class HAXCMSSystemSettings extends DDD {
           inline-size: 200px;
           block-size: 100px;
           border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -689,7 +689,7 @@ class HAXCMSSystemSettings extends DDD {
           opacity: 0.86;
         }
         .skeleton-upload-wrap {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -758,7 +758,7 @@ class HAXCMSSystemSettings extends DDD {
         }
         .api-key-row {
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -804,7 +804,7 @@ class HAXCMSSystemSettings extends DDD {
           flex: 1 1 auto;
           min-width: 0;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -820,7 +820,7 @@ class HAXCMSSystemSettings extends DDD {
           line-height: 1.4;
         }
         .api-key-input:focus-visible {
-          outline: var(--ddd-border-xs) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-xs) solid var(--ddd-theme-default-skyBlue);
           outline-offset: 0;
           border-color: var(--ddd-theme-default-skyBlue);
         }
@@ -837,7 +837,7 @@ class HAXCMSSystemSettings extends DDD {
           display: flex;
           justify-content: flex-end;
           gap: var(--ddd-spacing-3);
-          border-top: var(--ddd-border-xs) solid
+          border-top: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -854,7 +854,7 @@ class HAXCMSSystemSettings extends DDD {
         }
         button.action {
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -881,10 +881,10 @@ class HAXCMSSystemSettings extends DDD {
           outline: none;
         }
         button.action.primary {
-          border-color: var(--ddd-theme-default-navy);
+          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           background: light-dark(
             var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-navy)
+            var(--ddd-theme-default-nittanyNavy)
           );
           color: var(--ddd-theme-default-white);
         }
