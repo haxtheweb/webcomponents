@@ -328,7 +328,7 @@ export class DDDSample extends DDDSuper(LitElement) {
 
         :host([type="font-weight"]) .label,
         :host([type="font-family"]) .label {
-          font-size: var(--ddd-font-size-2xs);
+          font-size: var(--ddd-font-size-xxs);
         }
 
         /* @hack just for the docs bc we can't visualize margins */

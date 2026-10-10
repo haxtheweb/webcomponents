@@ -145,11 +145,11 @@ class LearningComponent extends I18NMixin(DDD) {
             var(--ddd-spacing-5) var(--ddd-spacing-6);
           background-color: light-dark(
             var(
-              --ddd-theme-acccent,
+              --ddd-theme-accent,
               var(--ddd-theme-default-limestoneMaxLight, inherit)
             ),
             var(
-              --ddd-theme-acccent,
+              --ddd-theme-accent,
               var(--ddd-theme-default-coalyGray, inherit)
             )
           );

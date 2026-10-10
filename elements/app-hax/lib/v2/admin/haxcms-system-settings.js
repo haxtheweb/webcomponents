@@ -264,8 +264,8 @@ class HAXCMSSystemSettings extends DDD {
         }
         .launcher simple-icon-lite {
           --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-l, 56px);
-          --simple-icon-height: var(--ddd-icon-l, 56px);
+          --simple-icon-width: var(--ddd-icon-lg, 56px);
+          --simple-icon-height: var(--ddd-icon-lg, 56px);
         }
         .launcher .label {
           font-size: var(--ddd-font-size-xs);

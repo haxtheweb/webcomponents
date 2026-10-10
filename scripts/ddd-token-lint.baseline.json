@@ -8,12 +8,6 @@
   "--ddd-border-radius": [
     "elements/github-preview/lib/github-rpg-contributors.js"
   ],
-  "--ddd-border-s": [
-    "elements/app-hax/lib/v2/app-hax-use-case-filter.js"
-  ],
-  "--ddd-box-shadow-md": [
-    "elements/journey-theme/lib/journey-topbar-theme-styles.js"
-  ],
   "--ddd-boxShadow-xs": [
     "elements/link-card-theme/link-card-theme.js"
   ],
@@ -37,15 +31,6 @@
   "--ddd-font-secondary-light": [
     "elements/media-image/media-image.js"
   ],
-  "--ddd-font-size-2xl": [
-    "elements/journey-theme/lib/journey-topbar-theme-styles.js",
-    "elements/resume-theme/resume-theme.js"
-  ],
-  "--ddd-font-size-2xs": [
-    "elements/d-d-d/d-d-d.js",
-    "elements/simple-blog/lib/simple-blog-overview.js",
-    "elements/twenty-six-theme/twenty-six-theme.js"
-  ],
   "--ddd-font-size-md": [
     "elements/simple-blog/lib/simple-blog-overview.js"
   ],
@@ -57,12 +42,6 @@
   ],
   "--ddd-icon-5xs": [
     "elements/haxcms-elements/lib/ui-components/utilities/site-available-themes.js"
-  ],
-  "--ddd-icon-l": [
-    "elements/app-hax/lib/v2/admin/haxcms-system-settings.js",
-    "elements/app-hax/lib/v2/app-hax-toast.js",
-    "elements/haxcms-elements/lib/core/haxcms-site-settings-dashboard.js",
-    "elements/haxcms-elements/lib/core/haxcms-toast.js"
   ],
   "--ddd-line-height-140": [
     "elements/ai-usage-license/ai-usage-license.js",
@@ -89,9 +68,6 @@
   ],
   "--ddd-spacing-38": [
     "elements/collection-list/lib/collection-row.js"
-  ],
-  "--ddd-theme-acccent": [
-    "elements/course-design/lib/learning-component.js"
   ],
   "--ddd-theme-code-background-color": [
     "elements/d-d-d/lib/DDDStyles.js"
@@ -155,9 +131,6 @@
     "elements/link-card-theme/index.html",
     "elements/terrible-themes/index.html"
   ],
-  "--ddd-theme-default-skyMaxlight": [
-    "elements/haxcms-elements/lib/ui-components/utilities/site-available-themes.js"
-  ],
   "--ddd-theme-default-text": [
     "elements/simple-blog/lib/simple-blog-header.js"
   ],
@@ -167,8 +140,5 @@
   "--ddd-theme-font-color": [
     "elements/course-design/lib/learning-component.js",
     "elements/d-d-d/lib/DDDStyles.js"
-  ],
-  "--ddd-theme-primary-9": [
-    "elements/journey-theme/lib/journey-topbar-theme-styles.js"
   ]
 }

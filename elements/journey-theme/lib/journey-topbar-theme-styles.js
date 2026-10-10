@@ -16,7 +16,7 @@ export const JourneyTopbarThemeStyles = css`
       var(--ddd-palette-text-color-1, var(--ddd-theme-default-white))
     );
     --text-body: var(--text-heading);
-    --accent-color: var(--ddd-palette-color-7, var(--ddd-theme-primary-9));
+    --accent-color: var(--ddd-palette-color-7, var(--ddd-primary-9));
     --topbar-bg: var(
       --ddd-palette-color-1,
       var(--ddd-theme-default-gradient-footer)
@@ -33,7 +33,7 @@ export const JourneyTopbarThemeStyles = css`
 
   .site-title {
     color: var(--topbar-text);
-    font-size: var(--ddd-font-size-2xl);
+    font-size: var(--ddd-font-size-xxl);
     font-weight: 600;
     margin-right: var(--ddd-spacing-4);
   }
@@ -65,7 +65,7 @@ export const JourneyTopbarThemeStyles = css`
     background-color: var(--content-surface);
     padding: var(--ddd-spacing-4);
     border-radius: var(--ddd-radius-md);
-    box-shadow: var(--ddd-box-shadow-md);
+    box-shadow: var(--ddd-boxShadow-md);
     max-width: 2000px;
     margin: 0 auto;
   }

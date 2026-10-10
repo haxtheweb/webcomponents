@@ -107,7 +107,7 @@ export class HAXCMSToast extends RPGCharacterToast {
         }
         rpg-character,
         .merlin {
-          --haxcms-toast-avatar-size: var(--ddd-icon-l, 48px);
+          --haxcms-toast-avatar-size: var(--ddd-icon-md, 48px);
           width: var(--haxcms-toast-avatar-size);
           height: var(--haxcms-toast-avatar-size);
           padding: 0;
@@ -131,7 +131,7 @@ export class HAXCMSToast extends RPGCharacterToast {
           background-color: var(--ddd-theme-default-coalyGray, #222);
         }
         .awaiting-input {
-          --haxcms-toast-avatar-size: var(--ddd-icon-l, 48px);
+          --haxcms-toast-avatar-size: var(--ddd-icon-md, 48px);
           --simple-icon-height: var(--haxcms-toast-avatar-size);
           --simple-icon-width: var(--haxcms-toast-avatar-size);
           width: var(--haxcms-toast-avatar-size);

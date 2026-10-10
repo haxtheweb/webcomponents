@@ -71,7 +71,7 @@ class SimpleBlogOverview extends SimpleColors {
           transform: translateY(-2px);
         }
         .post-meta {
-          font-size: var(--ddd-font-size-2xs);
+          font-size: var(--ddd-font-size-xxs);
           color: light-dark(#6e6e6e, var(--ddd-accent-6, #cccccc));
           line-height: 1.6;
           margin-top: var(--ddd-spacing-2);

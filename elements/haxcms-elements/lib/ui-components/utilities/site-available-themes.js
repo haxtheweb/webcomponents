@@ -293,7 +293,7 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
         }
 
         .theme-table tr.current {
-          background: var(--ddd-theme-default-skyMaxlight);
+          background: var(--ddd-theme-default-skyMaxLight);
         }
 
         .table-thumbnail {
