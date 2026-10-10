@@ -1,0 +1,26 @@
+name: ddd-token-lint
+
+# Fails when a change references a --ddd-* custom property that nothing in the
+# repo declares (a typo, or a token that was renamed or removed). Existing
+# violations are listed in scripts/ddd-token-lint.baseline.json; fix one, then
+# run `yarn lint:ddd-tokens --update-baseline` to drop it.
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  ddd-token-lint:
+    name: Unknown DDD tokens
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Lint DDD token references
+        run: node scripts/ddd-token-lint.js
