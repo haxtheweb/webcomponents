@@ -28,6 +28,7 @@ If you've already signed the CLA for this repository, you don't need to sign it 
 - **Read the CLA**: Please read the [full CLA document](./CLA.md) before signing
 - **One-Time Process**: You only need to sign once per repository
 - **Bot Users**: Automated bot users are automatically allowlisted and don't need to sign
+- **AI-authored commits**: Commits authored by the `claude` account (Claude <noreply@anthropic.com>, from Claude Code sessions a maintainer runs) are allowlisted. The maintainer who opens or merges that work is the signed contributor responsible for it
 
 ### Troubleshooting
 
