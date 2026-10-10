@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of place-holder/",
+  "description": "Drop target placeholder for media that has not been added yet",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

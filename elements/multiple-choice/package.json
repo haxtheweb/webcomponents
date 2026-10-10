@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of multiple-choice/",
+  "description": "Multiple choice question with feedback for correct and incorrect answers",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

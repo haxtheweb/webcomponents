@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of lorem-data",
+  "description": "Generates placeholder text, images and data for demos and testing",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

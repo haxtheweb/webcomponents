@@ -19,7 +19,7 @@
     ]
   },
   "version": "26.8.0",
-  "description": "Start of progress-donut",
+  "description": "Donut chart that visualizes progress or proportions",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

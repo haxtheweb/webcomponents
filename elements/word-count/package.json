@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of word-count/",
+  "description": "Counts the words in slotted text and shows a small badge",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

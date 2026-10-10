@@ -13,7 +13,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Provides state management when only one child can be selected at a time.",
+  "description": "Mixin that lets an element toggle into and out of fullscreen mode",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

@@ -13,7 +13,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of responsive-utility/",
+  "description": "Singleton that manages responsive breakpoint events for elements",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

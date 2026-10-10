@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of simple-blog/",
+  "description": "Simple blog listing and post layout elements",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

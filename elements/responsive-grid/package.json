@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of responsive-grid/",
+  "description": "Responsive grid layout for rows and columns of content",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

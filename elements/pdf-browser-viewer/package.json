@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of pdf-browser-viewer",
+  "description": "Embeds a PDF using the browser's built-in viewer",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

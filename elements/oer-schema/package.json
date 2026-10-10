@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Automated conversion of oer-schema/",
+  "description": "Wraps content in schema.org / OER metadata markup",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

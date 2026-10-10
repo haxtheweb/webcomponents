@@ -17,7 +17,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Start of accent-card",
+  "description": "A card with optional accent color, image and heading styling",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"

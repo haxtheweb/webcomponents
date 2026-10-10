@@ -110,6 +110,8 @@ Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the elem
     - Run component gallery (replaces storybook)
 - `yarn run build-gallery`
     - Build component gallery for deployment
+- `yarn run elements-readme`
+    - Regenerate [elements/README.md](elements/README.md) (the index of every element) from each element's `package.json` description. Runs as part of `yarn run ubiquity`; add `--check` to fail when it's stale.
 
 ## Web Component development
 
