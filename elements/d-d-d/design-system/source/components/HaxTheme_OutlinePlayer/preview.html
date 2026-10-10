@@ -1,0 +1,12 @@
+<!-- @dsCard group="Themes" height=640 subtitle="HAX theme - outline-player" -->
+<script>
+  // HAXcms takes its base path from the document's base element: point it at this
+  // theme's demo site (shipped under runtime/sites/) and open the first page.
+  (function () {
+    var b = document.createElement("base");
+    b.href = new URL("../../runtime/sites/outline-player/", location.href).href;
+    document.head.prepend(b);
+    history.replaceState(null, "", new URL("getting-started", b.href).pathname);
+  })();
+</script>
+<haxcms-site-builder file="site.json"></haxcms-site-builder>

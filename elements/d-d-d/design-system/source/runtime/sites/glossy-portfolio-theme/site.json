@@ -1,0 +1,186 @@
+{
+  "id": "a1b2c3d4-5e6f-4a1b-9c2d-glossyportfol0",
+  "title": "Glossy Portfolio Demo",
+  "author": "",
+  "description": "Demonstration portfolio site built with glossy-portfolio-theme, showcasing a dark glossy aesthetic across a home, project grid, and about/contact structure.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "glossy-portfolio-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "glossy-portfolio-theme",
+      "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
+      "name": "glossy-portfolio-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#111111",
+        "cssVariable": "--simple-colors-default-theme-grey-12",
+        "icon": "hax:hax2022"
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-5f6a7b8c-0001-4f5f-9f5f-glossyhome000",
+      "indent": 0,
+      "location": "pages/item-5f6a7b8c-0001-4f5f-9f5f-glossyhome000/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Portfolio Home",
+      "description": "A moody, glossy portfolio landing page introducing selected creative work.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f6a7b8c-0002-4f5f-9f5f-glossyprojects",
+      "indent": 0,
+      "location": "pages/item-5f6a7b8c-0002-4f5f-9f5f-glossyprojects/index.html",
+      "slug": "projects",
+      "order": 1,
+      "parent": null,
+      "title": "Projects",
+      "description": "A gallery of featured design and development projects with case study write-ups.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f6a7b8c-0003-4f5f-9f5f-glossyproj0001",
+      "indent": 1,
+      "location": "pages/item-5f6a7b8c-0003-4f5f-9f5f-glossyproj0001/index.html",
+      "slug": "projects/night-market-app",
+      "order": 0,
+      "parent": "item-5f6a7b8c-0002-4f5f-9f5f-glossyprojects",
+      "title": "Night Market App",
+      "description": "A mobile app concept for discovering local night markets, featuring dark-mode-first UI and glossy card interactions.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f6a7b8c-0004-4f5f-9f5f-glossyproj0002",
+      "indent": 1,
+      "location": "pages/item-5f6a7b8c-0004-4f5f-9f5f-glossyproj0002/index.html",
+      "slug": "projects/neon-brand-system",
+      "order": 1,
+      "parent": "item-5f6a7b8c-0002-4f5f-9f5f-glossyprojects",
+      "title": "Neon Brand System",
+      "description": "A visual identity system built around neon accent colors and high-contrast dark backgrounds.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f6a7b8c-0005-4f5f-9f5f-glossyabout000",
+      "indent": 0,
+      "location": "pages/item-5f6a7b8c-0005-4f5f-9f5f-glossyabout000/index.html",
+      "slug": "about",
+      "order": 2,
+      "parent": null,
+      "title": "About",
+      "description": "Background on the designer behind this portfolio and their approach to visual storytelling.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f6a7b8c-0006-4f5f-9f5f-glossycontact0",
+      "indent": 0,
+      "location": "pages/item-5f6a7b8c-0006-4f5f-9f5f-glossycontact0/index.html",
+      "slug": "contact",
+      "order": 3,
+      "parent": null,
+      "title": "Contact",
+      "description": "Get in touch about collaborations, freelance work, or speaking engagements.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

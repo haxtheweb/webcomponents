@@ -1,0 +1,111 @@
+{
+  "id": "c4f8e5d3-8d5c-4f4f-8e5f-4f9d1c3e6f7b",
+  "title": "The Twenty Six Journal",
+  "author": "",
+  "description": "A blog-style HAXsite demonstrating the twenty-six-theme layout.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "twenty-six-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "twenty-six-theme",
+      "path": "@haxtheweb/twenty-six-theme/twenty-six-theme.js",
+      "name": "twenty-six-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-3e4f5a6b-0001-4c7d-8e9f-0a1b2c3d4e5f",
+      "indent": 0,
+      "location": "pages/item-3e4f5a6b-0001-4c7d-8e9f-0a1b2c3d4e5f/index.html",
+      "slug": "welcome",
+      "order": 0,
+      "parent": null,
+      "title": "Welcome",
+      "description": "An introduction to this journal and what you will find here.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "welcome",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3e4f5a6b-0002-4c7d-8e9f-0a1b2c3d4e5f",
+      "indent": 0,
+      "location": "pages/item-3e4f5a6b-0002-4c7d-8e9f-0a1b2c3d4e5f/index.html",
+      "slug": "first-post",
+      "order": 1,
+      "parent": null,
+      "title": "My First Post",
+      "description": "The first entry in this journal, covering why this site exists.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 2,
+        "tags": "journal, introduction",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3e4f5a6b-0003-4c7d-8e9f-0a1b2c3d4e5f",
+      "indent": 0,
+      "location": "pages/item-3e4f5a6b-0003-4c7d-8e9f-0a1b2c3d4e5f/index.html",
+      "slug": "about",
+      "order": 2,
+      "parent": null,
+      "title": "About",
+      "description": "Background on the author and the purpose of this journal.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "about",
+        "status": ""
+      }
+    }
+  ]
+}

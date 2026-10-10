@@ -1,0 +1,11 @@
+<!-- @dsCard group="Forms and authoring" height=220 subtitle="&lt;simple-fields&gt;" -->
+<simple-fields id="f"></simple-fields>
+<script>
+  document.getElementById("f").fields = [
+    { property: "title", title: "Title", description: "Name of the page", inputMethod: "textfield", required: true },
+    { property: "kind", title: "Type", inputMethod: "select", options: { page: "Page", lesson: "Lesson", quiz: "Quiz" } },
+    { property: "published", title: "Published", inputMethod: "boolean" },
+    { property: "color", title: "Accent color", inputMethod: "colorpicker" },
+  ];
+  document.getElementById("f").value = { title: "Week 4: Forces", kind: "lesson", published: true };
+</script>
