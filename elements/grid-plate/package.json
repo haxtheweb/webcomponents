@@ -37,6 +37,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/hax-body-behaviors": "^26.8.0",
     "@haxtheweb/responsive-grid": "^26.8.0",
     "@haxtheweb/responsive-utility": "^26.8.0",

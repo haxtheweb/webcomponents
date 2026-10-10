@@ -6,6 +6,12 @@ import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/course-design/lib/block-quote.js";
 import "@haxtheweb/course-design/lib/learning-component.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBreakpoints,
+  DDDContentWidths,
+  DDDSidebarWidths,
+  DDDContainerWidths,
+} from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 import "@haxtheweb/d-d-d/lib/ddd-card.js";
 import "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js";
 import "@haxtheweb/d-d-d/lib/ddd-steps-list.js";
@@ -727,26 +733,63 @@ class DDDocs extends DDD {
             <th>Size</th>
           </tr>
         </thead>
-        <tr>
-          <td>sm</td>
-          <td>360px</td>
-        </tr>
-        <tr>
-          <td>md</td>
-          <td>768px</td>
-        </tr>
-        <tr>
-          <td>lg</td>
-          <td>1080px</td>
-        </tr>
-        <tr>
-          <td>xl</td>
-          <td>1440px</td>
-        </tr>
+        ${Object.entries(DDDBreakpoints).map(
+          ([name, size]) => html`
+            <tr>
+              <td>${name}</td>
+              <td>${size}px</td>
+            </tr>
+          `,
+        )}
+      </table>
+      <p class="fw-2 ml-10 mb-5">
+        Sizes are named by width, not device, so the same scale describes the
+        viewport (themes) or an element's own width (grid-plate). CSS variables
+        cannot be used inside media queries, so import the numbers:
+        <span class="fw-3"
+          >import { DDDBreakpoints } from
+          "@haxtheweb/d-d-d/lib/DDDLayout.js"</span
+        >
+      </p>
+      <p class="fw-2 ml-10 mb-15">
+        Readable from JS via css variables:
+        <span class="fw-3">--ddd-breakpoint-x</span>
+      </p>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Layout Widths</h2>
+      <table class="my-15 mx-5 p-5" data-primary="1">
+        <thead data-primary="2">
+          <tr>
+            <th>Region</th>
+            <th>Size</th>
+            <th>Width</th>
+            <th>css variable</th>
+          </tr>
+        </thead>
+        ${[
+          ["content", DDDContentWidths],
+          ["sidebar", DDDSidebarWidths],
+          ["container", DDDContainerWidths],
+        ].map(([region, scale]) =>
+          Object.entries(scale).map(
+            ([name, size]) => html`
+              <tr>
+                <td>${region}</td>
+                <td>${name}</td>
+                <td>${size}px</td>
+                <td>--ddd-${region}-width-${name}</td>
+              </tr>
+            `,
+          ),
+        )}
       </table>
       <p class="fw-2 ml-10 mb-15">
-        Accessible via css variables:
-        <span class="fw-3">--ddd-breakpoint-x</span>
+        Themes describe their regions with the aliases
+        <span class="fw-3">--ddd-theme-content-width</span>,
+        <span class="fw-3">--ddd-theme-sidebar-width</span>,
+        <span class="fw-3">--ddd-theme-container-width</span> and
+        <span class="fw-3">--ddd-theme-layout-gutter</span>. Grid elements use
+        <span class="fw-3">--ddd-grid-gap</span> and
+        <span class="fw-3">--ddd-grid-item-spacing</span>.
       </p>
     `;
   }

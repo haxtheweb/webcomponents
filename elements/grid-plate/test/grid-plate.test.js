@@ -24,10 +24,10 @@ describe("GridPlate test", () => {
     expect(element.layout).to.equal("1-1");
     expect(element.columns).to.equal(4);
     expect(element.disableResponsive).to.be.false;
-    expect(element.breakpointSm).to.equal(600);
+    expect(element.breakpointSm).to.equal(640);
     expect(element.breakpointMd).to.equal(900);
-    expect(element.breakpointLg).to.equal(1200);
-    expect(element.breakpointXl).to.equal(1500);
+    expect(element.breakpointLg).to.equal(1240);
+    expect(element.breakpointXl).to.equal(1440);
   });
 
   // Layout tests

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -163,27 +164,39 @@ class GridPlate extends LitElement {
           ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
-          transition: 0.3s opacity ease-in-out;
+          transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           margin: 0;
         }
         :host .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin, 16px);
-          padding: var(--grid-plate-item-padding, 16px);
+          margin: var(
+            --grid-plate-item-margin,
+            var(--ddd-grid-item-spacing, 16px)
+          );
+          padding: var(
+            --grid-plate-item-padding,
+            var(--ddd-grid-item-spacing, 16px)
+          );
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
         :host([data-hax-ray]) .column ::slotted(*) {
           /* if we have no values for these, but are in hax edit mode, at least have some
           so that selection boxes are apparent */
-          margin: var(--grid-plate-item-margin, 16px);
-          padding: var(--grid-plate-item-padding, 16px);
+          margin: var(
+            --grid-plate-item-margin,
+            var(--ddd-grid-item-spacing, 16px)
+          );
+          padding: var(
+            --grid-plate-item-padding,
+            var(--ddd-grid-item-spacing, 16px)
+          );
         }
         :host([ready][data-hax-ray]) [data-layout-slotname] {
           transition: var(
             --hax-layout-container-transition,
-            0.6s width ease-in-out,
-            0.6s padding ease-in-out,
-            0.6s margin ease-in-out
+            width var(--ddd-duration-slow, 0.6s) ease-in-out,
+            padding var(--ddd-duration-slow, 0.6s) ease-in-out,
+            margin var(--ddd-duration-slow, 0.6s) ease-in-out
           );
         }
         /** this implies hax editing state is available **/
@@ -208,7 +221,11 @@ class GridPlate extends LitElement {
         :host([data-hax-ray]) div ::slotted([data-hax-active]:hover) {
           border: var(
             --hax-body-active-drag-outline,
-            1px solid var(--hax-ui-color-accent, #009dc7)
+            1px solid
+              var(
+                --hax-ui-color-accent,
+                var(--ddd-drop-zone-outline-color, #009dc7)
+              )
           );
         }
         :host([data-hax-ray]) [data-layout-slotname] {
@@ -225,7 +242,11 @@ class GridPlate extends LitElement {
         :host([data-hax-ray].hax-hovered) [data-layout-slotname].active {
           outline: var(
             --hax-body-active-drag-outline,
-            1px solid var(--hax-ui-color-accent, #009dc7)
+            1px solid
+              var(
+                --hax-ui-color-accent,
+                var(--ddd-drop-zone-outline-color, #009dc7)
+              )
           );
           outline-width: 2px;
         }
@@ -233,7 +254,10 @@ class GridPlate extends LitElement {
         :host([data-hax-ray]) div ::slotted(*.active):before {
           background-color: var(
             --hax-layout-slotted-active-outline-color,
-            var(--hax-layout-accent-color, #009dc7)
+            var(
+              --hax-layout-accent-color,
+              var(--ddd-drop-zone-outline-color, #009dc7)
+            )
           ) !important;
           outline: var(
             --hax-body-active-outline,
@@ -251,7 +275,7 @@ class GridPlate extends LitElement {
           z-index: 2;
           height: 12px;
           border: none !important;
-          transition: 0.3s all ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           background-color: var(--hax-body-target-background-color) !important;
         }
         :host([data-hax-ray]) .column ::slotted(img.hax-hovered) {
@@ -268,13 +292,19 @@ class GridPlate extends LitElement {
           :host([data-hax-ray]) div ::slotted(*.active) {
             background-color: var(
               --hax-layout-slotted-active-outline-color,
-              var(--hax-layout-accent-color, #009dc7)
+              var(
+                --hax-layout-accent-color,
+                var(--ddd-drop-zone-outline-color, #009dc7)
+              )
             ) !important;
             outline: var(--hax-layout-slotted-active-outline-width, 1px)
               var(--hax-layout-slotted-active-outline-style, solid)
               var(
                 --hax-layout-slotted-active-outline-color,
-                var(--hax-layout-accent-color, #009dc7)
+                var(
+                  --hax-layout-accent-color,
+                  var(--ddd-drop-zone-outline-color, #009dc7)
+                )
               );
           }
           :host .column ::slotted(*) {
@@ -296,10 +326,12 @@ class GridPlate extends LitElement {
     this.itemMargin = null;
     this.itemPadding = null;
     this.ready = false;
-    this.breakpointSm = 600;
-    this.breakpointMd = 900;
-    this.breakpointLg = 1200;
-    this.breakpointXl = 1500;
+    // default to the shared DDD scale; still overridable per instance via
+    // the breakpoint-sm / -md / -lg / -xl attributes
+    this.breakpointSm = DDDBreakpoints.sm;
+    this.breakpointMd = DDDBreakpoints.md;
+    this.breakpointLg = DDDBreakpoints.lg;
+    this.breakpointXl = DDDBreakpoints.xl;
     this.columns = 4;
     this.disableResponsive = false;
     this.layout = "1-1";
