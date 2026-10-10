@@ -923,6 +923,16 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         console.warn(error);
       });
     globalThis.dispatchEvent(new Event("resize"));
+    // haxtheweb/issues#3104: public, read-only WebMCP tools for browser
+    // agents. Only loaded where the browser supports WebMCP; the module
+    // itself withdraws the tools when someone logs in or opens the editor.
+    if (globalThis.document && globalThis.document.modelContext) {
+      import("./utils/HAXCMSWebMCP.js")
+        .then(({ initHAXcmsWebMCP }) => {
+          this.__disposer.push(initHAXcmsWebMCP(store));
+        })
+        .catch(() => {});
+    }
     setTimeout(() => {
       this.__disposer.push(
         autorun((reaction) => {
