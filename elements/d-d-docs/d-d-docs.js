@@ -363,7 +363,7 @@ class DDDocs extends DDD {
         .pattern-card-level {
           font-size: var(--ddd-font-size-5xs);
           text-transform: uppercase;
-          letter-spacing: var(--ddd-ls-14-sm);
+          letter-spacing: var(--ddd-ls-16-sm);
           color: var(--ddd-theme-default-slateGray);
         }
         .pattern-card-desc {
@@ -439,7 +439,7 @@ class DDDocs extends DDD {
         .contract-example-label {
           font-size: var(--ddd-font-size-6xs);
           text-transform: uppercase;
-          letter-spacing: var(--ddd-ls-14-sm);
+          letter-spacing: var(--ddd-ls-16-sm);
           color: var(--ddd-theme-default-slateGray);
           margin: 0 0 var(--ddd-spacing-2);
         }

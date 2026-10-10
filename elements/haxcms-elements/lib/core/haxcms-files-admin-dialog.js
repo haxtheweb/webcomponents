@@ -201,7 +201,7 @@ class HAXCMSFilesAdminDialog extends DDD {
             var(--ddd-theme-default-limestoneGray);
           background: light-dark(
             var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-charcoalGray)
+            var(--ddd-theme-default-coalyGray)
           );
           position: sticky;
           top: 0;
@@ -264,7 +264,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           --simple-icon-button-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
@@ -915,7 +915,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         --simple-icon-button-border: var(--ddd-border-xs) solid
           var(--ddd-theme-default-limestoneGray);
         --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-          var(--ddd-theme-default-navy);
+          light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
         --simple-icon-button-height: var(--ddd-icon-xxs);
         --simple-icon-button-width: var(--ddd-icon-xxs);
         padding: var(--ddd-spacing-2);

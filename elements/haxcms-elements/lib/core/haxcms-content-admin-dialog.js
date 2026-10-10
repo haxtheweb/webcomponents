@@ -123,7 +123,7 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         simple-icon-button-lite.replace-btn {
           --simple-icon-button-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);

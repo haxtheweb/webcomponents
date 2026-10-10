@@ -40,7 +40,7 @@ class SimpleBlogPost extends SimpleColors {
         }
         section {
           width: 100%;
-          font-family: var(--ddd-font-body);
+          font-family: inherit;
           color: light-dark(#333, var(--ddd-accent-6, #f5f5f5));
         }
         section ::slotted(*) {

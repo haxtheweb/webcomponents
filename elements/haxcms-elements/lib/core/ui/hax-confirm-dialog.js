@@ -113,7 +113,7 @@ class HAXConfirmDialog extends DDD {
           min-width: 124px;
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
+          border: var(--ddd-border-xs) solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation, sans-serif);
           cursor: pointer;

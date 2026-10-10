@@ -75,11 +75,11 @@ class PageSection extends DDD {
         :host([preset="lines"]) section div.text ::slotted(h1),
         :host([preset="lines"]) section div.text ::slotted(h2),
         :host([preset="lines"]) section div.text ::slotted(h3) {
-          color: var(--ddd-theme-default-lines);
+          color: var(--ddd-theme-default-coalyGray);
         }
         :host([image][preset="lines"]) .scroller,
         :host([image][preset="lines"]) section div ::slotted(p) {
-          color: var(--ddd-theme-default-lines);
+          color: var(--ddd-theme-default-coalyGray);
         }
         /** video can allow visualization to go beyond readability limit bc its watching */
 

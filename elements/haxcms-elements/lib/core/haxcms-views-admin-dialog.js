@@ -381,7 +381,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         .query-code {
           display: block;
           margin-top: var(--ddd-spacing-2);
-          font-family: var(--ddd-font-monospace);
+          font-family: ui-monospace, "Courier New", monospace;
           font-size: var(--ddd-font-size-5xs);
           white-space: pre-wrap;
           overflow-wrap: anywhere;

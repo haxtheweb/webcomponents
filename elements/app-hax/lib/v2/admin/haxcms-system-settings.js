@@ -881,10 +881,10 @@ class HAXCMSSystemSettings extends DDD {
           outline: none;
         }
         button.action.primary {
-          border-color: var(--ddd-theme-default-navy);
+          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           background: light-dark(
             var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-navy)
+            var(--ddd-theme-default-nittanyNavy)
           );
           color: var(--ddd-theme-default-white);
         }

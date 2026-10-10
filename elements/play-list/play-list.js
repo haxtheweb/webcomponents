@@ -309,7 +309,7 @@ class PlayList extends DDD {
           padding: var(--ddd-spacing-2, 16px);
           background-color: light-dark(
             var(--ddd-theme-default-slateMaxLight, #f5f5f5),
-            var(--ddd-theme-default-navy, #1a1a1a)
+            var(--ddd-theme-default-nittanyNavy)
           );
         }
         :host([edit]) .edit-wrapper::before {
@@ -317,7 +317,7 @@ class PlayList extends DDD {
           display: block;
           font-size: var(--ddd-font-size-xs, 16px);
           color: light-dark(
-            var(--ddd-theme-default-navy, #333333),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-slateMaxLight, #f5f5f5)
           );
         }

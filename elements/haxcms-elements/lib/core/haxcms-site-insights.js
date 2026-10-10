@@ -52,7 +52,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--ddd-theme-default-slateGray)
           );
           --haxcms-insights-link-color: light-dark(
-            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-linkLight)
           );
           --haxcms-insights-link-hover-color: light-dark(
@@ -103,13 +103,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .report-tabs .report-tab-button[toggled] {
           --simple-icon-button-border: var(--ddd-border-sm) solid
-            var(--ddd-theme-default-navy);
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-white)
           );
           --simple-icon-button-background-color: light-dark(
-            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-potentialMidnight)
           );
           color: light-dark(
@@ -554,7 +554,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           --lesson-highlight-internal-margin: 0;
           --lesson-highlight-internal-padding: var(--ddd-spacing-3);
           --simple-colors-default-theme-accent-8: light-dark(
-            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-limestoneLight)
           );
           --simple-colors-default-theme-accent-9: light-dark(
@@ -592,7 +592,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--ddd-theme-default-white)
           );
           --lesson-highlight-icon-border-color: light-dark(
-            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-limestoneLight)
           );
           --lesson-highlight-icon-background-color: light-dark(
