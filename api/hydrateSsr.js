@@ -7,7 +7,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 // node parser
 import { parse } from 'node-html-parser';
 
-import wcRegistry from "../wc-registry.json" assert { type: 'json' };
+import wcRegistry from "../wc-registry.json" with { type: 'json' };
 
 export default async function handler(req, res) {
   // destructing GET params after ? available in this object
