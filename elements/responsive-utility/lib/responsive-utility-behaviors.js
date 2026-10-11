@@ -1,5 +1,6 @@
 import { html } from "lit";
 import "../responsive-utility.js";
+import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 /**
  * `responsive-utility-behaviors`
  * A superclass to that custom elements can extend to automatically use ResponsiveUtility.
@@ -77,10 +78,12 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     constructor() {
       super();
       this.responsiveSize = "xs";
-      this.sm = 600;
-      this.md = 900;
-      this.lg = 1200;
-      this.xl = 1500;
+      // default to the shared DDD breakpoint scale; elements can still
+      // set their own sm / md / lg / xl
+      this.sm = DDDBreakpoints.sm;
+      this.md = DDDBreakpoints.md;
+      this.lg = DDDBreakpoints.lg;
+      this.xl = DDDBreakpoints.xl;
       this.disableResponsive = false;
     }
     /**

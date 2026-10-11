@@ -24,14 +24,17 @@
 /**
  * Breakpoints in px, named by size rather than device so the same scale can
  * describe the viewport (themes) or an element's own width (grid-plate).
- * Values align with the widths HAXcms themes had already converged on:
- * 640 (phones / narrow), 900 (tablets / sidebar collapses),
- * 1240 (sidebar + content column + gutters fit), 1440 (wide desktop).
+ * sm/md/lg keep the 600/900/1200 values the component layer already used
+ * (grid-plate, ResponsiveUtilityBehaviors, lrndesign-timeline) so adopting
+ * the scale does not shift existing layouts:
+ * 600 (narrow / phones), 900 (sidebar collapses below this),
+ * 1200 (default sidebar + content column + two gutters fit: 300+840+48),
+ * 1440 (wide desktop, matches the large container width).
  */
 export const DDDBreakpoints = Object.freeze({
-  sm: 640,
+  sm: 600,
   md: 900,
-  lg: 1240,
+  lg: 1200,
   xl: 1440,
 });
 

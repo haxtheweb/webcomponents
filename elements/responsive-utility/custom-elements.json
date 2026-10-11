@@ -129,7 +129,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "600",
               "attribute": "sm"
             },
             {
@@ -139,7 +138,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "900",
               "attribute": "md"
             },
             {
@@ -149,7 +147,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "1200",
               "attribute": "lg"
             },
             {
@@ -160,7 +157,6 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
               "attribute": "xl"
             },
             {
@@ -228,7 +224,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "600",
               "fieldName": "sm"
             },
             {
@@ -236,7 +231,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "900",
               "fieldName": "md"
             },
             {
@@ -244,7 +238,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "1200",
               "fieldName": "lg"
             },
             {
@@ -253,7 +246,6 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
               "fieldName": "xl"
             }
           ],
@@ -322,7 +314,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "600",
               "attribute": "sm",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -336,7 +327,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "900",
               "attribute": "md",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -350,7 +340,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "1200",
               "attribute": "lg",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -365,7 +354,6 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
               "attribute": "xl",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -455,7 +443,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "600",
               "fieldName": "sm",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -467,7 +454,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "900",
               "fieldName": "md",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -479,7 +465,6 @@
               "type": {
                 "text": "number"
               },
-              "default": "1200",
               "fieldName": "lg",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -492,7 +477,6 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
               "fieldName": "xl",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",

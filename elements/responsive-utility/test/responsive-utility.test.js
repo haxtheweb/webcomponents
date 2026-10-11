@@ -436,7 +436,7 @@ describe("ResponsiveUtilityBehaviors mixin", () => {
     expect(el.sm).to.equal(600);
     expect(el.md).to.equal(900);
     expect(el.lg).to.equal(1200);
-    expect(el.xl).to.equal(1500);
+    expect(el.xl).to.equal(1440);
     expect(el.disableResponsive).to.equal(false);
   });
 
