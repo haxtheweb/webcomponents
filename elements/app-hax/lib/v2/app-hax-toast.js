@@ -110,7 +110,7 @@ export class AppHaxToast extends RPGCharacterToast {
         }
         rpg-character,
         .merlin {
-          --app-hax-toast-avatar-size: var(--ddd-icon-l, 48px);
+          --app-hax-toast-avatar-size: var(--ddd-icon-md, 48px);
           width: var(--app-hax-toast-avatar-size);
           height: var(--app-hax-toast-avatar-size);
           padding: 0;
@@ -130,7 +130,7 @@ export class AppHaxToast extends RPGCharacterToast {
           background-color: var(--ddd-theme-default-coalyGray, #222);
         }
         .awaiting-input {
-          --app-hax-toast-avatar-size: var(--ddd-icon-l, 48px);
+          --app-hax-toast-avatar-size: var(--ddd-icon-md, 48px);
           --simple-icon-height: var(--app-hax-toast-avatar-size);
           --simple-icon-width: var(--app-hax-toast-avatar-size);
           width: var(--app-hax-toast-avatar-size);

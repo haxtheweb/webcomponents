@@ -75,7 +75,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         }
 
         .random-content-container {
-          border: var(--ddd-border-xs) var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-size-xs) solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-4);
           background: var(--ddd-theme-default-white);
@@ -107,7 +107,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           align-items: center;
           margin-bottom: var(--ddd-spacing-3);
           padding-bottom: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs)
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneLight);
         }
 
@@ -147,7 +147,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         .random-element blockquote {
           margin: var(--ddd-spacing-3) 0;
           padding: var(--ddd-spacing-3);
-          border-left: var(--ddd-border-sm)
+          border-left: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-potentialMidnight);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           font-style: italic;

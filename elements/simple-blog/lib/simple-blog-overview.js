@@ -41,7 +41,7 @@ class SimpleBlogOverview extends SimpleColors {
           font-weight: var(--ddd-font-weight-bold);
           font-style: normal;
           display: block;
-          font-size: var(--ddd-font-size-md);
+          font-size: var(--ddd-font-size-s);
           line-height: 1.2;
           margin: 0 0 var(--ddd-spacing-2);
           font-family: var(--ddd-font-primary);
@@ -61,7 +61,7 @@ class SimpleBlogOverview extends SimpleColors {
             var(--simple-colors-default-theme-grey-10),
             var(--ddd-accent-6, #e0e0e0)
           );
-          font-family: var(--ddd-font-body);
+          font-family: inherit;
         }
         .post-excerpt p {
           text-transform: none;
@@ -71,7 +71,7 @@ class SimpleBlogOverview extends SimpleColors {
           transform: translateY(-2px);
         }
         .post-meta {
-          font-size: var(--ddd-font-size-2xs);
+          font-size: var(--ddd-font-size-xxs);
           color: light-dark(#6e6e6e, var(--ddd-accent-6, #cccccc));
           line-height: 1.6;
           margin-top: var(--ddd-spacing-2);

@@ -144,7 +144,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         }
         .card {
           width: min(100%, 620px);
-          border: var(--ddd-border-sm) solid var(--link-card-outline);
+          border: var(--ddd-border-size-sm) solid var(--link-card-outline);
           border-radius: var(--ddd-radius-xl);
           box-shadow: var(--ddd-boxShadow-sm);
           padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
@@ -160,15 +160,15 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           object-fit: cover;
           object-position: center;
           border-radius: var(--ddd-radius-circle);
-          border: var(--ddd-border-sm) solid var(--link-card-outline);
-          box-shadow: var(--ddd-boxShadow-xs);
+          border: var(--ddd-border-size-sm) solid var(--link-card-outline);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         .profile-image-fallback {
           width: var(--ddd-spacing-30);
           height: var(--ddd-spacing-30);
           margin: 0 auto;
           border-radius: var(--ddd-radius-circle);
-          border: var(--ddd-border-sm) solid var(--link-card-outline);
+          border: var(--ddd-border-size-sm) solid var(--link-card-outline);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -205,15 +205,15 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           justify-content: center;
           min-height: 48px;
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          border-radius: var(--ddd-radius-pill);
-          border: var(--ddd-border-sm) solid var(--link-card-outline);
+          border-radius: var(--ddd-radius-rounded);
+          border: var(--ddd-border-size-sm) solid var(--link-card-outline);
           font-size: var(--ddd-font-size-s);
           font-family: var(--ddd-font-navigation, sans-serif);
           font-weight: var(--ddd-font-weight-bold);
           text-decoration: none;
           color: var(--link-card-button-text);
           background-color: var(--link-card-button-bg);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           transition:
             transform 0.2s ease,
             background-color 0.2s ease;
@@ -228,7 +228,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         .link-button:focus-visible,
         .social-link:focus-visible,
         .palette-picker:focus-visible {
-          outline: var(--ddd-border-sm) solid
+          outline: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-nittanyNavy),
               var(--ddd-theme-default-keystoneYellow)
@@ -252,14 +252,14 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           width: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
           border-radius: var(--ddd-radius-circle);
-          border: var(--ddd-border-sm) solid var(--link-card-outline);
+          border: var(--ddd-border-size-sm) solid var(--link-card-outline);
           display: inline-flex;
           align-items: center;
           justify-content: center;
           text-decoration: none;
           color: var(--link-card-button-text);
           background-color: var(--link-card-button-bg);
-          box-shadow: var(--ddd-boxShadow-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           transition: background-color 0.2s ease;
         }
         .social-link:hover,
@@ -273,7 +273,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         }
         .palette-picker {
           --simple-icon-button-border-radius: var(--ddd-radius-circle);
-          --simple-icon-button-border: var(--ddd-border-sm) solid
+          --simple-icon-button-border: var(--ddd-border-size-sm) solid
             var(--link-card-outline);
           --simple-icon-button-color: var(--link-card-button-text);
           --simple-icon-button-background: var(--link-card-button-bg);
@@ -281,7 +281,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         #contentcontainer {
           width: min(100%, 620px);
           box-sizing: border-box;
-          border: var(--ddd-border-sm) dashed var(--link-card-outline);
+          border: var(--ddd-border-size-sm) dashed var(--link-card-outline);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-4);
           background-color: var(--link-card-card-bg);

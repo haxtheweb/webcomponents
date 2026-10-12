@@ -1,0 +1,191 @@
+{
+  "id": "1a2b3c4d-5e6f-4708-9a0b-1c2d3e4f5061",
+  "title": "Polaris University",
+  "author": "",
+  "description": "A demonstration site showcasing the Polaris theme's header, sidebar, and footer regions.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "polaris-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736900000,
+      "updated": 1736900000,
+      "git": {},
+      "version": "26.8.0",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "polaris-theme",
+      "path": "@haxtheweb/polaris-theme/polaris-theme.js",
+      "name": "polaris-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "/",
+        "hexCode": "",
+        "cssVariable": "",
+        "icon": ""
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-a1b2c3d4-e5f6-4708-9a0b-1c2d3e4f5061",
+      "indent": 0,
+      "location": "pages/item-a1b2c3d4-e5f6-4708-9a0b-1c2d3e4f5061/index.html",
+      "slug": "welcome",
+      "order": 0,
+      "parent": null,
+      "title": "Welcome",
+      "description": "An introduction to Polaris University and this demonstration site.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "welcome, overview",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-b2c3d4e5-f607-4819-8a1b-2c3d4e5f6172",
+      "indent": 0,
+      "location": "pages/item-b2c3d4e5-f607-4819-8a1b-2c3d4e5f6172/index.html",
+      "slug": "academics",
+      "order": 1,
+      "parent": null,
+      "title": "Academics",
+      "description": "An overview of academic programs and departments.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "academics",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-c3d4e5f6-0718-4920-9b2c-3d4e5f617283",
+      "indent": 1,
+      "location": "pages/item-c3d4e5f6-0718-4920-9b2c-3d4e5f617283/index.html",
+      "slug": "academics/engineering",
+      "order": 0,
+      "parent": "item-b2c3d4e5-f607-4819-8a1b-2c3d4e5f6172",
+      "title": "College of Engineering",
+      "description": "Programs and research within the College of Engineering.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "academics, engineering",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-d4e5f607-1829-4a31-ac3d-4e5f61728394",
+      "indent": 1,
+      "location": "pages/item-d4e5f607-1829-4a31-ac3d-4e5f61728394/index.html",
+      "slug": "academics/liberal-arts",
+      "order": 1,
+      "parent": "item-b2c3d4e5-f607-4819-8a1b-2c3d4e5f6172",
+      "title": "College of Liberal Arts",
+      "description": "Programs and research within the College of Liberal Arts.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "academics, liberal arts",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-e5f60718-2930-4b42-bd4e-5f6172839405",
+      "indent": 0,
+      "location": "pages/item-e5f60718-2930-4b42-bd4e-5f6172839405/index.html",
+      "slug": "campus-life",
+      "order": 2,
+      "parent": null,
+      "title": "Campus Life",
+      "description": "Student organizations, housing, and campus events.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "campus life, student",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-f6071829-3a41-4c53-ce5f-617283940516",
+      "indent": 0,
+      "location": "pages/item-f6071829-3a41-4c53-ce5f-617283940516/index.html",
+      "slug": "admissions",
+      "order": 3,
+      "parent": null,
+      "title": "Admissions",
+      "description": "How to apply and what to expect as a new student.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "tags": "admissions",
+        "images": [],
+        "videos": []
+      }
+    }
+  ]
+}

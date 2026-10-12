@@ -921,7 +921,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   "--simple-modal-titlebar-color":
                     "var(--ddd-theme-default-white, white)",
                   "--simple-modal-width": "90vw",
-                  "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
+                  "--simple-modal-max-width": "480px",
                   "--simple-modal-min-width": "300px",
                   "--simple-modal-z-index": "10000",
                   "--simple-modal-backdrop-background": "rgba(0, 0, 0, 0.88)",

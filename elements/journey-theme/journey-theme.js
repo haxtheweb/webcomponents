@@ -732,7 +732,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           }
           header h2,
           header .site-description {
-            font-size: var(--ddd-font-size-sm);
+            font-size: var(--ddd-font-size-s);
           }
           main {
             padding: var(--ddd-spacing-0);

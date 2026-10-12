@@ -568,7 +568,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         simple-tag:hover,
         simple-tag:focus {
           cursor: pointer;
-          outline: var(--ddd-border-xs) solid
+          outline: var(--ddd-border-size-xs) solid
             var(--simple-colors-default-theme-grey-10, black);
           outline-offset: var(--ddd-spacing-1);
         }

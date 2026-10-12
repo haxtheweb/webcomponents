@@ -69,7 +69,7 @@ export class GithubRpgContributors extends DDDSuper(LitElement) {
           margin: var(--ddd-spacing-1, 4px);
           padding: var(--ddd-spacing-2, 8px);
           border: 1px solid var(--ddd-theme-primary);
-          border-radius: var(--ddd-border-radius);
+          border-radius: var(--ddd-radius-sm);
           background-color: var(--ddd-theme-accent);
           color: var(--ddd-theme-primary);
         }

@@ -116,7 +116,7 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         #upload {
           border-radius: var(--ddd-radius-sm, 2px);
-          border: var(--ddd-border-sm) dashed
+          border: var(--ddd-border-size-sm) dashed
             var(--ddd-theme-default-limestoneGray, #ccc);
         }
         #url {
@@ -223,7 +223,7 @@ class SimpleFieldsUpload extends I18NMixin(
 
         /** voice stuff which is in lite dom below */
         .vmsg-button {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray, #ccc);
           border-radius: var(--ddd-radius-sm, 4px);
           padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);

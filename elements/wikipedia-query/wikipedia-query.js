@@ -18,7 +18,7 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
       css`
         :host {
           display: block;
-          --wikipedia-query-body-height: var(--ddd-spacing-32);
+          --wikipedia-query-body-height: auto;
           --wikipedia-query-background-color: var(
             --ddd-theme-default-limestoneMaxLight
           );

@@ -1,0 +1,37 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-09T18:48:58Z"
+  },
+  "title": "DDD",
+  "namespace": "DDD",
+  "libraries": [
+    {
+      "name": "ddd-sheet-music",
+      "version": "26.8.0",
+      "global": "DDDSheetMusic",
+      "file": "components/lib/ddd-sheet-music.js"
+    },
+    {
+      "name": "ddd-slide-deck",
+      "version": "26.8.0",
+      "global": "DDDSlideDeck",
+      "file": "components/lib/ddd-slide-deck.js"
+    }
+  ],
+  "sections": {},
+  "groups": [],
+  "assetGroups": {},
+  "blobs": {},
+  "docs": {
+    "sections": []
+  },
+  "lastChange": {
+    "by": "btopro",
+    "at": "2026-10-10T00:16:23Z",
+    "via": "GitHub \u00b7 haxtheweb/webcomponents@ff60a6c",
+    "note": "Theme cards renamed HaxTheme_<Name> and labelled 'HAX theme - <tag>'"
+  }
+}

@@ -64,7 +64,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       css`
         :host {
           --simple-modal-z-index: 10000;
-          --simple-modal-width: var(--ddd-spacing-32, 480px);
+          --simple-modal-width: 480px;
           --simple-modal-max-width: 80vw;
           --simple-modal-max-height: 80vh;
           --simple-modal-border-radius: var(--ddd-radius-md, 8px);
@@ -188,10 +188,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
         }
 
         :host([dangerous]) .button-confirm:hover:not(:disabled) {
-          background: var(
-            --ddd-theme-default-original87Pink-dark,
-            #c4006c
-          ) !important;
+          background: var(--ddd-theme-default-original87Pink, #bc204b) !important;
           color: var(--ddd-theme-default-white, white) !important;
         }
 

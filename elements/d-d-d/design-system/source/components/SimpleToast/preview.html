@@ -1,0 +1,10 @@
+<!-- @dsCard group="Actions and navigation" height=130 subtitle="&lt;simple-toast&gt;" -->
+<p>simple-toast is a page-level singleton. Code raises it with a <code>simple-toast-show</code> event.</p>
+<script>
+  window.addEventListener("load", function () {
+    if (window.SimpleToast && window.SimpleToast.requestAvailability) window.SimpleToast.requestAvailability();
+    setTimeout(function () {
+      window.dispatchEvent(new CustomEvent("simple-toast-show", { bubbles: true, composed: true, cancelable: true, detail: { text: "Saved your changes", duration: 600000 } }));
+    }, 300);
+  });
+</script>

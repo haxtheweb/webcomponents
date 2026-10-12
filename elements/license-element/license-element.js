@@ -66,7 +66,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       css`
         :host {
           display: block;
-          line-height: var(--ddd-line-height-140);
+          line-height: var(--ddd-lh-140);
           background-color: var(--license-background-color);
         }
         :host:after {

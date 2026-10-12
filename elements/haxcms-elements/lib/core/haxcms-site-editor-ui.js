@@ -488,7 +488,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-border-color: light-dark(black, white);
         }
         simple-toolbar-menu-item.menu-item-delete simple-toolbar-button {
-          border-top: var(--ddd-border-sm) solid;
+          border-top: var(--ddd-border-size-sm) solid;
           border-color: light-dark(black, white);
           margin-top: var(--ddd-spacing-1);
           padding-top: var(--ddd-spacing-2);

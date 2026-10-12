@@ -128,7 +128,7 @@ class HAXCMSThemePreviewPanel extends DDD {
           overflow: visible;
         }
         :host(:focus-visible) {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: -2px;
         }
         .panel-toggle {
@@ -163,7 +163,7 @@ class HAXCMSThemePreviewPanel extends DDD {
         }
         .header {
           padding: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -227,7 +227,7 @@ class HAXCMSThemePreviewPanel extends DDD {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4)
             calc(var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px))
             var(--ddd-spacing-4);
-          border-top: var(--ddd-border-xs) solid
+          border-top: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)

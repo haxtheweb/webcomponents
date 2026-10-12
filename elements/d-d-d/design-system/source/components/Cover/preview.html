@@ -1,0 +1,45 @@
+<!-- @dsCard height=300 -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+<style>
+  html, body { margin: 0; }
+  body { width: 960px; height: 300px; position: relative; overflow: hidden; background: var(--ddd-scheme-summary-bg); font-family: var(--font-primary); }
+  svg { position: absolute; inset: 0; }
+  .beaver { fill: var(--ddd-theme-default-beaverBlue); }
+  .navy { fill: var(--ddd-theme-default-nittanyNavy); }
+  .keystone { fill: var(--ddd-theme-default-keystoneYellow); }
+  .pugh { fill: var(--ddd-theme-default-pughBlue); }
+  .sky { fill: var(--ddd-theme-default-skyBlue); }
+  .tile { rx: var(--ddd-radius-xl); ry: var(--ddd-radius-xl); }
+  .small { rx: var(--ddd-radius-sm); ry: var(--ddd-radius-sm); }
+  .text { position: absolute; left: 48px; bottom: 40px; max-width: 420px; }
+  h1 { margin: 0; font-size: 120px; line-height: .92; font-weight: var(--ddd-font-weight-black); color: var(--ddd-scheme-heading); letter-spacing: 0.36px; }
+  p { margin: var(--ddd-spacing-4) 0 0; font-size: 14px; color: var(--ddd-scheme-ink); }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 960 300" width="960" height="300" aria-hidden="true">
+  <!--
+    blocks: beaverBlue slab 400×260 (spacing-25 × 4, 260 = card image height), nittanyNavy 240×120, keystoneYellow 120×120 (spacing-30), pughBlue 100×100 (spacing-25), skyBlue 48×48 (spacing-12)
+    arrangement: one tall Beaver slab bleeding off the top and right edges, navy panel set into it, yellow and Pugh satellites below, sky accent
+    pattern: DDD's heading-rule treatment, three 4px rules (header-border-thickness-lg) at 84/56/28px (treatment-lg/md/sm), the mark DDD puts under headings
+    scales: radius-xl corners (ddd-card), radius-sm on the small sky tile, gaps of spacing-6 (24px)
+  -->
+  <rect class="beaver tile" x="580" y="-20" width="400" height="260"/>
+  <rect class="navy tile" x="628" y="48" width="240" height="120"/>
+  <rect class="keystone" x="652" y="76" width="84" height="4"/>
+  <rect class="keystone" x="652" y="100" width="56" height="4"/>
+  <rect class="keystone" x="652" y="124" width="28" height="4"/>
+  <rect class="keystone tile" x="508" y="184" width="120" height="120"/>
+  <rect class="pugh tile" x="860" y="216" width="100" height="100"/>
+  <rect class="sky small" x="788" y="264" width="48" height="48"/>
+</svg>
+<div class="text">
+  <h1>DDD</h1>
+  <p>The design system under everything in HAXTheWeb.</p>
+</div>
+</body>
+</html>

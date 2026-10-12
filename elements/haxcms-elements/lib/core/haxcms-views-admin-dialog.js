@@ -225,7 +225,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           );
         }
         details.group-panel {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -289,7 +289,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           padding: var(--ddd-spacing-2);
         }
         .status {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -304,7 +304,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           );
         }
         .error {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-original87Pink);
           color: light-dark(
             var(--ddd-theme-default-original87Pink),
@@ -335,7 +335,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           --simple-icon-height: var(--ddd-icon-xs);
         }
         details.query-details {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -372,7 +372,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         }
         .query-copy-row simple-clipboard-copy-button {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
@@ -381,13 +381,13 @@ class HAXCMSViewsAdminDialog extends DDD {
         .query-code {
           display: block;
           margin-top: var(--ddd-spacing-2);
-          font-family: var(--ddd-font-monospace);
+          font-family: ui-monospace, "Courier New", monospace;
           font-size: var(--ddd-font-size-5xs);
           white-space: pre-wrap;
           overflow-wrap: anywhere;
         }
         .preview-shell {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -410,7 +410,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           justify-content: space-between;
           gap: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -454,7 +454,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           text-align: left;
           vertical-align: top;
           padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -484,7 +484,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           object-fit: cover;
           border-radius: var(--ddd-radius-sm);
           margin-bottom: var(--ddd-spacing-2);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -500,7 +500,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           width: 100%;
         }
         .record-element-preview {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -534,7 +534,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           gap: var(--ddd-spacing-4);
         }
         .content-record {
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -559,7 +559,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           gap: var(--ddd-spacing-3);
         }
         .media-gallery-item {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -601,7 +601,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         }
         .tree-shell {
           min-height: 320px;
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)

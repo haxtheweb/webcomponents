@@ -126,7 +126,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           cursor: pointer;
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -162,7 +162,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           font-size: var(--ddd-font-size-4xs);
         }
         .status {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -177,7 +177,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           );
         }
         .error {
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-original87Pink);
           background: light-dark(
             var(--ddd-theme-default-potentialMidnight),
@@ -194,7 +194,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           gap: var(--ddd-spacing-3);
           padding-top: var(--ddd-spacing-4);
           margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-xs) solid
+          border-top: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)

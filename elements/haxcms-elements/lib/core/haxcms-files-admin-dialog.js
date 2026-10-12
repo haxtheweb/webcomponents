@@ -116,7 +116,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           flex: 1;
         }
         .panel {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-2);
@@ -161,7 +161,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           color: var(--ddd-theme-default-error);
         }
         .tw {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           overflow: auto;
@@ -197,11 +197,11 @@ class HAXCMSFilesAdminDialog extends DDD {
         thead th {
           text-align: left;
           padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           background: light-dark(
             var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-charcoalGray)
+            var(--ddd-theme-default-coalyGray)
           );
           position: sticky;
           top: 0;
@@ -209,7 +209,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         td {
           padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           vertical-align: middle;
         }
@@ -222,7 +222,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           height: 100px;
           max-height: 100px;
           border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs) solid
+          border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           overflow: hidden;
           display: inline-flex;
@@ -261,10 +261,10 @@ class HAXCMSFilesAdminDialog extends DDD {
         }
         .ib {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-navy);
+          --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
+            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
@@ -881,7 +881,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         height: 100px;
         max-height: 100px;
         border-radius: var(--ddd-radius-sm);
-        border: var(--ddd-border-xs) solid
+        border: var(--ddd-border-size-xs) solid
           var(--ddd-theme-default-limestoneGray);
         overflow: hidden;
         display: inline-flex;
@@ -912,10 +912,10 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
       .ib {
         --simple-icon-button-border-radius: var(--ddd-radius-sm);
-        --simple-icon-button-border: var(--ddd-border-xs) solid
+        --simple-icon-button-border: var(--ddd-border-size-xs) solid
           var(--ddd-theme-default-limestoneGray);
-        --simple-icon-button-focus-border: var(--ddd-border-xs) solid
-          var(--ddd-theme-default-navy);
+        --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
+          light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
         --simple-icon-button-height: var(--ddd-icon-xxs);
         --simple-icon-button-width: var(--ddd-icon-xxs);
         padding: var(--ddd-spacing-2);

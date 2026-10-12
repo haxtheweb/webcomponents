@@ -688,7 +688,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         }
 
         .source-note {
-          border-left: var(--ddd-border-sm) solid var(--border-color);
+          border-left: var(--ddd-border-size-sm) solid var(--border-color);
           margin: 0 0 var(--ddd-spacing-4, 16px);
           padding-left: var(--ddd-spacing-2, 8px);
         }

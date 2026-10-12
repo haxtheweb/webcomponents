@@ -28,7 +28,7 @@ class VoiceRecorder extends LitElement {
           border-radius: var(--ddd-radius-sm, 4px);
           background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
           color: var(--ddd-theme-default-coalyGray, #444);
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray, #ccc);
         }
       `,

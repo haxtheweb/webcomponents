@@ -1,0 +1,148 @@
+{
+  "id": "c4a4d4e0-9b1b-4c6d-9b2d-chamferthem0",
+  "title": "Chamfer Theme Demo",
+  "author": "",
+  "description": "Demonstration site for chamfer-theme, a fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "chamfer-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "chamfer-theme",
+      "path": "@haxtheweb/chamfer-theme/chamfer-theme.js",
+      "name": "chamfer-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#292929",
+        "cssVariable": "--simple-colors-default-theme-grey-12",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "banner": [],
+        "belowMenu": [],
+        "footerPrimary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-2b3c4d5e-0001-4b2b-9b2b-chamferhome0",
+      "indent": 0,
+      "location": "pages/item-2b3c4d5e-0001-4b2b-9b2b-chamferhome0/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "Welcome to the chamfer-theme demo site. This page demonstrates the chamfered body area, left navigation column, and content region rendering through HAXcms.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2b3c4d5e-0002-4b2b-9b2b-chamferabout0",
+      "indent": 0,
+      "location": "pages/item-2b3c4d5e-0002-4b2b-9b2b-chamferabout0/index.html",
+      "slug": "about",
+      "order": 1,
+      "parent": null,
+      "title": "About This Theme",
+      "description": "chamfer-theme is a fixed-width layout with a distinctive angled notch in the top-left corner of the body area, paired with a persistent left navigation menu.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2b3c4d5e-0003-4b2b-9b2b-chamferdesign0",
+      "indent": 1,
+      "location": "pages/item-2b3c4d5e-0003-4b2b-9b2b-chamferdesign0/index.html",
+      "slug": "about/design-details",
+      "order": 0,
+      "parent": "item-2b3c4d5e-0002-4b2b-9b2b-chamferabout0",
+      "title": "Design Details",
+      "description": "The chamfer notch, breadcrumb trail, and scroll-to-top button are all powered by the DDD design system tokens.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-2b3c4d5e-0004-4b2b-9b2b-chamfercontact0",
+      "indent": 0,
+      "location": "pages/item-2b3c4d5e-0004-4b2b-9b2b-chamfercontact0/index.html",
+      "slug": "contact",
+      "order": 2,
+      "parent": null,
+      "title": "Contact",
+      "description": "Reach out with questions about using chamfer-theme in your own HAXcms site.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

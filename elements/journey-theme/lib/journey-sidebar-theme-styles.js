@@ -53,7 +53,7 @@ export const JourneySidebarThemeStyles = css`
     background-color: var(--content-bg);
     color: var(--text-body);
     min-height: 100vh;
-    transition: margin-left var(--ddd-duration-rapid, 0.3s) ease;
+    transition: margin-left var(--ddd-duration-normal, 0.3s) ease;
   }
   
   main p,
@@ -69,7 +69,7 @@ export const JourneySidebarThemeStyles = css`
       var(--ddd-palette-color-7, var(--ddd-theme-default-linkLight))
     );
     text-decoration: none;
-    transition: all var(--ddd-duration-rapid, 0.2s) ease;
+    transition: all var(--ddd-duration-fast, 0.2s) ease;
     border-radius: var(--ddd-radius-xs);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
   }

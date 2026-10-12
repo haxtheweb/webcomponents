@@ -31,7 +31,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
           font-size: var(--ddd-theme-body-font-size, 14px);
           font-family: var(
-            --ddd-font-body,
+            --simple-blog-font-body,
             "Open Sans",
             "MundoSans",
             "Helvetica Neue",

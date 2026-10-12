@@ -1,0 +1,172 @@
+{
+  "id": "9c2f6a3e-9b1a-4e77-8f0f-2f6a1a9c4b3d",
+  "title": "Ada Byron",
+  "author": "",
+  "description": "Software engineer building accessible web experiences. Find my work, writing, and ways to connect below.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "Ada Byron",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "link-card-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736900000,
+      "updated": 1736900000,
+      "git": {},
+      "version": "26.8.0",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "link-card-theme",
+      "path": "@haxtheweb/link-card-theme/link-card-theme.js",
+      "name": "link-card-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "",
+        "cssVariable": "",
+        "icon": ""
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "portfolio",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-3b6c2a2e-9a4c-4f0a-8f1e-1a2b3c4d5e6f",
+      "indent": 0,
+      "location": "pages/item-3b6c2a2e-9a4c-4f0a-8f1e-1a2b3c4d5e6f/index.html",
+      "slug": "about",
+      "order": 0,
+      "parent": null,
+      "title": "About Me",
+      "description": "A short introduction to who I am and what I build.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-4c7d3b3f-0b5d-4a1b-9f2f-2b3c4d5e6f70",
+      "indent": 0,
+      "location": "pages/item-4c7d3b3f-0b5d-4a1b-9f2f-2b3c4d5e6f70/index.html",
+      "slug": "portfolio",
+      "order": 1,
+      "parent": null,
+      "title": "Portfolio",
+      "description": "A collection of recent projects and case studies.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "linkUrl": "https://haxtheweb.org/",
+        "linkTarget": "_blank",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-5d8e4c40-1c6e-4b2c-8a3a-3c4d5e6f7081",
+      "indent": 0,
+      "location": "pages/item-5d8e4c40-1c6e-4b2c-8a3a-3c4d5e6f7081/index.html",
+      "slug": "newsletter",
+      "order": 2,
+      "parent": null,
+      "title": "Newsletter",
+      "description": "Subscribe for occasional updates on new projects and writing.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "linkUrl": "https://haxtheweb.org/",
+        "linkTarget": "_blank",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-6e9f5d51-2d7f-4c3d-9b4b-4d5e6f708192",
+      "indent": 0,
+      "location": "pages/item-6e9f5d51-2d7f-4c3d-9b4b-4d5e6f708192/index.html",
+      "slug": "linkedin",
+      "order": 3,
+      "parent": null,
+      "title": "LinkedIn",
+      "description": "Connect with me on LinkedIn.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "linkUrl": "https://www.linkedin.com/",
+        "linkTarget": "_blank",
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-7f0a6e62-3e8a-4d4e-8c5c-5e6f708192a3",
+      "indent": 0,
+      "location": "pages/item-7f0a6e62-3e8a-4d4e-8c5c-5e6f708192a3/index.html",
+      "slug": "x",
+      "order": 4,
+      "parent": null,
+      "title": "X",
+      "description": "Follow me on X.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "linkUrl": "https://x.com/",
+        "linkTarget": "_blank",
+        "images": [],
+        "videos": []
+      }
+    }
+  ]
+}

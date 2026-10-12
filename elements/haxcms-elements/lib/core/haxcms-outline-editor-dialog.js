@@ -56,7 +56,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           margin: var(--ddd-spacing-2);
           color: white;
           background-color: var(--ddd-theme-default-skyBlue);
-          border: 2px solid var(--ddd-theme-default-navy);
+          border: 2px solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation);
           cursor: pointer;

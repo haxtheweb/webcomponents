@@ -65,7 +65,7 @@ class HAXConfirmDialog extends DDD {
           font-family: var(--ddd-font-primary);
         }
         .confirm-shell {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-theme-default-slateGray)
@@ -113,14 +113,14 @@ class HAXConfirmDialog extends DDD {
           min-width: 124px;
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-navy);
+          border: var(--ddd-border-size-xs) solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation, sans-serif);
           cursor: pointer;
         }
         button:hover,
         button:focus-visible {
-          outline: var(--ddd-border-xs) solid
+          outline: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
           background-color: var(--ddd-theme-default-nittanyNavy);

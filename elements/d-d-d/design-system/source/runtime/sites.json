@@ -1,0 +1,121 @@
+{
+ "$comment": "Theme preview sites: files copied from elements/<theme>/demo/ as-is. Files under sites/<theme>/ here override or add to them.",
+ "sites": {
+  "chamfer-theme": [
+   "pages/item-2b3c4d5e-0001-4b2b-9b2b-chamferhome0/index.html",
+   "pages/item-2b3c4d5e-0002-4b2b-9b2b-chamferabout0/index.html",
+   "pages/item-2b3c4d5e-0003-4b2b-9b2b-chamferdesign0/index.html",
+   "pages/item-2b3c4d5e-0004-4b2b-9b2b-chamfercontact0/index.html"
+  ],
+  "clean-one": [
+   "pages/item-5e6f7a8b-0001-4e5e-9e5e-cleanonehome0/index.html",
+   "pages/item-5e6f7a8b-0002-4e5e-9e5e-cleanoneunit10/index.html",
+   "pages/item-5e6f7a8b-0003-4e5e-9e5e-cleanoneless10/index.html",
+   "pages/item-5e6f7a8b-0004-4e5e-9e5e-cleanoneresrc0/index.html",
+   "pages/item-5e6f7a8b-0005-4e5e-9e5e-cleanoneabout0/index.html"
+  ],
+  "clean-portfolio-theme": [
+   "pages/item-4d5e6f70-0001-4d4d-9d4d-portfoliohome0/index.html",
+   "pages/item-4d5e6f70-0002-4d4d-9d4d-portfolioprojects0/index.html",
+   "pages/item-4d5e6f70-0003-4d4d-9d4d-portfolioproj10/index.html",
+   "pages/item-4d5e6f70-0004-4d4d-9d4d-portfolioproj20/index.html",
+   "pages/item-4d5e6f70-0005-4d4d-9d4d-portfolioabout0/index.html",
+   "pages/item-4d5e6f70-0006-4d4d-9d4d-portfoliocontact0/index.html"
+  ],
+  "clean-two": [
+   "pages/item-3c4d5e6f-0001-4c3c-9c3c-cleantwohome0/index.html",
+   "pages/item-3c4d5e6f-0002-4c3c-9c3c-cleantwoabout0/index.html",
+   "pages/item-3c4d5e6f-0003-4c3c-9c3c-cleantwonav0/index.html",
+   "pages/item-3c4d5e6f-0004-4c3c-9c3c-cleantwocontact0/index.html"
+  ],
+  "glossy-portfolio-theme": [
+   "pages/item-5f6a7b8c-0001-4f5f-9f5f-glossyhome000/index.html",
+   "pages/item-5f6a7b8c-0002-4f5f-9f5f-glossyprojects/index.html",
+   "pages/item-5f6a7b8c-0003-4f5f-9f5f-glossyproj0001/index.html",
+   "pages/item-5f6a7b8c-0004-4f5f-9f5f-glossyproj0002/index.html",
+   "pages/item-5f6a7b8c-0005-4f5f-9f5f-glossyabout000/index.html",
+   "pages/item-5f6a7b8c-0006-4f5f-9f5f-glossycontact0/index.html"
+  ],
+  "haxma-theme": [
+   "pages/item-6a7b8c9d-0001-4a6a-9a6a-haxmagetstart0/index.html",
+   "pages/item-6a7b8c9d-0002-4a6a-9a6a-haxmafeatures0/index.html",
+   "pages/item-6a7b8c9d-0003-4a6a-9a6a-haxmanavigatio/index.html",
+   "pages/item-6a7b8c9d-0004-4a6a-9a6a-haxmadesignphi/index.html"
+  ],
+  "haxor-slevin": [
+   "pages/item-6f7a8b9c-0001-4f6f-9f6f-haxorslevinhome/index.html",
+   "pages/item-6f7a8b9c-0002-4f6f-9f6f-haxorslevinpos1/index.html",
+   "pages/item-6f7a8b9c-0003-4f6f-9f6f-haxorslevinpos2/index.html",
+   "pages/item-6f7a8b9c-0004-4f6f-9f6f-haxorslevinabou/index.html"
+  ],
+  "learn-two-theme": [
+   "pages/item-8c9d0e1f-0001-4c8c-9c8c-learntwocourse/index.html",
+   "pages/item-8c9d0e1f-0002-4c8c-9c8c-learntwomodule/index.html",
+   "pages/item-8c9d0e1f-0003-4c8c-9c8c-learntwolesson1/index.html",
+   "pages/item-8c9d0e1f-0004-4c8c-9c8c-learntwomodule2/index.html",
+   "pages/item-8c9d0e1f-0005-4c8c-9c8c-learntwosummary/index.html"
+  ],
+  "link-card-theme": [
+   "pages/item-3b6c2a2e-9a4c-4f0a-8f1e-1a2b3c4d5e6f/index.html",
+   "pages/item-4c7d3b3f-0b5d-4a1b-9f2f-2b3c4d5e6f70/index.html",
+   "pages/item-5d8e4c40-1c6e-4b2c-8a3a-3c4d5e6f7081/index.html",
+   "pages/item-6e9f5d51-2d7f-4c3d-9b4b-4d5e6f708192/index.html",
+   "pages/item-7f0a6e62-3e8a-4d4e-8c5c-5e6f708192a3/index.html"
+  ],
+  "outline-player": [
+   "content/page1.html",
+   "content/page2.html",
+   "content/page3.html",
+   "content/page4.html",
+   "content/page5.html",
+   "content/page6.html",
+   "pages/item-0d1e2f3a-0001-4b8b-8b8b-outlinestart0/index.html",
+   "pages/item-0d1e2f3a-0002-4b8b-8b8b-outlineguides0/index.html",
+   "pages/item-0d1e2f3a-0003-4b8b-8b8b-outlineauthor0/index.html",
+   "pages/item-0d1e2f3a-0004-4b8b-8b8b-outlinetheme0/index.html",
+   "pages/item-0d1e2f3a-0005-4b8b-8b8b-outlinerefer0/index.html",
+   "pages/item-0d1e2f3a-0006-4b8b-8b8b-outlineabout0/index.html"
+  ],
+  "polaris-theme": [
+   "pages/item-a1b2c3d4-e5f6-4708-9a0b-1c2d3e4f5061/index.html",
+   "pages/item-b2c3d4e5-f607-4819-8a1b-2c3d4e5f6172/index.html",
+   "pages/item-c3d4e5f6-0718-4920-9b2c-3d4e5f617283/index.html",
+   "pages/item-d4e5f607-1829-4a31-ac3d-4e5f61728394/index.html",
+   "pages/item-e5f60718-2930-4b42-bd4e-5f6172839405/index.html",
+   "pages/item-f6071829-3a41-4c53-ce5f-617283940516/index.html"
+  ],
+  "resume-theme": [
+   "pages/item-a2b3c4d5-e6f7-4809-8a1b-2c3d4e5f6071/index.html",
+   "pages/item-b3c4d5e6-f708-491a-9b2c-3d4e5f607182/index.html",
+   "pages/item-c4d5e6f7-0819-4a2b-ac3d-4e5f60718293/index.html",
+   "pages/item-d5e6f708-192a-4b3c-bd4e-5f6071829304/index.html",
+   "pages/item-e6f70819-2a3b-4c4d-ce5f-60718293041a/index.html"
+  ],
+  "simple-blog": [
+   "pages/item-8b9c0d1e-0001-4a7a-9a7a-simplebloghome0/index.html",
+   "pages/item-8b9c0d1e-0002-4a7a-9a7a-simpleblogpost1/index.html",
+   "pages/item-8b9c0d1e-0003-4a7a-9a7a-simpleblogpost2/index.html",
+   "pages/item-8b9c0d1e-0004-4a7a-9a7a-simpleblogabout/index.html"
+  ],
+  "spacebook-theme": [
+   "pages/item-a3b4c5d6-e7f8-4192-9a3b-4c5d6e7f8091/index.html",
+   "pages/item-b4c5d6e7-f809-4a2b-ab4c-5d6e7f809102/index.html",
+   "pages/item-c5d6e7f8-0910-4b3c-bc5d-6e7f80910213/index.html",
+   "pages/item-d6e7f809-1021-4c4d-cd6e-7f8091021324/index.html"
+  ],
+  "training-theme": [
+   "pages/item-2d3e4f5a-0001-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0002-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0003-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0004-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0005-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0006-4b6c-9d7e-8f0a1b2c3d4e/index.html",
+   "pages/item-2d3e4f5a-0007-4b6c-9d7e-8f0a1b2c3d4e/index.html"
+  ],
+  "twenty-six-theme": [
+   "pages/item-3e4f5a6b-0001-4c7d-8e9f-0a1b2c3d4e5f/index.html",
+   "pages/item-3e4f5a6b-0002-4c7d-8e9f-0a1b2c3d4e5f/index.html",
+   "pages/item-3e4f5a6b-0003-4c7d-8e9f-0a1b2c3d4e5f/index.html"
+  ]
+ }
+}
