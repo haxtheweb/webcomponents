@@ -274,7 +274,6 @@ function extractHtmlPrimitivesFromHaxStore() {
       }
     }
     
-    console.log(`📝 Extracted ${Object.keys(primitives).length} HTML primitives from hax-store.js`);
     return primitives;
     
   } catch (error) {
@@ -333,10 +332,8 @@ async function discoverHaxElements() {
   const haxElements = {};
   
   // First, add HTML primitives from hax-store.js
-  console.log('📝 Adding HTML primitives from HAX core...');
   const htmlPrimitives = extractHtmlPrimitivesFromHaxStore();
   Object.assign(haxElements, htmlPrimitives);
-  console.log(`✅ Added ${Object.keys(htmlPrimitives).length} HTML primitives`);
   
   
   try {
@@ -388,7 +385,6 @@ async function discoverHaxElements() {
             if (!haxElements[element.name]) {
               haxElements[element.name] = element.title;
               elementsFound++;
-              console.log(`✅ Found HAX element: ${element.name} -> "${element.title}" (${file})`);
             }
           }
         }

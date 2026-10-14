@@ -347,7 +347,6 @@ async function discoverThemes() {
     console.log(`📁 Scanning ${files.length} JavaScript files...`);
     
     // First pass: Load all file contents and find direct HAXcms themes
-    console.log('🔄 Pass 1: Finding direct HAXcms themes...');
     
     for (const file of files) {
       try {
@@ -360,7 +359,6 @@ async function discoverThemes() {
           
           // Skip excluded themes
           if (shouldSkipTheme(elementName, file)) {
-            console.log(`⏭️  Skipping excluded theme: ${elementName}`);
             continue;
           }
           
@@ -390,7 +388,6 @@ async function discoverThemes() {
             knownThemeClasses.add(classMatch[1]);
           }
           
-          console.log(`✅ Found direct theme: ${elementName} (${displayName})`);
         }
       } catch (error) {
         console.warn(`⚠️  Error processing file ${file}: ${error.message}`);
@@ -403,7 +400,6 @@ async function discoverThemes() {
     
     while (foundNewThemes) {
       foundNewThemes = false;
-      console.log(`🔄 Pass ${passNumber}: Finding themes that inherit from discovered themes...`);
       
       for (const [file, content] of fileContentMap) {
         const elementName = extractThemeName(content, file);
@@ -441,7 +437,6 @@ async function discoverThemes() {
             knownThemeClasses.add(classMatch[1]);
           }
           
-          console.log(`✅ Found inherited theme: ${elementName} (${displayName})`);
           foundNewThemes = true;
         }
       }
