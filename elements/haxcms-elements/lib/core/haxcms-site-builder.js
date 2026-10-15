@@ -1122,7 +1122,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       setAttrIfValue(pageBreak, "description", activeItem.description);
       setAttrIfValue(pageBreak, "order", activeItem.order);
       setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType);
-      setAttrIfValue(pageBreak, "tags", activeItem.metadata.tags);
+      setAttrIfValue(
+        pageBreak,
+        "tags",
+        Array.isArray(activeItem.metadata.tags)
+          ? activeItem.metadata.tags.join(",")
+          : activeItem.metadata.tags,
+      );
       setAttrIfValue(
         pageBreak,
         "related-items",

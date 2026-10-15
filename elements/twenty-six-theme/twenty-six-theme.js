@@ -937,6 +937,11 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   }
 
   _tagsArray(tags) {
+    if (Array.isArray(tags)) {
+      return tags
+        .map((tag) => String(tag).trim())
+        .filter((tag) => tag !== "");
+    }
     if (!tags || typeof tags !== "string") {
       return [];
     }

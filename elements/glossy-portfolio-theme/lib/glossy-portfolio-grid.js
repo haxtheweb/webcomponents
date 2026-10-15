@@ -267,8 +267,19 @@ ${this.data.length > 0 ?   html`
         this.filtersList = [];
         
         this.data.forEach((d) => {
-          if (d.metadata && d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
-            const firstTag = d.metadata.tags.split(",")[0];
+          // metadata.tags is an array in canonical site.json; older sites
+          // may still store a comma-separated string
+          const rawTags = d.metadata ? d.metadata.tags : null;
+          let tagList = [];
+          if (Array.isArray(rawTags)) {
+            // already a list: use as-is
+            tagList = rawTags;
+          } else if (typeof rawTags === "string") {
+            // legacy comma-separated string: split it into a list
+            tagList = rawTags.split(",");
+          }
+          const firstTag = tagList.length > 0 ? String(tagList[0]).trim() : "";
+          if (firstTag !== "") {
             if (!this.filtersList.includes(firstTag)) { //check for duplicate
               this.filtersList.push(firstTag);
             }
