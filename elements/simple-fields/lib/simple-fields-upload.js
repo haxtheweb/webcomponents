@@ -116,8 +116,6 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         #upload {
           border-radius: var(--ddd-radius-sm, 2px);
-          border: var(--ddd-border-size-sm) dashed
-            var(--ddd-theme-default-limestoneGray, #ccc);
         }
         #url {
           flex: 1 1 100%;

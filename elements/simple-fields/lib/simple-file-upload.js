@@ -131,11 +131,6 @@ class SimpleFileUpload extends DDD {
           outline-offset: 0;
         }
         .drop-zone {
-          border: var(--ddd-border-size-sm) dashed
-            light-dark(
-              var(--ddd-theme-default-limestoneGray, #ccc),
-              var(--ddd-primary-5, #444)
-            );
           border-radius: var(--ddd-radius-sm, 2px);
           padding: var(--ddd-spacing-2, 8px);
           text-align: center;
