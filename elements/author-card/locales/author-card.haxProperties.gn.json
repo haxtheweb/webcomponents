@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Apohára kuatia",
+    "description": "Ehechauka apohára marandu ta'anga, tekove rembiasakue ha juajuha mbykymi ñanduti avápe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Apohára réra",
+        "description": "Apohára réra paite."
+      },
+      {
+        "title": "Perfil ta'anga",
+        "description": "Apohára perfil ta'anga."
+      },
+      {
+        "title": "Tembiapo réra",
+        "description": "Apohára tembiapo térã rembiapo."
+      },
+      {
+        "title": "Tekove rembiasakue",
+        "description": "Apohára tekove rembiasakue mbykymi."
+      },
+      {
+        "title": "Perfil URL",
+        "description": "Juajuha apohára perfil kuatiaroguépe."
+      },
+      {
+        "title": "Ñanduti ava juajuha",
+        "description": "Juajuha peteĩ perfil ñanduti ava-pe."
+      },
+      {
+        "title": "Ñanduti ava réra",
+        "description": "Puruhára réra ñanduti avápe (techapyrã @username)."
+      }
+    ]
+  }
+}

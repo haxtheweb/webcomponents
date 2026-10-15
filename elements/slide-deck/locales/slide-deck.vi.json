@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Trang chiếu trước",
+  "nextSlide": "Trang chiếu tiếp theo",
+  "viewAllSlides": "Xem tất cả trang chiếu",
+  "viewOneSlide": "Xem từng trang chiếu",
+  "presentFullScreen": "Trình chiếu toàn màn hình",
+  "exitFullScreen": "Thoát toàn màn hình",
+  "copyLinkToSlide": "Sao chép liên kết đến trang chiếu này",
+  "linkCopied": "Đã sao chép liên kết",
+  "speakerNotes": "Ghi chú của người thuyết trình",
+  "loadingPresentation": "Đang tải bài thuyết trình",
+  "presentationUnavailable": "Không có bài thuyết trình",
+  "slide": "Trang chiếu",
+  "downloadPresentation": "Tải xuống bài thuyết trình"
+}

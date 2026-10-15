@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Бөлісу URL мекенжайынан Tableau визуализацияларын ендіру."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau жұмыс кітабына немесе көрінісіне URL."
+      },
+      {
+        "title": "Биіктігі",
+        "description": "Визуализация биіктігі."
+      },
+      {
+        "title": "Ені",
+        "description": "Визуализация ені."
+      },
+      {
+        "title": "Құралдар тақтасы",
+        "description": "Құралдар тақтасының орны.",
+        "options": {
+          "top": "Жоғарыда",
+          "bottom": "Төменде",
+          "hidden": "Жасырын"
+        }
+      },
+      {
+        "title": "Қойындыларды жасыру",
+        "description": "Парақ қойындыларын жасыру."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Құрылғы орналасуы",
+        "description": "Көрсетілетін құрылғы орналасуы.",
+        "options": {
+          "desktop": "Компьютер",
+          "tablet": "Планшет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

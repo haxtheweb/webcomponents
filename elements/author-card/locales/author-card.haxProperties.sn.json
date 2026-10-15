@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kadhi remunyori",
+    "description": "Ratidza ruzivo rwemunyori nemufananidzo, nhoroondo pfupi yeupenyu uye malink emasocial media."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita remunyori",
+        "description": "Zita rizere remunyori."
+      },
+      {
+        "title": "Mufananidzo wepurofaira",
+        "description": "Mufananidzo wepurofaira yemunyori."
+      },
+      {
+        "title": "Zita rebasa",
+        "description": "Chinzvimbo kana basa remunyori."
+      },
+      {
+        "title": "Nhoroondo yeupenyu",
+        "description": "Nhoroondo pfupi yeupenyu hwemunyori."
+      },
+      {
+        "title": "URL yepurofaira",
+        "description": "Link kupeji yepurofaira yemunyori."
+      },
+      {
+        "title": "Link yesocial media",
+        "description": "Link kupurofaira yesocial media."
+      },
+      {
+        "title": "Zita rekushandisa resocial media",
+        "description": "Zita rekushandisa pasocial media (somuenzaniso @username)."
+      }
+    ]
+  }
+}

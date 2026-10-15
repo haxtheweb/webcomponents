@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau-visualisaties insluiten via een deel-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau-URL",
+        "description": "URL naar de Tableau-werkmap of -weergave."
+      },
+      {
+        "title": "Hoogte",
+        "description": "Hoogte van de visualisatie."
+      },
+      {
+        "title": "Breedte",
+        "description": "Breedte van de visualisatie."
+      },
+      {
+        "title": "Werkbalk",
+        "description": "Positie van de werkbalk.",
+        "options": {
+          "top": "Boven",
+          "bottom": "Onder",
+          "hidden": "Verborgen"
+        }
+      },
+      {
+        "title": "Tabbladen verbergen",
+        "description": "Bladtabs verbergen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Apparaatindeling",
+        "description": "Apparaatindeling om weer te geven.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Telefoon"
+        }
+      }
+    ]
+  }
+}

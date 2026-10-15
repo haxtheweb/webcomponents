@@ -1,0 +1,11 @@
+{
+  "event": "Esemény",
+  "when": "Mikor",
+  "where": "Hol",
+  "details": "Részletek",
+  "allDay": "Egész nap",
+  "repeats": "Ismétlődik",
+  "loadingCalendar": "Naptár betöltése",
+  "calendarUnavailable": "A naptár nem érhető el",
+  "noEvents": "Ebben a naptárban nincsenek események"
+}

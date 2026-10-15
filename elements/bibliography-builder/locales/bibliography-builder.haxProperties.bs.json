@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Izrada bibliografije",
+    "description": "Alat za izradu i upravljanje bibliografijama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citati",
+        "description": "Stavke citata u ovoj bibliografiji"
+      },
+      {
+        "title": "Kurs",
+        "description": "Identifikator ili naziv kursa za koji je ova bibliografija (OER Schema forCourse)."
+      }
+    ]
+  }
+}

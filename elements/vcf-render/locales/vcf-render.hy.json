@@ -1,0 +1,11 @@
+{
+  "name": "Անուն",
+  "position": "Պաշտոն",
+  "organization": "Կազմակերպություն",
+  "email": "Էլ. փոստ",
+  "phone": "Հեռախոս",
+  "address": "Հասցե",
+  "loadingContacts": "Կոնտակտները բեռնվում են",
+  "contactsUnavailable": "Կոնտակտներն անհասանելի են",
+  "noContacts": "Այս ֆայլում կոնտակտներ չկան"
+}

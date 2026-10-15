@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Tekijäkortti",
+    "description": "Näytä tekijän tiedot kuvan, esittelyn ja sosiaalisen median linkkien kanssa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekijän nimi",
+        "description": "Tekijän koko nimi."
+      },
+      {
+        "title": "Profiilikuva",
+        "description": "Tekijän profiilikuva."
+      },
+      {
+        "title": "Tehtävänimike",
+        "description": "Tekijän asema tai rooli."
+      },
+      {
+        "title": "Esittely",
+        "description": "Lyhyt tekijän esittely."
+      },
+      {
+        "title": "Profiilin URL",
+        "description": "Linkki tekijän profiilisivulle."
+      },
+      {
+        "title": "Somelinkki",
+        "description": "Linkki sosiaalisen median profiiliin."
+      },
+      {
+        "title": "Somekäyttäjänimi",
+        "description": "Sosiaalisen median käyttäjänimi (esimerkiksi @username)."
+      }
+    ]
+  }
+}

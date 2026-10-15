@@ -1,0 +1,15 @@
+{
+  "previousSlide": "ቀዳሚ ስላይድ",
+  "nextSlide": "ቀጣይ ስላይድ",
+  "viewAllSlides": "ሁሉንም ስላይዶች ይመልከቱ",
+  "viewOneSlide": "አንድ በአንድ ስላይድ ይመልከቱ",
+  "presentFullScreen": "በሙሉ ማያ ገጽ ያቅርቡ",
+  "exitFullScreen": "ከሙሉ ማያ ገጽ ውጣ",
+  "copyLinkToSlide": "የዚህን ስላይድ አገናኝ ቅዳ",
+  "linkCopied": "አገናኙ ተቀድቷል",
+  "speakerNotes": "የተናጋሪ ማስታወሻዎች",
+  "loadingPresentation": "አቀራረቡ በመጫን ላይ",
+  "presentationUnavailable": "አቀራረቡ አይገኝም",
+  "slide": "ስላይድ",
+  "downloadPresentation": "አቀራረቡን አውርድ"
+}

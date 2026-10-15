@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Autora kartīte",
+    "description": "Rādīt informāciju par autoru ar fotoattēlu, biogrāfiju un sociālo tīklu saitēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Autora vārds",
+        "description": "Autora pilns vārds."
+      },
+      {
+        "title": "Profila attēls",
+        "description": "Autora profila fotoattēls."
+      },
+      {
+        "title": "Amata nosaukums",
+        "description": "Autora amats vai loma."
+      },
+      {
+        "title": "Biogrāfija",
+        "description": "Īsa autora biogrāfija."
+      },
+      {
+        "title": "Profila URL",
+        "description": "Saite uz autora profila lapu."
+      },
+      {
+        "title": "Sociālā tīkla saite",
+        "description": "Saite uz sociālo mediju profilu."
+      },
+      {
+        "title": "Sociālā tīkla lietotājvārds",
+        "description": "Lietotājvārds sociālajos medijos (piemēram, @username)."
+      }
+    ]
+  }
+}

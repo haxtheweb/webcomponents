@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Têkilî",
+    "description": "Kesên di pelê têkiliyan de wek kartên kesan, gotinan, tabloyek an lîsteyek nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pelê têkiliyan",
+        "description": "Pelê têkiliyan ê .vcf bar bike an hilbijêre. Kartên wê di gerokê de tên xwendin."
+      },
+      {
+        "title": "Nîşan bide wek",
+        "description": "Naveroka pelê çawa were pêşkêşkirin.",
+        "options": {
+          "cards": "Kartên kesan",
+          "quotes": "Gotin",
+          "table": "Tablo",
+          "list": "Lîste"
+        }
+      },
+      {
+        "title": "Sernav",
+        "description": "Li ser têkiliyan û wek binnivîsa tabloyê tê nîşandan."
+      }
+    ]
+  }
+}

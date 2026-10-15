@@ -1,0 +1,11 @@
+{
+  "event": "活动",
+  "when": "啥辰光",
+  "where": "啥地方",
+  "details": "详细",
+  "allDay": "一日天",
+  "repeats": "重复",
+  "loadingCalendar": "日历加载当中",
+  "calendarUnavailable": "日历用勿来",
+  "noEvents": "搿本日历里向呒没活动"
+}

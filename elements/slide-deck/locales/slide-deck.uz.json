@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Oldingi slayd",
+  "nextSlide": "Keyingi slayd",
+  "viewAllSlides": "Barcha slaydlarni ko‘rish",
+  "viewOneSlide": "Slaydlarni birma-bir ko‘rish",
+  "presentFullScreen": "To‘liq ekranda namoyish qilish",
+  "exitFullScreen": "To‘liq ekrandan chiqish",
+  "copyLinkToSlide": "Ushbu slayd havolasini nusxalash",
+  "linkCopied": "Havola nusxalandi",
+  "speakerNotes": "Ma’ruzachi qaydlari",
+  "loadingPresentation": "Taqdimot yuklanmoqda",
+  "presentationUnavailable": "Taqdimot mavjud emas",
+  "slide": "Slayd",
+  "downloadPresentation": "Taqdimotni yuklab olish"
+}

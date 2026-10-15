@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kalendár",
+    "description": "Zobrazí udalosti zo súboru kalendára ako karty s dátumom, časovú os, tabuľku alebo zoznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Súbor kalendára",
+        "description": "Nahrajte alebo vyberte súbor kalendára .ics. Jeho udalosti sa načítajú v prehliadači."
+      },
+      {
+        "title": "Zobraziť ako",
+        "description": "Ako prezentovať obsah súboru.",
+        "options": {
+          "cards": "Karty s dátumom",
+          "timeline": "Časová os",
+          "table": "Tabuľka",
+          "list": "Zoznam"
+        }
+      },
+      {
+        "title": "Nadpis",
+        "description": "Zobrazuje sa nad udalosťami a ako popis tabuľky. Predvolene sa použije vlastný názov kalendára."
+      }
+    ]
+  }
+}

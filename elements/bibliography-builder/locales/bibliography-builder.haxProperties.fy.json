@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografymakker",
+    "description": "In ark foar it oanmeitsjen en behearen fan bibliografyen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sitaasjes",
+        "description": "Sitaasje-items yn dizze bibliografy"
+      },
+      {
+        "title": "Kursus",
+        "description": "Identifikaasje of namme fan de kursus dêr't dizze bibliografy foar is (OER Schema forCourse)."
+      }
+    ]
+  }
+}

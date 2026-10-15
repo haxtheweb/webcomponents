@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Previous slide",
+  "nextSlide": "Next slide",
+  "viewAllSlides": "View all slides",
+  "viewOneSlide": "View one slide at a time",
+  "presentFullScreen": "Present full screen",
+  "exitFullScreen": "Exit full screen",
+  "copyLinkToSlide": "Copy link to this slide",
+  "linkCopied": "Link copied",
+  "speakerNotes": "Speaker notes",
+  "loadingPresentation": "Loading presentation",
+  "presentationUnavailable": "Presentation unavailable",
+  "slide": "Slide",
+  "downloadPresentation": "Download presentation"
+}

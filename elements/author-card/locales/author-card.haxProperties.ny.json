@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Khadi la wolemba",
+    "description": "Onetsani zambiri za wolemba ndi chithunzi, mbiri yachidule ndi maulalo a malo ochezera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dzina la wolemba",
+        "description": "Dzina lonse la wolemba."
+      },
+      {
+        "title": "Chithunzi cha mbiri",
+        "description": "Chithunzi cha mbiri ya wolemba."
+      },
+      {
+        "title": "Udindo wa ntchito",
+        "description": "Udindo kapena ntchito ya wolemba."
+      },
+      {
+        "title": "Mbiri yachidule",
+        "description": "Mbiri yachidule ya wolemba."
+      },
+      {
+        "title": "URL ya mbiri",
+        "description": "Ulalo wopita ku tsamba la mbiri ya wolemba."
+      },
+      {
+        "title": "Ulalo wa malo ochezera",
+        "description": "Ulalo wopita ku mbiri ya pa malo ochezera."
+      },
+      {
+        "title": "Dzina la pa malo ochezera",
+        "description": "Dzina logwiritsa ntchito pa malo ochezera (mwachitsanzo @username)."
+      }
+    ]
+  }
+}

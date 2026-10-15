@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Karta nivîskar",
+    "description": "Agahiyên nivîskar bi wêne, jînenîgarî û girêdanên civakî nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navê nivîskar",
+        "description": "Navê tevahî yê nivîskar."
+      },
+      {
+        "title": "Wêneyê profîlê",
+        "description": "Wêneyê profîla nivîskar."
+      },
+      {
+        "title": "Sernavê kar",
+        "description": "Pozîsyon an rola nivîskar."
+      },
+      {
+        "title": "Jînenîgarî",
+        "description": "Jînenîgariya kurt a nivîskar."
+      },
+      {
+        "title": "URL ya profîlê",
+        "description": "Girêdana rûpela profîla nivîskar."
+      },
+      {
+        "title": "Girêdana civakî",
+        "description": "Girêdana profîleke medyaya civakî."
+      },
+      {
+        "title": "Navê bikarhêner ê civakî",
+        "description": "Navê bikarhêner li medyaya civakî (bo nimûne @username)."
+      }
+    ]
+  }
+}

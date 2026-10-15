@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Slaidu kopa",
+    "description": "Prezentēt importētu PowerPoint prezentāciju slaidu pa slaidam ar runātāja piezīmēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kopas manifests",
+        "description": "Ievelciet .pptx failu, un tas tiks automātiski pārveidots par slaidu kopu. Laukā tiek iestatīts iegūtā deck.json faila ceļš."
+      },
+      {
+        "title": "Kopas ID",
+        "description": "Nepieciešams tikai tad, ja lapā ir vairāk nekā viena kopa, lai slaidu saites paliktu atšķirīgas"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Atļaut lejupielādi",
+        "description": "Rādīt atskaņotāja vadīklās pogu oriģinālā PowerPoint faila lejupielādei"
+      }
+    ]
+  }
+}

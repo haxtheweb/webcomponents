@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Əvvəlki slayd",
+  "nextSlide": "Növbəti slayd",
+  "viewAllSlides": "Bütün slaydlara baxın",
+  "viewOneSlide": "Slaydlara bir-bir baxın",
+  "presentFullScreen": "Tam ekranda təqdim edin",
+  "exitFullScreen": "Tam ekrandan çıxın",
+  "copyLinkToSlide": "Bu slaydın keçidini kopyalayın",
+  "linkCopied": "Keçid kopyalandı",
+  "speakerNotes": "Məruzəçi qeydləri",
+  "loadingPresentation": "Təqdimat yüklənir",
+  "presentationUnavailable": "Təqdimat əlçatan deyil",
+  "slide": "Slayd",
+  "downloadPresentation": "Təqdimatı endirin"
+}

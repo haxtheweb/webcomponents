@@ -1,0 +1,15 @@
+{
+  "previousSlide": "अघिल्लो स्लाइड",
+  "nextSlide": "अर्को स्लाइड",
+  "viewAllSlides": "सबै स्लाइडहरू हेर्नुहोस्",
+  "viewOneSlide": "एक पटकमा एउटा स्लाइड हेर्नुहोस्",
+  "presentFullScreen": "पूर्ण स्क्रिनमा प्रस्तुत गर्नुहोस्",
+  "exitFullScreen": "पूर्ण स्क्रिनबाट बाहिरिनुहोस्",
+  "copyLinkToSlide": "यो स्लाइडको लिङ्क प्रतिलिपि गर्नुहोस्",
+  "linkCopied": "लिङ्क प्रतिलिपि गरियो",
+  "speakerNotes": "वक्ताका टिप्पणीहरू",
+  "loadingPresentation": "प्रस्तुति लोड हुँदैछ",
+  "presentationUnavailable": "प्रस्तुति उपलब्ध छैन",
+  "slide": "स्लाइड",
+  "downloadPresentation": "प्रस्तुति डाउनलोड गर्नुहोस्"
+}

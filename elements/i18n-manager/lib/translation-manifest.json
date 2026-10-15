@@ -1,8 +1,8 @@
 {
   "_meta": {
     "elementsScanned": 227,
-    "elementsWithTranslations": 44,
-    "translationFilesFound": 1744,
+    "elementsWithTranslations": 42,
+    "translationFilesFound": 3088,
     "languagesSupported": [
       "af",
       "am",
@@ -35,7 +35,6 @@
       "gu",
       "ha",
       "haw",
-      "haxProperties",
       "he",
       "hi",
       "hr",
@@ -141,43 +140,109 @@
       "te",
       "yo"
     ],
-    "ai-usage-license.ar": [
-      "haxProperties"
-    ],
-    "ai-usage-license": [
+    "ai-usage-license.haxProperties": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
-    ],
-    "ai-usage-license.bn": [
-      "haxProperties"
-    ],
-    "ai-usage-license.es": [
-      "haxProperties"
-    ],
-    "ai-usage-license.fr": [
-      "haxProperties"
-    ],
-    "ai-usage-license.hi": [
-      "haxProperties"
-    ],
-    "ai-usage-license.ja": [
-      "haxProperties"
-    ],
-    "ai-usage-license.pt": [
-      "haxProperties"
-    ],
-    "ai-usage-license.ru": [
-      "haxProperties"
-    ],
-    "ai-usage-license.zh": [
-      "haxProperties"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "app-hax": [
       "af",
@@ -285,120 +350,632 @@
       "zh_CN",
       "zu"
     ],
-    "author-card.ar": [
-      "haxProperties"
-    ],
     "author-card": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
       "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "author-card.bn": [
-      "haxProperties"
-    ],
-    "author-card.es": [
-      "haxProperties"
-    ],
-    "author-card.fr": [
-      "haxProperties"
-    ],
-    "author-card.hi": [
-      "haxProperties"
-    ],
-    "author-card.ja": [
-      "haxProperties"
-    ],
-    "author-card.pt": [
-      "haxProperties"
-    ],
-    "author-card.ru": [
-      "haxProperties"
-    ],
-    "author-card.zh": [
-      "haxProperties"
-    ],
-    "bibliography-builder.ar": [
-      "haxProperties"
+    "author-card.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "bibliography-builder": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "bibliography-builder.bn": [
-      "haxProperties"
-    ],
-    "bibliography-builder.es": [
-      "haxProperties"
-    ],
-    "bibliography-builder.fr": [
-      "haxProperties"
-    ],
-    "bibliography-builder.hi": [
-      "haxProperties"
-    ],
-    "bibliography-builder.ja": [
-      "haxProperties"
-    ],
-    "bibliography-builder.pt": [
-      "haxProperties"
-    ],
-    "bibliography-builder.ru": [
-      "haxProperties"
-    ],
-    "bibliography-builder.zh": [
-      "haxProperties"
-    ],
-    "career-timeline.ar": [
-      "haxProperties"
+    "bibliography-builder.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "career-timeline": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "career-timeline.bn": [
-      "haxProperties"
-    ],
-    "career-timeline.es": [
-      "haxProperties"
-    ],
-    "career-timeline.fr": [
-      "haxProperties"
-    ],
-    "career-timeline.hi": [
-      "haxProperties"
-    ],
-    "career-timeline.ja": [
-      "haxProperties"
-    ],
-    "career-timeline.pt": [
-      "haxProperties"
-    ],
-    "career-timeline.ru": [
-      "haxProperties"
-    ],
-    "career-timeline.zh": [
-      "haxProperties"
+    "career-timeline.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "clean-one": [
       "af",
@@ -511,79 +1088,11 @@
     "ddd-card": [
       "es"
     ],
-    "demo-snippet.ar": [
-      "haxProperties"
-    ],
-    "demo-snippet": [
-      "ar",
-      "bn",
-      "es",
-      "fr",
-      "hi",
-      "ja",
-      "pt",
-      "ru",
-      "zh"
-    ],
-    "demo-snippet.bn": [
-      "haxProperties"
-    ],
-    "demo-snippet.es": [
-      "haxProperties"
-    ],
-    "demo-snippet.fr": [
-      "haxProperties"
-    ],
-    "demo-snippet.hi": [
-      "haxProperties"
-    ],
-    "demo-snippet.ja": [
-      "haxProperties"
-    ],
-    "demo-snippet.pt": [
-      "haxProperties"
-    ],
-    "demo-snippet.ru": [
-      "haxProperties"
-    ],
-    "demo-snippet.zh": [
-      "haxProperties"
-    ],
-    "example-hax-element.ar": [
-      "haxProperties"
-    ],
     "example-hax-element": [
       "ar",
       "es",
       "hi",
       "zh"
-    ],
-    "example-hax-element.es": [
-      "haxProperties"
-    ],
-    "example-hax-element.hi": [
-      "haxProperties"
-    ],
-    "example-hax-element.zh": [
-      "haxProperties"
-    ],
-    "example-haxcms-theme.ar": [
-      "haxProperties"
-    ],
-    "example-haxcms-theme": [
-      "ar",
-      "es",
-      "hi",
-      "zh"
-    ],
-    "example-haxcms-theme.es": [
-      "haxProperties"
-    ],
-    "example-haxcms-theme.hi": [
-      "haxProperties"
-    ],
-    "example-haxcms-theme.zh": [
-      "haxProperties"
     ],
     "flash-card-answer-box": [
       "es",
@@ -910,43 +1419,214 @@
       "zh",
       "zu"
     ],
-    "ics-render.ar": [
-      "haxProperties"
-    ],
     "ics-render": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "ics-render.bn": [
-      "haxProperties"
-    ],
-    "ics-render.es": [
-      "haxProperties"
-    ],
-    "ics-render.fr": [
-      "haxProperties"
-    ],
-    "ics-render.hi": [
-      "haxProperties"
-    ],
-    "ics-render.ja": [
-      "haxProperties"
-    ],
-    "ics-render.pt": [
-      "haxProperties"
-    ],
-    "ics-render.ru": [
-      "haxProperties"
-    ],
-    "ics-render.zh": [
-      "haxProperties"
+    "ics-render.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "image-compare-slider": [
       "es"
@@ -960,43 +1640,214 @@
     "map-menu": [
       "es"
     ],
-    "media-playlist.ar": [
-      "haxProperties"
-    ],
     "media-playlist": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "media-playlist.bn": [
-      "haxProperties"
-    ],
-    "media-playlist.es": [
-      "haxProperties"
-    ],
-    "media-playlist.fr": [
-      "haxProperties"
-    ],
-    "media-playlist.hi": [
-      "haxProperties"
-    ],
-    "media-playlist.ja": [
-      "haxProperties"
-    ],
-    "media-playlist.pt": [
-      "haxProperties"
-    ],
-    "media-playlist.ru": [
-      "haxProperties"
-    ],
-    "media-playlist.zh": [
-      "haxProperties"
+    "media-playlist.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "meme-maker.haxProperties": [
       "ar",
@@ -1156,9 +2007,6 @@
       "ru",
       "zh"
     ],
-    "screen-recorder.af": [
-      "haxProperties"
-    ],
     "screen-recorder": [
       "af",
       "am",
@@ -1263,309 +2111,6 @@
       "yo",
       "zh",
       "zu"
-    ],
-    "screen-recorder.am": [
-      "haxProperties"
-    ],
-    "screen-recorder.ar": [
-      "haxProperties"
-    ],
-    "screen-recorder.az": [
-      "haxProperties"
-    ],
-    "screen-recorder.be": [
-      "haxProperties"
-    ],
-    "screen-recorder.bg": [
-      "haxProperties"
-    ],
-    "screen-recorder.bn": [
-      "haxProperties"
-    ],
-    "screen-recorder.bs": [
-      "haxProperties"
-    ],
-    "screen-recorder.ca": [
-      "haxProperties"
-    ],
-    "screen-recorder.co": [
-      "haxProperties"
-    ],
-    "screen-recorder.cs": [
-      "haxProperties"
-    ],
-    "screen-recorder.cy": [
-      "haxProperties"
-    ],
-    "screen-recorder.da": [
-      "haxProperties"
-    ],
-    "screen-recorder.de": [
-      "haxProperties"
-    ],
-    "screen-recorder.el": [
-      "haxProperties"
-    ],
-    "screen-recorder.eo": [
-      "haxProperties"
-    ],
-    "screen-recorder.es": [
-      "haxProperties"
-    ],
-    "screen-recorder.et": [
-      "haxProperties"
-    ],
-    "screen-recorder.eu": [
-      "haxProperties"
-    ],
-    "screen-recorder.fa": [
-      "haxProperties"
-    ],
-    "screen-recorder.fi": [
-      "haxProperties"
-    ],
-    "screen-recorder.fo": [
-      "haxProperties"
-    ],
-    "screen-recorder.fr": [
-      "haxProperties"
-    ],
-    "screen-recorder.fy": [
-      "haxProperties"
-    ],
-    "screen-recorder.ga": [
-      "haxProperties"
-    ],
-    "screen-recorder.gl": [
-      "haxProperties"
-    ],
-    "screen-recorder.gn": [
-      "haxProperties"
-    ],
-    "screen-recorder.gu": [
-      "haxProperties"
-    ],
-    "screen-recorder.ha": [
-      "haxProperties"
-    ],
-    "screen-recorder.haw": [
-      "haxProperties"
-    ],
-    "screen-recorder.he": [
-      "haxProperties"
-    ],
-    "screen-recorder.hi": [
-      "haxProperties"
-    ],
-    "screen-recorder.hr": [
-      "haxProperties"
-    ],
-    "screen-recorder.hu": [
-      "haxProperties"
-    ],
-    "screen-recorder.hy": [
-      "haxProperties"
-    ],
-    "screen-recorder.id": [
-      "haxProperties"
-    ],
-    "screen-recorder.ig": [
-      "haxProperties"
-    ],
-    "screen-recorder.is": [
-      "haxProperties"
-    ],
-    "screen-recorder.it": [
-      "haxProperties"
-    ],
-    "screen-recorder.ja": [
-      "haxProperties"
-    ],
-    "screen-recorder.jv": [
-      "haxProperties"
-    ],
-    "screen-recorder.ka": [
-      "haxProperties"
-    ],
-    "screen-recorder.kk": [
-      "haxProperties"
-    ],
-    "screen-recorder.km": [
-      "haxProperties"
-    ],
-    "screen-recorder.kn": [
-      "haxProperties"
-    ],
-    "screen-recorder.ko": [
-      "haxProperties"
-    ],
-    "screen-recorder.ku": [
-      "haxProperties"
-    ],
-    "screen-recorder.ky": [
-      "haxProperties"
-    ],
-    "screen-recorder.lb": [
-      "haxProperties"
-    ],
-    "screen-recorder.lo": [
-      "haxProperties"
-    ],
-    "screen-recorder.lt": [
-      "haxProperties"
-    ],
-    "screen-recorder.lv": [
-      "haxProperties"
-    ],
-    "screen-recorder.mi": [
-      "haxProperties"
-    ],
-    "screen-recorder.mk": [
-      "haxProperties"
-    ],
-    "screen-recorder.ml": [
-      "haxProperties"
-    ],
-    "screen-recorder.mn": [
-      "haxProperties"
-    ],
-    "screen-recorder.mr": [
-      "haxProperties"
-    ],
-    "screen-recorder.ms": [
-      "haxProperties"
-    ],
-    "screen-recorder.mt": [
-      "haxProperties"
-    ],
-    "screen-recorder.my": [
-      "haxProperties"
-    ],
-    "screen-recorder.nb": [
-      "haxProperties"
-    ],
-    "screen-recorder.ne": [
-      "haxProperties"
-    ],
-    "screen-recorder.nl": [
-      "haxProperties"
-    ],
-    "screen-recorder.no": [
-      "haxProperties"
-    ],
-    "screen-recorder.ny": [
-      "haxProperties"
-    ],
-    "screen-recorder.om": [
-      "haxProperties"
-    ],
-    "screen-recorder.pa": [
-      "haxProperties"
-    ],
-    "screen-recorder.pl": [
-      "haxProperties"
-    ],
-    "screen-recorder.pnb": [
-      "haxProperties"
-    ],
-    "screen-recorder.ps": [
-      "haxProperties"
-    ],
-    "screen-recorder.pt": [
-      "haxProperties"
-    ],
-    "screen-recorder.qu": [
-      "haxProperties"
-    ],
-    "screen-recorder.ro": [
-      "haxProperties"
-    ],
-    "screen-recorder.ru": [
-      "haxProperties"
-    ],
-    "screen-recorder.sd": [
-      "haxProperties"
-    ],
-    "screen-recorder.si": [
-      "haxProperties"
-    ],
-    "screen-recorder.sk": [
-      "haxProperties"
-    ],
-    "screen-recorder.sl": [
-      "haxProperties"
-    ],
-    "screen-recorder.sn": [
-      "haxProperties"
-    ],
-    "screen-recorder.so": [
-      "haxProperties"
-    ],
-    "screen-recorder.sq": [
-      "haxProperties"
-    ],
-    "screen-recorder.sr": [
-      "haxProperties"
-    ],
-    "screen-recorder.sv": [
-      "haxProperties"
-    ],
-    "screen-recorder.sw": [
-      "haxProperties"
-    ],
-    "screen-recorder.ta": [
-      "haxProperties"
-    ],
-    "screen-recorder.te": [
-      "haxProperties"
-    ],
-    "screen-recorder.tg": [
-      "haxProperties"
-    ],
-    "screen-recorder.th": [
-      "haxProperties"
-    ],
-    "screen-recorder.tk": [
-      "haxProperties"
-    ],
-    "screen-recorder.tl": [
-      "haxProperties"
-    ],
-    "screen-recorder.tr": [
-      "haxProperties"
-    ],
-    "screen-recorder.tt": [
-      "haxProperties"
-    ],
-    "screen-recorder.uk": [
-      "haxProperties"
-    ],
-    "screen-recorder.ur": [
-      "haxProperties"
-    ],
-    "screen-recorder.uz": [
-      "haxProperties"
-    ],
-    "screen-recorder.vi": [
-      "haxProperties"
-    ],
-    "screen-recorder.wuu": [
-      "haxProperties"
-    ],
-    "screen-recorder.xh": [
-      "haxProperties"
-    ],
-    "screen-recorder.yi": [
-      "haxProperties"
-    ],
-    "screen-recorder.yo": [
-      "haxProperties"
-    ],
-    "screen-recorder.zh": [
-      "haxProperties"
-    ],
-    "screen-recorder.zu": [
-      "haxProperties"
     ],
     "scroll-button": [
       "es"
@@ -1796,43 +2341,214 @@
       "ru",
       "zh"
     ],
-    "slide-deck.ar": [
-      "haxProperties"
-    ],
     "slide-deck": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "slide-deck.bn": [
-      "haxProperties"
-    ],
-    "slide-deck.es": [
-      "haxProperties"
-    ],
-    "slide-deck.fr": [
-      "haxProperties"
-    ],
-    "slide-deck.hi": [
-      "haxProperties"
-    ],
-    "slide-deck.ja": [
-      "haxProperties"
-    ],
-    "slide-deck.pt": [
-      "haxProperties"
-    ],
-    "slide-deck.ru": [
-      "haxProperties"
-    ],
-    "slide-deck.zh": [
-      "haxProperties"
+    "slide-deck.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "sorting-question": [
       "es",
@@ -2049,43 +2765,109 @@
       "zh",
       "zu"
     ],
-    "tableau-embed.ar": [
-      "haxProperties"
-    ],
-    "tableau-embed": [
+    "tableau-embed.haxProperties": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
-    ],
-    "tableau-embed.bn": [
-      "haxProperties"
-    ],
-    "tableau-embed.es": [
-      "haxProperties"
-    ],
-    "tableau-embed.fr": [
-      "haxProperties"
-    ],
-    "tableau-embed.hi": [
-      "haxProperties"
-    ],
-    "tableau-embed.ja": [
-      "haxProperties"
-    ],
-    "tableau-embed.pt": [
-      "haxProperties"
-    ],
-    "tableau-embed.ru": [
-      "haxProperties"
-    ],
-    "tableau-embed.zh": [
-      "haxProperties"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "twitter-embed.haxProperties": [
       "es"
@@ -2093,43 +2875,214 @@
     "user-action.haxProperties": [
       "es"
     ],
-    "vcf-render.ar": [
-      "haxProperties"
-    ],
     "vcf-render": [
+      "af",
+      "am",
       "ar",
+      "az",
+      "be",
+      "bg",
       "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "en",
+      "eo",
       "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
       "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
       "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
       "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
       "pt",
+      "qu",
+      "ro",
       "ru",
-      "zh"
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
-    "vcf-render.bn": [
-      "haxProperties"
-    ],
-    "vcf-render.es": [
-      "haxProperties"
-    ],
-    "vcf-render.fr": [
-      "haxProperties"
-    ],
-    "vcf-render.hi": [
-      "haxProperties"
-    ],
-    "vcf-render.ja": [
-      "haxProperties"
-    ],
-    "vcf-render.pt": [
-      "haxProperties"
-    ],
-    "vcf-render.ru": [
-      "haxProperties"
-    ],
-    "vcf-render.zh": [
-      "haxProperties"
+    "vcf-render.haxProperties": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bg",
+      "bn",
+      "bs",
+      "ca",
+      "co",
+      "cs",
+      "cy",
+      "da",
+      "de",
+      "el",
+      "eo",
+      "es",
+      "et",
+      "eu",
+      "fa",
+      "fi",
+      "fo",
+      "fr",
+      "fy",
+      "ga",
+      "gl",
+      "gn",
+      "gu",
+      "ha",
+      "haw",
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "hy",
+      "id",
+      "ig",
+      "is",
+      "it",
+      "ja",
+      "jv",
+      "ka",
+      "kk",
+      "km",
+      "kn",
+      "ko",
+      "ku",
+      "ky",
+      "lb",
+      "lo",
+      "lt",
+      "lv",
+      "mi",
+      "mk",
+      "ml",
+      "mn",
+      "mr",
+      "ms",
+      "mt",
+      "my",
+      "nb",
+      "ne",
+      "nl",
+      "no",
+      "ny",
+      "om",
+      "pa",
+      "pl",
+      "pnb",
+      "ps",
+      "pt",
+      "qu",
+      "ro",
+      "ru",
+      "sd",
+      "si",
+      "sk",
+      "sl",
+      "sn",
+      "so",
+      "sq",
+      "sr",
+      "sv",
+      "sw",
+      "ta",
+      "te",
+      "tg",
+      "th",
+      "tk",
+      "tl",
+      "tr",
+      "tt",
+      "uk",
+      "ur",
+      "uz",
+      "vi",
+      "wuu",
+      "xh",
+      "yi",
+      "yo",
+      "zh",
+      "zu"
     ],
     "video-player": [
       "af",

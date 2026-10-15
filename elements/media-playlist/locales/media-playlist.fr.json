@@ -1,3 +1,6 @@
 {
-    "title": "titre"
+  "playlist": "Playlist",
+  "play": "Lire",
+  "item": "Élément",
+  "editModeLabel": "Mode d’édition de la playlist multimédia"
 }

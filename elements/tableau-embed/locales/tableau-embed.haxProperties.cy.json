@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Mewnosod delweddiadau Tableau o URL rhannu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL i'r llyfr gwaith neu'r olwg Tableau."
+      },
+      {
+        "title": "Uchder",
+        "description": "Uchder y delweddiad."
+      },
+      {
+        "title": "Lled",
+        "description": "Lled y delweddiad."
+      },
+      {
+        "title": "Bar offer",
+        "description": "Safle'r bar offer.",
+        "options": {
+          "top": "Brig",
+          "bottom": "Gwaelod",
+          "hidden": "Cudd"
+        }
+      },
+      {
+        "title": "Cuddio tabiau",
+        "description": "Cuddio tabiau'r taflenni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cynllun dyfais",
+        "description": "Y cynllun dyfais i'w ddangos.",
+        "options": {
+          "desktop": "Bwrdd gwaith",
+          "tablet": "Llechen",
+          "phone": "Ffôn"
+        }
+      }
+    ]
+  }
+}

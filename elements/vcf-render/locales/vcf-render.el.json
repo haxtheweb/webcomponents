@@ -1,0 +1,11 @@
+{
+  "name": "Όνομα",
+  "position": "Θέση",
+  "organization": "Οργανισμός",
+  "email": "Email",
+  "phone": "Τηλέφωνο",
+  "address": "Διεύθυνση",
+  "loadingContacts": "Φόρτωση επαφών",
+  "contactsUnavailable": "Οι επαφές δεν είναι διαθέσιμες",
+  "noContacts": "Δεν υπάρχουν επαφές σε αυτό το αρχείο"
+}

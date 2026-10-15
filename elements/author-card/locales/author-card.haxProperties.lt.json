@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Autoriaus kortelė",
+    "description": "Rodyti autoriaus informaciją su nuotrauka, biografija ir socialinių tinklų nuorodomis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Autoriaus vardas",
+        "description": "Visas autoriaus vardas ir pavardė."
+      },
+      {
+        "title": "Profilio nuotrauka",
+        "description": "Autoriaus profilio nuotrauka."
+      },
+      {
+        "title": "Pareigos",
+        "description": "Autoriaus pareigos arba vaidmuo."
+      },
+      {
+        "title": "Biografija",
+        "description": "Trumpa autoriaus biografija."
+      },
+      {
+        "title": "Profilio URL",
+        "description": "Nuoroda į autoriaus profilio puslapį."
+      },
+      {
+        "title": "Socialinio tinklo nuoroda",
+        "description": "Nuoroda į socialinio tinklo profilį."
+      },
+      {
+        "title": "Socialinio tinklo vardas",
+        "description": "Naudotojo vardas socialiniame tinkle (pavyzdžiui, @username)."
+      }
+    ]
+  }
+}

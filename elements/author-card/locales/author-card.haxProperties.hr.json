@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kartica autora",
+    "description": "Prikaz podataka o autoru s fotografijom, kratkom biografijom i poveznicama na društvene mreže."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ime autora",
+        "description": "Puno ime autora."
+      },
+      {
+        "title": "Profilna slika",
+        "description": "Profilna fotografija autora."
+      },
+      {
+        "title": "Radno mjesto",
+        "description": "Položaj ili uloga autora."
+      },
+      {
+        "title": "Biografija",
+        "description": "Kratka biografija autora."
+      },
+      {
+        "title": "URL profila",
+        "description": "Poveznica na stranicu profila autora."
+      },
+      {
+        "title": "Poveznica na društvenu mrežu",
+        "description": "Poveznica na profil na društvenoj mreži."
+      },
+      {
+        "title": "Korisničko ime na društvenoj mreži",
+        "description": "Korisničko ime na društvenoj mreži (na primjer @username)."
+      }
+    ]
+  }
+}

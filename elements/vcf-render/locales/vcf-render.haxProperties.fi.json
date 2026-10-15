@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yhteystiedot",
+    "description": "Näytä yhteystietotiedoston henkilöt henkilökortteina, lainauksina, taulukkona tai luettelona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yhteystietotiedosto",
+        "description": "Lataa tai valitse .vcf-yhteystietotiedosto. Sen kortit luetaan selaimessa."
+      },
+      {
+        "title": "Näytä muodossa",
+        "description": "Miten tiedoston sisältö esitetään.",
+        "options": {
+          "cards": "Henkilökortit",
+          "quotes": "Lainaukset",
+          "table": "Taulukko",
+          "list": "Luettelo"
+        }
+      },
+      {
+        "title": "Otsikko",
+        "description": "Näytetään yhteystietojen yläpuolella ja taulukon kuvatekstinä."
+      }
+    ]
+  }
+}

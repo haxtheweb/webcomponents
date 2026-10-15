@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Qillqaqpa tarjetan",
+    "description": "Qillqaqmanta willakuyta rikuchiy, fotowan, kawsayninwan, llika t'inkikunawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qillqaqpa sutin",
+        "description": "Qillqaqpa hunt'asqa sutin."
+      },
+      {
+        "title": "Perfil siq'i",
+        "description": "Qillqaqpa perfil fotón."
+      },
+      {
+        "title": "Llamkay kamachiy",
+        "description": "Qillqaqpa llamkaynin utaq ruwaynin."
+      },
+      {
+        "title": "Kawsay willakuy",
+        "description": "Qillqaqpa pisi kawsay willakuynin."
+      },
+      {
+        "title": "Perfilpa URL",
+        "description": "Qillqaqpa perfil p'anqanman t'inki."
+      },
+      {
+        "title": "Llika t'inki",
+        "description": "Llika perfilman t'inki."
+      },
+      {
+        "title": "Llikapi sutin",
+        "description": "Llikapi riqsichiq suti (kayhina @username)."
+      }
+    ]
+  }
+}

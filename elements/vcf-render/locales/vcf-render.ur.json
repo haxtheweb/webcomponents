@@ -1,0 +1,11 @@
+{
+  "name": "نام",
+  "position": "عہدہ",
+  "organization": "ادارہ",
+  "email": "ای میل",
+  "phone": "فون",
+  "address": "پتہ",
+  "loadingContacts": "رابطے لوڈ ہو رہے ہیں",
+  "contactsUnavailable": "رابطے دستیاب نہیں",
+  "noContacts": "اس فائل میں کوئی رابطہ نہیں"
+}

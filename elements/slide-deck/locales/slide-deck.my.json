@@ -1,0 +1,15 @@
+{
+  "previousSlide": "ယခင် ဆလိုက်",
+  "nextSlide": "နောက် ဆလိုက်",
+  "viewAllSlides": "ဆလိုက်အားလုံးကို ကြည့်ရန်",
+  "viewOneSlide": "တစ်ကြိမ်လျှင် ဆလိုက်တစ်ခုစီ ကြည့်ရန်",
+  "presentFullScreen": "မျက်နှာပြင်အပြည့် တင်ဆက်ရန်",
+  "exitFullScreen": "မျက်နှာပြင်အပြည့်မှ ထွက်ရန်",
+  "copyLinkToSlide": "ဤဆလိုက်သို့ လင့်ခ်ကို ကူးယူရန်",
+  "linkCopied": "လင့်ခ် ကူးယူပြီး",
+  "speakerNotes": "ဟောပြောသူ မှတ်စုများ",
+  "loadingPresentation": "တင်ဆက်မှုကို ဖွင့်နေသည်",
+  "presentationUnavailable": "တင်ဆက်မှု မရရှိနိုင်ပါ",
+  "slide": "ဆလိုက်",
+  "downloadPresentation": "တင်ဆက်မှုကို ဒေါင်းလုဒ်လုပ်ရန်"
+}

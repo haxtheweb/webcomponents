@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Générateur de bibliographie",
+    "description": "Un outil pour créer et gérer des bibliographies"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citations",
+        "description": "Éléments de citation de cette bibliographie"
+      },
+      {
+        "title": "Cours",
+        "description": "Identifiant ou nom du cours auquel cette bibliographie est destinée (OER Schema forCourse)."
+      }
+    ]
+  }
+}

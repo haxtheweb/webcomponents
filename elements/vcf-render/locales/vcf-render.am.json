@@ -1,0 +1,11 @@
+{
+  "name": "ስም",
+  "position": "የሥራ መደብ",
+  "organization": "ድርጅት",
+  "email": "ኢሜይል",
+  "phone": "ስልክ",
+  "address": "አድራሻ",
+  "loadingContacts": "እውቂያዎች በመጫን ላይ",
+  "contactsUnavailable": "እውቂያዎች አይገኙም",
+  "noContacts": "በዚህ ፋይል ውስጥ ምንም እውቂያዎች የሉም"
+}

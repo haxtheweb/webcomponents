@@ -1,0 +1,11 @@
+{
+  "event": "Afspraak",
+  "when": "Wanneer",
+  "where": "Waar",
+  "details": "Details",
+  "allDay": "Hele dag",
+  "repeats": "Herhaalt",
+  "loadingCalendar": "Agenda laden",
+  "calendarUnavailable": "Agenda niet beschikbaar",
+  "noEvents": "Geen afspraken in deze agenda"
+}

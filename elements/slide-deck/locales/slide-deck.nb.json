@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Forrige lysbilde",
+  "nextSlide": "Neste lysbilde",
+  "viewAllSlides": "Vis alle lysbilder",
+  "viewOneSlide": "Vis ett lysbilde om gangen",
+  "presentFullScreen": "Presenter i fullskjerm",
+  "exitFullScreen": "Avslutt fullskjerm",
+  "copyLinkToSlide": "Kopier lenke til dette lysbildet",
+  "linkCopied": "Lenke kopiert",
+  "speakerNotes": "Talernotater",
+  "loadingPresentation": "Laster inn presentasjon",
+  "presentationUnavailable": "Presentasjonen er ikke tilgjengelig",
+  "slide": "Lysbilde",
+  "downloadPresentation": "Last ned presentasjon"
+}

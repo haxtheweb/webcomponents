@@ -1,0 +1,11 @@
+{
+  "name": "Vārds",
+  "position": "Amats",
+  "organization": "Organizācija",
+  "email": "E-pasts",
+  "phone": "Tālrunis",
+  "address": "Adrese",
+  "loadingContacts": "Ielādē kontaktus",
+  "contactsUnavailable": "Kontakti nav pieejami",
+  "noContacts": "Šajā failā nav kontaktu"
+}

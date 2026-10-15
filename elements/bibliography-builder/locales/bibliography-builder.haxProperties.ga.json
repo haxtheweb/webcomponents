@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tógálaí leabharliosta",
+    "description": "Uirlis chun leabharliostaí a chruthú agus a bhainistiú"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Luanna",
+        "description": "Míreanna lua sa leabharliosta seo"
+      },
+      {
+        "title": "Cúrsa",
+        "description": "Aitheantóir nó ainm an chúrsa a bhfuil an leabharliosta seo dó (OER Schema forCourse)."
+      }
+    ]
+  }
+}

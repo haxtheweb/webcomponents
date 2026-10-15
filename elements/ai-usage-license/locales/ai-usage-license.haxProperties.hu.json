@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "MI-használati licenc",
+    "description": "MI-használati licenc (AIUL) jelvény megjelenítése a munkájához"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Licenc",
+        "description": "A munkára vonatkozó MI-használati licenc szintje. Részletek: https://dmd-program.github.io/aiul/"
+      },
+      {
+        "title": "Médiamódosító",
+        "description": "Nem kötelező médiaterület-módosító. Megadja, milyen típusú médiára vonatkozik ez a licenc."
+      },
+      {
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: az MI-használati licenc referenciaoldalának URI-ja. Ha nincs megadva, automatikusan kitöltődik a licenchivatkozásból."
+      }
+    ]
+  }
+}

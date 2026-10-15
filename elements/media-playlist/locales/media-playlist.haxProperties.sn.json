@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rondedzero yemidhiya",
+    "description": "Rondedzero yekuridza inoratidza zviridzi zvevhidhiyo neodhiyo murongedzo wechiridzi nebhari yepadivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhamba yekutanga",
+        "description": "Nhamba yechinhu chekutanga nacho."
+      },
+      {
+        "title": "Kosi",
+        "description": "Kosi iyo rondedzero iyi yakagadzirirwa (chiziviso chekosi kana URL)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Medya oynatma listesi",
+    "description": "Video ve ses oynatıcılarını oynatıcı + kenar çubuğu düzeninde sunan bir oynatma listesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etkin dizin",
+        "description": "Başlangıçta etkin olacak öğenin dizini."
+      },
+      {
+        "title": "Ders",
+        "description": "Bu oynatma listesinin hazırlandığı ders (ders tanımlayıcısı veya URL)."
+      }
+    ]
+  }
+}

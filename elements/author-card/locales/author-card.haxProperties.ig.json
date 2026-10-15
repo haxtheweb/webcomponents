@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kaadị onye edemede",
+    "description": "Gosipụta ozi onye edemede nwere foto, akụkọ ndụ, na njikọ mgbasa ozi ọha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha onye edemede",
+        "description": "Aha zuru ezu nke onye edemede."
+      },
+      {
+        "title": "Foto profaịlụ",
+        "description": "Foto profaịlụ onye edemede."
+      },
+      {
+        "title": "Aha ọrụ",
+        "description": "Ọkwa ma ọ bụ ọrụ onye edemede."
+      },
+      {
+        "title": "Akụkọ ndụ",
+        "description": "Akụkọ ndụ dị mkpirikpi nke onye edemede."
+      },
+      {
+        "title": "URL profaịlụ",
+        "description": "Njikọ gaa na peeji profaịlụ onye edemede."
+      },
+      {
+        "title": "Njikọ mgbasa ozi ọha",
+        "description": "Njikọ gaa na profaịlụ mgbasa ozi ọha."
+      },
+      {
+        "title": "Aha njirimara mgbasa ozi ọha",
+        "description": "Aha njirimara na mgbasa ozi ọha (dịka ọmụmaatụ @username)."
+      }
+    ]
+  }
+}

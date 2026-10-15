@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wa makanema ndi mawu",
+    "description": "Mndandanda wosewera umene umaonetsa zosewerera makanema ndi mawu m'kapangidwe ka chosewerera ndi mbali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nambala yoyambira",
+        "description": "Nambala ya chinthu choyambira."
+      },
+      {
+        "title": "Maphunziro",
+        "description": "Maphunziro amene mndandanda uwu ndi wawo (chizindikiro cha maphunziro kapena URL)."
+      }
+    ]
+  }
+}

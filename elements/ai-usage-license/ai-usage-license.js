@@ -261,8 +261,24 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
    */
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       setupActiveElementForm: "haxsetupActiveElementForm",
     }
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `ai-usage-license.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   async haxsetupActiveElementForm(props) {

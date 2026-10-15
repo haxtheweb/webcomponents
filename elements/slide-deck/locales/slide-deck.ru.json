@@ -10,5 +10,6 @@
   "speakerNotes": "Заметки докладчика",
   "loadingPresentation": "Загрузка презентации",
   "presentationUnavailable": "Презентация недоступна",
-  "slide": "Слайд"
+  "slide": "Слайд",
+  "downloadPresentation": "Скачать презентацию"
 }

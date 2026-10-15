@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kāleka mea kākau",
+    "description": "Hōʻike i ka ʻike o ka mea kākau me ke kiʻi, ka moʻolelo pōkole, a me nā loulou pāpaho kaiaulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inoa o ka mea kākau",
+        "description": "Ka inoa piha o ka mea kākau."
+      },
+      {
+        "title": "Kiʻi moʻolako",
+        "description": "Ke kiʻi moʻolako o ka mea kākau."
+      },
+      {
+        "title": "Kūlana ʻoihana",
+        "description": "Ke kūlana a i ʻole ke kuleana o ka mea kākau."
+      },
+      {
+        "title": "Moʻolelo pōkole",
+        "description": "He moʻolelo pōkole o ka mea kākau."
+      },
+      {
+        "title": "URL moʻolako",
+        "description": "Loulou i ka ʻaoʻao moʻolako o ka mea kākau."
+      },
+      {
+        "title": "Loulou pāpaho kaiaulu",
+        "description": "Loulou i kekahi moʻolako pāpaho kaiaulu."
+      },
+      {
+        "title": "Inoa mea hoʻohana",
+        "description": "Inoa mea hoʻohana pāpaho kaiaulu (e laʻa me @username)."
+      }
+    ]
+  }
+}

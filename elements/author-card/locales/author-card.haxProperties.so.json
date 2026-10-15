@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kaarka qoraaga",
+    "description": "Muuji macluumaadka qoraaga oo leh sawir, taariikh nololeed kooban iyo xiriirada baraha bulshada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Magaca qoraaga",
+        "description": "Magaca buuxa ee qoraaga."
+      },
+      {
+        "title": "Sawirka astaanta",
+        "description": "Sawirka astaanta qoraaga."
+      },
+      {
+        "title": "Magaca shaqada",
+        "description": "Jagada ama doorka qoraaga."
+      },
+      {
+        "title": "Taariikh nololeed",
+        "description": "Taariikh nololeed kooban oo qoraaga ah."
+      },
+      {
+        "title": "URL-ka astaanta",
+        "description": "Xiriirka bogga astaanta qoraaga."
+      },
+      {
+        "title": "Xiriirka bulshada",
+        "description": "Xiriir u socda astaan ku taal baraha bulshada."
+      },
+      {
+        "title": "Magaca isticmaalaha bulshada",
+        "description": "Magaca isticmaalaha ee baraha bulshada (tusaale ahaan @username)."
+      }
+    ]
+  }
+}

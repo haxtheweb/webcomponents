@@ -1,0 +1,15 @@
+{
+  "previousSlide": "สไลด์ก่อนหน้า",
+  "nextSlide": "สไลด์ถัดไป",
+  "viewAllSlides": "ดูสไลด์ทั้งหมด",
+  "viewOneSlide": "ดูทีละสไลด์",
+  "presentFullScreen": "นำเสนอแบบเต็มหน้าจอ",
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ",
+  "copyLinkToSlide": "คัดลอกลิงก์ไปยังสไลด์นี้",
+  "linkCopied": "คัดลอกลิงก์แล้ว",
+  "speakerNotes": "บันทึกของผู้บรรยาย",
+  "loadingPresentation": "กำลังโหลดงานนำเสนอ",
+  "presentationUnavailable": "ไม่สามารถใช้งานนำเสนอได้",
+  "slide": "สไลด์",
+  "downloadPresentation": "ดาวน์โหลดงานนำเสนอ"
+}

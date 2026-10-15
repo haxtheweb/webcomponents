@@ -1,0 +1,11 @@
+{
+  "name": "ชื่อ",
+  "position": "ตำแหน่ง",
+  "organization": "องค์กร",
+  "email": "อีเมล",
+  "phone": "โทรศัพท์",
+  "address": "ที่อยู่",
+  "loadingContacts": "กำลังโหลดรายชื่อติดต่อ",
+  "contactsUnavailable": "ไม่สามารถใช้รายชื่อติดต่อได้",
+  "noContacts": "ไม่มีรายชื่อติดต่อในไฟล์นี้"
+}

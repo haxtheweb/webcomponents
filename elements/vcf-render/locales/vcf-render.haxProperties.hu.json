@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Névjegyek",
+    "description": "A névjegyfájlban szereplő személyek megjelenítése személykártyaként, idézetként, táblázatként vagy listaként."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Névjegyfájl",
+        "description": "Töltsön fel vagy válasszon egy .vcf névjegyfájlt. A kártyáit a böngésző olvassa be."
+      },
+      {
+        "title": "Megjelenítés módja",
+        "description": "Hogyan jelenjen meg a fájl tartalma.",
+        "options": {
+          "cards": "Személykártyák",
+          "quotes": "Idézetek",
+          "table": "Táblázat",
+          "list": "Lista"
+        }
+      },
+      {
+        "title": "Címsor",
+        "description": "A névjegyek felett és a táblázat feliratként jelenik meg."
+      }
+    ]
+  }
+}

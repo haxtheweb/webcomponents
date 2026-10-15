@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Përfshi vizualizime Tableau nga një URL ndarjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL e Tableau",
+        "description": "URL për librin e punës ose pamjen Tableau."
+      },
+      {
+        "title": "Lartësia",
+        "description": "Lartësia e vizualizimit."
+      },
+      {
+        "title": "Gjerësia",
+        "description": "Gjerësia e vizualizimit."
+      },
+      {
+        "title": "Shiriti i veglave",
+        "description": "Pozicioni i shiritit të veglave.",
+        "options": {
+          "top": "Lart",
+          "bottom": "Poshtë",
+          "hidden": "I fshehur"
+        }
+      },
+      {
+        "title": "Fshih skedat",
+        "description": "Fshih skedat e fletëve."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Paraqitja e pajisjes",
+        "description": "Paraqitja e pajisjes që do të shfaqet.",
+        "options": {
+          "desktop": "Kompjuter",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

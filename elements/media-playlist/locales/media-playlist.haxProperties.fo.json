@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Miðlaspælilisti",
+    "description": "Ein spælilisti, sum vísir video- og ljóðspælarar í einum spælara + síðubjálka sniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virkið innsetingartal",
+        "description": "Nummar á virkna lutinum at byrja við."
+      },
+      {
+        "title": "Skeið",
+        "description": "Skeiðið, sum hesin spælilisti er ætlaður til (eyðmerki ella URL hjá skeiðinum)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Diasor",
+    "description": "Importált PowerPoint-diasor bemutatása diánként, előadói jegyzetekkel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Diasor-jegyzék",
+        "description": "Húzzon ide egy .pptx fájlt, és az automatikusan diasorrá alakul. A mező a létrejött deck.json elérési útjára áll be."
+      },
+      {
+        "title": "Diasor azonosítója",
+        "description": "Csak akkor szükséges, ha egy oldalon több diasor is van, hogy a diahivatkozások egyediek maradjanak"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Letöltés engedélyezése",
+        "description": "Letöltés gomb megjelenítése az eredeti PowerPoint-fájlhoz a lejátszó vezérlőiben"
+      }
+    ]
+  }
+}

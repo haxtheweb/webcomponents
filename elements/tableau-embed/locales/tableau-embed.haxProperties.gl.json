@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Insire visualizacións de Tableau desde un URL para compartir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL de Tableau",
+        "description": "URL do libro de traballo ou da vista de Tableau."
+      },
+      {
+        "title": "Altura",
+        "description": "Altura da visualización."
+      },
+      {
+        "title": "Largura",
+        "description": "Largura da visualización."
+      },
+      {
+        "title": "Barra de ferramentas",
+        "description": "Posición da barra de ferramentas.",
+        "options": {
+          "top": "Arriba",
+          "bottom": "Abaixo",
+          "hidden": "Oculta"
+        }
+      },
+      {
+        "title": "Ocultar lapelas",
+        "description": "Ocultar as lapelas das follas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Deseño do dispositivo",
+        "description": "Deseño de dispositivo que se vai renderizar.",
+        "options": {
+          "desktop": "Escritorio",
+          "tablet": "Tableta",
+          "phone": "Teléfono"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Gertaera",
+  "when": "Noiz",
+  "where": "Non",
+  "details": "Xehetasunak",
+  "allDay": "Egun osoa",
+  "repeats": "Errepikatzen da",
+  "loadingCalendar": "Egutegia kargatzen",
+  "calendarUnavailable": "Egutegia ez dago erabilgarri",
+  "noEvents": "Ez dago gertaerarik egutegi honetan"
+}

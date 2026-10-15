@@ -1,0 +1,11 @@
+{
+  "name": "Navn",
+  "position": "Starv",
+  "organization": "Felagsskapur",
+  "email": "Teldupostur",
+  "phone": "Telefon",
+  "address": "Bústaður",
+  "loadingContacts": "Heintar sambond",
+  "contactsUnavailable": "Sambond eru ikki tøk",
+  "noContacts": "Eingi sambond í hesi fíluni"
+}

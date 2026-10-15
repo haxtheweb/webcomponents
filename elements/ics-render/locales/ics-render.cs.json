@@ -1,0 +1,11 @@
+{
+  "event": "Událost",
+  "when": "Kdy",
+  "where": "Kde",
+  "details": "Podrobnosti",
+  "allDay": "Celý den",
+  "repeats": "Opakuje se",
+  "loadingCalendar": "Načítání kalendáře",
+  "calendarUnavailable": "Kalendář není k dispozici",
+  "noEvents": "V tomto kalendáři nejsou žádné události"
+}

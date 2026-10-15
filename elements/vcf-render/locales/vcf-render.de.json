@@ -1,0 +1,11 @@
+{
+  "name": "Name",
+  "position": "Position",
+  "organization": "Organisation",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "address": "Adresse",
+  "loadingContacts": "Kontakte werden geladen",
+  "contactsUnavailable": "Kontakte nicht verfügbar",
+  "noContacts": "Keine Kontakte in dieser Datei"
+}

@@ -1,0 +1,11 @@
+{
+  "event": "일정",
+  "when": "일시",
+  "where": "장소",
+  "details": "세부 정보",
+  "allDay": "종일",
+  "repeats": "반복",
+  "loadingCalendar": "캘린더 불러오는 중",
+  "calendarUnavailable": "캘린더를 사용할 수 없음",
+  "noEvents": "이 캘린더에 일정이 없습니다"
+}

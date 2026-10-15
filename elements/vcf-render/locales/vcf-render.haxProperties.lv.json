@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kontakti",
+    "description": "Rādīt kontaktu faila personas kā personu kartītes, citātus, tabulu vai sarakstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kontaktu fails",
+        "description": "Augšupielādējiet vai izvēlieties .vcf kontaktu failu. Tā kartītes tiek nolasītas pārlūkprogrammā."
+      },
+      {
+        "title": "Rādīt kā",
+        "description": "Kā attēlot faila saturu.",
+        "options": {
+          "cards": "Personu kartītes",
+          "quotes": "Citāti",
+          "table": "Tabula",
+          "list": "Saraksts"
+        }
+      },
+      {
+        "title": "Virsraksts",
+        "description": "Tiek rādīts virs kontaktiem un kā tabulas paraksts."
+      }
+    ]
+  }
+}

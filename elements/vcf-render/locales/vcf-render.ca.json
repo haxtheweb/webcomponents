@@ -1,0 +1,11 @@
+{
+  "name": "Nom",
+  "position": "Càrrec",
+  "organization": "Organització",
+  "email": "Correu electrònic",
+  "phone": "Telèfon",
+  "address": "Adreça",
+  "loadingContacts": "S'estan carregant els contactes",
+  "contactsUnavailable": "Els contactes no estan disponibles",
+  "noContacts": "No hi ha cap contacte en aquest fitxer"
+}

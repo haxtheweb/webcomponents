@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Llamkay kawsaypa pacha sinrin",
+    "description": "Llamkay kawsaypa pacha sinrin, huñunakuykunawan, ruwaykunawan, huk willakuykunawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pacha sinripa sutin",
+        "description": "Llamkay kawsaypa pacha sinrinpaq suti (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

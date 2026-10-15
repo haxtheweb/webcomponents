@@ -1,0 +1,11 @@
+{
+  "event": "कार्यक्रम",
+  "when": "कहिले",
+  "where": "कहाँ",
+  "details": "विवरण",
+  "allDay": "दिनभर",
+  "repeats": "दोहोरिन्छ",
+  "loadingCalendar": "पात्रो लोड हुँदैछ",
+  "calendarUnavailable": "पात्रो उपलब्ध छैन",
+  "noEvents": "यो पात्रोमा कुनै कार्यक्रम छैन"
+}

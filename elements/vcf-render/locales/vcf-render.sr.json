@@ -1,0 +1,11 @@
+{
+  "name": "Име",
+  "position": "Позиција",
+  "organization": "Организација",
+  "email": "Имејл",
+  "phone": "Телефон",
+  "address": "Адреса",
+  "loadingContacts": "Учитавање контаката",
+  "contactsUnavailable": "Контакти нису доступни",
+  "noContacts": "Нема контаката у овој датотеци"
+}

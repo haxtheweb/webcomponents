@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Irodalomjegyzék-készítő",
+    "description": "Eszköz irodalomjegyzékek létrehozásához és kezeléséhez"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hivatkozások",
+        "description": "Az irodalomjegyzék hivatkozási tételei"
+      },
+      {
+        "title": "Kurzus",
+        "description": "Annak a kurzusnak az azonosítója vagy neve, amelyhez ez az irodalomjegyzék készült (OER Schema forCourse)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau-Visualiséierungen iwwer eng Deel-URL abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau-URL",
+        "description": "URL vum Tableau-Aarbechtsbuch oder vun der Usiicht."
+      },
+      {
+        "title": "Héicht",
+        "description": "Héicht vun der Visualiséierung."
+      },
+      {
+        "title": "Breet",
+        "description": "Breet vun der Visualiséierung."
+      },
+      {
+        "title": "Toolbar",
+        "description": "Positioun vun der Toolbar.",
+        "options": {
+          "top": "Uewen",
+          "bottom": "Ënnen",
+          "hidden": "Verstoppt"
+        }
+      },
+      {
+        "title": "Tabs verstoppen",
+        "description": "Blat-Tabs verstoppen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Apparatlayout",
+        "description": "Apparatlayout fir d'Duerstellung.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Handy"
+        }
+      }
+    ]
+  }
+}

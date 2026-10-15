@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Претходни слајд",
+  "nextSlide": "Следећи слајд",
+  "viewAllSlides": "Прикажи све слајдове",
+  "viewOneSlide": "Прикажи један по један слајд",
+  "presentFullScreen": "Прикажи преко целог екрана",
+  "exitFullScreen": "Изађи из приказа преко целог екрана",
+  "copyLinkToSlide": "Копирај везу до овог слајда",
+  "linkCopied": "Веза је копирана",
+  "speakerNotes": "Белешке говорника",
+  "loadingPresentation": "Учитавање презентације",
+  "presentationUnavailable": "Презентација није доступна",
+  "slide": "Слајд",
+  "downloadPresentation": "Преузми презентацију"
+}

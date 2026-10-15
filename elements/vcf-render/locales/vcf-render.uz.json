@@ -1,0 +1,11 @@
+{
+  "name": "Ism",
+  "position": "Lavozim",
+  "organization": "Tashkilot",
+  "email": "Elektron pochta",
+  "phone": "Telefon",
+  "address": "Manzil",
+  "loadingContacts": "Kontaktlar yuklanmoqda",
+  "contactsUnavailable": "Kontaktlar mavjud emas",
+  "noContacts": "Bu faylda kontaktlar yo‘q"
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Paylaşım URL-indən Tableau vizuallaşdırmalarını yerləşdirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL-i",
+        "description": "Tableau iş kitabına və ya görünüşünə URL."
+      },
+      {
+        "title": "Hündürlük",
+        "description": "Vizuallaşdırmanın hündürlüyü."
+      },
+      {
+        "title": "En",
+        "description": "Vizuallaşdırmanın eni."
+      },
+      {
+        "title": "Alətlər paneli",
+        "description": "Alətlər panelinin mövqeyi.",
+        "options": {
+          "top": "Yuxarı",
+          "bottom": "Aşağı",
+          "hidden": "Gizli"
+        }
+      },
+      {
+        "title": "Tabları gizlət",
+        "description": "Vərəq tablarını gizlədin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cihaz düzümü",
+        "description": "Göstəriləcək cihaz düzümü.",
+        "options": {
+          "desktop": "Masaüstü",
+          "tablet": "Planşet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ijaaraa wabii",
+    "description": "Meeshaa tarree wabii uumuu fi bulchuuf"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wabeeffannoowwan",
+        "description": "Wantoota wabeeffannoo tarree wabii kana keessaa"
+      },
+      {
+        "title": "Koorsii",
+        "description": "Eenyummeessaa ykn maqaa koorsii tarreen wabii kun itti qophaa'e (OER Schema forCourse)."
+      }
+    ]
+  }
+}

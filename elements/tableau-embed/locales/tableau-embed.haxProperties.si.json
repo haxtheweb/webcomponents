@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "බෙදාගැනීමේ URL එකකින් Tableau දෘශ්‍යකරණ කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau වැඩපොත හෝ දර්ශනයට URL."
+      },
+      {
+        "title": "උස",
+        "description": "දෘශ්‍යකරණයේ උස."
+      },
+      {
+        "title": "පළල",
+        "description": "දෘශ්‍යකරණයේ පළල."
+      },
+      {
+        "title": "මෙවලම් තීරුව",
+        "description": "මෙවලම් තීරුවේ පිහිටීම.",
+        "options": {
+          "top": "ඉහළ",
+          "bottom": "පහළ",
+          "hidden": "සඟවා ඇත"
+        }
+      },
+      {
+        "title": "ටැබ සඟවන්න",
+        "description": "පත්‍ර ටැබ සඟවන්න."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "උපාංග පිරිසැලසුම",
+        "description": "පෙන්විය යුතු උපාංග පිරිසැලසුම.",
+        "options": {
+          "desktop": "ඩෙස්ක්ටොප්",
+          "tablet": "ටැබ්ලට්",
+          "phone": "දුරකථනය"
+        }
+      }
+    ]
+  }
+}

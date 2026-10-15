@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bókalistasmiður",
+    "description": "Eitt amboð til at stovna og umsita bókalistar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tilvísingar",
+        "description": "Tilvísingar í hesum bókalista"
+      },
+      {
+        "title": "Skeið",
+        "description": "Eyðmerki ella navn á skeiðinum, sum hesin bókalisti er til (OER Schema forCourse)."
+      }
+    ]
+  }
+}

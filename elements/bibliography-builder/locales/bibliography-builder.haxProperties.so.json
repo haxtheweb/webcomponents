@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Dhise tixraacyada",
+    "description": "Qalab loogu talagalay abuurista iyo maaraynta liisaska tixraacyada"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xigashooyin",
+        "description": "Xigashooyinka ku jira liiskan tixraacyada"
+      },
+      {
+        "title": "Koorso",
+        "description": "Aqoonsiga ama magaca koorsada liiskan tixraacyada loogu talagalay (OER Schema forCourse)."
+      }
+    ]
+  }
+}

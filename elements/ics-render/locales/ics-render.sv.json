@@ -1,0 +1,11 @@
+{
+  "event": "Händelse",
+  "when": "När",
+  "where": "Var",
+  "details": "Detaljer",
+  "allDay": "Heldag",
+  "repeats": "Upprepas",
+  "loadingCalendar": "Läser in kalendern",
+  "calendarUnavailable": "Kalendern är inte tillgänglig",
+  "noEvents": "Inga händelser i den här kalendern"
+}

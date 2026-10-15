@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tanggalan",
+    "description": "Nampilaké acara ing berkas tanggalan minangka kertu tanggal, garis wektu, tabel utawa dhaptar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Berkas tanggalan",
+        "description": "Unggah utawa pilih berkas tanggalan .ics. Acarané diwaca ing browser."
+      },
+      {
+        "title": "Tampilaké minangka",
+        "description": "Carané nampilaké isi berkas.",
+        "options": {
+          "cards": "Kertu tanggal",
+          "timeline": "Garis wektu",
+          "table": "Tabel",
+          "list": "Dhaptar"
+        }
+      },
+      {
+        "title": "Sesirah",
+        "description": "Ditampilaké ing sadhuwuré acara, lan minangka katerangan tabel. Standaré jeneng tanggalan kuwi dhéwé."
+      }
+    ]
+  }
+}

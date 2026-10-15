@@ -1,0 +1,11 @@
+{
+  "event": "Sự kiện",
+  "when": "Thời gian",
+  "where": "Địa điểm",
+  "details": "Chi tiết",
+  "allDay": "Cả ngày",
+  "repeats": "Lặp lại",
+  "loadingCalendar": "Đang tải lịch",
+  "calendarUnavailable": "Không có lịch",
+  "noEvents": "Lịch này không có sự kiện nào"
+}

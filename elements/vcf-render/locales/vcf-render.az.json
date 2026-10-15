@@ -1,0 +1,11 @@
+{
+  "name": "Ad",
+  "position": "Vəzifə",
+  "organization": "Təşkilat",
+  "email": "E-poçt",
+  "phone": "Telefon",
+  "address": "Ünvan",
+  "loadingContacts": "Kontaktlar yüklənir",
+  "contactsUnavailable": "Kontaktlar əlçatan deyil",
+  "noContacts": "Bu faylda kontakt yoxdur"
+}

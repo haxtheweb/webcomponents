@@ -72,9 +72,25 @@ export class TableauEmbed extends LitElement {
    */
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
     };
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `tableau-embed.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   /**

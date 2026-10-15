@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografiverktyg",
+    "description": "Ett verktyg för att skapa och hantera bibliografier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Källhänvisningar",
+        "description": "Källhänvisningar i den här bibliografin"
+      },
+      {
+        "title": "Kurs",
+        "description": "Identifierare eller namn på kursen som den här bibliografin är avsedd för (OER Schema forCourse)."
+      }
+    ]
+  }
+}

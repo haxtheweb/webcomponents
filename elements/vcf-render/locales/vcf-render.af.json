@@ -1,0 +1,11 @@
+{
+  "name": "Naam",
+  "position": "Pos",
+  "organization": "Organisasie",
+  "email": "E-pos",
+  "phone": "Telefoon",
+  "address": "Adres",
+  "loadingContacts": "Kontakte word gelaai",
+  "contactsUnavailable": "Kontakte nie beskikbaar nie",
+  "noContacts": "Geen kontakte in hierdie lêer nie"
+}

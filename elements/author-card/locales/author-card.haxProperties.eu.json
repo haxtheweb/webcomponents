@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Egilearen txartela",
+    "description": "Erakutsi egilearen informazioa argazkiarekin, biografiarekin eta sare sozialetako estekekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Egilearen izena",
+        "description": "Egilearen izen osoa."
+      },
+      {
+        "title": "Profileko irudia",
+        "description": "Egilearen profileko argazkia."
+      },
+      {
+        "title": "Lanpostua",
+        "description": "Egilearen kargua edo rola."
+      },
+      {
+        "title": "Biografia",
+        "description": "Egilearen biografia laburra."
+      },
+      {
+        "title": "Profilaren URLa",
+        "description": "Egilearen profil-orrirako esteka."
+      },
+      {
+        "title": "Sare sozialeko esteka",
+        "description": "Sare sozialetako profil baterako esteka."
+      },
+      {
+        "title": "Sare sozialeko erabiltzaile-izena",
+        "description": "Sare sozialetako erabiltzaile-izena (adibidez, @username)."
+      }
+    ]
+  }
+}

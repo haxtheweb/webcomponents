@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "شيئر URL مان Tableau ويزوئلائيزيشنون شامل ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau ورڪ بڪ يا ويو جو URL."
+      },
+      {
+        "title": "اوچائي",
+        "description": "ويزوئلائيزيشن جي اوچائي."
+      },
+      {
+        "title": "ويڪر",
+        "description": "ويزوئلائيزيشن جي ويڪر."
+      },
+      {
+        "title": "ٽول بار",
+        "description": "ٽول بار جي جاءِ.",
+        "options": {
+          "top": "مٿي",
+          "bottom": "هيٺ",
+          "hidden": "لڪيل"
+        }
+      },
+      {
+        "title": "ٽيب لڪايو",
+        "description": "شيٽ ٽيب لڪايو."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ڊوائيس ترتيب",
+        "description": "ڏيکارڻ لاءِ ڊوائيس ترتيب.",
+        "options": {
+          "desktop": "ڊيسڪ ٽاپ",
+          "tablet": "ٽيبليٽ",
+          "phone": "فون"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "previousSlide": "మునుపటి స్లయిడ్",
+  "nextSlide": "తదుపరి స్లయిడ్",
+  "viewAllSlides": "అన్ని స్లయిడ్‌లను చూడండి",
+  "viewOneSlide": "ఒకసారి ఒక స్లయిడ్ చూడండి",
+  "presentFullScreen": "పూర్తి స్క్రీన్‌లో ప్రదర్శించు",
+  "exitFullScreen": "పూర్తి స్క్రీన్ నుండి నిష్క్రమించు",
+  "copyLinkToSlide": "ఈ స్లయిడ్‌కు లింక్‌ను కాపీ చేయి",
+  "linkCopied": "లింక్ కాపీ చేయబడింది",
+  "speakerNotes": "వక్త గమనికలు",
+  "loadingPresentation": "ప్రజెంటేషన్ లోడ్ అవుతోంది",
+  "presentationUnavailable": "ప్రజెంటేషన్ అందుబాటులో లేదు",
+  "slide": "స్లయిడ్",
+  "downloadPresentation": "ప్రజెంటేషన్‌ను డౌన్‌లోడ్ చేయి"
+}

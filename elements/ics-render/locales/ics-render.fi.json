@@ -1,0 +1,11 @@
+{
+  "event": "Tapahtuma",
+  "when": "Milloin",
+  "where": "Missä",
+  "details": "Tiedot",
+  "allDay": "Koko päivän",
+  "repeats": "Toistuu",
+  "loadingCalendar": "Ladataan kalenteria",
+  "calendarUnavailable": "Kalenteri ei ole saatavilla",
+  "noEvents": "Kalenterissa ei ole tapahtumia"
+}

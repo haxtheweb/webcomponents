@@ -1,0 +1,11 @@
+{
+  "name": "이름",
+  "position": "직책",
+  "organization": "조직",
+  "email": "이메일",
+  "phone": "전화",
+  "address": "주소",
+  "loadingContacts": "연락처 불러오는 중",
+  "contactsUnavailable": "연락처를 사용할 수 없음",
+  "noContacts": "이 파일에 연락처가 없습니다"
+}

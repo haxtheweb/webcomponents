@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Iepriekšējais slaids",
+  "nextSlide": "Nākamais slaids",
+  "viewAllSlides": "Skatīt visus slaidus",
+  "viewOneSlide": "Skatīt pa vienam slaidam",
+  "presentFullScreen": "Prezentēt pilnekrāna režīmā",
+  "exitFullScreen": "Iziet no pilnekrāna režīma",
+  "copyLinkToSlide": "Kopēt saiti uz šo slaidu",
+  "linkCopied": "Saite nokopēta",
+  "speakerNotes": "Runātāja piezīmes",
+  "loadingPresentation": "Ielādē prezentāciju",
+  "presentationUnavailable": "Prezentācija nav pieejama",
+  "slide": "Slaids",
+  "downloadPresentation": "Lejupielādēt prezentāciju"
+}

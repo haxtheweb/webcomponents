@@ -1,0 +1,11 @@
+{
+  "name": "పేరు",
+  "position": "హోదా",
+  "organization": "సంస్థ",
+  "email": "ఇమెయిల్",
+  "phone": "ఫోన్",
+  "address": "చిరునామా",
+  "loadingContacts": "పరిచయాలు లోడ్ అవుతున్నాయి",
+  "contactsUnavailable": "పరిచయాలు అందుబాటులో లేవు",
+  "noContacts": "ఈ ఫైల్‌లో పరిచయాలు లేవు"
+}

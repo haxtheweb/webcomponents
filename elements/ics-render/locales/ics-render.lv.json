@@ -1,0 +1,11 @@
+{
+  "event": "Notikums",
+  "when": "Kad",
+  "where": "Kur",
+  "details": "Detaļas",
+  "allDay": "Visu dienu",
+  "repeats": "Atkārtojas",
+  "loadingCalendar": "Ielādē kalendāru",
+  "calendarUnavailable": "Kalendārs nav pieejams",
+  "noEvents": "Šajā kalendārā nav notikumu"
+}

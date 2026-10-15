@@ -1,0 +1,11 @@
+{
+  "name": "Nimi",
+  "position": "Ametikoht",
+  "organization": "Organisatsioon",
+  "email": "E-post",
+  "phone": "Telefon",
+  "address": "Aadress",
+  "loadingContacts": "Kontaktide laadimine",
+  "contactsUnavailable": "Kontaktid pole saadaval",
+  "noContacts": "Selles failis pole kontakte"
+}

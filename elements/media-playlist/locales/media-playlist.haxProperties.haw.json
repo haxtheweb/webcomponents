@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Papa hoʻokani media",
+    "description": "He papa hoʻokani e hōʻike ana i nā mea hoʻokani wikiō a me ke kani ma ka hoʻonohonoho mea hoʻokani + kaʻe ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Helu hoʻomaka",
+        "description": "Ka helu o ka mea e hoʻomaka ai."
+      },
+      {
+        "title": "Papa",
+        "description": "Ka Papa no kēia papa hoʻokani (helu ʻike papa a i ʻole URL)."
+      }
+    ]
+  }
+}

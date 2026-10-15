@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Takvim",
+    "description": "Bir takvim dosyasındaki etkinlikleri tarih kartları, zaman çizelgesi, tablo veya liste olarak gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Takvim dosyası",
+        "description": "Bir .ics takvim dosyası yükleyin veya seçin. Etkinlikleri tarayıcıda okunur."
+      },
+      {
+        "title": "Görüntüleme biçimi",
+        "description": "Dosyanın içeriğinin nasıl sunulacağı.",
+        "options": {
+          "cards": "Tarih kartları",
+          "timeline": "Zaman çizelgesi",
+          "table": "Tablo",
+          "list": "Liste"
+        }
+      },
+      {
+        "title": "Başlık",
+        "description": "Etkinliklerin üstünde ve tablo başlığı olarak gösterilir. Varsayılan olarak takvimin kendi adı kullanılır."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Contatos",
+    "description": "Mostra as pessoas de um arquivo de contatos como cartões de pessoa, citações, uma tabela ou uma lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Arquivo de contatos",
+        "description": "Envie ou escolha um arquivo de contatos .vcf. Seus cartões são lidos no navegador."
+      },
+      {
+        "title": "Exibir como",
+        "description": "Como apresentar o conteúdo do arquivo.",
+        "options": {
+          "cards": "Cartões de pessoa",
+          "quotes": "Citações",
+          "table": "Tabela",
+          "list": "Lista"
+        }
+      },
+      {
+        "title": "Cabeçalho",
+        "description": "Exibido acima dos contatos e como legenda da tabela."
+      }
+    ]
+  }
+}

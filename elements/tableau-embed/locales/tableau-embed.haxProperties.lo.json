@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "ຝັງການສະແດງຂໍ້ມູນ Tableau ຈາກ URL ແບ່ງປັນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "URL ຂອງປຶ້ມວຽກ ຫຼື ມຸມມອງ Tableau."
+      },
+      {
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຂອງການສະແດງຂໍ້ມູນ."
+      },
+      {
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຂອງການສະແດງຂໍ້ມູນ."
+      },
+      {
+        "title": "ແຖບເຄື່ອງມື",
+        "description": "ຕຳແໜ່ງແຖບເຄື່ອງມື.",
+        "options": {
+          "top": "ດ້ານເທິງ",
+          "bottom": "ດ້ານລຸ່ມ",
+          "hidden": "ເຊື່ອງໄວ້"
+        }
+      },
+      {
+        "title": "ເຊື່ອງແຖບ",
+        "description": "ເຊື່ອງແຖບຊີດ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ຮູບແບບອຸປະກອນ",
+        "description": "ຮູບແບບອຸປະກອນທີ່ຈະສະແດງ.",
+        "options": {
+          "desktop": "ຄອມພິວເຕີ",
+          "tablet": "ແທັບເລັດ",
+          "phone": "ໂທລະສັບ"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Isa mifananidzo yedata yeTableau kubva kuURL yekugovana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL yeTableau",
+        "description": "URL kubhuku rebasa kana kuona kweTableau."
+      },
+      {
+        "title": "Kureba",
+        "description": "Kureba kwemufananidzo wedata."
+      },
+      {
+        "title": "Hupamhi",
+        "description": "Hupamhi hwemufananidzo wedata."
+      },
+      {
+        "title": "Bhari yezvishandiso",
+        "description": "Nzvimbo yebhari yezvishandiso.",
+        "options": {
+          "top": "Pamusoro",
+          "bottom": "Pazasi",
+          "hidden": "Yakavanzwa"
+        }
+      },
+      {
+        "title": "Vanza ma tab",
+        "description": "Vanza ma tab emapeji."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Marongerwo emudziyo",
+        "description": "Marongerwo emudziyo anofanira kuratidzwa.",
+        "options": {
+          "desktop": "Komputa",
+          "tablet": "Tabhureti",
+          "phone": "Runhare"
+        }
+      }
+    ]
+  }
+}

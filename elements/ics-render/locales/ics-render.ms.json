@@ -1,0 +1,11 @@
+{
+  "event": "Acara",
+  "when": "Bila",
+  "where": "Di mana",
+  "details": "Butiran",
+  "allDay": "Sepanjang hari",
+  "repeats": "Berulang",
+  "loadingCalendar": "Memuatkan kalendar",
+  "calendarUnavailable": "Kalendar tidak tersedia",
+  "noEvents": "Tiada acara dalam kalendar ini"
+}

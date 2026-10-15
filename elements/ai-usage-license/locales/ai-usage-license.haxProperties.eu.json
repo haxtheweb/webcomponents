@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "AA erabiltzeko lizentzia",
+    "description": "Erakutsi zure lanerako AA erabiltzeko lizentziaren (AIUL) bereizgarria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lizentzia",
+        "description": "Lan honetarako AA erabiltzeko lizentziaren maila. Ikusi https://dmd-program.github.io/aiul/ xehetasunetarako."
+      },
+      {
+        "title": "Multimedia-aldatzailea",
+        "description": "Multimedia-domeinuaren aukerako aldatzailea. Lizentzia zein multimedia motari aplikatzen zaion zehazten du."
+      },
+      {
+        "title": "AIUL URIa (OER Schema)",
+        "description": "OER Schema: AA erabiltzeko lizentziaren erreferentzia-orriaren URIa. Ezarrita ez badago, lizentziaren estekatik automatikoki betetzen da."
+      }
+    ]
+  }
+}

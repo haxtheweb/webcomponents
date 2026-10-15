@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "جاسازی مصورسازی‌های Tableau از یک URL اشتراک‌گذاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL کارپوشه یا نمای Tableau."
+      },
+      {
+        "title": "ارتفاع",
+        "description": "ارتفاع مصورسازی."
+      },
+      {
+        "title": "عرض",
+        "description": "عرض مصورسازی."
+      },
+      {
+        "title": "نوار ابزار",
+        "description": "موقعیت نوار ابزار.",
+        "options": {
+          "top": "بالا",
+          "bottom": "پایین",
+          "hidden": "پنهان"
+        }
+      },
+      {
+        "title": "پنهان کردن زبانه‌ها",
+        "description": "پنهان کردن زبانه‌های برگه."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "چیدمان دستگاه",
+        "description": "چیدمان دستگاه برای نمایش.",
+        "options": {
+          "desktop": "رایانه رومیزی",
+          "tablet": "تبلت",
+          "phone": "تلفن"
+        }
+      }
+    ]
+  }
+}

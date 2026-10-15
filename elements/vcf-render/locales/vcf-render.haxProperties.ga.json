@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Teagmhálaithe",
+    "description": "Taispeáin na daoine i gcomhad teagmhálaithe mar chártaí duine, sleachta, tábla nó liosta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Comhad teagmhálaithe",
+        "description": "Uaslódáil nó roghnaigh comhad teagmhálaithe .vcf. Léitear a chártaí sa bhrabhsálaí."
+      },
+      {
+        "title": "Taispeáin mar",
+        "description": "Conas ábhar an chomhaid a chur i láthair.",
+        "options": {
+          "cards": "Cártaí duine",
+          "quotes": "Sleachta",
+          "table": "Tábla",
+          "list": "Liosta"
+        }
+      },
+      {
+        "title": "Ceannteideal",
+        "description": "Taispeántar é os cionn na dteagmhálaithe, agus mar fhotheideal an tábla."
+      }
+    ]
+  }
+}

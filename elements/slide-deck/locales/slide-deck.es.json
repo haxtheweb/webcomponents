@@ -10,5 +10,6 @@
   "speakerNotes": "Notas del orador",
   "loadingPresentation": "Cargando presentación",
   "presentationUnavailable": "Presentación no disponible",
-  "slide": "Diapositiva"
+  "slide": "Diapositiva",
+  "downloadPresentation": "Descargar presentación"
 }

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Pembina bibliografi",
+    "description": "Alat untuk mencipta dan mengurus bibliografi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Petikan",
+        "description": "Item petikan dalam bibliografi ini"
+      },
+      {
+        "title": "Kursus",
+        "description": "Pengecam atau nama kursus yang menjadi sasaran bibliografi ini (OER Schema forCourse)."
+      }
+    ]
+  }
+}

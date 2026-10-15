@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kalendārs",
+    "description": "Rādīt kalendāra faila notikumus kā datumu kartītes, laika joslu, tabulu vai sarakstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kalendāra fails",
+        "description": "Augšupielādējiet vai izvēlieties .ics kalendāra failu. Tā notikumi tiek nolasīti pārlūkprogrammā."
+      },
+      {
+        "title": "Rādīt kā",
+        "description": "Kā attēlot faila saturu.",
+        "options": {
+          "cards": "Datumu kartītes",
+          "timeline": "Laika josla",
+          "table": "Tabula",
+          "list": "Saraksts"
+        }
+      },
+      {
+        "title": "Virsraksts",
+        "description": "Tiek rādīts virs notikumiem un kā tabulas paraksts. Pēc noklusējuma – paša kalendāra nosaukums."
+      }
+    ]
+  }
+}

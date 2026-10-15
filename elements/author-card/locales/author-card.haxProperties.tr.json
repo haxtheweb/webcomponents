@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Yazar kartı",
+    "description": "Yazar bilgilerini fotoğraf, biyografi ve sosyal bağlantılarla görüntüleyin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yazar adı",
+        "description": "Yazarın tam adı."
+      },
+      {
+        "title": "Profil resmi",
+        "description": "Yazarın profil fotoğrafı."
+      },
+      {
+        "title": "Unvan",
+        "description": "Yazarın pozisyonu veya rolü."
+      },
+      {
+        "title": "Biyografi",
+        "description": "Kısa yazar biyografisi."
+      },
+      {
+        "title": "Profil URL",
+        "description": "Yazarın profil sayfasının bağlantısı."
+      },
+      {
+        "title": "Sosyal bağlantı",
+        "description": "Bir sosyal medya profilinin bağlantısı."
+      },
+      {
+        "title": "Sosyal medya kullanıcı adı",
+        "description": "Sosyal medya kullanıcı adı (örneğin @username)."
+      }
+    ]
+  }
+}

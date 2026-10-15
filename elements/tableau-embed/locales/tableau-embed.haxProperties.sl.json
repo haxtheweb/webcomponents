@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Vdelajte vizualizacije Tableau iz URL-ja za skupno rabo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL delovnega zvezka ali pogleda Tableau."
+      },
+      {
+        "title": "Višina",
+        "description": "Višina vizualizacije."
+      },
+      {
+        "title": "Širina",
+        "description": "Širina vizualizacije."
+      },
+      {
+        "title": "Orodna vrstica",
+        "description": "Položaj orodne vrstice.",
+        "options": {
+          "top": "Zgoraj",
+          "bottom": "Spodaj",
+          "hidden": "Skrita"
+        }
+      },
+      {
+        "title": "Skrij zavihke",
+        "description": "Skrij zavihke listov."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Postavitev naprave",
+        "description": "Postavitev naprave za izris.",
+        "options": {
+          "desktop": "Namizni računalnik",
+          "tablet": "Tablica",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

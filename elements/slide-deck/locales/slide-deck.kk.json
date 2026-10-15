@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Алдыңғы слайд",
+  "nextSlide": "Келесі слайд",
+  "viewAllSlides": "Барлық слайдтарды көру",
+  "viewOneSlide": "Слайдтарды бір-бірден көру",
+  "presentFullScreen": "Толық экранда көрсету",
+  "exitFullScreen": "Толық экраннан шығу",
+  "copyLinkToSlide": "Осы слайдқа сілтемені көшіру",
+  "linkCopied": "Сілтеме көшірілді",
+  "speakerNotes": "Баяндамашы жазбалары",
+  "loadingPresentation": "Презентация жүктелуде",
+  "presentationUnavailable": "Презентация қолжетімсіз",
+  "slide": "Слайд",
+  "downloadPresentation": "Презентацияны жүктеп алу"
+}

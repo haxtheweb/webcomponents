@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Auteurskaart",
+    "description": "Auteursynformaasje toane mei foto, biografy en sosjale keppelings."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namme fan de auteur",
+        "description": "Folsleine namme fan de auteur."
+      },
+      {
+        "title": "Profylôfbylding",
+        "description": "Profylfoto fan de auteur."
+      },
+      {
+        "title": "Funksjetitel",
+        "description": "Funksje of rol fan de auteur."
+      },
+      {
+        "title": "Biografy",
+        "description": "Koarte biografy fan de auteur."
+      },
+      {
+        "title": "Profyl-URL",
+        "description": "Keppeling nei de profylside fan de auteur."
+      },
+      {
+        "title": "Sosjale keppeling",
+        "description": "Keppeling nei in profyl op sosjale media."
+      },
+      {
+        "title": "Sosjale brûkersnamme",
+        "description": "Brûkersnamme op sosjale media (bygelyks @username)."
+      }
+    ]
+  }
+}

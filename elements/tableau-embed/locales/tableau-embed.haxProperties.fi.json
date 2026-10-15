@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Upota Tableau-visualisointeja jako-URL:n kautta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau-URL",
+        "description": "URL Tableau-työkirjaan tai -näkymään."
+      },
+      {
+        "title": "Korkeus",
+        "description": "Visualisoinnin korkeus."
+      },
+      {
+        "title": "Leveys",
+        "description": "Visualisoinnin leveys."
+      },
+      {
+        "title": "Työkalupalkki",
+        "description": "Työkalupalkin sijainti.",
+        "options": {
+          "top": "Ylhäällä",
+          "bottom": "Alhaalla",
+          "hidden": "Piilotettu"
+        }
+      },
+      {
+        "title": "Piilota välilehdet",
+        "description": "Piilota taulukkovälilehdet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Laiteasettelu",
+        "description": "Hahmonnettava laiteasettelu.",
+        "options": {
+          "desktop": "Tietokone",
+          "tablet": "Tabletti",
+          "phone": "Puhelin"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "پېښه",
+  "when": "کله",
+  "where": "چېرته",
+  "details": "جزئیات",
+  "allDay": "ټوله ورځ",
+  "repeats": "تکرارېږي",
+  "loadingCalendar": "جنتري پورته کېږي",
+  "calendarUnavailable": "جنتري نشته",
+  "noEvents": "په دې جنتري کې هېڅ پېښه نشته"
+}

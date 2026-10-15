@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Алдагы слайд",
+  "nextSlide": "Киләсе слайд",
+  "viewAllSlides": "Барлык слайдларны карау",
+  "viewOneSlide": "Слайдларны берәмләп карау",
+  "presentFullScreen": "Тулы экранда күрсәтү",
+  "exitFullScreen": "Тулы экраннан чыгу",
+  "copyLinkToSlide": "Бу слайдка сылтаманы күчереп алу",
+  "linkCopied": "Сылтама күчереп алынды",
+  "speakerNotes": "Чыгыш ясаучы язмалары",
+  "loadingPresentation": "Презентация йөкләнә",
+  "presentationUnavailable": "Презентация мөмкин түгел",
+  "slide": "Слайд",
+  "downloadPresentation": "Презентацияне йөкләп алу"
+}

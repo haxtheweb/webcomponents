@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kalendari",
+    "description": "Shfaq ngjarjet në një skedar kalendari si karta datash, kronologji, tabelë ose listë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skedari i kalendarit",
+        "description": "Ngarko ose zgjidh një skedar kalendari .ics. Ngjarjet e tij lexohen në shfletues."
+      },
+      {
+        "title": "Shfaq si",
+        "description": "Si të paraqitet përmbajtja e skedarit.",
+        "options": {
+          "cards": "Karta datash",
+          "timeline": "Kronologji",
+          "table": "Tabelë",
+          "list": "Listë"
+        }
+      },
+      {
+        "title": "Titulli",
+        "description": "Shfaqet mbi ngjarjet dhe si titull i tabelës. Si parazgjedhje merr emrin e vetë kalendarit."
+      }
+    ]
+  }
+}

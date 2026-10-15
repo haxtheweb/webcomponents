@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kad pengarang",
+    "description": "Paparkan maklumat pengarang dengan foto, biodata dan pautan sosial."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nama pengarang",
+        "description": "Nama penuh pengarang."
+      },
+      {
+        "title": "Imej profil",
+        "description": "Foto profil pengarang."
+      },
+      {
+        "title": "Jawatan",
+        "description": "Jawatan atau peranan pengarang."
+      },
+      {
+        "title": "Biodata",
+        "description": "Biodata ringkas pengarang."
+      },
+      {
+        "title": "URL profil",
+        "description": "Pautan ke halaman profil pengarang."
+      },
+      {
+        "title": "Pautan sosial",
+        "description": "Pautan ke profil media sosial."
+      },
+      {
+        "title": "Nama pengguna sosial",
+        "description": "Nama pengguna media sosial (contohnya @username)."
+      }
+    ]
+  }
+}

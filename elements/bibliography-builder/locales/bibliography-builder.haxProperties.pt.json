@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Construtor de bibliografia",
+    "description": "Uma ferramenta para criar e gerenciar bibliografias"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citações",
+        "description": "Itens de citação nesta bibliografia"
+      },
+      {
+        "title": "Curso",
+        "description": "Identificador ou nome do curso ao qual esta bibliografia se destina (OER Schema forCourse)."
+      }
+    ]
+  }
+}

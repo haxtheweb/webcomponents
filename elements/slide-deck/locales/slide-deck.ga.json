@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Sleamhnán roimhe seo",
+  "nextSlide": "An chéad sleamhnán eile",
+  "viewAllSlides": "Féach ar gach sleamhnán",
+  "viewOneSlide": "Féach ar shleamhnán amháin ag an am",
+  "presentFullScreen": "Cuir i láthair ar an lánscáileán",
+  "exitFullScreen": "Fág an lánscáileán",
+  "copyLinkToSlide": "Cóipeáil nasc chuig an sleamhnán seo",
+  "linkCopied": "Nasc cóipeáilte",
+  "speakerNotes": "Nótaí an chainteora",
+  "loadingPresentation": "Cur i láthair á lódáil",
+  "presentationUnavailable": "Níl an cur i láthair ar fáil",
+  "slide": "Sleamhnán",
+  "downloadPresentation": "Íoslódáil an cur i láthair"
+}

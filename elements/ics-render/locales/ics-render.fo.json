@@ -1,0 +1,11 @@
+{
+  "event": "Tiltak",
+  "when": "Nær",
+  "where": "Hvar",
+  "details": "Smálutir",
+  "allDay": "Allan dagin",
+  "repeats": "Endurtekur seg",
+  "loadingCalendar": "Heintar kalendara",
+  "calendarUnavailable": "Kalendarin er ikki tøkur",
+  "noEvents": "Eingi tiltøk í hesum kalendara"
+}

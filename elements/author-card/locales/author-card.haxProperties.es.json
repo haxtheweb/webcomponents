@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Tarjeta de autor",
+    "description": "Muestra información del autor con foto, biografía y enlaces a redes sociales."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombre del autor",
+        "description": "Nombre completo del autor."
+      },
+      {
+        "title": "Imagen de perfil",
+        "description": "Foto de perfil del autor."
+      },
+      {
+        "title": "Puesto",
+        "description": "Cargo o función del autor."
+      },
+      {
+        "title": "Biografía",
+        "description": "Biografía breve del autor."
+      },
+      {
+        "title": "URL del perfil",
+        "description": "Enlace a la página de perfil del autor."
+      },
+      {
+        "title": "Enlace social",
+        "description": "Enlace a un perfil de redes sociales."
+      },
+      {
+        "title": "Usuario en redes",
+        "description": "Nombre de usuario en redes sociales (por ejemplo, @username)."
+      }
+    ]
+  }
+}

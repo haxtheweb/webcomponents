@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Föregående bild",
+  "nextSlide": "Nästa bild",
+  "viewAllSlides": "Visa alla bilder",
+  "viewOneSlide": "Visa en bild i taget",
+  "presentFullScreen": "Presentera i helskärm",
+  "exitFullScreen": "Avsluta helskärm",
+  "copyLinkToSlide": "Kopiera länk till den här bilden",
+  "linkCopied": "Länken har kopierats",
+  "speakerNotes": "Talaranteckningar",
+  "loadingPresentation": "Läser in presentationen",
+  "presentationUnavailable": "Presentationen är inte tillgänglig",
+  "slide": "Bild",
+  "downloadPresentation": "Ladda ned presentationen"
+}

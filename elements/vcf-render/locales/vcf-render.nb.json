@@ -1,0 +1,11 @@
+{
+  "name": "Navn",
+  "position": "Stilling",
+  "organization": "Organisasjon",
+  "email": "E-post",
+  "phone": "Telefon",
+  "address": "Adresse",
+  "loadingContacts": "Laster inn kontakter",
+  "contactsUnavailable": "Kontakter er ikke tilgjengelige",
+  "noContacts": "Ingen kontakter i denne filen"
+}

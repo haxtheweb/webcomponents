@@ -1,0 +1,11 @@
+{
+  "name": "שם",
+  "position": "תפקיד",
+  "organization": "ארגון",
+  "email": "דוא\"ל",
+  "phone": "טלפון",
+  "address": "כתובת",
+  "loadingContacts": "טוען אנשי קשר",
+  "contactsUnavailable": "אנשי הקשר אינם זמינים",
+  "noContacts": "אין אנשי קשר בקובץ זה"
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "AI ورتوں لائسنس",
+    "description": "اپنے کم لئی AI ورتوں لائسنس (AIUL) بیج وکھاؤ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "لائسنس",
+        "description": "ایس کم لئی AI ورتوں لائسنس دا درجہ۔ تفصیلاں لئی https://dmd-program.github.io/aiul/ ویکھو۔"
+      },
+      {
+        "title": "میڈیا موڈیفائر",
+        "description": "اختیاری میڈیا ڈومین موڈیفائر۔ دسدا اے کہ ایہہ لائسنس کیہڑی قسم دے میڈیا تے لاگو ہوندا اے۔"
+      },
+      {
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI ورتوں لائسنس حوالہ صفحے لئی URI۔ سیٹ نہ ہون تے لائسنس لنک توں آپے بھر جاندا اے۔"
+      }
+    ]
+  }
+}

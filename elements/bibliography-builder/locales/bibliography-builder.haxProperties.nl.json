@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografiebouwer",
+    "description": "Een hulpmiddel voor het maken en beheren van bibliografieën"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citaties",
+        "description": "Citatie-items in deze bibliografie"
+      },
+      {
+        "title": "Cursus",
+        "description": "Identificatie of naam van de cursus waarvoor deze bibliografie is (OER Schema forCourse)."
+      }
+    ]
+  }
+}

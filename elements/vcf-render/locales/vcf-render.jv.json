@@ -1,0 +1,11 @@
+{
+  "name": "Jeneng",
+  "position": "Jabatan",
+  "organization": "Organisasi",
+  "email": "Email",
+  "phone": "Telpon",
+  "address": "Alamat",
+  "loadingContacts": "Lagi ngemot kontak",
+  "contactsUnavailable": "Kontak ora kasedhiya",
+  "noContacts": "Ora ana kontak ing berkas iki"
+}

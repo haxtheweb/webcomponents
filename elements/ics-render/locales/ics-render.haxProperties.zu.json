@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ikhalenda",
+    "description": "Bonisa imicimbi esefayeleni lekhalenda njengamakhadi osuku, umugqa wesikhathi, ithebula noma uhlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayela lekhalenda",
+        "description": "Layisha noma ukhethe ifayela lekhalenda le-.ics. Imicimbi yalo ifundwa kusiphequluli."
+      },
+      {
+        "title": "Bonisa njenga",
+        "description": "Indlela yokwethula okuqukethwe yifayela.",
+        "options": {
+          "cards": "Amakhadi osuku",
+          "timeline": "Umugqa wesikhathi",
+          "table": "Ithebula",
+          "list": "Uhlu"
+        }
+      },
+      {
+        "title": "Isihloko",
+        "description": "Kuboniswa ngaphezu kwemicimbi, futhi njengesihloko sethebula. Okuzenzakalelayo yigama lekhalenda uqobo."
+      }
+    ]
+  }
+}

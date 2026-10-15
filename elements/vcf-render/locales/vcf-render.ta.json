@@ -1,0 +1,11 @@
+{
+  "name": "பெயர்",
+  "position": "பதவி",
+  "organization": "நிறுவனம்",
+  "email": "மின்னஞ்சல்",
+  "phone": "தொலைபேசி",
+  "address": "முகவரி",
+  "loadingContacts": "தொடர்புகள் ஏற்றப்படுகின்றன",
+  "contactsUnavailable": "தொடர்புகள் கிடைக்கவில்லை",
+  "noContacts": "இந்தக் கோப்பில் தொடர்புகள் இல்லை"
+}

@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Diapositiva anterior",
+  "nextSlide": "Diapositiva següent",
+  "viewAllSlides": "Mostra totes les diapositives",
+  "viewOneSlide": "Mostra les diapositives d'una en una",
+  "presentFullScreen": "Presenta a pantalla completa",
+  "exitFullScreen": "Surt de la pantalla completa",
+  "copyLinkToSlide": "Copia l'enllaç a aquesta diapositiva",
+  "linkCopied": "Enllaç copiat",
+  "speakerNotes": "Notes del presentador",
+  "loadingPresentation": "S'està carregant la presentació",
+  "presentationUnavailable": "La presentació no està disponible",
+  "slide": "Diapositiva",
+  "downloadPresentation": "Baixa la presentació"
+}

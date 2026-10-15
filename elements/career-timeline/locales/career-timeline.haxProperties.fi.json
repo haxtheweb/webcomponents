@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Uran aikajana",
+    "description": "Uran aikajana, joka sisältää organisaatioita, rooleja ja muita tietoja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aikajanan otsikko",
+        "description": "Uran aikajanan otsikko (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

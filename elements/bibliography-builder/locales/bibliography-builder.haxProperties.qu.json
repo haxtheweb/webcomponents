@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografía ruraq",
+    "description": "Bibliografíakunata ruranapaq, kamachinapaqpas llamk'ana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citakuna",
+        "description": "Kay bibliografíapi citakuna"
+      },
+      {
+        "title": "Yachay kurso",
+        "description": "Kay bibliografía maypaq kasqan yachay kursopa riqsichiynin utaq sutin (OER Schema forCourse)."
+      }
+    ]
+  }
+}

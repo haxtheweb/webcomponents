@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Ενσωμάτωση οπτικοποιήσεων Tableau από URL κοινής χρήσης."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL του βιβλίου εργασίας ή της προβολής Tableau."
+      },
+      {
+        "title": "Ύψος",
+        "description": "Ύψος οπτικοποίησης."
+      },
+      {
+        "title": "Πλάτος",
+        "description": "Πλάτος οπτικοποίησης."
+      },
+      {
+        "title": "Γραμμή εργαλείων",
+        "description": "Θέση γραμμής εργαλείων.",
+        "options": {
+          "top": "Επάνω",
+          "bottom": "Κάτω",
+          "hidden": "Κρυφή"
+        }
+      },
+      {
+        "title": "Απόκρυψη καρτελών",
+        "description": "Απόκρυψη καρτελών φύλλων."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Διάταξη συσκευής",
+        "description": "Διάταξη συσκευής για απόδοση.",
+        "options": {
+          "desktop": "Υπολογιστής",
+          "tablet": "Tablet",
+          "phone": "Τηλέφωνο"
+        }
+      }
+    ]
+  }
+}

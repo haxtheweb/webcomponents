@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografiya tuzuvchi",
+    "description": "Bibliografiyalarni yaratish va boshqarish vositasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Iqtiboslar",
+        "description": "Ushbu bibliografiyadagi iqtibos elementlari"
+      },
+      {
+        "title": "Kurs",
+        "description": "Ushbu bibliografiya mo‘ljallangan kursning identifikatori yoki nomi (OER Schema forCourse)."
+      }
+    ]
+  }
+}

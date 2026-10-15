@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Iegult Tableau vizualizācijas no koplietošanas URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau darbgrāmatas vai skata URL."
+      },
+      {
+        "title": "Augstums",
+        "description": "Vizualizācijas augstums."
+      },
+      {
+        "title": "Platums",
+        "description": "Vizualizācijas platums."
+      },
+      {
+        "title": "Rīkjosla",
+        "description": "Rīkjoslas novietojums.",
+        "options": {
+          "top": "Augšā",
+          "bottom": "Apakšā",
+          "hidden": "Paslēpta"
+        }
+      },
+      {
+        "title": "Paslēpt cilnes",
+        "description": "Paslēpt lapu cilnes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ierīces izkārtojums",
+        "description": "Attēlojamais ierīces izkārtojums.",
+        "options": {
+          "desktop": "Dators",
+          "tablet": "Planšetdators",
+          "phone": "Tālrunis"
+        }
+      }
+    ]
+  }
+}

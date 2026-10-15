@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Vorherige Folie",
+  "nextSlide": "Nächste Folie",
+  "viewAllSlides": "Alle Folien anzeigen",
+  "viewOneSlide": "Jeweils eine Folie anzeigen",
+  "presentFullScreen": "Im Vollbild präsentieren",
+  "exitFullScreen": "Vollbild beenden",
+  "copyLinkToSlide": "Link zu dieser Folie kopieren",
+  "linkCopied": "Link kopiert",
+  "speakerNotes": "Sprechernotizen",
+  "loadingPresentation": "Präsentation wird geladen",
+  "presentationUnavailable": "Präsentation nicht verfügbar",
+  "slide": "Folie",
+  "downloadPresentation": "Präsentation herunterladen"
+}

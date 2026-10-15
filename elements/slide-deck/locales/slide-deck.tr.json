@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Önceki slayt",
+  "nextSlide": "Sonraki slayt",
+  "viewAllSlides": "Tüm slaytları görüntüle",
+  "viewOneSlide": "Slaytları tek tek görüntüle",
+  "presentFullScreen": "Tam ekran sun",
+  "exitFullScreen": "Tam ekrandan çık",
+  "copyLinkToSlide": "Bu slaytın bağlantısını kopyala",
+  "linkCopied": "Bağlantı kopyalandı",
+  "speakerNotes": "Konuşmacı notları",
+  "loadingPresentation": "Sunu yükleniyor",
+  "presentationUnavailable": "Sunu kullanılamıyor",
+  "slide": "Slayt",
+  "downloadPresentation": "Sunuyu indir"
+}

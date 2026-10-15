@@ -1,0 +1,11 @@
+{
+  "name": "Namn",
+  "position": "Befattning",
+  "organization": "Organisation",
+  "email": "E-post",
+  "phone": "Telefon",
+  "address": "Adress",
+  "loadingContacts": "Läser in kontakter",
+  "contactsUnavailable": "Kontakterna är inte tillgängliga",
+  "noContacts": "Inga kontakter i den här filen"
+}

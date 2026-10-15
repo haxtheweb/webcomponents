@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Rukunin silaidodi",
+    "description": "Gabatar da rukunin PowerPoint da aka shigo da shi silaidi bayan silaidi, tare da bayanan mai magana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bayanin rukuni",
+        "description": "Jefa fayil ɗin .pptx kuma za a mayar da shi rukunin silaidodi kai tsaye. Za a saita filin zuwa hanyar deck.json da aka samu."
+      },
+      {
+        "title": "ID na rukuni",
+        "description": "Ana buƙata ne kawai idan shafi yana da rukuni fiye da ɗaya, don mahaɗan silaidi su kasance daban-daban"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ba da izinin saukewa",
+        "description": "Nuna maɓallin saukewa don ainihin fayil ɗin PowerPoint a cikin sarrafawar mai kunnawa"
+      }
+    ]
+  }
+}
