@@ -249,7 +249,7 @@
                 "text": "number"
               },
               "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
-              "default": "1500",
+              "default": "1440",
               "attribute": "breakpoint-xl"
             },
             {
@@ -389,7 +389,7 @@
                 "text": "number"
               },
               "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
-              "default": "1500",
+              "default": "1440",
               "fieldName": "breakpointXl"
             },
             {

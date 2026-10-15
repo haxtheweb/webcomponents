@@ -30,10 +30,12 @@ class ResponsiveUtility extends LitElement {
     let detail = {
       element: e.detail.element,
       attribute: e.detail.attribute || "responsive-size",
-      sm: e.detail.sm || 900,
-      md: e.detail.md || 1200,
-      lg: e.detail.lg || 1500,
-      xl: e.detail.xl || 1800,
+      // fallback mirrors DDDBreakpoints (d-d-d/lib/DDDLayout.js); kept as
+      // literals so this utility never requires the DDD stack
+      sm: e.detail.sm || 600,
+      md: e.detail.md || 900,
+      lg: e.detail.lg || 1200,
+      xl: e.detail.xl || 1440,
       custom: e.detail.custom || "responsive-width",
     };
     detail.observer = this._getObserver(detail);

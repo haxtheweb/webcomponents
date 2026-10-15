@@ -69,8 +69,18 @@ describe('responsive-grid-col', () => {
 })
 
 describe('responsive-grid-row', () => {
+  // rows size to their own width, so pin the fixture width instead of
+  // depending on the test browser's viewport
+  const rowAt = async (width) => {
+    const wrap = await fixture(
+      html`<div style="width: ${width}px"><responsive-grid-row></responsive-grid-row></div>`,
+    )
+    const el = wrap.querySelector('responsive-grid-row')
+    await el.updateComplete
+    return el
+  }
   it('has sensible constructor defaults', async () => {
-    const el = await fixture(html`<responsive-grid-row></responsive-grid-row>`)
+    const el = await rowAt(400)
     expect(el.xl).to.be.null
     expect(el.lg).to.be.null
     expect(el.md).to.be.null
@@ -81,7 +91,7 @@ describe('responsive-grid-row', () => {
     expect(el.screen).to.equal('xs')
   })
   it('renders a responsive-utility and row-inner container', async () => {
-    const el = await fixture(html`<responsive-grid-row></responsive-grid-row>`)
+    const el = await rowAt(400)
     const utility = el.shadowRoot.querySelector('responsive-utility')
     const inner = el.shadowRoot.querySelector('#row-inner')
     expect(utility).to.exist
@@ -89,6 +99,11 @@ describe('responsive-grid-row', () => {
     expect(inner.querySelector('slot')).to.exist
     expect(inner.getAttribute('screen')).to.equal('xs')
     expect(inner.getAttribute('gutter')).to.equal('0')
+  })
+  it('uses the DDD-aligned fallback breakpoints (600/900/1200/1440)', async () => {
+    expect((await rowAt(599)).screen).to.equal('xs')
+    expect((await rowAt(600)).screen).to.equal('sm')
+    expect((await rowAt(900)).screen).to.equal('md')
   })
   it('passes custom breakpoints down to responsive-utility', async () => {
     const el = await fixture(

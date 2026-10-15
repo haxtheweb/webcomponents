@@ -77,10 +77,13 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     constructor() {
       super();
       this.responsiveSize = "xs";
+      // Mirrors DDDBreakpoints (d-d-d/lib/DDDLayout.js) without importing
+      // DDD, so responsive-utility stays dependency-free. Keep in sync with
+      // DDD; elements can still set their own sm / md / lg / xl
       this.sm = 600;
       this.md = 900;
       this.lg = 1200;
-      this.xl = 1500;
+      this.xl = 1440;
       this.disableResponsive = false;
     }
     /**

@@ -27,7 +27,7 @@ describe("GridPlate test", () => {
     expect(element.breakpointSm).to.equal(600);
     expect(element.breakpointMd).to.equal(900);
     expect(element.breakpointLg).to.equal(1200);
-    expect(element.breakpointXl).to.equal(1500);
+    expect(element.breakpointXl).to.equal(1440);
   });
 
   // Layout tests

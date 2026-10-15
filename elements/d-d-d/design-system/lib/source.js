@@ -17,11 +17,50 @@ export const DDD_DIR = path.join(REPO, "elements", "d-d-d");
 const read = (...p) => fs.readFileSync(path.join(REPO, ...p), "utf8");
 
 /** every `--name: value; /* comment *\/` in the DDDVariables block, in order */
+/**
+ * numeric layout scales exported from DDDLayout.js as
+ * `export const Name = Object.freeze({ key: 123, ... })`, keyed by name
+ */
+function dddLayoutScales() {
+  const file = path.join(DDD_DIR, "lib", "DDDLayout.js");
+  if (!fs.existsSync(file)) return {};
+  const src = fs.readFileSync(file, "utf8");
+  const scales = {};
+  const re = /export const (\w+) = Object\.freeze\(\{([^}]*)\}\)/g;
+  let m;
+  while ((m = re.exec(src))) {
+    const entries = {};
+    for (const [, key, num] of m[2].matchAll(/(\w+):\s*(-?\d+(?:\.\d+)?)\s*,?/g)) {
+      entries[key] = num;
+    }
+    if (Object.keys(entries).length) scales[m[1]] = entries;
+  }
+  return scales;
+}
+
+/**
+ * DDDStyles interpolates layout scales into CSS, e.g.
+ * `--ddd-breakpoint-sm: ${unsafeCSS(DDDBreakpoints.sm)}px;`. Replace each
+ * `${unsafeCSS(Scale.key)}` with its number so the token value is plain CSS.
+ */
+function resolveLayoutInterpolations(block) {
+  const scales = dddLayoutScales();
+  return block.replace(
+    /\$\{\s*unsafeCSS\(\s*(\w+)\.(\w+)\s*,?\s*\)\s*\}/g,
+    (whole, scale, key) =>
+      scales[scale] && scales[scale][key] !== undefined
+        ? scales[scale][key]
+        : whole,
+  );
+}
+
 export function dddVariables() {
   const src = read("elements", "d-d-d", "lib", "DDDStyles.js");
-  const block = src.slice(
-    src.indexOf("export const DDDVariables"),
-    src.indexOf("export const DDDGlobalStyles"),
+  const block = resolveLayoutInterpolations(
+    src.slice(
+      src.indexOf("export const DDDVariables"),
+      src.indexOf("export const DDDGlobalStyles"),
+    ),
   );
   const re = /--([\w-]+):\s*((?:[^;])+?);[ \t]*(?:\/\*\s*([\s\S]*?)\s*\*\/)?/g;
   const vars = [];

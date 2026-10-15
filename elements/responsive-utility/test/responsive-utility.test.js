@@ -187,10 +187,11 @@ describe("responiveElementEvent", () => {
     const detail = instance.details[0];
     expect(detail.attribute).to.equal("responsive-size");
     expect(detail.custom).to.equal("responsive-width");
-    expect(detail.sm).to.equal(900);
-    expect(detail.md).to.equal(1200);
-    expect(detail.lg).to.equal(1500);
-    expect(detail.xl).to.equal(1800);
+    // fallback mirrors DDDBreakpoints
+    expect(detail.sm).to.equal(600);
+    expect(detail.md).to.equal(900);
+    expect(detail.lg).to.equal(1200);
+    expect(detail.xl).to.equal(1440);
     globalThis.document.body.removeChild(el);
   });
 
@@ -436,7 +437,7 @@ describe("ResponsiveUtilityBehaviors mixin", () => {
     expect(el.sm).to.equal(600);
     expect(el.md).to.equal(900);
     expect(el.lg).to.equal(1200);
-    expect(el.xl).to.equal(1500);
+    expect(el.xl).to.equal(1440);
     expect(el.disableResponsive).to.equal(false);
   });
 

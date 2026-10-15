@@ -2330,8 +2330,8 @@
     "breakpoint": {
       "sm": {
         "$type": "dimension",
-        "$value": "360px",
-        "$description": "Small devices (phones)",
+        "$value": "600px",
+        "$description": "narrow, phones",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-breakpoint-sm"
@@ -2340,8 +2340,8 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "768px",
-        "$description": "Medium devices (tablets)",
+        "$value": "900px",
+        "$description": "tablets, sidebar collapses below this",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-breakpoint-md"
@@ -2350,8 +2350,8 @@
       },
       "lg": {
         "$type": "dimension",
-        "$value": "1080px",
-        "$description": "Large devices (laptops)",
+        "$value": "1200px",
+        "$description": "sidebar + content column + gutters fit",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-breakpoint-lg"
@@ -2361,10 +2361,102 @@
       "xl": {
         "$type": "dimension",
         "$value": "1440px",
-        "$description": "Extra large devices (desktops)",
+        "$description": "wide desktop",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-breakpoint-xl"
+          }
+        }
+      }
+    },
+    "layout": {
+      "contentWidth": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "640px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-content-width-sm"
+            }
+          }
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "840px",
+          "$description": "de-facto theme default",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-content-width-md"
+            }
+          }
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "960px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-content-width-lg"
+            }
+          }
+        }
+      },
+      "sidebarWidth": {
+        "rail": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.14}",
+          "$description": "collapsed, icons only",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-sidebar-width-rail"
+            }
+          }
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "240px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-sidebar-width-sm"
+            }
+          }
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "300px",
+          "$description": "de-facto theme default",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-sidebar-width-md"
+            }
+          }
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "360px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-sidebar-width-lg"
+            }
+          }
+        }
+      },
+      "containerWidth": {
+        "md": {
+          "$type": "dimension",
+          "$value": "1200px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-container-width-md"
+            }
+          }
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "1440px",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-container-width-lg"
+            }
           }
         }
       }

@@ -2,6 +2,13 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { css, html, unsafeCSS } from "lit";
+import {
+  DDDBreakpoints,
+  DDDContentWidths,
+  DDDSidebarWidths,
+  DDDContainerWidths,
+} from "./DDDLayout.js";
+export * from "./DDDLayout.js";
 /**
  * Instructional design meshing with styles. What we use to represent concepts
  */
@@ -686,13 +693,55 @@ export const DDDVariables = css`
 
     /* ===========================================
        BREAKPOINTS
-       Responsive design breakpoints
-       Usage: @media (min-width: var(--ddd-breakpoint-md)) { ... }
+       Generated from DDDBreakpoints in lib/DDDLayout.js (the source of truth).
+       CSS custom properties do NOT work inside media queries, so these
+       properties are for reading from JS (getComputedStyle) and documentation.
+       In media queries, import DDDBreakpoints and interpolate the number with
+       unsafeCSS. Sizes are named by width, not device, so the same scale
+       works for the viewport (themes) or an element's own width (grid-plate).
        =========================================== */
-    --ddd-breakpoint-sm: 360px; /* Small devices (phones) */
-    --ddd-breakpoint-md: 768px; /* Medium devices (tablets) */
-    --ddd-breakpoint-lg: 1080px; /* Large devices (laptops) */
-    --ddd-breakpoint-xl: 1440px; /* Extra large devices (desktops) */
+    --ddd-breakpoint-sm: ${unsafeCSS(DDDBreakpoints.sm)}px; /* narrow, phones */
+    --ddd-breakpoint-md: ${unsafeCSS(
+      DDDBreakpoints.md,
+    )}px; /* tablets, sidebar collapses below this */
+    --ddd-breakpoint-lg: ${unsafeCSS(
+      DDDBreakpoints.lg,
+    )}px; /* sidebar + content column + gutters fit */
+    --ddd-breakpoint-xl: ${unsafeCSS(DDDBreakpoints.xl)}px; /* wide desktop */
+
+    /* ===========================================
+       LAYOUT
+       Shared vocabulary for constructing themes and layout elements.
+       Primitives are scales; the --ddd-theme-* aliases are what a theme
+       sets (or overrides) to describe its regions, matching the
+       --ddd-theme-header-border-* pattern.
+       Usage: max-width: var(--ddd-theme-content-width);
+              width: var(--ddd-theme-sidebar-width);
+       =========================================== */
+    --ddd-content-width-sm: ${unsafeCSS(DDDContentWidths.sm)}px;
+    --ddd-content-width-md: ${unsafeCSS(
+      DDDContentWidths.md,
+    )}px; /* de-facto theme default */
+    --ddd-content-width-lg: ${unsafeCSS(DDDContentWidths.lg)}px;
+
+    --ddd-sidebar-width-rail: var(--ddd-spacing-14); /* collapsed, icons only */
+    --ddd-sidebar-width-sm: ${unsafeCSS(DDDSidebarWidths.sm)}px;
+    --ddd-sidebar-width-md: ${unsafeCSS(
+      DDDSidebarWidths.md,
+    )}px; /* de-facto theme default */
+    --ddd-sidebar-width-lg: ${unsafeCSS(DDDSidebarWidths.lg)}px;
+
+    --ddd-container-width-md: ${unsafeCSS(DDDContainerWidths.md)}px;
+    --ddd-container-width-lg: ${unsafeCSS(DDDContainerWidths.lg)}px;
+
+    --ddd-theme-content-width: var(--ddd-content-width-md);
+    --ddd-theme-sidebar-width: var(--ddd-sidebar-width-md);
+    --ddd-theme-container-width: var(--ddd-container-width-md);
+    --ddd-theme-layout-gutter: var(--ddd-spacing-6);
+
+    /* grid: column gap and per-item spacing for grid-plate and card grids */
+    --ddd-grid-gap: var(--ddd-spacing-4);
+    --ddd-grid-item-spacing: var(--ddd-spacing-4);
 
     /* ===========================================
        BORDER RADIUS

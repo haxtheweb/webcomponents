@@ -160,7 +160,7 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
+              "default": "1440",
               "attribute": "xl"
             },
             {
@@ -253,7 +253,7 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
+              "default": "1440",
               "fieldName": "xl"
             }
           ],
@@ -365,7 +365,7 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
+              "default": "1440",
               "attribute": "xl",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
@@ -492,7 +492,7 @@
                 "text": "number"
               },
               "description": "Miniumum value for extra-large breakpoint",
-              "default": "1500",
+              "default": "1440",
               "fieldName": "xl",
               "inheritedFrom": {
                 "name": "ResponsiveUtilityBehaviors",
