@@ -4376,10 +4376,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // user can edit them in place when launched from Merlin search.
         initialValue: (values) => {
           const activeItem = toJS(store.activeItem);
-          return (
+          const tags =
             (activeItem && activeItem.metadata && activeItem.metadata.tags) ||
-            ""
-          );
+            "";
+          return Array.isArray(tags) ? tags.join(", ") : tags;
         },
         program: async (input, values) => {
           const { createEditTagsProgram } = await import(

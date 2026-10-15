@@ -1114,7 +1114,10 @@ export class PageBreak extends IntersectionObserverMixin(
     SuperDaemonInstance.close();
     store.playSound("click");
 
-    const currentTags = (item.metadata && item.metadata.tags) || "";
+    // tags may be an array (canonical) or a legacy comma-separated string;
+    // Merlin edits them as a comma-separated string
+    const rawTags = (item.metadata && item.metadata.tags) || "";
+    const currentTags = Array.isArray(rawTags) ? rawTags.join(", ") : rawTags;
     this._originalTags = currentTags;
 
     // Use the globally defined edit-tags program

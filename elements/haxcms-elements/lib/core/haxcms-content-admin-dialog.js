@@ -366,6 +366,9 @@ class HAXCMSContentAdminDialog extends DDD {
 
   _tagsFromItem(item) {
     const metadata = item.metadata || {};
+    if (Array.isArray(metadata.tags) && metadata.tags.length > 0) {
+      return metadata.tags.join(", ");
+    }
     if (typeof metadata.tags === "string" && metadata.tags.trim() !== "") {
       return metadata.tags;
     }

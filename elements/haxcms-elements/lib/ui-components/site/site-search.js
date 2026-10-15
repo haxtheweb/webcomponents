@@ -454,7 +454,10 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
             item.icon = fullItem.metadata.icon;
           }
           if (fullItem.metadata && fullItem.metadata.tags) {
-            item.tags = fullItem.metadata.tags;
+            // render code splits a string; accept canonical array tags too
+            item.tags = Array.isArray(fullItem.metadata.tags)
+              ? fullItem.metadata.tags.join(",")
+              : fullItem.metadata.tags;
           }
         }
       });

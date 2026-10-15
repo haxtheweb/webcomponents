@@ -30,11 +30,14 @@ export const createEditTagsProgram = (context) => {
 
     // Read the active page's current tags so the program is self-sufficient
     // regardless of which entry point launched it (quick page operations or
-    // Merlin search/voice). Tags are stored as a comma-separated string.
-    const currentTags =
+    // Merlin search/voice). Tags are stored as an array in canonical
+    // site.json (older sites may hold a comma-separated string); Merlin
+    // edits them as a comma-separated string.
+    const rawTags =
       activeItem.metadata && activeItem.metadata.tags
         ? activeItem.metadata.tags
         : "";
+    const currentTags = Array.isArray(rawTags) ? rawTags.join(", ") : rawTags;
 
     // User typed something - offer to save their input verbatim.
     if (input && input.trim() !== "") {
