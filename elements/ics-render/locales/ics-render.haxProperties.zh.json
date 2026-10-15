@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "日历",
+    "description": "将日历文件中的活动显示为日期卡片、时间线、表格或列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "日历文件",
+        "description": "上传或选择一个 .ics 日历文件。其中的活动在浏览器中读取。"
+      },
+      {
+        "property": "displayAs",
+        "title": "显示方式",
+        "description": "如何呈现文件中的内容。",
+        "options": {
+          "cards": "日期卡片",
+          "timeline": "时间线",
+          "table": "表格",
+          "list": "列表"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "标题",
+        "description": "显示在活动上方，并用作表格标题。默认使用日历自身的名称。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Geleentheid",
+  "when": "Wanneer",
+  "where": "Waar",
+  "details": "Besonderhede",
+  "allDay": "Heeldag",
+  "repeats": "Herhaal",
+  "loadingCalendar": "Kalender word gelaai",
+  "calendarUnavailable": "Kalender nie beskikbaar nie",
+  "noEvents": "Geen geleenthede in hierdie kalender nie"
+}

@@ -40,7 +40,6 @@ function generateTranslationManifest() {
       
       if (translationFiles.length > 0) {
         elementsWithTranslations++;
-        console.log(`  📁 ${elementDir}:`);
         
         // Group files by namespace
         const namespaces = {};
@@ -58,7 +57,6 @@ function generateTranslationManifest() {
             }
             namespaces[namespace].push(language);
             languageSet.add(language);
-            console.log(`    📄 ${file} → ${namespace}:${language}`);
           }
         });
         
@@ -99,15 +97,8 @@ function generateTranslationManifest() {
   
   console.log('\n✅ Translation manifest JSON generated successfully!');
   console.log(`   📍 Location: ${manifestPath}`);
-  console.log(`   📊 Found ${Object.keys(manifest).length} namespaces with translations`);
   console.log(`   🌍 Languages found: ${sortedLanguages.join(', ')}`);
-  
-  // Show coverage stats
-  console.log('\n📈 Translation Coverage:');
-  Object.keys(manifest).forEach(namespace => {
-    console.log(`   ${namespace}: ${manifest[namespace].length} languages [${manifest[namespace].join(', ')}]`);
-  });
-  
+    
   // Show language popularity
   const languageCounts = {};
   Object.values(manifest).forEach(languages => {

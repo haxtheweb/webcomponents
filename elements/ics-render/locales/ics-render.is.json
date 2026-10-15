@@ -1,0 +1,11 @@
+{
+  "event": "Viðburður",
+  "when": "Hvenær",
+  "where": "Hvar",
+  "details": "Nánar",
+  "allDay": "Allan daginn",
+  "repeats": "Endurtekur sig",
+  "loadingCalendar": "Hleður dagatali",
+  "calendarUnavailable": "Dagatal ekki tiltækt",
+  "noEvents": "Engir viðburðir í þessu dagatali"
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Loopbaantydlyn",
+    "description": "'n Loopbaantydlyn met organisasies, rolle en ander data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tydlyntitel",
+        "description": "'n Titel vir die loopbaantydlyn (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

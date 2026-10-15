@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mediaspeellys",
+    "description": "'n Speellys wat video- en oudiospelers in 'n speler-plus-kantbalk-uitleg aanbied."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiewe indeks",
+        "description": "Indeks van die aktiewe item om mee te begin."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Die kursus waarvoor hierdie speellys bedoel is (kursusidentifiseerder of URL)."
+      }
+    ]
+  }
+}

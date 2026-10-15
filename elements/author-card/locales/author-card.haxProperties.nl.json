@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Auteurskaart",
+    "description": "Toon auteursinformatie met foto, bio en sociale links."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Naam auteur",
+        "description": "Volledige naam van de auteur."
+      },
+      {
+        "property": "image",
+        "title": "Profielafbeelding",
+        "description": "Profielfoto van de auteur."
+      },
+      {
+        "property": "title",
+        "title": "Functietitel",
+        "description": "Functie of rol van de auteur."
+      },
+      {
+        "property": "description",
+        "title": "Bio",
+        "description": "Korte biografie van de auteur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profiel-URL",
+        "description": "Link naar de profielpagina van de auteur."
+      },
+      {
+        "property": "socialLink",
+        "title": "Sociale link",
+        "description": "Link naar een socialemediaprofiel."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Gebruikersnaam sociale media",
+        "description": "Gebruikersnaam op sociale media (bijvoorbeeld @username)."
+      }
+    ]
+  }
+}

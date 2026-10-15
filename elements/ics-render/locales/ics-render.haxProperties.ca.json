@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendari",
+    "description": "Mostra els esdeveniments d'un fitxer de calendari com a fitxes de data, una cronologia, una taula o una llista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fitxer de calendari",
+        "description": "Puja o tria un fitxer de calendari .ics. Els seus esdeveniments es llegeixen al navegador."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostra com a",
+        "description": "Com presentar el contingut del fitxer.",
+        "options": {
+          "cards": "Fitxes de data",
+          "timeline": "Cronologia",
+          "table": "Taula",
+          "list": "Llista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Encapçalament",
+        "description": "Es mostra a sobre dels esdeveniments i com a llegenda de la taula. Per defecte és el nom del calendari."
+      }
+    ]
+  }
+}

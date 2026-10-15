@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ìlà-àkókò iṣẹ́",
+    "description": "Ìlà-àkókò iṣẹ́ tó ní àwọn àjọ, ipa, àti àwọn dátà mìíràn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé ìlà-àkókò",
+        "description": "Àkọlé fún ìlà-àkókò iṣẹ́ (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

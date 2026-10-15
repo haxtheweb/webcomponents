@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ਲੇਖਕ ਕਾਰਡ",
+    "description": "ਫ਼ੋਟੋ, ਜੀਵਨੀ ਅਤੇ ਸੋਸ਼ਲ ਲਿੰਕਾਂ ਨਾਲ ਲੇਖਕ ਦੀ ਜਾਣਕਾਰੀ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ਲੇਖਕ ਦਾ ਨਾਮ",
+        "description": "ਲੇਖਕ ਦਾ ਪੂਰਾ ਨਾਮ।"
+      },
+      {
+        "property": "image",
+        "title": "ਪ੍ਰੋਫਾਈਲ ਚਿੱਤਰ",
+        "description": "ਲੇਖਕ ਦੀ ਪ੍ਰੋਫਾਈਲ ਫ਼ੋਟੋ।"
+      },
+      {
+        "property": "title",
+        "title": "ਨੌਕਰੀ ਦਾ ਅਹੁਦਾ",
+        "description": "ਲੇਖਕ ਦਾ ਅਹੁਦਾ ਜਾਂ ਭੂਮਿਕਾ।"
+      },
+      {
+        "property": "description",
+        "title": "ਜੀਵਨੀ",
+        "description": "ਲੇਖਕ ਦੀ ਛੋਟੀ ਜੀਵਨੀ।"
+      },
+      {
+        "property": "profileUrl",
+        "title": "ਪ੍ਰੋਫਾਈਲ URL",
+        "description": "ਲੇਖਕ ਦੇ ਪ੍ਰੋਫਾਈਲ ਪੰਨੇ ਦਾ ਲਿੰਕ।"
+      },
+      {
+        "property": "socialLink",
+        "title": "ਸੋਸ਼ਲ ਲਿੰਕ",
+        "description": "ਸੋਸ਼ਲ ਮੀਡੀਆ ਪ੍ਰੋਫਾਈਲ ਦਾ ਲਿੰਕ।"
+      },
+      {
+        "property": "socialHandle",
+        "title": "ਸੋਸ਼ਲ ਹੈਂਡਲ",
+        "description": "ਸੋਸ਼ਲ ਮੀਡੀਆ ਹੈਂਡਲ (ਉਦਾਹਰਨ ਲਈ @username)।"
+      }
+    ]
+  }
+}

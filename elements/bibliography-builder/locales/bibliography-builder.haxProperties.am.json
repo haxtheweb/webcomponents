@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የዋቢ ዝርዝር ገንቢ",
+    "description": "የዋቢ ዝርዝሮችን ለመፍጠር እና ለማስተዳደር የሚያገለግል መሣሪያ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ጥቅሶች",
+        "description": "በዚህ የዋቢ ዝርዝር ውስጥ ያሉ የጥቅስ ንጥሎች"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "ይህ የዋቢ ዝርዝር የተዘጋጀለት ኮርስ መለያ ወይም ስም (OER Schema forCourse)።"
+      }
+    ]
+  }
+}

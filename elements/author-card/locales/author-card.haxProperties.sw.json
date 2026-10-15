@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kadi ya mwandishi",
+    "description": "Onyesha taarifa za mwandishi pamoja na picha, wasifu mfupi na viungo vya mitandao ya kijamii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Jina la mwandishi",
+        "description": "Jina kamili la mwandishi."
+      },
+      {
+        "property": "image",
+        "title": "Picha ya wasifu",
+        "description": "Picha ya wasifu ya mwandishi."
+      },
+      {
+        "property": "title",
+        "title": "Cheo cha kazi",
+        "description": "Cheo au jukumu la mwandishi."
+      },
+      {
+        "property": "description",
+        "title": "Wasifu mfupi",
+        "description": "Wasifu mfupi wa mwandishi."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL ya wasifu",
+        "description": "Kiungo cha ukurasa wa wasifu wa mwandishi."
+      },
+      {
+        "property": "socialLink",
+        "title": "Kiungo cha mitandao ya kijamii",
+        "description": "Kiungo cha wasifu kwenye mitandao ya kijamii."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Jina la mtumiaji la mitandao ya kijamii",
+        "description": "Jina la mtumiaji kwenye mitandao ya kijamii (kwa mfano @username)."
+      }
+    ]
+  }
+}

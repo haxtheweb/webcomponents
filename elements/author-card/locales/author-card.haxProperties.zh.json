@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "作者卡片",
+    "description": "显示作者信息，包括照片、简介和社交链接。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "作者姓名",
+        "description": "作者的全名。"
+      },
+      {
+        "property": "image",
+        "title": "头像",
+        "description": "作者的个人资料照片。"
+      },
+      {
+        "property": "title",
+        "title": "职位名称",
+        "description": "作者的职位或角色。"
+      },
+      {
+        "property": "description",
+        "title": "简介",
+        "description": "作者简短介绍。"
+      },
+      {
+        "property": "profileUrl",
+        "title": "个人资料 URL",
+        "description": "指向作者个人资料页面的链接。"
+      },
+      {
+        "property": "socialLink",
+        "title": "社交链接",
+        "description": "指向社交媒体个人资料的链接。"
+      },
+      {
+        "property": "socialHandle",
+        "title": "社交账号",
+        "description": "社交媒体账号（例如 @username）。"
+      }
+    ]
+  }
+}

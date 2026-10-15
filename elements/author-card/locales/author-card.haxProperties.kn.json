@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ಲೇಖಕರ ಕಾರ್ಡ್",
+    "description": "ಫೋಟೋ, ಪರಿಚಯ ಮತ್ತು ಸಾಮಾಜಿಕ ಲಿಂಕ್‌ಗಳೊಂದಿಗೆ ಲೇಖಕರ ಮಾಹಿತಿಯನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ಲೇಖಕರ ಹೆಸರು",
+        "description": "ಲೇಖಕರ ಪೂರ್ಣ ಹೆಸರು."
+      },
+      {
+        "property": "image",
+        "title": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ",
+        "description": "ಲೇಖಕರ ಪ್ರೊಫೈಲ್ ಫೋಟೋ."
+      },
+      {
+        "property": "title",
+        "title": "ಹುದ್ದೆಯ ಹೆಸರು",
+        "description": "ಲೇಖಕರ ಹುದ್ದೆ ಅಥವಾ ಪಾತ್ರ."
+      },
+      {
+        "property": "description",
+        "title": "ಪರಿಚಯ",
+        "description": "ಲೇಖಕರ ಸಂಕ್ಷಿಪ್ತ ಜೀವನಚರಿತ್ರೆ."
+      },
+      {
+        "property": "profileUrl",
+        "title": "ಪ್ರೊಫೈಲ್ URL",
+        "description": "ಲೇಖಕರ ಪ್ರೊಫೈಲ್ ಪುಟಕ್ಕೆ ಲಿಂಕ್."
+      },
+      {
+        "property": "socialLink",
+        "title": "ಸಾಮಾಜಿಕ ಲಿಂಕ್",
+        "description": "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮ ಪ್ರೊಫೈಲ್‌ಗೆ ಲಿಂಕ್."
+      },
+      {
+        "property": "socialHandle",
+        "title": "ಸಾಮಾಜಿಕ ಹ್ಯಾಂಡಲ್",
+        "description": "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮ ಹ್ಯಾಂಡಲ್ (ಉದಾಹರಣೆಗೆ @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kenalan",
+    "description": "Tunjukkan orang dalam fail kenalan sebagai kad individu, petikan, jadual atau senarai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fail kenalan",
+        "description": "Muat naik atau pilih fail kenalan .vcf. Kad-kadnya dibaca dalam pelayar."
+      },
+      {
+        "property": "displayAs",
+        "title": "Papar sebagai",
+        "description": "Cara membentangkan kandungan fail.",
+        "options": {
+          "cards": "Kad individu",
+          "quotes": "Petikan",
+          "table": "Jadual",
+          "list": "Senarai"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Tajuk",
+        "description": "Ditunjukkan di atas kenalan dan sebagai kapsyen jadual."
+      }
+    ]
+  }
+}

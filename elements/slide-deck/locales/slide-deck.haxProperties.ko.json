@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "슬라이드 덱",
+    "description": "가져온 PowerPoint 덱을 발표자 노트와 함께 슬라이드별로 발표합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "덱 매니페스트",
+        "description": ".pptx 파일을 놓으면 자동으로 슬라이드 덱으로 변환됩니다. 이 필드에는 생성된 deck.json 경로가 설정됩니다."
+      },
+      {
+        "property": "deckId",
+        "title": "덱 ID",
+        "description": "한 페이지에 덱이 둘 이상 있을 때만 필요하며, 슬라이드 링크가 구분되도록 합니다"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "다운로드 허용",
+        "description": "플레이어 컨트롤에 원본 PowerPoint 파일 다운로드 버튼을 표시합니다"
+      }
+    ]
+  }
+}

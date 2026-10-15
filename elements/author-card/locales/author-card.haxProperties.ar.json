@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "بطاقة المؤلف",
+    "description": "عرض معلومات المؤلف مع صورة ونبذة تعريفية وروابط التواصل الاجتماعي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "اسم المؤلف",
+        "description": "الاسم الكامل للمؤلف."
+      },
+      {
+        "property": "image",
+        "title": "صورة الملف الشخصي",
+        "description": "صورة الملف الشخصي للمؤلف."
+      },
+      {
+        "property": "title",
+        "title": "المسمى الوظيفي",
+        "description": "منصب المؤلف أو دوره."
+      },
+      {
+        "property": "description",
+        "title": "نبذة تعريفية",
+        "description": "سيرة ذاتية قصيرة للمؤلف."
+      },
+      {
+        "property": "profileUrl",
+        "title": "عنوان URL للملف الشخصي",
+        "description": "رابط صفحة الملف الشخصي للمؤلف."
+      },
+      {
+        "property": "socialLink",
+        "title": "رابط اجتماعي",
+        "description": "رابط إلى ملف شخصي على وسائل التواصل الاجتماعي."
+      },
+      {
+        "property": "socialHandle",
+        "title": "اسم المستخدم الاجتماعي",
+        "description": "اسم المستخدم على وسائل التواصل الاجتماعي (مثلًا @username)."
+      }
+    ]
+  }
+}

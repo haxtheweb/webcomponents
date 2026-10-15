@@ -1,0 +1,11 @@
+{
+  "name": "Ime",
+  "position": "Položaj",
+  "organization": "Organizacija",
+  "email": "E-pošta",
+  "phone": "Telefon",
+  "address": "Naslov",
+  "loadingContacts": "Nalaganje stikov",
+  "contactsUnavailable": "Stiki niso na voljo",
+  "noContacts": "V tej datoteki ni stikov"
+}

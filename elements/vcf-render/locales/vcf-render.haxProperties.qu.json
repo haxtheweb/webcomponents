@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contactokuna",
+    "description": "Contacto archivopi runakunata rikuchiy runa tarjetakunahina, citakunahina, tablahina utaq sinrihina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Contacto archivo",
+        "description": "Huk .vcf contacto archivota churay utaq akllay. Tarjetankunaqa navegadorpi ñawinchasqa kanku."
+      },
+      {
+        "property": "displayAs",
+        "title": "Imayna rikuchiy",
+        "description": "Archivopi kaqta imayna rikuchina.",
+        "options": {
+          "cards": "Runa tarjetakuna",
+          "quotes": "Citakuna",
+          "table": "Tabla",
+          "list": "Sinri"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Uma suti",
+        "description": "Contactokuna hawanpi rikukun, tablapa sutinhinapas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licenca za korištenje umjetne inteligencije",
+    "description": "Prikažite oznaku licence za korištenje umjetne inteligencije (AIUL) za svoj rad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Razina licence za korištenje umjetne inteligencije za ovaj rad. Pojedinosti potražite na https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikator medija",
+        "description": "Neobavezni modifikator medijske domene. Određuje vrstu medija na koju se ova licenca odnosi."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI referentne stranice licence za korištenje umjetne inteligencije. Automatski se popunjava iz poveznice licence ako nije postavljen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Xerador de bibliografías",
+    "description": "Unha ferramenta para crear e xestionar bibliografías"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citas",
+        "description": "Elementos de cita desta bibliografía"
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "Identificador ou nome do curso para o que é esta bibliografía (OER Schema forCourse)."
+      }
+    ]
+  }
+}

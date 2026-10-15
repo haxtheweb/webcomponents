@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Umakhi webhibliyografi",
+    "description": "Isixhobo sokwenza nokulawula iibhibliyografi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Izicatshulwa",
+        "description": "Izinto zezicatshulwa kule bhibliyografi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "Isichongi okanye igama lekhosi le bhibliyografi eyenzelwe yona (OER Schema forCourse)."
+      }
+    ]
+  }
+}

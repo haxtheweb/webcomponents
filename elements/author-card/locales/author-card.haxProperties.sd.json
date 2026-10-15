@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ليکڪ ڪارڊ",
+    "description": "تصوير، مختصر سوانح ۽ سوشل لنڪس سان ليکڪ جي معلومات ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ليکڪ جو نالو",
+        "description": "ليکڪ جو پورو نالو."
+      },
+      {
+        "property": "image",
+        "title": "پروفائل تصوير",
+        "description": "ليکڪ جي پروفائل تصوير."
+      },
+      {
+        "property": "title",
+        "title": "عهدو",
+        "description": "ليکڪ جو عهدو يا ڪردار."
+      },
+      {
+        "property": "description",
+        "title": "سوانح",
+        "description": "ليکڪ جي مختصر سوانح."
+      },
+      {
+        "property": "profileUrl",
+        "title": "پروفائل URL",
+        "description": "ليکڪ جي پروفائل صفحي جي لنڪ."
+      },
+      {
+        "property": "socialLink",
+        "title": "سوشل لنڪ",
+        "description": "سوشل ميڊيا پروفائل جي لنڪ."
+      },
+      {
+        "property": "socialHandle",
+        "title": "سوشل هينڊل",
+        "description": "سوشل ميڊيا هينڊل (مثال طور @username)."
+      }
+    ]
+  }
+}

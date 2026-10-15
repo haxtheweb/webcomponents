@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Huinga kiriata",
+    "description": "Whakaaturia tētahi huinga PowerPoint kua kawea mai, kiriata ki te kiriata, me ngā tuhipoka a te kaikōrero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Whakaaturanga huinga",
+        "description": "Whakatakahia he kōnae .pptx, ā, ka huri aunoa hei huinga kiriata. Ka tautuhia te āpure ki te ara deck.json ka puta."
+      },
+      {
+        "property": "deckId",
+        "title": "ID huinga",
+        "description": "Me whai anake ina neke atu i te kotahi te huinga i tētahi whārangi, kia motuhake tonu ai ngā hono kiriata"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Tukua te tikiake",
+        "description": "Whakaaturia he pātene tikiake mō te kōnae PowerPoint taketake i ngā mana kaipāho"
+      }
+    ]
+  }
+}

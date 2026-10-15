@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendário",
+    "description": "Mostra os eventos de um arquivo de calendário como cartões de data, uma linha do tempo, uma tabela ou uma lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Arquivo de calendário",
+        "description": "Envie ou escolha um arquivo de calendário .ics. Seus eventos são lidos no navegador."
+      },
+      {
+        "property": "displayAs",
+        "title": "Exibir como",
+        "description": "Como apresentar o conteúdo do arquivo.",
+        "options": {
+          "cards": "Cartões de data",
+          "timeline": "Linha do tempo",
+          "table": "Tabela",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Cabeçalho",
+        "description": "Exibido acima dos eventos e como legenda da tabela. Por padrão, usa o próprio nome do calendário."
+      }
+    ]
+  }
+}

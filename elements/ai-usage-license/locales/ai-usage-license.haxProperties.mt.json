@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Liċenzja tal-Użu tal-AI",
+    "description": "Uri badge tal-Liċenzja tal-Użu tal-AI (AIUL) għax-xogħol tiegħek"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Liċenzja",
+        "description": "Il-livell tal-liċenzja tal-użu tal-AI għal dan ix-xogħol. Ara https://dmd-program.github.io/aiul/ għad-dettalji."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikatur tal-midja",
+        "description": "Modifikatur fakultattiv tad-dominju tal-midja. Jispeċifika t-tip ta' midja li għalih tapplika din il-liċenzja."
+      },
+      {
+        "property": "uri",
+        "title": "URI tal-AIUL (OER Schema)",
+        "description": "OER Schema: URI għall-paġna ta' referenza tal-Liċenzja tal-Użu tal-AI. Timtela awtomatikament mil-link tal-liċenzja meta ma tkunx issettjata."
+      }
+    ]
+  }
+}

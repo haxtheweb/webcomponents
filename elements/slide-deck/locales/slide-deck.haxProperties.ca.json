@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Presentació de diapositives",
+    "description": "Presenta una presentació de PowerPoint importada diapositiva a diapositiva, amb notes del presentador."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest de la presentació",
+        "description": "Deixa anar un fitxer .pptx i es convertirà automàticament en una presentació de diapositives. El camp s'estableix al camí del deck.json resultant."
+      },
+      {
+        "property": "deckId",
+        "title": "Identificador de la presentació",
+        "description": "Només cal quan una pàgina conté més d'una presentació, perquè els enllaços a diapositives siguin diferents"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Permet la baixada",
+        "description": "Mostra un botó per baixar el fitxer de PowerPoint original als controls del reproductor"
+      }
+    ]
+  }
+}

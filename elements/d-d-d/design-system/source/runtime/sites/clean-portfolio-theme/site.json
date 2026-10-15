@@ -1,0 +1,190 @@
+{
+  "id": "e6c6f6a0-9d1d-4e6f-9d2f-portfoliothem0",
+  "title": "Clean Portfolio Demo",
+  "author": "",
+  "description": "Demonstration portfolio site built with clean-portfolio-theme, showcasing project pages and an about/contact structure.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "clean-portfolio-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "clean-portfolio-theme",
+      "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
+      "name": "clean-portfolio-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#5e2751",
+        "cssVariable": "--simple-colors-default-theme-purple-8",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-4d5e6f70-0001-4d4d-9d4d-portfoliohome0",
+      "indent": 0,
+      "location": "pages/item-4d5e6f70-0001-4d4d-9d4d-portfoliohome0/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Portfolio Home",
+      "description": "Welcome to my portfolio, built with clean-portfolio-theme. Browse selected projects and learn more about my work below.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4d5e6f70-0002-4d4d-9d4d-portfolioprojects0",
+      "indent": 0,
+      "location": "pages/item-4d5e6f70-0002-4d4d-9d4d-portfolioprojects0/index.html",
+      "slug": "projects",
+      "order": 1,
+      "parent": null,
+      "title": "Projects",
+      "description": "A curated collection of featured projects demonstrating range and craft.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4d5e6f70-0003-4d4d-9d4d-portfolioproj10",
+      "indent": 1,
+      "location": "pages/item-4d5e6f70-0003-4d4d-9d4d-portfolioproj10/index.html",
+      "slug": "projects/brand-identity-redesign",
+      "order": 0,
+      "parent": "item-4d5e6f70-0002-4d4d-9d4d-portfolioprojects0",
+      "title": "Brand Identity Redesign",
+      "description": "A full brand identity refresh including logo, color system, and typography guidelines for a small business client.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4d5e6f70-0004-4d4d-9d4d-portfolioproj20",
+      "indent": 1,
+      "location": "pages/item-4d5e6f70-0004-4d4d-9d4d-portfolioproj20/index.html",
+      "slug": "projects/interactive-museum-exhibit",
+      "order": 1,
+      "parent": "item-4d5e6f70-0002-4d4d-9d4d-portfolioprojects0",
+      "title": "Interactive Museum Exhibit",
+      "description": "An interactive touchscreen exhibit design combining storytelling, motion graphics, and accessible wayfinding.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4d5e6f70-0005-4d4d-9d4d-portfolioabout0",
+      "indent": 0,
+      "location": "pages/item-4d5e6f70-0005-4d4d-9d4d-portfolioabout0/index.html",
+      "slug": "about",
+      "order": 2,
+      "parent": null,
+      "title": "About Me",
+      "description": "Background, skills, and design philosophy behind the work shown in this portfolio.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-4d5e6f70-0006-4d4d-9d4d-portfoliocontact0",
+      "indent": 0,
+      "location": "pages/item-4d5e6f70-0006-4d4d-9d4d-portfoliocontact0/index.html",
+      "slug": "contact",
+      "order": 3,
+      "parent": null,
+      "title": "Contact",
+      "description": "Get in touch about collaborations, freelance work, or speaking engagements.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

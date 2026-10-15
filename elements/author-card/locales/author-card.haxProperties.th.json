@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "การ์ดผู้เขียน",
+    "description": "แสดงข้อมูลผู้เขียนพร้อมรูปภาพ ประวัติย่อ และลิงก์โซเชียล"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ชื่อผู้เขียน",
+        "description": "ชื่อเต็มของผู้เขียน"
+      },
+      {
+        "property": "image",
+        "title": "รูปโปรไฟล์",
+        "description": "รูปโปรไฟล์ของผู้เขียน"
+      },
+      {
+        "property": "title",
+        "title": "ตำแหน่งงาน",
+        "description": "ตำแหน่งหรือบทบาทของผู้เขียน"
+      },
+      {
+        "property": "description",
+        "title": "ประวัติย่อ",
+        "description": "ประวัติย่อของผู้เขียน"
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL โปรไฟล์",
+        "description": "ลิงก์ไปยังหน้าโปรไฟล์ของผู้เขียน"
+      },
+      {
+        "property": "socialLink",
+        "title": "ลิงก์โซเชียล",
+        "description": "ลิงก์ไปยังโปรไฟล์โซเชียลมีเดีย"
+      },
+      {
+        "property": "socialHandle",
+        "title": "ชื่อผู้ใช้โซเชียล",
+        "description": "ชื่อผู้ใช้โซเชียลมีเดีย (เช่น @username)"
+      }
+    ]
+  }
+}

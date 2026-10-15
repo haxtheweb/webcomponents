@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "کتابیات ساز",
+    "description": "کتابیات بنانے اور ان کا انتظام کرنے کا ٹول"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "حوالے",
+        "description": "اس کتابیات میں حوالہ آئٹمز"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "اس کورس کا شناخت کنندہ یا نام جس کے لیے یہ کتابیات ہے (OER Schema forCourse)۔"
+      }
+    ]
+  }
+}

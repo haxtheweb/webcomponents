@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Heimildaskrárgerð",
+    "description": "Tól til að búa til og halda utan um heimildaskrár"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Tilvitnanir",
+        "description": "Heimildafærslur í þessari heimildaskrá"
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "Auðkenni eða heiti námskeiðsins sem þessi heimildaskrá er fyrir (OER Schema forCourse)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "करियर समयरेखा",
+    "description": "संस्थाहरू, भूमिकाहरू र अन्य विवरण समावेश भएको करियर समयरेखा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "समयरेखा शीर्षक",
+        "description": "करियर समयरेखाको शीर्षक (OER Schema: oer:name)।"
+      }
+    ]
+  }
+}

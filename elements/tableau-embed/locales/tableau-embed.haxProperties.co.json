@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Integrà visualizazioni Tableau da un URL di spartera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL di u quadernu di travagliu o di a vista Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza di a visualizazione."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza di a visualizazione."
+      },
+      {
+        "property": "toolbar",
+        "title": "Barra di strumenti",
+        "description": "Pusizione di a barra di strumenti.",
+        "options": {
+          "top": "In cima",
+          "bottom": "In fondu",
+          "hidden": "Piatta"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Piattà l'unghjette",
+        "description": "Piattà l'unghjette di i fogli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Disposizione di l'apparechju",
+        "description": "Disposizione di l'apparechju da affissà.",
+        "options": {
+          "desktop": "Urdinatore",
+          "tablet": "Tauletta",
+          "phone": "Telefonu"
+        }
+      }
+    ]
+  }
+}

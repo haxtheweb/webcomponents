@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Prezentare cu diapozitive",
+    "description": "Prezintă o prezentare PowerPoint importată diapozitiv cu diapozitiv, cu note pentru prezentator."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifestul prezentării",
+        "description": "Plasează un fișier .pptx și acesta este convertit automat într-o prezentare cu diapozitive. Câmpul primește calea către fișierul deck.json rezultat."
+      },
+      {
+        "property": "deckId",
+        "title": "ID-ul prezentării",
+        "description": "Necesar doar când o pagină conține mai multe prezentări, astfel încât linkurile către diapozitive să rămână distincte"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Permite descărcarea",
+        "description": "Afișează în controalele playerului un buton de descărcare a fișierului PowerPoint original"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Chronologie de carrière",
+    "description": "Une chronologie de carrière contenant des organisations, des rôles et d’autres données"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre de la chronologie",
+        "description": "Un titre pour la chronologie de carrière (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

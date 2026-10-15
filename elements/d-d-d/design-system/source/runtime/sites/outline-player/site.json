@@ -1,0 +1,190 @@
+{
+  "id": "0d1e2f3a-4b5c-4c6d-9d7e-outlineplayer0",
+  "title": "Outline Player Documentation",
+  "author": "",
+  "description": "Demonstration documentation site for outline-player, showing its persistent outline navigation, nested guide structure, breadcrumbs, and print support.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "outline-player",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "outline-player",
+      "path": "@haxtheweb/outline-player/outline-player.js",
+      "name": "outline-player",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#5892fd",
+        "cssVariable": "--simple-colors-default-theme-blue-8",
+        "icon": "hax:hax2022"
+      },
+      "regions": {
+        "header": [],
+        "footerPrimary": [],
+        "footerSecondary": []
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-0d1e2f3a-0001-4b8b-8b8b-outlinestart0",
+      "indent": 0,
+      "location": "pages/item-0d1e2f3a-0001-4b8b-8b8b-outlinestart0/index.html",
+      "slug": "getting-started",
+      "order": 0,
+      "parent": null,
+      "title": "Getting Started",
+      "description": "An introduction to the site and how outline-player presents documentation with a persistent navigation drawer.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-0d1e2f3a-0002-4b8b-8b8b-outlineguides0",
+      "indent": 0,
+      "location": "pages/item-0d1e2f3a-0002-4b8b-8b8b-outlineguides0/index.html",
+      "slug": "user-guides",
+      "order": 1,
+      "parent": null,
+      "title": "User Guides",
+      "description": "A guide section with nested topics, demonstrating how outline-player collapses and expands hierarchy in the navigation drawer.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-0d1e2f3a-0003-4b8b-8b8b-outlineauthor0",
+      "indent": 1,
+      "location": "pages/item-0d1e2f3a-0003-4b8b-8b8b-outlineauthor0/index.html",
+      "slug": "user-guides/authoring-content",
+      "order": 0,
+      "parent": "item-0d1e2f3a-0002-4b8b-8b8b-outlineguides0",
+      "title": "Authoring Content",
+      "description": "A nested guide page under User Guides, showing breadcrumbs and the nested outline position of a child page.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-0d1e2f3a-0004-4b8b-8b8b-outlinetheme0",
+      "indent": 1,
+      "location": "pages/item-0d1e2f3a-0004-4b8b-8b8b-outlinetheme0/index.html",
+      "slug": "user-guides/working-with-themes",
+      "order": 1,
+      "parent": "item-0d1e2f3a-0002-4b8b-8b8b-outlineguides0",
+      "title": "Working with Themes",
+      "description": "The second nested guide page, covering how documentation sites change theme appearance.",
+      "metadata": {
+        "created": 1736889001,
+        "updated": 1736889001,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-0d1e2f3a-0005-4b8b-8b8b-outlinerefer0",
+      "indent": 0,
+      "location": "pages/item-0d1e2f3a-0005-4b8b-8b8b-outlinerefer0/index.html",
+      "slug": "outline-reference",
+      "order": 2,
+      "parent": null,
+      "title": "Outline Reference",
+      "description": "Reference for the site outline structure that drives navigation, routing, and page loading.",
+      "metadata": {
+        "created": 1736889002,
+        "updated": 1736889002,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-0d1e2f3a-0006-4b8b-8b8b-outlineabout0",
+      "indent": 0,
+      "location": "pages/item-0d1e2f3a-0006-4b8b-8b8b-outlineabout0/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About Outline Player",
+      "description": "What outline-player is and how its navigation, search, print, and dark mode support fit together.",
+      "metadata": {
+        "created": 1736889003,
+        "updated": 1736889003,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

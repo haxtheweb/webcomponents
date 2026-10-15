@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "වෘත්තීය කාලරේඛාව",
+    "description": "සංවිධාන, භූමිකා සහ වෙනත් දත්ත අඩංගු වෘත්තීය කාලරේඛාවක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "කාලරේඛා මාතෘකාව",
+        "description": "වෘත්තීය කාලරේඛාව සඳහා මාතෘකාවක් (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

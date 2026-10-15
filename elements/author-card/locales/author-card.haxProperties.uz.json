@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Muallif kartochkasi",
+    "description": "Muallif ma’lumotlarini surat, tarjimai hol va ijtimoiy tarmoq havolalari bilan ko‘rsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Muallif ismi",
+        "description": "Muallifning to‘liq ismi."
+      },
+      {
+        "property": "image",
+        "title": "Profil rasmi",
+        "description": "Muallifning profil surati."
+      },
+      {
+        "property": "title",
+        "title": "Lavozim",
+        "description": "Muallifning lavozimi yoki vazifasi."
+      },
+      {
+        "property": "description",
+        "title": "Tarjimai hol",
+        "description": "Muallifning qisqacha tarjimai holi."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil URL",
+        "description": "Muallif profil sahifasiga havola."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ijtimoiy tarmoq havolasi",
+        "description": "Ijtimoiy tarmoqdagi profilga havola."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Ijtimoiy tarmoqdagi taxallus",
+        "description": "Ijtimoiy tarmoqdagi taxallus (masalan, @username)."
+      }
+    ]
+  }
+}

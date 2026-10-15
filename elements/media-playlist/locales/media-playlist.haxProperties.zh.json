@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "媒体播放列表",
+    "description": "以播放器 + 侧边栏布局展示视频和音频播放器的播放列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "起始索引",
+        "description": "开始时激活项目的索引。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "此播放列表所面向的课程（课程标识符或 URL）。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "শেয়ার URL থেকে Tableau ভিজ্যুয়ালাইজেশন এম্বেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau ওয়ার্কবুক বা ভিউয়ের URL।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "ভিজ্যুয়ালাইজেশনের উচ্চতা।"
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "ভিজ্যুয়ালাইজেশনের প্রস্থ।"
+      },
+      {
+        "property": "toolbar",
+        "title": "টুলবার",
+        "description": "টুলবারের অবস্থান।",
+        "options": {
+          "top": "উপরে",
+          "bottom": "নিচে",
+          "hidden": "লুকানো"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "ট্যাব লুকান",
+        "description": "শিট ট্যাব লুকান।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "ডিভাইস বিন্যাস",
+        "description": "যে ডিভাইস বিন্যাসে দেখানো হবে।",
+        "options": {
+          "desktop": "ডেস্কটপ",
+          "tablet": "ট্যাবলেট",
+          "phone": "ফোন"
+        }
+      }
+    ]
+  }
+}

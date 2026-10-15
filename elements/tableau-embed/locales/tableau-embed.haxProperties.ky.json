@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau визуалдаштырууларын бөлүшүү URL аркылуу кыстаруу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau жумушчу китебинин же көрүнүшүнүн URL дареги."
+      },
+      {
+        "property": "height",
+        "title": "Бийиктиги",
+        "description": "Визуалдаштыруунун бийиктиги."
+      },
+      {
+        "property": "width",
+        "title": "Туурасы",
+        "description": "Визуалдаштыруунун туурасы."
+      },
+      {
+        "property": "toolbar",
+        "title": "Куралдар панели",
+        "description": "Куралдар панелинин жайгашуусу.",
+        "options": {
+          "top": "Үстүндө",
+          "bottom": "Ылдыйда",
+          "hidden": "Жашырылган"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Өтмөктөрдү жашыруу",
+        "description": "Барак өтмөктөрүн жашыруу."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Түзмөк макети",
+        "description": "Көрсөтүлүүчү түзмөк макети.",
+        "options": {
+          "desktop": "Компьютер",
+          "tablet": "Планшет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "രചയിതാവിന്റെ കാർഡ്",
+    "description": "ഫോട്ടോ, ലഘു ജീവചരിത്രം, സോഷ്യൽ ലിങ്കുകൾ എന്നിവയോടൊപ്പം രചയിതാവിന്റെ വിവരങ്ങൾ പ്രദർശിപ്പിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "രചയിതാവിന്റെ പേര്",
+        "description": "രചയിതാവിന്റെ മുഴുവൻ പേര്."
+      },
+      {
+        "property": "image",
+        "title": "പ്രൊഫൈൽ ചിത്രം",
+        "description": "രചയിതാവിന്റെ പ്രൊഫൈൽ ഫോട്ടോ."
+      },
+      {
+        "property": "title",
+        "title": "ജോലി പദവി",
+        "description": "രചയിതാവിന്റെ പദവി അല്ലെങ്കിൽ ചുമതല."
+      },
+      {
+        "property": "description",
+        "title": "ലഘു ജീവചരിത്രം",
+        "description": "രചയിതാവിന്റെ ഹ്രസ്വ ജീവചരിത്രം."
+      },
+      {
+        "property": "profileUrl",
+        "title": "പ്രൊഫൈൽ URL",
+        "description": "രചയിതാവിന്റെ പ്രൊഫൈൽ പേജിലേക്കുള്ള ലിങ്ക്."
+      },
+      {
+        "property": "socialLink",
+        "title": "സോഷ്യൽ ലിങ്ക്",
+        "description": "ഒരു സോഷ്യൽ മീഡിയ പ്രൊഫൈലിലേക്കുള്ള ലിങ്ക്."
+      },
+      {
+        "property": "socialHandle",
+        "title": "സോഷ്യൽ ഹാൻഡിൽ",
+        "description": "സോഷ്യൽ മീഡിയ ഹാൻഡിൽ (ഉദാഹരണത്തിന് @username)."
+      }
+    ]
+  }
+}

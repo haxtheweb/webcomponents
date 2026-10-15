@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "የደራሲ ካርድ",
+    "description": "የደራሲ መረጃን ከፎቶ፣ አጭር የሕይወት ታሪክ እና የማኅበራዊ አገናኞች ጋር ያሳዩ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "የደራሲ ስም",
+        "description": "የደራሲው ሙሉ ስም።"
+      },
+      {
+        "property": "image",
+        "title": "የመገለጫ ምስል",
+        "description": "የደራሲው የመገለጫ ፎቶ።"
+      },
+      {
+        "property": "title",
+        "title": "የሥራ መደብ",
+        "description": "የደራሲው የሥራ መደብ ወይም ሚና።"
+      },
+      {
+        "property": "description",
+        "title": "አጭር የሕይወት ታሪክ",
+        "description": "የደራሲው አጭር የሕይወት ታሪክ።"
+      },
+      {
+        "property": "profileUrl",
+        "title": "የመገለጫ URL",
+        "description": "ወደ ደራሲው የመገለጫ ገጽ የሚወስድ አገናኝ።"
+      },
+      {
+        "property": "socialLink",
+        "title": "የማኅበራዊ አገናኝ",
+        "description": "ወደ ማኅበራዊ ሚዲያ መገለጫ የሚወስድ አገናኝ።"
+      },
+      {
+        "property": "socialHandle",
+        "title": "የማኅበራዊ ሚዲያ መለያ ስም",
+        "description": "የማኅበራዊ ሚዲያ መለያ ስም (ለምሳሌ @username)።"
+      }
+    ]
+  }
+}

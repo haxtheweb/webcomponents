@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Liiska warbaahinta",
+    "description": "Liis ciyaareed oo soo bandhiga ciyaarayaasha muuqaalka iyo codka qaab ciyaariye iyo bar dhinac ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Lambarka bilowga",
+        "description": "Lambarka shayga laga bilaabayo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "Koorsada liiskan loogu talagalay (aqoonsiga koorsada ama URL)."
+      }
+    ]
+  }
+}

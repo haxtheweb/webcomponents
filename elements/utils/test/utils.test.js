@@ -125,6 +125,23 @@ describe("Utils test", () => {
       expect(iframe.hasAttribute("srcdoc")).to.be.false;
     });
 
+    it("haxElementToNode assigns array / object values to the camelCase property", async () => {
+      const node = haxElementToNode({
+        tag: "div",
+        properties: {
+          mediaItems: [{ src: "a.mp3" }],
+          sourceData: { kind: "audio" },
+          plainLabel: "kept as attribute",
+        },
+        content: "",
+      });
+
+      expect(node.mediaItems).to.deep.equal([{ src: "a.mp3" }]);
+      expect(node.sourceData).to.deep.equal({ kind: "audio" });
+      expect(node["media-items"]).to.be.undefined;
+      expect(node.getAttribute("plain-label")).to.equal("kept as attribute");
+    });
+
     it("nodeToHaxElement does not serialize srcdoc on iframe", async () => {
       const iframe = document.createElement("iframe");
       iframe.setAttribute("src", "https://example.org");

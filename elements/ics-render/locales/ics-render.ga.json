@@ -1,0 +1,11 @@
+{
+  "event": "Imeacht",
+  "when": "Cathain",
+  "where": "Cén áit",
+  "details": "Sonraí",
+  "allDay": "An lá ar fad",
+  "repeats": "Athdhéantar",
+  "loadingCalendar": "Féilire á lódáil",
+  "calendarUnavailable": "Níl an féilire ar fáil",
+  "noEvents": "Níl aon imeachtaí san fhéilire seo"
+}

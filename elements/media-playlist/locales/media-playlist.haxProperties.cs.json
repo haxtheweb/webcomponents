@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Seznam médií",
+    "description": "Seznam, který zobrazuje video a audio přehrávače v rozložení přehrávač + postranní panel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Počáteční položka",
+        "description": "Pořadové číslo položky, kterou začít."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurz",
+        "description": "Kurz, pro který je tento seznam určen (identifikátor kurzu nebo URL)."
+      }
+    ]
+  }
+}

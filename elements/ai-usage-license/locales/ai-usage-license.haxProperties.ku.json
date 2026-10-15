@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lîsansa bikaranîna AI",
+    "description": "Nîşaneke Lîsansa Bikaranîna AI (AIUL) ji bo xebata xwe nîşan bide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lîsans",
+        "description": "Asta lîsansa bikaranîna AI ji bo vê xebatê. Ji bo hûrguliyan li https://dmd-program.github.io/aiul/ binêre."
+      },
+      {
+        "property": "modifier",
+        "title": "Guherkerê medyayê",
+        "description": "Guherkerê qada medyayê yê vebijarkî. Cureyê medyaya ku ev lîsans lê derbas dibe diyar dike."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI ji bo rûpela referansê ya Lîsansa Bikaranîna AI. Dema ku nehatibe danîn, bixweber ji girêdana lîsansê tê dagirtin."
+      }
+    ]
+  }
+}

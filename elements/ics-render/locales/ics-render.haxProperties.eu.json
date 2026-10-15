@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Egutegia",
+    "description": "Erakutsi egutegi-fitxategi bateko gertaerak data-txartel, denbora-lerro, taula edo zerrenda gisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Egutegi-fitxategia",
+        "description": "Kargatu edo aukeratu .ics egutegi-fitxategi bat. Haren gertaerak nabigatzailean irakurtzen dira."
+      },
+      {
+        "property": "displayAs",
+        "title": "Erakutsi honela",
+        "description": "Fitxategiaren edukia nola aurkeztu.",
+        "options": {
+          "cards": "Data-txartelak",
+          "timeline": "Denbora-lerroa",
+          "table": "Taula",
+          "list": "Zerrenda"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Goiburua",
+        "description": "Gertaeren gainean erakusten da, baita taularen epigrafe gisa ere. Lehenespenez, egutegiaren izena erabiltzen da."
+      }
+    ]
+  }
+}

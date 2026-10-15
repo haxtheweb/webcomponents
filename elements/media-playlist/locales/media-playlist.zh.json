@@ -1,3 +1,6 @@
 {
-    "title": "标题"
+  "playlist": "播放列表",
+  "play": "播放",
+  "item": "项目",
+  "editModeLabel": "媒体播放列表编辑模式"
 }

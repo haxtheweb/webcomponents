@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontakter",
+    "description": "D'Persounen aus engem Kontaktfichier als Persounekaarten, Zitater, Tabell oder Lëscht weisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontaktfichier",
+        "description": "E .vcf-Kontaktfichier eroplueden oder auswielen. Seng Kaarte ginn am Browser gelies."
+      },
+      {
+        "property": "displayAs",
+        "title": "Weisen als",
+        "description": "Wéi den Inhalt vum Fichier presentéiert gëtt.",
+        "options": {
+          "cards": "Persounekaarten",
+          "quotes": "Zitater",
+          "table": "Tabell",
+          "list": "Lëscht"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Iwwerschrëft",
+        "description": "Gëtt iwwer de Kontakter an als Tabellenënnerschrëft gewisen."
+      }
+    ]
+  }
+}

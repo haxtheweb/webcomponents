@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ໃບອະນຸຍາດການນຳໃຊ້ AI",
+    "description": "ສະແດງປ້າຍໃບອະນຸຍາດການນຳໃຊ້ AI (AIUL) ສຳລັບຜົນງານຂອງທ່ານ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "ໃບອະນຸຍາດ",
+        "description": "ລະດັບໃບອະນຸຍາດການນຳໃຊ້ AI ສຳລັບຜົນງານນີ້. ເບິ່ງ https://dmd-program.github.io/aiul/ ສຳລັບລາຍລະອຽດ."
+      },
+      {
+        "property": "modifier",
+        "title": "ຕົວປັບແຕ່ງສື່",
+        "description": "ຕົວປັບແຕ່ງຂອບເຂດສື່ (ທາງເລືອກ). ລະບຸປະເພດສື່ທີ່ໃບອະນຸຍາດນີ້ນຳໃຊ້."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI ສຳລັບໜ້າອ້າງອີງຂອງໃບອະນຸຍາດການນຳໃຊ້ AI. ຖືກຕື່ມອັດຕະໂນມັດຈາກລິ້ງໃບອະນຸຍາດເມື່ອບໍ່ໄດ້ຕັ້ງ."
+      }
+    ]
+  }
+}

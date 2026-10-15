@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kaadị onye edemede",
+    "description": "Gosipụta ozi onye edemede nwere foto, akụkọ ndụ, na njikọ mgbasa ozi ọha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Aha onye edemede",
+        "description": "Aha zuru ezu nke onye edemede."
+      },
+      {
+        "property": "image",
+        "title": "Foto profaịlụ",
+        "description": "Foto profaịlụ onye edemede."
+      },
+      {
+        "property": "title",
+        "title": "Aha ọrụ",
+        "description": "Ọkwa ma ọ bụ ọrụ onye edemede."
+      },
+      {
+        "property": "description",
+        "title": "Akụkọ ndụ",
+        "description": "Akụkọ ndụ dị mkpirikpi nke onye edemede."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL profaịlụ",
+        "description": "Njikọ gaa na peeji profaịlụ onye edemede."
+      },
+      {
+        "property": "socialLink",
+        "title": "Njikọ mgbasa ozi ọha",
+        "description": "Njikọ gaa na profaịlụ mgbasa ozi ọha."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Aha njirimara mgbasa ozi ọha",
+        "description": "Aha njirimara na mgbasa ozi ọha (dịka ọmụmaatụ @username)."
+      }
+    ]
+  }
+}

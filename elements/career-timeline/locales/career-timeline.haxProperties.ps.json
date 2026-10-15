@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "د مسلک مهال‌وېش",
+    "description": "د مسلک مهال‌وېش چې ادارې، رولونه او نور معلومات لري"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "د مهال‌وېش سرلیک",
+        "description": "د مسلک مهال‌وېش لپاره سرلیک (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

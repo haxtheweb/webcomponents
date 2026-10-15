@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontakty",
+    "description": "Zobrazí osoby zo súboru kontaktov ako karty osôb, citáty, tabuľku alebo zoznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Súbor kontaktov",
+        "description": "Nahrajte alebo vyberte súbor kontaktov .vcf. Jeho karty sa načítajú v prehliadači."
+      },
+      {
+        "property": "displayAs",
+        "title": "Zobraziť ako",
+        "description": "Ako prezentovať obsah súboru.",
+        "options": {
+          "cards": "Karty osôb",
+          "quotes": "Citáty",
+          "table": "Tabuľka",
+          "list": "Zoznam"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Nadpis",
+        "description": "Zobrazuje sa nad kontaktmi a ako popis tabuľky."
+      }
+    ]
+  }
+}

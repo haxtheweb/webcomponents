@@ -265,8 +265,24 @@ export class BibliographyBuilder extends SchemaBehaviors(
 
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `bibliography-builder.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   haxinlineContextMenu(ceMenu) {

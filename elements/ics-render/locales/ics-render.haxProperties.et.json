@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalender",
+    "description": "Kuva kalendrifaili sündmused kuupäevakaartide, ajajoone, tabeli või loendina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalendrifail",
+        "description": "Laadi üles või vali .ics-kalendrifail. Selle sündmused loetakse brauseris."
+      },
+      {
+        "property": "displayAs",
+        "title": "Kuva kujul",
+        "description": "Kuidas faili sisu esitada.",
+        "options": {
+          "cards": "Kuupäevakaardid",
+          "timeline": "Ajajoon",
+          "table": "Tabel",
+          "list": "Loend"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Pealkiri",
+        "description": "Kuvatakse sündmuste kohal ja tabeli pealdisena. Vaikimisi kalendri enda nimi."
+      }
+    ]
+  }
+}

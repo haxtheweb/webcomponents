@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ترخيص استخدام الذكاء الاصطناعي",
+    "description": "عرض شارة ترخيص استخدام الذكاء الاصطناعي (AIUL) لعملك"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "الترخيص",
+        "description": "مستوى ترخيص استخدام الذكاء الاصطناعي لهذا العمل. راجع https://dmd-program.github.io/aiul/ للتفاصيل."
+      },
+      {
+        "property": "modifier",
+        "title": "مُعدِّل الوسائط",
+        "description": "مُعدِّل اختياري لمجال الوسائط. يحدد نوع الوسائط التي ينطبق عليها هذا الترخيص."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: عنوان URI لصفحة مرجع ترخيص استخدام الذكاء الاصطناعي. يُملأ تلقائيًا من رابط الترخيص إذا لم يُحدَّد."
+      }
+    ]
+  }
+}

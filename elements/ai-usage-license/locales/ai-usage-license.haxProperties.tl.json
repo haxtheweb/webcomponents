@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lisensya sa Paggamit ng AI",
+    "description": "Magpakita ng badge ng Lisensya sa Paggamit ng AI (AIUL) para sa iyong gawa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisensya",
+        "description": "Ang antas ng lisensya sa paggamit ng AI para sa gawang ito. Tingnan ang https://dmd-program.github.io/aiul/ para sa mga detalye."
+      },
+      {
+        "property": "modifier",
+        "title": "Media modifier",
+        "description": "Opsyonal na modifier ng media domain. Tinutukoy ang uri ng media na sakop ng lisensyang ito."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI para sa reference page ng Lisensya sa Paggamit ng AI. Awtomatikong pinupunan mula sa link ng lisensya kapag hindi nakatakda."
+      }
+    ]
+  }
+}

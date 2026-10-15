@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau-Visualisierungen über eine Freigabe-URL einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau-URL",
+        "description": "URL der Tableau-Arbeitsmappe oder -Ansicht."
+      },
+      {
+        "property": "height",
+        "title": "Höhe",
+        "description": "Höhe der Visualisierung."
+      },
+      {
+        "property": "width",
+        "title": "Breite",
+        "description": "Breite der Visualisierung."
+      },
+      {
+        "property": "toolbar",
+        "title": "Symbolleiste",
+        "description": "Position der Symbolleiste.",
+        "options": {
+          "top": "Oben",
+          "bottom": "Unten",
+          "hidden": "Ausgeblendet"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Registerkarten ausblenden",
+        "description": "Blatt-Registerkarten ausblenden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Geräte-Layout",
+        "description": "Zu darstellendes Geräte-Layout.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Smartphone"
+        }
+      }
+    ]
+  }
+}

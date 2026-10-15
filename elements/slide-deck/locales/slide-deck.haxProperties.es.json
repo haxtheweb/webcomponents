@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Presentación de diapositivas",
+    "description": "Presenta una presentación de PowerPoint importada diapositiva a diapositiva, con notas del orador."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifiesto de la presentación",
+        "description": "Suelta un archivo .pptx y se convertirá automáticamente en una presentación de diapositivas. El campo se establece en la ruta del deck.json resultante."
+      },
+      {
+        "property": "deckId",
+        "title": "ID de la presentación",
+        "description": "Solo es necesario cuando una página contiene más de una presentación, para que los enlaces a diapositivas sean distintos"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Permitir descarga",
+        "description": "Muestra un botón de descarga del archivo de PowerPoint original en los controles del reproductor"
+      }
+    ]
+  }
+}

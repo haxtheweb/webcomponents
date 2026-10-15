@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Predstavitev",
+    "description": "Predstavite uvoženo predstavitev PowerPoint prosojnico za prosojnico, z opombami govornika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest predstavitve",
+        "description": "Spustite datoteko .pptx in samodejno se pretvori v predstavitev. Polje se nastavi na pot do nastale datoteke deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "ID predstavitve",
+        "description": "Potrebno le, ko stran vsebuje več kot eno predstavitev, da povezave do prosojnic ostanejo ločene"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Dovoli prenos",
+        "description": "V kontrolnikih predvajalnika prikaži gumb za prenos izvirne datoteke PowerPoint"
+      }
+    ]
+  }
+}

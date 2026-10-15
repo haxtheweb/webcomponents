@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ציר זמן קריירה",
+    "description": "ציר זמן קריירה הכולל ארגונים, תפקידים ונתונים נוספים"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת ציר הזמן",
+        "description": "כותרת לציר הזמן של הקריירה (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

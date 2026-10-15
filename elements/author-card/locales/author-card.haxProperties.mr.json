@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "लेखक कार्ड",
+    "description": "फोटो, परिचय आणि सोशल लिंकसह लेखकाची माहिती दाखवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "लेखकाचे नाव",
+        "description": "लेखकाचे पूर्ण नाव."
+      },
+      {
+        "property": "image",
+        "title": "प्रोफाइल प्रतिमा",
+        "description": "लेखकाचा प्रोफाइल फोटो."
+      },
+      {
+        "property": "title",
+        "title": "पदनाम",
+        "description": "लेखकाचे पद किंवा भूमिका."
+      },
+      {
+        "property": "description",
+        "title": "परिचय",
+        "description": "लेखकाचा संक्षिप्त परिचय."
+      },
+      {
+        "property": "profileUrl",
+        "title": "प्रोफाइल URL",
+        "description": "लेखकाच्या प्रोफाइल पृष्ठाची लिंक."
+      },
+      {
+        "property": "socialLink",
+        "title": "सोशल लिंक",
+        "description": "सोशल मीडिया प्रोफाइलची लिंक."
+      },
+      {
+        "property": "socialHandle",
+        "title": "सोशल हँडल",
+        "description": "सोशल मीडिया हँडल (उदाहरणार्थ @username)."
+      }
+    ]
+  }
+}

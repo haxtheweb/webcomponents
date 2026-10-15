@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendorius",
+    "description": "Rodyti kalendoriaus failo renginius kaip datų korteles, laiko juostą, lentelę arba sąrašą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalendoriaus failas",
+        "description": "Įkelkite arba pasirinkite .ics kalendoriaus failą. Jo renginiai nuskaitomi naršyklėje."
+      },
+      {
+        "property": "displayAs",
+        "title": "Rodyti kaip",
+        "description": "Kaip pateikti failo turinį.",
+        "options": {
+          "cards": "Datų kortelės",
+          "timeline": "Laiko juosta",
+          "table": "Lentelė",
+          "list": "Sąrašas"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Antraštė",
+        "description": "Rodoma virš renginių ir kaip lentelės antraštė. Numatytoji reikšmė – paties kalendoriaus pavadinimas."
+      }
+    ]
+  }
+}

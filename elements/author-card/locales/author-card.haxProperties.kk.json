@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Автор карточкасы",
+    "description": "Автор туралы ақпаратты фотосуретпен, өмірбаянмен және әлеуметтік сілтемелермен көрсету."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Автордың аты",
+        "description": "Автордың толық аты-жөні."
+      },
+      {
+        "property": "image",
+        "title": "Профиль суреті",
+        "description": "Автордың профиль фотосуреті."
+      },
+      {
+        "property": "title",
+        "title": "Лауазымы",
+        "description": "Автордың лауазымы немесе рөлі."
+      },
+      {
+        "property": "description",
+        "title": "Өмірбаян",
+        "description": "Автордың қысқаша өмірбаяны."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Профиль URL",
+        "description": "Автордың профиль бетіне сілтеме."
+      },
+      {
+        "property": "socialLink",
+        "title": "Әлеуметтік сілтеме",
+        "description": "Әлеуметтік желідегі профильге сілтеме."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Әлеуметтік желідегі есім",
+        "description": "Әлеуметтік желідегі пайдаланушы аты (мысалы, @username)."
+      }
+    ]
+  }
+}

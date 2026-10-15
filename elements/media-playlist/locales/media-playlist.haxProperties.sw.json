@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Orodha ya kucheza ya media",
+    "description": "Orodha ya kucheza inayowasilisha vichezaji vya video na sauti katika mpangilio wa kichezaji na upau wa pembeni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Faharasa ya kuanzia",
+        "description": "Nambari ya kipengee cha kuanzia."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "Kozi ambayo orodha hii ya kucheza imekusudiwa (kitambulisho cha kozi au URL)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Leseni ya Matumizi ya AI",
+    "description": "Onyesha beji ya Leseni ya Matumizi ya AI (AIUL) kwa kazi yako"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Leseni",
+        "description": "Kiwango cha leseni ya matumizi ya AI kwa kazi hii. Tazama https://dmd-program.github.io/aiul/ kwa maelezo zaidi."
+      },
+      {
+        "property": "modifier",
+        "title": "Kirekebishaji cha media",
+        "description": "Kirekebishaji cha hiari cha aina ya media. Hubainisha aina ya media ambayo leseni hii inahusu."
+      },
+      {
+        "property": "uri",
+        "title": "URI ya AIUL (OER Schema)",
+        "description": "OER Schema: URI ya ukurasa wa marejeleo wa Leseni ya Matumizi ya AI. Hujazwa kiotomatiki kutoka kwa kiungo cha leseni kisipowekwa."
+      }
+    ]
+  }
+}

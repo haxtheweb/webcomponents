@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rezinesi rekushandisa AI",
+    "description": "Ratidza bheji reRezinesi rekushandisa AI (AIUL) pabasa rako"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Rezinesi",
+        "description": "Danho rerezinesi rekushandisa AI pabasa iri. Ona https://dmd-program.github.io/aiul/ kuti uwane ruzivo rwakawanda."
+      },
+      {
+        "property": "modifier",
+        "title": "Chigadzirisi chemidhiya",
+        "description": "Chigadzirisi chemhando yemidhiya chingasarudzwa. Chinotsanangura mhando yemidhiya inoshanda nayo rezinesi iri."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI yepeji yereferensi yeRezinesi rekushandisa AI. Inozadzwa yega kubva kulink yerezinesi kana isina kuiswa."
+      }
+    ]
+  }
+}

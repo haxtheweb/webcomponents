@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Lambobin sadarwa",
+    "description": "Nuna mutanen da ke cikin fayil ɗin lambobin sadarwa a matsayin katunan mutum, ambato, tebur ko jeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fayil ɗin lambobin sadarwa",
+        "description": "Ɗora ko zaɓi fayil ɗin lambobin sadarwa na .vcf. Ana karanta katunansa a cikin burauza."
+      },
+      {
+        "property": "displayAs",
+        "title": "Nuna a matsayin",
+        "description": "Yadda za a gabatar da abin da fayil ɗin ya ƙunsa.",
+        "options": {
+          "cards": "Katunan mutum",
+          "quotes": "Ambato",
+          "table": "Tebur",
+          "list": "Jeri"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kanun labari",
+        "description": "Ana nuna shi a saman lambobin sadarwa, kuma a matsayin taken tebur."
+      }
+    ]
+  }
+}

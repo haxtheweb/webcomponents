@@ -1,0 +1,11 @@
+{
+  "name": "نام",
+  "position": "سمت",
+  "organization": "سازمان",
+  "email": "ایمیل",
+  "phone": "تلفن",
+  "address": "نشانی",
+  "loadingContacts": "در حال بارگیری مخاطبان",
+  "contactsUnavailable": "مخاطبان در دسترس نیستند",
+  "noContacts": "هیچ مخاطبی در این فایل نیست"
+}

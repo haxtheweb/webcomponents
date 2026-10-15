@@ -205,7 +205,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
-          border-top: var(--ddd-border-sm) solid
+          border-top: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               rgba(255, 255, 255, 0.15)
@@ -228,7 +228,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: 100%;
           display: block;
           height: 50vh;
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--simple-colors-default-theme-grey-10, black);
         }
         /* Mini/inline Merlin: do NOT use lit-virtualizer. With scroller +
@@ -262,7 +262,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           overflow: hidden;
           line-height: var(--ddd-spacing-8);
           margin: var(--ddd-spacing-8);
-          border: var(--ddd-border-xs) solid transparent;
+          border: var(--ddd-border-size-xs) solid transparent;
           box-shadow: none;
           outline: 0;
         }
@@ -341,7 +341,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
           );
-          border-top: var(--ddd-border-sm) solid
+          border-top: var(--ddd-border-size-sm) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               rgba(255, 255, 255, 0.15)

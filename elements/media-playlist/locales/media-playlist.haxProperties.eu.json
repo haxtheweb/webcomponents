@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Multimedia-zerrenda",
+    "description": "Bideo- eta audio-erreproduzigailuak erreproduzigailu + alboko barra diseinuan aurkezten dituen erreprodukzio-zerrenda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Indize aktiboa",
+        "description": "Hasierako elementu aktiboaren indizea."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "Erreprodukzio-zerrenda hau zein ikastarotarako den (ikastaroaren identifikatzailea edo URLa)."
+      }
+    ]
+  }
+}

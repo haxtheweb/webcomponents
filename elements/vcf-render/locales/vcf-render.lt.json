@@ -1,0 +1,11 @@
+{
+  "name": "Vardas",
+  "position": "Pareigos",
+  "organization": "Organizacija",
+  "email": "El. paštas",
+  "phone": "Telefonas",
+  "address": "Adresas",
+  "loadingContacts": "Įkeliami kontaktai",
+  "contactsUnavailable": "Kontaktai nepasiekiami",
+  "noContacts": "Šiame faile kontaktų nėra"
+}

@@ -1,0 +1,31 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Doe;John;Q.,Public
+FN;CHARSET=UTF-8:John Doe
+ORG:Example Corp;Teaching and Learning
+TITLE:Director of Teaching and Learning
+TEL;TYPE=WORK,VOICE:(111) 555-1212
+TEL;TYPE=HOME,VOICE:(404) 555-1212
+TEL;TYPE=HOME,TYPE=VOICE:(404) 555-1213
+EMAIL;TYPE=PREF,INTERNET:forrestgump@example.com
+EMAIL;TYPE=INTERNET:example@example.com
+ADR;TYPE=HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America
+URL:https://hax.psu.edu/
+NOTE:Supports faculty adopting open courseware.
+AGENT:BEGIN:VCARD
+ VERSION:3.0
+ FN:Jane Assistant
+ EMAIL;TYPE=INTERNET:assistant@example.com
+ END:VCARD
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Smith;Jane;;;
+FN:Jane Smith
+ORG:Example Corp;College of IST
+TITLE:Professor of Practice
+TEL;TYPE=WORK,VOICE:(111) 555-3434
+EMAIL;TYPE=INTERNET:jane.smith@example.com
+NOTE:Teaches the capstone sequence\; office in Westgate.
+CATEGORIES:Faculty
+END:VCARD

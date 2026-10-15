@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Aginda",
+    "description": "De barrens yn in agindabestân toane as datumkaarten, in tiidline, in tabel of in list."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Agindabestân",
+        "description": "Upload of kies in .ics-agindabestân. De barrens dêryn wurde yn de browser lêzen."
+      },
+      {
+        "property": "displayAs",
+        "title": "Toane as",
+        "description": "Hoe't de ynhâld fan it bestân presintearre wurde moat.",
+        "options": {
+          "cards": "Datumkaarten",
+          "timeline": "Tiidline",
+          "table": "Tabel",
+          "list": "List"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kop",
+        "description": "Boppe de barrens toand, en as tabelbyskrift. Standert de eigen namme fan de aginda."
+      }
+    ]
+  }
+}

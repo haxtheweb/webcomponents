@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktlar",
+    "description": "Kontakt faýlyndaky adamlary şahsy kartoçkalar, sitatalar, tablisa ýa-da sanaw görnüşinde görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontakt faýly",
+        "description": ".vcf kontakt faýlyny ýükläň ýa-da saýlaň. Onuň kartoçkalary brauzerde okalýar."
+      },
+      {
+        "property": "displayAs",
+        "title": "Görkeziş görnüşi",
+        "description": "Faýlyň mazmunyny nähili görkezmeli.",
+        "options": {
+          "cards": "Şahsy kartoçkalar",
+          "quotes": "Sitatalar",
+          "table": "Tablisa",
+          "list": "Sanaw"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Sözbaşy",
+        "description": "Kontaktlaryň üstünde we tablisanyň ady hökmünde görkezilýär."
+      }
+    ]
+  }
+}

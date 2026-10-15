@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mai gina jerin manazarta",
+    "description": "Kayan aiki don ƙirƙira da sarrafa jerin manazarta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ambato",
+        "description": "Abubuwan ambato a cikin wannan jerin manazarta"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "Mai ganowa ko sunan Kwas ɗin da wannan jerin manazarta yake domin shi (OER Schema forCourse)."
+      }
+    ]
+  }
+}

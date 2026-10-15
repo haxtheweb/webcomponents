@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "تضمين تصورات Tableau من عنوان URL للمشاركة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "عنوان URL لـ Tableau",
+        "description": "عنوان URL لمصنف Tableau أو طريقة العرض."
+      },
+      {
+        "property": "height",
+        "title": "الارتفاع",
+        "description": "ارتفاع التصور."
+      },
+      {
+        "property": "width",
+        "title": "العرض",
+        "description": "عرض التصور."
+      },
+      {
+        "property": "toolbar",
+        "title": "شريط الأدوات",
+        "description": "موضع شريط الأدوات.",
+        "options": {
+          "top": "أعلى",
+          "bottom": "أسفل",
+          "hidden": "مخفي"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "إخفاء علامات التبويب",
+        "description": "إخفاء علامات تبويب الأوراق."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "تخطيط الجهاز",
+        "description": "تخطيط الجهاز المراد عرضه.",
+        "options": {
+          "desktop": "سطح المكتب",
+          "tablet": "جهاز لوحي",
+          "phone": "هاتف"
+        }
+      }
+    ]
+  }
+}

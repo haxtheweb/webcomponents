@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karjeras laika josla",
+    "description": "Karjeras laika josla ar organizācijām, lomām un citiem datiem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Laika joslas nosaukums",
+        "description": "Karjeras laika joslas nosaukums (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

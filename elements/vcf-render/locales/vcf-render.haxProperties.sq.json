@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktet",
+    "description": "Shfaq personat në një skedar kontaktesh si karta personash, citate, tabelë ose listë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Skedari i kontakteve",
+        "description": "Ngarko ose zgjidh një skedar kontaktesh .vcf. Kartat e tij lexohen në shfletues."
+      },
+      {
+        "property": "displayAs",
+        "title": "Shfaq si",
+        "description": "Si të paraqitet përmbajtja e skedarit.",
+        "options": {
+          "cards": "Karta personash",
+          "quotes": "Citate",
+          "table": "Tabelë",
+          "list": "Listë"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Titulli",
+        "description": "Shfaqet mbi kontaktet dhe si titull i tabelës."
+      }
+    ]
+  }
+}

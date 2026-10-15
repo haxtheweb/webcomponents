@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "မျှဝေ URL မှ Tableau ပုံဖော်ချက်များကို ထည့်သွင်းရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau အလုပ်စာအုပ် သို့မဟုတ် မြင်ကွင်းသို့ URL။"
+      },
+      {
+        "property": "height",
+        "title": "အမြင့်",
+        "description": "ပုံဖော်ချက်၏ အမြင့်။"
+      },
+      {
+        "property": "width",
+        "title": "အကျယ်",
+        "description": "ပုံဖော်ချက်၏ အကျယ်။"
+      },
+      {
+        "property": "toolbar",
+        "title": "ကိရိယာဘား",
+        "description": "ကိရိယာဘား တည်နေရာ။",
+        "options": {
+          "top": "အပေါ်",
+          "bottom": "အောက်",
+          "hidden": "ဝှက်ထားသည်"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "တက်ဘ်များကို ဝှက်ရန်",
+        "description": "စာရွက် တက်ဘ်များကို ဝှက်ရန်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "စက်ပစ္စည်း အပြင်အဆင်",
+        "description": "ပြသမည့် စက်ပစ္စည်း အပြင်အဆင်။",
+        "options": {
+          "desktop": "ဒက်စ်တော့",
+          "tablet": "တက်ဘလက်",
+          "phone": "ဖုန်း"
+        }
+      }
+    ]
+  }
+}

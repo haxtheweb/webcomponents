@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "කතෘ කාඩ්පත",
+    "description": "ඡායාරූපය, කෙටි චරිතාපදානය සහ සමාජ සබැඳි සමඟ කතෘ තොරතුරු පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "කතෘගේ නම",
+        "description": "කතෘගේ සම්පූර්ණ නම."
+      },
+      {
+        "property": "image",
+        "title": "පැතිකඩ රූපය",
+        "description": "කතෘගේ පැතිකඩ ඡායාරූපය."
+      },
+      {
+        "property": "title",
+        "title": "තනතුර",
+        "description": "කතෘගේ තනතුර හෝ භූමිකාව."
+      },
+      {
+        "property": "description",
+        "title": "චරිතාපදානය",
+        "description": "කතෘගේ කෙටි චරිතාපදානය."
+      },
+      {
+        "property": "profileUrl",
+        "title": "පැතිකඩ URL",
+        "description": "කතෘගේ පැතිකඩ පිටුවට සබැඳිය."
+      },
+      {
+        "property": "socialLink",
+        "title": "සමාජ සබැඳිය",
+        "description": "සමාජ මාධ්‍ය පැතිකඩකට සබැඳිය."
+      },
+      {
+        "property": "socialHandle",
+        "title": "සමාජ හැඳුනුම් නාමය",
+        "description": "සමාජ මාධ්‍ය හැඳුනුම් නාමය (උදාහරණයක් ලෙස @username)."
+      }
+    ]
+  }
+}

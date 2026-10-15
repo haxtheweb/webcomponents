@@ -101,7 +101,7 @@ export class JourneyMenu extends LitElement {
         padding: var(--ddd-spacing-3) var(--ddd-spacing-2);
         margin: 0;
         cursor: pointer;
-        transition: all var(--ddd-duration-rapid, 0.2s) ease;
+        transition: all var(--ddd-duration-fast, 0.2s) ease;
         border-radius: var(--ddd-radius-xs);
         border: 2px solid transparent;
       }
@@ -177,7 +177,7 @@ export class JourneyMenu extends LitElement {
 
         nav {
           transform: translateX(-100%);
-          transition: transform var(--ddd-duration-rapid, 0.3s) ease;
+          transition: transform var(--ddd-duration-normal, 0.3s) ease;
           padding-top: 60px;
         }
         

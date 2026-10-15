@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "શેર URL પરથી Tableau વિઝ્યુલાઇઝેશન એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau વર્કબુક અથવા વ્યૂનું URL."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "વિઝ્યુલાઇઝેશનની ઊંચાઈ."
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "વિઝ્યુલાઇઝેશનની પહોળાઈ."
+      },
+      {
+        "property": "toolbar",
+        "title": "ટૂલબાર",
+        "description": "ટૂલબારનું સ્થાન.",
+        "options": {
+          "top": "ઉપર",
+          "bottom": "નીચે",
+          "hidden": "છુપાયેલ"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "ટૅબ્સ છુપાવો",
+        "description": "શીટ ટૅબ્સ છુપાવો."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "ઉપકરણ લેઆઉટ",
+        "description": "રેન્ડર કરવાનું ઉપકરણ લેઆઉટ.",
+        "options": {
+          "desktop": "ડેસ્કટૉપ",
+          "tablet": "ટેબ્લેટ",
+          "phone": "ફોન"
+        }
+      }
+    ]
+  }
+}

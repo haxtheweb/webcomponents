@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Martaba xronologiyasi",
+    "description": "Tashkilotlar, lavozimlar va boshqa ma’lumotlarni o‘z ichiga olgan martaba xronologiyasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Xronologiya sarlavhasi",
+        "description": "Martaba xronologiyasi uchun sarlavha (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

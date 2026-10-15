@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "מחבר־קאַרטל",
+    "description": "ווײַזן אינפֿאָרמאַציע וועגן דעם מחבר מיט בילד, ביאָגראַפֿיע און סאָציאַלע לינקען."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "מחברס נאָמען",
+        "description": "פֿולער נאָמען פֿונעם מחבר."
+      },
+      {
+        "property": "image",
+        "title": "פּראָפֿיל־בילד",
+        "description": "פּראָפֿיל־פֿאָטאָ פֿונעם מחבר."
+      },
+      {
+        "property": "title",
+        "title": "אַמט",
+        "description": "דעם מחברס שטעלע אָדער ראָלע."
+      },
+      {
+        "property": "description",
+        "title": "ביאָגראַפֿיע",
+        "description": "קורצע ביאָגראַפֿיע פֿונעם מחבר."
+      },
+      {
+        "property": "profileUrl",
+        "title": "פּראָפֿיל URL",
+        "description": "לינק צום מחברס פּראָפֿיל־זײַט."
+      },
+      {
+        "property": "socialLink",
+        "title": "סאָציאַלער לינק",
+        "description": "לינק צו אַ פּראָפֿיל אויף סאָציאַלע מעדיע."
+      },
+      {
+        "property": "socialHandle",
+        "title": "סאָציאַלער באַניצער־נאָמען",
+        "description": "באַניצער־נאָמען אויף סאָציאַלע מעדיע (למשל @username)."
+      }
+    ]
+  }
+}

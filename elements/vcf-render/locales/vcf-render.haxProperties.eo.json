@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktoj",
+    "description": "Montri la personojn en kontaktodosiero kiel personajn kartojn, citaĵojn, tabelon aŭ liston."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontaktodosiero",
+        "description": "Alŝutu aŭ elektu .vcf-kontaktodosieron. Ĝiaj kartoj estas legataj en la retumilo."
+      },
+      {
+        "property": "displayAs",
+        "title": "Montri kiel",
+        "description": "Kiel prezenti la enhavon de la dosiero.",
+        "options": {
+          "cards": "Personaj kartoj",
+          "quotes": "Citaĵoj",
+          "table": "Tabelo",
+          "list": "Listo"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Titolo",
+        "description": "Montrata super la kontaktoj kaj kiel tabelsubskribo."
+      }
+    ]
+  }
+}

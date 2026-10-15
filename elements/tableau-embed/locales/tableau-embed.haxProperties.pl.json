@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Osadzaj wizualizacje Tableau z adresu URL udostępniania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL skoroszytu lub widoku Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Wysokość",
+        "description": "Wysokość wizualizacji."
+      },
+      {
+        "property": "width",
+        "title": "Szerokość",
+        "description": "Szerokość wizualizacji."
+      },
+      {
+        "property": "toolbar",
+        "title": "Pasek narzędzi",
+        "description": "Położenie paska narzędzi.",
+        "options": {
+          "top": "Góra",
+          "bottom": "Dół",
+          "hidden": "Ukryty"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ukryj karty",
+        "description": "Ukryj karty arkuszy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Układ urządzenia",
+        "description": "Układ urządzenia do wyrenderowania.",
+        "options": {
+          "desktop": "Komputer",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

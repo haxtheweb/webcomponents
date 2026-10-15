@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Уградите Tableau визуелизације помоћу URL-а за дељење."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL до Tableau радне свеске или приказа."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина визуелизације."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина визуелизације."
+      },
+      {
+        "property": "toolbar",
+        "title": "Трака са алаткама",
+        "description": "Положај траке са алаткама.",
+        "options": {
+          "top": "Горе",
+          "bottom": "Доле",
+          "hidden": "Скривено"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Сакриј картице",
+        "description": "Сакриј картице листова."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Распоред уређаја",
+        "description": "Распоред уређаја за приказ.",
+        "options": {
+          "desktop": "Рачунар",
+          "tablet": "Таблет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

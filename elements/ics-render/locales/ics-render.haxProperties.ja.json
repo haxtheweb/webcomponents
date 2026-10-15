@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "カレンダー",
+    "description": "カレンダーファイル内のイベントを、日付カード、タイムライン、表、またはリストとして表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "カレンダーファイル",
+        "description": ".ics カレンダーファイルをアップロードまたは選択します。イベントはブラウザー内で読み込まれます。"
+      },
+      {
+        "property": "displayAs",
+        "title": "表示形式",
+        "description": "ファイルの内容をどのように表示するか。",
+        "options": {
+          "cards": "日付カード",
+          "timeline": "タイムライン",
+          "table": "表",
+          "list": "リスト"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "見出し",
+        "description": "イベントの上と、表のキャプションとして表示されます。既定ではカレンダー自体の名前になります。"
+      }
+    ]
+  }
+}

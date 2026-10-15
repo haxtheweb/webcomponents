@@ -1,0 +1,11 @@
+{
+  "name": "Enw",
+  "position": "Swydd",
+  "organization": "Sefydliad",
+  "email": "E-bost",
+  "phone": "Ffôn",
+  "address": "Cyfeiriad",
+  "loadingContacts": "Wrthi'n llwytho cysylltiadau",
+  "contactsUnavailable": "Nid yw'r cysylltiadau ar gael",
+  "noContacts": "Dim cysylltiadau yn y ffeil hon"
+}

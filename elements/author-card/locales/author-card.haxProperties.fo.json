@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Høvundakort",
+    "description": "Vís upplýsingar um høvundin við mynd, ævilýsing og sosialum leinkjum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Navn á høvundi",
+        "description": "Fulla navnið á høvundinum."
+      },
+      {
+        "property": "image",
+        "title": "Vangamynd",
+        "description": "Vangamynd av høvundinum."
+      },
+      {
+        "property": "title",
+        "title": "Starvsheiti",
+        "description": "Starv ella leiklutur hjá høvundinum."
+      },
+      {
+        "property": "description",
+        "title": "Ævilýsing",
+        "description": "Stutt ævilýsing av høvundinum."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL til vanga",
+        "description": "Leinki til vangasíðuna hjá høvundinum."
+      },
+      {
+        "property": "socialLink",
+        "title": "Sosialt leinki",
+        "description": "Leinki til ein vanga á sosialum miðli."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Brúkaranavn á sosialum miðli",
+        "description": "Brúkaranavn á sosialum miðli (til dømis @username)."
+      }
+    ]
+  }
+}

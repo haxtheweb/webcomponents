@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "KI-brukslisens",
+    "description": "Vis et merke for KI-brukslisens (AIUL) for arbeidet ditt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisens",
+        "description": "Nivået for KI-brukslisensen for dette arbeidet. Se https://dmd-program.github.io/aiul/ for detaljer."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediemodifikator",
+        "description": "Valgfri modifikator for mediedomene. Angir hvilken type medier denne lisensen gjelder for."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI for referansesiden til KI-brukslisensen. Fylles ut automatisk fra lisenslenken når den ikke er angitt."
+      }
+    ]
+  }
+}

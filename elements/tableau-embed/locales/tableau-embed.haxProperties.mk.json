@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Вметни Tableau визуелизации од URL за споделување."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL до работната книга или приказот во Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина на визуелизацијата."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на визуелизацијата."
+      },
+      {
+        "property": "toolbar",
+        "title": "Лента со алатки",
+        "description": "Позиција на лентата со алатки.",
+        "options": {
+          "top": "Горе",
+          "bottom": "Долу",
+          "hidden": "Скриена"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Скриј јазичиња",
+        "description": "Скриј ги јазичињата на листовите."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Распоред за уред",
+        "description": "Распоред за уред што ќе се прикаже.",
+        "options": {
+          "desktop": "Компјутер",
+          "tablet": "Таблет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

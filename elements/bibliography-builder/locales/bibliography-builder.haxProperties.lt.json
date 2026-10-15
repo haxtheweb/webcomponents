@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bibliografijos kūrimo įrankis",
+    "description": "Įrankis bibliografijoms kurti ir tvarkyti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citatos",
+        "description": "Šios bibliografijos citavimo elementai"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "Kurso, kuriam skirta ši bibliografija, identifikatorius arba pavadinimas (OER Schema forCourse)."
+      }
+    ]
+  }
+}

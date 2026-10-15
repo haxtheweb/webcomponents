@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Innset Tableau-sjónmyndir frá einum deilingar-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau-URL",
+        "description": "URL til Tableau-arbeiðsbókina ella -sýnið."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Hædd á sjónmyndini."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd á sjónmyndini."
+      },
+      {
+        "property": "toolbar",
+        "title": "Amboðsbjálki",
+        "description": "Staðseting av amboðsbjálkanum.",
+        "options": {
+          "top": "Ovast",
+          "bottom": "Niðast",
+          "hidden": "Fjaldur"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Fjal teigar",
+        "description": "Fjal teigarnar á arkunum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Eindarsnið",
+        "description": "Eindarsnið at vísa.",
+        "options": {
+          "desktop": "Borðtelda",
+          "tablet": "Teldil",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

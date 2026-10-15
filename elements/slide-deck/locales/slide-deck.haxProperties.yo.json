@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Àkójọ sílàìdì",
+    "description": "Ṣàfihàn àkójọ PowerPoint tí a kó wọlé ní sílàìdì kọ̀ọ̀kan, pẹ̀lú àkọsílẹ̀ olùsọ̀rọ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ìfihàn àkójọ sílàìdì",
+        "description": "Ju fáìlì .pptx sílẹ̀, a ó sì yí i padà sí àkójọ sílàìdì láìfọwọ́yí. A ó ṣètò pápá yìí sí ọ̀nà deck.json tó jáde."
+      },
+      {
+        "property": "deckId",
+        "title": "ID àkójọ sílàìdì",
+        "description": "A nílò rẹ̀ nìkan tí ojú-ewé kan bá ní ju àkójọ kan lọ, kí àwọn ìjápọ̀ sílàìdì lè yàtọ̀ síra"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Gba ìgbàsílẹ̀ láàyè",
+        "description": "Ṣàfihàn bọ́tìnnì ìgbàsílẹ̀ fún fáìlì PowerPoint àtilẹ̀wá nínú àwọn ìdarí ẹ̀rọ orin"
+      }
+    ]
+  }
+}

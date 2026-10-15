@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Linimasa karier",
+    "description": "Linimasa karier yang berisi organisasi, peran, dan data lainnya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul linimasa",
+        "description": "Judul untuk linimasa karier (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

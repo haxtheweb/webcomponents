@@ -115,13 +115,11 @@
   },
   "saveOptions": {
     "unsetAttributes": [
-      "editMode",
       "edit-mode",
       "conditions",
-      "sortObj",
       "sort-obj",
       "results",
-      "breakSmartCollection",
+      "break-smart-collection",
       "t"
     ]
   },

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lombhali",
+    "description": "Bonisa ulwazi lombhali ngomfanekiso, imbali emfutshane, namakhonkco oonxibelelwano."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Igama lombhali",
+        "description": "Igama elipheleleyo lombhali."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso weprofayile",
+        "description": "Ifoto yeprofayile yombhali."
+      },
+      {
+        "property": "title",
+        "title": "Isikhundla somsebenzi",
+        "description": "Isikhundla okanye indima yombhali."
+      },
+      {
+        "property": "description",
+        "title": "Imbali emfutshane",
+        "description": "Imbali emfutshane yombhali."
+      },
+      {
+        "property": "profileUrl",
+        "title": "I-URL yeprofayile",
+        "description": "Ikhonkco eliya kwiphepha leprofayile yombhali."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ikhonkco loonxibelelwano",
+        "description": "Ikhonkco eliya kwiprofayile yeendaba zoluntu."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Igama loonxibelelwano",
+        "description": "Igama kwiindaba zoluntu (umzekelo @username)."
+      }
+    ]
+  }
+}

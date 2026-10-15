@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI 使用许可",
+    "description": "为你的作品显示 AI 使用许可（AIUL）徽章"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "许可",
+        "description": "此作品的 AI 使用许可级别。详情请参阅 https://dmd-program.github.io/aiul/。"
+      },
+      {
+        "property": "modifier",
+        "title": "媒体修饰符",
+        "description": "可选的媒体领域修饰符。指定此许可适用的媒体类型。"
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI（OER Schema）",
+        "description": "OER Schema：AI 使用许可参考页面的 URI。未设置时会根据许可链接自动填充。"
+      }
+    ]
+  }
+}

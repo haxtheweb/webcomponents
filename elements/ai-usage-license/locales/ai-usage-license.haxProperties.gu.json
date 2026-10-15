@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI ઉપયોગ લાઇસન્સ",
+    "description": "તમારા કાર્ય માટે AI ઉપયોગ લાઇસન્સ (AIUL) બેજ દર્શાવો"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "લાઇસન્સ",
+        "description": "આ કાર્ય માટે AI ઉપયોગ લાઇસન્સનું સ્તર. વિગતો માટે https://dmd-program.github.io/aiul/ જુઓ."
+      },
+      {
+        "property": "modifier",
+        "title": "મીડિયા મોડિફાયર",
+        "description": "વૈકલ્પિક મીડિયા ડોમેન મોડિફાયર. આ લાઇસન્સ કયા પ્રકારના મીડિયા પર લાગુ થાય છે તે દર્શાવે છે."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI ઉપયોગ લાઇસન્સ સંદર્ભ પેજ માટે URI. સેટ ન હોય ત્યારે લાઇસન્સ લિંક પરથી આપમેળે ભરાય છે."
+      }
+    ]
+  }
+}

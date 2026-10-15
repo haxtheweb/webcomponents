@@ -1,0 +1,143 @@
+{
+  "id": "3c4d5e6f-7081-4a2b-9c3d-4e5f60718293",
+  "title": "SpaceBook Notes",
+  "author": "",
+  "description": "A demonstration blog/notes site showcasing the SpaceBook theme's sidebar navigation, search, and page-to-page navigation.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "spacebook-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736900000,
+      "updated": 1736900000,
+      "git": {},
+      "version": "26.8.0",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "spacebook-theme",
+      "path": "@haxtheweb/spacebook-theme/spacebook-theme.js",
+      "name": "spacebook-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "",
+        "cssVariable": "",
+        "icon": ""
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-a3b4c5d6-e7f8-4192-9a3b-4c5d6e7f8091",
+      "indent": 0,
+      "location": "pages/item-a3b4c5d6-e7f8-4192-9a3b-4c5d6e7f8091/index.html",
+      "slug": "introduction",
+      "order": 0,
+      "parent": null,
+      "title": "Introduction",
+      "description": "An introduction to SpaceBook Notes.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-b4c5d6e7-f809-4a2b-ab4c-5d6e7f809102",
+      "indent": 0,
+      "location": "pages/item-b4c5d6e7-f809-4a2b-ab4c-5d6e7f809102/index.html",
+      "slug": "getting-started",
+      "order": 1,
+      "parent": null,
+      "title": "Getting Started",
+      "description": "How to get started with note-taking in SpaceBook.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-c5d6e7f8-0910-4b3c-bc5d-6e7f80910213",
+      "indent": 1,
+      "location": "pages/item-c5d6e7f8-0910-4b3c-bc5d-6e7f80910213/index.html",
+      "slug": "getting-started/organizing-notes",
+      "order": 0,
+      "parent": "item-b4c5d6e7-f809-4a2b-ab4c-5d6e7f809102",
+      "title": "Organizing Notes",
+      "description": "Tips for organizing notes into a coherent structure.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "images": [],
+        "videos": []
+      }
+    },
+    {
+      "id": "item-d6e7f809-1021-4c4d-cd6e-7f8091021324",
+      "indent": 0,
+      "location": "pages/item-d6e7f809-1021-4c4d-cd6e-7f8091021324/index.html",
+      "slug": "faq",
+      "order": 2,
+      "parent": null,
+      "title": "FAQ",
+      "description": "Frequently asked questions.",
+      "metadata": {
+        "created": 1736900000,
+        "updated": 1736900000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "status": "",
+        "hideInMenu": false,
+        "images": [],
+        "videos": []
+      }
+    }
+  ]
+}

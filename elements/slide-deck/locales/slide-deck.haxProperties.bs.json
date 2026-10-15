@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Prezentacija",
+    "description": "Prikažite uvezenu PowerPoint prezentaciju slajd po slajd, s bilješkama govornika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest prezentacije",
+        "description": "Ispustite .pptx datoteku i ona se automatski pretvara u prezentaciju. Polje se postavlja na putanju dobijenog deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "ID prezentacije",
+        "description": "Potrebno samo kada stranica sadrži više od jedne prezentacije, kako bi linkovi do slajdova ostali jedinstveni"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Dozvoli preuzimanje",
+        "description": "Prikaži dugme za preuzimanje originalne PowerPoint datoteke u kontrolama plejera"
+      }
+    ]
+  }
+}

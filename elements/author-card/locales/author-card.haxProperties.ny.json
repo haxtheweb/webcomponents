@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Khadi la wolemba",
+    "description": "Onetsani zambiri za wolemba ndi chithunzi, mbiri yachidule ndi maulalo a malo ochezera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Dzina la wolemba",
+        "description": "Dzina lonse la wolemba."
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi cha mbiri",
+        "description": "Chithunzi cha mbiri ya wolemba."
+      },
+      {
+        "property": "title",
+        "title": "Udindo wa ntchito",
+        "description": "Udindo kapena ntchito ya wolemba."
+      },
+      {
+        "property": "description",
+        "title": "Mbiri yachidule",
+        "description": "Mbiri yachidule ya wolemba."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL ya mbiri",
+        "description": "Ulalo wopita ku tsamba la mbiri ya wolemba."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ulalo wa malo ochezera",
+        "description": "Ulalo wopita ku mbiri ya pa malo ochezera."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Dzina la pa malo ochezera",
+        "description": "Dzina logwiritsa ntchito pa malo ochezera (mwachitsanzo @username)."
+      }
+    ]
+  }
+}

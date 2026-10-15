@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "शेयर URL से Tableau विज़ुअलाइज़ेशन एम्बेड करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau वर्कबुक या व्यू का URL।"
+      },
+      {
+        "property": "height",
+        "title": "ऊँचाई",
+        "description": "विज़ुअलाइज़ेशन की ऊँचाई।"
+      },
+      {
+        "property": "width",
+        "title": "चौड़ाई",
+        "description": "विज़ुअलाइज़ेशन की चौड़ाई।"
+      },
+      {
+        "property": "toolbar",
+        "title": "टूलबार",
+        "description": "टूलबार की स्थिति।",
+        "options": {
+          "top": "ऊपर",
+          "bottom": "नीचे",
+          "hidden": "छिपा हुआ"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "टैब छिपाएँ",
+        "description": "शीट टैब छिपाएँ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "डिवाइस लेआउट",
+        "description": "रेंडर करने के लिए डिवाइस लेआउट।",
+        "options": {
+          "desktop": "डेस्कटॉप",
+          "tablet": "टैबलेट",
+          "phone": "फ़ोन"
+        }
+      }
+    ]
+  }
+}

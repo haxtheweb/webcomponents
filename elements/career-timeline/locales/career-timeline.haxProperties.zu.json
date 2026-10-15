@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Umugqa wesikhathi womsebenzi",
+    "description": "Umugqa wesikhathi womsebenzi oqukethe izinhlangano, izindima, neminye imininingwane"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko somugqa wesikhathi",
+        "description": "Isihloko somugqa wesikhathi womsebenzi (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

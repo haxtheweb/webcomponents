@@ -1,0 +1,15 @@
+{
+  "previousSlide": "اسلاید قبلی",
+  "nextSlide": "اسلاید بعدی",
+  "viewAllSlides": "مشاهده همه اسلایدها",
+  "viewOneSlide": "مشاهده یک اسلاید در هر بار",
+  "presentFullScreen": "ارائه تمام‌صفحه",
+  "exitFullScreen": "خروج از تمام‌صفحه",
+  "copyLinkToSlide": "کپی پیوند این اسلاید",
+  "linkCopied": "پیوند کپی شد",
+  "speakerNotes": "یادداشت‌های سخنران",
+  "loadingPresentation": "در حال بارگیری ارائه",
+  "presentationUnavailable": "ارائه در دسترس نیست",
+  "slide": "اسلاید",
+  "downloadPresentation": "دانلود ارائه"
+}

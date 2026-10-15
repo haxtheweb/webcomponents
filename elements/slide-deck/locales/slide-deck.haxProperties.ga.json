@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Sraith sleamhnán",
+    "description": "Cuir sraith PowerPoint iompórtáilte i láthair sleamhnán ar shleamhnán, le nótaí an chainteora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Léiriú na sraithe",
+        "description": "Scaoil comhad .pptx agus tiontaítear go huathoibríoch é ina shraith sleamhnán. Socraítear an réimse go cosán an deck.json a chruthaítear."
+      },
+      {
+        "property": "deckId",
+        "title": "Aitheantas na sraithe",
+        "description": "Ní theastaíonn sé ach nuair a bhíonn níos mó ná sraith amháin ar leathanach, ionas go bhfanfaidh naisc na sleamhnán ar leith"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Ceadaigh íoslódáil",
+        "description": "Taispeáin cnaipe íoslódála don bhunchomhad PowerPoint i rialuithe an tseinnteora"
+      }
+    ]
+  }
+}

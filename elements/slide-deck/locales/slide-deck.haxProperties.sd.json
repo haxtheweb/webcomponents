@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "سلائيڊ ڊيڪ",
+    "description": "درآمد ٿيل PowerPoint ڊيڪ کي سلائيڊ بہ سلائيڊ، مقرر جي نوٽس سان پيش ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ڊيڪ مينيفيسٽ",
+        "description": "هڪ .pptx فائل ڇڏيو ۽ اها خودڪار طور سلائيڊ ڊيڪ ۾ بدلجي ويندي. فيلڊ نتيجي ۾ ٺهيل deck.json جي رستي تي سيٽ ٿئي ٿي."
+      },
+      {
+        "property": "deckId",
+        "title": "ڊيڪ id",
+        "description": "صرف تڏهن گهربل جڏهن هڪ صفحي ۾ هڪ کان وڌيڪ ڊيڪ هجن، ته جيئن سلائيڊ لنڪس الڳ رهن"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "ڊائونلوڊ جي اجازت ڏيو",
+        "description": "پليئر ڪنٽرولز ۾ اصل PowerPoint فائل لاءِ ڊائونلوڊ بٽڻ ڏيکاريو"
+      }
+    ]
+  }
+}

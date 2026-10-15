@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "通过分享 URL 嵌入 Tableau 可视化内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau 工作簿或者视图个 URL。"
+      },
+      {
+        "property": "height",
+        "title": "高度",
+        "description": "可视化内容个高度。"
+      },
+      {
+        "property": "width",
+        "title": "阔度",
+        "description": "可视化内容个阔度。"
+      },
+      {
+        "property": "toolbar",
+        "title": "工具栏",
+        "description": "工具栏位置。",
+        "options": {
+          "top": "上头",
+          "bottom": "下头",
+          "hidden": "隐藏"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "隐藏标签页",
+        "description": "隐藏工作表标签页。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "设备布局",
+        "description": "用来呈现个设备布局。",
+        "options": {
+          "desktop": "桌面电脑",
+          "tablet": "平板",
+          "phone": "手机"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Dek slaid",
+    "description": "Bentangkan dek PowerPoint yang diimport slaid demi slaid, dengan nota penceramah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifes dek",
+        "description": "Lepaskan fail .pptx dan ia ditukar kepada dek slaid secara automatik. Medan ini ditetapkan kepada laluan deck.json yang terhasil."
+      },
+      {
+        "property": "deckId",
+        "title": "ID dek",
+        "description": "Hanya diperlukan apabila halaman mengandungi lebih daripada satu dek, supaya pautan slaid kekal berbeza"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Benarkan muat turun",
+        "description": "Tunjukkan butang muat turun untuk fail PowerPoint asal dalam kawalan pemain"
+      }
+    ]
+  }
+}

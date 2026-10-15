@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "مجوز استفاده از هوش مصنوعی",
+    "description": "نمایش نشان مجوز استفاده از هوش مصنوعی (AIUL) برای اثر شما"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "مجوز",
+        "description": "سطح مجوز استفاده از هوش مصنوعی برای این اثر. برای جزئیات به https://dmd-program.github.io/aiul/ مراجعه کنید."
+      },
+      {
+        "property": "modifier",
+        "title": "اصلاح‌گر رسانه",
+        "description": "اصلاح‌گر اختیاری حوزه رسانه. نوع رسانه‌ای را که این مجوز بر آن اعمال می‌شود مشخص می‌کند."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI صفحه مرجع مجوز استفاده از هوش مصنوعی. در صورت تنظیم نشدن، به طور خودکار از پیوند مجوز پر می‌شود."
+      }
+    ]
+  }
+}

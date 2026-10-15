@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bibliographie-Builder",
+    "description": "En Tool fir Bibliographien ze erstellen an ze verwalten"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Zitater",
+        "description": "Zitatelementer an dëser Bibliographie"
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "Identifiant oder Numm vum Cours, fir deen dës Bibliographie ass (OER Schema forCourse)."
+      }
+    ]
+  }
+}

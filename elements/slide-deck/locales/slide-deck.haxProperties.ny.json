@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Masilaidi a ulaliki",
+    "description": "Onetsani ulaliki wa PowerPoint wotumizidwa silaidi ndi silaidi, pamodzi ndi zolemba za wolankhula."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mndandanda wa ulaliki",
+        "description": "Ikani fayilo ya .pptx ndipo idzasinthidwa yokha kukhala masilaidi. Gawo ili limaikidwa ku njira ya deck.json yopangidwa."
+      },
+      {
+        "property": "deckId",
+        "title": "Chizindikiro cha ulaliki",
+        "description": "Chimafunika pokhapokha tsamba lili ndi ulaliki woposa umodzi, kuti maulalo a masilaidi asafanane"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Lolani kutsitsa",
+        "description": "Onetsani batani lotsitsira fayilo yoyambirira ya PowerPoint pa zowongolera za chosewerera"
+      }
+    ]
+  }
+}

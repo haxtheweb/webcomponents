@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Paýlaşmak URL-den Tableau wizualizasiýalaryny ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau iş kitabynyň ýa-da görnüşiniň URL-i."
+      },
+      {
+        "property": "height",
+        "title": "Beýiklik",
+        "description": "Wizualizasiýanyň beýikligi."
+      },
+      {
+        "property": "width",
+        "title": "Giňlik",
+        "description": "Wizualizasiýanyň giňligi."
+      },
+      {
+        "property": "toolbar",
+        "title": "Gurallar paneli",
+        "description": "Gurallar paneliniň ýerleşişi.",
+        "options": {
+          "top": "Ýokarda",
+          "bottom": "Aşakda",
+          "hidden": "Gizlin"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Goýmalary gizle",
+        "description": "Sahypa goýmalaryny gizle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Enjam ýerleşişi",
+        "description": "Görkeziljek enjam ýerleşişi.",
+        "options": {
+          "desktop": "Kompýuter",
+          "tablet": "Planşet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

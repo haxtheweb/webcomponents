@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "联系人",
+    "description": "拿联系人文件里向个人显示成人物卡片、引语、表格或者列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "联系人文件",
+        "description": "上传或者拣一只 .vcf 联系人文件。里向个名片辣浏览器里读。"
+      },
+      {
+        "property": "displayAs",
+        "title": "显示方式",
+        "description": "文件里向个内容哪能呈现。",
+        "options": {
+          "cards": "人物卡片",
+          "quotes": "引语",
+          "table": "表格",
+          "list": "列表"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "标题",
+        "description": "显示辣联系人上头，也当表格标题用。"
+      }
+    ]
+  }
+}

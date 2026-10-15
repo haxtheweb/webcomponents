@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Médialejátszási lista",
+    "description": "Lejátszási lista, amely a videó- és hanglejátszókat lejátszó + oldalsáv elrendezésben jeleníti meg."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktív index",
+        "description": "A kezdéskor aktív elem sorszáma."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "A kurzus, amelyhez ez a lejátszási lista készült (kurzusazonosító vagy URL)."
+      }
+    ]
+  }
+}

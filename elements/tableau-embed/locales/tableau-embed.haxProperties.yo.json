@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Fi àwọn àwòrán dátà Tableau sínú láti URL pínpín."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL sí ìwé iṣẹ́ tàbí ìwòye Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Gíga",
+        "description": "Gíga àwòrán dátà."
+      },
+      {
+        "property": "width",
+        "title": "Fífẹ̀",
+        "description": "Fífẹ̀ àwòrán dátà."
+      },
+      {
+        "property": "toolbar",
+        "title": "Pẹpẹ irinṣẹ́",
+        "description": "Ipò pẹpẹ irinṣẹ́.",
+        "options": {
+          "top": "Òkè",
+          "bottom": "Ìsàlẹ̀",
+          "hidden": "Ìfarapamọ́"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Fi àwọn táàbù pamọ́",
+        "description": "Fi àwọn táàbù ìwé pamọ́."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Ìfilélẹ̀ ẹ̀rọ",
+        "description": "Ìfilélẹ̀ ẹ̀rọ tí a ó fi ṣàfihàn.",
+        "options": {
+          "desktop": "Kọ̀mpútà",
+          "tablet": "Tábúlẹ́ẹ̀tì",
+          "phone": "Fóònù"
+        }
+      }
+    ]
+  }
+}

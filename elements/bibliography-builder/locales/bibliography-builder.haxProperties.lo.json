@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ເຄື່ອງມືສ້າງບັນນານຸກົມ",
+    "description": "ເຄື່ອງມືສຳລັບສ້າງ ແລະ ຈັດການບັນນານຸກົມ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ການອ້າງອີງ",
+        "description": "ລາຍການອ້າງອີງໃນບັນນານຸກົມນີ້"
+      },
+      {
+        "property": "forCourse",
+        "title": "ວິຊາຮຽນ",
+        "description": "ລະຫັດ ຫຼື ຊື່ຂອງວິຊາຮຽນທີ່ບັນນານຸກົມນີ້ໃຊ້ສຳລັບ (OER Schema forCourse)."
+      }
+    ]
+  }
+}

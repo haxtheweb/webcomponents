@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Daftar putar media",
+    "description": "Daftar putar yang menyajikan pemutar video dan audio dalam tata letak pemutar + bilah samping."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Indeks aktif",
+        "description": "Indeks item aktif untuk memulai."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "Mata kuliah yang dituju daftar putar ini (pengenal mata kuliah atau URL)."
+      }
+    ]
+  }
+}

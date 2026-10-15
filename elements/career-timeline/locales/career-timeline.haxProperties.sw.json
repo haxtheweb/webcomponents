@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Rekodi ya matukio ya taaluma",
+    "description": "Rekodi ya matukio ya taaluma yenye mashirika, majukumu na data nyingine"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa cha rekodi ya matukio",
+        "description": "Kichwa cha rekodi ya matukio ya taaluma (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

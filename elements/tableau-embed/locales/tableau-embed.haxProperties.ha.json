@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Saka hotunan bayanan Tableau daga URL na rabawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL na Tableau",
+        "description": "URL zuwa littafin aiki ko kallon Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Tsawo",
+        "description": "Tsawon hoton bayanai."
+      },
+      {
+        "property": "width",
+        "title": "Faɗi",
+        "description": "Faɗin hoton bayanai."
+      },
+      {
+        "property": "toolbar",
+        "title": "Sandar kayan aiki",
+        "description": "Matsayin sandar kayan aiki.",
+        "options": {
+          "top": "Sama",
+          "bottom": "Ƙasa",
+          "hidden": "A ɓoye"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ɓoye shafuka",
+        "description": "Ɓoye shafukan takardu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Tsarin na'ura",
+        "description": "Tsarin na'ura da za a nuna.",
+        "options": {
+          "desktop": "Kwamfutar tebur",
+          "tablet": "Tablet",
+          "phone": "Waya"
+        }
+      }
+    ]
+  }
+}

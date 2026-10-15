@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Aŭdvida ludlisto",
+    "description": "Ludlisto, kiu prezentas video- kaj sonludilojn en aranĝo de ludilo + flanka panelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Komenca ero",
+        "description": "Numero de la ero per kiu komenci."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "La kurso por kiu ĉi tiu ludlisto estas celita (kursa identigilo aŭ URL)."
+      }
+    ]
+  }
+}

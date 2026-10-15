@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Danh bạ",
+    "description": "Hiển thị những người trong tệp danh bạ dưới dạng thẻ cá nhân, trích dẫn, bảng hoặc danh sách."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Tệp danh bạ",
+        "description": "Tải lên hoặc chọn tệp danh bạ .vcf. Các thẻ trong đó được đọc ngay trên trình duyệt."
+      },
+      {
+        "property": "displayAs",
+        "title": "Hiển thị dưới dạng",
+        "description": "Cách trình bày nội dung của tệp.",
+        "options": {
+          "cards": "Thẻ cá nhân",
+          "quotes": "Trích dẫn",
+          "table": "Bảng",
+          "list": "Danh sách"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Tiêu đề",
+        "description": "Hiển thị phía trên danh bạ và làm chú thích của bảng."
+      }
+    ]
+  }
+}

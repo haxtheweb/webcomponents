@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Mewnosod delweddiadau Tableau o URL rhannu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL i'r llyfr gwaith neu'r olwg Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Uchder",
+        "description": "Uchder y delweddiad."
+      },
+      {
+        "property": "width",
+        "title": "Lled",
+        "description": "Lled y delweddiad."
+      },
+      {
+        "property": "toolbar",
+        "title": "Bar offer",
+        "description": "Safle'r bar offer.",
+        "options": {
+          "top": "Brig",
+          "bottom": "Gwaelod",
+          "hidden": "Cudd"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Cuddio tabiau",
+        "description": "Cuddio tabiau'r taflenni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Cynllun dyfais",
+        "description": "Y cynllun dyfais i'w ddangos.",
+        "options": {
+          "desktop": "Bwrdd gwaith",
+          "tablet": "Llechen",
+          "phone": "Ffôn"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diapresentatie",
+    "description": "Presenteer een geïmporteerde PowerPoint-presentatie dia voor dia, met sprekersnotities."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Presentatiemanifest",
+        "description": "Sleep een .pptx-bestand hierheen en het wordt automatisch omgezet naar een diapresentatie. Het veld wordt ingesteld op het pad van de resulterende deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Presentatie-ID",
+        "description": "Alleen nodig als een pagina meer dan één presentatie bevat, zodat dialinks uniek blijven"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Downloaden toestaan",
+        "description": "Toon een downloadknop voor het oorspronkelijke PowerPoint-bestand in de spelerbediening"
+      }
+    ]
+  }
+}

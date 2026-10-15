@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bennej tal-bibljografija",
+    "description": "Għodda biex toħloq u timmaniġġja bibljografiji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ċitazzjonijiet",
+        "description": "Oġġetti ta' ċitazzjoni f'din il-bibljografija"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "Identifikatur jew isem tal-kors li għalih hija din il-bibljografija (OER Schema forCourse)."
+      }
+    ]
+  }
+}

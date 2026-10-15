@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Arary",
+    "description": "Ehechauka jehuvy oĩva arary marandurendápe ára kuatia, ára rysýi, tabla térã rysýi ramo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Arary marandurenda",
+        "description": "Ejupi térã eiporavo peteĩ .ics arary marandurenda. Ijehuvykuéra ojelee kundahárape."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ehechauka ko'ãicha",
+        "description": "Mba'éichapa ojehechaukáta marandurenda retepy.",
+        "options": {
+          "cards": "Ára kuatia",
+          "timeline": "Ára rysýi",
+          "table": "Tabla",
+          "list": "Rysýi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Moakãha",
+        "description": "Ojehechauka jehuvy ári, ha tabla réra ramo avei. Ijypykuépe arary réra voi."
+      }
+    ]
+  }
+}

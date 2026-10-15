@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "গ্রন্থপঞ্জি নির্মাতা",
+    "description": "গ্রন্থপঞ্জি তৈরি ও পরিচালনার একটি টুল"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "উদ্ধৃতি",
+        "description": "এই গ্রন্থপঞ্জির উদ্ধৃতি আইটেমসমূহ"
+      },
+      {
+        "property": "forCourse",
+        "title": "কোর্স",
+        "description": "যে কোর্সের জন্য এই গ্রন্থপঞ্জি, তার শনাক্তকারী বা নাম (OER Schema forCourse)।"
+      }
+    ]
+  }
+}

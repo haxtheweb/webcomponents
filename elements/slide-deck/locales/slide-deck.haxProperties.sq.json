@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Prezantim me diapozitivë",
+    "description": "Paraqit një prezantim të importuar PowerPoint diapozitiv pas diapozitivi, me shënimet e folësit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifesti i prezantimit",
+        "description": "Lësho një skedar .pptx dhe ai konvertohet automatikisht në prezantim me diapozitivë. Fusha vendoset në shtegun e deck.json që rezulton."
+      },
+      {
+        "property": "deckId",
+        "title": "ID e prezantimit",
+        "description": "Nevojitet vetëm kur një faqe përmban më shumë se një prezantim, që lidhjet e diapozitivëve të mbeten të dallueshme"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Lejo shkarkimin",
+        "description": "Shfaq një buton shkarkimi për skedarin origjinal PowerPoint te kontrollet e luajtësit"
+      }
+    ]
+  }
+}

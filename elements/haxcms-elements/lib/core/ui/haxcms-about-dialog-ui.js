@@ -293,7 +293,7 @@ class HAXCMSAboutDialogUI extends DDD {
         }
 
         .section-title:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -491,7 +491,7 @@ class HAXCMSAboutDialogUI extends DDD {
                 </li>
                 <li>
                   <a
-                    href="https://discord.gg/VVcAcCeZQ"
+                    href="https://discord.gg/aCGxmRHEJP"
                     target="_blank"
                     rel="noopener noreferrer"
                     >Join the HAX Discord community</a

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "शेअर URL वरून Tableau व्हिज्युअलायझेशन एम्बेड करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau वर्कबुक किंवा व्ह्यूची URL."
+      },
+      {
+        "property": "height",
+        "title": "उंची",
+        "description": "व्हिज्युअलायझेशनची उंची."
+      },
+      {
+        "property": "width",
+        "title": "रुंदी",
+        "description": "व्हिज्युअलायझेशनची रुंदी."
+      },
+      {
+        "property": "toolbar",
+        "title": "टूलबार",
+        "description": "टूलबारचे स्थान.",
+        "options": {
+          "top": "वर",
+          "bottom": "खाली",
+          "hidden": "लपवलेले"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "टॅब लपवा",
+        "description": "शीट टॅब लपवा."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "डिव्हाइस मांडणी",
+        "description": "रेंडर करायची डिव्हाइस मांडणी.",
+        "options": {
+          "desktop": "डेस्कटॉप",
+          "tablet": "टॅबलेट",
+          "phone": "फोन"
+        }
+      }
+    ]
+  }
+}

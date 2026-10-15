@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendaryo",
+    "description": "Ipakita ang mga kaganapan sa isang calendar file bilang mga date card, timeline, talahanayan o listahan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File ng kalendaryo",
+        "description": "Mag-upload o pumili ng .ics na calendar file. Binabasa ang mga kaganapan nito sa browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ipakita bilang",
+        "description": "Kung paano ipapakita ang laman ng file.",
+        "options": {
+          "cards": "Mga date card",
+          "timeline": "Timeline",
+          "table": "Talahanayan",
+          "list": "Listahan"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Pamuhatan",
+        "description": "Ipinapakita sa itaas ng mga kaganapan, at bilang caption ng talahanayan. Default ang sariling pangalan ng kalendaryo."
+      }
+    ]
+  }
+}

@@ -54,7 +54,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         }
         .info {
           padding: var(--ddd-spacing-2);
-          border-top: var(--ddd-border-xs) solid
+          border-top: var(--ddd-border-size-xs) solid
             light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           background-color: light-dark(
             var(--ddd-accent-6),

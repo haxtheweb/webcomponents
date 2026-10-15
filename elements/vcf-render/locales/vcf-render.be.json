@@ -1,0 +1,11 @@
+{
+  "name": "Імя",
+  "position": "Пасада",
+  "organization": "Арганізацыя",
+  "email": "Электронная пошта",
+  "phone": "Тэлефон",
+  "address": "Адрас",
+  "loadingContacts": "Загрузка кантактаў",
+  "contactsUnavailable": "Кантакты недаступныя",
+  "noContacts": "У гэтым файле няма кантактаў"
+}

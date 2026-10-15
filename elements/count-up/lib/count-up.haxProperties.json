@@ -94,7 +94,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["elementVisible", "ratio", "thresholds", "rootMargin"]
+    "unsetAttributes": ["element-visible", "ratio", "thresholds", "root-margin"]
   },
   "demoSchema": [
     {

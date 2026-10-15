@@ -91,7 +91,7 @@
     "advanced": []
   },
   "saveOptions": {
-    "unsetAttributes": ["editMode"]
+    "unsetAttributes": ["edit-mode"]
   },
   "demoSchema": [
     {

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pembuat bibliografi",
+    "description": "Alat untuk membuat dan mengelola bibliografi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kutipan",
+        "description": "Item kutipan dalam bibliografi ini"
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "Pengenal atau nama mata kuliah untuk bibliografi ini (OER Schema forCourse)."
+      }
+    ]
+  }
+}

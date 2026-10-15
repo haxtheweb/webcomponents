@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Inkorpora viżwalizzazzjonijiet ta' Tableau minn URL ta' qsim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ta' Tableau",
+        "description": "URL għall-workbook jew il-veduta ta' Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Għoli",
+        "description": "L-għoli tal-viżwalizzazzjoni."
+      },
+      {
+        "property": "width",
+        "title": "Wisa'",
+        "description": "Il-wisa' tal-viżwalizzazzjoni."
+      },
+      {
+        "property": "toolbar",
+        "title": "Toolbar",
+        "description": "Il-pożizzjoni tat-toolbar.",
+        "options": {
+          "top": "Fuq",
+          "bottom": "Isfel",
+          "hidden": "Moħbi"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Aħbi t-tabs",
+        "description": "Aħbi t-tabs tal-folji."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Tqassim tal-apparat",
+        "description": "It-tqassim tal-apparat li għandu jintwera.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

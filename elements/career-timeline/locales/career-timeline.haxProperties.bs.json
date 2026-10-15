@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hronologija karijere",
+    "description": "Hronologija karijere koja sadrži organizacije, uloge i druge podatke"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov hronologije",
+        "description": "Naslov hronologije karijere (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

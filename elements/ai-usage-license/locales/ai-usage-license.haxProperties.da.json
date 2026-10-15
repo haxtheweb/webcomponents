@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI-brugslicens",
+    "description": "Vis et mærke for AI-brugslicens (AIUL) for dit værk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licens",
+        "description": "AI-brugslicensens niveau for dette værk. Se https://dmd-program.github.io/aiul/ for detaljer."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediemodifikator",
+        "description": "Valgfri modifikator for mediedomæne. Angiver, hvilken type medier licensen gælder for."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI til referencesiden for AI-brugslicensen. Udfyldes automatisk fra licenslinket, hvis den ikke er angivet."
+      }
+    ]
+  }
+}

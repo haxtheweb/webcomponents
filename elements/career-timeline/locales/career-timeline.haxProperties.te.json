@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "కెరీర్ కాలక్రమం",
+    "description": "సంస్థలు, పాత్రలు మరియు ఇతర డేటాను కలిగి ఉన్న కెరీర్ కాలక్రమం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "కాలక్రమం శీర్షిక",
+        "description": "కెరీర్ కాలక్రమం కోసం శీర్షిక (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

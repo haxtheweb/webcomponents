@@ -352,6 +352,23 @@ describe('SuperDaemon core behavior', () => {
     expect(element.programResults[0].title).to.equal('r seed text')
   })
 
+  it('runProgramEvent (selecting the row in Merlin) also honors initialValue', async () => {
+    const program = async (search) => [{ title: 'r ' + search }]
+    element.runProgramEvent({
+      detail: {
+        name: 'Row launched',
+        context: 'CMS',
+        program: program,
+        initialValue: async () => 'from row',
+      },
+    })
+    await aTimeout(10)
+    expect(element.like).to.equal('from row')
+    expect(element.programSearch).to.equal('from row')
+    await aTimeout(120)
+    expect(element.programResults[0].title).to.equal('r from row')
+  })
+
   it('runProgram reports an error for an unknown program name', async () => {
     let logged = null
     const origError = console.error

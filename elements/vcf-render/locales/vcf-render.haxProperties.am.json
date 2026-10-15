@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "እውቂያዎች",
+    "description": "በእውቂያ ፋይል ውስጥ ያሉ ሰዎችን እንደ የሰው ካርዶች፣ ጥቅሶች፣ ሰንጠረዥ ወይም ዝርዝር ያሳዩ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "የእውቂያ ፋይል",
+        "description": "የ.vcf እውቂያ ፋይል ይስቀሉ ወይም ይምረጡ። ካርዶቹ በአሳሹ ውስጥ ይነበባሉ።"
+      },
+      {
+        "property": "displayAs",
+        "title": "በዚህ መልክ አሳይ",
+        "description": "ፋይሉ የያዘውን እንዴት ማቅረብ እንደሚቻል።",
+        "options": {
+          "cards": "የሰው ካርዶች",
+          "quotes": "ጥቅሶች",
+          "table": "ሰንጠረዥ",
+          "list": "ዝርዝር"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "አርዕስት",
+        "description": "ከእውቂያዎቹ በላይ እና እንደ ሰንጠረዡ መግለጫ ጽሑፍ ይታያል።"
+      }
+    ]
+  }
+}

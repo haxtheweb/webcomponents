@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የሚዲያ አጫዋች ዝርዝር",
+    "description": "የቪዲዮ እና የድምፅ አጫዋቾችን በአጫዋች እና የጎን አሞሌ አቀማመጥ የሚያቀርብ የአጫዋች ዝርዝር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "ንቁ ማውጫ",
+        "description": "የሚጀመርበት ንቁ ንጥል ቁጥር።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "ይህ የአጫዋች ዝርዝር የተዘጋጀለት ኮርስ (የኮርስ መለያ ወይም URL)።"
+      }
+    ]
+  }
+}

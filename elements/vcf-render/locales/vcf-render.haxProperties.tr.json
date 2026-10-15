@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kişiler",
+    "description": "Bir kişi dosyasındaki kişileri kişi kartları, alıntılar, tablo veya liste olarak gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kişi dosyası",
+        "description": "Bir .vcf kişi dosyası yükleyin veya seçin. Kartları tarayıcıda okunur."
+      },
+      {
+        "property": "displayAs",
+        "title": "Görüntüleme biçimi",
+        "description": "Dosyanın içeriğinin nasıl sunulacağı.",
+        "options": {
+          "cards": "Kişi kartları",
+          "quotes": "Alıntılar",
+          "table": "Tablo",
+          "list": "Liste"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Başlık",
+        "description": "Kişilerin üstünde ve tablo başlığı olarak gösterilir."
+      }
+    ]
+  }
+}

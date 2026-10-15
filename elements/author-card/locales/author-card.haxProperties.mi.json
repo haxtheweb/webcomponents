@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kāri kaituhi",
+    "description": "Whakaaturia ngā mōhiohio kaituhi me te whakaahua, te haurongo me ngā hono pāpori."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Ingoa kaituhi",
+        "description": "Te ingoa katoa o te kaituhi."
+      },
+      {
+        "property": "image",
+        "title": "Atahanga kōtaha",
+        "description": "Te whakaahua kōtaha o te kaituhi."
+      },
+      {
+        "property": "title",
+        "title": "Taitara tūranga mahi",
+        "description": "Te tūranga, te mahi rānei a te kaituhi."
+      },
+      {
+        "property": "description",
+        "title": "Haurongo",
+        "description": "He haurongo poto o te kaituhi."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL kōtaha",
+        "description": "He hono ki te whārangi kōtaha o te kaituhi."
+      },
+      {
+        "property": "socialLink",
+        "title": "Hono pāpori",
+        "description": "He hono ki tētahi kōtaha pāpāho pāpori."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Ingoa pāpori",
+        "description": "Te ingoa kaiwhakamahi pāpāho pāpori (hei tauira @username)."
+      }
+    ]
+  }
+}

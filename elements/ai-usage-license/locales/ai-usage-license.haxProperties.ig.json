@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikikere ojiji AI",
+    "description": "Gosipụta baajị ikikere ojiji AI (AIUL) maka ọrụ gị"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ikikere",
+        "description": "Ọkwa ikikere ojiji AI maka ọrụ a. Lee https://dmd-program.github.io/aiul/ maka nkọwa."
+      },
+      {
+        "property": "modifier",
+        "title": "Ihe ngbanwe mgbasa ozi",
+        "description": "Ihe ngbanwe ngalaba mgbasa ozi nhọrọ. Ọ na-akọwa ụdị mgbasa ozi ikikere a metụtara."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI maka peeji ntụaka ikikere ojiji AI. A na-ejuputa ya na-akpaghị aka site na njikọ ikikere mgbe esetịghị ya."
+      }
+    ]
+  }
+}

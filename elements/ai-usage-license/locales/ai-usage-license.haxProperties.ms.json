@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lesen Penggunaan AI",
+    "description": "Paparkan lencana Lesen Penggunaan AI (AIUL) untuk karya anda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lesen",
+        "description": "Tahap lesen penggunaan AI untuk karya ini. Lihat https://dmd-program.github.io/aiul/ untuk butiran."
+      },
+      {
+        "property": "modifier",
+        "title": "Pengubah suai media",
+        "description": "Pengubah suai domain media pilihan. Menyatakan jenis media yang tertakluk kepada lesen ini."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI untuk halaman rujukan Lesen Penggunaan AI. Diisi secara automatik daripada pautan lesen jika tidak ditetapkan."
+      }
+    ]
+  }
+}

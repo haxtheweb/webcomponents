@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Taariikhda shaqada",
+    "description": "Taariikh shaqo oo ka kooban hay'ado, doorar iyo xog kale"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaanka taariikhda",
+        "description": "Cinwaan loogu talagalay taariikhda shaqada (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

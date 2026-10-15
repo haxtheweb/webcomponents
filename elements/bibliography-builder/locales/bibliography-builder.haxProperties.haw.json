@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mea hana papa kumu kuhikuhi",
+    "description": "He mea hana no ka hana ʻana a me ka hoʻokele ʻana i nā papa kumu kuhikuhi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nā kuhikuhi",
+        "description": "Nā mea kuhikuhi ma kēia papa kumu kuhikuhi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Papa",
+        "description": "Ka helu ʻike a i ʻole ka inoa o ka Papa no kēia papa kumu kuhikuhi (OER Schema forCourse)."
+      }
+    ]
+  }
+}

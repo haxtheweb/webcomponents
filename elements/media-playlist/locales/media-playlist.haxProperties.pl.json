@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Playlista multimediów",
+    "description": "Playlista prezentująca odtwarzacze wideo i audio w układzie odtwarzacz + panel boczny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktywny indeks",
+        "description": "Indeks elementu, od którego należy zacząć."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Kurs, dla którego przeznaczona jest ta playlista (identyfikator kursu lub URL)."
+      }
+    ]
+  }
+}

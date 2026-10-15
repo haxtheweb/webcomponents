@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendari",
+    "description": "Vís tiltøkini í eini kalendarafílu sum dagfestingarkort, tíðarlinju, talvu ella lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalendarafíla",
+        "description": "Legg upp ella vel eina .ics kalendarafílu. Tiltøkini í henni verða lisin í kagaranum."
+      },
+      {
+        "property": "displayAs",
+        "title": "Vís sum",
+        "description": "Hvussu innihaldið í fíluni skal vísast.",
+        "options": {
+          "cards": "Dagfestingarkort",
+          "timeline": "Tíðarlinja",
+          "table": "Talva",
+          "list": "Listi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Yvirskrift",
+        "description": "Víst omanfyri tiltøkini og sum talvuheiti. Sjálvvirkandi navnið á kalendaranum sjálvum."
+      }
+    ]
+  }
+}

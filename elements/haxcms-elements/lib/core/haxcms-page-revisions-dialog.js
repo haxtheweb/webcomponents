@@ -63,7 +63,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           );
         }
         .panel {
-          border: var(--ddd-border-sm) solid
+          border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           display: flex;
@@ -72,7 +72,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           overflow: hidden;
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-charcoalGray)
+            var(--ddd-theme-default-coalyGray)
           );
         }
         .panel-header {
@@ -81,7 +81,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           justify-content: space-between;
           gap: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -102,7 +102,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           flex-shrink: 0;
         }
         simple-icon-button-lite.mode-toggle {
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);
@@ -153,7 +153,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           gap: var(--ddd-spacing-1);
         }
         simple-icon-button-lite.action {
-          --simple-icon-button-border: var(--ddd-border-xs) solid
+          --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);
@@ -170,7 +170,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
         .preview-details {
           margin: 0;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
         }
         .preview-details summary {
@@ -189,7 +189,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
         }
         .preview-collapse {
           margin: 0;
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
         }
         .preview-collapse summary {
@@ -199,7 +199,7 @@ class HAXCMSPageRevisionsDialog extends DDD {
           cursor: pointer;
         }
         .preview-collapse[open] summary {
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
         }
         .preview {

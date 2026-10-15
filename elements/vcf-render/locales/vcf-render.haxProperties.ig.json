@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kọntaktị",
+    "description": "Gosi ndị mmadụ nọ na faịlụ kọntaktị dịka kaadị mmadụ, nhota, tebụl ma ọ bụ ndepụta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faịlụ kọntaktị",
+        "description": "Bulite ma ọ bụ họrọ faịlụ kọntaktị .vcf. A na-agụ kaadị ya na ihe nchọgharị."
+      },
+      {
+        "property": "displayAs",
+        "title": "Gosi dịka",
+        "description": "Otu esi egosipụta ihe dị na faịlụ ahụ.",
+        "options": {
+          "cards": "Kaadị mmadụ",
+          "quotes": "Nhota",
+          "table": "Tebụl",
+          "list": "Ndepụta"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Isiokwu",
+        "description": "A na-egosi ya n'elu kọntaktị ndị ahụ, na dịka nkọwa tebụl."
+      }
+    ]
+  }
+}

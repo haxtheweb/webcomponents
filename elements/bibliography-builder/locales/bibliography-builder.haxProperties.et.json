@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kirjanduse loendi koostaja",
+    "description": "Tööriist kirjanduse loendite loomiseks ja haldamiseks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Viited",
+        "description": "Selle kirjanduse loendi viiteüksused"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Selle kursuse tunnus või nimi, mille jaoks see kirjanduse loend on (OER Schema forCourse)."
+      }
+    ]
+  }
+}

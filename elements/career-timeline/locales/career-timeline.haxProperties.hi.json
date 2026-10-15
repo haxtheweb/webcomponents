@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "करियर टाइमलाइन",
+    "description": "संगठनों, भूमिकाओं और अन्य डेटा वाली करियर टाइमलाइन"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "टाइमलाइन शीर्षक",
+        "description": "करियर टाइमलाइन के लिए शीर्षक (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

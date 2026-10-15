@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diapresintaasje",
+    "description": "In ymportearre PowerPoint-presintaasje dia foar dia presintearje, mei sprekkersnotysjes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Presintaasjemanifest",
+        "description": "Sleep in .pptx-bestân hjirhinne en it wurdt automatysk omset yn in diapresintaasje. It fjild wurdt ynsteld op it paad fan it resultearjende deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Presintaasje-ID",
+        "description": "Allinnich nedich as in side mear as ien presintaasje befettet, sadat diakeppelings ûnderskieden bliuwe"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Downloaden tastean",
+        "description": "In downloadknop foar it oarspronklike PowerPoint-bestân toane yn de spilerbetsjinning"
+      }
+    ]
+  }
+}

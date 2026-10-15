@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Təqvim",
+    "description": "Təqvim faylındakı tədbirləri tarix kartları, xronologiya, cədvəl və ya siyahı şəklində göstərin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Təqvim faylı",
+        "description": ".ics təqvim faylını yükləyin və ya seçin. Onun tədbirləri brauzerdə oxunur."
+      },
+      {
+        "property": "displayAs",
+        "title": "Göstərmə forması",
+        "description": "Faylın məzmununun necə təqdim olunacağı.",
+        "options": {
+          "cards": "Tarix kartları",
+          "timeline": "Xronologiya",
+          "table": "Cədvəl",
+          "list": "Siyahı"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Başlıq",
+        "description": "Tədbirlərin üstündə və cədvəl başlığı kimi göstərilir. Standart olaraq təqvimin öz adı istifadə olunur."
+      }
+    ]
+  }
+}

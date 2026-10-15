@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "کتابیات بنان والا",
+    "description": "کتابیات بنان تے سانبھن لئی اک ٹول"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "حوالے",
+        "description": "ایس کتابیات وچ حوالیاں دیاں آئٹماں"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "اوس کورس دی شناخت یا ناں جیہدے لئی ایہہ کتابیات اے (OER Schema forCourse)۔"
+      }
+    ]
+  }
+}

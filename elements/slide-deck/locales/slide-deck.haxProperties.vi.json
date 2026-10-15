@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bộ trang chiếu",
+    "description": "Trình chiếu bản PowerPoint đã nhập theo từng trang, kèm ghi chú của người thuyết trình."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tệp kê khai bộ trang chiếu",
+        "description": "Thả tệp .pptx vào và tệp sẽ được tự động chuyển thành bộ trang chiếu. Trường này được đặt thành đường dẫn deck.json tạo ra."
+      },
+      {
+        "property": "deckId",
+        "title": "ID bộ trang chiếu",
+        "description": "Chỉ cần khi một trang chứa nhiều bộ trang chiếu, để liên kết trang chiếu không bị trùng"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Cho phép tải xuống",
+        "description": "Hiển thị nút tải xuống tệp PowerPoint gốc trong bảng điều khiển trình phát"
+      }
+    ]
+  }
+}

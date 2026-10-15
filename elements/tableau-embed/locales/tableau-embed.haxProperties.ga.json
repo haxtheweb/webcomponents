@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Leabaigh léirshamhlú Tableau ó URL comhroinnte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL chuig an leabhar oibre nó an t-amharc Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Airde",
+        "description": "Airde an léirshamhlaithe."
+      },
+      {
+        "property": "width",
+        "title": "Leithead",
+        "description": "Leithead an léirshamhlaithe."
+      },
+      {
+        "property": "toolbar",
+        "title": "Barra uirlisí",
+        "description": "Suíomh an bharra uirlisí.",
+        "options": {
+          "top": "Barr",
+          "bottom": "Bun",
+          "hidden": "I bhfolach"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Folaigh cluaisíní",
+        "description": "Folaigh cluaisíní na mbileog."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Leagan amach gléis",
+        "description": "An leagan amach gléis le rindreáil.",
+        "options": {
+          "desktop": "Deasc",
+          "tablet": "Táibléad",
+          "phone": "Fón"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Komeke slaytan",
+    "description": "Pêşkêşiyeke PowerPoint a hatî îthalkirin slayt bi slayt, bi notên axaftvan pêşkêş bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manîfesta pêşkêşiyê",
+        "description": "Pelekî .pptx bavêje û ew bixweber dibe komeke slaytan. Ev qad li ser rêça deck.json a encam tê danîn."
+      },
+      {
+        "property": "deckId",
+        "title": "Nasnameya pêşkêşiyê",
+        "description": "Tenê dema ku rûpelek ji yekê zêdetir pêşkêşî dihewîne pêwîst e, da ku girêdanên slaytan cuda bimînin"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Daxistinê destûr bide",
+        "description": "Di kontrolên lêderê de bişkokek daxistinê ji bo pelê PowerPoint ê orîjînal nîşan bide"
+      }
+    ]
+  }
+}

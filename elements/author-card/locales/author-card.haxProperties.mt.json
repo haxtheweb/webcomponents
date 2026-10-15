@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Karta tal-awtur",
+    "description": "Uri informazzjoni dwar l-awtur b'ritratt, bijografija u links soċjali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Isem l-awtur",
+        "description": "L-isem sħiħ tal-awtur."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni tal-profil",
+        "description": "Ritratt tal-profil tal-awtur."
+      },
+      {
+        "property": "title",
+        "title": "Titlu tax-xogħol",
+        "description": "Il-pożizzjoni jew ir-rwol tal-awtur."
+      },
+      {
+        "property": "description",
+        "title": "Bijografija",
+        "description": "Bijografija qasira tal-awtur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL tal-profil",
+        "description": "Link għall-paġna tal-profil tal-awtur."
+      },
+      {
+        "property": "socialLink",
+        "title": "Link soċjali",
+        "description": "Link għal profil fuq il-midja soċjali."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Isem tal-utent soċjali",
+        "description": "Isem tal-utent fuq il-midja soċjali (pereżempju @username)."
+      }
+    ]
+  }
+}

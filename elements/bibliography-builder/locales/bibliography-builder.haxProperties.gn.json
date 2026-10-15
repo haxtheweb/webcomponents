@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kuatiaryrýi apoha",
+    "description": "Tembipuru ojejapo ha oñemboguata hag̃ua kuatiaryrýi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Mbohasa",
+        "description": "Mbohasa oĩva ko kuatiaryrýipe"
+      },
+      {
+        "property": "forCourse",
+        "title": "Mbo'esyry",
+        "description": "Mbo'esyry ojeguerekóva ko kuatiaryrýi rehe réra térã ñemoha'ãnga (OER Schema forCourse)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Begivenhed",
+  "when": "Hvornår",
+  "where": "Hvor",
+  "details": "Detaljer",
+  "allDay": "Hele dagen",
+  "repeats": "Gentages",
+  "loadingCalendar": "Indlæser kalender",
+  "calendarUnavailable": "Kalenderen er ikke tilgængelig",
+  "noEvents": "Ingen begivenheder i denne kalender"
+}

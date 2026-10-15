@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contactos",
+    "description": "Muestra las personas de un archivo de contactos como tarjetas de persona, citas, una tabla o una lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Archivo de contactos",
+        "description": "Sube o elige un archivo de contactos .vcf. Sus tarjetas se leen en el navegador."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostrar como",
+        "description": "Cómo presentar el contenido del archivo.",
+        "options": {
+          "cards": "Tarjetas de persona",
+          "quotes": "Citas",
+          "table": "Tabla",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Encabezado",
+        "description": "Se muestra sobre los contactos y como leyenda de la tabla."
+      }
+    ]
+  }
+}

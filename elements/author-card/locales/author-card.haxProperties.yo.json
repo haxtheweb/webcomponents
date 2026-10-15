@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Káàdì òǹkọ̀wé",
+    "description": "Ṣàfihàn ìwífún òǹkọ̀wé pẹ̀lú fọ́tò, ìtàn ṣókí, àti àwọn ìjápọ̀ ìkànnì àjọlò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Orúkọ òǹkọ̀wé",
+        "description": "Orúkọ kíkún òǹkọ̀wé."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán profaili",
+        "description": "Fọ́tò profaili òǹkọ̀wé."
+      },
+      {
+        "property": "title",
+        "title": "Orúkọ iṣẹ́",
+        "description": "Ipò tàbí ipa òǹkọ̀wé."
+      },
+      {
+        "property": "description",
+        "title": "Ìtàn ṣókí",
+        "description": "Ìtàn ìgbésí ayé òǹkọ̀wé ní ṣókí."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL profaili",
+        "description": "Ìjápọ̀ sí ojú-ewé profaili òǹkọ̀wé."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ìjápọ̀ ìkànnì àjọlò",
+        "description": "Ìjápọ̀ sí profaili ìkànnì àjọlò kan."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Orúkọ olùmúlò ìkànnì àjọlò",
+        "description": "Orúkọ olùmúlò lórí ìkànnì àjọlò (fún àpẹẹrẹ @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ਪੁਸਤਕ-ਸੂਚੀ ਨਿਰਮਾਤਾ",
+    "description": "ਪੁਸਤਕ-ਸੂਚੀਆਂ ਬਣਾਉਣ ਅਤੇ ਪ੍ਰਬੰਧਿਤ ਕਰਨ ਲਈ ਇੱਕ ਟੂਲ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ਹਵਾਲੇ",
+        "description": "ਇਸ ਪੁਸਤਕ-ਸੂਚੀ ਵਿਚਲੀਆਂ ਹਵਾਲਾ ਆਈਟਮਾਂ"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ",
+        "description": "ਉਸ ਕੋਰਸ ਦਾ ਪਛਾਣਕਰਤਾ ਜਾਂ ਨਾਮ ਜਿਸ ਲਈ ਇਹ ਪੁਸਤਕ-ਸੂਚੀ ਹੈ (OER Schema forCourse)।"
+      }
+    ]
+  }
+}

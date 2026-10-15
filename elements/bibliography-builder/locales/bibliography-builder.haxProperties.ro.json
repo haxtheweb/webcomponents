@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Generator de bibliografie",
+    "description": "Un instrument pentru crearea și gestionarea bibliografiilor"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citări",
+        "description": "Elementele de citare din această bibliografie"
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "Identificatorul sau numele cursului pentru care este această bibliografie (OER Schema forCourse)."
+      }
+    ]
+  }
+}

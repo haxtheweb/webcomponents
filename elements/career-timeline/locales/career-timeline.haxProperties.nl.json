@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Loopbaantijdlijn",
+    "description": "Een loopbaantijdlijn met organisaties, functies en andere gegevens"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel van tijdlijn",
+        "description": "Een titel voor de loopbaantijdlijn (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

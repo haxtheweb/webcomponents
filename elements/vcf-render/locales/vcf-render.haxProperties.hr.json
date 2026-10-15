@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontakti",
+    "description": "Prikaz osoba iz datoteke kontakata kao kartica osoba, citata, tablice ili popisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Datoteka kontakata",
+        "description": "Prenesite ili odaberite datoteku kontakata .vcf. Njezine kartice čitaju se u pregledniku."
+      },
+      {
+        "property": "displayAs",
+        "title": "Prikaži kao",
+        "description": "Kako prikazati sadržaj datoteke.",
+        "options": {
+          "cards": "Kartice osoba",
+          "quotes": "Citati",
+          "table": "Tablica",
+          "list": "Popis"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Naslov",
+        "description": "Prikazuje se iznad kontakata i kao opis tablice."
+      }
+    ]
+  }
+}

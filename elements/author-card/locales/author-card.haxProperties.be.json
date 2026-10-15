@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Картка аўтара",
+    "description": "Паказвае звесткі пра аўтара з фота, біяграфіяй і спасылкамі на сацыяльныя сеткі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Імя аўтара",
+        "description": "Поўнае імя аўтара."
+      },
+      {
+        "property": "image",
+        "title": "Выява профілю",
+        "description": "Фота профілю аўтара."
+      },
+      {
+        "property": "title",
+        "title": "Пасада",
+        "description": "Пасада або роля аўтара."
+      },
+      {
+        "property": "description",
+        "title": "Біяграфія",
+        "description": "Кароткая біяграфія аўтара."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL профілю",
+        "description": "Спасылка на старонку профілю аўтара."
+      },
+      {
+        "property": "socialLink",
+        "title": "Спасылка на сацсетку",
+        "description": "Спасылка на профіль у сацыяльнай сетцы."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Імя ў сацсетцы",
+        "description": "Імя карыстальніка ў сацыяльнай сетцы (напрыклад, @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ta'anga ñehechauka",
+    "description": "Ehechauka peteĩ PowerPoint ñehechauka ojegueruva'ekue ta'anga ha ta'anga, ñe'ẽhára jehaipy ndive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ñehechauka marandurenda",
+        "description": "Emoinge peteĩ .pptx marandurenda ha ojekonverti ijeheguiete ta'anga ñehechauka ramo. Ko kora oñemohenda deck.json oseva'ekue rapére."
+      },
+      {
+        "property": "deckId",
+        "title": "Ñehechauka ID",
+        "description": "Oñeikotevẽ añoite peteĩ kuatiarogue oguerekóramo hetave peteĩ ñehechaukagui, ta'anga juajuha opyta hag̃ua iñambuéva"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Emoneĩ ñemboguejy",
+        "description": "Ehechauka votõ emboguejy hag̃ua PowerPoint marandurenda ypykue mboputaha ñemboguatahápe"
+      }
+    ]
+  }
+}

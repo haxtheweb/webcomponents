@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "저자 카드",
+    "description": "사진, 소개 및 소셜 링크와 함께 저자 정보를 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "저자 이름",
+        "description": "저자의 전체 이름."
+      },
+      {
+        "property": "image",
+        "title": "프로필 이미지",
+        "description": "저자 프로필 사진."
+      },
+      {
+        "property": "title",
+        "title": "직함",
+        "description": "저자의 직책 또는 역할."
+      },
+      {
+        "property": "description",
+        "title": "소개",
+        "description": "짧은 저자 소개."
+      },
+      {
+        "property": "profileUrl",
+        "title": "프로필 URL",
+        "description": "저자 프로필 페이지 링크."
+      },
+      {
+        "property": "socialLink",
+        "title": "소셜 링크",
+        "description": "소셜 미디어 프로필 링크."
+      },
+      {
+        "property": "socialHandle",
+        "title": "소셜 핸들",
+        "description": "소셜 미디어 핸들 (예: @username)."
+      }
+    ]
+  }
+}

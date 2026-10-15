@@ -27,7 +27,12 @@ jobs:
           path-to-document: "https://github.com/haxtheweb/cla/blob/main/CLA.md"
           # branch should not be protected
           branch: "main"
-          allowlist: "*[bot]"
+          # "claude" is the GitHub account behind commits authored as
+          # Claude <noreply@anthropic.com> (Claude Code sessions run by maintainers);
+          # "copilot-swe-agent[bot]" and "Copilot" are GitHub Copilot agents.
+          # Those changes are reviewed and merged by a maintainer who has signed the CLA,
+          # so they are pre-authorized here along with the remaining bot accounts.
+          allowlist: "*[bot],bot*,claude,copilot-swe-agent[bot],Copilot"
           # the followings are the optional inputs - If the optional inputs are not given, then default values will be taken
           remote-organization-name: "haxtheweb"
           remote-repository-name: "cla"

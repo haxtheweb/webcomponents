@@ -1,0 +1,11 @@
+{
+  "name": "Име",
+  "position": "Длъжност",
+  "organization": "Организация",
+  "email": "Имейл",
+  "phone": "Телефон",
+  "address": "Адрес",
+  "loadingContacts": "Зареждане на контактите",
+  "contactsUnavailable": "Контактите не са налични",
+  "noContacts": "Няма контакти в този файл"
+}

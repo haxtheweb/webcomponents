@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Onye nrụpụta ndepụta akwụkwọ",
+    "description": "Ngwá ọrụ maka ịmepụta na ijikwa ndepụta akwụkwọ ntụaka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nhota",
+        "description": "Ihe nhota dị na ndepụta akwụkwọ a"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsụ",
+        "description": "Njirimara ma ọ bụ aha kọọsụ ndepụta akwụkwọ a bụ maka ya (OER Schema forCourse)."
+      }
+    ]
+  }
+}

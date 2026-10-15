@@ -218,7 +218,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           margin-bottom: var(--ddd-spacing-3);
         }
         .block-category-title:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -270,7 +270,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           text-align: left;
           vertical-align: top;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-xs) solid
+          border-bottom: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)
@@ -473,7 +473,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           gap: var(--ddd-spacing-3);
           padding-top: var(--ddd-spacing-4);
           margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-xs) solid
+          border-top: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-limestoneGray),
               var(--ddd-primary-5)

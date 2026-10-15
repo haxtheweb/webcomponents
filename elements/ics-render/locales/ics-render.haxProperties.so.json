@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Jadwal",
+    "description": "U muuji dhacdooyinka ku jira fayl jadwal sida kaarar taariikheed, taariikh-socod, shax ama liis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faylka jadwalka",
+        "description": "Soo geli ama dooro fayl jadwal .ics ah. Dhacdooyinkiisa waxaa lagu akhriyaa biraawsarka."
+      },
+      {
+        "property": "displayAs",
+        "title": "U muuji sida",
+        "description": "Sida loo soo bandhigayo waxa faylku ka kooban yahay.",
+        "options": {
+          "cards": "Kaarar taariikheed",
+          "timeline": "Taariikh-socod",
+          "table": "Shax",
+          "list": "Liis"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Ciwaan",
+        "description": "Waxaa lagu muujiyaa dhacdooyinka korkooda, iyo sida cinwaanka shaxda. Si caadi ah waa magaca jadwalka laftiisa."
+      }
+    ]
+  }
+}

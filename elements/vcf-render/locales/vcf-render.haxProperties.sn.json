@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vanhu vekutaurirana navo",
+    "description": "Ratidza vanhu vari mufaira yevanhu vekutaurirana navo semakadhi evanhu, zvitaurwa, tafura kana rondedzero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faira yevanhu vekutaurirana navo",
+        "description": "Isa kana sarudza faira ye.vcf yevanhu vekutaurirana navo. Makadhi ayo anoverengerwa mubrowser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ratidza se",
+        "description": "Maratidziro ezviri mufaira.",
+        "options": {
+          "cards": "Makadhi evanhu",
+          "quotes": "Zvitaurwa",
+          "table": "Tafura",
+          "list": "Rondedzero"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Musoro",
+        "description": "Unoratidzwa pamusoro pevanhu vekutaurirana navo, uye semusoro wetafura."
+      }
+    ]
+  }
+}

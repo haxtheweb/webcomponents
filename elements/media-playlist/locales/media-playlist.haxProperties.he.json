@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "רשימת השמעת מדיה",
+    "description": "רשימת השמעה המציגה נגני וידאו ושמע בפריסת נגן + סרגל צד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "אינדקס פעיל",
+        "description": "מספר הפריט הפעיל שבו מתחילים."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "הקורס שעבורו נועדה רשימת השמעה זו (מזהה קורס או URL)."
+      }
+    ]
+  }
+}

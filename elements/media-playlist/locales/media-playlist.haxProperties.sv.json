@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mediespellista",
+    "description": "En spellista som visar video- och ljudspelare i en layout med spelare och sidofält."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Startindex",
+        "description": "Index för det objekt som ska visas först."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Kursen som den här spellistan är avsedd för (kursidentifierare eller URL)."
+      }
+    ]
+  }
+}

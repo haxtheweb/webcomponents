@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Àwọn olùbásọ̀rọ̀",
+    "description": "Ṣàfihàn àwọn ènìyàn inú fáìlì olùbásọ̀rọ̀ gẹ́gẹ́ bí káàdì ènìyàn, àyọkà, tábìlì tàbí àkójọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fáìlì olùbásọ̀rọ̀",
+        "description": "Gbé fáìlì olùbásọ̀rọ̀ .vcf sókè tàbí yàn án. A ń ka àwọn káàdì rẹ̀ nínú aṣàwákiri."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ṣàfihàn gẹ́gẹ́ bí",
+        "description": "Bí a ṣe máa ṣàfihàn ohun tí fáìlì náà ní.",
+        "options": {
+          "cards": "Káàdì ènìyàn",
+          "quotes": "Àyọkà",
+          "table": "Tábìlì",
+          "list": "Àkójọ"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Àkọlé",
+        "description": "Ó ń hàn lókè àwọn olùbásọ̀rọ̀, àti gẹ́gẹ́ bí àkọlé tábìlì."
+      }
+    ]
+  }
+}

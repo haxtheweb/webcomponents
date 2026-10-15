@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "مصنف کارڈ",
+    "description": "مصنف کی معلومات تصویر، مختصر سوانح اور سوشل لنکس کے ساتھ دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "مصنف کا نام",
+        "description": "مصنف کا پورا نام۔"
+      },
+      {
+        "property": "image",
+        "title": "پروفائل تصویر",
+        "description": "مصنف کی پروفائل تصویر۔"
+      },
+      {
+        "property": "title",
+        "title": "ملازمت کا عنوان",
+        "description": "مصنف کا عہدہ یا کردار۔"
+      },
+      {
+        "property": "description",
+        "title": "مختصر سوانح",
+        "description": "مصنف کی مختصر سوانح حیات۔"
+      },
+      {
+        "property": "profileUrl",
+        "title": "پروفائل URL",
+        "description": "مصنف کے پروفائل صفحے کا لنک۔"
+      },
+      {
+        "property": "socialLink",
+        "title": "سوشل لنک",
+        "description": "سوشل میڈیا پروفائل کا لنک۔"
+      },
+      {
+        "property": "socialHandle",
+        "title": "سوشل ہینڈل",
+        "description": "سوشل میڈیا ہینڈل (مثلاً @username)۔"
+      }
+    ]
+  }
+}

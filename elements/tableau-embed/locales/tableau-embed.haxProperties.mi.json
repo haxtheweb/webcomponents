@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tāurua ngā whakakitenga Tableau mai i tētahi URL tiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "Te URL ki te pukamahi, ki te tirohanga Tableau rānei."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Te teitei o te whakakitenga."
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Te whānui o te whakakitenga."
+      },
+      {
+        "property": "toolbar",
+        "title": "Paeutauta",
+        "description": "Te tūnga o te paeutauta.",
+        "options": {
+          "top": "Runga",
+          "bottom": "Raro",
+          "hidden": "Huna"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Hunaia ngā ripa",
+        "description": "Hunaia ngā ripa rau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Tahora pūrere",
+        "description": "Te tahora pūrere hei whakaatu.",
+        "options": {
+          "desktop": "Papamahi",
+          "tablet": "Papa rorohiko",
+          "phone": "Waea"
+        }
+      }
+    ]
+  }
+}

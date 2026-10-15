@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Встраивание визуализаций Tableau по ссылке для общего доступа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL книги или представления Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Высота",
+        "description": "Высота визуализации."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина визуализации."
+      },
+      {
+        "property": "toolbar",
+        "title": "Панель инструментов",
+        "description": "Расположение панели инструментов.",
+        "options": {
+          "top": "Сверху",
+          "bottom": "Снизу",
+          "hidden": "Скрыта"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Скрыть вкладки",
+        "description": "Скрыть вкладки листов."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Макет устройства",
+        "description": "Макет устройства для отображения.",
+        "options": {
+          "desktop": "Компьютер",
+          "tablet": "Планшет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

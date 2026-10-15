@@ -1,0 +1,11 @@
+{
+  "name": "Numm",
+  "position": "Positioun",
+  "organization": "Organisatioun",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "address": "Adress",
+  "loadingContacts": "Kontakter gi gelueden",
+  "contactsUnavailable": "Kontakter net verfügbar",
+  "noContacts": "Keng Kontakter an dësem Fichier"
+}

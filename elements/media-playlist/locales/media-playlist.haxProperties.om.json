@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tarree miidiyaa",
+    "description": "Tarree taphachiisaa taphachiiftota viidiyoo fi sagalee bifa taphachiisaa + cinaa keessatti dhiyeessu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Lakkoofsa jalqabaa",
+        "description": "Lakkoofsa wanta irraa jalqabamu."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorsii",
+        "description": "Koorsii tarreen taphachiisaa kun itti qophaa'e (eenyummeessaa koorsii ykn URL)."
+      }
+    ]
+  }
+}

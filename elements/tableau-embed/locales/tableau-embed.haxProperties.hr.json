@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Ugradnja Tableau vizualizacija s URL-a za dijeljenje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL Tableau radne knjige ili prikaza."
+      },
+      {
+        "property": "height",
+        "title": "Visina",
+        "description": "Visina vizualizacije."
+      },
+      {
+        "property": "width",
+        "title": "Širina",
+        "description": "Širina vizualizacije."
+      },
+      {
+        "property": "toolbar",
+        "title": "Alatna traka",
+        "description": "Položaj alatne trake.",
+        "options": {
+          "top": "Gore",
+          "bottom": "Dolje",
+          "hidden": "Skriveno"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Sakrij kartice",
+        "description": "Sakrij kartice listova."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Raspored uređaja",
+        "description": "Raspored uređaja za prikaz.",
+        "options": {
+          "desktop": "Stolno računalo",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

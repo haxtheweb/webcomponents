@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ไทม์ไลน์อาชีพ",
+    "description": "ไทม์ไลน์อาชีพที่มีองค์กร บทบาท และข้อมูลอื่น ๆ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อไทม์ไลน์",
+        "description": "ชื่อของไทม์ไลน์อาชีพ (OER Schema: oer:name)"
+      }
+    ]
+  }
+}

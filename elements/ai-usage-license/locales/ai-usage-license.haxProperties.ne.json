@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI प्रयोग इजाजतपत्र",
+    "description": "तपाईंको कामका लागि AI प्रयोग इजाजतपत्र (AIUL) ब्याज देखाउनुहोस्"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "इजाजतपत्र",
+        "description": "यस कामका लागि AI प्रयोग इजाजतपत्रको स्तर। विवरणका लागि https://dmd-program.github.io/aiul/ हेर्नुहोस्।"
+      },
+      {
+        "property": "modifier",
+        "title": "मिडिया परिमार्जक",
+        "description": "वैकल्पिक मिडिया क्षेत्र परिमार्जक। यो इजाजतपत्र कुन प्रकारको मिडियामा लागू हुन्छ भनेर निर्दिष्ट गर्छ।"
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI प्रयोग इजाजतपत्र सन्दर्भ पृष्ठको URI। सेट नगरिएमा इजाजतपत्र लिङ्कबाट स्वचालित रूपमा भरिन्छ।"
+      }
+    ]
+  }
+}

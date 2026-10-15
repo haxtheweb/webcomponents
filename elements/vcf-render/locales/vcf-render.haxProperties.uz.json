@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktlar",
+    "description": "Kontakt faylidagi odamlarni shaxs kartochkalari, iqtiboslar, jadval yoki ro‘yxat ko‘rinishida ko‘rsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontakt fayli",
+        "description": ".vcf kontakt faylini yuklang yoki tanlang. Uning kartochkalari brauzerda o‘qiladi."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ko‘rinishi",
+        "description": "Fayl tarkibini qanday taqdim etish.",
+        "options": {
+          "cards": "Shaxs kartochkalari",
+          "quotes": "Iqtiboslar",
+          "table": "Jadval",
+          "list": "Ro‘yxat"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Sarlavha",
+        "description": "Kontaktlar ustida va jadval sarlavhasi sifatida ko‘rsatiladi."
+      }
+    ]
+  }
+}

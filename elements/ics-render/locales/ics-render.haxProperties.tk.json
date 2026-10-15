@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Senenama",
+    "description": "Senenama faýlyndaky çäreleri sene kartoçkalary, wagt çyzgysy, tablisa ýa-da sanaw görnüşinde görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Senenama faýly",
+        "description": ".ics senenama faýlyny ýükläň ýa-da saýlaň. Onuň çäreleri brauzerde okalýar."
+      },
+      {
+        "property": "displayAs",
+        "title": "Görkeziş görnüşi",
+        "description": "Faýlyň mazmunyny nähili görkezmeli.",
+        "options": {
+          "cards": "Sene kartoçkalary",
+          "timeline": "Wagt çyzgysy",
+          "table": "Tablisa",
+          "list": "Sanaw"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Sözbaşy",
+        "description": "Çäreleriň üstünde we tablisanyň ady hökmünde görkezilýär. Deslapky ýagdaýda senenamanyň öz ady ulanylýar."
+      }
+    ]
+  }
+}

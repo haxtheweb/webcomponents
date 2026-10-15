@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "షేర్ URL నుండి Tableau విజువలైజేషన్‌లను పొందుపరచండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau వర్క్‌బుక్ లేదా వీక్షణకు URL."
+      },
+      {
+        "property": "height",
+        "title": "ఎత్తు",
+        "description": "విజువలైజేషన్ ఎత్తు."
+      },
+      {
+        "property": "width",
+        "title": "వెడల్పు",
+        "description": "విజువలైజేషన్ వెడల్పు."
+      },
+      {
+        "property": "toolbar",
+        "title": "టూల్‌బార్",
+        "description": "టూల్‌బార్ స్థానం.",
+        "options": {
+          "top": "పైన",
+          "bottom": "కింద",
+          "hidden": "దాచబడింది"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "ట్యాబ్‌లను దాచు",
+        "description": "షీట్ ట్యాబ్‌లను దాచు."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "పరికర లేఅవుట్",
+        "description": "ప్రదర్శించాల్సిన పరికర లేఅవుట్.",
+        "options": {
+          "desktop": "డెస్క్‌టాప్",
+          "tablet": "టాబ్లెట్",
+          "phone": "ఫోన్"
+        }
+      }
+    ]
+  }
+}

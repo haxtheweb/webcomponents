@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Karta e autorit",
+    "description": "Shfaq informacionin e autorit me foto, biografi dhe lidhje sociale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Emri i autorit",
+        "description": "Emri i plotë i autorit."
+      },
+      {
+        "property": "image",
+        "title": "Imazhi i profilit",
+        "description": "Fotoja e profilit të autorit."
+      },
+      {
+        "property": "title",
+        "title": "Titulli i punës",
+        "description": "Pozicioni ose roli i autorit."
+      },
+      {
+        "property": "description",
+        "title": "Biografia",
+        "description": "Biografi e shkurtër e autorit."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL e profilit",
+        "description": "Lidhje për faqen e profilit të autorit."
+      },
+      {
+        "property": "socialLink",
+        "title": "Lidhja sociale",
+        "description": "Lidhje për një profil në rrjetet sociale."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Emri i përdoruesit në rrjetet sociale",
+        "description": "Emri i përdoruesit në rrjetet sociale (për shembull @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karjeros laiko juosta",
+    "description": "Karjeros laiko juosta su organizacijomis, pareigomis ir kitais duomenimis"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Laiko juostos pavadinimas",
+        "description": "Karjeros laiko juostos pavadinimas (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

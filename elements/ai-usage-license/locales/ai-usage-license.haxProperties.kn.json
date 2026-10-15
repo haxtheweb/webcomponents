@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI ಬಳಕೆ ಪರವಾನಗಿ",
+    "description": "ನಿಮ್ಮ ಕೃತಿಗಾಗಿ AI ಬಳಕೆ ಪರವಾನಗಿ (AIUL) ಬ್ಯಾಡ್ಜ್ ಪ್ರದರ್ಶಿಸಿ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "ಪರವಾನಗಿ",
+        "description": "ಈ ಕೃತಿಗೆ AI ಬಳಕೆ ಪರವಾನಗಿಯ ಮಟ್ಟ. ವಿವರಗಳಿಗಾಗಿ https://dmd-program.github.io/aiul/ ನೋಡಿ."
+      },
+      {
+        "property": "modifier",
+        "title": "ಮೀಡಿಯಾ ಮಾರ್ಪಾಡುಕ",
+        "description": "ಐಚ್ಛಿಕ ಮೀಡಿಯಾ ಕ್ಷೇತ್ರ ಮಾರ್ಪಾಡುಕ. ಈ ಪರವಾನಗಿ ಅನ್ವಯಿಸುವ ಮೀಡಿಯಾ ಪ್ರಕಾರವನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI ಬಳಕೆ ಪರವಾನಗಿ ಉಲ್ಲೇಖ ಪುಟದ URI. ಹೊಂದಿಸದಿದ್ದಾಗ ಪರವಾನಗಿ ಲಿಂಕ್‌ನಿಂದ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತುಂಬಲಾಗುತ್ತದೆ."
+      }
+    ]
+  }
+}

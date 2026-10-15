@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Dek slide",
+    "description": "Presentasikan dek PowerPoint yang diimpor slide demi slide, dengan catatan pembicara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifes dek",
+        "description": "Letakkan file .pptx dan file tersebut otomatis dikonversi menjadi dek slide. Kolom ini diatur ke jalur deck.json yang dihasilkan."
+      },
+      {
+        "property": "deckId",
+        "title": "ID dek",
+        "description": "Hanya diperlukan jika halaman berisi lebih dari satu dek, agar tautan slide tetap berbeda"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Izinkan unduhan",
+        "description": "Tampilkan tombol unduh untuk file PowerPoint asli di kontrol pemutar"
+      }
+    ]
+  }
+}

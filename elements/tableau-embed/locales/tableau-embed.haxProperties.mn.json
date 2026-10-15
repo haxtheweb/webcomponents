@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Хуваалцах URL-аас Tableau дүрслэлийг оруулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau ажлын ном эсвэл харагдацын URL."
+      },
+      {
+        "property": "height",
+        "title": "Өндөр",
+        "description": "Дүрслэлийн өндөр."
+      },
+      {
+        "property": "width",
+        "title": "Өргөн",
+        "description": "Дүрслэлийн өргөн."
+      },
+      {
+        "property": "toolbar",
+        "title": "Хэрэгслийн мөр",
+        "description": "Хэрэгслийн мөрийн байрлал.",
+        "options": {
+          "top": "Дээр",
+          "bottom": "Доор",
+          "hidden": "Нуугдсан"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Табуудыг нуух",
+        "description": "Хуудасны табуудыг нуух."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Төхөөрөмжийн бүтэц",
+        "description": "Харуулах төхөөрөмжийн бүтэц.",
+        "options": {
+          "desktop": "Компьютер",
+          "tablet": "Таблет",
+          "phone": "Утас"
+        }
+      }
+    ]
+  }
+}

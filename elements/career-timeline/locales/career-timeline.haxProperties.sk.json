@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Časová os kariéry",
+    "description": "Časová os kariéry s organizáciami, pozíciami a ďalšími údajmi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov časovej osi",
+        "description": "Názov časovej osi kariéry (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

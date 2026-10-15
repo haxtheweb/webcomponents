@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "KI-gebruikslisensie",
+    "description": "Wys 'n KI-gebruikslisensie-kenteken (AIUL) vir jou werk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisensie",
+        "description": "Die KI-gebruikslisensievlak vir hierdie werk. Sien https://dmd-program.github.io/aiul/ vir besonderhede."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediawysiger",
+        "description": "Opsionele mediadomeinwysiger. Spesifiseer die soort media waarop hierdie lisensie van toepassing is."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI vir die verwysingsbladsy van die KI-gebruikslisensie. Word outomaties vanaf die lisensieskakel ingevul wanneer dit nie gestel is nie."
+      }
+    ]
+  }
+}

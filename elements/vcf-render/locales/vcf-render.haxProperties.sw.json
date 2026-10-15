@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Anwani za mawasiliano",
+    "description": "Onyesha watu walio katika faili la anwani kama kadi za watu, nukuu, jedwali au orodha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faili la anwani",
+        "description": "Pakia au chagua faili la anwani la .vcf. Kadi zake husomwa kwenye kivinjari."
+      },
+      {
+        "property": "displayAs",
+        "title": "Onyesha kama",
+        "description": "Jinsi ya kuwasilisha yaliyomo kwenye faili.",
+        "options": {
+          "cards": "Kadi za watu",
+          "quotes": "Nukuu",
+          "table": "Jedwali",
+          "list": "Orodha"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kichwa",
+        "description": "Huonyeshwa juu ya anwani, na kama kichwa cha jedwali."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Bir paylaşım URL'sinden Tableau görselleştirmeleri yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau çalışma kitabının veya görünümünün URL'si."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "Görselleştirme yüksekliği."
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "Görselleştirme genişliği."
+      },
+      {
+        "property": "toolbar",
+        "title": "Araç çubuğu",
+        "description": "Araç çubuğu konumu.",
+        "options": {
+          "top": "Üst",
+          "bottom": "Alt",
+          "hidden": "Gizli"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Sekmeleri gizle",
+        "description": "Sayfa sekmelerini gizle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Cihaz düzeni",
+        "description": "Oluşturulacak cihaz düzeni.",
+        "options": {
+          "desktop": "Masaüstü",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

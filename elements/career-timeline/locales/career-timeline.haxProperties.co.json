@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Cronulugia prufessiunale",
+    "description": "Una cronulugia prufessiunale chì cuntene urganizazioni, roli è altri dati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu di a cronulugia",
+        "description": "Un titulu per a cronulugia prufessiunale (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

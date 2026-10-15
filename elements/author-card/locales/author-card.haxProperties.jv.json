@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kertu panulis",
+    "description": "Nampilaké informasi panulis kanthi foto, biografi, lan pranala media sosial."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Jeneng panulis",
+        "description": "Jeneng lengkap panulis."
+      },
+      {
+        "property": "image",
+        "title": "Gambar profil",
+        "description": "Foto profil panulis."
+      },
+      {
+        "property": "title",
+        "title": "Jabatan",
+        "description": "Jabatan utawa peran panulis."
+      },
+      {
+        "property": "description",
+        "title": "Biografi",
+        "description": "Biografi cekak panulis."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL profil",
+        "description": "Pranala menyang kaca profil panulis."
+      },
+      {
+        "property": "socialLink",
+        "title": "Pranala sosial",
+        "description": "Pranala menyang profil media sosial."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Jeneng panganggo sosial",
+        "description": "Jeneng panganggo media sosial (contoné @username)."
+      }
+    ]
+  }
+}

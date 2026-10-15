@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendář",
+    "description": "Zobrazí události ze souboru kalendáře jako karty s daty, časovou osu, tabulku nebo seznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Soubor kalendáře",
+        "description": "Nahrajte nebo vyberte soubor kalendáře .ics. Jeho události se načítají v prohlížeči."
+      },
+      {
+        "property": "displayAs",
+        "title": "Zobrazit jako",
+        "description": "Jak zobrazit obsah souboru.",
+        "options": {
+          "cards": "Karty s daty",
+          "timeline": "Časová osa",
+          "table": "Tabulka",
+          "list": "Seznam"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Nadpis",
+        "description": "Zobrazuje se nad událostmi a jako popisek tabulky. Výchozí hodnotou je vlastní název kalendáře."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "경력 타임라인",
+    "description": "조직, 역할 및 기타 데이터를 담은 경력 타임라인"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "타임라인 제목",
+        "description": "경력 타임라인의 제목 (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

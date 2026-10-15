@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ngwugwu slaịdị",
+    "description": "Gosipụta ngwugwu PowerPoint e bubatara otu slaịdị n'otu oge, ya na ndetu onye na-ekwu okwu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifestị ngwugwu slaịdị",
+        "description": "Dobe faịlụ .pptx, a ga-agbanwe ya na ngwugwu slaịdị na-akpaghị aka. A na-edozi ubi a na ụzọ deck.json e mepụtara."
+      },
+      {
+        "property": "deckId",
+        "title": "ID ngwugwu slaịdị",
+        "description": "Ọ dị mkpa naanị mgbe peeji nwere ihe karịrị otu ngwugwu, ka njikọ slaịdị wee dị iche"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Kwe ka ebudata",
+        "description": "Gosi bọtịnụ nbudata maka faịlụ PowerPoint mbụ na njikwa ihe ọkpụkpọ"
+      }
+    ]
+  }
+}

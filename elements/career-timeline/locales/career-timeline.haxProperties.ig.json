@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Usoro oge ọrụ",
+    "description": "Usoro oge ọrụ nwere nzukọ, ọrụ, na data ndị ọzọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha usoro oge",
+        "description": "Aha maka usoro oge ọrụ (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ລຳດັບເວລາອາຊີບ",
+    "description": "ລຳດັບເວລາອາຊີບທີ່ປະກອບດ້ວຍອົງກອນ, ບົດບາດ ແລະ ຂໍ້ມູນອື່ນໆ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້ລຳດັບເວລາ",
+        "description": "ຫົວຂໍ້ສຳລັບລຳດັບເວລາອາຊີບ (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Shatiga Isticmaalka AI",
+    "description": "Muuji calaamadda Shatiga Isticmaalka AI (AIUL) ee shaqadaada"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Shati",
+        "description": "Heerka shatiga isticmaalka AI ee shaqadan. Eeg https://dmd-program.github.io/aiul/ si aad u hesho faahfaahin."
+      },
+      {
+        "property": "modifier",
+        "title": "Wax-ka-beddelaha warbaahinta",
+        "description": "Wax-ka-beddele ikhtiyaari ah oo nooca warbaahinta. Wuxuu qeexayaa nooca warbaahinta uu shatigani khuseeyo."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI-ga bogga tixraaca Shatiga Isticmaalka AI. Si toos ah ayaa looga buuxiyaa xiriirka shatiga marka aan la dejin."
+      }
+    ]
+  }
+}

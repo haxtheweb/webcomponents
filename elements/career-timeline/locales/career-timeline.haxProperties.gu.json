@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "કારકિર્દી સમયરેખા",
+    "description": "સંસ્થાઓ, ભૂમિકાઓ અને અન્ય માહિતી ધરાવતી કારકિર્દી સમયરેખા"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "સમયરેખાનું શીર્ષક",
+        "description": "કારકિર્દી સમયરેખા માટે શીર્ષક (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

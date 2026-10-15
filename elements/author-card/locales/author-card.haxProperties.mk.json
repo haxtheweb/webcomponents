@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Картичка на автор",
+    "description": "Прикажи информации за авторот со фотографија, биографија и социјални врски."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Име на автор",
+        "description": "Целосно име на авторот."
+      },
+      {
+        "property": "image",
+        "title": "Профилна слика",
+        "description": "Профилна фотографија на авторот."
+      },
+      {
+        "property": "title",
+        "title": "Работна позиција",
+        "description": "Позиција или улога на авторот."
+      },
+      {
+        "property": "description",
+        "title": "Биографија",
+        "description": "Кратка биографија на авторот."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL на профил",
+        "description": "Врска до профилната страница на авторот."
+      },
+      {
+        "property": "socialLink",
+        "title": "Социјална врска",
+        "description": "Врска до профил на социјалните мрежи."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Корисничко име на социјални мрежи",
+        "description": "Корисничко име на социјалните мрежи (на пример @username)."
+      }
+    ]
+  }
+}

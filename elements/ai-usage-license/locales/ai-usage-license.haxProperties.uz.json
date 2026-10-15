@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sun’iy intellektdan foydalanish litsenziyasi",
+    "description": "Ishingiz uchun sun’iy intellektdan foydalanish litsenziyasi (AIUL) nishonini ko‘rsatish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Litsenziya",
+        "description": "Ushbu ish uchun sun’iy intellektdan foydalanish litsenziyasi darajasi. Batafsil: https://dmd-program.github.io/aiul/"
+      },
+      {
+        "property": "modifier",
+        "title": "Media modifikatori",
+        "description": "Ixtiyoriy media sohasi modifikatori. Ushbu litsenziya qaysi media turiga tegishli ekanini belgilaydi."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: sun’iy intellektdan foydalanish litsenziyasi ma’lumot sahifasi uchun URI. O‘rnatilmagan bo‘lsa, litsenziya havolasidan avtomatik to‘ldiriladi."
+      }
+    ]
+  }
+}

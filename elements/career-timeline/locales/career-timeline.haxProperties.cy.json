@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Llinell amser gyrfa",
+    "description": "Llinell amser gyrfa sy'n cynnwys sefydliadau, rolau a data arall"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl y llinell amser",
+        "description": "Teitl ar gyfer y llinell amser gyrfa (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

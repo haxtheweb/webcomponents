@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Įterpti Tableau vizualizacijas iš bendrinimo URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau darbaknygės arba rodinio URL."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "Vizualizacijos aukštis."
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "Vizualizacijos plotis."
+      },
+      {
+        "property": "toolbar",
+        "title": "Įrankių juosta",
+        "description": "Įrankių juostos padėtis.",
+        "options": {
+          "top": "Viršuje",
+          "bottom": "Apačioje",
+          "hidden": "Paslėpta"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Slėpti korteles",
+        "description": "Slėpti lapų korteles."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Įrenginio išdėstymas",
+        "description": "Atvaizduojamas įrenginio išdėstymas.",
+        "options": {
+          "desktop": "Kompiuteris",
+          "tablet": "Planšetė",
+          "phone": "Telefonas"
+        }
+      }
+    ]
+  }
+}

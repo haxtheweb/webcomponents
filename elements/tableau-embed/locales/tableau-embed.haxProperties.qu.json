@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau rikuchiykunata huk rakinakuy URLmanta churay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau llamk'ana p'anqaman utaq rikuchiyman URL."
+      },
+      {
+        "property": "height",
+        "title": "Sayay",
+        "description": "Rikuchiypa sayaynin."
+      },
+      {
+        "property": "width",
+        "title": "Kinray",
+        "description": "Rikuchiypa kinraynin."
+      },
+      {
+        "property": "toolbar",
+        "title": "Llamk'ana siq'i",
+        "description": "Llamk'ana siq'ipa maypi kasqan.",
+        "options": {
+          "top": "Hawapi",
+          "bottom": "Urapi",
+          "hidden": "Pakasqa"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Pestañakunata pakay",
+        "description": "Hojakunapa pestañankunata pakay."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Aparatopa layoutnin",
+        "description": "Rikuchinapaq aparatopa layoutnin.",
+        "options": {
+          "desktop": "Computadora",
+          "tablet": "Tableta",
+          "phone": "Celular"
+        }
+      }
+    ]
+  }
+}

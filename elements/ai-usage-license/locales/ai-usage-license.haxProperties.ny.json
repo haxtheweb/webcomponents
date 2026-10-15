@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Layisensi ya kagwiritsidwe ntchito ka AI",
+    "description": "Onetsani baji ya Layisensi ya kagwiritsidwe ntchito ka AI (AIUL) pa ntchito yanu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Layisensi",
+        "description": "Mlingo wa layisensi ya kagwiritsidwe ntchito ka AI pa ntchito iyi. Onani https://dmd-program.github.io/aiul/ kuti mudziwe zambiri."
+      },
+      {
+        "property": "modifier",
+        "title": "Chosintha cha mtundu wa media",
+        "description": "Chosintha cha gawo la media chosakakamizidwa. Chimafotokoza mtundu wa media umene layisensi iyi ikugwira ntchito."
+      },
+      {
+        "property": "uri",
+        "title": "URI ya AIUL (OER Schema)",
+        "description": "OER Schema: URI ya tsamba lofotokozera Layisensi ya kagwiritsidwe ntchito ka AI. Imadzazidwa yokha kuchokera ku ulalo wa layisensi ngati sinaikidwe."
+      }
+    ]
+  }
+}

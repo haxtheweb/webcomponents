@@ -971,17 +971,18 @@ describe("haxcms-site-store item operations", () => {
         order: 99,
         parent: null,
         indent: 0,
-        metadata: { published: true, locked: false, status: "new", created: 1, updated: 1 },
+        new: true,
+        metadata: { published: true, locked: false, created: 1, updated: 1 },
       });
       expect(store.manifest.items.length).to.equal(4);
       store.removeItem("temp-item");
       expect(store.manifest.items.length).to.equal(3);
     });
 
-    it("marks non-new items as deleted instead of removing", () => {
+    it("marks non-new items with the delete flag instead of removing", () => {
       store.removeItem("page-1");
       const item = store.findItem("page-1");
-      expect(item.metadata.status).to.equal("delete");
+      expect(item.delete).to.equal(true);
     });
 
     it("is a no-op when item does not exist", () => {

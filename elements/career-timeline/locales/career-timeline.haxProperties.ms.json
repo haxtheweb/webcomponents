@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Garis masa kerjaya",
+    "description": "Garis masa kerjaya yang mengandungi organisasi, peranan dan data lain"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk garis masa",
+        "description": "Tajuk untuk garis masa kerjaya (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

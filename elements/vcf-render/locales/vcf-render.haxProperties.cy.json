@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Cysylltiadau",
+    "description": "Dangos y bobl mewn ffeil cysylltiadau fel cardiau person, dyfyniadau, tabl neu restr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Ffeil cysylltiadau",
+        "description": "Llwythwch i fyny neu dewiswch ffeil cysylltiadau .vcf. Mae ei chardiau'n cael eu darllen yn y porwr."
+      },
+      {
+        "property": "displayAs",
+        "title": "Dangos fel",
+        "description": "Sut i gyflwyno cynnwys y ffeil.",
+        "options": {
+          "cards": "Cardiau person",
+          "quotes": "Dyfyniadau",
+          "table": "Tabl",
+          "list": "Rhestr"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Pennawd",
+        "description": "Yn cael ei ddangos uwchben y cysylltiadau, ac fel capsiwn y tabl."
+      }
+    ]
+  }
+}

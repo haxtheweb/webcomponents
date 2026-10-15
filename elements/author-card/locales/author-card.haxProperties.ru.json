@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Карточка автора",
+    "description": "Показывает сведения об авторе с фото, биографией и ссылками на соцсети."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Имя автора",
+        "description": "Полное имя автора."
+      },
+      {
+        "property": "image",
+        "title": "Фото профиля",
+        "description": "Фотография профиля автора."
+      },
+      {
+        "property": "title",
+        "title": "Должность",
+        "description": "Должность или роль автора."
+      },
+      {
+        "property": "description",
+        "title": "Биография",
+        "description": "Краткая биография автора."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL профиля",
+        "description": "Ссылка на страницу профиля автора."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ссылка на соцсеть",
+        "description": "Ссылка на профиль в социальной сети."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Имя в соцсети",
+        "description": "Имя пользователя в социальной сети (например, @username)."
+      }
+    ]
+  }
+}

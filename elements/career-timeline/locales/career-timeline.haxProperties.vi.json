@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Dòng thời gian sự nghiệp",
+    "description": "Dòng thời gian sự nghiệp gồm các tổ chức, vai trò và dữ liệu khác"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề dòng thời gian",
+        "description": "Tiêu đề cho dòng thời gian sự nghiệp (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

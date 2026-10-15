@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diasshow",
+    "description": "Præsenter et importeret PowerPoint-diasshow dias for dias med talernoter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Diasshow-manifest",
+        "description": "Slip en .pptx-fil, så konverteres den automatisk til et diasshow. Feltet sættes til stien til den resulterende deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Diasshow-id",
+        "description": "Kun nødvendigt, når en side indeholder mere end ét diasshow, så links til dias forbliver entydige"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Tillad download",
+        "description": "Vis en downloadknap til den oprindelige PowerPoint-fil i afspillerens kontroller"
+      }
+    ]
+  }
+}

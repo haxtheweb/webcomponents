@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI उपयोग लाइसेंस",
+    "description": "अपने कार्य के लिए AI उपयोग लाइसेंस (AIUL) बैज दिखाएँ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "लाइसेंस",
+        "description": "इस कार्य के लिए AI उपयोग लाइसेंस का स्तर। विवरण के लिए https://dmd-program.github.io/aiul/ देखें।"
+      },
+      {
+        "property": "modifier",
+        "title": "मीडिया संशोधक",
+        "description": "वैकल्पिक मीडिया डोमेन संशोधक। बताता है कि यह लाइसेंस किस प्रकार के मीडिया पर लागू होता है।"
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI उपयोग लाइसेंस संदर्भ पेज के लिए URI। सेट न होने पर लाइसेंस लिंक से अपने आप भर जाता है।"
+      }
+    ]
+  }
+}

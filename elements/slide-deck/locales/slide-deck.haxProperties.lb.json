@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Slide-Deck",
+    "description": "Eng importéiert PowerPoint-Presentatioun Slide fir Slide mat Riednernotizen presentéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Deck-Manifest",
+        "description": "Zitt e .pptx-Fichier eran an e gëtt automatesch an e Slide-Deck ëmgewandelt. D'Feld gëtt op de resultéierende deck.json-Pfad gesat."
+      },
+      {
+        "property": "deckId",
+        "title": "Deck-ID",
+        "description": "Nëmme néideg, wann eng Säit méi wéi een Deck enthält, fir datt d'Slide-Linken eendeiteg bleiwen"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Eroflueden erlaben",
+        "description": "E Knäppchen zum Erofluede vum originale PowerPoint-Fichier an de Player-Kontrollen weisen"
+      }
+    ]
+  }
+}

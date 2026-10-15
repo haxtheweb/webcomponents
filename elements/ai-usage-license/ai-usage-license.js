@@ -23,7 +23,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
       css`
         :host {
           display: block;
-          line-height: var(--ddd-line-height-140);
+          line-height: var(--ddd-lh-140);
           background-color: var(--ai-usage-license-background-color);
         }
         :host:after {
@@ -261,8 +261,24 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
    */
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       setupActiveElementForm: "haxsetupActiveElementForm",
     }
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `ai-usage-license.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   async haxsetupActiveElementForm(props) {

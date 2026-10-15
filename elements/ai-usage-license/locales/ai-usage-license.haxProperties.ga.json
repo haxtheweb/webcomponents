@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ceadúnas úsáide IS",
+    "description": "Taispeáin suaitheantas Ceadúnais Úsáide IS (AIUL) do do shaothar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ceadúnas",
+        "description": "Leibhéal an cheadúnais úsáide IS don saothar seo. Féach https://dmd-program.github.io/aiul/ le haghaidh sonraí."
+      },
+      {
+        "property": "modifier",
+        "title": "Mionathraitheoir meán",
+        "description": "Mionathraitheoir roghnach ar fhearann na meán. Sonraíonn sé an cineál meán lena mbaineann an ceadúnas seo."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI do leathanach tagartha an Cheadúnais Úsáide IS. Líontar go huathoibríoch é ó nasc an cheadúnais mura bhfuil sé socraithe."
+      }
+    ]
+  }
+}

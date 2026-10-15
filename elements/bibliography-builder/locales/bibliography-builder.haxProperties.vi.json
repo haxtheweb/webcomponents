@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Trình tạo thư mục tham khảo",
+    "description": "Công cụ tạo và quản lý thư mục tài liệu tham khảo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Trích dẫn",
+        "description": "Các mục trích dẫn trong thư mục tham khảo này"
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "Mã định danh hoặc tên của khóa học mà thư mục tham khảo này dành cho (OER Schema forCourse)."
+      }
+    ]
+  }
+}

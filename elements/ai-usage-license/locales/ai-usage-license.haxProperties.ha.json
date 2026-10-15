@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lasisin amfani da AI",
+    "description": "Nuna alamar Lasisin amfani da AI (AIUL) don aikinka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lasisi",
+        "description": "Matakin lasisin amfani da AI na wannan aiki. Duba https://dmd-program.github.io/aiul/ don cikakkun bayanai."
+      },
+      {
+        "property": "modifier",
+        "title": "Mai gyara kafofin watsa labarai",
+        "description": "Mai gyara yankin kafofin watsa labarai na zaɓi. Yana bayyana nau'in kafofin watsa labarai da wannan lasisi ya shafa."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI don shafin bayanin Lasisin amfani da AI. Ana cike shi kai tsaye daga mahaɗin lasisi idan ba a saita ba."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "כרטיס מחבר",
+    "description": "הצגת פרטי המחבר עם תמונה, ביוגרפיה קצרה וקישורים לרשתות חברתיות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "שם המחבר",
+        "description": "שמו המלא של המחבר."
+      },
+      {
+        "property": "image",
+        "title": "תמונת פרופיל",
+        "description": "תמונת הפרופיל של המחבר."
+      },
+      {
+        "property": "title",
+        "title": "תפקיד",
+        "description": "התפקיד או המשרה של המחבר."
+      },
+      {
+        "property": "description",
+        "title": "ביוגרפיה",
+        "description": "ביוגרפיה קצרה של המחבר."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL של הפרופיל",
+        "description": "קישור לדף הפרופיל של המחבר."
+      },
+      {
+        "property": "socialLink",
+        "title": "קישור לרשת חברתית",
+        "description": "קישור לפרופיל ברשת חברתית."
+      },
+      {
+        "property": "socialHandle",
+        "title": "שם משתמש ברשת חברתית",
+        "description": "שם משתמש ברשת חברתית (לדוגמה @username)."
+      }
+    ]
+  }
+}

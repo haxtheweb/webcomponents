@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Xeta demê ya kariyerê",
+    "description": "Xeta demê ya kariyerê ku rêxistin, rol û daneyên din dihewîne"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernavê xeta demê",
+        "description": "Sernavek ji bo xeta demê ya kariyerê (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

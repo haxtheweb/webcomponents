@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendar",
+    "description": "Afișează evenimentele dintr-un fișier de calendar ca carduri de dată, o cronologie, un tabel sau o listă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fișier de calendar",
+        "description": "Încarcă sau alege un fișier de calendar .ics. Evenimentele sale sunt citite în browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Afișează ca",
+        "description": "Cum să fie prezentat conținutul fișierului.",
+        "options": {
+          "cards": "Carduri de dată",
+          "timeline": "Cronologie",
+          "table": "Tabel",
+          "list": "Listă"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Titlu",
+        "description": "Afișat deasupra evenimentelor și ca legendă a tabelului. Implicit, numele propriu al calendarului."
+      }
+    ]
+  }
+}

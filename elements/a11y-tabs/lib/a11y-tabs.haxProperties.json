@@ -39,7 +39,6 @@
       {
         "property": "sticky",
         "title": "Sticky",
-        "desc": "Horizontal tabs stick to the top of the window when scrolling.",
         "description": "Keep horizontal tabs at the top while scrolling.",
         "inputMethod": "boolean"
       },

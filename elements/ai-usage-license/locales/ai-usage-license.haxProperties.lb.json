@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "KI-Notzungslizenz",
+    "description": "E Badge vun der KI-Notzungslizenz (AIUL) fir Äert Wierk weisen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "D'Niveau vun der KI-Notzungslizenz fir dëst Wierk. Kuckt https://dmd-program.github.io/aiul/ fir Detailer."
+      },
+      {
+        "property": "modifier",
+        "title": "Medien-Modifikator",
+        "description": "Optionale Modifikator fir de Medieberäich. Gëtt un, op wéi eng Aart vu Medien dës Lizenz sech bezitt."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI fir d'Referenzsäit vun der KI-Notzungslizenz. Gëtt automatesch vum Lizenzlink ausgefëllt, wann net gesat."
+      }
+    ]
+  }
+}

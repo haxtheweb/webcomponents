@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Adeiladwr llyfryddiaeth",
+    "description": "Offeryn ar gyfer creu a rheoli llyfryddiaethau"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Dyfyniadau",
+        "description": "Eitemau cyfeirio yn y llyfryddiaeth hon"
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "Dynodydd neu enw'r cwrs y mae'r llyfryddiaeth hon ar ei gyfer (OER Schema forCourse)."
+      }
+    ]
+  }
+}

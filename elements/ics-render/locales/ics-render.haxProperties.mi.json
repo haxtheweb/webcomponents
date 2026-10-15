@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Maramataka",
+    "description": "Whakaaturia ngā takahanga o tētahi kōnae maramataka hei kāri rā, hei rārangi wā, hei ripanga, hei rārangi rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kōnae maramataka",
+        "description": "Tukuake, kōwhiri rānei i tētahi kōnae maramataka .ics. Ka pānuitia ōna takahanga i te pūtirotiro."
+      },
+      {
+        "property": "displayAs",
+        "title": "Whakaatu hei",
+        "description": "Me pēhea te whakaatu i ngā ihirangi o te kōnae.",
+        "options": {
+          "cards": "Ngā kāri rā",
+          "timeline": "Rārangi wā",
+          "table": "Ripanga",
+          "list": "Rārangi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Upoko",
+        "description": "Ka whakaaturia ki runga ake i ngā takahanga, ā, hei tapanga ripanga. Ko te taunoa ko te ingoa ake o te maramataka."
+      }
+    ]
+  }
+}

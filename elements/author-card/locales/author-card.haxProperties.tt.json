@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Автор карточкасы",
+    "description": "Автор турында мәгълүматны фото, биография һәм социаль сылтамалар белән күрсәтү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Автор исеме",
+        "description": "Авторның тулы исеме."
+      },
+      {
+        "property": "image",
+        "title": "Профиль рәсеме",
+        "description": "Авторның профиль фотосы."
+      },
+      {
+        "property": "title",
+        "title": "Вазыйфа",
+        "description": "Авторның вазыйфасы яки роле."
+      },
+      {
+        "property": "description",
+        "title": "Биография",
+        "description": "Авторның кыскача биографиясе."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Профиль URL",
+        "description": "Авторның профиль битенә сылтама."
+      },
+      {
+        "property": "socialLink",
+        "title": "Социаль сылтама",
+        "description": "Социаль челтәр профиленә сылтама."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Социаль челтәрдәге исем",
+        "description": "Социаль челтәрдәге кулланучы исеме (мәсәлән, @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Presentazione di diapusitive",
+    "description": "Presentà una presentazione PowerPoint impurtata diapusitiva per diapusitiva, cù e note di l'oratore."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifestu di a presentazione",
+        "description": "Depone un schedariu .pptx è serà cunvertitu autumaticamente in presentazione di diapusitive. U campu hè definitu à u chjassu di u deck.json risultante."
+      },
+      {
+        "property": "deckId",
+        "title": "ID di a presentazione",
+        "description": "Necessariu solu quandu una pagina cuntene più d'una presentazione, per chì i ligami di diapusitive ferminu distinti"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Permette u scaricamentu",
+        "description": "Affissà un buttone di scaricamentu per u schedariu PowerPoint uriginale in i cumandi di u lettore"
+      }
+    ]
+  }
+}

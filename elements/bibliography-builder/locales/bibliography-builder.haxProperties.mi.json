@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kaihanga rārangi pukapuka",
+    "description": "He taputapu hei hanga, hei whakahaere i ngā rārangi pukapuka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ngā whakahua",
+        "description": "Ngā tūemi whakahua i tēnei rārangi pukapuka"
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "Te tohu tautuhi, te ingoa rānei o te akoranga mō tēnei rārangi pukapuka (OER Schema forCourse)."
+      }
+    ]
+  }
+}

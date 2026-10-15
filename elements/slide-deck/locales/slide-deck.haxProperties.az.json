@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Slayd dəsti",
+    "description": "İdxal edilmiş PowerPoint təqdimatını məruzəçi qeydləri ilə slayd-slayd təqdim edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Dəst manifesti",
+        "description": ".pptx faylını buraya atın və o, avtomatik olaraq slayd dəstinə çevriləcək. Sahə alınan deck.json yoluna təyin olunur."
+      },
+      {
+        "property": "deckId",
+        "title": "Dəst ID-si",
+        "description": "Yalnız səhifədə birdən çox dəst olduqda lazımdır ki, slayd keçidləri fərqli qalsın"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Endirməyə icazə ver",
+        "description": "Pleyer idarəetmələrində orijinal PowerPoint faylı üçün endirmə düyməsini göstərin"
+      }
+    ]
+  }
+}

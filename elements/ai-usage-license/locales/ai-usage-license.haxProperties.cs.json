@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licence k používání AI",
+    "description": "Zobrazí odznak licence k používání AI (AIUL) pro vaše dílo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Úroveň licence k používání AI pro toto dílo. Podrobnosti viz https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikátor média",
+        "description": "Volitelný modifikátor oblasti médií. Určuje typ média, na který se tato licence vztahuje."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI referenční stránky licence k používání AI. Pokud není nastaveno, vyplní se automaticky z odkazu na licenci."
+      }
+    ]
+  }
+}

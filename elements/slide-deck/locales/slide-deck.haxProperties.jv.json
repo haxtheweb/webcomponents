@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Set slide",
+    "description": "Presentasèkaké set PowerPoint sing diimpor slide siji-siji, kanthi cathetan pamicara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifes set slide",
+        "description": "Selehna berkas .pptx lan otomatis diowahi dadi set slide. Kolom iki disetel menyang path deck.json asilé."
+      },
+      {
+        "property": "deckId",
+        "title": "ID set slide",
+        "description": "Mung dibutuhaké yèn sakkaca ngemot luwih saka siji set, supaya pranala slide tetep béda"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Idinaké undhuhan",
+        "description": "Tampilaké tombol undhuh kanggo berkas PowerPoint asli ing kontrol pamuter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Vložte vizualizace Tableau pomocí URL pro sdílení."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL sešitu nebo zobrazení Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška vizualizace."
+      },
+      {
+        "property": "width",
+        "title": "Šířka",
+        "description": "Šířka vizualizace."
+      },
+      {
+        "property": "toolbar",
+        "title": "Panel nástrojů",
+        "description": "Umístění panelu nástrojů.",
+        "options": {
+          "top": "Nahoře",
+          "bottom": "Dole",
+          "hidden": "Skrytý"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Skrýt karty",
+        "description": "Skrýt karty listů."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Rozložení zařízení",
+        "description": "Rozložení zařízení, které se má vykreslit.",
+        "options": {
+          "desktop": "Počítač",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

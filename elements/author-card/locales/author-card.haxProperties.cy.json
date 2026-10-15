@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Cerdyn awdur",
+    "description": "Dangos gwybodaeth am yr awdur gyda llun, bywgraffiad a dolenni cymdeithasol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Enw'r awdur",
+        "description": "Enw llawn yr awdur."
+      },
+      {
+        "property": "image",
+        "title": "Llun proffil",
+        "description": "Llun proffil yr awdur."
+      },
+      {
+        "property": "title",
+        "title": "Teitl swydd",
+        "description": "Swydd neu rôl yr awdur."
+      },
+      {
+        "property": "description",
+        "title": "Bywgraffiad",
+        "description": "Bywgraffiad byr o'r awdur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL y proffil",
+        "description": "Dolen i dudalen proffil yr awdur."
+      },
+      {
+        "property": "socialLink",
+        "title": "Dolen gymdeithasol",
+        "description": "Dolen i broffil ar y cyfryngau cymdeithasol."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Enw defnyddiwr cymdeithasol",
+        "description": "Enw defnyddiwr ar y cyfryngau cymdeithasol (er enghraifft @username)."
+      }
+    ]
+  }
+}

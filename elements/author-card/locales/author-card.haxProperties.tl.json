@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Card ng may-akda",
+    "description": "Ipakita ang impormasyon ng may-akda kasama ang larawan, maikling talambuhay, at mga social link."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Pangalan ng may-akda",
+        "description": "Buong pangalan ng may-akda."
+      },
+      {
+        "property": "image",
+        "title": "Larawan sa profile",
+        "description": "Larawan sa profile ng may-akda."
+      },
+      {
+        "property": "title",
+        "title": "Titulo sa trabaho",
+        "description": "Posisyon o tungkulin ng may-akda."
+      },
+      {
+        "property": "description",
+        "title": "Maikling talambuhay",
+        "description": "Maikling talambuhay ng may-akda."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL ng profile",
+        "description": "Link sa pahina ng profile ng may-akda."
+      },
+      {
+        "property": "socialLink",
+        "title": "Social link",
+        "description": "Link sa isang social media profile."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Social handle",
+        "description": "Handle sa social media (halimbawa @username)."
+      }
+    ]
+  }
+}

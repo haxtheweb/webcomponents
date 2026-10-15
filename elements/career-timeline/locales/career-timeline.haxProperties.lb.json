@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karriär-Zäitstrahl",
+    "description": "E Karriär-Zäitstrahl mat Organisatiounen, Rollen an aneren Donnéeën"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel vum Zäitstrahl",
+        "description": "En Titel fir de Karriär-Zäitstrahl (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

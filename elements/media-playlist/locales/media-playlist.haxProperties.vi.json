@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Danh sách phát đa phương tiện",
+    "description": "Danh sách phát hiển thị trình phát video và âm thanh theo bố cục trình phát + thanh bên."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Chỉ mục hiện hành",
+        "description": "Chỉ mục của mục bắt đầu phát."
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "Khóa học mà danh sách phát này dành cho (mã khóa học hoặc URL)."
+      }
+    ]
+  }
+}

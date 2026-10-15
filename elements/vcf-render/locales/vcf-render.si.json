@@ -1,0 +1,11 @@
+{
+  "name": "නම",
+  "position": "තනතුර",
+  "organization": "සංවිධානය",
+  "email": "විද්‍යුත් තැපෑල",
+  "phone": "දුරකථනය",
+  "address": "ලිපිනය",
+  "loadingContacts": "සම්බන්ධතා පූරණය වෙමින්",
+  "contactsUnavailable": "සම්බන්ධතා ලබා ගත නොහැක",
+  "noContacts": "මෙම ගොනුවේ සම්බන්ධතා නැත"
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI ашиглалтын лиценз",
+    "description": "Бүтээлдээ AI ашиглалтын лицензийн (AIUL) тэмдэг харуулах"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Лиценз",
+        "description": "Энэ бүтээлийн AI ашиглалтын лицензийн түвшин. Дэлгэрэнгүйг https://dmd-program.github.io/aiul/ хаягаас үзнэ үү."
+      },
+      {
+        "property": "modifier",
+        "title": "Медиа тодотгогч",
+        "description": "Сонголтот медиа салбарын тодотгогч. Энэ лиценз хамаарах медиагийн төрлийг заана."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI ашиглалтын лицензийн лавлах хуудасны URI. Тохируулаагүй бол лицензийн холбоосоос автоматаар бөглөгдөнө."
+      }
+    ]
+  }
+}

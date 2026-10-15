@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Listă de redare media",
+    "description": "O listă de redare care prezintă playere video și audio într-un aspect player + bară laterală."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Index activ",
+        "description": "Indexul elementului activ de la care se începe."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "Cursul căruia îi este destinată această listă de redare (identificatorul sau URL-ul cursului)."
+      }
+    ]
+  }
+}

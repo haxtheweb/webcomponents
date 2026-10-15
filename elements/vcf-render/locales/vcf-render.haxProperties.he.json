@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "אנשי קשר",
+    "description": "הצגת האנשים בקובץ אנשי קשר ככרטיסי אנשים, ציטוטים, טבלה או רשימה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "קובץ אנשי קשר",
+        "description": "העלו או בחרו קובץ אנשי קשר .vcf. הכרטיסים שבו נקראים בדפדפן."
+      },
+      {
+        "property": "displayAs",
+        "title": "הצגה בתור",
+        "description": "כיצד להציג את תוכן הקובץ.",
+        "options": {
+          "cards": "כרטיסי אנשים",
+          "quotes": "ציטוטים",
+          "table": "טבלה",
+          "list": "רשימה"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "כותרת",
+        "description": "מוצגת מעל אנשי הקשר וככיתוב הטבלה."
+      }
+    ]
+  }
+}

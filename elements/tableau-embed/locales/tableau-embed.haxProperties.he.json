@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "הטמעת המחשות Tableau מ-URL שיתוף."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL של Tableau",
+        "description": "URL לחוברת העבודה או לתצוגה ב-Tableau."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה ההמחשה."
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב ההמחשה."
+      },
+      {
+        "property": "toolbar",
+        "title": "סרגל כלים",
+        "description": "מיקום סרגל הכלים.",
+        "options": {
+          "top": "למעלה",
+          "bottom": "למטה",
+          "hidden": "מוסתר"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "הסתרת לשוניות",
+        "description": "הסתרת לשוניות הגיליונות."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "פריסת מכשיר",
+        "description": "פריסת המכשיר להצגה.",
+        "options": {
+          "desktop": "מחשב שולחני",
+          "tablet": "טאבלט",
+          "phone": "טלפון"
+        }
+      }
+    ]
+  }
+}

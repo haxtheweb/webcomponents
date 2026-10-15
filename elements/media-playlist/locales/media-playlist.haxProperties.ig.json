@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ndepụta mgbasa ozi",
+    "description": "Ndepụta na-egosi ihe ọkpụkpọ vidiyo na ọdịyo n'usoro ihe ọkpụkpọ na akụkụ mmanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Nọmba mmalite",
+        "description": "Nọmba ihe a ga-amalite na ya."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsụ",
+        "description": "Kọọsụ ndepụta a bụ maka ya (njirimara kọọsụ ma ọ bụ URL)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Nā hoapili",
+    "description": "Hōʻike i nā kānaka ma kekahi faila hoapili ma ke ʻano he mau kāleka kanaka, nā ʻōlelo ʻōlelo ʻia, he papa, a i ʻole he papa helu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faila hoapili",
+        "description": "Hoʻouka a koho paha i kekahi faila hoapili .vcf. Heluhelu ʻia kona mau kāleka ma ka polokalamu kele pūnaewele."
+      },
+      {
+        "property": "displayAs",
+        "title": "Hōʻike ma ke ʻano",
+        "description": "Pehea e hōʻike ai i nā mea i loko o ka faila.",
+        "options": {
+          "cards": "Nā kāleka kanaka",
+          "quotes": "Nā ʻōlelo ʻōlelo ʻia",
+          "table": "Papa",
+          "list": "Papa helu"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Poʻo",
+        "description": "Hōʻike ʻia ma luna o nā hoapili, a ma ke ʻano he lepili no ka papa."
+      }
+    ]
+  }
+}

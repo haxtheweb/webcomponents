@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Moʻolelo ʻoihana",
+    "description": "He moʻolelo ʻoihana me nā hui, nā kuleana, a me nā ʻikepili ʻē aʻe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa o ka moʻolelo",
+        "description": "He poʻo inoa no ka moʻolelo ʻoihana (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Časovnica kariere",
+    "description": "Časovnica kariere z organizacijami, vlogami in drugimi podatki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov časovnice",
+        "description": "Naslov časovnice kariere (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

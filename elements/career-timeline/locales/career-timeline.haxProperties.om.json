@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarara yeroo hojii",
+    "description": "Sarara yeroo hojii dhaabbilee, gahee hojii fi daataa biroo of keessaa qabu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree sarara yeroo",
+        "description": "Mata duree sarara yeroo hojii (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

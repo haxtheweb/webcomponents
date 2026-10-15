@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Awtor kartoçkasy",
+    "description": "Awtor barada maglumaty surat, terjimehal we sosial salgylanmalar bilen görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Awtoryň ady",
+        "description": "Awtoryň doly ady."
+      },
+      {
+        "property": "image",
+        "title": "Profil suraty",
+        "description": "Awtoryň profil suraty."
+      },
+      {
+        "property": "title",
+        "title": "Wezipesi",
+        "description": "Awtoryň wezipesi ýa-da roly."
+      },
+      {
+        "property": "description",
+        "title": "Terjimehal",
+        "description": "Awtoryň gysga terjimehaly."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil URL",
+        "description": "Awtoryň profil sahypasyna salgylanma."
+      },
+      {
+        "property": "socialLink",
+        "title": "Sosial salgylanma",
+        "description": "Sosial media profiline salgylanma."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Sosial ulanyjy ady",
+        "description": "Sosial mediadaky ulanyjy ady (meselem, @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Medijos grojaraštis",
+    "description": "Grojaraštis, pateikiantis vaizdo ir garso grotuvus grotuvo ir šoninės juostos išdėstymu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Pradinis elementas",
+        "description": "Elemento, nuo kurio pradedama, numeris."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "Kursas, kuriam skirtas šis grojaraštis (kurso identifikatorius arba URL)."
+      }
+    ]
+  }
+}

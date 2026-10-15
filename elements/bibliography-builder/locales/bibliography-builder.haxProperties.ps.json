@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "د کتابتون جوړونکی",
+    "description": "د کتابتونونو د جوړولو او اداره کولو وسیله"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "حوالې",
+        "description": "په دې کتابتون کې د حوالو توکي"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "د هغه کورس پېژندنه یا نوم چې دا کتابتون ورته دی (OER Schema forCourse)."
+      }
+    ]
+  }
+}

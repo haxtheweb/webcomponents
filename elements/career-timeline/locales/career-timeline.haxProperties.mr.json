@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "करिअर कालरेषा",
+    "description": "संस्था, भूमिका आणि इतर माहिती असलेली करिअर कालरेषा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "कालरेषा शीर्षक",
+        "description": "करिअर कालरेषेसाठी शीर्षक (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

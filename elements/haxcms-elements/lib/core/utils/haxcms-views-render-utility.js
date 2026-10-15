@@ -1226,7 +1226,7 @@ export const viewsRendererStyles = css`
     text-align: left;
     vertical-align: top;
     padding: var(--ddd-spacing-2);
-    border-bottom: var(--ddd-border-xs) solid
+    border-bottom: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     font-size: var(--ddd-font-size-5xs);
   }
@@ -1253,7 +1253,7 @@ export const viewsRendererStyles = css`
     object-fit: cover;
     border-radius: var(--ddd-radius-sm);
     margin-bottom: var(--ddd-spacing-2);
-    border: var(--ddd-border-xs) solid
+    border: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
   }
   .record-media {
@@ -1266,7 +1266,7 @@ export const viewsRendererStyles = css`
     width: 100%;
   }
   .record-element-preview {
-    border: var(--ddd-border-xs) solid
+    border: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     padding: var(--ddd-spacing-2);
@@ -1297,7 +1297,7 @@ export const viewsRendererStyles = css`
     gap: var(--ddd-spacing-4);
   }
   .content-record {
-    border-bottom: var(--ddd-border-xs) solid
+    border-bottom: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     padding-bottom: var(--ddd-spacing-3);
   }
@@ -1319,7 +1319,7 @@ export const viewsRendererStyles = css`
     gap: var(--ddd-spacing-3);
   }
   .media-gallery-item {
-    border: var(--ddd-border-xs) solid
+    border: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     overflow: hidden;
@@ -1358,7 +1358,7 @@ export const viewsRendererStyles = css`
   }
   .tree-shell {
     min-height: 320px;
-    border: var(--ddd-border-xs) solid
+    border: var(--ddd-border-size-xs) solid
       light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-primary-5));
     border-radius: var(--ddd-radius-sm);
     overflow: hidden;

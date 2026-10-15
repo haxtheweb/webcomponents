@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Lysbildeserie",
+    "description": "Presenter en importert PowerPoint-presentasjon lysbilde for lysbilde, med foredragsnotater."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Presentasjonsmanifest",
+        "description": "Slipp en .pptx-fil her, så konverteres den automatisk til en lysbildeserie. Feltet settes til banen for den resulterende deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Presentasjons-ID",
+        "description": "Trengs bare når en side inneholder mer enn én presentasjon, slik at lysbildelenkene forblir unike"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Tillat nedlasting",
+        "description": "Vis en nedlastingsknapp for den opprinnelige PowerPoint-filen i spillerkontrollene"
+      }
+    ]
+  }
+}

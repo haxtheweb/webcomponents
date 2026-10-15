@@ -92,7 +92,7 @@ class CollectionRow extends DDD {
         }
 
         .text {
-          height: var(--ddd-spacing-38);
+          height: auto;
           font-size: var(--ddd-font-size-3xs);
           font-family: var(--ddd-font-navigation);
         }

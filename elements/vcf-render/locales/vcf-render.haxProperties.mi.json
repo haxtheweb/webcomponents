@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ngā hoapā",
+    "description": "Whakaaturia ngā tāngata o tētahi kōnae hoapā hei kāri tangata, hei whakahua, hei ripanga, hei rārangi rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kōnae hoapā",
+        "description": "Tukuake, kōwhiri rānei i tētahi kōnae hoapā .vcf. Ka pānuitia ōna kāri i te pūtirotiro."
+      },
+      {
+        "property": "displayAs",
+        "title": "Whakaatu hei",
+        "description": "Me pēhea te whakaatu i ngā ihirangi o te kōnae.",
+        "options": {
+          "cards": "Ngā kāri tangata",
+          "quotes": "Ngā whakahua",
+          "table": "Ripanga",
+          "list": "Rārangi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Upoko",
+        "description": "Ka whakaaturia ki runga ake i ngā hoapā, ā, hei tapanga ripanga."
+      }
+    ]
+  }
+}

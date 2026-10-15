@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tarihin aiki",
+    "description": "Tarihin aiki da ke ɗauke da ƙungiyoyi, matsayi, da sauran bayanai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taken tarihin aiki",
+        "description": "Take don tarihin aikin (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

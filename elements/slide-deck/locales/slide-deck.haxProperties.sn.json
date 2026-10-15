@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Mharidzo yemasireidhi",
+    "description": "Ratidza mharidzo yePowerPoint yakaunzwa sireidhi nesireidhi, pamwe nezvinyorwa zvemutauri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Faira yetsananguro yemharidzo",
+        "description": "Kanda faira ye.pptx uye ichashandurwa yega kuita mharidzo yemasireidhi. Nzvimbo iyi inoiswa kunzira ye deck.json inobuda."
+      },
+      {
+        "property": "deckId",
+        "title": "ID yemharidzo",
+        "description": "Inodiwa chete kana peji ine mharidzo dzinopfuura imwe, kuitira kuti malink emasireidhi arambe akasiyana"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Bvumira kudhawunilodha",
+        "description": "Ratidza bhatani rekudhawunilodha faira yePowerPoint yepakutanga muzvidzoreso zvechiridzi"
+      }
+    ]
+  }
+}

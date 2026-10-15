@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kuntatti",
+    "description": "Uri n-nies f'fajl tal-kuntatti bħala karti tal-persuni, kwotazzjonijiet, tabella jew lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fajl tal-kuntatti",
+        "description": "Tella' jew agħżel fajl tal-kuntatti .vcf. Il-karti tiegħu jinqraw fil-browżer."
+      },
+      {
+        "property": "displayAs",
+        "title": "Uri bħala",
+        "description": "Kif għandu jiġi ppreżentat il-kontenut tal-fajl.",
+        "options": {
+          "cards": "Karti tal-persuni",
+          "quotes": "Kwotazzjonijiet",
+          "table": "Tabella",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestatura",
+        "description": "Murija fuq il-kuntatti, u bħala d-deskrizzjoni tat-tabella."
+      }
+    ]
+  }
+}

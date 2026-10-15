@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontakty",
+    "description": "Pokaż osoby z pliku kontaktów jako karty osób, cytaty, tabelę lub listę."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Plik kontaktów",
+        "description": "Prześlij lub wybierz plik kontaktów .vcf. Jego wizytówki są odczytywane w przeglądarce."
+      },
+      {
+        "property": "displayAs",
+        "title": "Wyświetl jako",
+        "description": "Sposób prezentacji zawartości pliku.",
+        "options": {
+          "cards": "Karty osób",
+          "quotes": "Cytaty",
+          "table": "Tabela",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Nagłówek",
+        "description": "Wyświetlany nad kontaktami oraz jako podpis tabeli."
+      }
+    ]
+  }
+}

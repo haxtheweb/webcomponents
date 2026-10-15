@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "خط زمانی شغلی",
+    "description": "خط زمانی شغلی شامل سازمان‌ها، نقش‌ها و داده‌های دیگر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان خط زمانی",
+        "description": "عنوانی برای خط زمانی شغلی (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

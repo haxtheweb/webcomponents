@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Pachika michoro ya Tableau kutoka kwa URL ya kushiriki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ya Tableau",
+        "description": "URL ya kitabu cha kazi au mwonekano wa Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Urefu",
+        "description": "Urefu wa mchoro."
+      },
+      {
+        "property": "width",
+        "title": "Upana",
+        "description": "Upana wa mchoro."
+      },
+      {
+        "property": "toolbar",
+        "title": "Upau wa zana",
+        "description": "Mahali pa upau wa zana.",
+        "options": {
+          "top": "Juu",
+          "bottom": "Chini",
+          "hidden": "Imefichwa"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ficha vichupo",
+        "description": "Ficha vichupo vya laha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Mpangilio wa kifaa",
+        "description": "Mpangilio wa kifaa wa kuonyesha.",
+        "options": {
+          "desktop": "Kompyuta",
+          "tablet": "Kishikwambi",
+          "phone": "Simu"
+        }
+      }
+    ]
+  }
+}

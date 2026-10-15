@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "공유 URL로 Tableau 시각화를 삽입합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau 통합 문서 또는 뷰의 URL."
+      },
+      {
+        "property": "height",
+        "title": "높이",
+        "description": "시각화 높이."
+      },
+      {
+        "property": "width",
+        "title": "너비",
+        "description": "시각화 너비."
+      },
+      {
+        "property": "toolbar",
+        "title": "도구 모음",
+        "description": "도구 모음 위치.",
+        "options": {
+          "top": "위",
+          "bottom": "아래",
+          "hidden": "숨김"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "탭 숨기기",
+        "description": "시트 탭을 숨깁니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "기기 레이아웃",
+        "description": "렌더링할 기기 레이아웃.",
+        "options": {
+          "desktop": "데스크톱",
+          "tablet": "태블릿",
+          "phone": "휴대폰"
+        }
+      }
+    ]
+  }
+}

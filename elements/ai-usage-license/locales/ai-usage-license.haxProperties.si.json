@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI භාවිත බලපත්‍රය",
+    "description": "ඔබේ කෘතිය සඳහා AI භාවිත බලපත්‍ර (AIUL) ලාංඡනයක් පෙන්වන්න"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "බලපත්‍රය",
+        "description": "මෙම කෘතිය සඳහා AI භාවිත බලපත්‍ර මට්ටම. විස්තර සඳහා https://dmd-program.github.io/aiul/ බලන්න."
+      },
+      {
+        "property": "modifier",
+        "title": "මාධ්‍ය වෙනස්කාරකය",
+        "description": "විකල්ප මාධ්‍ය වසම් වෙනස්කාරකය. මෙම බලපත්‍රය අදාළ වන මාධ්‍ය වර්ගය සඳහන් කරයි."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI භාවිත බලපත්‍ර යොමු පිටුව සඳහා URI. සකසා නොමැති විට බලපත්‍ර සබැඳියෙන් ස්වයංක්‍රීයව පුරවනු ලැබේ."
+      }
+    ]
+  }
+}

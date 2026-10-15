@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "రచయిత కార్డ్",
+    "description": "ఫోటో, సంక్షిప్త జీవిత పరిచయం మరియు సోషల్ లింక్‌లతో రచయిత సమాచారాన్ని ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "రచయిత పేరు",
+        "description": "రచయిత పూర్తి పేరు."
+      },
+      {
+        "property": "image",
+        "title": "ప్రొఫైల్ చిత్రం",
+        "description": "రచయిత ప్రొఫైల్ ఫోటో."
+      },
+      {
+        "property": "title",
+        "title": "ఉద్యోగ హోదా",
+        "description": "రచయిత హోదా లేదా పాత్ర."
+      },
+      {
+        "property": "description",
+        "title": "జీవిత పరిచయం",
+        "description": "రచయిత సంక్షిప్త జీవిత చరిత్ర."
+      },
+      {
+        "property": "profileUrl",
+        "title": "ప్రొఫైల్ URL",
+        "description": "రచయిత ప్రొఫైల్ పేజీకి లింక్."
+      },
+      {
+        "property": "socialLink",
+        "title": "సోషల్ లింక్",
+        "description": "సోషల్ మీడియా ప్రొఫైల్‌కు లింక్."
+      },
+      {
+        "property": "socialHandle",
+        "title": "సోషల్ హ్యాండిల్",
+        "description": "సోషల్ మీడియా హ్యాండిల్ (ఉదాహరణకు @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karriere-Zeitleiste",
+    "description": "Eine Karriere-Zeitleiste mit Organisationen, Rollen und weiteren Angaben"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel der Zeitleiste",
+        "description": "Ein Titel für die Karriere-Zeitleiste (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

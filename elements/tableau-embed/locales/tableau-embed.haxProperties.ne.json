@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "साझा URL बाट Tableau भिजुअलाइजेसनहरू इम्बेड गर्नुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau वर्कबुक वा दृश्यको URL।"
+      },
+      {
+        "property": "height",
+        "title": "उचाइ",
+        "description": "भिजुअलाइजेसनको उचाइ।"
+      },
+      {
+        "property": "width",
+        "title": "चौडाइ",
+        "description": "भिजुअलाइजेसनको चौडाइ।"
+      },
+      {
+        "property": "toolbar",
+        "title": "उपकरणपट्टी",
+        "description": "उपकरणपट्टीको स्थान।",
+        "options": {
+          "top": "माथि",
+          "bottom": "तल",
+          "hidden": "लुकाइएको"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "ट्याबहरू लुकाउनुहोस्",
+        "description": "पाना ट्याबहरू लुकाउनुहोस्।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "उपकरण लेआउट",
+        "description": "रेन्डर गर्ने उपकरण लेआउट।",
+        "options": {
+          "desktop": "डेस्कटप",
+          "tablet": "ट्याब्लेट",
+          "phone": "फोन"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI वापर परवाना",
+    "description": "तुमच्या कामासाठी AI वापर परवाना (AIUL) बॅज दाखवा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "परवाना",
+        "description": "या कामासाठी AI वापर परवान्याची पातळी. तपशिलांसाठी https://dmd-program.github.io/aiul/ पहा."
+      },
+      {
+        "property": "modifier",
+        "title": "मीडिया सुधारक",
+        "description": "ऐच्छिक मीडिया क्षेत्र सुधारक. हा परवाना कोणत्या प्रकारच्या मीडियाला लागू होतो ते नमूद करतो."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI वापर परवाना संदर्भ पृष्ठासाठी URI. सेट न केल्यास परवाना लिंकवरून आपोआप भरले जाते."
+      }
+    ]
+  }
+}

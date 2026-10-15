@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Slayt destesi",
+    "description": "İçe aktarılan bir PowerPoint sunusunu konuşmacı notlarıyla slayt slayt sunun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sunu bildirimi",
+        "description": "Bir .pptx dosyası bırakın; otomatik olarak slayt destesine dönüştürülür. Alan, oluşan deck.json yoluna ayarlanır."
+      },
+      {
+        "property": "deckId",
+        "title": "Sunu kimliği",
+        "description": "Yalnızca bir sayfada birden fazla sunu olduğunda gerekir; böylece slayt bağlantıları ayrı kalır"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "İndirmeye izin ver",
+        "description": "Oynatıcı denetimlerinde özgün PowerPoint dosyası için bir indirme düğmesi göster"
+      }
+    ]
+  }
+}

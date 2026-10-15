@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "شیئر URL توں Tableau ویژولائزیشن ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "Tableau ورک بک یا ویو دا URL۔"
+      },
+      {
+        "property": "height",
+        "title": "اُچائی",
+        "description": "ویژولائزیشن دی اُچائی۔"
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "ویژولائزیشن دی چوڑائی۔"
+      },
+      {
+        "property": "toolbar",
+        "title": "ٹول بار",
+        "description": "ٹول بار دی تھاں۔",
+        "options": {
+          "top": "اُتے",
+          "bottom": "تھلے",
+          "hidden": "لُکیا ہویا"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "ٹیباں لکاؤ",
+        "description": "شیٹ ٹیباں لکاؤ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "ڈیوائس لے آؤٹ",
+        "description": "رینڈر کرن لئی ڈیوائس لے آؤٹ۔",
+        "options": {
+          "desktop": "ڈیسک ٹاپ",
+          "tablet": "ٹیبلٹ",
+          "phone": "فون"
+        }
+      }
+    ]
+  }
+}

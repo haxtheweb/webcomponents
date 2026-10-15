@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Giấy phép sử dụng AI",
+    "description": "Hiển thị huy hiệu Giấy phép sử dụng AI (AIUL) cho tác phẩm của bạn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Giấy phép",
+        "description": "Mức giấy phép sử dụng AI cho tác phẩm này. Xem chi tiết tại https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Bổ ngữ phương tiện",
+        "description": "Bổ ngữ lĩnh vực phương tiện (tùy chọn). Xác định loại phương tiện mà giấy phép này áp dụng."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI của trang tham chiếu Giấy phép sử dụng AI. Tự động điền từ liên kết giấy phép nếu chưa được đặt."
+      }
+    ]
+  }
+}

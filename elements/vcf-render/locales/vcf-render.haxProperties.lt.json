@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktai",
+    "description": "Rodyti kontaktų failo asmenis kaip asmenų korteles, citatas, lentelę arba sąrašą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontaktų failas",
+        "description": "Įkelkite arba pasirinkite .vcf kontaktų failą. Jo kortelės nuskaitomos naršyklėje."
+      },
+      {
+        "property": "displayAs",
+        "title": "Rodyti kaip",
+        "description": "Kaip pateikti failo turinį.",
+        "options": {
+          "cards": "Asmenų kortelės",
+          "quotes": "Citatos",
+          "table": "Lentelė",
+          "list": "Sąrašas"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Antraštė",
+        "description": "Rodoma virš kontaktų ir kaip lentelės antraštė."
+      }
+    ]
+  }
+}

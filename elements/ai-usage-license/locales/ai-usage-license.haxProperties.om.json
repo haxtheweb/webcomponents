@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hayyama itti fayyadama AI",
+    "description": "Hojii keessaniif mallattoo Hayyama itti fayyadama AI (AIUL) agarsiisi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Hayyama",
+        "description": "Sadarkaa hayyama itti fayyadama AI hojii kanaaf. Bal'inaaf https://dmd-program.github.io/aiul/ ilaali."
+      },
+      {
+        "property": "modifier",
+        "title": "Jijjiiraa miidiyaa",
+        "description": "Jijjiiraa damee miidiyaa filannoo. Gosa miidiyaa hayyamni kun irratti hojjetu ibsa."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI fuula wabii Hayyama itti fayyadama AI. Yoo hin qindoofne liinkii hayyamaa irraa ofumaan guutama."
+      }
+    ]
+  }
+}

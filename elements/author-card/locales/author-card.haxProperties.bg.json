@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Карта на автора",
+    "description": "Показва информация за автора със снимка, кратка биография и връзки към социални мрежи."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Име на автора",
+        "description": "Пълно име на автора."
+      },
+      {
+        "property": "image",
+        "title": "Профилна снимка",
+        "description": "Профилна снимка на автора."
+      },
+      {
+        "property": "title",
+        "title": "Длъжност",
+        "description": "Длъжност или роля на автора."
+      },
+      {
+        "property": "description",
+        "title": "Биография",
+        "description": "Кратка биография на автора."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL на профила",
+        "description": "Връзка към профилната страница на автора."
+      },
+      {
+        "property": "socialLink",
+        "title": "Връзка към социална мрежа",
+        "description": "Връзка към профил в социална мрежа."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Потребителско име",
+        "description": "Потребителско име в социална мрежа (например @username)."
+      }
+    ]
+  }
+}

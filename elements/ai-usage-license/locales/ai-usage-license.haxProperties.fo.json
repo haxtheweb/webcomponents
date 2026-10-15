@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Loyvi til KV-nýtslu",
+    "description": "Vís eitt merki fyri loyvi til KV-nýtslu (AIUL) fyri títt verk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Loyvi",
+        "description": "Stigið á loyvinum til KV-nýtslu fyri hetta verkið. Sí https://dmd-program.github.io/aiul/ fyri smálutir."
+      },
+      {
+        "property": "modifier",
+        "title": "Miðlabroytari",
+        "description": "Valfrítt miðlaøkisbroytari. Ásetir hvat slag av miðli hetta loyvið galdar fyri."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI til ávísingarsíðuna fyri loyvi til KV-nýtslu. Verður sjálvvirkandi útfylt frá loyvisleinkinum, tá ið einki er ásett."
+      }
+    ]
+  }
+}

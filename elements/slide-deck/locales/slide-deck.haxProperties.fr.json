@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diaporama",
+    "description": "Présenter une présentation PowerPoint importée diapositive par diapositive, avec les notes de l’orateur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifeste de la présentation",
+        "description": "Déposez un fichier .pptx et il est automatiquement converti en diaporama. Le champ reçoit le chemin du fichier deck.json obtenu."
+      },
+      {
+        "property": "deckId",
+        "title": "Identifiant de la présentation",
+        "description": "Nécessaire uniquement lorsqu’une page contient plusieurs présentations, afin que les liens vers les diapositives restent distincts"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Autoriser le téléchargement",
+        "description": "Afficher un bouton de téléchargement du fichier PowerPoint d’origine dans les commandes du lecteur"
+      }
+    ]
+  }
+}

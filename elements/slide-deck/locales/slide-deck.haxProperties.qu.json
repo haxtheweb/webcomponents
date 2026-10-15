@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diapositivakuna",
+    "description": "Apamusqa PowerPoint rikuchiyta diapositivamanta diapositivaman rikuchiy, rimaqpa willakuyninkunawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Rikuchiypa manifiestón",
+        "description": "Huk .pptx archivota wischuy, kikillanmanta diapositivakunaman tikrakunqa. Kay campoqa lluqsiq deck.json ñanman churakun."
+      },
+      {
+        "property": "deckId",
+        "title": "Rikuchiypa id",
+        "description": "Huk p'anqapi huk rikuchiymanta aswan kaqtinlla necesitakun, diapositiva t'inkikuna sapaq kanankupaq"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Uraykachiyta saqiy",
+        "description": "Puriyachiq kamachiykunapi ñawpaq PowerPoint archivota uraykachinapaq butonta rikuchiy"
+      }
+    ]
+  }
+}

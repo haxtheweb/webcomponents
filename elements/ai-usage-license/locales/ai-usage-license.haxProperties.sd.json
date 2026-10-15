@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI استعمال لائسنس",
+    "description": "پنهنجي ڪم لاءِ AI استعمال لائسنس (AIUL) جو بيج ڏيکاريو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "هن ڪم لاءِ AI استعمال لائسنس جي سطح. تفصيل لاءِ https://dmd-program.github.io/aiul/ ڏسو."
+      },
+      {
+        "property": "modifier",
+        "title": "ميڊيا موڊيفائر",
+        "description": "اختياري ميڊيا ڊومين موڊيفائر. ٻڌائي ٿو ته هي لائسنس ڪهڙي قسم جي ميڊيا تي لاڳو ٿئي ٿو."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI استعمال لائسنس جي حوالي واري صفحي لاءِ URI. سيٽ نہ هجڻ تي لائسنس لنڪ مان خودڪار ڀرجي ٿو."
+      }
+    ]
+  }
+}

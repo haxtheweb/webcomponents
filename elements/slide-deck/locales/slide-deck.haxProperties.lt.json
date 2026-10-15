@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Skaidrių rinkinys",
+    "description": "Pristatyti importuotą PowerPoint pristatymą skaidrė po skaidrės su pranešėjo pastabomis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Rinkinio manifestas",
+        "description": "Nutempkite .pptx failą ir jis automatiškai konvertuojamas į skaidrių rinkinį. Laukui priskiriamas gauto deck.json failo kelias."
+      },
+      {
+        "property": "deckId",
+        "title": "Rinkinio ID",
+        "description": "Reikalingas tik tada, kai puslapyje yra daugiau nei vienas rinkinys, kad skaidrių nuorodos išliktų skirtingos"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Leisti atsisiųsti",
+        "description": "Rodyti originalaus PowerPoint failo atsisiuntimo mygtuką grotuvo valdikliuose"
+      }
+    ]
+  }
+}

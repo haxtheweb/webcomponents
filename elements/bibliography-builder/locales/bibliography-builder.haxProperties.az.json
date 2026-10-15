@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Biblioqrafiya qurucusu",
+    "description": "Biblioqrafiyaların yaradılması və idarə olunması üçün alət"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sitatlar",
+        "description": "Bu biblioqrafiyadakı sitat elementləri"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Bu biblioqrafiyanın aid olduğu kursun identifikatoru və ya adı (OER Schema forCourse)."
+      }
+    ]
+  }
+}

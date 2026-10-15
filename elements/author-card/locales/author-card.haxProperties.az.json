@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Müəllif kartı",
+    "description": "Müəllif məlumatlarını foto, qısa tərcümeyi-hal və sosial keçidlərlə göstərin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Müəllifin adı",
+        "description": "Müəllifin tam adı."
+      },
+      {
+        "property": "image",
+        "title": "Profil şəkli",
+        "description": "Müəllifin profil fotosu."
+      },
+      {
+        "property": "title",
+        "title": "Vəzifə",
+        "description": "Müəllifin vəzifəsi və ya rolu."
+      },
+      {
+        "property": "description",
+        "title": "Tərcümeyi-hal",
+        "description": "Müəllifin qısa tərcümeyi-halı."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil URL-i",
+        "description": "Müəllifin profil səhifəsinə keçid."
+      },
+      {
+        "property": "socialLink",
+        "title": "Sosial keçid",
+        "description": "Sosial media profilinə keçid."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Sosial istifadəçi adı",
+        "description": "Sosial media istifadəçi adı (məsələn, @username)."
+      }
+    ]
+  }
+}

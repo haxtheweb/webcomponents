@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contatti",
+    "description": "Mostra le persone di un file di contatti come schede persona, citazioni, una tabella o un elenco."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File di contatti",
+        "description": "Carica o scegli un file di contatti .vcf. Le sue schede vengono lette nel browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostra come",
+        "description": "Come presentare il contenuto del file.",
+        "options": {
+          "cards": "Schede persona",
+          "quotes": "Citazioni",
+          "table": "Tabella",
+          "list": "Elenco"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestazione",
+        "description": "Mostrata sopra i contatti e come didascalia della tabella."
+      }
+    ]
+  }
+}

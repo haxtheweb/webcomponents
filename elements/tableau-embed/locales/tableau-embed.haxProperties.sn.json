@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Isa mifananidzo yedata yeTableau kubva kuURL yekugovana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL yeTableau",
+        "description": "URL kubhuku rebasa kana kuona kweTableau."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kwemufananidzo wedata."
+      },
+      {
+        "property": "width",
+        "title": "Hupamhi",
+        "description": "Hupamhi hwemufananidzo wedata."
+      },
+      {
+        "property": "toolbar",
+        "title": "Bhari yezvishandiso",
+        "description": "Nzvimbo yebhari yezvishandiso.",
+        "options": {
+          "top": "Pamusoro",
+          "bottom": "Pazasi",
+          "hidden": "Yakavanzwa"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Vanza ma tab",
+        "description": "Vanza ma tab emapeji."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Marongerwo emudziyo",
+        "description": "Marongerwo emudziyo anofanira kuratidzwa.",
+        "options": {
+          "desktop": "Komputa",
+          "tablet": "Tabhureti",
+          "phone": "Runhare"
+        }
+      }
+    ]
+  }
+}

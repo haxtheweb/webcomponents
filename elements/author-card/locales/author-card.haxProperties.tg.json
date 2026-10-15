@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Корти муаллиф",
+    "description": "Намоиши маълумоти муаллиф бо акс, тарҷумаи ҳол ва пайвандҳои иҷтимоӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Номи муаллиф",
+        "description": "Номи пурраи муаллиф."
+      },
+      {
+        "property": "image",
+        "title": "Тасвири профил",
+        "description": "Акси профили муаллиф."
+      },
+      {
+        "property": "title",
+        "title": "Вазифа",
+        "description": "Вазифа ё нақши муаллиф."
+      },
+      {
+        "property": "description",
+        "title": "Тарҷумаи ҳол",
+        "description": "Тарҷумаи ҳоли кӯтоҳи муаллиф."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL-и профил",
+        "description": "Пайванд ба саҳифаи профили муаллиф."
+      },
+      {
+        "property": "socialLink",
+        "title": "Пайванди иҷтимоӣ",
+        "description": "Пайванд ба профили шабакаи иҷтимоӣ."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Номи корбар дар шабакаи иҷтимоӣ",
+        "description": "Номи корбар дар шабакаи иҷтимоӣ (масалан, @username)."
+      }
+    ]
+  }
+}

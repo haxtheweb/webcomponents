@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Hoʻokomo i nā kiʻikuhi Tableau mai kekahi URL kaʻana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL i ka puke hana a i ʻole ka nānaina Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Ke kiʻekiʻe o ke kiʻikuhi."
+      },
+      {
+        "property": "width",
+        "title": "Laulā",
+        "description": "Ka laulā o ke kiʻikuhi."
+      },
+      {
+        "property": "toolbar",
+        "title": "Kaha mea hana",
+        "description": "Ke kūlana o ke kaha mea hana.",
+        "options": {
+          "top": "Luna",
+          "bottom": "Lalo",
+          "hidden": "Hūnā ʻia"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Hūnā i nā lepe",
+        "description": "Hūnā i nā lepe pepa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Hoʻonohonoho mea hana",
+        "description": "Ka hoʻonohonoho mea hana e hōʻike ai.",
+        "options": {
+          "desktop": "Kamepiula papakaukau",
+          "tablet": "Papa kamepiula",
+          "phone": "Kelepona"
+        }
+      }
+    ]
+  }
+}

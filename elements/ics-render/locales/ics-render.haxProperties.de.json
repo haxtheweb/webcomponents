@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalender",
+    "description": "Die Termine einer Kalenderdatei als Datumskarten, Zeitleiste, Tabelle oder Liste anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalenderdatei",
+        "description": "Eine .ics-Kalenderdatei hochladen oder auswählen. Ihre Termine werden im Browser gelesen."
+      },
+      {
+        "property": "displayAs",
+        "title": "Anzeigen als",
+        "description": "Wie der Inhalt der Datei dargestellt wird.",
+        "options": {
+          "cards": "Datumskarten",
+          "timeline": "Zeitleiste",
+          "table": "Tabelle",
+          "list": "Liste"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Überschrift",
+        "description": "Wird über den Terminen und als Tabellenbeschriftung angezeigt. Standardmäßig der Name des Kalenders."
+      }
+    ]
+  }
+}

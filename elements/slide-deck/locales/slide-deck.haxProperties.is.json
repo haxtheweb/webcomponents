@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Glærusett",
+    "description": "Kynna innflutt PowerPoint-glærusett glæru fyrir glæru, með glósum fyrirlesara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Lýsingarskrá glærusetts",
+        "description": "Slepptu .pptx skrá og henni er sjálfkrafa breytt í glærusett. Reiturinn er stilltur á slóð deck.json skrárinnar sem verður til."
+      },
+      {
+        "property": "deckId",
+        "title": "Auðkenni glærusetts",
+        "description": "Aðeins þörf þegar síða inniheldur fleiri en eitt glærusett, svo tenglar á glærur haldist aðgreindir"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Leyfa niðurhal",
+        "description": "Sýna niðurhalshnapp fyrir upprunalegu PowerPoint-skrána í stjórntækjum spilarans"
+      }
+    ]
+  }
+}

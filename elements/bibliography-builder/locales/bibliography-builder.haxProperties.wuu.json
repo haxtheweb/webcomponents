@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "参考文献生成器",
+    "description": "用来创建搭管理参考文献目录个工具"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "引文",
+        "description": "搿份参考文献目录里向个引文条目"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "搿份参考文献目录所属课程个标识符或者名字（OER Schema forCourse）。"
+      }
+    ]
+  }
+}

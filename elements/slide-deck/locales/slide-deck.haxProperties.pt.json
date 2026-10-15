@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Apresentação de slides",
+    "description": "Apresente uma apresentação PowerPoint importada slide por slide, com notas do apresentador."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifesto da apresentação",
+        "description": "Solte um arquivo .pptx e ele será convertido automaticamente em uma apresentação de slides. O campo recebe o caminho do deck.json resultante."
+      },
+      {
+        "property": "deckId",
+        "title": "ID da apresentação",
+        "description": "Necessário apenas quando uma página contém mais de uma apresentação, para que os links dos slides permaneçam distintos"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Permitir download",
+        "description": "Mostra um botão de download do arquivo PowerPoint original nos controles do player"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "連絡先",
+    "description": "連絡先ファイル内の人物を、人物カード、引用、表、またはリストとして表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "連絡先ファイル",
+        "description": ".vcf 連絡先ファイルをアップロードまたは選択します。カードはブラウザー内で読み込まれます。"
+      },
+      {
+        "property": "displayAs",
+        "title": "表示形式",
+        "description": "ファイルの内容をどのように表示するか。",
+        "options": {
+          "cards": "人物カード",
+          "quotes": "引用",
+          "table": "表",
+          "list": "リスト"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "見出し",
+        "description": "連絡先の上と、表のキャプションとして表示されます。"
+      }
+    ]
+  }
+}

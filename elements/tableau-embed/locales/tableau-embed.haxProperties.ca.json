@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Incrusta visualitzacions de Tableau des d'un URL per compartir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL de Tableau",
+        "description": "URL del llibre de treball o la vista de Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada de la visualització."
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada de la visualització."
+      },
+      {
+        "property": "toolbar",
+        "title": "Barra d'eines",
+        "description": "Posició de la barra d'eines.",
+        "options": {
+          "top": "A dalt",
+          "bottom": "A baix",
+          "hidden": "Amagada"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Amaga les pestanyes",
+        "description": "Amaga les pestanyes dels fulls."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Disseny del dispositiu",
+        "description": "Disseny del dispositiu amb què es mostra.",
+        "options": {
+          "desktop": "Escriptori",
+          "tablet": "Tauleta",
+          "phone": "Telèfon"
+        }
+      }
+    ]
+  }
+}

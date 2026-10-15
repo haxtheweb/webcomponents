@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalender",
+    "description": "Wys die geleenthede in 'n kalenderlêer as datumkaarte, 'n tydlyn, 'n tabel of 'n lys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalenderlêer",
+        "description": "Laai 'n .ics-kalenderlêer op of kies een. Die geleenthede word in die blaaier gelees."
+      },
+      {
+        "property": "displayAs",
+        "title": "Vertoon as",
+        "description": "Hoe om die inhoud van die lêer aan te bied.",
+        "options": {
+          "cards": "Datumkaarte",
+          "timeline": "Tydlyn",
+          "table": "Tabel",
+          "list": "Lys"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Opskrif",
+        "description": "Word bo die geleenthede gewys, en as die tabelonderskrif. Gebruik by verstek die kalender se eie naam."
+      }
+    ]
+  }
+}

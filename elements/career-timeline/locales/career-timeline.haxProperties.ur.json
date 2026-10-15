@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "کیریئر ٹائم لائن",
+    "description": "اداروں، کرداروں اور دیگر ڈیٹا پر مشتمل کیریئر ٹائم لائن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ٹائم لائن کا عنوان",
+        "description": "کیریئر ٹائم لائن کا عنوان (OER Schema: oer:name)۔"
+      }
+    ]
+  }
+}

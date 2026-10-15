@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Författarkort",
+    "description": "Visa information om författaren med foto, kort biografi och länkar till sociala medier."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Författarens namn",
+        "description": "Författarens fullständiga namn."
+      },
+      {
+        "property": "image",
+        "title": "Profilbild",
+        "description": "Författarens profilfoto."
+      },
+      {
+        "property": "title",
+        "title": "Befattning",
+        "description": "Författarens befattning eller roll."
+      },
+      {
+        "property": "description",
+        "title": "Biografi",
+        "description": "Kort biografi om författaren."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil-URL",
+        "description": "Länk till författarens profilsida."
+      },
+      {
+        "property": "socialLink",
+        "title": "Social länk",
+        "description": "Länk till en profil på sociala medier."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Användarnamn på sociala medier",
+        "description": "Användarnamn på sociala medier (till exempel @username)."
+      }
+    ]
+  }
+}

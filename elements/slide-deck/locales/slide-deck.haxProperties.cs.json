@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Prezentace",
+    "description": "Prezentujte importovanou prezentaci PowerPoint snímek po snímku s poznámkami řečníka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest prezentace",
+        "description": "Přetáhněte soubor .pptx a automaticky se převede na prezentaci. Pole se nastaví na cestu k výslednému souboru deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "ID prezentace",
+        "description": "Potřebné jen tehdy, když stránka obsahuje více prezentací, aby odkazy na snímky zůstaly jedinečné"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Povolit stažení",
+        "description": "Zobrazit v ovládacích prvcích přehrávače tlačítko pro stažení původního souboru PowerPoint"
+      }
+    ]
+  }
+}

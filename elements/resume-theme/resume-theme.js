@@ -203,7 +203,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
         .name {
           font-family: var(--ddd-font-secondary);
-          font-size: var(--ddd-font-size-2xl);
+          font-size: var(--ddd-font-size-xxl);
           font-weight: var(--ddd-font-weight-bold);
           margin: var(--ddd-spacing-4) 0 var(--ddd-spacing-2) 0;
           color: var(--ddd-theme-default-white);

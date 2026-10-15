@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Presentazione",
+    "description": "Presenta una presentazione PowerPoint importata diapositiva per diapositiva, con le note del relatore."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest della presentazione",
+        "description": "Trascina un file .pptx e verrà convertito automaticamente in una presentazione. Il campo viene impostato sul percorso del deck.json risultante."
+      },
+      {
+        "property": "deckId",
+        "title": "ID della presentazione",
+        "description": "Necessario solo quando una pagina contiene più di una presentazione, così i link alle diapositive restano distinti"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Consenti il download",
+        "description": "Mostra un pulsante per scaricare il file PowerPoint originale nei controlli del lettore"
+      }
+    ]
+  }
+}

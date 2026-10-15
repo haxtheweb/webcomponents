@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "കരിയർ ടൈംലൈൻ",
+    "description": "സ്ഥാപനങ്ങൾ, ചുമതലകൾ, മറ്റ് വിവരങ്ങൾ എന്നിവ അടങ്ങിയ കരിയർ ടൈംലൈൻ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ടൈംലൈൻ ശീർഷകം",
+        "description": "കരിയർ ടൈംലൈനിനുള്ള ശീർഷകം (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

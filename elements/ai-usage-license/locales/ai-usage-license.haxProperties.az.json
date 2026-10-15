@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Süni intellektdən istifadə lisenziyası",
+    "description": "İşiniz üçün süni intellektdən istifadə lisenziyası (AIUL) nişanını göstərin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisenziya",
+        "description": "Bu iş üçün süni intellektdən istifadə lisenziyasının səviyyəsi. Təfərrüatlar üçün https://dmd-program.github.io/aiul/ ünvanına baxın."
+      },
+      {
+        "property": "modifier",
+        "title": "Media modifikatoru",
+        "description": "İstəyə bağlı media sahəsi modifikatoru. Bu lisenziyanın aid olduğu media növünü müəyyən edir."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: Süni intellektdən istifadə lisenziyasının istinad səhifəsi üçün URI. Təyin edilmədikdə lisenziya keçidindən avtomatik doldurulur."
+      }
+    ]
+  }
+}

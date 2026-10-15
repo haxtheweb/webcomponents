@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Mag-embed ng mga Tableau visualization mula sa isang share URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL sa Tableau workbook o view."
+      },
+      {
+        "property": "height",
+        "title": "Taas",
+        "description": "Taas ng visualization."
+      },
+      {
+        "property": "width",
+        "title": "Lapad",
+        "description": "Lapad ng visualization."
+      },
+      {
+        "property": "toolbar",
+        "title": "Toolbar",
+        "description": "Posisyon ng toolbar.",
+        "options": {
+          "top": "Itaas",
+          "bottom": "Ibaba",
+          "hidden": "Nakatago"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Itago ang mga tab",
+        "description": "Itago ang mga tab ng sheet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Layout ng device",
+        "description": "Layout ng device na ire-render.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Telepono"
+        }
+      }
+    ]
+  }
+}

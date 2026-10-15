@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau-fisualisaasjes ynslute fan in dielings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau-URL",
+        "description": "URL nei it Tableau-wurkboek of de werjefte."
+      },
+      {
+        "property": "height",
+        "title": "Hichte",
+        "description": "Hichte fan de fisualisaasje."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte fan de fisualisaasje."
+      },
+      {
+        "property": "toolbar",
+        "title": "Arkbalke",
+        "description": "Posysje fan de arkbalke.",
+        "options": {
+          "top": "Boppe",
+          "bottom": "Ûnder",
+          "hidden": "Ferburgen"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ljepblêden ferbergje",
+        "description": "Ljepblêden fan wurkblêden ferbergje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Apparaatyndieling",
+        "description": "Apparaatyndieling om te werjaan.",
+        "options": {
+          "desktop": "Buroblêd",
+          "tablet": "Tablet",
+          "phone": "Telefoan"
+        }
+      }
+    ]
+  }
+}

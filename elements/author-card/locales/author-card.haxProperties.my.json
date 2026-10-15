@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "စာရေးသူ ကတ်",
+    "description": "ဓာတ်ပုံ၊ ကိုယ်ရေးအကျဉ်းနှင့် ဆိုရှယ်လင့်ခ်များဖြင့် စာရေးသူ အချက်အလက်ကို ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "စာရေးသူ အမည်",
+        "description": "စာရေးသူ၏ အမည်အပြည့်အစုံ။"
+      },
+      {
+        "property": "image",
+        "title": "ပရိုဖိုင် ပုံ",
+        "description": "စာရေးသူ၏ ပရိုဖိုင် ဓာတ်ပုံ။"
+      },
+      {
+        "property": "title",
+        "title": "အလုပ်ရာထူး",
+        "description": "စာရေးသူ၏ ရာထူး သို့မဟုတ် တာဝန်။"
+      },
+      {
+        "property": "description",
+        "title": "ကိုယ်ရေးအကျဉ်း",
+        "description": "စာရေးသူ၏ ကိုယ်ရေးအကျဉ်း။"
+      },
+      {
+        "property": "profileUrl",
+        "title": "ပရိုဖိုင် URL",
+        "description": "စာရေးသူ၏ ပရိုဖိုင်စာမျက်နှာသို့ လင့်ခ်။"
+      },
+      {
+        "property": "socialLink",
+        "title": "ဆိုရှယ် လင့်ခ်",
+        "description": "ဆိုရှယ်မီဒီယာ ပရိုဖိုင်သို့ လင့်ခ်။"
+      },
+      {
+        "property": "socialHandle",
+        "title": "ဆိုရှယ် အသုံးပြုသူအမည်",
+        "description": "ဆိုရှယ်မီဒီယာ အသုံးပြုသူအမည် (ဥပမာ @username)။"
+      }
+    ]
+  }
+}

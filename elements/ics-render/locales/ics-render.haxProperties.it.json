@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendario",
+    "description": "Mostra gli eventi di un file di calendario come schede data, una cronologia, una tabella o un elenco."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File di calendario",
+        "description": "Carica o scegli un file di calendario .ics. I suoi eventi vengono letti nel browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostra come",
+        "description": "Come presentare il contenuto del file.",
+        "options": {
+          "cards": "Schede data",
+          "timeline": "Cronologia",
+          "table": "Tabella",
+          "list": "Elenco"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestazione",
+        "description": "Mostrata sopra gli eventi e come didascalia della tabella. Per impostazione predefinita è il nome del calendario stesso."
+      }
+    ]
+  }
+}

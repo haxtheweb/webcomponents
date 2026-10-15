@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "幻灯片",
+    "description": "一张一张演示导入个 PowerPoint 演示文稿，带演讲者备注。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "演示文稿清单",
+        "description": "拖一只 .pptx 文件进来，会自动转成幻灯片。搿只字段会设成生成个 deck.json 路径。"
+      },
+      {
+        "property": "deckId",
+        "title": "演示文稿 ID",
+        "description": "只有一只页面里有勿止一套演示文稿个辰光再要，好让幻灯片链接勿重复"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "允许下载",
+        "description": "辣播放器控件里显示下载原始 PowerPoint 文件个按钮"
+      }
+    ]
+  }
+}

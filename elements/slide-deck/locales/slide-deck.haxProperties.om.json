@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Islaayidii dhiyeessaa",
+    "description": "Dhiyeessa PowerPoint galfame islaayidii islaayidiin, yaadannoo dubbataa waliin dhiyeessi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Maanifestii dhiyeessaa",
+        "description": "Faayilii .pptx asitti gadi lakkisi, ofumaan gara islaayidii dhiyeessaatti jijjiirama. Dirreen kun karaa deck.json uumameetti qindaa'a."
+      },
+      {
+        "property": "deckId",
+        "title": "Eenyummeessaa dhiyeessaa",
+        "description": "Kan barbaachisu yoo fuulli tokko dhiyeessa tokkoo ol qabaate qofa, akka liinkiin islaayidii adda ta'ee hafuuf"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Buusuu hayyami",
+        "description": "Too'annoo taphachiisaa keessatti qabduu faayilii PowerPoint jalqabaa buusuu agarsiisi"
+      }
+    ]
+  }
+}

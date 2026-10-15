@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "د لیکوال کارت",
+    "description": "د لیکوال معلومات له انځور، لنډې پېژندنې او ټولنیزو لینکونو سره وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "د لیکوال نوم",
+        "description": "د لیکوال بشپړ نوم."
+      },
+      {
+        "property": "image",
+        "title": "د پروفایل انځور",
+        "description": "د لیکوال د پروفایل انځور."
+      },
+      {
+        "property": "title",
+        "title": "دندیز عنوان",
+        "description": "د لیکوال دنده یا رول."
+      },
+      {
+        "property": "description",
+        "title": "لنډه پېژندنه",
+        "description": "د لیکوال لنډه ژوندلیک."
+      },
+      {
+        "property": "profileUrl",
+        "title": "د پروفایل URL",
+        "description": "د لیکوال د پروفایل پاڼې ته لینک."
+      },
+      {
+        "property": "socialLink",
+        "title": "ټولنیز لینک",
+        "description": "د ټولنیزو رسنیو پروفایل ته لینک."
+      },
+      {
+        "property": "socialHandle",
+        "title": "ټولنیز کارن نوم",
+        "description": "په ټولنیزو رسنیو کې کارن نوم (د بېلګې په توګه @username)."
+      }
+    ]
+  }
+}

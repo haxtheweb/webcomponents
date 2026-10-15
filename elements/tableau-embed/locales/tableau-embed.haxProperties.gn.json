@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Emoinge Tableau jehechaukarã peteĩ URL ñemoherakuã guive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL Tableau kuatiañe'ẽ térã jehecharãme."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "Jehechaukarã yvatekue."
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "Jehechaukarã pekue."
+      },
+      {
+        "property": "toolbar",
+        "title": "Tembipuru renda",
+        "description": "Tembipuru renda ñemohenda.",
+        "options": {
+          "top": "Yvate",
+          "bottom": "Yvy gotyo",
+          "hidden": "Kañymbyre"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Emokañy tendaguasu",
+        "description": "Emokañy kuatia rogue tendaguasu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Mba'e'oka ñemohenda",
+        "description": "Mba'e'oka ñemohenda ojehechaukátava.",
+        "options": {
+          "desktop": "Mohendaha guasu",
+          "tablet": "Tableta",
+          "phone": "Pumbyry"
+        }
+      }
+    ]
+  }
+}

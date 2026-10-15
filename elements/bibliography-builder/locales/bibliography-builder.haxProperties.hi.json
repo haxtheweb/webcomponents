@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ग्रंथसूची निर्माता",
+    "description": "ग्रंथसूचियाँ बनाने और प्रबंधित करने का टूल"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "उद्धरण",
+        "description": "इस ग्रंथसूची में उद्धरण आइटम"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "उस पाठ्यक्रम का पहचानकर्ता या नाम जिसके लिए यह ग्रंथसूची है (OER Schema forCourse)."
+      }
+    ]
+  }
+}

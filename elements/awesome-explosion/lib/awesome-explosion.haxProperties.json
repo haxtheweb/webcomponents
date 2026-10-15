@@ -3,7 +3,6 @@
   "type": "element",
   "editingElement": "core",
   "canScale": false,
-  "canPosition": true,
   "canEditSource": false,
   "gizmo": {
     "title": "Awesome Explosion",
@@ -97,11 +96,10 @@
       "tag": "awesome-explosion",
       "properties": {
         "size": "large",
-        "color": "blue",
-        "soundEnabled": false
+        "color": "blue"
       },
       "content": "",
-      "description": "Large blue explosion without sound."
+      "description": "Large blue explosion."
     },
     {
       "tag": "awesome-explosion",

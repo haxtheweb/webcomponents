@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Oś czasu kariery",
+    "description": "Oś czasu kariery zawierająca organizacje, role i inne dane"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł osi czasu",
+        "description": "Tytuł osi czasu kariery (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

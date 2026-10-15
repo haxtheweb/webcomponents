@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Scheda autore",
+    "description": "Mostra le informazioni sull'autore con foto, biografia e link social."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nome dell'autore",
+        "description": "Nome completo dell'autore."
+      },
+      {
+        "property": "image",
+        "title": "Immagine del profilo",
+        "description": "Foto del profilo dell'autore."
+      },
+      {
+        "property": "title",
+        "title": "Qualifica",
+        "description": "Posizione o ruolo dell'autore."
+      },
+      {
+        "property": "description",
+        "title": "Biografia",
+        "description": "Breve biografia dell'autore."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL del profilo",
+        "description": "Link alla pagina del profilo dell'autore."
+      },
+      {
+        "property": "socialLink",
+        "title": "Link social",
+        "description": "Link a un profilo social."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Nome utente social",
+        "description": "Nome utente sui social (ad esempio @username)."
+      }
+    ]
+  }
+}

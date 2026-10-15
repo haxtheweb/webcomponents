@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Creatore di bibliografia",
+    "description": "Un strumentu per creà è gestisce bibliografie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citazioni",
+        "description": "Elementi di citazione in sta bibliografia"
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "Identificatore o nome di u corsu per u quale hè sta bibliografia (OER Schema forCourse)."
+      }
+    ]
+  }
+}

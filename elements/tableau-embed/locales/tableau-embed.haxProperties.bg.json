@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Вграждане на визуализации от Tableau чрез URL за споделяне."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL на Tableau",
+        "description": "URL към работната книга или изгледа в Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Височина",
+        "description": "Височина на визуализацията."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина на визуализацията."
+      },
+      {
+        "property": "toolbar",
+        "title": "Лента с инструменти",
+        "description": "Позиция на лентата с инструменти.",
+        "options": {
+          "top": "Горе",
+          "bottom": "Долу",
+          "hidden": "Скрита"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Скриване на разделите",
+        "description": "Скриване на разделите на листовете."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Оформление за устройство",
+        "description": "Оформление за устройство при показване.",
+        "options": {
+          "desktop": "Настолен компютър",
+          "tablet": "Таблет",
+          "phone": "Телефон"
+        }
+      }
+    ]
+  }
+}

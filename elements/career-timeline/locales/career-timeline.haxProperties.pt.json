@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Linha do tempo de carreira",
+    "description": "Uma linha do tempo de carreira com organizações, funções e outros dados"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título da linha do tempo",
+        "description": "Um título para a linha do tempo de carreira (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

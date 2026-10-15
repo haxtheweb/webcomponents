@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Izrada bibliografije",
+    "description": "Alat za izradu i upravljanje bibliografijama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citati",
+        "description": "Stavke citata u ovoj bibliografiji"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kolegij",
+        "description": "Identifikator ili naziv kolegija za koji je ova bibliografija (OER Schema forCourse)."
+      }
+    ]
+  }
+}

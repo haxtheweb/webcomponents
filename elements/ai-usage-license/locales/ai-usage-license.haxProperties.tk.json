@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Emeli aňy ulanmak ygtyýarnamasy",
+    "description": "Işiňiz üçin Emeli aňy ulanmak ygtyýarnamasynyň (AIUL) nyşanyny görkeziň"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ygtyýarnama",
+        "description": "Bu iş üçin emeli aňy ulanmak ygtyýarnamasynyň derejesi. Jikme-jiklikler üçin seret: https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Media modifikatory",
+        "description": "Hökmany däl media ugry modifikatory. Bu ygtyýarnamanyň degişli media görnüşini kesgitleýär."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: Emeli aňy ulanmak ygtyýarnamasynyň salgylanma sahypasynyň URI-si. Bellenmedik bolsa, ygtyýarnama salgylanmasyndan awtomatik doldurylýar."
+      }
+    ]
+  }
+}

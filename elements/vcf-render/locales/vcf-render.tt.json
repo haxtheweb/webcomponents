@@ -1,0 +1,11 @@
+{
+  "name": "Исем",
+  "position": "Вазыйфа",
+  "organization": "Оешма",
+  "email": "Электрон почта",
+  "phone": "Телефон",
+  "address": "Адрес",
+  "loadingContacts": "Контактлар йөкләнә",
+  "contactsUnavailable": "Контактлар мөмкин түгел",
+  "noContacts": "Бу файлда контактлар юк"
+}

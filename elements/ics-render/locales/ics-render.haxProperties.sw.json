@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalenda",
+    "description": "Onyesha matukio yaliyo katika faili la kalenda kama kadi za tarehe, rekodi ya matukio, jedwali au orodha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faili la kalenda",
+        "description": "Pakia au chagua faili la kalenda la .ics. Matukio yake husomwa kwenye kivinjari."
+      },
+      {
+        "property": "displayAs",
+        "title": "Onyesha kama",
+        "description": "Jinsi ya kuwasilisha yaliyomo kwenye faili.",
+        "options": {
+          "cards": "Kadi za tarehe",
+          "timeline": "Rekodi ya matukio",
+          "table": "Jedwali",
+          "list": "Orodha"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kichwa",
+        "description": "Huonyeshwa juu ya matukio, na kama kichwa cha jedwali. Chaguo-msingi ni jina la kalenda yenyewe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pambangun bibliografi",
+    "description": "Piranti kanggo nggawé lan ngatur bibliografi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kutipan",
+        "description": "Item kutipan ing bibliografi iki"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Pangenal utawa jeneng kursus sing dadi tujuan bibliografi iki (OER Schema forCourse)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tembiapo rape ára rysýi",
+    "description": "Tembiapo rape ára rysýi oguerekóva atyguasu, tembiapo ha ambue mba'ekuaarã"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ára rysýi réra",
+        "description": "Téra tembiapo rape ára rysýipe g̃uarã (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

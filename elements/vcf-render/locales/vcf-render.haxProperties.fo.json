@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sambond",
+    "description": "Vís fólkini í eini sambandsfílu sum persónskort, sitat, talvu ella lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Sambandsfíla",
+        "description": "Legg upp ella vel eina .vcf sambandsfílu. Kortini í henni verða lisin í kagaranum."
+      },
+      {
+        "property": "displayAs",
+        "title": "Vís sum",
+        "description": "Hvussu innihaldið í fíluni skal vísast.",
+        "options": {
+          "cards": "Persónskort",
+          "quotes": "Sitat",
+          "table": "Talva",
+          "list": "Listi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Yvirskrift",
+        "description": "Víst omanfyri sambondini og sum talvuheiti."
+      }
+    ]
+  }
+}

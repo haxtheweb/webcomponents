@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Seznam predvajanja medijev",
+    "description": "Seznam predvajanja, ki prikazuje video in zvočne predvajalnike v postavitvi predvajalnik + stranska vrstica."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivni indeks",
+        "description": "Indeks aktivnega elementa, s katerim se začne."
+      },
+      {
+        "property": "forCourse",
+        "title": "Predmet",
+        "description": "Predmet, za katerega je ta seznam predvajanja namenjen (identifikator ali URL predmeta)."
+      }
+    ]
+  }
+}

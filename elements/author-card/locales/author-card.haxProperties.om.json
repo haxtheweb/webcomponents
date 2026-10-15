@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kaardii barreessaa",
+    "description": "Odeeffannoo barreessaa suuraa, seenaa gabaabaa fi liinkii miidiyaa hawaasaa waliin agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Maqaa barreessaa",
+        "description": "Maqaa guutuu barreessaa."
+      },
+      {
+        "property": "image",
+        "title": "Suuraa piroofaayilii",
+        "description": "Suuraa piroofaayilii barreessaa."
+      },
+      {
+        "property": "title",
+        "title": "Gahee hojii",
+        "description": "Sadarkaa ykn gahee barreessaa."
+      },
+      {
+        "property": "description",
+        "title": "Seenaa gabaabaa",
+        "description": "Seenaa jireenyaa barreessaa gabaabaa."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL piroofaayilii",
+        "description": "Liinkii fuula piroofaayilii barreessaatti geessu."
+      },
+      {
+        "property": "socialLink",
+        "title": "Liinkii miidiyaa hawaasaa",
+        "description": "Liinkii piroofaayilii miidiyaa hawaasaatti geessu."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Maqaa fayyadamaa miidiyaa hawaasaa",
+        "description": "Maqaa fayyadamaa miidiyaa hawaasaa (fakkeenyaaf @username)."
+      }
+    ]
+  }
+}

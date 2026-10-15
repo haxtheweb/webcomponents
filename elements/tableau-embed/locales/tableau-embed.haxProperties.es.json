@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Inserta visualizaciones de Tableau desde una URL para compartir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL de Tableau",
+        "description": "URL del libro de trabajo o la vista de Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura de la visualización."
+      },
+      {
+        "property": "width",
+        "title": "Anchura",
+        "description": "Anchura de la visualización."
+      },
+      {
+        "property": "toolbar",
+        "title": "Barra de herramientas",
+        "description": "Posición de la barra de herramientas.",
+        "options": {
+          "top": "Arriba",
+          "bottom": "Abajo",
+          "hidden": "Oculta"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ocultar pestañas",
+        "description": "Ocultar las pestañas de las hojas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Diseño del dispositivo",
+        "description": "Diseño de dispositivo que se va a mostrar.",
+        "options": {
+          "desktop": "Escritorio",
+          "tablet": "Tableta",
+          "phone": "Teléfono"
+        }
+      }
+    ]
+  }
+}

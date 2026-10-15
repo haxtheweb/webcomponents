@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Lebokaké visualisasi Tableau saka URL enggo bareng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL menyang workbook utawa tampilan Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwuré visualisasi."
+      },
+      {
+        "property": "width",
+        "title": "Jembar",
+        "description": "Jembaré visualisasi."
+      },
+      {
+        "property": "toolbar",
+        "title": "Bilah piranti",
+        "description": "Posisi bilah piranti.",
+        "options": {
+          "top": "Ndhuwur",
+          "bottom": "Ngisor",
+          "hidden": "Didhelikaké"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Dhelikaké tab",
+        "description": "Dhelikaké tab lembar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Tata letak piranti",
+        "description": "Tata letak piranti sing arep ditampilaké.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Telpon"
+        }
+      }
+    ]
+  }
+}

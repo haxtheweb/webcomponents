@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendarju",
+    "description": "Uri l-avvenimenti f'fajl tal-kalendarju bħala karti tad-dati, kronoloġija, tabella jew lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fajl tal-kalendarju",
+        "description": "Tella' jew agħżel fajl tal-kalendarju .ics. L-avvenimenti tiegħu jinqraw fil-browżer."
+      },
+      {
+        "property": "displayAs",
+        "title": "Uri bħala",
+        "description": "Kif għandu jiġi ppreżentat il-kontenut tal-fajl.",
+        "options": {
+          "cards": "Karti tad-dati",
+          "timeline": "Kronoloġija",
+          "table": "Tabella",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestatura",
+        "description": "Murija fuq l-avvenimenti, u bħala d-deskrizzjoni tat-tabella. B'mod awtomatiku tuża l-isem tal-kalendarju stess."
+      }
+    ]
+  }
+}

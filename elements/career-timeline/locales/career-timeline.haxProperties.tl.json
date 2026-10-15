@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Timeline ng karera",
+    "description": "Isang timeline ng karera na naglalaman ng mga organisasyon, tungkulin, at iba pang datos"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat ng timeline",
+        "description": "Pamagat para sa timeline ng karera (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

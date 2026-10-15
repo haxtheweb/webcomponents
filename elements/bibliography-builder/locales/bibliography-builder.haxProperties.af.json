@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bibliografiebouer",
+    "description": "'n Hulpmiddel om bibliografieë te skep en te bestuur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Aanhalings",
+        "description": "Aanhalingsitems in hierdie bibliografie"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Identifiseerder of naam van die kursus waarvoor hierdie bibliografie is (OER Schema forCourse)."
+      }
+    ]
+  }
+}

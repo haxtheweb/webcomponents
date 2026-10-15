@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rennimyndaframløga",
+    "description": "Framlegg eina innflutta PowerPoint-framløgu rennimynd fyri rennimynd, við notatum hjá talaranum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Framløgulýsing",
+        "description": "Slepp eini .pptx-fílu, og hon verður sjálvvirkandi umskapað til eina rennimyndaframløgu. Teigurin verður settur til slóðina á deck.json, sum kemur burturúr."
+      },
+      {
+        "property": "deckId",
+        "title": "Framløgu-ID",
+        "description": "Bert neyðugt, tá ið ein síða hevur fleiri enn eina framløgu, so at leinkini til rennimyndirnar verða ymisk"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Loyv niðurtøku",
+        "description": "Vís ein knøtt at taka upprunaligu PowerPoint-fíluna niður í stýringunum á spælaranum"
+      }
+    ]
+  }
+}

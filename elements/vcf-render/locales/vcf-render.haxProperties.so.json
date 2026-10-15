@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Xiriirada",
+    "description": "U muuji dadka ku jira fayl xiriireed sida kaarar shakhsiyeed, xigashooyin, shax ama liis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faylka xiriirada",
+        "description": "Soo geli ama dooro fayl xiriireed .vcf ah. Kaararkiisa waxaa lagu akhriyaa biraawsarka."
+      },
+      {
+        "property": "displayAs",
+        "title": "U muuji sida",
+        "description": "Sida loo soo bandhigayo waxa faylku ka kooban yahay.",
+        "options": {
+          "cards": "Kaarar shakhsiyeed",
+          "quotes": "Xigashooyin",
+          "table": "Shax",
+          "list": "Liis"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Ciwaan",
+        "description": "Waxaa lagu muujiyaa xiriirada korkooda, iyo sida cinwaanka shaxda."
+      }
+    ]
+  }
+}

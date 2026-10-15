@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karrieretidslinje",
+    "description": "En karrieretidslinje med organisationer, roller og andre data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tidslinjens titel",
+        "description": "En titel til karrieretidslinjen (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

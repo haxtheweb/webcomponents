@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Senarai main media",
+    "description": "Senarai main yang membentangkan pemain video dan audio dalam susun atur pemain + bar sisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Indeks aktif",
+        "description": "Indeks item aktif untuk dimulakan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Kursus yang menjadi sasaran senarai main ini (pengecam kursus atau URL)."
+      }
+    ]
+  }
+}

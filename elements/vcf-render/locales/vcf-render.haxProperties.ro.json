@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contacte",
+    "description": "Afișează persoanele dintr-un fișier de contacte ca carduri de persoană, citate, un tabel sau o listă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fișier de contacte",
+        "description": "Încarcă sau alege un fișier de contacte .vcf. Cardurile sale sunt citite în browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Afișează ca",
+        "description": "Cum să fie prezentat conținutul fișierului.",
+        "options": {
+          "cards": "Carduri de persoană",
+          "quotes": "Citate",
+          "table": "Tabel",
+          "list": "Listă"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Titlu",
+        "description": "Afișat deasupra contactelor și ca legendă a tabelului."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ავტორის ბარათი",
+    "description": "ავტორის ინფორმაციის ჩვენება ფოტოთი, ბიოგრაფიითა და სოციალური ბმულებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ავტორის სახელი",
+        "description": "ავტორის სრული სახელი."
+      },
+      {
+        "property": "image",
+        "title": "პროფილის სურათი",
+        "description": "ავტორის პროფილის ფოტო."
+      },
+      {
+        "property": "title",
+        "title": "თანამდებობა",
+        "description": "ავტორის თანამდებობა ან როლი."
+      },
+      {
+        "property": "description",
+        "title": "ბიოგრაფია",
+        "description": "ავტორის მოკლე ბიოგრაფია."
+      },
+      {
+        "property": "profileUrl",
+        "title": "პროფილის URL",
+        "description": "ბმული ავტორის პროფილის გვერდზე."
+      },
+      {
+        "property": "socialLink",
+        "title": "სოციალური ბმული",
+        "description": "ბმული სოციალური მედიის პროფილზე."
+      },
+      {
+        "property": "socialHandle",
+        "title": "სოციალური ქსელის სახელი",
+        "description": "მომხმარებლის სახელი სოციალურ მედიაში (მაგალითად @username)."
+      }
+    ]
+  }
+}

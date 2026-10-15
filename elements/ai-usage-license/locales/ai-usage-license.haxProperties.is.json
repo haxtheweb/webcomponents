@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Notkunarleyfi gervigreindar",
+    "description": "Birta merki notkunarleyfis gervigreindar (AIUL) fyrir verkið þitt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Leyfi",
+        "description": "Stig notkunarleyfis gervigreindar fyrir þetta verk. Sjá https://dmd-program.github.io/aiul/ fyrir nánari upplýsingar."
+      },
+      {
+        "property": "modifier",
+        "title": "Miðlabreytir",
+        "description": "Valfrjáls breytir fyrir miðlasvið. Tilgreinir þá tegund miðils sem þetta leyfi gildir um."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI fyrir tilvísunarsíðu notkunarleyfis gervigreindar. Fyllt út sjálfkrafa út frá tengli leyfisins ef ekkert er stillt."
+      }
+    ]
+  }
+}

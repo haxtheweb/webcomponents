@@ -1,0 +1,11 @@
+{
+  "name": "Ном",
+  "position": "Вазифа",
+  "organization": "Ташкилот",
+  "email": "Почтаи электронӣ",
+  "phone": "Телефон",
+  "address": "Суроға",
+  "loadingContacts": "Боркунии тамосҳо",
+  "contactsUnavailable": "Тамосҳо дастнорасанд",
+  "noContacts": "Дар ин файл тамос нест"
+}

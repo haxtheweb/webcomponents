@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contacten",
+    "description": "Toon de personen in een contactbestand als persoonskaarten, citaten, een tabel of een lijst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Contactbestand",
+        "description": "Upload of kies een .vcf-contactbestand. De kaarten worden in de browser gelezen."
+      },
+      {
+        "property": "displayAs",
+        "title": "Weergeven als",
+        "description": "Hoe de inhoud van het bestand wordt weergegeven.",
+        "options": {
+          "cards": "Persoonskaarten",
+          "quotes": "Citaten",
+          "table": "Tabel",
+          "list": "Lijst"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kop",
+        "description": "Wordt boven de contacten getoond en als tabelbijschrift."
+      }
+    ]
+  }
+}

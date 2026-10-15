@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Karýera wagt çyzgysy",
+    "description": "Guramalary, wezipeleri we beýleki maglumatlary öz içine alýan karýera wagt çyzgysy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Wagt çyzgysynyň ady",
+        "description": "Karýera wagt çyzgysy üçin at (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

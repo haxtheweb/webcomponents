@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalender",
+    "description": "Tampilkan acara dalam file kalender sebagai kartu tanggal, linimasa, tabel, atau daftar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File kalender",
+        "description": "Unggah atau pilih file kalender .ics. Acaranya dibaca di browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Tampilkan sebagai",
+        "description": "Cara menyajikan isi file.",
+        "options": {
+          "cards": "Kartu tanggal",
+          "timeline": "Linimasa",
+          "table": "Tabel",
+          "list": "Daftar"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Judul",
+        "description": "Ditampilkan di atas acara, dan sebagai keterangan tabel. Secara default menggunakan nama kalender itu sendiri."
+      }
+    ]
+  }
+}

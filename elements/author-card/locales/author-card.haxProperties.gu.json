@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "લેખક કાર્ડ",
+    "description": "ફોટો, ટૂંકા પરિચય અને સોશિયલ લિંક્સ સાથે લેખકની માહિતી દર્શાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "લેખકનું નામ",
+        "description": "લેખકનું પૂરું નામ."
+      },
+      {
+        "property": "image",
+        "title": "પ્રોફાઇલ છબી",
+        "description": "લેખકનો પ્રોફાઇલ ફોટો."
+      },
+      {
+        "property": "title",
+        "title": "હોદ્દો",
+        "description": "લેખકનો હોદ્દો અથવા ભૂમિકા."
+      },
+      {
+        "property": "description",
+        "title": "ટૂંકો પરિચય",
+        "description": "લેખકનું ટૂંકું જીવનચરિત્ર."
+      },
+      {
+        "property": "profileUrl",
+        "title": "પ્રોફાઇલ URL",
+        "description": "લેખકના પ્રોફાઇલ પેજની લિંક."
+      },
+      {
+        "property": "socialLink",
+        "title": "સોશિયલ લિંક",
+        "description": "સોશિયલ મીડિયા પ્રોફાઇલની લિંક."
+      },
+      {
+        "property": "socialHandle",
+        "title": "સોશિયલ હેન્ડલ",
+        "description": "સોશિયલ મીડિયા હેન્ડલ (ઉદાહરણ તરીકે @username)."
+      }
+    ]
+  }
+}

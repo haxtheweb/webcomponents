@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Yapay Zekâ Kullanım Lisansı",
+    "description": "Çalışmanız için bir Yapay Zekâ Kullanım Lisansı (AIUL) rozeti görüntüleyin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisans",
+        "description": "Bu çalışma için yapay zekâ kullanım lisansı düzeyi. Ayrıntılar için bkz. https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Medya değiştiricisi",
+        "description": "İsteğe bağlı medya alanı değiştiricisi. Bu lisansın uygulandığı medya türünü belirtir."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: Yapay Zekâ Kullanım Lisansı başvuru sayfasının URI'si. Ayarlanmadığında lisans bağlantısından otomatik doldurulur."
+      }
+    ]
+  }
+}

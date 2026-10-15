@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Permesilo pri uzo de AI",
+    "description": "Montri insignon de Permesilo pri uzo de AI (AIUL) por via verko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Permesilo",
+        "description": "La nivelo de la permesilo pri uzo de AI por ĉi tiu verko. Vidu https://dmd-program.github.io/aiul/ por detaloj."
+      },
+      {
+        "property": "modifier",
+        "title": "Aŭdvida modifilo",
+        "description": "Nedeviga modifilo de aŭdvida domajno. Indikas la tipon de aŭdvidaĵo al kiu ĉi tiu permesilo validas."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI por la referenca paĝo de la Permesilo pri uzo de AI. Aŭtomate plenigita el la permesila ligilo se ne agordita."
+      }
+    ]
+  }
+}

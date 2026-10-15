@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "লেখক কার্ড",
+    "description": "ছবি, সংক্ষিপ্ত পরিচিতি ও সামাজিক লিঙ্কসহ লেখকের তথ্য দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "লেখকের নাম",
+        "description": "লেখকের পূর্ণ নাম।"
+      },
+      {
+        "property": "image",
+        "title": "প্রোফাইল ছবি",
+        "description": "লেখকের প্রোফাইল ছবি।"
+      },
+      {
+        "property": "title",
+        "title": "পদবি",
+        "description": "লেখকের পদ বা ভূমিকা।"
+      },
+      {
+        "property": "description",
+        "title": "সংক্ষিপ্ত পরিচিতি",
+        "description": "লেখকের সংক্ষিপ্ত জীবনী।"
+      },
+      {
+        "property": "profileUrl",
+        "title": "প্রোফাইল URL",
+        "description": "লেখকের প্রোফাইল পৃষ্ঠার লিঙ্ক।"
+      },
+      {
+        "property": "socialLink",
+        "title": "সামাজিক লিঙ্ক",
+        "description": "একটি সোশ্যাল মিডিয়া প্রোফাইলের লিঙ্ক।"
+      },
+      {
+        "property": "socialHandle",
+        "title": "সামাজিক হ্যান্ডেল",
+        "description": "সোশ্যাল মিডিয়া হ্যান্ডেল (যেমন @username)।"
+      }
+    ]
+  }
+}

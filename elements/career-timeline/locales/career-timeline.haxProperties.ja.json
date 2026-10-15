@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "キャリアタイムライン",
+    "description": "組織、役職、その他のデータを含むキャリアのタイムライン"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイムラインのタイトル",
+        "description": "キャリアタイムラインのタイトル（OER Schema: oer:name）。"
+      }
+    ]
+  }
+}

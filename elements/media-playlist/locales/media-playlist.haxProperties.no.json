@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mediespilleliste",
+    "description": "En spilleliste som viser video- og lydspillere i et oppsett med spiller og sidefelt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktiv indeks",
+        "description": "Indeks for elementet det skal startes på."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "Emnet denne spillelisten er ment for (emne-ID eller URL)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontak",
+    "description": "Tampilkan orang-orang dalam file kontak sebagai kartu orang, kutipan, tabel, atau daftar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File kontak",
+        "description": "Unggah atau pilih file kontak .vcf. Kartunya dibaca di browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Tampilkan sebagai",
+        "description": "Cara menyajikan isi file.",
+        "options": {
+          "cards": "Kartu orang",
+          "quotes": "Kutipan",
+          "table": "Tabel",
+          "list": "Daftar"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Judul",
+        "description": "Ditampilkan di atas kontak, dan sebagai keterangan tabel."
+      }
+    ]
+  }
+}

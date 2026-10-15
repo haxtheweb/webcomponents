@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kàlẹ́ńdà",
+    "description": "Ṣàfihàn àwọn ìṣẹ̀lẹ̀ inú fáìlì kàlẹ́ńdà gẹ́gẹ́ bí káàdì ọjọ́, ìlà-àkókò, tábìlì tàbí àkójọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fáìlì kàlẹ́ńdà",
+        "description": "Gbé fáìlì kàlẹ́ńdà .ics sókè tàbí yàn án. A ń ka àwọn ìṣẹ̀lẹ̀ rẹ̀ nínú aṣàwákiri."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ṣàfihàn gẹ́gẹ́ bí",
+        "description": "Bí a ṣe máa ṣàfihàn ohun tí fáìlì náà ní.",
+        "options": {
+          "cards": "Káàdì ọjọ́",
+          "timeline": "Ìlà-àkókò",
+          "table": "Tábìlì",
+          "list": "Àkójọ"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Àkọlé",
+        "description": "Ó ń hàn lókè àwọn ìṣẹ̀lẹ̀, àti gẹ́gẹ́ bí àkọlé tábìlì. Orúkọ kàlẹ́ńdà fúnra rẹ̀ ni a ó lò bí kò bá sí òmíràn."
+      }
+    ]
+  }
+}

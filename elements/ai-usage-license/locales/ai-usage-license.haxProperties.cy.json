@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Trwydded defnyddio AI",
+    "description": "Dangos bathodyn Trwydded Defnyddio AI (AIUL) ar gyfer eich gwaith"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Trwydded",
+        "description": "Lefel y drwydded defnyddio AI ar gyfer y gwaith hwn. Gweler https://dmd-program.github.io/aiul/ am fanylion."
+      },
+      {
+        "property": "modifier",
+        "title": "Addasydd cyfryngau",
+        "description": "Addasydd parth cyfryngau dewisol. Yn nodi'r math o gyfryngau y mae'r drwydded hon yn berthnasol iddynt."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI ar gyfer tudalen gyfeirio'r Drwydded Defnyddio AI. Yn cael ei llenwi'n awtomatig o ddolen y drwydded os nad yw wedi'i gosod."
+      }
+    ]
+  }
+}

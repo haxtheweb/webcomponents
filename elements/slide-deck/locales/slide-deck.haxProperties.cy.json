@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Set sleidiau",
+    "description": "Cyflwyno set sleidiau PowerPoint wedi'i mewnforio fesul sleid, gyda nodiadau'r siaradwr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Maniffest y set sleidiau",
+        "description": "Gollyngwch ffeil .pptx a bydd yn cael ei throsi'n set sleidiau yn awtomatig. Mae'r maes yn cael ei osod i lwybr y deck.json sy'n deillio."
+      },
+      {
+        "property": "deckId",
+        "title": "ID y set sleidiau",
+        "description": "Dim ond ei angen pan fo tudalen yn cynnwys mwy nag un set sleidiau, fel bod dolenni sleidiau'n aros yn wahanol"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Caniatáu llwytho i lawr",
+        "description": "Dangos botwm llwytho i lawr ar gyfer y ffeil PowerPoint wreiddiol yn rheolyddion y chwaraewr"
+      }
+    ]
+  }
+}

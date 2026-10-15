@@ -1,0 +1,11 @@
+{
+  "name": "Jméno",
+  "position": "Pozice",
+  "organization": "Organizace",
+  "email": "E-mail",
+  "phone": "Telefon",
+  "address": "Adresa",
+  "loadingContacts": "Načítání kontaktů",
+  "contactsUnavailable": "Kontakty nejsou k dispozici",
+  "noContacts": "V tomto souboru nejsou žádné kontakty"
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bildspel",
+    "description": "Visa en importerad PowerPoint-presentation bild för bild, med talaranteckningar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Presentationsmanifest",
+        "description": "Släpp en .pptx-fil så konverteras den automatiskt till ett bildspel. Fältet sätts till sökvägen för den resulterande deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Presentations-id",
+        "description": "Behövs bara när en sida innehåller mer än en presentation, så att bildlänkarna förblir unika"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Tillåt nedladdning",
+        "description": "Visa en nedladdningsknapp för den ursprungliga PowerPoint-filen i spelarens kontroller"
+      }
+    ]
+  }
+}

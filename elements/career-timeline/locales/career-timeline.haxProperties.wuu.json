@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "职业时间线",
+    "description": "包含单位、职位搭其他资料个职业时间线"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "时间线标题",
+        "description": "职业时间线个标题（OER Schema: oer:name）。"
+      }
+    ]
+  }
+}

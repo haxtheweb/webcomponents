@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Lịch",
+    "description": "Hiển thị các sự kiện trong tệp lịch dưới dạng thẻ ngày, dòng thời gian, bảng hoặc danh sách."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Tệp lịch",
+        "description": "Tải lên hoặc chọn tệp lịch .ics. Các sự kiện trong đó được đọc ngay trên trình duyệt."
+      },
+      {
+        "property": "displayAs",
+        "title": "Hiển thị dưới dạng",
+        "description": "Cách trình bày nội dung của tệp.",
+        "options": {
+          "cards": "Thẻ ngày",
+          "timeline": "Dòng thời gian",
+          "table": "Bảng",
+          "list": "Danh sách"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Tiêu đề",
+        "description": "Hiển thị phía trên các sự kiện và làm chú thích của bảng. Mặc định là tên của chính lịch đó."
+      }
+    ]
+  }
+}

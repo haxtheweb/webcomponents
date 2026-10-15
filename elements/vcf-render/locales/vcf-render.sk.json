@@ -1,0 +1,11 @@
+{
+  "name": "Meno",
+  "position": "Pozícia",
+  "organization": "Organizácia",
+  "email": "E-mail",
+  "phone": "Telefón",
+  "address": "Adresa",
+  "loadingContacts": "Načítavajú sa kontakty",
+  "contactsUnavailable": "Kontakty nie sú k dispozícii",
+  "noContacts": "V tomto súbore nie sú žiadne kontakty"
+}

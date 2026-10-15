@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Karenda",
+    "description": "Ratidza zviitiko zviri mufaira yekarenda semakadhi emazuva, nhoroondo yenguva, tafura kana rondedzero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faira yekarenda",
+        "description": "Isa kana sarudza faira yekarenda ye.ics. Zviitiko zvayo zvinoverengerwa mubrowser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ratidza se",
+        "description": "Maratidziro ezviri mufaira.",
+        "options": {
+          "cards": "Makadhi emazuva",
+          "timeline": "Nhoroondo yenguva",
+          "table": "Tafura",
+          "list": "Rondedzero"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Musoro",
+        "description": "Unoratidzwa pamusoro pezviitiko, uye semusoro wetafura. Kana pasina, rinoshandisa zita rekarenda pacharo."
+      }
+    ]
+  }
+}

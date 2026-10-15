@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lisènsi Panggunaan AI",
+    "description": "Tampilaké lencana Lisènsi Panggunaan AI (AIUL) kanggo karyamu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisènsi",
+        "description": "Tingkat lisènsi panggunaan AI kanggo karya iki. Deleng https://dmd-program.github.io/aiul/ kanggo rincian."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikator media",
+        "description": "Modifikator domain media opsional. Nemtokaké jinis media sing kena lisènsi iki."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI kanggo kaca referensi Lisènsi Panggunaan AI. Diisi otomatis saka pranala lisènsi yèn durung disetel."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendrier",
+    "description": "Afficher les événements d’un fichier de calendrier sous forme de fiches datées, de chronologie, de tableau ou de liste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Fichier de calendrier",
+        "description": "Téléversez ou choisissez un fichier de calendrier .ics. Ses événements sont lus dans le navigateur."
+      },
+      {
+        "property": "displayAs",
+        "title": "Afficher sous forme de",
+        "description": "Comment présenter le contenu du fichier.",
+        "options": {
+          "cards": "Fiches datées",
+          "timeline": "Chronologie",
+          "table": "Tableau",
+          "list": "Liste"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "En-tête",
+        "description": "Affiché au-dessus des événements et comme légende du tableau. Par défaut, le nom du calendrier."
+      }
+    ]
+  }
+}

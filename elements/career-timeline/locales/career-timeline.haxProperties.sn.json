@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nhoroondo yebasa",
+    "description": "Nhoroondo yebasa ine masangano, mabasa nedzimwe data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro wenhoroondo",
+        "description": "Musoro wenhoroondo yebasa (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

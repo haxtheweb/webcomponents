@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Forfatterkort",
+    "description": "Vis forfatterinformasjon med bilde, biografi og lenker til sosiale medier."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Forfatternavn",
+        "description": "Forfatterens fulle navn."
+      },
+      {
+        "property": "image",
+        "title": "Profilbilde",
+        "description": "Forfatterens profilbilde."
+      },
+      {
+        "property": "title",
+        "title": "Stillingstittel",
+        "description": "Forfatterens stilling eller rolle."
+      },
+      {
+        "property": "description",
+        "title": "Biografi",
+        "description": "Kort forfatterbiografi."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil-URL",
+        "description": "Lenke til forfatterens profilside."
+      },
+      {
+        "property": "socialLink",
+        "title": "Lenke til sosiale medier",
+        "description": "Lenke til en profil på sosiale medier."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Brukernavn på sosiale medier",
+        "description": "Brukernavn på sosiale medier (for eksempel @username)."
+      }
+    ]
+  }
+}

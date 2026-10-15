@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "MI lietošanas licence",
+    "description": "Rādīt MI lietošanas licences (AIUL) žetonu jūsu darbam"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Šī darba MI lietošanas licences līmenis. Sīkāka informācija: https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Multivides modifikators",
+        "description": "Neobligāts multivides jomas modifikators. Norāda, uz kāda veida multividi attiecas šī licence."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: MI lietošanas licences atsauces lapas URI. Ja nav iestatīts, tiek automātiski aizpildīts no licences saites."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Fiche auteur",
+    "description": "Afficher les informations sur l’auteur avec photo, biographie et liens vers les réseaux sociaux."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nom de l’auteur",
+        "description": "Nom complet de l’auteur."
+      },
+      {
+        "property": "image",
+        "title": "Image de profil",
+        "description": "Photo de profil de l’auteur."
+      },
+      {
+        "property": "title",
+        "title": "Intitulé du poste",
+        "description": "Poste ou rôle de l’auteur."
+      },
+      {
+        "property": "description",
+        "title": "Biographie",
+        "description": "Courte biographie de l’auteur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL du profil",
+        "description": "Lien vers la page de profil de l’auteur."
+      },
+      {
+        "property": "socialLink",
+        "title": "Lien social",
+        "description": "Lien vers un profil de réseau social."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Identifiant social",
+        "description": "Identifiant sur les réseaux sociaux (par exemple @username)."
+      }
+    ]
+  }
+}

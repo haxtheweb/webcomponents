@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Agenda",
+    "description": "Toon de afspraken in een agendabestand als datumkaarten, een tijdlijn, een tabel of een lijst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Agendabestand",
+        "description": "Upload of kies een .ics-agendabestand. De afspraken worden in de browser gelezen."
+      },
+      {
+        "property": "displayAs",
+        "title": "Weergeven als",
+        "description": "Hoe de inhoud van het bestand wordt weergegeven.",
+        "options": {
+          "cards": "Datumkaarten",
+          "timeline": "Tijdlijn",
+          "table": "Tabel",
+          "list": "Lijst"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Kop",
+        "description": "Wordt boven de afspraken getoond en als tabelbijschrift. Standaard de eigen naam van de agenda."
+      }
+    ]
+  }
+}

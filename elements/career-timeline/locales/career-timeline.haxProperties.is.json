@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Starfsferilsyfirlit",
+    "description": "Tímalína starfsferils með fyrirtækjum, hlutverkum og öðrum upplýsingum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill tímalínu",
+        "description": "Titill fyrir tímalínu starfsferilsins (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalender",
+    "description": "Vis begivenhederne i en kalenderfil som datokort, en tidslinje, en tabel eller en liste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kalenderfil",
+        "description": "Upload eller vælg en .ics-kalenderfil. Dens begivenheder læses i browseren."
+      },
+      {
+        "property": "displayAs",
+        "title": "Vis som",
+        "description": "Hvordan filens indhold skal præsenteres.",
+        "options": {
+          "cards": "Datokort",
+          "timeline": "Tidslinje",
+          "table": "Tabel",
+          "list": "Liste"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Overskrift",
+        "description": "Vises over begivenhederne og som tabeltekst. Standard er kalenderens eget navn."
+      }
+    ]
+  }
+}

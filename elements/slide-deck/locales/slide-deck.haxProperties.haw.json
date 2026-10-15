@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Puʻu paʻi kiʻi",
+    "description": "Hōʻike i kekahi puʻu PowerPoint i lawe ʻia mai, i kēlā me kēia paʻi kiʻi, me nā palapala a ka mea haʻiʻōlelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Papa kuhikuhi puʻu",
+        "description": "E hāʻule i kekahi faila .pptx a hoʻololi ʻakomi ʻia i puʻu paʻi kiʻi. Hoʻonoho ʻia ke kahua i ke ala deck.json i loaʻa."
+      },
+      {
+        "property": "deckId",
+        "title": "ID puʻu",
+        "description": "Pono wale nō ke loaʻa ma mua o hoʻokahi puʻu ma ka ʻaoʻao, i ʻokoʻa nā loulou paʻi kiʻi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "ʻAe i ka hoʻoiho",
+        "description": "Hōʻike i ke pihi hoʻoiho no ka faila PowerPoint kumu ma nā mana hoʻokele o ka mea hoʻokani"
+      }
+    ]
+  }
+}

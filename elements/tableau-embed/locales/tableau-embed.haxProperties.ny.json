@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Ikani zithunzi za deta za Tableau kuchokera ku URL yogawana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ya Tableau",
+        "description": "URL yopita ku buku la ntchito kapena mawonekedwe a Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kwa chithunzi cha deta."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mwa chithunzi cha deta."
+      },
+      {
+        "property": "toolbar",
+        "title": "Bala la zida",
+        "description": "Malo a bala la zida.",
+        "options": {
+          "top": "Pamwamba",
+          "bottom": "Pansi",
+          "hidden": "Lobisika"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Bisani ma tabu",
+        "description": "Bisani ma tabu a mapepala."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Kapangidwe ka chipangizo",
+        "description": "Kapangidwe ka chipangizo koti kaonetsedwe.",
+        "options": {
+          "desktop": "Kompyuta",
+          "tablet": "Tabuleti",
+          "phone": "Foni"
+        }
+      }
+    ]
+  }
+}

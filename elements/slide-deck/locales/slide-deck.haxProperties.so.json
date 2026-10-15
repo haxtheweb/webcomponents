@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Bandhig sawirro",
+    "description": "Soo bandhig bandhig PowerPoint ah oo la soo dejiyay sawir-bandhig sawir-bandhig, oo leh qoraallada khudbeeyaha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Faylka sharraxa bandhigga",
+        "description": "Halkan ku rid fayl .pptx ah waxaana si toos ah loogu beddelayaa bandhig sawirro. Goobtan waxaa loo dhigayaa jidka deck.json ee ka dhasha."
+      },
+      {
+        "property": "deckId",
+        "title": "Aqoonsiga bandhigga",
+        "description": "Waxaa kaliya loo baahan yahay marka bog ka kooban yahay wax ka badan hal bandhig, si xiriirada sawir-bandhigyadu u kala duwanaadaan"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Oggolow soo dejinta",
+        "description": "Muuji badhan lagu soo dejiyo faylka asalka ah ee PowerPoint ee ku jira kontaroolada ciyaariyaha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "KI-Nutzungslizenz",
+    "description": "Ein Abzeichen der KI-Nutzungslizenz (AIUL) für Ihr Werk anzeigen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "Die Stufe der KI-Nutzungslizenz für dieses Werk. Details unter https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Medienmodifikator",
+        "description": "Optionaler Modifikator für die Mediendomäne. Gibt an, für welche Art von Medien diese Lizenz gilt."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI der Referenzseite der KI-Nutzungslizenz. Wird automatisch aus dem Lizenzlink übernommen, wenn nicht gesetzt."
+      }
+    ]
+  }
+}

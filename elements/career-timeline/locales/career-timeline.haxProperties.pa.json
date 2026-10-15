@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ਕਰੀਅਰ ਸਮਾਂ-ਰੇਖਾ",
+    "description": "ਸੰਸਥਾਵਾਂ, ਭੂਮਿਕਾਵਾਂ ਅਤੇ ਹੋਰ ਡਾਟਾ ਵਾਲੀ ਕਰੀਅਰ ਸਮਾਂ-ਰੇਖਾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਮਾਂ-ਰੇਖਾ ਦਾ ਸਿਰਲੇਖ",
+        "description": "ਕਰੀਅਰ ਸਮਾਂ-ਰੇਖਾ ਲਈ ਸਿਰਲੇਖ (OER Schema: oer:name)।"
+      }
+    ]
+  }
+}

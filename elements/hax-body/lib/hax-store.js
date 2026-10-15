@@ -3632,7 +3632,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://discord.gg/VVcAcCeZQ"],
+        args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
@@ -6427,6 +6427,34 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return nodeLookup;
   }
+  /**
+   * Find the settings field a locale overlay entry translates.
+   * Entries that name the field they translate (`property`, `attribute`
+   * or `slot`) are matched on that key, so reordering fields in the base
+   * haxProperties does not mislabel translations. Entries without one fall
+   * back to the field at the same array index (original behavior).
+   * @param {Array} fields settings group from the base haxProperties
+   * @param {Object} entry translated entry from the locale overlay
+   * @param {Number} index position of the entry in the overlay
+   * @returns {Object|null} matching field, or null when there is none
+   */
+  _matchTranslatedSetting(fields, entry, index) {
+    if (!entry || typeof entry !== "object") {
+      return null;
+    }
+    const identity = ["property", "attribute", "slot"].find(
+      (key) => typeof entry[key] === "string",
+    );
+    if (identity) {
+      return (
+        fields.find((field) => field && field[identity] === entry[identity]) ||
+        null
+      );
+    }
+    return fields[index] && typeof fields[index] === "object"
+      ? fields[index]
+      : null;
+  }
   async attemptGizmoTranslation(tag, properties) {
     let translationMap = null;
     // support locales if available and not default lang
@@ -6465,24 +6493,35 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
       // settings pages
       if (properties.settings && translationMap.settings) {
-        let sTabs = {
-          advanced: "advanced",
-          configure: "configure",
-        };
-        for (let h in sTabs) {
-          if (properties.settings[h] && translationMap.settings[h]) {
-            for (let i in translationMap.settings[h]) {
-              for (let j in translationMap.settings[h][i]) {
-                properties.settings[h][i][j] = translationMap.settings[h][i][j];
+        ["configure", "advanced"].forEach((h) => {
+          const fields = properties.settings[h];
+          const overlay = translationMap.settings[h];
+          if (!Array.isArray(fields) || !Array.isArray(overlay)) {
+            return;
+          }
+          overlay.forEach((entry, index) => {
+            const target = this._matchTranslatedSetting(fields, entry, index);
+            if (!target) {
+              return;
+            }
+            for (let j in entry) {
+              // identity keys only locate the field; never overwrite them
+              if (!["property", "attribute", "slot"].includes(j)) {
+                target[j] = entry[j];
               }
             }
-          }
-        }
+          });
+        });
       }
       // demo schema can be rewritten too
       if (properties.demoSchema && translationMap.demoSchema) {
         for (let i in translationMap.demoSchema) {
-          if (translationMap.demoSchema[i].properties) {
+          if (
+            translationMap.demoSchema[i] &&
+            translationMap.demoSchema[i].properties &&
+            properties.demoSchema[i] &&
+            properties.demoSchema[i].properties
+          ) {
             for (let j in translationMap.demoSchema[i].properties) {
               properties.demoSchema[i].properties[j] =
                 translationMap.demoSchema[i].properties[j];

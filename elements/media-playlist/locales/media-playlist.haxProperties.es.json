@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lista de reproducción multimedia",
+    "description": "Una lista de reproducción que presenta reproductores de vídeo y audio con un diseño de reproductor y barra lateral."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Elemento inicial",
+        "description": "Índice del elemento activo con el que empezar."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "El curso al que está destinada esta lista de reproducción (identificador o URL del curso)."
+      }
+    ]
+  }
+}

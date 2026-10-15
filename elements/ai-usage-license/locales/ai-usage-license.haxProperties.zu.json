@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ilayisensi yokusetshenziswa kwe-AI",
+    "description": "Bonisa ibheji yeLayisensi yokusetshenziswa kwe-AI (AIUL) yomsebenzi wakho"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ilayisensi",
+        "description": "Izinga lelayisensi yokusetshenziswa kwe-AI kulo msebenzi. Bheka https://dmd-program.github.io/aiul/ ukuthola imininingwane."
+      },
+      {
+        "property": "modifier",
+        "title": "Isiguquli semidiya",
+        "description": "Isiguquli sesizinda semidiya esingaphoqelekile. Sicacisa uhlobo lwemidiya esebenza kulo le layisensi."
+      },
+      {
+        "property": "uri",
+        "title": "I-URI ye-AIUL (OER Schema)",
+        "description": "OER Schema: I-URI yekhasi lesithenjwa seLayisensi yokusetshenziswa kwe-AI. Igcwaliswa ngokuzenzakalelayo kusuka kusixhumanisi selayisensi uma ingasethiwe."
+      }
+    ]
+  }
+}

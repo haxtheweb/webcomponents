@@ -1,0 +1,15 @@
+{
+  "previousSlide": "முந்தைய ஸ்லைடு",
+  "nextSlide": "அடுத்த ஸ்லைடு",
+  "viewAllSlides": "எல்லா ஸ்லைடுகளையும் காட்டு",
+  "viewOneSlide": "ஒரு நேரத்தில் ஒரு ஸ்லைடைக் காட்டு",
+  "presentFullScreen": "முழுத் திரையில் வழங்கு",
+  "exitFullScreen": "முழுத் திரையிலிருந்து வெளியேறு",
+  "copyLinkToSlide": "இந்த ஸ்லைடுக்கான இணைப்பை நகலெடு",
+  "linkCopied": "இணைப்பு நகலெடுக்கப்பட்டது",
+  "speakerNotes": "பேச்சாளர் குறிப்புகள்",
+  "loadingPresentation": "விளக்கக்காட்சி ஏற்றப்படுகிறது",
+  "presentationUnavailable": "விளக்கக்காட்சி கிடைக்கவில்லை",
+  "slide": "ஸ்லைடு",
+  "downloadPresentation": "விளக்கக்காட்சியைப் பதிவிறக்கு"
+}

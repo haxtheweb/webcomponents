@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "កាតអ្នកនិពន្ធ",
+    "description": "បង្ហាញព័ត៌មានអ្នកនិពន្ធ ជាមួយរូបថត ជីវប្រវត្តិ និងតំណបណ្ដាញសង្គម។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ឈ្មោះអ្នកនិពន្ធ",
+        "description": "ឈ្មោះពេញរបស់អ្នកនិពន្ធ។"
+      },
+      {
+        "property": "image",
+        "title": "រូបភាពប្រវត្តិរូប",
+        "description": "រូបថតប្រវត្តិរូបរបស់អ្នកនិពន្ធ។"
+      },
+      {
+        "property": "title",
+        "title": "មុខតំណែង",
+        "description": "មុខតំណែង ឬតួនាទីរបស់អ្នកនិពន្ធ។"
+      },
+      {
+        "property": "description",
+        "title": "ជីវប្រវត្តិ",
+        "description": "ជីវប្រវត្តិសង្ខេបរបស់អ្នកនិពន្ធ។"
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL ប្រវត្តិរូប",
+        "description": "តំណទៅទំព័រប្រវត្តិរូបរបស់អ្នកនិពន្ធ។"
+      },
+      {
+        "property": "socialLink",
+        "title": "តំណបណ្ដាញសង្គម",
+        "description": "តំណទៅប្រវត្តិរូបបណ្ដាញសង្គម។"
+      },
+      {
+        "property": "socialHandle",
+        "title": "ឈ្មោះគណនីសង្គម",
+        "description": "ឈ្មោះគណនីបណ្ដាញសង្គម (ឧទាហរណ៍ @username)។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mediaofspyllist",
+    "description": "In ofspyllist dy't fideo- en audiospilers toant yn in yndieling mei spiler + sydbalke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Aktive yndeks",
+        "description": "Yndeks fan it aktive item om mei te begjinnen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "De kursus dêr't dizze ofspyllist foar bedoeld is (kursusidentifikaasje of URL)."
+      }
+    ]
+  }
+}

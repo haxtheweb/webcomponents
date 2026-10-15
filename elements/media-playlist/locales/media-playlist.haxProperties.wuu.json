@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "媒体播放列表",
+    "description": "用播放器 + 侧边栏布局展示视频搭音频播放器个播放列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "起始索引",
+        "description": "开始辰光激活项目个索引。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "搿只播放列表面向个课程（课程标识符或者 URL）。"
+      }
+    ]
+  }
+}

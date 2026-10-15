@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendariu",
+    "description": "Affissà l'evenimenti d'un schedariu di calendariu cum'è carte di data, una cronulugia, una tavula o una lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Schedariu di calendariu",
+        "description": "Caricà o sceglie un schedariu di calendariu .ics. I so evenimenti sò letti in u navigatore."
+      },
+      {
+        "property": "displayAs",
+        "title": "Affissà cum'è",
+        "description": "Cumu presentà ciò chì u schedariu cuntene.",
+        "options": {
+          "cards": "Carte di data",
+          "timeline": "Cronulugia",
+          "table": "Tavula",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestatura",
+        "description": "Affissata sopra à l'evenimenti, è cum'è legenda di a tavula. Per difettu, u nome di u calendariu stessu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Carta d'autore",
+    "description": "Affissà l'infurmazioni di l'autore cù foto, biografia è ligami suciali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Nome di l'autore",
+        "description": "Nome cumplettu di l'autore."
+      },
+      {
+        "property": "image",
+        "title": "Fiura di prufilu",
+        "description": "Foto di prufilu di l'autore."
+      },
+      {
+        "property": "title",
+        "title": "Titulu di u postu",
+        "description": "Funzione o rolu di l'autore."
+      },
+      {
+        "property": "description",
+        "title": "Biografia",
+        "description": "Biografia corta di l'autore."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL di u prufilu",
+        "description": "Ligame versu a pagina di prufilu di l'autore."
+      },
+      {
+        "property": "socialLink",
+        "title": "Ligame suciale",
+        "description": "Ligame versu un prufilu nantu à e rete suciale."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Nome d'utilizatore suciale",
+        "description": "Nome d'utilizatore nantu à e rete suciale (per esempiu @username)."
+      }
+    ]
+  }
+}

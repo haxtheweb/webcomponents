@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "ບັດຜູ້ຂຽນ",
+    "description": "ສະແດງຂໍ້ມູນຜູ້ຂຽນພ້ອມຮູບ, ປະຫວັດຫຍໍ້ ແລະ ລິ້ງສັງຄົມ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ຊື່ຜູ້ຂຽນ",
+        "description": "ຊື່ເຕັມຂອງຜູ້ຂຽນ."
+      },
+      {
+        "property": "image",
+        "title": "ຮູບໂປຣໄຟລ໌",
+        "description": "ຮູບໂປຣໄຟລ໌ຂອງຜູ້ຂຽນ."
+      },
+      {
+        "property": "title",
+        "title": "ຕຳແໜ່ງວຽກ",
+        "description": "ຕຳແໜ່ງ ຫຼື ບົດບາດຂອງຜູ້ຂຽນ."
+      },
+      {
+        "property": "description",
+        "title": "ປະຫວັດຫຍໍ້",
+        "description": "ປະຫວັດຫຍໍ້ສັ້ນໆຂອງຜູ້ຂຽນ."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL ໂປຣໄຟລ໌",
+        "description": "ລິ້ງໄປຫາໜ້າໂປຣໄຟລ໌ຂອງຜູ້ຂຽນ."
+      },
+      {
+        "property": "socialLink",
+        "title": "ລິ້ງສັງຄົມ",
+        "description": "ລິ້ງໄປຫາໂປຣໄຟລ໌ສື່ສັງຄົມ."
+      },
+      {
+        "property": "socialHandle",
+        "title": "ຊື່ຜູ້ໃຊ້ສັງຄົມ",
+        "description": "ຊື່ຜູ້ໃຊ້ໃນສື່ສັງຄົມ (ຕົວຢ່າງ @username)."
+      }
+    ]
+  }
+}

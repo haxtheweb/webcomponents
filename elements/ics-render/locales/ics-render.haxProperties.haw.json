@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Alemanaka",
+    "description": "Hōʻike i nā hanana ma kekahi faila alemanaka ma ke ʻano he mau kāleka lā, he laina manawa, he papa, a i ʻole he papa helu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faila alemanaka",
+        "description": "Hoʻouka a koho paha i kekahi faila alemanaka .ics. Heluhelu ʻia kona mau hanana ma ka polokalamu kele pūnaewele."
+      },
+      {
+        "property": "displayAs",
+        "title": "Hōʻike ma ke ʻano",
+        "description": "Pehea e hōʻike ai i nā mea i loko o ka faila.",
+        "options": {
+          "cards": "Nā kāleka lā",
+          "timeline": "Laina manawa",
+          "table": "Papa",
+          "list": "Papa helu"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Poʻo",
+        "description": "Hōʻike ʻia ma luna o nā hanana, a ma ke ʻano he lepili no ka papa. Hoʻohana paʻamau ʻia ka inoa ponoʻī o ka alemanaka."
+      }
+    ]
+  }
+}

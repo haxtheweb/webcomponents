@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kiunda bibliografia",
+    "description": "Zana ya kuunda na kusimamia bibliografia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Manukuu",
+        "description": "Vipengee vya manukuu katika bibliografia hii"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "Kitambulisho au jina la kozi ambayo bibliografia hii ni yake (OER Schema forCourse)."
+      }
+    ]
+  }
+}

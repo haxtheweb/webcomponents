@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "IA jepuru ñemoneĩ",
+    "description": "Ehechauka peteĩ IA jepuru ñemoneĩ (AIUL) techaukaha nde rembiapópe g̃uarã"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ñemoneĩ",
+        "description": "IA jepuru ñemoneĩ ijyvatekue ko tembiapópe g̃uarã. Ehecha https://dmd-program.github.io/aiul/ mba'emimi rehe."
+      },
+      {
+        "property": "modifier",
+        "title": "Momarandu'i moambueha",
+        "description": "Momarandu'i ñemohenda moambueha ndaha'éiva tekotevẽ. Ohechauka mba'eichagua momarandu'ípe g̃uarãpa ko ñemoneĩ."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI IA jepuru ñemoneĩ kuatiarogue jehechapyrãme. Oñemyenyhẽ ijeheguiete ñemoneĩ juajuhágui ndojehenóiramo."
+      }
+    ]
+  }
+}

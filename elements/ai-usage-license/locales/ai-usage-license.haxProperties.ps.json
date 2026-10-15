@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "د AI د کارونې جواز",
+    "description": "د خپل کار لپاره د AI د کارونې جواز (AIUL) نښان وښایئ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "جواز",
+        "description": "د دې کار لپاره د AI د کارونې جواز کچه. د جزئیاتو لپاره https://dmd-program.github.io/aiul/ وګورئ."
+      },
+      {
+        "property": "modifier",
+        "title": "د رسنۍ بدلونګر",
+        "description": "اختیاري د رسنۍ د ډومېن بدلونګر. دا ټاکي چې دا جواز پر کوم ډول رسنۍ پلي کېږي."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: د AI د کارونې جواز د حوالې پاڼې لپاره URI. کله چې نه وي ټاکل شوی، د جواز له لینک څخه په خپله ډکېږي."
+      }
+    ]
+  }
+}

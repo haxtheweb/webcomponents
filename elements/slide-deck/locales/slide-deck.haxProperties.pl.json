@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Pokaz slajdów",
+    "description": "Prezentuj zaimportowaną prezentację PowerPoint slajd po slajdzie, z notatkami prelegenta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest prezentacji",
+        "description": "Upuść plik .pptx, a zostanie automatycznie przekonwertowany na pokaz slajdów. Pole zostanie ustawione na ścieżkę do utworzonego pliku deck.json."
+      },
+      {
+        "property": "deckId",
+        "title": "Identyfikator prezentacji",
+        "description": "Potrzebny tylko wtedy, gdy strona zawiera więcej niż jedną prezentację, aby linki do slajdów pozostały unikalne"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Zezwól na pobieranie",
+        "description": "Pokaż przycisk pobierania oryginalnego pliku PowerPoint w elementach sterujących odtwarzacza"
+      }
+    ]
+  }
+}

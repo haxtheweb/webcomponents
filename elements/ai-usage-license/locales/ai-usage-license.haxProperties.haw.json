@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Laikini hoʻohana AI",
+    "description": "Hōʻike i kekahi hōʻailona Laikini hoʻohana AI (AIUL) no kāu hana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Laikini",
+        "description": "Ke kūlana laikini hoʻohana AI no kēia hana. E nānā iā https://dmd-program.github.io/aiul/ no nā kikoʻī."
+      },
+      {
+        "property": "modifier",
+        "title": "Mea hoʻololi media",
+        "description": "Mea hoʻololi kahua media koho. Hōʻike ia i ke ʻano media e pili ai kēia laikini."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI no ka ʻaoʻao kuhikuhi o ka Laikini hoʻohana AI. Hoʻopiha ʻakomi ʻia mai ka loulou laikini inā ʻaʻole i hoʻonoho ʻia."
+      }
+    ]
+  }
+}

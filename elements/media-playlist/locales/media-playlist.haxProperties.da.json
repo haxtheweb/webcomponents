@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Medieplayliste",
+    "description": "En playliste, der viser video- og lydafspillere i et layout med afspiller og sidepanel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Startelement",
+        "description": "Nummeret på det element, der startes med."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Det kursus, som denne playliste er beregnet til (kursus-id eller URL)."
+      }
+    ]
+  }
+}

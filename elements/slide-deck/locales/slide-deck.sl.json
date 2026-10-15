@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Prejšnja prosojnica",
+  "nextSlide": "Naslednja prosojnica",
+  "viewAllSlides": "Prikaži vse prosojnice",
+  "viewOneSlide": "Prikaži po eno prosojnico",
+  "presentFullScreen": "Predstavi v celozaslonskem načinu",
+  "exitFullScreen": "Zapri celozaslonski način",
+  "copyLinkToSlide": "Kopiraj povezavo do te prosojnice",
+  "linkCopied": "Povezava kopirana",
+  "speakerNotes": "Opombe govornika",
+  "loadingPresentation": "Nalaganje predstavitve",
+  "presentationUnavailable": "Predstavitev ni na voljo",
+  "slide": "Prosojnica",
+  "downloadPresentation": "Prenesi predstavitev"
+}

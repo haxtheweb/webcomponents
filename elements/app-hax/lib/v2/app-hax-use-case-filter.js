@@ -312,7 +312,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px);
           font-size: var(--ddd-font-size-xs, 12px);
           border-radius: 12px;
-          border: var(--ddd-border-s, 2px solid);
+          border: var(--ddd-border-sm, 2px solid);
           border-color: var(--ddd-theme-default-limestoneGray);
           background: var(--ddd-theme-default-limestoneLight);
           color: var(--ddd-theme-default-coalyGray, #222);

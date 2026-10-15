@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "የስላይድ ስብስብ",
+    "description": "የመጣ PowerPoint የስላይድ ስብስብን ስላይድ በስላይድ ከተናጋሪ ማስታወሻዎች ጋር ያቅርቡ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "የስላይድ ስብስብ ማኒፌስት",
+        "description": "የ.pptx ፋይል ይጣሉ እና በራስ-ሰር ወደ የስላይድ ስብስብ ይቀየራል። መስኩ ወደ ተገኘው የdeck.json ዱካ ይዘጋጃል።"
+      },
+      {
+        "property": "deckId",
+        "title": "የስላይድ ስብስብ መለያ",
+        "description": "የሚያስፈልገው አንድ ገጽ ከአንድ በላይ የስላይድ ስብስብ ሲይዝ ብቻ ነው፣ የስላይድ አገናኞች የተለዩ ሆነው እንዲቆዩ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "ማውረድ ፍቀድ",
+        "description": "በአጫዋቹ መቆጣጠሪያዎች ውስጥ ለመጀመሪያው PowerPoint ፋይል የማውረጃ አዝራር አሳይ"
+      }
+    ]
+  }
+}

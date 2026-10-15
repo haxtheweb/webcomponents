@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI-gebrûkslisinsje",
+    "description": "In badge foar AI-gebrûkslisinsje (AIUL) toane foar dyn wurk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisinsje",
+        "description": "It nivo fan de AI-gebrûkslisinsje foar dit wurk. Sjoch https://dmd-program.github.io/aiul/ foar details."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediamodifikator",
+        "description": "Opsjonele modifikator foar it mediadomein. Jout oan op hokker soarte media dizze lisinsje fan tapassing is."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI foar de referinsjeside fan de AI-gebrûkslisinsje. Wurdt automatysk ynfolle fan de lisinsjekeppeling as dizze net ynsteld is."
+      }
+    ]
+  }
+}

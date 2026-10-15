@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Outeurskaart",
+    "description": "Wys outeursinligting met foto, biografie en sosiale skakels."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Outeursnaam",
+        "description": "Volle naam van die outeur."
+      },
+      {
+        "property": "image",
+        "title": "Profielbeeld",
+        "description": "Profielfoto van die outeur."
+      },
+      {
+        "property": "title",
+        "title": "Postitel",
+        "description": "Die outeur se pos of rol."
+      },
+      {
+        "property": "description",
+        "title": "Biografie",
+        "description": "Kort biografie van die outeur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profiel-URL",
+        "description": "Skakel na die outeur se profielbladsy."
+      },
+      {
+        "property": "socialLink",
+        "title": "Sosiale skakel",
+        "description": "Skakel na 'n sosialemediaprofiel."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Sosiale gebruikersnaam",
+        "description": "Sosialemedia-gebruikersnaam (byvoorbeeld @username)."
+      }
+    ]
+  }
+}

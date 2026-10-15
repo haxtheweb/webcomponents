@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licenca e përdorimit të AI",
+    "description": "Shfaq një distinktiv të Licencës së Përdorimit të AI (AIUL) për punën tënde"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Niveli i licencës së përdorimit të AI për këtë punë. Shih https://dmd-program.github.io/aiul/ për detaje."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikuesi i medias",
+        "description": "Modifikues opsional i fushës së medias. Përcakton llojin e medias për të cilën vlen kjo licencë."
+      },
+      {
+        "property": "uri",
+        "title": "URI e AIUL (OER Schema)",
+        "description": "OER Schema: URI për faqen e referencës së Licencës së Përdorimit të AI. Plotësohet automatikisht nga lidhja e licencës kur nuk është vendosur."
+      }
+    ]
+  }
+}

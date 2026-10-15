@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "מצגת שקופיות",
+    "description": "הצגת מצגת PowerPoint מיובאת שקופית אחר שקופית, עם הערות דובר."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מניפסט המצגת",
+        "description": "גררו קובץ .pptx והוא יומר אוטומטית למצגת שקופיות. השדה יוגדר לנתיב deck.json שנוצר."
+      },
+      {
+        "property": "deckId",
+        "title": "מזהה מצגת",
+        "description": "נדרש רק כאשר דף מכיל יותר ממצגת אחת, כדי שקישורי השקופיות יישארו נפרדים"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "אפשור הורדה",
+        "description": "הצגת כפתור הורדה עבור קובץ ה-PowerPoint המקורי בפקדי הנגן"
+      }
+    ]
+  }
+}

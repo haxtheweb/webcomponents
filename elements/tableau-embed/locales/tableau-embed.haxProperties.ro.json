@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Încorporează vizualizări Tableau dintr-un URL de partajare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL către registrul de lucru sau vizualizarea Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea vizualizării."
+      },
+      {
+        "property": "width",
+        "title": "Lățime",
+        "description": "Lățimea vizualizării."
+      },
+      {
+        "property": "toolbar",
+        "title": "Bară de instrumente",
+        "description": "Poziția barei de instrumente.",
+        "options": {
+          "top": "Sus",
+          "bottom": "Jos",
+          "hidden": "Ascunsă"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Ascunde filele",
+        "description": "Ascunde filele foilor."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Aspect dispozitiv",
+        "description": "Aspectul dispozitivului pentru afișare.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tabletă",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

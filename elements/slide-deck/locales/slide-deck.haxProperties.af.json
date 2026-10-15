@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Skyfiestel",
+    "description": "Bied 'n ingevoerde PowerPoint-skyfiestel skyfie vir skyfie aan, met sprekersnotas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Skyfiestel-manifes",
+        "description": "Sleep 'n .pptx-lêer hierheen en dit word outomaties na 'n skyfiestel omgeskakel. Die veld word op die gevolglike deck.json-pad gestel."
+      },
+      {
+        "property": "deckId",
+        "title": "Skyfiestel-ID",
+        "description": "Slegs nodig wanneer 'n bladsy meer as een skyfiestel bevat, sodat skyfieskakels uniek bly"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Laat aflaai toe",
+        "description": "Wys 'n aflaaiknoppie vir die oorspronklike PowerPoint-lêer in die spelerkontroles"
+      }
+    ]
+  }
+}

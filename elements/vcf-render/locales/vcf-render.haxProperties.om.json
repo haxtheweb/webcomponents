@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Quunnamtiiwwan",
+    "description": "Namoota faayilii quunnamtii keessa jiran akka kaardii namaa, waabii, gabatee ykn tarreetti agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Faayilii quunnamtii",
+        "description": "Faayilii quunnamtii .vcf ol fe'i ykn filadhu. Kaardiiwwan isaa barbaacha keessatti dubbifamu."
+      },
+      {
+        "property": "displayAs",
+        "title": "Akkasitti agarsiisi",
+        "description": "Waan faayilii keessa jiru akkamitti akka dhiyaatu.",
+        "options": {
+          "cards": "Kaardii namaa",
+          "quotes": "Waabiiwwan",
+          "table": "Gabatee",
+          "list": "Tarree"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Mata duree",
+        "description": "Quunnamtiiwwan olitti, akkasumas akka ibsa gabateetti agarsiifama."
+      }
+    ]
+  }
+}

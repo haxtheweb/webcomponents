@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ìwé-àṣẹ Lílo AI",
+    "description": "Ṣàfihàn àmì Ìwé-àṣẹ Lílo AI (AIUL) fún iṣẹ́ rẹ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Ìwé-àṣẹ",
+        "description": "Ìpele ìwé-àṣẹ lílo AI fún iṣẹ́ yìí. Wo https://dmd-program.github.io/aiul/ fún àlàyé."
+      },
+      {
+        "property": "modifier",
+        "title": "Àtúnṣe mídíà",
+        "description": "Àtúnṣe agbègbè mídíà (àṣàyàn). Ó sọ irú mídíà tí ìwé-àṣẹ yìí kan."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI fún ojú-ewé ìtọ́kasí Ìwé-àṣẹ Lílo AI. A ó kún un láìfọwọ́yí láti ìjápọ̀ ìwé-àṣẹ tí a kò bá ṣètò rẹ̀."
+      }
+    ]
+  }
+}

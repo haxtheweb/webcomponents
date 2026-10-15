@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lista di lettura multimedia",
+    "description": "Una lista di lettura chì presenta lettori video è audio in una disposizione lettore + barra laterale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Elementu iniziale",
+        "description": "Numeru di l'elementu da cumincià."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "U corsu per u quale hè fatta sta lista di lettura (identificatore o URL di u corsu)."
+      }
+    ]
+  }
+}

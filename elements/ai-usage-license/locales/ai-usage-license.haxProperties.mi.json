@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Raihana Whakamahi AI",
+    "description": "Whakaaturia he tohu Raihana Whakamahi AI (AIUL) mō tō mahi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Raihana",
+        "description": "Te taumata raihana whakamahi AI mō tēnei mahi. Tirohia https://dmd-program.github.io/aiul/ mō ngā taipitopito."
+      },
+      {
+        "property": "modifier",
+        "title": "Kaiwhakarerekē pāpāho",
+        "description": "He kaiwhakarerekē rohe pāpāho kōwhiringa. Ka tautuhi i te momo pāpāho e pā ana tēnei raihana."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI mō te whārangi tohutoro o te Raihana Whakamahi AI. Ka whakakīia aunoatia mai i te hono raihana ki te kore e tautuhia."
+      }
+    ]
+  }
+}

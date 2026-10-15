@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licenca za uporabo UI",
+    "description": "Prikažite značko licence za uporabo UI (AIUL) za svoje delo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licenca",
+        "description": "Raven licence za uporabo UI za to delo. Podrobnosti so na https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Modifikator medija",
+        "description": "Neobvezni modifikator vrste medija. Določa, za katero vrsto medija velja ta licenca."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI referenčne strani licence za uporabo UI. Če ni nastavljen, se samodejno izpolni iz povezave licence."
+      }
+    ]
+  }
+}

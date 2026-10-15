@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI 사용 라이선스",
+    "description": "작품에 AI 사용 라이선스(AIUL) 배지를 표시합니다"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "라이선스",
+        "description": "이 작품의 AI 사용 라이선스 수준. 자세한 내용은 https://dmd-program.github.io/aiul/ 을 참조하세요."
+      },
+      {
+        "property": "modifier",
+        "title": "미디어 수정자",
+        "description": "선택적 미디어 도메인 수정자. 이 라이선스가 적용되는 미디어 유형을 지정합니다."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: AI 사용 라이선스 참조 페이지의 URI. 설정하지 않으면 라이선스 링크에서 자동으로 채워집니다."
+      }
+    ]
+  }
+}

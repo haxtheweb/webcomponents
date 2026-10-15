@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Contactos",
+    "description": "Mostra as persoas dun ficheiro de contactos como fichas de persoa, citas, unha táboa ou unha lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Ficheiro de contactos",
+        "description": "Sube ou escolle un ficheiro de contactos .vcf. As súas fichas lense no navegador."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostrar como",
+        "description": "Como presentar o contido do ficheiro.",
+        "options": {
+          "cards": "Fichas de persoa",
+          "quotes": "Citas",
+          "table": "Táboa",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Encabezado",
+        "description": "Móstrase enriba dos contactos e como lenda da táboa."
+      }
+    ]
+  }
+}

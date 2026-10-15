@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Kāleka mea kākau",
+    "description": "Hōʻike i ka ʻike o ka mea kākau me ke kiʻi, ka moʻolelo pōkole, a me nā loulou pāpaho kaiaulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Inoa o ka mea kākau",
+        "description": "Ka inoa piha o ka mea kākau."
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi moʻolako",
+        "description": "Ke kiʻi moʻolako o ka mea kākau."
+      },
+      {
+        "property": "title",
+        "title": "Kūlana ʻoihana",
+        "description": "Ke kūlana a i ʻole ke kuleana o ka mea kākau."
+      },
+      {
+        "property": "description",
+        "title": "Moʻolelo pōkole",
+        "description": "He moʻolelo pōkole o ka mea kākau."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL moʻolako",
+        "description": "Loulou i ka ʻaoʻao moʻolako o ka mea kākau."
+      },
+      {
+        "property": "socialLink",
+        "title": "Loulou pāpaho kaiaulu",
+        "description": "Loulou i kekahi moʻolako pāpaho kaiaulu."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Inoa mea hoʻohana",
+        "description": "Inoa mea hoʻohana pāpaho kaiaulu (e laʻa me @username)."
+      }
+    ]
+  }
+}

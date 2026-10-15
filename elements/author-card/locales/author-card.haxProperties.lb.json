@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Auteurskaart",
+    "description": "Auteursinformatioune mat Foto, Biographie a soziale Linke weisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Numm vum Auteur",
+        "description": "Ganze Numm vum Auteur."
+      },
+      {
+        "property": "image",
+        "title": "Profilbild",
+        "description": "Profilfoto vum Auteur."
+      },
+      {
+        "property": "title",
+        "title": "Beruffstitel",
+        "description": "Positioun oder Roll vum Auteur."
+      },
+      {
+        "property": "description",
+        "title": "Biographie",
+        "description": "Kuerz Biographie vum Auteur."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profil-URL",
+        "description": "Link op d'Profilsäit vum Auteur."
+      },
+      {
+        "property": "socialLink",
+        "title": "Soziale Link",
+        "description": "Link op e Social-Media-Profil."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Social-Media-Numm",
+        "description": "Benotzernumm op de soziale Medien (zum Beispill @username)."
+      }
+    ]
+  }
+}

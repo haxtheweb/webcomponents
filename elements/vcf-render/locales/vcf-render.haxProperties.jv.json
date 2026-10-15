@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontak",
+    "description": "Nampilaké wong-wong ing berkas kontak minangka kertu wong, kutipan, tabel utawa dhaptar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Berkas kontak",
+        "description": "Unggah utawa pilih berkas kontak .vcf. Kertuné diwaca ing browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Tampilaké minangka",
+        "description": "Carané nampilaké isi berkas.",
+        "options": {
+          "cards": "Kertu wong",
+          "quotes": "Kutipan",
+          "table": "Tabel",
+          "list": "Dhaptar"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Sesirah",
+        "description": "Ditampilaké ing sadhuwuré kontak, lan minangka katerangan tabel."
+      }
+    ]
+  }
+}

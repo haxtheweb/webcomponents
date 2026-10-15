@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mga contact",
+    "description": "Ipakita ang mga tao sa isang contact file bilang mga person card, sipi, talahanayan o listahan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "File ng contact",
+        "description": "Mag-upload o pumili ng .vcf na contact file. Binabasa ang mga card nito sa browser."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ipakita bilang",
+        "description": "Kung paano ipapakita ang laman ng file.",
+        "options": {
+          "cards": "Mga person card",
+          "quotes": "Mga sipi",
+          "table": "Talahanayan",
+          "list": "Listahan"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Pamuhatan",
+        "description": "Ipinapakita sa itaas ng mga contact, at bilang caption ng talahanayan."
+      }
+    ]
+  }
+}

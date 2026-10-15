@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "IA llamk'achiy licencia",
+    "description": "Llamkayniykipaq IA llamk'achiy licenciapa (AIUL) unanchanta rikuchiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "Kay llamkaypaq IA llamk'achiy licenciapa patan. Astawan yachanapaq qhaway https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Media tikraq",
+        "description": "Munaspa churana media tikraq. Kay licencia mayqin media layaman chayasqanta niykun."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: IA llamk'achiy licenciapa willakuy p'anqanpaq URI. Mana churasqa kaqtinqa licencia t'inkimanta kikillanmanta hunt'akun."
+      }
+    ]
+  }
+}

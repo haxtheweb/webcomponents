@@ -1,0 +1,11 @@
+{
+  "name": "Nimi",
+  "position": "Asema",
+  "organization": "Organisaatio",
+  "email": "Sähköposti",
+  "phone": "Puhelin",
+  "address": "Osoite",
+  "loadingContacts": "Ladataan yhteystietoja",
+  "contactsUnavailable": "Yhteystiedot eivät ole saatavilla",
+  "noContacts": "Tiedostossa ei ole yhteystietoja"
+}

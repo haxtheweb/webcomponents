@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "የሙያ የጊዜ መስመር",
+    "description": "ድርጅቶችን፣ ሚናዎችን እና ሌሎች መረጃዎችን የያዘ የሙያ የጊዜ መስመር"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "የጊዜ መስመር ርዕስ",
+        "description": "ለሙያ የጊዜ መስመሩ ርዕስ (OER Schema: oer:name)።"
+      }
+    ]
+  }
+}

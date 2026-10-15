@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የAI አጠቃቀም ፈቃድ",
+    "description": "ለሥራዎ የAI አጠቃቀም ፈቃድ (AIUL) ባጅ ያሳዩ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "ፈቃድ",
+        "description": "ለዚህ ሥራ የAI አጠቃቀም ፈቃድ ደረጃ። ለዝርዝሮች https://dmd-program.github.io/aiul/ ይመልከቱ።"
+      },
+      {
+        "property": "modifier",
+        "title": "የሚዲያ መቀየሪያ",
+        "description": "አማራጭ የሚዲያ ዘርፍ መቀየሪያ። ይህ ፈቃድ የሚመለከተውን የሚዲያ ዓይነት ይገልጻል።"
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: ለAI አጠቃቀም ፈቃድ ማጣቀሻ ገጽ URI። ካልተዘጋጀ ከፈቃዱ አገናኝ በራስ-ሰር ይሞላል።"
+      }
+    ]
+  }
+}

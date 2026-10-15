@@ -10,5 +10,6 @@
   "speakerNotes": "発表者ノート",
   "loadingPresentation": "プレゼンテーションを読み込み中",
   "presentationUnavailable": "プレゼンテーションを利用できません",
-  "slide": "スライド"
+  "slide": "スライド",
+  "downloadPresentation": "プレゼンテーションをダウンロード"
 }

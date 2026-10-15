@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stiki",
+    "description": "Prikaže osebe iz datoteke stikov kot kartice oseb, citate, tabelo ali seznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Datoteka stikov",
+        "description": "Naložite ali izberite datoteko stikov .vcf. Njene kartice se preberejo v brskalniku."
+      },
+      {
+        "property": "displayAs",
+        "title": "Prikaži kot",
+        "description": "Kako predstaviti vsebino datoteke.",
+        "options": {
+          "cards": "Kartice oseb",
+          "quotes": "Citati",
+          "table": "Tabela",
+          "list": "Seznam"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Naslov",
+        "description": "Prikazano nad stiki in kot napis tabele."
+      }
+    ]
+  }
+}

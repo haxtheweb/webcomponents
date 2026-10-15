@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "אײַנבעטן Tableau װיזואַליזאַציעס פֿון אַ טיילן־URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "URL צום Tableau אַרבעטבוך אָדער אַנבליק."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "הייך פֿון דער וויזואַליזאַציע."
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "ברייט פֿון דער וויזואַליזאַציע."
+      },
+      {
+        "property": "toolbar",
+        "title": "געצייג־באַלקן",
+        "description": "פּאָזיציע פֿונעם געצייג־באַלקן.",
+        "options": {
+          "top": "אויבן",
+          "bottom": "אונטן",
+          "hidden": "באַהאַלטן"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "באַהאַלטן טאַבן",
+        "description": "באַהאַלטן די בלאַט־טאַבן."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "מכשיר־אויסלייג",
+        "description": "מכשיר־אויסלייג צו ווײַזן.",
+        "options": {
+          "desktop": "קאָמפּיוטער",
+          "tablet": "טאַבלעט",
+          "phone": "טעלעפֿאָן"
+        }
+      }
+    ]
+  }
+}

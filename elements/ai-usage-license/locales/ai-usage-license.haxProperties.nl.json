@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "AI-gebruikslicentie",
+    "description": "Toon een badge voor een AI-gebruikslicentie (AIUL) bij je werk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licentie",
+        "description": "Het niveau van de AI-gebruikslicentie voor dit werk. Zie https://dmd-program.github.io/aiul/ voor details."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediamodificator",
+        "description": "Optionele modificator voor mediadomein. Geeft aan op welk type media deze licentie van toepassing is."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: URI voor de referentiepagina van de AI-gebruikslicentie. Wordt automatisch ingevuld vanuit de licentielink als deze niet is ingesteld."
+      }
+    ]
+  }
+}

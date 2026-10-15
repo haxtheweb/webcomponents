@@ -732,6 +732,85 @@ describe("hax-store primitives + registration wiring", () => {
       globalThis.fetch = originalFetch;
     });
 
+    it("matches translated settings by property / slot before index", async () => {
+      const originalFetch = globalThis.fetch;
+      globalThis.fetch = async () => ({
+        ok: true,
+        json: async () => ({
+          settings: {
+            configure: [
+              // names its field, so order in the overlay does not matter
+              { property: "src", title: "Fuente" },
+              { slot: "", title: "Contenido" },
+              // names a field that no longer exists: skipped, not misapplied
+              { property: "removed", title: "Eliminado" },
+            ],
+            advanced: [{ title: "Avanzado" }],
+          },
+        }),
+      });
+      class MatchPropsEl extends globalThis.HTMLElement {
+        static get haxProperties() {
+          return "https://example.com/match-props.json";
+        }
+      }
+      if (!globalThis.customElements.get("match-props-el")) {
+        globalThis.customElements.define("match-props-el", MatchPropsEl);
+      }
+      const properties = {
+        settings: {
+          configure: [
+            { slot: "", title: "Content" },
+            { property: "title", title: "Title" },
+            { property: "src", title: "Source" },
+          ],
+          advanced: [{ property: "color", title: "Color" }],
+        },
+      };
+      const result = await HAXStore.attemptGizmoTranslation(
+        "match-props-el",
+        properties,
+      );
+      expect(result.settings.configure[0].title).to.equal("Contenido");
+      expect(result.settings.configure[1].title).to.equal("Title");
+      expect(result.settings.configure[2].title).to.equal("Fuente");
+      expect(result.settings.configure[2].property).to.equal("src");
+      // entries without an identity key keep the index-based behavior
+      expect(result.settings.advanced[0].title).to.equal("Avanzado");
+      globalThis.fetch = originalFetch;
+    });
+
+    it("ignores overlay entries past the end of the base settings", async () => {
+      const originalFetch = globalThis.fetch;
+      globalThis.fetch = async () => ({
+        ok: true,
+        json: async () => ({
+          settings: { configure: [{ title: "Uno" }, { title: "Dos" }] },
+          demoSchema: [{ properties: { a: "x" } }, { properties: { b: "y" } }],
+        }),
+      });
+      class ShortPropsEl extends globalThis.HTMLElement {
+        static get haxProperties() {
+          return "https://example.com/short-props.json";
+        }
+      }
+      if (!globalThis.customElements.get("short-props-el")) {
+        globalThis.customElements.define("short-props-el", ShortPropsEl);
+      }
+      const properties = {
+        settings: { configure: [{ property: "a", title: "One" }] },
+        demoSchema: [{ properties: { a: "1" } }],
+      };
+      const result = await HAXStore.attemptGizmoTranslation(
+        "short-props-el",
+        properties,
+      );
+      expect(result.settings.configure.length).to.equal(1);
+      expect(result.settings.configure[0].title).to.equal("Uno");
+      expect(result.demoSchema.length).to.equal(1);
+      globalThis.fetch = originalFetch;
+    });
+
     it("leaves properties alone when the remote schema fails", async () => {
       const originalFetch = globalThis.fetch;
       globalThis.fetch = async () => ({ ok: false });

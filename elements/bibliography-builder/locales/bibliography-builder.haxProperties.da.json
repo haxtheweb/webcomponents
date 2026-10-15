@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Litteraturlisteværktøj",
+    "description": "Et værktøj til at oprette og administrere litteraturlister"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kildehenvisninger",
+        "description": "Kildehenvisninger i denne litteraturliste"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Id eller navn på det kursus, som denne litteraturliste er til (OER Schema forCourse)."
+      }
+    ]
+  }
+}

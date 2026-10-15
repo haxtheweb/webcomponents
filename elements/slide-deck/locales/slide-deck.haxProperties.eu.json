@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Diapositiba-aurkezpena",
+    "description": "Aurkeztu inportatutako PowerPoint aurkezpen bat diapositibaz diapositiba, hizlariaren oharrekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Aurkezpenaren manifestua",
+        "description": "Jaregin .pptx fitxategi bat eta automatikoki bihurtuko da diapositiba-aurkezpen. Eremuan sortutako deck.json fitxategiaren bidea ezartzen da."
+      },
+      {
+        "property": "deckId",
+        "title": "Aurkezpenaren IDa",
+        "description": "Orri batek aurkezpen bat baino gehiago dituenean bakarrik behar da, diapositiben estekak bereizita egon daitezen"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Baimendu deskarga",
+        "description": "Erakutsi jatorrizko PowerPoint fitxategia deskargatzeko botoia erreproduzigailuaren kontroletan"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tekoälyn käyttölisenssi",
+    "description": "Näytä työllesi tekoälyn käyttölisenssin (AIUL) merkki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Lisenssi",
+        "description": "Tämän työn tekoälyn käyttölisenssin taso. Katso lisätietoja osoitteesta https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Mediatarkenne",
+        "description": "Valinnainen mediatyypin tarkenne. Määrittää, mihin mediatyyppiin tämä lisenssi koskee."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL-URI (OER Schema)",
+        "description": "OER Schema: tekoälyn käyttölisenssin viitesivun URI. Täytetään automaattisesti lisenssilinkistä, jos sitä ei ole asetettu."
+      }
+    ]
+  }
+}

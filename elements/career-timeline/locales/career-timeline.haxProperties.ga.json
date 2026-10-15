@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Amlíne ghairme",
+    "description": "Amlíne ghairme ina bhfuil eagraíochtaí, róil agus sonraí eile"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal na hamlíne",
+        "description": "Teideal don amlíne ghairme (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Taqvim",
+    "description": "Taqvim faylidagi tadbirlarni sana kartochkalari, xronologiya, jadval yoki ro‘yxat ko‘rinishida ko‘rsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Taqvim fayli",
+        "description": ".ics taqvim faylini yuklang yoki tanlang. Uning tadbirlari brauzerda o‘qiladi."
+      },
+      {
+        "property": "displayAs",
+        "title": "Ko‘rinishi",
+        "description": "Fayl tarkibini qanday taqdim etish.",
+        "options": {
+          "cards": "Sana kartochkalari",
+          "timeline": "Xronologiya",
+          "table": "Jadval",
+          "list": "Ro‘yxat"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Sarlavha",
+        "description": "Tadbirlar ustida va jadval sarlavhasi sifatida ko‘rsatiladi. Standart holatda taqvimning o‘z nomi ishlatiladi."
+      }
+    ]
+  }
+}

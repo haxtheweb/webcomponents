@@ -1,0 +1,11 @@
+{
+  "name": "Аты",
+  "position": "Лауазымы",
+  "organization": "Ұйым",
+  "email": "Электрондық пошта",
+  "phone": "Телефон",
+  "address": "Мекенжай",
+  "loadingContacts": "Контактілер жүктелуде",
+  "contactsUnavailable": "Контактілер қолжетімсіз",
+  "noContacts": "Бұл файлда контактілер жоқ"
+}

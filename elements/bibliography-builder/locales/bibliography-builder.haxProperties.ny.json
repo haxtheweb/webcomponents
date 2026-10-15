@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Wopanga mndandanda wa mabuku",
+    "description": "Chida chopangira ndi kuyang'anira mindandanda ya mabuku ofotokozedwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Zogwidwa mawu",
+        "description": "Zinthu zogwidwa mawu mu mndandanda uwu"
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "Chizindikiro kapena dzina la maphunziro amene mndandanda uwu ndi wake (OER Schema forCourse)."
+      }
+    ]
+  }
+}

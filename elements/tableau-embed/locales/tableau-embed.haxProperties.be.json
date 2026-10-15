@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Убудаваць візуалізацыі Tableau па URL для абагульвання."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL рабочай кнігі або прадстаўлення Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Вышыня",
+        "description": "Вышыня візуалізацыі."
+      },
+      {
+        "property": "width",
+        "title": "Шырыня",
+        "description": "Шырыня візуалізацыі."
+      },
+      {
+        "property": "toolbar",
+        "title": "Панэль інструментаў",
+        "description": "Размяшчэнне панэлі інструментаў.",
+        "options": {
+          "top": "Уверсе",
+          "bottom": "Унізе",
+          "hidden": "Схавана"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Схаваць укладкі",
+        "description": "Схаваць укладкі аркушаў."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Макет прылады",
+        "description": "Макет прылады для адлюстравання.",
+        "options": {
+          "desktop": "Камп'ютар",
+          "tablet": "Планшэт",
+          "phone": "Тэлефон"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ndërtuesi i bibliografisë",
+    "description": "Një mjet për krijimin dhe menaxhimin e bibliografive"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citimet",
+        "description": "Elementet e citimeve në këtë bibliografi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "Identifikuesi ose emri i kursit për të cilin është kjo bibliografi (OER Schema forCourse)."
+      }
+    ]
+  }
+}

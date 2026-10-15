@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bibliogrāfijas veidotājs",
+    "description": "Rīks bibliogrāfiju izveidei un pārvaldībai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citāti",
+        "description": "Šīs bibliogrāfijas citēšanas vienumi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "Tā kursa identifikators vai nosaukums, kuram paredzēta šī bibliogrāfija (OER Schema forCourse)."
+      }
+    ]
+  }
+}

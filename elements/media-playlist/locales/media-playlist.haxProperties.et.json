@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Meedia esitusloend",
+    "description": "Esitusloend, mis näitab video- ja helimängijaid paigutuses mängija + külgriba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "activeIndex",
+        "title": "Algüksus",
+        "description": "Üksuse number, millest alustada."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Kursus, mille jaoks see esitusloend on mõeldud (kursuse tunnus või URL)."
+      }
+    ]
+  }
+}

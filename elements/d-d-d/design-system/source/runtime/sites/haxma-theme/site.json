@@ -1,0 +1,144 @@
+{
+  "id": "b2c3d4e5-6f7a-4b2c-9d3e-haxmathemedmo0",
+  "title": "HAXma Docs Demo",
+  "author": "",
+  "description": "Demonstration documentation site built with haxma-theme, showcasing a Figma-inspired layout with fixed header navigation, breadcrumbs, and a table of contents sidebar.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "haxma-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "haxma-theme",
+      "path": "@haxtheweb/haxma-theme/haxma-theme.js",
+      "name": "haxma-theme",
+      "thumbnail": "",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#5551FF",
+        "cssVariable": "--simple-colors-default-theme-indigo-7",
+        "icon": "hax:hax2022"
+      },
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-6a7b8c9d-0001-4a6a-9a6a-haxmagetstart0",
+      "indent": 0,
+      "location": "pages/item-6a7b8c9d-0001-4a6a-9a6a-haxmagetstart0/index.html",
+      "slug": "getting-started",
+      "order": 0,
+      "parent": null,
+      "title": "Getting Started",
+      "description": "An introduction to HAXma, a modern documentation theme for HAXcms, covering install and first steps.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6a7b8c9d-0002-4a6a-9a6a-haxmafeatures0",
+      "indent": 0,
+      "location": "pages/item-6a7b8c9d-0002-4a6a-9a6a-haxmafeatures0/index.html",
+      "slug": "features",
+      "order": 1,
+      "parent": null,
+      "title": "Features",
+      "description": "A tour of HAXma's fixed header, responsive mobile navigation, search, breadcrumbs, and table of contents sidebar.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "2",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6a7b8c9d-0003-4a6a-9a6a-haxmanavigatio",
+      "indent": 1,
+      "location": "pages/item-6a7b8c9d-0003-4a6a-9a6a-haxmanavigatio/index.html",
+      "slug": "features/navigation-and-search",
+      "order": 0,
+      "parent": "item-6a7b8c9d-0002-4a6a-9a6a-haxmafeatures0",
+      "title": "Navigation and Search",
+      "description": "How the previous/next page navigation, breadcrumbs, and integrated search work together for readers.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    },
+    {
+      "id": "item-6a7b8c9d-0004-4a6a-9a6a-haxmadesignphi",
+      "indent": 0,
+      "location": "pages/item-6a7b8c9d-0004-4a6a-9a6a-haxmadesignphi/index.html",
+      "slug": "design-philosophy",
+      "order": 2,
+      "parent": null,
+      "title": "Design Philosophy",
+      "description": "Why HAXma follows Figma-inspired documentation design patterns, prioritizing readability and visual hierarchy.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "locked": false,
+        "readtime": "1",
+        "images": [],
+        "videos": [],
+        "hideInMenu": false,
+        "status": ""
+      }
+    }
+  ]
+}

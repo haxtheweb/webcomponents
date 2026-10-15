@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "スライドデッキ",
+    "description": "インポートしたPowerPointのスライドを、発表者ノート付きで1枚ずつ発表します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "デッキマニフェスト",
+        "description": ".pptx ファイルをドロップすると、自動的にスライドデッキに変換されます。このフィールドには生成された deck.json のパスが設定されます。"
+      },
+      {
+        "property": "deckId",
+        "title": "デッキID",
+        "description": "1ページに複数のデッキがある場合にのみ必要です。スライドへのリンクを区別するために使います"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "ダウンロードを許可",
+        "description": "プレーヤーのコントロールに元のPowerPointファイルのダウンロードボタンを表示します"
+      }
+    ]
+  }
+}

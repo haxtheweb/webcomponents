@@ -748,7 +748,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
 
         .permission-banner-hint {
           margin: 0 0 var(--ddd-spacing-2) 0;
-          opacity: var(--ddd-opacity-90);
+          opacity: var(--ddd-opacity-80);
         }
 
         .permission-cmd {
@@ -917,7 +917,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          opacity: var(--ddd-opacity-70);
+          opacity: var(--ddd-opacity-80);
           margin-bottom: var(--ddd-spacing-2);
         }
 

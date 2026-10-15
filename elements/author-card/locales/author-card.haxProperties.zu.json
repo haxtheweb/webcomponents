@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lombhali",
+    "description": "Bonisa imininingwane yombhali ngesithombe, umlando omfushane, nezixhumanisi zezinkundla zokuxhumana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Igama lombhali",
+        "description": "Igama eliphelele lombhali."
+      },
+      {
+        "property": "image",
+        "title": "Isithombe sephrofayela",
+        "description": "Isithombe sephrofayela yombhali."
+      },
+      {
+        "property": "title",
+        "title": "Isikhundla somsebenzi",
+        "description": "Isikhundla noma indima yombhali."
+      },
+      {
+        "property": "description",
+        "title": "Umlando omfushane",
+        "description": "Umlando omfushane wombhali."
+      },
+      {
+        "property": "profileUrl",
+        "title": "I-URL yephrofayela",
+        "description": "Isixhumanisi esiya ekhasini lephrofayela yombhali."
+      },
+      {
+        "property": "socialLink",
+        "title": "Isixhumanisi senkundla yokuxhumana",
+        "description": "Isixhumanisi esiya kuphrofayela yenkundla yokuxhumana."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Igama lenkundla yokuxhumana",
+        "description": "Igama lomsebenzisi enkundleni yokuxhumana (isibonelo @username)."
+      }
+    ]
+  }
+}

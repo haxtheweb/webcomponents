@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "کیریئر ٹائم لائن",
+    "description": "اداریاں، کرداراں تے ہور ڈیٹا والی کیریئر ٹائم لائن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ٹائم لائن دا سرناواں",
+        "description": "کیریئر ٹائم لائن لئی سرناواں (OER Schema: oer:name)۔"
+      }
+    ]
+  }
+}

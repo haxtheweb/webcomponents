@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Cuntatti",
+    "description": "Affissà e persone d'un schedariu di cuntatti cum'è carte di persona, citazioni, una tavula o una lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Schedariu di cuntatti",
+        "description": "Caricà o sceglie un schedariu di cuntatti .vcf. E so carte sò lette in u navigatore."
+      },
+      {
+        "property": "displayAs",
+        "title": "Affissà cum'è",
+        "description": "Cumu presentà ciò chì u schedariu cuntene.",
+        "options": {
+          "cards": "Carte di persona",
+          "quotes": "Citazioni",
+          "table": "Tavula",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Intestatura",
+        "description": "Affissata sopra à i cuntatti, è cum'è legenda di a tavula."
+      }
+    ]
+  }
+}

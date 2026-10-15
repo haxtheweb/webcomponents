@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Зохиогчийн карт",
+    "description": "Зохиогчийн мэдээллийг зураг, товч намтар, сошиал холбоосын хамт харуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Зохиогчийн нэр",
+        "description": "Зохиогчийн бүтэн нэр."
+      },
+      {
+        "property": "image",
+        "title": "Профайл зураг",
+        "description": "Зохиогчийн профайл зураг."
+      },
+      {
+        "property": "title",
+        "title": "Албан тушаал",
+        "description": "Зохиогчийн албан тушаал эсвэл үүрэг."
+      },
+      {
+        "property": "description",
+        "title": "Товч намтар",
+        "description": "Зохиогчийн товч намтар."
+      },
+      {
+        "property": "profileUrl",
+        "title": "Профайлын URL",
+        "description": "Зохиогчийн профайл хуудасны холбоос."
+      },
+      {
+        "property": "socialLink",
+        "title": "Сошиал холбоос",
+        "description": "Сошиал медиа профайлын холбоос."
+      },
+      {
+        "property": "socialHandle",
+        "title": "Сошиал хаяг",
+        "description": "Сошиал медиа хаяг (жишээ нь @username)."
+      }
+    ]
+  }
+}

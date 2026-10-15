@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licencia de uso de IA",
+    "description": "Muestra una insignia de Licencia de uso de IA (AIUL) para tu obra"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "El nivel de licencia de uso de IA de esta obra. Consulta https://dmd-program.github.io/aiul/ para más detalles."
+      },
+      {
+        "property": "modifier",
+        "title": "Modificador de medio",
+        "description": "Modificador opcional del ámbito de medios. Indica el tipo de medio al que se aplica esta licencia."
+      },
+      {
+        "property": "uri",
+        "title": "URI de AIUL (OER Schema)",
+        "description": "OER Schema: URI de la página de referencia de la Licencia de uso de IA. Se rellena automáticamente a partir del enlace de la licencia si no se establece."
+      }
+    ]
+  }
+}

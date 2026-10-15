@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendario",
+    "description": "Mostra os eventos dun ficheiro de calendario como fichas de data, unha liña do tempo, unha táboa ou unha lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Ficheiro de calendario",
+        "description": "Sube ou escolle un ficheiro de calendario .ics. Os seus eventos lense no navegador."
+      },
+      {
+        "property": "displayAs",
+        "title": "Mostrar como",
+        "description": "Como presentar o contido do ficheiro.",
+        "options": {
+          "cards": "Fichas de data",
+          "timeline": "Liña do tempo",
+          "table": "Táboa",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Encabezado",
+        "description": "Móstrase enriba dos eventos e como lenda da táboa. Por defecto, o nome do propio calendario."
+      }
+    ]
+  }
+}

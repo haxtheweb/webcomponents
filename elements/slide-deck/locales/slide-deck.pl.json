@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Poprzedni slajd",
+  "nextSlide": "Następny slajd",
+  "viewAllSlides": "Pokaż wszystkie slajdy",
+  "viewOneSlide": "Pokazuj po jednym slajdzie",
+  "presentFullScreen": "Prezentuj na pełnym ekranie",
+  "exitFullScreen": "Zamknij pełny ekran",
+  "copyLinkToSlide": "Kopiuj link do tego slajdu",
+  "linkCopied": "Link skopiowany",
+  "speakerNotes": "Notatki prelegenta",
+  "loadingPresentation": "Wczytywanie prezentacji",
+  "presentationUnavailable": "Prezentacja niedostępna",
+  "slide": "Slajd",
+  "downloadPresentation": "Pobierz prezentację"
+}

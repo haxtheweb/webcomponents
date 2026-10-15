@@ -1,0 +1,11 @@
+{
+  "name": "Tên",
+  "position": "Chức vụ",
+  "organization": "Tổ chức",
+  "email": "Email",
+  "phone": "Điện thoại",
+  "address": "Địa chỉ",
+  "loadingContacts": "Đang tải danh bạ",
+  "contactsUnavailable": "Không có danh bạ",
+  "noContacts": "Tệp này không có liên hệ nào"
+}

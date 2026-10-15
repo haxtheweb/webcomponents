@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Vremenska crta karijere",
+    "description": "Vremenska crta karijere s organizacijama, ulogama i drugim podacima"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov vremenske crte",
+        "description": "Naslov vremenske crte karijere (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

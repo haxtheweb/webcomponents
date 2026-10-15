@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "کارت نویسنده",
+    "description": "نمایش اطلاعات نویسنده همراه با عکس، زندگی‌نامه و پیوندهای شبکه‌های اجتماعی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "نام نویسنده",
+        "description": "نام کامل نویسنده."
+      },
+      {
+        "property": "image",
+        "title": "تصویر نمایه",
+        "description": "عکس نمایه نویسنده."
+      },
+      {
+        "property": "title",
+        "title": "عنوان شغلی",
+        "description": "سمت یا نقش نویسنده."
+      },
+      {
+        "property": "description",
+        "title": "زندگی‌نامه",
+        "description": "زندگی‌نامه کوتاه نویسنده."
+      },
+      {
+        "property": "profileUrl",
+        "title": "URL نمایه",
+        "description": "پیوند به صفحه نمایه نویسنده."
+      },
+      {
+        "property": "socialLink",
+        "title": "پیوند شبکه اجتماعی",
+        "description": "پیوند به یک نمایه در شبکه‌های اجتماعی."
+      },
+      {
+        "property": "socialHandle",
+        "title": "شناسه شبکه اجتماعی",
+        "description": "شناسه کاربری در شبکه‌های اجتماعی (برای مثال @username)."
+      }
+    ]
+  }
+}

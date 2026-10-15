@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontakter",
+    "description": "Visa personerna i en kontaktfil som personkort, citat, en tabell eller en lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontaktfil",
+        "description": "Ladda upp eller välj en .vcf-kontaktfil. Dess kort läses i webbläsaren."
+      },
+      {
+        "property": "displayAs",
+        "title": "Visa som",
+        "description": "Hur filens innehåll ska presenteras.",
+        "options": {
+          "cards": "Personkort",
+          "quotes": "Citat",
+          "table": "Tabell",
+          "list": "Lista"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Rubrik",
+        "description": "Visas ovanför kontakterna och som tabellrubrik."
+      }
+    ]
+  }
+}

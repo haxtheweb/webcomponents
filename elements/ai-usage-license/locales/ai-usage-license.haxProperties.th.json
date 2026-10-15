@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "สัญญาอนุญาตการใช้ AI",
+    "description": "แสดงตราสัญญาอนุญาตการใช้ AI (AIUL) สำหรับผลงานของคุณ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "สัญญาอนุญาต",
+        "description": "ระดับสัญญาอนุญาตการใช้ AI สำหรับผลงานนี้ ดูรายละเอียดที่ https://dmd-program.github.io/aiul/"
+      },
+      {
+        "property": "modifier",
+        "title": "ตัวระบุประเภทสื่อ",
+        "description": "ตัวระบุขอบเขตสื่อ (ไม่บังคับ) ระบุประเภทของสื่อที่สัญญาอนุญาตนี้ใช้กับ"
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: URI ของหน้าอ้างอิงสัญญาอนุญาตการใช้ AI จะกรอกให้อัตโนมัติจากลิงก์สัญญาอนุญาตเมื่อไม่ได้ตั้งค่า"
+      }
+    ]
+  }
+}

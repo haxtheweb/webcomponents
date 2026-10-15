@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kontaktlar",
+    "description": "Kontakt faylındakı şəxsləri şəxs kartları, sitatlar, cədvəl və ya siyahı şəklində göstərin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Kontakt faylı",
+        "description": ".vcf kontakt faylını yükləyin və ya seçin. Onun kartları brauzerdə oxunur."
+      },
+      {
+        "property": "displayAs",
+        "title": "Göstərmə forması",
+        "description": "Faylın məzmununun necə təqdim olunacağı.",
+        "options": {
+          "cards": "Şəxs kartları",
+          "quotes": "Sitatlar",
+          "table": "Cədvəl",
+          "list": "Siyahı"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Başlıq",
+        "description": "Kontaktların üstündə və cədvəl başlığı kimi göstərilir."
+      }
+    ]
+  }
+}

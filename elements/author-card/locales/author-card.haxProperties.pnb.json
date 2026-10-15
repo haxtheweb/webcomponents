@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "لکھاری کارڈ",
+    "description": "فوٹو، مختصر حالات زندگی تے سوشل لنکاں نال لکھاری دی جانکاری وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "لکھاری دا ناں",
+        "description": "لکھاری دا پورا ناں۔"
+      },
+      {
+        "property": "image",
+        "title": "پروفائل تصویر",
+        "description": "لکھاری دی پروفائل فوٹو۔"
+      },
+      {
+        "property": "title",
+        "title": "نوکری دا عہدہ",
+        "description": "لکھاری دا عہدہ یا کردار۔"
+      },
+      {
+        "property": "description",
+        "title": "حالات زندگی",
+        "description": "لکھاری دے مختصر حالات زندگی۔"
+      },
+      {
+        "property": "profileUrl",
+        "title": "پروفائل URL",
+        "description": "لکھاری دے پروفائل صفحے دا لنک۔"
+      },
+      {
+        "property": "socialLink",
+        "title": "سوشل لنک",
+        "description": "سوشل میڈیا پروفائل دا لنک۔"
+      },
+      {
+        "property": "socialHandle",
+        "title": "سوشل ہینڈل",
+        "description": "سوشل میڈیا ہینڈل (مثال لئی @username)۔"
+      }
+    ]
+  }
+}

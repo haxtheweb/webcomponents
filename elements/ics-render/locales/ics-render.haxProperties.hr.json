@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kalendar",
+    "description": "Prikaz događaja iz datoteke kalendara kao kartica datuma, vremenske crte, tablice ili popisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Datoteka kalendara",
+        "description": "Prenesite ili odaberite datoteku kalendara .ics. Njezini se događaji čitaju u pregledniku."
+      },
+      {
+        "property": "displayAs",
+        "title": "Prikaži kao",
+        "description": "Kako prikazati sadržaj datoteke.",
+        "options": {
+          "cards": "Kartice datuma",
+          "timeline": "Vremenska crta",
+          "table": "Tablica",
+          "list": "Popis"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Naslov",
+        "description": "Prikazuje se iznad događaja i kao opis tablice. Zadano je vlastito ime kalendara."
+      }
+    ]
+  }
+}

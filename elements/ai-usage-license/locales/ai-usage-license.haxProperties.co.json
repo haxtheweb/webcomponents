@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licenza d'usu di l'IA",
+    "description": "Affissà un badge di Licenza d'usu di l'IA (AIUL) per u vostru travagliu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licenza",
+        "description": "U livellu di licenza d'usu di l'IA per stu travagliu. Vede https://dmd-program.github.io/aiul/ per i ditaglii."
+      },
+      {
+        "property": "modifier",
+        "title": "Mudificatore di media",
+        "description": "Mudificatore facultativu di duminiu media. Specifica u tipu di media à u quale s'applica sta licenza."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI per a pagina di riferenza di a Licenza d'usu di l'IA. Cumpletatu autumaticamente da u ligame di a licenza quandu ùn hè micca definitu."
+      }
+    ]
+  }
+}

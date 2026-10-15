@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Licență de utilizare a IA",
+    "description": "Afișează o insignă de Licență de utilizare a IA (AIUL) pentru lucrarea ta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licență",
+        "description": "Nivelul licenței de utilizare a IA pentru această lucrare. Vezi https://dmd-program.github.io/aiul/ pentru detalii."
+      },
+      {
+        "property": "modifier",
+        "title": "Modificator media",
+        "description": "Modificator opțional de domeniu media. Specifică tipul de media la care se aplică această licență."
+      },
+      {
+        "property": "uri",
+        "title": "URI AIUL (OER Schema)",
+        "description": "OER Schema: URI pentru pagina de referință a Licenței de utilizare a IA. Completat automat din linkul licenței dacă nu este setat."
+      }
+    ]
+  }
+}

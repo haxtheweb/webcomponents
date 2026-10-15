@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tengiliðir",
+    "description": "Sýna fólkið í tengiliðaskrá sem persónuspjöld, tilvitnanir, töflu eða lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Tengiliðaskrá",
+        "description": "Hlaða upp eða velja .vcf tengiliðaskrá. Spjöld hennar eru lesin í vafranum."
+      },
+      {
+        "property": "displayAs",
+        "title": "Birta sem",
+        "description": "Hvernig á að birta innihald skrárinnar.",
+        "options": {
+          "cards": "Persónuspjöld",
+          "quotes": "Tilvitnanir",
+          "table": "Tafla",
+          "list": "Listi"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Fyrirsögn",
+        "description": "Birtist fyrir ofan tengiliðina og sem myndatexti töflunnar."
+      }
+    ]
+  }
+}

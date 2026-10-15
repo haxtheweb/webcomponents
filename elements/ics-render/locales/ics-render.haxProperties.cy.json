@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendr",
+    "description": "Dangos y digwyddiadau mewn ffeil calendr fel cardiau dyddiad, llinell amser, tabl neu restr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Ffeil calendr",
+        "description": "Llwythwch i fyny neu dewiswch ffeil calendr .ics. Mae ei digwyddiadau'n cael eu darllen yn y porwr."
+      },
+      {
+        "property": "displayAs",
+        "title": "Dangos fel",
+        "description": "Sut i gyflwyno cynnwys y ffeil.",
+        "options": {
+          "cards": "Cardiau dyddiad",
+          "timeline": "Llinell amser",
+          "table": "Tabl",
+          "list": "Rhestr"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Pennawd",
+        "description": "Yn cael ei ddangos uwchben y digwyddiadau, ac fel capsiwn y tabl. Yn ddiofyn, enw'r calendr ei hun."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Mul'ata daataa Tableau URL qooddii irraa galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tableau",
+        "description": "URL kitaaba hojii ykn mul'ata Tableau."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina mul'ata daataa."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina mul'ata daataa."
+      },
+      {
+        "property": "toolbar",
+        "title": "Barruu meeshaalee",
+        "description": "Bakka barruu meeshaalee.",
+        "options": {
+          "top": "Gubbaa",
+          "bottom": "Jala",
+          "hidden": "Dhokataa"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Taabota dhoksi",
+        "description": "Taabota waraqaa dhoksi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Bifa meeshaa",
+        "description": "Bifa meeshaa agarsiifamu.",
+        "options": {
+          "desktop": "Kompiitara",
+          "tablet": "Taabletii",
+          "phone": "Bilbila"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tableau-vizualizációk beágyazása megosztási URL-ből."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Tableau URL",
+        "description": "A Tableau-munkafüzet vagy -nézet URL-je."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "A vizualizáció magassága."
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "A vizualizáció szélessége."
+      },
+      {
+        "property": "toolbar",
+        "title": "Eszköztár",
+        "description": "Az eszköztár helyzete.",
+        "options": {
+          "top": "Fent",
+          "bottom": "Lent",
+          "hidden": "Rejtett"
+        }
+      },
+      {
+        "property": "hideTabs",
+        "title": "Lapfülek elrejtése",
+        "description": "A munkalapfülek elrejtése."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "device",
+        "title": "Eszközelrendezés",
+        "description": "A megjelenítendő eszközelrendezés.",
+        "options": {
+          "desktop": "Asztali gép",
+          "tablet": "Táblagép",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

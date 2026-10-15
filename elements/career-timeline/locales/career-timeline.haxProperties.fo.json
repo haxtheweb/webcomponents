@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tíðarlinja fyri starvsleið",
+    "description": "Ein tíðarlinja fyri starvsleið við felagsskapum, leiklutum og øðrum dátum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti á tíðarlinju",
+        "description": "Eitt heiti á tíðarlinjuna fyri starvsleið (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

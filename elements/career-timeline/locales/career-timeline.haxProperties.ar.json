@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "الخط الزمني المهني",
+    "description": "خط زمني مهني يتضمن المؤسسات والأدوار وبيانات أخرى"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان الخط الزمني",
+        "description": "عنوان للخط الزمني المهني (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

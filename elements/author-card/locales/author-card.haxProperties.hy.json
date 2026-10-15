@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Հեղինակի քարտ",
+    "description": "Ցուցադրել հեղինակի տվյալները՝ լուսանկարով, կենսագրությամբ և սոցիալական հղումներով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Հեղինակի անուն",
+        "description": "Հեղինակի լրիվ անունը։"
+      },
+      {
+        "property": "image",
+        "title": "Պրոֆիլի նկար",
+        "description": "Հեղինակի պրոֆիլի լուսանկարը։"
+      },
+      {
+        "property": "title",
+        "title": "Պաշտոն",
+        "description": "Հեղինակի պաշտոնը կամ դերը։"
+      },
+      {
+        "property": "description",
+        "title": "Կենսագրություն",
+        "description": "Հեղինակի համառոտ կենսագրությունը։"
+      },
+      {
+        "property": "profileUrl",
+        "title": "Պրոֆիլի URL",
+        "description": "Հղում հեղինակի պրոֆիլի էջին։"
+      },
+      {
+        "property": "socialLink",
+        "title": "Սոցիալական հղում",
+        "description": "Հղում սոցիալական ցանցի պրոֆիլին։"
+      },
+      {
+        "property": "socialHandle",
+        "title": "Սոցիալական օգտանուն",
+        "description": "Սոցիալական ցանցի օգտանուն (օրինակ՝ @username)։"
+      }
+    ]
+  }
+}

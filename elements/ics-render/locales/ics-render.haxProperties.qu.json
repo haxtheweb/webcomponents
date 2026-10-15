@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Calendario",
+    "description": "Calendario archivopi ruwaykunata rikuchiy p'unchaw tarjetakunahina, pacha sinrihina, tablahina utaq sinrihina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "dataSource",
+        "title": "Calendario archivo",
+        "description": "Huk .ics calendario archivota churay utaq akllay. Ruwayninkunaqa navegadorpi ñawinchasqa kanku."
+      },
+      {
+        "property": "displayAs",
+        "title": "Imayna rikuchiy",
+        "description": "Archivopi kaqta imayna rikuchina.",
+        "options": {
+          "cards": "P'unchaw tarjetakuna",
+          "timeline": "Pacha sinri",
+          "table": "Tabla",
+          "list": "Sinri"
+        }
+      },
+      {
+        "property": "caption",
+        "title": "Uma suti",
+        "description": "Ruwaykuna hawanpi rikukun, tablapa sutinhinapas. Mana churasqa kaqtinqa calendariopa kikin sutinta churan."
+      }
+    ]
+  }
+}

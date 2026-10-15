@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Foliensatz",
+    "description": "Einen importierten PowerPoint-Foliensatz Folie für Folie präsentieren, mit Sprechernotizen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foliensatz-Manifest",
+        "description": "Legen Sie eine .pptx-Datei ab, und sie wird automatisch in einen Foliensatz umgewandelt. Das Feld wird auf den Pfad der erzeugten deck.json gesetzt."
+      },
+      {
+        "property": "deckId",
+        "title": "Foliensatz-ID",
+        "description": "Nur nötig, wenn eine Seite mehr als einen Foliensatz enthält, damit Folienlinks eindeutig bleiben"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Download erlauben",
+        "description": "In der Player-Steuerung eine Download-Schaltfläche für die ursprüngliche PowerPoint-Datei anzeigen"
+      }
+    ]
+  }
+}

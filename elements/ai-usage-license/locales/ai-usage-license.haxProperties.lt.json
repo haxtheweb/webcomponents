@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "DI naudojimo licencija",
+    "description": "Rodyti DI naudojimo licencijos (AIUL) ženklelį savo kūriniui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "license",
+        "title": "Licencija",
+        "description": "Šio kūrinio DI naudojimo licencijos lygis. Daugiau informacijos rasite https://dmd-program.github.io/aiul/."
+      },
+      {
+        "property": "modifier",
+        "title": "Medijos modifikatorius",
+        "description": "Pasirenkamas medijos srities modifikatorius. Nurodo, kokiai medijai taikoma ši licencija."
+      },
+      {
+        "property": "uri",
+        "title": "AIUL URI (OER Schema)",
+        "description": "OER Schema: DI naudojimo licencijos informacinio puslapio URI. Jei nenustatyta, užpildoma automatiškai iš licencijos nuorodos."
+      }
+    ]
+  }
+}

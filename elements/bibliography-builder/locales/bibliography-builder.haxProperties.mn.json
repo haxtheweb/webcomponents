@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ном зүй бүтээгч",
+    "description": "Ном зүй үүсгэж, удирдах хэрэгсэл"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Иш татлага",
+        "description": "Энэ ном зүй дэх иш татлагын зүйлс"
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээл",
+        "description": "Энэ ном зүй зориулагдсан хичээлийн таних тэмдэг эсвэл нэр (OER Schema forCourse)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Sett ta' slajds",
+    "description": "Ippreżenta sett ta' PowerPoint importat slajd b'slajd, b'noti tal-kelliem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manifest tas-sett",
+        "description": "Waqqa' fajl .pptx u jiġi kkonvertit awtomatikament f'sett ta' slajds. Il-qasam jiġi ssettjat għall-mogħdija deck.json li tirriżulta."
+      },
+      {
+        "property": "deckId",
+        "title": "ID tas-sett",
+        "description": "Meħtieġ biss meta paġna jkun fiha aktar minn sett wieħed, biex il-links tas-slajds jibqgħu distinti"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "downloadable",
+        "title": "Ippermetti t-tniżżil",
+        "description": "Uri buttuna tat-tniżżil għall-fajl oriġinali ta' PowerPoint fil-kontrolli tal-plejer"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Cronologia professional",
+    "description": "Una cronologia professional que conté organitzacions, càrrecs i altres dades"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol de la cronologia",
+        "description": "Un títol per a la cronologia professional (OER Schema: oer:name)."
+      }
+    ]
+  }
+}
