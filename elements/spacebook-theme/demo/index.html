@@ -26,6 +26,15 @@
         }
       };
     </script>
+    <script>
+      // lunr-search resolves lunr/lunr.js relative to itself, which assumes it
+      // lives in node_modules; in the monorepo it lives in elements/, so point
+      // it at the root node_modules. Skipped when an import map supplies deps
+      // from the CDN (Vercel), where the default resolution already works.
+      if (!globalThis.document.querySelector('script[type="importmap"]')) {
+        globalThis.WCGlobalBasePath = "/node_modules/";
+      }
+    </script>
     <script type="module">
       import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../spacebook-theme.js';
