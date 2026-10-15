@@ -3632,7 +3632,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://discord.gg/VVcAcCeZQ"],
+        args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",

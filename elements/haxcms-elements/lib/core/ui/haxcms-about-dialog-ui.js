@@ -491,7 +491,7 @@ class HAXCMSAboutDialogUI extends DDD {
                 </li>
                 <li>
                   <a
-                    href="https://discord.gg/VVcAcCeZQ"
+                    href="https://discord.gg/aCGxmRHEJP"
                     target="_blank"
                     rel="noopener noreferrer"
                     >Join the HAX Discord community</a

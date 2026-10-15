@@ -458,7 +458,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://discord.gg/VVcAcCeZQ"],
+        args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
