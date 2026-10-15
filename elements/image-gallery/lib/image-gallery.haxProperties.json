@@ -39,9 +39,7 @@
         "title": "Active index",
         "description": "Index of the active image to start on in gallery mode.",
         "inputMethod": "number",
-        "validation": {
-          "min": 0
-        }
+        "min": 0
       }
     ],
     "developer": []

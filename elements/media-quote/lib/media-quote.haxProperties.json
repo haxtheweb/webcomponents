@@ -9,7 +9,7 @@
   "designSystem": {
     "primary": true,
     "accent": true,
-    "font": true
+    "text": true
   },
   "gizmo": {
     "title": "Media quote",

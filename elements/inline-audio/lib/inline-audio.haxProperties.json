@@ -60,7 +60,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["icon", "playing", "canPlay", "aria"]
+    "unsetAttributes": ["icon", "playing", "can-play", "aria"]
   },
   "demoSchema": [
     {
