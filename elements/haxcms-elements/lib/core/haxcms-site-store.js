@@ -522,10 +522,6 @@ class Store {
       if (!item.metadata.hasOwnProperty("locked")) {
         array[index].metadata.locked = false;
       }
-      // we default status to "" if not set
-      if (!item.metadata.hasOwnProperty("status")) {
-        array[index].metadata.status = "";
-      }
       // normalize parent to null if empty string or undefined
       if (array[index].parent === "" || array[index].parent === undefined) {
         array[index].parent = null;
@@ -1381,20 +1377,21 @@ class Store {
     return this.findItem(newItem.id);
   }
   /**
-   * Remove an item
+   * Remove an item.
+   * "new" items (not yet persisted) are spliced out immediately; otherwise
+   * the item is flagged with the top-level `delete` flag that outline-designer
+   * / saveOutline.php already use to signal deletion on next save.
    */
   removeItem(id) {
     const item = this.findItem(id);
-    // "new" items have not yet been added
     if (item) {
-      if (item.metadata.status === "new") {
+      if (item.new) {
         const index = this.manifest.items.indexOf(item);
         if (index > -1) {
           this.manifest.items.splice(index, 1);
         }
       } else {
-        // implies it's going to get deleted on next run
-        item.metadata.status = "delete";
+        item.delete = true;
       }
     }
   }
