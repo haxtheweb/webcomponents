@@ -22,7 +22,6 @@ class ExampleHaxElement extends HTMLElement {
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
       canEditSource: false,
       gizmo: {
         title: "Example hax-element",
@@ -102,7 +101,6 @@ Here's a much more complex example from a element who calls attached when it is 
     // Establish hax properties if they exist
     let props = {
       canScale: true,
-      canPosition: true,
       canEditSource: false,
       gizmo: {
         title: "Video player",

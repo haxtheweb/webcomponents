@@ -520,7 +520,6 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
       canEditSource: false,
       gizmo: {
         title: "Random Page Content",
