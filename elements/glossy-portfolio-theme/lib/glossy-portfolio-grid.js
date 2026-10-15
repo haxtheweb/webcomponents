@@ -270,11 +270,14 @@ ${this.data.length > 0 ?   html`
           // metadata.tags is an array in canonical site.json; older sites
           // may still store a comma-separated string
           const rawTags = d.metadata ? d.metadata.tags : null;
-          const tagList = Array.isArray(rawTags)
-            ? rawTags
-            : typeof rawTags === "string"
-              ? rawTags.split(",")
-              : [];
+          let tagList = [];
+          if (Array.isArray(rawTags)) {
+            // already a list: use as-is
+            tagList = rawTags;
+          } else if (typeof rawTags === "string") {
+            // legacy comma-separated string: split it into a list
+            tagList = rawTags.split(",");
+          }
           const firstTag = tagList.length > 0 ? String(tagList[0]).trim() : "";
           if (firstTag !== "") {
             if (!this.filtersList.includes(firstTag)) { //check for duplicate
