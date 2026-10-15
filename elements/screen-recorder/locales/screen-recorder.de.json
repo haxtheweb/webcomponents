@@ -5,5 +5,6 @@
   "systemAudio": "Systemton einbeziehen",
   "microphoneAudio": "Mikrofon einbeziehen",
   "recordingStarted": "Aufnahme gestartet",
-  "recordingStopped": "Aufnahme gestoppt"
+  "recordingStopped": "Aufnahme gestoppt",
+  "audioOptions": "Audiooptionen"
 }

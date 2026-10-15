@@ -5,5 +5,6 @@
   "systemAudio": "Jumuisha sauti ya mfumo",
   "microphoneAudio": "Jumuisha maikrofoni",
   "recordingStarted": "Kurekodi kumeanza",
-  "recordingStopped": "Kurekodi kumesimamishwa"
+  "recordingStopped": "Kurekodi kumesimamishwa",
+  "audioOptions": "Chaguo za sauti"
 }

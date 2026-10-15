@@ -5,5 +5,6 @@
   "systemAudio": "Bao gồm âm thanh hệ thống",
   "microphoneAudio": "Bao gồm micrô",
   "recordingStarted": "Đã bắt đầu ghi",
-  "recordingStopped": "Đã dừng ghi"
+  "recordingStopped": "Đã dừng ghi",
+  "audioOptions": "Tùy chọn âm thanh"
 }

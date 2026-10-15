@@ -5,5 +5,6 @@
   "systemAudio": "सिस्टम अडियो समावेश गर्नुहोस्",
   "microphoneAudio": "माइक्रोफोन समावेश गर्नुहोस्",
   "recordingStarted": "रेकर्डिङ सुरु भयो",
-  "recordingStopped": "रेकर्डिङ रोकियो"
+  "recordingStopped": "रेकर्डिङ रोकियो",
+  "audioOptions": "अडियो विकल्पहरू"
 }

@@ -5,5 +5,6 @@
   "systemAudio": "Zahrnout systémový zvuk",
   "microphoneAudio": "Zahrnout mikrofon",
   "recordingStarted": "Nahrávání spuštěno",
-  "recordingStopped": "Nahrávání zastaveno"
+  "recordingStopped": "Nahrávání zastaveno",
+  "audioOptions": "Možnosti zvuku"
 }

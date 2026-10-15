@@ -5,5 +5,6 @@
   "systemAudio": "ລວມສຽງລະບົບ",
   "microphoneAudio": "ລວມໄມໂຄຣໂຟນ",
   "recordingStarted": "ເລີ່ມການບັນທຶກແລ້ວ",
-  "recordingStopped": "ຢຸດການບັນທຶກແລ້ວ"
+  "recordingStopped": "ຢຸດການບັນທຶກແລ້ວ",
+  "audioOptions": "ຕົວເລືອກສຽງ"
 }
