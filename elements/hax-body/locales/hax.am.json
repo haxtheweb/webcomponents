@@ -122,5 +122,21 @@
   "recent": "ዘመነዊ",
   "popular": "ታዋቂ",
   "copiedToClipboard": "ወደ ክሊፕቦርድ ተቀድቷል",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "የምስል መረጃ",
+  "imageActions": "የምስል እርምጃዎች",
+  "imageRecommendations": "የምስል ምክሮች",
+  "compressImage": "ምስሉን ጨምቅ",
+  "resizeTo": "መጠን ቀይር ወደ",
+  "created": "የተፈጠረበት",
+  "size": "መጠን",
+  "dimensions": "ልኬቶች",
+  "type": "ዓይነት",
+  "done": "ተጠናቋል",
+  "noFileUuid": "የፋይል ማጣቀሻ አይገኝም፤ እርምጃዎችን ለማንቃት እንደገና ይስቀሉ።",
+  "fileOpsUnavailable": "ለዚህ ጣቢያ የፋይል ክዋኔዎች አይገኙም።",
+  "fileOpFailed": "የፋይል ክዋኔው አልተሳካም።",
+  "fileExtensionNotAllowed": "ይህ መስክ የሚቀበለው የሚከተሉትን የፋይል ዓይነቶች ብቻ ነው:",
+  "fileTypeNotAllowed": "ይህ መስክ የሚቀበለው የሚከተሉትን የሚዲያ ዓይነቶች ብቻ ነው:",
+  "transformFailed": "ከስቀላ በኋላ የሚደረገው ለውጥ አልተሳካም፤ የመጀመሪያው ፋይል ተጠብቋል።"
 }

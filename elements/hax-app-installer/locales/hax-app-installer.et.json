@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHubi hoidla",
   "anErrorOccurred": "Tekkis viga",
-  "retry": "Proovi uuesti"
+  "retry": "Proovi uuesti",
+  "permissionRequired": "Vajalik on luba",
+  "passwordRequirements": "Parooli nõuded",
+  "requirementLength": "Vähemalt 8 märki",
+  "requirementUppercase": "Üks suurtäht",
+  "requirementLowercase": "Üks väiketäht",
+  "requirementNumber": "Üks number",
+  "requirementSymbol": "Üks sümbol"
 }

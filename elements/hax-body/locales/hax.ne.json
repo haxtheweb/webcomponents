@@ -122,5 +122,21 @@
   "recent": "भर्खरको",
   "popular": "लोकप्रिय",
   "copiedToClipboard": "क्लिपबोर्डमा कपी भयो",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "छवि जानकारी",
+  "imageActions": "छवि कार्यहरू",
+  "imageRecommendations": "छवि सुझावहरू",
+  "compressImage": "छवि कम्प्रेस गर्नुहोस्",
+  "resizeTo": "यस आकारमा बदल्नुहोस्",
+  "created": "सिर्जना गरिएको",
+  "size": "आकार",
+  "dimensions": "आयाम",
+  "type": "प्रकार",
+  "done": "सम्पन्न",
+  "noFileUuid": "फाइल सन्दर्भ उपलब्ध छैन; कार्यहरू सक्षम गर्न फेरि अपलोड गर्नुहोस्।",
+  "fileOpsUnavailable": "यो साइटका लागि फाइल सञ्चालनहरू उपलब्ध छैनन्।",
+  "fileOpFailed": "फाइल सञ्चालन असफल भयो।",
+  "fileExtensionNotAllowed": "यो फिल्डले निम्न फाइल प्रकारहरू मात्र स्वीकार गर्छ:",
+  "fileTypeNotAllowed": "यो फिल्डले निम्न मिडिया प्रकारहरू मात्र स्वीकार गर्छ:",
+  "transformFailed": "अपलोडपछिको रूपान्तरण असफल भयो; मूल फाइल राखियो।"
 }

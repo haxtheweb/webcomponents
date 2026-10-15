@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "ຄັງເກັບ GitHub",
   "anErrorOccurred": "ເກີດຂໍ້ຜິດພາດ",
-  "retry": "ລອງໃໝ່"
+  "retry": "ລອງໃໝ່",
+  "permissionRequired": "ຕ້ອງການການອະນຸຍາດ",
+  "passwordRequirements": "ຂໍ້ກຳນົດລະຫັດຜ່ານ",
+  "requirementLength": "ຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
+  "requirementUppercase": "ຕົວພິມໃຫຍ່ໜຶ່ງຕົວ",
+  "requirementLowercase": "ຕົວພິມນ້ອຍໜຶ່ງຕົວ",
+  "requirementNumber": "ຕົວເລກໜຶ່ງຕົວ",
+  "requirementSymbol": "ສັນຍາລັກໜຶ່ງຕົວ"
 }

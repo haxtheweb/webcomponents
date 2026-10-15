@@ -122,5 +122,21 @@
   "recent": "Terbaru",
   "popular": "Populer",
   "copiedToClipboard": "Disalin ke clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Info gambar",
+  "imageActions": "Tindakan gambar",
+  "imageRecommendations": "Rekomendasi gambar",
+  "compressImage": "Kompres gambar",
+  "resizeTo": "Ubah ukuran menjadi",
+  "created": "Dibuat",
+  "size": "Ukuran",
+  "dimensions": "Dimensi",
+  "type": "Jenis",
+  "done": "selesai",
+  "noFileUuid": "Referensi berkas tidak tersedia; unggah ulang untuk mengaktifkan tindakan.",
+  "fileOpsUnavailable": "Operasi berkas tidak tersedia untuk situs ini.",
+  "fileOpFailed": "Operasi berkas gagal.",
+  "fileExtensionNotAllowed": "Bidang ini hanya menerima jenis berkas berikut:",
+  "fileTypeNotAllowed": "Bidang ini hanya menerima jenis media berikut:",
+  "transformFailed": "Transformasi setelah unggah gagal; berkas asli tetap disimpan."
 }

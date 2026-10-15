@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Максатты тандоо",
+  "importContentUnderThisPage": "Мазмунду ушул барактын астына импорттоо",
+  "importThisContent": "Бул мазмунду импорттоо",
+  "thisPage": "бул барак",
+  "newPage": "Жаңы барак",
+  "copyOf": "Көчүрмөсү:",
+  "pageActions": "Барак аракеттери",
+  "editTitle": "Аталышын түзөтүү",
+  "lock": "Кулпулоо",
+  "unlock": "Кулпусун ачуу",
+  "moveUp": "Жогору жылдыруу",
+  "moveDown": "Төмөн жылдыруу",
+  "makeChild": "Ички барак кылуу",
+  "moveToParentLevel": "Жогорку деңгээлге жылдыруу",
+  "addPage": "Барак кошуу",
+  "duplicate": "Көчүрмөсүн түзүү",
+  "delete": "Өчүрүү",
+  "restore": "Калыбына келтирүү",
+  "goToPage": "Баракка өтүү"
+}

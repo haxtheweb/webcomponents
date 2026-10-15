@@ -122,5 +122,21 @@
   "recent": "Herî nû",
   "popular": "Populer",
   "copiedToClipboard": "Li clipboardê hat kopîkirin",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Agahiyên wêneyê",
+  "imageActions": "Çalakiyên wêneyê",
+  "imageRecommendations": "Pêşniyarên wêneyê",
+  "compressImage": "Wêneyê biguvêşe",
+  "resizeTo": "Mezinahiyê biguherîne bo",
+  "created": "Hat çêkirin",
+  "size": "Mezinahî",
+  "dimensions": "Pîvan",
+  "type": "Cure",
+  "done": "qediya",
+  "noFileUuid": "Referansa pelê tune ye; ji bo çalakiyan dîsa bar bike.",
+  "fileOpsUnavailable": "Karûbarên pelan ji bo vê malperê ne berdest in.",
+  "fileOpFailed": "Karûbarê pelê bi ser neket.",
+  "fileExtensionNotAllowed": "Ev qad tenê van cureyên pelan qebûl dike:",
+  "fileTypeNotAllowed": "Ev qad tenê van cureyên medyayê qebûl dike:",
+  "transformFailed": "Veguherîna piştî barkirinê bi ser neket; pelê orîjînal hat parastin."
 }

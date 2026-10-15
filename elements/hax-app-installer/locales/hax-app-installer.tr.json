@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub Deposu",
   "anErrorOccurred": "Bir hata oluştu",
-  "retry": "Tekrar dene"
+  "retry": "Tekrar dene",
+  "permissionRequired": "İzin gerekli",
+  "passwordRequirements": "Parola gereksinimleri",
+  "requirementLength": "En az 8 karakter",
+  "requirementUppercase": "Bir büyük harf",
+  "requirementLowercase": "Bir küçük harf",
+  "requirementNumber": "Bir rakam",
+  "requirementSymbol": "Bir sembol"
 }

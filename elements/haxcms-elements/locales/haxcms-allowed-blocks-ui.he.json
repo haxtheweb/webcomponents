@@ -1,0 +1,14 @@
+{
+  "title": "רכיבים",
+  "enabled": "מופעל",
+  "block": "רכיב",
+  "preview": "תצוגה מקדימה",
+  "filterBlocks": "סינון רכיבים",
+  "requiredTextNote": "חלק מתגי הטקסט נדרשים ותמיד מופעלים (מוצגים כמושבתים).",
+  "selectAll": "בחירת הכול",
+  "deselectAll": "ביטול בחירת הכול",
+  "save": "שמירה",
+  "noDescription": "אין תיאור זמין.",
+  "details": "פרטים",
+  "loadingInventory": "טוען את מלאי הרכיבים המלא…"
+}

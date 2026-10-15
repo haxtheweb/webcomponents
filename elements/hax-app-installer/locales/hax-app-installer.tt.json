@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub репозиториясе",
   "anErrorOccurred": "Хата килеп чыкты",
-  "retry": "Кабатлап карагыз"
+  "retry": "Кабатлап карагыз",
+  "permissionRequired": "Рөхсәт кирәк",
+  "passwordRequirements": "Серсүзгә таләпләр",
+  "requirementLength": "Ким дигәндә 8 символ",
+  "requirementUppercase": "Бер баш хәреф",
+  "requirementLowercase": "Бер юл хәрефе",
+  "requirementNumber": "Бер сан",
+  "requirementSymbol": "Бер символ"
 }

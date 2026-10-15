@@ -5,5 +5,9 @@
   "recordAudio": "Səs yaz",
   "recordScreen": "Ekran yaz",
   "cancel": "Ləğv et",
-  "uploadMedia": "Media yüklə"
+  "uploadMedia": "Media yüklə",
+  "record": "Yazmaq",
+  "pause": "Yazını dayandır",
+  "stopSave": "Dayandır və saxla",
+  "clickToTakePhoto": "Foto çəkmək üçün klikləyin"
 }

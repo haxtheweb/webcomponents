@@ -33,5 +33,6 @@
   "volumeLabel": "Volumen",
   "youTubeLoadingLabel": "Cargando...",
   "youTubeStartLoading": "Presiona reproducir.",
-  "youTubeTranscriptLabel": "La transcripción se cargará una vez que el medio reproduzca."
+  "youTubeTranscriptLabel": "La transcripción se cargará una vez que el medio reproduzca.",
+  "audioDescriptionLabel": "Audiodescripción"
 }

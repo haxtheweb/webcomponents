@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Αποθετήριο GitHub",
   "anErrorOccurred": "Παρουσιάστηκε σφάλμα",
-  "retry": "Επανάληψη"
+  "retry": "Επανάληψη",
+  "permissionRequired": "Απαιτείται άδεια",
+  "passwordRequirements": "Απαιτήσεις κωδικού πρόσβασης",
+  "requirementLength": "Τουλάχιστον 8 χαρακτήρες",
+  "requirementUppercase": "Ένα κεφαλαίο γράμμα",
+  "requirementLowercase": "Ένα πεζό γράμμα",
+  "requirementNumber": "Ένας αριθμός",
+  "requirementSymbol": "Ένα σύμβολο"
 }

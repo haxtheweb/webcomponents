@@ -5,5 +5,9 @@
   "recordAudio": "Enregistra àudio",
   "recordScreen": "Enregistra la pantalla",
   "cancel": "Cancel·la",
-  "uploadMedia": "Puja els mitjans"
+  "uploadMedia": "Puja els mitjans",
+  "record": "Enregistra",
+  "pause": "Posa en pausa l'enregistrament",
+  "stopSave": "Atura i desa",
+  "clickToTakePhoto": "Feu clic per fer una foto"
 }

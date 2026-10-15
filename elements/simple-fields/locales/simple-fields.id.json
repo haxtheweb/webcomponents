@@ -5,5 +5,9 @@
   "recordAudio": "Rekam audio",
   "recordScreen": "Rekam layar",
   "cancel": "Batal",
-  "uploadMedia": "Unggah media"
+  "uploadMedia": "Unggah media",
+  "record": "Rekam",
+  "pause": "Jeda rekaman",
+  "stopSave": "Hentikan & Simpan",
+  "clickToTakePhoto": "Klik untuk mengambil foto"
 }

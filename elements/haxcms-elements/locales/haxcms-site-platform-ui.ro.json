@@ -1,0 +1,18 @@
+{
+  "title": "Funcționalități platformă",
+  "experienceLevel": "Nivel de experiență",
+  "cmsFeatures": "Funcționalități CMS",
+  "editorFeatures": "Funcționalități editor",
+  "blocks": "Blocuri",
+  "filterBlocks": "Filtrează blocurile",
+  "requiredTextNote": "Unele etichete de text sunt obligatorii și mereu activate (afișate dezactivate).",
+  "download": "Descarcă scheletul",
+  "save": "Salvează",
+  "generating": "Se generează scheletul…",
+  "generated": "Schelet descărcat",
+  "enabled": "Activat",
+  "feature": "Funcționalitate",
+  "details": "Detalii",
+  "featuresWarning": "Dezactivarea acestor opțiuni poate elimina capabilități importante de creare și administrare.",
+  "largeSiteWarning": "Acest site are multe pagini. Generarea scheletului poate dura ceva timp."
+}

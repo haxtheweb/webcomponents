@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Анбори GitHub",
   "anErrorOccurred": "Хатогӣ рух дод",
-  "retry": "Аз нав кӯшиш кунед"
+  "retry": "Аз нав кӯшиш кунед",
+  "permissionRequired": "Иҷозат лозим аст",
+  "passwordRequirements": "Талаботи парол",
+  "requirementLength": "Ақаллан 8 аломат",
+  "requirementUppercase": "Як ҳарфи калон",
+  "requirementLowercase": "Як ҳарфи хурд",
+  "requirementNumber": "Як рақам",
+  "requirementSymbol": "Як аломати махсус"
 }

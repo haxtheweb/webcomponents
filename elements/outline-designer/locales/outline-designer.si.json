@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ඉලක්කය තෝරන්න",
+  "importContentUnderThisPage": "මෙම පිටුව යටතට අන්තර්ගතය ආයාත කරන්න",
+  "importThisContent": "මෙම අන්තර්ගතය ආයාත කරන්න",
+  "thisPage": "මෙම පිටුව",
+  "newPage": "නව පිටුව",
+  "copyOf": "පිටපත:",
+  "pageActions": "පිටු ක්‍රියා",
+  "editTitle": "මාතෘකාව සංස්කරණය කරන්න",
+  "lock": "අගුළු දමන්න",
+  "unlock": "අගුල හරින්න",
+  "moveUp": "ඉහළට ගෙන යන්න",
+  "moveDown": "පහළට ගෙන යන්න",
+  "makeChild": "උප පිටුවක් කරන්න",
+  "moveToParentLevel": "මාපිය මට්ටමට ගෙන යන්න",
+  "addPage": "පිටුවක් එක් කරන්න",
+  "duplicate": "අනුපිටපත් කරන්න",
+  "delete": "මකන්න",
+  "restore": "ප්‍රතිසාධනය කරන්න",
+  "goToPage": "පිටුවට යන්න"
+}

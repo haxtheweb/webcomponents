@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Struktuuri toimingud",
+  "editPage": "Muuda lehte",
+  "addPage": "Lisa alamleht",
+  "moveUp": "Liiguta üles",
+  "moveDown": "Liiguta alla",
+  "indent": "Suurenda taanet",
+  "outdent": "Vähenda taanet",
+  "moveTo": "Teisalda...",
+  "siteOutline": "Ava saidi struktuur",
+  "delete": "Kustuta leht",
+  "unlock": "Ava lukk",
+  "lock": "Lukusta"
+}

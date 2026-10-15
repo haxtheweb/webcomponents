@@ -1,0 +1,18 @@
+{
+  "title": "Funkcije platforme",
+  "experienceLevel": "Nivo iskustva",
+  "cmsFeatures": "Funkcije CMS-a",
+  "editorFeatures": "Funkcije uređivača",
+  "blocks": "Blokovi",
+  "filterBlocks": "Filtriraj blokove",
+  "requiredTextNote": "Neke tekstualne oznake su obavezne i uvijek omogućene (prikazane kao onemogućene).",
+  "download": "Preuzmi kostur",
+  "save": "Sačuvaj",
+  "generating": "Generisanje kostura…",
+  "generated": "Kostur je preuzet",
+  "enabled": "Omogućeno",
+  "feature": "Funkcija",
+  "details": "Detalji",
+  "featuresWarning": "Onemogućavanje ovih opcija može ukloniti važne mogućnosti kreiranja sadržaja i administracije.",
+  "largeSiteWarning": "Ova stranica ima mnogo podstranica. Generisanje kostura može potrajati."
+}

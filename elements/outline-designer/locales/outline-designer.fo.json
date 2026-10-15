@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Vel mál",
+  "importContentUnderThisPage": "Innflyt innihald undir hesa síðuna",
+  "importThisContent": "Innflyt hetta innihaldið",
+  "thisPage": "hesa síðuna",
+  "newPage": "Nýggj síða",
+  "copyOf": "Avrit av",
+  "pageActions": "Síðugerðir",
+  "editTitle": "Rætta heiti",
+  "lock": "Lás",
+  "unlock": "Lat upp",
+  "moveUp": "Flyt upp",
+  "moveDown": "Flyt niður",
+  "makeChild": "Ger til undirsíðu",
+  "moveToParentLevel": "Flyt til yvirstig",
+  "addPage": "Legg síðu afturat",
+  "duplicate": "Tvífalda",
+  "delete": "Strika",
+  "restore": "Endurstovna",
+  "goToPage": "Far til síðu"
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub rikch'ana",
   "anErrorOccurred": "Pantasqa paqarirqam",
-  "retry": "Mammuypuni"
+  "retry": "Mammuypuni",
+  "permissionRequired": "Saqillikuy necesitakun",
+  "passwordRequirements": "Pakasqa simipa mañakuyninkuna",
+  "requirementLength": "Aswan pisillaqa 8 sanampakuna",
+  "requirementUppercase": "Huk hatun qillqa",
+  "requirementLowercase": "Huk uchuy qillqa",
+  "requirementNumber": "Huk yupay",
+  "requirementSymbol": "Huk unancha"
 }

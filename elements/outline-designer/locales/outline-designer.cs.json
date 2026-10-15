@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Vyberte cíl",
+  "importContentUnderThisPage": "Importovat obsah pod tuto stránku",
+  "importThisContent": "Importovat tento obsah",
+  "thisPage": "tato stránka",
+  "newPage": "Nová stránka",
+  "copyOf": "Kopie",
+  "pageActions": "Akce stránky",
+  "editTitle": "Upravit název",
+  "lock": "Zamknout",
+  "unlock": "Odemknout",
+  "moveUp": "Posunout nahoru",
+  "moveDown": "Posunout dolů",
+  "makeChild": "Udělat podstránkou",
+  "moveToParentLevel": "Přesunout na nadřazenou úroveň",
+  "addPage": "Přidat stránku",
+  "duplicate": "Duplikovat",
+  "delete": "Smazat",
+  "restore": "Obnovit",
+  "goToPage": "Přejít na stránku"
+}

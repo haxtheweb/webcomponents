@@ -122,5 +122,21 @@
   "recent": "حالیہ",
   "popular": "مقبول",
   "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "تصویر کی معلومات",
+  "imageActions": "تصویر کے اقدامات",
+  "imageRecommendations": "تصویر کے لیے تجاویز",
+  "compressImage": "تصویر کمپریس کریں",
+  "resizeTo": "سائز تبدیل کر کے",
+  "created": "تخلیق شدہ",
+  "size": "سائز",
+  "dimensions": "ابعاد",
+  "type": "قسم",
+  "done": "ہو گیا",
+  "noFileUuid": "فائل کا حوالہ دستیاب نہیں؛ اقدامات فعال کرنے کے لیے دوبارہ اپ لوڈ کریں۔",
+  "fileOpsUnavailable": "اس سائٹ کے لیے فائل کے عمل دستیاب نہیں ہیں۔",
+  "fileOpFailed": "فائل کا عمل ناکام ہو گیا۔",
+  "fileExtensionNotAllowed": "یہ فیلڈ صرف درج ذیل فائل اقسام قبول کرتی ہے:",
+  "fileTypeNotAllowed": "یہ فیلڈ صرف درج ذیل میڈیا اقسام قبول کرتی ہے:",
+  "transformFailed": "اپ لوڈ کے بعد تبدیلی ناکام ہو گئی؛ اصل فائل محفوظ رکھی گئی۔"
 }

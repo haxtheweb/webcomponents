@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Izberite cilj",
+  "importContentUnderThisPage": "Uvozi vsebino pod to stran",
+  "importThisContent": "Uvozi to vsebino",
+  "thisPage": "ta stran",
+  "newPage": "Nova stran",
+  "copyOf": "Kopija",
+  "pageActions": "Dejanja strani",
+  "editTitle": "Uredi naslov",
+  "lock": "Zakleni",
+  "unlock": "Odkleni",
+  "moveUp": "Premakni gor",
+  "moveDown": "Premakni dol",
+  "makeChild": "Naredi podrejeno",
+  "moveToParentLevel": "Premakni na nadrejeno raven",
+  "addPage": "Dodaj stran",
+  "duplicate": "Podvoji",
+  "delete": "Izbriši",
+  "restore": "Obnovi",
+  "goToPage": "Pojdi na stran"
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Àkójọ GitHub",
   "anErrorOccurred": "Àṣìṣe kan ṣẹ̀",
-  "retry": "Gbígbò lẹ̀ẹkansí"
+  "retry": "Gbígbò lẹ̀ẹkansí",
+  "permissionRequired": "A nílò ìyọ̀ǹda",
+  "passwordRequirements": "Ohun tí ọ̀rọ̀ aṣínà nílò",
+  "requirementLength": "Ó kéré tán ohun kíkọ 8",
+  "requirementUppercase": "Lẹ́tà ńlá kan",
+  "requirementLowercase": "Lẹ́tà kékeré kan",
+  "requirementNumber": "Nọ́ńbà kan",
+  "requirementSymbol": "Àmì kan"
 }

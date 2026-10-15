@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Úložisko GitHub",
   "anErrorOccurred": "Vyskytla sa chyba",
-  "retry": "Skúsiť znova"
+  "retry": "Skúsiť znova",
+  "permissionRequired": "Vyžaduje sa povolenie",
+  "passwordRequirements": "Požiadavky na heslo",
+  "requirementLength": "Aspoň 8 znakov",
+  "requirementUppercase": "Jedno veľké písmeno",
+  "requirementLowercase": "Jedno malé písmeno",
+  "requirementNumber": "Jedna číslica",
+  "requirementSymbol": "Jeden symbol"
 }

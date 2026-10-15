@@ -5,5 +5,9 @@
   "recordAudio": "Audio opnemen",
   "recordScreen": "Scherm opnemen",
   "cancel": "Annuleren",
-  "uploadMedia": "Media uploaden"
+  "uploadMedia": "Media uploaden",
+  "record": "Opnemen",
+  "pause": "Opname pauzeren",
+  "stopSave": "Stoppen en opslaan",
+  "clickToTakePhoto": "Klik om een foto te maken"
 }

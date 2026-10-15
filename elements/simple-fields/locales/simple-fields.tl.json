@@ -5,5 +5,9 @@
   "recordAudio": "Mag-record ng audio",
   "recordScreen": "Mag-record ng screen",
   "cancel": "Kanselahin",
-  "uploadMedia": "I-upload ang media"
+  "uploadMedia": "I-upload ang media",
+  "record": "Mag-record",
+  "pause": "I-pause ang pag-record",
+  "stopSave": "Ihinto at I-save",
+  "clickToTakePhoto": "I-click para kumuha ng larawan"
 }

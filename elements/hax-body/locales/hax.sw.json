@@ -122,5 +122,21 @@
   "recent": "Hivi karibuni",
   "popular": "Maarufu",
   "copiedToClipboard": "Imenakiliwa kwenye clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Maelezo ya picha",
+  "imageActions": "Vitendo vya picha",
+  "imageRecommendations": "Mapendekezo ya picha",
+  "compressImage": "Bana picha",
+  "resizeTo": "Badilisha ukubwa kuwa",
+  "created": "Imeundwa",
+  "size": "Ukubwa",
+  "dimensions": "Vipimo",
+  "type": "Aina",
+  "done": "imekamilika",
+  "noFileUuid": "Marejeleo ya faili hayapatikani; pakia upya ili kuwezesha vitendo.",
+  "fileOpsUnavailable": "Shughuli za faili hazipatikani kwa tovuti hii.",
+  "fileOpFailed": "Shughuli ya faili imeshindwa.",
+  "fileExtensionNotAllowed": "Sehemu hii inakubali aina zifuatazo za faili pekee:",
+  "fileTypeNotAllowed": "Sehemu hii inakubali aina zifuatazo za midia pekee:",
+  "transformFailed": "Uchakataji baada ya kupakia umeshindwa; faili asili imehifadhiwa."
 }

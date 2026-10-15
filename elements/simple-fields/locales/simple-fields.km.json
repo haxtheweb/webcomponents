@@ -5,5 +5,9 @@
   "recordAudio": "ថតសំឡេង",
   "recordScreen": "ថតអេក្រង់",
   "cancel": "បោះបង់",
-  "uploadMedia": "បង្ហោះមេឌៀ"
+  "uploadMedia": "បង្ហោះមេឌៀ",
+  "record": "ថត",
+  "pause": "ផ្អាកការថត",
+  "stopSave": "បញ្ឈប់ និងរក្សាទុក",
+  "clickToTakePhoto": "ចុចដើម្បីថតរូប"
 }

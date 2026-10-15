@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub chivakwa",
   "anErrorOccurred": "Kukanganisa kwakaitika",
-  "retry": "Yedza zvakare"
+  "retry": "Yedza zvakare",
+  "permissionRequired": "Mvumo inodiwa",
+  "passwordRequirements": "Zvinodiwa papassword",
+  "requirementLength": "Mavara masere zvishoma",
+  "requirementUppercase": "Bhii rimwe guru",
+  "requirementLowercase": "Bhii rimwe diki",
+  "requirementNumber": "Nhamba imwe",
+  "requirementSymbol": "Chiratidzo chimwe"
 }

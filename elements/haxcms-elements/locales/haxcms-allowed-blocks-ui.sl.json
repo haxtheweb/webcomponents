@@ -1,0 +1,14 @@
+{
+  "title": "Bloki",
+  "enabled": "Omogočeno",
+  "block": "Blok",
+  "preview": "Predogled",
+  "filterBlocks": "Filtriraj bloke",
+  "requiredTextNote": "Nekatere besedilne oznake so obvezne in vedno omogočene (prikazane kot onemogočene).",
+  "selectAll": "Izberi vse",
+  "deselectAll": "Prekliči izbiro vseh",
+  "save": "Shrani",
+  "noDescription": "Opis ni na voljo.",
+  "details": "Podrobnosti",
+  "loadingInventory": "Nalaganje celotnega seznama blokov …"
+}

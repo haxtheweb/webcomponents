@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Pilih tujuan",
+  "importContentUnderThisPage": "Impor isi ing sangisoré kaca iki",
+  "importThisContent": "Impor isi iki",
+  "thisPage": "kaca iki",
+  "newPage": "Kaca anyar",
+  "copyOf": "Salinan saka",
+  "pageActions": "Tumindak Kaca",
+  "editTitle": "Sunting judhul",
+  "lock": "Kunci",
+  "unlock": "Bukak kunci",
+  "moveUp": "Pindhah munggah",
+  "moveDown": "Pindhah mudhun",
+  "makeChild": "Dadèkna anak",
+  "moveToParentLevel": "Pindhah menyang tingkat induk",
+  "addPage": "Tambah kaca",
+  "duplicate": "Duplikat",
+  "delete": "Busak",
+  "restore": "Pulihake",
+  "goToPage": "Menyang kaca"
+}

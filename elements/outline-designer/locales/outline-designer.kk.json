@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Мақсатты таңдаңыз",
+  "importContentUnderThisPage": "Мазмұнды осы беттің астына импорттау",
+  "importThisContent": "Осы мазмұнды импорттау",
+  "thisPage": "осы бет",
+  "newPage": "Жаңа бет",
+  "copyOf": "Көшірмесі:",
+  "pageActions": "Бет әрекеттері",
+  "editTitle": "Тақырыпты өңдеу",
+  "lock": "Құлыптау",
+  "unlock": "Құлпын ашу",
+  "moveUp": "Жоғары жылжыту",
+  "moveDown": "Төмен жылжыту",
+  "makeChild": "Ішкі бет ету",
+  "moveToParentLevel": "Жоғарғы деңгейге жылжыту",
+  "addPage": "Бет қосу",
+  "duplicate": "Көшірме жасау",
+  "delete": "Жою",
+  "restore": "Қалпына келтіру",
+  "goToPage": "Бетке өту"
+}

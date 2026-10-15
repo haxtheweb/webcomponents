@@ -1,0 +1,14 @@
+{
+  "title": "Blocks",
+  "enabled": "Enabled",
+  "block": "Block",
+  "preview": "Preview",
+  "filterBlocks": "Filter blocks",
+  "requiredTextNote": "Some text tags are required and always enabled (shown disabled).",
+  "selectAll": "Select all",
+  "deselectAll": "Deselect all",
+  "save": "Save",
+  "noDescription": "No description available.",
+  "details": "Details",
+  "loadingInventory": "Loading full block inventory…"
+}

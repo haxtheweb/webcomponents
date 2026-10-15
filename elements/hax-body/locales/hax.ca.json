@@ -122,5 +122,21 @@
   "recent": "Recent",
   "popular": "Popular",
   "copiedToClipboard": "S'ha copiat al porta-retalls",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informació de la imatge",
+  "imageActions": "Accions de la imatge",
+  "imageRecommendations": "Recomanacions de la imatge",
+  "compressImage": "Comprimeix la imatge",
+  "resizeTo": "Redimensiona a",
+  "created": "Creat",
+  "size": "Mida",
+  "dimensions": "Dimensions",
+  "type": "Tipus",
+  "done": "fet",
+  "noFileUuid": "Referència del fitxer no disponible; torneu-lo a pujar per activar les accions.",
+  "fileOpsUnavailable": "Les operacions de fitxers no estan disponibles per a aquest lloc.",
+  "fileOpFailed": "L'operació de fitxer ha fallat.",
+  "fileExtensionNotAllowed": "Aquest camp només accepta els tipus de fitxer següents:",
+  "fileTypeNotAllowed": "Aquest camp només accepta els tipus de contingut multimèdia següents:",
+  "transformFailed": "La transformació posterior a la pujada ha fallat; s'ha conservat el fitxer original."
 }

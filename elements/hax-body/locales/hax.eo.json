@@ -122,5 +122,21 @@
   "recent": "Lasta",
   "popular": "Populara",
   "copiedToClipboard": "Kopiita al tondujo",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informoj pri bildo",
+  "imageActions": "Bildaj agoj",
+  "imageRecommendations": "Rekomendoj pri bildo",
+  "compressImage": "Densigi bildon",
+  "resizeTo": "Regrandigi al",
+  "created": "Kreita",
+  "size": "Grandeco",
+  "dimensions": "Dimensioj",
+  "type": "Tipo",
+  "done": "farite",
+  "noFileUuid": "Dosierreferenco ne disponeblas; re-alŝutu por ebligi agojn.",
+  "fileOpsUnavailable": "Dosieraj operacioj ne disponeblas por ĉi tiu retejo.",
+  "fileOpFailed": "Dosiera operacio malsukcesis.",
+  "fileExtensionNotAllowed": "Ĉi tiu kampo akceptas nur la jenajn dosiertipojn:",
+  "fileTypeNotAllowed": "Ĉi tiu kampo akceptas nur la jenajn aŭdvidaĵajn tipojn:",
+  "transformFailed": "Transformo post alŝuto malsukcesis; la originala dosiero estis konservita."
 }

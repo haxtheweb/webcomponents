@@ -122,5 +122,21 @@
   "recent": "हाल ही में",
   "popular": "लोकप्रिय",
   "copiedToClipboard": "क्लिपबोर्ड में कॉपी किया गया",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "छवि जानकारी",
+  "imageActions": "छवि क्रियाएँ",
+  "imageRecommendations": "छवि सुझाव",
+  "compressImage": "छवि संपीड़ित करें",
+  "resizeTo": "आकार बदलें",
+  "created": "बनाया गया",
+  "size": "आकार",
+  "dimensions": "आयाम",
+  "type": "प्रकार",
+  "done": "हो गया",
+  "noFileUuid": "फ़ाइल संदर्भ उपलब्ध नहीं है; क्रियाएँ सक्षम करने के लिए फिर से अपलोड करें।",
+  "fileOpsUnavailable": "इस साइट के लिए फ़ाइल संचालन उपलब्ध नहीं हैं।",
+  "fileOpFailed": "फ़ाइल संचालन विफल रहा।",
+  "fileExtensionNotAllowed": "यह फ़ील्ड केवल निम्नलिखित फ़ाइल प्रकार स्वीकार करता है:",
+  "fileTypeNotAllowed": "यह फ़ील्ड केवल निम्नलिखित मीडिया प्रकार स्वीकार करता है:",
+  "transformFailed": "अपलोड के बाद का रूपांतरण विफल रहा; मूल फ़ाइल रखी गई।"
 }

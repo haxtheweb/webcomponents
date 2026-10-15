@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub రిపోజిటరీ",
   "anErrorOccurred": "లోపం సంభవించింది",
-  "retry": "మళ్ళీ ప్రయత్నించు"
+  "retry": "మళ్ళీ ప్రయత్నించు",
+  "permissionRequired": "అనుమతి అవసరం",
+  "passwordRequirements": "పాస్‌వర్డ్ అవసరాలు",
+  "requirementLength": "కనీసం 8 అక్షరాలు",
+  "requirementUppercase": "ఒక పెద్ద అక్షరం",
+  "requirementLowercase": "ఒక చిన్న అక్షరం",
+  "requirementNumber": "ఒక సంఖ్య",
+  "requirementSymbol": "ఒక చిహ్నం"
 }

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Depositu GitHub",
   "anErrorOccurred": "Un sbagliu hè accadutu",
-  "retry": "Pruvà torna"
+  "retry": "Pruvà torna",
+  "permissionRequired": "Permessu necessariu",
+  "passwordRequirements": "Esigenze per a parolla d'intesa",
+  "requirementLength": "Almenu 8 caratteri",
+  "requirementUppercase": "Una lettera maiuscula",
+  "requirementLowercase": "Una lettera minuscula",
+  "requirementNumber": "Una cifra",
+  "requirementSymbol": "Un simbulu"
 }

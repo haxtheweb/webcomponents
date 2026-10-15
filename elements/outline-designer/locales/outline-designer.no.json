@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Velg mål",
+  "importContentUnderThisPage": "Importer innhold under denne siden",
+  "importThisContent": "Importer dette innholdet",
+  "thisPage": "denne siden",
+  "newPage": "Ny side",
+  "copyOf": "Kopi av",
+  "pageActions": "Sidehandlinger",
+  "editTitle": "Rediger tittel",
+  "lock": "Lås",
+  "unlock": "Lås opp",
+  "moveUp": "Flytt opp",
+  "moveDown": "Flytt ned",
+  "makeChild": "Gjør til underside",
+  "moveToParentLevel": "Flytt til overordnet nivå",
+  "addPage": "Legg til side",
+  "duplicate": "Dupliser",
+  "delete": "Slett",
+  "restore": "Gjenopprett",
+  "goToPage": "Gå til side"
+}

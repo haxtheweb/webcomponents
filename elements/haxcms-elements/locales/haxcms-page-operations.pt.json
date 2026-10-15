@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Ações do esboço",
+  "editPage": "Editar página",
+  "addPage": "Adicionar página filha",
+  "moveUp": "Mover para cima",
+  "moveDown": "Mover para baixo",
+  "indent": "Recuar",
+  "outdent": "Remover recuo",
+  "moveTo": "Mover para...",
+  "siteOutline": "Abrir esboço do site",
+  "delete": "Excluir página",
+  "unlock": "Desbloquear",
+  "lock": "Bloquear"
+}

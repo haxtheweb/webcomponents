@@ -1,0 +1,21 @@
+{
+  "selectTarget": "בחירת יעד",
+  "importContentUnderThisPage": "ייבוא תוכן תחת דף זה",
+  "importThisContent": "ייבוא תוכן זה",
+  "thisPage": "דף זה",
+  "newPage": "דף חדש",
+  "copyOf": "עותק של",
+  "pageActions": "פעולות דף",
+  "editTitle": "עריכת כותרת",
+  "lock": "נעילה",
+  "unlock": "ביטול נעילה",
+  "moveUp": "העברה למעלה",
+  "moveDown": "העברה למטה",
+  "makeChild": "הפיכה לדף משנה",
+  "moveToParentLevel": "העברה לרמת ההורה",
+  "addPage": "הוספת דף",
+  "duplicate": "שכפול",
+  "delete": "מחיקה",
+  "restore": "שחזור",
+  "goToPage": "מעבר לדף"
+}

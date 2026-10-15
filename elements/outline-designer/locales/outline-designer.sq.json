@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Zgjidh destinacionin",
+  "importContentUnderThisPage": "Importo përmbajtjen nën këtë faqe",
+  "importThisContent": "Importo këtë përmbajtje",
+  "thisPage": "këtë faqe",
+  "newPage": "Faqe e re",
+  "copyOf": "Kopje e",
+  "pageActions": "Veprimet e faqes",
+  "editTitle": "Redakto titullin",
+  "lock": "Kyç",
+  "unlock": "Shkyç",
+  "moveUp": "Lëviz lart",
+  "moveDown": "Lëviz poshtë",
+  "makeChild": "Bëje nënfaqe",
+  "moveToParentLevel": "Zhvendos në nivelin prind",
+  "addPage": "Shto faqe",
+  "duplicate": "Dyfisho",
+  "delete": "Fshi",
+  "restore": "Rikthe",
+  "goToPage": "Shko te faqja"
+}

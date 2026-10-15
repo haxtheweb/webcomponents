@@ -5,5 +5,9 @@
   "recordAudio": "Spela in ljud",
   "recordScreen": "Spela in skärm",
   "cancel": "Avbryt",
-  "uploadMedia": "Ladda upp media"
+  "uploadMedia": "Ladda upp media",
+  "record": "Spela in",
+  "pause": "Pausa inspelning",
+  "stopSave": "Stoppa och spara",
+  "clickToTakePhoto": "Klicka för att ta ett foto"
 }

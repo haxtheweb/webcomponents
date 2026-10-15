@@ -122,5 +122,21 @@
   "recent": "Okwamuva",
   "popular": "Okuthandwayo",
   "copiedToClipboard": "Ikokishiwe kwi-clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ulwazi lwesithombe",
+  "imageActions": "Izenzo zesithombe",
+  "imageRecommendations": "Izincomo zesithombe",
+  "compressImage": "Cindezela isithombe",
+  "resizeTo": "Shintsha usayizi ube",
+  "created": "Kudalwe",
+  "size": "Usayizi",
+  "dimensions": "Ubukhulu",
+  "type": "Uhlobo",
+  "done": "kuqediwe",
+  "noFileUuid": "Ireferensi yefayela ayitholakali; layisha kabusha ukuze unike amandla izenzo.",
+  "fileOpsUnavailable": "Imisebenzi yamafayela ayitholakali kule sayithi.",
+  "fileOpFailed": "Umsebenzi wefayela uhlulekile.",
+  "fileExtensionNotAllowed": "Le nkambu yamukela kuphela lezi zinhlobo zamafayela:",
+  "fileTypeNotAllowed": "Le nkambu yamukela kuphela lezi zinhlobo zemidiya:",
+  "transformFailed": "Ukuguqula ngemva kokulayisha kuhlulekile; ifayela langempela ligciniwe."
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Ընտրել թիրախը",
+  "importContentUnderThisPage": "Ներմուծել բովանդակությունն այս էջի ներքո",
+  "importThisContent": "Ներմուծել այս բովանդակությունը",
+  "thisPage": "այս էջը",
+  "newPage": "Նոր էջ",
+  "copyOf": "Պատճեն՝",
+  "pageActions": "Էջի գործողություններ",
+  "editTitle": "Խմբագրել վերնագիրը",
+  "lock": "Կողպել",
+  "unlock": "Ապակողպել",
+  "moveUp": "Տեղափոխել վեր",
+  "moveDown": "Տեղափոխել վար",
+  "makeChild": "Դարձնել ենթաէջ",
+  "moveToParentLevel": "Տեղափոխել ծնողական մակարդակ",
+  "addPage": "Ավելացնել էջ",
+  "duplicate": "Կրկնօրինակել",
+  "delete": "Ջնջել",
+  "restore": "Վերականգնել",
+  "goToPage": "Անցնել էջին"
+}

@@ -122,5 +122,21 @@
   "recent": "Recente",
   "popular": "Pupulare",
   "copiedToClipboard": "Cupiatu in u portafogli",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Infurmazioni nant'à l'imagine",
+  "imageActions": "Azzioni di l'imagine",
+  "imageRecommendations": "Raccumandazioni per l'imagine",
+  "compressImage": "Cumprime l'imagine",
+  "resizeTo": "Ridimensiunà à",
+  "created": "Creatu",
+  "size": "Dimensione",
+  "dimensions": "Dimensioni",
+  "type": "Tipu",
+  "done": "fattu",
+  "noFileUuid": "Riferenza di u schedariu micca dispunibule; ricaricate lu per attivà l'azzioni.",
+  "fileOpsUnavailable": "L'operazioni nant'à i schedarii ùn sò micca dispunibule per stu situ.",
+  "fileOpFailed": "L'operazione nant'à u schedariu hà fiascatu.",
+  "fileExtensionNotAllowed": "Stu campu accetta solu sti tipi di schedarii:",
+  "fileTypeNotAllowed": "Stu campu accetta solu sti tipi di media:",
+  "transformFailed": "A trasfurmazione dopu à u caricamentu hà fiascatu; u schedariu originale hè statu tenutu."
 }

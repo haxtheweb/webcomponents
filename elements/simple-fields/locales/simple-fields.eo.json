@@ -5,5 +5,9 @@
   "recordAudio": "Registri sonon",
   "recordScreen": "Registri ekrano",
   "cancel": "Nuligi",
-  "uploadMedia": "Alŝuti plurmediaĵon"
+  "uploadMedia": "Alŝuti plurmediaĵon",
+  "record": "Registri",
+  "pause": "Paŭzi registradon",
+  "stopSave": "Ĉesi kaj konservi",
+  "clickToTakePhoto": "Alklaku por foti"
 }

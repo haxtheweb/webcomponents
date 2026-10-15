@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Pasirinkite paskirtį",
+  "importContentUnderThisPage": "Importuoti turinį po šiuo puslapiu",
+  "importThisContent": "Importuoti šį turinį",
+  "thisPage": "šis puslapis",
+  "newPage": "Naujas puslapis",
+  "copyOf": "Kopija:",
+  "pageActions": "Puslapio veiksmai",
+  "editTitle": "Redaguoti pavadinimą",
+  "lock": "Užrakinti",
+  "unlock": "Atrakinti",
+  "moveUp": "Perkelti aukštyn",
+  "moveDown": "Perkelti žemyn",
+  "makeChild": "Padaryti antriniu",
+  "moveToParentLevel": "Perkelti į aukštesnį lygį",
+  "addPage": "Pridėti puslapį",
+  "duplicate": "Dubliuoti",
+  "delete": "Ištrinti",
+  "restore": "Atkurti",
+  "goToPage": "Eiti į puslapį"
+}

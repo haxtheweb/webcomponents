@@ -1,0 +1,11 @@
+{
+  "pagination": "Sivutus",
+  "page": "Sivu",
+  "of": "/",
+  "first": "Ensimmäinen sivu",
+  "previous": "Edellinen sivu",
+  "next": "Seuraava sivu",
+  "last": "Viimeinen sivu",
+  "showing": "Näytetään",
+  "to": "–"
+}

@@ -122,5 +122,21 @@
   "recent": "So'nggi",
   "popular": "Mashhur",
   "copiedToClipboard": "Klipbordga nusxa olindi",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Rasm ma’lumotlari",
+  "imageActions": "Rasm amallari",
+  "imageRecommendations": "Rasm bo‘yicha tavsiyalar",
+  "compressImage": "Rasmni siqish",
+  "resizeTo": "O‘lchamini o‘zgartirish",
+  "created": "Yaratilgan",
+  "size": "Hajmi",
+  "dimensions": "O‘lchamlari",
+  "type": "Turi",
+  "done": "tayyor",
+  "noFileUuid": "Fayl havolasi mavjud emas; amallarni yoqish uchun qayta yuklang.",
+  "fileOpsUnavailable": "Bu sayt uchun fayl amallari mavjud emas.",
+  "fileOpFailed": "Fayl amali bajarilmadi.",
+  "fileExtensionNotAllowed": "Bu maydon faqat quyidagi fayl turlarini qabul qiladi:",
+  "fileTypeNotAllowed": "Bu maydon faqat quyidagi media turlarini qabul qiladi:",
+  "transformFailed": "Yuklashdan keyingi o‘zgartirish bajarilmadi; asl fayl saqlab qolindi."
 }

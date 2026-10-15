@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Kho lưu trữ GitHub",
   "anErrorOccurred": "Đã xảy ra lỗi",
-  "retry": "Thử lại"
+  "retry": "Thử lại",
+  "permissionRequired": "Cần cấp quyền",
+  "passwordRequirements": "Yêu cầu về mật khẩu",
+  "requirementLength": "Ít nhất 8 ký tự",
+  "requirementUppercase": "Một chữ cái viết hoa",
+  "requirementLowercase": "Một chữ cái viết thường",
+  "requirementNumber": "Một chữ số",
+  "requirementSymbol": "Một ký hiệu"
 }
