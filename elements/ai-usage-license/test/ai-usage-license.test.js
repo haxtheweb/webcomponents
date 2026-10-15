@@ -318,8 +318,18 @@ describe("AiUsageLicense HAX integration", () => {
     resetFetchMode("data");
     const el = await fixture(html`<ai-usage-license></ai-usage-license>`);
     expect(el.haxHooks()).to.deep.equal({
+      gizmoRegistration: "haxgizmoRegistration",
       setupActiveElementForm: "haxsetupActiveElementForm",
     });
+    // gizmoRegistration registers the haxProperties locales with i18n-manager
+    const registered = [];
+    const onRegister = (e) => registered.push(e.detail);
+    globalThis.addEventListener("i18n-manager-register-element", onRegister);
+    el.haxgizmoRegistration();
+    globalThis.removeEventListener("i18n-manager-register-element", onRegister);
+    expect(
+      registered.some((d) => d.namespace === "ai-usage-license.haxProperties"),
+    ).to.equal(true);
   });
 
   it("builds license and modifier select options from the data", async () => {

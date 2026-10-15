@@ -276,10 +276,20 @@ describe('media-playlist HAX integration', () => {
 
   it('registers the hax hooks', () => {
     expect(element.haxHooks()).to.deep.equal({
+      gizmoRegistration: 'haxgizmoRegistration',
       inlineContextMenu: 'haxinlineContextMenu',
       editModeChanged: 'haxeditModeChanged',
       activeElementChanged: 'haxactiveElementChanged',
     })
+    // gizmoRegistration registers the haxProperties locales with i18n-manager
+    const registered = []
+    const onRegister = (e) => registered.push(e.detail)
+    globalThis.addEventListener('i18n-manager-register-element', onRegister)
+    element.haxgizmoRegistration()
+    globalThis.removeEventListener('i18n-manager-register-element', onRegister)
+    expect(
+      registered.some((d) => d.namespace === 'media-playlist.haxProperties'),
+    ).to.equal(true)
   })
 
   it('haxeditModeChanged forwards to player children', () => {
