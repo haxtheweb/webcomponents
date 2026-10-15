@@ -90,8 +90,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 0;
           margin-top: 0;
           opacity: 1;
-          transition: all 0.6s ease-in-out;
-          z-index: 10000;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
+          z-index: var(--ddd-z-modal, 10000);
           visibility: visible;
         }
         :host([edit-mode]) {
@@ -239,7 +239,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 0px;
           left: 0px;
           position: fixed;
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #000;
@@ -291,7 +291,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-icon-height: 48px;
           --simple-icon-width: 48px;
           margin: 8px;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         .soundToggle {
           display: flex;
@@ -309,7 +309,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
           background: transparent;
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
           position: relative;

@@ -42,7 +42,7 @@ class SocialShareLink extends DDD {
           display: inline-flex;
           align-items: center;
           color: var(--social-share-link-color, inherit);
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           margin: 5px;
           padding: var(--social-share-button-padding, 0px);
           border-radius: var(--social-share-button-border-radius, 0px);
@@ -92,7 +92,7 @@ class SocialShareLink extends DDD {
             )
           );
           text-decoration: none;
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         :host([button-style]) a:visited {

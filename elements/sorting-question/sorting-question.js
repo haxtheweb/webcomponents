@@ -227,7 +227,7 @@ export class SortingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-8);
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-xs);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         :host(:focus),
         :host(:focus-within),
@@ -238,7 +238,7 @@ export class SortingQuestion extends QuestionElement {
         simple-toolbar-button {
           font-size: var(--ddd-font-size-xs);
           font-family: var(--ddd-font-navigation);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           border: none;
           border-radius: var(--ddd-radius-xs);
         }

@@ -94,7 +94,7 @@ export const lazyImageLoader = function (SuperClass) {
             min-height: 200px;
             float: left;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           :host([image-loaded]) img[loading="lazy"] {
             margin-top: unset;

@@ -827,7 +827,9 @@ export const DDDVariables = css`
 
     /* ===========================================
        Z-INDEX SCALE
-       Layering system for proper element stacking
+       Layering system for proper element stacking, lowest to highest.
+       Each layer must sit above the one before it: a tooltip or popover
+       opened from inside a modal has to render on top of that modal.
        Usage: z-index: var(--ddd-z-modal);
        =========================================== */
     --ddd-z-base: 0; /* Base layer */
@@ -835,7 +837,7 @@ export const DDDVariables = css`
     --ddd-z-sticky: 200; /* Sticky positioned elements */
     --ddd-z-overlay: 300; /* Background overlays */
     --ddd-z-modal: 10000; /* Modal dialogs and critical UI */
-    --ddd-z-tooltip: 500; /* Tooltips and popovers */
+    --ddd-z-tooltip: 10100; /* Tooltips and popovers, above modals */
 
     /* ===========================================
        OPACITY SCALE
@@ -1724,14 +1726,14 @@ export const DDDReset = css`
   [data-hax-ray][data-margin],
   [data-hax-ray][data-width] {
     transition:
-      padding 0.3s ease-in-out,
-      margin 0.3s ease-in-out,
-      border 0.3s ease-in-out,
-      color 0.3s ease-in-out,
-      width 0.3s ease-in-out,
-      box-shadow 0.3s ease-in-out,
-      border-radius 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
+      padding var(--ddd-duration-normal, 0.3s) ease-in-out,
+      margin var(--ddd-duration-normal, 0.3s) ease-in-out,
+      border var(--ddd-duration-normal, 0.3s) ease-in-out,
+      color var(--ddd-duration-normal, 0.3s) ease-in-out,
+      width var(--ddd-duration-normal, 0.3s) ease-in-out,
+      box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
+      border-radius var(--ddd-duration-normal, 0.3s) ease-in-out,
+      background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
   }
 
   [data-design-treatment="vert"] {
@@ -1779,7 +1781,7 @@ export const DDDReset = css`
 
   [data-design-treatment^="horz"]::after {
     content: "";
-    transition: width 0.3s ease-in-out;
+    transition: width var(--ddd-duration-normal, 0.3s) ease-in-out;
     width: var(--ddd-theme-header-border-treatment);
     border-bottom: var(--ddd-theme-header-border-thickness) solid
       var(--ddd-theme-primary, var(--ddd-primary-0));
@@ -1845,10 +1847,10 @@ export const DDDReset = css`
 
   [data-design-treatment] {
     transition:
-      0.3s ease-in-out margin,
-      0.3s ease-in-out background-color,
-      0.3s ease-in-out padding,
-      0.3s ease-in-out border;
+      var(--ddd-duration-normal, 0.3s) ease-in-out margin,
+      var(--ddd-duration-normal, 0.3s) ease-in-out background-color,
+      var(--ddd-duration-normal, 0.3s) ease-in-out padding,
+      var(--ddd-duration-normal, 0.3s) ease-in-out border;
   }
 
   [data-accent] [data-design-treatment^="dropCap"] {
@@ -2079,7 +2081,7 @@ export const DDDReset = css`
     align-items: center;
     padding: var(--ddd-spacing-5) var(--ddd-spacing-4);
     user-select: none;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
   }
   summary::marker {
     content: "";
@@ -2137,7 +2139,7 @@ export const DDDReset = css`
 
   code {
     user-select: all;
-    transition: all 0.3s ease 0s;
+    transition: all var(--ddd-duration-normal, 0.3s) ease 0s;
     display: inline-block;
     padding: 2px var(--ddd-spacing-1); /* breaking DDD spacing sys on purpose for code */
     margin: 0 var(--ddd-spacing-1);
@@ -2199,7 +2201,7 @@ export const DDDReset = css`
   }
   abbr {
     background-color: var(--ddd-theme-primary, var(--ddd-theme-default-info));
-    transition: all 0.3s ease 0s;
+    transition: all var(--ddd-duration-normal, 0.3s) ease 0s;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     font-style: italic;
     text-decoration: underline;
@@ -2247,7 +2249,7 @@ export const DDDReset = css`
   select {
     display: flex;
     box-sizing: border-box;
-    transition: all 0.3s ease 0s;
+    transition: all var(--ddd-duration-normal, 0.3s) ease 0s;
     cursor: pointer;
     color: var(--ddd-theme-default-coalyGray);
     width: fit-content;

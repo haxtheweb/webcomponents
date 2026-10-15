@@ -18,7 +18,7 @@ class A11yCollapse extends DDD {
             --a11y-collapse-border-color,
             var(--ddd-theme-default-coalyGray)
           );
-          transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition: all var(--ddd-duration-slow, 0.6s) cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host([heading-button]) #heading {
           cursor: pointer;
@@ -74,7 +74,7 @@ class A11yCollapse extends DDD {
         }
         #expand {
           transform: rotate(var(--a11y-collapse-transform-deg, 0deg));
-          transition: transform 0.6s ease-in-out;
+          transition: transform var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         #content {
           padding: var(
@@ -104,7 +104,7 @@ class A11yCollapse extends DDD {
             transform: rotate(
               var(--a11y-collapse-transform-rotated-deg, -90deg)
             );
-            transition: transform 0.6s ease-in-out;
+            transition: transform var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
           :host #content {
             padding: 0
@@ -160,7 +160,7 @@ class A11yCollapse extends DDD {
           }
           :host([expanded]) #content-inner {
             max-height: var(--a11y-collapse-max-height, 200000000000vh);
-            transition: max-height 0.6s ease-in-out;
+            transition: max-height var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
           :host(:not([expanded])) #content {
             visibility: hidden;

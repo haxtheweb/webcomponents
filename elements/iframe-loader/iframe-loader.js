@@ -77,15 +77,15 @@ export class IframeLoader extends LitElement {
       }
       :host([disabled]) #container {
         z-index: 1;
-        opacity: 0.2;
+        opacity: var(--ddd-opacity-20, 0.2);
         background-color: var(
           --iframe-loader-disabled-background,
           var(--ddd-theme-default-white)
         );
-        transition: 0.3s linear all;
+        transition: var(--ddd-duration-normal, 0.3s) linear all;
       }
       :host([disabled]) #container:hover {
-        opacity: 0.6;
+        opacity: var(--ddd-opacity-60, 0.6);
       }
       :host([disabled]) #slot {
         z-index: -1;

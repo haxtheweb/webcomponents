@@ -17,7 +17,7 @@ export class CMSBase extends LitElement {
         display: block;
         min-width: 112px;
         min-height: 112px;
-        transition: 0.6s all ease;
+        transition: var(--ddd-duration-slow, 0.6s) all ease;
         background-color: transparent;
       }
       :host([hax-edit-mode]) #replacementcontent {

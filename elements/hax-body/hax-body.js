@@ -197,7 +197,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --simple-picker-color: var(--hax-tray-text-color);
         }
         :host([edit-mode][tray-status="full-panel"]) {
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
           pointer-events: none;
         }
 
@@ -239,7 +239,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           opacity: 0;
           z-index: -1;
           pointer-events: none;
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
         }
         .hax-context-menu:hover {
           z-index: calc(var(--hax-ui-focus-z-index) + 1);
@@ -266,7 +266,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-ray]:hover) {
           cursor: pointer;
           outline: 2px solid var(--hax-ui-color-hover, #0001);
-          transition: 0.3s outline-width ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) outline-width ease-in-out;
           outline-offset: 8px;
         }
 
@@ -285,8 +285,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               )
           )::before {
           content: attr(data-hax-ray);
-          opacity: 0.2;
-          transition: 0.6s all ease-in-out;
+          opacity: var(--ddd-opacity-20, 0.2);
+          transition: var(--ddd-duration-slow, 0.6s) all ease-in-out;
         }
 
         :host([edit-mode])
@@ -304,7 +304,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               )
           )::before {
           content: "Type '/' for quick actions";
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
         }
 
         :host([edit-mode])
@@ -321,7 +321,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 [data-instructional-action]
               )
           )::before {
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           cursor: text;
         }
 
@@ -383,7 +383,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               )
           )::before {
           content: "Definition term...";
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           font-style: italic;
           font-weight: var(--ddd-font-weight-regular, 400);
           min-height: inherit;
@@ -404,7 +404,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               )
           )::before {
           content: "Definition description...";
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           font-style: italic;
           min-height: inherit;
         }
@@ -424,7 +424,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               )
           )::before {
           content: "Definition list - add terms and definitions";
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           font-style: italic;
           min-height: inherit;
         }
@@ -472,7 +472,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 [data-instructional-action]
               )
           )::before {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: text;
         }
 
@@ -537,7 +537,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]) {
           opacity: 0.5;
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
           opacity: 0.9;
@@ -623,7 +623,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           height: 16px;
           z-index: 2;
           pointer-events: none;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           outline: var(--ddd-drop-zone-outline-width)
             var(--ddd-drop-zone-outline-style) transparent;
           outline-offset: -1px;
@@ -686,7 +686,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           height: 20px;
           z-index: 2;
           pointer-events: none;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           outline: var(--ddd-drop-zone-outline-width)
             var(--ddd-drop-zone-outline-style)
             var(--ddd-drop-zone-outline-color);
@@ -720,7 +720,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         @keyframes hax-drop-pulse {
           0%,
           100% {
-            opacity: 0.6;
+            opacity: var(--ddd-opacity-60, 0.6);
           }
           50% {
             opacity: 1;

@@ -100,7 +100,7 @@ class CleanTwo extends LTIResizingMixin(
             --ddd-theme-default-info,
             var(--ddd-primary-4)
           );
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border: var(--ddd-border-sm);
           margin: 0;
@@ -109,7 +109,7 @@ class CleanTwo extends LTIResizingMixin(
           position: relative;
           align-self: stretch;
           box-shadow: var(--ddd-boxShadow-sm);
-          transition: border 0.3s ease;
+          transition: border var(--ddd-duration-normal, 0.3s) ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
@@ -241,7 +241,7 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-primary-4)
           );
           padding: 0;
-          transition: margin-bottom 0.3s ease;
+          transition: margin-bottom var(--ddd-duration-normal, 0.3s) ease;
           align-items: stretch;
           -moz-transition: margin-bottom 0.3s ease;
           -webkit-box-align: stretch;
@@ -300,7 +300,7 @@ class CleanTwo extends LTIResizingMixin(
           margin: 0;
           padding: 0;
           margin-left: -333px;
-          transition: margin 0.3s ease;
+          transition: margin var(--ddd-duration-normal, 0.3s) ease;
           height: fit-content;
         }
         /*

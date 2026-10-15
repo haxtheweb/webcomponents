@@ -94,7 +94,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
-          transition: margin 0.6s ease-in-out;
+          transition: margin var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         :host([edit-mode][tray-status="collapsed"]) {
@@ -804,7 +804,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         .search-modal-btn {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          transition: 0.3s ease-in all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in all;
         }
 
         :host([menu-open]) .search-modal-btn {

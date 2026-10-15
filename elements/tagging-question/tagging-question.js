@@ -44,7 +44,7 @@ class TaggingQuestion extends QuestionElement {
           padding: var(--ddd-spacing-5);
           height: var(--tagging-question-tag-container-height, auto);
           max-width: var(--tagging-question-tag-container-max-width, 600px);
-          transition: height 0.3s ease;
+          transition: height var(--ddd-duration-normal, 0.3s) ease;
         }
 
         .tag-option-container {
@@ -55,7 +55,7 @@ class TaggingQuestion extends QuestionElement {
 
         #user-choice-container {
           display: flex;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           flex-wrap: wrap;
           justify-content: center;
           overflow-y: auto;
@@ -139,7 +139,7 @@ class TaggingQuestion extends QuestionElement {
           );
           cursor: pointer;
           user-select: none;
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
       `,
     ];

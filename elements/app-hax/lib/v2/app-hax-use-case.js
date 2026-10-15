@@ -51,7 +51,7 @@ export class AppHaxUseCase extends LitElement {
             var(--ddd-theme-default-white)
           );
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         .card:hover .image,
@@ -87,7 +87,7 @@ export class AppHaxUseCase extends LitElement {
         }
 
         .image {
-          transition: transform 0.3s ease-in-out;
+          transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
           height: var(--app-hax-use-case-image-height);
           flex-shrink: 0;
           position: relative;
@@ -214,7 +214,7 @@ export class AppHaxUseCase extends LitElement {
           font-weight: var(--ddd-font-weight-medium, 500);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           text-decoration: underline;
-          transition: color 0.3s ease-in-out;
+          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         a:visited {

@@ -212,9 +212,9 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
 
         .sample {
-          transition: background-color .3s ease-in-out,
-          color .3s ease-in-out,
-          border-color .3s ease-in-out;
+          transition: background-color var(--ddd-duration-normal, .3s) ease-in-out,
+          color var(--ddd-duration-normal, .3s) ease-in-out,
+          border-color var(--ddd-duration-normal, .3s) ease-in-out;
         }
 
         :host([type="accent"]) .sample,

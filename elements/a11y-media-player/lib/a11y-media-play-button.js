@@ -37,7 +37,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         :host {
           display: block;
           opacity: 1;
-          transition: opacity 0.6s;
+          transition: opacity var(--ddd-duration-slow, 0.6s);
         }
         :host([action="pause"]) {
           opacity: 0;
@@ -48,7 +48,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
           top: 0;
           left: 0;
           opacity: 1;
-          transition: opacity 0.6s;
+          transition: opacity var(--ddd-duration-slow, 0.6s);
         }
         #button {
           position: absolute;
@@ -59,7 +59,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         #button:focus,
         #button:hover {
           background: var(--a11y-play-button-focus-bg-color);
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
         }
         #arrow {
           stroke: #ffffff;

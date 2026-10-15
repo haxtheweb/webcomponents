@@ -26,7 +26,7 @@ export const HaxContextBehaviors = function (SuperClass) {
             display: none;
           }
           .selected-buttons {
-            transition: 0.3s all ease-in-out;
+            transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
             width: 0;
           }
           :host([has-selected-text]) .selected-buttons {

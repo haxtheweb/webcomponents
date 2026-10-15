@@ -143,7 +143,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
-          transition: left 0.3s ease;
+          transition: left var(--ddd-duration-normal, 0.3s) ease;
         }
 
         site-menu::part(map-menu) {
@@ -221,7 +221,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           bottom: 0;
           min-width: 400px;
           overflow-y: auto;
-          transition: left 0.3s ease;
+          transition: left var(--ddd-duration-normal, 0.3s) ease;
         }
         .site-body .site-inner {
           position: relative;

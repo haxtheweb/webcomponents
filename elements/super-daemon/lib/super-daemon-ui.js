@@ -158,7 +158,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           --simple-icon-width: 100px;
           --simple-icon-button-border-radius: 0;
           color: var(--simple-colors-default-theme-grey-10, grey);
-          transition: color 0.6s ease-in-out;
+          transition: color var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([mini]) .voice {
           --simple-icon-height: var(--ddd-icon-xxs);

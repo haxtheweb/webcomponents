@@ -91,7 +91,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
             --training-theme-navText,
             var(--ddd-theme-default-coalyGray, #262626)
           );
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
         #title {
           flex: 1;

@@ -48,7 +48,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         :host #slot {
           opacity: 0;
           visibility: hidden;
-          transition: opacity 0.3s ease-in-out;
+          transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         :host([theme-loaded]) #slot {
           opacity: 1;

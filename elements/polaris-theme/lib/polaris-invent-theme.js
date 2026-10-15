@@ -289,7 +289,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 300ms ease;
+          transition: border var(--ddd-duration-normal, 300ms) ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;
@@ -549,7 +549,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           margin: 0;
           padding: 0;
           margin-left: -300px;
-          transition: margin 300ms ease;
+          transition: margin var(--ddd-duration-normal, 300ms) ease;
           height: fit-content;
         }
         :host {
@@ -572,7 +572,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
           margin: 8px 4px 0 8px;
-          transition: 0.3s ease-in all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in all;
         }
 
         :host([menu-open]) .pdf-page-btn,

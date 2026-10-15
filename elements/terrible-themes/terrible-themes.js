@@ -120,7 +120,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
           position: relative;
           align-self: stretch;
           box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
-          transition: border 0.3s ease;
+          transition: border var(--ddd-duration-normal, 0.3s) ease;
           align-items: center;
           justify-self: stretch;
           text-overflow: ellipsis;

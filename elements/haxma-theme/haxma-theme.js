@@ -197,7 +197,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         background-color: var(--haxma-bg);
         border-bottom: 1px solid var(--haxma-border);
         height: var(--haxma-nav-height);
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       
       /* Adjust header position when user is logged in */
@@ -327,7 +327,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         z-index: 40;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition: opacity var(--ddd-duration-normal, 0.3s) ease, visibility var(--ddd-duration-normal, 0.3s) ease;
       }
       
       :host([mobile-nav-open]) .mobile-nav-overlay {
@@ -351,7 +351,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         height: calc(100vh - var(--haxma-nav-height));
         background-color: var(--haxma-bg);
         border-right: 1px solid var(--haxma-border);
-        transition: left 0.3s ease;
+        transition: left var(--ddd-duration-normal, 0.3s) ease;
         overflow-y: auto;
         z-index: 45;
         padding: var(--ddd-spacing-4);
@@ -528,7 +528,7 @@ export class HaxmaTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)
         color: var(--haxma-text);
         border: 1px solid var(--haxma-border);
         border-radius: 0.5rem;
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       
       .nav-link:hover {

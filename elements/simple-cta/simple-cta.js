@@ -134,7 +134,7 @@ class SimpleCta extends DDDPulseEffectSuper(
             --simple-cta-button-padding,
             0.75rem 0.75rem 0.75rem 1.5rem
           );
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           background-color: var(--component-background-color, transparent);
           font-weight: var(--ddd-font-weight-black);
         }

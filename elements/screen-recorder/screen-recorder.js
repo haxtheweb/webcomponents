@@ -112,7 +112,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-default-original87Pink);
       }
       .controls button:disabled {
-        opacity: 0.6;
+        opacity: var(--ddd-opacity-60, 0.6);
         cursor: not-allowed;
       }
       .download-link {
