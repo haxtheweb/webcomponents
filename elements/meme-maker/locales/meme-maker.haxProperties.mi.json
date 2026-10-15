@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mīma",
+    "description": "Hangaia he mīma mai i tētahi whakaahua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Pūtake",
+        "description": "URL pūtake mō te whakaahua mīma."
+      },
+      {
+        "property": "topText",
+        "title": "Kuputuhi o runga",
+        "description": "Te kuputuhi o runga o te mīma."
+      },
+      {
+        "property": "bottomText",
+        "title": "Kuputuhi o raro",
+        "description": "Te kuputuhi o raro o te mīma."
+      },
+      {
+        "property": "alt",
+        "title": "Kuputuhi kē",
+        "description": "He kuputuhi hei whakaahua i te whakaahua mō ngā kaiwhakamahi kāpō."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "He ngeru e whaiwhai ana i tētahi taonga tākaro iti",
+        "topText": "Ka mauria mai e au ki a koe",
+        "bottomText": "te mate"
+      }
+    }
+  ]
+}

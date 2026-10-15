@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ມີມ",
+    "description": "ສ້າງມີມຈາກຮູບພາບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ແຫຼ່ງທີ່ມາຂອງຮູບມີມ."
+      },
+      {
+        "property": "topText",
+        "title": "ຂໍ້ຄວາມດ້ານເທິງ",
+        "description": "ຂໍ້ຄວາມດ້ານເທິງຂອງມີມ."
+      },
+      {
+        "property": "bottomText",
+        "title": "ຂໍ້ຄວາມດ້ານລຸ່ມ",
+        "description": "ຂໍ້ຄວາມດ້ານລຸ່ມຂອງມີມ."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທາງເລືອກ",
+        "description": "ຂໍ້ຄວາມອະທິບາຍຮູບພາບສຳລັບຜູ້ໃຊ້ທີ່ບໍ່ສາມາດເບິ່ງເຫັນ."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "ແມວກຳລັງຍ່ອງຫາຂອງຫຼິ້ນນ້ອຍໆ",
+        "topText": "ຂ້ອຍນຳມາໃຫ້ເຈົ້າ",
+        "bottomText": "ຄວາມຕາຍ"
+      }
+    }
+  ]
+}

@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "Meme",
-    "description": "Tạo meme từ hình ảnh"
+    "description": "Tạo meme từ một hình ảnh."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Nguồn",
-        "description": "URL nguồn của phần tử bạn đang trích dẫn"
+        "description": "URL nguồn cho hình ảnh meme."
       },
       {
-        "title": "Văn bản trên",
-        "description": "Văn bản phía trên của meme"
+        "property": "topText",
+        "title": "Chữ phía trên",
+        "description": "Chữ phía trên của meme."
       },
       {
-        "title": "Văn bản dưới",
-        "description": "Văn bản phía dưới của meme"
+        "property": "bottomText",
+        "title": "Chữ phía dưới",
+        "description": "Chữ phía dưới của meme."
       },
       {
+        "property": "alt",
         "title": "Văn bản thay thế",
-        "description": "Văn bản mô tả hình ảnh cho người dùng khiếm thị"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "Danh sách ID được phân tách bằng dấu cách cho các phần tử mô tả hình ảnh"
+        "description": "Văn bản mô tả hình ảnh cho người dùng khiếm thị."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Mèo đang truy đuổi một đồ chơi nhỏ",
-        "topText": "Tôi mang đến cho bạn",
+        "alt": "Con mèo đang rình một món đồ chơi nhỏ",
+        "topText": "Ta mang đến cho ngươi",
         "bottomText": "cái chết"
       }
     }

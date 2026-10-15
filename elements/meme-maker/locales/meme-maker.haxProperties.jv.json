@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Gawé meme saka gambar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Sumber",
+        "description": "URL sumber kanggo gambar meme."
+      },
+      {
+        "property": "topText",
+        "title": "Teks ndhuwur",
+        "description": "Teks ing sisih ndhuwur meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Teks ngisor",
+        "description": "Teks ing sisih ngisor meme."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alternatif",
+        "description": "Teks kanggo njlèntrèhake gambar marang panganggo tunanetra."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kucing ngincer dolanan cilik",
+        "topText": "Aku nggawakake kowé",
+        "bottomText": "pati"
+      }
+    }
+  ]
+}

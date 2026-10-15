@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mím",
+    "description": "Déan mím as íomhá."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Foinse",
+        "description": "URL foinse d'íomhá na míme."
+      },
+      {
+        "property": "topText",
+        "title": "Téacs barr",
+        "description": "Téacs barr na míme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Téacs bun",
+        "description": "Téacs bun na míme."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs chun cur síos ar an íomhá d'úsáideoirí atá dall."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Cat ag stalcaireacht ar bhréagán beag",
+        "topText": "Tugaim chugat",
+        "bottomText": "an bás"
+      }
+    }
+  ]
+}

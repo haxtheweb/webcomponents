@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Maacht e Meme aus engem Bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Quell",
+        "description": "Quell-URL vum Meme-Bild."
+      },
+      {
+        "property": "topText",
+        "title": "Text uewen",
+        "description": "Text uewen um Meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Text ënnen",
+        "description": "Text ënnen um Meme."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativen Text",
+        "description": "Text, deen d'Bild fir blann Benotzer beschreift."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kaz, déi op e klengt Spillsaach lauert",
+        "topText": "Ech bréngen Iech",
+        "bottomText": "den Doud"
+      }
+    }
+  ]
+}

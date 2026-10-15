@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "ميم",
-    "description": "اصنع ميم من صورة"
+    "description": "اصنع ميم من صورة."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "المصدر",
-        "description": "رابط مصدر العنصر الذي تقوم بالاستشهاد به"
+        "description": "URL المصدر لصورة الميم."
       },
       {
+        "property": "topText",
         "title": "النص العلوي",
-        "description": "النص العلوي للميم"
+        "description": "النص العلوي للميم."
       },
       {
+        "property": "bottomText",
         "title": "النص السفلي",
-        "description": "النص السفلي للميم"
+        "description": "النص السفلي للميم."
       },
       {
+        "property": "alt",
         "title": "النص البديل",
-        "description": "نص لوصف الصورة للمستخدمين غير المبصرين"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "قائمة من المعرفات مفصولة بمسافات للعناصر التي تصف الصورة"
+        "description": "نص يصف الصورة للمستخدمين المكفوفين."
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "قطة تطارد لعبة صغيرة",
-        "topText": "أحضر لك",
+        "alt": "قطة تتربص بلعبة صغيرة",
+        "topText": "أحضرت لك",
         "bottomText": "الموت"
       }
     }

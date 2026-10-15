@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Napravite mem od slike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Izvor",
+        "description": "Izvorni URL slike mema."
+      },
+      {
+        "property": "topText",
+        "title": "Gornji tekst",
+        "description": "Gornji tekst mema."
+      },
+      {
+        "property": "bottomText",
+        "title": "Donji tekst",
+        "description": "Donji tekst mema."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativni tekst",
+        "description": "Tekst koji opisuje sliku slijepim korisnicima."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mačka vreba malu igračku",
+        "topText": "Donosim vam",
+        "bottomText": "smrt"
+      }
+    }
+  ]
+}

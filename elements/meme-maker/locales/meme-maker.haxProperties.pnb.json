@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "میم",
-    "description": "تصویر توں میم بناؤ"
+    "description": "کسے تصویر توں میم بناؤ۔"
   },
   "settings": {
     "configure": [
       {
-        "title": "ماخذ",
-        "description": "جس عنصر دا حوالہ دے رہے او اس دا ماخذ URL"
+        "property": "imageUrl",
+        "title": "ذریعہ",
+        "description": "میم تصویر دا ذریعہ URL۔"
       },
       {
-        "title": "اتے دا متن",
-        "description": "میم دا اتے دا متن"
+        "property": "topText",
+        "title": "اُتلا ٹیکسٹ",
+        "description": "میم دا اُتلا ٹیکسٹ۔"
       },
       {
-        "title": "تھلے دا متن",
-        "description": "میم دا تھلے دا متن"
+        "property": "bottomText",
+        "title": "تھلڑا ٹیکسٹ",
+        "description": "میم دا تھلڑا ٹیکسٹ۔"
       },
       {
-        "title": "متبادل متن",
-        "description": "اندھے صارفین لئی تصویر دی تشریح کرن والا متن"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "تصویر دی تشریح کرن والے عناصر لئی جگہ نال وکھ کیتے گئے ID دی فہرست"
+        "property": "alt",
+        "title": "متبادل ٹیکسٹ",
+        "description": "نابینا صارفاں لئی تصویر بیان کرن والا ٹیکسٹ۔"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "بلی چھوٹے کھلونے دا پیچھا کر رہی ہے",
-        "topText": "میں تہاڈے لئی لیا کے آیا ہاں",
+        "alt": "اک نکے کھڈونے دی تاڑ وچ بلی",
+        "topText": "میں تہاڈے لئی لیایا ہاں",
         "bottomText": "موت"
       }
     }
