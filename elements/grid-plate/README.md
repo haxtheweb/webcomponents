@@ -57,10 +57,10 @@ Supply a custom `layouts` object to add or override layouts. Each entry is `{ co
 | `disableResponsive` | `disable-responsive` | Boolean | `false` | Keep the multi-column layout on larger screens while still stacking at `xs`. |
 | `itemMargin` | `item-margin` | Number | `null` | Margin around slotted items (px). Falls back to `--grid-plate-item-margin`, then the DDD `--ddd-grid-item-spacing` token (16px). |
 | `itemPadding` | `item-padding` | Number | `null` | Padding inside slotted items (px). Falls back to `--grid-plate-item-padding`, then the DDD `--ddd-grid-item-spacing` token (16px). |
-| `breakpointSm` | `breakpoint-sm` | Number | `600` | Small breakpoint (px); applied on attach. Defaults to `DDDBreakpoints.sm`. |
-| `breakpointMd` | `breakpoint-md` | Number | `900` | Medium breakpoint (px); applied on attach. Defaults to `DDDBreakpoints.md`. |
-| `breakpointLg` | `breakpoint-lg` | Number | `1200` | Large breakpoint (px); applied on attach. Defaults to `DDDBreakpoints.lg`. |
-| `breakpointXl` | `breakpoint-xl` | Number | `1440` | Extra-large breakpoint (px); applied on attach. Defaults to `DDDBreakpoints.xl`. |
+| `breakpointSm` | `breakpoint-sm` | Number | `600` | Small breakpoint (px); applied on attach. Matches the DDD `sm` breakpoint. |
+| `breakpointMd` | `breakpoint-md` | Number | `900` | Medium breakpoint (px); applied on attach. Matches the DDD `md` breakpoint. |
+| `breakpointLg` | `breakpoint-lg` | Number | `1200` | Large breakpoint (px); applied on attach. Matches the DDD `lg` breakpoint. |
+| `breakpointXl` | `breakpoint-xl` | Number | `1440` | Extra-large breakpoint (px); applied on attach. Matches the DDD `xl` breakpoint. |
 | `dataHaxRay` | `data-hax-ray` | String | `null` | Set by the HAX editor to enable layout outlines and drag-and-drop affordances. |
 | `ready` | `ready` | Boolean | `false` | Lifecycle flag, set to `true` shortly after first render. Managed internally. |
 

@@ -216,6 +216,7 @@
                 "text": "number"
               },
               "description": "Custom small breakpoint for the layouts; only updated on attached",
+              "default": "600",
               "attribute": "breakpoint-sm"
             },
             {
@@ -226,6 +227,7 @@
                 "text": "number"
               },
               "description": "Custom medium breakpoint for the layouts; only updated on attached",
+              "default": "900",
               "attribute": "breakpoint-md"
             },
             {
@@ -236,6 +238,7 @@
                 "text": "number"
               },
               "description": "Custom large breakpoint for the layouts; only updated on attached",
+              "default": "1200",
               "attribute": "breakpoint-lg"
             },
             {
@@ -246,6 +249,7 @@
                 "text": "number"
               },
               "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+              "default": "1440",
               "attribute": "breakpoint-xl"
             },
             {
@@ -358,6 +362,7 @@
                 "text": "number"
               },
               "description": "Custom small breakpoint for the layouts; only updated on attached",
+              "default": "600",
               "fieldName": "breakpointSm"
             },
             {
@@ -366,6 +371,7 @@
                 "text": "number"
               },
               "description": "Custom medium breakpoint for the layouts; only updated on attached",
+              "default": "900",
               "fieldName": "breakpointMd"
             },
             {
@@ -374,6 +380,7 @@
                 "text": "number"
               },
               "description": "Custom large breakpoint for the layouts; only updated on attached",
+              "default": "1200",
               "fieldName": "breakpointLg"
             },
             {
@@ -382,6 +389,7 @@
                 "text": "number"
               },
               "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+              "default": "1440",
               "fieldName": "breakpointXl"
             },
             {

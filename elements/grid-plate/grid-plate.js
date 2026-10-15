@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
-import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -326,12 +325,14 @@ class GridPlate extends LitElement {
     this.itemMargin = null;
     this.itemPadding = null;
     this.ready = false;
-    // default to the shared DDD scale; still overridable per instance via
-    // the breakpoint-sm / -md / -lg / -xl attributes
-    this.breakpointSm = DDDBreakpoints.sm;
-    this.breakpointMd = DDDBreakpoints.md;
-    this.breakpointLg = DDDBreakpoints.lg;
-    this.breakpointXl = DDDBreakpoints.xl;
+    // Mirrors DDDBreakpoints (d-d-d/lib/DDDLayout.js). Kept as literals on
+    // purpose: grid-plate ships inside authored content and must not require
+    // the DDD stack. Keep in sync with DDD; overridable per instance via the
+    // breakpoint-sm / -md / -lg / -xl attributes.
+    this.breakpointSm = 600;
+    this.breakpointMd = 900;
+    this.breakpointLg = 1200;
+    this.breakpointXl = 1440;
     this.columns = 4;
     this.disableResponsive = false;
     this.layout = "1-1";
