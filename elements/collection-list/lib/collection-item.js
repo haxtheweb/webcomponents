@@ -62,8 +62,8 @@ class CollectionItem extends DDD {
           display: block;
           border: var(--ddd-border-xs);
           transition:
-            0.3s ease-in-out opacity,
-            0.3s ease-in-out filter;
+            var(--ddd-duration-normal, 0.3s) ease-in-out opacity,
+            var(--ddd-duration-normal, 0.3s) ease-in-out filter;
           height: calc(var(--ddd-spacing-30) * 2.5);
           box-shadow: var(--ddd-boxShadow-sm);
           overflow: hidden;
@@ -192,8 +192,8 @@ class CollectionItem extends DDD {
           height: calc(var(--ddd-spacing-20) * 2);
           opacity: 0.9;
           transition:
-            0.3s ease-in-out opacity,
-            0.3s ease-in-out filter;
+            var(--ddd-duration-normal, 0.3s) ease-in-out opacity,
+            var(--ddd-duration-normal, 0.3s) ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);

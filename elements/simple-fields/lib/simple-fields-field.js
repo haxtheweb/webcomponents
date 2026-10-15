@@ -46,7 +46,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             );
           }
           optgroup {
-            opacity: 0.8;
+            opacity: var(--ddd-opacity-80, 0.8);
           }
           option[selected] {
             background-color: var(
@@ -150,7 +150,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="radio"]) .option {
             align-items: center;
             border-radius: var(--simple-fields-border-radius, 4px);
-            transition: background-color 0.3s ease-in-out;
+            transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           :host([type="checkbox"]) .option label,
           :host([type="radio"]) .option label {
@@ -173,7 +173,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 var(--simple-fields-accent-color, #3f51b5)
               );
             outline-offset: -1px;
-            transition: outline-color 0.3s ease-in-out;
+            transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           :host([type]) fieldset .border-bottom {
             display: block;
@@ -226,7 +226,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           }
           textarea {
             margin: 0;
-            transition: height 0.6s ease-in-out;
+            transition: height var(--ddd-duration-slow, 0.6s) ease-in-out;
             box-sizing: border-box;
             vertical-align: bottom;
             background-color: var(
@@ -413,7 +413,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 var(--simple-fields-accent-color, #3f51b5)
               );
             outline-offset: -1px;
-            transition: outline-color 0.3s ease-in-out;
+            transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           /* Styles the option that is currently selected inside the open list */
           select option:checked,

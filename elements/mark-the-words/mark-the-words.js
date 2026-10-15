@@ -130,7 +130,7 @@ export class MarkTheWords extends QuestionElement {
           margin: 0;
           cursor: pointer;
           user-select: none;
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
 
         :host([show-answer]) .tag-option {

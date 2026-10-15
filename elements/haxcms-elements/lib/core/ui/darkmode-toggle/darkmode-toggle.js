@@ -84,7 +84,7 @@ export class DarkmodeToggle extends LitElement {
         );
         background: transparent;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         min-height: var(--ddd-spacing-8, 32px);
         box-sizing: border-box;
       }

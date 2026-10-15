@@ -102,7 +102,7 @@ class SimpleTooltip extends LitElement {
           }
 
           10% {
-            opacity: 0.2;
+            opacity: var(--ddd-opacity-20, 0.2);
           }
 
           100% {
@@ -118,7 +118,7 @@ class SimpleTooltip extends LitElement {
           }
 
           10% {
-            opacity: 0.2;
+            opacity: var(--ddd-opacity-20, 0.2);
           }
 
           100% {

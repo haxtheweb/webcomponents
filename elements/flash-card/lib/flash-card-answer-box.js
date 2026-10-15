@@ -203,7 +203,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         overflow: hidden;
         width: 50em;
         height: 45px;
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
 
       /* Status-based button background colors */
@@ -243,7 +243,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         --simple-icon-button-padding: var(--ddd-spacing-2);
         font-size: var(--ddd-font-size-xs);
         font-family: var(--ddd-font-navigation);
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       .retry simple-icon-button-lite:hover,
       .retry simple-icon-button-lite:focus {
@@ -260,7 +260,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         );
       }
       button:hover {
-        opacity: 0.8;
+        opacity: var(--ddd-opacity-80, 0.8);
       }
       button:disabled {
         opacity: 0.7;

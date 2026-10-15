@@ -70,7 +70,7 @@ export class FlashCardPromptImg extends DDD {
         left: 50%;
         z-index: 100;
         filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-        animation: iconPop 0.3s ease-out;
+        animation: iconPop var(--ddd-duration-normal, 0.3s) ease-out;
       }
 
       @keyframes iconPop {
@@ -94,14 +94,14 @@ export class FlashCardPromptImg extends DDD {
         display: flex;
         background: var(--ddd-theme-default-opportunityGreen);
         filter: opacity(0.75);
-        animation: correctOverlay 0.6s ease-in-out;
+        animation: correctOverlay var(--ddd-duration-slow, 0.6s) ease-in-out;
       }
 
       :host([status="incorrect"]) .overlay::before {
         display: flex;
         background: var(--ddd-theme-default-wonderPurple);
         filter: opacity(0.75);
-        animation: incorrectOverlay 0.3s ease-in-out;
+        animation: incorrectOverlay var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
 
       /* Feedback animations */

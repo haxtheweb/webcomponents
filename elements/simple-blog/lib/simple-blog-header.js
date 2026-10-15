@@ -34,7 +34,7 @@ class SimpleBlogHeader extends SimpleColors {
           background-color: var(--haxcms-color, black);
         }
         .teaserimage-image {
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           background-size: cover;
           background-position: center;
           position: absolute;
@@ -45,7 +45,7 @@ class SimpleBlogHeader extends SimpleColors {
           z-index: 1;
           text-indent: -9999px;
           transform: translate3d(0px, 24px, 0px);
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
           visibility: visible;
         }
         .teaserimage-image:hover {

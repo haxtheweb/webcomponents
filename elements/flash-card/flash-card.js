@@ -51,7 +51,7 @@ export class FlashCard extends SchemaBehaviors(DDD) {
           min-height: 155px;
           padding: var(--ddd-spacing-4);
           margin: var(--ddd-spacing-4);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
@@ -71,13 +71,13 @@ export class FlashCard extends SchemaBehaviors(DDD) {
         :host([status="correct"]) {
           outline: 3px solid var(--ddd-theme-default-opportunityGreen);
           outline-offset: -3px;
-          animation: correctPulse 0.6s ease-in-out;
+          animation: correctPulse var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         :host([status="incorrect"]) {
           outline: 3px dotted var(--ddd-theme-default-wonderPurple);
           outline-offset: -3px;
-          animation: incorrectShake 0.3s ease-in-out;
+          animation: incorrectShake var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         /* Animations for feedback */
@@ -116,7 +116,7 @@ export class FlashCard extends SchemaBehaviors(DDD) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         flash-card-image-prompt {

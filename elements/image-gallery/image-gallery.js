@@ -316,7 +316,7 @@ export class ImageGallery extends I18NMixin(DDD) {
         }
 
         .new-image {
-          animation: gallery-item-enter 600ms var(--ddd-timing-ease) forwards;
+          animation: gallery-item-enter var(--ddd-duration-slow, 600ms) var(--ddd-timing-ease) forwards;
         }
 
         /* Uploading skeleton state */

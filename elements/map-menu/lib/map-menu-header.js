@@ -13,11 +13,11 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         :host {
           display: block;
           position: relative;
-          transition: 0.3s ease-in all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in all;
         }
 
         :host([hovered]) {
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
         :host(:hover),
         :host(:focus) {
@@ -29,7 +29,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
           background-color: transparent;
         }
 
@@ -97,7 +97,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
 
         button {
-          transition: 0.3s ease-in all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in all;
           cursor: pointer;
           font-family: inherit;
           color: inherit;

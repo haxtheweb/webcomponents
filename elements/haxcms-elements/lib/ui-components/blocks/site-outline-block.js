@@ -72,7 +72,7 @@ class SiteOutlineBlock extends LitElement {
         color: var(--site-top-menu-link-active-color, #000000);
       }
       #indicator {
-        transition: 0.3s ease-in-out all;
+        transition: var(--ddd-duration-normal, 0.3s) ease-in-out all;
         position: relative;
         width: 0;
         height: 0;

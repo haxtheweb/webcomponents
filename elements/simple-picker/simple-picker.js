@@ -159,7 +159,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-float-label-color,
               var(--simple-picker-color-disabled, #555)
             );
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
             max-height: unset;
           }
 
@@ -169,7 +169,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-float-label-active-color,
               var(--simple-picker-color, currentColor)
             );
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
 
           #sample,
@@ -236,7 +236,7 @@ const SimplePickerBehaviors = function (SuperClass) {
                 var(--simple-picker-color-disabled, #555)
               )
             );
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
 
           :host(:not([disabled]):focus-within) #listbox {
@@ -386,7 +386,7 @@ const SimplePickerBehaviors = function (SuperClass) {
           }
 
           simple-picker-option[active] {
-            z-index: 100;
+            z-index: var(--ddd-z-dropdown, 100);
             cursor: pointer;
             color: var(
               --simple-picker-option-active-color,

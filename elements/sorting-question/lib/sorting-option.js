@@ -208,7 +208,7 @@ export class SortingOption extends DDDSuper(LitElement) {
           align-items: center;
           z-index: 1;
           overflow: hidden;
-          transition: all 0.3s ease-in-out 0s;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out 0s;
           border: var(--ddd-border-lg);
           border-radius: var(--ddd-radius-xs);
           background-color: var(

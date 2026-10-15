@@ -39,7 +39,7 @@ class CourseCard extends SimpleColors {
 
         a {
           filter: var(--course-card-filter);
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           text-decoration: none;
           color: var(--simple-colors-default-theme-accent-12, #000);
           background-color: var(--simple-colors-default-theme-grey-1, #ffffff);
@@ -123,7 +123,7 @@ class CourseCard extends SimpleColors {
           width: 100%;
           height: 150px;
           animation-name: mymove2;
-          animation-duration: 0.6s;
+          animation-duration: var(--ddd-duration-slow, 0.6s);
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
         }
@@ -154,7 +154,7 @@ class CourseCard extends SimpleColors {
         :host([zoom]) a:hover #course_image,
         :host([zoom]) a:focus #course_image {
           animation-name: mymove;
-          animation-duration: 0.6s;
+          animation-duration: var(--ddd-duration-slow, 0.6s);
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
         }

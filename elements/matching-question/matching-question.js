@@ -42,7 +42,7 @@ class MatchingQuestion extends QuestionElement {
         }
 
         #target-container {
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           justify-content: center;
           overflow-y: auto;
           background-color: light-dark(
@@ -66,7 +66,7 @@ class MatchingQuestion extends QuestionElement {
         }
 
         #matches-container {
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           justify-content: center;
           overflow-y: auto;
           background-color: light-dark(
@@ -131,7 +131,7 @@ class MatchingQuestion extends QuestionElement {
           );
           cursor: pointer;
           user-select: none;
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
         table {
           width: 100%;

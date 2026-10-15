@@ -188,7 +188,7 @@ export class PostCard extends LitElement {
       .tofrom .fromContent {
         width: 270px;
         margin: auto;
-        opacity: 0.8;
+        opacity: var(--ddd-opacity-80, 0.8);
         text-align: center;
       }
 

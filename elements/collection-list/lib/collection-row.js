@@ -67,8 +67,8 @@ class CollectionRow extends DDD {
           max-width: 250px;
           width: 100%;
           transition:
-            0.3s ease-in-out opacity,
-            0.3s ease-in-out filter;
+            var(--ddd-duration-normal, 0.3s) ease-in-out opacity,
+            var(--ddd-duration-normal, 0.3s) ease-in-out filter;
         }
 
         p {
@@ -144,8 +144,8 @@ class CollectionRow extends DDD {
           width: 100%;
           opacity: 0.9;
           transition:
-            0.3s ease-in-out opacity,
-            0.3s ease-in-out filter;
+            var(--ddd-duration-normal, 0.3s) ease-in-out opacity,
+            var(--ddd-duration-normal, 0.3s) ease-in-out filter;
           border-bottom-style: solid;
           border-bottom-color: var(--collection-row-accent-color);
           border-bottom-width: var(--ddd-border-md);

@@ -244,7 +244,7 @@ class CleanOne extends LTIResizingMixin(
           background-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-1);
           border-right: var(--ddd-border-xs);
-          transition: left 0.3s ease-in-out;
+          transition: left var(--ddd-duration-normal, 0.3s) ease-in-out;
           contain: layout paint;
         }
         /*
@@ -317,7 +317,7 @@ class CleanOne extends LTIResizingMixin(
           bottom: 0;
           min-width: 375px;
           overflow-y: auto;
-          transition: left 0.3s ease-in-out;
+          transition: left var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host([responsive-size="xs"]) .page-wrapper,
@@ -488,7 +488,7 @@ class CleanOne extends LTIResizingMixin(
             background-color: var(--ddd-lightDark-background);
             opacity: 0.9;
             border-radius: var(--ddd-radius-xs);
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           footer nav site-menu-button:hover,
           footer nav site-menu-button:focus-within,
@@ -696,7 +696,7 @@ class CleanOne extends LTIResizingMixin(
         #site-search-input {
           padding: 6px;
           background: 0 0;
-          transition: top 0.3s ease-in-out;
+          transition: top var(--ddd-duration-normal, 0.3s) ease-in-out;
           border-bottom: 1px solid var(--ddd-lightDark-6);
           border-top: 1px solid var(--ddd-lightDark-6);
           margin-bottom: 10px;
