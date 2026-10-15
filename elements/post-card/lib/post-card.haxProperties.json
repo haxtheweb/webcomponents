@@ -39,7 +39,7 @@
         "inputMethod": "textfield"
       },
       {
-        "property": "post-mark-locations",
+        "property": "postMarkLocations",
         "title": "Postmarked From",
         "description": "Where did this card get sent from?",
         "inputMethod": "textfield"

@@ -52,7 +52,7 @@
     "unsetAttributes": [
       "items",
       "edit",
-      "mediaItems"
+      "media-items"
     ]
   },
   "documentation": {
