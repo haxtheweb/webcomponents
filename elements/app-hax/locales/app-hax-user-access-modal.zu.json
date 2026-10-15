@@ -1,0 +1,11 @@
+{
+  "userAccess": "Ukufinyelela komsebenzisi",
+  "enterUsername": "Faka igama lomsebenzisi ukuze unikeze ukufinyelela",
+  "usernamePlaceholder": "Igama lomsebenzisi",
+  "addUser": "Engeza umsebenzisi",
+  "cancel": "Khansela",
+  "userAccessGranted": "Ukufinyelela komsebenzisi kunikezwe ngempumelelo!",
+  "userNotFound": "Umsebenzisi akatholakalanga noma akagunyaziwe",
+  "loadingAddingUser": "Kwengezwa umsebenzisi...",
+  "grantAccessTo": "Nikeza ukufinyelela ku:"
+}

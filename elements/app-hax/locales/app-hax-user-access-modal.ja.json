@@ -1,0 +1,11 @@
+{
+  "userAccess": "ユーザーアクセス",
+  "enterUsername": "アクセスを許可するユーザー名を入力してください",
+  "usernamePlaceholder": "ユーザー名",
+  "addUser": "ユーザーを追加",
+  "cancel": "キャンセル",
+  "userAccessGranted": "ユーザーにアクセスを許可しました！",
+  "userNotFound": "ユーザーが見つからないか、権限がありません",
+  "loadingAddingUser": "ユーザーを追加中...",
+  "grantAccessTo": "アクセスを許可する相手:"
+}

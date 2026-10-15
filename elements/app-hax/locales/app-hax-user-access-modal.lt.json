@@ -1,0 +1,11 @@
+{
+  "userAccess": "Naudotojo prieiga",
+  "enterUsername": "Įveskite naudotojo vardą, kad suteiktumėte prieigą",
+  "usernamePlaceholder": "Naudotojo vardas",
+  "addUser": "Pridėti naudotoją",
+  "cancel": "Atšaukti",
+  "userAccessGranted": "Naudotojo prieiga sėkmingai suteikta!",
+  "userNotFound": "Naudotojas nerastas arba neturi teisių",
+  "loadingAddingUser": "Pridedamas naudotojas...",
+  "grantAccessTo": "Suteikti prieigą:"
+}

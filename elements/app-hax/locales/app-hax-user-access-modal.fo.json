@@ -1,0 +1,11 @@
+{
+  "userAccess": "Brúkaraatgongd",
+  "enterUsername": "Skriva brúkaranavn fyri at geva atgongd",
+  "usernamePlaceholder": "Brúkaranavn",
+  "addUser": "Legg brúkara afturat",
+  "cancel": "Angra",
+  "userAccessGranted": "Brúkaraatgongd givin!",
+  "userNotFound": "Brúkari ikki funnin ella ikki loyvdur",
+  "loadingAddingUser": "Leggur brúkara afturat...",
+  "grantAccessTo": "Gev atgongd til:"
+}

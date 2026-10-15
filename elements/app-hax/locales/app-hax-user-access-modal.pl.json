@@ -1,0 +1,11 @@
+{
+  "userAccess": "Dostęp użytkowników",
+  "enterUsername": "Wpisz nazwę użytkownika, aby przyznać dostęp",
+  "usernamePlaceholder": "Nazwa użytkownika",
+  "addUser": "Dodaj użytkownika",
+  "cancel": "Anuluj",
+  "userAccessGranted": "Pomyślnie przyznano dostęp użytkownikowi!",
+  "userNotFound": "Nie znaleziono użytkownika lub brak uprawnień",
+  "loadingAddingUser": "Dodawanie użytkownika...",
+  "grantAccessTo": "Przyznaj dostęp dla:"
+}

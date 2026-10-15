@@ -1,0 +1,11 @@
+{
+  "userAccess": "Lietotāja piekļuve",
+  "enterUsername": "Ievadiet lietotājvārdu, lai piešķirtu piekļuvi",
+  "usernamePlaceholder": "Lietotājvārds",
+  "addUser": "Pievienot lietotāju",
+  "cancel": "Atcelt",
+  "userAccessGranted": "Lietotāja piekļuve veiksmīgi piešķirta!",
+  "userNotFound": "Lietotājs nav atrasts vai nav pilnvarots",
+  "loadingAddingUser": "Pievieno lietotāju...",
+  "grantAccessTo": "Piešķirt piekļuvi:"
+}
