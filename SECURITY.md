@@ -8,7 +8,7 @@ https://github.com/haxtheweb/issues/security/advisories/new
 
 If you need to discuss first, contact the core team:
 
-- Discord: https://discord.gg/qGBZMBnHc
+- Discord: https://discord.gg/aCGxmRHEJP
 - Email: hax@psu.edu
 
 Please do not open public issues for unpatched security vulnerabilities.
