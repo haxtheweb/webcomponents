@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "عنوان URL لـ Tableau",
         "description": "عنوان URL لمصنف Tableau أو طريقة العرض."
       },
       {
+        "property": "height",
         "title": "الارتفاع",
         "description": "ارتفاع التصور."
       },
       {
+        "property": "width",
         "title": "العرض",
         "description": "عرض التصور."
       },
       {
+        "property": "toolbar",
         "title": "شريط الأدوات",
         "description": "موضع شريط الأدوات.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "إخفاء علامات التبويب",
         "description": "إخفاء علامات تبويب الأوراق."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "تخطيط الجهاز",
         "description": "تخطيط الجهاز المراد عرضه.",
         "options": {

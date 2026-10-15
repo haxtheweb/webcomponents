@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "ملف التقويم",
         "description": "ارفع ملف تقويم .ics أو اختره. تُقرأ أحداثه في المتصفح."
       },
       {
+        "property": "displayAs",
         "title": "العرض كـ",
         "description": "طريقة عرض محتوى الملف.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "العنوان الرئيسي",
         "description": "يظهر فوق الأحداث، وكتسمية توضيحية للجدول. يُستخدم اسم التقويم نفسه افتراضيًا."
       }

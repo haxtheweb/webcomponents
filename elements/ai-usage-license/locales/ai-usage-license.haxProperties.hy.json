@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "Լիցենզիա",
         "description": "Այս աշխատանքի AI-ի օգտագործման լիցենզիայի մակարդակը։ Մանրամասների համար տե՛ս https://dmd-program.github.io/aiul/"
       },
       {
+        "property": "modifier",
         "title": "Մեդիա փոփոխիչ",
         "description": "Ոչ պարտադիր մեդիա տիրույթի փոփոխիչ։ Նշում է մեդիայի տեսակը, որի վրա տարածվում է այս լիցենզիան։"
       },
       {
+        "property": "uri",
         "title": "AIUL URI (OER Schema)",
         "description": "OER Schema: AI-ի օգտագործման լիցենզիայի տեղեկատու էջի URI։ Եթե նշված չէ, ավտոմատ լրացվում է լիցենզիայի հղումից։"
       }

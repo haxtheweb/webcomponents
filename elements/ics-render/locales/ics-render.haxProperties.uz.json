@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Taqvim fayli",
         "description": ".ics taqvim faylini yuklang yoki tanlang. Uning tadbirlari brauzerda o‘qiladi."
       },
       {
+        "property": "displayAs",
         "title": "Ko‘rinishi",
         "description": "Fayl tarkibini qanday taqdim etish.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Sarlavha",
         "description": "Tadbirlar ustida va jadval sarlavhasi sifatida ko‘rsatiladi. Standart holatda taqvimning o‘z nomi ishlatiladi."
       }

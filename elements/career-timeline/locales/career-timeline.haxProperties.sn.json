@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Musoro wenhoroondo",
         "description": "Musoro wenhoroondo yebasa (OER Schema: oer:name)."
       }

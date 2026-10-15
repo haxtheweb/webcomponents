@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Título da liña do tempo",
         "description": "Un título para a liña do tempo profesional (OER Schema: oer:name)."
       }

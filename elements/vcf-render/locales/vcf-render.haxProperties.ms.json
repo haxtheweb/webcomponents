@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fail kenalan",
         "description": "Muat naik atau pilih fail kenalan .vcf. Kad-kadnya dibaca dalam pelayar."
       },
       {
+        "property": "displayAs",
         "title": "Papar sebagai",
         "description": "Cara membentangkan kandungan fail.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Tajuk",
         "description": "Ditunjukkan di atas kenalan dan sebagai kapsyen jadual."
       }

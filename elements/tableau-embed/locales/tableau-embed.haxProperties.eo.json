@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL al la Tableau-laborlibro aŭ -vido."
       },
       {
+        "property": "height",
         "title": "Alto",
         "description": "Alto de la bildigo."
       },
       {
+        "property": "width",
         "title": "Larĝo",
         "description": "Larĝo de la bildigo."
       },
       {
+        "property": "toolbar",
         "title": "Ilobreto",
         "description": "Pozicio de la ilobreto.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Kaŝi langetojn",
         "description": "Kaŝi foliajn langetojn."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Aparata aranĝo",
         "description": "Aparata aranĝo por bildigi.",
         "options": {

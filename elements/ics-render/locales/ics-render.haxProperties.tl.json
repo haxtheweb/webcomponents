@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "File ng kalendaryo",
         "description": "Mag-upload o pumili ng .ics na calendar file. Binabasa ang mga kaganapan nito sa browser."
       },
       {
+        "property": "displayAs",
         "title": "Ipakita bilang",
         "description": "Kung paano ipapakita ang laman ng file.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Pamuhatan",
         "description": "Ipinapakita sa itaas ng mga kaganapan, at bilang caption ng talahanayan. Default ang sariling pangalan ng kalendaryo."
       }

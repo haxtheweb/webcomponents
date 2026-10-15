@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Индекси фаъол",
         "description": "Индекси унсури фаъол барои оғоз."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Курсе, ки ин рӯйхати пахш барои он аст (шиносаи курс ё URL)."
       }

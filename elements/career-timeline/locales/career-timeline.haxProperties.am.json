@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "የጊዜ መስመር ርዕስ",
         "description": "ለሙያ የጊዜ መስመሩ ርዕስ (OER Schema: oer:name)።"
       }

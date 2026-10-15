@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Archivo de calendario",
         "description": "Sube o elige un archivo de calendario .ics. Sus eventos se leen en el navegador."
       },
       {
+        "property": "displayAs",
         "title": "Mostrar como",
         "description": "Cómo presentar el contenido del archivo.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Encabezado",
         "description": "Se muestra sobre los eventos y como leyenda de la tabla. De forma predeterminada, el nombre del propio calendario."
       }

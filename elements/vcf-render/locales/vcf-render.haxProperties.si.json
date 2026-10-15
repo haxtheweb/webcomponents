@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "සම්බන්ධතා ගොනුව",
         "description": ".vcf සම්බන්ධතා ගොනුවක් උඩුගත කරන්න හෝ තෝරන්න. එහි කාඩ්පත් බ්‍රව්සරය තුළ කියවනු ලැබේ."
       },
       {
+        "property": "displayAs",
         "title": "පෙන්වන ආකාරය",
         "description": "ගොනුවේ අන්තර්ගතය ඉදිරිපත් කරන ආකාරය.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "ශීර්ෂය",
         "description": "සම්බන්ධතාවලට ඉහළින් සහ වගු සිරස්තලය ලෙස පෙන්වයි."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Убакыт тилкесинин аталышы",
         "description": "Карьера убакыт тилкесинин аталышы (OER Schema: oer:name)."
       }

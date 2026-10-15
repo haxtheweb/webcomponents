@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL gaa na akwụkwọ ọrụ ma ọ bụ ngosi Tableau."
       },
       {
+        "property": "height",
         "title": "Ịdị elu",
         "description": "Ịdị elu ngosipụta."
       },
       {
+        "property": "width",
         "title": "Obosara",
         "description": "Obosara ngosipụta."
       },
       {
+        "property": "toolbar",
         "title": "Ogwe ngwá ọrụ",
         "description": "Ọnọdụ ogwe ngwá ọrụ.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Zoo taabụ",
         "description": "Zoo taabụ mpempe akwụkwọ."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Nhazi ngwaọrụ",
         "description": "Nhazi ngwaọrụ a ga-egosi.",
         "options": {

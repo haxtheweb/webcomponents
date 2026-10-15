@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faira yevanhu vekutaurirana navo",
         "description": "Isa kana sarudza faira ye.vcf yevanhu vekutaurirana navo. Makadhi ayo anoverengerwa mubrowser."
       },
       {
+        "property": "displayAs",
         "title": "Ratidza se",
         "description": "Maratidziro ezviri mufaira.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Musoro",
         "description": "Unoratidzwa pamusoro pevanhu vekutaurirana navo, uye semusoro wetafura."
       }

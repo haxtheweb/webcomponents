@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktivni indeks",
         "description": "Indeks aktivnega elementa, s katerim se začne."
       },
       {
+        "property": "forCourse",
         "title": "Predmet",
         "description": "Predmet, za katerega je ta seznam predvajanja namenjen (identifikator ali URL predmeta)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Innéacs gníomhach",
         "description": "Innéacs na míre gníomhaí lena dtosófar."
       },
       {
+        "property": "forCourse",
         "title": "Cúrsa",
         "description": "An cúrsa a bhfuil an seinmliosta seo beartaithe dó (aitheantóir nó URL an chúrsa)."
       }

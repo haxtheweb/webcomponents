@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL yeTableau",
         "description": "URL kubhuku rebasa kana kuona kweTableau."
       },
       {
+        "property": "height",
         "title": "Kureba",
         "description": "Kureba kwemufananidzo wedata."
       },
       {
+        "property": "width",
         "title": "Hupamhi",
         "description": "Hupamhi hwemufananidzo wedata."
       },
       {
+        "property": "toolbar",
         "title": "Bhari yezvishandiso",
         "description": "Nzvimbo yebhari yezvishandiso.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Vanza ma tab",
         "description": "Vanza ma tab emapeji."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Marongerwo emudziyo",
         "description": "Marongerwo emudziyo anofanira kuratidzwa.",
         "options": {

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Isihloko somugqa wesikhathi",
         "description": "Isihloko somugqa wesikhathi womsebenzi (OER Schema: oer:name)."
       }

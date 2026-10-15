@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Atọ́ka tó ń ṣiṣẹ́",
         "description": "Atọ́ka ohun tó ń ṣiṣẹ́ tí a ó fi bẹ̀rẹ̀."
       },
       {
+        "property": "forCourse",
         "title": "Kọ́ọ̀sì",
         "description": "Kọ́ọ̀sì tí àkójọ yìí wà fún (ìdánimọ̀ kọ́ọ̀sì tàbí URL)."
       }

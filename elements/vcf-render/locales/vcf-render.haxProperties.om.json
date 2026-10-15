@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faayilii quunnamtii",
         "description": "Faayilii quunnamtii .vcf ol fe'i ykn filadhu. Kaardiiwwan isaa barbaacha keessatti dubbifamu."
       },
       {
+        "property": "displayAs",
         "title": "Akkasitti agarsiisi",
         "description": "Waan faayilii keessa jiru akkamitti akka dhiyaatu.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Mata duree",
         "description": "Quunnamtiiwwan olitti, akkasumas akka ibsa gabateetti agarsiifama."
       }

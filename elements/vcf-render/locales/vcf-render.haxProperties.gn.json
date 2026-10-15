@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Ñemomarandu marandurenda",
         "description": "Ejupi térã eiporavo peteĩ .vcf ñemomarandu marandurenda. Ikuatiakuéra ojelee kundahárape."
       },
       {
+        "property": "displayAs",
         "title": "Ehechauka ko'ãicha",
         "description": "Mba'éichapa ojehechaukáta marandurenda retepy.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Moakãha",
         "description": "Ojehechauka ñemomarandu ári, ha tabla réra ramo avei."
       }

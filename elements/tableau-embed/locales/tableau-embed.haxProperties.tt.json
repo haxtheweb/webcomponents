@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau эш китабы яки күренеше URL-ы."
       },
       {
+        "property": "height",
         "title": "Биеклек",
         "description": "Визуализация биеклеге."
       },
       {
+        "property": "width",
         "title": "Киңлек",
         "description": "Визуализация киңлеге."
       },
       {
+        "property": "toolbar",
         "title": "Кораллар панеле",
         "description": "Кораллар панеленең урыны.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Кыстыргычларны яшерү",
         "description": "Бит кыстыргычларын яшерү."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Җайланма макеты",
         "description": "Күрсәтеләчәк җайланма макеты.",
         "options": {

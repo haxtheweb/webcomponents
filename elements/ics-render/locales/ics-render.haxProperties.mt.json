@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fajl tal-kalendarju",
         "description": "Tella' jew agħżel fajl tal-kalendarju .ics. L-avvenimenti tiegħu jinqraw fil-browżer."
       },
       {
+        "property": "displayAs",
         "title": "Uri bħala",
         "description": "Kif għandu jiġi ppreżentat il-kontenut tal-fajl.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Intestatura",
         "description": "Murija fuq l-avvenimenti, u bħala d-deskrizzjoni tat-tabella. B'mod awtomatiku tuża l-isem tal-kalendarju stess."
       }

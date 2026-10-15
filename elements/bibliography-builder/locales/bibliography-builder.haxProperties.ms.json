@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Petikan",
         "description": "Item petikan dalam bibliografi ini"
       },
       {
+        "property": "forCourse",
         "title": "Kursus",
         "description": "Pengecam atau nama kursus yang menjadi sasaran bibliografi ini (OER Schema forCourse)."
       }

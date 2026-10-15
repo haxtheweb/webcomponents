@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Tajuk garis masa",
         "description": "Tajuk untuk garis masa kerjaya (OER Schema: oer:name)."
       }

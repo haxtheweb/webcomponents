@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Etkin dizin",
         "description": "Başlangıçta etkin olacak öğenin dizini."
       },
       {
+        "property": "forCourse",
         "title": "Ders",
         "description": "Bu oynatma listesinin hazırlandığı ders (ders tanımlayıcısı veya URL)."
       }

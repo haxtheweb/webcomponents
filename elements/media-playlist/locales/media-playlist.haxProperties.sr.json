@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Почетни индекс",
         "description": "Индекс ставке од које се почиње."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Курс за који је ова плејлиста намењена (идентификатор курса или URL)."
       }

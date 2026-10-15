@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Kildehenvisninger",
         "description": "Kildehenvisninger i denne bibliografien"
       },
       {
+        "property": "forCourse",
         "title": "Emne",
         "description": "ID eller navn på emnet denne bibliografien gjelder (OER Schema forCourse)."
       }

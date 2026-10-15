@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fayilo ya olumikizana nawo",
         "description": "Kwezani kapena sankhani fayilo ya olumikizana nawo ya .vcf. Makhadi ake amawerengedwa mu msakatuli."
       },
       {
+        "property": "displayAs",
         "title": "Onetsani ngati",
         "description": "Momwe mungaonetsere zomwe zili mu fayilo.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Mutu",
         "description": "Umaonetsedwa pamwamba pa olumikizana nawo, komanso ngati mutu wa tebulo."
       }

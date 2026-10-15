@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "فایل مخاطب",
         "description": "یک فایل مخاطب .vcf بارگذاری یا انتخاب کنید. کارت‌های آن در مرورگر خوانده می‌شوند."
       },
       {
+        "property": "displayAs",
         "title": "نمایش به صورت",
         "description": "نحوه ارائه محتوای فایل.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "سرعنوان",
         "description": "بالای مخاطبان و به عنوان عنوان جدول نمایش داده می‌شود."
       }

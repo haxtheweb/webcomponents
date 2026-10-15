@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "Licencia",
         "description": "Úroveň licencie na používanie AI pre toto dielo. Podrobnosti nájdete na https://dmd-program.github.io/aiul/."
       },
       {
+        "property": "modifier",
         "title": "Modifikátor médií",
         "description": "Voliteľný modifikátor typu médií. Určuje, na aký typ médií sa táto licencia vzťahuje."
       },
       {
+        "property": "uri",
         "title": "URI AIUL (OER Schema)",
         "description": "OER Schema: URI referenčnej stránky licencie na používanie AI. Ak nie je nastavené, vyplní sa automaticky z odkazu na licenciu."
       }

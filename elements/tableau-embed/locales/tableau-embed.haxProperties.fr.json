@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL du classeur ou de la vue Tableau."
       },
       {
+        "property": "height",
         "title": "Hauteur",
         "description": "Hauteur de la visualisation."
       },
       {
+        "property": "width",
         "title": "Largeur",
         "description": "Largeur de la visualisation."
       },
       {
+        "property": "toolbar",
         "title": "Barre d’outils",
         "description": "Position de la barre d’outils.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Masquer les onglets",
         "description": "Masquer les onglets des feuilles."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Disposition de l’appareil",
         "description": "Disposition d’appareil à afficher.",
         "options": {

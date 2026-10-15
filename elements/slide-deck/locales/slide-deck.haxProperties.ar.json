@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "بيان مجموعة الشرائح",
         "description": "أفلت ملف .pptx وسيُحوَّل تلقائيًا إلى مجموعة شرائح. يُضبط الحقل على مسار deck.json الناتج."
       },
       {
+        "property": "deckId",
         "title": "معرّف مجموعة الشرائح",
         "description": "مطلوب فقط عندما تحتوي الصفحة على أكثر من مجموعة شرائح، لتبقى روابط الشرائح مميزة"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "السماح بالتنزيل",
         "description": "إظهار زر لتنزيل ملف PowerPoint الأصلي في عناصر التحكم بالمشغل"
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaktu fails",
         "description": "Augšupielādējiet vai izvēlieties .vcf kontaktu failu. Tā kartītes tiek nolasītas pārlūkprogrammā."
       },
       {
+        "property": "displayAs",
         "title": "Rādīt kā",
         "description": "Kā attēlot faila saturu.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Virsraksts",
         "description": "Tiek rādīts virs kontaktiem un kā tabulas paraksts."
       }

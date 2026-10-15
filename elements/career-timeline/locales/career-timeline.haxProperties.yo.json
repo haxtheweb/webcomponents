@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Àkọlé ìlà-àkókò",
         "description": "Àkọlé fún ìlà-àkókò iṣẹ́ (OER Schema: oer:name)."
       }

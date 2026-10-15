@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "URL sa Tableau workbook o view."
       },
       {
+        "property": "height",
         "title": "Taas",
         "description": "Taas ng visualization."
       },
       {
+        "property": "width",
         "title": "Lapad",
         "description": "Lapad ng visualization."
       },
       {
+        "property": "toolbar",
         "title": "Toolbar",
         "description": "Posisyon ng toolbar.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Itago ang mga tab",
         "description": "Itago ang mga tab ng sheet."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Layout ng device",
         "description": "Layout ng device na ire-render.",
         "options": {

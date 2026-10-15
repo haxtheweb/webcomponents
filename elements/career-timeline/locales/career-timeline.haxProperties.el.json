@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Τίτλος χρονολογίου",
         "description": "Ένας τίτλος για το χρονολόγιο σταδιοδρομίας (OER Schema: oer:name)."
       }

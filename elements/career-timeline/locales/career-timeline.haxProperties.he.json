@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "כותרת ציר הזמן",
         "description": "כותרת לציר הזמן של הקריירה (OER Schema: oer:name)."
       }

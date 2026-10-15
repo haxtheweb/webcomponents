@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Manifest ng deck",
         "description": "Mag-drop ng .pptx file at awtomatiko itong iko-convert sa slide deck. Itatakda ang field sa path ng nabuong deck.json."
       },
       {
+        "property": "deckId",
         "title": "ID ng deck",
         "description": "Kailangan lamang kapag may higit sa isang deck ang isang pahina, para manatiling magkakaiba ang mga link ng slide"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Payagan ang pag-download",
         "description": "Magpakita ng button para i-download ang orihinal na PowerPoint file sa mga kontrol ng player"
       }

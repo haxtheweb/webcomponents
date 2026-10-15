@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "인용",
         "description": "이 참고 문헌의 인용 항목"
       },
       {
+        "property": "forCourse",
         "title": "강좌",
         "description": "이 참고 문헌이 사용되는 강좌의 식별자 또는 이름 (OER Schema forCourse)."
       }

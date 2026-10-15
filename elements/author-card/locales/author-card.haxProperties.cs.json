@@ -6,30 +6,37 @@
   "settings": {
     "configure": [
       {
+        "property": "name",
         "title": "Jméno autora",
         "description": "Celé jméno autora."
       },
       {
+        "property": "image",
         "title": "Profilový obrázek",
         "description": "Profilová fotografie autora."
       },
       {
+        "property": "title",
         "title": "Pracovní pozice",
         "description": "Pozice nebo role autora."
       },
       {
+        "property": "description",
         "title": "Životopis",
         "description": "Krátký životopis autora."
       },
       {
+        "property": "profileUrl",
         "title": "URL profilu",
         "description": "Odkaz na profilovou stránku autora."
       },
       {
+        "property": "socialLink",
         "title": "Odkaz na sociální síť",
         "description": "Odkaz na profil na sociální síti."
       },
       {
+        "property": "socialHandle",
         "title": "Uživatelské jméno na sociální síti",
         "description": "Uživatelské jméno na sociální síti (například @username)."
       }

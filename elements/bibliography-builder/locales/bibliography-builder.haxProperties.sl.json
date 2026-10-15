@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Citati",
         "description": "Citirani viri v tej bibliografiji"
       },
       {
+        "property": "forCourse",
         "title": "Predmet",
         "description": "Identifikator ali ime predmeta, za katerega je ta bibliografija (OER Schema forCourse)."
       }

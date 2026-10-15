@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Он цагийн хэлхээсийн гарчиг",
         "description": "Карьерын он цагийн хэлхээсийн гарчиг (OER Schema: oer:name)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Zvitaurwa",
         "description": "Zvitaurwa zviri mubibliography iyi"
       },
       {
+        "property": "forCourse",
         "title": "Kosi",
         "description": "Chiziviso kana zita rekosi iyo bibliography iyi yakagadzirirwa (OER Schema forCourse)."
       }

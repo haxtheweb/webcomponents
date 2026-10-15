@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ٽائيم لائين جو عنوان",
         "description": "ڪيريئر ٽائيم لائين لاءِ عنوان (OER Schema: oer:name)."
       }

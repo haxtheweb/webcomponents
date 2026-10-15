@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau ورک بک یا ویو کا URL۔"
       },
       {
+        "property": "height",
         "title": "اونچائی",
         "description": "ویژولائزیشن کی اونچائی۔"
       },
       {
+        "property": "width",
         "title": "چوڑائی",
         "description": "ویژولائزیشن کی چوڑائی۔"
       },
       {
+        "property": "toolbar",
         "title": "ٹول بار",
         "description": "ٹول بار کی جگہ۔",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ٹیبز چھپائیں",
         "description": "شیٹ ٹیبز چھپائیں۔"
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "ڈیوائس لے آؤٹ",
         "description": "رینڈر کرنے کے لیے ڈیوائس لے آؤٹ۔",
         "options": {

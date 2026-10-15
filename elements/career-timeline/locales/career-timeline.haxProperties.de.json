@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Titel der Zeitleiste",
         "description": "Ein Titel für die Karriere-Zeitleiste (OER Schema: oer:name)."
       }

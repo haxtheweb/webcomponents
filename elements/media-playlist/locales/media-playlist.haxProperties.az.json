@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktiv indeks",
         "description": "Başlanğıc aktiv elementin indeksi."
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Bu pleylistin nəzərdə tutulduğu kurs (kurs identifikatoru və ya URL)."
       }

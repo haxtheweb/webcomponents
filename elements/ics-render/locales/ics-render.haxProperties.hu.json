@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Naptárfájl",
         "description": "Töltsön fel vagy válasszon egy .ics naptárfájlt. Az eseményeit a böngésző olvassa be."
       },
       {
+        "property": "displayAs",
         "title": "Megjelenítés módja",
         "description": "Hogyan jelenjen meg a fájl tartalma.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Címsor",
         "description": "Az események felett és a táblázat feliratként jelenik meg. Alapértelmezés szerint a naptár saját neve."
       }

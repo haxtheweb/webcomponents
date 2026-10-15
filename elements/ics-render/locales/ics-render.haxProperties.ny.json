@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fayilo ya kalendala",
         "description": "Kwezani kapena sankhani fayilo ya kalendala ya .ics. Zochitika zake zimawerengedwa mu msakatuli."
       },
       {
+        "property": "displayAs",
         "title": "Onetsani ngati",
         "description": "Momwe mungaonetsere zomwe zili mu fayilo.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Mutu",
         "description": "Umaonetsedwa pamwamba pa zochitika, komanso ngati mutu wa tebulo. Mwachisawawa ndi dzina la kalendala yokha."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalendrifail",
         "description": "Laadi üles või vali .ics-kalendrifail. Selle sündmused loetakse brauseris."
       },
       {
+        "property": "displayAs",
         "title": "Kuva kujul",
         "description": "Kuidas faili sisu esitada.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Pealkiri",
         "description": "Kuvatakse sündmuste kohal ja tabeli pealdisena. Vaikimisi kalendri enda nimi."
       }

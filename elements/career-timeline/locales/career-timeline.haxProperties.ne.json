@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "समयरेखा शीर्षक",
         "description": "करियर समयरेखाको शीर्षक (OER Schema: oer:name)।"
       }

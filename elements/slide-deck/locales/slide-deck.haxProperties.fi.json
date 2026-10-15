@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Esityksen luettelotiedosto",
         "description": "Pudota .pptx-tiedosto, niin se muunnetaan automaattisesti diaesitykseksi. Kentän arvoksi asetetaan tuloksena syntyvän deck.json-tiedoston polku."
       },
       {
+        "property": "deckId",
         "title": "Esityksen tunnus",
         "description": "Tarvitaan vain, kun sivulla on useampi kuin yksi esitys, jotta dialinkit pysyvät erillisinä"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Salli lataus",
         "description": "Näytä soittimen ohjaimissa painike alkuperäisen PowerPoint-tiedoston lataamiseen"
       }

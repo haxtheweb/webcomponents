@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Citations",
         "description": "Éléments de citation de cette bibliographie"
       },
       {
+        "property": "forCourse",
         "title": "Cours",
         "description": "Identifiant ou nom du cours auquel cette bibliographie est destinée (OER Schema forCourse)."
       }

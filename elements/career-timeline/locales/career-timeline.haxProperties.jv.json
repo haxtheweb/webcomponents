@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Irah-irahan garis wektu",
         "description": "Irah-irahan kanggo garis wektu karier (OER Schema: oer:name)."
       }

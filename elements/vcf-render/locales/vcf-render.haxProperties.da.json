@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaktfil",
         "description": "Upload eller vælg en .vcf-kontaktfil. Dens kort læses i browseren."
       },
       {
+        "property": "displayAs",
         "title": "Vis som",
         "description": "Hvordan filens indhold skal præsenteres.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Overskrift",
         "description": "Vises over kontakterne og som tabeltekst."
       }

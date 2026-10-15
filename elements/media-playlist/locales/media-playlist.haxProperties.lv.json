@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Sākuma vienums",
         "description": "Vienuma numurs, ar kuru sākt."
       },
       {
+        "property": "forCourse",
         "title": "Kurss",
         "description": "Kurss, kuram paredzēts šis atskaņošanas saraksts (kursa identifikators vai URL)."
       }

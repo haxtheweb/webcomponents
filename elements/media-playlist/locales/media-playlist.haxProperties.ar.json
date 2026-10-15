@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "الفهرس النشط",
         "description": "رقم العنصر النشط الذي يبدأ منه التشغيل."
       },
       {
+        "property": "forCourse",
         "title": "المقرر الدراسي",
         "description": "المقرر الدراسي المخصصة له قائمة التشغيل هذه (معرّف المقرر أو URL)."
       }

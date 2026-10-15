@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "د Tableau کاري کتاب یا لید URL."
       },
       {
+        "property": "height",
         "title": "لوړوالی",
         "description": "د انځور لوړوالی."
       },
       {
+        "property": "width",
         "title": "پلنوالی",
         "description": "د انځور پلنوالی."
       },
       {
+        "property": "toolbar",
         "title": "د وسیلو پټه",
         "description": "د وسیلو د پټې ځای.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ټبونه پټ کړئ",
         "description": "د شیټ ټبونه پټ کړئ."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "د وسیلې ترتیب",
         "description": "د ښودلو لپاره د وسیلې ترتیب.",
         "options": {

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Sitaasjes",
         "description": "Sitaasje-items yn dizze bibliografy"
       },
       {
+        "property": "forCourse",
         "title": "Kursus",
         "description": "Identifikaasje of namme fan de kursus dêr't dizze bibliografy foar is (OER Schema forCourse)."
       }

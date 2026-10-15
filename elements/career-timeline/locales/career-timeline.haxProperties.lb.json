@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Titel vum Zäitstrahl",
         "description": "En Titel fir de Karriär-Zäitstrahl (OER Schema: oer:name)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Zaman çizelgesi başlığı",
         "description": "Kariyer zaman çizelgesi için bir başlık (OER Schema: oer:name)."
       }

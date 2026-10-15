@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Prezentasiýa manifesti",
         "description": ".pptx faýlyny taşlaň, ol awtomatik usulda slaýdlar toplumyna öwrüler. Meýdança emele gelen deck.json ýoly ýazylýar."
       },
       {
+        "property": "deckId",
         "title": "Prezentasiýa ID",
         "description": "Diňe sahypada birden köp prezentasiýa bar bolanda gerek, slaýd salgylanmalary tapawutly galar ýaly"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Ýüklemäge rugsat ber",
         "description": "Pleýer dolandyryşlarynda asyl PowerPoint faýlyny ýüklemek düwmesini görkez"
       }

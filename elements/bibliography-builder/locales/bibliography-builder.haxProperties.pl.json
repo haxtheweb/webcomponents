@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Cytowania",
         "description": "Pozycje cytowań w tej bibliografii"
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Identyfikator lub nazwa kursu, dla którego jest ta bibliografia (OER Schema forCourse)."
       }

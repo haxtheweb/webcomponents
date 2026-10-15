@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Esitluse manifest",
         "description": "Lohista siia .pptx-fail ja see teisendatakse automaatselt slaidiesitluseks. Väljale määratakse saadud deck.json-faili tee."
       },
       {
+        "property": "deckId",
         "title": "Esitluse ID",
         "description": "Vajalik ainult siis, kui lehel on rohkem kui üks esitlus, et slaidilingid jääksid eristatavaks"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Luba allalaadimine",
         "description": "Kuva mängija juhtnuppudes algse PowerPointi faili allalaadimisnupp"
       }

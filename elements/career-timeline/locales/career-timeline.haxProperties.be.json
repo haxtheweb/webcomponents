@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Загаловак храналогіі",
         "description": "Загаловак храналогіі кар'еры (OER Schema: oer:name)."
       }

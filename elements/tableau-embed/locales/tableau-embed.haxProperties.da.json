@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL til Tableau-projektmappen eller -visningen."
       },
       {
+        "property": "height",
         "title": "Højde",
         "description": "Visualiseringens højde."
       },
       {
+        "property": "width",
         "title": "Bredde",
         "description": "Visualiseringens bredde."
       },
       {
+        "property": "toolbar",
         "title": "Værktøjslinje",
         "description": "Værktøjslinjens placering.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Skjul faner",
         "description": "Skjul arkfaner."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Enhedslayout",
         "description": "Det enhedslayout, der skal vises.",
         "options": {

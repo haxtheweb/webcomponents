@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Indeksi fillestar",
         "description": "Indeksi i elementit aktiv nga i cili fillohet."
       },
       {
+        "property": "forCourse",
         "title": "Kursi",
         "description": "Kursi për të cilin është menduar kjo listë (identifikuesi i kursit ose URL)."
       }

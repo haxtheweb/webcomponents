@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Ifayela loxhumana nabo",
         "description": "Layisha noma ukhethe ifayela loxhumana nabo le-.vcf. Amakhadi alo afundwa kusiphequluli."
       },
       {
+        "property": "displayAs",
         "title": "Bonisa njenga",
         "description": "Indlela yokwethula okuqukethwe yifayela.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Isihloko",
         "description": "Kuboniswa ngaphezu koxhumana nabo, futhi njengesihloko sethebula."
       }

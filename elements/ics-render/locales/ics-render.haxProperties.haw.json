@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faila alemanaka",
         "description": "Hoʻouka a koho paha i kekahi faila alemanaka .ics. Heluhelu ʻia kona mau hanana ma ka polokalamu kele pūnaewele."
       },
       {
+        "property": "displayAs",
         "title": "Hōʻike ma ke ʻano",
         "description": "Pehea e hōʻike ai i nā mea i loko o ka faila.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Poʻo",
         "description": "Hōʻike ʻia ma luna o nā hanana, a ma ke ʻano he lepili no ka papa. Hoʻohana paʻamau ʻia ka inoa ponoʻī o ka alemanaka."
       }

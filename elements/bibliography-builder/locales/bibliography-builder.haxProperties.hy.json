@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Մեջբերումներ",
         "description": "Այս մատենագիտության մեջբերման տարրերը"
       },
       {
+        "property": "forCourse",
         "title": "Դասընթաց",
         "description": "Այն դասընթացի նույնացուցիչը կամ անվանումը, որի համար է այս մատենագիտությունը (OER Schema forCourse)։"
       }

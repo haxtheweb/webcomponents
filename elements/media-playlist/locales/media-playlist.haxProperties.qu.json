@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Qallariq yupay",
         "description": "Mayqin imamanta qallarinapaq yupaynin."
       },
       {
+        "property": "forCourse",
         "title": "Yachay kurso",
         "description": "Kay uyarina sinri maypaq kasqan yachay kurso (kursopa riqsichiynin utaq URL)."
       }

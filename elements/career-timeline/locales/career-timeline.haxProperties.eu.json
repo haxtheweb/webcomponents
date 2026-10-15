@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Denbora-lerroaren izenburua",
         "description": "Ibilbide profesionalaren denbora-lerroaren izenburua (OER Schema: oer:name)."
       }

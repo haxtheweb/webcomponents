@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Nhamba yekutanga",
         "description": "Nhamba yechinhu chekutanga nacho."
       },
       {
+        "property": "forCourse",
         "title": "Kosi",
         "description": "Kosi iyo rondedzero iyi yakagadzirirwa (chiziviso chekosi kana URL)."
       }

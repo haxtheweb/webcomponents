@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "পরিচিতি ফাইল",
         "description": "একটি .vcf পরিচিতি ফাইল আপলোড করুন বা বেছে নিন। এর কার্ডগুলো ব্রাউজারে পড়া হয়।"
       },
       {
+        "property": "displayAs",
         "title": "যেভাবে দেখাবে",
         "description": "ফাইলের বিষয়বস্তু কীভাবে উপস্থাপন করা হবে।",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "শিরোনাম",
         "description": "পরিচিতিগুলোর উপরে এবং টেবিলের ক্যাপশন হিসেবে দেখানো হয়।"
       }

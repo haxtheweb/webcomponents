@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Taitara rārangi wā",
         "description": "He taitara mō te rārangi wā umanga (OER Schema: oer:name)."
       }

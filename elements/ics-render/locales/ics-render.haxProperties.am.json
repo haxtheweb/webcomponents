@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "የቀን መቁጠሪያ ፋይል",
         "description": "የ.ics የቀን መቁጠሪያ ፋይል ይስቀሉ ወይም ይምረጡ። ክስተቶቹ በአሳሹ ውስጥ ይነበባሉ።"
       },
       {
+        "property": "displayAs",
         "title": "በዚህ መልክ አሳይ",
         "description": "ፋይሉ የያዘውን እንዴት ማቅረብ እንደሚቻል።",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "አርዕስት",
         "description": "ከክስተቶቹ በላይ እና እንደ ሰንጠረዡ መግለጫ ጽሑፍ ይታያል። በነባሪ የቀን መቁጠሪያውን የራሱን ስም ይጠቀማል።"
       }

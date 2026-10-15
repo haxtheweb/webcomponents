@@ -6,30 +6,37 @@
   "settings": {
     "configure": [
       {
+        "property": "name",
         "title": "Imię i nazwisko autora",
         "description": "Pełne imię i nazwisko autora."
       },
       {
+        "property": "image",
         "title": "Zdjęcie profilowe",
         "description": "Zdjęcie profilowe autora."
       },
       {
+        "property": "title",
         "title": "Stanowisko",
         "description": "Stanowisko lub rola autora."
       },
       {
+        "property": "description",
         "title": "Biogram",
         "description": "Krótka biografia autora."
       },
       {
+        "property": "profileUrl",
         "title": "URL profilu",
         "description": "Link do strony profilu autora."
       },
       {
+        "property": "socialLink",
         "title": "Link społecznościowy",
         "description": "Link do profilu w mediach społecznościowych."
       },
       {
+        "property": "socialHandle",
         "title": "Nazwa użytkownika",
         "description": "Nazwa użytkownika w mediach społecznościowych (na przykład @username)."
       }

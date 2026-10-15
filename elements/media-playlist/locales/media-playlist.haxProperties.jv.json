@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Nomer wiwitan",
         "description": "Nomer item aktif kanggo wiwitan."
       },
       {
+        "property": "forCourse",
         "title": "Kursus",
         "description": "Kursus sing dadi tujuan daftar puter iki (pangenal kursus utawa URL)."
       }

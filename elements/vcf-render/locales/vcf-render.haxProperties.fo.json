@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Sambandsfíla",
         "description": "Legg upp ella vel eina .vcf sambandsfílu. Kortini í henni verða lisin í kagaranum."
       },
       {
+        "property": "displayAs",
         "title": "Vís sum",
         "description": "Hvussu innihaldið í fíluni skal vísast.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Yvirskrift",
         "description": "Víst omanfyri sambondini og sum talvuheiti."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Indiċi attiv",
         "description": "L-indiċi tal-oġġett attiv li minnu tibda."
       },
       {
+        "property": "forCourse",
         "title": "Kors",
         "description": "Il-kors li għalih hija maħsuba din il-lista (identifikatur tal-kors jew URL)."
       }

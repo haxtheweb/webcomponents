@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL של Tableau",
         "description": "URL לחוברת העבודה או לתצוגה ב-Tableau."
       },
       {
+        "property": "height",
         "title": "גובה",
         "description": "גובה ההמחשה."
       },
       {
+        "property": "width",
         "title": "רוחב",
         "description": "רוחב ההמחשה."
       },
       {
+        "property": "toolbar",
         "title": "סרגל כלים",
         "description": "מיקום סרגל הכלים.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "הסתרת לשוניות",
         "description": "הסתרת לשוניות הגיליונות."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "פריסת מכשיר",
         "description": "פריסת המכשיר להצגה.",
         "options": {

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau darbgrāmatas vai skata URL."
       },
       {
+        "property": "height",
         "title": "Augstums",
         "description": "Vizualizācijas augstums."
       },
       {
+        "property": "width",
         "title": "Platums",
         "description": "Vizualizācijas platums."
       },
       {
+        "property": "toolbar",
         "title": "Rīkjosla",
         "description": "Rīkjoslas novietojums.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Paslēpt cilnes",
         "description": "Paslēpt lapu cilnes."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Ierīces izkārtojums",
         "description": "Attēlojamais ierīces izkārtojums.",
         "options": {

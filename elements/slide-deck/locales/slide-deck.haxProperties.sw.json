@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Faili la maelezo ya wasilisho",
         "description": "Dondosha faili la .pptx nalo litageuzwa kiotomatiki kuwa mfululizo wa slaidi. Sehemu hii huwekwa kwenye njia ya deck.json inayotokana."
       },
       {
+        "property": "deckId",
         "title": "Kitambulisho cha wasilisho",
         "description": "Kinahitajika tu ukurasa unapokuwa na wasilisho zaidi ya moja, ili viungo vya slaidi vibaki tofauti"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Ruhusu kupakua",
         "description": "Onyesha kitufe cha kupakua faili asili la PowerPoint katika vidhibiti vya kichezaji"
       }

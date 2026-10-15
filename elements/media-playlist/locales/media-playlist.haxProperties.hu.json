@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktív index",
         "description": "A kezdéskor aktív elem sorszáma."
       },
       {
+        "property": "forCourse",
         "title": "Kurzus",
         "description": "A kurzus, amelyhez ez a lejátszási lista készült (kurzusazonosító vagy URL)."
       }

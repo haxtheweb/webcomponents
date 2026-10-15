@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Ifayela lekhalenda",
         "description": "Layisha noma ukhethe ifayela lekhalenda le-.ics. Imicimbi yalo ifundwa kusiphequluli."
       },
       {
+        "property": "displayAs",
         "title": "Bonisa njenga",
         "description": "Indlela yokwethula okuqukethwe yifayela.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Isihloko",
         "description": "Kuboniswa ngaphezu kwemicimbi, futhi njengesihloko sethebula. Okuzenzakalelayo yigama lekhalenda uqobo."
       }

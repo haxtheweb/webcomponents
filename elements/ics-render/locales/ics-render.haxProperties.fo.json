@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalendarafíla",
         "description": "Legg upp ella vel eina .ics kalendarafílu. Tiltøkini í henni verða lisin í kagaranum."
       },
       {
+        "property": "displayAs",
         "title": "Vís sum",
         "description": "Hvussu innihaldið í fíluni skal vísast.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Yvirskrift",
         "description": "Víst omanfyri tiltøkini og sum talvuheiti. Sjálvvirkandi navnið á kalendaranum sjálvum."
       }

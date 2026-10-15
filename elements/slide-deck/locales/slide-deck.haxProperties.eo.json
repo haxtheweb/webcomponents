@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Manifesto de la prezentaĵo",
         "description": "Demetu .pptx-dosieron kaj ĝi aŭtomate konvertiĝos al lumbilda prezentaĵo. La kampo estas agordita al la vojo de la rezulta deck.json."
       },
       {
+        "property": "deckId",
         "title": "Identigilo de la prezentaĵo",
         "description": "Necesa nur kiam paĝo enhavas pli ol unu prezentaĵon, por ke lumbildaj ligiloj restu distingeblaj"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Permesi elŝuton",
         "description": "Montri elŝutbutonon por la originala PowerPoint-dosiero en la regiloj de la ludilo"
       }

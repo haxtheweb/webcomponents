@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "タイムラインのタイトル",
         "description": "キャリアタイムラインのタイトル（OER Schema: oer:name）。"
       }

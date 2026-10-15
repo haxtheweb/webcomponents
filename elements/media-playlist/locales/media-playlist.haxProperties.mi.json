@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Tūemi tīmatanga",
         "description": "Te tau o te tūemi hei tīmatanga."
       },
       {
+        "property": "forCourse",
         "title": "Akoranga",
         "description": "Te akoranga mō tēnei rārangi pāho (tohu tautuhi akoranga, URL rānei)."
       }

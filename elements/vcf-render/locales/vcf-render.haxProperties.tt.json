@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Контакт файлы",
         "description": ".vcf контакт файлын йөкләгез яки сайлагыз. Аның карточкалары браузерда укыла."
       },
       {
+        "property": "displayAs",
         "title": "Күрсәтү рәвеше",
         "description": "Файлдагы эчтәлекне ничек күрсәтергә.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Башисем",
         "description": "Контактлар өстендә һәм таблица исеме буларак күрсәтелә."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Titolo de la templinio",
         "description": "Titolo por la kariera templinio (OER Schema: oer:name)."
       }

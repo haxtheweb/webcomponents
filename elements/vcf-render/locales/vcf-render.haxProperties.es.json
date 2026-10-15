@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Archivo de contactos",
         "description": "Sube o elige un archivo de contactos .vcf. Sus tarjetas se leen en el navegador."
       },
       {
+        "property": "displayAs",
         "title": "Mostrar como",
         "description": "Cómo presentar el contenido del archivo.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Encabezado",
         "description": "Se muestra sobre los contactos y como leyenda de la tabla."
       }

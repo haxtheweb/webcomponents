@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "타임라인 제목",
         "description": "경력 타임라인의 제목 (OER Schema: oer:name)."
       }

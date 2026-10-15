@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "အချိန်လိုင်း ခေါင်းစဉ်",
         "description": "အသက်မွေးဝမ်းကြောင်း အချိန်လိုင်းအတွက် ခေါင်းစဉ် (OER Schema: oer:name)။"
       }

@@ -284,6 +284,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   ) {
     this._programValues = values;
     this.commandContext = context;
+    // initialValue can come from the registered option (machineName launch,
+    // resolved below) or from the values bag itself: selecting a program row
+    // in Merlin dispatches the option's whole value object as `values`.
+    let initialValueFn =
+      values && typeof values.initialValue === "function"
+        ? values.initialValue
+        : null;
     // resolve program as string based name vs function passed in
     if (typeof program === "string") {
       const itemMatch = await this.allItems.find((item) => {
@@ -307,25 +314,24 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         // by promoting initialValue to `like` so the existing like != null
         // branch propagates it to this.like / programSearch / value and
         // the input field renders it.
-        if (
-          like == null &&
-          (!search || search === "") &&
-          typeof itemMatch.value.initialValue === "function"
-        ) {
-          const initialValue = await itemMatch.value.initialValue(values);
-          if (
-            initialValue &&
-            typeof initialValue === "string" &&
-            initialValue.trim() !== ""
-          ) {
-            like = initialValue;
-          }
+        if (typeof itemMatch.value.initialValue === "function") {
+          initialValueFn = itemMatch.value.initialValue;
         }
       } else {
         console.error("Incorrect program called", program);
       }
     } else {
       this._programToRun = program;
+    }
+    if (like == null && (!search || search === "") && initialValueFn) {
+      const initialValue = await initialValueFn(values);
+      if (
+        initialValue &&
+        typeof initialValue === "string" &&
+        initialValue.trim() !== ""
+      ) {
+        like = initialValue;
+      }
     }
     this.programSearch = search;
     // used to force a search prepopulation

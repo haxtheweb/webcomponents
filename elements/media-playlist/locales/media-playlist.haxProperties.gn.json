@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Papapy ojepurúva",
         "description": "Mba'e ojepurúva papapy oñepyrũ hag̃ua."
       },
       {
+        "property": "forCourse",
         "title": "Mbo'esyry",
         "description": "Mbo'esyry ojeguerekóva ko ñembopu rysýi rehe (mbo'esyry ñemoha'ãnga térã URL)."
       }

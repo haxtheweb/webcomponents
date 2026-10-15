@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Comhad teagmhálaithe",
         "description": "Uaslódáil nó roghnaigh comhad teagmhálaithe .vcf. Léitear a chártaí sa bhrabhsálaí."
       },
       {
+        "property": "displayAs",
         "title": "Taispeáin mar",
         "description": "Conas ábhar an chomhaid a chur i láthair.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Ceannteideal",
         "description": "Taispeántar é os cionn na dteagmhálaithe, agus mar fhotheideal an tábla."
       }

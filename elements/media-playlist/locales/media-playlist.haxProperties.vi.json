@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Chỉ mục hiện hành",
         "description": "Chỉ mục của mục bắt đầu phát."
       },
       {
+        "property": "forCourse",
         "title": "Khóa học",
         "description": "Khóa học mà danh sách phát này dành cho (mã khóa học hoặc URL)."
       }

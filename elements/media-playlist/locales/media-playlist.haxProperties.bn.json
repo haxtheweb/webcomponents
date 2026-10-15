@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "সক্রিয় সূচক",
         "description": "যে সক্রিয় আইটেম দিয়ে শুরু হবে তার সূচক।"
       },
       {
+        "property": "forCourse",
         "title": "কোর্স",
         "description": "যে কোর্সের জন্য এই প্লেলিস্ট (কোর্স শনাক্তকারী বা URL)।"
       }

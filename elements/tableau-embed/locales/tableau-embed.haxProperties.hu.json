@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "A Tableau-munkafüzet vagy -nézet URL-je."
       },
       {
+        "property": "height",
         "title": "Magasság",
         "description": "A vizualizáció magassága."
       },
       {
+        "property": "width",
         "title": "Szélesség",
         "description": "A vizualizáció szélessége."
       },
       {
+        "property": "toolbar",
         "title": "Eszköztár",
         "description": "Az eszköztár helyzete.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Lapfülek elrejtése",
         "description": "A munkalapfülek elrejtése."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Eszközelrendezés",
         "description": "A megjelenítendő eszközelrendezés.",
         "options": {

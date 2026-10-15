@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Актив индекс",
         "description": "Башлау өчен актив элементның индексы."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Бу уйнату исемлеге билгеләнгән курс (курс идентификаторы яки URL)."
       }

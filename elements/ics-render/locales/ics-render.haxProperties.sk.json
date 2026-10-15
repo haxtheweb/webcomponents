@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Súbor kalendára",
         "description": "Nahrajte alebo vyberte súbor kalendára .ics. Jeho udalosti sa načítajú v prehliadači."
       },
       {
+        "property": "displayAs",
         "title": "Zobraziť ako",
         "description": "Ako prezentovať obsah súboru.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Nadpis",
         "description": "Zobrazuje sa nad udalosťami a ako popis tabuľky. Predvolene sa použije vlastný názov kalendára."
       }

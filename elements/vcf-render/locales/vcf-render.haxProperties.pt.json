@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Arquivo de contatos",
         "description": "Envie ou escolha um arquivo de contatos .vcf. Seus cartões são lidos no navegador."
       },
       {
+        "property": "displayAs",
         "title": "Exibir como",
         "description": "Como apresentar o conteúdo do arquivo.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Cabeçalho",
         "description": "Exibido acima dos contatos e como legenda da tabela."
       }

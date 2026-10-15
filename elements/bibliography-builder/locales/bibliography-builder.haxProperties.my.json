@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ကိုးကားချက်များ",
         "description": "ဤကျမ်းကိုးစာရင်းရှိ ကိုးကားချက် အကြောင်းအရာများ"
       },
       {
+        "property": "forCourse",
         "title": "သင်တန်း",
         "description": "ဤကျမ်းကိုးစာရင်း ရည်ရွယ်သော သင်တန်း၏ သတ်မှတ်ချက် သို့မဟုတ် အမည် (OER Schema forCourse)။"
       }

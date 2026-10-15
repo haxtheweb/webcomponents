@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "የእውቂያ ፋይል",
         "description": "የ.vcf እውቂያ ፋይል ይስቀሉ ወይም ይምረጡ። ካርዶቹ በአሳሹ ውስጥ ይነበባሉ።"
       },
       {
+        "property": "displayAs",
         "title": "በዚህ መልክ አሳይ",
         "description": "ፋይሉ የያዘውን እንዴት ማቅረብ እንደሚቻል።",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "አርዕስት",
         "description": "ከእውቂያዎቹ በላይ እና እንደ ሰንጠረዡ መግለጫ ጽሑፍ ይታያል።"
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "ລາຍການເລີ່ມຕົ້ນ",
         "description": "ລຳດັບຂອງລາຍການທີ່ຈະເລີ່ມຕົ້ນ."
       },
       {
+        "property": "forCourse",
         "title": "ວິຊາຮຽນ",
         "description": "ວິຊາຮຽນທີ່ລາຍການຫຼິ້ນນີ້ມີໄວ້ສຳລັບ (ລະຫັດວິຊາ ຫຼື URL)."
       }

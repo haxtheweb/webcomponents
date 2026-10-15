@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fayil ɗin kalanda",
         "description": "Ɗora ko zaɓi fayil ɗin kalanda na .ics. Ana karanta tarukansa a cikin burauza."
       },
       {
+        "property": "displayAs",
         "title": "Nuna a matsayin",
         "description": "Yadda za a gabatar da abin da fayil ɗin ya ƙunsa.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Kanun labari",
         "description": "Ana nuna shi a saman taruka, kuma a matsayin taken tebur. Ta tsohuwa yana amfani da sunan kalandar kanta."
       }

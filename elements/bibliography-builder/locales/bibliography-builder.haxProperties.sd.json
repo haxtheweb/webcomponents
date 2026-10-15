@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "حوالا",
         "description": "هن ببليوگرافي ۾ حوالن جون شيون"
       },
       {
+        "property": "forCourse",
         "title": "ڪورس",
         "description": "ان ڪورس جي سڃاڻپ يا نالو جنهن لاءِ هي ببليوگرافي آهي (OER Schema forCourse)."
       }

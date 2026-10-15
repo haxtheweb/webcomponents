@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalenderfil",
         "description": "Ladda upp eller välj en .ics-kalenderfil. Dess händelser läses i webbläsaren."
       },
       {
+        "property": "displayAs",
         "title": "Visa som",
         "description": "Hur filens innehåll ska presenteras.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Rubrik",
         "description": "Visas ovanför händelserna och som tabellrubrik. Standard är kalenderns eget namn."
       }

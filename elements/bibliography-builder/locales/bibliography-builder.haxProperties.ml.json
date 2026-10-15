@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ഉദ്ധരണികൾ",
         "description": "ഈ ഗ്രന്ഥസൂചിയിലെ ഉദ്ധരണി ഇനങ്ങൾ"
       },
       {
+        "property": "forCourse",
         "title": "കോഴ്സ്",
         "description": "ഈ ഗ്രന്ഥസൂചി ഉദ്ദേശിച്ചിട്ടുള്ള കോഴ്സിന്റെ ഐഡന്റിഫയർ അല്ലെങ്കിൽ പേര് (OER Schema forCourse)."
       }

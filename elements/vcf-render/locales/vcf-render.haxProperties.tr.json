@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kişi dosyası",
         "description": "Bir .vcf kişi dosyası yükleyin veya seçin. Kartları tarayıcıda okunur."
       },
       {
+        "property": "displayAs",
         "title": "Görüntüleme biçimi",
         "description": "Dosyanın içeriğinin nasıl sunulacağı.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Başlık",
         "description": "Kişilerin üstünde ve tablo başlığı olarak gösterilir."
       }

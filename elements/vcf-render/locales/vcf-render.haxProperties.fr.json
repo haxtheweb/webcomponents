@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fichier de contacts",
         "description": "Téléversez ou choisissez un fichier de contacts .vcf. Ses fiches sont lues dans le navigateur."
       },
       {
+        "property": "displayAs",
         "title": "Afficher sous forme de",
         "description": "Comment présenter le contenu du fichier.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "En-tête",
         "description": "Affiché au-dessus des contacts et comme légende du tableau."
       }

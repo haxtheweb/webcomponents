@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Upphafsatriði",
         "description": "Númer atriðisins sem byrjað er á."
       },
       {
+        "property": "forCourse",
         "title": "Námskeið",
         "description": "Námskeiðið sem þessi spilunarlisti er ætlaður (auðkenni eða URL námskeiðs)."
       }

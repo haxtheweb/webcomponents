@@ -6,30 +6,37 @@
   "settings": {
     "configure": [
       {
+        "property": "name",
         "title": "Autora vārds",
         "description": "Autora pilns vārds."
       },
       {
+        "property": "image",
         "title": "Profila attēls",
         "description": "Autora profila fotoattēls."
       },
       {
+        "property": "title",
         "title": "Amata nosaukums",
         "description": "Autora amats vai loma."
       },
       {
+        "property": "description",
         "title": "Biogrāfija",
         "description": "Īsa autora biogrāfija."
       },
       {
+        "property": "profileUrl",
         "title": "Profila URL",
         "description": "Saite uz autora profila lapu."
       },
       {
+        "property": "socialLink",
         "title": "Sociālā tīkla saite",
         "description": "Saite uz sociālo mediju profilu."
       },
       {
+        "property": "socialHandle",
         "title": "Sociālā tīkla lietotājvārds",
         "description": "Lietotājvārds sociālajos medijos (piemēram, @username)."
       }

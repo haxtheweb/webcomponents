@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktibong index",
         "description": "Index ng aktibong item na pagsisimulan."
       },
       {
+        "property": "forCourse",
         "title": "Kurso",
         "description": "Ang kursong pinaglalaanan ng playlist na ito (identifier ng kurso o URL)."
       }

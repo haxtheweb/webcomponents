@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ਸਮਾਂ-ਰੇਖਾ ਦਾ ਸਿਰਲੇਖ",
         "description": "ਕਰੀਅਰ ਸਮਾਂ-ਰੇਖਾ ਲਈ ਸਿਰਲੇਖ (OER Schema: oer:name)।"
       }

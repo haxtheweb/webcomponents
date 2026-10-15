@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Бастапқы нөмір",
         "description": "Бастау керек белсенді элементтің нөмірі."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Осы ойнату тізімі арналған курс (курс идентификаторы немесе URL)."
       }

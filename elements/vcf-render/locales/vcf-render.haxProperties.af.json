@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaklêer",
         "description": "Laai 'n .vcf-kontaklêer op of kies een. Die kaarte word in die blaaier gelees."
       },
       {
+        "property": "displayAs",
         "title": "Vertoon as",
         "description": "Hoe om die inhoud van die lêer aan te bied.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Opskrif",
         "description": "Word bo die kontakte gewys, en as die tabelonderskrif."
       }

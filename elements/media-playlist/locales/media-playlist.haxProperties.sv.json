@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Startindex",
         "description": "Index för det objekt som ska visas först."
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Kursen som den här spellistan är avsedd för (kursidentifierare eller URL)."
       }

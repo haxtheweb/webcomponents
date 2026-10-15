@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "పరిచయాల ఫైల్",
         "description": ".vcf పరిచయాల ఫైల్‌ను అప్‌లోడ్ చేయండి లేదా ఎంచుకోండి. దాని కార్డ్‌లు బ్రౌజర్‌లో చదవబడతాయి."
       },
       {
+        "property": "displayAs",
         "title": "ఇలా ప్రదర్శించు",
         "description": "ఫైల్‌లోని కంటెంట్‌ను ఎలా ప్రదర్శించాలి.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "శీర్షిక",
         "description": "పరిచయాల పైన మరియు పట్టిక శీర్షికగా చూపబడుతుంది."
       }

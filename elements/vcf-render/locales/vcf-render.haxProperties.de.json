@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaktdatei",
         "description": "Eine .vcf-Kontaktdatei hochladen oder auswählen. Ihre Karten werden im Browser gelesen."
       },
       {
+        "property": "displayAs",
         "title": "Anzeigen als",
         "description": "Wie der Inhalt der Datei dargestellt wird.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Überschrift",
         "description": "Wird über den Kontakten und als Tabellenbeschriftung angezeigt."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Xronologiya sarlavhasi",
         "description": "Martaba xronologiyasi uchun sarlavha (OER Schema: oer:name)."
       }

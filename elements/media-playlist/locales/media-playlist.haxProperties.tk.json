@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Işjeň indeks",
         "description": "Başlanjak işjeň elementiň indeksi."
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Bu pleý-listiň niýetlenen kursy (kursuň identifikatory ýa-da URL)."
       }

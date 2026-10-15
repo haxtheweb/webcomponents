@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ចំណងជើងបន្ទាត់ពេលវេលា",
         "description": "ចំណងជើងសម្រាប់បន្ទាត់ពេលវេលាអាជីព (OER Schema: oer:name)។"
       }

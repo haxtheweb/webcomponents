@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ಉಲ್ಲೇಖಗಳು",
         "description": "ಈ ಗ್ರಂಥಸೂಚಿಯಲ್ಲಿರುವ ಉಲ್ಲೇಖ ಐಟಂಗಳು"
       },
       {
+        "property": "forCourse",
         "title": "ಕೋರ್ಸ್",
         "description": "ಈ ಗ್ರಂಥಸೂಚಿ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್‌ನ ಗುರುತಿಸುವಿಕೆ ಅಥವಾ ಹೆಸರು (OER Schema forCourse)."
       }

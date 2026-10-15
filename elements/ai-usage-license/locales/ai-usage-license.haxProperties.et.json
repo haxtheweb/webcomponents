@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "Litsents",
         "description": "Selle teose tehisintellekti kasutuslitsentsi tase. Üksikasjad: https://dmd-program.github.io/aiul/."
       },
       {
+        "property": "modifier",
         "title": "Meediamuutja",
         "description": "Valikuline meediavaldkonna muutja. Määrab meediatüübi, millele see litsents kehtib."
       },
       {
+        "property": "uri",
         "title": "AIUL URI (OER Schema)",
         "description": "OER Schema: tehisintellekti kasutuslitsentsi viitelehe URI. Kui pole määratud, täidetakse automaatselt litsentsi lingist."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ציטאַטן",
         "description": "ציטאַט־פּונקטן אין דער ביבליאָגראַפֿיע"
       },
       {
+        "property": "forCourse",
         "title": "קורס",
         "description": "אידענטיפֿיקאַטאָר אָדער נאָמען פֿונעם קורס פֿאַר וועלכן די ביבליאָגראַפֿיע איז (OER Schema forCourse)."
       }

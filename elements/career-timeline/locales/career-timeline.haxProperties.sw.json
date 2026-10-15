@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Kichwa cha rekodi ya matukio",
         "description": "Kichwa cha rekodi ya matukio ya taaluma (OER Schema: oer:name)."
       }

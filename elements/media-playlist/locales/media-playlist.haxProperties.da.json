@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Startelement",
         "description": "Nummeret på det element, der startes med."
       },
       {
+        "property": "forCourse",
         "title": "Kursus",
         "description": "Det kursus, som denne playliste er beregnet til (kursus-id eller URL)."
       }

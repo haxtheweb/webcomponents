@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL ya Tableau",
         "description": "URL ya pirtûka xebatê an dîtina Tableau."
       },
       {
+        "property": "height",
         "title": "Bilindahî",
         "description": "Bilindahiya dîtbariyê."
       },
       {
+        "property": "width",
         "title": "Firehî",
         "description": "Firehiya dîtbariyê."
       },
       {
+        "property": "toolbar",
         "title": "Darikê amûran",
         "description": "Cihê darikê amûran.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Taban veşêre",
         "description": "Tabên rûpelan veşêre."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Rêzkirina amûrê",
         "description": "Rêzkirina amûrê ya ku were nîşandan.",
         "options": {

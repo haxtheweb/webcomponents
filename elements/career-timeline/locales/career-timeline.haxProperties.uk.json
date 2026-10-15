@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Назва хронології",
         "description": "Назва кар'єрної хронології (OER Schema: oer:name)."
       }

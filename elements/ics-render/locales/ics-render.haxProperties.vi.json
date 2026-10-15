@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Tệp lịch",
         "description": "Tải lên hoặc chọn tệp lịch .ics. Các sự kiện trong đó được đọc ngay trên trình duyệt."
       },
       {
+        "property": "displayAs",
         "title": "Hiển thị dưới dạng",
         "description": "Cách trình bày nội dung của tệp.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Tiêu đề",
         "description": "Hiển thị phía trên các sự kiện và làm chú thích của bảng. Mặc định là tên của chính lịch đó."
       }

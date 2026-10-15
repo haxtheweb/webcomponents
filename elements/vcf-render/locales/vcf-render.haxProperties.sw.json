@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faili la anwani",
         "description": "Pakia au chagua faili la anwani la .vcf. Kadi zake husomwa kwenye kivinjari."
       },
       {
+        "property": "displayAs",
         "title": "Onyesha kama",
         "description": "Jinsi ya kuwasilisha yaliyomo kwenye faili.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Kichwa",
         "description": "Huonyeshwa juu ya anwani, na kama kichwa cha jedwali."
       }

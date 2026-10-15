@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "ملف جهات الاتصال",
         "description": "ارفع ملف جهات اتصال .vcf أو اختره. تُقرأ بطاقاته في المتصفح."
       },
       {
+        "property": "displayAs",
         "title": "العرض كـ",
         "description": "طريقة عرض محتوى الملف.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "العنوان الرئيسي",
         "description": "يظهر فوق جهات الاتصال، وكتسمية توضيحية للجدول."
       }

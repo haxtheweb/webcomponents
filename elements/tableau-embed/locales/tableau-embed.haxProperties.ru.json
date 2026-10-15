@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL книги или представления Tableau."
       },
       {
+        "property": "height",
         "title": "Высота",
         "description": "Высота визуализации."
       },
       {
+        "property": "width",
         "title": "Ширина",
         "description": "Ширина визуализации."
       },
       {
+        "property": "toolbar",
         "title": "Панель инструментов",
         "description": "Расположение панели инструментов.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Скрыть вкладки",
         "description": "Скрыть вкладки листов."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Макет устройства",
         "description": "Макет устройства для отображения.",
         "options": {

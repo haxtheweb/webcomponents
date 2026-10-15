@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "លេខចាប់ផ្ដើម",
         "description": "លេខធាតុសកម្មដែលត្រូវចាប់ផ្ដើម។"
       },
       {
+        "property": "forCourse",
         "title": "វគ្គសិក្សា",
         "description": "វគ្គសិក្សាដែលបញ្ជីចាក់នេះសម្រាប់ (លេខសម្គាល់វគ្គសិក្សា ឬ URL)។"
       }

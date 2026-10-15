@@ -4468,7 +4468,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "/site/navigation",
       value: {
         name: "Open a page in this site",
-        context: ["CMS"],
+        context: "CMS",
         program: async (input, values) => {
           let results = [];
           const manifest = toJS(store.routerManifest) || toJS(store.manifest);
@@ -4531,7 +4531,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       priority: -1,
       value: {
         name: "Insert a link to a page",
-        context: ["HAX", "/"],
+        context: "/",
         program: async (input, values) => {
           let results = [];
           const manifest = toJS(store.routerManifest) || toJS(store.manifest);
@@ -4578,7 +4578,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       value: {
         name: "View keyboard shortcuts",
-        context: ["CMS"],
+        context: "CMS",
         program: async (input) => {
           const shortcuts = KeyboardShortcutManagerInstance.getForDisplay();
           const results = [];

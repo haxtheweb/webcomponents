@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Titel fan de tiidline",
         "description": "In titel foar de karriêretiidline (OER Schema: oer:name)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Активний індекс",
         "description": "Індекс активного елемента, з якого почати."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Курс, для якого призначений цей список відтворення (ідентифікатор курсу або URL)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "सुरुको क्रमाङ्क",
         "description": "सुरु गर्ने सक्रिय वस्तुको क्रमाङ्क।"
       },
       {
+        "property": "forCourse",
         "title": "पाठ्यक्रम",
         "description": "यो प्लेलिस्ट जुन पाठ्यक्रमका लागि हो (पाठ्यक्रम पहिचानकर्ता वा URL)।"
       }

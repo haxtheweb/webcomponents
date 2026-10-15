@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Файл контактов",
         "description": "Загрузите или выберите файл контактов .vcf. Его карточки читаются в браузере."
       },
       {
+        "property": "displayAs",
         "title": "Отображать как",
         "description": "Как представить содержимое файла.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Заголовок",
         "description": "Показывается над контактами и как подпись к таблице."
       }

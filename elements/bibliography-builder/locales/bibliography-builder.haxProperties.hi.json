@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "उद्धरण",
         "description": "इस ग्रंथसूची में उद्धरण आइटम"
       },
       {
+        "property": "forCourse",
         "title": "पाठ्यक्रम",
         "description": "उस पाठ्यक्रम का पहचानकर्ता या नाम जिसके लिए यह ग्रंथसूची है (OER Schema forCourse)."
       }

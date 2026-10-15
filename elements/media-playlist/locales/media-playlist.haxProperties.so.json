@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Lambarka bilowga",
         "description": "Lambarka shayga laga bilaabayo."
       },
       {
+        "property": "forCourse",
         "title": "Koorso",
         "description": "Koorsada liiskan loogu talagalay (aqoonsiga koorsada ama URL)."
       }

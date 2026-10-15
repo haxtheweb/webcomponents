@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ຫົວຂໍ້ລຳດັບເວລາ",
         "description": "ຫົວຂໍ້ສຳລັບລຳດັບເວລາອາຊີບ (OER Schema: oer:name)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Tydlyntitel",
         "description": "'n Titel vir die loopbaantydlyn (OER Schema: oer:name)."
       }

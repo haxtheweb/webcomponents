@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ఉల్లేఖనాలు",
         "description": "ఈ గ్రంథసూచిలోని ఉల్లేఖన అంశాలు"
       },
       {
+        "property": "forCourse",
         "title": "కోర్సు",
         "description": "ఈ గ్రంథసూచి ఉద్దేశించిన కోర్సు యొక్క ఐడెంటిఫైయర్ లేదా పేరు (OER Schema forCourse)."
       }

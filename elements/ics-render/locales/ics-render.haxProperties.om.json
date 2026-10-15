@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faayilii kaalaandarii",
         "description": "Faayilii kaalaandarii .ics ol fe'i ykn filadhu. Taateewwan isaa barbaacha keessatti dubbifamu."
       },
       {
+        "property": "displayAs",
         "title": "Akkasitti agarsiisi",
         "description": "Waan faayilii keessa jiru akkamitti akka dhiyaatu.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Mata duree",
         "description": "Taateewwan olitti, akkasumas akka ibsa gabateetti agarsiifama. Durtiin isaa maqaa kaalaandarichaa ti."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "উদ্ধৃতি",
         "description": "এই গ্রন্থপঞ্জির উদ্ধৃতি আইটেমসমূহ"
       },
       {
+        "property": "forCourse",
         "title": "কোর্স",
         "description": "যে কোর্সের জন্য এই গ্রন্থপঞ্জি, তার শনাক্তকারী বা নাম (OER Schema forCourse)।"
       }

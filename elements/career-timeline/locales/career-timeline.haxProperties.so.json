@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Cinwaanka taariikhda",
         "description": "Cinwaan loogu talagalay taariikhda shaqada (OER Schema: oer:name)."
       }

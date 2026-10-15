@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Tytuł osi czasu",
         "description": "Tytuł osi czasu kariery (OER Schema: oer:name)."
       }

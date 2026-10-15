@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Teitl y llinell amser",
         "description": "Teitl ar gyfer y llinell amser gyrfa (OER Schema: oer:name)."
       }

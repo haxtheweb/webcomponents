@@ -1320,10 +1320,13 @@ function haxElementToNode(haxSchema) {
           frag.properties[property].readOnly
         ) {
         } else {
+          // assign by property name: arrays are JS properties, and the
+          // dash-cased attribute name (media-items) never matches a camelCase
+          // property (mediaItems), so the value used to be lost
           if (newNode.set) {
-            newNode.set(attributeName, properties[property]);
+            newNode.set(property, properties[property]);
           } else {
-            newNode[attributeName] = [...properties[property]];
+            newNode[property] = [...properties[property]];
           }
         }
       } else if (
@@ -1339,9 +1342,9 @@ function haxElementToNode(haxSchema) {
         ) {
         } else {
           if (newNode.set) {
-            newNode.set(attributeName, properties[property]);
+            newNode.set(property, properties[property]);
           } else {
-            newNode[attributeName] = { ...properties[property] };
+            newNode[property] = { ...properties[property] };
           }
         }
       } else {

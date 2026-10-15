@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalenderfil",
         "description": "Upload eller vælg en .ics-kalenderfil. Dens begivenheder læses i browseren."
       },
       {
+        "property": "displayAs",
         "title": "Vis som",
         "description": "Hvordan filens indhold skal præsenteres.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Overskrift",
         "description": "Vises over begivenhederne og som tabeltekst. Standard er kalenderens eget navn."
       }
