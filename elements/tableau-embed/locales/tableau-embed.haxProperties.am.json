@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "የTableau ምስላዊ መግለጫዎችን ከማጋሪያ URL ይክተቱ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "ወደ Tableau የሥራ መጽሐፍ ወይም እይታ የሚወስድ URL።"
+      },
+      {
+        "title": "ቁመት",
+        "description": "የምስላዊ መግለጫው ቁመት።"
+      },
+      {
+        "title": "ስፋት",
+        "description": "የምስላዊ መግለጫው ስፋት።"
+      },
+      {
+        "title": "የመሣሪያ አሞሌ",
+        "description": "የመሣሪያ አሞሌ ቦታ።",
+        "options": {
+          "top": "ላይ",
+          "bottom": "ታች",
+          "hidden": "የተደበቀ"
+        }
+      },
+      {
+        "title": "ትሮችን ደብቅ",
+        "description": "የሉህ ትሮችን ደብቅ።"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "የመሣሪያ አቀማመጥ",
+        "description": "የሚታይበት የመሣሪያ አቀማመጥ።",
+        "options": {
+          "desktop": "ዴስክቶፕ",
+          "tablet": "ታብሌት",
+          "phone": "ስልክ"
+        }
+      }
+    ]
+  }
+}

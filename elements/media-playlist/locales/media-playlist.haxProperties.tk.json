@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Media pleý-listi",
+    "description": "Wideo we audio pleýerleri «pleýer + gapdal panel» ýerleşişinde görkezýän pleý-list."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Işjeň indeks",
+        "description": "Başlanjak işjeň elementiň indeksi."
+      },
+      {
+        "title": "Kurs",
+        "description": "Bu pleý-listiň niýetlenen kursy (kursuň identifikatory ýa-da URL)."
+      }
+    ]
+  }
+}

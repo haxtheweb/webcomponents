@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Tinye ngosipụta Tableau site na URL nkekọrịta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL gaa na akwụkwọ ọrụ ma ọ bụ ngosi Tableau."
+      },
+      {
+        "title": "Ịdị elu",
+        "description": "Ịdị elu ngosipụta."
+      },
+      {
+        "title": "Obosara",
+        "description": "Obosara ngosipụta."
+      },
+      {
+        "title": "Ogwe ngwá ọrụ",
+        "description": "Ọnọdụ ogwe ngwá ọrụ.",
+        "options": {
+          "top": "N'elu",
+          "bottom": "N'ala",
+          "hidden": "Zoro ezo"
+        }
+      },
+      {
+        "title": "Zoo taabụ",
+        "description": "Zoo taabụ mpempe akwụkwọ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nhazi ngwaọrụ",
+        "description": "Nhazi ngwaọrụ a ga-egosi.",
+        "options": {
+          "desktop": "Kọmputa desktọpụ",
+          "tablet": "Tablet",
+          "phone": "Ekwentị"
+        }
+      }
+    ]
+  }
+}

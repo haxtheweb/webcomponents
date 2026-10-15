@@ -1,0 +1,11 @@
+{
+  "event": "Renginys",
+  "when": "Kada",
+  "where": "Kur",
+  "details": "Išsami informacija",
+  "allDay": "Visą dieną",
+  "repeats": "Kartojasi",
+  "loadingCalendar": "Įkeliamas kalendorius",
+  "calendarUnavailable": "Kalendorius nepasiekiamas",
+  "noEvents": "Šiame kalendoriuje renginių nėra"
+}

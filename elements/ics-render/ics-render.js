@@ -461,6 +461,14 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
    * @param {object} store the HAX store
    */
   haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `ics-render.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
     if (
       store &&
       Array.isArray(store.validGizmoTypes) &&

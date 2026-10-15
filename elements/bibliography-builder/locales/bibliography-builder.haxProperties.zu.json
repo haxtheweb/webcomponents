@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Umakhi webhayibhiliyografi",
+    "description": "Ithuluzi lokwakha nokuphatha amabhayibhiliyografi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izicaphuno",
+        "description": "Izinto zezicaphuno kule bhayibhiliyografi"
+      },
+      {
+        "title": "Isifundo",
+        "description": "Isihlonzi noma igama lesifundo le bhayibhiliyografi eyenzelwe sona (OER Schema forCourse)."
+      }
+    ]
+  }
+}

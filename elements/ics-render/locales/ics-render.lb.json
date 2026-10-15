@@ -1,0 +1,11 @@
+{
+  "event": "Evenement",
+  "when": "Wéini",
+  "where": "Wou",
+  "details": "Detailer",
+  "allDay": "Ganzen Dag",
+  "repeats": "Widderhëlt sech",
+  "loadingCalendar": "Kalenner gëtt gelueden",
+  "calendarUnavailable": "Kalenner net verfügbar",
+  "noEvents": "Keng Evenementer an dësem Kalenner"
+}

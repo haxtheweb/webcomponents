@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Media uyarina sinri",
+    "description": "Video, audio puriyachiqkunata puriyachiq + kinray layoutpi rikuchiq uyarina sinri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qallariq yupay",
+        "description": "Mayqin imamanta qallarinapaq yupaynin."
+      },
+      {
+        "title": "Yachay kurso",
+        "description": "Kay uyarina sinri maypaq kasqan yachay kurso (kursopa riqsichiynin utaq URL)."
+      }
+    ]
+  }
+}

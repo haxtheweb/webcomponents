@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Предишен слайд",
+  "nextSlide": "Следващ слайд",
+  "viewAllSlides": "Преглед на всички слайдове",
+  "viewOneSlide": "Преглед на слайдовете един по един",
+  "presentFullScreen": "Представяне на цял екран",
+  "exitFullScreen": "Изход от цял екран",
+  "copyLinkToSlide": "Копиране на връзка към този слайд",
+  "linkCopied": "Връзката е копирана",
+  "speakerNotes": "Бележки на говорителя",
+  "loadingPresentation": "Зареждане на презентацията",
+  "presentationUnavailable": "Презентацията не е налична",
+  "slide": "Слайд",
+  "downloadPresentation": "Изтегляне на презентацията"
+}

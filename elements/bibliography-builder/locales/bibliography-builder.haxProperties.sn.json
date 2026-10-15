@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Muvaki webibliography",
+    "description": "Chishandiso chekugadzira nekutarisira mabibliography"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zvitaurwa",
+        "description": "Zvitaurwa zviri mubibliography iyi"
+      },
+      {
+        "title": "Kosi",
+        "description": "Chiziviso kana zita rekosi iyo bibliography iyi yakagadzirirwa (OER Schema forCourse)."
+      }
+    ]
+  }
+}

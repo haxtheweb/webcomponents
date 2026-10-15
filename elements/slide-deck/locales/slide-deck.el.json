@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Προηγούμενη διαφάνεια",
+  "nextSlide": "Επόμενη διαφάνεια",
+  "viewAllSlides": "Προβολή όλων των διαφανειών",
+  "viewOneSlide": "Προβολή μίας διαφάνειας τη φορά",
+  "presentFullScreen": "Παρουσίαση σε πλήρη οθόνη",
+  "exitFullScreen": "Έξοδος από πλήρη οθόνη",
+  "copyLinkToSlide": "Αντιγραφή συνδέσμου προς αυτή τη διαφάνεια",
+  "linkCopied": "Ο σύνδεσμος αντιγράφηκε",
+  "speakerNotes": "Σημειώσεις ομιλητή",
+  "loadingPresentation": "Φόρτωση παρουσίασης",
+  "presentationUnavailable": "Η παρουσίαση δεν είναι διαθέσιμη",
+  "slide": "Διαφάνεια",
+  "downloadPresentation": "Λήψη παρουσίασης"
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Benamkan visualisasi Tableau daripada URL perkongsian."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL ke buku kerja atau paparan Tableau."
+      },
+      {
+        "title": "Tinggi",
+        "description": "Tinggi visualisasi."
+      },
+      {
+        "title": "Lebar",
+        "description": "Lebar visualisasi."
+      },
+      {
+        "title": "Bar alat",
+        "description": "Kedudukan bar alat.",
+        "options": {
+          "top": "Atas",
+          "bottom": "Bawah",
+          "hidden": "Tersembunyi"
+        }
+      },
+      {
+        "title": "Sembunyikan tab",
+        "description": "Sembunyikan tab helaian."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Susun atur peranti",
+        "description": "Susun atur peranti untuk dipaparkan.",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

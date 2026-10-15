@@ -1,0 +1,11 @@
+{
+  "event": "אירוע",
+  "when": "מתי",
+  "where": "איפה",
+  "details": "פרטים",
+  "allDay": "כל היום",
+  "repeats": "חוזר",
+  "loadingCalendar": "טוען לוח שנה",
+  "calendarUnavailable": "לוח השנה אינו זמין",
+  "noEvents": "אין אירועים בלוח שנה זה"
+}

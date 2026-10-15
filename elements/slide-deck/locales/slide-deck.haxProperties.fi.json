@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Diaesitys",
+    "description": "Esitä tuotu PowerPoint-esitys dia kerrallaan puhujan muistiinpanojen kanssa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Esityksen luettelotiedosto",
+        "description": "Pudota .pptx-tiedosto, niin se muunnetaan automaattisesti diaesitykseksi. Kentän arvoksi asetetaan tuloksena syntyvän deck.json-tiedoston polku."
+      },
+      {
+        "title": "Esityksen tunnus",
+        "description": "Tarvitaan vain, kun sivulla on useampi kuin yksi esitys, jotta dialinkit pysyvät erillisinä"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Salli lataus",
+        "description": "Näytä soittimen ohjaimissa painike alkuperäisen PowerPoint-tiedoston lataamiseen"
+      }
+    ]
+  }
+}

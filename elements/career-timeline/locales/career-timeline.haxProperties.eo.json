@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Kariera templinio",
+    "description": "Kariera templinio kun organizoj, roloj kaj aliaj datumoj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo de la templinio",
+        "description": "Titolo por la kariera templinio (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

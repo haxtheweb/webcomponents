@@ -1,0 +1,11 @@
+{
+  "name": "Ad",
+  "position": "Pozisyon",
+  "organization": "Kuruluş",
+  "email": "E-posta",
+  "phone": "Telefon",
+  "address": "Adres",
+  "loadingContacts": "Kişiler yükleniyor",
+  "contactsUnavailable": "Kişiler kullanılamıyor",
+  "noContacts": "Bu dosyada kişi yok"
+}

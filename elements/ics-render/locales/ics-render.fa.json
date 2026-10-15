@@ -1,0 +1,11 @@
+{
+  "event": "رویداد",
+  "when": "زمان",
+  "where": "مکان",
+  "details": "جزئیات",
+  "allDay": "تمام روز",
+  "repeats": "تکرار",
+  "loadingCalendar": "در حال بارگیری تقویم",
+  "calendarUnavailable": "تقویم در دسترس نیست",
+  "noEvents": "هیچ رویدادی در این تقویم نیست"
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Karta autora",
+    "description": "Zobrazí informácie o autorovi s fotografiou, životopisom a odkazmi na sociálne siete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Meno autora",
+        "description": "Celé meno autora."
+      },
+      {
+        "title": "Profilový obrázok",
+        "description": "Profilová fotografia autora."
+      },
+      {
+        "title": "Pracovná pozícia",
+        "description": "Pozícia alebo rola autora."
+      },
+      {
+        "title": "Životopis",
+        "description": "Krátky životopis autora."
+      },
+      {
+        "title": "URL profilu",
+        "description": "Odkaz na profilovú stránku autora."
+      },
+      {
+        "title": "Odkaz na sociálnu sieť",
+        "description": "Odkaz na profil na sociálnej sieti."
+      },
+      {
+        "title": "Používateľské meno",
+        "description": "Používateľské meno na sociálnej sieti (napríklad @username)."
+      }
+    ]
+  }
+}

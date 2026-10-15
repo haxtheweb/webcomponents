@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Cárta údair",
+    "description": "Taispeáin faisnéis an údair le grianghraf, beathaisnéis agus naisc shóisialta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ainm an údair",
+        "description": "Ainm iomlán an údair."
+      },
+      {
+        "title": "Íomhá phróifíle",
+        "description": "Grianghraf próifíle an údair."
+      },
+      {
+        "title": "Teideal poist",
+        "description": "Post nó ról an údair."
+      },
+      {
+        "title": "Beathaisnéis",
+        "description": "Beathaisnéis ghearr an údair."
+      },
+      {
+        "title": "URL na próifíle",
+        "description": "Nasc chuig leathanach próifíle an údair."
+      },
+      {
+        "title": "Nasc sóisialta",
+        "description": "Nasc chuig próifíl ar na meáin shóisialta."
+      },
+      {
+        "title": "Leasainm sóisialta",
+        "description": "Leasainm ar na meáin shóisialta (mar shampla @username)."
+      }
+    ]
+  }
+}

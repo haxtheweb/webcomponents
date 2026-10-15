@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kaardii barreessaa",
+    "description": "Odeeffannoo barreessaa suuraa, seenaa gabaabaa fi liinkii miidiyaa hawaasaa waliin agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa barreessaa",
+        "description": "Maqaa guutuu barreessaa."
+      },
+      {
+        "title": "Suuraa piroofaayilii",
+        "description": "Suuraa piroofaayilii barreessaa."
+      },
+      {
+        "title": "Gahee hojii",
+        "description": "Sadarkaa ykn gahee barreessaa."
+      },
+      {
+        "title": "Seenaa gabaabaa",
+        "description": "Seenaa jireenyaa barreessaa gabaabaa."
+      },
+      {
+        "title": "URL piroofaayilii",
+        "description": "Liinkii fuula piroofaayilii barreessaatti geessu."
+      },
+      {
+        "title": "Liinkii miidiyaa hawaasaa",
+        "description": "Liinkii piroofaayilii miidiyaa hawaasaatti geessu."
+      },
+      {
+        "title": "Maqaa fayyadamaa miidiyaa hawaasaa",
+        "description": "Maqaa fayyadamaa miidiyaa hawaasaa (fakkeenyaaf @username)."
+      }
+    ]
+  }
+}

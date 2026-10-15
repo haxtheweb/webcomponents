@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kontaktuak",
+    "description": "Erakutsi kontaktu-fitxategi bateko pertsonak pertsona-txartel, aipu, taula edo zerrenda gisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kontaktu-fitxategia",
+        "description": "Kargatu edo aukeratu .vcf kontaktu-fitxategi bat. Haren txartelak nabigatzailean irakurtzen dira."
+      },
+      {
+        "title": "Erakutsi honela",
+        "description": "Fitxategiaren edukia nola aurkeztu.",
+        "options": {
+          "cards": "Pertsona-txartelak",
+          "quotes": "Aipuak",
+          "table": "Taula",
+          "list": "Zerrenda"
+        }
+      },
+      {
+        "title": "Goiburua",
+        "description": "Kontaktuen gainean erakusten da, baita taularen epigrafe gisa ere."
+      }
+    ]
+  }
+}

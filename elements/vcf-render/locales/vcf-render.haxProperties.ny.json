@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Olumikizana nawo",
+    "description": "Onetsani anthu a mu fayilo ya olumikizana nawo ngati makhadi a anthu, mawu ogwidwa, tebulo kapena mndandanda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fayilo ya olumikizana nawo",
+        "description": "Kwezani kapena sankhani fayilo ya olumikizana nawo ya .vcf. Makhadi ake amawerengedwa mu msakatuli."
+      },
+      {
+        "title": "Onetsani ngati",
+        "description": "Momwe mungaonetsere zomwe zili mu fayilo.",
+        "options": {
+          "cards": "Makhadi a anthu",
+          "quotes": "Mawu ogwidwa",
+          "table": "Tebulo",
+          "list": "Mndandanda"
+        }
+      },
+      {
+        "title": "Mutu",
+        "description": "Umaonetsedwa pamwamba pa olumikizana nawo, komanso ngati mutu wa tebulo."
+      }
+    ]
+  }
+}

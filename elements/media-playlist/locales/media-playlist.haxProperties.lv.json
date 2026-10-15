@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Multivides atskaņošanas saraksts",
+    "description": "Atskaņošanas saraksts, kas attēlo video un audio atskaņotājus izkārtojumā ar atskaņotāju un sānjoslu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sākuma vienums",
+        "description": "Vienuma numurs, ar kuru sākt."
+      },
+      {
+        "title": "Kurss",
+        "description": "Kurss, kuram paredzēts šis atskaņošanas saraksts (kursa identifikators vai URL)."
+      }
+    ]
+  }
+}

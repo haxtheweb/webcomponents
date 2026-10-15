@@ -877,8 +877,18 @@ describe('slide-deck behavior', () => {
       html`<slide-deck deck-id="hax"></slide-deck>`,
     )
     expect(element.haxHooks()).to.deep.equal({
+      gizmoRegistration: 'haxgizmoRegistration',
       processFileUpload: 'haxprocessFileUpload',
     })
+    // gizmoRegistration registers the haxProperties locales with i18n-manager
+    const registered = []
+    const onRegister = (e) => registered.push(e.detail)
+    globalThis.addEventListener('i18n-manager-register-element', onRegister)
+    element.haxgizmoRegistration()
+    globalThis.removeEventListener('i18n-manager-register-element', onRegister)
+    expect(
+      registered.some((d) => d.namespace === 'slide-deck.haxProperties'),
+    ).to.equal(true)
     // nothing to transform
     expect(element.haxprocessFileUpload(null, null)).to.equal(false)
     expect(element.haxprocessFileUpload({}, null)).to.equal(false)

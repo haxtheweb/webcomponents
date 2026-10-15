@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Playlist multimédia",
+    "description": "Une playlist qui présente des lecteurs vidéo et audio dans une disposition lecteur + barre latérale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Index actif",
+        "description": "Index de l’élément actif de départ."
+      },
+      {
+        "title": "Cours",
+        "description": "Le cours auquel cette playlist est destinée (identifiant ou URL du cours)."
+      }
+    ]
+  }
+}

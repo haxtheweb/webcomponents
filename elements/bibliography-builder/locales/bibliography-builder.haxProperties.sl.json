@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Graditelj bibliografije",
+    "description": "Orodje za ustvarjanje in upravljanje bibliografij"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citati",
+        "description": "Citirani viri v tej bibliografiji"
+      },
+      {
+        "title": "Predmet",
+        "description": "Identifikator ali ime predmeta, za katerega je ta bibliografija (OER Schema forCourse)."
+      }
+    ]
+  }
+}

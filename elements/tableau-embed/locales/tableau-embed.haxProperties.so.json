@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Ku dhex dar muuqaalada xogta Tableau adigoo isticmaalaya URL wadaag ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL-ka Tableau",
+        "description": "URL-ka buugga shaqada ama muuqaalka Tableau."
+      },
+      {
+        "title": "Dherer",
+        "description": "Dhererka muuqaalka."
+      },
+      {
+        "title": "Ballac",
+        "description": "Ballaca muuqaalka."
+      },
+      {
+        "title": "Barta qalabka",
+        "description": "Meesha barta qalabka.",
+        "options": {
+          "top": "Sare",
+          "bottom": "Hoose",
+          "hidden": "Qarsoon"
+        }
+      },
+      {
+        "title": "Qari tabaha",
+        "description": "Qari tabaha xaashiyaha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Qaabka qalabka",
+        "description": "Qaabka qalabka ee la soo bandhigayo.",
+        "options": {
+          "desktop": "Kombiyuutar",
+          "tablet": "Tablet",
+          "phone": "Telefoon"
+        }
+      }
+    ]
+  }
+}

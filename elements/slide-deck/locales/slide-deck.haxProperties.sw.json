@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mfululizo wa slaidi",
+    "description": "Wasilisha wasilisho la PowerPoint lililoingizwa slaidi kwa slaidi, pamoja na maelezo ya mzungumzaji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faili la maelezo ya wasilisho",
+        "description": "Dondosha faili la .pptx nalo litageuzwa kiotomatiki kuwa mfululizo wa slaidi. Sehemu hii huwekwa kwenye njia ya deck.json inayotokana."
+      },
+      {
+        "title": "Kitambulisho cha wasilisho",
+        "description": "Kinahitajika tu ukurasa unapokuwa na wasilisho zaidi ya moja, ili viungo vya slaidi vibaki tofauti"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruhusu kupakua",
+        "description": "Onyesha kitufe cha kupakua faili asili la PowerPoint katika vidhibiti vya kichezaji"
+      }
+    ]
+  }
+}

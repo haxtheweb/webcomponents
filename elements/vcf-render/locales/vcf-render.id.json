@@ -1,0 +1,11 @@
+{
+  "name": "Nama",
+  "position": "Jabatan",
+  "organization": "Organisasi",
+  "email": "Email",
+  "phone": "Telepon",
+  "address": "Alamat",
+  "loadingContacts": "Memuat kontak",
+  "contactsUnavailable": "Kontak tidak tersedia",
+  "noContacts": "Tidak ada kontak dalam file ini"
+}

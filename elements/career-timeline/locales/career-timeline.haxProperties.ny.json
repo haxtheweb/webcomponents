@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mbiri ya ntchito",
+    "description": "Ndandanda ya mbiri ya ntchito yokhala ndi mabungwe, maudindo ndi zina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu wa ndandanda",
+        "description": "Mutu wa ndandanda ya mbiri ya ntchito (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

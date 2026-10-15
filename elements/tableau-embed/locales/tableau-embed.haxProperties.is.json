@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Fella inn Tableau-myndræna framsetningu frá deilingarslóð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau-slóð",
+        "description": "URL á Tableau-vinnubók eða yfirlit."
+      },
+      {
+        "title": "Hæð",
+        "description": "Hæð framsetningar."
+      },
+      {
+        "title": "Breidd",
+        "description": "Breidd framsetningar."
+      },
+      {
+        "title": "Tækjastika",
+        "description": "Staðsetning tækjastiku.",
+        "options": {
+          "top": "Efst",
+          "bottom": "Neðst",
+          "hidden": "Falin"
+        }
+      },
+      {
+        "title": "Fela flipa",
+        "description": "Fela flipa vinnublaða."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Útlit tækis",
+        "description": "Útlit tækis sem á að birta.",
+        "options": {
+          "desktop": "Borðtölva",
+          "tablet": "Spjaldtölva",
+          "phone": "Sími"
+        }
+      }
+    ]
+  }
+}

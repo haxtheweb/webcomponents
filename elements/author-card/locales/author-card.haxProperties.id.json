@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kartu penulis",
+    "description": "Tampilkan informasi penulis dengan foto, biografi singkat, dan tautan media sosial."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nama penulis",
+        "description": "Nama lengkap penulis."
+      },
+      {
+        "title": "Gambar profil",
+        "description": "Foto profil penulis."
+      },
+      {
+        "title": "Jabatan",
+        "description": "Posisi atau peran penulis."
+      },
+      {
+        "title": "Bio",
+        "description": "Biografi singkat penulis."
+      },
+      {
+        "title": "URL profil",
+        "description": "Tautan ke halaman profil penulis."
+      },
+      {
+        "title": "Tautan media sosial",
+        "description": "Tautan ke profil media sosial."
+      },
+      {
+        "title": "Nama pengguna media sosial",
+        "description": "Nama pengguna media sosial (misalnya @username)."
+      }
+    ]
+  }
+}

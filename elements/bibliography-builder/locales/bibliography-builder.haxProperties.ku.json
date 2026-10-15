@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Avakerê bîbliyografyayê",
+    "description": "Amûrek ji bo afirandin û rêvebirina bîbliyografyayan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jêgirtin",
+        "description": "Hêmanên jêgirtinê di vê bîbliyografyayê de"
+      },
+      {
+        "title": "Ders",
+        "description": "Nasname an navê dersa ku ev bîbliyografya jê re ye (OER Schema forCourse)."
+      }
+    ]
+  }
+}

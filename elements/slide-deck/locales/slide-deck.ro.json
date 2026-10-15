@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Diapozitivul anterior",
+  "nextSlide": "Diapozitivul următor",
+  "viewAllSlides": "Vezi toate diapozitivele",
+  "viewOneSlide": "Vezi câte un diapozitiv",
+  "presentFullScreen": "Prezintă pe tot ecranul",
+  "exitFullScreen": "Ieși din ecran complet",
+  "copyLinkToSlide": "Copiază linkul către acest diapozitiv",
+  "linkCopied": "Link copiat",
+  "speakerNotes": "Note pentru prezentator",
+  "loadingPresentation": "Se încarcă prezentarea",
+  "presentationUnavailable": "Prezentare indisponibilă",
+  "slide": "Diapozitiv",
+  "downloadPresentation": "Descarcă prezentarea"
+}

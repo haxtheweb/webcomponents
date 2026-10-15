@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Garis wektu karier",
+    "description": "Garis wektu karier sing isiné organisasi, peran, lan data liyané"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irah-irahan garis wektu",
+        "description": "Irah-irahan kanggo garis wektu karier (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

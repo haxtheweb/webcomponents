@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Szakmai idővonal",
+    "description": "Szervezeteket, szerepköröket és egyéb adatokat tartalmazó szakmai idővonal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idővonal címe",
+        "description": "A szakmai idővonal címe (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

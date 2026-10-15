@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Thẻ tác giả",
+    "description": "Hiển thị thông tin tác giả kèm ảnh, tiểu sử và liên kết mạng xã hội."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tên tác giả",
+        "description": "Họ và tên đầy đủ của tác giả."
+      },
+      {
+        "title": "Ảnh hồ sơ",
+        "description": "Ảnh hồ sơ của tác giả."
+      },
+      {
+        "title": "Chức danh",
+        "description": "Chức vụ hoặc vai trò của tác giả."
+      },
+      {
+        "title": "Tiểu sử",
+        "description": "Tiểu sử ngắn của tác giả."
+      },
+      {
+        "title": "URL hồ sơ",
+        "description": "Liên kết đến trang hồ sơ của tác giả."
+      },
+      {
+        "title": "Liên kết mạng xã hội",
+        "description": "Liên kết đến hồ sơ mạng xã hội."
+      },
+      {
+        "title": "Tên tài khoản mạng xã hội",
+        "description": "Tên tài khoản mạng xã hội (ví dụ @username)."
+      }
+    ]
+  }
+}

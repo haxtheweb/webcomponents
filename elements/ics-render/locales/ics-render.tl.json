@@ -1,0 +1,11 @@
+{
+  "event": "Kaganapan",
+  "when": "Kailan",
+  "where": "Saan",
+  "details": "Mga detalye",
+  "allDay": "Buong araw",
+  "repeats": "Umuulit",
+  "loadingCalendar": "Nilo-load ang kalendaryo",
+  "calendarUnavailable": "Hindi available ang kalendaryo",
+  "noEvents": "Walang kaganapan sa kalendaryong ito"
+}

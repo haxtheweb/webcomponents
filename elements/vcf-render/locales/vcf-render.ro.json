@@ -1,0 +1,11 @@
+{
+  "name": "Nume",
+  "position": "Funcție",
+  "organization": "Organizație",
+  "email": "E-mail",
+  "phone": "Telefon",
+  "address": "Adresă",
+  "loadingContacts": "Se încarcă contactele",
+  "contactsUnavailable": "Contacte indisponibile",
+  "noContacts": "Nu există contacte în acest fișier"
+}

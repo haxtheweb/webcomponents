@@ -1,0 +1,11 @@
+{
+  "event": "Taro",
+  "when": "Yaushe",
+  "where": "Ina",
+  "details": "Cikakkun bayanai",
+  "allDay": "Duk yini",
+  "repeats": "Yana maimaituwa",
+  "loadingCalendar": "Ana loda kalanda",
+  "calendarUnavailable": "Babu kalanda",
+  "noEvents": "Babu taruka a wannan kalanda"
+}

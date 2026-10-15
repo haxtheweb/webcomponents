@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Oxhumana nabo",
+    "description": "Bonisa abantu abasefayeleni loxhumana nabo njengamakhadi abantu, izicaphuno, ithebula noma uhlu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayela loxhumana nabo",
+        "description": "Layisha noma ukhethe ifayela loxhumana nabo le-.vcf. Amakhadi alo afundwa kusiphequluli."
+      },
+      {
+        "title": "Bonisa njenga",
+        "description": "Indlela yokwethula okuqukethwe yifayela.",
+        "options": {
+          "cards": "Amakhadi abantu",
+          "quotes": "Izicaphuno",
+          "table": "Ithebula",
+          "list": "Uhlu"
+        }
+      },
+      {
+        "title": "Isihloko",
+        "description": "Kuboniswa ngaphezu koxhumana nabo, futhi njengesihloko sethebula."
+      }
+    ]
+  }
+}

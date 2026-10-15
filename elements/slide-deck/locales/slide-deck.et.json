@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Eelmine slaid",
+  "nextSlide": "Järgmine slaid",
+  "viewAllSlides": "Kuva kõik slaidid",
+  "viewOneSlide": "Kuva üks slaid korraga",
+  "presentFullScreen": "Esitle täisekraanil",
+  "exitFullScreen": "Välju täisekraanist",
+  "copyLinkToSlide": "Kopeeri link sellele slaidile",
+  "linkCopied": "Link kopeeritud",
+  "speakerNotes": "Esineja märkmed",
+  "loadingPresentation": "Esitluse laadimine",
+  "presentationUnavailable": "Esitlus pole saadaval",
+  "slide": "Slaid",
+  "downloadPresentation": "Laadi esitlus alla"
+}

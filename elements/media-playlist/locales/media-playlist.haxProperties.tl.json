@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Media playlist",
+    "description": "Isang playlist na nagpapakita ng mga video at audio player sa layout na player + sidebar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aktibong index",
+        "description": "Index ng aktibong item na pagsisimulan."
+      },
+      {
+        "title": "Kurso",
+        "description": "Ang kursong pinaglalaanan ng playlist na ito (identifier ng kurso o URL)."
+      }
+    ]
+  }
+}

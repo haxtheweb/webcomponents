@@ -1,0 +1,15 @@
+{
+  "previousSlide": "مخکینۍ سلایډ",
+  "nextSlide": "بله سلایډ",
+  "viewAllSlides": "ټولې سلایډونه وګورئ",
+  "viewOneSlide": "په یو وخت کې یوه سلایډ وګورئ",
+  "presentFullScreen": "په بشپړه پرده وړاندې کړئ",
+  "exitFullScreen": "له بشپړې پردې ووځئ",
+  "copyLinkToSlide": "د دې سلایډ لینک کاپي کړئ",
+  "linkCopied": "لینک کاپي شو",
+  "speakerNotes": "د وینا کوونکي یادښتونه",
+  "loadingPresentation": "پریزنټېشن پورته کېږي",
+  "presentationUnavailable": "پریزنټېشن نشته",
+  "slide": "سلایډ",
+  "downloadPresentation": "پریزنټېشن ښکته کړئ"
+}

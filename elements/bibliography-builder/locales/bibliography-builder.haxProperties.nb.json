@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografibygger",
+    "description": "Et verktøy for å opprette og administrere bibliografier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kildehenvisninger",
+        "description": "Kildehenvisninger i denne bibliografien"
+      },
+      {
+        "title": "Emne",
+        "description": "Identifikator eller navn på emnet denne bibliografien er for (OER Schema forCourse)."
+      }
+    ]
+  }
+}

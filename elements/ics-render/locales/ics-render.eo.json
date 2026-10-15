@@ -1,0 +1,11 @@
+{
+  "event": "Evento",
+  "when": "Kiam",
+  "where": "Kie",
+  "details": "Detaloj",
+  "allDay": "Tuttaga",
+  "repeats": "Ripetiĝas",
+  "loadingCalendar": "Ŝargante kalendaron",
+  "calendarUnavailable": "Kalendaro ne disponeblas",
+  "noEvents": "Neniuj eventoj en ĉi tiu kalendaro"
+}

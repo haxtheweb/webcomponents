@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Karyera xronologiyası",
+    "description": "Təşkilatları, vəzifələri və digər məlumatları əhatə edən karyera xronologiyası"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xronologiya başlığı",
+        "description": "Karyera xronologiyası üçün başlıq (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

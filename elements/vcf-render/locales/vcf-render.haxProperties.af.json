@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kontakte",
+    "description": "Wys die mense in 'n kontaklêer as persoonkaarte, aanhalings, 'n tabel of 'n lys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kontaklêer",
+        "description": "Laai 'n .vcf-kontaklêer op of kies een. Die kaarte word in die blaaier gelees."
+      },
+      {
+        "title": "Vertoon as",
+        "description": "Hoe om die inhoud van die lêer aan te bied.",
+        "options": {
+          "cards": "Persoonkaarte",
+          "quotes": "Aanhalings",
+          "table": "Tabel",
+          "list": "Lys"
+        }
+      },
+      {
+        "title": "Opskrif",
+        "description": "Word bo die kontakte gewys, en as die tabelonderskrif."
+      }
+    ]
+  }
+}

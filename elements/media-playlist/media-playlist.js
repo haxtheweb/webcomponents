@@ -665,10 +665,26 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
    */
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       inlineContextMenu: "haxinlineContextMenu",
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
     };
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `media-playlist.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   haxeditModeChanged(value) {

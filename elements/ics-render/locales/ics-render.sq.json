@@ -1,0 +1,11 @@
+{
+  "event": "Ngjarja",
+  "when": "Kur",
+  "where": "Ku",
+  "details": "Detajet",
+  "allDay": "Gjithë ditën",
+  "repeats": "Përsëritet",
+  "loadingCalendar": "Po ngarkohet kalendari",
+  "calendarUnavailable": "Kalendari nuk është i disponueshëm",
+  "noEvents": "Nuk ka ngjarje në këtë kalendar"
+}

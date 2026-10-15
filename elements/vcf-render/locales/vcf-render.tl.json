@@ -1,0 +1,11 @@
+{
+  "name": "Pangalan",
+  "position": "Posisyon",
+  "organization": "Organisasyon",
+  "email": "Email",
+  "phone": "Telepono",
+  "address": "Tirahan",
+  "loadingContacts": "Nilo-load ang mga contact",
+  "contactsUnavailable": "Hindi available ang mga contact",
+  "noContacts": "Walang contact sa file na ito"
+}

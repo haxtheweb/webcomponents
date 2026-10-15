@@ -1,0 +1,11 @@
+{
+  "name": "Isem",
+  "position": "Pożizzjoni",
+  "organization": "Organizzazzjoni",
+  "email": "Email",
+  "phone": "Telefon",
+  "address": "Indirizz",
+  "loadingContacts": "Qed jitgħabbew il-kuntatti",
+  "contactsUnavailable": "Il-kuntatti mhumiex disponibbli",
+  "noContacts": "M'hemmx kuntatti f'dan il-fajl"
+}

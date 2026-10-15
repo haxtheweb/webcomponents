@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Media pleylist",
+    "description": "Video va audio pleyerlarni pleyer + yon panel ko‘rinishida taqdim etadigan pleylist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faol indeks",
+        "description": "Boshlanadigan faol element indeksi."
+      },
+      {
+        "title": "Kurs",
+        "description": "Ushbu pleylist mo‘ljallangan kurs (kurs identifikatori yoki URL)."
+      }
+    ]
+  }
+}

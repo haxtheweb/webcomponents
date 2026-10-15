@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografi-kreilo",
+    "description": "Ilo por krei kaj administri bibliografiojn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citaĵoj",
+        "description": "Citaĵeroj en ĉi tiu bibliografio"
+      },
+      {
+        "title": "Kurso",
+        "description": "Identigilo aŭ nomo de la kurso por kiu estas ĉi tiu bibliografio (OER Schema forCourse)."
+      }
+    ]
+  }
+}

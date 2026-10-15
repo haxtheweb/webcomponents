@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tagabuo ng bibliograpiya",
+    "description": "Isang tool para sa paggawa at pamamahala ng mga bibliograpiya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mga sipi",
+        "description": "Mga item ng sipi sa bibliograpiyang ito"
+      },
+      {
+        "title": "Kurso",
+        "description": "Identifier o pangalan ng kursong pinaglalaanan ng bibliograpiyang ito (OER Schema forCourse)."
+      }
+    ]
+  }
+}

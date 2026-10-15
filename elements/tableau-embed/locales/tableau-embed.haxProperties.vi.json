@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Nhúng trực quan hóa Tableau từ URL chia sẻ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL đến sổ làm việc hoặc chế độ xem Tableau."
+      },
+      {
+        "title": "Chiều cao",
+        "description": "Chiều cao của trực quan hóa."
+      },
+      {
+        "title": "Chiều rộng",
+        "description": "Chiều rộng của trực quan hóa."
+      },
+      {
+        "title": "Thanh công cụ",
+        "description": "Vị trí thanh công cụ.",
+        "options": {
+          "top": "Trên cùng",
+          "bottom": "Dưới cùng",
+          "hidden": "Ẩn"
+        }
+      },
+      {
+        "title": "Ẩn tab",
+        "description": "Ẩn các tab trang tính."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bố cục thiết bị",
+        "description": "Bố cục thiết bị dùng để hiển thị.",
+        "options": {
+          "desktop": "Máy tính",
+          "tablet": "Máy tính bảng",
+          "phone": "Điện thoại"
+        }
+      }
+    ]
+  }
+}

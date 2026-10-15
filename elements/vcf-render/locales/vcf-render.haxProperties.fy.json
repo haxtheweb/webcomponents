@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kontakten",
+    "description": "De minsken yn in kontaktbestân toane as persoanskaarten, sitaten, in tabel of in list."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kontaktbestân",
+        "description": "Upload of kies in .vcf-kontaktbestân. De kaarten dêryn wurde yn de browser lêzen."
+      },
+      {
+        "title": "Toane as",
+        "description": "Hoe't de ynhâld fan it bestân presintearre wurde moat.",
+        "options": {
+          "cards": "Persoanskaarten",
+          "quotes": "Sitaten",
+          "table": "Tabel",
+          "list": "List"
+        }
+      },
+      {
+        "title": "Kop",
+        "description": "Boppe de kontakten toand, en as tabelbyskrift."
+      }
+    ]
+  }
+}

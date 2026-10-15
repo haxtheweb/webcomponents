@@ -1,0 +1,11 @@
+{
+  "event": "Tukio",
+  "when": "Lini",
+  "where": "Wapi",
+  "details": "Maelezo",
+  "allDay": "Siku nzima",
+  "repeats": "Hujirudia",
+  "loadingCalendar": "Inapakia kalenda",
+  "calendarUnavailable": "Kalenda haipatikani",
+  "noEvents": "Hakuna matukio katika kalenda hii"
+}

@@ -1,0 +1,15 @@
+{
+  "previousSlide": "ស្លាយមុន",
+  "nextSlide": "ស្លាយបន្ទាប់",
+  "viewAllSlides": "មើលស្លាយទាំងអស់",
+  "viewOneSlide": "មើលស្លាយម្ដងមួយ",
+  "presentFullScreen": "បង្ហាញពេញអេក្រង់",
+  "exitFullScreen": "ចាកចេញពីពេញអេក្រង់",
+  "copyLinkToSlide": "ចម្លងតំណទៅស្លាយនេះ",
+  "linkCopied": "បានចម្លងតំណ",
+  "speakerNotes": "កំណត់ចំណាំរបស់អ្នកបង្ហាញ",
+  "loadingPresentation": "កំពុងផ្ទុកបទបង្ហាញ",
+  "presentationUnavailable": "មិនមានបទបង្ហាញ",
+  "slide": "ស្លាយ",
+  "downloadPresentation": "ទាញយកបទបង្ហាញ"
+}

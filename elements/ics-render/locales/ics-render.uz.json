@@ -1,0 +1,11 @@
+{
+  "event": "Tadbir",
+  "when": "Qachon",
+  "where": "Qayerda",
+  "details": "Tafsilotlar",
+  "allDay": "Kun bo‘yi",
+  "repeats": "Takrorlanadi",
+  "loadingCalendar": "Taqvim yuklanmoqda",
+  "calendarUnavailable": "Taqvim mavjud emas",
+  "noEvents": "Bu taqvimda tadbirlar yo‘q"
+}

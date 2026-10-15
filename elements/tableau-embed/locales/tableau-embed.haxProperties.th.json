@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "ฝังการแสดงข้อมูลภาพของ Tableau จาก URL สำหรับแชร์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL ของ Tableau",
+        "description": "URL ไปยังเวิร์กบุ๊กหรือมุมมองของ Tableau"
+      },
+      {
+        "title": "ความสูง",
+        "description": "ความสูงของการแสดงข้อมูลภาพ"
+      },
+      {
+        "title": "ความกว้าง",
+        "description": "ความกว้างของการแสดงข้อมูลภาพ"
+      },
+      {
+        "title": "แถบเครื่องมือ",
+        "description": "ตำแหน่งแถบเครื่องมือ",
+        "options": {
+          "top": "ด้านบน",
+          "bottom": "ด้านล่าง",
+          "hidden": "ซ่อน"
+        }
+      },
+      {
+        "title": "ซ่อนแท็บ",
+        "description": "ซ่อนแท็บชีต"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "เลย์เอาต์อุปกรณ์",
+        "description": "เลย์เอาต์อุปกรณ์ที่จะแสดงผล",
+        "options": {
+          "desktop": "เดสก์ท็อป",
+          "tablet": "แท็บเล็ต",
+          "phone": "โทรศัพท์"
+        }
+      }
+    ]
+  }
+}

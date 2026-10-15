@@ -1,0 +1,11 @@
+{
+  "event": "Avveniment",
+  "when": "Meta",
+  "where": "Fejn",
+  "details": "Dettalji",
+  "allDay": "Il-ġurnata kollha",
+  "repeats": "Jirrepeti",
+  "loadingCalendar": "Qed jitgħabba l-kalendarju",
+  "calendarUnavailable": "Il-kalendarju mhux disponibbli",
+  "noEvents": "M'hemmx avvenimenti f'dan il-kalendarju"
+}

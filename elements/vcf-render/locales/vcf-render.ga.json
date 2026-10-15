@@ -1,0 +1,11 @@
+{
+  "name": "Ainm",
+  "position": "Post",
+  "organization": "Eagraíocht",
+  "email": "Ríomhphost",
+  "phone": "Fón",
+  "address": "Seoladh",
+  "loadingContacts": "Teagmhálaithe á lódáil",
+  "contactsUnavailable": "Níl teagmhálaithe ar fáil",
+  "noContacts": "Níl aon teagmhálaithe sa chomhad seo"
+}

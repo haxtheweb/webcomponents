@@ -1,0 +1,11 @@
+{
+  "event": "ກິດຈະກຳ",
+  "when": "ເວລາ",
+  "where": "ສະຖານທີ່",
+  "details": "ລາຍລະອຽດ",
+  "allDay": "ໝົດມື້",
+  "repeats": "ເຮັດຊ້ຳ",
+  "loadingCalendar": "ກຳລັງໂຫຼດປະຕິທິນ",
+  "calendarUnavailable": "ບໍ່ມີປະຕິທິນ",
+  "noEvents": "ບໍ່ມີກິດຈະກຳໃນປະຕິທິນນີ້"
+}

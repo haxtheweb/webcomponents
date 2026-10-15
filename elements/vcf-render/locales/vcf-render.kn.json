@@ -1,0 +1,11 @@
+{
+  "name": "ಹೆಸರು",
+  "position": "ಹುದ್ದೆ",
+  "organization": "ಸಂಸ್ಥೆ",
+  "email": "ಇಮೇಲ್",
+  "phone": "ಫೋನ್",
+  "address": "ವಿಳಾಸ",
+  "loadingContacts": "ಸಂಪರ್ಕಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
+  "contactsUnavailable": "ಸಂಪರ್ಕಗಳು ಲಭ್ಯವಿಲ್ಲ",
+  "noContacts": "ಈ ಫೈಲ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸಂಪರ್ಕಗಳಿಲ್ಲ"
+}

@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Vložte vizualizácie Tableau z URL na zdieľanie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL zošita alebo zobrazenia Tableau."
+      },
+      {
+        "title": "Výška",
+        "description": "Výška vizualizácie."
+      },
+      {
+        "title": "Šírka",
+        "description": "Šírka vizualizácie."
+      },
+      {
+        "title": "Panel nástrojov",
+        "description": "Umiestnenie panela nástrojov.",
+        "options": {
+          "top": "Hore",
+          "bottom": "Dole",
+          "hidden": "Skrytý"
+        }
+      },
+      {
+        "title": "Skryť karty",
+        "description": "Skryť karty hárkov."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rozloženie zariadenia",
+        "description": "Rozloženie zariadenia na vykreslenie.",
+        "options": {
+          "desktop": "Počítač",
+          "tablet": "Tablet",
+          "phone": "Telefón"
+        }
+      }
+    ]
+  }
+}

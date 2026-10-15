@@ -1,0 +1,11 @@
+{
+  "name": "Nome",
+  "position": "Funzione",
+  "organization": "Urganizazione",
+  "email": "Email",
+  "phone": "Telefonu",
+  "address": "Indirizzu",
+  "loadingContacts": "Caricamentu di i cuntatti",
+  "contactsUnavailable": "Cuntatti micca dispunibili",
+  "noContacts": "Nisunu cuntattu in stu schedariu"
+}

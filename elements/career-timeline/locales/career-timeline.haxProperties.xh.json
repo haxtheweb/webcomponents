@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Umgca wexesha lomsebenzi",
+    "description": "Umgca wexesha lomsebenzi oqulathe imibutho, iindima, nezinye iinkcukacha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko somgca wexesha",
+        "description": "Isihloko somgca wexesha lomsebenzi (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

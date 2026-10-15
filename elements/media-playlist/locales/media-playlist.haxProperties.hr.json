@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Popis medija za reprodukciju",
+    "description": "Popis za reprodukciju koji prikazuje video i audio playere u rasporedu player + bočna traka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aktivni indeks",
+        "description": "Indeks stavke od koje se počinje."
+      },
+      {
+        "title": "Kolegij",
+        "description": "Kolegij za koji je namijenjen ovaj popis (identifikator kolegija ili URL)."
+      }
+    ]
+  }
+}

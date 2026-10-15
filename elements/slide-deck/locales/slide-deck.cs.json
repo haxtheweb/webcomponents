@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Předchozí snímek",
+  "nextSlide": "Další snímek",
+  "viewAllSlides": "Zobrazit všechny snímky",
+  "viewOneSlide": "Zobrazit jeden snímek po druhém",
+  "presentFullScreen": "Prezentovat na celou obrazovku",
+  "exitFullScreen": "Ukončit režim celé obrazovky",
+  "copyLinkToSlide": "Kopírovat odkaz na tento snímek",
+  "linkCopied": "Odkaz zkopírován",
+  "speakerNotes": "Poznámky řečníka",
+  "loadingPresentation": "Načítání prezentace",
+  "presentationUnavailable": "Prezentace není k dispozici",
+  "slide": "Snímek",
+  "downloadPresentation": "Stáhnout prezentaci"
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Acara",
+  "when": "Kapan",
+  "where": "Ing ngendi",
+  "details": "Rincian",
+  "allDay": "Sedina muput",
+  "repeats": "Mbaleni",
+  "loadingCalendar": "Lagi ngemot tanggalan",
+  "calendarUnavailable": "Tanggalan ora kasedhiya",
+  "noEvents": "Ora ana acara ing tanggalan iki"
+}

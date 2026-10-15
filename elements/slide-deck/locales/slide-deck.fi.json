@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Edellinen dia",
+  "nextSlide": "Seuraava dia",
+  "viewAllSlides": "Näytä kaikki diat",
+  "viewOneSlide": "Näytä yksi dia kerrallaan",
+  "presentFullScreen": "Esitä koko näytöllä",
+  "exitFullScreen": "Poistu koko näytöstä",
+  "copyLinkToSlide": "Kopioi linkki tähän diaan",
+  "linkCopied": "Linkki kopioitu",
+  "speakerNotes": "Puhujan muistiinpanot",
+  "loadingPresentation": "Ladataan esitystä",
+  "presentationUnavailable": "Esitys ei ole saatavilla",
+  "slide": "Dia",
+  "downloadPresentation": "Lataa esitys"
+}

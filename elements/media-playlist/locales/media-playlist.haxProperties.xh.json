@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Uluhlu lokudlala lwemidiya",
+    "description": "Uluhlu lokudlala olubonisa izidlali zevidiyo nezesandi ngoyilo lwesidlali + ibha esecaleni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inombolo esebenzayo",
+        "description": "Inombolo yento esebenzayo yokuqala ngayo."
+      },
+      {
+        "title": "Ikhosi",
+        "description": "Ikhosi olu luhlu lokudlala olwenzelwe yona (isichongi sekhosi okanye i-URL)."
+      }
+    ]
+  }
+}

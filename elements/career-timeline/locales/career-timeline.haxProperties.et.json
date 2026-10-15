@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Karjääri ajajoon",
+    "description": "Karjääri ajajoon organisatsioonide, rollide ja muude andmetega"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ajajoone pealkiri",
+        "description": "Karjääri ajajoone pealkiri (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

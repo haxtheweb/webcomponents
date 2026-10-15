@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Llista de reproducció multimèdia",
+    "description": "Una llista de reproducció que presenta reproductors de vídeo i àudio en un disseny de reproductor + barra lateral."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Índex actiu",
+        "description": "Índex de l'element actiu amb què començar."
+      },
+      {
+        "title": "Curs",
+        "description": "El curs al qual va destinada aquesta llista de reproducció (identificador del curs o URL)."
+      }
+    ]
+  }
+}

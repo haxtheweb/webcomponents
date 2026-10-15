@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Bygg inn Tableau-visualiseringer fra en delings-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau-URL",
+        "description": "URL til Tableau-arbeidsboken eller -visningen."
+      },
+      {
+        "title": "Høyde",
+        "description": "Høyde på visualiseringen."
+      },
+      {
+        "title": "Bredde",
+        "description": "Bredde på visualiseringen."
+      },
+      {
+        "title": "Verktøylinje",
+        "description": "Plassering av verktøylinjen.",
+        "options": {
+          "top": "Øverst",
+          "bottom": "Nederst",
+          "hidden": "Skjult"
+        }
+      },
+      {
+        "title": "Skjul faner",
+        "description": "Skjul arkfaner."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Enhetsoppsett",
+        "description": "Enhetsoppsett som skal vises.",
+        "options": {
+          "desktop": "Datamaskin",
+          "tablet": "Nettbrett",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

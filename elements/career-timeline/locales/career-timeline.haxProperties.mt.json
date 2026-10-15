@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Kronoloġija tal-karriera",
+    "description": "Kronoloġija tal-karriera li fiha organizzazzjonijiet, rwoli u data oħra"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu tal-kronoloġija",
+        "description": "Titlu għall-kronoloġija tal-karriera (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

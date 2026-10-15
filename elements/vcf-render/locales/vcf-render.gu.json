@@ -1,0 +1,11 @@
+{
+  "name": "નામ",
+  "position": "હોદ્દો",
+  "organization": "સંસ્થા",
+  "email": "ઇમેઇલ",
+  "phone": "ફોન",
+  "address": "સરનામું",
+  "loadingContacts": "સંપર્કો લોડ થઈ રહ્યા છે",
+  "contactsUnavailable": "સંપર્કો ઉપલબ્ધ નથી",
+  "noContacts": "આ ફાઇલમાં કોઈ સંપર્કો નથી"
+}

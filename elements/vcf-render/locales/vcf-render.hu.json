@@ -1,0 +1,11 @@
+{
+  "name": "Név",
+  "position": "Beosztás",
+  "organization": "Szervezet",
+  "email": "E-mail",
+  "phone": "Telefon",
+  "address": "Cím",
+  "loadingContacts": "Névjegyek betöltése",
+  "contactsUnavailable": "A névjegyek nem érhetők el",
+  "noContacts": "Ebben a fájlban nincsenek névjegyek"
+}

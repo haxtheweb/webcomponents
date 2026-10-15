@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Manusta Tableau visualiseeringuid jagamise URL-i kaudu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau töövihiku või vaate URL."
+      },
+      {
+        "title": "Kõrgus",
+        "description": "Visualiseeringu kõrgus."
+      },
+      {
+        "title": "Laius",
+        "description": "Visualiseeringu laius."
+      },
+      {
+        "title": "Tööriistariba",
+        "description": "Tööriistariba asukoht.",
+        "options": {
+          "top": "Üleval",
+          "bottom": "All",
+          "hidden": "Peidetud"
+        }
+      },
+      {
+        "title": "Peida sakid",
+        "description": "Peida lehtede sakid."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Seadme paigutus",
+        "description": "Kuvatav seadme paigutus.",
+        "options": {
+          "desktop": "Lauaarvuti",
+          "tablet": "Tahvelarvuti",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

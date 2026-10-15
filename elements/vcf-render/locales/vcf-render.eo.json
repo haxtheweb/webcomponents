@@ -1,0 +1,11 @@
+{
+  "name": "Nomo",
+  "position": "Posteno",
+  "organization": "Organizo",
+  "email": "Retpoŝto",
+  "phone": "Telefono",
+  "address": "Adreso",
+  "loadingContacts": "Ŝargante kontaktojn",
+  "contactsUnavailable": "Kontaktoj ne disponeblas",
+  "noContacts": "Neniuj kontaktoj en ĉi tiu dosiero"
+}

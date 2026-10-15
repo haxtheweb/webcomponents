@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Card de autor",
+    "description": "Afișează informații despre autor, cu fotografie, biografie și linkuri sociale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numele autorului",
+        "description": "Numele complet al autorului."
+      },
+      {
+        "title": "Imagine de profil",
+        "description": "Fotografia de profil a autorului."
+      },
+      {
+        "title": "Funcție",
+        "description": "Funcția sau rolul autorului."
+      },
+      {
+        "title": "Biografie",
+        "description": "Scurtă biografie a autorului."
+      },
+      {
+        "title": "URL-ul profilului",
+        "description": "Link către pagina de profil a autorului."
+      },
+      {
+        "title": "Link social",
+        "description": "Link către un profil de rețea socială."
+      },
+      {
+        "title": "Nume de utilizator social",
+        "description": "Numele de utilizator în rețeaua socială (de exemplu @username)."
+      }
+    ]
+  }
+}

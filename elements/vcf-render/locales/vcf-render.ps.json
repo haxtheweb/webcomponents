@@ -1,0 +1,11 @@
+{
+  "name": "نوم",
+  "position": "دنده",
+  "organization": "اداره",
+  "email": "برېښنالیک",
+  "phone": "تلیفون",
+  "address": "پته",
+  "loadingContacts": "اړیکې پورته کېږي",
+  "contactsUnavailable": "اړیکې نشته",
+  "noContacts": "په دې فایل کې هېڅ اړیکه نشته"
+}

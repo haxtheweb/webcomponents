@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Salname",
+    "description": "Bûyerên di pelê salnameyê de wek kartên dîrokê, xeta demê, tabloyek an lîsteyek nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pelê salnameyê",
+        "description": "Pelê salnameyê yê .ics bar bike an hilbijêre. Bûyerên wê di gerokê de tên xwendin."
+      },
+      {
+        "title": "Nîşan bide wek",
+        "description": "Naveroka pelê çawa were pêşkêşkirin.",
+        "options": {
+          "cards": "Kartên dîrokê",
+          "timeline": "Xeta demê",
+          "table": "Tablo",
+          "list": "Lîste"
+        }
+      },
+      {
+        "title": "Sernav",
+        "description": "Li ser bûyeran û wek binnivîsa tabloyê tê nîşandan. Bi xweber navê salnameyê bixwe ye."
+      }
+    ]
+  }
+}

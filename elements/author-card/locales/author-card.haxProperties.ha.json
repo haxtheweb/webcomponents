@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Katin marubuci",
+    "description": "Nuna bayanan marubuci tare da hoto, taƙaitaccen tarihi, da mahaɗan kafofin sada zumunta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sunan marubuci",
+        "description": "Cikakken sunan marubucin."
+      },
+      {
+        "title": "Hoton bayanan martaba",
+        "description": "Hoton bayanan martaba na marubuci."
+      },
+      {
+        "title": "Muƙamin aiki",
+        "description": "Matsayi ko aikin marubucin."
+      },
+      {
+        "title": "Taƙaitaccen tarihi",
+        "description": "Gajeren tarihin rayuwar marubuci."
+      },
+      {
+        "title": "URL na bayanan martaba",
+        "description": "Mahaɗi zuwa shafin bayanan martaba na marubucin."
+      },
+      {
+        "title": "Mahaɗin sada zumunta",
+        "description": "Mahaɗi zuwa bayanan martaba a kafofin sada zumunta."
+      },
+      {
+        "title": "Sunan mai amfani a sada zumunta",
+        "description": "Sunan mai amfani a kafofin sada zumunta (misali @username)."
+      }
+    ]
+  }
+}

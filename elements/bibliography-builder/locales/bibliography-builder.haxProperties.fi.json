@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Lähdeluettelon laatija",
+    "description": "Työkalu lähdeluetteloiden luomiseen ja hallintaan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lähdeviitteet",
+        "description": "Tämän lähdeluettelon lähdeviitteet"
+      },
+      {
+        "title": "Kurssi",
+        "description": "Sen kurssin tunniste tai nimi, jota varten tämä lähdeluettelo on (OER Schema forCourse)."
+      }
+    ]
+  }
+}

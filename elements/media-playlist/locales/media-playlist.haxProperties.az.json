@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Media pleylisti",
+    "description": "Video və audio pleyerləri pleyer + yan panel düzümündə təqdim edən pleylist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aktiv indeks",
+        "description": "Başlanğıc aktiv elementin indeksi."
+      },
+      {
+        "title": "Kurs",
+        "description": "Bu pleylistin nəzərdə tutulduğu kurs (kurs identifikatoru və ya URL)."
+      }
+    ]
+  }
+}

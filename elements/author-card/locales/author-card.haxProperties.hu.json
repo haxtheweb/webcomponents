@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Szerzői kártya",
+    "description": "A szerző adatainak megjelenítése fotóval, rövid életrajzzal és közösségi hivatkozásokkal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Szerző neve",
+        "description": "A szerző teljes neve."
+      },
+      {
+        "title": "Profilkép",
+        "description": "A szerző profilfotója."
+      },
+      {
+        "title": "Beosztás",
+        "description": "A szerző pozíciója vagy szerepköre."
+      },
+      {
+        "title": "Életrajz",
+        "description": "A szerző rövid életrajza."
+      },
+      {
+        "title": "Profil URL",
+        "description": "Hivatkozás a szerző profiloldalára."
+      },
+      {
+        "title": "Közösségi hivatkozás",
+        "description": "Hivatkozás egy közösségimédia-profilra."
+      },
+      {
+        "title": "Közösségi felhasználónév",
+        "description": "Közösségimédia-felhasználónév (például @username)."
+      }
+    ]
+  }
+}

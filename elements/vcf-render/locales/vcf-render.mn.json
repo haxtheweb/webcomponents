@@ -1,0 +1,11 @@
+{
+  "name": "Нэр",
+  "position": "Албан тушаал",
+  "organization": "Байгууллага",
+  "email": "Имэйл",
+  "phone": "Утас",
+  "address": "Хаяг",
+  "loadingContacts": "Харилцагчдыг ачаалж байна",
+  "contactsUnavailable": "Харилцагчид боломжгүй байна",
+  "noContacts": "Энэ файлд харилцагч алга"
+}

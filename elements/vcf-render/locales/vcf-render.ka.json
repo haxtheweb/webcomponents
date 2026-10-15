@@ -1,0 +1,11 @@
+{
+  "name": "სახელი",
+  "position": "თანამდებობა",
+  "organization": "ორგანიზაცია",
+  "email": "ელფოსტა",
+  "phone": "ტელეფონი",
+  "address": "მისამართი",
+  "loadingContacts": "კონტაქტები იტვირთება",
+  "contactsUnavailable": "კონტაქტები მიუწვდომელია",
+  "noContacts": "ამ ფაილში კონტაქტები არ არის"
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kontaktid",
+    "description": "Kuva kontaktifaili inimesed isikukaartide, tsitaatide, tabeli või loendina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kontaktifail",
+        "description": "Laadi üles või vali .vcf-kontaktifail. Selle kaardid loetakse brauseris."
+      },
+      {
+        "title": "Kuva kujul",
+        "description": "Kuidas faili sisu esitada.",
+        "options": {
+          "cards": "Isikukaardid",
+          "quotes": "Tsitaadid",
+          "table": "Tabel",
+          "list": "Loend"
+        }
+      },
+      {
+        "title": "Pealkiri",
+        "description": "Kuvatakse kontaktide kohal ja tabeli pealdisena."
+      }
+    ]
+  }
+}

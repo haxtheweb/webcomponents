@@ -1,3 +1,6 @@
 {
-    "title": "título"
+  "playlist": "Lista de reprodução",
+  "play": "Reproduzir",
+  "item": "Item",
+  "editModeLabel": "Modo de edição da lista de reprodução de mídia"
 }

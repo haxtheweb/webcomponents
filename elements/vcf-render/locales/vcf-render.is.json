@@ -1,0 +1,11 @@
+{
+  "name": "Nafn",
+  "position": "Staða",
+  "organization": "Fyrirtæki/stofnun",
+  "email": "Netfang",
+  "phone": "Sími",
+  "address": "Heimilisfang",
+  "loadingContacts": "Hleður tengiliðum",
+  "contactsUnavailable": "Tengiliðir ekki tiltækir",
+  "noContacts": "Engir tengiliðir í þessari skrá"
+}

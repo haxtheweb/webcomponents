@@ -1,0 +1,11 @@
+{
+  "name": "Аты",
+  "position": "Кызматы",
+  "organization": "Уюм",
+  "email": "Электрондук почта",
+  "phone": "Телефон",
+  "address": "Дарек",
+  "loadingContacts": "Байланыштар жүктөлүүдө",
+  "contactsUnavailable": "Байланыштар жеткиликсиз",
+  "noContacts": "Бул файлда байланыштар жок"
+}

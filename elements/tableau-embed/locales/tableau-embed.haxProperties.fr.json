@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Intégrer des visualisations Tableau à partir d’une URL de partage."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL du classeur ou de la vue Tableau."
+      },
+      {
+        "title": "Hauteur",
+        "description": "Hauteur de la visualisation."
+      },
+      {
+        "title": "Largeur",
+        "description": "Largeur de la visualisation."
+      },
+      {
+        "title": "Barre d’outils",
+        "description": "Position de la barre d’outils.",
+        "options": {
+          "top": "En haut",
+          "bottom": "En bas",
+          "hidden": "Masquée"
+        }
+      },
+      {
+        "title": "Masquer les onglets",
+        "description": "Masquer les onglets des feuilles."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Disposition de l’appareil",
+        "description": "Disposition d’appareil à afficher.",
+        "options": {
+          "desktop": "Ordinateur",
+          "tablet": "Tablette",
+          "phone": "Téléphone"
+        }
+      }
+    ]
+  }
+}

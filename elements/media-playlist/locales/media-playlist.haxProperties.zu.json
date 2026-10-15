@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Uhlu lokudlala lwemidiya",
+    "description": "Uhlu lokudlala olubonisa izidlali zevidiyo nezomsindo ngesakhiwo sesidlali + ibha eseceleni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inkomba esebenzayo",
+        "description": "Inkomba yento esebenzayo okuqalwa ngayo."
+      },
+      {
+        "title": "Isifundo",
+        "description": "Isifundo lolu hlu lokudlala olwenzelwe sona (isihlonzi sesifundo noma i-URL)."
+      }
+    ]
+  }
+}

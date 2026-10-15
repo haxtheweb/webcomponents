@@ -1,3 +1,6 @@
 {
-    "title": "タイトル"
+  "playlist": "プレイリスト",
+  "play": "再生",
+  "item": "項目",
+  "editModeLabel": "メディアプレイリストの編集モード"
 }

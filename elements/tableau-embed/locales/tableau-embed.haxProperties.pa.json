@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "ਸਾਂਝੇ ਕੀਤੇ URL ਤੋਂ Tableau ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਏਮਬੈੱਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau ਵਰਕਬੁੱਕ ਜਾਂ ਵਿਊ ਦਾ URL।"
+      },
+      {
+        "title": "ਉਚਾਈ",
+        "description": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਦੀ ਉਚਾਈ।"
+      },
+      {
+        "title": "ਚੌੜਾਈ",
+        "description": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਦੀ ਚੌੜਾਈ।"
+      },
+      {
+        "title": "ਟੂਲਬਾਰ",
+        "description": "ਟੂਲਬਾਰ ਦੀ ਸਥਿਤੀ।",
+        "options": {
+          "top": "ਉੱਪਰ",
+          "bottom": "ਹੇਠਾਂ",
+          "hidden": "ਲੁਕਿਆ ਹੋਇਆ"
+        }
+      },
+      {
+        "title": "ਟੈਬਾਂ ਲੁਕਾਓ",
+        "description": "ਸ਼ੀਟ ਟੈਬਾਂ ਲੁਕਾਓ।"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ਡਿਵਾਈਸ ਲੇਆਉਟ",
+        "description": "ਰੈਂਡਰ ਕਰਨ ਲਈ ਡਿਵਾਈਸ ਲੇਆਉਟ।",
+        "options": {
+          "desktop": "ਡੈਸਕਟਾਪ",
+          "tablet": "ਟੈਬਲੈੱਟ",
+          "phone": "ਫ਼ੋਨ"
+        }
+      }
+    ]
+  }
+}

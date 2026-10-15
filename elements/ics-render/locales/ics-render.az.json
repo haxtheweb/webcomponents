@@ -1,0 +1,11 @@
+{
+  "event": "Tədbir",
+  "when": "Nə vaxt",
+  "where": "Harada",
+  "details": "Təfərrüatlar",
+  "allDay": "Bütün gün",
+  "repeats": "Təkrarlanır",
+  "loadingCalendar": "Təqvim yüklənir",
+  "calendarUnavailable": "Təqvim əlçatan deyil",
+  "noEvents": "Bu təqvimdə tədbir yoxdur"
+}

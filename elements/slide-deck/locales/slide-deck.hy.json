@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Նախորդ սլայդ",
+  "nextSlide": "Հաջորդ սլայդ",
+  "viewAllSlides": "Դիտել բոլոր սլայդները",
+  "viewOneSlide": "Դիտել մեկական սլայդ",
+  "presentFullScreen": "Ներկայացնել լիաէկրան",
+  "exitFullScreen": "Դուրս գալ լիաէկրանից",
+  "copyLinkToSlide": "Պատճենել այս սլայդի հղումը",
+  "linkCopied": "Հղումը պատճենվեց",
+  "speakerNotes": "Բանախոսի նշումներ",
+  "loadingPresentation": "Ներկայացումը բեռնվում է",
+  "presentationUnavailable": "Ներկայացումն անհասանելի է",
+  "slide": "Սլայդ",
+  "downloadPresentation": "Ներբեռնել ներկայացումը"
+}

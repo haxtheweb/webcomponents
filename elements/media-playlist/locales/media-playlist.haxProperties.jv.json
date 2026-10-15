@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Daftar puter media",
+    "description": "Daftar puter sing nampilaké pamuter video lan audio ing tata letak pamuter + bilah sisih."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomer wiwitan",
+        "description": "Nomer item aktif kanggo wiwitan."
+      },
+      {
+        "title": "Kursus",
+        "description": "Kursus sing dadi tujuan daftar puter iki (pangenal kursus utawa URL)."
+      }
+    ]
+  }
+}

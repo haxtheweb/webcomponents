@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Predchádzajúca snímka",
+  "nextSlide": "Ďalšia snímka",
+  "viewAllSlides": "Zobraziť všetky snímky",
+  "viewOneSlide": "Zobrazovať po jednej snímke",
+  "presentFullScreen": "Prezentovať na celú obrazovku",
+  "exitFullScreen": "Ukončiť režim celej obrazovky",
+  "copyLinkToSlide": "Kopírovať odkaz na túto snímku",
+  "linkCopied": "Odkaz skopírovaný",
+  "speakerNotes": "Poznámky prednášajúceho",
+  "loadingPresentation": "Načítava sa prezentácia",
+  "presentationUnavailable": "Prezentácia nie je k dispozícii",
+  "slide": "Snímka",
+  "downloadPresentation": "Stiahnuť prezentáciu"
+}

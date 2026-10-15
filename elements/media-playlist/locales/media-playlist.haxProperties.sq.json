@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Lista e medias",
+    "description": "Një listë luajtjeje që paraqet luajtës video dhe audio në një paraqitje me luajtës dhe shirit anësor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indeksi fillestar",
+        "description": "Indeksi i elementit aktiv nga i cili fillohet."
+      },
+      {
+        "title": "Kursi",
+        "description": "Kursi për të cilin është menduar kjo listë (identifikuesi i kursit ose URL)."
+      }
+    ]
+  }
+}

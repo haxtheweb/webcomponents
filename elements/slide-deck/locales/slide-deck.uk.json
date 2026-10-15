@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Попередній слайд",
+  "nextSlide": "Наступний слайд",
+  "viewAllSlides": "Переглянути всі слайди",
+  "viewOneSlide": "Переглядати по одному слайду",
+  "presentFullScreen": "Показ на весь екран",
+  "exitFullScreen": "Вийти з повноекранного режиму",
+  "copyLinkToSlide": "Копіювати посилання на цей слайд",
+  "linkCopied": "Посилання скопійовано",
+  "speakerNotes": "Нотатки доповідача",
+  "loadingPresentation": "Завантаження презентації",
+  "presentationUnavailable": "Презентація недоступна",
+  "slide": "Слайд",
+  "downloadPresentation": "Завантажити презентацію"
+}

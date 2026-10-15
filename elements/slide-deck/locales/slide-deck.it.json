@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Diapositiva precedente",
+  "nextSlide": "Diapositiva successiva",
+  "viewAllSlides": "Visualizza tutte le diapositive",
+  "viewOneSlide": "Visualizza una diapositiva alla volta",
+  "presentFullScreen": "Presenta a schermo intero",
+  "exitFullScreen": "Esci da schermo intero",
+  "copyLinkToSlide": "Copia il link a questa diapositiva",
+  "linkCopied": "Link copiato",
+  "speakerNotes": "Note del relatore",
+  "loadingPresentation": "Caricamento della presentazione",
+  "presentationUnavailable": "Presentazione non disponibile",
+  "slide": "Diapositiva",
+  "downloadPresentation": "Scarica la presentazione"
+}

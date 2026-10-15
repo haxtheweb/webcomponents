@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Autori kaart",
+    "description": "Kuva autori teave foto, lühielulookirjelduse ja sotsiaalmeedia linkidega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Autori nimi",
+        "description": "Autori täisnimi."
+      },
+      {
+        "title": "Profiilipilt",
+        "description": "Autori profiilifoto."
+      },
+      {
+        "title": "Ametinimetus",
+        "description": "Autori ametikoht või roll."
+      },
+      {
+        "title": "Elulugu",
+        "description": "Autori lühike elulugu."
+      },
+      {
+        "title": "Profiili URL",
+        "description": "Link autori profiililehele."
+      },
+      {
+        "title": "Sotsiaalmeedia link",
+        "description": "Link sotsiaalmeedia profiilile."
+      },
+      {
+        "title": "Sotsiaalmeedia kasutajanimi",
+        "description": "Sotsiaalmeedia kasutajanimi (näiteks @username)."
+      }
+    ]
+  }
+}

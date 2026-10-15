@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Iqela lezilayidi",
+    "description": "Bonisa intetho ye-PowerPoint engenisiweyo isilayidi ngesilayidi, kunye namanqaku esithethi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imanifesto yeqela lezilayidi",
+        "description": "Faka ifayile ye-.pptx kwaye iya kuguqulwa ngokuzenzekelayo ibe liqela lezilayidi. Le ndawo isetelwa kwindlela ye-deck.json eveliswayo."
+      },
+      {
+        "title": "I-ID yeqela lezilayidi",
+        "description": "Kuyafuneka kuphela xa iphepha linamaqela ezilayidi angaphezu kwelinye, ukuze amakhonkco ezilayidi ahlukane"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vumela ukukhuphela",
+        "description": "Bonisa iqhosha lokukhuphela ifayile ye-PowerPoint yoqobo kulawulo lwesidlali"
+      }
+    ]
+  }
+}

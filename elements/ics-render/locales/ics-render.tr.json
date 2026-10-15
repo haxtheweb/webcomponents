@@ -1,0 +1,11 @@
+{
+  "event": "Etkinlik",
+  "when": "Ne zaman",
+  "where": "Nerede",
+  "details": "Ayrıntılar",
+  "allDay": "Tüm gün",
+  "repeats": "Tekrarlanır",
+  "loadingCalendar": "Takvim yükleniyor",
+  "calendarUnavailable": "Takvim kullanılamıyor",
+  "noEvents": "Bu takvimde etkinlik yok"
+}

@@ -1,0 +1,11 @@
+{
+  "event": "ክስተት",
+  "when": "መቼ",
+  "where": "የት",
+  "details": "ዝርዝሮች",
+  "allDay": "ሙሉ ቀን",
+  "repeats": "ይደጋገማል",
+  "loadingCalendar": "የቀን መቁጠሪያ በመጫን ላይ",
+  "calendarUnavailable": "የቀን መቁጠሪያው አይገኝም",
+  "noEvents": "በዚህ የቀን መቁጠሪያ ውስጥ ምንም ክስተቶች የሉም"
+}

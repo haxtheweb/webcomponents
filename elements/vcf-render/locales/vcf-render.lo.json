@@ -1,0 +1,11 @@
+{
+  "name": "ຊື່",
+  "position": "ຕຳແໜ່ງ",
+  "organization": "ອົງກອນ",
+  "email": "ອີເມວ",
+  "phone": "ໂທລະສັບ",
+  "address": "ທີ່ຢູ່",
+  "loadingContacts": "ກຳລັງໂຫຼດລາຍຊື່ຕິດຕໍ່",
+  "contactsUnavailable": "ບໍ່ມີລາຍຊື່ຕິດຕໍ່",
+  "noContacts": "ບໍ່ມີລາຍຊື່ຕິດຕໍ່ໃນໄຟລ໌ນີ້"
+}

@@ -125,9 +125,19 @@ describe("TableauEmbed HAX integration", () => {
   it("registers edit mode and active element hooks", async () => {
     const el = await fixture(html`<tableau-embed></tableau-embed>`);
     expect(el.haxHooks()).to.deep.equal({
+      gizmoRegistration: "haxgizmoRegistration",
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
     });
+    // gizmoRegistration registers the haxProperties locales with i18n-manager
+    const registered = [];
+    const onRegister = (e) => registered.push(e.detail);
+    globalThis.addEventListener("i18n-manager-register-element", onRegister);
+    el.haxgizmoRegistration();
+    globalThis.removeEventListener("i18n-manager-register-element", onRegister);
+    expect(
+      registered.some((d) => d.namespace === "tableau-embed.haxProperties"),
+    ).to.equal(true);
   });
 
   it("tracks hax edit mode changes", async () => {

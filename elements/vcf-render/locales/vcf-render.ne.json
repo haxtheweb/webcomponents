@@ -1,0 +1,11 @@
+{
+  "name": "नाम",
+  "position": "पद",
+  "organization": "संस्था",
+  "email": "इमेल",
+  "phone": "फोन",
+  "address": "ठेगाना",
+  "loadingContacts": "सम्पर्कहरू लोड हुँदैछन्",
+  "contactsUnavailable": "सम्पर्कहरू उपलब्ध छैनन्",
+  "noContacts": "यो फाइलमा कुनै सम्पर्क छैन"
+}

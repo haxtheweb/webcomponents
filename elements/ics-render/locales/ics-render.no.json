@@ -1,0 +1,11 @@
+{
+  "event": "Hendelse",
+  "when": "Når",
+  "where": "Hvor",
+  "details": "Detaljer",
+  "allDay": "Hele dagen",
+  "repeats": "Gjentas",
+  "loadingCalendar": "Laster inn kalender",
+  "calendarUnavailable": "Kalenderen er ikke tilgjengelig",
+  "noEvents": "Ingen hendelser i denne kalenderen"
+}

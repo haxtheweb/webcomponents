@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tvůrce bibliografie",
+    "description": "Nástroj pro vytváření a správu bibliografií"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Citace",
+        "description": "Citace v této bibliografii"
+      },
+      {
+        "title": "Kurz",
+        "description": "Identifikátor nebo název kurzu, pro který je tato bibliografie určena (OER Schema forCourse)."
+      }
+    ]
+  }
+}

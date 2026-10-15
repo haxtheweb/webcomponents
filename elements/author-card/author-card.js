@@ -270,8 +270,24 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
    */
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `author-card.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
   haxmediaSourceUpdated(path, store) {
     if (!path || !store || typeof store._mediaSrcMatches !== "function") {

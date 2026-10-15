@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Ficha de autor",
+    "description": "Mostra información do autor con foto, biografía e ligazóns sociais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome do autor",
+        "description": "Nome completo do autor."
+      },
+      {
+        "title": "Imaxe de perfil",
+        "description": "Foto de perfil do autor."
+      },
+      {
+        "title": "Cargo",
+        "description": "Posto ou rol do autor."
+      },
+      {
+        "title": "Biografía",
+        "description": "Biografía breve do autor."
+      },
+      {
+        "title": "URL do perfil",
+        "description": "Ligazón á páxina de perfil do autor."
+      },
+      {
+        "title": "Ligazón social",
+        "description": "Ligazón a un perfil de redes sociais."
+      },
+      {
+        "title": "Usuario en redes sociais",
+        "description": "Nome de usuario en redes sociais (por exemplo, @username)."
+      }
+    ]
+  }
+}

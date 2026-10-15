@@ -1,0 +1,11 @@
+{
+  "name": "Emri",
+  "position": "Pozicioni",
+  "organization": "Organizata",
+  "email": "Email",
+  "phone": "Telefoni",
+  "address": "Adresa",
+  "loadingContacts": "Po ngarkohen kontaktet",
+  "contactsUnavailable": "Kontaktet nuk janë të disponueshme",
+  "noContacts": "Nuk ka kontakte në këtë skedar"
+}

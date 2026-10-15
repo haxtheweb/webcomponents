@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ibilbide profesionalaren denbora-lerroa",
+    "description": "Erakundeak, rolak eta bestelako datuak dituen ibilbide profesionalaren denbora-lerroa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Denbora-lerroaren izenburua",
+        "description": "Ibilbide profesionalaren denbora-lerroaren izenburua (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

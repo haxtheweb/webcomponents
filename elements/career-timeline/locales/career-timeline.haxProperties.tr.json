@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Kariyer zaman çizelgesi",
+    "description": "Kuruluşları, rolleri ve diğer verileri içeren bir kariyer zaman çizelgesi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zaman çizelgesi başlığı",
+        "description": "Kariyer zaman çizelgesi için bir başlık (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

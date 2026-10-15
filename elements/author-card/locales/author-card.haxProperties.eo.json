@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Aŭtora karto",
+    "description": "Montri informojn pri la aŭtoro kun foto, mallonga biografio kaj sociaj ligiloj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomo de la aŭtoro",
+        "description": "Plena nomo de la aŭtoro."
+      },
+      {
+        "title": "Profilbildo",
+        "description": "Profila foto de la aŭtoro."
+      },
+      {
+        "title": "Profesia titolo",
+        "description": "Posteno aŭ rolo de la aŭtoro."
+      },
+      {
+        "title": "Biografio",
+        "description": "Mallonga biografio de la aŭtoro."
+      },
+      {
+        "title": "Profila URL",
+        "description": "Ligilo al la profilpaĝo de la aŭtoro."
+      },
+      {
+        "title": "Socia ligilo",
+        "description": "Ligilo al profilo en sociaj retoj."
+      },
+      {
+        "title": "Socia uzantnomo",
+        "description": "Uzantnomo en sociaj retoj (ekzemple @username)."
+      }
+    ]
+  }
+}

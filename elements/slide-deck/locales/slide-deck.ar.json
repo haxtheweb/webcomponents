@@ -10,5 +10,6 @@
   "speakerNotes": "ملاحظات المتحدث",
   "loadingPresentation": "جارٍ تحميل العرض التقديمي",
   "presentationUnavailable": "العرض التقديمي غير متوفر",
-  "slide": "شريحة"
+  "slide": "شريحة",
+  "downloadPresentation": "تنزيل العرض التقديمي"
 }

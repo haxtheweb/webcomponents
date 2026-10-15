@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bibliografiýa düzüji",
+    "description": "Bibliografiýalary döretmek we dolandyrmak üçin gural"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sitatalar",
+        "description": "Bu bibliografiýadaky sitata elementleri"
+      },
+      {
+        "title": "Kurs",
+        "description": "Bu bibliografiýanyň niýetlenen kursunyň identifikatory ýa-da ady (OER Schema forCourse)."
+      }
+    ]
+  }
+}

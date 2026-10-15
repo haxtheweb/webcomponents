@@ -118,8 +118,24 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
 
   haxHooks() {
     return {
+      gizmoRegistration: "haxgizmoRegistration",
       inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `career-timeline.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   haxinlineContextMenu(ceMenu) {

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Káàdì òǹkọ̀wé",
+    "description": "Ṣàfihàn ìwífún òǹkọ̀wé pẹ̀lú fọ́tò, ìtàn ṣókí, àti àwọn ìjápọ̀ ìkànnì àjọlò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Orúkọ òǹkọ̀wé",
+        "description": "Orúkọ kíkún òǹkọ̀wé."
+      },
+      {
+        "title": "Àwòrán profaili",
+        "description": "Fọ́tò profaili òǹkọ̀wé."
+      },
+      {
+        "title": "Orúkọ iṣẹ́",
+        "description": "Ipò tàbí ipa òǹkọ̀wé."
+      },
+      {
+        "title": "Ìtàn ṣókí",
+        "description": "Ìtàn ìgbésí ayé òǹkọ̀wé ní ṣókí."
+      },
+      {
+        "title": "URL profaili",
+        "description": "Ìjápọ̀ sí ojú-ewé profaili òǹkọ̀wé."
+      },
+      {
+        "title": "Ìjápọ̀ ìkànnì àjọlò",
+        "description": "Ìjápọ̀ sí profaili ìkànnì àjọlò kan."
+      },
+      {
+        "title": "Orúkọ olùmúlò ìkànnì àjọlò",
+        "description": "Orúkọ olùmúlò lórí ìkànnì àjọlò (fún àpẹẹrẹ @username)."
+      }
+    ]
+  }
+}

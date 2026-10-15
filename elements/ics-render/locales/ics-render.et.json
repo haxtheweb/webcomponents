@@ -1,0 +1,11 @@
+{
+  "event": "Sündmus",
+  "when": "Millal",
+  "where": "Kus",
+  "details": "Üksikasjad",
+  "allDay": "Terve päev",
+  "repeats": "Kordub",
+  "loadingCalendar": "Kalendri laadimine",
+  "calendarUnavailable": "Kalender pole saadaval",
+  "noEvents": "Selles kalendris pole sündmusi"
+}

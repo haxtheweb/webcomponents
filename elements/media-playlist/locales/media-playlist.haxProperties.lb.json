@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Medien-Playlist",
+    "description": "Eng Playlist, déi Video- an Audioplayer an engem Layout mat Player a Säiteleescht weist."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Startelement",
+        "description": "Nummer vum Element, mat deem ugefaange gëtt."
+      },
+      {
+        "title": "Cours",
+        "description": "De Cours, fir deen dës Playlist geduecht ass (Cours-Identifiant oder URL)."
+      }
+    ]
+  }
+}

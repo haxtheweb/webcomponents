@@ -1,0 +1,11 @@
+{
+  "name": "Izena",
+  "position": "Kargua",
+  "organization": "Erakundea",
+  "email": "Helbide elektronikoa",
+  "phone": "Telefonoa",
+  "address": "Helbidea",
+  "loadingContacts": "Kontaktuak kargatzen",
+  "contactsUnavailable": "Kontaktuak ez daude erabilgarri",
+  "noContacts": "Ez dago kontakturik fitxategi honetan"
+}

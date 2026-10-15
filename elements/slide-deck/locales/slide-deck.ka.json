@@ -1,0 +1,15 @@
+{
+  "previousSlide": "წინა სლაიდი",
+  "nextSlide": "შემდეგი სლაიდი",
+  "viewAllSlides": "ყველა სლაიდის ნახვა",
+  "viewOneSlide": "სლაიდების სათითაოდ ნახვა",
+  "presentFullScreen": "წარდგენა სრულ ეკრანზე",
+  "exitFullScreen": "სრული ეკრანიდან გასვლა",
+  "copyLinkToSlide": "ამ სლაიდის ბმულის კოპირება",
+  "linkCopied": "ბმული დაკოპირდა",
+  "speakerNotes": "მომხსენებლის შენიშვნები",
+  "loadingPresentation": "პრეზენტაცია იტვირთება",
+  "presentationUnavailable": "პრეზენტაცია მიუწვდომელია",
+  "slide": "სლაიდი",
+  "downloadPresentation": "პრეზენტაციის ჩამოტვირთვა"
+}

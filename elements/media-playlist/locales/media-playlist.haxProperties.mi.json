@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rārangi pāho pāpāho",
+    "description": "He rārangi pāho e whakaatu ana i ngā kaipāho ataata me te oro i tētahi tahora kaipāho + paeteha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tūemi tīmatanga",
+        "description": "Te tau o te tūemi hei tīmatanga."
+      },
+      {
+        "title": "Akoranga",
+        "description": "Te akoranga mō tēnei rārangi pāho (tohu tautuhi akoranga, URL rānei)."
+      }
+    ]
+  }
+}

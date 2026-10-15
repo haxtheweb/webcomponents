@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Rārangi wā umanga",
+    "description": "He rārangi wā umanga e mau ana i ngā whakahaere, ngā tūranga me ētahi atu raraunga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara rārangi wā",
+        "description": "He taitara mō te rārangi wā umanga (OER Schema: oer:name)."
+      }
+    ]
+  }
+}

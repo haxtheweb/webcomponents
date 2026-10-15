@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "著者カード",
+    "description": "写真、略歴、ソーシャルリンク付きで著者情報を表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "著者名",
+        "description": "著者のフルネーム。"
+      },
+      {
+        "title": "プロフィール画像",
+        "description": "著者のプロフィール写真。"
+      },
+      {
+        "title": "肩書き",
+        "description": "著者の役職または役割。"
+      },
+      {
+        "title": "略歴",
+        "description": "著者の短い略歴。"
+      },
+      {
+        "title": "プロフィールURL",
+        "description": "著者のプロフィールページへのリンク。"
+      },
+      {
+        "title": "ソーシャルリンク",
+        "description": "ソーシャルメディアのプロフィールへのリンク。"
+      },
+      {
+        "title": "ソーシャルハンドル",
+        "description": "ソーシャルメディアのハンドル名（例：@username）。"
+      }
+    ]
+  }
+}

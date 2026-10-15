@@ -1,0 +1,11 @@
+{
+  "event": "Eveniment",
+  "when": "Când",
+  "where": "Unde",
+  "details": "Detalii",
+  "allDay": "Toată ziua",
+  "repeats": "Se repetă",
+  "loadingCalendar": "Se încarcă calendarul",
+  "calendarUnavailable": "Calendar indisponibil",
+  "noEvents": "Nu există evenimente în acest calendar"
+}

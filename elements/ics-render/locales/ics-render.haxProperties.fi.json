@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kalenteri",
+    "description": "Näytä kalenteritiedoston tapahtumat päivämääräkortteina, aikajanana, taulukkona tai luettelona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kalenteritiedosto",
+        "description": "Lataa tai valitse .ics-kalenteritiedosto. Sen tapahtumat luetaan selaimessa."
+      },
+      {
+        "title": "Näytä muodossa",
+        "description": "Miten tiedoston sisältö esitetään.",
+        "options": {
+          "cards": "Päivämääräkortit",
+          "timeline": "Aikajana",
+          "table": "Taulukko",
+          "list": "Luettelo"
+        }
+      },
+      {
+        "title": "Otsikko",
+        "description": "Näytetään tapahtumien yläpuolella ja taulukon kuvatekstinä. Oletuksena kalenterin oma nimi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Höfundarspjald",
+    "description": "Birta upplýsingar um höfund með mynd, æviágripi og tenglum á samfélagsmiðla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nafn höfundar",
+        "description": "Fullt nafn höfundar."
+      },
+      {
+        "title": "Prófílmynd",
+        "description": "Prófílmynd höfundar."
+      },
+      {
+        "title": "Starfsheiti",
+        "description": "Staða eða hlutverk höfundar."
+      },
+      {
+        "title": "Æviágrip",
+        "description": "Stutt æviágrip höfundar."
+      },
+      {
+        "title": "Slóð prófíls",
+        "description": "Tengill á prófílsíðu höfundar."
+      },
+      {
+        "title": "Tengill á samfélagsmiðil",
+        "description": "Tengill á prófíl á samfélagsmiðli."
+      },
+      {
+        "title": "Notandanafn á samfélagsmiðli",
+        "description": "Notandanafn á samfélagsmiðli (til dæmis @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Fitxa d'autor",
+    "description": "Mostra informació de l'autor amb foto, biografia i enllaços socials."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nom de l'autor",
+        "description": "Nom complet de l'autor."
+      },
+      {
+        "title": "Imatge de perfil",
+        "description": "Foto de perfil de l'autor."
+      },
+      {
+        "title": "Càrrec",
+        "description": "Càrrec o funció de l'autor."
+      },
+      {
+        "title": "Biografia",
+        "description": "Biografia breu de l'autor."
+      },
+      {
+        "title": "URL del perfil",
+        "description": "Enllaç a la pàgina de perfil de l'autor."
+      },
+      {
+        "title": "Enllaç social",
+        "description": "Enllaç a un perfil de xarxes socials."
+      },
+      {
+        "title": "Nom d'usuari social",
+        "description": "Nom d'usuari a les xarxes socials (per exemple, @username)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Evenimentu",
+  "when": "Quandu",
+  "where": "Induve",
+  "details": "Ditaglii",
+  "allDay": "Tutta a ghjurnata",
+  "repeats": "Si ripete",
+  "loadingCalendar": "Caricamentu di u calendariu",
+  "calendarUnavailable": "Calendariu micca dispunibile",
+  "noEvents": "Nisunu evenimentu in stu calendariu"
+}

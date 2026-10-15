@@ -1,0 +1,11 @@
+{
+  "event": "Dogodek",
+  "when": "Kdaj",
+  "where": "Kje",
+  "details": "Podrobnosti",
+  "allDay": "Ves dan",
+  "repeats": "Ponavlja se",
+  "loadingCalendar": "Nalaganje koledarja",
+  "calendarUnavailable": "Koledar ni na voljo",
+  "noEvents": "V tem koledarju ni dogodkov"
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kalenner",
+    "description": "D'Evenementer aus engem Kalennerfichier als Datumskaarten, Zäitstrahl, Tabell oder Lëscht weisen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kalennerfichier",
+        "description": "En .ics-Kalennerfichier eroplueden oder auswielen. Seng Evenementer ginn am Browser gelies."
+      },
+      {
+        "title": "Weisen als",
+        "description": "Wéi den Inhalt vum Fichier presentéiert gëtt.",
+        "options": {
+          "cards": "Datumskaarten",
+          "timeline": "Zäitstrahl",
+          "table": "Tabell",
+          "list": "Lëscht"
+        }
+      },
+      {
+        "title": "Iwwerschrëft",
+        "description": "Gëtt iwwer den Evenementer an als Tabellenënnerschrëft gewisen. Standardméisseg den eegene Numm vum Kalenner."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Előző dia",
+  "nextSlide": "Következő dia",
+  "viewAllSlides": "Összes dia megtekintése",
+  "viewOneSlide": "Diák megtekintése egyenként",
+  "presentFullScreen": "Bemutatás teljes képernyőn",
+  "exitFullScreen": "Kilépés a teljes képernyőből",
+  "copyLinkToSlide": "Hivatkozás másolása erre a diára",
+  "linkCopied": "Hivatkozás másolva",
+  "speakerNotes": "Előadói jegyzetek",
+  "loadingPresentation": "Bemutató betöltése",
+  "presentationUnavailable": "A bemutató nem érhető el",
+  "slide": "Dia",
+  "downloadPresentation": "Bemutató letöltése"
+}

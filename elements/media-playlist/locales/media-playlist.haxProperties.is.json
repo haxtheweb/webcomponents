@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Miðlaspilunarlisti",
+    "description": "Spilunarlisti sem sýnir mynd- og hljóðspilara í uppsetningu með spilara og hliðarstiku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Upphafsatriði",
+        "description": "Númer atriðisins sem byrjað er á."
+      },
+      {
+        "title": "Námskeið",
+        "description": "Námskeiðið sem þessi spilunarlisti er ætlaður (auðkenni eða URL námskeiðs)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "previousSlide": "ສະໄລກ່ອນໜ້າ",
+  "nextSlide": "ສະໄລຖັດໄປ",
+  "viewAllSlides": "ເບິ່ງສະໄລທັງໝົດ",
+  "viewOneSlide": "ເບິ່ງເທື່ອລະສະໄລ",
+  "presentFullScreen": "ນຳສະເໜີແບບເຕັມຈໍ",
+  "exitFullScreen": "ອອກຈາກເຕັມຈໍ",
+  "copyLinkToSlide": "ສຳເນົາລິ້ງຫາສະໄລນີ້",
+  "linkCopied": "ສຳເນົາລິ້ງແລ້ວ",
+  "speakerNotes": "ບັນທຶກຜູ້ບັນຍາຍ",
+  "loadingPresentation": "ກຳລັງໂຫຼດການນຳສະເໜີ",
+  "presentationUnavailable": "ບໍ່ມີການນຳສະເໜີ",
+  "slide": "ສະໄລ",
+  "downloadPresentation": "ດາວໂຫຼດການນຳສະເໜີ"
+}

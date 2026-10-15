@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Iqoqo lezilayidi",
+    "description": "Yethula iqoqo le-PowerPoint elingenisiwe isilayidi ngesilayidi, kanye namanothi esikhulumi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isimemezelo seqoqo lezilayidi",
+        "description": "Faka ifayela le-.pptx futhi lizoguqulwa ngokuzenzakalelayo libe yiqoqo lezilayidi. Le nkambu isethwa endleleni ye-deck.json ewumphumela."
+      },
+      {
+        "title": "I-ID yeqoqo lezilayidi",
+        "description": "Kudingeka kuphela uma ikhasi linamaqoqo angaphezu kwelilodwa, ukuze izixhumanisi zezilayidi zihlukane"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vumela ukulanda",
+        "description": "Bonisa inkinobho yokulanda ifayela le-PowerPoint loqobo ezilawulini zesidlali"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "event": "Esdeveniment",
+  "when": "Quan",
+  "where": "On",
+  "details": "Detalls",
+  "allDay": "Tot el dia",
+  "repeats": "Es repeteix",
+  "loadingCalendar": "S'està carregant el calendari",
+  "calendarUnavailable": "El calendari no està disponible",
+  "noEvents": "No hi ha cap esdeveniment en aquest calendari"
+}

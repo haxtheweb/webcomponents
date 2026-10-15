@@ -1,0 +1,15 @@
+{
+  "previousSlide": "Өмнөх слайд",
+  "nextSlide": "Дараагийн слайд",
+  "viewAllSlides": "Бүх слайдыг харах",
+  "viewOneSlide": "Нэг удаад нэг слайд харах",
+  "presentFullScreen": "Бүтэн дэлгэцээр үзүүлэх",
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах",
+  "copyLinkToSlide": "Энэ слайдын холбоосыг хуулах",
+  "linkCopied": "Холбоос хуулагдлаа",
+  "speakerNotes": "Илтгэгчийн тэмдэглэл",
+  "loadingPresentation": "Илтгэлийг ачаалж байна",
+  "presentationUnavailable": "Илтгэл боломжгүй байна",
+  "slide": "Слайд",
+  "downloadPresentation": "Илтгэлийг татах"
+}

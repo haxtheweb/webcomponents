@@ -1,0 +1,11 @@
+{
+  "name": "Nav",
+  "position": "Pozîsyon",
+  "organization": "Rêxistin",
+  "email": "E-name",
+  "phone": "Telefon",
+  "address": "Navnîşan",
+  "loadingContacts": "Têkilî tên barkirin",
+  "contactsUnavailable": "Têkilî ne berdest in",
+  "noContacts": "Di vê pelê de têkilî tune ne"
+}

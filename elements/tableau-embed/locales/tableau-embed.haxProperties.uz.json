@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Ulashish URL manzilidan Tableau vizualizatsiyalarini joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tableau URL",
+        "description": "Tableau ish kitobi yoki ko‘rinishiga URL."
+      },
+      {
+        "title": "Balandlik",
+        "description": "Vizualizatsiya balandligi."
+      },
+      {
+        "title": "Kenglik",
+        "description": "Vizualizatsiya kengligi."
+      },
+      {
+        "title": "Asboblar paneli",
+        "description": "Asboblar paneli joylashuvi.",
+        "options": {
+          "top": "Yuqorida",
+          "bottom": "Pastda",
+          "hidden": "Yashirin"
+        }
+      },
+      {
+        "title": "Varaqlarni yashirish",
+        "description": "Jadval varaqlari yorliqlarini yashirish."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Qurilma maketi",
+        "description": "Ko‘rsatiladigan qurilma maketi.",
+        "options": {
+          "desktop": "Kompyuter",
+          "tablet": "Planshet",
+          "phone": "Telefon"
+        }
+      }
+    ]
+  }
+}

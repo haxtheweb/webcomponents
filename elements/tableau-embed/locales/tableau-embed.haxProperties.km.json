@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "បង្កប់ការបង្ហាញទិន្នន័យ Tableau ពី URL ចែករំលែក។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "URL Tableau",
+        "description": "URL ទៅសៀវភៅការងារ ឬទិដ្ឋភាព Tableau។"
+      },
+      {
+        "title": "កម្ពស់",
+        "description": "កម្ពស់នៃការបង្ហាញ។"
+      },
+      {
+        "title": "ទទឹង",
+        "description": "ទទឹងនៃការបង្ហាញ។"
+      },
+      {
+        "title": "របារឧបករណ៍",
+        "description": "ទីតាំងរបារឧបករណ៍។",
+        "options": {
+          "top": "ខាងលើ",
+          "bottom": "ខាងក្រោម",
+          "hidden": "លាក់"
+        }
+      },
+      {
+        "title": "លាក់ផ្ទាំង",
+        "description": "លាក់ផ្ទាំងសន្លឹក។"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ប្លង់ឧបករណ៍",
+        "description": "ប្លង់ឧបករណ៍សម្រាប់បង្ហាញ។",
+        "options": {
+          "desktop": "កុំព្យូទ័រលើតុ",
+          "tablet": "ថេប្លេត",
+          "phone": "ទូរសព្ទ"
+        }
+      }
+    ]
+  }
+}

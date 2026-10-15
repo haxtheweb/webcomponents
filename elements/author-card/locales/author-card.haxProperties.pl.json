@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Karta autora",
+    "description": "Wyświetl informacje o autorze ze zdjęciem, biogramem i linkami do mediów społecznościowych."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imię i nazwisko autora",
+        "description": "Pełne imię i nazwisko autora."
+      },
+      {
+        "title": "Zdjęcie profilowe",
+        "description": "Zdjęcie profilowe autora."
+      },
+      {
+        "title": "Stanowisko",
+        "description": "Stanowisko lub rola autora."
+      },
+      {
+        "title": "Biogram",
+        "description": "Krótka biografia autora."
+      },
+      {
+        "title": "URL profilu",
+        "description": "Link do strony profilu autora."
+      },
+      {
+        "title": "Link społecznościowy",
+        "description": "Link do profilu w mediach społecznościowych."
+      },
+      {
+        "title": "Nazwa użytkownika",
+        "description": "Nazwa użytkownika w mediach społecznościowych (na przykład @username)."
+      }
+    ]
+  }
+}

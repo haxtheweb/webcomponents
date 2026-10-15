@@ -1,0 +1,11 @@
+{
+  "name": "Naam",
+  "position": "Functie",
+  "organization": "Organisatie",
+  "email": "E-mail",
+  "phone": "Telefoon",
+  "address": "Adres",
+  "loadingContacts": "Contacten laden",
+  "contactsUnavailable": "Contacten niet beschikbaar",
+  "noContacts": "Geen contacten in dit bestand"
+}

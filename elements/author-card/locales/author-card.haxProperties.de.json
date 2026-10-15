@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Autorenkarte",
+    "description": "Autoreninformationen mit Foto, Kurzbiografie und Social-Media-Links anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Name des Autors",
+        "description": "Vollständiger Name des Autors."
+      },
+      {
+        "title": "Profilbild",
+        "description": "Profilfoto des Autors."
+      },
+      {
+        "title": "Berufsbezeichnung",
+        "description": "Position oder Rolle des Autors."
+      },
+      {
+        "title": "Kurzbiografie",
+        "description": "Kurze Biografie des Autors."
+      },
+      {
+        "title": "Profil-URL",
+        "description": "Link zur Profilseite des Autors."
+      },
+      {
+        "title": "Social-Media-Link",
+        "description": "Link zu einem Social-Media-Profil."
+      },
+      {
+        "title": "Social-Media-Name",
+        "description": "Benutzername in sozialen Medien (zum Beispiel @username)."
+      }
+    ]
+  }
+}

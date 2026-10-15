@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "共有URLからTableauのビジュアライゼーションを埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "TableauのURL",
+        "description": "Tableauのワークブックまたはビューへの URL。"
+      },
+      {
+        "title": "高さ",
+        "description": "ビジュアライゼーションの高さ。"
+      },
+      {
+        "title": "幅",
+        "description": "ビジュアライゼーションの幅。"
+      },
+      {
+        "title": "ツールバー",
+        "description": "ツールバーの位置。",
+        "options": {
+          "top": "上",
+          "bottom": "下",
+          "hidden": "非表示"
+        }
+      },
+      {
+        "title": "タブを非表示",
+        "description": "シートのタブを非表示にします。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "デバイスレイアウト",
+        "description": "表示に使用するデバイスレイアウト。",
+        "options": {
+          "desktop": "デスクトップ",
+          "tablet": "タブレット",
+          "phone": "スマートフォン"
+        }
+      }
+    ]
+  }
+}

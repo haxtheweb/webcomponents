@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Shumeka okubonwayo kwe-Tableau kusuka ku-URL yokwabelana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "I-URL ye-Tableau",
+        "description": "I-URL eya encwadini yokusebenza noma ekubukeni kwe-Tableau."
+      },
+      {
+        "title": "Ukuphakama",
+        "description": "Ukuphakama kokubonwayo."
+      },
+      {
+        "title": "Ububanzi",
+        "description": "Ububanzi bokubonwayo."
+      },
+      {
+        "title": "Ibha yamathuluzi",
+        "description": "Indawo yebha yamathuluzi.",
+        "options": {
+          "top": "Phezulu",
+          "bottom": "Phansi",
+          "hidden": "Kufihliwe"
+        }
+      },
+      {
+        "title": "Fihla amathebhu",
+        "description": "Fihla amathebhu eshidi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isakhiwo sedivayisi",
+        "description": "Isakhiwo sedivayisi okuzoboniswa ngaso.",
+        "options": {
+          "desktop": "Ideskithophu",
+          "tablet": "Ithebhulethi",
+          "phone": "Ifoni"
+        }
+      }
+    ]
+  }
+}

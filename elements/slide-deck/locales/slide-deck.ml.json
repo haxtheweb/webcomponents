@@ -1,0 +1,15 @@
+{
+  "previousSlide": "മുമ്പത്തെ സ്ലൈഡ്",
+  "nextSlide": "അടുത്ത സ്ലൈഡ്",
+  "viewAllSlides": "എല്ലാ സ്ലൈഡുകളും കാണുക",
+  "viewOneSlide": "ഒരു സമയം ഒരു സ്ലൈഡ് കാണുക",
+  "presentFullScreen": "പൂർണ്ണ സ്ക്രീനിൽ അവതരിപ്പിക്കുക",
+  "exitFullScreen": "പൂർണ്ണ സ്ക്രീനിൽ നിന്ന് പുറത്തുകടക്കുക",
+  "copyLinkToSlide": "ഈ സ്ലൈഡിലേക്കുള്ള ലിങ്ക് പകർത്തുക",
+  "linkCopied": "ലിങ്ക് പകർത്തി",
+  "speakerNotes": "പ്രഭാഷക കുറിപ്പുകൾ",
+  "loadingPresentation": "അവതരണം ലോഡ് ചെയ്യുന്നു",
+  "presentationUnavailable": "അവതരണം ലഭ്യമല്ല",
+  "slide": "സ്ലൈഡ്",
+  "downloadPresentation": "അവതരണം ഡൗൺലോഡ് ചെയ്യുക"
+}
