@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Datoteka kontakata",
         "description": "Učitajte ili odaberite .vcf datoteku kontakata. Njene kartice se čitaju u pregledniku."
       },
       {
+        "property": "displayAs",
         "title": "Prikaži kao",
         "description": "Kako prikazati sadržaj datoteke.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Naslov",
         "description": "Prikazuje se iznad kontakata i kao natpis tabele."
       }

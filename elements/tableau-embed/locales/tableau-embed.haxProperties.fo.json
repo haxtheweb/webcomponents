@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL til Tableau-arbeiðsbókina ella -sýnið."
       },
       {
+        "property": "height",
         "title": "Hædd",
         "description": "Hædd á sjónmyndini."
       },
       {
+        "property": "width",
         "title": "Breidd",
         "description": "Breidd á sjónmyndini."
       },
       {
+        "property": "toolbar",
         "title": "Amboðsbjálki",
         "description": "Staðseting av amboðsbjálkanum.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Fjal teigar",
         "description": "Fjal teigarnar á arkunum."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Eindarsnið",
         "description": "Eindarsnið at vísa.",
         "options": {

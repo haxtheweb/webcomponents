@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "عنوان خط زمانی",
         "description": "عنوانی برای خط زمانی شغلی (OER Schema: oer:name)."
       }

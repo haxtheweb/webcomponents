@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "စတင်မည့် အမှတ်စဉ်",
         "description": "စတင်မည့် လက်ရှိအကြောင်းအရာ၏ အမှတ်စဉ်။"
       },
       {
+        "property": "forCourse",
         "title": "သင်တန်း",
         "description": "ဤဖွင့်စာရင်း ရည်ရွယ်သော သင်တန်း (သင်တန်း သတ်မှတ်ချက် သို့မဟုတ် URL)။"
       }

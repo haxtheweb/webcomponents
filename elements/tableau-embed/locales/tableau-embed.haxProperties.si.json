@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau වැඩපොත හෝ දර්ශනයට URL."
       },
       {
+        "property": "height",
         "title": "උස",
         "description": "දෘශ්‍යකරණයේ උස."
       },
       {
+        "property": "width",
         "title": "පළල",
         "description": "දෘශ්‍යකරණයේ පළල."
       },
       {
+        "property": "toolbar",
         "title": "මෙවලම් තීරුව",
         "description": "මෙවලම් තීරුවේ පිහිටීම.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ටැබ සඟවන්න",
         "description": "පත්‍ර ටැබ සඟවන්න."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "උපාංග පිරිසැලසුම",
         "description": "පෙන්විය යුතු උපාංග පිරිසැලසුම.",
         "options": {

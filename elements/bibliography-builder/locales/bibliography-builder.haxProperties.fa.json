@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "استنادها",
         "description": "موارد استناد در این کتاب‌نامه"
       },
       {
+        "property": "forCourse",
         "title": "درس",
         "description": "شناسه یا نام درسی که این کتاب‌نامه برای آن است (OER Schema forCourse)."
       }

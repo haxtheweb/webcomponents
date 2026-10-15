@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau ਵਰਕਬੁੱਕ ਜਾਂ ਵਿਊ ਦਾ URL।"
       },
       {
+        "property": "height",
         "title": "ਉਚਾਈ",
         "description": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਦੀ ਉਚਾਈ।"
       },
       {
+        "property": "width",
         "title": "ਚੌੜਾਈ",
         "description": "ਵਿਜ਼ੂਅਲਾਈਜ਼ੇਸ਼ਨ ਦੀ ਚੌੜਾਈ।"
       },
       {
+        "property": "toolbar",
         "title": "ਟੂਲਬਾਰ",
         "description": "ਟੂਲਬਾਰ ਦੀ ਸਥਿਤੀ।",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ਟੈਬਾਂ ਲੁਕਾਓ",
         "description": "ਸ਼ੀਟ ਟੈਬਾਂ ਲੁਕਾਓ।"
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "ਡਿਵਾਈਸ ਲੇਆਉਟ",
         "description": "ਰੈਂਡਰ ਕਰਨ ਲਈ ਡਿਵਾਈਸ ਲੇਆਉਟ।",
         "options": {

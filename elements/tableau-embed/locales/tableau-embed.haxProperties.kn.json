@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau ವರ್ಕ್‌ಬುಕ್ ಅಥವಾ ವೀಕ್ಷಣೆಗೆ URL."
       },
       {
+        "property": "height",
         "title": "ಎತ್ತರ",
         "description": "ದೃಶ್ಯೀಕರಣದ ಎತ್ತರ."
       },
       {
+        "property": "width",
         "title": "ಅಗಲ",
         "description": "ದೃಶ್ಯೀಕರಣದ ಅಗಲ."
       },
       {
+        "property": "toolbar",
         "title": "ಟೂಲ್‌ಬಾರ್",
         "description": "ಟೂಲ್‌ಬಾರ್ ಸ್ಥಾನ.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ",
         "description": "ಶೀಟ್ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "ಸಾಧನ ವಿನ್ಯಾಸ",
         "description": "ಪ್ರದರ್ಶಿಸಬೇಕಾದ ಸಾಧನ ವಿನ್ಯಾಸ.",
         "options": {

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Nambala yoyambira",
         "description": "Nambala ya chinthu choyambira."
       },
       {
+        "property": "forCourse",
         "title": "Maphunziro",
         "description": "Maphunziro amene mndandanda uwu ndi wawo (chizindikiro cha maphunziro kapena URL)."
       }

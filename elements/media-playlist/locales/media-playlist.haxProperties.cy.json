@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Eitem gychwynnol",
         "description": "Rhif yr eitem i ddechrau arni."
       },
       {
+        "property": "forCourse",
         "title": "Cwrs",
         "description": "Y cwrs y mae'r rhestr chwarae hon wedi'i bwriadu ar ei gyfer (dynodydd neu URL y cwrs)."
       }

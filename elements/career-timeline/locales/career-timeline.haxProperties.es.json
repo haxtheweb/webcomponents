@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Título de la cronología",
         "description": "Un título para la cronología profesional (OER Schema: oer:name)."
       }

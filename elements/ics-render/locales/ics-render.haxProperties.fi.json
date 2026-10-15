@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalenteritiedosto",
         "description": "Lataa tai valitse .ics-kalenteritiedosto. Sen tapahtumat luetaan selaimessa."
       },
       {
+        "property": "displayAs",
         "title": "Näytä muodossa",
         "description": "Miten tiedoston sisältö esitetään.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Otsikko",
         "description": "Näytetään tapahtumien yläpuolella ja taulukon kuvatekstinä. Oletuksena kalenterin oma nimi."
       }

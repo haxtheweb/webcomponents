@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Почетна ставка",
         "description": "Број на ставката од која се започнува."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Курсот за кој е наменета оваа плејлиста (идентификатор на курс или URL)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Berkas tanggalan",
         "description": "Unggah utawa pilih berkas tanggalan .ics. Acarané diwaca ing browser."
       },
       {
+        "property": "displayAs",
         "title": "Tampilaké minangka",
         "description": "Carané nampilaké isi berkas.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Sesirah",
         "description": "Ditampilaké ing sadhuwuré acara, lan minangka katerangan tabel. Standaré jeneng tanggalan kuwi dhéwé."
       }

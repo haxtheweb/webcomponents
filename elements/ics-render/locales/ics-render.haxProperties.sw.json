@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faili la kalenda",
         "description": "Pakia au chagua faili la kalenda la .ics. Matukio yake husomwa kwenye kivinjari."
       },
       {
+        "property": "displayAs",
         "title": "Onyesha kama",
         "description": "Jinsi ya kuwasilisha yaliyomo kwenye faili.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Kichwa",
         "description": "Huonyeshwa juu ya matukio, na kama kichwa cha jedwali. Chaguo-msingi ni jina la kalenda yenyewe."
       }

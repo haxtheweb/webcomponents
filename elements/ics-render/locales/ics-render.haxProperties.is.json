@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Dagatalsskrá",
         "description": "Hlaða upp eða velja .ics dagatalsskrá. Viðburðir hennar eru lesnir í vafranum."
       },
       {
+        "property": "displayAs",
         "title": "Birta sem",
         "description": "Hvernig á að birta innihald skrárinnar.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Fyrirsögn",
         "description": "Birtist fyrir ofan viðburðina og sem myndatexti töflunnar. Sjálfgefið er heiti dagatalsins sjálfs."
       }

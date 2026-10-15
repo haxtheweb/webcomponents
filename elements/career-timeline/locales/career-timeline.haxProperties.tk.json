@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Wagt çyzgysynyň ady",
         "description": "Karýera wagt çyzgysy üçin at (OER Schema: oer:name)."
       }

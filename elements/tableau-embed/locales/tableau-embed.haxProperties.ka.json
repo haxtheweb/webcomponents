@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-ს URL",
         "description": "URL Tableau-ს სამუშაო წიგნზე ან ხედზე."
       },
       {
+        "property": "height",
         "title": "სიმაღლე",
         "description": "ვიზუალიზაციის სიმაღლე."
       },
       {
+        "property": "width",
         "title": "სიგანე",
         "description": "ვიზუალიზაციის სიგანე."
       },
       {
+        "property": "toolbar",
         "title": "ხელსაწყოთა ზოლი",
         "description": "ხელსაწყოთა ზოლის მდებარეობა.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ჩანართების დამალვა",
         "description": "ფურცლების ჩანართების დამალვა."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "მოწყობილობის განლაგება",
         "description": "მოწყობილობის განლაგება ჩვენებისთვის.",
         "options": {

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "URL do Tableau radne knjige ili prikaza."
       },
       {
+        "property": "height",
         "title": "Visina",
         "description": "Visina vizualizacije."
       },
       {
+        "property": "width",
         "title": "Širina",
         "description": "Širina vizualizacije."
       },
       {
+        "property": "toolbar",
         "title": "Alatna traka",
         "description": "Položaj alatne trake.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Sakrij kartice",
         "description": "Sakrij kartice listova."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Raspored uređaja",
         "description": "Raspored uređaja za prikaz.",
         "options": {

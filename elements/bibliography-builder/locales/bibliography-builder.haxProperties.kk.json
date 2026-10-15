@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Дәйексөздер",
         "description": "Осы библиографиядағы дәйексөз жазбалары"
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Осы библиография арналған курстың идентификаторы немесе атауы (OER Schema forCourse)."
       }

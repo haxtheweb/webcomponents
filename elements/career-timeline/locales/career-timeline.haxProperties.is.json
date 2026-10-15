@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Titill tímalínu",
         "description": "Titill fyrir tímalínu starfsferilsins (OER Schema: oer:name)."
       }

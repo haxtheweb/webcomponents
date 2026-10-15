@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "การอ้างอิง",
         "description": "รายการอ้างอิงในบรรณานุกรมนี้"
       },
       {
+        "property": "forCourse",
         "title": "รายวิชา",
         "description": "รหัสหรือชื่อของรายวิชาที่บรรณานุกรมนี้จัดทำขึ้นสำหรับ (OER Schema forCourse)"
       }

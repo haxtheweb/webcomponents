@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Soubor kontaktů",
         "description": "Nahrajte nebo vyberte soubor kontaktů .vcf. Jeho karty se načítají v prohlížeči."
       },
       {
+        "property": "displayAs",
         "title": "Zobrazit jako",
         "description": "Jak zobrazit obsah souboru.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Nadpis",
         "description": "Zobrazuje se nad kontakty a jako popisek tabulky."
       }

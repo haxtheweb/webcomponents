@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Citakuna",
         "description": "Kay bibliografíapi citakuna"
       },
       {
+        "property": "forCourse",
         "title": "Yachay kurso",
         "description": "Kay bibliografía maypaq kasqan yachay kursopa riqsichiynin utaq sutin (OER Schema forCourse)."
       }

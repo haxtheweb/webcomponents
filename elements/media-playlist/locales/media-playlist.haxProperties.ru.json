@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Активный индекс",
         "description": "Номер элемента, с которого начинается воспроизведение."
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Курс, для которого предназначен этот плейлист (идентификатор или URL курса)."
       }

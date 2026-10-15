@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fitxer de contactes",
         "description": "Puja o tria un fitxer de contactes .vcf. Les seves fitxes es llegeixen al navegador."
       },
       {
+        "property": "displayAs",
         "title": "Mostra com a",
         "description": "Com presentar el contingut del fitxer.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Encapçalament",
         "description": "Es mostra a sobre dels contactes i com a llegenda de la taula."
       }

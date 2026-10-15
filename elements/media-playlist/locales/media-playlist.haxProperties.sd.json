@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "فعال انڊيڪس",
         "description": "ان فعال شيءِ جو انڊيڪس جنهن کان شروع ڪجي."
       },
       {
+        "property": "forCourse",
         "title": "ڪورس",
         "description": "اهو ڪورس جنهن لاءِ هي پلي لسٽ آهي (ڪورس جي سڃاڻپ يا URL)."
       }

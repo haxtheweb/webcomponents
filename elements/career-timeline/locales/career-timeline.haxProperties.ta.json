@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "காலவரிசைத் தலைப்பு",
         "description": "பணி வாழ்க்கை காலவரிசைக்கான தலைப்பு (OER Schema: oer:name)."
       }

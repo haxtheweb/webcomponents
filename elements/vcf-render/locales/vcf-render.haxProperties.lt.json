@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaktų failas",
         "description": "Įkelkite arba pasirinkite .vcf kontaktų failą. Jo kortelės nuskaitomos naršyklėje."
       },
       {
+        "property": "displayAs",
         "title": "Rodyti kaip",
         "description": "Kaip pateikti failo turinį.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Antraštė",
         "description": "Rodoma virš kontaktų ir kaip lentelės antraštė."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "د جنتري فایل",
         "description": "یو .ics د جنتري فایل پورته کړئ یا یې وټاکئ. د هغه پېښې په براوزر کې لوستل کېږي."
       },
       {
+        "property": "displayAs",
         "title": "داسې یې وښایئ",
         "description": "د فایل منځپانګه څنګه وړاندې شي.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "سرلیک",
         "description": "د پېښو پورته او د جدول د سرلیک په توګه ښودل کېږي. په ډیفالټ ډول د جنتري خپل نوم دی."
       }

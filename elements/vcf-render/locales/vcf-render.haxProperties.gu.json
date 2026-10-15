@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "સંપર્ક ફાઇલ",
         "description": ".vcf સંપર્ક ફાઇલ અપલોડ કરો અથવા પસંદ કરો. તેના કાર્ડ્સ બ્રાઉઝરમાં વાંચવામાં આવે છે."
       },
       {
+        "property": "displayAs",
         "title": "આ રીતે બતાવો",
         "description": "ફાઇલમાં જે છે તેને કેવી રીતે રજૂ કરવું.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "મથાળું",
         "description": "સંપર્કોની ઉપર અને કોષ્ટકના કૅપ્શન તરીકે બતાવવામાં આવે છે."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalennerfichier",
         "description": "En .ics-Kalennerfichier eroplueden oder auswielen. Seng Evenementer ginn am Browser gelies."
       },
       {
+        "property": "displayAs",
         "title": "Weisen als",
         "description": "Wéi den Inhalt vum Fichier presentéiert gëtt.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Iwwerschrëft",
         "description": "Gëtt iwwer den Evenementer an als Tabellenënnerschrëft gewisen. Standardméisseg den eegene Numm vum Kalenner."
       }

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL-i",
         "description": "Tableau iş kitabına və ya görünüşünə URL."
       },
       {
+        "property": "height",
         "title": "Hündürlük",
         "description": "Vizuallaşdırmanın hündürlüyü."
       },
       {
+        "property": "width",
         "title": "En",
         "description": "Vizuallaşdırmanın eni."
       },
       {
+        "property": "toolbar",
         "title": "Alətlər paneli",
         "description": "Alətlər panelinin mövqeyi.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Tabları gizlət",
         "description": "Vərəq tablarını gizlədin."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Cihaz düzümü",
         "description": "Göstəriləcək cihaz düzümü.",
         "options": {

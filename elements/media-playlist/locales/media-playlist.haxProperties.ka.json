@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "საწყისი ნომერი",
         "description": "აქტიური ელემენტის ნომერი, საიდანაც უნდა დაიწყოს."
       },
       {
+        "property": "forCourse",
         "title": "კურსი",
         "description": "კურსი, რომლისთვისაც ეს დასაკრავი სიაა განკუთვნილი (კურსის იდენტიფიკატორი ან URL)."
       }

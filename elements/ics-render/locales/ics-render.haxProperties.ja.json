@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "カレンダーファイル",
         "description": ".ics カレンダーファイルをアップロードまたは選択します。イベントはブラウザー内で読み込まれます。"
       },
       {
+        "property": "displayAs",
         "title": "表示形式",
         "description": "ファイルの内容をどのように表示するか。",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "見出し",
         "description": "イベントの上と、表のキャプションとして表示されます。既定ではカレンダー自体の名前になります。"
       }

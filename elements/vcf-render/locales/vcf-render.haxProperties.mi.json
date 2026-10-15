@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kōnae hoapā",
         "description": "Tukuake, kōwhiri rānei i tētahi kōnae hoapā .vcf. Ka pānuitia ōna kāri i te pūtirotiro."
       },
       {
+        "property": "displayAs",
         "title": "Whakaatu hei",
         "description": "Me pēhea te whakaatu i ngā ihirangi o te kōnae.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Upoko",
         "description": "Ka whakaaturia ki runga ake i ngā hoapā, ā, hei tapanga ripanga."
       }

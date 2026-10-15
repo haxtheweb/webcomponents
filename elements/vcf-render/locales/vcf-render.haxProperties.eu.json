@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontaktu-fitxategia",
         "description": "Kargatu edo aukeratu .vcf kontaktu-fitxategi bat. Haren txartelak nabigatzailean irakurtzen dira."
       },
       {
+        "property": "displayAs",
         "title": "Erakutsi honela",
         "description": "Fitxategiaren edukia nola aurkeztu.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Goiburua",
         "description": "Kontaktuen gainean erakusten da, baita taularen epigrafe gisa ere."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "عنوان الخط الزمني",
         "description": "عنوان للخط الزمني المهني (OER Schema: oer:name)."
       }

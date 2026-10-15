@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalendara dosiero",
         "description": "Alŝutu aŭ elektu .ics-kalendaran dosieron. Ĝiaj eventoj estas legataj en la retumilo."
       },
       {
+        "property": "displayAs",
         "title": "Montri kiel",
         "description": "Kiel prezenti la enhavon de la dosiero.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Titolo",
         "description": "Montrata super la eventoj kaj kiel tabelsubskribo. Defaŭlte la propra nomo de la kalendaro."
       }

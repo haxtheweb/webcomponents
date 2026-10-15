@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL na die Tableau-werkboek of -aansig."
       },
       {
+        "property": "height",
         "title": "Hoogte",
         "description": "Hoogte van die visualisering."
       },
       {
+        "property": "width",
         "title": "Breedte",
         "description": "Breedte van die visualisering."
       },
       {
+        "property": "toolbar",
         "title": "Nutsbalk",
         "description": "Posisie van die nutsbalk.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Versteek oortjies",
         "description": "Versteek bladoortjies."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Toesteluitleg",
         "description": "Toesteluitleg om te vertoon.",
         "options": {

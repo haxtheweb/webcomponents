@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "ไฟล์ปฏิทิน",
         "description": "อัปโหลดหรือเลือกไฟล์ปฏิทิน .ics กิจกรรมในไฟล์จะถูกอ่านในเบราว์เซอร์"
       },
       {
+        "property": "displayAs",
         "title": "แสดงเป็น",
         "description": "วิธีนำเสนอเนื้อหาในไฟล์",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "หัวเรื่อง",
         "description": "แสดงเหนือกิจกรรม และเป็นคำบรรยายตาราง ค่าเริ่มต้นคือชื่อของปฏิทินเอง"
       }

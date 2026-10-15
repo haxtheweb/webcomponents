@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Hêmana destpêkê",
         "description": "Hejmara hêmana ku pê dest pê dike."
       },
       {
+        "property": "forCourse",
         "title": "Ders",
         "description": "Dersa ku ev lîste jê re ye (nasnameya dersê an URL)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Ára rysýi réra",
         "description": "Téra tembiapo rape ára rysýipe g̃uarã (OER Schema: oer:name)."
       }

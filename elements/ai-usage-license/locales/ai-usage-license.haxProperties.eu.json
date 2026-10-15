@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "Lizentzia",
         "description": "Lan honetarako AA erabiltzeko lizentziaren maila. Ikusi https://dmd-program.github.io/aiul/ xehetasunetarako."
       },
       {
+        "property": "modifier",
         "title": "Multimedia-aldatzailea",
         "description": "Multimedia-domeinuaren aukerako aldatzailea. Lizentzia zein multimedia motari aplikatzen zaion zehazten du."
       },
       {
+        "property": "uri",
         "title": "AIUL URIa (OER Schema)",
         "description": "OER Schema: AA erabiltzeko lizentziaren erreferentzia-orriaren URIa. Ezarrita ez badago, lizentziaren estekatik automatikoki betetzen da."
       }

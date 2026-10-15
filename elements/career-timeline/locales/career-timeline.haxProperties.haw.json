@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Poʻo inoa o ka moʻolelo",
         "description": "He poʻo inoa no ka moʻolelo ʻoihana (OER Schema: oer:name)."
       }

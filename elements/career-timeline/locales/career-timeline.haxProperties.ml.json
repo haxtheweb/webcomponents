@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ടൈംലൈൻ ശീർഷകം",
         "description": "കരിയർ ടൈംലൈനിനുള്ള ശീർഷകം (OER Schema: oer:name)."
       }

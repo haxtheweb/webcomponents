@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "અવતરણો",
         "description": "આ ગ્રંથસૂચિમાંની અવતરણ આઇટમ્સ"
       },
       {
+        "property": "forCourse",
         "title": "અભ્યાસક્રમ",
         "description": "આ ગ્રંથસૂચિ જે અભ્યાસક્રમ માટે છે તેનું ઓળખકર્તા અથવા નામ (OER Schema forCourse)."
       }

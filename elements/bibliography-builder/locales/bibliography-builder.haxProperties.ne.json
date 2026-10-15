@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "उद्धरणहरू",
         "description": "यस सन्दर्भसूचीका उद्धरण वस्तुहरू"
       },
       {
+        "property": "forCourse",
         "title": "पाठ्यक्रम",
         "description": "यो सन्दर्भसूची जुन पाठ्यक्रमका लागि हो त्यसको पहिचानकर्ता वा नाम (OER Schema forCourse)।"
       }

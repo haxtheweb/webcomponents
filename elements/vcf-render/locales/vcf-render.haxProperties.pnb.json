@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "رابطہ فائل",
         "description": "اک .vcf رابطہ فائل اپ لوڈ کرو یا چنو۔ ایہدے کارڈ براؤزر وچ پڑھے جاندے نیں۔"
       },
       {
+        "property": "displayAs",
         "title": "ایویں وکھاؤ",
         "description": "فائل وچلا مواد کیویں پیش کرنا اے۔",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "سرخی",
         "description": "رابطیاں دے اُتے تے جدول دی کیپشن دے طور تے وکھایا جاندا اے۔"
       }

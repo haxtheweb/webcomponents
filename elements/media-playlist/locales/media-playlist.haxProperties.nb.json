@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktiv indeks",
         "description": "Indeksen til det aktive elementet det skal startes på."
       },
       {
+        "property": "forCourse",
         "title": "Emne",
         "description": "Emnet denne spillelisten er ment for (emneidentifikator eller URL)."
       }

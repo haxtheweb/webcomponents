@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Wabeeffannoowwan",
         "description": "Wantoota wabeeffannoo tarree wabii kana keessaa"
       },
       {
+        "property": "forCourse",
         "title": "Koorsii",
         "description": "Eenyummeessaa ykn maqaa koorsii tarreen wabii kun itti qophaa'e (OER Schema forCourse)."
       }

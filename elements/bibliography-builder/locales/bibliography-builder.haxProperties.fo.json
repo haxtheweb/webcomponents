@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Tilvísingar",
         "description": "Tilvísingar í hesum bókalista"
       },
       {
+        "property": "forCourse",
         "title": "Skeið",
         "description": "Eyðmerki ella navn á skeiðinum, sum hesin bókalisti er til (OER Schema forCourse)."
       }

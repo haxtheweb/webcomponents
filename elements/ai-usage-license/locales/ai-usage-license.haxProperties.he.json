@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "רישיון",
         "description": "רמת רישיון השימוש ב-AI עבור עבודה זו. לפרטים ראו https://dmd-program.github.io/aiul/"
       },
       {
+        "property": "modifier",
         "title": "מגדיר מדיה",
         "description": "מגדיר תחום מדיה אופציונלי. מציין את סוג המדיה שעליו חל רישיון זה."
       },
       {
+        "property": "uri",
         "title": "AIUL URI (OER Schema)",
         "description": "OER Schema: URI לדף ההפניה של רישיון השימוש ב-AI. ממולא אוטומטית מקישור הרישיון כאשר אינו מוגדר."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "सक्रिय इंडेक्स",
         "description": "शुरुआत में सक्रिय आइटम का इंडेक्स।"
       },
       {
+        "property": "forCourse",
         "title": "पाठ्यक्रम",
         "description": "वह पाठ्यक्रम जिसके लिए यह प्लेलिस्ट है (पाठ्यक्रम पहचानकर्ता या URL)।"
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Comhad féilire",
         "description": "Uaslódáil nó roghnaigh comhad féilire .ics. Léitear a imeachtaí sa bhrabhsálaí."
       },
       {
+        "property": "displayAs",
         "title": "Taispeáin mar",
         "description": "Conas ábhar an chomhaid a chur i láthair.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Ceannteideal",
         "description": "Taispeántar é os cionn na n-imeachtaí, agus mar fhotheideal an tábla. Is é ainm an fhéilire féin an réamhshocrú."
       }

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL کارپوشه یا نمای Tableau."
       },
       {
+        "property": "height",
         "title": "ارتفاع",
         "description": "ارتفاع مصورسازی."
       },
       {
+        "property": "width",
         "title": "عرض",
         "description": "عرض مصورسازی."
       },
       {
+        "property": "toolbar",
         "title": "نوار ابزار",
         "description": "موقعیت نوار ابزار.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "پنهان کردن زبانه‌ها",
         "description": "پنهان کردن زبانه‌های برگه."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "چیدمان دستگاه",
         "description": "چیدمان دستگاه برای نمایش.",
         "options": {

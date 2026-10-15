@@ -6,16 +6,19 @@
   "settings": {
     "configure": [
       {
+        "property": "source",
         "title": "Taqdimot manifesti",
         "description": ".pptx faylini tashlang va u avtomatik ravishda slaydlar to‘plamiga aylantiriladi. Maydonga hosil bo‘lgan deck.json yo‘li yoziladi."
       },
       {
+        "property": "deckId",
         "title": "Taqdimot ID",
         "description": "Faqat sahifada bir nechta taqdimot bo‘lganda kerak, shunda slayd havolalari farqlanadi"
       }
     ],
     "advanced": [
       {
+        "property": "downloadable",
         "title": "Yuklab olishga ruxsat berish",
         "description": "Pleyer boshqaruvlarida asl PowerPoint faylini yuklab olish tugmasini ko‘rsatish"
       }

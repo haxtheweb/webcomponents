@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau பணிப்புத்தகம் அல்லது காட்சிக்கான URL."
       },
       {
+        "property": "height",
         "title": "உயரம்",
         "description": "காட்சிப்படுத்தலின் உயரம்."
       },
       {
+        "property": "width",
         "title": "அகலம்",
         "description": "காட்சிப்படுத்தலின் அகலம்."
       },
       {
+        "property": "toolbar",
         "title": "கருவிப்பட்டி",
         "description": "கருவிப்பட்டியின் நிலை.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "தாவல்களை மறை",
         "description": "தாள் தாவல்களை மறை."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "சாதனத் தளவமைப்பு",
         "description": "காட்ட வேண்டிய சாதனத் தளவமைப்பு.",
         "options": {

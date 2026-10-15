@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Počáteční položka",
         "description": "Pořadové číslo položky, kterou začít."
       },
       {
+        "property": "forCourse",
         "title": "Kurz",
         "description": "Kurz, pro který je tento seznam určen (identifikátor kurzu nebo URL)."
       }

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL-и Tableau",
         "description": "URL ба китоби корӣ ё намуди Tableau."
       },
       {
+        "property": "height",
         "title": "Баландӣ",
         "description": "Баландии визуализатсия."
       },
       {
+        "property": "width",
         "title": "Паҳноӣ",
         "description": "Паҳноии визуализатсия."
       },
       {
+        "property": "toolbar",
         "title": "Панели абзорҳо",
         "description": "Ҷойгиршавии панели абзорҳо.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Пинҳон кардани ҷадвалакҳо",
         "description": "Пинҳон кардани ҷадвалакҳои варақаҳо."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Тарҳбандии дастгоҳ",
         "description": "Тарҳбандии дастгоҳ барои намоиш.",
         "options": {

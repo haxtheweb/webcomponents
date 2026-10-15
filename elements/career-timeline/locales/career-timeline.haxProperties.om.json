@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Mata duree sarara yeroo",
         "description": "Mata duree sarara yeroo hojii (OER Schema: oer:name)."
       }

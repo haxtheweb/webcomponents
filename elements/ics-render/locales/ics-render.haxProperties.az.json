@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Təqvim faylı",
         "description": ".ics təqvim faylını yükləyin və ya seçin. Onun tədbirləri brauzerdə oxunur."
       },
       {
+        "property": "displayAs",
         "title": "Göstərmə forması",
         "description": "Faylın məzmununun necə təqdim olunacağı.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Başlıq",
         "description": "Tədbirlərin üstündə və cədvəl başlığı kimi göstərilir. Standart olaraq təqvimin öz adı istifadə olunur."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Takvim dosyası",
         "description": "Bir .ics takvim dosyası yükleyin veya seçin. Etkinlikleri tarayıcıda okunur."
       },
       {
+        "property": "displayAs",
         "title": "Görüntüleme biçimi",
         "description": "Dosyanın içeriğinin nasıl sunulacağı.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Başlık",
         "description": "Etkinliklerin üstünde ve tablo başlığı olarak gösterilir. Varsayılan olarak takvimin kendi adı kullanılır."
       }

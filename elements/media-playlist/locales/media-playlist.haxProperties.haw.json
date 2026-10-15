@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Helu hoʻomaka",
         "description": "Ka helu o ka mea e hoʻomaka ai."
       },
       {
+        "property": "forCourse",
         "title": "Papa",
         "description": "Ka Papa no kēia papa hoʻokani (helu ʻike papa a i ʻole URL)."
       }

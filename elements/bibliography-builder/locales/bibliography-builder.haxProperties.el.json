@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Παραπομπές",
         "description": "Στοιχεία παραπομπών σε αυτή τη βιβλιογραφία"
       },
       {
+        "property": "forCourse",
         "title": "Μάθημα",
         "description": "Αναγνωριστικό ή όνομα του μαθήματος για το οποίο προορίζεται αυτή η βιβλιογραφία (OER Schema forCourse)."
       }

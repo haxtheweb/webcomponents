@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Schedariu di cuntatti",
         "description": "Caricà o sceglie un schedariu di cuntatti .vcf. E so carte sò lette in u navigatore."
       },
       {
+        "property": "displayAs",
         "title": "Affissà cum'è",
         "description": "Cumu presentà ciò chì u schedariu cuntene.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Intestatura",
         "description": "Affissata sopra à i cuntatti, è cum'è legenda di a tavula."
       }

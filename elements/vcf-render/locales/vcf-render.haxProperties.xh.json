@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Ifayile yabafowunelwa",
         "description": "Layisha okanye ukhethe ifayile yabafowunelwa ye-.vcf. Amakhadi ayo afundwa kwibhrawuza."
       },
       {
+        "property": "displayAs",
         "title": "Bonisa njenga",
         "description": "Indlela yokubonisa oko kuqulathwe yifayile.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Isihloko",
         "description": "Kuboniswa ngaphezu kwabafowunelwa, nanjengesihloko setheyibhile."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Lambar farawa",
         "description": "Lambar abin da za a fara da shi."
       },
       {
+        "property": "forCourse",
         "title": "Kwas",
         "description": "Kwas ɗin da wannan jerin yake domin shi (mai gano kwas ko URL)."
       }

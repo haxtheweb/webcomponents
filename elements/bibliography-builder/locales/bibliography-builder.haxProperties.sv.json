@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Källhänvisningar",
         "description": "Källhänvisningar i den här bibliografin"
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Identifierare eller namn på kursen som den här bibliografin är avsedd för (OER Schema forCourse)."
       }

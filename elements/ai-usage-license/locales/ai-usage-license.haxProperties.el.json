@@ -6,14 +6,17 @@
   "settings": {
     "configure": [
       {
+        "property": "license",
         "title": "Άδεια",
         "description": "Το επίπεδο άδειας χρήσης ΤΝ για αυτό το έργο. Δείτε https://dmd-program.github.io/aiul/ για λεπτομέρειες."
       },
       {
+        "property": "modifier",
         "title": "Τροποποιητής μέσου",
         "description": "Προαιρετικός τροποποιητής τομέα μέσων. Καθορίζει τον τύπο μέσων στον οποίο εφαρμόζεται αυτή η άδεια."
       },
       {
+        "property": "uri",
         "title": "URI AIUL (OER Schema)",
         "description": "OER Schema: URI για τη σελίδα αναφοράς της Άδειας χρήσης ΤΝ. Συμπληρώνεται αυτόματα από τον σύνδεσμο της άδειας όταν δεν έχει οριστεί."
       }

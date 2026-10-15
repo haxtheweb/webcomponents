@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "સક્રિય ક્રમાંક",
         "description": "શરૂઆતમાં સક્રિય રહેનાર આઇટમનો ક્રમાંક."
       },
       {
+        "property": "forCourse",
         "title": "અભ્યાસક્રમ",
         "description": "આ પ્લેલિસ્ટ જે અભ્યાસક્રમ માટે છે (અભ્યાસક્રમ ઓળખકર્તા અથવા URL)."
       }

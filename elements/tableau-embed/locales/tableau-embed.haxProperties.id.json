@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL ke workbook atau tampilan Tableau."
       },
       {
+        "property": "height",
         "title": "Tinggi",
         "description": "Tinggi visualisasi."
       },
       {
+        "property": "width",
         "title": "Lebar",
         "description": "Lebar visualisasi."
       },
       {
+        "property": "toolbar",
         "title": "Bilah alat",
         "description": "Posisi bilah alat.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Sembunyikan tab",
         "description": "Sembunyikan tab lembar."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Tata letak perangkat",
         "description": "Tata letak perangkat yang akan ditampilkan.",
         "options": {

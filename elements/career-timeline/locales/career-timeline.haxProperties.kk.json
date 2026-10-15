@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Хронология тақырыбы",
         "description": "Мансап хронологиясының тақырыбы (OER Schema: oer:name)."
       }

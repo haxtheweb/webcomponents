@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Сарлавҳаи хронология",
         "description": "Сарлавҳа барои хронологияи касбӣ (OER Schema: oer:name)."
       }

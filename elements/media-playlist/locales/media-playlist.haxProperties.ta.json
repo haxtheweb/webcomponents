@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "தொடக்க எண்",
         "description": "தொடங்க வேண்டிய உருப்படியின் எண்."
       },
       {
+        "property": "forCourse",
         "title": "பாடநெறி",
         "description": "இந்த பிளேலிஸ்ட் நோக்கமாகக் கொண்ட பாடநெறி (பாடநெறி அடையாளங்காட்டி அல்லது URL)."
       }

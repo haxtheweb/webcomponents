@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Senenama faýly",
         "description": ".ics senenama faýlyny ýükläň ýa-da saýlaň. Onuň çäreleri brauzerde okalýar."
       },
       {
+        "property": "displayAs",
         "title": "Görkeziş görnüşi",
         "description": "Faýlyň mazmunyny nähili görkezmeli.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Sözbaşy",
         "description": "Çäreleriň üstünde we tablisanyň ady hökmünde görkezilýär. Deslapky ýagdaýda senenamanyň öz ady ulanylýar."
       }

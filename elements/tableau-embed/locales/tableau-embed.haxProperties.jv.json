@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL menyang workbook utawa tampilan Tableau."
       },
       {
+        "property": "height",
         "title": "Dhuwur",
         "description": "Dhuwuré visualisasi."
       },
       {
+        "property": "width",
         "title": "Jembar",
         "description": "Jembaré visualisasi."
       },
       {
+        "property": "toolbar",
         "title": "Bilah piranti",
         "description": "Posisi bilah piranti.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Dhelikaké tab",
         "description": "Dhelikaké tab lembar."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Tata letak piranti",
         "description": "Tata letak piranti sing arep ditampilaké.",
         "options": {

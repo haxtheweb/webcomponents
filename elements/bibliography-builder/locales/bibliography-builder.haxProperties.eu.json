@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Aipamenak",
         "description": "Bibliografia honetako aipamenak"
       },
       {
+        "property": "forCourse",
         "title": "Ikastaroa",
         "description": "Bibliografia hau zein ikastarotarako den, haren identifikatzailea edo izena (OER Schema forCourse)."
       }

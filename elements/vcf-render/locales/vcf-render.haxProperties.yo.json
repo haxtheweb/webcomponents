@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fáìlì olùbásọ̀rọ̀",
         "description": "Gbé fáìlì olùbásọ̀rọ̀ .vcf sókè tàbí yàn án. A ń ka àwọn káàdì rẹ̀ nínú aṣàwákiri."
       },
       {
+        "property": "displayAs",
         "title": "Ṣàfihàn gẹ́gẹ́ bí",
         "description": "Bí a ṣe máa ṣàfihàn ohun tí fáìlì náà ní.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Àkọlé",
         "description": "Ó ń hàn lókè àwọn olùbásọ̀rọ̀, àti gẹ́gẹ́ bí àkọlé tábìlì."
       }

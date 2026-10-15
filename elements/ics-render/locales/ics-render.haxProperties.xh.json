@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Ifayile yekhalenda",
         "description": "Layisha okanye ukhethe ifayile yekhalenda ye-.ics. Imisitho yayo ifundwa kwibhrawuza."
       },
       {
+        "property": "displayAs",
         "title": "Bonisa njenga",
         "description": "Indlela yokubonisa oko kuqulathwe yifayile.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Isihloko",
         "description": "Kuboniswa ngaphezu kwemisitho, nanjengesihloko setheyibhile. Ngokungagqibekanga lelona gama lekhalenda."
       }

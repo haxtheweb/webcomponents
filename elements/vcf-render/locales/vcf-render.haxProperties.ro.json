@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fișier de contacte",
         "description": "Încarcă sau alege un fișier de contacte .vcf. Cardurile sale sunt citite în browser."
       },
       {
+        "property": "displayAs",
         "title": "Afișează ca",
         "description": "Cum să fie prezentat conținutul fișierului.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Titlu",
         "description": "Afișat deasupra contactelor și ca legendă a tabelului."
       }

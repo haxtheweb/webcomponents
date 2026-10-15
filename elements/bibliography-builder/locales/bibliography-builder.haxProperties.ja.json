@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "引用",
         "description": "この参考文献リストの引用項目"
       },
       {
+        "property": "forCourse",
         "title": "コース",
         "description": "この参考文献リストの対象となるコースの識別子または名前（OER Schema forCourse）。"
       }

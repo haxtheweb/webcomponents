@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Název časové osy",
         "description": "Název kariérní časové osy (OER Schema: oer:name)."
       }

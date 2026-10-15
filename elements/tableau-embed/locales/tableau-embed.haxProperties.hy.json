@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau աշխատագրքի կամ տեսքի URL-ը։"
       },
       {
+        "property": "height",
         "title": "Բարձրություն",
         "description": "Վիզուալիզացիայի բարձրությունը։"
       },
       {
+        "property": "width",
         "title": "Լայնություն",
         "description": "Վիզուալիզացիայի լայնությունը։"
       },
       {
+        "property": "toolbar",
         "title": "Գործիքագոտի",
         "description": "Գործիքագոտու դիրքը։",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Թաքցնել ներդիրները",
         "description": "Թաքցնել թերթերի ներդիրները։"
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Սարքի դասավորություն",
         "description": "Ցուցադրվող սարքի դասավորությունը։",
         "options": {

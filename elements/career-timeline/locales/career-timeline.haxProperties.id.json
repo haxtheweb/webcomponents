@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Judul linimasa",
         "description": "Judul untuk linimasa karier (OER Schema: oer:name)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Pamagat ng timeline",
         "description": "Pamagat para sa timeline ng karera (OER Schema: oer:name)."
       }

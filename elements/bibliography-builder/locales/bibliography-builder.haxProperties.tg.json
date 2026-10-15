@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Иқтибосҳо",
         "description": "Унсурҳои иқтибос дар ин библиография"
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Шиносаи ё номи курсе, ки ин библиография барои он аст (OER Schema forCourse)."
       }

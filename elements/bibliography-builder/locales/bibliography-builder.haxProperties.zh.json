@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "引文",
         "description": "此参考文献目录中的引文条目"
       },
       {
+        "property": "forCourse",
         "title": "课程",
         "description": "此参考文献目录所属课程的标识符或名称（OER Schema forCourse）。"
       }

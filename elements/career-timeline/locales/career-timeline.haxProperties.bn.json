@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "সময়রেখার শিরোনাম",
         "description": "কর্মজীবনের সময়রেখার জন্য একটি শিরোনাম (OER Schema: oer:name)।"
       }

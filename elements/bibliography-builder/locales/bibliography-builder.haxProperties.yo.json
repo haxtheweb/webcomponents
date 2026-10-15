@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Àwọn ìtọ́ka",
         "description": "Àwọn ohun ìtọ́ka nínú bibliografi yìí"
       },
       {
+        "property": "forCourse",
         "title": "Kọ́ọ̀sì",
         "description": "Ìdánimọ̀ tàbí orúkọ kọ́ọ̀sì tí bibliografi yìí wà fún (OER Schema forCourse)."
       }

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau वर्कबुक किंवा व्ह्यूची URL."
       },
       {
+        "property": "height",
         "title": "उंची",
         "description": "व्हिज्युअलायझेशनची उंची."
       },
       {
+        "property": "width",
         "title": "रुंदी",
         "description": "व्हिज्युअलायझेशनची रुंदी."
       },
       {
+        "property": "toolbar",
         "title": "टूलबार",
         "description": "टूलबारचे स्थान.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "टॅब लपवा",
         "description": "शीट टॅब लपवा."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "डिव्हाइस मांडणी",
         "description": "रेंडर करायची डिव्हाइस मांडणी.",
         "options": {

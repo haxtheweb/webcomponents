@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalenderdatei",
         "description": "Eine .ics-Kalenderdatei hochladen oder auswählen. Ihre Termine werden im Browser gelesen."
       },
       {
+        "property": "displayAs",
         "title": "Anzeigen als",
         "description": "Wie der Inhalt der Datei dargestellt wird.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Überschrift",
         "description": "Wird über den Terminen und als Tabellenbeschriftung angezeigt. Standardmäßig der Name des Kalenders."
       }

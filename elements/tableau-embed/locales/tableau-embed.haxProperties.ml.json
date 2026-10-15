@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau വർക്ക്ബുക്കിലേക്കോ വ്യൂവിലേക്കോ ഉള്ള URL."
       },
       {
+        "property": "height",
         "title": "ഉയരം",
         "description": "ദൃശ്യവൽക്കരണത്തിന്റെ ഉയരം."
       },
       {
+        "property": "width",
         "title": "വീതി",
         "description": "ദൃശ്യവൽക്കരണത്തിന്റെ വീതി."
       },
       {
+        "property": "toolbar",
         "title": "ടൂൾബാർ",
         "description": "ടൂൾബാറിന്റെ സ്ഥാനം.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ടാബുകൾ മറയ്ക്കുക",
         "description": "ഷീറ്റ് ടാബുകൾ മറയ്ക്കുക."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "ഉപകരണ ലേഔട്ട്",
         "description": "റെൻഡർ ചെയ്യേണ്ട ഉപകരണ ലേഔട്ട്.",
         "options": {

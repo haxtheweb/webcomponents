@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ಕಾಲರೇಖೆಯ ಶೀರ್ಷಿಕೆ",
         "description": "ವೃತ್ತಿಜೀವನದ ಕಾಲರೇಖೆಗೆ ಶೀರ್ಷಿಕೆ (OER Schema: oer:name)."
       }

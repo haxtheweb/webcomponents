@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "时间线标题",
         "description": "职业时间线个标题（OER Schema: oer:name）。"
       }

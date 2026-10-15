@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Xronologiya başlığı",
         "description": "Karyera xronologiyası üçün başlıq (OER Schema: oer:name)."
       }

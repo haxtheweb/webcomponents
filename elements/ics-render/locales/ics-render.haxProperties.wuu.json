@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "日历文件",
         "description": "上传或者拣一只 .ics 日历文件。里向个活动辣浏览器里读。"
       },
       {
+        "property": "displayAs",
         "title": "显示方式",
         "description": "文件里向个内容哪能呈现。",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "标题",
         "description": "显示辣活动上头，也当表格标题用。默认用日历自家个名字。"
       }

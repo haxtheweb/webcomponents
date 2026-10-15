@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Ժամանակագծի վերնագիր",
         "description": "Կարիերայի ժամանակագծի վերնագիր (OER Schema: oer:name)։"
       }

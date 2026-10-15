@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "ਸਰਗਰਮ ਸੂਚਕਾਂਕ",
         "description": "ਸ਼ੁਰੂ ਕਰਨ ਵਾਲੀ ਸਰਗਰਮ ਆਈਟਮ ਦਾ ਸੂਚਕਾਂਕ।"
       },
       {
+        "property": "forCourse",
         "title": "ਕੋਰਸ",
         "description": "ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਪਲੇਲਿਸਟ ਹੈ (ਕੋਰਸ ਪਛਾਣਕਰਤਾ ਜਾਂ URL)।"
       }

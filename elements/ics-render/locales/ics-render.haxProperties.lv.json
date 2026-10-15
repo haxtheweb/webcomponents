@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kalendāra fails",
         "description": "Augšupielādējiet vai izvēlieties .ics kalendāra failu. Tā notikumi tiek nolasīti pārlūkprogrammā."
       },
       {
+        "property": "displayAs",
         "title": "Rādīt kā",
         "description": "Kā attēlot faila saturu.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Virsraksts",
         "description": "Tiek rādīts virs notikumiem un kā tabulas paraksts. Pēc noklusējuma – paša kalendāra nosaukums."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "File di calendario",
         "description": "Carica o scegli un file di calendario .ics. I suoi eventi vengono letti nel browser."
       },
       {
+        "property": "displayAs",
         "title": "Mostra come",
         "description": "Come presentare il contenuto del file.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Intestazione",
         "description": "Mostrata sopra gli eventi e come didascalia della tabella. Per impostazione predefinita è il nome del calendario stesso."
       }

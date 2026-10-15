@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL delovnega zvezka ali pogleda Tableau."
       },
       {
+        "property": "height",
         "title": "Višina",
         "description": "Višina vizualizacije."
       },
       {
+        "property": "width",
         "title": "Širina",
         "description": "Širina vizualizacije."
       },
       {
+        "property": "toolbar",
         "title": "Orodna vrstica",
         "description": "Položaj orodne vrstice.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Skrij zavihke",
         "description": "Skrij zavihke listov."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Postavitev naprave",
         "description": "Postavitev naprave za izris.",
         "options": {

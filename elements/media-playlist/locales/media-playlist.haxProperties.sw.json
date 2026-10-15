@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Faharasa ya kuanzia",
         "description": "Nambari ya kipengee cha kuanzia."
       },
       {
+        "property": "forCourse",
         "title": "Kozi",
         "description": "Kozi ambayo orodha hii ya kucheza imekusudiwa (kitambulisho cha kozi au URL)."
       }

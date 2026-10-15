@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktiivinen indeksi",
         "description": "Aktiivisen kohteen indeksi, josta aloitetaan."
       },
       {
+        "property": "forCourse",
         "title": "Kurssi",
         "description": "Kurssi, jota varten tämä soittolista on (kurssin tunniste tai URL)."
       }

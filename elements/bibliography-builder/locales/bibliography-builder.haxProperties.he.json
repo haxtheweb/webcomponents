@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "ציטוטים",
         "description": "פריטי הציטוט בביבליוגרפיה זו"
       },
       {
+        "property": "forCourse",
         "title": "קורס",
         "description": "מזהה או שם הקורס שעבורו נועדה ביבליוגרפיה זו (OER Schema forCourse)."
       }

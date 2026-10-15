@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faịlụ kalenda",
         "description": "Bulite ma ọ bụ họrọ faịlụ kalenda .ics. A na-agụ mmemme ya na ihe nchọgharị."
       },
       {
+        "property": "displayAs",
         "title": "Gosi dịka",
         "description": "Otu esi egosipụta ihe dị na faịlụ ahụ.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Isiokwu",
         "description": "A na-egosi ya n'elu mmemme ndị ahụ, na dịka nkọwa tebụl. Ọ na-abụ aha kalenda ahụ n'onwe ya na ndabara."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Índex actiu",
         "description": "Índex de l'element actiu amb què començar."
       },
       {
+        "property": "forCourse",
         "title": "Curs",
         "description": "El curs al qual va destinada aquesta llista de reproducció (identificador del curs o URL)."
       }

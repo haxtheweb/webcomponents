@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "ప్రారంభ సూచిక",
         "description": "ప్రారంభించాల్సిన అంశం యొక్క సూచిక సంఖ్య."
       },
       {
+        "property": "forCourse",
         "title": "కోర్సు",
         "description": "ఈ ప్లేలిస్ట్ ఉద్దేశించిన కోర్సు (కోర్సు ఐడెంటిఫైయర్ లేదా URL)."
       }

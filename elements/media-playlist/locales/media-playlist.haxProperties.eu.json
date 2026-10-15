@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Indize aktiboa",
         "description": "Hasierako elementu aktiboaren indizea."
       },
       {
+        "property": "forCourse",
         "title": "Ikastaroa",
         "description": "Erreprodukzio-zerrenda hau zein ikastarotarako den (ikastaroaren identifikatzailea edo URLa)."
       }

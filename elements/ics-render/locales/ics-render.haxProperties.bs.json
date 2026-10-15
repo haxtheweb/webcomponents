@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Datoteka kalendara",
         "description": "Učitajte ili odaberite .ics datoteku kalendara. Njeni događaji se čitaju u pregledniku."
       },
       {
+        "property": "displayAs",
         "title": "Prikaži kao",
         "description": "Kako prikazati sadržaj datoteke.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Naslov",
         "description": "Prikazuje se iznad događaja i kao natpis tabele. Zadano je vlastiti naziv kalendara."
       }

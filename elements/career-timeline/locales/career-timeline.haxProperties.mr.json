@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "कालरेषा शीर्षक",
         "description": "करिअर कालरेषेसाठी शीर्षक (OER Schema: oer:name)."
       }

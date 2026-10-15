@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Quellenangaben",
         "description": "Quellenangaben in diesem Literaturverzeichnis"
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Kennung oder Name des Kurses, für den dieses Literaturverzeichnis bestimmt ist (OER Schema forCourse)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Teideal na hamlíne",
         "description": "Teideal don amlíne ghairme (OER Schema: oer:name)."
       }

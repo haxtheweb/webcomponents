@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Sernavê xeta demê",
         "description": "Sernavek ji bo xeta demê ya kariyerê (OER Schema: oer:name)."
       }

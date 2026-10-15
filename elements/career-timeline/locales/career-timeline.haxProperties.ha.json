@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Taken tarihin aiki",
         "description": "Take don tarihin aikin (OER Schema: oer:name)."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Ajajoone pealkiri",
         "description": "Karjääri ajajoone pealkiri (OER Schema: oer:name)."
       }

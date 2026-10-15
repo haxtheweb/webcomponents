@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Mutu wa ndandanda",
         "description": "Mutu wa ndandanda ya mbiri ya ntchito (OER Schema: oer:name)."
       }

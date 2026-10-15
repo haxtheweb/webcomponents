@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "కాలక్రమం శీర్షిక",
         "description": "కెరీర్ కాలక్రమం కోసం శీర్షిక (OER Schema: oer:name)."
       }

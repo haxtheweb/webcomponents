@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Actieve index",
         "description": "Index van het actieve item waarmee wordt begonnen."
       },
       {
+        "property": "forCourse",
         "title": "Cursus",
         "description": "De cursus waarvoor deze afspeellijst bedoeld is (cursus-ID of URL)."
       }

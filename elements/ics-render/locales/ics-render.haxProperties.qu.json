@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Calendario archivo",
         "description": "Huk .ics calendario archivota churay utaq akllay. Ruwayninkunaqa navegadorpi ñawinchasqa kanku."
       },
       {
+        "property": "displayAs",
         "title": "Imayna rikuchiy",
         "description": "Archivopi kaqta imayna rikuchina.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Uma suti",
         "description": "Ruwaykuna hawanpi rikukun, tablapa sutinhinapas. Mana churasqa kaqtinqa calendariopa kikin sutinta churan."
       }

@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "ٹائم لائن دا سرناواں",
         "description": "کیریئر ٹائم لائن لئی سرناواں (OER Schema: oer:name)۔"
       }

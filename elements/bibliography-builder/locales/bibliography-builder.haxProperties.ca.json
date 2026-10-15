@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Cites",
         "description": "Elements de cita d'aquesta bibliografia"
       },
       {
+        "property": "forCourse",
         "title": "Curs",
         "description": "Identificador o nom del curs per al qual és aquesta bibliografia (OER Schema forCourse)."
       }

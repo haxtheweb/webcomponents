@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Yhteystietotiedosto",
         "description": "Lataa tai valitse .vcf-yhteystietotiedosto. Sen kortit luetaan selaimessa."
       },
       {
+        "property": "displayAs",
         "title": "Näytä muodossa",
         "description": "Miten tiedoston sisältö esitetään.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Otsikko",
         "description": "Näytetään yhteystietojen yläpuolella ja taulukon kuvatekstinä."
       }

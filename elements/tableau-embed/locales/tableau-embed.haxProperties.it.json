@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL di Tableau",
         "description": "URL della cartella di lavoro o della vista Tableau."
       },
       {
+        "property": "height",
         "title": "Altezza",
         "description": "Altezza della visualizzazione."
       },
       {
+        "property": "width",
         "title": "Larghezza",
         "description": "Larghezza della visualizzazione."
       },
       {
+        "property": "toolbar",
         "title": "Barra degli strumenti",
         "description": "Posizione della barra degli strumenti.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Nascondi schede",
         "description": "Nascondi le schede dei fogli."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Layout del dispositivo",
         "description": "Layout del dispositivo da visualizzare.",
         "options": {

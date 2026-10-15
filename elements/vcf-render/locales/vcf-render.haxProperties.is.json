@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Tengiliðaskrá",
         "description": "Hlaða upp eða velja .vcf tengiliðaskrá. Spjöld hennar eru lesin í vafranum."
       },
       {
+        "property": "displayAs",
         "title": "Birta sem",
         "description": "Hvernig á að birta innihald skrárinnar.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Fyrirsögn",
         "description": "Birtist fyrir ofan tengiliðina og sem myndatexti töflunnar."
       }

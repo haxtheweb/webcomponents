@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Faol indeks",
         "description": "Boshlanadigan faol element indeksi."
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Ushbu pleylist mo‘ljallangan kurs (kurs identifikatori yoki URL)."
       }

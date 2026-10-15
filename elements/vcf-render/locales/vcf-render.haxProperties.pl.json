@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Plik kontaktów",
         "description": "Prześlij lub wybierz plik kontaktów .vcf. Jego wizytówki są odczytywane w przeglądarce."
       },
       {
+        "property": "displayAs",
         "title": "Wyświetl jako",
         "description": "Sposób prezentacji zawartości pliku.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Nagłówek",
         "description": "Wyświetlany nad kontaktami oraz jako podpis tabeli."
       }

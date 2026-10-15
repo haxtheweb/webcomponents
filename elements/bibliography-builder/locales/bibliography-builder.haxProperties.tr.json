@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Alıntılar",
         "description": "Bu kaynakçadaki alıntı öğeleri"
       },
       {
+        "property": "forCourse",
         "title": "Ders",
         "description": "Bu kaynakçanın ait olduğu dersin tanımlayıcısı veya adı (OER Schema forCourse)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Kontakt faylı",
         "description": ".vcf kontakt faylını yükləyin və ya seçin. Onun kartları brauzerdə oxunur."
       },
       {
+        "property": "displayAs",
         "title": "Göstərmə forması",
         "description": "Faylın məzmununun necə təqdim olunacağı.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Başlıq",
         "description": "Kontaktların üstündə və cədvəl başlığı kimi göstərilir."
       }

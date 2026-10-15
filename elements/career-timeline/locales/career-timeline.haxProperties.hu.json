@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Idővonal címe",
         "description": "A szakmai idővonal címe (OER Schema: oer:name)."
       }

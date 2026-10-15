@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Index actif",
         "description": "Index de l’élément actif de départ."
       },
       {
+        "property": "forCourse",
         "title": "Cours",
         "description": "Le cours auquel cette playlist est destinée (identifiant ou URL du cours)."
       }

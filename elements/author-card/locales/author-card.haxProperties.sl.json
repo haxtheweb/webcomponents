@@ -6,30 +6,37 @@
   "settings": {
     "configure": [
       {
+        "property": "name",
         "title": "Ime avtorja",
         "description": "Polno ime avtorja."
       },
       {
+        "property": "image",
         "title": "Profilna slika",
         "description": "Profilna fotografija avtorja."
       },
       {
+        "property": "title",
         "title": "Delovno mesto",
         "description": "Položaj ali vloga avtorja."
       },
       {
+        "property": "description",
         "title": "Življenjepis",
         "description": "Kratek življenjepis avtorja."
       },
       {
+        "property": "profileUrl",
         "title": "URL profila",
         "description": "Povezava do profilne strani avtorja."
       },
       {
+        "property": "socialLink",
         "title": "Povezava do družbenega omrežja",
         "description": "Povezava do profila na družbenem omrežju."
       },
       {
+        "property": "socialHandle",
         "title": "Uporabniško ime",
         "description": "Uporabniško ime na družbenem omrežju (na primer @username)."
       }

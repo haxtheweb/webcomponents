@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "Tiêu đề dòng thời gian",
         "description": "Tiêu đề cho dòng thời gian sự nghiệp (OER Schema: oer:name)."
       }

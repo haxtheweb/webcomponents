@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Faira yekarenda",
         "description": "Isa kana sarudza faira yekarenda ye.ics. Zviitiko zvayo zvinoverengerwa mubrowser."
       },
       {
+        "property": "displayAs",
         "title": "Ratidza se",
         "description": "Maratidziro ezviri mufaira.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Musoro",
         "description": "Unoratidzwa pamusoro pezviitiko, uye semusoro wetafura. Kana pasina, rinoshandisa zita rekarenda pacharo."
       }

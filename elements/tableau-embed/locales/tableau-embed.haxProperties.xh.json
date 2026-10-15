@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "I-URL ye-Tableau",
         "description": "I-URL eya kwincwadi yokusebenza okanye kumboniso we-Tableau."
       },
       {
+        "property": "height",
         "title": "Ukuphakama",
         "description": "Ukuphakama komboniso."
       },
       {
+        "property": "width",
         "title": "Ububanzi",
         "description": "Ububanzi bomboniso."
       },
       {
+        "property": "toolbar",
         "title": "Ibha yezixhobo",
         "description": "Indawo yebha yezixhobo.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Fihla iithebhu",
         "description": "Fihla iithebhu zamaphepha."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Uyilo lwesixhobo",
         "description": "Uyilo lwesixhobo oluza kuboniswa.",
         "options": {

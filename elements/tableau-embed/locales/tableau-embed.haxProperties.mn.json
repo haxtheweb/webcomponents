@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau ажлын ном эсвэл харагдацын URL."
       },
       {
+        "property": "height",
         "title": "Өндөр",
         "description": "Дүрслэлийн өндөр."
       },
       {
+        "property": "width",
         "title": "Өргөн",
         "description": "Дүрслэлийн өргөн."
       },
       {
+        "property": "toolbar",
         "title": "Хэрэгслийн мөр",
         "description": "Хэрэгслийн мөрийн байрлал.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Табуудыг нуух",
         "description": "Хуудасны табуудыг нуух."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Төхөөрөмжийн бүтэц",
         "description": "Харуулах төхөөрөмжийн бүтэц.",
         "options": {

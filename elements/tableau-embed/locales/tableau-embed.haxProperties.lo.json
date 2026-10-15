@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "URL ຂອງປຶ້ມວຽກ ຫຼື ມຸມມອງ Tableau."
       },
       {
+        "property": "height",
         "title": "ຄວາມສູງ",
         "description": "ຄວາມສູງຂອງການສະແດງຂໍ້ມູນ."
       },
       {
+        "property": "width",
         "title": "ຄວາມກວ້າງ",
         "description": "ຄວາມກວ້າງຂອງການສະແດງຂໍ້ມູນ."
       },
       {
+        "property": "toolbar",
         "title": "ແຖບເຄື່ອງມື",
         "description": "ຕຳແໜ່ງແຖບເຄື່ອງມື.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "ເຊື່ອງແຖບ",
         "description": "ເຊື່ອງແຖບຊີດ."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "ຮູບແບບອຸປະກອນ",
         "description": "ຮູບແບບອຸປະກອນທີ່ຈະສະແດງ.",
         "options": {

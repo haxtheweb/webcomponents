@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL Tableau-työkirjaan tai -näkymään."
       },
       {
+        "property": "height",
         "title": "Korkeus",
         "description": "Visualisoinnin korkeus."
       },
       {
+        "property": "width",
         "title": "Leveys",
         "description": "Visualisoinnin leveys."
       },
       {
+        "property": "toolbar",
         "title": "Työkalupalkki",
         "description": "Työkalupalkin sijainti.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Piilota välilehdet",
         "description": "Piilota taulukkovälilehdet."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Laiteasettelu",
         "description": "Hahmonnettava laiteasettelu.",
         "options": {

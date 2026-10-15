@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Algüksus",
         "description": "Üksuse number, millest alustada."
       },
       {
+        "property": "forCourse",
         "title": "Kursus",
         "description": "Kursus, mille jaoks see esitusloend on mõeldud (kursuse tunnus või URL)."
       }

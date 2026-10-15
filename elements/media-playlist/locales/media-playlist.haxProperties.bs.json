@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Aktivni indeks",
         "description": "Indeks aktivne stavke od koje se počinje."
       },
       {
+        "property": "forCourse",
         "title": "Kurs",
         "description": "Kurs kojem je ova lista namijenjena (identifikator kursa ili URL)."
       }

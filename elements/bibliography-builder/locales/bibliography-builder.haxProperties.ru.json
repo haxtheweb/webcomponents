@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "Цитаты",
         "description": "Библиографические записи в этом списке"
       },
       {
+        "property": "forCourse",
         "title": "Курс",
         "description": "Идентификатор или название курса, для которого предназначена эта библиография (OER Schema forCourse)."
       }

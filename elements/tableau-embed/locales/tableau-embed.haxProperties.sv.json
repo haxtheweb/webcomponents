@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau-URL",
         "description": "URL till Tableau-arbetsboken eller -vyn."
       },
       {
+        "property": "height",
         "title": "Höjd",
         "description": "Visualiseringens höjd."
       },
       {
+        "property": "width",
         "title": "Bredd",
         "description": "Visualiseringens bredd."
       },
       {
+        "property": "toolbar",
         "title": "Verktygsfält",
         "description": "Verktygsfältets placering.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Dölj flikar",
         "description": "Dölj bladflikar."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Enhetslayout",
         "description": "Enhetslayout som ska återges.",
         "options": {

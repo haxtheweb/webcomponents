@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URL",
         "description": "Tableau 工作簿或视图的 URL。"
       },
       {
+        "property": "height",
         "title": "高度",
         "description": "可视化内容的高度。"
       },
       {
+        "property": "width",
         "title": "宽度",
         "description": "可视化内容的宽度。"
       },
       {
+        "property": "toolbar",
         "title": "工具栏",
         "description": "工具栏位置。",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "隐藏标签页",
         "description": "隐藏工作表标签页。"
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "设备布局",
         "description": "用于呈现的设备布局。",
         "options": {

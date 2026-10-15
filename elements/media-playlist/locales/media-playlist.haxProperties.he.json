@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "אינדקס פעיל",
         "description": "מספר הפריט הפעיל שבו מתחילים."
       },
       {
+        "property": "forCourse",
         "title": "קורס",
         "description": "הקורס שעבורו נועדה רשימת השמעה זו (מזהה קורס או URL)."
       }

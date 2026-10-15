@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Datoteka stikov",
         "description": "Naložite ali izberite datoteko stikov .vcf. Njene kartice se preberejo v brskalniku."
       },
       {
+        "property": "displayAs",
         "title": "Prikaži kot",
         "description": "Kako predstaviti vsebino datoteke.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Naslov",
         "description": "Prikazano nad stiki in kot napis tabele."
       }

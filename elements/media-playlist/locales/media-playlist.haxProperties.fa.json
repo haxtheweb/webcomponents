@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "شاخص فعال",
         "description": "شاخص مورد فعالی که پخش از آن آغاز می‌شود."
       },
       {
+        "property": "forCourse",
         "title": "درس",
         "description": "درسی که این فهرست پخش برای آن است (شناسه یا URL درس)."
       }

@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Fail kalendar",
         "description": "Muat naik atau pilih fail kalendar .ics. Acaranya dibaca dalam pelayar."
       },
       {
+        "property": "displayAs",
         "title": "Papar sebagai",
         "description": "Cara membentangkan kandungan fail.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Tajuk",
         "description": "Ditunjukkan di atas acara dan sebagai kapsyen jadual. Lalai kepada nama kalendar itu sendiri."
       }

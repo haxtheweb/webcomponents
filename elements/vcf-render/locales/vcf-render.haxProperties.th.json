@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "ไฟล์รายชื่อติดต่อ",
         "description": "อัปโหลดหรือเลือกไฟล์รายชื่อติดต่อ .vcf การ์ดในไฟล์จะถูกอ่านในเบราว์เซอร์"
       },
       {
+        "property": "displayAs",
         "title": "แสดงเป็น",
         "description": "วิธีนำเสนอเนื้อหาในไฟล์",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "หัวเรื่อง",
         "description": "แสดงเหนือรายชื่อติดต่อ และเป็นคำบรรยายตาราง"
       }

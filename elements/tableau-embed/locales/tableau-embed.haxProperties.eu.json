@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "Tableau URLa",
         "description": "Tableau lan-libururako edo ikuspegirako URLa."
       },
       {
+        "property": "height",
         "title": "Altuera",
         "description": "Bistaratzearen altuera."
       },
       {
+        "property": "width",
         "title": "Zabalera",
         "description": "Bistaratzearen zabalera."
       },
       {
+        "property": "toolbar",
         "title": "Tresna-barra",
         "description": "Tresna-barraren kokapena.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Ezkutatu fitxak",
         "description": "Ezkutatu orrien fitxak."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Gailuaren diseinua",
         "description": "Errendatu beharreko gailuaren diseinua.",
         "options": {

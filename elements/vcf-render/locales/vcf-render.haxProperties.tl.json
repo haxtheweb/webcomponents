@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "File ng contact",
         "description": "Mag-upload o pumili ng .vcf na contact file. Binabasa ang mga card nito sa browser."
       },
       {
+        "property": "displayAs",
         "title": "Ipakita bilang",
         "description": "Kung paano ipapakita ang laman ng file.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Pamuhatan",
         "description": "Ipinapakita sa itaas ng mga contact, at bilang caption ng talahanayan."
       }

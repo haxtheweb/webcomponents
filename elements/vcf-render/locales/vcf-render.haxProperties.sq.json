@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "dataSource",
         "title": "Skedari i kontakteve",
         "description": "Ngarko ose zgjidh një skedar kontaktesh .vcf. Kartat e tij lexohen në shfletues."
       },
       {
+        "property": "displayAs",
         "title": "Shfaq si",
         "description": "Si të paraqitet përmbajtja e skedarit.",
         "options": {
@@ -20,6 +22,7 @@
         }
       },
       {
+        "property": "caption",
         "title": "Titulli",
         "description": "Shfaqet mbi kontaktet dhe si titull i tabelës."
       }

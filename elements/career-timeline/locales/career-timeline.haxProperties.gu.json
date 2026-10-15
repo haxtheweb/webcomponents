@@ -6,6 +6,7 @@
   "settings": {
     "configure": [
       {
+        "property": "title",
         "title": "સમયરેખાનું શીર્ષક",
         "description": "કારકિર્દી સમયરેખા માટે શીર્ષક (OER Schema: oer:name)."
       }

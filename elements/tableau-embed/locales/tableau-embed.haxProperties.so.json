@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL-ka Tableau",
         "description": "URL-ka buugga shaqada ama muuqaalka Tableau."
       },
       {
+        "property": "height",
         "title": "Dherer",
         "description": "Dhererka muuqaalka."
       },
       {
+        "property": "width",
         "title": "Ballac",
         "description": "Ballaca muuqaalka."
       },
       {
+        "property": "toolbar",
         "title": "Barta qalabka",
         "description": "Meesha barta qalabka.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Qari tabaha",
         "description": "Qari tabaha xaashiyaha."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Qaabka qalabka",
         "description": "Qaabka qalabka ee la soo bandhigayo.",
         "options": {

@@ -6,18 +6,22 @@
   "settings": {
     "configure": [
       {
+        "property": "src",
         "title": "URL Tableau",
         "description": "URL του βιβλίου εργασίας ή της προβολής Tableau."
       },
       {
+        "property": "height",
         "title": "Ύψος",
         "description": "Ύψος οπτικοποίησης."
       },
       {
+        "property": "width",
         "title": "Πλάτος",
         "description": "Πλάτος οπτικοποίησης."
       },
       {
+        "property": "toolbar",
         "title": "Γραμμή εργαλείων",
         "description": "Θέση γραμμής εργαλείων.",
         "options": {
@@ -27,12 +31,14 @@
         }
       },
       {
+        "property": "hideTabs",
         "title": "Απόκρυψη καρτελών",
         "description": "Απόκρυψη καρτελών φύλλων."
       }
     ],
     "advanced": [
       {
+        "property": "device",
         "title": "Διάταξη συσκευής",
         "description": "Διάταξη συσκευής για απόδοση.",
         "options": {

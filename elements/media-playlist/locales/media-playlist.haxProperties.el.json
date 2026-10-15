@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "Αρχικό στοιχείο",
         "description": "Αριθμός του στοιχείου από το οποίο θα ξεκινήσει."
       },
       {
+        "property": "forCourse",
         "title": "Μάθημα",
         "description": "Το μάθημα για το οποίο προορίζεται αυτή η λίστα αναπαραγωγής (αναγνωριστικό μαθήματος ή URL)."
       }

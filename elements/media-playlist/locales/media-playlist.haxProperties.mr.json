@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "सुरुवातीचा क्रमांक",
         "description": "सुरुवात करायच्या सक्रिय आयटमचा क्रमांक."
       },
       {
+        "property": "forCourse",
         "title": "अभ्यासक्रम",
         "description": "ही प्लेलिस्ट ज्या अभ्यासक्रमासाठी आहे (अभ्यासक्रम ओळखकर्ता किंवा URL)."
       }

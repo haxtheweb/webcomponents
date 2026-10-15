@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "slot": "",
         "title": "மேற்கோள்கள்",
         "description": "இந்த நூற்பட்டியலில் உள்ள மேற்கோள் உருப்படிகள்"
       },
       {
+        "property": "forCourse",
         "title": "பாடநெறி",
         "description": "இந்த நூற்பட்டியல் உரிய பாடநெறியின் அடையாளங்காட்டி அல்லது பெயர் (OER Schema forCourse)."
       }

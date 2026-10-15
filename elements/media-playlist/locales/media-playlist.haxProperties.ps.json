@@ -6,10 +6,12 @@
   "settings": {
     "configure": [
       {
+        "property": "activeIndex",
         "title": "فعال شمېره",
         "description": "د هغه فعال توکي شمېره چې پیل ترې کېږي."
       },
       {
+        "property": "forCourse",
         "title": "کورس",
         "description": "هغه کورس چې دا لړلیک ورته دی (د کورس پېژندنه یا URL)."
       }
