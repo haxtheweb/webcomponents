@@ -185,8 +185,10 @@ describe('img-view-viewer rendering', () => {
         .figures=${[{ src: DATA_URL }]}
       ></img-view-viewer>`,
     )
-    await el.updateComplete
-    el.loaded = true
+    // the data URL only finishes loading in a later task, so poll for the
+    // img-loader relay instead of a single updateComplete which races onload
+    const ready = await poll(() => el.loaded === true && el.loading === false)
+    expect(ready).to.be.true
     await el.updateComplete
     expect(el.shadowRoot.querySelector('#loader').hasAttribute('hidden')).to
       .be.true
