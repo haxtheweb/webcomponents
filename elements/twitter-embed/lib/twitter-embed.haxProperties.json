@@ -39,10 +39,10 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": [],
-    "saveOptions": {
-      "unsetAttributes": ["_haxstate"]
-    }
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["_haxstate"]
   },
   "demoSchema": [
     {

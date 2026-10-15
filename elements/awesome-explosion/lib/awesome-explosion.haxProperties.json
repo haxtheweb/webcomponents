@@ -3,7 +3,6 @@
   "type": "element",
   "editingElement": "core",
   "canScale": false,
-  "canPosition": true,
   "canEditSource": false,
   "gizmo": {
     "title": "Awesome Explosion",

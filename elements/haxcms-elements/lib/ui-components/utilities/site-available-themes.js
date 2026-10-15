@@ -723,7 +723,6 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
   static get haxProperties() {
     return {
       canScale: false,
-      canPosition: false,
       canEditSource: true,
       contentEditable: false,
       gizmo: {

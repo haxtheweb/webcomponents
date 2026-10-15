@@ -34,10 +34,10 @@
         "description": "Locale metadata value such as en_US.",
         "inputMethod": "textfield"
       }
-    ],
-    "saveOptions": {
-      "unsetAttributes": ["_haxstate"]
-    }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["_haxstate"]
   },
   "demoSchema": [
     {
