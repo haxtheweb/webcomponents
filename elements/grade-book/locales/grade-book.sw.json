@@ -37,5 +37,11 @@
   "selectGradebookSource": "Chagua chanzo cha kitabu cha alama",
   "sourceData": "Data ya chanzo",
   "pasteValidJSONHere": "Bandika JSON halali hapa",
-  "loadingFilePleaseWait": "Inapakia faili, tafadhali subiri.."
+  "loadingFilePleaseWait": "Inapakia faili, tafadhali subiri..",
+  "userID": "ID ya Mtumiaji",
+  "preferredName": "Jina linalopendelewa",
+  "emailAddress": "Mtumie mwanafunzi huyu barua pepe",
+  "notes": "Madokezo",
+  "interests": "Mambo Yanayompendeza",
+  "profileImageFor": "Picha ya wasifu ya"
 }

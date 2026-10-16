@@ -37,5 +37,11 @@
   "selectGradebookSource": "Yan orísun ìwé máàkì",
   "sourceData": "Dátà orísun",
   "pasteValidJSONHere": "Lẹ JSON tó fẹsẹ̀ múlẹ̀ síbí",
-  "loadingFilePleaseWait": "Ó ń gbé fáìlì wọlé, jọ̀wọ́ dúró.."
+  "loadingFilePleaseWait": "Ó ń gbé fáìlì wọlé, jọ̀wọ́ dúró..",
+  "userID": "ID Olùlò",
+  "preferredName": "Orúkọ tí a fẹ́ràn",
+  "emailAddress": "Fi ímeèlì ránṣẹ́ sí akẹ́kọ̀ọ́ yìí",
+  "notes": "Àwọn àkọsílẹ̀",
+  "interests": "Àwọn ìfẹ́-ọkàn",
+  "profileImageFor": "Àwòrán profaili ti"
 }

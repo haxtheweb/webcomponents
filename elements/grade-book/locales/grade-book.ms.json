@@ -37,5 +37,11 @@
   "selectGradebookSource": "Pilih sumber buku gred",
   "sourceData": "Data sumber",
   "pasteValidJSONHere": "Tampal JSON yang sah di sini",
-  "loadingFilePleaseWait": "MEMUATKAN FAIL, SILA TUNGGU.."
+  "loadingFilePleaseWait": "MEMUATKAN FAIL, SILA TUNGGU..",
+  "userID": "ID Pengguna",
+  "preferredName": "Nama pilihan",
+  "emailAddress": "E-mel pelajar ini",
+  "notes": "Nota",
+  "interests": "Minat",
+  "profileImageFor": "Imej profil untuk"
 }

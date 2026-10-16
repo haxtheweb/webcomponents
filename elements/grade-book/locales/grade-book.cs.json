@@ -37,5 +37,11 @@
   "selectGradebookSource": "Vyberte zdroj klasifikace",
   "sourceData": "Zdrojová data",
   "pasteValidJSONHere": "Sem vložte platný JSON",
-  "loadingFilePleaseWait": "Načítání souboru, čekejte prosím.."
+  "loadingFilePleaseWait": "Načítání souboru, čekejte prosím..",
+  "userID": "ID uživatele",
+  "preferredName": "Preferované jméno",
+  "emailAddress": "Napsat e-mail tomuto studentovi",
+  "notes": "Poznámky",
+  "interests": "Zájmy",
+  "profileImageFor": "Profilový obrázek:"
 }

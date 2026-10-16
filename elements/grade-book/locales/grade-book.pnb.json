@@ -37,5 +37,11 @@
   "selectGradebookSource": "گریڈ بک دا ذریعہ چنو",
   "sourceData": "ذریعہ ڈیٹا",
   "pasteValidJSONHere": "ایتھے درست JSON پیسٹ کرو",
-  "loadingFilePleaseWait": "فائل لوڈ ہو رہی اے، مہربانی کر کے انتظار کرو.."
+  "loadingFilePleaseWait": "فائل لوڈ ہو رہی اے، مہربانی کر کے انتظار کرو..",
+  "userID": "یوزر ID",
+  "preferredName": "پسندیدہ ناں",
+  "emailAddress": "ایس طالب علم نوں ای میل کرو",
+  "notes": "نوٹ",
+  "interests": "دلچسپیاں",
+  "profileImageFor": "پروفائل تصویر:"
 }

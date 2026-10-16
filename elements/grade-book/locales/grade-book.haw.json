@@ -37,5 +37,11 @@
   "selectGradebookSource": "Koho i ke kumu o ka puke māka",
   "sourceData": "ʻIkepili kumu",
   "pasteValidJSONHere": "Hoʻopili i ka JSON kūpono ma ʻaneʻi",
-  "loadingFilePleaseWait": "KE HOʻOUKA NEI I KA FAILA, E KALI IKI.."
+  "loadingFilePleaseWait": "KE HOʻOUKA NEI I KA FAILA, E KALI IKI..",
+  "userID": "ID Mea Hoʻohana",
+  "preferredName": "Inoa makemake ʻia",
+  "emailAddress": "Leka uila i kēia haumāna",
+  "notes": "Nā Kākau Pōkole",
+  "interests": "Nā Mea Hoihoi",
+  "profileImageFor": "Kiʻi moʻolelo pilikino o"
 }

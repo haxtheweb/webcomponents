@@ -37,5 +37,11 @@
   "selectGradebookSource": "Nota libropa pukyunta akllay",
   "sourceData": "Pukyu willakuykuna",
   "pasteValidJSONHere": "Kaypi allin JSON-ta k'askachiy",
-  "loadingFilePleaseWait": "Archivota cargachkan, suyaykuy.."
+  "loadingFilePleaseWait": "Archivota cargachkan, suyaykuy..",
+  "userID": "Ruraqpa ID-n",
+  "preferredName": "Munasqa suti",
+  "emailAddress": "Kay yachakuqman e-mail apachiy",
+  "notes": "Willaykuna",
+  "interests": "Munasqankuna",
+  "profileImageFor": "Perfil siq'i:"
 }

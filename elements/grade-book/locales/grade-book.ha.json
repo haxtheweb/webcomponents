@@ -37,5 +37,11 @@
   "selectGradebookSource": "Zaɓi tushen littafin maki",
   "sourceData": "Bayanan tushe",
   "pasteValidJSONHere": "Liƙa ingantaccen JSON a nan",
-  "loadingFilePleaseWait": "ANA LODA FAYIL, DA FATAN A JIRA.."
+  "loadingFilePleaseWait": "ANA LODA FAYIL, DA FATAN A JIRA..",
+  "userID": "ID na Mai amfani",
+  "preferredName": "Sunan da aka fi so",
+  "emailAddress": "Aika imel ga wannan ɗalibi",
+  "notes": "Bayanai",
+  "interests": "Abubuwan sha'awa",
+  "profileImageFor": "Hoton bayanin martaba na"
 }

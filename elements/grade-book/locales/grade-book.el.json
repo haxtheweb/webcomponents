@@ -37,5 +37,11 @@
   "selectGradebookSource": "Επιλογή πηγής βαθμολογίου",
   "sourceData": "Δεδομένα πηγής",
   "pasteValidJSONHere": "Επικολλήστε έγκυρο JSON εδώ",
-  "loadingFilePleaseWait": "ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ, ΠΑΡΑΚΑΛΩ ΠΕΡΙΜΕΝΕΤΕ.."
+  "loadingFilePleaseWait": "ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ, ΠΑΡΑΚΑΛΩ ΠΕΡΙΜΕΝΕΤΕ..",
+  "userID": "ID χρήστη",
+  "preferredName": "Προτιμώμενο όνομα",
+  "emailAddress": "Αποστολή email σε αυτόν τον μαθητή",
+  "notes": "Σημειώσεις",
+  "interests": "Ενδιαφέροντα",
+  "profileImageFor": "Εικόνα προφίλ του/της"
 }

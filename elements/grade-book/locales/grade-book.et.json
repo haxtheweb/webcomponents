@@ -37,5 +37,11 @@
   "selectGradebookSource": "Vali hinnetelehe allikas",
   "sourceData": "Lähteandmed",
   "pasteValidJSONHere": "Kleebi siia kehtiv JSON",
-  "loadingFilePleaseWait": "Faili laadimine, palun oota.."
+  "loadingFilePleaseWait": "Faili laadimine, palun oota..",
+  "userID": "Kasutaja ID",
+  "preferredName": "Eelistatud nimi",
+  "emailAddress": "Saada sellele õppijale e-kiri",
+  "notes": "Märkmed",
+  "interests": "Huvid",
+  "profileImageFor": "Profiilipilt:"
 }

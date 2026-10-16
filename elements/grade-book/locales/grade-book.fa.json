@@ -37,5 +37,11 @@
   "selectGradebookSource": "انتخاب منبع دفتر نمرات",
   "sourceData": "داده‌های منبع",
   "pasteValidJSONHere": "JSON معتبر را اینجا جای‌گذاری کنید",
-  "loadingFilePleaseWait": "در حال بارگذاری فایل، لطفاً صبر کنید.."
+  "loadingFilePleaseWait": "در حال بارگذاری فایل، لطفاً صبر کنید..",
+  "userID": "شناسهٔ کاربر",
+  "preferredName": "نام ترجیحی",
+  "emailAddress": "ایمیل به این دانشجو",
+  "notes": "یادداشت‌ها",
+  "interests": "علاقه‌مندی‌ها",
+  "profileImageFor": "تصویر نمایه"
 }

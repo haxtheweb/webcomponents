@@ -37,5 +37,11 @@
   "selectGradebookSource": "Baha žurnalynyň çeşmesini saýlaň",
   "sourceData": "Çeşme maglumatlary",
   "pasteValidJSONHere": "Dogry JSON-y şu ýere goýuň",
-  "loadingFilePleaseWait": "Faýl ýüklenýär, garaşyň.."
+  "loadingFilePleaseWait": "Faýl ýüklenýär, garaşyň..",
+  "userID": "Ulanyjy ID-si",
+  "preferredName": "Ileri tutulýan ady",
+  "emailAddress": "Bu okuwça e-poçta iberiň",
+  "notes": "Bellikler",
+  "interests": "Gyzyklanmalar",
+  "profileImageFor": "Profil suraty:"
 }

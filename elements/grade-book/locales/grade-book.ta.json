@@ -37,5 +37,11 @@
   "selectGradebookSource": "மதிப்பெண் புத்தக மூலத்தைத் தேர்ந்தெடு",
   "sourceData": "மூலத் தரவு",
   "pasteValidJSONHere": "சரியான JSON-ஐ இங்கே ஒட்டவும்",
-  "loadingFilePleaseWait": "கோப்பு ஏற்றப்படுகிறது, காத்திருக்கவும்.."
+  "loadingFilePleaseWait": "கோப்பு ஏற்றப்படுகிறது, காத்திருக்கவும்..",
+  "userID": "பயனர் ID",
+  "preferredName": "விருப்பப் பெயர்",
+  "emailAddress": "இந்த மாணவருக்கு மின்னஞ்சல் அனுப்பு",
+  "notes": "குறிப்புகள்",
+  "interests": "ஆர்வங்கள்",
+  "profileImageFor": "சுயவிவரப் படம்:"
 }

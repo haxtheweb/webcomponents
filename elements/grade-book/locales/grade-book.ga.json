@@ -37,5 +37,11 @@
   "selectGradebookSource": "Roghnaigh foinse an leabhair grád",
   "sourceData": "Sonraí foinse",
   "pasteValidJSONHere": "Greamaigh JSON bailí anseo",
-  "loadingFilePleaseWait": "COMHAD Á LUCHTÚ, FAN LE DO THOIL.."
+  "loadingFilePleaseWait": "COMHAD Á LUCHTÚ, FAN LE DO THOIL..",
+  "userID": "ID Úsáideora",
+  "preferredName": "Ainm is fearr leat",
+  "emailAddress": "Seol ríomhphost chuig an dalta seo",
+  "notes": "Nótaí",
+  "interests": "Spéiseanna",
+  "profileImageFor": "Íomhá phróifíle do"
 }

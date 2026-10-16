@@ -37,5 +37,11 @@
   "selectGradebookSource": "Sceglie a fonte di u registru di e note",
   "sourceData": "Dati di fonte",
   "pasteValidJSONHere": "Incullate quì un JSON validu",
-  "loadingFilePleaseWait": "Caricamentu di u schedariu, aspittate.."
+  "loadingFilePleaseWait": "Caricamentu di u schedariu, aspittate..",
+  "userID": "ID d'utilizatore",
+  "preferredName": "Nome preferitu",
+  "emailAddress": "Mandà un e-mail à stu sculare",
+  "notes": "Note",
+  "interests": "Interessi",
+  "profileImageFor": "Fiura di prufilu di"
 }

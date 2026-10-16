@@ -37,5 +37,11 @@
   "selectGradebookSource": "选择成绩册来源",
   "sourceData": "来源数据",
   "pasteValidJSONHere": "辣此地粘贴有效个 JSON",
-  "loadingFilePleaseWait": "正在加载文件，请等一歇.."
+  "loadingFilePleaseWait": "正在加载文件，请等一歇..",
+  "userID": "用户 ID",
+  "preferredName": "偏好个名字",
+  "emailAddress": "拨搿个学生发邮件",
+  "notes": "备注",
+  "interests": "兴趣",
+  "profileImageFor": "头像："
 }

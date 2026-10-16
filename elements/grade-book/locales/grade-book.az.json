@@ -37,5 +37,11 @@
   "selectGradebookSource": "Qiymət jurnalı mənbəyini seçin",
   "sourceData": "Mənbə məlumatları",
   "pasteValidJSONHere": "Etibarlı JSON-u bura yapışdırın",
-  "loadingFilePleaseWait": "Fayl yüklənir, zəhmət olmasa gözləyin.."
+  "loadingFilePleaseWait": "Fayl yüklənir, zəhmət olmasa gözləyin..",
+  "userID": "İstifadəçi ID-si",
+  "preferredName": "Üstünlük verilən ad",
+  "emailAddress": "Bu tələbəyə e-poçt göndər",
+  "notes": "Qeydlər",
+  "interests": "Maraqlar",
+  "profileImageFor": "Profil şəkli:"
 }

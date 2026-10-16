@@ -37,5 +37,11 @@
   "selectGradebookSource": "Pilih sumber buku biji",
   "sourceData": "Data sumber",
   "pasteValidJSONHere": "Tempelna JSON sing sah ing kéné",
-  "loadingFilePleaseWait": "LAGI NGEMOT BERKAS, MANGGA ENTENI.."
+  "loadingFilePleaseWait": "LAGI NGEMOT BERKAS, MANGGA ENTENI..",
+  "userID": "ID Pangguna",
+  "preferredName": "Jeneng sing dipilih",
+  "emailAddress": "Kirim email menyang siswa iki",
+  "notes": "Cathetan",
+  "interests": "Kasenengan",
+  "profileImageFor": "Gambar profil kanggo"
 }

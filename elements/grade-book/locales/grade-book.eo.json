@@ -37,5 +37,11 @@
   "selectGradebookSource": "Elekti fonton de notlibro",
   "sourceData": "Fontaj datumoj",
   "pasteValidJSONHere": "Algluu validan JSON ĉi tien",
-  "loadingFilePleaseWait": "Ŝargante dosieron, bonvolu atendi.."
+  "loadingFilePleaseWait": "Ŝargante dosieron, bonvolu atendi..",
+  "userID": "Uzanta ID",
+  "preferredName": "Preferata nomo",
+  "emailAddress": "Retpoŝti al ĉi tiu lernanto",
+  "notes": "Notoj",
+  "interests": "Interesoj",
+  "profileImageFor": "Profila bildo de"
 }

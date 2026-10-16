@@ -37,5 +37,11 @@
   "selectGradebookSource": "Veldu uppruna einkunnabókar",
   "sourceData": "Upprunagögn",
   "pasteValidJSONHere": "Límdu gilt JSON hér",
-  "loadingFilePleaseWait": "Hleð skrá, vinsamlegast bíðið.."
+  "loadingFilePleaseWait": "Hleð skrá, vinsamlegast bíðið..",
+  "userID": "Notandaauðkenni (ID)",
+  "preferredName": "Valið nafn",
+  "emailAddress": "Senda þessum nemanda tölvupóst",
+  "notes": "Athugasemdir",
+  "interests": "Áhugamál",
+  "profileImageFor": "Prófílmynd fyrir"
 }

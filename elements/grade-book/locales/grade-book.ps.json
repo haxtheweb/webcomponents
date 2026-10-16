@@ -37,5 +37,11 @@
   "selectGradebookSource": "د نمرو کتاب سرچینه وټاکئ",
   "sourceData": "سرچینه معلومات",
   "pasteValidJSONHere": "دلته سم JSON پېسټ کړئ",
-  "loadingFilePleaseWait": "فایل پورته کېږي، مهرباني وکړئ انتظار وکړئ.."
+  "loadingFilePleaseWait": "فایل پورته کېږي، مهرباني وکړئ انتظار وکړئ..",
+  "userID": "د کاروونکي ID",
+  "preferredName": "غوره نوم",
+  "emailAddress": "دې زده کوونکي ته برېښنالیک ولېږئ",
+  "notes": "یادښتونه",
+  "interests": "علاقې",
+  "profileImageFor": "د پروفایل انځور:"
 }

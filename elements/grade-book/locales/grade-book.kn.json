@@ -37,5 +37,11 @@
   "selectGradebookSource": "ಶ್ರೇಣಿ ಪುಸ್ತಕದ ಮೂಲವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
   "sourceData": "ಮೂಲ ಡೇಟಾ",
   "pasteValidJSONHere": "ಮಾನ್ಯ JSON ಅನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ",
-  "loadingFilePleaseWait": "ಫೈಲ್ ಲೋಡ್ ಆಗುತ್ತಿದೆ, ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ.."
+  "loadingFilePleaseWait": "ಫೈಲ್ ಲೋಡ್ ಆಗುತ್ತಿದೆ, ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ..",
+  "userID": "ಬಳಕೆದಾರ ID",
+  "preferredName": "ಆದ್ಯತೆಯ ಹೆಸರು",
+  "emailAddress": "ಈ ವಿದ್ಯಾರ್ಥಿಗೆ ಇಮೇಲ್ ಮಾಡಿ",
+  "notes": "ಟಿಪ್ಪಣಿಗಳು",
+  "interests": "ಆಸಕ್ತಿಗಳು",
+  "profileImageFor": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ:"
 }

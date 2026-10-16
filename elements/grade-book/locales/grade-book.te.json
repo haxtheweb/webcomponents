@@ -37,5 +37,11 @@
   "selectGradebookSource": "గ్రేడ్‌బుక్ మూలాన్ని ఎంచుకోండి",
   "sourceData": "మూల డేటా",
   "pasteValidJSONHere": "చెల్లుబాటు అయ్యే JSON ను ఇక్కడ అతికించండి",
-  "loadingFilePleaseWait": "ఫైల్ లోడ్ అవుతోంది, దయచేసి వేచి ఉండండి.."
+  "loadingFilePleaseWait": "ఫైల్ లోడ్ అవుతోంది, దయచేసి వేచి ఉండండి..",
+  "userID": "వినియోగదారు ID",
+  "preferredName": "ఇష్టపడే పేరు",
+  "emailAddress": "ఈ విద్యార్థికి ఇమెయిల్ పంపు",
+  "notes": "గమనికలు",
+  "interests": "ఆసక్తులు",
+  "profileImageFor": "ప్రొఫైల్ చిత్రం:"
 }

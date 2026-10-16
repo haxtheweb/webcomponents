@@ -37,5 +37,11 @@
   "selectGradebookSource": "Madda kitaaba qabxii filadhu",
   "sourceData": "Daataa madda",
   "pasteValidJSONHere": "JSON sirrii ta'e as maxxansi",
-  "loadingFilePleaseWait": "Faayiliin fe'amaa jira, maaloo eegi.."
+  "loadingFilePleaseWait": "Faayiliin fe'amaa jira, maaloo eegi..",
+  "userID": "ID Fayyadamaa",
+  "preferredName": "Maqaa filatame",
+  "emailAddress": "Barataa kanaaf imeelii ergi",
+  "notes": "Yaadannoowwan",
+  "interests": "Fedhiiwwan",
+  "profileImageFor": "Suuraa profaayilii:"
 }

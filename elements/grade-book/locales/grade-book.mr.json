@@ -37,5 +37,11 @@
   "selectGradebookSource": "गुणपुस्तिकेचा स्रोत निवडा",
   "sourceData": "स्रोत डेटा",
   "pasteValidJSONHere": "वैध JSON येथे पेस्ट करा",
-  "loadingFilePleaseWait": "फाइल लोड होत आहे, कृपया प्रतीक्षा करा.."
+  "loadingFilePleaseWait": "फाइल लोड होत आहे, कृपया प्रतीक्षा करा..",
+  "userID": "वापरकर्ता ID",
+  "preferredName": "पसंतीचे नाव",
+  "emailAddress": "या विद्यार्थ्याला ईमेल करा",
+  "notes": "टिपा",
+  "interests": "आवडी",
+  "profileImageFor": "प्रोफाइल प्रतिमा:"
 }

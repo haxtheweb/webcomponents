@@ -37,5 +37,11 @@
   "selectGradebookSource": "Osztályzatnapló forrásának kiválasztása",
   "sourceData": "Forrásadatok",
   "pasteValidJSONHere": "Illesszen be ide érvényes JSON-t",
-  "loadingFilePleaseWait": "FÁJL BETÖLTÉSE, KÉREM VÁRJON.."
+  "loadingFilePleaseWait": "FÁJL BETÖLTÉSE, KÉREM VÁRJON..",
+  "userID": "Felhasználói azonosító",
+  "preferredName": "Preferált név",
+  "emailAddress": "E-mail küldése a hallgatónak",
+  "notes": "Jegyzetek",
+  "interests": "Érdeklődési körök",
+  "profileImageFor": "Profilkép:"
 }

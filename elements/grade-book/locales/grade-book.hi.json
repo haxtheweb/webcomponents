@@ -37,5 +37,11 @@
   "selectGradebookSource": "ग्रेडबुक स्रोत चुनें",
   "sourceData": "स्रोत डेटा",
   "pasteValidJSONHere": "यहाँ मान्य JSON चिपकाएँ",
-  "loadingFilePleaseWait": "फ़ाइल लोड हो रही है, कृपया प्रतीक्षा करें.."
+  "loadingFilePleaseWait": "फ़ाइल लोड हो रही है, कृपया प्रतीक्षा करें..",
+  "userID": "उपयोगकर्ता ID",
+  "preferredName": "पसंदीदा नाम",
+  "emailAddress": "इस छात्र को ईमेल करें",
+  "notes": "नोट्स",
+  "interests": "रुचियाँ",
+  "profileImageFor": "प्रोफ़ाइल छवि:"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Not defteri kaynağını seçin",
   "sourceData": "Kaynak veri",
   "pasteValidJSONHere": "Geçerli JSON'u buraya yapıştırın",
-  "loadingFilePleaseWait": "DOSYA YÜKLENİYOR, LÜTFEN BEKLEYİN.."
+  "loadingFilePleaseWait": "DOSYA YÜKLENİYOR, LÜTFEN BEKLEYİN..",
+  "userID": "Kullanıcı ID'si",
+  "preferredName": "Tercih edilen ad",
+  "emailAddress": "Bu öğrenciye e-posta gönder",
+  "notes": "Notlar",
+  "interests": "İlgi alanları",
+  "profileImageFor": "Profil resmi:"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Khetha umthombo wencwadi yamabanga",
   "sourceData": "Idatha yomthombo",
   "pasteValidJSONHere": "Namathisela i-JSON evumelekile lapha",
-  "loadingFilePleaseWait": "Kulayishwa ifayela, sicela ulinde.."
+  "loadingFilePleaseWait": "Kulayishwa ifayela, sicela ulinde..",
+  "userID": "I-ID Yomsebenzisi",
+  "preferredName": "Igama elithandwayo",
+  "emailAddress": "Thumelela lo mfundi i-imeyili",
+  "notes": "Amanothi",
+  "interests": "Izithakazelo",
+  "profileImageFor": "Isithombe sephrofayela sika"
 }

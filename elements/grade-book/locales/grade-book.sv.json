@@ -37,5 +37,11 @@
   "selectGradebookSource": "Välj källa för betygsbok",
   "sourceData": "Källdata",
   "pasteValidJSONHere": "Klistra in giltig JSON här",
-  "loadingFilePleaseWait": "Laddar fil, vänta.."
+  "loadingFilePleaseWait": "Laddar fil, vänta..",
+  "userID": "Användar-ID",
+  "preferredName": "Föredraget namn",
+  "emailAddress": "Mejla den här eleven",
+  "notes": "Anteckningar",
+  "interests": "Intressen",
+  "profileImageFor": "Profilbild för"
 }

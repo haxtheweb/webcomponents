@@ -37,5 +37,11 @@
   "selectGradebookSource": "Zgjidh burimin e regjistrit të notave",
   "sourceData": "Të dhënat burimore",
   "pasteValidJSONHere": "Ngjit JSON të vlefshëm këtu",
-  "loadingFilePleaseWait": "Po ngarkohet skedari, ju lutemi prisni.."
+  "loadingFilePleaseWait": "Po ngarkohet skedari, ju lutemi prisni..",
+  "userID": "ID e përdoruesit",
+  "preferredName": "Emri i preferuar",
+  "emailAddress": "Dërgoji email këtij studenti",
+  "notes": "Shënime",
+  "interests": "Interesat",
+  "profileImageFor": "Imazhi i profilit për"
 }

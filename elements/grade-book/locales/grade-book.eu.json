@@ -37,5 +37,11 @@
   "selectGradebookSource": "Hautatu kalifikazio-liburuaren iturria",
   "sourceData": "Iturburu-datuak",
   "pasteValidJSONHere": "Itsatsi JSON baliodun bat hemen",
-  "loadingFilePleaseWait": "FITXATEGIA KARGATZEN, ITXARON.."
+  "loadingFilePleaseWait": "FITXATEGIA KARGATZEN, ITXARON..",
+  "userID": "Erabiltzailearen IDa",
+  "preferredName": "Izen hobetsia",
+  "emailAddress": "Bidali mezu elektronikoa ikasle honi",
+  "notes": "Oharrak",
+  "interests": "Interesak",
+  "profileImageFor": "Profil-irudia:"
 }

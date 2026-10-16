@@ -37,5 +37,11 @@
   "selectGradebookSource": "Выберыце крыніцу журнала ацэнак",
   "sourceData": "Зыходныя даныя",
   "pasteValidJSONHere": "Устаўце сюды карэктны JSON",
-  "loadingFilePleaseWait": "Загрузка файла, калі ласка, пачакайце.."
+  "loadingFilePleaseWait": "Загрузка файла, калі ласка, пачакайце..",
+  "userID": "ID карыстальніка",
+  "preferredName": "Пажаданае імя",
+  "emailAddress": "Напісаць гэтаму навучэнцу",
+  "notes": "Нататкі",
+  "interests": "Інтарэсы",
+  "profileImageFor": "Фота профілю:"
 }

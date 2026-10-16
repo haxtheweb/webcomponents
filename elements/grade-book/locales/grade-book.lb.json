@@ -37,5 +37,11 @@
   "selectGradebookSource": "Quell vum Notebuch auswielen",
   "sourceData": "Quelldaten",
   "pasteValidJSONHere": "Gëltegen JSON hei apechen",
-  "loadingFilePleaseWait": "DATEI GËTT GELUEDEN, W.E.G. WAARDEN.."
+  "loadingFilePleaseWait": "DATEI GËTT GELUEDEN, W.E.G. WAARDEN..",
+  "userID": "Benotzer-ID",
+  "preferredName": "Bevorzugten Numm",
+  "emailAddress": "Dësem Schüler eng E-Mail schécken",
+  "notes": "Notizen",
+  "interests": "Interessen",
+  "profileImageFor": "Profilbild vun"
 }

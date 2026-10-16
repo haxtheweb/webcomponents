@@ -37,5 +37,11 @@
   "selectGradebookSource": "Select gradebook source",
   "sourceData": "Source data",
   "pasteValidJSONHere": "Paste valid JSON here",
-  "loadingFilePleaseWait": "LOADING FILE PLEASE WAIT.."
+  "loadingFilePleaseWait": "LOADING FILE PLEASE WAIT..",
+  "userID": "User ID",
+  "preferredName": "Preferred name",
+  "emailAddress": "Email this student",
+  "notes": "Notes",
+  "interests": "Interests",
+  "profileImageFor": "Profile image for"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Selectați sursa catalogului",
   "sourceData": "Date sursă",
   "pasteValidJSONHere": "Lipiți aici JSON valid",
-  "loadingFilePleaseWait": "Se încarcă fișierul, vă rugăm așteptați.."
+  "loadingFilePleaseWait": "Se încarcă fișierul, vă rugăm așteptați..",
+  "userID": "ID utilizator",
+  "preferredName": "Nume preferat",
+  "emailAddress": "Trimite un e-mail acestui student",
+  "notes": "Notițe",
+  "interests": "Interese",
+  "profileImageFor": "Imagine de profil pentru"
 }

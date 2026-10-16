@@ -37,5 +37,11 @@
   "selectGradebookSource": "Билгеләр журналы чыганагын сайлагыз",
   "sourceData": "Чыганак мәгълүматлары",
   "pasteValidJSONHere": "Дөрес JSON'ны монда куегыз",
-  "loadingFilePleaseWait": "ФАЙЛ ЙӨКЛӘНӘ, ЗИНҺАР, КӨТЕГЕЗ.."
+  "loadingFilePleaseWait": "ФАЙЛ ЙӨКЛӘНӘ, ЗИНҺАР, КӨТЕГЕЗ..",
+  "userID": "Кулланучы ID-сы",
+  "preferredName": "Өстенлекле исем",
+  "emailAddress": "Бу укучыга электрон хат җибәрергә",
+  "notes": "Искәрмәләр",
+  "interests": "Кызыксынулар",
+  "profileImageFor": "Профиль рәсеме:"
 }

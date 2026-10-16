@@ -37,5 +37,11 @@
   "selectGradebookSource": "Sankhani gwero la buku la magiredi",
   "sourceData": "Deta yochokera",
   "pasteValidJSONHere": "Matirani JSON yolondola apa",
-  "loadingFilePleaseWait": "Fayilo ikutsegula, chonde dikirani.."
+  "loadingFilePleaseWait": "Fayilo ikutsegula, chonde dikirani..",
+  "userID": "ID ya Wogwiritsa Ntchito",
+  "preferredName": "Dzina lokondedwa",
+  "emailAddress": "Tumizani imelo kwa wophunzira uyu",
+  "notes": "Zolemba",
+  "interests": "Zokonda",
+  "profileImageFor": "Chithunzi cha mbiri ya"
 }

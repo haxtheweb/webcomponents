@@ -37,5 +37,11 @@
   "selectGradebookSource": "აირჩიეთ ჟურნალის წყარო",
   "sourceData": "წყაროს მონაცემები",
   "pasteValidJSONHere": "ჩასვით სწორი JSON აქ",
-  "loadingFilePleaseWait": "ფაილი იტვირთება, გთხოვთ, მოიცადოთ.."
+  "loadingFilePleaseWait": "ფაილი იტვირთება, გთხოვთ, მოიცადოთ..",
+  "userID": "მომხმარებლის ID",
+  "preferredName": "სასურველი სახელი",
+  "emailAddress": "ამ სტუდენტისთვის ელფოსტის გაგზავნა",
+  "notes": "შენიშვნები",
+  "interests": "ინტერესები",
+  "profileImageFor": "პროფილის სურათი:"
 }

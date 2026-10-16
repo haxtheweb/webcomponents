@@ -37,5 +37,11 @@
   "selectGradebookSource": "Манбаи дафтари баҳоро интихоб кунед",
   "sourceData": "Маълумоти манбаъ",
   "pasteValidJSONHere": "JSON-и дурустро ин ҷо гузоред",
-  "loadingFilePleaseWait": "Файл бор шуда истодааст, лутфан интизор шавед.."
+  "loadingFilePleaseWait": "Файл бор шуда истодааст, лутфан интизор шавед..",
+  "userID": "ID-и корбар",
+  "preferredName": "Номи афзалиятнок",
+  "emailAddress": "Ба ин донишҷӯ почтаи электронӣ фиристед",
+  "notes": "Ёддоштҳо",
+  "interests": "Шавқҳо",
+  "profileImageFor": "Акси профил:"
 }

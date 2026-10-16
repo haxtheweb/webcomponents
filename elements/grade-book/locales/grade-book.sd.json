@@ -37,5 +37,11 @@
   "selectGradebookSource": "گريڊ بڪ جو ذريعو چونڊيو",
   "sourceData": "ذريعي ڊيٽا",
   "pasteValidJSONHere": "هتي صحيح JSON پيسٽ ڪريو",
-  "loadingFilePleaseWait": "فائل لوڊ ٿي رهي آهي، مهرباني ڪري انتظار ڪريو.."
+  "loadingFilePleaseWait": "فائل لوڊ ٿي رهي آهي، مهرباني ڪري انتظار ڪريو..",
+  "userID": "يوزر ID",
+  "preferredName": "پسنديده نالو",
+  "emailAddress": "هن شاگرد کي اي ميل ڪريو",
+  "notes": "نوٽس",
+  "interests": "دلچسپيون",
+  "profileImageFor": "پروفائل تصوير:"
 }

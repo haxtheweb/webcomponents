@@ -37,5 +37,11 @@
   "selectGradebookSource": "ગ્રેડબુકનો સ્રોત પસંદ કરો",
   "sourceData": "સ્રોત ડેટા",
   "pasteValidJSONHere": "અહીં માન્ય JSON પેસ્ટ કરો",
-  "loadingFilePleaseWait": "ફાઇલ લોડ થઈ રહી છે, કૃપા કરીને રાહ જુઓ.."
+  "loadingFilePleaseWait": "ફાઇલ લોડ થઈ રહી છે, કૃપા કરીને રાહ જુઓ..",
+  "userID": "વપરાશકર્તા ID",
+  "preferredName": "પસંદગીનું નામ",
+  "emailAddress": "આ વિદ્યાર્થીને ઇમેઇલ કરો",
+  "notes": "નોંધો",
+  "interests": "રુચિઓ",
+  "profileImageFor": "પ્રોફાઇલ છબી:"
 }

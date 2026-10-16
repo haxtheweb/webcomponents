@@ -37,5 +37,11 @@
   "selectGradebookSource": "成績表のソースを選択",
   "sourceData": "ソースデータ",
   "pasteValidJSONHere": "有効な JSON をここに貼り付けてください",
-  "loadingFilePleaseWait": "ファイルを読み込み中です。お待ちください.."
+  "loadingFilePleaseWait": "ファイルを読み込み中です。お待ちください..",
+  "userID": "ユーザーID",
+  "preferredName": "希望する呼び名",
+  "emailAddress": "この学生にメールを送る",
+  "notes": "メモ",
+  "interests": "興味・関心",
+  "profileImageFor": "プロフィール画像:"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Eiporavo jehechakuaa kuatiañe'ẽ reñoiha",
   "sourceData": "Mba'ekuaarã reñoiha",
   "pasteValidJSONHere": "Emboja ko'ápe JSON oiko porãva",
-  "loadingFilePleaseWait": "Henyhẽhína marandurenda, eha'arõmi.."
+  "loadingFilePleaseWait": "Henyhẽhína marandurenda, eha'arõmi..",
+  "userID": "Puruhára ID",
+  "preferredName": "Téra ojeiporavóva",
+  "emailAddress": "Emondo ñanduti marandu ko temimbo'épe",
+  "notes": "Jehai'i",
+  "interests": "Mba'e oipotáva",
+  "profileImageFor": "Ta'ãnga perfil rehegua:"
 }

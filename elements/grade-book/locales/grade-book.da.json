@@ -37,5 +37,11 @@
   "selectGradebookSource": "Vælg kilde til karakterbog",
   "sourceData": "Kildedata",
   "pasteValidJSONHere": "Indsæt gyldig JSON her",
-  "loadingFilePleaseWait": "INDLÆSER FIL, VENT VENLIGST.."
+  "loadingFilePleaseWait": "INDLÆSER FIL, VENT VENLIGST..",
+  "userID": "Bruger-ID",
+  "preferredName": "Foretrukket navn",
+  "emailAddress": "Send e-mail til denne studerende",
+  "notes": "Noter",
+  "interests": "Interesser",
+  "profileImageFor": "Profilbillede af"
 }

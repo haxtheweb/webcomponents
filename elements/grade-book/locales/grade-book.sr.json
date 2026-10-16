@@ -37,5 +37,11 @@
   "selectGradebookSource": "Изаберите извор дневника оцена",
   "sourceData": "Изворни подаци",
   "pasteValidJSONHere": "Налепите исправан JSON овде",
-  "loadingFilePleaseWait": "Учитавање датотеке, сачекајте.."
+  "loadingFilePleaseWait": "Учитавање датотеке, сачекајте..",
+  "userID": "Кориснички ID",
+  "preferredName": "Жељено име",
+  "emailAddress": "Пошаљи е-пошту овом студенту",
+  "notes": "Белешке",
+  "interests": "Интересовања",
+  "profileImageFor": "Профилна слика за"
 }

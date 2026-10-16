@@ -37,5 +37,11 @@
   "selectGradebookSource": "Izberite vir redovalnice",
   "sourceData": "Izvorni podatki",
   "pasteValidJSONHere": "Sem prilepite veljaven JSON",
-  "loadingFilePleaseWait": "NALAGANJE DATOTEKE, POČAKAJTE.."
+  "loadingFilePleaseWait": "NALAGANJE DATOTEKE, POČAKAJTE..",
+  "userID": "ID uporabnika",
+  "preferredName": "Želeno ime",
+  "emailAddress": "Pošlji e-pošto temu študentu",
+  "notes": "Opombe",
+  "interests": "Interesi",
+  "profileImageFor": "Profilna slika:"
 }

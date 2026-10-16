@@ -37,5 +37,11 @@
   "selectGradebookSource": "Баалар журналынын булагын тандоо",
   "sourceData": "Булак маалыматтары",
   "pasteValidJSONHere": "Туура JSON'ду бул жерге чаптаңыз",
-  "loadingFilePleaseWait": "Файл жүктөлүүдө, күтө туруңуз.."
+  "loadingFilePleaseWait": "Файл жүктөлүүдө, күтө туруңуз..",
+  "userID": "Колдонуучу ID",
+  "preferredName": "Каалаган аты",
+  "emailAddress": "Бул окуучуга кат жөнөтүү",
+  "notes": "Эскертмелер",
+  "interests": "Кызыкчылыктар",
+  "profileImageFor": "Профиль сүрөтү:"
 }

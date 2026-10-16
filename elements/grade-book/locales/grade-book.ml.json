@@ -37,5 +37,11 @@
   "selectGradebookSource": "ഗ്രേഡ്ബുക്ക് ഉറവിടം തിരഞ്ഞെടുക്കുക",
   "sourceData": "ഉറവിട ഡാറ്റ",
   "pasteValidJSONHere": "സാധുവായ JSON ഇവിടെ ഒട്ടിക്കുക",
-  "loadingFilePleaseWait": "ഫയൽ ലോഡ് ചെയ്യുന്നു, ദയവായി കാത്തിരിക്കുക.."
+  "loadingFilePleaseWait": "ഫയൽ ലോഡ് ചെയ്യുന്നു, ദയവായി കാത്തിരിക്കുക..",
+  "userID": "ഉപയോക്തൃ ID",
+  "preferredName": "ഇഷ്ടപ്പെട്ട പേര്",
+  "emailAddress": "ഈ വിദ്യാർത്ഥിക്ക് ഇമെയിൽ അയയ്ക്കുക",
+  "notes": "കുറിപ്പുകൾ",
+  "interests": "താൽപ്പര്യങ്ങൾ",
+  "profileImageFor": "പ്രൊഫൈൽ ചിത്രം:"
 }

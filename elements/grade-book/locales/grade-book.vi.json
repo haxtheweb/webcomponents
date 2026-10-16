@@ -37,5 +37,11 @@
   "selectGradebookSource": "Chọn nguồn sổ điểm",
   "sourceData": "Dữ liệu nguồn",
   "pasteValidJSONHere": "Dán JSON hợp lệ vào đây",
-  "loadingFilePleaseWait": "Đang tải tệp, vui lòng chờ.."
+  "loadingFilePleaseWait": "Đang tải tệp, vui lòng chờ..",
+  "userID": "ID người dùng",
+  "preferredName": "Tên ưa dùng",
+  "emailAddress": "Gửi email cho học viên này",
+  "notes": "Ghi chú",
+  "interests": "Sở thích",
+  "profileImageFor": "Ảnh hồ sơ của"
 }

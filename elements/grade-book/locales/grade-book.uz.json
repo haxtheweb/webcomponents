@@ -37,5 +37,11 @@
   "selectGradebookSource": "Baholar jurnali manbasini tanlang",
   "sourceData": "Manba ma’lumotlari",
   "pasteValidJSONHere": "Bu yerga to‘g‘ri JSON joylashtiring",
-  "loadingFilePleaseWait": "Fayl yuklanmoqda, iltimos kuting.."
+  "loadingFilePleaseWait": "Fayl yuklanmoqda, iltimos kuting..",
+  "userID": "Foydalanuvchi ID",
+  "preferredName": "Afzal koʻrilgan ism",
+  "emailAddress": "Ushbu talabaga email yuborish",
+  "notes": "Eslatmalar",
+  "interests": "Qiziqishlar",
+  "profileImageFor": "Profil rasmi:"
 }

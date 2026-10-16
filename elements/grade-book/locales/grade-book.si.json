@@ -37,5 +37,11 @@
   "selectGradebookSource": "ශ්‍රේණි පොතේ මූලාශ්‍රය තෝරන්න",
   "sourceData": "මූලාශ්‍ර දත්ත",
   "pasteValidJSONHere": "වලංගු JSON මෙහි අලවන්න",
-  "loadingFilePleaseWait": "ගොනුව පූරණය වෙමින්, කරුණාකර රැඳී සිටින්න.."
+  "loadingFilePleaseWait": "ගොනුව පූරණය වෙමින්, කරුණාකර රැඳී සිටින්න..",
+  "userID": "පරිශීලක ID",
+  "preferredName": "කැමති නම",
+  "emailAddress": "මෙම ශිෂ්‍යයාට ඊමේල් කරන්න",
+  "notes": "සටහන්",
+  "interests": "රුචිකත්වයන්",
+  "profileImageFor": "පැතිකඩ රූපය:"
 }

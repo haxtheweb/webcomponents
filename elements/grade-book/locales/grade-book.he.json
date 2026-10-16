@@ -37,5 +37,11 @@
   "selectGradebookSource": "בחירת מקור ליומן הציונים",
   "sourceData": "נתוני מקור",
   "pasteValidJSONHere": "הדביקו כאן JSON תקין",
-  "loadingFilePleaseWait": "טוען קובץ, נא להמתין.."
+  "loadingFilePleaseWait": "טוען קובץ, נא להמתין..",
+  "userID": "מזהה משתמש",
+  "preferredName": "שם מועדף",
+  "emailAddress": "שליחת דוא\"ל לתלמיד זה",
+  "notes": "הערות",
+  "interests": "תחומי עניין",
+  "profileImageFor": "תמונת פרופיל של"
 }

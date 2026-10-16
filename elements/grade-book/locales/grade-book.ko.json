@@ -37,5 +37,11 @@
   "selectGradebookSource": "성적부 소스 선택",
   "sourceData": "소스 데이터",
   "pasteValidJSONHere": "유효한 JSON을 여기에 붙여넣으세요",
-  "loadingFilePleaseWait": "파일을 불러오는 중입니다. 잠시 기다려 주세요.."
+  "loadingFilePleaseWait": "파일을 불러오는 중입니다. 잠시 기다려 주세요..",
+  "userID": "사용자 ID",
+  "preferredName": "선호 이름",
+  "emailAddress": "이 학생에게 이메일 보내기",
+  "notes": "메모",
+  "interests": "관심사",
+  "profileImageFor": "프로필 이미지:"
 }

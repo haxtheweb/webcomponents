@@ -37,5 +37,11 @@
   "selectGradebookSource": "Valitse arviointikirjan lähde",
   "sourceData": "Lähdetiedot",
   "pasteValidJSONHere": "Liitä kelvollinen JSON tähän",
-  "loadingFilePleaseWait": "Ladataan tiedostoa, odota.."
+  "loadingFilePleaseWait": "Ladataan tiedostoa, odota..",
+  "userID": "Käyttäjän ID",
+  "preferredName": "Kutsumanimi",
+  "emailAddress": "Lähetä sähköpostia tälle opiskelijalle",
+  "notes": "Muistiinpanot",
+  "interests": "Kiinnostuksen kohteet",
+  "profileImageFor": "Profiilikuva:"
 }

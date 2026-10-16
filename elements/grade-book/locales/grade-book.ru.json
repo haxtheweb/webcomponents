@@ -37,5 +37,11 @@
   "selectGradebookSource": "Выберите источник журнала оценок",
   "sourceData": "Исходные данные",
   "pasteValidJSONHere": "Вставьте сюда корректный JSON",
-  "loadingFilePleaseWait": "Загрузка файла, пожалуйста, подождите.."
+  "loadingFilePleaseWait": "Загрузка файла, пожалуйста, подождите..",
+  "userID": "ID пользователя",
+  "preferredName": "Предпочитаемое имя",
+  "emailAddress": "Написать этому учащемуся",
+  "notes": "Заметки",
+  "interests": "Интересы",
+  "profileImageFor": "Фото профиля:"
 }

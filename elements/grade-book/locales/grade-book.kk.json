@@ -37,5 +37,11 @@
   "selectGradebookSource": "Бағалар журналының көзін таңдаңыз",
   "sourceData": "Бастапқы деректер",
   "pasteValidJSONHere": "Жарамды JSON-ды осында қойыңыз",
-  "loadingFilePleaseWait": "Файл жүктелуде, күте тұрыңыз.."
+  "loadingFilePleaseWait": "Файл жүктелуде, күте тұрыңыз..",
+  "userID": "Пайдаланушы ID-і",
+  "preferredName": "Қалаған аты",
+  "emailAddress": "Осы студентке хат жазу",
+  "notes": "Ескертпелер",
+  "interests": "Қызығушылықтары",
+  "profileImageFor": "Профиль суреті:"
 }

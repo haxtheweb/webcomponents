@@ -37,5 +37,11 @@
   "selectGradebookSource": "เลือกแหล่งข้อมูลสมุดคะแนน",
   "sourceData": "ข้อมูลต้นทาง",
   "pasteValidJSONHere": "วาง JSON ที่ถูกต้องที่นี่",
-  "loadingFilePleaseWait": "กำลังโหลดไฟล์ โปรดรอสักครู่.."
+  "loadingFilePleaseWait": "กำลังโหลดไฟล์ โปรดรอสักครู่..",
+  "userID": "ID ผู้ใช้",
+  "preferredName": "ชื่อที่ต้องการให้เรียก",
+  "emailAddress": "ส่งอีเมลถึงนักเรียนคนนี้",
+  "notes": "บันทึก",
+  "interests": "ความสนใจ",
+  "profileImageFor": "รูปโปรไฟล์ของ"
 }

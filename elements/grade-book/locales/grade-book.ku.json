@@ -37,5 +37,11 @@
   "selectGradebookSource": "Çavkaniya pirtûka notan hilbijêre",
   "sourceData": "Daneyên çavkaniyê",
   "pasteValidJSONHere": "JSON-a derbasdar li vir bizeliqîne",
-  "loadingFilePleaseWait": "Pel tê barkirin, ji kerema xwe li bendê bimîne.."
+  "loadingFilePleaseWait": "Pel tê barkirin, ji kerema xwe li bendê bimîne..",
+  "userID": "ID ya Bikarhêner",
+  "preferredName": "Navê tercîhkirî",
+  "emailAddress": "E-nameyê ji vê xwendekarê re bişîne",
+  "notes": "Not",
+  "interests": "Berjewendî",
+  "profileImageFor": "Wêneyê profîlê yê"
 }

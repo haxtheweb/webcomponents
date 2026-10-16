@@ -38,6 +38,11 @@
   "sourceData": "Datos de origen",
   "pasteValidJSONHere": "Pega aquí un JSON válido",
   "loadingFilePleaseWait": "Cargando archivo, espera por favor..",
+  "userID": "ID de usuario",
+  "preferredName": "Nombre preferido",
+  "emailAddress": "Enviar un correo a este estudiante",
+  "notes": "Notas",
+  "interests": "Intereses",
   "debugData": "Depurar datos",
   "profileImageFor": "Imagen de perfil de"
 }

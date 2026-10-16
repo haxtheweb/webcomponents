@@ -37,5 +37,11 @@
   "selectGradebookSource": "Дүнгийн дэвтрийн эх сурвалж сонгох",
   "sourceData": "Эх өгөгдөл",
   "pasteValidJSONHere": "Зөв JSON-г энд буулгана уу",
-  "loadingFilePleaseWait": "Файл ачаалж байна, түр хүлээнэ үү.."
+  "loadingFilePleaseWait": "Файл ачаалж байна, түр хүлээнэ үү..",
+  "userID": "Хэрэглэгчийн ID",
+  "preferredName": "Илүүд үздэг нэр",
+  "emailAddress": "Энэ суралцагч руу имэйл илгээх",
+  "notes": "Тэмдэглэл",
+  "interests": "Сонирхол",
+  "profileImageFor": "Профайл зураг:"
 }

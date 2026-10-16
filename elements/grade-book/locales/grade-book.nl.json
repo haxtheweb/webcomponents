@@ -37,5 +37,11 @@
   "selectGradebookSource": "Bron van cijferlijst selecteren",
   "sourceData": "Brongegevens",
   "pasteValidJSONHere": "Plak hier geldige JSON",
-  "loadingFilePleaseWait": "Bestand laden, even geduld.."
+  "loadingFilePleaseWait": "Bestand laden, even geduld..",
+  "userID": "Gebruikers-ID",
+  "preferredName": "Voorkeursnaam",
+  "emailAddress": "Deze student e-mailen",
+  "notes": "Notities",
+  "interests": "Interesses",
+  "profileImageFor": "Profielfoto van"
 }

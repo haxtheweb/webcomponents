@@ -37,5 +37,11 @@
   "selectGradebookSource": "Pasirinkite pažymių knygelės šaltinį",
   "sourceData": "Šaltinio duomenys",
   "pasteValidJSONHere": "Įklijuokite galiojantį JSON čia",
-  "loadingFilePleaseWait": "ĮKELIAMAS FAILAS, PALAUKITE.."
+  "loadingFilePleaseWait": "ĮKELIAMAS FAILAS, PALAUKITE..",
+  "userID": "Naudotojo ID",
+  "preferredName": "Pageidaujamas vardas",
+  "emailAddress": "Rašyti šiam studentui el. laišką",
+  "notes": "Pastabos",
+  "interests": "Pomėgiai",
+  "profileImageFor": "Profilio nuotrauka:"
 }

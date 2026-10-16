@@ -37,5 +37,11 @@
   "selectGradebookSource": "ເລືອກແຫຼ່ງສະໝຸດຄະແນນ",
   "sourceData": "ຂໍ້ມູນແຫຼ່ງ",
   "pasteValidJSONHere": "ວາງ JSON ທີ່ຖືກຕ້ອງໃສ່ບ່ອນນີ້",
-  "loadingFilePleaseWait": "ກຳລັງໂຫຼດໄຟລ໌ ກະລຸນາລໍຖ້າ.."
+  "loadingFilePleaseWait": "ກຳລັງໂຫຼດໄຟລ໌ ກະລຸນາລໍຖ້າ..",
+  "userID": "ID ຜູ້ໃຊ້",
+  "preferredName": "ຊື່ທີ່ຕ້ອງການ",
+  "emailAddress": "ສົ່ງອີເມວຫານັກຮຽນຄົນນີ້",
+  "notes": "ບັນທຶກ",
+  "interests": "ຄວາມສົນໃຈ",
+  "profileImageFor": "ຮູບໂປຣໄຟລ໌ຂອງ"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Khetha umthombo wencwadi yamabakala",
   "sourceData": "Idatha yomthombo",
   "pasteValidJSONHere": "Ncamathelisa i-JSON esebenzayo apha",
-  "loadingFilePleaseWait": "IFAYILE IYALAYISHA, NCEDA ULINDE.."
+  "loadingFilePleaseWait": "IFAYILE IYALAYISHA, NCEDA ULINDE..",
+  "userID": "I-ID yomsebenzisi",
+  "preferredName": "Igama elikhethwayo",
+  "emailAddress": "Thumela lo mfundi i-imeyile",
+  "notes": "Amanqaku",
+  "interests": "Izinto anomdla kuzo",
+  "profileImageFor": "Umfanekiso weprofayile ka"
 }

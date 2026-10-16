@@ -37,5 +37,11 @@
   "selectGradebookSource": "Seleccionar orixe do caderno de cualificacións",
   "sourceData": "Datos de orixe",
   "pasteValidJSONHere": "Pega aquí un JSON válido",
-  "loadingFilePleaseWait": "Cargando ficheiro, agarda.."
+  "loadingFilePleaseWait": "Cargando ficheiro, agarda..",
+  "userID": "ID de usuario",
+  "preferredName": "Nome preferido",
+  "emailAddress": "Enviar un correo electrónico a este estudante",
+  "notes": "Notas",
+  "interests": "Intereses",
+  "profileImageFor": "Imaxe de perfil de"
 }

@@ -37,5 +37,11 @@
   "selectGradebookSource": "Seleziona l'origine del registro voti",
   "sourceData": "Dati di origine",
   "pasteValidJSONHere": "Incolla qui un JSON valido",
-  "loadingFilePleaseWait": "Caricamento file, attendere.."
+  "loadingFilePleaseWait": "Caricamento file, attendere..",
+  "userID": "ID utente",
+  "preferredName": "Nome preferito",
+  "emailAddress": "Invia un'email a questo studente",
+  "notes": "Note",
+  "interests": "Interessi",
+  "profileImageFor": "Immagine del profilo di"
 }

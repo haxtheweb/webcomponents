@@ -37,5 +37,11 @@
   "selectGradebookSource": "Dewiswch ffynhonnell y llyfr graddau",
   "sourceData": "Data ffynhonnell",
   "pasteValidJSONHere": "Gludwch JSON dilys yma",
-  "loadingFilePleaseWait": "Yn llwytho'r ffeil, arhoswch.."
+  "loadingFilePleaseWait": "Yn llwytho'r ffeil, arhoswch..",
+  "userID": "ID Defnyddiwr",
+  "preferredName": "Enw dewisol",
+  "emailAddress": "E-bostio'r myfyriwr hwn",
+  "notes": "Nodiadau",
+  "interests": "Diddordebau",
+  "profileImageFor": "Llun proffil ar gyfer"
 }

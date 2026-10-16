@@ -37,5 +37,11 @@
   "selectGradebookSource": "Họrọ isi mmalite akwụkwọ akara",
   "sourceData": "Data isi mmalite",
   "pasteValidJSONHere": "Mado JSON ziri ezi ebe a",
-  "loadingFilePleaseWait": "NA-EBUGO FAỊLỤ, BIKO CHERE.."
+  "loadingFilePleaseWait": "NA-EBUGO FAỊLỤ, BIKO CHERE..",
+  "userID": "ID Onye Ọrụ",
+  "preferredName": "Aha a họọrọ",
+  "emailAddress": "Zigara nwa akwụkwọ a ozi email",
+  "notes": "Ndetu",
+  "interests": "Ihe ndị masịrị ya",
+  "profileImageFor": "Foto profaịlụ nke"
 }

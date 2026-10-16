@@ -37,5 +37,11 @@
   "selectGradebookSource": "የውጤት መዝገብ ምንጭ ይምረጡ",
   "sourceData": "የምንጭ ውሂብ",
   "pasteValidJSONHere": "ትክክለኛ JSON እዚህ ይለጥፉ",
-  "loadingFilePleaseWait": "ፋይል በመጫን ላይ፣ እባክዎ ይጠብቁ.."
+  "loadingFilePleaseWait": "ፋይል በመጫን ላይ፣ እባክዎ ይጠብቁ..",
+  "userID": "የተጠቃሚ ID",
+  "preferredName": "የሚመረጥ ስም",
+  "emailAddress": "ለዚህ ተማሪ ኢሜይል ላክ",
+  "notes": "ማስታወሻዎች",
+  "interests": "ፍላጎቶች",
+  "profileImageFor": "የመገለጫ ምስል፦"
 }

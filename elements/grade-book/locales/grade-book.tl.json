@@ -37,5 +37,11 @@
   "selectGradebookSource": "Piliin ang pinagmulan ng gradebook",
   "sourceData": "Pinagmulang data",
   "pasteValidJSONHere": "I-paste dito ang wastong JSON",
-  "loadingFilePleaseWait": "NILO-LOAD ANG FILE, PAKIHINTAY.."
+  "loadingFilePleaseWait": "NILO-LOAD ANG FILE, PAKIHINTAY..",
+  "userID": "User ID",
+  "preferredName": "Gustong pangalan",
+  "emailAddress": "I-email ang estudyanteng ito",
+  "notes": "Mga Tala",
+  "interests": "Mga Interes",
+  "profileImageFor": "Larawan sa profile ni"
 }

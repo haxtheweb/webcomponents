@@ -37,5 +37,11 @@
   "selectGradebookSource": "Kies punteboekbron",
   "sourceData": "Brondata",
   "pasteValidJSONHere": "Plak geldige JSON hier",
-  "loadingFilePleaseWait": "LAAI TANS LÊER, WAG ASSEBLIEF.."
+  "loadingFilePleaseWait": "LAAI TANS LÊER, WAG ASSEBLIEF..",
+  "userID": "Gebruikers-ID",
+  "preferredName": "Voorkeurnaam",
+  "emailAddress": "E-pos hierdie student",
+  "notes": "Notas",
+  "interests": "Belangstellings",
+  "profileImageFor": "Profielfoto van"
 }

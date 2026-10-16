@@ -37,5 +37,11 @@
   "selectGradebookSource": "Tīpakohia te pūtake pukapuka kōeke",
   "sourceData": "Raraunga pūtake",
   "pasteValidJSONHere": "Whakapiri JSON tika ki konei",
-  "loadingFilePleaseWait": "E uta ana i te kōnae, tēnā tatari.."
+  "loadingFilePleaseWait": "E uta ana i te kōnae, tēnā tatari..",
+  "userID": "ID Kaiwhakamahi",
+  "preferredName": "Ingoa e manakohia ana",
+  "emailAddress": "Īmēra atu ki tēnei ākonga",
+  "notes": "Ngā Tuhipoka",
+  "interests": "Ngā Aronga",
+  "profileImageFor": "Atahanga kōtaha mō"
 }

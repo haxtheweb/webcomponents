@@ -37,5 +37,11 @@
   "selectGradebookSource": "Ընտրել գնահատականների մատյանի աղբյուրը",
   "sourceData": "Աղբյուրի տվյալներ",
   "pasteValidJSONHere": "Տեղադրեք վավեր JSON այստեղ",
-  "loadingFilePleaseWait": "ՖԱՅԼԸ ԲԵՌՆՎՈՒՄ Է, ԽՆԴՐՈՒՄ ԵՆՔ ՍՊԱՍԵԼ.."
+  "loadingFilePleaseWait": "ՖԱՅԼԸ ԲԵՌՆՎՈՒՄ Է, ԽՆԴՐՈՒՄ ԵՆՔ ՍՊԱՍԵԼ..",
+  "userID": "Օգտատիրոջ ID",
+  "preferredName": "Նախընտրած անուն",
+  "emailAddress": "Էլ. նամակ ուղարկել այս ուսանողին",
+  "notes": "Նշումներ",
+  "interests": "Հետաքրքրություններ",
+  "profileImageFor": "Պրոֆիլի նկար՝"
 }

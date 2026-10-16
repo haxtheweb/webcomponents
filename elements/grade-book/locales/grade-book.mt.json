@@ -37,5 +37,11 @@
   "selectGradebookSource": "Agħżel is-sors tal-gradebook",
   "sourceData": "Data tas-sors",
   "pasteValidJSONHere": "Waħħal JSON validu hawn",
-  "loadingFilePleaseWait": "QED JITTELLA' L-FAJL, JEKK JOGĦĠBOK STENNA.."
+  "loadingFilePleaseWait": "QED JITTELLA' L-FAJL, JEKK JOGĦĠBOK STENNA..",
+  "userID": "ID tal-utent",
+  "preferredName": "Isem preferut",
+  "emailAddress": "Ibgħat email lil dan l-istudent",
+  "notes": "Noti",
+  "interests": "Interessi",
+  "profileImageFor": "Immaġni tal-profil ta'"
 }

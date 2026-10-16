@@ -37,5 +37,11 @@
   "selectGradebookSource": "အမှတ်စာအုပ် ရင်းမြစ် ရွေးရန်",
   "sourceData": "ရင်းမြစ် ဒေတာ",
   "pasteValidJSONHere": "မှန်ကန်သော JSON ကို ဤနေရာတွင် ကူးထည့်ပါ",
-  "loadingFilePleaseWait": "ဖိုင်ကို ဖွင့်နေသည်၊ ခေတ္တစောင့်ပါ.."
+  "loadingFilePleaseWait": "ဖိုင်ကို ဖွင့်နေသည်၊ ခေတ္တစောင့်ပါ..",
+  "userID": "အသုံးပြုသူ ID",
+  "preferredName": "နှစ်သက်သော အမည်",
+  "emailAddress": "ဤကျောင်းသားထံ အီးမေးလ် ပို့ရန်",
+  "notes": "မှတ်စုများ",
+  "interests": "စိတ်ဝင်စားမှုများ",
+  "profileImageFor": "ပရိုဖိုင်ပုံ -"
 }
